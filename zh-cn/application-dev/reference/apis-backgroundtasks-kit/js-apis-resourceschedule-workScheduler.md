@@ -5,7 +5,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供延迟任务注册、取消、查询的能力。在开发过程中，对于实时性要求不高的任务，可以调用本模块接口注册延迟任务，在系统空闲时根据性能、功耗、热等情况进行调度执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
@@ -219,7 +219,7 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 
 ## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
 
-obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
+obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
@@ -254,7 +254,7 @@ obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 
 ## workScheduler.obtainAllWorks<sup>10+<sup>
 
-obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
+obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
@@ -400,7 +400,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 ## workScheduler.isLastWorkTimeOut<sup>10+<sup>
 
-isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
+isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 

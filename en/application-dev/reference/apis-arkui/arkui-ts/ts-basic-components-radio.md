@@ -6,13 +6,15 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **Radio** component allows users to select from a set of mutually exclusive options.
+Provides radio buttons for user interaction.
 
 >  **NOTE**
 >
->  Since API version 12, the default indicator type for the **Radio** component changes from **RadioIndicatorType.DOT** to **RadioIndicatorType.TICK**.
+> - Since API version 12, the default indicator type for the **Radio** component changes from **RadioIndicatorType.DOT** to **RadioIndicatorType.TICK**.
 >
->  This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - By default, this component has the [margin](ts-universal-attributes-size.md#margin) spacing. The default value is **{&nbsp;top: '14px',&nbsp;right: '14px',&nbsp;bottom: '14px',&nbsp;left: '14px' }**.
 
 
 ## Child Components
@@ -24,7 +26,7 @@ Not supported
 
 Radio(options: RadioOptions)
 
-Creates a radio button.
+Creates a radio button component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -40,20 +42,20 @@ Creates a radio button.
 
 ## RadioOptions
 
-Radio button information.
+Defines radio button information.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| value | string | No| No| Current value of the radio button.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| value | string | No| No| Value of the radio button.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | group | string | No| No| Name of the group to which the radio button belongs. Only one radio button in a given group can be selected at a time.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| indicatorType<sup>12+</sup> | [RadioIndicatorType](#radioindicatortype12) | No| Yes| Indicator type of the radio button. If no value is specified, the value of **RadioIndicatorType.TICK** is used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | No| Yes| Custom component to indicate that the radio button is selected. This custom component is center aligned with the radio button. If this parameter is set to **undefined**, the value of **RadioIndicatorType.TICK** is used as the indicator type.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| indicatorType<sup>12+</sup> | [RadioIndicatorType](#radioindicatortype12) | No| Yes| Indicator type of the radio button. If no value is specified, **RadioIndicatorType.TICK** is used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | No| Yes| Custom component to indicate that the radio button is selected. This custom component is center aligned with the radio button. If this parameter is set to **undefined**, **RadioIndicatorType.TICK** is used as the indicator type.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## RadioIndicatorType<sup>12+</sup>
 
-Radio button style.
+Sets the radio button style.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -97,7 +99,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 checked(isChecked: Optional\<boolean>)
 
-Sets whether the radio button is selected. Compared with [checked](#checked), this API supports the **undefined** type for the **isChecked** parameter.
+Sets whether the radio button is selected. Compared to [checked](#checked), this API supports the **undefined** type for the **isChecked** parameter.
 
 This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md) and [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
@@ -111,7 +113,7 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isChecked | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the radio button is selected.<br>If **isChecked** is set to **undefined**, the default value **false** is used.<br>**true**: The radio button is selected. **false**: The radio button is not selected.|
+| isChecked | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether the radio button is selected.<br>If **isChecked** is set to **undefined**, the default value **false** is used.<br>**true**: The radio button is selected. **false**: The radio button is not selected.|
 
 ### radioStyle<sup>10+</sup>
 
@@ -119,7 +121,7 @@ radioStyle(value?: RadioStyle)
 
 Sets the style of the radio button in selected or deselected state.
 
-Since API version 10, this API is supported in ArkTS widgets.
+Since API version 10, this API is supported in ArkTS components.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -129,7 +131,7 @@ Since API version 10, this API is supported in ArkTS widgets.
 
 | Name| Type                               | Mandatory| Description                              |
 | ------ | ----------------------------------- | ---- | ---------------------------------- |
-| value  | [RadioStyle](#radiostyle10) | No  | Style of the radio button in selected or deselected state.|
+| value  | [RadioStyle](#radiostyle10) | No  | Style of the radio button in selected or deselected state.<br> The default values of the parameters in **RadioStyle** apply if this parameter is not set.|
 
 ### contentModifier<sup>12+</sup>
 
@@ -145,13 +147,13 @@ Creates a content modifier.
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<RadioConfiguration>](#radioconfiguration12) | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier  | ContentModifier\<[RadioConfiguration](#radioconfiguration12)\> | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.|
 
 ### contentModifier<sup>18+</sup>
 
 contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
 
-Creates a content modifier. Compared with [contentModifier](#contentmodifier12)<sup>12+</sup>, this API supports the **undefined** type for the **modifier** parameter.
+Creates a content modifier. Compared with [contentModifier](#contentmodifier12)<sup>12+</sup>, this API supports the **undefined** type for **modifier** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -161,7 +163,7 @@ Creates a content modifier. Compared with [contentModifier](#contentmodifier12)<
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ContentModifier\<RadioConfiguration>](#radioconfiguration12)> | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.<br>If **modifier** is set to **undefined**, no content modifier is used.|
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<ContentModifier\<[RadioConfiguration](#radioconfiguration12)\>\> | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.<br>If **modifier** is set to **undefined**, no content modifier is used.|
 
 ## Events
 
@@ -171,7 +173,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onChange(callback: (isChecked: boolean) => void)
 
-Triggered when the selected state of the radio button changes.
+Triggered when the selection state of the radio button changes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -183,13 +185,13 @@ Triggered when the selected state of the radio button changes.
 
 | Name   | Type   | Mandatory| Description                            |
 | --------- | ------- | ---- | -------------------------------- |
-| isChecked | boolean | Yes  | Selected state of the radio button.<br>The value **true** means that the radio button changes from unselected to selected, and **false** means that the radio button changes from selected to unselected.|
+| isChecked | boolean | Yes  | Callback invoked when the radio button selection state changes.<br>**true**: The radio button turns selected from unselected. **false**: The radio button turns unselected from selected.|
 
 ### onChange<sup>18+</sup>
 
 onChange(callback: Optional\<OnRadioChangeCallback>)
 
-Triggered when the selected state of the radio button changes. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the selection state of the radio button changes. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -201,13 +203,13 @@ Triggered when the selected state of the radio button changes. Compared with [on
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnRadioChangeCallback](#onradiochangecallback18)> | Yes  | Callback for radio button selection state changes.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnRadioChangeCallback](#onradiochangecallback18)> | Yes  | Callback invoked when the radio button selection state changes.<br>If **callback** is set to **undefined**, the callback will not be used.|
 
 ## OnRadioChangeCallback<sup>18+</sup>
 
 type OnRadioChangeCallback = (isChecked: boolean) => void
 
-Defines the callback type for radio button selected state changes.
+Defines the callback type for radio button selection state changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -217,11 +219,11 @@ Defines the callback type for radio button selected state changes.
 
 | Name   | Type   | Mandatory| Description                                                        |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
-| isChecked | boolean | Yes  | Selected state of the radio button.<br>The value **true** means that the radio button changes from unselected to selected, and **false** means that the radio button changes from selected to unselected.|
+| isChecked | boolean | Yes  | Selection state of the radio button.<br>**true**: The radio button turns selected from unselected. **false**: The radio button turns unselected from selected.|
 
 ## RadioStyle<sup>10+</sup>
 
-Radio button color.
+Defines the color of a radio button.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -231,11 +233,11 @@ Radio button color.
 | ---------------------- | ------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | checkedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of the background when the radio button is selected.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_activated')**|
 | uncheckedBorderColor   | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of the border when the radio button is deselected.<br>Default value: **$r('sys.color.ohos_id_color_switch_outline_off')**|
-| indicatorColor         | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of the indicator when the radio button is selected. Since API version 12, this parameter takes effect only when **indicatorType** is set to **RadioIndicatorType.TICK** or **RadioIndicatorType.DOT**.  <br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')**|
+| indicatorColor         | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of the indicator when the radio button is selected. Since API version 12, this parameter takes effect only when **indicatorType** is set to **RadioIndicatorType.TICK** or **RadioIndicatorType.DOT**. When **indicatorType** is set to **RadioIndicatorType.CUSTOM**, the indicator color cannot be changed.<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')**|
 
 ## RadioConfiguration<sup>12+</sup>
 
-You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt).
+Defines a custom class to implement the **ContentModifier** API. This API inherits from [CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -243,12 +245,12 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 | Name | Type   | Read-Only| Optional |  Description             |
 | ------ | ------ |-------------------------------- |-------------------------------- |-------------------------------- |
-| value | string | No| No|Current value of the radio button.|
-| checked | boolean| No| No| Whether the radio button is selected.<br>Default value: **false**<br>**true**: The radio button is selected. **false**: The radio button is not selected.|
-| triggerChange |Callback\<boolean>|No|No|Changes the selected state of the radio button.<br>The value **true** means that the radio button changes from unselected to selected, and **false** means that the radio button changes from selected to unselected.|
+| value | string | No| No|Value of the radio button.|
+| checked | boolean| No| No| Sets whether the radio button is selected.<br>Default value: **false**<br>**true**: The radio button is selected. **false**: The radio button is not selected.|
+| triggerChange |Callback\<boolean>|No|No|Selection state changes of the radio button.<br>**true**: The radio button turns selected from unselected. **false**: The radio button turns unselected from selected.|
 
 
-## Example
+## Examples
 ### Example 1: Setting the Background Color
 This example demonstrates how to set **checkedBackgroundColor** to customize the background color of a radio button.
 ```ts
@@ -300,7 +302,7 @@ struct RadioExample {
 ```
 ![radio](figures/radio.gif)
 ### Example 2: Setting the Indicator Type
-This example shows how to customize the appearance of a radio button when it is selected by configuring **indicatorType** and **indicatorBuilder**.
+This example demonstrates how to customize the appearance of a radio button when it is selected by configuring **indicatorType** and **indicatorBuilder**.
 ```ts
 // xxx.ets
 @Entry
@@ -353,7 +355,7 @@ struct RadioExample {
 ```
 ![radio](figures/radio_2.gif)
 ### Example 3: Implementing a Custom Radio Button
-This example illustrates how to implement a custom radio button using the **contentModifier** API.
+This example demonstrates how to implement a custom radio button using the **contentModifier** API.
 ```ts
 class MyRadioStyle implements ContentModifier<RadioConfiguration> {
   type: number = 0;

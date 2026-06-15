@@ -1,11 +1,12 @@
 # Sharing Data via Unified Data Channels (ArkTS)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=a1b9555ca35e53d2ce1fb3e822613b1436be9250 translatedAt=2026-06-05T06:41:37.670Z pushedAt=2026-06-08T03:17:14.273Z -->
 
 ## When to Use
 
@@ -37,7 +38,7 @@ The public data channel allows all applications to write data into it. When data
 
 ## Available APIs
 
-The following table lists the UDMF APIs. All of them are executed asynchronously in callback or promise mode. The following table uses the callback mode as an example. For details about more APIs and their usage, see [Unified Data Channel](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md) and [Standard Data Definition and Description](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md).
+The following are the APIs related to UDMF unified data channels. For more APIs and their usage, see [@ohos.data.unifiedDataChannel (Unified Data Channel)](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md) and [@ohos.data.uniformTypeDescriptor (Uniform Data Definition and Description)](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md).
 
 | API                                                                                   | Description                                         | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
@@ -45,7 +46,6 @@ The following table lists the UDMF APIs. All of them are executed asynchronously
 | updateData(options: Options, data: UnifiedData, callback: AsyncCallback\<void>): void   | Updates the data in the UDMF public data channel. This API uses an asynchronous callback to return the result.          | 
 | queryData(options: Options, callback: AsyncCallback\<Array\<UnifiedData>>): void        | Queries data in the UDMF public data channel. This API uses an asynchronous callback to return the result.              | 
 | deleteData(options: Options, callback: AsyncCallback\<Array\<UnifiedData>>): void       | Deletes data from the UDMF public data channel. This API uses an asynchronous callback to return the deleted data set.|
-
 
 ## How to Develop
 
@@ -56,13 +56,14 @@ The following example walks you through on how to implement many-to-many sharing
 1. Import the **unifiedDataChannel**, **uniformTypeDescriptor**, and **uniformDataStruct** modules.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-    
+
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. Create a **UnifiedData** object and insert it to the UDMF public data channel.
+
    1. Import the corresponding data object modules.
 
       <!-- @[import_unifiedData_object_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
@@ -216,7 +217,7 @@ The following example walks you through on how to implement many-to-many sharing
 1. Import the **unifiedDataChannel**, **uniformTypeDescriptor**, and **uniformDataStruct** modules.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-    
+
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';

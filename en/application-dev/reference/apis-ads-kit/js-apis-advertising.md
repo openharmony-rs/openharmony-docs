@@ -686,4 +686,4 @@ Defines the requested ad content.
 
 | Type                                                        | Description                  |
 |--------------------------------------------------------------|----------------------|
-| [_Advertisement](js-apis-inner-advertising-advertisement.md) | Advertisement object.|
+| _Advertisement | Advertisement object.|

@@ -2,7 +2,7 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -18,21 +18,21 @@ Invalid parameter value.
 
 **Description**
 
-Invalid parameters are specified.
+The parameter is invalid.
 
 **Possible Causes**
 
-1. The value of **account** is empty or exceeds 1024 characters.
+1. The account is empty or exceeds 1024 characters.
 
 2. The account type is incorrect.
 
-3. The **aeskey** or **iv** is invalid.
+3. The **aesKey** or **iv** is invalid.
 
-4. The authorization expiration time is earlier than the system time.
+4. The system time is later than the authorization expiration time.
 
-5. **Fd** is less than **0**.
+5. The value of **Fd** is less than **0**.
 
-6. The value of **tokenid** is **0**.
+6. The value of **tokenId** is **0**.
 
 7. The bundle name is empty.
 
@@ -44,7 +44,6 @@ Invalid parameters are specified.
 
 Set parameters correctly.
 
-<!--Del-->
 ## 19100002 Encryption and Decryption Error
 
 **Error Message**
@@ -64,9 +63,7 @@ An error occurs in encryption or decryption.
 **Solution**
 
 Try again later.
-<!--DelEnd-->
 
-<!--Del-->
 ## 19100003 Encryption/Decryption Timeout
 
 **Error Message**
@@ -84,9 +81,7 @@ It takes more than 10 seconds to encrypt or decrypt a DLP file.
 **Solution**
 
 Try again later.
-<!--DelEnd-->
 
-<!--Del-->
 ## 19100004 Credential Service Error
 
 **Error Message**
@@ -106,9 +101,7 @@ An error occurs in the credential service.
 **Solution**
 
 Wait for a while and try again, or restart the device.
-<!--DelEnd-->
 
-<!--Del-->
 ## 19100005 Credential Authentication Server Error
 
 **Error Message**
@@ -128,7 +121,6 @@ The credential authentication server is abnormal.
 **Solution**
 
 Check the credential authentication server and try again.
-<!--DelEnd-->
 
 ## 19100006 Access Denied for a Non-DLP Sandbox Application
 
@@ -160,13 +152,12 @@ The caller cannot be a DLP sandbox application.
 
 **Possible Causes**
 
-The caller cannot be a DLP sandbox application.
+The caller is a DLP sandbox application.
 
 **Solution**
 
 The caller must be a DLP sandbox application.
 
-<!--Del-->
 ## 19100008 Non-DLP File
 
 **Error Message**
@@ -184,9 +175,7 @@ The file is not a DLP file.
 **Solution**
 
 Use a DLP file.
-<!--DelEnd-->
 
-<!--Del-->
 ## 19100009 Failed to Operate the DLP File
 
 **Error Message**
@@ -209,10 +198,9 @@ The operation on the DLP file fails.
 
 **Solution**
 
-1. Check that you are authorized to access the DLP file.
+1. Check the access permission.
 
 2. Wait for a while or restart the system and try again.
-<!--DelEnd-->
 
 <!--Del-->
 ## 19100010 Read-Only DLP File
@@ -280,7 +268,6 @@ The system memory is insufficient.
 
 Try again later or restart the device.
 
-<!--Del-->
 ## 19100013 User Access Denied
 
 **Error Message**
@@ -298,9 +285,7 @@ The current login account does not have the permission on the file.
 **Solution**
 
 Check the user permissions.
-<!--DelEnd-->
 
-<!--Del-->
 ## 19100014 Account Not Logged In
 
 **Error Message**
@@ -318,7 +303,6 @@ You have not logged in with the account of the corresponding type.
 **Solution**
 
 Log in using your account.
-<!--DelEnd-->
 
 <!--Del-->
 ## 19100015 Upgrade Required
@@ -392,7 +376,7 @@ The application is not in the authorized application list.
 
 **Solution**
 
-Set the authorized application list.
+Add the application to the authorized application list.<!--RP1--><!--RP1End-->
 
 <!--Del-->
 ## 19100019 DLP File Has Expired
@@ -423,7 +407,7 @@ No network connection.
 
 **Description**
 
-The device is not connected to Wi-Fi.
+The network is not connected.
 
 **Possible Causes**
 
@@ -460,7 +444,7 @@ Parameter error.
 
 **Description**
 
-The parameter is invalid.
+Invalid parameter.
 
 **Possible Causes**
 
@@ -528,7 +512,7 @@ The system function is abnormal.
 
 2. The service on which the service depends cannot be started properly.
 
-3. IPC data read/write identification.
+3. IPC data fails to be read or written.
 
 4. The service is not initialized.
 

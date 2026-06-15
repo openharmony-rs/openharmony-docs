@@ -1,10 +1,11 @@
 # ArkUI（方舟UI框架）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
-<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Owner: @tsj_20201-->
+<!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+
 - [ArkUI简介](arkui-overview.md)
 - UI开发 (ArkTS声明式开发范式)<!--arkts-ui-development-->
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
@@ -38,7 +39,6 @@
     - [@Require装饰器：校验构造传参](state-management/arkts-require.md)
   - 学习UI范式状态管理<!--arkts-state-management-->
     - [状态管理概述](state-management/arkts-state-management-overview.md)
-    - [状态管理术语](state-management/arkts-state-management-glossary.md)
     - [状态管理原理介绍](state-management/arkts-state-management-introduce.md)
     - [状态管理V1和V2更新机制差异](state-management/arkts-v1-v2-update-difference.md)
     - [MVVM模式（V1）](state-management/arkts-mvvm.md)
@@ -102,6 +102,7 @@
       - [数据对象状态管理常见问题](state-management/arkts-state-management-faq-inner-class.md)
       - [应用内状态管理和其他常见问题](state-management/arkts-state-management-faq-application-and-others.md)
       - [状态变量改变不触发组件刷新问题常用定位方法](state-management/troubleshooting-state-manage.md)
+    - [状态管理术语](state-management/arkts-state-management-glossary.md)
   - 学习UI范式渲染控制<!--arkts-rendering-control-->
     - [渲染控制概述](rendering-control/arkts-rendering-control-overview.md)
     - [if/else：条件渲染](rendering-control/arkts-rendering-control-ifelse.md)
@@ -152,8 +153,8 @@
     - [视频播放 (Video)](arkts-common-components-video-player.md)
     - [创建轮播 (Swiper)](arkts-layout-development-create-looping.md)
     - [创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md)（圆形屏幕推荐使用）
-  - 表单选择<!--arkts-form-selection-->
-    - [表单与选择组件概述](arkts-forms-overview.md)
+  - 按钮与选择<!--arkts-form-selection-->
+    - [按钮与选择组件概述](arkts-forms-overview.md)
     - [按钮 (Button)](arkts-common-components-button.md)
     - [弧形按钮 (ArcButton)](arkts-advanced-components-arcbutton.md)（圆形屏幕推荐使用）
     - [单选框 (Radio)](arkts-common-components-radio-button.md)
@@ -275,20 +276,28 @@
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
   - [接入ArkTS页面](ndk-access-the-arkts-page.md)
-  - 添加交互事件<!--arkts-add-event-->
-    - [监听组件事件](ndk-listen-to-component-events.md)
+  - [添加事件响应](ndk-add-event-response.md)
+    - [添加事件监听](ndk-add-component-events.md)
+    - [绑定基础输入事件](ndk-bind-input-events.md)
     - [绑定手势事件](ndk-bind-gesture-events.md)
-    - [拖拽事件](ndk-drag-event.md)
-    - [监听组件布局和绘制送显事件](ndk-inspector-component-observer.md)
+    - [绑定拖拽事件](ndk-drag-event.md)
   - [使用动画](ndk-use-animation.md)
   - 构建布局<!--arkts-build-layout-ndk-->
+    - [使用布局组件](ndk-layout-container.md)
+    - [设置通用布局属性](ndk-common-attribute-layout.md)
+  - 使用列表与网格<!--arkts-list-and-grid-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
     - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
-      - [Text组件的文本绘制与显示](ndk-styled-string.md)
-      - [输入框文本事件监听](ndk-textarea-event.md)
+      - [使用Text组件](ndk-use-text-component.md)
+      - [使用属性字符串](ndk-styled-string.md)
+      - [添加输入框文本事件监听](ndk-textarea-event.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
+  - [构建表单组件](ndk-build-form-components.md)
+  - 媒体展示<!--arkts-build-media-ndk-->
+    - [使用滑块视图容器 (Swiper)](ndk-swiper.md)
+  - [使用导航类组件](ndk-navigation-query.md)
   - [构建自定义组件](ndk-build-custom-components.md)
   - [嵌入ArkTS组件](ndk-embed-arkts-components.md)
   - [构建渲染节点](ndk-embed-render-components.md)

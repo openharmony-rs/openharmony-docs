@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -45,7 +45,7 @@ Reads pixels from an ArrayBuffer and writes the data to this AuxiliaryPicture ob
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -56,7 +56,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 ```ts
 async function WritePixelsFromBuffer(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // Support for HDR images is required.
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // An HDR-compatible image is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -67,7 +67,7 @@ async function WritePixelsFromBuffer(context: Context) {
   if(auxPictureObj != null) {
     let auxBuffer: ArrayBuffer = await auxPictureObj.readPixelsToBuffer();
     await auxPictureObj.writePixelsFromBuffer(auxBuffer);
-    console.info('Write pixels from buffer success.');
+    console.info('Succeeded in writing pixels from buffer.');
   } else {
     console.error('AuxPictureObj is null.');
   }
@@ -95,7 +95,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadPixelsToBuffer(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // Support for HDR images is required.
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // An HDR-compatible image is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -105,9 +105,9 @@ async function ReadPixelsToBuffer(context: Context) {
   let auxPictureObj: image.AuxiliaryPicture | null = pictureObj.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
   if(auxPictureObj != null) {
     await auxPictureObj.readPixelsToBuffer().then((pixelsBuffer: ArrayBuffer) => {
-      console.info('Read pixels to buffer success.' );
+    console.info('Succeeded in reading pixels to buffer.');
     }).catch((error: BusinessError) => {
-      console.error(`Read pixels to buffer failed error.code: ${error.code}, error.message: ${error.message}`);
+      console.error(`Failed to read pixels to buffer. error.code: ${error.code}, error.message: ${error.message}`);
     });
   } else {
     console.error('AuxPictureObj is null.');
@@ -135,9 +135,9 @@ Obtains the type of this auxiliary picture.
 async function GetAuxiliaryPictureType(auxPictureObj : image.AuxiliaryPicture) {
   if (auxPictureObj != null) {
     let type: image.AuxiliaryPictureType = auxPictureObj.getType();
-    console.info('Success get auxiliary picture type ' +  JSON.stringify(type));
+    console.info('Succeeded in getting auxiliary picture type ' +  JSON.stringify(type));
   } else {
-    console.error('Failed get auxiliary picture type ');
+    console.error('Failed to get auxiliary picture type.');
   }
 }
 ```
@@ -165,7 +165,7 @@ Sets the metadata for this auxiliary picture. This API uses a promise to return 
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -179,7 +179,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function SetAuxPictureObjMetadata(exifContext: Context, auxPictureObj: image.AuxiliaryPicture) {
   const exifResourceMgr = exifContext.resourceManager;
-  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let exifOps: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -187,18 +187,18 @@ async function SetAuxPictureObjMetadata(exifContext: Context, auxPictureObj: ima
   let exifCommodityPixelMap: image.PixelMap = await exifImageSource.createPixelMap();
   let exifPictureObj: image.Picture = image.createPicture(exifCommodityPixelMap);
   if (exifPictureObj != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in creating picture.');
   } else {
-    console.error('Create picture failed');
+    console.error('Failed to create picture.');
   }
 
   if (auxPictureObj != null) {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let exifMetaData: image.Metadata = await exifPictureObj.getMetadata(metadataType);
     auxPictureObj.setMetadata(metadataType, exifMetaData).then(() => {
-      console.info('Set metadata success');
+      console.info('Succeeded in setting metadata.');
     }).catch((error: BusinessError) => {
-      console.error(`Set metadata failed.error.code: ${error.code}, error.message: ${error.message}`);
+      console.error(`Failed to set metadata. error.code: ${error.code}, error.message: ${error.message}`);
     });
   } else {
     console.error('AuxPictureObjMetaData is null');
@@ -228,7 +228,7 @@ Obtains the metadata of this auxiliary picture. This API uses a promise to retur
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -243,9 +243,9 @@ async function GetAuxPictureObjMetadata(auxPictureObj: image.AuxiliaryPicture) {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let auxPictureObjMetaData: image.Metadata | null = await auxPictureObj.getMetadata(metadataType);
     if (auxPictureObjMetaData != null) {
-      console.info('Get AuxPictureObj Metadata success' );
+      console.info('Succeeded in getting AuxPictureObj Metadata.' );
     } else {
-      console.error('Get AuxPictureObj Metadata failed');
+      console.error('Failed to get AuxPictureObj Metadata.');
     }
   } else {
     console.error('Get AuxPictureObj is null.');
@@ -253,7 +253,7 @@ async function GetAuxPictureObjMetadata(auxPictureObj: image.AuxiliaryPicture) {
 }
 ```
 
-## getAuxiliaryPictureinfo<sup>13+</sup>
+## getAuxiliaryPictureInfo<sup>13+</sup>
 
 getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 
@@ -278,12 +278,12 @@ async function GetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
       ' rowStride: ' +  auxinfo.rowStride +  ' pixelFormat: ' + auxinfo.pixelFormat +
       ' colorSpace: ' +  auxinfo.colorSpace);
   } else {
-    console.error('Get auxiliary picture information failed');
+    console.error('Failed to get auxiliary picture information.');
   }
 }
 ```
 
-## setAuxiliaryPictureinfo<sup>13+</sup>
+## setAuxiliaryPictureInfo<sup>13+</sup>
 
 setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 
@@ -299,7 +299,7 @@ Sets the auxiliary picture information.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | :----------------------------------------------------------- |

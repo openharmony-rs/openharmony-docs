@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -325,7 +325,7 @@ let params: Record<string, hiAppEvent.ParamType> = {
 hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
   hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
 }).catch((err: BusinessError) => {
-hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -397,7 +397,7 @@ Defines parameters for a **Watcher** object. This API is used to configure and m
 
 > **NOTE**
 >
-> You are not advised to [remove watchers](#hiappeventremovewatcher) in the callback. Once a watcher is removed, the subscription callback of the watcher becomes invalid, and the callback may not be triggered when an event occurs.
+> You are not advised to call [removeWatcher](#hiappeventremovewatcher) in the callback. Once a watcher is removed, the subscription callback of the watcher becomes invalid, and the callback may not be triggered when an event occurs.
 
 ## TriggerCondition
 
@@ -464,7 +464,7 @@ hiAppEvent.addWatcher({
       domain: hiAppEvent.domain.OS,
     }
   ],
-  });
+});
 
 // Create an AppEventPackageHolder instance. holder1 holds the event data subscribed by Watcher1 added through addWatcher.
 let holder1: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHolder("Watcher1");
@@ -581,7 +581,7 @@ Defines parameters of the event information.
 | domain    | string                  | No| No  | Event domain. The value is a string of up to 32 characters, including digits (0 to 9), letters (a to z), and underscores (\_). It must start with a letter and cannot end with an underscore (\_).|
 | name      | string                  | No| No  | Event name. The value is string that contains a maximum of 48 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter.|
 | eventType | [EventType](#eventtype) | No| No  | Event type.                                                  |
-| params    | object                  | No| No  | Event parameter object, which consists of a parameter name and a parameter value. In system events, the fields contained in **params** are defined by system. For details about the fields, you can see the overviews of system events, for example, [Crash Event Overview](../../dfx/hiappevent-watcher-crash-events.md). For application events, you need to define the parameters of the [Write](#hiappeventwrite-1) API. The specifications are as follows:<br>- A parameter name is a string that contains a maximum of 32 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter. For example, **testName** and **\$123_name**.<br>- The parameter value can be a string, number, boolean, or array. The string type parameter can contain a maximum of 8 x 1024 characters. If the length exceeds the limit, the parameter and its name will be discarded. The value of the number type parameter must be within the range of **Number.MIN_SAFE_INTEGER** to **Number.MAX_SAFE_INTEGER**. If the value exceeds the range, an uncertain value may be generated. The element type in the array type parameter can only be string, number, or boolean. The number of elements must be less than 100. If this limit is exceeded, excess elements will be discarded.<br>- The maximum number of parameters is 32. If this limit is exceeded, excess parameters will be discarded.|
+| params    | object                  | No| No  | Event parameter object, which consists of a parameter name and a parameter value. In system events, the fields contained in **params** are defined by system. For details about the fields, you can see the overviews of system events, for example, [Crash Event Overview](../../dfx/hiappevent-watcher-crash-events.md). For application events, you need to define the parameters of the [Write](#hiappeventwrite-1) API. The specifications are as follows:<br>- A parameter name is a string that contains a maximum of 32 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter. For example, **testName** and **\$123_name**.<br>- The parameter value can be a string, number, boolean, or array. The string type parameter can contain a maximum of 8 × 1024 characters. If the length exceeds the limit, the parameter and its name will be discarded. The value of the number type parameter must be within the range of **Number.MIN_SAFE_INTEGER** to **Number.MAX_SAFE_INTEGER**. If the value exceeds the range, an uncertain value may be generated. The element type in the array type parameter can only be string, number, or boolean. The number of elements must be less than 100. If this limit is exceeded, excess elements will be discarded.<br>- The maximum number of parameters is 32. If this limit is exceeded, excess parameters will be discarded.|
 
 
 ## AppEventPackage
@@ -784,13 +784,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
 }
 ```
 
@@ -873,14 +873,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    // Remove a specified data processor based on the ID returned after the data processor is added.
-    hiAppEvent.removeProcessor(id);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  // Remove a specified data processor based on the ID returned after the data processor is added.
+  hiAppEvent.removeProcessor(id);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
 }
 ```
 
@@ -1121,21 +1121,23 @@ Provides configuration options for application event logging.
 | Name      | Type   | Read Only| Optional| Description                                                        |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | disable    | boolean | No| Yes  | Whether to enable the event logging function. The default value is **false**. If this parameter is set to **true**, the logging function is disabled. Otherwise, the logging function is enabled.|
-| maxStorage | string  | No| Yes  | Quota for the directory that stores event logging files. The default value is **10M**. It is recommended that the quota be less than or equal to 10 MB. Otherwise, the API efficiency may be affected.<br>If the directory size exceeds the specified quota when application event logging is performed, event logging files in the directory will be cleared one by one based on the generation time to ensure that directory size does not exceed the quota.<br>The quota value must meet the following requirements:<br>- The quota value consists of only digits and a unit (which can be one of [b\|k\|kb\|m\|mb\|g\|gb\|t\|tb], which are case insensitive.)<br>- The quota value must start with a digit. You can determine whether to pass the unit. If the unit is left empty, **b** (that is, byte) is used by default.|
+| maxStorage | string  | No| Yes  | Quota for the directory that stores event logging files. The default value is **10M**. It is recommended that the quota be less than or equal to 10 MB. Otherwise, the API efficiency may be affected.<br>If the directory size exceeds the specified quota when application event logging is performed, event logging files in the directory will be cleared one by one based on the generation time to ensure that directory size does not exceed the quota.<br>The quota value must meet the following requirements:<br>- The quota value consists of only digits and a unit (including b\|k\|kb\|m\|mb\|g\|gb\|t\|tb, which are case-insensitive).<br>- The quota value must start with a digit. You can determine whether to pass the unit. If the unit is left empty, **b** (that is, byte) is used by default.|
 
 
 ## EventPolicy<sup>22+</sup>
 
 Defines the system event configuration policy, which is set by calling [configEventPolicy](#hiappeventconfigeventpolicy22).
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
-
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
 | Name      | Type   | Read Only| Optional| Description                                        |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | No| Yes  | Configuration policy for the main thread jank event.|
-| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | No| Yes  | Configuration policy for the high CPU usage event.|
+| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | No| Yes  | Configuration policy for the main thread jank event.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | No| Yes  | Configuration policy for the high CPU usage event.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| appCrashPolicy<sup>24+</sup> | [AppCrashPolicy](#appcrashpolicy24) | No| Yes  | Crash event configuration policy.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| appFreezePolicy<sup>24+</sup> | [AppFreezePolicy](#appfreezepolicy24) | No| Yes  | Application freeze event configuration policy.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| resourceOverlimitPolicy<sup>24+</sup> | [ResourceOverlimitPolicy](#resourceoverlimitpolicy24) | No| Yes  | Resource leak event configuration policy.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| addressSanitizerPolicy<sup>24+</sup> | [AddressSanitizerPolicy](#addresssanitizerpolicy24) | No| Yes  | Address sanitizer event configuration policy.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 
 ## MainThreadJankPolicy<sup>22+</sup>
@@ -1146,14 +1148,15 @@ Defines the configuration policy for the main thread jank event.
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
+<!--Table: auto; auto; 10%; 10%; auto-->
 | Name      | Type   | Read Only| Optional| Description                                        |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| logType | number | No| Yes  | Type of logs to collect.<br>**logType=0**: When the main thread experiences two consecutive timeouts between 150 ms and 450 ms, a call stack capture is triggered. When the timeout exceeds 450 ms, a trace capture is triggered. This is the default value.<br>**logType=1**: Only the call stack is captured, and the threshold for triggering the detection is customized.<br>**logType=2**: Only traces are captured.|
-| ignoreStartupTime | number | No| Yes  | Mainthread jank event detection time ignored during application startup, in seconds. The default value is **10**, and the minimum value is **3**.|
-| sampleInterval | number | No| Yes  | Interval for the main thread jank event detection and sampling, in milliseconds. The default value is **150**. The value range is [50, 500].|
-| sampleCount | number | No| Yes  | Number of samplings for the main thread jank event. The default value is **10**. The minimum value is 1.<br>The maximum value is calculated using the following formula: **sampleCount** ≤ (2500/**sampleInterval** - 4).|
-| reportTimesPerApp | number | No| Yes  | Number of sampling reporting times for the main thread jank event of the processes with the same PID of an application. This parameter can be set only once for the processes with the same PID.<br>The default value is **1**.<br>When **Developer options** is enabled, the number of reporting times per hour ranges from 1 to 3.<br>When **Developer options** is disabled, the number of reporting times per minute ranges from 1 to 3.|
-| autoStopSampling | boolean | No| Yes  | Whether to automatically stop sampling the main thread stack when the main thread jank event ends.<br>The value **true** means to stop sampling when the main thread jank event ends or the number of samplings reaches the specified value.<br>The value **false** means to stop sampling when the number of samplings reaches the specified value.<br>The default value is **false**.|
+| logType | number | No| Yes| Type of logs to collect. Default value: **0**<br>**logType = 0**: The default values of other parameters are used. When the main thread experiences two consecutive timeouts between 150 ms and 450 ms, a call stack capture is triggered. When the timeout exceeds 450 ms, a trace capture is triggered.<br>**logType=1**: Only the call stack is captured, and the threshold for triggering the detection is customized.<br>**logType=2**: Only traces are captured.<br>**NOTE**<br> - When **logType** is set to **0**, you only need to set **autoStopSampling**. Default values are used for other parameters.<br> - When **logType** is set to **2**, other parameters do not take effect and do not need to be set.|
+| ignoreStartupTime | number | No| Yes| Mainthread jank event detection time ignored during application startup, in seconds. The default value is **10**, and the minimum value is **3**.|
+| sampleInterval | number | No| Yes| Interval for the main thread jank event detection and sampling, in milliseconds. The default value is **150**. The value range is [50, 500].|
+| sampleCount | number | No| Yes | Number of samplings for the main thread jank event. The default value is **10**. The minimum value is 1.<br>The maximum value is calculated using the following formula: **sampleCount** ≤ (2500/**sampleInterval** - 4).<br>**NOTE**<br> - The value **2500** (ms) indicates the maximum time allowed for a main thread jank event to be reported after being detected. Therefore, the value of **sampleCount** cannot be greater than the maximum value calculated based on the formula.<br> - The value **4** indicates the number of check intervals, that is, the first check interval, the twice second check intervals, and the interval for collecting and reporting stack information.<br> - You need to set the parameters as required.|
+| reportTimesPerApp | number | No| Yes| Number of sampling reporting times for the main thread jank event of the processes with the same PID of an application. This parameter can be set only once for the processes with the same PID.<br>The default value is **1**.<br>The number of times that the sampling is reported per minute ranges from 1 to 3.|
+| autoStopSampling | boolean | No| Yes| Whether to automatically stop sampling the main thread stack when the main thread jank event ends.<br>The value **true** means to stop sampling when the main thread jank event ends or the number of samplings reaches the specified value.<br>The value **false** means to stop sampling when the number of samplings reaches the specified value.<br>The default value is **false**.|
 
 ## CpuUsageHighPolicy<sup>22+</sup>
  
@@ -1163,7 +1166,7 @@ Defines the configuration policy for the high CPU usage event.
 > 
 > After this API is called, the setting is persisted. If this API is called again and the corresponding parameter is not set, the value used by the system last time is used.
  
-**Atomic service API**: This API can be used in applications since API version 22.
+**Atomic service API**: This API can be used in atomic services since API version 22.
  
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
  
@@ -1175,6 +1178,53 @@ Defines the configuration policy for the high CPU usage event.
 | perfLogCaptureCount | number  | No| Yes  | Number of log collection times per day. Once the system detects that the number of log collection times exceeds the set value, the system still reports the event normally, but the **external_log** field in the exception event is not attached with the log file path information.<br> For debug-type applications, the threshold range is **[-1, 100]**.<br> For release-type applications, the threshold range is **[0, 20]**.<br> Unit: times. Default value: **1**.<br> If the value is not within the threshold range, the default value **1** is used.<br>**NOTE**<br> 1. The value **-1** indicates that log collection times are not limited.<br> 2. The value **0** indicates that logs are not collected.<br> 3. A value greater than **0** indicates the maximum number of daily collection times.|
 | threadLoadInterval | number  | No| Yes  | Interval for detecting high CPU usage of application threads, in seconds. The value range is **[5, 3600]**. The default value is **60**.<br>If the value is not within the threshold range, the default value **60** is used.|
 
+## AppCrashPolicy<sup>24+</sup>
+
+Defines the crash event configuration policy.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+| Name      | Type   | Read Only| Optional| Description    |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for crash events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.|
+
+## AppFreezePolicy<sup>24+</sup>
+
+Defines the application freeze event configuration policy.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+| Name      | Type   | Read Only| Optional| Description    |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for application freeze events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.|
+
+## ResourceOverlimitPolicy<sup>24+</sup>
+
+Defines the resource leak event configuration policy.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+| Name      | Type   | Read Only| Optional| Description    |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for resource leak events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.|
+
+## AddressSanitizerPolicy<sup>24+</sup>
+
+Defines the address sanitizer event configuration policy.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+| Name      | Type   | Read Only| Optional| Description    |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for address sanitizer events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.|
 
 ## Processor<sup>11+</sup>
 
@@ -1251,6 +1301,8 @@ Enumerates event types.
 
 ## hiAppEvent.domain<sup>11+</sup>
 
+### Constants
+
 Provides domain name constants.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -1263,6 +1315,8 @@ Provides domain name constants.
 
 
 ## hiAppEvent.event
+
+### Constants
 
 Provides event name constants, including system event name constants and application event name constants. The application event name constants are optional custom event names reserved when you call [Write](#hiappeventwrite-1) for application event logging.
 
@@ -1288,6 +1342,8 @@ Provides event name constants, including system event name constants and applica
 | SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | Yes| ArkWeb fling jank event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 23.|
 
 ## hiAppEvent.param
+
+### Constants
 
 Provides parameter name constants.
 

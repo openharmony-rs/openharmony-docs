@@ -121,7 +121,7 @@ Sets whether the image size is fixed at the component size.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether the image size is fixed at the component size.<br> **true**: The image size is fixed at the component size. In this case, the width, height, top, and left attributes of the image are invalid.<br> **false**: The width, height, top, and left attributes of each image must be set separately. If the image size does not match the component size, the image will not be stretched.<br>Default value: **true**|
+| value  | boolean | Yes  | Whether the image size is fixed at the component size. **true**: The image size is fixed at the component size. In this case, the width, height, top, and left attributes of the image are invalid.<br> **false**: The width, height, top, and left attributes of each image must be set separately. If the image size does not match the component size, the image will not be stretched.<br>Default value: **true**|
 
 ### preDecode<sup>(deprecated)</sup>
 
@@ -173,7 +173,7 @@ Sets the number of times that the animation is played.
 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| value  | number | Yes  | By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. Values less than **-1** are treated as the default value. For the value is a floating-point number, it is rounded down.<br>Default value: **1**|
+| value  | number | Yes  | By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. Values less than **-1** are treated as the default value. When the value is a floating-point number, it is rounded down.<br>Default value: **1**|
 
 ### monitorInvisibleArea<sup>17+</sup>
 
@@ -187,13 +187,14 @@ Sets whether the component should automatically pause or resume based on its vis
 
 **Parameters**
 
+<!--Table: auto; 10%; 10%; auto-->
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| monitorInvisibleArea  | boolean | Yes| Whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) event.<br> With the value **true**, when the component's [AnimationStatus](ts-appendix-enums.md#animationstatus) is **Running**, the component automatically pauses once it becomes invisible and resumes playback if it becomes visible again, based on the **onVisibleAreaChange** event.<br>Default value: **false**<br> **NOTE**<br>When this parameter is dynamically changed from **true** to **false**,<br> the component will resume from its last paused state based on the current [AnimationStatus](ts-appendix-enums.md#animationstatus).<br>Changes to this property do not affect the custom [state](./ts-basic-components-imageanimator.md#state) value.|
+| monitorInvisibleArea  | boolean | Yes| Whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) event.<br> With the value **true**, when the component's [AnimationStatus](ts-appendix-enums.md#animationstatus) is **Running**, the component automatically pauses once it becomes invisible and resumes playback if it becomes visible again, based on the **onVisibleAreaChange** event.<br>With the value **false**, the pause and playback of the component are not affected by **onVisibleAreaChange**.<br>Default value: **false**<br> **NOTE**<br>When this parameter is dynamically changed from **true** to **false**, the component will resume from its last paused state based on the current [AnimationStatus](ts-appendix-enums.md#animationstatus).<br>Changes to this property do not affect the custom [state](./ts-basic-components-imageanimator.md#state) value.|
 
 ## ImageFrameInfo
 
-Image frame information set.
+Image frame information.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -201,11 +202,11 @@ Image frame information set.
 
 | Name  | Type  | Read-Only| Optional| Description|
 | -------- | -------------- | -------- | -------- | -------- |
-| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | No | No  | Image path. The image format can be .jpg, .jpeg, .svg, .png, .bmp, .webp, .ico, or .heif. The [Resource](ts-types.md#resource) type is supported since API version 9, and the [PixelMap](ts-image-common.md#pixelmap) type is supported since API version 12.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
-| width    | number&nbsp;\|&nbsp;string | No| Yes| Image width. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.      |
-| height   | number&nbsp;\|&nbsp;string | No| Yes| Image height. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.       |
-| top      | number&nbsp;\|&nbsp;string | No| Yes| Vertical coordinate of the image relative to the upper left corner of the component. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10. |
-| left     | number&nbsp;\|&nbsp;string | No| Yes| Horizontal coordinate of the image relative to the upper left corner of the component. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.  |
+| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | No | No  | Image path. The image format can be .jpg, .jpeg, .svg, .png, .bmp, .webp, .ico, or .heif. The [Resource](ts-types.md#resource) type is supported since API version 9, and the [PixelMap](ts-image-common.md#pixelmap) type is supported since API version 12.<br>**String format description:**<br>- Both local image paths and online image URLs are supported. When referencing local images through relative paths, cross-package or cross-module access is not allowed. Files in the **resources** directory cannot be accessed through relative paths. You need to use the [Resource](ts-types.md#resource) type (such as **\$r** or **$rawfile**) to reference the files. For details, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>- HTTP and HTTPS online image URLs are supported. To use online images, you need to apply for the **ohos.permission.INTERNET** permission.<br>- Strings prefixed with the **file://** path are supported (app sandbox URI: **file://\<bundleName>/\<sandboxPath>**). The sandbox path must be converted to an app sandbox URI via the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API before being passed in for display. In addition, ensure that the app has the read permission to the files in the specified path.<br>- Base64 strings are supported.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| width    | number&nbsp;\|&nbsp;string | No| Yes| Image width. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.      |
+| height   | number&nbsp;\|&nbsp;string | No| Yes| Image height. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.       |
+| top      | number&nbsp;\|&nbsp;string | No| Yes| Vertical coordinate of the image relative to the upper left corner of the component. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10. |
+| left     | number&nbsp;\|&nbsp;string | No| Yes| Horizontal coordinate of the image relative to the upper left corner of the component. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.  |
 | duration | number          | No   | Yes   | Playback duration of each image frame, in milliseconds.<br>Default value: **0**<br>Negative numbers are not supported. Setting negative values will cause the image to stay in the current frame for a long time, affecting normal playback.        |
 
 ## Events
@@ -287,7 +288,7 @@ Triggered when the animation playback returns to the initial state.
 
 onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
-Triggered when the animation playback is complete or stopped.
+Triggered when the animation playback completes or stops.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -299,7 +300,7 @@ Triggered when the animation playback is complete or stopped.
 
 | Name  | Type                                      | Mandatory| Description                      |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | Yes   | Callback triggered when the animation playback is complete or stopped.|
+| event | () => void                               | Yes   | Callback triggered when the animation playback completes or stops.|
 
 ## Example
 
@@ -591,5 +592,4 @@ struct ImageAnimatorAutoPauseTest {
   }
 }
 ```
-
 

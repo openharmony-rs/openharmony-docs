@@ -5,7 +5,8 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1048c3320af515f8cce05079217a6f1c7bf9bee6 translatedAt=2026-06-08T07:49:01.877Z pushedAt=2026-06-08T07:49:35.655Z -->
 
 The **backgroundTaskManager** module provides APIs to request background tasks. You can use the APIs to request transient tasks, continuous tasks, or efficiency resources to prevent the application process from being terminated or suspended when your application is switched to the background.
 
@@ -42,7 +43,7 @@ Requests efficiency resources.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -56,6 +57,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';  
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let request: backgroundTaskManager.EfficiencyResourcesRequest = {
@@ -89,7 +91,7 @@ Releases all efficiency resources.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -103,6 +105,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';  
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -132,7 +135,7 @@ Obtains all information about the requested efficiency resources, including the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 202 | Not System App. |
 | 18700001 | Caller information verification failed for an energy resource request. |
@@ -180,7 +183,7 @@ Sets the authorization information of a continuous task.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -238,7 +241,7 @@ Obtains the authorization information of a continuous task.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -289,7 +292,7 @@ Obtains all continuous task information, including the task ID and type. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID  | Error Message|
+| Error Code  | Error Message|
 | --------- | ------- |
 | 201 | Permission denied. |
 | 202 | Not System App. |
@@ -337,7 +340,7 @@ Registers a callback to listen for the continuous task change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID  | Error Message|
+| Error Code  | Error Message|
 |---------| ------- |
 | 201     | Permission denied. |
 | 202     | Not System App. |
@@ -350,7 +353,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -363,7 +366,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 }
 
 try {
-    backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
+    backgroundTaskManager.subscribeContinuousTaskState(backgroundTaskSubscriber);
     console.info('Operation subscribeContinuousTaskState succeeded');
 } catch (error) {
     console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
@@ -394,7 +397,7 @@ Unregisters the callback for continuous task changes.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID  | Error Message|
+| Error Code  | Error Message|
 |---------| ------- |
 | 201     | Permission denied. |
 | 202     | Not System App. |
@@ -407,7 +410,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -420,7 +423,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 }
 
 try {
-    backgroundTaskManager.unsubscribeContinuousTaskState(this.backgroundTaskSubscriber);
+    backgroundTaskManager.unsubscribeContinuousTaskState(backgroundTaskSubscriber);
     console.info('Operation unsubscribeContinuousTaskState succeeded');
 } catch (error) {
     console.error(`Operation unsubscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
@@ -570,7 +573,7 @@ Called when a continuous task starts.
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -606,7 +609,7 @@ Called when a continuous task is updated.
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -642,7 +645,7 @@ Called when a continuous task stops.
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },

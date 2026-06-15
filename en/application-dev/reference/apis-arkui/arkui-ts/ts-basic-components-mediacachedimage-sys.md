@@ -8,7 +8,7 @@
 
 The **MediaCachedImage** component, with APIs that inherit from [Image](ts-basic-components-image.md) and the added capability of loading texture resources (for system applications only), is typically used to display images in applications.
 
-> **NOTE**
+> **Note**:
 >
 > This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 >
@@ -27,7 +27,7 @@ Obtains an image from the specified source for subsequent rendering and display.
 
 **Parameters**
 
-| Name| Type                                                    | Mandatory| Description                                                    |
+| Parameter| Type                                                    | Mandatory| Description                                                    |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | src    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)&nbsp;\|&nbsp;[ASTCResource](#astcresource12) | Yes  | Data source of the image. Media library resources are supported. For details about how to reference an image of the PixelMap, ResourceStr, or DrawableDescriptor type, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources). The ASTCResource type is available for system applications only.|
 
@@ -47,10 +47,10 @@ Describes texture stitching.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type| Mandatory| Description                                     |
+| Parameter   | Type| Mandatory| Description                                     |
 | ------- | --- | --- | ------------------------------------------ |
 | sources | Array&lt;string&gt; | Yes| URI array, indicating the textures to be stitched.|
-| column  | number | Yes| Column size, indicating the number of textures to be stitched in each row.   |
+| column  | number | Yes| Column count, indicating the number of textures to be stitched in each row.<br>The value must be a positive integer. Non-positive integers prevent image loading.|
 
 ## Example
 

@@ -1,8 +1,8 @@
 # @ohos.taskpool (启动任务池)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -294,7 +294,7 @@ execute任务的校验是结合new GenericsTask一起用的，参数、返回值
 
 | 参数名   | 类型                  | 必填 | 说明                                       |
 | -------- | --------------------- | ---- | ---------------------------------------- |
-| task     | [GenericsTask<A, R>](#genericstask13)         | 是   | 需要在任务池中执行的泛型任务。                  |
+| task     | [GenericsTask](#genericstask13)<A, R>         | 是   | 需要在任务池中执行的泛型任务。                  |
 | priority | [Priority](#priority) | 否   | 等待执行的任务的优先级，默认值为taskpool.Priority.MEDIUM。 |
 
 **返回值：**
@@ -368,7 +368,7 @@ execute任务的校验是结合new GenericsTask一起用的，参数、返回值
 
 | 参数名   | 类型                  | 必填 | 说明                                       |
 | -------- | --------------------- | ---- | ---------------------------------------- |
-| task     | [GenericsTask<A, R>](#genericstask13)         | 是   | 需要在任务池中执行的泛型任务。                  |
+| task     | [GenericsTask](#genericstask13)<A, R>        | 是   | 需要在任务池中执行的泛型任务。                  |
 | configs | [Configs](#configs24) | 是   | 该参数可以设置超时时间和任务优先级。 |
 
 **返回值：**
@@ -440,11 +440,10 @@ execute(group: TaskGroup, priority?: Priority): Promise<Object[]>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | ------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200006 | An exception occurred during serialization. |
 | 10200059 | TaskGroup cannot be re-executed. |
 
@@ -470,10 +469,10 @@ taskGroup2.addTask(task1);
 taskGroup2.addTask(task2);
 taskGroup2.addTask(task3);
 taskpool.execute(taskGroup1).then((res: Array<Object>) => {
-  console.info("Succeeded in excuting task, res is:" + res);
+  console.info("Succeeded in executing task, res is:" + res);
 });
 taskpool.execute(taskGroup2).then((res: Array<Object>) => {
-  console.info("Succeeded in excuting task, res is:" + res);
+  console.info("Succeeded in executing task, res is:" + res);
 });
 ```
 
@@ -620,7 +619,7 @@ executeDelayed任务的校验是结合new GenericsTask一起用的，参数、�
 | 参数名       | 类型          | 必填 | 说明                 |
 | ----------- | ------------- | ---- | -------------------- |
 | delayTime   | number        | 是   | 延时时间。单位为ms。delayTime值必须要大于等于0。  |
-| task        | [GenericsTask\<A, R>](#genericstask13) | 是   | 需要延时执行的泛型任务。 |
+| task        | [GenericsTask](#genericstask13)<A, R> | 是   | 需要延时执行的泛型任务。 |
 | priority    | [Priority](#priority)       | 否   | 延时执行的任务的优先级，默认值为taskpool.Priority.MEDIUM。 |
 
 **返回值：**
@@ -754,7 +753,7 @@ executePeriodically任务的校验是结合new GenericsTask一起用的，参数
 | 参数名       | 类型          | 必填  | 说明                 |
 | -----------  | ------------- | ----- | -------------------- |
 | period       | number        | 是    | 周期时长。单位为ms。period值必须要大于等于0。  |
-| task         | [GenericsTask\<A, R>](#genericstask13) | 是    | 需要周期执行的泛型任务。 |
+| task         | [GenericsTask](#genericstask13)<A, R> | 是    | 需要周期执行的泛型任务。 |
 | priority     | [Priority](#priority) | 否   | 周期执行的任务的优先级，该参数默认值为taskpool.Priority.MEDIUM。 |
 
 
@@ -876,7 +875,7 @@ function concurrentFunc() {
   let task5: taskpool.Task = new taskpool.Task(inspectStatus, 500); // 500: test number
   let task6: taskpool.Task = new taskpool.Task(inspectStatus, 600); // 600: test number
   taskpool.execute(task1).then((res: Object) => {
-    console.info(`Succeeded in excuting task. result: ` + res);
+    console.info(`Succeeded in executing task. result: ` + res);
   }).catch((err: BusinessError) => {
     console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
   });
@@ -946,12 +945,12 @@ function concurrentFunc() {
   let taskGroup2: taskpool.TaskGroup = new taskpool.TaskGroup();
   taskGroup2.addTask(printArgs, 100); // 100: test number
   taskpool.execute(taskGroup1).then((res: Array<Object>) => {
-    console.info(`Succeeded in excuting task. res is: ` + res);
+    console.info(`Succeeded in executing task. res is: ` + res);
   });
   taskpool.execute(taskGroup2).then((res: Array<Object>) => {
-    console.info(`Succeeded in excuting task. res is: ` + res);
+    console.info(`Succeeded in executing task. res is: ` + res);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to excute task. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
   });
   setTimeout(() => {
     try {
@@ -1023,7 +1022,7 @@ function cancelFunction(taskId: number) {
 function concurrentFunc() {
   let task = new taskpool.Task(printArgs, 100); // 100: test number
   taskpool.execute(task).catch((err: BusinessError) => {
-    console.error(`Failed to excute task. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
   });
   setTimeout(() => {
     let cancelTask = new taskpool.Task(cancelFunction, task.taskId);
@@ -1213,7 +1212,7 @@ function dealTask() {
 
 ## Priority
 
-表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考[QoS等级定义](../../napi/qos-guidelines.md#qos等级定义)。
+表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考[QoS等级定义](../../kernel-enhance/qos-guidelines.md#qos等级定义)。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2834,8 +2833,8 @@ async function asyRunner2() {
 
 | 名称          | 类型                              | 只读 | 可选 | 说明                  |
 | ------------- | -------------------------------- | ---- | ---- | -------------------- |
-| threadInfos   | [ThreadInfo[]](#threadinfo10)    | 否   | 否   | 工作线程的内部信息。不建议修改此值。|
-| taskInfos     | [TaskInfo[]](#taskinfo10)        | 否   | 否   | 任务的内部信息。不建议修改此值。 |
+| threadInfos   | [ThreadInfo](#threadinfo10)[]    | 否   | 否   | 工作线程的内部信息。不建议修改此值。|
+| taskInfos     | [TaskInfo](#taskinfo10)[]        | 否   | 否   | 任务的内部信息。不建议修改此值。 |
 
 ## TaskResult<sup>20+</sup>
 
@@ -3020,7 +3019,7 @@ async function delayExecute(): Promise<Array<Object>> {
 
 async function taskpoolExecute(): Promise<void> {
   taskpool.execute(delayExecute).then((result: Object) => {
-    console.info("Succeeded in excuting task, result: " + result);
+    console.info("Succeeded in executing task, result: " + result);
   }).catch((e: BusinessError) => {
     console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
@@ -3052,7 +3051,7 @@ export async function func2(): Promise<void> {
   console.info("taskpoolTest2 start");
   let strArray: Array<string> = ['c test string', 'b test string', 'a test string'];
   taskpool.execute(strSort, strArray).then((result: Object) => {
-    console.info("Succeeded in excuting task, result: " + result);
+    console.info("Succeeded in executing task, result: " + result);
   }).catch((e: BusinessError) => {
     console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
@@ -3096,7 +3095,7 @@ function inspectStatus(arg: number): number {
 async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
-    console.info("Succeeded in excuting task, result: " + res);
+    console.info("Succeeded in executing task, result: " + res);
   }).catch((e: BusinessError) => {
     console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
@@ -3140,7 +3139,7 @@ function inspectStatus(arg: number): number {
 async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
-    console.info("Succeeded in excuting task, result: " + res);
+    console.info("Succeeded in executing task, result: " + res);
   }).catch((e: BusinessError) => {
     console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });

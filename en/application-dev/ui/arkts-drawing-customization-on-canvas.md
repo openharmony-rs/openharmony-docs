@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-**Canvas** provides a canvas component for drawing custom graphics. You can use the **CanvasRenderingContext2D** and **OffscreenCanvasRenderingContext2D** objects to draw graphics on the **Canvas** component. The drawing objects can be basic shapes, text, and images.
+[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) is used for custom graphics drawing. You can use the [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) and [OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md) objects to draw graphics such as basic shapes, text, images on the **Canvas** component.
 
 
 ## Drawing Custom Graphics on the Canvas
@@ -51,8 +51,8 @@ struct CanvasExample1 {
   ![2023022793003](figures/2023022793003.jpg)
 
 - Drawing offscreen onto a canvas is a process where content to draw onto the canvas is first drawn in the buffer, and then converted into a picture, and finally the picture is drawn on the canvas. This process increases the drawing efficiency. Specifically, the implementation is as follows:
-  1. Use the **transferToImageBitmap** API to create an **ImageBitmap** object for the image that is recently rendered off the screen canvas.
-  2. Use the **transferFromImageBitmap** API of the **CanvasRenderingContext2D** object to display the given **ImageBitmap** object.
+  1. Use the [transferToImageBitmap](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md#transfertoimagebitmap) method to create a [ImageBitmap](../reference/apis-arkui/arkui-ts/ts-components-canvas-imagebitmap.md) object from the latest rendered image on the offscreen canvas.
+  2. Display the given **ImageBitmap** object using the [transferFromImageBitmap](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#transferfromimagebitmap) method of the [CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md) object.
 
     For details, see [OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md).
 
@@ -112,7 +112,7 @@ import lottie from '@ohos/lottie'
 
 ## Initializing the Canvas Component
 
-**onReady(event: () =&gt; void)** is the event callback when the **Canvas** component initialization is complete. After this event is called, the determined width and height of the **Canvas** component can be obtained. The **CanvasRenderingContext2D** and **OffscreenCanvasRenderingContext2D** objects can then be used to call related APIs to draw graphics.
+**onReady(event: () =&gt; void)** is the event callback triggered when the **Canvas** component is initialized. After this event is called, you can obtain the [width](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#width) and [height](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#height) of the canvas. Then, you can use the **CanvasRenderingContext2D** and **OffscreenCanvasRenderingContext2D** objects to call related APIs for drawing.
 
 
 <!-- @[initCanvasComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/InitCanvasComponent.ets) -->
@@ -134,7 +134,7 @@ Canvas(this.context)
 
 ## Canvas Component Drawing Modes
 
-After **onReady()** is invoked, you can use the **Canvas** component for drawing. Alternatively, you can separately define the **Path2d** object to build an ideal path without the **Canvas** component and **onReady()** lifecycle callback, and then use the **Canvas** component for drawing after **onReady()** is invoked.
+After the event callback [onReady](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md#onready)() of the **Canvas** component is called, you can directly use the **Canvas** component for drawing. Alternatively, you can define a [Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md) object independently, without relying on the **Canvas** component and the **onReady()** lifecycle, to construct the desired path, and then use the **Canvas** component for drawing after the **onReady()** call.
 
 - Use the **CanvasRenderingContext2D** object to call related APIs for drawing.
 
@@ -157,7 +157,7 @@ Canvas(this.context)
 
   ![2023022793719(1)](figures/2023022793719.jpg)
 
-- Define an individual **path2d** object to build an ideal path, and then call the **stroke** or **fill** API of the **CanvasRenderingContext2D** and **OffscreenCanvasRenderingContext2D** objects to draw the path. For details, see [Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md).
+- First, define a **Path2D** object independently to construct the desired path, then call the [stroke](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md#stroke-1) or [fill](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md#fill-1) API of the **CanvasRenderingContext2D** object or the **OffscreenCanvasRenderingContext2D** object for drawing. For specific usage, refer to the [Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md) object.
 
 
 <!-- @[definePath2d_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
@@ -199,7 +199,7 @@ Canvas(this.context)
     this.context.beginPath();
     this.context.rect(100, 50, 100, 100);
     this.context.stroke();
-    // Draw a circle on the canvas.
+    // Draw a circle.
     this.context.beginPath();
     this.context.arc(150, 250, 50, 0, 6.28);
     this.context.stroke();
@@ -236,7 +236,7 @@ Canvas(this.context)
     this.context.strokeText('Hello World!', 50, 150);
   })
 ```
-
+ 
 
   ![2023022795105(1)](figures/2023022795105.jpg)
 
@@ -311,8 +311,8 @@ struct CustomFont {
         .height('100%')
         .backgroundColor('#F5DC62')
         .onReady(() => {
-          // Load a custom font.
           let fontCollection = text.FontCollection.getGlobalInstance();
+          // Load the custom font file customFont.ttf in the rawfile directory.
           fontCollection.loadFontSync('customFont', $rawfile('customFont.ttf'));
           this.context.font = '30vp customFont';
           this.context.fillText('Hello World!', 20, 50);
@@ -403,7 +403,7 @@ Canvas(this.context)
 
 ## Driving Canvas Refresh with State Variables
 
-State variables can trigger canvas refreshes. By listening for data changes with @Watch and binding it to a custom **draw()** method, the method bound by @Watch will execute the drawing logic, causing the canvas to refresh.
+State variables can trigger canvas refreshes. By listening for data changes with [@Watch](state-management/arkts-watch.md) and binding it to a custom **draw()** method, the method bound by @Watch will execute the drawing logic, causing the canvas to refresh.
 
 
 <!-- @[canvasContentUpdate_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentUpdate.ets) -->

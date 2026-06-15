@@ -68,9 +68,9 @@ You can customize breakpoints using the [BreakPoints](../reference/apis-arkui/ar
   breakpoints: {value: ['320vp', '600vp', '840vp', '1440vp']} // Five breakpoints: xs (< 320 vp), sm (320–600 vp), md (600–840 vp), lg (840–1440 vp), xl (> 1440 vp)
   ```
 
-- The **GridRow** container implements breakpoints by listening for the changes in the window or container size, and sets the breakpoint references through **reference**. Since the application may be displayed in non-full-screen mode, it is better to design the breakpoints with the application window width as the reference.
+- The grid container performs breakpoints by listening to size changes of the window or the container, and uses [reference](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints) to set the reference object for breakpoint switching. Since the application may be displayed in non-full-screen mode, it is better to design the breakpoints with the application window width as the reference.
 
-  For example, you can define breakpoints to divide the application width into six ranges, and configure **columns** to specify the number of columns in the container for each breakpoint range.
+  For example, you can divide the application width into six ranges by setting breakpoints, and configure the number of columns in the grid container at each breakpoint using [columns](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions).
 
 
   <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets) -->
@@ -279,14 +279,14 @@ The **columns** attribute supports two data types: number and [GridRowColumnOpti
 
     Layout behavior since API version 20: xs devices inherit the number of grid columns from sm devices.
 
-    ![en-us_image_0000001563060689](figures/en-us_image_0000001563060690.gif)
+    ![en-us_image_0000001563060690](figures/en-us_image_0000001563060690.gif)
 
-  If only the grid column numbers for sm and md devices are configured, the xs, lg, xl, and xxl devices will use default values based on the [grid column number completion rules](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption).
+  If only the grid column numbers for sm and md devices are configured, the xs, lg, xl, and xxl devices will use default values based on the grid column number completion rules (see [GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)).
 
 
 ### Alignment
 
-In the responsive grid layout, you can set the **direction** attribute of **GridRow** to define the direction in which child components are arranged. The options are [GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection).Row (from left to right) or [GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection).RowReverse (from right to left). An appropriate **direction** value can make the page layout more flexible and meet the design requirements.
+In the grid layout, you can specify the arrangement direction of child components within the grid container by setting the [direction](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions) attribute of **GridRow**. The options are [GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection).Row (from left to right) or [GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection).RowReverse (from right to left). An appropriate **direction** value can make the page layout more flexible and meet the design requirements.
 
 - When child components are arranged from left to right (default):
 
@@ -313,7 +313,7 @@ In the responsive grid layout, you can set the **direction** attribute of **Grid
 
 ### Gutters
 
-In the **GridRow** component, **gutter** is used to set the spacing between adjacent child components in the horizontal and vertical directions.
+The [gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions) attribute in **GridRow** is used to set the horizontal and vertical spacing between child elements.
 
 - When **gutter** is set to a number, the number applies to both the horizontal and vertical directions. In the following example, the horizontal and vertical spacing between adjacent child components is set to **10**.
 
@@ -340,7 +340,7 @@ In the **GridRow** component, **gutter** is used to set the spacing between adja
 
 ## GridCol
 
-The **GridCol** component is a child component of the **GridRow** component. You can set the **span**, **offset**, and **order** attributes of this component by passing parameters or using setters.
+The [GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md) component, as a child of the [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md) component, sets the values of [span](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions) (number of columns occupied), [offset](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions) (number of columns offset), and [order](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions) (element sequence number) in two ways: by passing parameters to **GridCol** or by setting attributes.
 
 - Setting **span**
 
@@ -434,7 +434,7 @@ The **span** attribute supports two data types: number and [GridColColumnOption]
 
     ![en-us_image_0000001511421264](figures/en-us_image_0000001511421264.png)
 
-- When **span** is set to the **GridColColumnOption** type, you can configure different column spans for the six device sizes (xs, sm, md, lg, xl, and xxl). If column spans are only specified for certain breakpoints (for example, sm and md), the remaining breakpoints (xs, lg, xl, and xxl) will use default values based on the [GridColColumnOption completion rules](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption).
+- When **span** is set to the **GridColColumnOption** type, you can configure different column spans for the six device sizes (xs, sm, md, lg, xl, and xxl). If column spans are only specified for certain breakpoints (for example, sm and md), the remaining breakpoints (xs, lg, xl, and xxl) will use default values based on the grid column number completion rules (see [GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)).
 
 
     <!-- @[GridColSpanToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpanToOption.ets) -->
@@ -713,4 +713,4 @@ struct GridRowExample {
 ![en-us_image_0000001563060697](figures/en-us_image_0000001563060697.png)
 
 
-To sum up, the responsive grid components are powerful tools with a wide range of customization capabilities. With the required attributes set at different breakpoints, such as **Columns**, **Margin**, **Gutter**, and **span**, the layout is created automatically. You do not need to pay attention to the specific device type and device state (such as landscape and portrait).
+To sum up, the responsive grid components are powerful tools with a wide range of customization capabilities. You only need to specify parameters such as [columns](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions), [margin](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin), [gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions), and [span](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions) for the grid under different breakpoints to determine the final layout, without needing to worry about specific device types or device states (such as landscape/portrait orientation).

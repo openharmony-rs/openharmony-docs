@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-A dialog box is a modal window designed to temporarily display information or pending operations that require user attention without disrupting the user's current context. Users are required to address the dialog box's content before they can return to their previous tasks. The dialog box may not be bound to any specific component and typically contains a variety of elements such as text, lists, text boxes, and images to create a comprehensive layout. ArkUI offers two types of dialog box components to suit different needs: custom and fixed-style.
+A dialog box is a modal window designed to temporarily display information or pending operations that require user attention without disrupting the user's current context. The dialog box may not be bound to any specific component and typically contains a variety of elements such as text, lists, text boxes, and images to create a comprehensive layout. ArkUI offers two types of dialog box components to suit different needs: custom and fixed-style.
 
 * Custom dialog box: allows you to pass in custom components to define the appearance and behavior of the dialog box. Available APIs include **CustomDialog** and **openCustomDialog**.
 * Fixed-style dialog box: offers a predefined structure for simple and standard interactions. Available APIs include **AlertDialog**, **ActionSheet**, **PickerDialog**, **showDialog**, and **showActionMenu**.

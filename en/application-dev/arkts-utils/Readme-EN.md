@@ -4,7 +4,7 @@
 <!--Owner: @flyingwolf-->
 <!--Designer: @flyingwolf-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 - [About This Kit](arkts-overview.md)
 - ArkTS Common Library<!--arkts-utils-->
@@ -20,6 +20,7 @@
     - [Overview of the ArkTS Container Library](container-overview.md)
     - [Linear Containers](linear-container.md)
     - [Nonlinear Containers](nonlinear-container.md)
+  - [Common Library FAQs](commonlibrary-faq.md)
 - ArkTS Concurrency<!--arkts-concurrency-->
   - [Overview of Concurrency](concurrency-overview.md)
   - [Asynchronous Concurrency](async-concurrency-overview.md)

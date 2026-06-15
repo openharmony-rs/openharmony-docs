@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -59,9 +59,9 @@ async function CreatePicture(context: Context) {
   let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
   let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
   if (pictureObj != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in creating picture');
   } else {
-    console.error('Create picture failed');
+    console.error('Failed to create picture');
   }
 }
 ```
@@ -111,10 +111,10 @@ class MySequence implements rpc.Parcelable {
   marshalling(messageSequence: rpc.MessageSequence) {
     if(this.picture != null) {
       this.picture.marshalling(messageSequence);
-      console.info('Marshalling success !');
+      console.info('Succeeded in marshalling.');
       return true;
     } else {
-      console.error('Marshalling failed !');
+      console.error('Failed to marshall.');
       return false;
     }
   }
@@ -156,7 +156,7 @@ async function Marshalling_UnMarshalling(context: Context) {
 
 createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<PixelMap>
 
-Creates a PixelMap object with the default BGRA_8888 format and specified pixel properties. This API uses a promise to return the result.
+Creates a PixelMap based on the pixel data and image properties. The input pixel data is parsed in BGRA_8888 format by default. This API returns the result asynchronously through a promise.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -166,7 +166,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| colors  | ArrayBuffer                                      | Yes  | Buffer for storing the pixel data. It is used to initialize the pixels of the PixelMap. Before initialization, the pixel format in the buffer must be specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat.<br>**NOTE**: The length of the buffer required for storing the pixel data is determined by multiplying the width, height, and the number of bytes per pixel.|
+| colors  | ArrayBuffer                                      | Yes  | Buffer for storing the pixel data. It is used to initialize the pixels of the PixelMap. Before initialization, the pixel format in the buffer must be specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat. If the pixel format is not specified, the BGRA_8888 format will be used by default.<br>**NOTE**: The length of the buffer required for storing the pixel data is determined by multiplying the width, height, and the number of bytes per pixel.|
 | options | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editable.|
 
 **Return value**
@@ -182,7 +182,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function CreatePixelMap() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  let opts: image.InitializationOptions = {
+    size: { height: 4, width: 6 },
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the source pixel data in the buffer.
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the new PixelMap.
+    editable: true
+  };
   image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
     console.info('Succeeded in creating pixelmap.');
   }).catch((error: BusinessError) => {
@@ -195,7 +200,7 @@ async function CreatePixelMap() {
 
 createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: AsyncCallback\<PixelMap>): void
 
-Creates a PixelMap object with the default BGRA_8888 format and specified pixel properties. This API uses an asynchronous callback to return the result.
+Creates a PixelMap based on the pixel data and image properties. The input pixel data is parsed in BGRA_8888 format by default. This API uses an asynchronous callback to return the result.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -205,7 +210,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 
 | Name  | Type                                            | Mandatory| Description                      |
 | -------- | ------------------------------------------------ | ---- | -------------------------- |
-| colors   | ArrayBuffer                                      | Yes  | Buffer for storing the pixel data. It is used to initialize the pixels of the PixelMap. Before initialization, the pixel format in the buffer must be specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat.<br>**NOTE**: The length of the buffer required for storing the pixel data is determined by multiplying the width, height, and the number of bytes per pixel.|
+| colors   | ArrayBuffer                                      | Yes  | Buffer for storing the pixel data. It is used to initialize the pixels of the PixelMap. Before initialization, the pixel format in the buffer must be specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat. If the pixel format is not specified, the BGRA_8888 format will be used by default.<br>**NOTE**: The length of the buffer required for storing the pixel data is determined by multiplying the width, height, and the number of bytes per pixel.|
 | options  | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editable.|
 | callback | AsyncCallback\<[PixelMap](arkts-apis-image-PixelMap.md)>           | Yes  | Callback used to return the result. If the operation is successful, **err** is undefined and **data** is the PixelMap object obtained; otherwise, **err** is an error object.|
 
@@ -216,7 +221,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function CreatePixelMap() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  let opts: image.InitializationOptions = {
+    size: { height: 4, width: 6 },
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the source pixel data in the buffer.
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the new PixelMap.
+    editable: true
+  };
   image.createPixelMap(color, opts, (error: BusinessError, pixelMap: image.PixelMap) => {
     if(error) {
       console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
@@ -232,7 +242,7 @@ async function CreatePixelMap() {
 
 createPixelMapUsingAllocator(colors: ArrayBuffer, param: InitializationOptions, allocatorType?: AllocatorType): Promise\<PixelMap>
 
-Creates a PixelMap object with the specified properties and memory type. By default, the BGRA_8888 format is used to process data. This API uses a promise to return the result.
+Creates a PixelMap object with the specified properties and memory type. By default, the BGRA_8888 format is used to process data. This API returns the result asynchronously through a promise.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -269,7 +279,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function CreatePixelMapUseAllocator() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
-  let opts: image.InitializationOptions = { editable: true, srcPixelFormat: image.PixelMapFormat.RGBA_8888, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  let opts: image.InitializationOptions = {
+    size: { height: 4, width: 6 },
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the source pixel data in the buffer.
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the new PixelMap.
+    editable: true
+  };
   image.createPixelMapUsingAllocator(color, opts, image.AllocatorType.AUTO).then((pixelMap: image.PixelMap) => {
     console.info('Succeeded in creating pixelmap.');
   }).catch((error: BusinessError) => {
@@ -370,6 +385,9 @@ async function CreatePixelMapFromParcel() {
 
     // Obtain the PixelMap object.
     let newPixelmap = ret.pixel_map;
+    if (newPixelmap != undefined ) {
+      console.info('Get PixelMap successfully.')
+    }
   }
 }
 ```
@@ -378,12 +396,11 @@ async function CreatePixelMapFromParcel() {
 
 createPixelMapFromSurface(surfaceId: string, region: Region): Promise\<PixelMap>
 
-Creates a PixelMap object based on the surface ID and region information. The size of the region is specified by [Region](arkts-apis-image-i.md#region8).size. This API uses a promise to return the result.
+Creates a PixelMap object based on the surface ID and region information. The size of the region is specified by [Region](arkts-apis-image-i.md#region8).size. This API returns the result asynchronously through a promise.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 > **NOTE**
->
 > For foldable devices, during switching between folded and unfolded states, the API call may fail because of the built-in rotation angle of the surface. You need to adjust the width and height to match the rotation angle. You are advised to use [image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15).
 
 **System capability**: SystemCapability.Multimedia.Image.Core
@@ -435,7 +452,6 @@ Creates a PixelMap object based on the surface ID and region information. This A
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 > **NOTE**
->
 > For foldable devices, during switching between folded and unfolded states, the API call may fail because of the built-in rotation angle of the surface. You need to adjust the width and height to match the rotation angle. In such cases, [image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15) is recommended.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
@@ -466,7 +482,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-async function Demo(surfaceId: string) {
+async function CreatePixelMapFromSurfaceSync(surfaceId: string) {
   let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
   let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
   return pixelMap;
@@ -477,7 +493,7 @@ async function Demo(surfaceId: string) {
 
 createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 
-Creates a PixelMap object from a surface ID. This API uses a promise to return the result.
+Creates a PixelMap object from a surface ID. This API returns the result asynchronously through a promise.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -560,11 +576,107 @@ async function CreatePixelMapFromSurfaceSync(surfaceId: string) {
 }
 ```
 
+## image.createPixelMapFromSurfaceWithTransformation<sup>23+</sup>
+
+createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean): Promise\<PixelMap\>
+
+Creates a PixelMap object for previewing a stream based on a surface ID. The surface may carry rotation or flipping information. This API returns the result asynchronously through a promise.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name                | Type          | Mandatory| Description                                    |
+| ---------------------- | ------------- | ---- | ---------------------------------------- |
+| surfaceId              | string        | Yes  | Surface ID, which can be obtained through the preview component, for example, [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md).|
+| transformEnabled       | boolean       | Yes  | Whether to perform inverse transformation on the surface that carries transformation information to eliminate the rotation or flipping effect of the PixelMap. If the surface does not carry transformation information, this parameter does not take effect.<br>If this parameter is set to **true**, the inverse transformation is performed. The transform angle matches the angle carried by the surface but in the opposite direction, and the output PixelMap has no rotation or flipping effect.<br>If this parameter is set to **false**, no inverse transformation is performed. The output PixelMap has the rotation or flipping effect based on the transformation information in the surface.|
+
+**Return value**
+
+| Type                            | Description                 |
+| -------------------------------- | --------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise used to return the PixelMap object.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 7600104 | Failed to get the data from Surface. |
+| 7600201 | Unsupported operation, e.g. on cross-platform. |
+| 7600206 | Invalid parameter. |
+| 7600305 | Failed to create the PixelMap. |
+
+**Example**
+
+```ts
+function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean) {
+  image.createPixelMapFromSurfaceWithTransformation(surfaceId, transformEnabled).then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating pixelMap.');
+  }).catch((e: Error) => {
+    console.error(`Failed to create PixelMap. Code: ${e}`);
+  });
+}
+```
+
+## image.createPixelMapFromSurfaceWithTransformationSync<sup>23+</sup>
+
+createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean): PixelMap
+
+Creates a PixelMap object for previewing a stream based on a surface ID. The surface may carry rotation or flipping information. This API returns the PixelMap object synchronously.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name                | Type          | Mandatory| Description                                    |
+| ---------------------- | ------------- | ---- | ---------------------------------------- |
+| surfaceId              | string        | Yes  | Surface ID, which can be obtained through the preview component, for example, [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md).|
+| transformEnabled       | boolean       | Yes  | Whether to perform inverse transformation on the surface that carries transformation information to eliminate the rotation or flipping effect of the PixelMap. If the surface does not carry transformation information, this parameter does not take effect.<br>If this parameter is set to **true**, the inverse transformation is performed. The transform angle matches the angle carried by the surface but in the opposite direction, and the output PixelMap has no rotation or flipping effect.<br>If this parameter is set to **false**, no inverse transformation is performed. The output PixelMap has the rotation or flipping effect based on the transformation information in the surface.|
+
+**Return value**
+
+| Type                            | Description                 |
+| -------------------------------- | --------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) | If the operation is successful, a PixelMap is returned synchronously. If the operation fails, an error is thrown.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 7600104 | Failed to get the data from Surface. |
+| 7600201 | Unsupported operation, e.g. on cross-platform. |
+| 7600206 | Invalid parameter. |
+| 7600305 | Failed to create the PixelMap. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreatePixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean) {
+  try {
+    const pixelMap: image.PixelMap = image.createPixelMapFromSurfaceWithTransformationSync(surfaceId, transformEnabled);
+    console.info('Succeeded in creating pixelMap.');
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
 ## image.createPixelMapSync<sup>12+</sup>
 
 createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMap
 
-Creates a PixelMap object with the specified properties. By default, the BGRA_8888 format is used to process data. This API returns the result synchronously.
+Creates a PixelMap based on the pixel data and image properties. The input pixel data is parsed in BGRA_8888 format by default. This API returns the result synchronously.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -574,7 +686,7 @@ Images occupy a large amount of memory. When you finish using a PixelMap instanc
 
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| colors  | ArrayBuffer                                      | Yes  | Buffer for storing the pixel data. It is used to initialize the pixels of the PixelMap. Before initialization, the pixel format in the buffer must be specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat.<br>**NOTE**: The length of the buffer required for storing the pixel data is determined by multiplying the width, height, and the number of bytes per pixel.|
+| colors  | ArrayBuffer                                      | Yes  | Buffer for storing the pixel data. It is used to initialize the pixels of the PixelMap. Before initialization, the pixel format in the buffer must be specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat. If the pixel format is not specified, the BGRA_8888 format will be used by default.<br>**NOTE**: The length of the buffer required for storing the pixel data is determined by multiplying the width, height, and the number of bytes per pixel.|
 | options | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Pixel properties, including the alpha type, size, scale mode, pixel format, and editable.|
 
 **Return value**
@@ -596,7 +708,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 function CreatePixelMapSync() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  let opts: image.InitializationOptions = {
+    size: { height: 4, width: 6 },
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the source pixel data in the buffer.
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the new PixelMap.
+    editable: true
+  };
   let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
   return pixelMap;
 }
@@ -606,7 +723,7 @@ function CreatePixelMapSync() {
 
 createPixelMapSync(options: InitializationOptions): PixelMap
 
-Creates a PixelMap object with the specified pixel properties. This API returns the result synchronously.
+Creates an empty PixelMap based on image properties. This API returns the result synchronously.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -645,7 +762,7 @@ function CreatePixelMapSync() {
 
 createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptions, allocatorType?: AllocatorType): PixelMap
 
-Creates a PixelMap object with the specified properties and memory type. By default, the BGRA_8888 format is used to process data. This API returns the result synchronously.
+Creates a PixelMap based on the pixel data and image properties. You can specify the memory type. This API returns the result synchronously.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -678,9 +795,14 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**
 
 ```ts
-function CreatePixelMapSync() {
+function CreatePixelMapUsingAllocatorSync() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
-  let opts: image.InitializationOptions = { editable: true, srcPixelFormat: image.PixelMapFormat.RGBA_8888, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  let opts: image.InitializationOptions = {
+    size: { height: 4, width: 6 },
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the source pixel data in the buffer.
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the new PixelMap.
+    editable: true
+  };
   let pixelMap : image.PixelMap = image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.AUTO);
   return pixelMap;
 }
@@ -690,7 +812,7 @@ function CreatePixelMapSync() {
 
 createPixelMapUsingAllocatorSync(param: InitializationOptions, allocatorType?: AllocatorType): PixelMap
 
-Creates a PixelMap object with the specified pixel properties. This API returns the result synchronously.
+Creates an empty PixelMap based on the image properties. You can specify the memory type. This API returns the PixelMap object synchronously.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -721,7 +843,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**
 
 ```ts
-function CreatePixelMapSync() {
+function CreatePixelMapUsingAllocatorSync() {
   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
   let pixelMap : image.PixelMap = image.createPixelMapUsingAllocatorSync(opts, image.AllocatorType.AUTO);
   return pixelMap;
@@ -790,7 +912,7 @@ async function CreatePremultipliedPixelMap() {
 
 createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
-Converts a non-premultiplied alpha of a PixelMap to a premultiplied one and stores the converted data to a target PixelMap. This API uses a promise to return the result.
+Converts a non-premultiplied alpha of a PixelMap to a premultiplied one and stores the converted data to a target PixelMap. This API returns the result asynchronously through a promise.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -908,7 +1030,7 @@ async function CreateUnpremultipliedPixelMap() {
 
 createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
-Converts a premultiplied alpha of a PixelMap to a non-premultiplied one and stores the converted data to a target PixelMap. This API uses a promise to return the result.
+Converts a premultiplied alpha of a PixelMap to a non-premultiplied one and stores the converted data to a target PixelMap. This API returns the result asynchronously through a promise.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -980,7 +1102,7 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 | Name| Type  | Mandatory| Description                              |
 | ------ | ------ | ---- | ---------------------------------- |
-| uri    | string | Yes  | Image path. Currently, only the application sandbox path is supported.<br>The following formats are supported: .jpg, .png, .gif, .bmp, .webp, .dng, .heic<sup>12+</sup> (depending on the hardware), [.svg<sup>10+</sup>](#svg-tags), and .ico<sup>11+</sup>.|
+| uri    | string | Yes  | Image path. Currently, only the application sandbox path is supported.<br>Currently, the following formats are supported: .jpg, .png, .gif, .bmp, .webp, .dng, .heic<sup>12+</sup>, .wbmp<sup>23+</sup>, .heifs<sup>23+</sup>, .tiff<sup>23+</sup>, [.svg<sup>10+</sup>](#svg-tags), and .ico<sup>11+</sup>. Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20) API to dynamically query the decoding capabilities of the current device before calling this API.|
 
 **Return value**
 
@@ -1015,7 +1137,7 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 | Name | Type                           | Mandatory| Description                               |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| uri     | string                          | Yes  | Image path. Currently, only the application sandbox path is supported.<br>The following formats are supported: .jpg, .png, .gif, .bmp, .webp, .dng, .heic<sup>12+</sup> (depending on the hardware), [.svg<sup>10+</sup>](#svg-tags), and .ico<sup>11+</sup>.|
+| uri     | string                          | Yes  | Image path. Currently, only the application sandbox path is supported. For details, see [How to Use](../apis-core-file-kit/js-apis-file-fs.md#how-to-use)<br>Currently, the following formats are supported: JPEG, PNG, GIF, BMP, WebP, DNG, HEIC<sup>12+</sup>, WBMP<sup>23+</sup>, HEIFS<sup>23+</sup>, TIFF<sup>23+</sup>, [SVG<sup>10+</sup>](#svg-tags), and ICO<sup>11+</sup>. Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20) API to dynamically query the decoding capabilities of the current device before calling this API.|
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | Yes  | Image properties, including the image pixel density, pixel format, and image size.|
 
 **Return value**
@@ -1051,7 +1173,7 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 | Name| Type  | Mandatory| Description         |
 | ------ | ------ | ---- | ------------- |
-| fd     | number | Yes  | File descriptor.|
+| fd     | number | Yes  | File descriptor. The value range is [0, 65535].|
 
 **Return value**
 
@@ -1062,12 +1184,12 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 **Example**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function CreateImageSource(context : Context) {
   // 'test.jpg' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
   let filePath: string = context.filesDir + "/test.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imageSourceObj: image.ImageSource = image.createImageSource(file.fd);
 }
 ```
@@ -1090,7 +1212,7 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 | Name | Type                           | Mandatory| Description                               |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| fd      | number                          | Yes  | File descriptor.                     |
+| fd      | number                          | Yes  | File descriptor. The value range is [0, 65535].                     |
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | Yes  | Image properties, including the image pixel density, pixel format, and image size.|
 
 **Return value**
@@ -1102,13 +1224,13 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 **Example**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function CreateImageSource(context : Context) {
   let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
   // 'test.jpg' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
   const filePath: string = context.filesDir + "/test.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imageSourceObj: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
 }
 ```
@@ -1117,7 +1239,7 @@ async function CreateImageSource(context : Context) {
 
 createImageSource(buf: ArrayBuffer): ImageSource
 
-Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12).
+Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12).
 
 Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -1152,7 +1274,7 @@ async function CreateImageSource() {
 
 createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
-Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12).
+Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12).
 
 Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -1357,6 +1479,12 @@ async function GetImageSourceSupportedFormats() {
     let formats = image.getImageSourceSupportedFormats();
     console.info('formats:', formats);
 }
+
+async function IsSupportedTiffFormat() {
+    let formats = image.getImageSourceSupportedFormats();
+    return formats.includes("image/tiff");
+}
+
 ```
 
 ## image.createImagePacker
@@ -1446,7 +1574,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 async function CreateAuxiliaryPicture(context: Context) {
   let funcName = "CreateAuxiliaryPicture";
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // Support for HDR images is required.
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // An HDR-compatible image is required.
   let auxBuffer: ArrayBuffer = rawFile.buffer as ArrayBuffer;
   let auxSize: Size = {
     height: 180,
@@ -1463,11 +1591,65 @@ async function CreateAuxiliaryPicture(context: Context) {
 }
 ```
 
+## image.createAuxiliaryPictureUsingAllocator<sup>24+</sup>
+
+createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPictureInfo, allocatorType?: AllocatorType, pixels?: ArrayBuffer): AuxiliaryPicture
+
+Creates an auxiliary picture object based on the auxiliary picture information and pixel data using the specified memory type.
+
+> **NOTE**
+>
+> - When processing **AuxiliaryPicture** returned by this API, the space occupied by each row of pixels in memory must be taken into account.
+> - The created auxiliary picture is initialized using the input pixels.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name|              Type            | Mandatory| Description                        |
+| ------ | ----------------------------------------------- | ---- | ---------------------------- |
+| auxiliaryPictureInfo | [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) | Yes| Auxiliary picture information.<br>- The pixel format of the input ArrayBuffer and the actual pixel format of the created auxiliary picture must be consistent with that specified in **auxiliaryPictureInfo**.<br>- If **AuxiliaryPictureType** is **GAINMAP**, **AllocatorType** can only be set to **AUTO** or **DMA**.<br>- If **SHARE_MEMORY** is passed, error code 7600205 is returned. |
+| allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15) | No| Memory type for image decoding. **DMA** is used if **AUTO** or the default value is passed. |
+| pixels | ArrayBuffer | No| Image data stored in the buffer.<br>If **ArrayBuffer** is not provided, a blank auxiliary picture is created by default. |
+
+**Return value**
+
+| Type                                   | Description                                      |
+| --------------------------------------- | ------------------------------------------ |
+| [AuxiliaryPicture](arkts-apis-image-AuxiliaryPicture.md) | AuxiliaryPicture instance.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600205  | Unsupported allocator type,e.g., use shared memory to create a gainmap as only DMA supported hdr metadata. |
+| 7600206  | Invalid parameter, size.height or size.width is less than or equal to 0. |
+| 7600301  | Alloc memory failed. |
+
+**Example**
+
+```ts
+import { image } from '@kit.ImageKit';
+
+function CreateAuxiliaryPictureUsingAllocator(info: image.AuxiliaryPictureInfo,  allocatorType?: image.AllocatorType, pixels?: ArrayBuffer ) {
+  let res : image.AuxiliaryPicture;
+  try {
+    res = image.createAuxiliaryPictureUsingAllocator(info, allocatorType, pixels);
+  } catch (error) {
+    console.error(`Failed to create auxiliary picture using allocator=${allocatorType} and pixels=${pixels?.byteLength}.`);
+  }
+}
+```
+
 ## image.createImageReceiver<sup>11+</sup>
 
 createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageReceiver
 
-Creates an ImageReceiver instance by specifying the image size, format, and capacity. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
+Creates an ImageReceiver instance by specifying the image size, format, and capacity. The ImageReceiver object acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
 
 Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](./arkts-apis-image-ImageReceiver.md#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -1505,13 +1687,55 @@ let size: image.Size = {
 let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
 ```
 
+## image.createImageReceiver<sup>23+</sup>
+
+createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
+
+Creates an ImageReceiver instance using ImageReceiverOptions. The ImageReceiver object acts as the receiver and consumer of images. Its properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
+
+Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](./arkts-apis-image-ImageReceiver.md#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageReceiver
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                  |
+| -------- | ------ | ---- | ---------------------- |
+| options  | [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23)  | No  | Options for creating an ImageReceiver object, including the default image size and the maximum number of images that can be accessed concurrently.<br>If **options** is not passed, the default size is 1920 × 1080, in pixels, indicating that the expected image width is 1920 pixels and height is 1080 pixels.<br>If **options** is not passed, the default value of **capacity** is 3, indicating that the expected maximum number of concurrent images pending read is three.      |
+
+**Return value**
+
+| Type                            | Description                                   |
+| -------------------------------- | --------------------------------------- |
+| [ImageReceiver](arkts-apis-image-ImageReceiver.md) \| undefined | If the operation is successful, the ImageReceiver object is returned. Otherwise, **undefined** is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 7900201| Invalid parameter.   |
+
+**Example**
+
+```ts
+let options: image.ImageReceiverOptions = {
+  size: { width: 480, height: 480 },
+  capacity: 3
+}
+let receiver: image.ImageReceiver | undefined = image.createImageReceiver(options);
+```
+
 ## image.createImageCreator<sup>11+</sup>
 
 createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCreator
 
 Creates an ImageCreator instance by specifying the image size, format, and capacity.
 
-Images occupy a large amount of memory. When you finish using an ImageCreator instance, call [release](./arkts-apis-image-ImageCreator.md) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+Images occupy a large amount of memory. When you finish using an ImageCreator instance, call [release](./arkts-apis-image-ImageCreator.md#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageCreator
 
@@ -1552,7 +1776,7 @@ let creator: image.ImageCreator = image.createImageCreator(size, image.ImageForm
 
 createImageReceiver(width: number, height: number, format: number, capacity: number): ImageReceiver
 
-Creates an ImageReceiver instance by specifying the image width, height, format, and capacity. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
+Creates an ImageReceiver instance by specifying the image width, height, format, and capacity. The ImageReceiver object acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
 
 Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](./arkts-apis-image-ImageReceiver.md#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -1589,7 +1813,7 @@ createImageCreator(width: number, height: number, format: number, capacity: numb
 
 Creates an ImageCreator instance by specifying the image width, height, format, and capacity.
 
-Images occupy a large amount of memory. When you finish using an ImageCreator instance, call [release](./arkts-apis-image-ImageCreator.md) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+Images occupy a large amount of memory. When you finish using an ImageCreator instance, call [release](./arkts-apis-image-ImageCreator.md#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 > **NOTE**
 >

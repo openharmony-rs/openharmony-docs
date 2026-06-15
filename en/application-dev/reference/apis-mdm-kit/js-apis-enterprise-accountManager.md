@@ -1,20 +1,20 @@
 # @ohos.enterprise.accountManager (Account Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
-The **accountManager** module provides APIs for account management of enterprise devices.
+This module provides device account management capabilities, including forbidding the creation of local accounts.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -41,7 +41,7 @@ Users are not allowed to add accounts.
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
-| disallow  | boolean                                                 | Yes  | Whether to forbid the creation of local user accounts. The value **true** means the creation of local user accounts is forbidden, and the value **false** means the opposite. |
+| disallow  | boolean                                                 | Yes  | Whether to forbid the creation of local accounts. The value **true** indicates yes, and the value **false** indicates no. |
 | accountId | number                                                  | No  | User ID, which specifies a user. If this parameter is not specified, all users are not allowed to add accounts. If this parameter is specified, specified users are not allowed to add accounts. The value must be greater than or equal to 0.<br>You can call the [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) API to obtain the user ID.|
 
 **Error codes**
@@ -156,7 +156,7 @@ Adds an account in the background. This API uses a promise to return the result.
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
-| name   | string                                                       | Yes  | Account name, which is the name of the account to be added. An account with the same name or an empty name cannot be created.|
+| name   | string                                                       | Yes  | Account name, which is the name of the account to be added. An account with a duplicate name or an empty name cannot be created. An attempt to create a duplicate-name account will result in error code 9201003, and an attempt to create an account with an empty name will result in error code 401.|
 | type   | [osAccount.OsAccountType](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype) | Yes  | Type of the account to add.<br>The value can be any of the following:<br>· **ADMIN**: administrator account.<br>· **NORMAL**: normal account.<br>· **GUEST**: guest account.|
 
 **Return value**
@@ -194,7 +194,7 @@ let wantTemp: Want = {
 accountManager.addOsAccountAsync(wantTemp, "TestAccountName", osAccount.OsAccountType.NORMAL).then((info) => {
   console.info(`Succeeded in creating os account: ${JSON.stringify(info)}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to creating os account. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to create os account. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 ## accountManager.setDomainAccountPolicy<sup>19+</sup>
@@ -215,6 +215,7 @@ Sets the domain account policy.
 
 **Parameters**
 
+<!--Table: 19%; 21%; 8%; 52%-->
 | Name           | Type                                                        | Mandatory| Description                                                        |
 | ----------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | admin             | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
@@ -383,6 +384,7 @@ Domain account policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+<!--Table: 28%; 10%; 8%; 8%; 46%-->
 | Name                          | Type  | Read-Only| Optional| Description                                                        |
 | ------------------------------ | ------ | ---- | ---- |------------------------------------------------------------ |
 | authenticationValidityPeriod   | number | No  | Yes  |Validity period of the domain account authentication token, in seconds. The value range is [-1, 2147483647]. The validity period starts from the time when the domain account is authenticated for the last time, for example, login or unlocking after the screen is locked.<br>The default value is **-1**, indicating that the token is permanently valid. The value **0** indicates that the token becomes invalid immediately. After the token expires or becomes invalid, the domain account and password must be authenticated when a user logs in to the system.|

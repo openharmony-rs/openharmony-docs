@@ -6,6 +6,7 @@
 <!--Designer: @JiDong-CS1-->
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:54:12.210Z pushedAt=2026-06-09T10:12:44.180Z -->
 
 The **distributedAccount** module provides APIs for managing distributed accounts, including querying and updating account login states.
 
@@ -63,7 +64,7 @@ Obtains the distributed account information. This API uses an asynchronous callb
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -110,7 +111,7 @@ Obtains the distributed account information. This API uses a promise to return t
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 12300001 | System service exception. |
@@ -137,10 +138,10 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 queryOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): void
 
-Queries the distributed account information. This API uses an asynchronous callback to return the result.
+Obtains distributed account information. This API uses an asynchronous callback to return the result.
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountDistributedInfo](#getosaccountdistributedinfo9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountDistributedInfo](#getosaccountdistributedinfo9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -176,7 +177,7 @@ Queries the distributed account information. This API uses a promise to return t
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountDistributedInfo](#getosaccountdistributedinfo9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountDistributedInfo](#getosaccountdistributedinfo9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -222,7 +223,7 @@ Sets the distributed account information. This API uses an asynchronous callback
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -278,7 +279,7 @@ Sets the distributed account information. This API uses a promise to return the 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -314,7 +315,7 @@ Updates the distributed account information. This API uses an asynchronous callb
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setOsAccountDistributedInfo](#setosaccountdistributedinfo9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setOsAccountDistributedInfo](#setosaccountdistributedinfo9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -348,10 +349,10 @@ Updates the distributed account information. This API uses an asynchronous callb
 
 updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise&lt;void&gt;
 
-Updates the distributed account information. This API uses a promise to return the result.
+Updates distributed account information. This API uses a promise to return the result.
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setOsAccountDistributedInfo](#setosaccountdistributedinfo9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setOsAccountDistributedInfo](#setosaccountdistributedinfo9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 

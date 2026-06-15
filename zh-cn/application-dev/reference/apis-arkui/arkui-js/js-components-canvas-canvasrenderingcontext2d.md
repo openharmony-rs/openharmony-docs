@@ -1,8 +1,8 @@
 # CanvasRenderingContext2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,7 @@
 >
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-使用CanvasRenderingContext2D在[canvas画布组件](./js-components-canvas-canvas.md)上进行绘制，绘制对象可以是矩形、文本、图片等。
+使用CanvasRenderingContext2D在[canvas组件](./js-components-canvas-canvas.md)上进行绘制，绘制对象可以是矩形、文本、图片等。
 
 
 **示例：** 

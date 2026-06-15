@@ -1,22 +1,22 @@
 # @ohos.enterprise.restrictions (Restrictions) (System API)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
-This **restrictions** module provides APIs for setting general restriction policies, including disabling or enabling the printer and OpenHarmony Device Connector (hdc) for devices.
+This **restrictions** module provides APIs for setting general restriction policies, including disabling or enabling the printing and OpenHarmony Device Connector (hdc) for devices.
 
 > **NOTE**
 > 
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -43,7 +43,7 @@ Enables or disables the printing capability of the device. This API uses an asyn
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| disabled  | boolean | Yes| Operation to perform. The value **true** means to disable the printer; the value **false** means the opposite.|
+| disabled  | boolean | Yes| Operation to perform. The value **true** means to disable the printing capability; the value **false** means the opposite.|
 | callback | AsyncCallback\<void> | Yes| Callback invoked to return the result. <br>If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -98,13 +98,13 @@ Enables or disables the printing capability of the device. This API uses a promi
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| disabled  | boolean | Yes| Operation to perform. The value **true** means to disable the printer; the value **false** means the opposite.|
+| disabled  | boolean | Yes| Operation to perform. The value **true** means to disable the printing capability; the value **false** means the opposite.|
 
 **Return value**
 
 | Type  | Description                                 |
 | ----- | ----------------------------------- |
-| Promise\<void> | Promise that returns no value. An error object is thrown when the print capability fails to be disabled or enabled.|
+| Promise\<void> | Promise that returns no value. An error object is thrown when the printing capability fails to be disabled or enabled.|
 
 **Error codes**
 
@@ -157,7 +157,7 @@ Queries whether the printing capability of a device is disabled. This API uses a
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| callback | AsyncCallback\<boolean> | Yes| Callback invoked to return the result.<br>The value **true** means that the printer is disabled; the value **false** means the opposite.|
+| callback | AsyncCallback\<boolean> | Yes| Callback invoked to return the result.<br>The value **true** means that the printing capability is disabled; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -216,7 +216,7 @@ Queries whether the printing capability of a device is disabled. This API uses a
 
 | Type  | Description                                 |
 | ----- | ----------------------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** means that the printer is disabled; the value **false** means the opposite.|
+| Promise\<boolean> | Promise used to return the result. The value **true** means that the printing capability is disabled; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -383,7 +383,7 @@ Queries whether HDC is disabled. This API uses an asynchronous callback to retur
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| callback | AsyncCallback\<boolean> | Yes| Callback invoked to return the result. The value **true** means HDC is disabled; the value **false** means the opposite.|
+| callback | AsyncCallback\<boolean> | Yes| Callback invoked to return the result. The value **true** means that HDC is disabled; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -442,7 +442,7 @@ Queries whether HDC is disabled. This API uses a promise to return the result.
 
 | Type  | Description                                 |
 | ----- | ----------------------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** means HDC is disabled; the value **false** means the opposite.|
+| Promise\<boolean> | Promise used to return the result. The value **true** means that HDC is disabled; the value **false** means the opposite.|
 
 **Error codes**
 

@@ -1,10 +1,12 @@
 # hid_ddk_api.h
+
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a16dcd5380f352b729da625973de1c33bd7c6a2a translatedAt=2026-06-10T11:05:58.282Z pushedAt=2026-06-11T03:41:53.807Z -->
 
 ## Overview
 
@@ -61,7 +63,6 @@ Creates a device.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name                                                                          | Description|
@@ -88,7 +89,6 @@ Sends an event list to a device.
 **Required permissions**: ohos.permission.ACCESS_DDK_HID
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -118,7 +118,6 @@ Destroys a device.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -129,7 +128,7 @@ Destroys a device.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The API call is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode): The hid_ddk service connection fails or the caller is not the device creator.<br>         [HID_DDK_FAILURE](capi-hid-ddk-types-h.md#hid_ddkerrcode): The corresponding device does not exist.|
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The API call is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode): Invalid operation. The hid_ddk service connection fails or the caller is not the device creator.<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The corresponding device does not exist. |
 
 ### OH_Hid_Init()
 
@@ -149,7 +148,7 @@ Initializes an HID DDK.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK is not initialized.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.|
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK initialization fails.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.|
 
 ### OH_Hid_Release()
 
@@ -185,7 +184,6 @@ Opens the device specified by **deviceId** and **interfaceIndex**.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name                       | Description|
@@ -214,7 +212,6 @@ Closes an HID device.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -240,7 +237,6 @@ Writes a report to an HID device.
 **Required permissions**: ohos.permission.ACCESS_DDK_HID
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -270,7 +266,6 @@ Reads a report from the HID device within the specified timeout interval.
 **Required permissions**: ohos.permission.ACCESS_DDK_HID
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -302,7 +297,6 @@ Reads a report from the HID device. The blocking mode (that is, blocking remains
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -332,7 +326,6 @@ Sets the device read mode to non-blocking mode.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -360,7 +353,6 @@ Obtains the original device information.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name                                                        | Description|
@@ -387,7 +379,6 @@ Obtains the original device name.
 **Required permissions**: ohos.permission.ACCESS_DDK_HID
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -417,7 +408,6 @@ Obtains the physical address of the HID device.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -446,7 +436,6 @@ Obtains the original unique identifier of a device.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -474,7 +463,6 @@ Sends a report to the HID device.
 **Required permissions**: ohos.permission.ACCESS_DDK_HID
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -505,7 +493,6 @@ Obtains a report from the HID device.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -534,7 +521,6 @@ Obtains the report descriptor of the HID device.
 **Required permissions**: ohos.permission.ACCESS_DDK_HID
 
 **Since**: 18
-
 
 **Parameters**
 

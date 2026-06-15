@@ -138,7 +138,7 @@ hdc -t connect-key shell echo "Hello world"
 | [tmode port](#打开设备网络连接通道) | 打开设备网络连接通道。 |
 | [tmode port close](#关闭网络连接通道) | 关闭设备网络连接通道。 |
 | [tconn](#tcp连接设备) | 指定连接设备：通过“IP:port”来指定连接的设备。 |
-| [shell](#执行交互命令) | 在设备端执行单次命令，例如hdc shell ls。无命令参数可进入设备端终端执行命令。 |
+| [shell](#执行交互命令) | 在设备端执行单次命令，例如hdc shell ls。无命令参数可进入设备端终端执行命令。常见调试工具参见[shell命令常用调试工具](#shell命令常用调试工具)章节。 |
 | [install](#安装应用文件) | 安装指定的应用文件。 |
 | [uninstall](#卸载应用) | 卸载指定的应用包。 |
 | [file send](#本地发送文件至远端设备) | 从本地发送文件至远端设备。 |
@@ -174,31 +174,32 @@ hdc list targets
 hdc shell echo "Hello world"
 ```
 
-### 常用调试工具
+### shell命令常用调试工具
 
 hdc支持和其他调试工具配套使用，工具列表如下：
 
 | 命令 | 说明 |
 | -------- | -------- |
 | [aa](../tools/aa-tool.md) | 应用调试工具 |
+| [anm](../tools/anm-tool.md) | 通知管理工具 |
+| [atm](../tools/atm-tool.md) | 程序访问控制管理工具 |
 | [bm](../tools/bm-tool.md) | 包管理工具 |
 | [cem](../tools/cem-tool.md) | 公共事件管理工具 |
-| [anm](../tools/anm-tool.md) | 通知管理工具 |
+| [devicedebug](../tools/devicedebug-tool.md) | 调试应用发送信号工具 |
 | [edm](../tools/edm-tool.md) | 企业设备管理工具 |
+| [hidumper](./hidumper.md) | 系统信息导出工具 |
+| [hilog](./hilog.md) | 日志管理工具 |
+| [hiperf](./hiperf.md) | 性能分析工具 |
+| [hitrace](./hitrace.md) | 系统打点及采集工具 |
+| [mediatool](../tools/mediatool.md) | 媒体资源库工具 |
 | [param](../tools/param-tool.md) | 操作系统参数管理工具 |
 | [power-shell](../tools/power-shell.md) | 设备电源状态转换工具 |
-| [atm](../tools/atm-tool.md) | 程序访问控制管理工具 |
-| [hilog](./hilog.md) | 日志管理工具 |
-| [hidumper](./hidumper.md) | 系统信息导出工具 |
-| [hitrace](./hitrace.md) | 系统打点及采集工具 |
-| [hiperf](./hiperf.md) | 性能分析工具 |
-| [uinput](./uinput.md) | 模拟操作工具 |
-| [mediatool](../tools/mediatool.md) | 媒体资源库工具 |
-| [devicedebug](../tools/devicedebug-tool.md) | 调试应用发送信号工具 |
 | [rawheap-translator](../tools/rawheap-translator.md) | rawheap文件解析工具 |
+| [uinput](./uinput.md) | 模拟操作工具 |
+| <!--DelRow-->[sqlite](../database/sqlite-database-debug-tool.md) | SQLite调试工具指导 |
+| <!--DelRow-->[wukong](../application-test/wukong-guidelines.md) | wukong稳定性工具 |
 | <!--DelRow-->[UItest](../application-test/uitest-guidelines.md) | UI测试框架 |
 | <!--DelRow-->[SmartPerf Device daemon](../application-test/smartperf-guidelines.md#smartperf-device-daemon端) | SmartPerf Device-daemon端工具命令 |
-| <!--DelRow-->[wukong](../application-test/wukong-guidelines.md) | wukong稳定性工具 |
 <!--RP1--><!--RP1End-->
 
 ### 获取帮助
@@ -956,6 +957,7 @@ hdc rport remotenode localnode
 | [Fail]Incorrect forward command. | 端口转发任务设置失败，端口转发参数错误。 |
 | [Fail]TCP Port listen failed at XXXX. | 端口转发任务设置失败，本地转发端口被占用。 |
 | [Fail]Forward parament failed. | 端口转发任务格式有误、转发端口协议或端口范围有误。 |
+| [Fail]Not support forward-type. | 当前平台不支持参数中使用的转发端口协议。 |
 
 **使用方法**：
 
@@ -1211,7 +1213,7 @@ hdc track-jpid [-a|-p]
 | 返回信息 | 说明 |
 | -------- | -------- |
 | 进程号和包名/进程名列表。 | 不加参数时仅显示已打开应用的进程pid，使用-p参数额外显示应用包名，使用-a参数同时显示debug和release标签。 |
-| [Empty] | 无开启JDWP调试协议的应用进程。 |
+| [Empty] | 无已打开的应用进程。 |
 
 **使用方法**：
 

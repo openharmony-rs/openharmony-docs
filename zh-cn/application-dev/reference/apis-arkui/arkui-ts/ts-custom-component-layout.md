@@ -121,7 +121,7 @@ getMargin(): DirectionalEdgesT\<number>
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  |  子组件的margin信息。   |
+| [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  |  子组件的margin信息。   |
 
  ### getPadding<sup>12+</sup>
 
@@ -137,7 +137,7 @@ getPadding(): DirectionalEdgesT\<number>
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  |  子组件的padding信息。  |
+| [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  |  子组件的padding信息。  |
 
 ### getBorderWidth<sup>12+</sup>
 
@@ -153,7 +153,7 @@ getBorderWidth(): DirectionalEdgesT\<number>
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  |  子组件的borderWidth信息。  |
+| [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  |  子组件的borderWidth信息。  |
 
 ## Measurable<sup>10+</sup>
 
@@ -210,7 +210,7 @@ getBorderWidth(): DirectionalEdgesT\<number>
 
  | 类型                               | 说明                     |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  | 子组件的margin信息。   |
+ |[DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  | 子组件的margin信息。   |
 
 ### getPadding<sup>12+</sup>
 
@@ -226,7 +226,7 @@ getPadding(): DirectionalEdgesT\<number\>
 
  | 类型                               | 说明                     |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  | 子组件的padding信息。   |
+ |[DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  | 子组件的padding信息。   |
 
  ### getBorderWidth<sup>12+</sup>
 
@@ -242,7 +242,7 @@ getBorderWidth(): DirectionalEdgesT\<number\>
 
  | 类型                               | 说明                     |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  | 子组件的borderWidth信息。|
+ |[DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  | 子组件的borderWidth信息。|
 
 
 ## MeasureResult<sup>10+</sup>

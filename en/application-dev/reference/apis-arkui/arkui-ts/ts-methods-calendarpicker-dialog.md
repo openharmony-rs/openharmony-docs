@@ -232,8 +232,6 @@ struct CalendarPickerDialogExample {
 }
 ```
 
-![CalendarPickerDialog](figures/CalendarPickerDialog_HoverMode.gif)
-
 ### Example 4: Setting the Background Style for the Selected Date
 
 This example demonstrates how to customize the background style of the selected date using **hintRadius** in [CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions). This functionality is supported since API version 10.
@@ -264,8 +262,6 @@ struct CalendarPickerDialogExample {
   }
 }
 ```
-
-![CalendarPickerDialog](figures/CalendarPickerDialogDemo4.png)
 
 ### Example 5: Setting Start and End Dates
 
@@ -298,8 +294,6 @@ struct CalendarPickerDialogExample {
 }  
 ```
 
-![CalendarPickerDialog](figures/calendar_picker_dialog_start_end.gif)
-
 ### Example 6: Highlighting the Current Date and Configuring Disabled Date Ranges
 
 This example demonstrates how to keep the current system date highlighted in the calendar picker dialog box using the **markToday** property in [CalendarDialogOptions](#calendardialogoptions) and set disabled date ranges using the **disabledDateRange** property in [CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions). This functionality is supported since API version 19.
@@ -329,8 +323,6 @@ struct CalendarPickerExample {
   }
 }
 ```
-
-![CalendarPickerDialog](figures/calendar_picker_dialog_mark_disabled.gif)
 
 ### Example 7: Customizing the Background Blur Effect
 
@@ -368,8 +360,6 @@ struct CalendarPickerDialogExample {
   }
 }
 ```
-
-![CalendarPickerDialog](figures/calendar_picker_dialog_backgroundBlurStyleOptions.png)
 
 ### Example 8: Customizing the Background Effect
 
@@ -409,5 +399,4 @@ struct CalendarPickerDialogExample {
 }
 ```
 
-![CalendarPickerDialog](figures/calendar_picker_dialog_backgroundEffect.png)
 <!--no_check-->

@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module provides information in the [HarmonyAppProvision configuration file](../../security/app-provision-structure.md). The information can be obtained through [getAppProvisionInfo](./js-apis-bundleManager-sys.md#bundlemanagergetappprovisioninfo10).
 
@@ -38,7 +38,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | certificate              | string | Yes  | No  | Certificate information in the configuration file.|
 | apl                      | string | Yes  | No  | APL in the configuration file, which can be **normal**, **system_basic**, or **system_core**.|
 | issuer                      | string | Yes  | No  | Issuer name in the configuration file.|
-|appIdentifier<sup>11+</sup>| string         | Yes  | No  | Unique ID of the application. For details, see [What Is appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier).  |
+|appIdentifier<sup>11+</sup>| string         | Yes  | No  | Unique ID of an application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier).  |
 | organization<sup>12+</sup> | string | Yes  | No  | Organization of the application.|
 | bundleName<sup>23+</sup> | string | Yes  | Yes  | Bundle name of the application.|
 
@@ -50,5 +50,5 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | Name                     | Type  | Read-Only| Optional| Description                |
 | ------------------------- | ------ | ---- | ---- | -------------------- |
-| notBefore                 | number | Yes  | No  | Start time of the validity period of the configuration file.|
-| notAfter                  | number | Yes  | No  | End time of the validity period of the configuration file.|
+| notBefore                 | number | Yes  | No  | Start time of the validity period of the configuration file, in seconds.|
+| notAfter                  | number | Yes  | No  | End time of the validity period of the configuration file, in seconds.|

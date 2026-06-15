@@ -1,16 +1,10 @@
 # BuilderNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
 
 The **BuilderNode** module provides APIs for a BuilderNode – a custom node that can be used to mount built-in components. A BuilderNode can be used only as a leaf node. For details, see [BuilderNode Development](../../ui/arkts-user-defined-arktsNode-builderNode.md). For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012).
 
@@ -20,15 +14,15 @@ Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component 
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> - If the root node of the provided Builder is a syntax node ([Ifelse](../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../ui/rendering-control/arkts-rendering-control-contentslot.md)...), [Span](./arkui-ts/ts-basic-components-span.md), [ContainerSpan](./arkui-ts/ts-basic-components-containerspan.md), [SymbolSpan](./arkui-ts/ts-basic-components-symbolSpan.md), or a custom component, an additional [FrameNode](./js-apis-arkui-frameNode.md) is generated and displayed as BuilderProxyNode in the node tree. This structural change affects the propagation of certain events. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
+> - If the root node of the provided Builder is a syntax node ([if/else](../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../ui/rendering-control/arkts-rendering-control-contentslot.md)...), [Span](./arkui-ts/ts-basic-components-span.md), [ContainerSpan](./arkui-ts/ts-basic-components-containerspan.md), [SymbolSpan](./arkui-ts/ts-basic-components-symbolSpan.md), or a custom component, an additional [FrameNode](./js-apis-arkui-frameNode.md) is generated and displayed as BuilderProxyNode in the node tree. This structural change affects the propagation of certain events. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
 >
-> - If you encounter display issues when reusing a **BuilderNode** across pages, see [Cross-Page Reuse Considerations](../../ui/arkts-user-defined-arktsNode-builderNode.md#cross-page-reuse-considerations) for guidance.
+> - If you encounter display issues when reusing a BuilderNode across pages, see [Cross-Page Reuse Considerations](../../ui/arkts-user-defined-arktsNode-builderNode.md#cross-page-reuse-considerations) for guidance.
 >
 > - **BuilderNode** is not available in DevEco Studio Previewer.
 >
 > - Custom components under **BuilderNode** can use the [@Prop](../../ui/state-management/arkts-prop.md) decorator. The [@Link](../../ui/state-management/arkts-link.md) decorator cannot be used to synchronize external data and status across **BuilderNode** boundaries.
 >
-> - If a **BuilderNode** contains custom components as child nodes, these custom components cannot use the [@Reusable](../../ui/state-management/arkts-reusable.md) decorator. For details, see [Using the @Reusable Decorator with BuilderNode Child Components](../../ui/arkts-user-defined-arktsNode-builderNode.md#using-the-reusable-decorator-with-buildernode-child-components).
+> - If a BuilderNode contains custom components as child nodes, these custom components cannot use the [@Reusable](../../ui/state-management/arkts-reusable.md) decorator. For details, see [Using the @Reusable Decorator with BuilderNode Child Components](../../ui/arkts-user-defined-arktsNode-builderNode.md#using-the-reusable-decorator-with-buildernode-child-components).
 >
 > - Since API version 12, custom components can receive [LocalStorage](../../ui/state-management/arkts-localstorage.md) instances. You can use LocalStorage related decorators such as [@LocalStorageProp](../../ui/state-management/arkts-localstorage.md#localstorageprop) and [@LocalStorageLink](../../ui/state-management/arkts-localstorage.md#localstoragelink) by [passing LocalStorage instances](../../ui/state-management/arkts-localstorage.md#providing-a-custom-component-with-access-to-a-localstorage-instance).
 >
@@ -37,6 +31,8 @@ Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component 
 > - The behavior of other decorators is undefined. Avoid using those decorators.
 >
 > - [Repeat](../../ui/rendering-control/arkts-new-rendering-control-repeat.md) can be used only in custom components.
+>
+> - BuilderNode objects do not support JSON serialization.
 
 ## Modules to Import
 
@@ -63,7 +59,7 @@ Enumerates the node rendering types.
 >
 > - The following custom components currently support texture export as root nodes in [BuilderNode](#buildernode-1) scenarios: [Badge](arkui-ts/ts-container-badge.md), [Blank](arkui-ts/ts-basic-components-blank.md), [Button](arkui-ts/ts-basic-components-button.md), [CanvasGradient](arkui-ts/ts-components-canvas-canvasgradient.md), [CanvasPattern](arkui-ts/ts-components-canvas-canvaspattern.md), [CanvasRenderingContext2D](arkui-ts/ts-canvasrenderingcontext2d.md), [Canvas](arkui-ts/ts-components-canvas-canvas.md), [CheckboxGroup](arkui-ts/ts-basic-components-checkboxgroup.md), [Checkbox](arkui-ts/ts-basic-components-checkbox.md), [Circle](arkui-ts/ts-drawing-components-circle.md), [ColumnSplit](arkui-ts/ts-container-columnsplit.md), [Column](arkui-ts/ts-container-column.md), [ContainerSpan](arkui-ts/ts-basic-components-containerspan.md), [Counter](arkui-ts/ts-container-counter.md), [DataPanel](arkui-ts/ts-basic-components-datapanel.md), [Divider](arkui-ts/ts-basic-components-divider.md), [Ellipse](arkui-ts/ts-drawing-components-ellipse.md), [Flex](arkui-ts/ts-container-flex.md), [Gauge](arkui-ts/ts-basic-components-gauge.md), [Hyperlink](arkui-ts/ts-container-hyperlink.md), [ImageBitmap](arkui-ts/ts-components-canvas-imagebitmap.md), [ImageData](arkui-ts/ts-components-canvas-imagedata.md), [Image](arkui-ts/ts-basic-components-image.md), [Line](arkui-ts/ts-drawing-components-line.md), [LoadingProgress](arkui-ts/ts-basic-components-loadingprogress.md), [Marquee](arkui-ts/ts-basic-components-marquee.md), [Matrix2D](arkui-ts/ts-components-canvas-matrix2d.md), [OffscreenCanvasRenderingContext2D](arkui-ts/ts-offscreencanvasrenderingcontext2d.md), [OffscreenCanvas](arkui-ts/ts-components-offscreencanvas.md), [Path2D](arkui-ts/ts-components-canvas-path2d.md), [Path](arkui-ts/ts-drawing-components-path.md), [PatternLock](arkui-ts/ts-basic-components-patternlock.md), [Polygon](arkui-ts/ts-drawing-components-polygon.md), [Polyline](arkui-ts/ts-drawing-components-polyline.md), [Progress](arkui-ts/ts-basic-components-progress.md), [QRCode](arkui-ts/ts-basic-components-qrcode.md), [Radio](arkui-ts/ts-basic-components-radio.md), [Rating](arkui-ts/ts-basic-components-rating.md), [Rect](arkui-ts/ts-drawing-components-rect.md), [RelativeContainer](arkui-ts/ts-container-relativecontainer.md), [RowSplit](arkui-ts/ts-container-rowsplit.md), [Row](arkui-ts/ts-container-row.md), [Shape](arkui-ts/ts-drawing-components-shape.md), [Slider](arkui-ts/ts-basic-components-slider.md), [Span](arkui-ts/ts-basic-components-span.md), [Stack](arkui-ts/ts-container-stack.md), [TextArea](arkui-ts/ts-basic-components-textarea.md), [TextClock](arkui-ts/ts-basic-components-textclock.md), [TextInput](arkui-ts/ts-basic-components-textinput.md), [TextTimer](arkui-ts/ts-basic-components-texttimer.md), [Text](arkui-ts/ts-basic-components-text.md), [Toggle](arkui-ts/ts-basic-components-toggle.md), [Video](arkui-ts/ts-media-components-video.md) (excluding full-screen playback), [Web](../apis-arkweb/arkts-basic-components-web.md), [XComponent](arkui-ts/ts-basic-components-xcomponent.md).
 >
-> - Since API version 12, the following components also support texture export: [DatePicker](arkui-ts/ts-basic-components-datepicker.md), [ForEach](arkui-ts/ts-rendering-control-foreach.md), [Grid](arkui-ts/ts-container-grid.md), [IfElse](../../ui/rendering-control/arkts-rendering-control-ifelse.md), [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md), [List](arkui-ts/ts-container-list.md), [Scroll](arkui-ts/ts-container-scroll.md), [Swiper](arkui-ts/ts-container-swiper.md), [TimePicker](arkui-ts/ts-basic-components-timepicker.md), custom components decorated with [@Component](../../ui/state-management/arkts-create-custom-components.md#component), [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md), and [FrameNode](./js-apis-arkui-frameNode.md) and [RenderNode](./js-apis-arkui-renderNode.md) mounted to [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md).
+> - Since API version 12, the following components also support texture export: [DatePicker](arkui-ts/ts-basic-components-datepicker.md), [ForEach](arkui-ts/ts-rendering-control-foreach.md), [Grid](arkui-ts/ts-container-grid.md), [if/else](../../ui/rendering-control/arkts-rendering-control-ifelse.md), [LazyForEach](arkui-ts/ts-rendering-control-lazyforeach.md), [List](arkui-ts/ts-container-list.md), [Scroll](arkui-ts/ts-container-scroll.md), [Swiper](arkui-ts/ts-container-swiper.md), [TimePicker](arkui-ts/ts-basic-components-timepicker.md), custom components decorated with [@Component](../../ui/state-management/arkts-create-custom-components.md#component), [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md), and [FrameNode](./js-apis-arkui-frameNode.md) and [RenderNode](./js-apis-arkui-renderNode.md) mounted to [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md).
 >
 > - For details, see [Rendering and Drawing Video and Button Components at the Same Layer](../../web/web-same-layer.md).
 
@@ -91,7 +87,7 @@ Defines the optional build options.
 | ------------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
 | nestingBuilderSupported | boolean | No  | Yes  | Whether to support nested **@Builder** within **@Builder**. **true** if supported, **false** otherwise.<br>Default value: **false**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | localStorage<sup>20+</sup> | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | Yes  | LocalStorage for the current BuilderNode. Custom components mounted under this BuilderNode will share the specified LocalStorage. **NOTE**<br>If LocalStorage is also passed through a custom component's constructor, the constructor parameter takes precedence.<br>Default value: **null**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| enableProvideConsumeCrossing<sup>20+</sup> | boolean | No  | Yes  | Defines whether two-way synchronization is supported between the [@Consume](../../ui/state-management/arkts-provide-and-consume.md) decorated variable of the custom component of [state management V1](../../ui/state-management/arkts-state-management-overview.md#state-management-v1) inside the **BuilderNode** and the [@Provide](../../ui/state-management/arkts-provide-and-consume.md) decorated variable outside the **BuilderNode**, and whether two-way synchronization is supported between the [@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable of the custom component of [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) inside the **BuilderNode** and the [@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable outside the **BuilderNode**.<br>API version 20 and later versions support two-way synchronization for the custom component of state management V1. API version 22 and later versions support two-way synchronization for the custom component of state management V2.<br>The value **true** means that this feature is supported, and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| enableProvideConsumeCrossing<sup>20+</sup> | boolean | No  | Yes  | Defines whether two-way synchronization is supported between the [@Consume](../../ui/state-management/arkts-provide-and-consume.md) decorated variable of the custom component of [state management V1](../../ui/state-management/arkts-state-management-overview.md#state-management-v1) inside the **BuilderNode** and the [@Provide](../../ui/state-management/arkts-provide-and-consume.md) decorated variable outside the **BuilderNode**, and whether two-way synchronization is supported between the [@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable of the custom component of [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) inside the **BuilderNode** and the [@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable outside the **BuilderNode**.<br>API version 20 and later versions support two-way synchronization for the custom component of state management V1. API version 23 and later versions support two-way synchronization for the custom component of state management V2.<br>The value **true** means that this feature is supported, and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## InputEventType<sup>20+</sup>
 
@@ -1037,7 +1033,7 @@ struct Index {
 
 updateConfiguration(): void
 
-Updates the configuration of the entire node by passing in a [system environment change](../apis-ability-kit/js-apis-app-ability-configuration.md) event.
+Transfers a system environment change event and triggers full update of a node. For details about system environment changes, see [@ohos.app.ability.Configuration (Environment Variables)](../apis-ability-kit/js-apis-app-ability-configuration.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1349,13 +1345,13 @@ Dispatches the specified input event to the target node.
 >
 > - Mouse left-click events are automatically converted to touch events. Avoid binding both touch and mouse events at the outer layer, as this may cause coordinate offsets. This is because the **SourceType** remains unchanged during event conversion. For details, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
 >
-> - When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md). This is because axis events do not include rotation axis information.
+> - When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md), because the axis event does not include rotation axis information.
 >
 > - A forwarded event undergoes touch testing in the target component's subtree and triggers corresponding gestures. The original event also triggers gestures in the source component tree. There is no guaranteed outcome for gesture competition between these two types of gestures.
 >
 > - For developer-constructed events, mandatory fields must be assigned values, such as the **touches** field for touch events and the **scrollStep** field for axis events Ensure the completeness of the event, for example, both **DOWN** and **UP** [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) states must be included for a touch event to prevent undefined behavior.
 >
-> - [webview](../apis-arkweb/arkts-apis-webview.md) has already handled coordinate system transformation, so events can be dispatched delivered.
+> - [webview](../apis-arkweb/arkts-apis-webview.md) has already handled coordinate system transformation, so events can be dispatched.
 >
 > - The **postTouchEvent** API needs to provide the gesture coordinates relative to the local coordinates of the target component, and the **postInputEvent** API needs to provide the gesture coordinates relative to the window coordinates of the target component.
 >
@@ -1381,11 +1377,58 @@ Dispatches the specified input event to the target node.
 
 See [Example 1: Handling Mouse Events in BuilderNode](#example-1-handling-mouse-events-in-buildernode), [Example 2: Handling Touch Events in BuilderNode](#example-2-handling-touch-events-in-buildernode), and [Example 3: Handling Axis Events in BuilderNode](#example-3-handling-axis-events-in-buildernode).
 
+### postInputEventWithStrategy<sup>24+</sup>
+
+postInputEventWithStrategy(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean
+
+Posts an event containing a competition strategy to the target UI component node.
+
+Before calling this API, you need to convert the value of **event** to the corresponding event and convert the coordinates in the **window** parameter in **event**. **offsetA** indicates the offset of the builderNode relative to the parent component, **offsetB** indicates the offset of the hit position relative to the builderNode, and **offsetC** is the sum of **offsetA** and **offsetB**. The value of **offsetC** is used as the value of the **window** parameter in **event** and passed to the **postInputEventWithStrategy** method. For details, see the following sample code.
+
+![Coordinate conversion example](figures/postInputEvent-point.png)
+
+> **NOTE**
+>
+> - The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
+>
+> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) does not change during the event conversion. For details about the specifications, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
+>
+> - When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md), because the axis event does not include rotation axis information.
+>
+> - The forwarded event is posted to the target component and its child components for processing, and triggers the corresponding gesture. You can use input parameters to control whether the gestures of the current component and the target component are in a competitive relationship.
+>
+> - If the event is converted to a developer-constructed event, mandatory fields must be assigned values, for example, the **touches** field of a touch event and the **scrollStep** field of an axis event. Ensure the completeness of the event. For example, [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) of a touch event must contain both the **DOWN** and **UP** fields to prevent program exceptions or unexpected crashes.
+>
+> - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--DelEnd-->
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                                     | Mandatory| Description      |
+| ------ | ------------------------------------------------------------------------- | ---- | ---------- |
+| event  | [InputEventType](#inputeventtype20) | Yes  | Input event used for event posting.|
+| competitionStrategy  | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | No  | Whether the gesture for posting the event is in a competition scenario. By default, the gesture is not in a competition scenario.|
+
+**Return value**
+
+| Type   | Description              |
+| ------- | ------------------ |
+| boolean | Whether the event is successfully dispatched. Returns **true** if the operation is successful; returns **false** otherwise.|
+
+**Example**
+
+For details, see [Example 16: Handling Mouse Events with Competition Strategies in BuilderNode](#example-16-handling-mouse-events-with-competition-strategies-in-buildernode), [Example 17: Handling Touch Events with Competition Strategies in BuilderNode](#example-17-handling-touch-events-with-competition-strategies-in-buildernode), and [Example 18: Handling Axis Events with Competition Strategies in BuilderNode](#example-18-handling-axis-events-with-competition-strategies-in-buildernode).
+
 ### inheritFreezeOptions<sup>20+</sup>
 
 inheritFreezeOptions(enabled: boolean): void
 
-Sets whether this **BuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
+Sets whether the current **BuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
 
 > **NOTE**
 >
@@ -1605,7 +1648,7 @@ struct TextBuilder {
 
 ## ReactiveBuilderNode<sup>22+</sup>
 
-**ReactiveBuilderNode** uses the stateless UI method [@Builder](../../ui/state-management/arkts-builder.md) to generate a component tree and holds the root node of the component tree. A **ReactiveBuilderNode** cannot be defined as a state variable. [FrameNode](js-apis-arkui-frameNode.md) held in **ReactiveBuilderNode** is used only to mount the **ReactiveBuilderNode** as a child node to another **FrameNode**. Undefined behavior may occur if you set attributes or perform operations on subnodes of the FrameNode held by the ReactiveBuilderNode. Therefore, after you have obtained a RenderNode through the [getFrameNode](#getframenode) method of the ReactiveBuilderNode and the [getRenderNode](js-apis-arkui-frameNode.md#getrendernode) method of the [FrameNode](js-apis-arkui-frameNode.md), avoid setting the attributes or operating the subnodes through APIs of [RenderNode](js-apis-arkui-renderNode.md).
+**ReactiveBuilderNode** uses the stateless UI method [@Builder](../../ui/state-management/arkts-builder.md) to generate a component tree and holds the root node of the component tree. A ReactiveBuilderNode cannot be defined as a state variable. [FrameNode](js-apis-arkui-frameNode.md) held in **ReactiveBuilderNode** is used only to mount the ReactiveBuilderNode as a child node to another FrameNode. Undefined behavior may occur if you set attributes or perform operations on subnodes of the FrameNode held by the ReactiveBuilderNode. Therefore, after you have obtained a RenderNode through the [getFrameNode](#getframenode) method of the ReactiveBuilderNode and the [getRenderNode](js-apis-arkui-frameNode.md#getrendernode) method of the [FrameNode](js-apis-arkui-frameNode.md), avoid setting the attributes or operating the subnodes through APIs of [RenderNode](js-apis-arkui-renderNode.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1717,7 +1760,7 @@ struct Index {
 
 getFrameNode(): FrameNode | null
 
-Obtains the [FrameNode](js-apis-arkui-frameNode.md) from the **ReactiveBuilderNode**. The FrameNode is generated only after the ReactiveBuilderNode executes the build operation.
+Obtains the [FrameNode](js-apis-arkui-frameNode.md) from the ReactiveBuilderNode. The FrameNode is generated only after the ReactiveBuilderNode executes the build operation.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1829,7 +1872,7 @@ struct Index {
 
 postTouchEvent(event: TouchEvent): boolean
 
-Posts a raw touch event to the **FrameNode** created by a **ReactiveBuilderNode**.
+Posts a raw touch event to the FrameNode created by a ReactiveBuilderNode.
 
 **postTouchEvent** dispatches the event from a middle node in the component tree downwards. To ensure the event is dispatched correctly, it needs to be transformed into the coordinate system of the parent component, as shown in the figure below.
 
@@ -2296,7 +2339,7 @@ struct Index {
 
 updateConfiguration(): void
 
-Updates the configuration of the entire node by passing in a [system environment change](../apis-ability-kit/js-apis-app-ability-configuration.md) event. This event can be used to notify the object of the update. Whether the system environment used by the object is updated depends on the current system environment change of the application.
+Transfers a system environment change event and triggers full update of a node. This event can be used to notify the object of the update. Whether the system environment used by the object is updated depends on the current system environment change of the application. For details about system environment changes, see [@ohos.app.ability.Configuration (Environment Variables)](../apis-ability-kit/js-apis-app-ability-configuration.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -2580,21 +2623,21 @@ Posts the input event to the target node managed by the **ReactiveBuilderNode**.
 
 **offsetA** indicates the **BuilderNode**'s offset relative to its parent component, **offsetB** the hit position's offset relative to the **BuilderNode**, **offsetC** the composite offset (offsetA + offsetB) passed to the **postInputEvent**.
 
-! [API coordinate conversion example](figures/postTouchEvent.PNG)
+![API coordinate conversion example](figures/postTouchEvent.PNG)
 
 > **NOTE**
 >
 > The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
 >
-> Mouse left-click events are automatically converted to touch events. Avoid binding both touch and mouse events at the outer layer, as this may cause coordinate offsets. This is because the **SourceType** remains unchanged during event conversion. For details, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
+> Mouse left-click events are automatically converted to touch events. Avoid binding both touch and mouse events at the outer layer, as this may cause coordinate offsets. This is because [SourceType](arkui-ts/ts-gesture-settings.md#sourcetype8) does not change during the event conversion. For details about the specifications, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
 >
-> When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md). This is because axis events do not include rotation axis information.
+> When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md), because the axis event does not include rotation axis information.
 >
 > A forwarded event undergoes touch testing in the target component's subtree and triggers corresponding gestures. The original event also triggers gestures in the source component tree. There is no guaranteed outcome for gesture competition between these two types of gestures.
 >
 > For the event you construct, the mandatory fields must be assigned values, for example, the **touches** field of the touch event and the **scrollStep** field of the axis event. In addition, ensure the completeness of the event, for example, both **DOWN** and **UP** in [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) of the touch event must be included to prevent undefined behavior.
 >
-> [webview](../apis-arkweb/arkts-apis-webview.md) has already handled coordinate system transformation, so events can be dispatched delivered.
+> [webview](../apis-arkweb/arkts-apis-webview.md) has already handled coordinate system transformation, so events can be dispatched.
 >
 > The **postTouchEvent** API needs to provide the gesture coordinates relative to the local coordinates of the target component, and the **postInputEvent** API needs to provide the gesture coordinates relative to the window coordinates of the target component.
 >
@@ -2620,13 +2663,56 @@ Posts the input event to the target node managed by the **ReactiveBuilderNode**.
 
 **Example**
 
-For details, see [Example 13: Handling Mouse Events in ReactiveBuilderNode)](#example-13-handling-mouse-events-in-reactivebuildernode), [Example 14: Handling Touch Events in ReactiveBuilderNode](#example-14-handling-touch-events-in-reactivebuildernode), and [Example 15: Handling Axis Events)](#example-15-handling-axis-events-in-reactivebuildernode).
+For details, see [Example 13: Handling Mouse Events in ReactiveBuilderNode)](#example-13-handling-mouse-events-in-reactivebuildernode), [Example 14: Handling Touch Events in ReactiveBuilderNode](#example-14-handling-touch-events-in-reactivebuildernode), and [Example 15: Handling Axis Events in ReactiveBuilderNode)](#example-15-handling-axis-events-in-reactivebuildernode).
+
+### postInputEventWithStrategy<sup>24+</sup>
+
+postInputEventWithStrategy(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean
+
+Posts an event containing a competition strategy to the target UI component node.
+
+Before calling this API, you need to convert the value of **event** to the corresponding event and convert the coordinates in the **window** parameter in **event**. **offsetA** indicates the offset of the ReactiveBuilderNode relative to the parent component, **offsetB** indicates the offset of the hit position relative to the ReactiveBuilderNode, and **offsetC** is the sum of **offsetA** and **offsetB**. The value of **offsetC** is used as the value of the **window** parameter in **event** and passed to the **postInputEventWithStrategy** method. For details, see the following sample code.
+
+![Coordinate conversion example](figures/postInputEvent-point.png)
+
+> **NOTE**
+>
+> - The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
+>
+> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) does not change during the event conversion. For details about the specifications, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
+>
+> - When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md), because the axis event does not include rotation axis information.
+>
+> - The forwarded event is posted to the target component and its child components for processing, and triggers the corresponding gesture. You can use input parameters to control whether the gestures of the current component and the target component are in a competitive relationship.
+>
+> - If the event is converted to a developer-constructed event, mandatory fields must be assigned values, for example, the **touches** field of a touch event and the **scrollStep** field of an axis event. Ensure the completeness of the event. For example, [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) of a touch event must contain both the **DOWN** and **UP** fields to prevent program exceptions or unexpected crashes.
+>
+> - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--DelEnd-->
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                                     | Mandatory| Description      |
+| ------ | ------------------------------------------------------------------------- | ---- | ---------- |
+| event  | [InputEventType](#inputeventtype20) | Yes  | Input event used for event posting.|
+| competitionStrategy  | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | No  | Whether the gesture for posting the event is in a competition scenario. By default, the gesture is not in a competition scenario.|
+
+**Return value**
+
+| Type   | Description              |
+| ------- | ------------------ |
+| boolean | Whether the event is successfully dispatched. Returns **true** if the operation is successful; returns **false** otherwise.|
 
 ### inheritFreezeOptions<sup>22+</sup>
 
 inheritFreezeOptions(enabled: boolean): void
 
-Sets whether this **ReactiveBuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the **ReactiveBuilderNode** object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
+Sets whether the current **ReactiveBuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the **ReactiveBuilderNode** object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
 
 > **NOTE**
 >
@@ -3515,7 +3601,7 @@ struct Index {
 >
 > Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
-Set **enableProvideConsumeCrossing** in [BuildOptions](#buildoptions12) of the **BuilderNode** to **true** to support two-way synchronization between the @Consumer decorated state variable of the custom component inside the **BuilderNode** and the @Provider decorated state variable outside the **BuilderNode**.
+Set **enableProvideConsumeCrossing** in [BuildOptions](#buildoptions12) of the BuilderNode to **true** to support two-way synchronization between the @Consumer decorated state variable of the custom component inside the BuilderNode and the @Provider decorated state variable outside the BuilderNode.
 
 ```ts
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -4461,7 +4547,7 @@ struct defaultConsumer {
 
 The functionality demonstrated in this example is supported starting from API version 22.
 
-This example demonstrates the end-to-end process for intercepting mouse events in a custom component and performing coordinate conversion. The component reads the local X and Y coordinates through the [onMouse](./arkui-ts/ts-universal-mouse-key.md#onmouse) callback, calls [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the relative coordinates to pixel coordinates based on the offset obtained by **FrameNode.**[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12)**()**, and updates **windowX**, **windowY**, **displayX**, and **displayY** of [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent). Finally, the component uses **rootNode.**[postInputEvent](#postinputevent20) to post the converted mouse event to the child node for handling.
+This example demonstrates the end-to-end process for intercepting mouse events in a custom component and performing coordinate conversion. The component reads the local X and Y coordinates through the [onMouse](./arkui-ts/ts-universal-mouse-key.md#onmouse) callback, calls [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the relative coordinates to pixel coordinates based on the offset obtained by FrameNode.[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12)**()**, and updates **windowX**, **windowY**, **displayX**, and **displayY** of [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent). Finally, the component uses rootNode.[postInputEvent](#postinputevent20) to post the converted mouse event to the child node for handling.
 
 ```ts
 import { NodeController, ReactiveBuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
@@ -4603,7 +4689,7 @@ struct MyComponent {
 
 The functionality demonstrated in this example is supported starting from API version 22.
 
-This example demonstrates the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. In the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback, iterate through the **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), add the component offset to the X and Y coordinates of each touch point, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixels, and update **windowX**/**windowY** and **displayX**/**displayY**. Finally, **rootNode.**[postInputEvent](#postinputevent20) is used to post the converted touch event to the child node for handling.
+This example demonstrates the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. In the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback, iterate through the **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), add the component offset to the X and Y coordinates of each touch point, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixels, and update **windowX**/**windowY** and **displayX**/**displayY**. Finally, rootNode.[postInputEvent](#postinputevent20) is used to post the converted touch event to the child node for handling.
 
 ```ts
 import { NodeController, ReactiveBuilderNode, FrameNode, UIContext, PromptAction, InputEventType } from '@kit.ArkUI';
@@ -4805,3 +4891,624 @@ struct MyComponent {
 ```
 
 ![onAxisEvent](figures/reactive_on_axis_event.gif)
+
+### Example 16: Handling Mouse Events with Competition Strategies in BuilderNode
+
+The **postInputEventWithStrategy** API is added since API version 24.
+
+This example demonstrates the end-to-end process for intercepting mouse events in a custom component and performing coordinate conversion. The component reads the current touch point coordinates (x/y) through the [onMouse](./arkui-ts/ts-universal-mouse-key.md#onmouse) callback, and calls [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the relative coordinates to pixel coordinates based on the offset obtained from FrameNode.[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12). It then updates **windowX**, **windowY**, **displayX**, and **displayY** of [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent). The component selects a [gesture competition strategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24), and posts the converted mouse event to child nodes through rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) for processing.
+
+```ts
+
+import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
+
+// Define the class for passing parameters.
+class Params {
+  text: string = 'this is a text'
+  uiContext: UIContext | null = null
+}
+
+@Component
+struct node22 {
+  @State case1Index: number = 0;
+  private nodeController2: MyNodeController2 = new MyNodeController2();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController2)
+          .height(400)
+          .width(500)
+        Column()
+          .width(500)
+          .height(400)
+          .backgroundColor(Color.Transparent)
+          .onMouse((event) => {
+            if (event != undefined) {
+              this.nodeController2.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
+            }
+          })
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+@Component
+struct node33 {
+  private nodeController3: MyNodeController3 = new MyNodeController3();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController3)
+          .height(200)
+          .width(500)
+        Column()
+          .width(500)
+          .height(200)
+          .backgroundColor(Color.Transparent)
+          .onMouse((event) => {
+            if (event != undefined) {
+              this.nodeController3.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
+            }
+          })
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+@Builder
+function ButtonBuilder(params: Params) {
+  Column(){
+    Button("Layer1")
+      .width('100%')
+      .height(100)
+    node22()
+
+  }
+  .width(500)
+  .height(600)
+  .backgroundColor(Color.Gray)
+}
+
+@Builder
+function ButtonBuilder2(params: Params) {
+  Column(){
+    Button("Layer2")
+      .width('100%')
+      .height(100)
+    node33()
+  }
+  .width(500)
+  .height(400)
+  .backgroundColor(Color.Gray)
+}
+
+@Builder
+function ButtonBuilder3(params: Params) {
+  Column(){
+    Button("Layer3")
+      .width('100%')
+      .height(50)
+      .gesture(
+        TapGesture()
+          .tag("TapGesture")
+          .onAction((event:GestureEvent) => {
+            params.uiContext?.showAlertDialog(
+              {
+                title: 'onTapGestureLayer3',
+                message: ''
+              }
+            );
+          })
+      )
+  }
+  .width(500)
+  .height(200)
+  .backgroundColor(Color.Gray)
+}
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+
+    let mouseEvent = event as MouseEvent;
+    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
+      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
+    }
+    // Post the mouse event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+class MyNodeController2 extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder2);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+
+    let mouseEvent = event as MouseEvent;
+    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
+      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
+    }
+    // Post the mouse event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+class MyNodeController3 extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder3);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postMouseEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+    let mouseEvent = event as MouseEvent;
+    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.rawDeltaX = uiContext.vp2px(mouseEvent.rawDeltaX);
+      mouseEvent.rawDeltaY = uiContext.vp2px(mouseEvent.rawDeltaY);
+    }
+    // Post the mouse event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+@Entry
+@Component
+struct MyComponent {
+  private nodeController: MyNodeController = new MyNodeController();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController)
+          .height(600)
+          .width(500)
+        Column()
+          .width(500)
+          .height(600)
+          .backgroundColor(Color.Transparent)
+          .onMouse((event) => {
+            if (event != undefined) {
+              this.nodeController.postMouseEvent(event, this.getUIContext(), CompetitionStrategy.COMPETITION);
+            }
+          })
+          .gesture(
+            TapGesture()
+              .tag("TapGesture")
+              .onAction((event:GestureEvent) => {
+                let promptAction: PromptAction = this.getUIContext()!.getPromptAction();
+                promptAction.showToast({
+                  message: 'onTapGestureOut',
+                  duration: 10000
+                })
+              })
+          )
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+```
+
+
+### Example 17: Handling Touch Events with Competition Strategies in BuilderNode
+
+The **postInputEventWithStrategy** API is added since API version 24.
+
+This example demonstrates the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. In the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback, traverse the **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), add the component offset to the X and Y coordinates of each touch point, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixels, and update **windowX**, **windowY**, **displayX**, and **displayY** of each touch point. Select a [gesture competition strategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24), and post the converted touch event to child nodes through rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) for processing.
+
+```ts
+import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
+
+// Define the class for passing parameters.
+class Params {
+  text: string = 'this is a text'
+  uiContext: UIContext | null = null
+}
+
+@Component
+struct node22 {
+  @State case1Index: number = 0;
+  private nodeController2: MyNodeController2 = new MyNodeController2();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController2)
+          .height(400)
+          .width(500)
+        Column()
+          .width(500)
+          .height(400)
+          .backgroundColor(Color.Transparent)
+          .onTouch((event) => {
+            if (event != undefined) {
+              if (event.sourceTool != SourceTool.MOUSE) {
+                this.nodeController2.postTouchEvent(event, this.getUIContext(), CompetitionStrategy.DEFAULT);
+              }
+            }
+          })
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+@Component
+struct node33 {
+  private nodeController3: MyNodeController3 = new MyNodeController3();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController3)
+          .height(200)
+          .width(500)
+        Column()
+          .width(500)
+          .height(200)
+          .backgroundColor(Color.Transparent)
+          .onTouch((event) => {
+            if (event != undefined) {
+              if (event.sourceTool != SourceTool.MOUSE) {
+                this.nodeController3.postTouchEvent(event, this.getUIContext(), CompetitionStrategy.DEFAULT);
+              }
+            }
+          })
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+@Builder
+function ButtonBuilder(params: Params) {
+  Column(){
+    Button("Layer1")
+      .width('100%')
+      .height(100)
+    node22()
+
+  }
+  .width(500)
+  .height(600)
+  .backgroundColor(Color.Gray)
+}
+
+@Builder
+function ButtonBuilder2(params: Params) {
+  Column(){
+    Button("Layer2")
+      .width('100%')
+      .height(100)
+    node33()
+  }
+  .width(500)
+  .height(400)
+  .backgroundColor(Color.Gray)
+}
+
+@Builder
+function ButtonBuilder3(params: Params) {
+  Column(){
+    Button("Layer3")
+      .width('100%')
+      .height(50)
+      .gesture(
+        TapGesture()
+          .tag("TapGesture")
+          .onAction((event:GestureEvent) => {
+            params.uiContext?.showAlertDialog(
+              {
+                title: 'onTapGestureLayer3',
+                message: ''
+              }
+            );
+          })
+      )
+  }
+  .width(500)
+  .height(200)
+  .backgroundColor(Color.Gray)
+}
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postTouchEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+
+    let touchEvent = event as TouchEvent;
+    let changedTouchLen = touchEvent.changedTouches.length;
+    for (let i = 0; i < changedTouchLen; i++) {
+      if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+        touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+        touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+      }
+    }
+    let touchesLen = touchEvent.touches.length;
+    for (let i = 0; i < touchesLen; i++) {
+      if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+        touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+        touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+      }
+    }
+    // Post the touch event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+class MyNodeController2 extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder2);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postTouchEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+
+    let touchEvent = event as TouchEvent;
+    let changedTouchLen = touchEvent.changedTouches.length;
+    for (let i = 0; i < changedTouchLen; i++) {
+      if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+        touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+        touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+      }
+    }
+    let touchesLen = touchEvent.touches.length;
+    for (let i = 0; i < touchesLen; i++) {
+      if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+        touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+        touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+      }
+    }
+    // Post the touch event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+class MyNodeController3 extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder3);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postTouchEvent(event: InputEventType, uiContext: UIContext, competitionStrategy:CompetitionStrategy|undefined|null): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+
+    let touchEvent = event as TouchEvent;
+    let changedTouchLen = touchEvent.changedTouches.length;
+    for (let i = 0; i < changedTouchLen; i++) {
+      if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+        touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+        touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+      }
+    }
+    let touchesLen = touchEvent.touches.length;
+    for (let i = 0; i < touchesLen; i++) {
+      if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+        touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+        touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+      }
+    }
+    // Post the touch event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+@Entry
+@Component
+struct MyComponent {
+  private nodeController: MyNodeController = new MyNodeController();
+  build() {
+    Row(){
+      Stack() {
+        NodeContainer(this.nodeController)
+          .height(600)
+          .width(500)
+        Column()
+          .width(500)
+          .height(600)
+          .backgroundColor(Color.Transparent)
+          .onTouch((event) => {
+            if (event != undefined) {
+              if (event.sourceTool != SourceTool.MOUSE) {
+                this.nodeController.postTouchEvent(event, this.getUIContext(), CompetitionStrategy.DEFAULT);
+              }
+            }
+          })
+          .gesture(
+            TapGesture()
+              .tag("TapGesture")
+              .onAction((event:GestureEvent) => {
+                let promptAction: PromptAction = this.getUIContext()!.getPromptAction();
+                promptAction.showToast({
+                  message: 'onTapGestureOut',
+                  duration: 1000
+                })
+              })
+          )
+      }.offset({ top: 100 })
+    }
+  }
+}
+
+```
+
+### Example 18: Handling Axis Events with Competition Strategies in BuilderNode
+
+The **postInputEventWithStrategy** API is added since API version 24.
+
+This example demonstrates the end-to-end process for intercepting wheel or trackpad axis events in a custom component and performing coordinate conversion. In the [onAxisEvent](./arkui-ts/ts-universal-events-axis.md#onaxisevent) callback, obtain the relative X and Y coordinates of the event, add the component offset to the coordinates, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixel coordinates, update **windowX**, **windowY**, **displayX**, and **displayY** of **AxisEvent**, select a [gesture competition strategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24), and use rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) to post the converted axis event to child nodes for processing.
+
+```ts
+import { NodeController, BuilderNode, FrameNode, UIContext, PromptAction, InputEventType } from '@kit.ArkUI';
+
+// Define the class for passing parameters.
+class Params {
+  text: string = 'this is a text'
+  uiContext: UIContext | null = null
+}
+
+@Builder
+function ButtonBuilder(params: Params) {
+  Column() {
+    Button(params.text)
+      .borderWidth(2)
+      .align(Alignment.Center)
+      .backgroundColor(Color.Orange)
+      .fontSize(20)
+      .width("45%")
+      .height("30%")
+      .offset({ x: 60, y: 100 })
+      .borderRadius('50%')
+      .onAxisEvent((event) => {
+        let promptAction: PromptAction = params.uiContext!.getPromptAction();
+        promptAction.showToast({
+          message: 'onAxisEvent',
+          duration: 3000
+        });
+        console.info('onAxisEvent')
+      })
+  }
+  .width(500)
+  .height(300)
+  .backgroundColor(Color.Gray)
+}
+
+// Implement a custom UI controller by extending NodeController.
+class MyNodeController extends NodeController {
+  private rootNode: BuilderNode<[Params]> | null = null;
+  private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new BuilderNode(uiContext);
+    this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
+    return this.rootNode.getFrameNode();
+  }
+
+  postInputEvent(event: InputEventType, uiContext: UIContext, competitionStrategy: CompetitionStrategy): boolean {
+    if (this.rootNode == null) {
+      return false;
+    }
+    // Read the x and y offsets of BuilderNode relative to its parent component and convert them to pixel coordinates.
+    let node: FrameNode | null = this.rootNode.getFrameNode();
+    let offsetX: number | null | undefined = node?.getPositionToParent().x;
+    let offsetY: number | null | undefined = node?.getPositionToParent().y;
+
+    let axisEvent = event as AxisEvent;
+    if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
+      axisEvent.windowX = uiContext.vp2px(offsetX + axisEvent.x);
+      axisEvent.windowY = uiContext.vp2px(offsetY + axisEvent.y);
+    }
+    // Post the axis event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
+    let result = this.rootNode.postInputEventWithStrategy(event, competitionStrategy);
+    return result;
+  }
+}
+
+@Entry
+@Component
+struct MyComponent {
+  private nodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Stack() {
+      NodeContainer(this.nodeController)
+        .height(300)
+        .width(500)
+      Column()
+        .width(500)
+        .height(300)
+        .backgroundColor(Color.Transparent)
+        .onAxisEvent((event) => {
+          if (event != undefined) {
+            this.nodeController.postInputEvent(event, this.getUIContext(), CompetitionStrategy.DEFAULT);
+          }
+        })
+    }.offset({ top: 100 })
+  }
+}
+```

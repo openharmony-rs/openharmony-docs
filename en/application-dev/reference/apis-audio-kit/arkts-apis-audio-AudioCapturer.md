@@ -1,8 +1,8 @@
 # Interface (AudioCapturer)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @zyy0412-->
+<!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -495,7 +495,7 @@ Obtains the timestamp of the current recording position, measured in nanoseconds
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioCapturer.getAudioTime((err: BusinessError, timestamp: number) => {
-  console.info(`Current timestamp: ${timestamp}`);
+  console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 });
 ```
 
@@ -511,17 +511,17 @@ Obtains the timestamp of the current recording position, measured in nanoseconds
 
 | Type            | Description                         |
 | :--------------- | :---------------------------- |
-| Promise<number\> | Promise used to return the number of nanoseconds elapsed from the Unix epoch.|
+| Promise<number\> | Promise used to return a timestamp representing the number of nanoseconds elapsed since the Unix epoch (January 1, 1970).<br>The timestamp unit is nanoseconds.|
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioCapturer.getAudioTime().then((audioTime: number) => {
-  console.info(`AudioFrameworkRecLog: AudioCapturer getAudioTime : Success ${audioTime}`);
+audioCapturer.getAudioTime().then((timestamp: number) => {
+  console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: AudioCapturer Created : ERROR : ${err}`);
+  console.error(`Failed to get audio time. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -545,11 +545,11 @@ Obtains the timestamp of the current recording position, measured in nanoseconds
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let audioTime: number = audioCapturer.getAudioTimeSync();
-  console.info(`AudioFrameworkRecLog: AudioCapturer getAudioTimeSync : Success ${audioTime}`);
+  let timestamp: number = audioCapturer.getAudioTimeSync();
+  console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`AudioFrameworkRecLog: AudioCapturer getAudioTimeSync : ERROR : ${error}`);
+  console.error(`Failed to get audio time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -575,7 +575,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 6800103 | Operation not permit at current state. |
+| 6800103 | Operation not permitted at current state. |
 
 **Example**
 
@@ -609,7 +609,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 6800103 | Operation not permit at current state. |
+| 6800103 | Operation not permitted at current state. |
 
 **Example**
 
@@ -637,7 +637,7 @@ Obtains a reasonable minimum buffer size in bytes for capturing. This API uses a
 
 | Name  | Type                  | Mandatory| Description                                |
 | :------- | :--------------------- | :--- | :----------------------------------- |
-| callback | AsyncCallback<number\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback<number\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.<br>The unit is bytes.|
 
 **Example**
 
@@ -665,7 +665,7 @@ Obtains a reasonable minimum buffer size in bytes for capturing. This API uses a
 
 | Type            | Description                               |
 | :--------------- | :---------------------------------- |
-| Promise<number\> | Promise used to return the buffer size.|
+| Promise<number\> | Promise used to return the buffer size.<br>The unit is bytes.|
 
 **Example**
 
@@ -691,7 +691,7 @@ Obtains a reasonable minimum buffer size in bytes for capturing. This API return
 
 | Type            | Description                               |
 | :--------------- | :---------------------------------- |
-| number | Buffer size.|
+| number | Buffer size, in bytes.|
 
 **Example**
 
@@ -780,7 +780,7 @@ Subscribes to the audio interruption event, which is triggered when the audio fo
 
 The AudioCapturer instance proactively gains the focus when the **start** event occurs and releases the focus when the **pause** or **stop** event occurs. Therefore, you do not need to request to gain or release the focus.
 
-After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioCapturer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioCapturer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Interrupt
 
@@ -888,7 +888,7 @@ Subscribes to the audio input device change event, which is triggered when an au
 | Name  | Type                      | Mandatory| Description                                       |
 | :------- | :------------------------- | :--- | :------------------------------------------ |
 | type     | string                     | Yes  | Event type. The event **'inputDeviceChange'** is triggered when an audio input device is changed.|
-| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | Yes  | Callback used to return the information about the new audio input device.|
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | Yes  | Callback used to return the updated information about the audio input device.|
 
 **Error codes**
 
@@ -1184,7 +1184,7 @@ Unsubscribes from the audio capturer state change event. This API uses an asynch
 
 | Name| Type  | Mandatory| Description                                               |
 | :----- | :----- | :--- | :-------------------------------------------------- |
-| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the state of the audio capturer is changed.|
+| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the listening for audio capturer state change event is canceled.|
 | callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | No| Callback used to return the audio status.|
 
 **Error codes**
@@ -1223,6 +1223,8 @@ on(type: 'readData', callback: Callback\<ArrayBuffer>): void
 Subscribes to the audio data read event, which is triggered when audio stream data needs to be read. This API uses an asynchronous callback to return the result.
 
 The callback function is used only to read audio data. Do not call AudioCapturer APIs in it.
+
+To eliminate power-on noise caused by the microphone hardware design, the first 100 ms of data after recording starts is typically muted.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 
@@ -1414,6 +1416,54 @@ audioCapturer.setWillMuteWhenInterrupted(true).then(() => {
 });
 ```
 
+## setMuteHint<sup>24+</sup>
+
+setMuteHint(mute: boolean): Promise&lt;void&gt;
+
+Transfers the mute status of the current recording stream to the system audio module. <!--RP1-->This API does not mute the recording stream. Currently, it is used only on some PCs/2-in-1 devices to optimize device power consumption. <!--RP1End-->This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This API is used to report the mute status of the application to the system audio module, without changing the recording stream's actual mute state.
+> - This API can be called only when a recording stream is running. Otherwise, error code 6800103 is returned.
+> - If both the stream-level mute hint API (this API) and the session-level mute hint API [AudioSessionManager.setCapturerMuteHint](arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24) are called for a recording stream, the settings of the stream-level [setMuteHint](#setmutehint24) API take precedence.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Capturer
+
+**Parameters**
+
+| Name    | Type            | Mandatory  | Description                                                     |
+| ---------- |---------------- | ------ |---------------------------------------------------------|
+| mute | boolean  | Yes | Mute status reported by the application to the system audio module. The value **true** indicates that the application mutes the current stream, and the value **false** indicates that the application unmutes the current stream.|
+
+**Return value**
+
+| Type               | Description                         |
+| ------------------- | ----------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 6800103 | Operation not permitted at current state. The stream is not running. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.setMuteHint(true).then(() => {
+  console.info('setMuteHint Success!');
+}).catch((err: BusinessError) => {
+  console.error(`setMuteHint Fail: ${err}`);
+});
+```
+
 ## read<sup>(deprecated)</sup>
 
 read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer\>): void
@@ -1421,7 +1471,6 @@ read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer\
 Reads the buffer. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [on('readData')](#onreaddata11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
@@ -1460,7 +1509,6 @@ read(size: number, isBlockingRead: boolean): Promise<ArrayBuffer\>
 Reads the buffer. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [on('readData')](#onreaddata11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
@@ -1493,4 +1541,44 @@ audioCapturer.getBufferSize().then((bufferSize: number) => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to getBufferSize. Code: ${err.code}, message: ${err.message}`);
 });
+```
+
+## setIndependentAudioSessionStrategy<sup>24+</sup>
+
+setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: number): void
+
+Sets the independent audio session strategy and behavior parameters.
+
+> **NOTE**
+>
+> If this API is called while an audio capturer is running, you must call the [start](./arkts-apis-audio-AudioCapturer.md#start8) API again for the settings to take effect.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Capturer
+
+**Parameters**
+
+| Name      | Type   | Mandatory| Description                                     |
+| ------------ | -------| ---- |------------------------------------------ |
+| strategy | [AudioSessionStrategy](arkts-apis-audio-i.md#audiosessionstrategy12) | Yes  | Audio session strategy.|
+| behavior   | number           | Yes  | Specifies the audio session behavior.<br>This can be a single flag or a bitwise OR combination of multiple flags.<br>For details about the supported audio session behaviors, see [AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24).|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | ---------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permitted at current state. |
+
+**Example**
+
+```ts
+let strategy: audio.AudioSessionStrategy = {
+  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+};
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioCapturer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```

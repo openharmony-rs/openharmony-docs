@@ -2,11 +2,26 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-创建ImageSource实例，解码获取Picture，然后释放ImageSource实例。
+创建ImageSource实例，将所支持格式的图片文件解码成Picture多图对象，以便在应用或系统中进行HDR图片显示、辅助图处理等操作。当前支持的图片文件格式包括JPEG、HEIF。
+
+Picture是包含主图、辅助图和元数据的多图对象。主图包含主要图像信息，辅助图用于存储与主图相关的附加信息（如HDR增益图GAINMAP），元数据用于存储与图片相关的其他信息。Picture适用于HDR图片处理、HEIF专业格式解码等场景。
+
+## Picture与PixelMap的区别
+
+Picture和PixelMap是两种不同的图片解码对象，适用于不同的场景：
+
+| 对象类型 | 适用场景 | 特性 |
+|---|---|---|
+| [PixelMap](../../reference/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) | 单图显示、基础图片处理 | 单一像素数据，支持图像变换（裁剪、缩放、旋转等）、位图操作。 |
+| [Picture](../../reference/apis-image-kit/capi-image-nativemodule-oh-picturenative.md) | HDR图片、HEIF专业格式、辅助图处理 | 包含主图+辅助图+元数据，可提取主图/增益图/合成HDR图为PixelMap后显示或处理，支持辅助图和元数据操作。 |
+
+> **选择建议：**
+> - 需要直接显示单张图片或进行裁剪、缩放、旋转等图像处理时，使用PixelMap。
+> - 需要处理HDR图片、获取辅助图（如GAINMAP）、操作图片元数据时，使用Picture。如需对Picture的内容进行裁剪缩放，可通过[OH_PictureNative_GetMainPixelmap()](../../reference/apis-image-kit/capi-picture-native-h.md#oh_picturenative_getmainpixelmap)等接口提取PixelMap后再处理。
 
 ## 开发步骤
 
@@ -120,7 +135,22 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 8. 创建解码参数，配置解码参数，调用解码接口进行解码并获取辅助图。
 
-   <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->     
+   解码时可指定需要解码的辅助图类型。辅助图本身不作为独立图像直接显示，而是作为辅助数据参与图像处理（如HDR合成、深度信息提取等）。常见的辅助图类型包括：
+
+   | 辅助图类型 | 说明 |
+   |---|---|
+   | GAINMAP | 增益图，用于HDR图像的高动态范围渲染。 |
+   | DEPTH_MAP | 深度图，存储像素距离信息，用于3D重建、背景分离等场景。 |
+   | UNREFOCUS_MAP | 未重对焦原图，用于人像虚化后期处理。 |
+   | LINEAR_MAP | 线性图，用于视觉效果增强与色彩后期处理。 |
+   | FRAGMENT_MAP | 水印裁剪图，用于水印移除、原图恢复等场景。 |
+
+   > **说明：**
+   >
+   > 并非所有图片都包含辅助图。在获取辅助图前，应先调用`OH_PictureNative_GetAuxiliaryPicture`接口尝试获取。其他辅助图类型请参考[Image_AuxiliaryPictureType](../../reference/apis-image-kit/capi-picture-native-h.md#image_auxiliarypicturetype)。
+
+
+   <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->      
    
    ``` C++
    // 释放ImageSource。
@@ -171,8 +201,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
        uint32_t length = 0;
        napi_get_array_length(env, args[0], &length);
        if (length <= 0) {
-           OH_LOG_ERROR(LOG_APP, "napi_get_array_length failed !");
-           return GetJsResult(env, IMAGE_UNKNOWN_ERROR);
+           OH_LOG_INFO(LOG_APP, "Desired auxiliary picture type list is empty.");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
        Image_AuxiliaryPictureType typeList[length];
        for (int index = 0; index < length; index++) {
@@ -235,8 +265,11 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
            g_thisAuxiliaryPicture ->type, &g_thisAuxiliaryPicture ->auxiliaryPicture);
        if (g_thisAuxiliaryPicture ->errorCode == IMAGE_SUCCESS) {
            uint8_t* buff = new uint8_t[g_thisAuxiliaryPicture ->buffSize];
-           OH_AuxiliaryPictureNative_ReadPixels(g_thisAuxiliaryPicture ->auxiliaryPicture, buff,
+           Image_ErrorCode readCode = OH_AuxiliaryPictureNative_ReadPixels(g_thisAuxiliaryPicture ->auxiliaryPicture, buff,
                &g_thisAuxiliaryPicture ->buffSize);
+           if (readCode != IMAGE_SUCCESS) {
+               OH_LOG_ERROR(LOG_APP, "OH_AuxiliaryPictureNative_ReadPixels failed, errCode: %{public}d.", readCode);
+           }
            OH_AuxiliaryPictureNative_Release(g_thisAuxiliaryPicture ->auxiliaryPicture);
            g_thisAuxiliaryPicture ->auxiliaryPicture = nullptr;
            delete []buff;

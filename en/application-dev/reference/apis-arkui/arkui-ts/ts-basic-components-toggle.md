@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **Toggle** component provides a clickable element in the check box, button, or switch type.
+The **Toggle** component provides a clickable element of the checkbox, button, or switch type.
 
 >  **NOTE**
 >
@@ -38,7 +38,7 @@ Options of the toggle.
 
 > **NOTE**
 >
-> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is larger than inner elements'. This does not affect interface usability.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -49,7 +49,7 @@ Options of the toggle.
 | Name             | Type                             | Read-Only| Optional| Description                                                        |
 | ----------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | type<sup>8+</sup> | [ToggleType](#toggletype) | No  | No  | Type of the toggle.<br>Default value: **ToggleType.Switch**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| isOn<sup>8+</sup> | boolean                           | No  | Yes  | Whether the toggle is turned on.<br>**true**: on. **false**: off.<br>Default value: **false**<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| isOn<sup>8+</sup> | boolean                           | No  | Yes  | Whether the toggle is turned on.<br>**true**: on. **false**: off.<br>Default value: **false**<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This property supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## ToggleType
 
@@ -63,7 +63,7 @@ Enumerates toggle types.
 
 | Name    | Value  | Description                                                        |
 | -------- | ---- | ------------------------------------------------------------ |
-| Checkbox | 0    | Check box type.<br>**NOTE**<br>Since API version 11, the default style of the **Checkbox** component is changed from rounded square to circle.<br>The default value of the universal attribute [margin](ts-universal-attributes-size.md#margin) is as follows:<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }.<br>Default size:<br>{width:'20vp', height:'20vp'}|
+| Checkbox | 0    | Checkbox type.<br>**NOTE**<br>Since API version 11, the default style of the **Checkbox** component is changed from rounded square to circle.<br>The default value of the universal attribute [margin](ts-universal-attributes-size.md#margin) is as follows:<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }.<br>Default size:<br>{width:'20vp', height:'20vp'}|
 | Switch   | 1    | Switch type.<br>**NOTE**<br>The default value of the universal attribute [margin](ts-universal-attributes-size.md#margin) is as follows:<br>{<br>&nbsp;top: '6px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '6px',<br>&nbsp;left: '14px'<br> }.<br>Default size:<br>{width:'36vp', height:'20vp'}|
 | Button   | 2    | Status button type. If child content contains text, the text is displayed on the button. The default height is 28 vp, and there is no default width.|
 
@@ -75,7 +75,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 selectedColor(value: ResourceColor)
 
-Background color of the component when it is turned on.
+Sets the background color of the component when it is turned on.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -141,7 +141,7 @@ Creates a content modifier.
 
 ## SwitchStyle<sup>12+</sup>
 
-Describes the switch type.
+Sets the style for the component of the **Switch** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -150,7 +150,7 @@ Describes the switch type.
 | Name             | Type                                       | Read-Only| Optional| Description                                                        |
 | ----------------- | ------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | pointRadius       | number \|  [Resource](ts-types.md#resource) | No  | Yes  | Radius of the circular slider when the component is of the **Switch** type. The unit is vp.<br>**NOTE**<br>Percentage values are not supported. The value specified is used only when it is greater than or equal to 0.<br>If the value is not specified or the specified one is less than 0, the radius is set using the following formula:<br>(Component height (in vp)/2) - (2 vp x Component height (in vp)/20 vp)|
-| unselectedColor   | [ResourceColor](ts-types.md#resourcecolor)  | No  | Yes  | Background color of the component when it is of the **Switch** type and is disabled.<br>Default value: **0x337F7F7F** (applies to both dark and light modes). Starting from API version 20, when [optimizing color mode switching overhead](../../../ui/ui-dark-light-color-adaptation.md#optimizing-color-mode-switching-overhead) is enabled, the default value is 0x19000000 (black with 10% transparency) in light mode and 0x19FFFFFF (white with 10% transparency) in dark mode.  |
+| unselectedColor   | [ResourceColor](ts-types.md#resourcecolor)  | No  | Yes  | Background color of the component when it is of the **Switch** type and is disabled.<br>Default value: **0x337F7F7F** (applies to both dark and light modes). Since API version 20, when [optimizing color mode switching overhead](../../../ui/ui-dark-light-color-adaptation.md#optimizing-color-mode-switching-overhead) is enabled, the default value is **0x19000000** (black with 10% opacity) in light mode and **0x19FFFFFF** (white with 10% opacity) in dark mode.  |
 | pointColor        | [ResourceColor](ts-types.md#resourcecolor)  | No  | Yes  | Color of the circular slider when the component is of the **Switch** type.<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')**|
 | trackBorderRadius | number \|  [Resource](ts-types.md#resource) | No  | Yes  | Radius of the slider track border corners when the component is of the **Switch** type. The unit is vp.<br>**NOTE**<br>This parameter cannot be set in percentage. If the value specified is less than 0, the radius is set using the default value formula. If the value specified is greater than half of the component height, the latter is used. In other cases, the value specified is used.<br>If the value is not specified or the specified one is less than 0, the radius is set using the default value formula.<br>Default value formula: Component height (in vp)/2|
 

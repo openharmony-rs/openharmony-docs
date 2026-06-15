@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -28,7 +28,7 @@ import { image } from '@kit.ImageKit';
 
 | 名称                         | 类型   | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
-| heifsDelayTime | number | 是   | 是   | HEIF序列图片的每帧播放时长。单位为毫秒。 |
+| heifsDelayTime | number | 是   | 是   | HEIF序列图片的每帧播放时长。单位为毫秒（ms）。 |
 
 ## createInstance
 
@@ -52,7 +52,7 @@ static createInstance(): HeifsMetadata
 async function heifsMetadataCreateInstance(context: Context) {
   let heifsMetadata = image.HeifsMetadata.createInstance();
   if (heifsMetadata != undefined) {
-    console.info("createInstance success");
+    console.info("createInstance successfully.");
   }
 }
 ```
@@ -93,11 +93,11 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -108,9 +108,9 @@ async function heifsMetadataGetProperties(context: Context) {
   let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
   if (metaData != undefined && metaData.heifsMetadata != undefined) {
     await metaData.heifsMetadata.getProperties(["HeifsDelayTime"]).then((data) => {
-      console.info('Get properties ',JSON.stringify(data));
+      console.info('Succeeded in getting properties. ',JSON.stringify(data));
     }).catch((error: BusinessError) => {
-      console.error(`Get properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -154,11 +154,11 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -172,7 +172,7 @@ async function heifsMetadataSetProperties(context: Context) {
       "HeifsDelayTime": "200",
     };
     await metaData.heifsMetadata.setProperties(setkey).then(async () => {
-      console.info('Set properties success.');
+      console.info('Succeeded in setting properties.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
     })
@@ -204,11 +204,11 @@ getAllProperties(): Promise\<Record<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -223,7 +223,7 @@ async function heifsMetadataGetAllProperties(context: Context) {
       console.info('Metadata have ', count, ' properties');
       console.info(`Get metadata all properties: ${data}`);
     }).catch((error: BusinessError) => {
-      console.error(`Get metadata all properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get metadata all properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -251,11 +251,11 @@ clone(): Promise\<HeifsMetadata>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -269,7 +269,7 @@ async function heifsMetadataClone(context: Context) {
     new_metadata.getProperties(["HeifsDelayTime"]).then((data1) => {
       console.info(`Clone new_metadata and get Properties: ${data1}`);
     }).catch((err: BusinessError) => {
-      console.error(`Clone new_metadata failed, error : ${err}`);
+      console.error(`Failed to clone new_metadata. error.code: ${err.code}, error.message: ${err.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -297,11 +297,11 @@ getBlob(): Promise\<ArrayBuffer>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -313,7 +313,7 @@ async function heifsMetadataGetBlob(context: Context) {
   if (metaData != undefined && metaData.heifsMetadata != undefined) {
     let blob = await metaData.heifsMetadata.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeding in getting blob.");
     }
   }
 }
@@ -352,11 +352,11 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -368,7 +368,7 @@ async function heifsMetadataSetBlob(context: Context) {
   if (metaData != undefined && metaData.heifsMetadata != undefined) {
     let blob = await metaData.heifsMetadata.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
       metaData.heifsMetadata.setBlob(blob);
     }
     let new_blob = metaData.heifsMetadata.getBlob();

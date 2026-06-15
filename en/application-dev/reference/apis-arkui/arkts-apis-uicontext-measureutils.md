@@ -16,11 +16,11 @@ Provides APIs for measuring text metrics, such as text height and width.
 >
 > - In the following API examples, you must first use [getMeasureUtils()](arkts-apis-uicontext-uicontext.md#getmeasureutils12) in **UIContext** to obtain a **MeasureUtils** instance, and then call the APIs using the obtained instance.
 >
-> - To perform more complex text measurements, use the [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) API.
+> - If you need more text measurement parameters, such as [includeFontPadding](./arkui-ts/ts-basic-components-text.md#includefontpadding23) and [fallbackLineSpacing](./arkui-ts/ts-basic-components-text.md#fallbacklinespacing23), you are advised to use the corresponding graphics measurement API [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph).
 >
 > - Avoid using [ApplicationContext.setFontSizeScale](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13) during text measurement API calls. To ensure timing correctness and the accuracy of measurement results, manually listen for font scale changes.
 >
-> - For measuring text after truncation, direct use of the string length for truncation may lead to inaccuracies. This is because certain Unicode characters (for example, emojis) have code points with a length greater than 1, and truncating by string length can split these multi-code-point characters, resulting in incorrect text display or measurement errors. As such, you are advised to perform iterative truncation processing based on Unicode code points. For details, see [Example 2 in measureTextSize](#measuretextsize12).
+> - For measuring text after truncation, direct use of the string length for truncation may lead to inaccuracies. This is because certain Unicode characters (for example, emojis) have code points with a length greater than 1, and truncating by string length can split these multi-code-point characters, resulting in incorrect text display or measurement errors. As such, you are advised to perform iterative processing based on Unicode code points to avoid incorrect character truncation and ensure accurate measurement results. For details, see Example 2 in [measureTextSize](#measuretextsize12).
 
 ## measureText<sup>12+</sup>
 
@@ -142,16 +142,16 @@ struct TextDemo {
   @State displayedText: string = '';
   @State defaultFontSize: number = 16;
   @State textWidth: number = 150;
-  @State numLenghth: number = 0;
-  @State numUnocde: number = 0;
+  @State numLength: number = 0;
+  @State numUnicode: number = 0;
   private fullText: string =
-    'This is a long text example. When the text content exceeds three lines, the excess part 😀😀 will be displayed with an ellipsis. Click the ellipsis to expand all content. This is test text used to verify multi-line text truncation.'
+    'This is a long text example. When the text content exceeds three lines, the excess part will be displayed with an ellipsis. Click the ellipsis to expand all content. This is test text used to verify multi-line text truncation.'
   private maxLines: number = 3;
 
   aboutToAppear() {
     const codePoints = this.getCodePoints(this.fullText);
-    this.numLenghth = this.fullText.length;
-    this.numUnocde = codePoints.length;
+    this.numLength = this.fullText.length;
+    this.numUnicode = codePoints.length;
     this.calculateText(this.maxLines, this.fullText);
   }
 
@@ -169,7 +169,7 @@ struct TextDemo {
     return codePoints;
   }
 
-  lastUnicodeLength(str:string) { // Obtain the Unicode length of the last character in the string.
+  lastUnicodeLength(str: string) { // Obtain the Unicode length of the last character in the string.
     if (!str || str.length < 1) {
       return 0;
     }
@@ -201,12 +201,12 @@ struct TextDemo {
         this.displayedText =
           this.displayedText.slice(0,
             this.displayedText.length - this.lastUnicodeLength(this.displayedText)); // Remove characters.
-        let textAfterCut = this.displayedText + "…"; // Add an ellipsis.
-        let sizeAfteCut = this.getUIContext().getMeasureUtils().measureTextSize({
+        let textAfterCut = this.displayedText + "..."; // Add an ellipsis.
+        let sizeAfterCut = this.getUIContext().getMeasureUtils().measureTextSize({
           textContent: textAfterCut,
           constraintWidth: this.textWidth
         });
-        if (Number(sizeAfteCut.height) <= Number(hasMaxLinesSize.height)) {
+        if (Number(sizeAfterCut.height) <= Number(hasMaxLinesSize.height)) {
           break;
         } else {
           console.info("displayedText: " + this.displayedText);
@@ -218,8 +218,8 @@ struct TextDemo {
 
   build() {
     Column({ space: 10 }) {
-      Text(`Text length calculated by length: ${this.numLenghth}`)
-      Text(`Text length calculated by codePointAt: ${this.numUnocde}`)
+      Text(`Text length calculated by length: ${this.numLength}`)
+      Text(`Text length calculated by codePointAt: ${this.numUnicode}`)
       Text('Text to be truncated')
       Text(this.fullText)
         .borderWidth(1)

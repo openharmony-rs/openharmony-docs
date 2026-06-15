@@ -1,8 +1,8 @@
 # Universal Styles
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,33 +12,33 @@ You can set universal styles for components in the **style** attribute or **.css
 
 | Name                                | Type                                      | Default Value  | Mandatory  | Description                                      |
 | ---------------------------------- | ---------------------------------------- | ----- | ---- | ---------------------------------------- |
-| width                              | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | -     | No   | Component width.<br><br>If this attribute is not set, the default value **0** is used.       |
-| height                             | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | -     | No   | Component height.<br><br>If this attribute is not set, the default value **0** is used.       |
+| width                              | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | -     | No   | Component width.<br>If this attribute is not set, default value **0** is used.       |
+| height                             | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | -     | No   | Component height.<br>If this attribute is not set, default value **0** is used.       |
 | padding                            | &lt;length&gt;                           | 0     | No   | Shorthand attribute to set the padding for all sides in a declaration.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
 | padding-[left\|top\|right\|bottom] | &lt;length&gt;                           | 0     | No   | Left, top, right, and bottom padding.                         |
-| margin                             | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | 0     | No   | Shorthand attribute to set the margin for all sides in a declaration. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
-| margin-[left\|top\|right\|bottom]  | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | 0     | No   | Left, top, right, and bottom margins.                         |
+| margin                             | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0     | No   | Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
+| margin-[left\|top\|right\|bottom]  | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0     | No   | Left, top, right, and bottom margins.                         |
 | border-width                       | &lt;length&gt;                           | 0     | No   | Shorthand attribute to set the border width for all sides.                      |
-| border-color                       | &lt;color&gt;                            | black | No   | Shorthand attribute to set the color for all borders.                      |
-| border-radius                      | &lt;length&gt;                           | -     | No   | Radius of round-corner borders.           |
+| border-color                       | &lt;color&gt;                            | black | No   | Shorthand attribute to set the border color for all sides.                      |
+| border-radius                      | &lt;length&gt;                           | -     | No   | Radius of border corners.           |
 | background-color                   | &lt;color&gt;                            | -     | No   | Background color.                                 |
 | opacity<sup>5+</sup>               | number                                   | 1     | No   | Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent.       |
-| display                            | string                                   | flex  | No   | Type of the box containing an element. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
-| [left\|top]                        | &lt;length&gt; \| &lt;percentage&gt;<sup>6+</sup> | -     | No   | Edge of the element.<br>- **left**: left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- **top**: top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
+| display                            | string                                   | flex  | No   | Whether to display a box containing the element and the layout for its child elements. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
+| [left\|top]                        | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>6+</sup> | -     | No   | Edge of the element.<br>- The **left** attribute specifies the left edge position of the element. This attribute defines the offset between the left edge of a positioned element and that of a block included in the element.<br>- The **top** attribute specifies the top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
 
 
 > **NOTE**
 >
 > The aforementioned universal styles are not mandatory.
 >
-> Currently, the following color formats are supported:
+>   Currently, the following color formats are supported:
 > - rgb(255, 255, 255)
 >
 > - rgba(255, 255, 255, 1.0)
 >
-> - HEX formats: \#rrggbb and \#aarrggbb
+> - HEX formats: #rrggbb and #aarrggbb
 >
-> - Enumeration format: as listed in Table 1. The enumeration format is not supported in the script.
+> - Color name enumeration: For example, black and white. For details, see Table 1. The enumeration format is not supported in the script.
 
 
   **Table 1** Color enums
@@ -183,7 +183,7 @@ You can set universal styles for components in the **style** attribute or **.css
 | steelblue            | \#4682b4 | ![steelblue](figures/steelblue.png)      |
 | tan                  | \#d2b48c | ![tan](figures/tan.png)                  |
 | teal                 | \#008080 | ![teal](figures/teal.png)                |
-| thistle              | \#d8Bfd8 | ![thistle](figures/thistle.png)          |
+| thistle              | \#d8bfd8 | ![thistle](figures/thistle.png)          |
 | tomato               | \#ff6347 | ![tomato](figures/tomato.png)            |
 | turquoise            | \#40e0d0 | ![turquoise](figures/turquoise.png)      |
 | violet               | \#ee82ee | ![violet](figures/violet.png)            |

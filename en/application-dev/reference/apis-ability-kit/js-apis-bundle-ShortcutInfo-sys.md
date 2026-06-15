@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module defines shortcut information configured in the configuration file. For the [FA model](../../application-models/ability-terminology.md#fa-model), the shortcut information is configured in the [config.json](../../quick-start/application-configuration-file-overview-fa.md) file. For the stage model, the information is configured in the configuration file under **resources/base/profile** in the development view.
 
@@ -16,7 +16,7 @@ The module defines shortcut information configured in the configuration file. Fo
 > 
 > The APIs provided by this module are system APIs.
 
-## ShortcutWant<sup>(deprecated)<sup>
+## ShortcutWant<sup>(deprecated)</sup>
 
 > **NOTE**
 >

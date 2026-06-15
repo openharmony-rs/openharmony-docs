@@ -1,8 +1,8 @@
 # 窗口开发术语
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -46,8 +46,7 @@
 
   应用在创建全局悬浮窗前，需要申请对应的权限。
   
-  <!--RP1-->
-  相关参考：[设置全局悬浮窗](application-window-stage.md#设置全局悬浮窗)。<!--RP1End-->
+  相关参考：[设置全局悬浮窗](application-window-stage.md#设置全局悬浮窗受限开放)。
 
 ## 自由窗口
 
@@ -93,13 +92,13 @@
 
 沉浸式布局是一种让应用界面聚焦内容，减少无关元素干扰的窗口状态。
 
-非[自由窗口](#自由窗口)可以通过调用[setWindowLayoutFullScreen](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)进入沉浸式布局。
+非[自由窗口](#自由窗口)可以通过调用[setWindowLayoutFullScreen](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)或[setImmersiveModeEnabledState()](../reference/apis-arkui/arkts-apis-window-Window.md#setimmersivemodeenabledstate12)接口进入沉浸式布局。
 
 | 非自由窗口的非沉浸式布局示意                    | 非自由窗口的沉浸式布局示意               |
 |----------------------------------------------|----------------------------------------|
 | ![no-immersive](figures/no-immersive.png)    | ![immersive](figures/immersive.png)    |
 
-自由窗口可以通过隐藏装饰栏进入沉浸式布局。
+自由窗口状态下，可通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。
 
 | 自由窗口的非沉浸式布局示意                      | 自由窗口的沉浸式布局示意                 |
 |----------------------------------------------|----------------------------------------|

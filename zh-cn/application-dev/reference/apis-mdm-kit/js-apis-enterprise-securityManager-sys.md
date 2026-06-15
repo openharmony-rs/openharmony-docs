@@ -1,8 +1,8 @@
 # @ohos.enterprise.securityManager（安全管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -75,10 +75,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let res: string = securityManager.getSecurityPatchTag(wantTemp);
-    console.info(`Succeeded in getting security patch tag. tag: ${res}`);
+  let res: string = securityManager.getSecurityPatchTag(wantTemp);
+  console.info(`Succeeded in getting security patch tag. tag: ${res}`);
 } catch(err) {
-    console.error(`Failed to get security patch tag. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get security patch tag. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ## securityManager.getDeviceEncryptionStatus
@@ -132,10 +132,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: securityManager.DeviceEncryptionStatus = securityManager.getDeviceEncryptionStatus(wantTemp);
-    console.info(`Succeeded in getting device encryption status. isEncrypted: ${result.isEncrypted}`);
+  let result: securityManager.DeviceEncryptionStatus = securityManager.getDeviceEncryptionStatus(wantTemp);
+  console.info(`Succeeded in getting device encryption status. isEncrypted: ${result.isEncrypted}`);
 } catch(err) {
-    console.error(`Failed to get device encryption status. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get device encryption status. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -171,10 +171,10 @@ getPasswordPolicy(): PasswordPolicy
 import { securityManager } from '@kit.MDMKit';
 
 try {
-    let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy();
-    console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
+  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy();
+  console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

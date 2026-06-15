@@ -15,7 +15,7 @@ To prevent improper or malicious use of data or functions, the system provides a
 
 All applications running on the system are deployed in independent sandbox directories, which isolate the data of different applications and prevent improper application behavior, such as unauthorized data access between applications and device tampering.
 
-The application sandbox ensures that only the intended user can access the data within the application, while also restricting the scope of data accessible to the application. For details, see [Application Sandbox Directory](../../file-management/app-sandbox-directory.md).
+The application sandbox ensures that only the intended application can access the data within the application, while also restricting the scope of data accessible to the application. For details, see [Application Sandbox Directory](../../file-management/app-sandbox-directory.md).
 
 ## Application Permissions
 
@@ -38,3 +38,5 @@ Specifically, the secure access mechanism is implemented by system Pickers and s
 - [Security components](security-component-overview.md)
 
   Security components are a set of button-like ArkUI components provided with certain permissions. You can integrate them to your application UI. When a security component is tapped, the application is temporarily granted with the related permission. For example, if your application needs to access pasteboard data, you can use **PasteButton** in the UI. After the user taps the **PasteButton** button, the application can access the pasteboard data without displaying any permission request dialog box. This ensures security while minimizing the interference of pop-ups to users.
+
+<!--RP1--> <!--RP1End-->

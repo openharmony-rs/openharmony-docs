@@ -1,8 +1,8 @@
 # @ohos.enterprise.browser（浏览器管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -28,7 +28,7 @@ import { browser } from '@kit.MDMKit';
 
 setPolicySync(admin: Want, appId: string, policyName: string, policyValue: string): void
 
-为指定的浏览器设置浏览器子策略。
+为指定的浏览器设置浏览器子策略。<!--RP1--><!--RP1End-->
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
@@ -43,9 +43,9 @@ setPolicySync(admin: Want, appId: string, policyName: string, policyValue: strin
 | 参数名      | 类型                                                    | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| appId       | string                                                  | 是   | 应用ID，用于指定浏览器。                                     |
-| policyName  | string                                                  | 是   | 浏览器子策略名。当此值为空字符串时，表示设置应用ID对应的浏览器策略。 |
-| policyValue | string                                                  | 是   | 浏览器子策略值。当此值为空字符串时，表示取消浏览器策略名对应浏览器子策略。 |
+| appId       | string                                                  | 是   | 应用appId，用于指定浏览器，表示应用的唯一标识，详情信息可参考[什么是appId](../../quick-start/common-problem-of-application.md#什么是appid)。                                                                |
+| policyName  | string                                                  | 是   | 浏览器子策略名，由接口调用方和指定浏览器约定。当此值为空字符串时，表示设置应用appId对应的浏览器策略。 |
+| policyValue | string                                                  | 是   | 浏览器子策略值，由接口调用方和指定浏览器约定。当此值为空字符串时，表示取消浏览器策略名对应浏览器子策略。 |
 
 **错误码**：
 
@@ -87,7 +87,7 @@ try {
 
 getPoliciesSync(admin: Want, appId: string): string
 
-通过appid获取指定浏览器设置的策略。
+通过appid获取指定浏览器设置的策略。<!--RP1--><!--RP1End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -143,6 +143,10 @@ try {
 setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, policyValue: string): void
 
 为指定的浏览器设置浏览器策略，成功后会发布系统公共事件[COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed)。
+
+> **说明：**
+>
+> 在多MDM应用场景下，针对同一浏览器的同一策略，一旦被首个Admin配置并生效，其他Admin将无法配置。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 

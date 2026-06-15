@@ -4,12 +4,11 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module defines the application information. An application can obtain its own application information through [bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself), with **GET_BUNDLE_INFO_WITH_APPLICATION** passed in to [bundleFlags](js-apis-bundleManager.md#bundleflag).
 
 > **NOTE**
->
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -22,6 +21,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name                      | Type                                                        | Read-Only| Optional| Description                                                        |
 | -------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | name                       | string                                                       | Yes  | No  | Name of the application bundle. It corresponds to the **bundleName** field in the [app.json5](../../quick-start/app-configuration-file.md) file.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                |
@@ -33,7 +33,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | icon                       | string                                                       | Yes  | No  | Application icon. It corresponds to the **icon** field in the [app.json5](../../quick-start/app-configuration-file.md) file. For details about **icon**, see the **iconResource** field in this table.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | iconId                     | number                                                       | Yes  | No  | Resource ID of the application icon. It is automatically generated during compilation and build based on the icon configured for the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | process                    | string                                                       | Yes  | No  | Process name.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| permissions                | Array\<string>                                               | Yes  | No  | Permissions required for accessing the application. The permissions can be obtained by passing in **GET_BUNDLE_INFO_WITH_APPLICATION** and **GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| permissions                | Array\<string>                                               | Yes  | No  | Permission list required for accessing the application<!--Del-->. The permission list can be obtained by passing in **GET_APPLICATION_INFO_WITH_PERMISSION** to the **appFlags** parameter of [getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo) <!--DelEnd-->.<br>This field is not returned when the [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) or [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14) is used to obtain application information. You can obtain the permission list by obtaining the [bundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1).reqPermissionDetails.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | codePath                   | string                                                       | Yes  | No  | Installation directory of the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | metadata<sup>(deprecated)<sup>  | Map\<string, Array\<[Metadata](js-apis-bundleManager-metadata.md)>> | Yes  | No  | Metadata of the application. The information can be obtained by passing in **GET_BUNDLE_INFO_WITH_APPLICATION** and **GET_BUNDLE_INFO_WITH_METADATA** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>Note: Supported since API version 9 and deprecated since API version 10. You are advised to use **metadataArray** instead.|
 | metadataArray<sup>10+</sup>              | Array\<[ModuleMetadata](#modulemetadata10)> | Yes  | No  | Metadata of the application. The information can be obtained by passing in **GET_BUNDLE_INFO_WITH_APPLICATION** and **GET_BUNDLE_INFO_WITH_METADATA** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -53,7 +53,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | multiAppMode<sup>12+</sup> | [MultiAppMode](#multiappmode12) | Yes  | No  | Multi-app mode.|
 | appIndex<sup>12+</sup>    | number    | Yes  | No  | Index of an application clone. It takes effect only for cloned applications.|
 | installSource<sup>12+</sup>    | string    | Yes  | No  | Installation source of an application. The options are as follows:<br> - **pre-installed**: pre-installed application installed during the first boot.<br> - **ota**: pre-installed application added during system upgrade.<br> - **recovery**: pre-installed application manually restored by the user after uninstallation.<br> - **bundleName**: installation by the application corresponding to this bundle name. **bundleName** represents a variable, subject to the actual value.<br> - **unknown**: unknown application installation source.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| releaseType<sup>12+</sup>    | string    | Yes  | No  | Release type of the SDK used for application packing. Currently, the SDK release types include Canary, Beta, and Release. Each of the Canary and Beta releases can be distinguished by a sequential number, such as Canary1, Canary2, Beta1, and Beta2. You can compare the SDK release type on which application packaging depends and the OS release type (specified by [deviceInfo.distributionOSReleaseType](../apis-basic-services-kit/js-apis-device-info.md)) to determine the compatibility.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| releaseType<sup>12+</sup>    | string    | Yes  | No  | Release type of the SDK used for application packing. Currently, the SDK release type can be Canary, Beta, or Release. Canary and Beta are further classified by sequence number, for example, Canary1, Canary2, Beta1, and Beta2. You can compare the SDK release type on which application packaging depends and the OS release type (specified by [deviceInfo.distributionOSReleaseType](../apis-basic-services-kit/js-apis-device-info.md)) to determine the compatibility.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | cloudFileSyncEnabled<sup>12+</sup>    | boolean    | Yes  | No  | Whether device-cloud file synchronization is enabled for the application. **true** if enabled, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | cloudStructuredDataSyncEnabled<sup>20+</sup>    | boolean    | Yes  | Yes  | Whether device-cloud structured data synchronization is enabled for the application. **true** if enabled, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
@@ -61,8 +61,6 @@ import { bundleManager } from '@kit.AbilityKit';
 Defines the [multi-app mode](../../quick-start/multiInstance.md).
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
-
-**Parameters**
 
 | Name     | Type          | Read-Only| Optional| Description                       |
 | --------- | -------------- | ---- | ---- | --------------------------- |

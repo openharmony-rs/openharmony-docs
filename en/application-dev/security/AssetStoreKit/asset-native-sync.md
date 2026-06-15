@@ -2,14 +2,16 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:16:58.671Z pushedAt=2026-06-03T09:54:13.507Z -->
 
 ## Adding Dependencies
 
 Link the dynamic libraries in the CMake script.
+
 ```txt
 target_link_libraries(entry PUBLIC libasset_ndk.z.so)
 ```
@@ -22,7 +24,6 @@ Include header files.
 #include <string.h>
 #include "asset/asset_api.h"
 ```
-
 
 ## Adding Assets That Support Sync
 
@@ -44,7 +45,7 @@ static napi_value AddSyncAsset(napi_env env, napi_callback_info info)
         {.tag = ASSET_TAG_SECRET, .value.blob = secret},
         {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
         {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
-        {.tag = ASSET_TAG_SYNC_TYPE, .value.u32 = ASSET_SYNC_TYPE_TRUSTED_DEVICE}, // You need to specify the sync type between trusted devices (for example, clone between old and new devices).
+        {.tag = ASSET_TAG_SYNC_TYPE, .value.u32 = ASSET_SYNC_TYPE_TRUSTED_DEVICE}, // Synchronization must be specified between trusted devices (for example, cloning between old and new devices).
     };
 
     int32_t addResult = OH_Asset_Add(attr, sizeof(attr) / sizeof(attr[0]));
@@ -53,7 +54,6 @@ static napi_value AddSyncAsset(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-
 
 ## Accessing the Backup and Restore Extension Capability
 
@@ -72,7 +72,6 @@ The following table describes the attributes for querying an asset.
 | ASSET_TAG_REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: bool| Yes| Whether to query the sync result of the asset whose custom additional information is encrypted. The value **true** means to query the sync result; the value **false** means the opposite. The default value is **false**.|
 | ASSET_TAG_GROUP_ID<sup>18+</sup> | Type: Uint8[]<br>Length: 7-127 bytes| Yes| Group to which the asset to be queried belongs. By default, this parameter is not specified.|
 
-
 ### Sample Code
 
 <!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
@@ -88,13 +87,12 @@ static napi_value QuerySyncResult(napi_env env, napi_callback_info info)
 }
 ```
 
-
 ## Notes and Constraints
 
 For a successful sync between trusted devices, the assets of both old and new devices must be accessible. Otherwise, the sync might fail.
 
 - For assets that are accessible only when a password is set, the sync will fail if no lock screen password is set on either the old or new device.
-  
+
 - For assets that are accessible only when the screen is unlocked, the sync will fail if the screen of either the old or new device is locked.
 
 - For assets that are accessible only after user authentication, the sync will fail if no lock screen password is set on the old device.

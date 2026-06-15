@@ -1,22 +1,22 @@
 # @ohos.enterprise.bluetoothManager (Bluetooth Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **bluetoothManager** module provides Bluetooth management capabilities, including setting and obtaining Bluetooth information.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 >
-> - The global restriction policies are provided by **restrictions**. To disable Bluetooth globally, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
+> The global restriction policies are provided by **restrictions**. To disable Bluetooth globally, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -73,10 +73,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: bluetoothManager.BluetoothInfo = bluetoothManager.getBluetoothInfo(wantTemp);
-    console.info(`Succeeded in getting bluetooth info: ${JSON.stringify(result)}`);
+  let result: bluetoothManager.BluetoothInfo = bluetoothManager.getBluetoothInfo(wantTemp);
+  console.info(`Succeeded in getting bluetooth info: ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get bluetooth info. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get bluetooth info. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -132,10 +132,10 @@ let wantTemp: Want = {
 // Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
-    bluetoothManager.addAllowedBluetoothDevices(wantTemp,deviceIds);
-    console.info(`Succeeded in adding allowed bluetooth devices.`);
+  bluetoothManager.addAllowedBluetoothDevices(wantTemp,deviceIds);
+  console.info(`Succeeded in adding allowed bluetooth devices.`);
 } catch(err) {
-    console.error(`Failed to add allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to add allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -185,10 +185,10 @@ let wantTemp: Want = {
 // Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
-    bluetoothManager.removeAllowedBluetoothDevices(wantTemp,deviceIds);
-    console.info(`Succeeded in removing allowed bluetooth devices.`);
+  bluetoothManager.removeAllowedBluetoothDevices(wantTemp,deviceIds);
+  console.info(`Succeeded in removing allowed bluetooth devices.`);
 } catch(err) {
-    console.error(`Failed to remove allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to remove allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -240,10 +240,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    let result: Array<string> = bluetoothManager.getAllowedBluetoothDevices(wantTemp);
-    console.info(`Succeeded in getting allowed bluetooth devices. Result: ${JSON.stringify(result)}`);
+  let result: Array<string> = bluetoothManager.getAllowedBluetoothDevices(wantTemp);
+  console.info(`Succeeded in getting allowed bluetooth devices. Result: ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get allowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -298,10 +298,10 @@ let wantTemp: Want = {
 // Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
-    bluetoothManager.addDisallowedBluetoothDevices(wantTemp,deviceIds);
-    console.info(`Succeeded in adding disallowed bluetooth devices.`);
+  bluetoothManager.addDisallowedBluetoothDevices(wantTemp,deviceIds);
+  console.info(`Succeeded in adding disallowed bluetooth devices.`);
 } catch(err) {
-    console.error(`Failed to add disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to add disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -350,10 +350,10 @@ let wantTemp: Want = {
 // Replace it as required.
 let deviceIds: Array<string> = ["00:1A:2B:3C:4D:5E","AA:BB:CC:DD:EE:FF"];
 try {
-    bluetoothManager.removeDisallowedBluetoothDevices(wantTemp,deviceIds);
-    console.info(`Succeeded in removing disallowed bluetooth devices.`);
+  bluetoothManager.removeDisallowedBluetoothDevices(wantTemp,deviceIds);
+  console.info(`Succeeded in removing disallowed bluetooth devices.`);
 } catch(err) {
-    console.error(`Failed to remove disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to remove disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -403,26 +403,12 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    let result: Array<string> = bluetoothManager.getDisallowedBluetoothDevices(wantTemp);
-    console.info(`Succeeded in getting disallowed bluetooth devices. Result: ${JSON.stringify(result)}`);
+  let result: Array<string> = bluetoothManager.getDisallowedBluetoothDevices(wantTemp);
+  console.info(`Succeeded in getting disallowed bluetooth devices. Result: ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get disallowed bluetooth devices. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-## BluetoothInfo
-
-Represents the device Bluetooth information.
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-**Model restriction**: This API can be used only in the stage model.
-
-| Name           | Type                                                        | Read-Only| Optional| Description                    |
-| --------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
-| name            | string                                                       | No  | No| Bluetooth name of the device.    |
-| state           | [access.BluetoothState](../apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate) | No  | No| Bluetooth state of the device.    |
-| connectionState | [constant.ProfileConnectionState](../apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) | No  | No| Bluetooth profile connection state of the device.|
 
 ## bluetoothManager.turnOnBluetooth<sup>20+</sup>
 
@@ -467,10 +453,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    bluetoothManager.turnOnBluetooth(wantTemp);
-    console.info(`Succeeded in turning on bluetooth.`);
+  bluetoothManager.turnOnBluetooth(wantTemp);
+  console.info(`Succeeded in turning on bluetooth.`);
 } catch(err) {
-    console.error(`Failed to turn on bluetooth. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to turn on bluetooth. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -517,10 +503,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    bluetoothManager.turnOffBluetooth(wantTemp);
-    console.info('Succeeded in turning off bluetooth.');
+  bluetoothManager.turnOffBluetooth(wantTemp);
+  console.info('Succeeded in turning off bluetooth.');
 } catch(err) {
-    console.error(`Failed to turn off bluetooth. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to turn off bluetooth. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -528,7 +514,7 @@ try {
 
 addDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Array&lt;Protocol&gt;): void
 
-Adds disallowed Bluetooth protocols. Specified users cannot use the disallowed Bluetooth protocols to send files to other devices. This API is used to disable the GATT or SPP protocol, which does not take effect for system services and system applications.
+Adds disallowed Bluetooth protocols. Specified users cannot use the disallowed Bluetooth protocols to send files to other devices. This API cannot be used to disable the [GATT](../../connectivity/terminology.md#gatt) or [SPP](../../connectivity/terminology.md#spp) protocol for system services or system applications.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
@@ -570,11 +556,11 @@ let wantTemp: Want = {
 // Replace it as required.
 let accountId: number = 100;
 let protocols: Array<bluetoothManager.Protocol> = [bluetoothManager.Protocol.GATT, bluetoothManager.Protocol.SPP];
-try{
-    bluetoothManager.addDisallowedBluetoothProtocols(wantTemp, accountId, protocols);
-    console.info('Succeeded in adding disallowed bluetooth protocols policy.');
+try {
+  bluetoothManager.addDisallowedBluetoothProtocols(wantTemp, accountId, protocols);
+  console.info('Succeeded in adding disallowed bluetooth protocols policy.');
 } catch (err) {
-    console.error(`Failed to add disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to add disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -624,11 +610,11 @@ let wantTemp: Want = {
 // Replace it as required.
 let accountId: number = 100;
 let protocols: Array<bluetoothManager.Protocol> = [bluetoothManager.Protocol.GATT, bluetoothManager.Protocol.SPP];
-try{
-    bluetoothManager.removeDisallowedBluetoothProtocols(wantTemp, accountId, protocols);
-    console.info('Succeeded in removing disallowed bluetooth protocols policy.');
+try {
+  bluetoothManager.removeDisallowedBluetoothProtocols(wantTemp, accountId, protocols);
+  console.info('Succeeded in removing disallowed bluetooth protocols policy.');
 } catch (err) {
-    console.error(`Failed to remove disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to remove disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -680,13 +666,27 @@ let wantTemp: Want = {
 };
 // Replace it as required.
 let accountId: number = 100;
-try{
-    let result: Array<bluetoothManager.Protocol> = bluetoothManager.getDisallowedBluetoothProtocols(wantTemp, accountId);
-    console.info(`Succeeded in getting disallowed bluetooth protocols. Result: ${JSON.stringify(result)}`);
+try {
+  let result: Array<bluetoothManager.Protocol> = bluetoothManager.getDisallowedBluetoothProtocols(wantTemp, accountId);
+  console.info(`Succeeded in getting disallowed bluetooth protocols. Result: ${JSON.stringify(result)}`);
 } catch (err) {
-    console.error(`Failed to get disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## BluetoothInfo
+
+Represents the device Bluetooth information.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name           | Type                                                        | Read-Only| Optional| Description                    |
+| --------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
+| name            | string                                                       | No  | No| Bluetooth name of the device.    |
+| state           | [access.BluetoothState](../apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate) | No  | No| Bluetooth state of the device.    |
+| connectionState | [constant.ProfileConnectionState](../apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) | No  | No| Bluetooth profile connection state of the device.|
 
 ## Protocol<sup>20+</sup>
 

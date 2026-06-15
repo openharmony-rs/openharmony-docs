@@ -1,9 +1,9 @@
 # @ohos.app.form.formHost (formHost)(系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 formHost模块提供了卡片使用方相关接口的能力，包括对使用方同一用户下安装的卡片进行删除、释放、请求更新、获取卡片信息、状态等操作。
@@ -3054,7 +3054,7 @@ on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 | 参数名 | 类型    | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
 | type | string | 是   | 事件回调类型，支持的事件为'getFormRect'，表示卡片位置尺寸查询。|
-| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息，单位vp。|
+| callback |[formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。|
 
 **错误码：**
 

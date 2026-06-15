@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=a1b9555ca35e53d2ce1fb3e822613b1436be9250 translatedAt=2026-06-05T06:40:07.313Z pushedAt=2026-06-05T09:11:01.799Z -->
 
 ## When to Use
 
@@ -68,7 +69,7 @@ When creating an RDB store, call the **OH_Rdb_SetSecurityLevel** API to specify 
 2. Include header files.
 
     <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) --> 
-    
+
     ``` C++
     #include <cstring>
     #include "database/rdb/relational_store.h"
@@ -80,7 +81,7 @@ When creating an RDB store, call the **OH_Rdb_SetSecurityLevel** API to specify 
 3. Call **OH_Rdb_SetSecurityLevel** to set the database security level.
 
     <!-- @[SetSecurityLevelForRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
-    
+
     ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");

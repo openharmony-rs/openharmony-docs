@@ -296,7 +296,7 @@ struct Index {
     }
     tcp.connect(addressConnect);
     tcp.getSocketFd().then((tunnelFd: number) => {
-      console.info("tunenlfd: " + tunnelFd);
+      console.info("tunnelFd: " + tunnelFd);
       this.VpnConnection.protect(tunnelFd, (error: BusinessError) => {
         console.error(JSON.stringify(error));
       });
@@ -377,7 +377,7 @@ struct Index {
     }
     tcp.connect(addressConnect);
     tcp.getSocketFd().then((tunnelFd: number) => {
-      console.info("tunenlfd: " + tunnelFd);
+      console.info("tunnelFd: " + tunnelFd);
       this.VpnConnection.protect(tunnelFd).then(() => {
         console.info("protect success.");
       }).catch((err: BusinessError) => {
@@ -521,5 +521,5 @@ Defines the VPN configuration.
 | isIPv6Accepted      | boolean                                                        | No  |Yes|Whether IPv6 is supported. The value **true** indicates that IPv6 is supported, and the value **false** indicates the opposite. The default value is **false**.    |
 | isLegacy            | boolean                                                        | No  |Yes|Whether the built-in VPN is supported. The value **true** indicates that the built-in VPN is supported, and the value **false** indicates the opposite. The default value is **false**.  |
 | isBlocking          | boolean                                                        | No  |Yes|Whether the blocking mode is used. The value **true** indicates that the blocking mode is used, and the value **false** indicates the opposite. The default value is **false**.      |
-| trustedApplications | Array\<string\>                                                | No  |Yes|Used to specify that the bundle name of the string type can access the VPN network. |
-| blockedApplications | Array\<string\>                                                | No  |Yes|Used to specify that the bundle name of the string type cannot access the VPN network. |
+| trustedApplications | Array\<string\>                                                | No  |Yes| Used to specify that the bundle name of the string type can access the VPN network. |
+| blockedApplications | Array\<string\>                                                | No  |Yes| Used to specify that the bundle name of the string type cannot access the VPN network. |

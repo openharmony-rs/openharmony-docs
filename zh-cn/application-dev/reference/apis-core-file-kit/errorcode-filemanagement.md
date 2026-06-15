@@ -32,7 +32,7 @@ Operation not permitted
 
 1.根据当前系统的[访问控制机制](../../security/AccessToken/access-token-overview.md)，应用无法使用分享给其他应用的URI。
 
-2.根据[系统Picker](../../application-models/system-app-startup.md#拉起系统应用的方式)的运行机制，通过Picker获取到的URI仅有临时权限，无法持久化保存使用。
+2.根据[系统Picker](../../application-models/system-app-startup.md#拉起系统应用的方式)的运行机制，通过Picker获取到的URI仅具有临时权限，应用退出或设备重启后如需继续访问，需按[授权持久化](../../file-management/file-persistPermission.md)流程处理。
 
 3.URI路径不推荐进行拼接，拼接后的URI默认未授权。
 
@@ -48,11 +48,27 @@ No such file or directory
 
 **可能原因**
 
-文件或目录不存在。
+1.传入路径不是沙箱路径，或在应用沙箱内不存在该文件或目录。
+
+2.接口仅支持沙箱路径时，传入了URI。
+
+3.接口支持URI时，传入了自行拼接或二次编/解码后的不正确的URI。
+
+4.接口仅支持'utf-8'编码的文件或目录名，使用其他编码可能导致文件找不到。
+
+5.创建文件时，路径中目标文件所在的目录不存在。
 
 **处理步骤**
 
-确认文件路径是否存在。
+1.检查传入的路径是否为沙箱路径，在沙箱内是否存在。
+
+2.检查是否传错参数类型。
+
+3.检查是否传入了自行拼接或二次编/解码后的不正确的URI。
+
+4.检查文件或目录名编码格式是否是'utf-8'。
+
+5.创建文件时，检查文件父级目录是否存在。
 
 ### 13900003 没有这样的进程
 
@@ -888,6 +904,10 @@ Software caused connection abort
 
 Invalid file name
 
+**错误描述**
+
+文件名非法。
+
 **可能原因**
 
 文件名存在非法字符。
@@ -901,6 +921,10 @@ Invalid file name
 **错误信息**
 
 Invalid URI
+
+**错误描述**
+
+非法URI。
 
 **可能原因**
 
@@ -916,6 +940,10 @@ URI不合法。
 
 Invalid file name extension
 
+**错误描述**
+
+文件后缀非法。
+
 **可能原因**
 
 按照文件类型命名。
@@ -929,6 +957,10 @@ Invalid file name extension
 **错误信息**
 
 File already in the recycle bin
+
+**错误描述**
+
+文件已进入回收站。
 
 **可能原因**
 
@@ -944,6 +976,10 @@ File already in the recycle bin
 
 System inner fail
 
+**错误描述**
+
+系统内部错误。
+
 **可能原因**
 
 系统异常，发生未知错误。
@@ -958,6 +994,10 @@ System inner fail
 
 Member is not a valid PhotoKey
 
+**错误描述**
+
+成员名非法。
+
 **可能原因**
 
 传入的字符串不是类或接口的成员名。
@@ -965,6 +1005,45 @@ Member is not a valid PhotoKey
 **处理步骤**
 
 确保传入的字符串为类或接口的成员名。
+
+### 14000016 操作类型不支持
+
+**错误信息**
+
+Operation Not Support
+
+**错误描述**
+
+当前操作类型不被支持。
+
+**可能原因**
+
+1. 对非Moving Photo类型的资源执行了Moving Photo相关操作。
+
+2. 对已通过添加/移动/移除的资源，再次操作相同的URI。
+
+3. 之前的资源创建/修改请求还未提交就再次修改（包含 CREATE_FROM_URI/GET_WRITE_CACHE_HANDLER/ADD_RESOURCE 操作）。
+
+4. 对非视频类型（MediaType.VIDEO）的资源执行了视频增强等视频专属操作。
+
+5. 对非用户相册或高亮相册执行了不允许的操作。
+
+**处理步骤**
+
+1. 确认资源类型。
+   - 如执行Moving Photo相关操作（如setMovingPhotoEffectMode）需确保资源是Moving Photo类型。
+   - 如执行视频增强操作（如setVideoEnhancementAttr）需要确保MediaType为VIDEO类型。
+
+2. 避免重复操作。
+   - 在调用addAssets/removeAssets/moveAssets前，检查是否已执行过此操作，避免连续重复调用。
+
+3. 完成提交后再修改。
+   - 在调用createImageAssetRequest/createVideoAssetRequest/getWriteCacheHandler/addResource后，需调用[applyChanges](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效。
+   - 提交生效后才能对创建的资产发起新的修改请求。
+
+4. 确认相册类型。
+   - addAssets/removeAssets 仅支持用户相册和高亮相册。
+   - 系统相册（如相机、截屏相册）不支持这些操作。
 
 ## 空间统计错误码
 
@@ -1215,6 +1294,42 @@ Failed to traverse the query data partition directory.
 **错误描述**
 
 获取磁盘空间占用信息失败。
+
+**可能原因**
+
+底层文件系统异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600016 获取文件系统inode数失败
+
+**错误信息**
+
+Failed to query the inode information of the data partition.
+
+**错误描述**
+
+获取数据分区的inode信息失败。
+
+**可能原因**
+
+底层文件系统异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600017 获取当前应用的inode占用量失败
+
+**错误信息**
+
+Failed to query the inode information of the application.
+
+**错误描述**
+
+获取当前应用的inode占用量失败。
 
 **可能原因**
 

@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## OpenGL 3.0 Symbols Exported from Native APIs
 
-|Type|Symbol|
+|Symbol Type|Symbol|
 | --- | --- |
 |FUNC|glActiveTexture|
 |FUNC|glActiveTextureARB|
@@ -72,7 +72,7 @@
 |FUNC|glDepthRange|
 |FUNC|glDepthRangef|
 |FUNC|glDetachShader|
-|FUNC|glDisablevertexAttribArray|
+|FUNC|glDisableVertexAttribArray|
 |FUNC|glDispatchCompute|
 |FUNC|glDrawArrays|
 |FUNC|glDrawArraysInstanced|
@@ -154,7 +154,7 @@
 |FUNC|glProgramParameteri|
 |FUNC|glPushDebugGroup|
 |FUNC|glReadBuffer|
-|FUNC|glReadpixels|
+|FUNC|glReadPixels|
 |FUNC|glReleaseShaderCompiler|
 |FUNC|glRenderbufferStorage|
 |FUNC|glRenderbufferStorageMultisample|
@@ -237,7 +237,7 @@
 ## OpenGL 4.2 Symbols Exported from Native APIs
 
 Starting from API version 22, the following OpenGL 4.2 APIs are supported.
-|Type|Symbol|
+|Symbol Type|Symbol|
 | --- | --- |
 |FUNC|glDrawRangeElements|
 |FUNC|glTexSubImage3D|
@@ -367,7 +367,6 @@ Starting from API version 22, the following OpenGL 4.2 APIs are supported.
 |FUNC|glQueryCounter|
 |FUNC|glGetQueryObjecti64v|
 |FUNC|glGetQueryObjectui64v|
-|FUNC|glVertexAttribDivisor|
 |FUNC|glVertexAttribP1ui|
 |FUNC|glVertexAttribP1uiv|
 |FUNC|glVertexAttribP2ui|
@@ -409,7 +408,6 @@ Starting from API version 22, the following OpenGL 4.2 APIs are supported.
 |FUNC|glIsTransformFeedback|
 |FUNC|glPauseTransformFeedback|
 |FUNC|glResumeTransformFeedback|
-|FUNC|glDrawTransformFeedbackStream|
 |FUNC|glBeginQueryIndexed|
 |FUNC|glEndQueryIndexed|
 |FUNC|glGetQueryIndexediv|
@@ -496,13 +494,9 @@ Starting from API version 22, the following OpenGL 4.2 APIs are supported.
 |FUNC|glDrawElementsInstancedBaseInstance|
 |FUNC|glDrawElementsInstancedBaseVertexBaseInstance|
 |FUNC|glGetInternalformativ|
-|FUNC|glGetActiveAtomicCounterBufferiv|
 |FUNC|glTexStorage1D|
 |FUNC|glTexStorage2D|
 |FUNC|glTexStorage3D|
-|FUNC|glDrawTransformFeedbackInstanced|
-|FUNC|glDrawTransformFeedbackStreamInstanced|
-|FUNC|glDispatchCompute|
 |FUNC|glDispatchComputeIndirect|
 |FUNC|glFramebufferParameteri|
 |FUNC|glGetFramebufferParameteriv|

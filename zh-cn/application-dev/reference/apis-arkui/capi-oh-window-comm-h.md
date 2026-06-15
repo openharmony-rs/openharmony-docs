@@ -1,8 +1,8 @@
 # oh_window_comm.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -32,6 +32,7 @@
 | [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md) | WindowManager_AvoidArea | 定义避让区域结构体。 |
 | [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md) | WindowManager_MainWindowInfo | 主窗口信息。 |
 | [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) | WindowManager_WindowSnapshotConfig | 主窗口截图的配置项。 |
+| [OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md) | OH_WindowManager_DensityInfo | 窗口缩放系数相关信息，包括系统显示大小缩放系数、系统默认显示大小缩放系数、自定义显示大小缩放系数。 |
 
 
 ### 枚举
@@ -41,6 +42,12 @@
 | [WindowManager_ErrorCode](#windowmanager_errorcode) | WindowManager_ErrorCode | 窗口管理接口返回状态码枚举。 |
 | [WindowManager_AvoidAreaType](#windowmanager_avoidareatype) | WindowManager_AvoidAreaType | 避让区域枚举类型。 |
 | [WindowManager_WindowType](#windowmanager_windowtype) | WindowManager_WindowType | 窗口类型。 |
+
+### 函数
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [typedef void (\*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfocallback) | OH_WindowManager_DensityInfoCallback | 窗口缩放系数相关信息回调类型。 |
 
 ## 枚举类型说明
 
@@ -109,7 +116,19 @@ enum WindowManager_WindowType
 | -- | -- |
 | WINDOW_MANAGER_WINDOW_TYPE_APP = 0 | 子窗口。 |
 | WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | 主窗口。 |
-| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | 悬浮窗口。 |
+| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | 全局悬浮窗口。 |
 | WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | 模态窗口。 |
 
+## 函数说明
 
+### OH_WindowManager_DensityInfoCallback()
+
+```c
+typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)
+```
+
+**描述**
+
+窗口缩放系数相关信息回调类型。
+
+**起始版本：** 24

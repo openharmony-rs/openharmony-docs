@@ -268,7 +268,7 @@ let options: http.HttpRequestOptions = {
   usingProxy: true, // This field specifies whether to use the network proxy. It is supported since API version 10.
 };
 // Initiate an HTTP request.
-httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
+httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
    console.info(`Result: ${data.result}`);
    console.info(`code: ${data.responseCode}`);
@@ -490,6 +490,8 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 >**NOTE**
 >
+> When the application no longer uses the network or the network is unavailable, you need to unbind the application from the specified network to prevent the application from failing to access the Internet.
+>
 > To unbind the application from the specified network, call [setAppNet](#connectionsetappnet9) and pass a **NetHandle** object with **netId** set to **0**. For details, see the following example.
 
 ```ts
@@ -519,24 +521,55 @@ For details about the error codes, see [Network Connection Management Error Code
 
 **Example**
 
+If an application is bound to a Wi-Fi network and the Wi-Fi signal is weak or the network is disconnected, the application cannot access the Internet if it is not unbound.
+
+The following example binds the application to a Wi-Fi network. It uses the [on('netAvailable')](#onnetavailable) API to bind the application when the Wi-Fi network is available, and the [on('netLost')](#onnetlost) API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
-    return;
+// Create a NetConnection object. To bind only to the Wi-Fi network, set the network type to Wi-Fi.
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
-  // The application accesses the network using the default network.
+});
+
+// Use the on API to enable listening for netAvailable events.
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
     if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   });
 });
+
+// Use the on API to enable listening for netLost events.
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // When the network is lost, proactively unbind the specified network.
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  });
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
+});
+
 ```
 
 ## connection.setAppNet<sup>9+</sup>
@@ -557,17 +590,17 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 >**NOTE**
 >
+> When the application no longer uses the network or the network is unavailable, you need to unbind the application from the specified network to prevent the application from failing to access the Internet.
+> 
 > To unbind the application from the specified network, call [setAppNet](#connectionsetappnet9) and pass a **NetHandle** object with **netId** set to **0**. For details, see the following example.
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.netId = 0;
-  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
-    if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
-      return;
-    }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success");
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
 });
 ```
 
@@ -591,22 +624,51 @@ For details about the error codes, see [Network Connection Management Error Code
 
 **Example**
 
+If an application is bound to a Wi-Fi network and the Wi-Fi signal is weak or the network is disconnected, the application cannot access the Internet if it is not unbound.
+
+The following example binds the application to a Wi-Fi network. It uses the [on('netAvailable')](#onnetavailable) API to bind the application when the Wi-Fi network is available, and the [on('netLost')](#onnetlost) API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
-    return;
+// Create a NetConnection object. To bind only to the Wi-Fi network, set the network type to Wi-Fi.
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
+});
 
+// Use the on API to enable listening for netAvailable events.
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle).then(() => {
-    console.info("success");
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
 });
+
+// Use the on API to enable listening for netLost events.
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // When the network is lost, proactively unbind the specified network.
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
+});
+
 ```
 
 ## connection.getAllNets
@@ -1908,7 +1970,7 @@ Sets the URL of the Proxy Auto-Configuration Script (PAC) and enables the PAC pr
 
 >**NOTE**
 >
-> 1. Currently, this API can be used to parse scripts and enable the PAC proxy capability only on PCs. For other device types, only the script address is saved and the PAC proxy capability is not enabled.<br>
+> 1. This API can parse scripts and enable the PAC proxy capability on **PC/2in1<sup>20+</sup>**, **Phone<sup>23+</sup>**, **Tablet<sup>23+</sup>** and **TV<sup>23+</sup>** devices. For wearable devices, only the script address is saved, and the PAC proxy capability is not enabled.<br>
 > 2. This API does not verify the URL authenticity. After the URL is set on the PC, the PAC proxy is started. If the URL is incorrect, the proxy fails to be started and the error code 2100002 is returned.
 
 **Required permissions**: ohos.permission.SET_PAC_URL
@@ -1978,8 +2040,8 @@ Parses the specified URL proxy address based on the configured PAC script and re
 > **NOTE**
 >
 > 1. You can use [setPacFileUrl](#connectionsetpacfileurl20) or [setPacUrl](#connectionsetpacurl15) to set the PAC script.<br>
-> 2. If no PAC script is set before this interface is called, an empty string is returned.
-> 3. Currently, the [setPacFileUrl](#connectionsetpacfileurl20) interface can be used to parse scripts and enable the PAC proxy capability only for PCs. Therefore, this interface can be used to obtain PAC proxy information only for PCs. If other devices call this API, the function does not take effect and an empty string is returned.
+> 2. If no PAC script is set before this interface is called, an empty string is returned.<br>
+> 3. The [setPacFileUrl](#connectionsetpacfileurl20) API supports parsing scripts and enabling the PAC proxy capability on PC/2in1<sup>20+</sup>, Phone<sup>23+</sup>, Tablet<sup>23+</sup> and TV<sup>23+</sup> devices. Therefore, this API can be used to obtain the PAC proxy information on PCs. For wearable devices, this API does not take effect, and an empty string is returned.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -2489,7 +2551,7 @@ For details about the error codes, see [Network Connection Management Error Code
 ```typescript
 import { connection } from '@kit.NetworkKit';
 
-let result = connection.getDnsAscii ("www.example.com," connection.ConversionProcess.NO_CONFIGURATION);
+let result = connection.getDnsAscii("www.example.com," connection.ConversionProcess.NO_CONFIGURATION);
 console.info(result);  // Expected result: www.xn--fsq092h.com
 let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info(result);  // Expected result: www.example.com
@@ -2508,7 +2570,7 @@ Converts host names from ASCII to Unicode using the Punycode encoding mode and u
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ---- | ----------------- |
 | host | string | Yes| Host name to be converted.|
-| flag | [ConversionProcess](#conversionprocess23) | No| Conversion flow parameter. The default value is NO_CONFIGURATION.|
+| flag | [ConversionProcess](#conversionprocess23) | No| Conversion flow parameter. The default value is **NO_CONFIGURATION**.|
 
 **Return value**
 
@@ -2535,6 +2597,70 @@ let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.Conversi
 console.info(result);  // Expected result: www.example.com
 let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info(result);  // Expected result: www.example.com
+```
+
+## connection.getSystemNetPortStates<sup>24+</sup>
+
+getSystemNetPortStates(): Promise\<NetPortStatesInfo>
+
+Obtains information about all TCP and UDP ports currently listened by the system, and the PID and UID of the processes that listen for the ports. Both IPv4 and IPv6 addresses are supported. 
+
+> **NOTE**
+>
+> This API is used to obtain information about the TCP and UDP ports currently listened by the system. The detailed fields are as follows:
+>
+>  TCP port fields: local address, local port, remote address, remote port, TCP connection status, process PID, and process UID 
+>
+>  UDP port fields: local address, local port, process PID, and process UID 
+
+**Required permissions**: ohos.permission.GET_IP_MAC_INFO
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ----------------------- |
+| Promise\<[NetPortStatesInfo](#netportstatesinfo24)> | Promise used to return the TCP and UDP port information.|
+
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                         |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service.|
+| 2100003 | System internal error.            |
+
+**Example**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getSystemNetPortStates().then((data: connection.NetPortStatesInfo) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  if (data.tcpPortStatesInfo?.length) {
+    data.tcpPortStatesInfo?.forEach(item => {
+      console.info(`Succeeded to get Tcp data: ${JSON.stringify(item)}`);
+    })
+  } else {
+    console.info("TcpPortStatesInfo is undefined ");
+  }
+  if (data.udpPortStatesInfo?.length) {
+    data.udpPortStatesInfo?.forEach(item => {
+      console.info(`Succeeded to get Udp data: ${JSON.stringify(item)}`);
+    })
+  } else {
+    console.info("UdpPortStatesInfo is undefined ");
+  }
+}).catch((error: BusinessError) => {
+  console.error(`Error fetching getSystemNetPortStates. Code:${error.code}, message:${error.message}`);
+});
 ```
 
 ## NetConnection
@@ -3384,6 +3510,28 @@ Enumerates the parameters of the ASCII/Unicode transcoding process.
 | ALLOW_UNASSIGNED | 1 | Allows the translation of domain names that contain unassigned Unicode code points (in a Unicode character set, not all code points are assigned characters, i.e., unassigned Unicode code points).|
 | USE_STD3_ASCII_RULES | 2 | During the conversion, the STD-3 ASCII rule (RFC 1123 standard) is forcibly used to check the generated ASCII domain name.|
 
+## TcpState<sup>24+</sup>
+
+Enumerates TCP states.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+|            Name        | Value  | Description       |
+| ----------------------- | ---- | ---------- |
+| TCP_ESTABLISHED | 1  | The connection is established, and data can be sent and received properly. |
+| TCP_SYN_SENT    | 2  | The client sends SYN and waits for ACK+SYN from the server (the first step of the three-way handshake).|
+| TCP_SYN_RECV    | 3  | The server receives SYN and sends ACK+SYN, and waits for ACK from the client (the second step of the three-way handshake).|
+| TCP_FIN_WAIT1   | 4  | The active end sends FIN and waits for ACK from the peer end.|
+| TCP_FIN_WAIT2   | 5  | The active end receives ACK of FIN and waits for ACK from the peer end.|
+| TCP_TIME_WAIT   | 6  | The active end receives FIN from the peer end and replies with ACK. After two times of the maximum segment lifetime, the connection is completely released.|
+| TCP_CLOSE       | 7  | Initial/closed state, with no connection.|
+| TCP_CLOSE_WAIT  | 8  | The passive end receives FIN and sends ACK, and waits for FIN from the peer end.|
+| TCP_LAST_ACK    | 9  | The passive end sends FIN and waits for ACK from the peer end.|
+| TCP_LISTEN      | 10 | The server listens and waits for the client to connect.|
+| TCP_CLOSING     | 11 | Both ends send FIN and wait for ACK from each other.  |
+
 ## HttpProxy<sup>10+</sup>
 
 Represents the HTTP proxy configuration.
@@ -3498,14 +3646,16 @@ Defines the network connection properties.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name   | Type  | Read Only|Optional|Description                     |
-| ------ | ------ | --- |---|------------------------- |
-| interfaceName | string                              | No| No|Network interface card (NIC) name.                               |
-| domains       | string                              | No| No|Domain name.                                   |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | No| No|Network link information.                               |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | No| No|Network route information.                               |
-| dnses         | Array\<[NetAddress](#netaddress)>   | No| No|Network address. For details, see [NetAddress](#netaddress).|
-| mtu           | number                              | No| No|Maximum transmission unit (MTU).                           |
+| Name   | Type  | Read Only|Optional| Description                                                                                            |
+| ------ | ------ | --- |---|------------------------------------------------------------------------------------------------|
+| interfaceName | string                              | No| No| Network interface card (NIC) name.                                                                                         |
+| domains       | string                              | No| No| Domain name.                                                                                           |
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | No| No| Network link information.                                                                                         |
+| routes        | Array\<[RouteInfo](#routeinfo)>     | No| No| Network route information.                                                                                         |
+| dnses         | Array\<[NetAddress](#netaddress)>   | No| No| Network address. For details, see [NetAddress](#netaddress).                                                             |
+| mtu           | number                              | No| No| Maximum transmission unit (MTU).                                                                                       |
+| isIPv4LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv4 is available on the current network. **true**: IPv4 is available when the IPv4 address is valid and the default IPv4 route exists. **false**: IPv4 is unavailable when the IPv4 address is invalid or the default IPv4 route does not exist.<br>**Model restriction**: This API can be used only in the stage model.|
+| isIPv6LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv6 is available on the current network. **true**: IPv6 is available when the IPv6 address is valid and the default IPv6 route exists. **false**: IPv6 is unavailable when the IPv6 address is invalid or the default IPv6 route does not exist.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## RouteInfo
 
@@ -3608,3 +3758,51 @@ Enumerates network protocol types.
 | --------------- | ---- | ------------ |
 | PROTO_TYPE_TCP  | 6    | TCP network protocol.|
 | PROTO_TYPE_UDP  | 17   | UDP network protocol.|
+
+## TcpNetPortStatesInfo<sup>24+</sup>
+
+Describes the TCP port state information.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| tcpLocalIp    | string | No| No|Local IP address of the TCP network.                      |
+| tcpLocalPort  | number | No| No|Local port of the TCP network. The value range is \[0, 65535].|
+| tcpRemoteIp   | string | No| No|Remote IP address of the TCP network. |
+| tcpRemotePort | number | No| No|Remote port of the TCP network. The value range is \[0, 65535].|
+| tcpUid        | number | No| No|UID of the user who listens for the TCP port.|
+| tcpPid        | number | No| No|PID of the process that listens for the TCP port.|
+| tcpState      | [TcpState](#tcpstate24) | No| No|TCP network status. |
+
+
+## UdpNetPortStatesInfo<sup>24+</sup>
+
+Describes the UDP port state information.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| udpLocalIp    | string | No| No|Local IP address of the UDP network.                      |
+| udpLocalPort  | number | No| No|Local port of the UDP network. The value range is \[0, 65535].|
+| udpUid        | number | No| No|UID of the user who listens for the UDP port.|
+| udpPid        | number | No| No|PID of the process that listens for the UDP port.|
+
+
+## NetPortStatesInfo<sup>24+</sup>
+
+Describes the information about the TCP and UDP ports that are currently listened for by the system.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo](#tcpnetportstatesinfo24)\> | No| Yes| TCP information currently listened for by the system.  |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo](#udpnetportstatesinfo24)\> | No| Yes| UDP information currently listened for by the system.  |

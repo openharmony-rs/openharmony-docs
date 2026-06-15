@@ -96,6 +96,19 @@ Enumerates call states.
 | [call.CallState](js-apis-call.md#callstate) | Call state. (Only the **CALL_STATE_OFFHOOK** state is reported during an outgoing call.)|
 
 
+## CCallState<sup>23+</sup>
+
+type CCallState = call.CCallState
+
+Enumerates carrier call states.
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+|       Type      |            Description            |
+| ---------------- | --------------------------- |
+| [call.CCallState](js-apis-call.md#ccallstate23) | Call state (of the carrier).|
+
+
 ## CardType
 
 type CardType = sim.CardType
@@ -149,7 +162,7 @@ Registers an observer for network status change events. This API uses an asynchr
 | Name  | Type                                                     | Mandatory| Description                                                             |
 | -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | type     | string                                                    | Yes  | Network status change event. This field has a fixed value of **networkStateChange**.                |
-| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | Yes  | Callback used to return the result, which is the [NetworkState](js-apis-radio.md#networkstate) object.|
+| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | Yes  | Callback used to return the network status object, which is the [NetworkState](js-apis-radio.md#networkstate) object.|
 
 **Error codes**
 
@@ -189,7 +202,7 @@ Registers an observer for network status change events of the SIM card in the sp
 | -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | type     | string                                                    | Yes  | Network status change event. This field has a fixed value of **networkStateChange**.                |
 | options  | [ObserverOptions](#observeroptions11)                     | Yes  | Event subscription parameters.                                       |
-| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | Yes  | Callback used to return the result. For details, see [NetworkState](js-apis-radio.md#networkstate).|
+| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | Yes  | Callback used to return the network status object, which is the [NetworkState](js-apis-radio.md#networkstate) object.|
 
 **Error codes**
 
@@ -233,7 +246,7 @@ Unregisters the observer for network status change events. This API uses an asyn
 | Name  | Type                                                     | Mandatory| Description                                                        |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                    | Yes  | Network status change event. This field has a fixed value of **networkStateChange**.                |
-| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | No  | Callback used to return the result. For details, see [NetworkState](js-apis-radio.md#networkstate).|
+| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | No  | Callback used to return the network status object, which is the [NetworkState](js-apis-radio.md#networkstate) object.|
 
 **Error codes**
 
@@ -272,7 +285,7 @@ Registers an observer for signal status change events. This API uses an asynchro
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | Yes  | Signal status change event. This field has a fixed value of **signalInfoChange**.             |
-| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | Yes  | Callback used to return the result. For details, see [SignalInformation](js-apis-radio.md#signalinformation).|
+| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | Yes  | Callback used to return the signal strength object. For details, see [SignalInformation](js-apis-radio.md#signalinformation).|
 
 **Error codes**
 
@@ -311,7 +324,7 @@ Registers an observer for signal status change events of the SIM card in the spe
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | Yes  | Signal status change event. This field has a fixed value of **signalInfoChange**.             |
 | options  | [ObserverOptions](#observeroptions11)                        | Yes  | Event subscription parameters.                                  |
-| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | Yes  | Callback used to return the result. For details, see [SignalInformation](js-apis-radio.md#signalinformation).|
+| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | Yes  | Callback used to return the signal strength object. For details, see [SignalInformation](js-apis-radio.md#signalinformation).|
 
 **Error codes**
 
@@ -356,7 +369,7 @@ Unregisters the observer for signal status change events. This API uses an async
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Signal status change event. This field has a fixed value of **signalInfoChange**.             |
-| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | No  | Callback used to return the result. For details, see [SignalInformation](js-apis-radio.md#signalinformation).|
+| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | No  | Callback used to return the signal strength object. For details, see [SignalInformation](js-apis-radio.md#signalinformation).|
 
 **Error codes**
 
@@ -398,7 +411,7 @@ Registers an observer for call status change events. This API uses an asynchrono
 | Name  | Type                                          | Mandatory| Description                                                       |
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | string                                        | Yes  | Call status change event. This field has a fixed value of **callStateChange**.               |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\> | Yes  | Callback used to return the result,<br>which is the **CallStateInfo** object. In this object:<br>- Only **state** is accessible to third-party applications. - **number** is only accessible to system applications.|
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\> | Yes  | Callback function used to return the result,<br>which is the **CallStateInfo** object. In this object:<br>- Only **state** is accessible to third-party applications. - **number** is only accessible to system applications.|
 
 **Error codes**
 
@@ -435,7 +448,7 @@ Registers an observer for call status change events. This API uses an asynchrono
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | Yes  | Call status change event. This field has a fixed value of **callStateChange**.              |
 | options  | [ObserverOptions](#observeroptions11)                        | Yes  | Event subscription parameters.                                 |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | Yes  | Callback used to return the result,<br>which is the **CallStateInfo** object. In this object:<br>- Only **state** is accessible to third-party applications. - **number** is only accessible to system applications.|
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | Yes  | Callback function used to return the result,<br>which is the **CallStateInfo** object. In this object:<br>- Only **state** is accessible to third-party applications. - **number** is only accessible to system applications.|
 
 **Error codes**
 
@@ -478,7 +491,7 @@ Unregisters the observer for call status change events. This API uses an asynchr
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | Yes  | Call status change event. This field has a fixed value of **callStateChange**.              |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | No  | Callback used to return the result. For details, see [CallState](js-apis-call.md#callstate).<br>**number**: phone number.|
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | No  | Callback function used to return the call status information object. For details, see [CallState](js-apis-call.md#callstate).<br>**number**: phone number.|
 
 **Error codes**
 
@@ -517,8 +530,8 @@ Registers an observer for extended call status change events. This API uses an a
 
 | Name  | Type                                          | Mandatory| Description                                                       |
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
-| type     | string                                        | Yes  | Extended call status change event. This field has a fixed value of **callStateChange**.               |
-| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | Yes  | Callback used to return the result,<br>which is the **TelCallState** object.<br>|
+| type     | string                                        | Yes  | Extended call status change event. This field has a fixed value of **callStateChangeEx**.               |
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | Yes  | Callback function used to return the call status information object.<br>which is the **TelCallState** object.<br>|
 | options  | [ObserverOptions](#observeroptions11)                              | No| Event subscription parameters.               |
 
 **Error codes**
@@ -566,7 +579,7 @@ Unregisters the observer for extended call status change events. This API uses a
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | Yes  | Call status change event. This field has a fixed value of **callStateChange**.              |
-| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\>                | No  | Callback used to return the result. For details, see [TelCallState](js-apis-call.md#telcallstate21).<br>|
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\>                | No  | Callback function used to return the call status information object. For details, see [TelCallState](js-apis-call.md#telcallstate21) in **call**.<br>|
 
 **Error codes**
 
@@ -606,7 +619,7 @@ Registers an observer for connection status change events of the cellular data l
 | Name  | Type                              | Mandatory| Description                                                                |
 | -------- | --------------------------------- | ---- | -------------------------------------------------------------------- |
 | type     | string                            | Yes  | Cellular data connection status event. This field has a fixed value of **cellularDataConnectionStateChange**.|
-| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\>  | Yes  | Callback used to return the result. For details, see [DataConnectState](js-apis-telephony-data.md#dataconnectstate) and [RadioTechnology](js-apis-radio.md#radiotechnology).|
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\>  | Yes  | Callback function used to return the cellular data connection status information object. For details, see [DataConnectState](js-apis-telephony-data.md#dataconnectstate) of **data** and [RadioTechnology](js-apis-radio.md#radiotechnology) of **radio**.|
 
 **Error codes**
 
@@ -643,7 +656,7 @@ Registers an observer for connection status change events of the cellular data l
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Cellular data connection status event. This field has a fixed value of **cellularDataConnectionStateChange**.|
 | options  | [ObserverOptions](#observeroptions11)                        | Yes  | Event subscription parameters.            |
-| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | Yes  | Callback used to return the result. For details, see [DataConnectState](js-apis-telephony-data.md#dataconnectstate) and [RadioTechnology](js-apis-radio.md#radiotechnology).|
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | Yes  | Callback function used to return the cellular data connection status information object. For details, see [DataConnectState](js-apis-telephony-data.md#dataconnectstate) of **data** and [RadioTechnology](js-apis-radio.md#radiotechnology) of **radio**.|
 
 **Error codes**
 
@@ -686,7 +699,7 @@ Unregisters the observer for connection status change events of the cellular dat
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Cellular data connection status event. This field has a fixed value of **cellularDataConnectionStateChange**.|
-| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | No  | Callback used to return the result. For details, see [DataConnectState](js-apis-telephony-data.md#dataconnectstate) and [RadioTechnology](js-apis-radio.md#radiotechnology).|
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | No  | Callback function used to return the cellular data connection status information object. For details, see [DataConnectState](js-apis-telephony-data.md#dataconnectstate) of **data** and [RadioTechnology](js-apis-radio.md#radiotechnology) of **radio**.|
 
 **Error codes**
 
@@ -726,7 +739,7 @@ Registers an observer for the uplink and downlink data flow status change events
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes | Cellular data flow change event. This field has a fixed value of **cellularDataFlowChange**.        |
-| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | Yes  | Callback used to return the result. For details, see [DataFlowType](js-apis-telephony-data.md#dataflowtype).|
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | Yes  | Callback function used to return the data flow status object. For details, see [DataFlowType](js-apis-telephony-data.md#dataflowtype) in **data**.|
 
 **Error codes**
 
@@ -765,7 +778,7 @@ Registers an observer for the uplink and downlink data flow status change events
 | -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                     | Yes  | Cellular data flow change event. This field has a fixed value of **cellularDataFlowChange**.        |
 | options   | [ObserverOptions](#observeroptions11)                     | Yes  | Event subscription parameters.                                                  |
-| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | Yes  | Callback used to return the result. For details, see [DataFlowType](js-apis-telephony-data.md#dataflowtype).|
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | Yes  | Callback function used to return the data flow status object. For details, see [DataFlowType](js-apis-telephony-data.md#dataflowtype) in **data**.|
 
 **Error codes**
 
@@ -810,7 +823,7 @@ Unregisters the observer for the uplink and downlink data flow status change eve
 | Name  | Type                                                               | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                             | Yes  | Cellular data flow change event. This field has a fixed value of **cellularDataFlowChange**.  |
-| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | No  | Callback used to return the result. For details, see [DataFlowType](js-apis-telephony-data.md#dataflowtype).|
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | No  | Callback function used to return the data flow status object. For details, see [DataFlowType](js-apis-telephony-data.md#dataflowtype) in **data**.|
 
 **Error codes**
 
@@ -856,7 +869,7 @@ Registers an observer for SIM card status change events. This API uses an asynch
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | Yes  | SIM status change event. This field has a fixed value of **simStateChange**.                |
-| callback | Callback\<[SimStateData](#simstatedata7)\> | Yes  | Callback used to return the result.|
+| callback | Callback\<[SimStateData](#simstatedata7)\> | Yes  | Callback function used to return the SIM status data object.|
 
 **Error codes**
 
@@ -893,7 +906,7 @@ Registers an observer for status change events of the SIM card in the specified 
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | SIM status change event. This field has a fixed value of **simStateChange**.                |
 | options   | [ObserverOptions](#observeroptions11)                       | Yes  | Event subscription parameters.                                 |
-| callback | Callback\<[SimStateData](#simstatedata7)\> | Yes  | Callback used to return the result.|
+| callback | Callback\<[SimStateData](#simstatedata7)\> | Yes  | Callback function used to return the SIM status data object.|
 
 **Error codes**
 
@@ -936,7 +949,7 @@ Unregisters the observer for SIM card status change events. This API uses an asy
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | SIM status change event. This field has a fixed value of **simStateChange**.                |
-| callback | Callback\<[SimStateData](#simstatedata7)\> | No  | Callback used to return the result.|
+| callback | Callback\<[SimStateData](#simstatedata7)\> | No  | Callback function used to return the SIM status data object.|
 
 **Error codes**
 
@@ -975,7 +988,7 @@ Registers an observer for account information change events of the SIM card. Thi
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Account information change event. This field has a fixed value of **iccAccountInfoChange**.                |
-| callback | Callback\<void\> | Yes  | Callback used to return the result.|
+| callback | Callback\<void\> | Yes  | Callback used to return the result. If the account is successfully changed, the value of **err** is **undefined**. Otherwise, the value is an error object.|
 
 **Error codes**
 
@@ -1015,7 +1028,7 @@ Unregisters the observer for account information change events of the SIM card. 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Account information change event. This field has a fixed value of **iccAccountInfoChange**.                |
-| callback | Callback\<void\> | No  | Callback used to return the result.|
+| callback | Callback\<void\> | No  | Callback used to return the result. If the account is successfully changed, the value of **err** is **undefined**. Otherwise, the value is an error object.|
 
 **Error codes**
 
@@ -1056,8 +1069,8 @@ Registers an observer for SIM card activation state changes. This API uses an as
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| slotId   | number            | No   | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2.   |
-|callback  | Callback&lt;boolean&gt;|No| This API uses a callback to return the result.<br>- **true**: activated.<br>- **false**: not activated.|
+| slotId   | number            | Yes   | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2.   |
+|callback  | Callback&lt;boolean&gt;|Yes| Callback function used to return whether the SIM card is activated.<br>- **true**: activated.<br>- **false**: not activated.|
 
 **Error codes**
 
@@ -1098,7 +1111,7 @@ Unregisters an observer for SIM card activation state changes. This API uses an 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-|callback  | Callback&lt;boolean&gt;|No| This API uses a callback to return the result.<br>- **true**: activated.<br>- **false**: not activated.|
+|callback  | Callback&lt;boolean&gt;|No| Callback function used to return whether the SIM card is activated.<br>- **true**: activated.<br>- **false**: not activated.|
 
 **Error codes**
 
@@ -1132,11 +1145,13 @@ Subscribes to the carrier call state changes and obtains the call number. This m
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
+**Required permissions**: ohos.permission.MANAGE_CALL_FOR_DEVICES
+
 **Parameters**
 
 |     Name           |         Type     | Mandatory| Description                                   |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | Yes  | Callback used to return the result,<br>The application can obtain CCallState.<br>|
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | Yes  | Callback function used to return the call status information object.<br>The application can obtain CCallState.<br>|
 | options  | [ObserverOptions](#observeroptions11)                  | No| Event subscription parameters.               |
 
 **Error codes**
@@ -1146,17 +1161,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied                         |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
 
 **Example**
 
 ```ts
-import { call } from '@kit.TelephonyKit';
+import { call, observer } from '@kit.TelephonyKit';
 
-let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 let options: observer.ObserverOptions = {
@@ -1169,17 +1184,19 @@ observer.onCCallStateChange(callback);
 
 ## observer.offCCallStateChange<sup>23+</sup>
 
-offCCallStateChange\(callback: Callback\<CCallStateInfo\>\): void
+offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 
 Cancels the listening on the carrier call status and obtaining of the call number by a third-party application. This method uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Telephony.StateRegistry
 
+**Required permissions**: ohos.permission.MANAGE_CALL_FOR_DEVICES
+
 **Parameters**
 
 |     Name           |         Type     | Mandatory| Description                                   |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | Yes  | Callback used to return the result,<br>The application can obtain CCallState.<br>|
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | No  | Callback function used to return the call status information object.<br>The application can obtain CCallState.<br>|
 
 **Error codes**
 
@@ -1188,21 +1205,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied                         |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
 
 **Example**
 
 ```ts
-import { call } from '@kit.TelephonyKit';
+import { call, observer } from '@kit.TelephonyKit';
 
-let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 
-observer.off(callback);
+observer.offCCallStateChange(callback);
+observer.offCCallStateChange();
 ```
 
 ## LockReason<sup>8+</sup>
@@ -1253,6 +1271,18 @@ Defines information about the call status.
 | number              | string                                 | No  | No  | Phone number.|
 
 
+## CCallStateInfo<sup>23+</sup>
+
+Defines information about the call status.
+
+**System capability**: SystemCapability.Telephony.StateRegistry
+
+|     Name           |                 Type                   | Read-Only| Optional| Description    |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CCallState](js-apis-call.md#ccallstate23) | No  | No  | Call type.|
+| teleNumber              | string                                 | No  | No  | Phone number.|
+
+
 ## DataConnectionStateInfo<sup>11+</sup>
 
 Defines information about the data connection status.
@@ -1263,7 +1293,7 @@ Defines information about the data connection status.
 | Name| Type                                  |  Read-Only| Optional| Description|
 | ----- |--------------------------------------| ----- | ---- | -----|
 |  state   | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) |  No |  No | Data connection status.|
-| network | [RatType](js-apis-radio.md#radiotechnology)  |  No |  No | Network type.|
+| network | [RatType](#rattype)  |  No |  No | Network type.|
 
 ## ObserverOptions<sup>11+</sup>
 

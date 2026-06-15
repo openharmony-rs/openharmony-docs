@@ -1,10 +1,10 @@
 # @ohos.enterprise.EnterpriseAdminExtensionAbility (EnterpriseAdminExtensionAbility)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 This module provides the [EnterpriseAdminExtensionAbility](../../mdm/mdm-kit-term.md#enterpriseadminextensionability).
 
@@ -12,9 +12,9 @@ To have the capabilities provided by this module, for example, to receive a noti
 
 > **NOTE**
 > 
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 > 
 
 ## Modules to Import
@@ -54,7 +54,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAdminEnabled() {
   }
-};
+}
 ```
 
 ### onAdminDisabled
@@ -76,7 +76,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAdminDisabled() {
   }
-};
+}
 ```
 
 ### onBundleAdded
@@ -105,7 +105,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onBundleAdded(bundleName: string) {
     console.info(`Succeeded in calling onBundleAdded callback, added bundle name : ${bundleName}`);
   }
-};
+}
 ```
 
 ### onBundleAdded<sup>14+</sup>
@@ -132,11 +132,11 @@ Called when applications are installed. The application bundle name and account 
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
-  // Since there is another callback method with the same name onBundleAdded(bundleName: string) that lacks the accountId parameter, accountId must be marked as optional in actual invocations. Please refer to the sample code for the proper syntax. Removing the question mark (?) following accountId will cause a compilation error.
+  // Since there is another callback method with the same name onBundleAdded(bundleName: string) that does not have the accountId parameter, accountId must be marked as optional in actual invocations. Please refer to the sample code for the proper syntax. Removing the question mark (?) following accountId will cause a compilation error.
   onBundleAdded(bundleName: string, accountId?: number) {
     console.info(`Succeeded in calling onBundleAdded callback, added bundle name : ${bundleName}, accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onBundleRemoved
@@ -165,7 +165,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onBundleRemoved(bundleName: string) {
     console.info(`Succeeded in calling onBundleRemoved callback, removed bundle name : ${bundleName}`);
   }
-};
+}
 ```
 
 ### onBundleRemoved<sup>14+</sup>
@@ -192,11 +192,11 @@ Called when applications are uninstalled. The application bundle name and accoun
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
-  // Since there is another callback method with the same name onBundleRemoved(bundleName: string) that lacks the accountId parameter, accountId must be marked as optional in actual invocations. Please refer to the sample code for the proper syntax. Removing the question mark (?) following accountId will cause a compilation error.
+  // Since there is another callback method with the same name onBundleRemoved(bundleName: string) that does not have the accountId parameter, accountId must be marked as optional in actual invocations. Please refer to the sample code for the proper syntax. Removing the question mark (?) following accountId will cause a compilation error.
   onBundleRemoved(bundleName: string, accountId?: number) {
     console.info(`Succeeded in calling onBundleRemoved callback, removed bundle name : ${bundleName}, accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onAppStart
@@ -225,7 +225,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAppStart(bundleName: string) {
     console.info(`Succeeded in calling onAppStart callback, started bundle name : ${bundleName}`);
   }
-};
+}
 ```
 
 ### onAppStop
@@ -254,7 +254,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAppStop(bundleName: string) {
     console.info(`Succeeded in calling onAppStop callback, stopped bundle name : ${bundleName}`);
   }
-};
+}
 ```
 ### onSystemUpdate
 
@@ -283,7 +283,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo) {
     console.info(`Succeeded in calling onSystemUpdate callback, version name  : ${systemUpdateInfo.versionName}`);
   }
-};
+}
 ```
 
 ### onStart
@@ -306,7 +306,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onStart() {
     console.info(`Succeeded in calling onStart callback.`);
   }
-};
+}
 ```
 
 ### onAccountAdded<sup>18+</sup>
@@ -334,7 +334,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAccountAdded(accountId: number) {
     console.info(`Succeeded in calling onAccountAdded callback, added accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onAccountSwitched<sup>18+</sup>
@@ -362,7 +362,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAccountSwitched(accountId: number) {
     console.info(`Succeeded in calling onAccountSwitched callback, switched accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onAccountRemoved<sup>18+</sup>
@@ -390,7 +390,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAccountRemoved(accountId: number) {
     console.info(`Succeeded in calling onAccountRemoved callback, removed accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onKioskModeEntering<sup>20+</sup>
@@ -421,7 +421,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onKioskModeEntering(bundleName: string, accountId: number): void {
     console.info(`Succeeded in calling onKioskModeEntering callback, bundleName:${bundleName}, accountId:${accountId}`);
   }
-};
+}
 ```
 
 ### onKioskModeExiting<sup>20+</sup>
@@ -450,7 +450,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onKioskModeExiting(bundleName: string, accountId: number): void {
     console.info(`Succeeded in calling onKioskModeExiting callback, bundleName:${bundleName}, accountId:${accountId}`);
   }
-};
+}
 ```
 
 ### onMarketAppInstallResult<sup>22+</sup>
@@ -479,7 +479,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void {
     console.info(`Succeeded in calling onMarketAppInstallResult callback, bundleName:${bundleName}, result:${result}`);
   }
-};
+}
 ```
 
 ### onDeviceAdminEnabled<sup>23+</sup>
@@ -506,7 +506,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onDeviceAdminEnabled(bundleName: string) {
   }
-};
+}
 ```
 
 ### onDeviceAdminDisabled<sup>23+</sup>
@@ -533,25 +533,25 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onDeviceAdminDisabled(bundleName: string) {
   }
-};
+}
 ```
 
-## EnterpriseAdminExtensionAbility.onKeyEvent<sup>23+</sup>
+### onKeyEvent<sup>23+</sup>
 
 onKeyEvent(keyEvent: systemManager.KeyEvent): void
 
 [System key event](./js-apis-enterprise-systemManager.md#keyevent23) callback. The MDM application needs to deliver key event handling policies via the [systemManager.addKeyEventPolicies](./js-apis-enterprise-systemManager.md#systemmanageraddkeyeventpolicies23) API. When a system key event is triggered, if the event matches the delivered policy, this callback will be invoked. The callback parameter [keyEvent](./js-apis-enterprise-systemManager.md#keyevent23) contains information about currently triggered key events, which are introduced below.
 
-Single-key event. When a single key on the device is triggered, the [onKeyEvent](#enterpriseadminextensionabilityonkeyevent23) callback will be invoked twice (once on key press and once on key release). You can determine whether the key is pressed or released based on the **keyAction** property in [keyEvent](./js-apis-enterprise-systemManager.md#keyevent23). The **keyItems** property in [keyEvent](./js-apis-enterprise-systemManager.md#keyevent23) can be ignored for single-key events.
+Single-key event. When a single key on the device is triggered, the [onKeyEvent](#onkeyevent23) callback will be invoked twice (once on key press and once on key release). You can determine whether the key is pressed or released based on the **keyAction** property in [keyEvent](./js-apis-enterprise-systemManager.md#keyevent23). The **keyItems** property in [keyEvent](./js-apis-enterprise-systemManager.md#keyevent23) can be ignored for single-key events.
 
 Combined-key event. Only the power button, volume up button, and volume down button can be combined. When a user presses a key combination, the callback for the subsequently pressed key will carry information about all currently pressed keys via the **keyItems** property in [keyEvent](./js-apis-enterprise-systemManager.md#keyevent23). All other response logic is consistent with that of single-key events.
 
-Long-press event. When a single key or key combination is pressed for an extended period, the [onKeyEvent](#enterpriseadminextensionabilityonkeyevent23) callback will be triggered continuously at an interval of 50 ms (the actual interval may be slightly longer depending on system status and performance). For each callback event, the **actionTime** property in [keyEvent](./js-apis-enterprise-systemManager.md#keyevent23) remains the same as the **actionTime** property in the [keyEvent](./js-apis-enterprise-systemManager.md#keyevent23) of the initial key press callback. All other response logic is consistent with that of single-key and combined key events.
+Long-press event. When a single key or key combination is pressed for an extended period, the [onKeyEvent](#onkeyevent23) callback will be triggered continuously at an interval of 50 ms (the actual interval may be slightly longer depending on system status and performance). For each callback event, the **actionTime** property in [keyEvent](./js-apis-enterprise-systemManager.md#keyevent23) remains the same as the **actionTime** property in the [keyEvent](./js-apis-enterprise-systemManager.md#keyevent23) of the initial key press callback. All other response logic is consistent with that of single-key and combined key events.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-  
+
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
@@ -576,7 +576,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 1.2 The user short-presses the power key.
   * 1.3 The callback is triggered.
   * Result (press): onKeyEvent event:{"actionTime": 1895101259, "keyCode": 0, "keyAction": 0,
-  *	         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
+  *          "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
   *       Result (release): onKeyEvent event:{"actionTime": 1895478977, "keyCode": 0, "keyAction": 1,
   *         "keyItems": [{"pressed": false, "keyCode": 0, "downTime": 1895101259}]}
   *
@@ -654,10 +654,10 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onKeyEvent(keyEvent: systemManager.KeyEvent): void {
     console.info(`Succeeded in calling onKeyEvent callback, key event:${JSON.stringify(keyEvent)}`);
   }
-};
+}
 ```
 
-## EnterpriseAdminExtensionAbility.onLogCollected<sup>23+</sup>
+### onLogCollected<sup>23+</sup>
 
 onLogCollected(result: common.Result): void
 
@@ -697,24 +697,80 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
       // Replace the app sandbox path with the actual one.
       let targetPath = this.context.tempDir;
       try {
-          let files: string[] = fs.listFileSync(filesDir);
-          // Obtain logs from the /data/edm/log sandbox directory.
-          files.forEach(value => {
-             fs.copyFileSync(filesDir + '/' + value, targetPath + '/' + value);
-          });
-          let wantTemp: Want = {
-              // Replace with actual values.
-              bundleName: 'com.example.myapplication',
-              abilityName: 'EnterpriseAdminAbility'
-          };
-          systemManager.finishLogCollected(wantTemp);
+        let files: string[] = fs.listFileSync(filesDir);
+        // Obtain logs from the /data/edm/log sandbox directory.
+        files.forEach(value => {
+          fs.copyFileSync(filesDir + '/' + value, targetPath + '/' + value);
+        });
+        let wantTemp: Want = {
+          // Replace with actual values.
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EnterpriseAdminAbility'
+        };
+        systemManager.finishLogCollected(wantTemp);
       } catch (error) {
-          console.info("onLogCollected", "error: " + JSON.stringify(error))
+        console.info("onLogCollected", "error: " + JSON.stringify(error))
       }
     }
     if (result === common.Result.FAIL) {
       console.error("onLogCollected", "Failed to collect log.")
     }
   }
-};
+}
+```
+
+### onStartupGuideCompleted<sup>24+</sup>
+
+onStartupGuideCompleted(scene: common.StartupScene): void
+
+Callback for the startup wizard completion event. You can receive this callback only after you register the **MANAGED_EVENT_STARTUP_GUIDE_COMPLETED** event through the [adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync) API. The device administrator application can subscribe to startup wizard completion events. When the initial switch to a sub-user (only on PCs), OTA upgrade, and first-time startup wizard are complete on an enterprise device, the device administrator application reports the event in this callback to notify the enterprise administrator.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                  |
+| ---------- | ------ | ---- | ---------------------- |
+| scene | [common.StartupScene](./js-apis-enterprise-common.md#startupscene24) | Yes  | Startup wizard completion scenario.|
+
+**Example**
+
+```ts
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onStartupGuideCompleted(scene: common.StartupScene) {
+    if (scene === common.StartupScene.USER_SETUP) {
+      console.info('onStartupGuideCompleted scene is USER_SETUP');
+    } else if (scene === common.StartupScene.OTA) {
+      console.info('onStartupGuideCompleted scene is OTA');
+    } else if (scene === common.StartupScene.DEVICE_PROVISION) {
+      console.info('onStartupGuideCompleted scene is DEVICE_PROVISION');
+    }
+  }
+}
+```
+
+### onDeviceBootCompleted<sup>24+</sup>
+
+onDeviceBootCompleted(): void
+
+Callback for the device startup completion event. You can receive this callback only after you register the **MANAGED_EVENT_BOOT_COMPLETED** event through the [adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync) API. The enterprise administrator application can subscribe to device startup completion events. When an enterprise device has finished starting up, the device administrator application reports the event in this callback to notify the enterprise administrator.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Example**
+
+```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onDeviceBootCompleted() {
+    console.info("EnterpriseAdminExtensionAbility onDeviceBootCompleted");
+  }
+}
 ```

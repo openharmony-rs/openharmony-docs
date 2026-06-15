@@ -1011,7 +1011,6 @@ struct CustomDialogUser {
   }
 }
 ```
-![en-us_image_custom](figures/dialog_keyboard_distance.gif)
 
 ### Example 9: Using Dialog Box Lifecycle Callbacks
 

@@ -55,7 +55,7 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 ## ComponentObserver
 
-组件布局和组件绘制送显完成回调的句柄，包含了申请句柄时的首次查询结果。
+组件布局和组件绘制送显完成回调的句柄，通过该句柄可调用以下方法。
 
 ### on('layout')
 
@@ -125,7 +125,7 @@ off(type: 'draw', callback?: () => void): void
 | type     | string | 是   | 必须填写字符串'draw'。<br>draw: 组件绘制送显完成。|
 | callback | () => void   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('draw')](#ondraw)方法中的callback为相同对象时才能取消回调成功。 |
 
-### on('drawChildren')<sup>20+<sup>
+### on('drawChildren')<sup>20+</sup>
 
 on(type: 'drawChildren',  callback: Callback\<void\>): void
 
@@ -199,9 +199,9 @@ offLayoutChildren(callback?: Callback\<void\>): void
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | callback | Callback\<void\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onLayoutChildren23+](#onlayoutchildren23)方法中的callback为相同对象时才能取消回调成功。 |
 
-## 示例
+**示例：**
 
-以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，从API version 23开始新增[onLayoutChildren](#onlayoutchildren23)接口，用于监听子树中的节点完成布局时的回调事件。
+以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过[onLayoutChildren<sup>23+</sup>](#onlayoutchildren23)接口监听子树中的节点完成布局时的回调事件。
 
 ```ts
 import { inspector } from '@kit.ArkUI';
@@ -253,15 +253,133 @@ struct ImageExample {
     // this.listenerForImage.off('layout', OffFuncLayout)
     // this.listenerForImage.off('draw', OffFuncDraw)
     // this.listenerForRow.off('drawChildren', OffFuncDrawChildren)
-    
+
     let onLayoutChildrenComplete: () => void = (): void => {
       // 监听到LayoutChildren事件后，用户可以自定义实现逻辑。
     }
+
     let uniqueId: number = this.getUniqueId();
     let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
     listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
-    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-    // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
   }
+
+  // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+  // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
+}
+```
+
+### onDrawChildren<sup>24+</sup>
+
+onDrawChildren(callback: Callback\<number[]\>): void
+
+通过[ComponentObserver](#componentobserver)注册drawChildren事件回调。使用callback异步回调。
+
+把当前注册监听的节点作为根节点，组件的子组件绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<number[]\> | 是   | 监听drawChildren的回调。                              |
+
+**示例：**
+
+以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。监听子树内节点完成渲染后，通过[onDrawChildren<sup>24+</sup>](#ondrawchildren24)接口，回调返回该节点的uniqueId信息。
+
+```ts
+import { inspector } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.startIcon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+        .id('ROW_ID')
+      }
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID')
+
+  aboutToAppear() {
+    let onDrawChildrenComplete_uniqueId:(childIds: number[])=>void = (childIds: number[]) : void => {
+      // 从API version 24开始，新增onDrawChildren接口。监听到DrawChildren事件后，用户可以自定义实现逻辑。
+    }
+
+    let uniqueId: number = this.getUniqueId();
+    this.listenerForRow.onDrawChildren(onDrawChildrenComplete_uniqueId)
+  }
+}
+```
+
+### offDrawChildren<sup>24+</sup>
+
+offDrawChildren(callback?: Callback\<number[]\>): void
+
+取消注册offDrawChildren事件回调。使用callback异步回调。
+
+要实现在子组件布局完成后停止触发特定回调，只需通过其句柄，在对应的查询条件上取消注册该回调即可。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<number[]\> | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDrawChildren24+](#ondrawchildren24)方法中的callback为相同对象时才能取消回调成功。 |
+
+**示例：**
+
+```ts
+import { inspector } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.startIcon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+        .id('ROW_ID')
+      }
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID')
+
+  aboutToAppear() {
+    let onDrawChildrenComplete_uniqueId:(childIds: number[])=>void = (childIds: number[]) : void => {
+      // 从API version 24开始，新增onDrawChildren接口。监听到DrawChildren事件后，用户可以自定义实现逻辑。
+    }
+
+    let uniqueId: number = this.getUniqueId();
+    this.listenerForRow.onDrawChildren(onDrawChildrenComplete_uniqueId)
+  }
+  // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+  // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
 }
 ```

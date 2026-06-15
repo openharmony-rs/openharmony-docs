@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ApplicationContext inherits from [Context](js-apis-inner-application-context.md) and provides application-level management capabilities, such as application lifecycle listening, process management, and application environment setting.
 
@@ -496,6 +496,142 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
+## ApplicationContext.onSystemConfigurationUpdated<sup>24+</sup>
+
+onSystemConfigurationUpdated(callback: systemConfiguration.UpdatedCallback): void
+
+Registers a listener for system environment [Configuration](js-apis-app-ability-configuration.md#configuration) changes. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
+
+> **NOTE**
+>
+> Custom settings of the application do not affect the triggering of the callback function. For example, if the application customizes the dark and light modes, the registered callback function is still triggered after the system dark and light modes change.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name                  | Type    | Mandatory| Description                          |
+| ------------------------ | -------- | ---- | ------------------------------ |
+| callback | [systemConfiguration.UpdatedCallback](js-apis-app-ability-systemConfiguration.md#updatedcallback) | Yes  | Callback triggered when the system environment changes.|
+
+**Example**
+
+```ts
+import { UIAbility, systemConfiguration, ConfigurationConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let CallBack: systemConfiguration.UpdatedCallback = {
+      onColorModeUpdated(colorMode: ConfigurationConstant.ColorMode) {
+        console.info(`system configuration updated colormode:` + colorMode);
+      },
+      onFontSizeScaleUpdated(fontSizeScale: number) {
+        console.info(`system configuration updated ability:` + fontSizeScale);
+      },
+      onFontWeightScaleUpdated(fontWeightScale: number) {
+        console.info(`system configuration updated ability:` + fontWeightScale);
+      },
+      onLanguageUpdated(language: string) {
+        console.info(`system configuration updated ability:` + language);
+      },
+      onFontIdUpdated(fontId: string) {
+        console.info(`system configuration updated ability:` + fontId);
+      },
+      onMCCUpdated(mcc: string) {
+        console.info(`system configuration updated ability:` + mcc);
+      },
+      onMNCUpdated(mnc: string) {
+        console.info(`system configuration updated ability:` + mnc);
+      },
+      onHasPointerDeviceUpdated(hasPointerDevice: boolean) {
+        console.info(`system configuration updated ability:` + hasPointerDevice);
+      },
+      onLocaleUpdated(locale: string) {
+        console.info(`system configuration updated ability:` + locale);
+      }
+    }
+    // 1. Obtain applicationContext through the context property.
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 2. Register a listener through applicationContext.
+      applicationContext.onSystemConfigurationUpdated(CallBack);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+    console.info(`onSystemConfigurationUpdated finish`);
+  }
+}
+```
+
+## ApplicationContext.offSystemConfigurationUpdated<sup>24+</sup>
+
+offSystemConfigurationUpdated(callback?: systemConfiguration.UpdatedCallback): void
+
+Cancels listening for system environment [Configuration](js-apis-app-ability-configuration.md#configuration) changes. It can be called only on the main thread.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name                  | Type    | Mandatory| Description                          |
+| ------------------------ | -------- | ---- | ------------------------------ |
+| callback | [systemConfiguration.UpdatedCallback](js-apis-app-ability-systemConfiguration.md#updatedcallback) | No  | Callback used to return the result. The value can be a callback registered using [ApplicationContext.onSystemConfigurationUpdated](#applicationcontextonsystemconfigurationupdated24) or empty.<br>- If a defined callback is passed in, the listener for that callback is unregistered.<br>- If no parameter is passed in, all registered listening is canceled.|
+
+**Example**
+
+```ts
+import { UIAbility, systemConfiguration, ConfigurationConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let CallBack: systemConfiguration.UpdatedCallback = {
+      onColorModeUpdated(colorMode: ConfigurationConstant.ColorMode) {
+        console.info(`system configuration updated colormode:` + colorMode);
+      },
+      onFontSizeScaleUpdated(fontSizeScale: number) {
+        console.info(`system configuration updated ability:` + fontSizeScale);
+      },
+      onFontWeightScaleUpdated(fontWeightScale: number) {
+        console.info(`system configuration updated ability:` + fontWeightScale);
+      },
+      onMCCUpdated(mcc: string) {
+        console.info(`system configuration updated ability:` + mcc);
+      },
+      onMNCUpdated(mnc: string) {
+        console.info(`system configuration updated ability:` + mnc);
+      },
+      onLanguageUpdated(language: string) {
+        console.info(`system configuration updated ability:` + language);
+      },
+      onFontIdUpdated(fontId: string) {
+        console.info(`system configuration updated ability:` + fontId);
+      },
+      onHasPointerDeviceUpdated(hasPointerDevice: boolean) {
+        console.info(`system configuration updated ability:` + hasPointerDevice);
+      },
+      onLocaleUpdated(locale: string) {
+        console.info(`system configuration updated ability:` + locale);
+      }
+    }
+    // 1. Obtain applicationContext through the context property.
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 2. Unregister the listener through applicationContext.
+      applicationContext.offSystemConfigurationUpdated(CallBack);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+    console.info(`offSystemConfigurationUpdated finish`);
+  }
+}
+```
+
 ## ApplicationContext.getRunningProcessInformation
 
 getRunningProcessInformation(): Promise\<Array\<ProcessInformation>>
@@ -726,7 +862,7 @@ export default class MyAbility extends UIAbility {
 
 setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 
-Sets the dark/light color mode for the application. This API can be called only on the main thread.
+Sets the dark/light color mode for the application. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -740,7 +876,7 @@ Sets the dark/light color mode for the application. This API can be called only 
 
 | Name| Type         | Mandatory| Description                |
 | ------ | ------------- | ---- | -------------------- |
-| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md#colormode) | Yes  | Dark/light color mode, which can be dark mode, light mode, or follow-system mode (default).|
+| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md#colormode) | Yes  | Dark and light color modes, including dark mode, light mode, and unset color mode (default).|
 
 **Error codes**
 
@@ -777,7 +913,7 @@ export default class MyAbility extends UIAbility {
 
 setLanguage(language: string): void
 
-Sets the language for the application. This API can be called only on the main thread.
+Sets the language for the application. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1039,7 +1175,7 @@ export default class MyAbility extends UIAbility {
 
 setFont(font: string): void
 
-Sets the font for this application. This API can be called only on the main thread.
+Sets the font for this application. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1101,7 +1237,7 @@ struct Index {
 
 setSupportedProcessCache(isSupported : boolean): void
 
-Sets whether the current application's process supports resource caching, so that the cached process resources can be reused when the application is started again. This API can be called only on the main thread.
+Sets whether the current application's process supports resource caching, so that the cached process resources can be reused when the application is started again. It can be called only on the main thread.
 
 This setting applies only to the current process instance and does not affect others. If the application process instance is terminated, the previously set state will not be preserved and must be reset.
 
@@ -1157,7 +1293,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 setFontSizeScale(fontSizeScale: number): void
 
-Sets the scale ratio for the font size of this application. This API can be called only on the main thread.
+Sets the scale ratio for the font size of this application. It can be called only on the main thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
@@ -1193,7 +1329,7 @@ export default class MyAbility extends UIAbility {
 
 getCurrentInstanceKey(): string
 
-Obtains the unique instance ID of this application. This API can be called only on the main thread.
+Obtains the unique instance ID of this application. It can be called only on the main thread.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1243,6 +1379,8 @@ getAllRunningInstanceKeys(): Promise\<Array\<string>>;
 Obtains the unique instance IDs of all multi-instances of this application. This API uses a promise to return the result. It can be called only on the main thread.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be called properly only on PCs/2-in-1 devices.
 
 **Return value**
 

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @ccllee1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 基于[FA模型](ability-terminology.md#fa模型)开发应用时，在应用模型部分，涉及如下开发过程。
 

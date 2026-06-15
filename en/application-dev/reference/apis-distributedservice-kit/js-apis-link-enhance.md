@@ -2,7 +2,7 @@
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
-<!--Designer: @lee_jet520-->
+<!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @w_Machine_cc-->
 The **linkEnhance** module delivers highly efficient Bluetooth connectivity and data transmission capabilities, significantly enhancing the cross-device connection stability. By employing a multi-channel merging algorithm, it not only increases the number of available cross-device connections but also strengthens cross-device data transmission capabilities, thereby improving the overall user experience.
@@ -47,7 +47,7 @@ Creates a **Server** object. After **start()** is called, the device can be conn
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390203      | Duplicate server name.|
@@ -64,11 +64,11 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -102,7 +102,7 @@ Creates a **Connection** object on the device that functions as the client. The 
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter.  |
@@ -120,16 +120,20 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
 } catch (err) {
-  hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
 ## Server
 
 Represents a **Server** object, which provides methods for starting, stopping, and closing the server, and registering or unregistering event callbacks.
+
+**System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 The following APIs are used on the server.
 
@@ -149,7 +153,7 @@ Starts a server so that it can be connected by the client. A maximum of 10 serve
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390202 | The number of servers exceeds the limit. |
@@ -166,11 +170,11 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -190,7 +194,7 @@ Stops the server. After the server is stopped, you can call `start` to start it 
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 
@@ -205,12 +209,12 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
   server.stop();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -231,7 +235,7 @@ Destroys the **Server** object to release related resources. To interact with th
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 
@@ -246,12 +250,12 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
   server.close();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -277,7 +281,7 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Parameter invalid.  |
@@ -293,7 +297,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 
@@ -304,7 +308,7 @@ try {
   // Start the server.
   server.start();
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -331,7 +335,7 @@ Unregisters the callback listener for **connectionAccepted** events. This API us
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Parameter invalid.  |
@@ -347,7 +351,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
@@ -358,7 +362,7 @@ try {
     hilog.info(0x0000, TAG, 'accept new connection');
   });
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -386,7 +390,7 @@ Registers a callback listener for **serverStopped** events. This API uses an asy
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Parameter invalid.  |
@@ -402,7 +406,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 
@@ -413,7 +417,7 @@ try {
   // Start the server.
   server.start();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -441,7 +445,7 @@ Unregisters the callback listener for **serverStopped** events. This API uses an
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Parameter invalid.  |
@@ -457,7 +461,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('serverStopped', (reason: number): void => {
@@ -468,7 +472,7 @@ try {
     hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -490,6 +494,10 @@ Represents the connection result, which is returned after the client calls **con
 
 Represents a **Connection** object, which provides methods for connecting to and disconnecting from a peer device, obtaining the device's ID, sending data, and registering or unregistering event callbacks.
 
+**System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
+
 ### connect()
 
 connect():&nbsp;void
@@ -506,7 +514,7 @@ Connects to the server on the client. A maximum number of 10 connections are sup
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390204 | The number of connection exceeds the limit. |
@@ -525,7 +533,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to connectResult events.
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
@@ -555,7 +563,7 @@ Disconnects from the peer device. The created **Connection** object remains vali
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 
@@ -570,7 +578,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -601,7 +609,7 @@ Destroys the **Connection** object to release resources. If the device needs to 
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 
@@ -617,7 +625,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -654,7 +662,7 @@ Obtains the device ID of the peer device. This API is called when the connection
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 
@@ -669,7 +677,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.getPeerDeviceId();
   hilog.info(0x0000, TAG, "peerDeviceId=%{public}s" + connection.getPeerDeviceId());
@@ -701,7 +709,7 @@ Sends data to the server after a connection is established successfully. When th
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390205 | Connection is not ready. |
@@ -719,7 +727,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -761,7 +769,7 @@ Registers a listener for **connectResult** events. This API uses an asynchronous
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter.|
@@ -777,7 +785,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to connectResult events.
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
@@ -815,7 +823,7 @@ Unregisters the listener for **connectResult** events.
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter. |
@@ -831,7 +839,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -869,7 +877,7 @@ Registers a listener for **disconnected** events. This API uses an asynchronous 
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter.|
@@ -885,14 +893,14 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to disconnected events.
   connection.on('disconnected', (number: number) => {
     hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
-  hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -920,7 +928,7 @@ Unregisters the listener for **disconnected** events. This API uses an asynchron
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter. |
@@ -936,7 +944,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('disconnected', (number: number) => {
     hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
@@ -974,7 +982,7 @@ Registers a listener for the **dataReceived** events. This API uses an asynchron
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter.  |
@@ -990,9 +998,11 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  // Initiate a connection.
   connection.connect();
+  // Subscribe to data receiving notifications.
   connection.on('dataReceived', (data: ArrayBuffer) => {
     hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
@@ -1024,7 +1034,7 @@ Unregisters the listener for **dataReceived** events.
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter.  |
@@ -1040,11 +1050,13 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  // Subscribe to data receiving notifications.
   connection.on('dataReceived', (data: ArrayBuffer) => {
     hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
+  // Unsubscribe from data receiving notifications.
   connection.off('dataReceived', (data: ArrayBuffer) => {
     hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });

@@ -1,11 +1,11 @@
-# @ohos.app.agent.agentManager (Agent管理)(系统接口)
+# @ohos.app.agent.agentManager (Agent智能组件管理)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 agentManager模块提供Agent管理能力，支持AgentExtensionAbility的连接、断开连接等操作，同时提供与系统中的Agent进行交互的能力，例如获取设备上的AgentCard信息。
 

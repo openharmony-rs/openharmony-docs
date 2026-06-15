@@ -1,8 +1,8 @@
 # @ohos.enterprise.systemManager （系统管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -26,7 +26,7 @@ import { systemManager } from '@kit.MDMKit';
 
 setNTPServer(admin: Want, server: string): void
 
-设置NTP时间服务器。
+设置NTP(Network Time Protocol)时间服务器。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -303,7 +303,7 @@ try {
 
 notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;void&gt;
 
-通知系统更新包信息。内网升级场景下，需要先调用该接口通知系统更新包，再调用[systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy)设置升级策略。
+通知系统更新包信息。内网升级场景下，需要先调用该接口通知系统更新包，再调用[systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy)设置升级策略。使用Promise异步回调。
 > **说明：**
 > 
 > 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
@@ -408,7 +408,7 @@ systemManager.notifyUpdatePackages(wantTemp, updatePackageInfo).then(() => {
 
 getUpdateResult(admin: Want, version: string): Promise&lt;UpdateResult&gt;
 
-获取系统更新结果。
+获取系统更新结果。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -453,10 +453,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 systemManager.getUpdateResult(wantTemp, "1.0").then((result:systemManager.UpdateResult) => {
-    console.info(`Succeeded in getting update result: ${JSON.stringify(result)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Get update result failed. Code is ${error.code},message is ${error.message}`);
-  });
+  console.info(`Succeeded in getting update result: ${JSON.stringify(result)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Get update result failed. Code is ${error.code},message is ${error.message}`);
+});
 ```
 ## systemManager.getUpdateAuthData<sup>19+</sup>
 
@@ -505,10 +505,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 systemManager.getUpdateAuthData(wantTemp).then((result: string) => {
-    console.info(`Succeeded in getting update auth data: ${JSON.stringify(result)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Get update auth data failed. Code is ${error.code},message is ${error.message}`);
-  });
+  console.info(`Succeeded in getting update auth data: ${JSON.stringify(result)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Get update auth data failed. Code is ${error.code},message is ${error.message}`);
+});
 ```
 
 ## systemManager.addDisallowedNearLinkProtocols<sup>20+</sup>
@@ -943,7 +943,7 @@ addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | 是   | 按键策略。支持物理按键（电源键、音量加、音量减），导航键（回退、主页、最近打开）。物理键支持任意组合为组合键，导航键不支持组合。组合键事件响应详见[按键事件回调](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口。 |
+| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | 是   | 按键策略。支持物理按键（电源键、音量加、音量减），导航键（回退、主页、最近打开）。物理键支持任意组合为组合键，导航键不支持组合。组合键事件响应详见按键事件回调[onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口。 |
 
 **错误码**：
 
@@ -1107,7 +1107,7 @@ try {
 
 startCollectLog(admin: Want): Promise&lt;void&gt;
 
-开始收集设备上已生成并存储至硬盘的[faultlog](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。
+开始收集设备上已生成并存储至硬盘的[FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)类型的faultlog日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。
 
 - 调用接口后，系统会启动一个日志收集任务，任务启动后接口立即返回。任务可能会因为系统性能等原因导致收集失败。
 - 允许多个MDM应用调用，不同MDM应用在不同用户下收集的日志分开保存，互不影响。同一时间只允许一个MDM应用启动日志收集任务，在任务执行完成前调用本接口会返回错误码9201009，任务执行完成后，允许其他MDM应用调用。
@@ -1225,6 +1225,139 @@ try {
 }
 ```
 
+## SystemUpdateInfo
+
+待更新的系统版本信息。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称                | 类型     | 只读  | 可选 | 说明            |
+| ----------------- | ------ | --- | --- |------------- |
+| versionName       | string | 否   | 否 |待更新的系统版本名称。   |
+| firstReceivedTime | number | 否   | 否 |第一次收到系统更新包的时间（单位：秒）。 |
+| packageType       | string | 否   | 否 |待更新的系统更新包类型，类型分为normal和patch类型。  |
+
+## systemManager.setActivationLockDisabled<sup>24+</sup>
+
+setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
+
+禁用或启用设备激活锁。设备激活锁被禁用后，将无法使用查找设备功能。该功能只适用于特定设备<!--RP5--><!--RP5End-->。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| isDisabled | boolean | 是 | 是否禁用激活锁。true表示禁用，false表示启用。 |
+| credential | string | 否 | 禁用凭据。当设置禁用时该参数必须填写有效凭据<!--RP6--><!--RP6End-->，设置启用时为空。|
+
+**返回值：**
+
+| 类型   | 说明                                |
+| ------ | ----------------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当设置禁用/启用失败时，会抛出错误对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+| 9201011  | The credential of the activation lock is invalid. |
+| 9201012  | Failed to enable or disable the activation lock. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let credential: string = "XXX";
+let isDisabled: boolean = true;
+systemManager.setActivationLockDisabled(wantTemp, isDisabled, credential).then(() => {
+  console.info('Succeeded in setting activation lock status.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set activation lock status. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## systemManager.isActivationLockDisabled<sup>24+</sup>
+
+isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
+
+获取设备激活锁禁用状态。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+
+**返回值：**
+
+| 类型                   | 说明                      |
+| --------------------- | ------------------------- |
+| Promise&lt;boolean&gt; | Promise对象，返回当前设备激活锁的禁用状态。返回true表示设备激活锁处于禁用状态，查找设备功能无法使用；返回false表示设备激活锁处于启用状态，可以正常使用设备查找功能。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+systemManager.isActivationLockDisabled(wantTemp).then(result => {
+  console.info(`Succeeded in getting activation lock status: ${JSON.stringify(result)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get activation lock status. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## systemManager.setInstallLocalEnterpriseAppEnabledForAccount<sup>24+</sup>
 
 setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, accountId: number): void
@@ -1288,7 +1421,7 @@ let isEnable: boolean = true;
 let accountId: number = 100;
 try {
   systemManager.setInstallLocalEnterpriseAppEnabledForAccount(wantTemp, isEnable, accountId);
-  console.info('Succeeded in setting InstallLocalEnterpriseAppEnabledForAccount.');
+  console.info('Succeeded in setting installLocalEnterpriseAppEnabledForAccount.');
 } catch (err) {
   console.error(`Failed to set installLocalEnterpriseAppEnabledForAccount. Code is ${err.code}, message is ${err.message}`);
 }
@@ -1348,23 +1481,11 @@ let wantTemp: Want = {
 let accountId: number = 100;
 try {
   let isEnable: boolean = systemManager.getInstallLocalEnterpriseAppEnabledForAccount(wantTemp, accountId);
-  console.info('Succeeded in getting installLocalEnterpriseAppEnabled.');
+  console.info('Succeeded in getting installLocalEnterpriseAppEnabledForAccount.');
 } catch (err) {
-  console.error(`Failed to get installLocalEnterpriseAppEnabled. Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to get installLocalEnterpriseAppEnabledForAccount. Code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-## SystemUpdateInfo
-
-待更新的系统版本信息。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-| 名称                | 类型     | 只读  | 可选 | 说明            |
-| ----------------- | ------ | --- | --- |------------- |
-| versionName       | string | 否   | 否 |待更新的系统版本名称。   |
-| firstReceivedTime | number | 否   | 否 |第一次收到系统更新包的时间。 |
-| packageType       | string | 否   | 否 |待更新的系统更新包类型。  |
 
 ## OtaUpdatePolicy
 
@@ -1517,7 +1638,7 @@ try {
 
 ## KeyCode<sup>23+</sup>
 
-按键编码。[添加按键事件策略](#systemmanageraddkeyeventpolicies23)、[删除按键事件策略](#systemmanagerremovekeyeventpolicies23)、[获取按键事件策略](#systemmanagergetkeyeventpolicies23)和[按键事件回调](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口通过按键编码映射到设备对应实际按键。
+按键编码。添加按键事件策略[addKeyEventPolicies](#systemmanageraddkeyeventpolicies23)、删除按键事件策略[removeKeyEventPolicies](#systemmanagerremovekeyeventpolicies23)、获取按键事件策略[getKeyEventPolicies](#systemmanagergetkeyeventpolicies23)和按键事件回调[onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口通过按键编码映射到设备对应实际按键。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

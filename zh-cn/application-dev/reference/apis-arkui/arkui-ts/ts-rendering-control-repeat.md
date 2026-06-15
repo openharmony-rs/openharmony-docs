@@ -1,10 +1,10 @@
 # Repeat
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liubihao-->
+<!--Owner: @maorh-->
 <!--Designer: @keerecles-->
-<!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @khq-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 > 
@@ -158,6 +158,8 @@ template(type: string, itemBuilder: RepeatItemBuilder\<T\>, templateOptions?: Te
 
 由template type渲染对应的template子组件。
 
+当所有`.template()`的type和`.templateId()`返回值不匹配（即当前item不适用任何template定义的样式）时，将使用[`.each()`](#each)的组件生成函数处理数据项。当`.each()`的组件生成函数也为空时，将不渲染子组件。
+
 > **说明：**
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -179,11 +181,13 @@ template(type: string, itemBuilder: RepeatItemBuilder\<T\>, templateOptions?: Te
 // arr是Array<string>类型的数组
 // 在List容器组件中使用Repeat，并打开virtualScroll
 // 创建模板temp，该模板为数据创建Text组件
+// 所有数据项都使用temp模板
 List() {
   Repeat<string>(this.arr)
     .each((obj: RepeatItem<string>) => {})
     .virtualScroll()
     .template('temp', (obj: RepeatItem<string>) => { ListItem() { Text(obj.item) }})
+    .templateId((item: string, index: number) => { return 'temp' })
 }
 ```
 
@@ -266,7 +270,7 @@ Repeat数据源参数联合类型。
 | 名称     | 类型   | 只读 | 可选 | 说明                                                         |
 | ---------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | totalCount | number | 否 | 是  | 期望加载的数据项总数，可以不等于数据源长度（实际传入Repeat的数组的长度）。<br>取值范围：自然数。<br>totalCount缺省或超出取值范围时，totalCount取值为数据源长度，列表正常滚动。<br>totalCount = 0时，不加载数据。<br>0 < totalCount <= 数据源长度时，界面中只渲染区间[0, totalCount - 1]范围内的数据。<br>totalCount > 数据源长度时，Repeat将渲染区间[0, totalCount - 1]范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用[onLazyLoading](#onlazyloading19)实现数据懒加载。<br>除totalCount属性外，开发者也可以通过[onTotalCount](#ontotalcount19)方法设置自定义方法，计算期望加载的数据项总数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| reusable<sup>18+</sup> | boolean | 否 | 是  | 是否开启复用功能。<br>true：开启复用。<br>false：关闭复用。<br>默认值：true<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| reusable<sup>18+</sup> | boolean | 否 | 是  | 是否开启复用功能。当Repeat的子组件为[@ReusableV2](../../../ui/state-management/arkts-new-reusableV2.md)装饰的自定义组件时，Repeat自身的复用能力优先于@ReusableV2的复用能力，若开发者希望使用@ReusableV2的复用能力，建议关闭Repeat自身的复用能力。<br>true：开启复用。<br>false：关闭复用。<br>默认值：true<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 **示例**
 
@@ -286,7 +290,7 @@ onTotalCount?(): number
 
 可选方法，计算期望加载的数据项总数。需要开发者给定计算方法，其返回值可以不等于数据源长度（实际传入Repeat的数组的长度）。
 
-[totalCount](#virtualscrolloptions)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totalCount属性，给出期望加载的数据项总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。
+[totalCount](#属性-1)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totalCount属性，给出期望加载的数据项总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。
 
 onTotalCount()不同返回值的数据加载处理规则与totalCount一致，具体如下：
 

@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fangyuhao-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **WaterFlow** component is a water flow container that consists of cells formed by rows and columns and arranges items of different sizes from top to bottom according to the preset rules.
@@ -27,7 +27,7 @@ Child components can be dynamically generated using rendering control types [if/
 >  **NOTE**
 >
 >  When the **visibility** attribute of a child component of **WaterFlow** is set to **None**, this child component is not displayed in the container, but its **columnsGap**, **rowsGap**, and **margin** settings are still effective.
->  If there are a large number of child components,you are advised to adopt methods such as lazy loading, data caching, component reuse, fixed dimensions, and layout optimization to improve performance and reduce memory usage. For best practices, see [Optimizing Frame Loss for Waterfall Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-waterflow-performance-optimization).
+>  If there are a large number of child components, you are advised to adopt methods such as lazy loading, data caching, component reuse, fixed dimensions, and layout optimization to improve performance and reduce memory usage. For best practices, see [Optimizing Frame Loss for Waterfall Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-waterflow-performance-optimization).
 >
 > In vertical layout mode, **WaterFlow** calculates the cumulative height of child components in each column and places new child components in the column with the smallest cumulative height to maintain a compact overall layout.
 >
@@ -61,10 +61,10 @@ Provides parameters of the **WaterFlow** component.
 
 | Name    | Type                                       | Read-Only| Optional| Description                                    |
 | ---------- | ----------------------------------------------- | ------ | -- | -------------------------------------------- |
-| footer |  [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes| Footer of the **WaterFlow** component.<br>**NOTE**<br>For details, see [Example 1](#example-1-using-a-basic-waterflow-component).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| footer |  [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes| Footer component of the **WaterFlow** component, which is used to display custom content (such as loading prompts and bottom icons) at the end of the waterfall. If this parameter is not set, no footer component is displayed.<br>**NOTE**<br>For details, see [Example 1](#example-1-using-a-basic-waterflow-component).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | footerContent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | No| Yes| Footer of the **WaterFlow** component.<br>This parameter has a higher priority than **footer**. If both **footer** and **footerContent** are set, the component set by **footerContent** will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | scroller | [Scroller](ts-container-scroll.md#scroller) | No  | Yes| Controller of the scrollable component, bound to the scrollable component.<br>**NOTE**<br>It cannot be bound to the same scrolling control object as other scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | No  | Yes| Water flow item sections, used to implement mixed layouts with different column counts for each section within the same **WaterFlow** component.<br>**NOTE**<br>1. When the mixed layout is used, the [columnsTemplate](#columnstemplate) and [rowsTemplate](#rowstemplate) attributes are ignored.<br>2. When **sections** is used, the footer cannot be set separately. The last section can function as the footer.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | No  | Yes| Water flow item sections, used to implement mixed layouts with different column counts for each section within the same **WaterFlow** component. This is applicable to scenarios where different numbers of columns are required in different areas. If this parameter is not set, the layout with the same number of columns is used.<br>**NOTE**<br>1. When the mixed layout is used, the [columnsTemplate](#columnstemplate) and [rowsTemplate](#rowstemplate) attributes are ignored.<br>2. When **sections** is used, the footer cannot be set separately. The last section can function as the footer.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 | layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12)| No| Yes| Layout mode of the **WaterFlow** component.<br>**NOTE**<br>Default value: [ALWAYS_TOP_DOWN](#waterflowlayoutmode12)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 
@@ -200,8 +200,8 @@ Describes the configuration of the water flow item section.
 |------|-----|-----|----|-----|
 | itemsCount | number | No| No| Number of **FlowItem** components in a section. The value must be a non-negative number. If the **splice**, **push**, or **update** APIs receive a section whose **itemsCount** is set to a negative number, these APIs will not be executed. Do not use a section whose **itemsCount** is **0**. Otherwise, the layout calculation may be abnormal.|
 | crossCount | number | No| Yes| Number of columns (in vertical layout) or rows (in horizontal layout).<br>Default value: **1**<br> If the value is less than 1, the default value is used.|
-| columnsGap | [Dimension](ts-types.md#dimension10) | No| Yes| Gap between columns. If this parameter is not set, the value of **columnsGap** for the water flow is used. If this parameter is set to an invalid value, 0 vp is used.|
-| rowsGap | [Dimension](ts-types.md#dimension10) | No| Yes| Gap between rows. If this parameter is not set, the value of **rowsGap** for the water flow is used. If this parameter is set to an invalid value, 0 vp is used.|
+| columnsGap | [Dimension](ts-types.md#dimension10) | No| Yes| Column gap of the section. If this parameter is not set, the [columnsGap](#columnsgap) of the **WaterFlow** component is used by default. If an invalid value is set, 0 vp is used.|
+| rowsGap | [Dimension](ts-types.md#dimension10) | No| Yes| Row gap of the section. If this parameter is not set, the [rowsGap](#rowsgap) of the **WaterFlow** component is used by default. If an invalid value is set, 0 vp is used.|
 | margin | [Margin](ts-types.md#margin) \| [Dimension](ts-types.md#dimension10) | No| Yes| Margins of the section. A value of the **Length** type specifies the margins on all the four sides.<br>Default value: **0**<br>Unit: vp<br>When **margin** is set to a percentage, the width of the **WaterFlow** component is used as the base value for the top, bottom, left, and right margins.|
 | onGetItemMainSizeByIndex | [GetItemMainSizeByIndex](#getitemmainsizebyindex12) | No| Yes| Callback used to obtain the main axis size, in vp, of the water flow item at a specified index during the layout process of the **WaterFlow** component. For a vertical **WaterFlow** component, this size refers to the height, and for a horizontal **WaterFlow** component, it refers to the width.<br>**NOTE**<br>1. When both **onGetItemMainSizeByIndex** and the width or height attribute of **FlowItem** are used, the main-axis size is determined by the return value of **onGetItemMainSizeByIndex**, which will override the main-axis length of **FlowItem**.<br>2. Using **onGetItemMainSizeByIndex** can improve the efficiency of jumping to a specific position or index in the **WaterFlow** component. Avoid mixing the use of **onGetItemMainSizeByIndex** with sections that do not have it set, as this can cause layout exceptions.<br>3. If **onGetItemMainSizeByIndex** returns a negative number, the height of the water flow item is 0.|
 
@@ -236,6 +236,7 @@ Enumerates the layout modes of the **WaterFlow** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 15%; 65%-->
 | Name| Value| Description|
 | ------ | ------ | -------------------- |
 | ALWAYS_TOP_DOWN | 0 | Default layout mode where water flow items are arranged from top to bottom. Items in the viewport depend on the layout of all items above them. In cases of jumping to a position or switching column counts, the layout of all items above the must be recalculated.|
@@ -336,6 +337,7 @@ Sets the size constraints of the child components during layout. For details abo
 
 **Parameters**
 
+<!--Table: 10%; auto; 10%; auto-->
 | Name| Type                                                      | Mandatory| Description      |
 | ------ | ---------------------------------------------------------- | ---- | ---------- |
 | value  | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes  | Size constraints of the child components during layout. If the value specified is less than **0**, this parameter does not take effect.<br>**NOTE**<br>1. If both **itemConstraintSize** and the [constraintSize](ts-universal-attributes-size.md#constraintsize) attribute of the **FlowItem** are set, the **minWidth** (or **minHeight**) will be the larger of the two values, and the **maxWidth** (or **maxHeight**) will be the smaller of the two values. The resulting values will then be used as the **constraintSize** for the **FlowItem**.<br>2. When only **itemConstraintSize** is set, it effectively applies a uniform size constraint to all child components in the **WaterFlow**.<br>3. The **itemConstraintSize** attribute, once converted to the **constraintSize** attribute of the **FlowItem** through the two methods mentioned above, follows the same rules for taking effect as the universal attribute [constraintSize](./ts-universal-attributes-size.md#constraintsize).|
@@ -354,7 +356,7 @@ Sets the gap between columns.
 
 | Name| Type                        | Mandatory| Description                         |
 | ------ | ---------------------------- | ---- | ----------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞).|
+| value  | [Length](ts-types.md#length) | Yes  | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞). A value less than 0 evaluates to the value **0**.|
 
 ### rowsGap
 
@@ -370,7 +372,7 @@ Sets the gap between rows.
 
 | Name| Type                        | Mandatory| Description                         |
 | ------ | ---------------------------- | ---- | ----------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Gap between rows.<br>Default value: **0**<br>Value range: [0, +∞).|
+| value  | [Length](ts-types.md#length) | Yes  | Gap between rows.<br>Default value: **0**<br>Value range: [0, +∞). A value less than 0 evaluates to the value **0**.|
 
 ### layoutDirection
 
@@ -934,7 +936,7 @@ struct WaterFlowDemo {
           .backgroundColor(this.colors[item % this.colors.length])
         }, (item: string) => item)
       }
-      .columnsTemplate('1fr 1fr') // Set the layout of two columns with equal width.
+      .columnsTemplate('1fr 1fr')    // Set the layout of two columns with equal width.
       .columnsGap(10)
       .rowsGap(5)
       .backgroundColor(0xFAEEE0)
@@ -1057,7 +1059,7 @@ struct WaterFlowDemo {
 ### Example 3: Using WaterFlowSections
 This example illustrates the initialization of **WaterFlowSections** and the different effects of various APIs such as **splice**, **push**, **update**, **values**, and **length**.
 
-For usage with with state management V2, see [WaterFlow and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#scroll-components).
+For usage with state management V2, see [WaterFlow and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#scrollable-component).
 
 For details about **WaterFlowDataSource** and the complete code, see [Example 1: Using a Basic WaterFlow Component](#example-1-using-a-basic-waterflow-component).
 
@@ -1144,7 +1146,7 @@ struct WaterFlowDemo {
     }
   };
 
-  // Calculate the  height for FlowItem.
+  // Calculate the height for FlowItem.
   getSize() {
     let ret = Math.floor(Math.random() * this.maxSize);
     return (ret > this.minSize ? ret : this.minSize);
@@ -1228,7 +1230,9 @@ struct WaterFlowDemo {
             console.info('update:' + result);
           })
           .margin({ top: 10, left: 20 })
+      }.margin({ bottom: 20 })
 
+      Row() {
         Button('delete')
           .height('5%')
           .onClick(() => {
@@ -1264,7 +1268,7 @@ struct WaterFlowDemo {
             console.info('count:' + this.sections.length());
           })
           .margin({ top: 10, left: 20 })
-      }.margin({ bottom: 20 })
+      }
 
       WaterFlow({ scroller: this.scroller, sections: this.sections }) {
         LazyForEach(this.dataSource, (item: number) => {
@@ -1428,7 +1432,7 @@ struct WaterFlowDemo {
           }, (item: string) => item)
         }
         .id('waterflow') // Set the ID for capturing snapshots.
-        .columnsTemplate('1fr '.repeat(this.columns)) // Dynamically generate a column template. For example, '1fr 1fr 1fr' indicates three columns with the same width.
+        .columnsTemplate('1fr '.repeat(this.columns))  // Dynamically generate a column template. For example, '1fr 1fr 1fr' indicates three columns with the same width.
         .backgroundColor(0xFAEEE0)
         .width('100%')
         .height('100%')
@@ -1610,7 +1614,7 @@ struct WaterFlowDemo {
     return (ret > this.minSize ? ret : this.minSize);
   }
 
-  // Set the width and height array of a flow item.
+  // Set the width and height array of the flow item.
   setItemSizeArray() {
     for (let i = 0; i < 100; i++) {
       this.itemWidthArray.push(this.getSize());
@@ -1690,7 +1694,7 @@ function buildText(params: Params) {
 @Entry
 @Component
 struct Index {
-  @State message1: string = 'You have reached the bottom.';
+  @State message1: string = 'End';
   @State message2: string = 'Load more';
   @State colors: number[] = [0xD5D5D5, 0x7F7F7F, 0xF7F7F7];
   @State minSize: number = 80;
@@ -1719,7 +1723,7 @@ struct Index {
     return (ret > this.minSize ? ret : this.minSize);
   }
 
-  // Set the width and height array of a flow item.
+  // Set the width and height array of the flow item.
   setItemSizeArray() {
     for (let i = 0; i < 100; i++) {
       this.itemWidthArray.push(this.getSize());
@@ -1860,7 +1864,7 @@ struct WaterFlowDemo {
 
 ![waterFlow_refresh](figures/waterFlow_refresh.gif)
 
-### Example 9: Configuring the Number of Columns in the WaterFlow Component Based on Breakpoints)
+### Example 9: Configuring the Number of Columns in the WaterFlow Component Based on Breakpoints
 
 In API version 22 and later versions, this example shows how to configure the number of columns in the **WaterFlow** component based on breakpoints.
 
@@ -2003,16 +2007,16 @@ struct WaterFlowContentSizeDemo {
       // Button to obtain the content size by calling contentSize.
       Button('GetContentSize')
         .onClick(() => {
-            // Scroller throws an exception when not bound to a component; wrap with try-catch for safety.
-          	try {
-              // Obtain the content width using contentSize.
-              this.contentWidth = this.scroller.contentSize().width;
-              // Obtain the content height using contentSize.
-              this.contentHeight = this.scroller.contentSize().height;
-            } catch (error) {
-              let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
-            }
+          // Scroller throws an exception when not bound to a component; wrap with try-catch for safety.
+          try {
+            // Obtain the content width using contentSize.
+            this.contentWidth = this.scroller.contentSize().width;
+            // Obtain the content height using contentSize.
+            this.contentHeight = this.scroller.contentSize().height;
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+          }
         }).margin(5)
       // Display the obtained content size.
       Text('Width:' + this.contentWidth)
@@ -2049,7 +2053,7 @@ struct WaterFlowContentSizeDemo {
 
 ### Example 11: Setting a Scrolling Event
 
-This example obtains a [UIWaterFlowEvent](#uiwaterflowevent19) instance via [getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19) on a FrameNode and sets scroll event callbacks for a **WaterFlow** component. This approach is intended for scenarios where the page code cannot be directly modified to use declarative callbacks.
+This example obtains a [UIWaterFlowEvent](#uiwaterflowevent19) instance via [getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19) on a **FrameNode** and sets scroll event callbacks for a **WaterFlow** component. This approach is intended for scenarios where the page code cannot be directly modified to use declarative callbacks.
 
 The **UIWaterFlowEvent** API is added since API version 19.
 

@@ -24,7 +24,7 @@ Obtains the size, position, translation, scaling, rotation, and affine matrix in
 
 > **NOTE**
 >
-> This API should be called after the target component's layout is complete to obtain its size information. It is recommended that you use this API within [onAppear](./arkui-ts/ts-universal-events-show-hide.md#onappear).
+> This API should be called after the target component's layout is complete to obtain its size information. It is recommended that you use this API within the [layout callback](./js-apis-arkui-inspector.md). Dynamically created components must be mounted to the component tree before this API can obtain their information, as unmounted components are not measured or laid out by the UI framework. Always ensure that component mounting precedes information retrieval attempts.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

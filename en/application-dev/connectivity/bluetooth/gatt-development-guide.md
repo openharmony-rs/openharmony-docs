@@ -8,11 +8,13 @@
 <!--Adviser: @zhang_yixin13-->
 
 ## Introduction
+
 This document guides you through implementing Bluetooth Low Energy (BLE) connection and data transmission between devices in accordance with the Generic Attribute Profile (GATT). When two devices communicate via GATT, they can be distinguished as client and server based on their respective functions. This guide describes the implementation methods for both the client and server.
 
 GATT is the core protocol of BLE, defining the mechanism for Bluetooth communication and data transmission based on services, characteristics, and descriptors. For details about related terms, see [Terminology](../terminology.md).
 
 ## How to Implement
+
 After obtaining the server's device address, the client can initiate a connection to the server. The server's device address can be obtained through the BLE scanning process. Once the connection between the server and the client is successfully established, the client can initiate operations such as querying services, reading from and writing to characteristics, and receiving notifications from the server, thereby enabling the client to send data to and receive data from the server.
 
 The server must broadcast BLE advertisements to be discoverable by the client. It should support the services the client intends to connect to and await the client's connection request. Once connected, the server can handle the client's requests to read and write characteristics, as well as send notifications to the client, thus enabling the server to both receive data from and send data to the client.
@@ -22,18 +24,23 @@ For details about BLE scanning by the client and BLE advertising by the server, 
 ## How to Develop
 
 ### Applying for Required Permissions
+
 Apply for the **ohos.permission.ACCESS_BLUETOOTH** permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
 ### Importing Required Modules
+
 Import the **ble**, **constant**, and **BusinessError** modules.
+
 ```ts
 import { ble, constant } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
+
 ### Client
 
 **1. Creating a Client Instance**<br>
 After the client discovers the target device through the device discovery process, it can instantiate a client object. All subsequent operations will be performed using this client instance.
+
 ```ts
 // The following is pseudo code.
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -47,6 +54,7 @@ try {
 
 **2. Subscribing to Connection State Changes**<br>
 You can subscribe to connection state changes to obtain the real-time GATT connection state. The connection process involves various state transitions. [STATE_CONNECTED](../../reference/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) indicates that the connection is established, and [STATE_DISCONNECTED](../../reference/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) indicates that the connection is disconnected.
+
 ```ts
 // The following is pseudo code.
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -66,6 +74,7 @@ try {
 
 **3. Initiating a Connection**<br>
 Initiate a connection using the created client instance. Determine whether the connection is successful based on the connection state change event.
+
 ```ts
 // The following is pseudo code.
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -80,8 +89,11 @@ try {
 
 **4. Performing Service Discovery**<br>
 Service discovery is a process of obtaining all the service capabilities supported by the server. The client needs to determine whether the server supports the service capabilities required by the application based on the service discovery result.
+
 - Characteristics and descriptors can be read or written only after service discovery is complete.
+
 - The characteristics or descriptors specified in subsequent read and write operations must be included in the service capability set. Otherwise, the operations will fail.
+
 ```ts
 // The following is pseudo code.
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -104,6 +116,7 @@ Data transmission is implemented by operating the characteristic or descriptor o
 Reading a characteristic enables the client to retrieve the value of that characteristic from the server.<br>
 Writing a characteristic allows the client to update the value of the corresponding characteristic on the server.<br>
 For details about related APIs, see [readCharacteristicValue](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#readcharacteristicvalue) and [writeCharacteristicValue](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#writecharacteristicvalue).
+
 ```ts
 // The following is pseudo code.
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -156,6 +169,7 @@ try {
 Reading a descriptor enables the client to retrieve the value of that descriptor from the server.<br>
 Writing a descriptor allows the client to update the value of the corresponding descriptor on the server.<br>
 For details about related APIs, see [readDescriptorValue](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#readdescriptorvalue) and [writeDescriptorValue](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#writedescriptorvalue).
+
 ```ts
 // The following is pseudo code.
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -197,7 +211,9 @@ When the server's characteristic value changes, the client can receive notificat
 Notifications do not require a client response, while indications mandate an acknowledgment. This acknowledgment mechanism is handled by the Bluetooth subsystem and therefore you do not need to implement this mechanism on your own. To enable the client to receive notifications or indications, also perform the following:
 
 - Subscribe to server's characteristic changes. For details, see [on('BLECharacteristicChange ')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onblecharacteristicchange).
+
 - Depending on the use case, enable the notification or indication function for server's characteristic changes. For details about related APIs, see [setCharacteristicChangeNotification](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangenotification) and [setCharacteristicChangeIndication](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangeindication).
+
 ```ts
 // The following is pseudo code.
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -269,6 +285,7 @@ try {
 
 **6. Disconnecting the Connection**<br>
 If a connection is no longer needed, the application must disconnect the connection.
+
 ```ts
 // The following is pseudo code.
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -289,6 +306,7 @@ try {
 
 **1. Creating a Server Instance**<br>
 Create a server instance. All subsequent operations will be performed using this server instance.
+
 ```ts
 try {
   let gattServer: ble.GattServer = ble.createGattServer();
@@ -299,6 +317,7 @@ try {
 
 **2. Adding Services**<br>
 Add a service required by the application. The service will be registered with the Bluetooth subsystem using the specified UUID. The client initiates a service query to check whether the service is supported by the server.
+
 ```ts
 // Create descriptors.
 let descriptors: Array<ble.BLEDescriptor> = [];
@@ -343,6 +362,7 @@ try {
 
 **3. Subscribing to Connection State Changes**<br>
 You can subscribe to connection state changes to obtain the real-time GATT connection state and the device address of the client. The connection process involves various state transitions. [STATE_CONNECTED](../../reference/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) indicates that the connection is established, and [STATE_DISCONNECTED](../../reference/apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) indicates that the connection is disconnected.
+
 ```ts
 function ServerConnectStateChanged(state: ble.BLEConnectionChangeState) {
   console.info('bluetooth connect state changed');
@@ -364,8 +384,10 @@ Data transmission can be implemented by reading and writing characteristics, rea
 **4.1 Subscribing to Characteristic Read or Write Events**<br>
 You can subscribe to characteristic read or write events to obtain the operation requests of the client. For details about the related APIs, see [on('characteristicRead ')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicread) and [on('characteristicWrite ')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicwrite).
 
-- When receiving a characteristic read request, call [sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse) needs to be called to return the value of the corresponding characteristic.
+- When receiving a characteristic read request, call [sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse) to return the value of the corresponding characteristic.
+
 - When receiving a characteristic write request, save the characteristic value written by the client. Based on the **needRsp** parameter in [CharacteristicWriteRequest](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#characteristicwriterequest), determine whether to call [sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse) to acknowledge the write operation.
+
 ```ts
 let gattServer: ble.GattServer = ble.createGattServer();
 let arrayBufferCCC = new ArrayBuffer(2);
@@ -432,7 +454,9 @@ gattServer.on('characteristicWrite', writeCharacteristicReq);
 You can subscribe to descriptor read or write events to obtain the operation requests of the client. For details about the related APIs, see [on('descriptorRead')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#ondescriptorread) and [on('descriptorWrite')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#ondescriptorwrite).
 
 - When receiving a descriptor read request, call [sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse) to return the value of the corresponding descriptor.
+
 - When receiving a descriptor write request, save the descriptor value written by the client. Based on the **needRsp** parameter in the client [DescriptorWriteRequest](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#descriptorwriterequest), determine whether to call [sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse) to acknowledge the write operation.
+
 ```ts
 let gattServer: ble.GattServer = ble.createGattServer();
 
@@ -503,7 +527,9 @@ When the server's characteristic value changes, the server can notify the client
 Notifications do not require a client response, while indications mandate an acknowledgment. The application determines whether to send a notification or indication based on the **confirm** parameter in [NotifyCharacteristic](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#notifycharacteristic). To enable the server to notify the client of characteristic value changes, also perform the following:
 
 - Include the UUID (00002902-0000-1000-8000-00805f9b34fb) of the CCC descriptor in the characteristic as defined by the Bluetooth protocol.
+
 - Depending on the use case, enable the notification or indication function by using [setCharacteristicChangeNotification](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangenotification) or [setCharacteristicChangeIndication](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#setcharacteristicchangeindication).
+
 ```ts
 let device = 'XX:XX:XX:XX:XX:XX'; // Device address, which is the client address and can be obtained from the connection state change event.
 let arrayBufferC = new ArrayBuffer(2);
@@ -530,6 +556,7 @@ try {
 
 **5. Closing the Server Instance**<br>
 If the server instance is no longer needed, you need to close it to release related resources. For example, if you want to delete the registered service and unsubscribe from change events, use the following code:
+
 ```ts
 try {
   let gattServer: ble.GattServer = ble.createGattServer();
@@ -543,6 +570,7 @@ try {
 ## Complete Sample Code
 
 ### Client
+
 ```ts
 import { ble, constant } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -916,6 +944,7 @@ export default gattClientManager as GattClientManager;
 ```
 
 ### Server
+
 ```ts
 import { ble, constant } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1194,11 +1223,11 @@ export class GattServerManager {
     console.info(TAG, 'unRegisterServer ' + this.myServiceUuid);
     try {
       this.gattServer.removeService(this.myServiceUuid); // 8.1 Delete the service.
-      this.gattServer.off('connectionStateChange', this.onGattServerStateChange) // 8.2 Unsubscribe from the connection state changes.
-      this.gattServer.on('characteristicRead', this.onCharacteristicRead); // 8.3 Subscribe to characteristic read events.
-      this.gattServer.on('characteristicWrite', this.onCharacteristicWrite); // 8.4 Subscribe to characteristic write events.
-      this.gattServer.on('descriptorRead', this.onDescriptorRead); // 8.5 Subscribe to descriptor read events.
-      this.gattServer.on('descriptorWrite', this.onDescriptorWrite); // 8.6 Subscribe to descriptor write events.
+      this.gattServer.off('connectionStateChange', this.onGattServerStateChange); // 8.2 Unsubscribe from the connection state change events.
+      this.gattServer.off('characteristicRead', this.onCharacteristicRead); // 8.3 Unsubscribe from characteristic value read events.
+      this.gattServer.off('characteristicWrite', this.onCharacteristicWrite); // 8.4 Unsubscribe from characteristic value write events.
+      this.gattServer.off('descriptorRead', this.onDescriptorRead); // 8.5 Unsubscribe from descriptor read events.
+      this.gattServer.off('descriptorWrite', this.onDescriptorWrite); // 8.6 Unsubscribe from descriptor write events.
       this.gattServer.close() // 8.7 Close the gattServer instance if it is no longer needed.
     } catch (err) {
       console.error(TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);

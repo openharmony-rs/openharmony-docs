@@ -103,3 +103,5 @@ The device supports Syscap associated with the API but does not support the API 
 **Solution**
 
 Do not use this API on the device. Alternatively, implement conditional checks in the code to mitigate the effects of the application running across various devices, particularly under abnormal circumstances.
+
+<!--RP1--><!--RP1End-->

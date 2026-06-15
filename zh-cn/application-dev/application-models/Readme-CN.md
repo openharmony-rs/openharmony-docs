@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @jayleehw-->
 <!--Designer: @jayleehw-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 
 - [Ability Kit简介](abilitykit-overview.md)
@@ -34,7 +34,6 @@
       <!--DelEnd-->
       - [EmbeddedUIExtensionAbility](embeddeduiextensionability.md)
       - [使用AppServiceExtensionAbility组件实现后台服务](app-service-extension-ability.md)
-      - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
     - [AbilityStage组件管理器](abilitystage.md)
     - [应用上下文Context](application-context-stage.md)
     - 信息传递载体Want<!--want-->
@@ -45,6 +44,7 @@
     - [组件启动规则（Stage模型）](component-startup-rules.md)
     - [应用启动框架AppStartup](app-startup.md)
     - [应用预加载](preload-application.md)
+    - [应用重启](app-restart.md)
     - [获取应用异常退出原因](ability-exit-info-record.md)
     <!--Del-->
     - 应用组件跨设备交互（流转）<!--hop-->
@@ -73,7 +73,7 @@
       - [拉起快递类应用（startAbilityByType）](start-express-apps.md)
       - [拉起图片编辑类应用（startAbilityByType）](photoEditorExtensionAbility.md)
       - [拉起文件处理类应用（startAbility）](file-processing-apps-startup.md)
-    - [拉起系统应用](system-app-startup.md)<!--PR1--><!--PR1End-->
+    - [拉起系统应用](system-app-startup.md)<!--RP1--><!--RP1End-->
   - [进程模型](process-model-stage.md)
   - [线程模型](thread-model-stage.md)
   <!--Del-->
@@ -92,8 +92,14 @@
       - [使用装饰器开发意图](insight-intent-decorator-development.md)
       - [附录：标准意图接入规范](insight-intent-access-specifications.md)
     - [调试意图](insight-intent-debug.md)
-  - 智能体开发指导<!--agent-->
-    - [Agent配置文件说明](agent-extension-configuration.md)
+  - 端侧A2A框架开发指导<!--agent-guideline-->
+    - [端侧A2A框架概述](agent-overview.md)
+    - 开发端侧智能体<!--agent-development-->
+      - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
+      - [AgentExtensionAbility配置文件说明](agent-extension-configuration.md)
+      <!--Del-->
+      - [使用AgentExtensionAbility组件提供的智能体服务（仅对系统应用开放）](agent-manager-sys.md)
+      <!--DelEnd-->
 - FA模型开发指导<!--fa-model-development-->
   - [FA模型开发概述](fa-model-development-overview.md)
   - FA模型应用组件<!--fa-model-application-components-->

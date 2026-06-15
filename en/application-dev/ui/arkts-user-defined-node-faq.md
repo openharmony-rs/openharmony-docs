@@ -1,8 +1,8 @@
 # FAQs About Custom Nodes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -281,11 +281,11 @@ When [BuilderNode](./arkts-user-defined-arktsNode-builderNode.md) is used to cre
 **Possible Causes**
 
 - When custom nodes are created with [BuilderNode](./arkts-user-defined-arktsNode-builderNode.md), the frontend BuilderNode object holds a strong reference to the backend node by default. Meanwhile, the backend node may, through certain paths (such as event callbacks or global caches), retain a reference back to the frontend BuilderNode object. This creates a circular reference between frontend and backend, causing the frontend object to be uncollectable and the backend node to remain unreleased due to the strong reference from the frontend, resulting in a memory leak.
-- The BuilderNode retains the parameter objects passed to its [build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build) function. If those parameter objects also hold a reference to the BuilderNode object itself, a circular reference among frontend objects is formed.
+- The BuilderNode retains the parameter objects passed to its [build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build) function. If those parameter objects also hold a reference to the BuilderNode object itself, a circular reference among frontend objects is formed. Starting from API version 24, this circular reference is automatically released.
 
 **Solution**
 
-- Step 1: If the parameters passed to the BuilderNode hold a reference to the BuilderNode object, call the [update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update) API to update the parameters and remove that reference when the BuilderNode is no longer needed.
+- Step 1: If the parameters passed to the BuilderNode hold a reference to the BuilderNode object, call the [update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update) API to update the parameters and remove that reference when the BuilderNode is no longer needed. Starting from API version 24, step 1 can be skipped.
 - Step 2: When a BuilderNode is no longer required, remove it from the component tree and call the [dispose](../reference/apis-arkui/js-apis-arkui-builderNode.md#dispose12) API. This immediately releases the strong reference from the frontend BuilderNode object to the backend node, breaking the circular reference between frontend and backend.
 
 **Example**

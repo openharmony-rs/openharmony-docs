@@ -56,7 +56,7 @@ struct Page {
 }
 ```
 
-For details about how to access HSP resources, see [Cross-HAP/HSP Resources](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).
+For sample code about how to access resources in an HSP, see [Accessing Resources Across HAPs/HSPs](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).
 
 ## $rawfile
 
@@ -100,4 +100,4 @@ struct Page {
 }
 ```
 
-For details about how to access HSP resources, see [Cross-HAP/HSP Resources](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).
+For sample code about how to access resources in an HSP, see [Accessing Resources Across HAPs/HSPs](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).

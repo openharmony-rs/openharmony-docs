@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **ArcSwiper** component is designed for circular screens to display child components in a carousel-like manner.
@@ -17,8 +17,8 @@ The **ArcSwiper** component is designed for circular screens to display child co
 > **NOTE**
 >
 > - **ArcSwiperAttribute** is essential for configuring the **ArcSwiper** component. In API version 21 and earlier, you must manually import **ArcSwiperAttribute** after importing the **ArcSwiper** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcSwiperAttribute** when it detects the **ArcSwiper** component, so manual import is no longer necessary.
->
 > - If you manually import **ArcSwiperAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+> - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can still run properly.
 
 API version 21 and earlier:
 
@@ -141,7 +141,7 @@ Sets whether vertical swiping is used.
 
 disableSwipe(disabled: Optional\<boolean>)
 
-Sets whether to disable the swipe feature.
+Sets whether to disable the swipe-to-switch feature of the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -151,7 +151,7 @@ Sets whether to disable the swipe feature.
 
 | Name| Type   | Mandatory| Description                                    |
 | ------ | ------- | ---- | ---------------------------------------- |
-| disabled  | Optional\<boolean> | Yes  | Whether to disable the swipe feature. The value **true** means to disable the feature, and **false** means the opposite.<br>Default value: **false**|
+| disabled  | Optional\<boolean> | Yes  | Whether to disable the swipe-to-switch feature of the component. The value **true** means to disable the feature, and **false** means the opposite.<br>Default value: **false**|
 
 ### digitalCrownSensitivity
 

@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @wyxpku-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -118,8 +118,8 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| capList   | string[] | 否   | 是   | 表示能力集合, 包含页面内容、页面链接、文本选择等能力。 具体能力项见下表。|
-| groupId | string | 否 | 是 | 业务分组ID。按业务场景预设的一组能力集合。可统一订阅业务场景。具体分组ID见下表。|
+| capList   | string[] | 否   | 是   | 表示能力集合，包含页面内容、页面链接、文本选择等能力。具体能力项见下表。|
+| groupId | string | 否 | 是 | 业务分组ID。具体分组ID见下表。|
 
 参数约束说明：<br>
 用户可通过能力项（capList）或分组 ID（groupId）使用屏上感知功能。
@@ -127,25 +127,25 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 * 校验规则：调用接口时，系统会单独检测capList和groupId。<br>
 * 能力列表：按能力项或分组ID使用屏上感知功能，具体定义如下。
   * capList支持能力列表<br>
-
+    按具体业务场景预设的能力，可进行单一订阅或者触发，如下：
     |capList支持能力列表|功能说明|
     | ---- | ------ |
-    |Acticle|获取阅读场景感知信息|
-    |ShortVideo|获取短视频场景的感知信息|
-    |Todo|获取待办场景的感知信息|
-    |Activity|获取基础服务的感知信息|
-    |UiImage|获取页面内子图信息|
-    |JumpContext|高亮跳转到指定上下文|
-    |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在trigger接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码|
+    |Article|获取阅读场景的感知信息。|
+    |ShortVideo|获取短视频场景的感知信息。|
+    |Todo|获取待办场景的感知信息。|
+    |Activity|获取基础服务的感知信息。|
+    |UiImage|获取页面内子图信息。|
+    |JumpContext|高亮跳转到指定上下文。|
+    |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在capture接口使用，capList仅传递"QuickSnap"时生效，其他使用接口均返回401错误码。|
 
   * groupId支持能力列表<br>
-  
+    按业务场景预设的一组能力集合。可统一订阅业务场景，如下：
     |groupId支持能力列表|对应子项能力|功能说明|
     | ---- | ------ | ------|
-    |SmartEdge|Acticle|获取阅读场景感知信息|
-    |SmartEdge|ShortVideo|获取短视频场景的感知信息|
-    |SmartEdge|Todo|获取待办场景的感知信息|
-    |SmartEdge|Activity|获取基础服务的感知信息|
+    |SmartEdge|Article|获取阅读场景的感知信息。|
+    |SmartEdge|ShortVideo|获取短视频场景的感知信息。|
+    |SmartEdge|Todo|获取待办场景的感知信息。|
+    |SmartEdge|Activity|获取基础服务的感知信息。|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
@@ -169,7 +169,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
-| ALLOW | 1 << 0    | 应用支持采集 |
+| ALLOW | 1 << 0    | 应用支持采集。 |
 | SPLIT_SCREEN | 1 << 1    | 应用分屏窗口采集策略。 |
 | UNSUPPORTED_APP | 1 << 2  | 应用不支持自动采集。 |
 | PRIVATE_WINDOW | 1 << 3  | 应用隐私窗口。 |
@@ -238,7 +238,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 ## ReadingScreenPermissionStatus<sup>23+</sup>
 
-读取屏幕信息的授权状态
+读取屏幕信息的授权状态。
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -393,7 +393,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
-| callback | Callback&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | 是   | 回调函数，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
@@ -448,7 +448,7 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 | 参数名   | 类型                             | 必填 | 说明               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
-| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 否   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个感知信息项。|
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | 否   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
@@ -494,7 +494,7 @@ trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，支持列表见[OnscreenAwarenessCap](#onscreenawarenesscap23)。 |
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
 **返回值：**
@@ -558,17 +558,17 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-capture接口支持的capList能力列表
+capture接口支持的capList能力列表，如下：
 |capList能力列表|功能说明|
 | ---- | ------ |
-|UiImage|获取页面内子图信息|
-|QuickSnap|获取截屏信息|
+|UiImage|获取页面内子图信息。|
+|QuickSnap|获取截屏信息。|
 
 **返回值：**
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
  
 **错误码**：
 
@@ -603,7 +603,7 @@ try {
 
 interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
 
-主动触发屏幕行为交互，实现对界面行为的识别与行为回执。例如：点击链接后，通过回执信息精准跳转至指定段落并实现文字高亮。
+主动触发屏幕行为交互，实现对界面行为的识别与行为反馈。例如：当capList能力列表为JumpContext时，点击后通过反馈信息精准跳转至指定段落并实现文字高亮。
 
 **需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
@@ -618,16 +618,16 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-interact接口支持的capList能力列表
+interact接口支持的capList能力列表，如下：
 |capList能力列表|功能说明|
 | ---- | ------ |
-|JumpContext|高亮跳转到指定上下文|
+|JumpContext|高亮跳转到指定上下文。|
 
 **返回值：**
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
@@ -688,19 +688,19 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-apperceive接口支持的groupId能力列表
+apperceive接口支持的groupId能力列表，如下：
 |groupId能力列表|对应子项能力|功能说明|
 | ---- | ------ | ------|
-|SmartEdge|Acticle|获取阅读场景感知信息|
-|SmartEdge|ShortVideo|获取短视频场景的感知信息|
-|SmartEdge|Todo|获取待办场景的感知信息|
-|SmartEdge|Activity|获取基础服务的感知信息|
+|SmartEdge|Article|获取阅读场景的感知信息。|
+|SmartEdge|ShortVideo|获取短视频场景的感知信息。|
+|SmartEdge|Todo|获取待办场景的感知信息。|
+|SmartEdge|Activity|获取基础服务的感知信息。|
 
 **返回值：**
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
@@ -789,7 +789,7 @@ offReadingScreenPermissionListener(callback?: Callback&lt;ReadingScreenPermissio
 
 | 参数名   | 类型                             | 必填 | 说明               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | 否   | 需取消的回调函数。省略则移除该事件的所有回调。|
+| callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | 否   | 回调函数。需要取消监听的回调函数，需与订阅时传入的回调函数一致。若不填，则取消当前监听该事件的所有回调函数。|
 
 **错误码**：
 

@@ -107,6 +107,7 @@ hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
 | time | number | 事件触发时间，单位：ms。 |
+| app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | pid | number | 应用的进程ID。 |
@@ -117,7 +118,7 @@ hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
 | thread | object | （resource_type为thread专有）线程信息，详见thread属性。 |
 | external_log | string[] | 故障日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，请在日志文件处理完后及时删除。** |
 | log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过2GB上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
-| page_switch_log | string | 页面切换日志路径，日志介绍详见通用日志。<br>**说明**：从API version 24开始支持。 |
+| page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |
 
 ### resource_type字段说明
 

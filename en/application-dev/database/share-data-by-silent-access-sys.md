@@ -1,11 +1,12 @@
 # Silent Access via DatamgrService (ArkTS) (for System Applications Only)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @woodenarow-->
 <!--Designer: @woodenarow; @xuelei3-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=a1b9555ca35e53d2ce1fb3e822613b1436be9250 translatedAt=2026-06-05T06:41:21.786Z pushedAt=2026-06-08T03:09:44.684Z -->
 
 ## When to Use
 
@@ -19,23 +20,18 @@ However, **DatamgrService** supports basic database access and data hosting only
 
 If the service processing is too complex to be encapsulated, use [DataShareExtensionAbility](../reference/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md) to start the data provider.
 
-
 ## Working Principles
 
 The **DatamgrService** can serve as a proxy to access the following data:
 
 - Persistent data: data in the database of the data provider. It is stored in the sandbox directory of the data provider and can be shared in declaration mode by the data provider. Persistent data is configured as data tables for access.
 
-
 - Process data: process data, in the JSON or byte format, managed by **DatamgrService**. It is stored in the **DatamgrService** sandbox directory, and is automatically deleted 10 days after no subscription.
-
-
 
 | Type | Location     | Data Format       | Validity Period         | Scenario                             |
 | ----- | --------- | ----------- | ------------ | --------------------------------- |
 | Persistent data| Sandbox directory of the data provider | Database tables   | Permanent        | RDB data used for schedules and meetings.     |
 | Process data | DatamgrService sandbox directory| JSON or byte| Automatically deleted 10 days after no subscription| Time-sensitive data in simple format used for step count, weather, and heart rate monitoring.|
-
 
 **Figure 1** Silent access
 
@@ -64,16 +60,20 @@ The **DatamgrService** can serve as a proxy to access the following data:
 ## Constraints
 
 - Currently, only the RDB stores support silent access.
-- The system supports a maximum of 32 concurrent query operations. Excess query requests need to be processed with retry logic.
-- After the query is complete, the shared data result set returned should be released promptly after use. For details, see [DataShareResultSet](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close).
-- The proxy is not allowed to create a database for persistent data. To create a database, you must start the data provider.
-- If the data provider is an application with a normal signature, the data read/write permission must be system_basic or higher.
-- Calling the silent access API (**insert**, **delete**, **update**, or **query**) must comply with the traffic control mechanism: Every 30 seconds is a traffic control period. If the number of API calls in the traffic control period is greater than or equal to 3000, the API call fails in the remaining time of the traffic control period. The API can be called again in the next traffic control period. Avoid calling the API frequently in a short period of time.
 
+- The system supports a maximum of 32 concurrent query operations. Excess query requests need to be processed with retry logic.
+
+- After the query is complete, the shared data result set returned should be released promptly after use. For details, see [DataShareResultSet](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close).
+
+- The proxy is not allowed to create a database for persistent data. To create a database, you must start the data provider.
+
+- If the data provider is an application with a normal signature, the data read/write permission must be system_basic or higher.
+
+- Calling the silent access API (**insert**, **delete**, **update**, or **query**) must comply with the traffic control mechanism: Every 30 seconds is a traffic control period. If the number of API calls in the traffic control period is greater than or equal to 3000, the API call fails in the remaining time of the traffic control period. The API can be called again in the next traffic control period. Avoid calling the API frequently in a short period of time.
 
 ## Available APIs
 
-Most of the APIs for silent access are executed asynchronously in callback or promise mode. In the following table, callback-based APIs are used as an example. For more information about the APIs, see [Data Sharing](../reference/apis-arkdata/js-apis-data-dataShare-sys.md).
+The following are APIs for silent data access. For more APIs and usage, see [@ohos.data.dataShare (DataShare) (System API)](../reference/apis-arkdata/js-apis-data-dataShare-sys.md).
 
 ### Universal APIs
 
@@ -129,13 +129,12 @@ The following walks you through on how to share an RDB store.
 
    **module.json5 example**
 
+   The following configuration is provided as an example only. Configure each field based on your service requirements and database schema.
+
    ```json
-   // The following configuration is for demonstration purposes only. Each field must be configured according to the application's specific service requirements and database structure.
    "proxyData": [
      {
-       // Modify the URI based on the actual application package name and database conditions. The URI here is for demonstration only.
        "uri": "datashareproxy://com.ohos.datashareprovider/datapath",
-       // Configure the permissions based on the data access requirements and permission requirements of the application, including application custom permissions, system permissions, or user-authorized permissions. The current permissions are for demonstration purposes only.
        "requiredReadPermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "requiredWritePermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "metadata": {
@@ -145,6 +144,7 @@ The following walks you through on how to share an RDB store.
      }
    ]
    ```
+
    **Table 2** Fields in my_config.json
 
    | Name | Description                                    | Mandatory  |
@@ -169,7 +169,6 @@ The following walks you through on how to share an RDB store.
    ```
 
 ### Data Consumer Application Development
-
 
 1. Import dependencies.
 
@@ -308,12 +307,12 @@ In the **module.json5** file, set the data to be hosted in **proxyData**. For de
 
 **module.json5 example**
 
+The following configuration is provided as an example only. Configure each field based on your service requirements.
+
 ```json
-// The following is an example only. Configure it as required.
 "proxyData": [
   {
     "uri": "datashareproxy://com.acts.ohos.data.datasharetest/weather",
-    // Configure permissions based on actual situation. The permissions configured here are examples only.
     "requiredReadPermission": "ohos.permission.READ_WEATHER_DATA",
     "requiredWritePermission": "ohos.permission.KEEP_BACKGROUND_RUNNING"
   }
@@ -426,5 +425,3 @@ The data provider calls the **enableSilentProxy** API to dynamically enable sile
      }
    }
    ```
-
-   

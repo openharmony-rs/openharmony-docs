@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @fangyuhao-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **Grid** component consists of cells formed by rows and columns. You can specify the cells where items are located to form various layouts.
@@ -69,6 +69,7 @@ To improve the performance of **Grid** in scenarios such as jumps and column qua
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name   | Type     | Read Only  | Optional| Description                   |
 | ----- | ------- | ---- | --  | --------------------- |
 | regularSize  | [number, number]  | No   | No| Number of rows and columns occupied by a grid item with regular size. The only supported value is **[1, 1]**, meaning that the grid item occupies one row and one column.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
@@ -324,7 +325,7 @@ cachedCount(count: number, show: boolean)
 
 Sets the number of grid items to be cached (preloaded) and specifies whether to display the preloaded nodes.
 
-The number of the grid items to be cached before and after the currently displayed one equals the value of **cachedCount** multiplied by the number of columns. This attribute can be combined with the [clip](ts-universal-attributes-sharp-clipping.md#clip12) or [content clipping](ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
+The number of the grid items to be cached before and after the currently displayed one equals the value of **cachedCount** multiplied by the number of columns. This attribute can be combined with the [clip](ts-universal-attributes-sharp-clipping.md#clip12) or [clipContent](ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -551,7 +552,7 @@ Sets the alignment mode of grid items in the grid. For details about the usage, 
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
-| alignment | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[GridItemAlignment](#griditemalignment12)\> | Yes  | Alignment mode of grid items in the grid.<br>Default value: **GridItemAlignment.DEFAULT**|
+| alignment | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[GridItemAlignment](#griditemalignment12)\> | Yes  | Alignment mode of grid items in the grid.<br>Default value: **GridItemAlignment.DEFAULT**|
 
 ### focusWrapMode<sup>20+</sup>
 
@@ -567,7 +568,7 @@ Sets the focus wrap mode for cross-axis arrow keys.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| mode   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[FocusWrapMode](ts-appendix-enums.md#focuswrapmode20)\> | Yes  | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE**<br>Abnormal values are treated as the default value, meaning that cross-axis arrow keys cannot wrap.|
+| mode   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[FocusWrapMode](ts-appendix-enums.md#focuswrapmode20)\> | Yes  | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE**<br>Abnormal values are treated as the default value, meaning that cross-axis arrow keys cannot wrap.|
 
 ### syncLoad<sup>20+</sup>
 
@@ -688,7 +689,7 @@ Drag gesture recognition is also initiated by a long press, and the event proces
 
 The floating grid element being dragged can move within the application window. If it is necessary to restrict its movement range, this can be achieved through custom gestures. For details, see [Example 16: Customizing the Drag Effect for GridItem](#example-16-customizing-the-drag-effect-for-griditem).
 
-Automatic scrolling is not supported when a grid item is dragged to the edge of the grid. You can use the universal drag event to implement this function. For details, see [Example 17: Dragging GridItem Components with Drag Events](#example-17-dragging-grid-items-with-drag-events). 
+Automatic scrolling is not supported when a grid item is dragged to the edge of the grid. You can use the universal drag event to implement this function. For details, see [Example 17: Dragging GridItem Components with Drag Events](#example-17-dragging-grid-items-with-drag-events).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -698,7 +699,7 @@ Automatic scrolling is not supported when a grid item is dragged to the edge of 
 
 | Name   | Type                                 | Mandatory| Description                  |
 | --------- | ------------------------------------- | ---- | ---------------------- |
-| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | Yes  | Callback triggered when the dragging of a grid element starts.<br>In API version 22 and earlier versions, the parameter type is (event: ItemDragInfo, itemIndex: number) => (() => any) \| void. For details about the **event** and **itemIndex** parameters, see [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23).|
+| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | Yes  | Callback triggered when the dragging of a grid element starts.<br>In API version 22 and earlier versions, the parameter type is **(event: ItemDragInfo, itemIndex: number) => (() => any) \| void**. For details about the **event** and **itemIndex** parameters, see [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23).|
 
 ### onItemDragEnter<sup>8+</sup>
 
@@ -1057,7 +1058,7 @@ struct GridExample {
       .backgroundColor(0xFAEEE0)
       .height(300)
 
-      Text('Use of GridLayoutOptions: onGetRectByIndex').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('Usage of GridLayoutOptions: onGetRectByIndex.').fontColor(0x000000).fontSize(14).width('90%')
 
       Grid(undefined, this.layoutOptions3) {
         ForEach(this.numbers2, (day: string) => {
@@ -1131,13 +1132,20 @@ export class GridDataSource implements IDataSource {
       listener.onDataMove(from, to);
     })
   }
+  
+  // Reload all data.
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
 
   // Exchange element positions.
   public swapItem(from: number, to: number): void {
     let temp: string = this.list[from];
     this.list[from] = this.list[to];
     this.list[to] = temp;
-    this.notifyDataMove(from, to);
+    this.notifyDataReload()
   }
 }
 ```
@@ -1152,7 +1160,7 @@ import { GridDataSource } from './GridDataSource';
 struct GridExample {
   numbers: GridDataSource = new GridDataSource([]);
   scroller: Scroller = new Scroller();
-  @State gridPosition: number = 0 // 0 indicates scrolling to the top of the grid, 1 indicates scrolling to the center, and 2 indicates scrolling to the bottom.
+  @State gridPosition: number = 0; // 0 indicates scrolling to the top of the grid, 1 indicates scrolling to the center, and 2 indicates scrolling to the bottom.
 
   aboutToAppear() {
     let list: string[] = [];
@@ -1166,7 +1174,7 @@ struct GridExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
       Grid(this.scroller) {
         LazyForEach(this.numbers, (day: string) => {
           GridItem() {
@@ -1200,7 +1208,7 @@ struct GridExample {
       .onScrollBarUpdate((index: number, offset: number) => {
         console.info('XXX' + 'Grid onScrollBarUpdate,index : ' + index.toString() + ',offset' + offset.toString());
         return { totalOffset: (index / 5) * (80 + 10) - offset, totalLength: 80 * 5 + 10 * 4 };
-      }) // The sample code applies only to the current data source. If the data source changes, modify the code or delete this attribute.
+      })  // The sample code applies only to the current data source. If the data source changes, modify the code or delete this attribute.
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
         console.info(scrollOffset.toString());
         console.info(scrollState.toString());
@@ -1275,6 +1283,7 @@ struct GridExample {
 
   build() {
     Column({ space: 5 }) {
+      Text('Grid1').fontColor(0x000000).fontSize(16).width('90%')
       Grid(this.scroller, this.layoutOptions1) {
         LazyForEach(this.numbers, (day: string) => {
           GridItem() {
@@ -1296,7 +1305,7 @@ struct GridExample {
       .backgroundColor(0xFAEEE0)
       .height(300)
 
-      Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('Grid2').fontColor(0x000000).fontSize(16).width('90%')
       // The grid does not scroll, and undefined is used to reserve space.
       Grid(undefined, this.layoutOptions2) {
         LazyForEach(this.numbers, (day: string) => {
@@ -1550,7 +1559,7 @@ struct GridExample {
     this.numbers = new GridDataSource(list);
   }
 
-  changeIndex(index1: number, index2: number) { // Exchange the array position.
+  changeIndex(index1: number, index2: number) { // Exchange the array positions.
     this.numbers.swapItem(index1, index2);
   }
 
@@ -1638,8 +1647,8 @@ struct GridExample {
     Scroll() {
       Column({ space: 5 }) {
         Blank()
-        Text ('Valid only when layoutDirection, maxCount, minCount, and cellLength are not set for rowsTemplate and columnsTemplate.')
-          .fontSize(15).fontColor(0xCCCCCC).width('90%')
+        Text('The layoutDirection, maxCount, minCount, and cellLength parameters take effect only when neither rowsTemplate nor columnsTemplate is set.')
+          .fontSize(16).fontColor(0x000000).width('90%')
         Grid() {
           LazyForEach(this.numbers, (day: string) => {
             GridItem() {
@@ -1920,7 +1929,7 @@ struct GridExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
       Grid(this.scroller) {
         LazyForEach(this.numbers, (day: string) => {
           GridItem() {
@@ -2262,12 +2271,22 @@ enum SlideActionType {
   END
 }
 // Hot zone
-const HOT_AREA_LENGTH =
-  Math.round(display.getDefaultDisplaySync().densityDPI * 10 / 25.4 / display.getDefaultDisplaySync().densityPixels);
+let HOT_AREA_LENGTH: number;
+try {
+  HOT_AREA_LENGTH =
+    Math.round(display.getDefaultDisplaySync().densityDPI * 10 / 25.4 / display.getDefaultDisplaySync().densityPixels);
+} catch (error) {
+  console.info('Failed to get default display for HOT_AREA_LENGTH:', error);
+}
 // Scroll curve: Bezier curve
 const SLIDE_SELECT_SPEED_CURVE = curves.cubicBezierCurve(0.33, 0, 0.67, 1);
 // Scroll speed: maximum speed
-const AUTO_SPEED_MAX: number = Math.round(2400 / display.getDefaultDisplaySync().densityPixels);
+let AUTO_SPEED_MAX: number;
+try {
+  AUTO_SPEED_MAX = Math.round(2400 / display.getDefaultDisplaySync().densityPixels);
+} catch (error) {
+  console.info('Failed to get default display for AUTO_SPEED_MAX:', error);
+}
 @Entry
 @Component
 struct GridExample {
@@ -2536,7 +2555,7 @@ struct GridExample {
 }
 ```
 
-
+![gridScrollWithPanGesture](figures/gridScrollWithPanGesture.gif)
 
 ### Example 16: Customizing the Drag Effect for GridItem
 
@@ -2868,7 +2887,7 @@ struct Example {
             console.info('drop:' + item + '' + extraParams + JSON.stringify(event!));
             this.changeIndex(parseInt(JSON.parse(extraParams!).extraInfo), index);
           })
-        }, (item: string) => item)
+        }, (item: string, index: number) => item + '+' + index)
       }
       .columnsGap(5)
       .rowsGap(5)
@@ -2975,7 +2994,7 @@ struct GridExample {
 
   build() {
     Column({ space: 5 }) {
-      Text ('Scrollable Grid and LazyForEach')
+      Text('Scrollable Grid and LazyForEach')
       Row() {
         // Button to obtain the content size.
         Button('GetContentSize')
@@ -2988,7 +3007,7 @@ struct GridExample {
               this.contentHeight = this.scroller.contentSize().height;
             } catch (error) {
               let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+              console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
             }
           })
         // Display the obtained content size.
@@ -3028,16 +3047,17 @@ struct GridExample {
   }
 }
 ```
-
+![gridContentSize](figures/gridContentSize.gif)
 
 ### Example 20: Setting the Multi-selection Gather Animation
 
-This example demonstrates how to gather selected grid items in the display area when [a long press triggers context menu](ts-universal-attributes-menu.md#bindcontextmenu8) on grid items by enabling the multi-selection gather animation switch for **Grid**.
+This example demonstrates how to gather selected grid items in the visible area when a long press is performed on grid items using [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8), with the multi-selection gather animation switch enabled for **Grid**.
 
-Starting from API version 23, the **Grid** component has added the [edit mode options](#editmodeoptions23) API, which can be used to set the multi-selection gather animation switch.
+Since API version 23, the [editModeOptions](#editmodeoptions23) API is added to the **Grid** component  to set the multi-selection gather animation switch.
 
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';
@@ -3133,3 +3153,4 @@ struct GridExample {
 ```
 
 ![gridMultiselectAnimation](figures/gridMultiselectAnimation.gif)
+<!--no_check-->

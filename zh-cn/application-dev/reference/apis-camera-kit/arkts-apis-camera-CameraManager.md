@@ -398,7 +398,7 @@ function createPreviewOutput(cameraManager: camera.CameraManager, surfaceId: str
 }
 ```
 
-### createDeferredPreviewOutput<sup>24+</sup>
+## createDeferredPreviewOutput<sup>24+</sup>
 
 createDeferredPreviewOutput(profile: Profile): PreviewOutput
 
@@ -426,7 +426,7 @@ createDeferredPreviewOutput(profile: Profile): PreviewOutput
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400101                |  Parameter missing or parameter type incorrect.               |
+| 7400101                |  profile is missing or incorrect.          |
 | 7400201                |  Camera service fatal error.               |
 
 **示例：**

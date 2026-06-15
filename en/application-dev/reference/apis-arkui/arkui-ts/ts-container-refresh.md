@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
  The **Refresh** component is a container that provides the pull-to-refresh feature.
@@ -13,9 +13,9 @@
 >
 >  - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  - This component provides linkage with a vertical scrolling **Swiper** and **Web** component since API version 12. The linkage does not work if the **loop** attribute of **Swiper** is set to **true**.
+>  - Since API version 12, this component provides linkage with a vertically scrolling [Swiper](ts-container-swiper.md) and [Web](../arkui-js/js-components-basic-web.md) components. When the [loop](ts-container-swiper.md#loop) attribute of [Swiper](ts-container-swiper.md) is set to **true**, the **Refresh** component cannot provide linkage with [Swiper](ts-container-swiper.md).
 >
->  - When the **Refresh** component is nested with a **List** component whose content size is smaller than the component itself, and there are other components in between, gestures may be intercepted by the intermediate components, preventing the pull-to-refresh effect. In such cases, set the [alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11) parameter to **true** to allow **List** to respond to gestures and drive the **Refresh** component through nested scrolling for the pull-to-refresh effect. For details, see [Example 9: Implementing Pull-to-Refresh in the Non-Full-Screen Scenario](#example-9-implementing-pull-to-refresh-in-the-non-full-screen-scenario).
+>  - When the **Refresh** component is nested with a [List](ts-container-list.md) component whose content size is smaller than the component itself, and there are other components in between, gestures may be intercepted by the intermediate components, preventing the pull-to-refresh effect. In such cases, set the [alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11) parameter to **true** to allow [List](ts-container-list.md) to respond to gestures and drive the **Refresh** component through nested scrolling for the pull-to-refresh effect. For details, see [Example 9: Implementing Pull-to-Refresh in the Non-Full-Screen Scenario](#example-9-implementing-pull-to-refresh-in-the-non-full-screen-scenario).
 >
 >  - The component has been bound with gestures to implement functions such as follow-up scrolling. If you need to add custom gestures, refer to [Gesture Blocking Enhancement](ts-gesture-blocking-enhancement.md).
 >
@@ -49,6 +49,7 @@ Defines the options of the **Refresh** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name        | Type                                     | Read-Only  | Optional| Description                                    |
 | ---------- | ---------------------------------------- | ---- | -- | ---------------------------------------- |
 | refreshing | boolean                                  | No   | No| Whether the component is being refreshed. The value **true** means that the component is being refreshed, and **false** means the opposite.<br>Default value: **false**<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -117,7 +118,7 @@ Sets whether to enable the pull-up-to-cancel gesture for refreshing operations.
 
 ### pullDownRatio<sup>12+</sup>
 
-pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number>)
+pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>)
 
 Sets the pull-down ratio.
 
@@ -129,7 +130,7 @@ Sets the pull-down ratio.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| ratio  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> |  Yes| Pull-down ratio. A larger value indicates higher responsiveness to the pull-down gesture. The value **0** indicates that the pull-down does not follow the gesture, and **1** indicates that the pull-down follows the gesture proportionally.<br>If this parameter is not set or is set to **undefined**, a dynamic pull-down ratio is used. That is, the larger the pull-down distance, the smaller the ratio.<br>The value ranges from 0 to 1. A value less than 0 is handled as **0**, and a value greater than 1 is handled as **1**.|
+| ratio  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> |  Yes| Pull-down ratio. A larger value indicates higher responsiveness to the pull-down gesture. The value **0** indicates that the pull-down does not follow the gesture, and **1** indicates that the pull-down follows the gesture proportionally.<br>If this parameter is not set or is set to **undefined**, a dynamic pull-down ratio is used. That is, the larger the pull-down distance, the smaller the ratio.<br>The value ranges from 0 to 1. A value less than 0 is handled as **0**, and a value greater than 1 is handled as **1**.|
 
 ### maxPullDownDistance<sup>20+</sup>
 
@@ -145,7 +146,7 @@ Sets the maximum pull-down distance.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| distance  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> |  Yes| Maximum pull-down distance. The minimum value for the maximum pull-down distance is 0. Values less than 0 are treated as **0**. If this value is less than the refresh offset (**refreshOffset**), the refresh action will not be triggered when the pull-down gesture is released.<br>If set to **undefined** or **null**, this parameter is considered not set.<br>Default value: **undefined**.<br>Unit: vp|
+| distance  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> |  Yes| Maximum pull-down distance. The minimum value for the maximum pull-down distance is 0. Values less than 0 are treated as **0**. If this value is less than the refresh offset (**refreshOffset**), the refresh action will not be triggered when the pull-down gesture is released.<br>If set to **undefined** or **null**, this parameter is considered not set.<br>Default value: **undefined**.<br>Unit: vp|
 
 ## Events
 
@@ -201,7 +202,7 @@ Called when the pull-down distance changes.
 
 | Name| Type                                   | Mandatory| Description      |
 | ------ | --------------------------------------- | ---- | ---------- |
-| callback  | Callback\<number> | Yes  | Pull-down distance.<br>Unit: vp|
+| callback  | Callback\<number> | Yes  | Callback used to listen for the pull-down distance changes. It is triggered when the pull-down distance changes and returns the current pull-down distance.<br>Unit: vp|
 
 
 ## RefreshStatus
@@ -270,7 +271,7 @@ struct RefreshExample {
         .scrollBar(BarState.Off)
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -333,7 +334,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .refreshOffset(96)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -376,7 +377,7 @@ struct RefreshExample {
     .clip(true)
     // Set a minimum height constraint to ensure that the height of the custom component does not fall below the specified minHeight when the height of the refreshing area changes.
     .constraintSize({ minHeight: 32 })
-    .width("100%")
+    .width('100%')
   }
 
   build() {
@@ -408,7 +409,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .refreshOffset(64)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -452,7 +453,7 @@ function customRefreshingContent(params: Params) {
   .clip(true)
   // Set a minimum height constraint to ensure that the height of the custom component does not fall below the specified minHeight when the height of the refreshing area changes.
   .constraintSize({ minHeight: 32 })
-  .width("100%")
+  .width('100%')
 }
 
 @Entry
@@ -502,7 +503,7 @@ struct RefreshExample {
         this.params.refreshStatus = refreshStatus;
         // Update the content of the custom component.
         this.contentNode?.update(this.params);
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -536,7 +537,7 @@ function customRefreshingContent() {
   .clip(true)
   // Set a minimum height constraint to ensure that the height of the custom component does not fall below the specified minHeight when the height of the refreshing area changes.
   .constraintSize({ minHeight: 32 })
-  .width("100%")
+  .width('100%')
 }
 
 @Entry
@@ -587,7 +588,7 @@ struct RefreshExample {
         this.ratio = 1 - Math.pow((offset / this.maxRefreshingHeight), 3);
       })
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -630,8 +631,8 @@ struct ListRefreshLoad {
       }
     }
     .clip(true)
-    .height("100%")
-    .width("100%")
+    .height('100%')
+    .width('100%')
   }
 
   @Builder
@@ -639,7 +640,7 @@ struct ListRefreshLoad {
     Row() {
       LoadingProgress().height(32).width(48)
       Text("Loading")
-    }.width("100%")
+    }.width('100%')
     .height(64)
     .justifyContent(FlexAlign.Center)
     // The component is hidden when not in the loading state.
@@ -741,7 +742,7 @@ struct RefreshExample {
       }
       .maxPullDownDistance(150)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus)
+        console.info('Refresh onStateChange state is ' + refreshStatus)
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value)
@@ -814,7 +815,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .pullDownRatio(this.ratio)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -834,7 +835,7 @@ struct RefreshExample {
 
 ### Example 9: Implementing Pull-to-Refresh in the Non-Full-Screen Scenario
 
-You can set the **alwaysEnabled** parameter in the [edgeEffect](ts-container-scrollable-common.md#edgeeffect11) attribute to implement the pull-to-refresh effect of the **Refresh** component when the screen is not full.
+When calling [edgeEffect](ts-container-scrollable-common.md#edgeeffect11), set [alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11) of the **options** parameter to **true** to implement the pull-to-refresh effect of the **Refresh** component in the non-full-screen scenario.
 
 ```ts
 // xxx.ets
@@ -876,7 +877,7 @@ struct RefreshExample {
         )
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -976,7 +977,7 @@ struct RefreshExample {
         this.refreshStatus = refreshStatus;
         this.params.refreshStatus = refreshStatus;
         this.contentNode?.update(this.params);
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -997,3 +998,4 @@ struct RefreshExample {
 ```
 
 ![refresh_pullUpToCancelRefresh](figures/refresh_pullUpToCancelRefresh.gif)
+<!--no_check-->

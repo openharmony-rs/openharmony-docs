@@ -1,8 +1,8 @@
 # @ohos.distributedsched.proxyChannelManager (Proxy Channel Management)
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
-<!--Owner: @huangkai71-->
-<!--Designer: @lee_jet520-->
+<!--Owner: @jzy_123-->
+<!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -22,7 +22,7 @@ DSoftBus provides stable and reliable underlying channels for cross-device commu
 >
 > **Model restriction**: This API can be used only in the stage model.
 
-## Importing modules
+## Modules to Import
 
 ```js
 import { proxyChannelManager } from '@kit.DistributedServiceKit';
@@ -64,7 +64,7 @@ Opens a proxy channel. This API uses a promise to return the result.
 
 For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390001      | BR is disabled.|
@@ -136,7 +136,7 @@ Closes a proxy channel that has been opened.
 
 For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390004 | ChannelId is invalid or unavailable.|
@@ -202,7 +202,7 @@ Sends data to the peer end. This API uses a promise to return the result.
 
 For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390004 | ChannelId is invalid or unavailable.|
@@ -269,7 +269,7 @@ Subscribes to data receiving events. This API returns the result asynchronously 
 
 For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390004 | ChannelId is invalid or unavailable.|
@@ -330,7 +330,7 @@ Unsubscribes from data receiving events.
 
 For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390004 | ChannelId is invalid or unavailable.|
@@ -389,7 +389,7 @@ Subscribes to channel state change events. This API returns the result asynchron
 
 For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390004 | ChannelId is invalid or unavailable.|
@@ -450,7 +450,7 @@ Unsubscribes from channel state change events.
 
 For details about the following error codes, see [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390004 | ChannelId is invalid or unavailable.|

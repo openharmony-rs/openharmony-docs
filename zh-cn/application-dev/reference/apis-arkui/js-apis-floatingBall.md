@@ -49,7 +49,7 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Tablet设备的非电脑模式、Phone设备下可正常调用，在其他设备、Tablet设备的电脑模式下调用返回801错误码。
 
 **参数：**
 
@@ -495,7 +495,7 @@ restoreMainWindow(want: Want): Promise&lt;void&gt;
 | 1300023 | Floating ball internal error. |
 | 1300024 | The floating ball window state is abnormal. |
 | 1300025 | The floating ball state does not support this operation. |
-| 1300026 | Failed to restore the main window. Possiable causes: </br>1. Invalid parameter. The provided bundleName does not match the caller's application bundleName.</br>2. The application lacks the ohos.permission.AUTO_RESTORE_MAIN_WINDOW permission, and no user interaction (click) on the floating ball has occurred. |
+| 1300026 | Failed to restore the main window. Possible causes: </br>1. Invalid parameter. The provided bundleName does not match the caller's application bundleName.</br>2. The application lacks the ohos.permission.AUTO_RESTORE_MAIN_WINDOW permission, and no user interaction (click) on the floating ball has occurred. |
 
 **示例：**
 

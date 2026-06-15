@@ -1,10 +1,10 @@
 # @ohos.enterprise.browser (Browser Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **browser** module provides browser management, including setting, canceling, and obtaining browser policies.
 
@@ -12,11 +12,11 @@ Browser policies are a collection of rules and settings that govern how a browse
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -28,7 +28,7 @@ import { browser } from '@kit.MDMKit';
 
 setPolicySync(admin: Want, appId: string, policyName: string, policyValue: string): void
 
-Sets the sub-policy for a specified browser.
+Sets the sub-policy for a specified browser.<!--RP1--><!--RP1End-->
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
@@ -43,9 +43,9 @@ Sets the sub-policy for a specified browser.
 | Name     | Type                                                   | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appId       | string                                                  | Yes  | Application ID, which is used to specify the browser.                                    |
-| policyName  | string                                                  | Yes  | Name of the browser policy to set. If the value is an empty string, the browser policy corresponding to the application ID is set.|
-| policyValue | string                                                  | Yes  | Browser policy to set. If the value is an empty string, the policy corresponding to the policy name is removed.|
+| appId       | string                                                  | Yes  | Application ID, which uniquely identifies an application. This ID is used to specify the browser. For details, see [What Is appidentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier).                                                               |
+| policyName  | string                                                  | Yes  | Browser sub-policy name, which is agreed upon by the API caller and the specified browser. If the value is an empty string, the browser policy corresponding to **appId** is to be set.|
+| policyValue | string                                                  | Yes  | Browser sub-policy, which is agreed upon by the API caller and the specified browser. If the value is an empty string, the policy corresponding to the policy name is removed.|
 
 **Error codes**
 
@@ -87,7 +87,7 @@ try {
 
 getPoliciesSync(admin: Want, appId: string): string
 
-Obtains the browser policy by app ID.
+Obtains the browser policy by app ID.<!--RP1--><!--RP1End-->
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -143,6 +143,10 @@ try {
 setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, policyValue: string): void
 
 Sets the browser policy. After the setting is successful, the system common event [COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed) is released.
+
+> **NOTE**
+>
+> In multi-MDM application scenarios, once a policy for a specific browser is configured and takes effect by the first admin, it can no longer be configured by other admins.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 

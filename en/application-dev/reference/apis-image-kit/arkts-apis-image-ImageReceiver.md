@@ -2,13 +2,15 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 The **ImageReceiver** class provides APIs to obtain the surface ID of a component, read the latest image, read the next image, and release the ImageReceiver instance. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
 
 Before calling any APIs in ImageReceiver, you must use [image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver11) to create an ImageReceiver instance.
+
+Since API version 23, you are advised to use [image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver23) to create an **ImageReceiver** instance based on the passed [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23). 
 
 Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -29,9 +31,9 @@ import { image } from '@kit.ImageKit';
 
 | Name    | Type                        | Read Only| Optional| Description              |
 | -------- | ---------------------------- | ---- | ---- | ------------------ |
-| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)                | Yes  | No  | Image size. This parameter does not affect the size of the received image. The actual returned size is determined by the producer, for example, the camera.        |
-| capacity<sup>9+</sup> | number                       | Yes  | No  | Maximum number of images that can be accessed at the same time. This parameter is used only as an expected value. The actual capacity is determined by the device hardware.|
-| format<sup>9+</sup>   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | Yes  | No  | Image format, which is a constant of [ImageFormat](arkts-apis-image-e.md#imageformat9). (Currently, only **ImageFormat:JPEG** is supported. The format actually returned is determined by the producer, for example, camera.)       |
+| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)  | Yes  | No  | Image size. This parameter does not affect the size of the received image. The actual returned size is determined by the producer, for example, the camera.        |
+| capacity<sup>9+</sup> | number    | Yes  | No  | Maximum number of images that can be accessed at the same time. This parameter is used only as an expected value. The actual capacity is determined by the device hardware.|
+| format<sup>9+</sup>   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | Yes  | No  | Image format. The value is an enum value of [ImageFormat](arkts-apis-image-e.md#imageformat9). (Currently, only **ImageFormat:JPEG** is supported. The format actually returned depends on the producer, for example, camera.)       |
 
 ## getReceivingSurfaceId<sup>9+</sup>
 
@@ -98,7 +100,6 @@ readLatestImage(callback: AsyncCallback\<Image>): void
 Reads the latest image from the ImageReceiver instance. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
@@ -107,7 +108,7 @@ Reads the latest image from the ImageReceiver instance. This API uses an asynchr
 
 | Name    | Type                           | Mandatory| Description                    |
 | -------- | ------------------------------- | ---- | ------------------------ |
-| callback | AsyncCallback<[Image](arkts-apis-image-Image.md)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the latest image obtained; otherwise, **err** is an error object. |
+| callback | AsyncCallback<[Image](arkts-apis-image-Image.md)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the latest image obtained. Otherwise, **err** is an error object. |
 
 **Example**
 
@@ -115,12 +116,24 @@ Reads the latest image from the ImageReceiver instance. This API uses an asynchr
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadLatestImage(receiver : image.ImageReceiver) {
-  receiver.readLatestImage((err: BusinessError, img: image.Image) => {
-    if (err) {
-      console.error(`Failed to read the latest Image.code ${err.code},message is ${err.message}`);
-    } else {
-      console.info('Succeeded in reading the latest Image.');
+  receiver.readLatestImage((err: BusinessError, latestImage: image.Image) => {
+    if (err || latestImage === undefined) {
+      console.error('Failed to readLatestImage.');
+      return;
     }
+    // Parse the image.
+    latestImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+      }
+      if (imgComponent.byteBuffer) {
+        // Process the binary image data.
+        console.info(`getComponent with width:${latestImage.size.width} height:${latestImage.size.height}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })
   });
 }
 ```
@@ -132,8 +145,7 @@ readLatestImage(): Promise\<Image>
 Reads the latest image from the ImageReceiver instance. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+>This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -149,8 +161,20 @@ Reads the latest image from the ImageReceiver instance. This API uses a promise 
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadLatestImage(receiver : image.ImageReceiver) {
-  receiver.readLatestImage().then((img: image.Image) => {
-    console.info('Succeeded in reading the latest Image.');
+  receiver.readLatestImage().then((latestImage: image.Image) => {
+    // Parse the image.
+    latestImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+      }
+      if (imgComponent.byteBuffer) {
+        // Process the binary image data.
+        console.info(`getComponent with width:${latestImage.size.width} height:${latestImage.size.height}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })    
   }).catch((error: BusinessError) => {
     console.error(`Failed to read the latest Image.code ${error.code},message is ${error.message}`);
   });
@@ -164,8 +188,7 @@ readNextImage(callback: AsyncCallback\<Image>): void
 Reads the next image from the ImageReceiver instance. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+>This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -181,12 +204,24 @@ Reads the next image from the ImageReceiver instance. This API uses an asynchron
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadNextImage(receiver : image.ImageReceiver) {
-  receiver.readNextImage((err: BusinessError, img: image.Image) => {
-    if (err) {
-      console.error(`Failed to read the next Image.code ${err.code},message is ${err.message}`);
-    } else {
-      console.info('Succeeded in reading the next Image.');
+  receiver.readNextImage((err: BusinessError, nextImage: image.Image) => {
+    if (err || nextImage === undefined) {
+      console.error('Failed to readNextImage.');
+      return;
     }
+    // Parse the image.
+    nextImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+      }
+      if (imgComponent.byteBuffer) {
+        // Process the binary image data.
+        console.info(`getComponent with width:${nextImage.size.width} height:${nextImage.size.height} stride:${imgComponent.rowStride}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })
   });
 }
 ```
@@ -198,8 +233,7 @@ readNextImage(): Promise\<Image>
 Reads the next image from the ImageReceiver instance. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+>This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -215,8 +249,20 @@ Reads the next image from the ImageReceiver instance. This API uses a promise to
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadNextImage(receiver : image.ImageReceiver) {
-  receiver.readNextImage().then((img: image.Image) => {
+  receiver.readNextImage().then((nextImage: image.Image) => {
     console.info('Succeeded in reading the next Image.');
+    nextImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
+      imgComponent: image.Component) => {
+      if (err || imgComponent === undefined) {
+        console.error('Failed to getComponent.');
+      }
+      if (imgComponent.byteBuffer) {
+        // Process the binary image data.
+        console.info(`getComponent with width:${nextImage.size.width} height:${nextImage.size.height} stride:${imgComponent.rowStride}`);
+      } else {
+        console.error('byteBuffer is null');
+      }
+    })
   }).catch((error: BusinessError) => {
     console.error(`Failed to read the next Image.code ${error.code},message is ${error.message}`);
   });
@@ -235,7 +281,7 @@ Listens for image arrival events. This API uses an asynchronous callback to retu
 
 | Name  | Type                | Mandatory| Description                                                  |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
-| type     | string               | Yes  | Type of event to listen for. The value is fixed at **'imageArrival'**, which is triggered when an image is received.|
+| type     | string               | Yes  | Type of event to listen for. The value is fixed at **'imageArrival'**. This event is triggered when an image is received.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.                                       |
 
 **Example**
@@ -243,7 +289,13 @@ Listens for image arrival events. This API uses an asynchronous callback to retu
 ```ts
 async function On(receiver : image.ImageReceiver) {
   receiver.on('imageArrival', () => {
-    // Implement the callback logic when an image is received.
+    // After the image arrival callback is triggered, read the latest or next image for processing.
+    receiver.readLatestImage().then((img: image.Image) => {
+      console.info('Succeeded in reading the latest Image.');
+      // Process the image data.
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to read the latest Image.`);
+    });
   });
 }
 ```

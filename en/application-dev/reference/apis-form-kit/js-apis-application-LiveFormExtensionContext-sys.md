@@ -1,20 +1,20 @@
 # LiveFormExtensionContext (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 LiveFormExtensionContext, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), is the context of [LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md).
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [LiveFormExtensionContext](./js-apis-application-LiveFormExtensionContext.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [LiveFormExtensionContext](./js-apis-application-LiveFormExtensionContext.md).
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 ```ts
@@ -61,6 +61,7 @@ Upon successful connection, the LiveFormExtensionAbility can communicate with th
 ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) provided by the system. It is designed to deliver background services for specific scenarios and does not support developer customization.
 
 ServiceExtensionAbility enables applications to run in the background and provide services. Third-party applications can connect to and communicate with this ExtensionAbility.
+
 A successful connection via this API will start the ServiceExtensionAbility. For details, see [Component Startup Rules](../../application-models/component-startup-rules.md).
 
 **Model restriction**: This API can be used only in the stage model.

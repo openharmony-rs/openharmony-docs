@@ -1,5 +1,4 @@
 # slider
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
@@ -7,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **\<slider>** component is used to quickly adjust settings, such as the volume and brightness.
+The **slider** component is used to quickly adjust settings, such as volume and brightness.
 
 > **NOTE**
 >
@@ -19,7 +18,7 @@ The **\<slider>** component is used to quickly adjust settings, such as the volu
 Not supported
 
 
-## Attributes
+## Properties
 
 | Name   | Type    | Default Value | Mandatory  | Description                                      |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
@@ -39,40 +38,40 @@ Not supported
 | change             | ChangeEvent                       | Triggered when the value changes.|
 | click              | -                                 | Triggered when the component is clicked.    |
 | longpress          | -                                 | Triggered when the component is long pressed.    |
-| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | Triggered when a user quickly swipes on the component.   |
+| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Triggered when a user quickly swipes on the component.   |
 
   **Table 1** ChangeEvent
 
 | Attribute                                      | Type    | Description           |
 | ---------------------------------------- | ------ | ------------- |
-| progress<sup>(deprecated<sup>5+</sup>)</sup> | string | Current value of the slider.|
+| progress<sup>(deprecated<sup>5+</sup>)</sup> | string | Current progress of the slider.|
 | value<sup>5+</sup>                       | number | Current value of the slider.|
 
 
 ## Styles
 
-| Name                                | Type                                      | Default Value     | Mandatory  | Description                                      |
-| ---------------------------------- | ---------------------------------------- | -------- | ---- | ---------------------------------------- |
-| color                              | &lt;color&gt;                            | \#000000 | No   | Background color of the slider.                               |
-| selected-color                     | &lt;color&gt;                            | \#ffffff | No   | Selected color of the slider.                              |
-| width                              | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | -        | No   | Component width.<br>If this attribute is not set, the default value **0** is used.       |
-| height                             | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | -        | No   | Component height.<br>If this attribute is not set, the default value **0** is used.       |
-| padding                            | &lt;length&gt;                           | 0        | No   | Shorthand attribute to set the padding for all sides.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
-| padding-[left\|top\|right\|bottom] | &lt;length&gt;                           | 0        | No   | Left, top, right, and bottom padding.                         |
-| margin                             | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | 0        | No   | Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
-| margin-[left\|top\|right\|bottom]  | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | 0        | No   | Left, top, right, and bottom margins.                         |
-| border-width                       | &lt;length&gt;                           | 0        | No   | Shorthand attribute to set the border width for all sides.                      |
-| border-color                       | &lt;color&gt;                            | black    | No   | Shorthand attribute to set the color for all borders.                      |
-| border-radius                      | &lt;length&gt;                           | -        | No   | Radius of round-corner borders.           |
-| background-color                   | &lt;color&gt;                            | -        | No   | Background color.                                 |
-| display                            | string                                   | flex     | No   | How and whether to display the box containing an element. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
-| [left\|top]                        | &lt;length&gt; \| &lt;percentage&gt;<sup>6+</sup> | -        | No   | Edge of the element.<br>- **left**: left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- **top**: top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
+| Name                              | Type                                                       | Default Value  | Mandatory| Description                                                        |
+| ---------------------------------- | ----------------------------------------------------------- | -------- | ---- | ------------------------------------------------------------ |
+| color                              | &lt;color&gt;                                               | \#000000 | No  | Background color of the slider.                                          |
+| selected-color                     | &lt;color&gt;                                               | \#ffffff | No  | Selected color of the slider.                                        |
+| width                              | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | -        | No  | Component width.<br>If this attribute is not set, default value **0** is used.          |
+| height                             | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | -        | No  | Component height.<br>If this attribute is not set, default value **0** is used.          |
+| padding                            | &lt;length&gt;                                              | 0        | No  | Shorthand attribute to set all padding attributes.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
+| padding-[left\|top\|right\|bottom] | &lt;length&gt;                                              | 0        | No  | Left, top, right, and bottom padding.                              |
+| margin                             | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0        | No  | Shorthand attribute to set margins for all sides in a declaration. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
+| margin-[left\|top\|right\|bottom]  | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0        | No  | Left, top, right, and bottom margins.                              |
+| border-width                       | &lt;length&gt;                                              | 0        | No  | Shorthand attribute to set the border width for all sides.                        |
+| border-color                       | &lt;color&gt;                                               | black    | No  | Shorthand attribute to set the border color for all sides.                        |
+| border-radius                      | &lt;length&gt;                                              | -        | No  | Radius of border corners.               |
+| background-color                   | &lt;color&gt;                                               | -        | No  | Background color.                                              |
+| display                            | string                                                      | flex     | No  | Whether to display a box containing the element and the layout for its child elements. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
+| [left\|top]                        | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>6+</sup> | -        | No  | Offset of the element.<br>The **left** attribute specifies the left edge position of the element. This attribute defines the offset between the left edge of a positioned element and that of a block included in the element.<br>The **top** attribute specifies the top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
 
 ## Methods
 
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
-|rotation | { focus: boolean } | Specifies whether to request focus for crown rotation. **focus: true**: acquires focus, allowing users to scroll options by rotating the crown (only works for single-column pickers). **focus: false**: releases focus.|
+|rotation | {&nbsp;focus:&nbsp;boolean&nbsp;} | Specifies whether to request focus for crown rotation. **focus: true**: acquires focus, allowing users to scroll options by rotating the crown (only works for single-column pickers). **focus: false**: releases focus.|
 
 ## Example
 
@@ -109,6 +108,9 @@ export default {
     },
     onShow() {
         this.$refs.sliderObj.rotation({focus: true});
+    },
+    onHide() {
+        this.$refs.sliderObj.rotation({focus: false})
     },
     setValue(e) {
         this.currentValue = e.value;

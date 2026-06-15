@@ -368,7 +368,7 @@ Area type, which is used to store the area information of an element.
 | -------------- | ---------------------- | ------------------------------ |
 | width          | [Length](#length)      | Width of the target element.<br>Unit: vp|
 | height         | [Length](#length)      | Height of the target element.<br>Unit: vp|
-| position       | [Position](#position) | Position of the upper left corner of the target element in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) of the parent element.           |
+| position       | [Position](#position) | Position of the upper left corner of the target element in the component coordinate system of the parent element.           |
 | globalPosition | [Position](#position) | Position of the upper left corner of the target element in the current window coordinate system.            |
 
 ## Position
@@ -550,7 +550,7 @@ The **ModalTransition** type is used to set the transition type for a full-scree
 | DEFAULT | Slide-up and slide-down animation for the modal. |
 | ALPHA   | Opacity gradient animation for the modal.|
 
-## OutlineOptions<sup>11+</sup> object description
+## OutlineOptions<sup>11+</sup>
 
 Outer outline options.
 
@@ -563,7 +563,7 @@ Outer outline options.
 | width  | [Dimension](#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths11)| No| Yes| Width of the outline. Percentage values are not supported.<br>Default value: **0**.<br>**width** must be set to display the outline effect.|
 | color  | [ResourceColor](#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | No| Yes| Color of the outline.<br>Default value: **Color.Black**.                  |
 | radius | [Dimension](#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses11)| No| Yes| Radius of the outline corners. Percentage values are not supported.<br>Default value: **0**<br>Maximum effective value: Component width/2 + outlineWidth or component height/2 + outlineWidth|
-| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11) &nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles11)| No| Yes| Outline style.<br>Default value: **OutlineStyle.SOLID**           |
+| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle) &nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles11)| No| Yes| Outline style.<br>Default value: **OutlineStyle.SOLID**           |
 
 ## EdgeOutlineWidths<sup>11+</sup>
 
@@ -609,10 +609,10 @@ To reference this object, at least one parameter must be passed.
 
 | Name    | Type                                    | Read Only| Optional | Description     |
 | ------ | ---------------------------------------- | -- | -- | ------- |
-| left   | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11)| No| Yes  | Style of the left outline.|
-| right  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11)| No| Yes  | Style of the right outline.|
-| top    | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11)| No| Yes  | Style of the top outline.|
-| bottom | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11)| No | Yes | Style of the bottom outline.|
+| left   | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle)| No| Yes  | Style of the left outline.|
+| right  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle)| No| Yes  | Style of the right outline.|
+| top    | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle)| No| Yes  | Style of the top outline.|
+| bottom | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle)| No | Yes | Style of the bottom outline.|
 
 ## Dimension<sup>10+</sup>
 

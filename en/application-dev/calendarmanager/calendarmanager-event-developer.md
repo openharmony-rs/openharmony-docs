@@ -3,7 +3,7 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @huangxinwei-->
+<!--Designer: @windsky6-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
@@ -31,8 +31,8 @@ The table below lists the main APIs used for event management. For details about
 
 1. Import dependencies.
 
-	<!-- @[calendarEvent_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
-    
+    <!-- @[calendarEvent_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
     ``` TypeScript
     import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -45,8 +45,8 @@ The table below lists the main APIs used for event management. For details about
 
 3. Obtain the **calendarMgr** object based on the context to manage calendars. You are advised to perform managements in the **EntryAbility.ets** file.
 
-	<!-- @[calendarEvent_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
-    
+    <!-- @[calendarEvent_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
     ``` TypeScript
     const DOMAIN = 0x0000;
     
@@ -56,16 +56,16 @@ The table below lists the main APIs used for event management. For details about
     
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onCreate");
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
       }
     
       onDestroy(): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onDestroy");
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
       }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {
-        // Main window is created, set main page for this ability
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onWindowStageCreate");
+        // The main window has been created. Set the main page for this Ability.
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
             hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
@@ -85,26 +85,26 @@ The table below lists the main APIs used for event management. For details about
       }
     
       onWindowStageDestroy(): void {
-        // Main window is destroyed, release UI related resources
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onWindowStageDestroy");
+        // The main window has been destroyed. Release UI-related resources.
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
       }
     
       onForeground(): void {
-        // Ability has brought to foreground
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onForeground");
+        // The Ability has entered the foreground.
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
       }
     
       onBackground(): void {
-        // Ability has back to background
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onBackground");
+        // The Ability has entered the background.
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
       }
     }
     ```
 
 4. Create a **Calendar** object based on the calendar account information to manage events. Set the calendar configuration information, such as event reminder and calendar color, as required.
 
-	<!-- @[calendarEvent_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[calendarEvent_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
     import { calendarMgr } from '../entryability/EntryAbility';
@@ -130,7 +130,7 @@ The table below lists the main APIs used for event management. For details about
     };
     ```
     <!-- @[calendarEvent_createCalendar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
     // Create a calendar.
     calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
@@ -161,15 +161,15 @@ The table below lists the main APIs used for event management. For details about
    Method 1: Use **addEvent()** to create a single event or **addEvents()** to create events in batches. The following describes how to create a single event.
 
    Method 2: After obtaining the **calendarManager** object, you can use **editEvent()** to create a single event. In this case, the event creation page is displayed, where you can perform related operations to create an event. Note that **editEvent()** does not support the creation of custom periodic events.
-   
+
    <!-- @[calendarEvent_eventParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    let eventId : number | undefined = undefined;
    const date = new Date();
    ```
    <!-- @[calendarEvent_addEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    const event: calendarManager.Event = {
      // Event title.
@@ -234,8 +234,8 @@ The table below lists the main APIs used for event management. For details about
 
 6. Update information about a specified event based on the event ID.
 
-	<!-- @[calendarEvent_updateEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[calendarEvent_updateEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     const updateEvent: calendarManager.Event = {
       title: 'updateTitle',
@@ -256,7 +256,7 @@ The table below lists the main APIs used for event management. For details about
 
    If no query condition or field is set, all events of the specified calendar can be queried.
    <!-- @[calendarEvent_getEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    calendar.getEvents().then((data: calendarManager.Event[]) => {
      hilog.info(DOMAIN, 'testTag', `Succeeded in getting events, data -> ${JSON.stringify(data)}`);
@@ -267,7 +267,7 @@ The table below lists the main APIs used for event management. For details about
 
    You can also query events by the event ID, start time and end time of the event, or event title.
    <!-- @[calendarEvent_getEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // Query by the event ID.
    const filterId = calendarManager.EventFilter.filterById([eventId]);
@@ -296,11 +296,11 @@ The table below lists the main APIs used for event management. For details about
 
 8. Delete a specified event by event ID. You can use **deleteEvent()** to create a single event or use **deleteEvents()** to delete events in batches. The following describes how to delete a single event.
 
-	<!-- @[calendarEvent_deleteEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[calendarEvent_deleteEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     calendar.deleteEvent(eventId).then(() => {
-      hilog.info(DOMAIN, 'testTag', "Succeeded in deleting event");
+      hilog.info(DOMAIN, 'testTag', 'Succeeded in deleting event');
     }).catch((err: BusinessError) => {
       hilog.error(DOMAIN, 'testTag', `Failed to delete event. Code: ${err.code}, message: ${err.message}`);
     });

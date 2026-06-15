@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
  可以进行页面下拉操作并显示刷新动效的容器组件。 
@@ -15,7 +15,7 @@
 >
 >  - 该组件从API version 12开始支持与垂直滚动的[Swiper](ts-container-swiper.md)和[Web](../arkui-js/js-components-basic-web.md)的联动。当[Swiper](ts-container-swiper.md)设置[loop](ts-container-swiper.md#loop)属性为true时，Refresh无法和[Swiper](ts-container-swiper.md)产生联动。
 >
->  - Refresh和内容大小小于组件自身的[List](ts-container-list.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果，可以将[alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11对象说明)参数设为true，此时[List](ts-container-list.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果，具体可以参考[示例9不满一屏实现下拉刷新](#示例9不满一屏场景实现下拉刷新)。
+>  - Refresh和内容大小小于组件自身的[List](ts-container-list.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果，可以将[alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11对象说明)参数设为true，此时[List](ts-container-list.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果，具体可以参考[示例9（不满一屏场景实现下拉刷新）](#示例9不满一屏场景实现下拉刷新)。
 >
 >  - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
 >
@@ -49,6 +49,7 @@ Refresh(value: RefreshOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称         | 类型                                      | 只读   | 可选 | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | -- | ---------------------------------------- |
 | refreshing | boolean                                  | 否    | 否 | 组件当前是否处于刷新中状态。true表示处于刷新中状态，false表示未处于刷新中状态。<br/>默认值：false<br/>该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
@@ -270,7 +271,7 @@ struct RefreshExample {
         .scrollBar(BarState.Off)
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -333,7 +334,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .refreshOffset(96)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -408,7 +409,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .refreshOffset(64)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -502,7 +503,7 @@ struct RefreshExample {
         this.params.refreshStatus = refreshStatus;
         // 更新自定义组件内容。
         this.contentNode?.update(this.params);
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -587,7 +588,7 @@ struct RefreshExample {
         this.ratio = 1 - Math.pow((offset / this.maxRefreshingHeight), 3);
       })
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {
@@ -741,7 +742,7 @@ struct RefreshExample {
       }
       .maxPullDownDistance(150)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus)
+        console.info('Refresh onStateChange state is ' + refreshStatus)
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value)
@@ -814,7 +815,7 @@ struct RefreshExample {
       .pullToRefresh(true)
       .pullDownRatio(this.ratio)
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -876,7 +877,7 @@ struct RefreshExample {
         )
       }
       .onStateChange((refreshStatus: RefreshStatus) => {
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onOffsetChange((value: number) => {
         console.info('Refresh onOffsetChange offset:' + value);
@@ -976,7 +977,7 @@ struct RefreshExample {
         this.refreshStatus = refreshStatus;
         this.params.refreshStatus = refreshStatus;
         this.contentNode?.update(this.params);
-        console.info('Refresh onStatueChange state is ' + refreshStatus);
+        console.info('Refresh onStateChange state is ' + refreshStatus);
       })
       .onRefreshing(() => {
         setTimeout(() => {

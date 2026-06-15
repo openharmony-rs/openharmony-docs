@@ -16,7 +16,7 @@ The level and [authorization mode](app-permission-mgmt-overview.md#authorization
 
 You can request a permission based on its level and authorization mode by referring to the following operation paths.
 
-## <!--Del-->Requesting Permissions for <!--Del-->normal <!--DelEnd-->Applications
+## Requesting Permissions for <!--Del-->normal <!--DelEnd-->Applications
 
 | Permission Type| Authorization Mode| Operation Path|
 | -------- | -------- | -------- |
@@ -40,7 +40,7 @@ You can request a permission based on its level and authorization mode by referr
 | system_core | system_grant | true | [Request restricted permission](declare-permissions-in-acl.md) &gt; [Declare permission](declare-permissions.md) > Access API| 
 | system_core | user_grant | true | [Request restricted permission](declare-permissions-in-acl.md) &gt; [Declare permission](declare-permissions.md) > [Request user authorization](request-user-authorization.md) > Access API| 
 
-To change the application APL to system_basic or system_core, modify the HarmonyAppProvision file (**Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json** file in the SDK directory) of the application when developing the application installation package, and sign the application again.
+To change the application APL to system_basic or higher, modify the HarmonyAppProvision file (**Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json** file in the SDK directory) of the application when developing the application installation package, and sign the application again.
 
 **Example**
 

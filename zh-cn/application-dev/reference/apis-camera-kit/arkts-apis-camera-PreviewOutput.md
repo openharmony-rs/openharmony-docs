@@ -347,7 +347,7 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 
 - 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
 - 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
-- [屏幕旋转角度](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section15598121101615)：显示设备的屏幕顺时针旋转角度。
+- [屏幕旋转角度](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section737072712182)：显示设备的屏幕顺时针旋转角度。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -637,7 +637,7 @@ enableBandwidthCompression(enabled: boolean): void
 
 使能之前，可先使用方法[isBandwidthCompressionSupported](#isbandwidthcompressionsupported23)对设备是否支持预览带宽压缩进行检查。
 
-> **说明：**
+> **说明：** 
 > 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之前调用，否则会影响预览流出流格式。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -675,11 +675,12 @@ function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled
   }
 }
 ```
-### addDeferredSurface<sup>24+</sup>
+
+## addDeferredSurface<sup>24+</sup>
 
 addDeferredSurface(surfaceId: string): void
 
-配置延迟预览的Surface，可以在[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)配流和[Session.start](arkts-apis-camera-Session.md#start11-1)启流之后运行。
+配置延迟预览的Surface，可以在[commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)配流和[start](arkts-apis-camera-Session.md#start11-1)启流之后运行。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 

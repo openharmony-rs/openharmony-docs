@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -20,7 +20,7 @@ The module provides APIs for image processing. You can use the APIs to create a 
 import { image } from '@kit.ImageKit';
 ```
 
-## DecodingOptions<sup>12+</sup>
+## DecodingOptions<sup>7+</sup>
 
 Describes the image decoding options.
 
@@ -34,7 +34,7 @@ Describes the image decoding options.
 
 | Name              | Type             | Read-Only| Optional| Description            |
 | ----------------- | ----------------- | ---- | ---- | ---------------- |
-| resolutionQuality | [ResolutionQuality](#resolutionquality12) | No  | Yes  | Image quality.|
+| resolutionQuality<sup>12+</sup> | [ResolutionQuality](#resolutionquality12) | No  | Yes  | Image quality.|
 
 ## ResolutionQuality<sup>12+</sup>
 
@@ -52,7 +52,7 @@ Enumerates the image quality levels.
 
 createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap): Promise\<Picture>
 
-Creates a Picture object based on an HDR PixelMap and an SDR PixelMap. The system uses the HDR PixelMap and SDR PixelMap to generate a gainmap. The returned Picture object contains the SDR PixelMap and the generated gainmap, both in RGBA8888 format. This API uses a promise to return the result.
+Creates a Picture object based on an HDR PixelMap and an SDR PixelMap. The system uses the HDR PixelMap and SDR PixelMap to generate a gain map. The returned Picture object contains the SDR PixelMap and the generated gain map, both in RGBA8888 format. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -82,7 +82,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function CreatePictureTest(context: Context) {
@@ -98,7 +98,7 @@ async function CreatePictureTest(context: Context) {
   let sdrPixelMap = await imageSource.createPixelMap(options1);
   let hdrPixelMap = await imageSource.createPixelMap(options2);
 
-  // Obtain the gainmap generated and encode the gainmap.
+  // Obtain the gain map generated and encode the gain map.
   let picture: image.Picture = await image.createPictureByHdrAndSdrPixelMap(hdrPixelMap, sdrPixelMap);
   if (picture != null) {
     console.info('Create picture succeeded');
@@ -109,7 +109,7 @@ async function CreatePictureTest(context: Context) {
   let packOpts : image.PackingOption = { format : "image/jpeg", quality: 98};
   packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
   const path: string = context.filesDir + "/hdr-test.jpg";
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   imagePackerObj.packToFile(picture, file.fd, packOpts).then(() => {
   }).catch((error : BusinessError) => {
     console.error('Failed to pack the image. And the error is: ' + error);
@@ -117,7 +117,7 @@ async function CreatePictureTest(context: Context) {
 }
 ```
 
-## ImageSource<sup>6+</sup>
+## ImageSource
 
 Provides APIs to obtain image information.
 
@@ -126,6 +126,73 @@ Before calling any API in ImageSource, you must use [image.createImageSource](ar
 All APIs in ImageSource cannot be called concurrently.
 
 Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
+### createWideGamutSdrPixelMap<sup>20+</sup>
+
+createWideGamutSdrPixelMap(): Promise\<PixelMap>
+
+Creates an SDR PixelMap object. When the image is an HDR image with a 3-channel gain map, its base image will be extended to an SDR image in the BT.2020 color space. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>- For an SDR image source, this API uses its native color space for decoding and outputs an SDR image.
+>- For an HDR image source with a single-channel gain map, this API decodes its base image (SDR image) and ignores the gain map.
+>- For an HDR image source with a three-channel gain map, this API decodes its base image (SDR image) and extends the color gamut of the output SDR image to [ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace).DISPLAY_BT2020_SRGB.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Returns**
+
+| Type                            | Description                       |
+| -------------------------------- | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise used to return the PixelMap object.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| Error Code| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 7700101  | Bad source.                                                  |
+| 7700102  | Unsupported MIME type.                                       |
+| 7700103  | Image too large.                                             |
+| 7700301  | Decoding failed.                                             |
+
+**Example**
+```ts
+async function CreateWideGamutSdrPixelMap(context: Context) {
+  // 'sdr.jpg' is only an example. Replace it with the actual one.
+  let filePath: string = context.filesDir + "/sdr.jpg";
+  let sdrImageSource = image.createImageSource(filePath);
+  let pixelmap = sdrImageSource.createWideGamutSdrPixelMap();
+  if (pixelmap != undefined) {
+    console.info('Succeeded in creating sdr pixelMap object.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
+
+  // 'singleChannelGainmapFilePath.jpg' is only an example. Replace it with the actual one.
+  let singleChannelGainmapFilePath: string = context.filesDir + "/singleChannelGainmapFilePath.jpg";
+  let singleChannelGainmapImageSource = image.createImageSource(singleChannelGainmapFilePath);
+  let singleChannelGainmapPixelmap = singleChannelGainmapImageSource.createWideGamutSdrPixelMap();
+  if (singleChannelGainmapPixelmap != undefined) {
+    console.info('Succeeded in creating sdr pixelMap object by using singleChannelGainmapImageSource.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
+  // 'threeChannelGainmapFilePath.jpg' is only an example. Replace it with the actual one.
+  let threeChannelGainmapFilePath: string = context.filesDir + "/threeChannelGainmapFilePath.jpg";
+  let threeChannelGainmapImageSource = image.createImageSource(threeChannelGainmapFilePath);
+  let threeChannelGainmapPixelmap = threeChannelGainmapImageSource.createWideGamutSdrPixelMap();
+  if (threeChannelGainmapPixelmap != undefined) {
+    console.info('Succeeded in creating sdr pixelMap using DISPLAY_BT2020_SRGB.');
+  } else {
+    console.error('Failed to create pixelMap.');
+  }
+}
+```
 
 ### isJpegProgressive<sup>22+</sup>
 
@@ -165,5 +232,62 @@ async function IsJpegProgressive(imageSource : image.ImageSource) {
     }).catch((error: BusinessError) => {
       console.error(`Failed to obtain the jpeg image isprogressive error.code is ${error.code}, message is ${error.message}`);
     })
+}
+```
+
+### modifyImageAllProperties<sup>24+</sup>
+
+modifyImageAllProperties(records: Record\<string, string\|null>): Promise\<void>
+
+Modifies image properties in batches. This API uses a promise to return the result.
+
+All Exif attributes except **JPEGInterchangeFormat**, **JPEGInterchangeFormatLength**, and **GIFLoopCount** can be modified.
+
+> **NOTE**
+>
+> - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7) instance by passing a file descriptor or an [image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource) instance by passing a URI.
+> - This API applies only to JPEG, PNG, HEIF, and WEBP images that contain Exif information.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Parameters**
+
+| Name | Type  | Mandatory| Description        |
+| ------- | ------ | ---- | ------------ |
+| records | Record\<string, string \| null>|Yes| Key-value pairs of image property names and property values.|
+
+**Returns**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
+
+| Error Code| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 202      | Non-system applications are not allowed to use system APIs.  |
+| 7700102  | Unsupported MIME type.                                       |
+| 7700202  | Unsupported metadata. For example, the property key is not supported, or the property value is invalid. |
+| 7700304  | Failed to write image properties to the file.                |
+
+**Example**
+
+```ts
+async function ModifyImageAllProperties(imageSource: image.ImageSource) {
+  try {
+    let record: Record<string, string | null> = {
+      "HwMnotePhysicalAperture": "13",
+    }
+    await imageSource.modifyImageAllProperties(record);
+  } catch (err) {
+    console.error('[modifyImageAllProperties]', `modify image property failed.err: ${err.code}, errorMessage: ${err.message}`);
+  }
 }
 ```

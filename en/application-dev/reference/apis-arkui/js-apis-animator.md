@@ -20,7 +20,7 @@ The **Animator** module provides APIs for applying animation effects, including 
 >
 > - A custom component usually holds an [AnimatorResult](#animatorresult) object returned by the [createAnimator](arkts-apis-uicontext-uicontext.md#createanimator) API to ensure that the animation object is not destructed during the animation. The object captures the custom component object through a callback. Therefore, the animation object needs to be released in the [aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) lifecycle when the custom component is destroyed to avoid memory leakage caused by cyclic dependency. For the example details, see [ArkTS-based Declarative Development Paradigm](#arkts-based-declarative-development-paradigm).
 >
-> - When the object of **Animator** is destructed or proactively call [cancel](#cancel) or [finish](#finish), an additional [onFrame](#properties) API will be triggered. The return value is the end point value of the animation. Therefore, if [cancel](#cancel) or [finish](#finish) is called during the animation, the property value will jump to the end point value within a frame. To pause the animation, set **onFrame** to an empty function and then call [finish](#finish).
+> - When the object of **Animator** is destructed or proactively calls [cancel](#cancel) or [finish](#finish), an additional [onFrame](#properties) API will be triggered. The return value is the end point value of the animation. Therefore, if [cancel](#cancel) or [finish](#finish) is called during the animation, the property value will jump to the end point value within a frame. To pause the animation, set **onFrame** to an empty function and then call [finish](#finish).
 >
 > - For an animation in an infinite loop, the animation will continue to be played even if the global animation speed is set to 0 (disabled) in the developer options.
 
@@ -319,7 +319,7 @@ let options: AnimatorOptions = {
 let optionsNew: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200)
   .duration(2000)
   .iterations(3)
-  .delay(1000)
+  .delay(1000);
 let animatorResult: AnimatorResult = animator.create(options);
 animatorResult.reset(optionsNew);
 ```
@@ -998,7 +998,7 @@ struct AnimatorTest {
 
   aboutToDisappear() {
     // When the custom component disappears, call finish to end incomplete animations and prevent them from continuing.
-    // Since backAnimator references this in onFrame, and this holds backAnimator,
+    // backAnimator references this in onFrame, and this saves backAnimator.
     // set backAnimator stored in the custom component to undefined when the component disappears to avoid memory leak.
     this.backAnimator?.finish();
     this.backAnimator = undefined;
@@ -1139,18 +1139,18 @@ struct AnimatorTest {
     this.backAnimator = this.getUIContext()?.createAnimator(
       new SimpleAnimatorOptions(0, 100)
     )
-    this.backAnimator.onFinish = ()=> {
+    this.backAnimator.onFinish = () => {
       this.flag = true
       console.info(this.TAG, 'backAnimator onFinish')
     }
-    this.backAnimator.onFrame = (value:number)=> {
+    this.backAnimator.onFrame = (value:number) => {
       this.translate_ = value
     }
   }
 
   aboutToDisappear() {
     // When the custom component disappears, call finish to end incomplete animations and prevent them from continuing.
-    // Since backAnimator references this in onFrame, and this holds backAnimator,
+    // backAnimator references this in onFrame, and this saves backAnimator.
     // set backAnimator stored in the custom component to undefined when the component disappears to avoid memory leak.
     this.backAnimator?.finish();
     this.backAnimator = undefined;

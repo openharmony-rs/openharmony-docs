@@ -1,7 +1,7 @@
 # Driver Error Codes
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -22,14 +22,14 @@ This error code is reported if the ExternalDeviceManager service is abnormal or 
 
 **Possible Causes**
 
-1. The product type is incorrect. Only 2-in-1 and tablet products are supported.
+1. The product type is incorrect. Only PCs/2-in-1 products are supported.
 2. An internal communication error occurs in the ExternalDeviceManager service.
 3. The **busType** parameter is not properly set.
 
 **Solution**
 
 1. Change the product type.
-2. Restart the device.<!--RP1--> You can also submit an [issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose) online.<!--RP1End-->
+2. Restart the device. <!--RP1-->You can also submit an [issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose) online.<!--RP1End-->
 3. Query the supported bus types using [deviceManager.BusType](js-apis-driver-deviceManager.md#bustype).
 
 ## 26300001 ExternalDeviceManager Service Exception
@@ -44,13 +44,13 @@ This error code is reported if the ExternalDeviceManager service is abnormal.
 
 **Possible Causes**
 
-1. The product type is incorrect. Only 2-in-1 and tablet products are supported.
+1. The product type is incorrect. Only PCs/2-in-1 products are supported.
 2. An internal communication error occurs in the ExternalDeviceManager service.
 
 **Solution**
 
 1. Change the product type.
-2. Restart the device.<!--RP1--> You can also submit an [issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose) online.<!--RP1End-->
+2. Restart the device. <!--RP1-->You can also submit an [issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose) online.<!--RP1End-->
 
 ## 26300002 Binding Driver Client to Driver Server Failed
 
@@ -64,11 +64,11 @@ This error code is reported if a driver client is prohibited from binding a driv
 
 **Possible Causes**
 
-An incorrect value is set for `ohos.permission.ACCESS_DDK_ALLOWED` in the `metadata` attribute of the `extensionAbilities` structure whose `type` is `driver`.
+An incorrect `value` is set for **ohos.permission.ACCESS_DDK_ALLOWED** in the `metadata` attribute of the `extensionAbilities` structure whose `type` is **driver**.
 
 **Solution**
 
-In the source code project of the non-standard peripheral driver, open the `entry/src/main/module.json5` file, and assign the value `true` to `ohos.permission.ACCESS_DDK_ALLOWED` in the `metadata` attribute of the `extensionAbilities` structure whose `type` is `driver`.
+In the source code project of the non-standard peripheral driver, open the `entry/src/main/module.json5` file, and assign the `value` **true** to **ohos.permission.ACCESS_DDK_ALLOWED** in the `metadata` attribute of the `extensionAbilities` structure whose `type` is **driver**.
 
 ## 26300003 Driver Client Not Bound to Any Driver Server
 
@@ -82,8 +82,8 @@ This error code is reported if a driver client is not bound to any driver server
 
 **Possible Causes**
 
-`unbindDriverWithDeviceId` is called when `bindDriverWithDeviceId` is not called or fails to be called.
+[unbindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19) is called when [bindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19) is not called or fails to be called.
 
 **Solution**
 
-Call `unbindDriverWithDeviceId` only after `bindDriverWithDeviceId` is called successfully.
+Call [unbindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19) only after [bindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19) is called successfully.

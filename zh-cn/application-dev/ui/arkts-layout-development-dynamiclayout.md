@@ -73,7 +73,7 @@ struct CreateDynamicLayout {
 
 [RowLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)是水平方向线性布局算法，子组件沿水平方向依次排列。该算法支持设置子组件间距、子组件在主轴（水平方向）上的对齐方式、在交叉轴（垂直方向）上的对齐方式，以及是否反转子组件的排列方向。该布局算法与[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)组件布局效果一致，详细效果说明请参考[线性布局（Row/Column）](./arkts-layout-development-linear.md)。下述示例通过修改RowLayoutAlgorithm对象的space、justifyContent、alignItems和isReverse成员变量，调整子组件间距、主轴（水平方向）对齐方式、交叉轴（竖直方向）对齐方式和排列方向。
 
-从API version 24开始，新增[RowLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)的[space](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)、[justifyContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)、[alignItems](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)、[isReverse](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)属性。
+从API version 24开始，新增[RowLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)的[space](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性)、[justifyContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性)、[alignItems](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性)、[isReverse](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性)属性。
 
 <!-- @[RowLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/linearlayout/RowLayoutAlgorithm.ets) -->
 
@@ -151,7 +151,7 @@ struct RowLayoutExample {
 
 [ColumnLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)是垂直方向线性布局算法，子组件沿垂直方向依次排列。该算法支持设置子组件间距、子组件在主轴（垂直方向）上的对齐方式、在交叉轴（水平方向）上的对齐方式，以及是否反转子组件的排列方向。该布局算法与[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)组件布局效果一致，详细效果说明请参考[线性布局（Row/Column）](./arkts-layout-development-linear.md)。下述示例通过修改ColumnLayoutAlgorithm的space、justifyContent、alignItems和isReverse属性，调整子组件间距、主轴（竖直方向）对齐方式、交叉轴（水平方向）对齐方式和排列方向。
 
-从API version 24开始，新增[ColumnLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)的[space](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)、[justifyContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)、[alignItems](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)、[isReverse](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)属性。
+从API version 24开始，新增[ColumnLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)的[space](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-1)、[justifyContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-1)、[alignItems](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-1)、[isReverse](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-1)属性。
 
 <!-- @[ColumnLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/linearlayout/ColumnLayoutAlgorithm.ets) -->
 
@@ -227,9 +227,9 @@ struct ColumnLayoutExample {
 
 ### StackLayoutAlgorithm
 
-[StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)是堆叠布局算法，子组件堆叠排列，后添加的子组件覆盖先添加的子组件。该算法支持通过alignContent设置子组件在容器中的九宫格对齐位置，子组件可以通过[layoutGravity](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#layoutgravity20)属性单独设置自己的对齐方式，优先级高于容器的alignContent。该布局算法与[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)组件布局效果一致，详细效果说明请参考[堆叠布局](./arkts-layout-development-stack-layout.md)。下述示例通过修改[StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)的[alignContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)属性，调整子组件在容器中的九宫格对齐位置。
+[StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)是堆叠布局算法，子组件堆叠排列，后添加的子组件覆盖先添加的子组件。该算法支持通过alignContent设置子组件在容器中的九宫格对齐位置，子组件可以通过[layoutGravity](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#layoutgravity20)属性单独设置自己的对齐方式，优先级高于容器的alignContent。该布局算法与[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)组件布局效果一致，详细效果说明请参考[堆叠布局](./arkts-layout-development-stack-layout.md)。下述示例通过修改[StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)的[alignContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-2)属性，调整子组件在容器中的九宫格对齐位置。
 
-从API version 24开始，新增[StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)的[alignContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)属性。
+从API version 24开始，新增[StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)的[alignContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-2)属性。
 
 <!-- @[StackLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/stacklayout/StackLayoutAlgorithm.ets) -->
 
@@ -301,7 +301,7 @@ struct StackLayoutExample {
 
 [GridLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)是垂直方向网格布局算法。该算法支持通过[columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnstemplate)或[ItemFillPolicy](../reference/apis-arkui/arkui-ts/ts-types.md#itemfillpolicy22)设置列数，设置[ItemFillPolicy](../reference/apis-arkui/arkui-ts/ts-types.md#itemfillpolicy22)为BREAKPOINT_DEFAULT时行为与[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)一致，行数由子节点数量和列数决定。该算法支持通过[LengthMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#lengthmetrics12)设置行间距和列间距，通过[align](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#align20)设置组件在网格中的对齐方式。下述示例修改GridLayoutAlgorithm的columnsTemplate属性调整网格列数。
 
-从API version 24开始，新增[GridLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)的[columnsTemplate](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)属性。
+从API version 24开始，新增[GridLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)的[columnsTemplate](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-3)属性。
 
 <!-- @[GridLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/gridlayout/GridLayoutAlgorithm.ets) -->
 
@@ -852,6 +852,7 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
     let currentLineWidth = 0;
     let totalHeight = 0;
     let maxLineWidth = 0;
+    let currentLineHeight = 0;
 
     for (let i = 0; i < childCount; i++) {
       const child = self.getChild(i);
@@ -864,23 +865,25 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
         };
         child.measure(childConstraint);
         const childSize = child.getMeasuredSize();
+
         // 检查是否需要换行
         if (currentLineWidth + childSize.width > maxWidth && currentLineWidth > 0) {
-          // 换行
-          totalHeight += this.verticalGap;
-          currentLineWidth = childSize.width;
-          totalHeight += childSize.height;
+          // 换行前，累加上一行的高度
+          totalHeight += currentLineHeight + this.verticalGap;
+          currentLineWidth = childSize.width + this.horizontalGap;
+          currentLineHeight = childSize.height;
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         } else {
           // 继续当前行
           currentLineWidth += childSize.width + this.horizontalGap;
-          if (i === 0) {
-            totalHeight = childSize.height;
-          }
+          currentLineHeight = Math.max(currentLineHeight, childSize.height);
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         }
       }
     }
+    // 累加最后一行的高度
+    totalHeight += currentLineHeight;
+
     self.setMeasuredSize({
       width: Math.min(maxLineWidth, maxWidth),
       height: totalHeight
@@ -979,7 +982,7 @@ struct TagCloudExample {
 
 ## 切换布局算法
 
-DynamicLayout在切换布局算法时会保持子组件的状态不变，比如输入框内容、开关状态、进度条值等。下述示例展示[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#接口)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#接口)、[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#接口)和[CheckBox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md#接口)组件在布局切换过程中保持状态，同时使用[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)为布局切换添加平滑的动画效果。
+DynamicLayout在切换布局算法时会保持子组件的状态不变，比如输入框内容、开关状态、进度条值等。下述示例展示[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#接口)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#接口)、[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#接口)和[CheckBox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md)组件在布局切换过程中保持状态，同时使用[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)为布局切换添加平滑的动画效果。
 
 <!-- @[ReserveChildState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ReserveChildState.ets) -->
 

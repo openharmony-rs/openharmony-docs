@@ -1,10 +1,10 @@
 # Common Issues with ArkGuard in Source Code Obfuscation
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @dengxinyu-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## Troubleshooting Functional Issues
 
@@ -13,11 +13,11 @@
 2. If the issue is related to obfuscation, review the documentation to understand the capabilities of obfuscation rules and understand when to configure trustlists to avoid issues. The following describes the four options that are enabled by default. For details, see the description of each option.
    1. [-enable-toplevel-obfuscation](source-obfuscation.md#-enable-toplevel-obfuscation): obfuscates top-level scope names.
 
-   2. [-enable-property-obfuscation](source-obfuscation.md#-enable-property-obfuscation): obfuscates property names. Use [-keep-property-name](source-obfuscation.md#-keep-property-name) to configure a trustlist for property names used in network calls, JSON fields, dynamic accesses, and so library interfaces.
+   2. [-enable-property-obfuscation](source-obfuscation.md#-enable-property-obfuscation): obfuscates property names. The main scenarios for configuring the trustlist include network data access, JSON field access, dynamic property access, and .so library API calls. Use [-keep-property-name](source-obfuscation.md#-keep-property-name) to retain specified property names.
 
-   3. [-enable-export-obfuscation](source-obfuscation.md#-enable-export-obfuscation): obfuscates imported or exported names. Generally, this option is used together with `-enable-toplevel-obfuscation` and `-enable-property-obfuscation`. You need to use [-keep-global-name](source-obfuscation.md#-keep-global-name) to configure a trustlist for exported or imported names in scenarios where external APIs of the module cannot be obfuscated.
+   3. [-enable-export-obfuscation](source-obfuscation.md#-enable-export-obfuscation): obfuscates imported or exported names. Generally, this option is used together with `-enable-toplevel-obfuscation` and `-enable-property-obfuscation`. The main scenario for configuring a trustlist is that the external APIs of a module cannot be obfuscated. Use [-keep-global-name](source-obfuscation.md#-keep-global-name) to retain the specified export/import names.
 
-   4. [-enable-filename-obfuscation](source-obfuscation.md#-enable-filename-obfuscation): obfuscates file names. Use [-keep-file-name](source-obfuscation.md#-keep-file-name) to configure a trustlist for file paths and names in dynamically import or runtime loading scenarios.
+   4. [-enable-filename-obfuscation](source-obfuscation.md#-enable-filename-obfuscation): obfuscates file names. The main scenario for configuring a trustlist is the file path used for dynamic import or direct runtime loading. Use [-keep-file-name](source-obfuscation.md#-keep-file-name) to retain these file paths and names.
 3. When checking the trustlist scenarios, you are advised to [use obfuscation for code hardening](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123) to quickly identify the retention options and trustlist fields to be configured. If your issue matches any typical cases listed below, apply the suggested solutions.
 4. If the issue is not covered, use a positive approach to identify the problem (remove specific configuration items if the corresponding functionality is not needed).
 5. Analyze runtime crashes as follows:
@@ -38,6 +38,7 @@
 If unexpected obfuscation behavior occurs, check whether certain obfuscation options are configured for the dependent local modules or third-party libraries.
 
 Example:
+
 If `-compact` is not configured for the current module, but the code in the obfuscated intermediate product is compressed into a single line, perform the following steps:
 
 1. Check the **dependencies** field in the **oh-package.json5** file of the current module to identify dependencies.
@@ -70,21 +71,25 @@ The obfuscation rule configuration is as follows:
 
 The sample code is as follows:
 
-```ts
-// Example JSON file structure (test.json):
+<!-- @[import_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Example JSON file structure (ImportJson.json):
 /*
 {
   "jsonObj": {
     "jsonProperty": "value"
   }
 }
-*/
+ */
 
 // Before obfuscation:
-import jsonData from "./test.json";
-
+import jsonData from './ImportJson.json';
+// ...
 let jsonProp = jsonData.jsonObj.jsonProperty;
+```
 
+```ts
 // After obfuscation:
 import jsonData from "./test.json";
 
@@ -93,11 +98,11 @@ let jsonProp = jsonData.i.j;
 
 **Possible Causes**
 
-After property obfuscation is enabled, the source code will be obfuscated, but the JSON file will not. When the property is accessed using `jsonData.i` in the source code, the property name has been obfuscated, and the corresponding field does not exist in the JSON data. As a result, the obtained value is `undefined`.
+After enabling property obfuscation, the source code will be obfuscated, while JSON files remain unaffected. When accessing a property via `jsonData.i` in the source code, the property name has already been obfuscated. Since the corresponding field does not exist in the JSON data, the retrieved value will be `undefined`.
 
 **Solution**
 
-Add the fields used in JSON files to the property trustlist. Example:
+Add the fields in the JSON file to the property trustlist. Example:
 
 ```text
 -keep-property-name
@@ -120,22 +125,22 @@ The obfuscation rule configuration is as follows:
 
 The sample code is as follows:
 
-<!-- @[export_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/export.ts) -->   
+<!-- @[export_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/ExportNs.ts) -->
 
 ``` TypeScript
 // Before obfuscation:
-// export.ts
+// ExportNs.ts
 export namespace NS {
   export function foo() { }
 }
 ```
 
-<!-- @[ns_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ns_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // import.ts
-import { NS } from './export';
-// ...
+import { NS } from './ExportNs';
+  // ...
   NS.foo();
 ```
 
@@ -180,32 +185,32 @@ The obfuscation rule configuration is as follows:
 
 The sample code is as follows:
 
-<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/utils.ts) -->  
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/ExportUtils.ts) -->
 
 ``` TypeScript
-// Before obfuscation
-// utils.ts
+// Before obfuscation:
+// ExportUtils.ts
 export function add(a: number, b: number): number {
   return a + b;
 }
 ```
 
-<!-- @[add_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[add_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // main.ts
 async function loadAndUseAdd() {
   let result: number = 0;
   try {
-    const mathUtils = await import('./utils');
+    const mathUtils = await import('./ExportUtils');
     result = mathUtils.add(2, 3);
     console.info(`result = ${result}`);
   } catch (error) {
     console.error('Failure reason:', error);
   }
 }
-// ...
-          loadAndUseAdd();
+
+loadAndUseAdd();
 ```
 
 ```ts
@@ -256,20 +261,20 @@ The obfuscation rule configuration is as follows:
 
 The sample code is as follows:
 
-<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
+<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 // src/main/cpp/types/libentry/Index.d.ts
 export const addNum: (a: number, b: number) => number;
 ```
 
-<!-- @[call_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[call_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // example.ets
-// Before obfuscation
+// Before obfuscation:
 import testNapi from 'libentry.so';
-// ...
+  // ...
   let sun = testNapi.addNum(1, 2);
 ```
 
@@ -306,22 +311,23 @@ The obfuscation rule configuration for the main module and HSP module is as foll
 ```
 
 The sample code is as follows:
-
-<!-- @[export_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/pages/Index.ets) -->  
+<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/utils/Calc.ets) -->
 
 ``` TypeScript
-// Before obfuscation
+// Before obfuscation:
 // HSP module
-export { addNum } from '../utils/Calc';
+export function addNum(a: number, b: number) {
+  return a + b;
+}
 ```
 
-<!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // Entry module
 import { addNum } from 'sharedlibrary';
-// ...
-  let sun = addNum(1, 2);
+
+addNum(1, 2);
 ```
 
 ```ts
@@ -330,7 +336,7 @@ import { addNum } from 'sharedlibrary';
 export function b() {}
 
 // Entry module
-import { n } from '@normalized:N&myhsp&&myhsp/Index&';
+import { n } from '@normalized:N&sharedlibrary&&sharedlibrary/Index&';
 
 n();
 ```
@@ -371,12 +377,12 @@ When `Record<string, Object>` is used as an object type, properties like `linkSo
 
 The sample code is as follows:
 
-<!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
-// Before obfuscation
+// Before obfuscation:
 import { Want } from '@kit.AbilityKit';
-// ...
+  // ...
   let petalMapWant: Want = {
     bundleName: 'com.example.myapplication',
     uri: 'maps://',
@@ -428,11 +434,11 @@ Import an API of `file1.ts` to `file2.ts`. The API contains an object property, 
 
 The sample code is as follows:
 
-<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->  
+<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/FileInside.ts) -->
 
 ``` TypeScript
-// Before obfuscation
-// file1.ts
+// Before obfuscation:
+// FileInside.ts
 export interface MyInfo {
   age: number;
   address: {
@@ -441,12 +447,12 @@ export interface MyInfo {
 }
 ```
 
-<!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
+// FileOutside.ts
+import { MyInfo } from './FileInside';
+  // ...
   const person: MyInfo = {
     age: 20,
     address: {
@@ -484,10 +490,10 @@ The `-keep` option retains the code in the `file1.ts` file, but properties withi
 
 Solution 1: Define the property type using `interface` and export it. This will automatically add the property to the trustlist. Example:
 
-<!-- @[export_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/file2.ts) -->  
+<!-- @[export_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/FileOutside.ts) -->
 
 ``` TypeScript
-// file1.ts
+// FileOutside.ts
 export interface AddressType {
   city1: string
 }
@@ -533,13 +539,14 @@ person["m"] = 20;
 Since API version 18, the obfuscation rules of third-party libraries are not affected by the main module by default. If the API version is earlier than 18, you can use either of the following solutions:
 
 Solution 1: Check whether the `-enable-string-property-obfuscation` option is configured in the `obfuscation.txt` file of the remote HAR. If it is configured, the main module will be affected. In this case, you need to disable it. For details, see [Troubleshooting Unexpected Obfuscation Behavior](source-obfuscation-questions.md#troubleshooting-unexpected-obfuscation-behavior).
+
 Solution 2: If the project is complex and the remote HAR that contains the obfuscation option cannot be found, you can add the property name to the trustlist.
 
 ### Exception Caused by Obfuscated Database Fields
 
 **Symptom**
 
-The error information in the hilog file is as follows: `table Account has no column named a23 in 'INSERT INTO Account(a23)'`
+Error message in the HiLog: `table Account has no column named a23 in 'INSERT INTO Account(a23)'`.
 
 **Possible Causes**
 

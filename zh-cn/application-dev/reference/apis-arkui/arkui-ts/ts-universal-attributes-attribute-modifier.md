@@ -1,9 +1,9 @@
 # 动态属性设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
-<!--Designer: @piggyguy-->
-<!--Tester: @songyanhong-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 动态设置组件的属性，支持开发者在属性设置时使用if/else语法，且根据需要使用多态样式设置属性。
@@ -66,7 +66,7 @@ applyNormalAttribute?(instance: T): void
 
 | 参数名    | 类型   | 必填   | 说明                                                                                                         |
 | -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
-| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[ButtonAttribute](ts-basic-components-button.md#属性)，[Text](ts-basic-components-text.md)组件的[TextAttribute](ts-basic-components-text.md#属性)等。 |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[属性](ts-basic-components-button.md#属性)（ButtonAttribute），[Text](ts-basic-components-text.md)组件的[属性](ts-basic-components-text.md#属性)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
 
 ### applyPressedAttribute
 
@@ -82,7 +82,7 @@ applyPressedAttribute?(instance: T): void
 
 | 参数名    | 类型   | 必填   | 说明                                                                                                         |
 | -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
-| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[ButtonAttribute](ts-basic-components-button.md#属性)，[Text](ts-basic-components-text.md)组件的[TextAttribute](ts-basic-components-text.md#属性)等。 |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[属性](ts-basic-components-button.md#属性)（ButtonAttribute），[Text](ts-basic-components-text.md)组件的[属性](ts-basic-components-text.md#属性)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
 
 ### applyFocusedAttribute
 
@@ -98,7 +98,7 @@ applyFocusedAttribute?(instance: T): void
 
 | 参数名    | 类型   | 必填   | 说明                                                                                                         |
 | -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
-| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[ButtonAttribute](ts-basic-components-button.md#属性)，[Text](ts-basic-components-text.md)组件的[TextAttribute](ts-basic-components-text.md#属性)等。 |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[属性](ts-basic-components-button.md#属性)（ButtonAttribute），[Text](ts-basic-components-text.md)组件的[属性](ts-basic-components-text.md#属性)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
 
 ### applyDisabledAttribute
 
@@ -114,7 +114,7 @@ applyDisabledAttribute?(instance: T): void
 
 | 参数名    | 类型   | 必填   | 说明                                                                                                         |
 | -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
-| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[ButtonAttribute](ts-basic-components-button.md#属性)，[Text](ts-basic-components-text.md)组件的[TextAttribute](ts-basic-components-text.md#属性)等。 |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[属性](ts-basic-components-button.md#属性)（ButtonAttribute），[Text](ts-basic-components-text.md)组件的[属性](ts-basic-components-text.md#属性)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
 
 ### applySelectedAttribute
 
@@ -132,11 +132,106 @@ applySelectedAttribute?(instance: T): void
 
 | 参数名    | 类型   | 必填   | 说明                                                                                                         |
 | -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
-| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[ButtonAttribute](ts-basic-components-button.md#属性)，[Text](ts-basic-components-text.md)组件的[TextAttribute](ts-basic-components-text.md#属性)等。 |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[属性](ts-basic-components-button.md#属性)（ButtonAttribute），[Text](ts-basic-components-text.md)组件的[属性](ts-basic-components-text.md#属性)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
 
-**instance参数支持范围：**
+### Attribute类型支持范围
 
-[AlphabetIndexerAttribute](ts-container-alphabet-indexer.md#属性)、[BadgeAttribute](ts-container-badge.md#属性)、[BlankAttribute](ts-basic-components-blank.md#属性)、[ButtonAttribute](ts-basic-components-button.md#属性)、[CalendarPickerAttribute](ts-basic-components-calendarpicker.md#属性)、[CanvasAttribute](ts-components-canvas-canvas.md#属性)、[CheckboxAttribute](ts-basic-components-checkbox.md#属性)、[CheckboxGroupAttribute](ts-basic-components-checkboxgroup.md#属性)、[CircleAttribute](ts-drawing-components-circle.md#属性)、[ColumnAttribute](ts-container-column.md#属性)、[ColumnSplitAttribute](ts-container-columnsplit.md#属性)、[CommonAttribute](ts-component-general-attributes.md)、[CounterAttribute](ts-container-counter.md#属性)、[DataPanelAttribute](ts-basic-components-datapanel.md#属性)、[DatePickerAttribute](ts-basic-components-datepicker.md#属性)、[DividerAttribute](ts-basic-components-divider.md#属性)、[EllipseAttribute](ts-drawing-components-ellipse.md#属性)、[FlexAttribute](ts-container-flex.md#属性)、[FlowItemAttribute](ts-container-flowitem.md#属性)、[FormLinkAttribute](ts-container-formlink.md#属性)、[GaugeAttribute](ts-basic-components-gauge.md#属性)、[GridAttribute](ts-container-grid.md#属性)、[GridColAttribute](ts-container-gridcol.md#属性)、[GridItemAttribute](ts-container-griditem.md#属性)、[GridRowAttribute](ts-container-gridrow.md#属性)、[HyperlinkAttribute](ts-container-hyperlink.md#属性)、[IndicatorComponentAttribute](ts-swiper-components-indicator.md#属性)、[ImageAttribute](ts-basic-components-image.md#属性)、[ImageAnimatorAttribute](ts-basic-components-imageanimator.md#属性)、[ImageSpanAttribute](ts-basic-components-imagespan.md#属性)、[ContainerSpanAttribute](ts-basic-components-containerspan.md#属性)、[LineAttribute](ts-drawing-components-line.md#属性)、[ListAttribute](ts-container-list.md#属性)、[ListItemAttribute](ts-container-listitem.md#属性)、[ListItemGroupAttribute](ts-container-listitemgroup.md#属性)、[LoadingProgressAttribute](ts-basic-components-loadingprogress.md#属性)、[MarqueeAttribute](ts-basic-components-marquee.md#属性)、[MenuAttribute](ts-basic-components-menu.md#属性)、[MenuItemAttribute](ts-basic-components-menuitem.md#属性)、[MenuItemGroupAttribute](ts-basic-components-menuitemgroup.md)、[NavDestinationAttribute](ts-basic-components-navdestination.md#属性)、[NavigationAttribute](ts-basic-components-navigation.md#属性)、[NavigatorAttribute](ts-container-navigator.md#属性)、[NavRouterAttribute](ts-basic-components-navrouter.md#属性)、[PanelAttribute](ts-container-panel.md#属性)、[PathAttribute](ts-drawing-components-path.md#属性)、[PatternLockAttribute](ts-basic-components-patternlock.md#属性)、[PolygonAttribute](ts-drawing-components-polygon.md#属性)、[PolylineAttribute](ts-drawing-components-polyline.md#属性)、[ProgressAttribute](ts-basic-components-progress.md#属性)、[QRCodeAttribute](ts-basic-components-qrcode.md#属性)、[RadioAttribute](ts-basic-components-radio.md#属性)、[RatingAttribute](ts-basic-components-rating.md#属性)、[RectAttribute](ts-drawing-components-rect.md#属性)、[RefreshAttribute](ts-container-refresh.md#属性)、[RelativeContainerAttribute](ts-container-relativecontainer.md#属性)、[RichEditorAttribute](ts-basic-components-richeditor.md#属性)、[RichTextAttribute](ts-basic-components-richtext.md#属性)、[RowAttribute](ts-container-row.md#属性)、[RowSplitAttribute](ts-container-rowsplit.md#属性)、[ScrollAttribute](ts-container-scroll.md#属性)、[ScrollBarAttribute](ts-basic-components-scrollbar.md#属性)、[SearchAttribute](ts-basic-components-search.md#属性)、[SelectAttribute](ts-basic-components-select.md#属性)、[ShapeAttribute](ts-drawing-components-shape.md#属性)、[SideBarContainerAttribute](ts-container-sidebarcontainer.md#属性)、[SliderAttribute](ts-basic-components-slider.md#属性)、[SpanAttribute](ts-basic-components-span.md#属性)、[SymbolSpanAttribute](ts-basic-components-symbolSpan.md#属性)、[StackAttribute](ts-container-stack.md#属性)、[StepperAttribute](ts-basic-components-stepper.md#属性)、[StepperItemAttribute](ts-basic-components-stepperitem.md#属性)、[SwiperAttribute](ts-container-swiper.md#属性)、[SymbolGlyphAttribute](ts-basic-components-symbolGlyph.md#属性)、[TabContentAttribute](ts-container-tabcontent.md#属性)、[TabsAttribute](ts-container-tabs.md#属性)、[TextAttribute](ts-basic-components-text.md#属性)、[TextAreaAttribute](ts-basic-components-textarea.md#属性)、[TextClockAttribute](ts-basic-components-textclock.md#属性)、[TextInputAttribute](ts-basic-components-textinput.md#属性)、[TextPickerAttribute](ts-basic-components-textpicker.md#属性)、[TextTimerAttribute](ts-basic-components-texttimer.md#属性)、[TimePickerAttribute](ts-basic-components-timepicker.md#属性)、[ToggleAttribute](ts-basic-components-toggle.md#属性)、[VideoAttribute](ts-media-components-video.md#属性)、[WaterFlowAttribute](ts-container-waterflow.md#属性)、[XComponentAttribute](ts-basic-components-xcomponent.md#属性)、[ParticleAttribute](ts-particle-animation.md#属性)、[UIPickerComponentAttribute](ts-container-ui-picker-component.md#属性)<sup>22+</sup><!--Del-->、[EffectComponentAttribute](ts-container-effectcomponent-sys.md#属性)、[FormComponentAttribute](ts-basic-components-formcomponent-sys.md#属性)、[PluginComponentAttribute](ts-basic-components-plugincomponent-sys.md#属性)、[RemoteWindowAttribute](ts-basic-components-remotewindow-sys.md#属性)、[UIExtensionComponentAttribute](../js-apis-arkui-uiExtension.md#属性)<!--DelEnd-->。
+| 名称 | 说明 |
+| ----------------- | --------------- |
+| AlphabetIndexerAttribute | AlphabetIndexer的[属性](ts-container-alphabet-indexer.md#属性)。 |
+| BadgeAttribute | Badge的[属性](ts-container-badge.md#属性)。 |
+| BlankAttribute | Blank的[属性](ts-basic-components-blank.md#属性)。 |
+| ButtonAttribute | Button的[属性](ts-basic-components-button.md#属性)。 |
+| CalendarPickerAttribute | CalendarPicker的[属性](ts-basic-components-calendarpicker.md#属性)。 |
+| CanvasAttribute | Canvas的[属性](ts-components-canvas-canvas.md#属性)。 |
+| CheckboxAttribute | Checkbox的[属性](ts-basic-components-checkbox.md#属性)。 |
+| CheckboxGroupAttribute | CheckboxGroup的[属性](ts-basic-components-checkboxgroup.md#属性)。 |
+| CircleAttribute | Circle的[属性](ts-drawing-components-circle.md#属性)。 |
+| ColumnAttribute | Column的[属性](ts-container-column.md#属性)。 |
+| ColumnSplitAttribute | ColumnSplit的[属性](ts-container-columnsplit.md#属性)。 |
+| CommonAttribute | Common的[属性](ts-component-general-attributes.md)。 |
+| CounterAttribute | Counter的[属性](ts-container-counter.md#属性)。 |
+| DataPanelAttribute | DataPanel的[属性](ts-basic-components-datapanel.md#属性)。 |
+| DatePickerAttribute | DatePicker的[属性](ts-basic-components-datepicker.md#属性)。 |
+| DividerAttribute | Divider的[属性](ts-basic-components-divider.md#属性)。 |
+| EllipseAttribute | Ellipse的[属性](ts-drawing-components-ellipse.md#属性)。 |
+| FlexAttribute | Flex的[属性](ts-container-flex.md#属性)。 |
+| FlowItemAttribute | FlowItem的[属性](ts-container-flowitem.md#属性)。 |
+| FormLinkAttribute | FormLink的[属性](ts-container-formlink.md#属性)。 |
+| GaugeAttribute | Gauge的[属性](ts-basic-components-gauge.md#属性)。 |
+| GridAttribute | Grid的[属性](ts-container-grid.md#属性)。 |
+| GridColAttribute | GridCol的[属性](ts-container-gridcol.md#属性)。 |
+| GridItemAttribute | GridItem的[属性](ts-container-griditem.md#属性)。 |
+| GridRowAttribute | GridRow的[属性](ts-container-gridrow.md#属性)。 |
+| HyperlinkAttribute | Hyperlink的[属性](ts-container-hyperlink.md#属性)。 |
+| IndicatorComponentAttribute | IndicatorComponent的[属性](ts-swiper-components-indicator.md#属性)。 |
+| ImageAttribute | Image的[属性](ts-basic-components-image.md#属性)。 |
+| ImageAnimatorAttribute | ImageAnimator的[属性](ts-basic-components-imageanimator.md#属性)。 |
+| ImageSpanAttribute | ImageSpan的[属性](ts-basic-components-imagespan.md#属性)。 |
+| ContainerSpanAttribute | ContainerSpan的[属性](ts-basic-components-containerspan.md#属性)。 |
+| LineAttribute | Line的[属性](ts-drawing-components-line.md#属性)。 |
+| ListAttribute | List的[属性](ts-container-list.md#属性)。 |
+| ListItemAttribute | ListItem的[属性](ts-container-listitem.md#属性)。 |
+| ListItemGroupAttribute | ListItemGroup的[属性](ts-container-listitemgroup.md#属性)。 |
+| LoadingProgressAttribute | LoadingProgress的[属性](ts-basic-components-loadingprogress.md#属性)。 |
+| MarqueeAttribute | Marquee的[属性](ts-basic-components-marquee.md#属性)。 |
+| MenuAttribute | Menu的[属性](ts-basic-components-menu.md#属性)。 |
+| MenuItemAttribute | MenuItem的[属性](ts-basic-components-menuitem.md#属性)。 |
+| MenuItemGroupAttribute | [MenuItemGroup](ts-basic-components-menuitemgroup.md)的属性。 |
+| NavDestinationAttribute | NavDestination的[属性](ts-basic-components-navdestination.md#属性)。 |
+| NavigationAttribute | Navigation的[属性](ts-basic-components-navigation.md#属性)。 |
+| NavigatorAttribute | Navigator的[属性](ts-container-navigator.md#属性)。 |
+| NavRouterAttribute | NavRouter的[属性](ts-basic-components-navrouter.md#属性)。 |
+| PanelAttribute | Panel的[属性](ts-container-panel.md#属性)。 |
+| PathAttribute | Path的[属性](ts-drawing-components-path.md#属性)。 |
+| PatternLockAttribute | PatternLock的[属性](ts-basic-components-patternlock.md#属性)。 |
+| PolygonAttribute | Polygon的[属性](ts-drawing-components-polygon.md#属性)。 |
+| PolylineAttribute | Polyline的[属性](ts-drawing-components-polyline.md#属性)。 |
+| ProgressAttribute | Progress的[属性](ts-basic-components-progress.md#属性)。 |
+| QRCodeAttribute | QRCode的[属性](ts-basic-components-qrcode.md#属性)。 |
+| RadioAttribute | Radio的[属性](ts-basic-components-radio.md#属性)。 |
+| RatingAttribute | Rating的[属性](ts-basic-components-rating.md#属性)。 |
+| RectAttribute | Rect的[属性](ts-drawing-components-rect.md#属性)。 |
+| RefreshAttribute | Refresh的[属性](ts-container-refresh.md#属性)。 |
+| RelativeContainerAttribute | RelativeContainer的[属性](ts-container-relativecontainer.md#属性)。 |
+| RichEditorAttribute | RichEditor的[属性](ts-basic-components-richeditor.md#属性)。 |
+| RichTextAttribute | RichText的[属性](ts-basic-components-richtext.md#属性)。 |
+| RowAttribute | Row的[属性](ts-container-row.md#属性)。 |
+| RowSplitAttribute | RowSplit的[属性](ts-container-rowsplit.md#属性)。 |
+| ScrollAttribute | Scroll的[属性](ts-container-scroll.md#属性)。 |
+| ScrollBarAttribute | ScrollBar的[属性](ts-basic-components-scrollbar.md#属性)。 |
+| SearchAttribute | Search的[属性](ts-basic-components-search.md#属性)。 |
+| SelectAttribute | Select的[属性](ts-basic-components-select.md#属性)。 |
+| ShapeAttribute | Shape的[属性](ts-drawing-components-shape.md#属性)。 |
+| SideBarContainerAttribute | SideBarContainer的[属性](ts-container-sidebarcontainer.md#属性)。 |
+| SliderAttribute | Slider的[属性](ts-basic-components-slider.md#属性)。 |
+| SpanAttribute | Span的[属性](ts-basic-components-span.md#属性)。 |
+| SymbolSpanAttribute | SymbolSpan的[属性](ts-basic-components-symbolSpan.md#属性)。 |
+| StackAttribute | Stack的[属性](ts-container-stack.md#属性)。 |
+| StepperAttribute | Stepper的[属性](ts-basic-components-stepper.md#属性)。 |
+| StepperItemAttribute | StepperItem的[属性](ts-basic-components-stepperitem.md#属性)。 |
+| SwiperAttribute | Swiper的[属性](ts-container-swiper.md#属性)。 |
+| SymbolGlyphAttribute | SymbolGlyph的[属性](ts-basic-components-symbolGlyph.md#属性)。 |
+| TabContentAttribute | TabContent的[属性](ts-container-tabcontent.md#属性)。 |
+| TabsAttribute | Tabs的[属性](ts-container-tabs.md#属性)。 |
+| TextAttribute | Text的[属性](ts-basic-components-text.md#属性)。 |
+| TextAreaAttribute | TextArea的[属性](ts-basic-components-textarea.md#属性)。 |
+| TextClockAttribute | TextClock的[属性](ts-basic-components-textclock.md#属性)。 |
+| TextInputAttribute | TextInput的[属性](ts-basic-components-textinput.md#属性)。 |
+| TextPickerAttribute | TextPicker的[属性](ts-basic-components-textpicker.md#属性)。 |
+| TextTimerAttribute | TextTimer的[属性](ts-basic-components-texttimer.md#属性)。 |
+| TimePickerAttribute | TimePicker的[属性](ts-basic-components-timepicker.md#属性)。 |
+| ToggleAttribute | Toggle的[属性](ts-basic-components-toggle.md#属性)。 |
+| VideoAttribute | Video的[属性](ts-media-components-video.md#属性)。 |
+| WaterFlowAttribute | WaterFlow的[属性](ts-container-waterflow.md#属性)。 |
+| XComponentAttribute | XComponent的[属性](ts-basic-components-xcomponent.md#属性)。 |
+| ParticleAttribute | Particle的[属性](ts-particle-animation.md#属性)。 |
+| UIPickerComponentAttribute<sup>22+</sup> | UIPickerComponent的[属性](ts-container-ui-picker-component.md#属性)。 |
+| <!--DelRow-->EffectComponentAttribute | EffectComponent的[属性](ts-container-effectcomponent-sys.md#属性)。 |
+| <!--DelRow-->FormComponentAttribute | FormComponent的[属性](ts-basic-components-formcomponent-sys.md#属性)。 |
+| <!--DelRow-->PluginComponentAttribute | PluginComponent的[属性](ts-basic-components-plugincomponent-sys.md#属性)。 |
+| <!--DelRow-->RemoteWindowAttribute | RemoteWindow的[属性](ts-basic-components-remotewindow-sys.md#属性)。 |
+| UIExtensionComponentAttribute | UIExtensionComponent的[属性](../js-apis-arkui-uiExtension.md#属性)。 |
 
 > **说明：**
 >
@@ -149,10 +244,10 @@ applySelectedAttribute?(instance: T): void
 **属性支持范围：**
 
 1. 不支持入参或者返回值为[CustomBuilder](ts-types.md#custombuilder8)的属性。
-2. 不支持入参为[modifier](../../../ui/arkts-user-defined-modifier.md)类型的属性，具体为以下属性方法：[attributeModifier](#attributemodifier)，[drawModifier](./ts-universal-attributes-draw-modifier.md)和[gestureModifier](./ts-universal-attributes-gesture-modifier.md)。
+2. 不支持入参为[modifier](../../../ui/arkts-user-defined-modifier.md)类型的属性，具体为以下属性方法：[attributeModifier](#attributemodifier)，[drawModifier](./ts-universal-attributes-draw-modifier.md#drawmodifier)和[gestureModifier](./ts-universal-attributes-gesture-modifier.md#gesturemodifier)。
 3. 不支持[animation](./ts-animatorproperty.md)属性。
 4. 不支持[gesture](../../../ui/arkts-gesture-events-binding.md)类型的属性。
-5. 不支持[stateStyles](./ts-universal-attributes-polymorphic-style.md)属性。
+5. 不支持[stateStyles](./ts-universal-attributes-polymorphic-style.md#statestyles)属性。
 6. 不支持已废弃属性。
    <!--Del-->
 7. 不支持系统组件属性。<!--DelEnd-->
@@ -165,8 +260,85 @@ applySelectedAttribute?(instance: T): void
 
 **自定义Modifier支持范围：**  
 
-CommonModifier、ColumnModifier、ColumnSplitModifier、RowModifier、RowSplitModifier、SideBarContainerModifier、BlankModifier、DividerModifier、GridColModifier、GridRowModifier、NavDestinationModifier、NavigatorModifier、StackModifier、NavigationModifier、NavRouterModifier、StepperItemModifier、StepperModifier<sup>20+</sup>、TabsModifier、GridModifier、GridItemModifier、ListModifier、ListItemModifier、ListItemGroupModifier、ScrollModifier、SwiperModifier、WaterFlowModifier、ButtonModifier、CounterModifier、TextPickerModifier、TimePickerModifier、ToggleModifier、CalendarPickerModifier、CheckboxModifier、CheckboxGroupModifier、DatePickerModifier、RadioModifier、RatingModifier、SelectModifier、SliderModifier、PatternLockModifier、SpanModifier、SymbolSpanModifier、ContainerSpanModifier、RichEditorModifier、RefreshModifier、SearchModifier、TextAreaModifier、TextModifier、TextInputModifier、ImageSpanModifier、ImageAnimatorModifier、ImageModifier、VideoModifier、DataPanelModifier、GaugeModifier、LoadingProgressModifier、MarqueeModifier、ProgressModifier、QRCodeModifier、TextClockModifier、TextTimerModifier、LineModifier、PathModifier、PolygonModifier、PolylineModifier、RectModifier、ShapeModifier、AlphabetIndexerModifier、FormComponentModifier、HyperlinkModifier、MenuModifier、MenuItemModifier、PanelModifier、SymbolGlyphModifier、ParticleModifier、UIPickerComponentModifier<sup>22+</sup>。 
- 
+| 名称 | 说明 |
+| ----------------- | --------------- |
+| CommonModifier | 通用属性对应的Modifier |
+| ColumnModifier | - |
+| ColumnSplitModifier | - |
+| RowModifier | - |
+| RowSplitModifier | - |
+| SideBarContainerModifier | - |
+| BlankModifier | - |
+| DividerModifier | - |
+| GridColModifier | - |
+| GridRowModifier | - |
+| NavDestinationModifier | - |
+| NavigatorModifier | - |
+| StackModifier | - |
+| NavigationModifier | - |
+| NavRouterModifier | - |
+| StepperItemModifier | - |
+| StepperModifier<sup>20+</sup> | - |
+| TabsModifier | - |
+| GridModifier | - |
+| GridItemModifier | - |
+| ListModifier | - |
+| ListItemModifier | - |
+| ListItemGroupModifier | - |
+| ScrollModifier | - |
+| SwiperModifier | - |
+| WaterFlowModifier | - |
+| ButtonModifier | - |
+| CounterModifier | - |
+| TextPickerModifier | - |
+| TimePickerModifier | - |
+| ToggleModifier | - |
+| CalendarPickerModifier | - |
+| CheckboxModifier | - |
+| CheckboxGroupModifier | - |
+| DatePickerModifier | - |
+| RadioModifier | - |
+| RatingModifier | - |
+| SelectModifier | - |
+| SliderModifier | - |
+| PatternLockModifier | - |
+| SpanModifier | - |
+| SymbolSpanModifier | - |
+| ContainerSpanModifier | - |
+| RichEditorModifier | - |
+| RefreshModifier | - |
+| SearchModifier | - |
+| TextAreaModifier | - |
+| TextModifier | - |
+| TextInputModifier | - |
+| ImageSpanModifier | - |
+| ImageAnimatorModifier | - |
+| ImageModifier | - |
+| VideoModifier | - |
+| DataPanelModifier | - |
+| GaugeModifier | - |
+| LoadingProgressModifier | - |
+| MarqueeModifier | - |
+| ProgressModifier | - |
+| QRCodeModifier | - |
+| TextClockModifier | - |
+| TextTimerModifier | - |
+| LineModifier | - |
+| PathModifier | - |
+| PolygonModifier | - |
+| PolylineModifier | - |
+| RectModifier | - |
+| ShapeModifier | - |
+| AlphabetIndexerModifier | - |
+| FormComponentModifier | - |
+| HyperlinkModifier | - |
+| MenuModifier | - |
+| MenuItemModifier | - |
+| PanelModifier | - |
+| SymbolGlyphModifier | - |
+| ParticleModifier | - |
+| UIPickerComponentModifier<sup>22+</sup> | - |
+
 未暴露的组件Modifier可以使用CommonModifier。
 
 > **说明：**

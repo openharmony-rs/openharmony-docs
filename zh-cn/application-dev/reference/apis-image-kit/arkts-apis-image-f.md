@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -59,9 +59,9 @@ async function CreatePicture(context: Context) {
   let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
   let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
   if (pictureObj != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in creating picture');
   } else {
-    console.error('Create picture failed');
+    console.error('Failed to create picture');
   }
 }
 ```
@@ -111,10 +111,10 @@ class MySequence implements rpc.Parcelable {
   marshalling(messageSequence: rpc.MessageSequence) {
     if(this.picture != null) {
       this.picture.marshalling(messageSequence);
-      console.info('Marshalling success !');
+      console.info('Succeeded in marshalling.');
       return true;
     } else {
-      console.error('Marshalling failed !');
+      console.error('Failed to marshall.');
       return false;
     }
   }
@@ -385,6 +385,9 @@ async function CreatePixelMapFromParcel() {
 
     // 获取到pixelmap。
     let newPixelmap = ret.pixel_map;
+    if (newPixelmap != undefined ) {
+      console.info('Get PixelMap successfully.')
+    }
   }
 }
 ```
@@ -479,7 +482,7 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 **示例：**
 
 ```ts
-async function Demo(surfaceId: string) {
+async function CreatePixelMapFromSurfaceSync(surfaceId: string) {
   let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
   let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
   return pixelMap;
@@ -612,7 +615,7 @@ createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled:
 ```ts
 function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean) {
   image.createPixelMapFromSurfaceWithTransformation(surfaceId, transformEnabled).then((pixelMap: image.PixelMap) => {
-    console.info('PixelMap created successfully.');
+    console.info('Succeeded in creating pixelMap.');
   }).catch((e: Error) => {
     console.error(`Failed to create PixelMap. Code: ${e}`);
   });
@@ -661,7 +664,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function DemoCreatePixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean) {
   try {
     const pixelMap: image.PixelMap = image.createPixelMapFromSurfaceWithTransformationSync(surfaceId, transformEnabled);
-    console.info('PixelMap created successfully.');
+    console.info('Succeeded in creating pixelMap.');
   } catch (e) {
     const error = e as BusinessError;
     console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
@@ -792,7 +795,7 @@ createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptio
 **示例：**
 
 ```ts
-function CreatePixelMapSync() {
+function CreatePixelMapUsingAllocatorSync() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
   let opts: image.InitializationOptions = {
     size: { height: 4, width: 6 },
@@ -840,7 +843,7 @@ createPixelMapUsingAllocatorSync(param: InitializationOptions, allocatorType?: A
 **示例：**
 
 ```ts
-function CreatePixelMapSync() {
+function CreatePixelMapUsingAllocatorSync() {
   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
   let pixelMap : image.PixelMap = image.createPixelMapUsingAllocatorSync(opts, image.AllocatorType.AUTO);
   return pixelMap;
@@ -926,7 +929,7 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 | 类型                             | 说明                                                                    |
 | -------------------------------- | ----------------------------------------------------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1044,7 +1047,7 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 | 类型                             | 说明                                                                    |
 | -------------------------------- | ----------------------------------------------------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1099,7 +1102,7 @@ createImageSource(uri: string): ImageSource
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
-| uri    | string | 是   | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng .heic<sup>12+</sup> .wbmp<sup>23+</sup> .heifs<sup>23+</sup> .tiff<sup>23+</sup> [.svg<sup>10+</sup>](#svg标签说明) .ico<sup>11+</sup>。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
+| uri    | string | 是   | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng .heic<sup>12+</sup> .wbmp<sup>23+</sup> .heifs<sup>23+</sup> .tiff<sup>23+</sup> .svg<sup>10+</sup>（可参考[SVG标签说明](#svg标签说明)） .ico<sup>11+</sup>。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
 
 **返回值：**
 
@@ -1134,7 +1137,7 @@ createImageSource(uri: string, options: SourceOptions): ImageSource
 
 | 参数名  | 类型                            | 必填 | 说明                                |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| uri     | string                          | 是   | 图片路径，当前仅支持应用沙箱路径。</br>当前支持格式有：.jpg .png .gif .bmp .webp .dng .heic<sup>12+</sup> .wbmp<sup>23+</sup> .heifs<sup>23+</sup> .tiff<sup>23+</sup> [.svg<sup>10+</sup>](#svg标签说明) .ico<sup>11+</sup>。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
+| uri     | string                          | 是   | 图片路径，当前仅支持应用沙箱路径（可参考[使用说明](../apis-core-file-kit/js-apis-file-fs.md#使用说明)）。</br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>、SVG<sup>10+</sup>（可参考[SVG标签说明](#svg标签说明)）、ICO<sup>11+</sup>。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。|
 
 **返回值：**
@@ -1170,7 +1173,7 @@ createImageSource(fd: number): ImageSource
 
 | 参数名 | 类型   | 必填 | 说明          |
 | ------ | ------ | ---- | ------------- |
-| fd     | number | 是   | 文件描述符fd。|
+| fd     | number | 是   | 文件描述符fd。取值范围为[0，65535]。|
 
 **返回值：**
 
@@ -1181,12 +1184,12 @@ createImageSource(fd: number): ImageSource
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function CreateImageSource(context : Context) {
   // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
   let filePath: string = context.filesDir + "/test.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imageSourceObj: image.ImageSource = image.createImageSource(file.fd);
 }
 ```
@@ -1209,7 +1212,7 @@ createImageSource(fd: number, options: SourceOptions): ImageSource
 
 | 参数名  | 类型                            | 必填 | 说明                                |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| fd      | number                          | 是   | 文件描述符fd。                      |
+| fd      | number                          | 是   | 文件描述符fd。取值范围为[0，65535]。                      |
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。|
 
 **返回值：**
@@ -1221,13 +1224,13 @@ createImageSource(fd: number, options: SourceOptions): ImageSource
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function CreateImageSource(context : Context) {
   let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
   // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
   const filePath: string = context.filesDir + "/test.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imageSourceObj: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
 }
 ```
@@ -1548,7 +1551,7 @@ createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureTy
 | 参数名 | 类型                                            | 必填 | 说明                         |
 | ------ | ----------------------------------------------- | ---- | ---------------------------- |
 | buffer | ArrayBuffer                                     | 是   | 以buffer形式存放的图像数据。  |
-| size   | [Size](arkts-apis-image-i.md#size)                                   | 是   | 辅助图的尺寸。单位：像素。    |
+| size   | [Size](arkts-apis-image-i.md#size)                                   | 是   | 辅助图的尺寸。单位：px。    |
 | type   | [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13) | 是   | 辅助图类型。                 |
 
 **返回值：**
@@ -1787,8 +1790,8 @@ createImageReceiver(width: number, height: number, format: number, capacity: num
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| width    | number | 是   | 图像的默认宽度。单位：像素。该参数不会影响接收到的图片宽度，实际宽度由生产者决定，如相机。       |
-| height   | number | 是   | 图像的默认高度。单位：像素。该参数不会影响接收到的图片高度，实际高度由生产者决定，如相机。       |
+| width    | number | 是   | 图像的默认宽度。单位：px。该参数不会影响接收到的图片宽度，实际宽度由生产者决定，如相机。       |
+| height   | number | 是   | 图像的默认高度。单位：px。该参数不会影响接收到的图片高度，实际高度由生产者决定，如相机。       |
 | format   | number | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。  |
 | capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
@@ -1822,8 +1825,8 @@ createImageCreator(width: number, height: number, format: number, capacity: numb
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| width    | number | 是   | 图像的默认宽度。单位：像素。       |
-| height   | number | 是   | 图像的默认高度。单位：像素。       |
+| width    | number | 是   | 图像的默认宽度。单位：px。       |
+| height   | number | 是   | 图像的默认高度。单位：px。       |
 | format   | number | 是   | 图像格式，如YCBCR_422_SP，JPEG。             |
 | capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 

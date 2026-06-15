@@ -1,7 +1,7 @@
 # Multi-level Gesture Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -14,13 +14,21 @@ This topic describes the default response sequence of multi-level gesture events
 
 ### Touch Event
 
-The [touch event](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md) (**onTouch**) is the foundation of all gestures, comprising four types: Down, Move, Up, and Cancel. Gestures are built from the touch events. For example, a tap consists of a Down event followed by an Up event, while a swipe involves a Down event, a sequence of Move events, and finally an Up event. Touch events have unique characteristics:
+The [touch event](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md) (**onTouch**) is the foundation of all gestures, comprising four types: Down, Move, Up, and Cancel. Gestures are built from the touch events. For example, a tap consists of a Down event followed by an Up event, while a swipe involves a Down event, a sequence of Move events, and finally an Up event. Touch events have the following characteristics:
 
-1. Components that have registered for **onTouch** events receive callbacks for these events when touched, influenced by touch targets and touch control settings.
+1. A component that listens to the **onTouch** event will receive the **onTouch** callback whenever it is touched by a finger press, subject to the touch target and touch control settings.
 
 2. The **onTouch** event callbacks follow a closed-loop pattern. If a component receives a Down event with a specific finger ID (such as **0**), it will also receive subsequent Move and Up events for that same finger ID.
 
 3. The **onTouch** event callbacks maintain consistency. If a component receives a Down event for finger ID 0 but not for finger ID 1, it will only receive touch events for finger ID 0 and will not receive any subsequent touch events for finger ID 1.
+
+4. The **onTouch** event triggers a **Cancel** event in the following scenarios:
+
+   - When the user presses a finger on the screen and then presses the Home button to return to the home screen, a **Cancel** event is triggered.
+
+   <!--RP1--><!--RP1End-->
+
+   - When there is a stylus operation while a finger is touching the screen, the finger's touch operation will receive a **Cancel** event.
 
 For common container components (such as **Column**), **onTouch** events can be received by parent and child components at the same time, and how they are received by sibling components is subject to the layout.
 
@@ -98,11 +106,11 @@ If the user performs a tap operation, the callback corresponding to the tap is i
 
 You can set attributes to control the multi-level gesture event competition process.
 
-Specifically, use the **responseRegion** and **hitTestBehavior** attributes to control dispatching of touch events, thereby affecting the response to the **onTouch** events and gestures. You can also call gesture binding methods to control gesture competition and affect gesture response, but this approach does not affect triggering of **onTouch** events.
+Currently, touch event distribution can be controlled by setting [touch target](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md) and [hit testing](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md), which in turn affects the response of **onTouch** events and gestures. You can also call gesture binding methods to control gesture competition and affect gesture response, but this approach does not affect triggering of **onTouch** events.
 
-### Using responseRegion
+### Touch Target Control over Gestures and Events
 
-The [responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion) attribute sets the touch target of a component, which can be larger or smaller than the layout scope of the component.
+The touch target of a component can be set using the [responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion) and [mouseResponseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#mouseresponseregion10) attributes. Since API version 22, the touch target of a component can be set using the [responseRegionList](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregionlist22) attribute. The touch target can extend beyond or be smaller than the component's layout bounds.
 
 <!-- @[response_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
@@ -127,7 +135,7 @@ When **responseRegion** is set for a component, the component responds to all ge
 
 The **responseRegion** attribute accepts an array consisting of multiple **Rect** values.
 
-### Using hitTestBehavior
+### Hit Testing Control over Gestures and Events
 
 The [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) attribute sets which components can respond to specific gestures and events. It is especially useful under complex multi-layer event scenarios.
 

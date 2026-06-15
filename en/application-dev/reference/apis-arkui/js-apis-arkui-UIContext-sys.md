@@ -1,8 +1,8 @@
 # @ohos.arkui.UIContext (UIContext) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,7 +14,7 @@ In the stage model, a window stage or window can use the **loadContent** API to 
 >
 > You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.arkui.UIContext (UIContext)](arkts-apis-uicontext-uicontext.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [Class (UIContext)](arkts-apis-uicontext-uicontext.md).
 
 ## UIContext
 
@@ -32,6 +32,8 @@ Sets the dynamic dimming degree of the component.
 > Applying other visual effects after this API is called may result in conflicts.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -70,6 +72,8 @@ freezeUINode(id: string, isFrozen: boolean): void
 Sets whether to freeze a specific component by **id** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +192,8 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 Sets whether to freeze a specific component by **uniqueId** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -321,7 +327,7 @@ struct Index {
 
 setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void
 
-Configures the keyboard appearance, including blur effects and fluid lighting effects. These effects are only available in immersive mode. For details about immersive mode, see [KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15). The fluid lighting effect requires the blur effect to be enabled. The final display depends on input method implementation.
+Configures the keyboard appearance, including blur effects and fluid lighting effects. These effects are only available in immersive mode. For details about the immersive mode, see [KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15). The fluid lighting effect requires the blur effect to be enabled. The final display depends on input method implementation.
 
 **System API**: This is a system API.
 
@@ -456,6 +462,8 @@ Captures a snapshot of the area between two specified components. This API uses 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**System API**: This is a system API.
+
 **Parameters**
 
 | Name | Type    | Mandatory  | Description                                      |
@@ -490,6 +498,7 @@ import { image } from '@kit.ImageKit';
 @Component
 struct SnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined
+
   build() {
     Column() {
       Row() {
@@ -501,22 +510,47 @@ struct SnapshotExample {
               Row() {
                 Text('Text3').id('text3')
               }.id('root5').backgroundColor('#E4E8F0')
-            }.width('80%').height('80%').justifyContent(FlexAlign.SpaceAround).backgroundColor('#C1D1F0').id('root4')
-          }.width('80%').height('80%').justifyContent(FlexAlign.Center).backgroundColor('#FFEEF0').id('root3')
+            }
+            .width('80%')
+            .height('80%')
+            .justifyContent(FlexAlign.SpaceAround)
+            .backgroundColor('#C1D1F0')
+            .id('root4')
+          }
+          .width('80%')
+          .height('80%')
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor('#FFEEF0')
+          .id('root3')
           .backgroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.LIGHT })
-        }.width('80%').height('80%').justifyContent(FlexAlign.Center).backgroundColor('#D5D5D5').id('root2')
-      }.width('50%').height('50%').justifyContent(FlexAlign.Center).backgroundColor('#E4E8F0').id('root1')
+        }
+        .width('80%')
+        .height('80%')
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#D5D5D5')
+        .id('root2')
+      }
+      .width('50%')
+      .height('50%')
+      .justifyContent(FlexAlign.Center)
+      .backgroundColor('#E4E8F0')
+      .id('root1')
+
       Row() {
         Button("getWithRange")
           .onClick(() => {
-            this.getUIContext().getComponentSnapshot().getWithRange('root2', 'root4', true)
+            this.getUIContext()
+              .getComponentSnapshot()
+              .getWithRange('root2', 'root4', true)
               .then((pixmap: image.PixelMap) => {
                 this.pixmap = pixmap
-              }).catch((err:Error) => {
-              console.error("error: " + err)
-            })
+              })
+              .catch((err: Error) => {
+                console.error("error: " + err)
+              })
           }).margin(10)
       }.justifyContent(FlexAlign.SpaceAround)
+
       Row() {
         Image(this.pixmap).width(200).height(300).border({ color: Color.Black, width: 2 }).margin(5)
       }.justifyContent(FlexAlign.SpaceAround)
@@ -574,4 +608,3 @@ struct ImageRecycleSample {
   }
 }
 ```
-<!--no_check-->

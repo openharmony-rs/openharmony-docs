@@ -1,8 +1,8 @@
 # 基础库常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -81,7 +81,7 @@ export class testClass {
 
 重写globalThis.clearTimeout函数，实现在调用clearTimeout函数时打印调用栈，快速定位定时器是在哪里被删除的。
 
-调用顺序为先调用clearTimeout.ts文件中的test()函数，再调用TimerTest.ets文件中的timerTestCase()函数。
+调用顺序为先调用clearTimeout.ts文件中的test()函数，再调用TimerTest.ets文件中testClass类的clearAnimation()函数。
 
 示例代码：
 
@@ -111,22 +111,95 @@ export function test() {
 ```ts
 // 自定义ets文件TimerTest.ets
 
-let timeoutId: number = 0;
+export class testClass {
+    // 初始值设置为0
+    private timeoutId: number = 0;
+    private intervalId: number = 0;
 
-export function timerTestCase() {
-    test1();
-    clearTime();
-}
-
-function test1() {
-    timeoutId = setTimeout(() => {
-        console.info("begin");
-    }, 1);
-    console.info("timeoutId = " + timeoutId);
-}
-
-function clearTime() {
-    clearTimeout(timeoutId);
-    console.info("clearTimeout Id = " + timeoutId);
+    // 在某些情况下没有调用setTimeout设置定时器就调用了clearAnimation函数删除了定时器，就会导致timeoutId为0的定时器被删除
+    clearAnimation(): void {
+        clearInterval(this.intervalId);
+        clearTimeout(this.timeoutId);
+    }
 }
 ```
+
+```ts
+import { test } from './clearTimeout';
+import { testClass } from './TimerTest';
+
+@Entry
+@Component
+struct Index {
+    @State message: string = 'Hello World';
+
+    build() {
+      Row() {
+        Column() {
+          Text(this.message)
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+            .onClick(() => {
+                test();
+                let testCase = new testClass();
+                testCase.clearAnimation();
+                this.message = 'success';
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+}
+```
+
+## Base64编码规则
+
+Base64编码使用一组特定的64个字符来表示二进制数据。这64个字符包括大写字母A-Z、小写字母a-z、数字0-9，以及符号"+"和"/"。在某些情况下，还会使用"="作为填充字符。Base64编码将原始数据按每3个字节分组，每组3个字节转换为4个Base64字符。
+
+Base64编码表如下：
+| 索引 | 字符 | 索引 | 字符 | 索引 | 字符 | 索引 | 字符 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 0 | A | 16 | Q | 32 | g | 48 | w |
+| 1 | B | 17 | R | 33 | h | 49 | x |
+| 2 | C | 18 | S | 34 | i | 50 | y |
+| 3 | D | 19 | T | 35 | j | 51 | z |
+| 4 | E | 20 | U | 36 | k | 52 | 0 |
+| 5 | F | 21 | V | 37 | l | 53 | 1 |
+| 6 | G | 22 | W | 38 | m | 54 | 2 |
+| 7 | H | 23 | X | 39 | n | 55 | 3 |
+| 8 | I | 24 | Y | 40 | o | 56 | 4 |
+| 9 | J | 25 | Z | 41 | p | 57 | 5 |
+| 10 | K | 26 | a | 42 | q | 58 | 6 |
+| 11 | L | 27 | b | 43 | r | 59 | 7 |
+| 12 | M | 28 | c | 44 | s | 60 | 8 |
+| 13 | N | 29 | d | 45 | t | 61 | 9 |
+| 14 | O | 30 | e | 46 | u | 62 | + |
+| 15 | P | 31 | f | 47 | v | 63 | / |
+
+由此可见Base64是基于64个可打印字符来表示二进制数据的编解码方式。将二进制数据转为字符串（ASCII码），方便数据传输和加解密保护。
+
+它的编码实现原理为：
+
+将需要编码的字符串转换成二进制序列，然后按每6个二进制位为一组，分成若干组，如果不足6位，则低位补0。每6位组成一个新的字节，高位补00，构成一个新的二进制序列，最后根据Base64索引表中的值找到对应的字符。
+
+例如字符串“ABC”，我们进行Base64编码，最后结果会是QUJD：
+| 原始字符 | A |  B  |  C  | － |
+| :--- | :--- | :--- | :--- | :--- |
+| ASCII编码 | 65 | 66 | 67 |   －   |
+| 二进制位 | 01000001 | 01000010 | 01000011 | －  |
+| 编码转换 | 010000 | 010100 | 001001 | 000011 |
+| base64索引值 | 16 | 20 | 9 | 3 |
+| base64字符 | Q | U | J | D |
+
+若原始字符串长度不是3的倍数，编码后末尾用“=”填充，使编码后的Base64字符串最终长度为4的倍数，以满足转换后Base64长度要求。
+
+例如字符串“AB”转换后为“QUI”为了凑齐4字节，需要在末尾补充“=”：
+| 原始字符 | A |  B  | －  | － |
+| :--- | :--- | :--- | :--- | :--- |
+| ASCII编码 | 65 | 66 | － |   －   |
+| 二进制位 | 01000001 | 01000010 | － | －  |
+| 编码转换（不足6位补0） | 010000 | 010100 | 001000 | － |
+| base64索引值 | 16 | 20 | 8 | － |
+| base64字符 | Q | U | I | = |
+

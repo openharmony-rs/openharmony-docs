@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module provides application information. Unless otherwise specified, the information is obtained through [bundle.getApplicationInfo](js-apis-Bundle.md#bundlegetapplicationinfodeprecated).
 
@@ -14,7 +14,7 @@ The module provides application information. Unless otherwise specified, the inf
 > 
 > The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-ApplicationInfo](js-apis-bundleManager-applicationInfo.md) instead.
 
-## ApplicationInfo<sup>(deprecated)<sup>
+## ApplicationInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >

@@ -19,7 +19,7 @@
 >
 > - 对于使用[XComponent](arkui-ts/ts-basic-components-xcomponent.md)的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议使用[createPixelMapFromSurface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)直接获取图片。
 >
-> - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用[窗口截图](arkts-apis-window-Window.md#snapshot9)替代。
+> - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用窗口截图接口[snapshot](arkts-apis-window-Window.md#snapshot9)替代。
 >
 > - 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
 
@@ -514,6 +514,7 @@ struct SnapshotExample {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称           | 类型            |    只读       |    可选           |   说明                    |
 | ---------------|------------     | -------------|---------------| -----------------------------|
 | scale           | number | 否  |  是 | 指定截图时图形侧绘制pixelmap的缩放比例，比例过大时截图时间会变长，或者截图可能会失败。<br/>取值范围：[0, +∞)，当小于等于0时按默认情况处理。 <br/> 默认值：1 <br/>**说明：** <br/>请不要截取过大尺寸的图片，截图不建议超过屏幕尺寸的大小。当要截取的图片目标长宽超过底层限制时，截图会返回失败，不同设备的底层限制不同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。    |

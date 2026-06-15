@@ -4,12 +4,11 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module defines the ability information. An application can obtain its own ability information through [bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself), with **GET_BUNDLE_INFO_WITH_HAP_MODULE** and **GET_BUNDLE_INFO_WITH_ABILITY** passed in to [bundleFlags](js-apis-bundleManager.md#bundleflag).
 
 > **NOTE**
->
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -22,6 +21,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
  **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name                 | Type                                                    | Read-Only| Optional| Description                                     |
 | --------------------- | -------------------------------------------------------- | ---- | ---- | ------------------------------------------ |
 | bundleName            | string                                                   | Yes  | No  | Bundle name.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -43,7 +43,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | writePermission       | string                                                   | Yes  | No  | Permission required for writing data to the ability.<br>**Model restriction**: This API can be used only in the FA model.|
 | uri                   | string                                                   | Yes  | No  | URI of the ability.<br>**Model restriction**: This API can be used only in the FA model.|
 | deviceTypes           | Array\<string>                                           | Yes  | No  | Device types supported by the ability. The value is derived from that of [deviceTypes](../../quick-start/module-configuration-file.md#devicetypes) in the **module.json5** file.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| applicationInfo       | [ApplicationInfo](js-apis-bundleManager-applicationInfo.md)     | Yes  | No  | Application information. The information can be obtained by passing in **GET_BUNDLE_INFO_WITH_HAP_MODULE**, **GET_BUNDLE_INFO_WITH_ABILITY**, and **GET_BUNDLE_INFO_WITH_APPLICATION** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| applicationInfo       | [ApplicationInfo](js-apis-bundleManager-applicationInfo.md)     | Yes  | No  |Application configuration information <!--Del-->. The information can be obtained by passing in **GET_ABILITY_INFO_WITH_APPLICATION** to the **abilityFlags** parameter of [queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo) <!--DelEnd-->.<br>This field is not returned when the [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) or [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14) is used to obtain ability information. You can obtain the related information by obtaining the [bundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1).appInfo object.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | metadata              | Array\<[Metadata](js-apis-bundleManager-metadata.md)>           | Yes  | No  | Metadata of the ability. You can configure the system-defined parameters to use the capabilities provided by the system, for example, [shortcuts](../../quick-start/module-configuration-file.md#shortcuts) and [window metadata configuration](../../windowmanager/window-config-m.md). You can also customize the parameters and call [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) to obtain the parameters by passing **GET_BUNDLE_INFO_WITH_HAP_MODULE**, **GET_BUNDLE_INFO_WITH_ABILITY**, and **GET_BUNDLE_INFO_WITH_METADATA** to **bundleFlags**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | enabled               | boolean                                                  | Yes  | No  | Whether the ability is available, that is, whether it can be started or queried. **true** if available, **false** otherwise. If the ability is unavailable, you must call [getAbilityInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetabilityinfo20) with **AbilityFlag** set to **GET_ABILITY_INFO_WITH_DISABLE** to query the ability.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | supportWindowModes    | Array\<[bundleManager.SupportWindowMode](js-apis-bundleManager.md#supportwindowmode)> | Yes  | No  | Window modes supported by the ability.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|

@@ -1,9 +1,8 @@
 # 系统定义的公共事件
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -982,20 +981,6 @@ Wi-Fi状态变化。
 **订阅者所需权限：** ohos.permission.LOCATION
 
 **取值：** "usual.event.wifi.SCAN_FINISHED"
-
-
-### COMMON_EVENT_WIFI_SCAN_STATE
-
-表示Wi-Fi扫描接入点状态改变。
-
-当Wi-Fi扫描接入点状态发生变化，将会触发事件通知服务发布该系统公共事件。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**订阅者所需权限：** ohos.permission.LOCATION
-
-**取值：** "usual.event.wifi.SCAN_STATE"
-
 
 
 ### COMMON_EVENT_WIFI_RSSI_VALUE

@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ```c
@@ -49,7 +49,7 @@ typedef struct {...} OH_Predicates
 | [OH_Predicates *(*distinct)(OH_Predicates *predicates)](#distinct) | 函数指针，配置谓词以过滤重复记录并仅保留其中一个。<br>该方法等同于SQL语句中的“DISTINCT”。 |
 | [OH_Predicates *(*limit)(OH_Predicates *predicates, unsigned int value)](#limit) | 函数指针，设置最大数据记录数的谓词。<br>该方法等同于SQL语句中的“LIMIT”。 |
 | [OH_Predicates *(*offset)(OH_Predicates *predicates, unsigned int rowOffset)](#offset) | 函数指针，配置谓词以指定返回结果的起始位置。<br>该方法等同于SQL语句中的“OFFSET”。 |
-| [OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, int length)](#groupby) | 函数指针，配置R谓词按指定列分组查询结果。<br>该方法等同于SQL语句中的“GROUP BY”。 |
+| [OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, int length)](#groupby) | 函数指针，配置谓词按指定列分组查询结果。<br>该方法等同于SQL语句中的“GROUP BY”。 |
 | [OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#in) | 函数指针，配置谓词以匹配数据字段为field且值在给定范围内的指定字段。<br>该方法等同于SQL语句中的“IN”。 |
 | [OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#notin) | 函数指针，配置谓词以匹配数据字段为field且值超出给定范围内的指定字段。<br>该方法等同于SQL语句中的“NOT IN”。 |
 | [OH_Predicates *(*clear)(OH_Predicates *predicates)](#clear) | 函数指针，清空谓词。                                         |
@@ -547,7 +547,7 @@ OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, 
 
 **描述**
 
-函数指针，配置R谓词按指定列分组查询结果。<br>该方法等同于SQL语句中的“GROUP BY”。
+函数指针，配置谓词按指定列分组查询结果。<br>该方法等同于SQL语句中的“GROUP BY”。
 
 **起始版本：** 10
 

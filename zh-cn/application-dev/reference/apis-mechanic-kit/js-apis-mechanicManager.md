@@ -1,9 +1,9 @@
 # @ohos.distributedHardware.mechanicManager (机械体控制模块)
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @Marssssss-->
+<!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
 
 本模块提供与机械体设备交互的能力，包括设备连接状态监听、跟踪控制和跟踪状态监听功能。
@@ -44,12 +44,16 @@ on(type: 'attachStateChange', callback: Callback\<AttachStateChangeInfo>): void
 **示例：**
 
 ```ts
+// 定义连接状态变化回调函数，result为设备连接状态变化信息
 let callback = (result: mechanicManager.AttachStateChangeInfo) => {
   console.info(`'callback result:' ${result}`);
 };
 
+// 打印日志，表示开始注册监听
 console.info('Register');
+// 注册"attachStateChange"事件监听，当设备连接状态变化时触发callback回调
 mechanicManager.on("attachStateChange", callback);
+// 打印日志，表示注册监听成功
 console.info('Succeeded in registering callback.');
 ```
 
@@ -79,11 +83,13 @@ off(type: 'attachStateChange', callback?: Callback\<AttachStateChangeInfo>): voi
 **示例：**
 
 ```ts
+// 定义连接状态变化回调函数
 let callback = (result: mechanicManager.AttachStateChangeInfo) => {
   console.info(`'callback result:' ${result}`);
 };
 
 console.info('Unregister');
+// 取消注册"attachStateChange"事件监听
 mechanicManager.off("attachStateChange", callback);
 console.info('Succeeded in unregistering callback.');
 ```
@@ -114,6 +120,7 @@ getAttachedMechDevices(): MechInfo[]
 
 ```ts
 console.info('Query device list');
+// 调用getAttachedMechDevices方法获取已连接的机械体设备列表
 let mechanicInfos = mechanicManager.getAttachedMechDevices();
 console.info(`'device list:' ${mechanicInfos}`);
 ```
@@ -146,6 +153,7 @@ setCameraTrackingEnabled(isEnabled: boolean): void
 
 ```ts
 console.info('Enable tracing');
+// 调用setCameraTrackingEnabled方法，参数true表示启用摄像头跟踪
 mechanicManager.setCameraTrackingEnabled(true);
 console.info('Succeeded in enabling tracking.');
 ```
@@ -177,6 +185,7 @@ getCameraTrackingEnabled(): boolean
 
 ```ts
 console.info('Get tracking status');
+// 调用getCameraTrackingEnabled方法获取当前摄像头跟踪是否启用
 let enabled = mechanicManager.getCameraTrackingEnabled();
 console.info(`'current tracking status:' ${enabled}`);
 ```
@@ -207,11 +216,13 @@ on(type: 'trackingStateChange', callback: Callback\<TrackingEventInfo>): void
 **示例：**
 
 ```ts
+// 定义跟踪状态变化回调函数，result为跟踪事件信息
 let callback = (result: mechanicManager.TrackingEventInfo) => {
   console.info(`'callback result:' ${result}`);
 };
 
 console.info('Register');
+// 注册"trackingStateChange"事件监听，当跟踪状态变化时触发callback回调
 mechanicManager.on("trackingStateChange", callback);
 console.info('Succeeded in registering callback.');
 ```
@@ -229,7 +240,7 @@ off(type: 'trackingStateChange', callback?: Callback\<TrackingEventInfo>): void
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
 | type | 'trackingStateChange' | 是 | 取消注册的监听事件类型。取值为：'trackingStateChange'。 |
-| callback | Callback\<[TrackingEventInfo](#trackingeventinfo)> | 否 | mechanicManager.off('trackingStateChange')注册的回调函数。不填时默认取消所有注册的回调函数。 |
+| callback | Callback\<[TrackingEventInfo](#trackingeventinfo)> | 否 | 回调函数，返回跟踪事件信息。 |
 
 **错误码：**
 
@@ -242,11 +253,13 @@ off(type: 'trackingStateChange', callback?: Callback\<TrackingEventInfo>): void
 **示例：**
 
 ```ts
+// 定义跟踪状态变化回调函数
 let callback = (result: mechanicManager.TrackingEventInfo) => {
   console.info(`'callback result:' ${result}`);
 };
 
 console.info('Unregister');
+// 取消注册"trackingStateChange"事件监听
 mechanicManager.off("trackingStateChange", callback);
 console.info('Succeeded in unregistering callback.');
 ```
@@ -278,6 +291,7 @@ getCameraTrackingLayout(): CameraTrackingLayout
 
 ```ts
 console.info('Query layout');
+// 调用getCameraTrackingLayout方法获取当前摄像头跟踪布局
 let layout = mechanicManager.getCameraTrackingLayout();
 console.info(`'Succeeded in querying layout, current layout:' ${layout}`);
 ```
@@ -292,7 +306,7 @@ console.info(`'Succeeded in querying layout, current layout:' ${layout}`);
 | ----- | ---- | ---- | --- | --- |
 | mechId | number | 否 | 否 | 机械体设备ID，取值为大于等于0的整数。 |
 | mechDeviceType | [MechDeviceType](#mechdevicetype) | 否 | 否 | 机械体设备的类型。 |
-| mechName | string | 否 | 否 | 机械体设备名称。 |
+| mechName | string | 否 | 否 | 机械体设备名称，长度不超过64字符。 |
 
 ## TrackingEventInfo
 

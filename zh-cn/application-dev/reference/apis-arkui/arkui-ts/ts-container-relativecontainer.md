@@ -27,6 +27,8 @@
 
 RelativeContainer()
 
+相对布局组件，用于复杂场景中元素对齐的布局。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -546,7 +548,7 @@ struct Index {
 
 ### 示例7（设置链）
 
-本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)接口从上至下分别实现了水平方向的[SPREAD链，SPREAD_INSIDE链和PACKED链](ts-universal-attributes-location.md#chainstyle12)。
+本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)接口从上至下分别实现了水平方向的[SPREAD](ts-universal-attributes-location.md#chainstyle12)链、[SPREAD_INSIDE](ts-universal-attributes-location.md#chainstyle12)链和[PACKED](ts-universal-attributes-location.md#chainstyle12)链。
 
 ```ts
 @Entry
@@ -696,7 +698,7 @@ struct Index {
 
 ### 示例8（链中设置偏移）
 
-本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)和[bias](ts-types.md#bias对象说明)接口实现了水平方向的带偏移的[PACKED链](ts-universal-attributes-location.md#chainstyle12)。
+本示例通过[chainMode](ts-universal-attributes-location.md#chainmode12)和[bias](ts-types.md#bias对象说明)接口实现了水平方向的带偏移的[PACKED](ts-universal-attributes-location.md#chainstyle12)链。
 
 ```ts
 @Entry

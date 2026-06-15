@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module provides APIs for setting and obtaining installation-free information and APIs for obtaining BundlePackInfo and DispatchInfo.
 
@@ -72,7 +72,7 @@ Sets an upgrade flag for a module. This API uses an asynchronous callback to ret
 | bundleName  | string                      | Yes  | Bundle name.    |
 | moduleName  | string                      | Yes  | Module name.          |
 | upgradeFlag | [UpgradeFlag](#upgradeflag) | Yes  | Upgrade flag, which is for internal use only.      |
-| callback    | AsyncCallback\<void>        | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| callback    | AsyncCallback\<void>        | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -185,7 +185,7 @@ Checks whether a module can be removed. This API uses an asynchronous callback t
 | ---------- | ---------------------- | ---- | --------------------------------------------- |
 | bundleName | string                 | Yes  | Bundle name.                     |
 | moduleName | string                 | Yes  | Module name.                           |
-| callback   | AsyncCallback\<boolean> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is a Boolean value (**true** if the module can be removed, **false** otherwise). If the operation fails, **err** is an error object.|
+| callback   | AsyncCallback\<boolean> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined** and **data** is a Boolean value (**true** if the module can be removed, **false** otherwise). If the operation fails, **err** is an error object.|
 
 **Error codes**
 
@@ -295,7 +295,7 @@ Obtains bundlePackInfo based on **bundleName** and **bundlePackFlag**. This API 
 | -------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | bundleName     | string                                                       | Yes  | Bundle name.                                            |
 | bundlePackFlag | [BundlePackFlag](#bundlepackflag)                            | Yes  | Flag of the bundle package.                                    |
-| callback       | AsyncCallback<[BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md)> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the BundlePackInfo object obtained; otherwise, **err** is an error object.|
+| callback       | AsyncCallback<[BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md)> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined** and **data** is the BundlePackInfo information obtained; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -400,7 +400,7 @@ Obtains the dispatch information. This API uses an asynchronous callback to retu
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback<[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**, and **data** is the [DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md) object obtained. otherwise, **err** is an error object.|
+| callback | AsyncCallback<[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the [DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md) information obtained. otherwise, **err** is an error object.|
 
 **Error codes**
 

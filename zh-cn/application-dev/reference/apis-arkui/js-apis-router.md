@@ -18,7 +18,7 @@
 >
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-apis-uicontext-uicontext.md)说明。
 >
-> - 如果使用传入callback形式的[pushUrl](arkts-apis-uicontext-router.md#pushurl-1)或[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1)接口，callback中通过[getLength](arkts-apis-uicontext-router.md#getlengthdeprecated)等接口获取的栈信息为中间态的栈信息，可能与栈操作完全结束后，再通过[getLength](arkts-apis-uicontext-router.md#getlengthdeprecated)等接口获取的栈信息不一致。
+> - 如果使用传入callback形式的[pushUrl](arkts-apis-uicontext-router.md#pushurl-1)或[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1)接口，callback中通过[getStackSize](arkts-apis-uicontext-router.md#getstacksize23)等接口获取的栈信息为中间态的栈信息，可能与栈操作完全结束后，再通过[getStackSize](arkts-apis-uicontext-router.md#getstacksize23)等接口获取的栈信息不一致。
 
 ## 导入模块
 
@@ -52,7 +52,7 @@ pushUrl(options: RouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -199,7 +199,7 @@ pushUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -347,7 +347,7 @@ replaceUrl(options: RouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -474,7 +474,7 @@ replaceUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -600,7 +600,7 @@ pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -749,7 +749,7 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&g
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -897,7 +897,7 @@ replaceNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1024,7 +1024,7 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;voi
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1181,7 +1181,7 @@ back(index: number, params?: Object): void;
 this.getUIContext().getRouter().back(1);
 ```
 ```ts
-this.getUIContext().getRouter().back(1, { info: '来自Home页' }); //携带参数返回
+this.getUIContext().getRouter().back(1, { info: '来自Home页' }); // 携带参数返回
 ```
 
 ## router.clear<sup>(deprecated)</sup>
@@ -1531,7 +1531,7 @@ export default {
 // 在detail页面中
 export default {
   onInit() {
-    console.info('showData1:' + this.getUIContext().getRouter().getParams()['data1']);
+    console.info('showData1:' + router.getParams()['data1']);
   }
 }
 ```

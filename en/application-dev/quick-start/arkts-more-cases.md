@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @anxuesm-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -15,7 +15,9 @@ If the property name is a valid identifier (that is, special characters and spac
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_identifiers_as_prop_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->     
+
+``` TypeScript
 interface W {
   bundleName: string
   action: string
@@ -31,7 +33,9 @@ let wantInfo: W = {
 
 **After adaptation**
 
-```typescript
+<!-- @[identifiers_as_prop_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->     
+
+``` TypeScript
 interface W {
   bundleName: string
   action: string
@@ -49,7 +53,9 @@ let wantInfo: W = {
 
 ### Changing any and unknown to Specific Types
 
-```typescript
+<!-- @[ts_no_any_unknown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->      
+
+``` TypeScript
 function printObj(obj: any) {
   console.info(obj);
 }
@@ -59,23 +65,28 @@ printObj('abc'); // abc
 
 **After adaptation**
 
-```typescript
+<!-- @[no_any_unknown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->       
+
+``` TypeScript
 function printObj(obj: string) {
   console.info(obj);
+  // ...
 }
-
-printObj('abc'); // abc
+// ...
+          printObj('abc'); // abc
 ```
 
 ### Marking JSON.parse Return Value Type
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_json_parser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->     
+
+``` TypeScript
 class A {
   v: number = 0
   s: string = ''
-  
+
   foo(str: string) {
     let tmpStr = JSON.parse(str);
     if (tmpStr.add != undefined) {
@@ -88,11 +99,13 @@ class A {
 
 **After adaptation**
 
-```typescript
+<!-- @[json_parser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->     
+
+``` TypeScript
 class A {
-  v: number = 0
-  s: string = ''
-  
+  public v: number = 0
+  public s: string = ''
+
   foo(str: string) {
     let tmpStr: Record<string, Object> = JSON.parse(str);
     if (tmpStr.add != undefined) {
@@ -107,7 +120,9 @@ class A {
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_record_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->     
+
+``` TypeScript
 function printProperties(obj: any) {
   console.info(obj.name);
   console.info(obj.value);
@@ -116,10 +131,13 @@ function printProperties(obj: any) {
 
 **After adaptation**
 
-```typescript
+<!-- @[record_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->     
+
+``` TypeScript
 function printProperties(obj: Record<string, Object>) {
   console.info(obj.name as string);
   console.info(obj.value as string);
+  // ...
 }
 ```
 
@@ -129,7 +147,9 @@ Use the function type instead.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_call_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->      
+
+``` TypeScript
 interface I {
   (value: string): void;
 }
@@ -143,19 +163,21 @@ foo((value: string) => {
 })
 ```
 
-
 **After adaptation**
 
-```typescript
+<!-- @[no_call_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
+
+``` TypeScript
 type I = (value: string) => void
 
 function foo(fn: I) {
   fn('abc');
 }
-
-foo((value: string) => {
-  console.info(value);
-})
+// ...
+  foo((value: string) => {
+    console.info(value);
+    // ...
+  })
 ```
 
 ## arkts-no-ctor-signatures-type
@@ -164,7 +186,9 @@ Use the factory function (**() => Instance**) instead of the constructor signatu
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_ctor_signatures_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
 class Controller {
   value: string = ''
 
@@ -193,9 +217,11 @@ console.info(t.createController()!.value);
 
 **After adaptation**
 
-```typescript
+<!-- @[no_ctor_signatures_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
+
+``` TypeScript
 class Controller {
-  value: string = ''
+  public value: string = ''
 
   constructor(value: string) {
     this.value = value;
@@ -204,8 +230,8 @@ class Controller {
 
 type ControllerConstructor = () => Controller;
 
-class testMenu {
-  controller: ControllerConstructor = () => {
+class TestMenu {
+  public controller: ControllerConstructor = () => {
     return new Controller('abc');
   }
 
@@ -216,9 +242,9 @@ class testMenu {
     return null;
   }
 }
-
-let t: testMenu = new testMenu();
-console.info(t.createController()!.value);
+// ...
+  let t: TestMenu = new TestMenu();
+  console.info(t.createController()!.value);
 ```
 
 ## arkts-no-indexed-signatures
@@ -227,8 +253,10 @@ Use the **Record** type instead.
 
 **Before adaptation**
 
-```typescript
-function foo(data: { [key: string]: string }) {
+<!-- @[ts_no_indexed_signatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
+function foo1(data: { [key: string]: string }) {
   data['a'] = 'a';
   data['b'] = 'b';
   data['c'] = 'c';
@@ -237,8 +265,10 @@ function foo(data: { [key: string]: string }) {
 
 **After adaptation**
 
-```typescript
-function foo(data: Record<string, string>) {
+<!-- @[no_indexed_signatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
+
+``` TypeScript
+function foo1(data: Record<string, string>) {
   data['a'] = 'a';
   data['b'] = 'b';
   data['c'] = 'c';
@@ -251,7 +281,9 @@ Use a specific type instead of **this**.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_typing_with_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
 class C {
   getInstance(): this {
     return this;
@@ -261,7 +293,9 @@ class C {
 
 **After adaptation**
 
-```typescript
+<!-- @[no_typing_with_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
+
+``` TypeScript
 class C {
   getInstance(): C {
     return this;
@@ -275,7 +309,9 @@ Declare class properties explicitly and manually assign values to the constructo
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_ctor_prop_decls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
 class Person {
   constructor(readonly name: string) {}
 
@@ -287,9 +323,11 @@ class Person {
 
 **After adaptation**
 
-```typescript
+<!-- @[no_ctor_prop_decls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
+
+``` TypeScript
 class Person {
-  name: string
+  public name: string
   constructor(name: string) {
     this.name = name;
   }
@@ -306,7 +344,9 @@ Use type to define factory functions or common function types.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_ctor_signatures_iface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
 class Controller {
   value: string = ''
 
@@ -335,9 +375,11 @@ console.info(t.createController()!.value);
 
 **After adaptation**
 
-```typescript
+<!-- @[no_ctor_signatures_iface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
+
+``` TypeScript
 class Controller {
-  value: string = ''
+  public value: string = ''
 
   constructor(value: string) {
     this.value = value;
@@ -346,8 +388,8 @@ class Controller {
 
 type ControllerConstructor = () => Controller;
 
-class testMenu {
-  controller: ControllerConstructor = () => {
+class TestMenu {
+  public controller: ControllerConstructor = () => {
     return new Controller('abc');
   }
 
@@ -359,7 +401,7 @@ class testMenu {
   }
 }
 
-let t: testMenu = new testMenu();
+let t: TestMenu = new TestMenu();
 console.info(t.createController()!.value);
 ```
 
@@ -369,19 +411,23 @@ Use the **Record** type to access object properties.
 
 **Before adaptation**
 
-```typescript
-function foo(params: Object) {
-    let funNum: number = params['funNum'];
-    let target: string = params['target'];
+<!-- @[ts_no_props_by_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
+function foo2(params: Object) {
+  let funNum: number = params['funNum'];
+  let target: string = params['target'];
 }
 ```
 
 **After adaptation**
 
-```typescript
-function foo(params: Record<string, string | number>) {
-    let funNum: number = params['funNum'] as number;
-    let target: string = params['target'] as string;
+<!-- @[no_props_by_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
+
+``` TypeScript
+function foo2(params: Record<string, string | number>) {
+  let funNum: number = params['funNum'] as number;
+  let target: string = params['target'] as string;
 }
 ```
 
@@ -391,7 +437,9 @@ Explicitly specify the generic parameter types, such as **Map\<string, T\>** and
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_inferred_generic_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
 class A {
   str: string = ''
 }
@@ -405,16 +453,19 @@ let originMenusMap:Map<string, C> = new Map(arr.map(item => [item.str, (item ins
 
 **After adaptation**
 
-```typescript
+<!-- @[no_inferred_generic_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
+
+``` TypeScript
 class A {
-  str: string = ''
+  public str: string = ''
 }
 class B extends A {}
 class C extends A {}
 
-let arr: Array<A> = [];
+let arr: A[] = [];
 
-let originMenusMap: Map<string, C | null> = new Map<string, C | null>(arr.map<[string, C | null]>(item => [item.str, (item instanceof C) ? item: null]));
+let originMenusMap: Map<string, C | null> = new Map<string, C | null>
+(arr.map<[string, C | null]>(item => [item.str, (item instanceof C) ? item: null]));
 ```
 
 **Reason for change**
@@ -427,13 +478,17 @@ Use **new RegExp(pattern, flags)** instead of the **RegExp** literal.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_regexp_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
 let regex: RegExp = /\s*/g;
 ```
 
 **After adaptation**
 
-```typescript
+<!-- @[no_regexp_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->    
+
+``` TypeScript
 let regexp: RegExp = new RegExp('\\s*','g');
 ```
 
@@ -447,7 +502,9 @@ To include a flag in a regular expression, use it as a parameter of **new RegExp
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_obj_literals_as_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
 const area = { // No type is specified, so it is inconvenient for maintenance.
   pixels: new ArrayBuffer(8),
   offset: 0,
@@ -458,9 +515,11 @@ const area = { // No type is specified, so it is inconvenient for maintenance.
 
 **After adaptation**
 
-```typescript
-import { image } from '@kit.ImageKit';
+<!-- @[specifying_object_literal_type_for_type_imports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->    
 
+``` TypeScript
+import { image } from '@kit.ImageKit';
+// ...
 const area: image.PositionArea = { // Type is specified.
   pixels: new ArrayBuffer(8),
   offset: 0,
@@ -473,7 +532,9 @@ const area: image.PositionArea = { // Type is specified.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_structural_typing_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
 class Test {
   value: number = 1
   // There is a constructor.
@@ -487,21 +548,26 @@ let t: Test = { value: 2 };
 
 **After adaptation: mode 1**
 
-```typescript
+<!-- @[remove_the_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->    
+
+``` TypeScript
 // Remove the constructor.
 class Test {
-  value: number = 1
+  public value: number = 1
 }
 
 let t: Test = { value: 2 };
 ```
 
 **After adaptation: mode 2**
-```typescript
+
+<!-- @[use_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->    
+
+``` TypeScript
 // Use new.
 class Test {
-  value: number = 1
-  
+  public value: number = 1
+
   constructor(value: number) {
     this.value = value;
   }
@@ -512,10 +578,12 @@ let t: Test = new Test(2);
 
 **Reason for change**
 
-```typescript
+<!-- @[ts_no_structural_typing_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
 class C {
   value: number = 1
-  
+
   constructor(n: number) {
     if (n < 0) {
       throw new Error('Negative');
@@ -534,7 +602,9 @@ In the preceding example, if **C** can be used to specify the object literal typ
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_nonInferrable_arr_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->    
+
+``` TypeScript
 class Test {
   value: number = 0
 }
@@ -554,9 +624,11 @@ let arr: Test[] = [
 
 **After adaptation**
 
-```typescript
+<!-- @[using_an_identifier_as_the_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
+
+``` TypeScript
 class Test {
-  value: number = 0
+  public value: number = 0
 }
 let arr: Test[] = [
   {
@@ -575,7 +647,9 @@ let arr: Test[] = [
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_record_type_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 let obj: Record<string, number | string> = {
   value: 123,
   name: 'abc'
@@ -584,7 +658,9 @@ let obj: Record<string, number | string> = {
 
 **After adaptation**
 
-```typescript
+<!-- @[using_a_string_as_the_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
+
+``` TypeScript
 let obj: Record<string, number | string> = {
   'value': 123,
   'name': 'abc'
@@ -595,8 +671,10 @@ let obj: Record<string, number | string> = {
 
 **Before adaptation**
 
-```typescript
-function foo(obj: { [key: string]: string}): string {
+<!-- @[ts_index_signature_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
+function foo3(obj: { [key: string]: string}): string {
   if (obj != undefined && obj != null) {
     return obj.value1 + obj.value2;
   }
@@ -606,7 +684,9 @@ function foo(obj: { [key: string]: string}): string {
 
 **After adaptation**
 
-```typescript
+<!-- @[include_index_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
+
+``` TypeScript
 function foo(obj: Record<string, string>): string {
   if (obj != undefined && obj != null) {
     return obj.value1 + obj.value2;
@@ -619,7 +699,9 @@ function foo(obj: Record<string, string>): string {
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_anonymous_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 (fn) => {
   fn({ value: 123, name:'' });
 }
@@ -627,10 +709,12 @@ function foo(obj: Record<string, string>): string {
 
 **After adaptation**
 
-```typescript
+<!-- @[include_object_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
+
+``` TypeScript
 class T {
-  value: number = 0
-  name: string = ''
+  public value: number = 0
+  public name: string = ''
 }
 
 (fn: (v: T) => void) => {
@@ -642,7 +726,9 @@ class T {
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_interface_method_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 interface T {
   foo(value: number): number
 }
@@ -652,7 +738,9 @@ let t:T = { foo: (value) => { return value } };
 
 **After adaptation: mode 1**
 
-```typescript
+<!-- @[include_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
+
+``` TypeScript
 interface T {
   foo: (value: number) => number
 }
@@ -662,9 +750,11 @@ let t:T = { foo: (value) => { return value } };
 
 **After adaptation: mode 2**
 
-```typescript
+<!-- @[include_method_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
+
+``` TypeScript
 class T {
-  foo: (value: number) => number = (value: number) => {
+  public foo: (value: number) => number = (value: number) => {
     return value;
   }
 }
@@ -680,7 +770,9 @@ The methods declared in a class or interface should be shared by all instances o
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_export_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 export default {
   onCreate() {
     // ...
@@ -693,7 +785,9 @@ export default {
 
 **After adaptation**
 
-```typescript
+<!-- @[export_default_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
+
+``` TypeScript
 class Test {
   onCreate() {
     // ...
@@ -710,7 +804,9 @@ export default new Test()
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_namespace_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/test.d.ts) -->  
+
+``` TypeScript
 // test.d.ets
 declare namespace test {
   interface I {
@@ -722,9 +818,13 @@ declare namespace test {
 }
 
 export default test;
+```
 
+<!-- @[ts_namespace_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/app.ets) -->  
+
+``` TypeScript
 // app.ets
-import test from 'test';
+import test from './test';
 
 let option = { id: '', type: 0 };
 test.foo('', option);
@@ -732,21 +832,28 @@ test.foo('', option);
 
 **After adaptation**
 
-```typescript
+<!-- @[no_spread_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/test1.d.ets) -->  
+
+``` TypeScript
 // test.d.ets
-declare namespace test {
+declare namespace Test {
   interface I {
     id: string;
     type: number;
   }
 
   function foo(name: string, option: I): void;
+  function foo(): I;
 }
 
-export default test;
+export default Test;
+```
 
+<!-- @[obtaining_the_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->
+
+``` TypeScript
 // app.ets
-import test from 'test';
+import test from './test';
 
 let option: test.I = { id: '', type: 0 };
 test.foo('', option);
@@ -755,13 +862,16 @@ test.foo('', option);
 **Reason for change**
 
 The object literal lacks a type. According to the analysis of **test.foo**, the **option** type comes from the declaration file. Therefore, you only need to import the type.
+
 In **test.d.ets**, **I** is defined in **namespace**. Import **namespace** to the .ets file and then obtain the corresponding type by name.
 
 ### Passing Parameters from the Object Literal to the Object Type
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_rest_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 function emit(event: string, ...args: Object[]): void {}
 
 emit('', {
@@ -772,12 +882,14 @@ emit('', {
 
 **After adaptation**
 
-```typescript
+<!-- @[passing_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->  
+
+``` TypeScript
 function emit(event: string, ...args: Object[]): void {}
 
 let emitArg: Record<string, number | boolean> = {
-   'action': 11,
-   'outers': false
+  'action': 11,
+  'outers': false
 }
 
 emit('', emitArg);
@@ -789,13 +901,17 @@ Use **interface** to explicitly define the structure type.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_type_alias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 type Person = { name: string, age: number }
 ```
 
 **After adaptation**
 
-```typescript
+<!-- @[no_obj_literals_as_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 interface Person {
   name: string,
   age: number
@@ -808,11 +924,13 @@ Explicitly declare the type of array elements (using **interface** or **class**)
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_array_literal_inference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 let permissionList = [
   {name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.'},
-  {name: 'Microphone', value: 'Used to add voice when reporting an issue.'},
-  {"name: 'Storage', value: 'Used to add local file attachments when reporting an issue.'}
+  {name: 'Microphone', value: 'Used to add voice for issue reporting.'},
+  {"name: 'Storage', value: 'Used to add local file attachments for issue reporting.'}
 ]
 ```
 
@@ -820,16 +938,18 @@ let permissionList = [
 
 Declare the type for the object literal.
 
-```typescript
+<!-- @[no_nonInferrable_arr_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 class PermissionItem {
-  name?: string
-  value?: string
+  public name?: string
+  public value?: string
 }
 
 let permissionList: PermissionItem[] = [
   {name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.'},
-  {name: 'Microphone', value: 'Used to add voice when reporting an issue.'},
-  {"name: 'Storage', value: 'Used to add local file attachments when reporting an issue.'}
+  {name: 'Microphone', value: 'Used to add voice for issue reporting.'},
+  {"name: 'Storage', value: 'Used to add local file attachments for issue reporting.'}
 ]
 ```
 
@@ -839,7 +959,9 @@ Use class fields of the function type instead of prototype methods.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_method_reassignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class C {
   add(left: number, right: number): number {
     return left + right;
@@ -856,9 +978,11 @@ c1.add = sub;
 
 **After adaptation**
 
-```typescript
-class C {
-  add: (left: number, right: number) => number = 
+<!-- @[no_method_reassignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
+class C3 {
+  public add: (left: number, right: number) => number =
     (left: number, right: number) => {
       return left + right;
     }
@@ -868,7 +992,7 @@ function sub(left: number, right: number): number {
   return left - right;
 }
 
-let c1 = new C();
+let c1 = new C3();
 c1.add = sub;
 ```
 
@@ -878,7 +1002,9 @@ Use explicit conversion functions such as **Number.parseInt()** and **new Number
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_polymorphic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 let a = +'5'; // Implicit conversion using operators.
 let b = -'5';
 let c = ~'5';
@@ -887,7 +1013,9 @@ let d = +'string';
 
 **After adaptation**
 
-```typescript
+<!-- @[no_polymorphic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 let a = Number.parseInt('5'); // Explicit conversion using Number.parseInt.
 let b = -Number.parseInt('5');
 let c = ~Number.parseInt('5');
@@ -900,14 +1028,20 @@ Use **class**, **interface**, or type aliases instead of **typeof** to avoid inf
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_module_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/module1.ts) -->  
+
+``` TypeScript
 // module1.ts
 class C {
   value: number = 0
 }
 
 export let c = new C()
+```
 
+<!-- @[ts_module_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/module2.ts) -->  
+
+``` TypeScript
 // module2.ts
 import { c } from './module1'
 let t: typeof c = { value: 123 };
@@ -915,15 +1049,21 @@ let t: typeof c = { value: 123 };
 
 **After adaptation**
 
-```typescript
-// module1.ts
+<!-- @[no_type_query_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/module1.ets) -->  
+
+``` TypeScript
+// File name: module1.ets
 class C {
-  value: number = 0
+  public value: number = 0
 }
 
 export { C }
+```
 
-// module2.ts
+<!-- @[no_type_query_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/module2.ets) -->  
+
+``` TypeScript
+// File name: module2.ets
 import { C } from './module1'
 let t: C = { value: 123 };
 ```
@@ -934,7 +1074,9 @@ let t: C = { value: 123 };
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_object_keys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 function test(str: string, obj: Record<string, Object>) {
   return str in obj;
 }
@@ -942,7 +1084,9 @@ function test(str: string, obj: Record<string, Object>) {
 
 **After adaptation**
 
-```typescript
+<!-- @[object_keys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 function test(str: string, obj: Record<string, Object>) {
   for (let i of Object.keys(obj)) {
     if (i == str) {
@@ -959,7 +1103,9 @@ Use index access or manual assignment instead of destructuring assignment.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_destruct_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 let map = new Map<string, string>([['a', 'a'], ['b', 'b']]);
 for (let [key, value] of map) {
   console.info(key);
@@ -971,13 +1117,17 @@ for (let [key, value] of map) {
 
 Use arrays.
 
-```typescript
+<!-- @[no_destruct_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 let map = new Map<string, string>([['a', 'a'], ['b', 'b']]);
+// ...
 for (let arr of map) {
   let key = arr[0];
   let value = arr[1];
   console.info(key);
   console.info(value);
+  // ...
 }
 ```
 
@@ -999,9 +1149,11 @@ try {
 
 **After adaptation**
 
-```typescript
-import { BusinessError } from '@kit.BasicServicesKit'
+<!-- @[no_types_in_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
 
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit'
+// ...
 try {
   // ...
 } catch (error) {
@@ -1016,7 +1168,9 @@ Use **Object.entries(obj)** with **for...of** instead of **for...in**.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_for_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 interface Person {
   [name: string]: string
 }
@@ -1026,20 +1180,23 @@ let p: Person = {
 };
 
 for (let t in p) {
-  console.info(p[t]);  // info: "tom", "18" 
+  console.info(p[t]);  // info: "tom", "18"
 }
 ```
 
 **After adaptation**
 
-```typescript
+<!-- @[no_for_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 let p: Record<string, string> = {
   'name': 'tom',
   'age': '18'
 };
-
+// ...
 for (let ele of Object.entries(p)) {
-  console.info(ele[1]);  // info: "tom", "18" 
+  console.info(ele[1]); // info: "tom", "18"
+  // ...
 }
 ```
 
@@ -1049,7 +1206,9 @@ Use **Record\<K, T\>** instead of the mapped type.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_mapped_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class C {
   a: number = 0
   b: number = 0
@@ -1062,11 +1221,13 @@ type OptionsFlags = {
 
 **After adaptation**
 
-```typescript
+<!-- @[no_mapped_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 class C {
-  a: number = 0
-  b: number = 0
-  c: number = 0
+  public a: number = 0
+  public b: number = 0
+  public c: number = 0
 }
 
 type OptionsFlags = Record<keyof C, string>
@@ -1078,7 +1239,9 @@ Convert an object to **Error**, or create an **Error** instance and throw it.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_limited_throw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit'
 
 function ThrowError(error: BusinessError) {
@@ -1088,10 +1251,12 @@ function ThrowError(error: BusinessError) {
 
 **After adaptation**
 
-```typescript
+<!-- @[limited_throw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit'
 
-function ThrowError(error: BusinessError) {
+function throwError(error: BusinessError) {
   throw error as Error;
 }
 ```
@@ -1106,8 +1271,10 @@ The type of the value in the **throw** statement must be **Error** or its inheri
 
 **Before adaptation**
 
-```typescript
-function foo() {
+<!-- @[ts_no_standalone_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
+function foo4() {
   console.info(this.value);
 }
 
@@ -1119,15 +1286,18 @@ foo.apply(obj);
 
 Use the method of a class. If the method is used by multiple classes, consider using the inheritance mechanism.
 
-```typescript
+<!-- @[no_standalone_this_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 class Test {
-  value: string = ''
+  public value: string = ''
   constructor (value: string) {
     this.value = value
   }
-  
+
   foo() {
     console.info(this.value);
+    // ...
   }
 }
 
@@ -1139,40 +1309,47 @@ obj.foo();
 
 Pass in **this** as a parameter.
 
-```typescript
-function foo(obj: Test) {
+<!-- @[no_standalone_this_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
+function foo3(obj: Test) {
   console.info(obj.value);
+  // ...
 }
-
+// ...
 class Test {
-  value: string = ''
+  public value: string = ''
 }
-
-let obj: Test = { value: 'abc' };
-foo(obj);
+let obj1: Test = { value: 'abc' };
+foo3(obj1);
 ```
 
 **After adaptation: mode 3**
 
 Pass in a property as a parameter.
-```typescript
-function foo(value: string) {
+
+<!-- @[no_standalone_this_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
+function foo5(value: string) {
   console.info(value);
 }
 
-class Test {
+class Test1 {
   value: string = ''
 }
 
-let obj: Test = { value: 'abc' };
-foo(obj.value);
+let obj2: Test1 = { value: 'abc' };
+foo5(obj2.value);
 ```
 
 ### Using this in the Static Method of a Class
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_class_static_function_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class Test {
   static value: number = 123
   static foo(): number {
@@ -1183,10 +1360,12 @@ class Test {
 
 **After adaptation**
 
-```typescript
+<!-- @[class_static_function_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 class Test {
-  static value: number = 123
-  static foo(): number {
+  public static value: number = 123
+  public static foo(): number {
     return Test.value
   }
 }
@@ -1222,21 +1401,28 @@ let t: test.I = {
 
 **After adaptation**
 
-```typescript
+<!-- @[obtaining_the_type_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/test.d.ets) -->  
+
+``` TypeScript
 // test.d.ets
-declare namespace test {
+declare namespace Test {
   interface I {
     id: string;
     type: number;
   }
 
+  function foo(name: string, option: I): void;
   function foo(): I;
 }
 
-export default test
+export default Test;
+```
 
+<!-- @[no_spread_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/app.ets) -->  
+
+``` TypeScript
 // app.ets
-import test from 'test';
+import test from './test';
 
 let t: test.I = test.foo();
 t.type = 0;
@@ -1252,7 +1438,9 @@ Declare properties within a class, not on a constructor.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_ctor_signatures_funcs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class Controller {
   value: string = ''
   constructor(value: string) {
@@ -1278,9 +1466,11 @@ console.info(t.createController()!.value)
 
 **After adaptation**
 
-```typescript
+<!-- @[no_ctor_signatures_funcs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 class Controller {
-  value: string = ''
+  public value: string = ''
   constructor(value: string) {
     this.value = value;
   }
@@ -1288,8 +1478,8 @@ class Controller {
 
 type ControllerConstructor = () => Controller;
 
-class testMenu {
-  controller: ControllerConstructor = () => { return new Controller('abc') }
+class TestMenu {
+  public controller: ControllerConstructor = () => { return new Controller('abc') }
   createController() {
     if (this.controller) {
       return this.controller();
@@ -1298,7 +1488,7 @@ class testMenu {
   }
 }
 
-let t: testMenu = new testMenu();
+let t: TestMenu = new TestMenu();
 console.info(t.createController()!.value);
 ```
 
@@ -1315,7 +1505,9 @@ ArkTS does not support **globalThis** for two reasons:<br> - A static type canno
 
 Construct a singleton object.
 
-```typescript
+<!-- @[construct_a_singleton_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/GlobalContext.ets) -->  
+
+``` TypeScript
 // Construct a singleton object.
 export class GlobalContext {
   private constructor() {}
@@ -1337,13 +1529,13 @@ export class GlobalContext {
     this._objects.set(key, objectClass);
   }
 }
-
 ```
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_file_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/file1.ts) -->  
 
+``` TypeScript
 // file1.ts
 
 export class Test {
@@ -1352,31 +1544,39 @@ export class Test {
     globalThis.value = this.value;
   }
 }
+```
 
+<!-- @[ts_file_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/file2.ts) -->  
+
+``` TypeScript
 // file2.ts
 
 globalThis.value;
-
 ```
 
 **After adaptation**
 
-```typescript
+<!-- @[no_global_this_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/file1.ets) -->  
 
-// file1.ts
+``` TypeScript
+// file1.ets
 
-import { GlobalContext } from '../GlobalContext'
+import { GlobalContext } from './GlobalContext'
 
 export class Test {
-  value: string = '';
+  public value: string = '';
   foo(): void {
     GlobalContext.getContext().setObject('value', this.value);
   }
 }
+```
 
-// file2.ts
+<!-- @[no_global_this_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/file2.ets) -->  
 
-import { GlobalContext } from '../GlobalContext'
+``` TypeScript
+// file2.ets
+
+import { GlobalContext } from './GlobalContext'
 
 GlobalContext.getContext().getObject('value');
 ```
@@ -1387,14 +1587,18 @@ GlobalContext.getContext().getObject('value');
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_func_apply_bind_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 let arr: number[] = [1, 2, 3, 4];
 let str = String.fromCharCode.apply(null, Array.from(arr));
 ```
 
 **After adaptation**
 
-```typescript
+<!-- @[no_func_apply_bind_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 let arr: number[] = [1, 2, 3, 4];
 let str = String.fromCharCode(...Array.from(arr));
 ```
@@ -1403,7 +1607,9 @@ let str = String.fromCharCode(...Array.from(arr));
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_bind_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class A {
   value: string = ''
   foo: Function = () => {}
@@ -1415,7 +1621,7 @@ class Test {
     value: this.value,
     foo: this.foo.bind(this)
   }
-  
+
   foo() {
     console.info(this.value);
   }
@@ -1424,19 +1630,21 @@ class Test {
 
 **After adaptation: mode 1**
 
-```typescript
+<!-- @[bind_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 class A {
-  value: string = ''
-  foo: Function = () => {}
+  public value: string = ''
+  public foo: Function = () => {}
 }
 
 class Test {
-  value: string = '1234'
-  obj: A = {
+  public value: string = '1234'
+  public obj: A = {
     value: this.value,
     foo: (): void => this.foo()
   }
-  
+
   foo() {
     console.info(this.value);
   }
@@ -1445,18 +1653,20 @@ class Test {
 
 **After adaptation: mode 2**
 
-```typescript
+<!-- @[bind_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 class A {
-  value: string = ''
-  foo: Function = () => {}
+  public value: string = ''
+  public foo: Function = () => {}
 }
 
 class Test {
-  value: string = '1234'
-  foo: () => void = () => {
+  public value: string = '1234'
+  public foo: () => void = () => {
     console.info(this.value);
   }
-  obj: A = {
+  public obj: A = {
     value: this.value,
     foo: this.foo
   }
@@ -1467,7 +1677,9 @@ class Test {
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_use_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class A {
   value: string;
   constructor (value: string) {
@@ -1488,9 +1700,11 @@ a1.foo.apply(a2);
 
 **After adaptation**
 
-```typescript
+<!-- @[use_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 class A {
-  value: string;
+  public value: string;
   constructor (value: string) {
     this.value = value;
   }
@@ -1501,6 +1715,7 @@ class A {
 
   fooApply(a: A) {
     console.info(a.value);
+    // ...
   }
 }
 
@@ -1517,7 +1732,9 @@ a1.fooApply(a2);
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_use_limited_stdlib](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 let entries = new Map([
   ['foo', 123],
   ['bar', 456]
@@ -1528,14 +1745,16 @@ let obj = Object.fromEntries(entries);
 
 **After adaptation**
 
-```typescript
+<!-- @[use_limited_stdlib](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 let entries = new Map([
   ['foo', 123],
   ['bar', 456]
 ]);
 
 let obj: Record<string, Object> = {};
-entries.forEach((key, value) => {
+entries.forEach((value, key) => {
   if (key != undefined && key != null) {
     obj[key] = value;
   }
@@ -1548,7 +1767,9 @@ entries.forEach((key, value) => {
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_strict_typing_required](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 interface I {
   name:string
 }
@@ -1562,37 +1783,42 @@ class Test {
   d: I;
   e: A;
 }
-
 ```
 
 **After adaptation**
 
-```typescript
-interface I {
-  name:string
-}
+<!-- @[strictProperty_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
 
-class A {}
+``` TypeScript
+{
+  interface I {
+    name:string
+  }
 
-class Test {
-  a: number;
-  b: string;
-  c: boolean;
-  d: I = { name:'abc' };
-  e: A | null = null;
-  constructor(a:number, b:string, c:boolean) {
-    this.a = a;
-    this.b = b;
-    this.c = c;
+  class A {}
+
+  class Test {
+    public a: number;
+    public b: string;
+    public c: boolean;
+    public d: I = { name:'abc' };
+    public e: A | null = null;
+    constructor(a:number, b:string, c:boolean) {
+      this.a = a;
+      this.b = b;
+      this.c = c;
+    }
   }
 }
-
 ```
+
 ### Type `*** | null` is not assignable to type `***`
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_null_undefined_check_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class A {
   bar() {}
 }
@@ -1611,7 +1837,9 @@ a.bar();
 
 **After adaptation**
 
-```typescript
+<!-- @[null_is_not_assignable_to_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
+
+``` TypeScript
 class A {
   bar() {}
 }
@@ -1638,7 +1866,7 @@ In a class, if a property is not initialized and is not assigned a value in the 
 1. Whenever possible, initialize properties during declaration based on service logic or assign values to the properties in constructors. Example:
 
 ```typescript
-//code with error
+// code with error
 class Test {
   value: number
   flag: boolean
@@ -1667,7 +1895,7 @@ class Test {
 
 ​ Mode (ii): **prop?:A**
 
-​ Mode 3 (iii): **prop: A | undefined = undefined**
+​ Method (iii): **prop: A | undefined = undefined**
 
 - From the perspective of performance, the **null** type is used only for type check during compilation and has no impact on VM performance. In contrast, **undefined | A** is treated as a union type and may result in additional overhead at runtime.
 - In terms of code readability and simplicity, **prop?:A** is the syntax sugar of **prop: A | undefined = undefined**. You are advised to use optional properties.
@@ -1679,15 +1907,17 @@ class Test {
 ```typescript
 function foo(fn: (value?: string) => void, value: string): void {}
 
-foo((value: string) => {}, ''); //error
+foo((value: string) => {}, ''); // error
 ```
 
 **After adaptation**
 
-```typescript
-function foo(fn: (value?: string) => void, value: string): void {}
+<!-- @[strict_function_type_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
 
-foo((value?: string) => {}, '');
+``` TypeScript
+function foo1(fn: (value?: string) => void, value: string): void {}
+
+foo1((value?: string) => {}, '');
 ```
 
 **Reason for change**
@@ -1709,10 +1939,12 @@ To avoid unexpected behavior during runtime, if strict type check is enabled, th
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_null_undefined_check_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class Test {
   private value?: string;
-  
+
   public printValue () {
     console.info(this.value.toLowerCase());
   }
@@ -1732,7 +1964,9 @@ This is because the **value** property of **t** is **undefined**, and when the *
 
 When writing code, minimize the use of nullable types. If a variable or property is marked with a nullable type, a null check is required. Process the service logic based on whether the variable or property is null.
 
-```typescript
+<!-- @[strict_null_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
+
+``` TypeScript
 class Test {
   private value?: string;
 
@@ -1751,7 +1985,9 @@ t.printValue();
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_null_undefined_check_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class Test {
   handleClick: (action: string, externInfo?: string) => void | null = null;
 }
@@ -1761,9 +1997,11 @@ class Test {
 
 In the original code, the return type of the function is parsed as **void | undefined**. Add parentheses to distinguish the union type.
 
-```typescript
+<!-- @[function_return_type_mismatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
+
+``` TypeScript
 class Test {
-  handleClick: ((action: string, externInfo?: string) => void) | null = null;
+  public handleClick: ((action: string, externInfo?: string) => void) | null = null;
 }
 ```
 
@@ -1771,7 +2009,9 @@ class Test {
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_null_undefined_check_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class A {
   value: number
   constructor(value: number) {
@@ -1779,36 +2019,38 @@ class A {
   }
 }
 
-function foo(v: number): A | null {
+function foo6(v: number): A | null {
   if (v > 0) {
     return new A(v);
   }
   return null;
 }
 
-let a: A = foo();
+let a1: A = foo6(1);
 ```
 
 **After adaptation: mode 1**
 
 Change the type of variable **a** to **let a: A | null = foo()**.
 
-```typescript
-class A {
+<!-- @[null_is_not_assignable_to_type1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
+
+``` TypeScript
+class A1 {
   value: number
   constructor(value: number) {
     this.value = value;
   }
 }
 
-function foo(v: number): A | null {
+function foo(v: number): A1 | null {
   if (v > 0) {
-    return new A(v);
+    return new A1(v);
   }
   return null;
 }
 
-let a: A | null = foo(123);
+let a: A1 | null = foo(123);
 
 if (a != null) {
   // Non-empty branch
@@ -1821,29 +2063,33 @@ if (a != null) {
 
 If you can determine that a non-null value is returned when **foo** is called, you can use a non-null assertion operator **!**.
 
-```typescript
-class A {
+<!-- @[null_is_not_assignable_to_type2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
+
+``` TypeScript
+class A2 {
   value: number
   constructor(value: number) {
     this.value = value;
   }
 }
 
-function foo(v: number): A | null {
+function foo(v: number): A2 | null {
   if (v > 0) {
-    return new A(v);
+    return new A2(v);
   }
   return null;
 }
 
-let a: A = foo(123)!;
+let a: A2 = foo(123)!;
 ```
 
 ### Cannot invoke an object which is possibly 'undefined'
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_null_undefined_check_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 interface A {
   foo?: () => void
 }
@@ -1854,7 +2100,9 @@ a.foo();
 
 **After adaptation: mode 1**
 
-```typescript
+<!-- @[cannot_invoke_an_object_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
+
+``` TypeScript
 interface A {
   foo: () => void
 }
@@ -1864,7 +2112,9 @@ a.foo();
 
 **After adaptation: mode 2**
 
-```typescript
+<!-- @[cannot_invoke_an_object_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
+
+``` TypeScript
 interface A {
   foo?: () => void
 }
@@ -1883,7 +2133,9 @@ In the original code definition, **foo** is an optional property and may be **un
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_null_undefined_check_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class Test {
   value: number = 0
 }
@@ -1899,9 +2151,11 @@ a.value;
 
 **After adaptation**
 
-```typescript
+<!-- @[is_used_before_being_assigned](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
+
+``` TypeScript
 class Test {
-  value: number = 0
+  public value: number = 0
 }
 
 let a: Test | null = null;
@@ -1928,8 +2182,10 @@ For object types, you can change the type to a union type consisting of **null**
 
 **Before adaptation**
 
-```typescript
-function foo(a: number): number {
+<!-- @[ts_function_return_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
+function foo7(a: number): number {
   if (a > 0) {
     return a;
   }
@@ -1942,8 +2198,10 @@ Return a proper value in the **else** branch based on the service logic.
 
 **After adaptation: mode 2**
 
-```typescript
-function foo(a: number): number | undefined {
+<!-- @[function_lacks_ending](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
+
+``` TypeScript
+function foo4(a: number): number | undefined {
   if (a > 0) {
     return a;
   }
@@ -1957,14 +2215,18 @@ Remove the @ts-nocheck comment and explicitly declare types for all variables.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_ts_ignore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 // @ts-ignore
 var a: any = 123;
 ```
 
 **After adaptation**
 
-```typescript
+<!-- @[strict_typing_required](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 let a: number = 123;
 ```
 
@@ -1986,7 +2248,7 @@ Mode 2: Extract the code that the .ts file depends on from the .ets file to the 
 
 ## arkts-no-special-imports
 
-Use **import { ... } from '...'** to import types.
+Use the regular **import { ... } from '...'** syntax to import types.  
 
 **Before adaptation**
 
@@ -2007,7 +2269,9 @@ import {A, B, C, D } from '***'
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_no_classes_as_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class Controller {
   value: string = ''
   constructor(value: string) {
@@ -2035,9 +2299,11 @@ console.info(t.createController()!.value);
 
 **After adaptation**
 
-```typescript
+<!-- @[no_classes_as_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 class Controller {
-  value: string = ''
+  public value: string = ''
 
   constructor(value: string) {
     this.value = value;
@@ -2047,7 +2313,7 @@ class Controller {
 type ControllerConstructor = () => Controller;
 
 class TestMenu {
-  controller: ControllerConstructor = () => {
+  public controller: ControllerConstructor = () => {
     return new Controller('abc');
   }
 
@@ -2067,7 +2333,9 @@ console.info(t.createController()!.value);
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_static_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 class C1 {
   static value: string = 'abc'
 }
@@ -2086,13 +2354,15 @@ console.info(getValue(C2));
 
 **After adaptation**
 
-```typescript
+<!-- @[static_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 class C1 {
-  static value: string = 'abc'
+  public static value: string = 'abc'
 }
 
 class C2 {
-  static value: string = 'def'
+  public static value: string = 'def'
 }
 
 function getC1Value(): string {
@@ -2113,7 +2383,9 @@ Use dynamic imports.
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 import 'module'
 ```
 
@@ -2129,26 +2401,31 @@ Use a **class** to organize multiple related functions.
 
 **Before adaptation**
 
-```typescript
-function foo(value: number): void {
+<!-- @[ts_no_func_props](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
+function foo8(value: number): void {
   console.info(value.toString());
 }
 
-foo.add = (left: number, right: number) => {
+foo8.add = (left: number, right: number) => {
   return left + right;
 }
 
-foo.sub = (left: number, right: number) => {
+foo8.sub = (left: number, right: number) => {
   return left - right;
 }
 ```
 
 **After adaptation**
 
-```typescript
+<!-- @[no_func_props](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 class Foo {
   static foo(value: number): void {
     console.info(value.toString());
+    // ...
   }
 
   static add(left: number, right: number): number {
@@ -2167,12 +2444,18 @@ Use specific types (such as **number**, **string**) or **interface** instead of 
 
 **Before adaptation**
 
-```typescript
+<!-- @[ts_test_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/testa.ts) -->  
+
+``` TypeScript
 // testa.ts
 export function foo(): any {
   return null;
 }
+```
 
+<!-- @[ts_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/main.ets) -->  
+
+``` TypeScript
 // main.ets
 import {foo} from './testa'
 let e0: ESObject = foo();
@@ -2187,12 +2470,18 @@ function f() {
 
 **After adaptation**
 
-```typescript
+<!-- @[ts_limited_es_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/testa.ts) -->  
+
+``` TypeScript
 // testa.ts
 export function foo(): any {
   return null;
 }
+```
 
+<!-- @[ts_main_fix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/main1.ets) -->  
+
+``` TypeScript
 // main.ets
 import {foo} from './testa'
 interface I {}
@@ -2212,7 +2501,9 @@ function f() {
 
 **TypeScript**
 
-```typescript
+<!-- @[ts_shallow_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 function shallowCopy(obj: object): object {
   let newObj = {};
   Object.assign(newObj, obj);
@@ -2222,7 +2513,9 @@ function shallowCopy(obj: object): object {
 
 **ArkTS**
 
-```typescript
+<!-- @[shallow_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 function shallowCopy(obj: object): object {
   let newObj: Record<string, Object> = {};
   for (let key of Object.keys(obj)) {
@@ -2236,7 +2529,9 @@ function shallowCopy(obj: object): object {
 
 **TypeScript**
 
-```typescript
+<!-- @[ts_deep_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/BasicAdaptation.ts) -->  
+
+``` TypeScript
 function deepCopy(obj: object): object {
   let newObj = Array.isArray(obj) ? [] : {};
   for (let key in obj) {
@@ -2252,7 +2547,9 @@ function deepCopy(obj: object): object {
 
 **ArkTS**
 
-```typescript
+<!-- @[deep_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/BasicAdaptation.ets) -->  
+
+``` TypeScript
 function deepCopy(obj: object): object {
   let newObj: Record<string, Object> | Object[] = Array.isArray(obj) ? [] : {};
   for (let key of Object.keys(obj)) {
@@ -2263,227 +2560,5 @@ function deepCopy(obj: object): object {
     }
   }
   return newObj;
-}
-```
-
-## Typical Application Scenarios of State Management
-
-### Using State Variables Outside of Structs
-
-The struct is different from the class. Therefore, avoid passing **this** as a parameter to the outside of the struct. Otherwise, the instance reference cannot be released and a memory leak may occur. You are advised to pass the state variable object outside the struct and modify the object properties to trigger UI re-render.
-
-**Not recommended**
-
-```typescript
-export class MyComponentController {
-  item: MyComponent = null;
-
-  setItem(item: MyComponent) {
-    this.item = item;
-  }
-
-  changeText(value: string) {
-    this.item.value = value;
-  }
-}
-
-@Component
-export default struct MyComponent {
-  public controller: MyComponentController = null;
-  @State value: string = 'Hello World';
-
-  build() {
-    Column() {
-      Text(this.value)
-        .fontSize(50)
-    }
-  }
-
-  aboutToAppear() {
-    if (this.controller)
-      this.controller.setItem(this); // You are not advised to pass this as a parameter to the outside struct.
-  }
-}
-
-@Entry
-@Component
-struct ObjThisOldPage {
-  controller = new MyComponentController();
-
-  build() {
-    Column() {
-      MyComponent({ controller: this.controller })
-      Button('change value').onClick(() => {
-        this.controller.changeText('Text');
-      })
-    }
-  }
-}
-```
-
-**Recommended**
-
-```typescript
-class CC {
-  value: string = '1';
-
-  constructor(value: string) {
-    this.value = value;
-  }
-}
-
-export class MyComponentController {
-  item: CC = new CC('1');
-
-  setItem(item: CC) {
-    this.item = item;
-  }
-
-  changeText(value: string) {
-    this.item.value = value;
-  }
-}
-
-@Component
-export default struct MyComponent {
-  public controller: MyComponentController | null = null;
-  @State value: CC = new CC('Hello World');
-
-  build() {
-    Column() {
-      Text(`${this.value.value}`)
-        .fontSize(50)
-    }
-  }
-
-  aboutToAppear() {
-    if (this.controller)
-      this.controller.setItem(this.value);
-  }
-}
-
-@Entry
-@Component
-struct StyleExample {
-  controller: MyComponentController = new MyComponentController();
-
-  build() {
-    Column() {
-      MyComponent({ controller: this.controller })
-      Button('change value').onClick(() => {
-        this.controller.changeText('Text');
-      })
-    }
-  }
-}
-```
-
-### Using Union Types in Structs
-
-The following code contains the arkts-no-any-unknown error. Because the struct does not support generics, you are advised to use the union type to implement generic-like functions of custom components.
-
-**Not recommended**
-
-```typescript
-class Data {
-  aa: number = 11;
-}
-
-@Entry
-@Component
-struct DatauionOldPage {
-  @State array: Data[] = [new Data(), new Data(), new Data()];
-
-  @Builder
-  componentCloser(data: Data) {
-    Text(data.aa + '').fontSize(50)
-  }
-
-  build() {
-    Row() {
-      Column() {
-        ForEachCom({ arrayList: this.array, closer: this.componentCloser })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-
-@Component
-export struct ForEachCom {
-  arrayList: any[]; // The struct does not support generics. An arkts-no-any-unknown error is reported.
-  @BuilderParam closer: (data: any) => void = this.componentCloser; // The struct does not support generics. An arkts-no-any-unknown error is reported.
-
-  @Builder
-  componentCloser() {
-  }
-
-  build() {
-    Column() {
-      ForEach(this.arrayList, (item: any) => { // The struct does not support generics. An arkts-no-any-unknown error is reported.
-        Row() {
-          this.closer(item)
-        }.width('100%').height(200).backgroundColor('#eee')
-      })
-    }
-  }
-}
-```
-
-**Recommended**
-
-```typescript
-class Data {
-  aa: number = 11;
-}
-
-class Model {
-  aa: string = '11';
-}
-
-type UnionData = Data | Model;
-
-@Entry
-@Component
-struct DatauionPage {
-  array: UnionData[] = [new Data(), new Data(), new Data()];
-
-  @Builder
-  componentCloser(data: UnionData) {
-    if (data instanceof Data) {
-      Text(data.aa + '').fontSize(50)
-    }
-  }
-
-  build() {
-    Row() {
-      Column() {
-        ForEachCom({ arrayList: this.array, closer: this.componentCloser })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-
-@Component
-export struct ForEachCom {
-  arrayList: UnionData[] = [new Data(), new Data(), new Data()];
-  @BuilderParam closer: (data: UnionData) => void = this.componentCloser;
-
-  @Builder
-  componentCloser() {
-  }
-
-  build() {
-    Column() {
-      ForEach(this.arrayList, (item: UnionData) => {
-        Row() {
-          this.closer(item)
-        }.width('100%').height(200).backgroundColor('#eee')
-      })
-    }
-  }
 }
 ```

@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -23,8 +23,8 @@
 | 名称   | 类型               | 只读|  可选| 说明                                                         |
 | ------ | ------------------ | ---| -----|------------------------------------------------------- |
 | pixels | ArrayBuffer        | 否 |   否  | 像素。仅支持BGRA_8888格式的图像像素数据。 |
-| offset | number             | 否 |   否  |  偏移量。单位：字节。                                                     |
-| stride | number             | 否 |   否  | 跨距，内存中每行像素所占的空间。单位：字节。stride >= region.size.width*4。                   |
+| offset | number             | 否 |   否  |  偏移量。单位：字节（byte）。                                                     |
+| stride | number             | 否 |   否  | 跨距，内存中每行像素所占的空间。单位：字节（byte）。stride >= region.size.width*4。                   |
 | region | [Region](#region8) | 否 |   否  |区域，按照区域读写。写入的区域宽度加X坐标不能大于原图的宽度，写入的区域高度加Y坐标不能大于原图的高度。 |
 
 ## ImageInfo
@@ -35,9 +35,9 @@
 
 | 名称 | 类型          | 只读 | 可选 | 说明       |
 | ---- | ------------- | --- |-----|---------- |
-| size<sup>6+</sup> | [Size](#size) | 否 |  否  |图片大小。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| size | [Size](#size) | 否 |  否  |图片大小。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | density<sup>9+</sup> | number | 否  | 否 |像素密度，单位为ppi。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| stride<sup>11+</sup> | number | 否  | 否  | 跨距，内存中每行像素所占的空间。单位：字节。stride >= region.size.width*4 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| stride<sup>11+</sup> | number | 否  | 否  | 跨距，内存中每行像素所占的空间。单位：字节（byte）。stride >= region.size.width*4 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | pixelFormat<sup>12+</sup> | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否  |  否 | 像素格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | alphaType<sup>12+</sup> | [AlphaType](arkts-apis-image-e.md#alphatype9)  | 否  |  否  |透明度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | mimeType<sup>12+</sup> | string  |  否  |   否  |图片真实格式（MIME type）。<br>图片解码和图片编码支持格式的范围不同，请避免直接将解码得到的图片真实格式作为图片编码时[PackingOption](#packingoption)的format。<br>可以使用ImageSource[属性](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#属性)中的supportedFormats和ImagePacker[属性](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#属性)中的supportedFormats查看解码和编码支持的格式范围。  |
@@ -55,8 +55,8 @@
 
 | 名称   | 类型   | 只读 |  可选  |说明           |
 | ------ | ------ | -- |-----| -------------- |
-| height | number | 否  |  否  |输出图片的高，单位：像素。 |
-| width  | number | 否  |  否 | 输出图片的宽，单位：像素。 |
+| height | number | 否  |  否  |输出图片的高，单位：像素（px）。 |
+| width  | number | 否  |  否 | 输出图片的宽，单位：像素（px）。 |
 
 ## HdrComposeOptions<sup>23+</sup>
 
@@ -80,7 +80,7 @@ Picture合成HDR时可配置的参数选项。
 | ------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | auxiliaryPictureType      | [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)              | 否   | 否   | 辅助图的图像类型。                                           |
 | size         | [Size](#size)                                                | 否   | 否   | 图片大小。 |
-| rowStride                 | number                                                       | 否   | 否   | 行距。单位为字节（Byte）。                                                       |
+| rowStride                 | number                                                       | 否   | 否   | 行距。单位为字节（byte）。                                                       |
 | pixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)                           | 否   | 否   | 像素格式。 |
 | colorSpace                | [colorSpaceManager.ColorSpaceManager](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspacemanager) | 否   | 否   | 目标色彩空间。                                               |
 
@@ -124,7 +124,7 @@ PixelMap的初始化选项。
 | 名称               | 类型                               | 只读 | 可选 | 说明             |
 | ------------------ | ---------------------------------- | ---- | ---- | ---------------- |
 | sampleSize         | number                             | 否   | 是   | 缩略图采样大小，默认值为1。当前只能取1。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| rotate             | number                             | 否   | 是   | 旋转角度。单位为度（deg）。默认值为0。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。       |
+| rotate             | number                             | 否   | 是   | 旋转角度。单位为角度（deg）。默认值为0。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。       |
 | editable           | boolean                            | 否   | 是   | 像素是否可被编辑。true表示可被编辑，false表示不可被编辑，默认值为false。<br>当取值为false时，可提升图片的渲染和传输性能，但是图片不可被二次编辑。例如，writePixels操作将失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。  |
 | desiredSize        | [Size](#size)                      | 否   | 是   | 期望输出大小，必须为正整数，若与原尺寸比例不一致，则会进行拉伸/缩放到指定尺寸，默认为原始尺寸。<br>注意：若解码接口同时传入了desiredSize参数与desiredRegion参数，需进一步传入cropAndScaleStrategy参数指定缩放与裁剪的先后顺序，推荐设置CROP_FIRST。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。   |
 | desiredRegion      | [Region](#region8)                 | 否   | 是   | 解码图像中由Region指定的矩形区域，当原始图像很大而只需要解码图像的一部分时，可以设置该参数，有助于提升性能，默认为原始大小。<br>注意：若解码接口同时传入了desiredSize参数与desiredRegion参数，需进一步传入cropAndScaleStrategy参数指定缩放与裁剪的先后顺序，推荐设置CROP_FIRST。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。       |
@@ -159,9 +159,9 @@ PixelMap的初始化选项。
 
 | 名称 | 类型          | 只读 | 可选| 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
-| size<sup>7+</sup> | [Size](#size) | 否   | 否   | 区域大小。   |
-| x<sup>7+</sup>    | number        | 否   | 否  | 区域左上角横坐标。单位：像素。 |
-| y<sup>7+</sup>    | number        | 否  | 否  | 区域左上角纵坐标。单位：像素。 |
+| size | [Size](#size) | 否   | 否   | 区域大小。   |
+| x    | number        | 否   | 否  | 区域左上角横坐标。单位为像素（px）。 |
+| y    | number        | 否  | 否  | 区域左上角纵坐标。单位为像素（px）。 |
 
 ## PackingOption
 
@@ -186,7 +186,7 @@ PixelMap的初始化选项。
 | 名称          | 类型           | 只读 | 可选 | 说明                                                         |
 | ------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
 | frameCount    | number         | 否   | 否   | GIF编码中指定的帧数。                                        |
-| delayTimeList | Array\<number> | 否   | 否   | GIF编码中设定每帧输出图像的延迟时间，取值需大于0。<br>- 单位为10毫秒。例如，取值为10时，实际单帧延迟是100毫秒。<br>- 如果长度小于frameCount，不足的部分将使用delayTimeList中的最后一个值进行填充。 |
+| delayTimeList | Array\<number> | 否   | 否   | GIF编码中设定每帧输出图像的延迟时间，取值需大于0。<br>- 单位为10毫秒（ms）。例如，取值为10时，实际单帧延迟是100毫秒。<br>- 如果长度小于frameCount，不足的部分将使用delayTimeList中的最后一个值进行填充。 |
 | disposalTypes | Array\<number> | 否   | 是   | GIF编码中设定每帧输出图像的帧过渡模式，如果长度小于frameCount，不足的部分将使用disposalTypes中的最后一个值进行填充，可取值如下：<br>- 0：不需要任何操作。<br>- 1：保持图形不变。<br>- 2：恢复背景色。<br>- 3：恢复到之前的状态。 |
 | loopCount     | number         | 否   | 是   | 表示在GIF编码中输出图片循环播放次数，取值范围为[0，65535]。<br>0表示无限循环；若无此字段，则表示不循环播放。 |
 
@@ -271,95 +271,95 @@ Dng图像元数据类，用于存储图像的元数据。
 
 | 名称                         | 类型 | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
-| dngVersion<sup>24+</sup> | number[] | 是   | 是 | DNG图片的版本号。 |
-| dngBackwardVersion<sup>24+</sup> | number[] | 是 | 是   | DNG文件向后兼容的最低版本号。 |
-| uniqueCameraModel<sup>24+</sup> | string | 是 | 是 | 相机的唯一型号标识，用于区分不同设备。 |
-| localizedCameraModel<sup>24+</sup> | string | 是 | 是 | 本地化后的相机型号名称。 |
-| cfaPlaneColor<sup>24+</sup> | number[] | 是 | 是 | CFA（Color Filter Array）各平面的颜色通道定义。 |
-| cfaLayout<sup>24+</sup> | number | 是 | 是 | CFA（Color Filter Array）布局类型。 |
-| linearizationTable<sup>24+</sup> | number[] | 是 | 是 | 线性化查找表，用于将原始传感器值映射为线性光强度。 |
-| blackLevelRepeatDim<sup>24+</sup> | number[] | 是 | 是 | 黑电平重复维度。 |
-| blackLevel<sup>24+</sup> | number[] | 是 | 是 | 零光照下的编码电平。 |
-| blackLevelDeltaH<sup>24+</sup> | number[] | 是 | 是 | 水平方向黑电平校正增量。 |
-| blackLevelDeltaV<sup>24+</sup> | number[] | 是 | 是 | 垂直方向黑电平校正增量。 |
-| whiteLevel<sup>24+</sup> | number[] | 是 | 是 | 白电平，表示传感器最大有效输出。 |
-| defaultScale<sup>24+</sup> | number[] | 是 | 是 | 默认缩放比例。格式为[水平缩放比例, 垂直缩放比例]。 |
-| defaultCropOrigin<sup>24+</sup> | number[] | 是 | 是 | 默认裁剪区域的左上角坐标（x, y）。 |
-| defaultCropSize<sup>24+</sup> | number[] | 是 | 是 | 默认裁剪区域的宽度和高度。 |
-| colorMatrix1<sup>24+</sup> | number[] | 是 | 是 | 第一校准光源下的色彩变换矩阵。 |
-| colorMatrix2<sup>24+</sup> | number[] | 是 | 是 | 第二校准光源下的色彩变换矩阵。 |
-| cameraCalibration1<sup>24+</sup> | number[] | 是 | 是 | 第一校准光源下的相机校准矩阵。 |
-| cameraCalibration2<sup>24+</sup> | number[] | 是 | 是 | 第二校准光源下的相机校准矩阵。 |
-| reductionMatrix1<sup>24+</sup> | number[] | 是 | 是 | 第一校准光源下的降维矩阵。 |
-| reductionMatrix2<sup>24+</sup> | number[] | 是 | 是 | 第二校准光源下的降维矩阵。 |
-| analogBalance<sup>24+</sup> | number[] | 是 | 是 | 模拟增益平衡系数。 |
-| asShotNeutral<sup>24+</sup> | number[] | 是 | 是 | 拍摄时的中性白点。 |
-| asShotWhiteXY<sup>24+</sup> | number[] | 是 | 是 | 拍摄时白点的CIE（1931色彩空间） x-y色度坐标。 |
-| baselineExposure<sup>24+</sup> | number | 是 | 是 | 基准曝光补偿值，单位：EV。 |
-| baselineNoise<sup>24+</sup> | number | 是 | 是 | 基准噪声水平。 |
-| baselineSharpness<sup>24+</sup> | number | 是 | 是 | 基准锐度增益。 |
-| bayerGreenSplit<sup>24+</sup> | number | 是 | 是 | Bayer图像中两个绿色通道的分离程度。 |
-| linearResponseLimit<sup>24+</sup> | number | 是 | 是 | 线性响应上限。 |
-| cameraSerialNumber<sup>24+</sup> | string | 是 | 是 | 相机序列号。 |
-| lensInfo<sup>24+</sup> | number[] | 是 | 是 | 镜头信息。 |
-| chromaBlurRadius<sup>24+</sup> | number | 是 | 是 | 色度模糊半径，单位：像素。 |
-| antiAliasStrength<sup>24+</sup> | number | 是 | 是 | 抗锯齿滤波器强度。 |
-| shadowScale<sup>24+</sup> | number | 是 | 是 | 阴影区域缩放因子。 |
-| dngPrivateData<sup>24+</sup> | ArrayBuffer | 是 | 是 | 厂商私有数据块。 |
-| makerNoteSafety<sup>24+</sup> | number | 是 | 是 | EXIF MakerNote是否安全可保留。0：不安全，1：安全。 |
-| calibrationIlluminant1<sup>24+</sup> | number | 是 | 是 | 第一校准光源类型。 |
-| calibrationIlluminant2<sup>24+</sup> | number | 是 | 是 | 第二校准光源类型。 |
-| bestQualityScale<sup>24+</sup> | number | 是 | 是 | 最佳画质缩放比例。 |
-| rawDataUniqueID<sup>24+</sup> | string | 是 | 是 | 原始图像数据的唯一标识符。 |
-| originalRawFileName<sup>24+</sup> | string | 是 | 是 | 原始RAW文件名。 |
-| originalRawFileData<sup>24+</sup> | ArrayBuffer | 是 | 是 | 原始RAW文件的完整数据。 |
-| activeArea<sup>24+</sup> | number[] | 是 | 是 | 有效图像区域。 |
-| maskedAreas<sup>24+</sup> | number[] | 是 | 是 | 被遮蔽区域列表。 |
-| asShotICCProfile<sup>24+</sup> | ArrayBuffer | 是 | 是 | 拍摄时使用的ICC色彩配置文件。 |
-| asShotPreProfileMatrix<sup>24+</sup> | number[] | 是 | 是 | 应用ICC配置文件前的预变换矩阵。 |
-| currentICCProfile<sup>24+</sup> | ArrayBuffer | 是 | 是 | 当前使用的ICC色彩配置文件。 |
-| currentPreProfileMatrix<sup>24+</sup> | number[] | 是 | 是 | 当前ICC配置文件前的预变换矩阵。 |
-| colorimetricReference<sup>24+</sup> | number | 是 | 是 | 色度参考标准。 |
-| cameraCalibrationSignature<sup>24+</sup> | string | 是 | 是 | 相机校准签名。 |
-| profileCalibrationSignature<sup>24+</sup> | string | 是 | 是 | 配置文件校准签名。 |
-| extraCameraProfiles<sup>24+</sup> | number[] | 是 | 是 | 额外相机配置文件索引列表。 |
-| asShotProfileName<sup>24+</sup> | string | 是 | 是 | 拍摄时使用的配置文件名称。 |
-| noiseReductionApplied<sup>24+</sup> | number | 是 | 是 | 已应用的降噪强度级别。 |
-| profileName<sup>24+</sup> | string | 是 | 是 | 色彩配置文件名称。 |
-| profileHueSatMapDims<sup>24+</sup> | number[] | 是 | 是 | 色调/饱和度映射表维度。 |
-| profileHueSatMapData1<sup>24+</sup> | number[] | 是 | 是 | 第一组色调/饱和度映射表数据。 |
-| profileHueSatMapData2<sup>24+</sup> | number[] | 是 | 是 | 第二组色调/饱和度映射表数据。 |
-| profileToneCurve<sup>24+</sup> | number[] | 是 | 是 | 配置文件色调曲线。 |
-| profileEmbedPolicy<sup>24+</sup> | number | 是 | 是 | 配置文件嵌入策略。 |
-| profileCopyright<sup>24+</sup> | string | 是 | 是 | 配置文件版权信息。 |
-| forwardMatrix1<sup>24+</sup> | number[] | 是 | 是 | 第一前向变换矩阵。 |
-| forwardMatrix2<sup>24+</sup> | number[] | 是 | 是 | 第二前向变换矩阵。 |
-| previewApplicationName<sup>24+</sup> | string | 是 | 是 | 预览图生成应用程序名称。 |
-| previewApplicationVersion<sup>24+</sup> | string | 是 | 是 | 预览图生成应用程序版本。 |
-| previewSettingsName<sup>24+</sup> | string | 是 | 是 | 预览图处理设置名称。 |
-| previewSettingsDigest<sup>24+</sup> | string | 是 | 是 | 预览图设置的MD5摘要。 |
-| previewColorSpace<sup>24+</sup> | number | 是 | 是 | 预览图色彩空间。 |
-| previewDateTime<sup>24+</sup> | string | 是 | 是 | 预览图生成时间。 |
-| rawImageDigest<sup>24+</sup> | string | 是 | 是 | 原始图像数据的MD5摘要。 |
-| originalRawFileDigest<sup>24+</sup> | string | 是 | 是 | 原始RAW文件数据的MD5摘要。 |
-| subTileBlockSize<sup>24+</sup> | number[] | 是 | 是 | 图像分块存储，定义块的长和宽。 |
-| rownumbererleaveFactor<sup>24+</sup> | number | 是 | 是 | 行交织因子。 |
-| profileLookTableDims<sup>24+</sup> | number[] | 是 | 是 | ProfileLookTableData的维度。 |
-| profileLookTableData<sup>24+</sup> | number[] | 是 | 是 | 色彩表数据。 |
-| opcodeList1<sup>24+</sup> | ArrayBuffer | 是 | 是 | 第一操作码列表。 |
-| opcodeList2<sup>24+</sup> | ArrayBuffer | 是 | 是 | 第二操作码列表。 |
-| opcodeList3<sup>24+</sup> | ArrayBuffer | 是 | 是 | 第三操作码列表。 |
-| noiseProfile<sup>24+</sup> | number[] | 是 | 是 | 噪声剖面参数。 |
-| originalDefaultFinalSize<sup>24+</sup> | number[] | 是 | 是 | 原始默认最终输出尺寸。 |
-| originalBestQualityFinalSize<sup>24+</sup> | number[] | 是 | 是 | 原始最佳画质输出尺寸。 |
-| originalDefaultCropSize<sup>24+</sup> | number[] | 是 | 是 | 原始默认裁剪尺寸。 |
-| profileHueSatMapEncoding<sup>24+</sup> | number | 是 | 是 | 色调/饱和度映射表编码方式。 |
-| profileLookTableEncoding<sup>24+</sup> | number | 是 | 是 | 色彩表编码方式。 |
-| baselineExposureOffset<sup>24+</sup> | number | 是 | 是 | 基准曝光偏移量，单位：EV。 |
-| defaultBlackRender<sup>24+</sup> | number | 是 | 是 | 默认黑场渲染方式。 |
-| newRawImageDigest<sup>24+</sup> | string | 是 | 是 | 修改后原始图像数据的新MD5摘要。 |
-| rawToPreviewGain<sup>24+</sup> | number | 是 | 是 | 主RAW图与预览图之间的增益比。 |
-| defaultUserCrop<sup>24+</sup> | number[] | 是 | 是 | 默认用户裁剪区域。 |
+| dngVersion | number[] | 是   | 是 | DNG图片的版本号。 |
+| dngBackwardVersion | number[] | 是 | 是   | DNG文件向后兼容的最低版本号。 |
+| uniqueCameraModel | string | 是 | 是 | 相机的唯一型号标识，用于区分不同设备。 |
+| localizedCameraModel | string | 是 | 是 | 本地化后的相机型号名称。 |
+| cfaPlaneColor | number[] | 是 | 是 | CFA（Color Filter Array）各平面的颜色通道定义。 |
+| cfaLayout | number | 是 | 是 | CFA（Color Filter Array）布局类型。 |
+| linearizationTable | number[] | 是 | 是 | 线性化查找表，用于将原始传感器值映射为线性光强度。 |
+| blackLevelRepeatDim | number[] | 是 | 是 | 黑电平重复维度。 |
+| blackLevel | number[] | 是 | 是 | 零光照下的编码电平。 |
+| blackLevelDeltaH | number[] | 是 | 是 | 水平方向黑电平校正增量。 |
+| blackLevelDeltaV | number[] | 是 | 是 | 垂直方向黑电平校正增量。 |
+| whiteLevel | number[] | 是 | 是 | 白电平，表示传感器最大有效输出。 |
+| defaultScale | number[] | 是 | 是 | 默认缩放比例。格式为[水平缩放比例, 垂直缩放比例]。 |
+| defaultCropOrigin | number[] | 是 | 是 | 默认裁剪区域的左上角坐标（x, y）。 |
+| defaultCropSize | number[] | 是 | 是 | 默认裁剪区域的宽度和高度。 |
+| colorMatrix1 | number[] | 是 | 是 | 第一校准光源下的色彩变换矩阵。 |
+| colorMatrix2 | number[] | 是 | 是 | 第二校准光源下的色彩变换矩阵。 |
+| cameraCalibration1 | number[] | 是 | 是 | 第一校准光源下的相机校准矩阵。 |
+| cameraCalibration2 | number[] | 是 | 是 | 第二校准光源下的相机校准矩阵。 |
+| reductionMatrix1 | number[] | 是 | 是 | 第一校准光源下的降维矩阵。 |
+| reductionMatrix2 | number[] | 是 | 是 | 第二校准光源下的降维矩阵。 |
+| analogBalance | number[] | 是 | 是 | 模拟增益平衡系数。 |
+| asShotNeutral | number[] | 是 | 是 | 拍摄时的中性白点。 |
+| asShotWhiteXY | number[] | 是 | 是 | 拍摄时白点的CIE（1931色彩空间） x-y色度坐标。 |
+| baselineExposure | number | 是 | 是 | 基准曝光补偿值，单位：EV。 |
+| baselineNoise | number | 是 | 是 | 基准噪声水平。 |
+| baselineSharpness | number | 是 | 是 | 基准锐度增益。 |
+| bayerGreenSplit | number | 是 | 是 | Bayer图像中两个绿色通道的分离程度。 |
+| linearResponseLimit | number | 是 | 是 | 线性响应上限。 |
+| cameraSerialNumber | string | 是 | 是 | 相机序列号。 |
+| lensInfo | number[] | 是 | 是 | 镜头信息。 |
+| chromaBlurRadius | number | 是 | 是 | 色度模糊半径，单位为像素（px）。 |
+| antiAliasStrength | number | 是 | 是 | 抗锯齿滤波器强度。 |
+| shadowScale | number | 是 | 是 | 阴影区域缩放因子。 |
+| dngPrivateData | ArrayBuffer | 是 | 是 | 厂商私有数据块。 |
+| makerNoteSafety | boolean | 是 | 是 | EXIF MakerNote是否安全可保留。true表示安全，false表示不安全。 |
+| calibrationIlluminant1 | number | 是 | 是 | 第一校准光源类型。 |
+| calibrationIlluminant2 | number | 是 | 是 | 第二校准光源类型。 |
+| bestQualityScale | number | 是 | 是 | 最佳画质缩放比例。 |
+| rawDataUniqueID | string | 是 | 是 | 原始图像数据的唯一标识符。 |
+| originalRawFileName | string | 是 | 是 | 原始RAW文件名。 |
+| originalRawFileData | ArrayBuffer | 是 | 是 | 原始RAW文件的完整数据。 |
+| activeArea | number[] | 是 | 是 | 有效图像区域。 |
+| maskedAreas | number[] | 是 | 是 | 被遮蔽区域列表。 |
+| asShotICCProfile | ArrayBuffer | 是 | 是 | 拍摄时使用的ICC色彩配置文件。 |
+| asShotPreProfileMatrix | number[] | 是 | 是 | 应用ICC配置文件前的预变换矩阵。 |
+| currentICCProfile | ArrayBuffer | 是 | 是 | 当前使用的ICC色彩配置文件。 |
+| currentPreProfileMatrix | number[] | 是 | 是 | 当前ICC配置文件前的预变换矩阵。 |
+| colorimetricReference | number | 是 | 是 | 色度参考标准。 |
+| cameraCalibrationSignature | string | 是 | 是 | 相机校准签名。 |
+| profileCalibrationSignature | string | 是 | 是 | 配置文件校准签名。 |
+| extraCameraProfiles | number[] | 是 | 是 | 额外相机配置文件索引列表。 |
+| asShotProfileName | string | 是 | 是 | 拍摄时使用的配置文件名称。 |
+| noiseReductionApplied | number | 是 | 是 | 已应用的降噪强度级别。 |
+| profileName | string | 是 | 是 | 色彩配置文件名称。 |
+| profileHueSatMapDims | number[] | 是 | 是 | 色调/饱和度映射表维度。 |
+| profileHueSatMapData1 | number[] | 是 | 是 | 第一组色调/饱和度映射表数据。 |
+| profileHueSatMapData2 | number[] | 是 | 是 | 第二组色调/饱和度映射表数据。 |
+| profileToneCurve | number[] | 是 | 是 | 配置文件色调曲线。 |
+| profileEmbedPolicy | number | 是 | 是 | 配置文件嵌入策略。 |
+| profileCopyright | string | 是 | 是 | 配置文件版权信息。 |
+| forwardMatrix1 | number[] | 是 | 是 | 第一前向变换矩阵。 |
+| forwardMatrix2 | number[] | 是 | 是 | 第二前向变换矩阵。 |
+| previewApplicationName | string | 是 | 是 | 预览图生成应用程序名称。 |
+| previewApplicationVersion | string | 是 | 是 | 预览图生成应用程序版本。 |
+| previewSettingsName | string | 是 | 是 | 预览图处理设置名称。 |
+| previewSettingsDigest | string | 是 | 是 | 预览图设置的MD5摘要。 |
+| previewColorSpace | number | 是 | 是 | 预览图色彩空间。 |
+| previewDateTime | string | 是 | 是 | 预览图生成时间。 |
+| rawImageDigest | string | 是 | 是 | 原始图像数据的MD5摘要。 |
+| originalRawFileDigest | string | 是 | 是 | 原始RAW文件数据的MD5摘要。 |
+| subTileBlockSize | number[] | 是 | 是 | 图像分块存储，定义块的长和宽。 |
+| rowInterleaveFactor | number | 是 | 是 | 行交织因子。 |
+| profileLookTableDims | number[] | 是 | 是 | ProfileLookTableData的维度。 |
+| profileLookTableData | number[] | 是 | 是 | 色彩表数据。 |
+| opcodeList1 | ArrayBuffer | 是 | 是 | 第一操作码列表。 |
+| opcodeList2 | ArrayBuffer | 是 | 是 | 第二操作码列表。 |
+| opcodeList3 | ArrayBuffer | 是 | 是 | 第三操作码列表。 |
+| noiseProfile | number[] | 是 | 是 | 噪声剖面参数。 |
+| originalDefaultFinalSize | number[] | 是 | 是 | 原始默认最终输出尺寸。 |
+| originalBestQualityFinalSize | number[] | 是 | 是 | 原始最佳画质输出尺寸。 |
+| originalDefaultCropSize | number[] | 是 | 是 | 原始默认裁剪尺寸。 |
+| profileHueSatMapEncoding | number | 是 | 是 | 色调/饱和度映射表编码方式。 |
+| profileLookTableEncoding | number | 是 | 是 | 色彩表编码方式。 |
+| baselineExposureOffset | number | 是 | 是 | 基准曝光偏移量，单位：EV。 |
+| defaultBlackRender | number | 是 | 是 | 默认黑场渲染方式。 |
+| newRawImageDigest | string | 是 | 是 | 修改后原始图像数据的新MD5摘要。 |
+| rawToPreviewGain | number | 是 | 是 | 主RAW图与预览图之间的增益比。 |
+| defaultUserCrop | number[] | 是 | 是 | 默认用户裁剪区域。 |
 
 ## HdrGainmapMetadata<sup>12+</sup>
 
@@ -387,7 +387,7 @@ ImageReceiver的初始化选项。
 
 | 名称              | 类型                               | 只读 | 可选 | 说明               |
 | ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
-| size     | [Size](#size) | 否   | 是   | 图像的大小，包括宽与高，且值都大于0，单位为像素。<br>该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。|
+| size     | [Size](#size) | 否   | 是   | 图像的大小，包括宽与高，且值都大于0，单位为像素（px）。<br>该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。|
 | capacity | number | 否   | 是   | 可同时访问的最大图像数量。该值必须为正整数，且小于或等于64张。<br>该参数仅作为期望值，实际capacity由设备硬件决定。     |
 
 ## ImageBufferData<sup>23+</sup>
@@ -400,8 +400,8 @@ ImageReceiver的初始化选项。
 
 | 名称              | 类型              | 只读 | 可选 | 说明               |
 | ----------------- | ----------------- | ---- | ---- | ------------------ |
-| rowStride   | number[]  | 是   | 否   | 颜色分量的行间距，单位为字节。<br>对于编码后的图片如JPEG，该属性无意义。<br>读取相机预览流数据时，需要按stride进行读取，使用详情请参考[相机预览花屏解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-deal-stride-solution)。|
-| pixelStride | number[]  | 是   | 否   | 颜色分量的像素间距，单位为字节。<br>对于编码后的图片如JPEG，该属性无意义。     |
+| rowStride   | number[]  | 是   | 否   | 颜色分量的行间距，单位为字节（byte）。<br>对于编码后的图片如JPEG，该属性无意义。<br>读取相机预览流数据时，需要按stride进行读取，使用详情请参考[相机预览花屏解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-deal-stride-solution)。|
+| pixelStride | number[]  | 是   | 否   | 颜色分量的像素间距，单位为字节（byte）。<br>对于编码后的图片如JPEG，该属性无意义。     |
 | byteBuffer  | ArrayBuffer | 是   | 否   | 图像缓冲区。     |
 
 ## ImageRawData<sup>24+</sup>
@@ -410,12 +410,12 @@ ImageReceiver的初始化选项。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 | 名称              | 类型              | 只读 | 可选 | 说明               |
 | ----------------- | ----------------- | ---- | ---- | ------------------ |
 | buffer  | ArrayBuffer | 否   | 否   | 图像缓冲区。     |
-| bitsPerPixel | int  | 否   | 否   | 每个像素在缓冲区数据中实际占用的位数，单位为比特。     |
+| bitsPerPixel | number  | 否   | 否   | 每个像素在缓冲区数据中实际占用的位数，单位为比特（bit）。     |
 
 ## GetImagePropertyOptions<sup>(deprecated)</sup>
 

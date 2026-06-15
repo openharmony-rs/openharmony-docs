@@ -4844,9 +4844,10 @@ IP多媒体系统调用模式。
 
 |                名称               |                  类型                 | 必填  |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| audioDeviceList   | [Array\<AudioDevice\>](#audiodevice10) | 是   | 音频设备列表。    |
+| audioDeviceList   | Array\<[AudioDevice](#audiodevice10)\> | 是   | 音频设备列表。    |
 | currentAudioDevice | [AudioDevice](#audiodevice10)          | 是   | 当前音频设备。    |
 | isMuted            | boolean                               | 是   | 是否静音。        |
+| isMicDisabled<sup>24+</sup>     |  boolean                                | 否    | 是否禁用麦克风。<br/>- true：禁用麦克风 <br/>- false：启用麦克风 |
 
 
 ## CallRestrictionType<sup>8+</sup>
@@ -5429,8 +5430,8 @@ controlCamera\(callId: number, cameraId: string\): Promise\<void\>
 
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- | -------------- |
-| callId | number                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。       |
-| cameraId | string                     | 是   | 相机Id。cameraId获取方式可参考[相机管理](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)。|
+| callId | number                       | 是   | 呼叫ID。可以通过订阅callDetailsChange事件获得。       |
+| cameraId | string                     | 是   | 相机ID。cameraId获取方式可参考相机管理[getSupportedCameras](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口。|
 
 **返回值：**
 
@@ -5634,7 +5635,7 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 | 参数名   | 类型                                        | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
 | type     | string                                     | 是   | 视频通话时监听通话模式的变化，参数固定为'imsCallModeChange'。 |
-| callback | Callback<[ImsCallModeInfo](#imscallmode8)> | 是   | 以回调函数的方式返回订阅imsCallModeChange事件的结果。         |
+| callback | Callback<[ImsCallModeInfo](#imscallmodeinfo11)> | 是   | 以回调函数的方式返回订阅imsCallModeChange事件的结果。         |
 
 **错误码：**
 
@@ -5677,7 +5678,7 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 | 参数名   | 类型                                        | 必填 | 说明                               |
 | -------- | ------------------------------------------ | ---- | ---------------------------------- |
 | type     | string                                     | 是   | 视频通话时取消监听通话模式的变化，参数固定为'imsCallModeChange'。 |
-| callback | Callback<[ImsCallModeInfo](#imscallmode8)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。 |
+| callback | Callback<[ImsCallModeInfo](#imscallmodeinfo11)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。 |
 
 **错误码：**
 

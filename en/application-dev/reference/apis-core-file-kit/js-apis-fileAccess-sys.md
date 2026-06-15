@@ -1,10 +1,11 @@
 # @ohos.file.fileAccess (User File Access and Management) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:05:34.381Z pushedAt=2026-06-10T10:59:32.523Z -->
 
 The **fileAccess** module provides a framework for accessing and operating user files based on [extension](../../application-models/extensionability-overview.md). This module interacts with a variety of file management services, such as the storage management service, and provides a set of unified file access and management APIs for system applications. The storage management service manages both the directories of the built-in storage and resources on external devices, such as shared disks, USB flash drives, and SD cards.
 
@@ -265,7 +266,7 @@ Provides APIs for managing file or directory attribute information.
 
 listFile(filter?: Filter) : FileIterator
 
-Obtains a **FileIterator** object that lists the next-level files or directories matching the specified conditions of this directory. This API returns the result synchronously. [FileInfo](#fileinfo) is returned by [next()](#next). Currently, only built-in storage devices support the file filter.
+Obtains a **FileIterator** object that lists the next-level files or directories matching the specified conditions of this directory. This API returns the result synchronously. [next](#next) is returned by [FileInfo](#fileinfo). Currently, only built-in storage devices support the file filter.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -325,7 +326,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 scanFile(filter?: Filter) : FileIterator;
 
-Obtains a **FileIterator** object that recursively retrieves the files matching the specified conditions of this directory. This API returns the result synchronously. [FileInfo](#fileinfo) is returned by [next()](#next). Currently, this API supports only built-in storage devices.
+Obtains a **FileIterator** object that recursively retrieves the files matching the specified conditions of this directory. This API returns the result synchronously. [next](#next) is returned by [FileInfo](#fileinfo). Currently, this API supports only built-in storage devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -445,7 +446,7 @@ Provides APIs for managing the device's root attribute information.
 
 listFile(filter?: Filter) : FileIterator
 
-Obtains a **FileIterator** object that lists the first-level files or directories matching the specified conditions from the device root directory. This API returns the result synchronously. [FileInfo](#fileinfo) is return by [next](#next). Currently, only built-in storage devices support the file filter.
+Obtains a **FileIterator** object that lists the first-level files or directories matching the specified conditions from the device root directory. This API returns the result synchronously. [next](#next) is return by [FileInfo](#fileinfo). Currently, only built-in storage devices support the file filter.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -507,7 +508,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 scanFile(filter?: Filter) : FileIterator
 
-Obtains a **FileIterator** object that recursively retrieves the files matching the specified conditions from the device root directory. This API returns the result synchronously. [FileInfo](#fileinfo) is returned by [next](#next). Currently, this API supports only built-in storage devices.
+Obtains a **FileIterator** object that recursively retrieves the files matching the specified conditions from the device root directory. This API returns the result synchronously. [next](#next) is returned by [FileInfo](#fileinfo). Currently, this API supports only built-in storage devices.
 
 **Model restriction**: This API can be used only in the stage model.
 

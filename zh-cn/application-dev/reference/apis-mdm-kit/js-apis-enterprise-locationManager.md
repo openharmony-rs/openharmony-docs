@@ -1,8 +1,8 @@
 # @ohos.enterprise.locationManager（位置服务管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -68,10 +68,10 @@ let wantTemp: Want = {
 };
 
 try {
-    locationManager.setLocationPolicy(wantTemp, locationManager.LocationPolicy.DISALLOW_LOCATION_SERVICE);
-    console.info(`Succeeded in setting location patch tag.`);
+  locationManager.setLocationPolicy(wantTemp, locationManager.LocationPolicy.DISALLOW_LOCATION_SERVICE);
+  console.info(`Succeeded in setting location patch tag.`);
 } catch(err) {
-    console.error(`Failed to get location patch tag. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get location patch tag. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ## locationManager.getLocationPolicy
@@ -122,10 +122,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: locationManager.LocationPolicy = locationManager.getLocationPolicy(wantTemp);
-    console.info(`Succeeded in getting location policy. policy: ${result}`);
+  let result: locationManager.LocationPolicy = locationManager.getLocationPolicy(wantTemp);
+  console.info(`Succeeded in getting location policy. policy: ${result}`);
 } catch(err) {
-    console.error(`Failed to get location policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get location policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

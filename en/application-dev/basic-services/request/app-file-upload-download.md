@@ -14,7 +14,7 @@ You can use **uploadFile()** in [ohos.request](../../reference/apis-basic-servic
 
 > **NOTE**
 >
-> · Currently, the **request.uploadFile** API can upload only files in the **cacheDir** directory, while the **request.agent** API can upload the user public files and files in the **cacheDir** directory.
+> · Currently, only files in the **cacheDir** directory can be uploaded using **request.uploadFile**; user public files and files in the **cacheDir** directory can be uploaded together using **request.agent**.
 >
 > · The ohos.permission.INTERNET permission is required for using **ohos.request**. For details about how to request the permission, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 >
@@ -36,9 +36,9 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // Create an application file locally.
   try {
-    let file = fs.openSync(cacheDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    fs.writeSync(file.fd, 'upload file test');
-    fs.closeSync(file);
+    let file = fileIo.openSync(cacheDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    fileIo.writeSync(file.fd, 'upload file test');
+    fileIo.closeSync(file);
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
@@ -46,7 +46,7 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // Configure the upload task.
   let files: request.File[] = [
-  // "internal://cache" in uri corresponds to the cacheDir directory.
+  // uri prefix internal://cache corresponds to the cacheDir directory.
     {
       filename: fileName,
       name: 'test',
@@ -88,8 +88,7 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 ```
 
 
-<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
-<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
+<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)--> 
 
 ``` TypeScript
 async requestAgentUpload(fileName: string, callback: (progress: number, isSucceed: boolean) => void,
@@ -152,9 +151,8 @@ You can use **downloadFile()** in [ohos.request](../../reference/apis-basic-serv
 >
 > To use **uploadFile()** in **ohos.request**, you need to [declare permissions](../../security/AccessToken/declare-permissions.md): ohos.permission.INTERNET.
 
-The following sample code shows how to download network resource files to the application file directory in two ways:
+The following sample code shows how to download network resource files to the internal application file directory in two ways (you can click the link in the lower right corner of the code block to view the **clearExistFile** method in **requestDownloadFile**):
 
-<!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 <!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 
 ``` TypeScript
@@ -187,7 +185,6 @@ async requestDownloadFile(url: string, fileName: string, callback: (progress: nu
 }
 ```
 
-<!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 <!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 
 ``` TypeScript
@@ -242,7 +239,6 @@ You can use the [request.agent](../../reference/apis-basic-services-kit/js-apis-
 
 Call the [save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save) API of [DocumentViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) to save a document and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10) to download the document.
 
-<!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
 <!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
 
 ``` TypeScript
@@ -383,7 +379,7 @@ Permission required: [ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessTok
 
 [ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo) is a [restricted permission](../../security/AccessToken/restricted-permissions.md) of the system_basic level (one of the [basic concepts in the permission mechanism](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism)). If the normal-level application needs to request this permission, its APL level must be declared as system_basic or higher. In addition, you should [request the user_grant permission from users](../../security/AccessToken/request-user-authorization.md).
 
-<!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets)-->
+<!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets)--> 
 
 ``` TypeScript
 async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: boolean) => void,
@@ -488,7 +484,7 @@ You can use the APIs of the [ohos.request](../../reference/apis-basic-services-k
 
 The following sample code shows how to configure the speed and timeout of a download task:
 
-<!-- @[speed_limit_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets)-->
+<!-- @[speed_limit_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets)--> 
 
 ``` TypeScript
 async speedLimitDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
@@ -507,20 +503,20 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
     // Rules for setting the minimum speed limit:
     // 1. If the task speed is lower than the specified value (for example, 16 × 1024 B/s) for a specified period (for example, 10s), the task fails.
     // 2. Conditions for resetting the timer:
-    //    - The speed at any given second is below the minimum speed limit.
-    //    - The task is resumed after being paused.
-    //    - The task is restarted after being stopped.
+    // - The speed of any second exceeds the minimum speed limit.
+    // - The task is resumed after being paused.
+    // - The task is restarted after being stopped.
     minSpeed: {
       speed: 16 * 1024,
       duration: 10
     },
     // Rules for setting timeout:
     // 1. connectionTimeout:
-    //    - If the time required for establishing a single connection exceeds the specified duration (for example, 60s), the task fails.
-    //    - The timer is started independently for each connection (not accumulated).
+    // - If the time taken to establish a single connection exceeds the specified value (for example, 60s), the task fails.
+    // - The timer is independently started for each connection (not accumulated).
     // 2. totalTimeout:
-    //    - If the total task duration (including connection and transmission time) exceeds the specified duration (for example, 120s), the task fails.
-    //    - The duration is not counted if the task is paused and is accumulated after the task is resumed.
+    // - If the total task duration (including the connection and transmission time) exceeds the specified value (for example, 120s), the task fails.
+    // - The duration is not counted during the pause period and is accumulated after the task is resumed.
     // 3. Conditions for resetting the timer: The timer is reset when the task fails or stops.
     timeout: {
       connectionTimeout: 60,
@@ -673,8 +669,7 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
         logger.error(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
       })
       task.on('completed', async (progress) => {
-        console.warn('Request download completed, ' + JSON.stringify(progress));
-        logger.error(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+        logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
         // Obtain the file status information, including the file size.
         let filePath = filesDir + '/' + fileName;
         // Obtain the file status information, including the file size.

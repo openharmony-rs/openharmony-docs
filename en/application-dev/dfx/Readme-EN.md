@@ -5,7 +5,7 @@
 <!--Owner: @mzyan-->
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - [About This Kit](performance-analysis-kit-overview.md)
 - Fault Detection<!--fault-analysis-->
@@ -16,7 +16,9 @@
   - [Address Sanitizer detection](address-sanitizer-guidelines.md)
   - [Application Freeze Detection](appfreeze-guidelines.md)<!--RP1--><!--RP1End-->
   - [Task Timeout Detection](apptask-timeout-guidelines.md)
-  - [Application Killed Detection](appkilled-guidelines.md)<!--RP2--><!--RP2End-->
+  - [Application Killed Detection](appkilled-guidelines.md)
+  - General Logs<!--general-log-->
+    - [Page Switch Logs](pageswitch-log.md)<!--RP2--><!--RP2End-->
 - Log Printing<!--hilog-dev-->
   - [Using HiLog (ArkTS)](hilog-guidelines-arkts.md)
   - [Using HiLog (C/C++)](hilog-guidelines-ndk.md)
@@ -85,16 +87,3 @@
   - [Development of Error Manager](errormanager-guidelines.md)
   - [Development of Application Recovery](apprecovery-guidelines.md)
 - [Performance Analysis Kit Terminology](performance-analysis-kit-terminology.md)
-- Command Line Tools<!--perform-command-line-utilities-->
-  - [hdc](hdc.md)
-  - [hilog](hilog.md)<!--RP4--><!--RP4End-->
-  - hidumper<!--hidumper-tool-->
-    - [hidumper](hidumper.md)
-    - [PrivacyManagerService](hidumper-PrivacyManagerService.md)
-  - [hitrace](hitrace.md)
-  - [hiperf](hiperf.md)
-  - [hiprofiler](hiprofiler.md)
-  - [uinput](uinput.md)
-  <!--Del-->
-  - [hisysevent (for System Applications Only)](hisysevent-sys.md)
-  <!--DelEnd-->

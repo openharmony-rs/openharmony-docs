@@ -9,142 +9,15 @@
 
 The **print** module provides APIs for basic print operations.
 
-> **NOTE** 
+> **NOTE**
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.print (Print)](./js-apis-print-sys.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.print (Print)](js-apis-print.md).
 
 ## Modules to Import
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
 ```
-
-
-## PrintMargin
-
-Defines the page margins for printing.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Print.PrintFramework
-
-**Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
-| -------- | -------- | -------- | -------- | -------- |
-| top | number | No| Yes| Top margin of the page. The default value is **0**.|
-| bottom | number | No| Yes| Bottom margin of the page. The default value is **0**.|
-| left | number | No| Yes| Left margin of the page. The default value is **0**.|
-| right | number | No| Yes| Right margin of the page. The default value is **0**.|
-
-## PrinterRange
-
-Defines the print range.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Print.PrintFramework
-
-**Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
-| -------- | -------- | -------- | -------- | -------- |
-| startPage | number | No| Yes| Start page. The default value is **1**.|
-| endPage | number | No| Yes| End page. The default value is the maximum number of pages of the file to be printed.|
-| pages | Array&lt;number&gt; | No| Yes| Page range set of the file to print. The default value is empty.|
-
-## PreviewAttribute
-
-Defines the print preview attributes.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Print.PrintFramework
-
-**Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
-| -------- | -------- | -------- | -------- | -------- |
-| previewRange | [PrinterRange](#printerrange) | No| No| Preview page range.|
-| result | number | No| Yes| Print preview result. The default value is **-1**.|
-
-## PrintResolution
-
-Defines the resolution for printing.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Print.PrintFramework
-
-**Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
-| -------- | -------- | -------- | -------- | -------- |
-| id | string | No| No| Resolution ID.|
-| horizontalDpi | number | No| No| Horizontal DPI.|
-| verticalDpi | number | No| No| Vertical DPI.|
-
-
-
-## PrinterCapability
-
-Defines the printer capabilities.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Print.PrintFramework
-
-**Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
-| -------- | -------- | -------- | -------- | -------- |
-| colorMode | number | No| No| Color mode.|
-| duplexMode | number | No| No| Single-sided or double-sided printing mode.|
-| pageSize | Array&lt;[PrintPageSize](./js-apis-print.md#printpagesize11)&gt; | No| No| List of page sizes supported by the printer.|
-| resolution | Array&lt;[PrintResolution](#printresolution)&gt; | No| Yes| List of resolutions supported by the printer.|
-| minMargin | [PrintMargin](#printmargin) | No| Yes| Minimum margin of the printer.|
-| options<sup>11+</sup> | Object | No| Yes| Printer options. The value is a JSON object string.|
-
-## PrinterInfo
-
-Provides the printer information.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Print.PrintFramework
-
-**Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
-| -------- | -------- | -------- | -------- | -------- |
-| printerId | string | No| No| Printer ID.|
-| printerName | string | No| No| Printer name.|
-| printerState | [PrinterState](./js-apis-print.md#printerstate14) | No| No| Printer state.|
-| printerIcon | number | No| Yes| Resource ID of the printer icon. The default value is **-1**.|
-| description | string | No| Yes| Printer description.|
-| capability | [PrinterCapability](#printercapability) | No| Yes| Printer capability.|
-| options | Object | No| Yes| Printer options. The value is a JSON object string.|
-
-## PrintJob
-
-Defines a print job.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Print.PrintFramework
-
-**Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
-| -------- | -------- | -------- | -------- | -------- |
-| fdList | Array&lt;number&gt; | No| No| FD list of files to print.|
-| jobId | string | No| No| ID of the print job.|
-| printerId | string | No| No| ID of the printer used for printing.|
-| jobState | [PrintJobState](./js-apis-print.md#printjobstate14) | No| No| State of the print job.|
-| jobSubstate<sup>11+</sup> | [PrintJobSubState](./js-apis-print.md#printjobsubstate14) | No| No| Substate of the print job.|
-| copyNumber | number | No| No| Copy of the file list.|
-| pageRange | [PrinterRange](#printerrange) | No| No| Print range.|
-| isSequential | boolean | No| No| Whether pages are printed in sequential order. The value **true** indicates that pages are printed in sequential order, and **false** indicates the opposite. The default value is **false**.|
-| pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | No| No| Selected page size.|
-| isLandscape | boolean | No| No| Whether pages are printed in landscape mode. The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode. The default value is **false**.|
-| colorMode | number | No| No| Color mode.|
-| duplexMode | number | No| No| Single-sided or double-sided printing mode.|
-| margin | [PrintMargin](#printmargin) | No| Yes| Current page margin.|
-| preview | [PreviewAttribute](#previewattribute) | No| Yes| Preview settings.|
-| options | Object | No| Yes| Printer options. The value is a JSON object string.|
 
 ## PrinterExtensionInfo
 
@@ -155,7 +28,8 @@ Provides the printer extension information.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | extensionId | string | No| No| ID of the printer extension.|
 | vendorId | string | No| No| Vendor ID of the printer extension.|
@@ -176,15 +50,16 @@ Obtains the information of all installed printer extensions. This API uses an as
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | callback | AsyncCallback&lt;Array&lt;[PrinterExtensionInfo](#printerextensioninfo)&gt;&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -217,15 +92,16 @@ Obtains the information of all installed printer extensions. This API uses a pro
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;Array&lt;[PrinterExtensionInfo](#printerextensioninfo)&gt;&gt; | Promise used to return the result.used to return the result.|
+| Promise&lt;Array&lt;[PrinterExtensionInfo](#printerextensioninfo)&gt;&gt; | Promise used to return the information of all installed printer extensions.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -257,16 +133,17 @@ Disconnects from the specified printer. This API uses an asynchronous callback t
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -301,20 +178,22 @@ Disconnects from the specified printer. This API uses a promise to return the re
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -347,16 +226,17 @@ Queries the printer capability. This API uses an asynchronous callback to return
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -391,20 +271,22 @@ Queries the printer capability. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -437,16 +319,17 @@ Starts the specified print job. This API uses an asynchronous callback to return
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| jobInfo | [PrintJob](#printjob) | Yes| Information about the print job.|
+| jobInfo | [PrintJob](js-apis-print.md#printjob24) | Yes| Information about the print job.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -497,20 +380,22 @@ Starts the specified print job. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| jobInfo | [PrintJob](#printjob) | Yes| Information about the print job.|
+| jobInfo | [PrintJob](js-apis-print.md#printjob24) | Yes| Information about the print job.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -559,16 +444,17 @@ Cancels the specified print job, which is on the print queue of the printer. Thi
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | jobId | string | Yes| Print job ID.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -603,20 +489,22 @@ Cancels the specified print job, which is on the print queue of the printer. Thi
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | jobId | string | Yes| Print job ID.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -649,20 +537,22 @@ Restarts a print job that has been finished before. This API uses a promise to r
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | jobId | string | Yes| ID of a print job that has been finished before.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -694,16 +584,17 @@ Requests print preview data. This API uses a callback to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| jobInfo | [PrintJob](#printjob) | Yes| Information about the print job.|
+| jobInfo | [PrintJob](js-apis-print.md#printjob24) | Yes| Information about the print job.|
 | callback | Callback&lt;number&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -750,20 +641,22 @@ Requests print preview data. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| jobInfo | [PrintJob](#printjob) | Yes| Information about the print job.|
+| jobInfo | [PrintJob](js-apis-print.md#printjob24) | Yes| Information about the print job.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the result.|
+| Promise&lt;number&gt; | Promise used to return the preview result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -812,16 +705,17 @@ Registers a listener for printer state change events. This API uses a callback t
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | 'printerStateChange' | Yes| Listening type. The value is fixed at **'printerStateChange'**.|
-| callback | (state: [PrinterState](./js-apis-print.md#printerstate14), info: [PrinterInfo](#printerinfo)) => void | Yes| Callback used to return the result.|
+| callback | (state: [PrinterState](js-apis-print.md#printerstate14), info: [PrinterInfo](js-apis-print.md#printerinfo24)) => void | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -856,16 +750,17 @@ Unregisters the listener for printer state change events. This API uses a callba
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | 'printerStateChange' | Yes| Listening type. The value is fixed at **'printerStateChange'**.|
 | callback | Callback&lt;boolean&gt; | No| Callback used to return the result. The value **true** means that the operation is successful, and **false** means the opposite.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -894,16 +789,17 @@ Registers a listener for print job state change events. This API uses a callback
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | 'jobStateChange' | Yes| Listening type. The value is fixed at **'jobStateChange'**.|
-| callback | (state: [PrintJobState](./js-apis-print.md#printjobstate14), job: [PrintJob](#printjob)) => void | Yes| Callback used to return the result.|
+| callback | (state: [PrintJobState](js-apis-print.md#printjobstate14), job: [PrintJob](js-apis-print.md#printjob24)) => void | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -932,16 +828,17 @@ Unregisters the listener for print job state change events. This API uses a call
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | 'jobStateChange' | Yes| Listening type. The value is fixed at **'jobStateChange'**.|
 | callback | Callback&lt;boolean&gt; | No| Callback used to return the result. The value **true** means that the operation is successful, and **false** means the opposite.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -970,16 +867,17 @@ Registers a listener for printer extension information change events. This API u
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | 'extInfoChange' | Yes| Listening type. The value is fixed at **'extInfoChange'**.|
 | callback | (extensionId: string, info: string) => void | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1008,16 +906,17 @@ Unregisters the listener for printer extension information change events. This A
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | 'extInfoChange' | Yes| Listening type. The value is fixed at **'extInfoChange'**.|
 | callback | Callback&lt;boolean&gt; | No| Callback used to return the result. The value **true** means that the operation is successful, and **false** means the opposite.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1046,16 +945,17 @@ Adds printers. This API uses an asynchronous callback to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| printers | Array&lt;[PrinterInfo](#printerinfo)&gt; | Yes| List of printers to add.|
+| printers | Array&lt;[PrinterInfo](js-apis-print.md#printerinfo24)&gt; | Yes| List of printers to add.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1098,20 +998,22 @@ Adds printers. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| printers | Array&lt;[PrinterInfo](#printerinfo)&gt; | Yes| List of printers to add.|
+| printers | Array&lt;[PrinterInfo](js-apis-print.md#printerinfo24)&gt; | Yes| List of printers to add.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1152,16 +1054,17 @@ Removes printers. This API uses an asynchronous callback to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerIds | Array&lt;string&gt; | Yes| List of printers to remove.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1196,20 +1099,22 @@ Removes printers. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerIds | Array&lt;string&gt; | Yes| List of printers to remove.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1242,16 +1147,17 @@ Updates information about the specified printers. This API uses an asynchronous 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| printers | Array&lt;[PrinterInfo](#printerinfo)&gt; | Yes| List of printers whose information is to be updated.|
+| printers | Array&lt;[PrinterInfo](js-apis-print.md#printerinfo24)&gt; | Yes| List of printers whose information is to be updated.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1274,9 +1180,9 @@ let printerInfo : print.PrinterInfo = {
 };
 print.updatePrinters([printerInfo], (err: BusinessError) => {
     if (err) {
-        console.error('updataPrinters failed, because : ' + JSON.stringify(err));
+        console.error('updatePrinters failed, because : ' + JSON.stringify(err));
     } else {
-        console.info('updataPrinters success');
+        console.info('updatePrinters success');
     }
 })
 ```
@@ -1294,20 +1200,22 @@ Updates information about the specified printers. This API uses a promise to ret
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| printers | Array&lt;[PrinterInfo](#printerinfo)&gt; | Yes| List of printers whose information is to be updated.|
+| printers | Array&lt;[PrinterInfo](js-apis-print.md#printerinfo24)&gt; | Yes| List of printers whose information is to be updated.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1348,17 +1256,18 @@ Updates the printer state. This API uses an asynchronous callback to return the 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID.|
-| state | [PrinterState](./js-apis-print.md#printerstate14) | Yes| Printer state.|
+| state | [PrinterState](js-apis-print.md#printerstate14) | Yes| Printer state.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1394,21 +1303,23 @@ Updates the printer state. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID.|
-| state | [PrinterState](./js-apis-print.md#printerstate14) | Yes| Printer state.|
+| state | [PrinterState](js-apis-print.md#printerstate14) | Yes| Printer state.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1429,104 +1340,6 @@ print.updatePrinterState(printerId, state).then(() => {
 })
 ```
 
-## print.updatePrintJobState
-
-updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState, callback: AsyncCallback&lt;void&gt;): void
-
-Updates the print job state. This API uses an asynchronous callback to return the result.
-
-**Required permissions**: ohos.permission.MANAGE_PRINT_JOB
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Print.PrintFramework
-
-**Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| jobId | string | Yes| ID of the print job.|
-| state | [PrintJobState](./js-apis-print.md#printjobstate14) | Yes| State of the print job.|
-| subState | [PrintJobSubState](./js-apis-print.md#printjobsubstate14) | Yes| Substate of the print job.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
-
-**Error codes**
-
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
-
-| ID| Error Message                                   |
-| -------- | ------------------------------------------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-
-**Example**
-
-```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let jobId : string = '3434';
-let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
-let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
-print.updatePrintJobState(jobId, state, subState, (err: BusinessError) => {
-    if (err) {
-        console.error('updataPrintJobState failed, because : ' + JSON.stringify(err));
-    } else {
-        console.info('updatePrintJobState success');
-    }
-})
-```
-
-## print.updatePrintJobState
-
-updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState): Promise&lt;void&gt;
-
-Updates the print job state. This API uses a promise to return the result.
-
-**Required permissions**: ohos.permission.MANAGE_PRINT_JOB
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Print.PrintFramework
-
-**Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| jobId | string | Yes| ID of the print job.|
-| state | [PrintJobState](./js-apis-print.md#printjobstate14) | Yes| State of the print job.|
-| subState | [PrintJobSubState](./js-apis-print.md#printjobsubstate14) | Yes| Substate of the print job.|
-
-**Return value**
-| **Type**| **Description**|
-| -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
-
-**Error codes**
-
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
-
-| ID| Error Message                                   |
-| -------- | ------------------------------------------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-
-**Example**
-
-```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let jobId : string = '3434';
-let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
-let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
-print.updatePrintJobState(jobId, state, subState).then(() => {
-    console.info('update print job state success');
-}).catch((error: BusinessError) => {
-    console.error('update print job state error : ' + JSON.stringify(error));
-})
-```
-
 ## print.updateExtensionInfo
 
 updateExtensionInfo(info: string, callback: AsyncCallback&lt;void&gt;): void
@@ -1540,16 +1353,17 @@ Updates the printer extension information. This API uses an asynchronous callbac
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | info | string | Yes| New printer extension information.|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1584,20 +1398,22 @@ Updates the printer extension information. This API uses a promise to return the
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | info | string | Yes| New printer extension information.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1633,15 +1449,16 @@ Queries all print jobs. This API uses an asynchronous callback to return the res
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1677,15 +1494,16 @@ Queries all print jobs. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1705,7 +1523,7 @@ print.queryAllPrintJobs().then(() => {
 
 ## print.queryAllActivePrintJobs<sup>20+</sup>
 
-queryAllActivePrintJobs(): Promise&lt;[PrintJob](#printjob)[]&gt;
+queryAllActivePrintJobs(): Promise&lt;[PrintJob](js-apis-print.md#printjob24)[]&gt;
 
 Queries all active print jobs. This API uses a promise to return the result.
 
@@ -1716,15 +1534,16 @@ Queries all active print jobs. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;[PrintJob](#printjob)[]&gt; | Promise used to return the result.|
+| Promise&lt;[PrintJob](js-apis-print.md#printjob24)[]&gt; | Promise used to return a list of all active print jobs.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1755,15 +1574,16 @@ Queries all print jobs. This API uses an asynchronous callback to return the res
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;Array&lt;[PrintJob](#printjob)&gt;&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;Array&lt;[PrintJob](js-apis-print.md#printjob24)&gt;&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1796,15 +1616,16 @@ Queries all print jobs. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;Array&lt;[PrintJob](#printjob)&gt;&gt; | Promise used to return the result.|
+| Promise&lt;Array&lt;[PrintJob](js-apis-print.md#printjob24)&gt;&gt; | Promise used to return a list of all print jobs.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1835,16 +1656,17 @@ Queries a print job by ID. This API uses an asynchronous callback to return the 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | jobId | string | Yes| ID of the print job.|
-| callback | AsyncCallback&lt;[PrintJob](#printjob)&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;[PrintJob](js-apis-print.md#printjob24)&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1879,20 +1701,22 @@ Queries a print job by ID. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | jobId | string | Yes| ID of the print job.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;[PrintJob](#printjob)&gt; | Promise used to return the result.|
+| Promise&lt;[PrintJob](js-apis-print.md#printjob24)&gt; | Promise used to return the queried print job.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1925,18 +1749,19 @@ Starts to obtain the print file. This API uses an asynchronous callback to retur
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | jobId | string | Yes| ID of the print job.|
-| printAttributes | [PrintAttributes](./js-apis-print.md#printattributes11) | Yes| Print attributes.|
+| printAttributes | [PrintAttributes](js-apis-print.md#printattributes11) | Yes| Print attributes.|
 | fd | number | Yes| File descriptor.|
-| onFileStateChanged | Callback&lt;[PrintFileCreationState](./js-apis-print.md#printfilecreationstate11)&gt; | Yes| Callback for updating the file state.|
+| onFileStateChanged | Callback&lt;[PrintFileCreationState](js-apis-print.md#printfilecreationstate11)&gt; | Yes| Callback for updating the file state.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -1998,7 +1823,8 @@ Notifies the print service of the spooler shutdown information. This API uses an
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | jobId | string | Yes| ID of the print job.|
 | type | 'spooler_closed_for_cancelled' \| 'spooler_closed_for_started' | Yes| Spooler shutdown information.|
@@ -2006,9 +1832,9 @@ Notifies the print service of the spooler shutdown information. This API uses an
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2043,21 +1869,23 @@ Notifies the print service of the spooler shutdown information. This API uses a 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | jobId | string | Yes| ID of the print job.|
 | type | 'spooler_closed_for_cancelled' \| 'spooler_closed_for_started' | Yes| Spooler shutdown information.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2090,20 +1918,22 @@ Obtains printer information based on the printer ID. This API uses a promise to 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;[PrinterInfo](#printerinfo)&gt; | Promise used to return the result.|
+| Promise&lt;[PrinterInfo](js-apis-print.md#printerinfo24)&gt; | Promise used to return the printer information.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2136,20 +1966,22 @@ Notifies the print service of the print application events. This API uses a prom
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| event | [ApplicationEvent](./js-apis-print.md#applicationevent14) | Yes| Print application events.|
+| event | [ApplicationEvent](js-apis-print.md#applicationevent14) | Yes| Print application events.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2169,78 +2001,6 @@ print.notifyPrintServiceEvent(event).then(() => {
 })
 ```
 
-## print.updatePrinterInformation<sup>18+</sup>
-
-updatePrinterInformation(printerInformation: PrinterInformation): Promise&lt;void&gt;
-
-Updates the information of a printer in the system. This API uses a promise to return the result.
-
-**Required permissions**: ohos.permission.MANAGE_PRINT_JOB
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Print.PrintFramework
-
-**Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
-| -------- | -------- | -------- | -------- |
-| printerInformation | [PrinterInformation](./js-apis-print.md#printerinformation14) | Yes| Printer whose information is to be updated.|
-
-**Return value**
-| **Type**| **Description**|
-| -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result of updating the printer information to the printer discovery list.|
-
-**Error codes**
-
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
-
-| ID| Error Message                                   |
-| -------- | ------------------------------------------- |
-| 201 | the application does not have permission to call this function. |
-| 202 | not system application |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-
-**Example**
-
-```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let testPageSize : print.PrintPageSize = {
-    id : 'ISO_A4',
-    name : 'iso_a4_210x297mm',
-    width : 8268,
-    height : 11692
-};
-
-let testCapability : print.PrinterCapabilities = {
-    supportedPageSizes : [testPageSize],
-    supportedColorModes : [print.PrintColorMode.COLOR_MODE_MONOCHROME],
-    supportedDuplexModes : [print.PrintDuplexMode.DUPLEX_MODE_NONE],
-    supportedMediaTypes : ['stationery'],
-    supportedQualities : [print.PrintQuality.QUALITY_NORMAL],
-    supportedOrientations : [print.PrintOrientationMode.ORIENTATION_MODE_PORTRAIT],
-    options : 'testOptions'
-};
-
-let printerInformation : print.PrinterInformation = {
-    printerId : 'testPrinterId',
-    printerName : 'testPrinterName',
-    printerStatus : 0,
-    description : 'testDesc',
-    capability : testCapability,
-    uri : 'testUri',
-    printerMake : 'testPrinterMake',
-    options : 'testOptions'
-};
-print.updatePrinterInformation(printerInformation).then(() => {
-    console.info('updatePrinterInformation success');
-}).catch((error: BusinessError) => {
-    console.error('updatePrinterInformation error : ' + JSON.stringify(error));
-})
-```
-
 ## print.setPrinterPreferences<sup>18+</sup>
 
 setPrinterPreferences(printerId: string, printerPreferences: PrinterPreferences): Promise&lt;void&gt;
@@ -2254,21 +2014,23 @@ Sets the printer preferences. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID.|
-| printerPreferences | [PrinterPreferences](./js-apis-print.md#printerpreferences18) | Yes| Printer preferences.|
+| printerPreferences | [PrinterPreferences](js-apis-print.md#printerpreferences18) | Yes| Printer preferences.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result of setting printer preferences.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2304,15 +2066,16 @@ Discovers USB printers. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;Array&lt;[PrinterInformation](./js-apis-print.md#printerinformation14)&gt;&gt; | Promise used to return the discovered USB printer list.|
+| Promise&lt;Array&lt;[PrinterInformation](js-apis-print.md#printerinformation14)&gt;&gt; | Promise used to return the information about the discovered USB printers.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2343,21 +2106,23 @@ Sets the default printer. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID.|
-| type | [DefaultPrinterType](./js-apis-print.md#defaultprintertype18) | Yes| Default printer type.|
+| type | [DefaultPrinterType](js-apis-print.md#defaultprintertype18) | Yes| Default printer type.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result of setting the default printer.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2391,21 +2156,23 @@ Notifies the print service of the print application events. This API uses a prom
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| event | [ApplicationEvent](./js-apis-print.md#applicationevent14) | Yes| Print application events.|
+| event | [ApplicationEvent](js-apis-print.md#applicationevent14) | Yes| Print application events.|
 | jobId | string | Yes| ID of the print job.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
@@ -2423,5 +2190,162 @@ print.notifyPrintServiceEvent(event, jobId).then(() => {
     console.info('notifyPrintServiceEvent success');
 }).catch((error: BusinessError) => {
     console.error('notifyPrintServiceEvent error : ' + JSON.stringify(error));
+})
+```
+
+## print.queryPrinterCapabilityByUri<sup>24+</sup>
+
+queryPrinterCapabilityByUri(printerUri: string, printerId: string): Promise&lt;[PrinterCapabilities](js-apis-print.md#printercapabilities14)&gt;
+
+Queries the printer capability by the printer URI. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.MANAGE_PRINT_JOB
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| printerUri | string | Yes| Printer URI.|
+| printerId | string | Yes| Printer ID.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;[PrinterCapabilities](js-apis-print.md#printercapabilities14)&gt; | Promise used to return the printer capability.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Print Service Error Codes](errorcode-print.md).
+
+| Error Code| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 202 | not system application |
+| 13100005 | Can not find the printer in system. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerUri : string = "testPrinterUri";
+let printerId : string = "testPrinterId";
+print.queryPrinterCapabilityByUri(printerUri, printerId).then((capabilities: print.PrinterCapabilities) => {
+    console.info('queryPrinterCapabilityByUri success' + JSON.stringify(capabilities));
+}).catch((error: BusinessError) => {
+    console.error('queryPrinterCapabilityByUri error : ' + JSON.stringify(error));
+})
+```
+
+## print.addPrinterToCups<sup>24+</sup>
+
+addPrinterToCups(printerUri: string, printerName: string, printerMake: string): Promise&lt;boolean&gt;
+
+Adds a printer to CUPS. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.MANAGE_PRINT_JOB
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| printerUri | string | Yes| Printer URI.|
+| printerName | string | Yes| Printer name.|
+| printerMake | string | Yes| Printer model.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Print Service Error Codes](errorcode-print.md).
+
+| Error Code| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 202 | not system application |
+| 13100003 | Add a printer to cups failed. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerUri : string = "testPrinterUri";
+let printerName : string = "testPrinterName";
+let printerMake : string = "testPrinterMake";
+
+print.addPrinterToCups(printerUri, printerName, printerMake).then((result: boolean) => {
+    console.info('addPrinterToCups success' + JSON.stringify(result));
+}).catch((error: BusinessError) => {
+    console.error('addPrinterToCups error : ' + JSON.stringify(error));
+})
+```
+
+## print.deletePrinterFromCups<sup>24+</sup>
+
+deletePrinterFromCups(printerName: string): Promise&lt;void&gt;
+
+Deletes a printer from CUPS. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.MANAGE_PRINT_JOB
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| printerName | string | Yes| Printer name.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 202 | not system application |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerName : string = "testPrinterName";
+
+print.deletePrinterFromCups(printerName).then(() => {
+    console.info('deletePrinterFromCups success');
+}).catch((error: BusinessError) => {
+    console.error('deletePrinterFromCups error : ' + JSON.stringify(error));
 })
 ```

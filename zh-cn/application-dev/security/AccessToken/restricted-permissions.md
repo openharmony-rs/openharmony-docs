@@ -13,7 +13,7 @@
 
 以下权限的开放范围为普通应用，但需要通过[访问控制列表（ACL）](app-permission-mgmt-overview.md#权限机制中的基本概念)的方式跨级别申请。
 
-normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
+normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
 
 **修改方式：**
 
@@ -156,6 +156,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 当前仅2in1设备和平板上的应用可申请此权限。
 
+<!--RP15--><!--RP15End-->
+
 **权限级别**：system_basic
 
 **授权方式**：用户授权（user_grant）
@@ -201,6 +203,10 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 ## ohos.permission.FILE_ACCESS_PERSIST
 
 允许应用支持持久化访问文件Uri。
+
+> **说明：**
+>
+> 在API 12及以上版本，该权限等级变更为normal，应用可直接[声明使用](declare-permissions.md)；若需兼容API12之前版本，仍需按[受限权限申请方式](declare-permissions-in-acl.md)使用该权限。
 
 <!--RP18--><!--RP18End-->
 
@@ -301,6 +307,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
 
 允许运营商应用添加eSIM配置文件。
+
+<!--RP86--><!--RP86End-->
 
 **权限级别**：system_basic
 
@@ -575,6 +583,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 1. 外设扩展驱动客户端权限声明中的value字段中描述的目标扩展驱动服务端已上架或一并上架。
 2. 被申请目标扩展驱动服务端对外提供能力与扩展外设驱动客户端业务诉求一致。
 
+<!--RP82--><!--RP82End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -593,6 +603,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 1. 外设InterfaceClass为Mass Storage(0x08)、InterfaceSubClass为SCSI透明命令集(0x06)。
 2. 外设能够以对操作系统透明的方式来模拟SCSI设备。
+
+<!--RP83--><!--RP83End-->
 
 **权限级别**：system_basic
 
@@ -633,6 +645,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone |  Tablet
 
 **起始版本**：20
 
@@ -804,6 +818,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用读取所有的日历信息。
 
+<!--RP84--><!--RP84End-->
+
 **权限级别**：system_basic
 
 **授权方式**：用户授权（user_grant）
@@ -815,6 +831,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 ## ohos.permission.WRITE_WHOLE_CALENDAR
 
 允许应用添加、移除或更改所有的日历活动。
+
+<!--RP85--><!--RP85End-->
 
 **权限级别**：system_basic
 
@@ -1097,5 +1115,19 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
+
+## ohos.permission.PRINTER_DRIVER
+
+允许应用管理打印系统。
+
+<!--RP89--><!--RP89End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
 
 **起始版本**：24

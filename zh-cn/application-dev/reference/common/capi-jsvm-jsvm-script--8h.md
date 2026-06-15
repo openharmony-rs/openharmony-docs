@@ -1,7 +1,7 @@
 # JSVM_Script__*
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -13,6 +13,8 @@ typedef struct JSVM_Script__* JSVM_Script
 ## 概述
 
 表示一段JavaScript代码。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
 

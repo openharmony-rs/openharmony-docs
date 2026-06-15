@@ -1,8 +1,8 @@
 # Asset Store Kit (Asset Store Service)
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -26,5 +26,4 @@
     - [Asset_ResultSet](capi-assettype-asset-resultset.md)
     - [Asset_SyncResult](capi-assettype-asset-syncresult.md)
 - Error Codes<!--asset-store-arkts-errcode-->
-  - [Asset Store Service Error Codes](errorcode-asset.md)
-<!--no_check-->
+  - [Asset Store Service Error Code](errorcode-asset.md)

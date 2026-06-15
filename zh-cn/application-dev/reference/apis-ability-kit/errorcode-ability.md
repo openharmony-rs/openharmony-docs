@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 > **说明：**
 >
@@ -844,7 +844,7 @@ Failed to obtain the target application information.
 
 **错误描述**
 
-调用[URI授权相关接口](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
+调用[URI权限管理](js-apis-uripermissionmanager-sys.md)相关接口时，无法根据应用包名和分身索引获取到目标应用的相关信息。
 
 **可能原因**
 
@@ -1348,6 +1348,24 @@ The UIAbility is prohibited from launching itself via App Linking.
 
 - 如果允许使用App Linking拉起当前UIAbility，开发者需要在[module.json5配置文件](../../quick-start/module-configuration-file.md)将[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的allowSelfRedirect字段设置为true。
 - 如果不允许使用App Linking拉起当前UIAbility，开发者需要通过catch捕获该错误码并进行处理。
+
+## 16000150 发送请求失败 
+
+**错误信息** 
+
+Failed to send request to system service. 
+
+**错误描述** 
+
+当向系统服务发送请求失败时，方法将返回该错误码。 
+
+**可能原因** 
+
+设置快启使能状态或者重新初始化快启时，发送请求失败。
+
+**处理步骤** 
+
+请尝试重新调用接口或者重启设备。
 
 ## 16000151 无效wantAgent对象
 

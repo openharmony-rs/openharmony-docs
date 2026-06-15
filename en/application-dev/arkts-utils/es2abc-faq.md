@@ -121,7 +121,7 @@ The triggering conditions are related to the code structure, resource consumptio
 
 > **NOTE**
 >
-> Since such exceptions are related to code structure and runtime environment, a comprehensive list of causes cannot be provided at this time. If none of the above scenarios apply, you can use crash logs or debugging tools such as [GDB](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/cannkit-gdb) or [LLDB](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/debug-lldb) for further troubleshooting.
+> Since such exceptions are related to code structure and runtime environment, a comprehensive list of causes cannot be provided at this time. If none of the above scenarios apply, you can use crash logs or debugging tools such as GDB or LLDB for further troubleshooting.
 
 
 **Stack Overflow Scenarios and Troubleshooting**

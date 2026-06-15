@@ -3,10 +3,10 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
 <!--Designer: @dutie123-->
-<!--Tester: @liuli0427-->
+<!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**XComponent** provides a [surface](../../../ui/napi-xcomponent-guidelines.md#overview) for graphics rendering and media data input into your view. You can customize the position and size of the surface as needed. For details, see [Native XComponent](../../../ui/napi-xcomponent-guidelines.md).
+**XComponent** provides a surface for graphics rendering and media data input into the view. You can customize the position and size of the surface as needed. For details, see [Native XComponent](../../../ui/napi-xcomponent-guidelines.md).
 
 > **NOTE**
 >
@@ -86,9 +86,9 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 | Name     | Type                                     | Mandatory| Description                                                        |
 | ----------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | id          | string                                        | Yes  | Unique ID of the component. The value can contain a maximum of 128 characters.                   |
-| type        | string                                        | Yes  | Type of the component. The options are as follows:<br>- **"surface"**: The custom content is displayed individually on the screen. This option is used for displaying EGL/OpenGL ES and media data.<br>- **"component"**<sup>9+</sup>: The component acts a container where non-UI logic can be executed to dynamically load and display content.<br>Any other value is handled as **"surface"**.|
-| libraryname | string                                        | No  | Name of the dynamic library compiled and output by the native layer (the corresponding dynamic library does not support cross-module loading). This parameter is effective only when **type** is **"surface"**.|
-| controller  | [XComponentcontroller](#xcomponentcontroller) | No  | Controller bound to the component, which can be used to invoke methods of the component. This parameter is valid only when the component type is **"surface"**.|
+| type        | string                                        | Yes  | Type of the component. The options are as follows:<br>- **"surface"**: The custom content is displayed individually on the screen. This option is used for displaying EGL/OpenGL ES and media data.<br>- **"component"**<sup>9+</sup>: The component acts as a container where non-UI logic can be executed to dynamically load and display content.<br>Any other value is handled as **"surface"**.|
+| libraryname | string                                        | No  | Name of the dynamic library compiled and output by the native layer (the corresponding dynamic library does not support cross-module loading). This parameter takes effect only when **type** is **"surface"**.|
+| controller  | [XComponentController](#xcomponentcontroller) | No  | Controller bound to the component, which can be used to invoke methods of the component. This parameter takes effect only when the component type is **"surface"**.|
 
 ## XComponentOptions<sup>12+</sup>
 
@@ -106,7 +106,7 @@ Defines the options of the **XComponent**.
 
 ## NativeXComponentParameters<sup>19+</sup>
 
-Defines the options of the **XComponent**. An XComponent created with such constructor parameters can pass its corresponding [FrameNode](../js-apis-arkui-frameNode.md) object to the Native side, enabling the use of NDK APIs for surface lifecycle–related settings and [component event listening](../../../ui/ndk-listen-to-component-events.md).
+Defines the options of the **XComponent**. An **XComponent** created with such constructor parameters can pass its corresponding [FrameNode](../js-apis-arkui-frameNode.md) object to the native side, enabling the use of NDK APIs for surface lifecycle–related settings and [component event listening](../../../ui/ndk-add-component-events.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -124,7 +124,7 @@ In addition to universal attributes, the following attributes are supported.
   >
   > The **foregroundColor**, **obscured**, and **pixelStretchEffect** attributes are not supported. In API version 17 and earlier versions, when **type** is set to **SURFACE**, dynamic attribute setting, custom drawing, background setting (except **backgroundColor**), image effect (except **shadow**), **maskShape**, and **foregroundEffect** attributes are also not supported. Starting from API version 18, the following dynamic attributes are not supported for **type** set to **SURFACE**: **background**, **foregroundColor**, **animation**, **gesture**, **priorityGesture**, **parallelGesture**, **useEffect**, **renderGroup**, **flexGrow**, **direction**, **align**, **useSizeType**, **clip**, **geometryTransition**, **bindPopup**, **bindMenu**, **bindContextMenu**, **bindContentCover**, **bindSheet**, **stateStyles**, **restoreId**, **onVisibleAreaChange**, **accessibilityGroup**, **obscured**, **reuseId**, and **accessibilityVirtualNode**.
   >
-  > For the **XComponent** component of the TEXTURE or SURFACE type, if the [renderFit](./ts-universal-attributes-renderfit.md#renderfit) attribute is not set, it defaults to **RenderFit.RESIZE_FILL**.
+  > For the **XComponent** component of the **TEXTURE** or **SURFACE** type, if the [renderFit](./ts-universal-attributes-renderfit.md#renderfit) attribute is not set, it defaults to **RenderFit.RESIZE_FILL**.
   > 
   > For the **XComponent** of the **SURFACE** type with an opaque black background color: In versions earlier than API version 18, the [renderFit](./ts-universal-attributes-renderfit.md#renderfit18) attribute only supports **RenderFit.RESIZE_FILL**; since API version 18, the **renderFit** attribute supports all its available enum values.
   > 
@@ -138,7 +138,7 @@ Sets whether to enable the AI image analyzer, which supports subject recognition
 
 For the settings to take effect, this attribute must be used together with [StartImageAnalyzer](#startimageanalyzer12) and [StopImageAnalyzer](#stopimageanalyzer12) of **XComponentController**.
 
-This feature cannot be used together with the [overlay](ts-universal-attributes-overlay.md#overlay) attribute. If they are set at the same time, the **CustomBuilder** attribute in **overlay** has no effect. This feature depends on device capabilities.
+This attribute cannot be used together with the [overlay](ts-universal-attributes-overlay.md#overlay) attribute. If they are set at the same time, the [CustomBuilder](ts-types.md#custombuilder8) type in **overlay** has no effect. This feature depends on device capabilities.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -150,7 +150,7 @@ This feature cannot be used together with the [overlay](ts-universal-attributes-
 | -------- | -------- | -------- | -------- |
 | enable | boolean | Yes| Whether to enable the AI image analyzer.<br>**true**: enable; **false**: disable<br>Default value: **false**.|
 
-  > **NOTE**<br>
+  > **NOTE**
   >
   > This API has effect only when **type** is set to **SURFACE** or **TEXTURE**.
 
@@ -197,6 +197,45 @@ Sets the brightness of HDR video playback for the component.
   > This attribute is effective only when **type** is set to **SURFACE**.
   >
   > It is not supported for **XComponent** components created using the [ArkUI NDK API](../../../ui/ndk-build-ui-overview.md).
+
+### hdrBrightness<sup>24+</sup>
+
+hdrBrightness(brightness: number, type?: HdrType)
+
+Adjusts the brightness of the HDR video played within the component. This API takes effect only for HDR videos.
+> **NOTE**
+> 
+> - This API takes effect only when **type** in **XComponent** constructor parameter is set to [XComponentType](ts-appendix-enums.md#xcomponenttype10).SURFACE; otherwise, it does not take effect.
+> - If **type** is set to [HdrType](#hdrtype24).AIHDR, check whether the **hdrFormats** property of [Display](../js-apis-display.md#display) includes [HDRFormat](../../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat).VIDEO_AIHDR before calling this API. The current device supports the AI HDR type and the parameter setting takes effect only when **HDRFormat.VIDEO_AIHDR** is included. Otherwise, the default value **HdrType.DEFAULT** is used.
+> - It is not supported for **XComponent** components created using the [ArkUI NDK API](../../../ui/ndk-build-ui-overview.md).
+
+**Atomic service API:** This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description                  |
+| -------- | ------- | ---- | ---------------------- |
+| brightness | number | Yes  | Brightness of the HDR video. The value ranges from 0.0 to 1.0. Values below 0.0 are clamped to **0.0**, values above 1.0 are clamped to **1.0**, and all other invalid values default to **1.0**. A value of **0.0** means the video is displayed at SDR brightness, while **1.0** represents the maximum permitted HDR brightness level.|
+| type | [HdrType](#hdrtype24)| No  | HDR type for playing HDR videos.<br>Default value: **HdrType.DEFAULT**|
+
+## HdrType<sup>24+</sup>
+
+Enumerates HDR rendering types for videos.
+
+**Atomic service API:** This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Value| Description|
+| ---- | -- | ---- |
+| DEFAULT | 0 | Default HDR type, which uses the standard HDR rendering mode.|
+| AIHDR | 1 | AI HDR type, which uses AI to intelligently extend dynamic range during non-HDR content rendering to achieve HDR visual effects.|
 
 ## Events
 
@@ -284,7 +323,7 @@ A constructor used to create a **XComponentController** object.
 
 getXComponentSurfaceId(): string
 
-Obtains the ID of the surface held by the **XComponent**. This API works only when **type** of the **XComponent** is **SURFACE("surface")** or **TEXTURE**.
+Obtains the ID of the surface held by the **XComponent**. This API works only when **type** of the **XComponent** is **SURFACE** ("**surface**") or **TEXTURE**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -328,7 +367,7 @@ Obtains the ID of the surface held by the **XComponent**. This API works only wh
 
 setXComponentSurfaceSize(value: {surfaceWidth: number, surfaceHeight: number}): void
 
-Sets the width and height of the surface held by the **XComponent**. This API works only when **type** of the **XComponent** is set to **SURFACE("surface")** or **TEXTURE**.
+Sets the width and height of the surface held by the **XComponent**. This API works only when **type** of the **XComponent** is set to **SURFACE** ("**surface**") or **TEXTURE**.
 
 > **NOTE**
 >
@@ -348,7 +387,7 @@ Sets the width and height of the surface held by the **XComponent**. This API wo
 
 getXComponentContext(): Object
 
-Obtains the context of an **XComponent** object. This API works only when **type** of the **XComponent** is set to **SURFACE("surface")** or **TEXTURE**.
+Obtains the context of an **XComponent** object. This API works only when **type** of the **XComponent** is set to **SURFACE** ("**surface**") or **TEXTURE**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -364,7 +403,7 @@ Obtains the context of an **XComponent** object. This API works only when **type
 
 setXComponentSurfaceRect(rect: SurfaceRect): void
 
-Sets the display area for the surface held by the **XComponent**, including the width, height, and position coordinates relative to the upper left corner of the component. This API is only effective when the **XComponent** type is **SURFACE("surface")** or **TEXTURE**.
+Sets the display area for the surface held by the **XComponent**, including the width, height, and position coordinates relative to the top-left corner of the component. This API works only when the **XComponent** type is **SURFACE** ("**surface**") or **TEXTURE**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -376,7 +415,7 @@ Sets the display area for the surface held by the **XComponent**, including the 
 | ------ | ------------------------------------ | ---- | --------------------------------- |
 | rect   | [SurfaceRect](#surfacerect12) | Yes  | Rectangle of the surface held by the **XComponent**.|
 
-> **NOTE**<br>
+> **NOTE**
 >
 > If **offsetX** or **offsetY** in **rect** is not set or an abnormal value is passed, the offset effect of the surface display area relative to the x/y-axis of the **XComponent**'s upper-left corner defaults to center alignment.
 >
@@ -388,7 +427,7 @@ Sets the display area for the surface held by the **XComponent**, including the 
 
 getXComponentSurfaceRect(): SurfaceRect
 
-Obtains the display area for the surface held by the **XComponent**, including the width, height, and position coordinates relative to the upper left corner of the component. This API is only effective when the **XComponent** type is **SURFACE("surface")** or **TEXTURE**.
+Obtains the display area for the surface held by the **XComponent**, including the width, height, and position coordinates relative to the top-left corner of the component. This API works only when the **XComponent** type is **SURFACE** ("**surface**") or **TEXTURE**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -404,7 +443,7 @@ Obtains the display area for the surface held by the **XComponent**, including t
 
 onSurfaceCreated(surfaceId: string): void
 
-Triggered when the surface held by the **XComponent** is created. This API works only when **type** of the **XComponent** is set to **SURFACE("surface")** or **TEXTURE**.
+Triggered when the surface held by the **XComponent** is created. This API works only when **type** of the **XComponent** is set to **SURFACE** ("**surface**") or **TEXTURE**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -416,7 +455,7 @@ Triggered when the surface held by the **XComponent** is created. This API works
 | --------- | -------- | ---- | ------------------------------------------------- |
 | surfaceId | string   | Yes  | ID of the surface held by the **XComponent**.|
 
-> **NOTE**<br>
+> **NOTE**
 >
 > The callback is triggered only when the **libraryname** parameter is not set for the **XComponent**.
 
@@ -424,7 +463,7 @@ Triggered when the surface held by the **XComponent** is created. This API works
 
 onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void
 
-Triggered when the surface held by the **XComponent** has its size changed (including the time when the **XComponent** is created with the specified size). This API works only when **type** of the **XComponent** is set to **SURFACE** (**"surface"**) or **TEXTURE**.
+Triggered when the size of the surface held by the **XComponent** changes, including the initial size change upon first creation. This API works only when **type** of the **XComponent** is set to **SURFACE** ("**surface**") or **TEXTURE**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -437,7 +476,7 @@ Triggered when the surface held by the **XComponent** has its size changed (incl
 | surfaceId | string                                | Yes  | ID of the surface held by the **XComponent**.      |
 | rect      | [SurfaceRect](#surfacerect12) | Yes  | Area for displaying the surface held by the **XComponent**.|
 
-> **NOTE**<br>
+> **NOTE**
 >
 > The callback is triggered only when the **libraryname** parameter is not set for the **XComponent**.
 
@@ -445,7 +484,7 @@ Triggered when the surface held by the **XComponent** has its size changed (incl
 
 onSurfaceDestroyed(surfaceId: string): void
 
-Triggered when the surface held by the **XComponent** is destroyed. This API works only when **type** of the **XComponent** is set to **SURFACE** (**"surface"**) or **TEXTURE**.
+Triggered when the surface held by the **XComponent** is destroyed. This API works only when **type** of the **XComponent** is set to **SURFACE** ("**surface**") or **TEXTURE**. For details, see [Creating an XComponent and Managing the Surface Lifecycle](../../../ui/napi-xcomponent-guidelines.md#creating-an-xcomponent-and-managing-the-surface-lifecycle).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -457,7 +496,7 @@ Triggered when the surface held by the **XComponent** is destroyed. This API wor
 | --------- | -------- | ---- | ------------------------------------------------- |
 | surfaceId | string   | Yes  | ID of the surface held by the **XComponent**.|
 
-> **NOTE**<br>
+> **NOTE**
 >
 > The callback is triggered only when the **libraryname** parameter is not set for the **XComponent**.
 
@@ -467,7 +506,7 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise\<void>
 
 Starts AI image analysis in the given settings. Before calling this API, make sure the AI image analyzer is [enabled](#enableanalyzer12). This API uses a promise to return the result.<br>Because the image frame used for analysis is the one captured when this API is called, pay attention to the invoking time of this API.<br>If this API is repeatedly called before the execution is complete, an error callback is triggered.
 
-> **NOTE**<br>
+> **NOTE**
 > 
 > The image analysis type cannot be dynamically modified.
 > This API depends on device capabilities. If it is called on an incompatible device, an error code is returned.
@@ -504,7 +543,7 @@ stopImageAnalyzer(): void
 
 Stops AI image analysis. The content displayed by the AI image analyzer will be destroyed.
 
-> **NOTE**<br>
+> **NOTE**
 > 
 > If this API is called when the **startImageAnalyzer** API has not yet returned any result, an error callback is triggered.
 > This feature depends on device capabilities.
@@ -517,7 +556,7 @@ Stops AI image analysis. The content displayed by the AI image analyzer will be 
 
 setXComponentSurfaceRotation(rotationOptions: SurfaceRotationOptions): void
 
-Sets whether to lock the orientation of the surface held by this **XComponent** when the screen rotates. This API is effective only when the **XComponent** type is **SURFACE** (**"surface"**).
+Sets whether to lock the orientation of the surface held by this **XComponent** when the screen rotates. This API works only when **type** of the **XComponent** is **SURFACE** ("**surface**").
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -543,7 +582,7 @@ Sets whether to lock the orientation of the surface held by this **XComponent** 
 
 getXComponentSurfaceRotation(): Required\<SurfaceRotationOptions>
 
-Obtains whether the orientation of the surface held by this **XComponent** is locked when the screen rotates. This API is effective only when the **XComponent** type is **SURFACE** (**"surface"**).
+Obtains whether the orientation of the surface held by this **XComponent** is locked when the screen rotates. This API works only when **type** of the **XComponent** is set to **SURFACE** ("**surface**").
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -655,7 +694,7 @@ Describes the rectangle of the surface held by the **XComponent**.
 | surfaceWidth  | number | No  | No  | Width of the surface rectangle.<br>Unit: px.                           |
 | surfaceHeight | number | No  | No  | Height of the surface rectangle.<br>Unit: px.                           |
 
-> **NOTE**<br>
+> **NOTE**
 >
 > The **surfaceWidth** and **surfaceHeight** attributes default to the size of the **XComponent** if the [setXComponentSurfaceRect](ts-basic-components-xcomponent.md#setxcomponentsurfacerect12) API is not called and neither [border](ts-universal-attributes-border.md#border) nor [padding](ts-universal-attributes-size.md#padding) is set.
 > 
@@ -685,15 +724,15 @@ You can preview how this component looks on a real device, but not in DevEco Stu
 This example shows how to use the **enableAnalyzer** attribute to enable the AI image analyzer. You can use **XComponentController** to start or stop AI analysis on images.
 
 <!--RP1-->
->  
+> **NOTE**
 >
->  
+> For details about how to implement the drawing logic (functions related to **nativeRender**), see [ArkTS XComponent Example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent).
 <!--RP1End-->
 
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
-import nativeRender from 'libnativerender.so';// Your own .so file implementation (see above for details).
+import nativeRender from 'libnativerender.so';// Custom own .so file implementation (see the preceding note for details).
 
 class CustomXComponentController extends XComponentController {
   onSurfaceCreated(surfaceId: string): void {
@@ -702,7 +741,7 @@ class CustomXComponentController extends XComponentController {
   }
 
   onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}`);
     nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
   }
 
@@ -817,9 +856,9 @@ struct XComponentExample {
 
 This example shows how to use **setXComponentSurfaceRotation** to lock the surface orientation during screen rotation so that the surface does not rotate with the screen.
 
->  
+> **NOTE**
 >
->  <!--RP2End-->
+> For details about how to implement the drawing logic (functions related to **nativeRender**), see <!--RP2-->[ArkTS XComponent Example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent).<!--RP2End-->
 
 ```ts
 // xxx.ets
@@ -832,7 +871,7 @@ class MyXComponentController extends XComponentController {
   }
 
   onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}`);
     nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
   }
 
@@ -976,13 +1015,13 @@ struct Index {
 
 In API version 22 and later versions, this example calls the [setXComponentSurfaceConfig](#setxcomponentsurfaceconfig22) API to set whether the surface held by the **XComponent** is treated as opaque during rendering.
 
->  
+> **NOTE**
 >
->  <!--RP2End-->
+> For details about how to implement the drawing logic (functions related to **nativeRender**), see <!--RP2-->[ArkTS XComponent Example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent).<!--RP2End-->
 
 ```ts
 // xxx.ets
-import nativeRender from 'libnativerender.so'; // Your own .so file implementation (see above for details).
+import nativeRender from 'libnativerender.so'; // Custom own .so file implementation (see the preceding note for details).
 
 // Override XComponentController to set lifecycle callbacks.
 class MyXComponentController extends XComponentController{
@@ -991,7 +1030,7 @@ class MyXComponentController extends XComponentController{
     nativeRender.SetSurfaceId(BigInt(surfaceId));
   }
   onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}`);
     // Call ChangeSurface to draw content in onSurfaceChanged.
     nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
   }

@@ -1,7 +1,7 @@
-# 常驻任务开发指导（Worker）
+# 常驻任务开发指导 (Worker)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -19,32 +19,27 @@
    <!-- @[worker_receive_child_thread_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/ResidentTaskGuide.ets) -->
    
    ``` TypeScript
-   import { worker } from '@kit.ArkTS';
-   import resource from '../util/resource';
-   
-   const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
+   import { MessageEvents, worker } from '@kit.ArkTS';
    
    @Entry
    @Component
    struct Index {
-     @State message: string = 'Listener task';
-   
      build() {
        Column() {
-         Text(this.message)
+         Text('Listener task')
            .id('HelloWorld')
            .fontSize(50)
            .fontWeight(FontWeight.Bold)
            .onClick(() => {
-             workerInstance.postMessage({ type: 'End' });
-             workerInstance.onmessage = (event) => {
-               console.info(resource.resourceToString($r('app.string.Information')), event.data);
+             const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
+             workerInstance.onmessage = (event: MessageEvents) => {
+               console.info('UI主线程收到消息：', event.data);
              }
+             workerInstance.postMessage({type: 'start'})
              // 10秒后停止worker
              setTimeout(() => {
                workerInstance.postMessage({ type: 'stop' });
              }, 10000);
-             this.message = 'success';
            })
        }
        .height('100%')
@@ -58,12 +53,13 @@
    <!-- @[worker_correspond_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/Worker.ets) -->
    
    ``` TypeScript
-   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    let isRunning = false;
    workerPort.onmessage = (e: MessageEvents) => {
      const type = e.data.type as string;
-     if (type === 'End') {
+     if (type === 'start') {
        if (!isRunning) {
          isRunning = true;
          // 开始常驻任务
@@ -71,9 +67,9 @@
        }
      } else if (type === 'stop') {
        isRunning = false;
-       workerPort.close();  // 关闭Worker
      }
    }
+   
    // 模拟常驻任务
    function performTask() {
      if (isRunning) {
@@ -81,7 +77,9 @@
        workerPort.postMessage('Worker is performing a task');
        // 1秒后再次执行任务
        setTimeout(performTask, 1000);
+     } else {
+       workerPort.postMessage('Worker has stopped performing the task');
+       workerPort.close();
      }
-     workerPort.postMessage('Worker is stop performing a task');
    }
    ```

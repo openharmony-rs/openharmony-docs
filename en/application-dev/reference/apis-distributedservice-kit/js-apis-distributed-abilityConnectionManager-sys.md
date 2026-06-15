@@ -13,6 +13,7 @@ The **abilityConnectionManager** module provides APIs for cross-device connectio
 > The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > The APIs provided by this module are system APIs.
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -25,6 +26,8 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;CollaborateEventInfo&gt;):&nbsp;void
 
 Registers a listener for the collaborateEvent events. This API uses an asynchronous callback to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -42,7 +45,7 @@ Registers a listener for the collaborateEvent events. This API uses an asynchron
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -65,6 +68,8 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 Registers a listener for the **receiveImage** events.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **System API**: This is a system API.
@@ -75,15 +80,15 @@ Registers a listener for the **receiveImage** events.
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **receiveImage**. This event is triggered when `sendImage()` is called.  |
 | sessionId | number  | Yes   | Collaboration session ID.   |
-| callback | Callback&lt;[EventCallbackInfo](js-apis-distributed-abilityConnectionManager.md#eventcallbackinfo)&gt; | Yes   | Registered callback.   |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | Yes   | Registered callback.   |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
@@ -103,6 +108,8 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 Unregisters the listener for the **collaborateEvent** events.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **System API**: This is a system API.
@@ -119,9 +126,9 @@ Unregisters the listener for the **collaborateEvent** events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
@@ -139,6 +146,8 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 Unregisters the listener for the **receiveImage** events.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **System API**: This is a system API.
@@ -149,15 +158,15 @@ Unregisters the listener for the **receiveImage** events.
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **receiveImage**.   |
 | sessionId | number  | Yes   | Collaboration session ID.   |
-| callback | Callback&lt;[EventCallbackInfo](js-apis-distributed-abilityConnectionManager.md#eventcallbackinfo)&gt; | No   | Registered callback. If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, listening will be disabled for all event callbacks.   |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | No   | Registered callback. If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, listening will be disabled for all event callbacks.   |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
@@ -174,6 +183,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?:&nbsp;number):&nbsp;Promise&lt;void&gt;
 
 Sends images from one device to another after a connection is successfully established. This method uses a promise to return the result asynchronously.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -197,7 +208,7 @@ Sends images from one device to another after a connection is successfully estab
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -209,7 +220,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
@@ -222,7 +233,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       return;
       }
 
-      let file = fs.openSync(photoSelectResult.photoUris[0], fs.OpenMode.READ_ONLY);
+      let file = fileIo.openSync(photoSelectResult.photoUris[0], fileIo.OpenMode.READ_ONLY);
       hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
 
       let sessionId = 100;
@@ -246,6 +257,8 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 Creates transport streams to send images and videos from one device to another after a connection is successfully established. This API uses a promise to return the result.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **System API**: This is a system API.
@@ -267,9 +280,8 @@ Creates transport streams to send images and videos from one device to another a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](./errorcode-device-manager.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 32300001      | Only one stream can be created for the current session.|
@@ -303,6 +315,8 @@ setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbs
 
 Sets the binding relationship between transport streams and surfaces.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **System API**: This is a system API.
@@ -319,7 +333,7 @@ Sets the binding relationship between transport streams and surfaces.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -345,9 +359,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## abilityConnectionManager.getSurfaceId
 
-getSurfaceId(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
+getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 Obtains the unique ID of the surface bound to the specified transport streams.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -357,7 +373,7 @@ Obtains the unique ID of the surface bound to the specified transport streams.
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | Collaboration session ID.|
+| streamId | number | Yes   | Collaboration session ID.|
 | param | [SurfaceParam](#surfaceparam) | Yes   | Surface configuration.|
 
 **Return value**
@@ -370,7 +386,7 @@ Obtains the unique ID of the surface bound to the specified transport streams.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -395,9 +411,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## abilityConnectionManager.updateSurfaceParam
 
-updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
+updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
 
 Updates the configuration of the surface bound to the specified transport streams.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -407,14 +425,14 @@ Updates the configuration of the surface bound to the specified transport stream
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | Collaboration session ID.|
+| streamId | number | Yes   | Collaboration session ID.|
 | param | [SurfaceParam](#surfaceparam) | Yes   | Surface configuration.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -439,9 +457,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## abilityConnectionManager.destroyStream
 
-destroyStream(sessionId:&nbsp;number):&nbsp;void
+destroyStream(streamId:&nbsp;number):&nbsp;void
 
 Destroys the transport streams after the sending of images and videos is complete.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -451,15 +471,14 @@ Destroys the transport streams after the sending of images and videos is complet
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | Collaboration session ID.|
+| streamId | number | Yes   | Collaboration session ID.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
@@ -476,9 +495,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## abilityConnectionManager.startStream
 
-startStream(sessionId:&nbsp;number):&nbsp;void
+startStream(streamId:&nbsp;number):&nbsp;void
 
 Starts transmission of the specified transport streams.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -488,13 +509,13 @@ Starts transmission of the specified transport streams.
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | Collaboration session ID.|
+| streamId | number | Yes   | Collaboration session ID.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](./errorcode-device-manager.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -513,9 +534,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## abilityConnectionManager.stopStream
 
-stopStream(sessionId:&nbsp;number):&nbsp;void
+stopStream(streamId:&nbsp;number):&nbsp;void
 
 Stops transmission of the specified transport streams.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -525,13 +548,13 @@ Stops transmission of the specified transport streams.
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | Collaboration session ID.|
+| streamId | number | Yes   | Collaboration session ID.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -547,20 +570,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   abilityConnectionManager.stopStream(sessionId)
   ```
 
-## CollaborateEventInfo
-
-Defines the collaboration event information.
-
-**System capability**: SystemCapability.DistributedSched.AppCollaboration
-
-| Name      | Type  | Read-Only| Optional| Description     |
-| -------- | ------ | ---- | ---- | ------- |
-| eventType | [CollaborateEventType](#collaborateeventtype) | No   | No  | Collaboration event type.|
-| eventMsg | string | No   | Yes  | Collaboration event message.|
-
 ## StreamParam
 
 Defines stream transmission configuration parameters.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -575,6 +589,8 @@ Defines stream transmission configuration parameters.
 
 Defines the surface configuration.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name      | Type  | Read-Only| Optional| Description     |
@@ -585,20 +601,11 @@ Defines the surface configuration.
 | rotation | number | No   | Yes  | Rotation angle of the video. The value range is {0, 90, 180, 270}. The default value is **0**.|
 | flip | [FlipOptions](#flipoptions) | No   | Yes  | Video flip option.|
 
-## CollaborateEventType
-
-Enumerates collaboration event types.
-
-**System capability**: SystemCapability.DistributedSched.AppCollaboration
-
-| Name|  Value| Description|
-|-------|-------|-------|
-| SEND_FAILURE | 0 |Task sending failure.|
-| COLOR_SPACE_CONVERSION_FAILURE | 1 |Color space conversion failure.|
-
 ## FlipOptions
 
 Enumerates video flip options.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -611,6 +618,8 @@ Enumerates video flip options.
 
 Enumerates stream transmission modes.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name|  Value| Description|
@@ -621,6 +630,8 @@ Enumerates stream transmission modes.
 ## VideoPixelFormat
 
 Enumerates video pixel formats.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -634,6 +645,8 @@ Enumerates video pixel formats.
 
 Defines the connection options for the application.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name         | Type   | Read-Only  | Optional  | Description         |
@@ -645,6 +658,8 @@ Defines the connection options for the application.
 
 Defines the event callback information.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name      | Type   | Read-Only | Optional | Description         |
@@ -654,6 +669,8 @@ Defines the event callback information.
 ## StartOptionParams
 
 Enumerates application start options.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 

@@ -92,7 +92,7 @@ You should be aware of these differences and use unique names to achieve better 
 
 Like other obfuscation tools, ArkGuard increases reverse engineering difficulty but cannot prevent it entirely.
 
-You should not rely solely on ArkGuard for security. For higher security requirements, consider [application encryption](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/code-protect) and third-party hardening measures.
+You should not rely solely on ArkGuard for security. For higher security requirements, consider application encryption and third-party hardening measures.
 
 ## Obfuscation Mechanism and Process
 
@@ -216,7 +216,7 @@ To obfuscate string literal property names, you must use this option together wi
 -enable-string-property-obfuscation
 ```
 
-According to the preceding configuration, the obfuscation effect of **"fritstName"** and **"personAge"** is as follows:
+According to the preceding configuration, the obfuscation effect of **"firstName"** and **"personAge"** is as follows:
 
 <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
 

@@ -81,18 +81,6 @@ Defines a higher-resolution image object.
 | ------ | ----------------------------- |-----| ---------- | ---------- |
 | raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| No | Yes  | Raw image.|
 
-## ExposureMode
-
-Enumerates the exposure modes.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name                          | Value  | Description     |
-| ----------------------------- |-----|---------|
-| EXPOSURE_MODE_MANUAL<sup>12+</sup>          | 3   | Manual exposure mode.|
-
 ## PolicyType<sup>12+</sup>
 
 Enumerates the policy types.
@@ -150,7 +138,7 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.               |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
@@ -194,7 +182,7 @@ Checks whether the camera device can be muted.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202             |  Permission verification failed. A non-system application calls a system API.   |
 
@@ -256,7 +244,7 @@ Mutes the camera device permanently.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 201               |  Permission denied.                        |
 | 202               |  Not System Application.                  |
@@ -292,7 +280,7 @@ Subscribes to camera mute status events. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202               |  Permission verification failed. A non-system application calls a system API.       |
 
@@ -337,7 +325,7 @@ Unsubscribes from camera mute status events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202               |  Permission verification failed. A non-system application calls a system API.     |
 
@@ -381,9 +369,9 @@ Checks whether a camera device supports prelaunch.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
-| 202 | Not System Application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 7400101 | Parameter missing or parameter type incorrect. |
 
 **Example**
@@ -428,7 +416,7 @@ Before the setting, call [isPrelaunchSupported](#isprelaunchsupported) to check 
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400101 | Parameter missing or parameter type incorrect. |
@@ -472,7 +460,7 @@ Prelaunches the camera device. This API is called when a user clicks the system 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -491,49 +479,6 @@ function preLaunch(context: common.BaseContext): void {
     let err = error as BusinessError;
     console.error(`prelaunch error. Code: ${err.code}, message: ${err.message}`);
   }
-}
-```
-
-### createDeferredPreviewOutput
-
-createDeferredPreviewOutput(profile?: Profile): PreviewOutput
-
-Creates a deferred PreviewOutput instance and adds it, instead of a common PreviewOutput instance, to the data stream during stream configuration.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name    | Type            | Mandatory| Description      |
-| -------- | --------------- | ---- | --------- |
-| profile | [Profile](arkts-apis-camera-i.md#profile) | No| Configuration file of the camera preview stream.|
-
-**Return value**
-
-| Type| Description|
-| -------- | --------------- |
-| [PreviewOutput](#previewoutput) | PreviewOutput instance obtained.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202             |  Not System Application.       |
-| 7400101         |  Parameter missing or parameter type incorrect. |
-
-**Example**
-
-```ts
-import { common } from '@kit.AbilityKit';
-
-function getDeferredPreviewOutput(context: common.BaseContext, previewProfile: camera.Profile): camera.PreviewOutput {
-  const cameraManager: camera.CameraManager = camera.getCameraManager(context);
-  const output: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
-  return output;
 }
 ```
 
@@ -557,7 +502,7 @@ Pre-switches a camera device to speed up its startup.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                          |
+| Error Code  | Error Message                                          |
 | ------- |------------------------------------------------|
 | 202     | Not System Application.                        |
 | 7400101 | Parameter missing or parameter type incorrect. |
@@ -602,7 +547,6 @@ Enumerates the camera output formats.
 
 | Name                    | Value       | Description        |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DNG<sup>12+</sup> |   4   | Image in digital negative format.     |
 | CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup> |    5    | Image in extreme digital format.  |
 | CAMERA_FORMAT_DEPTH_16<sup>13+</sup> |   3000   | Depth map in DEPTH_16 format.     |
 | CAMERA_FORMAT_DEPTH_32<sup>13+</sup> |   3001   | Depth map in DEPTH_32 format.     |
@@ -636,7 +580,7 @@ Describes the profile of depth data. It inherits from [Profile](arkts-apis-camer
 
 | Name                      | Type                                     | Read-only| Optional| Description       |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
-| depthDataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | Yes |  No | Accuracy of the depth data, which can be either relative accuracy or absolute accuracy.|
+| dataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | Yes |  No | Accuracy of the depth data, which can be either relative accuracy or absolute accuracy.|
 
 ## DepthDataQualityLevel<sup>13+</sup>
 
@@ -646,11 +590,11 @@ Enumerates the quality levels of depth data.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name     | Type                         | Read-only| Optional| Description           |
-| -------- | ----------------------------- |----- |---| -------------- |
-| DEPTH_DATA_QUALITY_BAD     | number            |  Yes | No| The depth map is of poor quality and cannot be used for blurring.     |
-| DEPTH_DATA_QUALITY_FAIR      | number          |  Yes | No| The depth map is of average quality and cannot be used for high-quality blurring.     |
-| DEPTH_DATA_QUALITY_GOOD      | number          |  Yes | No| The depth map is of high quality and can be used for high-quality blurring.     |
+| Name                        |  Value | Description                                     |
+| ---------------------------- | --- | ----------------------------------------- |
+| DEPTH_DATA_QUALITY_BAD       |  0  | The depth map is of poor quality and cannot be used for blurring.          |
+| DEPTH_DATA_QUALITY_FAIR      |  1  | The depth map is of average quality and cannot be used for high-quality blurring.   |
+| DEPTH_DATA_QUALITY_GOOD      |  2  | The depth map is of high quality and can be used for high-quality blurring.   |
 
 ## DepthData<sup>13+</sup>
 
@@ -689,7 +633,7 @@ Releases depth data output resources. This API uses a promise to return the resu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -725,7 +669,7 @@ Starts depth data output. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -765,7 +709,7 @@ Stops depth data output. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -810,7 +754,7 @@ Subscribes to depth data availability events. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -852,7 +796,7 @@ Unsubscribes from depth data availability events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -898,7 +842,7 @@ Subscribes to DepthDataOutput error events. This API uses an asynchronous callba
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -937,7 +881,7 @@ Unsubscribes from DepthDataOutput error events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -973,7 +917,7 @@ Checks whether depth fusion is supported.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202             | Not System Application. |
 | 7400103         | Session not config, only throw in session usage.     |
@@ -1013,7 +957,7 @@ Obtains the depth fusion threshold.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202             | Not System Application. |
 | 7400103         | Session not config, only throw in session usage.      |
@@ -1056,7 +1000,7 @@ Checks whether depth fusion is enabled.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202             | Not System Application. |
 | 7400103         | Session not config.      |
@@ -1098,7 +1042,7 @@ Enables depth fusion.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                                          |
+| Error Code  | Error Message                                          |
 |---------|------------------------------------------------|
 | 202     | Not System Application.                        |
 | 7400101 | Parameter missing or parameter type incorrect. |
@@ -1170,59 +1114,6 @@ Defines the effect parameters used to preheat an image.
 
 Implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
-### addDeferredSurface
-
-addDeferredSurface(surfaceId: string): void
-
-Adds a surface for delayed preview. This API can run after [Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) or [Session.start](arkts-apis-camera-Session.md#start11-1) is called.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name    | Type        | Mandatory| Description                      |
-| -------- | --------------| ---- | ------------------------ |
-| surfaceId | string | Yes| Surface ID, which is obtained from [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md).|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202                    |  Permission verification failed. A non-system application calls a system API.    |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-
-**Example**
-
-```ts
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function preview(context: common.BaseContext, cameraDevice: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): Promise<void> {
-  const cameraManager: camera.CameraManager = camera.getCameraManager(context);
-  const cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameraDevice);
-  const previewOutput: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
-  const photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
-  const session: camera.Session  = cameraManager.createSession(mode);
-  session.beginConfig();
-  session.addInput(cameraInput);
-  session.addOutput(previewOutput);
-  session.addOutput(photoOutput);
-  await session.commitConfig();
-  try {
-    await session.start();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`start session failed. error code: ${err.code}`);
-  }
-  previewOutput.addDeferredSurface(previewSurfaceId);
-}
-```
-
 ### isSketchSupported<sup>11+</sup>
 
 isSketchSupported(): boolean
@@ -1243,7 +1134,7 @@ Checks whether Picture-in-Picture (PiP) preview is supported.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message                   |
+| Error Code        | Error Message                   |
 | --------------- |-------------------------|
 | 202             | Not System Application. |
 
@@ -1279,13 +1170,13 @@ Obtains the zoom ratio when PiP preview is enabled.
 
 | Type           | Description                    |
 | -------------- | ----------------------- |
-| number | Zoom ratio obtained. If PiP preview is not supported, the value **-1** is returned.|
+| number | Zoom ratio. If PiP preview is not supported, the value **-1** is returned.|
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103         |  Session not config.                      |
 | 202             |  Not System Application.                  |
@@ -1319,7 +1210,7 @@ Enables or disables PiP preview.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID    | Error Message                       |
+| Error Code    | Error Message                       |
 |-----------|-----------------------------|
 | 202       | Not System Application.     |
 | 7400102   | Operation not allowed.      |
@@ -1366,7 +1257,7 @@ Attaches a surface for PiP preview.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                          |
+| Error Code  | Error Message                                          |
 |---------|------------------------------------------------|
 | 202     | Not System Application.                        |
 | 7400101 | Parameter missing or parameter type incorrect. |
@@ -1415,7 +1306,7 @@ Subscribes to PiP status change events. This API uses an asynchronous callback t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                         |
+| Error Code  | Error Message                         |
 |---------|-------------------------------|
 | 202     | Not System Application.       |
 
@@ -1458,7 +1349,7 @@ Unsubscribes from PiP status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                         |
+| Error Code  | Error Message                         |
 |---------|-------------------------------|
 | 202     | Not System Application.       |
 
@@ -1508,7 +1399,7 @@ Obtains the PixelMap of a thumbnail. This API uses a promise to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 
@@ -1544,7 +1435,7 @@ Releases depth data output resources. This API uses a promise to return the resu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 
@@ -1586,7 +1477,7 @@ Starts the burst mode, in which users can capture a series of photos in quick su
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 | 7400101         |  Parameter missing or parameter type incorrect.          |
@@ -1634,7 +1525,7 @@ This API is used to end the burst mode, which is started by calling [burstCaptur
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 | 7400104         |  Session not running.          |
@@ -1681,7 +1572,7 @@ Checks whether deferred delivery of a certain type is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message                                               |
+| Error Code        | Error Message                                               |
 | --------------- |-----------------------------------------------------|
 | 7400101                | Parameter missing or parameter type incorrect.      |
 | 7400104                | Session not running.                                |
@@ -1724,7 +1615,7 @@ Checks whether deferred delivery of a certain type is enabled.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  Session not running.                                  |
@@ -1761,7 +1652,7 @@ Enables deferred delivery of a certain type.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  Session not running.                                  |
@@ -1796,7 +1687,7 @@ Checks whether automatic high quality is supported for photos.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400104                |  Session not running.                                  |
@@ -1832,7 +1723,7 @@ Enables automatic high quality for photos. Before using this API, call [isAutoHi
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -1870,7 +1761,7 @@ Subscribes to events indicating available thumbnail proxies. This API uses an as
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 
@@ -1916,7 +1807,7 @@ Unsubscribes from events indicating available thumbnail proxies.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 
@@ -1963,7 +1854,7 @@ This API takes effect after [addOutput](arkts-apis-camera-Session.md#addoutput11
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.        |
 | 7400104                |  session is not running.        |
@@ -2025,7 +1916,7 @@ This API takes effect after [addOutput](arkts-apis-camera-Session.md#addoutput11
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.        |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -2191,7 +2082,7 @@ Enumerates the types of emotions in the detected human face information.
 
 ## MetadataObject
 
-Implements the basic metadata object used for camera detection. It serves as the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the basic metadata object used for camera detection. It serves as the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2202,7 +2093,7 @@ Implements the basic metadata object used for camera detection. It serves as the
 
 ## MetadataFaceObject<sup>13+</sup>
 
-Implements the human face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the human face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2218,13 +2109,13 @@ Implements the human face metadata object used for camera detection. It inherits
 
 ## MetadataHumanBodyObject<sup>13+</sup>
 
-Implements the human body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the human body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataCatFaceObject<sup>13+</sup>
 
-Implements the cat face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the cat face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2235,13 +2126,13 @@ Implements the cat face metadata object used for camera detection. It inherits f
 
 ## MetadataCatBodyObject<sup>13+</sup>
 
-Implements the cat body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the cat body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataDogFaceObject<sup>13+</sup>
 
-Implements the dog face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the dog face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2252,19 +2143,19 @@ Implements the dog face metadata object used for camera detection. It inherits f
 
 ## MetadataDogBodyObject<sup>13+</sup>
 
-Implements the dog body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the dog body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataSalientDetectionObject<sup>13+</sup>
 
-Implements the salient detection metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the salient detection metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataBarcodeObject<sup>14+</sup>
 
-Implements the barcode metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the barcode metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2309,10 +2200,10 @@ Obtains the supported beauty types.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                |  Not System Application.                                   |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.             |
 
 **Example**
 
@@ -2356,10 +2247,10 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                |  Not System Application.                                   |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.       |
 
 **Example**
 
@@ -2413,7 +2304,7 @@ Obtains the supported manual exposure durations.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                |  Not System Application.  |
 | 7400101            |  Parameter missing or parameter type incorrect.  |
@@ -2453,7 +2344,7 @@ Obtains the manual exposure duration in use.
  
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                               |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -2486,13 +2377,13 @@ Sets the manual exposure duration. Before using this API, call [getSupportedExpo
 
 | Name     | Type                   | Mandatory| Description                                                                     |
 | -------- | --------------------------| ---- |-------------------------------------------------------------------------|
-| value    | number                    | Yes  | Manual exposure duration, which must be one of the supported durations obtained by running [getSupportedExposureRange](#getsupportedexposurerange11).|
+| exposure    | number                    | Yes  | Manual exposure duration, which must be one of the supported durations obtained by running [getSupportedExposureRange](#getsupportedexposurerange11).|
 
  **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.  |
 | 7400102                |  Operation not allowed.   |
@@ -2561,9 +2452,9 @@ Describes the tripod detection result.
 | -------- |---------------------------------| -------- | -------- |---------|
 | tripodStatus | [TripodStatus](#tripodstatus13) |   Yes    |    No   | Tripod status.|
 
-## SceneDetection<sup>12+</sup>
+## SceneDetectionQuery<sup>12+</sup>
 
-Provides the scene detection capability.
+Provides the scene detection and query capabilities.
 
 ### isSceneFeatureSupported<sup>12+</sup>
 
@@ -2591,9 +2482,9 @@ Checks whether a scene feature is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                          |
+| Error Code  | Error Message                                          |
 |---------|------------------------------------------------|
-| 202     | Not System Application.                        |
+| 202     | Not System Application, only throw in session usage.                     |
 | 7400101 | Parameter missing or parameter type incorrect. |
 
 **Example**
@@ -2604,6 +2495,9 @@ function isSceneFeatureSupported(photoSessionForSys: camera.PhotoSessionForSys, 
   return isSupported;
 }
 ```
+## SceneDetection<sup>12+</sup>
+
+Provides the scene detection capability. It inherits from [SceneDetectionQuery](#scenedetectionquery12).
 
 ### enableSceneFeature<sup>12+</sup>
 
@@ -2626,7 +2520,7 @@ Enables or disables a scene feature. This API must be called after [SceneFeature
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                          |
+| Error Code  | Error Message                                          |
 |---------|------------------------------------------------|
 | 202     | Not System Application.                        |
 | 7400101 | Parameter missing or parameter type incorrect. |
@@ -2699,7 +2593,7 @@ Obtains the equivalent focal length information list in the current mode.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                      |
 | 7400103                |  Session not config, only throw in session usage.      |
@@ -2743,7 +2637,7 @@ Instructs the bottom layer to prepare for zooming, for example, powering on the 
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                      |
 | 7400103                |  Session not config.                          |
@@ -2778,7 +2672,7 @@ Instructs the bottom layer to unprepare for zooming.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                      |
 | 7400103                |  Session not config.                          |
@@ -2798,19 +2692,6 @@ function unprepareZoom(sessionExtendsZoom: camera.Zoom): void {
   }
 }
 ```
-
-## ZoomRange<sup>11+</sup>
-
-Obtains the supported zoom ratio range. The range is [min, max), which includes the minimum value but excludes the maximum value.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name    | Type          | Read-only| Optional| Description        |
-| -------- | ------------- |---- | ---- | -------------|
-| min      | number        | Yes |  No | Minimum value of the zoom ratio range. |
-| max      | number        | Yes |  No | Maximum value of the zoom ratio range.|
 
 ## Beauty<sup>11+</sup>
 
@@ -2839,7 +2720,7 @@ Sets a beauty type and its level. Beauty mode is turned off only when all the [b
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                |  Not System Application.                                   |
 | 7400103                |  Session not config.                                   |
@@ -2885,7 +2766,7 @@ Obtains the level of the beauty type in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                |  Not System Application.                                   |
 | 7400103                |  Session not config.                                   |
@@ -2933,10 +2814,10 @@ Obtains the supported color effects.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                      |
-| 202             |  Not System Application.                  |
+| 202             |  Not System Application.                 |
+| 7400103         |  Session not config, only throw in session usage.  |
 
 **Example**
 
@@ -2973,7 +2854,7 @@ Sets a color effect. Before the setting, call [getSupportedColorEffects](#getsup
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 202             |  Not System Application.                         |
@@ -3006,7 +2887,7 @@ Obtains the color effect in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 202             |  Not System Application.                         |
@@ -3059,10 +2940,10 @@ Obtains the supported portrait effects.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                |
-| 202             |  Not System Application.            |
+| 202                 |  Not System Application.        |
+| 7400103             |  Session not config, only throw in session usage.   |
 
 **Example**
 
@@ -3099,7 +2980,7 @@ Sets a portrait effect. Before the setting, use [getSupportedPortraitEffects](#g
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103         |  Session not config.                                   |
 | 202             |  Not System Application.                         |
@@ -3142,7 +3023,7 @@ Obtains the portrait effect in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103         |  Session not config.                |
 | 202             |  Not System Application.            |
@@ -3156,22 +3037,9 @@ function getPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession): c
 }
 ```
 
-## PhysicalAperture<sup>11+</sup>
+## ApertureQuery<sup>12+</sup>
 
-Defines the physical aperture information.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name      | Type                      |  Read-only| Optional | Description              |
-| ---------- | ------------------------- | ----- |-----| ----------------- |
-| zoomRange  | [ZoomRange](#zoomrange11) | No   | No  | Zoom range of a given physical aperture. |
-| apertures  | Array\<number\>           | No   | No  | Array of physical apertures supported.     |
-
-## Aperture<sup>11+</sup>
-
-Provides the APIs for aperture settings.
+Provides the aperture query capability.
 
 ### getSupportedVirtualApertures<sup>11+</sup>
 
@@ -3193,10 +3061,10 @@ Obtains the supported virtual apertures.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                             |
-| 202             |  Not System Application.                         |
+| 202         |  Not System Application.                           |
+| 7400103     |  Session not config, only throw in session usage.  |
 
 **Example**
 
@@ -3206,6 +3074,10 @@ function getSupportedVirtualApertures(session: camera.PortraitPhotoSession): Arr
   return virtualApertures;
 }
 ```
+
+## Aperture<sup>11+</sup>
+
+Provides the APIs for aperture settings. It inherits from [ApertureQuery](#aperturequery12).
 
 ### getVirtualAperture<sup>11+</sup>
 
@@ -3227,7 +3099,7 @@ Obtains the virtual aperture in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103         |  Session not config.                             |
 | 202             |  Not System Application.                         |
@@ -3261,7 +3133,7 @@ Sets a virtual aperture. Before the setting, call [getSupportedVirtualApertures]
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103         |  Session not config.                          |
 | 202             |  Not System Application.                      |
@@ -3271,107 +3143,6 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 function setVirtualAperture(session: camera.PortraitPhotoSession, virtualAperture: number): void {
   session.setVirtualAperture(virtualAperture);
-}
-```
-
-### getSupportedPhysicalApertures<sup>11+</sup>
-
-getSupportedPhysicalApertures(): Array\<PhysicalAperture\>
-
-Obtains the supported physical apertures.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type                                            | Description                          |
-| ----------------------------------------------- | ---------------------------- |
-| Array<[PhysicalAperture](#physicalaperture11)>    | Array of physical apertures supported.              |
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400103         |  Session not config.                          |
-| 202             |  Not System Application.                      |
-
-**Example**
-
-```ts
-function getSupportedPhysicalApertures(session: camera.PortraitPhotoSession): Array<camera.PhysicalAperture> {
-  let physicalApertures: Array<camera.PhysicalAperture> = session.getSupportedPhysicalApertures();
-  return physicalApertures;
-}
-```
-
-### getPhysicalAperture<sup>11+</sup>
-
-getPhysicalAperture(): number
-
-Obtains the physical aperture in use.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type                | Description                          |
-| -------------------- | ---------------------------- |
-| number               | Physical aperture.          |
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400103         |  Session not config.                             |
-| 202             |  Not System Application.                         |
-
-**Example**
-
-```ts
-function getPhysicalAperture(session: camera.PortraitPhotoSession): number {
-  let physicalAperture: number = session.getPhysicalAperture();
-  return physicalAperture;
-}
-```
-
-### setPhysicalAperture<sup>11+</sup>
-
-setPhysicalAperture(aperture: number): void
-
-Sets a physical aperture. Before the setting, call [getSupportedPhysicalApertures](#getsupportedphysicalapertures11) to obtain the supported physical apertures.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name        | Type                   | Mandatory| Description                     |
-| ------------ |------------------------- | -- | -------------------------- |
-| aperture       | number                 | Yes| Physical aperture, which can be obtained by calling [getSupportedPhysicalApertures](#getsupportedphysicalapertures11).  |
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400103         |  Session not config.                          |
-| 202             |  Not System Application.                      |
-
-**Example**
-
-```ts
-function setPhysicalAperture(session: camera.PortraitPhotoSession, physicalAperture: number): void {
-  session.setPhysicalAperture(physicalAperture);
 }
 ```
 
@@ -3405,7 +3176,7 @@ Obtains the supported beauty types.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -3429,7 +3200,7 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |Beauty levels supported when **type** is set to **AUTO**. The value **0** means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels.   |
 | SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels.   |
 | FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels.  |
-| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB, for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
+| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
 
 > **NOTE**
 >This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11) instead.
@@ -3454,7 +3225,7 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 202                    |    Not System Application.             |
@@ -3494,12 +3265,11 @@ Sets a beauty type and its level. Beauty mode is turned off only when all the [b
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
-| 202                    |    Not System Application.             |
 
 **Example**
 
@@ -3543,12 +3313,11 @@ Obtains the level of the beauty type in use.
 
 **Error codes**
 
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
-| 202                    |    Not System Application.             |
 
 **Example**
 
@@ -3607,7 +3376,7 @@ Subscribe to scene feature detection status change events. This API uses an asyn
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| Error Code| Error Message                     |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3652,7 +3421,7 @@ Unsubscribe from camera feature detection status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| Error Code| Error Message                     |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3685,7 +3454,7 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| Error Code| Error Message                     |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3729,7 +3498,7 @@ Unsubscribes from LCD flash status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| Error Code| Error Message                     |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3753,7 +3522,7 @@ Enumerates the focus tracking modes.
 
 ## FocusTrackingInfo<sup>15+</sup>
 
-Describes the focus tracking information, which is obtained by calling **VideoSessionForSys.**[on('focusTrackingInfoAvailable')](#onfocustrackinginfoavailable15).
+Describes the focus tracking information, which is obtained by calling VideoSessionForSys.[on('focusTrackingInfoAvailable')](#onfocustrackinginfoavailable15).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -3764,7 +3533,7 @@ Describes the focus tracking information, which is obtained by calling **VideoSe
 
 ## LightStatus<sup>18+</sup>
 
-Enumerates the camera light statuses, which are obtained by calling **VideoSessionForSys.**[on('lightStatusChange')](#onlightstatuschange18).
+Enumerates the camera light statuses, which are obtained by calling VideoSessionForSys.[on('lightStatusChange')](#onlightstatuschange18).
 
 **System API**: This is a system API.
 
@@ -3812,7 +3581,7 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| Error Code| Error Message                     |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3856,7 +3625,7 @@ Unsubscribes from LCD flash status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| Error Code| Error Message                     |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3889,7 +3658,7 @@ Subscribes to focus tracking information events. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 202      | Not System Application. |
 
@@ -3930,7 +3699,7 @@ Unsubscribes from focus tracking information events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 202      | Not System Application. |
 
@@ -3963,7 +3732,7 @@ Subscribes to camera light status changes. This API uses an asynchronous callbac
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 202      | Not System Application. |
 
@@ -4012,7 +3781,7 @@ Unsubscribes from camera light status changes.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 202      | Not System Application. |
 
@@ -4243,7 +4012,7 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| Error Code| Error Message                     |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -4287,7 +4056,7 @@ Unsubscribes from LCD flash status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| Error Code| Error Message                     |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -4504,7 +4273,7 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| Error Code| Error Message                     |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -4547,7 +4316,7 @@ Unsubscribes from LCD flash status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| Error Code| Error Message                     |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -4590,7 +4359,7 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                |   Not System Application.               |
 
@@ -4628,7 +4397,7 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                |   Not System Application.               |
 
@@ -4661,7 +4430,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                |   Not System Application.               |
 
@@ -4697,7 +4466,7 @@ Unsubscribes from focus state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                |   Not System Application.               |
 
@@ -4737,7 +4506,6 @@ SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorE
 Implements a slow-motion video session, which sets the parameters of the slow-motion video mode and saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera. It inherits from [Session](arkts-apis-camera-Session.md).
 
 > **NOTE**
->
 > In slow-motion video mode, only preview streams and video streams can be added.
 ### on('error')<sup>12+</sup>
 
@@ -4760,7 +4528,7 @@ Subscribes to SlowMotionVideoSession error events. This API uses an asynchronous
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4799,7 +4567,7 @@ Unsubscribes from SlowMotionVideoSession error events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4832,7 +4600,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4875,7 +4643,7 @@ Unsubscribes from focus state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4908,7 +4676,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4951,7 +4719,7 @@ Unsubscribes from smooth zoom state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4984,7 +4752,7 @@ Subscribes to slow-motion status change events. This API uses an asynchronous ca
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -5027,7 +4795,7 @@ Unsubscribes from slow-motion status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application.                               |
 
@@ -5061,7 +4829,7 @@ Checks whether the device supports slow-motion detection.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application.                               |
 
@@ -5107,7 +4875,7 @@ This API must be called after [commitConfig](arkts-apis-camera-Session.md#commit
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application.                            |
 
@@ -5263,20 +5031,6 @@ Describes the ISO information.
 
 ---
 
-## ExposureInfo<sup>12+</sup>
-
-Describes the exposure information.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name             | Type   | Read-only| Optional | Description              |
-| ----------------- | ------- | ---- |-----| ------------------ |
-| exposureTime | number  | Yes  | Yes  | Exposure time, in ms.|
-
----
-
 ## ApertureInfo<sup>12+</sup>
 
 Describes the aperture information.
@@ -5311,8 +5065,8 @@ Enumerates the camera output formats.
 
 | Name                    | Value       | Description        |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DNG<sup>12+</sup>  | 4         | Raw image in DNG format. **System API**: This is a system API.        |
 | CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup>  | 5         | Enhanced raw image in DNG format, where JPG and raw images are packaged in the same file, and up to 16-bit raw data is supported. **System API**: This is a system API.        |
+
 ## ExposureMeteringMode<sup>12+</sup>
 
 Enumerates the exposure metering modes.
@@ -5321,157 +5075,9 @@ Enumerates the exposure metering modes.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                          | Value  | Description        |
-| ----------------------------- | ---- | ----------- |
-| MATRIX          | 0    | Performs metering on a wide area of the image.|
-| CENTER          | 1    | Performs metering on the entire image, with the center allocated with the maximum weight.|
-| SPOT            | 2    | Performs metering around 2.5% of the metering points.|
-
-## AutoExposureQuery<sup>12+</sup>
-
-Provides APIs to check whether a device supports an exposure mode or exposure metering mode and obtain the exposure compensation range.
-
-### isExposureMeteringModeSupported<sup>12+</sup>
-
-isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
-
-Checks whether an exposure metering mode is supported.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name     | Type                          | Mandatory | Description                          |
-| -------- | -------------------------------| ---- | ----------------------------- |
-| aeMeteringMode   | [ExposureMeteringMode](#exposuremeteringmode12)  | Yes  | Metering mode.                     |
-
-**Return value**
-
-| Type       | Description                         |
-| ---------- | ----------------------------- |
-| boolean    | Check result for the support of the exposure metering mode. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400101                |  Parameter missing or parameter type incorrect.                                   |
-| 7400103                |  Session not config.                                   |
-
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function isExposureMeteringModeSupported(professionalPhotoSession: camera.ProfessionalPhotoSession): boolean {
-  let isSupported: boolean = false;
-  try {
-    isSupported = professionalPhotoSession.isExposureMeteringModeSupported(camera.ExposureMeteringMode.CENTER);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The isExposureMeteringModeSupported call failed. error code: ${err.code}`);
-  }
-  return isSupported;
-}
-```
-
-## AutoExposure
-
-AutoExposure extends [AutoExposureQuery](#autoexposurequery12)
-
-Provides APIs related to automatic exposure of a camera device, including obtaining and setting the exposure mode and measurement point, obtaining the compensation range, setting the exposure compensation, and obtaining the exposure metering mode.
-
-### getExposureMeteringMode<sup>12+</sup>
-
-getExposureMeteringMode(): ExposureMeteringMode
-
-Obtains the exposure metering mode in use.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type       | Description                         |
-| ---------- | ----------------------------- |
-| [ExposureMeteringMode](#exposuremeteringmode12)    | Exposure metering mode obtained. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
-| 202     | Not System Application. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getExposureMeteringMode(professionalPhotoSession: camera.ProfessionalPhotoSession): camera.ExposureMeteringMode | undefined {
-  let exposureMeteringMode: camera.ExposureMeteringMode | undefined = undefined;
-  try {
-    exposureMeteringMode = professionalPhotoSession.getExposureMeteringMode();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The getExposureMeteringMode call failed. error code: ${err.code}`);
-  }
-  return exposureMeteringMode;
-}
-```
-
-### setExposureMeteringMode<sup>12+</sup>
-
-setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
-
-Sets an exposure metering mode. Before the setting, call [isExposureMeteringModeSupported](#isexposuremeteringmodesupported12) to check whether the target exposure metering mode is supported.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name     | Type                           | Mandatory| Description                   |
-| -------- | -------------------------------| ---- | ----------------------- |
-| aeMeteringMode   | [ExposureMeteringMode](#exposuremeteringmode12)  | Yes  | Metering mode.               |
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400103                |  Session not config.                                   |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function setExposureMeteringMode(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
-  try {
-    professionalPhotoSession.setExposureMeteringMode(camera.ExposureMeteringMode.CENTER);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The setExposureMeteringMode call failed. error code: ${err.code}`);
-  }
-}
-```
+| Name                          | Value  | Description        | 
+| ----------------------------- | ---- | ----------- | 
+| CENTER_HIGHLIGHT_WEIGHTED   | 3    | Center-weighted and highlight metering mode. This mode focuses on the highlight area near the center of the screen.      |
 
 ## FocusRangeType<sup>15+</sup>
 
@@ -5519,9 +5125,9 @@ Checks whether the focus assist is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.      |
 | 202     | Not System Application. |
 
 **Example**
@@ -5568,11 +5174,11 @@ Checks whether a focus range type is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 202      | Not System Application.                                      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 7400103  | Session not config.                                          |
+| 7400103  |  Session not config, only throw in session usage.     |
 
 **Example**
 
@@ -5618,11 +5224,11 @@ Checks whether a focus drive type is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 202      | Not System Application.                                      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 7400103  | Session not config.                                          |
+| 7400103  | Session not config, only throw in session usage.       |
 
 **Example**
 
@@ -5668,7 +5274,7 @@ Sets the focus assist. Before the setting, call [isFocusAssistSupported](#isfocu
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -5711,7 +5317,7 @@ Checks whether the focus assist is enabled.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 202     | Not System Application. |
@@ -5752,7 +5358,7 @@ Sets a focus range type. Before the setting, call [isFocusRangeTypeSupported](#i
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 202      | Not System Application.                                      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
@@ -5796,7 +5402,7 @@ Obtains the focus range type in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 202      | Not System Application. |
 | 7400103  | Session not config.     |
@@ -5839,7 +5445,7 @@ Sets a focus drive type. Before the setting, call [isFocusDrivenTypeSupported](#
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 202      | Not System Application.                                      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
@@ -5883,7 +5489,7 @@ Obtains the focus drive type in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 202      | Not System Application. |
 | 7400103  | Session not config.     |
@@ -5903,96 +5509,6 @@ function getFocusDriven(session: camera.VideoSessionForSys): camera.FocusDrivenT
     console.error(`The getFocusDriven call failed. error code: ${err.code}`);
   }
   return focusDrivenType;
-}
-```
-
-## ManualFocus<sup>12+</sup>
-
-Provides APIs related to manual focus operations.
-
-### setFocusDistance<sup>12+</sup>
-
-setFocusDistance(distance: number): void
-
-Sets the manual focus distance.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name     | Type                    | Mandatory| Description                |
-| -------- | ----------------------- | ---- | ------------------- |
-| distance | number | Yes  | Manual focus distance. The value is a floating-point number in the range [0, 1]. The value **0** indicates a close-up shot, and **1** indicates a long shot.<br> |
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400103                |  Session not config.                                   |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function setFocusDistance(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
-  try {
-    let distance: number = 0.5;
-    professionalPhotoSession.setFocusDistance(distance);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The setFocusDistance call failed. error code: ${err.code}`);
-  }
-}
-```
-
-### getFocusDistance<sup>12+</sup>
-
-getFocusDistance(): number
-
-Obtains the focus distance in use.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type       | Description                         |
-| ---------- | ----------------------------- |
-| number    | Normalized value of the focus distance.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
-| 202     | Not System Application. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getFocusDistance(professionalPhotoSession: camera.ProfessionalPhotoSession): number {
-  let distance: number = 0;
-  try {
-    distance = professionalPhotoSession.getFocusDistance();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The getFocusDistance call failed. error code: ${err.code}`);
-  }
-  return distance;
 }
 ```
 
@@ -6020,9 +5536,9 @@ Checks whether manual ISO setting is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.      |
 | 202     | Not System Application. |
 
 **Example**
@@ -6063,10 +5579,10 @@ Obtains the supported ISO range.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.    |
 
 **Example**
 
@@ -6083,101 +5599,6 @@ function getIsoRange(professionalPhotoSession: camera.ProfessionalPhotoSession):
     console.error(`The getIsoRange call failed. error code: ${err.code}`);
   }
   return isoRange;
-}
-```
-
-## ManualIso<sup>12+</sup>
-
-ManualIso extends [ManualIsoQuery](#manualisoquery12)
-
-Provides APIs for obtaining and setting the manual ISO (sensitivity) of a camera device.
-
-### setIso<sup>12+</sup>
-setIso(iso: number): void
-
-Sets the ISO.
-
-> **NOTE**
->
-> When the ISO is set to 0, automatic ISO is used.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name     | Type                    | Mandatory| Description                |
-| -------- | ----------------------- | ---- | ------------------- |
-| iso | number | Yes  | ISO.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400103                |  Session not config.                                   |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function setIso(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
-  try {
-    let iso: number = 200;
-    professionalPhotoSession.setIso(iso);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The setIso call failed. error code: ${err.code}`);
-  }
-}
-```
-
-### getIso<sup>12+</sup>
-
-getIso(): number
-
-Obtains the ISO in use.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type       | Description                         |
-| ---------- | ----------------------------- |
-| number    | ISO.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400103                |  Session not config.                                   |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getIso(professionalPhotoSession: camera.ProfessionalPhotoSession): number {
-  let iso: number = 0;
-  try {
-    iso = professionalPhotoSession.getIso();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The getIso call failed. error code: ${err.code}`);
-  }
-  return iso;
 }
 ```
 
@@ -6208,7 +5629,7 @@ Subscribes to ProfessionalPhotoSession error events. This API uses an asynchrono
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6247,7 +5668,7 @@ Unsubscribes from ProfessionalPhotoSession error events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6280,7 +5701,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6323,7 +5744,7 @@ Unsubscribes from focus state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6356,7 +5777,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6399,7 +5820,7 @@ Unsubscribes from smooth zoom state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6432,7 +5853,7 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6475,7 +5896,7 @@ Unsubscribes from automatic ISO change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                   |
+| Error Code| Error Message                   |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6502,13 +5923,13 @@ Subscribes to exposure information change events to obtain the exposure informat
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| Yes  | Callback used to return the exposure information.        |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes  | Callback used to return the exposure information.        |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6545,13 +5966,13 @@ Unsubscribes from exposure information change events.
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6584,7 +6005,7 @@ Subscribes to aperture change events to obtain the real-time aperture informatio
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6627,7 +6048,7 @@ Unsubscribes from aperture change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6660,7 +6081,7 @@ Subscribes to illumination change events to obtain real-time illumination inform
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6703,7 +6124,7 @@ Unsubscribes from illumination change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6742,7 +6163,7 @@ Subscribes to ProfessionalVideo error events. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6781,7 +6202,7 @@ Unsubscribes from ProfessionalVideo error events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6814,7 +6235,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6857,7 +6278,7 @@ Unsubscribes from focus state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6890,7 +6311,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6933,7 +6354,7 @@ Unsubscribes from smooth zoom state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6966,7 +6387,7 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7009,7 +6430,7 @@ Unsubscribes from automatic ISO change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7036,13 +6457,13 @@ Subscribes to exposure information change events to obtain the exposure informat
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| Yes  | Callback used to return the exposure information.        |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes  | Callback used to return the exposure information.        |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7079,13 +6500,13 @@ Unsubscribes from exposure information change events.
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7118,7 +6539,7 @@ Subscribes to aperture change events to obtain the aperture information. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7161,7 +6582,7 @@ Unsubscribes from aperture change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7194,7 +6615,7 @@ Subscribes to illumination change events to obtain illumination information. Thi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7237,7 +6658,7 @@ Unsubscribes from illumination change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7276,7 +6697,7 @@ Subscribes to MacroPhotoSession error events. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7315,7 +6736,7 @@ Unsubscribes from MacroPhotoSession error events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7348,7 +6769,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7391,7 +6812,7 @@ Unsubscribes from focus state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7424,7 +6845,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7467,7 +6888,7 @@ Unsubscribes from smooth zoom state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7506,7 +6927,7 @@ Subscribes to MacroVideoSession error events. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7545,7 +6966,7 @@ Unsubscribes from MacroVideoSession error events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7578,7 +6999,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7621,7 +7042,7 @@ Unsubscribes from focus state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7654,7 +7075,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7697,7 +7118,7 @@ Unsubscribes from smooth zoom state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -7733,7 +7154,7 @@ Checks whether the LCD flash is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400103                |  Session not config, only throw in session usage. |
@@ -7772,7 +7193,7 @@ Before the setting, call [isLcdFlashSupported](#islcdflashsupported12) to check 
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -7861,7 +7282,7 @@ Subscribes to TimeLapsePhotoSession error events. This API uses an asynchronous 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -7900,7 +7321,7 @@ Unsubscribes from TimeLapsePhotoSession error events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -7933,7 +7354,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -7976,7 +7397,7 @@ Unsubscribes from focus state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -8009,7 +7430,7 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -8052,7 +7473,7 @@ Unsubscribes from automatic ISO change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                   |
+| Error Code| Error Message                   |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -8079,13 +7500,13 @@ Subscribes to exposure information change events to obtain the exposure informat
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| Yes  | Callback used to return the exposure information.        |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes  | Callback used to return the exposure information.        |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -8122,13 +7543,13 @@ Unsubscribes from exposure information change events.
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -8161,7 +7582,7 @@ Subscribes to illumination change events to obtain real-time illumination inform
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -8204,7 +7625,7 @@ Unsubscribes from illumination change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -8237,7 +7658,7 @@ Subscribes to Try AE change events to obtain real-time Try AE parameters. This A
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -8280,7 +7701,7 @@ Unsubscribes from Try AE change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -8312,10 +7733,10 @@ Checks whether Try AE is required.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
-| 7400103 |  Session not config.    |
+| 7400103 |  Session not config, only throw in session usage.  |
 
 **Example**
 
@@ -8349,7 +7770,7 @@ Starts to execute Try AE.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103 | Session not config.     |
@@ -8385,10 +7806,11 @@ Stops the execution of Try AE.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103 | Session not config.     |
+| 7400201 | Camera service fatal error.   |
 
 **Example**
 
@@ -8426,10 +7848,10 @@ Obtains the supported time-lapse shooting interval range.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.    |
 
 **Example**
 
@@ -8469,7 +7891,7 @@ Obtains the current time-lapse shooting interval.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -8511,7 +7933,7 @@ Sets a time-lapse shooting interval.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -8548,13 +7970,13 @@ Obtains the time-lapse shooting state.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [TimeLapseRecordState](#timelapserecordstate12)    | Shooting state. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [TimeLapseRecordState](#timelapserecordstate12)    | Time-lapse shooting state. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -8597,7 +8019,7 @@ Sets the time-lapse shooting state.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -8633,13 +8055,13 @@ Obtains the time-lapse preview type.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [TimeLapsePreviewType](#timelapsepreviewtype12)    | Preview type. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [TimeLapsePreviewType](#timelapsepreviewtype12)    | Time-lapse preview type. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -8682,7 +8104,7 @@ Sets the time-lapse preview type.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -8731,7 +8153,7 @@ Subscribes to LightPaintingPhotoSession error events. This API uses an asynchron
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8770,7 +8192,7 @@ Unsubscribes from LightPaintingPhotoSession error events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8803,7 +8225,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8846,7 +8268,7 @@ Unsubscribes from focus state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8879,7 +8301,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8922,7 +8344,7 @@ Unsubscribes from smooth zoom state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| Error Code| Error Message                      |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8953,7 +8375,7 @@ Obtains the type of light painting shutter mode in use.
  
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                               |
 | 7400103                |  Session not config.                                   |
@@ -8986,7 +8408,7 @@ Sets the type of light painting shutter mode.
  
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                               |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -9028,7 +8450,7 @@ Obtains the supported types of light painting shutter mode.
  
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                               |
 | 7400103                |  Session not config.                                   |
@@ -9077,10 +8499,10 @@ Obtains the supported color reservation types.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 202      | Not System Application. |
-| 7400103  | Session not config.     |
+| 7400103  | Session not config, only throw in session usage.  |
 
 **Example**
 
@@ -9126,7 +8548,7 @@ Sets a color reservation type. Before the setting, call [getSupportedColorReserv
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 202      | Not System Application.                                      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
@@ -9170,10 +8592,10 @@ Obtains the color reservation type in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 202      | Not System Application. |
-| 7400103  | Session not config.     |
+| 7400103  | Session not config, only throw in session usage.   |
 
 **Example**
 

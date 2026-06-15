@@ -22,3 +22,5 @@
   - [使用MediaAssetManager请求媒体资源(C/C++)](using-ndk-mediaassetmanager-for-request-resource.md)
 - Media Library Kit常见问题<!--media-library-kit-frequently-asked-questions-->
   - [如何正确管理媒体库资产](medialibrary-faqs/medialibrary-asset-management-faq.md)
+  - [如何正确判断媒体资源类型](medialibrary-faqs/medialibrary-asset-judgment-faq.md)
+  - [如何正确处理高像素图片](multimedia-high-resolution-image.md)

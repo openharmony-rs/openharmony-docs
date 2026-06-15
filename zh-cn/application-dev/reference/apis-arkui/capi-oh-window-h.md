@@ -1,8 +1,8 @@
 # oh_window.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -26,9 +26,9 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindowstatusbarenabled) | - | 设置指定窗口是否显示状态栏。 |
-| [int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)](#oh_windowmanager_setwindowstatusbarcolor) | - | 设置指定窗口的状态栏内容颜色。 |
-| [int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindownavigationbarenabled) | - | 设置指定窗口是否显示导航栏。 |
+| [int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindowstatusbarenabled) | - | 设置主窗口是否显示状态栏。 |
+| [int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)](#oh_windowmanager_setwindowstatusbarcolor) | - | 设置主窗口的状态栏内容颜色。 |
+| [int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindownavigationbarenabled) | - | 设置主窗口是否显示导航栏。 |
 | [int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_AvoidAreaType type, WindowManager_AvoidArea* avoidArea)](#oh_windowmanager_getwindowavoidarea) | - | 获取指定窗口的避让区域。 |
 | [int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)](#oh_windowmanager_iswindowshown) | - | 判断指定窗口是否显示。 |
 | [int32_t OH_WindowManager_ShowWindow(int32_t windowId)](#oh_windowmanager_showwindow) | - | 显示指定窗口。 |
@@ -50,6 +50,13 @@
 | [void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)](#oh_windowmanager_releasemainwindowsnapshot) | - | 释放主窗口截图列表的内存。 |
 | [int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)](#oh_windowmanager_lockcursor) | - | 锁定鼠标光标，控制鼠标光标不超过指定窗口区域，同时可控制光标是否跟随鼠标移动。仅支持获焦窗口调用，失焦之后会自动取消锁定。 |
 | [int32_t OH_WindowManager_UnlockCursor(int32_t windowId)](#oh_windowmanager_unlockcursor) | - | 清除窗口设置的鼠标光标指定的模式。 |
+| [int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getdefaultdensity) | - | 获取窗口所在屏幕的系统默认显示大小缩放系数。 |
+| [int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getsystemdensity) | - | 获取窗口所在屏幕的系统显示大小缩放系数。 |
+| [int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getcustomdensity) | - | 获取窗口的自定义显示大小缩放系数。 |
+| [int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)](#oh_windowmanager_getdensityinfocopy) | - | 获取窗口缩放系数相关信息，包括系统显示大小缩放系数、系统默认显示大小缩放系数、自定义显示大小缩放系数。优先级由高到低分别为：  <br> 自定义显示大小缩放系数： 窗口级显示缩放值，仅影响单个窗口。  <br> 系统显示大小缩放系数：当前系统配置的显示大小缩放系数。  <br> 系统默认显示大小缩放系数：系统默认的基准缩放值。  <br> |
+| [int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_registerdensityinfochangecallback) | - | 监听窗口缩放系数相关信息的变化。  <br> 当窗口所在屏幕的系统显示大小缩放系数、系统默认显示大小的缩放系数或自定义显示大小的缩放系数任一项发生变化时，会触发该回调函数。  <br> 如需取消监听窗口缩放系数相关信息的变化，请调用[OH_WindowManager_UnregisterDensityInfoChangeCallback](capi-oh-window-h.md#oh_windowmanager_unregisterdensityinfochangecallback)。 |
+| [int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_unregisterdensityinfochangecallback) | - | 取消监听窗口缩放系数相关信息的变化。 <br> 当窗口所在屏幕的系统显示大小缩放系数、系统默认显示大小缩放系数或自定义显示大小的缩放系数任一项发生变化时，不会触发已取消注册的回调函数。  <br> |
+| [int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfo_release) | - | 释放窗口缩放系数相关信息对象占用的内存。 |
 
 ## 函数说明
 
@@ -61,16 +68,21 @@ int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enable
 
 **描述**
 
-设置指定窗口是否显示状态栏。
+设置主窗口是否显示状态栏。
+
+调用生效后返回并不表示状态栏的显示或隐藏已完成。主窗口在非全屏/最大化模式（智慧多窗悬浮窗、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **起始版本：** 15
 
+**设备行为差异：**
+
+该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
+| int32_t windowId | 主窗口id。传入非主窗口id时调用不生效也不报错。不存在对应窗口id时接口返回错误码WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL。 |
 | bool enabled | 设置状态栏是否显示。true表示设置状态栏显示，false表示设置状态栏隐藏。 |
 | bool enableAnimation | 设置是否开启状态栏的显隐动画。true表示开启状态栏的显隐动画，false表示关闭状态栏的显隐动画。 |
 
@@ -88,16 +100,21 @@ int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color
 
 **描述**
 
-设置指定窗口的状态栏内容颜色。
+设置主窗口的状态栏内容颜色。
+
+调用生效后返回并不表示状态栏的颜色更新已完成。主窗口在非全屏/最大化模式（智慧多窗悬浮窗、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **起始版本：** 15
 
+**设备行为差异：**
+
+该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
+| int32_t windowId | 主窗口id。传入非主窗口id时调用不生效也不报错。不存在对应窗口id时接口返回错误码WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL。 |
 | int32_t color | 要设置的颜色值，格式为ARGB。 |
 
 **返回：**
@@ -114,7 +131,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 **描述**
 
-设置指定窗口是否显示导航栏。
+设置主窗口是否显示导航栏。<!--RP2--><!--RP2End-->
 
 **起始版本：** 15
 
@@ -123,7 +140,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
+| int32_t windowId | 主窗口id。传入非主窗口id时调用不生效也不报错。不存在对应窗口id时接口返回错误码WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL。 |
 | bool enabled | 设置导航栏是否显示。true表示设置导航栏显示，false表示设置导航栏隐藏。 |
 | bool enableAnimation | 设置是否开启导航栏的显隐动画。true表示开启导航栏的显隐动画，false表示关闭导航栏的显隐动画。 |
 
@@ -305,13 +322,14 @@ int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)
 
 当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议窗口退至后台时调用此接口，否则可能引发时序问题。
 
-> **说明：**
-> - 针对非2in1设备：
->   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
->   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
-> - 针对2in1设备：
->   - 在OpenHarmony5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
->   - 从OpenHarmony5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+**设备行为差异：**
+- 针对TV设备：当前接口不生效也不报错。
+- 针对非2in1设备（不包含TV设备）：
+  - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
+  - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
+- 针对2in1设备：
+  - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
+  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
 
 **起始版本：** 15
 
@@ -674,3 +692,189 @@ int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_NO_PERMISSION，表示没有权限调用该接口。<br>返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示不支持该设备。<br>返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。<br>返回WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL，表示窗口管理器服务异常。 |
+
+### OH_WindowManager_DensityInfo_GetDefaultDensity()
+
+```c
+int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)
+```
+
+**描述**
+
+获取窗口所在屏幕的系统默认显示大小缩放系数。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | 窗口缩放系数相关信息，通过[OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy)获取。 |
+| float* density | 用于返回系统默认显示大小的缩放系数，取值范围为0.5-4.0，作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。可能原因：参数取值范围无效。<br>具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_DensityInfo_GetSystemDensity()
+
+```c
+int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)
+```
+
+**描述**
+
+获取窗口所在屏幕的系统显示大小缩放系数。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | 窗口缩放系数相关信息，通过[OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy)获取。 |
+| float* density | 用于返回系统显示大小的缩放系数，取值范围为0.5-4.0，作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。可能原因：参数取值范围无效。<br>具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_DensityInfo_GetCustomDensity()
+
+```c
+int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)
+```
+
+**描述**
+
+获取窗口的自定义显示大小缩放系数。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | 窗口缩放系数相关信息，通过[OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy)获取。 |
+| float* density | 窗口的自定义显示大小缩放系数。取值范围为0.5-4.0。作为出参使用。<br>该参数未被设置时，将跟随系统显示大小缩放系数变化。针对子窗、全局悬浮窗、模态窗或系统窗，其自定义显示大小缩放系数等于系统显示大小缩放系数systemDensity。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。可能原因：参数取值范围无效。 <br>具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_GetDensityInfoCopy()
+
+```c
+int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)
+```
+
+**描述**
+
+获取窗口缩放系数相关信息，包括系统显示大小缩放系数、系统默认显示大小缩放系数、自定义显示大小缩放系数。优先级由高到低分别为：
+
+- 自定义显示大小缩放系数： 窗口级显示缩放值，仅影响单个窗口。
+
+- 系统显示大小缩放系数：当前系统配置的显示大小缩放系数。
+
+- 系统默认显示大小缩放系数：系统默认的基准缩放值。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t windowId | 窗口创建时的窗口ID。 |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)** info | 窗口缩放系数相关信息，作为出参使用。<br>返回值为NULL表示当前设备不支持该接口。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。可能原因：1. 窗口未创建或已销毁；2. 窗口状态异常。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。可能原因：参数取值范围无效。<br>具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_RegisterDensityInfoChangeCallback()
+
+```c
+int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)
+```
+
+**描述**
+
+监听窗口缩放系数相关信息的变化。
+
+当窗口所在屏幕的系统显示大小缩放系数、系统默认显示大小的缩放系数或自定义显示大小的缩放系数任一项发生变化时，会触发该回调函数。
+
+如需取消监听窗口缩放系数相关信息的变化，请调用[OH_WindowManager_UnregisterDensityInfoChangeCallback](capi-oh-window-h.md#oh_windowmanager_unregisterdensityinfochangecallback)。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t windowId | 窗口创建时的窗口ID。 |
+| [OH_WindowManager_DensityInfoCallback](capi-oh-window-comm-h.md#oh_windowmanager_densityinfocallback) callback | 用于返回窗口缩放系数相关信息结果的回调。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。可能原因：1. 窗口未创建或已销毁；2. 窗口状态异常。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。可能原因：参数取值范围无效。<br>具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_UnregisterDensityInfoChangeCallback()
+
+```c
+int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)
+```
+
+**描述**
+
+取消监听窗口缩放系数相关信息的变化。
+
+当窗口所在屏幕的系统显示大小缩放系数、系统默认显示大小缩放系数或自定义显示大小的缩放系数任一项发生变化时，不会触发已取消注册的回调函数。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t windowId | 窗口创建时的窗口ID。 |
+| [OH_WindowManager_DensityInfoCallback](capi-oh-window-comm-h.md#oh_windowmanager_densityinfocallback) callback | 用于返回窗口缩放系数相关信息结果的回调。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。可能原因：1. 窗口未创建或已销毁；2. 窗口状态异常。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。可能原因：参数取值范围无效。<br>具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+
+### OH_WindowManager_DensityInfo_Release()
+
+```c
+int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)
+```
+
+**描述**
+
+释放窗口缩放系数相关信息对象占用的内存。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | 窗口缩放系数相关信息。作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。可能原因：参数取值范围无效。<br>具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |

@@ -32,11 +32,11 @@ The caller does not have the permission to access the URI or path.
 
 1. Check whether the caller cannot use the URI shared by another application. For details, see [access control mechanisms](../../security/AccessToken/access-token-overview.md) of the system.
 
-2. Check whether the permission is obtained by Picker. The permission obtained by Picker is temporary. For details, see [System Pickers](../../application-models/system-app-startup.md#methods-of-starting-a-system-application).
+2. Check whether the URI obtained through the system picker has only temporary permissions. For details, see [Starting a System Application](../../application-models/system-app-startup.md#methods-of-starting-a-system-application). If the application needs to continue accessing the URI after the application exits or the device restarts, the process of [Persisting Temporary Permissions (ArkTS)](../../file-management/file-persistPermission.md) must be followed.
 
 3. Check whether the URI is a concatenated path, which has no permission by default.
 
-### 13900002 File or Directory Not Exist
+### 13900002 File or Directory Not Found
 
 **Error Message**
 
@@ -48,13 +48,29 @@ The file or directory does not exist.
 
 **Possible Causes**
 
-The file or directory does not exist.
+1. The passed path is not a sandbox path, or the file or directory does not exist in the application sandbox.
+
+2. A URI is passed to an API that supports only sandbox paths.
+
+3. For an API that supports URIs, an incorrect URI combined by the application or obtained after secondary encoding or decoding is passed.
+
+4. The API supports only file or directory names encoded in UTF-8. If other encoding formats are used, the file may not be found.
+
+5. When a file is created, the directory where the target file is located does not exist in the path.
 
 **Solution**
 
-Check whether the file directory exists.
+1. Check whether the passed path is a sandbox path and whether the path exists in the sandbox.
 
-### 13900003 Process Not Exist
+2. Check whether the parameter type is incorrect.
+
+3. Check whether an incorrect URI combined by the application or obtained after secondary encoding or decoding is passed.
+
+4. Check whether the encoding format of the file or directory name is UTF-8.
+
+5. When creating a file, check whether the parent directory of the file exists.
+
+### 13900003 Process Not Found
 
 **Error Message**
 
@@ -122,7 +138,7 @@ Underlying I/O error: It is usually related to hardware or driver device faults.
 
 3. Check and update the driver.
 
-### 13900006 Device or Address Not Exist
+### 13900006 Device or Address Not Found
 
 **Error Message**
 
@@ -180,7 +196,7 @@ The file descriptor is abnormal.
 
 2. Check that the permissions on the file match the settings.
 
-### 13900009 Child Process Not Exist
+### 13900009 Child Process Not Found
 
 **Error Message**
 
@@ -256,7 +272,7 @@ The permission is denied.
 
 1. Check the UGO permission of the file.
 
-2. Check the kernel log for [AVC log information](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-security-selinux-develop-intro.md). If yes,<!--RP1--> see [SELinux Development](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md).<!--RP1End-->
+2. Check the kernel log for [AVC log information](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-security-selinux-develop-intro.md). If yes, <!--RP1-->see [SELinux Development](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md).<!--RP1End-->
 
 3. Check whether the file path is a sandbox path. The file management system does not allow operations on files outside the sandbox directory. For details, see [Application Sandbox Directory and Application Sandbox Path](../../file-management/app-sandbox-directory.md#application-sandbox-directory-and-application-sandbox-path).
 
@@ -332,7 +348,7 @@ The link between devices is incorrect.
 
 Check the devices and create the link correctly.
 
-### 13900017 Device Not Exist
+### 13900017 Device Not Found
 
 **Error Message**
 
@@ -888,6 +904,10 @@ The device goes offline, or the Wi-Fi or Bluetooth is disconnected.
 
 Invalid file name
 
+**Description**
+
+The file name is invalid.
+
 **Possible Causes**
 
 The file name contains invalid characters.
@@ -901,6 +921,10 @@ Modify the file name.
 **Error Message**
 
 Invalid URI
+
+**Description**
+
+The URI is invalid.
 
 **Possible Causes**
 
@@ -916,6 +940,10 @@ Use the obtained URI.
 
 Invalid file name extension
 
+**Description**
+
+The file name extension is invalid.
+
 **Possible Causes**
 
 The file name extension is incorrect.
@@ -929,6 +957,10 @@ Modify the file name extension.
 **Error Message**
 
 File already in the recycle bin
+
+**Description**
+
+The file is moved to the Recycle Bin.
 
 **Possible Causes**
 
@@ -944,6 +976,10 @@ Check whether the file is in the Recycle Bin.
 
 System inner fail
 
+**Description**
+
+An internal system error occurs.
+
 **Possible Causes**
 
 An unidentified error occurs in the system.
@@ -958,6 +994,10 @@ Clear the background or restart the device.
 
 Member is not a valid PhotoKey
 
+**Description**
+
+The member name is invalid.
+
 **Possible Causes**
 
 The input string is not a member name of a class or interface.
@@ -965,6 +1005,45 @@ The input string is not a member name of a class or interface.
 **Solution**
 
 Ensure that the input string is the member name of the class or interface.
+
+### 14000016 Unsupported Operation Type
+
+**Error Message**
+
+Operation Not Support
+
+**Description**
+
+The operation type is not supported.
+
+**Possible Causes**
+
+1. Non–moving photo objects are handled as moving photo objects.
+
+2. After the resource identified by an URI is added, moved, or removed, the same operation is performed on the URI again.
+
+3. A second modification is requested before the previous resource creation or modification is submitted, including operations such as **CREATE_FROM_URI**, **GET_WRITE_CACHE_HANDLER**, and **ADD_RESOURCE**.
+
+4. Video-specific operations, such as video enhancement, are performed on non-video objects.
+
+5. An operation that is not allowed is performed on a non-user album or non-highlight album.
+
+**Solution**
+
+1. Check the resource type.
+   - For example, before performing operations for moving photo objects (such as **setMovingPhotoEffectMode**), ensure that the resource is of the moving photo type.
+   - For example, before performing video enhancement operations (such as **setVideoEnhancementAttr**), ensure that **MediaType** is set to **VIDEO**.
+
+2. Avoid repeated operations.
+   - Before calling **addAssets**, **removeAssets**, or **moveAssets**, check whether the operation has been performed to avoid repeated calls.
+
+3. Request a modification after the previous operation is submitted.
+   - After calling **createImageAssetRequest**, **createVideoAssetRequest**, **getWriteCacheHandler**, or **addResource**, call [applyChanges](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) for the submission to take effect.
+   - A new modification request can be initiated for the created asset only after the submission takes effect.
+
+4. Check the album type.
+   - **addAssets** and **removeAssets** can be performed only on user albums and highlight albums.
+   - System albums (such as camera and screenshots) do not support these operations.
 
 ## Space Statistics Error Codes
 
@@ -1094,7 +1173,7 @@ The specified directory or node has been deleted.
 
 Check whether the specified directory or node exists.
 
-### 13600008 Object Not Exist
+### 13600008 Object Not Found
 
 **Error Message**
 
@@ -1223,6 +1302,61 @@ The underlying file system is abnormal.
 **Solution**
 
 Restart the device and try again.
+
+### 13600016 Failed to Obtain the Number of Inodes in the File System
+
+**Error Message**
+
+Failed to query the inode information of the data partition.
+
+**Description**
+
+Failed to obtain the inode information of the data partition.
+
+**Possible Causes**
+
+The underlying file system is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
+### 13600017 Failed to Obtain the Inode Usage of the Current Application
+
+**Error Message**
+
+Failed to query the inode information of the application.
+
+**Description**
+
+Failed to obtain the inode usage of the current application.
+
+**Possible Causes**
+
+The underlying file system is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
+### 13600018 Failed to Query the System Data Size
+
+**Error Message**
+
+Failed to query the system data size.
+
+**Description**
+
+Failed to query the system data size.
+
+**Possible Causes**
+
+The underlying file system is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
 ## User File Access Error Codes
 
 ### 14300001 IPC Failed
@@ -1473,7 +1607,7 @@ A task of the same type is running.
 
 Wait until the existing tasks of the same type are complete, or call **stop()** to stop the existing tasks and trigger a new task.
 
-### 22400007 Historical File Specified to Replace the Original File Not Exist
+### 22400007 Historical File Specified to Replace the Original File Not Found
 
 **Error Message**
 

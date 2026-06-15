@@ -1,8 +1,8 @@
 # @ohos.multimedia.audioHaptic (Audio-Haptic)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -48,7 +48,7 @@ Enumerates the audio latency modes.
 | Name                           |  Value    | Description                                        |
 | ------------------------------- | ------ | -------------------------------------------- |
 | AUDIO_LATENCY_MODE_NORMAL       | 0      | Normal latency mode.                               |
-| AUDIO_LATENCY_MODE_FAST         | 1      | Low latency mode. This mode is applicable to short audio files. A long audio file may be truncated in this mode. It functions the same as [SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool).|
+| AUDIO_LATENCY_MODE_FAST         | 1      | Low latency mode. Audio files may be truncated if they are too long. This feature behaves the same way as [SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool).|
 
 ## AudioHapticPlayerOptions
 
@@ -74,7 +74,7 @@ Describes the audio-haptic file descriptor.
 | Name    | Type          |Read-Only | Optional | Description                            |
 | --------- | -------------- | ---- | ---- | --------------------------------- |
 | fd        | number         | No  | No  | File descriptor of the audio-haptic file, which is generally greater than or equal to 0.|
-| offset    | number         | No  | Yes  | Offset in the file from which data will be read. By default, the offset is 0.|
+| offset    | number         | No  | Yes  | Offset for reading data from the file, in bytes. By default, the offset is 0.|
 | length    | number         | No  | Yes  | Number of bytes to read. By default, the length is the number of bytes remaining in the file from the offset position.|
 
 ## AudioHapticManager
@@ -98,8 +98,8 @@ Registers audio and haptic resources via URIs. This API uses a promise to return
 
 | Name  | Type                                     | Mandatory| Description                    |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| audioUri  | string                                  | Yes  | URI of the audio source.<br>- For details about the supported audio resource formats and path formats in the normal latency mode, see [AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).<br>- For details about the supported audio resource formats in the low-latency mode, see [SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool). The path format must meet the requirements described in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).<br>- In both modes, you are advised to pass in the absolute path of the file.          |
-| hapticUri | string                                  | Yes  | URI of the haptic source.<br>For details about the supported vibration resource formats, see [HapticFileDescripto](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10). The path format must meet the requirements described in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).<br>You are advised to pass in the absolute path of the file.        |
+| audioUri  | string                                  | Yes  | URI of the audio source.<br>- For details about the supported audio resource formats and path formats in the normal latency mode, see [AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).<br>- For details about the supported audio resource formats in the low-latency mode, see [SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool). The path format must meet the requirements described in [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen).<br>- In both modes, you are advised to pass in the absolute path of the file.          |
+| hapticUri | string                                  | Yes  | URI of the haptic source.<br>For details about the supported haptic resource formats, see [HapticFileDescriptor](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10). The path format must meet the requirements described in [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen).<br>You are advised to pass in the absolute path of the file.        |
 
 **Return value**
 
@@ -125,10 +125,10 @@ let hapticUri = 'data/hapticTest.json'; // Change it to the URI of the target ha
 let id = 0;
 // A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID). You are advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
 audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-  console.info(`Promise returned to indicate that the source id of the registered source ${value}.`);
+  console.info(`Succeeded in registering source. ID: ${value}.`);
   id = value;
 }).catch((err: BusinessError) => {
-  console.error(`Failed to register source ${err}`);
+  console.error(`Failed to register source. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -183,10 +183,10 @@ let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
 let id = 0;
 // A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID). You are advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
 audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
-  console.info('Succeeded in doing registerSourceFromFd.');
+  console.info(`Succeeded in registering source from fd. ID: ${value}.`);
   id = value;
 }).catch((err: BusinessError) => {
-  console.error(`Failed to registerSourceFromFd. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to register source from fd. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -230,9 +230,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let id = 0; // The ID is obtained using registerSource.
 
 audioHapticManagerInstance.unregisterSource(id).then(() => {
-  console.info('Succeeded in doing unregisterSource.');
+  console.info('Succeeded in unregistering source.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to unregisterSource. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to unregister source. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -358,9 +358,9 @@ let audioHapticPlayerInstance: audioHaptic.AudioHapticPlayer | undefined = undef
 
 audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.AudioHapticPlayer) => {
   audioHapticPlayerInstance = value;
-  console.info('Succeeded in doing createPlayer.');
+  console.info('Succeeded in creating player.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to createPlayer. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to create player. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -445,9 +445,9 @@ For details about the error codes, see [Media Error Codes](../apis-media-kit/err
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.start().then(() => {
-  console.info(`Promise returned to indicate that start playing successfully.`);
+  console.info('Succeeded in starting.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to start playing. ${err}`);
+  console.error(`Failed to start. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -480,9 +480,9 @@ For details about the error codes, see [Media Error Codes](../apis-media-kit/err
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.stop().then(() => {
-  console.info(`Promise returned to indicate that stop playing successfully.`);
+  console.info('Succeeded in stopping.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to stop playing. ${err}`);
+  console.error(`Failed to stop. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -514,9 +514,9 @@ For details about the error codes, see [Media Error Codes](../apis-media-kit/err
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.release().then(() => {
-  console.info(`Promise returned to indicate that release the audio haptic player successfully.`);
+  console.info('Succeeded in releasing.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to release the audio haptic player. ${err}`);
+  console.error(`Failed to release. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -560,9 +560,9 @@ For details about the error codes, see [Media Error Codes](../apis-media-kit/err
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.setVolume(0.5).then(() => {
-  console.info('Promise returned to indicate that set volume successfully.');
+  console.info('Succeeded in setting volume.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to set volume. ${err}`);
+  console.error(`Failed to set volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -604,9 +604,9 @@ For details about the error codes, see [Media Error Codes](../apis-media-kit/err
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.setLoop(true).then(() => {
-  console.info('Promise returned to indicate that set player loop successfully.');
+  console.info('Succeeded in setting loop.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to set player loop. ${err}`);
+  console.error(`Failed to set loop. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -629,7 +629,7 @@ Subscribes to end of stream (EOS) event, which is triggered when the audio strea
 
 ```ts
 audioHapticPlayerInstance.on('endOfStream', () => {
-  console.info(`Receive the callback of endOfStream.`);
+  console.info('Succeeded in using on function.');
 });
 ```
 
@@ -656,7 +656,7 @@ audioHapticPlayerInstance.off('endOfStream');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let endOfStreamCallback = () => {
-  console.info(`Receive the callback of endOfStream.`);
+  console.info('Succeeded in using on or off function.');
 };
 
 audioHapticPlayerInstance.on('endOfStream', endOfStreamCallback);

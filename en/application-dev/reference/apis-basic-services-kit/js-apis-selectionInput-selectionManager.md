@@ -21,7 +21,13 @@ This module provides word selection management capabilities, including creating,
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
-## selectionManager.on('selectionCompleted')
+## selectionManager
+
+**System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
+
+### selectionManager.on('selectionCompleted')
 
 on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
@@ -29,18 +35,20 @@ Registers a callback to listen for the word selection completion event. This API
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'selectionCompleted'**.|
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | Yes  | Callback used to return the word selection information.      |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | Yes  | Callback used to return the word selection information. This callback is triggered only when the user selects text using the mouse or touchpad (by double-clicking, triple-clicking, or pressing and sliding the left mouse button) and then presses **Ctrl**.      |
 
 **Error codes**
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
 
@@ -51,14 +59,14 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 try {
   selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
-    console.info(`SelectionInfo: ${JSON.stringify(info)}`);
+    console.info(`Enter the callback function.`);
   });
 } catch (err) {
-  console.error(`Failed to register selectionCompleted callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register selectionCompleted callback: ${err.code}, error message: ${err.message}`);
 }
 ```
 
-## selectionManager.off('selectionCompleted')
+### selectionManager.off('selectionCompleted')
 
 off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
@@ -66,12 +74,14 @@ Unregisters the callback used to listen for the word selection completion event.
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes  | Event type, which is **'selectionCompleted'**.              |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | No  | Callback used to return [SelectionInfo](#selectioninfo). If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
 
@@ -79,24 +89,26 @@ Unregisters the callback used to listen for the word selection completion event.
 import { selectionManager } from '@kit.BasicServicesKit';
 
 let selectionChangeCallback = (info: selectionManager.SelectionInfo) => {
-  console.info(`SelectionInfo: ${JSON.stringify(info)}`);
+  console.info(`Enter the callback function.`);
 };
 
 selectionManager.on('selectionCompleted', selectionChangeCallback);
 try {
   selectionManager.off('selectionCompleted', selectionChangeCallback);
 } catch (err) {
-  console.error(`Failed to unregister selectionCompleted: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister selectionCompleted: ${err.code}, error message: ${err.message}`);
 }
 ```
 
-## getSelectionContent()
+### getSelectionContent()
 
 getSelectionContent(): Promise\<string>
 
 Obtains this selected text content. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Return value**
 | Type  | Description                                                                |
@@ -107,7 +119,7 @@ Obtains this selected text content. This API uses a promise to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600004   | The interface is called too frequently. |
@@ -125,18 +137,18 @@ selectionManager.on('selectionCompleted', async (info: selectionManager.Selectio
   try {
     let content = await selectionManager.getSelectionContent();
   } catch (err) {
-    console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
+    console.error(`Failed to get selection content: ${err.code}, error message: ${err.message}`);
   }
 });
 ```
 
-## createPanel
+### createPanel
 
 createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 Creates a word selection panel. This API uses a promise to return the result.
 
-Only one [main panel](./js-apis-selectionInput-selectionPanel.md) and one [menu panel](./js-apis-selectionInput-selectionPanel.md) can be created for a single word selection application.
+Only one [MENU_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype) and one [MAIN_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype) can be created for one word selection application.
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
@@ -146,8 +158,8 @@ Only one [main panel](./js-apis-selectionInput-selectionPanel.md) and one [menu 
 
 | Name  | Type       | Mandatory| Description                    |
 | ------- | ----------- | ---- | ------------------------ |
-| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Context that the current word selection panel depends on.|
-| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel.md)   | Yes  | Information about the word selection panel.|
+| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | Yes  | Context that the current word selection panel depends on.|
+| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | Yes  | Information about the word selection panel.|
 
 **Return value**
 | Type  | Description                                                                |
@@ -158,7 +170,7 @@ Only one [main panel](./js-apis-selectionInput-selectionPanel.md) and one [menu 
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
@@ -193,11 +205,13 @@ class ServiceExtAbility extends SelectionExtensionAbility {
       width: 500,
       height: 200
     }
+    let selectionPanel: selectionManager.Panel | undefined = undefined;
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
+        selectionPanel = panel;
         console.info('Succeed in creating panel.');
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -205,7 +219,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
-## destroyPanel
+### destroyPanel
 
 destroyPanel(panel: Panel): Promise\<void>
 
@@ -230,7 +244,7 @@ Destroys the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 
@@ -275,14 +289,14 @@ class ServiceExtAbility extends SelectionExtensionAbility {
             selectionManager.destroyPanel(selectionPanel).then(() => {
               console.info('Succeed in destroying panel.');
             }).catch((err: BusinessError) => {
-              console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+              console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
             });
           }
         } catch (err) {
-          console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+          console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
         }
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -349,7 +363,7 @@ Sets the page content for the word selection panel. This API uses a promise to r
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -363,10 +377,10 @@ try {
   selectionPanel.setUiContent('pages/Index').then(() => {
     console.info('Succeeded in setting the content.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setUiContent: ${JSON.stringify(err)}`);
+    console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: ${JSON.stringify(err)}`);
+  console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -390,7 +404,7 @@ Shows the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -403,7 +417,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 selectionPanel.show().then(() => {
   console.info('Succeeded in showing the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to show panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to show panel: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -415,6 +429,8 @@ Hides the word selection panel. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type  | Description                            |
@@ -425,7 +441,7 @@ Hides the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -438,7 +454,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 selectionPanel.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to hide panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to hide panel: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -462,7 +478,7 @@ Moves the word selection panel by dragging. This API uses a promise to return th
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -474,7 +490,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 RelativeContainer() {
   /* 
-   * Page layout content, which be defined based on your actual needs.
+   * Page layout content, which should be defined based on your actual needs.
    */
 }
 .onTouch((event: TouchEvent) => {
@@ -483,7 +499,7 @@ RelativeContainer() {
       selectionPanel.startMoving().then(() => {   // selectionPanel is the panel instance created by createPanel.
         console.info('Succeeded in startMoving the panel.');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to startMoving panel: ${JSON.stringify(err)}`);
+        console.error(`Failed to startMoving panel: ${err.code}, error message: ${err.message}`);
       });
     }
   }
@@ -491,11 +507,15 @@ RelativeContainer() {
 ```
 
 <!--Del-->
-### moveTo
+### moveTo<sup>(deprecated)</sup>
 
 moveTo(x: number, y: number): Promise\<void>
 
 Moves the word selection panel to the specified coordinates on the screen. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 20 and deprecated since API version 24. You are advised to use [moveToGlobalDisplay](#movetoglobaldisplay) instead.
 
 **System API**: This is a system API.
 
@@ -518,7 +538,7 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -532,10 +552,10 @@ try {
   selectionPanel.moveTo(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
 }
 ```
 <!--DelEnd-->
@@ -567,7 +587,7 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -581,10 +601,10 @@ try {
   selectionPanel.moveToGlobalDisplay(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -596,12 +616,14 @@ Registers a callback to listen for the destroy event of the word selection panel
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'destroyed'**.|
-| callback | Callback\<void> | Yes  | Callback used to return the result.      |
+| callback | Callback\<void> | Yes  | Callback function that returns no value.      |
 
 **Example**
 <!--code_no_check-->
@@ -610,10 +632,10 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 try {
   selectionPanel.on('destroyed', () => {
-    console.info('Panel has destroyed.');
+    console.info('Panel has been destroyed.');
   });
 } catch (err) {
-  console.error(`Failed to register destroyed callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register destroyed callback: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -625,12 +647,14 @@ Unregisters the callback used to listen for the destroy event of the word select
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes  | Event type, which is **'destroyed'**.              |
-| callback | Callback\<void> | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | Callback\<void> | No  | Callback function that returns no value. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
 <!--code_no_check-->
@@ -640,7 +664,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 try {
   selectionPanel.off('destroyed');
 } catch (err) {
-  console.error(`Failed to unregister destroyed: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister destroyed: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -652,12 +676,14 @@ Registers a callback to listen for the hide event of the word selection panel. T
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'hidden'**.|
-| callback | Callback\<void> | Yes  | Callback used to return the result.      |
+| callback | Callback\<void> | Yes  | Callback function that returns no value.      |
 
 **Example**
 <!--code_no_check-->
@@ -666,10 +692,10 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 try {
   selectionPanel.on('hidden', () => {
-    console.info('Panel has hidden.');
+    console.info('Panel has been hidden.');
   });
 } catch (err) {
-  console.error(`Failed to register hidden callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register hidden callback: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -681,12 +707,14 @@ Unregisters the callback used to listen for the hide event of the word selection
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes  | Event type, which is **'hidden'**.              |
-| callback | Callback\<void> | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | Callback\<void> | No  | Callback function that returns no value. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
 <!--code_no_check-->
@@ -696,7 +724,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 try {
   selectionPanel.off('hidden');
 } catch (err) {
-  console.error(`Failed to unregister hidden: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister hidden: ${err.code}, error message: ${err.message}`);
 }
 ```
 

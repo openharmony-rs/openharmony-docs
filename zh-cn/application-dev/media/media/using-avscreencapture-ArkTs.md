@@ -1,8 +1,8 @@
 # 使用AVScreenCaptureRecorder录屏写文件(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -42,7 +42,8 @@
     ```javascript
     import { common } from '@kit.AbilityKit';
     import { media } from '@kit.MediaKit';
-    import fileIo from '@ohos.file.fs';
+    import { fileIo } from '@kit.CoreFileKit';
+    import { display } from '@kit.ArkUI';
     ```
 
 2. 创建AVScreenCaptureRecorder类型的成员变量screenCapture。
@@ -124,11 +125,23 @@
       console.error("处理异常情况");
       return;
     }
-
+    let displayClass: display.Display | undefined = undefined;
+    try {
+      displayClass = display.getDefaultDisplaySync();
+      console.info(`The display info is: ${JSON.stringify(displayClass)}`);
+    } catch (exception) {
+      console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+    }
+    if (!displayClass) {
+      console.error("Failed to get displayClass.");
+      return;
+    }
     captureConfig: media.AVScreenCaptureRecordConfig = {
-        // 开发者可以根据自身的需要设置宽高。
-        frameWidth: 768,
-        frameHeight: 1280,
+        // 开发者可根据屏幕宽高设置相应尺寸。
+        // 屏幕宽度应设置为64的倍数。
+        frameWidth: displayClass.width,
+        // 根据屏幕的高设置高度。
+        frameHeight: displayClass.height,
         // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
         fd: captureFile.fd,
         // 可选参数及其默认值。
@@ -182,12 +195,14 @@
 
 ```javascript
 import { media } from '@kit.MediaKit';
-import fileIo from '@ohos.file.fs';
+import { fileIo } from '@kit.CoreFileKit';
+import { display } from '@kit.ArkUI';
 
 export class AVScreenCaptureDemo {
   private screenCapture?: media.AVScreenCaptureRecorder;
   private captureFile: fileIo.File | undefined = undefined;
   private captureConfig: media.AVScreenCaptureRecordConfig | undefined = undefined;
+  private displayClass: display.Display | undefined = undefined;
 
   private openFile(context: Context): void {
     const path: string = context.filesDir + '/screenCapture.mp4'; // 文件沙箱路径，文件后缀名应与封装格式对应。
@@ -198,17 +213,33 @@ export class AVScreenCaptureDemo {
     if (!this.captureFile) {
       return;
     }
-    fileIo.closeSync(this.captureFile);
+    try {
+      fileIo.closeSync(this.captureFile.fd);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to close fd, error code: ${err.code}, message: ${err.message}`);
+    }
   }
 
   private setConfig(): void {
     if (!this.captureFile) {
       return;
     }
+    try {
+      this.displayClass = display.getDefaultDisplaySync();
+      console.info(`The display info is: ${JSON.stringify(this.displayClass)}`);
+    } catch (exception) {
+      console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+    }
+    if (!this.displayClass) {
+      return;
+    }
     this.captureConfig = {
-        // 开发者可以根据自身的需要设置宽高。
-        frameWidth: 768,
-        frameHeight: 1280,
+        // 开发者可根据屏幕宽高设置相应尺寸。
+        // 设置宽为屏幕的宽度，屏幕宽度应设置为64的倍数。
+        frameWidth: this.displayClass.width,
+        // 设置高为屏幕的高度。
+        frameHeight: this.displayClass.height,
         // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
         fd: this.captureFile.fd,
         // 可选参数及其默认值。
@@ -294,7 +325,7 @@ export class AVScreenCaptureDemo {
     await this.screenCapture?.init(this.captureConfig);
 
     this.registerScreenCaptureCallback();
-    // 豁免隐私窗口。
+    // 豁免隐私窗口，窗口id获取方式可参见开发步骤及注意事项6。
     let windowIDs = [57, 86];
     await this.screenCapture?.skipPrivacyMode(windowIDs);
 

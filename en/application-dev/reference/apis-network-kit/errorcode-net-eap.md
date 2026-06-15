@@ -92,15 +92,15 @@ Invalid size of eap data.
 
 **Description**
 
-This error code is reported if the eap data length is invalid.
+This error code is reported if the EAP data length is invalid.
 
 **Possible causes**
 
-The input eap data length is different from the value of **bufferLen** in **EapData**.
+The input EAP data length is different from the value of **bufferLen** in **EapData**.
 
 **Solution**
 
-Set the input eap data length to the value of **bufferLen**.
+Ensure that the value of **bufferLen** is the same as the EAP data length.
 
 ## 33200006 Invalid Network Type
 
@@ -151,7 +151,7 @@ This error code is reported if **eapType** is invalid.
 
 **Possible causes**
 
-The input **eapType** is not within the valid value range.
+The input **eapCode** is not within the valid value range.
 
 **Solution**
 
@@ -205,8 +205,24 @@ This error code is reported if a program fails to operate properly.
 
 **Possible causes**
 
-The program encounters an internal error.
+1. If EAP packets fail to be processed, for example, packets fail to be parsed or the data format is incorrect, filter the logs by the keyword "wpa_supplicant:EAP" to locate and analyze the fault.
+
+2. If the authentication process is abnormal, for example, the state machine is incorrect or the authentication times out and no response is returned, filter the logs by the keyword "entering state" to locate and analyze the fault.
+
+3. If the certificate fails to be processed, for example, the certificate fails to be loaded or parsed, or the key operation fails, filter the logs by the keyword "wpa_supplicant:SSL" to locate and analyze the fault.
+
+4. If the callback function is abnormal, for example, the callback function is not correctly implemented or an exception that is not captured is thrown, filter the logs by the keyword "replyCustomEapData" to locate and analyze the fault.
+
+5. If the communication fails, for example, the socket communication is abnormal or the connection is disconnected, check the logs. This cause is commonly seen on the [startEthEap](js-apis-net-eap.md#eapstartetheap) and [logOffEthEap](js-apis-net-eap.md#eaplogoffetheap) interfaces. You can filter logs by the keyword startEap or stopEap to check whether the command is delivered properly.
 
 **Solution**
 
-Reboot the system.
+1. View system logs to locate the fault. You can filter logs by the keyword supplicant to locate the EAP packet processing exception, and filter logs by the keyword replyCustomEapData to locate the callback function exception. For communication exceptions triggered by the [startEthEap](js-apis-net-eap.md#eapstartetheap) and [logOffEthEap](js-apis-net-eap.md#eaplogoffetheap) interfaces, you can filter logs by the keyword startEap or stopEap to locate the fault.
+
+2. Ensure that the EAP authentication process is correctly invoked. Do not perform the next step before the previous step is complete.
+
+3. Check whether the certificate and key are correctly configured and whether the certificate format meets the requirements.
+
+4. Ensure that the callback function is not deregistered repeatedly before being deregistered and is working properly after being registered.
+
+5. If the fault persists, restart the device and try again.

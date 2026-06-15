@@ -1,9 +1,9 @@
 # Widget Error Codes
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 > **NOTE**
@@ -230,7 +230,7 @@ The interactive widget animation is requested by a common widget, or the current
 
 **Solution**
 
-Check whether the configured [sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field) of the current widget is correct.
+Ensure that the configured [sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field) of the current widget is correct.
 
 ## 16501012 Incorrect Widget Dimension
 
@@ -267,6 +267,60 @@ Failed to register the callback for listening for template widget information.
 **Solution**
 
 Restart the device to allow the system to re-register the callback for listening for template widget information.
+
+## 16501014 Semi-modal Widget Editing Page Not in Foreground
+
+**Error Message**
+
+The form edit page is not in the foreground. The current operation is not supported.
+
+**Description**
+
+The semi-modal widget editing page is not in the foreground. The current operation is not supported.
+
+**Possible Causes**
+
+The semi-modal widget editing page is not opened.
+
+**Solution**
+
+Ensure that the [semi-modal widget editing page](../../form/arkts-ui-widget-event-formeditextensionability-overview.md#semi-modal-widget-editing) is opened.
+
+## 16501015 Failed to Close Semi-Modal Widget Editing Page of Another Application
+
+**Error Message**
+
+Cannot close the widget editing page opened by other apps.
+
+**Description**
+
+The semi-modal widget editing page of another application cannot be closed.
+
+**Possible Causes**
+
+The opened semi-modal widget editing page does not belong to the application that requests to close the page.
+
+**Solution**
+
+Ensure that the opened semi-modal widget editing page belongs to the application that requests to close the page.
+
+## 16501016 Invalid Widget Location Information
+
+**Error Message**
+
+The location of the widget is invalid.
+
+**Description**
+
+The widget location information is invalid.
+
+**Possible Causes**
+
+The specified widget location information is out of the system-defined range.
+
+**Solution**
+
+Ensure that the input widget location is in the [FormLocation](js-apis-app-form-formInfo.md#formlocation20) list.
 
 ## 2293761 Internal Service Error
 
@@ -322,7 +376,7 @@ Invalid input parameters are passed when the API is called.
 1. Mandatory parameters are not transferred.
 2. The parameter type is incorrect.
 3. The number of parameters is incorrect.
-4. The input parameter is empty, for example, an empty string ('').
+4. The parameter value is empty. For example, an empty string ('') is passed.
 5. Incorrect parameter format.
 6. Invalid parameter value. The input parameters must be the same as those in [app.json5](../../quick-start/app-configuration-file.md) and [Configuring ArkTS Widget Configuration Files](../../form/arkts-ui-widget-configuration.md).
 

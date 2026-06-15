@@ -1,17 +1,17 @@
 # XComponentNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
 
-The **XComponentNode** module provides APIs for the XComponentNode, which represent an [XComponent](arkui-ts/ts-basic-components-xcomponent.md) in the component tree. You can write [EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md) and media data and display it on the **XComponent**, whose rendering type can be dynamically modified.
+The **XComponentNode** module provides APIs for the XComponentNode, which represents an [XComponent](arkui-ts/ts-basic-components-xcomponent.md) in the component tree. You can write [EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md) and media data and display it on the **XComponent**, whose rendering type can be dynamically modified.
 
 > **NOTE**
 >
-> This module is deprecated since API version 12. You are advised to use the [typeNode of the XComponent type](./js-apis-arkui-frameNode.md#xcomponent12) instead.
+> The APIs of this module are deprecated since API version 12. You are advised to use the APIs of the **typeNode** module in the [XComponent](./js-apis-arkui-frameNode.md#xcomponent12) type instead.
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 

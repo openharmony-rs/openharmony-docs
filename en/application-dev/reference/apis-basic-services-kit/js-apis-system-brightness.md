@@ -6,6 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:55:34.983Z pushedAt=2026-06-09T10:12:44.288Z -->
 
 The **brightness** module provides APIs for querying and adjusting the screen brightness and mode.
 
@@ -20,14 +21,11 @@ The **brightness** module provides APIs for querying and adjusting the screen br
 >- The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 
-
 ## Modules to Import
-
 
 ```js
 import brightness, { BrightnessModeResponse, BrightnessResponse } from '@system.brightness';
 ```
-
 
 ## brightness.getValue<sup>(deprecated)</sup>
 
@@ -48,14 +46,13 @@ Obtains the current screen brightness.
   ```js
   brightness.getValue({
       success: (data: BrightnessResponse) => {
-        console.log('success get brightness value:' + data.value);
+        console.info('success get brightness value:' + data.value);
       },
       fail: (data: string, code: number) => {
         console.error('get brightness fail, code: ' + code + ', data: ' + data);
       }
   });
   ```
-
 
 ## brightness.setValue<sup>(deprecated)</sup>
 
@@ -77,14 +74,13 @@ Sets the screen brightness.
   brightness.setValue({
       value: 100,
       success: () => {
-        console.log('handling set brightness success.');
+        console.info('handling set brightness success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set brightness value fail, code:' + code + ', data: ' + data);
       }
   });
   ```
-
 
 ## brightness.getMode<sup>(deprecated)</sup>
 
@@ -105,14 +101,13 @@ Obtains the screen brightness adjustment mode.
   ```js
   brightness.getMode({
       success: (data: BrightnessModeResponse) => {
-        console.log('success get mode:' + data.mode);
+        console.info('success get mode:' + data.mode);
       },
       fail: (data: string, code: number) => {
         console.error('handling get mode fail, code:' + code + ', data: ' + data);
       }
   });
   ```
-
 
 ## brightness.setMode<sup>(deprecated)</sup>
 
@@ -123,6 +118,7 @@ Sets the screen brightness mode.
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | options | [SetBrightnessModeOptions](#setbrightnessmodeoptionsdeprecated) | No  | Options for setting the screen brightness mode. This parameter is optional and is left blank by default.|
@@ -133,14 +129,13 @@ Sets the screen brightness mode.
   brightness.setMode({
       mode: 1,
       success: () => {
-        console.log('handling set mode success.');
+        console.info('handling set mode success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set mode fail, code:' + code + ', data: ' + data);
       }
   });
   ```
-
 
 ## brightness.setKeepScreenOn<sup>(deprecated)</sup>
 
@@ -149,6 +144,9 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 >This API is no longer maintained since API version 7 except for lite wearables. You are advised to use [window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9) instead.
 
 Sets whether to always keep the screen on. Call this API in **onShow()**.
+> **NOTE**
+>
+> On lite wearables, this API can only prevent the screen from turning off due to system inactivity timeout (automatic). It cannot prevent the screen from turning off due to user actions (such as covering the screen) or the end of the screen-on time.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -164,13 +162,14 @@ Sets whether to always keep the screen on. Call this API in **onShow()**.
   brightness.setKeepScreenOn({
       keepScreenOn: true,
       success: () => {
-        console.log('handling set keep screen on success.');
+        console.info('handling set keep screen on success.');
       },
       fail: (data: string, code: number) => {
         console.error('handling set keep screen on fail, code:' + code + ', data: ' + data);
       }
   });
   ```
+
 ## GetBrightnessOptions<sup>(deprecated)</sup>
 
 Options for obtaining the screen brightness.

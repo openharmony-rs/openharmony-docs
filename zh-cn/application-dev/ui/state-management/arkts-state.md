@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -66,9 +66,10 @@
 - 当装饰的数据类型为class或Object时，可以观察到自身的赋值和属性赋值的变化，即Object.keys(observedObject)返回的所有属性。示例如下：
   
   声明Person和Model类。
-  <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+  <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) --> 
   
   ``` TypeScript
+  // 声明Person类
   class Person {
     public value: string;
   
@@ -77,6 +78,7 @@
     }
   }
   
+  // 声明Model类
   class Model {
     public value: string;
     public name: Person;
@@ -146,13 +148,13 @@
     @State count: number = 10;
     ```
 
-2. \@State不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+2. \@State不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 
-   从API version 23开始，添加对\@State装饰Function类型变量的校验，编译期会报错。
+   从API version 23开始，在应用编译时添加了相关校验，\@State装饰Function类型变量会提示ERROR，应在代码中删除Function类型变量的\@State装饰器。
 
 3. 父组件传入undefined时，\@State装饰的变量仍使用本地默认值进行初始化。
    
-   <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) -->
+   <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) --> 
    
    ``` TypeScript
    @Entry
@@ -172,6 +174,7 @@
    
    @Component
    struct Child {
+     // 子组件count本地默认值为0；父组件传入undefined时，框架会保留该本地默认值
      @State count: number | undefined = 0;
    
      build() {
@@ -188,7 +191,7 @@
 
 ### 装饰简单类型的变量
 
-以下示例为\@State装饰的简单类型，count被\@State装饰成为状态变量，count的改变引起Button组件的刷新：
+以下示例为\@State装饰的简单类型，count被\@State装饰成为状态变量，count的改变引起[Button](../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件的刷新：
 
 - 当状态变量count改变时，只能查询到Button组件与之关联。
 

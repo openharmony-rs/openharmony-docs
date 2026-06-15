@@ -1,22 +1,22 @@
 # @ohos.enterprise.accountManager (Account Management) (System API)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
-The **accountManager** module provides APIs for account management of enterprise devices.
+This module provides device account management capabilities, including forbidding the creation of local accounts.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module are available only to the [device management application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application), and can be called only after the device management application is activated by calling [adminManager.enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.accountManager](js-apis-enterprise-accountManager.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.accountManager](js-apis-enterprise-accountManager.md).
 
 ## Modules to Import
 
@@ -28,7 +28,7 @@ import { accountManager } from '@kit.MDMKit';
 
 disallowAddLocalAccount(admin: Want, disallow: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Disallows a device to create local user accounts. This API uses an asynchronous callback to return the result.
+Forbids the creation of local accounts on the device. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -43,7 +43,7 @@ Disallows a device to create local user accounts. This API uses an asynchronous 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.     |
-| disallow    | boolean     | Yes   | Whether to forbid the creation of local user accounts. The value **true** means the creation of local user accounts is forbidden, and the value **false** means the opposite.                 |
+| disallow    | boolean     | Yes   | Whether to forbid the creation of local accounts. The value **true** indicates yes, and the value **false** indicates no.                 |
 | callback | AsyncCallback&lt;void&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.      |
 
 **Error codes**
@@ -83,7 +83,7 @@ accountManager.disallowAddLocalAccount(wantTemp, true, (err) => {
 
 disallowAddLocalAccount(admin: Want, disallow: boolean): Promise&lt;void&gt;
 
-Disallows a device to create local user accounts. This API uses a promise to return the result.
+Forbids the creation of local accounts on the device. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -98,7 +98,7 @@ Disallows a device to create local user accounts. This API uses a promise to ret
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| disallow    | boolean     | Yes   | Whether to forbid the creation of local user accounts. The value **true** means the creation of local user accounts is forbidden, and the value **false** means the opposite.                 |
+| disallow    | boolean     | Yes   | Whether to forbid the creation of local accounts. The value **true** indicates yes, and the value **false** indicates no.                 |
 
 **Return value**
 
@@ -279,7 +279,7 @@ Adds an account in the background.
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| [osAccount.OsAccountInfo](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype) | Information about the account added.|
+| [osAccount.OsAccountInfo](../apis-basic-services-kit/js-apis-osAccount.md#osaccountinfo) | Information about the account added.|
 
 **Error codes**
 
@@ -312,6 +312,6 @@ try {
   let info: osAccount.OsAccountInfo = accountManager.addOsAccount(wantTemp, "TestAccountName", osAccount.OsAccountType.NORMAL);
   console.info(`Succeeded in creating os account: ${JSON.stringify(info)}`);
 } catch (err) {
-  console.error(`Failed to creating os account. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to create os account. Code: ${err.code}, message: ${err.message}`);
 }
 ```

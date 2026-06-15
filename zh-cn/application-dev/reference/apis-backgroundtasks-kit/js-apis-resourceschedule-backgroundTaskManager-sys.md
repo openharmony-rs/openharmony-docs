@@ -5,7 +5,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供申请后台任务的接口。当应用退至后台时，开发者可以通过本模块接口为应用申请短时、长时任务，避免应用进程被终止或挂起。
 
@@ -56,6 +56,7 @@ applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 **示例**：
 
 ```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';  
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let request: backgroundTaskManager.EfficiencyResourcesRequest = {
@@ -103,6 +104,7 @@ resetAllEfficiencyResources(): void
 **示例**：
 
 ```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';  
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -350,7 +352,7 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -363,7 +365,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 }
 
 try {
-    backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
+    backgroundTaskManager.subscribeContinuousTaskState(backgroundTaskSubscriber);
     console.info('Operation subscribeContinuousTaskState succeeded');
 } catch (error) {
     console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
@@ -407,7 +409,7 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -420,7 +422,7 @@ private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscribe
 }
 
 try {
-    backgroundTaskManager.unsubscribeContinuousTaskState(this.backgroundTaskSubscriber);
+    backgroundTaskManager.unsubscribeContinuousTaskState(backgroundTaskSubscriber);
     console.info('Operation unsubscribeContinuousTaskState succeeded');
 } catch (error) {
     console.error(`Operation unsubscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
@@ -449,7 +451,7 @@ try {
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | resourceTypes   | number  | 否    | 否    | 申请的资源类型。                               |
 | isApply         | boolean | 否    | 否    | 申请或释放资源。<br>- true表示申请资源。<br>- false表示释放部分资源。 |
-| timeOut         | number  | 否    | 否    | 资源使用时间，单位为毫秒。                |
+| timeOut         | number  | 否    | 否    | 资源使用时间，单位：ms。                |
 | isPersist       | boolean | 否    | 是    | 是否永久持有资源，默认为false。<br>- true表示永久持有。<br>- false表示有限时间内持有。|
 | isProcess       | boolean | 否    | 是    | 进程或应用申请，默认为false。<br>- true表示进程申请。<br>- false表示应用申请。         |
 | reason          | string  | 否    | 否    | 申请资源原因。                |
@@ -570,7 +572,7 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -606,7 +608,7 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },
@@ -642,7 +644,7 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
     onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
         console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
     },

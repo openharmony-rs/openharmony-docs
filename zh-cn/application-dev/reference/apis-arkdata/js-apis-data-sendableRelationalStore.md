@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 该模块针对关系型数据库（Relational Database，RDB）提供了sendable支持。支持从查询结果集中获取sendable类型ValuesBucket用于并发实例间传递。
@@ -445,7 +445,7 @@ async function insert(context: Context, dataItem: sendableRelationalStore.Values
   console.info(`Create table test successfully!`);
 
   // 数据插入
-  const rowId = await store.insertSync("test", dataItem);
+  const rowId = store.insertSync("test", dataItem);
   await store.close();
   return rowId;
 }

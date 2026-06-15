@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -77,7 +77,7 @@ Obtains an OH_AudioManager instance.<br> Before using the features related to th
 
 | Name| Description|
 | -- | -- |
-| [OH_AudioManager](capi-ohaudio-oh-audiomanager.md) **audioManager | Double pointer to an [OH_AudioManager](capi-ohaudio-oh-audiomanager.md), which is used to receive the audio manager instance created.|
+| [OH_AudioManager](capi-ohaudio-oh-audiomanager.md) **audioManager | Double pointer to an [OH_AudioManager](capi-ohaudio-oh-audiomanager.md) instance (audio manager instance).|
 
 **Returns**
 

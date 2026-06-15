@@ -1,8 +1,8 @@
 # 基于NDK构建UI概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -63,10 +63,11 @@ ArkUI NDK接口能力主要包括：
 | -------- | -------- |
 | [NDK开发导读](../napi/ndk-development-overview.md) | 介绍NDK的适用场景与必备基础知识。 |
 | [接入ArkTS页面](ndk-access-the-arkts-page.md) | 介绍了如何将NDK接口开发的UI界面挂载到ArkTS主页面上进行渲染显示。 |
-| [添加交互事件](ndk-listen-to-component-events.md) | 介绍了如何添加组件的交互事件。 |
+| [添加事件响应](ndk-add-event-response.md) | 介绍了如何在Native侧添加事件监听和事件处理逻辑。 |
 | [使用动画](ndk-use-animation.md) | 介绍了如何在Native侧添加动画。 |
 | [构建布局](ndk-loading-long-list.md) | 介绍了如何在Native侧使用容器组件构建布局。 |
 | [构建弹窗](ndk-build-pop-up-window.md) | 介绍了如何使用弹窗接口构建UI界面进行弹窗显示。 |
+| [构建表单组件](ndk-build-form-components.md) | 介绍了如何使用NDK接口创建按钮、滑动条、开关、复选框和单选按钮等表单组件。 |
 | [构建自定义组件](ndk-build-custom-components.md) | 介绍了如何使用NDK接口能力构建自定义组件，实现差异化UI组件。 |
 | [嵌入ArkTS组件](ndk-embed-arkts-components.md) | 介绍了如何在Native侧构建带有ArkTS组件的界面。 |
 | [构建渲染节点](ndk-embed-render-components.md) | 介绍了如何在Native侧构建渲染节点。 |

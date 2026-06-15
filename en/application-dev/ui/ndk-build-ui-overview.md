@@ -63,7 +63,7 @@ Using the NDK for UI development involves the following tasks.
 | -------- | -------- |
 | [Getting Started with the NDK](../napi/ndk-development-overview.md)| Introduces the use scenarios and essential knowledge of the NDK.|
 | [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md)| Explains how to mount the NDK-developed UI onto ArkTS pages for rendering and display.|
-| [Adding Interaction Events](ndk-listen-to-component-events.md)| Describes how to add interaction events for components.|
+| [Adding Interaction Events](ndk-add-event-response.md)| Describes how to add interaction events for components.|
 | [Using Animations](ndk-use-animation.md)| Introduces how to add animations on the native side.|
 | [Building Layouts](ndk-loading-long-list.md) | Describes how to use container components to build layouts on the native side.|
 | [Building Dialog Boxes](ndk-build-pop-up-window.md)| Introduces how to build dialog boxes.|

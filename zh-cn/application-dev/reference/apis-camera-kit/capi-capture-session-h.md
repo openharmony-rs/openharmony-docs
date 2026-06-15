@@ -78,8 +78,8 @@
 | [Camera_ErrorCode OH_CaptureSession_GetSupportedISORange(const Camera_CaptureSession* session, int32_t *minIsoValue, int32_t *maxIsoValue)](#oh_capturesession_getsupportedisorange) | - | 查询ISO感光度范围。 |
 | [Camera_ErrorCode OH_CaptureSession_GetIso(const Camera_CaptureSession* session, int32_t* isoValue)](#oh_capturesession_getiso) | - | 获取当前ISO感光度值（遵循ISO 12232:2006标准）。 |
 | [Camera_ErrorCode OH_CaptureSession_SetIso(const Camera_CaptureSession* session, int32_t isoValue)](#oh_capturesession_setiso) | - | 设置ISO感光度值。需在[OH_CaptureSession_GetSupportedISORange](capi-capture-session-h.md#oh_capturesession_getsupportedisorange)获取到的范围内进行设置，且仅曝光模式为EXPOSURE_MODE_LOCKED时生效。 |
-| [Camera_ErrorCode OH_CaptureSession_GetSupportedPhysicalApertures(const Camera_CaptureSession* session, OH_Camera_PhysicalAperture* apertures, uint32_t size)](#oh_capturesession_getsupportedphysicalapertures) | - | 获取支持的物理光圈列表。调用OH_CaptureSession_GetPhysicalAperturesSize获取物理光圈数组大小。 |
-| [Camera_ErrorCode OH_CaptureSession_GetPhysicalAperturesSize(const Camera_CaptureSession* session, uint32_t* size)](#oh_capturesession_getphysicalaperturessize) | - | 获取物理光圈数组大小。 |
+| [Camera_ErrorCode OH_CaptureSession_GetSupportedPhysicalApertures(const Camera_CaptureSession* session, OH_Camera_PhysicalAperture** apertures, uint32_t* size)](#oh_capturesession_getsupportedphysicalapertures) | - | 获取支持的物理光圈列表。调用[OH_CaptureSession_DeletePhysicalApertures](capi-capture-session-h.md#oh_capturesession_deletephysicalapertures)删除支持的物理光圈列表。 |
+| [Camera_ErrorCode OH_CaptureSession_DeletePhysicalApertures(const Camera_CaptureSession* session, OH_Camera_PhysicalAperture* apertures, uint32_t size)](#oh_capturesession_deletephysicalapertures) | - | 删除支持的物理光圈列表。 |
 | [Camera_ErrorCode OH_CaptureSession_GetPhysicalAperture(const Camera_CaptureSession* session, double* aperture)](#oh_capturesession_getphysicalaperture) | - | 获取当前物理光圈值。 |
 | [Camera_ErrorCode OH_CaptureSession_SetPhysicalAperture(const Camera_CaptureSession* session, double aperture)](#oh_capturesession_setphysicalaperture) | - | 设置物理光圈值。 |
 | [Camera_ErrorCode OH_CaptureSession_GetExposureBiasRange(Camera_CaptureSession* session, float* minExposureBias, float* maxExposureBias, float* step)](#oh_capturesession_getexposurebiasrange) | - | 查询曝光补偿范围。 |
@@ -899,9 +899,9 @@ Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, 
 
 ### OH_CaptureSession_OnFlashStateChange()
 
-```c
+```c 
 typedef void (*OH_CaptureSession_OnFlashStateChange)(const Camera_CaptureSession* session, OH_Camera_FlashState flashState)
-```
+``` 
 
 **描述**
 
@@ -918,9 +918,9 @@ typedef void (*OH_CaptureSession_OnFlashStateChange)(const Camera_CaptureSession
 
 ### OH_CaptureSession_RegisterFlashStateChangeCallback()
 
-```c
+```c 
 Camera_ErrorCode OH_CaptureSession_RegisterFlashStateChangeCallback(const Camera_CaptureSession* session, OH_CaptureSession_OnFlashStateChange flashStateChange)
-```
+``` 
 
 **描述**
 
@@ -1116,7 +1116,7 @@ Camera_ErrorCode OH_CaptureSession_IsExposureMeteringModeSupported(const Camera_
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>        CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_GetExposureMeteringMode()
 
@@ -1141,7 +1141,7 @@ Camera_ErrorCode OH_CaptureSession_GetExposureMeteringMode(const Camera_CaptureS
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>        CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_SetExposureMeteringMode()
 
@@ -1192,7 +1192,7 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedISORange(const Camera_CaptureSess
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>        CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_GetIso()
 
@@ -1242,17 +1242,17 @@ Camera_ErrorCode OH_CaptureSession_SetIso(const Camera_CaptureSession* session, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>        CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_GetSupportedPhysicalApertures()
 
 ```c
-Camera_ErrorCode OH_CaptureSession_GetSupportedPhysicalApertures(const Camera_CaptureSession* session, OH_Camera_PhysicalAperture* apertures, uint32_t size)
+Camera_ErrorCode OH_CaptureSession_GetSupportedPhysicalApertures(const Camera_CaptureSession* session, OH_Camera_PhysicalAperture** apertures, uint32_t* size)
 ```
 
 **描述**
 
-获取支持的物理光圈列表。调用OH_CaptureSession_GetPhysicalAperturesSize获取物理光圈数组大小。
+获取支持的物理光圈列表。调用[OH_CaptureSession_DeletePhysicalApertures](capi-capture-session-h.md#oh_capturesession_deletephysicalapertures)删除支持的物理光圈列表。
 
 **起始版本：** 24
 
@@ -1261,24 +1261,24 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedPhysicalApertures(const Camera_Ca
 | 参数项 | 描述 |
 | -- | -- |
 | const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
-| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md)* apertures | 用于存储物理光圈值的数组指针。 |
-| uint32_t size | 物理光圈数组大小。通过[OH_CaptureSession_GetPhysicalAperturesSize](capi-capture-session-h.md#oh_capturesession_getphysicalaperturessize)获取。 |
+| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md)** apertures | 用于存储物理光圈值的数组指针。 |
+| uint32_t* size | 输出物理光圈数组大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>        CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
-### OH_CaptureSession_GetPhysicalAperturesSize()
+### OH_CaptureSession_DeletePhysicalApertures()
 
 ```c
-Camera_ErrorCode OH_CaptureSession_GetPhysicalAperturesSize(const Camera_CaptureSession* session, uint32_t* size)
+Camera_ErrorCode OH_CaptureSession_DeletePhysicalApertures(const Camera_CaptureSession* session, OH_Camera_PhysicalAperture* apertures, uint32_t size)
 ```
 
 **描述**
 
-获取物理光圈数组大小。
+删除支持的物理光圈列表。
 
 **起始版本：** 24
 
@@ -1287,7 +1287,8 @@ Camera_ErrorCode OH_CaptureSession_GetPhysicalAperturesSize(const Camera_Capture
 | 参数项 | 描述 |
 | -- | -- |
 | const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
-| uint32_t* size | 输出参数，返回物理光圈数组大小。 |
+| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md)* apertures | 待删除的物理光圈数组指针。 |
+| uint32_t size | 物理光圈数组大小。 |
 
 **返回：**
 
@@ -1318,7 +1319,7 @@ Camera_ErrorCode OH_CaptureSession_GetPhysicalAperture(const Camera_CaptureSessi
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>        CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_SetPhysicalAperture()
 
@@ -1343,7 +1344,7 @@ Camera_ErrorCode OH_CaptureSession_SetPhysicalAperture(const Camera_CaptureSessi
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>       CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_GetExposureBiasRange()
 
@@ -1446,7 +1447,7 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedExposureDurationRange(const Camer
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>        CAMERA_OPERATION_NOT_ALLOWED：操作不允许。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_SetExposureDuration()
 
@@ -1496,7 +1497,7 @@ Camera_ErrorCode OH_CaptureSession_GetExposureDuration(const Camera_CaptureSessi
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>        CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_OnExposureDurationChange()
 
@@ -1520,7 +1521,7 @@ typedef void (*OH_CaptureSession_OnExposureDurationChange)(const Camera_CaptureS
 ### OH_CaptureSession_RegisterExposureInfoChangeCallback()
 
 ```c
-Camera_ErrorCode OH_CaptureSession_RegisterExposureInfoChangeCallback(const Camera_CaptureSession* session, OH_CaptureSession_OnExposureDurationChange exposureDurationChange)
+Camera_ErrorCode OH_CaptureSession_RegisterExposureInfoChangeCallback(const Camera_CaptureSession* session, OH_CaptureSession_OnExposureDurationChange exposureDurationChange) 
 ```
 
 **描述**
@@ -1564,7 +1565,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterExposureInfoChangeCallback(const Ca
 **返回：**
 
 | 类型 | 说明 |
-| -- | -- |
+| -- | -- | 
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。 |
 
 ### OH_CaptureSession_IsFocusModeSupported()
@@ -2104,7 +2105,7 @@ Camera_ErrorCode OH_CaptureSession_GetFocalLength(Camera_CaptureSession* session
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_GetFocusDistance()
-
+ 
 ```c
 Camera_ErrorCode OH_CaptureSession_GetFocusDistance(const Camera_CaptureSession* session, float* focusDistance)
 ```
@@ -2176,7 +2177,7 @@ Camera_ErrorCode OH_CaptureSession_IsFocusDistanceSupported(const Camera_Capture
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>        CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_SetSmoothZoom()
 
@@ -2972,7 +2973,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterIsoChangeCallback(Camera_CaptureSes
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数缺失或者参数类型不正确。 |
 
-### OH_CaptureSession_GetRAWCaptureZoomRatioRange()
+### OH_CaptureSession_GetRAWCaptureZoomRatioRange() 
 
 ```c
 Camera_ErrorCode OH_CaptureSession_GetRAWCaptureZoomRatioRange(const Camera_CaptureSession* session, float* minZoom, float* maxZoom)
@@ -2996,7 +2997,7 @@ Camera_ErrorCode OH_CaptureSession_GetRAWCaptureZoomRatioRange(const Camera_Capt
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许,会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_IsOISModeSupported()
 
@@ -3153,5 +3154,3 @@ Camera_ErrorCode OH_CaptureSession_SetOISModeCustom(const Camera_CaptureSession*
 | 类型 | 说明 |
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
-
-

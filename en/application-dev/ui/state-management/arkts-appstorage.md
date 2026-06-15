@@ -1,8 +1,8 @@
 # AppStorage: Storing Application-wide UI State
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -41,7 +41,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 | \@StorageProp Decorator| Description                                                        |
 | ----------------------- | ------------------------------------------------------------ |
 | Parameters             | Constant string, which is mandatory. The string must be enclosed in quotation marks.<br>**NOTE**<br>Using **null** and **undefined** as keys will implicitly convert them to their corresponding string representations. This usage is not recommended.               |
-| Allowed variable types     | Object, class, string, number, Boolean, enum, and array of these types.<br>API version 12 and later: Map, Set, Date, undefined, null, and union types of these types. For details, see [Using Union Types in AppStorage](#using-union-types-in-appstorage).<br>For details about the scenarios of nested objects, see [Observed Changes and Behavior](#observed-changes-and-behavior).<br>**NOTE**<br>The variable type must be specified. Whenever possible, use the same type as that of the corresponding property in AppStorage. Otherwise, implicit type conversion occurs, causing application behavior exceptions.|
+| Allowed variable types     | Object, class, string, number, Boolean, enum, and array of these types.<br>Since API version 12, the [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type), [Decorating Variables of the Set Type](#decorating-variables-of-the-set-type), [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type), **undefined**, **null**, and their union types are supported. For details, see [Using Union Types in AppStorage](#using-union-types-in-appstorage).<br>For details about the scenarios of nested objects, see [Observed Changes and Behavior](#observed-changes-and-behavior).<br>**NOTE**<br>The variable type must be specified. Whenever possible, use the same type as that of the corresponding property in AppStorage. Otherwise, implicit type conversion occurs, causing application behavior exceptions.|
 | Disallowed variable types               | Function.|
 | Synchronization type               | One-way: from the property in AppStorage to the component variable.<br>The component variable can be changed locally, but an update from AppStorage will overwrite local changes.|
 | Initial value for the decorated variable     | Local initialization is mandatory. If the property does not exist in AppStorage, it will be created and initialized with this value.|
@@ -119,7 +119,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 
 - When the decorated variable is of the class or object type, the complete object reassignment and property-level changes can be observed. For details, see [Using AppStorage from Inside the UI](#using-appstorage-from-inside-the-ui).
 
-- When the decorated object is an array, you can observe the changes of adding, deleting, and updating array units.
+- When the decorated object is an array, you can observe the changes of adding, deleting, and updating array units. For details, see [Decorating Variables of the Array Type](#decorating-variables-of-the-array-type).
 
 - When the decorated object is of the **Date** type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
 
@@ -133,39 +133,40 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 
 2. When the value of a key in AppStorage changes, all data bound to that key (including both two-way binding with \@StorageLink and one-way binding with \@StorageProp) will be synchronized.
 
-3. When a variable decorated by \@StorageLink(key) is updated, the change is synchronized back to the corresponding key in AppStorage and triggers re-rendering of the owning custom component.
+3. When a variable decorated with \@StorageLink(key) is updated, the change is synchronized back to AppStorage and triggers re-rendering of the custom component.
 
 
 ## Constraints
 
 1. The parameter of \@StorageProp and \@StorageLink must be of the string type. Otherwise, an error is reported during compilation.
 
-    ```ts
-    AppStorage.setOrCreate('propA', 47);
+   ```ts
+   AppStorage.setOrCreate('propA', 47);
+   
+   // Incorrect usage. An error is reported during compilation.
+   @StorageProp() storageProp: number = 1;
+   @StorageLink() storageLink: number = 2;
+    
+   // Correct usage.
+   @StorageProp('propA') storageProp: number = 1;
+   @StorageLink('propA') storageLink: number = 2;
+   ```
 
-    // Incorrect usage. An error is reported during compilation.
-    @StorageProp() storageProp: number = 1;
-    @StorageLink() storageLink: number = 2;
+2. \@StorageProp and \@StorageLink do not support variables of type **Function**. In versions earlier than API version 23, the application would encounter a runtime error.
 
-    // Correct usage.
-    @StorageProp('propA') storageProp: number = 1;
-    @StorageLink('propA') storageLink: number = 2;
-    ```
-
-2. \@StorageProp and \@StorageLink cannot decorate variables of the function type. Before API version 23, the framework throws a runtime error.
-Since API version 23, validation of \@StorageProp and \@StorageLink for function-type variables is added, and a compilation error will be reported.
+   Starting from API version 23, relevant compile-time validation has been added. Decorating a **Function** type variable with \@StorageProp or \@StorageLink will result in an **ERROR** message. You should remove the \@StorageProp and \@StorageLink decorators from variables of the **Function** type in your code.
 
 3. When using AppStorage together with [PersistentStorage](arkts-persiststorage.md) and [Environment](arkts-environment.md), pay attention to the following:
 
-    a. If a property exists in AppStorage before PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated) is called, the value in AppStorage will overwrite the value in PersistentStorage. As such, when possible, initialize PersistentStorage properties first. For an example with incorrect usage, see [Accessing a Property in AppStorage Before PersistentStorage](arkts-persiststorage.md#accessing-a-property-in-appstorage-before-persistentstorage).
+   (1) If a property exists in AppStorage before PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistprop10) is called, the value in AppStorage will overwrite the value in PersistentStorage. As such, when possible, initialize PersistentStorage properties first. For an example with incorrect usage, see [Accessing a Property in AppStorage Before PersistentStorage](arkts-persiststorage.md#accessing-a-property-in-appstorage-before-persistentstorage).
 
-    b. If a property has already been created in AppStorage, subsequent calls to Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10) to create a property with the same name will fail. Since AppStorage already contains a property with that name, the Environment variable will not be written to AppStorage. Therefore, avoid using the preset Environment variable names in AppStorage.
-    
-    ```ts
-    AppStorage.setOrCreate('languageCode', 'en');
-    // The result is false.
-    let result = Environment.envProp('languageCode','en'); 
-    ```
+   (2) If a property has already been created in AppStorage, subsequent calls to Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10) to create a property with the same name will fail. Since AppStorage already contains a property with that name, the Environment variable will not be written to AppStorage. Therefore, avoid using the preset Environment variable names in AppStorage.
+
+   ```ts
+   AppStorage.setOrCreate('languageCode', 'en');
+   // The result is false.
+   let result = Environment.envProp('languageCode','en'); 
+   ```
 
 4. Changes to variables decorated with state decorators will trigger UI re-rendering. If a variable is modified only for message passing (not for UI updates), using the [emitter](../../reference/apis-basic-services-kit/js-apis-emitter.md) is recommended. For the example, see [Avoiding @StorageLink for Event Notification](#avoiding-storagelink-for-event-notification).
 
@@ -204,6 +205,7 @@ prop.get() // == 49
 ### Using AppStorage from Inside the UI
 
 @StorageLink works in conjunction with AppStorage to establish two-way data synchronization using properties stored in AppStorage.
+
 @StorageProp works in conjunction with AppStorage to establish one-way data synchronization using properties stored in AppStorage.
 
 <!-- @[appstorage_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTwo.ets) -->
@@ -238,7 +240,7 @@ struct TestStorageProp {
 
   build() {
     Column({ space: 20 }) {
-      // StorageLink establishes a two-way synchronization with AppStorage; local changes will be synchronized back to the value of key 'propA' in AppStorage.
+      // @StorageLink establishes a two-way synchronization with AppStorage; local changes will be synchronized back to the value of key 'propA' in AppStorage.
       Text(`storageLink ${this.storageLink}`)
         .onClick(() => {
           this.storageLink += 1;
@@ -275,9 +277,9 @@ struct TestStorageProp {
 
 ### Using Union Types in AppStorage
 
-The following example demonstrates how to use union types. The type of variable **linkA** is **number | null**, and the type of variable **linkB** is **number | undefined**. The **Text** components display **null** and **undefined** upon initialization, numbers when clicked, and **null** and **undefined** when clicked again.
+The following example demonstrates how to use union types. The type of variable **linkA** is **number | null**, and the type of variable **linkB** is **number | undefined**. The [Text](../arkts-common-components-text-display.md) components display **null** and **undefined** upon initialization, numbers when clicked, and **null** and **undefined** when clicked again.
 
-<!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) -->
+<!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) --> 
 
 ``` TypeScript
 @Component
@@ -288,6 +290,7 @@ struct StorageLinkComponent {
   build() {
     Column() {
       Text('@StorageLink initialization, @StorageLink value')
+      // If linkA is null, it will be switched to 1 after being clicked. If linkA is 1, it will be switched to null after being clicked.
       Text(`${this.linkA}`).fontSize(20).onClick(() => {
         this.linkA ? this.linkA = null : this.linkA = 1;
       })
@@ -334,6 +337,58 @@ struct TestPageStorageLink {
 }
 ```
 
+### Decorating Variables of the Array Type
+
+In this example, the **message** variable decorated with @StorageLink is of the **number[]** type. After the button is clicked, the value of **message** changes, and the UI is re-rendered.
+
+<!-- @[appstorage_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageOne.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct ArraySample {
+  @StorageLink('array') message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Column() {
+      ForEach(this.message, (item: number) => {
+        Text(`${item}`)
+          .fontSize(20)
+          .margin(10)
+      })
+      // Add an element to the array, triggering UI re-rendering.
+      Button('Push element')
+        .onClick(() => {
+          this.message.push(4);
+        })
+        .width(300)
+        .margin(10)
+      // Delete an array element, triggering UI re-rendering.
+      Button('Pop element')
+        .onClick(() => {
+          this.message.pop();
+        })
+        .width(300)
+        .margin(10)
+      // Reassign the value of the array, triggering UI re-rendering.
+      Button('Reset array')
+        .onClick(() => {
+          this.message = [9, 8, 7, 6];
+        })
+        .width(300)
+        .margin(10)
+      // Update the array element, triggering UI re-rendering.
+      Button('Modify element[0]')
+        .onClick(() => {
+          this.message[0] = 10;
+        })
+        .width(300)
+        .margin(10)
+    }
+  }
+}
+```
+
 ### Decorating Variables of the Date Type
 
 > **NOTE**
@@ -342,7 +397,7 @@ struct TestPageStorageLink {
 
 In the following example, the type of selectedDate decorated by @StorageLink is **Date**. After the button is clicked, the value of **selectedDate** changes, and the UI is re-rendered.
 
-<!-- @[appstorage_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFour.ets) -->
+<!-- @[appstorage_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFour.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -357,6 +412,7 @@ struct DateSample {
         .onClick(() => {
           AppStorage.setOrCreate('date', new Date('2023-07-08'));
         })
+      // Click the button to update the year of selectedDate, triggering a view refresh.
       Button('increase the year by 1')
         .margin(10)
         .onClick(() => {
@@ -390,7 +446,7 @@ struct DateSample {
 
 In this example, the **message** variable decorated with @StorageLink is of the Map\<number, string\> type. After the button is clicked, the value of **message** changes, and the UI is re-rendered.
 
-<!-- @[appstorage_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFive.ets) -->
+<!-- @[appstorage_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFive.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -406,6 +462,7 @@ struct MapSample {
           Text(`${item[1]}`).fontSize(30)
           Divider()
         })
+        // Click the button to initialize the message.
         Button('init map').onClick(() => {
           this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
@@ -438,7 +495,7 @@ struct MapSample {
 
 In this example, the **memberSet** variable decorated with @StorageLink is of the Set\<number\> type. After the button is clicked, the value of **memberSet** changes, and the UI is re-rendered.
 
-<!-- @[appstorage_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSix.ets) -->
+<!-- @[appstorage_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSix.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -454,6 +511,7 @@ struct SetSample {
             .fontSize(30)
           Divider()
         })
+        // Click the button to initialize memberSet.
         Button('init set')
           .onClick(() => {
             this.memberSet = new Set([0, 1, 2, 3, 4]);
@@ -601,11 +659,11 @@ When using Navigation, you need to manually add the system route table file src/
 
 For performance considerations, using the two-way synchronization mechanism between @StorageLink and AppStorage for event notification is not recommended: (1) Variables in AppStorage may be bound to components across multiple pages, while event notifications typically do not need to be broadcast to all these components. (2) When @StorageLink decorated variables are used in UI, changes trigger component re-renders, causing performance overhead even when no visual updates are required.
 
-In the following example, any click event in the **TapImage** component will trigger a change of the **tapIndex** property. As @StorageLink establishes a two-way data synchronization with AppStorage, the local change is synchronized to AppStorage. As a result, all custom components bound to the **tapIndex** property in AppStorage are notified of the change. After @Watch observes the change to **tapIndex**, the state variable **tapColor** is updated, triggering UI re-rendering. (Because **tapIndex** is not directly bound to the UI, its change does not directly trigger UI re-rendering.)
+In the following example, any click event in the **TapImage** component will trigger a change of the **tapIndex** property. As @StorageLink establishes a two-way data synchronization with AppStorage, the local change is synchronized to AppStorage. As a result, all custom components bound to the **tapIndex** property in AppStorage are notified of the change. After [@Watch](./arkts-watch.md) observes the change to **tapIndex**, the state variable **tapColor** is updated, triggering UI re-rendering. (Because **tapIndex** is not directly bound to the UI, its change does not directly trigger UI re-rendering.)
 
-When using this mechanism for event notification, make sure the property in AppStorage is not directly bound to the UI and control the complexity of the [@Watch](./arkts-watch.md) function– If the @Watch function execution time is too long, it will impact UI re-rendering efficiency.
+When using this mechanism for event notification, make sure the variables in AppStorage are not directly bound to the UI, while also controlling the complexity of the @Watch function. If the @Watch function execution time is too long, it will impact UI re-rendering efficiency.
 
-<!-- @[appstorage_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/ViewData.ets) -->
+<!-- @[appstorage_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/ViewData.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -657,8 +715,8 @@ struct Gallery {
 export struct TapImage {
   @StorageLink('tapIndex') @Watch('onTapIndexChange') tapIndex: number = -1;
   @State tapColor: Color = Color.Black;
-  private index: number = 0;
-  private uri: Resource = {
+  index: number = 0;
+  uri: Resource = {
     id: 0,
     type: 0,
     moduleName: '',
@@ -690,7 +748,7 @@ export struct TapImage {
 }
 ```
 
-Compared with the use of @StorageLink, the use of **emit** allows you to subscribe to events and receive event callbacks, thereby reducing overhead and improving code readability.
+Compared to using the bidirectional synchronization mechanism of @StorageLink to implement event notifications, you can use [emit](../../reference/apis-basic-services-kit/js-apis-emitter.md#emitteremit) to subscribe to an event and receive event callbacks, thereby reducing overhead and improving code readability.
 
 > **NOTE**
 >
@@ -776,8 +834,8 @@ struct Gallery {
 @Component
 export struct TapImage {
   @State tapColor: Color = Color.Black;
-  private index: number = 0;
-  private uri: Resource = {
+  index: number = 0;
+  uri: Resource = {
     id: 0,
     type: 0,
     moduleName: '',
@@ -811,7 +869,7 @@ export struct TapImage {
 
 The preceding notification logic is simple. It can be simplified into a ternary expression as follows:
 
-<!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Gallery.ets) -->
+<!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Gallery.ets) -->  
 
 ``` TypeScript
 
@@ -858,8 +916,8 @@ struct Gallery {
 @Component
 export struct TapImage {
   @StorageLink('tapIndex') tapIndex: number = -1;
-  private index: number = 0;
-  private uri: Resource = {
+  index: number = 0;
+  uri: Resource = {
     id: 0,
     type: 0,
     moduleName: '',
@@ -885,8 +943,7 @@ export struct TapImage {
 
 ### Notes on Update Rules When @StorageProp Is Used with AppStorage APIs
 
-When a key's value is updated using the **setOrCreate** or** set** API, if the new value is identical to the existing one, **setOrCreate** will not trigger updates for \@StorageLink or \@StorageProp. In addition, since \@StorageProp keeps its own local data copy, modifying this local value directly will not synchronize the change back to AppStorage. This can lead to a common misunderstanding: You may assume you have updated the value via AppStorage, only to find that the @StorageProp value remains unchanged in practice.
-An example is as follows:
+When a key's value is updated using the **setOrCreate** or** set** API, if the new value is identical to the existing one, **setOrCreate** will not trigger updates for \@StorageLink or \@StorageProp. In addition, since \@StorageProp keeps its own local data copy, modifying this local value directly will not synchronize the change back to AppStorage. This can lead to a common misunderstanding: You may assume you have updated the value via AppStorage, only to find that the @StorageProp value remains unchanged in practice. An example is as follows:
 
 <!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) -->
 
@@ -916,6 +973,7 @@ struct PageStorageProp {
       Button('change')
         .onClick(() => {
           AppStorage.setOrCreate('propA', false);
+          // Output the current value of this.propA.
           hilog.info(DOMAIN, TAG, `propA: ${this.propA}`);
         })
     }

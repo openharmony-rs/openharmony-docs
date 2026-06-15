@@ -1,8 +1,8 @@
 # @ohos.notificationManager (NotificationManager模块)(系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -4381,6 +4381,8 @@ notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
 setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void\>
 
 代理其他应用设定角标个数。使用Promise异步回调。
+
+需要当前应用与其他应用存在代理关系，或者当前应用有ohos.permission.NOTIFICATION_AGENT_CONTROLLER权限。
 
 **系统能力**：SystemCapability.Notification.Notification
 

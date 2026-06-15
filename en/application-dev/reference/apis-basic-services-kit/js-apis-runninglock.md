@@ -6,8 +6,9 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:54:56.103Z pushedAt=2026-06-09T10:12:44.232Z -->
 
-The **runningLock** module provides APIs for creating, querying, holding, and releasing running locks. A running lock enables the proximity sensor to turn on or off the screen, or prevents the device from entering sleep mode when the screen is off. For details about the running lock types, see [RunningLockType](#runninglocktype).
+This module provides APIs for creating, querying, holding, and releasing running locks. A running lock enables the proximity sensor to turn on or off the screen, or prevents the device from entering sleep mode when the screen is off. For details about the running lock types, see [RunningLockType](#runninglocktype).
 
 > **NOTE**
 >
@@ -43,7 +44,7 @@ isSupported(type: RunningLockType): boolean
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 
@@ -80,7 +81,7 @@ create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLo
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | If the permission is denied.|
@@ -125,7 +126,7 @@ create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | If the permission is denied.|
@@ -299,7 +300,7 @@ hold(timeout: number): void
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message    |
+| Error Code  | Error Message    |
 |---------|----------|
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 201     | If the permission is denied.|
@@ -349,10 +350,9 @@ unhold(): void
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message    |
+| Error Code  | Error Message    |
 |---------|----------|
 | 201     | If the permission is denied.|
-
 
 **Example**
 
@@ -493,6 +493,7 @@ isUsed(): boolean
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
 **Returns**
+
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
 | boolean | The value **true** indicates that the **RunningLock** object is held; and the value **false** indicates that the **RunningLock** object is released.|

@@ -1,11 +1,11 @@
-# @ohos.application.uriPermissionManager(URI权限管理)(系统接口)
+# @ohos.application.uriPermissionManager (URI权限管理)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 URI权限管理模块。用于应用A授权/撤销授权URI给应用B。
 
@@ -46,7 +46,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。 | 
+  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
   | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。 | 
   | targetBundleName | string | 是 | 被授权URI的应用包名。 | 
   | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 | 
@@ -117,7 +117,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。 | 
+  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
   | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。 | 
   | targetBundleName | string | 是 | 被授权URI的应用包名。 |  
 
@@ -192,7 +192,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。 | 
+  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
   | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。 | 
   | targetBundleName | string | 是 | 被授权应用的应用包名。 |
   | appCloneIndex | number | 是 | 被授权应用的分身索引，有效范围为[0, 1000], 取值为0时表示主应用。|
@@ -287,7 +287,7 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。 | 
+  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
   | targetBundleName | string | 是 | 被撤销授权uri的应用包名。 | 
   | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回0表示有权限，返回-1表示无权限。 | 
 
@@ -342,7 +342,7 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。 | 
+  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
   | targetBundleName | string | 是 | 被授权URI的应用包名。 |  
 
 **返回值：**
@@ -402,7 +402,7 @@ revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: number
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。 | 
+  | uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileuri10)。 | 
   | targetBundleName | string | 是 | 被授权应用的应用包名。 |
   | appCloneIndex | number | 是 | 被授权应用的分身索引，有效范围为[0, 1000], 取值为0时表示主应用。|
 
@@ -488,7 +488,7 @@ grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTokenId: nu
   | -------- | -------- | -------- | -------- |
   | key | string | 是 | 目标UDMF数据唯一标识。key必须由调用方通过[unifiedDataChannel.insertData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddatachannelinsertdata)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../apis-arkdata/js-apis-data-unifiedDataChannel.md#intention)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](../../database/unified-data-channels.md)。| 
   | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。支持的取值如下：<br>- FLAG_AUTH_READ_URI_PERMISSION：读权限。<br>- FLAG_AUTH_WRITE_URI_PERMISSION：写权限。 |
-  | targetTokenId  | number  | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。 |
+  | targetTokenId  | number  | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。目标应用需要与接口调用方为不同应用。 |
 
 **返回值：**
 
@@ -565,7 +565,7 @@ grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags, callerTok
   | key | string | 是 | 目标UDMF数据唯一标识。key必须指定应用（即callerTokenId对应的应用）通过[unifiedDataChannel.insertData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddatachannelinsertdata)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../apis-arkdata/js-apis-data-unifiedDataChannel.md#intention)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](../../database/unified-data-channels.md)。| 
   | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。支持的取值如下：<br>- FLAG_AUTH_READ_URI_PERMISSION：读权限。<br>- FLAG_AUTH_WRITE_URI_PERMISSION：写权限。 | 
   | callerTokenId  | number  | 是 | 拉起方应用的身份标识，可以通过[want](js-apis-app-ability-want.md)中的"ohos.aafwk.param.callerToken"字段获取。 |
-  | targetTokenId  | number  | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。 |
+  | targetTokenId  | number  | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。目标应用必须与拉起方为不同应用。 |
 
 **返回值：**
 

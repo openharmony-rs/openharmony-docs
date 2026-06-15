@@ -1,7 +1,7 @@
 # 复杂文本绘制与显示（C/C++）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -1037,10 +1037,11 @@ OH_Drawing_DestroyTypography(typography);
   
 具体效果如下所示：
 
-| 上升部下降部开关 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
-| -------- | -------- |
-| TEXT_HEIGHT_DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
-| TEXT_HEIGHT_ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+| 行间距 | 上升部下降部开关 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
+| -------- | -------- | -------- |
+|  0  | TEXT_HEIGHT_ALL | ![zh-cn_image_noLineSpacing](figures/LineSpacingClose.png) |
+| 100 | TEXT_HEIGHT_ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+| 100 | TEXT_HEIGHT_DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 
 
 ## 样式的拷贝、绘制与显示

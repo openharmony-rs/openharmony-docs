@@ -1,10 +1,10 @@
 # Mechanic Kit<!--mechanic-api-->
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
-<!--Adviser: @jinqiuheng-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @Marssssss-->
+<!--Tester: @Aullar-->
+<!--Adviser: @hu-zhiqiong-->
 
 - ArkTS API<!--mechanic-arkts-->
   - [@ohos.distributedHardware.mechanicManager (Mechanic Manager)](js-apis-mechanicManager.md)

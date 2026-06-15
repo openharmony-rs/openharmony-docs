@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## Overview
 
@@ -38,7 +38,7 @@ enum BundleManager_ErrorCode
 
 **Description**
 
-Enumerates the error codes.
+Enumerates the error codes. For details, see [Universal Error Codes](../errorcode-universal.md).
 
 **Since**: 21
 

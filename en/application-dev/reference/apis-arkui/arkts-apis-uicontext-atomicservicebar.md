@@ -1,8 +1,8 @@
 # Interface (AtomicServiceBar)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
-<!--Designer: @piggyguy-->
+<!--Owner: @pengzhiwen3-->
+<!--Designer: @dutie123-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -26,7 +26,7 @@ Sets whether the atomic service menu bar is visible.
 
 > **NOTE**
 >
-> The atomic service menu bar is hidden by default and replaced with a floating button since API version 12; it cannot be changed to visible using this API.
+> Since API version 12, the atomic service menu bar is hidden by default and replaced with a floating button. **When setVisible() is called in atomic services, the visible parameter is ignored, and menu bar cannot be displayed or hidden.**
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -72,7 +72,7 @@ Sets the background color of the atomic service menu bar.
 
 > **NOTE**
 >
-> The background of the atomic service menu bar is hidden by default since API version 12; its color cannot be set using this API.
+> Since API version 12, the background of the atomic service menu bar is hidden by default. **When setBackgroundColor() is called in atomic services, the color parameter is ignored, and the background color of the menu bar cannot be set.**
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -117,7 +117,7 @@ Sets the title content of the atomic service menu bar.
 
 > **NOTE**
 >
-> The title of the atomic service menu bar is hidden by default since API version 12; its content cannot be set using this API.
+> Since API version 12, the title of the atomic service menu bar is hidden by default. **When setTitleContent() is called in atomic services, the content parameter is ignored, and the menu bar title cannot be set.**
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -162,7 +162,7 @@ Sets the font style of the atomic service menu bar.
 
 > **NOTE**
 >
-> The title of the atomic service menu bar is hidden by default since API version 12; its font style cannot be set using this API.
+> Since API version 12, the title of the atomic service menu bar is hidden by default. **When setTitleFontStyle() is called in atomic services, the font parameter is ignored, and the font style of the menu bar title, such as italic, cannot be set.**
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -207,7 +207,7 @@ Sets the color of the atomic service icon.
 
 > **NOTE**
 >
-> The atomic service menu bar is hidden by default and replaced with a floating button since API version 12; the icon color cannot be changed using this API.
+> Since API version 12, the atomic service menu bar is hidden by default and replaced with a floating button. **When setIconColor() is called in atomic services, the color parameter is ignored, and the menu bar icon color cannot be set.**
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

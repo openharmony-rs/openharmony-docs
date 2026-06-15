@@ -1,8 +1,8 @@
 # @ohos.multimedia.audio (Audio Management) (System API)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -189,6 +189,8 @@ Enumerates the audio stream types.
 | ---------------------------- | ------ | ---------- |
 | SYSTEM<sup>20+</sup>         | 6      | System sound.|
 | ULTRASONIC<sup>10+</sup>     | 10     | Audio stream for ultrasonic.|
+| NOTIFICATION<sup>20+</sup>     | 11     | Notification tone.|
+| NAVIGATION<sup>20+</sup>     | 12     | Navigation.|
 | ALL<sup>9+</sup>             | 100    | All public audio streams.|
 
 ## InterruptRequestResultType<sup>9+</sup>
@@ -244,7 +246,7 @@ Describes the audio effect properties.
 | ------------------ | ---- | ---- |---| --------- |
 | name         | string | No| No| Audio effect name.|
 | category     | string | No| No| Audio effect category.|
-| flag        | [EffectFlag](#effectflag18) | No| No| Audio effect flag.|
+| flag        | [EffectFlag](#effectflag18) | No| No| Audio effect category.|
 
 ## StreamUsage
 
@@ -261,6 +263,8 @@ Enumerates the audio stream usage.
 | STREAM_USAGE_ENFORCED_TONE<sup>10+</sup>  | 15     | Forcible tone (such as camera shutter sound effect).|
 | STREAM_USAGE_ULTRASONIC<sup>10+</sup>     | 16     | Ultrasonic (currently provided only for MSDP).|
 | STREAM_USAGE_VOICE_CALL_ASSISTANT<sup>12+</sup>     | 21     | Voice assistant for calls.|
+| STREAM_USAGE_ANNOUNCEMENT<sup>24+</sup>   | 22     | Notification tone.<br>**Model restriction**: This API can be used only in the stage model.|
+| STREAM_USAGE_EMERGENCY<sup>24+</sup>      | 23     | Emergency tone.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## InterruptRequestType<sup>9+</sup>
 
@@ -383,6 +387,7 @@ Describes the event received by the application when the volume is changed.
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
 | volumeGroupId | number                           | No| No| Volume group ID. It can be used as an input parameter of **getGroupManager**.|
 | networkId  | string                              | No| No| Network ID.|
+| percentage<sup>23+</sup> | number | No| Yes| Volume percentage. The value range is [0, 100].|
 
 ## ConnectType<sup>9+</sup>
 
@@ -415,11 +420,11 @@ Describes the volume group information.
 
 | Name                       | Type                      | Read-Only| Optional| Description      |
 | -------------------------- | -------------------------- | ---- | ---- | ---------- |
-| networkId<sup>9+</sup>     | string                     | Yes  | No  | Network ID of the device. |
-| groupId<sup>9+</sup>       | number                     | Yes  | No  | Group ID of the device.|
-| mappingId<sup>9+</sup>     | number                     | Yes  | No  | Group mapping ID.|
-| groupName<sup>9+</sup>     | string                     | Yes  | No  | Group name.|
-| type<sup>9+</sup>          | [ConnectType](#connecttype9)| Yes  | No  | Type of the connected device.|
+| networkId | string                     | Yes  | No  | Network ID of the device. |
+| groupId | number                     | Yes  | No  | Group ID of the device.|
+| mappingId | number                     | Yes  | No  | Group mapping ID.|
+| groupName | string                     | Yes  | No  | Group name.|
+| type | [ConnectType](#connecttype9)| Yes  | No  | Type of the connected device.|
 
 ## SourceType<sup>8+</sup>
 
@@ -434,6 +439,23 @@ Enumerates the audio source types.
 | SOURCE_TYPE_WAKEUP <sup>10+</sup>            | 3 | Audio recording source in voice wake-up scenarios.<br>**Required permissions**: ohos.permission.MANAGE_INTELLIGENT_VOICE |
 | SOURCE_TYPE_VOICE_CALL<sup>11+</sup>            | 4 | Audio source in voice calls.<br>**Required permissions**: ohos.permission.RECORD_VOICE_CALL |
 | SOURCE_TYPE_VOICE_TRANSCRIPTION<sup>18+</sup>   | 12     | Audio source for speech-to-text conversion.|
+| SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT<sup>23+</sup>   | 19     | Unprocessed voice assistant audio source.<br>**Model restriction**: This API can be used only in the stage model.|
+
+## AudioCapturerMicInConfig<sup>23+</sup>
+
+Defines information about an audio capturer, which can capture unprocessed microphone input (mic-in) audio data.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Capturer
+
+| Name                               | Type                                                     | Read-Only| Optional| Description                                                        |
+| ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
+| micInStreamInfo                          | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)                      | No| No| Microphone audio stream information.  |
+| capturerInfo                        | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)                   | No| No| Audio capturer information.        |
+| ecStreamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | No| Yes| Echo-canceled audio stream information.<br>If this property is not set, the capturer records only the audio stream input by the microphone.   |
 
 ## VolumeAdjustType<sup>10+</sup>
 
@@ -748,7 +770,6 @@ audioManager.disableSafeMediaVolume().then(() => {
 on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [on('volumeChange')](arkts-apis-audio-AudioVolumeManager.md#onvolumechangedeprecated) in AudioVolumeManager.
 
 Subscribes to the system volume change event, which is triggered when the system volume is changed. This API uses an asynchronous callback to return the result.
@@ -783,7 +804,6 @@ on(type: 'ringerModeChange', callback: Callback\<AudioRingMode>): void
 Subscribes to the ringer mode change event, which is triggered when [audioringmode](arkts-apis-audio-e.md#audioringmode) is changed. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [on('ringerModeChange')](arkts-apis-audio-AudioVolumeGroupManager.md#onringermodechange9) in AudioVolumeGroupManager.
 
 **System API**: This is a system API.
@@ -803,54 +823,6 @@ Subscribes to the ringer mode change event, which is triggered when [audioringmo
 audioManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
   console.info(`Updated ringermode: ${ringerMode}`);
 });
-```
-
-## forceVolumeKeyControlType<sup>20+</sup>
-
-forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: number): void
-
-Sets the type of volume that the volume keys should control.
-
-**Required permissions**: ohos.permission.MODIFY_AUDIO_SETTINGS
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Audio.Volume
-
-**Parameters**
-
-| Name  | Type                                  | Mandatory| Description                                                        |
-| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| volumeType     | [AudioVolumeType](#audiovolumetype)                       | Yes  | Type of audio volume to control.|
-| duration |number | Yes  | Duration that the volume keys will control this type of volume if no volume key events occur. When this time expires, the forced volume type setting is canceled. The maximum duration is 10 seconds. If the duration is set to **-1**, the setting is canceled.|
-
-**Error codes**
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
-
-| ID| Error Message|
-| ------- | --------------------------------------------|
-| 201 | Permission denied. |
-| 202 | Not system App. |
-| 6800101 | Parameter verification failed. |
-| 6800301  | Crash or blocking occurs in system process. |
-
-**Example**
-
-```ts
-import { audio } from '@kit.AudioKit';
-
-let audioManager = audio.getAudioManager();
-let audioVolumeManager = audioManager.getVolumeManager();
-
-// Set the volume control type to ringtone mode.
-let volumeType = audio.AudioVolumeType.RINGTONE;
-let duration = 10;
-audioVolumeManager.forceVolumeKeyControlType(volumeType, duration);
-
-// Cancel the custom volume control, and restore the default volume control.
-let volumeTypeDefault = audio.AudioVolumeType.MEDIA;
-let durationToCancel = -1;
-audioVolumeManager.forceVolumeKeyControlType(volumeTypeDefault, durationToCancel);
 ```
 
 ## AudioVolumeManager<sup>9+</sup>
@@ -967,7 +939,7 @@ try {
 
 getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
-Obtains the volume of an application based on the application ID. This API uses a promise to return the result.
+Obtains the volume percentage (within a range of 0 to 100) of an application based on the application ID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -983,7 +955,7 @@ Obtains the volume of an application based on the application ID. This API uses 
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise used to return the application volume (ranging from 0 to 100).|
+| Promise&lt;number&gt; | Promise used to return the application volume percentage (ranging from 0 to 100).|
 
 **Error codes**
 
@@ -1009,7 +981,7 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 
 setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
-Sets the volume for an application based on the application ID. This API uses a promise to return the result.
+Sets the volume percentage (within a range of 0 to 100) of an application based on the application ID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1020,7 +992,7 @@ Sets the volume for an application based on the application ID. This API uses a 
 | Name    | Type                                     | Mandatory| Description      |
 | ---------- | ---------------------------------------- | ---- |----------|
 | uid    | number                                   | Yes  | Application ID.  |
-| volume    | number                                   | Yes  | Volume to set.|
+| volume    | number                                   | Yes  | Volume percentage. The value range is [0, 100].|
 
 **Return value**
 
@@ -1048,6 +1020,193 @@ let volume: number = 20;    // Volume to set.
 audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
   console.info(`set app volume success.`);
 });
+```
+
+### forceVolumeKeyControlType<sup>20+</sup>
+
+forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: number): void
+
+Sets the type of volume that the volume keys should control.
+
+**Required permissions**: ohos.permission.MODIFY_AUDIO_SETTINGS
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name  | Type                                  | Mandatory| Description                                                        |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| volumeType     | [AudioVolumeType](#audiovolumetype)                       | Yes  | Type of audio volume to control.|
+| duration |number | Yes  | Duration that the volume keys remain in control of this volume type if no volume key events occur, in seconds.<br>When this time expires, the forced volume type setting is canceled. The maximum duration is 10 seconds.<br>If the duration is set to **-1**, the setting is canceled.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 201 | Permission denied. |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+| 6800301  | Crash or blocking occurs in system process. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioManager = audio.getAudioManager();
+let audioVolumeManager = audioManager.getVolumeManager();
+
+// Set the volume control type to ringtone mode.
+let volumeType = audio.AudioVolumeType.RINGTONE;
+let duration = 10;
+audioVolumeManager.forceVolumeKeyControlType(volumeType, duration);
+
+// Cancel the custom volume control, and restore the default volume control.
+let volumeTypeDefault = audio.AudioVolumeType.MEDIA;
+let durationToCancel = -1;
+audioVolumeManager.forceVolumeKeyControlType(volumeTypeDefault, durationToCancel);
+```
+
+### setSystemVolumePercentage<sup>23+</sup>
+
+setSystemVolumePercentage(volumeType: AudioVolumeType, percentage: number): Promise&lt;void&gt;
+
+Sets the volume percentage of a specified stream. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - When setting the volume percentage of a specified stream, use an integer ranging from the minimum system volume to 100.
+> - The volume percentage corresponds to the volume level. Each level corresponds to a specific percentage.
+> - When the volume level changes, the volume percentage is adjusted accordingly and mapped to the volume level range.
+> - Volume level 0 is mapped to 0%, and the maximum volume is mapped to 100%. The intermediate volume levels are evenly distributed between 1 and 99.
+> - When the volume percentage changes, the volume level is adjusted accordingly.
+
+**Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name    | Type                               | Mandatory| Description                                                    |
+| ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.                                            |
+| percentage | number | Yes  | Volume percentage. The minimum value is the volume percentage obtained by calling [getMinSystemVolumePercentage](#getminsystemvolumepercentage23), and the maximum value is 100.|
+
+**Return value**
+
+| Type               | Description                         |
+| ------------------- | ----------------------------- |
+| Promise&lt;void&gt; |Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 201 | Permission denied. |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed, including volumeType or percentage param begin out of range. |
+| 6800301 | Crash or blocking occurs in system process. |
+
+**Example**
+
+```ts
+audioVolumeManager.setSystemVolumePercentage(audio.AudioVolumeType.MEDIA, 10).then(() => {
+  console.info('Promise returned to indicate a successful volume setting.');
+});
+```
+
+### getSystemVolumePercentage<sup>23+</sup>
+
+getSystemVolumePercentage(volumeType: AudioVolumeType): number
+
+Obtains the volume percentage of a specified stream.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name    | Type                               | Mandatory| Description              |
+| ---------- | ----------------------------------- | ---- | ------------------ |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.      |
+
+**Return value**
+
+| Type               | Description                         |
+| ------------------- | ----------------------------- |
+| number | Volume percentage. The value range is [0, 100].|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+try {
+  let volume = audioVolumeManager.getSystemVolumePercentage(audio.AudioVolumeType.MEDIA);
+  console.info(`MEDIA volume percentage obtained success.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the volume percentage, error: ${error}`);
+}
+```
+
+### getMinSystemVolumePercentage<sup>23+</sup>
+
+getMinSystemVolumePercentage(volumeType: AudioVolumeType): number
+
+Obtains the minimum volume percentage of a specified stream.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name    | Type                               | Mandatory| Description              |
+| ---------- | ----------------------------------- | ---- | ------------------ |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio stream type.|
+
+**Return value**
+
+| Type               | Description                         |
+| ------------------- | ----------------------------- |
+| number | Volume percentage. The value range is [0, 100].|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+try {
+  let volume = audioVolumeManager.getMinSystemVolumePercentage(audio.AudioVolumeType.MEDIA);
+  console.info(`MEDIA volume percentage obtained success.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the volume percentage, error: ${error}`);
+}
 ```
 
 ### isAppVolumeMutedForUid<sup>19+</sup>
@@ -1300,6 +1459,162 @@ let activeVolumeTypeChangeCallback = (volumeType: audio.AudioVolumeType) => {
 audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 
 audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
+```
+
+### on('systemVolumeChange')<sup>20+</sup>
+
+on(type: 'systemVolumeChange', callback: Callback\<VolumeEvent>): void
+
+Subscribes to the system volume change event, which is triggered when the system volume is changed. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name  | Type                                  | Mandatory| Description                                                        |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                 | Yes  | Event type. The event **'systemVolumeChange'** is triggered when the system volume is changed.|
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | Yes  | Callback used to return the changed volume.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+audioVolumeManager.on('systemVolumeChange', (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on function, VolumeEvent: ${volumeEvent}.`);
+});
+```
+
+### off('systemVolumeChange')<sup>20+</sup>
+
+off(type: 'systemVolumeChange', callback?: Callback\<VolumeEvent>): void
+
+Unsubscribes from the system volume change event. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name  | Type                                  | Mandatory| Description                                                        |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                 | Yes  | Event type. The event **'systemVolumeChange'** is triggered when the system volume is changed.|
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | No  | Callback used to return the changed volume.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// Cancel all subscriptions to the event.
+audioVolumeManager.off('systemVolumeChange');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let systemVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on or off function, VolumeEvent: ${volumeEvent}.`);
+};
+
+audioVolumeManager.on('systemVolumeChange', systemVolumeChangeCallback);
+
+audioVolumeManager.off('systemVolumeChange', systemVolumeChangeCallback);
+```
+
+### onVolumePercentageChange<sup>23+</sup>
+
+onVolumePercentageChange(callback: Callback\<VolumeEvent>): void
+
+Listens for the system volume percentage change event. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name  | Type                                  | Mandatory| Description                                                        |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | Yes  | Callback used to return the changed volume.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+onVolumePercentageChange((volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Volume percentage: ${volumeEvent.percentage} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+});
+```
+
+### offVolumePercentageChange<sup>23+</sup>
+
+offVolumePercentageChange(callback?: Callback\<VolumeEvent>): void
+
+Unsubscribes from the system volume change event. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Volume
+
+**Parameters**
+
+| Name  | Type                                  | Mandatory| Description                                                        |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | No  | Callback used to return the changed volume.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**Example**
+
+```ts
+// Cancel all subscriptions to the event.
+audioVolumeManager.offVolumePercentageChange();
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let volumePercentageChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Volume percentage: ${volumeEvent.percentage} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+};
+
+audioVolumeManager.onVolumePercentageChange(volumePercentageChangeCallback);
+
+audioVolumeManager.offVolumePercentageChange(volumePercentageChangeCallback);
 ```
 
 ## AudioVolumeGroupManager<sup>9+</sup>
@@ -1651,7 +1966,7 @@ setMicMutePersistent(mute: boolean, type: PolicyType): Promise&lt;void&gt;
 
 Mutes or unmutes the microphone permanently. This API uses a promise to return the result.
 
-**Required permission**: ohos.permission.MICROPHONE_CONTROL
+**Required permissions**: ohos.permission.MICROPHONE_CONTROL
 
 **System API**: This is a system API.
 
@@ -1695,7 +2010,7 @@ isPersistentMicMute(): boolean
 
 Checks whether the microphone is muted permanently. This API returns the result synchronously.
 
-**Required permission**: ohos.permission.MICROPHONE_CONTROL
+**Required permissions**: ohos.permission.MICROPHONE_CONTROL
 
 **System API**: This is a system API.
 
@@ -2738,7 +3053,7 @@ Starting from API version 23, this API does not require the ohos.permission.MANA
 
 | Type                 | Description                        |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise that returns no result.|
+| Promise&lt;void&gt;   | Promise that returns no value.|
 
 **Error codes**
 
@@ -2801,13 +3116,13 @@ Starting from API version 23, this API does not require the ohos.permission.MANA
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | usage          | [DeviceUsage](arkts-apis-audio-e.md#deviceusage12)            | Yes  | Device type. Only output devices can be excluded.              |
-| devices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | Lit of output devices to restore.              |
+| devices          | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)            | Yes  | List of output devices to restore.              |
 
 **Return value**
 
 | Type                 | Description                        |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise that returns no result.|
+| Promise&lt;void&gt;   | Promise that returns no value.|
 
 **Error codes**
 
@@ -2875,7 +3190,7 @@ Starting from API version 23, this API does not require the ohos.permission.MANA
 
 | Type                 | Description                        |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise that returns no result.|
+| Promise&lt;void&gt;   | Promise that returns no value.|
 
 **Error codes**
 
@@ -2989,6 +3304,7 @@ Describes an audio device.
 | volumeGroupId<sup>9+</sup>    | number                     | Yes  | No  | ID of the volume group to which the device belongs.<br> **System capability**: SystemCapability.Multimedia.Audio.Device|
 | dmDeviceType<sup>18+</sup>    | number                     | Yes  | Yes| Subtype ID of the device.<br> **System capability**: SystemCapability.Multimedia.Audio.Core|
 | highQualityRecordingSupported<sup>21+</sup>    | boolean                     | Yes  | Yes| Whether high-quality recording is supported. **true** if supported, **false** otherwise.<br> **System capability**: SystemCapability.Multimedia.Audio.Core|
+| dmDeviceInfo<sup>23+</sup>    | string                     | Yes  | Yes| Extended information about the distributed device, including whether the device supports stereo and the device serial number.<br> **Model restriction**: This API can be used only in the stage model.<br> **System capability**: SystemCapability.Multimedia.Audio.Core|
 
 ## AudioRendererFilter<sup>9+</sup>
 
@@ -3267,7 +3583,6 @@ setSpatializationEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): 
 Enables or disables spatial audio rendering. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled12) instead.
 
 **Required permissions**: ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
@@ -3317,7 +3632,6 @@ setSpatializationEnabled(enable: boolean): Promise&lt;void&gt;
 Enables or disables spatial audio rendering. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled12) instead.
 
 **Required permissions**: ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
@@ -3435,7 +3749,6 @@ isSpatializationEnabled(): boolean
 Checks whether spatial audio rendering is enabled. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isspatializationenabled12) instead.
 
 **System API**: This is a system API.
@@ -3540,7 +3853,6 @@ on(type: 'spatializationEnabledChange', callback: Callback<boolean\>): void
 Subscribes to the spatial audio rendering status change event, which is triggered when the spatial audio rendering status is changed. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#onspatializationenabledchangeforanydevice12) instead.
 
 **System API**: This is a system API.
@@ -3619,8 +3931,7 @@ off(type: 'spatializationEnabledChange', callback?: Callback<boolean\>): void
 Unsubscribes from the spatial audio rendering status change event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 11 and deprecated since API version 12. You are advised to use [off(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offspatializationenabledchangeforanydevice12) instead.
+> This API is supported since API version 11 and deprecated since API version 12. You are advised to use [off('spatializationEnabledChangeForAnyDevice')](#offspatializationenabledchangeforanydevice12) instead.
 
 **System API**: This is a system API.
 
@@ -3712,7 +4023,6 @@ setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 Enables or disables head tracking. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled12) instead.
 
 **Required permissions**: ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
@@ -3726,7 +4036,7 @@ Enables or disables head tracking. This API uses an asynchronous callback to ret
 | Name                      | Type                                                        | Mandatory| Description                     |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | enable                      | boolean                                                      | Yes  | Whether to enable or disable head tracking. **true** to enable, **false** otherwise. |
-| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback                    | AsyncCallback&lt;void&gt;                                    | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -3762,7 +4072,6 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 Enables or disables head tracking. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled12) instead.
 
 **Required permissions**: ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
@@ -3810,7 +4119,7 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
 
 ### setHeadTrackingEnabled<sup>12+</sup>
 
-setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
+setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
 
 Enables or disables head tracking for a device. This API uses a promise to return the result.
 
@@ -3824,6 +4133,7 @@ Enables or disables head tracking for a device. This API uses a promise to retur
 
 | Name                | Type                                                        | Mandatory| Description                     |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | Yes  | Device descriptor.|
 | enable                | boolean                                                      | Yes  | Whether to enable or disable head tracking. **true** to enable, **false** otherwise. |
 
 **Return value**
@@ -3879,7 +4189,6 @@ isHeadTrackingEnabled(): boolean
 Checks whether head tracking is enabled. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isheadtrackingenabled12) instead.
 
 **System API**: This is a system API.
@@ -3984,7 +4293,6 @@ on(type: 'headTrackingEnabledChange', callback: Callback<boolean\>): void
 Subscribes to the head tracking status change event, which is triggered when the head tracking status is changed. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#onheadtrackingenabledchangeforanydevice12) instead.
 
 **System API**: This is a system API.
@@ -4063,8 +4371,7 @@ off(type: 'headTrackingEnabledChange', callback?: Callback<boolean\>): void
 Unsubscribes from the head tracking status change event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 11 and deprecated since API version 12. You are advised to use [off(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offheadtrackingenabledchangeforanydevice12) instead.
+> This API is supported since API version 11 and deprecated since API version 12. You are advised to use [off('headTrackingEnabledChangeForAnyDevice')](#offheadtrackingenabledchangeforanydevice12) instead.
 
 **System API**: This is a system API.
 
@@ -4587,9 +4894,23 @@ Enumerates the tone types of the player.
 | TONE_TYPE_COMMON_PROPRIETARY_PROMPT               | 203    | Proprietary tone - PROMPT.            |
 | TONE_TYPE_COMMON_PROPRIETARY_DOUBLE_BEEP          | 204    | Proprietary tone - double beep tone.         |
 
+## RenderTarget<sup>22+</sup>
+
+Enumerates the rendering targets of the audio renderer.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+| Name                              |  Value    | Description                      |
+| ---------------------------------- | ------ | ------------------------- |
+| PLAYBACK                           | 0      | Playback mode (default mode of the audio renderer).<br>In this mode, audio is played properly through the audio renderer.|
+| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | Injection mode.<br>In this mode, when the source type of the recording stream is [SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8) and the audio scene is [AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8), the output of the audio renderer is injected into the VoIP recording stream.|
+
 ## TonePlayer<sup>9+</sup>
 
 Provides APIs for playing and managing DTMF tones, such as dial tones, ringback tones, supervisory tones, and proprietary tones.
+
 Before calling any API in TonePlayer, you must use [createTonePlayer](#audiocreatetoneplayer9) to create a TonePlayer instance.
 
 **System API**: This is a system API.
@@ -4836,6 +5157,8 @@ Implements an ASR processing controller.
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
+
+**Device behavior differences**: The APIs of this module do not take effect on TVs.
 
 ### setAsrAecMode<sup>12+</sup>
 
@@ -5161,18 +5484,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let flag = asrProcessingController.setAsrVoiceMuteMode(audio.AsrVoiceMuteMode.OUTPUT_MUTE, true);
 ```
 
-## RenderTarget<sup>22+</sup>
+## AudioRenderer<sup>8+</sup>
 
-Enumerates the rendering targets of the audio renderer.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Audio.Core
-
-| Name                              |  Value    | Description                      |
-| ---------------------------------- | ------ | ------------------------- |
-| PLAYBACK                           | 0      | Playback mode (default mode of the audio renderer).<br>In this mode, audio is played properly through the audio renderer.|
-| INJECT_TO_VOICE_COMMUNICATION_CAPTURE | 1 | Injection mode. In this mode, when the source type of the recording stream is [SOURCE_TYPE_VOICE_COMMUNICATION](arkts-apis-audio-e.md#sourcetype8) and the audio scene is [AUDIO_SCENE_VOICE_CHAT](arkts-apis-audio-e.md#audioscene8), the output of the audio renderer is injected into the VoIP recording stream.|
+Audio rendering. Before calling any API in **AudioRenderer**, use [audio.createAudioRenderer](arkts-apis-audio-f.md#audiocreateaudiorenderer8) to create an **AudioRenderer** instance first.
 
 ### setTarget<sup>22+</sup>
 
@@ -5227,43 +5541,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example() {
-  let audioStreamInfo: audio.AudioStreamInfo = {
-    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
-    channels: audio.AudioChannel.CHANNEL_2, // Channel.
-    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
-    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-  };
-
-  let audioRendererInfo: audio.AudioRendererInfo = {
-    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
-    rendererFlags: 0 // Audio renderer flag.
-  };
-
-  let audioRendererOptions: audio.AudioRendererOptions = {
-    streamInfo: audioStreamInfo,
-    rendererInfo: audioRendererInfo
-  };
-
-  try {
-    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
-
-    // Set the injection mode.
-    audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
-    console.info('setTarget INJECT_TO_VOICE_COMMUNICATION_CAPTURE');
-
-    // Set the playback mode.
-    audioRenderer.setTarget(audio.RenderTarget.PLAYBACK);
-    console.info('setTarget PLAYBACK');
-
-  } catch (err) {
-    console.error(AudioFrameworkRenderLog: Error : ${err.message});
-  }
-}
+audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE).then(() => {
+  console.info('Succeeded in setting target.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set target. code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### getTarget<sup>22+</sup>
@@ -5298,39 +5582,98 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+async function getTarget(){
+  // (Optional) Set the injection mode.
+  await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
+  console.info('Succeeded in setting target.');
+
+  // If the SetTarget API has been called before this API is called, ensure that the SetTarget API has been successfully called. Otherwise, the obtained value may be inaccurate.
+  let renderTarget = audioRenderer.getTarget();
+  console.info(`Succeeded in getting target, RenderTarget: ${renderTarget}.`);
+}
+```
+
+## audio.createMicInAudioCapturer<sup>23+</sup>
+
+function createMicInAudioCapturer(config: AudioCapturerMicInConfig): Promise\<AudioCapturer | null>
+
+Creates an audio capturer instance. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This capturer can be used to record both microphone input (mic-in) audio data and echo reference signals for algorithmic processing at the application layer.
+> - The microphone input audio data and echo reference signal are stored in the same buffer or multiple independent buffers based on the configuration set at the application layer.
+> - Only audio sources with [SourceType](js-apis-audio-sys.md#sourcetype8) set to **SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT** can be used. Other audio sources will be rejected by the system. In addition, when the application is running in the background, the capturer instance cannot be created.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.MICROPHONE
+
+**System capability**: SystemCapability.Multimedia.Audio.Capturer
+
+**Parameters**
+
+| Name | Type                                          | Mandatory| Description            |
+| :------ | :--------------------------------------------- | :--- | :--------------- |
+| config | [AudioCapturerMicInConfig](js-apis-audio-sys.md#audiocapturermicinconfig23) | Yes  | Capturer configurations.|
+
+**Return value**
+
+| Type                                     | Description                  |
+| ----------------------------------------- |----------------------|
+| Promise<[AudioCapturer](arkts-apis-audio-AudioCapturer.md) \| null> | Promise used to return an audio capturer object on success or an **error** object with the error message on failure.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | -------------------------------|
+|     201 | Permission denied, including background recording.             |
+|     202 | Not system App.                |
+| 6800101 | Parameter verification failed. |
+| 6800104 | Capturer creation is not supported, may caused by following problems: <br> 1.Source type is unsupported for this capturer, only [SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](js-apis-audio-sys.md#sourcetype8) is supported currently. <br> 2.Echo reference signal's config is unsupported, echo reference's sampling rate and format must be the same as MicIn audio data currently.            |
+| 6800301 | Audio system internal error, such as system process crash.            |
+
+**Example**
+
+```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example() {
-  let audioStreamInfo: audio.AudioStreamInfo = {
-    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
-    channels: audio.AudioChannel.CHANNEL_2, // Channel.
-    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
-    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-  };
+let audioEcStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
+  channels: audio.AudioChannel.CHANNEL_2, // Channel.
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
+};
 
-  let audioRendererInfo: audio.AudioRendererInfo = {
-    usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
-    rendererFlags: 0 // Audio renderer flag.
-  };
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT, // Audio source type: microphone. The value of SourceType must be SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT.
+  capturerFlags: 0 // AudioCapturer flag.
+};
 
-  let audioRendererOptions: audio.AudioRendererOptions = {
-    streamInfo: audioStreamInfo,
-    rendererInfo: audioRendererInfo
-  };
+let audioMicInStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
+  channels: audio.AudioChannel.CHANNEL_2, // Channel.
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
+};
 
-  try {
-    const audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-    console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+let audioCapturerMicInConfig: audio.AudioCapturerMicInConfig = {
+  ecStreamInfo: audioEcStreamInfo,
+  capturerInfo: audioCapturerInfo,
+  micInStreamInfo: audioMicInStreamInfo
+};
 
-    // (Optional) Set the injection mode.
-    await audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE);
-    console.info('setTarget success');
+let audioCapturer: audio.AudioCapturer | null = null;
 
-    // Obtain the current rendering target of the audio renderer.
-    let renderTarget = audioRenderer.getTarget();
-  } catch (err) {
-    console.error(AudioFrameworkRenderLog: Error : ${err.message});
-  }
-}
+audio.createMicInAudioCapturer(audioCapturerMicInConfig).then((data) => {
+  audioCapturer = data;
+  console.info('AudioCapturer Created : SUCCESS');
+}).catch((err: BusinessError) => {
+  console.error(`AudioCapturer Created : ERROR : ${err}`);
+});
 ```

@@ -1,12 +1,12 @@
 # FullScreenLaunchComponent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @dutie123-->
-<!--Designer: @dutie123-->
-<!--Tester: @fredyuan0912-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @autojuan-->
+<!--Designer: @autojuan-->
+<!--Tester: @wonlee-->
+<!--Adviser: @hu-zhiqiong-->
 
-**FullScreenLaunchComponent** is a component designed for launching atomic services in full screen. If the invoked application (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in full-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.
+**FullScreenLaunchComponent** is a component designed for launching atomic services in full screen. If the invoked app (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in full-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.
 
 
 > **NOTE**
@@ -39,28 +39,32 @@ The [universal events](ts-component-general-events.md) are not supported.
 
 FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: AtomicServiceOptions, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo> })
 
-**Decorator**: \@Component
+**Decorator**: [\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Mandatory| Decorator Type| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| content | Callback\<void> | Yes| \@BuilderParam | Custom placeholder icon displayed before launching the atomic service. This allows you to create a large launch icon similar to those used by desktop applications. Clicking the placeholder icon will launch the atomic service.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| appId | string | Yes| - |  Application ID of the atomic service to be launched. It is the unique identifier for the atomic service.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<!--RP1--><!--RP1End-->|
+| content | Callback\<void> | Yes| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Custom placeholder icon displayed before the atomic service is launched. This allows you to create a large launch icon similar to those used by desktop apps. Clicking the placeholder icon will launch the atomic service.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| appId | string | Yes| - |  App ID of the atomic service to be launched. It is the unique identifier for the atomic service.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<!--RP1--><!--RP1End-->|
 | options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | No| - | Parameters for launching the atomic service.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| onError<sup>18+<sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| - | Triggered when an exception occurs during the execution of an embedded atomic service. You can obtain the error information based on the **code**, **name**, and **message** parameters in the callback and rectify the exception accordingly.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| onTerminated<sup>18+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | No| - | Triggered when an embedded atomic service exits properly by calling [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| onReceive<sup>20+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | No| - | Callback triggered when the embedded atomic service is launched through [Window](../../../windowmanager/application-window-stage.md) API calls.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| onError<sup>18+</sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| - | Callback triggered when an exception occurs during the execution of an embedded atomic service. You can obtain the error information based on the **code**, **name**, and **message** parameters in the callback and rectify the exception accordingly.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| onTerminated<sup>18+</sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | No| - | Callback triggered when an embedded atomic service exits properly after [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself) is called.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| onReceive<sup>20+</sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | No| - | Callback triggered when the embedded atomic service is launched through [Window](../../../windowmanager/application-window-stage.md) API calls.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 > **NOTE**
 >
-> - If the atomic service exits by calling [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult), the information it carries is passed to the callback parameter.
-> - If the atomic service exits by calling [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself), the callback parameter has a default **code** value of **0** and **want** of **undefined**.
+> - If the atomic service exits when [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) is called, the information it carries is passed to the callback parameter.
+> - If the atomic service exits when [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself) is called, the callback has a default **code** value of **0** and **want** of **undefined**.
 
 ## Example
-This example demonstrates component usage with extended atomic service capabilities. In real-world development, replace the sample **appId** with the actual application of your ID atomic service.
+
+This example demonstrates component usage with extended atomic service capabilities. In real-world development, replace the sample **appId** with the actual app ID of the atomic service.
+
+**FullScreenLaunchComponent** needs to be invoked by the user. After the provider completes local installation, the component can be launched in full-screen embedded mode within the user app or atomic service.
 
 **User Implementation**
+
 ```ts
 // The entry point file Index.ets for the user side is as follows:
 import { FullScreenLaunchComponent } from '@kit.ArkUI';
@@ -68,7 +72,7 @@ import { FullScreenLaunchComponent } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  @State appId: string = '6917573653426122083'; // Application ID of the atomic service.
+  @State appId: string = '6917573653426122083'; // App ID of the atomic service.
 
   build() {
     Row() {
@@ -102,6 +106,7 @@ function ColumnChild() {
   }
 }
 ```
+
 **Provider Implementation**
 
 You need to modify the following files for the atomic service provider:
@@ -114,7 +119,7 @@ import { window } from '@kit.ArkUI';
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends EmbeddableUIAbility {
-  storage = new LocalStorage();
+  storage = new LocalStorage(); // Initialize storage for window and window stage data.
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
   }
@@ -146,6 +151,7 @@ export default class EntryAbility extends EmbeddableUIAbility {
 ```
 
 - Extended ability entry page file: **/src/main/ets/pages/Index.ets**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -155,6 +161,7 @@ const DOMAIN = 0x0000;
 @Entry
 @Component
 struct Index {
+  // Store local data.
   private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
 
   build() {
@@ -195,6 +202,7 @@ struct Index {
     .height('100%')
   }
 
+  // Set the display status of the window system bar.
   testSetSystemBarEnable() {
     let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setWindowSystemBarEnable(["status"])
@@ -205,6 +213,7 @@ struct Index {
     })
   }
 
+  // Enable or disable the back gesture feature.
   testSetGestureBackEnable() {
     let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setGestureBackEnabled(true)
@@ -215,6 +224,7 @@ struct Index {
     })
   }
 
+  // Enable immersive mode.
   testSetImmersiveEnable() {
     let window: window.Window | undefined = this.storage?.get("window");
     try {
@@ -224,6 +234,7 @@ struct Index {
     }
   }
 
+  // Set the display status of a specific system bar.
   testSetSpecificSystemBarEnabled() {
     let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setSpecificSystemBarEnabled('navigationIndicator', false, false)
@@ -235,3 +246,5 @@ struct Index {
   }
 }
 ```
+
+![](figures/FullScreenLaunchComponentDemo1.png)

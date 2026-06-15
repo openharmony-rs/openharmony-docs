@@ -749,6 +749,7 @@ Registers a listener for available area changes of the display.
 
 **Since**: 20
 
+**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, it has no effect and does not report errors.
 
 **Parameters**
 
@@ -775,6 +776,7 @@ Unregisters a listener for available area changes of the display.
 
 **Since**: 20
 
+**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, it has no effect and does not report errors.
 
 **Parameters**
 
@@ -989,7 +991,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint
 
 **Description**
 
-Obtains the source mode of a display.
+Obtains the display source mode. The default value is **DisplaySourceMode.None**.
 
 **Since**: 20
 
@@ -1015,7 +1017,11 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 
 **Description**
 
-Obtains the position of a display.
+Obtains the display position, that is, the x-coordinate and y-coordinate relative to the original point (the upper left corner of the main screen).
+
+The actual value is returned only when the current display source mode is **DISPLAY_SOURCE_MODE_MAIN** or **DISPLAY_SOURCE_MODE_EXTEND**.
+
+You can obtain the display source mode by calling [OH_NativeDisplayManager_GetDisplaySourceMode()](#oh_nativedisplaymanager_getdisplaysourcemode).
 
 **Since**: 20
 
@@ -1025,8 +1031,8 @@ Obtains the position of a display.
 | Parameter| Description|
 | -- | -- |
 | uint64_t displayId | Display ID, which is a non-negative integer.|
-| int32_t *x | Pointer to the X coordinate of the top-left corner of the primary screen.|
-| int32_t *y | Pointer to the Y coordinate of the top-left corner of the primary screen.|
+| int32_t *x | Pointer to the x-coordinate relative to the upper left corner of the main screen, in px. The value must be an integer and is returned as an output parameter.|
+| int32_t *y | Pointer to the y-coordinate relative to the upper left corner of the main screen, in px. The value must be an integer and is returned as an output parameter.|
 
 **Return value**
 

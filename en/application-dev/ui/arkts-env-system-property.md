@@ -6,7 +6,7 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
-In multi-device development scenarios, you can use the [\@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md) decorator to listen for changes of system environment variables and determine the scenario based on the system environment variables, reducing the adaptation logic and repeated development between different devices.
+In multi-device development scenarios, you can use the [@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md) decorator to listen for changes of system environment variables and determine the scenario based on the system environment variables, reducing the adaptation logic and repeated development between different devices.
 
 >**NOTE**
 >
@@ -229,6 +229,7 @@ struct Index {
 
 @Component
 struct Child1 {
+  // @Env reads system environment variables.
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
 
   build() {
@@ -474,7 +475,7 @@ struct Comp {
 
 ### Switching Windows Through BuilderNode
 
-\@Env is used to display the environment variable information of the [window](../reference/apis-arkui/arkts-apis-window-Window.md) where \@Component or \@ComponentV2 is located. When you switch the window instance where @Component or @ComponentV2 is located through **BuilderNode**, \@Env obtains the corresponding environment variable information based on the new window and triggers refreshes of the associated UI component. **SystemProperties.BREAK_POINT** is used as an example.
+\@Env is used to display the environment variable information of the [window](../reference/apis-arkui/arkts-apis-window.md) where \@Component or \@ComponentV2 is located. When you switch the window instance where @Component or @ComponentV2 is located through **BuilderNode**, \@Env obtains the corresponding environment variable information based on the new window and triggers refreshes of the associated UI component. **SystemProperties.BREAK_POINT** is used as an example.
 
 In the following example:
 1. Click **Button('add node to tree')** to create a **BuilderNode** and mount it to **NodeContainer**.

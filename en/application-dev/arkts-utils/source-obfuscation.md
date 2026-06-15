@@ -92,7 +92,7 @@ You should be aware of these differences and use unique names to achieve better 
 
 Similar to other source code obfuscation tools, ArkGuard increases reverse engineering difficulty but cannot prevent it entirely.
 
-You should not rely solely on ArkGuard for security. For higher security requirements, consider [application encryption](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/code-protect) and hardening measures.
+You should not rely solely on ArkGuard for security. For higher security requirements, consider application encryption and hardening measures.
 
 ## Obfuscation Mechanism and Process
 
@@ -278,7 +278,7 @@ According to the preceding configuration, the obfuscation effect of `exampleName
    let params = obj1['ohos.want.action.home'];
    ```
 
-   Therefore, after `-enable-string-property-obfuscation` is enabled, if you want to retain the propertie of SDK API string constants used in the code, for example, **obj['ohos.want.action.home']**, you can use the [-keep-property-name](#-keep-property-name) option.
+   Therefore, after `-enable-string-property-obfuscation` is enabled, if you want to retain the properties of SDK API string constants used in the code, for example, **obj['ohos.want.action.home']**, you can use the [-keep-property-name](#-keep-property-name) option.
 
 ### -enable-toplevel-obfuscation
 

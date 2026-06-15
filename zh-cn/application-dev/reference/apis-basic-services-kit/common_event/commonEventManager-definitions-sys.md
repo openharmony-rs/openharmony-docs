@@ -1,9 +1,8 @@
 # 系统定义的公共事件(系统接口)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -133,7 +132,7 @@
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**订阅者所需权限：**ohos.permission.INSTALL_BUNDLE（该权限仅系统应用可申请）
+**订阅者所需权限：** ohos.permission.INSTALL_BUNDLE（该权限仅系统应用可申请）
 
 **取值：** "usual.event.APP_FIRST_LAUNCH"
 
@@ -438,6 +437,22 @@
 
 **取值：** "usual.event.SCREEN_SHARE"
 
+
+## Network Kit
+
+### COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED<sup>12+</sup>
+
+表示VPN连接状态的公共事件。
+
+当VPN连接或者断开时会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.VPN_CONNECTION_STATUS_CHANGED"
 
 ## Telephony Kit
 

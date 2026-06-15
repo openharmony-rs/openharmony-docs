@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:27:20.673Z pushedAt=2026-06-05T12:07:39.801Z -->
 
 You can use a **.js** file in the ECMAScript compliant JavaScript language to define the service logic of an HML page. With dynamic typing, JavaScript can make your application more expressive with a flexible design. The following describes the JavaScript compilation and running.
 
@@ -35,20 +35,20 @@ The ECMAScript 6.0 syntax is supported. Lite wearables only support the followin
 10. template strings
 
 - Module declaration
-  
+
   Import functionality modules.
 
 
-  ```
+  ``` ts
   import router from '@ohos.router';
   ```
 
 - Code reference
-  
+
   Import JavaScript code.
 
 
-  ```
+  ``` ts
   import utils from '../../common/utils.js';
   ```
 

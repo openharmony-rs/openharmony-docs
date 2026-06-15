@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module provides APIs for obtaining information about an application, including [bundle information](js-apis-bundle-BundleInfo.md), [application information](js-apis-bundle-ApplicationInfo.md), and [ability information](js-apis-bundle-AbilityInfo.md). It also provides APIs to obtain and set the application disabling state.
 
@@ -417,7 +417,7 @@ bundle.getBundleInfo(bundleName, bundleFlags, (err, data) => {
 
 getBundleInfo(bundleName: string, bundleFlags: number, options: BundleOptions, callback: AsyncCallback\<BundleInfo>): void
 
-Obtains the bundle information based on a given bundle name and bundle options. This API uses an asynchronous callback to return the result.
+Obtains the bundle information based on a given bundle name. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -1451,7 +1451,7 @@ bundle.getAbilityIcon(bundleName, abilityName, (err, data) => {
 
 > **NOTE**
 >
-> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [errorcode-bundle](errorcode-bundle.md) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [Bundle Error Codes](errorcode-bundle.md) instead.
 
  **System capability**: SystemCapability.BundleManager.BundleFramework
 

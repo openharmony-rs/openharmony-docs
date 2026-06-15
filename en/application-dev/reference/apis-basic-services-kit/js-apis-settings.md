@@ -6,6 +6,7 @@
 <!--Designer: @Kun_Wu-->
 <!--Tester: @dyx118186878-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:55:34.696Z pushedAt=2026-06-09T10:12:44.259Z -->
 
 The **settings** module provides APIs for setting data items.
 
@@ -20,6 +21,7 @@ The **settings** module provides APIs for setting data items.
 ```js
 import { settings } from '@kit.BasicServicesKit';
 ```
+
 ## domainName
 
 Provides the domain name.
@@ -89,7 +91,7 @@ Provides data items for setting the general information about the device.
 | CONTACT_METADATA_SYNC_STATUS<sup>(deprecated21)</sup>     | string | Yes | Whether contacts metadata synchronization is enabled.<br>- **true**: Contacts metadata synchronization is enabled.<br>- **false**: Contacts metadata synchronization is disabled. (This constant is deprecated.)                                                                               |
 | DEVICE_NAME                                               | string | Yes | Device name.                                                                                                                                            |
 | USB_STORAGE_STATUS<sup>(deprecated21)</sup>               | string | Yes | Whether USB mass storage is enabled.<br>- **true**: USB mass storage is enabled.<br>- **false**: USB mass storage is disabled. (This constant is deprecated.)                                                                   |
-| DEBUGGER_WAITING<sup>(deprecated21)</sup>                 | string | Yes | Whether the device waits for the debugger when starting an application to debug.<br>- **1**: The device waits for the debugger.<br>- **0**:The device does not wait for the debugger and the application runs normally. (This constant is deprecated.)                                                         |
+| DEBUGGER_WAITING<sup>(deprecated21)</sup>                 | string | Yes | Whether the device waits for the debugger when starting an application to debug.<br>- **1**: The device waits for the debugger.<br>- **0**: The device does not wait for the debugger and the application runs normally. (This constant is deprecated.)                                                         |
 | DEBUG_APP_PACKAGE<sup>(deprecated21)</sup>                | string | Yes | Bundle name of the application to be debugged. (This constant is deprecated.)                                                                                                                  |
 | ACCESSIBILITY_STATUS<sup>(deprecated21)</sup>             | string | Yes | Whether accessibility is enabled.<br>- **1**: Accessibility is enabled.<br>- **0**: Accessibility is disabled. (This constant is deprecated.)                                                                                      |
 | ACTIVATED_ACCESSIBILITY_SERVICES<sup>(deprecated21)</sup> | string | Yes | List of activated accessibility features. (This constant is deprecated.)                                                                                                                           |
@@ -179,7 +181,6 @@ Provides data items for setting text-to-speech (TTS) information.
 | DEFAULT_TTS_SYNTH<sup>(deprecated21)</sup>   | string | Yes | Default TTS engine. (This constant is deprecated.)                                              |
 | ENABLED_TTS_PLUGINS<sup>(deprecated21)</sup> | string | Yes | List of activated plug-in packages used for TTS. Multiple plug-in packages are separated by spaces. (This constant is deprecated.)          |
 
-
 ## wireless
 
 Provides data items for setting wireless network information.
@@ -203,7 +204,6 @@ Provides data items for setting wireless network information.
 | WIFI_TO_MOBILE_DATA_AWAKE_TIMEOUT<sup>(deprecated21)</sup> | string | Yes | Maximum duration to hold a wake lock when waiting for the mobile data connection after the Wi-Fi connection is disconnected. (This constant is deprecated.)                                                                          |
 | WIFI_STATUS<sup>(deprecated21)</sup>                       | string | Yes | Whether Wi-Fi is available.<br>- **true**: Wi-Fi is available.<br>- **false**: Wi-Fi is unavailable. (This constant is deprecated.)                                             |
 | WIFI_WATCHDOG_STATUS<sup>(deprecated21)</sup>              | string | Yes | Whether Wi-Fi watchdog is available.<br>- **true**: Wi-Fi watchdog is available.<br>- **false**: Wi-Fi watchdog is unavailable. (This constant is deprecated.)                                             |
-
 
 ## settings.setValue<sup>10+</sup>
 
@@ -229,6 +229,7 @@ Sets the value for a data item in the **DEVICE_SHARED** domain of the database. 
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -270,6 +271,7 @@ Sets the value for a data item in the **DEVICE_SHARED** domain of the database. 
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -293,7 +295,9 @@ Sets the value for a data item. This API uses a promise to return the result.
 **System capability**: SystemCapability.Applications.Settings.Core
 
 **Required permissions**: 
+
 - ohos.permission.MANAGE_SETTINGS for writing the DEVICE_SHARED and USER_PROPERTY fields (available only to system applications);
+
 - ohos.permission.MANAGE_SECURE_SETTINGS for writing the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -315,13 +319,14 @@ Sets the value for a data item. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
 
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -355,6 +360,7 @@ Obtains the value of a data item in the **DEVICE_SHARD** domain of the database.
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -396,6 +402,7 @@ Obtains the value of a data item in the **DEVICE_SHARD** domain of the database.
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -418,6 +425,7 @@ Obtains the value of a data item in the database. This API uses a promise to ret
 **System capability**: SystemCapability.Applications.Settings.Core
 
 **Required permissions**:  
+
 - ohos.permission.MANAGE_SECURE_SETTINGS for reading the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -437,6 +445,7 @@ Obtains the value of a data item in the database. This API uses a promise to ret
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -476,6 +485,7 @@ Obtains the value of a data item in the **DEVICE_SHARED** domain of the database
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -497,6 +507,7 @@ Obtains the value of a data item. Unlike **getValue**, this API returns the resu
 **System capability**: SystemCapability.Applications.Settings.Core
 
 **Required permissions**:  
+
 - ohos.permission.MANAGE_SECURE_SETTINGS for reading the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -508,7 +519,6 @@ Obtains the value of a data item. Unlike **getValue**, this API returns the resu
 | defValue   | string                 | Yes  | Default value, which is returned when the value of a data item is not found in the database. Set this parameter as needed.                                                                                                                                                                                                                 |
 | domainName | string                 | Yes  | Domain name to set.<br>- **domainName.DEVICE_SHARED**:<br>&nbsp;&nbsp;&nbsp;shared device domain<br>- **domainName.USER_PROPERTY**:<br>&nbsp;&nbsp;&nbsp;user property domain<br>- **domainName.USER_SECURITY**:<br>&nbsp;&nbsp;&nbsp;user security domain (for system applications only)|
 
-
 **Return value**
 
 | Type            | Description                               |
@@ -518,11 +528,12 @@ Obtains the value of a data item. Unlike **getValue**, this API returns the resu
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// Update the value of .SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
+// Update the value of SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100',  settings.domainName.DEVICE_SHARED);
@@ -535,6 +546,7 @@ setValueSync(context: Context, name: string, value: string): boolean
 Sets the value for a data item in the **DEVICE_SHARED** domain of the database. Unlike **setValue**, this API returns the result synchronously.
 
 - If the specified data item exists in the database, the **setValueSync** method updates the value of the data item.
+
 - If the data item does not exist in the database, the **setValueSync** method inserts the data item into the database.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -560,6 +572,7 @@ Sets the value for a data item in the **DEVICE_SHARED** domain of the database. 
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -577,6 +590,7 @@ setValueSync(context: Context, name: string, value: string, domainName: string):
 Sets the value for a data item. Unlike **setValue**, this API returns the result synchronously.
 
 - If the specified data item exists in the database, the **setValueSync** method updates the value of the data item.
+
 - If the data item does not exist in the database, the **setValueSync** method inserts the data item into the database.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -584,7 +598,9 @@ Sets the value for a data item. Unlike **setValue**, this API returns the result
 **System capability**: SystemCapability.Applications.Settings.Core
 
 **Required permissions**: 
+
 - ohos.permission.MANAGE_SETTINGS for writing the DEVICE_SHARED and USER_PROPERTY fields (available only to system applications); 
+
 - ohos.permission.MANAGE_SECURE_SETTINGS for writing the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -606,13 +622,14 @@ Sets the value for a data item. Unlike **setValue**, this API returns the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
 
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -651,6 +668,7 @@ Registers an observer in the specified context so that the specified data item c
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -690,6 +708,7 @@ Unregisters the observer under the specified domain name. This API returns the r
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -727,7 +746,7 @@ Opens the WLAN settings window. This API uses a promise to return the result.
 
 For details about the error codes, see [Settings Error Codes](./errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 14800000 | Parameter error.        |
 | 14800010 | Original service error. |
@@ -735,6 +754,7 @@ For details about the error codes, see [Settings Error Codes](./errorcode-settin
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -940,8 +960,6 @@ settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => 
 })
 ```
 
-
-
 ## settings.getValue<sup>(deprecated)</sup>
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string, callback: AsyncCallback\<object>): void
@@ -1065,6 +1083,7 @@ setValueSync(dataAbilityHelper: DataAbilityHelper, name: string, value: string):
 Sets the value for a data item. Unlike **setValue**, this API returns the result synchronously.
 
 - If the specified data item exists in the database, the **setValueSync** method updates the value of the data item.
+
 - If the data item does not exist in the database, the **setValueSync** method inserts the data item into the database.
 
 > **NOTE**
@@ -1118,19 +1137,20 @@ Open the input method settings page.
 
 | Name  | Type                  | Mandatory| Description                                                                                                                                        |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | Yes  | Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| context  | Context                | Yes  | Application context. Only UIAbilityContext and UIExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 
 **Error codes**
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1157,7 +1177,7 @@ Opens the input method details page.
 
 | Name  | Type                  | Mandatory| Description                                                                                                                                        |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | Yes  | Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| context  | Context                | Yes  | Application context. Only UIAbilityContext and UIExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | bundleName      | string          | Yes  | Bundle name of the input method to be started.|
 | inputMethodId   | string          | Yes  | Unique [ID](../apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8) of the input method extension in the application.|
 
@@ -1165,13 +1185,14 @@ Opens the input method details page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 
 **Example**
 
 <!--code_no_check-->
+
 ```js
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
@@ -1182,4 +1203,158 @@ const context: Context = this.getUIContext().getHostContext() as common.UIAbilit
 let bundleName: string = "target inputMethod bundle name";
 let inputMethodId: string = "target inputMethod id";
 settings.openInputMethodDetail(context, bundleName, inputMethodId);
+```
+
+## settings.openBiometricsSettingsPage<sup>24+</sup>
+
+openBiometricsSettingsPage(context: Context): void
+
+Opens the biometric recognition and password settings page.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| Error Code   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openBiometricsSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the biometrics and password settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openNfcSettingsPage<sup>24+</sup>
+
+openNfcSettingsPage(context: Context): void
+
+Opens the NFC settings page.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| Error Code   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context within the component, ensuring that this.getUIContext().getHostContext() returns a UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openNfcSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the NFC settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openDoubleClickSettingsPage<sup>24+</sup>
+
+openDoubleClickSettingsPage(context: Context): void
+
+Opens the settings page for double-pressing the Down key.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System Capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called only on wearables. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name   | Type                   | Mandatory | Description                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes | Application context. Only **UIAbilityContext** and **ExtensionContext** are supported.<br />For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| Error Code   | Error Message                    |
+|----------|-------------------------|
+| 16900010 | 1. The parameter is incorrect. <br> 2. The parameter is not transferred or the transferred parameter is invalid.         |
+| 16900020 | 1. The setting page cannot be opened through redirection.<br> 2. Internal error |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openDoubleClickSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the DoubleClick settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.isDoubleClickAppForSelf<sup>24+</sup>
+
+isDoubleClickAppForSelf(): Promise\<boolean>
+
+Checks whether the application started by double-pressing the Down key is the application itself.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System Capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called only on wearables. If it is called on other device types, it has no effect.
+
+**Return value**
+
+| Type             | Description                    |
+| ---------------- |-----------------------|
+| Promise\<boolean> | Promise used to return the result. If the application is the current application, **true** is returned; otherwise, **false** is returned. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+
+settings.isDoubleClickAppForSelf().then((result: boolean) => {
+  console.info(`isDoubleClickAppForSelf result: ${result}`);
+})
 ```

@@ -1,7 +1,7 @@
 # TabTitleBar
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -14,12 +14,14 @@ The **TabTitleBar** component is a tab title bar used to switch between tabs pag
 >
 > - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - If the **TabTitleBar** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **TabTitleBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **TabTitleBar** component.
+> - This component can be used only in the stage model.
+>
+> - If the **TabTitleBar** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **TabTitleBar** component itself. As a result, the configured universal attributes and universal events may not take effect or behave as intended. For this reason, avoid using universal attributes and events with the **TabTitleBar** component.
 
 
 ## Modules to Import
 
-```
+```ts
 import { TabTitleBar } from '@kit.ArkUI';
 ```
 
@@ -42,9 +44,9 @@ TabTitleBar({tabItems: Array&lt;TabTitleBarTabItem&gt;, menuItems?: Array&lt;Tab
 
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| tabItems | Array&lt;[TabTitleBarTabItem](#tabtitlebartabitem)&gt; | Yes| - | List of tab items on the left of the title bar.|
-| menuItems | Array&lt;[TabTitleBarMenuItem](#tabtitlebarmenuitem)&gt; | No| - | List of menu items on the right of the title bar.|
-| swiperContent | () =&gt; void | Yes| \@BuilderParam | Constructor for page content pertaining to the tab list.|
+| tabItems | Array&lt;[TabTitleBarTabItem](#tabtitlebartabitem)&gt; | Yes| - | List of tab items on the left side of the title bar.|
+| menuItems | Array&lt;[TabTitleBarMenuItem](#tabtitlebarmenuitem)&gt; | No| - | List of menu items on the right side of the title bar. If this parameter is not passed, the menu items are not displayed.|
+| swiperContent | ()&nbsp;=&gt;&nbsp;void | Yes| \@BuilderParam | Constructor for page content pertaining to the tab list.|
 
 > **NOTE**
 > 
@@ -56,16 +58,17 @@ TabTitleBar({tabItems: Array&lt;TabTitleBarTabItem&gt;, menuItems?: Array&lt;Tab
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- |---|---| -------- |
 | value | [ResourceStr](ts-types.md#resourcestr) | No| No| Icon resource.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon resource, which has higher priority than **value**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | label<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Icon label.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| isEnabled | boolean | No| Yes| Whether to enable the item. Default value: **false**. The value **true** means to enable the item, and **false** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| action | () =&gt; void | No| Yes| Action to perform.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| accessibilityLevel<sup>18+<sup>       | string  | No| Yes| Accessibility level. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| accessibilityText<sup>18+<sup>        | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessibility label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of the **label** property if it is set and an empty string otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                    |
-| accessibilityDescription<sup>18+<sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.          |
+| isEnabled | boolean | No| Yes| Whether to enable the item. The value **true** means to enable the item, and **false** means the opposite.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| action | ()&nbsp;=&gt;&nbsp;void | No| Yes| Action closure to be executed when triggered.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| accessibilityLevel<sup>18+</sup>       | string  | No| Yes| Accessibility level. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of the **label** property if it is set and an empty string otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                    |
+| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.          |
 
 ## TabTitleBarTabItem
 
@@ -86,7 +89,7 @@ The [universal events](ts-component-general-events.md) are not supported.
 ## Example
 
 ### Example 1: Implementing a Simple Tab Title Bar
-This example demonstrates a tab title bar with tabs on the left and a menu list on the right.
+This example demonstrates how to implement a tab title bar with tabs on the left and a menu list on the right.
 ```ts
 import { TabTitleBar, Prompt, TabTitleBarTabItem, TabTitleBarMenuItem } from '@kit.ArkUI';
 
@@ -178,7 +181,7 @@ struct Index {
 
 ![en-us_image_tabtitlebar_example01](figures/en-us_image_tabtitlebar_example01.png)
 
-### Example 2: Implementing Announcement for the Custom Button on the Right Side
+### Example 2: Implementing Screen Reader Announcement for the Custom Button on the Right Side
 This example customizes the screen reader announcement text by setting the **accessibilityText**, **accessibilityDescription**, and **accessibilityLevel** properties of the custom button on the right side of the title bar. This functionality is supported since API version 18.
 ```ts
 import { TabTitleBar, Prompt, TabTitleBarTabItem, TabTitleBarMenuItem } from '@kit.ArkUI';
@@ -244,7 +247,7 @@ struct Index {
       accessibilityText: 'Save',
       // The screen reader will not focus on this item.
       accessibilityLevel: 'no',
-      accessibilityDescription: 'Tap to save the icon'
+      accessibilityDescription: 'Tap to save the current content'
     },
     {
       value: $r('sys.media.ohos_ic_public_copy'),
@@ -252,7 +255,7 @@ struct Index {
       action: () => Prompt.showToast({ message: "on item click! index 1" }),
       accessibilityText: 'Copy',
       accessibilityLevel: 'yes',
-      accessibilityDescription: 'Tap to copy the icon'
+      accessibilityDescription: 'Tap to copy the current content'
     },
     {
       value: $r('sys.media.ohos_ic_public_edit'),
@@ -263,7 +266,7 @@ struct Index {
       // The screen reader can focus on this item.
       accessibilityLevel: 'yes',
       // The screen reader will ultimately announce this text.
-      accessibilityDescription: 'Tap to edit the icon'
+      accessibilityDescription: 'Tap to edit the current content'
     },
   ]
 
@@ -354,7 +357,7 @@ struct Index {
       accessibilityText: 'Save',
       // The screen reader will not focus on this item.
       accessibilityLevel: 'no',
-      accessibilityDescription: 'Tap to save the icon'
+      accessibilityDescription: 'Tap to save the current content'
     },
     {
       value: $r('sys.media.ohos_ic_public_copy'),
@@ -363,7 +366,7 @@ struct Index {
       action: () => Prompt.showToast({ message: "on item click! index 1" }),
       accessibilityText: 'Copy',
       accessibilityLevel: 'yes',
-      accessibilityDescription: 'Tap to copy the icon'
+      accessibilityDescription: 'Tap to copy the current content'
     },
     {
       value: $r('sys.media.ohos_ic_public_edit'),
@@ -375,7 +378,7 @@ struct Index {
       // The screen reader can focus on this item.
       accessibilityLevel: 'yes',
       // The screen reader will ultimately announce this text.
-      accessibilityDescription: 'Tap to edit the icon'
+      accessibilityDescription: 'Tap to edit the current content'
     },
   ]
 

@@ -1,5 +1,13 @@
 # CommonEventSubscribeInfo
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:54:35.118Z pushedAt=2026-06-09T10:12:44.188Z -->
+
 The **CommonEventSubscribeInfo** module provides APIs for providing subscriber information.
 
 > **NOTE**
@@ -14,7 +22,7 @@ The **CommonEventSubscribeInfo** module provides APIs for providing subscriber i
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-| Name               | Type          | Read Only| Optional| Description                                                        |
+| Name               | Type          | Read-Only| Optional| Description                                                        |
 | ------------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
 | events              | Array\<string> | No | No | Common events to subscribe to.                                        |
 | publisherPermission | string         | No | Yes | Permission of the publisher. The subscriber can receive only the events from the publisher with this permission.                                            |

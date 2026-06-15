@@ -1,8 +1,8 @@
 # Interface (AudioSessionManager)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -310,7 +310,7 @@ Sets the default audio output device. This API uses a promise to return the resu
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
-**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
+**Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
 
 **Parameters**
 
@@ -615,7 +615,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
+  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
   console.info('Succeeded in doing getAvailableDevices.');
 
   if (data[0]) {
@@ -736,6 +736,8 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 | 6800101 | Parameter verification failed. |
 | 6800301 | Audio client call audio service error, System error. |
 
+**Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -768,6 +770,8 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 | ID| Error Message|
 | ------- | --------------------------------------------|
 | 6800301 | Audio client call audio service error, System error. |
+
+**Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -895,6 +899,54 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOthers(true);
 ```
 
+## setCapturerMuteHint<sup>24+</sup>
+
+setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
+
+Transfers the mute status of the recording stream in the current audio session to the system audio module. <!--RP1-->This API does not mute the recording stream. Currently, it is used only on some PCs/2-in-1 devices to optimize device power consumption. <!--RP1End-->This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This API is used to report the mute status of the recording stream in the current audio session to the system audio module, without changing its actual mute status.
+> - This API can be called only when there are running recording streams in the current audio session. Otherwise, error code 6800103 is returned.
+> - If both the stream-level API [AudioCapturer.setMuteHint](arkts-apis-audio-AudioCapturer.md#setmutehint24) and this API are called for a recording stream, the settings of the stream-level API take precedence.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Capturer
+
+**Parameters**
+
+| Name  | Type              | Mandatory| Description     |
+| -------- | ----------------- | ---- | --------- |
+| mute   | boolean           | Yes  | Mute status reported by the application to the system audio module. The value **true** indicates that the application mutes the current stream, and the value **false** indicates that the application unmutes the current stream.|
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | ---------------------------------------------|
+| 6800103 | Operation not permitted at current state, there is no audio capturer running. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.setCapturerMuteHint(true).then(() => {
+  console.info('Successfully set capturer mute hint.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setCapturerMuteHint. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## isOtherMediaPlaying<sup>23+</sup>
 
 isOtherMediaPlaying(): boolean
@@ -915,4 +967,40 @@ Check whether any other application is currently playing audio of the four media
 
 ```ts
 let isExistence = audioSessionManager.isOtherMediaPlaying();
+```
+
+## setAudioSessionBehavior<sup>24+</sup>
+
+setAudioSessionBehavior(behavior: number): void
+
+Sets audio session behavior parameters. (Multiple flags can be combined.)
+
+> **NOTE**
+>
+> If this API is called while an audio session is active, you must call the [activateAudioSession](./arkts-apis-audio-AudioSessionManager.md#activateaudiosession12) API again for the settings to take effect.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Parameters**
+
+| Name  | Type              | Mandatory| Description     |
+| -------- | ----------------- | ---- | --------- |
+| behavior   | number           | Yes  | Specifies the audio session behavior.<br>This can be a single flag or a bitwise OR combination of multiple flags.<br>For details about the supported audio session behaviors, see [AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24).|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | ---------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permitted in the current state. |
+
+**Example**
+
+```ts
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioSessionManager.setAudioSessionBehavior(behavior);
 ```

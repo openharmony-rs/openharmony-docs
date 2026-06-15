@@ -1,7 +1,7 @@
 # 应用模型
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @liuzuming-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -57,14 +57,14 @@ Admin组件有不同的激活方式，可以通过不同的接口，例如<!--De
 | 特性                   | SDA                 | DA                 | BDA       |
 | ------------------------| --------------------| -------------------|------------ | 
 |防卸载能力 | 禁止用户卸载 | 默认情况下用户可以卸载 | 禁止卸载 |
-| MDM管控接口调用权限| 支持所有public管控接口 | 支持所有public管控接口 | 仅支持[restrictions.setDisallowedPolicy](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)，[restrictions.getDisallowedPolicy](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)两个接口。|
+| MDM管控接口调用权限| 支持所有public管控接口 | 支持所有public管控接口 | 支持申请ohos.permission.PERSONAL_MANAGE_RESTRICTIONS权限可调用的接口|
 | 角色支持数量 | 最多1个 | 最多10个 | 无数量限制 |
 
 > **说明：**
 >
 > 1.BDA与其他[admin角色](./mdm-kit-term.md#admin角色)不能同时存在。
 >
-> 2.SDA和DA同时存在的数量加起来最多10个。
+> 2.SDA和DA同时存在的数量加起来最多10个。SDA具备管理其他DA应用的能力（激活/去激活），而DA仅能对设备进行管控，无法管理其他DA应用。当MDM应用激活为SDA时，具备管控其他DA的能力，可以通过调用[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23)接口激活其他DA应用，或调用[adminManager.disableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerdisabledeviceadmin23)接口去激活其他DA应用。
 
 ## 管控接口授权原理
 

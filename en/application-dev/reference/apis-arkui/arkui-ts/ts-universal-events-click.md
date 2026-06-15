@@ -1,7 +1,7 @@
 # Click Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -26,7 +26,7 @@ Called when a click event occurs.
 
 When triggered by keyboard or gamepad input, the event's [SourceTool](ts-gesture-settings.md#sourcetool9) is **Unknown**, and [SourceType](ts-gesture-settings.md#sourcetype8) is **KEY** or **JOYSTICK**.
 
-Compared to the original **onClick** API, this API has the **distanceThreshold** parameter that specifies the finger movement threshold for click events. If the finger's movement exceeds the set threshold, the gesture recognition will fail. The click gesture recognition will fail if finger movement exceeds this threshold.
+Compared with the original **onClick** API, this API has the **distanceThreshold** parameter that specifies the finger movement threshold for click events. If the finger's movement exceeds the set threshold, the gesture recognition will fail. The click gesture recognition will fail if finger movement exceeds this threshold.
 
 For scenarios where there is no restriction on the finger movement distance during a click, the original API is preferred. To limit finger movement range during a click, use this new API.
 
@@ -101,15 +101,15 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 
 | Name           | Type                        | Read-Only| Optional       | Description                                                    |
 | ------------------- | ------------------------- | ------ | -------- | -------------------------------------------------------- |
-| x                   | number                               | No| No| X coordinate of the click position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element. After [distanceThreshold](ts-universal-events-click.md#onclick12) is set for **onClick**, the click position is the lift-off point. If the event is triggered by a keyboard or gamepad device, the click position is the center of the clicked element.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
-| y                   | number                               | No| No| Y coordinate of the click position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element. After distanceThreshold is set for **onClick**, the click position is the lift-off point. If the event is triggered by a keyboard or gamepad device, the click position is the center of the clicked element.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
+| x                   | number                               | No| No| X coordinate of the click position in the component coordinate system based on the clicked element. After [distanceThreshold](ts-universal-events-click.md#onclick12) is set for **onClick**, the click position is the lift-off point. If the event is triggered by a keyboard or gamepad device, the click position is the center of the clicked element.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
+| y                   | number                               | No| No| Y coordinate of the click position in the component coordinate system based on the clicked element. After distanceThreshold is set for **onClick**, the click position is the lift-off point. If the event is triggered by a keyboard or gamepad device, the click position is the center of the clicked element.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
 | windowX<sup>10+</sup> | number                             | No| No| X coordinate of the click position in the coordinate system of the current application window. After distanceThreshold is set for **onClick**, the click position is the lift-off point.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | windowY<sup>10+</sup> | number                             | No| No| Y coordinate of the click position in the coordinate system of the current application window. After distanceThreshold is set for **onClick**, the click position is the lift-off point.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | displayX<sup>10+</sup> | number                            | No| No| X coordinate of the click position in the coordinate system of the current application screen.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | displayY<sup>10+</sup> | number                            | No| No| Y coordinate of the click position in the coordinate system of the current application screen.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | screenX<sup>(deprecated)</sup> | number                    | No| No| X coordinate of the click position in the coordinate system of the current application window.<br>Unit: vp<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **windowX** instead.|
 | screenY<sup>(deprecated)</sup> | number                    | No| No| Y coordinate of the click position in the coordinate system of the current application window.<br>Unit: vp<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **windowY** instead.|
-| preventDefault<sup>12+</sup>      | () => void | No| No| Blocks the default event.<br> **NOTE**<br>This API is only supported by the following components: **RichEditor** and **Hyperlink**. An exception is thrown when this API is used with unsupported components. Currently, asynchronous calls and Modifier APIs are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| preventDefault<sup>12+</sup>      | () => void | No| No| Blocks the default event.<br> Note: This API is only supported by the following components: **RichEditor** and **Hyperlink**. An exception is thrown when this API is used with unsupported components. Currently, asynchronous calls and Modifier APIs are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | No| Yes| Whether the event is triggered by a left-hand or right-hand tap.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | globalDisplayX<sup>20+</sup> | number | No| Yes| X coordinate of the click position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | globalDisplayY<sup>20+</sup> | number | No| Yes| Y coordinate of the click position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -133,7 +133,7 @@ Represents the display area of the element object that triggers the event.
 | Name  | Type                   | Read-Only| Optional| Description        |
 | ---- | ------------------------- |-----|------| ---------- |
 | area | [Area](ts-types.md#area8) | No| No| Area information of the target element.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| id<sup>15+</sup> | [string](ts-universal-attributes-component-id.md) | No| Yes| Custom node ID. Default value: **undefined**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 15.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| id<sup>15+</sup> | string | No| Yes| Custom node [ID](ts-universal-attributes-component-id.md#id). Default value: **undefined**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 15.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
 ## Example
 
@@ -172,4 +172,3 @@ struct ClickExample {
 ```
 
 ![click](figures/click.gif)
-<!--no_check-->

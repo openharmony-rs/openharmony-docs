@@ -1,8 +1,8 @@
 # 颜色渐变
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -78,6 +78,7 @@ linearGradient(options: Optional\<LinearGradientOptions>): T
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                                       | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------------------------------------------ | ------------------------------------------------------------ | ---- | ---- |------------------------------------------------------------ |
 | angle<sup>7+</sup>                                      | number&nbsp;\|&nbsp;string                                   | 否 | 是   | 线性渐变的起始角度。角度为0度时渐变方向为从下往上（即0点方向）。0点方向顺时针旋转为正向角度。<br/> 取值范围：(-∞,+∞)，设置的值大于0时，按顺时针方向，小于0时，按逆时针方向。 </br>默认值：180 </br>角度为字符串时，合法的取值为纯数字或纯数字后带"deg"（度）、"rad"（弧度）、"grad"（梯度）、"turn"（圈）单位，例如："90"、 "90deg"、"1.57rad"。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|

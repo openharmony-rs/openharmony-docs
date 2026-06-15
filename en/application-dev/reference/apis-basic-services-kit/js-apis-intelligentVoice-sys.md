@@ -48,7 +48,7 @@ Obtains an instance of the intelligent voice manager.
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -88,7 +88,7 @@ Obtains an instance of the **WakeupManager** class.
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -124,13 +124,13 @@ Creates an instance of the intelligent voice enrollment engine. This API uses an
 | Name  | Type                               | Mandatory| Description                  |
 | -------- | ----------------------------------- | ---- | ---------------------- |
 | descriptor    | [EnrollIntelligentVoiceEngineDescriptor](#enrollintelligentvoiceenginedescriptor)                              | Yes  | Descriptor of the intelligent voice enrollment engine.  |
-| callback    | AsyncCallback\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>         | Yes  | Callback used to return the result.  |
+| callback    | AsyncCallback\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>         | Yes  | Callback used to return the intelligent voice enrollment engine.  |
 
 **Error codes**
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -178,13 +178,13 @@ Creates an instance of the intelligent voice enrollment engine. This API uses a 
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>           | Callback used to return the result.                  |
+| Promise\<[EnrollIntelligentVoiceEngine](#enrollintelligentvoiceengine)\>           | Promise used to return the intelligent voice enrollment engine.                  |
 
 **Error codes**
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -225,13 +225,13 @@ Creates an instance of the intelligent voice wakeup engine. This API uses an asy
 | Name  | Type                               | Mandatory| Description                  |
 | -------- | ----------------------------------- | ---- | ---------------------- |
 | descriptor    | [WakeupIntelligentVoiceEngineDescriptor](#wakeupintelligentvoiceenginedescriptor)                              | Yes  | Descriptor of the intelligent voice wakeup engine.  |
-| callback    | AsyncCallback\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)\>         | Yes  | Callback used to return the result.  |
+| callback    | AsyncCallback\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)\>         | Yes  | Callback used to return the intelligent voice wakeup engine.  |
 
 **Error codes**
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -279,13 +279,13 @@ Creates an instance of the intelligent voice wakeup engine. This API uses a prom
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| Promise\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)>           | Callback used to return the result.                  |
+| Promise\<[WakeupIntelligentVoiceEngine](#wakeupintelligentvoiceengine)>           | Promise used to return the intelligent voice wakeup engine.                  |
 
 **Error codes**
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -335,7 +335,7 @@ Obtains the list of supported intelligent voice engine types.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -369,7 +369,7 @@ Subscribes to service change events. A callback is invoked when the status of th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -403,7 +403,7 @@ Unsubscribes from service change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -447,7 +447,7 @@ Sets the specified wakeup parameter. This API uses a promise to return the resul
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -495,7 +495,7 @@ Obtains specified intelligent voice parameters. This API uses a promise to retur
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -544,7 +544,7 @@ Obtain the saved wakeup keyword files. This API uses a promise to return the res
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -589,7 +589,7 @@ Obtains wakeup resource files, such as registration corpus and path. This API us
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -639,7 +639,7 @@ Registers with wakeup resource files to obtain wakeup word evaluation results. T
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -689,7 +689,7 @@ Clears user data. This API uses a promise to return the result.
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -961,7 +961,7 @@ Obtains the list of supported countries/regions. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1005,7 +1005,7 @@ Obtains the list of supported countries/regions. This API uses a promise to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1047,7 +1047,7 @@ Initializes the intelligent voice enrollment engine. This API uses an asynchrono
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1069,7 +1069,7 @@ if (enrollIntelligentVoiceEngine != null) {
     if (err) {
       console.error(`Failed to initialize enrollIntelligentVoice engine. Code:${err.code}, message:${err.message}`);
     } else {
-      console.info(`Succeeded in initialzing enrollIntelligentVoice engine.`);
+      console.info(`Succeeded in initializing enrollIntelligentVoice engine.`);
     }
   });
 }
@@ -1101,7 +1101,7 @@ Initializes the intelligent voice enrollment engine. This API uses a promise to 
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1143,17 +1143,18 @@ Obtains the enrollment result. This API uses an asynchronous callback to return 
 | Name    | Type                             | Mandatory| Description                                         |
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | isLast     | boolean                           | Yes  | Whether this is the last enrollment. The value **true** indicates the last enrollment, and the value **false** indicates the opposite.|
-| callback     | AsyncCallback&lt;[EnrollCallbackInfo](#enrollcallbackinfo)&gt;                           | Yes  | Callback used to return the result.|
+| callback     | AsyncCallback&lt;[EnrollCallbackInfo](#enrollcallbackinfo)&gt;                           | Yes  | Callback used to return the registration result.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 22700107 | System error.                             |
 
 **Example**
 
@@ -1193,17 +1194,18 @@ Obtains the enrollment result. This API uses a promise to return the result.
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-|  Promise&lt;[EnrollCallbackInfo](#enrollcallbackinfo)&gt;            | Promise used to return the result.                  |
+|  Promise&lt;[EnrollCallbackInfo](#enrollcallbackinfo)&gt;            | Promise used to return the registration result.                  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 22700107 | System error.                             |
 
 **Example**
 
@@ -1239,7 +1241,7 @@ Stops the enrollment. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1280,7 +1282,7 @@ Stops the enrollment. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1319,7 +1321,7 @@ Commits the enrollment. This API uses an asynchronous callback to return the res
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1361,7 +1363,7 @@ Commits the enrollment. This API uses a promise to return the result.
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1396,13 +1398,13 @@ Sets the HAP information for the wakeup application. This API uses an asynchrono
 | Name    | Type                             | Mandatory| Description                                         |
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | info     | [WakeupHapInfo](#wakeuphapinfo)                           | Yes  | HAP information for the wakeup application.|
-| callback     | AsyncCallback\<void\>                          | Yes  | Callback used to return the result.|
+| callback     | AsyncCallback\<void\>                          | Yes  | Callback used to return the HAP information for the wakeup application.|
 
 **Error codes**
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1455,7 +1457,7 @@ Sets the HAP information for the wakeup application. This API uses a promise to 
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1501,7 +1503,7 @@ Sets the wakeup sensibility. This API uses an asynchronous callback to return th
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1550,7 +1552,7 @@ Sets the wakeup sensibility. This API uses a promise to return the result.
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1593,7 +1595,7 @@ Sets specified intelligent voice parameters. This API uses an asynchronous callb
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1643,7 +1645,7 @@ Sets specified intelligent voice parameters. This API uses a promise to return t
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1679,13 +1681,13 @@ Obtains specified intelligent voice parameters. This API uses an asynchronous ca
 | Name    | Type                             | Mandatory| Description                                         |
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | key     | string                           | Yes  | Key.|
-| callback     | AsyncCallback\<string\>                           | Yes  | Callback used to return the result.|
+| callback     | AsyncCallback\<string\>                           | Yes  | Callback used to return the intelligent voice parameters.|
 
 **Error codes**
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1729,13 +1731,13 @@ Obtains specified intelligent voice parameters. This API uses a promise to retur
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-|  Promise\<string\>            | Promise used to return the result.                  |
+|  Promise\<string\>            | Promise used to return the intelligent voice parameters.                  |
 
 **Error codes**
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1783,7 +1785,7 @@ Evaluates whether a custom wakeup keyword is effective. This API uses a promise 
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1826,7 +1828,7 @@ Releases the intelligent voice enrollment engine. This API uses an asynchronous 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1867,7 +1869,7 @@ Releases the intelligent voice enrollment engine. This API uses a promise to ret
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1908,7 +1910,7 @@ Obtains the list of supported countries/regions. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1950,7 +1952,7 @@ Obtains the list of supported countries/regions. This API uses a promise to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -1985,13 +1987,13 @@ Sets the HAP information for the wakeup application. This API uses an asynchrono
 | Name    | Type                             | Mandatory| Description                                         |
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | info     | [WakeupHapInfo](#wakeuphapinfo)                           | Yes  | HAP information for the wakeup application.|
-| callback     | AsyncCallback\<void\>                           | Yes  | Callback used to return the result.|
+| callback     | AsyncCallback\<void\>                           | Yes  | Callback used to return the HAP information for the wakeup application.|
 
 **Error codes**
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2045,7 +2047,7 @@ Sets the HAP information for the wakeup application. This API uses a promise to 
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2091,7 +2093,7 @@ Sets the wakeup sensibility. This API uses an asynchronous callback to return th
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2140,7 +2142,7 @@ Sets the wakeup sensibility. This API uses a promise to return the result.
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2183,7 +2185,7 @@ Sets specified intelligent voice parameters. This API uses an asynchronous callb
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2233,7 +2235,7 @@ Sets specified intelligent voice parameters. This API uses a promise to return t
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2269,13 +2271,13 @@ Obtains specified intelligent voice parameters. This API uses an asynchronous ca
 | Name    | Type                             | Mandatory| Description                                         |
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | key     | string                           | Yes  | Key.|
-| callback     | AsyncCallback\<string\>                           | Yes  | Callback used to return the result.|
+| callback     | AsyncCallback\<string\>                           | Yes  | Callback used to return the intelligent voice parameters.|
 
 **Error codes**
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2319,13 +2321,13 @@ Obtains specified intelligent voice parameters. This API uses a promise to retur
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-|  Promise\<string\>            | Promise used to return the result.                  |
+|  Promise\<string\>            | Promise used to return the intelligent voice parameters.                  |
 
 **Error codes**
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2367,7 +2369,7 @@ Obtains the Pulse Code Modulation (PCM) of audio signals. This API uses a promis
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2415,7 +2417,7 @@ Starts the capturer. This API uses a promise to return the result.
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2458,7 +2460,7 @@ Reads audio data. This API uses a promise to return the result.
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2501,7 +2503,7 @@ Stops the capturer. This API uses a promise to return the result.
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Intelligent Voice Error Codes](errorcode-intelligentVoice.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2541,7 +2543,7 @@ Releases the intelligent voice wakeup engine. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2582,7 +2584,7 @@ Releases the intelligent voice wakeup engine. This API uses a promise to return 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2622,7 +2624,7 @@ Subscribes to wakeup events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
@@ -2660,7 +2662,7 @@ Unsubscribes from wakeup events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |

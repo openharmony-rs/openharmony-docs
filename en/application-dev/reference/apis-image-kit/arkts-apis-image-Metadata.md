@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -21,11 +21,11 @@ import { image } from '@kit.ImageKit';
 
 ## getProperties<sup>13+</sup>
 
-getProperties(key: Array\<string>): Promise\<Record\<string, string | null>>
+getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 Obtains the values of properties from the image's metadata. This API uses a promise to return the result.
 
-For details about how to obtain the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), and [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20).
+For details about how to query the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20), and [HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23).
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -39,11 +39,11 @@ For details about how to obtain the property values, see [PropertyKey](arkts-api
 
 | Type                                    | Description                                                        |
 | ---------------------------------------- | ------------------------------------------------------------ |
-| Promise\<Record<string, string \| null>> | Promise used to return the property values. If the operation fails, an error code is returned.|
+| Promise\<Record\<string, string \| null>> | Promise used to return the property values. If the operation fails, an error code is returned.|
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -57,7 +57,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function GetProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -70,7 +70,7 @@ async function GetProperties(context: Context) {
     await metaData.getProperties(["ImageWidth", "ImageLength"]).then((data2) => {
       console.info('Get properties ',JSON.stringify(data2));
     }).catch((error: BusinessError) => {
-      console.error(`Get properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -80,11 +80,11 @@ async function GetProperties(context: Context) {
 
 ## setProperties<sup>13+</sup>
 
-setProperties(records: Record\<string, string | null>): Promise\<void>
+setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 Sets the values of properties for the image's metadata. This API uses a promise to return the result.
 
-For details about how to obtain the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), and [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20).
+For details about how to query the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20), and [HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23).
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -92,7 +92,7 @@ For details about how to obtain the property values, see [PropertyKey](arkts-api
 
 | Name | Type                          | Mandatory| Description                    |
 | ------- | ------------------------------ | ---- | ------------------------ |
-| records | Record<string, string \| null> | Yes  | Array of properties and their values.|
+| records | Record\<string, string \| null> | Yes  | Array of properties and their values.|
 
 **Return value**
 
@@ -102,7 +102,7 @@ For details about how to obtain the property values, see [PropertyKey](arkts-api
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -116,7 +116,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function SetProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -131,7 +131,7 @@ async function SetProperties(context: Context) {
       "ImageLength": "300"
     };
     await metaData.setProperties(setkey).then(async () => {
-      console.info('Set AuxPictureObj properties success.');
+      console.info('Succeeded in setting AuxPictureObj properties.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
     })
@@ -143,11 +143,11 @@ async function SetProperties(context: Context) {
 
 ## getAllProperties<sup>13+</sup>
 
-getAllProperties(): Promise\<Record<string, string | null>>
+getAllProperties(): Promise\<Record\<string, string \| null>>
 
 Obtains all properties and values from the image's metadata. This API uses a promise to return the result.
 
-For details about how to obtain the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), and [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20).
+For details about how to query the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7), [FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13), [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20), and [HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23).
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -155,7 +155,7 @@ For details about how to obtain the property values, see [PropertyKey](arkts-api
 
 | Type                                    | Description                                       |
 | ---------------------------------------- | ------------------------------------------- |
-| Promise\<Record<string, string \| null>> | Promise used to return the values of all properties.|
+| Promise\<Record\<string, string \| null>> | Promise used to return the values of all properties.|
 
 **Example**
 
@@ -164,7 +164,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function GetAllProperties(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -179,7 +179,7 @@ async function GetAllProperties(context: Context) {
       console.info('Metadata have ', count, ' properties');
       console.info(`Get metadata all properties: ${data2}`);
     }).catch((error: BusinessError) => {
-      console.error(`Get metadata all properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get metadata all properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -208,7 +208,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function Clone(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const rawFile = await resourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -222,10 +222,115 @@ async function Clone(context: Context) {
     new_metadata.getProperties(["ImageWidth"]).then((data1) => {
       console.info(`Clone new_metadata and get Properties: ${data1}`);
     }).catch((err: BusinessError) => {
-      console.error(`Clone new_metadata failed, error : ${err}`);
+      console.error(`Failed to clone new_metadata, error : ${err}`);
     });
   } else {
     console.error('Metadata is null.');
+  }
+}
+```
+
+## getBlob<sup>23+</sup>
+
+getBlob(): Promise\<ArrayBuffer>
+
+Obtains the metadata in binary format. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Return value**
+
+| Type                 | Description                                 |
+| --------------------- | ------------------------------------- |
+| Promise\<ArrayBuffer> | Promise that returns the binary data of the metadata.|
+
+**Example**
+
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg'; // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function GetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let blob = await metaData.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
+
+## setBlob<sup>23+</sup>
+
+setBlob(blob: ArrayBuffer): Promise\<void>
+
+Replaces the current metadata with binary data. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name| Type       | Mandatory| Description                |
+| ------ | ----------- | ---- | -------------------- |
+| blob   | ArrayBuffer | Yes  | Binary data used to replace the metadata.|
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 7600206  | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
+
+**Example**
+
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg'; // An image containing Exif metadata is required.
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function setBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let blob = await metaData.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+      metaData.setBlob(blob);
+    }
+    let new_blob = metaData.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
   }
 }
 ```

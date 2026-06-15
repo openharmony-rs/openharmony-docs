@@ -1,8 +1,8 @@
 # Interface (AVScreenCaptureRecorder)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -330,7 +330,7 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 
 | 参数名 | 类型    | 必填 | 说明                                                      |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| pickerMode | [PickerMode](arkts-apis-media-e.md#pickermode22) | 是   | 选择Picker模式。<br>定义了在Picker中显示的内容类型：<br>- SCREEN_ONLY：仅显示屏幕列表。<br>- WINDOW_ONLY：仅显示窗口列表。<br>- SCREEN_AND_WINDOW：同时显示屏幕列表和窗口列表（默认值）。 |
+| pickerMode | [PickerMode](arkts-apis-media-e.md#pickermode22) | 是   | 选择Picker模式。 |
 
 **返回值：**
 

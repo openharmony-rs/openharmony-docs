@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:13:39.907Z pushedAt=2026-06-03T09:56:28.056Z -->
 
 Asset Store Kit (ASSET for short) provides a series of open APIs to securely store and manage short sensitive data, including but not limited to passwords (accounts/passwords), tokens (application credentials), and important plaintext (such as bank card numbers).
 
@@ -16,26 +17,39 @@ The secure storage of assets depends on the underlying universal keystore. Speci
 The AES256-GCM algorithm is used to encrypt and decrypt assets. The following access control mechanisms are used to protect assets against unauthorized access:
 
 - Owner-based access control: All assets are protected by this mechanism by default.
+
   - An asset can be accessed only by its owner (service that writes the asset).
-  - ASSET obtains the asset owner identity from the system service. Even if the service identity is spoofed, the spoofer cannot obtain the data of other services.
+
+  - The identity of the asset owner (the application's [appId](../../quick-start/common-problem-of-application.md#what-is-appid)) is obtained by ASSET from system services. Even if the service identity is spoofed, the spoofer cannot obtain data of other services.
+
   - The asset encryption/decryption also protects the integrity of the asset owner identity. Even if the owner of the asset is tampered with, attackers cannot obtain data of other services.
 
 - Group-based access control:
+
   - You can add multiple applications of the same developer to a group and set the ground ID when adding assets. The applications in the same group can access data with each other.
+
   - The group information consists of the developer ID and group ID. The developer ID does not need to be configured. The group ID is configured during application development. For details, see [Tags in the Configuration File](../../quick-start/app-configuration-file.md#tags-in-the-configuration-file). When an application is released, it is signed by a private key to ensure the group ID integrity.
+
   - You can configure multiple groups for an application and allocate assets to different groups based on their sharing scope. This allows fine-grained group-based access control.
 
 - Access control based on the lock screen status: This mechanism provides the following protection levels in ascending order of security. You can set it based on site requirements. If no protection level is set, assets are accessible only after the device is unlocked for the first time.
+
   - **DEVICE_POWERED_ON**: allows access to assets after the device is powered on.
+
   - **DEVICE_FIRST_UNLOCKED**: allows access to assets after the device is unlocked for the first time after power-on.
+
   - **DEVICE_UNLOCKED**: allows access to assets only when the device is unlocked.
 
 - Access control based on the setting of the lock screen password: This mechanism allows assets to be accessed only after a lock screen password is set. By default, it is disabled.
+
   - If this mechanism is enabled, assets can be accessed only after the user sets a screen lock password.
 
 - Access control based on user authentication: This mechanism allows assets to be accessed only after a successful user identity authentication. By default, it is disabled.
+
   - If this mechanism is enabled, assets can be accessed only after a successful user identity authentication.
+
   - The user authentication can be fingerprint, facial, or PIN authentication.
+
   - You can set an authentication validity period, which allows access to multiple assets within the validity period. The maximum authentication validity period is 10 minutes.
 
 ## Constraints
@@ -46,7 +60,7 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
 
 - Alias-based access
 
-  Assets are stored in the ASSET database in ciphertext and uniquely identified by the service identity and alias. The alias of each asset must be unique.
+  Assets are stored in ciphertext in the ASSET database, with the service identity (the application's [appId](../../quick-start/common-problem-of-application.md#what-is-appid)) + alias serving as the unique index. Therefore, services must ensure that the alias of each asset is unique.
 
 - Batch asset query
 
@@ -54,9 +68,9 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
 
 - Custom service data storage
 
-  - ASSET provides 12 custom asset attributes starting with **DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an ASSET attribute.
+  - Asset Store Kit provides 12 custom asset attributes starting with **DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an attribute of this kit.
 
-  - ASSET protects the integrity of the attributes starting with **DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
+  - Asset Store Kit protects the integrity of the attributes starting with **DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
 
 - Group-based access control
 
@@ -65,12 +79,22 @@ The AES256-GCM algorithm is used to encrypt and decrypt assets. The following ac
   - The assets with [IS_PERSISTENT](../../reference/apis-asset-store-kit/js-apis-asset.md#tag) set to **True** cannot be shared in a group.
 
 - Asset deletion
+
+  Assets are deleted only in the following scenarios:
+
   - The asset data that meets the specified conditions is deleted when **remove()** is called. For details, see [Removing Assets (ArkTS)](asset-js-remove.md) and [Removing Assets (C/C++)](asset-native-remove.md).
+
   - When an application is uninstalled, its asset data will be deleted. However, if [IS_PERSISTENT](../../reference/apis-asset-store-kit/js-apis-asset.md#tag) is **true**, the asset data will be retained.
+
      - From API version 21: Non-group data stored in ASSET is cleared. Group data is cleared only when all applications in the group are uninstalled.
+
      - From API version 20 or earlier: Both non-group and group data stored in ASSET is cleared.
+
   - When a user is deleted, the asset data of the user will be deleted.
+
   - When a device is reset to restore factory settings, the asset data will be deleted.
+
+<!--RP1--><!--RP1End-->
 
 ## Relationship with Other Kits
 

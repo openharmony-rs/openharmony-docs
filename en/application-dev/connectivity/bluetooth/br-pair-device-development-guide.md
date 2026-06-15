@@ -8,24 +8,30 @@
 <!--Adviser: @zhang_yixin13-->
 
 ## Introduction
+
 This document provides guidance on how to develop profile capabilities for actively pairing and connecting devices.
 
 ## How to Develop
 
 ### Applying for the Required Permission
+
 Apply for the **ohos.permission.ACCESS_BLUETOOTH** permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
 ### Importing Required Modules
+
 Import the **connection**, **a2dp**, **hfp**, **hid**, **baseProfile**, **constant**, and error code modules.
+
 ```ts
 import { connection, a2dp, hfp, hid, baseProfile, constant, common } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ### Subscribing to Pairing Status Change Events
+
 You can subscribe to pairing status change events to obtain the real-time pairing status. Multiple status transitions occur during the pairing process. Through the [BOND_STATE_BONDED](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate) event,
 
 you can obtain the pairing status of the device that initiates pairing proactively or is paired.
+
 ```ts
 // Define the callback for pairing status changes.
 function onReceiveEvent(data: connection.BondStateParam) {
@@ -41,6 +47,7 @@ try {
 ```
 
 ### Initiating Pairing
+
 If the pairing status of the target device is [BOND_STATE_INVALID](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate), the current device can proactively pair with the target device.
 
 - You can obtain the target device through the device discovery process. For details, see [Bluetooth Discovery](br-discovery-development-guide.md) or [BLE Device Discovery](ble-development-guide.md).
@@ -53,7 +60,7 @@ During the pairing process, a dialog box is displayed. The dialog box style vari
 
 The actual MAC address of a Bluetooth device is private information. During device discovery, the Bluetooth subsystem assigns a virtual MAC address to each Bluetooth device and saves the mapping between the virtual MAC address and the actual MAC address.
 
-If you do not know the [address type](../../reference/apis-connectivity-kit/js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, you are advised to use the pairing mode of API version 20 or earlier. For details, see [connection.pairDevice](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionpairdevice).
+If you do not know the [address type](../../reference/apis-connectivity-kit/js-apis-bluetooth-common.md#bluetoothaddresstype) of the target device, you are advised to initiate pairing using the pairing method from API version 20 or earlier. For details, see [connection.pairDevice](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionpairdevice).
 
 - In this pairing mode, you do not need to know the MAC address type of the target device.
 
@@ -96,10 +103,13 @@ try {
 ```
 
 ### Connecting to the Profile of a Paired Device
+
 After successful pairing, an application can call [connectAllowedProfiles](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionconnectallowedprofiles16) to connect to the profile supported by the target device. The profile can only be A2DP, HFP, or HID. If you need to use the SPP connection, see [SPP-based Connection and Data Transmission](spp-development-guide.md).
 
 - The Bluetooth subsystem queries and saves all profiles supported by the target device during pairing.
+
 - After the pairing is complete, the application can call [getRemoteProfileUuids](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiongetremoteprofileuuids12) to query the profiles supported by the target device. If an applicable profile exists, the application can initiate a connection to the profile within 30 seconds after successful pairing.
+
 ```ts
 // Device address of the paired device
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -143,6 +153,7 @@ try {
 ```
 
 ## Sample Code
+
 ```ts
 import { connection, a2dp, hfp, hid, baseProfile, constant } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';

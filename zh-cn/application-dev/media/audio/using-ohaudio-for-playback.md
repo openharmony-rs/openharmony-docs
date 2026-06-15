@@ -1,8 +1,8 @@
 # 推荐使用OHAudio开发音频播放功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -11,6 +11,8 @@ OHAudio是系统在API version 10中引入的一套C API，此API在设计上实
 OHAudio音频播放状态变化示意图：
 
 ![OHAudioRenderer status change](figures/ohaudiorenderer-status-change.png)
+
+当音频流处于工作状态（非released状态）时，需要占用系统的音频流资源。由于系统对音频流数量有限制，所以当客户端暂时不使用音频流时，调用OH_AudioRenderer_Release()回收音频资源，做好资源利用，避免后续创建音频流失败。
 
 ## 使用入门
 

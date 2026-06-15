@@ -1,9 +1,9 @@
 # ohprint.h
- <!--Kit: Basic Services Kit-->   
- <!--Subsystem: Print-->  
- <!--Owner: @guoshengbang-->  
- <!--Designer: @Q-haosu-->    
- <!--Tester: @Q-haosu-->  
+ <!--Kit: Basic Services Kit-->
+ <!--Subsystem: Print-->
+ <!--Owner: @guoshengbang-->
+ <!--Designer: @Q-haosu-->
+ <!--Tester: @Q-haosu-->
  <!--Adviser: @fang-jinxu-->
 
 ## Overview
@@ -286,7 +286,7 @@ Enumerates the print job adapter states.
 | PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5 | Print job preview destroyed due to cancellation.|
 | PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6  | Print job preview destroyed due to startup.|
 
-## OH_Print_JobState
+### OH_Print_JobState
 
 ```c
 enum OH_Print_JobState
@@ -298,12 +298,12 @@ Enumerates the print job states.
 
 **Since**: 24
 
-| Name                | Value | Description         |
-| -------------------- | -- |-------------- |
-| OH_PRINT_JOB_SUCCEED | 0  | Successful print job.|
-| OH_PRINT_JOB_FAIL    | 1  | Print job failed.|
-| OH_PRINT_JOB_CANCEL  | 2  | Print job canceled.|
-| OH_PRINT_JOB_BLOCK   | 3  | Print job blocked.|
+| Name                | Description         |
+| -------------------- |-------------- |
+| OH_PRINT_JOB_SUCCEED = 0 | Successful print job.|
+| OH_PRINT_JOB_FAIL = 1    | Print job failed.|
+| OH_PRINT_JOB_CANCEL = 2  | Print job canceled.|
+| OH_PRINT_JOB_BLOCK = 3   | Print job blocked.|
 
 ## Function Description
 
@@ -425,7 +425,7 @@ Checks and starts the print service, initializes the print client, and connects 
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode): Operation is successful.<br>             [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode): The ohos.permission.PRINT permission is required.<br>             [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to connect to the print service.<br>             [PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode): The CUPS service fails to be started.|
+| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode): Operation is successful.<br>             [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode): The ohos.permission.PRINT permission is required.<br>             [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to connect to the print service.<br>             [PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to start the CUPS service.|
 
 ### OH_Print_Release()
 
@@ -623,7 +623,7 @@ Queries the list of added printers.
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode): Operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode): The ohos.permission.PRINT permission is required.<br>         [PRINT_ERROR_INVALID_PARAMETER](capi-ohprint-h.md#print_errorcode): printerIdList is null.<br>         [PRINT_ERROR_INVALID_PRINTER](capi-ohprint-h.md#print_errorcode): Filed to query any connected printers.<br>         [PRINT_ERROR_GENERIC_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to copy printer ID list.|
+| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode): Operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode): The ohos.permission.PRINT permission is required.<br>         [PRINT_ERROR_INVALID_PARAMETER](capi-ohprint-h.md#print_errorcode): printerIdList is null.<br>         [PRINT_ERROR_INVALID_PRINTER](capi-ohprint-h.md#print_errorcode): Failed to query any connected printers.<br>         [PRINT_ERROR_GENERIC_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to copy printer ID list.|
 
 ### OH_Print_ReleasePrinterList()
 
@@ -712,7 +712,7 @@ Starts the printer management window of the system.
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode): Operation is successful.<br>         [PRINT_ERROR_GENERIC_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to start printer management window.|
+| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode): Operation is successful.<br>         [PRINT_ERROR_GENERIC_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to start the printer management window.|
 
 ### OH_Print_QueryPrinterProperties()
 
@@ -901,7 +901,7 @@ Starts a print job with the callback to be invoked when the print job state chan
 | ---------------------------------------------------- | -----------------------|---------------------------------------- |
 | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) | 0 | Operation is successful.|
 | [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) | 201 | The [ohos.permission.PRINT](../../security/AccessToken/permissions-for-all.md#ohospermissionprint) permission is required.|
-| [PRINT_ERROR_INVALID_PARAMETER](capi-ohprint-h.md#print_errorcode) | 401 | One of the parameter is null or the key list is empty.|
+| [PRINT_ERROR_INVALID_PARAMETER](capi-ohprint-h.md#print_errorcode) | 401 | One of the parameters is null or the key list is empty.|
 | [PRINT_ERROR_GENERIC_FAILURE](capi-ohprint-h.md#print_errorcode) | 24300001 | The callback function cannot be copied.|
 | [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) | 24300002 | Failed to connect to the print service.|
 | [PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode) | 24300003 | The print job struct cannot be created in the print service.|

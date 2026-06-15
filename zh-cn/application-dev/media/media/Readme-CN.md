@@ -2,7 +2,7 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @chenkun-->
+<!--Owner: @chenkun613227-->
 <!--Designer: @yxc2-->
 <!--Tester: @zengxi_3007-->
 <!--Adviser: @w_Machine_cc-->
@@ -31,6 +31,7 @@
   - 播放<!--media-playback-c-->
     - [使用AVPlayer播放音频(C/C++)](using-ndk-avplayer-for-playback.md)
     - [使用AVPlayer播放视频(C/C++)](using-ndk-avplayer-for-video-playback.md)
+    - [使用AVPlayer播放流媒体(C/C++)](using-ndk-avplayer-for-streaming.md)
     - [使用LPP播放器播放视频(C/C++)](using-ndk-lpp-for-playback.md)
   - 录制<!--media-recording-c-->
     - [使用AVRecorder录制音频(C/C++)](using-ndk-avrecorder-for-audio-recording.md)
@@ -40,6 +41,7 @@
       - [AVScreenCapture录屏自定义场景](avscreencapture-c-custom-scenarios.md)
       - [录屏常见问题](avscreencapture-faqs.md)
     - [使用AVScreenCapture录屏写文件(C/C++)](using-avscreencapture-for-file.md)
+    - [使用AVScreenCapture实现窗口级录屏(C/C++)](using-avscreencapture-for-file-with-window.md)
     - [屏幕录制支持矩形区域录制(C/C++)](video-supports-rectangular-area-recording.md)
   - 媒体信息查询<!--media-info-c-->
     - [使用AVMetadataExtractor获取元数据(C/C++)](using-ndk-avmetadataextractor-for-media.md)

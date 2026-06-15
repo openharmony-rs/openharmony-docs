@@ -32,7 +32,7 @@ FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&g
 
 实现折叠屏二分栏、三分栏在展开态、悬停态以及折叠态的区域控制的分栏布局。
 
-**装饰器类型：**\@Component
+**装饰器类型：**[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -40,13 +40,13 @@ FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&g
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| primary | Callback\<void> | 是 | @BuilderParam | 主要区域回调函数。 |
-| secondary | Callback\<void> | 是 | @BuilderParam | 次要区域回调函数。 |
-| extra | Callback\<void> | 否 | @BuilderParam | 扩展区域回调函数，不传入的情况，没有对应区域。 |
-| expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | 是 | @Prop | 展开态布局信息。 |
-| hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | 是 | @Prop | 悬停态布局信息。 |
-| foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | 是 | @Prop | 折叠态布局信息。 |
-| animationOptions | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) \| null | 否 | @Prop | 设置动画效果相关的参数，null表示关闭动效。 |
+| primary | Callback\<void> | 是 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 主要区域回调函数。 |
+| secondary | Callback\<void> | 是 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 次要区域回调函数。 |
+| extra | Callback\<void> | 否 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 扩展区域回调函数，不传入的情况，没有对应区域。 |
+| expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | 是 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 展开态布局信息。 |
+| hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | 是 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 悬停态布局信息。 |
+| foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | 是 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 折叠态布局信息。 |
+| animationOptions | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) \| null | 否 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 设置动画效果相关的参数，null表示关闭动效。 |
 | onHoverStatusChange | [OnHoverStatusChangeHandler](#onhoverstatuschangehandler) | 否 | - | 折叠屏进入或退出悬停模式时触发的回调函数。 |
 
 ## ExpandedRegionLayoutOptions
@@ -62,7 +62,7 @@ FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&g
 | isExtraRegionPerpendicular | boolean | 否 | 是 | 设置为true时，扩展区域从上到下贯穿整个组件；设置为false时，扩展区域不贯穿整个组件。此字段仅在extra有效时生效。<br/>默认值：true |
 | verticalSplitRatio | number | 否 | 是 | 主要区域与次要区域之间的高度比例。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_1V1 |
 | horizontalSplitRatio | number | 否 | 是 | 主要区域与扩展区域之间的宽度比例。此字段在extra有效时生效。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_3V2 |
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 是 | 扩展区域的位置信息。当isExtraRegionPerpendicular设置为false时，此字段生效。<br/>默认值：ExtraRegionPosition.top |
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 是 | 扩展区域的位置信息。当isExtraRegionPerpendicular设置为false时，此字段生效。<br/>默认值：ExtraRegionPosition.TOP |
 
 ## HoverModeRegionLayoutOptions
 
@@ -76,7 +76,7 @@ FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&g
 | -------- | -------- | -------- | -------- | -------- |
 | showExtraRegion | boolean | 否 | 是 | 可折叠屏幕在半折叠状态下是否显示扩展区域。设置为true时表示显示扩展区域，设置为false时表示不显示扩展区域。<br/>默认值：false |
 | horizontalSplitRatio | number | 否 | 是 | 主要区域与扩展区域之间的宽度比例，当且仅当extra有效时此字段才生效。<br/>默认值：[PresetSplitRatio](#presetsplitratio).LAYOUT_3V2 |
-| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 是 | 扩展区域的位置信息，当且仅当showExtraRegion设置为true时此字段才生效。<br/>默认值：ExtraRegionPosition.top |
+| extraRegionPosition | [ExtraRegionPosition](#extraregionposition) | 否 | 是 | 扩展区域的位置信息，当且仅当showExtraRegion设置为true时此字段才生效。<br/>默认值：ExtraRegionPosition.TOP |
 
 > **说明：**
 >
@@ -188,9 +188,11 @@ struct TwoColumns {
   build() {
     RelativeContainer() {
       FoldSplitContainer({
+        // 主要区域回调函数
         primary: () => {
           this.privateRegion()
         },
+        // 次要区域回调函数
         secondary: () => {
           this.secondaryRegion()
         }
@@ -249,12 +251,15 @@ struct ThreeColumns {
   build() {
     RelativeContainer() {
       FoldSplitContainer({
+        // 主要区域回调函数
         primary: () => {
           this.privateRegion()
         },
+        // 次要区域回调函数
         secondary: () => {
           this.secondaryRegion()
         },
+        // 扩展区域回调函数
         extra: () => {
           this.extraRegion()
         }
@@ -270,19 +275,12 @@ struct ThreeColumns {
 | ----- | ------ | ------ |
 | ![](figures/foldsplitcontainer-4.png) | ![](figures/foldsplitcontainer-5.png) | ![](figures/foldsplitcontainer-6.png) |
 
-### 示例3（展开态布局信息）
+### 示例3（展示FoldSplitContainer折叠态、悬停态、展开态下的配置行为）
 
-该示例通过配置ExpandedRegionLayoutOptions实现折叠屏展开态的布局信息。
+该示例通过[ExpandedRegionLayoutOptions](#expandedregionlayoutoptions)、[HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions)和[FoldedRegionLayoutOptions](#foldedregionlayoutoptions)分别配置折叠屏的展开态、悬停态和折叠态布局信息。示例代码中MajorRegion、MinorRegion和ExtraRegion分别对应组件划分出来的主要区域、次要区域和扩展区域。这些区域使用封装的区域组件Region实现，其中RadioOptions为封装的切换单选框组件，SwitchOption为封装的切换开关组件。
 
 ```ts
-import {
-  FoldSplitContainer,
-  PresetSplitRatio,
-  ExtraRegionPosition,
-  ExpandedRegionLayoutOptions,
-  HoverModeRegionLayoutOptions,
-  FoldedRegionLayoutOptions
-} from '@kit.ArkUI';
+import { FoldSplitContainer, PresetSplitRatio, ExtraRegionPosition, ExpandedRegionLayoutOptions, HoverModeRegionLayoutOptions, FoldedRegionLayoutOptions } from '@kit.ArkUI';
 
 @Component
 struct Region {
@@ -380,22 +378,26 @@ struct RadioOption {
 @Entry
 @Component
 struct Index {
+  // 展开态布局配置
   @State expandedRegionLayoutOptions: ExpandedRegionLayoutOptions = {
     horizontalSplitRatio: PresetSplitRatio.LAYOUT_3V2,
     verticalSplitRatio: PresetSplitRatio.LAYOUT_1V1,
     isExtraRegionPerpendicular: true,
     extraRegionPosition: ExtraRegionPosition.TOP
   };
+  // 悬停态布局配置
   @State foldingRegionLayoutOptions: HoverModeRegionLayoutOptions = {
     horizontalSplitRatio: PresetSplitRatio.LAYOUT_3V2,
     showExtraRegion: false,
     extraRegionPosition: ExtraRegionPosition.TOP
   };
+  // 折叠态布局配置
   @State foldedRegionLayoutOptions: FoldedRegionLayoutOptions = {
     verticalSplitRatio: PresetSplitRatio.LAYOUT_1V1
   };
 
   @Builder
+  // 主要区域自定义组件
   MajorRegion() {
     Region({
       title: "折叠态配置",
@@ -442,6 +444,7 @@ struct Index {
   }
 
   @Builder
+  // 次要区域自定义组件
   MinorRegion() {
     Region({
       title: "悬停态配置",
@@ -526,6 +529,7 @@ struct Index {
   }
 
   @Builder
+  // 扩展区域自定义组件
   ExtraRegion() {
     Region({
       title: "展开态配置",
@@ -647,12 +651,15 @@ struct Index {
   build() {
     Column() {
       FoldSplitContainer({
+        // 主要区域回调函数
         primary: () => {
           this.MajorRegion()
         },
+        // 次要区域回调函数
         secondary: () => {
           this.MinorRegion()
         },
+        // 扩展区域回调函数
         extra: () => {
           this.ExtraRegion()
         },

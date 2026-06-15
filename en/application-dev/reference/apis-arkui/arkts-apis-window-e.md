@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -21,7 +21,7 @@ Enumerates the window types.
 | Name                                 | Value| Description                                                                                    |
 |-------------------------------------| ------ |----------------------------------------------------------------------------------------|
 | TYPE_APP                            | 0      | Child window of an application.<br>**Model restriction**: This API can be used only in the FA model.                                                  |
-| TYPE_SYSTEM_ALERT<sup>(deprecated)</sup>               | 1     | System alert window.<br>Note: This property is supported since API version 7 and deprecated since API version 11.<br>                           |
+| TYPE_SYSTEM_ALERT<sup>(deprecated)</sup>               | 1     | System alert window.<br>**Note**: This API has been deprecated since API version 11,<br>and was supported since API version 7.                          |
 | TYPE_FLOAT<sup>9+</sup>             | 8      | Global floating window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | TYPE_DIALOG<sup>10+</sup>           | 16      | Modal window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | TYPE_MAIN<sup>18+</sup>             | 32      | Main window of an application.<br>This window type cannot be used during window creation.                              |
@@ -63,10 +63,10 @@ Enumerates the window orientations. <!--Del-->For details of the differences bet
 | AUTO_ROTATION_LANDSCAPE_RESTRICTED    | 10   | Automatically rotates with the sensor to two orientations: landscape and reverse landscape. This rotation is controlled by the rotation switch in Control Panel.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
 | LOCKED                                | 11   | Locked mode, where the window orientation is consistent with the current screen orientation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
 | AUTO_ROTATION_UNSPECIFIED<sup>12+</sup>        | 12   | Automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a certain device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_PORTRAIT<sup>12+</sup>           | 13   | Temporarily rotates to portrait mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_LANDSCAPE<sup>12+</sup>          | 14   | Temporarily rotates to landscape mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_PORTRAIT_INVERTED<sup>12+</sup>  | 15   | Temporarily rotates to reverse portrait mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_LANDSCAPE_INVERTED<sup>12+</sup> | 16   | Temporarily rotates to reverse landscape mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
+| USER_ROTATION_PORTRAIT<sup>12+</sup>           | 13   | Temporarily rotates to the portrait orientation, and then automatically rotates with the sensor, under the control of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a certain device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
+| USER_ROTATION_LANDSCAPE<sup>12+</sup>          | 14   | Temporarily rotates to the landscape orientation, and then automatically rotates with the sensor, under the control of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a certain device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
+| USER_ROTATION_PORTRAIT_INVERTED<sup>12+</sup>  | 15   | Temporarily rotates to the reverse portrait orientation, and then automatically rotates with the sensor, under the control of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a certain device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
+| USER_ROTATION_LANDSCAPE_INVERTED<sup>12+</sup> | 16   | Temporarily rotates to the reverse landscape orientation, and then automatically rotates with the sensor, under the control of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a certain device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
 | FOLLOW_DESKTOP<sup>12+</sup>                   | 17   | Follows the orientation of the home screen, where the window will rotate if the home screen rotates and will not rotate if the home screen does not.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
 
 ## RectChangeReason<sup>12+</sup>
@@ -125,8 +125,8 @@ Enumerates the window modes.
 | Name      | Value  | Description                         |
 | ---------- | ---- | ----------------------------- |
 | UNDEFINED  | 0    | The window mode is not defined by the application.      |
-| FULL_SCREEN | 1    | The application window is in full-screen mode. On 2-in-1 devices, the window covers the entire screen without a dock bar or status bar.            |
-| MAXIMIZE    | 2    | The application window is maximized. On 2-in-1 devices, the window covers the entire screen with a dock bar and status bar.  |
+| FULL_SCREEN | 1    | The application is displayed in full screen.<br>In [freeform window](../../windowmanager/window-terminology.md#freeform-window) state, the window occupies the entire screen with no dock, title bar, or status bar displayed by default.<br>You can use [maximize()](arkts-apis-window-Window.md#maximize12) and [setTitleAndDockHoverShown()](arkts-apis-window-Window.md#settitleanddockhovershown14) to configure whether to display the title bar and dock upon hovering over the hot zone.<br>The last call takes precedence when both the **maximize()** and **setTitleAndDockHoverShown()** APIs are called.<br>In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) state, the window occupies the entire screen with no title bar or dock displayed. You can use [setSpecificSystemBarEnabled()](arkts-apis-window-Window.md#setspecificsystembarenabled11) to configure whether to display the status bar.|
+| MAXIMIZE    | 2    | The application window is maximized. In [freeform window](../../windowmanager/window-terminology.md#freeform-window) state, the window occupies the entire screen, and the dock, status bar, and title bar are displayed without requiring a hover. This state is unavailable in non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) state.|
 | MINIMIZE    | 3    | The application window is minimized.  |
 | FLOATING    | 4    | The application is displayed in a floating window.  |
 | SPLIT_SCREEN  | 5    | The application is displayed in split-screen mode.  |
@@ -308,8 +308,8 @@ Enumerates the modality types of the child window.
 
 | Name                | Value     | Description      |
 | -------------------- | ------ | ---------- |
-| WINDOW_MODALITY      | 0      | Window-modal. Select this value when you want the parent window not to respond to user interactions.|
-| APPLICATION_MODALITY | 1      | Application-modal. This type is effective only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.<br> Select this value when other instances of the application should also not respond to user operations.<br> **Device behavior differences**: This enumerated value can be properly called on 2-in-1 devices and tablets. If it is used as an input parameter on other device types, error code 801 is returned.|
+| WINDOW_MODALITY      | 0      | Select this value when only the parent window should not respond to user operations.|
+| APPLICATION_MODALITY | 1      |  Select this value when other instances of the application should also not respond to user operations.<br> **Device behavior differences**: This enumeration can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.|
 
 ## ScreenshotEventType<sup>20+</sup>
 

@@ -1,8 +1,8 @@
 # Window Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -58,11 +58,11 @@ Unauthorized operation.
 This error code is reported when the API does not have the required permissions to operate an object.
 
 **Possible Causes**<br>
-1. The window object of another process is operated.
+1. The window object of another process is operated.<br>
 2. The window type is not supported.
 
 **Solution**<br>
-1. Ensure that you are interacting only with windows created within your own process. If you are referencing windows from other processes, remove those references or calls.
+1. Ensure that you are interacting only with windows created within your own process. If you are referencing windows from other processes, remove those references or calls.<br>
 2. Ensure that the related operations are consistent with the supported window type.
 
 ## 1300005 Abnormal WindowStage
@@ -206,7 +206,7 @@ PiP internal error.
 This error code is reported when an internal error occurs in PiP.
 
 **Possible Causes**<br>
-1. The window on which the PiP feature depends is abnormal or empty.
+1. The window on which the PiP feature depends is abnormal or empty.<br>
 2. The PiP controller is abnormal.
 
 **Solution**<br>
@@ -458,7 +458,7 @@ This error code is reported when launching an application window via the floatin
 
 1. Incorrect parameters are passed.
 
-2. The floating ball is not tapped before launching the application window.
+2. The application does not have the `ohos.permission.AUTO_RESTORE_MAIN_WINDOW` permission and the floating ball is not tapped before the application window is launched.
 
 3. Attempt to launch a window that belongs to another application.
 
@@ -466,7 +466,7 @@ This error code is reported when launching an application window via the floatin
 
 1. Check the parameters used to launch the application window.
 
-2. Tap the floating ball before launching the application window.
+2. To launch the application window without user interaction, apply for the `ohos.permission.AUTO_RESTORE_MAIN_WINDOW` permission. Otherwise, launch the application window after the floating ball is tapped.
 
 3. Launch the window that belongs to the current application.
 

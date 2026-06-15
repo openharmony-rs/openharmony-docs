@@ -63,7 +63,7 @@ ChipGroup({
 >
 > 2. 使用suffix接口时，需引入IconGroupSuffix接口，若不传入，suffix将为空。
 >
-> 3. 图标填充色（`fillColor`和`activedFillColor`）的设置应与字体颜色（`fontColor`）保持一致。如果需要设置不同的颜色，可以在传入`[ChipGroupSpaceOptions](#chipgroupspaceoptions)`时使用`prefixSymbol`。
+> 3. 图标填充色（`fillColor`和`activatedFillColor`）的设置应与字体颜色（`fontColor`）保持一致。如果需要设置不同的颜色，可以在传入[ChipGroupItemOptions](#chipgroupitemoptions)时使用`prefixSymbol`。
 
 ## ChipGroupItemOptions
 

@@ -1,13 +1,12 @@
 # Transition Styles
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
->
 >  Supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Transition of Shared Elements
@@ -17,7 +16,7 @@
 
 | Name     | Type    | Default Value | Description                                      |
 | ------- | ------ | ---- | ---------------------------------------- |
-| shareid | string | -   | Used for the transition of shared elements, which takes effect only when this attribute is set. [\<list-item>](js-components-container-list-item.md), [\<image>](js-components-basic-image.md), [\<text>](js-components-basic-text.md), [\<button>](js-components-basic-button.md), and [\<label>](js-components-basic-label.md) components are supported for the transition of shared elements.|
+| shareid | string | -   | Used for the transition of shared elements, which takes effect only when this attribute is set. Currently, the following components support the transition of shared elements: [list-item](js-components-container-list-item.md), [image](js-components-basic-image.md), [text](js-components-basic-text.md), [button](js-components-basic-button.md), and [label](js-components-basic-label.md).|
 
 
 ### Styles
@@ -26,7 +25,7 @@
 | --------------------------------- | ------ | -------- | ---------------------------------------- |
 | shared-transition-effect          | string | exchange | Entry style of a shared element during transition.<br>- **exchange** (default): The source page element is moved to the position of the target page element and is zoomed in or out properly.<br>- **static**: The position of the target page element remains unchanged. You can configure the opacity animation. Currently, only the static effect configured on the target page takes effect.|
 | shared-transition-name            | string | -        | During the transition, the style configured on the target page takes effect preferentially. This style is used to configure the animation effect of shared elements. The animation effect is an animation sequence defined by **@keyframes** supporting transform and opacity animations. If the effect of shared elements conflicts with the custom animation, the latter is used.|
-| shared-transition-timing-function | string | friction | During the transition, the style configured on the target page takes effect preferentially. This style defines the difference curve during the transition of shared elements. If it is not configured, the friction curve is used.|
+| shared-transition-timing-function | string | friction | During the transition, the style configured on the target page takes effect preferentially. This style defines the interpolation curve during the transition of shared elements. If it is not configured, the friction curve is used.|
 
 
 ### Important Notes
@@ -47,7 +46,7 @@
 
 ### Example
 
-In the example below, where **PageA** jumps to **PageB**, the shared element is **image**, and the **shareid** is "shareImage".
+In the example below, where **PageA** jumps to **PageB**, the shared element is **image**, and the **shareid** is **"shareImage"**.
 
 ```html
 <!-- PageA -->
@@ -232,22 +231,24 @@ export default {
 | -------------------------- | ------ | ------------- | ---------------------------------------- |
 | transition-enter           | string | -             | Works with **@keyframes** and supports transform and opacity animations. For details, see [Attributes available for the @keyframes rule](js-components-common-animation.md).|
 | transition-exit            | string | -             | Works with **@keyframes** and supports transform and opacity animations. For details, see [Attributes available for the @keyframes rule](js-components-common-animation.md).|
-| transition-duration        | string | Follows the default page transition time of the device| The unit can be s|or ms. The default unit is ms. If no value is specified, the default value is used.|
-| transition-timing-function | string | friction      | Speed curve of the transition animation, which makes the animation more fluent. For details, see the description of **animation-timing-function **in [Animation Styles](js-components-common-animation.md).|
+| transition-duration        | string | Follows the default page transition time of the device| The unit can be s or ms. The default unit is ms. If no value is specified, the default value is used.|
+| transition-timing-function | string | friction      | Speed curve of the transition animation, which makes the animation more fluent. For details, see the description of **animation-timing-function** in [Animation Styles](js-components-common-animation.md).|
 
 
 ### Important Notes
 
-1. When defining a custom transition, set the page background color to an opaque color. Otherwise, the transition effect can be harsh.
+1. When defining a custom transition, you are advised to set the page background color to an opaque color. Otherwise, the transition effect may be harsh.
 
 2. The **transition-enter** and **transition-exit** styles can be configured separately. The default settings are used if they are not configured.
 
 3. Notes on the **transition-enter** and **transition-exit** styles:
 
-   a. In the push scenario, the animation defined by **transition-enter** is used for entering the **Page2.js** in the page stack; the animation defined by **transition-exit** is used for entering the **Page1.js** in the page stack.
+   a. In the push scenario, enter the animation described by **transition-enter** of the **Page2.js** application in the page stack; enter the animation described by **transition-exit** of the **Page1.js** application in the second position of the page stack.
+
    ![en-us_image_0000001193704354](figures/en-us_image_0000001193704354.png)
 
-   b. In the back scenario, the animation defined by **transition-enter** is used for exiting the **Page2.js** in the page stack, with the animation played in reverse sequence; the animation defined by **transition-exit** is used for exiting the **Page1.js** in the page stack, with the animation played in reverse sequence.
+   b. In the back scenario, exit the animation described by **transition-enter** of the **Page2.js** application in the page stack and play the animation in reverse sequence; enter the animation described by **transition-exit** of the **Page1.js** application in the second position of the page stack and play the animation in reverse sequence.
+   
    ![en-us_image_0000001238184345](figures/en-us_image_0000001238184345.png)
 
 ### Example

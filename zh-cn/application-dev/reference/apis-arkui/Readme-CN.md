@@ -1,8 +1,8 @@
 # ArkUI（方舟UI框架）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @tsj_20201-->
+<!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,7 +14,7 @@
     - [@ohos.arkui.dragController (DragController)](js-apis-arkui-dragController.md)
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)](js-apis-arkui-drawableDescriptor.md)
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
-    - [@ohos.arkui.node(自定义节点)](js-apis-arkui-node.md)
+    - [@ohos.arkui.node (自定义节点)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (无感监听)](js-apis-arkui-observer.md)
     - [@ohos.arkui.prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (形状)](js-apis-arkui-shape.md)
@@ -95,6 +95,9 @@
       - [Resource](js-apis-arkui-resource.md)
   - 窗口管理<!--window-manager-api-->
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
+    <!--Del-->
+    - [@ohos.PiPWindow (画中画窗口)(系统接口)](js-apis-pipWindow-sys.md)
+    <!--DelEnd-->
     - [@ohos.window.floatingBall (闪控球窗口)](js-apis-floatingBall.md)
     - @ohos.window (窗口)<!--js-apis-window-->
       - [模块描述](arkts-apis-window.md)
@@ -238,7 +241,7 @@
       - [工具栏设置](arkui-ts/ts-universal-attributes-toolbar.md)
   - 手势处理<!--gesture-handling-->
     - 绑定手势<!--gesture-binding-->
-      - [绑定手势方法](arkui-ts/ts-gesture-settings.md)
+      - [绑定手势事件](arkui-ts/ts-gesture-settings.md)
       - [设置组件绑定的手势](arkui-ts/ts-uigestureevent.md)
       - [手势处理器](arkui-ts/ts-gesturehandler.md)
     - 基础手势<!--basic-gestures-->
@@ -248,7 +251,7 @@
       - [PinchGesture](arkui-ts/ts-basic-gestures-pinchgesture.md)
       - [RotationGesture](arkui-ts/ts-basic-gestures-rotationgesture.md)
       - [SwipeGesture](arkui-ts/ts-basic-gestures-swipegesture.md)
-    - [组合手势](arkui-ts/ts-combined-gestures.md)
+    - [GestureGroup](arkui-ts/ts-combined-gestures.md)
     - 手势控制<!--gesture-control-->
       - [自定义手势判定](arkui-ts/ts-gesture-customize-judge.md)
       - [手势拦截增强](arkui-ts/ts-gesture-blocking-enhancement.md)
@@ -468,9 +471,9 @@
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
+    - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
     - 组件扩展装饰器<!--arkts-extend-component-decorator-->
       - [定义可动画属性 (@AnimatableExtend)](arkui-ts/ts-animatable-extend.md)
-      - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
       - [wrapBuilder: 封装全局@Builder](arkui-ts/ts-universal-wrapBuilder.md)
       - [mutableBuilder: 实现全局@Builder动态更新](arkui-ts/ts-universal-mutableBuilder.md)
   - 组件预览<!--component-preview-->
@@ -577,6 +580,25 @@
     - [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
     - [native_key_event.h](capi-native-key-event-h.md)
     - [native_node.h](capi-native-node-h.md)
+      - [ArkUI_NodeAttributeType（基础属性）](capi-native-node-h-nodeattributetype-base.md)
+      - [ArkUI_NodeAttributeType（通用属性）](capi-native-node-h-nodeattributetype-common.md)
+      - [ArkUI_NodeAttributeType（布局属性）](capi-native-node-h-nodeattributetype-layoutattributes.md)
+      - [ArkUI_NodeAttributeType（布局类组件相关属性）](capi-native-node-h-nodeattributetype-layoutcomponent.md)
+      - [ArkUI_NodeAttributeType（动效、视效相关属性）](capi-native-node-h-nodeattributetype-animator.md)
+      - [ArkUI_NodeAttributeType（交互类相关属性）](capi-native-node-h-nodeattributetype-interaction.md)
+      - [ArkUI_NodeAttributeType（表单类组件相关属性）](capi-native-node-h-nodeattributetype-form.md)
+      - [ArkUI_NodeAttributeType（滚动容器类组件相关属性）](capi-native-node-h-nodeattributetype-scrollablecontainer.md)
+      - [ArkUI_NodeAttributeType（导航类组件相关属性）](capi-native-node-h-nodeattributetype-navigationrelatedcomponents.md)
+      - [ArkUI_NodeAttributeType（信息展示类组件相关属性）](capi-native-node-h-nodeattributetype-informationdisplay.md)
+      - [ArkUI_NodeAttributeType（信息选择类组件相关属性）](capi-native-node-h-nodeattributetype-informationselection.md)
+      - [ArkUI_NodeAttributeType（无障碍相关属性）](capi-native-node-h-nodeattributetype-accessibility.md)
+      - [ArkUI_NodeAttributeType（文本显示类组件相关属性）](capi-native-node-h-nodeattributetype-text.md)
+      - [ArkUI_NodeAttributeType（文本输入类组件相关属性）](capi-native-node-h-nodeattributetype-textinputcategory.md)
+      - [ArkUI_NodeAttributeType（富文本类组件相关属性）](capi-native-node-h-nodeattributetype-richeditor.md)
+      - [ArkUI_NodeAttributeType（图类组件相关属性）](capi-native-node-h-nodeattributetype-image.md)
+      - [ArkUI_NodeAttributeType（XComponent组件相关属性）](capi-native-node-h-nodeattributetype-xcomponent.md)
+      - [ArkUI_NodeAttributeType（EmbeddedComponent组件相关属性）](capi-native-node-h-nodeattributetype-embeddedcomponent.md)
+      - [ArkUI_NodeAttributeType（其他）](capi-native-node-h-nodeattributetype-other.md)
     - [native_node_napi.h](capi-native-node-napi-h.md)
     - [native_render.h](capi-native-render-h.md)
     - [native_type.h](capi-native-type-h.md)
@@ -753,6 +775,7 @@
     - [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md)
     - [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)
     - [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md)
+    - [OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)
     - [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md)
     - [NativeDisplayManager_WaterfallDisplayAreaRects](capi-nativedisplaymanager-waterfalldisplayarearects.md)
     - [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md)

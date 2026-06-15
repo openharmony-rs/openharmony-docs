@@ -1,20 +1,18 @@
 # swiper
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:29:34.769Z pushedAt=2026-06-08T06:54:55.089Z -->
 
 The **Swiper** component provides a container that allows users to switch among child components using swipe gestures.
 
-
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
-
-
+> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Attributes
 
@@ -29,7 +27,6 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | duration  | number  | 0     | No   | Duration of the autoplay for child component switching.                             |
 | vertical  | boolean | false | No   | Whether the swipe gesture is performed vertically. A vertical swipe uses the vertical indicator.                  |
 
-
 ## Styles
 
 In addition to the [universal styles](js-service-widget-common-styles.md), the following styles are supported.
@@ -41,14 +38,11 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | indicator-size                     | &lt;length&gt;                           | 4px  | No   | Diameter of the indicator.        |
 | indicator-top\|left\|right\|bottom | &lt;length&gt; \| &lt;percentage&gt; | -    | No   | Relative position of the indicator in the swiper.|
 
-
 ## Events
 
 The [universal events](js-service-widget-common-events.md) are supported.
 
-
 ## Example
-
 
 ```html
 <!-- xxx.hml -->
@@ -64,7 +58,6 @@ The [universal events](js-service-widget-common-events.md) are supported.
   </div>
 </swiper>
 ```
-
 
 ```css
 /* xxx.css */
@@ -91,7 +84,6 @@ The [universal events](js-service-widget-common-events.md) are supported.
 }
 ```
 
-
 ```json
 {
   "data": {
@@ -99,6 +91,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
   }
 }
 ```
-**4 x 4 widget**
+
+**4×4 widget**
 
 ![Swiper](figures/swiper.png)

@@ -873,7 +873,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，只需要填充[USBDevicePipe](#usbdevicepipe)和[USBEndpoint](#usbendpoint)即可。|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，该参数同[usbManager.usbSubmitTransfer](#usbmanagerusbsubmittransfer18)接口的入参对象。|
 
 **错误码：**
 
@@ -1407,8 +1407,8 @@ function controlTransfer() {
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
 | address       | number                                      | 否   | 否 |端点地址。         |
 | attributes    | number                                      | 否   | 否 |端点属性。         |
-| interval      | number                                      | 否   | 否 |端点间隔。         |
-| maxPacketSize | number                                      | 否   | 否 |端点最大数据包大小。    |
+| interval      | number                                      | 否   | 否 |端点间隔，（单位：毫秒）。         |
+| maxPacketSize | number                                      | 否   | 否 |端点最大数据包大小，（单位：字节）。    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
 | number        | number                                      | 否   | 否 |端点号。          |
 | type          | number                                      | 否   | 否 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |

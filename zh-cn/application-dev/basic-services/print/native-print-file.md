@@ -3,7 +3,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
-<!--Designer: @gcw_4D6e0BBd-->
+<!--Designer: @baozewei-->
 <!--Tester: @guoshengbang-->
 <!--Adviser: @RayShih-->
 
@@ -16,9 +16,9 @@
 > **说明：**
 >
 > 使用打印服务，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.PRINT。
-> 
+>
 > 当不再使用打印服务时，调用OH_Print_Release()释放打印客户端资源并取消事件订阅。
-> 
+>
 > c++接口需要在NDK工程中使用，请参考[NDK开发导读](../../napi/ndk-development-overview.md)。
 
 ### 步骤1. 引用NDK头文件
@@ -119,10 +119,6 @@ static void PrinterChangeCallback(Print_PrinterEvent event, const Print_PrinterI
         // 打印设备基础属性变更
         case PRINTER_INFO_CHANGED:
             LOGI("do something, printer[%{public}s] info changed", printerInfo->printerId);
-            break;
-        // 打印设备首选项属性
-        case PRINTER_PREFERENCE_CHANGED:
-            LOGI("do something, printer[%{public}s] preference changed", printerInfo->printerId);
             break;
         default:
             break;
@@ -309,7 +305,7 @@ static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info) {
     napi_value n_ret = nullptr;
     napi_get_boolean(env, false, &n_ret);
     Print_ErrorCode ret = PRINT_ERROR_INVALID_PARAMETER;
-    
+
     // 获取已添加打印机的列表
     Print_StringList pList = { 0 };
     ret = OH_Print_QueryPrinterList(&pList);
@@ -383,7 +379,7 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 ```
 
-主页上新增一个按钮，单击调用c++的nativeStartPrintByNative直接发送任务。
+主页上新增一个按钮，单击调用c++的nativeStartPrintJob直接发送任务。
 ```ts
 // Index.ets
 

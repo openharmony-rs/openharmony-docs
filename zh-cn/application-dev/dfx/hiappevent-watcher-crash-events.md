@@ -76,7 +76,7 @@ let configParams: Record<string, hiAppEvent.ParamType> = {
 };
 ```
 
-以32位系统为例，参考[订阅崩溃事件（ArkTS）开发步骤](hiappevent-watcher-crash-events-arkts.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃日志内容。日志中打印如下使能的配置参数列表：
+以64位系统为例，参考[订阅崩溃事件（ArkTS）开发步骤](hiappevent-watcher-crash-events-arkts.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃日志内容。日志中打印如下使能的配置参数列表：
 
 ```text
 ...
@@ -174,6 +174,7 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台状态；false表示应用处于后台状态。 |
 | release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持。 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
+| app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | pid | number | 应用的进程ID。 |
@@ -187,7 +188,7 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | external_log<sup></sup> | string[] | 故障日志文件[应用沙箱路径](../file-management/app-sandbox-directory.md)。开发者可通过路径读取故障日志文件内容。**为避免目录空间超限导致新生成的日志文件写入失败，日志文件处理完后请及时删除，超限规格请参考log_over_limit字段。** |
 | log_over_limit | boolean | 生成的与已存在的故障日志文件的大小总和是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
 | process_name | string | 故障进程名。<br>**说明**：从API version 21开始支持。 |
-| page_switch_log | string | 页面切换日志路径，日志介绍详见通用日志。<br>**说明**：从API version 24开始支持。 |
+| page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |
 
 ### exception字段说明
 
@@ -199,8 +200,6 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | message | string | 异常原因。 |
 | stack | string | 异常调用栈。 |
 | thread_name | string | 线程名称。<br>**说明**：从API version 21开始支持。 |
-| caught_by_errormanager | boolean | 是否注册异常管理捕获。true：已注册异常管理捕获；false：未注册异常管理捕获。<br>**说明**：从API version 24开始，支持该字段。 |
-| uncatchable_fault | boolean | 是否为不可捕获的异常类型，当前仅包含OutOfMemoryError。true：不可捕获的异常类型；false：可捕获的异常类型。<br>**说明**：从API version 24开始，支持该字段。 |
 
 **NativeCrash类型exception字段说明**
 

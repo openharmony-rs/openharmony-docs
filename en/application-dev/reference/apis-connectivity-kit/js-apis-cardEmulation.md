@@ -6,6 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d0c7a5fb2bc1f1b1c7630c4a5886ec88f6136925 translatedAt=2026-06-09T10:29:43.624Z pushedAt=2026-06-10T01:59:42.710Z -->
 
 The **cardEmulation** module implements Near-Field Communication (NFC) card emulation. You can use the APIs provided by this module to determine the card emulation type supported and implement Host Card Emulation (HCE).<br>
 HCE provides card emulation that does not depend on a secure element. It allows an application to emulate a card and communicate with an NFC card reader through the NFC service.
@@ -17,7 +18,8 @@ HCE provides card emulation that does not depend on a secure element. It allows 
 ## HCE and AID Declaration
 
 Before developing an application related to HCE, you must declare NFC-related attributes in the **module.json5** file.
-```json
+
+```json5
 // Applicable to devices other than lite wearables
 {
   "module": {
@@ -54,7 +56,8 @@ Before developing an application related to HCE, you must declare NFC-related at
   }
 }
 ```
-```json
+
+```json5
 // Applicable to lite wearables
 {
   "module": {
@@ -113,11 +116,12 @@ Before developing an application related to HCE, you must declare NFC-related at
   }
 }
 ```
+
 > **NOTE**
 >1. The **actions** field must contain **ohos.nfc.cardemulation.action.HOST_APDU_SERVICE** and cannot be changed.
 >2. When declaring an AID (in compliance with ISO/IEC 7816-4), ensure that **name** is set to **payment-aid** or **other-aid**. Incorrect setting will cause a parsing failure.
 >3. The **name** field of **requestPermissions** must be **ohos.permission.NFC_CARD_EMULATION** and cannot be changed.
->4. Lite wearables support only the FA model, with attribute configurations and API invocation methods differing from those of other device types. Refer to the example code for detailed implementations.
+>4. Lite wearables support only the [FA model](../../application-models/ability-terminology.md#fa-model), with attribute configurations and API calling methods differing from those of other device types. Refer to the example code for detailed implementations.
 
 ## Modules to Import
 
@@ -127,6 +131,7 @@ import { cardEmulation } from '@kit.ConnectivityKit';
 ```
 
 <!--code_no_check_fa-->
+
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
@@ -196,7 +201,9 @@ if (!isHceSupported) {
     console.info('this device is not supported for HCE, ignore it.');
 }
 ```
+
 <!--code_no_check_fa-->
+
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
@@ -229,7 +236,7 @@ Checks whether the device supports HCE.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -247,6 +254,7 @@ if (!hasHceCap) {
 ```
 
 <!--code_no_check_fa-->
+
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
@@ -286,13 +294,14 @@ Checks whether an application is the default application of the specified servic
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
 
 **Example**
+
 ```js
 // Applicable to devices other than lite wearables
 import { cardEmulation } from '@kit.ConnectivityKit';
@@ -309,6 +318,7 @@ let isDefaultService: boolean = cardEmulation.isDefaultService(elementName, card
 ```
 
 <!--code_no_check_fa-->
+
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
@@ -369,7 +379,7 @@ Starts HCE, including enabling this application to run in the foreground prefere
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -421,7 +431,7 @@ Stops HCE, including canceling the subscription of APDU data, exiting this appli
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -451,13 +461,14 @@ Subscribes to events indicating receiving of APDUs from the peer card reader. Th
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | Invalid parameter.                 |
 |801 | Capability not supported.          |
 
 **Example**
+
 ```js
 // Applicable to devices other than lite wearables
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -487,12 +498,13 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testHce', '%{public}s', 'Ability onDestroy');
     hceService.stop(element);
   }
-  // Implement other lifecycle functions as demanded.
+  // Other functions in the lifecycle
 }
 ```
 
 **Example**
 <!--code_no_check_fa-->
+
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
@@ -529,7 +541,7 @@ export default {
   },
   onDestroy() {
   }
-  // Implement other lifecycle functions as demanded.
+  // Other functions in the lifecycle
 }
 ```
 
@@ -556,12 +568,13 @@ Unsubscribes from events indicating receiving of APDUs from the peer card reader
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
 
 **Example**
+
 ```js
 // Applicable to devices other than lite wearables
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -592,7 +605,7 @@ export default class EntryAbility extends UIAbility {
     hceService.off('hceCmd', apduCallback);
     hceService.stop(element);
   }
-  // Implement other lifecycle functions as demanded.
+  // Other functions in the lifecycle
 }
 ```
 
@@ -643,7 +656,7 @@ Transmits an APDU to the peer card reader. This API uses a promise to return the
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -651,6 +664,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 3100301 | Card emulation running state is abnormal in service. |
 
 **Example**
+
 ```js
 // Applicable to devices other than lite wearables
 import { cardEmulation } from '@kit.ConnectivityKit';
@@ -669,6 +683,7 @@ hceService.transmit(responseData).then(() => {
 ```
 
 <!--code_no_check_fa-->
+
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
@@ -707,7 +722,7 @@ Sends APDU data to the peer card reader. The application can call this API only 
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -715,6 +730,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 | 3100301 | Card emulation running state is abnormal in service. |
 
 **Example**
+
 ```js
 // Applicable to devices other than lite wearables
 import { cardEmulation } from '@kit.ConnectivityKit';
@@ -740,6 +756,7 @@ try {
 ```
 
 <!--code_no_check_fa-->
+
 ```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';

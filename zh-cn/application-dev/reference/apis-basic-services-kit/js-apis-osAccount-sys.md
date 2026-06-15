@@ -57,7 +57,9 @@ activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 | 12300010 | Service busy. Possible causes: The target account is being operated. |
 | 12300016 | The number of logged in accounts reaches the upper limit. |
 
-**示例：** 激活ID为100的系统账号
+**示例：**
+
+激活ID为100的系统账号。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -116,7 +118,9 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 | 12300010 | Service busy. Possible causes: The target account is being operated. |
 | 12300016 | The number of logged in accounts reaches the upper limit. |
 
-**示例：** 激活ID为100的系统账号
+**示例：**
+
+激活ID为100的系统账号。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -180,6 +184,7 @@ activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
 | 12300019 | Cross-display activation not supported. |
 
 **示例：**
+
 在ID为0的逻辑屏上激活ID为100的系统账号。
 
   ```ts
@@ -236,7 +241,9 @@ deactivateOsAccount(localId: number): Promise&lt;void&gt;
 | 12300008 | Restricted Account. |
 | 12300010 | Service busy. Possible causes: The target account is being operated. |
 
-**示例：** 注销ID为100的系统账号
+**示例：**
+
+注销ID为100的系统账号。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -289,7 +296,9 @@ isOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
-**示例：** 判断ID为100的系统账号是否处于激活状态
+**示例：**
+
+判断ID为100的系统账号是否处于激活状态。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -343,7 +352,9 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
-**示例：** 判断ID为100的系统账号是否有禁止使用Wi-Fi的约束
+**示例：**
+
+判断ID为100的系统账号是否有禁止使用Wi-Fi的约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -630,7 +641,9 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 给ID为100的系统账号设置禁止使用Wi-Fi的约束
+**示例：**
+
+给ID为100的系统账号设置禁止使用Wi-Fi的约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -690,7 +703,9 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 删除ID为100的系统账号的禁止使用Wi-Fi的约束
+**示例：**
+
+删除ID为100的系统账号的禁止使用Wi-Fi的约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -741,7 +756,9 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 将ID为100的系统账号的账号名设置成demoName
+**示例：**
+
+将ID为100的系统账号的账号名设置成demoName。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -800,7 +817,9 @@ setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 将ID为100的系统账号的账号名设置成demoName
+**示例：**
+
+将ID为100的系统账号的账号名设置成demoName。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1045,7 +1064,9 @@ getEnabledOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号的全部约束
+**示例：**
+
+获取ID为100的系统账号的全部约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1477,7 +1498,9 @@ queryOsAccountById(localId: number, callback: AsyncCallback&lt;OsAccountInfo&gt;
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 查询ID为100的系统账号信息
+**示例：**
+
+查询ID为100的系统账号信息。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1533,7 +1556,9 @@ queryOsAccountById(localId: number): Promise&lt;OsAccountInfo&gt;
 | 12300002 | Invalid localId. |
 | 12300003 | Account not found. |
 
-**示例：** 查询ID为100的系统账号信息
+**示例：**
+
+查询ID为100的系统账号信息。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1582,7 +1607,9 @@ getOsAccountProfilePhoto(localId: number, callback: AsyncCallback&lt;string&gt;)
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号的头像
+**示例：**
+
+获取ID为100的系统账号的头像。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1638,7 +1665,9 @@ getOsAccountProfilePhoto(localId: number): Promise&lt;string&gt;
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号的头像
+**示例：**
+
+获取ID为100的系统账号的头像。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1689,7 +1718,9 @@ setOsAccountProfilePhoto(localId: number, photo: string, callback: AsyncCallback
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 给ID为100的系统账号设置头像
+**示例：**
+
+给ID为100的系统账号设置头像。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1751,7 +1782,9 @@ setOsAccountProfilePhoto(localId: number, photo: string): Promise&lt;void&gt;
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 给ID为100的系统账号设置头像
+**示例：**
+
+给ID为100的系统账号设置头像。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -6863,7 +6896,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
-表示[查询认证凭据信息](#getauthinfo12)的可选参数集合。
+表示查询认证凭据信息[getAuthInfo](#getauthinfo12)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6905,7 +6938,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 ## AuthOptions<sup>12+</sup>
 
-表示[认证用户](#auth12)的可选参数集合。
+表示认证用户[auth](#auth12)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6919,7 +6952,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 ## GetInputDataOptions<sup>12+</sup>
 
-表示[通知调用者获取数据](#ongetdata8)的可选参数集合。
+表示通知调用者获取数据[onGetData](#ongetdata8)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 

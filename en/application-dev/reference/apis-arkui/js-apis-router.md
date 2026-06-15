@@ -18,7 +18,7 @@ For routing management, it is recommended that you use the [Navigation](../../ui
 >
 > - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
 >
-> - When using [pushUrl](arkts-apis-uicontext-router.md#pushurl-1) or [pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1) with a callback to return the result, be aware that the stack information obtained through the callback using APIs such as [getLength](arkts-apis-uicontext-router.md#getlengthdeprecated) represents an intermediate state during the navigation operation. This temporary state might differ from the final stack information available after the stack operation is complete.
+> - When using [pushUrl](arkts-apis-uicontext-router.md#pushurl-1) or [pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1) with a callback to return the result, be aware that the stack information obtained through the callback using APIs such as [getStackSize](arkts-apis-uicontext-router.md#getstacksize23) represents an intermediate state during the navigation operation. This temporary state might differ from the final stack information available after the stack operation is complete.
 
 ## Modules to Import
 
@@ -578,7 +578,7 @@ router.replaceUrl({
 
 pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route.
 
 > **NOTE**
 >
@@ -657,7 +657,7 @@ For details, see [Named Route](../../ui/arkts-routing.md#named-route).
 
 pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route.
 
 > **NOTE**
 >
@@ -726,7 +726,7 @@ router.pushNamedRoute({
 
 pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route.
 
 > **NOTE**
 >
@@ -804,7 +804,7 @@ router.pushNamedRoute({
 
 pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route.
 
 > **NOTE**
 >
@@ -1531,7 +1531,7 @@ export default {
 // detail page
 export default {
   onInit() {
-    console.info('showData1:' + this.getUIContext().getRouter().getParams()['data1']);
+    console.info('showData1:' + router.getParams()['data1']);
   }
 }
 ```

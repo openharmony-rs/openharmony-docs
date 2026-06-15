@@ -1,7 +1,7 @@
 # ProgressButtonV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -9,12 +9,14 @@
 
 The **ProgressButtonV2** component is a text-based download button with a progress indicator that shows the download progress.
 
-This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now more easily manage download button data and states with greater flexibility, leading to faster UI updates.
+This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now manage download button data and states with greater flexibility, leading to faster UI updates.
 
 
 > **NOTE**
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - This component can be used only in the stage model.
 >
 > - If the **ProgressButtonV2** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **ProgressButtonV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ProgressButtonV2** component.
 
@@ -45,9 +47,9 @@ Creates a text-based download button with a progress indicator that shows the do
 | content                           | [ResourceStr](ts-types.md#resourcestr)                        | Yes | \@Require <br>\@Param | Button text.                                                                  |
 | progressButtonWidth               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | \@Param <br>\@Once  | Width of the button.<br>Default value: **44vp**                                                     |
 | onClicked                         | [ClickCallback](#clickcallback)                               | Yes | \@Param                | Callback invoked when the button is clicked.                                                                |
-| isEnabled                         | boolean                                                       | Yes | \@Param                | Whether the button can be clicked.<br> **true**: The button can be clicked.<br> **false**: The button cannot be clicked.      |
+| isEnabled                         | boolean                                                       | Yes | \@Param                | Whether the button can be clicked.<br> **true**: yes<br> **false**: no      |
 | colorOptions                      | [ProgressButtonV2Color](#progressbuttonv2color)               | No | \@Param                | Color options for the button.                                                     |
-| progressButtonRadius<sup>18+<sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | \@Param                | Corner radius of the button. It cannot be set in percentage.<br>Value range: [0, height/2]<br>Default value: height/2<br>If an invalid value is set, the default value is used.|
+| progressButtonRadius<sup>18+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | \@Param                | Corner radius of the button. It cannot be set in percentage.<br>Value range: [0, height/2]<br>Default value: height/2<br>If an invalid value is set, the default value is used.|
 
 ## Attributes
 The [universal attributes](ts-component-general-attributes.md) are not supported.

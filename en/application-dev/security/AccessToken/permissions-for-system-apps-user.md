@@ -1,8 +1,8 @@
 # user_grant Permissions for System Applications
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -11,7 +11,7 @@ Before requesting permissions for your application, read and understand the [per
 
 > **NOTE**
 >
-> - The permissions listed in this topic are available to system_basic or system_core applications, but not to normal applications.
+> - The permissions listed in this topic are available to system_basic or higher-level applications, but not to normal applications.
 > - The authorization mode of these permissions is user_grant.
 > - Applications of a lower APL can request these permissions via [Access Control List (ACL)](app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
@@ -25,7 +25,7 @@ Allows an application to obtain the list of installed applications.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 10
 
@@ -37,19 +37,19 @@ Allows an application to answer incoming calls.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 9
 
 ## ohos.permission.MANAGE_VOICEMAIL
 
-Allows an application to access messages in the voice mailbox.
+Allows an application to manage messages in the voice mailbox.
 
 **Permission level**: system_basic
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -61,7 +61,7 @@ Allows an application to read call logs.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -73,7 +73,7 @@ Allows an application to read cell broadcast messages received by the device.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -85,7 +85,7 @@ Allows an application to read messages.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -97,7 +97,7 @@ Allows an application to receive and process MMS messages.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -109,7 +109,7 @@ Allows an application to receive and process SMS messages.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -121,7 +121,7 @@ Allows an application to receive and process WAP messages.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -133,7 +133,7 @@ Allows an application to send messages.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -145,6 +145,6 @@ Allows an application to add, remove, and edit call logs.
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8

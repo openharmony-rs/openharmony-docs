@@ -1,11 +1,11 @@
 # @ohos.events.emitter (Emitter)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:54:00.771Z pushedAt=2026-06-09T10:12:44.152Z -->
 
 The **Emitter** module provides the capabilities of sending and processing inter- or intra-thread events in a process. You can use the APIs of this module to subscribe to an event in persistent or one-shot manner, unsubscribe from an event, or emit an event to the event queue.
 
@@ -251,7 +251,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Example**
 
 ```ts
-// Unregister the callbacks of all events whose eventID is 1.
+// Unregister the callbacks of all events whose **eventId** is **1**.
 emitter.off(1);
 ```
 
@@ -276,8 +276,8 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Example**
 
 ```ts
-// Unregister the callbacks of all events whose event ID is eventId.
-emitter.off("eventId");
+// Unregister the callbacks of all events whose **eventId** is **eventId1**.
+emitter.off("eventId1");
 ```
 
 ## emitter.off<sup>10+</sup>
@@ -307,7 +307,7 @@ import { Callback } from '@kit.BasicServicesKit';
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 }
-// Unregister the callback of the event whose eventID is 1. The callback object must be the registered object.
+// Unregister the callbacks of all events whose **eventId** is **1**. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
 emitter.off(1, callback);
 ```
@@ -339,9 +339,9 @@ import { Callback } from '@kit.BasicServicesKit';
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 }
-// Unregister the callback of the event whose event ID is eventId. The callback object must be the registered object.
+// Unregister the callbacks of all events whose **eventId** is **eventId1**. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
-emitter.off("eventId", callback);
+emitter.off("eventId1", callback);
 ```
 
 ## emitter.off<sup>12+</sup>
@@ -385,9 +385,9 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
     eventData?.data?.printCount();
   }
 }
-// Unregister the callback of the event whose event ID is eventId. The callback object must be the registered object.
+// Unregister the callbacks of all events whose **eventId** is **eventId1**. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
-emitter.off("eventId", callback);
+emitter.off("eventId1", callback);
 ```
 
 ## emitter.emit
@@ -648,7 +648,7 @@ Describes an event to subscribe to or emit. The **EventPriority** settings do no
 
 ## EventData
 
-Describes the data carried by the emitted event.
+Describes data passed in the event.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -680,7 +680,7 @@ Describes the generic data carried by the emitted event.
 
 | Name    | Type                           | Read Only| Optional| Description          |
 | -------- | ------------------------------- | ---- | ---- | -------------- |
-| data | T | No  | Yes  | Data carried by the emitted event. **T**: generic type.|
+| data | T | No  | Yes  | Data passed in the event. **T**: generic type.|
 
 
 ## Emitter<sup>22+</sup>

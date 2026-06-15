@@ -1,16 +1,16 @@
 # Repeat: Reusing Components for Repeated Content Rendering
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liubihao-->
+<!--Owner: @maorh-->
 <!--Designer: @keerecles-->
-<!--Tester: @TerryTsao-->
+<!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 > 
 > - **Repeat** is supported since API version 12.
 > 
-> - This topic serves as a development guide. For details about the component API specifications, see [Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md).
+> - This topic serves as a development guide. For details about the component API specifications, see [Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md) API parameter description.
 > 
 > - The running effect in this topic may be different from the actual effect because the screen width and height vary with devices.
 
@@ -34,11 +34,10 @@ This topic describes the [basic features](#basic-features), [advanced features](
 ## Constraints
 
 - **Repeat** must be used within scrollable container components. Only the following components support lazy loading with **Repeat**: [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), [ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md), [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md), [Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md).<br>
-Each iteration can only create one child component, which must be compatible with its parent container. For example, when **Repeat** is used with the [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) component, the child component must be [ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md).
+Each iteration can only create one child component, which must be compatible with its parent container. For example, when **Repeat** is used with the [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) component, the child component must be the [ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md) or [ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) component.
 - The [lazy loading mode](#lazy-loading-capability) does not support integration with [state management V1](../state-management/arkts-state-management-overview.md#state-management-v1). Failure to comply may result in rendering anomalies.
-- Currently, **Repeat** does not support animations.
 - A scrollable container component can contain only one **Repeat**. For example, in a **List** component, avoid mixing **ListItem**, **ForEach**, **LazyForEach**, or multiple **Repeat** components simultaneously.
-- When **Repeat** is used together with a custom component or [@Builder](../state-management/arkts-builder.md) function, the parameter of the **RepeatItem** type must be passed as a whole to the component for data changes to be detected. For details, see [Using Repeat with @Builder](#using-repeat-with-builder).
+- When **Repeat** is used together with a custom component or [@Builder](../state-management/arkts-builder.md) function, the parameter of the **RepeatItem** type must be passed as a whole to the component for data changes to be detected. For details, see [State Variables Not Refreshed When Using Repeat with @Builder](#state-variables-not-refreshed-when-using-repeat-with-builder).
 - The [aboutToRecycle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10) and [aboutToReuse](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callbacks are not triggered when **Repeat** child components are reused.
 
 > **NOTE**
@@ -214,14 +213,14 @@ struct Index {
               Text(obj.item.str).fontSize(50)
             }
           })
-          .key(item => item.str) // The UI is refreshed based on the str attribute. It is recommended to return a stable value in the key generation function. Note that key generation is independent of the item index.
+          .key(item => item.str) // The UI is refreshed based on the str property. It is recommended to set it as the return value in the key generation function. Note that key generation is independent of the item index.
       }
     }
   }
 }
 ```
 
-In the preceding sample code, the key value generation function is defined using **.key()**. Each child component's key is derived from the **str** attribute of the **item** object.
+In the preceding sample code, the key generation function is defined using **.key()**. Each child component's key is derived from the **str** property of the **item** object.
 
 ### Lazy Loading Capability
 
@@ -295,7 +294,7 @@ The following uses the scrolling scenario and data update scenario after the ini
 
    Perform the following array update operations based on the previous section: Delete the node whose index is 4 and change **07** to **new**.
 
-   1. After deleting node whose index is 4, node **05** shifts forward. According to template calculation rules, the new node **05** now has template type **aa**. It directly reuses the old node 04, updates data item and index, and adds the old node **05** to the **bb** cache pool.<br>
+   1. After deleting node whose index is 4, node **05** shifts forward. According to calculation rules, the template type of the new node **05** now changes to **aa**. It directly reuses old node **04**, updates the data item and index, and adds the old node **05** to the **bb** cache pool.<br>
    2. The subsequent nodes move leftwards, with the newly entering node **11** reusing an idle node in the **bb** cache pool, while other nodes only receive index updates.<br>
    3. When the node data changes from **07** to **new**, the page detects the data source update and triggers re-rendering. The re-rendering logic in **Repeat** checks whether the node data item at the current index has changed. If only the key value changes but the item remains the same, the UI is not refreshed.
 
@@ -441,7 +440,7 @@ struct RepeatLazyLoadingLongData {
       .height('80%')
       .border({ width: 1 })
 
-      // Navigate to the position at index 500. Data can be automatically obtained through lazy loading.
+      // Jump to the position at index 500. Data can be automatically obtained through lazy loading.
       Button('ScrollToIndex 500')
         .onClick(() => {
           this.scroller.scrollToIndex(500);
@@ -511,8 +510,8 @@ This example shows how to implement infinite lazy loading of data by using lazy 
 
 > **NOTE**
 >
-> - In this scenario, you need to provide the initial data required for the first screen display and set **cachedCount** to a value greater than 0 for the parent container component. Otherwise, rendering exceptions will occur.
-> - Avoid using the **onLazyLoading** method together with the loop mode of **Swipe**. Otherwise, staying at **index = 0** will trigger continuous **onLazyLoading** calls.
+> - In this scenario, you need to provide the initial data required for the first screen display, and you are advised to set the parent container component [cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount) to be greater than 0; otherwise, rendering exceptions will occur.
+> - If this mode is used together with the [Swiper-Loop](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#loop) mode, staying at **index = 0** will cause the **onLazyLoading** method to be continuously triggered. Therefore, you are advised not to use these two modes together.
 > - Pay special attention to the memory usage to avoid excessive memory consumption caused by continuous data loading.
 
 <!-- @[repeat_lazy_loading_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading3.ets) -->
@@ -700,6 +699,115 @@ In the example, insertions or deletions above the viewport cause only index upda
 The figure below shows the effect.
 
 ![Repeat-pre-insert-preserve](figures/repeat-pre-insert-preserve.gif)
+
+### animateTo Animation
+
+Since API version 24, when the parent container component is a [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), the **Repeat** component can use the [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API to set transition animation effects for its child components within the display area.
+
+The rules for determining the transition animation of a **Repeat** child component are as follows:
+1. When a child component enters the visible area and preload area from outside, it is considered as an inserted component.
+2. When a child component leaves the display area and the preload area from within, it will be determined as a deleted component (lazy loading mode only).
+3. When a child component is updated and the key value changes, the old component is deleted and a new component is inserted.
+4. If a child component is deleted and then reinserted before the transition animation ends, it is considered as a new component, and the original transition animation is not affected.
+5. When a child component in the transition animation slides out of the display area and the preloading area, the animation ends directly (only in lazy loading mode).
+
+> **NOTE**
+>
+> - This attribute can only be used with the **List** component. When used with other container components, the animation effect is undefined.
+> - Only the animation effect of child components within the display area is supported. The animation effect of child components outside the display area is undefined.
+> - For details about how to set the transition animation and animation effect, see the [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) API.
+
+**Example**
+
+<!-- @[repeat_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatAnimation.ets) -->
+
+``` TypeScript
+
+@Entry
+@ComponentV2
+struct RepeatAnimationDemo {
+  @Local dataArray: ItemInfo[] = [];
+  private count: number = 0;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 5; i++) {
+      this.dataArray.push(new ItemInfo(`Item ${i}`, `#FFFFFF`));
+    }
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Row({ space: 5 }) {
+        Button('Add')
+          .onClick(() => {
+            // Set an animation for inserting a child component.
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 0, new ItemInfo(`New item ${this.count++}`, `#FFFFFF`))
+            })
+          })
+        Button('Delete')
+          .onClick(() => {
+            // Set an animation for deleting a child component.
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 1)
+            })
+          })
+        Button('Exchange')
+          .onClick(() => {
+            // Set an animation for swapping child components.
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              let temp = this.dataArray[1];
+              this.dataArray[1] = this.dataArray[0]
+              this.dataArray[0] = temp;
+            })
+          })
+        Button('Update')
+          .onClick(() => {
+            // Set an animation for updating a child component.
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray[0].info = 'Item updated';
+              this.dataArray[0].color = '#86C5E3';
+            })
+          })
+      }
+      List({ space: 5 }) {
+        Repeat(this.dataArray)
+          .each((repeatItem) => {
+            ListItem() {
+              Text(repeatItem.item.info)
+            }
+            .backgroundColor(repeatItem.item.color)
+            .width(150)
+            .height(50)
+            .border({ width: 1 })
+            // Set transition effects used when a child component is inserted or removed.
+            .transition(TransitionEffect.translate({ x: 300 }))
+          })
+          .key((item: ItemInfo, index: number) => item.key)
+          .virtualScroll()
+      }
+      .alignListItem(ListItemAlign.Center)
+    }
+    .width('100%')
+  }
+}
+
+@ObservedV2
+class ItemInfo {
+  @Trace public info: string;
+  @Trace public color: string;
+  public key: string;
+  constructor(info: string, color: string) {
+    this.info = info;
+    this.color = color;
+    this.key = info;
+  }
+}
+```
+
+The figure below shows the effect.
+
+![Repeat-animation](figures/repeat-animation.gif)
 
 ## Use Cases
 
@@ -1250,7 +1358,7 @@ Here network latency is simulated with a 1-second delay for image loading.
 
 In the following example, changes to off-screen data affect the scroll position of the [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) component.
 
-When a **Repeat** component is declared within a **List** component (as shown in the code below), clicking the insert button adds an element before the first visible item, causing the list to scroll downward unexpectedly.
+When a **Repeat** component is declared within a **List** component to implement the key generation logic and each logic (as shown in the code below), clicking the insert button adds an element before the first visible item, causing the list to scroll downward unexpectedly.
 
 <!-- @[repeat_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatTemplateSingle.ets) -->
 
@@ -1498,7 +1606,7 @@ The figure below shows the effect.
 
 ![repeat-case2-succ](figures/repeat-case2-succ.gif)
 
-### Using Repeat with @Builder
+### State Variables Not Refreshed When Using Repeat with @Builder
 
 When **Repeat** is used together with [@Builder](../state-management/arkts-builder.md), if only **RepeatItem.item** or **RepeatItem.index** is passed, the parameter value change does not trigger UI update within the @Builder function. To ensure the component responds to data changes, it is advised to [pass parameters by reference](../state-management/arkts-builder.md#by-reference-parameter-passing). Specifically, pass the entire **RepeatItem** object so that the component can observe changes to its internal state. Since API version 20, you can also use the [UIUtils.makeBinding()](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20) function, along with the [Binding](../../reference/apis-arkui/js-apis-stateManagement.md#bindingt20) and [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) classes, to update state variables within the @Builder function.
 

@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ## 概述
@@ -166,7 +166,7 @@ int FibCppExec()
     int y;
     Fib(FIB_NUM, y);
     std::cout << "Fibonacci(5) is " << y << std::endl;
-    OH_LOG_INFO(LOG_APP, "Fibonacci(5) is %{pubilc}d", y);
+    OH_LOG_INFO(LOG_APP, "Fibonacci(5) is %{public}d", y);
     return y;
 }
 ```

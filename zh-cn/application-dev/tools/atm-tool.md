@@ -116,24 +116,24 @@ atm toggle -u -o -i 0
 
 <!--RP1-->
 ```bash
-atm dump [-h] [-t [-i <token-id>] [-b <bundle-name>] [-n <process-name>]] [-r [-i <token-id>] [-p <permission-name>]] [-v [-i <token-id>] [-p <permission-name>]]
+atm dump [-h] [-d [-p <permission-name>]] [-t [-i <token-id>] [-b <bundle-name>] [-n <process-name>]] [-r [-i <token-id>] [-p <permission-name>]] [-v [-i <token-id>] [-p <permission-name>]]
 ```
 <!--RP1End-->
 
-下表所列命令中，-t<!--Del-->、-r、-v<!--DelEnd-->为必选参数，-i、-b、-n、-p为可选参数。<!--Del-->对atm dump -r和atm dump -v命令，-i和-p参数可以组合使用；<!--DelEnd-->对atm dump -t命令，-i、-b、-n参数只能单独使用。
+下表所列命令中，-d、-t<!--Del-->、-r、-v<!--DelEnd-->为必选参数，-i、-b、-n、-p为可选参数。<!--Del-->对atm dump -r和atm dump -v命令，-i和-p参数可以组合使用；<!--DelEnd-->对atm dump -t命令，-i、-b、-n参数只能单独使用。
 
 | 参数                                          | 参数说明                                                 | 
 | ----------------------------------------------- | ---------------------------------------------------- | 
+| -h                                     | 帮助信息。                              | 
 | -d                                     | 必选参数，查询系统中所有的权限定义。                               | 
 | -d&nbsp;-p \<permission-name\>              | 可选参数，通过权限名，查询权限定义。                              | 
-| -h                                     | 帮助信息。                              | 
 | -t                                     | 必选参数，查询系统中所有应用进程信息。                             | 
-| -t&nbsp;-i \<token-id\>                     | 可选参数，通过应用进程的tokenid，查询该应用的基本信息以及对应的[权限信息](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。             | 
-| -t&nbsp;-b \<bundle-name\>                  |  可选参数，通过应用进程的包名bundle-name，查询该应用的基本信息以及对应的[权限信息](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。     | 
-| -t&nbsp;-n \<process-name\>                 |  可选参数，通过应用进程的进程名process-name，查询该应用的基本信息以及对应的[权限信息](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。  |
-| <!--DelRow-->-r                        |  必选参数，查询系统内的所有[权限使用记录](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。                           | 
-| <!--DelRow-->-r&nbsp;-i \<token-id\>        | 可选参数，通过应用进程的tokenid，查询该应用的[权限使用记录](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。        | 
-| <!--DelRow-->-r&nbsp;-p \<permission-name\> | 可选参数，通过权限名，查询该权限的[使用记录](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。                        |
+| -t&nbsp;-i \<token-id\>                     | 可选参数，通过应用进程的tokenid，查询该应用的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。             | 
+| -t&nbsp;-b \<bundle-name\>                  |  可选参数，通过应用进程的包名bundle-name，查询该应用的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。     | 
+| -t&nbsp;-n \<process-name\>                 |  可选参数，通过应用进程的进程名process-name，查询该应用的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。  |
+| <!--DelRow-->-r                        |  必选参数，查询系统内的所有[PermissionUsedResponse](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。                           | 
+| <!--DelRow-->-r&nbsp;-i \<token-id\>        | 可选参数，通过应用进程的tokenid，查询该应用的[PermissionUsedResponse](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。        | 
+| <!--DelRow-->-r&nbsp;-p \<permission-name\> | 可选参数，通过权限名，查询该权限的[PermissionUsedResponse](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。                        |
 | <!--DelRow-->-v                                     | 必选参数，查询系统中所有应用进程的权限使用类型。                    | 
 | <!--DelRow-->-v&nbsp;-i \<token-id\>                     | 可选参数，通过应用进程的tokenid，查询该应用的权限使用类型。         | 
 | <!--DelRow-->-v&nbsp;-p \<permission-name\>              | 可选参数，通过权限名，查询该权限的使用类型。                        | 

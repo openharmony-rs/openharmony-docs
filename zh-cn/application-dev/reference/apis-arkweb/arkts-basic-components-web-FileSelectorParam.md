@@ -6,7 +6,13 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件获取文件对象。示例代码参考[onShowFileSelector事件](./arkts-basic-components-web-events.md#onshowfileselector9)。
+FileSelectorParam是ArkWeb组件中的文件选择器参数类，用于获取Web页面中`<input type="file">`触发文件选择请求时的相关参数信息，包括文件选择模式、文件过滤类型、MIME类型、建议文件名、默认起始路径等。
+
+当Web页面发起文件选择请求时，开发者通过FileSelectorParam获取前端传递的完整参数信息，据此构建与前端需求匹配的自定义文件选择器，确保文件选择的模式、类型过滤、命名等行为与HTML规范一致。
+
+在Web组件中需要自定义处理文件上传请求的场景下使用。开发者通过注册`onShowFileSelector`回调拦截文件选择请求，从回调事件的`fileSelector`属性获取FileSelectorParam实例，读取参数后构建对应的系统文件选择器（如DocumentViewPicker、PhotoViewPicker等），并将选择结果通过FileSelectorResult返回给Web组件。
+
+示例代码参考[onShowFileSelector](./arkts-basic-components-web-events.md#onshowfileselector9)。
 
 > **说明：**
 >
@@ -78,7 +84,7 @@ isCapture(): boolean
 
 | 类型      | 说明           |
 | ------- | ------------ |
-| boolean | 返回是否调用多媒体能力。<br>true表示调用多媒体能力，false表示未调用多媒体能力。 |
+| boolean | 返回是否调用多媒体能力。<br>true表示需要调用摄像头或麦克风等多媒体设备来获取文件（如拍照或录音），false表示仅从存储设备中选择已有文件。|
 
 ## getMimeTypes<sup>18+</sup>
 
@@ -148,7 +154,7 @@ isAcceptAllOptionExcluded(): boolean
 
 | 类型      | 说明           |
 | ------- | ------------ |
-| boolean | 返回是否包含一个不应用任何文件类型过滤器的选项。<br>true表示不包含，false表示包含。 |
+| boolean | 返回是否排除“所有文件类型”选项。<br>true表示排除（不包含“所有文件类型”选项）。false表示不排除，开发者需要在文件选择器中添加“所有文件类型”选项。 |
 
 ## getAcceptableFileTypes<sup>23+</sup>
 

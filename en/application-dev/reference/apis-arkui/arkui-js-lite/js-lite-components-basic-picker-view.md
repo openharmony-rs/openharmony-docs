@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **\<picker-view>** component provides the view that shows an embedded scrollable selector on the screen.
+The **picker-view** component provides the view that shows an embedded scrollable picker on the screen.
 
 > **NOTE**
 >
@@ -18,67 +18,67 @@ The **\<picker-view>** component provides the view that shows an embedded scroll
 Not supported
 
 
-## Attributes
+## Properties
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| type | string | text | No| Type of the scrollable selector, which cannot be changed dynamically. Available values are as follows:<br>- **text**: text selector.<br>- **time**: time selector.|
+| type | string | text | No| Type of the picker, which cannot be changed dynamically. Available values are as follows:<br>- **text**: text picker.<br>- **time**: time picker.|
 | id | string | - | No| Unique ID of the component.|
 | style | string | - | No| Style declaration of the component.|
 | class | string | - | No| Style class of the component, which is used to refer to a style table.|
 | ref | string | - | No| Reference information of child elements, which is registered with the parent component on **$refs**.|
 
-Text selector (**type** is **text**)
+Text picker (**type** is **text**)
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| range | Array | - | No| Value range of the text selector.<br>Use data binding, for example, **range = {{data}}**, to specify the range. Declare the corresponding variable in the JavaScript: **data: ["15", "20", "25"]**.|
-| selected | string | 0 | No| Default value of the text selector. The value is the index of **range**.|
+| range | Array | - | No| Value range of the text picker.<br>Use the data binding mode, for example, range = {{data}}. Declare the corresponding variable **data: ["15", "20", "25"]** in JavaScript.|
+| selected | number | 0 | No| Default value of the text picker. The value is the index of **range**.|
 
-Time selector (**type** is **time**)
+Time picker (**type** is **time**)
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| selected | string | 00:00 | No| Default value of the time selector, in the format of HH:mm.<br>|
+| selected | string | 00:00 | No| Default value of the time picker, in the format of HH:mm.<br>|
 
 
 ## Events
 
-Text selector (**type** is **text**)
+Text picker (**type** is **text**)
 
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
-| change | { newValue: newValue, newSelected: newSelected } | Triggered when a value is specified for the text selector.|
+| change | {&nbsp;newValue:&nbsp;newValue,&nbsp;newSelected:&nbsp;newSelected&nbsp;} | Triggered when a value is specified for the text picker.|
 
-Time selector (**type** is **time**)
+Time picker (**type** is **time**)
 
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
-| change | { hour: hour, minute: minute} | Triggered when a value is specified for the time selector. |
+| change | {&nbsp;hour:&nbsp;hour,&nbsp;minute:&nbsp;minute} | Triggered when a value is specified for the time picker.<br>|
 
 
 ## Styles
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| color | &lt;color&gt; | \#808080      | No| Font color of a candidate item.|
-| font-size | &lt;length&gt; | 30px | No| Font size of a candidate item. The value is of the length type, in pixels.|
-| selected-color | &lt;color&gt; | \#ffffff | No| Font color of the selected item.|
-| selected-font-size | &lt;length&gt; | 38px | No| Font size of the selected item. The value is of the length type, in pixels.|
+| color | &lt;color&gt; | \#808080<br>| No| Font color of a candidate item.|
+| font-size | &lt;length&gt; | 30px<br>| No| Font size of a candidate item. The value is of the length type, in pixels.|
+| selected-color | &lt;color&gt; | \#ffffff<br>| No| Font color of the selected item.|
+| selected-font-size | &lt;length&gt; | 38px<br>| No| Font size of the selected item. The value is of the length type, in pixels.|
 | selected-font-family | string | HYQiHei-65S | No| Font type of the selected item.|
-| font-family | string | HYQiHei-65S | No| Font type of an item.|
-| width | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | - | No| Component width.<br>If this attribute is not set, the default value **0** is used. |
-| height | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | - | No| Component height.<br>If this attribute is not set, the default value **0** is used. |
-| padding | &lt;length&gt; | 0 | No| Shorthand attribute to set the padding for all sides.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
+| font-family | string | <br>HYQiHei-65S | No| Font type of an item.|
+| width | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | No| Component width.<br>If this attribute is not set, default value **0** is used.|
+| height | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | No| Component height.<br>If this attribute is not set, default value **0** is used.|
+| padding | &lt;length&gt; | 0 | No| Shorthand attribute to set all padding attributes.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
 | padding-[left\|top\|right\|bottom] | &lt;length&gt; | 0 | No| Left, top, right, and bottom padding.|
-| margin | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | 0 | No| Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
-| margin-[left\|top\|right\|bottom] | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | 0 | No| Left, top, right, and bottom margins.|
+| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No| Shorthand attribute to set margins for all sides in a declaration. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
+| margin-[left\|top\|right\|bottom] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No| Left, top, right, and bottom margins.|
 | border-width | &lt;length&gt; | 0 | No| Shorthand attribute to set the border width for all sides.|
-| border-color | &lt;color&gt; | black | No| Shorthand attribute to set the color for all borders.|
-| border-radius | &lt;length&gt; | - | No| Radius of round-corner borders.|
+| border-color | &lt;color&gt; | black | No| Shorthand attribute to set the border color for all sides.|
+| border-radius | &lt;length&gt; | - | No| Radius of border corners.|
 | background-color | &lt;color&gt; | - | No| Background color.|
-| display | string | flex | No| How and whether to display the box containing an element. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
-| [left\|top] | &lt;length&gt; \| &lt;percentage&gt;<sup>6+</sup> | - | No| Edge of the element.<br>- **left**: left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- **top**: top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element. |
+| display | string | flex | No| Whether to display a box containing the element and the layout for its child elements. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
+| [left\|top] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>6+</sup> | - | No| Offset of the element.<br>The **left** attribute specifies the left edge position of the element. This attribute defines the offset between the left edge of a positioned element and that of a block included in the element.<br>The **top** attribute specifies the top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
 
 ## Methods
 
@@ -95,7 +95,7 @@ Time selector (**type** is **time**)
   <text class="title">
     Selected: {{time}}
   </text>
-  <picker-view class="time-picker" type="time" selected="{{defaultTime}}" @change="handleChange"></picker-view>
+  <picker-view class="time-picker" type="time" ref="pickerViewObj" selected="{{defaultTime}}" @change="handleChange"></picker-view>
 </div>
 ```
 
@@ -142,14 +142,18 @@ export default {
     const minutes = date.getMinutes();
     return this.concat(hours, minutes);
   },
-
   fill(value) {
     return (value > 9 ? "" : "0") + value;
   },
-
   concat(hours, minutes) {
     return `${this.fill(hours)}:${this.fill(minutes)}`;
   },
+  onShow() {
+        this.$refs.pickerViewObj.rotation({focus: true})
+  },
+  onHide() {
+      this.$refs.pickerViewObj.rotation({focus: false})
+  }
 }
 ```
 

@@ -703,9 +703,10 @@ Obtains the connection status of a Bluetooth profile. The **ProfileId** paramete
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name      | Type       | Mandatory  | Description                                   |
 | --------- | --------- | ---- | ------------------------------------- |
-| profileId | [ProfileId](js-apis-bluetooth-constant.md#profileid) | No   | Bluetooth profile. If **ProfileId** is present, the connection status of the specified profile is returned. If **ProfileId** is not present, the connection status of all supported profiles is returned in the following order:<br>- If a profile is connected, [STATE_CONNECTED] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a profile is being connected, [STATE_CONNECTING] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a profile is being disconnected, [STATE_DISCONNECTING] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If none of the preceding conditions is met, [STATE_DISCONNECTED] (js-apis-bluetooth-constant.md#profileconnectionstate) is returned.|
+| profileId | [ProfileId](js-apis-bluetooth-constant.md#profileid) | No   | Bluetooth profile. If **ProfileId** is present, the connection status of the specified profile is returned. If **ProfileId** is not present, the connection status of all supported profiles is returned in the following order:<br>- If a profile is connected, [STATE_CONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a profile is being connected, [STATE_CONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If a profile is being disconnected, [STATE_DISCONNECTING](js-apis-bluetooth-constant.md#profileconnectionstate) is returned.<br>- If none of the preceding conditions is met, [STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate) is returned.|
 
 **Return value**
 
@@ -1299,7 +1300,7 @@ Unsubscribes from battery change events of the peer device.
 | Name     | Type                                 | Mandatory  | Description                                      |
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
 | type     | string                              | Yes   | Event type. The value **batteryChange** indicates the battery change event.  |
-| callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | No   | Callback to unregister.<br>If this parameter is specified, it must be the same as the callback in [connection.on('batteryChange')](#connectiononbatterychange12). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;[BatteryInfo](#batteryinfo12)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('batteryChange')](#connectiononbatterychange12). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -1391,7 +1392,7 @@ Unsubscribes from Bluetooth scan result reporting events.
 | Name     | Type                                 | Mandatory  | Description                                      |
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
 | type     | string                              | Yes   | Event type. The value **bluetoothDeviceFind** indicates a scan result reporting event.  |
-| callback | Callback&lt;Array&lt;string&gt;&gt; | No   | Callback to unregister.<br>If this parameter is specified, it must be the same as the callback in [connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;Array&lt;string&gt;&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('bluetoothDeviceFind')](#connectiononbluetoothdevicefind). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -1477,7 +1478,7 @@ Unsubscribes from Bluetooth pairing status change events.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value **bondStateChange** indicates a Bluetooth pairing status change event.    |
-| callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | No   | Callback to unregister.<br>If this parameter is specified, it must be the same as the callback in [connection.on('bondStateChange')](#connectiononbondstatechange). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;[BondStateParam](#bondstateparam)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('bondStateChange')](#connectiononbondstatechange). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -1564,7 +1565,7 @@ Unsubscribes from pairing request events.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value **pinRequired** indicates a pairing request event.            |
-| callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | No   | Callback to unregister.<br>If this parameter is specified, it must be the same as the callback in [connection.on('pinRequired')](#connectiononpinrequired). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('pinRequired')](#connectiononpinrequired). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -1653,7 +1654,7 @@ Unsubscribes from the Bluetooth device discovered.
 | Name     | Type                                 | Mandatory  | Description                                      |
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
 | type     | string                              | Yes   | Event type. The value **discoveryResult** indicates a scan result reporting event.  |
-| callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | No   | Callback to unregister.<br>If this parameter is specified, it must be the same as the callback in [connection.on('discoveryResult')](#connectionondiscoveryresult18). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;Array&lt;[DiscoveryResult](#discoveryresult18)&gt;&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is specified, it must be the same as the callback in [connection.on('discoveryResult')](#connectionondiscoveryresult18). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -1913,6 +1914,60 @@ try {
 }
 ```
 
+## connection.getVirtualAddressByHash<sup>24+</sup>
+
+getVirtualAddressByHash(algorithmType: HashAlgorithmType, hashValue: string): string
+
+Obtains the [virtual MAC address](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type) of a paired device based on the hash of its [actual MAC address](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type).
+
+When [HashAlgorithmType](#hashalgorithmtype24) is set to **HASH_ALGORITHM_SHA256**, the hash (a 64-digit hexadecimal value) is generated based on the actual MAC address in uppercase using the SHA-256 algorithm. The last 32 bits of the hash are used as the input. The letters in the hash are case insensitive.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name    | Type   | Mandatory | Description                                |
+| -------- | ------ | ---- | ----------------------------------- |
+| algorithmType | [HashAlgorithmType](#hashalgorithmtype24) | Yes  | Hash algorithm type.|
+| hashValue | string | Yes  | Hash value, for example, **c10b57deb2e1aafd255596e0d4fd6789**.|
+
+**Return value**
+
+| Type                                            | Description              |
+| ------------------------------------------------- | ------------------- |
+| string | Virtual MAC address of the device corresponding to the hash, for example, XX:XX:XX:XX:XX:XX. The returned address is in uppercase.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201     | Permission denied.                       |
+|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
+|2900003 | Bluetooth disabled.                 |
+|2900015 | Parameter format mismatch with specification.   |
+|2900016 | Device unpaired.   |
+|2900099 | Internal system error. For example, IPC error. Detailed error messages can be used to assist in locating the problem.                        |
+
+**Example**
+
+```js
+// If the queried actual address is 11:22:33:44:55:AA,
+// the corresponding 64-bit hash is d2204cb9b6d3d3962cc90fa54130efb4c10b57deb2e1aafd255596e0d4fd6789.
+// If HashAlgorithmType is set to HASH_ALGORITHM_SHA256, the last 32 bits of the hash are used.
+let hashValue: string = "c10b57deb2e1aafd255596e0d4fd6789";
+try {
+  let addr: string = connection.getVirtualAddressByHash(connection.HashAlgorithmType.HASH_ALGORITHM_SHA256, hashValue);
+} catch (err) {
+  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
 ## BondStateParam
 
 Defines the parameters for the pairing status.
@@ -2048,9 +2103,24 @@ Defines the device discovery result.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: 15%; 15%; 10%; 10%; 50%-->
 | Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
 | deviceId    | string      | No   | No   | Address of the discovered device.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual addresses of paired Bluetooth devices will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
 | rssi     | number      | No   | No   | Signal strength, in dBm.|
 | deviceName     | string      | No   | No   | Device name.|
 | deviceClass     | [DeviceClass](#deviceclass)      | No   | No   | Device class.|
+
+## HashAlgorithmType<sup>24+</sup>
+
+Enumerates the hash algorithm types.
+
+The hash algorithm is a mathematical function that performs complex calculations on input data to generate a unique and fixed-length string (hash value). It is commonly used in scenarios such as data integrity verification and digital signatures.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+| Name                | Value | Description    |
+| ------------------ | ---- | ------ |
+| HASH_ALGORITHM_SHA256        | 0    | SHA-256 hash algorithm.|

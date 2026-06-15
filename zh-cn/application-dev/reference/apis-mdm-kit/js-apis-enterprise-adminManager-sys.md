@@ -1,8 +1,8 @@
 # @ohos.enterprise.adminManager（admin权限管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -151,7 +151,7 @@ adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_
 
 enableAdmin(admin: Want, enterpriseInfo: EnterpriseInfo, type: AdminType, userId?: number): Promise\<void>
 
-激活当前/指定用户下指定的设备管理应用，其中超级管理应用仅能在管理员用户下被激活。使用promise异步回调。
+激活当前/指定用户下指定的设备管理应用，其中超级管理应用仅能在管理员用户下被激活。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -374,7 +374,7 @@ adminManager.disableSuperAdmin(bundleName, (err) => {
 
 disableSuperAdmin(bundleName: String): Promise\<void>
 
-根据bundleName将超级设备管理应用解除激活。使用promise异步回调。
+根据bundleName将超级设备管理应用解除激活。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -526,7 +526,7 @@ adminManager.isAdminEnabled(wantTemp, 100, (err, result) => {
 
 isAdminEnabled(admin: Want, userId?: number): Promise\<boolean>
 
-查询当前/指定用户下指定的设备管理应用是否被激活。使用promise异步回调。
+查询当前/指定用户下指定的设备管理应用是否被激活。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -627,7 +627,7 @@ adminManager.isSuperAdmin(bundleName, (err, result) => {
 
 isSuperAdmin(bundleName: String): Promise\<boolean>
 
-根据bundleName查询管理员用户下的超级设备管理应用是否被激活。使用promise异步回调。
+根据bundleName查询管理员用户下的超级设备管理应用是否被激活。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -677,7 +677,7 @@ adminManager.isSuperAdmin(bundleName).then((result) => {
 
 getSuperAdmin(): Promise\<Want>
 
-查询管理员用户下的超级设备管理应用。使用promise异步回调。
+查询管理员用户下的超级设备管理应用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -775,7 +775,7 @@ adminManager.setEnterpriseInfo(wantTemp, enterpriseInfo, (err) => {
 
 setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo): Promise\<void>
 
-设置设备管理应用的企业信息。使用promise异步回调。
+设置设备管理应用的企业信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.SET_ENTERPRISE_INFO
 
@@ -886,7 +886,7 @@ adminManager.getEnterpriseInfo(wantTemp, (err, result) => {
 
 getEnterpriseInfo(admin: Want): Promise&lt;EnterpriseInfo&gt;
 
-获取设备管理应用的企业信息，使用promise异步回调。
+获取设备管理应用的企业信息，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1111,7 +1111,7 @@ adminManager.unsubscribeManagedEvent(wantTemp, events, (err) => {
 
 unsubscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>): Promise\<void>
 
-取消订阅系统管理事件。使用promise异步回调。
+取消订阅系统管理事件。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -1289,7 +1289,7 @@ adminManager.authorizeAdmin(wantTemp, bundleName).then(() => {
 
 getAdmins(): Promise&lt;Array&lt;Want&gt;&gt;
 
-查询当前用户下的所有设备管理应用。使用promise异步回调。
+查询当前用户下的所有设备管理应用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

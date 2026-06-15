@@ -1,7 +1,7 @@
 # JSVM_CodeCache
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -13,6 +13,8 @@ typedef struct {...} JSVM_CodeCache
 ## 概述
 
 表示当id为JSVM_COMPILE_CODE_CACHE时，content的类型。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
 

@@ -7,14 +7,14 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-**FoldSplitContainer** is a layout container designed to manage regions for two-panel and three-panel arrangements on a foldable device across various states, including the expanded state, the semi-folded state, and the folded state.
+**FoldSplitContainer** is a layout container designed to manage two-panel and three-panel layout regions on foldable devices, covering expanded, hover and folded states.
 
 
 > **NOTE**
 >
 > - This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - By default, a two-panel layout is used when the window width is less than or equal to 600 vp. When the window width exceeds 600 vp, an extended area is supported alongside the top-bottom split layout. A semi-folded state layout can be triggered when the window width is greater than 600 vp and the device is in a horizontal, half-folded posture. In the semi-folded layout, visual avoidance for the screen crease area is applied, and the extended area cannot span across the crease. The extended area can also be configured not to display in the semi-folded state. For details, see [Example](#example)
+> - By default, a two-panel layout is used when the window width is less than or equal to 600 vp. When the window width exceeds 600 vp, an extended area is supported alongside the top-bottom split layout. A hover state layout can be triggered when the window width is greater than 600 vp and the device is in a horizontal, half-folded posture. In the hover layout, visual avoidance for the screen crease area is applied, and the extended area cannot span across the crease. The extended area can also be configured not to display in the hover state. For details, see [Examples](#examples).
 
 ## Modules to Import
 
@@ -32,7 +32,7 @@ FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&g
 
 Creates a **FoldSplitContainer** component to manage regions for two-panel and three-panel arrangements on a foldable device across various states, including the expanded state, the semi-folded state, and the folded state.
 
-**Decorator**: \@Component
+**Decorator**: [\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -40,14 +40,14 @@ Creates a **FoldSplitContainer** component to manage regions for two-panel and t
 
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| primary | Callback\<void> | Yes| @BuilderParam | Callback function for the primary region.|
-| secondary | Callback\<void> | Yes| @BuilderParam | Callback function for the extra region.|
-| extra | Callback\<void> | No| @BuilderParam | Callback function for the extra region. If this parameter is not provided, there is no corresponding region.|
-| expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | Yes| @Prop | Layout information for the expanded state.|
-| hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | Yes| @Prop | Layout information for the semi-folded state.|
-| foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | Yes| @Prop | Layout information for the folded state.|
-| animationOptions | [AnimateParam](ts-explicit-animation.md#animateparam) \| null | No| @Prop | Animation settings. The value **null** indicates that the animation is disabled.|
-| onHoverStatusChange | [OnHoverStatusChangeHandler](#onhoverstatuschangehandler) | No| - | Callback function triggered when the foldable device enters or exits the semi-folded state.|
+| primary | Callback\<void> | Yes| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the primary region.|
+| secondary | Callback\<void> | Yes| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the secondary region.|
+| extra | Callback\<void> | No| [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for the extra region. If this parameter is not provided, there is no corresponding region.|
+| expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | Yes| [\@Prop](../../../ui/state-management/arkts-prop.md) | Layout information for the expanded state.|
+| hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | Yes| [\@Prop](../../../ui/state-management/arkts-prop.md) | Layout information for the hover state.|
+| foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | Yes| [\@Prop](../../../ui/state-management/arkts-prop.md) | Layout information for the folded state.|
+| animationOptions | [AnimateParam](ts-explicit-animation.md#animateparam) \| null | No| [\@Prop](../../../ui/state-management/arkts-prop.md) | Animation settings. The value **null** indicates that the animation is disabled.|
+| onHoverStatusChange | [OnHoverStatusChangeHandler](#onhoverstatuschangehandler) | No| - | Callback invoked when the foldable device enters or exits the hover state.|
 
 ## ExpandedRegionLayoutOptions
 
@@ -66,7 +66,7 @@ Layout information for the expanded state.
 
 ## HoverModeRegionLayoutOptions
 
-Layout information for the semi-folded state.
+Layout information for the hover state.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -80,8 +80,8 @@ Layout information for the semi-folded state.
 
 > **NOTE**
 >
-> 1. In semi-folded state, the device contains an avoidance area, and layout calculations must account for the impact of this avoidance area on the overall layout.
-> 2. In semi-folded mode, the upper screen is dedicated to content display, and the lower screen is reserved for interaction.
+> 1. In the hover state, the device contains an avoidance area, and layout calculations must account for the impact of this avoidance area on the overall layout.
+> 2. In the hover state, the upper screen is dedicated to content display, and the lower screen is reserved for interaction.
 
 ## FoldedRegionLayoutOptions
 
@@ -109,7 +109,7 @@ Implements a handler for the **onHoverStatusChange** event.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| status | [HoverModeStatus](#hovermodestatus) | Yes| Callback function triggered when the foldable device enters or exits the semi-folded state.|
+| status | [HoverModeStatus](#hovermodestatus) | Yes| Callback invoked when the foldable device enters or exits the hover state.|
 
 ## HoverModeStatus
 
@@ -153,7 +153,7 @@ Enumerates the split ratios.
 | LAYOUT_3V2 | 1.5 | 3:2.|
 | LAYOUT_2V3 | 0.6666666666666666 | 2:3.|
 
-## Example
+## Examples
 
 ### Example 1: Setting Up a Two-Panel Layout
 
@@ -188,9 +188,11 @@ struct TwoColumns {
   build() {
     RelativeContainer() {
       FoldSplitContainer({
+        // Callback function for the primary region.
         primary: () => {
           this.privateRegion()
         },
+        // Callback function for the secondary region.
         secondary: () => {
           this.secondaryRegion()
         }
@@ -202,7 +204,7 @@ struct TwoColumns {
 }
 ```
 
-| Folded| Expanded| Semi-folded|
+| Folded| Expanded| Hover|
 | ----- | ------ | ------ |
 | ![](figures/foldsplitcontainer-1.png) | ![](figures/foldsplitcontainer-2.png) | ![](figures/foldsplitcontainer-3.png) |
 
@@ -249,12 +251,15 @@ struct ThreeColumns {
   build() {
     RelativeContainer() {
       FoldSplitContainer({
+        // Callback function for the primary region.
         primary: () => {
           this.privateRegion()
         },
+        // Callback function for the secondary region.
         secondary: () => {
           this.secondaryRegion()
         },
+        // Callback function for the extra region.
         extra: () => {
           this.extraRegion()
         }
@@ -266,23 +271,16 @@ struct ThreeColumns {
 }
 ```
 
-| Folded| Expanded| Semi-folded|
+| Folded| Expanded| Hover|
 | ----- | ------ | ------ |
 | ![](figures/foldsplitcontainer-4.png) | ![](figures/foldsplitcontainer-5.png) | ![](figures/foldsplitcontainer-6.png) |
 
-### Example 3: Setting Layout Information in Expanded State
+### Example 3: Configuring the Folded, Hover, and Expanded States of FoldSplitContainer
 
-This example illustrates how to configure **ExpandedRegionLayoutOptions** to set the layout information for a foldable screen when it is in the expanded state.
+This example demonstrates how to use [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions), [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions), and [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) to configure the layout information of the expanded, hover, and folded states of the foldable device. **MajorRegion**, **MinorRegion**, and **ExtraRegion** represent the primary, secondary, and extra regions divided by the component. These regions are implemented with the encapsulated **Region** component. **RadioOptions** stands for the encapsulated radio switch component, while **SwitchOption** refers to the encapsulated toggle switch component.
 
 ```ts
-import {
-  FoldSplitContainer,
-  PresetSplitRatio,
-  ExtraRegionPosition,
-  ExpandedRegionLayoutOptions,
-  HoverModeRegionLayoutOptions,
-  FoldedRegionLayoutOptions
-} from '@kit.ArkUI';
+import { FoldSplitContainer, PresetSplitRatio, ExtraRegionPosition, ExpandedRegionLayoutOptions, HoverModeRegionLayoutOptions, FoldedRegionLayoutOptions } from '@kit.ArkUI';
 
 @Component
 struct Region {
@@ -380,22 +378,26 @@ struct RadioOption {
 @Entry
 @Component
 struct Index {
+  // Layout configuration in the expanded state.
   @State expandedRegionLayoutOptions: ExpandedRegionLayoutOptions = {
     horizontalSplitRatio: PresetSplitRatio.LAYOUT_3V2,
     verticalSplitRatio: PresetSplitRatio.LAYOUT_1V1,
     isExtraRegionPerpendicular: true,
     extraRegionPosition: ExtraRegionPosition.TOP
   };
+  // Layout configuration in the hover state.
   @State foldingRegionLayoutOptions: HoverModeRegionLayoutOptions = {
     horizontalSplitRatio: PresetSplitRatio.LAYOUT_3V2,
     showExtraRegion: false,
     extraRegionPosition: ExtraRegionPosition.TOP
   };
+  // Layout configuration in the folded state.
   @State foldedRegionLayoutOptions: FoldedRegionLayoutOptions = {
     verticalSplitRatio: PresetSplitRatio.LAYOUT_1V1
   };
 
   @Builder
+  // Custom component in the primary region.
   MajorRegion() {
     Region({
       title: "Folded state settings",
@@ -403,7 +405,7 @@ struct Index {
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "Vertical split ratio in folded state",
+          label: "Vertical split ratio",
           value: this.foldedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {
@@ -442,14 +444,15 @@ struct Index {
   }
 
   @Builder
+  // Custom component in the secondary region.
   MinorRegion() {
     Region({
-      title: "Semi-folded state settings",
+      title: "Hover state settings",
       compBackgroundColor: "rgba(0, 255, 0, 0.1)"
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "Horizontal split ratio in semi-folded state",
+          label: "Horizontal split ratio",
           value: this.foldingRegionLayoutOptions.horizontalSplitRatio,
           options: [
             {
@@ -484,7 +487,7 @@ struct Index {
         })
 
         SwitchOption({
-          label: "Show extra region in semi-folded state",
+          label: "Show extra region",
           value: this.foldingRegionLayoutOptions.showExtraRegion,
           onChange: (checked) => {
             this.foldingRegionLayoutOptions.showExtraRegion = checked;
@@ -493,7 +496,7 @@ struct Index {
 
         if (this.foldingRegionLayoutOptions.showExtraRegion) {
           RadioOption({
-            label: "Extra region location in semi-folded state",
+            label: "Extra region location",
             value: this.foldingRegionLayoutOptions.extraRegionPosition,
             options: [
               {
@@ -526,6 +529,7 @@ struct Index {
   }
 
   @Builder
+  // Custom component in the expanded region.
   ExtraRegion() {
     Region({
       title: "Expanded state settings",
@@ -533,7 +537,7 @@ struct Index {
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "Horizontal split ratio in expanded state",
+          label: "Horizontal split ratio",
           value: this.expandedRegionLayoutOptions.horizontalSplitRatio,
           options: [
             {
@@ -568,7 +572,7 @@ struct Index {
         })
 
         RadioOption({
-          label: "Vertical split ratio in expanded state",
+          label: "Vertical split ratio",
           value: this.expandedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {
@@ -603,7 +607,7 @@ struct Index {
         })
 
         SwitchOption({
-          label: "Show extra region perpendicularly,"
+          label: "Show extra region perpendicularly",
           value: this.expandedRegionLayoutOptions.isExtraRegionPerpendicular,
           onChange: (checked) => {
             this.expandedRegionLayoutOptions.isExtraRegionPerpendicular = checked;
@@ -612,7 +616,7 @@ struct Index {
 
         if (!this.expandedRegionLayoutOptions.isExtraRegionPerpendicular) {
           RadioOption({
-            label: "Extra region location in expanded state",
+            label: "Extra region location",
             value: this.expandedRegionLayoutOptions.extraRegionPosition,
             options: [
               {
@@ -647,12 +651,15 @@ struct Index {
   build() {
     Column() {
       FoldSplitContainer({
+        // Callback function for the primary region.
         primary: () => {
           this.MajorRegion()
         },
+        // Callback function for the secondary region.
         secondary: () => {
           this.MinorRegion()
         },
+        // Callback function for the extra region.
         extra: () => {
           this.ExtraRegion()
         },
@@ -667,7 +674,7 @@ struct Index {
 }
 ```
 
-| Folded| Expanded| Semi-folded|
+| Folded| Expanded| Hover|
 | ----- | ------ | ------ |
 | ![](figures/foldsplitcontainer-7.png) | ![](figures/foldsplitcontainer-8.png) | ![](figures/foldsplitcontainer-11.png) |
 |               -                        | ![](figures/foldsplitcontainer-9.png) | ![](figures/foldsplitcontainer-12.png) |

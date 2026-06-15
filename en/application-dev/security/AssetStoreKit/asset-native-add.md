@@ -2,14 +2,15 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:14:58.932Z pushedAt=2026-06-03T09:32:29.182Z -->
 
 ## Available APIs
 
-You can use [OH_Asset_Add](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_add) to add an asset.
+You can refer to the API documentation for detailed instructions on the API for adding a critical asset: [OH_Asset_Add](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_add).
 
 The following table describes the attributes for adding an asset.
 
@@ -62,13 +63,15 @@ Add an asset with the password **demo_pwd**, alias **demo_alias**, and additiona
 For details about how to add an asset to a group, see [Adding an Asset to a Group](asset-native-group-access-control.md#adding-an-asset-to-a-group).
 
 1. Link the dynamic libraries in the CMake script.
+
    ```txt
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
 2. Include header files.
+
    <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    #include "napi/native_api.h"
    #include <string.h>
@@ -76,8 +79,9 @@ For details about how to add an asset to a group, see [Adding an Asset to a Grou
    ```
 
 3. Add an asset.
+
    <!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    static napi_value AddAsset(napi_env env, napi_callback_info info)
    {

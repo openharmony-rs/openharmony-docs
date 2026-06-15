@@ -1,10 +1,10 @@
 # ArkTS
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025; @xliu-huanwei-->
-<!--Designer: @weng-changcheng; @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @weng-changcheng; @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 - ArkTS APIs<!--arkts-arkts--> 
   - @arkts.collections (ArkTS Collections)<!--js-apis-arkts-collections-->

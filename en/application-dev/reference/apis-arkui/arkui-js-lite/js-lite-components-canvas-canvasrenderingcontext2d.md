@@ -5,6 +5,7 @@
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:26:43.400Z pushedAt=2026-06-05T12:07:26.084Z -->
 
 
 **CanvasRenderingContext2D** allows you to draw rectangles and text on a canvas.
@@ -196,7 +197,7 @@ Creates a drawing path.
 
   ```javascript
   ctx.beginPath();              
-  ctx.lineWidth = '6';
+  ctx.lineWidth = 6;
   ctx.strokeStyle = '#0000ff';
   ctx.moveTo(15, 80); 
   ctx.lineTo(280, 80);

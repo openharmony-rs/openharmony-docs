@@ -1,9 +1,9 @@
 # Color Inversion
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @demon_coffee-->
-<!--Tester: @demon_coffee-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 You can specify whether to enable the color inversion feature for a component. This feature automatically inverts or modifies color values during color mode (dark/light) transitions. You can disable the color inversion algorithm to maintain original color behavior during color mode transitions.
@@ -20,7 +20,9 @@ Sets whether to enable color inversion for the component.
 
 > **NOTE**
 >
-> When a component has color inversion disabled, both the component and all its child components will ignore color inversion capabilities, regardless of the settings on parent or ancestor components.
+> - When color inversion is disabled on a component, this feature remains inactive for the component and all its child components, regardless of the color inversion configuration of the parent, ancestor, and child components.
+>
+> - This API takes effect only when color inversion is enabled. For details about how to enable color inversion, see [Using Color Inversion for Quick Dark Mode Adaptation](../../../ui/ui-dark-light-color-adaptation.md#using-color-inversion-for-quick-dark-mode-adaptation).
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 

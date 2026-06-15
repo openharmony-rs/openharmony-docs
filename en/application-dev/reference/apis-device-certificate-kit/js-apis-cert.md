@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=a16dcd5380f352b729da625973de1c33bd7c6a2a translatedAt=2026-06-10T11:02:26.453Z pushedAt=2026-06-11T09:14:50.398Z -->
 
-The certificate algorithm library framework provides certificate-related APIs. The **certFramework** module depends on the basic algorithm capabilities of the Crypto framework. For details, see [Crypto Framework](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md).
+The **cert** module provides APIs for performing certificate operations. For details about the APIs for implementing the basic algorithm capabilities based on the cryptographic (crypto) framework, see [Crypto Framework](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md).
 
 > **NOTE**
 >
@@ -22,33 +23,34 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 ## CertResult
 
- Enumerates the error codes.
+ Enumerates the operation results.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
-| INVALID_PARAMS                        | 401      | Invalid parameters.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| NOT_SUPPORT                           | 801      | This operation is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                |
-| ERR_OUT_OF_MEMORY                     | 19020001 | Memory error.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                |
-| ERR_RUNTIME_ERROR                     | 19020002 | Runtime error.<br> **Atomic service API**: This API can be used in atomic services since API version 12.             |
-| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | Parameter check failed.<br> **Atomic service API**: This API can be used in atomic services since API version 20.              |
-| ERR_CRYPTO_OPERATION                  | 19030001 | Crypto operation error.<br> **Atomic service API**: This API can be used in atomic services since API version 12.     |
-| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | The certificate signature verification failed.<br> **Atomic service API**: This API can be used in atomic services since API version 12.          |
-| ERR_CERT_NOT_YET_VALID                | 19030003 | The certificate has not taken effect.<br> **Atomic service API**: This API can be used in atomic services since API version 12.             |
-| ERR_CERT_HAS_EXPIRED                  | 19030004 | The certificate has expired.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                 |
-| ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | Failed to obtain the certificate issuer.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
-| ERR_KEYUSAGE_NO_CERTSIGN              | 19030006 | The key cannot be used for signing a certificate.<br> **Atomic service API**: This API can be used in atomic services since API version 12. |
-| ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE     | 19030007 |  The key cannot be used for digital signature.<br> **Atomic service API**: This API can be used in atomic services since API version 12. |
-| ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | The password for the private key is incorrect.<br> **Atomic service API**: This API can be used in atomic services since API version 18.       |
+| INVALID_PARAMS                        | 401      | Invalid parameter.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                    |
+| NOT_SUPPORT                           | 801      | Unsupported operation.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                |
+| ERR_OUT_OF_MEMORY                     | 19020001 | Memory error.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                |
+| ERR_RUNTIME_ERROR                     | 19020002 | An external error occurs during running.<br> **Atomic service API:** This API can be used in atomic services since API version 12.             |
+| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | Parameter check failed.<br> **Atomic service API:** This API can be used in atomic services since API version 20.              |
+| ERR_CRYPTO_OPERATION                  | 19030001 | An error occurs when the API of a third-party algorithm library is called.<br> **Atomic service API:** This API can be used in atomic services since API version 12.     |
+| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | The certificate signature verification failed.<br> **Atomic service API:** This API can be used in atomic services since API version 12.          |
+| ERR_CERT_NOT_YET_VALID                | 19030003 | The certificate has not taken effect.<br> **Atomic service API:** This API can be used in atomic services since API version 12.             |
+| ERR_CERT_HAS_EXPIRED                  | 19030004 | The certificate has expired.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                 |
+| ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | Failed to obtain the certificate issuer.<br> **Atomic service API:** This API can be used in atomic services since API version 12.      |
+| ERR_KEYUSAGE_NO_CERTSIGN              | 19030006 | The key cannot be used for signing a certificate.<br> **Atomic service API:** This API can be used in atomic services since API version 12. |
+| ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE     | 19030007 |  The key cannot be used for digital signature.<br> **Atomic service API:** This API can be used in atomic services since API version 12. |
+| ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | The password for the private key is incorrect.<br> **Atomic service API:** This API can be used in atomic services since API version 18.       |
 
 ## DataBlob
 
 Encapsulates binary data. The core field **data** is of the Uint8Array type.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
+
 | Name          | Type          | Read-Only| Optional| Description             |
 | -------------- | -------------- | ---- | ---- | ----------------|
 | data           | Uint8Array     | No  | No  | Data.   |
@@ -57,9 +59,10 @@ Encapsulates binary data. The core field **data** is of the Uint8Array type.
 
 Defines a list of data arrays.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
+
 | Name          | Type          | Read-Only| Optional| Description              |
 | -------------- | -------------- | ---- | ---- | ----------------|
 | data           | Array\<Uint8Array>     | No  | No  | Data list.   |
@@ -68,104 +71,106 @@ Defines a list of data arrays.
 
  Enumerates the certificate encoding formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
-| FORMAT_DER | 0      | Distinguished Encoding Rules (DER) format.|
-| FORMAT_PEM | 1      | Privacy-Enhanced Mail (PEM) format.|
+| FORMAT_DER | 0      | DER format.|
+| FORMAT_PEM | 1      | PEM format.|
 | FORMAT_PKCS7<sup>11+</sup> | 2 | PKCS #7 format.|
 
 ## EncodingBaseFormat<sup>18+</sup>
 
  Enumerates the CSR encoding formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
-| PEM | 0      | Privacy-Enhanced Mail (PEM) format.|
-| DER | 1      | Distinguished Encoding Rules (DER) format.|
+| PEM | 0      | PEM format.|
+| DER | 1      | DER format.|
 
 ## CsrAttribute<sup>18+</sup>
+
  Defines the extension attributes for the CSR encoding format configuration.
 
-OpenSSL defines extension types, such as challengePassword and keyUsage.
+OpenSSL defines extension types, such as the challenge password and key usage.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | type | string | No  | No  | Extension type defined by OpenSSL.|
-| value | string | No  | No | Extended value.|
+| value | string | No  | No | Extension value.|
 
 ## CsrGenerationConfig<sup>18+</sup>
-Represents the configuration for generating a CSR using an RSA private key, including the subject, extension, message digest algorithm, and output format.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+Represents the configuration for generating a CSR using an RSA private key, including the subject, extension, message digest (MD) algorithm, and output format.
 
-**System capability**: SystemCapability.Security.Cert
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+**System capability:** SystemCapability.Security.Cert
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| subject | [X500DistinguishedName](#x500distinguishedname12) | No  | No  | Provides APIs for managing the **X500DistinguishedName** instance.|
-| mdName | string | No  | No  | MD algorithm to use.|
+| subject | [X500DistinguishedName](#x500distinguishedname12) | No  | No  | Object of the Name type defined by X.509.|
+| mdName | string | No  | No  | MD algorithm name.|
 | attributes | Array\<[CsrAttribute](#csrattribute18)> | No  | Yes  | Extension.|
-| outFormat | [EncodingBaseFormat](#encodingbaseformat18) | No  | Yes  | Output format.|
+| outFormat | [EncodingBaseFormat](#encodingbaseformat18) | No  | Yes  | Output type.|
 
 > **NOTE**
 >
-> - **subject** is an object of the Name type defined by X509.
+> - **subject** is an object of the Name type defined by X.509.
 >
-> - **mdName** specifies the message digest algorithm. Currently, SHA-1, SHA-256, SHA-384, and SHA-512 are supported.
+> - **mdName** specifies the MD algorithm. Currently, SHA-1, SHA-256, SHA-384, and SHA-512 are supported.
 >
-> - **attributes** is optional. You can specify the extension types and values defined in OpenSSL to generate a CSR, for example, **challengePassword** and **keyUsage**.
+> - **attributes** is optional. You can specify the extension types and values defined in OpenSSL to generate a CSR, such as the challenge password and key usage.
 >
-> - **outFormat** specifies the format of the CSR generated. If it is not specified, the PEM format is used by default.
+> - **outFormat** specifies the format of the CSR generated. If no value is set, the PEM format is used by default.
 
 ## CertItemType<sup>10+</sup>
 
- Enumerates the certificate fields that can be obtained.
+ Enumerates the certificate fields that can be obtained. 
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                            | Value  | Description                          |
 | -------------------------------- | ---- | ------------------------------ |
-| CERT_ITEM_TYPE_TBS               | 0    | Information to be signed.    |
+| CERT_ITEM_TYPE_TBS               | 0    | To be signed certificate.    |
 | CERT_ITEM_TYPE_PUBLIC_KEY        | 1    | Public key of the certificate.      |
 | CERT_ITEM_TYPE_ISSUER_UNIQUE_ID  | 2    | Unique ID of the certificate issuer.|
 | CERT_ITEM_TYPE_SUBJECT_UNIQUE_ID | 3    | Unique ID of the certificate subject.  |
-| CERT_ITEM_TYPE_EXTENSIONS        | 4    | Certificate extensions, each of which is identified by a unique object identifier (OID).    |
+| CERT_ITEM_TYPE_EXTENSIONS        | 4    | Certificate extensions.    |
 
 ## ExtensionOidType<sup>10+</sup>
 
- Enumerates the OID types of the certificate extensions that can be obtained.
+ Enumerates the object identifier (OID) types of the certificate extensions that can be obtained.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                         | Value  | Description                                         |
 | ----------------------------- | ---- | --------------------------------------------- |
-| EXTENSION_OID_TYPE_ALL        | 0    | All object identifiers.           |
-| EXTENSION_OID_TYPE_CRITICAL   | 1    | Object identifier whose **critical** is **true**. |
-| EXTENSION_OID_TYPE_UNCRITICAL | 2    | Object identifier whose **critical** is **false**.|
+| EXTENSION_OID_TYPE_ALL        | 0    | All OIDs of the certificate extensions.           |
+| EXTENSION_OID_TYPE_CRITICAL   | 1    | OID whose **critical** is **true** of the certificate extensions. |
+| EXTENSION_OID_TYPE_UNCRITICAL | 2    | OID whose **critical** is **false** of the certificate extensions.|
 
 ## ExtensionEntryType<sup>10+</sup>
 
  Enumerates the object types in certificate extensions that can be obtained.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                               | Value  | Description                        |
 | ----------------------------------- | ---- | ---------------------------- |
@@ -177,9 +182,9 @@ Represents the configuration for generating a CSR using an RSA private key, incl
 
  Enumerates the obtained encoding formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -191,15 +196,14 @@ Defines a certificate binary array in encoding format.
 
 ### Properties
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional| Description                          |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------ |
 | data           | Uint8Array                        | No  | No  | Certificate data.|
 | encodingFormat | [EncodingFormat](#encodingformat) | No  | No  | Certificate encoding format.            |
-
 
 ## CertChainData
 
@@ -207,56 +211,56 @@ Defines the certificate chain data, which is passed in as input parameters durin
 
 ### Properties
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | data           | Uint8Array                        | No  | No  | Certificate data, which is a combination of the certificate length (2 bytes) and data. For example, **08ABCDEFGH07ABCDEFG** indicates that the first certificate is an 8-byte certificate, followed by 8-byte certificate data. The second certificate is a 7-byte certificate, followed by 7-byte certificate data.|
-| count          | number                            | No  | No  | Number of certificates contained in the input data.                              |
+| count          | number                            | No  | No  | Number of certificates.                              |
 | encodingFormat | [EncodingFormat](#encodingformat) | No  | No  | Certificate encoding format.                                          |
 
 ## GeneralNameType<sup>12+</sup>
 
-Enumerates the types of the common name (CN), which uniquely identifies the subject of the certificate.
+Enumerates the types of the general name, which uniquely identifies the subject of the certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Value                             | Description              |
 | -------------- | --------------------------------- | ------------------ |
-| GENERAL_NAME_TYPE_OTHER_NAME | 0 |  Indicates others. |
-| GENERAL_NAME_TYPE_RFC822_NAME | 1 |  Indicates an email address. |
-| GENERAL_NAME_TYPE_DNS_NAME | 2 |  Indicates a DNS name. |
-| GENERAL_NAME_TYPE_X400_ADDRESS | 3 |  Indicates an X.400 address. |
-| GENERAL_NAME_TYPE_DIRECTORY_NAME | 4 |  Indicates a directory name. |
-| GENERAL_NAME_TYPE_EDI_PARTY_NAME | 5 |  Indicates an Electronic Data Interchange (EDI) entity. |
-| GENERAL_NAME_TYPE_UNIFORM_RESOURCE_ID | 6 |  Indicates a uniform resource identifier. |
-| GENERAL_NAME_TYPE_IP_ADDRESS | 7 |  Indicates an IP address. |
-| GENERAL_NAME_TYPE_REGISTERED_ID | 8 |  Indicates a registered object identifier. |
+| GENERAL_NAME_TYPE_OTHER_NAME | 0 |  Other name. |
+| GENERAL_NAME_TYPE_RFC822_NAME | 1 |  Email address. |
+| GENERAL_NAME_TYPE_DNS_NAME | 2 |  DNS name. |
+| GENERAL_NAME_TYPE_X400_ADDRESS | 3 |  X.400 address. |
+| GENERAL_NAME_TYPE_DIRECTORY_NAME | 4 |  Directory name. |
+| GENERAL_NAME_TYPE_EDI_PARTY_NAME | 5 |  Electronic Data Interchange (EDI) entity. |
+| GENERAL_NAME_TYPE_UNIFORM_RESOURCE_ID | 6 |  Uniform Resource Identifier (URI). |
+| GENERAL_NAME_TYPE_IP_ADDRESS | 7 |  IP address. |
+| GENERAL_NAME_TYPE_REGISTERED_ID | 8 |  Registered OID. |
 
 ## GeneralName<sup>12+</sup>
 
-Represents the CN information of a certificate.
+Indicates the general name of the certificate subject.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- |  ---- |------------------ |
-| type | [GeneralNameType](#generalname12)    | No| No| Type of the certificate subject. |
+| type | [GeneralNameType](#generalnametype12)    | No | No | Type of the certificate subject.  |
 | name | Uint8Array    | No |  Yes|DER format of the certificate subject. |
 
 ## X509CertMatchParameters<sup>11+</sup>
 
 Defines the parameters used to match a certificate. If no parameter is specified, all certificates are matched.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional| Description              |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
@@ -268,97 +272,97 @@ Defines the parameters used to match a certificate. If no parameter is specified
 | subject | Uint8Array | No | Yes|Certificate subject, in DER format.|
 | publicKey | [DataBlob](#datablob) | No | Yes|Public key of the certificate, in DER format.|
 | publicKeyAlgID | string | No | Yes|Algorithm of the certificate public key.|
-| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | No | Yes|Subject Alternative Names (SANs) of the certificate.|
-| matchAllSubjectAltNames<sup>12+</sup> | boolean | No | Yes|Whether to match all SANs of the certificate. **true**: yes; **false**: no.|
+| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | No | Yes|Certificate subject name.|
+| matchAllSubjectAltNames<sup>12+</sup> | boolean | No | Yes|Whether to match all subject names of the certificate. **true**: yes; **false**: no.|
 | authorityKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Key of the certificate authority (CA).|
-| minPathLenConstraint<sup>12+</sup> | number | No | Yes|Minimum length of the certification path (chain of trust) that can be built from the certificate to a trusted root CA.|
-| extendedKeyUsage<sup>12+</sup> | Array\<string> | No | Yes|Usage of the certificate.|
+| minPathLenConstraint<sup>12+</sup> | number | No | Yes|Path length of the CA certificate.|
+| extendedKeyUsage<sup>12+</sup> | Array\<string> | No | Yes|Usage of the extended key.|
 | nameConstraints<sup>12+</sup> | Uint8Array | No | Yes|Constraints on the subject names that can be included in certificates.|
-| certPolicy<sup>12+</sup> | Array\<string> | No | Yes|Certificate policy.|
+| certPolicy<sup>12+</sup> | Array\<string> | No | Yes|Certificate policy|
 | privateKeyValid<sup>12+</sup> | string | No | Yes|Validity period of the certificate private key.|
-| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Identifier of the public key of the certificate's subject.|
+| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Certificate public key.|
 
 ## X509CRLMatchParameters<sup>11+</sup>
 
 Represents the parameters used to match a certificate revocation list (CRL). If no parameter is specified, all CRLs are matched.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- | ---- | ------------------ |
-| issuer | Array\<Uint8Array> | No | Yes |Issuers of the certificates. At least one issuer must be matched.|
+| issuer | Array\<Uint8Array> | No | Yes |Issuer as the filter criteria. At least one issuer must be matched.|
 | x509Cert | [X509Cert](#x509cert) | No | Yes |Certificate object used to determine whether the certificate is in the CRL.|
 | updateDateTime<sup>12+</sup> | string | No | Yes |Certificate update time.|
-| maxCRL<sup>12+</sup> | bigint | No | Yes |Maximum number of CRLs.|
-| minCRL<sup>12+</sup> | bigint | No | Yes |Minimum number of CRLs.|
+| maxCRL<sup>12+</sup> | bigint | No  | Yes  |Maximum value of the CRL number. |
+| minCRL<sup>12+</sup> | bigint | No  | Yes  |Minimum value of the CRL number. |
 
 ## CertChainBuildParameters<sup>12+</sup>
 
-Represents the parameters for building a certificate chain.
+Defines the parameters for building a certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- | ---- | ------------------ |
 | certMatchParameters | [X509CertMatchParameters](#x509certmatchparameters11) | No | No |Filter criteria.|
 | maxLength | number | No | Yes |Maximum length of the CA certificate in the certificate chain.|
-| validationParameters | [CertChainValidationParameters](#certchainvalidationparameters11) | No| No|Parameters for certificate chain validation.|
+| validationParameters | [CertChainValidationParameters](#certchainvalidationparameters11) | No| No|Verification condition.|
 
 ## CertChainBuildResult<sup>12+</sup>
 
-Represents the certificate chain build result.
+Represents the result of building the certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
 | certChain | [X509CertChain](#x509certchain11) | Yes | No |Certificate chain object created.|
-| validationResult | [CertChainValidationResult](#certchainvalidationresult11) | Yes |  No |Result of the certificate chain validation.|
+| validationResult | [CertChainValidationResult](#certchainvalidationresult11) | Yes  |  No  |Certificate chain validation result. |
 
 ## X509TrustAnchor<sup>11+</sup>
 
 Represents an X.509 trust anchor, which is used to verify the certificate chain. The certificate or public key in the trust anchor is used as the trusted root to verify the certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name     | Type                 | Read-Only| Optional| Description                       |
 | --------- | --------------------- | ---- | ---- | --------------------------- |
 | CACert    | [X509Cert](#x509cert) | No  | Yes  | Trusted CA certificate. If **CACert** is set, only **CACert** is used to validate the certificate chain. **CAPubKey** and **CASubject** are not used.|
 | CAPubKey  | Uint8Array            | No  | Yes  | Public key of the trusted CA certificate, in DER format. This parameter takes effect only when **CACert** is not set.|
-| CASubject | Uint8Array            | No  | Yes  | Subject of the trusted CA certificate, in DER format. This parameter takes effect only when **CAPubKey** is set. The validation object is determined based on the **CAPubKey** type (self-signed or upper-level), and can be the subject or issuer of the root certificate.|
+| CASubject | Uint8Array            | No  | Yes  | Subject of the trusted CA certificate, in DER format. This parameter takes effect only when **CAPubKey** is set. The validation object is determined based on the CA public key type (self-signed or upper-level), and can be the subject or issuer of the root certificate.|
 | nameConstraints<sup>12+</sup> | Uint8Array      | No  | Yes  | Name constraints, in DER format. Only the leaf certificate of the current certificate chain is validated.|
 
 ## RevocationCheckOptions<sup>12+</sup>
 
  Enumerates the options for checking the certificate revocation status.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
-| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | Use OCSP over CRL (default).<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | Obtain the CRL/OCSP response over the network. By default, it is disabled. Only the first CRL distribution point address can be obtained from the CDP extension of the certificate to check the certificate revocation status, or the first OCSP server address can be obtained from the AIA extension of the certificate to check the certificate revocation status. Moreover, only HTTP is supported. You must declare the ohos.permission.INTERNET permission.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the alternative solution to be used to obtain the certificate revocation status if the preferred solution cannot be used due to network problems.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the locally configured CRL/OCSP response to be used to check the certificate revocation status if the online CRL/OCSP response cannot be used due to network problems.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. If this capability is enabled, the system continues to check the revocation status of the intermediate certificate if the OCSP or CRL check of the leaf certificate fails. This capability is disabled by default.<br>Note: This capability and **REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT** cannot be enabled at the same time.<br> **Atomic service API**: This API can be used in atomic services since API version 22. |
-| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | If this capability is enabled, the system checks the revocation status of the leaf certificate based on the local CRL. This capability is disabled by default.<br>Note: This capability and **REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE** cannot be enabled at the same time.<br> **Atomic service API**: This API can be used in atomic services since API version 22. |
-| REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | If this capability is enabled, the system ignores the network unreachable error when obtaining the CRL or OCSP response over the network for revocation status check. This capability is disabled by default. By default, the network unreachable error may cause certificate chain validation failure.<br> **Atomic service API**: This API can be used in atomic services since API version 23.|
+| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | Use OCSP over CRL (default).<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | Obtain the CRL/OCSP response over the network. By default, it is disabled. The certificate revocation status can be checked by obtaining the first CRL distribution point address from the CDP extension or the first OCSP server address from the AIA extension. Only HTTP is supported. You must declare the ohos.permission.INTERNET permission.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the alternative solution to be used to obtain the certificate revocation status if the preferred solution cannot be used due to network problems.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the locally configured CRL/OCSP response to be used to check the certificate revocation status if the online CRL/OCSP response cannot be used due to network problems.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows checking the revocation status of the intermediate certificate if the CRL/OCSP response cannot be used to check the revocation status of the end entity certificate. It is disabled by default.<br>Note: This option and **REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT** cannot be enabled at the same time.<br> **Atomic service API:** This API can be used in atomic services since API version 22. |
+| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | If this option is enabled, the response of a local CRL is used to check the revocation status of the end entity certificate. It is disabled by default.<br>Note: This option and **REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE** cannot be enabled at the same time.<br> **Atomic service API:** This API can be used in atomic services since API version 22. |
+| REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | If this option is enabled, the CRL/OCSP response obtained over the network is used to check the certificate revocation status, ignoring the unreachable network error. It is disabled by default. The unreachable network error may cause failure to verify the certificate chain.<br> **Atomic service API:** This API can be used in atomic services since API version 23.|
 
 ## ValidationPolicyType<sup>12+</sup>
 
  Enumerates the types of the online certificate chain validation policy.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
@@ -368,10 +372,10 @@ Represents an X.509 trust anchor, which is used to verify the certificate chain.
 ## KeyUsageType<sup>12+</sup>
 
  Enumerates the purposes, for which the key in the certificate is used.
- 
- **Atomic service API**: This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **Atomic service API:** This API can be used in atomic services since API version 12.
+
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
@@ -382,79 +386,65 @@ Represents an X.509 trust anchor, which is used to verify the certificate chain.
 | KEYUSAGE_KEY_AGREEMENT | 4 | The certificate holder can use the private key contained in the certificate to perform key agreement operations.|
 | KEYUSAGE_KEY_CERT_SIGN | 5 | The certificate holder can use the private key contained in the certificate to sign other certificates.|
 | KEYUSAGE_CRL_SIGN | 6 | The certificate holder can use the private key contained in the certificate to sign CRLs.|
-| KEYUSAGE_ENCIPHER_ONLY | 7 | The certificate holder can use the key to perform encryption operations only.|
-| KEYUSAGE_DECIPHER_ONLY | 8 | The certificate holder can use the key to perform decryption operations only.|
+| KEYUSAGE_ENCIPHER_ONLY | 7 | The certificate holder can use the key to perform encryption only.|
+| KEYUSAGE_DECIPHER_ONLY | 8 | The certificate holder can use the key to perform decryption only.|
 
 ## RevocationCheckParameter<sup>12+</sup>
 
 Represents the parameters for checking the certificate revocation status for a certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
 | ocspRequestExtension | Array\<Uint8Array> | No  | Yes  |OCSP request extensions.|
-| ocspResponderURI | string | No  | Yes  |URI of the alternative server used to send OCSP requests. HTTP and HTTPS are supported. The specific configuration is determined via the negotiation with the server.<br>Note: The URI takes effect only for the leaf certificate.|
+| ocspResponderURI | string | No  | Yes  |URI of the alternative server used to send OCSP requests. HTTP and HTTPS are supported. The specific configuration is determined via the negotiation with the server.<br>Note: The current URI takes effect only for entity certificates.|
 | ocspResponderCert | [X509Cert](#x509cert)  | No  | Yes  |Signing certificate used for verifying the signature of the OCSP response.|
 | ocspResponses | Uint8Array | No  | Yes  |Alternative OCSP responses.|
-| crlDownloadURI | string | No  | Yes  |Address used to download the CRLs.<br>Note: The URI takes effect only for the leaf certificate.|
+| crlDownloadURI | string | No  | Yes  |Alternative address used to download the CRLs.<br>Note: The current URI takes effect only for entity certificates.|
 | options | Array\<[RevocationCheckOptions](#revocationcheckoptions12)> | No  | Yes  |A set of rules for obtaining the certificate revocation status.|
-| ocspDigest | string | No  | Yes  |Hash algorithm used to create a certificate ID during OCSP communication. The options **MD5**, **SHA1**, **SHA224**, **SHA256**, **SHA384**, and **SHA512** are supported. The default value is **SHA256**.|
+| ocspDigest | string | No  | Yes  |Hash algorithm used to create a certificate ID during OCSP communication. The options include **MD5**, **SHA1**, **SHA224**, **SHA256**, **SHA384**, and **SHA512**. The default value is **SHA256**.|
 
 ## CertChainValidationParameters<sup>11+</sup>
 
 Represents the parameters for certificate chain validation.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| date         | string                                            | No  | Yes |Validity period of the certificate to validate.<br> **Atomic service API**: This API can be used in atomic services since API version 12.           |
-| trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | No  | No  |List of trusted anchors.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| trustSystemCa<sup>20+</sup>| boolean | No  | Yes |Whether to use the prebuilt CA certificate to validate the certificate chain. **true** means yes; **false** otherwise.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| allowDownloadIntermediateCa<sup>23+</sup>| boolean | No  | Yes |Whether to allow the application to download the missing intermediate CA certificate from the network.<br>**true** means yes; **false** otherwise. The default value is **false**.<br>The download address is obtained from the certificate AIA extension. Only HTTP is supported. To use the network for download, you need to request the **ohos.permission.INTERNET** permission. For details about the permission configuration, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).<br> **Atomic service API**: This API can be used in atomic services since API version 23.|
-| certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | No  | Yes |Check whether the certificate is in a CRL.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | No  | Yes |Parameters for checking the certificate revocation status online.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | No  | Yes |Type of the policy for certificate validation.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| sslHostname<sup>12+</sup> | string | No  | Yes |Host name in the certificate to be verified. This parameter must be used with **policy** together.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| keyUsage<sup>12+</sup>     | Array\<[KeyUsageType](#keyusagetype12)> | No  | Yes |Usage of the key in the certificate to be validated.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-
+| date         | string                                            | No  | Yes |Validity period of the certificate to validate.<br> **Atomic service API:** This API can be used in atomic services since API version 12.           |
+| trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | No  | No  |List of trusted anchors.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                    |
+| trustSystemCa<sup>20+</sup>| boolean | No  | Yes |Whether to use the prebuilt CA certificate to verify the certificate chain. **true**: yes; **false**: no.<br> **Atomic service API:** This API can be used in atomic services since API version 20.|
+| allowDownloadIntermediateCa<sup>23+</sup>| boolean | No  | Yes |Whether to allow downloading the missing intermediate CA certificate from the network.<br>**true**: yes; **false**: no. The default value is **false**.<br>The download address is obtained from the certificate AIA extension. Only HTTP is supported. To use the network for download, you need to request the ohos.permission.INTERNET permission. For details about the permission configuration, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).<br> **Atomic service API:** This API can be used in atomic services since API version 23.|
+| certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | No  | Yes |Whether the certificate is in the CRL.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | No  | Yes |Parameters for checking the certificate revocation status online.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | No  | Yes |Type of the policy for certificate validation.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| sslHostname<sup>12+</sup> | string | No  | Yes |Host name in the certificate to be verified. This parameter must be used with **policy** together.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| keyUsage<sup>12+</sup>     | Array\<[KeyUsageType](#keyusagetype12)> | No  | Yes |Usage of the key in the certificate to be validated.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
 
 ## CertChainValidationResult<sup>11+</sup>
 
 Represents the return value of certificate chain validation.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name       | Type                                 | Read-Only| Optional| Description          |
 | ----------- | ------------------------------------- | ---- | ---- | -------------- |
 | trustAnchor | [X509TrustAnchor](#x509trustanchor11) | Yes  | No  | Trust anchor.  |
 | entityCert  | [X509Cert](#x509cert)                 | Yes  | No  | Entity certificate.|
 
-## EncodingBaseFormat<sup>18+</sup>
-
-Enumerates the basic encoding formats.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
-**System capability**: SystemCapability.Security.Cert
-
-| Name| Value| Description              |
-| ---- | --- | ------------------ |
-| PEM  | 0   | PEM.     |
-| DER  | 1   | DER.     |
-
 ## Pkcs12Data<sup>18+</sup>
 
-Represents data of the parsed PKCS #12 (.p12) file.
+Represents the certificate, private key, and other certificates obtained after a PKCS #12 (.p12) file is parsed.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
@@ -466,15 +456,15 @@ Represents data of the parsed PKCS #12 (.p12) file.
 
 Represents the configuration for parsing .p12 files.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             |    Read-Only  | Optional| Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
 | password     | string                                            | No  | No  |Password of the .p12 file.            |
 | needsPrivateKey  | boolean                                       | No  | Yes  |Whether to obtain the private key. The default value is **true**.<br>**true**: To obtain the private key in PKCS #8 format; **false**: Not to obtain the private key.|
-| privateKeyFormat |  [EncodingBaseFormat](#encodingbaseformat18)                      | No  | Yes  |Format of the private key to be obtained. Currently, the PEM and DER formats are supported. If this parameter is not specified, the PEM format is used by default.<br>**Note**: This parameter is valid only when **needsPrivateKey** is set to **true**.|
+| privateKeyFormat |  [EncodingBaseFormat](#encodingbaseformat18)                      | No  | Yes  |Format of the private key to be obtained. Currently, the PEM and DER formats are supported. If this parameter is not specified, the PEM format is used by default.<br>Note: This parameter is valid only when **needsPrivateKey** is set to **true**.|
 | needsCert    | boolean                                           | No  | Yes  |Whether to obtain the certificate. The default value is **true**. **true**: yes; **false**: no.|
 | needsOtherCerts  | boolean                                       | No  | Yes  |Whether to obtain other certificates. The default value is **false**. **true**: yes; **false**: no.|
 
@@ -482,9 +472,9 @@ Represents the configuration for parsing .p12 files.
 
 Enumerates password-based encryption scheme (PBES) algorithms.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name      | Value  | Description         |
 | ----------| -------- | ---------------|
@@ -496,13 +486,13 @@ Enumerates password-based encryption scheme (PBES) algorithms.
 
 Enumerates PBES algorithm parameters. Currently, only PBES2 is supported.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             |    Read-Only  | Optional| Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| saltLen      | number                                            | No  | Yes  |Length of the salt value. The default value is **16**, and the minimum value is **8**.|
+| saltLen      | number                                            | No  | Yes  |Salt length. The default value is **16**, and the minimum value is **8**.|
 | iterations | number                                          | No  | Yes  |Number of iterations. The default value is **2048**.                      |
 | encryptionAlgorithm    | [PbesEncryptionAlgorithm](#pbesencryptionalgorithm21)                 | No  | Yes  |PBES algorithm type. The default value is **AES_256_CBC**.       |
 
@@ -510,9 +500,9 @@ Enumerates PBES algorithm parameters. Currently, only PBES2 is supported.
 
 Enumerates the PKCS #12 MAC digest algorithms.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
@@ -524,64 +514,64 @@ Enumerates the PKCS #12 MAC digest algorithms.
 
 Represents the configuration for creating .p12 files.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             |    Read-Only  | Optional| Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
 | password     | string                                            | No  | No  |Password of the .p12 file. The minimum length is 4.            |
 | keyEncParams | [PbesParams](#pbesparams21)                       | No  | Yes  |Algorithm parameters for encrypting the private key.                      |
-| encryptCert  | boolean                                           | No  | Yes  |Whether to encrypt the certificate. The default value is **true**. **true** means to encrypt the certificate; **false** otherwise.|
+| encryptCert  | boolean                                           | No  | Yes  |Whether to encrypt the certificate. **true**: yes; **false**: no. The default value is **true**.|
 | certEncParams | [PbesParams](#pbesparams21)                      | No  | Yes  |Algorithm parameters for encrypting the certificate.|
-| macSaltLen   | number                                            | No  | Yes  |Length of the salt value of the P12 MAC. The minimum value is **8**, and the default value is **16**.|
-| macIterations | number                                           | No  | Yes  |Number of P12 MAC iterations. The default value is **2048**.|
-| macDigestAlgorithm | [Pkcs12MacDigestAlgorithm](#pkcs12macdigestalgorithm21) | No  | Yes  |Enumerates the P12 MAC digest algorithms. The default value is **SHA256**.|
+| macSaltLen   | number                                            | No  | Yes  |Salt length of the PKCS #12 MAC algorithm. The minimum value is **8**, and the default value is **16**.|
+| macIterations | number                                           | No  | Yes  |Number of iterations for the PKCS #12 MAC algorithm. The default value is **2048**.|
+| macDigestAlgorithm | [Pkcs12MacDigestAlgorithm](#pkcs12macdigestalgorithm21) | No  | Yes  |PKCS #12 MAC digest algorithm. The default value is **SHA256**.|
 
 ## CmsContentType<sup>18+</sup>
 
 Enumerates the Cryptographic Message Syntax (CMS) message types.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
-| SIGNED_DATA | 0 | Signature data.<br> **Atomic service API**: This API can be used in atomic services since API version 18.|
-| ENVELOPED_DATA<sup>22+</sup>  | 1 | Encapsulated data.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| SIGNED_DATA | 0 | Signed data.<br> **Atomic service API:** This API can be used in atomic services since API version 18.|
+| ENVELOPED_DATA<sup>22+</sup>  | 1 | Enveloped data.<br> **Atomic service API:** This API can be used in atomic services since API version 22.|
 
 ## CmsContentDataFormat<sup>18+</sup>
 
 Enumerates the CMS message formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name  | Value| Description                    |
 | ------ | --- | ------------------------ |
-| BINARY | 0   | Binary.    |
-| TEXT   | 1   | Text.      |
+| BINARY | 0   | Binary data format.    |
+| TEXT   | 1   | Text data format.      |
 
 ## CmsFormat<sup>18+</sup>
 
 Enumerates the CMS signature formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name| Value| Description              |
 | ---- | --- | ------------------ |
-| PEM  | 0   | PEM.     |
-| DER  | 1   | DER.     |
+| PEM  | 0   | PEM format.     |
+| DER  | 1   | DER format.     |
 
 ## CmsRsaSignaturePadding<sup>22+</sup>
 
 Enumerates the RSA CMS signature padding modes.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
@@ -592,9 +582,9 @@ Enumerates the RSA CMS signature padding modes.
 
 Enumerates the digest algorithms of the CMS KeyAgree type.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
@@ -606,39 +596,39 @@ Enumerates the digest algorithms of the CMS KeyAgree type.
 
 Enumerates the symmetric algorithms of the CMS recipient.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
-| AES_128_CBC      | 0  | AES_128_CBC.    |
-| AES_192_CBC      | 1  | AES_192_CBC.    |
-| AES_256_CBC      | 2  | AES_256_CBC.    |
-| AES_128_GCM      | 3  | AES_128_GCM.    |
-| AES_192_GCM      | 4  | AES_192_GCM.    |
-| AES_256_GCM      | 5  | AES_256_GCM.    |
+| AES_128_CBC      | 0  | AES-128-CBC.    |
+| AES_192_CBC      | 1  | AES-192-CBC.    |
+| AES_256_CBC      | 2  | AES-256-CBC.    |
+| AES_128_GCM      | 3  | AES-128-GCM.    |
+| AES_192_GCM      | 4  | AES-192-GCM.    |
+| AES_256_GCM      | 5  | AES-256-GCM.    |
 
 ## CmsCertType<sup>22+</sup>
 
 Enumerates certificate types obtained from CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
-| SIGNER_CERTS      | 0  | Signer certificates.    |
+| SIGNER_CERTS      | 0  | Signer certificate.    |
 | ALL_CERTS         | 1  | All certificates.    |
 
 ## PrivateKeyInfo<sup>18+</sup>
 
-Represents the private key information.
+Represents information about the private key.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- | -------------------------------------- |
@@ -649,23 +639,23 @@ Represents the private key information.
 
 Represents the configuration of the CMS signer.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                                 |  Read-Only |  Optional |Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| mdName                | string             | No | No |Message digest algorithm, for example, **SHA384**. Currently, **SHA1**, **SHA256**, **SHA384**, and **SHA512** are supported.<br> **Atomic service API**: This API can be used in atomic services since API version 18.               |
-| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | No | Yes |Padding mode for an RSA signature. The default value is **PKCS1_PADDING**.<br>When this parameter is set to **PKCS1_PSS_PADDING**, **mdName** must be set to **SHA256**, **SHA384**, or **SHA512**.<br> **Note**: This parameter is valid only when the private key type of the signature is RSA.<br> **Atomic service API**: This API can be used in atomic services since API version 22.            |
-| addCert               | boolean            | No  | Yes |Whether to add a certificate. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.                           |
-| addAttr               | boolean            | No  | Yes|Whether to add the signature attribute. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.          |
-| addSmimeCapAttr       | boolean            | No  | Yes |Whether to add the SMIME capability to the CMS object. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.           |
+| mdName                | string             | No | No |Message digest algorithm, for example, **SHA384**. Currently, **SHA1**, **SHA256**, **SHA384**, and **SHA512** are supported.<br> **Atomic service API:** This API can be used in atomic services since API version 18.               |
+| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | No | Yes |Padding mode for an RSA signature The default value is **PKCS1_PADDING**.<br>When this parameter is set to **PKCS1_PSS_PADDING**, **mdName** must be set to **SHA256**, **SHA384**, or **SHA512**.<br> Note: This parameter is valid only when the signer private key is an RSA key.<br> **Atomic service API:** This API can be used in atomic services since API version 22.            |
+| addCert               | boolean            | No  | Yes |Whether to add a certificate. **true**: yes; **false**: no. The default value is **true**.<br> **Atomic service API:** This API can be used in atomic services since API version 18.                           |
+| addAttr               | boolean            | No  | Yes|Whether to add the signature attribute. **true**: yes; **false**: no. The default value is **true**.<br> **Atomic service API:** This API can be used in atomic services since API version 18.          |
+| addSmimeCapAttr       | boolean            | No  | Yes |Whether to add the S/MIME capability for CMS objects. **true**: yes; **false**: no. The default value is **true**.<br> **Atomic service API:** This API can be used in atomic services since API version 18.           |
 
 ## CmsKeyTransRecipientInfo<sup>22+</sup>
 
-Represents KeyTrans recipient information encapsulated in CMS data.
+Represents the recipient information for key transport encapsulated using CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description         |
 | --------------------- | ----------------------------- | ---- | ---- |------------- |
@@ -673,11 +663,11 @@ Represents KeyTrans recipient information encapsulated in CMS data.
 
 ## CmsKeyAgreeRecipientInfo<sup>22+</sup>
 
-Represents KeyAgree recipient information encapsulated in CMS data.
+Represents the recipient information for key agreement encapsulated using CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description            |
 | --------------------- | ----------------------------- | ---- | ---- |--------------- |
@@ -686,87 +676,87 @@ Represents KeyAgree recipient information encapsulated in CMS data.
 
 ## CmsRecipientInfo<sup>22+</sup>
 
-Represents recipient information encapsulated in CMS data.
+Represents the recipient information encapsulated using CMS.
 
 > **NOTE**
 >
-> At least one recipient needs to be set.
+> At least one recipient must be set.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description                                                  |
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
-| keyTransInfo     | [CmsKeyTransRecipientInfo](#cmskeytransrecipientinfo22)               | No  | Yes  |KeyTrans recipient information.  |
-| keyAgreeInfo             | [CmsKeyAgreeRecipientInfo](#cmskeyagreerecipientinfo22)                          | No  |Yes  | keyAgree recipient information.        |
+| keyTransInfo     | [CmsKeyTransRecipientInfo](#cmskeytransrecipientinfo22)               | No  | Yes  |Recipient information for key transport.  |
+| keyAgreeInfo             | [CmsKeyAgreeRecipientInfo](#cmskeyagreerecipientinfo22)                          | No  |Yes  | Recipient information for key agreement.        |
 
 ## CmsGeneratorOptions<sup>18+</sup>
 
 Represents the configuration for generating the CMS signing result.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description                                                  |
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
 | contentDataFormat     | [CmsContentDataFormat](#cmscontentdataformat18)               | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
 | outFormat             | [CmsFormat](#cmsformat18)                          | No  |Yes  | Format of the CMS data generated. The default value is **DER**.        |
-| isDetached     | boolean                            | No  |Yes  | Whether the final CMS data does not contain the raw data. The default value is **false**. **true**: raw data is contained; **false**: raw data is not contained.        |
+| isDetached     | boolean                            | No  |Yes  | Whether the CMS data generated contains raw data. **true**: yes; **false**: no. The default value is **false**.        |
 
 ## CmsVerificationConfig<sup>22+</sup>
 
 Represents CMS verification configuration.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description                                                  |
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
-| trustCerts        |Array\<[X509Cert](#x509cert)>                        | No  | No  |Trust certificate.<br> Note: You need to configure the trust certificates of all signers.  |
+| trustCerts        |Array\<[X509Cert](#x509cert)>                        | No  | No  |Trust certificate.<br> Note: You need to configure the trust certificates for all signers.  |
 | signerCerts       |Array\<[X509Cert](#x509cert)>                        | No  | Yes  |Signing certificate. This parameter is left empty by default.        |
-| contentData       |Uint8Array                                           | No  | Yes  |Content data. If the detached mode is used, you need to specify the plaintext data. This parameter can be left empty in attached mode.  |
+| contentData       |Uint8Array                                           | No  | Yes  |Content data. If the detached mode is used, you need to specify the plaintext data. This parameter is optional in attached mode.  |
 | contentDataFormat | [CmsContentDataFormat](#cmscontentdataformat18)     | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
 
 ## CmsEnvelopedDecryptionConfig<sup>22+</sup>
 
-Represents CMS decapsulation configuration.
+Represents configuration for decapsulation with CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                    | Type                         | Read-Only| Optional|Description                                                  |
 | -----------------------  | ----------------------------- | ---- | ---- |------------------------------------------------------ |
 | keyInfo                  |[PrivateKeyInfo](#privatekeyinfo18)             | No  | Yes  |Private key parameter. This parameter is left empty by default.  |
 | cert                     |[X509Cert](#x509cert)                           | No  | Yes  |Public key certificate. This parameter is left empty by default. |
-| encryptedContentData     |Uint8Array                                       | No  | Yes  |Encrypted content data used when the CMS does not contain the specified data. This parameter is left empty by default.  |
+| encryptedContentData     |Uint8Array                                       | No  | Yes  |Encrypted content data. If the CMS does not contain content data, you can specify the data. This parameter is left empty by default.  |
 | contentDataFormat        |[CmsContentDataFormat](#cmscontentdataformat18)  | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
 
 ## cert.createX509Cert
 
 createX509Cert(inStream : EncodingBlob, callback : AsyncCallback\<X509Cert>) : void
 
-Creates an **X509Cert** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 certificate object. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                      |
 | -------- | ------------------------------------- | ---- | -------------------------- |
 | inStream | [EncodingBlob](#encodingblob)         | Yes  | X.509 certificate serialization data.        |
-| callback | AsyncCallback\<[X509Cert](#x509cert)> | Yes  | Callback invoked to return the **X509Cert** instance created.|
+| callback | AsyncCallback\<[X509Cert](#x509cert)> | Yes  | Callback used to return the **X509Cert** instance created.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -817,11 +807,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 createX509Cert(inStream : EncodingBlob) : Promise\<X509Cert>
 
-Creates an **X509Cert** instance. This API uses a promise to return the result.
+Creates an X.509 certificate object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -833,13 +823,13 @@ Creates an **X509Cert** instance. This API uses a promise to return the result.
 
 | Type    | Description            |
 | ------- | ---------------- |
-| Promise\<[X509Cert](#x509cert)> | Returns the **X509Cert** instance created.|
+| Promise\<[X509Cert](#x509cert)> | Promise used to return the **X509Cert** instance created.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -887,7 +877,7 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
 
 ## X509Cert
 
-Provides APIs for X.509 certificate operations.
+Represents X.509 certificates.
 
 ### verify
 
@@ -895,9 +885,9 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 Verifies the certificate signature. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -910,7 +900,7 @@ Verifies the certificate signature. This API uses an asynchronous callback to re
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error.      |
@@ -979,9 +969,9 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 Verifies the certificate signature. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -999,7 +989,7 @@ Verifies the certificate signature. This API uses a promise to return the result
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error.      |
@@ -1061,21 +1051,21 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 Obtains the serialized X.509 certificate data. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                            |
 | -------- | --------------------------------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized X.509 certificate data obtained.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the serialized X.509 certificate data obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.                                     |
@@ -1135,9 +1125,9 @@ getEncoded() : Promise\<EncodingBlob>
 
 Obtains the serialized X.509 certificate data. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1149,7 +1139,7 @@ Obtains the serialized X.509 certificate data. This API uses a promise to return
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -1204,11 +1194,11 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
 
 getPublicKey() : cryptoFramework.PubKey
 
-Obtains the public key of this X.509 certificate.
+Obtains the public key of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1220,7 +1210,7 @@ Obtains the public key of this X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19030001 | crypto operation error.|
@@ -1276,23 +1266,23 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 checkValidityWithDate(date: string) : void
 
-Checks the validity period of this X.509 certificate.
+Checks the validity period of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type           | Mandatory| Description       |
 | -------- | -------------- | ---- | ---------- |
-| date     | string         | Yes  | Date in the ASN.1 format.|
+| date     | string         | Yes  | Date of the X.509 certificate to check, in ASN.1 format.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -1356,9 +1346,9 @@ getVersion() : number
 
 Obtains the X.509 certificate version.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1416,7 +1406,7 @@ Obtains the X.509 certificate serial number.
 >
 > This API is supported since API version 9 and deprecated since API version 10. Use [getCertSerialNumber](#getcertserialnumber10) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1471,9 +1461,9 @@ getCertSerialNumber() : bigint
 
 Obtains the X.509 certificate serial number.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1485,7 +1475,7 @@ Obtains the X.509 certificate serial number.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
 
@@ -1540,27 +1530,27 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerName() : DataBlob
 
-Obtains the X.509 certificate issuer.
+Obtains the X.509 certificate issuer name.
 
 > **NOTE**
 >
 > The obtained X.509 certificate issuer name contains a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                  |
 | --------------------- | ---------------------- |
-| [DataBlob](#datablob) | X.509 certificate issuer obtained.|
+| [DataBlob](#datablob) | X.509 certificate issuer name obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -1617,11 +1607,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerName(encodingType: EncodingType): string
 
-Obtains the issuer name of an X.509 certificate based on the encoding type.
+Obtains the X.509 certificate issuer name based on the encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -1639,7 +1629,7 @@ Obtains the issuer name of an X.509 certificate based on the encoding type.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -1710,21 +1700,21 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSubjectName(encodingType?: EncodingType) : DataBlob
 
-Obtains the subject of this X.509 certificate.
+Obtains the X.509 certificate subject name.
 
 > **NOTE**
 >
 > The obtained X.509 certificate subject name contains a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
-| encodingType | [EncodingType](#encodingtype12)     | No  |  Encoding type. If this parameter is set, the subject name in UTF-8 format is to be obtained. If this parameter is not set, the subject name in ASCII encoding format is obtained by default.<br>This parameter is available since API version 12. |
+| encodingType | [EncodingType](#encodingtype12)     | No  |  Encoding type. The value is UTF-8. If this parameter is not set, ASCII encoding is used by default.<br>This parameter can be set in versions later than API version 12. |
 
 **Return value**
 
@@ -1736,7 +1726,7 @@ Obtains the subject of this X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed.           |
 | 19020001 | memory malloc failed.                                     |
@@ -1800,11 +1790,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getNotBeforeTime() : string
 
-Obtains the start time of this X.509 certificate.
+Obtains the start time of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1816,7 +1806,7 @@ Obtains the start time of this X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -1873,11 +1863,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getNotAfterTime() : string
 
-Obtains the expiration time of this X.509 certificate.
+Obtains the expiration time of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1889,7 +1879,7 @@ Obtains the expiration time of this X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -1947,11 +1937,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignature() : DataBlob
 
-Obtains the signature data of this X.509 certificate.
+Obtains the signature data of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1963,7 +1953,7 @@ Obtains the signature data of this X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2021,23 +2011,23 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgName() : string
 
-Obtains the signing algorithm of this X.509 certificate.
+Obtains the name of the X.509 certificate signature algorithm.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| string | X.509 certificate signing algorithm obtained.|
+| string | Name of the X.509 certificate signature algorithm obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2095,11 +2085,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgOid() : string
 
-Obtains the object identifier (OID) of the X.509 certificate signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the object identifier (OID) of the X.509 certificate signature algorithm. OIDs are allocated by the ISO.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -2111,7 +2101,7 @@ Obtains the object identifier (OID) of the X.509 certificate signing algorithm. 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2168,23 +2158,23 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgParams() : DataBlob
 
-Obtains the signing algorithm parameters of this X.509 certificate.
+Obtains parameters of the X.509 certificate signature algorithm.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                    |
 | --------------------- | ------------------------ |
-| [DataBlob](#datablob) | X.509 certificate signing algorithm parameters obtained.|
+| [DataBlob](#datablob) | Parameters of the X.509 certificate signature algorithm obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.                                     |
@@ -2259,9 +2249,9 @@ getKeyUsage() : DataBlob
 
 Obtains the key usage of this X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -2273,7 +2263,7 @@ Obtains the key usage of this X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                    |
 | 19030001 | crypto operation error.|
@@ -2341,9 +2331,9 @@ getExtKeyUsage() : DataArray
 
 Obtains the usage of the extended key of this X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -2355,7 +2345,7 @@ Obtains the usage of the extended key of this X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2423,11 +2413,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getBasicConstraints() : number
 
-Obtains the basic constraints for obtaining this X.509 certificate.
+Obtaining basic constraints on the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -2480,27 +2470,27 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSubjectAltNames() : DataArray
 
-Obtains the Subject Alternative Names (SANs) of this X.509 certificate.
+Obtains the alternative subject names of the X.509 certificate.
 
 > **NOTE**
 >
-> The obtained SANs contain a string terminator.
+> The obtained alternative subject names of the X.509 certificate contain a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                   | Description                    |
 | ----------------------- | ------------------------ |
-| [DataArray](#dataarray) | SANs obtained.|
+| [DataArray](#dataarray) | Alternative subject names of the X.509 certificate obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2568,27 +2558,27 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerAltNames() : DataArray
 
-Obtains the Issuer Alternative Names (IANs) of this X.509 certificate.
+Obtains the alternative issuer names of the X509 certificate.
 
 > **NOTE**
 >
-> The obtained IANs contain a string terminator.
+> The obtained alternative issuer names of the X509 certificate contain a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                   | Description                      |
 | ----------------------- | -------------------------- |
-| [DataArray](#dataarray) | IANs obtained.|
+| [DataArray](#dataarray) | Alternative issuer names of the X509 certificate obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2656,9 +2646,9 @@ getItem(itemType: CertItemType) : DataBlob
 
 Obtains the fields in the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -2676,7 +2666,7 @@ Obtains the fields in the X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -2730,15 +2720,16 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   }
 });
 ```
+
 ### match<sup>11+</sup>
 
 match(param: X509CertMatchParameters): boolean
 
-Checks whether this certificate matches the specified parameters.
+Checks whether the certificate matches the input parameters.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -2756,7 +2747,7 @@ Checks whether this certificate matches the specified parameters.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -2838,11 +2829,11 @@ async function matchX509Cert() {
 
 getCRLDistributionPoint(): DataArray
 
-Obtains the CRL distribution points of this X.509 certificate.
+Obtains URIs of the distribution points for this X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -2854,7 +2845,7 @@ Obtains the CRL distribution points of this X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -2915,21 +2906,21 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 Obtains the distinguished name (DN) of the X.509 certificate issuer.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [X500DistinguishedName](#x500distinguishedname12) | Distinguished name of the X.509 certificate obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -2998,23 +2989,23 @@ async function certGetIssuerX500DistinguishedName() {
 
 getSubjectX500DistinguishedName(): X500DistinguishedName
 
-Obtains the DN of the X.509 certificate subject (holder).
+Obtains the distinguished name of the X.509 certificate subject.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [X500DistinguishedName](#x500distinguishedname12) | Distinguished name of the X.509 certificate obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -3085,9 +3076,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -3099,7 +3090,7 @@ Converts the object data into a string.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -3170,9 +3161,9 @@ toString(encodingType: EncodingType): string
 
 Converts this object into a string in the specified encoding format. 
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -3190,7 +3181,7 @@ Converts this object into a string in the specified encoding format.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -3260,21 +3251,21 @@ hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -3343,23 +3334,23 @@ async function certHashCode() {
 
 getExtensionsObject(): CertExtension
 
-Obtains the certification extensions in DER format.
+Obtains the certificate extensions in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [CertExtension](#certextension10) | Certificate extensions object obtained.|
+| [CertExtension](#certextension10) | Certificate extension object|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -3430,22 +3421,22 @@ createCertExtension(inStream : EncodingBlob, callback : AsyncCallback\<CertExten
 
 Creates a certificate extension object. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| inStream | [EncodingBlob](#encodingblob)                     | Yes  | Serialized data obtained.|
+| inStream | [EncodingBlob](#encodingblob)                     | Yes  | Serialized data of the certificate extension.|
 | callback | AsyncCallback\<[CertExtension](#certextension10)> | Yes  | Callback for the **CertExtension** instance.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -3491,15 +3482,15 @@ createCertExtension(inStream : EncodingBlob) : Promise\<CertExtension>
 
 Creates a certificate extension object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                      |
 | -------- | ----------------------------- | ---- | -------------------------- |
-| inStream | [EncodingBlob](#encodingblob) | Yes  | Serialized data obtained.|
+| inStream | [EncodingBlob](#encodingblob) | Yes  | Serialized data of the certificate extension.|
 
 **Return value**
 
@@ -3511,7 +3502,7 @@ Creates a certificate extension object. This API uses a promise to return the re
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -3552,29 +3543,29 @@ cert.createCertExtension(encodingBlob).then(certExt => {
 
 ## CertExtension<sup>10+</sup>
 
-Provides APIs for operating the certificate extensions.
+Certificate extension
 
 ### getEncoded<sup>10+</sup>
 
 getEncoded() : EncodingBlob
 
-Obtains the serialized data of the certificate extensions.
+Obtains the serialized data of the certificate extension.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                         | Description                        |
 | ----------------------------- | ---------------------------- |
-| [EncodingBlob](#encodingblob) | Serialized data obtained.|
+| [EncodingBlob](#encodingblob) | Serialized data of the certificate extension.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -3624,11 +3615,11 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 getOidList(valueType : ExtensionOidType) : DataArray
 
-Obtains the OIDs of the certificate extensions.
+Obtains the OIDs of certificate extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -3640,13 +3631,13 @@ Obtains the OIDs of the certificate extensions.
 
 | Type                   | Description                            |
 | ----------------------- | -------------------------------- |
-| [DataArray](#dataarray) | OIDs obtained.|
+| [DataArray](#dataarray) | OIDs of certificate extensions.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -3697,11 +3688,11 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 getEntry(valueType: ExtensionEntryType, oid : DataBlob) : DataBlob
 
-Obtains the certificate extension object information.
+Obtains the information about the certificate extension field object.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -3720,7 +3711,7 @@ Obtains the certificate extension object information.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -3771,16 +3762,15 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 });
 ```
 
-
 ### checkCA<sup>10+</sup>
 
 checkCA() : number
 
-Checks whether the certificate is a CA certificate.
+Checks whether a certificate is a CA certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -3792,7 +3782,7 @@ Checks whether the certificate is a CA certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -3841,11 +3831,11 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 hasUnsupportedCriticalExtension(): boolean
 
-Checks whether there is critical extension that is not supported.
+Checks whether there is any critical extension that is not supported.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -3857,7 +3847,7 @@ Checks whether there is critical extension that is not supported.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -3898,26 +3888,26 @@ cert.createCertExtension(encodingBlob).then((extensionObj) => {
 
 createX509Crl(inStream : EncodingBlob, callback : AsyncCallback\<X509Crl>) : void
 
-Creates an **X509Crl** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 CRL. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [cert.createX509CRL](#certcreatex509crl11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                               | Mandatory| Description                          |
 | -------- | ----------------------------------- | ---- | ------------------------------ |
 | inStream | [EncodingBlob](#encodingblob)       | Yes  | Serialized CRL data.    |
-| callback | AsyncCallback\<[X509Crl](#x509crldeprecated)> | Yes  | Callback invoked to return the **X509Crl** instance created.|
+| callback | AsyncCallback\<[X509Crl](#x509crldeprecated)> | Yes  | Callback used to return the **X509Crl** instance created.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -3966,13 +3956,13 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 createX509Crl(inStream : EncodingBlob) : Promise\<X509Crl>
 
-Creates an **X509Crl** instance. This API uses a promise to return the result.
+Creates an X.509 CRL. This API uses a promise to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [cert.createX509CRL](#certcreatex509crl11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -3990,7 +3980,7 @@ Creates an **X509Crl** instance. This API uses a promise to return the result.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -4038,24 +4028,24 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 createX509CRL(inStream : EncodingBlob, callback : AsyncCallback\<X509CRL>) : void
 
-Creates an **X509Crl** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 CRL. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
 | inStream | [EncodingBlob](#encodingblob)         | Yes  | Serialized CRL data. The data length cannot exceed 8192 bytes.    |
-| callback | AsyncCallback\<[X509CRL](#x509crl11)> | Yes  | Callback invoked to return the **X509Crl** instance created.|
+| callback | AsyncCallback\<[X509CRL](#x509crl11)> | Yes  | Callback used to return the **X509Crl** instance created.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -4104,11 +4094,11 @@ cert.createX509CRL(encodingBlob, (error, X509CRL) => {
 
 createX509CRL(inStream : EncodingBlob) : Promise\<X509CRL>
 
-Creates an **X509Crl** instance. This API uses a promise to return the result.
+Creates an X.509 CRL. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -4126,7 +4116,7 @@ Creates an **X509Crl** instance. This API uses a promise to return the result.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -4172,7 +4162,7 @@ cert.createX509CRL(encodingBlob).then(X509CRL => {
 
 ## X509Crl<sup>(deprecated)</sup>
 
-Provides APIs for X.509 certificate CRL operations.
+Defines an X.509 CRL.
 
 > **NOTE**
 >
@@ -4182,13 +4172,13 @@ Provides APIs for X.509 certificate CRL operations.
 
 isRevoked(cert : X509Cert) : boolean
 
-Checks whether an X.509 certificate is revoked.
+Checks whether the certificate is revoked.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.isRevoked](#isrevoked11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -4206,7 +4196,7 @@ Checks whether an X.509 certificate is revoked.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
@@ -4289,7 +4279,7 @@ Obtains the CRL type.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getType](#gettype11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -4347,19 +4337,19 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getEncoded](#getencoded11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                        | Mandatory| Description                                      |
 | -------- | ---------------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized X.509 CRL data obtained.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the serialized X.509 CRL data obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -4422,7 +4412,7 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getEncoded](#getencoded11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -4434,7 +4424,7 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -4488,13 +4478,13 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-Verifies the signature of the X.509 CRL. This API uses an asynchronous callback to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses an asynchronous callback to return the result. RSA can be used for signature verification.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.verify](#verify11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -4507,7 +4497,7 @@ Verifies the signature of the X.509 CRL. This API uses an asynchronous callback 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error. |
@@ -4607,7 +4597,6 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   } else {
     console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
       console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
@@ -4642,13 +4631,13 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-Verifies the signature of the X.509 CRL. This API uses a promise to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses a promise to return the result. RSA can be used for signature verification.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.verify](#verify11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -4666,7 +4655,7 @@ Verifies the signature of the X.509 CRL. This API uses a promise to return the r
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error. |
@@ -4802,13 +4791,13 @@ Obtains the version of the X.509 CRL.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getVersion](#getversion11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| number | Obtains the version of the X.509 CRL.|
+| number | Version of the X.509 CRL obtained.|
 
 **Example**
 
@@ -4854,25 +4843,25 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getIssuerName() : DataBlob
 
-Obtains the issuer of the X.509 CRL.
+Obtains the X.509 CRL issuer name.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getIssuerName](#getissuername11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                          |
 | --------------------- | ------------------------------ |
-| [DataBlob](#datablob) | Issuer of the X.509 CRL obtained.|
+| [DataBlob](#datablob) | X.509 CRL issuer name obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -4928,25 +4917,25 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getLastUpdate() : string
 
-Obtains the last update date of this X.509 CRL.
+Obtains the last update date (in ASN.1 format) of this X.509 CRL.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getLastUpdate](#getlastupdate11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Last update date of the X.509 CRL, in ASN.1 format.|
+| string | Last update date of the X.509 CRL obtained, in ASN.1 format.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5002,25 +4991,25 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getNextUpdate() : string
 
-Obtains the next update date of this CRL.
+Obtains the next update date (in ASN.1 format) of this CRL.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getNextUpdate](#getnextupdate11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Next update date of the CRL, in ASN.1 format.|
+| string | Next update date of the CRL obtained, in ASN.1 format.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5076,13 +5065,13 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCert(serialNumber : number) : X509CrlEntry
 
-Obtains the revoked X.509 certificate based on the specified serial number of the certificate.
+Obtains the revoked X.509 certificate based on the specified certificate serial number.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCert](#getrevokedcert11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -5100,7 +5089,7 @@ Obtains the revoked X.509 certificate based on the specified serial number of th
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -5163,7 +5152,7 @@ Obtains the revoked X.509 certificate based on the specified certificate.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -5175,13 +5164,13 @@ Obtains the revoked X.509 certificate based on the specified certificate.
 
 | Type        | Description                 |
 | ------------ | -------------------- |
-| [X509CrlEntry](#x509crlentrydeprecated) | Revoked X.509 certificate obtained.|
+| [X509Cert](#x509cert) | Revoked X.509 certificate obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -5274,25 +5263,25 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCerts(callback : AsyncCallback<Array\<X509CrlEntry>>) : void
 
-Obtains all the revoked X.509 certificates. This API uses an asynchronous callback to return the result.
+Obtains a list of revoked X.509 certificates. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCerts](#getrevokedcerts11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                                | Mandatory| Description                            |
 | -------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | Yes  | Callback invoked to return the revoked X.509 certificates obtained.|
+| callback | AsyncCallback<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | Yes  | Callback used to return the revoked X.509 certificates obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -5348,25 +5337,25 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
-Obtains all the revoked X.509 certificates. This API uses a promise to return the result.
+Obtains a list of revoked X.509 certificates. This API uses a promise to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCerts](#getrevokedcerts11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                                          | Description                  |
 | ---------------------------------------------- | ---------------------- |
-| Promise<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | A list of revoked X.509 certificates.|
+| Promise<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | The list of revoked X.509 certificates obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -5419,13 +5408,13 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 getTbsInfo() : DataBlob
 
-Obtains the DER-encoded CRL information, that is, **tbsCertList** from this CRL.
+Obtains the to be signed certificate list (**tbsCertList**) of this CRL.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getTBSInfo](#gettbsinfo11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -5437,7 +5426,7 @@ Obtains the DER-encoded CRL information, that is, **tbsCertList** from this CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5497,9 +5486,9 @@ Obtains the signature data of the X.509 CRL.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignature](#getsignature11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [DataBlob](#datablob) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -5511,7 +5500,7 @@ Obtains the signature data of the X.509 CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5567,25 +5556,25 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgName() : string
 
-Obtains the signing algorithm of the X.509 CRL.
+Obtains the signature algorithm name of the X.509 CRL.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgName](#getsignaturealgname11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [DataBlob](#datablob) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| string | Signing algorithm obtained.|
+| string | Signature algorithm name of the X.509 CRL obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5641,25 +5630,25 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgOid() : string
 
-Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the ISO.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgOid](#getsignaturealgoid11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                         |
 | ------ | --------------------------------------------- |
-| string | OID of the X.509 CRL signing algorithm obtained.|
+| string | OID of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5715,25 +5704,25 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgParams() : DataBlob
 
-Obtains the parameters of the X.509 CRL signing algorithm.
+Obtains the parameters of the X.509 CRL signature algorithm.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgParams](#getsignaturealgparams11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| [DataBlob](#datablob) | Algorithm parameters obtained.|
+| [DataBlob](#datablob) | Parameters of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
@@ -5785,25 +5774,26 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   }
 });
 ```
+
 ## X509CRL<sup>11+</sup>
 
-Provides APIs for managing a CRL object.
+Defines a list of revoked certificates.
 
 ### isRevoked<sup>11+</sup>
 
 isRevoked(cert : X509Cert) : boolean
 
-Checks whether an X.509 certificate is revoked.
+Checks whether the certificate is revoked.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name| Type    | Mandatory| Description                |
 | ------ | -------- | ---- | -------------------- |
-| cert   | [X509Cert](#x509cert) | Yes  | X.509 certificate to check.|
+| cert   | [DataBlob](#datablob) | Yes  | X.509 certificate to check.|
 
 **Return value**
 
@@ -5815,7 +5805,7 @@ Checks whether an X.509 certificate is revoked.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
@@ -5894,9 +5884,9 @@ getType() : string
 
 Obtains the CRL type.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -5950,21 +5940,21 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                                      |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized X.509 CRL data obtained.|
+| callback | AsyncCallback\<[X509Cert](#x509cert)> | Yes  | Callback used to return the serialized X.509 CRL data obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -6023,9 +6013,9 @@ getEncoded() : Promise\<EncodingBlob>
 
 Obtains the serialized X.509 CRL data. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -6037,7 +6027,7 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -6091,11 +6081,11 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-Verifies the signature of the X.509 CRL. This API uses an asynchronous callback to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses an asynchronous callback to return the result. RSA can be used for signature verification.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6108,7 +6098,7 @@ Verifies the signature of the X.509 CRL. This API uses an asynchronous callback 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error. |
@@ -6208,7 +6198,6 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   } else {
     console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
       console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
@@ -6243,11 +6232,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-Verifies the signature of the X.509 CRL. This API uses a promise to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses a promise to return the result. RSA can be used for signature verification.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6265,7 +6254,7 @@ Verifies the signature of the X.509 CRL. This API uses a promise to return the r
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error. |
@@ -6397,15 +6386,15 @@ getVersion() : number
 
 Obtains the version of the X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| number | Obtains the version of the X.509 CRL.|
+| number | Version of the X.509 CRL obtained.|
 
 **Example**
 
@@ -6451,27 +6440,27 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getIssuerName() : DataBlob
 
-Obtains the issuer of the X.509 CRL.
+Obtains the X.509 CRL issuer name.
 
 > **NOTE**
 >
 > The obtained X.509 CRL issuer name contains a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                          |
 | --------------------- | ------------------------------ |
-| [DataBlob](#datablob) | Issuer of the X.509 CRL obtained.|
+| [EncodingBlob](#encodingblob) | X.509 CRL issuer name obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -6527,17 +6516,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getIssuerName(encodingType: EncodingType): string
 
-Obtains the issuer name of an X.509 CRL based on the encoding type.
+Obtains the X.509 CRL issuer name based on the encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
-| encodingType | [EncodingType](#encodingtype12)     | Yes  |  Encoding type. |
+| encodingType | [DataBlob](#datablob)     | Yes  |  Encoding type. |
 
 **Return value**
 
@@ -6549,7 +6538,7 @@ Obtains the issuer name of an X.509 CRL based on the encoding type.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -6610,23 +6599,23 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getLastUpdate() : string
 
-Obtains the last update date of this X.509 CRL.
+Obtains the last update date (in ASN.1 format) of this X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Last update date of the X.509 CRL, in ASN.1 format.|
+| string | Last update date of the X.509 CRL obtained, in ASN.1 format.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -6682,23 +6671,23 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getNextUpdate() : string
 
-Obtains the next update date of this CRL.
+Obtains the next update date (in ASN.1 format) of this CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Next update date of the CRL, in ASN.1 format.|
+| string | Next update date of the CRL obtained, in ASN.1 format.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -6754,11 +6743,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCert(serialNumber : bigint) : X509CRLEntry
 
-Obtains the revoked X.509 certificate based on the specified serial number of the certificate.
+Obtains the revoked X.509 certificate based on the specified certificate serial number.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6776,7 +6765,7 @@ Obtains the revoked X.509 certificate based on the specified serial number of th
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -6835,9 +6824,9 @@ getRevokedCertWithCert(cert : X509Cert) : X509CRLEntry
 
 Obtains the revoked X.509 certificate based on the specified certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6849,13 +6838,13 @@ Obtains the revoked X.509 certificate based on the specified certificate.
 
 | Type                           | Description                  |
 | ------------------------------- | ---------------------- |
-| [X509CRLEntry](#x509crlentry11) | Revoked X.509 certificate obtained.|
+| [X509Cert](#x509cert) | Revoked X.509 certificate obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -6948,23 +6937,23 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCerts(callback : AsyncCallback<Array\<X509CRLEntry>>) : void
 
-Obtains all the revoked X.509 certificates. This API uses an asynchronous callback to return the result.
+Obtains a list of revoked X.509 certificates. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                                  | Mandatory| Description                            |
 | -------- | ------------------------------------------------------ | ---- | -------------------------------- |
-| callback | AsyncCallback<Array\<[X509CRLEntry](#x509crlentry11)>> | Yes  | Callback invoked to return the revoked X.509 certificates obtained.|
+| callback | AsyncCallback<Array\<[X509CRLEntry](#x509crlentry11)>> | Yes  | Callback used to return the revoked X.509 certificates obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -7020,23 +7009,23 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCerts() : Promise<Array\<X509CRLEntry>>
 
-Obtains all the revoked X.509 certificates. This API uses a promise to return the result.
+Obtains a list of revoked X.509 certificates. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                                            | Description                  |
 | ------------------------------------------------ | ---------------------- |
-| Promise<Array\<[X509CRLEntry](#x509crlentry11)>> | A list of revoked X.509 certificates.|
+| Promise<Array\<[X509CRLEntry](#x509crlentry11)>> | The list of revoked X.509 certificates obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -7091,9 +7080,9 @@ getSignature() : DataBlob
 
 Obtains the signature data of the X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -7105,7 +7094,7 @@ Obtains the signature data of the X.509 CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -7161,23 +7150,23 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgName() : string
 
-Obtains the signing algorithm of the X.509 CRL.
+Obtains the signature algorithm of the X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| string | Signing algorithm obtained.|
+| string | Signature algorithm name of the X.509 CRL obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -7233,23 +7222,23 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgOid() : string
 
-Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the ISO.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                         |
 | ------ | --------------------------------------------- |
-| string | OID of the X.509 CRL signing algorithm obtained.|
+| string | OID of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -7305,23 +7294,23 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgParams() : DataBlob
 
-Obtains the parameters of the X.509 CRL signing algorithm.
+Obtains the parameters of the X.509 CRL signature algorithm.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| [DataBlob](#datablob) | Algorithm parameters obtained.|
+| [DataBlob](#datablob) | Parameters of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
@@ -7378,11 +7367,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getTBSInfo() : DataBlob
 
-Obtains the DER-encoded CRL information, that is, **tbsCertList** from this CRL.
+Obtains the to be signed certificate list (**tbsCertList**) of this CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -7394,7 +7383,7 @@ Obtains the DER-encoded CRL information, that is, **tbsCertList** from this CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -7452,9 +7441,9 @@ getExtensions(): DataBlob
 
 Obtains the CRL extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -7466,7 +7455,7 @@ Obtains the CRL extensions.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -7525,17 +7514,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 match(param: X509CRLMatchParameters): boolean
 
-Checks whether this CRL matches the specified parameters.
+Checks whether the CRL matches the input parameters.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type  | Mandatory| Description                                      |
 | --------- | ------ | ---- | ------------------------------------------ |
-| param | [X509CRLMatchParameters](#x509crlmatchparameters11)| Yes  | Parameters specified for matching the certificate.|
+| param | [DataBlob](#datablob)| Yes  | Parameters specified for matching the certificate.|
 
 **Return value**
 
@@ -7547,7 +7536,7 @@ Checks whether this CRL matches the specified parameters.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | -------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.  |
@@ -7648,21 +7637,21 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 Obtains the distinguished name (DN) of the X.509 certificate issuer.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [X500DistinguishedName](#x500distinguishedname12) | Distinguished name of the X.509 certificate obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -7718,9 +7707,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -7732,7 +7721,7 @@ Converts the object data into a string.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -7788,9 +7777,9 @@ toString(encodingType: EncodingType): string
 
 Converts this object into a string in the specified encoding format.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -7808,7 +7797,7 @@ Converts this object into a string in the specified encoding format.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -7868,21 +7857,21 @@ hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -7936,23 +7925,23 @@ async function crlHashCode() {
 
 getExtensionsObject(): CertExtension
 
-Obtains the certification extensions in DER format.
+Obtains the certificate extensions in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [CertExtension](#certextension10) | Certificate extensions object obtained.|
+| [CertExtension](#certextension10) | Certificate extension object|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -7994,7 +7983,7 @@ let crlEncodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-async function crlHashCode() {
+async function crlGetExtensionsObject() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
@@ -8011,17 +8000,17 @@ async function crlHashCode() {
 
 createCertChainValidator(algorithm :string) : CertChainValidator
 
-Creates a **CertChainValidator** object.
+Creates a certificate chain validator object.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type  | Mandatory| Description                                      |
 | --------- | ------ | ---- | ------------------------------------------ |
-| algorithm | string | Yes  | Certificate chain validator algorithm. Currently, only **PKIX** is supported.|
+| algorithm | string | Yes  | Algorithm of the certificate chain validator obtained. Currently, only **PKIX** is supported.|
 
 **Return value**
 
@@ -8033,7 +8022,7 @@ Creates a **CertChainValidator** object.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -8054,44 +8043,43 @@ try {
   console.error(`createCertChainValidator failed, errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
+
 ## CertChainValidator
 
-Provides APIs for certificate chain validator operations.
+Describes a certificate chain validator object.
 
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name   | Type  | Read-Only| Optional| Description                        |
 | ------- | ------ | ---- | ---- | -------------------------- |
-| algorithm  | string | Yes  | No  | Algorithm used by the X.509 certificate chain validator.|
-
+| algorithm  | string | Yes  | No  | Algorithm of the X.509 certificate chain validator.|
 
 ### validate
 
 validate(certChain : CertChainData, callback : AsyncCallback\<void>) : void
 
-Validates an X.509 certificate chain. This API uses an asynchronous callback to return the result.
+Verifies the X.509 certificate chain. This API uses an asynchronous callback to return the result.
 
-The certificate chain validator does not verify the certificate validity period because the system time on the device is untrusted. To check the validity period of a certificate, use the [checkValidityWithDate()](#checkvaliditywithdate) API of the **X509Cert** class. For details about certificate specifications, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
+The certificate chain validator does not verify the certificate validity period because the device system time is untrusted. The [CertChainValidator](#certchainvalidator) API for the X.509 certificate can be used to check the validity period of a certificate. For details, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description                                                        |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| certChain | [CertChainData](#certchaindata) | Yes  | Serialized X.509 certificate chain data.                                   |
+| certChain | [checkValidityWithDate](#checkvaliditywithdate) | Yes  | Serialized X.509 certificate chain data.                                   |
 | callback  | AsyncCallback\<void>            | Yes  | Callback used to return the result. If **error** is **null**, the validation is successful. If **error** is not **null**, the validation fails.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -8201,18 +8189,19 @@ try {
 
 validate(certChain : CertChainData) : Promise\<void>
 
-Validates an X.509 certificate chain. This API uses a promise to return the result.
-The certificate chain validator does not verify the certificate validity period because the system time on the device is untrusted. To check the validity period of a certificate, use the [checkValidityWithDate()](#checkvaliditywithdate) API of the **X509Cert** class. For details about certificate specifications, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
+Verifies the X.509 certificate chain. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+The certificate chain validator does not verify the certificate validity period because the device system time is untrusted. The [CertChainData](#certchaindata) API for the X.509 certificate can be used to check the validity period of a certificate. For details, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
 
-**System capability**: SystemCapability.Security.Cert
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description                      |
 | --------- | ------------------------------- | ---- | -------------------------- |
-| certChain | [CertChainData](#certchaindata) | Yes  | Serialized X.509 certificate chain data.|
+| certChain | [checkValidityWithDate](#checkvaliditywithdate) | Yes  | Serialized X.509 certificate chain data.|
 
 **Return value**
 
@@ -8224,7 +8213,7 @@ The certificate chain validator does not verify the certificate validity period 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -8330,11 +8319,11 @@ try {
 
 ## X509CrlEntry<sup>(deprecated)</sup>
 
-Provides APIs for operating the revoked certificates.
+Defines the revoked certificate object.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CrlEntry](#x509crlentry11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [CertChainData](#certchaindata) instead.
 
 ### getEncoded<sup>(deprecated)</sup>
 
@@ -8346,19 +8335,19 @@ Obtains the serialized data of this revoked certificate. This API uses an asynch
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getEncoded](#getencoded11-2) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                                |
 | -------- | --------------------------------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized data of the revoked certificate.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the serialized data of the revoked certificate.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -8427,9 +8416,9 @@ Obtains the serialized data of this revoked certificate. This API uses a promise
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getEncoded](#getencoded11-3) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [EncodingBlob](#encodingblob) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8441,7 +8430,7 @@ Obtains the serialized data of this revoked certificate. This API uses a promise
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -8508,9 +8497,9 @@ Obtains the serial number of this revoked certificate.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getSerialNumber](#getserialnumber11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [EncodingBlob](#encodingblob) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8576,7 +8565,7 @@ Obtains the issuer of a revoked certificate.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getCertIssuer](#getcertissuer11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8588,7 +8577,7 @@ Obtains the issuer of a revoked certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | -------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.  |
@@ -8646,25 +8635,25 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 
 getRevocationDate() : string
 
-Obtains the date when the certificate is revoked.
+Obtains the date (in ASN.1 format) when the certificate is revoked.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getRevocationDate](#getrevocationdate11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [DataBlob](#datablob) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description               |
 | ------ | ------------------ |
-| string | Certificate revocation date, in ASN.1 format.|
+| string | Certificate revocation date obtained, in ASN.1 format.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -8720,7 +8709,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 
 ## X509CRLEntry<sup>11+</sup>
 
-Provides APIs for operating the revoked certificates.
+Defines the revoked certificate object.
 
 ### getEncoded<sup>11+</sup>
 
@@ -8728,21 +8717,21 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 Obtains the serialized data of this revoked certificate. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                                |
 | -------- | --------------------------------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized data of the revoked certificate.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the serialized data of the revoked certificate.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -8809,9 +8798,9 @@ getEncoded() : Promise\<EncodingBlob>
 
 Obtains the serialized data of this revoked certificate. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8823,7 +8812,7 @@ Obtains the serialized data of this revoked certificate. This API uses a promise
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -8888,9 +8877,9 @@ getSerialNumber() : bigint
 
 Obtains the serial number of this revoked certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8902,7 +8891,7 @@ Obtains the serial number of this revoked certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -8966,21 +8955,21 @@ Obtains the issuer of a revoked certificate.
 >
 > The obtained issuer of this revoked certificate contains a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                      |
 | --------------------- | -------------------------- |
-| [DataBlob](#datablob) | Issuer of the revoked certificate obtained.|
+| [EncodingBlob](#encodingblob) | Issuer of the revoked certificate obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
@@ -9041,15 +9030,15 @@ getCertIssuer(encodingType: EncodingType): string
 
 Obtains the issuer information of a revoked certificate based on the encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
-| encodingType | [EncodingType](#encodingtype12)     | Yes  |  Encoding type. |
+| encodingType | [DataBlob](#datablob)     | Yes  |  Encoding type. |
 
 **Return value**
 
@@ -9061,7 +9050,7 @@ Obtains the issuer information of a revoked certificate based on the encoding ty
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.                                     |
@@ -9125,9 +9114,9 @@ getRevocationDate() : string
 
 Obtains the date when the certificate was revoked.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -9139,7 +9128,7 @@ Obtains the date when the certificate was revoked.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9199,21 +9188,21 @@ getExtensions(): DataBlob
 
 Obtains the CRL extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                    |
 | --------------------- | ------------------------ |
-| [DataBlob](#datablob) | CRl extensions obtained.|
+| [DataBlob](#datablob) | X.509 CRL entry extensions obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9276,21 +9265,21 @@ hasExtensions(): boolean
 
 Checks whether this CRL entry has extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| boolean | Returns **true** if the CRL entry has extension; returns **false** otherwise.|
+| boolean | **true** is returned if the CRL entry has extensions; **false** is returned otherwise.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9348,23 +9337,23 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 
 getCertIssuerX500DistinguishedName(): X500DistinguishedName
 
-Obtains the DN of the certificate issuer.
+Obtains the distinguished name of the X.509 certificate issuer.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [DataBlob](#datablob) | Distinguished name of the X.509 certificate obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9419,9 +9408,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -9433,7 +9422,7 @@ Converts the object data into a string.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9488,21 +9477,21 @@ hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9555,23 +9544,23 @@ async function certHashCode() {
 
 getExtensionsObject(): CertExtension
 
-Obtains the certification extensions in DER format.
+Obtains the certificate extensions in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| [CertExtension](#certextension10) | Certificate extensions object obtained.|
+| [CertExtension](#certextension10) | Certificate extension object|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9693,28 +9682,28 @@ createCertCRLCollection(certs: Array\<X509Cert>, crls?: Array\<X509CRL>): CertCR
 
 Creates an object for a collection of X.509 certificates and CRLs.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
-| certs | Array\<[X509Cert](#x509cert)>    | Yes  |  X.509 certificates. |
-| crls | Array\<[X509CRL](#x509crl11)>     | No  |  X.509 CRLs. |
+| certs | Array\<[X509Cert](#x509cert)>    | Yes  |  X.509 certificate array. |
+| crls | Array\<[X509Cert](#x509cert)>     | No  |  X.509 CRL array. |
 
 **Return value**
 
 | Type              | Description                |
 | ------------------ | -------------------- |
-| [CertCRLCollection](#certcrlcollection11) | **CertCRLCollection** object created.|
+| [CertCRLCollection](#certcrlcollection11) | Certificate and CRL collection.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -9802,7 +9791,7 @@ async function createCollection() {
 
 ## CertCRLCollection<sup>11+</sup>
 
-Provides APIs for locating certificates or CRLs in a **CertCRLCollection** object.
+Defines the certificate and CRL collection.
 
 ### selectCerts<sup>11+</sup>
 
@@ -9810,9 +9799,9 @@ selectCerts(param: X509CertMatchParameters): Promise\<Array\<X509Cert>>
 
 Selects certificates that match the specified parameters. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -9824,13 +9813,13 @@ Selects certificates that match the specified parameters. This API uses a promis
 
 | Type                                   | Description                                   |
 | --------------------------------------- | --------------------------------------- |
-| Promise\<Array\<[X509Cert](#x509cert)>> | Promise used to return the result. Matched certificates.|
+| Promise\<Array\<[X509Cert](#x509cert)>> | Promise used to return the matched certificates.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -9905,22 +9894,22 @@ selectCerts(param: X509CertMatchParameters, callback: AsyncCallback\<Array\<X509
 
 Selects certificates that match the specified parameters. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description           |
 | --------- | ------------------------------- | ---- | ----------------- |
-| param | [X509CertMatchParameters](#x509certmatchparameters11) | Yes  | Parameters used to match the certificates.  |
-| callback  | AsyncCallback\<Array\<[X509Cert](#x509cert)>>    | Yes  | Callback invoked to return the matched certificates.|
+| param | [X509Cert](#x509cert) | Yes  | Parameters used to match the certificates.  |
+| callback  | AsyncCallback\<Array\<[X509Cert](#x509cert)>>    | Yes  | Callback used to return the matched certificates.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -9995,15 +9984,15 @@ selectCRLs(param: X509CRLMatchParameters): Promise\<Array\<X509CRL>>
 
 Selects CRLs that match the specified parameters. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description     |
 | --------- | ------------------------------- | ---- | ------------ |
-| param | [X509CRLMatchParameters](#x509crlmatchparameters11) | Yes  | Parameters used to match the CRLs.  |
+| param | [X509Cert](#x509cert) | Yes  | Parameters used to match the CRLs.  |
 
 **Return value**
 
@@ -10015,7 +10004,7 @@ Selects CRLs that match the specified parameters. This API uses a promise to ret
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -10126,9 +10115,9 @@ selectCRLs(param: X509CRLMatchParameters, callback: AsyncCallback\<Array\<X509CR
 
 Selects CRLs that match the specified parameters. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -10141,7 +10130,7 @@ Selects CRLs that match the specified parameters. This API uses an asynchronous 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -10250,11 +10239,11 @@ async function selectCRLs() {
 
 createX509CertChain(inStream: EncodingBlob): Promise\<X509CertChain>
 
-Creates an **X509CertChain** instance. This API uses a promise to return the result.
+Creates an X.509 certificate chain object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -10266,13 +10255,13 @@ Creates an **X509CertChain** instance. This API uses a promise to return the res
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| Promise\<[X509CertChain](#x509certchain11)> | **X509CertChain** object created.|
+| Promise\<[EncodingBlob](#encodingblob)> | Promise used to return the **X509CertChain** instance created.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -10372,24 +10361,24 @@ createX509CertChain();
 
 createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback\<X509CertChain>): void
 
-Creates an **X509CertChain** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 certificate chain object. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                      |
 | -------- | ------------------------------------- | ---- | -------------------------- |
 | inStream | [EncodingBlob](#encodingblob)         | Yes  | X.509 certificate serialization data.       |
-| callback | AsyncCallback\<[X509CertChain](#x509certchain11)> | Yes  | Callback invoked to return the **X509CertChain** instance created.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the **X509CertChain** instance created.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -10486,27 +10475,27 @@ createX509CertChain(certs: Array\<X509Cert>): X509CertChain
 
 Creates an X.509 certificate chain object based on the specified certificates. This API returns the result synchronously.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| certs    | Array\<[X509Cert](#x509cert)> | Yes  | Array of X.509 certificates.|
+| certs    | Array\<[X509Cert](#x509cert)> | Yes  | X.509 certificates.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| [X509CertChain](#x509certchain11) | **X509CertChain** object created.|
+| [X509Cert](#x509cert) | X.509 certificate chain object.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -10574,11 +10563,11 @@ createX509CertChain();
 
 buildX509CertChain(param: [CertChainBuildParameters](#certchainbuildparameters12)): Promise\<CertChainBuildResult>
 
-Builds an X.509 certificate chain with a CertChainBuildParameters object. This API uses a promise to return the result.
+Builds an X.509 certificate chain with a **CertChainBuildParameters** object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -10590,13 +10579,13 @@ Builds an X.509 certificate chain with a CertChainBuildParameters object. This A
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<[CertChainBuildResult](#certchainbuildresult12)> | **X509CertChain** object created.|
+| Promise\<[CertChainBuildResult](#certchainbuildresult12)> | X.509 certificate chain object.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -10714,30 +10703,30 @@ buildX509CertChain();
 
 parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
-Parses a .p12 file. 
+Obtains the certificate, private key, and other certificates by parsing a PKCS #12 (.p12) file and returns the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
 | data | Uint8Array | Yes| .p12 file to parse, in DER format.|
-| config | [Pkcs12ParsingConfig](#pkcs12parsingconfig18) | Yes| Configuration for parsing the file.|
+| config | [Pkcs12ParsingConfig](#pkcs12parsingconfig18) | Yes| Configuration for parsing the .p12 file.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| [Pkcs12Data](#pkcs12data18) | Data parsed from the .p12 file.|
+| [Pkcs12Data](#pkcs12data18) | Certificate, private key, and other certificates parsed from a PKCS #12 (.p12) file.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -10926,11 +10915,11 @@ function doTestParsePkcs12() {
 
 parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
 
-Parses a PKCS #12 file. This API uses a promise to return the result.
+Obtains the certificate, private key, and other certificates by parsing a PKCS #12 (.p12) file. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -10949,11 +10938,11 @@ Parses a PKCS #12 file. This API uses a promise to return the result.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is zero or too large.                                    |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is zero or too large.                                    |
 | 19030001 | crypto operation error.                           |
 | 19030008 | maybe wrong password.            |
 
@@ -11146,7 +11135,7 @@ Creates PKCS #12 data. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -11159,13 +11148,13 @@ Creates PKCS #12 data. This API uses a promise to return the result.
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<Uint8Array> | Promise used to return the result. PKCS #12 file created, in DER format.|
+| Promise\<Uint8Array> | Promise used to return the PKCS #12 file created, in DER format.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -11316,22 +11305,22 @@ async function doTestCreatePkcs12() {
 }
 ```
 
-## cert.createPkcs12<sup>21+</sup>
+## cert.createPkcs12Sync<sup>21+</sup>
 
 createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 
 Creates PKCS #12 data. This API uses a promise to return the result synchronously.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
 | data | [Pkcs12Data](#pkcs12data18) | Yes| P12 data object to be packed.|
-| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating the P12 file.|
+| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating the .p12 file.|
 
 **Return value**
 
@@ -11343,7 +11332,7 @@ Creates PKCS #12 data. This API uses a promise to return the result synchronousl
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -11500,9 +11489,9 @@ createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array
 
 Creates a [TrustAnchor](#x509trustanchor11) object array by using the CA certificate parsed from a .p12 keystore file. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -11515,13 +11504,13 @@ Creates a [TrustAnchor](#x509trustanchor11) object array by using the CA certifi
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<Array\<[X509TrustAnchor](#x509trustanchor11)>> | **X509TrustAnchor** object array created.|
+| Promise\<Array\<[X509TrustAnchor](#x509trustanchor11)>> | **X509TrustAnchor** object array.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message                                         |
+| Error Code| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -11655,29 +11644,29 @@ try {
 
 ## X509CertChain<sup>11+</sup>
 
-Provides APIs for managing the X.509 certificate chain.
+Describes an X.509 certificate chain object.
 
 ### getCertList<sup>11+</sup>
 
 getCertList(): Array\<X509Cert>
 
-Obtains the X.509 certificate list.
+Obtains a list of X.509 certificates.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type          | Description       |
 | -------------- | ----------- |
-| Array\<[X509Cert](#x509cert)> | X.509 certificate list obtained.|
+| Array\<[X509Cert](#x509cert)> | X.509 certificates.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -11779,29 +11768,29 @@ cert.createX509CertChain(encodingBlob, (err, certChain) => {
 
 validate(param: CertChainValidationParameters): Promise\<CertChainValidationResult>
 
-Validates a certificate chain. This API uses a promise to return the result.
+Verifies the certificate chain. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description           |
 | --------- | ------------------------------- | ---- | ----------------- |
-| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for validating the X.509 certificate chain.|
+| param | [X509Cert](#x509cert) | Yes  | Parameters for verifying the X.509 certificate chain.|
 
 **Return value**
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<[CertChainValidationResult](#certchainvalidationresult11)> | Promise used to return the result.|
+| Promise\<[CertChainValidationResult](#certchainvalidationresult11)> | Promise used to return the certificate chain verification result.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -11934,24 +11923,24 @@ validate();
 
 validate(param: CertChainValidationParameters, callback: AsyncCallback\<CertChainValidationResult>): void
 
-Validates a certificate chain. This API uses an asynchronous callback to return the result.
+Verifies a certificate chain using verification parameters. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description     |
 | --------- | ------------------------------- | ---- | ------------ |
-| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for validating the X.509 certificate chain.|
-| callback  | AsyncCallback\<[CertChainValidationResult](#certchainvalidationresult11)> | Yes  | Callback used to return the certificate chain validation result.|
+| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for verifying the X.509 certificate chain.|
+| callback  | AsyncCallback\<[CertChainValidationResult](#certchainvalidationresult11)> | Yes  | Callback used to return the certificate chain verification result.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -12078,9 +12067,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -12092,7 +12081,7 @@ Converts the object data into a string.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -12199,27 +12188,28 @@ async function certChainToString() {
   }
 }
 ```
+
 ### hashCode<sup>12+</sup>
 
 hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message               |
+| Error Code| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -12331,11 +12321,11 @@ async function certChainHashCode() {
 
 generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint8Array
 
-Generates a CSR.
+Generates a CSR using the specified RSA private key by passing configuration parameters such as the subject, extension, MD algorithm, and output format.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -12354,7 +12344,7 @@ Generates a CSR.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -12433,15 +12423,15 @@ createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 
 Creates an **X500DistinguishedName** object with a name in the form of a string. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameStr | string | Yes|Name string format defined by X.509. The name is separated by slashes (/). Each distinguishable name is in the format of **attribute=value**. Common attributes include **CN** (common name), **O** (organization name), **OU** (organization unit), **C** (country/region), **ST** (province/state), and **L** (city/district). For example, **/CN=example.com/O=Example/C=CN**.|
+| nameStr | string | Yes|Name of the string type defined by X.509. Distinguishable names are separated by slashes (/). Each distinguishable name is in the format of *an attribute***=***a value*. Common attributes include **CN** (common name), **O** (organization name), **OU** (organization unit), **C** (country/region), **ST** (province/state), and **L** (city/district). For example, **/CN=example.com/O=Example/C=CN**.|
 
 **Return value**
 
@@ -12453,7 +12443,7 @@ Creates an **X500DistinguishedName** object with a name in the form of a string.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -12504,15 +12494,15 @@ createX500DistinguishedName(nameDer: Uint8Array): Promise\<X500DistinguishedName
 
 Creates an **X500DistinguishedName** object with a name in DER format. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameDer | Uint8Array | Yes|Name of the Uint8Array type in DER format defined by X.509.|
+| nameDer | Uint8Array | Yes|Name of the Uint8Array type defined by X.509 in DER format.|
 
 **Return value**
 
@@ -12524,7 +12514,7 @@ Creates an **X500DistinguishedName** object with a name in DER format. This API 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -12562,31 +12552,32 @@ async function createX500DistinguishedName() {
   }
 }
 ```
+
 ## X500DistinguishedName<sup>12+</sup>
 
-Provides APIs for managing the **X500DistinguishedName** instance.
+Provides APIs for managing the object of the Name type defined by X.509.
 
 ### getName<sup>12+</sup>
 
 getName(): string
 
-Obtains the DN in the form of a string.
+Obtains the distinguished name in the form of a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| string | DN in the form of a string obtained.|
+| string | Distinguished name obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -12623,29 +12614,29 @@ async function getName() {
 
 getName(type: string): Array\<string>
 
-Obtains DNs of the specified type.
+Obtains the string of the relative distinguished names (RDNs) of the specified types.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| type | string | Yes| Type of the DNs to obtain.|
+| type | string | Yes| RDN of the specified type. For example, **CN** and **OU**.|
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| Array\<string> | DNs obtained.|
+| Array\<string> | RDN string array.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -12682,27 +12673,27 @@ getName(encodingType: EncodingType): string
 
 Obtains the string of the distinguished names based on the specified encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type         | Mandatory| Description          |
 | ------------ | ------------- | ---- | -------------- |
-| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding type.|
+| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding format.|
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| string | A string of distinguishable names, separated by commas (,).|
+| string | String of the distinguished names separated by commas (,).|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -12715,7 +12706,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-et nameStr = '/CN=Shaanxi@Xi'an/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
+let nameStr = '/CN=Shaanxi@Baoji/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS'
 async function getName() {
   try {
     cert.createX500DistinguishedName(nameStr)
@@ -12737,23 +12728,23 @@ async function getName() {
 
 getEncoded(): EncodingBlob
 
-Obtains the data of the X.509 certificate **extensions** field.
+Obtains the data of X.509 certificate extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| [EncodingBlob](#encodingblob) | X.509 certificate serialization data obtained.|
+| [EncodingBlob](#encodingblob) | X.509 certificate serialization data.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -12789,15 +12780,15 @@ createCmsGenerator(contentType: CmsContentType): CmsGenerator
 
 Creates a **CmsGenerator** object.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                |
 | -------- | ----------------------------- | ---- | -------------------- |
-| contentType | [CmsContentType](#cmscontenttype18) | Yes| CMS message type.|
+| contentType | [EncodingBlob](#encodingblob) | Yes| CMS content type.|
 
 **Return value**
 
@@ -12809,7 +12800,7 @@ Creates a **CmsGenerator** object.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -12877,35 +12868,35 @@ Provides APIs for generating the messages in CMS format.
 > **NOTE**
 >
 > PKCS #7 is a standard syntax for storing signed or encrypted data. CMS is an extension of PKCS #7. PKCS#7 supports data types including data, signature data, envelope data,
-> signature and envelope data, message digest data, and encrypted data. It is often used to protect data integrity and confidentiality.
+> MD data, and encryption data. It is often used to protect data integrity and confidentiality.
 
 ### addSigner<sup>18+</sup>
 
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
 
-Adds signer information to the CMS whose content type is **SIGNED_DATA**.
-  
+Adds a signer to the CMS **SIGNED_DATA** structure.
+
 > **NOTE**
 >
-> OpenSSL does not support signature verification for self-signed certificates. Therefore, self-signed certificates cannot be used as signers.
+> OpenSSL does not support signature verification of self-signed certificates. Therefore, self-signed certificates cannot be used as issuer certificates.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
 | cert |  [X509Cert](#x509cert) | Yes| X.509 certificate.|
-| keyInfo | [PrivateKeyInfo](#privatekeyinfo18) | Yes| Private key information.|
-| config | [CmsSignerConfig](#cmssignerconfig18) | Yes| Signer configuration.|
+| keyInfo | [X509Cert](#x509cert) | Yes| Private key information.|
+| config | [CmsSignerConfig](#cmssignerconfig18) | Yes| CMS signer configuration.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
@@ -13003,13 +12994,13 @@ function testAddSigner() {
 
 addCert(cert: X509Cert): void
 
-Adds a CMS certificate of the **SIGNED_DATA** content type, for example, the issuer certificate of a signing certificate.
+Adds a certificate for the CMS **SIGNED_DATA** structure, for example, the issuer certificate of a signing certificate.
 
-If the **addSigner** API is not called and only the certificate is added, the generated CMS signature data contains only the certificate.
+If the certificate is added without calling **addSigner**, the generated CMS signature data contains only the certificate information.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -13021,7 +13012,7 @@ If the **addSigner** API is not called and only the certificate is added, the ge
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
@@ -13089,25 +13080,25 @@ function testAddCert() {
 
 setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void
 
-Sets the encryption algorithm for the CMS whose content type is **ENVELOPED_DATA**.
+Sets the encryption algorithm for CMS **ENVELOPED_DATA**.
 
-This method should be called immediately after the **CmsGenerator** of the **ENVELOPED_DATA** type is created. If this method is not called, AES_256_GCM is used as the encryption algorithm by default.
+This API should be called immediately after a **CmsGenerator** object of the **ENVELOPED_DATA** type is created. If not, AES_256_GCM is used as the encryption algorithm by default.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name| Type     | Mandatory| Description                    |
 | ------ | --------- | ---- | ------------------------ |
-| algorithm   | [CmsRecipientEncryptionAlgorithm](#cmsrecipientencryptionalgorithm22)  | Yes  | Encryption algorithm used by the CMS to encapsulate data.     |
+| algorithm   | [X509Cert](#x509cert)  | Yes  | Encryption algorithm used to encapsulate data based on CMS.     |
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -13137,19 +13128,19 @@ function testSetRecipientEncryptionAlgorithm() {
 
 addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
 
-Adds recipient information to a CMS with the content type of **ENVELOPED_DATA**. This API uses a promise to return the result.
+Adds recipient information to the CMS **ENVELOPED_DATA** structure. This API uses a promise to return the result.
 
-At least one recipient needs to be set.
+At least one recipient must be set.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name| Type     | Mandatory| Description                    |
 | ------ | --------- | ---- | ------------------------ |
-| recipientInfo   | [CmsRecipientInfo](#cmsrecipientinfo22)  | Yes  | Recipient information.     |
+| recipientInfo   | [CmsRecipientInfo](#cmsrecipientinfo22)  | Yes  | Recipient Information.     |
 
 **Return value**
 
@@ -13161,7 +13152,7 @@ At least one recipient needs to be set.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -13257,15 +13248,15 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 Obtains the CMS data, for example, the CMS signature data or CMS encapsulated data. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name     | Type               | Mandatory| Description                                      |
 | ----------- | ------------------- | ---- | ------------------------------------------ |
-| data        | Uint8Array         | Yes  | Data to be operated.                          |
+| data        | Uint8Array         | Yes  | CMS data to be operated.                          |
 | options     | [CmsGeneratorOptions](#cmsgeneratoroptions18)  | No  | Configuration of the CMS operation.                      |
 
 **Return value**
@@ -13278,7 +13269,7 @@ Obtains the CMS data, for example, the CMS signature data or CMS encapsulated da
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
@@ -13388,30 +13379,30 @@ async function testDoFinalByPromise() {
 
 doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string
 
-Obtains the CMS data, for example, the CMS signature data or CMS encapsulated data. This API returns the result synchronously.
+Obtains the CMS data synchronously, for example, the CMS signature data or CMS encapsulated data.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name     | Type               | Mandatory| Description                                      |
 | ----------- | ------------------- | ---- | ------------------------------------------ |
-| data        | Uint8Array         | Yes  | Data to be operated.                          |
+| data        | Uint8Array         | Yes  | CMS data to be operated.                          |
 | options     | [CmsGeneratorOptions](#cmsgeneratoroptions18)  | No  | Configuration of the CMS operation.                      |
 
 **Return value**
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| Uint8Array \| string            | CMS data generated.|
+| Uint8Array \| string            | CMS data returned.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
@@ -13518,13 +13509,13 @@ function testDoFinalSync() {
 
 getEncryptedContentData(): Promise\<Uint8Array>
 
-Obtains the encrypted content data of the CMS whose content type is **ENVELOPED_DATA**. This API uses a promise to return the result.
+Obtains the encrypted data of the CMS **ENVELOPED_DATA** structure. This API uses a promise to return the result.
 
-Obtains the encrypted content data if the **CmsGenerator** of the **ENVELOPED_DATA** type is created and data separation is used to generate CMS encapsulated data.
+Obtains the encrypted data if a **CmsGenerator** object of the **ENVELOPED_DATA** type is created and data separation is used to generate CMS encapsulated data.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -13536,7 +13527,7 @@ Obtains the encrypted content data if the **CmsGenerator** of the **ENVELOPED_DA
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -13645,27 +13636,28 @@ createCmsParser(): CmsParser
 
 Creates a **CmsParser** object.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| [CmsParser](#cmsparser22) | CmsParser object.|
+| [CmsParser](#cmsparser22) | **CmsParser** object.|
 
 **Error codes**
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
 | 19030001 | crypto operation error. |
 
 **Example**
+
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
 
@@ -13777,26 +13769,27 @@ async function testCmsVerifyTest() {
 ```
 
 ## CmsParser<sup>22+</sup>
+
 Verifies and decapsulates signed and encapsulated messages in CMS format.
 
 > **NOTE**
 >
 > PKCS #7 is a standard syntax for storing signed or encrypted data. CMS is an extension of PKCS #7. PKCS#7 supports data types including data, signature data, envelope data,
-> signature and envelope data, message digest data, and encrypted data. It is often used to protect data integrity and confidentiality.
+> MD data, and encryption data. It is often used to protect data integrity and confidentiality.
 
 ### setRawData<sup>22+</sup>
 
 setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 Converts data in CMS format into CMS objects. This API uses a promise to return the result.
-  
+
 > **NOTE**
 >
-> CMS data in PEM and DER formats is supported. **string** corresponds to the PEM format, and **Uint8Array** corresponds to the DER format.
+> CMS data in PEM and DER formats is supported. The string is in PEM format, and the Uint8Array data is in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -13815,7 +13808,7 @@ Converts data in CMS format into CMS objects. This API uses a promise to return 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -13940,11 +13933,11 @@ async function testCmsVerifyTest() {
 
 getContentType(): CmsContentType
 
-Obtains the CMS data type. Currently, signature data and decapsulated data can be obtained.
+Obtains the CMS data type. Currently, only signature data and encapsulated data can be obtained.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -13956,7 +13949,7 @@ Obtains the CMS data type. Currently, signature data and decapsulated data can b
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -14084,9 +14077,9 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
 Verifies the CMS of the **Signed_DATA** content type. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -14104,7 +14097,7 @@ Verifies the CMS of the **Signed_DATA** content type. This API uses a promise to
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -14233,9 +14226,9 @@ getContentData(): Promise\<Uint8Array>
 
 Obtains the plaintext data from CMS data of the signature type. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -14247,7 +14240,7 @@ Obtains the plaintext data from CMS data of the signature type. This API uses a 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -14372,17 +14365,17 @@ async function testCmsVerifyTest() {
 
 getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
 
-Obtains the certificate from CMS data of the signature type by passing enumerated values. The signer certificate or all certificates can be obtained. This API uses a promise to return the result.
+Obtains the certificate from CMS data of the signature type by passing enumerated values. Currently, the signer certificate or all certificates can be obtained. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| type |  [CmsCertType](#cmscerttype22) | Yes| Type of the certificate obtained from the CMS.|
+| type |  [X509Cert](#x509cert) | Yes| Type of the certificate obtained from the CMS.|
 
 **Return value**
 
@@ -14394,7 +14387,7 @@ Obtains the certificate from CMS data of the signature type by passing enumerate
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -14522,17 +14515,17 @@ async function testCmsVerifyTest() {
 
 decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
 
-Verifies the CMS of the **Enveloped_DATA** content type. This API uses a promise to return the result.
+Decrypts CMS **Enveloped_DATA**. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| config |  [CmsEnvelopedDecryptionConfig](#cmsenvelopeddecryptionconfig22) | Yes| CMS decapsulation configuration content.|
+| config |  [X509Cert](#x509cert) | Yes| Configuration for decryption of CMS data.|
 
 **Return value**
 
@@ -14544,7 +14537,7 @@ Verifies the CMS of the **Enveloped_DATA** content type. This API uses a promise
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -14630,7 +14623,7 @@ async function testCmsDecryptTest() {
     console.info('[XTS] Decrypt result: success, decPlainText = ' + decPlainText);
     console.info('decryptEnvelopedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```

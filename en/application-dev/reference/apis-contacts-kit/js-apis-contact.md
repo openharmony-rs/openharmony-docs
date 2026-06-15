@@ -27,7 +27,7 @@ Adds a contact. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -43,7 +43,7 @@ Adds a contact. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -52,14 +52,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.addContact(context, {
     name: {
@@ -87,7 +86,7 @@ Adds a contact. This API uses an asynchronous callback to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [addContact](#contactaddcontact10) instead.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -104,7 +103,7 @@ Adds a contact. This API uses an asynchronous callback to return the result.
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
   
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.addContact(context, {
     name: {
@@ -130,7 +129,7 @@ Adds a contact. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -151,7 +150,7 @@ Adds a contact. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -160,14 +159,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.addContact(context, {
     name: {
@@ -194,7 +192,7 @@ Adds a contact. This API uses a promise to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [addContact](#contactaddcontact10-1) instead.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -236,7 +234,7 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
 
 Deletes a contact. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -250,7 +248,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -259,16 +257,15 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
  // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Pass the key of the selected contact as the second parameter.
     contact.deleteContact(context, data[0].key, (err: BusinessError) => {
@@ -293,7 +290,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [deleteContact](#contactdeletecontact10) instead.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -311,7 +308,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Pass the key of the selected contact as the first parameter.
     contact.deleteContact(data[0].key, (err: BusinessError) => {
@@ -332,7 +329,7 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
 
 Deletes a contact. This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -351,7 +348,7 @@ Deletes a contact. This API uses a promise to return the result.
 
 **Error codes**
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -360,16 +357,15 @@ Deletes a contact. This API uses a promise to return the result.
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Pass the key of the selected contact as the second parameter.
     let promise = contact.deleteContact(context, data[0].key);
@@ -393,7 +389,7 @@ Deletes a contact. This API uses a promise to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [deleteContact](#contactdeletecontact10-1) instead.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -434,7 +430,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 
 Updates a contact. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -448,7 +444,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -457,16 +453,15 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     contact.updateContact(context, {
       id: data[0].id, // Select the contact ID.
@@ -516,7 +511,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     contact.updateContact(context, {
       id: data[0].id, // Select the contact ID.
@@ -544,7 +539,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 
 Updates a contact. (The contact attribute list can be imported.) This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -559,7 +554,7 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 
 **Error codes**
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -568,16 +563,15 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     contact.updateContact(context, {
       id: data[0].id, // Select the contact ID.
@@ -658,7 +652,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 
 Updates a contact. (The contact attribute list can be imported.) This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -678,7 +672,7 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 
 **Error codes**
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -687,16 +681,15 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     let promise = contact.updateContact(context, {
       id: data[0].id, // Select the contact ID.
@@ -780,7 +773,7 @@ isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean
 
 Checks whether the ID of this contact is in the local address book. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -796,7 +789,7 @@ Checks whether the ID of this contact is in the local address book. This API use
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
@@ -805,16 +798,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.isLocalContact(context, /*id*/1, (err: BusinessError, data) => {
+  contact.isLocalContact(context, 1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isLocalContact. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -833,7 +825,7 @@ Checks whether the ID of this contact is in the local address book. This API use
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [isLocalContact](#contactislocalcontact10) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -849,7 +841,7 @@ Checks whether the ID of this contact is in the local address book. This API use
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.isLocalContact(/*id*/1, (err: BusinessError, data) => {
+  contact.isLocalContact(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isLocalContact. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -864,7 +856,7 @@ isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
 
 Checks whether the ID of this contact is in the local address book. This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -885,7 +877,7 @@ Checks whether the ID of this contact is in the local address book. This API use
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -894,16 +886,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let promise = contact.isLocalContact(context, /*id*/1);
+  let promise = contact.isLocalContact(context, 1);
   promise.then((data) => {
     console.info(`Succeeded in isLocalContact. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -919,9 +910,9 @@ Checks whether the ID of this contact is in the local address book. This API use
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. Use [isLocalContact](#contactislocalcontact10-1) instead.[isLocalContact](#contactislocalcontact10-1)
+> This API is supported since API version 7 and deprecated since API version 10. Use [isLocalContact](#contactislocalcontact10-1) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -942,7 +933,7 @@ Checks whether the ID of this contact is in the local address book. This API use
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let promise = contact.isLocalContact(/*id*/1);
+  let promise = contact.isLocalContact(1);
   promise.then((data) => {
     console.info(`Succeeded in isLocalContact. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -956,7 +947,7 @@ isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;):
 
 Checks whether a contact is included in my card. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -972,7 +963,7 @@ Checks whether a contact is included in my card. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -981,16 +972,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.isMyCard(context, /*id*/1, (err: BusinessError, data) => {
+  contact.isMyCard(context, 1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isMyCard. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -1009,7 +999,7 @@ Checks whether a contact is included in my card. This API uses an asynchronous c
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [isMyCard](#contactismycard10) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1025,7 +1015,7 @@ Checks whether a contact is included in my card. This API uses an asynchronous c
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.isMyCard(/*id*/1, (err: BusinessError, data) => {
+  contact.isMyCard(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isMyCard. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -1040,7 +1030,7 @@ isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
 
 Checks whether a contact is included in my card. This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1061,7 +1051,7 @@ Checks whether a contact is included in my card. This API uses a promise to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -1070,16 +1060,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let promise = contact.isMyCard(context, /*id*/1);
+  let promise = contact.isMyCard(context, 1);
   promise.then((data) => {
     console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -1097,7 +1086,7 @@ Checks whether a contact is included in my card. This API uses a promise to retu
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [isMyCard](#contactismycard10-1) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1118,7 +1107,7 @@ Checks whether a contact is included in my card. This API uses a promise to retu
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let promise = contact.isMyCard(/*id*/1);
+  let promise = contact.isMyCard(1);
   promise.then((data) => {
     console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -1132,7 +1121,7 @@ queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
 
 Queries my card. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1147,7 +1136,7 @@ Queries my card. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
@@ -1156,14 +1145,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryMyCard(context, (err: BusinessError, data) => {
     if (err) {
@@ -1184,7 +1172,7 @@ Queries my card. This API uses an asynchronous callback to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryMyCard](#contactquerymycard10) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1214,7 +1202,7 @@ queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback
 
 Queries my card. (The contact attribute list can be imported.) This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1230,7 +1218,7 @@ Queries my card. (The contact attribute list can be imported.) This API uses an 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1239,14 +1227,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryMyCard(context, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -1269,7 +1256,7 @@ Queries my card. (The contact attribute list can be imported.) This API uses an 
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryMyCard](#contactquerymycard10-1) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1302,7 +1289,7 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
 
 Queries my card. (The contact attribute list can be imported.) This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1323,7 +1310,7 @@ Queries my card. (The contact attribute list can be imported.) This API uses a p
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1332,14 +1319,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryMyCard(context, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -1361,7 +1347,7 @@ Queries my card. (The contact attribute list can be imported.) This API uses a p
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryMyCard](#contactquerymycard10-2) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1475,7 +1461,7 @@ Selects a contact. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
@@ -1544,7 +1530,7 @@ Selects a contact. (Filter criteria can be transferred during contact selection.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
@@ -1590,7 +1576,7 @@ Selects a contact. (Filter criteria can be transferred during contact selection.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
@@ -1613,7 +1599,7 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
 
 Queries a contact based on the specified key. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1629,7 +1615,7 @@ Queries a contact based on the specified key. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1638,14 +1624,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', (err: BusinessError, data) => {
     if (err) {
@@ -1666,7 +1651,7 @@ Queries a contact based on the specified key. This API uses an asynchronous call
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContact](#contactquerycontact10) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1697,7 +1682,7 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
 
 Queries a contact based on the specified key and holder. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1714,7 +1699,7 @@ Queries a contact based on the specified key and holder. This API uses an asynch
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1723,14 +1708,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', {
     holderId: 1,
@@ -1755,7 +1739,7 @@ Queries a contact based on the specified key and holder. This API uses an asynch
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContact](#contactquerycontact10-1) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1791,7 +1775,7 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
 
 Queries a contact based on the specified key and attributes. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1808,7 +1792,7 @@ Queries a contact based on the specified key and attributes. This API uses an as
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1817,14 +1801,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -1847,7 +1830,7 @@ Queries a contact based on the specified key and attributes. This API uses an as
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContact](#contactquerycontact10-2) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1881,7 +1864,7 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
 
 Queries a contact based on the specified key, holder, and attributes. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1899,7 +1882,7 @@ Queries a contact based on the specified key, holder, and attributes. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -1908,14 +1891,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', {
     holderId: 1,
@@ -1942,7 +1924,7 @@ Queries a contact based on the specified key, holder, and attributes. This API u
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContact](#contactquerycontact10-3) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1981,7 +1963,7 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
 
 Queries a contact based on the specified key, holder, and attributes. This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2004,7 +1986,7 @@ Queries a contact based on the specified key, holder, and attributes. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2013,14 +1995,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContact(context, 'xxx', {
     holderId: 1,
@@ -2046,7 +2027,7 @@ Queries a contact based on the specified key, holder, and attributes. This API u
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContact](#contactquerycontact10-4) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2089,7 +2070,7 @@ queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;
 
 Queries all contacts. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2104,7 +2085,7 @@ Queries all contacts. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2113,14 +2094,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, (err: BusinessError, data) => {
     if (err) {
@@ -2141,7 +2121,7 @@ Queries all contacts. This API uses an asynchronous callback to return the resul
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContacts](#contactquerycontacts10) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2171,7 +2151,7 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
 
 Queries all contacts based on the specified holder. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2187,7 +2167,7 @@ Queries all contacts based on the specified holder. This API uses an asynchronou
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2196,14 +2176,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, {
     holderId: 1,
@@ -2226,9 +2205,9 @@ Queries all contacts based on the specified holder. This API uses an asynchronou
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. Use [queryContacts](#contactquerycontacts10) instead.
+> This API is supported since API version 7 and deprecated since API version 10. Use [queryContacts](#contactquerycontacts10-1) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2263,7 +2242,7 @@ queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallba
 
 Queries all contacts based on the specified attributes. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2279,7 +2258,7 @@ Queries all contacts based on the specified attributes. This API uses an asynchr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2288,14 +2267,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -2318,7 +2296,7 @@ Queries all contacts based on the specified attributes. This API uses an asynchr
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContacts](#contactquerycontacts10-2) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2351,7 +2329,7 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
 
 Queries all contacts based on the specified holder and attributes. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2368,7 +2346,7 @@ Queries all contacts based on the specified holder and attributes. This API uses
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2377,14 +2355,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, {
     holderId: 1,
@@ -2411,7 +2388,7 @@ Queries all contacts based on the specified holder and attributes. This API uses
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContacts](#contactquerycontacts10-3) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2449,7 +2426,7 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
 
 Queries all contacts based on the specified holder and attributes. This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2471,7 +2448,7 @@ Queries all contacts based on the specified holder and attributes. This API uses
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2480,14 +2457,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContacts(context, {
     holderId: 1,
@@ -2513,7 +2489,7 @@ Queries all contacts based on the specified holder and attributes. This API uses
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContacts](#contactquerycontacts10-4) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2553,9 +2529,9 @@ Queries all contacts based on the specified holder and attributes. This API uses
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Queries a contact based on the specified phone number. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2571,7 +2547,7 @@ Queries a contact based on the specified phone number. This API uses an asynchro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2580,14 +2556,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', (err: BusinessError, data) => {
     if (err) {
@@ -2602,13 +2577,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Queries a contact based on the specified phone number. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContactsByPhoneNumber](#contactquerycontactsbyphonenumber10) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2637,9 +2612,9 @@ Queries a contact based on the specified phone number. This API uses an asynchro
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Queries a contact based on the specified phone number and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2656,7 +2631,7 @@ Queries a contact based on the specified phone number and holder. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2665,14 +2640,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
@@ -2691,13 +2665,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Queries a contact based on the specified phone number and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContactsByPhoneNumber](#contactquerycontactsbyphonenumber10-1) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2731,9 +2705,9 @@ Queries a contact based on the specified phone number and holder. This API uses 
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Queries a contact based on the specified phone number and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2750,7 +2724,7 @@ Queries a contact based on the specified phone number and attributes. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2759,14 +2733,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -2783,13 +2756,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Queries a contact based on the specified phone number and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContactsByPhoneNumber](#contactquerycontactsbyphonenumber10-2) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2821,9 +2794,9 @@ Queries a contact based on the specified phone number and attributes. This API u
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Queries a contact based on the specified phone number, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2841,7 +2814,7 @@ Queries a contact based on the specified phone number, holder, and attributes. T
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2850,14 +2823,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
@@ -2878,13 +2850,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Queries a contact based on the specified phone number, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContactsByPhoneNumber](#contactquerycontactsbyphonenumber10-3) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2921,9 +2893,9 @@ Queries a contact based on the specified phone number, holder, and attributes. T
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-Queries a contact based on the specified phone number, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2946,7 +2918,7 @@ Queries a contact based on the specified phone number, holder, and attributes. T
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -2955,14 +2927,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
@@ -2982,13 +2953,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-Queries a contact based on the specified phone number, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
+Queries a contact based on the specified phone number, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **phoneNumbers** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key. If an application calls this API in the background to obtain contact information, the application must request the corresponding continuous task.
 
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContactsByPhoneNumber](#contactquerycontactsbyphonenumber10-4) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3031,7 +3002,7 @@ queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&l
 
 Queries a contact based on the specified email. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3047,7 +3018,7 @@ Queries a contact based on the specified email. This API uses an asynchronous ca
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3056,14 +3027,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', (err: BusinessError, data) => {
     if (err) {
@@ -3084,7 +3054,7 @@ Queries a contact based on the specified email. This API uses an asynchronous ca
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContactsByEmail](#contactquerycontactsbyemail10) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3115,7 +3085,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
 
 Queries a contact based on the specified email and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3132,7 +3102,7 @@ Queries a contact based on the specified email and holder. This API uses an asyn
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3141,14 +3111,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
@@ -3173,7 +3142,7 @@ Queries a contact based on the specified email and holder. This API uses an asyn
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContactsByEmail](#contactquerycontactsbyemail10-1) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3209,7 +3178,7 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
 
 Queries a contact based on the specified email and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3226,7 +3195,7 @@ Queries a contact based on the specified email and attributes. This API uses an 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3235,14 +3204,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', {
     attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
@@ -3265,7 +3233,7 @@ Queries a contact based on the specified email and attributes. This API uses an 
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContactsByEmail](#contactquerycontactsbyemail10-2) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3299,7 +3267,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
 
 Queries a contact based on the specified email, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3317,7 +3285,7 @@ Queries a contact based on the specified email, holder, and attributes. This API
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3326,14 +3294,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
@@ -3360,7 +3327,7 @@ Queries a contact based on the specified email, holder, and attributes. This API
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContactsByEmail](#contactquerycontactsbyemail10-3) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3399,7 +3366,7 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
 
 Queries a contact based on the specified email, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](#contactquerycontact10-3) to query the contact based on the specified key.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3422,7 +3389,7 @@ Queries a contact based on the specified email, holder, and attributes. This API
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3431,14 +3398,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
@@ -3464,7 +3430,7 @@ Queries a contact based on the specified email, holder, and attributes. This API
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryContactsByEmail](#contactquerycontactsbyemail10-4) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3507,7 +3473,7 @@ queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;
 
 Queries all groups of a contact. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3520,7 +3486,7 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 
 **Error codes**
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3529,14 +3495,13 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryGroups(context, (err: BusinessError, data) => {
     if (err) {
@@ -3557,7 +3522,7 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryGroups](#contactquerygroups10) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3587,7 +3552,7 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
 
 Queries all groups of a contact based on the specified holder. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3603,7 +3568,7 @@ Queries all groups of a contact based on the specified holder. This API uses an 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3612,14 +3577,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryGroups(context, {
     holderId: 1,
@@ -3644,7 +3608,7 @@ Queries all groups of a contact based on the specified holder. This API uses an 
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryGroups](#contactquerygroups10-1) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3679,7 +3643,7 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
 
 Queries all groups of a contact based on the specified holder. This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3700,7 +3664,7 @@ Queries all groups of a contact based on the specified holder. This API uses a p
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3709,14 +3673,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryGroups(context, {
     holderId: 1,
@@ -3740,7 +3703,7 @@ Queries all groups of a contact based on the specified holder. This API uses a p
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryGroups](#contactquerygroups10-2) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3779,7 +3742,7 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
 
 Queries all applications that have created contacts. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3794,7 +3757,7 @@ Queries all applications that have created contacts. This API uses an asynchrono
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3803,14 +3766,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryHolders(context, (err: BusinessError, data) => {
     if (err) {
@@ -3831,7 +3793,7 @@ Queries all applications that have created contacts. This API uses an asynchrono
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryHolders](#contactqueryholders10) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3861,7 +3823,7 @@ queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 
 Queries all applications that have created contacts. This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3881,7 +3843,7 @@ Queries all applications that have created contacts. This API uses a promise to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
@@ -3890,14 +3852,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryHolders(context);
   promise.then((data) => {
@@ -3917,7 +3878,7 @@ Queries all applications that have created contacts. This API uses a promise to 
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryHolders](#contactqueryholders10-1) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3946,7 +3907,7 @@ queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): 
 
 Queries the key of a contact based on the specified contact ID. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3962,7 +3923,7 @@ Queries the key of a contact based on the specified contact ID. This API uses an
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -3971,16 +3932,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.queryKey(context, /*id*/1, (err: BusinessError, data) => {
+  contact.queryKey(context, 1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Key. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -3999,7 +3959,7 @@ Queries the key of a contact based on the specified contact ID. This API uses an
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryKey](#contactquerykey10) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -4015,7 +3975,7 @@ Queries the key of a contact based on the specified contact ID. This API uses an
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.queryKey(/*id*/1, (err: BusinessError, data) => {
+  contact.queryKey(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Key. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -4030,7 +3990,7 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
 
 Queries the key of a contact based on the specified contact ID and holder. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -4047,7 +4007,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -4056,16 +4016,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.queryKey(context, /*id*/1, {
+  contact.queryKey(context, 1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
@@ -4088,7 +4047,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryKey](#contactquerykey10-1) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -4105,7 +4064,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.queryKey(/*id*/1, {
+  contact.queryKey(1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
@@ -4124,7 +4083,7 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
 
 Queries the key of a contact based on the specified contact ID and holder. This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -4146,7 +4105,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
@@ -4155,16 +4114,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let promise = contact.queryKey(context, /*id*/1, {
+  let promise = contact.queryKey(context, 1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
@@ -4186,7 +4144,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
 >
 > This API is supported since API version 7 and deprecated since API version 10. Use [queryKey](#contactquerykey10-2) instead.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -4208,7 +4166,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let promise = contact.queryKey(/*id*/1, {
+  let promise = contact.queryKey(1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
@@ -4228,7 +4186,7 @@ Queries the number of all contacts. This API uses a promise to return the result
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
-**Permission required**: ohos.permission.READ_CONTACTS
+**Required permissions**: ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -4248,7 +4206,7 @@ Queries the number of all contacts. This API uses a promise to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 16700001      | General error. |
@@ -4259,7 +4217,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Obtain the application context.
+// Obtain the context within the component.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let promise = contact.queryContactsCount(context);
 promise.then((data) => {
@@ -4296,7 +4254,7 @@ Opens the **Add contact** page to add a contact. This API uses a promise to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
-| ID                | Error Message                                      |
+| Error Code                | Error Message                                      |
 | --------------------- | ------------------------------------------ |
 | 401       | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | 801       | The specified SystemCapability name was not found. |
@@ -4308,14 +4266,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-<!--code_no_check-->
 ```js
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Obtain the application context.
+// Obtain the context within the component.
 let contactInfo: contact.Contact = {
   name: {
     fullName: 'xxx'
@@ -4360,7 +4317,7 @@ Opens the **Save to existing** page to save a contact to an existing one. This A
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
-| ID                | Error Message                                      |
+| Error Code                | Error Message                                      |
 | --------------------- | ------------------------------------------ |
 | 401       | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 | 801       | The specified SystemCapability name was not found. |
@@ -4373,14 +4330,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-<!--code_no_check-->
 ```js
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Obtain the application context.
+// Obtain the context within the component.
 let contactInfo: contact.Contact = {
   id: 1,
   name: {
@@ -4407,7 +4363,7 @@ Adds contacts in batches. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
-**Permission required**: ohos.permission.WRITE_CONTACTS
+**Required permissions**: ohos.permission.WRITE_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -4428,7 +4384,7 @@ Adds contacts in batches. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
-| ID| Error Message          |
+| Error Code| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 16700001      | General error. |
@@ -4438,7 +4394,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 >**NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 ```js
@@ -4461,6 +4417,127 @@ contact.addContacts(context, [contactInfo1, contactInfo2]).then((data) => {
 });
 ```
 
+## contact.hasMatchedCallLog<sup>24+</sup>
+
+hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number, withinTime: number): Promise&lt;boolean&gt;
+
+Checks whether there are call records that meet the specified conditions. This API applies only to carrier calls. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Required permissions**: ohos.permission.CHECK_CALL_LOG
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
+**Parameters**
+
+| Name | Type               | Mandatory| Description                                                        |
+| ------- | ------------------- | ---- | ------------------------------------------------------------ |
+| context | Context             | Yes  | Application context. For the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| phoneNumber | string                                  | Yes  | Phone number of the contacts.                                          |
+| minDuration      | number                      | Yes  | Minimum call duration, in seconds. The value must be greater than 0.       |
+| withinTime       | number | Yes  | Period of time that the start time and end time of calls should be within, in seconds. This period starts from the current time. The time range for the query must be greater than 0 and cannot exceed 6 hours. If the time range exceeds 6 hours, calls within 6 hours are queried.              |
+
+**Return Value**
+
+| Type                 | Description                             |
+| --------------------- | --------------------------------- |
+| Promise&lt;boolean&gt; | Promise used to return the result of whether there are call records that meet the specified conditions. The value **true** indicates that there are such records, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+
+| Error Code| Error Message          |
+| -------- | ------------------ |
+| 201      | Permission denied. |
+| 16700001      | General error. |
+| 16700002      | Invalid parameter value. |
+
+**Example**
+
+>**NOTE**
+>
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```js
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context within the component.
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+const phoneNumber = '138xxxxxxxx';
+const minDuration = 60;
+const withinTime = 2 * 60 *60;
+
+// Call the API.
+contact.hasMatchedCallLog(context, phoneNumber, minDuration, withinTime).then((hasMatch:boolean) => {
+  console.info(`Has matched call log: ${hasMatch}`);
+});
+```
+
+## contact.hasMatchedCallLog<sup>24+</sup>
+
+hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): Promise&lt;boolean&gt;
+
+Checks whether there are call records that meet the specified conditions. By default, call records within the last 6 hours are queried. This API applies only to carrier calls. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Required permissions**: ohos.permission.CHECK_CALL_LOG
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
+**Parameters**
+
+| Name | Type               | Mandatory| Description                                                        |
+| ------- | ------------------- | ---- | ------------------------------------------------------------ |
+| context | Context             | Yes  | Application context. For the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| phoneNumber | string                                  | Yes  | Phone number of the contacts.                                          |
+| minDuration      | number                      | Yes  | Minimum call duration, in seconds. The value must be greater than 0.      |
+
+**Return Value**
+
+| Type                 | Description                             |
+| --------------------- | --------------------------------- |
+| Promise&lt;boolean&gt; | Promise used to return the result of whether there are call records that meet the specified conditions. The value **true** indicates that there are such records, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+
+| Error Code| Error Message          |
+| -------- | ------------------ |
+| 201      | Permission denied. |
+| 16700001      | General error. |
+| 16700002      | Invalid parameter value. |
+
+**Example**
+
+>**NOTE**
+>
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```js
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context within the component.
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+const phoneNumber = '138xxxxxxxx';
+const minDuration = 60;
+// Call the API to query call records. By default, call records within the last 6 hours are queried.
+contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:boolean) => {
+  console.info(`Has matched call log: ${hasMatch}`);
+});
+```
+
 ## ContactSelectionOptions<sup>10+</sup>
 
 Defines the contact selection options.
@@ -4476,7 +4553,7 @@ Defines the contact selection options.
 
 ## ContactSelectionFilter<sup>15+</sup>
 
-Defines the contact selection filter.
+Describes the contact selection filter.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -4581,7 +4658,7 @@ Defines a contact.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
-### Constant
+### Constants
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4591,7 +4668,7 @@ Defines a contact.
 | ------------------ | ---- | ---- | ---------------- |
 | INVALID_CONTACT_ID | number   | -1   | Default contact ID.|
 
-### Attributes
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4705,7 +4782,7 @@ Defines a contact's email.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
-### Constant
+### Constants
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4719,7 +4796,7 @@ Defines a contact's email.
 | EMAIL_OTHER      | number    | 3    | Other mailbox.  |
 | INVALID_LABEL_ID | number    | -1   | Invalid mailbox.  |
 
-### Attributes
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4783,7 +4860,7 @@ Defines a contact's event.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
-### Constant
+### Constants
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4797,7 +4874,7 @@ Defines a contact's event.
 | EVENT_BIRTHDAY    | number   | 3    | Birthday event.    |
 | INVALID_LABEL_ID  | number   | -1   | Invalid event.    |
 
-### Attributes
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4807,7 +4884,7 @@ Defines a contact's event.
 | --------- | -------- | ---- | ---- | -------------- |
 | eventDate | string   | No  | No  | Event date.  |
 | labelName | string   | No  | Yes  | Event type.|
-| labelId   | number   | No  | Yes  | Event type ID.    |
+| labelId   | number   | No  | Yes  | Event type.    |
 
 **Example**
 
@@ -4858,7 +4935,7 @@ Enumerates IM addresses.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
-### Constant
+### Constants
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -4866,17 +4943,17 @@ Enumerates IM addresses.
 
 | Name            |   Type  | Value  | Description                |
 | ---------------- | ---- | ---- | -------------------- |
-| CUSTOM_LABEL     | number   | -1   | Custom IM|
-| IM_AIM           | number   | 0    | AIM   |
-| IM_MSN           | number   | 1    | MSN   |
-| IM_YAHOO         | number   | 2    | Yahoo |
-| IM_SKYPE         | number   | 3    | Skype |
-| IM_QQ            | number   | 4    | QQ    |
-| IM_ICQ           | number   | 6    | ICQ   |
-| IM_JABBER        | number   | 7    | JABBER|
-| INVALID_LABEL_ID | number   | -2   | Invalid IM|
+| CUSTOM_LABEL     | number   | -1   | Custom IM.|
+| IM_AIM           | number   | 0    | AIM.   |
+| IM_MSN           | number   | 1    | MSN.   |
+| IM_YAHOO         | number   | 2    | Yahoo. |
+| IM_SKYPE         | number   | 3    | Skype. |
+| IM_QQ            | number   | 4    | QQ.    |
+| IM_ICQ           | number   | 6    | ICQ.   |
+| IM_JABBER        | number   | 7    | JABBER.|
+| INVALID_LABEL_ID | number   | -2   | Invalid IM.|
 
-### Attributes
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5013,7 +5090,7 @@ Defines a contact's phone number.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
-### Constant
+### Constants
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5044,7 +5121,7 @@ Defines a contact's phone number.
 | NUM_MMS          |  number  | 20   | MMS phone.                                  |
 | INVALID_LABEL_ID |  number  | -1   | Invalid phone type.                                  |
 
-### Attributes
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5054,7 +5131,7 @@ Defines a contact's phone number.
 | ----------- | -------- | ---- | ---- | ------------------ |
 | labelName   | string   | No  | Yes  | Phone number type.|
 | phoneNumber | string   | No  | No  | Phone number.        |
-| labelId     | number   | No  | Yes  | Phone number ID.    |
+| labelId     | number   | No  | Yes  | Phone number type.    |
 
 **Example**
 
@@ -5082,7 +5159,7 @@ Defines a contact's portrait.
 >
 >  Since API version 22, contact portraits can be set in URI or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) format. (Currently, contact avatars cannot be set through the [addContactViaUI](#contactaddcontactviaui15) or [saveToExistingContactViaUI](#contactsavetoexistingcontactviaui15) API.)<br>
 URI indicates the address of the contact portrait file that can be accessed, and [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) indicates the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) object generated based on the contact portrait resource.<br>
->  Contact portrait resources can be read only in URI format. This format can be opened only in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen) mode and cannot be directly displayed in the **Image** component. The contact portrait resources need to be read and converted into the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) format for display.
+>  Since API version 22, the profile picture resource can be read through URI. The resource can be opened only in **fileIo.open** mode and cannot be directly displayed in the **Image** component using a URI. You need to read the resource and display it in [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) format.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -5121,7 +5198,7 @@ Defines a contact's postal address.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
-### Constant
+### Constants
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5132,10 +5209,10 @@ Defines a contact's postal address.
 | CUSTOM_LABEL     | number   | 0    | Custom postal address type.|
 | ADDR_HOME        | number   | 1    | Home address.      |
 | ADDR_WORK        | number   | 2    | Work address.      |
-| ADDR_OTHER       | number   | 3    | Other addresses.      |
+| ADDR_OTHER       | number   | 3    | Other address types.      |
 | INVALID_LABEL_ID | number   | -1   | Invalid address type.      |
 
-### Attributes
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5181,7 +5258,7 @@ Defines a contact's relationship.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
-### Constant
+### Constants
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5191,7 +5268,7 @@ Defines a contact's relationship.
 | ------------------------- | ---- | ---- | ------------------ |
 | CUSTOM_LABEL              | number   | 0    | Custom relationship.  |
 | RELATION_ASSISTANT        | number   | 1    | Assistant.    |
-| RELATION_BROTHER          | number   | 2    | Sibling.    |
+| RELATION_BROTHER          | number   | 2    | Brother.    |
 | RELATION_CHILD            | number   | 3    | Child.    |
 | RELATION_DOMESTIC_PARTNER | number   | 4    | Domestic partner.|
 | RELATION_FATHER           | number   | 5    | Father.    |
@@ -5206,7 +5283,7 @@ Defines a contact's relationship.
 | RELATION_SPOUSE           | number   | 14   | Spouse.    |
 | INVALID_LABEL_ID          | number   | -1   | Invalid relationship.  |
 
-### Attributes
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5216,7 +5293,7 @@ Defines a contact's relationship.
 | ------------ | -------- | ---- | ---- | -------------- |
 | labelName    | string   | No  | Yes  | Relationship type.|
 | relationName | string   | No  | No  | Relationship name.    |
-| labelId      | number   | No  | Yes  | Relationship ID.    |
+| labelId      | number   | No  | Yes  | Relationship type.    |
 
 **Example**
 
@@ -5245,7 +5322,7 @@ Defines a contact's SIP address.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
-### Constant
+### Constants
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5259,7 +5336,7 @@ Defines a contact's SIP address.
 | SIP_OTHER        | number   | 3    | Other SIP address.  |
 | INVALID_LABEL_ID | number   | -1   | Invalid SIP address.  |
 
-### Attributes
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

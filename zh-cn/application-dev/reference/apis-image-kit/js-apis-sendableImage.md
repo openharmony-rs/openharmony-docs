@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -48,7 +48,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo() {
+async function CreatePixelMap() {
     const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
     let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
     sendableImage.createPixelMap(color, opts).then((pixelMap: sendableImage.PixelMap) => {
@@ -100,6 +100,7 @@ createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { rpc } from '@kit.IPCKit';
@@ -125,7 +126,7 @@ class MySequence implements rpc.Parcelable {
     return true;
   }
 }
-async function Demo() {
+async function CreatePixelMapFromParcel() {
   const color: ArrayBuffer = new ArrayBuffer(96);
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
@@ -192,11 +193,12 @@ createPixelMapFromSurface(surfaceId: string, region: image.Region): Promise\<Pix
 **示例：**
 
 ```ts
+
 import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(surfaceId: string) {
+async function CreatePixelMapFromSurface(surfaceId: string) {
   let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
   sendableImage.createPixelMapFromSurface(surfaceId, region).then(() => {
     console.info('Succeeded in creating pixelmap from Surface');
@@ -243,7 +245,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo() {
+async function CreatePixelMapSync() {
     const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
     let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
     let pixelMap : sendableImage.PixelMap = sendableImage.createPixelMapSync(color, opts);
@@ -287,7 +289,7 @@ convertFromPixelMap(pixelmap: image.PixelMap): PixelMap
 import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo() {
+async function ConvertFromPixelMap() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
   let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
   let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
@@ -332,7 +334,7 @@ convertToPixelMap(pixelmap: PixelMap): image.PixelMap
 import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo() {
+async function ConvertToPixelMap() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
   let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
   let sendablePixelMap : sendableImage.PixelMap = sendableImage.createPixelMapSync(color, opts);
@@ -401,7 +403,7 @@ readPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function ReadPixelsToBuffer(pixelMap : sendableImage.PixelMap) {
   const readBuffer: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
   if (pixelMap != undefined) {
     pixelMap.readPixelsToBuffer(readBuffer).then(() => {
@@ -443,7 +445,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap: sendableImage.PixelMap) {
+async function ReadPixelsToBufferSync(pixelMap: sendableImage.PixelMap) {
   const bufferSize = pixelMap.getPixelBytesNumber();
   const readBuffer: ArrayBuffer = new ArrayBuffer(bufferSize);
   if (pixelMap != undefined) {
@@ -481,7 +483,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function ReadPixels(pixelMap : sendableImage.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(8),
     offset: 0,
@@ -529,7 +531,7 @@ readPixelsSync(area: image.PositionArea): void
 import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function ReadPixelsSync(pixelMap : sendableImage.PixelMap) {
   const area : image.PositionArea = {
     pixels: new ArrayBuffer(8),
     offset: 0,
@@ -571,7 +573,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function WritePixels(pixelMap : sendableImage.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(8),
     offset: 0,
@@ -623,7 +625,7 @@ writePixelsSync(area: image.PositionArea): void
 import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function WritePixelsSync(pixelMap : sendableImage.PixelMap) {
   const area: image.PositionArea = {
     pixels: new ArrayBuffer(8),
     offset: 0,
@@ -668,7 +670,7 @@ writeBufferToPixels(src: ArrayBuffer): Promise\<void>
 import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function WriteBufferToPixels(pixelMap : sendableImage.PixelMap) {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
@@ -714,7 +716,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap: sendableImage.PixelMap) {
+async function WriteBufferToPixelsSync(pixelMap: sendableImage.PixelMap) {
   const bufferSize = pixelMap.getPixelBytesNumber();
   const color : ArrayBuffer = new ArrayBuffer(bufferSize);
   let bufferArr : Uint8Array = new Uint8Array(color);
@@ -750,7 +752,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function GetImageInfo(pixelMap : sendableImage.PixelMap) {
   if (pixelMap != undefined) {
     pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
       if (imageInfo != undefined) {
@@ -793,7 +795,7 @@ getImageInfoSync(): image.ImageInfo
 import { image } from '@kit.ImageKit';
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function GetImageInfoSync(pixelMap : sendableImage.PixelMap) {
   if (pixelMap != undefined) {
     let imageInfo : image.ImageInfo = pixelMap.getImageInfoSync();
   }
@@ -821,7 +823,7 @@ getBytesNumberPerRow(): number
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function GetBytesNumberPerRow(pixelMap : sendableImage.PixelMap) {
   let rowCount: number = pixelMap.getBytesNumberPerRow();
 }
 ```
@@ -847,7 +849,7 @@ getPixelBytesNumber(): number
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function GetPixelBytesNumber(pixelMap : sendableImage.PixelMap) {
   let pixelBytesNumber: number = pixelMap.getPixelBytesNumber();
 }
 ```
@@ -873,7 +875,7 @@ getDensity():number
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function GetDensity(pixelMap : sendableImage.PixelMap) {
   let getDensity: number = pixelMap.getDensity();
 }
 ```
@@ -906,7 +908,7 @@ opacity(rate: number): Promise\<void>
 import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function Opacity(pixelMap : sendableImage.PixelMap) {
   let rate: number = 0.5;
   if (pixelMap != undefined) {
     pixelMap.opacity(rate).then(() => {
@@ -948,7 +950,7 @@ opacitySync(rate: number): void
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function OpacitySync(pixelMap : sendableImage.PixelMap) {
   let rate : number = 0.5;
   if (pixelMap != undefined) {
     pixelMap.opacitySync(rate);
@@ -980,7 +982,7 @@ createAlphaPixelmap(): Promise\<PixelMap>
 import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function CreateAlphaPixelmap(pixelMap : sendableImage.PixelMap) {
   if (pixelMap != undefined) {
     pixelMap.createAlphaPixelmap().then((alphaPixelMap: sendableImage.PixelMap) => {
       console.info('Succeeded in creating alpha pixelmap.');
@@ -1023,7 +1025,7 @@ createAlphaPixelmapSync(): PixelMap
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function CreateAlphaPixelmapSync(pixelMap : sendableImage.PixelMap) {
   let resPixelMap : sendableImage.PixelMap = pixelMap.createAlphaPixelmapSync();
   return resPixelMap;
 }
@@ -1058,7 +1060,7 @@ scale(x: number, y: number): Promise\<void>
 import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function Scale(pixelMap : sendableImage.PixelMap) {
   let scaleX: number = 2.0;
   let scaleY: number = 1.0;
   if (pixelMap != undefined) {
@@ -1103,7 +1105,7 @@ scaleSync(x: number, y: number): void
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function ScaleSync(pixelMap : sendableImage.PixelMap) {
   let scaleX: number = 2.0;
   let scaleY: number = 1.0;
   if (pixelMap != undefined) {
@@ -1143,7 +1145,7 @@ translate后的图片尺寸改变为：width+X，height+Y，建议translate后�
 import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function Translate(pixelMap : sendableImage.PixelMap) {
   let translateX: number = 50.0;
   let translateY: number = 10.0;
   if (pixelMap != undefined) {
@@ -1189,7 +1191,7 @@ translate后的图片尺寸改变为：width+X，height+Y，建议translate后�
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function TranslateSync(pixelMap : sendableImage.PixelMap) {
   let translateX : number = 50.0;
   let translateY : number = 10.0;
   if (pixelMap != undefined) {
@@ -1231,7 +1233,7 @@ rotate(angle: number): Promise\<void>
 import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function Rotate(pixelMap : sendableImage.PixelMap) {
   let angle: number = 90.0;
   if (pixelMap != undefined) {
     pixelMap.rotate(angle).then(() => {
@@ -1278,7 +1280,7 @@ rotateSync(angle: number): void
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function RotateSync(pixelMap : sendableImage.PixelMap) {
   let angle : number = 90.0;
   if (pixelMap != undefined) {
     pixelMap.rotateSync(angle);
@@ -1315,7 +1317,7 @@ flip(horizontal: boolean, vertical: boolean): Promise\<void>
 import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function Flip(pixelMap : sendableImage.PixelMap) {
   let horizontal: boolean = true;
   let vertical: boolean = false;
   if (pixelMap != undefined) {
@@ -1360,7 +1362,7 @@ flipSync(horizontal: boolean, vertical: boolean): void
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function FlipSync(pixelMap : sendableImage.PixelMap) {
   let horizontal : boolean = true;
   let vertical : boolean = false;
   if (pixelMap != undefined) {
@@ -1398,7 +1400,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function Crop(pixelMap : sendableImage.PixelMap) {
   let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
   if (pixelMap != undefined) {
     pixelMap.crop(region).then(() => {
@@ -1442,7 +1444,7 @@ cropSync(region: image.Region): void
 import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function CropSync(pixelMap : sendableImage.PixelMap) {
   let region : image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
   if (pixelMap != undefined) {
     pixelMap.cropSync(region);
@@ -1479,7 +1481,7 @@ getColorSpace(): colorSpaceManager.ColorSpaceManager
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function GetColorSpace(pixelMap : sendableImage.PixelMap) {
   if (pixelMap != undefined) {
     let csm = pixelMap.getColorSpace();
   }
@@ -1515,7 +1517,7 @@ setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void
 import { sendableImage } from '@kit.ImageKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function SetColorSpace(pixelMap : sendableImage.PixelMap) {
   let colorSpaceName = colorSpaceManager.ColorSpace.SRGB; // colorSpaceManager.ColorSpace该对象当前仅支持2in1/PC设备使用。
   let csm: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
   if (pixelMap != undefined) {
@@ -1562,7 +1564,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(pixelMap : sendableImage.PixelMap) {
+async function ApplyColorSpace(pixelMap : sendableImage.PixelMap) {
     let colorSpaceName = colorSpaceManager.ColorSpace.SRGB; // colorSpaceManager.ColorSpace该对象当前仅支持2in1/PC设备使用。
     let targetColorSpace: colorSpaceManager.ColorSpaceManager = colorSpaceManager.create(colorSpaceName);
     pixelMap.applyColorSpace(targetColorSpace).then(() => {
@@ -1599,6 +1601,7 @@ marshalling(sequence: rpc.MessageSequence): void
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { rpc } from '@kit.IPCKit';
@@ -1626,7 +1629,7 @@ class MySequence implements rpc.Parcelable {
   }
 }
 
-async function Demo() {
+async function Marshalling() {
   const color: ArrayBuffer = new ArrayBuffer(96);
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
@@ -1690,6 +1693,7 @@ unmarshalling(sequence: rpc.MessageSequence): Promise\<PixelMap>
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 import { rpc } from '@kit.IPCKit';
@@ -1717,7 +1721,7 @@ class MySequence implements rpc.Parcelable {
   }
 }
 
-async function Demo() {
+async function Unmarshalling() {
   const color: ArrayBuffer = new ArrayBuffer(96);
   let bufferArr: Uint8Array = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i++) {
@@ -1772,7 +1776,7 @@ release():Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(pixelMap: sendableImage.PixelMap) {
+async function Release(pixelMap: sendableImage.PixelMap) {
   if (pixelMap != undefined) {
     await pixelMap.release().then(() => {
       console.info('Succeeded in releasing pixelmap object.');
@@ -1847,7 +1851,7 @@ createImageSource(uri: string): ImageSource
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo(context : Context) {
+async function CreateImageSource(context : Context) {
   const path: string = context.cacheDir + "/test.jpg";
   const sendableImageSourceObj: sendableImage.ImageSource = sendableImage.createImageSource(path);
 }
@@ -1881,11 +1885,11 @@ createImageSource(fd: number): ImageSource
 
 ```ts
 import { sendableImage } from '@kit.ImageKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
-async function Demo(context : Context) {
+async function CreateImageSource(context : Context) {
   const path: string = context.cacheDir + "/test.jpg";
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const sendableImageSourceObj: sendableImage.ImageSource = sendableImage.createImageSource(file.fd);
 }
 ```
@@ -1921,7 +1925,7 @@ createImageSource(buf: ArrayBuffer): ImageSource
 ```ts
 import { sendableImage } from '@kit.ImageKit';
 
-async function Demo() {
+async function CreateImageSource() {
   const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
   const sendableImageSourceObj: sendableImage.ImageSource = sendableImage.createImageSource(buf);
 }
@@ -1965,7 +1969,7 @@ createImageReceiver(size: image.Size, format: image.ImageFormat, capacity: numbe
 import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo() {
+async function CreateImageReceiver() {
     let size: image.Size = {
         height: 8192,
         width: 8
@@ -2012,7 +2016,7 @@ createPixelMap(options?: image.DecodingOptions): Promise\<PixelMap>
 import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(context : Context) {
+async function CreatePixelMap(context : Context) {
   const path: string = context.cacheDir + "/test.jpg";
   const sendableImageSourceObj: sendableImage.ImageSource = sendableImage.createImageSource(path);
   sendableImageSourceObj.createPixelMap().then((pixelMap: sendableImage.PixelMap) => {
@@ -2047,7 +2051,7 @@ release(): Promise\<void>
 import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(context : Context) {
+async function Release(context : Context) {
   const path: string = context.cacheDir + "/test.jpg";
   const sendableImageSourceObj: sendableImage.ImageSource = sendableImage.createImageSource(path);
   sendableImageSourceObj.release().then(() => {
@@ -2102,7 +2106,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo() {
+async function GetComponent() {
   let size: image.Size = {
     height: 8192,
     width: 8
@@ -2144,7 +2148,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo() {
+async function Release() {
   let size: image.Size = {
     height: 8192,
     width: 8
@@ -2196,7 +2200,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo() {
+async function GetReceivingSurfaceId() {
   let size: image.Size = {
     height: 8192,
     width: 8
@@ -2234,7 +2238,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo() {
+async function ReadLatestImage() {
   let size: image.Size = {
     height: 8192,
     width: 8
@@ -2272,7 +2276,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo() {
+async function ReadNextImage() {
   let size: image.Size = {
     height: 8192,
     width: 8
@@ -2307,7 +2311,7 @@ on(type: 'imageArrival', callback: AsyncCallback\<void>): void
 import { sendableImage } from '@kit.ImageKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo() {
+async function On() {
   let size: image.Size = {
     height: 8192,
     width: 8
@@ -2344,7 +2348,7 @@ import { sendableImage } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
-async function Demo() {
+async function Release() {
   let size: image.Size = {
     height: 8192,
     width: 8

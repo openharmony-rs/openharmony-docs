@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -176,7 +176,7 @@ hiAppEvent.configure(config2);
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| disable    | boolean | 否 | 是 | 应用打点功能开关。配置值为true表示关闭打点功能，false表示不关闭打点功能。 |
+| disable    | boolean | 否 | 是 | 应用打点功能开关，默认值为false。配置值为true表示关闭打点功能，false表示不关闭打点功能。 |
 | maxStorage | string  | 否 | 是 | 打点数据本地存储文件所在目录的配额大小，默认限额为“10M”。所在目录大小超出限额后会对目录进行清理操作，会按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出限额时停止。 |
 
 

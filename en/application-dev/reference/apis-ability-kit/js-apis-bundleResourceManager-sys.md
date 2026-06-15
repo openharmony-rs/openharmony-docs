@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module provides APIs for obtaining resource information, including [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md) and [LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md).
 
@@ -174,7 +174,7 @@ Obtains the bundle resource information of all applications based on the given r
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
 | resourceFlags | [number](#resourceflag) | Yes  | Type of the resource information to obtain.|
-| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is a BundleResourceInfo array. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<Array<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **undefined** and **data** is a BundleResourceInfo array. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -280,7 +280,7 @@ Obtains the resource information of the entry abilities of the current applicati
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
 | resourceFlags | [number](#resourceflag) | Yes  | Type of the resource information to obtain.|
-| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is a LauncherAbilityResourceInfo array. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **undefined** and **data** is a LauncherAbilityResourceInfo array. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -373,7 +373,7 @@ try {
 
 getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
 
-Obtains the resource information of an application based on the given bundle name, resource flags, and app index. This API returns the result synchronously.
+Obtains the bundle resource information of the current application or application clone based on the given bundle name, resource flags, and app index. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -433,7 +433,7 @@ try {
 
 getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
-Obtains the launcher ability resource information of an application based on the given bundle name, resource flags, and app index. This API returns the result synchronously.
+Obtains the launcher ability resource information of the current application or application clone based on the given bundle name, resource flags, and app index. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
@@ -530,6 +530,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { bundleManager, bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = "com.example.myapplication";
 let extensionAbilityType = bundleManager.ExtensionAbilityType.INPUT_METHOD;
@@ -537,11 +538,12 @@ let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
   let resourceInfo =
     bundleResourceManager.getExtensionAbilityResourceInfo(bundleName, extensionAbilityType, resourceFlag);
-  console.info('getExtensionAbilityResourceInfo successfully. Data label: ' + JSON.stringify(resourceInfo[0].label));
+  hilog.info(0x0000, 'testTag', 'getExtensionAbilityResourceInfo successfully. Data label: %{public}s',
+    JSON.stringify(resourceInfo[0].label));
 } catch (err) {
   let message = (err as BusinessError).message;
   let code = (err as BusinessError).code;
-  console.error(`getExtensionAbilityResourceInfo failed, err code:${code}, err msg: ${message}`);
+  hilog.error(0x0000, 'testTag', 'getExtensionAbilityResourceInfo failed: %{public}d %{public}s', code, message);
 }
 ```
 
@@ -610,6 +612,8 @@ Obtains the launcher ability resource information of each application correspond
 **Required permissions**: ohos.permission.GET_INSTALLED_BUNDLE_LIST and ohos.permission.GET_BUNDLE_RESOURCES
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Resource
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -696,5 +700,3 @@ Defines the entry icon and name of an application.
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
 | [_LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo) |Defines the entry icon and name of an application.|
-
-<!--no_check-->

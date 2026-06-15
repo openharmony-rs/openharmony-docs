@@ -14,9 +14,11 @@ You can create an entity encapsulation component in either of the following ways
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> **ComponentContent** and **ReactiveComponentContent** are not available in DevEco Studio Previewer.
+> - **ComponentContent** and **ReactiveComponentContent** are not available in DevEco Studio Previewer.
+>
+> - ComponentContent objects do not support JSON serialization.
 
 
 ## Modules to Import
@@ -99,7 +101,7 @@ interface ParamsInterface {
 @Builder
 function buildTextWithFunc(fun: Function) {
   Text(fun())
-    .fontSize(50)
+    .fontSize(20)
     .fontWeight(FontWeight.Bold)
     .margin({ bottom: 36 })
 }
@@ -108,9 +110,9 @@ function buildTextWithFunc(fun: Function) {
 function buildText(params: ParamsInterface) {
   Column() {
     Text(params.text)
-      .fontSize(50)
+      .fontSize(20)
       .fontWeight(FontWeight.Bold)
-      .margin({ bottom: 36 })
+      .margin({ bottom: 12 })
     buildTextWithFunc(params.func)
   }
 }
@@ -123,7 +125,7 @@ struct Index {
 
   build() {
     Row() {
-      Column() {
+      Column({ space: 12 }) {
         Button('addComponentContent')
           .onClick(() => {
             let column = typeNode.createNode(this.getUIContext(), "Column");
@@ -145,8 +147,8 @@ struct Index {
     .height('100%')
   }
 }
-
 ```
+![](figures/ReactiveComponentContent_constructor.gif)
 
 ### update
 
@@ -196,6 +198,7 @@ struct Index {
     Row() {
       Column() {
         Button("click me")
+          .margin({ top: 200 })
           .onClick(() => {
             let uiContext = this.getUIContext();
             let promptAction = uiContext.getPromptAction();
@@ -214,6 +217,7 @@ struct Index {
   }
 }
 ```
+![](figures/ComponentContent_update.gif)
 
 ### reuse
 
@@ -288,7 +292,7 @@ class Params {
 function buildNode(param: Params = new Params("hello")) {
   Row() {
     Text(`C${param.item} -- `)
-    ReusableChildComponent2({ item: param.item }) // This custom component cannot be correctly reused in ComponentContent.
+    ReusableChildComponent2({ item: param.item }) // This custom component cannot be correctly reused in the ComponentContent.
   }
 }
 
@@ -315,7 +319,7 @@ struct ReusableChildComponent {
   aboutToRecycle(): void {
     console.info(`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
 
-    // When the switch is open, pass the recycle event to the nested custom component, such as ReusableChildComponent2, through the ComponentContent's recycle API to complete reuse.
+    // When the switch is open, pass the recycle event to the nested custom component, such as ReusableChildComponent2, through the ComponentContent's recycle API to complete recycling.
     if (this.switch === 'open') {
       this.componentContent.recycle();
     }
@@ -413,6 +417,7 @@ struct Index {
   }
 }
 ```
+![](figures/ReactiveComponentContent_recycle.gif)
 
 ### dispose
 
@@ -489,13 +494,13 @@ struct Index {
   }
 }
 ```
-
+![](figures/ComponentContent_dispose.gif)
 
 ### updateConfiguration
 
 updateConfiguration(): void
 
-Updates the configuration of the entire node by passing in a [system environment change](../apis-ability-kit/js-apis-app-ability-configuration.md) event.
+Transfers a system environment change event and triggers full update of a node. For details about system environment changes, see [@ohos.app.ability.Configuration (Environment Variables)](../apis-ability-kit/js-apis-app-ability-configuration.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -603,6 +608,7 @@ struct FrameNodeTypeTest {
   }
 }
 ```
+![](figures/ReactiveComponentContent_updateConfiguration.gif)
 
 ### isDisposed<sup>20+</sup>
 
@@ -701,7 +707,7 @@ struct Index {
 
 inheritFreezeOptions(enabled: boolean): void
 
-Sets whether this **ComponentContent** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the **ComponentContent** object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
+Sets whether the current **ComponentContent** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the **ComponentContent** object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
 
 > **NOTE**
 >
@@ -1014,7 +1020,7 @@ Triggers component reuse for custom components under this **ReactiveComponentCon
 
 | Name| Type  | Mandatory| Description                                                                    |
 | ------ | ------ | ---- | ------------------------------------------------------------------------ |
-| param  | Object | No  | Parameter used to reuse [ReactiveComponentContent](./js-apis-arkui-builderNode.md#reactivebuildernode22). This parameter is directly used for reusing all top-level custom components in **ReactiveComponentContent**. It should contain the content required by the constructor parameters of each custom component. Otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. The default value is undefined. In this case, the custom component in ReactiveComponentContent directly uses the data source during construction.|
+| param  | Object | No  | Parameter used to reuse [ReactiveComponentContent](#reactivecomponentcontent22). This parameter is directly used for reusing all top-level custom components in **ReactiveComponentContent**. It should contain the content required by the constructor parameters of each custom component. Otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. The default value is undefined. In this case, the custom component in ReactiveComponentContent directly uses the data source during construction.|
 
 **Example**
 
@@ -1330,7 +1336,7 @@ struct Index {
 
 updateConfiguration(): void
 
-Updates the configuration of the entire node by passing in a [system environment change](../apis-ability-kit/js-apis-app-ability-configuration.md) event. This event can be used to notify the object of the update. Whether the system environment used by the object is updated depends on the current system environment change of the application.
+Transfers a system environment change event and triggers full update of a node. This event can be used to notify the object of the update. Whether the system environment used by the object is updated depends on the current system environment change of the application. For details about system environment changes, see [@ohos.app.ability.Configuration (Environment Variables)](../apis-ability-kit/js-apis-app-ability-configuration.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1566,13 +1572,13 @@ struct Index {
 }
 ```
 
-![](figures/ReactiveComponentContent_flushState.gif)
+![](figures/reactiveComponentContent_flushState.gif)
 
 ### inheritFreezeOptions<sup>22+</sup>
 
 inheritFreezeOptions(enabled: boolean): void
 
-Checks whether this **ReactiveComponentContent** object inherits the [freeze policy](./arkui-ts/ts-custom-component-parameter.md#componentoptions) from its parent component's custom components. When inheritance is disabled (set to **false**), the **ReactiveComponentContent** object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
+Sets whether the current **ReactiveComponentContent** object inherits the freeze policy configured by [ComponentOptions](./arkui-ts/ts-custom-component-parameter.md#componentoptions) from its parent component's custom components. When inheritance is disabled (set to **false**), the **ReactiveComponentContent** object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
 
 > **NOTE**
 >

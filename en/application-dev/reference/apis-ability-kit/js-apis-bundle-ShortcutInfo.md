@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The module defines shortcut information configured in the configuration file. For the [FA model](../../application-models/ability-terminology.md#fa-model), the information is configured in the [config.json](../../quick-start/application-configuration-file-overview-fa.md) file. For the [stage model](../../application-models/ability-terminology.md#stage-model), the information is configured in the configuration file under **resources/base/profile** in the development view.
 
@@ -14,7 +14,7 @@ The module defines shortcut information configured in the configuration file. Fo
 >
 > The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) instead.
 
-## ShortcutInfo<sup>(deprecated)<sup>
+## ShortcutInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -28,9 +28,9 @@ The module defines shortcut information configured in the configuration file. Fo
 | bundleName              | string                                     | Yes  | No  | Name of the bundle that contains the shortcut.|
 | hostAbility             | string                                     | Yes  | No  | Local ability information of the shortcut.   |
 | icon                    | string                                     | Yes  | No  | Icon of the shortcut.              |
-| iconId<sup>8+</sup>     | number                                     | Yes  | No  | Icon ID of the shortcut.            |
+| iconId<sup>8+</sup>     | number                                     | Yes  | No  | Shortcut icon ID.            |
 | label                   | string                                     | Yes  | No  | Name of the shortcut.              |
-| labelId<sup>8+</sup>    | number                                     | Yes  | No  | Name ID of the shortcut.            |
+| labelId<sup>8+</sup>    | number                                     | Yes  | No  | Shortcut name ID.            |
 | disableMessage          | string                                     | Yes  | No  | Message displayed when the shortcut is disabled.          |
 | wants                   | Array&lt;<!--Del-->[<!--DelEnd-->ShortcutWant<!--Del-->](js-apis-bundle-ShortcutInfo-sys.md#shortcutwantdeprecated)<!--DelEnd-->&gt; | Yes  | No  | Want list for the shortcut.        |
 | isStatic                | boolean                                    | Yes  | Yes  | Whether the shortcut is static. **true** if static, **false** otherwise.         |

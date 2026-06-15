@@ -97,7 +97,7 @@ Sets whether the option list can loop scrolling.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether loop scrolling is enabled.<br>- **true**: Loop scrolling is enabled.<br>- **false**: Loop scrolling is disabled.<br>Default value: **true**<br>If the value of **isLoop** is **undefined**, the default value is used.<br>If the number of child components is less than 8, loop scrolling will not occur regardless of whether isLoop is set to **true** or **false**.|
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether loop scrolling is enabled.<br>- **true**: Loop scrolling is enabled.<br>- **false**: Loop scrolling is disabled.<br>Default value: **true**<br>If the value of **isLoop** is **undefined**, the default value is used.<br>If the number of child components is less than 8, loop scrolling will not occur regardless of whether isLoop is set to **true** or **false**.|
 
 ### enableHapticFeedback
 
@@ -124,7 +124,7 @@ To enable haptic feedback, you must declare the following permission under **req
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>If the value of **enable** is **undefined**, the default value is used.<br>After this function is enabled, whether haptic feedback is available depends on the hardware support of the system.|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>If the value of **enable** is **undefined**, the default value is used.<br>After this function is enabled, whether haptic feedback is available depends on the hardware support of the system.|
 
 ### selectionIndicator
 
@@ -142,7 +142,7 @@ Sets the style of the selected item indicator.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle)> | Yes  | Style of the selected item indicator.<br>Default value:<br>{<br>type: PickerIndicatorType.BACKGROUND,<br>borderRadius: {<br>value:12,<br>unit:LengthUnit.vp<br>},<br>backgroundColor: 'sys.color.comp_background_tertiary'<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle)> | Yes  | Style of the selected item indicator.<br>Default value:<br>{<br>type: PickerIndicatorType.BACKGROUND,<br>borderRadius: {<br>value:12,<br>unit:LengthUnit.vp<br>},<br>backgroundColor: 'sys.color.comp_background_tertiary'<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 ## Events
 
@@ -170,7 +170,7 @@ Triggered when the selected item changes.
 
 | Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | Yes  | Callback triggered when the selected item changes.<br>If **callback** is set to **undefined**, the callback is not used.|
+| callback  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | Yes  | Callback triggered when the selected item changes.<br>If **callback** is set to **undefined**, the callback is not used.|
 
 ### onScrollStop
 
@@ -188,7 +188,7 @@ Triggered when the picker scrolling stops. The picker scrolling stops when the s
 
 | Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | Yes  | Callback triggered when the picker scrolling stops.<br>If **callback** is set to **undefined**, the callback is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | Yes  | Callback triggered when the picker scrolling stops.<br>If **callback** is set to **undefined**, the callback is not used.|
 
 ## PickerIndicatorStyle
 
@@ -351,8 +351,6 @@ struct UIPickerComponentEventsExample {
   }
 }
 ```
-
-![containerPicker](./figures/ContainerPickerDemo2.gif)
 
 ### Example 3: Setting the Selected Item Index
 

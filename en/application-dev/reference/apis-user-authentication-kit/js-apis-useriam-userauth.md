@@ -101,7 +101,7 @@ Represents information about the authentication result reuse.
 | Name        | Type  | Read-Only| Optional| Description                |
 | ------------ | ---------- | ---- | ---- | -------------------- |
 | reuseMode        | [ReuseMode](#reusemode12) | No| No  | Authentication result reuse mode.      |
-| reuseDuration    | number | No| No| Period for which the authentication result can be reused. The value must be greater than 0 and less than [MAX_ALLOWABLE_REUSE_DURATION](#constant).|
+| reuseDuration    | number | No| No| Reuse duration of the authentication result, in milliseconds. The value must be greater than 0 and the maximum value is [MAX_ALLOWABLE_REUSE_DURATION](#constant).|
 
 ## userAuth.getAuthLockState<sup>22+</sup>
 
@@ -153,11 +153,11 @@ let authLockState : userAuth.AuthLockState = {
 }
 
 userAuth.getAuthLockState(queryType)
-  .then((result : userAuth.AuthLockState) => {
+  .then((result: userAuth.AuthLockState) => {
     authLockState = result;
-    console.info(`get auth lock state success, authLockState is: ${JSON.stringify(authLockState)}`);
+    console.info('get auth lock state successfully.');
   })
-  .catch((err : BusinessError) => {
+  .catch((err: BusinessError) => {
     console.info(`get auth lock state failed, err code is : ${err?.code}, err message is : ${err?.message}`);
   })
 ```
@@ -206,7 +206,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
-  console.info(`get current enrolled state success, enrolledState = ${JSON.stringify(enrolledState)}`);
+  console.info('get current enrolled state successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
   console.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
@@ -237,7 +237,7 @@ Represents the information presented on the user authentication page.
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | title                | string                              |  No |  No | Title of the user authentication page, which cannot be empty or exceed 500 characters. You are advised to set it to the authentication purpose, such as payment or application login.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | navigationButtonText | string                              |  No |  Yes | Text on the navigation button. It cannot exceed 60 characters. It is supported in single fingerprint or facial authentication before API version 18. Since API version 18, it is also supported in combined facial and fingerprint authentication. By default, the custom navigation button is not displayed.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| uiContext<sup>18+</sup>            | Context               |  No |  Yes | Whether to display the authentication dialog box in modal application mode. This mode is applicable only to 2-in-1 devices. If this mode is not used or other types of devices are used, the authentication dialog box is displayed in modal system mode. By default, the identity authentication dialog box is displayed in modal system mode.<br> **Atomic service API**: This API can be used in atomic services since API version 18.|
+| uiContext<sup>18+</sup>            | Context               |  No |  Yes | Whether to display the authentication dialog box as an application modal dialog. This mode is applicable only to 2-in-1 devices. If this mode is not used or other types of devices are used, the authentication dialog box is displayed as a system modal dialog. By default, the authentication dialog box is displayed as a system modal dialog.<br> **Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## UserAuthResult<sup>10+</sup>
 
@@ -308,19 +308,19 @@ try {
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // The authentication result is returned by onResult only after the authentication is started by start() of UserAuthInstance.
   userAuthInstance.on('result', {
     onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+      console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -362,19 +362,19 @@ try {
     title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // The authentication result is returned by onResult only after the authentication is started by start() of UserAuthInstance.
   userAuthInstance.on('result', {
     onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+      console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -416,19 +416,19 @@ try {
     title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // The authentication result is returned by onResult only after the authentication is started by start() of UserAuthInstance.
   userAuthInstance.on('result', {
     onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+      console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -493,17 +493,17 @@ try {
   };
 
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // The intermediate authentication status is returned by onAuthTip only after the authentication is started by start() of UserAuthInstance.
   userAuthInstance.on('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
-    console.info(`userAuthInstance callback authTipInfo = ${JSON.stringify(authTipInfo)}`);
+    console.info('userAuthInstance callback');
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -513,15 +513,15 @@ Provides APIs for user authentication. The user authentication widget is support
 
 Before using the APIs of **UserAuthInstance**, you must obtain a **UserAuthInstance** instance by using [getUserAuthInstance](#userauthgetuserauthinstance10).
 
-### on<sup>10+</sup>
+### on('result')<sup>10+</sup>
 
 on(type: 'result', callback: IAuthCallback): void
 
-Subscribes to the user authentication result. This API is used to obtain the final identity authentication result after the user completes identity authentication interaction with the authentication component. Before the authentication component disappears, the authentication failure attempts are not returned through this API. To perceive each authentication failure, use the [on('authTip')](#on20) API for subscription.
+Subscribes to the user authentication result. This API is used to obtain the final identity authentication result after the user completes identity authentication interaction with the authentication component. Before the authentication component disappears, the authentication failure attempts are not returned through this API. To perceive each authentication failure, use the [on('authTip')](#onauthtip20) API for subscription.
 
 > **NOTE**<br>
 >
-> On PCs/2-in-1 devices, if an application initiates authentication in modal application mode (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, and if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#on20) API.
+> On PCs/2-in-1 devices, if an application initiates authentication in an application modal dialog (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, and if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#onauthtip20) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -545,7 +545,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example 1**
 
-Perform user identity authentication in modal system mode.
+Perform user identity authentication in a system modal dialog.
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -576,25 +576,25 @@ try {
     title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // The authentication result is returned by onResult only after the authentication is started by start() of UserAuthInstance.
   userAuthInstance.on('result', {
     onResult (result) {
-      console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+      console.info(`userAuthInstance callback result = ${result.result}`);
     }
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
 **Example 2**
 
-Perform user identity authentication in modal application mode.
+Perform user identity authentication in an application modal dialog.
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -632,19 +632,19 @@ struct Index {
         uiContext: context,
       };
       const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      console.info('get userAuth instance success');
+      console.info('get userAuth instance successfully.');
       // The authentication result is returned by onResult only after the authentication is started by start() of UserAuthInstance.
       userAuthInstance.on('result', {
         onResult (result) {
-          console.info(`userAuthInstance callback result = ${JSON.stringify(result)}`);
+          console.info(`userAuthInstance callback result =${result.result}`);
         }
       });
-      console.info('auth on success');
+      console.info('auth on successfully.');
       userAuthInstance.start();
-      console.info('auth start success');
+      console.info('auth start successfully.');
     } catch (error) {
       const err: BusinessError = error as BusinessError;
-      console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+      console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
     }
   }
 
@@ -659,7 +659,7 @@ struct Index {
 }
 ```
 
-### off<sup>10+</sup>
+### off('result')<sup>10+</sup>
 
 off(type: 'result', callback?: IAuthCallback): void
 
@@ -678,7 +678,7 @@ Unsubscribes from the user authentication result.
 | Name  | Type                             | Mandatory| Description                                      |
 | -------- | --------------------------------- | ---- | ------------------------------------------ |
 | type     | 'result'                          | Yes  | Event type. The value is **result**, which indicates the authentication result.|
-| callback | [IAuthCallback](#iauthcallback10) | No  | Callback used to return the user authentication result.    |
+| callback | [IAuthCallback](#iauthcallback10) | No  | Callback used to return the user authentication result. If this parameter is not passed, the value passed when the [on('result')](#onresult10-1) API is called is used by default.|
 
 **Error codes**
 
@@ -720,16 +720,16 @@ try {
     title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   userAuthInstance.off('result', {
     onResult (result) {
-      console.info(`auth off result = ${JSON.stringify(result)}`);
+      console.info(`auth off result = ${result.result}`);
     }
   });
-  console.info('auth off success');
+  console.info('auth off successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -799,12 +799,12 @@ try {
     title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -863,19 +863,19 @@ try {
     title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // The cancel() API can be called only after the authentication is started by start() of UserAuthInstance.
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
   userAuthInstance.cancel();
-  console.info('auth cancel success');
+  console.info('auth cancel successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
-### on<sup>20+</sup>
+### on('authTip')<sup>20+</sup>
 
 on(type: 'authTip', callback: AuthTipCallback): void
 
@@ -883,7 +883,7 @@ Subscribes to authentication tip information. This API is used to obtain the com
 
 > **NOTE**<br>
 >
-> On PCs/2-in-1 devices, if an application initiates authentication in modal application mode (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, and if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#on20) API.
+> On PCs/2-in-1 devices, if an application initiates authentication in an application modal dialog (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](#widgetparam10) is configured) and receives the authentication result, and if other windows need to be displayed, the application needs to obtain the flag message released by the component pop-up window and subscribe to the component release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](#onauthtip20) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -935,21 +935,21 @@ try {
     title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   // The intermediate authentication status is returned by onAuthTip only after the authentication is started by start() of UserAuthInstance.
   userAuthInstance.on('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
-    console.info(`userAuthInstance callback authTipInfo = ${JSON.stringify(authTipInfo)}`);
+    console.info('userAuthInstance callback.');
   });
-  console.info('auth on success');
+  console.info('auth on successfully.');
   userAuthInstance.start();
-  console.info('auth start success');
+  console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
-### off<sup>20+</sup>
+### off('authtip')<sup>20+</sup>
 
 off(type: 'authTip', callback?: AuthTipCallback): void
 
@@ -967,8 +967,8 @@ Unsubscribes from the event for intermediate authentication status.
 
 | Name  | Type          | Mandatory| Description                                      |
 | -------- | ------------- | ---- | ------------------------------------------ |
-| type     | string        | Yes  | Event type. The supported event is **'authTip'**. This API unsubscribes from the event triggered by [on()](#on20) after the [start()](#start10) call and the initiation of authentication.|
-| callback | [AuthTipCallback](#authtipcallback20) | No  | Callback used to return the intermediate authentication status. If this parameter is not passed, the value passed when the [on()](#on20) API is called is used by default.|
+| type     | string        | Yes  | Event type. The supported event is **'authTip'**. This API unsubscribes from the event triggered by [on('authTip')](#onauthtip20) after the [start()](#start10) call and the initiation of authentication.|
+| callback | [AuthTipCallback](#authtipcallback20) | No  | Callback used to return the intermediate authentication status. If this parameter is not passed, the value passed when the [on('authTip')](#onauthtip20) API is called is used by default.|
 
 **Error codes**
 
@@ -1009,14 +1009,14 @@ try {
     title: 'Enter password',
   };
   const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
   userAuthInstance.off('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
-    console.info(`userAuthInstance callback authTipInfo = ${JSON.stringify(authTipInfo)}`);
+    console.info('userAuthInstance callback');
   });
-  console.info('auth off success');
+  console.info('auth off successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -1089,10 +1089,10 @@ try {
     title: 'Enter password',
   };
   let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-  console.info('get userAuth instance success');
+  console.info('get userAuth instance successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -1205,16 +1205,13 @@ try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
   auth.on('result', {
     callback: (result: userAuth.AuthResultInfo) => {
-      console.info(`authV9 result ${result.result}`);
-      console.info(`authV9 token ${result.token}`);
-      console.info(`authV9 remainAttempts ${result.remainAttempts}`);
-      console.info(`authV9 lockoutDuration ${result.lockoutDuration}`);
+      console.info(`result: ${result.result}`);
     }
   } as userAuth.AuthEvent);
   auth.start();
-  console.info('authV9 start success');
+  console.info('auth start successfully.');
 } catch (error) {
-  console.error(`authV9 error = ${error}`);
+  console.error(`auth failed, error = ${error}`);
   // do error.
 }
 // Obtain the authentication tip information via a callback.
@@ -1235,9 +1232,9 @@ try {
     }
   } as userAuth.AuthEvent);
   auth.start();
-  console.info('authV9 start success');
+  console.info('auth start successfully.');
 } catch (error) {
-  console.error(`authV9 error = ${error}`);
+  console.error(`auth failed, error = ${error}`);
   // do error.
 }
 ```
@@ -1258,7 +1255,7 @@ Subscribes to the user authentication events of the specified type.
 
 > **NOTE**<br>
 >
-> This API is supported since API version 9 and deprecated since API version 10. Use [on](#on10) instead.
+> This API is supported since API version 9 and deprecated since API version 10. Use [on('result')](#onresult10-1) instead.
 >
 > Use the [AuthInstance](#authinstancedeprecated) instance obtained to call this API.
 
@@ -1293,10 +1290,7 @@ try {
   // Subscribe to the authentication result.
   auth.on('result', {
     callback: (result: userAuth.AuthResultInfo) => {
-      console.info(`authV9 result ${result.result}`);
-      console.info(`authV9 token ${result.token}`);
-      console.info(`authV9 remainAttempts ${result.remainAttempts}`);
-      console.info(`authV9 lockoutDuration ${result.lockoutDuration}`);
+      console.info(`result: ${result.result}`);
     }
   });
   // Subscribe to authentication tip information.
@@ -1315,9 +1309,9 @@ try {
     }
   } as userAuth.AuthEvent);
   auth.start();
-  console.info('authV9 start success');
+  console.info('auth start successfully.');
 } catch (error) {
-  console.error(`authV9 error = ${error}`);
+  console.error(`auth failed, error = ${error}`);
   // do error.
 }
 ```
@@ -1330,7 +1324,7 @@ Unsubscribes from the user authentication events of the specified type.
 
 > **NOTE**<br>
 >
-> This API is supported since API version 9 and deprecated since API version 10. Use [off](#off10) instead.
+> This API is supported since API version 9 and deprecated since API version 10. Use [off('result')](#offresult10) instead.
 >
 > The [AuthInstance](#authinstancedeprecated) instance used to invoke this API must be the one used to subscribe to the event.
 
@@ -1362,15 +1356,12 @@ try {
   // Subscribe to the authentication result.
   auth.on('result', {
     callback: (result: userAuth.AuthResultInfo) => {
-      console.info(`authV9 result ${result.result}`);
-      console.info(`authV9 token ${result.token}`);
-      console.info(`authV9 remainAttempts ${result.remainAttempts}`);
-      console.info(`authV9 lockoutDuration ${result.lockoutDuration}`);
+      console.info(`result: ${result.result}`);
     }
   });
   // Unsubscribe from the authentication result.
   auth.off('result');
-  console.info('cancel subscribe authentication event success');
+  console.info('cancel subscribe authentication event successfully.');
 } catch (error) {
   console.error(`cancel subscribe authentication event failed, error = ${error}`);
   // do error.
@@ -1423,9 +1414,9 @@ let authTrustLevel = userAuth.AuthTrustLevel.ATL1;
 try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
   auth.start();
-  console.info('authV9 start auth success');
+  console.info('auth start successfully.');
 } catch (error) {
-  console.error(`authV9 start auth failed, error = ${error}`);
+  console.error(`auth failed, error = ${error}`);
 }
 ```
 
@@ -1467,9 +1458,9 @@ let authTrustLevel = userAuth.AuthTrustLevel.ATL1;
 try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
   auth.cancel();
-  console.info('cancel auth success');
+  console.info('cancel auth successfully.');
 } catch (error) {
-  console.error(`cancel auth failed, error = ${error}`);
+  console.error(`auth failed, error = ${error}`);
 }
 ```
 
@@ -1524,9 +1515,9 @@ let authTrustLevel = userAuth.AuthTrustLevel.ATL1;
 
 try {
   let auth = userAuth.getAuthInstance(challenge, authType, authTrustLevel);
-  console.info('let auth instance success');
+  console.info('get auth instance successfully.');
 } catch (error) {
-  console.error(`get auth instance success failed, error = ${error}`);
+  console.error(`get auth instance failed, error = ${error}`);
 }
 ```
 
@@ -1701,9 +1692,9 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 let auth = new userAuth.UserAuth();
 let checkCode = auth.getAvailableStatus(userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1);
 if (checkCode == userAuth.ResultCode.SUCCESS) {
-  console.info('check auth support success');
+  console.info('check auth support successfully.');
 } else {
-  console.error(`check auth support fail, code = ${checkCode}`);
+  console.error(`check auth support failed, code = ${checkCode}`);
 }
 ```
 
@@ -1747,14 +1738,13 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
   onResult: (result, extraInfo) => {
     try {
       console.info(`auth onResult result = ${result}`);
-      console.info(`auth onResult extraInfo = ${JSON.stringify(extraInfo)}`);
       if (result == userAuth.ResultCode.SUCCESS) {
         // Add the logic to be executed when the authentication is successful.
       } else {
         // Add the logic to be executed when the authentication fails.
       }
     } catch (error) {
-      console.error(`auth onResult error = ${error}`);
+      console.error(`auth onResult failed, error = ${error}`);
     }
   }
 });
@@ -1796,9 +1786,9 @@ let contextId = new Uint8Array([0, 1, 2, 3, 4, 5, 6, 7]);
 let auth = new userAuth.UserAuth();
 let cancelCode = auth.cancelAuth(contextId);
 if (cancelCode == userAuth.ResultCode.SUCCESS) {
-  console.info('cancel auth success');
+  console.info('cancel auth successfully.');
 } else {
-  console.error('cancel auth fail');
+  console.error('cancel auth failed.');
 }
 ```
 
@@ -1840,14 +1830,13 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
   onResult: (result, extraInfo) => {
     try {
       console.info(`auth onResult result = ${result}`);
-      console.info(`auth onResult extraInfo = ${JSON.stringify(extraInfo)}`);
       if (result == userAuth.ResultCode.SUCCESS) {
         // Add the logic to be executed when the authentication is successful.
       }  else {
         // Add the logic to be executed when the authentication fails.
       }
     } catch (error) {
-      console.error(`auth onResult error = ${error}`);
+      console.error(`auth onResult failed, error = ${error}`);
     }
   }
 });
@@ -1884,23 +1873,20 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
   onResult: (result, extraInfo) => {
     try {
       console.info(`auth onResult result = ${result}`);
-      console.info(`auth onResult extraInfo = ${JSON.stringify(extraInfo)}`);
       if (result == userAuth.ResultCode.SUCCESS) {
         // Add the logic to be executed when the authentication is successful.
       }  else {
         // Add the logic to be executed when the authentication fails.
       }
     } catch (error) {
-      console.error(`auth onResult error = ${error}`);
+      console.error(`auth onResult failed, error = ${error}`);
     }
   },
   onAcquireInfo: (module, acquire, extraInfo : userAuth.AuthResult) => {
     try {
-      console.info(`auth onAcquireInfo module = ${module}`);
-      console.info(`auth onAcquireInfo acquire = ${acquire}`);
-      console.info(`auth onAcquireInfo extraInfo = ${JSON.stringify(extraInfo)}`);
+      console.info('auth onAcquireInfo successfully.');
     } catch (error) {
-      console.error(`auth onAcquireInfo error = ${error}`);
+      console.error(`auth onAcquireInfo failed, error = ${error}`);
     }
   }
 });
@@ -1920,7 +1906,7 @@ Represents the authentication result object.
 | ------------ | ---------- | ---- | ---- | -------------------|
 | token        | Uint8Array | No| Yes| Authentication token information.|
 | remainTimes  | number     | No| Yes| Number of remaining authentication operations.|
-| freezingTime | number     | No| Yes| Time for which the authentication operation is frozen.|
+| freezingTime | number     | No| Yes| Time for which the authentication operation is frozen. The unit is milliseconds.|
 
 ## ResultCode<sup>(deprecated)</sup>
 
@@ -2036,7 +2022,7 @@ Enumerates the authentication security levels.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| string | Authentication security level, which can be any of the following:|  | | <br>\- **S1**: authentication trust level 1. The authentication of this level can identify individual users and provides limited liveness detection capabilities. It is usually used in service risk control and query of general personal data.<br>\- **S2**: authentication trust level 2. The authentication of this level can accurately identify individual users and provides regular liveness detection capabilities. It is usually used in scenarios such as application logins and keeping the unlocking state of a device.<br>\- **S3**: authentication trust level 3. The authentication of this level can accurately identify individual users and provides strong liveness detection capabilities. It is usually used in scenarios such as unlocking a device.<br>\- **S4**: authentication trust level 4. The authentication of this level can accurately identify individual users and provides powerful liveness detection capabilities. It is usually used in scenarios such as small-amount payment.|
+| string | String type. The authentication security level can be **'S1'** \| **'S2'**\|**'S3'**\|**'S4'**.<br>\- **S1**: authentication trust level 1. The authentication of this level can identify individual users and provides limited liveness detection capabilities. It is usually used in service risk control and query of general personal data.<br>\- **S2**: authentication trust level 2. The authentication of this level can accurately identify individual users and provides regular liveness detection capabilities. It is usually used in scenarios such as application logins and keeping the unlocking state of a device.<br>\- **S3**: authentication trust level 3. The authentication of this level can accurately identify individual users and provides strong liveness detection capabilities. It is usually used in scenarios such as unlocking a device.<br>\- **S4**: authentication trust level 4. The authentication of this level can accurately identify individual users and provides powerful liveness detection capabilities. It is usually used in scenarios such as small-amount payment.|
 
 ## AuthType<sup>(deprecated)</sup>
 
@@ -2052,7 +2038,7 @@ Enumerates the authentication types.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| string  | Authentication type, which can be any of the following:| <br>\- **ALL**: reserved and not supported by the current version.<br>\- **FACE_ONLY**: facial authentication.|
+| string  | Authentication mode, which can be any of the following: **'ALL'**\|**'FACE_ONLY'**.<br>\- **ALL**: reserved and not supported by the current version.<br>\- **FACE_ONLY**: facial authentication.|
 
 ## userAuth.getAuthenticator<sup>(deprecated)</sup>
 
@@ -2117,10 +2103,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 let authenticator = userAuth.getAuthenticator();
 authenticator.execute('FACE_ONLY', 'S2', (error, code)=>{
   if (code === userAuth.ResultCode.SUCCESS) {
-    console.info('auth success');
+    console.info('auth successfully.');
     return;
   }
-  console.error(`auth fail, code = ${code}`);
+  console.error(`auth failed, code = ${code}`);
 });
 ```
 
@@ -2160,10 +2146,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 try {
   let authenticator = userAuth.getAuthenticator();
   authenticator.execute('FACE_ONLY', 'S2').then((code)=>{
-    console.info('auth success');
+    console.info('auth successfully.');
   })
 } catch (error) {
-  console.error(`auth fail, code = ${error}`);
+  console.error(`auth failed, code = ${error}`);
 }
 ```
 
@@ -2173,7 +2159,7 @@ Enumerates the authentication results.
 
 > **NOTE**<br>
 >
-> This API is supported since API version 6 and deprecated since API version 8. Use [ResultCode](#resultcodedeprecated) instead.
+> This API is supported since API version 6 and deprecated since API version 8. Use [UserAuthResultCode](#userauthresultcode9) instead.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 

@@ -77,7 +77,7 @@ In the stage model, the main window of an application is created and maintained 
 import { UIAbility} from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_CreatMainWindow]';
@@ -122,10 +122,9 @@ export default class EntryAbility extends UIAbility {
 
 You can create an application child window, such as a dialog box, and set its properties.
 
-> **NOTE**
->
+> **NOTE** 
 > In the following scenarios, you are not advised to use child windows. Instead, consider using the [overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md) capability of components first. 
-> - On mobile devices (tablets in non-freeform mode and phones), child windows cannot extend beyond the boundaries of the application's main window when it is in floating-window or split-screen mode, just like components. 
+> - On mobile devices (tablets in non-freeform mode and phones), child windows cannot extend beyond the boundaries of the application's main window when it is in multi-window floating-window or split-screen mode, just like components. 
 > - In split-screen or freeform window mode, components, when compared with child windows, offer better real-time adaptability to changes in the main window's position and size. 
 > - On certain platforms, system configurations may restrict child windows to default system animations and rounded shadows, offering no customization options for applications and thereby limiting their versatility.
 
@@ -134,6 +133,7 @@ You can create an application child window, such as a dialog box, and set its pr
 1. Create a child window.
 
    Call **createSubWindow** to create a child window.
+   
    The child window created uses an [immersive layout](../windowmanager/window-terminology.md#immersive-layout) by default.
 
 2. Set the properties of the child window.
@@ -162,7 +162,7 @@ The code snippet for creating a child window in **onWindowStageCreate** is as fo
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_CreatSubWindow]';
@@ -268,7 +268,7 @@ You can also click a button on a page to create a child window. The code snippet
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_CreatSubWindow2]';
@@ -291,14 +291,14 @@ export default class EntryAbility extends UIAbility {
 
 <!-- @[create_sub_window2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript	
+``` TypeScript
 // Index.ets
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
-const TAG: string = '[Sample_CreatSubWindow2]';
+const TAG : string = '[Sample_CreatSubWindow2]';
 
 let windowStage_: window.WindowStage | undefined = undefined;
 let sub_windowClass: window.Window | undefined = undefined;
@@ -467,7 +467,7 @@ To create a better video watching and gaming experience, you can use the immersi
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_SetWindowSystemBarEnable]';
@@ -531,8 +531,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<!--RP2-->
-## Setting a Global Floating Window<!--RP2End-->
+## Setting a Global Floating Window (Restricted)
 
 A global floating window can be created on top of an existing task to display a window that always stays in the foreground. Even if the task that creates the global floating window is moved to the background, the global floating window can still be displayed in the foreground. Typically, a global floating window is positioned above all application windows, and you can create a global floating window and perform operations such as setting its properties.
 
@@ -540,7 +539,7 @@ A global floating window can be created on top of an existing task to display a 
 ### How to Develop
 
 <!--RP1-->
-**Prerequisites**: To create a global floating window (a window of the type **WindowType.TYPE_FLOAT**), you must request the ohos.permission.SYSTEM_FLOAT_WINDOW permission. For details, see [Requesting Permissions for system_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
+Prerequisites:To create a window of type **WindowType.TYPE_FLOAT** (a global floating window), the **ohos.permission.SYSTEM_FLOAT_WINDOW** permission is required. This permission is a controlled‑access permission. For details on how to apply for the permission, see [Requesting Restricted Permissions](../security/AccessToken/declare-permissions-in-acl.md).
 <!--RP1End-->
 
 1. Create a global floating window.
@@ -565,7 +564,7 @@ A global floating window can be created on top of an existing task to display a 
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_CreatFloatWindow]';
@@ -639,7 +638,7 @@ After a **WindowStage** object is created, the application can listen for the **
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0X0000;
 const TAG: string = '[Sample_ListenWindowStage]';

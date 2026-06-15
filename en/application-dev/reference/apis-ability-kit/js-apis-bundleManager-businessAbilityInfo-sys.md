@@ -1,5 +1,12 @@
 # BusinessAbilityInfo (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @HelloCrease-->
+
 The module provides basic information about a business ability.
 
 > **NOTE**
@@ -23,4 +30,4 @@ The module provides basic information about a business ability.
 | descriptionId                     | number                                                       | Yes  | No  | Description ID of the module.      |
 | iconId                            | number                                                       | Yes  | No  | ID of the icon that describes the ability information.|
 | businessType | [businessAbilityRouter.BusinessType](js-apis-businessAbilityRouter-sys.md#businesstype) | Yes| No| Type of the business ability.|
-| applicationInfo | Array\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | Yes  | No  | Application information. |
+| applicationInfo | [ApplicationInfo](js-apis-bundleManager-applicationInfo.md) | Yes  | No  | Application information. |

@@ -1,9 +1,9 @@
 # MultiNavigation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
@@ -12,7 +12,7 @@ MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
 >
 > 该组件从API version 14开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如getParent、setInterception、pushDestination等)，可能会发生无法预期的问题。
+> 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如[getParent](ts-basic-components-navigation.md#getparent11)、[setInterception](ts-basic-components-navigation.md#setinterception12)、[pushDestination](ts-basic-components-navigation.md#pushdestination11)等)，可能会发生无法预期的问题。
 >
 > MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
 
@@ -32,24 +32,24 @@ MultiNavigation({navDestination: NavDestinationBuildFunction, multiStack: MultiN
 
 创建并初始化MultiNavigation组件。
 
-MultiNavigation组件遵循默认的左起右清栈规则，这意味着从左侧主页点击时，会触发详情页的加载并同时清除右侧所有其他详情页，确保右侧仅展示最新加载的详情页。然而，若在右侧的详情页上再次执行详情页加载操作，系统将不会执行清栈动作。效果可参见[主页跳转详情页效果演示](#示例)。
+MultiNavigation组件遵循默认的左起右清栈规则，这意味着从左侧主页点击时，会触发详情页的加载并同时清除右侧所有其他详情页，确保右侧仅展示最新加载的详情页。然而，若在右侧的详情页上再次执行详情页加载操作，系统将不会执行清栈动作。效果可参见[示例](#示例)。
 
-**装饰器类型：**@Component
+**装饰器类型：** [@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 |   名称   |          类型          | 必填 | 装饰器类型 | 说明 |
-|:---------:|:----------------------:|------ |:------:|-----------|
-| multiStack | [MultiNavPathStack](#multinavpathstack) |  是 | @State | 设置路由栈。 |
-| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | 是 | @BuilderParam | 设置加载目标页面的路由规则。 |
+|---------|----------------------|------ |------|-----------|
+| multiStack | [MultiNavPathStack](#multinavpathstack) |  是 | [@State](../../../ui/state-management/arkts-state.md) | 设置路由栈。 |
+| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | 是 | [@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 设置加载目标页面的路由规则。 |
 | onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | 否 | - | 设置MultiNavigation模式变更时的回调。 |
 | onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | 否 | - | 设置主页处于栈顶时的回调。 |
 
 ## MultiNavPathStack
 
-当前，MultiNavigation的路由栈仅支持由使用方自行创建，不支持通过回调方式获取。请勿使用NavDestination的onReady等类似事件或接口来获取NavPathStack并进行栈操作，因为这可能会导致不可预知的问题。
+当前，MultiNavigation的路由栈仅支持由使用方自行创建，不支持通过回调方式获取。请勿使用[NavDestination](ts-basic-components-navdestination.md)的[onReady](ts-basic-components-navdestination.md#onready11)等类似事件或接口来获取NavPathStack并进行栈操作，因为这可能会导致不可预知的问题。
 
 ### constructor
 
@@ -615,7 +615,7 @@ keepBottomPage(keepBottom: boolean): void
 > **说明：**
 >
 > MultiNavigation将主页也当作了NavDestination页面入栈，所以调用pop或clear接口时会将栈底页面也出栈。
-> 应用调用此接口并设置为TRUE时，MultiNavigation会在调用pop和clear接口时保留栈底页面。
+> 应用调用此接口并设置为true时，MultiNavigation会在调用pop和clear接口时保留栈底页面。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -637,8 +637,8 @@ setPlaceholderPage(info: NavPathInfo): void
 >
 > 占位页面为特殊页面类型，当应用设置后，在一些大屏设备上会和主页默认形成左右分栏的效果，即左边主页，右边占位页。
 > 
-> 当应用可绘制区域小于600VP、折叠屏由展开态切换为折叠态及平板横屏转竖屏等场景时，会自动将占位页出栈，只显示主页；
-> 而当应用可绘制区域大于等于600VP、折叠屏由折叠态切换为展开态及平板竖屏转横屏等场景时，会自动补充占位页，形成分栏。
+> 当应用可绘制区域小于600vp、折叠屏由展开态切换为折叠态及平板横屏转竖屏等场景时，会自动将占位页出栈，只显示主页；
+> 而当应用可绘制区域大于等于600vp、折叠屏由折叠态切换为展开态及平板竖屏转横屏等场景时，会自动补充占位页，形成分栏。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 

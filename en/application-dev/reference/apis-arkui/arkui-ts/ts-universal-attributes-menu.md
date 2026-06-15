@@ -1173,7 +1173,7 @@ struct Index {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_bindMenuLifeCycle.gif)
+![preview-builder](figures/en-us_image_bindMenuLifeCycle.gif)
 
 ### Example 16: Setting the Menu Mask
 
@@ -1435,7 +1435,6 @@ struct Index {
 }
 ```
 
-![menu-keyboard-avoid](figures/menuKeyboardAvoid.gif)
 
 ### Example 21: Setting the Position of the Menu to Display Relative to the Upper Left Corner of the Bound Component
 

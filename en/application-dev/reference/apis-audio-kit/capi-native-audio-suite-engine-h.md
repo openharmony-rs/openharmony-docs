@@ -1,8 +1,8 @@
 # native_audio_suite_engine.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -28,7 +28,7 @@ The file declares the functions related to audio creation, including the engine,
 | -- | -- | -- |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_Create(OH_AudioSuiteEngine** audioSuiteEngine)](#oh_audiosuiteengine_create) | - | Creates an audio creation engine.|
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_Destroy(OH_AudioSuiteEngine* audioSuiteEngine)](#oh_audiosuiteengine_destroy) | - | Destroys the handle to an audio creation engine.|
-| [OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline** audioSuitePipeline, OH_AudioSuite_PipelineWorkMode workMode)](#oh_audiosuiteengine_createpipeline) | - | Creates a pipeline within the current audio creation engine. A pipeline is the execution unit within the engine responsible for audio creation, and multiple pipelines can be created within a single engine.<br> Up to 10 pipelines can be created, with a maximum of one real-time rendering pipeline.<br> Each pipeline must have at least one input node and exactly one output node.<br> When the pipeline operations in [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_EDIT_MODE mode, all effect nodes are supported.<br> When the pipeline operations in [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE mode, only the [OH_AudioNode_Type](capi-native-audio-suite-base-h.md#oh_audionode_type).EFFECT_NODE_TYPE_EQUALIZER effect node is supported.|
+| [OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline** audioSuitePipeline, OH_AudioSuite_PipelineWorkMode workMode)](#oh_audiosuiteengine_createpipeline) | - | Creates a pipeline within the current audio creation engine. A pipeline is the execution unit within the engine responsible for audio creation, and multiple pipelines can be created within a single engine.<br> Up to 10 pipelines can be created, with a maximum of one real-time preview pipeline.<br> Each pipeline must have at least one input node and exactly one output node.<br> When the pipeline operations in [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_EDIT_MODE mode, all effect nodes are supported.<br> Before API version 23, when a pipeline works in [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE mode, only the effect node [OH_AudioNode_Type](capi-native-audio-suite-base-h.md#oh_audionode_type).EFFECT_NODE_TYPE_EQUALIZER is supported.<br> Since API version 23, when a pipeline works in [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE mode, all effect nodes are supported.|
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyPipeline(OH_AudioSuitePipeline* audioSuitePipeline)](#oh_audiosuiteengine_destroypipeline) | - | Destroys the handle to an audio creation pipeline.|
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_StartPipeline(OH_AudioSuitePipeline* audioSuitePipeline)](#oh_audiosuiteengine_startpipeline) | - | Starts the pipeline. The pipeline will enter the [OH_AudioSuite_PipelineState](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelinestate).AUDIOSUITE_PIPELINE_RUNNING state.|
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_StopPipeline(OH_AudioSuitePipeline* audioSuitePipeline)](#oh_audiosuiteengine_stoppipeline) | - | Stops the pipeline. The pipeline will enter the [OH_AudioSuite_PipelineState](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelinestate).AUDIOSUITE_PIPELINE_STOPPED state. This function does not change the connections between nodes within the pipeline. Once the pipeline is stopped, [OH_AudioSuiteEngine_RenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe) can no longer perform audio processing.|
@@ -132,7 +132,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* aud
 
 **Description**
 
-Creates a pipeline within the current audio creation engine. A pipeline is the execution unit within the engine responsible for audio creation, and multiple pipelines can be created within a single engine.<br> Up to 10 pipelines can be created, with a maximum of one real-time rendering pipeline.<br> Each pipeline must have at least one input node and exactly one output node.<br> When the pipeline operations in [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_EDIT_MODE mode, all effect nodes are supported.<br> When the pipeline operations in [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE mode, only the [OH_AudioNode_Type](capi-native-audio-suite-base-h.md#oh_audionode_type).EFFECT_NODE_TYPE_EQUALIZER effect node is supported.
+Creates a pipeline within the current audio creation engine. A pipeline is the execution unit within the engine responsible for audio creation, and multiple pipelines can be created within a single engine.<br> Up to 10 pipelines can be created, with a maximum of one real-time preview pipeline.<br> Each pipeline must have at least one input node and exactly one output node.<br> When the pipeline operations in [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_EDIT_MODE mode, all effect nodes are supported.<br> Before API version 23, when a pipeline works in [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE mode, only the effect node [OH_AudioNode_Type](capi-native-audio-suite-base-h.md#oh_audionode_type).EFFECT_NODE_TYPE_EQUALIZER is supported.<br> Since API version 23, when a pipeline works in [OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE mode, all effect nodes are supported.
 
 **Since**: 22
 
@@ -260,14 +260,15 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audi
 
 Obtains the processed audio data from the pipeline (for single-output effect nodes).
 
->**NOTE**
->Applications need to call this function to obtain audio data that has been processed by effects.
- * When this function is called, the pipeline pulls data backward from the output node, apply effect processing,
- * and fill the processed data into the **audioData** pointer provided by the application.
- * The system attempts to fill the data based on the size specified by **requestFrameSize**, and the actual size of the processed data is returned to the application via **responseSize**.
- * When the application has prepared data for all input nodes and submits the last data through a callback, it should set the finish flag in the callback.
- * Once all inputs in the pipeline have passed the finish flag, the pipeline notifies the application through **finishedFlag** after processing is complete.
- * If **finishedFlag** is **true**, the application should not call this function again.
+> **NOTE**
+>
+> Applications need to call this function to obtain audio data that has been processed by effects.
+> * When this function is called, the pipeline pulls data backward from the output node, apply effect processing,
+> * and fill the processed data into the **audioData** pointer provided by the application.
+> * The system attempts to fill the data based on the size specified by **requestFrameSize**, and the actual size of the processed data is returned to the application via **responseSize**.
+> * When the application has prepared data for all input nodes and submits the last data through a callback, it should set the finish flag in the callback.
+> * Once all inputs in the pipeline have passed the finish flag, the pipeline notifies the application through **finishedFlag** after processing is complete.
+> * If **finishedFlag** is **true**, the application should not call this function again.
 
 **Since**: 22
 
@@ -278,7 +279,7 @@ Obtains the processed audio data from the pipeline (for single-output effect nod
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Audio creation pipeline handle, which is obtained by calling [OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline).|
 | void* audioData | Pointer to the address for writing the obtained audio data.|
 | int32_t requestFrameSize | Byte size of the memory allocated for **audioData**. The value must be greater than 0.|
-| int32_t* responseSize | Pointer to the size of the audio data written to **audioData** by the pipeline. The value cannot be greater than **requestFrameSize**.|
+| int32_t* responseSize | Pointer to the size of the audio data written to **audioData** by the pipeline. The value cannot be greater than **requestFrameSize**. The unit is bytes.|
 | bool* finishedFlag | Pointer to the flag indicating whether the current pipeline has completed rendering.|
 
 **Returns**
@@ -305,7 +306,7 @@ Renders the pipeline and obtains the processed audio data. For pipelines with mu
 | -- | -- |
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Audio creation pipeline handle, which is obtained by calling [OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline).|
 | [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)* audioDataArray | Pointer to the array used by the user to read audio data. Each element of the array must be of the same size.|
-| int32_t* responseSize | Pointer to the size of the audio data written into each element of **audioDataArray** by the pipeline. The system ensures consistent data size across all elements.|
+| int32_t* responseSize | Pointer to the size of the audio data written into each element of **audioDataArray** by the pipeline. The system ensures consistent data size across all elements. The unit is bytes.|
 | bool* finishedFlag | Pointer to the flag indicating whether the current pipeline has completed rendering.|
 
 **Returns**
@@ -446,11 +447,12 @@ typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, voi
 
 Sets a callback function for the input node to request data.
 
->**NOTE**
->Applications should write the PCM audio data to be processed to **audioData**, from which OHAudioSuite obtains the data for audio creation.
- * Applications should write data to **audioData** that does not exceed the size specified by **audioDataSize**.
- * Once all data has been passed to the pipeline through this callback, the application should set **finished** to **true** in the last callback. After this, the pipeline will no longer call this function.
- * Only input nodes require this configuration; other nodes do not.
+> **NOTE**
+>  
+> Applications should write the PCM audio data to be processed to **audioData**, from which OHAudioSuite obtains the data for audio creation.
+> * Applications should write data to **audioData** that does not exceed the size specified by **audioDataSize**.
+> * Once all data has been passed to the pipeline through this callback, the application should set **finished** to **true** in the last callback. After this, the pipeline will no longer call this function.
+> * Only input nodes require this configuration; other nodes do not.
 
 **Since**: 22
 
@@ -520,7 +522,7 @@ Creates an audio node within the audio pipeline based on the audio creation buil
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | **AUDIOSUITE_SUCCESS**: The function is executed successfully.<br>         **AUDIOSUITE_ERROR_INVALID_PARAM**: A parameter is nullptr or has an invalid value.<br>         Possible causes are as follows:<br>         1. The **audioSuitePipeline** parameter is nullptr.<br>         2. The **builder** parameter is nullptr.<br>         3. The **audioNode** parameter is nullptr.<br>         **AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS**: The number of nodes of the current type already reaches the upper limit.<br>         For example, attempting to create more than 5 effect nodes.<br>         **AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING**: Mandatory parameters are missing when creating a node of the specified type.<br>         For example, the node type is not set in the builder.<br>         **AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION**: Unsupported operations. For example, setting a callback function for an output node,<br>         or setting an audio format or callback function for an effect node.<br>         **AUDIOSUITE_ERROR_TIMEOUT**: The operation times out.<br>         **AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED**: Memory allocation fails.<br>         **AUDIOSUITE_ERROR_SYSTEM**: Other system exceptions occur.|
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | **AUDIOSUITE_SUCCESS**: The function is executed successfully.<br>         **AUDIOSUITE_ERROR_INVALID_PARAM**: A parameter is nullptr or has an invalid value.<br>         Possible causes are as follows:<br>         1. The **audioSuitePipeline** parameter is nullptr.<br>         2. The **builder** parameter is nullptr.<br>         3. The **audioNode** parameter is nullptr.<br>         **AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS**: The number of nodes of the current type already reaches the upper limit.<br>         For example, before API version 24, the number of effect nodes created exceeds five. Since API version 24, it exceeds 15.<br>         **AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING**: Mandatory parameters are missing when creating a node of the specified type.<br>         For example, the node type is not set in the builder.<br>         **AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION**: Unsupported operations. For example, setting a callback function for an output node,<br>         or setting an audio format or callback function for an effect node.<br>         **AUDIOSUITE_ERROR_TIMEOUT**: The operation times out.<br>         **AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED**: Memory allocation fails.<br>         **AUDIOSUITE_ERROR_SYSTEM**: Other system exceptions occur.|
 
 ### OH_AudioSuiteEngine_DestroyNode()
 
@@ -738,7 +740,7 @@ Sets the configuration parameters for the sound field effect node.
 | Name| Description|
 | -- | -- |
 | [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Audio creation node handle, which is obtained by calling [OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode).|
-| [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype) soundFieldType | Configuration parameter of the sound field effect node.|
+| [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype) soundFieldType | Configuration parameters of the sound field effect node.|
 
 **Returns**
 
@@ -1197,4 +1199,3 @@ Obtains the configuration parameters of the general voice change node.
 | Type| Description|
 | -- | -- |
 | [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | **AUDIOSUITE_SUCCESS**: The function is executed successfully.<br>         **AUDIOSUITE_ERROR_NODE_NOT_EXIST**: The node does not exist or has been destroyed.<br>         **AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION**: The **audioNode** node type is not a general voice change effect node.<br>         **AUDIOSUITE_ERROR_INVALID_PARAM**: Invalid parameters. For example, **audioNode** is nullptr.<br>         **AUDIOSUITE_ERROR_TIMEOUT**: The operation times out.<br>         **AUDIOSUITE_ERROR_SYSTEM**: Other system exceptions occur.|
-<!--no_check-->

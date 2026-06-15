@@ -1,9 +1,9 @@
 # @ohos.app.form.formProvider (formProvider)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 The **formProvider** module provides APIs to obtain widget information, update widgets, and set the update time.
@@ -57,7 +57,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 try {
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
     if (error) {
@@ -115,7 +115,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 try {
   formProvider.setFormNextRefreshTime(formId, 5).then(() => {
     console.info(`formProvider setFormNextRefreshTime success`);
@@ -168,7 +168,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 try {
   let param: Record<string, string> = {
     'temperature': '22c',
@@ -233,7 +233,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 let param: Record<string, string> = {
   'temperature': '22c',
   'time': '22:00'
@@ -330,7 +330,7 @@ import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // get info of forms belong to module entry.
+  // Obtain the widget information of the specified module.
   moduleName: 'entry'
 };
 try {
@@ -386,7 +386,7 @@ import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // get info of forms belong to module entry.
+  // Obtain the widget information of the specified module.
   moduleName: 'entry'
 };
 try {
@@ -484,7 +484,7 @@ Closes the widget editing page.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md#801-api-not-supported) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
 | Error Code ID   | Error Message|
 |----------| -------- |
@@ -543,6 +543,8 @@ Opens the Widget Manager page of the current application.
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.Ability.Form
+
+**Device behavior differences**: This API returns error code [16501000](./errorcode-form.md#16501000-internal-function-error) if called on wearables.
 
 **Parameters**
 
@@ -694,8 +696,8 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 Requests an animation. This API takes effect only for [scene-based widgets](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field). This API uses a promise to return the result.
 > **NOTE**
 >
-> - This API is unavailable in the power-saving mode and will return the error code 16501000.
-> - If the device's thermal level reaches HOT and no tap event occurs, the API returns error code 16501000. If the thermal level reaches OVERHEATED, the API returns error code 16501000 in any case. For details about thermal level information, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
+> 1. This API is unavailable in the power-saving mode and will return the error code 16501000.
+> 2. If the device's thermal level reaches HOT and no tap event occurs, the API returns error code 16501000. If the thermal level reaches OVERHEATED, the API returns error code 16501000 in any case. For details about thermal level information, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
@@ -736,7 +738,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 let overflowInfo: formInfo.OverflowInfo = {
   area: {
     left: -10,
@@ -802,7 +804,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 
 try {
   formProvider.cancelOverflow(formId).then(() => {
@@ -835,7 +837,7 @@ Obtains the position and dimension of a widget. This API uses a promise to retur
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise used to return the position and dimension of the widget relative to the upper-left corner of the screen, in vp.|
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise used to return the widget position relative to the upper-left corner of the screen and the widget dimensions.|
 
 **Error codes**
 
@@ -857,7 +859,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formId: string = '12400633174999288';
+let formId: string = '12400633174999288'; // formId of the widget. Use the actual form ID.
 
 try {
   formProvider.getFormRect(formId).then((data: formInfo.Rect) => {

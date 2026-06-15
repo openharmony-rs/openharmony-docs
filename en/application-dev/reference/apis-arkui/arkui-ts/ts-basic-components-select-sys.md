@@ -18,7 +18,7 @@ The **Select** component provides a drop-down menu that allows users to select a
 
 menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 
-Sets the system material of the drop-down menu. Different system materials correspond to different attribute effects. This API affects paramters of the drop-down menu, such as [menuBackgroundColor](ts-basic-components-select.md#menubackgroundcolor18), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), and [shadow](ts-universal-attributes-image-effect.md#shadow). It is not recommended to use this API together with the preceding APIs.
+Sets the system material of the drop-down menu. Different system materials correspond to different attribute effects. This API affects parameters of the drop-down menu, such as [menuBackgroundColor](ts-basic-components-select.md#menubackgroundcolor18), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), and [shadow](ts-universal-attributes-image-effect.md#shadow). It is not recommended to use this API together with the preceding APIs.
 
 **System API**: This is a system API.
 
@@ -32,7 +32,7 @@ Sets the system material of the drop-down menu. Different system materials corre
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| material | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[SystemUiMaterial](./ts-universal-attributes-image-effect-sys.md#systemuimaterial23)> | Yes| Sets the system material of the drop-down menu. If the material is set to an invalid value or **undefined**, no system material is set.|
+| material | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SystemUiMaterial](./ts-universal-attributes-image-effect-sys.md#systemuimaterial23)> | Yes| Sets the system material of the drop-down menu. If the material is set to an invalid value or **undefined**, no system material is set.|
 
 ## Examples
 ### Example 1 Setting System Material for the Select Component and Drop-down Menu
@@ -70,3 +70,4 @@ System material not set
 System material set
 
 ![select-menu-new-material](figures/selectNewMaterial.PNG)
+<!--no_check-->

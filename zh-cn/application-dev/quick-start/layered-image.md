@@ -4,9 +4,9 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
-本页面提供应用图标和名称的配置指导。应用图标分为单层图标和分层图标。单层图标包含一个图片，分层图标包含前景图和背景图。图标规范详见<!--RP1-->[设计原则](https://docs.openharmony.cn/pages/v6.0/zh-cn/design/ux-design/visual-icons.md#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99)<!--RP1End-->，图标和名称配置约束详见[图标和名称配置](../application-models/application-component-configuration-stage.md#应用图标和名称配置)。
+本页面提供应用图标和名称的配置指导。应用图标分为单层图标和分层图标。单层图标包含一个图片，分层图标包含前景图和背景图。图标规范详见<!--RP1-->[设计原则](../../design/ux-design/visual-app-icons.md#设计原则)<!--RP1End-->，图标和名称配置约束详见[图标和名称配置](../application-models/application-component-configuration-stage.md#应用图标和名称配置)。
 
 ## 使用场景
 
@@ -24,9 +24,21 @@
 
 * HAP中包含UIAbility
 
-  * 如果在[module.json5配置文件](module-configuration-file.md)的abilities标签中配置了icon和label，且该对应的ability中skills标签下面的entities中包含"entity.system.home"、actions中包含"ohos.want.action.home"，则系统将优先返回module.json5中的icon与label。如果存在多个满足条件的ability，优先返回module.json5中mainElement对应的ability配置的icon和label。
+  1. 入口UIAbility：skills标签中entities中包含"entity.system.home"、并且actions中包含"ohos.want.action.home"。
+  
+  2. 在module.json5配置了多个入口UIAbility：
 
-  * 如果在module.json5配置文件的abilities标签中未设置icon和label，系统将返回[app.json5](app-configuration-file.md)中的icon和label。
+      * 如果module.json5中mainElement配置的为入口UIAbility，则返回mainElement对应的入口UIAbility配置的icon和label。
+
+      * 如果module.json5中mainElement未配置或者配置的不为入口UIAbility，则返回module.json5中配置的第一个入口UIAbility对应的icon和label。
+
+  3. 在module.json5配置文件中，出现以下任一情况时，系统将返回app.json5中的icon或label：
+
+      * mainElement配置的为入口UIAbility，但是入口UIAbility未设置icon或label。
+
+      * mainElement未配置或者配置的不为入口UIAbility，且module.json5配置文件中第一个入口UIAbility未设置icon或label。
+
+  多HAP包的工程中，如果entry类型存在，以entry类型的HAP中module.json5配置文件为准。如果没有entry类型，此时用所有hap的moduleName以ASCII字典序排序，最终以排序为最后一个的feature包的module.json5配置文件为准。
 
 * HAP中不包含UIAbility，系统将返回app.json5中的icon和label。
 
@@ -37,7 +49,7 @@
 >
 > 例如，app.json5和module.json5中配置的分层图标的资源文件名称一致、图标不一致，AppScope目录下的资源文件会覆盖模块中的文件，最后的效果是app.json5中的配置图标生效。
 > 
-> 如果应用配置中未设置入口UIAbility，点击桌面图标将直接进入应用详情页（设置->应用和元服务下，点击任意应用即可进入该应用的应用详情页）。其他情况下，点击桌面图标将直接进入应用页面。应用未配置入口UIAbility包含2种场景：
+> 如果应用配置中未设置入口UIAbility，点击桌面图标将直接进入应用详情页（设置->应用和原子化服务下，点击任意应用即可进入该应用的应用详情页）。其他情况下，点击桌面图标将直接进入应用页面。应用未配置入口UIAbility包含2种场景：
 >
 >   1. 应用没有配置任何UIAbility。
 >   2. 所有UIAbility中skills标签下的entities未配置或配置内容不包括 "entity.system.home"，并且actions未配置或配置内容不包括 "ohos.want.action.home"。

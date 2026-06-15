@@ -8,7 +8,7 @@
 
 ## 概述
 
-已有的[自定义组件生命周期](./arkts-page-custom-components-lifecycle.md)回调函数触发只取决于事件的触发，在某些特定的情况下，会出现自定义组件生命周期回调函数的触发顺序不符合预期。比如：[aboutToDisappear在特定情况下会误调用aboutToAppear、组件未展开被复用时，会误调用aboutToReuse](#生命周期回调函数的区别)。新的自定义组件生命周期回调函数受[状态机](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)限制，生命周期回调函数调用时机符合预期。
+已有的[自定义组件生命周期](./arkts-page-custom-components-lifecycle.md)回调函数触发只取决于事件的触发，在某些特定的情况下，会出现自定义组件生命周期回调函数的触发顺序不符合预期。比如：[aboutToDisappear在特定情况下会误调用aboutToAppear、组件未展开被复用时，会误调用aboutToReuse](#生命周期回调函数的区别)。新的自定义组件生命周期回调函数受状态机限制，生命周期回调函数调用时机符合预期。
 
 自定义组件生命周期，即用[@Component](arkts-create-custom-components.md#component)或[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件的生命周期，从API version 23开始，提供以下生命周期装饰器：
 
@@ -42,7 +42,7 @@
 
 1. 在删除组件之前，将调用其\@ComponentDisappear装饰的生命周期函数，标记着该节点将要被销毁。ArkUI的节点删除机制是：后端节点直接从组件树上摘下，后端节点被销毁，对前端节点解引用，前端节点已经没有引用时，将被Ark虚拟机垃圾回收。
 
-2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[同步源](arkts-state-management-glossary.md#数据源同步源data-source)上取消注册。
+2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[状态数据源](arkts-state-management-glossary.md#state-data-source状态数据源)上取消注册。
 
 ## 限制条件
 
@@ -474,6 +474,7 @@ Column() {
   Text('Hello World')
 }
 .onAppear(() => {
+  // 在onAppear中注册监听
   registerObserver(UIUtils.getLifecycle(this));
 })
 .onDisAppear(() => {
@@ -591,6 +592,7 @@ export struct SwiperExample {
   @State selectedTabIndex: number = 0;
   @ComponentAppear
   myAppear(): void {
+    // myAppear中为data赋值
     let list: number[] = [];
     for (let i = 0; i <= 11; i++) {
       list.push(i);
@@ -685,10 +687,12 @@ struct ReusableTest {
   @State flag2: boolean = false;
   build() {
     Column() {
+      // 点击Button切换flag1，触发ReusableComp1和ReusableComp2的回收/复用
       Button('a')
         .onClick(() => {
           this.flag1 = !this.flag1;
         })
+      // 点击Button切换flag2，触发ReusableComp1和ReusableComp3的回收/复用
       Button('b')
         .onClick(() => {
           this.flag2 = !this.flag2;

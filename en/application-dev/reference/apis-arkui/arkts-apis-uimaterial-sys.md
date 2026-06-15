@@ -1,8 +1,8 @@
 # @ohos.arkui.uiMaterial (System Material) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -106,4 +106,3 @@ struct SystemMaterialPage {
 ```
 
 ![systemMaterial](figures/uiMaterial.jpg)
-<!--no_check-->

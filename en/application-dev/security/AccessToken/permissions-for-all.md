@@ -1,8 +1,8 @@
 # Open system_grant Permissions
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -13,7 +13,7 @@ After an application requests this type of permissions, the system automatically
 
 <!--Del-->
 > **NOTE**
-> "Enable via ACL" is not involved for permissions of the normal level.
+> **Certificate-based authorization** is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode
@@ -68,7 +68,7 @@ Allows an application to obtain the print framework capability.
 
 Allows an application to configure Bluetooth on a device, initiate or cancel a scan for Bluetooth devices, and pair with Bluetooth devices.
 
-
+ 
 
 **Permission level**: normal
 
@@ -80,7 +80,7 @@ Allows an application to configure Bluetooth on a device, initiate or cancel a s
 
 Allows an application to read data from an acceleration sensor, uncalibrated acceleration sensor, or linear acceleration sensor.
 
-
+ 
 
 **Permission level**: normal
 
@@ -150,7 +150,7 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 Allows an application to read data from a gyroscope sensor or uncalibrated gyroscope sensor.
 
-
+ 
 
 **Permission level**: normal
 
@@ -382,7 +382,7 @@ Allows an application to set pinned windows.
 
 ## ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
-Allows a system application to use infrared interfaces.
+Allows an application to use infrared interfaces.
 
 With this permission, the application can obtain the maximum frequency supported by the infrared module and send infrared signals at a specific frequency.
 
@@ -519,7 +519,7 @@ This permission can be requested when the application meets the following condit
 
 Allows an application to set the main window container to be transparent and remove the shadow of the outer border of the main window.
 
-With this permission, the application can set the background color the shadow visibility of the main window.
+With this permission, the application can set the background color and the shadow visibility of the main window.
 
 **Permission level**: normal
 
@@ -563,7 +563,7 @@ This permission applies only to independent binary programs, not to HAPs.
 
 Allows an application to turn off the screen but keep it unlocked after a timeout.
 
-With this permission, the application prevents the device from locking by default when the screen turns off after a timeout.
+The device locks by default when the screen turns off after a timeout. With this permission, the application does not enter the lock screen when the screen turns off after a timeout.
 
 **Permission level**: normal
 
@@ -653,7 +653,7 @@ With this permission, the application allows the system to dump application memo
 
 **Authorization mode**: system_grant
 
-**Supported devices**: 2in1
+**Supported devices**: 2-in-1 devices
 
 **Since**: 23
 
@@ -673,7 +673,7 @@ With this permission, the application can apply HDR brightening effects to compo
 
 ## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
-Allows an application to query information about and launch ObjectEditorExtensionAbility components.
+Allows an application to query information about and launch **ObjectEditorExtensionAbility** components.
 
 With this permission, the application can query available types of pluggable embedded content and edit the corresponding content.
 

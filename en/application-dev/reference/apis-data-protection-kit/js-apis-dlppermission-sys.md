@@ -2,7 +2,7 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -11,7 +11,7 @@ Data loss prevention (DLP) is a system solution provided to prevent data disclos
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.dlpPermission](js-apis-dlppermission.md).
+> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.dlpPermission (DLP)](js-apis-dlppermission.md).
 
 ## Modules to Import
 
@@ -25,11 +25,11 @@ getDLPGatheringPolicy(): Promise&lt;GatheringPolicyType&gt;
 
 Obtains the DLP sandbox gathering policy. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Return value**
 
@@ -39,9 +39,9 @@ Obtains the DLP sandbox gathering policy. This API uses a promise to return the 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -70,11 +70,11 @@ getDLPGatheringPolicy(callback: AsyncCallback&lt;GatheringPolicyType&gt;): void
 
 Obtains the DLP sandbox gathering policy. This API uses an asynchronous callback to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -84,9 +84,9 @@ Obtains the DLP sandbox gathering policy. This API uses an asynchronous callback
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -119,11 +119,11 @@ installDLPSandbox(bundleName: string, access: DLPFileAccess, userId: number, uri
 
 Installs a DLP sandbox application for an application. This API uses a promise to return the sandbox application installed.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -142,9 +142,9 @@ Installs a DLP sandbox application for an application. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -177,11 +177,11 @@ installDLPSandbox(bundleName: string, access: DLPFileAccess, userId: number, uri
 
 Installs a DLP sandbox application for an application. This API uses an asynchronous callback to return the index of the sandbox application installed.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -195,9 +195,9 @@ Installs a DLP sandbox application for an application. This API uses an asynchro
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -231,11 +231,11 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promi
 
 Uninstalls a DLP sandbox application for an application. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -253,9 +253,9 @@ Uninstalls a DLP sandbox application for an application. This API uses a promise
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -274,7 +274,7 @@ async function ExampleFunction() {
   try {
     let res = await dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100, uri);
     console.info('res', JSON.stringify(res));
-    await dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, res.appIndex); // UnInstall a DLP sandbox application.
+    await dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, res.appIndex); // Uninstall a DLP sandbox application.
   } catch (err) {
     console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
   }
@@ -287,11 +287,11 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number, callba
 
 Uninstalls a DLP sandbox application for an application. This API uses an asynchronous callback to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -304,9 +304,9 @@ Uninstalls a DLP sandbox application for an application. This API uses an asynch
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -345,11 +345,11 @@ on(type: 'uninstallDLPSandbox', listener: Callback&lt;DLPSandboxState&gt;): void
 
 Subscribes to a DLP sandbox uninstall event.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 | Name| Type| Mandatory| Description|
@@ -359,9 +359,9 @@ Subscribes to a DLP sandbox uninstall event.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -390,11 +390,11 @@ off(type: 'uninstallDLPSandbox', listener?: Callback&lt;DLPSandboxState&gt;): vo
 
 Unsubscribes from the DLP sandbox uninstall event.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 | Name| Type| Mandatory| Description|
@@ -404,9 +404,9 @@ Unsubscribes from the DLP sandbox uninstall event.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -435,9 +435,9 @@ Provides APIs for managing DLP files. A **DLPFile** instance indicates a DLP fil
 
 ### Attributes
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -449,11 +449,11 @@ addDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
 Adds a link file to the Filesystem in Userspace (FUSE). The link file is a virtual file mapped to the ciphertext in the FUSE. The read and write operations on the link file will be synchronized to the DLP file. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -469,9 +469,9 @@ Adds a link file to the Filesystem in Userspace (FUSE). The link file is a virtu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -526,11 +526,11 @@ addDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): void
 
 Adds a link file to the FUSE. This API uses an asynchronous callback to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -541,9 +541,9 @@ Adds a link file to the FUSE. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -604,11 +604,11 @@ stopFuseLink(): Promise&lt;void&gt;
 
 Stops the read and write on the FUSE. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Return value**
 
@@ -618,9 +618,9 @@ Stops the read and write on the FUSE. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -674,11 +674,11 @@ stopFuseLink(callback: AsyncCallback&lt;void&gt;): void
 
 Stops the read and write on the FUSE. This API uses an asynchronous callback to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -688,9 +688,9 @@ Stops the read and write on the FUSE. This API uses an asynchronous callback to 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -752,11 +752,11 @@ resumeFuseLink(): Promise&lt;void&gt;
 
 Resumes the read and write on the FUSE. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Return value**
 
@@ -766,9 +766,9 @@ Resumes the read and write on the FUSE. This API uses a promise to return the re
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -823,11 +823,11 @@ resumeFuseLink(callback: AsyncCallback&lt;void&gt;): void
 
 Resumes the read and write on the FUSE. This API uses an asynchronous callback to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -837,9 +837,9 @@ Resumes the read and write on the FUSE. This API uses an asynchronous callback t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -902,11 +902,11 @@ replaceDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
 Replaces a link file. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -922,9 +922,9 @@ Replaces a link file. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -981,11 +981,11 @@ replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): v
 
 Replaces a link file. This API uses an asynchronous callback to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -996,9 +996,9 @@ Replaces a link file. This API uses an asynchronous callback to return the resul
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1062,11 +1062,11 @@ deleteDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
 Deletes a link file from the FUSE. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -1082,9 +1082,9 @@ Deletes a link file from the FUSE. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1139,11 +1139,11 @@ deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): vo
 
 Deletes a link file. This API uses an asynchronous callback to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -1154,9 +1154,9 @@ Deletes a link file. This API uses an asynchronous callback to return the result
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1218,11 +1218,11 @@ recoverDLPFile(plaintextFd: number): Promise&lt;void&gt;
 
 Recovers the plaintext of a DLP file. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -1238,9 +1238,9 @@ Recovers the plaintext of a DLP file. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1305,11 +1305,11 @@ recoverDLPFile(plaintextFd: number, callback: AsyncCallback&lt;void&gt;): void
 
 Recovers the plaintext of a DLP file. This API uses an asynchronous callback to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -1320,9 +1320,9 @@ Recovers the plaintext of a DLP file. This API uses an asynchronous callback to 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1395,11 +1395,11 @@ closeDLPFile(): Promise&lt;void&gt;
 
 Closes this **DLPFile** instance. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 > **NOTE**
 >
@@ -1413,9 +1413,9 @@ Closes this **DLPFile** instance. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1467,11 +1467,11 @@ closeDLPFile(callback: AsyncCallback&lt;void&gt;): void
 
 Closes this **DLPFile** instance. This API uses an asynchronous callback to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 > **NOTE**
 >
@@ -1485,9 +1485,9 @@ Closes this **DLPFile** instance. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1546,11 +1546,11 @@ generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty
 
 Generates a DLP file, which is an encrypted file that can be accessed only by authorized users. The users can have the full control permission or read-only permission on the DLP file. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -1568,9 +1568,9 @@ Generates a DLP file, which is an encrypted file that can be accessed only by au
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1630,11 +1630,11 @@ generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty
 
 Generates a DLP file, which is an encrypted file that can be accessed only by authorized users. The users can have the full control permission or read-only permission on the DLP file. This API uses an asynchronous callback to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -1647,9 +1647,9 @@ Generates a DLP file, which is an encrypted file that can be accessed only by au
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1712,11 +1712,11 @@ openDLPFile(ciphertextFd: number, appId: string): Promise&lt;DLPFile&gt;
 
 Opens a DLP file. This API uses a promise to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -1733,9 +1733,9 @@ Opens a DLP file. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1796,11 +1796,11 @@ openDLPFile(ciphertextFd: number, appId: string, callback: AsyncCallback&lt;DLPF
 
 Opens a DLP file. This API uses an asynchronous callback to return the result.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**Required permissions**: ohos.permission.ACCESS_DLP_FILE
+**Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -1812,9 +1812,9 @@ Opens a DLP file. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1877,23 +1877,23 @@ try {
 
 Represents the DLP sandbox information.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | appIndex | number | No| No| Index of the DLP sandbox application.|
 | tokenID | number | No| No| Token ID of the DLP sandbox application.|
-| bindAppIndex<sup>23+</sup> | number | No| Yes| Index of the DLP sandbox application to be bound.|
+| bindAppIndex<sup>24+</sup> | number | No| Yes| Index of the DLP sandbox application to be bound.<br>**Model constraint:** This API can be used only in the stage model.|
 
 ## DLPSandboxState
 
 DLP sandbox identity.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -1904,9 +1904,9 @@ DLP sandbox identity.
 
 Enumerates the DLP sandbox gathering policy types. **GATHERING** allows the DLP files of the same permission type to be opened in a sandbox. For example, open different tab pages in a sandbox. **NON_GATHERING** allows different DLP files to be opened in different sandboxes.
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 

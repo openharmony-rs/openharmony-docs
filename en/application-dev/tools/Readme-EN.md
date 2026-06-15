@@ -7,6 +7,7 @@
 <!--Adviser: @jinqiuheng-->
 
 - [About This Kit](command-line-tools-overview.md)
+- [hdc](../dfx/hdc.md)
 - [Ability Assistant](aa-tool.md)
 - [Bundle Manager](bm-tool.md)
 - Packing and Unpacking Tools<!--packing-unpacking-->
@@ -22,9 +23,21 @@
 <!--DelEnd-->
 - [param](param-tool.md)
 - [power-shell](power-shell.md)
+<!--Del-->
+-  
+<!--DelEnd-->
 - [Access Token Manager](atm-tool.md)
 - [network-cfg](network-cfg.md)
+- [hilog](../dfx/hilog.md)<!--RP2--><!--RP2End-->
+- hidumper<!--hidumper-tool-->
+  - [hidumper](../dfx/hidumper.md)
+  - [PrivacyManagerService](../dfx/hidumper-PrivacyManagerService.md)
+- [hitrace](../dfx/hitrace.md)
+- [hiperf](../dfx/hiperf.md)
+- [hiprofiler](../dfx/hiprofiler.md)
+- [uinput](../dfx/uinput.md)
 <!--Del-->
+- [hisysevent (for System Applications Only)](../dfx/hisysevent-sys.md)
 - [Account Manager](acm-tool.md)
 <!--DelEnd-->
 - Command Line Utilities<!--command-line-utilities-->

@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifeifei;@buzhenwang-->
+<!--Owner: @buzhenwang-->
 <!--Designer: @shenchenkai-->
 <!--Tester: @liyang2235-->
 <!--Adviser: @jinqiuheng-->
@@ -16,17 +16,23 @@
 如果进程通过hiappevent接口在某故障事件配置策略中，使能页面切换日志，例如[崩溃事件配置策略](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appcrashpolicy24)，当应用发生该故障时，hiappevent会将对应的页面切换日志快照文件返回给应用用于故障分析，日志快照文件格式如下所示：
 
 ```text
-page_switch.20260324-170403-035.1.log
+page_switch-com.example.myapplication-1-1-20260509142812417.log
 ```
 
-| 第一列 | 第二列 | 第三列 | 第四列 |
-| -------- | -------- | -------- | -------- |
-| 日志前缀 | 时间戳 | 日志ID | 日志后缀 |
-| page_switch | 20260324-170403-035 | 1 | log |
+| 第一列 | 第二列 | 第三列 | 第四列 | 第五列 | 第六列 |
+| :--------: | :--------: | :--------: | :--------: | :--------: | :--------: |
+| 日志前缀 | 进程名 | 实例索引 | 文件索引 | 时间戳 | 日志后缀 |
+| page_switch | com.example.myapplication | 1 | 1 | 20260509142812417 | log |
 
 > **说明：**
 >
-> 日志快照最多保存两个文件，ID最大值2。
+> 进程名：进程名中包含`:`、`/`、`-` 字符时，对应字符统一替换为 `_`。
+>
+> 实例索引：多个进程共用沙箱场景（例如[多实例](../quick-start/multiInstance.md)或[ExtensionAbility组件](../application-models/extensionability-overview.md)）会出现日志写冲突，所以页面切换日志会为每个进程创建一组日志文件，使用实例索引用于标识不同进程。取值范围：[1, 10]。
+>
+> 文件索引：同一进程名及实例索引下最多保留 2 个文件。取值范围：[1, 2]。
+>
+> 时间戳：格式为 YYYYMMDDhhmmssSSS，其中年（YYYY）占4位，月（MM）、日（DD）、时（hh）、分（mm）、秒（ss）各占2位，毫秒（SSS）占3位。
 
 ## 日志格式
 
@@ -36,7 +42,7 @@ page_switch.20260324-170403-035.1.log
 2026-03-24 17:03:55.361   2569   2569 Hap onBackground
 ```
 | 第一列 | 第二列 | 第三列 | 第四列 |  第五列 |
-| -------- | -------- | -------- | -------- | -------- |
+| :--------: | :--------: | :--------: | :--------: | :--------: |
 | 日期 | 时间戳 | 进程号 | 线程号 | 日志内容 |
 | 2026-03-24 | 17:03:55.361 | 2569 | 2569 | Hap onBackground |
 

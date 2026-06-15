@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=a16dcd5380f352b729da625973de1c33bd7c6a2a translatedAt=2026-06-10T11:01:53.005Z pushedAt=2026-06-11T09:14:48.242Z -->
 
 > **NOTE**
 >
@@ -15,7 +16,7 @@
 
 **Error Message**
 
-Memory error.
+Memory malloc failed.
 
 **Description**
 
@@ -28,6 +29,7 @@ The memory allocation failed.
 **Solution**
 
 1. Check whether the system is running properly.
+
 2. Check whether the service data is too long. 
 
 ## 19020002 Runtime Error
@@ -83,6 +85,7 @@ An error occurs when the cryptography framework interacts with a third-party alg
 **Solution**
 
 1. Check whether the input parameters are correct.
+
 2. Check whether the third-party algorithm library functions properly.
 
 ## 19030002 Certificate Signature Verification Failed
@@ -120,7 +123,9 @@ The certificate has not taken effect. The effective time of the certificate is l
 **Solution**
 
 1. Check whether the certificate is correct.
+
 2. Check whether the system time is correct.
+
 3. Compare the certificate effective time with the current system time to determine whether the certificate has taken effect.
 
 ## 19030004 Certificate Expired
@@ -140,7 +145,9 @@ The certificate has expired. The certificate expiration time is earlier than the
 **Solution**
 
 1. Check whether the certificate is correct.
+
 2. Check whether the system time is correct.
+
 3. Compare the certificate expiration time with the current system time to determine whether the certificate has expired.
 
 ## 19030005 Failed to Obtain the Certificate Issuer

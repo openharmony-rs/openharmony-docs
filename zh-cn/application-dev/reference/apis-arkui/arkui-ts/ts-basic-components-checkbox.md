@@ -10,9 +10,11 @@
 
 >  **说明：**
 >
->  API version 11开始，Checkbox默认样式由圆角方形变为圆形。
+> - API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 >
->  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件默认有[margin](ts-universal-attributes-size.md#margin)间距，默认值为：{&nbsp;top: '14px',&nbsp;right: '14px',&nbsp;bottom: '14px',&nbsp;left: '14px' }。
 
 ## 子组件
 
@@ -244,7 +246,7 @@ contentModifier(modifier: ContentModifier\<CheckBoxConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明) | 是   | 在Checkbox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[CheckBoxConfiguration](#checkboxconfiguration12对象说明)\> | 是   | 在Checkbox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### contentModifier<sup>18+</sup>
 
@@ -260,7 +262,7 @@ contentModifier(modifier: Optional<ContentModifier\<CheckBoxConfiguration>>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<CheckBoxConfiguration>](#checkboxconfiguration12对象说明)> | 是   | 在Checkbox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[CheckBoxConfiguration](#checkboxconfiguration12对象说明)\>\> | 是   | 在Checkbox组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ## 事件
 

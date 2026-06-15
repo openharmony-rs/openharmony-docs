@@ -11,9 +11,9 @@
 
 接下来将说明系统目前支持的算法及其对应的规格。
 
-> **说明：**
->
-> 当前使用C/C++的方式开发只支持验签，不支持签名。
+ > **说明：** 
+ > 
+ > 当前使用C/C++的方式从API version 12开始支持验签，从API version 20开始支持签名。
 
 ## RSA
 
@@ -25,16 +25,16 @@
 
 - [PSS](#填充模式为pss)： 即RFC3447规范中的RSASSA-PSS模式，对应OpenSSL中的RSA_PKCS1_PSS_PADDING。
   
-  使用该模式时需要设置两个摘要（md和mgf1_md），且md和mgf1_md长度之和需要小于RSA的密钥长度。例如RSA2048的密钥字节长度为256。
+  使用该模式时需要设置两个摘要（md和mgf1_md），且md摘要字节长度 + saltLen + 2 需要小于等于RSA的密钥长度。
 
-  此模式还可额外设置盐长度saltLen，并用于获取PSS的相关参数。（单位：字节）
+  此模式还可额外设置盐值长度saltLen，并用于获取PSS的相关参数。（单位：字节）
 
   | PSS的相关参数 | 说明 | 
   | -------- | -------- |
   | md | 摘要算法。 | 
   | mgf | 掩码生成算法，目前仅支持MGF1。 | 
   | mgf1_md | MGF1算法中使用的摘要算法。 | 
-  | saltLen | 盐长度。（单位：字节） | 
+  | saltLen | 盐值长度。（单位：字节） | 
   | trailer_field | 用于编码操作的整数，只支持为1。 | 
 
 > **注意：**
@@ -71,10 +71,6 @@
 以字符串参数完成RSA签名验签，具体的“字符串参数”由“非对称密钥类型”、“填充模式 PSS”、“摘要”和“掩码摘要”使用符号“|”拼接而成，用于在创建非对称签名验签实例时，指定非对称签名验签算法规格。
 
 如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。举例说明，当需要非对称密钥类型为RSA2048、填充模式为PSS、摘要算法为SHA256、掩码摘要为MGF1_SHA256的密钥时，其字符串参数为"RSA2048|PSS|SHA256|MGF1_SHA256"。
-
-> **说明：**
->
-> RSA签名验签时，对于PSS模式，md和mgf1_md长度之和需要小于RSA的密钥长度。如RSA密钥为512位时，无法支持md和mgf1_md同时为SHA256。
 
 | 非对称密钥类型 | 填充模式 | 摘要 | 掩码摘要 | API版本 | 
 | -------- | -------- | -------- | -------- | -------- |
@@ -172,7 +168,7 @@
 
 如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。举例说明，当需要非对称密钥类型为RSA2048、填充模式为PKCS1、摘要算法为SHA256、验签模式为Recover的密钥时，其字符串参数为"RSA2048|PKCS1|SHA256|Recover"。
 
-| 非对称密钥类型 | 填充模式 | 摘要算法 | 签名模式 | API版本 | 
+| 非对称密钥类型 | 填充模式 | 摘要算法 | 验签模式 | API版本 | 
 | -------- | -------- | -------- | -------- | -------- | 
 | RSA512 | PKCS1 | [NoHash\|MD5\|SHA1\|SHA224\|SHA256] | Recover | 12+ | 
 | RSA768 | PKCS1 | [NoHash\|MD5\|SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | Recover | 12+ | 
@@ -188,7 +184,7 @@
 
 ## ECDSA
 
-ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算法）是基于椭圆曲线密码（ECC）的数字签名算法（DSA）。相比DLP（Discrete Logarithm Problem，普通的离散对数问题）和IFP（Integer Factorization Problem，大数分解问题），椭圆曲线密码的单位比特强度要高于其他公钥体制。
+ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算法）是基于椭圆曲线密码（ECC）的数字签名算法（DSA）。相比DLP（Discrete Logarithm Problem，离散对数问题）和IFP（Integer Factorization Problem，大数分解问题），椭圆曲线密码的单位比特强度要高于其他公钥体制。
 
 算法库框架提供了多种椭圆曲线及摘要算法组合的ECDSA签名验签能力。
 

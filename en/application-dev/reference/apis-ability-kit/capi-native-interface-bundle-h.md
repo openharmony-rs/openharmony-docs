@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## Overview
 
@@ -35,10 +35,10 @@ The file declares the APIs for obtaining the application information, including 
 
 | Name| Description|
 | -- | -- |
-| [OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()](#oh_nativebundle_getcurrentapplicationinfo) | Obtains the current application information, including the bundle name and fingerprint information.|
+| [OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()](#oh_nativebundle_getcurrentapplicationinfo) | Obtains the current application information, including the bundle name and fingerprint information. After using this API, manually release the pointer of field under the object returned by the API to avoid memory leaks.|
 | [char* OH_NativeBundle_GetAppId()](#oh_nativebundle_getappid) | Obtains the appId of the current application. The appId is the unique identifier of an application and is determined by the bundle name and signature information of the application. After using this function, you must manually release the pointer returned to prevent memory leakage.|
 | [char* OH_NativeBundle_GetAppIdentifier()](#oh_nativebundle_getappidentifier)| Obtains the appIdentifier of the current application. The appIdentifier does not change throughout the application lifecycle, including version updates, certificate changes, public and private key changes, and application migration. After using this function, you must manually release the pointer returned to prevent memory leakage.|
-| [OH_NativeBundle_ElementName_OH_NativeBundle_GetMainElementName()](#oh_nativebundle_getmainelementname) | Obtains the mainElement information of the current application, including the bundle name, module name, and ability name. After using this function, you must manually release the pointer returned to prevent memory leakage.|
+| [OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()](#oh_nativebundle_getmainelementname) | Obtains the mainElement information of the current application, including the bundle name, module name, and ability name. After using this API, manually release the pointer of field under the object returned by the API to avoid memory leaks.|
 | [char* OH_NativeBundle_GetCompatibleDeviceType()](#oh_nativebundle_getcompatibledevicetype) | Obtains the compatible device type of the current application. After using this function, you must manually release the pointer returned to prevent memory leakage.|
 | [bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)](#oh_nativebundle_isdebugmode) | Checks whether the current application is in debug mode.|
 | [OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)](#oh_nativebundle_getmodulemetadata) | Obtains the module metadata array of the current application. After using this function, you must manually release the pointer returned to prevent memory leakage.|
@@ -181,7 +181,7 @@ Obtains the module metadata array of the current application. After using this f
 
 | Type| Description|
 | -- | -- |
-| [OH_NativeBundle_ModuleMetadata*](capi-native-bundle-oh-nativebundle-modulemetadata.md) | An array of module metadata. If the returned object is NULL, the retrieval fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
+| [OH_NativeBundle_ModuleMetadata](capi-native-bundle-oh-nativebundle-modulemetadata.md)* | An array of module metadata. If the returned object is NULL, the retrieval fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
 
 ### OH_NativeBundle_GetAbilityResourceInfo()
 

@@ -1,20 +1,26 @@
 # FrameNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 **FrameNode** represents an entity node in the component tree. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012).
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> **FrameNode** is not available in DevEco Studio Previewer.
+> - **FrameNode** is not available in DevEco Studio Previewer.
 >
-> FrameNodes cannot be dragged.
+> - FrameNodes cannot be dragged.
+>
+> - FrameNode objects do not support JSON serialization.
+>
+> - When the API of the [FrameNode](#framenode-1) object is invoked in the scenario of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) API of [UIContext](./arkts-apis-uicontext-uicontext.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
+>
+> - In the FrameNode APIs, only the mandatory parameters of the [Optional](./arkui-ts/ts-universal-attributes-custom-property.md#optionalt) type can be set to null or undefined.
 
 ## Modules to Import
 
@@ -46,7 +52,7 @@ Provides options for configuring or querying the cross-language access permissio
 
 | Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| attributeSetting  | boolean | No  | Yes  | Whether the FrameNode supports cross-language settings.<br>The value **true** means the FrameNode supports cross-language settings, and **false** means the opposite.<br>Default value: **false**.|
+| attributeSetting  | boolean | No  | Yes  | Whether the FrameNode supports cross-language settings.<br>The value **true** means the FrameNode supports cross-language settings, and **false** means the opposite.<br>The default value is **false**.|
 
 ## ExpandMode<sup>15+</sup>
 
@@ -70,6 +76,7 @@ Describes the binding state of interaction events on components. When querying r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 26%; 10%; 8%; 8%; 48%-->
 | Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | baseEventRegistered  | boolean |  No  | No  | Whether the event is bound declaratively.<br>**true** means that the event is bound declaratively, and **false** means the opposite.|
@@ -183,7 +190,7 @@ struct Index {
 
 isModifiable(): boolean
 
-Checks whether the current FrameNode is modifiable.
+Checks whether this FrameNode is modifiable.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -193,7 +200,7 @@ Checks whether the current FrameNode is modifiable.
 
 | Type   | Description                                                                                                                                 |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| boolean | Whether the current FrameNode is modifiable.<br>The value **true** means that the FrameNode is modifiable, and **false** means the opposite.<br>Returns **false** if the node is a system component proxy node in a [custom component node](../../ui/arkts-user-defined-node.md#custom-component-node-framenode) or the node has been [disposed](#dispose12).<br>When **false** is returned, the current FrameNode does not support operations such as [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20), and [cancelAnimations](#cancelanimations20).|
+| boolean | Whether this FrameNode is modifiable.<br>The value **true** means that the FrameNode is modifiable, and **false** means the opposite.<br>Returns **false** if the node is a system component proxy node in a [custom component node](../../ui/arkts-user-defined-node.md#custom-component-node-framenode) or the node has been [disposed](#dispose12).<br>When **false** is returned, the current FrameNode does not support operations such as [appendChild](#appendchild12), [insertChildAfter](#insertchildafter12), [removeChild](#removechild12), [clearChildren](#clearchildren12), [createAnimation](#createanimation20), and [cancelAnimations](#cancelanimations20).|
 
 **Example**
 
@@ -1186,7 +1193,7 @@ See [Example of Node Operations](#example-of-node-operations).
 
 getId(): string
 
-Obtains the node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes-component-id.md) set in the universal attributes).
+Obtains the node ID set by the user, which is the same as the value of the [component ID](./arkui-ts/ts-universal-attributes-component-id.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1196,7 +1203,7 @@ Obtains the node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes
 
 | Type                                                          | Description                                                                 |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| string | Node ID set by the user (the [ID](./arkui-ts/ts-universal-attributes-component-id.md) set in the universal attributes).|
+| string | Node ID set by the user, which is the same as the value of the [component ID](./arkui-ts/ts-universal-attributes-component-id.md).|
 
 **Example**
 
@@ -1582,7 +1589,7 @@ See [Basic Event Example](#basic-event-example) and [Example of Using Basic Even
 
 get gestureEvent(): UIGestureEvent
 
-Obtains the **UIGestureEvent** object held by this FrameNode, which is used to set gesture events bound to the component. Gesture events set using the **gestureEvent** API will not override gestures bound using the [declarative gesture API](./arkui-ts/ts-gesture-settings.md). If both APIs are used to set gestures, the declarative API takes precedence.
+Obtains the **UIGestureEvent** object held by this FrameNode, which is used to set gesture events bound to the component. Gesture events set using the **gestureEvent** API will not override gestures bound using the [gesture binding API](./arkui-ts/ts-gesture-settings.md). If both APIs are used to set gestures, the gesture binding API takes precedence.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -1781,6 +1788,8 @@ Adds component content. The current node must be modifiable, which means the ret
 | content | [ComponentContent](./js-apis-arkui-ComponentContent.md)\<T> \| [ReactiveComponentContent](./js-apis-arkui-ComponentContent.md#reactivecomponentcontent22)\<T><sup>22+</sup> | Yes  | Component content to display on the FrameNode.|
 
 **Error codes**
+
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -2050,6 +2059,8 @@ Sets the cross-language access options for this FrameNode. This API allows you t
 
 **Error codes**
 
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
 | ID| Error Message                         |
 | -------- | -------------------------------- |
 | 100022   | The FrameNode cannot be set whether to support cross-language common attribute setting. |
@@ -2146,7 +2157,7 @@ Adds the polymorphic style states supported by the component.
 
 | Name  | Type                     | Mandatory| Description                                                    |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| uiStates    | number | Yes  | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED.                                      |
+| uiStates    | number | Yes  | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED**.                                      |
 | statesChangeHandler | [UIStatesChangeHandler](#uistateschangehandler20) | Yes  | Callback invoked when the state changes.                                          |
 | excludeInner  | boolean | No  | Whether to disable the default state style processing. Default value: **false**.<br> **true**: Disable default state style processing. **false**: Enable default state style processing.|
 
@@ -2168,7 +2179,7 @@ Removes the state processing registration from the component.
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: removeUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED.                         |
+| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED**.                         |
 
 **Example**
 
@@ -2186,6 +2197,7 @@ Creates a property animation for the FrameNode.
 
 **Parameters**
 
+<!--Table: 12%; 20%; 8%; 60%-->
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
 | property  | [AnimationPropertyType](./arkui-ts/ts-appendix-enums.md#animationpropertytype20) | Yes  | Animation property type.|
@@ -2195,6 +2207,7 @@ Creates a property animation for the FrameNode.
 
 **Return value**
 
+<!--Table: 10%; 90%-->
 | Type              | Description              |
 | ------------------ | ------------------ |
 | boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>&nbsp;2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>&nbsp;3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br>&nbsp;4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
@@ -2407,7 +2420,7 @@ See [Example of Adopting a Node as an Affiliate](#example-of-adopting-a-node-as-
 
 removeAdoptedChild(child: FrameNode): void
 
-Removes a previously adopted node.
+Removes a previously-adopted affiliated node.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -3276,7 +3289,7 @@ Represents a FrameNode of the **Text** type. This type of node does not allow ch
 
 | Type                                              | Description                                                        |
 | -------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[TextInterface](./arkui-ts/ts-basic-components-text.md#apis), [TextAttribute](./arkui-ts/ts-basic-components-text.md#attributes)&gt; | FrameNode of the **Text** type.<br> **TextInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Text** component.<br> **TextAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Text** component.|
+| TypedFrameNode&lt;TextInterface, TextAttribute&gt; | FrameNode of the **Text** type.<br> **TextInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Text** component.<br> **TextAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Text** component.<br> **TextInterface** indicates the [API](./arkui-ts/ts-basic-components-text.md#apis) of the **Text** component, and **TextAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-text.md#attributes) of the **Text** component.|
 
 ### createNode('Text')<sup>12+</sup>
 
@@ -3487,7 +3500,7 @@ Represents a FrameNode of the **Column** type.
 
 | Type                                                  | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ColumnInterface](./arkui-ts/ts-container-column.md#apis), [ColumnAttribute](./arkui-ts/ts-container-column.md#attributes)&gt; | FrameNode of the **Column** type.<br> **ColumnInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Column** component.<br> **ColumnAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Column** component.|
+| TypedFrameNode&lt;ColumnInterface, ColumnAttribute&gt; | FrameNode of the **Column** type.<br> **ColumnInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Column** component.<br> **ColumnAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Column** component.<br> **ColumnInterface** indicates the [API](./arkui-ts/ts-container-column.md#apis) of the **Column** component, and **ColumnAttribute** indicates the [attribute](./arkui-ts/ts-container-column.md#attributes) of the **Column** component.|
 
 ### createNode('Column')<sup>12+</sup>
 
@@ -3622,7 +3635,7 @@ Represents a FrameNode of the **Row** type.
 
 | Type                                            | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[RowInterface](./arkui-ts/ts-container-row.md#apis), [RowAttribute](./arkui-ts/ts-container-row.md#attributes)&gt; | FrameNode of the **Row** type.<br> **RowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Row** component.<br> **RowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Row** component.|
+| TypedFrameNode&lt;RowInterface, RowAttribute&gt; | FrameNode of the **Row** type.<br> **RowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Row** component.<br> **RowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Row** component.<br> **RowInterface** indicates the [API](./arkui-ts/ts-container-row.md#apis) of the **Row** component, and **RowAttribute** indicates the [attribute](./arkui-ts/ts-container-row.md#attributes) of the **Row** component.|
 
 ### createNode('Row')<sup>12+</sup>
 
@@ -3757,7 +3770,7 @@ Represents a FrameNode of the **Stack** type.
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[StackInterface](./arkui-ts/ts-container-stack.md#apis), [StackAttribute](./arkui-ts/ts-container-stack.md#attributes)&gt; | FrameNode of the **Stack** type.<br> **StackInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Stack** component.<br> **StackAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Stack** component.|
+| TypedFrameNode&lt;StackInterface, StackAttribute&gt; | FrameNode of the **Stack** type.<br> **StackInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Stack** component.<br> **StackAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Stack** component.<br> **StackInterface** indicates the [API](./arkui-ts/ts-container-stack.md#apis) of the **Stack** component, and **StackAttribute** indicates the [attribute](./arkui-ts/ts-container-stack.md#attributes) of the **Stack** component.|
 
 ### createNode('Stack')<sup>12+</sup>
 
@@ -3896,7 +3909,7 @@ Represents a FrameNode of the **GridRow** type. This type of node only allows ch
 
 | Type                                                    | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[GridRowInterface](./arkui-ts/ts-container-gridrow.md#apis), [GridRowAttribute](./arkui-ts/ts-container-gridrow.md#attributes)&gt; | FrameNode of the **GridRow** type.<br> **GridRowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridRow** component.<br> **GridRowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridRow** component.|
+| TypedFrameNode&lt;GridRowInterface, GridRowAttribute&gt; | FrameNode of the **GridRow** type.<br> **GridRowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridRow** component.<br> **GridRowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridRow** component.<br> **GridRowInterface** indicates the [API](./arkui-ts/ts-container-gridrow.md#apis) of the **GridRow** component, and **GridRowAttribute** indicates the [attribute](./arkui-ts/ts-container-gridrow.md#attributes) of the **GridRow** component.|
 
 ### createNode('GridRow')<sup>12+</sup>
 
@@ -3975,7 +3988,7 @@ Represents a FrameNode of the **GridCol** type. This type of node does not allow
 
 | Type                                                    | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[GridColInterface](./arkui-ts/ts-container-gridcol.md#apis), [GridColAttribute](./arkui-ts/ts-container-gridcol.md#attributes)&gt; | FrameNode of the **GridCol** type.<br> **GridColInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridCol** component.<br> **GridColAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridCol** component.|
+| TypedFrameNode&lt;GridColInterface, GridColAttribute&gt; | FrameNode of the **GridCol** type.<br> **GridColInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridCol** component.<br> **GridColAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridCol** component.<br> **GridColInterface** indicates the [API](./arkui-ts/ts-container-gridcol.md#apis) of the **GridCol** component, and **GridColAttribute** indicates the [attribute](./arkui-ts/ts-container-gridcol.md#attributes) of the **GridCol** component.|
 
 ### createNode('GridCol')<sup>12+</sup>
 
@@ -4054,7 +4067,7 @@ Represents a FrameNode of the Flex type.
 
 | Type                                              | Description                                                        |
 | -------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[FlexInterface](./arkui-ts/ts-container-flex.md#apis), [FlexAttribute](./arkui-ts/ts-container-flex.md#attributes)&gt; | FrameNode of the Flex type.<br> **FlexInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Flex** component.<br> **FlexAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Flex** component.|
+| TypedFrameNode&lt;FlexInterface, FlexAttribute&gt; | FrameNode of the Flex type.<br> **FlexInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Flex** component.<br> **FlexAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Flex** component.<br> **FlexInterface** indicates the [API](./arkui-ts/ts-container-flex.md#apis) of the **Flex** component, and **FlexAttribute** indicates the [attribute](./arkui-ts/ts-container-flex.md#attributes) of the **Flex** component.|
 
 ### createNode('Flex')<sup>12+</sup>
 
@@ -4189,7 +4202,7 @@ Represents a FrameNode of the **Swiper** type.
 
 | Type                                                  | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[SwiperInterface](./arkui-ts/ts-container-swiper.md#apis), [SwiperAttribute](./arkui-ts/ts-container-swiper.md#attributes)&gt; | FrameNode of the **Swiper** type.<br> **SwiperInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Swiper** component.<br> **SwiperAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Swiper** component.|
+| TypedFrameNode&lt;SwiperInterface, SwiperAttribute&gt; | FrameNode of the **Swiper** type.<br> **SwiperInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Swiper** component.<br> **SwiperAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Swiper** component.<br> **SwiperInterface** indicates the [API](./arkui-ts/ts-container-swiper.md#apis) of the **Swiper** component, and **SwiperAttribute** indicates the [attribute](./arkui-ts/ts-container-swiper.md#attributes) of the **Swiper** component.|
 
 ### createNode('Swiper')<sup>12+</sup>
 
@@ -4340,7 +4353,7 @@ Represents a FrameNode of the **Progress** type. This type of node does not allo
 
 | Type                                                      | Description                                                        |
 | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ProgressInterface](./arkui-ts/ts-basic-components-progress.md#apis), [ProgressAttribute](./arkui-ts/ts-basic-components-progress.md#attributes)&gt; | FrameNode of the **Progress** type.<br> **ProgressInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Progress** component.<br> **ProgressAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Progress** component.|
+| TypedFrameNode&lt;ProgressInterface, ProgressAttribute&gt; | FrameNode of the **Progress** type.<br> **ProgressInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Progress** component.<br> **ProgressAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Progress** component.<br> **ProgressInterface** indicates the [API](./arkui-ts/ts-basic-components-progress.md#apis) of the **Progress** component, and **ProgressAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-progress.md#attributes) of the **Progress** component.|
 
 ### createNode('Progress')<sup>12+</sup>
 
@@ -4477,7 +4490,7 @@ Represents a FrameNode of the **Scroll** type. This type of node allows only one
 
 | Type                                                  | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ScrollInterface](./arkui-ts/ts-container-scroll.md#apis), [ScrollAttribute](./arkui-ts/ts-container-scroll.md#attributes)&gt; | FrameNode of the **Scroll** type.<br> **ScrollInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Scroll** component.<br> **ScrollAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Scroll** component.|
+| TypedFrameNode&lt;ScrollInterface, ScrollAttribute&gt; | FrameNode of the **Scroll** type.<br> **ScrollInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Scroll** component.<br> **ScrollAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Scroll** component.<br> **ScrollInterface** indicates the [API](./arkui-ts/ts-container-scroll.md#apis) of the **Scroll** component, and **ScrollAttribute** indicates the [attribute](./arkui-ts/ts-container-scroll.md#attributes) of the **Scroll** component.|
 
 ### createNode('Scroll')<sup>12+</sup>
 
@@ -4655,7 +4668,7 @@ Represents a FrameNode of the **RelativeContainer** type.
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[RelativeContainerInterface](./arkui-ts/ts-container-relativecontainer.md#apis), [RelativeContainerAttribute](./arkui-ts/ts-container-relativecontainer.md#attributes)&gt; | FrameNode of the RelativeContainer type.<br> **RelativeContainerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **RelativeContainer** component.<br> **RelativeContainerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **RelativeContainer** component.|
+| TypedFrameNode&lt;RelativeContainerInterface, RelativeContainerAttribute&gt; | FrameNode of the RelativeContainer type.<br> **RelativeContainerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **RelativeContainer** component.<br> **RelativeContainerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **RelativeContainer** component.<br> **RelativeContainerInterface** indicates the [API](./arkui-ts/ts-container-relativecontainer.md#apis) of the **RelativeContainer** component, and **RelativeContainerAttribute** indicates the [attribute](./arkui-ts/ts-container-relativecontainer.md#attributes) of the **RelativeContainer** component.|
 
 ### createNode('RelativeContainer')<sup>12+</sup>
 
@@ -4790,7 +4803,7 @@ Represents a FrameNode of the **Divider** type. This type of node does not allow
 
 | Type                                                    | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[DividerInterface](./arkui-ts/ts-basic-components-divider.md#apis), [DividerAttribute](./arkui-ts/ts-basic-components-divider.md#attributes)&gt; | FrameNode of the **Divider** type.<br> **DividerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **RelativeContainer** component.<br> **DividerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Divider** component.|
+| TypedFrameNode&lt;DividerInterface, DividerAttribute&gt; | FrameNode of the **Divider** type.<br> **DividerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **RelativeContainer** component.<br> **DividerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Divider** component.<br> **DividerInterface** indicates the [API](./arkui-ts/ts-basic-components-divider.md#apis) of the **Divider** component, and **DividerAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-divider.md#attributes) of the **Divider** component.|
 
 ### createNode('Divider')<sup>12+</sup>
 
@@ -4868,7 +4881,7 @@ Represents a FrameNode of the **LoadingProgress** type. This type of node does n
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[LoadingProgressInterface](./arkui-ts/ts-basic-components-loadingprogress.md#apis), [LoadingProgressAttribute](./arkui-ts/ts-basic-components-loadingprogress.md#attributes)&gt; | FrameNode of the **LoadingProgress** type.<br> **LoadingProgressInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **LoadingProgress** component.<br> **LoadingProgressAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **LoadingProgress** component.|
+| TypedFrameNode&lt;LoadingProgressInterface, LoadingProgressAttribute&gt; | FrameNode of the **LoadingProgress** type.<br> **LoadingProgressInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **LoadingProgress** component.<br> **LoadingProgressAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **LoadingProgress** component.<br> **LoadingProgressInterface** indicates the [API](./arkui-ts/ts-basic-components-loadingprogress.md#apis) of the **LoadingProgress** component, and **LoadingProgressAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-loadingprogress.md#attributes) of the **LoadingProgress** component.|
 
 ### createNode('LoadingProgress')<sup>12+</sup>
 
@@ -5001,7 +5014,7 @@ Represents a FrameNode of the **Search** type.
 
 | Type                                                  | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[SearchInterface](./arkui-ts/ts-basic-components-search.md#apis), [SearchAttribute](./arkui-ts/ts-basic-components-search.md#attributes)&gt; | FrameNode of the **Search** type.<br> **SearchInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Search** component.<br> **SearchAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Search** component.|
+| TypedFrameNode&lt;SearchInterface, SearchAttribute&gt; | FrameNode of the **Search** type.<br> **SearchInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Search** component.<br> **SearchAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Search** component.<br> **SearchInterface** indicates the [API](./arkui-ts/ts-basic-components-search.md#apis) of the **Search** component, and **SearchAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-search.md#attributes) of the **Search** component.|
 
 ### createNode('Search')<sup>12+</sup>
 
@@ -5075,7 +5088,7 @@ Represents a FrameNode of the **Blank** type. This type of node does not allow c
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[BlankInterface](./arkui-ts/ts-basic-components-blank.md#apis), [BlankAttribute](./arkui-ts/ts-basic-components-blank.md#attributes)&gt; | FrameNode of the **Blank** type.<br> **BlankInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Blank** component.<br> **BlankAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Blank** component.|
+| TypedFrameNode&lt;BlankInterface, BlankAttribute&gt; | FrameNode of the **Blank** type.<br> **BlankInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Blank** component.<br> **BlankAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Blank** component.<br> **BlankInterface** indicates the [API](./arkui-ts/ts-basic-components-blank.md#apis) of the **Blank** component, and **BlankAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-blank.md#attributes) of the **Blank** component.|
 
 ### createNode('Blank')<sup>12+</sup>
 createNode(context: UIContext, nodeType: 'Blank'): Blank
@@ -5153,7 +5166,7 @@ Represents a FrameNode of the **Image** type. This type of node does not allow c
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ImageInterface](./arkui-ts/ts-basic-components-image.md#apis), [ImageAttribute](./arkui-ts/ts-basic-components-image.md#attributes)&gt; | FrameNode of the **Image** type.<br> **ImageInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Image** component.<br> **ImageAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Image** component.|
+| TypedFrameNode&lt;ImageInterface, ImageAttribute&gt; | FrameNode of the **Image** type.<br> **ImageInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Image** component.<br> **ImageAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Image** component.<br> **ImageInterface** indicates the [API](./arkui-ts/ts-basic-components-image.md#apis) of the **Image** component, and **ImageAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-image.md#attributes) of the **Image** component.|
 
 ### createNode('Image')<sup>12+</sup>
 
@@ -5306,7 +5319,7 @@ Represents a FrameNode of the **List** type. This type of node only allows child
 
 | Type                                              | Description                                                        |
 | -------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ListInterface](./arkui-ts/ts-container-list.md#apis), [ListAttribute](./arkui-ts/ts-container-list.md#attributes)&gt; | FrameNode of the **List** type.<br> **ListInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **List** component.<br> **ListAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **List** component.|
+| TypedFrameNode&lt;ListInterface, ListAttribute&gt; | FrameNode of the **List** type.<br> **ListInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **List** component.<br> **ListAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **List** component.<br> **ListInterface** indicates the [API](./arkui-ts/ts-container-list.md#apis) of the **List** component, and **ListAttribute** indicates the [attribute](./arkui-ts/ts-container-list.md#attributes) of the **List** component.|
 
 ### createNode('List')<sup>12+</sup>
 createNode(context: UIContext, nodeType: 'List'): List
@@ -5490,7 +5503,7 @@ Represents a FrameNode of the **ListItem** type.
 
 | Type                                                      | Description                                                        |
 | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ListItemInterface](./arkui-ts/ts-container-listitem.md#apis), [ListItemAttribute](./arkui-ts/ts-container-listitem.md#attributes)&gt; | FrameNode of the **ListItem** type.<br> **ListItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **ListItem** component.<br> **ListItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **ListItem** component.|
+| TypedFrameNode&lt;ListItemInterface, ListItemAttribute&gt; | FrameNode of the **ListItem** type.<br> **ListItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **ListItem** component.<br> **ListItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **ListItem** component.<br> **ListItemInterface** indicates the [API](./arkui-ts/ts-container-listitem.md#apis) of the **ListItem** component, and **ListItemAttribute** indicates the [attribute](./arkui-ts/ts-container-listitem.md#attributes) of the **ListItem** component.|
 
 ### createNode('ListItem')<sup>12+</sup>
 createNode(context: UIContext, nodeType: 'ListItem'): ListItem
@@ -5556,7 +5569,7 @@ Represents a FrameNode of the **TextInput** type.
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[TextInputInterface](./arkui-ts/ts-basic-components-textinput.md#apis), [TextInputAttribute](./arkui-ts/ts-basic-components-textinput.md#attributes)&gt; | FrameNode of the **TextInput** type.<br> **TextInputInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextInput** component.<br> **TextInputAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextInput** component.|
+| TypedFrameNode&lt;TextInputInterface, TextInputAttribute&gt; | FrameNode of the **TextInput** type.<br> **TextInputInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextInput** component.<br> **TextInputAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextInput** component.<br> **TextInputInterface** indicates the [API](./arkui-ts/ts-basic-components-textinput.md#apis) of the **TextInput** component, and **TextInputAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-textinput.md#attributes) of the **TextInput** component.|
 
 ### createNode('TextInput')<sup>12+</sup>
 
@@ -5754,7 +5767,7 @@ Represents a FrameNode of the **Button** type. When created in child component m
 
 | Type                                                  | Description                                                        |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ButtonInterface](./arkui-ts/ts-basic-components-button.md#apis), [ButtonAttribute](./arkui-ts/ts-basic-components-button.md#attributes)&gt; | FrameNode of the **Button** type.<br> **ButtonInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Button** component.<br> **ButtonAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Button** component.<br> If a value is specified for the **label** parameter, a **Button** component is created in label mode. This component cannot contain child components, and any attempt to set child components will result in an exception. The mode in which the **Button** component is created cannot be dynamically modified in subsequent **initialize** calls. As such, to include child components, do not set the **label** parameter during the first **initialize** call.<br> When created in child component mode, a **Button** component can contain a single child component. Any attempt to set multiple child components will result in an exception.|
+| TypedFrameNode&lt;ButtonInterface, ButtonAttribute&gt; | FrameNode of the **Button** type.<br> **ButtonInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Button** component.<br> **ButtonAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Button** component.<br> If a value is specified for the **label** parameter, a **Button** component is created in label mode. This component cannot contain child components, and any attempt to set child components will result in an exception. The mode in which the **Button** component is created cannot be dynamically modified in subsequent **initialize** calls. As such, to include child components, do not set the **label** parameter during the first **initialize** call.<br> When created in child component mode, a **Button** component can contain a single child component. Any attempt to set multiple child components will result in an exception.<br> **ButtonInterface** indicates the [API](./arkui-ts/ts-basic-components-button.md#apis) of the **Button** component, and **ButtonAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-button.md#attributes) of the **Button** component.|
 
 ### createNode('Button')<sup>12+</sup>
 
@@ -5898,7 +5911,7 @@ Represents a FrameNode of the **ListItemGroup** type. Only [ListItem](./arkui-ts
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ListItemGroupInterface](./arkui-ts/ts-container-listitem.md#apis), [ListItemGroupAttribute](./arkui-ts/ts-container-listitem.md#attributes)&gt; | FrameNode of the **ListItemGroup** type.<br> **ListItemGroupInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **ListItemGroup** component.<br> **ListItemGroupAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **ListItemGroup** component.|
+| TypedFrameNode&lt;ListItemGroupInterface, ListItemGroupAttribute&gt; | FrameNode of the **ListItemGroup** type.<br> **ListItemGroupInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **ListItemGroup** component.<br> **ListItemGroupAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **ListItemGroup** component.<br> **ListItemGroupInterface** indicates the [API](./arkui-ts/ts-container-listitem.md#apis) of the **ListItemGroup** component, and **ListItemGroupAttribute** indicates the [attribute](./arkui-ts/ts-container-listitem.md#attributes) of the **ListItemGroup** component.|
 
 ### createNode('ListItemGroup')<sup>12+</sup>
 
@@ -5970,7 +5983,7 @@ Represents a FrameNode of the **WaterFlow** type. Only [FlowItem](./arkui-ts/ts-
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[WaterFlowInterface](./arkui-ts/ts-container-waterflow.md#apis), [WaterFlowAttribute](./arkui-ts/ts-container-waterflow.md#attributes)&gt; | Provides the FrameNode of the [WaterFlow](#waterflow12) type.<br> **WaterFlowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **WaterFlow** component.<br> **WaterFlowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **WaterFlow** component.|
+| TypedFrameNode&lt;WaterFlowInterface, WaterFlowAttribute&gt; | Provides the FrameNode of the [WaterFlow](#waterflow12) type.<br> **WaterFlowInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **WaterFlow** component.<br> **WaterFlowAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **WaterFlow** component.<br> **WaterFlowInterface** indicates the [API](./arkui-ts/ts-container-waterflow.md#apis) of the **WaterFlow** component, and **WaterFlowAttribute** indicates the [attribute](./arkui-ts/ts-container-waterflow.md#attributes) of the **WaterFlow** component.|
 
 ### createNode('WaterFlow')<sup>12+</sup>
 
@@ -6159,7 +6172,7 @@ Represents a FrameNode of the **FlowItem** type. This type of node allows only o
 
 | Type                                                      | Description                                                        |
 | ---------------------------------------------------------- | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[FlowItemInterface](./arkui-ts/ts-container-flowitem.md#apis), [FlowItemAttribute](./arkui-ts/ts-container-flowitem.md#attributes)&gt; | FrameNode of the **FlowItem** type.<br> **FlowItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **FlowItem** component.<br> **FlowItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **FlowItem** component.|
+| TypedFrameNode&lt;FlowItemInterface, FlowItemAttribute&gt; | FrameNode of the **FlowItem** type.<br> **FlowItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **FlowItem** component.<br> **FlowItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **FlowItem** component.<br> **FlowItemInterface** indicates the [API](./arkui-ts/ts-container-flowitem.md#apis) of the **FlowItem** component, and **FlowItemAttribute** indicates the [attribute](./arkui-ts/ts-container-flowitem.md#attributes) of the **FlowItem** component.|
 
 ### createNode('FlowItem')<sup>12+</sup>
 
@@ -6227,7 +6240,7 @@ Represents a FrameNode of the **XComponent** type.
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[XComponentInterface](./arkui-ts/ts-basic-components-xcomponent.md#apis), [XComponentAttribute](./arkui-ts/ts-basic-components-xcomponent.md#attributes)&gt; | FrameNode of the **XComponent** type.<br> **XComponentInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **XComponent** component.<br> **XComponentAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **XComponent** component.|
+| TypedFrameNode&lt;XComponentInterface, XComponentAttribute&gt; | FrameNode of the **XComponent** type.<br> **XComponentInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **XComponent** component.<br> **XComponentAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **XComponent** component.<br> **XComponentInterface** indicates the [API](./arkui-ts/ts-basic-components-xcomponent.md#apis) of **XComponent**, and **XComponentAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-xcomponent.md#attributes) of **XComponent**.|
 
 ### createNode('XComponent')<sup>12+</sup>
 
@@ -6466,7 +6479,7 @@ Represents a FrameNode of the **QRCode** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[QRCodeInterface](./arkui-ts/ts-basic-components-qrcode.md#apis), [QRCodeAttribute](./arkui-ts/ts-basic-components-qrcode.md#attributes)&gt; | FrameNode of the **QRCode** type.<br> **QRCodeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **QRCode** component.<br> **QRCodeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **QRCode** component.|
+| TypedFrameNode&lt;QRCodeInterface, QRCodeAttribute&gt; | FrameNode of the **QRCode** type.<br> **QRCodeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **QRCode** component.<br> **QRCodeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **QRCode** component.<br> **QRCodeInterface** indicates the [API](./arkui-ts/ts-basic-components-qrcode.md#apis) of the **QRCode** component, and **QRCodeAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-qrcode.md#attributes) of the **QRCode** component.|
 
 ### createNode('QRCode')<sup>14+</sup>
 
@@ -6511,7 +6524,7 @@ Represents a FrameNode of the **Badge** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[BadgeInterface](./arkui-ts/ts-container-badge.md#apis), [BadgeAttribute](./arkui-ts/ts-container-badge.md#attributes)&gt; | FrameNode of the **Badge** type.<br> **BadgeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Badge** component.<br> **BadgeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Badge** component.|
+| TypedFrameNode&lt;BadgeInterface, BadgeAttribute&gt; | FrameNode of the **Badge** type.<br> **BadgeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Badge** component.<br> **BadgeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Badge** component.<br> **BadgeInterface** indicates the [API](./arkui-ts/ts-container-badge.md#apis) of the **Badge** component, and **BadgeAttribute** indicates the [attribute](./arkui-ts/ts-container-badge.md#attributes) of the **Badge** component.|
 
 ### createNode('Badge')<sup>14+</sup>
 
@@ -6556,7 +6569,7 @@ Represents a FrameNode of the **Grid** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[GridInterface](./arkui-ts/ts-container-grid.md#apis), [GridAttribute](./arkui-ts/ts-container-grid.md#attributes)&gt; | FrameNode of the **Grid** type.<br> **GridInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Grid** component.<br> **GridAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Grid** component.|
+| TypedFrameNode&lt;GridInterface, GridAttribute&gt; | FrameNode of the **Grid** type.<br> **GridInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Grid** component.<br> **GridAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Grid** component.<br> **GridInterface** indicates the [API](./arkui-ts/ts-container-grid.md#apis) of the **Grid** component, and **GridAttribute** indicates the [attribute](./arkui-ts/ts-container-grid.md#attributes) of the **Grid** component.|
 
 ### createNode('Grid')<sup>14+</sup>
 
@@ -6740,7 +6753,7 @@ Represents a FrameNode of the **GridItem** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[GridItemInterface](./arkui-ts/ts-container-griditem.md#apis), [GridItemAttribute](./arkui-ts/ts-container-griditem.md#attributes)&gt; | FrameNode of the **GridItem** type.<br> **GridItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridItem** component.<br> **GridItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridItem** component.|
+| TypedFrameNode&lt;GridItemInterface, GridItemAttribute&gt; | FrameNode of the **GridItem** type.<br> **GridItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **GridItem** component.<br> **GridItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **GridItem** component.<br> **GridItemInterface** indicates the [API](./arkui-ts/ts-container-griditem.md#apis) of the **GridItem** component, and **GridItemAttribute** indicates the [attribute](./arkui-ts/ts-container-griditem.md#attributes) of the **GridItem** component.|
 
 ### createNode('GridItem')<sup>14+</sup>
 
@@ -6808,7 +6821,7 @@ Represents a FrameNode of the **TextClock** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[TextClockInterface](./arkui-ts/ts-basic-components-textclock.md#apis), [TextClockAttribute](./arkui-ts/ts-basic-components-textclock.md#attributes)&gt; | FrameNode of the **TextClock** type.<br> **TextClockInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextClock** component.<br> **TextClockAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextClock** component.|
+| TypedFrameNode&lt;TextClockInterface, TextClockAttribute&gt; | FrameNode of the **TextClock** type.<br> **TextClockInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextClock** component.<br> **TextClockAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextClock** component.<br> **TextClockInterface** indicates the [API](./arkui-ts/ts-basic-components-textclock.md#apis) of the **TextClock** component, and **TextClockAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-textclock.md#attributes) of the **TextClock** component.|
 
 ### createNode('TextClock')<sup>14+</sup>
 
@@ -6853,7 +6866,7 @@ Represents a FrameNode of the **TextTimer** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[TextTimerInterface](./arkui-ts/ts-basic-components-texttimer.md#apis), [TextTimerAttribute](./arkui-ts/ts-basic-components-texttimer.md#attributes)&gt; | FrameNode of the **TextTimer** type.<br> **TextTimerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextTimer** component.<br> **TextTimerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextTimer** component.|
+| TypedFrameNode&lt;TextTimerInterface, TextTimerAttribute&gt; | FrameNode of the **TextTimer** type.<br> **TextTimerInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextTimer** component.<br> **TextTimerAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextTimer** component.<br> **TextTimerInterface** indicates the [API](./arkui-ts/ts-basic-components-texttimer.md#apis) of the **TextTimer** component, and **TextTimerAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-texttimer.md#attributes) of the **TextTimer** component.|
 
 ### createNode('TextTimer')<sup>14+</sup>
 
@@ -6898,7 +6911,7 @@ Represents a FrameNode of the **Marquee** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[MarqueeInterface](./arkui-ts/ts-basic-components-marquee.md#apis), [MarqueeAttribute](./arkui-ts/ts-basic-components-marquee.md#attributes)&gt; | FrameNode of the **Marquee** type.<br> **MarqueeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Marquee** component.<br> **MarqueeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Marquee** component.|
+| TypedFrameNode&lt;MarqueeInterface, MarqueeAttribute&gt; | FrameNode of the **Marquee** type.<br> **MarqueeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Marquee** component.<br> **MarqueeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Marquee** component.<br> **MarqueeInterface** indicates the [API](./arkui-ts/ts-basic-components-marquee.md#apis) of the **Marquee** component, and **MarqueeAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-marquee.md#attributes) of the **Marquee** component.|
 
 ### createNode('Marquee')<sup>14+</sup>
 
@@ -6971,7 +6984,7 @@ Represents a FrameNode of the **TextArea** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[TextAreaInterface](./arkui-ts/ts-basic-components-textarea.md#apis), [TextAreaAttribute](./arkui-ts/ts-basic-components-textarea.md#attributes)&gt; | FrameNode of the **TextArea** type.<br> **TextAreaInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextArea** component.<br> **TextAreaAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextArea** component.|
+| TypedFrameNode&lt;TextAreaInterface, TextAreaAttribute&gt; | FrameNode of the **TextArea** type.<br> **TextAreaInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **TextArea** component.<br> **TextAreaAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **TextArea** component.<br> **TextAreaInterface** indicates the [API](./arkui-ts/ts-basic-components-textarea.md#apis) API of the **TextArea** component, and **TextAreaAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-textarea.md#attributes) of the **TextArea** component.|
 
 ### createNode('TextArea')<sup>14+</sup>
 
@@ -7170,7 +7183,7 @@ Represents a FrameNode of the **SymbolGlyph** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[SymbolGlyphInterface](./arkui-ts/ts-basic-components-symbolGlyph.md#apis), [SymbolGlyphAttribute](./arkui-ts/ts-basic-components-symbolGlyph.md#attributes)&gt; | FrameNode of the **SymbolGlyph** type.<br> **SymbolGlyphInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **SymbolGlyph** component.<br> **SymbolGlyphAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **SymbolGlyph** component.|
+| TypedFrameNode&lt;SymbolGlyphInterface, SymbolGlyphAttribute&gt; | FrameNode of the **SymbolGlyph** type.<br> **SymbolGlyphInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **SymbolGlyph** component.<br> **SymbolGlyphAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **SymbolGlyph** component.<br> **SymbolGlyphInterface** indicates the [API](./arkui-ts/ts-basic-components-symbolGlyph.md#apis) of the **SymbolGlyph** component, and **SymbolGlyphAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-symbolGlyph.md#attributes) of the **SymbolGlyph** component.|
 
 ### createNode('SymbolGlyph')<sup>14+</sup>
 
@@ -7242,7 +7255,7 @@ Represents a FrameNode of the **Checkbox** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[CheckboxInterface](./arkui-ts/ts-basic-components-checkbox.md#apis), [CheckboxAttribute](./arkui-ts/ts-basic-components-checkbox.md#attributes)&gt; | FrameNode of the **Checkbox** type.<br> **CheckboxInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Checkbox** component.<br> **CheckboxAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Checkbox** component.|
+| TypedFrameNode&lt;CheckboxInterface, CheckboxAttribute&gt; | FrameNode of the **Checkbox** type.<br> **CheckboxInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Checkbox** component.<br> **CheckboxAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Checkbox** component.<br> **CheckboxInterface** indicates the [API](./arkui-ts/ts-basic-components-checkbox.md#apis) of the **Checkbox** component, and **CheckboxAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-checkbox.md#attributes) of the **Checkbox** component.|
 
 ### createNode('Checkbox')<sup>18+</sup>
 
@@ -7391,7 +7404,7 @@ Represents a FrameNode of the **CheckboxGroup** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[CheckboxGroupInterface](./arkui-ts/ts-basic-components-checkboxgroup.md#apis), [CheckboxGroupAttribute](./arkui-ts/ts-basic-components-checkboxgroup.md#attributes)&gt; | FrameNode of the **CheckboxGroup** type.<br> **CheckboxGroupInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **CheckboxGroup** component.<br> **CheckboxGroupAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **CheckboxGroup** component.|
+| TypedFrameNode&lt;CheckboxGroupInterface, CheckboxGroupAttribute&gt; | FrameNode of the **CheckboxGroup** type.<br> **CheckboxGroupInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **CheckboxGroup** component.<br> **CheckboxGroupAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **CheckboxGroup** component.<br> **CheckboxGroupInterface** indicates the [API](./arkui-ts/ts-basic-components-checkboxgroup.md#apis) of the **CheckboxGroup** component, and **CheckboxGroupAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-checkboxgroup.md#attributes) of the **CheckboxGroup** component.|
 
 ### createNode('CheckboxGroup')<sup>18+</sup>
 
@@ -7474,7 +7487,7 @@ Represents a FrameNode of the **Rating** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[RatingInterface](./arkui-ts/ts-basic-components-rating.md#apis), [RatingAttribute](./arkui-ts/ts-basic-components-rating.md#attributes)&gt; | FrameNode of the **Rating** type.<br> **RatingInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Rating** component.<br> **RatingAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Rating** component.|
+| TypedFrameNode&lt;RatingInterface, RatingAttribute&gt; | FrameNode of the **Rating** type.<br> **RatingInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Rating** component.<br> **RatingAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Rating** component.<br> **RatingInterface** indicates the [API](./arkui-ts/ts-basic-components-rating.md#apis) of the **Rating** component, and **RatingAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-rating.md#attributes) of the **Rating** component.|
 
 ### createNode('Rating')<sup>18+</sup>
 
@@ -7550,7 +7563,7 @@ Represents a FrameNode of the **Radio** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[RadioInterface](./arkui-ts/ts-basic-components-radio.md#apis), [RadioAttribute](./arkui-ts/ts-basic-components-radio.md#attributes)&gt; | FrameNode of the **Radio** type.<br> **RadioInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Radio** component.<br> **RadioAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Radio** component.|
+| TypedFrameNode&lt;RadioInterface, RadioAttribute&gt; | FrameNode of the **Radio** type.<br> **RadioInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Radio** component.<br> **RadioAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Radio** component.<br> **RadioInterface** indicates the [API](./arkui-ts/ts-basic-components-radio.md#apis) of the **Radio** component, and **RadioAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-radio.md#attributes) of the **Radio** component.|
 
 ### createNode('Radio')<sup>18+</sup>
 
@@ -7697,7 +7710,7 @@ Represents a FrameNode of the **Slider** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[SliderInterface](./arkui-ts/ts-basic-components-slider.md#apis), [SliderAttribute](./arkui-ts/ts-basic-components-slider.md#attributes)&gt; | FrameNode of the **Slider** type.<br> **SliderInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Slider** component.<br> **SliderAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Slider** component.|
+| TypedFrameNode&lt;SliderInterface, SliderAttribute&gt; | FrameNode of the **Slider** type.<br> **SliderInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Slider** component.<br> **SliderAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Slider** component.<br> **SliderInterface** indicates the [API](./arkui-ts/ts-basic-components-slider.md#apis) of the **Slider** component, and **SliderAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-slider.md#attributes) of the **Slider** component.|
 
 ### createNode('Slider')<sup>18+</sup>
 
@@ -7834,7 +7847,7 @@ Represents a FrameNode of the **Select** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[SelectInterface](./arkui-ts/ts-basic-components-select.md#apis), [SelectAttribute](./arkui-ts/ts-basic-components-select.md#attributes)&gt; | FrameNode of the **Select** type.<br> **SelectInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Select** component.<br> **SelectAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Select** component.|
+| TypedFrameNode&lt;SelectInterface, SelectAttribute&gt; | FrameNode of the **Select** type.<br> **SelectInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Select** component.<br> **SelectAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Select** component.<br> **SelectInterface** indicates the [API](./arkui-ts/ts-basic-components-select.md#apis) of the **Select** component, and **SelectAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-select.md#attributes) of the **Select** component.|
 
 ### createNode('Select')<sup>18+</sup>
 
@@ -7898,7 +7911,7 @@ struct FrameNodeTypeTest {
 
 ### Toggle<sup>18+</sup>
 
-type Toggle = TypedFrameNode&lt;[ToggleInterface](./arkui-ts/ts-basic-components-toggle.md#apis), [ToggleAttribute](./arkui-ts/ts-basic-components-toggle.md#attributes)&gt;
+type Toggle = TypedFrameNode&lt;ToggleInterface, ToggleAttribute&gt;
 
 FrameNode of the [Toggle](arkui-ts/ts-basic-components-toggle.md) type.
 
@@ -7908,7 +7921,7 @@ FrameNode of the [Toggle](arkui-ts/ts-basic-components-toggle.md) type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;[ToggleInterface](./arkui-ts/ts-basic-components-toggle.md#apis), [ToggleAttribute](./arkui-ts/ts-basic-components-toggle.md#attributes)&gt; | FrameNode of the **Toggle** type.<br> **ToggleInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Toggle** component.<br> **ToggleAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Toggle** component.|
+| TypedFrameNode&lt;ToggleInterface, ToggleAttribute&gt; | FrameNode of the **Toggle** type.<br> **ToggleInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Toggle** component.<br> **ToggleAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Toggle** component.<br> **ToggleInterface** indicates the [API](./arkui-ts/ts-basic-components-toggle.md#apis) of the **Toggle** component, and **ToggleAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-toggle.md#attributes) of the **Toggle** component.|
 
 ### createNode('Toggle')<sup>18+</sup>
 
@@ -9506,7 +9519,7 @@ export struct TrackNode {
     // Build the virtual tree of the tracking point and obtain the root node (Row in this example) of the current page.
     let uid = this.getUniqueId()
     let node: FrameNode | null = this.getUIContext().getFrameNodeByUniqueId(uid);
-    console.info(`Track onDidBuild node:${node?.getNodeType()}`))
+    console.info(`Track onDidBuild node:${node?.getNodeType()}`);
     if (node === null) {
       return
     }

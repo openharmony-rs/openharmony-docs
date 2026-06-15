@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -151,7 +151,7 @@ class User {
   }
 
   constructor() {
-    // 正确用法，给a注册监听函数onChange1，没有设置options默认为异步监听回调
+    // 正确用法，给age注册监听函数onChange1，没有设置options默认为异步监听回调
     UIUtils.addMonitor(this, 'age', this.onChange1);
     // 错误用法，不能改变this.onChange1的监听回调的方式
     // 打印错误日志提示： FIX THIS APPLICATION ERROR: addMonitor failed, current function onChange1 has already register as async, cannot change to sync anymore
@@ -661,6 +661,7 @@ struct Page {
   }
 
   aboutToAppear(): void {
+    // addMonitor支持配置成同步监听函数
     UIUtils.addMonitor(this, 'user.age', this.onChange, { isSynchronous: true })
   }
 
@@ -690,6 +691,7 @@ class User {
 struct Page {
   @Local user: User = new User();
 
+  // @Monitor仅支持异步监听
   @Monitor('user.age')
   onChange(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
@@ -728,6 +730,7 @@ class Info {
   @Trace message: string = 'not initialized';
 
   constructor() {
+    // addMonitor可以监听构造函数中message的变化
     UIUtils.addMonitor(this, 'message', this.onMessageChange);
     this.message = 'initialized';
   }

@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -94,7 +94,7 @@ Enumerates the device types.
 | BLUETOOTH_SCO        | 7      | Bluetooth device using Synchronous Connection Oriented (SCO) links.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | BLUETOOTH_A2DP       | 8      | Bluetooth device using Advanced Audio Distribution Profile (A2DP) links.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | MIC                  | 15     | Microphone.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| USB_HEADSET          | 22     | USB Type-C headset.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| USB_HEADSET          | 22     | USB headset.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | DISPLAY_PORT<sup>12+</sup>        | 23     | Display port (DP), which is used to connect to external devices.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | REMOTE_CAST<sup>12+</sup>        | 24     | Remote cast device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | USB_DEVICE<sup>18+</sup>        | 25 | USB device (excluding USB headsets).          |
@@ -389,7 +389,7 @@ Enumerates the types of force that causes audio interruption.
 
 The force type is obtained when an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received.
 
-This type specifies whether audio interruption is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [InterruptHint](#interrupthint). For details about the audio interruption strategy, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+This type specifies whether audio interruption is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [InterruptHint](#interrupthint). For details about the audio interruption policy, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -408,7 +408,7 @@ The hint is obtained when an [InterruptEvent](arkts-apis-audio-i.md#interrupteve
 
 The hint specifies the operation (such as audio pause or volume adjustment) to be performed on audio streams based on the focus strategy.
 
-You can determine whether the operation is forcibly performed by the system based on [InterruptForceType](#interruptforcetype9) in **InterruptEvent**. For details, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+You can determine whether the operation is forcibly performed by the system based on [InterruptForceType](#interruptforcetype9) in **InterruptEvent**. For details, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -478,11 +478,13 @@ Enumerates the reasons for audio stream device changes.
 
 Enumerates the recommended actions to take after an output device changes.
 
+Common scenario example: switching between a headset and a loudspeaker device. Upon switching from the loudspeaker device to the headset upon wearing, the system suggests continuing playback and prompts that the application does not need to pause. Upon transitioning from the headset to the loudspeaker device upon removal, the system suggests suspending playback.
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 | Name                                       |  Value    | Description             |
 |:------------------------------------------| :----- |:----------------|
-| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE | 0 | Suggests continuing playback.          |
+| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE | 0 | Suggests continuing playback. (This event serves as a playback maintenance indication, informing the application that audio playback does not need to stop during this device change. However, it must not be used as a criterion for triggering audio playback.)          |
 | DEVICE_CHANGE_RECOMMEND_TO_STOP | 1 | Suggests stopping playback.        |
 
 ## DeviceChangeType
@@ -580,7 +582,7 @@ The hint is obtained when an [AudioSessionStateChangedEvent](arkts-apis-audio-i.
 
 The hint specifies the action (such as audio pause or volume adjustment) to take on the audio session based on the focus strategy.
 
-For details, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+For details, see [Audio Session Management](../../media/audio/audio-session-management.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -594,6 +596,8 @@ For details, see [Introduction to Audio Focus and Audio Sessions](../../media/au
 | AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | A hint is displayed, indicating that audio ducking ends and the audio is played at the normal volume.<br>If [enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23) is enabled, you can unmute the audio.|
 | AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION<sup>23+</sup>    | 6      |  Mute suggestion.<br>When another application starts playback of non-mixable audio, your application can determine whether to mute.<br> **Model restriction**: This API can be used only in the stage model.|
 | AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION<sup>23+</sup>  | 7      | Unmute suggestion.<br>When the non-mixable audio of another application has finished playing, your application can determine whether to unmute.<br> **Model restriction**: This API can be used only in the stage model.|
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE<sup>24+</sup>    | 8      |  A hint is displayed, indicating that the audio session is muted.<br>This hint is received only when the following conditions are met: The [setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) API is called to set [AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED, the [setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) API is called, and the audio session is activated.<br> **Model restriction**: This API can be used only in the stage model.|
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE<sup>24+</sup>  | 9      | A hint is displayed, indicating that the audio session is unmuted.<br>This hint is received only when the following conditions are met: The [setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) API is called to set [AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED, the [setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) API is called, and the audio session is activated.<br> **Model restriction**: This API can be used only in the stage model.|
 
 ## AudioDataCallbackResult<sup>12+</sup>
 
@@ -645,7 +649,7 @@ Enumerates the returned event types for audio interruption events.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. No substitute is provided.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [InterruptType](#interrupttype) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -701,3 +705,16 @@ Enumerates the equalizer types of audio loopback.
 | FLAT   | 1     | Maintains the original sound without equalization.|
 | FULL   | 2     | Enhances the fullness of vocals (default).|
 | BRIGHT | 3     | Enhances the brightness of vocals.|
+
+## AudioSessionBehaviorFlags<sup>24+</sup>
+
+Enumerates audio session behaviors.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+| Name                  | Value| Description     |
+| :--------------------- |:--|:--------|
+| DEFAULT_BEHAVIOR<sup>24+</sup> | 0x00000000 | Default behavior, which is used to clear the audio session behavior settings.|
+| MUTE_WHEN_INTERRUPTED<sup>24+</sup> | 0x00000002 | When the system needs to stop or pause an audio stream, forced muting is applied as an alternative.<br>When the [setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) API is called to configure this behavior, the [setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) API must also be called. Otherwise, the configuration will not take effect.<br>In an audio session scenario, when an audio stream is muted or unmuted, the application will receive the [AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_MUTE and [AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE notifications, respectively.<br>In AudioRenderer and AudioCapturer scenarios, when an audio stream is muted or unmuted, the application will receive the [InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE and [InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE notifications, respectively.|

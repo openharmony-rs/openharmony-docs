@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -264,7 +264,7 @@ type为客户端发送CS和客户端接收CR的信息埋点需配套使用；typ
 | mode | [HiTraceCommunicationMode](#hitracecommunicationmode) | 是 | 信息埋点需要指定的跟踪通信模式。 |
 | type | [HiTraceTracepointType](#hitracetracepointtype)| 是 | 信息埋点需要指定的跟踪埋点类型。 |
 | id   | [HiTraceId](#hitraceid) | 是 | 实施信息埋点操作的HiTraceId实例。 |
-| msg  | string | 否 | HiTraceMeter打点操作传入的trace说明信息，默认值为""。 |
+| msg  | string | 否 | HiTraceMeter打点操作传入的trace说明信息，默认值为""。<br/>建议该参数的长度不要超过63Byte，超出部分将被截断。 |
 
 **示例：**
 

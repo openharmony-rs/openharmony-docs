@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -106,6 +106,70 @@ async function GetHdrComposedPixelmap(pictureObj : image.Picture) {
 }
 ```
 
+## getHdrComposedPixelmapWithOptions<sup>23+</sup>
+
+getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise\<PixelMap | undefined>
+
+Composites an HDR image and returns PixelMap of the image. Composition options (such as PixelMapFormat) can be passed. This API uses a promise to return the result.
+
+The Picture object that calls this API must contain the main picture, gain map, and metadata.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name          | Type                | Mandatory| Description        |
+| ---------------- | -------------------- | ---- | ------------ |
+| options             | [HdrComposeOptions](arkts-apis-image-i.md#hdrcomposeoptions23) | No  | Options for HDR composition.|
+
+**Return value**
+
+| Type                         | Description                       |
+| ----------------------------- | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise, which returns the PixelMap object or **undefined**.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message              |
+| -------- | ---------------------- |
+| 7600201 | Unsupported operation.|
+
+**Example**
+
+```ts
+// EntryAbility.ets
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
+  if (picture == null) {
+    console.error('picture is null');
+    return;
+  }
+
+  let opt: image.HdrComposeOptions = {
+    desiredPixelFormat: image.PixelMapFormat.RGBA_1010102
+  };
+  let hdrComposedPixelmap: image.PixelMap | undefined = await picture.getHdrComposedPixelmapWithOptions(opt);
+  if (hdrComposedPixelmap == null || hdrComposedPixelmap == undefined) {
+    console.error(`GetHdrComposedPixelmapWithOptions failed`);
+    return;
+  }
+
+  hdrComposedPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+    if (imageInfo !== null) {
+      console.info(`GetHdrComposedPixelmapWithOptions information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to getHdrComposedPixelmapWithOptions information. error.code: ${error.code} ,error.message: ${error.message}`);
+  });
+}
+```
+
 ## getGainmapPixelmap<sup>13+</sup>
 
 getGainmapPixelmap(): PixelMap | null
@@ -165,7 +229,7 @@ Sets an auxiliary picture.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -176,7 +240,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 ```ts
 async function SetAuxiliaryPicture(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // Support for HDR images is required.
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // An HDR-compatible image is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -184,9 +248,9 @@ async function SetAuxiliaryPicture(context: Context) {
   let pixelMap: image.PixelMap = await imageSource.createPixelMap();
   let pictureObj: image.Picture = image.createPicture(pixelMap);
   if (pictureObj != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in creating picture.');
   } else {
-    console.error('Create picture failed');
+    console.error('Failed to create picture.');
   }
 
   if (pictureObj != null) {
@@ -221,7 +285,7 @@ Obtains an auxiliary picture by type.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -261,7 +325,7 @@ Sets the metadata for this Picture object. This API uses a promise to return the
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -275,7 +339,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function SetPictureObjMetadata(exifContext: Context) {
   const exifResourceMgr = exifContext.resourceManager;
-  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let exifOps: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -283,21 +347,21 @@ async function SetPictureObjMetadata(exifContext: Context) {
   let exifCommodityPixelMap: image.PixelMap = await exifImageSource.createPixelMap();
   let exifPictureObj: image.Picture = image.createPicture(exifCommodityPixelMap);
   if (exifPictureObj != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in creating picture.');
   } else {
-    console.error('Create picture failed');
+    console.error('Failed to create picture.');
   }
 
   if (exifPictureObj != null) {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let exifMetaData: image.Metadata = await exifPictureObj.getMetadata(metadataType);
     exifPictureObj.setMetadata(metadataType, exifMetaData).then(() => {
-      console.info('Set metadata success');
+      console.info('Succeeded in setting metadata.');
     }).catch((error: BusinessError) => {
-      console.error('Failed to set metadata. error.code: ' +JSON.stringify(error.code) + ' ,error.message:' + JSON.stringify(error.message));
+      console.error(`Failed to set metadata. error.code: ${error.code} ,error.message: ${error.message}`);
     });
   } else {
-    console.error('exifPictureOb is null');
+    console.error('exifPictureObj is null');
   }
 }
 ```
@@ -324,7 +388,7 @@ Obtains the metadata of this Picture object. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -339,9 +403,9 @@ async function GetPictureObjMetadataProperties(pictureObj : image.Picture) {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let pictureObjMetaData: image.Metadata = await pictureObj.getMetadata(metadataType);
     if (pictureObjMetaData != null) {
-      console.info('get picture metadata success');
+      console.info('Succeeded in getting picture metadata.');
     } else {
-      console.error('get picture metadata is failed');
+      console.error('Failed to get picture metadata.');
     }
   } else {
     console.error(" pictureObj is null");
@@ -365,7 +429,7 @@ Marshals this Picture object and writes it to a MessageSequence object.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -386,10 +450,10 @@ class MySequence implements rpc.Parcelable {
   marshalling(messageSequence: rpc.MessageSequence) {
     if(this.picture != null) {
       this.picture.marshalling(messageSequence);
-      console.info('Marshalling success !');
+      console.info('Succeed in marshalling.');
       return true;
     } else {
-      console.error('Marshalling failed !');
+      console.error('Failed to marshall.');
       return false;
     }
   }
@@ -398,7 +462,7 @@ class MySequence implements rpc.Parcelable {
     this.picture.getMainPixelmap().getImageInfo().then((imageInfo : image.ImageInfo) => {
       console.info(`Unmarshalling to get mainPixelmap information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
     }).catch((error: BusinessError) => {
-      console.error(`Unmarshalling failed error.code: ${error.code} ,error.message: ${error.message}`);
+      console.error(`Failed to unmarshall. error.code: ${error.code} ,error.message: ${error.message}`);
     });
     return true;
   }

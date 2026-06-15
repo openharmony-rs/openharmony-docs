@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AutoFillExtensionAbility模块支持账号、密码、地址等多种数据类型的自动填充与保存，继承自[ExtensionAbility](js-apis-app-ability-extensionAbility.md)。
 
