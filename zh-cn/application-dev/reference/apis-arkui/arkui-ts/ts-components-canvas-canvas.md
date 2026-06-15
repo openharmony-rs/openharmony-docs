@@ -154,7 +154,7 @@ Canvas组件初始化完成或者发生大小变化时的事件回调，支持[a
 
 | 参数名 | 类型    | 必填 | 说明 |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | Canvas组件初始化完成或者发生大小变化时的事件回调事件。<br/>取值为undefined时，不使用回调函数。 |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | Canvas组件初始化完成或者发生大小变化时的回调事件。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onReady<sup>23+</sup>
 

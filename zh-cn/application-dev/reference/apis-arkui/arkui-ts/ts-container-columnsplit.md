@@ -74,7 +74,7 @@ ArkTS-Dyn: resizeable(value: boolean)
 
 ArkTS-Sta: resizeable(value: boolean | undefined)
 
-设置分割线是否可拖拽。
+设置分割线是否可拖动。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -88,7 +88,7 @@ ArkTS-Sta: resizeable(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                 |
 | ------ | ------- | ---- | ------------------------------------ |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 分割线是否可拖拽。设置为true时表示分割线可拖拽，设置为false时表示分割线不可拖拽。<br/>默认值：false <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 分割线是否可拖拽。设置为true时表示分割线可拖动，设置为false时表示分割线不可拖拽。<br/>默认值：false <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### divider<sup>10+</sup>
 

@@ -327,7 +327,7 @@ ArkTS-Dyn: onStart(event:&nbsp;VoidCallback)
 
 ArkTS-Sta: onStart(event: VoidCallback | undefined)
 
-播放时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+开始播放时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -341,7 +341,7 @@ ArkTS-Sta: onStart(event: VoidCallback | undefined)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined    | 是   | 视频播放的回调函数。<br/>取值为undefined时，不使用回调函数。        |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined    | 是   | 视频开始播放的回调函数。<br/>取值为undefined时，不使用回调函数。        |
 
 ### onPause
 

@@ -44,7 +44,7 @@ GridRow(option?: GridRowOptions)
 
 | 参数名 |类型|必填|说明|
 |-----|-----|----|----|
-| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
+| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件布局选项。 |
 
 ## GridRowOptions对象说明
 
@@ -205,7 +205,7 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 >
 > - 栅格元素仅支持Row/RowReverse排列，不支持column/ColumnReverse方向排列。
 > - 栅格子组件仅能通过span、offset计算子组件位置与大小。多个子组件span超过规定列数时自动换行。
-> - 单个元素span大小超过最大列数时后台默认span为最大column数。
+> - 单个元素span大小超过最大列数时后台默认span为最大列数。
 > - 新一行的Offset加上子组件的span超过总列数时，将下一个子组件在新的一行放置。
 > - 例：Item1: GridCol({ span: 6 })， Item2: GridCol({ span: 8, offset:11 })。 
 >
