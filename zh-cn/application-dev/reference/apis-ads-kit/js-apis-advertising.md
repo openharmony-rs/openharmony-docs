@@ -675,7 +675,7 @@ onStatusChanged(status: string, ad: Advertisement, data: string)
 
 | 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
-| status | string | 是 | 广告展示状态。<br/>- onAdLoad：广告加载成功。<br/>- onAdFail：广告加载失败。<br/>- onAdOpen：打开广告。<br/>- onAdClick：点击广告。<br/>- onAdClose：关闭广告。<br/>- onMediaProgress：广告播放进度。<br/>- onMediaStart：广告开始播放。<br/>- onMediaPause：广告暂停播放。<br/>- onMediaStop：广告停止播放。<br/>- onMediaComplete：广告播放完成。<br/>- onMediaCountDown：广告倒计时。<br/>- onMediaError：广告播放失败。<br/>- onLandscape：竖屏状态下点击全屏按钮。<br/>- onPortrait：全屏状态下点击返回按钮。<br/>- onBackClicked：点击返回按钮。<br/>- onAdSubWindow：打开半模态。 | 
+| status | string | 是 | 广告展示状态。<br/>- onAdLoad：广告加载成功。<br/>- onAdFail：广告加载失败。<br/>- onAdOpen：打开广告。<br/>- onAdClick：点击广告。<br/>- onAdClose：关闭广告。<br/>- onMediaProgress：广告播放进度。<br/>- onMediaStart：广告开始播放。<br/>- onMediaPause：广告暂停播放。<br/>- onMediaStop：广告停止播放。<br/>- onMediaComplete：广告播放完成。<br/>- onMediaCountDown：广告倒计时。<br/>- onMediaError：广告播放失败。<br/>- onLandscape：竖屏状态下点击全屏按钮。<br/>- onPortrait：全屏状态下点击返回按钮。<br/>- onBackClicked：点击返回按钮。 | 
 | ad     | [Advertisement](#advertisement) | 是   | 发生状态变化的广告内容。                                                     |
 | data | string | 是 | 扩展信息。<br/>当status参数为onAdClose时，data值为关闭原因，关闭原因描述如下：<br/>- adShowEnded：广告展示结束。<br/>- adCloseBtnClicked：点击关闭按钮。<br/>- adSkipBtnClicked：点击跳过。<br/>- adFeedbackClosed：负反馈关闭。<br/>- adBackgroundClosed：开屏切后台关闭。| 
 
