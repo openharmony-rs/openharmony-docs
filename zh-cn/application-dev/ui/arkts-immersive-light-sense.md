@@ -277,6 +277,45 @@ struct MaterialInfoPage {
    
    <!-- @[ToastMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ToastMaterial.ets) -->
    
+   ``` TypeScript
+   import { PromptAction, uiMaterial } from '@kit.ArkUI';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   @Entry
+   @Component
+   struct ToastMaterialPage {
+     promptAction: PromptAction = this.getUIContext().getPromptAction();
+   
+     build() {
+       Column() {
+         Button('showToast')
+           .position({ x: 125, y: 300 })
+           .onClick(() => {
+             try {
+               this.promptAction.showToast({
+                 message: 'Message Info',
+                 duration: 2000,
+                 // 控制是否设置系统材质
+                 systemMaterial: new uiMaterial.ImmersiveMaterial({
+                   style: uiMaterial.ImmersiveStyle.THIN
+                 })
+               });
+             } catch (error) {
+               let message = (error as BusinessError).message;
+               let code = (error as BusinessError).code;
+               console.error(`showToast args error code is ${code}, message is ${message}`);
+             };
+           })
+       }
+       .width('100%')
+       .height('100%')
+       // 请开发者替换为实际资源文件
+       .backgroundImage($r('app.media.img'))
+       .backgroundImageSize({ width: '100%', height: '100%' })
+     }
+   }
+   ```
+   
    未设置系统材质时：
    
    ![toastNoMaterial](../reference/apis-arkui/figures/toastNoMaterial.gif)
