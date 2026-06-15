@@ -291,7 +291,7 @@ struct GridItemExample {
 }
 ```
 
-![zh-cn_image_0000001174582870](figures/zh-cn_image_0000001174582870.gif)
+![gridItem](figures/gridItem.gif)
 
 ### 示例2（设置GridItem样式）
 

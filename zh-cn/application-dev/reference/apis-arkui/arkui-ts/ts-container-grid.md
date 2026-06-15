@@ -1199,7 +1199,7 @@ struct GridExample {
 }
 ```
 
-![zh-cn_image_0000001219744183](figures/zh-cn_image_0000001219744183.gif)
+![grid](figures/grid.gif)
 
 ### 示例2（可滚动Grid和滚动事件）
 

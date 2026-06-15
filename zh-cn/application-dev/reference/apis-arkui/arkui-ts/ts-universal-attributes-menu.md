@@ -623,7 +623,7 @@ struct MenuExample {
 }
 ```
 
-![zh-cn_image_0000001174582862](figures/zh-cn_image_0000001174582862.gif)
+![menu](figures/menu.gif)
 
 ### 示例2（弹出自定义菜单）
 
@@ -674,7 +674,7 @@ struct MenuExample {
 }
 ```
 
-![zh-cn_image_0000001186807708](figures/zh-cn_image_0000001186807708.gif)
+![menu3](figures/menu3.gif)
 
 ### 示例3（长按弹出菜单）
 

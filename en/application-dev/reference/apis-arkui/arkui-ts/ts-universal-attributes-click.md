@@ -67,4 +67,4 @@ struct TouchAbleExample {
 }
 ```
 
-![en-us_image_0000001257138351](figures/en-us_image_0000001257138351.gif)
+![ellipse](figures/ellipse.gif)

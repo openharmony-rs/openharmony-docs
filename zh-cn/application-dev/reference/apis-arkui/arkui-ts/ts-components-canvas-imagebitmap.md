@@ -141,7 +141,7 @@ close(): void
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需启用相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
   ```ts
   // xxx.ets
@@ -170,7 +170,7 @@ close(): void
   }
   ```
 
-  ![zh-cn_image_0000001194352442](figures/zh-cn_image_0000001194352442.png)
+  ![imageBitmap](figures/imageBitmap.png)
 
 ### 示例2（创建ImageBitmap）
 
@@ -209,7 +209,7 @@ struct Demo {
 }
 ```
 
-  ![zh-cn_image_0000001194352442](figures/zh-cn_image_0000001194352444.png)
+  ![imageBitmap2](figures/imageBitmap2.png)
 
 
 ### 示例3（支持并发线程绘制）
@@ -272,7 +272,7 @@ workerPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
-  ![zh-cn_image_0000001194352442](figures/zh-cn_image_0000001194352442.png)
+  ![imageBitmap](figures/imageBitmap.png)
 
 ### 示例4（加载Resource图片）
 
@@ -307,4 +307,4 @@ workerPort.onmessage = (e: MessageEvents) => {
   }
   ```
 
-  ![zh-cn_image_0000001194352443](figures/zh-cn_image_0000001194352443.png)
+  ![imageBitmap4](figures/imageBitmap4.png)
