@@ -3281,7 +3281,7 @@ listAliases(options: HuksOptions): Promise\<HuksListAliasesReturnResult>
 
 ```ts
 /* 以查询DE类密钥的别名集为例 */
-import { huks } from '@kit.UniversalKeystoreKit'
+import { huks } from '@kit.UniversalKeystoreKit';
 
 async function testListAliases() {
   let queryProperties: Array<huks.HuksParam> = [
@@ -4060,7 +4060,7 @@ deleteKey(keyAlias: string, options: HuksOptions) : Promise\<HuksResult>
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from '@kit.BasicServicesKit'
+import { BusinessError } from '@kit.BasicServicesKit';
 
 /* 此处options选择emptyOptions传空 */
 let keyAlias = 'keyAlias';
