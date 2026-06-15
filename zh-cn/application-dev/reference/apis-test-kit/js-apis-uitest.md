@@ -213,7 +213,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于0的整数，默认值为10000，单位：ms。传入负数时抛出17000007错误码。      |
+| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于500的整数，默认值为10000，单位：ms。    |
 | bundleName       | string | 否   | 是   | 监听窗口对应包名，缺省时默认监听所有窗口。       |
 
 
@@ -227,7 +227,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于0的整数，默认值为10000，单位：ms。传入负数时抛出17000007错误码。 |
+| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于500的整数，默认值为10000，单位：ms。 |
 | on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br> **说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
 
 ## UIElementInfo<sup>10+</sup>
@@ -3057,7 +3057,7 @@ triggerKey(keyCode: number, displayId: number): Promise\<void>
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
 | keyCode | number | 是   | 指定的键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
-| displayId | number | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
+| displayId | number | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出401异常。 |
 
 **返回值：**
 
@@ -3150,7 +3150,7 @@ triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number
 | key0   | number | 是   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
 | key1   | number | 是   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
 | key2   | number | 否   | 指定的第三个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| displayId | number | 否  | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。传入displayId不存在时，将抛出17000007异常。 |
+| displayId | number | 否  | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。传入displayId不存在时，将抛出401异常。 |
 
 **返回值：**
 
@@ -3558,10 +3558,10 @@ swipe(startx: number, starty: number, endx: number, endy: number, speed?: number
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| startx | number | 是   | 起始点的横坐标信息，取值范围：大于等于0的整数。              |
-| starty | number | 是   | 起始点的纵坐标信息，取值范围：大于等于0的整数。              |
-| endx   | number | 是   | 目的点的横坐标信息，取值范围：大于等于0的整数。              |
-| endy   | number | 是   | 目的点的纵坐标信息，取值范围：大于等于0的整数。              |
+| startx | number | 是   | 起始点的横坐标信息，取值范围：大于等于0的整数。传入不在范围内的值抛出401错误码。 |
+| starty | number | 是   | 起始点的纵坐标信息，取值范围：大于等于0的整数。传入不在范围内的值抛出401错误码。 |
+| endx   | number | 是   | 目的点的横坐标信息，取值范围：大于等于0的整数。传入不在范围内的值抛出401错误码。 |
+| endy   | number | 是   | 目的点的纵坐标信息，取值范围：大于等于0的整数。传入不在范围内的值抛出401错误码。 |
 | speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
@@ -3899,7 +3899,7 @@ screenCap(savePath: string, displayId: number): Promise\<boolean>
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | 是   | 文件保存路径。路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。 |
-| displayId     | number | 是  | 指定设备屏幕ID，取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
+| displayId     | number | 是  | 指定设备屏幕ID，取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出401异常。                |
 
 **返回值：**
 
