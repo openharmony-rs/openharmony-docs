@@ -33,7 +33,7 @@ PIN码认证。使用Promise异步回调。
 
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------|
-| resourceId | string | 是   | Ukey中某容器的资源ID，可通过[导出证书的接口](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，其结果中附带resourceId。 |
+| resourceId | string | 是   | Ukey中某容器的资源ID，可通过[openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，其结果中附带resourceId。 |
 | params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](js-apis-huksExternalCrypto.md#huksexternalcryptotag)。 |
 
 **返回值：**
@@ -76,7 +76,7 @@ function stringToUint8Array(str: string) {
 
 let uid: number = 3511;
 const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
-const pin = "123456";
+const pin = "123456"; // 此处为示例，实际业务中应替换为真实的用户PIN码
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UID,

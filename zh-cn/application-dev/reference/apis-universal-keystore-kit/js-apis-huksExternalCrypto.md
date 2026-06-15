@@ -752,7 +752,7 @@ const resourceId = JSON.stringify({
   abilityName: "CryptoExtension",
   index: "testKey"
 });
-
+const pin = "123456"; // 此处为示例，实际业务中应替换为真实的用户PIN码
 const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,

@@ -321,7 +321,7 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
     value: userIdStorageLevel,
   }]
 }
-
+/* 1. 导入密钥明文 */
 async function ImportPlainKey(keyAlias: string, importProperties: Array<huks.HuksParam>, plainKey: Uint8Array) {
   const options: huks.HuksOptions = {
     properties: importProperties,
@@ -858,7 +858,7 @@ importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: s
 - 注意：下文密码学相关的变量（如initializationVector、associatedData、nonce）赋值，均为参考样例，不能直接适用于业务功能逻辑。开发者需要根据自身场景使用合适的初始值。
 
 ```ts
-/* 以ECDH协商安全导入AES192密钥为例 */
+/* 以ECDH协商安全导入AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit'
 
@@ -1130,6 +1130,7 @@ const importWrappedAes192Params: huks.HuksOptions = {
   ]
 }
 
+/* 明文导入密钥 */
 async function PublicImportKeyItemFunc(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1146,7 +1147,7 @@ async function PublicImportKeyItemFunc(
   }
 }
 
-/* 5. 删除密钥 */
+/* 删除密钥 */
 async function PublicDeleteKeyItemFunc(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1164,6 +1165,7 @@ async function PublicDeleteKeyItemFunc(
   }
 }
 
+/* 安全导入密钥 */
 async function PublicImportWrappedKeyFunc(
   userId: number,
   keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1183,6 +1185,7 @@ async function PublicImportWrappedKeyFunc(
   }
 }
 
+/* 初始化密钥会话 */
 async function PublicInitFunc(
   userId: number,
   srcKeyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1203,6 +1206,7 @@ async function PublicInitFunc(
   return handle;
 }
 
+/* 分段更新会话数据 */
 async function PublicUpdateSessionFunction(handle: number, huksOptions: huks.HuksOptions) {
   if (huksOptions?.inData?.length == undefined) {
     return [];
@@ -1253,6 +1257,7 @@ async function PublicUpdateSessionFunction(handle: number, huksOptions: huks.Huk
   return outData;
 }
 
+/* 结束密钥会话并进行相应的密钥操作 */
 async function PublicFinishSession(handle: number, huksOptions: huks.HuksOptions, inData: Array<number>) {
   let outData: Array<number> = [];
   console.info(`enter promise doFinish`);
@@ -1275,6 +1280,7 @@ async function PublicFinishSession(handle: number, huksOptions: huks.HuksOptions
   return new Uint8Array(outData);
 }
 
+/* 进行数据加密 */
 async function CipherFunction(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1284,6 +1290,7 @@ async function CipherFunction(
   return outData;
 }
 
+/* 进行ECDH协商 */
 async function AgreeFunction(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions, huksPublicKey: Uint8Array) {
@@ -1322,7 +1329,7 @@ async function AgreeFunction(
   return outSharedKey;
 }
 
-/* 2. 导入KEK并协商共享密钥 */
+/* 导入KEK并协商共享密钥 */
 async function ImportKekAndAgreeSharedSecret(
   userId: number,
   callerKekAlias: string, importKekParams: huks.HuksOptions,
@@ -1334,7 +1341,7 @@ async function ImportKekAndAgreeSharedSecret(
   await PublicImportKeyItemFunc(userId, callerAgreeKeyAliasAes256, importParamsAgreeKey);
 }
 
-/* 1. 生成密钥并导出公钥 */
+/* 生成密钥并导出公钥 */
 async function GenerateAndExportPublicKey(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions): Promise<Uint8Array> {
@@ -1378,7 +1385,7 @@ interface KeyEncAndKekEnc {
   outAgreeKeyEncTag: Uint8Array,
 }
 
-/* 3. 加密待导入密钥和KEK */
+/* 加密待导入密钥和KEK */
 async function EncryptImportedPlainKeyAndKek(
   userId: number,
   keyAlias: string): Promise<KeyEncAndKekEnc> {
@@ -1401,7 +1408,7 @@ async function EncryptImportedPlainKeyAndKek(
   return result
 }
 
-/* 4. 构建封装数据并安全导入密钥 */
+/* 构建封装数据并安全导入密钥 */
 async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey: Uint8Array,
   callerSelfPublicKey: Uint8Array, encData: KeyEncAndKekEnc) {
   const plainKeySizeBuff = new Uint8Array(4);
@@ -1447,6 +1454,7 @@ async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey:
   return wrappedData;
 }
 
+/* 安全导入密钥流程 */
 export async function HuksSecurityImportTest(userId: number) {
   const srcKeyAliasWrap = 'HUKS_Basic_Capability_Import_0200';
   const huksPubKey: Uint8Array = await GenerateAndExportPublicKey(userId, srcKeyAliasWrap, genWrappingKeyParams);
@@ -1526,7 +1534,7 @@ exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
-/* 以导出RSA4096公钥为例 */
+/* 以导出RSA公钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit'
 
