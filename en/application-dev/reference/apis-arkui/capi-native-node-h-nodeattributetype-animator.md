@@ -766,7 +766,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | The parameter type is [ArkUI_TransitionEdge](capi-native-type-visual-h.md#arkui_transitionedge).|
+| .value[0].i32 | Transition edge. The parameter type is [ArkUI_TransitionEdge](capi-native-type-visual-h.md#arkui_transitionedge).|
 | .value[1].i32 | Animation duration, in ms.|
 | .value[2].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[3]?.i32 | Animation delay duration, in ms.|
@@ -778,7 +778,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | The parameter type is [ArkUI_TransitionEdge](capi-native-type-visual-h.md#arkui_transitionedge).|
+| .value[0].i32 | Transition edge. The parameter type is [ArkUI_TransitionEdge](capi-native-type-visual-h.md#arkui_transitionedge).|
 | .value[1].i32 | Animation duration, in ms.|
 | .value[2].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[3].i32 | Animation delay duration, in ms.|
