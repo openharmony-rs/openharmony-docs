@@ -330,8 +330,8 @@
 | buttonBackgroundSize   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 按钮高亮显示时的大小，单位为vp，取值范围为[20, 40]，默认值为28。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
 | spacingBetweenButtons  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 按钮间距，单位为vp，取值范围为[8, 24]，默认值为12。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
 | closeButtonRightMargin | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 关闭按钮右侧距窗口边距，单位为vp，取值范围为[6, 22]，默认值为20。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
-| buttonIconSize<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 按键icon的大小，单位为vp，取值范围为[16, 24]，默认值为20。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-| buttonBackgroundCornerRadius<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 按键背板圆角半径，单位为vp，取值范围为[4, 8]，默认值为4。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| buttonIconSize<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 按钮icon的大小，单位为vp，取值范围为[16, 24]，默认值为20。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| buttonBackgroundCornerRadius<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 按钮背板圆角半径，单位为vp，取值范围为[4, 8]，默认值为4。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 ## WindowLimits<sup>11+</sup>
 
