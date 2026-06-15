@@ -146,7 +146,7 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 try {
   // 初始化应用灰度模块
   hiRetrieval.init();
-    // 设置设备退出应用灰度活动
+  // 设置设备退出应用灰度活动
   hiRetrieval.quit();
 } catch (err) {
   // 捕获并打印错误信息

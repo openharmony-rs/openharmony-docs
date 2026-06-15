@@ -44,7 +44,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 | domain | string | 否 | 否 | 事件领域。 |
 | name | string | 否 | 否 | 事件名称。 |
 | eventType | [EventType](#eventtype) | 否 | 否 | 事件类型。 |
-| params | object | 否 | 是 |  事件参数。参数需满足验证、字符串类型参数大小限制、参数总数限制、数组类型参数数量限制等要求。详见[系统事件错误码](errorcode-hisysevent-sys.md)：1200001-1200054。 |
+| params | object | 否 | 是 |  事件参数。参数需满足验证、字符串类型参数大小限制、参数总数限制、数组类型参数数量限制等要求。详见[系统事件错误码](errorcode-hisysevent-sys.md)：11200001-11200054。 |
 
 
 ## hiSysEvent.write
@@ -344,7 +344,7 @@ try {
 | endTime | number | 否 | 否 | 查询的系统事件结束时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数。使用-1表示不限制结束时间。与beginTime配合使用时，两者取交集。建议设置合理的时间范围以优化查询性能。 |
 | maxEvents | number | 否 | 否 | 查询的系统事件最多条数。建议设置合理的值以优化查询性能。 |
 | fromSeq<sup>10+</sup> | number | 否 | 是 | 查询的系统事件起始序列号，默认值为-1，表示不限制起始序列号。与toSeq配合使用时，两者取交集。建议设置合理的序列范围以优化查询性能。 |
-| toSeq<sup>10+</sup> | number | 否 | 是 | 查询的系统事件结束序列号，默认值为-1，表示不限制结束序列号。与fromSeq<配合使用时，两者取交集。建议设置合理的序列范围以优化查询性能。|
+| toSeq<sup>10+</sup> | number | 否 | 是 | 查询的系统事件结束序列号，默认值为-1，表示不限制结束序列号。与fromSeq配合使用时，两者取交集。建议设置合理的序列范围以优化查询性能。|
 
 ## QueryRule
 
@@ -373,7 +373,7 @@ try {
 
 query(queryArg: QueryArg, rules: QueryRule[], querier: Querier): void
 
-查询系统事件。支持按时间范围、事件领域、事件名称等多种查询条件进行匹配查询，查询结果通过回调函数异步返回。
+查询系统事件。支持按时间范围、事件领域、事件名称等多种查询条件进行匹配查询。
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
@@ -471,7 +471,7 @@ exportSysEvents(queryArg: QueryArg, rules: QueryRule[]): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 接口调用时间戳（毫秒）。 |
+| number | 接口调用时间戳，单位为毫秒（ms）。 |
 
 **错误码：**
 
@@ -561,7 +561,7 @@ subscribe(rules: QueryRule[]): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 接口调用时间戳（毫秒）。 |
+| number | 接口调用时间戳，单位为毫秒（ms）。 |
 
 **错误码：**
 
