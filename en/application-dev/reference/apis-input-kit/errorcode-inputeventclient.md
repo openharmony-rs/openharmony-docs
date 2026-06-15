@@ -6,119 +6,118 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:21:14.313Z pushedAt=2026-06-12T06:19:44.440Z -->
 
 > **NOTE**
 >
-> The following describes only the error codes specific to this module. For general error codes, refer to [General Error Codes](../errorcode-universal.md).
+> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 3800001 Input Service Exception
+## 3800001 Input Service Error
 
 **Error Message**
 
 Input service exception.
 
-**Error Description**
+**Description**
 
-This error code is generated when an exception occurs inside the input service while calling input event injection related interfaces.
+This error code is generated if an internal error occurs in the input service when an input event injection API is called.
 
-**Possible Cause**
+**Possible Causes**
 
-1. Memory allocation failure.
-2. Thread busy.
-3. The service is running abnormally.
+1. Memory allocation failed.
+2. The thread is busy.
+3. The service runs abnormally.
 4. Other unexpected errors.
 
 **Solution**
 
-It is recommended to try again later. If the problem persists, check the system resource usage.
+Try again later. If the fault persists, check the system resource usage.
 
 ## 4300001 Status Error
 
 **Error Message**
 
-Status error. The specific situation varies depending on the interface and scenario.
+Status error, which indicates different situations in different APIs and scenarios.
 
-**Error Description**
+**Description**
 
-This error code indicates different status errors in different interfaces:
+This error code indicates different status errors in different APIs:
 
-- **pressKey interface**: The key is already pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.
+- **pressKey API**: The key is already pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.
 
-  When calling the pressKey interface of the keyboard controller, this error code is generated if the key is already pressed and is not the most recently pressed key, or if the number of pressed keys exceeds 5.
+  This error code is generated when the **pressKey** API of the keyboard controller is called and the key has been pressed but is not the most recently pressed key, or more than five keys have been pressed.
 
-  **Possible Cause**: The key is already pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.
+  **Possible Causes**: The key has been pressed but is not the most recently pressed key, or more than five keys have been pressed.
 
-  **Solution**: Ensure that the key is in the released state before it can be pressed; if the key is already pressed, ensure it is the most recently pressed key; ensure that the number of simultaneously pressed keys does not exceed 5.
+  **Solution**: Ensure that a key can only be pressed when it is in the released state. If a key is already pressed, ensure that it is the most recently pressed key. Ensure that the number of keys pressed simultaneously does not exceed five.
 
-- **releaseKey Interface**: The key is not pressed.
+- **releaseKey API**: The key is not pressed.
 
-  When calling the releaseKey interface of the keyboard controller, this error code is generated if the key is not pressed.
+  This error code is generated when the **releaseKey** API of the keyboard controller is called and the key is not pressed.
 
-  **Possible Cause**: Attempting to release a key that is not pressed.
+  **Possible Causes**: An attempt is made to release a key that is not pressed.
 
-  **Solution**: Ensure that only keys that are already pressed are released.
+  **Solution**: Ensure that the key to be released is pressed.
 
 - **pressButton API**: The mouse button is already pressed.
 
-  This error code is generated when the pressButton API of the mouse controller is called while the mouse button is already pressed.
+  This error code is generated when the **pressButton** API of the mouse controller is called and the mouse button has been pressed.
 
-  **Possible Cause**: The mouse button is already in the pressed state.
+  **Possible Causes**: The mouse button has been pressed.
 
-  **Solution**: Ensure that the mouse button is in the released state before it can be pressed.
+  **Solution**: Ensure that the mouse button is in the released state.
 
 - **releaseButton API**: The mouse button is not pressed.
 
-  When calling the releaseButton API of the mouse controller, this error code is generated if the mouse button is not pressed.
+  This error code is generated when the **releaseButton** API of the mouse controller is called and the mouse button is not pressed.
 
-  **Possible Cause**: Attempting to release a mouse button that is not pressed.
+  **Possible Causes**: An attempt is made to release a mouse button that is not pressed.
 
-  **Solution**: Ensure that only mouse buttons that are already pressed are released.
+  **Solution**: Ensure that the mouse button to be released is pressed.
 
 - **beginAxis API**: The axis event is in progress.
 
-  When calling the beginAxis API of the mouse controller, this error code is generated if an axis event is already in progress.
+  This error code is generated when the **beginAxis** API of the mouse controller is called and an axis event is in progress.
 
-  **Possible Cause**: An axis event sequence is already in progress and has not yet ended.
+  **Possible Causes**: An axis event sequence is in progress and has not ended.
 
-  **Solution**: Ensure that the current axis event sequence is ended before starting a new one.
+  **Solution**: Ensure that the ongoing axis event sequence is ended before a new one is started.
 
 - **updateAxis/endAxis API**: The axis event is not in progress.
 
-This error code is generated when the updateAxis or endAxis interface of the mouse controller is called while no axis event is in progress.
+  This error code is generated when the **updateAxis** or **endAxis API** of the mouse controller is called and no axis event is in progress.
 
-**Possible Cause**: An attempt was made to update or end an axis event sequence that has not been started.
+  **Possible Causes**: An attempt is made to update or end an axis event sequence that has not started.
 
-**Solution**: Ensure that beginAxis is called to start an axis event sequence before calling updateAxis or endAxis.
+  **Solution**: Ensure that **beginAxis** is called to start an axis event sequence before calling **updateAxis** or **endAxis**.
 
-- **touchDown interface**: The touch point is already touching the screen, or the touch point ID is not within the valid range [0, 9].
+- **touchDown API**: The touch point is contacting the screen, or the touch point ID is not within the valid range [0, 9].
 
-This error code is generated when the touchDown interface of the touch controller is called while the touch point is already touching the screen or the touch point ID is not within the valid range [0, 9].
+  This error code is generated when the **touchDown** API of the touch controller is called and the touch point is contacting the screen or the touch point ID is not within the valid range [0, 9].
 
-**Possible Cause**: The touch point is already in the pressed state, or the touch point ID is not within the valid range [0, 9].
+  **Possible Causes**: The touch point is already in the pressed state, or the touch point ID is not within the valid range [0, 9].
 
-**Solution**: Before calling touchDown, ensure that the corresponding touch point is not already touching the screen and that the touch point ID is within the valid range [0, 9].
+  **Solution**: Before calling the **touchDown** API, ensure that the corresponding touch point is not yet touching the screen and that the touch point ID is within the valid range [0, 9].
 
-- **touchMove/touchUp APIs**: The touch point is not touching the screen, or the touch point ID is not within the valid range [0, 9].
+- **touchMove/touchUp API**: The touch point is not yet touching the screen, or the touch point ID is not within the valid range [0, 9].
 
-When calling the touchMove or touchUp API of the touch controller, this error code is generated if the touch point is not touching the screen or the touch point ID is not within the valid range [0, 9].
+  This error code is generated when the **touchMove** or **touchUp** API of the touch controller is called and the touch point is not yet touching the screen or the touch point ID is not within the valid range [0, 9].
 
-**Possible Cause**: The touch point is not in the pressed state, or the touch point ID is not within the valid range [0, 9].
+  **Possible Causes**: The touch point is not in the pressed state, or the touch point ID is not within the valid range [0, 9].
 
-  **Solution**: Before calling touchMove or touchUp, call touchDown first to make the corresponding touch point contact the screen, and ensure the touch point ID is within the valid range [0, 9].
+  **Solution**: Before calling the **touchMove** or **touchUp** API, call the **touchDown** API to make the touch point touch the screen and ensure that the touch point ID is within the valid range [0, 9].
 ## 4300002 Display Does Not Exist
 
 **Error Message**
 
 The display does not exist.
 
-**Error Description**
+**Description**
 
-This error code is generated when the specified display does not exist when calling the moveTo API of the mouse controller or the touchDown API of the touch controller.
+This error code is generated when the **moveTo** API of the mouse controller or the **touchDown** API of the touch controller is called and the specified display does not exist.
 
-**Possible Cause**
+**Possible Causes**
 
-The display corresponding to the specified displayId does not exist.
+The display corresponding to the specified display ID does not exist.
 
 **Solution**
 

@@ -1,4 +1,4 @@
-# @ohos.multimodalInput.pointer (Mouse Pointer) (System API)
+# @ohos.multimodalInput.pointer (鼠标光标)(系统接口)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -7,15 +7,15 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
-The **pointer** module provides APIs to query and set pointer attributes.
+鼠标光标管理模块，用于查询和设置鼠标光标相关属性。
 
-> **NOTE**
+> **说明**：
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.multimodalInput.pointer (Mouse Pointer)](js-apis-pointer.md).
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标)](js-apis-pointer.md)。
 
-## Modules to Import
+## 导入模块
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -25,30 +25,30 @@ import { pointer } from '@kit.InputKit';
 
 setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the mouse pointer speed. This API uses an asynchronous callback to return the result.
+设置鼠标移动速度，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed    | number                    | Yes   | Mouse pointer speed. The value ranges from **1** to **20**. The default value is **10**.  |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| speed    | number                    | 是    | 鼠标移动速度，范围1-20，默认为10。   |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标移动速度成功，err为undefined，否则为错误对象。|
 
-**Error codes**
+**错误码：**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID| Error Message         |
+| 错误码ID | 错误信息          |
 | -------- | ----------------- |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -62,7 +62,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the mouse pointer speed.
+            // 设置鼠标指针速度
             pointer.setPointerSpeed(5, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -83,35 +83,35 @@ struct Index {
 
 setPointerSpeed(speed: number): Promise&lt;void&gt;
 
-Sets the mouse pointer speed. This API uses a promise to return the result.
+设置鼠标移动速度，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | Yes   | Mouse pointer speed. The value ranges from **1** to **20**. The default value is **10**.|
+| speed | number | 是    | 鼠标移动速度，范围1-20，默认为10。 |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码：**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID| Error Message         |
+| 错误码ID | 错误信息          |
 | -------- | ----------------- |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -125,7 +125,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the mouse pointer speed.
+            // 设置鼠标指针速度
             pointer.setPointerSpeed(5).then(() => {
               console.info(`Succeeded in setting pointer speed.`);
             }).catch((error: BusinessError) => {
@@ -144,28 +144,28 @@ struct Index {
 
 setPointerSpeedSync(speed: number): void
 
-Sets the mouse pointer speed. This API returns the result synchronously.
+使用同步方式设置鼠标移动速度。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | Yes   | Mouse pointer speed. The value ranges from **1** to **20**. The default value is **10**.|
+| speed | number | 是    | 鼠标移动速度，范围1-20，默认为10。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -193,29 +193,29 @@ struct Index {
 
 getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the mouse pointer speed. This API uses an asynchronous callback to return the result.
+获取鼠标移动速度，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the mouse pointer speed. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标移动速度成功，err为undefined，number为鼠标移动速度；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | Permission denied, non-system app called system api. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -229,7 +229,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the mouse pointer speed.
+            // 获取鼠标指针速度
             pointer.getPointerSpeed((error: BusinessError, speed: number) => {
               if (error) {
                 console.error(`Failed to get pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -250,27 +250,27 @@ struct Index {
 
 getPointerSpeed(): Promise&lt;number&gt;
 
-Obtains the mouse pointer speed. This API uses a promise to return the result.
+获取当前鼠标移动速度，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise used to return the mouse pointer speed.|
+| Promise&lt;number&gt; | Promise对象，返回鼠标移动速度。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | Permission denied, non-system app called system api. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -284,7 +284,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the mouse pointer speed.
+            // 获取鼠标指针速度
             pointer.getPointerSpeed().then(speed => {
               console.info(`Succeeded in getting pointer speed, speed: ${JSON.stringify(speed)}.`);
             }).catch((error: BusinessError) => {
@@ -303,28 +303,28 @@ struct Index {
 
 getPointerSpeedSync(): number
 
-Obtains the mouse pointer speed. This API returns the result synchronously.
+使用同步方式获取当前鼠标移动速度。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | Mouse pointer speed. The value ranges from 1 to 20. |
+| number | 返回鼠标移动速度，范围1-20。  |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -352,29 +352,29 @@ struct Index {
 
 setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the mouse hover scrolling switch state. This API uses an asynchronous callback to return the result.
+设置鼠标悬停滚动开关状态，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state    | boolean                    | Yes   | Status of the mouse hover scroll switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| state    | boolean                    | 是    | 鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。   |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标悬停滚动开关状态成功，err为undefined，否则为错误对象。|
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -388,7 +388,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the mouse hover scrolling switch state.
+            // 设置鼠标悬停滚动状态
             pointer.setHoverScrollState(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -409,34 +409,34 @@ struct Index {
 
 setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
-Sets the status of the mouse hover scroll switch. This API uses a promise to return the result.
+设置鼠标悬停滚动开关状态，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean | Yes   | Status of the mouse hover scroll switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
+| state | boolean | 是    | 鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。 |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -450,7 +450,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the mouse hover scrolling switch state.
+            // 设置鼠标悬停滚动状态
             pointer.setHoverScrollState(true).then(() => {
               console.info(`Succeeded in setting mouse hover scroll.`);
             }).catch((error: BusinessError) => {
@@ -469,28 +469,28 @@ struct Index {
 
 getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 
-Obtains the mouse hover scrolling switch state. This API uses an asynchronous callback to return the result.
+获取鼠标悬停滚动开关状态，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **true** (default) will be returned if the switch is enabled while false will be returned if the switch is disabled. If the operation fails, **err** is an error object.|
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当获取鼠标悬停滚动开关状态成功，err为undefined，true代表开关开启，false代表开关关闭，默认开启；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -504,7 +504,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the mouse hover scrolling switch state.
+            // 获取鼠标悬停滚动状态
             pointer.getHoverScrollState((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get mouse hover scroll, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -525,28 +525,28 @@ struct Index {
 
 getHoverScrollState(): Promise&lt;boolean&gt;
 
-Obtains the status of the mouse hover scroll switch. This API uses a promise to return the result.
+获取当前鼠标悬停滚动开关状态，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the mouse hover scrolling switch is enabled, and the value **false** indicates that the switch is disabled. The default value is **true**.|
+| Promise&lt;boolean&gt; | Promise对象。返回true表示鼠标悬停滚动开关开启；返回false表示鼠标悬停滚动开关关闭。默认开启。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -560,7 +560,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the mouse hover scrolling switch state.
+            // 获取鼠标悬停滚动状态
             pointer.getHoverScrollState().then((state: boolean) => {
               console.info(`Succeeded in getting mouse hover scroll, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
@@ -579,29 +579,29 @@ struct Index {
 
 setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the primary mouse button. This API uses an asynchronous callback to return the result.
+设置鼠标主键，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type                     | Mandatory | Description                                   |
+| 参数名    | 类型                      | 必填  | 说明                                    |
 | -------- | ------------------------- | ----  | ------------------------------------- |
-| primary  | [PrimaryButton](js-apis-pointer.md#primarybutton10)   | Yes   | Type of the primary mouse button.  |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| primary  | [PrimaryButton](js-apis-pointer.md#primarybutton10)   | 是    | 鼠标主键类型。   |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标主键成功，err为undefined，否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -615,7 +615,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the primary mouse button.
+            // 设置鼠标主键
             pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -636,34 +636,34 @@ struct Index {
 
 setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
-Sets the primary mouse button. This API uses a promise to return the result.
+设置鼠标主键，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| primary | [PrimaryButton](js-apis-pointer.md#primarybutton10) | Yes   | Type of the primary mouse button.|
+| primary | [PrimaryButton](js-apis-pointer.md#primarybutton10) | 是    | 鼠标主键类型。 |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -677,7 +677,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the primary mouse button.
+            // 设置鼠标主键
             pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT).then(() => {
               console.info(`Succeeded in setting mouse primary button.`);
             }).catch((error: BusinessError) => {
@@ -696,28 +696,28 @@ struct Index {
 
 getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 
-Obtains the current primary mouse button. This API uses an asynchronous callback to return the result.
+获取当前鼠标主键，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **PrimaryButton** is the obtained key value. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | 是    | 回调函数。当获取当前鼠标主键成功，err为undefined，PrimaryButton为获取到的键值；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -731,7 +731,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the primary mouse button.
+            // 获取鼠标主键
             pointer.getMousePrimaryButton((error: BusinessError, primary: pointer.PrimaryButton) => {
               if (error) {
                 console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -752,28 +752,28 @@ struct Index {
 
 getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
-Obtains the current primary mouse button. This API uses a promise to return the result.
+获取当前鼠标主键，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise used to return the primary mouse button.|
+| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise对象，返回鼠标主键。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -787,7 +787,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the primary mouse button.
+            // 获取鼠标主键
             pointer.getMousePrimaryButton().then((primary: pointer.PrimaryButton) => {
               console.info(`Succeeded in getting mouse primary button, primary: ${JSON.stringify(primary)}.`);
             }).catch((error: BusinessError) => {
@@ -806,29 +806,29 @@ struct Index {
 
 setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the number of mouse scroll lines. This API uses an asynchronous callback to return the result.
+设置鼠标滚动行数，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| rows     | number                    | Yes   | Number of mouse scroll lines. The value ranges from 1 to 100. The default value is **3**.  |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| rows     | number                    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标滚动行数成功，err为undefined，否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -842,7 +842,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the number of mouse scroll lines.
+            // 设置鼠标滚动行数
             pointer.setMouseScrollRows(1, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -863,34 +863,34 @@ struct Index {
 
 setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
-Sets the number of mouse scroll lines. This API uses a promise to return the result.
+设置鼠标滚动行数，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| rows  | number | Yes   | Number of mouse scroll lines. The value ranges from 1 to 100. The default value is **3**.|
+| rows  | number | 是    | 鼠标滚动行数，范围1-100，默认为3。 |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -904,7 +904,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the number of mouse scroll lines.
+            // 设置鼠标滚动行数
             pointer.setMouseScrollRows(20).then(() => {
               console.info(`Succeeded in setting mouse scroll rows.`);
             }).catch((error: BusinessError) => {
@@ -923,28 +923,28 @@ struct Index {
 
 getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the number of mouse scroll lines. This API uses an asynchronous callback to return the result.
+获取鼠标滚动行数，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the number of mouse scroll lines. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标滚动行数成功，err为undefined，number为获取到的滚动行数；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -958,7 +958,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the number of mouse scroll lines.
+            // 获取鼠标滚动行数
             pointer.getMouseScrollRows((error: BusinessError, rows: number) => {
               if (error) {
                 console.error(`Failed to get mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -979,28 +979,28 @@ struct Index {
 
 getMouseScrollRows(): Promise&lt;number&gt;
 
-Obtains the number of mouse scroll lines. This API uses a promise to return the result.
+获取当前鼠标滚动行数，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise used to return the number of mouse scroll lines.|
+| Promise&lt;number&gt; | Promise对象，返回鼠标滚动行数。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1014,7 +1014,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the number of mouse scroll lines.
+            // 获取鼠标滚动行数
             pointer.getMouseScrollRows().then((rows: number) => {
               console.info(`Succeeded in getting mouse scroll rows, rows: ${JSON.stringify(rows)}.`);
             }).catch((error: BusinessError) => {
@@ -1033,29 +1033,29 @@ struct Index {
 
 setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-Sets the touchpad scroll switch. This API uses an asynchronous callback to return the result.
+设置触控板滚轴开关，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state | boolean | Yes   | Scroll switch status. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| state | boolean | 是    | 滚轴开关开启的状态，true代表开启，false代表关闭，默认为开启。   |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板滚轴开关成功，err为undefined，否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1069,7 +1069,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad scroll switch state.
+            // 设置触摸板滚动开关
             pointer.setTouchpadScrollSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1090,34 +1090,34 @@ struct Index {
 
 setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
-Sets the touchpad scroll switch. This API uses a promise to return the result.
+设置触控板滚轴开关，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| Yes   |  Scroll switch status. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.|
+| state | boolean| 是    |  滚轴开关开启的状态，true代表开启，false代表关闭，默认为开启。 |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1131,7 +1131,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad scroll switch state.
+            // 设置触摸板滚动开关
             pointer.setTouchpadScrollSwitch(false).then(() => {
               console.info(`Succeeded in setting touchpad scroll switch.`);
             }).catch((error: BusinessError) => {
@@ -1150,28 +1150,28 @@ struct Index {
 
 getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 
-Obtains the touchpad scroll switch state. This API uses an asynchronous callback to return the result.
+获取触控板滚轴能力开启状态，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the scroll switch state (**true** indicates yes and **false** indicates no; default value: **true**). Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板滚轴能力开启状态成功，err为undefined，state是true代表开启，false代表关闭，默认开启；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1185,7 +1185,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad scroll switch state.
+            // 获取触摸板滚动开关
             pointer.getTouchpadScrollSwitch((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad scroll switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1206,28 +1206,28 @@ struct Index {
 
 getTouchpadScrollSwitch(): Promise\<boolean>
 
-Obtains the touchpad scroll switch state. This API uses a promise to return the result.
+获取触控板滚轴能力开启状态，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad scroll switch is enabled, and the value **false** indicates that the touchpad scroll is disabled. The default value is **true**.|
+| Promise\<boolean> | Promise对象。返回true表示触控板滚轴能力开启；返回false表示触控板滚轴能力关闭。默认为开启。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1241,7 +1241,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad scroll switch state.
+            // 获取触摸板滚动开关
             pointer.getTouchpadScrollSwitch().then((state) => {
               console.info(`Succeeded in getting touchpad scroll switch, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
@@ -1260,29 +1260,29 @@ struct Index {
 
 setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 
-Sets the touchpad scroll direction. This API uses an asynchronous callback to return the result.
+设置触控板滚轴的方向，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state | boolean | Yes   | Touchpad scroll direction.<br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite.<br>The default value is **true**.  |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| state | boolean | 是    | state为触控板滚轴的方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。   |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板滚轴方向成功，err为undefined，否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1296,7 +1296,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad scroll direction.
+            // 设置触摸板滚动方向
             pointer.setTouchpadScrollDirection(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1317,34 +1317,34 @@ struct Index {
 
 setTouchpadScrollDirection(state: boolean): Promise\<void>
 
-Sets the touchpad scroll direction. This API uses a promise to return the result.
+设置触控板滚轴的方向，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| Yes   |  Touchpad scroll direction.<br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite.<br>The default value is **true**.|
+| state | boolean| 是    |  state为触控板滚轴的方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。|
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1358,7 +1358,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad scroll direction.
+            // 设置触摸板滚动方向
             pointer.setTouchpadScrollDirection (false).then(() => {
               console.info(`Succeeded in setting touchpad scroll direction.`);
             }).catch((error: BusinessError) => {
@@ -1377,28 +1377,28 @@ struct Index {
 
 getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 
-Obtains the touchpad scroll direction. This API uses an asynchronous callback to return the result.
+获取触控板滚轴方向，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the touchpad scroll direction matches the direction of finger movement (**true** indicates yes). Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板滚轴方向成功，err为undefined，state是true与手指滑动的方向一致；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1412,7 +1412,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad scroll direction.
+            // 获取触摸板滚动方向
             pointer.getTouchpadScrollDirection ((error: BusinessError, state: boolean) => {
               console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
             });
@@ -1429,28 +1429,28 @@ struct Index {
 
 getTouchpadScrollDirection(): Promise\<boolean>
 
-Obtains the scroll direction of the touchpad. This API uses a promise to return the result.
+获取触控板滚轴方向，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad scroll direction matches the direction of finger movement, and the value **false** indicates the opposite. The default value is **true**.|
+| Promise\<boolean> | Promise对象。返回true表示触控板滚轴方向与手指滑动的方向一致；返回false表示触控板滚轴方向与手指滑动的方向相反。默认为true。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1464,7 +1464,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad scroll direction.
+            // 获取触摸板滚动方向
             pointer.getTouchpadScrollDirection().then((state: boolean) => {
               console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
@@ -1483,29 +1483,29 @@ struct Index {
 
 setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-Sets the touchpad tap switch. This API uses an asynchronous callback to return the result.
+设置触控板轻触功能开关，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state | boolean | Yes   |Tap switch status of the touchpad The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| state | boolean | 是    |触控板轻触功能开关开启状态。 true代表轻触开启，false代表轻触关闭，默认开启。   |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板轻触功能开关成功，err为undefined，否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1519,7 +1519,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad tap switch.
+            // 设置触摸板点击开关
             pointer.setTouchpadTapSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1540,34 +1540,34 @@ struct Index {
 
 setTouchpadTapSwitch(state: boolean): Promise\<void>
 
-Sets the touchpad tap switch. This API uses a promise to return the result.
+设置触控板轻触功能开关，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| Yes   |  State of the touchpad tap switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**. |
+| state | boolean| 是    |  触控板轻触功能开关开启状态， true代表轻触开启，false代表轻触关闭，默认开启。  |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1581,7 +1581,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad tap switch.
+            // 设置触摸板点击开关
             pointer.setTouchpadTapSwitch(false).then(() => {
               console.info(`Succeeded in setting touchpad tap switch.`);
             }).catch((error: BusinessError) => {
@@ -1600,27 +1600,27 @@ struct Index {
 
 getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 
-Obtains the touchpad tap switch state. This API uses an asynchronous callback to return the result.
+获取触控板轻触能力开启状态，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the touchpad tap switch is enabled (**true** indicates yes and **false** indicates no; default value: **true**). Otherwise, **err** is an error object.|
-**Error codes**
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板轻触功能开启状态成功，err为undefined，state是true代表开启，false代表关闭，默认开启；否则为错误对象。 |
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1634,7 +1634,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad tap switch state.
+            // 获取触摸板点击开关
             pointer.getTouchpadTapSwitch((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1655,28 +1655,28 @@ struct Index {
 
 getTouchpadTapSwitch(): Promise\<boolean>
 
-Obtains the touchpad tap switch state. This API uses a promise to return the result.
+获取触控板轻触功能开启状态，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad tap switch is enabled, and the value **false** indicates that the touchpad tap switch is disabled. The default value is **true**.|
+| Promise\<boolean> | Promise对象。返回true表示触控板轻触功能开启；返回false表示触控板轻触功能关闭。默认开启。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1690,7 +1690,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad tap switch state.
+            // 获取触摸板点击开关
             pointer.getTouchpadTapSwitch().then((state: boolean) => {
               console.info(`Succeeded in getting touchpad tap switch, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
@@ -1709,29 +1709,29 @@ struct Index {
 
 setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 
-Sets the touchpad pointer speed. This API uses an asynchronous callback to return the result.
+设置触控板光标移动速度，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed | number                    | Yes   |Touchpad pointer speed The value range is [1,11]. The default value is **6**. |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| speed | number                    | 是    |speed代表光标移动速度。speed取值范围[1,11]，默认6。  |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板光标移动速度成功，err为undefined，否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1745,7 +1745,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad pointer speed.
+            // 设置触摸板指针速度
             pointer.setTouchpadPointerSpeed(1, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1766,34 +1766,34 @@ struct Index {
 
 setTouchpadPointerSpeed(speed: number): Promise\<void>
 
-Sets the touchpad pointer speed. This API uses a promise to return the result.
+设置触控板光标移动速度，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed| number | Yes   | Touchpad pointer speed The value range is [1,11]. The default value is **6**.   |
+| speed| number | 是    | speed代表光标移动速度。speed取值范围[1,11]，默认6。    |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1807,7 +1807,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad pointer speed.
+            // 设置触摸板指针速度
             pointer.setTouchpadPointerSpeed(10).then(() => {
               console.info(`Succeeded in setting touchpad pointer speed.`);
             }).catch((error: BusinessError) => {
@@ -1826,28 +1826,28 @@ struct Index {
 
 getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 
-Obtains the touchpad pointer speed. This API uses an asynchronous callback to return the result.
+获取触控板光标移动速度，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<number> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the obtained touchpad pointer speed. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<number> | 是    | 回调函数。当获取触控板光标移动速度成功，err为undefined，number是获取的触控板光标移动速度；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1861,7 +1861,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad pointer speed.
+            // 获取触摸板指针速度
             pointer.getTouchpadPointerSpeed((error: BusinessError, speed: number) => {
               if (error) {
                 console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1882,28 +1882,28 @@ struct Index {
 
 getTouchpadPointerSpeed(): Promise\<number>
 
-Obtains the touchpad pointer speed. This API uses a promise to return the result.
+获取触控板光标移动速度，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise used to return the touchpad pointer speed. The value range is [1,11].|
+| Promise\<number> | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1917,7 +1917,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad pointer speed.
+            // 获取触摸板指针速度
             pointer.getTouchpadPointerSpeed().then((speed: number) => {
               console.info(`Succeeded in getting touchpad pointer speed, speed: ${JSON.stringify(speed)}.`);
             }).catch((error: BusinessError) => {
@@ -1936,29 +1936,29 @@ struct Index {
 
 setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-Sets the touchpad pinch switch. This API uses an asynchronous callback to return the result.
+设置触控板双指捏合功能开关，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state | boolean | Yes   |Touchpad pinch switch state. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| state | boolean | 是    |触控板双指捏合功能开关开启状态。 true代表开启，false代表关闭，默认开启。   |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板双指捏合功能开关成功，err为undefined，否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -1972,7 +1972,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad pinch switch.
+            // 设置触摸板捏合开关
             pointer.setTouchpadPinchSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1993,34 +1993,34 @@ struct Index {
 
 setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
-Sets the touchpad pinch switch. This API uses a promise to return the result.
+设置触控板双指捏合功能开关，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| Yes   |  Touchpad pinch switch state. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**. |
+| state | boolean| 是    |  触控板双指捏合功能开关开启状态。 true代表开启，false代表关闭，默认开启。  |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2034,7 +2034,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad pinch switch.
+            // 设置触摸板捏合开关
             pointer.setTouchpadPinchSwitch(false).then(() => {
               console.info(`Succeeded in setting touchpad pinch switch.`);
             }).catch((error: BusinessError) => {
@@ -2053,28 +2053,28 @@ struct Index {
 
 getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 
-Obtains the touchpad pinch switch state. This API uses an asynchronous callback to return the result.
+获取触控板双指捏合功能开启状态，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the touchpad pinch switch is enabled (**true** indicates yes and **false** indicates no; default value: **true**). Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板双指捏合功能开启状态成功，err为undefined，state是true代表功能开启，false代表功能关闭，默认开启；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2088,7 +2088,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad pinch switch state.
+            // 获取触摸板捏合开关
             pointer.getTouchpadPinchSwitch((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad pinch switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2109,28 +2109,28 @@ struct Index {
 
 getTouchpadPinchSwitch(): Promise\<boolean>
 
-Obtains the touchpad pinch switch state. This API uses a promise to return the result.
+获取触控板双指捏合功能开启状态，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad pinch switch is enabled, and the value **false** indicates that the touchpad pinch switch is disabled. The default value is **true**.|
+| Promise\<boolean> | Promise对象。返回true表示触控板双指捏合功能开启；返回false表示触控板双指捏合功能关闭。默认开启。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2144,7 +2144,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad pinch switch state.
+            // 获取触摸板捏合开关
             pointer.getTouchpadPinchSwitch().then((state: boolean) => {
               console.info(`Succeeded in getting touchpad pinch switch, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
@@ -2163,29 +2163,29 @@ struct Index {
 
 setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
-Sets the touchpad multi-finger swipe switch. This API uses an asynchronous callback to return the result.
+设置触控板多指滑动功能开关，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| state | boolean | Yes   |Touchpad multi-finger swipe switch state. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**.  |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| state | boolean | 是    |触控板多指滑动开关开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。   |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板多指滑动功能开关成功，err为undefined，否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2199,7 +2199,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad multi-finger swipe switch.
+            // 设置触摸板滑动开关
             pointer.setTouchpadSwipeSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2220,34 +2220,34 @@ struct Index {
 
 setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
-Sets the touchpad multi-finger swipe switch. This API uses a promise to return the result.
+设置触控板多指滑动功能开关，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| Yes   |  Touchpad multi-finger swipe switch state. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite. The default value is **true**. |
+| state | boolean| 是    |  触控板多指滑动功能开关开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。  |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2261,7 +2261,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad multi-finger swipe switch.
+            // 设置触摸板滑动开关
             pointer.setTouchpadSwipeSwitch(false).then(() => {
               console.info(`Succeeded in setting touchpad swipe switch.`);
             }).catch((error: BusinessError) => {
@@ -2280,28 +2280,28 @@ struct Index {
 
 getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 
-Obtains the touchpad multi-finger swipe switch state. This API uses an asynchronous callback to return the result.
+获取触控板多指滑动功能开启状态，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **state** indicates whether the touchpad multi-finger swipe switch is enabled (**true** indicates yes and **false** indicates no; default value: **true**). Otherwise, **err** is an error object|
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板多指滑动功能开启状态成功，err为undefined，state是true代表多指滑动开启，false代表多指滑动关闭，默认开启；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2315,7 +2315,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad multi-finger swipe switch state.
+            // 获取触摸板滑动开关
             pointer.getTouchpadSwipeSwitch((error: BusinessError, state: boolean) => {
               console.info(`Succeeded in getting touchpad swipe switch, state: ${JSON.stringify(state)}.`);
             });
@@ -2332,28 +2332,28 @@ struct Index {
 
 getTouchpadSwipeSwitch(): Promise\<boolean>
 
-Obtains the touchpad multi-finger swipe switch state. This API uses a promise to return the result.
+获取触控板多指滑动功能开启状态，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad multi-finger swipe switch is enabled, and **false** indicates that the touchpad multi-finger swipe switch is disabled. The default value is **true**.|
+| Promise\<boolean> | Promise对象。返回true表示触控板多指滑动功能开启；返回false表示触控板多指滑动功能关闭。默认开启。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2367,7 +2367,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad multi-finger swipe switch state.
+            // 获取触摸板滑动开关
             pointer.getTouchpadSwipeSwitch().then((state: boolean) => {
               console.info(`Succeeded in getting touchpad swipe switch, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
@@ -2386,29 +2386,29 @@ struct Index {
 
 setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>): void
 
-Sets the touchpad right-click menu type. This API uses an asynchronous callback to return the result.
+设置触控板右键菜单类型，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| type| [RightClickType](js-apis-pointer.md#rightclicktype10)| Yes   |Touchpad right-click menu type.<br>- TOUCHPAD_RIGHT_BUTTON: Tapping the right-button area of the touchpad.<br>- TOUCHPAD_LEFT_BUTTON: Tapping the left-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP: Tapping or pressing the touchpad with two fingers.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the left-button area of the touchpad.<br>The default value is **TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON**.|
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| type| [RightClickType](js-apis-pointer.md#rightclicktype10)| 是    |type代表触控板右键菜单类型。<br>- TOUCHPAD_RIGHT_BUTTON：按压触控板右键区域。<br>- TOUCHPAD_LEFT_BUTTON：按压触控板左键区域。<br>- TOUCHPAD_TWO_FINGER_TAP：双指轻击或双指按压触控板。<br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>：双指轻击或双指按压触控板、或按压触控板右键区域。<br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>：双指轻击或双指按压触控板、或按压触控板左键区域。<br>默认值为TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON。|
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板右键菜单类型成功，err为undefined，否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2422,7 +2422,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad right-click menu type.
+            // 设置触摸板右键点击类型
             pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON , (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2443,34 +2443,34 @@ struct Index {
 
 setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
-Sets the touchpad right-click menu type. This API uses a promise to return the result.
+设置触控板右键菜单类型，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| type| [RightClickType](js-apis-pointer.md#rightclicktype10)| Yes   |Touchpad right-click menu type.<br>- TOUCHPAD_RIGHT_BUTTON: Tapping the right-button area of the touchpad.<br>- TOUCHPAD_LEFT_BUTTON: Tapping the left-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP: Tapping or pressing the touchpad with two fingers.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the right-button area of the touchpad.<br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>: Tapping or pressing the touchpad with two fingers, or tapping the left-button area of the touchpad.<br>The default value is **TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON**.|
+| type| [RightClickType](js-apis-pointer.md#rightclicktype10)| 是    |type代表触控板右键菜单类型。<br>- TOUCHPAD_RIGHT_BUTTON：按压触控板右键区域。<br>- TOUCHPAD_LEFT_BUTTON：按压触控板左键区域。<br>- TOUCHPAD_TWO_FINGER_TAP：双指轻击或双指按压触控板。<br>- TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON<sup>20+</sup>：双指轻击或双指按压触控板、或按压触控板右键区域。<br>- TOUCHPAD_TWO_FINGER_TAP_OR_LEFT_BUTTON<sup>20+</sup>：双指轻击或双指按压触控板、或按压触控板左键区域。<br>默认值为TOUCHPAD_TWO_FINGER_TAP_OR_RIGHT_BUTTON。|
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2484,7 +2484,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad right-click menu type.
+            // 设置触摸板右键点击类型
             pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON).then(() => {
               console.info(`Succeeded in setting touchpad right click type.`);
             }).catch((error: BusinessError) => {
@@ -2503,28 +2503,28 @@ struct Index {
 
 getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 
-Obtains the touchpad right-click menu type. This API uses an asynchronous callback to return the result.
+获取触控板右键菜单类型，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<[RightClickType](js-apis-pointer.md#rightclicktype10)> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and the object is the touchpad right-click menu type. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<[RightClickType](js-apis-pointer.md#rightclicktype10)> | 是    | 回调函数。当获取触控板右键菜单类型成功，err为undefined，对象是触控板右键菜单类型；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2538,7 +2538,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad right-click menu type.
+            // 获取触摸板右键点击类型
             pointer.getTouchpadRightClickType((error: BusinessError, type: pointer.RightClickType) => {
               console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
             });
@@ -2555,28 +2555,28 @@ struct Index {
 
 getTouchpadRightClickType(): Promise\<RightClickType>
 
-Obtains the touchpad right-click menu type. This API uses a promise to return the result.
+获取触控板右键菜单类型，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise used to return the touchpad right-click menu type.|
+| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise对象，返回触控板右键菜单类型。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2590,7 +2590,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad right-click menu type.
+            // 获取触摸板右键点击类型
             pointer.getTouchpadRightClickType().then((type: pointer.RightClickType) => {
               console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
             }).catch((error: BusinessError) => {
@@ -2609,29 +2609,29 @@ struct Index {
 
 setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the mouse pointer size. This API uses an asynchronous callback to return the result.
+设置鼠标光标大小，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| size     | number                    | Yes   | Pointer size. The value ranges from **1** to **7**. The default value is **1**.  |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| size     | number                    | 是    | 鼠标光标大小，范围为[1-7]，默认为1。   |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2645,7 +2645,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the mouse pointer size.
+            // 设置鼠标指针大小
             pointer.setPointerSize(1, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2666,34 +2666,34 @@ struct Index {
 
 setPointerSize(size: number): Promise&lt;void&gt;
 
-Sets the mouse pointer size. This API uses a promise to return the result.
+设置鼠标光标大小，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | number | Yes   | Pointer size. The value ranges from **1** to **7**. The default value is **1**.|
+| size  | number | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2707,7 +2707,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the mouse pointer size.
+            // 设置鼠标指针大小
             pointer.setPointerSize(3).then(() => {
               console.info(`Succeeded in setting pointer size.`);
             }).catch((error: BusinessError) => {
@@ -2726,28 +2726,28 @@ struct Index {
 
 setPointerSizeSync(size: number): void
 
-Sets the pointer size. This API returns the result synchronously.
+设置鼠标光标大小，使用同步方式进行设置。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | number | Yes   | Pointer size. The value ranges from **1** to **7**. The default value is **1**.|
+| size  | number | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2760,7 +2760,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the mouse pointer size synchronously.
+            // 同步设置鼠标指针大小
             pointer.setPointerSizeSync(5);
             console.info(`Succeeded in setting pointer size sync.`);
           } catch (error) {
@@ -2776,28 +2776,28 @@ struct Index {
 
 getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the current mouse pointer size. This API uses an asynchronous callback to return the result.
+获取鼠标光标大小，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the obtained mouse pointer size (value range: [1-7]). Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小，范围为[1-7]；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2811,7 +2811,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the mouse pointer size.
+            // 获取鼠标指针大小
             pointer.getPointerSize((error: BusinessError, size: number) => {
               if (error) {
                 console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2832,28 +2832,28 @@ struct Index {
 
 getPointerSize(): Promise&lt;number&gt;
 
-Obtains the current mouse pointer size. This API uses a promise to return the result.
+获取当前鼠标光标大小，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise used to return the mouse pointer size. The value ranges from 1 to 7.|
+| Promise&lt;number&gt; | Promise对象，返回鼠标光标大小，范围为[1-7]。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2867,7 +2867,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the mouse pointer size.
+            // 获取鼠标指针大小
             pointer.getPointerSize().then((size: number) => {
               console.info(`Succeeded in getting pointer size, size: ${JSON.stringify(size)}.`);
             }).catch((error: BusinessError) => {
@@ -2886,28 +2886,28 @@ struct Index {
 
 getPointerSizeSync(): number
 
-Obtains the pointer size. This API returns the result synchronously.
+获取鼠标光标大小，使用同步方式返回结果。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | Mouse pointer size. The value ranges from **1** to **7**.|
+| number | 鼠标光标大小，范围为[1-7]。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2935,33 +2935,33 @@ struct Index {
 
 setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the mouse pointer color. This API uses an asynchronous callback to return the result.
+设置鼠标光标颜色，使用callback异步回调。
 
-> **NOTE**
+> **说明**：
 >
-> When performing this operation, you need to connect an external device, such as a mouse or Bluetooth device.
+> 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| color     | number                    | Yes   | Pointer color. The default value is **black** (0x000000).  |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| color     | number                    | 是    | 鼠标光标颜色，默认为黑色：0x000000。   |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -2975,7 +2975,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the mouse pointer color.
+            // 设置鼠标指针颜色
             pointer.setPointerColor(0xF6C800, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2996,38 +2996,38 @@ struct Index {
 
 setPointerColor(color: number): Promise&lt;void&gt;
 
-Sets the mouse pointer color. This API uses a promise to return the result.
+设置鼠标光标颜色，使用Promise异步回调。
 
-> **NOTE**
+> **说明**：
 >
-> When performing this operation, you need to connect an external device, such as a mouse or Bluetooth device.
+> 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| color  | number | Yes   | Pointer color. The default value is **black** (0x000000).|
+| color  | number | 是    | 鼠标光标颜色，默认为黑色：0x000000。 |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3041,7 +3041,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the mouse pointer color.
+            // 设置鼠标指针颜色
             pointer.setPointerColor(0xF6C800).then(() => {
               console.info(`Succeeded in setting pointer color.`);
             }).catch((error: BusinessError) => {
@@ -3060,32 +3060,32 @@ struct Index {
 
 setPointerColorSync(color: number): void
 
-Sets the pointer color. This API returns the result synchronously.
+设置鼠标光标颜色，使用同步方式进行设置。
 
-> **NOTE**
+> **说明**：
 >
-> When performing this operation, you need to connect an external device, such as a mouse or Bluetooth device.
+> 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| color  | number | Yes   | Pointer color. The default value is **black** (0x000000).|
+| color  | number | 是    | 鼠标光标颜色，默认为黑色：0x000000。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3098,7 +3098,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the mouse pointer color synchronously.
+            // 同步设置鼠标指针颜色
             pointer.setPointerColorSync(0xF6C800);
             console.info(`Succeeded in setting pointer color sync.`);
           } catch (error) {
@@ -3114,28 +3114,28 @@ struct Index {
 
 getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the mouse pointer color. This API uses an asynchronous callback to return the result.
+获取鼠标光标颜色，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **number** is the obtained mouse pointer color. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标颜色成功，err为undefined，number是获取的鼠标光标颜色；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3149,7 +3149,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the mouse pointer color.
+            // 获取鼠标指针颜色
             pointer.getPointerColor((error: BusinessError, color: number) => {
               if (error) {
                 console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3170,28 +3170,28 @@ struct Index {
 
 getPointerColor(): Promise&lt;number&gt;
 
-Obtains the current mouse pointer color. This API uses a promise to return the result.
+获取当前鼠标光标颜色，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise used to return the mouse pointer color.|
+| Promise&lt;number&gt; | Promise对象，返回鼠标光标颜色。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3205,7 +3205,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the mouse pointer color.
+            // 获取鼠标指针颜色
             pointer.getPointerColor().then((color: number) => {
               console.info(`Succeeded in getting pointer color, color: ${JSON.stringify(color)}.`);
             }).catch((error: BusinessError) => {
@@ -3224,28 +3224,28 @@ struct Index {
 
 getPointerColorSync(): number
 
-Obtains the pointer color. This API returns the result synchronously.
+获取鼠标光标颜色，使用同步方式返回结果。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | Pointer color.|
+| number | 鼠标光标颜色。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3273,29 +3273,29 @@ struct Index {
 
 setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>): void
 
-Sets the touchpad double-tap and drag switch state. This API uses an asynchronous callback to return the result.
+设置触控板双击拖拽开关状态，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                       | Mandatory  | Description                                   |
+| 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| isOpen | boolean | Yes   | State of the double-tap and drag switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板双击拖拽开关状态成功，err为undefined，否则为错误对象。|
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3309,7 +3309,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad double-tap and drag switch state.
+            // 设置触摸板双击拖拽状态
             pointer.setTouchpadDoubleTapAndDragState(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3330,34 +3330,34 @@ struct Index {
 
 setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
-Sets the touchpad double-tap and drag switch state. This API uses a promise to return the result.
+设置触控板双击拖拽开关状态，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name   | Type    | Mandatory  | Description                                 |
+| 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| isOpen | boolean | Yes   | State of the double-tap and drag switch. The value **true** indicates that the switch is enabled, and the value **false** indicates the opposite.|
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
 
-**Return value**
+**返回值**：
 
-| Type                 | Description              |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3371,7 +3371,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Set the touchpad double-tap and drag switch state.
+            // 设置触摸板双击拖拽状态
             pointer.setTouchpadDoubleTapAndDragState(false).then(() => {
               console.info(`Succeeded in setting touchpad double tap and drag state.`);
             }).catch((error: BusinessError) => {
@@ -3390,28 +3390,28 @@ struct Index {
 
 getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 
-Obtains the touchpad double-tap and drag switch state. This API uses an asynchronous callback to return the result.
+获取触控板双击拖拽开关的开启状态，使用callback异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name      | Type                         | Mandatory  | Description            |
+| 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **true** is returned if the switch is enabled while **false** is returned if the switch is disabled. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板双击拖拽开关的开启状态成功，err为undefined，返回true代表开启，返回false代表关闭；否则为错误对象。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3425,7 +3425,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad double-tap and drag switch state.
+            // 获取触摸板双击拖拽状态
             pointer.getTouchpadDoubleTapAndDragState((error: BusinessError, state: boolean) => {
               if (error) {
                 console.error(`Failed to get touchpad double tap and drag state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3446,27 +3446,27 @@ struct Index {
 
 getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
-Obtains the touchpad double-tap and drag switch state. This API uses a promise to return the result.
+获取触控板双击拖拽开关的开启状态，使用Promise异步回调。
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type                   | Description                 |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the touchpad double-tap and drag switch is enabled, and the value **false** indicates that the touchpad double-tap and drag switch is disabled.|
+| Promise\<boolean> | Promise对象。返回true表示触控板双击拖拽功能开启；返回false表示触控板双击拖拽功能关闭。|
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| ID | Error Message            |
+| 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3480,7 +3480,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            // Obtain the touchpad double-tap and drag switch state.
+            // 获取触摸板双击拖拽状态
             pointer.getTouchpadDoubleTapAndDragState().then((state) => {
               console.info(`Succeeded in getting touchpad double tap and drag state, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
@@ -3499,37 +3499,37 @@ struct Index {
 
 setMouseScrollDirection(inverted: boolean): Promise\<void>
 
-Sets the scroll direction of the mouse wheel. This API uses a promise to return the result asynchronously.
+设置鼠标滚轮滚动的方向，使用Promise异步回调。
 
-**Required permissions**: ohos.permission.INPUT_DEVICE_CONTROLLER
+**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Parameters**
+**参数**：
 
-| Name| Type   | Mandatory| Description                                                                                                        |
+| 参数名 | 类型    | 必填 | 说明                                                                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------------------------------------------------------ |
-| inverted  | boolean | Yes  | Scroll direction of the mouse wheel.<br>The value **true** indicates that scroll direction matches the finger movement on the wheel, and the value **false** indicates that the scroll direction is opposite to the finger movement.<br>The default value is **true**.|
+| inverted  | boolean | 是   | inverted为鼠标滚轮滚动的方向。<br>true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。<br>默认为true。 |
 
-**Return value**
+**返回值**：
 
-| Type          | Description                                  |
+| 类型           | 说明                                   |
 | -------------- | -------------------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise对象，无返回结果。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Mouse Pointer Error Codes](./errorcode-pointer.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标光标错误码](./errorcode-pointer.md)
 
-| ID  | Error Message                       |
+| 错误码ID   | 错误信息                        |
 |---------|-----------------------------|
 | 201     | Permission denied.          |
 | 202     | SystemAPI permission error. |
 | 3800001 | Input service exception.    |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3543,7 +3543,7 @@ struct Index {
       Button("setMouseScrollDirection")
         .onClick(() => {
           try {
-            // Set the mouse scroll direction.
+            // 设置鼠标滚动方向
             pointer.setMouseScrollDirection(false).then(() => {
               console.info(`Succeeded in setting mouse scroll direction.`);
             }).catch((error: BusinessError) => {
@@ -3562,31 +3562,31 @@ struct Index {
 
 getMouseScrollDirection(): Promise\<boolean>
 
-Obtains the scroll direction of the mouse wheel. This API uses a promise to return the result asynchronously.
+获取鼠标滚轮滚动方向，使用Promise异步回调。
 
-**Required permissions**: ohos.permission.INPUT_DEVICE_CONTROLLER
+**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
 
-**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**System API**: This is a system API.
+**系统接口**: 此接口为系统接口。
 
-**Return value**
+**返回值**：
 
-| Type             | Description                                                                                                                        |
+| 类型              | 说明                                                                                                                         |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the mouse wheel scroll direction is the same as the finger direction, and the value **false** indicates that the mouse wheel scroll direction is opposite to the finger direction. The default value is **true**.|
+| Promise\<boolean> | Promise对象。返回true表示鼠标滚轮滚动方向与手指方向一致；返回false表示鼠标滚轮滚动方向与手指方向相反。默认为true。 |
 
-**Error codes**
+**错误码**：
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Mouse Pointer Error Codes](./errorcode-pointer.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标光标错误码](./errorcode-pointer.md)
 
-| ID  | Error Message                                                                                                                                      |
+| 错误码ID   | 错误信息                                                                                                                                       |
 |---------| ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201     | Permission denied.          |
 | 202     | SystemAPI permission error. |
 | 3800001 | Input service exception.    |
 
-**Example**
+**示例**：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -3600,7 +3600,7 @@ struct Index {
       Button("getMouseScrollDirection")
         .onClick(() => {
           try {
-            // Obtain the mouse scroll direction.
+            // 获取鼠标滚动方向
             pointer.getMouseScrollDirection().then((state: boolean) => {
               console.info(`Succeeded in getting mouse scroll direction, state: ${JSON.stringify(state)}.`);
             }).catch((error: BusinessError) => {
