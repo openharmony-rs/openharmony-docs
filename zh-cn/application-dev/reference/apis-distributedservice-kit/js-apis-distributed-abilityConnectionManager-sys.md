@@ -27,6 +27,10 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 
 注册collaborateEvent事件的回调监听,使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onCollaborateEvent](#abilityconnectionmanageroncollaborateevent23)。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -68,6 +72,10 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 注册receiveImage事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveImage](#abilityconnectionmanageronreceiveimage23)。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -108,6 +116,10 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 取消collaborateEvent事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offCollaborateEvent](#abilityconnectionmanageroffcollaborateevent23)。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -146,6 +158,10 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 取消receiveImage事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveImage](#abilityconnectionmanageroffreceiveimage23)。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -183,6 +199,10 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 onReceiveImage(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
 
 注册receiveImage事件的回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveImage')](#abilityconnectionmanageronreceiveimage)。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -226,6 +246,10 @@ offReceiveImage(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): vo
 
 取消receiveImage事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveImage')](#abilityconnectionmanageroffreceiveimage)。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -264,6 +288,10 @@ offReceiveImage(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): vo
 onCollaborateEvent(sessionId: int,callback: Callback&lt;CollaborateEventInfo&gt;): void
 
 注册collaborateEvent事件的回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('collaborateEvent')](#abilityconnectionmanageroncollaborateevent)。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -306,6 +334,10 @@ onCollaborateEvent(sessionId: int,callback: Callback&lt;CollaborateEventInfo&gt;
 offCollaborateEvent(sessionId: int,callback?: Callback&lt;CollaborateEventInfo&gt;): void
 
 取消collaborateEvent事件的回调监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('collaborateEvent')](#abilityconnectionmanageroffcollaborateevent)。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
