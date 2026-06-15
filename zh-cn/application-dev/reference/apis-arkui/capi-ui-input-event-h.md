@@ -20,7 +20,7 @@
 
 **相关模块：** [ArkUI_EventModule](capi-arkui-eventmodule.md)
 
-**相关示例：** <!--RP1-->[NdkInputEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkInputEvent)<!--RP1End-->、<!--RP2-->[CoastingAxisEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/CoastingAxisEventNDK)<!--RP2End-->
+**相关示例：** <!--RP1-->[NdkInputEvent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkInputEvent)<!--RP1End-->、<!--RP2-->[CoastingAxisEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/CoastingAxisEventNDK)<!--RP2End-->
 
 ## 汇总
 
@@ -324,7 +324,7 @@ enum anonymous4
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_MOUSE_EVENT_ACTION_UNKNOWN = 0 | 无效行为。 |
+| UI_MOUSE_EVENT_ACTION_UNKNOWN = 0 | 无效行为。<br>**说明：** 此行为由系统侧处理，开发者无需关注。 |
 | UI_MOUSE_EVENT_ACTION_PRESS = 1 | 鼠标按键按下。 |
 | UI_MOUSE_EVENT_ACTION_RELEASE = 2 | 鼠标按键松开。 |
 | UI_MOUSE_EVENT_ACTION_MOVE = 3 | 鼠标移动。 |
@@ -579,7 +579,7 @@ int32_t OH_ArkUI_UIInputEvent_GetAction(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-获取输入事件的action类型。action类型为基础事件在不同阶段的类型定义，通常代表了事件的特点，并表征事件的开始与结束，如touch down, touch up。触控事件的action类型为[UI_TOUCH_EVENT_ACTION_XXX](#anonymous1)，鼠标事件的action类型为[UI_MOUSE_EVENT_ACTION_XXX](#anonymous4)。轴事件的action类型获取请使用[OH_ArkUI_AxisEvent_GetAxisAction](#oh_arkui_axisevent_getaxisaction)接口，返回值类型为[UI_AXIS_EVENT_ACTION_XXX](#anonymous7)，按键事件的action类型获取请使用[OH_ArkUI_KeyEvent_GetType](./capi-native-key-event-h.md#oh_arkui_keyevent_gettype)接口，返回值类型为[ArkUI_KeyEventType](./capi-native-key-event-h.md#arkui_keyeventtype)。
+获取输入事件的action类型。action类型为基础事件在不同阶段的类型定义，通常代表了事件的特点，并表征事件的开始与结束，如touch down, touch up。触控事件的action类型为[UI_TOUCH_EVENT_ACTION](#anonymous1)，鼠标事件的action类型为[UI_MOUSE_EVENT_ACTION](#anonymous4)。轴事件的action类型获取请使用[OH_ArkUI_AxisEvent_GetAxisAction](#oh_arkui_axisevent_getaxisaction)接口，返回值类型为[UI_AXIS_EVENT_ACTION](#anonymous7)，按键事件的action类型获取请使用[OH_ArkUI_KeyEvent_GetType](./capi-native-key-event-h.md#oh_arkui_keyevent_gettype)接口，返回值类型为[ArkUI_KeyEventType](./capi-native-key-event-h.md#arkui_keyeventtype)。
 
 **起始版本：** 12
 
@@ -605,7 +605,7 @@ int32_t OH_ArkUI_UIInputEvent_GetSourceType(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-获取UI输入事件的触发源类型。输入源为产生输入事件的真实物理设备，如触摸屏，鼠标等，由[UI_INPUT_EVENT_SOURCE_TYPE_XXX](#anonymous3)定义，而输入工具为操作输入源设备来产生事件的工具，如手指、触控笔。在某些情况下两者可能容易发生混淆，比如当用户在操作鼠标时，鼠标既是输入源，也是输入工具。对于按键事件，并不支持获取输入源类型，返回unknown。
+获取UI输入事件的触发源类型。输入源为产生输入事件的真实物理设备，如触摸屏，鼠标等，由[UI_INPUT_EVENT_SOURCE_TYPE](#anonymous3)定义，而输入工具为操作输入源设备来产生事件的工具，如手指、触控笔。在某些情况下两者可能容易发生混淆，比如当用户在操作鼠标时，鼠标既是输入源，也是输入工具。对于按键事件，并不支持获取输入源类型，返回unknown。
 
 **起始版本：** 12
 
@@ -631,7 +631,7 @@ int32_t OH_ArkUI_UIInputEvent_GetToolType(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-获取UI输入事件的工具类型。输入工具为操作输入源设备来产生事件的操作方，如手指、触控笔，他们自身不真实产生事件，但可以驱动输入源设备不断产生事件。返回的类型由[UI_INPUT_EVENT_TOOL_TYPE_XXX](#anonymous2)枚举值定义。对于按键事件，并不支持获取输入工具类型，返回unknown。
+获取UI输入事件的工具类型。输入工具为操作输入源设备来产生事件的操作方，如手指、触控笔，他们自身不真实产生事件，但可以驱动输入源设备不断产生事件。返回的类型由[UI_INPUT_EVENT_TOOL_TYPE](#anonymous2)枚举值定义。对于按键事件，并不支持获取输入工具类型，返回unknown。
 
 **起始版本：** 12
 
@@ -1990,7 +1990,7 @@ int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | 表示指向当前UI输入事件的指针。 |
-| int32_t axis | 表示轴事件的轴类型[UI_AXIS_TYPE_XXX](#anonymous8)。 |
+| int32_t axis | 表示轴事件的轴类型[UI_AXIS_TYPE](#anonymous8)。 |
 
 **返回值：**
 
@@ -2871,7 +2871,7 @@ ArkUI_ErrorCode OH_ArkUI_PointerEvent_CreatePointerEvent(ArkUI_UIInputEvent** ev
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_UIInputInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)** event | 指向新的ArkUI_UIInputEvent对象的指针。 |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)** event | 指向新的ArkUI_UIInputEvent对象的指针。 |
 | [ArkUI_UIInputEvent_Type](#arkui_uiinputevent_type) type | ArkUI_UIInputEvent的事件类型。支持取值[ARKUI_UIINPUTEVENT_TYPE_TOUCH](#arkui_uiinputevent_type)、[ARKUI_UIINPUTEVENT_TYPE_AXIS](#arkui_uiinputevent_type)和[ARKUI_UIINPUTEVENT_TYPE_MOUSE](#arkui_uiinputevent_type)。 |
 
 **返回：**
@@ -2925,7 +2925,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetActionType(const ArkUI_UIInputEvent* eve
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
-| int32_t type | 克隆事件的类型，包括触摸事件的[TouchType](#anonymous1)，鼠标事件的[MouseAction](#anonymous4)，轴事件的[AxisAction](#anonymous7)。 |
+| int32_t type | 克隆事件的类型，包括触摸事件的[UI_TOUCH_EVENT_ACTION](#anonymous1)，鼠标事件的[UI_MOUSE_EVENT_ACTION](#anonymous4)，轴事件的[UI_AXIS_EVENT_ACTION](#anonymous7)。 |
 
 **返回：**
 
@@ -2979,7 +2979,7 @@ ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetToolType(const ArkUI_UIInputEvent* event
 | 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
-| int32_t toolType | 克隆事件的工具类型。由[UI_INPUT_EVENT_TOOL_TYPE_XXX](#anonymous2)枚举定义。 |
+| int32_t toolType | 克隆事件的工具类型。由[UI_INPUT_EVENT_TOOL_TYPE](#anonymous2)枚举定义。 |
 
 **返回：**
 
@@ -3875,7 +3875,7 @@ ArkUI_CoastingAxisEvent* OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInpu
 惯性滚动轴事件仅在双指抛滑并离开触控板时触发，因此仅支持触控板。惯性滚动轴事件会在手指离开触控板后，根据抛滑速度产生轴值逐渐衰减的事件。由于刷新频率和性能的影响，当前事件轴值可能高于或低于上一个事件值。在惯性滚动轴事件期间，以下四种行为会中断事件，并立即收到[ARKUI_COASTING_AXIS_EVENT_PHASE_END](#arkui_coastingaxiseventphase)。
 1. 手指触摸触控板。
 2. 滚动鼠标滚轮。
-3. 手指或鼠标点击注册了惯性滚动轴事件的节点。需要注意的是，点击未注册此事件的节点不会产生任何效果。例如，A节点注册了惯性滚动轴事件，当事件发生时，让B节点滚动，但点击B节点不会中断此事件。点击事件的中断行为受[HitTest模式](#oh_arkui_pointerevent_setintercepthittestmode)的影响。此外，如果用户点击区域存在已收集的可响应惯性滚动轴事件的节点，本次惯性滚动轴事件会被强制终止。
+3. 手指或鼠标点击注册了惯性滚动轴事件的节点。需要注意的是，点击未注册此事件的节点不会产生任何效果。例如，A节点注册了惯性滚动轴事件，当事件发生时，让B节点滚动，但点击B节点不会中断此事件。点击事件的中断行为受[OH_ArkUI_PointerEvent_SetInterceptHitTestMode](#oh_arkui_pointerevent_setintercepthittestmode)的影响。此外，如果用户点击区域存在已收集的可响应惯性滚动轴事件的节点，本次惯性滚动轴事件会被强制终止。
 
 4. 应用休眠（例如最小化、锁屏）。
 
