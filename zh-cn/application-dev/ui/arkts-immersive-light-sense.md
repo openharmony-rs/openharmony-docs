@@ -223,6 +223,48 @@ struct MaterialInfoPage {
    
    <!-- @[LightEffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/LightEffect.ets) -->
    
+   ``` TypeScript
+   import { uiMaterial } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct LightEffectPage {
+     @State itemsKey: number[] = [0, 1, 2];
+     @State circleRadius: number = 40;
+     @State spaceValue: number = 10;
+     @State myMaterial: uiMaterial.Material = new uiMaterial.ImmersiveMaterial({
+       style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+       interactive: true,
+       lightEffect: { color: undefined },
+     });
+   
+     build() {
+       Column() {
+         Row() {
+           Text('标题')
+             .flexGrow(2)
+             .fontColor(Color.White)
+           Row({ space: this.spaceValue }) {
+             ForEach(this.itemsKey, (item: number, index: number) => {
+               Row()
+                 .width(this.circleRadius * 2)
+                 .height(this.circleRadius * 2)
+                 .borderRadius(this.circleRadius)
+                 .systemMaterial(this.myMaterial)
+             })
+           }
+         }
+         .justifyContent(FlexAlign.End)
+         .backgroundColor(Color.Black)
+         .width('100%')
+         .padding(20)
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
+   ```
+   
    ![materialLightEffect](../reference/apis-arkui/figures/materialLightEffect.gif)
 
 2. 通过组件独有接口设置。
