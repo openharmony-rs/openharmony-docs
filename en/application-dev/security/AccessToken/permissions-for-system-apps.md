@@ -6302,3 +6302,17 @@ Allows an application to access thermal control information of the cockpit devic
 **Supported devices**: cars
 
 **Valid since**: 26.0.0
+
+## ohos.permission.ENTERPRISE_SPACE_FILE_TRANSFER_DATA_ACCESS
+
+Allows a system application to access the file cache path of the file transfer service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
