@@ -57,10 +57,10 @@ Sendable对象支持冻结操作。冻结后，对象变为只读，不能修改
              middle: { anchor: '__container__', align: HorizontalAlign.Center }
            })
            .onClick(() => {
-             let gConifg = new GlobalConfig();
-             gConifg.init();
+             let gConfig = new GlobalConfig();
+             gConfig.init();
              const workerInstance = new worker.ThreadWorker('entry/ets/workers/Worker.ets', { name: 'Worker1' });
-             workerInstance.postMessage(gConifg);
+             workerInstance.postMessage(gConfig);
              this.message = 'success';
            })
        }
