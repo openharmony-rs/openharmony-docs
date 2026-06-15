@@ -624,13 +624,14 @@ static void BuildMIDI1NoteOff(uint32_t channel, uint32_t note, uint32_t velocity
 | 71 | Resonance | 共振 |
 | 74 | Filter Cutoff | 滤波器截止 |
 
-**发送系统专有消息(SysEx)**
+**发送系统专用消息(SysEx)**
 
-系统专有消息（System Exclusive）：用于传输制造商特定的数据。使用[OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)接口可以发送超过常规MIDI消息长度的SysEx消息。
+系统专用消息（System Exclusive）：用于传输制造商特定的数据。使用[OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)接口可以发送超过常规MIDI消息长度的SysEx消息。
 
 ``` C++
 // 发送大型SysEx消息。
-void SendSysExExample(OH_MIDIDevice *device, uint32_t outputPortIndex){
+void SendSysExExample(OH_MIDIDevice *device, uint32_t outputPortIndex)
+{
     // 构造SysEx数据。
     std::vector<uint8_t> sysexData;
     sysexData.push_back(0xF0);  // SysEx开始标志。
