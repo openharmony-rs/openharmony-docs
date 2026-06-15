@@ -24,6 +24,7 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 
 | Name| Description|
 | -- | -- |
+| [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md) | Declares the custom node events for **NativeNode** APIs.|
 | [drag_and_drop.h](capi-drag-and-drop-h.md) | Declares the APIs of **NativeDrag**.|
 | [drawable_descriptor.h](capi-drawable-descriptor-h.md) | Declares the APIs of **NativeDrawableDescriptor**.|
 | [native_animate.h](capi-native-animate-h.md) | Declares a set of animation APIs of ArkUI on the native side.|

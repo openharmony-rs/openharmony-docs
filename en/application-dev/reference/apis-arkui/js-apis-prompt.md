@@ -211,7 +211,7 @@ prompt.showActionMenu({
 })
 ```
 
-![en-us_image_0005](figures/showActionMenu-example01.gif) 
+![en-us_image_0005](figures/showActionMenu-example01.gif)
 
 ## prompt.showActionMenu
 

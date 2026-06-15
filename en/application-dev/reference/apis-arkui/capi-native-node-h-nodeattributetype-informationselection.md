@@ -1,9 +1,10 @@
 # ArkUI_NodeAttributeType (Information Selection Component Attribute)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-hui; @luoying_ace_admin-->
-<!--Designer: @xiangyuan6; @weixin_52725220-->
-<!--Tester: @jiaoaozihao; @xiong0104-->
+<!--Owner: @luoying_ace_admin-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
@@ -339,7 +340,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TIME_PICKER_TEXT_STYLE = 14003
 ```
 
-Text style for edge items (the second item above or below the selected item). This attribute can be set, reset, and obtained as required through APIs.<br>
+Text color, font size, and font weight of all items except the top, bottom, and selected items in the time picker. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
