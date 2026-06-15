@@ -226,21 +226,176 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 **结果分析**
 
 开启fp回栈+跨语言回栈（其中绿色部分为js栈）：
+> **注意：**
+> fp_unwind参数需要设置为true。
+> js_stack_report参数需要设置为1，否则无法回出js栈。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t 60 \
+  -s \
+  -k \
+<<CONFIG
+ request_id: 1
+ session_config {
+  buffers {
+   pages: 16384
+  }
+ }
+ plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+   save_file: false
+   smb_pages: 16384
+   max_stack_depth: 8
+   process_name: "com.example.insight_test_stage"
+   string_compressed: true
+   fp_unwind: true
+   blocked: true
+   callframe_compress: true
+   record_accurately: true
+   offline_symbolization: true
+   startup_mode: false
+   js_stack_report: 1
+   max_js_stack_depth: 5
+  }
+ }
+CONFIG
+```
 
 ![hiprofiler-nativehook-fp](figures/hiprofiler-nativehook-fp.png)
 
 开启dwarf回栈和跨语言回栈（可以展示出native -&gt; js -&gt;native的栈）：
+> **注意：**
+> fp_unwind参数需要设置为false。
+> js_stack_report参数需要设置为1，否则无法回出js栈。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t 60 \
+  -s \
+  -k \
+<<CONFIG
+ request_id: 1
+ session_config {
+  buffers {
+   pages: 16384
+  }
+ }
+ plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+   save_file: false
+   smb_pages: 16384
+   max_stack_depth: 8
+   process_name: "com.example.insight_test_stage"
+   string_compressed: true
+   fp_unwind: false
+   blocked: true
+   callframe_compress: true
+   record_accurately: true
+   offline_symbolization: true
+   startup_mode: false
+   js_stack_report: 1
+   max_js_stack_depth: 5
+  }
+ }
+CONFIG
+```
 
 ![hiprofiler-nativehook-dwarf](figures/hiprofiler-nativehook-dwarf.png)
 
 开启统计模式，在此模式下，栈数据会周期性展示：
+> **注意：**
+> statistics_interval参数必须设置一个大于0的值，表示每隔多少s进行一次统计。设置为10，表示每10s进行一次统计。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t 60 \
+  -s \
+  -k \
+<<CONFIG
+ request_id: 1
+ session_config {
+  buffers {
+   pages: 16384
+  }
+ }
+ plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+   save_file: false
+   smb_pages: 16384
+   max_stack_depth: 8
+   process_name: "com.example.insight_test_stage"
+   string_compressed: true
+   fp_unwind: true
+   blocked: true
+   callframe_compress: true
+   record_accurately: true
+   offline_symbolization: true
+   startup_mode: false
+   statistics_interval: 10
+   js_stack_report: 1
+   max_js_stack_depth: 5
+  }
+ }
+CONFIG
+```
 
 ![hiprofiler-nativehook-statistical](figures/hiprofiler-nativehook-statistical.png)
 
 开启非统计模式，在此模式下，栈数据不会周期性展示：
+> **注意：**
+> statistics_interval必须设置为0或者不设置。
 
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -o /data/local/tmp/hiprofiler_data.htrace \
+  -t 60 \
+  -s \
+  -k \
+<<CONFIG
+ request_id: 1
+ session_config {
+  buffers {
+   pages: 16384
+  }
+ }
+ plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+   save_file: false
+   smb_pages: 16384
+   max_stack_depth: 8
+   process_name: "com.example.insight_test_stage"
+   string_compressed: true
+   fp_unwind: false
+   blocked: true
+   callframe_compress: true
+   record_accurately: true
+   offline_symbolization: true
+   startup_mode: false
+   statistics_interval: 0
+   max_js_stack_depth: 5
+  }
+ }
+CONFIG
+```
 ![hiprofiler-nativehook-non-statistical](figures/hiprofiler-nativehook-non-statistical.png)
 
+[更多命令...](#常用命令)
 
 ### ftrace plugin插件
 
