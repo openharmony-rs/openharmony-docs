@@ -229,7 +229,7 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
-| 16000062  | The number of child processes exceeds the upper limit. |
+| 16000062  | The number of child processes exceeds the upper limit. <br>适用版本：13+ |
 
 **示例：**
 
