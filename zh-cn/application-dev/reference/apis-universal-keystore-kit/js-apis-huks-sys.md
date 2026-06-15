@@ -1732,7 +1732,7 @@ export default function HuksAsUserTest() {
 
 hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<boolean>
 
-指定用户身份判断密钥是否存在，使用Promise回调异步返回结果。该接口根据用户ID和密钥别名查找对应密钥，若密钥存在则通过Promise返回true，否则通过Promise返回false。
+指定用户身份判断密钥是否存在，使用Promise回调异步返回结果。
 
 **系统接口：** 此接口为系统接口。
 
