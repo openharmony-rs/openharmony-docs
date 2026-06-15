@@ -158,7 +158,7 @@ TabSegmentButtonV2({
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                                                                                    | 否   | @Param             | 配置分段按钮选中选项的HM Symbol类型图标颜色。<br>默认值：`ColorMetrics.resourceColor($r('sys.color.font_primary'))`<br>值为undefined时，按默认值处理。<br>**说明：**<br/>items设置symbolModifier的fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                                  |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                                                                                                                    | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                  |
 | enableStateAnimation<sup>24+</sup>             | boolean    | 否   | @Param      | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false。<br/>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/> **ArkTS-Sta起始版本：** 24        |
-
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Param | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。<br/>默认值：无材质效果。<br/>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/> **ArkTS-Sta起始版本：** 26.0.0 |
 
 ### build<sup>23+</sup>
 
@@ -299,6 +299,7 @@ CapsuleSegmentButtonV2({
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                                                                                    | 否   | @Param             | 配置分段按钮选中的选项中HM Symbol类型图标颜色。<br>默认值：`ColorMetrics.resourceColor($r('sys.color.font_on_primary'))`<br>值为undefined时，按默认值处理。<br/>**说明：**<br>items设置symbolModifier的fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                              |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                                                                                                                    | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                  |
 | enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/> **ArkTS-Sta起始版本：** 24 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Param | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。<br/>默认值：无材质效果。<br/>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/> **ArkTS-Sta起始版本：** 26.0.0 |
 
 ### build<sup>23+</sup>
 
@@ -1966,3 +1967,219 @@ export struct VCard {
 ```
 
 ![segmentbuttonv2-sample83](figures/segmentbuttonv2-sample83.gif)
+
+### 示例6（设置背景板材质）
+以下示例通过backgroundSystemMaterial属性，为分段按钮设置了半透明的背景板材质。
+
+从API版本26.0.0开始，[TabSegmentButtonV2](#tabsegmentbuttonv2)和[CapsuleSegmentButtonV2](#capsulesegmentbuttonv2)中新增backgroundSystemMaterial属性。
+
+ArkTS-Dyn示例：
+
+```ts
+import { SegmentButtonV2Items, TabSegmentButtonV2, CapsuleSegmentButtonV2, uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct SegmentButtonV2Example {
+  @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    { text: '手机' },
+    { text: '平板' },
+    { text: 'PC/2in1' },
+    { text: '智能穿戴' },
+  ]);
+  @Local textSelectedIndex: number = 0;
+
+  @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    { icon: $r('sys.media.ohos_ic_public_device_phone') },
+    { icon: $r('sys.media.ohos_ic_public_device_pad') },
+    { icon: $r('sys.media.ohos_ic_public_device_matebook') },
+    { icon: $r('sys.media.ohos_ic_public_device_watch') },
+  ]);
+  @Local imageSelectedIndex: number = 0;
+
+  build() {
+    Scroll() {
+      Stack() {
+        // 作为分段按钮的背景，其中('app.media.pic')需要替换为开发者所需的图片
+        Image($r('app.media.pic'))
+        Column({ space: 12 }) {
+          VCard({ title: '纯文本选项' }) {
+            TabSegmentButtonV2({
+              items: this.textItems,
+              selectedIndex: this.textSelectedIndex!!,
+              // 设置为半透明材质
+              backgroundSystemMaterial:
+              new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT } as uiMaterial.MaterialOptions)
+            })
+          }
+
+          VCard({ title: '纯图标选项' }) {
+            CapsuleSegmentButtonV2({
+              items: this.imageItems,
+              selectedIndex: this.imageSelectedIndex!!,
+              // 设置为半透明材质
+              backgroundSystemMaterial:
+              new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT } as uiMaterial.MaterialOptions)
+            })
+          }
+
+        }
+        .constraintSize({ minHeight: '100%' })
+        .justifyContent(FlexAlign.Start)
+        .padding(16)
+      }
+      .backgroundColor('#f1f3f5')
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+
+@Builder
+function Noop() {
+}
+
+@Component
+export struct VCard {
+  @Prop
+  title: ResourceStr;
+  @BuilderParam
+  content: () => void = Noop;
+
+  build() {
+    Column({ space: 8 }) {
+      if (this.title) {
+        Text(this.title)
+          .maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+          .constraintSize({ maxWidth: '80%' })
+      }
+      this.content()
+    }
+    .backgroundColor(Color.Transparent)
+    .borderRadius(8)
+    .padding(8)
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  SegmentButtonV2Items,
+  TabSegmentButtonV2,
+  CapsuleSegmentButtonV2,
+  Entry,
+  ComponentV2,
+  Local,
+  $r,
+  Scroll,
+  Column,
+  ColumnOptions,
+  Stack,
+  FlexAlign,
+  Builder,
+  Component,
+  ResourceStr,
+  BuilderParam,
+  Text,
+  TextOverflow,
+  Color,
+  PropRef,
+  Image,
+  uiMaterial
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct SegmentButtonV2Example {
+  @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    { text: '手机' },
+    { text: '平板' },
+    { text: 'PC/2in1' },
+    { text: '智能穿戴' },
+  ]);
+  @Local textSelectedIndex: int = 0;
+
+  @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    { icon: $r('sys.media.ohos_ic_public_device_phone') },
+    { icon: $r('sys.media.ohos_ic_public_device_pad') },
+    { icon: $r('sys.media.ohos_ic_public_device_matebook') },
+    { icon: $r('sys.media.ohos_ic_public_device_watch') },
+  ]);
+  @Local imageSelectedIndex: int = 0;
+
+  build(): void {
+    Scroll() {
+      Stack() {
+        // 作为分段按钮的背景，其中('app.media.pic')需要替换为开发者所需的图片
+        Image($r('app.media.pic'))
+        Column({ space: 12 } as ColumnOptions) {
+          VCard({ title: '纯文本选项' }) {
+            TabSegmentButtonV2({
+              items: this.textItems,
+              selectedIndex: this.textSelectedIndex,
+              $selectedIndex: (value: int) => {
+                this.textSelectedIndex = value;
+              },
+              // 设置为半透明材质
+              backgroundSystemMaterial:
+              new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT } as uiMaterial.MaterialOptions)
+            })
+          }
+
+          VCard({ title: '纯图标选项' }) {
+            CapsuleSegmentButtonV2({
+              items: this.imageItems,
+              selectedIndex: this.imageSelectedIndex,
+              $selectedIndex: (value: int) => {
+                this.imageSelectedIndex = value;
+              },
+              // 设置为半透明材质
+              backgroundSystemMaterial:
+              new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT } as uiMaterial.MaterialOptions)
+            })
+          }
+
+        }
+        .constraintSize({ minHeight: '100%' })
+        .justifyContent(FlexAlign.Start)
+        .padding(16)
+      }
+      .backgroundColor('#f1f3f5')
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+
+@Builder
+function Noop() {
+}
+
+@Component
+export struct VCard {
+  @PropRef title: ResourceStr;
+  @BuilderParam content: () => void = Noop;
+
+  build(): void {
+    Column({ space: 8 } as ColumnOptions) {
+      if (this.title) {
+        Text(this.title)
+          .maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+          .constraintSize({ maxWidth: '80%' })
+      }
+      this.content()
+    }
+    .backgroundColor(Color.Transparent)
+    .borderRadius(8)
+    .padding(8)
+    .width('100%')
+  }
+}
+```
+
+![SegmentButtonV2NewMaterial](figures/SegmentButtonV2NewMaterial.png)
