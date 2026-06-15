@@ -44,14 +44,14 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 | domain | string | 否 | 否 | 事件领域。 |
 | name | string | 否 | 否 | 事件名称。 |
 | eventType | [EventType](#eventtype) | 否 | 否 | 事件类型。 |
-| params | object | 否 | 是 |  事件参数。参数需满足验证、字符串类型参数大小限制、参数总数限制、数组类型参数数量限制等要求。详见错误码[系统事件错误码](errorcode-hisysevent-sys.md)：1200001-1200054。 |
+| params | object | 否 | 是 |  事件参数。参数需满足验证、字符串类型参数大小限制、参数总数限制、数组类型参数数量限制等要求。详见[系统事件错误码](errorcode-hisysevent-sys.md)：1200001-1200054。 |
 
 
 ## hiSysEvent.write
 
 write(info: SysEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-系统事件打点方法，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用callback方式作为异步回调。适用于需要异步记录系统事件以避免阻塞主线程的场景，能够提升应用响应性能。
+系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用callback方式作为异步回调。适用于需要异步记录系统事件以避免阻塞主线程的场景，能够提升应用响应性能。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -112,7 +112,7 @@ try {
 
 write(info: SysEventInfo): Promise&lt;void&gt;
 
-系统事件打点方法，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用promise方式作为异步回调。适用于需要链式调用处理异步结果的场景，能够使代码更加简洁优雅。
+系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用promise方式作为异步回调。适用于需要链式调用处理异步结果的场景，能够使代码更加简洁优雅。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -126,7 +126,7 @@ write(info: SysEventInfo): Promise&lt;void&gt;
 
 | 类型                | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise实例，可以在其then()、catch()方法中分别对系统事件写入成功、写入异常的回调进行处理。 |
+| Promise&lt;void&gt; | Promise实例，可以在其then()、catch()回调方法中分别对系统事件写入成功、写入异常的回调进行处理。 |
 
 **错误码：**
 
@@ -340,13 +340,13 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| beginTime | number | 否 | 否 | 查询的系统事件起始时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数。使用-1表示不限制起始时间。与beginTime配合使用时，两者取交集。建议设置合理的时间范围以优化查询性能。 |
-| endTime | number | 否 | 否 | 查询的系统事件结束时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数。使用-1表示不限制结束时间。与endTime配合使用时，两者取交集。建议设置合理的时间范围以优化查询性能。 |
+| beginTime | number | 否 | 否 | 查询的系统事件起始时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数。使用-1表示不限制起始时间。与endTime配合使用时，两者取交集。建议设置合理的时间范围以优化查询性能。 |
+| endTime | number | 否 | 否 | 查询的系统事件结束时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数。使用-1表示不限制结束时间。与beginTime配合使用时，两者取交集。建议设置合理的时间范围以优化查询性能。 |
 | maxEvents | number | 否 | 否 | 查询的系统事件最多条数。建议设置合理的值以优化查询性能。 |
 | fromSeq<sup>10+</sup> | number | 否 | 是 | 查询的系统事件起始序列号，默认值为-1，表示不限制起始序列号。与toSeq配合使用时，两者取交集。建议设置合理的序列范围以优化查询性能。 |
 | toSeq<sup>10+</sup> | number | 否 | 是 | 查询的系统事件结束序列号，默认值为-1，表示不限制结束序列号。与fromSeq<配合使用时，两者取交集。建议设置合理的序列范围以优化查询性能。|
 
-## QueryRule 
+## QueryRule
 
 系统事件查询规则对象接口。
 
