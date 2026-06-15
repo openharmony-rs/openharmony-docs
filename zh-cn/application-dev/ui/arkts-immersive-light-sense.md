@@ -652,6 +652,59 @@ struct MaterialInfoPage {
 
 <!-- @[ColorInvert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ColorInvert.ets) -->
 
+``` TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ColorInvertPage {
+  build() {
+    Column() {
+      Stack() {
+        // 请替换为实际资源文件
+        Image($r('app.media.img'))
+          .width('100%')
+          .height('100%')
+
+        Column({ space: 20 }) {
+          // 未开启自动反色，文字可能难以辨认
+          Column() {
+            Text('未开启反色')
+              .fontColor(Color.White)
+          }
+          .width(280)
+          .height(56)
+          .borderRadius(28)
+          .justifyContent(FlexAlign.Center)
+          .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            colorInvert: false,
+          }))
+
+          // 开启自动反色，文字颜色自动适配背景
+          Column() {
+            Text('开启反色')
+              .fontColor(Color.White)
+          }
+          .width(280)
+          .height(56)
+          .borderRadius(28)
+          .justifyContent(FlexAlign.Center)
+          .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            colorInvert: true,
+          }))
+        }
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 反色开启前后对比：
 
 ![colorInvert](../reference/apis-arkui/arkui-ts/figures/colorInvert.png)
