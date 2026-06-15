@@ -6,7 +6,7 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-作为[startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions)的入参，表示同步时所需参数的枚举。
+作为 [startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions) 的入参，表示同步时所需参数的对象，用于配置分布式任务同步参数，支持指定设备ID、版本冲突处理和任务标签，适用于多设备协同场景下需要精确控制同步行为的情况。
 
 > **说明：**
 >
@@ -26,12 +26,12 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型（应用模型）下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 | 名称          | 类型    | 只读   | 可选   | 说明          |
 | ----------- | ------- | ---- | ---- | ----------- |
-| deviceId    | string  | 否    | 否    | 表示设备ID。     |
-| fixConflict | boolean | 否    | 否    | 表示是否存在版本冲突，true表示存在冲突，false表示不存在冲突。 |
-| tag         | number  | 否    | 否    | 表示任务的标签，0表示默认标签。    |
+| deviceId    | string  | 否    | 否    | 表示同步目标设备的ID。     |
+| fixConflict | boolean | 否    | 否    | 是否存在版本冲突，true表示存在冲突，false表示不存在冲突。 |
+| tag         | number  | 否    | 否    | 表示任务的标签，0表示默认标签，用于标识和区分不同的同步任务。    |
