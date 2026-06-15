@@ -413,6 +413,56 @@ struct MaterialInfoPage {
    
    <!-- @[SheetMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/SheetMaterial.ets) -->
    
+   ``` TypeScript
+   import { uiMaterial } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct SheetMaterialPage {
+     @State isShow: boolean = false;
+     @State sheetHeight: number = 300;
+     @State myMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+       style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
+     });
+   
+     @Builder
+     myBuilder() {
+       Column({ space: 10 }) {
+         Text('Text')
+           .fontSize(20)
+           .margin(10)
+       }
+       .width('100%')
+       .height('100%')
+     }
+   
+     build() {
+       Stack() {
+         // 请开发者替换为实际资源文件
+         Image($r('app.media.startIcon'))
+           .width('100%')
+           .height('100%')
+         Column() {
+           Button('open Sheet')
+             .onClick(() => {
+               this.isShow = true;
+             })
+             .fontSize(20)
+             .margin(10)
+             .bindSheet($$this.isShow, this.myBuilder(), {
+               height: this.sheetHeight,
+               backgroundColor: Color.Transparent,
+               systemMaterial: this.myMaterial // 从API版本26.0.0开始，新增systemMaterial属性
+             })
+         }
+         .justifyContent(FlexAlign.Center)
+         .width('100%')
+         .height('100%')
+       }
+     }
+   }
+   ```
+   
    ![sheetMaterial](../reference/apis-arkui/arkui-ts/figures/sheetMaterial-new-s.jpg)
    
    **menu示例**
