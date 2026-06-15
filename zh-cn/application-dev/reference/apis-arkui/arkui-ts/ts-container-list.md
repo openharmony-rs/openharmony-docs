@@ -1722,7 +1722,7 @@ struct ListExample {
 }
 ```
 
-![zh-cn_image_0000001174264378](figures/zh-cn_image_0000001174264378.gif)
+![list1](figures/list1.gif)
 
 
 ### 示例2（设置子元素对齐）

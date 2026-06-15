@@ -20,7 +20,7 @@ Matrix2D的使用场景包括：
 > 
 > 从 API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-## 构造函数
+## 接口
 
 ### constructor<sup>10+</sup>
 
@@ -31,6 +31,8 @@ constructor()
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,6 +45,8 @@ constructor(unit: LengthMetricsUnit)
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -448,7 +452,7 @@ scale(sx?: number, sy?: number): Matrix2D
 
 **参数：**
 
-| 参数 | 类型   | 必填 | 描述               |
+| 参数名 | 类型   | 必填 | 说明               |
 | ---- | ------ | ---- | ------------------ |
 | sx   | number | 否   | 水平缩放比例系数，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：1.0 |
 | sy   | number | 否   | 垂直缩放比例系数，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：1.0 |

@@ -658,10 +658,6 @@ struct Index {
 
 ![systemMaterial](../reference/apis-arkui/figures/material_middle.png)
 
-## 沉浸光感支持的组件
-
-沉浸光感为ArkUI组件提供沉浸式系统材质和空间动效能力。当前支持沉浸光感的组件包括：[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)、[bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)/[ChipGroup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)、[Dialog](./arkts-base-dialog-overview.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)、[Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md)、[SegmentButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md)、[Toast](./arkts-create-toast.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)。
-
 ## 约束和限制
 
 ### 属性冲突

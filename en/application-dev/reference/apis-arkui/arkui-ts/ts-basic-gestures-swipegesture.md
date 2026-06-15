@@ -123,4 +123,4 @@ struct SwipeGestureExample {
 }
 ```
 
- ![en-us_image_0000001231374559.png](figures/en-us_image_0000001231374559.png) 
+ ![swipeGesture.png](figures/swipeGesture.png) 

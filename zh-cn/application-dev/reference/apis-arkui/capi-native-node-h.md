@@ -48,7 +48,6 @@
 | [ArkUI_NodeAttributeType](#arkui_nodeattributetype) | ArkUI_NodeAttributeType | 定义ArkUI在Native侧可以设置的属性样式集合。 |
 | [ArkUI_NodeEventType](#arkui_nodeeventtype) | ArkUI_NodeEventType | 提供NativeNode组件支持的事件类型定义。 |
 | [ArkUI_NodeDirtyFlag](#arkui_nodedirtyflag) | ArkUI_NodeDirtyFlag | 自定义组件调用<b>::markDirty</b>时，传递重新执行测量、布局或者绘制的标识类型。 |
-| [ArkUI_NodeCustomEventType](#arkui_nodecustomeventtype) | ArkUI_NodeCustomEventType | 定义自定义组件事件类型。 |
 | [ArkUI_NodeAdapterEventType](#arkui_nodeadaptereventtype) | ArkUI_NodeAdapterEventType | 定义节点适配器事件枚举值。 |
 | [ArkUI_NodeContentEventType](#arkui_nodecontenteventtype) | ArkUI_NodeContentEventType | 定义NodeContent事件类型。 |
 | [ArkUI_InspectorErrorCode](#arkui_inspectorerrorcode) | ArkUI_InspectorErrorCode | inspector错误码的枚举。 |
@@ -405,7 +404,7 @@ enum ArkUI_NodeEventType
 | NODE_TEXT_EDITOR_ON_SUBMIT = 22004 | 定义TextEditor组件输入法的回车键被按下时触发的事件。<br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含一个参数：<br><b>ArkUI_NodeComponentEvent.data[0].i32</b>：输入法的回车键类型[ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype)。<br>**起始版本：** 24 |
 | NODE_TEXT_EDITOR_ON_CUT = 22005 | 定义TextEditor组件执行剪切时触发的事件。<br>系统会根据回调函数返回值判断是否拦截组件的默认行为。<br>可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。<br>返回值中索引为0的value.i32表示是否拦截组件的默认行为。<br>0：不拦截。1：拦截。<br>**起始版本：** 24 |
 | NODE_TEXT_EDITOR_ON_COPY = 22006 | 定义TextEditor组件执行复制时触发的事件。<br>系统会根据回调函数返回值判断是否拦截组件的默认行为。<br>可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。<br>返回值中索引为0的value.i32表示是否拦截组件的默认行为。<br>0：不拦截。1：拦截。<br>**起始版本：** 24 |
-| NODE_TEXT_EDITOR_ON_WILL_CHANGE = 22007 | 定义TextEditor组件在内容将要改变时触发的事件。<br>在任何导致文本内容发生变化的操作生效之前会触发该回调，开发者可根据回调事件中的信息决定是否拦截本次内容变更。<br>当事件回调发生时，可以通过[OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent](capi-native-node-h.md#oh_arkui_nodeevent_gettexteditoronwillchangeevent)从[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中获得[OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md)对象。 <br> 使用OH_ArkUI_TextEditorChangeEvent_XXX系列接口可以从该对象中获取更多信息。 <br> 系统会根据回调函数返回值判断当前内容是否允许被更改。 <br> 可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](capi-native-node-h.md#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。 <br> 返回值中索引为0的value.i32表示当前内容是否允许被更改。<b>0</b>：允许更改。<b>1</b>：不允许更改。 <br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ON_WILL_CHANGE = 22007 | 定义TextEditor组件在内容将要改变时触发的事件。<br>在任何导致文本内容发生变化的操作生效之前会触发该回调，开发者可根据回调事件中的信息决定是否拦截本次内容变更。<br>当事件回调发生时，可以通过[OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent](capi-native-node-h.md#oh_arkui_nodeevent_gettexteditoronwillchangeevent)从[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中获得[OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md)对象。 <br> 使用OH_ArkUI_TextEditorChangeEvent_XXX系列接口可以从该对象中获取更多信息。 <br> 系统会根据回调函数返回值判断当前内容是否允许被更改。 <br> 可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](capi-native-node-h.md#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。 <br> 返回值中索引为0的value.i32表示当前内容是否允许被更改。<b>0</b>：不允许更改。<b>1</b>：允许更改。 <br>**起始版本：** 24 |
 | NODE_TEXT_EDITOR_ON_DID_CHANGE = 22008 | 定义TextEditor组件在内容改变时触发的事件。<br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。 <br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含四个参数： <br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：文本变化前将要被替换的文本范围的起始索引。 <br> <b>ArkUI_NodeComponentEvent.data[1].i32</b>：文本变化前将要被替换的文本范围的结束索引。 <br> <b>ArkUI_NodeComponentEvent.data[2].i32</b>：文本变化后新增内容的文本范围的起始索引。 <br> <b>ArkUI_NodeComponentEvent.data[3].i32</b>：文本变化后新增内容的文本范围的结束索引。 <br>**起始版本：** 24 |
 | NODE_SWIPER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_SWIPER = 1001000 | 定义ARKUI_NODE_SWIPER当前元素索引变化时触发事件回调。事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含1个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：表示当前显示元素的索引。  |
 | NODE_SWIPER_EVENT_ON_ANIMATION_START = 1001001 | 定义ARKUI_NODE_SWIPER切换动画开始时触发回调。事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含5个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：表示当前显示元素的索引。<br> <b>ArkUI_NodeComponentEvent.data[1].i32</b>：表示切换动画目标元素的索引。<br> <b>ArkUI_NodeComponentEvent.data[2].f32</b>：表示主轴方向上当前显示元素相对Swiper起始位置的位移。<br> <b>ArkUI_NodeComponentEvent.data[3].f32</b>：表示主轴方向上目标元素相对Swiper起始位置的位移。<br> <b>ArkUI_NodeComponentEvent.data[4].f32</b>：表示离手速度。  |
@@ -474,29 +473,6 @@ enum ArkUI_NodeDirtyFlag
 | NODE_NEED_MEASURE = 1 | 重新测量大小。该flag类型触发时，同时也默认会触发重新布局。 |
 | NODE_NEED_LAYOUT = 2 | 重新布局位置。 |
 | NODE_NEED_RENDER = 3 | 重新进行绘制。 |
-
-### ArkUI_NodeCustomEventType
-
-```c
-enum ArkUI_NodeCustomEventType
-```
-
-**描述：**
-
-
-定义自定义组件事件类型。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0 | 自定义测量类型。 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1 | 自定义布局类型。 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2 | 自定义内容层绘制类型。 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3 | 自定义前景绘制类型。 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4 | 自定义浮层绘制类型。 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5 | 自定义内容层前景绘制类型。 <br>**起始版本：** 20 |
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6 | 自定义内容层背景绘制类型。 <br>**起始版本：** 20 |
 
 ### ArkUI_NodeAdapterEventType
 
@@ -1525,7 +1501,7 @@ ArkUI_NodeCustomEventType OH_ArkUI_NodeCustomEvent_GetEventType(ArkUI_NodeCustom
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeCustomEventType](capi-native-node-h.md#arkui_nodecustomeventtype) | 组件自定义事件类型。 |
+| [ArkUI_NodeCustomEventType](capi-native-node-node-attributes-node-attr-custom-h.md#arkui_nodecustomeventtype) | 组件自定义事件类型。 |
 
 ### OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo()
 

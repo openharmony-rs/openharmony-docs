@@ -128,8 +128,8 @@ struct GestureGroupExample {
 
 按顺序首先触发长按事件：
 
-![zh-cn_image_0000001174104384](figures/zh-cn_image_0000001174104384.png)
+![GestureGroup](figures/GestureGroup.png)
 
 按顺序首先触发长按事件，长按事件识别结束之后，触发拖动事件，向右下方拖动：
 
- ![zh-cn_image1_0000001174104384](figures/zh-cn_image1_0000001174104384.png) 
+ ![triggeringEvent](figures/triggeringEvent.png) 

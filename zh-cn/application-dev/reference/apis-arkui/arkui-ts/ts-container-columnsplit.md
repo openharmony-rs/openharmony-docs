@@ -124,7 +124,7 @@ struct ColumnSplitExample {
 }
 ```
 
-![zh-cn_image_0000001219982708](figures/zh-cn_image_0000001219982708.gif)
+![columnSplitDividerStyle](figures/columnSplitDividerStyle.gif)
 
 ### 示例2（设置带有间隔的ColumnSplit组件）
 

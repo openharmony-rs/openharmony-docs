@@ -41,4 +41,4 @@
 
 - [闪控球](../reference/apis-arkui/js-apis-floatingBall.md)
 
-- [标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)
+- [闪控窗](../reference/apis-arkui/js-apis-floatView.md)

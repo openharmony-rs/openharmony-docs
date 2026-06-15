@@ -53,7 +53,7 @@ struct BlurEffectsExample {
 ```
 
 
-![en-us_image_0000001599812870](figures/en-us_image_0000001599812870.png)
+![en-us_image_0000001599812870](figures/backdropBlur.png)
 
 
 ## Applying Foreground Blur with blur
@@ -119,7 +119,7 @@ struct Index {
 ```
 
 
-
+![en-us_image_0000001599813588](figures/Applying-Foreground-Blur.gif)
 
 
 ## Applying Background Blur with backgroundBlurStyle
@@ -393,7 +393,7 @@ struct BackDropBlurStyleDemo {
 ```
 
 
-![en-us_image_0000001649455517](figures/en-us_image_0000001649455517.png)
+![en-us_image_0000001649455517](figures/backgroundBlurStyle.png)
 
 
 
@@ -666,7 +666,7 @@ struct ForegroundBlurStyleDemo {
 ```
 
 
-![en-us_image_0000001599658168](figures/en-us_image_0000001599658168.png)
+![en-us_image_0000001599658168](figures/foregroundBlurStyle.png)
 
 
 ## Applying Motion Blur with motionBlur

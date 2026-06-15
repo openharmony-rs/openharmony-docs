@@ -16,7 +16,7 @@
 >
 >  [beginPath](#beginpath)、[moveTo](#moveto)、[lineTo](#lineto)、[closePath](#closepath)、[bezierCurveTo](#beziercurveto)、[quadraticCurveTo](#quadraticcurveto)、[arc](#arc)、[arcTo](#arcto)、[ellipse](#ellipse)、[rect](#rect)和[roundRect](#roundrect20)接口只能对OffscreenCanvasRenderingContext2D中的路径生效，无法对[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)和[Path2D](./ts-components-canvas-path2d.md)对象中设置的路径生效。
 
-## 构造函数
+## 接口
 
 ### constructor
 
@@ -47,6 +47,8 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1552,8 +1554,8 @@ strokeRect(x: number, y: number, w: number, h: number): void
 | ------ | ------ | ---- | ------------ |
 | x      | number | 是   | 指定矩形的左上角x坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 | y      | number | 是   | 指定矩形的左上角y坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| width  | number | 是   | 指定矩形的宽度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| height | number | 是   | 指定矩形的高度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| w      | number | 是   | 指定矩形的宽度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| h      | number | 是   | 指定矩形的高度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
  **示例：**
 
@@ -1606,8 +1608,8 @@ clearRect(x: number, y: number, w: number, h: number): void
 | ------ | ------ | ---- | ------------- |
 | x      | number | 是   | 指定矩形上的左上角x坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 | y      | number | 是   | 指定矩形上的左上角y坐标。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| width  | number | 是   | 指定矩形的宽度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
-| height | number | 是   | 指定矩形的高度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| w      | number | 是   | 指定矩形的宽度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
+| h      | number | 是   | 指定矩形的高度。<br>异常值undefined、null、NaN或Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
  **示例：**
 
@@ -2044,7 +2046,7 @@ lineTo(x: number, y: number): void
 
  **参数：**
 
-| 参数名   | 类型     | 必填   | 描述        |
+| 参数名   | 类型     | 必填   | 说明        |
 | ---- | ------ | ----  | --------- |
 | x    | number | 是    | 指定位置的x坐标。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 | y    | number | 是    | 指定位置的y坐标。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
@@ -2635,6 +2637,8 @@ roundRect(x: number, y: number, w: number, h: number, radii?: number | Array\<nu
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -2908,7 +2912,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
 
 **参数:** 
 
-| 参数名       | 类型 | 必填   | 描述                                       |
+| 参数名       | 类型 | 必填   | 说明                                       |
 | -------- | -------------- | ---- | ---------------------------------------- |
 | path | [Path2D](ts-components-canvas-path2d.md) | 是 | Path2D剪切路径。<br>异常值undefined或null按无效值处理。 |
 | fillRule | [CanvasFillRule](ts-canvasrenderingcontext2d.md#canvasfillrule类型说明) | 否 | 指定要剪切对象的规则。<br/>可选参数为："nonzero"，"evenodd"。<br>异常值undefined或null按默认值处理。<br>默认值："nonzero" |
@@ -2964,6 +2968,8 @@ reset(): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
@@ -3008,6 +3014,8 @@ saveLayer(): void
 创建一个图层。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3060,6 +3068,8 @@ restoreLayer(): void
 恢复图像变换和裁剪状态至saveLayer前的状态，并将图层绘制在canvas上。restoreLayer示例同saveLayer。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3375,7 +3385,7 @@ setTransform(transform?: Matrix2D): void
 
 **参数：**
 
-| 参数名       | 类型 | 必填   | 描述    |
+| 参数名       | 类型 | 必填   | 说明    |
 | --------- | ---------------------------------------- | ---- | ----- |
 | transform | [Matrix2D](ts-components-canvas-matrix2d.md) | 否 | 变换矩阵。<br>异常值undefined或null按无效值处理。<br>默认值：null |
 
@@ -3566,7 +3576,7 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
  **参数：**
 
 <!--Table: 10%; 10%; 10%; 70%-->
-| 参数    | 类型 | 必填   | 说明 |
+| 参数名    | 类型 | 必填   | 说明 |
 | ----- | ---------------------------------------- | ---- | ----------------------------- |
 | image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 图片资源，请参考ImageBitmap或PixelMap。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | dx    | number | 是  | 绘制区域左上角在x轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
@@ -3624,7 +3634,7 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh:
 
  **参数：**
 
-| 参数    | 类型 | 必填   | 说明 |
+| 参数名    | 类型 | 必填   | 说明 |
 | ----- | ---------------------------------------- | ---- | ----------------------------- |
 | image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 图片资源，请参考ImageBitmap或PixelMap。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | dx    | number | 是  | 绘制区域左上角在x轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
@@ -3684,7 +3694,7 @@ drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number, sw: number, sh:
 
  **参数：**
 
-| 参数    | 类型 | 必填   | 说明 |
+| 参数名    | 类型 | 必填   | 说明 |
 | ----- | ---------------------------------------- | ---- | ----------------------------- |
 | image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 图片资源，请参考ImageBitmap或PixelMap。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | sx    | number | 是  | 裁切源图像时距离源图像左上角的x坐标值。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>image类型为ImageBitmap时，默认单位：vp<br>image类型为PixelMap时，API version 18前，默认单位：px；API version 18及以后，默认单位：vp |
@@ -3767,6 +3777,10 @@ createImageData(imageData: ImageData): ImageData
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
  **参数：**
 
 | 参数名       | 类型 | 必填   | 说明 |
@@ -3791,7 +3805,7 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
 
  **参数：**
 
-| 参数   | 类型     | 必填  | 说明            |
+| 参数名   | 类型     | 必填  | 说明            |
 | ---- | ------ | ---- | --------------- |
 | sx   | number | 是  | 需要输出的区域的左上角x坐标。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
 | sy   | number | 是  | 需要输出的区域的左上角y坐标。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
@@ -3947,7 +3961,7 @@ putImageData(imageData: ImageData, dx: number | string, dy: number | string): vo
 
  **参数：**
 
-| 参数名          | 类型 | 必填 | 描述 |
+| 参数名          | 类型 | 必填 | 说明 |
 | ----------- | ---------------------------------------- | ---- | ----------------------------- |
 | imageData   | [ImageData](ts-components-canvas-imagedata.md) | 是 | 包含像素值的ImageData对象。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | dx          | number&nbsp;\|&nbsp;string<sup>10+</sup> | 是 | 填充区域在x轴方向的偏移量。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
@@ -4007,7 +4021,7 @@ putImageData(imageData: ImageData, dx: number | string, dy: number | string, dir
 
  **参数：**
 
-| 参数名          | 类型 | 必填 | 描述 |
+| 参数名          | 类型 | 必填 | 说明 |
 | ----------- | ---------------------------------------- | ---- | ----------------------------- |
 | imageData   | [ImageData](ts-components-canvas-imagedata.md) | 是 | 包含像素值的ImageData对象。<br>异常值undefined或null按无效值处理，不进行绘制。 |
 | dx          | number&nbsp;\|&nbsp;string<sup>10+</sup> | 是 | 填充区域在x轴方向的偏移量。<br>异常值undefined、null、NaN和Infinity按0处理。<br>默认单位：vp |
@@ -4067,6 +4081,8 @@ setLineDash(segments: number[]): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **参数：** 
 
 | 参数名      | 类型   |  必填  | 说明             |
@@ -4116,6 +4132,8 @@ getLineDash(): number[]
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
 
@@ -4521,6 +4539,8 @@ createConicGradient(startAngle: number, x: number, y: number): CanvasGradient
 创建一个圆锥渐变色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

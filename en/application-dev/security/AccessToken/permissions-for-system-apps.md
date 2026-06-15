@@ -5003,6 +5003,22 @@ With this permission, the application can access kernel APIs across processes to
 
 **Valid since**: 20
 
+## ohos.permission.kernel.READ_PROTECT_RANGE
+
+Allow system applications or system services to access the code files of encrypted applications.
+
+With this permission, the system application or service can read the protected code files.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 20
+
 ## ohos.permission.VIRUS_PROTECTION_SERVICE
 
 Allows an application to start virus protection tasks.

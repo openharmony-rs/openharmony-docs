@@ -19,8 +19,27 @@
 
 无
 
-
 ## 接口
+
+### Polygon
+
+new Polygon(options?: PolygonOptions)
+
+用于绘制多边形的构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [PolygonOptions](ts-drawing-components-polygon.md#polygonoptions18对象说明) | 否 | Polygon绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
+
+### Polygon
 
 Polygon(options?: PolygonOptions)
 
@@ -318,7 +337,7 @@ struct PolygonExample {
 }
 ```
 
-![zh-cn_image_0000001174582856](figures/zh-cn_image_0000001174582856.png)
+![polygon](figures/polygon.png)
 
 ### 示例2（宽和高使用不同参数类型绘制多边形）
 

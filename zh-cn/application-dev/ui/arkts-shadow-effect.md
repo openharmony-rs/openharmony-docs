@@ -58,4 +58,4 @@ struct ShadowOptionDemo {
 
 
 
-![zh-cn_image_0000001598502322](figures/zh-cn_image_0000001598502322.png)
+![zh-cn_image_0000001598502322](figures/Shadow-Effect.png)
