@@ -1,10 +1,12 @@
 # canvas
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:49:53.954Z pushedAt=2026-06-15T02:39:36.659Z -->
 
 The **\<canvas>** component is used for customizing drawings.
 
@@ -12,11 +14,9 @@ The **\<canvas>** component is used for customizing drawings.
 >
 > This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -27,15 +27,13 @@ Not supported
 | class | string | - | No| Style class of the component, which is used to refer to a style table.|
 | ref | string | - | No| Reference information of child elements, which is registered with the parent component on **$refs**.|
 
-
 ## Events
 
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
 | click | - | Triggered when the component is clicked.|
 | longpress | - | Triggered when the component is long pressed.|
-| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | Triggered when a user quickly swipes on the component.|
-
+| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Triggered when a user swipes on the component. |
 
 ## Styles
 
@@ -52,7 +50,6 @@ Not supported
 | background-color | &lt;color&gt; | - | No| Background color.|
 | display | string | flex | No| How and whether to display the box containing an element. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
 | [left\|top] | &lt;length&gt; \| &lt;percentage&gt;<sup>6+</sup> | - | No| Edge of the element.<br>- **left**: left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- **top**: top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element. |
-
 
 ## Methods
 

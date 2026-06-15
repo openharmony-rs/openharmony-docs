@@ -4,9 +4,9 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:29:04.456Z pushedAt=2026-06-08T06:54:49.651Z -->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:49:53.612Z pushedAt=2026-06-15T02:39:36.658Z -->
 
 The **\<list>** component provides a list container that presents a series of list items arranged in a column with the same width. It supports presentations of the same type of data in a multiple and coherent row style, for example, images or text.
 
@@ -16,9 +16,13 @@ The **\<list>** component provides a list container that presents a series of li
 >
 > Limit the number of items in a list to 30 to improve user experience.
 
+
+
+
 ## Child Components
 
 Only the **[\<list-item>](js-service-widget-container-list-item.md)** child component is supported.
+
 
 ## Attributes
 
@@ -35,6 +39,7 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | initialindex  | number         | 0       | No   | Item displayed at the start position of the viewport when the list is loaded for the first time. The default value is **0**, indicating that the first item is displayed. If the number you set is greater than the index of the last item, the setting does not take effect. When the **initialoffset** attribute is set, this attribute does not take effect. |
 | initialoffset | &lt;length&gt; | 0       | No   | Start offset of the viewport when the list is loaded for the first time. The offset must not exceed the scrolling range of the list. If exceeded, the offset is truncated to the maximum value of the scrolling range. |
 | selected      | string         | -       | No   | Selected item in the list. The value can be a **section** value of any list items. |
+
 
 ## Styles
 
@@ -55,11 +60,14 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | scrollbar-width  | &lt;length&gt;                           | -           | No   | Width of the scrollbar.                               |
 | scrollbar-offset | &lt;length&gt;                           | 0           | No   | Offset between the scrollbar and the default position of the list. The value must be a positive number. The default position is on the right edge of the list. You can adjust the horizontal position of the scrollbar by setting this offset. If the scrollbar is drawn outside the list and the parent component of the list is capable of cropping, the scrollbar will be cropped.|
 
+
 ## Events
 
 The [universal events](js-service-widget-common-events.md) are supported.
 
+
 ## Example
+
 
 ```html
 <!-- index.html -->
@@ -72,6 +80,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
   </list>
 </div>
 ```
+
 
 ```json
 {
@@ -86,6 +95,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
   }
 }
 ```
+
 
 ```css
 /* index.css */
@@ -113,7 +123,6 @@ The [universal events](js-service-widget-common-events.md) are supported.
   text-align: center;
 }
 ```
-
 **4 x 4 widget**
 
 ![en-us_image_0000001231370803](figures/en-us_image_0000001231370803.png)

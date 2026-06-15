@@ -4,11 +4,12 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:28:51.215Z pushedAt=2026-06-08T06:54:47.327Z -->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:49:51.347Z pushedAt=2026-06-15T02:39:36.654Z -->
 
 **\<list-item>** is a child component of the **[\<list>](js-service-widget-container-list.md)** component and is used to display items in a list.
+
 
 >  **NOTE**
 >
@@ -17,9 +18,11 @@
 >
 > - Whenever possible, do not design the long press or drag gestures for the **\<list-item>** component.
 
+
 ## Child Components
 
 Supported
+
 
 ## Attributes
 
@@ -32,6 +35,7 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | sticky | string | none | No | Whether the current item sticks in place at the top, and the effect when it disappears. This attribute supports vertical lists only and is invalid for items in a group.<br/>-&nbsp;**none**: The current item does not stick at the top.<br/>-&nbsp;**normal**: The current item sticks at the top and disappears with a sliding effect.<br/>-&nbsp;**opacity**: The current item sticks at the top and disappears gradually. This option is only supported on wearables. |
 | clickeffect | boolean | true | No| Whether an effect is displayed when the current item is clicked.<br>- **false**: No effect is displayed when the item is clicked.<br>- **true**: An effect is displayed when the item is clicked.|
 
+
 ## Styles
 
 In addition to the [universal styles](js-service-widget-common-styles.md), the following styles are supported.
@@ -41,9 +45,11 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | column-span | &lt;number&gt; | 1 | No| Number of columns occupied by the current list-item in the list. By default, the list-item occupies one column. This attribute is valid only when the list contains multiple columns.|
 | click-color | &lt;color&gt; | - | No| Backplane color of a list-item when touched.|
 
+
 ## Events
 
 The [universal events](js-service-widget-common-events.md) are supported.
+
 
 ## Example
 
