@@ -35,7 +35,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_Huks_ExternalCryptoTag](#oh_huks_externalcryptotag) | OH_Huks_ExternalCryptoTag | 列举参数集合中使用的标签值。 |
-| [OH_Huks_ExternalPinAuthState](#oh_huks_externalpinauthstate) | OH_Huks_ExternalPinAuthState | 列举Ukey PIN码认证状态。 |
+| [OH_Huks_ExternalPinAuthState](#oh_huks_externalpinauthstate) | OH_Huks_ExternalPinAuthState | 列举UKey PIN码认证状态。 |
 
 ### 宏定义
 
@@ -75,7 +75,7 @@ enum OH_Huks_ExternalPinAuthState
 
 **描述**
 
-列举Ukey PIN码认证状态。
+列举UKey PIN码认证状态。
 
 **起始版本：** 22
 

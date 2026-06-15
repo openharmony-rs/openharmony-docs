@@ -56,7 +56,7 @@
 | [Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType, OH_PictureMetadata **metadata)](#oh_picturenative_getmetadata) | 获取主图的元数据。 |
 | [Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType, OH_PictureMetadata *metadata)](#oh_picturenative_setmetadata) | 设置主图的元数据。 |
 | [Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)](#oh_picturenative_release) | 释放OH_PictureNative指针。 |
-| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | 创建OH_AuxiliaryPictureNative指针。该接口仅支持传入[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)为BGRA_8888的连续像素数据，并创建出RGBA_8888的辅助图。 |
+| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | 创建OH_AuxiliaryPictureNative指针。该接口仅支持传入[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)为BGRA_8888的连续像素数据，会创建出RGBA_8888的辅助图。 |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source, size_t bufferSize)](#oh_auxiliarypicturenative_writepixels) | 读取缓冲区的图像像素数据，并将结果写入辅助图中。 |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination, size_t *bufferSize)](#oh_auxiliarypicturenative_readpixels) | 读取辅助图的像素数据，结果写入缓冲区。 |
 | [Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_AuxiliaryPictureType *type)](#oh_auxiliarypicturenative_gettype) | 获取辅助图类型。 |
@@ -76,8 +76,7 @@
 | [Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)](#oh_auxiliarypictureinfo_setpixelformat) | 设置OH_AuxiliaryPictureInfo中的像素格式。 |
 | [Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)](#oh_auxiliarypictureinfo_release) | 释放OH_AuxiliaryPictureInfo指针。 |
 | <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions)](#oh_decomposeoptions_create) | 创建OH_DecomposeOptions实例。 |
-| <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *options, bool isFullSizeGainmap)](#oh_decomposeoptions_setisfullsizegainmap) | 设置是否生成全尺寸增益图。全尺寸增益图，指增益图和主图尺寸一致。若不自行设置，默认值为false，即增益图的尺寸是主图的一半。 |
-| <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *options, bool *isFullSizeGainmap)](#oh_decomposeoptions_getisfullsizegainmap) | 获取是否生成全尺寸增益图。如果isFullSizeGainmap为true，则增益图和主图尺寸一致；否则，增益图为主图尺寸的一半。 |
+| <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *options, bool isFullSizeGainmap)](#oh_decomposeoptions_setisfullsizegainmap) | 设置是否生成全尺寸增益图（指增益图和主图尺寸一致）。若不自行设置，默认值为false，即增益图的尺寸是主图的一半。 |
 | <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t desiredPixelFormat)](#oh_decomposeoptions_setdesiredpixelformat) | 设置HDR分解后SDR PixelMap的像素格式。 |
 | <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_GetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t *desiredPixelFormat)](#oh_decomposeoptions_getdesiredpixelformat) | 获取HDR分解后SDR PixelMap的像素格式。 |
 | <!--DelRow-->[Image_ErrorCode OH_DecomposeOptions_Release(OH_DecomposeOptions *options)](#oh_decomposeoptions_release) | 释放OH_DecomposeOptions指针。 |
@@ -266,6 +265,8 @@ Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *pictur
 
 获取hdr图的OH_PixelmapNative指针。
 
+使用约束：picture和hdrPixelmap均不能为空指针。Picture不支持HDR合成时，接口会返回IMAGE_UNSUPPORTED_OPERATION。
+
 **起始版本：** 13
 
 **参数：**
@@ -290,6 +291,8 @@ Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmapWithOptions(OH_PictureNat
 **描述**
 
 通过设置合成选项OH_ComposeOptions获取HDR图的OH_PixelmapNative指针。
+
+使用约束：picture、options和hdrPixelmap均不能为空指针。Picture不支持HDR合成时，接口会返回IMAGE_UNSUPPORTED_OPERATION。
 
 **起始版本：** 23
 
@@ -342,6 +345,8 @@ Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, 
 
 设置辅助图。
 
+使用约束：picture和auxiliaryPicture均不能为空指针，type必须为当前支持的辅助图类型，且必须与auxiliaryPicture对象自身的辅助图类型一致。
+
 **起始版本：** 13
 
 **参数：**
@@ -367,6 +372,8 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, 
 **描述**
 
 根据类型获取辅助图。
+
+使用约束：picture和auxiliaryPicture均不能为空指针，type必须为当前支持的辅助图类型。
 
 **起始版本：** 13
 
@@ -394,6 +401,8 @@ Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_Me
 
 获取主图的元数据。
 
+使用约束：picture和metadata均不能为空指针，metadataType必须为Picture允许的元数据类型；不支持的元数据类型会返回IMAGE_UNSUPPORTED_METADATA。
+
 **起始版本：** 13
 
 **参数：**
@@ -419,6 +428,8 @@ Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_Me
 **描述**
 
 设置主图的元数据。
+
+使用约束：picture和metadata均不能为空指针，metadataType必须为Picture允许的元数据类型。
 
 **起始版本：** 13
 
@@ -468,7 +479,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLengt
 
 **描述**
 
-创建OH_AuxiliaryPictureNative指针。该接口仅支持传入[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)为BGRA_8888的连续像素数据，并创建出RGBA_8888的辅助图。
+创建OH_AuxiliaryPictureNative指针。该接口仅支持传入[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)为BGRA_8888的连续像素数据，会创建出RGBA_8888的辅助图。
 
 **起始版本：** 13
 
@@ -498,6 +509,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative 
 
 读取缓冲区的图像像素数据，并将结果写入辅助图中。
 
+使用约束：auxiliaryPicture和source均不能为空指针，bufferSize需与待写入像素数据大小匹配。
+
 **起始版本：** 13
 
 **参数：**
@@ -523,6 +536,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *
 **描述**
 
 读取辅助图的像素数据，结果写入缓冲区。
+
+使用约束：auxiliaryPicture、destination和bufferSize均不能为空指针，bufferSize需表示destination可写入的缓冲区大小；接口执行成功后，bufferSize会更新为实际读取的数据大小。
 
 **起始版本：** 13
 
@@ -575,6 +590,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *aux
 
 获取辅助图信息。
 
+资源管理：接口成功返回的OH_AuxiliaryPictureInfo对象由调用方管理，使用完成后应调用OH_AuxiliaryPictureInfo_Release()释放。
+
 **起始版本：** 13
 
 **参数：**
@@ -599,6 +616,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *aux
 **描述**
 
 设置辅助图信息。
+
+资源管理：接口会读取并保存OH_AuxiliaryPictureInfo中的信息值，接口返回后调用方仍需自行管理该OH_AuxiliaryPictureInfo对象的生命周期。
 
 **起始版本：** 13
 
@@ -974,7 +993,7 @@ Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如outOwnedOptions为nullptr。<br>         IMAGE_ALLOC_FAILED：内存分配失败。<br>         202：非系统应用调用系统API。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如outOwnedOptions为nullptr。<br>         IMAGE_ALLOC_FAILED：内存分配失败。<br>         202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_DecomposeOptions_SetIsFullSizeGainmap()
 
@@ -984,7 +1003,7 @@ Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *op
 
 **描述**
 
-设置是否生成全尺寸增益图。全尺寸增益图，指增益图和主图尺寸一致。若不自行设置，默认值为false，即增益图的尺寸是主图的一半。
+设置是否生成全尺寸增益图（指增益图和主图尺寸一致）。若不自行设置，默认值为false，即增益图的尺寸是主图的一半。
 
 **起始版本：** 26.0.0
 
@@ -992,14 +1011,14 @@ Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *op
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 被操作的OH_DecomposeOptions指针。 |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 指向OH_DecomposeOptions对象的指针。 |
 | bool isFullSizeGainmap | 是否生成全尺寸增益图。设置为true时生成全尺寸增益图，设置为false时生成1/2缩小的增益图。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。<br>         202：非系统应用调用系统API。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。<br>         202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_DecomposeOptions_GetIsFullSizeGainmap()
 
@@ -1009,7 +1028,7 @@ Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *op
 
 **描述**
 
-获取是否生成全尺寸增益图。如果isFullSizeGainmap为true，则增益图和主图尺寸一致；否则，增益图为主图尺寸的一半。
+获取是否生成全尺寸增益图（指增益图和主图尺寸一致）。如果isFullSizeGainmap为true，则增益图和主图尺寸一致；否则，增益图为主图尺寸的一半。
 
 **起始版本：** 26.0.0
 
@@ -1017,14 +1036,14 @@ Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *op
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 被操作的OH_DecomposeOptions指针。 |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 指向OH_DecomposeOptions对象的指针。 |
 | bool *isFullSizeGainmap | 指向bool值的指针，用于接收是否生成全尺寸增益图的设置。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options或isFullSizeGainmap为nullptr。<br>         202：非系统应用调用系统API。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options或isFullSizeGainmap为nullptr。<br>         202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_DecomposeOptions_SetDesiredPixelFormat()
 
@@ -1042,14 +1061,14 @@ Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *o
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 被操作的OH_DecomposeOptions指针。 |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 指向OH_DecomposeOptions对象的指针。 |
 | int32_t desiredPixelFormat | 分解后SDR PixelMap和增益图的像素格式，支持RGBA_8888、NV12和NV21格式。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。<br>         IMAGE_UNSUPPORTED_OPERATION：不支持的像素格式。<br>         202：非系统应用调用系统API。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。<br>         IMAGE_UNSUPPORTED_OPERATION：不支持的像素格式。<br>         202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_DecomposeOptions_GetDesiredPixelFormat()
 
@@ -1067,14 +1086,14 @@ Image_ErrorCode OH_DecomposeOptions_GetDesiredPixelFormat(OH_DecomposeOptions *o
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 被操作的OH_DecomposeOptions指针。 |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 指向OH_DecomposeOptions对象的指针。 |
 | int32_t *desiredPixelFormat | 指向int32_t的指针，用于接收像素格式设置。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options或desiredPixelFormat为nullptr。<br>         202：非系统应用调用系统API。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options或desiredPixelFormat为nullptr。<br>         202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_DecomposeOptions_Release()
 
@@ -1092,13 +1111,13 @@ Image_ErrorCode OH_DecomposeOptions_Release(OH_DecomposeOptions *options)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 被操作的OH_DecomposeOptions指针。 |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 指向OH_DecomposeOptions对象的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。<br>         202：非系统应用调用系统API。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。<br>         202：非系统应用程序调用该接口则返回此错误码。 |
 
 ### OH_PictureNative_DecomposeToPicture()
 
@@ -1124,5 +1143,5 @@ Image_ErrorCode OH_PictureNative_DecomposeToPicture(OH_PixelmapNative *hdrPixelm
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如hdrPixelmap、options或outOwnedPicture为nullptr。<br>         IMAGE_UNSUPPORTED_OPERATION：hdrPixelmap的像素格式不是RGBA_F16、RGBA_1010102、YCBCR_P010或YCRCB_P010。<br>         IMAGE_DECOMPOSE_FAILED：HDR分解处理失败。<br>         IMAGE_ALLOC_FAILED：内存分配失败。<br>         202：非系统应用调用系统API。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如hdrPixelmap、options或outOwnedPicture为nullptr。<br>         IMAGE_UNSUPPORTED_OPERATION：hdrPixelmap的像素格式不是RGBA_F16、RGBA_1010102、YCBCR_P010或YCRCB_P010。<br>         IMAGE_DECOMPOSE_FAILED：HDR分解处理失败。<br>         IMAGE_ALLOC_FAILED：内存分配失败。<br>         202：非系统应用程序调用该接口则返回此错误码。 |
 <!--DelEnd-->

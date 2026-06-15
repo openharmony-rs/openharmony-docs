@@ -171,7 +171,7 @@ subMenuExpandSymbol(symbol: SymbolGlyphModifier)
 
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- |--------------|
-| symbol  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 是   | Menu子菜单展开符号。<br/>1、子菜单的展开样式为SubMenuExpandingMode.SIDE_EXPAND时，不显示展开符号。<br/>2、子菜单的展开样式为SubMenuExpandingMode.EMBEDDED_EXPAND时，展开时展开符号会顺时针旋转180°。<br/>默认值：`$r('sys.symbol.chevron_down').fontSize('24vp')` <br/>3、子菜单的展开样式为SubMenuExpandingMode.STACK_EXPAND时，展开时展开符号会顺时针旋转90°。<br/>默认值：`$r('sys.symbol.chevron_forward').fontSize('20vp').padding('2vp')`  |
+| symbol  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 是   | Menu子菜单展开符号。<br/>1、子菜单的展开样式为SubMenuExpandingMode.SIDE_EXPAND时，不显示展开符号。<br/>2、子菜单的展开样式为SubMenuExpandingMode.EMBEDDED_EXPAND时，展开时展开符号会顺时针旋转180°。展开符号默认使用`new SymbolGlyphModifier($r('sys.symbol.chevron_down')).fontSize('24vp')`。<br/>3、子菜单的展开样式为SubMenuExpandingMode.STACK_EXPAND时，展开时展开符号会顺时针旋转90°。展开符号默认使用`new SymbolGlyphModifier($r('sys.symbol.chevron_forward')).fontSize('20vp').padding('2vp')`。|
 
 ### fontSize<sup>(deprecated)</sup>
 
@@ -465,3 +465,64 @@ struct Index {
 ```
 
 ![dividerStyleMode](figures/MenudividerStyleMode.png)
+
+### 示例5（设置自定义菜单项的多级菜单）
+
+该示例通过设置subMenuBuilder属性为自定义菜单项添加多级菜单。
+
+从API版本26.0.0开始，新增[subMenuBuilder](ts-basic-components-menuitem.md#submenubuilder)属性。
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State select: boolean = true;
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.startIcon");
+  private iconStr2: ResourceStr = $r("app.media.startIcon");
+
+  @Builder
+  SubMenu() {
+    Menu() {
+      MenuItem({ content: "复制", labelInfo: "Ctrl+C" })
+      MenuItem({ content: "粘贴", labelInfo: "Ctrl+V" })
+    }
+  }
+
+  @Builder
+  SubMenuContent() {
+    Row() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      Image($r("app.media.startIcon")).width(20).height(20)
+      Text('Custom Menu Item').margin({start: LengthMetrics.vp(5)})
+    }.padding(20)
+  }
+
+  @Builder
+  MyMenu(){
+    Menu() {
+      MenuItem(this.SubMenuContent)
+      MenuItem(this.SubMenuContent)
+        .enabled(false)
+      MenuItem(this.SubMenuContent).subMenuBuilder(this.SubMenu)
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('click to show menu')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .bindMenu(this.MyMenu)
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![subMenuBuilder](figures/subMenuBuilder.jpg)

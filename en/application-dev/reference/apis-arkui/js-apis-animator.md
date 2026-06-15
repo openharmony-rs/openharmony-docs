@@ -1,8 +1,8 @@
 # @ohos.animator (Animator)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -967,7 +967,7 @@ class DateT {
 }
 ```
 
-  ![en-us_image_00007](figures/en-us_image_00007.gif)
+  ![en-us_image_00007](figures/js-animator-example.gif)
 
 ### ArkTS-based Declarative Development Paradigm
 

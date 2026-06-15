@@ -1,4 +1,4 @@
-# crypto framework错误码
+# cryptoFramework错误码
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -70,7 +70,7 @@ Parameter check failed.
 
 **错误信息**
 
-Invalid function call. 
+Invalid function call.
 
 **错误描述**
 

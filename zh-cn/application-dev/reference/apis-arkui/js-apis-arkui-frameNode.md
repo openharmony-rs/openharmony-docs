@@ -1892,7 +1892,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_dispose](figures/zh-cn_image_dispose.gif)
+![zh-cn_image_dispose](figures/image-dispose.gif)
 
 ### commonAttribute<sup>12+</sup>
 
@@ -2423,7 +2423,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_disposeTree](figures/zh-cn_image_disposeTree.gif)
+![zh-cn_image_disposeTree](figures/image-disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 
@@ -5358,7 +5358,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API 15 and will not be threw above API 24. [since 15 - 24] |
+| 100021   | The FrameNode is not modifiable.<br>适用版本：15-24 |
 
 **示例：**
 

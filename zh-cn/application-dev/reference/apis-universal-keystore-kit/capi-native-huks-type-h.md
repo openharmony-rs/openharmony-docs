@@ -9,15 +9,16 @@
 
 ## 概述
 
-提供huks中的枚举变量、结构体定义与宏定义。
+提供通用密钥库（HUKS）中的枚举变量、结构体定义、宏定义与错误码。
 
 **引用文件：** <huks/native_huks_type.h>
 
 **库：** libhuks_ndk.z.so
 
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：** 
 
-在API 9-19，系统能力为SystemCapability.Security.Huks；从API 20起，系统能力变更为SystemCapability.Security.Huks.Core
+- API version 20+：SystemCapability.Security.Huks.Core
+- API version 9-19：SystemCapability.Security.Huks
 
 **起始版本：** 9
 
@@ -424,11 +425,11 @@ enum OH_Huks_ErrCode
 | OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017 | 同名密钥已存在。<br>**起始版本：** 20 |
 | OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 | 输入的参数无效。<br>**起始版本：** 20 |
 | OH_HUKS_ERR_CODE_ITEM_EXISTS = 12000019 | 该项实体已存在。<br>**起始版本：** 22 |
-| OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | 提供者或Ukey内部执行失败。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | 提供者或UKey内部执行失败。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | PIN码被锁定。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | PIN码错误。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | PIN码未认证通过。<br>**起始版本：** 22 |
-| OH_HUKS_ERR_CODE_BUSY = 12000024 | 提供者或Ukey中的资源正在被使用。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_BUSY = 12000024 | 提供者或UKey中的资源正在被使用。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_EXCEED_LIMIT = 12000025 | 资源超过限制。<br>**起始版本：** 22 |
 
 ### OH_Huks_TagType
@@ -691,7 +692,7 @@ enum OH_Huks_Tag
 | OH_HUKS_TAG_KEY_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1007 | 密钥标记，类型可在枚举[OH_Huks_KeyFlag](capi-native-huks-type-h.md#oh_huks_keyflag)选择。 |
 | OH_HUKS_TAG_IS_ASYNCHRONIZED = OH_HUKS_TAG_TYPE_UINT \| 1008 | 是否异步。 |
 | OH_HUKS_TAG_KEY_DOMAIN = OH_HUKS_TAG_TYPE_UINT \| 1011 | 密钥域。 |
-| OH_HUKS_TAG_IS_DEVICE_PASSWORD_SET = OH_HUKS_TAG_TYPE_BOOL \| 1012 | 表示密钥锁屏密码访问控制字段，可限制密钥只有在用户设置了锁屏密码时可用。<br> True表示只有在密码设置时才能生成和使用密钥。<br>**起始版本：** 11 |
+| OH_HUKS_TAG_IS_DEVICE_PASSWORD_SET = OH_HUKS_TAG_TYPE_BOOL \| 1012 | 表示密钥锁屏密码访问控制字段，可限制密钥只有在用户设置了锁屏密码时可用。<br> true表示只有在密码设置时才能生成和使用密钥。false表示不需要设置密码即能生成和使用密钥。<br>**起始版本：** 11 |
 | OH_HUKS_TAG_AE_TAG = OH_HUKS_TAG_TYPE_BYTES \| 10009 | 用于传入GCM模式中的AEAD数据的字段。 |
 | OH_HUKS_TAG_SYMMETRIC_KEY_DATA = OH_HUKS_TAG_TYPE_BYTES \| 20001 | 对称密钥数据。 |
 | OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA = OH_HUKS_TAG_TYPE_BYTES \| 20002 | 非对称密钥公钥数据。 |

@@ -247,7 +247,7 @@ onPatternComplete(callback: (input: Array\<number\>) => void)
 
 ### onDotConnect<sup>11+</sup>
 
-onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\>)
+onDotConnect(callback: import('../api/@ohos.base').Callback\<number\>)
 
 密码输入选中宫格圆点时触发该回调。
 
@@ -267,7 +267,7 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 | 参数名 | 类型            | 必填 | 说明                                                         |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| callback  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 是   | 密码输入选中宫格圆点时触发该回调。 |
+| callback  | import('../api/@ohos.base').[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 是   | 密码输入选中宫格圆点时触发该回调。 |
 
 ## CircleStyleOptions<sup>12+</sup>对象说明
 

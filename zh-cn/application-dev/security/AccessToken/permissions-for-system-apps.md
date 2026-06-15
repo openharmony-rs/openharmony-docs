@@ -5005,6 +5005,22 @@
 
 **起始版本**：20
 
+## ohos.permission.kernel.READ_PROTECT_RANGE
+
+允许系统应用或系统服务访问加密应用的代码文件。
+
+应用或服务拥有此权限后，可访问代码文件保护范围。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
 ## ohos.permission.VIRUS_PROTECTION_SERVICE
 
 允许应用启动病毒终止任务。
@@ -6258,5 +6274,47 @@
 **是否支持证书授权**：true
 
 **支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.QUERY_SPACE_OPTIMIZATION
+
+允许应用查询空间优化的效果。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.ARKWEBCORE_SYS_CAP
+
+允许系统应用调用ArkWebCore的扩展功能。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.VEHICLE_THERMAL
+
+允许应用访问座舱设备温控信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
 
 **起始版本**：26.0.0

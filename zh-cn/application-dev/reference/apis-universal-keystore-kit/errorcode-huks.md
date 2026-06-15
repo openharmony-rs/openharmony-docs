@@ -122,15 +122,15 @@ Invalid ``${messageInfo}``.
 
 **错误信息**
 
-Crypto engine error or Ukey driver error.
+Crypto engine error or UKey driver error.
 
 **错误描述**
 
-算法库操作失败或者Ukey驱动失败。
+算法库操作失败或者UKey驱动失败。
 
 **可能原因**
 
-该错误码表示算法库操作失败或者Ukey驱动失败，可能原因如下。
+该错误码表示算法库操作失败或者UKey驱动失败，可能原因如下。
 
 1. 算法库加解密错误，可能是密文数据不对。
 2. 密钥参数不正确。
@@ -193,7 +193,7 @@ This authentication token timed out.
 
 **可能原因**
 
-该密钥设置了用户认证访问控制属性，由于使用时间窗timeout导致无法通过认证。
+该密钥设置了用户认证访问控制属性，并指定了认证超时时间（timeout）。由于密钥init操作后未在timeout时间窗内完成用户认证，认证令牌超时失效，导致当前密钥会话失效。
 
 **处理步骤**
 
@@ -250,13 +250,15 @@ Device environment or input parameter abnormal.
 **可能原因**
 
 <!--RP1-->
-外部的硬件出错，文件错误等。
-<!--RP1End-->
+外部硬件出错、文件错误或输入参数异常。
+ <!--RP1End-->
 
 **处理步骤**
 
 <!--RP2-->
-在社区反馈返回的错误码及日志。
+1. 检查传入的参数是否合法，确认参数类型和取值范围符合要求。
+2. 检查设备环境是否正常，确认硬件和系统状态无异常。
+3. 如以上排查均未发现问题，将错误码与日志提交到社区进行反馈。
 <!--RP2End-->
 
 ## 12000013 密钥设置生物访问控制时，待绑定的凭据不存在
@@ -374,7 +376,7 @@ The provider is already registered.
 
 **可能原因**
 
-注册的provider已存在。
+重复注册同名provider，或之前注册的provider未注销。
 
 **处理步骤**
 
@@ -398,15 +400,15 @@ The provider operation failed.
 
 根据下游返回的error code或者error message查看下游模块具体报错的原因。
 
-## 12000021 Ukey PIN码被锁
+## 12000021 UKey PIN码被锁
 
 **错误信息**
 
-The Ukey PIN is locked.
+The UKey PIN is locked.
 
 **错误描述**
 
-Ukey PIN码被锁。
+UKey PIN码被锁。
 
 **可能原因**
 
@@ -414,17 +416,17 @@ PIN码输入错误次数过多导致被锁。
 
 **处理步骤**
 
-咨询相关银行，解锁Ukey。
+咨询相关银行，解锁UKey。
 
-## 12000022 Ukey PIN码错误
+## 12000022 UKey PIN码错误
 
 **错误信息**
 
-The Ukey PIN is incorrect.
+The UKey PIN is incorrect.
 
 **错误描述**
 
-Ukey PIN码错误。
+UKey PIN码错误。
 
 **可能原因**
 
@@ -434,15 +436,15 @@ PIN码输入错误。
 
 输入正确PIN码。
 
-## 12000023 Ukey PIN码未认证
+## 12000023 UKey PIN码未认证
 
 **错误信息**
 
-The Ukey PIN is not authenticated.
+The UKey PIN is not authenticated.
 
 **错误描述**
 
-Ukey PIN码未认证。
+UKey PIN码未认证。
 
 **可能原因**
 
@@ -450,13 +452,13 @@ Ukey PIN码未认证。
 
 **处理步骤**
 
-执行操作需要进行PIN码认证，但实际PIN码尚未认证。
+先完成UKey PIN码认证，再执行需要认证的操作。
 
 ## 12000024 设备或资源繁忙
 
 **错误信息**
 
-The provider or Ukey is busy.
+The provider or UKey is busy.
 
 **错误描述**
 
@@ -468,7 +470,7 @@ The provider or Ukey is busy.
 
 **处理步骤**
 
-再次重试或者插拔Ukey后重试。
+再次重试或者插拔UKey后重试。
 
 ## 12000025 资源超过限制
 
@@ -487,3 +489,22 @@ The resource exceeds the limit.
 **处理步骤**
 
 检查是否有未释放资源，释放已有资源后重试。
+
+## 12000026 安全元件故障
+
+**错误信息**
+
+the secure element is not available.
+
+**错误描述**
+
+安全元件故障。
+
+**可能原因**
+
+安全元件故障。
+
+**处理步骤**
+
+1. 稍等片刻后重试，或重启设备后重试。
+2. 如以上操作均无法解决故障，将错误码与日志提交到社区进行反馈。

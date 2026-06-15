@@ -146,7 +146,7 @@ getMaterialInfo(): MaterialInfo
 
 ## Material
 
-UI侧的系统材质对象基类。
+系统材质对象基类。
 
 **起始版本：** 26.0.0
 

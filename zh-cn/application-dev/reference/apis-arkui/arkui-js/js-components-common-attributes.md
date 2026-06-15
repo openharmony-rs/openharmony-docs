@@ -107,7 +107,7 @@ export default {
 }
 ```
 
-![zh-cn-attributes](figures/zh-cn-attributes.gif)
+![zh-cn-attributes](figures/attributes.gif)
 
 ### 示例2
 
@@ -145,4 +145,4 @@ export default {
 }
 ```
 
-![zh-cn_image1](figures/zh-cn_image1.png)
+![zh-cn_image1](figures/image1.png)

@@ -182,13 +182,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Animation curve. The parameter type is [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve). The default value is **ARKUI_CURVE_LINEAR**.|
+| .value[0].i32 | Animation curve. The parameter type is [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve). The default value is **ARKUI_CURVE_LINEAR**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Animation curve. The parameter type is [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve). The default value is **ARKUI_CURVE_LINEAR**.|
+| .value[0].i32 | Animation curve. The parameter type is [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve). The default value is **ARKUI_CURVE_LINEAR**.|
 
 ## NODE_SWIPER_ITEM_SPACE
 

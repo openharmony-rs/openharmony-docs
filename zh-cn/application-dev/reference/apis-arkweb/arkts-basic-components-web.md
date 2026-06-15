@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-提供具有网页显示能力的Web组件，Web控制能力请参考[模块描述](arkts-apis-webview.md)。
+Web组件是ArkWeb Kit提供的具有网页显示能力的UI组件，用于在应用内嵌入和展示网页内容。开发者可通过Web组件加载在线网页和本地网页，支持隐私模式浏览、同步渲染模式、共享渲染进程等特性，满足混合开发、内容嵌入、浏览器类应用等多种场景下的网页展示需求。Web组件的控制器（WebviewController）及相关控制能力由[模块描述](arkts-apis-webview.md)提供。在使用Web组件时需注意：同一页面内的多个Web组件应分别绑定不同的WebviewController实例以保证独立性和性能隔离；移动设备上当Web实例超过10个时系统会主动回收后台页面数据。
 
 <!--RP1--><!--RP1End-->
 

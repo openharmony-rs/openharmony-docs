@@ -498,7 +498,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Shape. The parameter type is [ArkUI_SliderBlockStyle](capi-native-type-h.md#arkui_sliderblockstyle).|
 | .string? | This parameter is optional, and its value depends on the shape.<br>**ARKUI_SLIDER_BLOCK_STYLE_IMAGE**: image resource of the slider thumb. Example: /pages/common/icon.png.<br>**ARKUI_SLIDER_BLOCK_STYLE_SHAPE**: custom shape of the slider thumb. In this case, the width and height values in the defined shape do not represent the actual size of the thumb; they are scaled proportionally to ensure the thumb displays correctly.<br>There are four types. For the path type, **.string** indicates the command string for drawing the path.|
-| .value[1].i32 | Shape type. The parameter type is [ArkUI_ShapeType](capi-native-type-h.md#arkui_shapetype). The value is **ARKUI_SHAPE_TYPE_RECTANGLE** for the rectangle type, **ARKUI_SHAPE_TYPE_CIRCLE** for the circle type, **ARKUI_SHAPE_TYPE_ELLIPSE** for the ellipse type, and **ARKUI_SHAPE_TYPE_PATH** for the path type.|
+| .value[1].i32 | Shape type. The parameter type is [ArkUI_ShapeType](capi-native-type-visual-h.md#arkui_shapetype). The value is **ARKUI_SHAPE_TYPE_RECTANGLE** for the rectangle type, **ARKUI_SHAPE_TYPE_CIRCLE** for the circle type, **ARKUI_SHAPE_TYPE_ELLIPSE** for the ellipse type, and **ARKUI_SHAPE_TYPE_PATH** for the path type.|
 | .value[2].f32 | Width of the rectangle, circle, ellipse, or path type.|
 | .value[3].f32 | Height of the rectangle, circle, ellipse, or path type.|
 | .value[4].f32 | Width of the rounded corner of the rectangle type.|
@@ -510,7 +510,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Shape. The parameter type is [ArkUI_SliderBlockStyle](capi-native-type-h.md#arkui_sliderblockstyle).|
 | .string? | This parameter is optional, and its value depends on the shape.<br>**ARKUI_SLIDER_BLOCK_STYLE_IMAGE**: image resource of the slider thumb. Example: /pages/common/icon.png.<br>**ARKUI_SLIDER_BLOCK_STYLE_SHAPE**: custom shape of the slider thumb.<br>There are four types. For the path type, **.string** indicates the command string for drawing the path.|
-| .value[1].i32 | Shape type. The parameter type is [ArkUI_ShapeType](capi-native-type-h.md#arkui_shapetype). The value is **ARKUI_SHAPE_TYPE_RECTANGLE** for the rectangle type, **ARKUI_SHAPE_TYPE_CIRCLE** for the circle type, **ARKUI_SHAPE_TYPE_ELLIPSE** for the ellipse type, and **ARKUI_SHAPE_TYPE_PATH** for the path type.|
+| .value[1].i32 | Shape type. The parameter type is [ArkUI_ShapeType](capi-native-type-visual-h.md#arkui_shapetype). The value is **ARKUI_SHAPE_TYPE_RECTANGLE** for the rectangle type, **ARKUI_SHAPE_TYPE_CIRCLE** for the circle type, **ARKUI_SHAPE_TYPE_ELLIPSE** for the ellipse type, and **ARKUI_SHAPE_TYPE_PATH** for the path type.|
 | .value[2].f32 | Width of the rectangle, circle, ellipse, or path type.|
 | .value[3].f32 | Height of the rectangle, circle, ellipse, or path type.|
 | .value[4].f32 | Width of the rounded corner of the rectangle type.|

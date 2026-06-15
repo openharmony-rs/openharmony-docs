@@ -274,7 +274,7 @@ Subscribes to position and size change events of the component (**EmbeddedCompon
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -324,7 +324,7 @@ Unsubscribes from position and size change events of the component (**EmbeddedCo
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -393,7 +393,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
@@ -476,7 +476,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**

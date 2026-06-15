@@ -1,4 +1,4 @@
-# 线程模型
+# FA模型的线程模型
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

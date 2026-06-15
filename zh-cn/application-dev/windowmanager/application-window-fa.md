@@ -1,8 +1,8 @@
-# 管理应用窗口（FA模型）
+# FA模型的应用窗口管理
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -63,7 +63,7 @@
 
    - 可以通过`window.createWindow`接口创建子窗口。
 
-     非[自由窗口](../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../windowmanager/immersive-window-feature.md#沉浸式布局)。
+     非[自由窗口](../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
      自由窗口状态下，子窗口参数[decorEnabled](../reference/apis-arkui/arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
      

@@ -15,7 +15,7 @@
 
 保存控件效果如图所示。
 
-![zh-cn_image_0000001701740676](figures/zh-cn_image_0000001701740676.png)
+![save-control-effect](figures/save-control-effect.png)
 
 ## 约束与限制
 

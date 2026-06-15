@@ -30,7 +30,7 @@ Invalid parameter value.
 
 4. 系统时间晚于授权到期时间。
 
-5. Fd小于0。
+5. fd（文件描述符，File Descriptor）小于0。
 
 6. tokenId等于0。
 
@@ -42,7 +42,7 @@ Invalid parameter value.
 
 **处理步骤**
 
-请检查并传入符合要求的参数，包括账号长度、类型、aesKey、iv格式、系统时间与授权时间关系、Fd、tokenId、包名、appIndex、userId等。
+请检查并传入符合要求的参数，包括账号长度、类型、aesKey、iv格式、系统时间与授权时间关系、fd、tokenId、包名、appIndex、userId等。
 
 ## 19100002 加解密出错
 
@@ -72,7 +72,7 @@ Credential task time out.
 
 **错误描述**
 
-DLP文件加解密操作在规定时间内未完成，导致操作超时失败。
+DLP（数据防泄漏，Data Loss Prevention）文件加解密操作在规定时间内未完成，导致操作超时失败。
 
 **可能原因**
 
@@ -238,11 +238,11 @@ DLP相关的系统服务无法正常运行，导致相关功能不可用。
 
 1. DLP权限服务无法正常启动。
 
-2. DLP权限服务的RPC对象无法获取。
+2. DLP权限服务的RPC（远程过程调用，Remote Procedure Call）对象无法获取。
 
 3. DLP权限服务依赖的其他服务无法正常启动。
 
-4. IPC数据读取写入失败。
+4. IPC（进程间通信，Inter-Process Communication）数据读取写入失败。
 
 5. 服务未初始化。
 

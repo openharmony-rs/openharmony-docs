@@ -195,8 +195,8 @@ NODE_LINEAR_GRADIENT = 14
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 线性渐变的起始角度，当[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)为ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，angle属性生效，否则按direction为主要布局方式。0点方向顺时针旋转为正向角度，默认值：180。 |
-| .value[1].i32 | 线性渐变的方向，设置除ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM的线性渐变方向后，angle不生效。数据类型[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)。 |
+| .value[0].f32 | 线性渐变的起始角度，当[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)为ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，angle属性生效，否则按direction为主要布局方式。0点方向顺时针旋转为正向角度，默认值：180。 |
+| .value[1].i32 | 线性渐变的方向，设置除ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM的线性渐变方向后，angle不生效。数据类型[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)。 |
 | .value[2].i32 | 为渐变的颜色重复着色，默认值 false。 |
 | .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过： |
 | colors | 渐变色颜色。 |
@@ -456,13 +456,13 @@ NODE_SHADOW = 28
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 设置当前组件阴影效果，参数类型[ArkUI_ShadowStyle](capi-native-type-h.md#arkui_shadowstyle)。 |
+| .value[0].i32 | 设置当前组件阴影效果，参数类型[ArkUI_ShadowStyle](capi-native-type-visual-h.md#arkui_shadowstyle)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 设置当前组件阴影效果，参数类型[ArkUI_ShadowStyle](capi-native-type-h.md#arkui_shadowstyle)。 |
+| .value[0].i32 | 设置当前组件阴影效果，参数类型[ArkUI_ShadowStyle](capi-native-type-visual-h.md#arkui_shadowstyle)。 |
 
 ## NODE_CUSTOM_SHADOW
 
@@ -484,7 +484,7 @@ NODE_CUSTOM_SHADOW = 29
 | .value[1]?.i32 | 是否开启智能取色，0代表不开启，1代表开启，默认不开启。 |
 | .value[2]?.f32 | 阴影X轴偏移量，单位为px。 |
 | .value[3]?.f32 | 阴影Y轴偏移量，单位为px。 |
-| .value[4]?.i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
+| .value[4]?.i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
 | .value[5]?.u32 | 阴影颜色，0xargb格式，形如 0xFFFF0000 表示红色。 |
 | .value[6]?.u32 | 阴影是否内部填充，0表示不填充，1表示填充。 |
 
@@ -496,7 +496,7 @@ NODE_CUSTOM_SHADOW = 29
 | .value[1].i32 | 是否开启智能取色。 |
 | .value[2].f32 | 阴影X轴偏移量，单位为px。 |
 | .value[3].f32 | 阴影Y轴偏移量，单位为px。 |
-| .value[4].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
+| .value[4].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
 | .value[5].u32 | 阴影颜色，0xargb格式，形如 0xFFFF0000 表示红色。 |
 | .value[6].u32 | 阴影是否内部填充，0表示不填充，1表示填充。 |
 
@@ -516,7 +516,7 @@ NODE_BACKGROUND_BLUR_STYLE = 32
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示模糊类型，取[ArkUI_BlurStyle](capi-native-type-h.md#arkui_blurstyle)枚举值。 |
+| .value[0].i32 | 表示模糊类型，取[ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle)枚举值。 |
 | .value[1]?.i32 | 表示深浅色模式，取[ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode)枚举值。 |
 | .value[2]?.i32 | 表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。 |
 | .value[3]?.f32 | 表示模糊效果程度，取[0.0,1.0]范围内的值。 |
@@ -527,7 +527,7 @@ NODE_BACKGROUND_BLUR_STYLE = 32
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 表示模糊类型，取[ArkUI_BlurStyle](capi-native-type-h.md#arkui_blurstyle)枚举值。 |
+| .value[0].i32 | 表示模糊类型，取[ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle)枚举值。 |
 | .value[1].i32 | 表示深浅色模式，取[ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode)枚举值。 |
 | .value[2].i32 | 表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。 |
 | .value[3].f32 | 表示模糊效果程度，取[0.0,1.0]范围内的值。 |
@@ -608,10 +608,10 @@ NODE_OPACITY_TRANSITION = 34
 | -- | -- |
 | .value[0].f32 | 表示起终点的透明度值。 |
 | .value[1].i32 | 表示动画时长，单位ms。 |
-| .value[2].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)枚举值。 |
+| .value[2].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[3]?.i32 | 表示动画延迟时长，单位ms。 |
 | .value[4]?.i32 | 表示动画播放次数。 |
-| .value[5]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode)枚举值。 |
+| .value[5]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
 | .value[6]?.f32 | 表示动画播放速度。 |
 
 **返回：**
@@ -620,10 +620,10 @@ NODE_OPACITY_TRANSITION = 34
 | -- | -- |
 | .value[0].f32 | 表示起终点的透明度值。 |
 | .value[1].i32 | 表示动画时长，单位ms。 |
-| .value[2].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)枚举值。 |
+| .value[2].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[3].i32 | 表示动画延迟时长，单位ms。 |
 | .value[4].i32 | 表示动画播放次数。 |
-| .value[5].i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode)枚举值。 |
+| .value[5].i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
 | .value[6].f32 | 表示动画播放速度。 |
 
 ## NODE_ROTATE_TRANSITION
@@ -648,10 +648,10 @@ NODE_ROTATE_TRANSITION = 35
 | .value[3].f32 | 表示角度。 |
 | .value[4].f32 | 表示视距，默认值：0.0f。 |
 | .value[5].i32 | 表示动画时长，单位ms。 |
-| .value[6].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)枚举值。 |
+| .value[6].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[7]?.i32 | 表示动画延迟时长，单位ms。 |
 | .value[8]?.i32 | 表示动画播放次数。 |
-| .value[9]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode)枚举值。 |
+| .value[9]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
 | .value[10]?.f32 | 表示动画播放速度。 |
 
 **返回：**
@@ -664,10 +664,10 @@ NODE_ROTATE_TRANSITION = 35
 | .value[3].f32 | 表示角度。 |
 | .value[4].f32 | 表示视距。 |
 | .value[5].i32 | 表示动画时长，单位ms。 |
-| .value[6].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)枚举值。 |
+| .value[6].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[7].i32 | 表示动画延迟时长，单位ms。 |
 | .value[8].i32 | 表示动画播放次数。 |
-| .value[9].i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode)枚举值。 |
+| .value[9].i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
 | .value[10].f32 | 表示动画播放速度。 |
 
 ## NODE_SCALE_TRANSITION
@@ -690,10 +690,10 @@ NODE_SCALE_TRANSITION = 36
 | .value[1].f32 | 纵向放大倍数。 |
 | .value[2].f32 | 竖向放大倍数。 |
 | .value[3].i32 | 表示动画时长，单位ms。 |
-| .value[4].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)枚举值。 |
+| .value[4].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[5]?.i32 | 表示动画延迟时长，单位ms。 |
 | .value[6]?.i32 | 表示动画播放次数。 |
-| .value[7]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode)枚举值。 |
+| .value[7]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
 | .value[8]?.f32 | 表示动画播放速度。 |
 
 **返回：**
@@ -704,10 +704,10 @@ NODE_SCALE_TRANSITION = 36
 | .value[1].f32 | 纵向放大倍数。 |
 | .value[2].f32 | 竖向放大倍数。 |
 | .value[3].i32 | 表示动画时长，单位ms。 |
-| .value[4].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)枚举值。 |
+| .value[4].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[5].i32 | 表示动画延迟时长，单位ms。 |
 | .value[6].i32 | 表示动画播放次数。 |
-| .value[7].i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode)枚举值。 |
+| .value[7].i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
 | .value[8].f32 | 表示动画播放速度。 |
 
 ## NODE_TRANSLATE_TRANSITION
@@ -730,10 +730,10 @@ NODE_TRANSLATE_TRANSITION = 37
 | .value[1].f32 | 表示纵向平移距离值，单位为vp。默认值为0.0vp。 |
 | .value[2].f32 | 表示竖向平移距离值，单位为vp。默认值为0.0vp。 |
 | .value[3].i32 | 表示动画时长，单位ms。 |
-| .value[4].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)枚举值。 |
+| .value[4].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[5]?.i32 | 表示动画延迟时长，单位ms。 |
 | .value[6]?.i32 | 表示动画播放次数。 |
-| .value[7]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode)枚举值。 |
+| .value[7]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
 | .value[8]?.f32 | 表示动画播放速度。 |
 
 **返回：**
@@ -744,10 +744,10 @@ NODE_TRANSLATE_TRANSITION = 37
 | .value[1].f32 | 表示纵向平移距离值，单位为vp。 |
 | .value[2].f32 | 表示竖向平移距离值，单位为vp。 |
 | .value[3].i32 | 表示动画时长，单位ms。 |
-| .value[4].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)枚举值。 |
+| .value[4].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[5].i32 | 表示动画延迟时长，单位ms。 |
 | .value[6].i32 | 表示动画播放次数。 |
-| .value[7].i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode)枚举值。 |
+| .value[7].i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
 | .value[8].f32 | 表示动画播放速度。 |
 
 ## NODE_MOVE_TRANSITION
@@ -766,24 +766,24 @@ NODE_MOVE_TRANSITION = 38
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_TransitionEdge](capi-native-type-h.md#arkui_transitionedge)。 |
+| .value[0].i32 | 参数类型[ArkUI_TransitionEdge](capi-native-type-visual-h.md#arkui_transitionedge)。 |
 | .value[1].i32 | 表示动画时长，单位ms。 |
-| .value[2].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)枚举值。 |
+| .value[2].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[3]?.i32 | 表示动画延迟时长，单位ms。 |
 | .value[4]?.i32 | 表示动画播放次数。 |
-| .value[5]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode)枚举值。 |
+| .value[5]?.i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
 | .value[6]?.f32 | 表示动画播放速度。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_TransitionEdge](capi-native-type-h.md#arkui_transitionedge)。 |
+| .value[0].i32 | 参数类型[ArkUI_TransitionEdge](capi-native-type-visual-h.md#arkui_transitionedge)。 |
 | .value[1].i32 | 表示动画时长，单位ms。 |
-| .value[2].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)枚举值。 |
+| .value[2].i32 | 表示动画曲线类型，取[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)枚举值。 |
 | .value[3].i32 | 表示动画延迟时长，单位ms。 |
 | .value[4].i32 | 表示动画播放次数。 |
-| .value[5].i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode)枚举值。 |
+| .value[5].i32 | 表示动画播放模式，取[ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode)枚举值。 |
 | .value[6].f32 | 表示动画播放速度。 |
 
 ## NODE_SWEEP_GRADIENT
@@ -882,11 +882,11 @@ NODE_MASK = 45
 
 | 参数项 | 描述 |
 | -- | -- |
-| 1.rect类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_RECTANGLE；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp。 |
-| 2.circle类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_CIRCLE；<br>.value[4].f32：圆形宽度，单位为vp；<br>.value[5].f32：圆形高度，单位为vp。 |
-| 3.ellipse类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_ELLIPSE；<br>.value[4].f32：椭圆形宽度，单位为vp；<br>.value[5].f32：椭圆形高度，单位为vp。 |
-| 4.path类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PATH；<br>.value[4].f32：路径宽度，单位为vp；<br>.value[5].f32：路径高度，单位为vp；<br>.string：路径绘制的命令字符串。 |
-| 5.progress类型 | .value[0].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PROGRESS；<br>.value[1].f32：进度遮罩的当前值；<br>.value[2].f32：进度遮罩的最大值；<br>.value[3].u32：进度遮罩的颜色。 |
+| 1.rect类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_RECTANGLE；<br>.value[4].f32：矩形宽度，单位为vp；<br>.value[5].f32：矩形高度，单位为vp；<br>.value[6].f32：矩形圆角宽度，单位为vp；<br>.value[7].f32：矩形圆角高度，单位为vp；<br>.value[8]?.f32：矩形形状的左上圆角半径，单位为vp；<br>.value[9]?.f32：矩形形状的左下圆角半径，单位为vp；<br>.value[10]?.f32：矩形形状的右上圆角半径，单位为vp；<br>.value[11]?.f32：矩形形状的右下圆角半径，单位为vp。 |
+| 2.circle类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_CIRCLE；<br>.value[4].f32：圆形宽度，单位为vp；<br>.value[5].f32：圆形高度，单位为vp。 |
+| 3.ellipse类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_ELLIPSE；<br>.value[4].f32：椭圆形宽度，单位为vp；<br>.value[5].f32：椭圆形高度，单位为vp。 |
+| 4.path类型 | .value[0].u32：填充颜色，0xargb类型；<br>.value[1].u32：描边颜色，0xargb类型；<br>.value[2].f32：描边宽度，单位为vp；<br>.value[3].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PATH；<br>.value[4].f32：路径宽度，单位为vp；<br>.value[5].f32：路径高度，单位为vp；<br>.string：路径绘制的命令字符串。 |
+| 5.progress类型 | .value[0].i32：遮罩类型，参数类型[ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype)，遮罩类型枚举值为ARKUI_MASK_TYPE_PROGRESS；<br>.value[1].f32：进度遮罩的当前值；<br>.value[2].f32：进度遮罩的最大值；<br>.value[3].u32：进度遮罩的颜色。 |
 
 **返回：**
 
@@ -914,15 +914,15 @@ NODE_BLEND_MODE = 46
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 控制当前组件的混合模式类型，参数类型[ArkUI_BlendMode](capi-native-type-h.md#arkui_blendmode)，默认值为ARKUI_BLEND_MODE_NONE。 |
-| .value[1]?.i32 | blendMode实现方式是否离屏，参数类型[ArkUI_BlendApplyType](capi-native-type-h.md#arkui_blendapplytype)，默认值为BLEND_APPLY_TYPE_FAST。 |
+| .value[0].i32 | 控制当前组件的混合模式类型，参数类型[ArkUI_BlendMode](capi-native-type-visual-h.md#arkui_blendmode)，默认值为ARKUI_BLEND_MODE_NONE。 |
+| .value[1]?.i32 | blendMode实现方式是否离屏，参数类型[ArkUI_BlendApplyType](capi-native-type-visual-h.md#arkui_blendapplytype)，默认值为BLEND_APPLY_TYPE_FAST。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 控制当前组件的混合模式类型，参数类型[ArkUI_BlendMode](capi-native-type-h.md#arkui_blendmode)，默认值为ARKUI_BLEND_MODE_NONE。 |
-| .value[1].i32 | blendMode实现方式是否离屏，参数类型[ArkUI_BlendApplyType](capi-native-type-h.md#arkui_blendapplytype)，默认值为BLEND_APPLY_TYPE_FAST。 |
+| .value[0].i32 | 控制当前组件的混合模式类型，参数类型[ArkUI_BlendMode](capi-native-type-visual-h.md#arkui_blendmode)，默认值为ARKUI_BLEND_MODE_NONE。 |
+| .value[1].i32 | blendMode实现方式是否离屏，参数类型[ArkUI_BlendApplyType](capi-native-type-visual-h.md#arkui_blendapplytype)，默认值为BLEND_APPLY_TYPE_FAST。 |
 
 ## NODE_GRAY_SCALE
 
@@ -1116,13 +1116,13 @@ NODE_RENDER_FIT = 77
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-h.md#arkui_renderfit)枚举值。 |
+| .value[0].i32 | 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-visual-h.md#arkui_renderfit)枚举值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-h.md#arkui_renderfit)枚举值。 |
+| .value[0].i32 | 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-visual-h.md#arkui_renderfit)枚举值。 |
 
 ## NODE_OUTLINE_COLOR
 
@@ -1195,7 +1195,7 @@ NODE_FOREGROUND_BLUR_STYLE = 82
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示内容模糊样式，取[ArkUI_BlurStyle](capi-native-type-h.md#arkui_blurstyle)枚举值。 |
+| .value[0].i32 | 表示内容模糊样式，取[ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle)枚举值。 |
 | .value[1]?.i32 | 表示内容模糊效果使用的深浅色模式，取[ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode)枚举值。 |
 | .value[2]?.i32 | 表示内容模糊效果使用的取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。 |
 | .value[3]?.f32 | 表示模糊效果程度，取[0.0,1.0]范围内的值。 |
@@ -1206,7 +1206,7 @@ NODE_FOREGROUND_BLUR_STYLE = 82
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 表示内容模糊样式，取[ArkUI_BlurStyle](capi-native-type-h.md#arkui_blurstyle)枚举值。 |
+| .value[0].i32 | 表示内容模糊样式，取[ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle)枚举值。 |
 | .value[1].i32 | 表示内容模糊效果使用的深浅色模式，取[ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode)枚举值。 |
 | .value[2].i32 | 表示内容模糊效果使用的取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。 |
 | .value[3].f32 | 表示模糊效果程度，取[0.0,1.0]范围内的值。 |

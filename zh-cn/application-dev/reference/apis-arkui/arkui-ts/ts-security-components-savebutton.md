@@ -15,6 +15,8 @@
 
 在API version 19及之前的版本中，授权持续时间为10秒；在API version 20及之后的版本中，授权持续时间为1分钟。
 
+开发者应在授权有效期内调用媒体库接口获取文件句柄，并完成创建媒体资源等需要临时授权的操作。授权到期后，已通过授权获取的文件句柄仍可继续进行读写操作，不受授权时间限制。
+
 > **说明：**
 >
 > 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -86,8 +88,8 @@ SaveButton(options: SaveButtonOptions)
 
 > **说明：**
 >
-> - 建议icon或text至少传入一个。<br>
-> - 如果icon、text都不传入，SaveButton中的options参数不生效，创建的SaveButton为默认样式，默认样式：
+> - 建议icon或text至少传入一个。<br/>
+> - 如果icon、text都不传入，SaveButton将使用默认样式创建，默认样式：
 >
 >     - SaveIconStyle默认样式为FULL_FILLED。
 >
@@ -179,7 +181,7 @@ type SaveButtonCallback = (event: ClickEvent, result: SaveButtonOnClickResult, e
 |------------|------|-------|---------|
 | event | [ClickEvent](ts-universal-events-click.md#clickevent) | 是 | 点击事件对象，包含点击的位置、时间戳、输入设备等信息。 |
 | result | [SaveButtonOnClickResult](#savebuttononclickresult)| 是 | 授权结果。返回SUCCESS表示当前保存动作已获得临时授权，可继续访问媒体库接口；返回TEMPORARY_AUTHORIZATION_FAILED时，不应继续执行后续保存动作。返回CANCELED_BY_USER时，表示用户在授权弹窗中主动取消授权，该结果仅在调用[userCancelEvent](#usercancelevent21)并设置参数为true时才会返回；若未设置userCancelEvent(true)，用户取消授权时将返回TEMPORARY_AUTHORIZATION_FAILED。|
-| error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 否 | 点击按钮时的错误码和错误信息。不传入该参数时为undefined。错误码0表示无错误，授权结果需通过result参数判断。<br>错误码1表示系统内部错误，包括但不限于：<br>1. IPC（Inter-Process Communication，进程间通信）通信失败。<br>2. 安全控件弹窗失败。<br>错误码2表示属性设置错误，包括但不限于：<br>1. 字体或图标设置过小。<br>2. 字体或图标与背景颜色相近。<br>3. 字体或图标颜色过于透明。<br>4. padding为负值。<br>5. 按钮被其他组件或窗口遮挡。<br>6. 文本超出控件背景范围。<br>7. 按钮超出窗口或屏幕。<br>8. 按钮整体尺寸过大。<br>9. 按钮文本被截断，显示不全。<br>10. 其他属性设置不当影响安全控件显示。 |
+| error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 否 | 点击按钮时的错误码和错误信息。不传入该参数时为undefined。授权结果需通过result参数判断。<br/>错误码1表示系统内部错误，可能原因和处理建议如下：<br/>1. IPC（Inter-Process Communication，进程间通信）通信失败。请检查系统状态后重试。<br/>2. 安全控件弹窗失败。请检查保存控件是否被遮挡或是否满足安全控件样式约束，修正后重试。<br/>错误码2表示属性设置错误，具体包括以下情况：<br/>1. 字体或图标设置过小。<br/>2. 字体或图标与背景颜色相近。<br/>3. 字体或图标颜色过于透明。<br/>4. padding为负值。<br/>5. 按钮被其他组件或窗口遮挡。<br/>6. 文本超出控件背景范围。<br/>7. 按钮超出窗口或屏幕。<br/>8. 按钮整体尺寸过大。<br/>9. 按钮文本被截断，显示不全。<br/>10. 其他属性设置不当影响安全控件显示。 |
 
 
 ## 属性
@@ -204,7 +206,7 @@ setIcon(icon: Resource)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| icon | [Resource](ts-types.md#resource) | 是 | 自定义图标资源信息，仅支持Resource类型的数据源。<br/>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](ts-basic-components-image.md)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br/>从API版本26.0.0开始，支持Symbol格式的Resource类型的数据源。<br/>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。详见[SaveButtonOptions](#savebuttonoptions)说明。 |
+| icon | [Resource](ts-types.md#resource) | 是 | 自定义图标资源信息，仅支持Resource类型的数据源。<br/>可支持的图片格式：png、jpg、jpeg、bmp、svg、webp、gif和heif等，支持的图片格式范围见[Image](ts-basic-components-image.md)。当资源为非图片资源或不支持的格式时，图标显示为空白。<br/>从API版本26.0.0开始，支持Symbol格式的Resource类型的数据源。<br/>若应用不具备ohos.permission.CUSTOMIZE_SAVE_BUTTON权限，则自定义图标设置不生效，保存控件保持默认样式。 |
 
 ### setText<sup>20+</sup>
 
@@ -242,7 +244,7 @@ iconSize(size: Dimension | SizeOptions)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| size | [Dimension](ts-types.md#dimension10) \| [SizeOptions](ts-types.md#sizeoptions) | 是 | 图标尺寸。默认值：宽高均为16vp。<br/>不支持设置百分比字符串。若设置Dimension类型入参的百分比字符串，则图标尺寸显示为默认值；若设置SizeOptions类型入参的width或height属性为百分比字符串，则图标尺寸显示为0vp。<br/>对于保存控件提供的系统图标：<br/>- 使用Dimension类型入参时，宽、高相等，均为设定值。<br/>- 使用SizeOptions类型入参时，若宽、高设定值不一致，则宽、高相等取两者较小值；若仅设定其中一个值，则取该值作为宽、高值。系统提供图标采用此规则是为保证图标的正方形显示和视觉一致性。<br/>对于自定义图标：<br/>- 使用Dimension类型入参时，宽、高相等，均为设定值。<br/>- 使用SizeOptions类型入参时，建议同时设定宽和高，此时按照指定宽、高生效；若仅设定其中一个值，则宽高均显示为该设定值。自定义图标允许灵活设定尺寸以适应不同图片比例。<br/>- 当设定的宽高与自定义图标的宽高比例不一致时，图片按[ImageFit.Cover](ts-appendix-enums.md#imagefit)的方式填充显示区域。 |
+| size | [Dimension](ts-types.md#dimension10) \| [SizeOptions](ts-types.md#sizeoptions) | 是 | 图标尺寸，支持像素单位（vp、px等）。默认值：宽高均为16vp。<br/>不支持设置百分比字符串。若设置Dimension类型入参的百分比字符串，则图标尺寸显示为默认值；若设置SizeOptions类型入参的width或height属性为百分比字符串，则图标尺寸显示为0vp。<br/>对于保存控件提供的系统图标：<br/>- 使用Dimension类型入参时，宽、高相等，均为设定值。<br/>- 使用SizeOptions类型入参时，若宽、高设定值不一致，则宽、高相等取两者较小值；若仅设定其中一个值，则取该值作为宽、高值。系统提供图标采用此规则是为保证图标的正方形显示和视觉一致性。<br/>对于自定义图标：<br/>- 使用Dimension类型入参时，宽、高相等，均为设定值。<br/>- 使用SizeOptions类型入参时，建议同时设定宽和高，此时按照指定宽、高生效；若仅设定其中一个值，则宽高均显示为该设定值。自定义图标允许灵活设定尺寸以适应不同图片比例。<br/>- 当设定的宽高与自定义图标的宽高比例不一致时，图片按[ImageFit.Cover](ts-appendix-enums.md#imagefit)的方式填充显示区域。 |
 
 ### iconBorderRadius<sup>20+</sup>
 
@@ -307,7 +309,7 @@ userCancelEvent(enabled: boolean)
 symbolIconColor(color: Array&lt;ResourceColor&gt;)
 
 设置保存控件Symbol图标颜色。
-- 需先调用[setIcon](#seticon20)设置Symbol格式的图标资源（如$r('sys.symbol.xxx')），该方法才会生效。
+- 调用本方法前，需先调用[setIcon](#seticon20)设置Symbol格式的图标资源（如$r('sys.symbol.xxx')），本方法才会生效。
 - 若未设置Symbol图标，该方法设置的颜色不会生效。
 - 建议与[symbolRenderingStrategy](#symbolrenderingstrategy)配合使用，以实现不同的渲染效果。
 
@@ -332,7 +334,7 @@ symbolIconColor(color: Array&lt;ResourceColor&gt;)
 symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 
 设置保存控件Symbol图标粗细。
-- 需先调用[setIcon](#seticon20)设置Symbol格式的图标资源（如$r('sys.symbol.xxx')），该方法才会生效。
+- 调用本方法前，需先调用[setIcon](#seticon20)设置Symbol格式的图标资源（如$r('sys.symbol.xxx')），本方法才会生效。
 - 若未设置Symbol图标，该方法设置的粗细不会生效。
 
 **起始版本：** 26.0.0
@@ -356,7 +358,7 @@ symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 
 设置保存控件Symbol图标渲染策略。
-- 需先调用[setIcon](#seticon20)设置Symbol格式的图标资源（如$r('sys.symbol.xxx')），该方法才会生效。
+- 调用本方法前，需先调用[setIcon](#seticon20)设置Symbol格式的图标资源（如$r('sys.symbol.xxx')），本方法才会生效。
 - 若未设置Symbol图标，该方法设置的渲染策略不会生效。
 - 与[symbolIconColor](#symboliconcolor)配合使用时，渲染策略会影响颜色数组的作用方式。
 

@@ -222,8 +222,8 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import image from '@ohos.multimedia.image';
-import media from '@ohos.multimedia.media';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
 
 let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
 let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };

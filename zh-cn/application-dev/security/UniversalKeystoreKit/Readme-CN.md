@@ -93,7 +93,7 @@
     - [打开资源/关闭资源(ArkTS)](huks-open-close-resource-arkts.md)
     - [打开资源/关闭资源(C/C++)](huks-open-close-resource-ndk.md)
   - 密钥管理<!--huks-extension-key-management-->
-    - [密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)
+    - [密钥生成与导入导出介绍](huks-extension-key-generation-import-overview.md)
     - [密钥生成(ArkTS)](huks-extension-key-generation-arkts.md)
     - [密钥导入(ArkTS)](huks-extension-key-import-arkts.md)
     - [公钥导出(ArkTS)](huks-extension-key-export-arkts.md)
@@ -104,7 +104,7 @@
     <!--DelEnd-->
     - [查询认证状态(ArkTS)](huks-query-authentication-status-arkts.md)
     - [查询认证状态(C/C++)](huks-query-authentication-status-ndk.md)
-    - [清除PIN码认证状态(ArkTS)](huks-clear-pin-auth-state-arkts.md)
+    - [清除Ukey PIN码认证状态(ArkTS)](huks-clear-pin-auth-state-arkts.md)
   - 签名/验签<!--huks-ukey-signing-signature-verification-->
     - [签名/验签介绍及算法规格](huks-ukey-signing-signature-verification-overview.md)
     - [签名/验签(ArkTS)](huks-ukey-signing-signature-verification-arkts.md)
@@ -114,6 +114,7 @@
     - [通用查询(ArkTS)](huks-ukey-general-query-arkts.md)
     - [通用查询(C/C++)](huks-ukey-general-query-ndk.md)
     - [属性设置(ArkTS)](huks-extension-set-property-arkts.md)
+    - [获取错误信息(ArkTS)](huks-ukey-get-error-info-arkts.md)
   - [Ukey流程示例指导](huks-ukey-best-dev.md)
   - 驱动HAP ExtensionAbility适配指导<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)

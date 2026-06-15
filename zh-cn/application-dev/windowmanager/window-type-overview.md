@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya; @qinliwen0417-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -41,4 +41,4 @@
 
 - [闪控球](../reference/apis-arkui/js-apis-floatingBall.md)
 
-- [标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)
+- [闪控窗](../reference/apis-arkui/js-apis-floatView.md)

@@ -596,6 +596,48 @@ struct SizeExample {
 ```
 ![image](figures/lengthMetricsDemo.png)
 
+### autoRefresh
+
+autoRefresh?(value: boolean): LengthMetrics
+
+Sets whether the **LengthMetrics** object automatically updates with system configuration changes.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|-------|------|------|------|
+| value | boolean | Yes| Whether the **LengthMetrics** object constructed using [resource](#resource12) automatically refreshes the value when the system configuration changes.<br>**true**: The object proactively listens to the system configuration changes, and refreshes the value to the resource value corresponding to the configuration when the configuration changes.<br>**false**: The object does not proactively listen to the system configuration changes.|
+
+**Return value**
+
+| Type| Description|
+|------|------|
+| [LengthMetrics](#lengthmetrics12) | **LengthMetrics** object.|
+
+**Example**
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State lengthMetrics: LengthMetrics = LengthMetrics.resource($r('sys.float.ohos_id_button_min_width')).autoRefresh!(true)
+
+  build() {
+    Column() {
+      Button('Test LengthMetrics')
+        .padding({ top: this.lengthMetrics })
+    }
+  }
+}
+```
 
 ## ColorMetrics<sup>12+</sup>
 
@@ -881,6 +923,51 @@ struct ColorMetricsSample {
 }
 ```
 ![image](figures/colorMetricsDemo.png)
+
+### autoRefresh
+
+autoRefresh?(value: boolean): ColorMetrics
+
+Sets whether the **ColorMetrics** object automatically updates with system configuration changes.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|-------|------|------|------|
+| value | boolean | Yes| Whether the **ColorMetrics** object constructed using [resourceColor](#resourcecolor12) automatically refreshes the color value when the system configuration changes.<br>**true**: The object proactively listens to the system configuration changes, and refreshes the value to the resource value corresponding to the configuration when the configuration changes.<br>**false**: The object does not proactively listen to the system configuration changes.|
+
+**Return value**
+
+| Type| Description|
+|------|------|
+| [ColorMetrics](#colormetrics12) | **ColorMetrics** object.|
+
+**Example**
+
+```ts
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State colorMetrics: ColorMetrics = ColorMetrics.resourceColor($r('sys.color.font_primary')).autoRefresh!(true)
+
+  build() {
+    Column() {
+      Text('Test ColorMetrics')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(this.colorMetrics)
+  }
+}
+```
 
 ## Corners\<T><sup>12+</sup>
 

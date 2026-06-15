@@ -1,9 +1,10 @@
 # ArkUI_NodeAttributeType（信息选择类组件相关属性）
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-hui; @luoying_ace_admin-->
-<!--Designer: @xiangyuan6; @weixin_52725220-->
-<!--Tester: @jiaoaozihao; @xiong0104-->
+<!--Owner: @luoying_ace_admin-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
@@ -339,7 +340,7 @@ NODE_TIME_PICKER_DISAPPEAR_TEXT_STYLE = 14002
 NODE_TIME_PICKER_TEXT_STYLE = 14003
 ```
 
-设置设置边缘项（以选中项为基准向上或向下的第二项）的文本样式，支持属性设置，属性重置和属性获取接口。<br>
+设置时间选择组件所有选项中除了最上、最下及选中项以外的文本颜色、字号、字体粗细，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12

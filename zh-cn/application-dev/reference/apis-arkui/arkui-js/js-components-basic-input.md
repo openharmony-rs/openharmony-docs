@@ -154,7 +154,7 @@
    ```
 
 
-   ![zh-cn_image_0000001252835901](figures/zh-cn_image_0000001252835901.png)
+   ![submit-button](figures/submit-button.png)
 
 2. type为button
    ```html
@@ -176,7 +176,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001207995958](figures/zh-cn_image_0000001207995958.png)
+   ![input](figures/input.png)
 
 3. type为checkbox
    ```html
@@ -209,7 +209,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001208155956](figures/zh-cn_image_0000001208155956.png)
+   ![input01](figures/input01.png)
 
 4. type为radio
    ```html
@@ -246,4 +246,4 @@
    }
    ```
 
-   ![zh-cn_image_0000001208315918](figures/zh-cn_image_0000001208315918.png)
+   ![input02](figures/input02.png)

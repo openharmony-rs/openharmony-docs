@@ -370,7 +370,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -393,7 +393,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | ------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**
@@ -453,7 +453,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -476,7 +476,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**

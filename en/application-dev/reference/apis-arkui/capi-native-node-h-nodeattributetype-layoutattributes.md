@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType (Layout Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW; @zju_ljz; @camlostshi-->
-<!--Designer: @CCFFWW; @lanshouren-->
+<!--Owner: @hehongyang3; @zju_ljz; @camlostshi-->
+<!--Designer: @hehongyang3; @lanshouren-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 

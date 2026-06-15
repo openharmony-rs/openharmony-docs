@@ -114,7 +114,14 @@ The key management service specifications include mandatory specifications and o
 > **NOTE**
 >
 > When an RSA key is imported, the public key must be greater than or equal to 65537.
+>
 > Digital envelope does not support the DSA algorithm, X25519 key, and Ed25519 key. When a digital envelope key is imported, the public key is entered in this tag as a raw key.
+>
+> If the peer device is not an OpenHarmony device and does not support the key management service, the following requirements must be met when constructing digital envelope data:
+>
+> - The SM2 encryption result is combined in the C1C3C2 format, where C1x and C1y each have 32 bytes.
+>
+> - The SM2 encryption result is in ASN.1 format, and bigint is stored in big-endian mode.
 
 **Specifications<!--RP1--> for standard devices<!--RP1End-->**
 
@@ -136,6 +143,7 @@ The key management service specifications include mandatory specifications and o
 | SM4 | 128 | 9+ | Yes|
 | DES | 64 | 18+ | Yes|
 | 3DES | 128, 192| 18+ | Yes|
+| ML-DSA | Security parameter set: 44, 65, and 87| 26.0.0+ | Yes|
 
 **Specifications<!--RP2--> for mini-system devices<!--RP2End-->**
 
@@ -159,4 +167,4 @@ HUKS supports various types of keys in different formats. The following table li
 | Symmetric key| - | Key in bytes|
 | Asymmetric key pair| - | [Key pair material format](huks-concepts.md#key-pair-material-format)|
 | Public key of an asymmetric key pair| Ed25519, X25519| Key in bytes. For details, see [Importing the Public Key of an X25519 Key Pair](huks-import-key-in-plaintext-arkts.md#importing-the-public-key-of-an-x25519-key-pair).|
-| Public key of an asymmetric key pair| RSA, ECC, ECDH, <!--Del-->DSA, <!--DelEnd-->DH, SM2| DER format defined in X.509|
+| Public key of an asymmetric key pair| RSA, ECC, ECDH, <!--Del-->DSA, <!--DelEnd-->DH, SM2, ML-DSA| DER format defined in X.509|

@@ -21,4 +21,4 @@ For APIs that can be used in ArkTS widgets, a description (for example) will be 
 
 For example, the following description indicates that CircleShape can be used in ArkTS widgets. 
 
-![WidgetSupportApi](figures/WidgetSupportApi_EN.png)
+![widgetSupportApi](figures/widgetSupportApi.png)

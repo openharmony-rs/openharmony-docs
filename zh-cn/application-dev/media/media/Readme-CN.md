@@ -48,3 +48,4 @@
     - [使用AVImageGenerator获取视频帧(C/C++)](using-ndk-avimagegenerator-for-video.md)
   - 视频转码<!--media-transcoder-c-->
     - [使用AVTranscoder实现视频转码(C/C++)](using-ndk-avtranscoder-for-transcodering.md)<!--RP1--><!--RP1End-->
+- [Media Kit术语](media-glossary.md)

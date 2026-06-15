@@ -1,7 +1,7 @@
 # ChipGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xieziang-->
+<!--Owner: @Cuecuexiaoyu-->
 <!--Designer: @youzhi92-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -35,6 +35,7 @@ ChipGroup({
   chipGroupSpace?: ChipGroupSpaceOptions,
   chipGroupPadding?: ChipGroupPaddingOptions,
   backgroundSystemMaterial?: uiMaterial.Material,
+  selectedBackgroundMaterial?: uiMaterial.Material,
   onChange?: Callback<Array<number>>,
   suffix?: Callback<void>
 })
@@ -54,7 +55,8 @@ ChipGroup({
 | multiple        | boolean                                         | 否   | @Prop | 是否选中多个`Chip`。<br/>`true`：支持多个`Chip`选中；`false`：仅支持单个`Chip`选中。<br>默认值：`false`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | @Prop | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。<br/>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }<br>单位：vp<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | 否   | @Prop | 设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](#chipgrouppaddingoptions)。<br/>默认值：{ top: 14, bottom: 14 }<br>单位：vp<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| selectedBackgroundMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件选中状态的系统材质样式。不同材质具有不同的效果，能够影响组件选中时的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。<br>默认值：undefined<br>值为undefined时，不应用选中状态的材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | onChange        | Callback\<Array\<number>>  | 否   | -  | Chip状态改变时的回调方法。<br/>若为undefined，表示解绑事件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                              |
 | suffix          | Callback\<void\>                                        | 否   | @BuilderParam | 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](#icongroupsuffix)接口。<br/>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
@@ -203,7 +205,7 @@ IconGroupSuffix({
 | 名称                        | 类型                    | 必填 | 装饰器类型 | 说明                                                              |
 | --------------------------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
 | items                       | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | 是   | @Require &nbsp;@Prop | 尾部区域显示的自定义项数组，支持IconItemOptions（Image图标）、SymbolGlyphModifier（Symbol图标）或SymbolItemOptions（Symbol图标配置）类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| iconBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| iconBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 > **说明：**
 >
