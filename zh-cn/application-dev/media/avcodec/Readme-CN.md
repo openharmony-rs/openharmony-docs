@@ -16,6 +16,8 @@
     - [异步模式音频解码](audio-decoding.md)
     - [异步模式视频编码](video-encoding.md)
     - [异步模式视频解码](video-decoding.md)
+    - [编码支持一入二出](video-encoding-preproc-one-in-dual-out.md)
+    - [编码支持前处理](video-encoding-preproc.md)
     - [同步模式音频编码](synchronous-audio-encoding.md)
     - [同步模式音频解码](synchronous-audio-decoding.md)
     - [同步模式视频编码](synchronous-video-encoding.md)
