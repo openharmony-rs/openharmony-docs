@@ -134,7 +134,7 @@
     - [@ohos.bundle.bundleManager (应用程序包管理模块)](js-apis-bundleManager.md)
     - [@ohos.bundle.defaultAppManager (默认应用管理)](js-apis-defaultAppManager.md)
     - [@ohos.bundle.launcherBundleManager (launcherBundleManager模块)](js-apis-launcherBundleManager.md)
-    - [@ohos.bundle.overlay (overlay模块)](js-apis-overlay.md)
+    - [@ohos.bundle.overlay (overlay特征模块)](js-apis-overlay.md)
     - [@ohos.bundle.pluginBundleManager (pluginBundleManager模块)](js-apis-pluginBundleManager.md)
     - [@ohos.bundle.shortcutManager (shortcutManager模块)](js-apis-shortcutManager.md)
     - [@ohos.bundle.skillManager (skillManager模块)](js-apis-skillManager.md)
