@@ -58,7 +58,7 @@ Video(value: VideoOptions)
 | src                 | string \| [Resource](ts-types.md#resource)                            | 否   | 是 | 视频的数据源，支持本地视频和网络视频。<br>Resource格式可以跨包/跨模块访问资源文件，常用于访问本地视频。<br/>- 仅支持rawfile文件下的资源，即通过\$rawfile引用视频文件。<br/>string格式可用于加载网络视频和本地视频，常用于加载网络视频。<br/>- 支持网络视频地址，网络视频地址支持的格式见[流媒体支持的格式](../../../media/media/streaming-media-playback-development-guide.md#流媒体支持的格式)。<br/>- 支持file://路径前缀的字符串，即应用沙箱URI（见[uriOrPath](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)）：file://\<bundleName>/\<sandboxPath>。用于读取应用沙箱路径内的资源。需要保证目录包路径下的文件有可读权限。<br/>默认值：空字符串<br/>异常值：按默认值处理。<br/>**说明：**<br/>视频支持的格式是：mp4、mkv、TS。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | currentProgressRate | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[PlaybackSpeed<sup>8+</sup>](#playbackspeed8枚举说明)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[PlaybackSpeed<sup>8+</sup>](#playbackspeed8枚举说明) | 否   | 是 | 视频播放倍速。<br/>**说明：**<br/>number格式取值仅支持：0.75，1.0，1.25，1.75，2.0。从API version 22开始，新增支持取值0.5，1.5，3，0.25和0.125。从API版本26.0.0开始，支持取值范围：[0.125, 8]。<br/>string格式支持number格式取值的字符串形式："0.75"，"1.0"，"1.25"，"1.75"，"2.0"。从API version 22开始，新增支持取值"0.5"，"1.5"，"3"，"0.25"和"0.125"。<br/>除此之外的取值，比如"abc"或"1.5+1.5"会按照异常值处理。<br/>默认值：1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br/>异常值：按默认值处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | previewUri          | string&nbsp;\| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)  | 否  | 是  | 视频未播放时的预览图片路径，默认不显示图片。<br/>string格式可用于加载本地图片和网络图片，<br/>- 支持网络图片地址。<br/>- 支持相对路径引用本地图片，例如：previewUri: “common/test.jpg”。当使用相对路径引用本地图片时，不支持跨包/跨模块调用。<br/>- 支持file://路径前缀的字符串，即应用沙箱URI（见[uriOrPath](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)）：file://\<bundleName>/\<sandboxPath>。用于读取应用沙箱路径内的资源。需要保证目录包路径下的文件有可读权限。<br/>Resource格式可以跨包/跨模块访问资源文件。<br/>- 支持rawfile文件下的资源，即通过\$rawfile引用图片。<br/>- 支持通过\$r引用系统资源或者应用资源中的图片。<br/>默认值：空字符串<br/>异常值：按默认值处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23                 |
-| controller          | [VideoController](#videocontroller)                          | 否 | 是   | 设置视频控制器，可以控制视频的播放状态。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23                     |
+| controller          | [VideoController](#videocontroller)                          | 否 | 是   | 设置视频控制器，可以控制视频的播放状态。当设置了controllerAsync时，controller设置不生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23                     |
 | controllerAsync          | [VideoControllerAsync](#videocontrollerasync)                          | 否 | 是   | 设置异步版本的视频控制器，可以控制视频的播放状态并通过Promise获取返回结果，当设置了controllerAsync时，controller会被忽略。<br/>默认值：空<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | imageAIOptions<sup>12+</sup>  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 否 | 是   | 设置图像AI分析选项，可配置分析类型或绑定一个分析控制器。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | posterOptions<sup>18+</sup>  | [PosterOptions](#posteroptions18对象说明) | 否 | 是   | 设置视频播放的首帧送显选项，可以控制视频是否支持首帧送显。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
@@ -813,6 +813,10 @@ setCurrentTime(value: number, seekMode: SeekMode)
 
 VideoControllerAsync是VideoController的异步版本，可以通过Promise获取部分播控命令的结果。不支持同时控制多个Video。
 
+> **说明：**
+>
+>  VideoControllerAsync向开发者暴露了命令的执行结果，与VideoController相比，VideoControllerAsync中的[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)播放控制命令为异步执行，请求后可立即返回而不阻塞当前线程；并且可基于Promise的then和catch方法，对命令成功或失败的结果进行后续处理。
+
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
@@ -849,7 +853,9 @@ VideoControllerAsync的构造函数。
 
 start(): Promise\<void\>
 
-开始播放。使用Promise异步回调。
+开始播放视频。使用Promise异步回调。
+
+在视频准备完成前，如果没有收到[onPrepared](#onprepared)回调时调用start()方法会失败。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -871,7 +877,9 @@ start(): Promise\<void\>
 
 pause(): Promise\<void\>
 
-暂停播放，显示当前帧，再次播放时从当前位置继续播放。使用Promise异步回调。
+暂停播放视频，显示当前帧，再次播放时从当前位置继续播放。使用Promise异步回调。
+
+只能在正在播放的状态下调用，其他情况下调用pause()方法会失败。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -893,7 +901,7 @@ pause(): Promise\<void\>
 
 stop(): Promise\<void\>
 
-停止播放，显示当前帧，再次播放时从头开始播放。使用Promise异步回调。
+停止播放视频，显示当前帧，再次播放时从头开始播放。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1576,11 +1584,11 @@ struct VideoControllerAsyncExample {
             })
         }).margin(2)
         Button('pause').onClick(() => {
-          this.controller.pause() // 暂停播放。
-            .then(() => {
+          this.controller.pause() // 开始播放，返回Promise<void>。
+            .then(() => { // 可以通过then等待执行成功。
               console.info('pause success')
             })
-            .catch((err: BusinessError) => {
+            .catch((err: BusinessError) => { // catch处理执行失败的场景。
               console.info(`pause failed: ${err.message}`)
             })
         }).margin(2)
