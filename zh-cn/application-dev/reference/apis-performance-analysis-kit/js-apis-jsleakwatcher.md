@@ -28,7 +28,7 @@ enable(isEnable: boolean): void
 
 推荐的完整调用流程：enable() → watch() → check() → dump()
 
-使用场景：
+**使用场景**：
 - 应用开发调试阶段，用于检测和定位内存泄漏问题。
 - 应用测试阶段，用于验证应用的内存管理是否正常。
 - 对内存使用有严格要求的应用，需要持续监控内存状态。
@@ -54,7 +54,7 @@ watch(obj: object, msg: string): void
 
 注册待检测泄漏的对象。
 
-使用场景：
+**使用场景**：
 - 在创建可能发生泄漏的关键对象后（如自定义组件、Window等），立即注册进行监控。
 - 对应用生命周期中的重要对象进行注册，以便及时发现泄漏。
 - 在特定功能模块中使用到的对象，如XComponent、NodeContainer等，注册以监控其释放情况。
@@ -82,7 +82,7 @@ check(): string
 
 获取已通过jsLeakWatcher.watch注册发生泄漏的对象列表，触发GC后未被回收的对象会被标记为泄漏。
 
-使用场景：
+**使用场景**：
 - 在应用运行过程中定期检查，以便及时发现内存泄漏问题。
 - 在关键功能执行前后检查，对比泄漏情况。
 - 根据泄漏列表定位具体的泄漏对象，进行代码排查和修复。
@@ -137,7 +137,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 此接口通过一次调用即可检测ArkTS对象的内存泄漏，比之前需要调用四个函数（enable、watch、check、dump）的方法更加简洁。
 
-使用场景：
+**使用场景**：
 - 对内存使用有严格要求的应用，需要持续监控内存泄漏情况。
 - 监控使用XComponent、NodeContainer、Window、CustomComponent、Ability等组件的应用是否发生泄漏。
 - 应用开发调试和测试阶段，快速发现内存泄漏问题。
@@ -190,7 +190,7 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 >
 > 当前JSLeakWatcher泄漏检测性能开销较大，会导致应用卡顿，建议增大检测间隔时间，减少卡顿频率。
 
-使用场景：
+**使用场景**：
 - 对性能要求较高的应用，需要通过配置检测间隔、阈值等参数来平衡检测精度和性能开销。
 - 大型应用或复杂应用，需要精细控制泄漏检测的参数，如检测间隔、泄漏阈值、最大dump数量等。
 - 使用特定组件（如CustomComponent、Window、Ability等）的应用，需要针对性监控这些组件的泄漏。
