@@ -101,7 +101,7 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
-控制虚拟键盘抬起时页面的避让模式。
+设置虚拟键盘抬起时页面的避让模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -111,7 +111,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | 是   | 配置虚拟键盘抬起时页面的避让模式。<br />默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。<br />setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
+| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | 是   | 虚拟键盘抬起时页面的避让模式。<br />默认值：KeyboardAvoidMode.OFFSET，键盘抬起时默认避让模式为上抬。<br />setKeyboardAvoidMode传入异常值时，该属性设置不生效。 |
 
 >  **说明：**
 >
@@ -125,7 +125,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 
 getKeyboardAvoidMode(): KeyboardAvoidMode
 
-返回虚拟键盘抬起时页面的避让模式。
+获取虚拟键盘抬起时页面的避让模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -133,9 +133,9 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 **返回值：** 
 
-| 名称                                                 | 说明                               |
+| 类型                                                 | 说明                               |
 | ---------------------------------------------------- | ---------------------------------- |
-| [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | 返回虚拟键盘抬起时的页面避让模式。 |
+| [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | 虚拟键盘抬起时的页面避让模式。 |
 
 ## ignoreLayoutSafeArea<sup>20+</sup>
 
@@ -184,7 +184,7 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 
 ## LayoutSafeAreaEdge<sup>12+</sup>
 
-扩展安全区域的边缘。
+扩展布局安全区域的边缘。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -134,7 +134,7 @@ autoHalfFold(value: boolean)
 
 onFolderStateChange(callback: OnFoldStatusChangeCallback)
 
-当前设备的折叠状态改变时触发回调，仅在横屏状态下生效。
+当前设备的折叠状态改变时触发回调<!--RP3-->，仅在横屏状态下生效<!--RP3End-->。
 
 >**说明：**
 >
@@ -196,7 +196,7 @@ type OnHoverStatusChangeCallback = (param: HoverEventParam) => void
 
 type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 
-当前设备的折叠状态。
+当折叠状态改变时触发的回调<!--RP4-->，仅在横屏状态下生效<!--RP4End-->。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -208,12 +208,12 @@ type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 
 | 参数名     | 类型                                            | 必填 | 说明                 |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| event | [OnFoldStatusChangeInfo](#onfoldstatuschangeinfo18) | 是   | 当前设备的折叠状态。 |
+| event | [OnFoldStatusChangeInfo](#onfoldstatuschangeinfo18) | 是   | 折叠状态改变时的信息。 |
 
 
 ## OnFoldStatusChangeInfo<sup>18+</sup>
 
-当折叠状态改变的时候回调，仅在横屏状态下生效。
+折叠状态改变时的信息。
 
 > **说明：**
 >
@@ -241,7 +241,7 @@ type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 | -------- | -------- | -------- | -------- | -------- |
 | foldStatus       | [FoldStatus](ts-appendix-enums.md#foldstatus11)             | 否 | 否   | 当前设备的折叠状态。 |
 | isHoverMode      | boolean                                                     | 否 | 否   | 当前是否为悬停态。设置为true时表示当前为悬停态，设置为false时表示当前为非悬停态。|
-| appRotation      | [AppRotation](ts-appendix-enums.md#approtation12)           | 否 | 否   | 当前应用方向。    |
+| appRotation      | [AppRotation](ts-appendix-enums.md#approtation12)           | 否 | 否   | 当前应用方向的旋转角度。    |
 | windowStatusType | [WindowStatusType](#windowstatustype12) | 否 | 否   | 窗口模式枚举。    |
 
 ## WindowStatusType<sup>12+</sup>
