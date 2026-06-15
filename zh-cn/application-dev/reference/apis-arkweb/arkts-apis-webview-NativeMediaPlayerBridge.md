@@ -173,7 +173,7 @@ exitFullscreen(): void
 
 resumePlayer?(): void
 
-通知应用重建播放器，并恢复播放器的状态信息。仅与suspendPlayer成对出现。
+通知应用重建播放器，并恢复播放器的状态信息。仅与 suspendPlayer 成对出现。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -185,7 +185,7 @@ resumePlayer?(): void
 
 suspendPlayer?(type: SuspendType): void
 
-通知应用销毁播放器，并保存播放器的状态信息。仅与resumePlayer成对出现。
+通知应用销毁播放器，并保存播放器的状态信息。仅与 resumePlayer 成对出现。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
