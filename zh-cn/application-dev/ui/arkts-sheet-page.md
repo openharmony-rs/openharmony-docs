@@ -158,6 +158,7 @@ struct OnWillDismiss_Dismiss {
         this.isShow = true
       })
       .margin(120)
+      // 第一步：创建半模态页面
       .bindSheet($$this.isShow, this.myBuilder(), {
         height: SheetSize.MEDIUM,
         blurStyle: BlurStyle.Thick,
