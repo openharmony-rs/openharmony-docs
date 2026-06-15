@@ -138,7 +138,7 @@ ArkTS示例：
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 以生成ECC256密钥为例 */
+/* 以生成ECC密钥为例 */
 let keyAlias: string = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
   {
@@ -312,7 +312,7 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 **示例：**
 
 ```ts
-/* 以生成ECC256密钥为例 */
+/* 以生成ECC密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 let keyAlias = 'keyAlias';
@@ -388,6 +388,8 @@ let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
   properties: []
 };
+
+/* 删除密钥 */
 huks.deleteKeyItem(keyAlias, emptyOptions, (error) => {
   if (error) {
     console.error(`callback: deleteKeyItem failed`);
@@ -521,6 +523,7 @@ let keyAlias = 'keyAlias';
 let emptyOptions: huks.HuksOptions = {
   properties: []
 };
+/* 删除密钥 */
 huks.deleteKeyItem(keyAlias, emptyOptions)
   .then(() => {
     console.info(`promise: deleteKeyItem key success`);
@@ -573,7 +576,7 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 以导入AES256密钥为例 */
+/* 以导入AES密钥为例 */
 let plainTextSize32 = makeRandomArr(32);
 
 function makeRandomArr(size: number) {
@@ -611,6 +614,7 @@ let options: huks.HuksOptions = {
   properties: properties,
   inData: plainTextSize32
 };
+/* 导入密钥 */
 huks.importKeyItem(keyAlias, options, (error) => {
   if (error) {
     console.error(`callback: importKeyItem failed`);
@@ -669,7 +673,7 @@ importKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 以导入AES256为例 */
+/* 以导入AES为例 */
 function makeRandomArr(size: number) {
   let arr = new Uint8Array(size);
   for (let i = 0; i < size; i++) {
@@ -678,7 +682,6 @@ function makeRandomArr(size: number) {
   return arr;
 };
 
-/* 第一步：生成密钥 */
 let plainTextSize32 = makeRandomArr(32);
 let keyAlias = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
@@ -707,7 +710,7 @@ let huksOptions: huks.HuksOptions = {
   properties: properties,
   inData: plainTextSize32
 };
-/* 第二步：导入密钥 */
+/* 导入密钥 */
 huks.importKeyItem(keyAlias, huksOptions)
   .then(() => {
     console.info(`promise: importKeyItem success`);
@@ -759,7 +762,7 @@ attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 **示例：**
 
 ```ts
-/* 以获取RSA2048密钥证书为例 */
+/* 以获取RSA密钥证书为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string) {
@@ -903,7 +906,7 @@ attestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 **示例：**
 
 ```ts
-/* 以获取RSA2048密钥证书为例 */
+/* 以获取RSA密钥证书为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string) {
@@ -965,7 +968,7 @@ async function generateKey(alias: string) {
 async function attestKey() {
   let aliasString = keyAliasString;
   let aliasUint8 = stringToUint8Array(aliasString);
-  /* 3. 配置密钥证明参数 */
+  /* 配置密钥证明参数 */
   let properties: Array<huks.HuksParam> = [
     {
       tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
@@ -1038,7 +1041,7 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallbac
 **示例：**
 
 ```ts
-/* 以获取RSA2048匿名化密钥证书为例 */
+/* 以获取RSA匿名化密钥证书为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string): Uint8Array {
@@ -1180,7 +1183,7 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnR
 **示例：**
 
 ```ts
-/* 以获取RSA2048匿名化密钥证书为例 */
+/* 以获取RSA匿名化密钥证书为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string): Uint8Array {
@@ -1321,7 +1324,7 @@ anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]) : Promise\<HuksR
 **示例：**
 
 ```ts
-/* 以离线获取ECC256匿名化密钥证书为例 */
+/* 以离线获取ECC匿名化密钥证书为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
 function stringToUint8Array(str: string): Uint8Array {
@@ -1724,6 +1727,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 导出公钥 */
 huks.exportKeyItem(keyAlias, emptyOptions, (error, data) => {
   if (error) {
     console.error(`callback: exportKeyItem failed`);
@@ -1787,6 +1791,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 导出公钥 */
 huks.exportKeyItem(keyAlias, emptyOptions)
   .then((data) => {
     console.info(`promise: exportKeyItem success, data = ${JSON.stringify(data)}`);
@@ -1929,6 +1934,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 获取密钥属性 */
 huks.getKeyItemProperties(keyAlias, emptyOptions, (error, data) => {
   if (error) {
     console.error(`callback: getKeyItemProperties failed`);
@@ -1992,6 +1998,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 获取密钥属性 */
 huks.getKeyItemProperties(keyAlias, emptyOptions)
   .then((data) => {
     console.info(`promise: getKeyItemProperties success, data = ${JSON.stringify(data)}`);
@@ -2045,6 +2052,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 判断密钥是否存在 */
 huks.isKeyItemExist(keyAlias, emptyOptions, (error, data) => {
   if (error) {
     console.error(`callback: isKeyItemExist failed`);
@@ -2190,6 +2198,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 判断密钥是否存在 */
 huks.isKeyItemExist(keyAlias, emptyOptions).then(() => {
   console.info(`keyAlias:${keyAlias} is existed!`);
 });
@@ -2241,6 +2250,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 判断密钥是否存在 */
 huks.hasKeyItem(keyAlias, emptyOptions, (error, data) => {
   if (error) {
     console.error(`callback: hasKeyItem failed`);
@@ -2305,6 +2315,7 @@ let emptyOptions: huks.HuksOptions = {
   properties: []
 };
 
+/* 判断密钥是否存在 */
 huks.hasKeyItem(keyAlias, emptyOptions).then((data) => {
   if (data) {
     console.info(`keyAlias:${keyAlias} is existed!`);
@@ -2746,7 +2757,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 /* huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用，
  * 当这三个操作中的任一阶段发生错误时，都需要调用huks.abortSession来终止密钥的使用
  *
- * 以下以RSA2048密钥的callback功能使用为例
+ * 以下以RSA密钥的callback功能使用为例
  */
 
 let keyAlias = "HuksDemoRSA";
@@ -2893,6 +2904,7 @@ function uint8ArrayToString(fileData) {
     return dataString;
 }
 
+/* 加密参数集 */
 function getDesEncryptProperties() {
     let properties = [{
         tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -2916,6 +2928,7 @@ function getDesEncryptProperties() {
     return properties;
 }
 
+/* 解密参数集 */
 function getDesDecryptProperties() {
     let properties = [{
         tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -3163,7 +3176,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 /* huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用，
  * 当这三个操作中的任一阶段发生错误时，都需要调用huks.abortSession来终止密钥的使用
  *
- * 以下以RSA2048密钥的promise功能使用为例
+ * 以下以RSA密钥的promise功能使用为例
  */
 let keyAlias = "HuksDemoRSA";
 let genProperties: Array<huks.HuksParam> = [{
@@ -4800,7 +4813,7 @@ async function huksFinish() {
   });
 }
 
-/*  终止密钥操作 */
+/* 终止密钥操作 */
 function huksAbort() {
   huks.abort(handle, options).then((data) => {
     if (data.errorCode === 0) {
