@@ -6,11 +6,41 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-abilityConnectionManager模块提供了应用协同接口管理能力。设备组网成功（需登录同账号、双端打开蓝牙）后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输（文本信息和二进制数据）。
+abilityConnectionManager模块提供了应用协同接口管理能力。该模块支持会话管理、连接状态监听、跨设备数据传输等核心功能，帮助开发者快速构建跨设备协同应用。设备组网成功（需登录同账号、双端打开蓝牙）后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输（文本信息和二进制数据），有效解决多端协同场景下的数据互通问题。
+
+多端协同的完整流程如下图所示：
+
+```mermaid
+sequenceDiagram
+    participant A as 设备A
+    participant B as 设备B
+
+    Note over A,B: 1. 创建会话
+    A->>A: createAbilityConnectionSession()
+    A-->>A: 返回sessionId
+
+    Note over A,B: 2. 建立连接
+    A->>B: connect(sessionId)，拉起设备B应用
+    B->>B: onCollaborate生命周期回调
+    B->>B: createAbilityConnectionSession()
+    B-->>B: 返回sessionId
+    B->>A: acceptConnect(sessionId, token)
+
+    Note over A,B: 3. 数据传输
+    A->>B: sendMessage / sendData
+    B->>A: sendMessage / sendData
+
+    Note over A,B: 4. 断开连接
+    A->>A: disconnect(sessionId)
+
+    Note over A,B: 5. 销毁会话
+    A->>A: destroyAbilityConnectionSession(sessionId)
+    B->>B: destroyAbilityConnectionSession(sessionId)
+```
 
 > **说明：**
 >
-> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。当前文档中的所有接口均为首批接口。
 >
 > 本模块接口仅可在Stage模型下使用。
 
@@ -22,7 +52,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
 ## abilityConnectionManager.createAbilityConnectionSession
 
-createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Context,&nbsp;peerInfo:&nbsp;PeerInfo ,&nbsp;connectOptions:&nbsp;ConnectOptions):&nbsp;number
+createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Context,&nbsp;peerInfo:&nbsp;PeerInfo,&nbsp;connectOptions:&nbsp;ConnectOptions):&nbsp;number
 
 创建应用间的协同会话。协同会话用于管理跨设备通信的连接状态，需要先在两端设备分别创建会话，然后通过connect建立连接。
 
@@ -36,7 +66,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| serviceName  | string | 是    | 应用设置的服务名称（两端必须一致），最大长度为256字符。此值需与peerInfo.serviceName保持一致。 |
+| serviceName  | string | 是    | 应用设置的服务名称（两端必须一致），最大长度为256字符。此值需与peerInfo.serviceName保持一致。serviceName是用于标识协同会话的唯一标识，由应用自定义，两端设备的应用必须使用相同的serviceName值才能建立协同连接。超出长度限制时返回错误码401。 |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 表示应用上下文。 |
 | peerInfo  | [PeerInfo](#peerinfo)               | 是    | 对端的协同信息。 |
 | connectOptions  | [ConnectOptions](#connectoptions)               | 是    | 应用设置的连接选项。 |
@@ -45,7 +75,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| number | 成功创建的协同会话ID。 |
+| number | 成功创建的协同会话ID，用于后续的connect、acceptConnect、sendMessage、sendData、disconnect等接口调用。 |
 
 **错误码：**
 
@@ -59,18 +89,19 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 **示例：**
 
-1. 在设备A上，应用需要主动调用createAbilityConnectionSession()接口创建协同会话并返回sessionId。
+1. 在设备A上，调用createAbilityConnectionSession()接口创建协同会话并返回sessionId。
 
    ```ts
     import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
  
-    let dmClass: distributedDeviceManager.DeviceManager;
+    let deviceManager: distributedDeviceManager.DeviceManager;
  
     function initDmClass(): void {
       try {
-        dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
+        // 创建设备管理器实例
+        deviceManager = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
       } catch (err) {
         const error: BusinessError = err as BusinessError;
         hilog.error(0x0000, 'testTag', `createDeviceManager failed. Code: ${error.code}, message: ${error.message}`);
@@ -79,20 +110,20 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
  
    function getRemoteDeviceId(): string | undefined {
      initDmClass();
-     if (typeof dmClass === 'object' && dmClass !== null) {
+     if (typeof deviceManager === 'object' && deviceManager !== null) {
        hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
-       let list = dmClass.getAvailableDeviceListSync();
-       if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
+       let deviceList = deviceManager.getAvailableDeviceListSync();
+       if (typeof (deviceList) === 'undefined' || typeof (deviceList.length) === 'undefined') {
          hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
          return;
        }
-       if (list.length === 0) {
+       if (deviceList.length === 0) {
          hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
          return;
        }
-       return list[0].networkId;
+       return deviceList[0].networkId;
      } else {
-       hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+       hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: deviceManager is null');
        return;
      }
    }
@@ -109,21 +140,22 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          abilityName: 'EntryAbility',
          serviceName: 'collabTest'
        };
-       const myRecord: Record<string, string> = {
-         "newKey1": "value1",
-       };
+        const connectionParams: Record<string, string> = {
+          'newKey1': 'value1',
+        };
  
        // 定义连接选项
-       const connectOptions: abilityConnectionManager.ConnectOptions = {
-         needSendData: true,
-         startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
-         parameters: myRecord
-       };
+        const connectOptions: abilityConnectionManager.ConnectOptions = {
+          needSendData: true,
+          startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
+          parameters: connectionParams
+        };
        let context = this.getUIContext().getHostContext();
-       try {
-         let sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", context, peerInfo, connectOptions);
-         hilog.info(0x0000, 'testTag', 'createSession sessionId is', sessionId);
-        } catch (error) {
+        try {
+          // 创建应用间的协同会话
+          let sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', context, peerInfo, connectOptions);
+          hilog.info(0x0000, 'testTag', 'createSession sessionId is', sessionId);
+         } catch (error) {
           const err: BusinessError = error as BusinessError;
           hilog.error(0x0000, 'testTag', `createAbilityConnectionSession failed. Code: ${err.code}, message: ${err.message}`);
         }
@@ -160,14 +192,15 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
      
       createSessionFromWant(collabParam: Record<string, Object>): number {
         let sessionId = -1;
-        const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
+        const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo; // 从want参数中提取对端信息
         if (peerInfo == undefined) {
           return sessionId;
         }
      
         const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
         try {
-          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
+          // 创建应用间的协同会话
+          sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', this.context, peerInfo, options);
           AppStorage.setOrCreate('sessionId', sessionId);
           hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
         } catch (error) {
@@ -183,7 +216,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
-销毁应用间的协同会话。销毁会话会释放相关资源，建议先调用disconnect断开连接后再销毁会话。
+销毁应用间的协同会话，与createAbilityConnectionSession配对使用用于释放会话资源。此接口需在成功创建协同会话后调用。销毁会话会释放相关资源，建议先调用disconnect断开连接后再销毁会话。不调用此方法会导致资源泄漏。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -193,7 +226,7 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                       | 必填   | 说明                              |
 | --------- | ---------------------------------------- | ---- |---------------------------------|
-| sessionId | number  | 是    | 待销毁的协同会话ID。<br />取值范围是大于100的整数。 |
+| sessionId | number  | 是    | 待销毁的协同会话ID。<br />取值范围是大于100的整数。超出范围时返回错误码401。 |
 
 **错误码：**
 
@@ -218,7 +251,7 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
 getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
-获取指定会话中对端应用信息。
+获取指定会话中对端应用信息。此接口需在成功创建协同会话后调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -228,13 +261,13 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | number  | 是    | 协同会话ID。取值范围是大于100的整数。   |
+| sessionId | number  | 是    | 协同会话ID。取值范围是大于100的整数，由createAbilityConnectionSession接口返回。   |
 
 **返回值：**
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| [PeerInfo](#peerinfo) \| undefined | 若存在对应PeerInfo，则返回接收端的协作应用信息。若sessionId未找到，则查询失败，返回undefined。|
+| [PeerInfo](#peerinfo) \| undefined | 返回接收端的协作应用信息，若sessionId未找到则返回undefined。|
 
 **错误码：**
 
@@ -251,7 +284,9 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   hilog.info(0x0000, 'testTag', 'getPeerInfoById called');
-  let sessionId = 100;
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
+  // 获取指定会话中对端应用信息
   const peerInfo = abilityConnectionManager.getPeerInfoById(sessionId);
   ```
 
@@ -259,7 +294,7 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
-创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。connect接口通过底层分布式通信服务建立连接，连接过程会触发'connect'事件通知状态变化。使用Promise异步回调。
+创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。调用此接口前，需先在两端设备分别创建协同会话。connect接口通过底层分布式通信服务建立连接，必须与设备B的acceptConnect配合使用才能建立成功连接，调用connect会拉起设备B应用。连接过程会触发'connect'事件通知状态变化。使用Promise异步回调。连接失败时，返回的ConnectResult对象中的errorCode字段包含具体的错误信息，可参考ConnectErrorCode枚举了解错误原因。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -275,7 +310,7 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;ConnectResult&gt; | 以Promise形式返回连接结果。成功时resolve返回[ConnectResult](#connectresult)，失败时reject返回错误对象。 |
+| Promise&lt;ConnectResult&gt; | 以Promise形式返回连接结果。成功时resolve返回[ConnectResult](#connectresult)（包含isConnected和errorCode字段），失败时reject返回错误对象。 |
 
 **错误码：**
 
@@ -287,29 +322,31 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 **示例：**
 
-设备A上的应用在创建协同会话成功并获得会话ID后，调用connect()方法启动UIAbility连接，并拉起设备B应用。
+设备A上创建协同会话成功并获得会话ID后，调用connect()方法启动UIAbility连接，并拉起设备B应用。
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let sessionId = 100;
-  abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
-    if (!ConnectResult.isConnected) {
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
+  // 建立协同会话连接
+  abilityConnectionManager.connect(sessionId).then((connectResult) => {
+    if (!connectResult.isConnected) {
       hilog.info(0x0000, 'testTag', 'connect failed');
       return;
     }
   }).catch((error: BusinessError) => {
     hilog.error(0x0000, 'testTag', `connect failed. Code: ${error.code}, message: ${error.message}`);
-  })
+  });
   ```
 
 ## abilityConnectionManager.acceptConnect
 
 acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
-设备B上的应用，在创建协同会话成功并获得会话ID后，调用acceptConnect()方法接受连接。使用Promise异步回调。
+设备B上的应用在创建协同会话成功并获得会话ID后，调用acceptConnect()方法接受连接。调用此接口前，需先在两端设备分别创建协同会话。必须与设备A的connect方法配合使用：设备A调用connect会拉起设备B应用，设备B在onCollaborate生命周期中创建会话后调用acceptConnect。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -320,7 +357,7 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
 | sessionId | number | 是    | 已创建的协同会话ID。取值范围是大于100的整数。    |
-| token | string | 是    | 设备A应用传入的token值，该值通过want参数中'ohos.dms.collabToken'键获取。    |
+| token | string | 是    | 设备A应用传入的token值，该值通过wantParam参数中'ohos.dms.collabToken'键获取（在应用被拉起后的onCollaborate生命周期方法的wantParam参数中获取）。当设备A调用connect方法时，系统会自动生成collabToken并通过want参数传递给设备B，设备B在onCollaborate生命周期回调中可以从wantParam参数获取此token。    |
 
 **返回值：**
 
@@ -338,66 +375,32 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
 
 **示例：**
 
-设备B上的应用，在createAbilityConnectionSession接口调用并获取sessionId成功后，可调用acceptConnect接口来选择接受连接。
+在设备B上，createAbilityConnectionSession接口调用并获取sessionId成功后，调用acceptConnect接口选择接受连接。
 
   ```ts
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
 
   export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    }
-
-    onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
-      let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
-      this.onCollab(param);
-      return 0;
-    }
-
-    onCollab(collabParam: Record<string, Object>) {
-      const sessionId = this.createSessionFromWant(collabParam);
-      if (sessionId == -1) {
-        hilog.info(0x0000, 'testTag', 'Invalid session ID.');
-        return;
+      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+        let collabParam = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>;
+        const collabToken = collabParam["ohos.dms.collabToken"] as string;
+        const reason = 'user_rejected';
+        hilog.info(0x0000, 'testTag', 'reject begin');
+        abilityConnectionManager.reject(collabToken, reason);
+        return AbilityConstant.CollaborateResult.REJECT;
       }
-      const collabToken = collabParam["ohos.dms.collabToken"] as string;
-      abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
-        hilog.info(0x0000, 'testTag', 'acceptConnect success');
-      }).catch((error: BusinessError) => {
-        hilog.error(0x0000, 'testTag', `acceptConnect failed. Code: ${error.code}, message: ${error.message}`);
-      })
-    }
-
-    createSessionFromWant(collabParam: Record<string, Object>): number {
-      let sessionId = -1;
-      const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
-      if (peerInfo == undefined) {
-        return sessionId;
-      }
-
-      const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
-      try {
-        sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
-        AppStorage.setOrCreate('sessionId', sessionId);
-        hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
-      } catch (error) {
-        const err: BusinessError = error as BusinessError;
-        hilog.error(0x0000, 'testTag', `createAbilityConnectionSession failed. Code: ${err.code}, message: ${err.message}`);
-      }
-      return sessionId;
-    }
   }
+
   ```
 
 ## abilityConnectionManager.disconnect
 
 disconnect(sessionId:&nbsp;number):&nbsp;void
 
-创建协同会话成功、应用连接成功、协同业务执行完毕后，协同双端的任意一台设备，应断开UIAbility的连接，结束协同状态。
+创建协同会话成功、应用连接成功、协同业务执行完毕后，协同双端的任意一台设备，应断开UIAbility的连接，结束协同状态。需在connect()建立连接后调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -423,8 +426,10 @@ disconnect(sessionId:&nbsp;number):&nbsp;void
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
+  hilog.info(0x0000, 'testTag', 'disconnect begin');
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
   let sessionId = 101;
+  // 断开UIAbility的连接
   abilityConnectionManager.disconnect(sessionId);
   ```
 
@@ -442,8 +447,8 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| token | string | 是    | 用于协作服务管理的令牌，该值通过want参数中'ohos.dms.collabToken'键获取。    |
-| reason | string | 是    | 连接被拒绝的原因。    |
+| token | string | 是    | 用于协作服务管理的令牌，该值通过wantParam参数中'ohos.dms.collabToken'键获取。超出范围时返回错误码401。    |
+| reason | string | 是    | 连接被拒绝的原因。最大长度为256字符。    |
 
 **错误码：**
 
@@ -456,7 +461,7 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 **示例：**
 
   ```ts
-  import { AbilityConstant, UIAbility, Want} from '@kit.AbilityKit';
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -465,7 +470,7 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
         hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
         let collabParam = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>;
         const collabToken = collabParam["ohos.dms.collabToken"] as string;
-        const reason = "test";
+        const reason = 'user_rejected';
         hilog.info(0x0000, 'testTag', 'reject begin');
         abilityConnectionManager.reject(collabToken, reason);
         return AbilityConstant.CollaborateResult.REJECT;
@@ -506,7 +511,8 @@ on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callba
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let sessionId = 100;
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
   abilityConnectionManager.on("connect", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'session connect, sessionId is', callbackInfo.sessionId);
   });
@@ -527,7 +533,7 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | 是    |   事件回调类型，支持的事件为'connect'。    |
+| type | string  | 是    |   事件回调类型，支持的事件为'connect'，需通过[abilityConnectionManager.on('connect')](#abilityconnectionmanageronconnect)注册后才能取消。    |
 | sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 要取消的回调函数，不传则取消所有该事件的回调监听。    |
 
@@ -544,7 +550,8 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
-  let sessionId = 100;
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
   abilityConnectionManager.off("connect", sessionId);
 
   ```
@@ -581,7 +588,8 @@ on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Cal
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let sessionId = 100;
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
   abilityConnectionManager.on("disconnect", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
   });
@@ -602,7 +610,7 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | 是    |   事件回调类型，支持的事件为'disconnect'。    |
+| type | string  | 是    |   事件回调类型，支持的事件为'disconnect'，需通过[abilityConnectionManager.on('disconnect')](#abilityconnectionmanagerondisconnect)注册后才能取消。    |
 | sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 要取消的回调函数，不传则取消所有该事件的回调监听。    |
 
@@ -620,7 +628,8 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let sessionId = 100;
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
   abilityConnectionManager.off("disconnect", sessionId);
 
   ```
@@ -657,7 +666,8 @@ on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let sessionId = 100;
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
   abilityConnectionManager.on("receiveMessage", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'receiveMessage, sessionId is', callbackInfo.sessionId);
   });
@@ -678,7 +688,7 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | 是    |   事件回调类型，支持的事件为'receiveMessage'。    |
+| type | string  | 是    |   事件回调类型，支持的事件为'receiveMessage'，需通过[abilityConnectionManager.on('receiveMessage')](#abilityconnectionmanageronreceivemessage)注册后才能取消。    |
 | sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 要取消的回调函数，不传则取消所有该事件的回调监听。    |
 
@@ -696,7 +706,8 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let sessionId = 100;
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
   abilityConnectionManager.off("receiveMessage", sessionId);
 
   ```
@@ -733,7 +744,8 @@ on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Ca
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let sessionId = 100;
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
   abilityConnectionManager.on("receiveData", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'receiveData, sessionId is', callbackInfo.sessionId);
   });
@@ -754,7 +766,7 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | 是    |   事件回调类型，支持的事件为'receiveData'，完成[abilityConnectionManager.sendData()](#abilityconnectionmanagersenddata)调用，触发该事件。    |
+| type | string  | 是    |   事件回调类型，支持的事件为'receiveData'，需通过[abilityConnectionManager.on('receiveData')](#abilityconnectionmanageronreceivedata)注册后才能取消。    |
 | sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 要取消的回调函数，不传则取消所有该事件的回调监听。    |
 
@@ -772,7 +784,8 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let sessionId = 100;
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
   abilityConnectionManager.off("receiveData", sessionId);
 
   ```
@@ -781,7 +794,7 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
-创建协同会话成功并获得会话ID、应用连接成功后，设备A或设备B可向对端设备发送文本信息。文本信息通过底层分布式通道传输，最大限制为1KB。如需传输更大数据，请使用sendData接口。
+创建协同会话成功并获得会话ID、调用connect接口建立连接成功后，设备A或设备B可向对端设备发送文本信息。文本信息通过底层分布式通道传输，最大限制为1KB。如需传输更大数据，请使用sendData接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -791,8 +804,8 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 协同会话ID。取值范围是大于100的整数。 |
-| msg | string | 是    | 文本信息内容（内容最大限制为1KB）。 |
+| sessionId | number | 是    | 协同会话ID。取值范围是大于100的整数，由createAbilityConnectionSession接口返回。 |
+| msg | string | 是    | 文本信息内容（内容最大限制为1KB）。超出长度限制时返回错误码401。 |
 
 **返回值：**
 
@@ -814,12 +827,14 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let sessionId = 100;
-  abilityConnectionManager.sendMessage(sessionId, "message send success").then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
+  // 向对端设备发送文本信息
+  abilityConnectionManager.sendMessage(sessionId, 'message send success').then(() => {
+    hilog.info(0x0000, 'testTag', 'sendMessage success');
   }).catch((error: BusinessError) => {
     hilog.error(0x0000, 'testTag', `sendMessage failed. Code: ${error.code}, message: ${error.message}`);
-  })
+  });
   ```
 
 ## abilityConnectionManager.sendData
@@ -860,15 +875,17 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { util } from '@kit.ArkTS';
 
-  let textEncoder = util.TextEncoder.create("utf-8");
-  const arrayBuffer  = textEncoder.encodeInto("data send success");
+  let textEncoder = util.TextEncoder.create('utf-8');
+  const arrayBuffer  = textEncoder.encodeInto('data send success');
 
-  let sessionId = 100;
+  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
+  let sessionId = 101;
+  // 向对端设备发送字节流数据
   abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendData success");
+    hilog.info(0x0000, 'testTag', 'sendData success');
   }).catch((error: BusinessError) => {
     hilog.error(0x0000, 'testTag', `sendData failed. Code: ${error.code}, message: ${error.message}`);
-  })
+  });
   ```
 
 ## PeerInfo
@@ -881,11 +898,11 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
 | ----------------- | ------ | ----  | ---- | ------------------ |
-| deviceId          | string | 否   |否    | 对端设备ID。     |
-| bundleName        | string | 否   |否    | 对端应用的包名。 |
-| moduleName        | string | 否   |否    | 对端应用的模块名。 |
-| abilityName       | string | 否   |否     | 对端应用的组件名。 |
-| serviceName       | string | 否   |是     | 应用设置的服务名称，需与createAbilityConnectionSession接口的serviceName参数保持一致。 |
+| deviceId          | string | 否   |否    | 对端设备的网络ID，用于标识要连接的远程设备。可通过分布式设备管理接口getAvailableDeviceListSync获取。     |
+| bundleName        | string | 否   |否    | 对端应用的包名，用于唯一标识要连接的应用。需与对端应用的bundleName保持一致。 |
+| moduleName        | string | 否   |否    | 对端应用的模块名，用于标识要连接的应用模块。通常为'entry'或其他自定义模块名。 |
+| abilityName       | string | 否   |否     | 对端应用的组件名，用于标识要连接的UIAbility组件。需与对端应用的abilityName保持一致。 |
+| serviceName       | string | 否   |是     | 应用设置的服务名称。若设置此值，需与createAbilityConnectionSession接口的serviceName参数保持一致。 |
 
 ## ConnectOptions
 
@@ -897,9 +914,9 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称          | 类型    | 只读   | 可选   | 说明          |
 | ----------- | ------- | ---- | ---- | ----------- |
-| needSendData    | boolean  | 否    | 是   | true代表需要传输数据，可调用sendMessage和sendData方法；false代表不需要传输数据。     |
-| startOptions | [StartOptionParams](#startoptionparams) | 否    | 是   | 配置应用启动选项。建议在需要用户交互的场景下使用START_IN_FOREGROUND。 |
-| parameters | Record&lt;string, string&gt;  | 否    | 是   | 配置连接所需的额外信息。    |
+| needSendData    | boolean  | 否    | 是   | 是否需要传输数据。传入true表示需要传输数据（可调用sendMessage和sendData方法），传入false表示不需要传输数据。不传入时默认为false。     |
+| startOptions | [StartOptionParams](#startoptionparams) | 否    | 是   | 应用启动选项。START_IN_FOREGROUND（值为0）表示将对端应用启动至前台，适合需要用户交互的场景。不传入时使用系统默认启动配置。 |
+| parameters | Record&lt;string, string&gt;  | 否    | 是   | 配置连接所需的额外信息。当需要传递自定义参数到对端设备时传入此参数，例如身份标识、业务标识等。不传入时不传递额外信息。    |
 
 ## ConnectResult
 
@@ -911,9 +928,9 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称       | 类型   | 只读   | 可选   | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
-| isConnected | boolean | 否   | 否 | true表示连接成功，false表示连接失败。 |
-| errorCode | [ConnectErrorCode](#connecterrorcode) | 否   | 是   | 表示连接错误码。 |
-| reason | string | 否   | 是   | 表示拒绝连接的原因，仅在连接被拒绝时返回。 |
+| isConnected | boolean | 否   | 否 | true表示连接成功；false表示连接失败，具体原因请查看errorCode字段或reason字段。 |
+| errorCode | [ConnectErrorCode](#connecterrorcode) | 否   | 是   | 表示连接错误码。连接失败时存在，用于标识具体的错误原因。连接成功时不存在。 |
+| reason | string | 否   | 是   | 表示拒绝连接的原因，仅在连接被拒绝时返回。该值为对端应用调用reject接口时传入的reason参数，用于告知本端拒绝的具体原因。连接成功或未被拒绝时无此字段。 |
 
 ## EventCallbackInfo
 
@@ -926,22 +943,22 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 | 名称       | 类型    | 只读 | 可选 | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | sessionId | number   | 否   | 否   |   表示当前事件对应的协同会话ID。取值范围是大于100的整数。 |
-| reason | [DisconnectReason](#disconnectreason)     | 否   | 是   |   表示断连原因。 |
-| msg | string   | 否   | 是   |   表示接收的消息。 |
-| data  | ArrayBuffer | 否   | 是   |   表示接收的字节流。 |
+| reason | [DisconnectReason](#disconnectreason)     | 否   | 是   | 表示断连原因。触发disconnect事件时存在，用于标识具体的断连原因。其他事件类型下不存在。 |
+| msg | string   | 否   | 是   | 表示接收的消息。触发receiveMessage事件时存在，包含接收到的文本消息内容。其他事件类型下不存在。 |
+| data  | ArrayBuffer | 否   | 是   | 表示接收的字节流。触发receiveData事件时存在，包含接收到的二进制数据。其他事件类型下不存在。 |
 
 ## CollaborateEventInfo
 
 协同事件信息。
 
- **模型约束**：此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 | 名称       | 类型   | 只读   | 可选   | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
-| eventType | [CollaborateEventType](#collaborateeventtype) | 否   | 否 | 表示协同事件的类型。 |
-| eventMsg | string | 否   | 是   | 表示协同事件的消息内容。 |
+| eventType | [CollaborateEventType](#collaborateeventtype) | 否   | 否 | 表示协同事件的类型（0表示SEND_FAILURE，1表示COLOR_SPACE_CONVERSION_FAILURE）。 |
+| eventMsg | string | 否   | 是   | 表示协同事件的消息内容。eventType为SEND_FAILURE或COLOR_SPACE_CONVERSION_FAILURE时存在，包含事件相关的详细消息信息。 |
 
 ## ConnectErrorCode
 
@@ -982,8 +999,8 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
-| SEND_FAILURE | 0 |表示任务发送失败。|
-| COLOR_SPACE_CONVERSION_FAILURE | 1 |表示色彩空间转换失败。|
+| SEND_FAILURE | 0 |表示任务发送失败。在跨设备协同过程中，当发送协作任务（如协作事件）失败时产生此事件，常见原因包括网络异常、对端设备不可达等。|
+| COLOR_SPACE_CONVERSION_FAILURE | 1 |表示色彩空间转换失败。在跨设备图像协同场景下，当需要将图像数据从源设备色彩空间转换为目标设备色彩空间格式失败时产生此事件，常见原因包括色彩格式不支持或转换参数错误。|
 
 ## DisconnectReason
 
@@ -1001,7 +1018,7 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 ## CollaborationKeys
 
-应用协作键值的枚举。
+提供应用协作键值的枚举。
 
  **模型约束**：此接口仅可在Stage模型下使用。
 
