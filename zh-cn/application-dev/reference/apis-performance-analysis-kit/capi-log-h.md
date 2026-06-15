@@ -474,3 +474,40 @@ void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer)
 | -- | -- |
 | [LogLevel](capi-log-h.md#loglevel) level | 日志级别。 |
 | [PreferStrategy](capi-log-h.md#preferstrategy) prefer | 偏好策略。 |
+
+## 使用示例
+
+1. 在CMakeLists.txt中新增libhilog_ndk.z.so链接：
+```c
+target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
+```
+
+2. 在源文件中包含hilog头文件，并定义domain、tag宏：
+```c
+#include "hilog/log.h"
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0x3200  // 全局domain宏，标识业务领域
+#define LOG_TAG "MY_TAG"   // 全局tag宏，标识模块日志tag
+```
+
+3. 打印日志：
+```c
+OH_LOG_INFO(LOG_APP, "Failed to visit path.");
+// 设置应用日志最低打印级别，设置完成后，低于Warn级别的日志将无法打印
+OH_LOG_SetMinLogLevel(LOG_WARN);
+OH_LOG_INFO(LOG_APP, "this is an info level log");
+OH_LOG_ERROR(LOG_APP, "this is an error level log");
+// 设置应用日志PREFER_OPEN_LOG策略的最低打印级别，设置完成后，不低于INFO级别的日志都可打印
+OH_LOG_SetLogLevel(LOG_WARN, PREFER_OPEN_LOG);
+OH_LOG_INFO(LOG_APP, "this is an another info level log");
+OH_LOG_ERROR(LOG_APP, "this is an another error level log");
+```
+
+4. 输出结果：
+```c
+01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     Failed to visit path.
+01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              E     this is an error level log
+01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     this is an another info level log
+01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              E     this is an another error level log
+```
