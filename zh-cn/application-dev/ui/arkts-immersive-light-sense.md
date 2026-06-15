@@ -590,6 +590,93 @@ struct MaterialInfoPage {
 
 <!-- @[AllStyles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/AllStyles.ets) -->
 
+``` TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AllStylesPage {
+  build() {
+    Column() {
+      Stack() {
+        // 请替换为实际资源文件
+        Image($r('app.media.img'))
+          .width('100%')
+          .height('100%')
+
+        Column({ space: 30 }) {
+          Column() {
+            Text('ULTRA_THIN')
+          }
+          .width(328)
+          .height(56)
+          .borderRadius(28)
+          .justifyContent(FlexAlign.Center)
+          .alignItems(HorizontalAlign.Center)
+          .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+          }))
+
+          Column() {
+            Text('THIN')
+          }
+          .width(328)
+          .height(56)
+          .borderRadius(28)
+          .justifyContent(FlexAlign.Center)
+          .alignItems(HorizontalAlign.Center)
+          .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.THIN,
+          }))
+
+          Column() {
+            Text('REGULAR')
+          }
+          .width(328)
+          .height(56)
+          .borderRadius(28)
+          .justifyContent(FlexAlign.Center)
+          .alignItems(HorizontalAlign.Center)
+          .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.REGULAR,
+          }))
+
+          Column() {
+            Text('THICK')
+          }
+          .width(328)
+          .height(56)
+          .borderRadius(28)
+          .justifyContent(FlexAlign.Center)
+          .alignItems(HorizontalAlign.Center)
+          .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.THICK,
+          }))
+
+          Column() {
+            Text('ULTRA_THICK')
+          }
+          .width(328)
+          .height(56)
+          .borderRadius(28)
+          .justifyContent(FlexAlign.Center)
+          .alignItems(HorizontalAlign.Center)
+          .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
+          }))
+        }
+      }
+      .height('90%')
+      .width('90%')
+    }
+    .height('100%')
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 在低档算力设备上表现：
 
 ![systemMaterial](../reference/apis-arkui/figures/immersiveMaterialSmooth.jpg)
