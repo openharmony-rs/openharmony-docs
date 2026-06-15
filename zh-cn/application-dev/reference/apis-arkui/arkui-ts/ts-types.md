@@ -12,7 +12,13 @@
 
 ## Resource
 
+type Resource = import('../api/global/resource').Resource
+
 资源引用类型，用于设置组件属性的值。各类资源文件，需要放入特定子目录中存储管理，资源目录的示例请参考[资源分类](../../../quick-start/resource-categories-and-access.md#资源分类)。
+
+| 类型                    | 说明                        |
+| --------------------- | ------------------------- |
+| import('../api/global/resource').[Resource](../../apis-localization-kit/js-apis-resource.md#resource-1)             | 资源引用类型。                    |
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -57,6 +63,54 @@
 | string                | 需要显式指定[像素单位](ts-pixel-units.md)，如'10px'，也可设置百分比字符串，如'100%'。<br/>**说明：** <br/>不指定像素单位时，默认单位vp，如'10'，等同于10。 |
 | number                | 默认单位vp。                                |
 | [Resource](#resource) | 资源引用类型，引入系统资源或者应用资源中的尺寸。               |
+
+## LengthMetricsUnit<sup>12+</sup>
+
+type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit
+
+定义长度属性单位。
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|import('../api/arkui/Graphics').[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)   | 长度属性单位。 |
+
+## LengthMetrics<sup>12+</sup>
+
+type LengthMetrics = import('../api/arkui/Graphics').LengthMetrics
+
+定义长度属性。
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|import('../api/arkui/Graphics').[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 长度属性。 |
+
+## ColorMetrics<sup>12+</sup>
+
+declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics
+
+定义混合颜色。
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|import('../api/arkui/Graphics').[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)   | 混合颜色。 |
 
 ## ResourceStr
 

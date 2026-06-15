@@ -91,7 +91,7 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 ## ComponentContent<sup>12+</sup>
 
-type ComponentContent\<T \= Object\> = ComponentContent\<T\>
+type ComponentContent\<T \= Object\> = import('../api/arkui/ComponentContent').ComponentContent\<T\>
 
 组件内容的实体封装。
 
@@ -103,7 +103,7 @@ type ComponentContent\<T \= Object\> = ComponentContent\<T\>
 
 | 类型|说明 |
 | ----- | ----------------- |
-| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
+| import('../api/arkui/ComponentContent').[ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
 
 ## 示例
 
