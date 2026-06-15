@@ -74,9 +74,9 @@
 | [ArkUI_CustomSpanMeasureInfo](capi-arkui-nativemodule-arkui-customspanmeasureinfo.md) | ArkUI_CustomSpanMeasureInfo | 自定义段落组件的测量信息。 |
 | [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md) | ArkUI_CustomSpanMetrics | 自定义段落组件的度量指标。 |
 | [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md) | ArkUI_CustomSpanDrawInfo | 自定义段落组件的绘制信息。 |
-| [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | 定义[Swiper](../apis-arkui/arkui-ts/ts-container-swiper.md)组件的导航指示器风格。 |
-| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | 定义Swiper组件的数字导航指示器风格。 |
-| [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | 定义Swiper组件的导航箭头风格。 |
+| [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | 定义[Swiper](../apis-arkui/arkui-ts/ts-container-swiper.md)组件的导航指示器样式，用于在轮播等场景中展示当前位置和切换状态。 |
+| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | 定义Swiper组件的数字导航指示器样式，用于以数字形式展示当前位置和总页数。 |
+| [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | 定义Swiper组件的导航箭头样式，用于在轮播等场景中提供更直观的翻页指引。 |
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | 定义文本组件支持的属性字符串的数据对象。 |
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | 定义截图的可选项。 |
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | 定义文本选择器的数据选择列表。 |
@@ -3001,7 +3001,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | 传入的buffer size异常（数据过大）。<br/>错误码的详细介绍请参见[106202 传入的buffer size异常](../apis-arkui/errorcode-router.md#106202-传入的buffer-size异常)。 |
 | ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  传入的节点未挂载到组件树上。错误码的详细介绍请参见[106203 传入的节点未挂载到组件树上](../apis-arkui/errorcode-node.md#106203-传入的节点未挂载到组件树上)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  不支持在非UI线程操作传入的节点。错误码的详细介绍请参见[106204 不支持在非UI线程操作传入的节点](../apis-arkui/errorcode-node.md#106204-不支持在非ui线程操作传入的节点)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  反色能力入参错误。错误码的详细介绍请参见[106205 反色能力入参错误](../apis-arkui/errorcode-force-dark.md#106205-反色能力入参错误)。<br>**起始版本：** 20 |
+| ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  反色能力入参错误。错误码的详细介绍请参见[106205 反色能力配置错误](../apis-arkui/errorcode-force-dark.md#106205-反色能力配置错误)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_NODE_IS_ADOPTED = 106206 |  节点已被接纳为附属节点。错误码的详细介绍请参见[106206 节点已被接纳为附属节点](../apis-arkui/errorcode-adopt.md#106206-节点已被接纳为附属节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NODE_HAS_PARENT = 106207 |  被接纳的节点已有父节点。错误码的详细介绍请参见[106207 被接纳的附属节点已有父节点](../apis-arkui/errorcode-adopt.md#106207-被接纳的附属节点已有父节点)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 |  节点无法被接纳为附属节点。错误码的详细介绍请参见[106208 节点无法被接纳为附属节点](../apis-arkui/errorcode-adopt.md#106208-节点无法被接纳为附属节点)。<br>**起始版本：** 22 |

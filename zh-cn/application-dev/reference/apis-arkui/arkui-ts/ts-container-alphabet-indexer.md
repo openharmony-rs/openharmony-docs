@@ -6,7 +6,7 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-可以与容器组件联动用于按逻辑结构快速定位容器显示区域的组件。
+可以与容器组件联动，用于按逻辑结构快速定位容器显示区域，适用于通讯录、城市列表、分类列表等需要快速定位内容的场景。
 
 >  **说明：**
 >
@@ -324,7 +324,7 @@ ArkTS-Dyn: selected(index: number)
 
 ArkTS-Sta: selected(index: int \| Bindable\<int> \| undefined)
 
-设置选中项索引值。
+设置选中项索引值。与[AlphabetIndexerOptions](#alphabetindexeroptions18对象说明)中的selected同时设置时，该属性的优先级更高。
 
 从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
@@ -362,7 +362,7 @@ ArkTS-Sta: popupPosition(value: Position | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明                                                         |
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Position](ts-types.md#position) <br/>  ArkTS-Sta: [Position](ts-types.md#position) \| undefined| 是   | 弹出窗口相对于索引条上边框中点的位置。<br/>默认值：{x:60.0, y:48.0}<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [Position](ts-types.md#position) <br/>  ArkTS-Sta: [Position](ts-types.md#position) \| undefined| 是   | 弹出窗口相对于索引条上边框中点的位置。与[alignStyle](#alignstyle)同时设置时，水平方向由[alignStyle](#alignstyle)的offset参数控制，竖直方向上value.y生效。<br/>默认值：{x:60.0, y:48.0}<br/>取值为undefined时，按默认值处理。 |
 
 ### popupSelectedColor<sup>10+</sup>
 
@@ -468,9 +468,9 @@ ArkTS-Sta: autoCollapse(value: boolean | undefined)
 
 设置是否使用自适应折叠模式。
 
-如果索引项第一项为“#”，当除去第一项后剩余索引项数量 <= 9时，选择全显示模式；9 < 剩余索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式；剩余索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。
+如果索引项第一项为“#”，当除去第一项后剩余索引项数量 <= 9时，选择全显示模式（所有索引项完整显示）；9 < 剩余索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式；剩余索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。
 
-如果索引项第一项不为“#”，当所有索引项数量 <= 9时，选择全显示模式；9 < 所有索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式；所有索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。
+如果索引项第一项不为“#”，当所有索引项数量 <= 9时，选择全显示模式（所有索引项完整显示）；9 < 所有索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式；所有索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。
 
 >**说明：**
 >
@@ -594,7 +594,7 @@ ArkTS-Dyn: enableHapticFeedback(value: boolean)
 
 ArkTS-Sta: enableHapticFeedback(value: boolean | undefined)
 
-设置是否开启触控反馈。
+设置是否开启触控反馈。开启后，在手指触摸或滑动选中索引项时会触发振动反馈。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -689,7 +689,7 @@ ArkTS-Sta: onSelect(callback: OnAlphabetIndexerSelectCallback | undefined)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | ArkTS-Dyn: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18)  <br/>  ArkTS-Sta: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) \| undefined| 是   | 索引项选中事件。<br/>取值为undefined时，不使用回调函数。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18)  <br/>  ArkTS-Sta: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) \| undefined| 是   | 回调函数，用于处理索引项选中事件。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onRequestPopupData<sup>8+</sup>
 
@@ -711,7 +711,7 @@ ArkTS-Sta: onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallbac
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback  | ArkTS-Dyn: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) <br/>  ArkTS-Sta: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) \| undefined| 是   | 设置提示弹窗二级索引项内容事件。<br/>取值为undefined时，不使用回调函数。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) <br/>  ArkTS-Sta: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) \| undefined| 是   | 回调函数，用于提供提示弹窗二级索引项内容。需先设置[usingPopup](#usingpopup)为true。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onPopupSelect<sup>8+</sup>
 
@@ -719,7 +719,7 @@ ArkTS-Dyn: onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback)
 
 ArkTS-Sta: onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback | undefined)
 
-提示弹窗二级索引选中事件，回调参数为当前选中二级索引项索引。
+提示弹窗二级索引选中事件，回调参数为当前选中二级索引项索引。仅在[usingPopup](#usingpopup)为true时触发。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -733,7 +733,7 @@ ArkTS-Sta: onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback | undefi
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | ArkTS-Dyn: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18)<br/>  ArkTS-Sta: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) \| undefined| 是   | 提示弹窗二级索引选中事件。<br/>取值为undefined时，不使用回调函数。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18)<br/>  ArkTS-Sta: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) \| undefined| 是   | 回调函数，用于处理提示弹窗二级索引选中事件。需先设置[usingPopup](#usingpopup)为true。<br/>取值为undefined时，不使用回调函数。 |
 
 ## OnAlphabetIndexerSelectCallback<sup>18+</sup>
 
