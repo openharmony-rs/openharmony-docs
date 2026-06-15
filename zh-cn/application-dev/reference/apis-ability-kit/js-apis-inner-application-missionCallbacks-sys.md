@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-作为可以[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示开始同步后，建立的回调函数。
+作为可以[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示开始同步后，建立的回调函数。用于监听分布式任务的变化，包括任务变化、快照变化、网络断开连接等场景，能够实时获取任务状态信息，帮助开发者实现跨设备的任务同步和状态管理，适用于需要在多设备间协调任务、监控任务生命周期的场景。
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 notifyMissionsChanged(deviceId: string): void
 
-注册任务监听的callback，通知任务变化。
+notifyMissionsChanged注册任务监听的callback，通知任务变化。用于在多设备协同场景下，监听远程设备的任务状态变化，如任务管理器、多屏协同等应用场景。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -38,25 +38,37 @@ notifyMissionsChanged(deviceId: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceId |  string | 是 | 通知任务变化，返回设备ID。|
+| deviceId |  string | 是 | 设备ID，表示发生任务变化的远程设备。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| void | 无返回值，作为回调函数，执行后通知任务变化事件，不返回具体值。 |
+
+**错误码：** 此接口不返回错误码。
 
 **示例：**
 
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
+// 注册任务监听器
 distributedMissionManager.registerMissionListener(
   {
     deviceId: '123456'
   },
   {
+    // 任务变化时的回调，接收设备ID
     notifyMissionsChanged: (deviceId: string) => {
       console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
+    // 快照变化时的回调，接收设备ID和任务ID
     notifySnapshot: (deviceId: string, mission: number) => {
       console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
+    // 网络断开时的回调，接收设备ID和网络状态
     notifyNetDisconnect: (deviceId: string, state: number) => {
       console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
@@ -69,7 +81,7 @@ distributedMissionManager.registerMissionListener(
 
 notifySnapshot(deviceId: string, mission: number): void
 
-注册任务监听的callback，通知快照变化。
+notifySnapshot注册任务监听的callback，通知任务快照变化。当任务的快照（即任务当前界面状态的快照）发生变化时触发该回调。用于在多设备协同场景下，监听远程设备任务快照的变化，如任务切换、任务恢复等应用场景。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -83,25 +95,37 @@ notifySnapshot(deviceId: string, mission: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceId |  string | 是 | 通知快照变化，返回设备ID。 |
-| mission |  number | 是 | 通知快照变化，任务ID。 |
+| deviceId |  string | 是 | 设备ID，表示快照发生变化的远程设备。 |
+| mission |  number | 是 | 任务ID，表示快照发生变化的任务。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| void | 无返回值，作为回调函数，执行后通知快照变化事件，不返回具体值。 |
+
+**错误码：** 此接口不返回错误码。
 
 **示例：**
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
+// 注册任务监听器
 distributedMissionManager.registerMissionListener(
   {
     deviceId: '123456'
   },
   {
+    // 任务变化时的回调，接收设备ID
     notifyMissionsChanged: (deviceId: string) => {
       console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
+    // 快照变化时的回调，接收设备ID和任务ID
     notifySnapshot: (deviceId: string, mission: number) => {
       console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
+    // 网络断开时的回调，接收设备ID和网络状态
     notifyNetDisconnect: (deviceId: string, state: number) => {
       console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
@@ -114,7 +138,7 @@ distributedMissionManager.registerMissionListener(
 
 notifyNetDisconnect(deviceId: string, state: number): void
 
-注册任务监听的callback，通知断开连接。
+notifyNetDisconnect注册任务监听的callback，通知断开连接。用于在多设备协同场景下，监听远程设备的网络连接状态变化，当设备断开连接时触发回调，用于清理相关资源或提示用户。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -128,26 +152,38 @@ notifyNetDisconnect(deviceId: string, state: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceId |  string | 是 | 通知断开连接，返回设备ID。 |
-| state |  number | 是 | 通知断开连接，返回网络状态。0：连接断开（固定值）。 |
+| deviceId |  string | 是 | 设备ID，表示网络断开的远程设备。 |
+| state |  number | 是 | 网络连接状态。0表示连接断开，为固定值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| void | 无返回值，作为回调函数，执行后通知网络断开连接事件，不返回具体值。 |
+
+**错误码：** 此接口不返回错误码。
 
 **示例：**
 
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
+// 注册任务监听器
 distributedMissionManager.registerMissionListener(
   {
     deviceId: '123456'
   },
   {
+    // 任务变化时的回调，接收设备ID
     notifyMissionsChanged: (deviceId: string) => {
       console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
+    // 快照变化时的回调，接收设备ID和任务ID
     notifySnapshot: (deviceId: string, mission: number) => {
       console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
+    // 网络断开时的回调，接收设备ID和网络状态
     notifyNetDisconnect: (deviceId: string, state: number) => {
       console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
