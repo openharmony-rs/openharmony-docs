@@ -154,6 +154,16 @@ OpenHarmony特有的分布式组网能力单元。开发者可以通过IDN获取
 
 弹簧物理曲线，生成0到1的归一化插值轨迹，动画时长完全由弹簧物理参数（质量、刚度、阻尼）决定，覆盖外部设定的动画时长。仅支持正向单次播放，不支持反转。
 
+## K
+
+### 卡片能力
+
+声明标签，表示该API在ArkTS卡片受限渲染环境中可用。卡片环境限制动画时长、API集合且不支持全页面导航。
+
+### 卡片转场
+
+卡片专属转场样式，卡片展开至详情页面时，周围组件纵向分离（展开）形成视觉过渡。
+
 ## L
 
 ### LuminanceSampler；亮度取色器
@@ -258,14 +268,6 @@ API version 9开始新增的应用模型，提供UIAbility、ExtensionAbility两
 ### TransitionEffect；组件内转场
 
 组件插入或移除渲染树（通过if/ForEach/visibility变化触发）时的转场动画机制。TransitionEffect提供可组合的类型安全API（OPACITY、SLIDE、SLIDE_SWITCH、asymmetric、combine等），区别于页面级转场。
-
-### 卡片能力
-
-声明标签，表示该API在ArkTS卡片受限渲染环境中可用。卡片环境限制动画时长、API集合且不支持全页面导航。
-
-### 卡片转场
-
-卡片专属转场样式，卡片展开至详情页面时，周围组件纵向分离（展开）形成视觉过渡。
 
 ### responsiveSpringMotion；弹性跟手动画曲线
 
