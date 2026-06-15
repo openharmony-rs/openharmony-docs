@@ -6320,6 +6320,7 @@ Allows a system application to set advanced driver assistance systems (ADAS) com
 ## ohos.permission.automotive.GET_ADAS_INFO
 
 Allows a system application to obtain advanced driver assistance systems (ADAS) information.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant

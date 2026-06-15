@@ -6293,7 +6293,7 @@
 
 ## ohos.permission.automotive.GET_CLUSTER_INFO
 
-允许系统应用获取车机上的仪表信息
+允许系统应用获取车机上的仪表信息。
 
 **权限级别**：system_basic
 
@@ -6321,7 +6321,7 @@
 
 ## ohos.permission.automotive.SET_MMS_CMD
 
-允许系统应用设置感知命令。
+允许系统应用设置MMS命令。
 
 **权限级别**：system_basic
 
