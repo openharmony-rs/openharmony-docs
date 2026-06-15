@@ -136,9 +136,9 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 ArkTS示例：
 
 ```ts
+/* 以生成ECC密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 以生成ECC密钥为例 */
 let keyAlias: string = 'keyAlias';
 let properties: Array<huks.HuksParam> = [
   {
@@ -161,6 +161,7 @@ let properties: Array<huks.HuksParam> = [
 let options: huks.HuksOptions = {
   properties: properties
 };
+/* 生成密钥 */
 huks.generateKeyItem(keyAlias, options, (error) => {
   if (error) {
     console.error(`callback: generateKeyItem failed`);
@@ -337,6 +338,7 @@ let properties: Array<huks.HuksParam> = [
 let options: huks.HuksOptions = {
   properties: properties
 };
+/* 生成密钥 */
 huks.generateKeyItem(keyAlias, options)
   .then((data) => {
     console.info(`promise: generateKeyItem success`);
@@ -574,9 +576,9 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 **示例：**
 
 ```ts
+/* 以导入AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 以导入AES密钥为例 */
 let plainTextSize32 = makeRandomArr(32);
 
 function makeRandomArr(size: number) {
@@ -671,9 +673,9 @@ importKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 **示例：**
 
 ```ts
+/* 以导入AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 
-/* 以导入AES为例 */
 function makeRandomArr(size: number) {
   let arr = new Uint8Array(size);
   for (let i = 0; i < size; i++) {
@@ -3277,9 +3279,9 @@ listAliases(options: HuksOptions): Promise\<HuksListAliasesReturnResult>
 **示例：**
 
 ```ts
+/* 以查询DE类密钥的别名集为例 */
 import { huks } from '@kit.UniversalKeystoreKit'
 
-/* 以查询DE类密钥的别名集为例 */
 async function testListAliases() {
   let queryProperties: Array<huks.HuksParam> = [
     {

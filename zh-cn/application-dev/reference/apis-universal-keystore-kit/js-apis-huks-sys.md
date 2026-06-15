@@ -74,6 +74,7 @@ generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions
   调用方必须是运行在User0~99（包含0和99）用户身份下的系统应用，同时需要申请ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。允许应用安装到User0的配置指导，请参考[singleton|bool|false|是否允许应用安装到单用户下(U0)](../../../../zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md#可由设备厂商配置的特权)
 
 ```ts
+/* 以生成AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit'
 
@@ -104,6 +105,7 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
   }]
 }
 
+/* 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
@@ -289,6 +291,7 @@ importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以导入AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit'
 
@@ -298,7 +301,6 @@ const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const plainAesKey128 = new Uint8Array([
   0xfb, 0x8b, 0x9f, 0x12, 0xa0, 0x83, 0x19, 0xbe, 0x6a, 0x6f, 0x63, 0x2a, 0x7c, 0x86, 0xba, 0xca
 ]);
-/* 以导入AES密钥为例 */
 function GetAesGenerateProperties(): Array<huks.HuksParam> {
   return [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -321,7 +323,7 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
     value: userIdStorageLevel,
   }]
 }
-/* 1. 导入密钥明文 */
+/* 导入密钥明文 */
 async function ImportPlainKey(keyAlias: string, importProperties: Array<huks.HuksParam>, plainKey: Uint8Array) {
   const options: huks.HuksOptions = {
     properties: importProperties,
@@ -392,7 +394,7 @@ attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
-/* 以RSA4096密钥证明为例 */
+/* 以RSA密钥证明为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit'
 
@@ -549,7 +551,7 @@ anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptio
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
-/* 以RSA4096匿名密钥证明为例 */
+/* 以RSA匿名密钥证明为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit'
 
@@ -716,7 +718,7 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksPar
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
-/* 以ECC256离线匿名密钥证明为例 */
+/* 以ECC离线匿名密钥证明为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit'
 
@@ -1454,7 +1456,7 @@ async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey:
   return wrappedData;
 }
 
-/* 安全导入密钥流程 */
+/* 安全导入密钥整体流程 */
 export async function HuksSecurityImportTest(userId: number) {
   const srcKeyAliasWrap = 'HUKS_Basic_Capability_Import_0200';
   const huksPubKey: Uint8Array = await GenerateAndExportPublicKey(userId, srcKeyAliasWrap, genWrappingKeyParams);
