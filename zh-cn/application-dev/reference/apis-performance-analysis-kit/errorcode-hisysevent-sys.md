@@ -73,7 +73,7 @@ Abnormal environment.
 
 **处理步骤**
 
-尝试重新调用write接口进行打点。
+尝试重新调用write方法进行打点。
 
 ## 11200004 事件长度超过限制
 
@@ -318,4 +318,4 @@ hiview服务异常。
 
 **处理步骤**
 
-确认hiview服务正常后，尝试重新调用unsubscribe接口取消订阅。
+确认hiview服务正常后，尝试重新调用unsubscribe方法取消订阅。
