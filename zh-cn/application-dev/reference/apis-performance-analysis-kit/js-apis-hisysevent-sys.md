@@ -44,7 +44,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 | domain | string | 否 | 否 | 事件领域。 |
 | name | string | 否 | 否 | 事件名称。 |
 | eventType | [EventType](#eventtype) | 否 | 否 | 事件类型。 |
-| params | object | 否 | 是 |  事件参数。参数需满足验证、字符串类型参数大小限制、参数总数限制、数组类型参数数量限制等要求。详见错误码[11200051](errorcode-hisysevent-sys.md#11200001-非法的事件领域)-[11200054](errorcode-hisysevent-sys.md#11200054-数组类型的事件参数值的长度超过限制)。 |
+| params | object | 否 | 是 |  事件参数。参数需满足验证、字符串类型参数大小限制、参数总数限制、数组类型参数数量限制等要求。详见错误码[系统事件错误码](errorcode-hisysevent-sys.md)：1200001-1200005。 |
 
 
 ## hiSysEvent.write
