@@ -736,7 +736,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
 // 调用setContentAutoRotation方法。
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.setContentAutoRotation(true).then(() => {
-    console.info('Succeeded in setting setContentAutoRotation enabled.');
+    console.info('Succeeded in enabling setContentAutoRotation.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to enable setContentAutoRotation. Code: ${err.code}, message: ${err.message}`);
   });
