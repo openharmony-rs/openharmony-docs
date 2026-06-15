@@ -27,6 +27,10 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 
 注册collaborateEvent事件的回调监听,使用callback异步回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onCollaborateEvent](#abilityconnectionmanageroncollaborateevent23)。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -68,6 +72,10 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 注册receiveImage事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveImage](#abilityconnectionmanageronreceiveimage23)。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -108,6 +116,10 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 取消collaborateEvent事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offCollaborateEvent](#abilityconnectionmanageroffcollaborateevent23)。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -146,6 +158,10 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 取消receiveImage事件的回调监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveImage](#abilityconnectionmanageroffreceiveimage23)。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -176,6 +192,184 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
   let sessionId = 100;
   abilityConnectionManager.off("receiveImage", sessionId);
+  ```
+
+## abilityConnectionManager.onReceiveImage<sup>23+</sup>
+
+onReceiveImage(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
+
+注册receiveImage事件的回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveImage')](#abilityconnectionmanageronreceiveimage)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 注册的回调函数。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+
+**示例：**
+
+  ```ts
+  import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  let sessionId = 100;
+  abilityConnectionManager.onReceiveImage(sessionId, (callbackInfo) => {
+    hilog.info(0x0000, 'testTag', 'session receiveImage, sessionId is', callbackInfo.sessionId);
+  });
+  ```
+
+## abilityConnectionManager.offReceiveImage<sup>23+</sup>
+
+offReceiveImage(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): void
+
+取消receiveImage事件的回调监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveImage')](#abilityconnectionmanageroffreceiveimage)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 注册的回调函数。如果传入该参数，则关闭该监听。如果未传入该参数，则取消所有'receiveImage'事件监听。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+
+**示例：**
+
+  ```ts
+  import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+
+  let sessionId = 100;
+  abilityConnectionManager.offReceiveImage(sessionId);
+  ```
+
+## abilityConnectionManager.onCollaborateEvent<sup>23+</sup>
+
+onCollaborateEvent(sessionId: int,callback: Callback&lt;CollaborateEventInfo&gt;): void
+
+注册collaborateEvent事件的回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('collaborateEvent')](#abilityconnectionmanageroncollaborateevent)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 是    | 注册的回调函数，callback返回协同事件的信息。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+
+**示例：**
+
+  ```ts
+  import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  let sessionId = 100;
+  abilityConnectionManager.onCollaborateEvent(sessionId, (callbackInfo) => {
+    hilog.info(0x0000, 'testTag', 'session collaborateEvent, eventType is', callbackInfo.eventType);
+  });
+  ```
+
+## abilityConnectionManager.offCollaborateEvent<sup>23+</sup>
+
+offCollaborateEvent(sessionId: int,callback?: Callback&lt;CollaborateEventInfo&gt;): void
+
+取消collaborateEvent事件的回调监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('collaborateEvent')](#abilityconnectionmanageroffcollaborateevent)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统API**：此接口为系统接口。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                    | 必填   | 说明    |
+| --------- | ------------------------------------- | ---- | ----- |
+| sessionId | int  | 是    | 创建的协同会话ID。    |
+| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 否    | 注册的回调函数。如果传入该参数，则关闭该监听。如果未传入该参数，则取消所有'collaborateEvent'事件监听。    |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+
+**示例：**
+
+  ```ts
+  import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+
+  let sessionId = 100;
+  abilityConnectionManager.offCollaborateEvent(sessionId);
   ```
 
 ## abilityConnectionManager.sendImage
