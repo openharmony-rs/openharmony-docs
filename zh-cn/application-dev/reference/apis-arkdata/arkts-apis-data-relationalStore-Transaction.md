@@ -180,8 +180,6 @@ insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Prom
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
-
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -260,8 +258,6 @@ insertSync(table: string, values: ValuesBucket | sendableRelationalStore.ValuesB
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
-
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -348,8 +344,6 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
-
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -444,8 +438,6 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): number
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
-
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
@@ -538,8 +530,6 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
-
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -647,8 +637,6 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
-
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 单次插入参数的最大数量限制为32766，超出上限会返回14800000错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
@@ -754,8 +742,6 @@ batchInsertWithReturning(table: string, values: Array\<ValuesBucket\>, config: R
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
-
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 单次插入参数的最大数量限制为32766，超出上限会返回14800001错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
@@ -835,8 +821,6 @@ batchInsertWithReturningSync(table: string, values: Array\<ValuesBucket\>, confi
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
-
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 单次插入参数的最大数量限制为32766，超出上限会返回14800001错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
@@ -915,8 +899,6 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResol
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
-
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -999,8 +981,6 @@ updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictR
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
-
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -1082,8 +1062,6 @@ updateWithReturning(values: ValuesBucket, predicates: RdbPredicates, config: Ret
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
-
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
@@ -1160,8 +1138,6 @@ updateWithReturningSync(values: ValuesBucket, predicates: RdbPredicates, config:
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
 如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
-
-如需读取超过2MB的数据，请使用[queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
