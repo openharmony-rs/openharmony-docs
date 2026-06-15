@@ -1,4 +1,4 @@
-﻿# @ohos.app.ability.continueManager (跨端迁移)
+# @ohos.app.ability.continueManager (跨端迁移)
 <!--Kit: Ability Kit-->
 <!--Subsystem: DistributedAbilityManager-->
 <!--Owner: @hobbycao-->
