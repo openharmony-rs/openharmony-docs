@@ -59,6 +59,21 @@
 
 <!-- @[MaterialStateConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    // ...
+    "metadata": [{
+      "name": "ohos.arkui.UIMaterial.state",
+      "value": "enable"
+    }],
+    // ...
+  }
+}
+```
+
 [MaterialState](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)提供应用级沉浸式系统材质配置的三种状态DEFAULT、ENABLE和DISABLE，即对应json5配置中的三个value枚举值。
 
 开发者可以通过[uiMaterial.getMaterialInfo()](../reference/apis-arkui/arkts-apis-uimaterial.md#uimaterialgetmaterialinfo)获取当前应用的材质配置状态，并根据配置状态决定组件行为。
