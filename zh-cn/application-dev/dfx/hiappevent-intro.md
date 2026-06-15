@@ -76,3 +76,14 @@ HiAppEvent通过事件领域和事件名称关联应用事件，并通过addWatc
 |24h功耗器件分解统计事件|   不支持  |   不支持   |   支持   |
 |音频卡顿事件|   不支持  |   不支持   |   不支持   |
 |ArkWeb抛滑丢帧事件|   支持  |   支持   |   支持   |
+
+## 系统事件故障日志目录规格
+
+HiAppEvent支持订阅系统事件，部分事件信息中存在external_log、page_switch_log字段包含有日志路径信息。当前故障日志所在目录规格如下，需注意目录规格可能会随版本演进更新。
+
+|故障日志文件目录|目录包含内容|目录空间上限|
+|--------------|--------|-----------|
+|/data/storage/el2/log/hiappevent|崩溃事件日志、应用冻屏日志、地址越界事件日志、任务执行超时事件日志、CPU高负载事件日志。|默认5MB。<br>**说明**：启用minidump时，上限调整至35MB；关闭minidump时，上限恢复至5MB。|
+|/data/storage/el2/log/watchdog|主线程超时事件日志、滑动丢帧事件日志。|10MB|
+|/data/storage/el2/log/resourcelimit|资源泄漏事件日志。|2048MB|
+|/data/storage/el2/log/page_switch|页面切换日志。|18320KB。页面切换日志达到上限后由系统自动老化。|
