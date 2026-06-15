@@ -52,7 +52,7 @@ Navigates to a specified page in the application.
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -199,7 +199,7 @@ Navigates to a specified page in the application.
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -347,7 +347,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -474,7 +474,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -602,7 +602,7 @@ Navigates to a page using the named route.
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -755,7 +755,7 @@ Navigates to a page using the named route.
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -907,7 +907,7 @@ Replaces the current page with another one using the named route and destroys th
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1038,7 +1038,7 @@ Replaces the current page with another one using the named route and destroys th
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
