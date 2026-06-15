@@ -24,7 +24,7 @@ When a user opens the login page again, the application/browser obtains the user
 
 The following figure illustrates the development process for the passwords (assets) protected.
 
-![](figures/flowchat-no-auth-required.png)
+![](figures/flowchart-no-auth-required.png)
 
 1. The service queries an asset and determines whether the asset exists in the asset store based on the query result.
 
