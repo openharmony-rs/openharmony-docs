@@ -6,6 +6,8 @@
 <!--Tester: @mamba-ting-->
 <!--Adviser: @fang-jinxu-->
 
+@ohos.update模块提供系统升级和恢复出厂设置功能，支持在线升级、本地SD卡升级和恢复出厂设置三大核心能力，帮助设备厂商OTA客户端、系统应用实现版本管理、升级控制和设备维护。适用于系统版本更新、离线升级、设备数据清理等场景。
+
 升级范围：升级整个系统，包括内置资源和预置应用，不包括第三方应用。确保系统完整性，避免第三方应用兼容性问题，提升升级稳定性和安全性。
 
 升级类型：SD卡升级、在线升级。
@@ -22,7 +24,7 @@
 graph TD
     A[开发者准备SD卡和升级包] --> B[系统校验升级包]
     B --> C[系统安装升级包]
-    C --> D[设备重启系统以应用新版本]
+    C --> D[系统重启以应用新版本]
 ```
 
 **收益说明**：
@@ -38,22 +40,22 @@ graph TD
 ```mermaid
 graph TD
     A[开发者检查新版本] --> B[系统下载并安装升级包]
-    B --> C[设备重启以应用新版本]
+    B --> C[系统重启以应用新版本]
 ```
 
-通过Updater对象实现接口的调用。依赖设备厂商部署的升级包管理服务器（用于存储和管理升级包的服务端系统，提供版本检查、升级包下载等功能），接口由设备厂商实现。
+通过Updater对象实现接口的调用。依赖设备厂商部署的升级包管理服务器（服务端系统，提供版本检查、升级包下载等功能），接口由设备厂商实现。
 
 **收益说明**：
 
-帮助用户及时获取系统更新，提升升级效率和用户体验。支持自动版本检查、后台下载、断点续传等功能，降低用户操作成本。
+支持用户及时获取系统更新，提升升级效率和用户体验。支持自动版本检查、后台下载、断点续传等功能，降低用户操作成本。
 
 **恢复出厂设置**：
 
-使用场景：需要清除用户数据、恢复设备出厂状态。帮助用户快速解决系统异常、释放存储空间、保护隐私数据等场景。通过Restorer接口实现。
+使用场景：需要清除用户数据、恢复设备出厂状态。适用于解决系统异常、设备转赠或报废、隐私保护、存储空间释放等场景。传统恢复方式存在数据残留、密钥未清除、清理不彻底等问题，本模块提供分级恢复能力满足不同安全需求。
 
 **收益说明**：
 
-帮助用户快速解决系统异常问题、释放存储空间、保护隐私数据安全。提供三种恢复模式满足不同安全等级需求，普通恢复适用于日常维护场景，强制恢复适用于数据销毁场景，深度恢复适用于设备报废等极端场景，实现数据清理的分级管理，降低运维成本。
+支持用户快速解决系统异常问题、释放存储空间、保护隐私数据安全。提供三种恢复模式满足不同安全等级需求，普通恢复适用于日常维护场景，强制恢复适用于数据销毁场景，深度恢复适用于设备报废等极端场景，实现数据清理的分级管理，降低运维成本。
 
 设备恢复出厂设置需遵循以下标准流程：
 
@@ -64,22 +66,20 @@ graph TD
     B -->|factoryReset| C1[普通恢复出厂: 仅清除用户数据分区]
     B -->|forceFactoryReset| C2[强制恢复出厂: 清除数据并同步清除文件密钥]
     B -->|deepFactoryReset| C3[深度恢复出厂: 可配置范围，多次覆盖写入彻底销毁]
-    C1 --> D[执行清除操作]
+    C1 --> D[系统执行清除操作]
     C2 --> D
     C3 --> D
-    D --> E[重启设备以恢复至出厂初始状态]
+    D --> E[系统重启以恢复至出厂初始状态]
 ```
 
-> **说明**：
+> **说明：**
 >
-> 本模块首批接口从API version 9开始支持，不带版本上角标标记的接口均为首批接口。
-> 后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 本模块接口为系统接口。系统应用权限申请请参考系统应用开发指南，应用扩展权限申请请参考应用扩展开发指南。
 
 ## 导入模块
 
-下面所述各接口示例代码，都必须导入update模块，如下所示。
+开发者在使用示例代码前，必须导入update模块，如下所示。
 
 ```js
 import { update } from '@kit.BasicServicesKit';
@@ -105,23 +105,23 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 
 **参数**：
 
-| 参数名         | 类型                          | 必填   | 说明     |
-| ----------- | --------------------------- | ---- | ------ |
-| upgradeInfo | [UpgradeInfo](#upgradeinfo) | 是    | 升级对象信息（UpgradeInfo），用于标识调用方和升级业务类型。upgradeApp字段为调用方包名，格式为com.xxx.xxx.xxx，长度范围1-255字符，每段长度范围1-64字符，仅支持字母、数字和点号，每段必须以字母开头，不能包含连续点号或以点号开头结尾，超出范围或格式错误时抛出异常。|
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| upgradeInfo | [UpgradeInfo](#upgradeinfo) | 是    | 升级对象信息（UpgradeInfo），用于标识调用方和升级业务类型。upgradeApp字段为调用方包名，格式为com.xxx.xxx.xxx，长度范围[1，255]，单位：字符。每段长度范围[1，64]，单位：字符。仅支持字母、数字和点号，每段必须以字母开头，不能包含连续点号或以点号开头结尾，超出范围或格式错误时抛出异常。|
 
 **返回值**：
 
-| 类型                  | 说明   |
-| ------------------- | ---- |
+| 类型 | 说明 |
+| --- | --- |
 | [Updater](#updater) | 用于执行在线升级相关操作的工具类对象。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例**：
 
@@ -160,6 +160,7 @@ getRestorer(): Restorer
 - 调用factoryReset，deepFactoryReset和getDeepFactoryResetInfo接口时，需要权限ohos.permission.FACTORY_RESET。
 - 调用forceFactoryReset接口时，需要权限ohos.permission.FORCE_FACTORY_RESET。
 - 操作过程中设备会自动重启，应用需做好状态保存。
+- 深度恢复出厂(deepFactoryReset)耗时较长（可能数小时），必须确保设备电量充足(建议电量>50%)。
 - 建议在用户通过对话框或界面点击确认按钮后，再执行恢复出厂操作。
 
 **系统接口**： 此接口为系统接口。
@@ -168,17 +169,17 @@ getRestorer(): Restorer
 
 **返回值**：
 
-| 类型                    | 说明     |
-| --------------------- | ------ |
+| 类型 | 说明 |
+| --- | --- |
 | [Restorer](#restorer) | 用于执行恢复出厂设置相关操作的工具类对象。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **示例**：
 
@@ -193,7 +194,7 @@ getLocalUpdater(): LocalUpdater
 
 获取本地升级对象，用于从本地存储设备（如SD卡）执行系统升级。调用此方法后，系统返回LocalUpdater工具类对象，提供本地升级包校验、安装等功能。
 
-典型流程为：准备升级包（从设备厂商官网下载，格式为.zip或.bin）和证书文件（用于验证升级包签名，格式为.cert或.der） → 校验包签名和完整性 → 安装升级包 → 设备重启以应用新版本。
+典型流程为：开发者准备升级包（格式为.zip或.bin）和证书文件（格式为.cert或.der） → 系统校验包签名和完整性 → 系统安装升级包 → 系统重启以应用新版本。
 
 **原理说明**：
 
@@ -213,16 +214,16 @@ getLocalUpdater(): LocalUpdater
 
 **返回值**：
 
-| 类型                            | 说明     |
-| ----------------------------- | ------ |
+| 类型 | 说明 |
+| --- | --- |
 | [LocalUpdater](#localupdater) | 用于执行本地升级相关操作的工具类对象。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例**：
@@ -240,7 +241,7 @@ getLocalUpdater(): LocalUpdater
 
 **收益说明**：
 
-帮助用户及时获取系统更新，提升升级效率和用户体验，降低用户操作成本，支持自动版本检查、后台下载、断点续传等功能。
+支持用户及时获取系统更新，提升升级效率和用户体验，降低用户操作成本，支持自动版本检查、后台下载、断点续传等功能。
 
 **在线升级流程**：
 
@@ -264,15 +265,19 @@ graph TD
 
 checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
-检查新版本信息，返回是否有新版本、新版本号、版本摘要信息等。调用成功后，返回版本检查结果对象，可用于判断是否需要升级，为后续下载、升级等操作提供版本标识。使用callback异步回调。本方法返回的版本摘要信息（versionDigestInfo）是后续方法（getNewVersionInfo、download、upgrade）的必要参数。当isExistNewVersion为true时有新版本可升级，后续方法才能执行；为false表示已是最新版本。
+检查新版本信息，返回是否有新版本、新版本号、版本摘要信息等。调用成功后，返回版本检查结果对象，可用于判断是否需要升级，为后续下载、升级等操作提供版本标识。使用Promise异步回调。本方法是在线升级流程的起始方法，返回的版本摘要信息是后续方法的必要参数。调用本方法后，后续可调用以下方法：getNewVersionInfo（获取新版本详细信息）、download（下载升级包）、upgrade（安装升级包）。这些后续方法均需传入本方法返回的versionDigestInfo参数，且仅当isExistNewVersion为true时可调用。当isExistNewVersion为false时表示已是最新版本，无需执行后续升级操作。
 
-使用场景：需要快速检查是否有新版本并获取版本摘要。帮助用户及时了解系统更新状态，为升级决策提供依据。
+使用场景：需要快速检查是否有新版本并获取版本摘要。支持用户及时了解系统更新状态，为升级决策提供依据。
 
 **原理说明**：
 
 该方法向设备厂商部署的升级包管理服务器发起版本检查请求，携带设备当前版本信息、设备型号等参数。服务器根据请求参数查询是否有适配该设备的更新版本，返回版本检查结果对象（CheckResult），包含isExistNewVersion标志位、newVersionInfo结构体（版本摘要、版本号等）。
 
-检查流程包括：开发者构造请求参数 → 系统发起HTTP请求 → 服务器查询版本信息 → 系统解析响应 → 返回结果。
+检查流程包括：开发者构造请求参数 → 系统发起HTTP请求 → 服务器查询版本信息 → 系统解析响应 → 系统返回结果。
+
+**约束和限制**：
+
+- 本方法依赖设备厂商部署的升级包管理服务器，需确保服务器正常部署且可访问。
 
 **系统接口**： 此接口为系统接口。
 
@@ -282,16 +287,22 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
 **参数**：
 
-| 参数名      | 类型                                       | 必填   | 说明             |
-| -------- | ---------------------------------------- | ---- | -------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | callback | AsyncCallback\<[CheckResult](#checkresult)> | 是    | 回调函数，用于接收版本检查结果。回调参数包括err（错误对象，成功时为null）和checkResult（版本检查结果对象）。|
+
+**返回值**：
+
+| 类型 | 说明 |
+| --- | --- |
+| void | 无返回值，使用callback异步回调传递版本检查结果。|
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -314,14 +325,16 @@ try {
   // 检查新版本，通过回调函数获取检查结果
   onlineUpdater.checkNewVersion((checkNewVersionError: BusinessError,  
     checkResult: update.CheckResult) => {
+      // 错误处理
       if (checkNewVersionError) {
-        console.error(`checkNewVersion error, code:${checkNewVersionError.code}, message:${checkNewVersionError.message}`);
+        console.error(`checkNewVersion error, code:${checkNewVersionError.code}, message:${checkNewVersionError.message}.`);
         return; 
       }
       console.info(`checkNewVersion isExistNewVersion  ${checkResult?.isExistNewVersion}`);
     });
 } catch (error) {
-  console.error(`Fail to get updater error: ${error}`);
+  console.error(`Failed to get updater. Code: ${(error as BusinessError).code},
+    message: ${(error as BusinessError).message}.`);
 }
 ```
 
@@ -329,7 +342,7 @@ try {
 
 checkNewVersion(): Promise\<CheckResult>
 
-检查新版本信息，返回是否有新版本、新版本号、版本摘要信息等。调用成功后，返回版本检查结果对象，可用于判断是否需要升级，为后续下载、升级等操作提供版本标识。使用Promise异步回调。本方法返回的版本摘要信息（versionDigestInfo）是后续方法（getNewVersionInfo、download、upgrade）的必要参数。当isExistNewVersion为true时有新版本可升级，后续方法才能执行；为false表示已是最新版本。
+检查新版本信息，返回是否有新版本、新版本号、版本摘要信息等。调用成功后，返回版本检查结果对象，可用于判断是否需要升级，为后续下载、升级等操作提供版本标识。使用Promise异步回调。本方法是在线升级流程的起始方法，返回的版本摘要信息是后续方法的必要参数。调用本方法后，后续可调用以下方法：getNewVersionInfo（获取新版本详细信息）、download（下载升级包）、upgrade（安装升级包）。这些后续方法均需传入本方法返回的versionDigestInfo参数，且仅当isExistNewVersion为true时可调用。当isExistNewVersion为false时表示已是最新版本，无需执行后续升级操作。
 
 使用场景：需要快速检查是否有新版本并获取版本摘要。帮助用户及时了解系统更新状态，为升级决策提供依据。
 
@@ -339,6 +352,10 @@ checkNewVersion(): Promise\<CheckResult>
 
 检查流程包括：构造请求参数 → 发起HTTP请求 → 服务器查询 → 解析响应 → 返回结果。
 
+**约束和限制**：
+
+- 本方法依赖设备厂商部署的升级包管理服务器，需确保服务器正常部署且可访问。
+
 **系统接口**： 此接口为系统接口。
 
 **系统能力**： SystemCapability.Update.UpdateService
@@ -347,16 +364,16 @@ checkNewVersion(): Promise\<CheckResult>
 
 **返回值**：
 
-| 类型                                    | 说明                  |
-| ------------------------------------- | ------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<[CheckResult](#checkresult)> | Promise对象。成功时resolve返回版本检查结果对象，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -375,13 +392,15 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // 检查新版本
   onlineUpdater.checkNewVersion().then((result: update.CheckResult) => {
     console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
     // 版本摘要信息
     console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
     }).catch((checkNewVersionError: BusinessError) => {
-      console.error(`checkNewVersion promise error, code:${checkNewVersionError.code}, message:${checkNewVersionError.message}`);
+      console.error(`checkNewVersion promise error, code:${checkNewVersionError.code}, message:${checkNewVersionError.message}.`);
     });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -405,7 +424,7 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 **调用顺序**：
 
 - 必须先调用checkNewVersion检查是否有新版本。
-- 只有当checkNewVersion返回isExistNewVersion为true时，才能调用此方法获取新版本详细信息。
+- 仅当checkNewVersion返回isExistNewVersion为true时可调用。
 
 **相关方法**：
 
@@ -427,16 +446,22 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 
 **参数**：
 
-| 参数名      | 类型                                       | 必填   | 说明              |
-| -------- | ---------------------------------------- | ---- | --------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | callback | AsyncCallback\<[NewVersionInfo](#newversioninfo)> | 是    | 回调函数，用于接收新版本信息（NewVersionInfo）。回调参数包括：err（错误对象，成功时为null）和newInfo（新版本信息对象）。调用前须先调用checkNewVersion检查新版本，且仅当isExistNewVersion为true时newInfo有效；若为false，则newInfo为null。|
+
+**返回值**：
+
+| 类型 | 说明 |
+| --- | --- |
+| void | 无返回值，使用callback异步回调传递新版本信息。|
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -454,11 +479,12 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 获取新版本信息，通过回调函数接收版本详情
   onlineUpdater.getNewVersionInfo((checkError: BusinessError, newInfo: update.NewVersionInfo) => {
     if (checkError) {
-      console.error(`getNewVersionInfo error, code:${checkError.code}, message:${checkError.message}`);
+      console.error(`getNewVersionInfo error, code:${checkError.code}, message:${checkError.message}.`);
       return;
     }
     console.info(`info displayVersion = ${newInfo?.versionComponents[0].displayVersion}`);
@@ -508,16 +534,16 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 
 **返回值**：
 
-| 类型                                       | 说明                   |
-| ---------------------------------------- | -------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<[NewVersionInfo](#newversioninfo)> | Promise对象。成功时resolve返回新版本详细信息对象，用于向用户展示完整版本信息；失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -535,13 +561,14 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 获取新版本信息
   onlineUpdater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
     console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
     console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
   }).catch((getNewVersionInfoError: BusinessError) => {
-    console.error(`getNewVersionInfo promise error, code:${getNewVersionInfoError.code}, message:${getNewVersionInfoError.message}`);
+    console.error(`getNewVersionInfo promise error, code:${getNewVersionInfoError.code}, message:${getNewVersionInfoError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -573,18 +600,18 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 
 **参数**：
 
-| 参数名                | 类型                                       | 必填   | 说明             |
-| ------------------ | ---------------------------------------- | ---- | -------------- |
-| versionDigestInfo  | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
-| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。|
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息对象，包含版本标识（versionDigest字段）。必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取。版本摘要作为服务器生成的版本唯一标识，用于后续的版本查询、下载和升级操作。仅当isExistNewVersion为true时该参数有效。|
+| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。format字段设置描述格式(STANDARD标准格式或SIMPLIFIED简易格式)，language字段设置语言类型(如zh-cn中文、en-us英文等)。|
 | callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，用于接收新版本描述信息。回调参数包括： err（错误对象，成功时为null）和descriptionInfo（新版本描述信息数组，包含各组件的版本说明内容）。调用前须先调用checkNewVersion检查新版本，且仅当isExistNewVersion为true时descriptionInfo有效；若为false，则descriptionInfo为null。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -615,11 +642,12 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 获取新版本描述信息
   onlineUpdater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (descriptionError, descriptionInfo) => {
     if (descriptionError) {
-      console.error(`getNewVersionDescription error, code:${descriptionError.code}, message:${descriptionError.message}`);
+      console.error(`getNewVersionDescription error, code:${descriptionError.code}, message:${descriptionError.message}.`);
       return;
     }
     console.info(`getNewVersionDescription info ${JSON.stringify(descriptionInfo)}`);
@@ -654,23 +682,23 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 
 **参数**：
 
-| 参数名                | 类型                                       | 必填   | 说明     |
-| ------------------ | ---------------------------------------- | ---- | ------ |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | versionDigestInfo  | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。|
 
 **返回值**：
 
-| 类型                                       | 说明                  |
-| ---------------------------------------- | ------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise对象。成功时resolve返回新版本描述信息数组，用于向用户展示版本更新内容和确认升级；失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -701,6 +729,7 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
 
   // 获取新版本描述信息
@@ -708,7 +737,7 @@ try {
     .then((info: Array<update.ComponentDescription>) => {
     console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
   }).catch((descriptionError: BusinessError) => {
-    console.error(`getNewVersionDescription promise error, code:${descriptionError.code}, message:${descriptionError.message}`);
+    console.error(`getNewVersionDescription promise error, code:${descriptionError.code}, message:${descriptionError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -735,16 +764,16 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 
 **参数**：
 
-| 参数名      | 类型                                       | 必填   | 说明               |
-| -------- | ---------------------------------------- | ---- | ---------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | callback | AsyncCallback\<[CurrentVersionInfo](#currentversioninfo)> | 是    | 回调函数，用于接收当前版本信息（CurrentVersionInfo）。回调参数包括： err（错误对象，成功时为null）和currentInfo（当前版本信息对象，包含osVersion、deviceName和versionComponents字段）。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -763,13 +792,14 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
 
   // 获取当前版本信息，通过回调函数接收版本详情
   onlineUpdater.getCurrentVersionInfo((currentVersionInfoError: BusinessError,
     currentVersionInfo: update.CurrentVersionInfo) => {
     if (currentVersionInfoError) {
-      console.error(`getCurrentVersionInfo error, code:${currentVersionInfoError.code}, message:${currentVersionInfoError.message}`);
+      console.error(`getCurrentVersionInfo error, code:${currentVersionInfoError.code}, message:${currentVersionInfoError.message}.`);
       return;
     }
     console.info(`info osVersion = ${currentVersionInfo?.osVersion}`);
@@ -809,8 +839,8 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -828,6 +858,7 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 获取当前版本信息
   onlineUpdater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
@@ -835,7 +866,7 @@ try {
     console.info(`info deviceName = ${info.deviceName}`);
     console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
   }).catch((currentVersionInfoError: BusinessError) => {
-    console.error(`getCurrentVersionInfo error, code:${currentVersionInfoError.code}, message:${currentVersionInfoError.message}`);
+    console.error(`getCurrentVersionInfo error, code:${currentVersionInfoError.code}, message:${currentVersionInfoError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get updater error: ${error}`);
@@ -868,21 +899,21 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: A
 
 **参数**：
 
-| 参数名                | 类型                                       | 必填   | 说明              |
-| ------------------ | ---------------------------------------- | ---- | --------------- |
-| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。|
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。format字段设置描述格式(STANDARD标准格式或SIMPLIFIED简易格式)，language字段设置语言类型(如zh-cn中文、en-us英文等)。|
 | callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，用于接收当前版本描述信息。回调参数包括： err(错误对象，成功时为null)和info(当前版本描述信息数组，包含版本说明内容)。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 401      | Parameter verification failed.    |
-| 11500104 | IPC error.               |
+| 401      | Parameter verification failed. |
+| 11500104 | IPC error. |
 
 **示例**：
 
@@ -902,12 +933,13 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
 
   // 获取当前版本描述信息
   onlineUpdater.getCurrentVersionDescription(descriptionOptions, (currentDescriptionError, info) => {
     if (currentDescriptionError) {
-      console.error(`getCurrentVersionDescription error, code:${currentDescriptionError.code}, message:${currentDescriptionError.message}`);
+      console.error(`getCurrentVersionDescription error, code:${currentDescriptionError.code}, message:${currentDescriptionError.message}.`);
       return;
     }
     console.info(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
@@ -943,9 +975,9 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<A
 
 **参数**：
 
-| 参数名                | 类型                                       | 必填   | 说明     |
-| ------------------ | ---------------------------------------- | ---- | ------ |
-| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。|
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。format字段设置描述格式(STANDARD标准格式或SIMPLIFIED简易格式)，language字段设置语言类型(如zh-cn中文、en-us英文等)。|
 
 **返回值**：
 
@@ -957,8 +989,8 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<A
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -982,13 +1014,14 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
 
   // 获取当前版本描述信息
   onlineUpdater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
     console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
   }).catch((descriptionError: BusinessError) => {
-    console.error(`getCurrentVersionDescription error, code:${descriptionError.code}, message:${descriptionError.message}`);
+    console.error(`getCurrentVersionDescription error, code:${descriptionError.code}, message:${descriptionError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -1028,16 +1061,16 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 
 **参数**：
 
-| 参数名      | 类型                                    | 必填   | 说明               |
-| -------- | ------------------------------------- | ---- | ---------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | callback | AsyncCallback\<[TaskInfo](#taskinfo)> | 是    | 回调函数，用于接收升级任务信息（TaskInfo）。回调参数包括： err（错误对象，成功时为null）和taskInfo（升级任务信息对象，包含existTask和taskBody字段）。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -1056,12 +1089,13 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
 
   // 获取升级任务信息，通过回调函数接收任务状态 
   onlineUpdater.getTaskInfo((taskInfoError: BusinessError, taskInfo: update.TaskInfo) => {
     if (taskInfoError) {
-      console.error(`getTaskInfo error, code:${taskInfoError.code}, message:${taskInfoError.message}`);
+      console.error(`getTaskInfo error, code:${taskInfoError.code}, message:${taskInfoError.message}.`);
       return;
     }
     console.info(`getTaskInfo existTask= ${taskInfo?.existTask}`);
@@ -1104,16 +1138,16 @@ getTaskInfo(): Promise\<TaskInfo>
 
 **返回值**：
 
-| 类型                              | 说明                  |
-| ------------------------------- | ------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<[TaskInfo](#taskinfo)> | Promise对象。成功时resolve返回升级任务信息对象，用于查询和监控升级任务状态；失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -1132,12 +1166,14 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-
+  // 获取升级任务信息
   onlineUpdater.getTaskInfo().then((info: update.TaskInfo) => {
     console.info(`getTaskInfo existTask= ${info.existTask}`);
   }).catch((taskInfoError: BusinessError) => {
-    console.error(`Failed to get task info. code:${taskInfoError.code}, message:${taskInfoError.message}`);
+    // 处理获取任务信息失败的情况
+    console.error(`Failed to get task info. code:${taskInfoError.code}, message:${taskInfoError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -1162,7 +1198,7 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions,
 **调用顺序说明**：
 
 - 必须先调用checkNewVersion检查是否有新版本，并获取版本摘要信息。
-- 只有当checkNewVersion返回isExistNewVersion为true时，才能调用本方法下载升级包。
+- 必须先调用checkNewVersion检查新版本，且仅当isExistNewVersion为true时可调用本方法下载升级包。
 - 如果isExistNewVersion为false，表示无新版本，调用本方法会返回“已是最新版本”。
 
 **相关方法**：
@@ -1180,18 +1216,24 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions,
 
 **参数**：
 
-| 参数名               | 类型                                      | 必填   | 说明                                 |
-| ----------------- | --------------------------------------- | ---- | ---------------------------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | downloadOptions   | [DownloadOptions](#downloadoptions)     | 是    | 下载选项（DownloadOptions），用于控制下载行为。allowNetwork字段设置允许下载的网络类型，建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
 | callback          | AsyncCallback\<void>                    | 是    | 回调函数，用于接收下载结果。回调参数包括err（错误对象，成功时为null，失败时为错误对象）。 |
+
+**返回值**：
+
+| 类型 | 说明 |
+| --- | --- |
+| void | 无返回值，使用callback异步回调传递下载结果。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -1221,14 +1263,17 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // 下载版本
+  // 下载升级包
   onlineUpdater.download(versionDigestInfo, downloadOptions, (downloadError: BusinessError) => {
     if (downloadError) {
-      console.error(`download error. code:${downloadError.code}, message:${downloadError.message}`);
-  } else {
-    console.info(`download success`);
-  };
+      // 下载失败
+      console.error(`download error. code:${downloadError.code}, message:${downloadError.message}.`);
+    } else {
+      // 下载成功
+      console.info(`download success`);
+    };
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -1271,23 +1316,23 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions)
 
 **参数**：
 
-| 参数名               | 类型                                      | 必填   | 说明     |
-| ----------------- | --------------------------------------- | ---- | ------ |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | downloadOptions   | [DownloadOptions](#downloadoptions)     | 是    | 下载选项（DownloadOptions），用于控制下载行为。allowNetwork字段设置允许下载的网络类型，建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
 
 **返回值**：
 
-| 类型             | 说明                         |
-| -------------- | -------------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -1317,11 +1362,13 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // 下载升级包
   onlineUpdater.download(versionDigestInfo, downloadOptions).then(() => {
     console.info(`download start`);
   }).catch((downloadError: BusinessError) => {
-    console.error(`download error. code:${downloadError.code}, message:${downloadError.message}`);
+    console.error(`download error. code:${downloadError.code}, message:${downloadError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -1353,8 +1400,8 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 **参数**：
 
-| 参数名                   | 类型                                       | 必填   | 说明                                   |
-| --------------------- | ---------------------------------------- | ---- | ------------------------------------ |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | versionDigestInfo     | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | resumeDownloadOptions | [ResumeDownloadOptions](#resumedownloadoptions) | 是    | 恢复下载选项（ResumeDownloadOptions），用于指定恢复下载的网络类型。仅当已调用pauseDownload暂停下载后才生效。allowNetwork字段设置允许恢复下载的网络类型，建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
 | callback              | AsyncCallback\<void>                     | 是    | 回调函数，用于接收恢复下载结果。回调参数包括： err(错误对象，成功时为null，失败时为错误对象)。 |
@@ -1363,8 +1410,8 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -1393,15 +1440,16 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // 继续下载
+  // 恢复下载升级包
   onlineUpdater.resumeDownload(versionDigestInfo, resumeDownloadOptions,
     (resumeDownloadError: BusinessError) => {
-  if (resumeDownloadError) {
-    console.error(`resumeDownload error. code:${resumeDownloadError.code}, message:${resumeDownloadError.message}`);
-  } else {
-    console.info(`resumeDownload success`);
-  };
+    if (resumeDownloadError) {
+      console.error(`resumeDownload error. code:${resumeDownloadError.code}, message:${resumeDownloadError.message}.`);
+    } else {
+      console.info(`resumeDownload success`);
+    };
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -1433,23 +1481,23 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 **参数**：
 
-| 参数名                   | 类型                                       | 必填   | 说明     |
-| --------------------- | ---------------------------------------- | ---- | ------ |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | versionDigestInfo     | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | resumeDownloadOptions | [ResumeDownloadOptions](#resumedownloadoptions) | 是    | 恢复下载选项（ResumeDownloadOptions），用于指定恢复下载的网络类型。仅当已调用pauseDownload暂停下载后才生效。allowNetwork字段设置允许恢复下载的网络类型，建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
 
 **返回值**：
 
-| 类型             | 说明                         |
-| -------------- | -------------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -1478,12 +1526,13 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // 继续下载
+  // 恢复下载升级包
   onlineUpdater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
     console.info(`resumeDownload start`);
   }).catch((resumeDownloadError: BusinessError) => {
-    console.error(`resumeDownload error. code:${resumeDownloadError.code}, message:${resumeDownloadError.message}`);
+    console.error(`resumeDownload error. code:${resumeDownloadError.code}, message:${resumeDownloadError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -1520,8 +1569,8 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 **参数**：
 
-| 参数名                  | 类型                                       | 必填   | 说明                                   |
-| -------------------- | ---------------------------------------- | ---- | ------------------------------------ |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | versionDigestInfo    | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | pauseDownloadOptions | [PauseDownloadOptions](#pausedownloadoptions) | 是    | 暂停下载选项（PauseDownloadOptions），用于控制暂停行为。仅当有正在进行的下载任务时才生效。isAllowAutoResume字段设置是否允许自动恢复，建议：网络不稳定场景建议设置true启用自动恢复，提升下载成功率；需要精确控制下载时机或避免在特定网络环境下恢复的场景建议设置false，通过手动调用resumeDownload控制恢复时机。|
 | callback | AsyncCallback\<void> | 是 | 回调函数，用于接收暂停下载结果。回调参数包括： err(错误对象，成功时为null，失败时为错误对象)。 |
@@ -1530,8 +1579,8 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -1560,15 +1609,16 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // 暂停下载升级包，通过回调函数处理暂停结果 
+  // 暂停下载升级包
   onlineUpdater.pauseDownload(versionDigestInfo, pauseDownloadOptions,
     (pauseDownloadError: BusinessError) => {
     if (pauseDownloadError) {
-    console.error(`pauseDownload error. code:${pauseDownloadError.code}, message:${pauseDownloadError.message}`);
-  } else {
+      console.error(`pauseDownload error. code:${pauseDownloadError.code}, message:${pauseDownloadError.message}.`);
+    } else {
       console.info(`pauseDownload success`);
-  };
+    };
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -1605,23 +1655,23 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 **参数**：
 
-| 参数名                  | 类型                                       | 必填   | 说明     |
-| -------------------- | ---------------------------------------- | ---- | ------ |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | versionDigestInfo    | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | pauseDownloadOptions | [PauseDownloadOptions](#pausedownloadoptions) | 是    | 暂停下载选项（PauseDownloadOptions），用于控制暂停行为。仅当有正在进行的下载任务时才生效。isAllowAutoResume字段设置是否允许自动恢复，建议：网络不稳定场景建议设置true启用自动恢复，提升下载成功率；需要精确控制下载时机或避免在特定网络环境下恢复的场景建议设置false，通过手动调用resumeDownload控制恢复时机。|
 
 **返回值**：
 
-| 类型             | 说明                         |
-| -------------- | -------------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -1650,12 +1700,13 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 暂停下载升级包
   onlineUpdater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
     console.info(`pauseDownload`);
   }).catch((pauseDownloadError: BusinessError) => {
-    console.error(`pauseDownload error. code:${pauseDownloadError.code}, message:${pauseDownloadError.message}`);
+    console.error(`pauseDownload error. code:${pauseDownloadError.code}, message:${pauseDownloadError.message}.`);
     
   });
 } catch (error) {
@@ -1673,7 +1724,7 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, ca
 
 **原理说明**：
 
-该方法执行升级包的安装操作，将已下载的升级包应用到系统。安装流程包括：验证升级包完整性 → 解压升级包文件 → 写入系统分区（覆盖或更新系统文件）→ 更新版本标识 → 准备重启。根据upgradeOptions.order参数选择安装模式：INSTALL仅安装（下载后手动重启），INSTALL_AND_APPLY安装并立即重启生效。安装过程中维护任务状态，支持通过terminateUpgrade中断安装。
+该方法执行升级包的安装操作，将已下载的升级包应用到系统。安装流程包括：验证升级包完整性 → 解压升级包文件 → 写入系统分区（覆盖或更新系统文件）→ 更新版本标识 → 准备重启。根据upgradeOptions.order参数选择升级操作类型：DOWNLOAD仅下载升级包（不执行安装）、INSTALL仅安装已下载的升级包（不自动重启）、DOWNLOAD_AND_INSTALL下载并安装升级包（完整流程）、APPLY仅生效已安装的升级包（重启应用新版本）、INSTALL_AND_APPLY安装并立即重启生效。
 
 **依赖说明**：
 
@@ -1701,18 +1752,24 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, ca
 
 **参数**：
 
-| 参数名               | 类型                                      | 必填   | 说明                                   |
-| ----------------- | --------------------------------------- | ---- | ------------------------------------ |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | upgradeOptions    | [UpgradeOptions](#upgradeoptions)       | 是    | 升级选项（UpgradeOptions），用于指定升级操作类型。order字段设置升级指令，应根据当前升级状态和业务需求选择：DOWNLOAD仅下载升级包，适用于需要先下载后手动安装的场景；INSTALL仅安装已下载的升级包，适用于已下载完成需直接安装的场景；DOWNLOAD_AND_INSTALL下载并安装，适用于完整升级流程；APPLY仅生效，适用于已安装需重启生效的场景；INSTALL_AND_APPLY安装并生效，适用于安装后立即重启生效的场景。|
 | callback          | AsyncCallback\<void>                     | 是    | 回调函数，用于接收升级安装结果。回调参数包括err（错误对象，成功时为null，失败时为错误对象）。 |
+
+**返回值**：
+
+| 类型 | 说明 |
+| --- | --- |
+| void | 无返回值，使用callback异步回调传递升级安装结果。|
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -1741,11 +1798,12 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // 安装升级包，通过回调函数处理安装结果
+  // 安装升级包
   onlineUpdater.upgrade(versionDigestInfo, upgradeOptions, (upgradeError: BusinessError) => {
     if (upgradeError) {
-      console.error(`upgrade error. code:${upgradeError.code}, message:${upgradeError.message}`);
+      console.error(`upgrade error. code:${upgradeError.code}, message:${upgradeError.message}.`);
     } else {
       console.info(`upgrade success`);
     };
@@ -1765,7 +1823,7 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): P
 
 **原理说明**：
 
-该方法执行升级包的安装操作，将已下载的升级包应用到系统。安装流程包括：验证升级包完整性 → 解压升级包文件 → 写入系统分区（覆盖或更新系统文件）→ 更新版本标识 → 准备重启。根据upgradeOptions.order参数选择安装模式：INSTALL仅安装（下载后手动重启），INSTALL_AND_APPLY安装并立即重启生效。安装过程中维护任务状态，支持通过terminateUpgrade中断安装。
+该方法执行升级包的安装操作，将已下载的升级包应用到系统。安装流程包括：验证升级包完整性 → 解压升级包文件 → 写入系统分区（覆盖或更新系统文件）→ 更新版本标识 → 准备重启。根据upgradeOptions.order参数选择升级操作类型：DOWNLOAD仅下载升级包（不执行安装）、INSTALL仅安装已下载的升级包（不自动重启）、DOWNLOAD_AND_INSTALL下载并安装升级包（完整流程）、APPLY仅生效已安装的升级包（重启应用新版本）、INSTALL_AND_APPLY安装并立即重启生效。
 
 **依赖说明**：
 
@@ -1793,23 +1851,23 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): P
 
 **参数**：
 
-| 参数名               | 类型                                      | 必填   | 说明     |
-| ----------------- | --------------------------------------- | ---- | ------ |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | upgradeOptions    | [UpgradeOptions](#upgradeoptions)       | 是    | 升级选项（UpgradeOptions），用于指定升级操作类型。order字段设置升级指令，应根据当前升级状态和业务需求选择：DOWNLOAD仅下载升级包，适用于需要先下载后手动安装的场景；INSTALL仅安装已下载的升级包，适用于已下载完成需直接安装的场景；DOWNLOAD_AND_INSTALL下载并安装，适用于完整升级流程；APPLY仅生效，适用于已安装需重启生效的场景；INSTALL_AND_APPLY安装并生效，适用于安装后立即重启生效的场景。|
 
 **返回值**：
 
-| 类型             | 说明                         |
-| -------------- | -------------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -1838,12 +1896,13 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 安装升级包
   onlineUpdater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
     console.info(`upgrade start`);
   }).catch((upgradeError: BusinessError) => {
-    console.error(`upgrade error. code:${upgradeError.code}, message:${upgradeError.message}`);
+    console.error(`upgrade error. code:${upgradeError.code}, message:${upgradeError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -1881,17 +1940,18 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, cal
 
 **参数**：
 
-| 参数名               | 类型                                      | 必填   | 说明                                   |
-| ----------------- | --------------------------------------- | ---- | ------------------------------------ |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | clearOptions      | [ClearOptions](#clearoptions)           | 是    | 清除选项（ClearOptions），用于指定要清除的异常状态类型。status字段仅支持UPGRADE_FAIL状态，当upgrade方法执行失败(状态为UPGRADE_FAIL)后，系统会保留异常状态阻止重新升级，此时需要传入UPGRADE_FAIL清除异常状态，使系统恢复到初始状态以便重新开始升级流程。|
+| callback | AsyncCallback<void> | 是 | 回调函数，用于接收清除异常状态结果。回调参数包括err（错误对象，成功时为null，失败时为错误对象）。|
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -1920,12 +1980,15 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 清除异常状态，通过回调函数处理清除结果
   onlineUpdater.clearError(versionDigestInfo, clearOptions, (clearFailError: BusinessError) => {
     if (clearFailError) {
-      console.error(`clearError execute error. code:${clearFailError.code}, message:${clearFailError.message}`);
-  } else {
+      // 清除失败
+      console.error(`clearError execute error. code:${clearFailError.code}, message:${clearFailError.message}.`);
+    } else {
+      // 清除成功
       console.info(`clearError execute success`);
     };
   });
@@ -1965,23 +2028,23 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 
 **参数**：
 
-| 参数名               | 类型                                      | 必填   | 说明     |
-| ----------------- | --------------------------------------- | ---- | ------ |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | clearOptions      | [ClearOptions](#clearoptions)           | 是    | 清除选项（ClearOptions），用于指定要清除的异常状态类型。status字段仅支持UPGRADE_FAIL状态，当upgrade方法执行失败(状态为UPGRADE_FAIL)后，系统会保留异常状态阻止重新升级，此时需要传入UPGRADE_FAIL清除异常状态，使系统恢复到初始状态以便重新开始升级流程。|
 
 **返回值**：
 
-| 类型             | 说明                         |
-| -------------- | -------------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -2010,12 +2073,13 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 清除异常状态 
   onlineUpdater.clearError(versionDigestInfo, clearOptions).then(() => {
     console.info(`clearError execute success`);
   }).catch((clearFailError: BusinessError) => {
-    console.error(`clearError execute error. code:${clearFailError.code}, message:${clearFailError.message}`);
+    console.error(`clearError execute error. code:${clearFailError.code}, message:${clearFailError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -2042,16 +2106,16 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 
 **参数**：
 
-| 参数名      | 类型                                       | 必填   | 说明              |
-| -------- | ---------------------------------------- | ---- | --------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | callback | AsyncCallback\<[UpgradePolicy](#upgradepolicy)> | 是    | 回调函数，用于接收升级策略信息（UpgradePolicy）。回调参数包括： err（错误对象，成功时为null）和policy（升级策略信息对象，包含downloadStrategy、autoUpgradeStrategy和autoUpgradePeriods字段）。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -2069,11 +2133,12 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 获取升级策略，通过回调函数接收策略配置
   onlineUpdater.getUpgradePolicy((upgradePolicyError: BusinessError, policy: update.UpgradePolicy) => {
     if (upgradePolicyError) {
-      console.error(`getUpgradePolicy error. code:${upgradePolicyError.code}, message:${upgradePolicyError.message}`);
+      console.error(`getUpgradePolicy error. code:${upgradePolicyError.code}, message:${upgradePolicyError.message}.`);
       return;
     }
     console.info(`policy downloadStrategy = ${policy?.downloadStrategy}`);
@@ -2104,16 +2169,16 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 
 **返回值**：
 
-| 类型                                       | 说明                    |
-| ---------------------------------------- | --------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<[UpgradePolicy](#upgradepolicy)> | Promise对象。成功时resolve返回升级策略信息对象，用于查询自动下载、自动升级、升级时间段等策略配置；失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -2131,13 +2196,14 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 获取升级策略
   onlineUpdater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
     console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
     console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
   }).catch((upgradePolicyError: BusinessError) => {
-    console.error(`getUpgradePolicy error. code:${upgradePolicyError.code}, message:${upgradePolicyError.message}`);
+    console.error(`getUpgradePolicy error. code:${upgradePolicyError.code}, message:${upgradePolicyError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -2166,8 +2232,8 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 
 **参数**：
 
-| 参数名      | 类型                              | 必填   | 说明            |
-| -------- | ------------------------------- | ---- | ------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | policy   | [UpgradePolicy](#upgradepolicy) | 是    | 升级策略对象（UpgradePolicy），用于控制升级行为。包含自动下载策略、自动升级策略、升级时间段等配置。|
 | callback | AsyncCallback\<void> | 是 | 回调函数，用于接收设置升级策略结果。回调参数包括err（错误对象，成功时为null，失败时为错误对象）。|
 
@@ -2175,8 +2241,8 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -2200,14 +2266,15 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 设置升级策略，通过回调函数处理设置结果 
   onlineUpdater.setUpgradePolicy(upgradePolicy, (setUpgradePolicyError: BusinessError) => {
-  if (setUpgradePolicyError) {
-      console.error(`setUpgradePolicy error，code:${setUpgradePolicyError.code}, message:${setUpgradePolicyError.message}`);
-  } else {
-    console.info(`setUpgradePolicy success`);
-  };
+    if (setUpgradePolicyError) {
+      console.error(`setUpgradePolicy error, code:${setUpgradePolicyError.code}, message:${setUpgradePolicyError.message}.`);
+    } else {
+      console.info(`setUpgradePolicy success`);
+    };
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -2236,22 +2303,22 @@ setUpgradePolicy(policy: UpgradePolicy): Promise\<void>
 
 **参数**：
 
-| 参数名    | 类型                              | 必填   | 说明   |
-| ------ | ------------------------------- | ---- | ---- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | policy | [UpgradePolicy](#upgradepolicy) | 是    | 升级策略对象，用于控制升级行为。包含自动下载策略、自动升级策略、升级时间段等配置。|
 
 **返回值**：
 
-| 类型             | 说明                  |
-| -------------- | ------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，表示升级策略设置成功；失败时reject返回错误信息。|
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -2275,12 +2342,13 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 设置升级策略 
   onlineUpdater.setUpgradePolicy(upgradePolicy).then(() => {
     console.info(`setUpgradePolicy success`);
   }).catch((setUpgradePolicyError: BusinessError) => {
-    console.error(`setUpgradePolicy promise error, code:${setUpgradePolicyError.code}, message:${setUpgradePolicyError.message}`);
+    console.error(`setUpgradePolicy promise error, code:${setUpgradePolicyError.code}, message:${setUpgradePolicyError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -2320,16 +2388,16 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 **参数**：
 
-| 参数名      | 类型                   | 必填   | 说明                                     |
-| -------- | -------------------- | ---- | -------------------------------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | callback | AsyncCallback\<void> | 是 | 回调函数，用于接收终止升级结果。回调参数包括： err(错误对象，成功时为null，失败时为错误对象)。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -2347,11 +2415,12 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 终止升级任务，通过回调函数处理终止结果
   onlineUpdater.terminateUpgrade((terminateUpgradeError: BusinessError) => {
     if (terminateUpgradeError) {
-      console.error(`terminateUpgrade error, code:${terminateUpgradeError.code}, message:${terminateUpgradeError.message}`);
+      console.error(`terminateUpgrade error, code:${terminateUpgradeError.code}, message:${terminateUpgradeError.message}.`);
     } else {
       console.info(`terminateUpgrade success`);
     };
@@ -2394,16 +2463,16 @@ terminateUpgrade(): Promise\<void>
 
 **返回值**：
 
-| 类型             | 说明                         |
-| -------------- | -------------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -2421,12 +2490,13 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 终止升级任务
   onlineUpdater.terminateUpgrade().then(() => {
     console.info(`terminateUpgrade success`);
   }).catch((terminateUpgradeError: BusinessError) => {
-    console.error(`terminateUpgrade error, code:${terminateUpgradeError.code}, message:${terminateUpgradeError.message}`);
+    console.error(`terminateUpgrade error, code:${terminateUpgradeError.code}, message:${terminateUpgradeError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get onlineUpdater error: ${error}`);
@@ -2466,17 +2536,17 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 **参数**：
 
-| 参数名               | 类型                                       | 必填   | 说明   |
-| ----------------- | ---------------------------------------- | ---- | ---- |
-| eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息（EventClassifyInfo），用于指定要监听的升级事件类型。|
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息对象(EventClassifyInfo)，用于指定要监听的升级事件类型。系统根据eventClassifyInfo参数注册对应类型的升级事件监听，事件发生时通过taskCallback回调函数传递事件信息。|
 | taskCallback | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调（UpgradeTaskCallback），用于处理升级任务事件。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。|
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例**：
@@ -2484,7 +2554,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 ```ts
 const eventClassifyInfo: update.EventClassifyInfo = {
   eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
-  extraInfo: "" // 额外信息，此处为空表示无额外信息
+  extraInfo: '' // 额外信息，此处为空表示无额外信息
 };
 try {
   // 创建升级信息对象
@@ -2495,6 +2565,7 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 注册事件监听，实时监控升级状态
   onlineUpdater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
@@ -2513,6 +2584,10 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 使用场景：升级流程结束、不再需要监听升级事件。必须先通过on()注册监听后才能使用此参数取消监听。
 
+**原理说明**：
+
+该方法执行事件监听取消流程：验证eventClassifyInfo参数（确认事件类型）→ 从升级服务的事件监听列表中移除对应的回调函数（若传入taskCallback则移除特定回调，否则移除该事件类型的所有监听）→ 释放监听占用的系统资源 → 断开事件传递通道。取消监听后，升级服务不再向该应用发送该类型的事件通知，应用进程不再接收相关事件回调，释放监听占用的内存和IPC通道资源。
+
 **配对调用说明**：
 
 - 与on()配对使用，用于取消已注册的事件监听。
@@ -2525,17 +2600,17 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 **参数**：
 
-| 参数名               | 类型                                       | 必填   | 说明   |
-| ----------------- | ---------------------------------------- | ---- | ---- |
-| eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息，包含事件类型，用于指定要取消监听的升级事件类型。必须先通过on方法注册监听后才能使用此参数取消监听。|
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息对象(EventClassifyInfo)，用于指定要取消监听的升级事件类型。前置条件:必须先通过on方法注册监听，注册后系统维护事件监听列表并持续接收对应类型的本地升级事件通知。使用此参数取消监听后，系统从事件监听列表中移除对应监听记录，释放监听占用的内存和IPC通道资源，应用不再接收该类型的事件通知。|
 | taskCallback | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调。用于处理升级任务事件。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。当需要取消特定回调监听时传入此参数，不传入时取消该事件类型的所有监听。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例**：
@@ -2543,7 +2618,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 ```ts
 const eventClassifyInfo: update.EventClassifyInfo = {
   eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
-  extraInfo: ""
+  extraInfo: ''
 };
 try {
   // 创建升级信息对象
@@ -2554,6 +2629,7 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 取消事件监听
   onlineUpdater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
@@ -2570,12 +2646,14 @@ try {
 
 > **恢复出厂设置流程**：
 
-- 调用getRestorer方法获取Restorer对象。
-- 根据需求选择恢复出厂方式：
+- 开发者调用getRestorer方法获取Restorer对象。
+- 开发者根据需求选择恢复出厂方式：
   1. factoryReset：普通恢复出厂，仅清除用户数据分区。
   2. forceFactoryReset：强制恢复出厂，清除用户数据分区并同步清除文件密钥。
   3. deepFactoryReset：深度恢复出厂，可通过scope参数指定清除范围：DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区。
-- 调用相应的恢复出厂方法执行恢复出厂操作，设备将清除数据并恢复到出厂状态。
+- 开发者调用相应的恢复出厂方法执行恢复出厂操作，设备将清除数据并恢复到出厂状态。
+
+选取建议：日常维护场景优先选择factoryReset;涉及敏感数据或设备交接场景选择forceFactoryReset;设备报废或需要物理销毁数据场景选择deepFactoryReset。
 
 **设计逻辑**：
 
@@ -2619,10 +2697,9 @@ factoryReset(callback: AsyncCallback\<void>): void
 
 **约束和限制**：
 
-- 操作不可逆，将永久删除用户数据，需提前提醒用户备份重要数据。
+- 操作不可逆，需提醒用户备份重要数据并获得明确确认。
 - 需要系统权限ohos.permission.FACTORY_RESET。
 - 操作过程中设备会自动重启，应用需做好状态保存。
-- 建议仅在用户明确确认后执行恢复出厂操作。
 
 **系统接口**： 此接口为系统接口。
 
@@ -2632,16 +2709,22 @@ factoryReset(callback: AsyncCallback\<void>): void
 
 **参数**：
 
-| 参数名      | 类型                   | 必填   | 说明                                     |
-| -------- | -------------------- | ---- | -------------------------------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | callback | AsyncCallback\<void> | 是 | 回调函数，用于接收恢复出厂结果。回调参数包括err（错误对象，成功时为null，失败时为错误对象）。|
+
+**返回值**：
+
+| 类型 | 说明 |
+| --- | --- |
+| void | 无返回值，使用callback异步回调传递恢复出厂结果。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -2655,7 +2738,7 @@ try {
   // 执行恢复出厂设置
   factoryRestorer.factoryReset((resetError) => {
     if (resetError) {
-      console.error(`factoryReset error, code:${resetError.code}, message:${resetError.message}`);
+      console.error(`factoryReset error, code:${resetError.code}, message:${resetError.message}.`);
       return;
     }
     console.info(`factoryReset success`);
@@ -2692,16 +2775,16 @@ factoryReset(): Promise\<void>
 
 **返回值**：
 
-| 类型             | 说明                         |
-| -------------- | -------------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -2717,7 +2800,7 @@ try {
   factoryRestorer.factoryReset().then(() => {
     console.info(`factoryReset success`);
   }).catch((resetError: BusinessError) => {
-    console.error(`factoryReset error, code:${resetError.code}, message:${resetError.message}`);
+    console.error(`factoryReset error, code:${resetError.code}, message:${resetError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get factoryRestorer: ${error}`);
@@ -2753,16 +2836,16 @@ forceFactoryReset(): Promise\<void>
 
 **返回值**：
 
-| 类型             | 说明                         |
-| -------------- | -------------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -2778,7 +2861,7 @@ try {
   factoryRestorer.forceFactoryReset().then(() => {
     console.info(`forceFactoryReset success`);
   }).catch((forceResetError: BusinessError) => {
-    console.error(`forceFactoryReset error ${JSON.stringify(forceResetError)}`);
+    console.error(`forceFactoryReset error, code:${forceResetError.code}, message:${forceResetError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get factoryRestorer: ${error}`);
@@ -2821,23 +2904,22 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 **参数**：
 
-| 参数名                | 类型                                       | 必填   | 说明             |
-| ------------------ | ---------------------------------------- | ---- | -------------- |
-| factoryResetStrategy | [FactoryResetStrategy](#factoryresetstrategy) | 是 | 恢复出厂设置策略(FactoryResetStrategy)，包含scope(重置范围)和strategy(重置策略描述)字段，用于控制恢复出厂设置的范围和方式。scope指定清除范围(DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区)，strategy为重置操作的自定义描述文本，长度范围0-64字符，有效字符包括字母、数字、下划线、连字符和空格，超出范围或包含无效字符时抛出异常。|
-
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| factoryResetStrategy | [FactoryResetStrategy](#factoryresetstrategy) | 是 | 恢复出厂设置策略(FactoryResetStrategy)，包含scope(重置范围)和strategy(重置策略描述)字段，用于控制恢复出厂设置的范围和方式。scope指定清除范围(DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区)，strategy为重置操作的自定义描述文本，长度范围[0，64]，单位：字符。有效字符包括字母、数字、下划线、连字符和空格，超出范围或包含无效字符时抛出异常。|
 
 **返回值**：
 
-| 类型             | 说明                         |
-| -------------- | -------------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -2852,13 +2934,13 @@ try {
   // 创建恢复出厂设置策略对象
   let factoryResetStrategy: update.FactoryResetStrategy = {
     scope: update.FactoryResetScope.DATA, // 重置范围为用户数据
-    strategy: "deepFactoryReset test" // 重置范围描述
+    strategy: 'deepFactoryReset test' // 重置范围描述
   };
   // 执行深度恢复出厂设置
   factoryRestorer.deepFactoryReset(factoryResetStrategy).then(() => {
     console.info(`deepFactoryReset success`);
   }).catch((deepResetError: BusinessError) => {
-    console.error(`deepFactoryReset error, code:${deepResetError.code}, message:${deepResetError.message}`);
+    console.error(`deepFactoryReset error, code:${deepResetError.code}, message:${deepResetError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get factoryRestorer: ${error}`);
@@ -2897,22 +2979,22 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 
 **参数**：
 
-| 参数名                | 类型                                       | 必填   | 说明             |
-| ------------------ | ---------------------------------------- | ---- | -------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | 是 | 恢复出厂设置策略(FactoryResetStrategy)，包含scope(重置范围)和strategy(重置策略描述)字段，用于控制恢复出厂设置的范围和方式。scope指定清除范围(DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区)，strategy为重置操作的自定义描述文本，长度范围0-64字符，有效字符包括字母、数字、下划线、连字符和空格，超出范围或包含无效字符时抛出异常。|
 
 **返回值**：
 
-| 类型                              | 说明                  |
-| ------------------------------- | ------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<[FactoryResetInfo](#factoryresetinfo)> | Promise对象。成功时resolve返回深度恢复出厂设置信息对象（FactoryResetInfo），包含预计耗时等；失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error.               |
@@ -2934,7 +3016,7 @@ try {
   factoryRestorer.getDeepFactoryResetInfo(factoryResetStrategy).then((deepResetInfo: update.FactoryResetInfo) => {
     console.info(`getDeepFactoryResetInfo success`);
   }).catch((resetInfoError: BusinessError) => {
-    console.error(`getDeepFactoryResetInfo promise error, code:${resetInfoError.code}, message:${resetInfoError.message}`);
+    console.error(`getDeepFactoryResetInfo promise error, code:${resetInfoError.code}, message:${resetInfoError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get factoryRestorer: ${error}`);
@@ -2981,9 +3063,9 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 
 **调用顺序说明**：
 
- - 必须先调用verifyUpgradePackage校验升级包并校验通过后，才能调用applyNewVersion安装升级包。
- - 未校验直接调用applyNewVersion会导致安装失败，可能造成系统损坏。
- - 校验通过后的升级包可用于后续安装流程。
+- 开发者必须先调用verifyUpgradePackage校验升级包并校验通过后，才能调用applyNewVersion安装升级包。
+- 开发者未校验直接调用applyNewVersion会导致安装失败，可能造成系统损坏。
+- 开发者校验通过后的升级包可用于后续安装流程。
 
 **相关方法**：
 
@@ -2997,18 +3079,18 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 
 **参数**：
 
-| 参数名         | 类型                          | 必填   | 说明               |
-| ----------- | --------------------------- | ---- | ---------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | upgradeFile | [UpgradeFile](#upgradefile) | 是    | 升级文件（UpgradeFile），包含文件类型和文件路径，用于指定要校验的本地升级包。|
-| certsFile   | string                      | 是    | 证书文件路径，用于校验升级包签名。证书文件必须从设备厂商官网下载，确保来源可信。支持绝对路径或相对路径，长度范围1-255字符。超出范围时抛出异常。|
+| certsFile   | string                      | 是    | 证书文件路径，用于校验升级包签名。证书文件必须从设备厂商官网下载，确保来源可信。支持绝对路径或相对路径，路径长度范围[1，255]，单位：字符。仅支持字母、数字、下划线、连字符、点号和斜杠等路径合法字符。超出长度范围或包含无效字符时抛出异常。|
 | callback    | AsyncCallback\<void> | 是 | 回调函数，用于接收校验结果。回调参数包括： err(错误对象，成功时为null，失败时为错误对象)。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -3019,10 +3101,10 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 ```ts
 const upgradeFile: update.UpgradeFile = {
   fileType: update.ComponentType.OTA, // OTA包
-  filePath: "/data/local/tmp/updater.zip" // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
+  filePath: '/data/local/tmp/updater.zip' // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
 };
 // certsFile为证书文件路径，需从设备厂商官网下载并放置到设备可访问路径 
-const certsFile = "/path/to/certificate.cert"; // 证书文件路径，从厂商官网下载
+const certsFile = '/path/to/certificate.cert'; // 证书文件路径，从厂商官网下载
 
 try {
   // 获取本地升级对象
@@ -3030,7 +3112,7 @@ try {
   // 验证升级包
   localUpdater.verifyUpgradePackage(upgradeFile, certsFile, (verifyUpgradePackageError) => {
     if (verifyUpgradePackageError) {
-      console.error(`verifyUpgradePackage error, code:${verifyUpgradePackageError.code}, message:${verifyUpgradePackageError.message}`);
+      console.error(`verifyUpgradePackage error, code:${verifyUpgradePackageError.code}, message:${verifyUpgradePackageError.message}.`);
       return;
     }
     console.info(`verifyUpgradePackage success`);
@@ -3054,9 +3136,9 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 
 **调用顺序说明**：
 
- - 必须先调用verifyUpgradePackage校验升级包并校验通过后，才能调用applyNewVersion安装升级包。
- - 未校验直接调用applyNewVersion会导致安装失败，可能造成系统损坏。
- - 校验通过后的升级包可用于后续安装流程。
+- 必须先调用verifyUpgradePackage校验升级包并校验通过后，才能调用applyNewVersion安装升级包。
+- 未校验直接调用applyNewVersion会导致安装失败，可能造成系统损坏。
+- 校验通过后的升级包可用于后续安装流程。
 
 **系统接口**： 此接口为系统接口。
 
@@ -3066,23 +3148,23 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 
 **参数**：
 
-| 参数名         | 类型                          | 必填   | 说明     |
-| ----------- | --------------------------- | ---- | ------ |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | upgradeFile | [UpgradeFile](#upgradefile) | 是    | 升级文件（UpgradeFile），包含文件类型和文件路径，用于指定要校验的本地升级包。|
-| certsFile   | string                      | 是    | 证书文件路径，用于校验升级包签名。证书文件必须从设备厂商官网下载，确保来源可信。支持绝对路径或相对路径，长度范围1-255字符。超出范围时抛出异常。|
+| certsFile   | string                      | 是    | 证书文件路径，用于校验升级包签名。证书文件必须从设备厂商官网下载，确保来源可信。支持绝对路径或相对路径，长度范围[1，255]，单位：字符。超出范围时抛出异常。|
 
 **返回值**：
 
-| 类型             | 说明                     |
-| -------------- | ---------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -3095,11 +3177,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const upgradeFile: update.UpgradeFile = {
   fileType: update.ComponentType.OTA, // OTA包
-  filePath: "/data/local/tmp/updater.zip" // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
+  filePath: '/data/local/tmp/updater.zip' // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
 };
 
 // certsFile为证书文件路径，需从设备厂商官网下载并放置到设备可访问路径 
-const certsFile = "/path/to/certificate.cert"; // 证书文件路径，从厂商官网下载
+const certsFile = '/path/to/certificate.cert'; // 证书文件路径，从厂商官网下载
 
 try {
   // 获取本地升级对象
@@ -3108,7 +3190,7 @@ try {
   localUpdater.verifyUpgradePackage(upgradeFile, certsFile).then(() => {
     console.info(`verifyUpgradePackage success`);
   }).catch((verifyUpgradePackageError: BusinessError) => {
-    console.error(`verifyUpgradePackage error, code:${verifyUpgradePackageError.code}, message:${verifyUpgradePackageError.message}`);
+    console.error(`verifyUpgradePackage error, code:${verifyUpgradePackageError.code}, message:${verifyUpgradePackageError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get localUpdater error: ${error}`);
@@ -3127,10 +3209,10 @@ applyNewVersion(upgradeFiles: Array\<UpgradeFile>, callback: AsyncCallback\<void
 
 调用顺序说明：
 
-- 必须先调用verifyUpgradePackage校验升级包并校验通过后，才能调用本方法安装升级包。
-- 未校验直接调用本方法可能导致安装失败或系统损坏，必须先调用verifyUpgradePackage校验升级包。
-- 调用成功后，系统将解压并写入升级包内容到系统分区，准备重启以应用新版本，可通过监听事件跟踪安装进度。
-- 通过安装升级包可以完成系统版本更新。
+- 开发者必须先调用verifyUpgradePackage校验升级包并校验通过后，才能调用本方法安装升级包。
+- 开发者未校验直接调用本方法可能导致安装失败或系统损坏，必须先调用verifyUpgradePackage校验升级包。
+- 调用成功后，系统将解压并写入升级包内容到系统分区，准备重启以应用新版本，开发者可通过监听事件跟踪安装进度。
+- 开发者通过安装升级包可以完成系统版本更新。
 
 使用场景：从本地存储设备(如SD卡)进行系统升级、完成本地升级流程。
 
@@ -3142,17 +3224,17 @@ applyNewVersion(upgradeFiles: Array\<UpgradeFile>, callback: AsyncCallback\<void
 
 **参数**：
 
-| 参数名         | 类型                                 | 必填   | 说明                                      |
-| ----------- | ---------------------------------- | ---- | --------------------------------------- |
-| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | 是    | 升级文件数组，用于指定要安装的本地升级包列表。必须先调用verifyUpgradePackage校验升级包并校验通过后才能使用此参数安装。每个元素包含fileType(文件类型)和filePath(文件路径)字段，filePath长度范围1-255字符，超出范围时抛出异常，由开发者提供升级包文件路径。|
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | 是    | 升级文件数组，用于指定要安装的本地升级包列表。必须先调用verifyUpgradePackage校验升级包并校验通过后才能使用此参数安装。每个元素包含fileType(文件类型)和filePath(文件路径)字段，filePath长度范围[1，255]，单位：字符。超出范围时抛出异常，由开发者提供升级包文件路径。|
 | callback    | AsyncCallback\<void> | 是 | 回调函数，用于接收安装升级包结果。回调参数包括： err(错误对象，成功时为null，失败时为错误对象)。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -3163,16 +3245,16 @@ applyNewVersion(upgradeFiles: Array\<UpgradeFile>, callback: AsyncCallback\<void
 ```ts
 const upgradeFiles: Array<update.UpgradeFile> = [{
   fileType: update.ComponentType.OTA, // OTA包
-  filePath: "/data/local/tmp/updater.zip" // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
+  filePath: '/data/local/tmp/updater.zip' // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
 }];
 
 try {
   // 获取本地升级对象
   let localUpdater = update.getLocalUpdater();
-  // 生效新版本
+  // 安装新版本
   localUpdater.applyNewVersion(upgradeFiles, (applyNewVersionError) => {
     if (applyNewVersionError) {
-      console.error(`applyNewVersion error, code:${applyNewVersionError.code}, message:${applyNewVersionError.message}`);
+      console.error(`applyNewVersion error, code:${applyNewVersionError.code}, message:${applyNewVersionError.message}.`);
       return;
     }
     console.info(`applyNewVersion success`);
@@ -3209,22 +3291,22 @@ applyNewVersion(upgradeFiles: Array\<UpgradeFile>): Promise\<void>
 
 **参数**：
 
-| 参数名         | 类型                                 | 必填   | 说明                                      |
-| ----------- | ---------------------------------- | ---- | --------------------------------------- |
-| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | 是    | 升级文件数组，用于指定要安装的本地升级包列表。必须先调用verifyUpgradePackage校验升级包并校验通过后才能使用此参数安装。每个元素包含fileType(文件类型)和filePath(文件路径)字段，filePath长度范围1-255字符，超出范围时抛出异常，由开发者提供升级包文件路径。|
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | 是    | 升级文件数组，用于指定要安装的本地升级包列表。必须先调用verifyUpgradePackage校验升级包并校验通过后才能使用此参数安装。每个元素包含fileType(文件类型)和filePath(文件路径)字段，filePath长度范围[1，255], 单位：字符。超出范围时抛出异常，由开发者提供升级包文件路径。|
 
 **返回值**：
 
-| 类型             | 说明                         |
-| -------------- | -------------------------- |
+| 类型 | 说明 |
+| --- | --- |
 | Promise\<void> | Promise对象。成功时resolve无返回结果，失败时reject返回错误信息。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 201      | Permission denied. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter verification failed.    |
@@ -3237,17 +3319,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const upgradeFiles: Array<update.UpgradeFile> = [{
   fileType: update.ComponentType.OTA, // OTA包
-  filePath: "/data/local/tmp/updater.zip" // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
+  filePath: '/data/local/tmp/updater.zip' // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
 }];
 
 try {
   // 获取本地升级对象
   let localUpdater = update.getLocalUpdater();
-  // 生效新版本
+  // 安装新版本
   localUpdater.applyNewVersion(upgradeFiles).then(() => {
     console.info(`applyNewVersion success`);
   }).catch((applyNewVersionError: BusinessError) => {
-    console.error(`applyNewVersion error, code:${applyNewVersionError.code}, message:${applyNewVersionError.message}`);
+    console.error(`applyNewVersion error, code:${applyNewVersionError.code}, message:${applyNewVersionError.message}.`);
   });
 } catch (error) {
   console.error(`Fail to get localUpdater error: ${error}`);
@@ -3261,6 +3343,10 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 注册事件监听，用于实时监控升级状态。调用成功后，监听对应类型的升级事件，事件发生时通过回调函数传递事件信息，包括事件ID、任务状态、进度等。通过事件监听可以实时获取升级进度和状态变化，及时发现升级异常并处理，提升用户体验和升级流程的可控性。
 
 使用场景：OTA升级客户端显示升级进度条和百分比、设备管理系统批量设备升级状态监控、后台自动升级任务进度跟踪。
+
+**原理说明**：
+
+该方法通过系统事件机制注册本地升级事件监听：构造eventClassifyInfo指定事件类型（如TASK）→ 将回调函数注册到本地升级服务的事件监听列表 → 本地升级服务在安装状态变化时触发事件（如安装开始、安装进度更新、安装成功等）→ 事件通过IPC通道传递到应用进程 → 调用注册的回调函数传递EventInfo对象。事件监听采用异步回调机制，不影响本地升级流程执行，建议在升级流程结束后调用off取消监听避免内存泄漏。
 
 **配对调用**：
 
@@ -3279,17 +3365,17 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 **参数**：
 
-| 参数名               | 类型                                       | 必填   | 说明   |
-| ----------------- | ---------------------------------------- | ---- | ---- |
-| eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息（EventClassifyInfo），用于指定要监听的升级事件类型。|
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息对象(EventClassifyInfo)，用于指定要取消监听的升级事件类型。前置条件:必须先通过on方法注册监听，注册后系统维护事件监听列表并持续接收对应类型的本地升级事件通知。使用此参数取消监听后，系统从事件监听列表中移除对应监听记录，释放监听占用的内存和IPC通道资源，应用不再接收该类型的事件通知。|
 | taskCallback | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调，用于接收升级任务事件通知。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。|
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例**：
@@ -3297,7 +3383,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 ```ts
 const eventClassifyInfo: update.EventClassifyInfo = {
   eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
-  extraInfo: ""
+  extraInfo: ''
 };
 // 定义任务更新回调函数，用于处理升级任务事件
 let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => {
@@ -3338,17 +3424,17 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 **参数**：
 
-| 参数名               | 类型                                       | 必填   | 说明   |
-| ----------------- | ---------------------------------------- | ---- | ---- |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是   | 事件信息对象（EventClassifyInfo），用于指定要取消监听的升级事件类型。必须先通过on方法注册监听后才能使用此参数取消监听。|
-| taskCallback | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调，用于取消指定回调监听。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId和taskBody字段。当需要取消特定回调监听时传入此参数，不传入时取消该事件类型的所有监听。 |
+| taskCallback | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调，用于取消指定回调监听。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId和taskBody字段。当需要取消特定回调监听时传入此参数；不传入此参数时默认为undefined，表示取消该事件类型的所有监听。 |
 
 **错误码**：
 
 以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID       | 错误信息                                                  |
-| -------  | ---------------------------------------------------- |
+| 错误码ID | 错误信息 |
+| --- | --- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例**：
@@ -3356,7 +3442,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 ```ts
 const eventClassifyInfo: update.EventClassifyInfo = {
   eventClassify: update.EventClassify.TASK, // 订阅升级更新事件
-  extraInfo: ""
+  extraInfo: ''
 };
 // 定义任务更新回调函数，用于处理升级任务事件
 let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => {
@@ -3383,7 +3469,7 @@ try {
 
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
-| upgradeApp   | string                        | 只读:否， 可选:否 | 调用方包名，用于标识调用此升级接口的应用身份。格式为com.xxx.xxx.xxx，由点号分隔的多段组成。长度范围1-255字符，每段长度范围1-64字符，仅支持字母、数字和点号。每段必须以字母开头，不能包含连续点号或以点号开头结尾。超出范围或格式错误时抛出异常。|
+| upgradeApp   | string                        | 只读:否， 可选:否 | 调用方包名，用于标识调用此升级接口的应用身份。格式为com.xxx.xxx.xxx，由点号分隔的多段组成。长度范围[1，255]，单位：字符，每段长度范围[1，64]，单位：字符，仅支持字母、数字和点号。每段必须以字母开头，不能包含连续点号或以点号开头结尾。超出范围或格式错误时抛出异常。|
 | businessType | [BusinessType](#businesstype) | 只读:否， 可选:否 | 升级业务类型。 |
 
 ## BusinessType
@@ -3435,7 +3521,7 @@ try {
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
-| versionDigest | string | 只读:否， 可选:否 | 版本摘要。长度范围1-128字符，从版本检查结果中获取，用于标识具体版本。超出范围时抛出异常。 |
+| versionDigest | string | 只读:否， 可选:否 | 版本摘要。长度范围[1，128]，单位：字符。从版本检查结果中获取，用于标识具体版本。超出范围时抛出异常。 |
 
 ## VersionComponent
 
@@ -3454,7 +3540,7 @@ try {
 | innerVersion    | string                              | 只读:否， 可选:否 | 版本号。      |
 | size            | int                              | 只读:否， 可选:否 | 升级包大小，单位为B，取值范围[0, +∞]。超出范围时抛出异常。 |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 只读:否， 可选:否 | 生效模式，取值原则：COLD为冷升级，需重启设备生效；LIVE为热升级，无需重启即可生效；LIVE_AND_COLD为融合升级，结合两者特性。|
-| otaMode | [OtaMode](#otamode)                 | 只读:否， 可选:是 | 升级模式，取值原则：REGULAR_OTA为正常升级，适用于大多数常规升级场景；STREAM_OTA为流式升级，适用于存储空间受限或需要快速升级的场景；AB_REGULAR_OTA为AB正常升级，适用于A/B分区设备；AB_STREAM_OTA为AB流式升级，适用于A/B分区设备。不传入时默认为REGULAR_OTA。|
+| otaMode | [OtaMode](#otamode)                 | 只读:否， 可选:是 | 升级模式。当需要指定特定的升级模式时传入此参数，适用于存储空间受限、快速升级或A/B分区设备等特殊场景。取值原则：REGULAR_OTA为正常升级，适用于大多数常规升级场景；STREAM_OTA为流式升级，适用于存储空间受限或需要快速升级的场景；AB_REGULAR_OTA为AB正常升级，适用于A/B分区设备；AB_STREAM_OTA为AB流式升级，适用于A/B分区设备。不传入时默认为REGULAR_OTA，使用正常升级模式。|
 
 ## DescriptionOptions
 
@@ -3467,7 +3553,7 @@ try {
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
 | format   | [DescriptionFormat](#descriptionformat) | 只读:否， 可选:否 | 描述文件格式。取值原则：STANDARD适合需要完整描述信息的场景，SIMPLIFIED适合仅需精简描述信息的场景。 |
-| language | string                                  | 只读:否， 可选:否 | 描述文件语言，格式如'zh-cn'(中文)、'en-us'(英文)、'ja-jp'(日文)等，长度范围2-10字符，有效字符包括字母（区分大小写）和连字符（-），建议使用小写格式。超出范围或包含无效字符时抛出异常。 |
+| language | string                                  | 只读:否， 可选:否 | 描述文件语言，格式如'zh-cn'(中文)、'en-us'(英文)、'ja-jp'(日文)等，长度范围[2，10]，单位：字符。有效字符包括字母（区分大小写）和连字符（-），建议使用小写格式。超出范围或包含无效字符时抛出异常。 |
 
 ## ComponentDescription
 
@@ -3590,7 +3676,7 @@ try {
 | --------------- | ----------------------------------- | ------------------- | -------- |
 | downloadStrategy    | boolean                        | 只读:否， 可选:否 | 自动下载策略。<br>true表示可自动下载(适用于希望系统自动检测并下载新版本的场景，减少用户手动操作)。<br>false表示不可自动下载(适用于需要用户手动确认下载的场景，避免后台消耗流量或存储空间)。根据用户偏好和流量策略选择。|
 | autoUpgradeStrategy | boolean                        | 只读:否， 可选:否 | 自动升级策略。 <br>true表示可自动升级(适用于希望系统自动完成升级流程的场景，提升用户体验)。<br>false表示不可自动升级(适用于需要用户手动确认升级的场景，避免意外升级或确保用户知情)。根据用户体验需求和升级控制策略选择。 |
-| autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | 只读:否， 可选:是 | 自动升级时间段，当需要在特定时间段内自动升级时传入此参数(如夜间时段)，此参数为可选参数。不传入此参数时，表示不限制自动升级时间段，可在任意时间自动升级。 |
+| autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | 只读:否， 可选:是 | 自动升级时间段，当需要在特定时间段内自动升级时传入此参数(如夜间时段)，此参数为可选参数。不传入此参数时默认为空数组[]，表示不限制自动升级时间段，可在任意时间自动升级。 |
 
 ## UpgradePeriod
 
@@ -3644,10 +3730,10 @@ try {
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 只读:否， 可选:否 | 版本摘要。 |
-| status            | [UpgradeStatus](#upgradestatus)          | 只读:否， 可选:否 | 升级状态。用于标识升级任务的当前执行阶段。包含下载状态（WAITING_DOWNLOAD到DOWNLOAD_FAIL）、安装状态（WAITING_INSTALL到UPDATING）和最终结果（UPGRADE_SUCCESS或UPGRADE_FAIL），用于任务状态监控、进度展示和异常处理等场景。 |
+| status            | [UpgradeStatus](#upgradestatus)          | 只读:否， 可选:否 | 升级状态。用于标识升级任务的当前执行阶段。包含下载状态（WAITING_DOWNLOAD到DOWNLOAD_FAIL）、安装状态（WAITING_INSTALL到UPDATING）、生效状态（WAITING_APPLY到APPLYING）和最终结果（UPGRADE_SUCCESS或UPGRADE_FAIL），用于任务状态监控、进度展示和异常处理等场景。 |
 | subStatus         | int                                   | 只读:否， 可选:否 | 子状态，取值范围参考[UpgradeStatus](#upgradestatus)状态码。  |
 | progress          | int                                   | 只读:否， 可选:否 | 进度，单位为%，取值范围[0, 100]，超出范围时抛出异常。 |
-| installMode       | int                                   | 只读:否， 可选:否 | 安装模式，取值原则：0为正常升级，适用于用户主动触发升级的场景；1为夜间升级，适用于设置夜间时段自动升级的场景；2为自动升级，适用于系统自动检测并执行升级的场景。应根据升级策略和用户体验需求选择。超出范围时抛出异常。|
+| installMode       | int                                   | 只读:否， 可选:否 | 安装模式，取值范围[0, 2]。取值原则：0为正常升级，适用于用户主动触发升级的场景；1为夜间升级，适用于设置夜间时段自动升级的场景；2为自动升级，适用于系统自动检测并执行升级的场景。应根据升级策略和用户体验需求选择。超出范围时抛出异常。|
 | errorMessages     | Array\<[ErrorMessage](#errormessage)>    | 只读:否， 可选:否 | 错误信息。 |
 | versionComponents | Array\<[VersionComponent](#versioncomponent)> | 只读:否， 可选:否 | 版本组件。 |
 
@@ -3688,7 +3774,7 @@ try {
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
 | fileType | [ComponentType](#componenttype) | 只读:否， 可选:否 | 文件类型，用于指定升级包类型。设置为OTA表示OTA升级包，系统将根据OTA类型执行固件升级流程，包括完整性校验和系统分区写入等操作。 |
-| filePath | string                          | 只读:否， 可选:否 | 文件路径，支持绝对路径或相对路径。路径长度范围1-255字符，超出范围时抛出异常。 |
+| filePath | string                          | 只读:否， 可选:否 | 文件路径，支持绝对路径或相对路径。路径长度范围[1，255]，单位：字符，超出范围时抛出异常。 |
 
 ## FactoryResetStrategy
 
@@ -3705,7 +3791,7 @@ try {
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
 | scope | [FactoryResetScope](#factoryresetscope) | 只读:否， 可选:否 | 重置范围。DATA仅清除用户数据分区；DATA_AND_OS同时清除用户数据分区和操作系统分区，恢复更彻底。 |
-| strategy | string                          | 只读:否， 可选:否 | 重置策略，用于记录重置操作的具体策略信息。长度范围0-64字符，有效字符包括字母、数字、下划线、连字符和空格。超出范围或包含无效字符时抛出异常。为重置操作的自定义描述文本，如quick erase表示快速擦除、deep erase表示深度擦除等。 |
+| strategy | string                          | 只读:否， 可选:否 | 重置策略，用于记录重置操作的具体策略信息。长度范围[0，64]，单位：字符，有效字符包括字母、数字、下划线、连字符和空格。超出范围或包含无效字符时抛出异常。为重置操作的自定义描述文本，如quick erase表示快速擦除、deep erase表示深度擦除等。 |
 
 ## FactoryResetInfo
 
