@@ -1,11 +1,11 @@
 # CanvasRenderingContext2D
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:26:43.400Z pushedAt=2026-06-05T12:07:26.084Z -->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:49:58.152Z pushedAt=2026-06-15T02:39:36.661Z -->
 
 
 **CanvasRenderingContext2D** allows you to draw rectangles and text on a canvas.

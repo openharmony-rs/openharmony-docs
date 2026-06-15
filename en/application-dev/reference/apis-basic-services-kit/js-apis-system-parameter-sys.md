@@ -5,7 +5,7 @@
 <!--Designer: @liveery-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:56:21.784Z pushedAt=2026-06-09T10:12:44.311Z -->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:50:18.536Z pushedAt=2026-06-15T02:39:36.670Z -->
 
 The **SystemParameter** module provides system services with easy access to key-value pairs. You can use the APIs provided by this module to describe the service status and change the service behavior. The basic operation primitives are **get** and **set**. You can obtain the values of system parameters through getters and modify the values through setters.
 
@@ -21,10 +21,10 @@ For details about the system parameter design principles and definitions, see [P
 ## Modules to Import
 
 ```ts
-import systemparameter from '@ohos.systemparameter';
+import systemParameter from '@ohos.systemparameter';
 ```
 
-## systemparameter.getSync<sup>(deprecated)</sup>
+## systemParameter.getSync<sup>(deprecated)</sup>
 
 getSync(key: string, def?: string): string
 
@@ -49,14 +49,14 @@ Obtains a value of the specified key.
 
 ```ts
 try {
-    let info: string = systemparameter.getSync("const.ohos.apiversion");
+    let info: string = systemParameter.getSync("const.ohos.apiversion");
     console.info(JSON.stringify(info));
 } catch(e) {
     console.error("getSync unexpected error: " + e);
 }
 ```
 
-## systemparameter.get<sup>(deprecated)</sup>
+## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -77,7 +77,7 @@ Obtains a value of the specified key. This API uses an asynchronous callback to 
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemparameter.get("const.ohos.apiversion", (err: BusinessError, data: string) => {
+    systemParameter.get("const.ohos.apiversion", (err: BusinessError, data: string) => {
     if (err == undefined) {
         console.info("get test.parameter.key value success:" + data)
     } else {
@@ -88,7 +88,7 @@ try {
 }
 ```
 
-## systemparameter.get<sup>(deprecated)</sup>
+## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -110,7 +110,7 @@ Obtains a value of the specified key. This API uses an asynchronous callback to 
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemparameter.get("const.ohos.apiversion", "default", (err: BusinessError, data: string) => {
+    systemParameter.get("const.ohos.apiversion", "default", (err: BusinessError, data: string) => {
         if (err == undefined) {
             console.info("get test.parameter.key value success:" + data)
         } else {
@@ -122,7 +122,7 @@ try {
 }
 ```
 
-## systemparameter.get<sup>(deprecated)</sup>
+## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, def?: string): Promise&lt;string&gt;
 
@@ -149,7 +149,7 @@ Obtains a value of the specified key. This API uses a promise to return the resu
 import { BusinessError } from '@ohos.base';
 
 try {
-    let p: Promise<string> = systemparameter.get("const.ohos.apiversion");
+    let p: Promise<string> = systemParameter.get("const.ohos.apiversion");
     p.then((value: string) => {
         console.info("get test.parameter.key success: " + value);
     }).catch((err: BusinessError) => {
@@ -160,7 +160,7 @@ try {
 }
 ```
 
-## systemparameter.setSync<sup>(deprecated)</sup>
+## systemParameter.setSync<sup>(deprecated)</sup>
 
 setSync(key: string, value: string): void
 
@@ -184,13 +184,13 @@ Sets a value for the specified key.
 
 ```ts
 try {
-    systemparameter.setSync("test.parameter.key", "default");
+    systemParameter.setSync("test.parameter.key", "default");
 } catch(e) {
     console.error("set unexpected error: " + e);
 }
 ```
 
-## systemparameter.set<sup>(deprecated)</sup>
+## systemParameter.set<sup>(deprecated)</sup>
 
 set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -216,7 +216,7 @@ Sets a value of the specified key. This API uses an asynchronous callback to ret
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemparameter.set("test.parameter.key", "testValue",  (err: BusinessError, data: void) =>{
+    systemParameter.set("test.parameter.key", "testValue",  (err: BusinessError, data: void) =>{
     if (err == undefined) {
         console.info("set test.parameter.key value success :" + data)
     } else {
@@ -227,7 +227,7 @@ try {
 }
 ```
 
-## systemparameter.set<sup>(deprecated)</sup>
+## systemParameter.set<sup>(deprecated)</sup>
 
 set(key: string, value: string): Promise&lt;void&gt;
 
@@ -258,7 +258,7 @@ Sets a value of the specified key. This API uses a promise to return the result.
 import { BusinessError } from '@ohos.base';
 
 try {
-    let p: Promise<void> = systemparameter.set("test.parameter.key", "testValue");
+    let p: Promise<void> = systemParameter.set("test.parameter.key", "testValue");
     p.then((value: void) => {
         console.info("set test.parameter.key success: " + value);
     }).catch((err: BusinessError) => {

@@ -6,13 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:06:05.631Z pushedAt=2026-06-10T10:59:32.530Z -->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:51:25.108Z pushedAt=2026-06-15T02:39:36.677Z -->
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.security.cryptoFramework Cipher](js-apis-cryptoFramework.md#cipher).
+> The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.security.cryptoFramework Cipher](js-apis-cryptoFramework.md#cipher) instead.
 
 ## Modules to Import
 
@@ -36,15 +36,15 @@ Defines the input parameters of **cipher.rsa()**.
 
 **System capability**: SystemCapability.Security.Cipher
 
-| Name        | Type                                | Mandatory| Description                                                        |
-| -------------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| action         | string                               | Yes  | Action to perform. The options are as follows:<br>1. **encrypt**: Encrypts data.<br>2. **decrypt**: Decrypts data.|
-| text           | string                               | Yes  | Text to be encrypted or decrypted.<br> The text to be encrypted must be a common text and cannot exceed the length calculated based on the formula (keySize/8 - 66). **keySize** indicates the key length. For example, if the key length is 1024 bytes, the text cannot exceed 62 bytes (1024/8 - 66 = 62). The text to be decrypted must be a binary value encoded in Base64. The default format is used for Base64 encoding.|
-| key            | string                               | Yes  | RSA key. It is a public key in encryption and a private key in decryption.     |
-| transformation | string                               | No  | RSA padding. The default value is **RSA/None/OAEPWithSHA256AndMGF1Padding**.|
-| success        | (data: [CipherResponse](#cipherresponse)) => void       | No  | Called when data is encrypted or decrypted successfully.                                    |
-| fail           | (data: string, code: number) => void | No  | Called when data fails to be encrypted or decrypted.                                    |
-| complete       | () => void                           | No  | Called when the execution is complete.                                    |
+| Name | Type       | Read-Only | Optional | Description   |
+| ---- | ---------- | ---- | ---- | ------ |
+| action | string | No   | No   |  Action to perform. The options are as follows:<br/>1. **encrypt**: Encrypts data.<br/>2. **decrypt**: Decrypts data. |
+| text | string | No   | No   | Text to be encrypted or decrypted. The text to be encrypted must be a common text and cannot exceed the length calculated based on the formula (keySize/8 - 66). **keySize** indicates the key length. For example, if the key length is 1024 bytes, the text cannot exceed 62 bytes (1024/8 - 66 = 62). The text to be decrypted must be a binary value encoded in Base64. The default format is used for Base64 encoding. |
+| key | string | No   | No   | RSA key used for encryption or decryption. It is a public key in encryption and a private key in decryption. |
+| transformation | string | No   | Yes   | RSA padding. The default value is **RSA/None/OAEPWithSHA256AndMGF1Padding**. |
+| success | (data: [CipherResponse](#cipherresponse)) => void  | No   | Yes   | Callback to be invoked when the API call is successful. |
+| fail | (data: string, code: number) => void | No   | Yes   | Callback to be invoked when the API call fails. |
+| complete | () => void | No   | Yes   | Callback to be invoked when the API call is complete. |
 
 ## CipherAesOptions
 
@@ -52,18 +52,18 @@ Defines the input parameters of **cipher.aes()**.
 
 **System capability**: SystemCapability.Security.Cipher
 
-| Name        | Type                                | Mandatory| Description                                                        |
-| -------------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| action         | string                               | Yes  | Action to perform. The options are as follows:<br>1. **encrypt**: Encrypts data.<br>2. **decrypt**: Decrypts data.|
-| text           | string                               | Yes  | Text to be encrypted or decrypted.<br> The text to be encrypted must be common text. The text to be decrypted must be a binary value encoded in Base64. The default format is used for Base64 encoding.|
-| key            | string                               | Yes  | Key used for encryption or decryption. It is a Base64 encoded string.|
-| transformation | string                               | No  | Encryption mode and padding of the AES algorithm. The default value is **AES/CBC/PKCS5Padding**.         |
-| iv             | string                               | No  | Initialization vector (IV) for AES-based encryption and decryption. The value is a string encoded in Base64. The default value is the key value.|
-| ivOffset       | string                               | No  | Offset of the IV for AES-based encryption and decryption. The default value is **0**, which is the only value supported.                 |
-| ivLen          | string                               | No  | Length of the IV, in bytes. This field is reserved. The default value is **16**, which is the only value supported.|
-| success        | (data: [CipherResponse](#cipherresponse)) => void       | No  | Called when data is encrypted or decrypted successfully.                                    |
-| fail           | (data: string, code: number) => void | No  | Called when data fails to be encrypted or decrypted.                                    |
-| complete       | () => void                           | No  | Called when the execution is complete.                                    |
+| Name | Type       | Read-Only | Optional | Description   |
+| ---- | ---------- | ---- | ---- | ------ |
+| action | string | No   | No   | Action to perform. The options are as follows:<br/>1. **encrypt**: Encrypts data.<br/>2. **decrypt**: Decrypts data. |
+| text | string | No   | No   | Text to be encrypted or decrypted. The text to be encrypted must be a common text. The text to be decrypted must be a binary value encoded in Base64. The default format is used for Base64 encoding. |
+| key | string | No   | No   | Key used for encryption or decryption, which is a character string encrypted using Base64. |
+| transformation | string | No   | Yes   | Encryption mode and padding of the AES algorithm. The default value is **AES/CBC/PKCS5Padding**. |
+| iv | string | No   | Yes   | Initial vector for AES-based encryption or decryption. The value is a character string encoded using Base64. The default value is the key value. |
+| ivOffset | string | No   | Yes   | Offset of the IV for AES-based encryption and decryption. The default value is **0**, which is the only value supported. |
+| ivLen | string | No   | Yes   | Length of the IV, in bytes. This field is reserved. The default value is **16**, which is the only value supported. |
+| success | (data: [CipherResponse](#cipherresponse)) => void | No   | Yes   | Callback to be invoked when the API call is successful. |
+| fail | (data: string, code: number) => void | No   | Yes   | Callback to be invoked when the API call fails. |
+| complete | () => void | No   | Yes   | Callback to be invoked when the API call is complete. |
 
 ## cipher.rsa
 

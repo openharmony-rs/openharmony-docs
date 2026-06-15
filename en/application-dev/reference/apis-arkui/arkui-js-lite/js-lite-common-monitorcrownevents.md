@@ -24,7 +24,7 @@ This monitor is automatically removed when [page routing](../js-apis-router.md) 
 
 > **NOTE**
 >
-> - The monitor is automatically removed when page routing occurs. Therefore, it is recommended to call this API in the onShow [lifecycle](./js-lite-framework-lifecycle.md) callback of the page.
+> - The monitor is automatically removed when page routing occurs. Therefore, it is recommended this API be called in the **onShow** [lifecycle](./js-lite-framework-lifecycle.md) callback of the page.
 > - Only one monitor is supported per page. A newly registered monitor overwrites the previous one, and the system uses the monitor passed in the last call to this API.
 > - Do not use this function in [app.js](../../../ui/js-framework-js-file.md), as its behavior is undefined.
 
@@ -32,7 +32,7 @@ This monitor is automatically removed when [page routing](../js-apis-router.md) 
 
 **Model constraint:** This API can be used only in the FA model.
 
-**Parameters:**
+**Parameters**
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
@@ -43,8 +43,8 @@ This monitor is automatically removed when [page routing](../js-apis-router.md) 
 | Name                   | Type       | Read-Only    |  Optional   |  Description                                 |
 | --------------------- | -------- | ------- |--------- |-------------------------------------- |
 | timestamp             | number   |  No     | No    |Timestamp.                                  |
-| angularVelocity       | number   |  No     | No    |Rotational angular velocity, indicating the angle rotated per second.<br/>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br/>Unit: degrees/s      |
-| degree                | number   |  No     | No    |Relative rotation angle.<br/>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br/>Unit: degrees.<br/>Value range: [-360, 360]     |
+| angularVelocity       | number   |  No     | No    |Rotational angular velocity, indicating the angle rotated per second.<br/>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br/>Unit: degree/s      |
+| degree                | number   |  No     | No    |Relative rotation angle.<br/>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br/>Unit: degree.<br/>Value range: [-360, 360]     |
 
 ## clearMonitorForCrownEvents
 

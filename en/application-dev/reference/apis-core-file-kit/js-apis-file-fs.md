@@ -1,10 +1,12 @@
 # @ohos.file.fs (File Management)
+
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:51:55.137Z pushedAt=2026-06-15T02:39:36.681Z -->
 
 The **fs** module provides APIs for file operations, including accessing and managing files and directories, obtaining file information statistics, and reading and writing data using a stream.
 
@@ -170,7 +172,6 @@ Checks whether the file or directory exists or has the operation permission. Thi
 
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
-
 **Example**
 
   ```ts
@@ -251,7 +252,6 @@ Checks whether a file or directory exists. This API uses an asynchronous callbac
 **Error codes**
 
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
-
 
 **Example**
 
@@ -748,7 +748,6 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   });
   ```
 
-
 ## fileIo.copyFileSync
 
 copyFileSync(src: string | number, dest: string | number, mode?: number): void
@@ -1195,6 +1194,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   });
 
   ```
+
 ## fileIo.setxattrSync<sup>12+</sup>
 
 setxattrSync(path: string, key: string, value: string): void
@@ -1538,7 +1538,7 @@ Opens a file or directory. This API uses a promise to return the result. This AP
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | path   | string | Yes  | Application sandbox path or URI of a file or directory.                                  |
-| mode  | number | No  | [OpenMode](#openmode) for opening the file or directory. You must specify one of the following options. By default, the file is opened in read-only mode.<br>- **OpenMode.READ_ONLY(0o0)**: Open the file in read-only mode.<br>- **OpenMode.WRITE_ONLY(0o1)**: Open the file in write-only mode.<br>- **OpenMode.READ_WRITE(0o2)**: Open the file in read/write mode.<br>You can add the following function options in bitwise OR mode. By default, no additional option is added.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the file exists and is opened in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.<br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Open the file in synchronous I/O mode.<br>- **OpenMode.UNCACHE(0o10000000000)**: Disable the page cache for reading and writing a file. This option is supported since API version 26.|
+| mode  | number | No   | [OpenMode](#openmode) for opening a file or directory. You must specify one of the following options. By default, the file is opened in read-only mode.<br/>-&nbsp;**OpenMode.READ_ONLY(0o0)**: Open the file in read-only mode.<br/>-&nbsp;**OpenMode.WRITE_ONLY(0o1)**: Open the file in write-only mode.<br/>-&nbsp;**OpenMode.READ_WRITE(0o2)**: Open the file in read/write mode.<br/>You can add the following function options, separated using a bitwise OR operator (|). By default, no additional option is added.<br/>-&nbsp;**OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br/>-&nbsp;**OpenMode.TRUNC(0o1000)**: If the file exists and is open in write-only mode, truncate the file length to 0.<br/>-&nbsp;**OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.<br/>-&nbsp;**OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the open file and in subsequent I/Os.<br/>-&nbsp;**OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br/>-&nbsp;**OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception. |
 
 **Return value**
 
@@ -1564,7 +1564,6 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   });
   ```
 
-
 ## fileIo.open
 
 open(path: string, mode: number, callback: AsyncCallback&lt;File&gt;): void
@@ -1582,7 +1581,7 @@ This API supports the use of a URI.
 | Name  | Type                           | Mandatory| Description                                                        |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | path     | string                          | Yes  | Application sandbox path or URI of a file or directory.                                  |
-| mode  | number | Yes  | [OpenMode](#openmode) for opening the file or directory. You must specify one of the following options. By default, the file is opened in read-only mode.<br>- **OpenMode.READ_ONLY(0o0)**: Open the file in read-only mode.<br>- **OpenMode.WRITE_ONLY(0o1)**: Open the file in write-only mode.<br>- **OpenMode.READ_WRITE(0o2)**: Open the file in read/write mode.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the file exists and is opened in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.<br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Open the file in synchronous I/O mode.<br>- **OpenMode.UNCACHE(0o10000000000)**: Disable the page cache for reading and writing a file. This option is supported since API version 26.|
+| mode  | number | Yes   | [OpenMode](#openmode) for opening the file or directory. You must specify one of the following options. By default, the file is opened in read-only mode.<br/>-&nbsp;**OpenMode.READ_ONLY(0o0)**: Open the file in read-only mode.<br/>-&nbsp;**OpenMode.WRITE_ONLY(0o1)**: Open the file in write-only mode.<br/>-&nbsp;**OpenMode.READ_WRITE(0o2)**: Open the file in read/write mode.<br/>You can add the following function options, separated using a bitwise OR operator (|). By default, no additional option is added.<br/>-&nbsp;**OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br/>-&nbsp;**OpenMode.TRUNC(0o1000)**: If the file exists and is open in write-only mode, truncate the file length to 0.<br/>-&nbsp;**OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.<br/>-&nbsp;**OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the open file and in subsequent I/Os.<br/>-&nbsp;**OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br/>-&nbsp;**OpenMode.NOFOLLOW(0o400000)**:  If **path** points to a symbolic link, throw an exception. |
 | callback     | AsyncCallback&lt;[File](#file)&gt;                          | Yes  | Callback used to return the result.                                  |
 
 **Error codes**
@@ -1657,7 +1656,7 @@ Opens a file or directory. This API returns the result synchronously. This API s
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | path   | string | Yes  | Application sandbox path or URI of a file or directory to open.                                  |
-| mode  | number | No  | [OpenMode](#openmode) for opening the file or directory. You must specify one of the following options. By default, the file is opened in read-only mode.<br>- **OpenMode.READ_ONLY(0o0)**: Open the file in read-only mode.<br>- **OpenMode.WRITE_ONLY(0o1)**: Open the file in write-only mode.<br>- **OpenMode.READ_WRITE(0o2)**: Open the file in read/write mode.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the file exists and is opened in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.<br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Open the file in synchronous I/O mode.<br>- **OpenMode.UNCACHE(0o10000000000)**: Disable the page cache for reading and writing a file. This option is supported since API version 26.|
+| mode  | number | No   | [OpenMode](#openmode) for opening a file or directory. You must specify one of the following options. By default, the file is opened in read-only mode.&nbsp;**OpenMode.WRITE_ONLY(0o1)**: Open the file in write-only mode.<br/>-&nbsp;**OpenMode.READ_WRITE(0o2)**: Open the file in read/write mode.<br/>You can add the following function options, separated using a bitwise OR operator (|). By default, no additional option is added.<br/>-&nbsp;**OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br/>-&nbsp;**OpenMode.TRUNC(0o1000)**: If the file exists and is open in write-only mode, truncate the file length to 0.<br/>-&nbsp;**OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.<br/>-&nbsp;**OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the open file and in subsequent I/Os.<br/>-&nbsp;**OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br/>-&nbsp;**OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception. |
 
 **Return value**
 
@@ -2068,7 +2067,6 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   fileIo.unlinkSync(filePath);
   ```
-
 
 ## fileIo.write
 
@@ -3064,7 +3062,6 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   });
   ```
 
-
 ## fileIo.fsyncSync
 
 fsyncSync(fd: number): void
@@ -3238,8 +3235,8 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   });
   ```
 
-
 ## fileIo.symlink
+
 symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): void
 
 Creates a symbolic link based on a file path. This API uses an asynchronous callback to return the result.
@@ -3310,6 +3307,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   ```
 
 ## fileIo.listFile
+
 listFile(path: string, options?: ListFileOptions): Promise<string[]>
 
 Lists the names of all files and directories in the current path. Filtering is supported. This API uses a promise to return the result.
@@ -3326,7 +3324,6 @@ This API supports recursively listing the relative paths of all files by setting
   | ------ | ------ | ---- | --------------------------- |
   | path | string | Yes   | Application sandbox path of the directory.|
   | options | [ListFileOptions](#listfileoptions11) | No   | Options for filtering files. The files are not filtered by default.|
-
 
 **Return value**
 
@@ -3364,6 +3361,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   ```
 
 ## fileIo.listFile
+
 listFile(path: string, callback: AsyncCallback<string[]>): void
 
 Lists the names of all files and directories in the current path. This API uses an asynchronous callback to return the result.
@@ -3378,7 +3376,6 @@ Lists the names of all files and directories in the current path. This API uses 
   | ------ | ------ | ---- | --------------------------- |
   | path | string | Yes   | Application sandbox path of the directory.|
   | callback | AsyncCallback&lt;string[]&gt; | Yes   | Callback used to return the file names listed. The files are encoded in UTF-8 by default.|
-
 
 **Error codes**
 
@@ -3402,6 +3399,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   ```
 
 ## fileIo.listFile
+
 listFile(path: string, options: ListFileOptions, callback: AsyncCallback&lt;string[]&gt;): void
 
 Lists the names of all files and directories in the current path. Filtering is supported. This API uses an asynchronous callback to return the result.
@@ -3419,7 +3417,6 @@ This API supports recursively listing the relative paths of all files by setting
   | path | string | Yes   | Application sandbox path of the directory.|
   | options | [ListFileOptions](#listfileoptions11) | Yes   | Options for filtering files.|
   | callback | AsyncCallback&lt;string[]&gt; | Yes   | Callback used to return the file names listed. The files are encoded in UTF-8 by default.|
-
 
 **Error codes**
 
@@ -3470,7 +3467,6 @@ This API supports recursively listing the relative paths of all files by setting
   | ------ | ------ | ---- | --------------------------- |
   | path | string | Yes   | Application sandbox path of the directory.|
   | options | [ListFileOptions](#listfileoptions11) | No   | Options for filtering files. The files are not filtered by default.|
-
 
 **Return value**
 
@@ -4072,6 +4068,7 @@ Changes the time when the file was last modified.
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
 **Parameters**
+
 |    Name   | Type    | Mandatory  | Description                         |
 | ------------ | ------ | ------ | ------------------------------------------------------------ |
 | path  | string  |  Yes   | Application sandbox path of the file.|
@@ -4100,6 +4097,7 @@ Creates a **RandomAccessFile** instance based on the specified file path or file
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
 **Parameters**
+
 |    Name   | Type    | Mandatory  | Description                         |
 | ------------ | ------ | ------ | ------------------------------------------------------------ |
 |     file     | string \| [File](#file) | Yes   | Application sandbox path of the file or an opened file object.|
@@ -4152,6 +4150,7 @@ Creates a **RandomAccessFile** instance in read-only mode based on a file path o
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4189,6 +4188,7 @@ Creates a **RandomAccessFile** instance based on a file path or file object. Thi
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4244,7 +4244,6 @@ fileIo.createRandomAccessFile(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode
     console.error(`Failed to create randomaccessfile. Code: ${err.code}, message: ${err.message}`);
   });
 ```
-
 
 ## fileIo.createRandomAccessFileSync<sup>10+</sup>
 
@@ -4356,7 +4355,6 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   });
   ```
 
-
 ## fileIo.createStream
 
 createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;): void
@@ -4430,7 +4428,6 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   console.info(`Succeeded in creating stream.`);
   stream.closeSync();
   ```
-
 
 ## fileIo.fdopenStream
 
@@ -4650,6 +4647,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   ```
 
 ## AtomicFile<sup>15+</sup>
+
 AtomicFile is a class used to perform atomic read and write operations on files.
 
 A temporary file is written and renamed to the original file location, which ensures file integrity. If the write operation fails, the temporary file is deleted without modifying the original file content.
@@ -4695,6 +4693,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { common } from '@kit.AbilityKit';
 
@@ -4736,6 +4735,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { common } from '@kit.AbilityKit';
 
@@ -4786,6 +4786,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { util, buffer } from '@kit.ArkTS';
@@ -4836,6 +4837,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { common } from '@kit.AbilityKit';
 
@@ -4870,6 +4872,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { common } from '@kit.AbilityKit';
 
@@ -4903,6 +4906,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { common } from '@kit.AbilityKit';
 
@@ -4937,6 +4941,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { util } from '@kit.ArkTS';
@@ -4992,6 +4997,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 **Example**
 
 <!--code_no_check-->
+
   ```ts
   import { common } from '@kit.AbilityKit';
   import { WatchEvent } from '@kit.CoreFileKit';
@@ -5074,6 +5080,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
@@ -5206,7 +5213,7 @@ Represents detailed file information. Before calling any API of the **Stat()** c
 
 > **NOTE**
 >
-> Some properties in **Stat** are only supported for common files. You can use the [isFile()](#isfile) API to check whether a file is a common file.
+> Some properties in **Stat** are only supported for common files. You can use the [isFile](#isfile) API to check whether a file is a common file.
 
 ### isBlockDevice
 
@@ -6201,7 +6208,6 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   randomAccessFile.close();
   ```
 
-
 ### close<sup>10+</sup>
 
 close(): void
@@ -6641,7 +6647,6 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   randomAccessFile.close();
   ```
 
-
 ## Watcher<sup>10+</sup>
 
 Provides APIs for observing the changes of files or directories. Before using the APIs of **Watcher**, call **createWatcher()** to create a **Watcher** object.
@@ -6858,7 +6863,6 @@ The data obtained by **ReadStream** is a decoded string. Currently, only the UTF
 ### seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number
-
 
 Adjusts the position of the readable stream offset pointer.
 

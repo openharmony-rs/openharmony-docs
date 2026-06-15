@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:07:15.326Z pushedAt=2026-06-10T10:59:32.535Z -->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:52:39.108Z pushedAt=2026-06-15T02:39:36.687Z -->
 
 The **cryptoFramework** module provides APIs for cryptographic operations, shielding the underlying hardware and algorithm library.
 
@@ -109,14 +109,14 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name   | Type                 | Read-Only| Optional| Description                                                        |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | No  | No  | IV, which is of 1 to 16 bytes. A 12-byte IV is commonly used.                            |
+| iv      | [DataBlob](#datablob) | No   | No   | IV, which is of 1 to 128 bytes. A 12-byte IV is commonly used.                             |
 | aad     | [DataBlob](#datablob) | No  | No  | Additional authentication data (AAD), which is of 0 to INT_MAX bytes. A 16-byte AAD is commonly used.                            |
-| authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 16 bytes.<br>When GCM mode is used for encryption, you need to extract the last 16 bytes from the [doFinal](#dofinal) returned by [doFinal()](#dofinal) or [DataBlob](#datablob) and use them as **authTag** in **GcmParamsSpec** for [init()](#init-1) or [initSync()](#initsync12).|
+| authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 16 bytes.<br>When GCM mode is used for encryption, you need to extract the last 16 bytes from the [doFinal](#dofinal) returned by [doFinal()](#dofinalsync12) or [DataBlob](#datablob) and use them as **authTag** in **GcmParamsSpec** for [init()](#init-1) or [initSync()](#initsync12).|
 
 > **NOTE**
 >
 > 1. Before passing a value to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
-> 2. The Crypto framework imposes no additional restrictions on the IV of 1 to 16 bytes. However, the operation result depends on the underlying OpenSSL support.
+> 2. The Crypto framework imposes no additional restrictions on the IV of 1 to 128 bytes. However, the operation result depends on the underlying OpenSSL support.
 > 3. If **aad** is not required or the **aad** length is 0, you can set its **data** attribute to an empty Uint8Array in the **aad: { data: new Uint8Array() }** format when constructing **GcmParamsSpec**.
 
 ## CcmParamsSpec
@@ -135,7 +135,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
 | iv      | [DataBlob](#datablob) | No  | No  | IV for encryption and decryption. Only 7 bytes are supported. If the length of the input **iv** parameter exceeds 7 bytes, the excess part will be truncated.                             |
 | aad     | [DataBlob](#datablob) | No  | No  | AAD for encryption and decryption. The AAD value contains 1 to 2,048 bytes.                           |
-| authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 12 bytes.<br>When CCM mode is used for encryption, you need to extract the last 12 bytes from the [doFinal](#dofinal) returned by [doFinal()](#dofinal) or [DataBlob](#datablob) and use them as **authTag** in [CcmParamsSpec](#ccmparamsspec) for [init()](#init-1) or [CcmParamsSpec](#ccmparamsspec).|
+| authTag | [DataBlob](#datablob) | No  | No  | Authentication tag, which is of 12 bytes.<br>When CCM mode is used for encryption, you need to extract the last 12 bytes from the [doFinal](#dofinal) returned by [doFinal()](#dofinalsync12) or [DataBlob](#datablob) and use them as **authTag** in [CcmParamsSpec](#ccmparamsspec) for [init()](#initsync12) or [CcmParamsSpec](#ccmparamsspec).|
 
 > **NOTE**
 >
@@ -161,7 +161,7 @@ Applicable to the Poly1305 mode of [ChaCha20](../../security/CryptoArchitectureK
 >
 > Before passing a value to [init()](#init-1), specify **algName** for its parent class [ParamsSpec](#paramsspec).
 >
-> When the Poly1305 mode is used for encryption, you need to extract the last 16 bytes from the [doFinal](#dofinal) returned by [doFinal()](#dofinal) or [DataBlob](#datablob) and use them as **authTag** in [Poly1305ParamsSpec](#poly1305paramsspec22) for [init()](#init-1) or [initSync()](#initsync12) during decryption.
+> When the Poly1305 mode is used for encryption, you need to extract the last 16 bytes from the [doFinal](#dofinal) returned by [doFinal()](#dofinalsync12) or [DataBlob](#datablob) and use them as **authTag** in [Poly1305ParamsSpec](#poly1305paramsspec22) for [init()](#initsync12) or [initSync()](#poly1305paramsspec22) during decryption.
 
 ## CryptoMode
 
@@ -760,7 +760,7 @@ Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for scrypt k
 
 > **NOTE**
 >
-> **passphrase** specifies the original password. If **password** is of the string type, pass in the data used for key derivation rather than a string of the HexString or Base64 type. In addition, the string must be in utf-8 format. Otherwise, the key derived may be different from the one expected.
+> **passphrase** specifies the original password. If **password** is of the string type, pass in the data used for key derivation rather than a string of the HexString or Base64 type. In addition, the string must be in UTF-8 format. Otherwise, the key derived may be different from the one expected.
 
 ## X963KdfSpec<sup>22+</sup>
 
@@ -872,7 +872,7 @@ Represents the child class of the message authentication code [MacSpec](#macspec
 
 ## EccSignatureSpec<sup>20+</sup>
 
-Represents the SM2 signature data that contains (r, s).
+Represents the ECC/SM2 signature data that contains (r, s).
 
 > **NOTE**
 >
@@ -4093,7 +4093,7 @@ updateSync(data: DataBlob): DataBlob
 
 Updates the data to encrypt or decrypt by segment. This API uses an asynchronous callback to return the encrypted or decrypted data.
 
-This API can be called only after the [Cipher](#cipher) instance is initialized by using [DataBlob](#datablob).
+This API can be called only after the [Cipher](#initsync12) instance is initialized by using [DataBlob](#datablob).
 
 See **NOTE** in **update()** for other precautions.
 
@@ -4263,7 +4263,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type                           | Description                                            |
 | ------------------------------- | ------------------------------------------------ |
-| Promise\<[DataBlob](#datablob)> | Promise used to return the **DataBlob**, which is the encryption or decryption result of the remaining data.|
+| Promise\<[DataBlob](#updatesync12)> | Promise used to return the **DataBlob**, which is the encryption or decryption result of the remaining data.|
 
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
@@ -4421,7 +4421,7 @@ async function cipherBySync() {
 
 setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 
-Sets cipher specifications. You can use this API to set cipher specifications that cannot be set by [createCipher](#cryptoframeworkcreatecipher). Currently, only RSA is supported.
+Sets cipher specifications. You can use this API to set cipher specifications that cannot be set by [createCipher](#cipherspecitem10). Currently, only RSA is supported.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -5105,7 +5105,7 @@ setSignSpec(itemType: SignSpecItem, itemValue: number): void
 
 setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
-Sets signing specifications. You can use this API to set signing parameters that cannot be set by [createSign](#cryptoframeworkcreatesign).
+Sets signing specifications. You can use this API to set signing parameters that cannot be set by [createSign](#signspecitem10).
 
 Currently, only RSA and SM2 are supported. Since API version 11, SM2 signing parameters can be set.
 
@@ -5961,7 +5961,7 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
 setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
-Sets signature verification specifications. You can use this API to set signature verification parameters that cannot be set by [createVerify](#cryptoframeworkcreateverify).
+Sets signature verification specifications. You can use this API to set signature verification parameters that cannot be set by [createVerify](#signspecitem10).
 
 Currently, only RSA and SM2 are supported. Since API version 11, SM2 signing parameters can be set.
 
@@ -6625,7 +6625,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type| Description                                     |
 | ---- | ----------------------------------------- |
-| Mac  | Returns the [Mac](#mac) instance created.|
+| Mac  | Returns the [Mac](#macspec18) instance created.|
 
 **Error codes**
 
@@ -7393,7 +7393,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name| Type    | Mandatory| Description        |
 | ------ | -------- | ---- | ------------ |
-| seed   | [DataBlob](#datablob) | Yes  | Seed to set.|
+| seed   | [DataBlob](#kdf11) | Yes  | Seed to set.|
 
 **Error codes**
 
@@ -7447,7 +7447,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type        | Description                                      |
 | ------------ | ------------------------------------------ |
-| [Kdf](#kdf11) | Key derivation function instance created.|
+| [Kdf](#kdfspec11) | Key derivation function instance created.|
 
 **Error codes**
 
@@ -7502,7 +7502,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Name  | Type                    | Mandatory| Description                  |
 | -------- | ------------------------ | ---- | ---------------------- |
 | params   | [DataBlob](#datablob)        | Yes  | Parameters of the key derivation function.|
-| callback | AsyncCallback\<[DataBlob](#datablob)> | Yes  | Callback used to return the key generated. If key derivation is successful, **err** is **undefined** and **data** is the key generated. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<[DataBlob](#kdfspec11)> | Yes  | Callback used to return the key generated. If key derivation is successful, **err** is **undefined** and **data** is the key generated. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -7583,7 +7583,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Type              | Description    |
 | ------------------ | -------- |
-| Promise\<[DataBlob](#datablob)> | Promise used to return the key generated.|
+| Promise\<[DataBlob](#kdfspec11)> | Promise used to return the key generated.|
 
 **Error codes**
 
@@ -7662,7 +7662,7 @@ Generates a key based on the specified key derivation parameters. This API retur
 
 | Type              | Description    |
 | ------------------ | -------- |
-| [DataBlob](#datablob) | Key derived.|
+| [DataBlob](#eccsignaturespec20) | Key derived.|
 
 **Error codes**
 
@@ -7774,7 +7774,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 static genEccSignature(spec: EccSignatureSpec): Uint8Array;
 
-Converts an SM2 signature (r, s) to the ASN1 DER format.
+Converts an ECC/SM2 signature (r, s) to the ASN1 DER format.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
@@ -7784,7 +7784,7 @@ Converts an SM2 signature (r, s) to the ASN1 DER format.
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| spec   | [EccSignatureSpec](#eccsignaturespec20)        | Yes  | SM2 signature data to convert.|
+| spec | [EccSignatureSpec](#eccsignaturespec20) | Yes | ECC/SM2 signature (r, s). |
 
 **Return value**
 
