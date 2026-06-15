@@ -45,7 +45,7 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
 init(): void
 
-初始化应用灰度模块。多实例应用不支持调用此方法。
+初始化应用灰度模块。多实例应用不支持调用此接口。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -160,7 +160,7 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 try {
   // 初始化应用灰度模块
   hiRetrieval.init();
-    // 设置设备退出应用灰度活动
+  // 设置设备退出应用灰度活动
   hiRetrieval.quit();
 } catch (err) {
   // 捕获并打印错误信息
@@ -231,7 +231,7 @@ let ts = hiRetrieval.getLastParticipationTimestamp();
 
 run(): void
 
-若此设备正在参与应用灰度活动（即已调用[participate接口](#hiretrievalparticipate)且未调用[quit](#hiretrievalquit)接口），则应用灰度模块开始工作，否则调用该接口不会产生任何效果。
+若此设备正在参与应用灰度活动（即已调用[participate](#hiretrievalparticipate)接口且未调用[quit](#hiretrievalquit)接口），则应用灰度模块开始工作，否则调用该接口不会产生任何效果。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
