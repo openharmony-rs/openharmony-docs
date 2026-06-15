@@ -474,7 +474,7 @@ OH_MIDIStatusCode OH_MIDIDevice_SendSysEx(OH_MIDIDevice *device, uint32_t portIn
 
 **描述**
 
-发送超过标准MIDI消息长度的SysEx（System Exclusive，系统专有消息），自动处理分包和阻塞等待。这是一个实用函数，适用于将SysEx作为原始字节流（MIDI 1.0风格，F0...F7）处理的应用。<br> 同时适用于[OH_MIDI_PROTOCOL_1_0](capi-native-midi-base-h.md#oh_midiprotocol)和[OH_MIDI_PROTOCOL_2_0](capi-native-midi-base-h.md#oh_midiprotocol)会话。<br> 操作系统MIDI服务会自动将数据转换为设备端口所需的格式。
+发送超过标准MIDI消息长度的SysEx（System Exclusive，系统独占消息），自动处理分包和阻塞等待。这是一个实用函数，适用于将SysEx作为原始字节流（MIDI 1.0风格，F0...F7）处理的应用。<br> 同时适用于[OH_MIDI_PROTOCOL_1_0](capi-native-midi-base-h.md#oh_midiprotocol)和[OH_MIDI_PROTOCOL_2_0](capi-native-midi-base-h.md#oh_midiprotocol)会话。<br> 操作系统MIDI服务会自动将数据转换为设备端口所需的格式。
 
 > **说明：** 
 > 

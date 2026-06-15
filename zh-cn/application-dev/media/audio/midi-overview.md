@@ -122,7 +122,7 @@ UMP格式通过消息类型（Message Type）区分不同消息。MT是UMP数据
 |------|------|------|
 | UMP | Universal MIDI Packet | 通用MIDI数据包，32位对齐的统一容器格式。 |
 | MT | Message Type | 消息类型，UMP数据包最高4位，决定消息功能和大小。 |
-| SysEx | System Exclusive | 系统专用消息，用于厂商自定义数据传输。 |
+| SysEx | System Exclusive | 系统独占消息，用于厂商自定义数据传输。 |
 | JR | Jitter Reduction | 抖动消除，网络/蓝牙传输时的时间戳同步机制。 |
 | Channel Voice | 通道声音消息 | 控制音符、力度、控制器等的核心消息类型。 |
 | Flex Data | 灵活数据 | MIDI 2.0新增，支持文本、歌词等128位长消息。 |
@@ -154,5 +154,5 @@ UMP格式通过消息类型（Message Type）区分不同消息。MT是UMP数据
 ## 相关参考
 
 - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)
-- - [OHMIDI](../../reference/apis-audio-kit/capi-ohmidi.md)API参考
+- [OHMIDI](../../reference/apis-audio-kit/capi-ohmidi.md)API参考
 - MIDI状态码枚举：[OH_MIDIStatusCode](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midistatuscode)
