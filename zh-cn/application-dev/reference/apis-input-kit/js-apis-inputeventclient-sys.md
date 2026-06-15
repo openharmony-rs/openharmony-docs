@@ -59,6 +59,7 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -197,6 +198,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -316,6 +318,7 @@ ArkTS-Dyn示例：
 ```js
 import { inputEventClient } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -527,6 +530,7 @@ ArkTS-Dyn示例：
 ```js
 import { inputEventClient } from '@kit.InputKit';
 import { Touch, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -718,6 +722,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component

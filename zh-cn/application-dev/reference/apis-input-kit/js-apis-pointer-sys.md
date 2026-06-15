@@ -257,6 +257,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -528,6 +529,7 @@ ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2297,6 +2299,10 @@ struct Index {
           try {
             // 获取触摸板滚动方向
             pointer.getTouchpadScrollDirection ((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
             });
           } catch (error) {
@@ -3777,6 +3783,10 @@ struct Index {
           try {
             // 获取触摸板滑动开关
             pointer.getTouchpadSwipeSwitch((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in getting touchpad swipe switch, state: ${JSON.stringify(state)}.`);
             });
           } catch (error) {
@@ -4141,6 +4151,10 @@ struct Index {
           try {
             // 获取触摸板右键点击类型
             pointer.getTouchpadRightClickType((error: BusinessError, type: pointer.RightClickType) => {
+              if (error) {
+                console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
             });
           } catch (error) {
@@ -4503,6 +4517,7 @@ ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4775,6 +4790,7 @@ ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -5064,6 +5080,7 @@ ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -5336,6 +5353,7 @@ ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
