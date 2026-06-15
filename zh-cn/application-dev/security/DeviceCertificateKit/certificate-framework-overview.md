@@ -20,7 +20,7 @@
 
 在开发具体的功能前，开发者需要先了解证书领域的一些基本概念。包括但不限于：
 
-数字证书、数字证书标准X.509（本指导中的“X509”均代指X.509）、证书链、TBS（To Be Signed，待签名部分：指X.509证书中被签名的数据结构，通常包含版本号、序列号、签名算法标识、颁发者、有效期、主体、主体公钥信息和扩展等字段）、CRL（Certificate Revocation List，证书吊销列表）。
+数字证书、数字证书标准X.509、证书链、TBS（To Be Signed，待签名部分：指X.509证书中被签名的数据结构，通常包含版本号、序列号、签名算法标识、颁发者、有效期、主体、主体公钥信息和扩展等字段）、CRL（Certificate Revocation List，证书吊销列表）。
 
 ## 证书规格
 
@@ -64,7 +64,7 @@
 - [证书链校验器对象的创建和校验](create-verify-cerchainvalidator-object.md)
 - [证书集合及证书吊销列表集合对象的创建和获取](create-get-cert-crl-object.md)
 - [证书链对象的创建和校验](create-verify-certchain-object.md)
-- [证书链校验时从p12文件构造TrustAnchor对象数组](create-trustanchor-from-p12.md)
+- [证书链校验时从PKCS #12文件构造TrustAnchor对象数组](create-trustanchor-from-p12.md)
 - [使用系统预置CA证书校验证书链](verify-certchain-by-systemca.md)
 - [证书CMS签名](create-cms-sign-object.md)
 - [证书CMS封装](create-cms-enveloped-object.md)
