@@ -6318,3 +6318,17 @@
 **支持设备**：Car
 
 **起始版本**：26.0.0
+
+## ohos.permission.ENTERPRISE_SPACE_FILE_TRANSFER_DATA_ACCESS
+
+允许访问文件传输服务的文件缓存目录，目前仅开放给空间互传使用。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
