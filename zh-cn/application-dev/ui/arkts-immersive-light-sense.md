@@ -146,6 +146,35 @@ struct MaterialInfoPage {
    
    <!-- @[ColumnMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ColumnMaterial.ets) -->
    
+   ``` TypeScript
+   import { uiMaterial } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct ColumnMaterialPage {
+     build() {
+       Column() {
+         Column() {
+           Text('沉浸光感')
+         }
+         .width(328)
+         .height(56)
+         .borderRadius(28)
+         .justifyContent(FlexAlign.Center)
+         .systemMaterial(new uiMaterial.ImmersiveMaterial({
+           style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+         }))
+       }
+       .width('100%')
+       .height('100%')
+       .justifyContent(FlexAlign.Center)
+       // 请替换为实际资源文件
+       .backgroundImage($r('app.media.img'))
+       .backgroundImageSize(ImageSize.FILL)
+     }
+   }
+   ```
+   
    ![material-column](../reference/apis-arkui/figures/material-column.PNG)
    
    **Button交互形变示例**
