@@ -44,7 +44,7 @@ ContainerReader提供以下关键能力。
 
 <!-- @[FillTheSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/FillTheSpace.ets) -->
 
-```ts
+``` TypeScript
 import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
 @Entry
 @Component
@@ -277,10 +277,34 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
    首先需要声明用于存储容器尺寸和断点信息的状态变量并初始化，防止在未获取ContainerReader的大小和断点时使用造成异常。
 
    <!-- @[DevelopmentSteps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->
-
-   ```ts
-   @State containerSize: Size = { width: 0, height: 0 };
-   @State widthBp: WidthBreakpoint = WidthBreakpoint.WIDTH_MD;
+   
+   ``` TypeScript
+   import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+   @Entry
+   @Component
+   struct Example {
+     @State containerSize: Size = { width: 0, height: 0 };
+     @State widthBp: WidthBreakpoint = WidthBreakpoint.WIDTH_MD;
+     build() {
+       Flex({ direction: FlexDirection.Row }) {
+         ContainerReader({
+           size: this.containerSize!!,
+           widthBreakpoint: this.widthBp!!
+         }) {
+           Column() {
+             Text('Adaptive Content')
+           }
+           .width('100%')
+           .height('100%')
+         }
+         .backgroundColor('#F7F7F7')
+       }
+       .padding(10)
+       .width('100%')
+       .height(200)
+       .backgroundColor('#D5D5D5')
+     }
+   }
    ```
 
 2. 配置ContainerReader。
@@ -288,13 +312,33 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
    将状态变量绑定到ContainerReader组件，使用`!!`后缀触发双向绑定更新。
 
    <!-- @[DevelopmentSteps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->
-
-   ```ts
-   ContainerReader({
-     size: this.containerSize!!,
-     widthBreakpoint: this.widthBp!!
-   }) {
-     // 子组件内容
+   
+   ``` TypeScript
+   import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
+   @Entry
+   @Component
+   struct Example {
+     @State containerSize: Size = { width: 0, height: 0 };
+     @State widthBp: WidthBreakpoint = WidthBreakpoint.WIDTH_MD;
+     build() {
+       Flex({ direction: FlexDirection.Row }) {
+         ContainerReader({
+           size: this.containerSize!!,
+           widthBreakpoint: this.widthBp!!
+         }) {
+           Column() {
+             Text('Adaptive Content')
+           }
+           .width('100%')
+           .height('100%')
+         }
+         .backgroundColor('#F7F7F7')
+       }
+       .padding(10)
+       .width('100%')
+       .height(200)
+       .backgroundColor('#D5D5D5')
+     }
    }
    ```
 
@@ -314,8 +358,8 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
    > 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
    <!-- @[DevelopmentSteps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
    @Entry
    @Component
@@ -512,8 +556,7 @@ struct GridBreakpointExample {
 
 <!-- @[CustomComponentAdaptiveLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/CustomComponentAdaptiveLayout.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
 
 // 自适应卡片组件，内部使用ContainerReader感知容器尺寸
