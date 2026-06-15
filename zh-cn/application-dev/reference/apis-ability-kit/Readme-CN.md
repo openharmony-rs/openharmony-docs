@@ -242,6 +242,7 @@
       - [launcherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)
       - [metadata](js-apis-bundleManager-metadata.md)
       - [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)
+      - [PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo.md)
       - [Skill](js-apis-bundleManager-skill.md)
       - [shortcutInfo](js-apis-bundleManager-shortcutInfo.md)
       - [skillInfo](js-apis-bundleManager-SkillInfo.md)
