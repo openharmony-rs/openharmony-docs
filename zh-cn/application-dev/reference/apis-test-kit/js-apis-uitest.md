@@ -213,7 +213,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于500的整数，默认值为10000，单位：ms。传入负数时抛出错误码。 |
+| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于500的整数，默认值为10000，单位：ms。传入不在范围内的值抛出错误码。 |
 | bundleName       | string | 否   | 是   | 监听窗口对应包名，缺省时默认监听所有窗口。       |
 
 
@@ -227,7 +227,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于500的整数，默认值为10000，单位：ms。 |
+| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于500的整数，默认值为10000，单位：ms。传入不在范围内的值抛出错误码。 |
 | on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br> **说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
 
 ## UIElementInfo<sup>10+</sup>
