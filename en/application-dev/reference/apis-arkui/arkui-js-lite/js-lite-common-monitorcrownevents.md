@@ -43,7 +43,7 @@ This monitor is automatically removed when [page routing](../js-apis-router.md) 
 | Name                   | Type       | Read-Only    |  Optional   |  Description                                 |
 | --------------------- | -------- | ------- |--------- |-------------------------------------- |
 | timestamp             | number   |  No     | No    |Timestamp.                                  |
-| angularVelocity       | number   |  No     | No    |Rotational angular velocity, indicating the angle rotated per second.<br/>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br/>Unit: degrees/s      |
+| angularVelocity       | number   |  No     | No    |Rotational angular velocity, indicating the angle rotated per second.<br/>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br/>Unit: degree/s      |
 | degree                | number   |  No     | No    |Relative rotation angle.<br/>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br/>Unit: degrees.<br/>Value range: [-360, 360]     |
 
 ## clearMonitorForCrownEvents
