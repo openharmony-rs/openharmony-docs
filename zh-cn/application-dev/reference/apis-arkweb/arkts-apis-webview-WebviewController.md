@@ -853,6 +853,8 @@ onActive(): void
 
 激活状态是应用与用户互动的状态。应用会保持这种状态，直到发生某些事件（例如收到来电或设备屏幕关闭）时将焦点从应用移开。
 
+若页面此前处于未激活状态，H5页面中通过document.addEventListener('visibilitychange',...)注册的事件监听器将被触发，document.visibilityState 从"hidden"变为"visible"。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **错误码：**
