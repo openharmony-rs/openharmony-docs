@@ -25,7 +25,7 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 ### selectionManager.on('selectionCompleted')
 
@@ -35,7 +35,7 @@ Registers a callback to listen for the word selection completion event. This API
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -74,7 +74,7 @@ Unregisters the callback used to listen for the word selection completion event.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -108,7 +108,7 @@ Obtains this selected text content. This API uses a promise to return the result
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Return value**
 | Type  | Description                                                                |
@@ -152,7 +152,7 @@ Only one [MENU_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype) and on
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -227,7 +227,7 @@ Destroys the word selection panel. This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -310,7 +310,7 @@ Defines the information of a word selection event.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 | Name     | Type| Read-Only| Optional| Description        |
 | --------- | -------- | ---- | ---- | ------------ |
@@ -333,7 +333,7 @@ Represents the word selection panel.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 In the following APIs, you must first use [createPanel](#createpanel) to obtain a **Panel** instance, and then call the APIs using the obtained instance.
 
@@ -345,7 +345,7 @@ Sets the page content for the word selection panel. This API uses a promise to r
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -392,7 +392,7 @@ Shows the word selection panel. This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Return value**
 
@@ -429,7 +429,7 @@ Hides the word selection panel. This API uses a promise to return the result.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Return value**
 
@@ -466,7 +466,7 @@ Moves the word selection panel by dragging. This API uses a promise to return th
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Return value**
 
@@ -568,7 +568,7 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -616,7 +616,7 @@ Registers a callback to listen for the destroy event of the word selection panel
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -647,7 +647,7 @@ Unregisters the callback used to listen for the destroy event of the word select
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -676,7 +676,7 @@ Registers a callback to listen for the hide event of the word selection panel. T
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -707,7 +707,7 @@ Unregisters the callback used to listen for the hide event of the word selection
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -734,7 +734,7 @@ Enumerates the operations for selecting words.
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 | Name        | Value| Description              |
 | ------------ | -- | ------------------ |
