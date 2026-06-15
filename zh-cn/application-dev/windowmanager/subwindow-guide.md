@@ -26,7 +26,6 @@
 
    <!-- @[create_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
    
-   <!-- @[create_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
    ``` TypeScript
    let windowStage_: window.WindowStage | undefined = undefined;
    let subWindowClass: window.Window | undefined = undefined;
@@ -50,6 +49,32 @@
              console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
              // ...
            })
+   ```
+   
+   <!-- @[create_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let independentWindowClass: window.Window | undefined = undefined;
+   // ...
+       // 获取windowStage
+       windowStage_ = AppStorage.get('windowStage');
+       // 1.创建独立子窗口。
+       // ...
+           let options : window.SubWindowOptions = {
+             title: 'IndependentSubWindow',
+             decorEnabled: true,
+             zLevelAboveParentLoosened: true  // 独立子窗需将zLevelAboveParentLoosened置为true
+           };
+           let promise = windowStage_.createSubWindowWithOptions('IndependentSubWindow', options);
+           promise.then((data: window.Window | undefined) => {
+             independentWindowClass = data;
+             if (!independentWindowClass) {
+               console.error('independent_sub_windowClass is null');
+               return;
+             }
+             console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
+             // ...
+             });
    ```
 
 2. 设置子窗口属性。
