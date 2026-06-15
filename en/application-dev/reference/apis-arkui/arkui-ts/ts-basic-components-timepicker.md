@@ -19,7 +19,7 @@
 
 ## Child Components
 
-Not supported
+This component is a basic component and does not contain child components.
 
 
 ## APIs
@@ -49,7 +49,7 @@ Describes the parameters of the time picker.
 | selected             | Date                                            | No  | Yes  | Time of the selected item.<br>Default value: current system time<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | format<sup>11+</sup> | [TimePickerFormat](#timepickerformat11)| No  | Yes  | Time format.<br>Default value: **TimePickerFormat.HOUR_MINUTE**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | start<sup>18+</sup>  | Date                                            | No  | Yes  | Start time of the time picker.<br>Default value: **Date(0, 0, 0, 0, 0, 0)**<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **start** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| end<sup>18+</sup>    | Date                                            | No  | Yes  | End time of the time picker.<br>Default value: **Date(0, 0, 0, 23, 59, 59)**.<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **end** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| end<sup>18+</sup>    | Date                                            | No  | Yes  | End time of the time picker.<br>Default value: **Date(0, 0, 0, 23, 59, 59)**<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **end** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 Property modifications made to **TimePickerOptions** during the **TimePicker** scrolling process may not take effect.
 
@@ -289,7 +289,7 @@ Sets whether to enable loop scrolling. Compared with [loop<sup>11+</sup>](#loop1
 
 dateTimeOptions(value: DateTimeOptions)
 
-Sets whether to display a leading zero for the hours, minutes, and seconds.
+Sets whether to display leading zeros for hours, minutes, and seconds.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -299,13 +299,13 @@ Sets whether to display a leading zero for the hours, minutes, and seconds.
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [DateTimeOptions](#datetimeoptions12) | Yes  | Whether to display a leading zero for the hours, minutes, and seconds.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
+| value  | [DateTimeOptions](#datetimeoptions12) | Yes  | Whether to display leading zeros for hours, minutes, and seconds.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
 
 ### dateTimeOptions<sup>18+</sup>
 
 dateTimeOptions(timeFormat: Optional\<DateTimeOptions>)
 
-Sets whether to display a leading zero for the hours, minutes, and seconds. Compared with [dateTimeOptions<sup>12+</sup>](#datetimeoptions12), this API supports the **undefined** type for the **timeFormat** parameter.
+Sets whether to display leading zeros for hours, minutes, and seconds. Compared with [dateTimeOptions<sup>12+</sup>](#datetimeoptions12), this API supports the **undefined** type for the **timeFormat** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -315,7 +315,7 @@ Sets whether to display a leading zero for the hours, minutes, and seconds. Comp
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| timeFormat  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DateTimeOptions](#datetimeoptions12)> | Yes  | Whether to display a leading zero for the hours, minutes, and seconds. Currently only the configuration of the **hour**, **minute**, and **second** parameters is supported.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
+| timeFormat  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DateTimeOptions](#datetimeoptions12)> | Yes  | Whether to display leading zeros for hours, minutes, and seconds. Currently only the configuration of the **hour**, **minute**, and **second** parameters is supported.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
 
 ### enableHapticFeedback<sup>12+</sup>
 
@@ -643,7 +643,7 @@ struct TimePickerExample {
         })
 
       Row() {
-        Text('Loopable scrolling').fontSize(20)
+        Text('Loop scroll').fontSize(20)
 
         Toggle({ type: ToggleType.Switch, isOn: true })
           .onChange((isOn: boolean) => {
@@ -753,4 +753,3 @@ struct TimePickerExample {
 ```
 
 ![timePicker](figures/TimePickerDemo7.gif)
-<!--no_check-->

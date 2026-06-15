@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-**SaveButton** is a security component that provides a save button. After it is integrated into your application and is used for the first time, a dialog box is displayed to ask for user authorization. If the user taps **Allow**, the application automatically obtains the permission to access the media library within a short period of time. No more dialog box is displayed for authorization. For API version 19 and earlier, the authorization duration is 10 seconds. For API version 20 and later, the authorization duration is 1 minute.
+**SaveButton** is a security component that provides a save button. After it is integrated into your application and is used for the first time, a dialog box is displayed to ask for user authorization. If the user taps **Allow**, the application automatically obtains the permission to access the media library within a short period of time. No dialog box will appear for subsequent uses. For API version 19 and earlier, the authorization duration is 10 seconds. For API version 20 and later, the authorization duration is 1 minute.
 
 > **NOTE**
 >
@@ -161,7 +161,7 @@ Sets the icon of the **SaveButton** component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| icon | [Resource](ts-types.md#resource) |Yes|Custom icon resource information. Only data sources of the Resource type are supported.<br>Images in the following formats are supported: PNG, JPG, JPEG, BMP, SVG, WebP, GIF, and HEIF. For details about the supported image formats, see [Image](ts-basic-components-image.md). If the resource is not an image resource or the format is not supported, the icon is displayed as blank.<br>If the application does not have the ohos.permission.CUSTOMIZE_SAVE_BUTTON permission, the custom icon setting does not take effect, and the **SaveButton** component retains the default style. For details, see [SaveButtonOptions](#savebuttonoptions).|
+| icon | [Resource](ts-types.md#resource) |Yes|Custom icon resource information. Only data sources of the Resource type are supported.<br>Images in the following formats are supported: PNG, JPG, JPEG, BMP, SVG, WebP, GIF, and HEIF. For details about the supported image formats, see [Image](ts-basic-components-image.md). If the resource is not an image resource or the format is not supported, the icon is displayed as blank.<br>If the application does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the custom icon setting does not take effect, and the **SaveButton** component retains the default style. For details, see [SaveButtonOptions](#savebuttonoptions).|
 
 ### setText<sup>20+</sup>
 
@@ -179,7 +179,7 @@ Sets the text of the **SaveButton** component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| text | string \| [Resource](ts-types.md#resource) |Yes|Custom text.<br>If the application does not have the ohos.permission.CUSTOMIZE_SAVE_BUTTON permission, the custom text setting does not take effect, and the **SaveButton** component retains the default style. For details, see [SaveButtonOptions](#savebuttonoptions).|
+| text | string \| [Resource](ts-types.md#resource) |Yes|Custom text.<br>If the application does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the custom text setting does not take effect, and the **SaveButton** component retains the default style. For details, see [SaveButtonOptions](#savebuttonoptions).|
 
 ### iconSize<sup>20+</sup>
 
@@ -213,7 +213,7 @@ Sets the corner radius of the **SaveButton** component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |Yes|Corner radius of the **SaveButton** component. You can set the radius for each of the four corners individually.<br>If the application does not have the ohos.permission.CUSTOMIZE_SAVE_BUTTON permission, the corner radius setting does not take effect.|
+| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |Yes|Corner radius of the **SaveButton** component. You can set the radius for each of the four corners individually. The default value is 0 vp for all four corners.<br>If the application does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the corner radius setting does not take effect.|
 
 ### stateEffect<sup>20+</sup>
 
@@ -231,7 +231,7 @@ Sets the press effect of the **SaveButton** component.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| enabled | boolean |Yes| Whether to enable the press effect. **true** to enable, **false** otherwise.<br>Default value: **true**.<br>If the application does not have the ohos.permission.CUSTOMIZE_SAVE_BUTTON permission, the setting does not take effect.|
+| enabled | boolean |Yes| Whether to enable the press effect. **true** to enable, **false** otherwise.<br>Default value: **true**.<br>If the application does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the setting does not take effect.|
 
 ### userCancelEvent<sup>21+</sup>
 
@@ -251,7 +251,7 @@ Sets the user authorization cancellation event for the **SaveButton** component.
 
 ## Attributes
 
-This component can only inherit the [universal attributes of security components](ts-securitycomponent-attributes.md).
+This component does not support universal attributes and can only inherit the [universal attributes of security components](ts-securitycomponent-attributes.md).
 
 ## Events
 
@@ -348,11 +348,9 @@ struct Index {
 }
 ```
 
-
-
 ## Example 2
 
-The application requires the ohos.permission.CUSTOMIZE_SAVE_BUTTON permission.
+The app requires the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission.
 
 ```ts
 // xxx.ets
@@ -367,25 +365,25 @@ struct SetIcon {
           .setIcon($r('app.media.startIcon'))
         // Set text to the string type. The text is displayed when permission is granted.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
-          .setText("SaveButton Set Text")
+          .setText("Set Text for SaveButton")
         // Set text to the resource type. The resource text is displayed when permission is granted.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
           .setText($r('app.string.app_name'))
-        // Set the icon size for the SaveButton component. The input parameter is of the Dimension type.
+        // Set the save button icon size. The input parameter is of the Dimension type.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
           .iconSize(28)
-        // Set the default icon size for the SaveButton component. The input parameter is of the SizeOptions type. It uses smaller value between width and height as the default icon size.
+        // Set the default save button icon size. The input parameter is SizeOptions type. It uses smaller value between width and height as the default icon size.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
           .iconSize({ width: 20, height: 40 })
-        // Set the custom icon size for the SaveButton component. The input parameter is SizeOptions type. The image is displayed based on the configured width and height.
+        // Set the custom save button icon size. The input parameter is SizeOptions type. The image is displayed based on the configured width and height.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
           .setIcon($r('app.media.startIcon'))
           .iconSize({ width: 30, height: 40 })
-        // Set the custom icon size for the SaveButton component. The input parameter is of the SizeOptions type with a single value. The image is displayed based on the configured width and height.
+        // Set the custom save button icon size. The input parameter is of the SizeOptions type with a single value. The image is displayed based on the configured width and height.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
           .setIcon($r('app.media.startIcon'))
           .iconSize({ width: 40 })
-        // Set the corner radius of the SaveButton component icon. The input parameter is of the Dimension type. All four corners use the input parameter value.
+        // Set the corner radius of the save button icon. The input parameter is of the Dimension type. All four corners use the input parameter value.
         SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD })
           .backgroundColor(Color.Orange)
           .setIcon($r('app.media.background'))

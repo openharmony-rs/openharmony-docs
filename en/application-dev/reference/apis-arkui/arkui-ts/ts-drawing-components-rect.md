@@ -24,6 +24,8 @@ None
 
 Rect(options?: RectOptions | RoundedRectOptions)
 
+Constructor for drawing a rectangle.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -34,7 +36,7 @@ Rect(options?: RectOptions | RoundedRectOptions)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [RectOptions](ts-drawing-components-rect.md#rectoptions18) \| [RoundedRectOptions](ts-drawing-components-rect.md#roundedrectoptions18)  | No| Options of the rectangle.<br>The **undefined** and **null** values are treated as invalid and will not take effect.|
+| options | [RectOptions](ts-drawing-components-rect.md#rectoptions18) \| [RoundedRectOptions](ts-drawing-components-rect.md#roundedrectoptions18) | No| Options of the rectangle.<br>The **undefined** and **null** values are treated as invalid and will not take effect.|
 
 ## RectOptions<sup>18+</sup>
 
@@ -412,10 +414,10 @@ struct RectExample {
         .height(100)
         // Set the color of the fill area. To display the gradient color of the background, set .fillOpacity(0.0).
         .fill(Color.Pink)
-        // Set the radius of the chamfer to 40.
+        // Set the radius of the fillet to 40.
         .radius(40)
         .stroke(Color.Black)
-        // Set the gradient color. It takes effect only for a 100 × 100 rectangular area. The boundary of the gradient color does not contain chamfers.
+        // Set the gradient color. It takes effect only for a 100 × 100 rectangular area. The boundary of the gradient color excludes fillets.
         .linearGradient({
           direction: GradientDirection.Right,
           colors: [[0xff0000, 0.0], [0x0000ff, 0.3], [0xffff00, 1.0]]

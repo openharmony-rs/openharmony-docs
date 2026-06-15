@@ -21,6 +21,8 @@ None
 
 Ellipse(options?: EllipseOptions)
 
+Constructor for drawing an ellipse.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -186,7 +188,7 @@ Sets the join style of the stroke. This attribute can be dynamically set using [
 
 strokeMiterLimit(value: number | string)
 
-Sets the limit on the ratio of the miter length to the value of stroke width used to draw a miter join. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute does not take effect for the **Ellipse** component, because it does not have a miter join.
+Sets the limit on the ratio of the miter length to the value of stroke width used to draw a miter join. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute does not take effect for the **Ellipse** component because this component does not have a miter join.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 

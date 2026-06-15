@@ -1,4 +1,4 @@
-# Combined Gestures
+# GestureGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
