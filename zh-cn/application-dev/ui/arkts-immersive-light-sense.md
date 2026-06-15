@@ -375,6 +375,30 @@ struct MaterialInfoPage {
    
    <!-- @[TipsMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/TipsMaterial.ets) -->
    
+   ``` TypeScript
+   import { uiMaterial } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct TipsMaterialPage {
+     build() {
+       Flex({ direction: FlexDirection.Column }) {
+         Button('Hover Tips')
+           .bindTips('悬浮气泡测试', {
+             // 控制是否设置系统材质
+             systemMaterial: new uiMaterial.ImmersiveMaterial({
+               style: uiMaterial.ImmersiveStyle.THIN
+             })
+           })
+           .position({ x: 100, y: 300 })
+       }.width('100%').padding({ top: 5 })
+       // 请开发者替换为实际资源文件
+       .backgroundImage($r('app.media.img'))
+       .backgroundImageSize({ width: '100%', height: '100%' })
+     }
+   }
+   ```
+   
    未设置系统材质时：
    
    ![tipsWithoutNewMaterial](../reference/apis-arkui/arkui-ts/figures/tipsWithoutNewMaterial.gif)
