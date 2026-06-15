@@ -6,7 +6,7 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-当注册应用任务流转状态监听的回调时，返回应用任务流转状态和流转信息，注册详见：[on('continueStateChange')接口](js-apis-distributedMissionManager-sys.md#distributedmissionmanageroncontinuestatechange11)。
+当注册应用任务流转状态监听的回调时，返回应用任务流转状态和流转信息。ContinuableInfo封装了任务流转过程中的源设备ID、应用包名和迁移类型等关键信息，用于标识和追踪任务在设备间的流转状态，注册详见：[on('continueStateChange')接口](js-apis-distributedMissionManager-sys.md#distributedmissionmanageroncontinuestatechange11)。
 
 > **说明：**
 >
@@ -30,7 +30,7 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 | 名称       | 类型   | 只读   | 可选   | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
-| srcDeviceId | string | 否    | 否    | 表示任务迁移源设备ID。 |
-| bundleName | string | 否    | 否    | 表示任务所属目标端应用包名。 |
-| srcBundleName<sup>12+</sup> | string | 否    | 是    | 表示任务所属源端应用包名，默认与bundleName相同。 |
-| continueType<sup>12+</sup> | string | 否    | 是    | 表示任务所属应用迁移类型。 |
+| srcDeviceId | string | 否    | 否    | 表示任务迁移源设备ID。最大长度255字符。 |
+| bundleName | string | 否    | 否    | 表示任务所属目标端应用包名。最大长度127字符。该参数作为srcBundleName的默认值使用。 |
+| srcBundleName<sup>12+</sup> | string | 否    | 是    | 表示任务所属源端应用包名。当源端和目标端应用包名不同时需要传入（如跨应用迁移、应用包名变更等场景），不传入时默认与bundleName相同。最大长度127字符。 |
+| continueType<sup>12+</sup> | string | 否    | 是    | 表示任务所属应用迁移类型。如果不传，则使用系统默认值。 |
