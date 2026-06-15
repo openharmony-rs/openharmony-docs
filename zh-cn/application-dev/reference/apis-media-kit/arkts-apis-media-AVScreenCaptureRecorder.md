@@ -738,7 +738,7 @@ if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.setContentAutoRotation(true).then(() => {
     console.info('Succeeded in setting setContentAutoRotation enabled.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to set setContentAutoRotation enabled. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to enable setContentAutoRotation. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
