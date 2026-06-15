@@ -32,7 +32,7 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 ```
 
 
-![zh-cn_image_0000001562820821](figures/zh-cn_image_0000001562820821.png)
+![radio-create](figures/radio-create.png)
 
 ## 添加事件
 
@@ -123,4 +123,4 @@ export struct RadioExample {
 ```
 
 
-![zh-cn_image_0000001562700457](figures/zh-cn_image_0000001562700457.gif)
+![radio-scenario](figures/radio-scenario.gif)
