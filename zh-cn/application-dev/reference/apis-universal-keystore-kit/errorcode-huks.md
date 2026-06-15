@@ -15,52 +15,54 @@
 
 **错误信息**
 
-The ``${messageInfo}`` is not supported.
+The feature or capability is not supported.
 
 **错误描述**
 
-不支持``${messageInfo}``中给出的特性（功能）。
+不支持使用的特性（功能）。
 
 **可能原因**
 
-支持API，但是不支持API内部某些子特性（功能），如算法参数。
+1. 使用的算法参数不支持。
+2. 子特性不支持。
 
 **处理步骤**
 
-调整API参数，使用支持的可替代参数。
+1. 调整API参数，使用支持的算法参数。
+2. 查看errorMessage确认不支持的子特性。
 
 ## 12000002 缺少密钥算法参数
 
 **错误信息**
 
-Failed to obtain the ``${messageInfo}``. It is not set in ParamSet.
+The algorithm param is missing.
 
 **错误描述**
 
-未设置相关参数，无法获取``${messageInfo}``中给出的参数。
+缺少密钥算法参数失败。
 
 **可能原因**
 
-使用密钥时缺少相关参数。
+未添加当前密钥操作必要的参数，例如密钥算法、密钥长度、填充算法等。
 
 **处理步骤**
 
-1. 查看errorMessage确认缺少的密钥参数。
-2. 添加对应的正确的密钥参数。
+1. 查看errorMessage确认缺失的密钥参数名。
+2. 添加对应的密钥参数。
 
 ## 12000003 无效的密钥算法参数
 
 **错误信息**
 
-Invalid ``${messageInfo}``.
+The algorithm argument is invalid.
 
 **错误描述**
 
-使用了无效的参数，具体可见``${messageInfo}``。
+无效的密钥算法参数。
 
 **可能原因**
 
-使用密钥时相关参数无效。
+使用密钥时相关参数无效，例如算法和填充算法不匹配，算法和密钥操作不匹配等。
 
 **处理步骤**
 
@@ -71,48 +73,38 @@ Invalid ``${messageInfo}``.
 
 **错误信息**
 
-可能为以下的其中一种：
-
-- Insufficient storage space.
-- Invalid file size.
-- Failed to ``${messageInfo}``.
+The file operation failed.
 
 **错误描述**
 
-可能为以下的其中一种：
-
-- 磁盘空间已满。
-- 无效的文件大小。
-- 文件无法访问，具体原因可参考日志中给出的``${messageInfo}``。
+操作文件失败。
 
 **可能原因**
 
-文件操作错误。
+1. 磁盘空间已满。
+2. 无效的文件大小。
+3. 文件无法访问，具体原因可参考返回的errorMessage。
 
 **处理步骤**
 
 1. 查看是否磁盘空间已经写满、文件系统是否有其他异常。
 2. 清理磁盘。
+3. 确认是否拥有对应文件的操作权限。
 
 ## 12000005 进程通信错误
 
 **错误信息**
 
-可能为以下的其中一种：
-
-- Failed to get messages from IPC.
-- IPC ``${messageInfo}``.
+IPC communication failed.
 
 **错误描述**
 
-可能为以下的其中一种：
-
-- 无法从IPC获取消息。
-- IPC出错，具体原因可参考日志中给出的``${messageInfo}``。
+IPC通信失败。
 
 **可能原因**
 
-进程通信错误。
+1. 无法从IPC获取消息。
+2. IPC出错，具体原因可参考返回的errorMessage。
 
 **处理步骤**
 
@@ -308,11 +300,11 @@ The credential does not exist.
 
 **错误信息**
 
-Failed to obtain the ``${messageInfo}`` information via UserIAM.
+Failed to obtain the security information via UserIAM.
 
 **错误描述**
 
-无法通过UserIAM获取``${messageInfo}``的信息。
+无法通过UserIAM获取安全信息。
 
 **可能原因**
 
@@ -326,7 +318,7 @@ Failed to obtain the ``${messageInfo}`` information via UserIAM.
 
 **错误信息**
 
-The key with same alias is already exist.
+The key with same alias already exists.
 
 **错误描述**
 
