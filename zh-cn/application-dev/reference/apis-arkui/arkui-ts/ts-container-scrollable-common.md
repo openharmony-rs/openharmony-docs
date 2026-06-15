@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z-->
-<!--Designer: @yylong; @zcdqs-->
+<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
+<!--Designer: @yylong;@guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -138,6 +138,38 @@ scrollBarWidth(value: number | string | Resource): T
 | 类型 | 说明           |
 | --- | -------------- |
 | T | 返回当前滚动组件。 |
+
+### scrollBarHeight
+
+scrollBarHeight(height: LengthMetrics | undefined): T
+
+设置滚动条滑轨高度。
+
+未设置该接口时，滚动条滑轨高度默认自适应滚动组件高度，儿童智能表的默认值高度为37vp。
+
+>  **说明：**
+>
+>  推荐scrollBarHeight与[scrollBarMargin](#scrollbarmargin20)的设定值之和不超过滚动组件高度。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是 | 滚动条滑轨高度。<br/>值必须大于等于0。设置为undefined或小于0时，自适应滚动组件高度，儿童智能表则恢复至默认值37vp。设置为0时，不显示滚动条。 |
+
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前滚动组件。|
 
 ### edgeEffect<sup>11+</sup>
 
