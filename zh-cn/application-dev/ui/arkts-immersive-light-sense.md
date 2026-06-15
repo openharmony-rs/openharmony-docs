@@ -829,4 +829,4 @@ struct ColorInvertPage {
 
 ![colorInvert](../reference/apis-arkui/arkui-ts/figures/colorInvert.png)
 
-<!--RP1-->[ImmersiveLightSense](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ImmersiveLightSense)<!--RP1End-->
+<!--RP1--><!--RP1End-->
