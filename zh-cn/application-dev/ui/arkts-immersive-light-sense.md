@@ -82,6 +82,54 @@
 
 <!-- @[MaterialInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/MaterialInfo.ets) -->
 
+``` TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MaterialInfoPage {
+  private info: uiMaterial.MaterialInfo = uiMaterial.getMaterialInfo();
+
+  build() {
+    Column() {
+      Text(`MaterialState: ${this.info.state}`)
+        .fontSize(16)
+        .margin({ bottom: 10 })
+      Text(`MaterialType: ${this.info.type}`)
+        .fontSize(16)
+        .margin({ bottom: 20 })
+
+      if (this.info.state === uiMaterial.MaterialState.ENABLE) {
+        Button('使用沉浸式系统材质')
+          .backgroundColor(Color.Transparent)
+          .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+          }))
+          .fontColor(Color.Blue)
+          .margin({ bottom: 10 })
+
+        // Select组件默认开启沉浸式系统材质
+        Select([{ value: '选项1' }, { value: '选项2' }])
+          .value('选择')
+          .margin({ bottom: 10 })
+
+        // 单独关闭Select的沉浸式系统材质
+        Select([{ value: '选项1' }, { value: '选项2' }])
+          .value('选择（已关闭材质）')
+          .systemMaterial(uiMaterial.Material.empty)
+          // .menuSystemMaterial(uiMaterial.Material.empty)
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    // 请替换为实际资源文件
+    .backgroundImage($r('app.media.img'))
+    .backgroundImageSize(ImageSize.FILL)
+  }
+}
+```
+
 ![systemMaterialState](../reference/apis-arkui/figures/immersiveMaterialState.gif)
 
 ### 组件级开启
