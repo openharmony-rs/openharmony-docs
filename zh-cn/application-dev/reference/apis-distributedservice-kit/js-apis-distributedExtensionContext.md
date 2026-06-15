@@ -6,11 +6,11 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-DistributedExtensionContext模块是DistributedExtensionAbility的上下文环境，继承自ExtensionContext。它提供协同Extension所需的上下文信息与能力，用于跨设备连接远端ServiceExtensionAbility（服务扩展能力）等协同场景，支持开发者实现分布式协作，提升多端协同与资源互通的收益。
+DistributedExtensionContext模块是DistributedExtensionAbility（分布式扩展能力）的上下文环境，继承自ExtensionContext（扩展上下文）。它提供协同Extension所需的上下文信息与能力，用于跨设备连接远端ServiceExtensionAbility（服务扩展能力）等协同场景，支持开发者实现分布式协作。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
 
@@ -28,14 +28,16 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 }
 ```
 
-## DistributedExtensionContext.connectServiceExtensionAbility<sup>26+</sup>
+## DistributedExtensionContext.connectServiceExtensionAbility
 
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 连接远端ServiceExtensionAbility（服务扩展能力）。
 
+**起始版本：** 26.0.0
+
 **配对调用：**
-- 调用此方法后，必须在使用完毕后调用disconnectServiceExtensionAbility释放连接资源。
+- 调用后必须调用disconnectServiceExtensionAbility释放连接资源。
 - 需要使用此方法返回的连接ID调用disconnectServiceExtensionAbility。
 - 未调用disconnectServiceExtensionAbility会导致连接资源泄漏。
 
@@ -47,7 +49,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 传入需要连接的远端ServiceExtensionAbility（服务扩展能力）的信息，如ability名称、bundle名称、deviceId等。系统将基于这些信息建立到远端设备的连接。 |
+| want    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 传入需要连接的远端ServiceExtensionAbility（服务扩展能力）的Want（意图）信息，如ability名称、bundle名称、deviceId等。系统将基于这些信息建立到远端设备的连接。 |
 | options | [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) | 是   | ConnectOptions类型的配置对象，包含服务连接状态回调。连接成功时触发onConnect，连接断开时触发onDisconnect，连接失败时触发onFailed。 |
 
 **返回值：**
@@ -94,12 +96,12 @@ const DOMAIN = 0xFF00;
 export default class DistributedExtAbility extends DistributedExtensionAbility {
 
 
-  onCreate (want:Want) {
+  onCreate(want: Want) {
     hilog.info(DOMAIN, TAG, 'onCreate');
     this.testConnectServiceExtensionAbility();
   }
 
-  onCollaborate (wantParam: Record<string, Object>) {
+  onCollaborate(wantParam: Record<string, Object>) {
     hilog.info(DOMAIN, TAG, 'onCollaborate');
     return AbilityConstant.CollaborateResult.ACCEPT;
   }
@@ -108,7 +110,7 @@ export default class DistributedExtAbility extends DistributedExtensionAbility {
     hilog.info(DOMAIN, TAG, 'onDestroy');
   }
 
-  connectId:number = -1;
+  connectId: number = -1;
   private testConnectServiceExtensionAbility() {
     hilog.info(DOMAIN, TAG, 'testConnectServiceExtensionAbility');
     let deviceId1: string = '';
@@ -159,13 +161,17 @@ export default class DistributedExtAbility extends DistributedExtensionAbility {
 
 
 
-## DistributedExtensionContext.disconnectServiceExtensionAbility<sup>26+</sup>
+## DistributedExtensionContext.disconnectServiceExtensionAbility
 
 disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 断开与远端ServiceExtensionAbility（服务扩展能力）的连接。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **说明**：与connectServiceExtensionAbility采用同步返回不同，disconnectServiceExtensionAbility采用异步回调方式，需要通过Promise.then/catch或async/await处理异步结果。
+
+**配对调用**：此方法应与connectServiceExtensionAbility配对使用。调用connectServiceExtensionAbility后，必须在使用完毕后调用此方法释放连接资源。需要使用connectServiceExtensionAbility返回的连接ID调用此方法。
 
 **模型约束**：此接口仅可在`Stage`模型下使用。
 
@@ -175,7 +181,7 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 | 参数名     | 类型   | 必填 | 说明                                                     |
 | ---------- | ------ | ---- | -------------------------------------------------------- |
-| connection | long | 是   | 连接ID，必须使用connectServiceExtensionAbility方法返回的连接ID值。如果使用不存在的连接ID，将会抛出16000003错误码（The connection id does not exist）。 |
+| connection | long | 是   | 连接ID，必须使用connectServiceExtensionAbility返回的连接ID值。使用不存在的连接ID将抛出16000003错误码（The connection id does not exist）。 |
 
 **返回值：**
 
@@ -212,7 +218,7 @@ export default class DistributedExtAbility extends DistributedExtensionAbility {
     hilog.info(DOMAIN, TAG, 'onCreate');
   }
 
-  onCollaborate (wantParam: Record<string, Object>) {
+  onCollaborate(wantParam: Record<string, Object>) {
     hilog.info(DOMAIN, TAG, 'onCollaborate');
     return AbilityConstant.CollaborateResult.ACCEPT;
   }
@@ -222,8 +228,7 @@ export default class DistributedExtAbility extends DistributedExtensionAbility {
     this.testDisconnectServiceExtensionAbility();
   }
 
-  connectId: number = -1;
-  // connectId通过connectServiceExtensionAbility接口获取，详见connectServiceExtensionAbility示例
+  connectId: number = -1; // 注意：在实际使用时，需先通过connectServiceExtensionAbility接口获取有效的连接ID，并等待onConnect回调确认连接成功后，才能调用disconnectServiceExtensionAbility断开连接
 
   private async testDisconnectServiceExtensionAbility() {
     hilog.info(DOMAIN, TAG, 'testDisconnectServiceExtensionAbility');
