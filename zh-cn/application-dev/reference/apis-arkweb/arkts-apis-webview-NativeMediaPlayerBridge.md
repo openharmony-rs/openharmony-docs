@@ -238,7 +238,7 @@ exitFullscreen(): void
 
 resumePlayer?(): void
 
-通知应用重建播放器，并恢复播放器的状态信息。仅与suspendPlayer成对出现。
+通知应用重建播放器，并恢复播放器的状态信息。仅与 suspendPlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -254,7 +254,7 @@ resumePlayer?(): void
 
 suspendPlayer?(type: SuspendType): void
 
-通知应用销毁播放器，并保存播放器的状态信息。仅与resumePlayer成对出现。
+通知应用销毁播放器，并保存播放器的状态信息。仅与 resumePlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -321,7 +321,7 @@ type OneParamFn<T,V=void> = (param: T) => V
 
 type ResumePlayerFn = () => void
 
-通知应用重建应用内播放器，并恢复应用内播放器的状态信息。仅与SuspendPlayerFn成对出现。
+通知应用重建应用内播放器，并恢复应用内播放器的状态信息。仅与 SuspendPlayerFn 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -333,7 +333,7 @@ type ResumePlayerFn = () => void
 
 type SuspendPlayerFn = (type: SuspendType) => void
 
-通知应用销毁应用内播放器，并保存应用内播放器的状态信息。仅与ResumePlayerFn成对出现。
+通知应用销毁应用内播放器，并保存应用内播放器的状态信息。仅与 ResumePlayerFn 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
