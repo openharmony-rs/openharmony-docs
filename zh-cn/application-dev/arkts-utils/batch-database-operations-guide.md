@@ -182,7 +182,7 @@ struct Index {
 
 2. UI主线程发起数据库操作请求，在子线程完成数据的增删改查等操作。
 
-<!-- @[taskpool_frequently_operate_database](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/UsingSendable.ets) -->
+   <!-- @[taskpool_frequently_operate_database](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/UsingSendable.ets) -->
 
 ``` TypeScript
 import { relationalStore, ValuesBucket } from '@kit.ArkData';
