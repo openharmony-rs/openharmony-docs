@@ -26,7 +26,7 @@ typedef struct {...} ArkUI_ContextCallback
 
 | 名称 | 描述 |
 | -- | -- |
-| void* userData | 自定义类型，开发者自定义类型的数据，在回调时作为参数传入。 |
+| void* userData | 用户自定义数据，在回调时作为参数传入。 |
 
 
 ### 成员函数
@@ -47,5 +47,4 @@ void (*callback)(void* userData)
 
 
 事件回调。
-
 
