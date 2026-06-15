@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **NOTE**
@@ -31,7 +31,7 @@ When creating a database, you should consider whether to configure the [encrypt]
 | Non-encryption| Encryption                         | The RDB store is opened in encrypted mode.  |
 | Encryption| Non-encryption                         | The RDB store is opened in non-encrypted mode.  |
 
-Currently, **getRdbStore()** does not support multi-thread concurrent operations.
+**getRdbStore** supports multi-thread concurrent operations.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -137,7 +137,7 @@ When creating a database, you should consider whether to configure the [encrypt]
 | Non-encryption| Encryption                         | The RDB store is opened in encrypted mode.  |
 | Encryption| Non-encryption                         | The RDB store is opened in non-encrypted mode.  |
 
-Currently, **getRdbStore()** does not support multi-thread concurrent operations.
+**getRdbStore** supports multi-thread concurrent operations.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -227,6 +227,85 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+## relationalStore.getRdbStoreSync<sup>24+</sup>
+
+getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
+
+Obtains an RdbStore instance. You can set the **config** parameter as required and use **RdbStore** APIs to perform data operations. This is a synchronous method, which blocks the thread until the RdbStore instance is obtained.
+
+If no database file exists in the corresponding sandbox directory, a database file is created. For details, see [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig). If a database file exists in the corresponding directory, the existing database file is opened.
+
+When creating a database, you should consider whether to configure the [encrypt](arkts-apis-data-relationalStore-i.md#storeconfig) parameter. Once the database is created, you are not allowed to change this parameter. If the parameter is modified, an error code will be reported.
+
+| Encryption Type When the RDB Store Is Opened | Encryption Type When the RDB Store Is Created          | Result|
+| ------- | -------------------------------- | ---- |
+| Non-encryption| Encryption                         | The RDB store is opened in encrypted mode.  |
+| Encryption| Non-encryption                         | The RDB store is opened in non-encrypted mode.  |
+
+**getRdbStoreSync** supports multi-thread concurrent operations.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                            | Mandatory| Description                                                        |
+| ------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| context | Context                          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
+
+**Return value**
+
+| Type                                     | Description                             |
+| ----------------------------------------- | --------------------------------- |
+| [RdbStore](arkts-apis-data-relationalStore-RdbStore.md) | **RdbStore** object.|
+
+**Error codes**
+
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md). To handle error 14800011, you can refer to [Database Backup and Restore](../../database/data-backup-and-restore.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid args. |
+| 14800010  | Invalid database path. |
+| 14800011  | The current operation failed because the database is corrupted.  |
+| 14801001  | The operation is supported in the stage model only.                               |
+| 14801002  | Invalid data group ID.                             |
+| 14800017  | Config changed. |
+| 14800020  | The secret key is corrupted or lost.   |
+| 14800021  | SQLite: Generic error. |
+| 14800027  | SQLite: Attempt to write a readonly database. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800029  | SQLite: The database is full. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**Example**:
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let store: relationalStore.RdbStore | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "RdbTest.db",
+      securityLevel: relationalStore.SecurityLevel.S1
+    };
+
+    try {
+      store = relationalStore.getRdbStoreSync(this.context, STORE_CONFIG);
+      console.info('Get RdbStore successfully.');
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
 ## relationalStore.deleteRdbStore
 
 deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void
@@ -297,6 +376,89 @@ class EntryAbility extends UIAbility {
       // Clear the related variables to release resources in time.
       console.info('Delete RdbStore successfully.');
     });
+  }
+}
+```
+
+## relationalStore.getRdbStoreSync<sup>24+</sup>
+
+getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
+
+Obtains an RdbStore instance. You can set the **config** parameter as required and use **RdbStore** APIs to perform data operations. This is a synchronous method, which blocks the thread until the RdbStore instance is obtained.
+
+If no database file exists in the corresponding sandbox directory, a database file is created. For details, see [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig). If a database file exists in the corresponding directory, the existing database file is opened.
+
+When creating a database, you should consider whether to configure the [encrypt](arkts-apis-data-relationalStore-i.md#storeconfig) parameter. Once the database is created, you are not allowed to change this parameter. If the parameter is modified, an error code will be reported.
+
+| Encryption Type When the RDB Store Is Opened | Encryption Type When the RDB Store Is Created          | Result|
+| ------- | -------------------------------- | ---- |
+| Non-encryption| Encryption                         | The RDB store is opened in encrypted mode.  |
+| Encryption| Non-encryption                         | The RDB store is opened in non-encrypted mode.  |
+
+**getRdbStoreSync** supports multi-thread concurrent operations.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**ArkTS-Dyn start version:** 24
+
+**ArkTS-Sta start version:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                            | Mandatory| Description                                                        |
+| ------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| context | Context                          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | Yes  | Configuration of the RDB store.                               |
+
+**Return value**
+
+| Type                                     | Description                             |
+| ----------------------------------------- | --------------------------------- |
+| [RdbStore](arkts-apis-data-relationalStore-RdbStore.md) | **RdbStore** object.|
+
+**Error codes**
+
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md). To handle error 14800011, you can refer to [Database Backup and Restore](../../database/data-backup-and-restore.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid args. |
+| 14800010  | Invalid database path. |
+| 14800011  | The current operation failed because the database is corrupted.  |
+| 14801001  | The operation is supported in the stage model only.                               |
+| 14801002  | Invalid data group ID.                             |
+| 14800017  | Config changed. |
+| 14800020  | The secret key is corrupted or lost.   |
+| 14800021  | SQLite: Generic error. |
+| 14800027  | SQLite: Attempt to write a readonly database. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800029  | SQLite: The database is full. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**Example**:
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let store: relationalStore.RdbStore | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "RdbTest.db",
+      securityLevel: relationalStore.SecurityLevel.S1
+    };
+
+    try {
+      store = relationalStore.getRdbStoreSync(this.context, STORE_CONFIG);
+      console.info('Get RdbStore successfully.');
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
   }
 }
 ```
