@@ -210,7 +210,7 @@ ArkTS-Sta类型声明：
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| extras | ArkTS-Dyn: Record<string, object> <br/>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| extras | ArkTS-Dyn: Record<string, object> <br/>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | tag | string | 否 | 是 | 用户自定义标签。非必填字段，默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | timestamp | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | shareOptions | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -1398,7 +1398,7 @@ for (let i = 0; i < records.length; i++) {
   if (types.includes(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM)) {
     console.info(`Types include: ${uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM}`);
   }
-};
+}
 ```
 
 ArkTS-Sta示例：
@@ -1553,6 +1553,8 @@ HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言
 | htmlContent  | string | 否 | 否 | html格式内容。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。           |
 | plainContent  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
+
 **示例：**
 
 ```ts
@@ -2290,15 +2292,17 @@ let options: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB
 };
 try {
-  unifiedDataChannel.insertData(options, unifiedData).then((key) => {
-    console.info(`Succeeded in inserting data. key = ${key}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
-  });
-} catch (e) {
-  let error: BusinessError = e as BusinessError;
-  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
-}
+  unifiedDataChannel.insertData(options, unifiedData, (err, key) => {
+    if (err === undefined) {
+      console.info(`Succeeded in inserting data. key = ${key}`);
+    } else {
+      console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
+    }
+  }
+  catch(e) {
+    let error: BusinessError = e as BusinessError;
+    console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
+  }
 ```
 
 ArkTS-Sta示例：
@@ -2386,11 +2390,11 @@ try {
   unifiedDataChannel.insertData(options, unifiedData).then((key) => {
     console.info(`Succeeded in inserting data. key = ${key}`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2495,19 +2499,19 @@ try {
         if (err === undefined) {
           console.info('Succeeded in updating data.');
         } else {
-          console.error(`Failed to update data. code is ${err.code}, message is ${err.message} `);
+          console.error(`Failed to update data. code is ${err.code}, message is ${err.message}`);
         }
       });
     } catch (e) {
       let error: BusinessError = e as BusinessError;
-      console.error(`Update data throws an exception. code is ${error.code}, message is ${error.message} `);
+      console.error(`Update data throws an exception. code is ${error.code}, message is ${error.message}`);
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2607,31 +2611,52 @@ ArkTS-Dyn示例：
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let plainText: uniformDataStruct.PlainText = {
+  uniformDataType: 'general.plain-text',
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+}
+let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+let unifiedData = new unifiedDataChannel.UnifiedData(text);
+let options: unifiedDataChannel.Options = {
+  intention: unifiedDataChannel.Intention.DATA_HUB
+}
+
 let options: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB
 };
 
 try {
-  unifiedDataChannel.queryData(options, (err, data) => {
-    if (err === undefined) {
-      console.info(`Succeeded in querying data. size = ${data.length}`);
-      for (let i = 0; i < data.length; i++) {
-        let records = data[i].getRecords();
-        for (let j = 0; j < records.length; j++) {
-          if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-            let text =
-              records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
-            console.info(`${i + 1}.${text.textContent}`);
-          }
-        }
-      }
-    } else {
-      console.error(`Failed to query data. code is ${err.code}, message is ${err.message} `);
+  unifiedDataChannel.insertData(options, unifiedData).then((key) => {
+    console.info(`Succeeded in inserting data. key = ${key}`);
+    let updateOptions: unifiedDataChannel.Options = {
+      intention: unifiedDataChannel.Intention.DATA_HUB,
+      key: key
     }
+    let plainTextUpdate: uniformDataStruct.PlainText = {
+      uniformDataType: 'general.plain-text',
+      textContent: 'This is plainText textContent for update',
+      abstract: 'This is abstract for update'
+    }
+    let textUpdate =
+      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
+    let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(textUpdate);
+    try {
+      unifiedDataChannel.updateData(updateOptions, unifiedDataUpdate).then(() => {
+        console.info('Succeeded in updating data.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to update data. code is ${err.code}, message is ${err.message} `);
+      });
+    } catch (e) {
+      let error: BusinessError = e as BusinessError;
+      console.error(`Update data throws an exception. code is ${error.code}, message is ${error.message} `);
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -2738,12 +2763,12 @@ try {
         }
       }
     } else {
-      console.error(`Failed to query data. code is ${err.code}, message is ${err.message} `);
+      console.error(`Failed to query data. code is ${err.code}, message is ${err.message}`);
     }
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2840,11 +2865,11 @@ try {
       }
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to query data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to query data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2922,12 +2947,12 @@ try {
         }
       }
     } else {
-      console.error(`Failed to delete data. code is ${err.code}, message is ${err.message} `);
+      console.error(`Failed to delete data. code is ${err.code}, message is ${err.message}`);
     }
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Delete data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Delete data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -3024,11 +3049,11 @@ try {
       }
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to delete data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to delete data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -3088,10 +3113,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DRAG, unifiedDataChannel.ShareOptions.IN_APP);
-  console.info(`[UDMF]setAppShareOptions success. `);
+  console.info(`[UDMF]setAppShareOptions success.`);
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`[UDMF]setAppShareOptions throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`[UDMF]setAppShareOptions throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -3131,10 +3156,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   unifiedDataChannel.removeAppShareOptions(unifiedDataChannel.Intention.DRAG);
-  console.info(`[UDMF]removeAppShareOptions success. `);
+  console.info(`[UDMF]removeAppShareOptions success.`);
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`[UDMF]removeAppShareOptions throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`[UDMF]removeAppShareOptions throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -3217,7 +3242,7 @@ try {
   }
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Convert data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Convert data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
