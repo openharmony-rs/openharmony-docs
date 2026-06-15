@@ -154,6 +154,38 @@ struct MaterialInfoPage {
    
    <!-- @[ButtonInteractive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ButtonInteractive.ets) -->
    
+   ``` TypeScript
+   import { uiMaterial } from '@kit.ArkUI'
+   
+   @Entry
+   @Component
+   struct ButtonInteractivePage {
+     build() {
+       Stack() {
+         // 请替换为实际资源文件
+         Image($r('app.media.img'))
+           .width('100%')
+           .height('100%')
+         Column() {
+           Column() {
+             Text('Context')
+           }
+           .margin({ bottom: 100 })
+           .width(248)
+           .height(56)
+           .borderRadius(28)
+           .justifyContent(FlexAlign.Center)
+           .alignItems(HorizontalAlign.Center)
+           .systemMaterial(new uiMaterial.ImmersiveMaterial({
+             style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+             interactive: true,
+           }))
+         }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+       }
+     }
+   }
+   ```
+   
    ![material-interactive](../reference/apis-arkui/figures/material-interactive.gif)
    
    **光感交互反馈示例**
