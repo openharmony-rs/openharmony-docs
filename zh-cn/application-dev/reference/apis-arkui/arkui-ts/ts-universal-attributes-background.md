@@ -1113,7 +1113,7 @@ struct BackgroundExample {
 }
 ```
 
-![zh-cn_image_0000001219982703](figures/zh-cn_image_0000001219982703.png)
+![backgroundImage](figures/backgroundImage.png)
 
 ### 示例2（设置背景模糊样式）
 
@@ -1447,7 +1447,7 @@ struct P3BackgroundDemo {
 }
 ```
 
-![zh-cn_background_p3](figures/zh-cn_background_p3.png)
+![backgroundP3](figures/backgroundP3.png)
 
 ### 示例9（设置组件背景扩展）
 

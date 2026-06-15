@@ -151,7 +151,7 @@ close(): void
   }
   ```
 
-  ![zh-cn_image_0000001194352442](figures/zh-cn_image_0000001194352442.png)
+  ![imageBitmap](figures/imageBitmap.png)
 
 ### 示例2（创建ImageBitmap）
 
@@ -190,7 +190,7 @@ struct Demo {
 }
 ```
 
-  ![zh-cn_image_0000001194352442](figures/zh-cn_image_0000001194352444.png)
+  ![imageBitmap2](figures/imageBitmap2.png)
 
 
 ### 示例3（支持并发线程绘制）
@@ -253,4 +253,4 @@ workerPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
-  ![zh-cn_image_0000001194352442](figures/zh-cn_image_0000001194352442.png)
+  ![imageBitmap](figures/imageBitmap.png)

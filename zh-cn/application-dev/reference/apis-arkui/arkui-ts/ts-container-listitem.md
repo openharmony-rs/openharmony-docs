@@ -536,7 +536,7 @@ struct ListItemExample {
 }
 ```
 
-![zh-cn_image_0000001219864159](figures/zh-cn_image_0000001219864159.gif)
+![listItem1](figures/listItem1.gif)
 
 ### 示例2（设置划出组件）
 该示例展示了ListItem设置了swipeAction的横滑效果。

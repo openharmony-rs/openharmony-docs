@@ -498,7 +498,7 @@ struct TextTimerExample {
 ```
 
 
-![zh-cn_image_0000001251007721](figures/zh-cn_image_0000001251007721.gif)
+![textTimer](figures/textTimer.gif)
 
 ### 示例2（设定文本阴影样式）
 

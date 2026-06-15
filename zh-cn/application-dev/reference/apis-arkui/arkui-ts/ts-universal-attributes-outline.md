@@ -487,7 +487,7 @@ struct OutlineExample {
 }
 ```
 
-![zh-cn_image_0000001219982706](figures/zh-cn_image_0000001219982706.png)
+![outlineRadius](figures/outlineRadius.png)
 
 ### 示例2（使用LocalizedEdgeColors类型）
 

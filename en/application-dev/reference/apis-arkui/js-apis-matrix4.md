@@ -207,7 +207,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219744181](figures/en-us_image_0000001219744185.png)
+![copy](figures/copy.png)
 ### combine
 
 combine(options: Matrix4Transit): Matrix4Transit
@@ -761,7 +761,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219744181](figures/Matrix4-copy.png)
+![Matrix4Copy](figures/Matrix4Copy.png)
 
 ## matrix4.invert<sup>(deprecated)</sup>
 

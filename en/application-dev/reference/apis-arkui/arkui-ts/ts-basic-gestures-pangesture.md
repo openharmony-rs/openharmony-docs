@@ -325,8 +325,8 @@ struct PanGestureExample {
 
 Panning left:
 
-![en-us_image_0000001174264374](figures/en-us_image_0000001174264374.png) 
+![panGesture2](figures/panGesture2.png) 
 
 Click **Set PanGesture Trigger Condition** to set the pan gesture to be triggered by two fingers moving toward the lower left corner.
 
- ![en-us_image1_0000001174264374](figures/en-us_image1_0000001174264374.png) 
+ ![panGesture1](figures/panGesture1.png) 

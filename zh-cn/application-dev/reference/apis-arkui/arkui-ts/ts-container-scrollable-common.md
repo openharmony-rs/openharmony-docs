@@ -1596,7 +1596,7 @@ struct ListExample {
 }
 ```
 
-![zh-cn_image_0000001174264378](figures/zh-cn_image_0000001174264378.gif)
+![list1](figures/list1.gif)
 
 ### 示例2（设置边缘渐隐）
 该示例通过设置[fadingEdge](ts-container-scrollable-common.md#fadingedge14)属性，实现了[List](ts-container-list.md)组件开启边缘渐隐效果并设置边缘渐隐长度。

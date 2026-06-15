@@ -343,7 +343,7 @@ struct PolylineExample {
 }
 ```
 
-![zh-cn_image_0000001219744185](figures/zh-cn_image_0000001219744185.png)
+![polyline](figures/polyline.png)
 
 ### 示例2（宽和高使用不同参数类型绘制折线）
 
