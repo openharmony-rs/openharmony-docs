@@ -6,11 +6,13 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-可以与容器组件联动用于按逻辑结构快速定位容器显示区域的组件。
+可以与容器组件联动，用于按逻辑结构快速定位容器显示区域，适用于通讯录、城市列表、分类列表等需要快速定位内容的场景。
 
 >  **说明：**
 >
 >  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  从API version 12开始，触控反馈默认开启；使用前请按[enableHapticFeedback](#enablehapticfeedback12)的说明配置振动权限。
 
 
 ## 子组件
@@ -123,7 +125,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF，显示为半透明的蓝绿色。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF，显示为半透明的蓝色。 |
 
 ### popupBackground
 
@@ -242,7 +244,7 @@ alignStyle(value: IndexerAlign, offset?: Length)
 
 selected(index: number)
 
-设置选中项索引值。
+设置选中项索引值。与[AlphabetIndexerOptions](#alphabetindexeroptions18对象说明)中的selected同时设置时，该属性的优先级更高。
 
 从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
@@ -254,7 +256,7 @@ selected(index: number)
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | number | 是   | 选中项索引值。<br/>取值范围：[0, [arrayValue](#alphabetindexeroptions18对象说明).length-1]<br/>默认值：0 |
+| index  | number | 是   | 选中项索引值。<br/>取值范围：[0, [arrayValue](#alphabetindexeroptions18对象说明).length-1]<br/>若超出索引值范围，则取默认值0。<br/>默认值：0 |
 
 ### popupPosition<sup>8+</sup>
 
@@ -270,7 +272,7 @@ popupPosition(value: Position)
 
 | 参数名 | 类型                              | 必填 | 说明                                                         |
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) | 是   | 弹出窗口相对于索引条上边框中点的位置。<br/>默认值：{x: 60.0, y: 48.0} |
+| value  | [Position](ts-types.md#position) | 是   | 弹出窗口相对于索引条上边框中点的位置。与[alignStyle](#alignstyle)同时设置时，水平方向由[alignStyle](#alignstyle)的offset参数控制，竖直方向上value.y生效。<br/>默认值：{x: 60.0, y: 48.0}<br/>单位：vp |
 
 ### popupSelectedColor<sup>10+</sup>
 
@@ -342,9 +344,9 @@ autoCollapse(value: boolean)
 
 设置是否使用自适应折叠模式。
 
-如果索引项第一项为“#”，当除去第一项后剩余索引项数量 <= 9时，选择全显示模式；9 < 剩余索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式；剩余索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。
+如果索引项第一项为“#”，当除去第一项后剩余索引项数量 <= 9时，选择全显示模式（所有索引项完整显示）；9 < 剩余索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式；剩余索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。
 
-如果索引项第一项不为“#”，当所有索引项数量 <= 9时，选择全显示模式；9 < 所有索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式；所有索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。
+如果索引项第一项不为“#”，当所有索引项数量 <= 9时，选择全显示模式（所有索引项完整显示）；9 < 所有索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式；所有索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。
 
 >**说明：**
 >
@@ -428,7 +430,7 @@ popupTitleBackground(value: ResourceColor)
 
 enableHapticFeedback(value: boolean)
 
-设置是否开启触控反馈。
+设置是否开启触控反馈。开启后，在手指触摸或滑动选中索引项时会触发振动反馈。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -489,7 +491,7 @@ onSelect(callback: OnAlphabetIndexerSelectCallback)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) | 是   | 索引项选中事件。 |
+| callback  | [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) | 是   | 回调函数，用于处理索引项选中事件。 |
 
 ### onRequestPopupData<sup>8+</sup>
 
@@ -505,13 +507,13 @@ onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback  | [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) | 是   | 设置提示弹窗二级索引项内容事件。 |
+| callback  | [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) | 是   | 回调函数，用于提供提示弹窗二级索引项内容。需先设置[usingPopup](#usingpopup)为true。 |
 
 ### onPopupSelect<sup>8+</sup>
 
 onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback)
 
-提示弹窗二级索引选中事件，回调参数为当前选中二级索引项索引。
+提示弹窗二级索引选中事件，回调参数为当前选中二级索引项索引。仅在[usingPopup](#usingpopup)为true时触发。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -521,7 +523,7 @@ onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) | 是   | 提示弹窗二级索引选中事件。 |
+| callback  | [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) | 是   | 回调函数，用于处理提示弹窗二级索引选中事件。需先设置[usingPopup](#usingpopup)为true。 |
 
 ## OnAlphabetIndexerSelectCallback<sup>18+</sup>
 type OnAlphabetIndexerSelectCallback = (index: number) => void
@@ -770,7 +772,7 @@ struct AlphabetIndexerSample {
               .popupFont({ size: 30, weight: FontWeight.Bolder }) // 提示弹窗内容的文本样式
               .itemSize(28) // 每一项的尺寸大小
               .alignStyle(IndexerAlign.Right) // 提示弹窗在索引条左侧弹出
-              .popupTitleBackground("#D2B48C") // 设置提示弹窗一级索引项背景颜色
+              .popupTitleBackground(0xD2B48C) // 设置提示弹窗一级索引项背景颜色
               .popupSelectedColor(0x00FF00) // 提示弹窗二级索引选中项文本颜色
               .popupUnselectedColor(0x0000FF) // 提示弹窗二级索引未选中项文本颜色
               .popupItemFont({ size: 30, style: FontStyle.Normal }) // 提示弹窗二级索引项文本样式
