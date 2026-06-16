@@ -62,6 +62,8 @@
 
 ## ResourceStr
 
+type ResourceStr = string | Resource
+
 字符串类型，用于描述字符串入参可以使用的类型。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -716,6 +718,8 @@ Navigation路由的构造方式类型。
 
 ## Dimension<sup>10+</sup>
 
+type Dimension = PX | VP | FP | LPX | Percentage | Resource
+
 长度类型，用于描述尺寸单位。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
@@ -737,6 +741,10 @@ Navigation路由的构造方式类型。
 
 ## PX<sup>10+</sup>
 
+ArkTS-Dyn: type PX = { number }px
+
+ArkTS-Sta: type PX = string
+
 长度类型，用于描述以px像素单位为单位的长度。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -747,9 +755,13 @@ Navigation路由的构造方式类型。
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}px               | 需要指定以px像素单位，如'10px'。 |
+| ArkTS-Dyn: { number }px<br/>ArkTS-Sta: string     | 需要指定以px像素单位，如'10px'。 |
 
 ## VP<sup>10+</sup>
+
+ArkTS-Dyn: type VP = { number }vp | number
+
+ArkTS-Sta: type VP = string | double
 
 长度类型，用于描述以vp像素单位为单位的长度。
 
@@ -761,9 +773,13 @@ Navigation路由的构造方式类型。
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}vp\|number | 需要指定数字或vp像素单位，如10或'10vp'。 |
+| ArkTS-Dyn: { number }vp \| number<br/>ArkTS-Sta: string \| double | 需要指定数字或vp像素单位，如10或'10vp'。 |
 
 ## FP<sup>10+</sup>
+
+ArkTS-Dyn: type FP = { number }fp
+
+ArkTS-Sta: type FP = string
 
 长度类型，用于描述以fp像素单位为单位的长度。
 
@@ -775,9 +791,13 @@ Navigation路由的构造方式类型。
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}fp               | 需要指定以fp像素单位，如'10fp'。 |
+| ArkTS-Dyn: { number }fp <br/>ArkTS-Sta: string   | 需要指定以fp像素单位，如'10fp'。 |
 
 ## LPX<sup>10+</sup>
+
+ArkTS-Dyn: type LPX = { number }lpx
+
+ArkTS-Sta: type LPX = string
 
 长度类型，用于描述以lpx像素单位为单位的长度。
 
@@ -789,7 +809,7 @@ Navigation路由的构造方式类型。
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}lpx               | 需要指定以lpx像素单位，如'10lpx'。 |
+| ArkTS-Dyn: { number }lpx<br/>ArkTS-Sta: string              | 需要指定以lpx像素单位，如'10lpx'。 |
 
 ## Percentage<sup>10+</sup>
 
