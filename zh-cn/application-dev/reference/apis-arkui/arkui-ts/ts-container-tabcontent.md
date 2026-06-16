@@ -291,7 +291,7 @@ selectedMode(value: SelectedMode): SubTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [SelectedMode](#selectedmode10枚举说明) | 是   | 选中子页签的显示方式，用于控制子页签的选中效果样式。可选值：SelectedMode.INDICATOR（使用下划线模式，适合需要明确指示选中状态的场景）、SelectedMode.BOARD（使用背板模式，适合需要突出选中页签的场景）。<br />默认值：SelectedMode.INDICATOR |
+| value | [SelectedMode](#selectedmode10枚举说明) | 是   | 选中子页签的显示方式，用于控制子页签的选中效果样式。可选值：SelectedMode.INDICATOR（使用下划线模式，适用于需要明确指示选中状态的场景）、SelectedMode.BOARD（使用背板模式，适用于需要突出选中页签的场景）。<br />默认值：SelectedMode.INDICATOR |
 
 **返回值：**
 
@@ -431,7 +431,7 @@ id(value: string): SubTabBarStyle
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | --------- | ----------------------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下划线的颜色。<br/>默认值：#FF007DFF，浅蓝色。 |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 下划线的颜色和背板颜色。<br/>默认值：#FF007DFF，浅蓝色。 |
 | height | [Length](ts-types.md#length) | 否 | 是 | 下划线的高度（不支持百分比设置）。<br/>默认值：2.0<br/>单位：vp<br/>取值范围：[0, +∞)。异常值时取默认值。 |
 | width | [Length](ts-types.md#length) | 否 | 是 | 下划线的宽度（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。异常值时取默认值。<br/>**说明：** <br/>宽度设置为0时，按页签文本宽度显示。|
 | borderRadius | [Length](ts-types.md#length) | 否 | 是 | 下划线的圆角半径（不支持百分比设置）。<br/>默认值：0.0<br/>单位：vp<br/>取值范围：[0, +∞)。异常值时取默认值。 |
@@ -483,7 +483,7 @@ type DrawableDescriptor = DrawableDescriptor
 
 | 名称       | 值 | 说明               |
 | ---------- | ----- | ------------------------ |
-| INDICATOR | 0 | 使用下划线模式。适用于需要突出选中页签的场景，如新闻资讯类应用。 |
+| INDICATOR | 0 | 使用下划线模式。适用于需要明确指示选中状态的场景，如新闻资讯类应用。 |
 | BOARD   | 1 | 使用背板模式。适用于需要明确区分选中页签的场景，如功能导航类应用。     |
 
 ## BoardStyle<sup>10+</sup>对象说明
