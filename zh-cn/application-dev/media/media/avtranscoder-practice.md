@@ -144,24 +144,22 @@
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
          await transcoder?.release()
-         let lastFd = transcoder.fdDst;
- 	     if (lastFd != undefined) {
- 	  	  	fs.closeSync(lastFd);
+ 	     if (transcoder.fdDst != undefined) {
+ 	  	  	fs.closeSync(transcoder.fdDst);
  	  	  }
- 	  	  if (fileDescriptor != undefined) {
- 	  	  	fs.closeSync(fileDescriptor.fd);
+ 	  	  if (transcoder.fdSrc != undefined) {
+ 	  	  	fs.closeSync(transcoder.fdSrc.fd);
  	  	  }
          workerPort.postMessage('complete');
        })
        // 转码错误回调函数。
        transcoder.on('error', async (err: BusinessError) => {
          await transcoder?.release();
-         let lastFd = transcoder.fdDst;
- 	  	  if (lastFd != undefined) {
- 	  	  	fs.closeSync(lastFd);
+ 	  	  if (transcoder.fdDst != undefined) {
+ 	  	  	fs.closeSync(transcoder.fdDst);
  	  	  }
- 	  	  if (fileDescriptor != undefined) {
- 	  	  	fs.closeSync(fileDescriptor.fd);
+ 	  	  if (transcoder.fdSrc != undefined) {
+ 	  	  	fs.closeSync(transcoder.fdSrc.fd);
  	  	  }
        })
        // 转码进度更新回调函数。
@@ -169,12 +167,10 @@
          console.info(`AVTranscoder progressUpdate = ${progress}`);
          workerPort.postMessage(progress);
        })
-       
-       let fileDescriptor: resourceManager.RawFileDescriptor | undefined;
 
        try {
          // 获取输入文件fd，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
-         fileDescriptor = await context.resourceManager.getRawFd('H264_AAC.mp4');
+         let fileDescriptor = await context.resourceManager.getRawFd('H264_AAC.mp4');
          transcoder.fdSrc = fileDescriptor; // 设置fdSrc。
        } catch (error) {
          console.error('Failed to get the file descriptor, please check the resource and path.');
