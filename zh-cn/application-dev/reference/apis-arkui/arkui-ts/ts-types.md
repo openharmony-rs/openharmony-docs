@@ -14,6 +14,10 @@
 
 ## Resource
 
+ArkTS-Dyn: type Resource = import('../api/global/resource').Resource
+
+ArkTS-Sta: type Resource = _Resource
+
 资源引用类型，用于设置组件属性的值。各类资源文件，需要放入特定子目录中存储管理，资源目录的示例请参考[资源分类](../../../quick-start/resource-categories-and-access.md#资源分类)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -21,6 +25,14 @@
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                    | 说明                        |
+| --------------------- | ------------------------- |
+| ArkTS-Dyn: import('../api/global/resource').[Resource](../../apis-localization-kit/js-apis-resource.md#resource-1)<br/>ArkTS-Sta: _[Resource](../../apis-localization-kit/js-apis-resource.md#resource-1)   | 资源引用类型。                    |
 
 可以通过`$r`或者`$rawfile`创建Resource类型对象，不可以修改Resource中的各属性的值。
 
@@ -59,6 +71,78 @@
 | string                | 需要显式指定[像素单位](ts-pixel-units.md)，如'10px'，也可设置百分比字符串，如'100%'。<br/>**说明：** <br/>不指定像素单位时，默认单位vp，如'10'，等同于10。 |
 | number                | 默认单位vp。                                |
 | [Resource](#resource) | 资源引用类型，引入系统资源或者应用资源中的尺寸。               |
+
+## LengthMetricsUnit<sup>12+</sup>
+
+ArkTS-Dyn: type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit
+
+ArkTS-Sta: type LengthMetricsUnit = _LengthMetricsUnit
+
+定义长度属性单位。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|ArkTS-Dyn: import('../api/arkui/Graphics').[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)<br/>ArkTS-Sta:  _[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)  | 长度属性单位。 |
+
+## LengthMetrics<sup>12+</sup>
+
+ArkTS-Dyn: type LengthMetrics = import('../api/arkui/Graphics').LengthMetrics
+
+ArkTS-Sta: type LengthMetrics = _LengthMetrics
+
+定义长度属性。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|ArkTS-Dyn: import('../api/arkui/Graphics').[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: _[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 长度属性。 |
+
+## ColorMetrics<sup>12+</sup>
+
+ArkTS-Dyn: type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics
+
+ArkTS-Sta: type ColorMetrics = _ColorMetrics
+
+定义混合颜色。
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|ArkTS-Dyn: import('../api/arkui/Graphics').[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)<br/>ArkTS-Sta: _[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)   | 混合颜色。 |
 
 ## ResourceStr
 

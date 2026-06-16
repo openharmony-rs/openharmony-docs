@@ -212,7 +212,7 @@ stopPropagation(): void
 
 ## IntentionCode<sup>10+</sup>
 
-type IntentionCode = IntentionCode
+type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode').IntentionCode
 
 按键对应的意图。
 
@@ -230,7 +230,7 @@ type IntentionCode = IntentionCode
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [IntentionCode](../../apis-input-kit/js-apis-intentioncode.md#intentioncode) | 按键对应的意图。|
+| import('../api/@ohos.multimodalInput.intentionCode').[IntentionCode](../../apis-input-kit/js-apis-intentioncode.md#intentioncode) | 按键对应的意图。|
 
 ## 示例
 

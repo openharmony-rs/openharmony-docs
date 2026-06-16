@@ -1287,7 +1287,7 @@ attributeModifier(modifier: AttributeModifier\<ImageAttribute> | AttributeModifi
 
 ## DrawableDescriptor<sup>10+</sup>
 
-type DrawableDescriptor = DrawableDescriptor
+type DrawableDescriptor = import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor
 
 作为Image组件的入参对象。
 
@@ -1303,11 +1303,11 @@ type DrawableDescriptor = DrawableDescriptor
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | 返回一个DrawableDescriptor对象。 |
+| import ('../api/@ohos.arkui.drawableDescriptor').[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | 返回一个DrawableDescriptor对象。 |
 
 ## DrawingColorFilter<sup>12+</sup>
 
-ArkTS-Dyn: type DrawingColorFilter = ColorFilter
+ArkTS-Dyn: type DrawingColorFilter = import('../api/@ohos.graphics.drawing').default.ColorFilter
 
 ArkTS-Sta: type DrawingColorFilter = drawing.ColorFilter
 
@@ -1325,11 +1325,11 @@ ArkTS-Sta: type DrawingColorFilter = drawing.ColorFilter
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: drawing.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md) | 返回一个颜色滤波器。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.drawing').default.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: drawing.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md) | 返回一个颜色滤波器。 |
 
 ## DrawingLattice<sup>12+</sup>
 
-ArkTS-Dyn: type DrawingLattice = Lattice
+ArkTS-Dyn: type DrawingLattice = import('../api/@ohos.graphics.drawing').default.Lattice
 
 ArkTS-Sta: type DrawingLattice = drawing.Lattice
 
@@ -1347,7 +1347,7 @@ ArkTS-Sta: type DrawingLattice = drawing.Lattice
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md)<br/>ArkTS-Sta: drawing.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md) | 返回一个矩阵网格对象。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.drawing').default.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md)<br/>ArkTS-Sta: drawing.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md) | 返回一个矩阵网格对象。 |
 
 ## ImageMatrix<sup>15+</sup>对象说明
 
@@ -1543,7 +1543,7 @@ type ImageErrorCallback = (error: ImageError) => void
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T = void> = BusinessError\<T>
+type BusinessError\<T = void> = import('../api/@ohos.base').BusinessError\<T>
 
 图片加载异常返回的错误信息。
 
@@ -1561,7 +1561,7 @@ type BusinessError\<T = void> = BusinessError\<T>
 
 | 类型  | 说明   |
 | ---- | ------ |
-| [BusinessError\<T>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 图片加载异常返回的错误信息。 |
+| import('../api/@ohos.base').[BusinessError\<T>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 图片加载异常返回的错误信息。 |
 
 以下是错误信息的详细介绍：ImageError的error属性为错误信息对象，其中code为错误码，message为错误信息。
 
@@ -1635,7 +1635,7 @@ type ImageOnCompleteCallback = (loadEvent?: ImageCompleteEvent) => void;
 
 ## RequestDownloadInfo<sup>23+</sup>
 
-ArkTS-Dyn: type RequestDownloadInfo = DownloadInfo
+ArkTS-Dyn: type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').default.DownloadInfo
 
 ArkTS-Sta: type RequestDownloadInfo = cacheDownload.DownloadInfo
 
@@ -1655,7 +1655,7 @@ ArkTS-Sta: type RequestDownloadInfo = cacheDownload.DownloadInfo
 
 | 类型  | 说明   |
 | ---- | ------ |
-| [DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20) | 网络资源加载异常时返回的下载信息，包含资源信息、网络请求信息与性能统计信息。 |
+| ArkTS-Dyn: import('../api/@ohos.request.cacheDownload').default.[DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20)<br/>ArkTS-Sta: cacheDownload.DownloadInfo | 网络资源加载异常时返回的下载信息，包含资源信息、网络请求信息与性能统计信息。 |
 
 ## 示例
 

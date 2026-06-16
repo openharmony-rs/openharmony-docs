@@ -32,9 +32,11 @@ EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensio
 
 ## 接口
 
-ArkTS-Dyn: EmbeddedComponent(loader: Want, type: EmbeddedType)
+### EmbeddedComponent
 
-ArkTS-Sta: EmbeddedComponent(loader: Want, type?: EmbeddedType)
+ArkTS-Dyn: EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type: EmbeddedType)
+
+ArkTS-Sta: EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type?: EmbeddedType)
 
 创建跨进程嵌入式组件，用于显示同包名EmbeddedUIExtensionAbility的UI。
 
@@ -50,14 +52,14 @@ ArkTS-Sta: EmbeddedComponent(loader: Want, type?: EmbeddedType)
 
 | 参数名                | 类型                          | 必填 |说明   |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
-| loader | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 要加载的EmbeddedUIExtensionAbility。 |
+| loader | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 是 | 要加载的EmbeddedUIExtensionAbility。 |
 | type | [EmbeddedType](ts-appendix-enums.md#embeddedtype12) | ArkTS-Dyn: 是<br/>ArkTS-Sta: 否 | 提供方的类型。 |
 
-## 接口
+### EmbeddedComponent
 
-ArkTS-Dyn: EmbeddedComponent(loader: Want, type: EmbeddedType, options?: EmbeddedOptions)
- 
-ArkTS-Sta: EmbeddedComponent(loader: Want, type?: EmbeddedType, options?: EmbeddedOptions)
+ArkTS-Dyn: EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type: EmbeddedType, options?: EmbeddedOptions)
+
+ArkTS-Sta: EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type?: EmbeddedType, options?: EmbeddedOptions)
 
 创建跨进程嵌入式组件，用于显示同包名EmbeddedUIExtensionAbility的UI。
 
@@ -73,7 +75,7 @@ ArkTS-Sta: EmbeddedComponent(loader: Want, type?: EmbeddedType, options?: Embedd
 
 | 参数名                | 类型                          | 必填 |说明   |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
-| loader | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 要加载的EmbeddedUIExtensionAbility。 |
+| loader |import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 是 | 要加载的EmbeddedUIExtensionAbility。 |
 | type | [EmbeddedType](ts-appendix-enums.md#embeddedtype12) | ArkTS-Dyn: 是<br/>ArkTS-Sta: 否 | 提供方的类型。 |
 | options| [EmbeddedOptions](#embeddedoptions) | 否   | 需要传递的构造项。                    |
 
@@ -93,7 +95,7 @@ ArkTS-Sta: EmbeddedComponent(loader: Want, type?: EmbeddedType, options?: Embedd
 
 ### onTerminated
 
-ArkTS-Dyn: onTerminated(callback: Callback&lt;TerminationInfo&gt;)
+ArkTS-Dyn: onTerminated(callback: import('../api/@ohos.base').Callback&lt;TerminationInfo&gt;)
 
 ArkTS-Sta: onTerminated(callback: Callback&lt;TerminationInfo&gt; | undefined)
 
@@ -115,7 +117,7 @@ ArkTS-Sta: onTerminated(callback: Callback&lt;TerminationInfo&gt; | undefined)
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------  | ------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)>\| undefined | 是 | 回调函数，入参用于接收EmbeddedUIExtensionAbility的返回结果，类型为[TerminationInfo](#terminationinfo)。取值为undefined时，不使用回调函数。|
+| callback | ArkTS-Dyn: import('../api/@ohos.base')[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)>\| undefined | 是 | 回调函数，入参用于接收EmbeddedUIExtensionAbility的返回结果，类型为[TerminationInfo](#terminationinfo)。取值为undefined时，不使用回调函数。|
 
 > **说明：**
 >
@@ -124,7 +126,7 @@ ArkTS-Sta: onTerminated(callback: Callback&lt;TerminationInfo&gt; | undefined)
 
 ### onError
 
-ArkTS-Dyn: onError(callback: ErrorCallback)
+ArkTS-Dyn: onError(callback: import('../api/@ohos.base').ErrorCallback)
 
 ArkTS-Sta: onError(callback: ErrorCallback\<BusinessError> | undefined)
 
@@ -146,7 +148,7 @@ ArkTS-Sta: onError(callback: ErrorCallback\<BusinessError> | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---- |
-| callback | ArkTS-Dyn: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) <br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息，类型为[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。<br/>ArkTS-Sta模式下，可传入undefined，表示取消回调函数。 |
+| callback | ArkTS-Dyn: import('../api/@ohos.base')[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) <br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息，类型为[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。<br/>ArkTS-Sta模式下，可传入undefined，表示取消回调函数。 |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -267,7 +269,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
 | 名称 | 类型                      | 只读 | 可选 | 说明                                                 |
 | ---- | -------------------------| ---- | ---- | ---------------------------------------------------- |
 | code | number                                                     | 否 | 否 | 被拉起EmbeddedUIExtensionAbility退出时返回的结果码，返回的结果码由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。 |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 是 | 被拉起EmbeddedUIExtensionAbility退出时返回的数据。   |
+| want | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 否 | 是 | 被拉起EmbeddedUIExtensionAbility退出时返回的数据。   |
 
 ## 示例（加载EmbeddedComponent）
 

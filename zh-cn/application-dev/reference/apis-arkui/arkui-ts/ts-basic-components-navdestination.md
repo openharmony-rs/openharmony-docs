@@ -944,7 +944,7 @@ ArkTS-Sta: onBackPressed(callback:&nbsp;(()&nbsp;=&gt;&nbsp;boolean) | undefined
 
 ### onReady<sup>11+</sup>
 
-ArkTS-Dyn: onReady(callback: Callback\<NavDestinationContext\>)
+ArkTS-Dyn: onReady(callback: import('../api/@ohos.base').Callback\<NavDestinationContext\>)
 
 ArkTS-Sta: onReady(callback: Callback\<NavDestinationContext\> | undefined)
 
@@ -966,7 +966,7 @@ ArkTS-Sta: onReady(callback: Callback\<NavDestinationContext\> | undefined)
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   | ArkTS-Dyn: Callback\<[NavDestinationContext](#navdestinationcontext11)\><br/>ArkTS-Sta: Callback\<[NavDestinationContext](#navdestinationcontext11)\> \| undefined    | 是   | 当NavDestination即将构建子组件之前会触发此回调。<br/>取值为undefined时，不使用回调函数。|
+| callback   | ArkTS-Dyn:  import('../api/@ohos.base').[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationContext](#navdestinationcontext11)\><br/>ArkTS-Sta: Callback\<[NavDestinationContext](#navdestinationcontext11)\> \| undefined    | 是   | 当NavDestination即将构建子组件之前会触发此回调。<br/>取值为undefined时，不使用回调函数。|
 
 ### onSaveState
 
@@ -1360,7 +1360,7 @@ NavDestination自定义转场动画的代理函数。
 
 ## Orientation<sup>19+</sup>
 
-ArkTS-Dyn: type Orientation = Orientation
+ArkTS-Dyn: type Orientation = import('../api/@ohos.window').default.Orientation
 
 ArkTS-Sta: type Orientation = window.Orientation
 
@@ -1376,7 +1376,7 @@ Orientation实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [Orientation](../arkts-apis-window-e.md#orientation9)<br/>ArkTS-Sta: window.Orientation | 返回Orientation实例对象。 |
+| ArkTS-Dyn: import('../api/@ohos.window').default[Orientation](../arkts-apis-window-e.md#orientation9)<br/>ArkTS-Sta: window.Orientation | 返回Orientation实例对象。 |
 
 ## 示例
 

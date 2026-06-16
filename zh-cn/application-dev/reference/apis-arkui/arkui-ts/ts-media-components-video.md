@@ -389,7 +389,7 @@ ArkTS-Sta: onFinish(event: VoidCallback | undefined)
 
 ### onError
 
-ArkTS-Dyn: onError(event: VoidCallback | ErrorCallback)
+ArkTS-Dyn: onError(event: VoidCallback | import('../api/@ohos.base').ErrorCallback)
 
 ArkTS-Sta: onError(event: VoidCallback | ErrorCallback | undefined)
 
@@ -411,7 +411,7 @@ ArkTS-Sta: onError(event: VoidCallback | ErrorCallback | undefined)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) \| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<sup>20+</sup><br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) \| undefined | 是   | 视频播放失败时的回调函数。其中[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)类型入参的回调函数用于接收异常信息，回调返回的错误码详细介绍请参见[Video组件错误码](../errorcode-video.md)和[Media错误码](../../apis-media-kit/errorcode-media.md)。<br/>取值为undefined时，不使用回调函数。|
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) \| import('../api/@ohos.base').[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<sup>20+</sup><br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) \| undefined | 是   | 视频播放失败时的回调函数。其中[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)类型入参的回调函数用于接收异常信息，回调返回的错误码详细介绍请参见[Video组件错误码](../errorcode-video.md)和[Media错误码](../../apis-media-kit/errorcode-media.md)。<br/>取值为undefined时，不使用回调函数。|
 
 ### onStop<sup>12+</sup>
 
