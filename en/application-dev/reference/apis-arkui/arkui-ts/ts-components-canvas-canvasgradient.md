@@ -155,4 +155,4 @@ struct AddColorStop {
   }
 }
 ```
-![en-us_image_0000001194032516](figures/en-us_image_0000001194032517.png)
+![addColorStop](figures/addColorStop.png)

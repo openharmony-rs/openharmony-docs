@@ -103,7 +103,7 @@
       - [Graphics (系统接口)](js-apis-arkui-graphics-sys.md)
       <!--DelEnd-->
   - 窗口管理<!--window-manager-api-->
-    - [@ohos.window.floatView (标准悬浮窗)](js-apis-floatView.md)
+    - [@ohos.window.floatView (闪控窗)](js-apis-floatView.md)
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
     <!--Del-->
     - [@ohos.PiPWindow (画中画窗口)(系统接口)](js-apis-pipWindow-sys.md)
@@ -277,6 +277,8 @@
     - [Row](arkui-ts/ts-container-row.md)
     - [Stack](arkui-ts/ts-container-stack.md)
     - [RelativeContainer](arkui-ts/ts-container-relativecontainer.md)
+    - [DynamicLayout](arkui-ts/ts-container-dynamiclayout.md)
+    - [ContainerReader](arkui-ts/ts-container-containerreader.md)
      <!--Del-->
     - [Flex (系统接口)](arkui-ts/ts-container-flex-sys.md)
     - [Column (系统接口)](arkui-ts/ts-container-column-sys.md)
@@ -289,10 +291,6 @@
     - [ColumnSplit](arkui-ts/ts-container-columnsplit.md)
     - [RowSplit](arkui-ts/ts-container-rowsplit.md)
     - [SideBarContainer](arkui-ts/ts-container-sidebarcontainer.md)
-  - 动态布局<!--dynamic-layout-->
-    - [DynamicLayout](arkui-ts/ts-container-dynamiclayout.md)
-  - 容器断点<!--container-reader-->
-    - [ContainerReader](arkui-ts/ts-container-containerreader.md)
   - 滚动与滑动<!--scroll-and-swipe-->
     - [List](arkui-ts/ts-container-list.md)
     - [ListItem](arkui-ts/ts-container-listitem.md)
@@ -657,7 +655,9 @@
     - [native_type.h](capi-native-type-h.md)
     - [native_type_visual.h](capi-native-type-visual-h.md)
     - [native_xcomponent_key_event.h](capi-native-xcomponent-key-event-h.md)
+    - [navigation_router.h](capi-navigation-router-h.md)
     - [styled_string.h](capi-styled-string-h.md)
+    - [swiper.h](capi-swiper-h.md)
     - [ui_input_event.h](capi-ui-input-event-h.md)
     - [oh_window.h](capi-oh-window-h.md)
     - [oh_window_comm.h](capi-oh-window-comm-h.md)

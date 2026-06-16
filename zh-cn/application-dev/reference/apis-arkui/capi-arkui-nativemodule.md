@@ -25,6 +25,8 @@
 | 名称 | 描述 |
 | -- | -- |
 | [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md) | 为NativeNode API提供自定义节点事件定义。 |
+| [navigation_router.h](capi-navigation-router-h.md) | 定义Navigation或Router组件的枚举和接口。 |
+| [swiper.h](capi-swiper-h.md) | 定义Swiper组件的枚举和接口。 |
 | [drag_and_drop.h](capi-drag-and-drop-h.md) | 提供NativeDrag相关接口定义。 |
 | [drawable_descriptor.h](capi-drawable-descriptor-h.md) | 提供NativeDrawableDescriptor接口的类型定义。 |
 | [native_animate.h](capi-native-animate-h.md) | 提供ArkUI在Native侧的动画接口定义集合。 |

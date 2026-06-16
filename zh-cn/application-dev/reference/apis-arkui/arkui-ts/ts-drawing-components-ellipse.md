@@ -304,7 +304,7 @@ struct EllipseExample {
 }
 ```
 
-![zh-cn_image_0000001174104394](figures/zh-cn_image_0000001174104394.png)
+![ellipse](figures/ellipse.png)
 
 ### 示例2（宽和高使用不同参数类型绘制椭圆）
 

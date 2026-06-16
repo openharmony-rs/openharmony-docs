@@ -94,7 +94,7 @@ type DrawingCanvas = import('../api/@ohos.graphics.drawing').default.Canvas
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [import('../api/@ohos.graphics.drawing').default.Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md) | 返回一个Canvas对象。 |
+| import('../api/@ohos.graphics.drawing').default.[Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md) | 返回一个Canvas对象。 |
 
 ## Size
 

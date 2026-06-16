@@ -71,7 +71,7 @@ this.objLink= ...
 
   **图1** 初始化规则图示  
 
-  ![zh-cn_image_0000001502255261](figures/zh-cn_image_0000001502255261.png)
+  ![zh-cn_image_0000001502255261](figures/Initialization-rules01.png)
 
 
 ## 观察变化和行为表现
@@ -1584,7 +1584,7 @@ struct UserChild {
 
 上面的示例关系如图所示：
 
-![zh-cn_image_0000001653949465](figures/zh-cn_image_0000001653949465.jpg)
+![zh-cn_image_0000001653949465](figures/Differences-example.jpg)
 
 ### 在\@Observed装饰类的构造函数中延时更改成员变量
 

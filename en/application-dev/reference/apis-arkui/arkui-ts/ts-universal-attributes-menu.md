@@ -449,7 +449,7 @@ struct MenuExample {
 }
 ```
 
-![en_image_0000001174582862](figures/en_image_0000001174582862.gif)
+![menuControl1](figures/menuControl1.gif)
 
 ### Example 2: Displaying a Custom Menu
 
@@ -500,7 +500,7 @@ struct MenuExample {
 }
 ```
 
-![en_image_0000001186807708](figures/en_image_0000001186807708.gif)
+![menuControl2](figures/menuControl2.gif)
 
 ### Example 3: Displaying a Menu on Long Press
 

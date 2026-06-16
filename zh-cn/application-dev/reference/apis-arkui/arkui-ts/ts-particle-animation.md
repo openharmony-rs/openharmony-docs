@@ -401,8 +401,8 @@ interface ParticlePropertyAnimation<T> {
 | ------ | ------- | ---- | ------- | --------------------- |
 | strength  | number | 否 | 是   |场强，表示场从中心向外的排斥力的强度，默认值0。正数表示排斥力方向朝外，负数表示吸引力，方向朝内。<br/>取值范围：(-∞, +∞)。 |
 | shape  |   [DisturbanceFieldShape](#disturbancefieldshape12) | 否 | 是   | 场的形状。<br/>默认为DisturbanceFieldShape.RECT。 |
-| size  | [SizeT](../js-apis-arkui-graphics.md#sizett12)&lt;number&gt;| 否 | 是  |场的大小。<br/>默认值 {width:0，height:0}。<br/>width和height的取值范围：[0, +∞)。 |
-| position  | [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | 否 | 是   |场的位置。<br/>默认值{x:0，y:0}。<br/>x、y的取值范围：(-∞, +∞)。 |
+| size  | [SizeT\<T>](#sizett12)&lt;number&gt;| 否 | 是  |场的大小。<br/>默认值 {width:0，height:0}。<br/>width和height的取值范围：[0, +∞)。 |
+| position  | [PositionT](#positiontt12)&lt;number&gt; | 否 | 是   |场的位置。<br/>默认值{x:0，y:0}。<br/>x、y的取值范围：(-∞, +∞)。 |
 | feather  | number | 否 | 是   |羽化值，表示场从中心点到场边缘的衰减程度，取值范围0到100的整数，如果0则表示场是一个刚体，所有范围内的粒子都被排斥在外。羽化值越大场的缓和程度越大，场范围内出现越多靠近中心点的粒子。<br/>默认值为0。 |
 | noiseScale  | number | 否 | 是   |噪声尺度，用于控制噪声图案的整体大小，取值大于等于0。<br/>默认值1。 |
 | noiseFrequency  | number | 否 | 是   |噪声频率，频率越大噪声越细腻，取值大于等于0。<br/> 默认值1。 |
@@ -432,8 +432,8 @@ interface ParticlePropertyAnimation<T> {
 | ------ | ------- | ---- | ------- | --------------------- |
 | index   | number | 否 | 否   |索引，取整，按初始化参数中发射器的数组索引指定对应的发射器。异常默认值为0。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | emitRate  | number  | 否 | 是   | 发射器发射速率，即每秒发射粒子的数量。<br/>未传入时保持其当前的发射速率， 传入值小于0时取默认值5。emitRate值超过5000时会极大影响性能，建议设置参数小于5000。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| position  | [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | 否 | 是  |发射器位置的数组，只支持number类型。<br/>未传入时保持其当前的发射器位置。需传入两个有效参数，若其中一个为异常值，则position不生效。<br/>x、y的取值范围：(-∞, +∞)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| size  | [SizeT](../js-apis-arkui-graphics.md#sizett12)&lt;number&gt;| 否 | 是  |发射窗口的大小，只支持number类型。<br/>未传入时保持其当前发射窗口大小。需传入两个有效参数且都大于0，若其中一个为异常值，则size不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| position  | [PositionT](#positiontt12)&lt;number&gt; | 否 | 是  |发射器位置的数组，只支持number类型。<br/>未传入时保持其当前的发射器位置。需传入两个有效参数，若其中一个为异常值，则position不生效。<br/>x、y的取值范围：(-∞, +∞)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| size  | [SizeT\<T>](#sizett12)&lt;number&gt;| 否 | 是  |发射窗口的大小，只支持number类型。<br/>未传入时保持其当前发射窗口大小。需传入两个有效参数且都大于0，若其中一个为异常值，则size不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | annulusRegion<sup>20+</sup>  | [ParticleAnnulusRegion](ts-particle-animation.md#particleannulusregion20)| 否 | 是 |环形发射器参数。需要对应index的发射器形状为环形才生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## ParticleTuple<sup>18+</sup>
@@ -654,7 +654,7 @@ interface ParticleColorUpdaterOptions<UPDATER extends ParticleUpdater> {
 
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ------ | ------ | -- | -- | ---- |
-| center      | [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 否 | 是  | 圆环的圆心坐标，组件的左上角为坐标原点。默认值：{x:LengthMetrics.percent(0.5),y:LengthMetrics.percent(0.5)}   |
+| center      | [PositionT](#positiontt12)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 否 | 是  | 圆环的圆心坐标，组件的左上角为坐标原点。默认值：{x:LengthMetrics.percent(0.5),y:LengthMetrics.percent(0.5)}   |
 | outerRadius      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 否   | 圆环的外圆半径。   |
 | innerRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 否  | 圆环的内圆半径。   |
 | startAngle | number | 否 | 是   | 圆环的起始角度。<br>单位：度<br>默认值：0  |
@@ -662,7 +662,7 @@ interface ParticleColorUpdaterOptions<UPDATER extends ParticleUpdater> {
 
 ## Vector2T\<T><sup>22+</sup>
 
-type Vector2T\<T> = Vector2T\<T>
+type Vector2T\<T> = import('../api/arkui/Graphics').Vector2T\<T>
 
 定义Vector2T类型。其中Vector2T类型包含x和y两个属性值。
 
@@ -672,8 +672,35 @@ type Vector2T\<T> = Vector2T\<T>
 
 | 类型                         | 说明                                |
 | ---------------------------- | ----------------------------------- |
-| [Vector2T\<T>](../js-apis-arkui-graphics.md#vector2tt12) | 用于表示T类型的包含x和y两个值的向量。x表示向量x轴方向的值。y表示向量y轴方向的值。<br/>单位：vp |
+| import('../api/arkui/Graphics').[Vector2T\<T>](../js-apis-arkui-graphics.md#vector2tt12) | 用于表示T类型的包含x和y两个值的向量。x表示向量x轴方向的值。y表示向量y轴方向的值。<br/>单位：vp |
 
+## PositionT\<T><sup>12+</sup>
+
+type PositionT\<T> = import('../api/arkui/Graphics').Position\<T>
+
+用于设置或返回组件的位置。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                         | 说明                                |
+| ---------------------------- | ----------------------------------- |
+| import('../api/arkui/Graphics').[PositionT\<T>](../js-apis-arkui-graphics.md#positiontt12) | 包含x和y两个值的向量。<br/>单位：vp |
+
+## SizeT\<T><sup>12+</sup>
+
+type SizeT\<T> = import('../api/arkui/Graphics').SizeT\<T>
+
+定义Size类型。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                         | 说明                                |
+| ---------------------------- | ----------------------------------- |
+| import('../api/arkui/Graphics').[SizeT\<T>](../js-apis-arkui-graphics.md#sizett12) | Size类型，包含了宽和高。<br/>单位：vp |
 
 ## FieldRegion<sup>22+</sup>
 
@@ -688,8 +715,8 @@ type Vector2T\<T> = Vector2T\<T>
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ------ | ------ | -- | -- | ---- |
 | shape      | [DisturbanceFieldShape](#disturbancefieldshape12) | 否 | 是  | 粒子场的区域形状。<br/>默认值：DisturbanceFieldShape.RECT  |
-| position      | [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | 否 | 是 | 粒子场的区域中心位置。坐标单位为vp。<br/>默认值：{x:0, y:0}  |
-| size  | [SizeT](../js-apis-arkui-graphics.md#sizett12)&lt;number&gt; | 否 | 是  | 粒子场的区域大小。值的单位为vp。<br/>默认值：{width:0, height:0}<br/>取值范围：<br/>width：[0, +∞)<br/>height：[0, +∞)<br/>当size的width（或height）设置为负值时取width（或height）的默认值。  |
+| position      | [PositionT](#positiontt12)&lt;number&gt; | 否 | 是 | 粒子场的区域中心位置。坐标单位为vp。<br/>默认值：{x:0, y:0}  |
+| size  | [SizeT\<T>](#sizett12)&lt;number&gt; | 否 | 是  | 粒子场的区域大小。值的单位为vp。<br/>默认值：{width:0, height:0}<br/>取值范围：<br/>width：[0, +∞)<br/>height：[0, +∞)<br/>当size的width（或height）设置为负值时取width（或height）的默认值。  |
 
 ## RippleFieldOptions<sup>22+</sup>
 
@@ -707,7 +734,7 @@ type Vector2T\<T> = Vector2T\<T>
 | wavelength      | number | 否 | 是 | 描述粒子波动场的波长，即一个波周期的变化距离。波长越大，则随距离的变化，波的变化越慢，波动越不明显。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置为负值时取默认值。  |
 | waveSpeed  | number | 否 | 是  | 描述粒子波动场的波速。波速越大，则随时间的变化，波的变化越快，波动越明显。<br/>取值范围：[0, +∞)<br/>默认值：0<br/>设置为负值时取默认值。  |
 | attenuation  | number | 否 | 是  | 描述粒子波动场波的衰减系数。衰减系数越大，则随时间的变化，波的衰减越快。<br/>取值范围：[0, 1]<br/>默认值：0.0<br/>设置的数值不在范围内时取默认值。  |
-| center  | [PositionT](../js-apis-arkui-graphics.md#positiont12)&lt;number&gt; | 否 | 是  | 粒子波动场产生力的中心位置。组件的左上角为坐标原点。坐标单位为vp。<br/>默认值：{x:0, y:0} |
+| center  | [PositionT](#positiontt12)&lt;number&gt; | 否 | 是  | 粒子波动场产生力的中心位置。组件的左上角为坐标原点。坐标单位为vp。<br/>默认值：{x:0, y:0} |
 | region  | [FieldRegion](ts-particle-animation.md#fieldregion22) | 否 | 是  | 粒子波动场影响的区域信息，其中区域信息包括区域形状、区域大小以及区域中心位置。<br/>默认值：{shape:DisturbanceFieldShape.RECT, position:{x:0, y:0}, size:{width:0, height:0}}  |
 
 ## VelocityFieldOptions<sup>22+</sup>

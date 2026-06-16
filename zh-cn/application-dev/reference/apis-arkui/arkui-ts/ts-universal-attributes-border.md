@@ -239,7 +239,7 @@ struct BorderExample {
 }
 ```
 
-![zh-cn_image_0000001219982705](figures/zh-cn_image_0000001219982705.gif)
+![borderRadius](figures/borderRadius.gif)
 
 ### 示例2（边框宽度类型和边框颜色）
 

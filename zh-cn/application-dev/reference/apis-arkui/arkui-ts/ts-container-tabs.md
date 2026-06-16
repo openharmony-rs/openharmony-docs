@@ -723,7 +723,7 @@ TabBar布局模式枚举。
 
 ## CommonModifier<sup>15+</sup>
 
-type CommonModifier = CommonModifier
+type CommonModifier = import('../api/arkui/CommonModifier').CommonModifier
 
 作为Tabs组件的参数对象。
 
@@ -735,7 +735,7 @@ type CommonModifier = CommonModifier
 
 | 类型         | 说明                                     |
 | ---------- | ---------------------------------------- |
-| [CommonModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 设置TabBar的通用属性。 |
+| import('../api/arkui/CommonModifier').[CommonModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 设置TabBar的通用属性。 |
 
 ## TabsCacheMode<sup>19+</sup>枚举说明
 

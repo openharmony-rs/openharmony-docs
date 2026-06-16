@@ -28,11 +28,13 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 
 > **说明：**
 >
-> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
+> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加"_ContinueQuickStart"后缀，可以开启快速拉起功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备中调用会返回16300501错误码。
 
 **参数**：
 
@@ -95,11 +97,13 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 
 > **说明：**
 >
-> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
+> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加"_ContinueQuickStart"后缀，可以开启快速拉起功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **参数**：
 
@@ -158,6 +162,7 @@ export default class MigrationAbility extends UIAbility {
 
 注册或注销回调函数返回的快速拉起的结果。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 | 名称 | 类型                                                                            | 只读 | 可选 | 说明       |
@@ -168,6 +173,8 @@ export default class MigrationAbility extends UIAbility {
 ## ContinueStateCode
 
 快速拉起的结果状态码的枚举值。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 

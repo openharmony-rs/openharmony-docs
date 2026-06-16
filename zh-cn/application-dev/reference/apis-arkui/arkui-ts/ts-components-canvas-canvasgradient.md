@@ -85,7 +85,7 @@ addColorStop(offset: number, color: string | ColorMetrics): void
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------------------------------- |
 | offset | number | 是  | 设置渐变点距离起点的位置占总体长度的比例，范围为[0, 1]。</br>设置offset<0或offset>1无渐变效果。<br>异常值undefined和null按无效值处理，不设置本次断点值，NaN会导致CanvasGradient异常，Infinity会导致整个CanvasGradient不生效。 |
-| color  | string \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是  | 设置渐变填充的颜色。</br>可以使用[colorWithSpace](../js-apis-arkui-graphics.md#colorwithspace20)方法构造指定色域属性[ColorSpace](ts-appendix-enums.md#colorspace20)为SRGB或DISPLAY_P3的颜色。每个渐变ColorMetrics的色域属性应当统一，设置不同色域的属性时将抛出异常，错误码：103701。</br>设置null和undefined无效，忽略本次断点值。   |
+| color  | string \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是  | 设置渐变的颜色。</br>可以使用[colorWithSpace](../js-apis-arkui-graphics.md#colorwithspace20)方法构造指定色域属性[ColorSpace](ts-appendix-enums.md#colorspace20)为SRGB或DISPLAY_P3的颜色。每个渐变ColorMetrics的色域属性应当统一，设置不同色域的属性时将抛出异常，错误码：103701。</br>设置null和undefined无效，忽略本次断点值。   |
 
 **错误码：**
 
@@ -154,5 +154,5 @@ struct AddColorStop {
   }
 }
 ```
-![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032517.png)
+![addColorStop](figures/addColorStop.png)
 

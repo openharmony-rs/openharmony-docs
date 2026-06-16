@@ -61,7 +61,7 @@
 
 ## LevelOrder<sup>18+</sup>
 
-type LevelOrder = LevelOrder
+type LevelOrder = import('../api/@ohos.promptAction').LevelOrder
 
 弹窗的显示顺序。
 
@@ -73,7 +73,7 @@ type LevelOrder = LevelOrder
 
 | 类型                                                  | 说明                 |
 | ----------------------------------------------------- | -------------------- |
-| [LevelOrder](../js-apis-promptAction.md#levelorder18) | 设置弹窗的显示顺序。 |
+| import('../api/@ohos.promptAction').[LevelOrder](../js-apis-promptAction.md#levelorder18) | 设置弹窗的显示顺序。 |
 
 ## AlertDialogParamWithConfirm对象说明
 

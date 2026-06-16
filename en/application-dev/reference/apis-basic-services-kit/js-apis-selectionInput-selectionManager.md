@@ -23,9 +23,9 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 ## selectionManager
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 ### selectionManager.on('selectionCompleted')
 
@@ -33,22 +33,22 @@ on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
 Registers a callback to listen for the word selection completion event. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'selectionCompleted'**.|
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | Yes  | Callback used to return the word selection information.      |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | Yes  | Callback used to return the word selection information. This callback is triggered only when the user selects text using the mouse or touchpad (by double-clicking, triple-clicking, or pressing and sliding the left mouse button) and then presses **Ctrl**.      |
 
 **Error codes**
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
 
@@ -72,9 +72,9 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
 Unregisters the callback used to listen for the word selection completion event. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -106,9 +106,9 @@ getSelectionContent(): Promise\<string>
 
 Obtains this selected text content. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Return value**
 | Type  | Description                                                                |
@@ -119,7 +119,7 @@ Obtains this selected text content. This API uses a promise to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600004   | The interface is called too frequently. |
@@ -148,11 +148,11 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 Creates a word selection panel. This API uses a promise to return the result.
 
-Only one [main panel](js-apis-selectionInput-selectionPanel.md#paneltype) and one [menu panel](js-apis-selectionInput-selectionPanel.md#paneltype) can be created for a single word selection application.
+Only one [MENU_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype) and one [MAIN_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype) can be created for one word selection application.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -170,7 +170,7 @@ Only one [main panel](js-apis-selectionInput-selectionPanel.md#paneltype) and on
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
@@ -225,9 +225,9 @@ destroyPanel(panel: Panel): Promise\<void>
 
 Destroys the word selection panel. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -244,7 +244,7 @@ Destroys the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 
@@ -308,9 +308,9 @@ export default ServiceExtAbility;
 
 Defines the information of a word selection event.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 | Name     | Type| Read-Only| Optional| Description        |
 | --------- | -------- | ---- | ---- | ------------ |
@@ -331,9 +331,9 @@ Defines the information of a word selection event.
 
 Represents the word selection panel.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 In the following APIs, you must first use [createPanel](#createpanel) to obtain a **Panel** instance, and then call the APIs using the obtained instance.
 
@@ -343,9 +343,9 @@ setUiContent(path: string): Promise\<void>
 
 Sets the page content for the word selection panel. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -363,7 +363,7 @@ Sets the page content for the word selection panel. This API uses a promise to r
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -390,9 +390,9 @@ show(): Promise\<void>
 
 Shows the word selection panel. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Return value**
 
@@ -404,7 +404,7 @@ Shows the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -427,9 +427,9 @@ hide(): Promise\<void>
 
 Hides the word selection panel. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Return value**
 
@@ -441,7 +441,7 @@ Hides the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -464,9 +464,9 @@ startMoving(): Promise\<void>
 
 Moves the word selection panel by dragging. This API uses a promise to return the result. This API must be written in the **onTouch** callback and the event type must be **TouchType.Down**.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Return value**
 
@@ -478,7 +478,7 @@ Moves the word selection panel by dragging. This API uses a promise to return th
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -517,9 +517,9 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 >
 > This API is supported since API version 20 and deprecated since API version 24. You are advised to use [moveToGlobalDisplay](#movetoglobaldisplay) instead.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
 **Parameters**
 
@@ -538,7 +538,7 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -566,9 +566,9 @@ moveToGlobalDisplay(x: number, y: number): Promise\<void>
 
 Moves the word selection panel to the specified coordinates on the screen. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -587,7 +587,7 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -614,9 +614,9 @@ on(type: 'destroyed', callback: Callback\<void>): void
 
 Registers a callback to listen for the destroy event of the word selection panel. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -645,9 +645,9 @@ off(type: 'destroyed', callback?: Callback\<void>): void
 
 Unregisters the callback used to listen for the destroy event of the word selection panel. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -674,9 +674,9 @@ on(type: 'hidden', callback: Callback\<void>): void
 
 Registers a callback to listen for the hide event of the word selection panel. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -705,9 +705,9 @@ off(type: 'hidden', callback?: Callback\<void>): void
 
 Unregisters the callback used to listen for the hide event of the word selection panel. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -732,9 +732,9 @@ try {
 
 Enumerates the operations for selecting words.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 | Name        | Value| Description              |
 | ------------ | -- | ------------------ |
