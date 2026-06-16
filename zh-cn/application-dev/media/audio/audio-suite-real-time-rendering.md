@@ -10,7 +10,7 @@
 
 ## 开发基础配置
 
-开发者若要使用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)提供的实时渲染能力，需添加对应的头文件。
+开发者使用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)提供的实时预览能力，添加对应的头文件。
 
 ### 在CMake脚本中链接动态库
 
