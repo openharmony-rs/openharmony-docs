@@ -545,11 +545,6 @@ getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 - API版本26.0.0之前：N/A
 - API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
 
-**需要权限：**
-
-- API版本26.0.0之前：N/A
-- API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
-
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **参数：**
