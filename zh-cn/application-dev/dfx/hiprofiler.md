@@ -250,7 +250,7 @@ $ hiprofiler_cmd \
   config_data {
    save_file: false
    smb_pages: 16384
-   max_stack_depth: 8
+   max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
    string_compressed: true
    fp_unwind: true
@@ -260,7 +260,7 @@ $ hiprofiler_cmd \
    offline_symbolization: true
    startup_mode: false
    js_stack_report: 1
-   max_js_stack_depth: 5
+   max_js_stack_depth: 20
   }
  }
 CONFIG
@@ -293,7 +293,7 @@ $ hiprofiler_cmd \
   config_data {
    save_file: false
    smb_pages: 16384
-   max_stack_depth: 8
+   max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
    string_compressed: true
    fp_unwind: false
@@ -303,7 +303,7 @@ $ hiprofiler_cmd \
    offline_symbolization: true
    startup_mode: false
    js_stack_report: 1
-   max_js_stack_depth: 5
+   max_js_stack_depth: 20
   }
  }
 CONFIG
@@ -335,7 +335,7 @@ $ hiprofiler_cmd \
   config_data {
    save_file: false
    smb_pages: 16384
-   max_stack_depth: 8
+   max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
    string_compressed: true
    fp_unwind: true
@@ -346,7 +346,7 @@ $ hiprofiler_cmd \
    startup_mode: false
    statistics_interval: 10
    js_stack_report: 1
-   max_js_stack_depth: 5
+   max_js_stack_depth: 20
   }
  }
 CONFIG
@@ -378,7 +378,7 @@ $ hiprofiler_cmd \
   config_data {
    save_file: false
    smb_pages: 16384
-   max_stack_depth: 8
+   max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
    string_compressed: true
    fp_unwind: false
@@ -388,7 +388,7 @@ $ hiprofiler_cmd \
    offline_symbolization: true
    startup_mode: false
    statistics_interval: 0
-   max_js_stack_depth: 5
+   max_js_stack_depth: 20
   }
  }
 CONFIG
@@ -1127,7 +1127,7 @@ $ hiprofiler_cmd stop
 
 > **说明：**
 >
-> 使用文件缓存模式时，use_file_cache_mode必须设置为true，需要在命令行中指定缓存文件大小，缓存文件(file_cache_buffer_size)大小为256MB。
+> 使用文件缓存模式时，use_file_cache_mode必须设置为true。
 
 ```shell
 $ hiprofiler_cmd \
@@ -1149,7 +1149,7 @@ $ hiprofiler_cmd \
   config_data {
    save_file: false
    smb_pages: 16384
-   max_stack_depth: 8
+   max_stack_depth: 20
    process_name: "com.example.insight_test_stage"
    string_compressed: true
    fp_unwind: false
@@ -1158,10 +1158,8 @@ $ hiprofiler_cmd \
    record_accurately: true
    offline_symbolization: true
    startup_mode: false
-   statistics_interval: 0
-   max_js_stack_depth: 5
+   max_js_stack_depth: 20
    use_file_cache_mode: true
-   file_cache_buffer_size: 256
   }
  }
 CONFIG
