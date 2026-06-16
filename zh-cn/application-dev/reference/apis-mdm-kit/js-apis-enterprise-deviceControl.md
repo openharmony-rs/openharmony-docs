@@ -67,6 +67,24 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
+try {
+  // 参数需根据实际情况进行替换
+  deviceControl.operateDevice(wantTemp, 'resetFactory');
+} catch (err) {
+  console.error(`Failed to reset factory. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+```ts
+import { deviceControl } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
 let filePath: string = '/test.png';
 
 try {
