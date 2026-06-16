@@ -144,23 +144,23 @@
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
          await transcoder?.release()
-  		  if (transcoder.fdDst != undefined) {
- 	  	 	fs.closeSync(transcoder.fdDst);
- 	  	  }
- 	  	  if (transcoder.fdSrc != undefined) {
- 	  	 	fs.closeSync(transcoder.fdSrc.fd);
- 	     }
+         if (transcoder.fdDst != undefined) {
+           fs.closeSync(transcoder.fdDst);
+         }
+         if (transcoder.fdSrc != undefined) {
+           fs.closeSync(transcoder.fdSrc.fd);
+         }
          workerPort.postMessage('complete');
        })
        // 转码错误回调函数。
        transcoder.on('error', async (err: BusinessError) => {
          await transcoder?.release();
- 	  	  if (transcoder.fdDst != undefined) {
- 	  	  	fs.closeSync(transcoder.fdDst);
- 	  	  }
- 	  	  if (transcoder.fdSrc != undefined) {
- 	  	    fs.closeSync(transcoder.fdSrc.fd);
- 	  	  }
+         if (transcoder.fdDst != undefined) {
+           fs.closeSync(transcoder.fdDst);
+         }
+         if (transcoder.fdSrc != undefined) {
+           fs.closeSync(transcoder.fdSrc.fd);
+         }
        })
        // 转码进度更新回调函数。
        transcoder.on('progressUpdate', (progress: number) => {
