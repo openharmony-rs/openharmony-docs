@@ -1337,8 +1337,17 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions)
 
 **原理说明**：
 
-该方法从升级包管理服务器下载升级包到设备本地存储。下载流程包括：解析版本摘要信息 → 根据downloadOptions选择网络类型 → 发起下载请求 → 分块接收
-数据并写入本地文件 → 实时更新进度。支持断点续传机制：记录已下载的字节位置和网络连接状态，中断后可从断点继续下载。暂停下载时保存当前进度状态（已下载大小、文件路径等），恢复下载时读取进度状态继续接收。
+该方法从升级包管理服务器下载升级包到设备本地存储。下载流程包括：
+
+```mermaid
+graph TD
+    A[解析版本摘要信息] --> B[根据downloadOptions选择网络类型]
+    B --> C[发起下载请求]
+    C --> D[分块接收数据并写入本地文件]
+    D --> E[实时更新进度]
+```
+
+支持断点续传机制：记录已下载的字节位置和网络连接状态，中断后可从断点继续下载。暂停下载时保存当前进度状态（已下载大小、文件路径等），恢复下载时读取进度状态继续接收。
 
 **调用顺序说明**：
 
@@ -1996,7 +2005,7 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, cal
 | --- | --- | --- | --- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
 | clearOptions      | [ClearOptions](#clearoptions)           | 是    | 清除选项（ClearOptions），用于指定要清除的异常状态类型。status字段仅支持UPGRADE_FAIL状态，当upgrade方法执行失败(状态为UPGRADE_FAIL)后，系统会保留异常状态阻止重新升级，此时需要传入UPGRADE_FAIL清除异常状态，使系统恢复到初始状态以便重新开始升级流程。|
-| callback | AsyncCallback<void> | 是 | 回调函数，用于接收清除异常状态结果。回调参数包括err（错误对象，成功时为null，失败时为错误对象）。|
+| callback | AsyncCallback\<void> | 是 | 回调函数，用于接收清除异常状态结果。回调参数包括err（错误对象，成功时为null，失败时为错误对象）。|
 
 **错误码**：
 
