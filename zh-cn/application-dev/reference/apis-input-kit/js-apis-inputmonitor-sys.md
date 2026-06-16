@@ -694,7 +694,7 @@ struct Index {
             // 订阅三指滑动事件
             inputMonitor.on('threeFingersSwipe', callback);
             // 取消订阅三指滑动事件
-            inputMonitor.off("threeFingersSwipe", callback);
+            inputMonitor.off('threeFingersSwipe', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -723,9 +723,9 @@ struct Index {
           };
           try {
             // 订阅三指滑动事件
-            inputMonitor.on("threeFingersSwipe", callback);
+            inputMonitor.on('threeFingersSwipe', callback);
             // 取消订阅三指滑动事件
-            inputMonitor.off("threeFingersSwipe");
+            inputMonitor.off('threeFingersSwipe');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1280,7 +1280,7 @@ struct Index {
             // 订阅三指点击事件
             inputMonitor.on('threeFingersTap', callback);
             // 取消订阅三指点击事件
-            inputMonitor.off("threeFingersTap", callback);
+            inputMonitor.off('threeFingersTap', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1311,7 +1311,7 @@ struct Index {
             // 订阅三指点击事件
             inputMonitor.on('threeFingersTap', callback);
             // 取消订阅三指点击事件
-            inputMonitor.off("threeFingersTap");
+            inputMonitor.off('threeFingersTap');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1573,7 +1573,7 @@ struct Index {
             // 订阅触摸屏捏合事件
             inputMonitor.on('touchscreenPinch', fingers, callback);
             // 取消订阅触摸屏捏合事件
-            inputMonitor.off("touchscreenPinch", fingers, callback);
+            inputMonitor.off('touchscreenPinch', fingers, callback);
           } catch (error) {
             console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1602,7 +1602,7 @@ struct Index {
               console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
             // 取消订阅触摸屏捏合事件
-            inputMonitor.off("touchscreenPinch", fingers);
+            inputMonitor.off('touchscreenPinch', fingers);
           } catch (error) {
             console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1716,7 +1716,7 @@ struct Index {
             // 订阅按键按下事件
             inputMonitor.on('keyPressed', keys, callback);
             // 取消订阅按键按下事件
-            inputMonitor.off("keyPressed", callback);
+            inputMonitor.off('keyPressed', callback);
           } catch (error) {
             console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1744,7 +1744,7 @@ struct Index {
               console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
             // 取消订阅按键按下事件
-            inputMonitor.off("keyPressed");
+            inputMonitor.off('keyPressed');
           } catch (error) {
             console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -1909,7 +1909,7 @@ build() {
           // 订阅向内滑动事件
           inputMonitor.on('swipeInward', callback);
           // 取消订阅向内滑动事件
-          inputMonitor.off("swipeInward", callback);
+          inputMonitor.off('swipeInward', callback);
           console.info(`Succeeded in turning off monitor.`);
         } catch (error) {
           console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1939,7 +1939,7 @@ build() {
           // 订阅向内滑动事件
           inputMonitor.on('swipeInward', callback);
           // 取消订阅向内滑动事件
-          inputMonitor.off("swipeInward");
+          inputMonitor.off('swipeInward');
           console.info(`Succeeded in turning off monitor.`);
         } catch (error) {
           console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2053,7 +2053,7 @@ struct Index {
             // 订阅指纹事件
             inputMonitor.on('fingerprint', callback);
             // 取消订阅指纹事件
-            inputMonitor.off("fingerprint", callback);
+            inputMonitor.off('fingerprint', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2084,7 +2084,7 @@ struct Index {
             // 订阅指纹事件
             inputMonitor.on('fingerprint', callback);
             // 取消订阅指纹事件
-            inputMonitor.off("fingerprint");
+            inputMonitor.off('fingerprint');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
