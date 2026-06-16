@@ -1,8 +1,8 @@
 # 网页中安全区域计算和避让适配
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @KeeGitee-->
-<!--Designer: @LongLie-->
+<!--Owner: @sinat_22543221-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
