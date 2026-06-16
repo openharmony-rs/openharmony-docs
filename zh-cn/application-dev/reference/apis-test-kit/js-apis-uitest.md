@@ -3725,6 +3725,7 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -5441,7 +5442,7 @@ touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?
 | ------ |-----------------------------------------------|----|-----------------------|
 | point       | [Point](#point9) | 是   | 触摸板双指滚动时鼠标光标的位置。                                            |
 | direction   | [UiDirection](#uidirection10)                 | 是  | 触摸板双指滚动的方向。           |
-| d           | number           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。为负数时抛出401错误码。         |
+| d           | number           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。为负数时抛出17000007错误码。 |
 | speed       | number           | 否   | 触摸板双指滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。 |
 
 **返回值：**
@@ -5832,8 +5833,8 @@ knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers  | Array<[Point](#point9)>   | 是   | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。为非正整数时抛出401错误码。         |
-| times     | number   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。为非正整数时抛出401错误码。 |
+| pointers  | Array<[Point](#point9)>   | 是   | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。取值不在范围内抛出17000007错误码。 |
+| times     | number   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。取值不在范围内抛出17000007错误码。 |
 
 **返回值：**
 
