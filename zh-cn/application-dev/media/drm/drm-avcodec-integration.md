@@ -123,7 +123,6 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     memcpy(info.initData, initData, info.initDataLen);
     }
     // 若DRM解决方案需要可选数据，请按实际设置optionName、optionData，并令optionsCount为实际选项数量。
-    // 建议使用strlen获取名称/数据长度，避免复制末尾的'\0'。
     info.optionsCount = 0;
     ret = OH_MediaKeySession_GenerateMediaKeyRequest(mediaKeySession, &info, &mediaKeyRequest);
     if (ret != DRM_ERR_OK) {
