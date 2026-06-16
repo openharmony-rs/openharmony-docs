@@ -3211,6 +3211,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets",
+				"functions":[
+					{
+						"end_line":104,
+						"name":"appIntentEntity_AppPlaylistEntity",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
