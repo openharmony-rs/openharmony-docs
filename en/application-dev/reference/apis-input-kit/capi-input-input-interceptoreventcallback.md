@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:20:31.742Z pushedAt=2026-06-12T02:47:37.894Z -->
 
 ```c
 typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallback
@@ -13,7 +14,7 @@ typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallba
 
 ## Overview
 
-Defines the structure of interceptor callback events, including mouse events, touch events, and axis events.
+Defines the interceptor callback event structure, which is used to define the callback function types required for input event interception. Mouse interception events, touch input events, key events, and axis events are supported.
 
 **Since**: 12
 
@@ -27,10 +28,9 @@ Defines the structure of interceptor callback events, including mouse events, to
 
 | Name| Description|
 | -- | -- |
-| [Input_MouseEventCallback](#input_mouseeventcallback) mouseCallback | Callback for mouse events.|
-| [Input_TouchEventCallback](#input_toucheventcallback) touchCallback | Callback used to return the touch event.|
-| [Input_AxisEventCallback](#input_axiseventcallback) axisCallback | Callback for axis events.|
-
+| [Input_MouseEventCallback()](#input_mouseeventcallback) mouseCallback | Callback for mouse events.|
+| [Input_TouchEventCallback()](#input_toucheventcallback) touchCallback | Callback used to return the touch event.|
+| [Input_AxisEventCallback()](#input_axiseventcallback) axisCallback | Callback for axis events.|
 
 ### Member functions
 
