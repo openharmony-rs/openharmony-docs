@@ -769,6 +769,6 @@ With this permission, the application can access device-side model runtime manag
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | 2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
