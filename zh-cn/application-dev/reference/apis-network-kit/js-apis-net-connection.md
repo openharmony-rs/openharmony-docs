@@ -1838,7 +1838,7 @@ removeCustomDnsRule(host: string): Promise\<void\>
 > **说明：**
 >
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。<br>
-> 如果需要调用removeCustomDnsRule，保证当前不存在另一线程在使用之前addCustomdnsrule配置的自定义规则，避免冲突。
+> 如果需要调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)，保证当前不存在另一线程在使用之前[addCustomDnsRule](#connectionaddcustomdnsrule11)配置的自定义规则，避免冲突。
 
 **需要权限**：ohos.permission.INTERNET
 
