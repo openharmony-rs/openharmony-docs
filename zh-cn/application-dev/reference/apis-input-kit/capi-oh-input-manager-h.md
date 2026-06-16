@@ -1905,7 +1905,7 @@ int64_t OH_Input_GetTouchEventActionTime(const struct Input_TouchEvent* touchEve
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | 返回触屏输入事件发生的时间，单位为微秒。 |
+| int64_t | 返回触屏输入事件发生的时间，表示系统启动运行至今逝去的微秒数，单位为微秒（μs）。 |
 
 ### OH_Input_SetTouchEventWindowId()
 
