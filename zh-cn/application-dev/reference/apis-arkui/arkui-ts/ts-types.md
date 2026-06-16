@@ -114,6 +114,8 @@ declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics
 
 ## ResourceStr
 
+type ResourceStr = string | Resource
+
 字符串类型，用于描述字符串入参可以使用的类型。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -683,6 +685,8 @@ type CustomBuilderT\<T> = (t: T) => void
 
 ## Dimension<sup>10+</sup>
 
+type Dimension = PX | VP | FP | LPX | Percentage | Resource
+
 长度类型，用于描述尺寸单位。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
@@ -704,7 +708,11 @@ type CustomBuilderT\<T> = (t: T) => void
 
 ## PX<sup>10+</sup>
 
+type PX = { number }px
+
 长度类型，用于描述以px像素单位为单位的长度。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -714,11 +722,15 @@ type CustomBuilderT\<T> = (t: T) => void
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}px               | 需要指定以px像素单位，如'10px'。 |
+| { number }px               | 需要指定以px像素单位，如'10px'。 |
 
 ## VP<sup>10+</sup>
 
+type VP = { number }vp | number
+
 长度类型，用于描述以vp像素单位为单位的长度。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -728,11 +740,15 @@ type CustomBuilderT\<T> = (t: T) => void
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}vp\|number | 需要指定数字或vp像素单位，如10或'10vp'。 |
+| { number }vp \| number | 需要指定数字或vp像素单位，如10或'10vp'。 |
 
 ## FP<sup>10+</sup>
 
+type FP = { number }fp
+
 长度类型，用于描述以fp像素单位为单位的长度。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -742,11 +758,15 @@ type CustomBuilderT\<T> = (t: T) => void
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}fp               | 需要指定以fp像素单位，如'10fp'。 |
+| { number }fp            | 需要指定以fp像素单位，如'10fp'。 |
 
 ## LPX<sup>10+</sup>
 
+type LPX = { number }lpx
+
 长度类型，用于描述以lpx像素单位为单位的长度。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -756,7 +776,7 @@ type CustomBuilderT\<T> = (t: T) => void
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}lpx               | 需要指定以lpx像素单位，如'10lpx'。 |
+| { number }lpx             | 需要指定以lpx像素单位，如'10lpx'。 |
 
 ## Percentage<sup>10+</sup>
 
