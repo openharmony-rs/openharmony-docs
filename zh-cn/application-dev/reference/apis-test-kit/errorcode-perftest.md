@@ -1,4 +1,4 @@
-# perftest错误码
+# PerfTest错误码
 
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->
@@ -72,7 +72,7 @@ Failed to execute the callback.
 
 **错误描述**
 
-执行回调代码段失败。
+执行回调函数失败。
 
 **可能原因**
 

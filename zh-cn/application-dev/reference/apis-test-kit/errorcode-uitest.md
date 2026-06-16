@@ -1,4 +1,4 @@
-# uitest错误码
+# UiTest错误码
 
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->

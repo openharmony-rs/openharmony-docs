@@ -76,7 +76,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 | resetCode   | Callback\<Callback\<boolean>> | 否 | 是 | 测试结束环境重置代码段。当测试代码段修改了全局状态（如全局变量、配置等）需要在每轮测试后重置时传入此参数。默认为空，框架在执行测试时不执行此代码段。入参为回调函数，需在代码段中主动调用以通知框架执行完成，否则会导致执行超时，详见下方说明。  |
 | bundleName  | string                      | 否 | 是 | 被测应用包名，格式要求与应用的bundleName一致。当需要测试非当前应用的性能数据时，传入目标应用的包名。默认为""，框架在执行测试时测试当前应用的性能数据。  |
 | iterations  | number                      | 否 | 是 | 测试迭代执行次数，取值范围为大于0的整数，默认值为5。超出范围时抛出异常。  |
-| timeout     | number                      | 否 | 是 | 单次代码段（actionCode/resetCode）执行的超时时间，取值范围为大于0的整数，单位ms，默认值为10000ms。当测试代码段执行耗时较长时，可适当增大此值以避免超时，超时后将触发异常，并终止测试执行。  |
+| timeout     | number                      | 否 | 是 | 单次代码段（actionCode/resetCode）执行的超时时间，取值范围为大于0的整数，单位：ms，默认值为10000ms。当测试代码段执行耗时较长时，可适当增大此值以避免超时，超时后将触发异常，并终止测试执行。 |
 
 > **说明：**
 >
@@ -128,7 +128,7 @@ static create(strategy: PerfTestStrategy): PerfTest
 
 **错误码：**
 
-以下错误码的详细介绍请参见[perftest错误码](errorcode-perftest.md)。
+以下错误码的详细介绍请参见[PerfTest错误码](errorcode-perftest.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -184,7 +184,7 @@ run(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[perftest错误码](errorcode-perftest.md)。
+以下错误码的详细介绍请参见[PerfTest错误码](errorcode-perftest.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -240,7 +240,7 @@ getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
 **错误码：**
 
-以下错误码的详细介绍请参见[perftest错误码](errorcode-perftest.md)。
+以下错误码的详细介绍请参见[PerfTest错误码](errorcode-perftest.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -285,7 +285,7 @@ destroy(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[perftest错误码](errorcode-perftest.md)。
+以下错误码的详细介绍请参见[PerfTest错误码](errorcode-perftest.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |

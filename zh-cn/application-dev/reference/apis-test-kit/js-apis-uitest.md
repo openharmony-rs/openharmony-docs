@@ -960,7 +960,7 @@ isBefore(com: Component): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1045,7 +1045,7 @@ isAfter(com: Component): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1130,7 +1130,7 @@ within(com: Component): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1292,7 +1292,7 @@ belongingDisplay(displayId: number): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1336,7 +1336,7 @@ originalText(text: string, pattern?: MatchPattern): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1375,7 +1375,7 @@ click(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1416,7 +1416,7 @@ doubleClick(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1454,7 +1454,7 @@ longClick(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1492,7 +1492,7 @@ getId(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1534,7 +1534,7 @@ getText(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1572,7 +1572,7 @@ getType(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1610,7 +1610,7 @@ getBounds(): Promise\<Rect>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1648,7 +1648,7 @@ getBoundsCenter(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1686,7 +1686,7 @@ isClickable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1705,7 +1705,7 @@ async function demo() {
   if (await button.isClickable()) {
     console.info('This button can be clicked');
   } else {
-    console.info('This button can not be clicked');
+    console.info('This button cannot be clicked');
   }
 }
 ```
@@ -1728,7 +1728,7 @@ isLongClickable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1770,7 +1770,7 @@ isChecked(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1812,7 +1812,7 @@ isCheckable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1854,7 +1854,7 @@ isScrollable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1873,7 +1873,7 @@ async function demo() {
   if (await scrollBar.isScrollable()) {
     console.info('This scrollBar can be operated');
   } else {
-    console.info('This scrollBar can not be operated');
+    console.info('This scrollBar cannot be operated');
   }
 }
 ```
@@ -1897,7 +1897,7 @@ isEnabled(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1916,7 +1916,7 @@ async function demo() {
   if (await button.isEnabled()) {
     console.info('This button can be operated');
   } else {
-    console.info('This button can not be operated');
+    console.info('This button cannot be operated');
   }
 }
 ```
@@ -1939,7 +1939,7 @@ isFocused(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1981,7 +1981,7 @@ isSelected(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2029,7 +2029,7 @@ inputText(text: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2078,7 +2078,7 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2117,7 +2117,7 @@ clearText(): Promise\<void>
 | Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2161,7 +2161,7 @@ scrollSearch(on: On): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2211,7 +2211,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2256,7 +2256,7 @@ scrollToTop(speed?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2301,7 +2301,7 @@ scrollToBottom(speed?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2326,7 +2326,7 @@ async function demo() {
 
 dragTo(target: Component): Promise\<void>
 
-将控件拖拽至目标控件处。使用Promise异步回调。
+将控件拖拽至目标控件处。仅针对支持拖拽的控件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2348,7 +2348,7 @@ dragTo(target: Component): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2378,7 +2378,7 @@ async function demo() {
 
 pinchOut(scale: number): Promise\<void>
 
-将控件按指定的比例进行捏合放大。使用Promise异步回调。
+将控件按指定的比例进行捏合放大。仅针对支持缩放的控件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2398,7 +2398,7 @@ pinchOut(scale: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2423,7 +2423,7 @@ async function demo() {
 
 pinchIn(scale: number): Promise\<void>
 
-将控件按指定的比例进行捏合缩小。使用Promise异步回调。
+将控件按指定的比例进行捏合缩小。仅针对支持缩放的控件生效。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2443,7 +2443,7 @@ pinchIn(scale: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2482,7 +2482,7 @@ getDescription(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2519,7 +2519,7 @@ getHint(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2556,7 +2556,7 @@ getDisplayId(): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2594,7 +2594,7 @@ getOriginalText(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2638,7 +2638,7 @@ static create(): Driver
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2679,7 +2679,7 @@ delayMs(duration: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2722,7 +2722,7 @@ findComponent(on: On): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2767,7 +2767,7 @@ findComponents(on: On): Promise\<Array\<Component>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2812,7 +2812,7 @@ findWindow(filter: WindowFilter): Promise\<UiWindow>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2856,7 +2856,7 @@ waitForComponent(on: On, time: number): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2899,7 +2899,7 @@ assertComponentExist(on: On): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2925,6 +2925,10 @@ pressBack(): Promise\<void>
 
 模拟点击BACK键。使用Promise异步回调。
 
+> **说明：**
+>
+> 本方法仅支持在主屏幕上模拟点击BACK键。如需在指定屏幕上模拟点击BACK键，请使用[pressBack(displayId: number)](#pressback20)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -2937,7 +2941,7 @@ pressBack(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2979,7 +2983,7 @@ pressBack(displayId: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3022,7 +3026,7 @@ triggerKey(keyCode: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3067,7 +3071,7 @@ triggerKey(keyCode: number, displayId: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3113,7 +3117,7 @@ triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3160,7 +3164,7 @@ triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3204,7 +3208,7 @@ click(x: number, y: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3249,7 +3253,7 @@ clickAt(point: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3295,7 +3299,7 @@ clickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3343,7 +3347,7 @@ doubleClick(x: number, y: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3386,7 +3390,7 @@ doubleClickAt(point: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3430,7 +3434,7 @@ longClick(x: number, y: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3474,7 +3478,7 @@ longClickAt(point: Point, duration?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3520,7 +3524,7 @@ longClickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3572,7 +3576,7 @@ swipe(startx: number, starty: number, endx: number, endy: number, speed?: number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3619,7 +3623,7 @@ swipeBetween(from: Point, to: Point, speed?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3666,7 +3670,7 @@ swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3720,7 +3724,7 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3768,7 +3772,7 @@ dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3817,7 +3821,7 @@ dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3866,7 +3870,7 @@ screenCap(savePath: string): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3910,7 +3914,7 @@ screenCap(savePath: string, displayId: number): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3946,7 +3950,7 @@ dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | 是   | JSON文件保存路径。路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。 |
-| displayId     | number | 否  | 指定设备屏幕ID，取值范围：大于等于0的整数。默认为主屏幕的displayId。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。 |
+| displayId     | number | 否  | 指定设备屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。 |
 
 **返回值：**
 
@@ -3956,7 +3960,7 @@ dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4002,7 +4006,7 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4027,6 +4031,10 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 获取当前设备的屏幕显示方向。使用Promise异步回调。
 
+> **说明：**
+>
+> 本方法仅支持获取主屏幕的显示方向。如需获取指定屏幕的显示方向，请使用[getDisplayRotation(displayId: number)](#getdisplayrotation20)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -4039,7 +4047,7 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4081,7 +4089,7 @@ getDisplayRotation(displayId: number): Promise\<DisplayRotation>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4126,7 +4134,7 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4149,6 +4157,10 @@ async function demo() {
 
 getDisplaySize(): Promise\<Point>
 
+> **说明：**
+>
+> 本方法仅支持获取主屏幕的大小。如需获取指定屏幕的大小，请使用[getDisplaySize(displayId: number)](#getdisplaysize20)。
+
 获取当前设备的屏幕大小。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -4163,7 +4175,7 @@ getDisplaySize(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4205,7 +4217,7 @@ getDisplaySize(displayId: number): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4230,6 +4242,10 @@ getDisplayDensity(): Promise\<Point>
 
 获取当前设备屏幕的分辨率。使用Promise异步回调。
 
+> **说明：**
+>
+> 本方法仅支持获取主屏幕的分辨率。如需获取指定屏幕的分辨率，请使用[getDisplayDensity(displayId: number)](#getdisplaydensity20)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -4242,7 +4258,7 @@ getDisplayDensity(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4284,7 +4300,7 @@ getDisplayDensity(displayId: number): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4321,7 +4337,7 @@ wakeUpDisplay(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4359,7 +4375,7 @@ pressHome(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4403,7 +4419,7 @@ pressHome(displayId: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4447,7 +4463,7 @@ waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4493,7 +4509,7 @@ fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4537,7 +4553,7 @@ injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<bool
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4597,7 +4613,7 @@ fling(direction: UiDirection, speed: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4642,7 +4658,7 @@ fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4686,7 +4702,7 @@ screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4737,7 +4753,7 @@ mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4784,7 +4800,7 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4827,7 +4843,7 @@ mouseMoveTo(p: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4864,7 +4880,7 @@ createUIEventObserver(): UIEventObserver
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4911,7 +4927,7 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, sp
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4957,7 +4973,7 @@ mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5003,7 +5019,7 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5041,7 +5057,7 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, durat
 | btnId    | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
 | key1     | number                        | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 | key2     | number                        | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| duration | number | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| duration | number | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出401错误码，为null或undefined时使用默认值。 |
 
 **返回值：**
 
@@ -5051,7 +5067,7 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, durat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5097,7 +5113,7 @@ mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5144,7 +5160,7 @@ mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5182,7 +5198,7 @@ mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<v
 | from      | [Point](#point9) | 是   | 起始点坐标。                                                 |
 | to        | [Point](#point9) | 是   | 终点坐标。                                                  |
 | speed  | number           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
-| duration  | number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| duration  | number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出401错误码，为null或undefined时使用默认值。 |
 
 **返回值：**
 
@@ -5192,7 +5208,7 @@ mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5242,7 +5258,7 @@ mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5295,7 +5311,7 @@ inputText(p: Point, text: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5346,7 +5362,7 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5404,7 +5420,7 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5453,7 +5469,7 @@ touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5497,7 +5513,7 @@ penClick(point: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5541,7 +5557,7 @@ penLongClick(point: Point, pressure?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5585,7 +5601,7 @@ penDoubleClick(point: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5631,7 +5647,7 @@ penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5677,7 +5693,7 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5738,7 +5754,7 @@ triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5790,7 +5806,7 @@ crownRotate(d: number, speed?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5844,7 +5860,7 @@ knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5897,7 +5913,7 @@ injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5951,7 +5967,7 @@ isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5998,7 +6014,7 @@ isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, durat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6044,7 +6060,7 @@ isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Pro
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6180,7 +6196,7 @@ getBundleName(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6221,7 +6237,7 @@ getBounds(): Promise\<Rect>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6262,7 +6278,7 @@ getTitle(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6300,7 +6316,7 @@ getWindowMode(): Promise\<WindowMode>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6338,7 +6354,7 @@ isFocused(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6378,7 +6394,7 @@ isActived(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6416,7 +6432,7 @@ focus(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6463,7 +6479,7 @@ moveTo(x: number, y: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6513,7 +6529,7 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6553,7 +6569,7 @@ split(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -6594,7 +6610,7 @@ maximize(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6635,7 +6651,7 @@ minimize(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6676,7 +6692,7 @@ resume(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6717,7 +6733,7 @@ close(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -6756,7 +6772,7 @@ isActive(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
@@ -6794,7 +6810,7 @@ getDisplayId(): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -6929,7 +6945,7 @@ once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowCh
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6981,7 +6997,7 @@ once(type: 'componentEventOccur', componentEventType: ComponentEventType, option
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -7662,7 +7678,7 @@ async function demo() {
   if (await button.isClickable()) {
     console.info('This button can be Clicked');
   } else {
-    console.info('This button can not be Clicked');
+    console.info('This button cannot be Clicked');
   }
 }
 ```
@@ -7697,7 +7713,7 @@ async function demo() {
   if (await scrollBar.isScrollable()) {
     console.info('This scrollBar can be operated');
   } else {
-    console.info('This scrollBar can not be operated');
+    console.info('This scrollBar cannot be operated');
   }
 }
 ```
@@ -7733,7 +7749,7 @@ async function demo() {
   if (await button.isEnabled()) {
     console.info('This button can be operated');
   } else {
-    console.info('This button can not be operated');
+    console.info('This button cannot be operated');
   }
 }
 
@@ -7885,7 +7901,7 @@ async function demo() {
 
 ## UiDriver<sup>(deprecated)</sup>
 
-UiDriver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等API。
+UiDriver类为UiTest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等API。
 
 该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
@@ -8056,7 +8072,7 @@ assertComponentExist(by: By): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
