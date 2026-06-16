@@ -827,7 +827,7 @@ Allows an enterprise MDM application to activate itself.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 24
+**Since**: 26.0.0
 
 ## ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
 
