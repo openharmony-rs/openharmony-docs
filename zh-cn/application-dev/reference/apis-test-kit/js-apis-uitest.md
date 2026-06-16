@@ -3710,11 +3710,11 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| startx | number | 是   | 起始点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
-| starty | number | 是   | 起始点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
-| endx   | number | 是   | 目的点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
-| endy   | number | 是   | 目的点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
+| startx | number | 是   | 起始点的横坐标信息，取值范围：大于等于0的整数，单位：px。    |
+| starty | number | 是   | 起始点的纵坐标信息，取值范围：大于等于0的整数，单位：px。    |
+| endx   | number | 是   | 目的点的横坐标信息，取值范围：大于等于0的整数，单位：px。    |
+| endy   | number | 是   | 目的点的纵坐标信息，取值范围：大于等于0的整数，单位：px。    |
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。 |
 
 **返回值：**
 
@@ -3729,7 +3729,6 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
