@@ -51,6 +51,7 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -116,6 +117,7 @@ injectKeyEvent(keyEvent: KeyEventData): void
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -193,6 +195,7 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 ```js
 import { inputEventClient } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -309,6 +312,7 @@ injectTouchEvent(touchEvent: TouchEventData): void
 ```js
 import { inputEventClient } from '@kit.InputKit';
 import { Touch, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -412,6 +416,7 @@ permitInjection(result: boolean): void
 
 ```ts
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
