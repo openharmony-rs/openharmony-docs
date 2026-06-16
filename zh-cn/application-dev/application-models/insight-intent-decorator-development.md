@@ -695,48 +695,43 @@
     ArkTS-Sta示例：
 
     <!-- @[appIntentEntity_AppPlaylistEntity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
-     
-    ``` TypeScript
-    'use static'
     
+    ``` TypeScript
     import { insightIntent, InsightIntentEntity, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
-    import { RecordData } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
     const LOG_TAG: string = 'testTag';
     
-    const entityParam = {
-      '$id': '/schemas/AppPlaylistEntity',
-      'type': 'object',
-      'description': 'Playlist entity with dynamic query support',
-      'properties': {
-        'entityId': {
-          'type': 'string',
-          'description': 'Playlist unique identifier',
-          'title': '歌单id'
-        } as Record<string, RecordData>,
-        'playlistName': {
-          'type': 'string',
-          'description': 'Playlist name',
-          'title': '歌单名称'
-        } as Record<string, RecordData>,
-        'owner': {
-          'type': 'string',
-          'description': 'Playlist owner',
-          'title': '创建者'
-        } as Record<string, RecordData>,
-        'displayName': {
-          'type': 'string',
-          'description': 'Playlist display name',
-        } as Record<string, RecordData>
-      } as Record<string, RecordData>,
-      'required': ['playlistName', 'displayName']
-    } as Record<string, RecordData>
-    
     // 意图实体定义
     @InsightIntentEntity({
       entityCategory: 'playlist_entity_category',
-      parameters: 'entityParam',
+      parameters: {
+        '$id': '/schemas/AppPlaylistEntity',
+        'type': 'object',
+        'description': 'Playlist entity with dynamic query support',
+        'properties': {
+          'entityId': {
+            'type': 'string',
+            'description': 'Playlist unique identifier',
+            'title': '歌单id'
+          },
+          'playlistName': {
+            'type': 'string',
+            'description': 'Playlist name',
+            'title': '歌单名称'
+          },
+          'owner': {
+            'type': 'string',
+            'description': 'Playlist owner',
+            'title': '创建者'
+          },
+          'displayName': {
+            'type': 'string',
+            'description': 'Playlist display name',
+          }
+        },
+        'required': ['playlistName', 'displayName']
+      },
       supportedQueryProperties: ['entityId', 'playlistName', 'owner'] // 支持通过歌单ID、歌单名称、创建者筛选目标歌单
     })
     export class AppPlaylistEntity extends insightIntent.AppIntentEntity<AppPlaylistEntity> {
@@ -756,7 +751,7 @@
           return playlists;
         }
     
-        const query : Record<string, RecordData> = params.parameters ?? {};
+        const query = params.parameters ?? {};
         const validKeys = Object.keys(query).filter((key) => ['entityId', 'playlistName', 'owner'].includes(key));
         if (validKeys.length === 0) {
           return [];
