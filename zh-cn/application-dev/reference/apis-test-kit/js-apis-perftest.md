@@ -277,7 +277,7 @@ async function demo() {
 
 destroy(): void
 
-销毁PerfTest对象，释放该对象占用的相关资源。与[create](#create)方法配对使用，在PerfTest对象使用完毕后调用,未调用此方法可能导致资源无法释放。调用后不应再使用该PerfTest对象。
+销毁PerfTest对象，释放该对象占用的相关资源。与[create](#create)方法配对使用，在PerfTest对象使用完毕后调用，未调用此方法可能导致资源无法释放。调用后不应再使用该PerfTest对象。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
