@@ -10,11 +10,11 @@
 
 升级范围：升级整个系统，包括内置资源和预置应用，不包括第三方应用。确保系统完整性，避免第三方应用兼容性问题，提升升级稳定性和安全性。
 
-升级类型：SD卡升级、在线升级。
+升级类型：本地SD卡升级、在线升级。
 
 各升级类型的设计逻辑和适用场景如下：
 
-- **SD卡升级**：详见[术语](../../basic-services/update/update-kit-term.md)。
+- **本地SD卡升级**：详见[术语](../../basic-services/update/update-kit-term.md)。
 
 使用场景：需要从本地存储设备进行系统升级。
 
@@ -89,7 +89,7 @@ import { update } from '@kit.BasicServicesKit';
 
 getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 
-获取在线升级对象，可用于在线检查新版本、下载升级包、安装升级包等操作。适用于设备厂商的OTA（详见[术语](../../basic-services/update/update-kit-term.md）升级客户端应用、在线系统升级等场景，帮助用户及时获取系统更新，提升升级效率和用户体验。
+获取在线升级对象，可用于在线检查新版本、下载升级包、安装升级包等操作。适用于设备厂商的OTA（详见[术语](../../basic-services/update/update-kit-term.md)）升级客户端应用、在线系统升级等场景，帮助用户及时获取系统更新，提升升级效率和用户体验。
 
 **原理说明**：
 
@@ -99,9 +99,9 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 
 - 检查新版本和下载升级包都必须依赖设备厂商部署的升级包管理服务器。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **参数**：
 
@@ -126,7 +126,7 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 **示例**：
 
 ```ts
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -163,9 +163,9 @@ getRestorer(): Restorer
 - 深度恢复出厂(deepFactoryReset)耗时较长（可能数小时），必须确保设备电量充足(建议电量>50%)。
 - 建议在用户通过对话框或界面点击确认按钮后，再执行恢复出厂操作。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **返回值**：
 
@@ -208,9 +208,9 @@ getLocalUpdater(): LocalUpdater
 - 调用getLocalUpdater相关接口时，需要权限ohos.permission.UPDATE_SYSTEM。
 - 升级包文件路径长度不超过255字符。超出255字符时将抛出异常。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **返回值**：
 
@@ -265,7 +265,17 @@ graph TD
 
 checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
-检查新版本信息，返回是否有新版本、新版本号、版本摘要信息等。调用成功后，返回版本检查结果对象，可用于判断是否需要升级，为后续下载、升级等操作提供版本标识。使用Promise异步回调。本方法是在线升级流程的起始方法，返回的版本摘要信息是后续方法的必要参数。调用本方法后，后续可调用以下方法：getNewVersionInfo（获取新版本详细信息）、download（下载升级包）、upgrade（安装升级包）。这些后续方法均需传入本方法返回的versionDigestInfo参数，且仅当isExistNewVersion为true时可调用。当isExistNewVersion为false时表示已是最新版本，无需执行后续升级操作。
+检查新版本信息，返回是否有新版本、新版本号、版本摘要信息等。
+
+调用成功后返回版本检查结果对象，可用于判断是否需要升级，为后续下载、升级等操作提供版本标识。使用callback异步回调。
+
+本方法是在线升级流程的起始方法，返回的版本摘要信息是后续方法的必要参数。
+
+调用本方法后，后续可调用以下方法：getNewVersionInfo（获取新版本详细信息）、download（下载升级包）、upgrade（安装升级包）。
+
+这些后续方法均需传入本方法返回的versionDigestInfo参数，且仅当isExistNewVersion为true时可调用。
+
+当isExistNewVersion为false时表示已是最新版本，无需执行后续升级操作。
 
 使用场景：需要快速检查是否有新版本并获取版本摘要。支持用户及时了解系统更新状态，为升级决策提供依据。
 
@@ -279,11 +289,11 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
 - 本方法依赖设备厂商部署的升级包管理服务器，需确保服务器正常部署且可访问。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -312,7 +322,7 @@ checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -320,7 +330,7 @@ try {
       subType: update.BusinessSubType.FIRMWARE // 升级类型为固件
     }
   };
-  // 创建在线升级对象
+  // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 检查新版本，通过回调函数获取检查结果
   onlineUpdater.checkNewVersion((checkNewVersionError: BusinessError,  
@@ -333,8 +343,8 @@ try {
       console.info(`checkNewVersion isExistNewVersion  ${checkResult?.isExistNewVersion}`);
     });
 } catch (error) {
-  console.error(`Failed to get updater. Code: ${(error as BusinessError).code},
-    message: ${(error as BusinessError).message}.`);
+  let errInfo: BusinessError = error as BusinessError;
+  console.error(`Failed to get updater. Code: ${errInfo.code}, message: ${errInfo.message}.`);
 }
 ```
 
@@ -342,7 +352,17 @@ try {
 
 checkNewVersion(): Promise\<CheckResult>
 
-检查新版本信息，返回是否有新版本、新版本号、版本摘要信息等。调用成功后，返回版本检查结果对象，可用于判断是否需要升级，为后续下载、升级等操作提供版本标识。使用Promise异步回调。本方法是在线升级流程的起始方法，返回的版本摘要信息是后续方法的必要参数。调用本方法后，后续可调用以下方法：getNewVersionInfo（获取新版本详细信息）、download（下载升级包）、upgrade（安装升级包）。这些后续方法均需传入本方法返回的versionDigestInfo参数，且仅当isExistNewVersion为true时可调用。当isExistNewVersion为false时表示已是最新版本，无需执行后续升级操作。
+检查新版本信息，返回是否有新版本、新版本号、版本摘要信息等。
+
+调用成功后返回版本检查结果对象，可用于判断是否需要升级，为后续下载、升级等操作提供版本标识。使用Promise异步回调。
+
+本方法是在线升级流程的起始方法，返回的版本摘要信息是后续方法的必要参数。
+
+调用本方法后，后续可调用以下方法：getNewVersionInfo（获取新版本详细信息）、download（下载升级包）、upgrade（安装升级包）。
+
+这些后续方法均需传入本方法返回的versionDigestInfo参数，且仅当isExistNewVersion为true时可调用。
+
+当isExistNewVersion为false时表示已是最新版本，无需执行后续升级操作。
 
 使用场景：需要快速检查是否有新版本并获取版本摘要。帮助用户及时了解系统更新状态，为升级决策提供依据。
 
@@ -356,11 +376,11 @@ checkNewVersion(): Promise\<CheckResult>
 
 - 本方法依赖设备厂商部署的升级包管理服务器，需确保服务器正常部署且可访问。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值**：
 
@@ -384,7 +404,7 @@ checkNewVersion(): Promise\<CheckResult>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -438,11 +458,11 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 - 本方法为在线升级功能，依赖设备厂商部署的升级包管理服务器。
 - 必须先调用checkNewVersion检查是否有新版本，且仅当isExistNewVersion为true时调用。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -471,7 +491,7 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -482,9 +502,9 @@ try {
   // 获取在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 获取新版本信息，通过回调函数接收版本详情
-  onlineUpdater.getNewVersionInfo((checkError: BusinessError, newInfo: update.NewVersionInfo) => {
-    if (checkError) {
-      console.error(`getNewVersionInfo error, code:${checkError.code}, message:${checkError.message}.`);
+  onlineUpdater.getNewVersionInfo((getNewVersionInfoError: BusinessError, newInfo: update.NewVersionInfo) => {
+    if (getNewVersionInfoError) {
+      console.error(`getNewVersionInfo error, code:${getNewVersionInfoError.code}, message:${getNewVersionInfoError.message}.`);
       return;
     }
     console.info(`info displayVersion = ${newInfo?.versionComponents[0].displayVersion}`);
@@ -526,11 +546,11 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 - 本方法为在线升级功能，依赖设备厂商部署的升级包管理服务器。
 - 必须先调用checkNewVersion检查是否有新版本，且仅当isExistNewVersion为true时调用。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值**：
 
@@ -553,7 +573,7 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -592,18 +612,18 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 - 需先调用checkNewVersion检查是否有新版本，并获取版本摘要信息。
 - versionDigestInfo参数从checkNewVersion返回结果中获取，须先调用checkNewVersion。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息对象，包含版本标识（versionDigest字段）。必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取。版本摘要作为服务器生成的版本唯一标识，用于后续的版本查询、下载和升级操作。仅当isExistNewVersion为true时该参数有效。|
-| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。format字段设置描述格式(STANDARD标准格式或SIMPLIFIED简易格式)，language字段设置语言类型(如zh-cn中文、en-us英文等)。|
+| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。format字段设置描述格式(STANDARD标准格式或SIMPLIFIED简易格式)。language字段设置语言类型，格式如'zh-cn'(中文)、'en-us'(英文)、'ja-jp'(日文)等，长度范围[2，10]，单位：字符。有效字符包括字母（区分大小写）和连字符（-），建议使用小写格式。超出范围或包含无效字符时抛出异常。|
 | callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，用于接收新版本描述信息。回调参数包括： err（错误对象，成功时为null）和descriptionInfo（新版本描述信息数组，包含各组件的版本说明内容）。调用前须先调用checkNewVersion检查新版本，且仅当isExistNewVersion为true时descriptionInfo有效；若为false，则descriptionInfo为null。 |
 
 **错误码**：
@@ -634,7 +654,7 @@ const descriptionOptions: update.DescriptionOptions = {
 };
 
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -674,18 +694,18 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 - 需先调用checkNewVersion检查是否有新版本，并获取版本摘要信息。
 - versionDigestInfo参数从checkNewVersion返回结果中获取。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | versionDigestInfo  | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
-| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。|
+| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。format字段设置描述格式(STANDARD标准格式或SIMPLIFIED简易格式)。language字段设置语言类型，格式如'zh-cn'(中文)、'en-us'(英文)、'ja-jp'(日文)等，长度范围[2，10]，单位：字符。有效字符包括字母（区分大小写）和连字符（-），建议使用小写格式。超出范围或包含无效字符时抛出异常。|
 
 **返回值**：
 
@@ -709,9 +729,10 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 版本摘要信息
+// 版本摘要信息（需先调用checkNewVersion检查新版本并确认isExistNewVersion为true，
+// 从返回结果的newVersionInfo.versionDigestInfo字段获取）
 const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // 检测结果中的版本摘要信息
+  versionDigest: 'versionDigest' // 实际值需通过checkNewVersion接口获取
 };
 
 // 描述文件选项
@@ -721,7 +742,7 @@ const descriptionOptions: update.DescriptionOptions = {
 };
 
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -756,17 +777,23 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 
 该方法从设备本地系统文件和配置中读取当前版本信息，包括osVersion（系统版本号，从系统版本配置文件读取）、deviceName（设备名称，从设备属性配置读取）和versionComponents（各组件版本信息数组，从系统分区元数据读取）。信息来源于设备本地，不依赖网络连接，调用后直接返回本地缓存的版本数据。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | AsyncCallback\<[CurrentVersionInfo](#currentversioninfo)> | 是    | 回调函数，用于接收当前版本信息（CurrentVersionInfo）。回调参数包括： err（错误对象，成功时为null）和currentInfo（当前版本信息对象，包含osVersion、deviceName和versionComponents字段）。 |
+
+**返回值**：
+
+| 类型 | 说明 |
+| --- | --- |
+| void | 无返回值，使用callback异步回调传递当前版本信息。|
 
 **错误码**：
 
@@ -784,7 +811,7 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -823,11 +850,11 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 
 该方法从设备本地系统文件和配置中读取当前版本信息，包括osVersion（系统版本号，从系统版本配置文件读取）、deviceName（设备名称，从设备属性配置读取）和versionComponents（各组件版本信息数组，从系统分区元数据读取）。信息来源于设备本地，不依赖网络连接，调用后直接返回本地缓存的版本数据。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值**：
 
@@ -850,7 +877,7 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -883,25 +910,35 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: A
 
 **原理说明**：
 
-该方法从升级包管理服务器获取当前版本各组件的描述信息。获取流程包括：读取当前版本标识 → 向服务器发起描述信息请求（携带descriptionOptions参数指定格式和语言）→ 服务器根据版本标识查询描述内容 → 解析描述数据（转换为目标格式和语言）→ 返回描述信息数组。描述信息包含各组件的功能说明、版本特性等内容，支持CONTENT（文本形式）和URI（链接形式）两种返回方式。
+该方法从升级包管理服务器获取当前版本各组件的描述信息。获取流程包括：
 
-**相关方法：**
+```mermaid
+graph TD
+    A[读取当前版本标识] --> B[向服务器发起描述信息请求<br/>携带descriptionOptions参数指定格式和语言]
+    B --> C[服务器根据版本标识查询描述内容]
+    C --> D[解析描述数据<br/>转换为目标格式和语言]
+    D --> E[返回描述信息数组]
+```
+
+描述信息包含各组件的功能说明、版本特性等内容，支持CONTENT（文本形式）和URI（链接形式）两种返回方式。
+
+**相关方法**：
 
 - getCurrentVersionInfo()：获取当前版本信息(版本号、设备名等)，可独立调用。
 - getCurrentVersionDescription()：获取当前版本描述信息，适合向用户展示。
 - 两者可配合使用：先通过getCurrentVersionInfo获取基础信息，再通过本方法获取详细描述进行展示。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。format字段设置描述格式(STANDARD标准格式或SIMPLIFIED简易格式)，language字段设置语言类型(如zh-cn中文、en-us英文等)。|
+| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。format字段设置描述格式(STANDARD标准格式或SIMPLIFIED简易格式)。language字段设置语言类型，格式如'zh-cn'(中文)、'en-us'(英文)、'ja-jp'(日文)等，长度范围[2，10]，单位：字符。有效字符包括字母（区分大小写）和连字符（-），建议使用小写格式。超出范围或包含无效字符时抛出异常。|
 | callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，用于接收当前版本描述信息。回调参数包括： err(错误对象，成功时为null)和info(当前版本描述信息数组，包含版本说明内容)。 |
 
 **错误码**：
@@ -925,7 +962,7 @@ const descriptionOptions: update.DescriptionOptions = {
 };
 
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -961,23 +998,23 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<A
 
 该方法从升级包管理服务器获取当前版本各组件的描述信息。获取流程包括：读取当前版本标识 → 向服务器发起描述信息请求（携带descriptionOptions参数指定格式和语言）→ 服务器根据版本标识查询描述内容 → 解析描述数据（转换为目标格式和语言）→ 返回描述信息数组。描述信息包含各组件的功能说明、版本特性等内容，支持CONTENT（文本形式）和URI（链接形式）两种返回方式。
 
-**相关方法：**
+**相关方法**：
 
 - getCurrentVersionInfo()：获取当前版本信息(版本号、设备名等)，可独立调用。
 - getCurrentVersionDescription()：获取当前版本描述信息，适合向用户展示。
 - 两者可配合使用：先通过getCurrentVersionInfo获取基础信息，再通过本方法获取详细描述进行展示。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。format字段设置描述格式(STANDARD标准格式或SIMPLIFIED简易格式)，language字段设置语言类型(如zh-cn中文、en-us英文等)。|
+| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项（DescriptionOptions），用于指定描述文件的格式和语言。format字段设置描述格式(STANDARD标准格式或SIMPLIFIED简易格式)。language字段设置语言类型，格式如'zh-cn'(中文)、'en-us'(英文)、'ja-jp'(日文)等，长度范围[2，10]，单位：字符。有效字符包括字母（区分大小写）和连字符（-），建议使用小写格式。超出范围或包含无效字符时抛出异常。|
 
 **返回值**：
 
@@ -1006,7 +1043,7 @@ const descriptionOptions: update.DescriptionOptions = {
   language: 'zh-cn' // 中文
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -1040,24 +1077,24 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 
 该方法从系统升级服务查询当前升级任务的状态信息。系统维护一个升级任务状态记录，包含existTask（是否存在任务）、taskBody（任务详情，包括版本摘要、当前状态、进度百分比、安装模式等）。任务状态在下载、安装过程中实时更新，通过该方法可查询最新状态。状态信息存储在系统服务进程的内存中，每次调用从服务进程实时查询返回。
 
-**相关方法**:
+**相关方法**：
 
 - download()：下载升级包(可在下载过程中调用getTaskInfo查询下载进度和状态)。
 - upgrade()：安装升级包(可在安装过程中调用getTaskInfo查询安装进度和状态)。
 - pauseDownload()：暂停下载(暂停后可调用getTaskInfo查询暂停状态)。
 - terminateUpgrade()：终止升级(终止后可调用getTaskInfo查询任务取消状态)。
 
-**调用时机**:
+**调用时机**：
 
-- 推荐在调用download或upgrade开始升级任务后，定期调用getTaskInfo查询任务进度。
+- 推荐在调用download或upgrade开始升级任务后，按需调用getTaskInfo查询任务进度。
 - 在升级流程中可通过事件监听(on方法)实时获取进度，或通过getTaskInfo主动查询当前状态。
 - 在异常或中断场景下可调用getTaskInfo确认任务状态后决定后续操作。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -1081,7 +1118,7 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -1117,7 +1154,7 @@ getTaskInfo(): Promise\<TaskInfo>
 
 该方法从系统升级服务查询当前升级任务的状态信息。系统维护一个升级任务状态记录，包含existTask（是否存在任务）、taskBody（任务详情，包括版本摘要、当前状态、进度百分比、安装模式等）。任务状态在下载、安装过程中实时更新，通过该方法可查询最新状态。状态信息存储在系统服务进程的内存中，每次调用从服务进程实时查询返回。
 
-**相关方法**:
+**相关方法**：
 
 - download()：下载升级包(可在下载过程中调用getTaskInfo查询下载进度和状态)。
 - upgrade()：安装升级包(可在安装过程中调用getTaskInfo查询安装进度和状态)。
@@ -1130,11 +1167,11 @@ getTaskInfo(): Promise\<TaskInfo>
 - 在升级流程中可通过事件监听(on方法)实时获取进度，或通过getTaskInfo主动查询当前状态。
 - 在异常或中断场景下可调用getTaskInfo确认任务状态后决定后续操作。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值**：
 
@@ -1158,7 +1195,7 @@ getTaskInfo(): Promise\<TaskInfo>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -1184,16 +1221,23 @@ try {
 
 download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions, callback: AsyncCallback\<void>): void
 
-下载升级包到设备本地存储。本方法为在线升级功能，依赖设备厂商部署的升级包管理服务器。支持进度监听与暂停/恢复控制，
-
-帮助用户高效完成升级包获取，节省带宽与时间，提升升级成功率。使用callback异步回调。
+下载升级包到设备本地存储。本方法为在线升级功能，依赖设备厂商部署的升级包管理服务器。支持进度监听与暂停/恢复控制，帮助用户高效完成升级包获取，节省带宽与时间，提升升级成功率。使用callback异步回调。
 
 使用场景：OTA客户端在线升级、后台自动下载升级包、网络中断后断点续传。
 
 **原理说明**：
 
-该方法从升级包管理服务器下载升级包到设备本地存储。下载流程包括：解析版本摘要信息 → 根据downloadOptions选择网络类型 → 发起下载请求 → 分块接收
-数据并写入本地文件 → 实时更新进度。支持断点续传机制：记录已下载的字节位置和网络连接状态，中断后可从断点继续下载。暂停下载时保存当前进度状态（已下载大小、文件路径等），恢复下载时读取进度状态继续接收。
+该方法从升级包管理服务器下载升级包到设备本地存储。下载流程包括：
+
+```mermaid
+graph TD
+    A[解析版本摘要信息] --> B[根据downloadOptions选择网络类型]
+    B --> C[发起下载请求]
+    C --> D[分块接收数据并写入本地文件]
+    D --> E[实时更新进度]
+```
+
+支持断点续传机制：记录已下载的字节位置和网络连接状态，中断后可从断点继续下载。暂停下载时保存当前进度状态（已下载大小、文件路径等），恢复下载时读取进度状态继续接收。
 
 **调用顺序说明**：
 
@@ -1208,11 +1252,11 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions,
 - pauseDownload()：暂停下载（下载中调用）。
 - upgrade()：安装升级包（下载完成后调用）。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -1244,9 +1288,10 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions,
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 版本摘要信息
+// 版本摘要信息（需先调用checkNewVersion检查新版本并确认isExistNewVersion为true，
+// 从返回结果的newVersionInfo.versionDigestInfo字段获取）
 const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // 检测结果中的版本摘要信息
+  versionDigest: 'versionDigest' // 实际值需通过checkNewVersion接口获取
 };
 
 // 下载选项
@@ -1255,7 +1300,7 @@ const downloadOptions: update.DownloadOptions = {
   order: update.Order.DOWNLOAD // 下载
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -1308,11 +1353,11 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions)
 - pauseDownload()：暂停下载（下载中调用）。
 - upgrade()：安装升级包（download方法下载完成后调用）。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -1343,9 +1388,10 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 版本摘要信息
+// 版本摘要信息（需先调用checkNewVersion检查新版本并确认isExistNewVersion为true，
+// 从返回结果的newVersionInfo.versionDigestInfo字段获取）
 const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // 检测结果中的版本摘要信息
+  versionDigest: 'versionDigest' // 实际值需通过checkNewVersion接口获取
 };
 
 // 下载选项
@@ -1354,7 +1400,7 @@ const downloadOptions: update.DownloadOptions = {
   order: update.Order.DOWNLOAD // 下载
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -1392,18 +1438,18 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 - 与pauseDownload()成对使用，用于控制下载流程的暂停和恢复。
 - 必须在调用pauseDownload()暂停下载后才能调用此方法恢复下载。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | versionDigestInfo     | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
-| resumeDownloadOptions | [ResumeDownloadOptions](#resumedownloadoptions) | 是    | 恢复下载选项（ResumeDownloadOptions），用于指定恢复下载的网络类型。仅当已调用pauseDownload暂停下载后才生效。allowNetwork字段设置允许恢复下载的网络类型，建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
+| resumeDownloadOptions | [ResumeDownloadOptions](#resumedownloadoptions) | 是    | 恢复下载选项（ResumeDownloadOptions），用于指定恢复下载的网络类型。仅当已调用pauseDownload暂停下载后才生效。如果未调用pauseDownload暂停下载，使用此参数将导致恢复下载失败或参数无效。allowNetwork字段设置允许恢复下载的网络类型，建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
 | callback              | AsyncCallback\<void>                     | 是    | 回调函数，用于接收恢复下载结果。回调参数包括： err(错误对象，成功时为null，失败时为错误对象)。 |
 
 **错误码**：
@@ -1422,9 +1468,10 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 版本摘要信息
+// 版本摘要信息（需先调用checkNewVersion检查新版本并确认isExistNewVersion为true，
+// 从返回结果的newVersionInfo.versionDigestInfo字段获取）
 const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // 检测结果中的版本摘要信息
+  versionDigest: 'versionDigest' // 实际值需通过checkNewVersion接口获取
 };
 
 // 恢复下载选项
@@ -1432,7 +1479,7 @@ const resumeDownloadOptions: update.ResumeDownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -1473,18 +1520,18 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 - 与pauseDownload()成对使用，用于控制下载流程的暂停和恢复。
 - 必须在调用pauseDownload()暂停下载后才能调用此方法恢复下载。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | versionDigestInfo     | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
-| resumeDownloadOptions | [ResumeDownloadOptions](#resumedownloadoptions) | 是    | 恢复下载选项（ResumeDownloadOptions），用于指定恢复下载的网络类型。仅当已调用pauseDownload暂停下载后才生效。allowNetwork字段设置允许恢复下载的网络类型，建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
+| resumeDownloadOptions | [ResumeDownloadOptions](#resumedownloadoptions) | 是    | 恢复下载选项（ResumeDownloadOptions），用于指定恢复下载的网络类型。仅当已调用pauseDownload暂停下载后才生效。如果未调用pauseDownload暂停下载，使用此参数将导致恢复下载失败或参数无效。allowNetwork字段设置允许恢复下载的网络类型，建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
 
 **返回值**：
 
@@ -1508,9 +1555,10 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 版本摘要信息
+// 版本摘要信息（需先调用checkNewVersion检查新版本并确认isExistNewVersion为true，
+// 从返回结果的newVersionInfo.versionDigestInfo字段获取）
 const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // 检测结果中的版本摘要信息
+  versionDigest: 'versionDigest' // 实际值需通过checkNewVersion接口获取
 };
 
 // 恢复下载选项
@@ -1518,7 +1566,7 @@ const resumeDownloadOptions: update.ResumeDownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // 允许数据网络下载
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -1561,18 +1609,18 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 - 暂停后可通过getTaskInfo()查询当前任务状态。
 - 暂停后不能直接调用upgrade()安装，必须先恢复下载并完成后再安装。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | versionDigestInfo    | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
-| pauseDownloadOptions | [PauseDownloadOptions](#pausedownloadoptions) | 是    | 暂停下载选项（PauseDownloadOptions），用于控制暂停行为。仅当有正在进行的下载任务时才生效。isAllowAutoResume字段设置是否允许自动恢复，建议：网络不稳定场景建议设置true启用自动恢复，提升下载成功率；需要精确控制下载时机或避免在特定网络环境下恢复的场景建议设置false，通过手动调用resumeDownload控制恢复时机。|
+| pauseDownloadOptions | [PauseDownloadOptions](#pausedownloadoptions) | 是    | 暂停下载选项（PauseDownloadOptions），用于控制暂停行为。如果没有正在进行的下载任务，使用此参数将导致暂停操作失败或参数无效。isAllowAutoResume字段设置是否允许自动恢复，建议：网络不稳定场景建议设置true启用自动恢复，提升下载成功率；需要精确控制下载时机或避免在特定网络环境下恢复的场景建议设置false，通过手动调用resumeDownload控制恢复时机。|
 | callback | AsyncCallback\<void> | 是 | 回调函数，用于接收暂停下载结果。回调参数包括： err(错误对象，成功时为null，失败时为错误对象)。 |
 
 **错误码**：
@@ -1591,9 +1639,10 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 版本摘要信息
+// 版本摘要信息（需先调用checkNewVersion检查新版本并确认isExistNewVersion为true，
+// 从返回结果的newVersionInfo.versionDigestInfo字段获取）
 const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // 检测结果中的版本摘要信息
+  versionDigest: 'versionDigest' // 实际值需通过checkNewVersion接口获取
 };
 
 // 暂停下载选项
@@ -1601,7 +1650,7 @@ const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // 允许自动恢复下载
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -1647,18 +1696,18 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 - 暂停后可通过getTaskInfo()查询当前任务状态。
 - 暂停后不能直接调用upgrade()安装，必须先恢复下载完成后再安装。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | versionDigestInfo    | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息（VersionDigestInfo），必须先调用checkNewVersion检查新版本并确认isExistNewVersion为true后才能使用此参数。参数从checkNewVersion返回结果的newVersionInfo字段中获取，用于标识具体版本。仅当isExistNewVersion为true时该参数有效。|
-| pauseDownloadOptions | [PauseDownloadOptions](#pausedownloadoptions) | 是    | 暂停下载选项（PauseDownloadOptions），用于控制暂停行为。仅当有正在进行的下载任务时才生效。isAllowAutoResume字段设置是否允许自动恢复，建议：网络不稳定场景建议设置true启用自动恢复，提升下载成功率；需要精确控制下载时机或避免在特定网络环境下恢复的场景建议设置false，通过手动调用resumeDownload控制恢复时机。|
+| pauseDownloadOptions | [PauseDownloadOptions](#pausedownloadoptions) | 是    | 暂停下载选项（PauseDownloadOptions），用于控制暂停行为。仅当有正在进行的下载任务时才生效。如果没有正在进行的下载任务，使用此参数将导致暂停操作失败或参数无效。isAllowAutoResume字段设置是否允许自动恢复，建议：网络不稳定场景建议设置true启用自动恢复，提升下载成功率；需要精确控制下载时机或避免在特定网络环境下恢复的场景建议设置false，通过手动调用resumeDownload控制恢复时机。|
 
 **返回值**：
 
@@ -1682,9 +1731,10 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 版本摘要信息
+// 版本摘要信息（需先调用checkNewVersion检查新版本并确认isExistNewVersion为true，
+// 从返回结果的newVersionInfo.versionDigestInfo字段获取）
 const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // 检测结果中的版本摘要信息
+  versionDigest: 'versionDigest' // 实际值需通过checkNewVersion接口获取
 };
 
 // 暂停下载选项
@@ -1692,7 +1742,7 @@ const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // 允许自动恢复下载
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -1744,11 +1794,11 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, ca
 
 当upgrade方法执行失败（状态为UPGRADE_FAIL）时，必须调用clearError清除异常状态后才能重新开始升级流程。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -1780,9 +1830,10 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, ca
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 版本摘要信息
+// 版本摘要信息（需先调用checkNewVersion检查新版本并确认isExistNewVersion为true，
+// 从返回结果的newVersionInfo.versionDigestInfo字段获取）
 const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // 检测结果中的版本摘要信息
+  versionDigest: 'versionDigest' // 实际值需通过checkNewVersion接口获取
 };
 
 // 安装选项
@@ -1790,7 +1841,7 @@ const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // 安装指令
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -1843,11 +1894,11 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): P
 
 当upgrade方法执行失败（状态为UPGRADE_FAIL）时，必须调用clearError清除异常状态后才能重新开始升级流程。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -1878,9 +1929,10 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): P
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 版本摘要信息
+// 版本摘要信息（需先调用checkNewVersion检查新版本并确认isExistNewVersion为true，
+// 从返回结果的newVersionInfo.versionDigestInfo字段获取）
 const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // 检测结果中的版本摘要信息
+  versionDigest: 'versionDigest' // 实际值需通过checkNewVersion接口获取
 };
 
 // 安装选项
@@ -1888,7 +1940,7 @@ const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // 安装指令
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -1932,11 +1984,11 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, cal
 - upgrade()：安装升级包（失败后需调用clearError）。
 - checkNewVersion()：重新检查版本（清除异常后调用）。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -1962,9 +2014,10 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, cal
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 版本摘要信息
+// 版本摘要信息（需先调用checkNewVersion检查新版本并确认isExistNewVersion为true，
+// 从返回结果的newVersionInfo.versionDigestInfo字段获取）
 const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // 检测结果中的版本摘要信息
+  versionDigest: 'versionDigest' // 实际值需通过checkNewVersion接口获取
 };
 
 // 清除选项
@@ -1972,7 +2025,7 @@ const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -2020,11 +2073,11 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 - upgrade()：安装升级包（失败后需调用clearError）。
 - checkNewVersion()：重新检查版本（清除异常后调用）。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -2055,9 +2108,10 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 版本摘要信息
+// 版本摘要信息（需先调用checkNewVersion检查新版本并确认isExistNewVersion为true，
+// 从返回结果的newVersionInfo.versionDigestInfo字段获取）
 const versionDigestInfo: update.VersionDigestInfo = {
-  versionDigest: 'versionDigest' // 检测结果中的版本摘要信息
+  versionDigest: 'versionDigest' // 实际值需通过checkNewVersion接口获取
 };
 
 // 清除选项
@@ -2065,7 +2119,7 @@ const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -2098,11 +2152,11 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 
 该方法从系统升级服务查询升级策略配置信息。策略配置存储在系统配置文件中，包括downloadStrategy（自动下载开关）、autoUpgradeStrategy（自动升级开关）和autoUpgradePeriods（升级时间段列表）。调用该方法时，系统服务读取配置文件，解析策略参数并封装成UpgradePolicy对象返回。策略配置由setUpgradePolicy方法设置，系统维护策略的持久化存储，重启后策略仍然有效。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -2125,7 +2179,7 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -2161,11 +2215,11 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 
 该方法从系统升级服务查询升级策略配置信息。策略配置存储在系统配置文件中，包括downloadStrategy（自动下载开关）、autoUpgradeStrategy（自动升级开关）和autoUpgradePeriods（升级时间段列表）。调用该方法时，系统服务读取配置文件，解析策略参数并封装成UpgradePolicy对象返回。策略配置由setUpgradePolicy方法设置，系统维护策略的持久化存储，重启后策略仍然有效。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值**：
 
@@ -2188,7 +2242,7 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -2224,17 +2278,17 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 
 设置流程包括：验证策略参数有效性 → 将策略数据写入系统配置文件持久化存储 → 更新升级服务的策略缓存 → 通知升级服务应用新策略。策略立即生效，系统会根据downloadStrategy控制是否自动下载升级包，根据autoUpgradeStrategy控制是否自动安装，根据autoUpgradePeriods限制升级时间段。策略持久化保存，设备重启后策略仍然有效。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| policy   | [UpgradePolicy](#upgradepolicy) | 是    | 升级策略对象（UpgradePolicy），用于控制升级行为。包含自动下载策略、自动升级策略、升级时间段等配置。|
+| policy   | [UpgradePolicy](#upgradepolicy) | 是    | 升级策略对象（UpgradePolicy），用于控制升级行为。包含downloadStrategy(自动下载策略)、autoUpgradeStrategy(自动升级策略)和autoUpgradePeriods(自动升级时间段)三个字段。downloadStrategy字段设置是否允许自动下载，true表示可自动下载(适用于希望系统自动检测并下载新版本的场景)，false表示不可自动下载(适用于需要用户手动确认下载的场景)。autoUpgradeStrategy字段设置是否允许自动升级，true表示可自动升级(适用于希望系统自动完成升级流程的场景)，false表示不可自动升级(适用于需要用户手动确认升级的场景)。autoUpgradePeriods字段设置自动升级时间段(可选)，当需要在特定时间段内自动升级时传入此参数，如夜间时段；不传入时默认为空数组[]，表示不限制自动升级时间段。|
 | callback | AsyncCallback\<void> | 是 | 回调函数，用于接收设置升级策略结果。回调参数包括err（错误对象，成功时为null，失败时为错误对象）。|
 
 **错误码**：
@@ -2258,7 +2312,7 @@ const upgradePolicy: update.UpgradePolicy = {
   autoUpgradePeriods: [{ start: 120, end: 240 }] // 自动升级时间段，用分钟表示
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -2295,17 +2349,17 @@ setUpgradePolicy(policy: UpgradePolicy): Promise\<void>
 
 设置流程包括：验证策略参数有效性 → 将策略数据写入系统配置文件持久化存储 → 更新升级服务的策略缓存 → 通知升级服务应用新策略。策略立即生效，系统会根据downloadStrategy控制是否自动下载升级包，根据autoUpgradeStrategy控制是否自动安装，根据autoUpgradePeriods限制升级时间段。策略持久化保存，设备重启后策略仍然有效。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| policy | [UpgradePolicy](#upgradepolicy) | 是    | 升级策略对象，用于控制升级行为。包含自动下载策略、自动升级策略、升级时间段等配置。|
+| policy | [UpgradePolicy](#upgradepolicy) | 是    | 升级策略对象（UpgradePolicy），用于控制升级行为。包含downloadStrategy(自动下载策略)、autoUpgradeStrategy(自动升级策略)和autoUpgradePeriods(自动升级时间段)三个字段。downloadStrategy字段设置是否允许自动下载，true表示可自动下载(适用于希望系统自动检测并下载新版本的场景)，false表示不可自动下载(适用于需要用户手动确认下载的场景)。autoUpgradeStrategy字段设置是否允许自动升级，true表示可自动升级(适用于希望系统自动完成升级流程的场景)，false表示不可自动升级(适用于需要用户手动确认升级的场景)。autoUpgradePeriods字段设置自动升级时间段(可选)，当需要在特定时间段内自动升级时传入此参数，如夜间时段；不传入时默认为空数组[]，表示不限制自动升级时间段。|
 
 **返回值**：
 
@@ -2334,7 +2388,7 @@ const upgradePolicy: update.UpgradePolicy = {
   autoUpgradePeriods: [{ start: 120, end: 240 }] // 自动升级时间段，用分钟表示
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -2359,7 +2413,7 @@ try {
 
 terminateUpgrade(callback: AsyncCallback\<void>): void
 
-终止当前升级任务, 取消正在进行的安装操作。本方法为在线升级功能，依赖设备厂商部署的升级包管理服务器。调用成功后，任务状态变更为已取消。使用callback异步回调。
+终止当前升级任务，取消正在进行的安装操作。本方法为在线升级功能，依赖设备厂商部署的升级包管理服务器。调用成功后，任务状态变更为已取消。使用callback异步回调。
 
 使用场景：用户主动取消升级或紧急停止升级。帮助用户灵活控制升级流程，避免用户不需要的升级或在紧急情况下停止升级。
 
@@ -2380,11 +2434,11 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 - getTaskInfo()：查询任务状态。
 - clearError()：清除异常状态（终止后如需重新升级）。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -2407,7 +2461,7 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -2434,7 +2488,7 @@ try {
 
 terminateUpgrade(): Promise\<void>
 
-终止当前升级任务, 取消正在进行的安装操作。本方法为在线升级功能，依赖设备厂商部署的升级包管理服务器。调用成功后，任务状态变更为已取消。使用Promise异步回调。
+终止当前升级任务，取消正在进行的安装操作。本方法为在线升级功能，依赖设备厂商部署的升级包管理服务器。调用成功后，任务状态变更为已取消。使用Promise异步回调。
 
 使用场景：用户主动取消升级或紧急停止升级。帮助用户灵活控制升级流程，避免用户不需要的升级或在紧急情况下停止升级。
 
@@ -2455,11 +2509,11 @@ terminateUpgrade(): Promise\<void>
 - getTaskInfo()：查询任务状态。
 - clearError()：清除异常状态（终止后如需重新升级）。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **返回值**：
 
@@ -2482,7 +2536,7 @@ terminateUpgrade(): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -2530,15 +2584,15 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 - off()：取消事件监听（配对方法）。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息对象(EventClassifyInfo)，用于指定要监听的升级事件类型。系统根据eventClassifyInfo参数注册对应类型的升级事件监听，事件发生时通过taskCallback回调函数传递事件信息。|
+| eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息对象(EventClassifyInfo)，用于指定要注册监听的升级事件类型。系统根据eventClassifyInfo参数注册对应类型的升级事件监听，事件发生时通过taskCallback回调函数传递事件信息。|
 | taskCallback | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调（UpgradeTaskCallback），用于处理升级任务事件。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。|
 
 **错误码**：
@@ -2557,7 +2611,7 @@ const eventClassifyInfo: update.EventClassifyInfo = {
   extraInfo: '' // 额外信息，此处为空表示无额外信息
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -2594,9 +2648,9 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 - 必须在已通过on()注册监听后，才能调用本方法取消监听。
 - 建议在升级流程结束后或页面销毁时调用，及时释放资源。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **参数**：
 
@@ -2621,7 +2675,7 @@ const eventClassifyInfo: update.EventClassifyInfo = {
   extraInfo: ''
 };
 try {
-  // 创建升级信息对象
+  // 定义升级信息对象
   const upgradeInfo: update.UpgradeInfo = {
     upgradeApp: 'com.ohos.ota.updateclient',  // 调用方包名
     businessType: {
@@ -2653,7 +2707,7 @@ try {
   3. deepFactoryReset：深度恢复出厂，可通过scope参数指定清除范围：DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区。
 - 开发者调用相应的恢复出厂方法执行恢复出厂操作，设备将清除数据并恢复到出厂状态。
 
-选取建议：日常维护场景优先选择factoryReset;涉及敏感数据或设备交接场景选择forceFactoryReset;设备报废或需要物理销毁数据场景选择deepFactoryReset。
+选取建议：日常维护场景优先选择factoryReset；涉及敏感数据或设备交接场景选择forceFactoryReset；设备报废或需要物理销毁数据场景选择deepFactoryReset。
 
 **设计逻辑**：
 
@@ -2700,10 +2754,11 @@ factoryReset(callback: AsyncCallback\<void>): void
 - 操作不可逆，需提醒用户备份重要数据并获得明确确认。
 - 需要系统权限ohos.permission.FACTORY_RESET。
 - 操作过程中设备会自动重启，应用需做好状态保存。
+- 建议仅在用户明确确认后执行恢复出厂操作。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**： ohos.permission.FACTORY_RESET
 
@@ -2732,11 +2787,13 @@ factoryReset(callback: AsyncCallback\<void>): void
 **示例**：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   // 获取恢复出厂设置对象
   let factoryRestorer = update.getRestorer();
   // 执行恢复出厂设置
-  factoryRestorer.factoryReset((resetError) => {
+  factoryRestorer.factoryReset((resetError: BusinessError) => {
     if (resetError) {
       console.error(`factoryReset error, code:${resetError.code}, message:${resetError.message}.`);
       return;
@@ -2762,14 +2819,14 @@ factoryReset(): Promise\<void>
 
 **约束和限制**：
 
-- 操作不可逆，将永久删除用户数据，需提前提醒用户备份重要数据。
+- 操作不可逆，需提醒用户备份重要数据并获得明确确认。
 - 需要系统权限ohos.permission.FACTORY_RESET。
 - 操作过程中设备会自动重启，应用需做好状态保存。
 - 建议仅在用户明确确认后执行恢复出厂操作。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**： ohos.permission.FACTORY_RESET
 
@@ -2793,6 +2850,7 @@ factoryReset(): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   // 获取恢复出厂设置对象
   let factoryRestorer = update.getRestorer();
@@ -2821,16 +2879,16 @@ forceFactoryReset(): Promise\<void>
 
 **约束和限制**：
 
-- 操作不可逆，将永久删除所有用户数据和加密密钥，无法恢复。
+- 操作不可逆，将永久删除所有用户数据和加密密钥，需提前提醒用户备份重要数据，无法恢复。
 - 需要系统权限ohos.permission.FORCE_FACTORY_RESET。
 - 执行前必须明确提醒用户备份重要数据并确认操作。
 - 建议仅在用户明确确认后执行恢复出厂操作。
 - 适用于敏感数据销毁、设备交接等高安全场景。
 - 操作过程中设备会立即重启，应用需提前做好状态保存。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**： ohos.permission.FORCE_FACTORY_RESET
 
@@ -2884,21 +2942,21 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 - 数据销毁不可逆，无法通过任何技术手段恢复，执行前必须获得用户明确授权。
 - 需要系统权限ohos.permission.FACTORY_RESET。
-- 深度清除耗时较长（可能数小时），必须确保设备电量充足（建议电量>50%）。
+- 深度清除耗时较长(可能数小时)，必须确保设备电量充足(建议电量>50%)。
 - 仅可在Stage模型下使用。
 - 适用于设备报废、高安全销毁等极端场景，不建议普通恢复出厂场景使用。
 - 执行前必须明确告知用户操作后果并获得确认。
 - 建议仅在用户明确确认后执行恢复出厂操作。
-- 建议先调用getDeepFactoryResetInfo查询预计耗时，向用户提示等待时长。确保设备电量充足后再执行深度恢复出厂操作。
-- 执行完成后设备将自动重启恢复到出厂初始状态，应用需提前做好状态保存。
+- 必须先调用getDeepFactoryResetInfo查询预计耗时，向用户提示等待时长，确保设备电量充足后再执行深度恢复出厂操作。
+- 执行完成后设备将自动重启恢复到出厂初始状态,应用需提前做好状态保存。
 
-**起始版本**：API version 26。
+**起始版本**：26.0.0。
 
 **模型约束**： 此接口仅可在Stage模型（OpenHarmony应用开发模型，详见[Stage模型开发指导](../../application-models/stage-model-development-overview.md)）下使用。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.FACTORY_RESET
 
@@ -2906,7 +2964,7 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| factoryResetStrategy | [FactoryResetStrategy](#factoryresetstrategy) | 是 | 恢复出厂设置策略(FactoryResetStrategy)，包含scope(重置范围)和strategy(重置策略描述)字段，用于控制恢复出厂设置的范围和方式。scope指定清除范围(DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区)，strategy为重置操作的自定义描述文本，长度范围[0，64]，单位：字符。有效字符包括字母、数字、下划线、连字符和空格，超出范围或包含无效字符时抛出异常。|
+| factoryResetStrategy | [FactoryResetStrategy](#factoryresetstrategy) | 是 | 恢复出厂设置策略(FactoryResetStrategy)，包含scope(重置范围)和strategy(重置策略描述)字段，用于控制恢复出厂设置的范围和方式。scope指定清除范围(DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区)。strategy为重置操作的自定义描述文本，长度范围[0，64]，单位：字符。有效字符包括字母、数字、下划线、连字符和空格。超出范围或包含无效字符时抛出异常。|
 
 **返回值**：
 
@@ -2967,13 +3025,13 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 - 当设备电量不足（建议电量高于50%）时，不应执行深度恢复出厂操作，以避免中途断电导致操作失败。
 - 必须在执行deepFactoryReset前调用，帮助用户做好时间和电量准备。
 
-**起始版本**： API version 26。
+**起始版本**： 26.0.0。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**： ohos.permission.FACTORY_RESET
 
@@ -2981,7 +3039,7 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | 是 | 恢复出厂设置策略(FactoryResetStrategy)，包含scope(重置范围)和strategy(重置策略描述)字段，用于控制恢复出厂设置的范围和方式。scope指定清除范围(DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区)，strategy为重置操作的自定义描述文本，长度范围0-64字符，有效字符包括字母、数字、下划线、连字符和空格，超出范围或包含无效字符时抛出异常。|
+| factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | 是 | 恢复出厂设置策略(FactoryResetStrategy)，包含scope(重置范围)和strategy(重置策略描述)字段，用于控制恢复出厂设置的范围和方式。scope指定清除范围(DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区)，strategy为重置操作的自定义描述文本，长度范围[0, 64]，单位：字符。有效字符包括字母、数字、下划线、连字符和空格，超出范围或包含无效字符时抛出异常。|
 
 **返回值**：
 
@@ -3071,11 +3129,11 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 
 - applyNewVersion()：安装升级包（校验通过后调用）。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -3099,6 +3157,8 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 **示例**：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const upgradeFile: update.UpgradeFile = {
   fileType: update.ComponentType.OTA, // OTA包
   filePath: '/data/local/tmp/updater.zip' // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
@@ -3110,7 +3170,7 @@ try {
   // 获取本地升级对象
   let localUpdater = update.getLocalUpdater();
   // 验证升级包
-  localUpdater.verifyUpgradePackage(upgradeFile, certsFile, (verifyUpgradePackageError) => {
+  localUpdater.verifyUpgradePackage(upgradeFile, certsFile, (verifyUpgradePackageError: BusinesssError) => {
     if (verifyUpgradePackageError) {
       console.error(`verifyUpgradePackage error, code:${verifyUpgradePackageError.code}, message:${verifyUpgradePackageError.message}.`);
       return;
@@ -3140,18 +3200,18 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 - 未校验直接调用applyNewVersion会导致安装失败，可能造成系统损坏。
 - 校验通过后的升级包可用于后续安装流程。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | upgradeFile | [UpgradeFile](#upgradefile) | 是    | 升级文件（UpgradeFile），包含文件类型和文件路径，用于指定要校验的本地升级包。|
-| certsFile   | string                      | 是    | 证书文件路径，用于校验升级包签名。证书文件必须从设备厂商官网下载，确保来源可信。支持绝对路径或相对路径，长度范围[1，255]，单位：字符。超出范围时抛出异常。|
+| certsFile   | string                      | 是    | 证书文件路径，用于校验升级包签名。证书文件必须从设备厂商官网下载，确保来源可信。支持绝对路径或相对路径，路径长度范围[1，255]，单位：字符。仅支持字母、数字、下划线、连字符、点号和斜杠等路径合法字符。超出长度范围或包含无效字符时抛出异常。|
 
 **返回值**：
 
@@ -3216,11 +3276,11 @@ applyNewVersion(upgradeFiles: Array\<UpgradeFile>, callback: AsyncCallback\<void
 
 使用场景：从本地存储设备(如SD卡)进行系统升级、完成本地升级流程。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -3243,6 +3303,8 @@ applyNewVersion(upgradeFiles: Array\<UpgradeFile>, callback: AsyncCallback\<void
 **示例**：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 const upgradeFiles: Array<update.UpgradeFile> = [{
   fileType: update.ComponentType.OTA, // OTA包
   filePath: '/data/local/tmp/updater.zip' // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
@@ -3252,7 +3314,7 @@ try {
   // 获取本地升级对象
   let localUpdater = update.getLocalUpdater();
   // 安装新版本
-  localUpdater.applyNewVersion(upgradeFiles, (applyNewVersionError) => {
+  localUpdater.applyNewVersion(upgradeFiles, (applyNewVersionError: BusinessError) => {
     if (applyNewVersionError) {
       console.error(`applyNewVersion error, code:${applyNewVersionError.code}, message:${applyNewVersionError.message}.`);
       return;
@@ -3283,11 +3345,11 @@ applyNewVersion(upgradeFiles: Array\<UpgradeFile>): Promise\<void>
 
 使用场景：从本地存储设备(如SD卡)进行系统升级、完成本地升级流程。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**： ohos.permission.UPDATE_SYSTEM
+**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数**：
 
@@ -3359,15 +3421,15 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 - 在调用applyNewVersion等长时间操作前注册监听。
 - 在操作完成或收到最终事件后取消监听。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息对象(EventClassifyInfo)，用于指定要取消监听的升级事件类型。前置条件:必须先通过on方法注册监听，注册后系统维护事件监听列表并持续接收对应类型的本地升级事件通知。使用此参数取消监听后，系统从事件监听列表中移除对应监听记录，释放监听占用的内存和IPC通道资源，应用不再接收该类型的事件通知。|
+| eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息对象(EventClassifyInfo)，用于指定要注册监听的升级事件类型。|
 | taskCallback | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调，用于接收升级任务事件通知。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。|
 
 **错误码**：
@@ -3418,9 +3480,9 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 - 须在已通过on()注册监听后，才能调用本方法取消监听。
 - 建议在升级流程结束后或页面销毁时调用，及时释放资源。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 **参数**：
 
@@ -3463,9 +3525,9 @@ try {
 
 升级信息。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
@@ -3476,9 +3538,9 @@ try {
 
 升级业务类型。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
@@ -3489,9 +3551,9 @@ try {
 
 版本检查结果。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | ----------------- | --------------------------------- | ------------ | ------ |
@@ -3502,9 +3564,9 @@ try {
 
 新版本数据。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | ----------------- | ---------------------------------------- | --------- |---- |
@@ -3515,9 +3577,9 @@ try {
 
 版本摘要。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
@@ -3527,9 +3589,9 @@ try {
 
 版本组件。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
@@ -3546,9 +3608,9 @@ try {
 
 描述文件选项，用于指定描述文件的格式和语言。对象包含format(描述文件格式，可选STANDARD或SIMPLIFIED)和language(语言代码，如'zh-cn')字段。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
@@ -3559,9 +3621,9 @@ try {
 
 组件描述文件。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
@@ -3572,9 +3634,9 @@ try {
 
 版本描述文件信息。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
@@ -3585,9 +3647,9 @@ try {
 
 当前版本信息。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
@@ -3599,9 +3661,9 @@ try {
 
 下载选项，包含allowNetwork(允许下载的网络类型)和order(升级指令)字段，用于控制下载行为。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
@@ -3612,33 +3674,33 @@ try {
 
 恢复下载选项，用于指定恢复下载的网络类型。对象包含allowNetwork字段，用于设置允许下载的网络类型。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
-| allowNetwork | [NetType](#nettype)                    | 只读:否， 可选:否 | 网络类型，允许恢复下载的网络类型。设置CELLULAR仅允许数据网络恢复下载，设置WIFI仅允许WIFI网络恢复下载，设置CELLULAR_AND_WIFI允许两者均可恢复下载。建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。 |
+| allowNetwork | [NetType](#nettype)                    | 只读:否， 可选:否 | 网络类型，允许恢复下载的网络类型。仅当已调用pauseDownload暂停下载后才能设置此参数。设置CELLULAR仅允许数据网络恢复下载，设置WIFI仅允许WIFI网络恢复下载，设置CELLULAR_AND_WIFI允许两者均可恢复下载。建议根据升级包大小和网络环境选择：大文件升级包建议使用WIFI避免流量消耗和提升下载速度；移动场景或无WIFI环境可使用CELLULAR；不确定网络环境建议使用CELLULAR_AND_WIFI。|
 
 ## PauseDownloadOptions
 
 暂停下载选项，用于控制暂停行为。对象包含isAllowAutoResume字段，true表示允许自动恢复，false表示需手动恢复。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
-| isAllowAutoResume | boolean | 只读:否， 可选:否 | 是否允许自动恢复。<br>true表示允许自动恢复，系统可能自动恢复下载；false表示不允许，需手动调用resumeDownload恢复。<br>使用建议：网络不稳定场景建议设置true启用自动恢复，提升下载成功率；需要精确控制下载时机或避免在特定网络环境下恢复的场景建议设置false，通过手动调用resumeDownload控制恢复时机。 |
+| isAllowAutoResume | boolean | 只读:否， 可选:否 | 是否允许自动恢复。仅当有正在进行的下载任务时才能设置此参数。<br>true表示允许自动恢复，系统可能自动恢复下载；false表示不允许，需手动调用resumeDownload恢复。<br>使用建议：网络不稳定场景建议设置true启用自动恢复，提升下载成功率；需要精确控制下载时机或避免在特定网络环境下恢复的场景建议设置false，通过手动调用resumeDownload控制恢复时机。|
 
 ## UpgradeOptions
 
 升级选项，包含升级指令等配置，用于指定升级操作类型。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
@@ -3648,13 +3710,13 @@ try {
 
 清除异常选项，用于指定要清除的异常状态类型。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | -------------- | -------- |
-| status | [UpgradeStatus](#upgradestatus) | 只读:否， 可选:否 | 异常状态，用于指定要清除的状态。<br>使用场景：当升级失败(状态为UPGRADE_FAIL)后，系统会保留异常状态阻止重新升级，此时需要调用clearError传入status参数清除异常状态，使系统恢复到初始状态以便重新开始升级流程。<br>常用值：UPGRADE_FAIL(升级失败状态)。注意事项：仅支持清除UPGRADE_FAIL状态。 |
+| status | [UpgradeStatus](#upgradestatus) | 只读:否， 可选:否 | 异常状态，用于指定要清除的状态。仅当upgrade方法执行失败(状态为UPGRADE_FAIL)后才能设置此参数为UPGRADE_FAIL。<br>使用场景：当升级失败(状态为UPGRADE_FAIL)后，系统会保留异常状态阻止重新升级，此时需要调用clearError传入status参数清除异常状态，使系统恢复到初始状态以便重新开始升级流程。<br>常用值：UPGRADE_FAIL(升级失败状态)。注意事项：仅支持清除UPGRADE_FAIL状态。|
 
 ## UpgradePolicy
 
@@ -3668,9 +3730,9 @@ try {
 
 需根据实际需求构造对象。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | ------------------- | -------- |
@@ -3682,9 +3744,9 @@ try {
 
 升级时间段。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | ------------------- | -------- |
@@ -3695,9 +3757,9 @@ try {
 
 任务信息。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
@@ -3710,9 +3772,9 @@ try {
 
 使用场景：在注册事件监听(on方法)后，事件发生时回调函数会接收到EventInfo对象，通过解析eventId和taskBody可获知升级任务的实时状态和进度，用于实时监控升级流程。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
@@ -3723,9 +3785,9 @@ try {
 
 任务数据。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
@@ -3741,9 +3803,9 @@ try {
 
 错误信息。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
@@ -3754,22 +3816,22 @@ try {
 
 事件信息。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
 | eventClassify | [EventClassify](#eventclassify) | 只读:否， 可选:否 | 事件类型，用于指定要监听的事件分类。可取值：TASK（任务事件）。 |
-| extraInfo     | string                          | 只读:否， 可选:是 | 额外信息，用于传递扩展数据。默认值为空字符串，表示无额外信息。长度范围0-128字符，有效字符包括字母、数字、下划线、连字符和空格。超出范围或包含无效字符时抛出异常。当需要传递自定义扩展数据或业务标识时，可传入非空字符串，用于事件监听的精细化匹配或业务扩展场景。 |
+| extraInfo     | string                          | 只读:否， 可选:是 | 额外信息，用于传递扩展数据。默认值为空字符串，表示无额外信息。长度范围[0, 128]，单位：字符。有效字符包括字母、数字、下划线、连字符和空格，超出范围或包含无效字符时抛出异常。 |
 
 ## UpgradeFile
 
 升级文件，包含文件类型和文件路径，用于指定要安装的本地升级包。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
@@ -3780,13 +3842,13 @@ try {
 
 恢复出厂设置策略，包含scope(重置范围)和strategy(重置策略描述)字段。
 
-**起始版本**： API version 26。
+**起始版本**： 26.0.0。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
@@ -3797,13 +3859,13 @@ try {
 
 恢复出厂设置信息。
 
-**起始版本**： API version 26。
+**起始版本**： 26.0.0。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
@@ -3817,9 +3879,9 @@ try {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
@@ -3834,9 +3896,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **版本说明**： 从API version 23开始支持。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称        | 类型                    | 必填   | 说明   |
 | --------- | ----------------------- | ---- | ---- |
@@ -3846,9 +3908,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 设备厂家。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称    | 值      | 说明   |
 | ------ | -------- | ---- |
@@ -3858,9 +3920,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 升级类型。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称      | 值  | 说明   |
 | -------- | ---- | ---- |
@@ -3870,9 +3932,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 组件类型。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称  | 值  | 说明   |
 | ---- | ---- | ---- |
@@ -3882,9 +3944,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 升级方式。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称      | 值        | 说明   |
 | -------- | ---------- | ---- |
@@ -3895,9 +3957,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 生效模式。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
@@ -3909,9 +3971,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 升级模式。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
@@ -3924,9 +3986,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 描述文件类型。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称     | 值  | 说明   |
 | ------- | ---- | ---- |
@@ -3937,9 +3999,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 描述文件格式。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称        | 值  | 说明   |
 | ---------- | ---- | ---- |
@@ -3950,9 +4012,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 网络类型，用于指定下载的网络类型。设置CELLULAR仅允许数据网络下载，设置WIFI仅允许WIFI下载，设置CELLULAR_AND_WIFI允许两者均可下载。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称               | 值  | 说明        |
 | ----------------- | ---- | --------- |
@@ -3966,9 +4028,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 升级指令。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称                  | 值  | 说明    |
 | -------------------- | ---- | ----- |
@@ -3982,9 +4044,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 升级状态。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称              | 值  | 说明   |
 | ---------------- | ---- | ---- |
@@ -4003,9 +4065,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件类型。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称   | 值        | 说明   |
 | ---- | ---------- | ---- |
@@ -4015,9 +4077,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件ID。
 
-**系统接口**： 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
-**系统能力**： SystemCapability.Update.UpdateService
+**系统能力**：SystemCapability.Update.UpdateService
 
 | 名称                     | 值        | 说明     |
 | ---------------------- | ---------- | ------ |
