@@ -385,15 +385,15 @@ struct MaterialInfoPage {
 
 在高算力设备上表现：
 
-![systemMaterialState](figures/immersiveMaterialStateExquisite-high.jpg)
+![systemMaterialState](figures/immersiveMaterialStateExquisite.jpg)
 
 在中档算力设备上表现：
 
-![systemMaterialState](figures/immersiveMaterialStateExquisite-medium.jpg)
+![systemMaterialState](figures/immersiveMaterialStateGentle.jpg)
 
 在低档算力设备上表现：
 
-![systemMaterialState](figures/immersiveMaterialStateExquisite-low.jpg)
+![systemMaterialState](figures/immersiveMaterialStateSmooth.jpg)
 
 ### 示例3（设置组件材质的交互形变效果）
 
