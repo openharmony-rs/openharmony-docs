@@ -17,7 +17,8 @@ In focus testing, specific components are injected. Available features include s
 
 ## Principles
 
-The following figure shows the wukong component architecture and the responsibilities of sub-modules. 
+The following figure shows the wukong component architecture and the responsibilities of sub-modules.
+  
 ![Alternate text](figures/wukongRandomTestFlow.png)
 
 - Command line parsing: obtains and parses parameters using commands.
@@ -32,7 +33,7 @@ The following figure shows the wukong component architecture and the responsibil
 1. The wukong tool is built in the system since API version 9.
 
 2. Before running any command, configure the <!--RP1-->[hdc environment](../dfx/hdc.md)<!--RP1End--> and enter the shell mode.
-<!--Del-->
+   <!--Del-->
 3. In API versions earlier than 9, you need to build the tool and push it to the target device. The procedure is as follows:
 
    ```bash
@@ -45,7 +46,7 @@ The following figure shows the wukong component architecture and the responsibil
    hdc shell chmod a+x /wukong
    hdc shell mv /wukong /bin/
    ```
-<!--DelEnd-->
+   <!--DelEnd-->
 ## Functions and Commands
 
 | Command          | Description                                          |

@@ -19,11 +19,11 @@ You can control the display style of the mouse cursor.
 
 setCursor(value: PointerStyle): void
 
+Sets the current mouse cursor style. This API can be used globally in method statements.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-Sets the current mouse cursor style. This API can be used globally in method statements.
 
 **Parameters**
 
@@ -31,16 +31,15 @@ Sets the current mouse cursor style. This API can be used globally in method sta
 | ----- | ------ | ---- | ---- |
 | value | [PointerStyle](#pointerstyle) | All consistent  | Cursor style.|
 
-
 ### restoreDefault
 
 restoreDefault(): void
 
+Restores the mouse cursor to the default arrow style. This API can be used globally in method statements.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-Restores the mouse cursor to the default arrow style. This API can be used globally in method statements.
 
 ## PointerStyle
 
@@ -58,7 +57,7 @@ Defines the pointer style.
 
 > **NOTE**
 > 
-> Directly using **cursorControl** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then call the [getCursorController](../arkts-apis-uicontext-uicontext.md#getcursorcontroller12) API through this object.
+> Directly using **cursorControl** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then obtain the **cursorControl** bound to the instance using the [getCursorController](../arkts-apis-uicontext-uicontext.md#getcursorcontroller12) API.
 
 ## Example
 
@@ -80,7 +79,7 @@ struct CursorControlExample {
         .height(200)
         .width(200)
         .backgroundColor(Color.Green)
-        .position({ x: 150, y: 70 })
+        .position({ x: 60, y: 70 })
         .onHover((flag) => {
           if (flag) {
             // You are advised to use this.getUIContext().getCursorController().setCursor().
@@ -94,7 +93,7 @@ struct CursorControlExample {
         .height(200)
         .width(200)
         .backgroundColor(Color.Blue)
-        .position({ x: 220, y: 120 })
+        .position({ x: 130, y: 120 })
         .onHover((flag) => {
           if (flag) {
             // You are advised to use this.getUIContext().getCursorController().setCursor().

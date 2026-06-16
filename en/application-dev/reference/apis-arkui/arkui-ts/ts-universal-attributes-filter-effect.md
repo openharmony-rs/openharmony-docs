@@ -30,7 +30,7 @@ Sets a visual effect that is not a filter effect.
 
 | Name| Type                                                        | Mandatory| Description                                                |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| effect | [VisualEffect](#visualeffect) | Yes  | Visual effect.|
+| effect | [VisualEffect](#visualeffect-1) | Yes  | Visual effect.|
 
 **Return value**
 
@@ -120,7 +120,7 @@ Sets the visual effect of the compositing filter.
 
 type Filter = Filter
 
-Represents a Filter object.
+Represents a filter object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -128,13 +128,13 @@ Represents a Filter object.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Applies a visual effect to a component.|
+| [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Used to apply the specified visual effect to the target component.|
 
 ## VisualEffect
 
 type VisualEffect = VisualEffect
 
-Represents a VisualEffect object.
+Represents a visual effect configuration object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -142,7 +142,7 @@ Represents a VisualEffect object.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | Applies a visual effect to a component.|
+| [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | Used to apply the specified visual effect to the target component.|
 
 ## Example
 
@@ -167,6 +167,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // Replace $r("app.media.app_icon") with the resource file you use.
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .foregroundFilter(this.filterTest1) // Set the blur effect using foregroundFilter.
@@ -176,6 +177,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // Replace $r("app.media.app_icon") with the resource file you use.
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .backgroundFilter(this.filterTest2) // Set the blur effect using backgroundFilter.
@@ -185,6 +187,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // Replace $r("app.media.app_icon") with the resource file you use.
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .compositingFilter(this.filterTest3) // Set the blur effect using compositingFilter.

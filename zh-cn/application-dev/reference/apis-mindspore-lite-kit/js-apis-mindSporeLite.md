@@ -36,18 +36,20 @@ loadModelFromFile(model: string, callback: Callback&lt;Model&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                                             |
 | -------- | ------------------------- | ---- | ------------------------------------------------ |
 | model    | string                    | 是   | 模型的完整输入路径。字符串长度限制跟随文件系统。 |
-| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。                         |
+| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。回调过程中若检查模型输入为空，回调失败。                         |
 
 **示例：** 
 
 ```ts
-let modelFile : string = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile, (mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+let modelFile: string = '/path/to/xxx.ms';
+mindSporeLite.loadModelFromFile(modelFile, (mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
-    console.error('MS_LITE_ERR: getInputs failed.')
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, Result: null`);
+  } else if (modelInputs.length === 0) {
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, Input count: 0`);
   } else {
-    console.info(modelInputs[0].name);
+    console.info(`Succeeded in getting model inputs. Model file: ${modelFile}, Input name: ${modelInputs[0].name}`);
   }
 })
 ```
@@ -65,20 +67,22 @@ loadModelFromFile(model: string, context: Context, callback: Callback&lt;Model&g
 | -------- | ----------------------------------- | ---- | ---------------------- |
 | model    | string                              | 是   | 模型的完整输入路径。字符串长度限制跟随文件系统。 |
 | context | [Context](#context) | 是 | 运行环境的配置信息。 |
-| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。 |
+| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。回调过程中若检查模型输入为空，回调失败。 |
 
 **示例：** 
 
 ```ts
 let context: mindSporeLite.Context = {};
 context.target = ['cpu'];
-let modelFile : string = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile, context, (mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+let modelFile: string = '/path/to/xxx.ms';
+mindSporeLite.loadModelFromFile(modelFile, context, (mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
-    console.error('MS_LITE_ERR: getInputs failed.')
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, Context: ${JSON.stringify(context)}, Result: null`);
+  } else if (modelInputs.length === 0) {
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, Context: ${JSON.stringify(context)}, Input count: 0`);
   } else {
-    console.info(modelInputs[0].name);
+    console.info(`Succeeded in getting model inputs. Model file: ${modelFile}, Input name: ${modelInputs[0].name}`);
   }
 })
 ```
@@ -107,14 +111,18 @@ loadModelFromFile(model: string, context?: Context): Promise&lt;Model&gt;
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
-    console.error('MS_LITE_ERR: getInputs failed.')
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, Result: null`);
+  } else if (modelInputs.length === 0) {
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, Input count: 0`);
   } else {
-    console.info(modelInputs[0].name);
+    console.info(`Succeeded in getting model inputs. Model file: ${modelFile}, Input name: ${modelInputs[0].name}`);
   }
-})
+}).catch((error: Error) => {
+  console.error(`Failed to load model from file. Model file: ${modelFile}, Error: ${error.message}`);
+});
 ```
 ## mindSporeLite.loadModelFromBuffer
 
@@ -129,7 +137,7 @@ loadModelFromBuffer(model: ArrayBuffer, callback: Callback&lt;Model&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                     |
 | -------- | ------------------------- | ---- | ------------------------ |
 | model    | ArrayBuffer               | 是   | 包含模型的内存。         |
-| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。 |
+| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。回调过程中若检查模型输入为空，回调失败。 |
 
 **示例：** 
 
@@ -140,15 +148,23 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((buffer: Uint8Array) => {
-  let modelBuffer = buffer.buffer;
-  mindSporeLite.loadModelFromBuffer(modelBuffer, (mindSporeLiteModel: mindSporeLite.Model) => {
-    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-    console.info('MS_LITE_LOG: ' + modelInputs[0].name);
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((buffer: Uint8Array) => {
+    let modelBuffer = buffer.buffer;
+    mindSporeLite.loadModelFromBuffer(modelBuffer, (mindSporeLiteModel: mindSporeLite.Model) => {
+      let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+      if (modelInputs == null || modelInputs.length === 0) {
+        console.error(`Failed to get model inputs from buffer. Model file: ${modelFile}, Buffer size: ${modelBuffer.byteLength}`);
+      } else {
+        console.info(`Succeeded in getting model inputs from buffer. Model file: ${modelFile}, Input name: ${modelInputs[0].name}`);
+      }
+    })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error(`Failed to read model file from resources. File name: ${modelFile}, Error code: ${error.code}, Error message: ${error.message}`);
+  });
 ```
 ## mindSporeLite.loadModelFromBuffer
 
@@ -164,7 +180,7 @@ loadModelFromBuffer(model: ArrayBuffer, context: Context, callback: Callback&lt;
 | -------- | ----------------------------------- | ---- | ---------------------- |
 | model    | ArrayBuffer                   | 是   | 包含模型的内存。 |
 | context | [Context](#context) | 是  | 运行环境的配置信息。 |
-| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。 |
+| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。回调过程中若检查模型输入为空，回调失败。 |
 
 **示例：** 
 
@@ -175,17 +191,26 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((buffer: Uint8Array) => {
-  let modelBuffer = buffer.buffer;
-  let context: mindSporeLite.Context = {};
-  context.target = ['cpu'];
-  mindSporeLite.loadModelFromBuffer(modelBuffer, context, (mindSporeLiteModel: mindSporeLite.Model) => {
-    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-    console.info('MS_LITE_LOG: ' + modelInputs[0].name);
+let context: mindSporeLite.Context = {};
+context.target = ['cpu'];
+
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((buffer: Uint8Array) => {
+    let modelBuffer = buffer.buffer;
+    mindSporeLite.loadModelFromBuffer(modelBuffer, context, (mindSporeLiteModel: mindSporeLite.Model) => {
+      let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+      if (modelInputs == null || modelInputs.length === 0) {
+        console.error(`Failed to get model inputs from buffer. Model file: ${modelFile}, Context: ${JSON.stringify(context)}, Buffer size: ${modelBuffer.byteLength}`);
+      } else {
+        console.info(`Succeeded in getting model inputs from buffer. Model file: ${modelFile}, Input name: ${modelInputs[0].name}`);
+      }
+    })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error(`Failed to read model file from resources. File name: ${modelFile}, Error code: ${error.code}, Error message: ${error.message}`);
+  });
 ```
 ## mindSporeLite.loadModelFromBuffer
 
@@ -217,15 +242,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((buffer: Uint8Array) => {
-  let modelBuffer = buffer.buffer;
-  mindSporeLite.loadModelFromBuffer(modelBuffer).then((mindSporeLiteModel: mindSporeLite.Model) => {
-    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-    console.info('MS_LITE_LOG: ' + modelInputs[0].name);
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((buffer: Uint8Array) => {
+    let modelBuffer = buffer.buffer;
+    mindSporeLite.loadModelFromBuffer(modelBuffer).then((mindSporeLiteModel: mindSporeLite.Model) => {
+      let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+      if (modelInputs == null || modelInputs.length === 0) {
+        console.error(`Failed to get model inputs from buffer. Model file: ${modelFile}, Buffer size: ${modelBuffer.byteLength}`);
+      } else {
+        console.info(`Succeeded in getting model inputs from buffer. Model file: ${modelFile}, Input name: ${modelInputs[0].name}`);
+      }
+    }).catch((error: Error) => {
+      console.error(`Failed to load model from buffer. Model file: ${modelFile}, Buffer size: ${modelBuffer.byteLength}, Error: ${error.message}`);
+    });
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error(`Failed to read model file from resources. File name: ${modelFile}, Error code: ${error.code}, Error message: ${error.message}`);
+  });
 ```
 ## mindSporeLite.loadModelFromFd
 
@@ -240,20 +275,23 @@ loadModelFromFd(model: number, callback: Callback&lt;Model&gt;): void
 | 参数名   | 类型                                | 必填 | 说明                   |
 | -------- | ----------------------------------- | ---- | ---------------------- |
 | model    | number                         | 是   | 模型的文件描述符。跟随文件系统返回fd值传入。 |
-| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。 |
+| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。回调过程中若检查模型输入为空，回调失败。 |
 
 **示例：** 
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
+
 let modelFile = '/path/to/xxx.ms';
 let file = fileIo.openSync(modelFile, fileIo.OpenMode.READ_ONLY);
-mindSporeLite.loadModelFromFd(file.fd, (mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+mindSporeLite.loadModelFromFd(file.fd, (mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
-    console.error('MS_LITE_ERR: getInputs failed.')
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, File descriptor: ${file.fd}, Result: null`);
+  } else if (modelInputs.length === 0) {
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, File descriptor: ${file.fd}, Input count: 0`);
   } else {
-    console.info(modelInputs[0].name);
+    console.info(`Succeeded in getting model inputs. Model file: ${modelFile}, Input name: ${modelInputs[0].name}`);
   }
 })
 ```
@@ -271,22 +309,25 @@ loadModelFromFd(model: number, context: Context, callback: Callback&lt;Model&gt;
 | -------- | ----------------------------------- | ---- | ---------------------- |
 | model    | number                   | 是   | 模型的文件描述符。跟随文件系统返回fd值传入。 |
 | context | [Context](#context) | 是  | 运行环境的配置信息。 |
-| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。 |
+| callback | Callback<[Model](#model)> | 是   | 回调函数。返回模型对象。回调过程中若检查模型输入为空，回调失败。 |
 
 **示例：** 
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
+
 let modelFile = '/path/to/xxx.ms';
-let context : mindSporeLite.Context = {};
+let context: mindSporeLite.Context = {};
 context.target = ['cpu'];
 let file = fileIo.openSync(modelFile, fileIo.OpenMode.READ_ONLY);
-mindSporeLite.loadModelFromFd(file.fd, context, (mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+mindSporeLite.loadModelFromFd(file.fd, context, (mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
-    console.error('MS_LITE_ERR: getInputs failed.')
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, File descriptor: ${file.fd}, Context: ${JSON.stringify(context)}, Result: null`);
+  } else if (modelInputs.length === 0) {
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, File descriptor: ${file.fd}, Context: ${JSON.stringify(context)}, Input count: 0`);
   } else {
-    console.info(modelInputs[0].name);
+    console.info(`Succeeded in getting model inputs. Model file: ${modelFile}, Input name: ${modelInputs[0].name}`);
   }
 })
 ```
@@ -315,16 +356,21 @@ loadModelFromFd(model: number, context?: Context): Promise&lt;Model&gt;
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
+
 let modelFile = '/path/to/xxx.ms';
 let file = fileIo.openSync(modelFile, fileIo.OpenMode.READ_ONLY);
 mindSporeLite.loadModelFromFd(file.fd).then((mindSporeLiteModel: mindSporeLite.Model) => {
   let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
-    console.error('MS_LITE_ERR: getInputs failed.')
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, File descriptor: ${file.fd}, Result: null`);
+  } else if (modelInputs.length === 0) {
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, File descriptor: ${file.fd}, Input count: 0`);
   } else {
-    console.info(modelInputs[0].name);
+    console.info(`Succeeded in getting model inputs. Model file: ${modelFile}, Input name: ${modelInputs[0].name}`);
   }
-})
+}).catch((error: Error) => {
+  console.error(`Failed to load model from file descriptor. Model file: ${modelFile}, File descriptor: ${file.fd}, Error: ${error.message}`);
+});
 ```
 
 ## mindSporeLite.loadTrainModelFromFile<sup>12+</sup>
@@ -353,14 +399,18 @@ loadTrainModelFromFile(model: string, trainCfg?: TrainCfg, context?: Context): P
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
-mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
-    console.error('MS_LITE_ERR: getInputs failed.')
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, Result: null`);
+  } else if (modelInputs.length === 0) {
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, Input count: 0`);
   } else {
-    console.info(modelInputs[0].name);
+    console.info(`Succeeded in getting model inputs. Model file: ${modelFile}, Input name: ${modelInputs[0].name}`);
   }
-})
+}).catch((error: Error) => {
+  console.error(`Failed to load train model from file. Model file: ${modelFile}, Error: ${error.message}`);
+});
 ```
 
 ## mindSporeLite.loadTrainModelFromBuffer<sup>12+</sup>
@@ -394,14 +444,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((buffer: Uint8Array) => {
-  let modelBuffer = buffer.buffer;
-  mindSporeLite.loadTrainModelFromBuffer(modelBuffer).then((mindSporeLiteModel: mindSporeLite.Model) => {
-    console.info("MSLITE trainMode: ", mindSporeLiteModel.trainMode);
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((buffer: Uint8Array) => {
+    let modelBuffer = buffer.buffer;
+    mindSporeLite.loadTrainModelFromBuffer(modelBuffer).then((mindSporeLiteModel: mindSporeLite.Model) => {
+      console.info(`Succeeded in loading train model. Train mode: ${mindSporeLiteModel.trainMode}`);
+    }).catch((error: Error) => {
+      console.error(`Failed to load train model from buffer. Model file: ${modelFile}, Buffer size: ${modelBuffer.byteLength}, Error: ${error.message}`);
+    });
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error(`Failed to read model file from resources. File name: ${modelFile}, Error code: ${error.code}, Error message: ${error.message}`);
+  });
 ```
 
 ## mindSporeLite.loadTrainModelFromFd<sup>12+</sup>
@@ -430,10 +486,13 @@ loadTrainModelFromFd(model: number, trainCfg?: TrainCfg, context?: Context): Pro
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
+
 let modelFile = '/path/to/xxx.ms';
 let file = fileIo.openSync(modelFile, fileIo.OpenMode.READ_ONLY);
 mindSporeLite.loadTrainModelFromFd(file.fd).then((mindSporeLiteModel: mindSporeLite.Model) => {
-  console.info("MSLITE trainMode: ", mindSporeLiteModel.trainMode);
+  console.info(`Succeeded in loading train model. Train mode: ${mindSporeLiteModel.trainMode}`);
+}).catch((error: Error) => {
+  console.error(`Failed to load train model from file descriptor. Model file: ${modelFile}, File descriptor: ${file.fd}, Error: ${error.message}`);
 });
 ```
 
@@ -454,9 +513,15 @@ getAllNNRTDeviceDescriptions() : NNRTDeviceDescription[]
 **示例：** 
 
 ```ts
-let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
-if (allDevices == null) {
-  console.error('MS_LITE_LOG: getAllNNRTDeviceDescriptions is NULL.');
+try {
+  let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
+  if (allDevices == null || allDevices.length === 0) {
+    console.error(`Failed to get NNRT device descriptions. Result: null or empty array`);
+  } else {
+    console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
+  }
+} catch (error) {
+  console.error(`Failed to get NNRT device descriptions. Error: ${error}`);
 }
 ```
 
@@ -567,8 +632,8 @@ NNRt推理任务优先级枚举。
 
 | 名称                | 类型        | 只读 | 可选 | 说明             |
 | ------------------- | ----------- | ---- | ---- | ---------------- |
-| name<sup>12+</sup>  | string      | 否   | 否   | 扩展名称。       |
-| value<sup>12+</sup> | ArrayBuffer | 否   | 否   | 包含扩展的内存。 |
+| name  | string      | 否   | 否   | 扩展名称。       |
+| value | ArrayBuffer | 否   | 否   | 包含扩展的内存。 |
 
 ## NNRTDeviceDescription<sup>12+</sup>
 
@@ -597,11 +662,12 @@ let context: mindSporeLite.Context = {};
 context.target = ["nnrt"];
 context.nnrt = {};
 let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
-if (allDevices == null) {
-  console.error('getAllNNRTDeviceDescriptions is NULL.');
+if (allDevices == null || allDevices.length === 0) {
+  console.error(`Failed to get NNRT device descriptions. Context: ${JSON.stringify(context)}, Result: null or empty`);
 } else {
-  for (let i: number = 0; i < allDevices.length; i++) {
-    console.info(allDevices[i].deviceID().toString());
+  console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
+    for (let i: number = 0; i < allDevices.length; i++) {
+      console.info(`Device ${i} ID: ${allDevices[i].deviceID().toString()}`);
   }
 }
 ```
@@ -627,11 +693,12 @@ let context: mindSporeLite.Context = {};
 context.target = ["nnrt"];
 context.nnrt = {};
 let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
-if (allDevices == null) {
-  console.error('getAllNNRTDeviceDescriptions is NULL.');
+if (allDevices == null || allDevices.length === 0) {
+  console.error(`Failed to get NNRT device descriptions. Context: ${JSON.stringify(context)}, Result: null or empty`);
 } else {
+console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
   for (let i: number = 0; i < allDevices.length; i++) {
-    console.info(allDevices[i].deviceType().toString());
+    console.info(`Device ${i} type: ${allDevices[i].deviceType().toString()}`);
   }
 }
 ```
@@ -657,11 +724,12 @@ let context: mindSporeLite.Context = {};
 context.target = ["nnrt"];
 context.nnrt = {};
 let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
-if (allDevices == null) {
-  console.error('getAllNNRTDeviceDescriptions is NULL.');
+if (allDevices == null || allDevices.length === 0) {
+  console.error(`Failed to get NNRT device descriptions. Context: ${JSON.stringify(context)}, Result: null or empty`);
 } else {
+console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
   for (let i: number = 0; i < allDevices.length; i++) {
-    console.info(allDevices[i].deviceName().toString());
+    console.info(`Device ${i} name: ${allDevices[i].deviceName()}`);
   }
 }
 ```
@@ -687,8 +755,8 @@ NNRt设备类型枚举。
 
 | 名称                            | 类型                                      | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| lossName<sup>12+</sup>          | string[]                                  | 否   | 是   | 损失函数的名称列表。默认值为["loss_fct", "_loss_fn", "SigmoidCrossEntropy"]。 |
-| optimizationLevel<sup>12+</sup> | [OptimizationLevel](#optimizationlevel12) | 否   | 是   | 端侧训练的网络优化等级。默认值为O0。                         |
+| lossName         | string[]                                  | 否   | 是   | 损失函数的名称列表。默认值为["loss_fct", "_loss_fn", "SigmoidCrossEntropy"]。 |
+| optimizationLevel | [OptimizationLevel](#optimizationlevel12) | 否   | 是   | 端侧训练的网络优化等级。默认值为O0。                         |
 
 **示例：** 
 
@@ -751,20 +819,24 @@ getInputs(): MSTensor[]
 
 | 类型                    | 说明               |
 | ----------------------- | ------------------ |
-| [MSTensor](#mstensor)[] | 返回MSTensor对象。 |
+| [MSTensor](#mstensor)[] | 返回MSTensor对象列表。 |
 
 **示例：** 
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
   if (modelInputs == null) {
-    console.error('MS_LITE_ERR: getInputs failed.')
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, Result: null`);
+  } else if (modelInputs.length === 0) {
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, Input count: 0`);
   } else {
-    console.info(modelInputs[0].name);
+    console.info(`Succeeded in getting model inputs. Model file: ${modelFile}, Input name: ${modelInputs[0].name}, Total inputs: ${modelInputs.length}`);
   }
-})
+}).catch((error: Error) => {
+  console.error(`Failed to load model. Model file: ${modelFile}, Error: ${error.message}`);
+});
 ```
 ### predict
 
@@ -779,7 +851,7 @@ predict(inputs: MSTensor[], callback: Callback&lt;MSTensor[]&gt;): void
 | 参数名 | 类型                    | 必填 | 说明                       |
 | ------ | ----------------------- | ---- | -------------------------- |
 | inputs | [MSTensor](#mstensor)[] | 是   | 模型的输入列表。MSTensor对象。 |
-| callback | Callback<[MSTensor](#mstensor)[]> | 是   | 回调函数。返回MSTensor对象。 |
+| callback | Callback<[MSTensor](#mstensor)[]> | 是   | 回调函数。返回MSTensor对象列表。 |
 
 **示例：** 
 
@@ -788,24 +860,44 @@ import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// The name of the preprocessed model input data file
 let inputName = 'input_data.bin';
+let modelFile: string = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(inputName).then(async (buffer : Uint8Array) => {
-  let inputBuffer = buffer.buffer;
-  let modelFile : string = '/path/to/xxx.ms';
-  let mindSporeLiteModel : mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-
-  modelInputs[0].setData(inputBuffer);
-  mindSporeLiteModel.predict(modelInputs, (mindSporeLiteTensor : mindSporeLite.MSTensor[]) => {
-    let output = new Float32Array(mindSporeLiteTensor[0].getData());
-    for (let i = 0; i < output.length; i++) {
-      console.info('MS_LITE_LOG: ' + output[i].toString());
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(inputName)
+  .then(async (buffer: Uint8Array) => {
+    let inputBuffer = buffer.buffer;
+    console.info(`Succeeded in reading input data. File name: ${inputName}, Buffer size: ${inputBuffer.byteLength}`);
+    
+    let mindSporeLiteModel: mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
+    console.info(`Succeeded in loading model. Model file: ${modelFile}`);
+    
+    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+    if (modelInputs == null || modelInputs.length === 0) {
+      console.error(`Failed to get model inputs. Model file: ${modelFile}, Input count: ${modelInputs ? modelInputs.length : 0}`);
+      return;
     }
+
+    modelInputs[0].setData(inputBuffer);
+    console.info(`Succeeded in setting input data. Input tensor: ${modelInputs[0].name}`);
+    
+    mindSporeLiteModel.predict(modelInputs, (mindSporeLiteTensor: mindSporeLite.MSTensor[]) => {
+      if (mindSporeLiteTensor == null || mindSporeLiteTensor.length === 0) {
+        console.error(`Failed to get prediction output. Model file: ${modelFile}, Output count: ${mindSporeLiteTensor ? mindSporeLiteTensor.length : 0}`);
+      } else {
+        let output = new Float32Array(mindSporeLiteTensor[0].getData());
+        console.info(`Succeeded in prediction. Output length: ${output.length}`);
+        for (let i = 0; i < Math.min(5, output.length); i++) {
+          console.info(`Output[${i}]: ${output[i].toString()}`);
+        }
+      }
+    })
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error(`Failed to read input data. File name: ${inputName}, Error code: ${error.code}, Error message: ${error.message}`);
+  });
 ```
 ### predict
 
@@ -835,29 +927,51 @@ import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputName = 'input_data.bin';
+let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(inputName).then(async (buffer : Uint8Array) => {
-  let inputBuffer = buffer.buffer;
-  let modelFile = '/path/to/xxx.ms';
-  let mindSporeLiteModel : mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  modelInputs[0].setData(inputBuffer);
-  mindSporeLiteModel.predict(modelInputs).then((mindSporeLiteTensor : mindSporeLite.MSTensor[]) => {
-    let output = new Float32Array(mindSporeLiteTensor[0].getData());
-    for (let i = 0; i < output.length; i++) {
-      console.info(output[i].toString());
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(inputName)
+  .then(async (buffer: Uint8Array) => {
+    let inputBuffer = buffer.buffer;
+    console.info(`Succeeded in reading input data. File name: ${inputName}, Buffer size: ${inputBuffer.byteLength}`);
+    
+    let mindSporeLiteModel: mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
+    console.info(`Succeeded in loading model. Model file: ${modelFile}`);
+    
+    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+    if (modelInputs == null || modelInputs.length === 0) {
+      console.error(`Failed to get model inputs. Model file: ${modelFile}, Input count: ${modelInputs ? modelInputs.length : 0}`);
+      return;
     }
+    
+    modelInputs[0].setData(inputBuffer);
+    console.info(`Succeeded in setting input data. Input tensor: ${modelInputs[0].name}`);
+    
+    mindSporeLiteModel.predict(modelInputs).then((mindSporeLiteTensor: mindSporeLite.MSTensor[]) => {
+      if (mindSporeLiteTensor == null || mindSporeLiteTensor.length === 0) {
+        console.error(`Failed to get prediction output. Model file: ${modelFile}, Output count: ${mindSporeLiteTensor ? mindSporeLiteTensor.length : 0}`);
+      } else {
+        let output = new Float32Array(mindSporeLiteTensor[0].getData());
+        console.info(`Succeeded in prediction. Output length: ${output.length}`);
+        for (let i = 0; i < Math.min(5, output.length); i++) {
+          console.info(`Output[${i}]: ${output[i].toString()}`);
+        }
+      }
+    }).catch((error: Error) => {
+      console.error(`Failed to execute prediction. Model file: ${modelFile}, Error: ${error.message}`);
+    });
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error(`Failed to read input data. File name: ${inputName}, Error code: ${error.code}, Error message: ${error.message}`);
+  });
 ```
 
 ### resize
 
 resize(inputs: MSTensor[], dims: Array&lt;Array&lt;number&gt;&gt;): boolean
 
-重新设置张量大小。
+重新设置张量大小。 它允许在运行时动态修改模型输入形状，无需重新加载模型。常用于处理不同尺寸的图片、动态调整批次大小、或通过降低分辨率来加速推理。它只改变输入形状而保持模型权重不变，让一个模型支持多种输入配置，节省存储并提高灵活性。
 
 **系统能力：**  SystemCapability.AI.MindSporeLite
 
@@ -878,11 +992,22 @@ resize(inputs: MSTensor[], dims: Array&lt;Array&lt;number&gt;&gt;): boolean
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  let new_dim = new Array([1,32,32,1]);
-  mindSporeLiteModel.resize(modelInputs, new_dim);
-})
+mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+  let originalShape = modelInputs[0].shape;
+  console.info(`Original input shape: [${originalShape.join(', ')}]`);
+  
+  let new_dim = [[1, 32, 32, 1]];
+  let ret = mindSporeLiteModel.resize(modelInputs, new_dim);
+  
+  if (ret === false) {
+    console.error(`Failed to resize model inputs. Model file: ${modelFile}, Original shape: [${originalShape.join(', ')}], Target shape: [${new_dim[0].join(', ')}]`);
+  } else {
+    console.info(`Succeeded in resizing model inputs. Model file: ${modelFile}, Original shape: [${originalShape.join(', ')}], New shape: [${modelInputs[0].shape.join(', ')}]`);
+  }
+}).catch((error: Error) => {
+  console.error(`Failed to load model. Model file: ${modelFile}, Error: ${error.message}`);
+});
 ```
 
 ### runStep<sup>12+</sup>
@@ -911,12 +1036,23 @@ runStep(inputs: MSTensor[]): boolean
 let modelFile = '/path/to/xxx.ms';
 mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
   mindSporeLiteModel.trainMode = true;
+  console.info(`Succeeded in setting train mode. Model file: ${modelFile}, Train mode: ${mindSporeLiteModel.trainMode}`);
+  
   const modelInputs = mindSporeLiteModel.getInputs();
-  let ret = mindSporeLiteModel.runStep(modelInputs);
-  if (ret == false) {
-    console.error('MS_LITE_LOG: runStep failed.')
+  if (modelInputs == null || modelInputs.length === 0) {
+    console.error(`Failed to get model inputs. Model file: ${modelFile}, Input count: ${modelInputs ? modelInputs.length : 0}`);
+    return;
   }
-})
+  
+  let ret = mindSporeLiteModel.runStep(modelInputs);
+  if (ret === false) {
+    console.error(`Failed to run training step. Model file: ${modelFile}, Input count: ${modelInputs.length}`);
+  } else {
+    console.info(`Succeeded in running training step. Model file: ${modelFile}`);
+  }
+}).catch((error: Error) => {
+  console.error(`Failed to load train model. Model file: ${modelFile}, Error: ${error.message}`);
+});
 ```
 
 ### getWeights<sup>12+</sup>
@@ -931,7 +1067,7 @@ getWeights(): MSTensor[]
 
 | 类型                      | 说明         |
 | ----------------------- | ---------- |
-| [MSTensor](#mstensor)[] | 返回模型的权重张量。 |
+| [MSTensor](#mstensor)[] | 返回模型的权重张量列表。 |
 
 **示例：** 
 
@@ -942,22 +1078,32 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((modelBuffer : Uint8Array) => {
-  mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0)).then((mindSporeLiteModel: mindSporeLite.Model) => {
-    mindSporeLiteModel.trainMode = true;
-    const weights = mindSporeLiteModel.getWeights();
-    for (let i = 0; i < weights.length; i++) {
-      let printStr = weights[i].name + ", ";
-      printStr += weights[i].shape + ", ";
-      printStr += weights[i].dtype + ", ";
-      printStr += weights[i].dataSize + ", ";
-      printStr += weights[i].getData();
-      console.info("MS_LITE weights: ", printStr);
-    }
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((modelBuffer: Uint8Array) => {
+    mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0))
+      .then((mindSporeLiteModel: mindSporeLite.Model) => {
+        mindSporeLiteModel.trainMode = true;
+        console.info(`Succeeded in setting train mode. Model file: ${modelFile}`);
+        
+        const weights = mindSporeLiteModel.getWeights();
+        if (weights == null || weights.length === 0) {
+          console.error(`Failed to get model weights. Model file: ${modelFile}, Weights count: ${weights ? weights.length : 0}`);
+        } else {
+          console.info(`Succeeded in getting model weights. Model file: ${modelFile}, Weights count: ${weights.length}`);
+          for (let i = 0; i < Math.min(3, weights.length); i++) {
+            console.info(`Weight[${i}]: name=${weights[i].name}, shape=[${weights[i].shape.join(', ')}], dtype=${weights[i].dtype}, dataSize=${weights[i].dataSize}`);
+          }
+        }
+      })
+      .catch((error: Error) => {
+        console.error(`Failed to load train model from buffer. Model file: ${modelFile}, Buffer size: ${modelBuffer.byteLength}, Error: ${error.message}`);
+      });
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error(`Failed to read model file from resources. File name: ${modelFile}, Error code: ${error.code}, Error message: ${error.message}`);
+  });
 ```
 
 ### updateWeights<sup>12+</sup>
@@ -989,18 +1135,35 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((modelBuffer : Uint8Array) => {
-  mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0)).then((mindSporeLiteModel: mindSporeLite.Model) => {
-    mindSporeLiteModel.trainMode = true;
-    const weights = mindSporeLiteModel.getWeights();
-    let ret = mindSporeLiteModel.updateWeights(weights);
-    if (ret == false) {
-      console.error('MS_LITE_LOG: updateWeights failed.')
-    }
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((modelBuffer: Uint8Array) => {
+    mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0))
+      .then((mindSporeLiteModel: mindSporeLite.Model) => {
+        mindSporeLiteModel.trainMode = true;
+        console.info(`Succeeded in setting train mode. Model file: ${modelFile}`);
+        
+        const weights = mindSporeLiteModel.getWeights();
+        if (weights == null || weights.length === 0) {
+          console.error(`Failed to get model weights. Model file: ${modelFile}, Weights count: ${weights ? weights.length : 0}`);
+          return;
+        }
+        
+        let ret = mindSporeLiteModel.updateWeights(weights);
+        if (ret === false) {
+          console.error(`Failed to update model weights. Model file: ${modelFile}, Weights count: ${weights.length}`);
+        } else {
+          console.info(`Succeeded in updating model weights. Model file: ${modelFile}, Weights count: ${weights.length}`);
+        }
+      })
+      .catch((error: Error) => {
+        console.error(`Failed to load train model from buffer. Model file: ${modelFile}, Buffer size: ${modelBuffer.byteLength}, Error: ${error.message}`);
+      });
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error(`Failed to read model file from resources. File name: ${modelFile}, Error code: ${error.code}, Error message: ${error.message}`);
+  });
 ```
 
 ### setupVirtualBatch<sup>12+</sup>
@@ -1015,9 +1178,9 @@ setupVirtualBatch(virtualBatchMultiplier: number, lr: number, momentum: number):
 
 | 参数名                 | 类型   | 必填 | 说明                                                 |
 | ---------------------- | ------ | ---- | ---------------------------------------------------- |
-| virtualBatchMultiplier | number | 是   | 虚拟批次乘法器，当设置值小于1时，表示禁用虚拟batch。 |
-| lr                     | number | 是   | 学习率。                                             |
-| momentum               | number | 是   | 动量。                                               |
+| virtualBatchMultiplier | number | 是   | 虚拟批次乘法器，只能为整数。取值小于1时：表示禁用虚拟batch；取值为1时：等同于禁用虚拟batch；取值大于1时：表示将一个大batch分割成N个小batch。 |
+| lr                     | number | 是   | 学习率，控制每次参数更新时，沿着梯度方向移动的步长。取值为-1时，使用默认学习率；取值小于-1或大于-1且小于0时，表示无效值，会导致设置失败；取值为0时，固定当前参数；取值大于0时，自定义学习率。 |
+| momentum               | number | 是   | 动量，用于加速训练并减少梯度震荡。取值为-1时，表示使用系统默认的动量值，在不确定具体值时的选择；取值为0时，表示不使用动量优化，退化为纯梯度下降算法；取值在0.5~0.9时，能够在训练速度和稳定性之间取得较好的平衡；取值在0.9~0.99时，能够显著加速训练过程，适合凸优化问题；取值小于0且不为-1时，表示无效值，会导致虚拟批次设置失败。                                              |
 
 **返回值：**
 
@@ -1034,17 +1197,33 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let modelFile = 'xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(modelFile).then((modelBuffer : Uint8Array) => {
-  mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0)).then((mindSporeLiteModel: mindSporeLite.Model) => {
-    mindSporeLiteModel.trainMode = true;
-    let ret = mindSporeLiteModel.setupVirtualBatch(2,-1,-1);
-    if (ret == false) {
-      console.error('MS_LITE setupVirtualBatch failed.')
-    }
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(modelFile)
+  .then((modelBuffer: Uint8Array) => {
+    mindSporeLite.loadTrainModelFromBuffer(modelBuffer.buffer.slice(0))
+      .then((mindSporeLiteModel: mindSporeLite.Model) => {
+        mindSporeLiteModel.trainMode = true;
+        console.info(`Succeeded in setting train mode. Model file: ${modelFile}`);
+        
+        let virtualBatchMultiplier = 2;
+        let lr = -1;
+        let momentum = -1;
+        
+        let ret = mindSporeLiteModel.setupVirtualBatch(virtualBatchMultiplier, lr, momentum);
+        if (ret === false) {
+          console.error(`Failed to setup virtual batch. Model file: ${modelFile}, Virtual batch multiplier: ${virtualBatchMultiplier}, Learning rate: ${lr}, Momentum: ${momentum}`);
+        } else {
+          console.info(`Succeeded in setting up virtual batch. Model file: ${modelFile}, Virtual batch multiplier: ${virtualBatchMultiplier}`);
+        }
+      })
+      .catch((error: Error) => {
+        console.error(`Failed to load train model from buffer. Model file: ${modelFile}, Buffer size: ${modelBuffer.byteLength}, Error: ${error.message}`);
+      });
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error(`Failed to read model file from resources. File name: ${modelFile}, Error code: ${error.code}, Error message: ${error.message}`);
+  });
 ```
 
 ### exportModel<sup>12+</sup>
@@ -1075,21 +1254,27 @@ exportModel(modelFile: string, quantizationType?: QuantizationType, exportInfere
 ```ts
 let modelFile = '/path/to/xxx.ms';
 let newPath = '/newpath/to';
+let exportPath = newPath + "/new_model.ms";
 mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
   mindSporeLiteModel.trainMode = true;
-  let ret = mindSporeLiteModel.exportModel(newPath + "/new_model.ms", mindSporeLite.QuantizationType.NO_QUANT, true);
-  if (ret == false) {
-    console.error('MS_LITE exportModel failed.')
+  console.info(`Succeeded in setting train mode. Model file: ${modelFile}`);
+  
+  let ret = mindSporeLiteModel.exportModel(exportPath, mindSporeLite.QuantizationType.NO_QUANT, true);
+  if (ret === false) {
+    console.error(`Failed to export model. Source: ${modelFile}, Target: ${exportPath}, Quantization type: NO_QUANT, Inference only: true`);
+  } else {
+    console.info(`Succeeded in exporting model. Source: ${modelFile}, Target: ${exportPath}`);
   }
-})
+}).catch((error: Error) => {
+  console.error(`Failed to load train model. Model file: ${modelFile}, Error: ${error.message}`);
+});
 ```
-
 
 ### exportWeightsCollaborateWithMicro<sup>12+</sup>
 
 exportWeightsCollaborateWithMicro(weightFile: string, isInference?: boolean, enableFp16?: boolean, changeableWeightsName?: string[]): boolean
 
-导出供**micro推理**使用的模型权重，仅用于端侧训练。
+导出供micro推理使用的模型权重，仅用于端侧训练。
 
 **micro推理**：MindSpore Lite针对MCUs（MicroControllerUnits）部署硬件后端，提供了一种超轻量Micro AI部署解决方案，离线阶段直接将模型生成轻量化代码，不再需要在线解析模型和图编译。
 
@@ -1117,10 +1302,14 @@ let modelFile = '/path/to/xxx.ms';
 let microWeight = '/path/to/xxx.bin';
 mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
   let ret = mindSporeLiteModel.exportWeightsCollaborateWithMicro(microWeight);
-  if (ret == false) {
-    console.error('MSLITE exportWeightsCollaborateWithMicro failed.')
+  if (ret === false) {
+    console.error(`Failed to export weights for micro. Model file: ${modelFile}, Target weight file: ${microWeight}`);
+  } else {
+    console.info(`Succeeded in exporting weights for micro. Model file: ${modelFile}, Target weight file: ${microWeight}`);
   }
-})
+}).catch((error: Error) => {
+  console.error(`Failed to load train model. Model file: ${modelFile}, Error: ${error.message}`);
+});
 ```
 
 ## MSTensor
@@ -1146,15 +1335,18 @@ mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSp
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
-mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel : mindSporeLite.Model) => {
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  console.info(modelInputs[0].name);
-  console.info(modelInputs[0].shape.toString());
-  console.info(modelInputs[0].elementNum.toString());
-  console.info(modelInputs[0].dtype.toString());
-  console.info(modelInputs[0].format.toString());
-  console.info(modelInputs[0].dataSize.toString());
-})
+mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLite.Model) => {
+  let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+  if (modelInputs == null || modelInputs.length === 0) {
+    console.error(`Failed to get model inputs. Model file: ${modelFile}`);
+    return;
+  }
+  
+  let tensor = modelInputs[0];
+  console.info(`Succeeded in getting model inputs. Input name: ${tensor.name}, Shape: [${tensor.shape.join(', ')}], Element num: ${tensor.elementNum}, Dtype: ${tensor.dtype}, Format: ${tensor.format}, Data size: ${tensor.dataSize}`);
+}).catch((error: Error) => {
+  console.error(`Failed to load model. Model file: ${modelFile}, Error: ${error.message}`);
+});
 ```
 
 ### getData
@@ -1179,22 +1371,44 @@ import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputName = 'input_data.bin';
+let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(inputName).then(async (buffer : Uint8Array) => {
-  let inputBuffer = buffer.buffer;
-  let modelFile = '/path/to/xxx.ms';
-  let mindSporeLiteModel : mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  modelInputs[0].setData(inputBuffer);
-  mindSporeLiteModel.predict(modelInputs).then((mindSporeLiteTensor : mindSporeLite.MSTensor[]) => {
-    let output = new Float32Array(mindSporeLiteTensor[0].getData());
-    for (let i = 0; i < output.length; i++) {
-      console.info(output[i].toString());
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(inputName)
+  .then(async (buffer: Uint8Array) => {
+    let inputBuffer = buffer.buffer;
+    console.info(`Succeeded in reading input data. File name: ${inputName}, Buffer size: ${inputBuffer.byteLength}`);
+    
+    let mindSporeLiteModel: mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
+    console.info(`Succeeded in loading model. Model file: ${modelFile}`);
+    
+    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+    if (modelInputs == null || modelInputs.length === 0) {
+      console.error(`Failed to get model inputs. Model file: ${modelFile}`);
+      return;
     }
+    
+    modelInputs[0].setData(inputBuffer);
+    console.info(`Succeeded in setting input data. Input tensor: ${modelInputs[0].name}`);
+    
+    mindSporeLiteModel.predict(modelInputs).then((mindSporeLiteTensor: mindSporeLite.MSTensor[]) => {
+      if (mindSporeLiteTensor == null || mindSporeLiteTensor.length === 0) {
+        console.error(`Failed to get prediction output. Model file: ${modelFile}`);
+      } else {
+        let output = new Float32Array(mindSporeLiteTensor[0].getData());
+        console.info(`Succeeded in prediction. Output length: ${output.length}`);
+        for (let i = 0; i < Math.min(5, output.length); i++) {
+          console.info(`Output[${i}]: ${output[i].toString()}`);
+        }
+      }
+    }).catch((error: Error) => {
+      console.error(`Failed to execute prediction. Model file: ${modelFile}, Error: ${error.message}`);
+    });
   })
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+  .catch((error: BusinessError) => {
+    console.error(`Failed to read input data. File name: ${inputName}, Error code: ${error.code}, Error message: ${error.message}`);
+  });
 ```
 
 ### setData
@@ -1219,16 +1433,30 @@ import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let inputName = 'input_data.bin';
+let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
-globalContext.getApplicationContext().resourceManager.getRawFileContent(inputName).then(async (buffer : Uint8Array) => {
-  let inputBuffer = buffer.buffer;
-  let modelFile = '/path/to/xxx.ms';
-  let mindSporeLiteModel : mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
-  let modelInputs : mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
-  modelInputs[0].setData(inputBuffer);
-}).catch((error: BusinessError) => {
-  console.error("getRawFileContent promise error is " + error);
-});
+globalContext.getApplicationContext()
+  .resourceManager
+  .getRawFileContent(inputName)
+  .then(async (buffer: Uint8Array) => {
+    let inputBuffer = buffer.buffer;
+    console.info(`Succeeded in reading input data. File name: ${inputName}, Buffer size: ${inputBuffer.byteLength}`);
+    
+    let mindSporeLiteModel: mindSporeLite.Model = await mindSporeLite.loadModelFromFile(modelFile);
+    console.info(`Succeeded in loading model. Model file: ${modelFile}`);
+    
+    let modelInputs: mindSporeLite.MSTensor[] = mindSporeLiteModel.getInputs();
+    if (modelInputs == null || modelInputs.length === 0) {
+      console.error(`Failed to get model inputs. Model file: ${modelFile}`);
+      return;
+    }
+    
+    modelInputs[0].setData(inputBuffer);
+    console.info(`Succeeded in setting input data. Input tensor: ${modelInputs[0].name}, Buffer size: ${inputBuffer.byteLength}`);
+  })
+  .catch((error: BusinessError) => {
+    console.error(`Failed to read input data. File name: ${inputName}, Error code: ${error.code}, Error message: ${error.message}`);
+  });
 ```
 
 ## DataType

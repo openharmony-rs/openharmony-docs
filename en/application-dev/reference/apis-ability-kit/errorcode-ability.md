@@ -27,13 +27,13 @@ The ability to query does not exist.
 
 **Solution**
 
-1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **want** are correct.
-2. Check whether the application corresponding to **bundleName** in **want** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
-    ```
+1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **Want** are correct.
+2. Check whether the application corresponding to **bundleName** in **Want** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
+    ```bash
     hdc shell bm dump -a
     ```
 3. For a multi-HAP application, check whether the HAP to which the ability belongs is installed. You can run the following command to query the bundle information. If the installed application does not contain the corresponding HAP and ability, the HAP to which the ability belongs is not installed.
-    ```
+    ```bash
     hdc shell bm dump -n bundleName
     ```
 
@@ -45,16 +45,18 @@ Incorrect ability type.
 
 **Description**
 
-This error code is reported when the ability type for the API call is incorrect.
+This error code is reported when the ability type of the called party does not match the expected type when an ability-related API is called.
 
 **Possible Causes**
 
-The ability with the specified type does not support the API call.
+1. The ability type of the called party (server) does not match the expected type of the calling party (client).
+2. When the ability type of the target server is AppServiceExtensionAbility, the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION) is not configured in the **module.json5** configuration file.
 
 **Solution**
 
-1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **want** are correct.
-2. Call APIs based on the ability type. For example, call <!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability) to start the ServiceExtensionAbility, or call <!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) to connect to the ServiceExtensionAbility. Additionally, ensure that the value of **type** under **extensionAbilities** in the [module.json5](../../quick-start/module-configuration-file.md) file matches the service you are using.
+1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **Want** are correct.
+2. Check whether the ability type of the called party (server) matches the called API. For ServiceExtensionAbility, use <!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability) to start the ability or <!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) to connect to the ability. In addition, ensure that **type** of **extensionAbilities** in the [module.json5 configuration file](../../quick-start/module-configuration-file.md) is set to **service** (matching the API).
+3. If the ability type of the called party (server) is appService, configure the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION) in the **module.json5** configuration file on the server.
 
 ## 16000003 ID Does Not Exist
 
@@ -343,12 +345,19 @@ This error code is reported when an internal exception occurs that the developer
 
 **Possible Causes**
 
-This is a generic system error code and can be triggered by various issues depending on the API. Common causes include: null pointer exceptions for internal objects, processing timeouts, IPC failures, failure in obtaining application information, failure in obtaining system services, and reaching the upper limit of ability instances launched.
+1. The [Want](./js-apis-app-ability-want.md#constraints) data passed when the ability is started is too large.
+2. A non-system application is launched before the device is unlocked.
+3. AppGallery is not installed during implicit startup.
+4. Internal system errors that cannot be handled by developers, including but not limited to: null pointer of internal objects, processing timeout, IPC cross-process communication failure, failure to obtain application information via package management, failure to obtain system services, the number of started Ability instances reaching the upper limit, etc.
+
+
 
 **Solution**
 
-1. Internal errors are system exceptions that developers cannot handle. You can try the operation again.
-2. For failures in launching an ability, check whether the data passed in Want is too large.
+1. If the ability fails to be started, check whether the [Want](./js-apis-app-ability-want.md#constraints) data passed is too large.
+2. Ensure that only system applications are launched before the device is unlocked, or delay launching non-system applications until the device is unlocked.
+3. Ensure that AppGallery is installed on the device, or check whether AppGallery is installed before launching an application.
+4. For internal system errors that cannot be handled by developers, try to call the API again or restart the device.
 
 ## 16000053 Ability Is Not on Top of UI
 
@@ -645,7 +654,6 @@ The [getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#
 
 Configure the **multiAppMode** field in the **app.json5** file by referring to [Creating an Application Multi-Instance](../../quick-start/multiInstance.md). After app clone mode is enabled, call the [getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#applicationcontextgetcurrentappcloneindex12) API.
 
-<!--Del-->
 ## 16000072 Multi-App Mode Is Not Supported
 
 **Error Message**
@@ -658,11 +666,18 @@ This error code is reported when the application does not support multi-app mode
 
 **Possible Causes**
 
-The **getRunningMultiAppInfo()** API is called to query the information about an application that does not support multi-app mode.
+When calling Ability startup APIs such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) and [startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult), this error code is returned if the target application does not support multi-app mode.
+
+<!--Del-->
+This error code is returned if [getRunningMultiAppInfo](./js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12) is called to query multi-app mode information of an application that does not support multi-app mode.
+<!--DelEnd-->
 
 **Solution**
 
-When calling **getCurrentAppCloneIndex()**, ensure that the application supports multi-app mode.
+When calling Ability startup APIs such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) and [startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult), ensure that the target application supports multi-app mode and configure [multiAppMode](../../quick-start/app-configuration-file.md#multiappmode) tag in the **app.json5** file to enable the application clone function.
+
+<!--Del-->
+Ensure that the application to be queried supports multi-app mode when [getRunningMultiAppInfo](./js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12) is called.
 <!--DelEnd-->
 
 ## 16000073 appCloneIndex Is Invalid
@@ -678,7 +693,10 @@ This error code is reported when an invalid value of **appCloneIndex** is passed
 **Possible Causes**
 
 1. **startAbility()** is called, with **appCloneIndex** carried in **ohos.extra.param.key.appCloneIndex** set to an invalid value.
+
 2. **isAppRunning()** is called, with **appCloneIndex** set to an invalid value.
+
+3. The ExtensionAbility to be connected does not support the application clone.
 
 **Solution**
 
@@ -696,13 +714,13 @@ This error code is reported when the **backToCallerAbilityWithResult** API attem
 
 **Possible Causes**
 
-1. **requestCode** is not obtained from the **CALLER_REQUEST_CODE** field in **want**.
+1. **requestCode** is not obtained from the **CALLER_REQUEST_CODE** field in **Want**.
 
 2. The caller corresponding to **requestCode** has been destroyed or the result has been returned.
 
 **Solution**
 
-1. Check whether **requestCode** is obtained from **CALLER_REQUEST_CODE** in **want**.
+1. Check whether **requestCode** is obtained from **CALLER_REQUEST_CODE** in **Want**.
 
 2. Check whether the caller has been destroyed or the result has been returned.
 
@@ -1312,6 +1330,25 @@ The API is called when the window has not yet been created or has already been d
 
 Do not call this API before the window stage is created or after it is destroyed.
 
+## 16000136 Prohibited from Launching the Application's Own UIAbility via App Linking
+
+**Error Message**
+
+The UIAbility is prohibited from launching itself via App Linking.
+
+**Description**
+
+The application is configured to disallow launching the current UIAbility using App Linking.
+
+**Possible Causes**
+
+Under [abilities](../../quick-start/module-configuration-file.md#abilities) in the [module.json5 file](../../quick-start/module-configuration-file.md), the value of the **allowSelfRedirect** field of the current UIAbility is **false**.
+
+**Solution**
+
+- If you want to launch the current UIAbility via App Linking, set **allowSelfRedirect** under [abilities](../../quick-start/module-configuration-file.md#abilities) in the [module.json5 file](../../quick-start/module-configuration-file.md) to **true**.
+- If launching the current UIAbility via App Linking is not allowed, you need to catch this error code via **catch** and handle it accordingly.
+
 ## 16000151 Invalid wantAgent Object
 
 **Error Message**
@@ -1406,7 +1443,7 @@ The caller has been released.
 
 **Solution**
 
-1. Register a valid caller again.
+1. Recreate a valid caller instance.
 2. Check whether the ability corresponding to the context is still running when **context.startAbility** is called. This error code is thrown when the ability has been destructed.
 3. If **startAbility()** and **terminateSelf()** are called consecutively, ensure that a success or failure callback for **startAbility()** is received before calling **terminateSelf()**.
 
@@ -1960,7 +1997,7 @@ This error code is reported when you attempt to cancel the current process, whic
 
 **Possible Causes**
 
-The current process is already the main process.
+The current process is already the master process.
 
 **Solution**
 
@@ -1974,7 +2011,7 @@ The current process is not a candidate master process and does not support cance
 
 **Description**
 
-This error code is reported when you attempt to cancel the current process, which is not a candidate master process , as a candidate master process.
+This error code is reported when you attempt to cancel the current process, which is not a candidate master process, as a candidate master process.
 
 **Possible Causes**
 
@@ -2103,11 +2140,11 @@ Required parameters are missing for the decorator.
 
 **Description**
 
-This error code is reported when the decorator is missing required parameters.
+This error code is reported when required parameters are not provided for the decorator.
 
 **Possible Causes**
 
-The decorator is missing required parameters.
+Required parameters are not provided for the decorator.
 
 **Solution**
 
@@ -2183,7 +2220,7 @@ The root type of the JSON schema for **Parameters** is not object.
 
 **Solution**
 
-Ensure that the top-level definition of the JSON schema for parameters is {"type": "object"}.
+Ensure that the top-level definition of the JSON schema for **Parameters** is {"type":"object"}.
 
 ## 10110008 Class Property Missing Required Field
 
@@ -2526,3 +2563,59 @@ This error code is reported when the standard OHM URL fails to be generated beca
 **Solution**
 
 Set **useNormalizedOHMUrl** to **true** in the application-level file **build-profile.json5**.
+
+## 35600001 The Specified agentId Does Not Exist
+
+**Error Message**
+
+The specified agentId does not exist.
+
+**Description**
+
+The specified agentId does not exist.
+
+**Possible Causes**
+
+The AgentCard corresponding to the specified agentId does not exist in the target application.
+
+**Solution**
+
+Check the static configuration information of the target application and transfer the correct agentId.
+
+## 35600002 Failed to Send IPC Messages
+
+**Error Message**
+
+Failed to send the IPC message.
+
+**Description**
+
+IPC messages fail to be sent.
+
+**Possible Causes**
+
+1. The amount of transferred data exceeds the IPC limit (200 KB).
+2. The server process has exited.
+
+**Solution**
+
+1. Check whether the amount of sent data exceeds the limit. If yes, adjust the amount of sent data to be within the limit.
+2. Check whether the server process has exited. If yes, obtain the proxy object again.
+
+## 35600003 Maximum Caller Connections Reached
+
+**Error Message**
+
+Maximum connections from the same caller have been reached.
+
+**Description**
+
+The number of connections of the caller has reached the maximum.
+
+**Possible Causes**
+
+The number of concurrent AgentExtension connections of the caller has reached 5. No more connection requests can be initiated.
+
+**Solution**
+
+Disconnect some connections and re-initiates connections.

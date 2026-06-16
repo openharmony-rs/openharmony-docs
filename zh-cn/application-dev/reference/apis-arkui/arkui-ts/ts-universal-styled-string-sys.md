@@ -10,9 +10,11 @@
 
 >  **说明：**
 >
->  该组件从API version 13开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 13开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  当前页面仅包含本模块的系统接口，其他公开接口参见[属性字符串](ts-universal-styled-string.md)。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[属性字符串](ts-universal-styled-string.md)。
 
 ## StyledString
 
@@ -30,7 +32,7 @@ static marshalling(styledString: StyledString): ArrayBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ----- | ---- | ---- |
-| styledString | [StyledString](ts-universal-styled-string.md) | 是  | 属性字符串参数。 |
+| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | 是  | 属性字符串参数。 |
 
 **返回值：**
 
@@ -52,7 +54,7 @@ static marshalling(styledString: StyledString, callback: StyledStringMarshallCal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ----- | ---- | ---- |
-| styledString | [StyledString](ts-universal-styled-string.md) | 是  | 属性字符串参数。 |
+| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | 是  | 属性字符串参数。 |
 | callback | [StyledStringMarshallCallback](#styledstringmarshallcallback19) | 是 | 如何序列化[StyledStringMarshallingValue](#styledstringmarshallingvalue19)的回调。 |
 
 **返回值：**
@@ -81,7 +83,7 @@ static unmarshalling(buffer: ArrayBuffer): Promise\<StyledString>
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise\<[StyledString](ts-universal-styled-string.md)> |Promise对象，返回属性字符串。 |
+| Promise\<[StyledString](ts-universal-styled-string.md#styledstring)> |Promise对象，返回属性字符串。 |
 
 **错误码**：
 
@@ -113,7 +115,7 @@ static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallba
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise\<[StyledString](ts-universal-styled-string.md)> |Promise对象，返回属性字符串。 |
+| Promise\<[StyledString](ts-universal-styled-string.md#styledstring)> |Promise对象，返回属性字符串。 |
 
 **错误码**：
 

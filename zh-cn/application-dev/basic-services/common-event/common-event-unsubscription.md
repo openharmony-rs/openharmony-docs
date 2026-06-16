@@ -1,9 +1,8 @@
 # 取消动态订阅公共事件
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -23,7 +22,7 @@
 
 1. 导入模块。
    
-   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
@@ -37,18 +36,18 @@
 
 3. 调用CommonEvent中的[unsubscribe()](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerunsubscribe)方法取消订阅某事件。
    
-   <!-- @[UnsubscribePublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   <!-- @[UnsubscribePublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
-   // subscriber为订阅事件时创建的订阅者对象
-   if (subscriber !== null) {
-     commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
+   // subscriberCustom为订阅事件时创建的订阅者对象
+   if (subscriberCustom !== null) {
+     commonEventManager.unsubscribe(subscriberCustom, (err: BusinessError) => {
        if (err) {
          hilog.error(DOMAIN_NUMBER, TAG,
            `Failed to unsubscribe. code is ${err.code}, message is ${err.message}`);
        } else {
          hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in unsubscribing.`);
-         subscriber = null;
+         subscriberCustom = null;
        }
      })
    }

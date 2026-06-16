@@ -1,10 +1,10 @@
 # ArkTS（方舟编程语言）
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025; @xliu-huanwei-->
-<!--Designer: @weng-changcheng; @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @weng-changcheng; @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @HelloCrease-->
 
 - ArkTS API<!--arkts-arkts-->
   - @arkts.collections (ArkTS容器集)<!--js-apis-arkts-collections-->
@@ -67,3 +67,4 @@
   - [Typescript Compiler错误码](errorcode-tsc.md)
   - [编译工具链错误码](errorcode-ets-loader.md)
   - [Es2abc编译器错误码](errorcode-es2abc.md)
+  - [源码混淆错误码](errorcode-source-obfuscation.md)

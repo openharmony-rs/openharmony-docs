@@ -2,10 +2,10 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 > **说明：**
 >
@@ -45,7 +45,8 @@ Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Fa
 
 1. 进程间通信的时候，读取或写入数据对象失败。
 2. 读写操作申请内存失败。
-<br>在RPC过程中，发送方可以使用MessageParcel提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageParcel提供的读方法从该对象中读取特定格式的数据。
+
+   在RPC过程中，发送方可以使用MessageParcel提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageParcel提供的读方法从该对象中读取特定格式的数据。
 
 **处理步骤**
 
@@ -77,7 +78,7 @@ System service operation failed.
 
 **错误描述**
 
-调用长时任务相关接口时，客户端进程请求系统服务进程，获取系统服务操作失败。
+调用长时任务相关接口时，客户端进程请求系统服务进程，请求系统服务操作失败。
 
 **可能原因**
 
@@ -115,6 +116,7 @@ Continuous task verification failed.
 13. 应用申请TASK_KEEPING长时任务时，未申请ACL授权。
 14. 数据传输类型不支持通过更新接口更新长时任务类型。
 15. 在后台申请除播音外新的长时任务类型。
+16. 应用申请[MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21)类型的长时任务时，未申请ACL授权。
 
 **处理步骤**
 
@@ -133,6 +135,7 @@ Continuous task verification failed.
 13. 请检查申请TASK_KEEPING长时任务时，是否申请了[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的ACL授权。
 14. 请检查更新长时任务时，原类型或者新增类型是否包含了数据传输类型。
 15. 请检查除了播音和已经在前台申请过的长时任务类型，是否在后台申请了其他长时任务类型。
+16. 请检查申请[MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21)类型的长时任务时，是否申请了[ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario)或者[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的ACL授权。
 
 ## 9800006 长时任务通知信息校验失败
 
@@ -187,8 +190,8 @@ Caller information verification failed for a transient task.
 
 **可能原因**
 
-1. 获取调用方的uid或pid错误。
-2. 获取调用方的bundleName错误。
+1. 获取调用方的uid或pid错误，导致校验失败。
+2. 获取调用方的bundleName错误，导致校验失败。
 3. 取消短时任务时传入的requestId无效，在申请短时任务的列表中找不到对应的requestId。
 
 **处理步骤**
@@ -234,7 +237,8 @@ Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Fa
 
 1. 进程间通信的时候，读取或写入数据对象失败。
 2. 读写操作申请内存失败。
-<br>在RPC过程中，发送方可以使用MessageParcel提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageParcel提供的读方法从该对象中读取特定格式的数据。
+
+   在RPC过程中，发送方可以使用MessageParcel提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageParcel提供的读方法从该对象中读取特定格式的数据。
 
 **处理步骤**
 
@@ -248,7 +252,7 @@ System service operation failed.
 
 **错误描述**
 
-调用短时任务相关接口时，客户端进程请求系统服务进程，获取系统服务操作失败。
+调用短时任务相关接口时，客户端进程请求系统服务进程，请求系统服务操作失败。
 
 **可能原因**
 
@@ -292,7 +296,8 @@ Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Fa
 
 1. 进程间通信的时候，读取或写入数据对象失败。
 2. 读写操作申请内存失败。
-<br>在RPC过程中，发送方可以使用MessageParcel提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageParcel提供的读方法从该对象中读取特定格式的数据。
+
+   在RPC过程中，发送方可以使用MessageParcel提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageParcel提供的读方法从该对象中读取特定格式的数据。
 
 **处理步骤**
 
@@ -306,7 +311,7 @@ System service operation failed.
 
 **错误描述**
 
-调用能效资源相关接口时，客户端进程请求能效资源系统服务进程，获取系统服务操作失败。
+调用能效资源相关接口时，客户端进程请求能效资源系统服务进程，请求系统服务操作失败。
 
 **可能原因**
 

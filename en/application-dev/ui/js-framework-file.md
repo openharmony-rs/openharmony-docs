@@ -16,7 +16,7 @@ The following figure shows the typical directory structure of the JavaScript mod
 
 **Figure 2** Directory structure for [multiple instances](../application-models/pageability-launch-type.md) resource sharing
 
-![en-us_image_0000001173164777](figures/en-us_image_0000001173164777.png)
+![en-us_image_0000001173164777](figures/Directory-Structure.png)
 
 Functions of the files are as follows:
 
@@ -90,4 +90,5 @@ Application resources can be accessed via an absolute or relative path. An absol
 
 | Format                                      |  File Type      |
 | ---------------------------------------- | ------------- |
-| H.264 AVC<br>Baseline Profile (BP) | .3gp<br>.mp4 |
+| H.264 AVC | .3gp |
+| Baseline Profile (BP) | .mp4 |

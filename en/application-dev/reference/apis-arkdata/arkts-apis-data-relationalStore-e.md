@@ -29,7 +29,7 @@ Enumerates the KV store security levels. Use the enum name rather than the enum 
 
 ## EncryptionAlgo<sup>14+</sup>
 
-Enumerates the encryption algorithms of the database. Use the enum name rather than the enum value.
+Enumerates the encryption algorithms for the database. Use the enum name rather than the enum value.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -84,7 +84,7 @@ For details about the definition of **this.context** in the sample code, see the
 The following is an example of the table creation statement when **ICU_TOKENIZER** is used:
 
 ```ts
-import { relationalStore } from '@kit.ArkData'; // Import the relationalStore module.
+import { relationalStore } from '@kit.ArkData'; // Import a module.
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -116,7 +116,7 @@ class EntryAbility extends UIAbility {
 The following is an example of the table creation statement when **CUSTOM_TOKENIZER** is used:
 
 ```ts
-import { relationalStore } from '@kit.ArkData'; // Import the relationalStore module.
+import { relationalStore } from '@kit.ArkData'; // Import a module.
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -148,7 +148,7 @@ class EntryAbility extends UIAbility {
 The following is an example of the table creation statement when **CUSTOM_TOKENIZER** is used:
 
 ```ts
-import { relationalStore } from '@kit.ArkData'; // Import the relationalStore module.
+import { relationalStore } from '@kit.ArkData'; // Import a module.
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -248,8 +248,8 @@ Enumerates the subscription types. Use the enum name rather than the enum value.
 | --------------------- | ---- | ------------------ |
 | SUBSCRIBE_TYPE_REMOTE | 0    | Subscribe to remote data changes.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | SUBSCRIBE_TYPE_CLOUD<sup>10+</sup> | 1  | Subscribe to cloud data changes.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
-| SUBSCRIBE_TYPE_CLOUD_DETAILS<sup>10+</sup> | 2  | Subscribe to details of the cloud data change.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
-| SUBSCRIBE_TYPE_LOCAL_DETAILS<sup>12+</sup> | 3  | Subscribe to details of the local data change.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
+| SUBSCRIBE_TYPE_CLOUD_DETAILS<sup>10+</sup> | 2  | Subscribe to detailed information about cloud data changes.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
+| SUBSCRIBE_TYPE_LOCAL_DETAILS<sup>12+</sup> | 3  | Subscribe to detailed information about local data changes.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 
 ## RebuildType<sup>12+</sup>
 
@@ -356,3 +356,16 @@ Enumerates the types of the column data. Use the enum name rather than the enum 
 | ASSETS        | 6    | [Assets](arkts-apis-data-relationalStore-t.md#assets10).                           |
 | FLOAT_VECTOR  | 7    | Float32Array.                                  |
 | UNLIMITED_INT | 8    | BigInt.                                        |
+
+## DistributedTableType<sup>23+</sup>
+
+Enumerates the distributed table types. Use the enum name rather than the enum value. This item is a database-level configuration. If a database contains multiple distributed tables, all tables must use the same distributed table type; switching the table type or upgrade tables is not supported.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name               | Value  | Description                                   |
+| ------------------ | --- | ---------------------------------------- |
+| DEVICE_COLLABORATION | 0  | Multi-device collaboration table. Data on each device is stored in an independent distributed table in an isolated manner instead of being written to the local table. The name of the distributed table is formed by prepending the peer device's device ID to the original table name.|
+| SINGLE_VERSION  | 1   | Single version table. Data is directly written to the local table of the peer device through the distributed data management framework.|

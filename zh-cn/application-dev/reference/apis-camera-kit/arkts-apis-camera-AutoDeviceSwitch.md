@@ -6,14 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-AutoDeviceSwitch 继承自 [AutoDeviceSwitchQuery](arkts-apis-camera-AutoDeviceSwitchQuery.md)。
+自动切换镜头类，继承自[AutoDeviceSwitchQuery](arkts-apis-camera-AutoDeviceSwitchQuery.md)，用于使能或去使能自动切换镜头。自动切换镜头能力仅支持折叠屏设备使用，详细开发指导请参考[自动切换摄像头实践](../../media/camera/camera-auto-switch.md)。
 
-自动切换镜头类，继承自[AutoDeviceSwitchQuery](arkts-apis-camera-AutoDeviceSwitchQuery.md)，用于使能或去使能自动切换镜头。
-
-使用建议：自动切换镜头功能由系统自动完成输入设备切换、会话配置和参数接续，
-如系统发现镜头切换时，两颗镜头的变焦范围不一致，则会通过[AutoDeviceSwitchStatus](arkts-apis-camera-i.md#autodeviceswitchstatus13)中的isDeviceCapabilityChanged字段告知应用，
-但仍需要应用自己处理UX的变更（如变焦范围的调整，需要重新通过[getZoomRatioRange](arkts-apis-camera-ZoomQuery.md#getzoomratiorange11)接口获取数据并更新UX），
-因此更适用于极简UX交互的场景。
+使用建议：自动切换镜头功能由系统自动完成输入设备切换、会话配置和参数接续。如系统发现镜头切换时，两颗镜头的变焦范围不一致，则会通过[AutoDeviceSwitchStatus](arkts-apis-camera-i.md#autodeviceswitchstatus13)中的isDeviceCapabilityChanged字段告知应用，但仍需要应用自己处理UX的变更（如变焦范围的调整，需要重新通过[getZoomRatioRange](arkts-apis-camera-ZoomQuery.md#getzoomratiorange11)接口获取数据并更新UX），因此更适用于极简UX交互的场景。
 
 > **说明：**
 >
@@ -51,7 +46,7 @@ enableAutoDeviceSwitch(enabled: boolean): void
 
 | 错误码ID   | 错误信息                                                                                                                                       |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameters verification failed. |
+| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameters verification failed.<br>适用版本：19+|
 | 7400102 | Operation not allowed.                                                                                                                         |
 | 7400103 | Session not config.                                                                                                                            |
 | 7400201 | Camera service fatal error.                                                                                                                    |
@@ -66,7 +61,7 @@ function enableAutoDeviceSwitch(session: camera.PhotoSession, isEnable: boolean)
     session.enableAutoDeviceSwitch(isEnable);
   } catch (error) {
     let err = error as BusinessError;
-    console.error(`The enableAutoDeviceSwitch call failed, error code: ${err.code}`);
+    console.error(`The enableAutoDeviceSwitch call failed, error code: ${err.code}, error message: ${err.message}`);
   }
 }
 ```

@@ -4,9 +4,9 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
-该模块提供目录环境能力：获取内存存储根目录、公共文件根目录的JS接口。
+该模块提供目录环境能力：获取内存存储根目录、公共文件根目录的ArkTS接口。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { Environment } from '@kit.CoreFileKit';
 
 getStorageDataDir():Promise&lt;string&gt;
 
-异步方法获取内存存储根目录，以promise形式返回结果。
+异步方法获取内存存储根目录，使用promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
 
@@ -37,7 +37,7 @@ getStorageDataDir():Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 202 | The caller is not a system application |
@@ -59,7 +59,7 @@ getStorageDataDir():Promise&lt;string&gt;
 
 getStorageDataDir(callback:AsyncCallback&lt;string&gt;):void
 
-异步方法获取内存存储根目录，以callback形式返回结果。
+异步方法获取内存存储根目录，使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
 
@@ -73,7 +73,7 @@ getStorageDataDir(callback:AsyncCallback&lt;string&gt;):void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 202 | The caller is not a system application |
@@ -97,7 +97,7 @@ getStorageDataDir(callback:AsyncCallback&lt;string&gt;):void
 
 getUserDataDir():Promise&lt;string&gt;
 
-异步方法获取公共文件根目录，以promise形式返回结果。
+异步方法获取公共文件根目录，使用promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
 
@@ -111,7 +111,7 @@ getUserDataDir():Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 202 | The caller is not a system application |
@@ -133,7 +133,7 @@ getUserDataDir():Promise&lt;string&gt;
 
 getUserDataDir(callback:AsyncCallback&lt;string&gt;): void
 
-异步方法获取公共文件根目录，以callback形式返回结果。
+异步方法获取公共文件根目录，使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
 
@@ -147,7 +147,7 @@ getUserDataDir(callback:AsyncCallback&lt;string&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 202 | The caller is not a system application |
@@ -187,7 +187,7 @@ getExternalStorageDir(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息       |
 | ---------------------------- | --------- |
@@ -230,7 +230,7 @@ getUserHomeDir(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息       |
 | ---------------------------- | --------- |

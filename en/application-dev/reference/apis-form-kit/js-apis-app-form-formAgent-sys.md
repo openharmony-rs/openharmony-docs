@@ -1,9 +1,9 @@
 # @ohos.app.form.formAgent (FormAgent) (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 The **FormAgent** module provides APIs related to the widget agent. Currently, you can use the APIs to request to publish widgets only.
@@ -73,7 +73,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.info(`formAgent requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formAgent requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -135,7 +135,7 @@ let want: Want = {
 };
 try {
   formAgent.requestPublishForm(want).then((data: string) => {
-    console.info(`formAgent requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+    console.info(`formAgent requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });

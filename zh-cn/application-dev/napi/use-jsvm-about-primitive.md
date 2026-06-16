@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行primitive类相关开发
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -77,7 +77,7 @@ const char *srcCallNative = R"JS(coerceToBool("123"))JS";
 <!-- @[oh_jsvm_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetobool/src/main/cpp/hello.cpp) -->
 
 预期结果：
-```
+```txt
 JSVM OH_JSVM_CoerceToBool success:1
 ```
 
@@ -124,7 +124,7 @@ const char *srcCallNative = R"JS(coerceToNumber(true))JS";
 <!-- @[oh_jsvm_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetonumber/src/main/cpp/hello.cpp) -->
 
 预期结果：
-```
+```txt
 JSVM OH_JSVM_CoerceToNumber success:1
 ```
 
@@ -170,7 +170,7 @@ const char *srcCallNative = R"JS(coerceToObject(123))JS";
 <!-- @[oh_jsvm_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetoobject/src/main/cpp/hello.cpp) -->
 
 预期结果：
-```
+```txt
 JSVM OH_JSVM_CoerceToObject success
 ```
 
@@ -194,7 +194,7 @@ static JSVM_Value CoerceToString(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value str = nullptr;
     JSVM_Status status = OH_JSVM_CoerceToString(env, args[0], &str);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_CoerceToString fail");
+        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_CoerceToString failed");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_CoerceToString success");
@@ -216,7 +216,7 @@ const char *srcCallNative = R"JS(coerceToString(22222))JS";
 <!-- @[oh_jsvm_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetostring/src/main/cpp/hello.cpp) -->
 
 预期结果：
-```
+```txt
 JSVM OH_JSVM_CoerceToString success
 ```
 
@@ -250,7 +250,7 @@ static JSVM_Value GetBoolean(JSVM_Env env, JSVM_CallbackInfo info)
     }
     JSVM_Status status = OH_JSVM_GetBoolean(env, type, &returnValue);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_GetBoolean fail");
+        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_GetBoolean failed");
     } else {
         bool result = false;
         OH_JSVM_GetValueBool(env, returnValue, &result);
@@ -275,7 +275,7 @@ const char *srcCallNative = R"JS(getBoolean(1, 2);
 <!-- @[oh_jsvm_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getboolean/src/main/cpp/hello.cpp) -->
 
 预期结果：
-```
+```txt
 JSVM OH_JSVM_GetBoolean success:0
 JSVM resultType equal
 JSVM OH_JSVM_GetBoolean success:1
@@ -328,7 +328,7 @@ const char *srcCallNative = R"JS(getValueBool("abc");
 <!-- @[oh_jsvm_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getvaluebool/src/main/cpp/hello.cpp) -->
 
 预期结果：
-```
+```txt
 JSVM OH_JSVM_GetValueBool fail:7
 JSVM OH_JSVM_GetValueBool success:1
 JSVM OH_JSVM_GetValueBool success:0
@@ -376,7 +376,7 @@ const char *srcCallNative = R"JS(getGlobal())JS";
 <!-- @[oh_jsvm_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getglobal/src/main/cpp/hello.cpp) -->
 
 预期结果：
-```
+```txt
 JSVM OH_JSVM_GetGlobal success
 ```
 
@@ -417,7 +417,7 @@ const char *srcCallNative = R"JS(getNull())JS";
 <!-- @[oh_jsvm_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getnull/src/main/cpp/hello.cpp) -->
 
 预期结果:
-```
+```txt
 JSVM OH_JSVM_GetNull success
 ```
 
@@ -435,7 +435,7 @@ cpp 部分代码：
 // OH_JSVM_GetUndefined的样例方法
 static JSVM_Value GetUndefined(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 获取并解析传进的参数
+    // 获取并解析传入的参数
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -464,6 +464,6 @@ const char *srcCallNative = R"JS(getUndefined())JS";
 <!-- @[oh_jsvm_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getundefined/src/main/cpp/hello.cpp) -->
 
 预期结果:
-```
+```txt
 JSVM OH_JSVM_GetUndefined success
 ```

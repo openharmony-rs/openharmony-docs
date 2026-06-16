@@ -1,12 +1,12 @@
 # PinchGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于触发捏合手势，最少需要2指，最多5指，最小识别距离为5vp。
+用于触发捏合手势，最少需要2指，最多5指，最小识别距离为5vp。在支持鼠标和键盘输入的设备上，通过“Ctrl+鼠标滚轮”也可以触发捏合手势。
 
 >  **说明：**
 >
@@ -40,6 +40,8 @@ PinchGesture(options?: PinchGestureHandlerOptions)
 设置捏合手势事件。与[PinchGesture](#pinchgesture-1)相比，options参数新增isFingerCountLimited，表示是否检查触摸屏幕的手指数量。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +130,8 @@ Pinch手势识别成功并接收到触摸取消事件的回调。与[onActionCan
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -187,7 +191,7 @@ struct PinchGestureExample {
 }
 ```
 
- ![zh-cn_image_0000001174582848](figures/zh-cn_image_0000001174582848.png)
+ ![pinchGesture](figures/pinchGesture.png)
 
 ### 示例2（实现图片跟手缩放）
 

@@ -33,7 +33,7 @@ Declares tensor data types.
 
 ### OH_AI_DataType
 
-```
+```c
 enum OH_AI_DataType
 ```
 

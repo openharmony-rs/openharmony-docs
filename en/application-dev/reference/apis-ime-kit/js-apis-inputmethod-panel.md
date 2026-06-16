@@ -1,9 +1,9 @@
 # @ohos.inputMethod.Panel (Input Method Panel)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 The **inputMethod.Panel** module provides APIs for managing the attributes of the input method panel.
@@ -43,6 +43,10 @@ Enumerates the types of the input method panel.
 ##  PanelFlag
 
 Enumerates the state types of the input method panel.
+
+> **NOTE**
+>
+>Currently, only the **SOFT_KEYBOARD** panel is supported.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

@@ -95,6 +95,22 @@ The user has enabled the advanced security mode.
 
 Guide the user to disable the advanced security mode on the application UI.
 
+<!--Del-->
+## 17500008 Incorrect Password
+
+**Error Message**
+
+The input password is error.
+
+**Possible Causes**
+
+Incorrect password.
+
+**Solution**
+
+Check whether the password is correct. Use the correct password and try again.
+<!--DelEnd-->
+
 ## 17500009 Specified Certificate Storage Path Not Supported
 
 **Error Message**
@@ -108,3 +124,31 @@ The device does not support the specified certificate storage path.
 **Solution**
 
 Check whether the entered certificate type is correct.
+
+## 17500010 Failed to Access the USB Credential
+
+**Error Message**
+
+The USB key service access failed.
+
+**Possible Causes**
+
+The USB hardware driver service is abnormal.
+
+**Solution**
+
+Check whether the USB is properly connected or the USB driver is working properly.
+
+## 17500011 Failed to Validate the Input Parameter
+
+**Error Message**
+
+The input parameters validation failed.
+
+**Possible Causes**
+
+The parameter format is abnormal or the parameter range is invalid.
+
+**Solution**
+
+Check the input parameter format or range of the API.

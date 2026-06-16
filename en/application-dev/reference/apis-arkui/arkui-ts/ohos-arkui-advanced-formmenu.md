@@ -1,10 +1,10 @@
 # FormMenu
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 The **FormMenu** component encapsulates an **Add to home screen** menu, which allows users to long-press a component in the application to add it to their home screen for direct access. During application usage, this component acts as a portal for retention and re-engagement, encouraging users to conveniently add features to their home screen.
 
 This component facilitates the quick addition of service widgets to the home screen through a long-press menu within the application:
@@ -27,7 +27,7 @@ This component facilitates the quick addition of service widgets to the home scr
 
 ## Modules to Import
 
-```
+```ts
 import { AddFormMenuItem } from '@kit.ArkUI';
 ```
 
@@ -41,13 +41,13 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 ## AddFormMenuItem 
 
-
+```ts
 AddFormMenuItem(
   want: Want,
   componentId: string,
   options?: AddFormOptions
 ): void
-
+```
 
 **Decorator**: @Builder
 
@@ -84,7 +84,7 @@ AddFormMenuItem(
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name           | Type          | Read-Only|Optional| Description  
+| Name| Type| Read-Only|Optional| Description|
 | --------------- | ----------------- | ---- | ---- | ---- |
 | options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions) | No  | Yes | Information about the menu item.|
 
@@ -129,17 +129,17 @@ struct Index {
           formBindingData: formBindingData.createFormBindingData({}),
           // formBindingData: formBindingData.createFormBindingData({ data: 'share' }),
           callback: (error, formId) => {
-            hilog.info(0x3900, tag, `callback info: error = ${JSON.stringify(error)}, formId = ${formId}`);
+            hilog.info(0x3900, tag, `callback info: formId = ${formId}`);
             if (error?.code === 0) {
               hilog.info(0x3900, tag, "Added to the home screen.")
             } else {
-              hilog.info(0x3900, tag, "Failed to add to the home screen. Try another method.")
+              hilog.error(0x3900, tag, `Failed to add to the home screen. Try another method. Error code: ${error?.code}, error message: ${error?.message}`)
             }
           },
           style: {
             // options: {
             // startIcon: $r("app.media.icon"), // Menu icon, which can be provided by yourself. The default value is "sys.media.ic_public_add."
-            //   content: "Add to home screen",  //  Menu content, which can be provided by yourself. The default value is "sys.string.ohos_add_form_to_desktop."
+            //   content: "Add to home screen",  // Menu content, which can be provided by yourself. The default value is "sys.string.ohos_add_form_to_desktop."
             //   endIcon: $r("app.media.icon") // Menu icon, which can be provided by yourself.
             // }
           }
@@ -223,10 +223,10 @@ struct WidgetCard {
 
 **UI of the FormMenu component**
 
-![en-us_image_0000001616959836](figures/en-us_image_add_form_to_desktop.jpeg)
+![addFormToDesktop](figures/addFormToDesktop.jpeg)
 
 **Result of using Add to home screen with the FormMenu component**
 
 The figure below shows the results when **formbindingdata** is empty (left), and when it is set to **{ data: 'share' }** (right).
 
-![en-us_image_0000001616959836](figures/en-us_image_add_form_to_desktop_result.jpeg)
+![addFormToDesktopResult](figures/addFormToDesktopResult.jpeg)

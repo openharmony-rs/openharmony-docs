@@ -3,8 +3,8 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
+<!--Adviser: @jinqiuheng-->
 
 该模块提供通过PATH获取文件统一资源标识符（Uniform Resource Identifier，URI），后续可通过使用[@ohos.file.fs](js-apis-file-fs.md)进行相关open、read、write等操作，实现文件分享。
 
@@ -57,11 +57,11 @@ constructor是FileUri的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明|
 | -------- | -------- | -------- |--------|
-| uriOrPath | string | 是 | URI或路径。URI类型：<br/>-&nbsp; 应用沙箱URI：file://\<bundleName>/\<sandboxPath> <br/>-&nbsp; 公共目录文件类URI：file://docs/storage/Users/currentUser/\<publicPath> <br/>-&nbsp; 公共目录媒体类URI：file://media/\<mediaType>/IMG_DATATIME_ID/\<displayName> |
+| uriOrPath | string | 是 | URI或路径。URI类型：<br/>-&nbsp; 应用沙箱URI：file://\<bundleName>/\<sandboxPath> <br/>-&nbsp; 公共目录文件类URI：file://docs/storage/Users/currentUser/\<publicPath> <br/>-&nbsp; 公共目录媒体类URI：file://media/\<mediaType>/IMG_DATETIME_ID/\<displayName> |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 | 错误码ID| 错误信息        |
 | -------- | ---------- |
 | 13900005 | I/O error |
@@ -122,7 +122,7 @@ getFullDirectoryUri(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID| 错误信息|
 | -------- |--------|
@@ -162,7 +162,7 @@ isRemoteUri(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID| 错误信息|
 | --------- |--------|
@@ -173,7 +173,7 @@ isRemoteUri(): boolean
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   function isRemoteUriExample() {
-    let uri = "file://com.example.demo/data/storage/el2/base/test.txt?networkid=xxxx";//?networkid设备id，远端URI的标识
+    let uri = "file://com.example.demo/data/storage/el2/base/test.txt?networkid=xxxx";// ?networkid设备id，远端URI的标识
     let fileUriObject = new fileUri.FileUri(uri);
     let ret = fileUriObject.isRemoteUri();
     if (ret) {
@@ -186,7 +186,7 @@ isRemoteUri(): boolean
 
 getUriFromPath(path: string): string
 
-通过传入的路径path生成应用自己的URI；将path转URI时，路径中的中文及非数字字母的特殊字符将会被编译成对应的ASCII码，拼接在URI中。
+通过传入的路径path生成应用自己的URI；将path转URI时，路径中的中文及非数字字母的特殊字符将会被编码成对应的ASCII码，拼接在URI中。
 
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -202,7 +202,7 @@ getUriFromPath(path: string): string
 
   | 类型 | 说明|
   | ------- |------|
-  | string | 通过传入的路径path生成应用自己的URI；将path转URI时，路径中的中文及非数字字母的特殊字符将会被编译成对应的ASCII码，拼接在URI中。 |
+  | string | 通过传入的路径path生成应用自己的URI；将path转URI时，路径中的中文及非数字字母的特殊字符将会被编码成对应的ASCII码，拼接在URI中。 |
 
 **错误码：**  
 

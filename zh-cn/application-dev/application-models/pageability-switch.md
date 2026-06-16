@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 [FA模型](ability-terminology.md#fa模型)中PageAbility对应[Stage模型](ability-terminology.md#stage模型)中的UIAbility，PageAbility切换为UIAbility的方法如下。
 
@@ -13,6 +13,7 @@
 1. 在Stage应用中[创建UIAbility](uiability-usage.md)。
 
 2. 将FA应用中PageAbility的代码迁移到新创建的UIAbility中。
+
    FA应用中PageAbility和Stage应用中的UIAbility生命周期基本一致，两者的生命周期详细对比见下表。
 
    | FA的PageAbility | Stage的UIAbility | 对应关系描述 |

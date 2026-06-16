@@ -1,8 +1,8 @@
 # 形状裁剪（clipShape）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -31,11 +31,13 @@ struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
       // 用一个280px直径的圆对图片进行裁剪
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new CircleShape({ width: '280px', height: '280px' }))
         .width('500px').height('280px')
 
       // 用一个350px直径的圆对图片进行裁剪
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new CircleShape({ width: '350px', height: '350px' }))
         .width('500px').height('370px')
@@ -46,7 +48,7 @@ struct ClipShapeExample {
 }
 ```
 
-![zh-cn_image_clip_rotundity](figures/zh-cn_image_clip_rotundity.png)
+![clip-circle](figures/clip-circle.png)
 
 ## 裁剪椭圆形
 
@@ -62,10 +64,12 @@ import { EllipseShape } from '@kit.ArkUI';
 struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new EllipseShape({ width: '280px', height: '200px' }))
         .width('500px').height('400px')
 
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new EllipseShape({ width: '380px', height: '280px' }))
         .width('500px').height('400px')
@@ -76,7 +80,7 @@ struct ClipShapeExample {
 }
 ```
 
-![zh-cn_image_clipl_elliptical](figures/zh-cn_image_clipl_elliptical.png)
+![clip-elliptical](figures/clip-elliptical.png)
 
 ## 裁剪矩形
 
@@ -92,10 +96,12 @@ import { RectShape } from '@kit.ArkUI';
 struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new RectShape({ width: '200px', height: '200px' }))
         .width('500px').height('400px')
 
+      // 请将$r('app.media.background')替换为实际资源文件
       Image($r('app.media.background'))
         .clipShape(new RectShape({ width: '380px', height: '280px' }))
         .width('500px').height('400px')
@@ -106,7 +112,7 @@ struct ClipShapeExample {
 }
 ```
 
-![zh-cn_image_clipl_rectangle](figures/zh-cn_image_clipl_rectangle.png)
+![clip-rectangle](figures/clip-rectangle.png)
 
 ## 裁剪不规则形状
 
@@ -123,6 +129,7 @@ struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
       Row() {
+        // 请将$r('app.media.background')替换为实际资源文件
         Image($r('app.media.background'))
           .clipShape(new PathShape({ commands: 'M0 0 H400 V200 H0 Z' }))
           .width('500px').height('300px')
@@ -136,4 +143,4 @@ struct ClipShapeExample {
 }
 ```
 
-![zh-cn_image_clip_Irregular_shapes](figures/zh-cn_image_clip_Irregular_shapes.png)
+![clip-irregular](figures/clip-irregular.png)

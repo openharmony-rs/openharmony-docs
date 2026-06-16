@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -45,7 +45,7 @@ function drawRenderNode(canvas: drawing.Canvas) {
   canvas.attachBrush(brushCircle);
   canvas.drawCircle(500, 500, 200);
   const brush = new drawing.Brush();
-  //  设置混合模式
+  // 设置混合模式
   brush.setBlendMode(drawing.BlendMode.SRC_IN);
   canvas.saveLayer(null, brush);
 
@@ -61,7 +61,7 @@ function drawRenderNode(canvas: drawing.Canvas) {
 }
 ```
 
-![zh-ch_image_BlendMode_SrcIn.png](figures/zh-ch_image_BlendMode_SrcIn.png)
+![BlendMode-SrcIn.png](figures/BlendMode-SrcIn.png)
 
 
 ## 路径效果
@@ -164,7 +164,7 @@ canvas.drawRect(rect);
 canvas.detachBrush();
 ```
 
-![zh-cn_image_0000002158744106](figures/zh-cn_image_0000002158744106.png)
+![Gradient-Shader-Effect](figures/Gradient-Shader-Effect.png)
 
 
 ### 径向渐变着色器效果
@@ -332,9 +332,11 @@ canvas.detachBrush();
 目前只支持两种图像滤波器：
 
 - 基于颜色滤波器的图像滤波器。
+
   可通过createFromColorFilter()接口实现，接口接受2个参数，颜色滤波器colorFilter和图像滤波器imageFilter，即把颜色滤波器的效果叠加到图像滤波器imageFilter上，imageFilter可为空，imageFilter为空则只添加颜色滤波器效果。
 
 - 具有模糊效果的图像滤波器。
+
   可通过createBlurImageFilter()接口实现，接口接受4个参数，sigmaX，sigmaY，cTileMode和imageFilter。sigmaX和sigmaY是模糊的标准差，cTileMode是平铺模式，imageFilter是输入的图像滤波器。
 
   最终效果即为在输入的图像滤波器imageFilter的基础上进行模糊化处理，即滤波器效果可叠加，imageFilter可为空，imageFilter为空则只添加模糊效果。

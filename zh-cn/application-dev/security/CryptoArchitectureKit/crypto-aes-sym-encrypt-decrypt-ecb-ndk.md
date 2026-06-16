@@ -26,7 +26,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 1. 调用[OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create)，指定字符串参数'AES128|ECB|PKCS7'，创建对称密钥类型为AES128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成加密操作。
 
-2. 调用[OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoSymKey），初始化加密Cipher实例。
+2. 调用[OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoSymKey），初始化加密Cipher实例。ECB模式无需设置额外加密参数，创建空的参数对象传入即可。
 
 3. 加密内容较短时，可以直接调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)获取加密后的数据，无需调用[OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)。
 
@@ -34,7 +34,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 1. 调用[OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create)，指定字符串参数'AES128|ECB|PKCS7'，创建对称密钥类型为AES128、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于解密操作。
 
-2. 调用[OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为解密（CRYPTO_DECRYPT_MODE），指定解密密钥（OH_CryptoSymKey），初始化解密Cipher实例。
+2. 调用[OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为解密（CRYPTO_DECRYPT_MODE），指定解密密钥（OH_CryptoSymKey），初始化解密Cipher实例。ECB模式无需设置额外加密参数，创建空的参数对象传入即可。
 
 3. 当解密内容较短时，可以直接调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)获取解密后的数据，无需调用[OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)。
 
@@ -42,25 +42,28 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 调用[OH_CryptoSymKeyGenerator_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy)销毁密钥生成器。调用[OH_CryptoSymCipher_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_destroy)销毁密码对象。
 
-```c++
+<!-- @[ecb_encrypt_decrypt_aes_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_ecb_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTestAesEcb()
+OH_Crypto_ErrCode doTestAesEcb()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
     OH_CryptoSymCipher *decCtx = nullptr;
     OH_CryptoSymKey *keyCtx = nullptr;
+    OH_CryptoSymCipherParams *params = nullptr;
     char *plainText = const_cast<char *>("this is test");
     Crypto_DataBlob input = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
-    Crypto_DataBlob encData = {.data = nullptr, .len = 0};
-    Crypto_DataBlob decData = {.data = nullptr, .len = 0};
+    Crypto_DataBlob outUpdate = {.data = nullptr, .len = 0};
+    Crypto_DataBlob decUpdate = {.data = nullptr, .len = 0};
 
-    // 随机生成对称密钥。
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("AES128", &genCtx);
+    // 随机生成对称密钥
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("AES128", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -68,42 +71,49 @@ static OH_Crypto_ErrCode doTestAesEcb()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
+    // 创建参数
+    ret = OH_CryptoSymCipherParams_Create(&params);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
 
-    // 加密操作。
+    // 加密操作
     ret = OH_CryptoSymCipher_Create("AES128|ECB|PKCS7", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, nullptr); // ECB模式params为null。
+    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Final(encCtx, &input, &encData);
+    ret = OH_CryptoSymCipher_Final(encCtx, &input, &outUpdate);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
 
-    // 解密操作。
+    // 解密操作
     ret = OH_CryptoSymCipher_Create("AES128|ECB|PKCS7", &decCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, nullptr); // ECB模式params为null。
+    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Final(decCtx, &encData, &decData);
+    ret = OH_CryptoSymCipher_Final(decCtx, &outUpdate, &decUpdate);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
 
 end:
+    OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
     OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
-    OH_Crypto_FreeDataBlob(&encData);
-    OH_Crypto_FreeDataBlob(&decData);
+    OH_Crypto_FreeDataBlob(&outUpdate);
+    OH_Crypto_FreeDataBlob(&decUpdate);
     return ret;
 }
 ```
+

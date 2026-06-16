@@ -54,7 +54,7 @@ The file declares the DRM data types.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | Defines the callback used to obtain DRM information from a media source.|
+| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | Defines the callback function used to obtain DRM information from a media source.|
 
 ### Macros
 
@@ -88,7 +88,7 @@ The file declares the DRM data types.
 
 ### DRM_EventType
 
-```
+```c
 enum DRM_EventType
 ```
 
@@ -111,7 +111,7 @@ Enumerates the types of events that can be subscribed to.
 
 ### DRM_ContentProtectionLevel
 
-```
+```c
 enum DRM_ContentProtectionLevel
 ```
 
@@ -133,7 +133,7 @@ Enumerates the content protection levels.
 
 ### DRM_MediaKeyType
 
-```
+```c
 enum DRM_MediaKeyType
 ```
 
@@ -152,7 +152,7 @@ Enumerates the types of media keys.
 
 ### DRM_MediaKeyRequestType
 
-```
+```c
 enum DRM_MediaKeyRequestType
 ```
 
@@ -175,7 +175,7 @@ Enumerates the types of media key requests.
 
 ### DRM_OfflineMediaKeyStatus
 
-```
+```c
 enum DRM_OfflineMediaKeyStatus
 ```
 
@@ -195,7 +195,7 @@ Enumerates the statuses of offline media keys.
 
 ### DRM_CertificateStatus
 
-```
+```c
 enum DRM_CertificateStatus
 ```
 
@@ -220,13 +220,13 @@ Enumerates the device certificate statuses.
 
 ### DRM_MediaKeySystemInfoCallback()
 
-```
+```c
 typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 
 **Description**
 
-Defines the callback used to obtain DRM information from a media source.
+Defines the callback function used to obtain DRM information from a media source.
 
 **Since**: 11
 
@@ -235,4 +235,4 @@ Defines the callback used to obtain DRM information from a media source.
 
 | Name| Description|
 | -- | -- |
-| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | Pointer to the DRM information obtained from the media source.|
+| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | Pointer to the DRM information obtained from the media source, including the unique identifier of the DRM system and PSSH data.|

@@ -16,7 +16,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
@@ -65,7 +65,7 @@
     function setTorchModeSupported(cameraManager: camera.CameraManager, torchMode: camera.TorchMode) : void {
       cameraManager.setTorchMode(torchMode);
       let isTorchMode = cameraManager.getTorchMode();
-      console.info(`Returned with the torch mode supportd mode: ${isTorchMode}`);
+      console.info(`Returned with the torch mode supported mode: ${isTorchMode}`);
     }
     ```
 

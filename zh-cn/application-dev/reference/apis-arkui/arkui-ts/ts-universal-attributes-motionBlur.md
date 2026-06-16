@@ -1,16 +1,18 @@
 # 运动模糊
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件由缩放大小或位移变化引起的运动过程中的动态模糊效果。需要与动画的AnimateParam的onFinish参数配合使用。
+设置组件由缩放大小或位移变化引起的运动过程中的动态模糊效果。需要与动画的[AnimateParam](ts-explicit-animation.md#animateparam对象说明)的onFinish参数配合使用。
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## motionBlur
 
@@ -18,17 +20,19 @@ motionBlur(value: MotionBlurOptions): T
 
 在当前组件由缩放大小或位移变化引起的运动过程中，增加动态模糊效果。
 
-1、不建议在组件内转场、共享元素转场、组件内隐式元素转场和粒子动画场景中使用该属性，否则会产生非预期效果。
-
-2、该属性需要在开始状态将motionBlur的参数radius设置为0，否则冷启动时会有非预期效果。
-
-3、该属性需要与动画的AnimateParam的onFinish参数配合使用，需要在运动模糊动画结束后将motionBlur的参数radius置为0，否则会产生非预期效果。
-
-4、在使用该属性过程中，不要在使用过程中频繁更改同一个组件的模糊半径，否则会产生非预期效果。比如示例中的动画，频繁点击会出现模糊效果偶尔失效的情况。
-
-5、运动模糊锚点坐标需要与动画缩放的锚点保持一致，否则会产生非预期效果。
-
-6、模糊半径建议设置1以内，否则会产生非预期效果。
+> **说明：**
+>
+> - 不建议在组件内转场、共享元素转场、组件内隐式元素转场和粒子动画场景中使用该属性，否则会产生非预期效果。
+>
+> - 该属性需要在开始状态将motionBlur的参数radius设置为0，否则冷启动时会有非预期效果。
+>
+> - 该属性需要与动画的AnimateParam的onFinish参数配合使用，需要在运动模糊动画结束后将motionBlur的参数radius置为0，否则会产生非预期效果。
+>
+> - 在使用该属性过程中，不要在使用过程中频繁更改同一个组件的模糊半径，否则会产生非预期效果。比如示例中的动画，频繁点击会出现模糊效果偶尔失效的情况。
+>
+> - 运动模糊锚点坐标需要与动画缩放的锚点保持一致，否则会产生非预期效果。
+>
+> - 模糊半径建议设置1以内，否则会产生非预期效果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -95,7 +99,7 @@ motionBlur(motionBlur: Optional\<MotionBlurOptions>): T
 
 ## MotionBlurAnchor对象说明
 
-运动模糊锚坐标。
+运动模糊锚点坐标。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -138,10 +142,10 @@ struct motionBlurTest {
             this.flag = !this.flag;
           })
           .animation({
-            duration: 2000,
-            iterations:1,
-            playMode:PlayMode.Alternate,
-            curve: curves.springCurve(10, 1, 228, 30),
+            duration: 2000, // 动画播放时间
+            iterations:1, // 动画播放次数
+            playMode:PlayMode.Alternate, // 动画播放模式，在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放
+            curve: curves.springCurve(10, 1, 228, 30), // 动画曲线
             onFinish: () => {
               this.radius = 0;
               console.info("onFinish")

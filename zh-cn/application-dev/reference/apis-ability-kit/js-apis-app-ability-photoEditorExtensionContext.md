@@ -5,7 +5,7 @@
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
 <!--Tester: @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 PhotoEditorExtensionContext是PhotoEditorExtensionAbility的上下文，继承自ExtensionContext，提供PhotoEditorExtensionAbility的相关配置信息以及保存图片接口。
 > **说明：**
@@ -113,7 +113,7 @@ struct Index {
 
 saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise\<AbilityResult\>
 
-传入编辑过的图片的PixMap对象并保存。使用Promise异步回调。
+传入编辑过的图片的PixelMap对象并保存。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

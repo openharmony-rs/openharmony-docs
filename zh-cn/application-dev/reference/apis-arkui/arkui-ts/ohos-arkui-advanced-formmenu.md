@@ -1,10 +1,10 @@
 # FormMenu
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
+<!--Adviser: @HelloShuo-->
 本组件封装了一个“添加至桌面”菜单，用于实现应用内长按组件生成“添加至桌面”菜单，点击该菜单，触发卡片添加至桌面操作。通过桌面访问该应用快捷卡片，可以直接访问该组件功能。在应用使用过程中，该组件作为留存和复访入口，可吸引用户将功能快捷添加到桌面。
 
 本组件支持应用内长按菜单快捷添加卡片到桌面：
@@ -18,7 +18,7 @@
 
 > **说明：**
 >
-> 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 该组件不支持在Wearable设备上使用。
 >
@@ -27,7 +27,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { AddFormMenuItem } from '@kit.ArkUI';
 ```
 
@@ -41,13 +41,13 @@ import { AddFormMenuItem } from '@kit.ArkUI';
 
 ## AddFormMenuItem 
 
-
+```ts
 AddFormMenuItem(
   want: Want,
   componentId: string,
   options?: AddFormOptions
 ): void
-
+```
 
 **装饰器类型：**@Builder
 
@@ -129,11 +129,11 @@ struct Index {
           formBindingData: formBindingData.createFormBindingData({}),
           // formBindingData: formBindingData.createFormBindingData({ data: 'share' }),
           callback: (error, formId) => {
-            hilog.info(0x3900, tag, `callback info：error = ${JSON.stringify(error)}, formId = ${formId}`);
+            hilog.info(0x3900, tag, `callback info：formId = ${formId}`);
             if (error?.code === 0) {
               hilog.info(0x3900, tag, "添加至桌面成功")
             } else {
-              hilog.info(0x3900, tag, "添加至桌面失败，请尝试其它添加方式")
+              hilog.error(0x3900, tag, `添加至桌面失败，请尝试其它添加方式, error code: ${error?.code}, error message: ${error?.message}`)
             }
           },
           style: {
@@ -223,10 +223,10 @@ struct WidgetCard {
 
 **高级自定义控件界面**
 
-![zh-cn_image_0000001616959836](figures/zh-cn_image_add_form_to_desktop.jpeg)
+![zh-cn_image_0000001616959836](figures/add-form-to-desktop.jpeg)
 
 **调用高级自定义控件桌面加桌结果**
 
 左侧是formbindingdata为空加桌结果，右侧是formbindingdata为{ data: 'share' }的加桌结果。
 
-![zh-cn_image_0000001616959836](figures/zh-cn_image_add_form_to_desktop_result.jpeg)
+![zh-cn_image_0000001616959836](figures/add-form-to-desktop-result.jpeg)

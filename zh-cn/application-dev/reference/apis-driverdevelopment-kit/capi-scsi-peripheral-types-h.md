@@ -1,10 +1,10 @@
 # scsi_peripheral_types.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## 概述
 
@@ -18,7 +18,7 @@
 
 **起始版本：** 18
 
-**相关模块：** [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
+**相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
 
 ## 汇总
 
@@ -35,7 +35,7 @@
 | [ScsiPeripheral_InquiryInfo](capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md)                  | ScsiPeripheral_InquiryInfo | SCSI inquiry 数据。 |
 | [ScsiPeripheral_ReadCapacityRequest](capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md)  | ScsiPeripheral_ReadCapacityRequest | SCSI命令（read capacity）的请求结构体。 |
 | [ScsiPeripheral_CapacityInfo](capi-scsiperipheralddk-scsiperipheral-capacityinfo.md)                | ScsiPeripheral_CapacityInfo | SCSI read capacity 数据。 |
-| [ScsiPeripheral_RequestSenseRequest](capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md)  | ScsiPeripheral_RequestSenseRequest | SCSI命令（request sense）的请求结构体。 |
+| [ScsiPeripheral_RequestSenseRequest](capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md)  | ScsiPeripheral_RequestSenseRequest | SCSI命令（Request Sense）的请求结构体。 |
 | [ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md)            | ScsiPeripheral_BasicSenseInfo | sense data的基本信息。 |
 | [ScsiPeripheral_VerifyRequest](capi-scsiperipheralddk-scsiperipheral-verifyrequest.md)              | ScsiPeripheral_VerifyRequest | SCSI命令（verify）的请求结构体。 |
 | [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md)                            | ScsiPeripheral_Device | 不透明的SCSI设备结构体。 |
@@ -97,4 +97,86 @@ enum ScsiPeripheral_Status
 | SCSIPERIPHERAL_STATUS_ACA_ACTIVE = 0x30 | ACA活动状态。 |
 | SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40 | 任务已终止。 |
 
+### SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE
 
+```c
+SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE 8
+```
+
+**描述**
+
+描述符格式感应数据的最小长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE
+
+```c
+SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE 18
+```
+
+**描述**
+
+固定格式感应数据的最小长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN
+
+```c
+SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN 16
+```
+
+**描述**
+
+命令描述块的最大长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_MAX_SENSE_DATA_LEN
+
+```c
+SCSIPERIPHERAL_MAX_SENSE_DATA_LEN 252
+```
+
+**描述**
+
+感应数据的最大长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_VENDOR_ID_LEN
+
+```c
+SCSIPERIPHERAL_VENDOR_ID_LEN 8
+```
+
+**描述**
+
+厂商标识符的长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_PRODUCT_ID_LEN
+
+```c
+SCSIPERIPHERAL_PRODUCT_ID_LEN 16
+```
+
+**描述**
+
+产品标识符的长度。
+
+**起始版本：** 18
+
+### SCSIPERIPHERAL_PRODUCT_REV_LEN
+
+```c
+SCSIPERIPHERAL_PRODUCT_REV_LEN 4
+```
+
+**描述**
+
+产品修订版本号的长度。
+
+**起始版本：** 18

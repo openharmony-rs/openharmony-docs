@@ -1,8 +1,8 @@
 # 页面间转场 (pageTransition)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -62,7 +62,7 @@ onEnter(event: PageTransitionCallback): PageTransitionEnterInterface
 
 PageTransitionExit(value: PageTransitionOptions)
 
-设置当前页面的自定义退场动效。继承自[CommonTransition](#commontransition)
+设置当前页面的自定义退场动效。继承自[CommonTransition](#commontransition)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -103,6 +103,8 @@ onExit(event: PageTransitionCallback): PageTransitionExitInterface
 ```
 
 ## PageTransitionOptions对象说明
+
+退场/进场动效的参数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -229,6 +231,8 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 参数名  | 类型    | 必填 | 说明              |
@@ -236,12 +240,13 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 | type | [RouteType](#routetype枚举说明) | 是 |  页面转场类型。 |
 | progress | number | 是 | 转场进度。progress从0变化到1。 |
 
- ## RouteType枚举说明
+## RouteType枚举说明
+
+页面转场类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 
 | 名称 | 值 | 说明                                                         |
 | ---- | ---- | -------------------------------------------------------- |
@@ -250,6 +255,8 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 | Pop  | 2 | 重定向指定页面。从PageB回退到之前的页面PageA。对于PageB，指定RouteType为None或者Pop的PageTransitionExit组件样式生效，对于PageA，指定RouteType为None或者Pop的PageTransitionEnter组件样式生效。 |
 
 ## SlideEffect枚举说明
+
+页面转场时的滑入滑出效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -261,8 +268,8 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 | Right               | 2 | 设置到入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Top                 | 3 | 设置到入场时表示从上边滑入，出场时表示滑出到上边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Bottom              | 4 | 设置到入场时表示从下边滑入，出场时表示滑出到下边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| START<sup>12+</sup> | 5 |  设置LTR入场时表示从左边滑入，出场时表示滑出到左边。RTL入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| END<sup>12+</sup>   | 6 | 设置LTR入场时表示从右边滑入，出场时表示滑出到右边。RTL入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| START<sup>12+</sup> | 5 |  设置LTR入场时表示从左边滑入，出场时表示滑出到左边。RTL入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| END<sup>12+</sup>   | 6 | 设置LTR入场时表示从右边滑入，出场时表示滑出到右边。RTL入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## 示例
 
@@ -449,10 +456,10 @@ struct Index {
 
   // 自定义方式2：使用系统提供的多种默认效果(平移、缩放、透明度等)
   pageTransition() {
-    //设置入场动效
+    // 设置入场动效
     PageTransitionEnter({ duration: 200 })
       .slide(SlideEffect.START)
-    //设置退场动效
+    // 设置退场动效
     PageTransitionExit({ delay: 100 })
       .slide(SlideEffect.START) //Left
   }

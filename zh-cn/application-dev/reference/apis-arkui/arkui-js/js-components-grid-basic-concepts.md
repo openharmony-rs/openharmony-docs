@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供栅格布局效果，通过栅格系统进行元素布局，主要提供&lt;grid-container&gt;&lt;grid-row&gt;&lt;grid-col&gt;栅格容器组件。
+提供栅格布局效果，通过栅格系统进行元素布局，主要提供`<grid-container>`、`<grid-row>`、`<grid-col>`栅格容器组件。
 
 
 栅格系统作为一种辅助布局的定位工具，在平面设计和网站设计都起到了很好的作用，对移动设备的界面设计有较好的借鉴作用。总结栅格系统对于移动设备的优势主要有：
@@ -35,7 +35,7 @@
 
    是用来辅助布局的主要定位工具，不同的屏幕尺寸匹配不同的Columns数量来辅助布局定位。Columns的宽度在保证Margins和Gutters符合规范的情况下，根据实际设备的宽度和Columns数量自动计算每一个Columns的宽度。
    
-   ![zh-cn_image_0000001127125136](figures/zh-cn_image_0000001127125136.png)
+   ![Columns](figures/Columns.png)
 
    **栅格断点系统**
 

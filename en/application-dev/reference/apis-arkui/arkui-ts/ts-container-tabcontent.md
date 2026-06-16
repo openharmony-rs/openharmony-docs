@@ -1,10 +1,18 @@
 # TabContent
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **TabContent** component is used only in the **Tabs** component. It corresponds to the content view of a switched tab page.
+Defines the tab content view. This component is used only in [Tabs](ts-container-tabs.md).
 
 >  **NOTE**
 >
->  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - By default, the [clip](ts-universal-attributes-sharp-clipping.md#clip12) attribute of this component is set to **true**. If you want to extend the content area to the outside of the component, disable the **clip** attribute first.
 
 
 ## Child Components
@@ -13,7 +21,7 @@ This component supports only one child component.
 
 >  **NOTE**
 >
->  Built-in components and custom components are allowed, with support for ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)) rendering control.
+>  Built-in system and custom components, and rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)) are supported.
 
 
 ## APIs
@@ -36,9 +44,9 @@ tabBar(options: string | Resource | CustomBuilder | TabBarOptions)
 
 Sets the content displayed on the tab bar.
 
-If an icon uses an SVG image, the width and height attributes of the SVG image must be deleted. Otherwise, the icon size will be determined by the width and height attributes of the SVG image.
+If the icon uses an SVG image source, delete the width and height attribute values built in the SVG image source. Otherwise, the width and height attribute values built in the SVG image source are used.
 
-If the content set exceeds the space provided by the tab bar, it will be clipped.
+If the content exceeds the space provided by the tab bar, it will be clipped.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -48,13 +56,19 @@ If the content set exceeds the space provided by the tab bar, it will be clipped
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | string \| [Resource](ts-types.md#resource) \|<br>[CustomBuilder](ts-types.md#custombuilder8)<sup>8+</sup>\| <br>[TabBarOptions](#tabbaroptions18)<sup>18+</sup> | Yes| Content displayed on the tab bar.<br>**CustomBuilder**: builder, to which components can be passed (applicable to API version 8 and later versions).|
+| options | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br>[CustomBuilder](ts-types.md#custombuilder8)<sup>8+</sup>\|&nbsp;<br>[TabBarOptions](#tabbaroptions18)<sup>18+</sup> | Yes| Content displayed on the tab bar.<br>**CustomBuilder**: builder, to which components can be passed (applicable to API version 8 and later versions).|
 
 ### tabBar<sup>9+</sup>
 
 tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 
 Sets the content displayed on the tab bar. The bottom tab style does not include an indicator. When an icon display error occurs, a gray blank block is displayed.
+
+>  **NOTE**
+>
+>  - [SubTabBarStyle](#subtabbarstyle9): text + underline or text + board. The text style can be set. It is recommended that the subtab be placed at the top or bottom. By default, the animation transition effect is displayed when a tab is switched. This style is applicable to the top categories (such as Following, Video, Digital) of information apps and level-2 navigation scenarios of functional modules.
+>  
+>  - [BottomTabBarStyle](#bottomtabbarstyle9): icon + text, without underline or board. By default, no animation transition effect is displayed when a tab is switched. Bottom tabs are usually used for the main navigation of an app (such as Home, Discover, and Recommended). Side tabs are applicable to wide-screen scenarios. You can set **vertical(true)** to enable the vertical layout so that the tabs are displayed on the side. By default, the tabs are displayed on the left.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -64,15 +78,15 @@ Sets the content displayed on the tab bar. The bottom tab style does not include
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [SubTabBarStyle](#subtabbarstyle9) \| [BottomTabBarStyle](#bottomtabbarstyle9) | Yes  | Content displayed on the tab bar.<br>**SubTabBarStyle**: subtab style<br>**BottomTabBarStyle**: bottom and side tab style|
+| value  | [SubTabBarStyle](#subtabbarstyle9) \| [BottomTabBarStyle](#bottomtabbarstyle9) | Yes  | Content displayed on the tab bar.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: bottom and side tab style|
 
 ### tabBar<sup>18+</sup>
 
 tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder | TabBarOptions)
 
-Content displayed on the tab bar.
+Sets the content displayed on the tab bar.
 
-If **BottomTabBarStyle** or **TabBarOptions** is used and an icon is set, a gray block will be displayed if the icon is invalid. If an icon is an SVG image, make sure the SVG image does not have its own width and height attributes. If the SVG image has embedded width and height attributes, the icon size will be determined by these attributes.
+If **BottomTabBarStyle** or **TabBarOptions** is used and an icon is set, a gray block will be displayed if the icon is invalid. If the icon uses an SVG image source, delete the width and height attribute values built in the SVG image source. Otherwise, the width and height attribute values built in the SVG image source are used.
 
 If the content exceeds the space provided by the tab bar, it will be clipped.
 
@@ -84,31 +98,34 @@ If the content exceeds the space provided by the tab bar, it will be clipped.
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md) \|<br>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9) \|<br>string \| [Resource](ts-types.md#resource) \|<br>[CustomBuilder](ts-types.md#custombuilder8)\| <br>[TabBarOptions](#tabbaroptions18) | Yes  | Content displayed on the tab bar.<br>**ComponentContent**: encapsulation of the component content, which can be customized.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom and side tabs. The bottom style does not have the underline effect.<br>**string**: string type.<br>**Resource**: resource reference for importing strings from system or application resources.<br>**CustomBuilder**: builder that can take components as arguments.<br>**TabBarOptions**: options for configuring images and text content on the tabs.|
+| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br>[TabBarOptions](#tabbaroptions18) | Yes  | Content displayed on the tab bar.<br>**ComponentContent**: encapsulation of the component content, which can be customized.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom and side tabs. The bottom style does not have the underline effect.<br>**string**: string type.<br>**Resource**: resource reference for importing strings from system or application resources.<br>**CustomBuilder**: builder that can take components as arguments.<br>**TabBarOptions**: options for configuring images and text content on the tabs.|
 
 >  **NOTE**
 >
 >  - The **TabContent** component does not support setting of the common width attribute. By default, its width is the same as that of the parent **Tabs** component.
 >  - The **TabContent** component does not support setting of the universal height attribute. Its height is determined by the height of the parent **Tabs** component and the **TabBar** component.
->  - If the **vertical** attribute is **false**, the width and height descriptions are swapped in the preceding two restrictions.
+>  - When **vertical** is **false**, the width and height restrictions described above are exchanged.
 >  - **TabContent** does not support page scrolling. If page scrolling is required, consider nesting a list.
 >  - Whenever possible, use a unified parameter type for the **tabBar** property of all child **TabContent** components within the **Tabs** component.
->  - If there are focusable components inside any **TabContent**, focus navigation between **TabContent** and **TabBar** components within the **Tabs** component is only supported using the keyboard arrow keys.
+>  - If the **TabContent** component contains a focusable component, the focus navigation between the **TabContent** and **TabBar** components within the **Tabs** component can be controlled only by the arrow keys on the keyboard.
+>  - After the attributes of the **TabBar** component are dynamically modified, the **TabBar** component is rendered again, the related attributes are updated, and the positions of all tabs are reset.
 
 ## TabBarOptions<sup>18+</sup>
 
 Defines the options for configuring images and text content on the tabs.
 
+> **NOTE**
+>
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
-
-| Name| Type        | Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| icon<sup>7+</sup> | string \| [ResourceStr](ts-types.md#resourcestr) | No| Image for the tab.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| text<sup>7+</sup> | string \| [ResourceStr](ts-types.md#resourcestr) | No| Text for the tab.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Name| Type        | Read-Only| Optional| Description|
+| -------- | -------- | --- | ----- | -------- |
+| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No| Yes| Image for the tab. If this parameter is not set, no image is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No| Yes| Text for the tab. If this parameter is not set, no text is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## SubTabBarStyle<sup>9+</sup>
 
@@ -212,6 +229,32 @@ Sets the indicator style of the selected subtab. It takes effect only in the hor
 | ------- | ------------------------------------------------------------ |
 | [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object.|
 
+### indicator<sup>22+</sup>
+
+indicator(value: IndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle
+
+Sets the indicator style of the selected subtab. Compared with [indicator](#indicator10), the image format is added. For details about the display effect of the image, see [ImageFit.Cover](ts-appendix-enums.md#imagefit). It takes effect only in the horizontal layout.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                  | Mandatory| Description          |
+| ------- | ------------------------------------- | ---- | ------------- |
+| value | [IndicatorStyle](#indicatorstyle10) | [DrawableTabBarIndicator](#drawabletabbarindicator22)| Yes  | Indicator style object for the selected subtab.<br>**IndicatorStyle**: common indicator style.<br>**DrawableTabBarIndicator**: image indicator style.|
+
+> **NOTE**
+> - **IndicatorStyle**: a solid line. By default, the animation transition effect is displayed when a tab is switched.
+> - **DrawableTabBarIndicator**: an image. By default, the animation transition effect is not displayed when a tab is switched. If an invalid image source is passed, the common indicator style is displayed.
+
+**Return value**
+
+| Type   | Description                                                        |
+| ------- | ------------------------------------------------------------ |
+| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object.|
+
 ### selectedMode<sup>10+</sup>
 
 selectedMode(value: SelectedMode): SubTabBarStyle
@@ -292,7 +335,7 @@ Sets the padding of the subtab. It cannot be set in percentage. When the paramet
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes  | Padding of the subtab.<br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}**|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes  | Padding of the subtab.<br>Value range: [0, +∞]<br>If the value is abnormal, the default value is used.<br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}**|
 
 **Return value**
 
@@ -314,7 +357,7 @@ Sets the padding of the subtab. This API supports mirroring but does not support
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes  | Padding of the subtab.<br>Default value: {start:LengthMetircs.vp(8),end:LengthMetircs.vp(8),<br>top:LengthMetircs.vp(17),bottom:LengthMetircs.vp(18)} |
+| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes  | Padding of the subtab.<br>If the value is abnormal, the default value is used.<br>Value range: [0, +∞]<br>If the value is abnormal, the default value is used.<br>Default value: **{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)**<br>**top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)}**|
 
 **Return value**
 
@@ -326,7 +369,7 @@ Sets the padding of the subtab. This API supports mirroring but does not support
 
 id(value: string): SubTabBarStyle
 
-Sets the [ID](ts-universal-attributes-component-id.md#id) of the subtab.
+Sets the subtab ID.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -336,7 +379,7 @@ Sets the [ID](ts-universal-attributes-component-id.md#id) of the subtab.
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | string | Yes  | [ID](ts-universal-attributes-component-id.md#id) of the subtab.|
+| value | string | Yes  | ID of a subtab.|
 
 **Return value**
 
@@ -352,13 +395,43 @@ Represents an indicator style object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------------------------------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | No| Color of the indicator and board.<br>Default value: **#FF007DFF**|
-| height | [Length](ts-types.md#length) | No| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: (0, +∞)|
-| width | [Length](ts-types.md#length) | No| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: (0, +∞)<br>**NOTE**<br>If this parameter is set to **0**, the tab text width will be used instead.|
-| borderRadius | [Length](ts-types.md#length) | No| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)|
-| marginTop | [Length](ts-types.md#length) | No| Spacing between the indicator and text. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞)|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | --------- | ----------------------- |
+| color | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the indicator and board.<br>Default value: **#FF007DFF** (light blue)|
+| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: [0, +∞)|
+| width | [Length](ts-types.md#length) | No| Yes| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)<br>**NOTE**<br>If this parameter is set to **0**, the tab text width will be used instead.|
+| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)|
+| marginTop | [Length](ts-types.md#length) | No| Yes| Spacing between the indicator and text. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞)|
+
+## DrawableTabBarIndicator<sup>22+</sup>
+
+Uses an image resource as the indicator.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | --------- | ----------------------- |
+| drawable | [DrawableDescriptor](#drawabledescriptor22) | No| Yes| Image resource of the indicator.<br>Supported types: [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor), [PixelMapDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#pixelmapdrawabledescriptor12), [LayeredDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#layereddrawabledescriptor), and [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12). If an invalid image resource is passed, the default solid indicator is displayed.|
+| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: [0, +∞)|
+| width | [Length](ts-types.md#length) | No| Yes| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)<br>If this parameter is set to **0**, the tab text width will be used instead.|
+| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)|
+| marginTop | [Length](ts-types.md#length) | No| Yes| Spacing between the indicator and text. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞)|
+
+## DrawableDescriptor<sup>22+</sup>
+
+type DrawableDescriptor = DrawableDescriptor
+
+Defines the input parameter object of the **drawable** attribute in the **DrawableTabBarIndicator** object.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type    | Description      |
+| ------ | ---------- |
+| [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | **DrawableDescriptor** object.|
 
 ## SelectedMode<sup>10+</sup>
 
@@ -368,10 +441,10 @@ Enumerates the display modes of selected subtabs.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Description              |
-| ---------- | ------------------------ |
-| INDICATOR | Indicator mode.    |
-| BOARD   | Board mode.    |
+| Name      | Value| Description              |
+| ---------- | ----- | ------------------------ |
+| INDICATOR | 0 | Indicator mode.    |
+| BOARD   | 1 | Board mode.    |
 
 ## BoardStyle<sup>10+</sup>
 
@@ -381,9 +454,9 @@ Represents a board style object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | ------------------------------------ |
-| borderRadius | [Length](ts-types.md#length) | No| Rounded corner radius of the board. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞)|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | ------------ | ------------------------ |
+| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the board. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞)|
 
 ## LabelStyle<sup>10+</sup>
 
@@ -391,16 +464,16 @@ Represents a style object for the label text and font.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type                                                    | Mandatory| Description                                                        |
-| -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | No  | Display mode when the label text is too long. By default, an ellipsis (...) is used to represent text overflow.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| maxLines             | number                                                       | No  | Maximum number of lines in the label text. If this attribute is specified, the text will not exceed the specified number of lines. You can use **textOverflow** to specify how to represent text overflow. Default value: **1**<br>Value range: [1, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No  | Minimum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **maxFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: (0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No  | Maximum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **minFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: [minFontSize, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | No  | How the adaptive height is determined for the label text. By default, the **maxLines** settings are prioritized.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| font                 | [Font](ts-types.md#font)                                     | No  | Font of the label text.<br>When the tab is a subtab, the default font is in 16.0 fp size, 'HarmonyOS Sans' family, normal font style, medium weight when selected, and normal weight when not selected.<br>When the tab is a bottom tab, the default font is in 10.0 fp size, 'HarmonyOS Sans' family, normal font style, and medium weight.<br>The default font size of the bottom tab page is 12.0 fp since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| unselectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No| Font color of the label text when it is not selected.<br>Default value: **#99182431**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| selectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No| Font color of the label text when it is selected.<br>Default value: **#FF007DFF**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Name                | Type                                                    | Read-Only| Optional| Description                                                        |
+| -------------------- | ----------------------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
+| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | No| Yes  | Display mode when the label text is too long. By default, an ellipsis (...) is used to represent text overflow.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| maxLines             | number                                                       | No| Yes  | Maximum number of lines in the label text. If this attribute is specified, the text will not exceed the specified number of lines. You can use **textOverflow** to specify how to represent text overflow. Default value: **1**<br>Value range: [1, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No| Yes  | Minimum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **maxFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: (0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No| Yes  | Maximum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **minFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: [minFontSize, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | No| Yes  | How the adaptive height is determined for the label text. By default, the **maxLines** settings are prioritized.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| font                 | [Font](ts-types.md#font)                                     | No| Yes | Font of the label text.<br>When the tab is a subtab, the default font is in 16.0 fp size, 'HarmonyOS Sans' family, normal font style, medium weight when selected, and normal weight when not selected.<br>When the tab is a bottom tab, the default font is in 10.0 fp size, 'HarmonyOS Sans' family, normal font style, and medium weight.<br>The default font size of the bottom tab page is 12.0 fp since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| unselectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the label text when it is not selected.<br>Default value: **#99182431**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| selectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the label text when it is selected.<br>Default value: **#FF007DFF**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## BottomTabBarStyle<sup>9+</sup>
 
@@ -410,7 +483,7 @@ Implements the bottom and side tab style.
 
 constructor(icon: ResourceStr | TabBarSymbol, text: ResourceStr)
 
-Constructor used to create a **BottomTabBarStyle** instance.
+A constructor used to create a **BottomTabBarStyle** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -460,7 +533,7 @@ Sets the padding of the bottom tab. It cannot be set in percentage. When the par
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | Yes  | Padding of the bottom tab.<br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}**<br>If of the LocalizedPadding type, this attribute supports the mirroring capability.<br>Default value: {start:LengthMetircs.vp(4),end:LengthMetircs.vp(4),<br>top:LengthMetircs.vp(0),bottom:LengthMetircs.vp(0)} |
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | Yes  | Padding of the bottom tab.<br>Value range: [0, +∞]<br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}**<br>If of the LocalizedPadding type, this attribute supports the mirroring capability.<br>Default value: **{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),**<br>**top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)}**|
 
 **Return value**
 
@@ -526,7 +599,7 @@ Sets whether the images and text on the bottom tab can be symmetrically extended
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | boolean | Yes  | Whether the images and text on the bottom tab can be symmetrically extended by the minimum value of the available space on the left and right bottom tabs.<br>Default value: **false**, indicating that the images and text on the bottom tab cannot be symmetrically extended by the minimum value of the available space on the left and right bottom tabs|
+| value | boolean | Yes  | Whether the images and text on the bottom tab can be symmetrically extended by the minimum value of the available space on the left and right bottom tabs.<br>Default value: **false**, indicating that the images and text on the bottom tab cannot be symmetrically extended by the minimum value of the available space on the left and right bottom tabs.|
 
 **Return value**
 
@@ -570,7 +643,7 @@ Sets the ID of the bottom tab.
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | string | Yes  | [ID](ts-universal-attributes-component-id.md#id) of the bottom tab.|
+| value | string | Yes  | Sets the ID of the bottom tab.|
 
 **Return value**
 
@@ -608,10 +681,10 @@ Represents a tab bar symbol style object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type        | Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | Yes| Symbol icon in the normal style.<br>Default value:<br>**fontColor**: **#66182431**<br>**renderingStrategy**: **SymbolRenderingStrategy.MULTIPLE_OPACITY**<br>**fontSize**: **24vp**|
-| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Symbol icon in the selected style.<br>Default value:<br>**fontColor**: **#ff007dff**<br>**renderingStrategy**: **SymbolRenderingStrategy.MULTIPLE_OPACITY**<br>**fontSize**: **24vp**|
+| Name| Type        | Read-Only| Optional| Description|
+| -------- | -------- | --- | ----- | -------- |
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| No| Symbol icon in the normal style.<br>Default value:<br>**fontColor**: **#66182431**<br>**renderingStrategy**: **SymbolRenderingStrategy.MULTIPLE_OPACITY**<br>**fontSize**: **24vp**|
+| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon in the selected style.<br>Default value:<br>**fontColor**: **#ff007dff**<br>**renderingStrategy**: **SymbolRenderingStrategy.MULTIPLE_OPACITY**<br>**fontSize**: **24vp**|
 
 ## LayoutMode<sup>10+</sup>
 
@@ -635,10 +708,10 @@ Represents a label icon style object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type                                                    | Mandatory| Description                                                        |
-| -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Color of the label icon when it is not selected.<br>Default value: **#33182431**<br>**NOTE**<br>This attribute only applies to an SVG image. Once set, the fill color will replace that of the SVG image.|
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Color of the label icon when it is selected.<br>Default value: **#FF007DFF**<br>**NOTE**<br>This attribute only applies to an SVG image. Once set, the fill color will replace that of the SVG image.|
+| Name                | Type                                                    | Read-Only| Optional| Description                                                        |
+| -------------------- | ------------------------------------------ | ------------------ | ---- | ------------------------------------------------------------ |
+| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the label icon when it is not selected.<br>Default value: **#33182431**<br>**NOTE**<br>This attribute only applies to an SVG image. Once set, the fill color will replace that of the SVG image.|
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the label icon when it is selected.<br>Default value: **#FF007DFF**<br>**NOTE**<br>This attribute only applies to an SVG image. Once set, the fill color will replace that of the SVG image.|
 
 ## Events
 
@@ -649,6 +722,10 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 onWillShow(event: VoidCallback)
 
 Called when the tab content is about to be displayed. The scenarios include the first-time display, tab switching, page switching, and window switching between the foreground and background.
+
+>  **NOTE**
+>
+> This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -666,6 +743,10 @@ onWillHide(event: VoidCallback)
 
 Called when the tab content is about to be hidden. The scenarios include the tab switching, page switching, and window switching between the foreground and background.
 
+>  **NOTE**
+>
+> This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -680,21 +761,26 @@ Called when the tab content is about to be hidden. The scenarios include the tab
 
 ### Example 1: Implementing Custom Tab Switching Synchronization
 
-This example demonstrates how to use **onAnimationStart** and **onChange** to implement synchronized switching between the tab bar and tab content.
+This example demonstrates how to use [onAnimationStart](ts-container-tabs.md#onanimationstart11) and [onChange](ts-container-tabs.md#onchange) to implement synchronized switching between the tab bar and tab content.
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct TabContentExample {
-  @State fontColor: string = '#182431'
-  @State selectedFontColor: string = '#007DFF'
-  @State currentIndex: number = 0
-  @State selectedIndex: number = 0
-  private controller: TabsController = new TabsController()
+  @State fontColor: string = '#182431';
+  @State selectedFontColor: string = '#007DFF';
+  @State currentIndex: number = 0;
+  @State selectedIndex: number = 0;
+  private controller: TabsController = new TabsController();
 
   @Builder tabBuilder(index: number) {
     Column() {
+      // The common directory is at the same level as the pages directory.
       Image(this.selectedIndex === index ? '/common/public_icon_on.svg' : '/common/public_icon_off.svg')
         .width(24)
         .height(24)
@@ -775,15 +861,15 @@ struct TabContentExample {
       .barHeight(56)
       .onChange((index: number) => {
         // currentIndex controls the displayed tab in TabContent.
-        this.currentIndex = index
-        this.selectedIndex = index
+        this.currentIndex = index;
+        this.selectedIndex = index;
       })
       .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
         if (index === targetIndex) {
-          return
+          return;
         }
         // selectedIndex controls the color switching for the image and text in the custom tab bar.
-        this.selectedIndex = targetIndex
+        this.selectedIndex = targetIndex;
       })
       .width(360)
       .height(190)
@@ -798,21 +884,26 @@ struct TabContentExample {
 
 ### Example 2: Implementing a Custom Side Tabs
 
-This example demonstrates how to create side tabs using **vertical** and **barPosition**.
+This example demonstrates how to create side tabs using [vertical](./ts-container-tabs.md#vertical) and [barPosition](./ts-container-tabs.md#barposition9).
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct TabContentExample {
-  @State fontColor: string = '#182431'
-  @State selectedFontColor: string = '#007DFF'
-  @State currentIndex: number = 0
-  @State selectedIndex: number = 0
-  private controller: TabsController = new TabsController()
+  @State fontColor: string = '#182431';
+  @State selectedFontColor: string = '#007DFF';
+  @State currentIndex: number = 0;
+  @State selectedIndex: number = 0;
+  private controller: TabsController = new TabsController();
 
   @Builder tabBuilder(index: number) {
     Column() {
+      // The common directory is at the same level as the pages directory.
       Image(this.selectedIndex === index ? '/common/public_icon_on.svg' : '/common/public_icon_off.svg')
         .width(24)
         .height(24)
@@ -843,15 +934,15 @@ struct TabContentExample {
       .barHeight(414)
       .onChange((index: number) => {
         // currentIndex controls the displayed tab in TabContent.
-        this.currentIndex = index
-        this.selectedIndex = index
+        this.currentIndex = index;
+        this.selectedIndex = index;
       })
       .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
         if (index === targetIndex) {
-          return
+          return;
         }
         // selectedIndex controls the color switching for the image and text in the custom tab bar.
-        this.selectedIndex = targetIndex
+        this.selectedIndex = targetIndex;
       })
       .width(96)
       .height(414)
@@ -866,7 +957,7 @@ struct TabContentExample {
 
 ### Example 3: Implementing Different Styles of Tabs
 
-This example demonstrates the implementation of subtabs, bottom tabs, and side tabs using **SubTabBarStyle** and **BottomTabBarStyle**.
+This example demonstrates how to create subtabs, bottom tabs, and side tabs using [SubTabBarStyle](#subtabbarstyle9) and [BottomTabBarStyle](#bottomtabbarstyle9).
 
 ```ts
 // xxx.ets
@@ -875,156 +966,156 @@ This example demonstrates the implementation of subtabs, bottom tabs, and side t
 struct TabBarStyleExample {
   build() {
     Column({ space: 5 }) {
-      Text("Subtab style")
+      Text('Subtab style')
       Column() {
         Tabs({ barPosition: BarPosition.Start }) {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
           }.tabBar(new SubTabBarStyle('Pink'))
           .onWillShow(() => {
-            console.info("Pink will show")
+            console.info('Pink will show');
           })
           .onWillHide(() => {
-            console.info("Pink will hide")
+            console.info('Pink will hide');
           })
 
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Yellow)
           }.tabBar(new SubTabBarStyle('Yellow'))
           .onWillShow(() => {
-            console.info("Yellow will show")
+            console.info('Yellow will show');
           })
           .onWillHide(() => {
-            console.info("Yellow will hide")
+            console.info('Yellow will hide');
           })
 
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Blue)
           }.tabBar(new SubTabBarStyle('Blue'))
           .onWillShow(() => {
-            console.info("Blue will show")
+            console.info('Blue will show');
           })
           .onWillHide(() => {
-            console.info("Blue will hide")
+            console.info('Blue will hide');
           })
 
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Green)
           }.tabBar(new SubTabBarStyle('Green'))
           .onWillShow(() => {
-            console.info("Green will show")
+            console.info('Green will show');
           })
           .onWillHide(() => {
-            console.info("Green will hide")
+            console.info('Green will hide');
           })
         }
         .vertical(false)
         .scrollable(true)
         .barMode(BarMode.Fixed)
         .onChange((index: number) => {
-          console.info(index.toString())
+          console.info(index.toString());
         })
         .width('100%')
         .backgroundColor(0xF1F3F5)
       }.width('100%').height(200)
-      Text("Bottom tab style")
+      Text('Bottom tab style')
       Column() {
         Tabs({ barPosition: BarPosition.End }) {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
           }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Pink'))
           .onWillShow(() => {
-            console.info("Pink will show")
+            console.info('Pink will show');
           })
           .onWillHide(() => {
-            console.info("Pink will hide")
+            console.info('Pink will hide');
           })
 
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Yellow)
           }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Yellow'))
           .onWillShow(() => {
-            console.info("Yellow will show")
+            console.info('Yellow will show');
           })
           .onWillHide(() => {
-            console.info("Yellow will hide")
+            console.info('Yellow will hide');
           })
 
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Blue)
           }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Blue'))
           .onWillShow(() => {
-            console.info("Blue will show")
+            console.info('Blue will show');
           })
           .onWillHide(() => {
-            console.info("Blue will hide")
+            console.info('Blue will hide');
           })
 
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Green)
           }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Green'))
           .onWillShow(() => {
-            console.info("Green will show")
+            console.info('Green will show');
           })
           .onWillHide(() => {
-            console.info("Green will hide")
+            console.info('Green will hide');
           })
         }
         .vertical(false)
         .scrollable(true)
         .barMode(BarMode.Fixed)
         .onChange((index: number) => {
-          console.info(index.toString())
+          console.info(index.toString());
         })
         .width('100%')
         .backgroundColor(0xF1F3F5)
       }.width('100%').height(200)
-      Text("Side tab style")
+      Text('Side tab style')
       Column() {
         Tabs({ barPosition: BarPosition.Start }) {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
           }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Pink'))
           .onWillShow(() => {
-            console.info("Pink will show")
+            console.info('Pink will show');
           })
           .onWillHide(() => {
-            console.info("Pink will hide")
+            console.info('Pink will hide');
           })
 
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Yellow)
           }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Yellow'))
           .onWillShow(() => {
-            console.info("Yellow will show")
+            console.info('Yellow will show');
           })
           .onWillHide(() => {
-            console.info("Yellow will hide")
+            console.info('Yellow will hide');
           })
 
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Blue)
           }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Blue'))
           .onWillShow(() => {
-            console.info("Blue will show")
+            console.info('Blue will show');
           })
           .onWillHide(() => {
-            console.info("Blue will hide")
+            console.info('Blue will hide');
           })
 
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Green)
           }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Green'))
           .onWillShow(() => {
-            console.info("Green will show")
+            console.info('Green will show');
           })
           .onWillHide(() => {
-            console.info("Green will hide")
+            console.info('Green will hide');
           })
         }
         .vertical(true).scrollable(true).barMode(BarMode.Fixed)
         .onChange((index: number) => {
-          console.info(index.toString())
+          console.info(index.toString());
         })
         .width('100%')
         .backgroundColor(0xF1F3F5)
@@ -1038,14 +1129,14 @@ struct TabBarStyleExample {
 
 ### Example 4: Setting the Indicator for Subtabs
 
-This example demonstrates how to set the indicator for subtabs using the **indicator** property in **SubTabBarStyle**.
+This example demonstrates how to set the indicator for subtabs using the [indicator](#indicator10) property in **SubTabBarStyle**.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct TabsAttr {
-  private controller: TabsController = new TabsController()
+  private controller: TabsController = new TabsController();
   @State indicatorColor: Color = Color.Blue;
   @State indicatorWidth: number = 40;
   @State indicatorHeight: number = 10;
@@ -1061,165 +1152,165 @@ struct TabsAttr {
 
   build() {
     Column() {
-      Button("Change Indicator Color").width('100%').margin({ bottom: '12vp' })
+      Button('Change Indicator Color').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
           // Animation configuration for the width and height attributes of the <Button> component
           if (this.colorFlag) {
-            animateTo({
+            this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
               curve: Curve.Linear, // Animation curve.
               delay: 200, // Animation delay.
               iterations: 1, // Number of playback times.
               playMode: PlayMode.Normal, // Animation playback mode.
               onFinish: () => {
-                console.info('play end')
+                console.info('play end');
               }
             }, () => {
-              this.indicatorColor = Color.Red
-            })
+              this.indicatorColor = Color.Red;
+            });
           } else {
-            animateTo({
+            this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
               curve: Curve.Linear, // Animation curve.
               delay: 200, // Animation delay.
               iterations: 1, // Number of playback times.
               playMode: PlayMode.Normal, // Animation playback mode.
               onFinish: () => {
-                console.info('play end')
+                console.info('play end');
               }
             }, () => {
-              this.indicatorColor = Color.Yellow
-            })
+              this.indicatorColor = Color.Yellow;
+            });
           }
-          this.colorFlag = !this.colorFlag
+          this.colorFlag = !this.colorFlag;
         })
-      Button("Change Indicator Height").width('100%').margin({ bottom: '12vp' })
+      Button('Change Indicator Height').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
           // Animation configuration for the width and height attributes of the <Button> component
           if (this.heightFlag) {
-            animateTo({
+            this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
               curve: Curve.Linear, // Animation curve.
               delay: 200, // Animation delay.
               iterations: 1, // Number of playback times.
               playMode: PlayMode.Normal, // Animation playback mode.
               onFinish: () => {
-                console.info('play end')
+                console.info('play end');
               }
             }, () => {
-              this.indicatorHeight = 20
-            })
+              this.indicatorHeight = 20;
+            });
           } else {
-            animateTo({
+            this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
               curve: Curve.Linear, // Animation curve.
               delay: 200, // Animation delay.
               iterations: 1, // Number of playback times.
               playMode: PlayMode.Normal, // Animation playback mode.
               onFinish: () => {
-                console.info('play end')
+                console.info('play end');
               }
             }, () => {
-              this.indicatorHeight = 10
-            })
+              this.indicatorHeight = 10;
+            });
           }
-          this.heightFlag = !this.heightFlag
+          this.heightFlag = !this.heightFlag;
         })
-      Button("Change Indicator Width").width('100%').margin({ bottom: '12vp' })
+      Button('Change Indicator Width').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
           // Animation configuration for the width and height attributes of the <Button> component
           if (this.widthFlag) {
-            animateTo({
+            this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
               curve: Curve.Linear, // Animation curve.
               delay: 200, // Animation delay.
               iterations: 1, // Number of playback times.
               playMode: PlayMode.Normal, // Animation playback mode.
               onFinish: () => {
-                console.info('play end')
+                console.info('play end');
               }
             }, () => {
-              this.indicatorWidth = 30
-            })
+              this.indicatorWidth = 30;
+            });
           } else {
-            animateTo({
+            this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
               curve: Curve.Linear, // Animation curve.
               delay: 200, // Animation delay.
               iterations: 1, // Number of playback times.
               playMode: PlayMode.Normal, // Animation playback mode.
               onFinish: () => {
-                console.info('play end')
+                console.info('play end');
               }
             }, () => {
-              this.indicatorWidth = 50
-            })
+              this.indicatorWidth = 50;
+            });
           }
-          this.widthFlag = !this.widthFlag
+          this.widthFlag = !this.widthFlag;
         })
-      Button("Change Indicator Corner Radius").width('100%').margin({ bottom: '12vp' })
+      Button('Change Indicator Corner Radius').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
           // Animation configuration for the width and height attributes of the <Button> component
           if (this.borderFlag) {
-            animateTo({
+            this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
               curve: Curve.Linear, // Animation curve.
               delay: 200, // Animation delay.
               iterations: 1, // Number of playback times.
               playMode: PlayMode.Normal, // Animation playback mode.
               onFinish: () => {
-                console.info('play end')
+                console.info('play end');
               }
             }, () => {
-              this.indicatorBorderRadius = 0
-            })
+              this.indicatorBorderRadius = 0;
+            });
           } else {
-            animateTo({
+            this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
               curve: Curve.Linear, // Animation curve.
               delay: 200, // Animation delay.
               iterations: 1, // Number of playback times.
               playMode: PlayMode.Normal, // Animation playback mode.
               onFinish: () => {
-                console.info('play end')
+                console.info('play end');
               }
             }, () => {
-              this.indicatorBorderRadius = 5
-            })
+              this.indicatorBorderRadius = 5;
+            });
           }
-          this.borderFlag = !this.borderFlag
+          this.borderFlag = !this.borderFlag;
         })
-      Button("Change Indicator Spacing").width('100%').margin({ bottom: '12vp' })
+      Button('Change Indicator Spacing').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
           // Animation configuration for the width and height attributes of the <Button> component
           if (this.spaceFlag) {
-            animateTo({
+            this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
               curve: Curve.Linear, // Animation curve.
               delay: 200, // Animation delay.
               iterations: 1, // Number of playback times.
               playMode: PlayMode.Normal, // Animation playback mode.
               onFinish: () => {
-                console.info('play end')
+                console.info('play end');
               }
             }, () => {
-              this.indicatorSpace = 20
-            })
+              this.indicatorSpace = 20;
+            });
           } else {
-            animateTo({
+            this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
               curve: Curve.Linear, // Animation curve.
               delay: 200, // Animation delay.
               iterations: 1, // Number of playback times.
               playMode: PlayMode.Normal, // Animation playback mode.
               onFinish: () => {
-                console.info('play end')
+                console.info('play end');
               }
             }, () => {
-              this.indicatorSpace = 10
-            })
+              this.indicatorSpace = 10;
+            });
           }
-          this.spaceFlag = !this.spaceFlag
+          this.spaceFlag = !this.spaceFlag;
         })
       Tabs({ barPosition: BarPosition.End, controller: this.controller }) {
         TabContent() {
@@ -1263,7 +1354,7 @@ struct TabsAttr {
       .barHeight(140)
       .animationDuration(400)
       .onChange((index: number) => {
-        console.info(index.toString())
+        console.info(index.toString());
       })
       .backgroundColor(0xF5F5F5)
       .height(320)
@@ -1276,15 +1367,15 @@ struct TabsAttr {
 
 ### Example 5: Setting Adaptive Height for Subtab Text
 
-This example demonstrates how to achieve adaptive height for subtab text using **heightAdaptivePolicy**.
+This example demonstrates how to achieve adaptive height for subtab text using [heightAdaptivePolicy](#labelstyle10).
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct TabsTextOverflow {
-  @State message: string = 'Hello World'
-  private controller: TabsController = new TabsController()
+  @State message: string = 'Hello World';
+  private controller: TabsController = new TabsController();
   @State subTabOverflowOpaque: boolean = true;
 
   build() {
@@ -1353,7 +1444,7 @@ struct TabsTextOverflow {
       .barHeight(720)
       .barWidth(200).animationDuration(400)
       .onChange((index: number) => {
-        console.info(index.toString())
+        console.info(index.toString());
       })
       .height('100%').width('100%')
     }
@@ -1366,15 +1457,15 @@ struct TabsTextOverflow {
 
 ### Example 6: Setting Basic Attributes for Bottom Tabs
 
-This example demonstrates how to set basic attributes for bottom tabs using **padding**, **verticalAlign**, **layoutMode**, and **symmetricExtensible**.
+This example demonstrates how to set basic attributes for bottom tabs using [padding](#padding10), [verticalAlign](#verticalalign10), [layoutMode](#layoutmode10), and [symmetricExtensible](#symmetricextensible10).
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct TabContentExample6 {
-  private controller: TabsController = new TabsController()
-  @State text: string = "2"
+  private controller: TabsController = new TabsController();
+  @State text: string = '2';
   @State tabPadding: number = 0;
   @State symmetricExtensible: boolean = false;
   @State layoutMode: LayoutMode = LayoutMode.VERTICAL;
@@ -1383,56 +1474,56 @@ struct TabContentExample6 {
   build() {
     Column() {
       Row() {
-        Button("padding+10 " + this.tabPadding)
+        Button('padding+10 ' + this.tabPadding)
           .width('47%')
           .height(50)
           .margin({ top: 5 })
           .onClick((event?: ClickEvent) => {
-            this.tabPadding += 10
+            this.tabPadding += 10;
           })
           .margin({ right: '6%', bottom: '12vp' })
-        Button("padding-10 " + this.tabPadding)
+        Button('padding-10 ' + this.tabPadding)
           .width('47%')
           .height(50)
           .margin({ top: 5 })
           .onClick((event?: ClickEvent) => {
-            this.tabPadding -= 10
+            this.tabPadding -= 10;
           })
           .margin({ bottom: '12vp' })
       }
 
       Row() {
-        Button("Add Text")
+        Button('Add Text')
           .width('47%')
           .height(50)
           .margin({ top: 5 })
           .onClick((event?: ClickEvent) => {
-            this.text += 'Add Text'
+            this.text += 'Add Text';
           })
           .margin({ right: '6%', bottom: '12vp' })
-        Button("Reset Text")
+        Button('Reset Text')
           .width('47%')
           .height(50)
           .margin({ top: 5 })
           .onClick((event?: ClickEvent) => {
-            this.text = "2"
+            this.text = '2';
           })
           .margin({ bottom: '12vp' })
       }
 
       Row() {
-        Button("Set SymmetricExtensible to " + this.symmetricExtensible)
+        Button('Set SymmetricExtensible to ' + this.symmetricExtensible)
           .width('100%')
           .height(50)
           .margin({ top: 5 })
           .onClick((event?: ClickEvent) => {
-            this.symmetricExtensible = !this.symmetricExtensible
+            this.symmetricExtensible = !this.symmetricExtensible;
           })
           .margin({ bottom: '12vp' })
       }
 
       Row() {
-        Button("Vertical Layout")
+        Button('Vertical Layout')
           .width('47%')
           .height(50)
           .margin({ top: 5 })
@@ -1440,7 +1531,7 @@ struct TabContentExample6 {
             this.layoutMode = LayoutMode.VERTICAL;
           })
           .margin({ right: '6%', bottom: '12vp' })
-        Button("Horizontal Layout")
+        Button('Horizontal Layout')
           .width('47%')
           .height(50)
           .margin({ top: 5 })
@@ -1451,7 +1542,7 @@ struct TabContentExample6 {
       }
 
       Row() {
-        Button("VerticalAlign.Top")
+        Button('VerticalAlign.Top')
           .width('100%')
           .height(50)
           .margin({ top: 5 })
@@ -1462,7 +1553,7 @@ struct TabContentExample6 {
       }
 
       Row() {
-        Button("VerticalAlign.Center")
+        Button('VerticalAlign.Center')
           .width('100%')
           .height(50)
           .margin({ top: 5 })
@@ -1473,7 +1564,7 @@ struct TabContentExample6 {
       }
 
       Row() {
-        Button("VerticalAlign.Bottom")
+        Button('VerticalAlign.Bottom')
           .width('100%')
           .height(50)
           .margin({ top: 5 })
@@ -1487,11 +1578,11 @@ struct TabContentExample6 {
       Tabs({ barPosition: BarPosition.End, controller: this.controller }) {
         TabContent() {
           Column().width('100%').height('100%').backgroundColor(Color.Pink)
-        }.tabBar(BottomTabBarStyle.of($r("sys.media.ohos_app_icon"), "1"))
+        }.tabBar(BottomTabBarStyle.of($r('sys.media.ohos_app_icon'), '1'))
 
         TabContent() {
           Column().width('100%').height('100%').backgroundColor(Color.Green)
-        }.tabBar(BottomTabBarStyle.of($r("sys.media.ohos_app_icon"), this.text)
+        }.tabBar(BottomTabBarStyle.of($r('sys.media.ohos_app_icon'), this.text)
           .padding(this.tabPadding)
           .verticalAlign(this.verticalAlign)
           .layoutMode(this.layoutMode)
@@ -1499,7 +1590,7 @@ struct TabContentExample6 {
 
         TabContent() {
           Column().width('100%').height('100%').backgroundColor(Color.Blue)
-        }.tabBar(BottomTabBarStyle.of($r("sys.media.ohos_app_icon"), "3"))
+        }.tabBar(BottomTabBarStyle.of($r('sys.media.ohos_app_icon'), '3'))
       }
       .animationDuration(300)
       .height('60%')
@@ -1518,7 +1609,13 @@ struct TabContentExample6 {
 
 ### Example 7: Setting Text and Icon Colors for Subtabs and Bottom Tabs
 
-This example demonstrates how to change the text color of subtabs and bottom tabs using **unselectedColor** and **selectedColor** in **labelStyle** and how to change the icon color of bottom tabs using **unselectedColor** and **selectedColor** in **iconStyle**.
+This example demonstrates how to change the text color of subtabs and bottom tabs using **unselectedColor** and **selectedColor** in [LabelStyle](#labelstyle10) and
+
+how to change the icon color of bottom tabs using **unselectedColor** and **selectedColor** in [iconStyle](#iconstyle12).
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
 
 ```ts
 // xxx.ets
@@ -1527,7 +1624,7 @@ This example demonstrates how to change the text color of subtabs and bottom tab
 struct TabBarStyleExample {
   build() {
     Column({ space: 5 }) {
-      Text("Subtab style")
+      Text('Subtab style')
       Column() {
         Tabs({ barPosition: BarPosition.Start }) {
           TabContent() {
@@ -1555,18 +1652,19 @@ struct TabBarStyleExample {
         .scrollable(true)
         .barMode(BarMode.Fixed)
         .onChange((index: number) => {
-          console.info(index.toString())
+          console.info(index.toString());
         })
         .width('100%')
         .backgroundColor(0xF1F3F5)
       }.width('100%').height(200)
 
-      Text("Bottom tab style")
+      Text('Bottom tab style')
       Column() {
         Tabs({ barPosition: BarPosition.End }) {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
           }
+          // The common directory is at the same level as the pages directory.
           .tabBar(new BottomTabBarStyle('/common/public_icon_off.svg', 'pink')
             .labelStyle({ unselectedColor: Color.Red, selectedColor: Color.Green })
             .iconStyle({ unselectedColor: Color.Red, selectedColor: Color.Green })
@@ -1597,7 +1695,7 @@ struct TabBarStyleExample {
         .scrollable(true)
         .barMode(BarMode.Fixed)
         .onChange((index: number) => {
-          console.info(index.toString())
+          console.info(index.toString());
         })
         .width('100%')
         .backgroundColor(0xF1F3F5)
@@ -1609,88 +1707,9 @@ struct TabBarStyleExample {
 
 ![tabContent](figures/tabContent6.gif)
 
-### Example 8 (customized subtabs)
+### Example 8: Using Symbol Icons for Bottom Tabs
 
-This example sets **SubTabBarStyle** through **ComponentContent**.
-
-```ts
-// xxx.ets
-import { ComponentContent, UIContext } from "@kit.ArkUI";
-
-class Params {
-  text: string = ""
-
-  constructor(text: string) {
-    this.text = text;
-  }
-}
-
-@Builder
-function buildText(params: Params) {
-  Column() {
-    Text(params.text)
-      .fontSize(20)
-      .fontWeight(FontWeight.Bold)
-      .margin(20)
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State message1: string = "tabBar1"
-  @State message2: string = "tabBar2"
-  context: UIContext = this.getUIContext()
-  private count1 = 0;
-  private count2 = 0;
-  private controller: TabsController = new TabsController();
-  tabBar1: ComponentContent<Params> = new ComponentContent<Params>(this.context, wrapBuilder<[Params]>(buildText), new Params(this.message1));
-  tabBar2: ComponentContent<Params> = new ComponentContent<Params>(this.context, wrapBuilder<[Params]>(buildText), new Params(this.message2));
-
-  build() {
-    Row() {
-      Column() {
-        Button("Update tabBar1").width('90%').margin(20)
-          .onClick((event?: ClickEvent) => {
-            this.count1 += 1;
-            const message1 = "Update 1_" + this.count1.toString();
-            this.tabBar1.update(new Params(message1));
-          })
-        Button("Update tabBar2").width('90%').margin(20)
-          .onClick((event?: ClickEvent) => {
-            this.count2 += 1;
-            const message2 = "Update 2_" + this.count2.toString();
-            this.tabBar2.update(new Params(message2));
-          })
-        Tabs({ barPosition: BarPosition.Start, controller: this.controller }) {
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Pink).borderRadius('12vp')
-          }.tabBar(new SubTabBarStyle(this.tabBar1))
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Blue).borderRadius('12vp')
-          }.tabBar(SubTabBarStyle.of(this.tabBar2))
-        }
-        .vertical(false)
-        .barWidth(414)
-        .barHeight(96)
-        .width(414)
-        .height(414)
-        .backgroundColor('#F1F3F5')
-        .margin({ top: 20 })
-      }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-![tabContent7](figures/tabContent7.gif)
-
-### Example 9: Using Symbol Icons for Bottom Tabs
-
-This example shows how to use symbols as icons in **BottomTabBarStyle**.
+This example shows how to use symbols as icons in [BottomTabBarStyle](#bottomtabbarstyle9).
 
 ```ts
 // xxx.ets
@@ -1705,7 +1724,7 @@ struct Index {
   @State symbolModifier4: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.exposure'));
   build() {
     Column({space: 5}) {
-      Text("Bottom tab style")
+      Text('Bottom tab style')
       Column(){
         Tabs({barPosition: BarPosition.End}) {
           TabContent() {
@@ -1714,10 +1733,10 @@ struct Index {
             normal: this.symbolModifier1,
           }, 'Pink'))
           .onWillShow(() => {
-            console.info("Pink will show")
+            console.info('Pink will show');
           })
           .onWillHide(() => {
-            console.info("Pink will hide")
+            console.info('Pink will hide');
           })
 
           TabContent() {
@@ -1726,10 +1745,10 @@ struct Index {
             normal: this.symbolModifier2,
           }, 'Orange'))
           .onWillShow(() => {
-            console.info("Orange will show")
+            console.info('Orange will show');
           })
           .onWillHide(() => {
-            console.info("Orange will hide")
+            console.info('Orange will hide');
           })
 
           TabContent() {
@@ -1738,10 +1757,10 @@ struct Index {
             normal: this.symbolModifier3,
           }, 'Blue'))
           .onWillShow(() => {
-            console.info("Blue will show")
+            console.info('Blue will show');
           })
           .onWillHide(() => {
-            console.info("Blue will hide")
+            console.info('Blue will hide');
           })
 
           TabContent() {
@@ -1750,17 +1769,17 @@ struct Index {
             normal: this.symbolModifier4,
           }, 'Green'))
           .onWillShow(() => {
-            console.info("Green will show")
+            console.info('Green will show');
           })
           .onWillHide(() => {
-            console.info("Green will hide")
+            console.info('Green will hide');
           })
         }
         .vertical(false)
         .scrollable(true)
         .barMode(BarMode.Fixed)
         .onChange((index:number)=>{
-          console.info(index.toString())
+          console.info(index.toString());
         })
         .width('100%')
         .backgroundColor(0xF1F3F5)
@@ -1772,17 +1791,17 @@ struct Index {
 
 ![tabContent8](figures/tabBarSymbol.gif)
 
-### Example 10: Setting TabBar Using ComponentContent
+### Example 9: Setting TabBar Using ComponentContent
 
-This example demonstrates how to use **ComponentContent** to encapsulate component content and set the **TabBar**. The **update** API of **ComponentContent** is used to update the **TabBar**.
+This example demonstrates how to use [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) to encapsulate component content and set the [TabBar](#tabbar18). The [update](../js-apis-arkui-ComponentContent.md#update) API of **ComponentContent** is used to update the **TabBar**.
 
 ```ts
 // xxx.ets
-import { ComponentContent, UIContext } from "@kit.ArkUI";
+import { ComponentContent, UIContext } from '@kit.ArkUI';
 
 class Params {
-  text: string = ""
-  fontColor: string = ""
+  text: string = '';
+  fontColor: string = '';
 
   constructor(text: string, fontColor: string) {
     this.text = text;
@@ -1804,12 +1823,12 @@ function buildText(params: Params) {
 @Entry
 @Component
 struct Index {
-  @State currentIndex: number = 0
-  @State message1: string = "tabBar1"
-  @State message2: string = "tabBar2"
-  unselectedFontColor: string = '#182431'
-  selectedFontColor: string = '#007DFF'
-  context: UIContext = this.getUIContext()
+  @State currentIndex: number = 0;
+  @State message1: string = 'tabBar1';
+  @State message2: string = 'tabBar2';
+  unselectedFontColor: string = '#182431';
+  selectedFontColor: string = '#007DFF';
+  context: UIContext = this.getUIContext();
   private count1 = 0;
   private count2 = 0;
   private controller: TabsController = new TabsController();
@@ -1836,16 +1855,16 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button("Update tabBar1").width('90%').margin(20)
+        Button('Update tabBar1').width('90%').margin(20)
           .onClick((event?: ClickEvent) => {
             this.count1 += 1;
-            this.message1 = "Update 1_" + this.count1.toString();
+            this.message1 = 'Update 1_' + this.count1.toString();
             this.tabBar1.update(new Params(this.message1, this.unselectedFontColor));
           })
-        Button("Update tabBar2").width('90%').margin(20)
+        Button('Update tabBar2').width('90%').margin(20)
           .onClick((event?: ClickEvent) => {
             this.count2 += 1;
-            this.message2 = "Update 2_" + this.count2.toString();
+            this.message2 = 'Update 2_' + this.count2.toString();
             this.tabBar2.update(new Params(this.message2, this.unselectedFontColor));
           })
         Tabs({ barPosition: BarPosition.Start, controller: this.controller }) {
@@ -1865,7 +1884,7 @@ struct Index {
         .backgroundColor('#F1F3F5')
         .margin({ top: 20 })
         .onChange((index: number) => {
-          this.currentIndex = index
+          this.currentIndex = index;
         })
       }
       .width('100%')
@@ -1878,9 +1897,9 @@ struct Index {
 
 ![tabContent9](figures/tabContent9.gif)
 
-### Example 11: Preloading Child Nodes Using ComponentContent
+### Example 10: Preloading Child Nodes Using ComponentContent
 
-This example demonstrates how to use **ComponentContent** to set the **TabBar** and preload child nodes using the **preloadItems** API of **TabsController**.
+This example demonstrates how to use **ComponentContent** to set the **TabBar** and preload child nodes using the [preloadItems](ts-container-tabs.md#preloaditems12) API of **TabsController**.
 
 ```ts
 // xxx.ets
@@ -1888,8 +1907,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ComponentContent } from '@kit.ArkUI';
 
 class Params {
-  text: string = ""
-  fontColor: string = ""
+  text: string = '';
+  fontColor: string = '';
 
   constructor(text: string, fontColor: string) {
     this.text = text;
@@ -1900,7 +1919,7 @@ class Params {
 @Component
 struct imageCom {
   build() {
-    Image($r("app.media.startIcon"))
+    Image($r('app.media.startIcon'))
       .alt($r('app.media.background'))
       .width(15)
       .height(15)
@@ -1921,11 +1940,11 @@ function TabBuilder(params: Params) {
 @Entry
 @Component
 struct TabsPreloadItems {
-  @State currentIndex: number = 0
-  private tabsController: TabsController = new TabsController()
-  context: UIContext = this.getUIContext()
-  unselectedFontColor: string = '#182431'
-  selectedFontColor: string = '#007DFF'
+  @State currentIndex: number = 0;
+  private tabsController: TabsController = new TabsController();
+  context: UIContext = this.getUIContext();
+  unselectedFontColor: string = '#182431';
+  selectedFontColor: string = '#007DFF';
 
   getTabBar1() {
     this.tabBar1.update(new Params('green',
@@ -1987,45 +2006,45 @@ struct TabsPreloadItems {
       .height(296)
       .backgroundColor('#F1F3F5')
       .onChange((index: number) => {
-        this.currentIndex = index
+        this.currentIndex = index;
       })
 
       Button('preload items: [1,2,3]')
         .margin(5)
         .onClick(() => {
-          // Preload the 0th child node.
+          // Preload the child nodes whose indexes are 1 to 3.
           this.tabsController.preloadItems([1, 2, 3])
             .then(() => {
-              console.info('preloadItems success.')
+              console.info('preloadItems success.');
             })
             .catch((error: BusinessError) => {
-              console.error('preloadItems failed, error code: ' + error.code + ', error message: ' + error.message)
-            })
+              console.error('preloadItems failed, error code: ' + error.code + ', error message: ' + error.message);
+            });
         })
 
       Button('preload items: [1]')
         .margin(5)
         .onClick(() => {
-          // Preload the 0th child node.
+          // Preload the child node whose index is 1.
           this.tabsController.preloadItems([1])
             .then(() => {
-              console.info('preloadItems success.')
+              console.info('preloadItems success.');
             })
             .catch((error: BusinessError) => {
-              console.error('preloadItems failed, error code: ' + error.code + ', error message: ' + error.message)
-            })
+              console.error('preloadItems failed, error code: ' + error.code + ', error message: ' + error.message);
+            });
         })
       Button('preload items: [3]')
         .margin(5)
         .onClick(() => {
-          // Preload the 0th child node.
+          // Preload the child node whose index is 3.
           this.tabsController.preloadItems([3])
             .then(() => {
-              console.info('preloadItems success.')
+              console.info('preloadItems success.');
             })
             .catch((error: BusinessError) => {
-              console.error('preloadItems failed, error code: ' + error.code + ', error message: ' + error.message)
-            })
+              console.error('preloadItems failed, error code: ' + error.code + ', error message: ' + error.message);
+            });
         })
     }
   }
@@ -2033,14 +2052,14 @@ struct TabsPreloadItems {
 
 @Component
 struct MyComponent {
-  private color: string = ""
+  private color: string = '';
 
   aboutToAppear(): void {
-    console.info('aboutToAppear backgroundColor:' + this.color)
+    console.info('aboutToAppear backgroundColor:' + this.color);
   }
 
   aboutToDisappear(): void {
-    console.info('aboutToDisappear backgroundColor:' + this.color)
+    console.info('aboutToDisappear backgroundColor:' + this.color);
   }
 
   build() {
@@ -2053,3 +2072,73 @@ struct MyComponent {
 ```
 
 ![tabContent9](figures/tabContent10.gif)
+
+### Example 11: Setting the Indicator of a Subtab to an Image
+
+Since API version 22, this example uses the [indicator](#indicator22) attribute in **SubTabBarStyle** to implement the subtab indicator in image format.
+
+ 
+
+```ts
+import { DrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TabsIndicatorExample {
+  @State isVertical: boolean = false;
+  @State text: string = 'Text';
+  @State barMode: BarMode = BarMode.Fixed;
+  @State pixmapDesc: DrawableDescriptor | null = null;
+
+  async aboutToAppear() {
+    const resManager = this.getUIContext().getHostContext()?.resourceManager;
+    if (!resManager) {
+      return;
+    }
+    // Replace $r('app.media.indicator') with the image resource file you use.
+    let pixmapDescResult = resManager.getDrawableDescriptor($r('app.media.indicator').id);
+    if (pixmapDescResult) {
+      this.pixmapDesc = pixmapDescResult as DrawableDescriptor;
+    }
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar(SubTabBarStyle.of('TabBar 1')
+          .indicator({
+            drawable: this.pixmapDesc,
+            height: 10,
+            width: 70,
+            borderRadius: 5,
+            marginTop: 5
+          }))
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar(SubTabBarStyle.of('TabBar 2')
+          .indicator({
+            drawable: this.pixmapDesc,
+            height: 10,
+            width: 70,
+            borderRadius: 5,
+            marginTop: 5
+          }))
+      }
+      .height('60%')
+      .backgroundColor(0xf1f3f5)
+      .barMode(BarMode.Fixed)
+      .barHeight(120)
+      .vertical(false)
+    }
+    .width('100%')
+    .height(500)
+    .padding('24vp')
+  }
+}
+
+```
+
+![tabContent12](figures/tabContent12.png)

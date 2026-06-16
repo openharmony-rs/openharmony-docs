@@ -32,7 +32,7 @@ matchMediaSync(condition: string): MediaQueryListener
 
 > **说明：** 
 >
-> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery)获取[MediaQuery](arkts-apis-uicontext-mediaquery.md)对象，再通过此对象调用替代方法[matchMediaSync](arkts-apis-uicontext-mediaquery.md#matchmediasync)。
+> - 从API version 7开始支持，从API version 18开始废弃，建议使用[matchMediaSync](arkts-apis-uicontext-mediaquery.md#matchmediasync)替代。matchMediaSync需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery)方法获取[MediaQuery](arkts-apis-uicontext-mediaquery.md)对象，然后通过该对象进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery)方法获取当前UI上下文关联的[MediaQuery](arkts-apis-uicontext-mediaquery.md)对象。
 
@@ -46,20 +46,20 @@ matchMediaSync(condition: string): MediaQueryListener
 
 | 参数名    | 类型   | 必填 | 说明                                                         |
 | --------- | ------ | ---- | ------------------------------------------------------------ |
-| condition | string | 是   | 媒体事件的匹配条件，具体可参考[媒体查询语法规则](../../ui/arkts-layout-development-media-query.md#语法规则)。 |
+| condition | string | 是   | 媒体查询的匹配条件，具体可参考[媒体查询语法规则](../../ui/arkts-layout-development-media-query.md#语法规则)。 |
 
 **返回值：** 
 
 | 类型               | 说明                                         |
 | ------------------ | -------------------------------------------- |
-| [MediaQueryListener](#mediaquerylistener) | 媒体事件监听句柄，用于注册和去注册监听回调。 |
+| [MediaQueryListener](#mediaquerylistener) | 媒体事件监听句柄，用于注册和注销监听回调。 |
 
 **示例：** 
 
 ```ts
 import { mediaquery } from '@kit.ArkUI';
 
-let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); //监听横屏事件
+let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
 ```
 
 
@@ -101,7 +101,7 @@ on(type: 'change', callback: Callback&lt;MediaQueryResult&gt;): void
 
 **示例：** 
 
-  详见[off示例](#offchange)。
+  详见[off('change')](#offchange)示例。
 
 ### off('change')
 
@@ -120,7 +120,7 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 | 参数名   | 类型                             | 必填 | 说明                                                       |
 | -------- | -------------------------------- | ---- | ---------------------------------------------------------- |
 | type     | string                           | 是   | 必须填写字符串'change'。                                   |
-| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要取消注册的回调，如果参数缺省则去注册该句柄下所有的回调。 |
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要取消注册的回调，如果参数缺省则注销该句柄下所有的回调。 |
 
 **示例：**
 
@@ -129,7 +129,7 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 ```ts
 import { mediaquery } from '@kit.ArkUI';
 
-let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); //监听横屏事件
+let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
 function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
   if (mediaQueryResult.matches) {
     // do something here
@@ -138,12 +138,12 @@ function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
   }
 }
 listener.on('change', onPortrait) // 注册回调
-listener.off('change', onPortrait) // 取消注册回调
+listener.off('change', onPortrait) // 注销回调
   ```
 
 ## MediaQueryResult
 
-用于执行媒体查询操作。
+用于表示媒体查询的结果。
 
 **卡片能力：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
 
@@ -157,7 +157,7 @@ listener.off('change', onPortrait) // 取消注册回调
 | 名称    | 类型    | 只读 | 可选 | 说明                 |
 | ------- | ------- | ---- | ---- | -------------------- |
 | matches | boolean | 是   | 否   | 是否符合匹配条件。true表示满足查询条件，false表示不满足查询条件。  |
-| media   | string  | 是   | 否   | 媒体事件的匹配条件。 |
+| media   | string  | 是   | 否   | 媒体查询的匹配条件。 |
 
 
 ### 示例
@@ -176,7 +176,7 @@ import { mediaquery } from '@kit.ArkUI';
 struct MediaQueryExample {
   @State color: string = '#DB7093'
   @State text: string = 'Portrait'
-  listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); //监听横屏事件，mediaquery.matchMediaSync接口已废弃，建议使用this.getUIContext().getMediaQuery().matchMediaSync()来获取
+  listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件，mediaquery.matchMediaSync接口已废弃，建议使用this.getUIContext().getMediaQuery().matchMediaSync()来获取
 
   onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
     if (mediaQueryResult.matches) {

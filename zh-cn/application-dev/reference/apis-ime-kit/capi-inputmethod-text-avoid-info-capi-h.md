@@ -1,14 +1,14 @@
 # inputmethod_text_avoid_info_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
-提供输入框避让信息对象的创建、销毁与读写方法。
+提供输入框避让信息对象的创建、销毁与读写方法，用于在软键盘弹起时动态调整输入框的位置，避免遮挡输入内容。
 
 **引用文件：** <inputmethod/inputmethod_text_avoid_info_capi.h>
 
@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) | InputMethod_TextAvoidInfo | 输入框避让信息。输入框用于避让键盘的信息。 |
+| [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) | InputMethod_TextAvoidInfo | 输入框避让信息。输入框用于避让键盘显示区域的信息。 |
 
 ### 函数
 
@@ -58,8 +58,8 @@ InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double heig
 
 | 参数项 | 描述 |
 | -- | -- |
-| double positionY | 表示输入框位置的Y坐标值。 |
-| double height | 表示输入框高度。 |
+| double positionY | 表示输入框位置的Y坐标值，单位px。Y坐标值表示输入框顶部距离屏幕顶部的距离，单位为像素（px）。 |
+| double height | 表示输入框高度，单位px。 |
 
 **返回：**
 
@@ -104,7 +104,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *i
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | 指向即将被设置值的[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例的指针。 |
-| double positionY | positionY值，即输入框顶点与物理屏幕上侧距离的绝对值，单位px。 |
+| double positionY | Y坐标值，即输入框顶点与物理屏幕上侧距离的绝对值，单位px。 |
 
 **返回：**
 
@@ -130,7 +130,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | 指向即将被设置值的[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例的指针。 |
-| double height | 高度值。 |
+| double height | 高度值，单位px。 |
 
 **返回：**
 
@@ -156,7 +156,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *i
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | 指向即将被获取值的[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例的指针。 |
-| double *positionY | 即输入框顶点与物理屏幕上侧距离的绝对值，单位px。 |
+| double *positionY | Y坐标值，即输入框顶点与物理屏幕上侧距离的绝对值，单位px。 |
 
 **返回：**
 
@@ -182,7 +182,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | 指向即将被获取值的[InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)实例的指针。 |
-| double *height | 输入框高度。 |
+| double *height | 输入框高度，单位px。 |
 
 **返回：**
 

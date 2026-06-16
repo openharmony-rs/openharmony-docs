@@ -1,9 +1,9 @@
 # Graphics
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 自定义节点相关属性定义的详细信息。
@@ -11,6 +11,8 @@
 > **说明：**
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -45,7 +47,7 @@ type Position = Vector2
 | ------------------- | ----------------------------------- |
 | [Vector2](#vector2) | 包含x和y两个值的向量。<br/>单位：vp |
 
-## PositionT<sup>12+</sup>
+## PositionT\<T><sup>12+</sup>
 
 type PositionT\<T> = Vector2T\<T>
 
@@ -195,6 +197,25 @@ const transform: Matrix4 = [
 | y    | number | 否   | 否   | y轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
 | z    | number | 否   | 否   | z轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
 
+## Vector4
+
+用于表示包含x、y、z、w四个值的向量。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型   | 只读 | 可选 | 说明     |
+| ---- | ------ | ---- | ---- | -------- |
+| x    | number | 否  | 否   | 向量x轴方向的值。<br/>取值范围：(-∞, +∞) |
+| y    | number | 否  | 否   | 向量y轴方向的值。<br/>取值范围：(-∞, +∞) |
+| z    | number | 否  | 否   | 向量z轴方向的值。<br/>取值范围：(-∞, +∞) |
+| w    | number | 否  | 否   | 向量w轴方向的值。<br/>取值范围：(-∞, +∞) |
+
 ## Vector2T\<T><sup>12+</sup>
 
 用于表示T类型的包含x和y两个值的向量。
@@ -277,7 +298,7 @@ class MyRenderNode extends RenderNode {
 
 const renderNode = new MyRenderNode();
 renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xff519db4;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -306,6 +327,7 @@ struct Index {
   }
 }
 ```
+![](figures/canvas_demo.png)
 
 ## Edges\<T><sup>12+</sup>
 
@@ -393,7 +415,7 @@ LengthMetrics的构造函数。若参数unit不传入值或传入undefined，返
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | 是   | 长度属性的值。<br/>取值范围：(-∞, +∞) |
+| value   | number | 是   | 长度属性的值。<br/>取值范围：[0, +∞) |
 | unit   | [LengthUnit](#lengthunit12) | 否   | 长度属性的单位。 |
 
 ### px<sup>12+</sup>
@@ -574,6 +596,48 @@ struct SizeExample {
 ```
 ![image](figures/lengthMetricsDemo.png)
 
+### autoRefresh
+
+autoRefresh?(value: boolean): LengthMetrics
+
+设置LengthMetrics对象是否跟随系统配置变化自动更新。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|-------|------|------|------|
+| value | boolean | 是 | 使用[resource](#resource12)方法构造的LengthMetrics对象是否在系统配置变化时自动刷新值。<br>true表示主动监听系统配置变化，在变化时值刷新为对应配置下的资源值。<br>false表示不主动监听系统配置变化。|
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| [LengthMetrics](#lengthmetrics12) | 返回LengthMetrics对象。 |
+
+**示例：**
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State lengthMetrics: LengthMetrics = LengthMetrics.resource($r('sys.float.ohos_id_button_min_width')).autoRefresh!(true)
+
+  build() {
+    Column() {
+      Button('Test LengthMetrics')
+        .padding({ top: this.lengthMetrics })
+    }
+  }
+}
+```
 
 ## ColorMetrics<sup>12+</sup>
 
@@ -810,11 +874,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function getBlendColor(baseColor: ResourceColor): ColorMetrics {
   let sourceColor: ColorMetrics;
   try {
-    //在使用ColorMetrics的resourceColor和blendColor需要追加捕获异常处理
-    //可能返回的arkui子系统错误码有401和180003
+    // 在使用ColorMetrics的resourceColor和blendColor需要追加捕获异常处理
+    // 可能返回的arkui子系统错误码有401和180003
     // 61 157 180
     sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor("#083d9db4"));
-    console.info('current color is '+sourceColor.color+ ' r:'+sourceColor.red +' g:'+sourceColor.green+' b:'+sourceColor.blue+ ' a :'+sourceColor.alpha );
+    console.info(`current color is ${sourceColor.color} r:${sourceColor.red} g:${sourceColor.green} b:${sourceColor.blue} a :${sourceColor.alpha}`);
   } catch (error) {
     console.error("getBlendColor failed, code = " + (error as BusinessError).code + ", message = " +
     (error as BusinessError).message);
@@ -844,13 +908,13 @@ struct ColorMetricsSample {
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(ColorMetrics.rgba(0,74,175,255).color)
+        .backgroundColor(ColorMetrics.rgba(0, 74, 175, 255).color)
         .margin(10)
       Button("ColorMetrics colorWithSpace")
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(ColorMetrics.colorWithSpace(ColorSpace.SRGB,  0.4392, 0.4392, 0.4392).color)
+        .backgroundColor(ColorMetrics.colorWithSpace(ColorSpace.SRGB, 0.4392, 0.4392, 0.4392).color)
         .margin(10)
     }
     .width('100%')
@@ -859,6 +923,51 @@ struct ColorMetricsSample {
 }
 ```
 ![image](figures/colorMetricsDemo.png)
+
+### autoRefresh
+
+autoRefresh?(value: boolean): ColorMetrics
+
+设置ColorMetrics对象是否跟随系统配置变化自动更新。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|-------|------|------|------|
+| value | boolean | 是 | 使用[resourceColor](#resourcecolor12)方法构造的ColorMetrics对象是否在系统配置变化时自动刷新颜色值。<br>true表示主动监听系统配置变化，变化时值刷新为对应配置下的资源值。<br>false表示不主动监听系统配置变化。|
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| [ColorMetrics](#colormetrics12) | 返回ColorMetrics对象。 |
+
+**示例：**
+
+```ts
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State colorMetrics: ColorMetrics = ColorMetrics.resourceColor($r('sys.color.font_primary')).autoRefresh!(true)
+
+  build() {
+    Column() {
+      Text('Test ColorMetrics')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(this.colorMetrics)
+  }
+}
+```
 
 ## Corners\<T><sup>12+</sup>
 
@@ -887,7 +996,7 @@ type CornerRadius = Corners\<Vector2>
 
 | 类型                                         | 说明               |
 | -------------------------------------------- | ------------------ |
-| [Corners](#cornerst12)[\<Vector2>](#vector2) | 四个角的圆角x轴与y轴的半轴长。 |
+| [Corners](#cornerst12)\<[Vector2](#vector2)> | 四个角的圆角x轴与y轴的半轴长。 |
 
 ## BorderRadiuses<sup>12+</sup>
 
@@ -901,7 +1010,7 @@ type BorderRadiuses = Corners\<number>
 
 | 类型                            | 说明               |
 | ------------------------------- | ------------------ |
-| [Corners\<number>](#cornerst12) | 四个角的圆角半径。 |
+| [Corners](#cornerst12)\<number> | 四个角的圆角半径。 |
 
 ## Rect<sup>12+</sup>
 
@@ -968,8 +1077,8 @@ type Rect = common2D.Rect
 
 | 名称            | 类型    | 只读 | 可选 | 说明                                                |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> 通过[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式混合成最终颜色。  |
-| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/> 通过[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式混合成最终颜色。 |
+| fillColor       | number | 否   | 否   | 遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。<br/> 通过fillColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式与RenderNode本身的颜色混合，生成最终颜色。 |
+| strokeColor     | number | 否   | 否   | 遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。 <br/>  通过strokeColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)方式与RenderNode本身的颜色混合，生成最终颜色。 |
 | strokeWidth     | number | 否   | 否   | 遮罩的边框宽度，单位为px。默认值为0。   |
 
 ### constructor<sup>12+</sup>
@@ -1010,11 +1119,21 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
 
     const mask = new ShapeMask();
-    mask.setRectShape({ left: 0, right: uiContext.vp2px(150), top: 0, bottom: uiContext.vp2px(150) });
+    mask.setRectShape({
+      left: 0,
+      right: uiContext.vp2px(150),
+      top: 0,
+      bottom: uiContext.vp2px(150)
+    });
     mask.fillColor = 0X55FF0000;
 
     const renderNode = new RenderNode();
-    renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+    renderNode.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
     renderNode.backgroundColor = 0XFF00FF00;
     renderNode.shapeMask = mask;
 
@@ -1039,6 +1158,7 @@ struct Index {
   }
 }
 ```
+![](figures/setRectShape_demo.png)
 
 ### setRoundRectShape<sup>12+</sup>
 
@@ -1106,6 +1226,7 @@ struct Index {
   }
 }
 ```
+![](figures/setRoundRectShape_demo.png)
 
 ### setCircleShape<sup>12+</sup>
 
@@ -1139,7 +1260,12 @@ class MyNodeController extends NodeController {
     mask.fillColor = 0X55FF0000;
 
     const renderNode = new RenderNode();
-    renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+    renderNode.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
     renderNode.backgroundColor = 0XFF00FF00;
     renderNode.shapeMask = mask;
 
@@ -1164,6 +1290,7 @@ struct Index {
   }
 }
 ```
+![](figures/setCircleShape_demo.png)
 
 ### setOvalShape<sup>12+</sup>
 
@@ -1222,6 +1349,7 @@ struct Index {
   }
 }
 ```
+![](figures/setOvalShape_demo.png)
 
 ### setCommandPath<sup>12+</sup>
 
@@ -1249,7 +1377,12 @@ mask.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
 mask.fillColor = 0X55FF0000;
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.shapeMask = mask;
 
@@ -1281,6 +1414,7 @@ struct Index {
   }
 }
 ```
+![](figures/setCommandPath_demo.png)
 
 ## ShapeClip<sup>12+</sup>
 
@@ -1327,7 +1461,7 @@ renderNode.frame = {
   width: 150,
   height: 150
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xff519db4;
 renderNode.shapeClip = clip;
 const shapeClip = renderNode.shapeClip;
 
@@ -1355,6 +1489,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
+        .margin({ bottom: 20 })
       Button("setRectShape")
         .onClick(() => {
           shapeClip.setRectShape({
@@ -1365,10 +1500,11 @@ struct Index {
           });
           renderNode.shapeClip = shapeClip;
         })
-    }
+    }.margin(20)
   }
 }
 ```
+![](figures/setRectShape_demo2.gif)
 
 ### setRoundRectShape<sup>12+</sup>
 
@@ -1614,7 +1750,12 @@ const clip = new ShapeClip();
 clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.shapeClip = clip;
 
@@ -1643,7 +1784,7 @@ struct Index {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
       Button("setCommandPath")
-        .onClick(()=>{
+        .onClick(() => {
           renderNode.shapeClip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
         })
     }
@@ -1671,7 +1812,7 @@ edgeColors(all: number): Edges\<number>
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | 边框颜色均设置为传入值的边框颜色对象。 |
+| [Edges](#edgest12)\<number> | 边框颜色均设置为传入值的边框颜色对象。 |
 
 **示例：**
 
@@ -1680,9 +1821,9 @@ import { RenderNode, FrameNode, NodeController, edgeColors } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-renderNode.borderColor = edgeColors(0xFF0000FF);
+renderNode.borderColor = edgeColors(0xff519db4);
 
 
 class MyNodeController extends NodeController {
@@ -1708,10 +1849,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/edgeColors_demo.png)
 
 ## edgeWidths<sup>12+</sup>
 
@@ -1733,7 +1875,7 @@ edgeWidths(all: number): Edges\<number>
 
 | 类型                     | 说明                                   |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | 边框宽度均设置为传入值的边框宽度对象。 |
+| [Edges](#edgest12)\<number> | 边框宽度均设置为传入值的边框宽度对象。 |
 
 **示例：**
 
@@ -1741,10 +1883,20 @@ edgeWidths(all: number): Edges\<number>
 import { RenderNode, FrameNode, NodeController, edgeWidths } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = edgeWidths(8);
-renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+renderNode.borderColor = {
+  left: 0xff519db4,
+  top: 0xff519db4,
+  right: 0xff519db4,
+  bottom: 0xff519db4
+};
 
 
 class MyNodeController extends NodeController {
@@ -1770,10 +1922,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/edgeWidths_demo.png)
 
 ## borderStyles<sup>12+</sup>
 
@@ -1803,10 +1956,25 @@ borderStyles(all: BorderStyle): Edges\<BorderStyle>
 import { RenderNode, FrameNode, NodeController, borderStyles } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
+renderNode.backgroundColor = 0xffd5d5d5;
+renderNode.borderWidth = {
+  left: 8,
+  top: 8,
+  right: 8,
+  bottom: 8
+};
+renderNode.borderColor = {
+  left: 0xff519db4,
+  top: 0xff519db4,
+  right: 0xff519db4,
+  bottom: 0xff519db4
+};
 renderNode.borderStyle = borderStyles(BorderStyle.Dotted);
 
 
@@ -1833,10 +2001,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/borderStyles_demo.png)
 
 ## borderRadiuses<sup>12+</sup>
 
@@ -1863,11 +2032,16 @@ borderRadiuses(all: number): BorderRadiuses
 **示例：**
 
 ```ts
-import { RenderNode, FrameNode, NodeController, borderRadiuses }  from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController, borderRadiuses } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
+renderNode.backgroundColor = 0xff519db4;
 renderNode.borderRadius = borderRadiuses(32);
 
 
@@ -1894,7 +2068,58 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(20)
   }
 }
 ```
+![](figures/borderRadiuses_demo.png)
+
+## BackgroundBlur
+
+设置背景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型     | 只读 | 可选 | 说明                                     |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | 否   | 否   | 模糊半径。取值范围为[0, +∞)，默认值为0，值越大背景模糊效果越明显，为0时不模糊。 |
+| grayscale | [number, number] | 否   | 是   | 灰阶模糊参数，两参数取值范围均为[0, 127]，默认值为[0, 0]。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰）。例如：设置参数为（20, 20），图片中的黑色像素RGB:[0, 0, 0]会调整为[20, 20, 20]（0+20），白色像素RGB:[255, 255, 255]会调整为[235, 235, 235]（255-20），图像中的彩色像素维持不变。      |
+
+## ContentBlur
+
+设置内容模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型     | 只读 | 可选 | 说明                                     |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | 否   | 否   | 模糊半径。取值范围为[0, +∞)，默认值为0，值越大模糊效果越明显，为0时不模糊。 |
+| grayscale | [number, number] | 否   | 是   | 灰阶模糊参数，两参数取值范围均为[0, 127]，默认值为[0, 0]。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰）。例如：设置参数为（20, 20），图片中的黑色像素RGB:[0, 0, 0]会调整为[20, 20, 20]（0+20），白色像素RGB:[255, 255, 255]会调整为[235, 235, 235]（255-20），图像中的彩色像素维持不变。      |
+
+## ForegroundBlur
+
+设置前景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                |
+| ------ | ------ | ---- | ---- | ----------------------------------- |
+| radius | number | 否   | 否   | 模糊效果半径。取值范围为[0, +∞)，默认值为0，值越大前景模糊效果越明显，为0时不模糊。 |

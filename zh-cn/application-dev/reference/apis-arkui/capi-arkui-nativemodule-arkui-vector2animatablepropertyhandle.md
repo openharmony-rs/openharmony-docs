@@ -1,8 +1,8 @@
 # ArkUI_Vector2AnimatablePropertyHandle
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,6 +16,6 @@ typedef struct ArkUI_Vector2AnimatableProperty* ArkUI_Vector2AnimatablePropertyH
 
 **起始版本：** 20
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
 
 **所在头文件：** [native_render.h](capi-native-render-h.md)

@@ -2,10 +2,10 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lu-tao-->
-<!--Designer: @martin-duan-->
+<!--Owner: @Lutao98-->
+<!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The HiChecker module allows you to check issues that may be easily ignored during development of applications (including system-built and third-party applications). Such issues include calling of time-consuming functions by key application threads, event distribution and execution timeout in application processes, and ability resource leakage in application processes. The issues are recorded in logs or lead to process crashes explicitly so that you can find and rectify them.
 
@@ -31,6 +31,7 @@ Provides the constants of all rule types.
 | RULE_CAUTION_PRINT_LOG                           | bigint   | 1ULL << 63 | Alarm rule, which is programmed to print a log when an alarm is generated.                           |
 | RULE_CAUTION_TRIGGER_CRASH                       | bigint   | 1ULL << 62 | Alarm rule, which is programmed to force the application to exit when an alarm is generated.                         |
 | RULE_THREAD_CHECK_SLOW_PROCESS                   | bigint   | 1ULL       | Caution rule, which is programmed to detect whether any time-consuming function is invoked.                     |
+| RULE_THREAD_CHECK_NETWORK_USAGE                  | bigint   | 1ULL << 1  | Caution rule, which is programmed to detect whether the thread invokes a time-consuming network API.<br>**Since:** 26.0.0 |
 | RULE_CHECK_ABILITY_CONNECTION_LEAK               | bigint   | 1ULL << 33 | Caution rule, which is programmed to detect whether ability leakage has occurred.                     |
 | RULE_CHECK_ARKUI_PERFORMANCE<sup>11+</sup>       | bigint   | 1ULL << 34 | Caution rule, which is programmed to detect the ArkUI performance.                              |
 
@@ -155,7 +156,7 @@ addRule(rule: bigint): void
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [hichecker.addCheckRule](#hicheckeraddcheckrule9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hichecker.addCheckRule](#hicheckeraddcheckrule9) instead.
 
 Adds one or more rules. HiChecker detects unexpected operations or gives feedback based on the added rules.
 
@@ -184,7 +185,7 @@ removeRule(rule: bigint): void
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [hichecker.removeCheckRule](#hicheckerremovecheckrule9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hichecker.removeCheckRule](#hicheckerremovecheckrule9) instead.
 
 Removes one or more rules. The removed rules will become ineffective.
 
@@ -228,7 +229,7 @@ Obtains a collection of thread, process, and alarm rules that have been added.
 hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
 
 // Obtain the collection of added rules.
-hichecker.getRule();   // return 1n;
+hichecker.getRule(); // return 1n;
 ```
 
 ## hichecker.contains<sup>(deprecated)</sup>
@@ -237,7 +238,7 @@ contains(rule: bigint): boolean
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [hichecker.containsCheckRule](#hicheckercontainscheckrule9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hichecker.containsCheckRule](#hicheckercontainscheckrule9) instead.
 
 Checks whether the specified rule exists in the collection of added rules. If the rule is of the thread level, this operation is performed only on the current thread.
 

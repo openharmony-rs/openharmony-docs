@@ -1,8 +1,8 @@
 # tabs
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -108,9 +108,9 @@ tab页签容器。
 // xxx.js
 export default {
   change: function(e) {
-    console.log("Tab index: " + e.index);
+    console.info("Tab index: " + e.index);
   },
 }
 ```
 
-![zh-cn_image_0000001127125116](figures/zh-cn_image_0000001127125116.gif)
+![zh-cn_image_0000001127125116](figures/tab-example.gif)

@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @fangyuhao-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **GridItem** component provides a single item in a grid.
@@ -13,8 +13,8 @@ The **GridItem** component provides a single item in a grid.
 >
 >  * This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >  * This component can be used only as a child of [Grid](ts-container-grid.md).
->  * When this component is used with **LazyForEach**, its child components are created when it is created. When this component is used with **if/else** or **ForEach**, or when the parent component is **Grid**, its child components are created when it is laid out.
->  * If a **Grid** container contains a large number of **GridItem** components, using **columnStart/columnEnd** or **rowStart/rowEnd** to set the size of **GridItem** components can lead to performance issues, especially when **scrollToIndex** is used to scroll to a specific index. This is because the **Grid** will traverse all **GridItem** nodes sequentially to find the specified index, which can be time-consuming. To address this issue, it is recommended that you use **GridLayoutOptions** for layout, which significantly improves the efficiency of finding the position of **GridItem** components. For best practices, see [Optimizing Frame Loss for Grid Component Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve_grid_performance).
+>  * When this component is used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), its child components are created when it is created. When this component is used with [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), or when the parent component is **Grid**, its child components are created when it is laid out.
+>  * If a **Grid** component contains a large number of **GridItem** components, using [columnStart](#columnstart)/[columnEnd](#columnend) or [rowStart](#rowstart)/[rowEnd](#rowend) to set the size of **GridItem** components can lead to performance issues, especially when **scrollToIndex** is used to scroll to a specific index. This is because **Grid** will traverse all **GridItem** nodes sequentially to find the specified index, which can be time-consuming. To address this issue, it is recommended that you use [GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10) for layout, which significantly improves the efficiency of finding the position of **GridItem** components. For best practices, see [Optimizing Frame Loss for Grid Component Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve_grid_performance).
 
 ## Child Components
 
@@ -52,7 +52,7 @@ Sets the start row number of the component.
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| value  | number | Yes  | Start row number of the component.<br>In situations where you need to designate the start row and column numbers as well as the number of rows and columns a grid item spans, you are advised to use the [layoutOptions parameter](ts-container-grid.md#gridlayoutoptions10) of the **Grid** component. For reference, see [Grid Example 1](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Grid Example 3](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).<br>Value range: [0, Total number of rows – 1].|
+| value  | number | Yes  | Start row number of the component.<br>In scenarios where you need to specify the start row and column numbers and the number of rows and columns of a **GridItem**, you are advised to use the [GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10) parameter of the **Grid** component. For details, see [Example 1: Creating a Fixed Row and Column Grid Layout](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Example 3: Implementing a Scrollable Grid with Grid Items Spanning Rows and Columns](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).<br>Value range: [0, Total number of rows – 1].|
 
 ### rowEnd
 
@@ -68,7 +68,7 @@ Sets the end row number of the component.
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| value  | number | Yes  | End row number of the component.<br>In situations where you need to designate the start row and column numbers as well as the number of rows and columns a grid item spans, you are advised to use the [layoutOptions parameter](ts-container-grid.md#gridlayoutoptions10) of the **Grid** component. For reference, see [Grid Example 1](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Grid Example 3](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).<br>Value range: [0, Total number of rows – 1].|
+| value  | number | Yes  | End row number of the component.<br>In scenarios where you need to specify the start row and column numbers and the number of rows and columns of a **GridItem**, you are advised to use the [GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10) parameter of the **Grid** component. For details, see [Example 1: Creating a Fixed Row and Column Grid Layout](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Example 3: Implementing a Scrollable Grid with Grid Items Spanning Rows and Columns](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).<br>Value range: [0, Total number of rows – 1].|
 
 ### columnStart
 
@@ -84,7 +84,7 @@ Sets the start column number of the component.
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| value  | number | Yes  | Start column number of the component.<br>In situations where you need to designate the start row and column numbers as well as the number of rows and columns a grid item spans, you are advised to use the [layoutOptions parameter](ts-container-grid.md#gridlayoutoptions10) of the **Grid** component. For reference, see [Grid Example 1](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Grid Example 3](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).<br>Value range: [0, Total number of columns – 1].|
+| value  | number | Yes  | Start column number of the component.<br>In scenarios where you need to specify the start row and column numbers and the number of rows and columns of a **GridItem**, you are advised to use the [GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10) parameter of the **Grid** component. For details, see [Example 1: Creating a Fixed Row and Column Grid Layout](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Example 3: Implementing a Scrollable Grid with Grid Items Spanning Rows and Columns](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).<br>Value range: [0, Total number of columns – 1].|
 
 ### columnEnd
 
@@ -100,44 +100,43 @@ Sets the end column number of the component.
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| value  | number | Yes  | End column number of the component.<br>In situations where you need to designate the start row and column numbers as well as the number of rows and columns a grid item spans, you are advised to use the [layoutOptions parameter](ts-container-grid.md#gridlayoutoptions10) of the **Grid** component. For reference, see [Grid Example 1](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Grid Example 3](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).<br>Value range: [0, Total number of columns – 1].|
+| value  | number | Yes  | End column number of the component.<br>In scenarios where you need to specify the start row and column numbers and the number of rows and columns of a **GridItem**, you are advised to use the [GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10) parameter of the **Grid** component. For details, see [Example 1: Creating a Fixed Row and Column Grid Layout](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Example 3: Implementing a Scrollable Grid with Grid Items Spanning Rows and Columns](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).<br>Value range: [0, Total number of columns – 1].|
 
->  **NOTE**
->
->  In situations where you need to designate the start row and column numbers as well as the number of rows and columns a grid item spans, you are advised to use the [layoutOptions parameter](ts-container-grid.md#gridlayoutoptions10) of the **Grid** component. For reference, see [Grid Example 1](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Grid Example 3](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).
->
->  Rules for setting **rowStart**, **rowEnd**, **columnStart**, and **columnEnd**:
->
-> * The valid value range of **rowStart** and **rowEnd** is 0 to the total number of rows minus 1. The valid value range of **columnStart** and **columnEnd** is 0 to the total number of columns minus 1.
->
-> * If **rowStart**, **rowEnd**, **columnStart**, or **columnEnd** is set, the grid item occupies the specified number of rows (**rowEnd** - **rowStart** + 1) or columns (**columnEnd** - **columnStart** + 1).
->
-> * **GridItem** components with properly configured **rowStart**/**rowEnd**/**columnStart**/**columnEnd** attributes can only be laid out according to the specified grid coordinates when the parent **Grid** has both **columnsTemplate** and **rowsTemplate** defined.
->
-> * In the grid that has both **columnsTemplate** and **rowsTemplate** set, **GridItem** components that have **rowStart**/**rowEnd** or **columnStart**/**columnEnd** set are laid out in a row-by-row then column-by-column manner.
->
->  * In the grid that has only **columnsTemplate** set, grid items that have **columnStart**/**columnEnd** set are laid out in the specified columns. If there are already grid items in those columns, the grid items will be laid out in another row.
->
-> * In the grid that has only **rowsTemplate** set, grid items that have **rowStart**/**rowEnd** set are laid out on the specified rows. If there are already grid items in those rows, the grid items will be laid out in another column.
->
-> * In the grid that has neither **columnsTemplate** nor **rowsTemplate** set, the row and column number attributes have no effect.
->  
->  The following table describes the rules for handling abnormal values for **GridItem** row and column numbers.
->
->  | Attribute Setting | Exception Type | Correction Applied |
->  | ----- |----| ------------------------ |
->  | Only **columnsTemplate** set | Invalid row or column value | Single-row and single-column layout |                 |
->  | Only **rowsTemplate** set | Invalid row or column value | Single-row and single-column layout | |
->  | Both **rowsTemplate** and **columnsTemplate** set |  **rowStart** < **rowEnd** | Row span = min(rowEnd-rowStart+1, total number of rows) |
->  | Both **rowsTemplate** and **columnsTemplate** set | **rowStart** > **rowEnd** | Single-row and single-column layout |
->  | Both **rowsTemplate** and **columnsTemplate** set | **columnStart** < **columnEnd** | Column span = min(columnEnd-columnStart+1, total number of rows), total number of columns) |
->  | Both **rowsTemplate** and **columnsTemplate** set | **columnStart** > **columnEnd** | Single-row and single-column layout |
+
+In scenarios where you need to specify the start row and column numbers and the number of rows and columns of a **GridItem**, you are advised to use the [GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10) parameter of the **Grid** component. For details, see [Example 1: Creating a Fixed Row and Column Grid Layout](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Example 3: Implementing a Scrollable Grid with Grid Items Spanning Rows and Columns](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).
+
+Rules for setting **rowStart**, **rowEnd**, **columnStart**, and **columnEnd**:
+
+* The valid value range of **rowStart** and **rowEnd** is 0 to the total number of rows minus 1. The valid value range of **columnStart** and **columnEnd** is 0 to the total number of columns minus 1.
+
+* If **rowStart**, **rowEnd**, **columnStart**, or **columnEnd** is set, **GridItem** components occupy the specified number of rows (**rowEnd** - **rowStart** + 1) or columns (**columnEnd** - **columnStart** + 1).
+
+* **GridItem** components with properly configured **rowStart**/**rowEnd**/**columnStart**/**columnEnd** attributes can only be laid out according to the specified grid coordinates when the parent **Grid** has both **columnsTemplate** and **rowsTemplate** defined.
+
+* In the **Grid** component with both **columnsTemplate** and **rowsTemplate** set, **GridItem** components that have **rowStart**/**rowEnd** or **columnStart**/**columnEnd** set are laid out in a row-by-row then column-by-column manner.
+
+* In the **Grid** component with only **columnsTemplate** set, **GridItem** components that have **columnStart**/**columnEnd** set are laid out in the specified columns. If there are already grid items in those columns, the grid items will be laid out in another row.
+
+* In the **Grid** component with only **rowsTemplate** set, **GridItem** components that have **rowStart**/**rowEnd** set are laid out on the specified rows. If there are already grid items in those rows, the grid items will be laid out in another column.
+
+* In the **Grid** component with neither **columnsTemplate** nor **rowsTemplate** set, the row and column number attributes have no effect for **GridItem** components.
+
+The following table describes the rules for handling abnormal values for **GridItem** row and column numbers.
+
+| Attribute Setting | Exception Type| Layout Principles After Correction |
+| ----- |----| ------------------------ |
+| Only **columnsTemplate** is set |  Any row or column exception| Laid out in a row-by-row then column-by-column manner|
+| Only **rowsTemplate** is set|  Any row or column exception| Laid out in a row-by-row then column-by-column manner|
+| Both **rowsTemplate** and **columnsTemplate** are set|  rowStart < rowEnd | Row span = min(rowEnd - rowStart + 1, total number of rows)|
+| Both **rowsTemplate** and **columnsTemplate** are set|  rowStart > rowEnd | Laid out in a row-by-row then column-by-column manner|
+| Both **rowsTemplate** and **columnsTemplate** are set|  columnStart < columnEnd | Column span = min(columnEnd - columnStart + 1, total number of columns)|
+| Both **rowsTemplate** and **columnsTemplate** are set|  columnStart > columnEnd | Laid out in a row-by-row then column-by-column manner|
 
 ### forceRebuild<sup>(deprecated)</sup>
 
 forceRebuild(value: boolean)
 
-Sets whether to re-create the component when it is being built.
+Whether to re-create the component when it is being built.
 
 > **NOTE**
 >
@@ -149,7 +148,7 @@ Sets whether to re-create the component when it is being built.
 
 | Name| Type   | Mandatory| Description                                                   |
 | ------ | ------- | ---- | ------------------------------------------------------- |
-| value  | boolean | Yes  | Whether to re-create the component when it is being built.<br>Default value: **false**.|
+| value  | boolean | Yes  | Sets whether to re-create the component when it is being built.<br>Default value: **false**.|
 
 ### selectable<sup>8+</sup>
 
@@ -157,7 +156,7 @@ selectable(value: boolean)
 
 Sets whether the grid item is selectable in the mouse selection box area. This attribute takes effect only when mouse box selection is enabled for the parent **Grid** container.
 
-This attribute must be used before the [style for the selected state](./ts-universal-attributes-polymorphic-style.md#statestyles) is set. Otherwise, the style settings will not take effect.
+This attribute must be used before the [polymorphic style](./ts-universal-attributes-polymorphic-style.md) is set. Otherwise, the style settings will not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -175,7 +174,7 @@ selected(value: boolean)
 
 Sets whether the grid item is selected. This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
 
-This attribute must be used before the [style for the selected state](./ts-universal-attributes-polymorphic-style.md#statestyles) is set. Otherwise, the style settings will not take effect.
+This attribute must be used before the [polymorphic style](./ts-universal-attributes-polymorphic-style.md) is set. Otherwise, the style settings will not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -220,7 +219,7 @@ Enumerates styles of grid items.
 
 ### onSelect<sup>8+</sup>
 
-onSelect(event: (isSelected: boolean) =&gt; void)
+onSelect(event:&nbsp;(isSelected:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 
 Triggered when the selected state of the grid item changes.
 
@@ -237,14 +236,14 @@ Triggered when the selected state of the grid item changes.
 ## Example
 
 ### Example 1: Setting the Grid Item Position
-This example shows how to set the grid item position using **ColumnStart**, **ColumnEnd**, **RowStart**, and **RowEnd**. In situations where you need to designate the start row and column numbers as well as the number of rows and columns a grid item spans, you are advised to use the [layoutOptions parameter](ts-container-grid.md#gridlayoutoptions10) of the **Grid** component. For reference, see [Grid Example 1](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Grid Example 3](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).
+This example shows how to set the grid item position using **ColumnStart**, **ColumnEnd**, **RowStart**, and **RowEnd**. In scenarios where you need to specify the start row and column numbers and the number of rows and columns of a **GridItem**, you are advised to use the [GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10) parameter of the **Grid** component. For details, see [Example 1: Creating a Fixed Row and Column Grid Layout](ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout) and [Example 3: Implementing a Scrollable Grid with Grid Items Spanning Rows and Columns](ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns).
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct GridItemExample {
-  @State numbers: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
+  @State numbers: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'];
 
   build() {
     Column() {
@@ -286,7 +285,7 @@ struct GridItemExample {
 }
 ```
 
-![en-us_image_0000001174582870](figures/en-us_image_0000001174582870.gif)
+![gridItem1](figures/gridItem1.gif)
 
 ### Example 2: Setting the Grid Item Style
 
@@ -353,4 +352,4 @@ struct GridItemExample {
 }
 ```
 
-![en-us_image_griditem_griditemoptions](figures/en-us_image_griditem_griditemoptions.png)
+![image-griditem-griditemoptions](figures/image-griditem-griditemoptions.png)

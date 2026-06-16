@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 输入事件注入模块，提供输入按键、鼠标/触控板、触屏输入事件注入能力。
 
@@ -45,7 +45,7 @@ injectEvent({KeyEvent: KeyEvent}): void
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | Permission denied, non-system app called system api.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -66,13 +66,8 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             }
-
-            class EventDown {
-              KeyEvent: inputEventClient.KeyEvent | null = null
-            }
-
-            let eventDown: EventDown = { KeyEvent: backKeyDown }
-            inputEventClient.injectEvent(eventDown);
+            // 注入事件
+            inputEventClient.injectEvent({ KeyEvent: backKeyDown });
 
             let backKeyUp: inputEventClient.KeyEvent = {
               isPressed: false,
@@ -80,15 +75,10 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             };
-
-            class EventUp {
-              KeyEvent: inputEventClient.KeyEvent | null = null
-            }
-
-            let eventUp: EventUp = { KeyEvent: backKeyUp }
-            inputEventClient.injectEvent(eventUp);
+            // 注入事件
+            inputEventClient.injectEvent({ KeyEvent: backKeyUp });
           } catch (error) {
-            console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject KeyEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -120,7 +110,7 @@ injectKeyEvent(keyEvent: KeyEventData): void
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -147,6 +137,7 @@ struct Index {
             }
 
             let eventDown: EventDown = { keyEvent: backKeyDown }
+            // 注入按键事件
             inputEventClient.injectKeyEvent(eventDown);
 
             let backKeyUp: inputEventClient.KeyEvent = {
@@ -161,9 +152,10 @@ struct Index {
             }
 
             let eventUp: EventUp = { keyEvent: backKeyUp }
+            // 注入按键事件
             inputEventClient.injectKeyEvent(eventUp);
           } catch (error) {
-            console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject KeyEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -184,7 +176,7 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 | 参数名       | 类型                    | 必填   | 说明        |
 | -------- | --------------------- | ---- | --------- |
-| mouseEvent | [MouseEventData](#mouseeventdata11) | 是    | 鼠标/触控板事件注入描述信息。 |
+| mouseEvent | [MouseEventData](#mouseeventdata11) | 是    | 鼠标/触控板事件注入描述信息。此参数中[Action](js-apis-mouseevent.md#action)属性不支持设置为CANCEL。 |
 
 **错误码**：
 
@@ -194,7 +186,7 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -240,6 +232,7 @@ struct Index {
             let mouseButtonUp: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonUpData
             }
+            // 注入鼠标事件
             inputEventClient.injectMouseEvent(mouseButtonUp);
 
             let mouseButtonDownData: MouseEvent = {
@@ -272,11 +265,12 @@ struct Index {
             let mouseButtonDown: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonDownData
             };
+            // 注入鼠标事件
             inputEventClient.injectMouseEvent(mouseButtonDown);
           }
 
           catch (error) {
-            console.error(`Failed to inject MouseEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject MouseEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -298,7 +292,7 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 | 参数名       | 类型                    | 必填   | 说明        |
 | -------- | --------------------- | ---- | --------- |
-| touchEvent | [TouchEventData](#toucheventdata11) | 是    | 触屏注入描述信息。 |
+| touchEvent | [TouchEventData](#toucheventdata11) | 是    | 触屏注入描述信息。此参数中[Action](js-apis-touchevent.md#action)属性不支持设置为CANCEL。 |
 
 **错误码**：
 
@@ -308,7 +302,7 @@ injectTouchEvent(touchEvent: TouchEventData): void
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -346,7 +340,7 @@ struct Index {
             }
 
             let touchEventUpData: TouchEvent = {
-              action: 1,
+              action: 3,
               sourceType: 0,
               touch: touchEvent,
               touches: [],
@@ -360,6 +354,7 @@ struct Index {
             let touchEventUp: inputEventClient.TouchEventData = {
               touchEvent: touchEventUpData
             }
+            // 注入触摸事件
             inputEventClient.injectTouchEvent(touchEventUp);
 
             let touchEventDownData: TouchEvent = {
@@ -377,9 +372,10 @@ struct Index {
             let touchEventDown: inputEventClient.TouchEventData = {
               touchEvent: touchEventDownData
             }
+            // 注入触摸事件
             inputEventClient.injectTouchEvent(touchEventDown);
           } catch (error) {
-            console.error(`Failed to inject touchEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject touchEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -411,7 +407,7 @@ permitInjection(result: boolean): void
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 ```ts
@@ -426,9 +422,10 @@ struct Index {
         .onClick(() => {
           try {
             let result = true;
+            // 授权事件注入
             inputEventClient.permitInjection(result);
           }catch(error){
-            console.error("failed:" + JSON.stringify(error));
+            console.error(`Failed to get inject permission, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -446,7 +443,7 @@ struct Index {
 | --------- | ------ | ---- | ---- | ------- |
 | isPressed       | boolean | 否    |  否 | 按键是否按下。<br>true表示按键按下，false表示按键抬起。   |
 | keyCode         | number  | 否    |  否 | 按键键值。当前仅支持返回键/KEYCODE_BACK键。 |
-| keyDownDuration | number  | 否    |  否 | 按键按下持续时间，单位：μs。           |
+| keyDownDuration | number  | 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
 | isIntercepted   | boolean | 否    |  否 | 按键是否可以被拦截。<br>true表示可以被拦截，false表示不可被拦截。 |
 
 ## KeyEventData<sup>11+</sup>
@@ -480,3 +477,13 @@ struct Index {
 | --------- | ------ | ---- | ---- | ------- |
 | touchEvent | [TouchEvent](js-apis-touchevent.md#touchevent) | 否    |  否 | 触屏输入事件。   |
 | useGlobalCoordinate<sup>20+</sup> | boolean | 否    |  是 | 是否使用全局坐标来计算注入的触屏输入事件。默认值为false，取值为false表示使用以指定屏幕左上角为原点的相对坐标系的坐标来计算注入的触屏输入事件。取值为true表示使用以主屏左上角为原点的全局坐标系的坐标来计算注入的触屏输入事件。   |
+
+## KeyEventInfo<sup>23+</sup>
+
+定义用户注入的按键事件信息。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+| 名称        | 类型   | 只读   | 可选   | 说明      |
+| --------- | ------ | ---- | ---- | ------- |
+| KeyEvent       | [KeyEvent](#keyevent) | 否    |  否 | 按键注入描述信息。   |

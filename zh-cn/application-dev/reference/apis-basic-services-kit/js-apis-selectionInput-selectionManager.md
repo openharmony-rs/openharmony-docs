@@ -11,7 +11,8 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅支持PC/2in1设备。
 > - 仅支持集成了划词扩展的应用调用。
 
 ## 导入模块
@@ -20,9 +21,13 @@
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
-##
+## selectionManager
 
-## on('selectionCompleted')
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### selectionManager.on('selectionCompleted')
 
 on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
@@ -30,12 +35,14 @@ on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'selectionCompleted'。 |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回当前划词信息。       |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回当前划词信息。该回调仅在用户通过鼠标或触控板选中文本（鼠标左键双击/三击/按下滑动）后按下Ctrl键时触发。       |
 
 **错误码：**
 
@@ -43,7 +50,7 @@ on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 33600003   | Invalid operation. The selection app is not valid. |
+| 33600003   | The application calling the API does not match the application selected in the system settings. |
 
 **示例：**
 
@@ -52,14 +59,14 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 try {
   selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
-    console.info(`SelectionInfo: ${JSON.stringify(info)}`);
+    console.info(`Enter the callback function.`);
   });
 } catch (err) {
-  console.error(`Failed to register selectionCompleted callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register selectionCompleted callback: ${err.code}, error message: ${err.message}`);
 }
 ```
 
-## off('selectionCompleted')
+### selectionManager.off('selectionCompleted')
 
 off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
@@ -67,12 +74,14 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'selectionCompleted'。               |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 回调函数，返回[SelectionInfo](#selectioninfo)。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -80,24 +89,26 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 import { selectionManager } from '@kit.BasicServicesKit';
 
 let selectionChangeCallback = (info: selectionManager.SelectionInfo) => {
-  console.info(`SelectionInfo: ${JSON.stringify(info)}`);
+  console.info(`Enter the callback function.`);
 };
 
 selectionManager.on('selectionCompleted', selectionChangeCallback);
 try {
   selectionManager.off('selectionCompleted', selectionChangeCallback);
 } catch (err) {
-  console.error(`Failed to unregister selectionCompleted: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister selectionCompleted: ${err.code}, error message: ${err.message}`);
 }
 ```
 
-## getSelectionContent()<sup>22+</sup>
+### getSelectionContent()
 
 getSelectionContent(): Promise\<string>
 
 获取选中文本的内容。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 | 类型   | 说明                                                                 |
@@ -126,27 +137,29 @@ selectionManager.on('selectionCompleted', async (info: selectionManager.Selectio
   try {
     let content = await selectionManager.getSelectionContent();
   } catch (err) {
-    console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
+    console.error(`Failed to get selection content: ${err.code}, error message: ${err.message}`);
   }
 });
 ```
 
-## createPanel
+### createPanel
 
 createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 创建划词面板。使用Promise异步回调。
 
-单个划词应用仅允许创建一个[主面板类型](./js-apis-selectionInput-selectionPanel-sys.md)和一个[菜单面板类型](./js-apis-selectionInput-selectionPanel-sys.md)的窗口。
+单个划词应用仅允许创建一个[MENU_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype)和一个[MAIN_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype)。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名   | 类型        | 必填 | 说明                     |
 | ------- | ----------- | ---- | ------------------------ |
-| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前划词面板依赖的上下文信息。 |
-| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel-sys.md)   | 是   | 划词面板信息。 |
+| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是   | 当前划词面板依赖的上下文信息。 |
+| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板信息。 |
 
 **返回值：**
 | 类型   | 说明                                                                 |
@@ -160,7 +173,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
-| 33600003   | Invalid operation. The selection app is not valid. |
+| 33600003   | The application calling the API does not match the application selected in the system settings. |
 
 **示例：**
 
@@ -192,11 +205,13 @@ class ServiceExtAbility extends SelectionExtensionAbility {
       width: 500,
       height: 200
     }
+    let selectionPanel: selectionManager.Panel | undefined = undefined;
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
+        selectionPanel = panel;
         console.info('Succeed in creating panel.');
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -204,13 +219,15 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
-## destroyPanel
+### destroyPanel
 
 destroyPanel(panel: Panel): Promise\<void>
 
 销毁划词面板。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -272,14 +289,14 @@ class ServiceExtAbility extends SelectionExtensionAbility {
             selectionManager.destroyPanel(selectionPanel).then(() => {
               console.info('Succeed in destroying panel.');
             }).catch((err: BusinessError) => {
-              console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+              console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
             });
           }
         } catch (err) {
-          console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+          console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
         }
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -292,6 +309,8 @@ export default ServiceExtAbility;
 划词事件信息。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称      | 类型 | 只读 | 可选 | 说明         |
 | --------- | -------- | ---- | ---- | ------------ |
@@ -310,6 +329,12 @@ export default ServiceExtAbility;
 
 ## Panel
 
+划词面板。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 下列API均需使用[createPanel](#createpanel)获取到Panel实例后，通过实例调用。
 
 ### setUiContent
@@ -319,6 +344,8 @@ setUiContent(path: string): Promise\<void>
 为当前的划词面板加载具体页面内容。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -342,7 +369,7 @@ setUiContent(path: string): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -350,10 +377,10 @@ try {
   selectionPanel.setUiContent('pages/Index').then(() => {
     console.info('Succeeded in setting the content.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setUiContent: ${JSON.stringify(err)}`);
+    console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: ${JSON.stringify(err)}`);
+  console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -365,6 +392,8 @@ show(): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型   | 说明                             |
@@ -381,14 +410,14 @@ show(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 selectionPanel.show().then(() => {
   console.info('Succeeded in showing the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to show panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to show panel: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -400,6 +429,8 @@ hide(): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型   | 说明                             |
@@ -416,14 +447,14 @@ hide(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 selectionPanel.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to hide panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to hide panel: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -431,9 +462,11 @@ selectionPanel.hide().then(() => {
 
 startMoving(): Promise\<void>
 
-使当前划词面板可以随鼠标拖动位置。使用Promise异步回调。
+使当前划词面板可以随鼠标拖动位置。使用Promise异步回调。该接口需要写在onTouch的回调函数中，并且事件类型为TouchType.Down。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -466,18 +499,25 @@ RelativeContainer() {
       selectionPanel.startMoving().then(() => {   // selectionPanel为createPanel创建出的panel实例
         console.info('Succeeded in startMoving the panel.');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to startMoving panel: ${JSON.stringify(err)}`);
+        console.error(`Failed to startMoving panel: ${err.code}, error message: ${err.message}`);
       });
     }
   }
 })
 ```
 
-### moveTo
+<!--Del-->
+### moveTo<sup>(deprecated)</sup>
 
 moveTo(x: number, y: number): Promise\<void>
 
 移动划词面板至屏幕指定位置。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 20开始支持，从API version 24开始废弃。建议使用[moveToGlobalDisplay](#movetoglobaldisplay)替代。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -504,7 +544,7 @@ moveTo(x: number, y: number): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -512,10 +552,59 @@ try {
   selectionPanel.moveTo(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+}
+```
+<!--DelEnd-->
+
+### moveToGlobalDisplay
+
+moveToGlobalDisplay(x: number, y: number): Promise\<void>
+
+移动划词面板至屏幕指定位置。使用Promise异步回调。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | -------- |
+| x | number | 是   |x轴方向移动的值，单位为px。|
+| y | number | 是   |y轴方向移动的值，单位为px。|
+
+**返回值：**
+
+| 类型   | 说明                             |
+| ------- | ------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+
+| 错误码ID   | 错误信息                       |
+| ---------- | ----------------------------- |
+| 33600001   | Selection service exception. |
+| 33600002   | This selection window has been destroyed. |
+
+**示例：**
+<!--code_no_check-->
+```ts
+import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  selectionPanel.moveToGlobalDisplay(200, 200).then(() => {
+    console.info('Succeeded in moving the panel.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -527,24 +616,26 @@ on(type: 'destroyed', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'destroyed'。 |
-| callback | Callback\<void> | 是   | 回调函数。       |
+| callback | Callback\<void> | 是   | 回调函数，返回值为空。       |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 try {
   selectionPanel.on('destroyed', () => {
-    console.info('Panel has destroyed.');
+    console.info('Panel has been destroyed.');
   });
 } catch (err) {
-  console.error(`Failed to register destroyed callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register destroyed callback: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -556,22 +647,24 @@ off(type: 'destroyed', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'destroyed'。               |
-| callback | Callback\<void> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 try {
   selectionPanel.off('destroyed');
 } catch (err) {
-  console.error(`Failed to unregister destroyed: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister destroyed: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -583,24 +676,26 @@ on(type: 'hidden', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'hidden'。 |
-| callback | Callback\<void> | 是   | 回调函数，返回当前划词服务的信息。       |
+| callback | Callback\<void> | 是   | 回调函数，返回值为空。       |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 try {
   selectionPanel.on('hidden', () => {
-    console.info('Panel has hidden.');
+    console.info('Panel has been hidden.');
   });
 } catch (err) {
-  console.error(`Failed to register hidden callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register hidden callback: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -612,22 +707,24 @@ off(type: 'hidden', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'hidden'。               |
-| callback | Callback\<void> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 try {
   selectionPanel.off('hidden');
 } catch (err) {
-  console.error(`Failed to unregister hidden: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister hidden: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -636,6 +733,8 @@ try {
 定义触发划词的类型枚举。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称         | 值 | 说明               |
 | ------------ | -- | ------------------ |

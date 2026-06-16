@@ -1,10 +1,10 @@
 # @ohos.file.recent (Latest Access List) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 The **file.recent** module provides APIs for managing the list of recently accessed files.
 
@@ -13,6 +13,7 @@ The **file.recent** module provides APIs for managing the list of recently acces
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The APIs provided by this module are system APIs.
 > - Currently, the APIs of this module can be called only by **FileManager**.
+> - The APIs of this module are deprecated since API version 23. The following APIs are not recommended.
 
 ## Modules to Import
 
@@ -138,5 +139,5 @@ Represents information about the recent file list.
 | fileName | string | Yes| No| File name.|
 | mode | number | Yes| No| [Permissions on the file](js-apis-file-fs.md#stat).|
 | size | number | Yes| No|  File size, in bytes.|
-| mtime | number | Yes| No|  Time when the file was last modified.|
-| ctime | number | Yes| No|  Time when the file was created.|
+| mtime | number | Yes| No|  Time when the file was last modified. The value is the number of milliseconds elapsed since the Epoch time (00:00:00 UTC on January 1, 1970).|
+| ctime | number | Yes| No|  Time when the file was created. The value is the number of seconds elapsed since the Epoch time (00:00:00 UTC on January 1, 1970).|

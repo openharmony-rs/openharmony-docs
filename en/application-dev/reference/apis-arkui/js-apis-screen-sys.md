@@ -13,6 +13,8 @@ The module implements basic screen management. You can use the APIs of this modu
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
 > - The APIs provided by this module are system APIs.
+> 
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 ## Modules to Import
 
@@ -98,7 +100,7 @@ let screenClass: screen.Screen | null = null;
 let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
 promise.then((data: Array<screen.Screen>) => {
   if(data.length > 0){
-  	screenClass = data[0];
+    screenClass = data[0];
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -283,7 +285,7 @@ Stops mirror mode. This API uses an asynchronous callback to return the result.
 
 | Name| Type| Mandatory| Description                                     |
 | ------------ | --------------------------- | --- |-----------------------------------------|
-| mirrorScreen | Array&lt;number&gt;         | Yes  | Array of IDs of secondary screens. Each ID must be an integer. The size of the mirrorScreen array cannot exceed 1000.|
+| mirrorScreen | Array&lt;number&gt;         | Yes  | Array of IDs of secondary screens. Each ID must be an integer. The size of the **mirrorScreen** array cannot exceed 1000.|
 | callback     | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If mirror mode is stopped, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -367,6 +369,8 @@ Sets the screen to independent display mode. This API uses a promise to return t
 
 **System capability**: SystemCapability.Window.SessionManager
 
+**Device behavior differences**: This API can be properly called on phones, PCs/2-in-1 devices, and tablets. If it is called on wearables, error code 801 is reported. If it is called on other device types, it has no effect and does not report errors.
+
 **Parameters**
 
 | Name   | Type  | Mandatory| Description         |
@@ -377,7 +381,7 @@ Sets the screen to independent display mode. This API uses a promise to return t
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to returns the independent screen IDs, where each ID is an integer greater than 0.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the independent screen IDs, where each ID is an integer greater than 0.|
 
 **Error codes**
 
@@ -560,6 +564,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ----------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.|
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 1400001 | Invalid display or screen. |
 | 1400002 | Unauthorized operation. |
 
 **Example**
@@ -608,6 +613,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ----------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.|
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 1400001 | Invalid display or screen. |
 | 1400002 | Unauthorized operation. |
 
 **Example**
@@ -627,7 +633,7 @@ screen.destroyVirtualScreen(screenId).then(() => {
 
 setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the surface for a virtual screen. This API uses an asynchronous callback to return the result.
+Sets a surface for a virtual screen. The virtual screen displays the content of the surface. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -640,7 +646,7 @@ Sets the surface for a virtual screen. This API uses an asynchronous callback to
 | Name   | Type                     | Mandatory| Description                                                        |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | screenId  | number                    | Yes  | Screen ID. The value must be an integer.                                                  |
-| surfaceId | string                    | Yes  | Surface ID of the virtual screen. The value can be customized.                                               |
+| surfaceId | string                    | Yes  | Surface ID of the virtual screen. The value can be customized. You can specify the surface ID of an existing surface.|
 | callback  | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the virtual screen surface is successfully set, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -657,25 +663,49 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1;
-let surfaceId: string = '2048';
-screen.setVirtualScreenSurface(screenId, surfaceId, (err: BusinessError) => {
-  const errCode: number = err.code;
-  if (errCode) {
-    console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
-    return;
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  setVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    screen.setVirtualScreenSurface(screenId, surfaceId, (err: BusinessError) => {
+    const errCode: number = err.code;
+    if (errCode) {
+      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      return;
+    }
+      console.info('Succeeded in setting the surface for the virtual screen.');
+    });
   }
-  console.info('Succeeded in setting the surface for the virtual screen.');
-});
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('setSurface')
+        .onClick((event: ClickEvent) => {
+          this.setVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## screen.setVirtualScreenSurface
 
 setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
-Sets the surface for a virtual screen. This API uses a promise to return the result.
+Sets a surface for a virtual screen. The virtual screen displays the content of the surface. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -688,7 +718,7 @@ Sets the surface for a virtual screen. This API uses a promise to return the res
 | Name   | Type  | Mandatory| Description         |
 | --------- | ------ | ---- | ------------- |
 | screenId  | number | Yes  | Screen ID. The value must be an integer.   |
-| surfaceId | string | Yes  | Surface ID of the virtual screen. The value can be customized.|
+| surfaceId | string | Yes  | Surface ID of the virtual screen. The value can be customized. You can specify the surface ID of an existing surface.|
 
 **Return value**
 
@@ -710,15 +740,39 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1;
-let surfaceId: string = '2048';
-screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
-  console.info('Succeeded in setting the surface for the virtual screen.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
-});
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  setVirtualScreenSurface = () => {
+    let screenId: number = 1;
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in setting the surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('setSurface')
+        .onClick((event: ClickEvent) => {
+          this.setVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## screen.setScreenPrivacyMaskImage<sup>19+</sup>
@@ -868,7 +922,7 @@ Sets whether to lock auto rotate. This API uses a promise to return the result.
 
 | Name   | Type  | Mandatory| Description         |
 | --------- | ------ | ---- | ------------- |
-| isLocked  | boolean | Yes  | Whether to lock auto rotate. **true** to lock, **false** otherwise.|
+| isLocked  | boolean | Yes  | Whether to lock auto rotate. **true** to lock; **false** otherwise.|
 
 **Return value**
 
@@ -914,7 +968,7 @@ Sets whether to lock auto rotate. This API uses an asynchronous callback to retu
 
 | Name   | Type                     | Mandatory| Description                                                        |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| isLocked  | boolean                   | Yes  | Whether to lock auto rotate. **true** to lock, **false** otherwise.                |
+| isLocked  | boolean                   | Yes  | Whether to lock auto rotate. **true** to lock; **false** otherwise.                |
 | callback  | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -946,7 +1000,7 @@ screen.setScreenRotationLocked(isLocked, (err: BusinessError) => {
 
 setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondaryScreenMode: MultiScreenMode): Promise&lt;void&gt;
 
-Sets the display mode (mirror or extend) of the secondary screen. This API uses a promise to return the result.
+Sets the display mode (mirror or extend) of the secondary screen. This API uses a promise to return the result. If both **primaryScreenId** and **secondaryScreenId** are set to **0**, the content is displayed only on the secondary screen.
 
 **System API**: This is a system API.
 
@@ -956,8 +1010,8 @@ Sets the display mode (mirror or extend) of the secondary screen. This API uses 
 
 | Name      | Type                | Mandatory| Description               |
 | ------------ | ------------------- | ---- |--------------------|
-| primaryScreenId   | number           | Yes | ID of the primary screen. The value must be an integer.|
-| secondaryScreenId | number           | Yes | ID of the secondary screen. The value must be an integer.|
+| primaryScreenId   | number           | Yes | ID of the primary screen. The value must be a non-negative integer. Floating-point numbers are rounded down.|
+| secondaryScreenId | number           | Yes | ID of the secondary screen. The value must be a non-negative integer. Floating-point numbers are rounded down.|
 | secondaryScreenMode | [MultiScreenMode](#multiscreenmode13)  | Yes | Display mode of the secondary screen.|
 
 **Return value**
@@ -1022,6 +1076,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed, non-system application uses system API. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -1045,6 +1100,56 @@ screen.setMultiScreenRelativePosition(mainScreenOptions, secondaryScreenOptions)
   console.info('Succeeded in setting multi screen relative position.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to set multi screen relative position. Code:${err.code}, message is ${err.message}`);
+});
+```
+## screen.resizeVirtualScreen<sup>24+</sup>
+
+resizeVirtualScreen(screenId: number, width: number, height: number): Promise&lt;void&gt;
+
+Resizes the virtual screen. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name     | Type       | Mandatory| Description                                                       |
+| ---------- | ----------- | ---  |------------------------------------------------------------|
+| screenId   | number      | Yes  | ID of the virtual screen to be resized. The value is a positive integer within the range of [1000, 2147483647]. If the value is not within the valid range, error code 1400004 is returned.|
+| width      | number      | Yes  | New width of the virtual screen, in px. The value is a positive integer within the range of [1, 65536]. If the value is not within the valid range, error code 1400004 is returned. |
+| height     | number      | Yes  | New height of the virtual screen, in px. The value is a positive integer within the range of [1, 65536]. If the value is not within the valid range, error code 1400004 is returned. |
+
+**Return value**
+
+| Type                 | Description                             |
+| --------------------- |---------------------------------|
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+| 801     | Capability not supported. Function can not work because the current device does not support this ability.|
+| 1400001 | Invalid display or screen.|
+| 1400003 | This display manager service works abnormally.|
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenId: number = 1000;
+let width: number = 1920;
+let height: number = 1080;
+screen.resizeVirtualScreen(screenId, width, height).then(() => {
+  console.info(`Succeeded in resizing virtual screen: screenId=${screenId}, width=${width}, height=${height}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set screen area mirroring. Code:${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1279,7 +1384,7 @@ Stops extended mode. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description                |
 | ------------ | ------------------- | --- |--------------------|
-| expandScreen | Array&lt;number&gt; | Yes  | IDs of the extended screens. Each ID is an integer. The size of the expandScreen array cannot exceed 1000.|
+| expandScreen | Array&lt;number&gt; | Yes  | IDs of the extended screens. Each ID is an integer. The size of the **expandScreen** array cannot exceed 1000.|
 
 **Return value**
 
@@ -1364,13 +1469,14 @@ Defines virtual screen parameters.
 | name      | string   | No  | No  | Name of a virtual screen.              |
 | width     | number   | No  | No  | Width of the virtual screen, in px. The value must be an integer.|
 | height    | number   | No  | No  | Height of the virtual screen, in px. The value must be an integer.|
-| density   | number   | No  | No  | Density of the virtual screen, in px. The value must be a floating-point number.|
+| density   | number   | No  | No  | Density of the virtual screen. The value must be a floating point number.|
 | surfaceId | string   | No  | No  | Surface ID of the virtual screen.       |
-| supportsFocus<sup>22+</sup> | boolean | No| Yes | Whether the virtual screen is focusable. **true** if focusable, **false** otherwise. The default value is **true**.|
+| supportsFocus<sup>22+</sup> | boolean | No| Yes | Whether the virtual screen is focusable. **true** if focusable; **false** otherwise. The default value is **true**.|
+| userId<sup>24+</sup> | number | No| Yes | User ID of the virtual screen, which is an integer. The default value is **-1**.<br>**Device behavior differences**: This parameter takes effect only on car devices. If being used on other device types, it does not take effect and no error is reported.|
 
 ## Screen
 
-Implements a Screen instance.
+Defines the [physical screen](../../displaymanager/display-terminology.md#physical-screen) instance.
 
 Before calling any API in Screen, you must use [getAllScreens()](#screengetallscreens) or [createVirtualScreen()](#screencreatevirtualscreen) to obtain a Screen instance.
 
@@ -1390,13 +1496,14 @@ Before calling any API in Screen, you must use [getAllScreens()](#screengetallsc
 | activeModeIndex   | number                                         | Yes  | No  | Index of the active screen mode. The current value and value range of this parameter vary according to the screen resolution, refresh rate, and device hardware. The value is an integer.|
 | orientation       | [Orientation](#orientation)                     | Yes  | No  | Screen orientation.      |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | Yes  | No  | Source mode of the screen.    |
-| serialNumber<sup>15+</sup> | string        | Yes  | Yes  | Serial number of the extended screen. By default, the value is an empty string.<br> **Device behavior differences**: This API can be called on 2-in-1 devices but is unavailable for other devices. |       
+| serialNumber<sup>15+</sup> | string        | Yes  | Yes  | Serial number of the extended screen. By default, the value is an empty string.|
+| densityDpi | number        | Yes  | Yes  | Physical pixel density of the screen, that is, the number of pixels per inch.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ### setOrientation
 
 setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the screen orientation. This API uses an asynchronous callback to return the result.
+Sets the screen orientation. This API uses an asynchronous callback to return the result. The screen orientation changes only when the specified orientation complies with the [application rotation policy](../../quick-start/module-configuration-file.md#abilities) (you can configure the application rotation policy by setting the **orientation** field in the **abilities** tag in the **module.json5** file). If the specified orientation does not comply with the application rotation policy, the screen orientation does not change and no exception is thrown.
 
 **System API**: This is a system API.
 
@@ -1462,7 +1569,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 setOrientation(orientation: Orientation): Promise&lt;void&gt;
 
-Sets the screen orientation. This API uses a promise to return the result.
+Sets the screen orientation. This API uses a promise to return the result. The screen orientation changes only when the specified orientation complies with the [application rotation policy](../../quick-start/module-configuration-file.md#abilities) (you can configure the application rotation policy by setting the **orientation** field in the **abilities** tag in the **module.json5** file). If the specified orientation does not comply with the application rotation policy, the screen orientation does not change and no exception is thrown.
 
 **System API**: This is a system API.
 
@@ -1524,6 +1631,73 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
   });
 }).catch((err: BusinessError) => {
   console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+});
+```
+
+### setOrientation
+
+setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions): Promise\<void>
+
+Sets the screen orientation. This API uses a promise to return the result.
+
+You can use the **orientationOptions** parameter to specify whether to use an animation during rotation and whether to ignore the rotation lock of the system window.
+
+The screen orientation changes only when the specified orientation complies with the application rotation policy (which can be set using the **orientation** field of **abilities** in the **module.json5** file). If the specified orientation does not comply with the application rotation policy, the screen orientation does not change and no exception is thrown.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Parameters**
+
+| Name     | Type                       | Mandatory| Description      |
+| ----------- | --------------------------- | ---- | ---------- |
+| orientation | [Orientation](#orientation) | Yes  | Screen orientation.|
+| orientationOptions | [OrientationOptions](#orientationoptions) | No| Optional parameters for setting the screen orientation. By default, the screen rotates with an animation and the rotation lock of the system window is not ignored.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+| 1400003 | This display manager service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let orientationOptions : screen.OrientationOptions = {
+  needAnimation: true,
+  ignoreRotationLock: false,
+};
+
+let screenClass: screen.Screen | null = null;
+let screensPromise: Promise<Array<screen.Screen>> = screen.getAllScreens();
+screensPromise.then((data: Array<screen.Screen>) => {
+  if (data.length > 0) {
+    screenClass = data[0];
+    let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL, orientationOptions);
+    promise.then(() => {
+      console.info('Succeeded in setting the vertical orientation with orientationOptions.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the vertical orientation with orientationOptions. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code:${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1860,3 +2034,20 @@ Describes the rectangle information.
 | top     | number   | No  | No  | Y coordinate of the vertex in the top-left corner of the rectangle, in px. The value must be an integer.|
 | width   | number   | No  | No  | Width of the rectangle, in px. The value must be an integer.            |
 | height  | number   | No  | No  | Height of the rectangle, in px. The value must be an integer.            |
+
+## OrientationOptions
+
+Sets optional parameters for the screen orientation.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+| Name       | Type| Read-Only| Optional| Description                                              |
+| ----------- | -------- | ---- | ---- | -------------------------------------------------- |
+| needAnimation          | boolean   | No  | Yes  |  Whether to rotate with an animation. The value **true** indicates that the screen rotates with an animation, and **false** indicates the opposite. The default value is **true**.| 
+| ignoreRotationLock     | boolean   | No  | Yes  |  Whether to ignore the rotation lock. The value **true** indicates that the screen rotation is allowed even if some system windows lock the screen rotation. The value **false** indicates that the screen rotation is not allowed when system windows lock the screen rotation. The default value is **false**.<br> **Device behavior differences**: This field takes effect only on PCs/2-in-1 devices (non-foldable PCs) and other devices in desktop mode. For other devices, it does not take effect and no error is reported.|

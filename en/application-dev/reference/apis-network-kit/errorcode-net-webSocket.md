@@ -19,7 +19,7 @@ Websocket connect failed.
 
 **Description**
 
-This error code is reported if the WebSocket connection fails.
+WebSocket connection failed.
 
 **Possible Causes**
 
@@ -39,7 +39,7 @@ Websocket url error.
 
 **Description**
 
-This error code is reported if the WebSocket URL is incorrect.
+The WebSocket URL is incorrect.
 
 **Possible Causes**
 
@@ -59,7 +59,7 @@ Websocket certificate file does not exist.
 
 **Description**
 
-The WebSocket certificate does not exist.
+The WebSocket certificate is not found.
 
 **Possible Causes**
 
@@ -102,7 +102,7 @@ This error code is reported if the WebSocketServer failed to perform listening o
 
 **Possible Causes**
 
-The IP address in the WebSocketServer server configuration file is invalid.
+The IP address in the WebSocketServer configuration file is invalid.
 
 **Solution**
 
@@ -120,11 +120,29 @@ This error code is reported if the WebSocketServer failed to perform listening o
 
 **Possible Causes**
 
-The port number in the WebSocketServer server configuration file is invalid.
+The port number in the WebSocketServer configuration file is invalid.
 
 **Solution**
 
 Check whether the port number is valid.
+
+## 2302007 Listening Port Already Occupied
+
+**Error Message**
+
+Websocket port already occupied.
+
+**Description**
+
+This error code is reported if the port listened by the WebSocketServer is occupied.
+
+**Possible Causes**
+
+The specified listening port has been occupied by another process.
+
+**Solution**
+
+Replace the port with an idle one.
 
 ## 2302998 Domain Access Denied
 

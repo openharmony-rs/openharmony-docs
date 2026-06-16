@@ -20,7 +20,7 @@
 
 使用@media来引入查询语句，具体规则如下：
 
-```
+```css
 @media [media-type] [and|or] [(media-feature)] {
   CSS-Code;
 }
@@ -33,7 +33,7 @@
 >  **说明：**
 >
 >  - 不支持&lt;=，&gt;=，&lt;，&gt;操作符;
->  - api 9开始才支持多重 () 嵌套使用；
+>  - 从API version 9开始，支持多重()嵌套使用；
 >  - media语句整体长度不能超过 512 个字符；
 >  - 单个media条件长度不能超过32个字符；
 

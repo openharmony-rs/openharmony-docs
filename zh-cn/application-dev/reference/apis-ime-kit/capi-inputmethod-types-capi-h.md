@@ -1,14 +1,14 @@
 # inputmethod_types_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
-提供了输入法相关的类型定义。
+提供了输入法相关的类型定义，包含键盘状态、回车键功能类型，光标移动方向等。
 
 **引用文件：** <inputmethod/inputmethod_types_capi.h>
 
@@ -182,7 +182,7 @@ enum InputMethod_ErrorCode
 | 枚举项 | 描述 |
 | -- | -- |
 | IME_ERR_OK = 0 | 成功。 |
-| IME_ERR_UNDEFINED = 1 | 查询失败。 |
+| IME_ERR_UNDEFINED = 1 | 未定义错误。 |
 | IME_ERR_PARAMCHECK = 401 | 参数检查失败。 |
 | IME_ERR_PACKAGEMANAGER = 12800001 | 包管理异常。 |
 | IME_ERR_IMENGINE = 12800002 | 输入法应用异常。 |

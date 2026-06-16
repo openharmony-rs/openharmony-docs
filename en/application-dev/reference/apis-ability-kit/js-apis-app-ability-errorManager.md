@@ -105,7 +105,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
+| 16200001 | If the caller is invalid. |
 
 **Example**
     
@@ -156,8 +156,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
-| 16300004 | The observer does not exist. |
+| 16200001 | If the caller is invalid. |
+| 16300004 | If the observer does not exist. |
 
 **Example**
     
@@ -357,7 +357,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
+| 16200001 | If the caller is invalid. |
 
 **Example**
 
@@ -409,7 +409,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
+| 16200001 | If the caller is invalid. |
 
 **Example**
     
@@ -537,8 +537,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
-| 16300004 | The observer does not exist. |
+| 16200001 | If the caller is invalid. |
+| 16300004 | If the observer does not exist. |
 
 **Example**
     
@@ -592,8 +592,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-| 16200001 | The caller has been released. |
-| 16300004 | The observer does not exist. |
+| 16200001 | If the caller is invalid. |
+| 16300004 | If the observer does not exist. |
 
 **Example**
     
@@ -671,7 +671,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 16300004 | The observer does not exist. |
+| 16300004 | If the observer does not exist. |
 
 **Example**
     
@@ -799,7 +799,7 @@ Defines an observer for the main thread freeze event of the application. It is u
 
 type GlobalObserver = (reason: GlobalError) => void
 
-Defines an exception observer, which can be used as the input parameter of [errorManager.on('globalErrorOccurred')](#errormanageronglobalerroroccurred18) and [errorManager.on('globalUnhandledRejectionDetected')](#errormanageronglobalunhandledrejectiondetected18) to listen for event processing events of the main thread of the current application.
+Defines an exception observer that can be used as an input parameter for [errorManager.on('globalErrorOccurred')](#errormanageronglobalerroroccurred18) and [errorManager.on('globalUnhandledRejectionDetected')](#errormanageronglobalunhandledrejectiondetected18) to monitor event processing on the main thread of the current application.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

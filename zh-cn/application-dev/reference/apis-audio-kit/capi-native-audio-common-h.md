@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -83,6 +83,8 @@ enum OH_AudioRingerMode
 **描述**
 
 定义铃音模式。
+
+**设备行为差异：** 当该接口在无振动器件设备中被设置为振动模式时，将不会产生振动效果。
 
 **起始版本：** 20
 

@@ -4,11 +4,11 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
-The **FileUri** module provides APIs for manipulating file Uniform Resource Identifiers (URIs).<br> It supports URI-path conversion, validity verification, and conversion of pointed files or paths.<br> It is mainly used to verify the URI format and convert URIs. When files are shared between applications, the application sandbox path is converted into a URI based on specific rules.<br> You must ensure that all input parameters of the API are valid. The converted URI will be output regardless of whether it exists or not.
+The **FileUri** module provides APIs for manipulating file Uniform Resource Identifiers (URIs).<br> It supports conversion between file URIs and paths, and verifies the validity of file URIs.<br> It is mainly used to verify the URI format and convert URIs. When files are shared between applications, the application sandbox path is converted into a URI based on specific rules.<br> You must ensure that all input parameters of the API are valid. The converted URI will be output regardless of whether it exists or not.
 
 **System capability**: SystemCapability.FileManagement.AppFileService
 

@@ -1,12 +1,12 @@
 # @ohos.file.cloudSync (Device-Cloud Sync)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @zsyztt; @Hermits; @reminder2352-->
-<!--Designer: @yunlanying-->
-<!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Owner: @Hermits; @reminder2352-->
+<!--Designer: @oh_create_jiawei-->
+<!--Tester: @zsyztt-->
+<!--Adviser: @jinqiuheng-->
 
-The **cloudSync** module provides the device-cloud synchronization capabilities for applications. You can use the APIs to start or stop device-cloud synchronization and start or stop the download of images.
+The **cloudSync** module provides the device-cloud sync capabilities for applications. You can use the APIs to start or stop device-cloud sync and start or stop the download of images.
 
 > **NOTE**
 >
@@ -42,7 +42,7 @@ Enumerates the device-cloud sync errors.
 
 - In the current phase, **NETWORK_UNAVAILABLE** is returned only when the mobile data network and Wi-Fi are unavailable. If the mobile data network is available, the synchronization can be performed normally.
 - During the sync process, if the battery level is lower than 10% in non-charging scenarios, **BATTERY_LEVEL_LOW** will be return when the current upload is complete.
-- When sync is being triggered, if the battery level is lower than 10% in non-charging scenarios, sync is not allowed and an error code will be returned by **start()**.
+- When sync is being triggered, if the battery level is lower than 10% in non-charging scenarios, sync is not allowed.
 - If the cloud space is insufficient when a file is uploaded, the upload will fail and there is no such a file in the cloud.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -125,11 +125,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  let fileSync = new cloudSync.FileSync()
-  ```
+```ts
+let fileSync = new cloudSync.FileSync()
+```
 
-### on<sup>12+</sup>
+### on('progress')<sup>12+</sup>
 
 on(event: 'progress', callback: Callback\<SyncProgress>): void
 
@@ -142,7 +142,7 @@ Registers a listener for the device-cloud sync progress.
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | event | string | Yes  | Event type. The value is **progress**, which indicates the sync progress event.|
-| callback | Callback\<[SyncProgress](#syncprogress12)> | Yes  | Callback used to return the sync progress information.|
+| callback | Callback\<[SyncProgress](#syncprogress12)> | Yes  | Callback used to return the sync progress.|
 
 **Error codes**
 
@@ -155,16 +155,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  let fileSync = new cloudSync.FileSync();
-  let callback = (pg: cloudSync.SyncProgress) => {
-    console.info("file sync state: " + pg.state + "error type:" + pg.error);
-  }
+```ts
+let fileSync = new cloudSync.FileSync();
+let callback = (pg: cloudSync.SyncProgress) => {
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+}
 
-  fileSync.on('progress', callback);
-  ```
+fileSync.on('progress', callback);
+```
 
-### off<sup>12+</sup>
+### off('progress')<sup>12+</sup>
 
 off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
@@ -190,17 +190,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  let fileSync = new cloudSync.FileSync();
+```ts
+let fileSync = new cloudSync.FileSync();
 
-  let callback = (pg: cloudSync.SyncProgress) => {
-    console.info("file sync state: " + pg.state + "error type:" + pg.error);
-  }
+let callback = (pg: cloudSync.SyncProgress) => {
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+}
 
-  fileSync.on('progress', callback);
+fileSync.on('progress', callback);
 
-  fileSync.off('progress', callback);
-  ```
+fileSync.off('progress', callback);
+```
 
 ### start<sup>12+</sup>
 
@@ -230,23 +230,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  let callback = (pg: cloudSync.SyncProgress) => {
-    console.info("file sync state: " + pg.state + "error type:" + pg.error);
-  }
+let callback = (pg: cloudSync.SyncProgress) => {
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+}
 
-  fileSync.on('progress', callback);
+fileSync.on('progress', callback);
 
-  fileSync.start().then(() => {
-    console.info("start sync successfully");
-  }).catch((err: BusinessError) => {
-    console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileSync.start().then(() => {
+  console.info("start sync successfully");
+}).catch((err: BusinessError) => {
+  console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### start<sup>12+</sup>
 
@@ -260,7 +260,7 @@ Starts device-cloud sync of a file. This API uses an asynchronous callback to re
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to start device-cloud sync.|
 
 **Error codes**
 
@@ -276,19 +276,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  fileSync.start((err: BusinessError) => {
-    if (err) {
-      console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("start sync successfully");
-    }
-  });
-  ```
+fileSync.start((err: BusinessError) => {
+  if (err) {
+    console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start sync successfully");
+  }
+});
+```
 
 ### stop<sup>12+</sup>
 
@@ -304,7 +304,7 @@ Calling **stop** will stop the sync process. To resume the sync, call [start](#s
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -317,17 +317,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  fileSync.stop().then(() => {
-    console.info("stop sync successfully");
-  }).catch((err: BusinessError) => {
-    console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileSync.stop().then(() => {
+  console.info("stop sync successfully");
+}).catch((err: BusinessError) => {
+  console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### stop<sup>12+</sup>
 
@@ -343,7 +343,7 @@ Calling **stop** will stop the sync process. To resume the sync, call [start](#s
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to stop device-cloud sync.|
 
 **Error codes**
 
@@ -356,19 +356,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  fileSync.stop((err: BusinessError) => {
-    if (err) {
-      console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("stop sync successfully");
-    }
-  });
-  ```
+fileSync.stop((err: BusinessError) => {
+  if (err) {
+    console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop sync successfully");
+  }
+});
+```
 
 ### getLastSyncTime<sup>12+</sup>
 
@@ -382,7 +382,7 @@ Obtains the last sync time. This API uses a promise to return the result.
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;number&gt; | Promise used to return the last sync time obtained.|
+| Promise&lt;number&gt; | Promise used to return the last sync time.|
 
 **Error codes**
 
@@ -395,19 +395,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  fileSync.getLastSyncTime().then((timeStamp: number) => {
-    let date = new Date(timeStamp);
-    console.info("get last sync time successfully:"+ date);
-  }).catch((err: BusinessError) => {
-    console.error("get last sync time failed with error message: " + err.message + ", error code: " + err.code);
-  });
+fileSync.getLastSyncTime().then((timeStamp: number) => {
+  let date = new Date(timeStamp);
+  console.info("get last sync time successfully: "+ date);
+}).catch((err: BusinessError) => {
+  console.error("get last sync time failed with error message: " + err.message + ", error code: " + err.code);
+});
 
-  ```
+```
 
 ### getLastSyncTime<sup>12+</sup>
 
@@ -421,7 +421,7 @@ Obtains the last sync time. This API uses an asynchronous callback to return the
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the last sync time obtained.|
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to obtain the last sync time.|
 
 **Error codes**
 
@@ -434,20 +434,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
-    if (err) {
-      console.error("get last sync time with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      let date = new Date(timeStamp);
-      console.info("get last sync time successfully:"+ date);
-    }
-  });
-  ```
+fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
+  if (err) {
+    console.error("get last sync time with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    let date = new Date(timeStamp);
+    console.info("get last sync time successfully: "+ date);
+  }
+});
+```
 
 ## CloudFileCache<sup>11+</sup>
 
@@ -473,11 +473,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  let fileCache = new cloudSync.CloudFileCache();
-  ```
+```ts
+let fileCache = new cloudSync.CloudFileCache();
+```
 
-### on<sup>11+</sup>
+### on('progress')<sup>11+</sup>
 
 on(event: 'progress', callback: Callback\<DownloadProgress>): void
 
@@ -490,7 +490,7 @@ Registers a listener for the download progress of a file from the Drive Kit.
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | event | string | Yes  | Event. The value is **progress**, which indicates the download progress event of a cloud file.|
-| callback | Callback\<[DownloadProgress](#downloadprogress11)> | Yes  | Callback for the download progress event of a file from the Drive Kit.|
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | Yes  | Callback used to return the file download progress.|
 
 **Error codes**
 
@@ -503,23 +503,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let callback = (pg: cloudSync.DownloadProgress) => {
-    console.info("download state: " + pg.state);
-  };
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (pg: cloudSync.DownloadProgress) => {
+  console.info("download state: " + pg.state);
+};
 
-  try {
-    fileCache.on('progress', callback);
-  } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Error code: ${error.code}, message: ${error.message}`);
-  }
-  ```
+try {
+  fileCache.on('progress', callback);
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
+```
 
-### on<sup>20+</sup>
+### on('batchDownload')<sup>20+</sup>
 
 on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): void
 
@@ -532,7 +532,7 @@ Registers a listener for the batch download of a file from the Drive Kit.
 | Name  | Type                                                             | Mandatory| Description                                                         |
 | -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------- |
 | event    | string                                                            | Yes  | Event type. The value is **'batchDownload'**, indicating the batch download event.|
-| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | Yes  | Callback for the batch download event of a file from the Drive Kit.                               |
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | Yes  | Callback used to return the download progress of a file.                               |
 
 **Error codes**
 
@@ -545,28 +545,28 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let callback = (data: cloudSync.MultiDownloadProgress) => {
-    console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-    if (data.state == cloudSync.State.COMPLETED) {
-      console.info('Batch download finished.');
-    } else if (data.state == cloudSync.State.FAILED) {
-      console.info(`Batch download stopped, error type: ${data.errType}.`);
-    }
-  };
-
-  try {
-    fileCache.on('batchDownload', callback);
-  } catch (e) {
-    let error = e as BusinessError;
-    console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.COMPLETED) {
+    console.info('Batch download finished.');
+  } else if (data.state == cloudSync.State.FAILED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
   }
-  ```
+};
 
-### off<sup>11+</sup>
+try {
+  fileCache.on('batchDownload', callback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### off('progress')<sup>11+</sup>
 
 off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
@@ -579,7 +579,7 @@ Removes the specified callback from the device-cloud file cache progress.
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | event | string | Yes  | Event type. The value is **progress**, which indicates the sync progress event.|
-| callback | Callback\<[DownloadProgress](#downloadprogress11)> | No  | Callback for the download progress event of a file from the Drive Kit. If this parameter is not specified, this API unregisters all callbacks for the download progress event.|
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | No  | Callback used to return the file download progress. If this parameter is not specified, this API unregisters all callbacks for the download progress event.|
 
 **Error codes**
 
@@ -592,29 +592,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
+let fileCache = new cloudSync.CloudFileCache();
 
-  let callback = (pg: cloudSync.DownloadProgress) => {
-    console.info("download state: " + pg.state);
-  }
+let callback = (pg: cloudSync.DownloadProgress) => {
+  console.info("download state: " + pg.state);
+}
 
-  try {
-    fileCache.on('progress', callback);
-    fileCache.off('progress', callback);
-  } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Error code: ${error.code}, message: ${error.message}`);
-  }
-  ```
+try {
+  fileCache.on('progress', callback);
+  fileCache.off('progress', callback);
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
+```
 
-### off<sup>20+</sup>
+### off('batchDownload')<sup>20+</sup>
 
 off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): void
 
-Removes the listener added via the [on](#on20) API for file batch downloads.
+Removes the listener added via the [on](#onbatchdownload20) API for file batch downloads.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -623,7 +623,7 @@ Removes the listener added via the [on](#on20) API for file batch downloads.
 | Name  | Type                                                             | Mandatory| Description                                                                                                   |
 | -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
 | event    | string                                                            | Yes  | Event type. The value is **'batchDownload'**, indicating the batch download event.                                      |
-| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | No  | Callback for the batch download of a file from the Drive Kit. If this parameter is set, the specified callback will be canceled; otherwise, all currently subscribed callbacks of the same event type will be canceled.|
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | No  | Callback used to return the download progress of a file. If this parameter is set, the specified callback will be canceled; otherwise, all currently subscribed callbacks of the same event type will be canceled.|
 
 **Error codes**
 
@@ -636,28 +636,28 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let callback = (pg: cloudSync.MultiDownloadProgress) => {
-    console.info("download state: " + pg.state);
-  }
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (pg: cloudSync.MultiDownloadProgress) => {
+  console.info("download state: " + pg.state);
+}
 
-  try {
-    fileCache.on('batchDownload', callback);
-    fileCache.off('batchDownload', callback);
-  } catch (e) {
-    let error = e as BusinessError;
-    console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
-  }
-  ```
+try {
+  fileCache.on('batchDownload', callback);
+  fileCache.off('batchDownload', callback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ### start<sup>11+</sup>
 
 start(uri: string): Promise&lt;void&gt;
 
-Starts to download a file from the Drive Kit to the local device. This API uses a promise to return the result.
+Starts downloading a file from the Drive Kit to the local device. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -671,7 +671,7 @@ Starts to download a file from the Drive Kit to the local device. This API uses 
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -687,35 +687,35 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  try {
-    fileCache.on('progress', (pg: cloudSync.DownloadProgress) => {
-      console.info("download state:" + pg.state);
-    });
-  } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Error code: ${error.code}, message: ${error.message}`);
-  }
-
-  fileCache.start(uri).then(() => {
-    console.info("start download successfully");
-  }).catch((err: BusinessError) => {
-    console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+try {
+  fileCache.on('progress', (pg: cloudSync.DownloadProgress) => {
+    console.info("download state: " + pg.state);
   });
-  ```
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
+
+fileCache.start(uri).then(() => {
+  console.info("start download successfully");
+}).catch((err: BusinessError) => {
+  console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### start<sup>11+</sup>
 
 start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Starts to download a file from the Drive Kit to the local device. This API uses an asynchronous callback to return the result.
+Starts downloading a file from the Drive Kit to the local device. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -724,7 +724,7 @@ Starts to download a file from the Drive Kit to the local device. This API uses 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | uri | string | Yes  | URI of the file to download.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to start downloading a cloud file asynchronously.|
 
 **Error codes**
 
@@ -740,22 +740,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  fileCache.start(uri, (err: BusinessError) => {
-    if (err) {
-      console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("start download successfully");
-    }
-  });
-  ```
+fileCache.start(uri, (err: BusinessError) => {
+  if (err) {
+    console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start download successfully");
+  }
+});
+```
 
 ### startBatch<sup>20+</sup>
 
@@ -794,26 +794,26 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  try {
-    fileCache.on('batchDownload', (pg: cloudSync.MultiDownloadProgress) => {
-      console.info(`batch download state: ${pg.state}`);
-    });
-  } catch (e) {
-    let error = e as BusinessError;
-    console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
-  }
-
-  let uriList: Array<string> = [];
-  fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
-    console.info(`start batch download successfully, taskId: ${downloadId}`);
-  }).catch((err: BusinessError) => {
-    console.error(`start download failed with error message: ${err.message}, error code: ${err.code}`);
+let fileCache = new cloudSync.CloudFileCache();
+try {
+  fileCache.on('batchDownload', (pg: cloudSync.MultiDownloadProgress) => {
+    console.info(`batch download state: ${pg.state}`);
   });
-  ```
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
+}
+
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
+  console.info(`start batch download successfully, taskId: ${downloadId}`);
+}).catch((err: BusinessError) => {
+  console.error(`start download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ### stop<sup>11+</sup>
 
@@ -836,7 +836,7 @@ When **stop()** is called, the current file download process terminates, and dow
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -851,20 +851,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  fileCache.stop(uri, true).then(() => {
-    console.info("stop download successfully");
-  }).catch((err: BusinessError) => {
-    console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileCache.stop(uri, true).then(() => {
+  console.info("stop download successfully");
+}).catch((err: BusinessError) => {
+  console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### stop<sup>11+</sup>
 
@@ -881,7 +881,7 @@ When **stop()** is called, the current file download process terminates, and dow
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | uri | string | Yes  | URI of the file to download.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to stop downloading a cloud file asynchronously.|
 
 **Error codes**
 
@@ -896,22 +896,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  fileCache.stop(uri, (err: BusinessError) => {
-    if (err) {
-      console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("stop download successfully");
-    }
-  });
-  ```
+fileCache.stop(uri, (err: BusinessError) => {
+  if (err) {
+    console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop download successfully");
+  }
+});
+```
 
 ### stopBatch<sup>20+</sup>
 
@@ -948,28 +948,28 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let taskId = -1;
-  let uriList: Array<string> = [];
-  let fileCache = new cloudSync.CloudFileCache();
-  fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
-    taskId = downloadId;
-    console.info("start batch download successfully");
+let taskId = -1;
+let uriList: Array<string> = [];
+let fileCache = new cloudSync.CloudFileCache();
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
+  taskId = downloadId;
+  console.info("start batch download successfully");
+}).catch((err: BusinessError) => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+
+let needStop = true;
+if (needStop && taskId > 0) {
+  fileCache.stopBatch(taskId, true).then(() => {
+    console.info("stop batch download successfully");
   }).catch((err: BusinessError) => {
-    console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+    console.error(`stop batch download failed with error message: ${err.message}, error code: ${err.code}`);
   });
-
-  let needStop = true;
-  if (needStop && taskId > 0) {
-    fileCache.stopBatch(taskId, true).then(() => {
-      console.info("stop batch download successfully");
-    }).catch((err: BusinessError) => {
-      console.error(`stop batch download failed with error message: ${err.message}, error code: ${err.code}`);
-    });
-  }
-  ```
+}
+```
 
 ### cleanFileCache<sup>20+</sup>
 
@@ -1001,22 +1001,22 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  try {
-    fileCache.cleanFileCache(uri);
-  } catch (err) {
-    let error:BusinessError = err as BusinessError;
-    console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
-  } 
+try {
+  fileCache.cleanFileCache(uri);
+} catch (err) {
+  let error:BusinessError = err as BusinessError;
+  console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
+}
 
-  ```
+```
 
 ## DownloadErrorType<sup>11+</sup>
 
@@ -1100,35 +1100,35 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let taskId = -1;
-  let failedList: Array<cloudSync.FailedFileInfo> = [];
-  let fileCache = new cloudSync.CloudFileCache();
-  let callback = (data: cloudSync.MultiDownloadProgress) => {
-    console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-    if (data.state == cloudSync.State.FAILED) {
-      console.info(`Batch download stopped, error type: ${data.errType}.`);
-      failedList = data.getFailedFiles();
-    }
-  };
-
-  try {
-    fileCache.on('batchDownload', callback);
-  } catch (e) {
-    let error = e as BusinessError;
-    console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+let taskId = -1;
+let failedList: Array<cloudSync.FailedFileInfo> = [];
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.FAILED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
+    failedList = data.getFailedFiles();
   }
+};
 
-  let uriList: Array<string> = [];
-  fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
-    taskId = downloadId;
-    console.info("start batch download successfully");
-  }).catch((err: BusinessError) => {
-    console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
-  });
-  ```
+try {
+  fileCache.on('batchDownload', callback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
+  taskId = downloadId;
+  console.info("start batch download successfully");
+}).catch((err: BusinessError) => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ### getSuccessfulFiles<sup>20+</sup>
 
@@ -1154,39 +1154,39 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let finishedList: Array<string> = [];
-  let fileCache = new cloudSync.CloudFileCache();
-  let callback = (data: cloudSync.MultiDownloadProgress) => {
-    console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-    if (data.state == cloudSync.State.COMPLETED) {
-      console.info(`Batch download stopped, error type: ${data.errType}.`);
-      finishedList = data.getSuccessfulFiles();
-    }
-  };
-
-  try {
-    fileCache.on('batchDownload', callback);
-  } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+let finishedList: Array<string> = [];
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.COMPLETED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
+    finishedList = data.getSuccessfulFiles();
   }
+};
 
-  let uriList: Array<string> = [];
-  fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
-    console.info(`start batch download successfully, taskId: ${downloadId}`);
-  }).catch((err: BusinessError) => {
-    console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
-  });
-  ```
+try {
+  fileCache.on('batchDownload', callback);
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
+  console.info(`start batch download successfully, taskId: ${downloadId}`);
+}).catch((err: BusinessError) => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ## cloudSync.registerChange<sup>12+</sup>
 
 registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData&gt;): void
 
-Subscribes to the change of a file.
+Subscribes to the change of a file. The callback returns the changed data.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1212,22 +1212,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  let onCallback1 = (changeData: cloudSync.ChangeData) => {
-    if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-      //file had added, do something
-    } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-      //file had removed, do something
-    }
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+let onCallback1 = (changeData: cloudSync.ChangeData) => {
+  if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
+    // file has been added, do something
+  } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
+    // file has been removed, do something
   }
-  cloudSync.registerChange(uri, false, onCallback1);
-  // Unregister the listener.
-  cloudSync.unregisterChange(uri);
-  ```
+}
+cloudSync.registerChange(uri, false, onCallback1);
+// Unregister the listener.
+cloudSync.unregisterChange(uri);
+```
 
 ## cloudSync.unregisterChange<sup>12+</sup>
 
@@ -1257,22 +1257,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  let onCallback1 = (changeData: cloudSync.ChangeData) => {
-    if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-      //file had added, do something
-    } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-      //file had removed, do something
-    }
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+let onCallback1 = (changeData: cloudSync.ChangeData) => {
+  if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
+    // file has been added, do something
+  } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
+    // file has been removed, do something
   }
-  cloudSync.registerChange(uri, false, onCallback1);
-  // Unregister the listener.
-  cloudSync.unregisterChange(uri);
-  ```
+}
+cloudSync.registerChange(uri, false, onCallback1);
+// Unregister the listener.
+cloudSync.unregisterChange(uri);
+```
 
 ## NotifyType<sup>12+</sup>
 
@@ -1310,7 +1310,7 @@ Represents the historical version information of the device-cloud file when the 
 
 | Name    | Type  | Read-Only| Optional| Description|
 | ---------- | ------ | ---- | ---- | ---- |
-| editedTime | number | No  | No  | Time when the file content is modified.|
+| editedTime | number | No  | No  | File content modification timestamp, in milliseconds.|
 | fileSize | number | No  | No  | File size in bytes.|
 | versionId | string | No  | No  | File version.|
 | originalFileName | string | No  | No  | File name of the current version.|
@@ -1321,15 +1321,15 @@ Represents the historical version information of the device-cloud file when the 
 
 Example of configuring the **cloudkit_config.json** file:
 
-  ```json
-  {
-    "cloudKitConfig": {
-      "cloudFileSyncConfig": {
-        "manualConflictResolutionEnable": "true"
-      }
+```json
+{
+  "cloudKitConfig": {
+    "cloudFileSyncConfig": {
+      "manualConflictResolutionEnable": "true"
     }
   }
-  ```
+}
+```
 
 ## VersionDownloadProgress<sup>20+</sup>
 
@@ -1342,7 +1342,7 @@ Represents the download state and progress information of historical version fil
 | Name| Type| Read-Only| Optional| Description|
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [State](#state11) | No  | No  | Download state of the cloud file of the selected version.|
-| progress | number | No  | No  | Download progress.|
+| progress | number | No  | No  | Download progress, in percentage.|
 | errType | [DownloadErrorType](#downloaderrortype11) | No  | No  | Type of the error that occurs when the download fails.|
 
 ## FileVersion<sup>20+</sup>
@@ -1367,9 +1367,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  let fileVersion = new cloudSync.FileVersion();
-  ```
+```ts
+let fileVersion = new cloudSync.FileVersion();
+```
 
 ### getHistoryVersionList<sup>20+</sup>
 
@@ -1406,37 +1406,37 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400002 | Network unavailable. |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileVersion = new cloudSync.FileVersion();
+let fileVersion = new cloudSync.FileVersion();
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  let limit = 10;
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+let limit = 10;
 
-  fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync.HistoryVersion>) => {
-    for(let i = 0, len = versionList.length; i < len; i++) {
-      console.info("get history versionId: " + versionList[i].versionId);
-    }
-  }).catch((err: BusinessError) => {
-    console.error("get history version failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync.HistoryVersion>) => {
+  for(let i = 0, len = versionList.length; i < len; i++) {
+    console.info("get history versionId: " + versionList[i].versionId);
+  }
+}).catch((err: BusinessError) => {
+  console.error("get history version failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### downloadHistoryVersion<sup>20+</sup>
 
 downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt;): Promise&lt;string&gt;
 
-Obtains the content of a file of a specified version based on the version number. You can download a file of a specified version from the cloud to a temporary local path. The application determines whether to replace the original file with the temporary file, or retain or delete the temporary file. This API uses a promise to return the result.
+Obtains the content of a file of a specified version based on the version number. You can download a file of a specified version from the cloud to a temporary local path. The application determines whether to replace the original file with the temporary file, or retain or delete the temporary file. The callback returns the file download progress, and the promise returns the URI of the temporary file of an earlier version.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1446,7 +1446,7 @@ Obtains the content of a file of a specified version based on the version number
 | ---------- | ------ | ---- | ---- |
 | uri | string | Yes  |  File URI.|
 | versionId | string | Yes| Version ID of a file. The format is returned by the [gethistoryversionlist](#gethistoryversionlist20) API.|
-| callback | Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt; | Yes| Callback for download progress.|
+| callback | Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt; | Yes| Callback used to return the download progress.|
 
 **Return value**
 
@@ -1471,32 +1471,32 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileVersion = new cloudSync.FileVersion();
+let fileVersion = new cloudSync.FileVersion();
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  let versionId = '123456'; // The format returned by the getHistoryVersionList method is used as an example.
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+let versionId = '123456'; // The format returned by the getHistoryVersionList method is used as an example.
 
-  let callback = (data: cloudSync.VersionDownloadProgress) => {
-    if (data.state == cloudSync.State.RUNNING) {
-      console.info("download progress: " + data.progress);
-    } else if (data.state == cloudSync.State.FAILED) {
-      console.info("download failed errType: " + data.errType);
-    } else if (data.state == cloudSync.State.COMPLETED) {
-      console.info("download version file success");
-    }
-  };
+let callback = (data: cloudSync.VersionDownloadProgress) => {
+  if (data.state == cloudSync.State.RUNNING) {
+    console.info("download progress: " + data.progress);
+  } else if (data.state == cloudSync.State.FAILED) {
+    console.info("download failed errType: " + data.errType);
+  } else if (data.state == cloudSync.State.COMPLETED) {
+    console.info("download version file success");
+  }
+};
 
-  fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: string) => {
-    console.info("success to begin download, downloadFileUri: " + fileUri);
-  }).catch((err: BusinessError) => {
-    console.error("download history version file failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: string) => {
+  console.info("success to begin download, downloadFileUri: " + fileUri);
+}).catch((err: BusinessError) => {
+  console.error("download history version file failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### replaceFileWithHistoryVersion<sup>20+</sup>
 
@@ -1534,43 +1534,43 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
-| 22400007 | Version file not exist. |
+| 22400007 | The version file specified to replace the original file does not exist. |
 
 **Example**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileVersion = new cloudSync.FileVersion();
+let fileVersion = new cloudSync.FileVersion();
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  let versionId = '123456'; // The format returned by the getHistoryVersionList method is used as an example.
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+let versionId = '123456'; // The format returned by the getHistoryVersionList method is used as an example.
 
-  let callback = (data: cloudSync.VersionDownloadProgress) => {
-    if (data.state == cloudSync.State.RUNNING) {
-      console.info("download progress: " + data.progress);
-    } else if (data.state == cloudSync.State.FAILED) {
-      console.info("download failed errType: " + data.errType);
-    } else if (data.state == cloudSync.State.COMPLETED) {
-      console.info("download version file success");
-    }
-  };
+let callback = (data: cloudSync.VersionDownloadProgress) => {
+  if (data.state == cloudSync.State.RUNNING) {
+    console.info("download progress: " + data.progress);
+  } else if (data.state == cloudSync.State.FAILED) {
+    console.info("download failed errType: " + data.errType);
+  } else if (data.state == cloudSync.State.COMPLETED) {
+    console.info("download version file success");
+  }
+};
 
-  let versionUri = "";
-  fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: string) => {
-    versionUri = fileUri;
-    console.info("success to begin download, downloadFileUri: " + fileUri);
-  }).catch((err: BusinessError) => {
-    console.error(`download history version file failed with error message: ${err.message}, error code: ${err.code}`);
-  });
-  fileVersion.replaceFileWithHistoryVersion(uri, versionUri).then(() => {
-    console.info("replace file with history version success.");
-  }).catch((err: BusinessError) => {
-    console.error("replace file with history version filed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let versionUri = "";
+fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: string) => {
+  versionUri = fileUri;
+  console.info("success to begin download, downloadFileUri: " + fileUri);
+}).catch((err: BusinessError) => {
+  console.error(`download history version file failed with error message: ${err.message}, error code: ${err.code}`);
+});
+fileVersion.replaceFileWithHistoryVersion(uri, versionUri).then(() => {
+  console.info("replace file with history version success.");
+}).catch((err: BusinessError) => {
+  console.error("replace file with history version failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### isFileConflict<sup>20+</sup>
 
@@ -1578,7 +1578,7 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 
 Obtains the version conflict flag of a local file. This API uses a promise to return the result. This API takes effect only when the application is configured for manual conflict resolution. Otherwise, conflicts are automatically resolved during synchronization, and the return value will be **false**.
 
-Once the application is configured for manual conflict resolution, calling this API returns whether the current local file conflicts with the cloud file. The application then prompts the user to handle the conflict. After the conflict is resolved, you need to call the [clearfileconflict](#clearfileconflict20) method to clear the conflict flag and synchronize the file to the cloud.
+Once the application is configured for manual conflict resolution, calling this API returns whether the current local file conflicts with the cloud file. The application then prompts the user to handle the conflict. After the conflict is resolved, you need to call the [clearFileConflict](#clearfileconflict20) method to clear the conflict flag and synchronize the file to the cloud.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1610,21 +1610,21 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileVersion = new cloudSync.FileVersion();
+let fileVersion = new cloudSync.FileVersion();
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  fileVersion.isFileConflict(uri).then((isConflict: boolean) => {
-    console.info("current file is conflict: " + isConflict);
-  }).catch((err: BusinessError) => {
-    console.error("get current file conflict flag failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileVersion.isFileConflict(uri).then((isConflict: boolean) => {
+  console.info("current file is conflict: " + isConflict);
+}).catch((err: BusinessError) => {
+  console.error("get current file conflict flag failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### clearFileConflict<sup>20+</sup>
 
@@ -1662,28 +1662,28 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileVersion = new cloudSync.FileVersion();
+let fileVersion = new cloudSync.FileVersion();
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  let isConflict = false;
-  fileVersion.isFileConflict(uri).then((isConflictRet: boolean) => {
-    isConflict = isConflictRet;
-    console.info("current file is conflict: " + isConflictRet);
-  }).catch((err: BusinessError) => {
-    console.error(`get current file conflict flag failed with error message: ${err.message}, error code: ${err.code}`);
-  });
-  fileVersion.clearFileConflict(uri).then(() => {
-    console.info("clean file conflict flag success");
-  }).catch((err: BusinessError) => {
-    console.error("clean file conflict flag failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let isConflict = false;
+fileVersion.isFileConflict(uri).then((isConflictRet: boolean) => {
+  isConflict = isConflictRet;
+  console.info("current file is conflict: " + isConflictRet);
+}).catch((err: BusinessError) => {
+  console.error(`get current file conflict flag failed with error message: ${err.message}, error code: ${err.code}`);
+});
+fileVersion.clearFileConflict(uri).then(() => {
+  console.info("clean file conflict flag success");
+}).catch((err: BusinessError) => {
+  console.error("clean file conflict flag failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSync.getCoreFileSyncState<sup>20+</sup>
 
@@ -1716,26 +1716,26 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900004  | Interrupted system call. |
 | 13900010  | Try again. |
 | 13900012  | Permission denied by the file system. |
-| 13900020  | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 13900020  | Invalid argument. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 13900031  | Function not implemented. |
 | 14000002  | Invalid URI. |
-| 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. |
+| 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  try {
-    let state = cloudSync.getCoreFileSyncState(uri);
-  } catch (err) {
-    let error:BusinessError = err as BusinessError;
-    console.error(`getCoreFileSyncState failed with error ${error.code}, message is ${error.message}`);
-  }
-  ```
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+try {
+  let state = cloudSync.getCoreFileSyncState(uri);
+} catch (err) {
+  let error:BusinessError = err as BusinessError;
+  console.error(`getCoreFileSyncState failed with error ${error.code}, message is ${error.message}`);
+}
+```
 
 ## FileState<sup>20+</sup>
 

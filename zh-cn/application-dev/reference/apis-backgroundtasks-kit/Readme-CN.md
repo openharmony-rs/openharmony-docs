@@ -2,10 +2,10 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 - ArkTS API<!--background-tasks-arkts-->
   - [@ohos.reminderAgentManager (后台代理提醒)](js-apis-reminderAgentManager.md)
@@ -17,12 +17,13 @@
   - [@ohos.reminderAgentManager (后台代理提醒)(系统接口)](js-apis-reminderAgentManager-sys.md)
   - [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)(系统接口)](js-apis-resourceschedule-backgroundTaskManager-sys.md)
   - [@ohos.resourceschedule.deviceStandby (设备待机模块)(系统接口)](js-apis-resourceschedule-deviceStandby-sys.md)
-  - [@ohos.resourceschedule.usageStatistics (设备使用信息统计)(系统接口)](js-apis-resourceschedule-deviceUsageStatistics-sys.md) 
+  - [@ohos.resourceschedule.usageStatistics (设备使用信息统计)(系统接口)](js-apis-resourceschedule-deviceUsageStatistics-sys.md)
+  - [@ohos.resourceschedule.workScheduler (延迟任务调度)(系统接口)](js-apis-resourceschedule-workScheduler-sys.md)
   <!--DelEnd-->
   - application<!--background-tasks-arkts-application-->
-    - [WorkSchedulerExtensionContext](js-apis-inner-application-WorkSchedulerExtensionContext.md)
+    - [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)
     <!--Del-->
-    - [WorkSchedulerExtensionContext(系统接口)](js-apis-inner-application-WorkSchedulerExtensionContext-sys.md)
+    - [WorkSchedulerExtensionContext（系统接口）](js-apis-WorkSchedulerExtensionContext-sys.md)
     <!--DelEnd-->
   - 已停止维护的接口<!--background-tasks-arkts-dep-->
     - [@ohos.backgroundTaskManager (后台任务管理)](js-apis-backgroundTaskManager.md)

@@ -33,8 +33,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [camera.h](capi-camera-h.md) | 声明相机的基本概念。 |
-| [camera_device.h](capi-camera-device-h.md) | 声明相机的基本概念。 |
+| [camera.h](capi-camera-h.md) | 定义相机的基本接口和功能。 |
+| [camera_device.h](capi-camera-device-h.md) | 定义相机的基本接口和功能。 |
 | [camera_input.h](capi-camera-input-h.md) | 声明相机输入概念。 |
 | [camera_manager.h](capi-camera-manager-h.md) | 声明相机管理器的概念。 |
 | [capture_session.h](capi-capture-session-h.md) | 声明捕获会话概念。 |

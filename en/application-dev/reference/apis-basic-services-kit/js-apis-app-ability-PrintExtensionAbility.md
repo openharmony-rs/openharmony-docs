@@ -30,7 +30,8 @@ Called to initialize the print extension when the system connects to the extensi
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type** | **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](../apis-ability-kit/js-apis-application-want.md#want) | Yes| Parameters required for invoking the print page.|
 
@@ -99,7 +100,8 @@ Called when the device connects to the specified printer.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type** | **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | number | Yes| Printer ID.|
 
@@ -125,7 +127,8 @@ Called when the device disconnects from the specified printer.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type** | **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | number | Yes| Printer ID.|
 
@@ -138,6 +141,98 @@ export default class HWPrintExtension extends PrintExtensionAbility {
     onDisconnectPrinter(printerId: number): void {
         console.info('onDisconnectPrinter enter');
         // ...
+    }
+}
+```
+
+### onStartPrintJob<sup>24+</sup>
+
+onStartPrintJob(jobInfo: print.PrintJob): void
+
+Called when the specified print job starts.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| jobInfo | [print.PrintJob](js-apis-print.md#printjob24) | Yes| Information about the print job.|
+
+**Example**
+
+```ts
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onStartPrintJob(jobInfo: print.PrintJob): void {
+        console.info('onStartPrintJob, jobId is: ' + jobInfo.jobId);
+        // ...
+    }
+}
+```
+
+### onCancelPrintJob<sup>24+</sup>
+
+onCancelPrintJob(jobInfo: print.PrintJob): void
+
+Called when the specified print job is canceled.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| jobInfo | [print.PrintJob](js-apis-print.md#printjob24) | Yes| Information about the print job.|
+
+**Example**
+
+```ts
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onCancelPrintJob(jobInfo: print.PrintJob): void {
+        console.info('onCancelPrintJob, jobId is: ' + jobInfo.jobId);
+        // ...
+    }
+}
+```
+
+### onRequestPrinterCapability<sup>24+</sup>
+
+onRequestPrinterCapability(printerId: number): print.PrinterCapability
+
+Called when a request is sent to check the capability of the specified printer.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| printerId | number | Yes| Printer ID.|
+
+**Return value**
+| **Type** | **Description**|
+| -------- | -------- |
+| [print.PrinterCapability](js-apis-print.md#printercapability24) | Capability of the printer.|
+
+**Example**
+
+```ts
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onRequestPrinterCapability(printerId: number): print.PrinterCapability {
+        console.info('onRequestPrinterCapability enter');
+        // ...
+        let tmp : print.PrinterCapability = {
+            colorMode : 1,
+            duplexMode : 1,
+            pageSize : []
+        };
+        return tmp;
     }
 }
 ```

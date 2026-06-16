@@ -5,11 +5,11 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 ## 概述
 
-提供rawfile目录相关功能。功能包括遍历和关闭rawfile目录。
+提供rawfile目录相关功能，包括遍历和关闭rawfile目录。
 
 **引用文件：** <rawfile/raw_dir.h>
 

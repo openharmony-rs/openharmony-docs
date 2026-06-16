@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ForEach接口基于数组循环渲染，需要与容器组件配合使用，且接口返回的组件应当是允许包含在ForEach父容器组件中的子组件。例如，ListItem组件要求ForEach的父容器组件必须为[List组件](../../reference/apis-arkui/arkui-ts/ts-container-list.md)。
+ForEach接口基于数组循环渲染，需要与容器组件配合使用，且接口返回的组件应当是允许包含在ForEach父容器组件中的子组件。例如，[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)组件要求ForEach的父容器组件必须为[List组件](../../reference/apis-arkui/arkui-ts/ts-container-list.md)。
 
 API参数说明见：[ForEach API参数说明](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)。
 
@@ -972,11 +972,12 @@ struct GenerationKeyChildItem {
 }
 ```
 
-开发者定义`keyGenerator`函数，应用正常启动：  
+开发者定义`keyGenerator`函数，应用正常启动：
+
 ![ForEach-StateVarNoRender](figures/ForEach-defined-keyGenerator2.PNG)  
 
 使用默认的键值生成函数，应用发生jscrash： 
-```
+``` js
 Error message:@Component 'Parent'[4]: ForEach id 7: use of default id generator function not possible on provided data structure. Need to specify id generator function (ForEach 3rd parameter). Application Error!
 Stacktrace:
     ...

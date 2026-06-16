@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 > **说明：**
 >
@@ -27,7 +27,7 @@ Invalid resource ID.
 
 **处理步骤**
 
-1. 排查是否为以下场景：[HAR开启混淆](../../quick-start/har-package.md#编译)、中间码HAR、字节码HAR、跨HAP/HSP包。这四种场景推荐使用[getStringByName()](js-apis-resource-manager.md#getstringbyname9)等方法通过名称获取资源。
+1. 排查是否为以下场景：[HAR开启混淆](../../quick-start/har-package.md#混淆配置)、中间码HAR、字节码HAR、跨HAP/HSP包。这四种场景推荐使用[getStringByName()](js-apis-resource-manager.md#getstringbyname9)等方法通过名称获取资源。
 
 2. 检查传入参数的资源id是否已有。  
 

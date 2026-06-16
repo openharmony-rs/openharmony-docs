@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行JavaScript代码调试调优
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -80,7 +80,7 @@ const char *srcCallNative = R"JS(getVM())JS";
 <!-- @[oh_jsvm_get_vm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getvm/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
-```
+```txt
 JSVM OH_JSVM_GetVM: success
 ```
 
@@ -146,8 +146,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
 const char *srcCallNative = R"JS(getHeapStatistics())JS";
 ```
 <!-- @[oh_jsvm_get_heap_statistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getheapstatistics/src/main/cpp/hello.cpp) -->
-预计的输出结果：
-```
+预计的输出结果（虚拟机堆的统计数据，会实时发生变化）：
+```txt
 JSVM API heap totalHeapSize: 1597440
 JSVM API heap totalHeapSizeExecutable: 0
 JSVM API heap totalPhysicalSize: 1323008

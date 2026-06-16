@@ -30,6 +30,7 @@
 
 除支持组件[通用样式](js-components-common-styles.md)外，还支持如下样式：
 
+<!--Table: 20%; 15%; 15%; 10%; 40%-->
 | 名称                           | 类型           | 默认值       | 必填 | 描述                                                         |
 | ------------------------------ | -------------- | ------------ | ---- | ------------------------------------------------------------ |
 | flex-direction                 | string         | row          | 否   | flex容器主轴方向。可选项有：<br/>-&nbsp;column：垂直方向从上到下。<br/>-&nbsp;row：水平方向从左到右。 |
@@ -46,7 +47,7 @@
 | align-items<sup>6+</sup>       | string         | -            | 否   | 设置容器中元素交叉轴上的对齐方式：<br/>-&nbsp;stretch：Flex容器内容在交叉轴方向被拉伸到与容器相同的高度或宽度；<br/>-&nbsp;flex-start：Flex布局容器内元素向交叉轴起点对齐；<br/>-&nbsp;flex-end：Flex布局容器内元素向交叉轴终点对齐；<br/>-&nbsp;center：Flex布局容器内元素在交叉轴居中对齐；<br/>-&nbsp;baseline：如Flex布局纵向排列，则该值与'flex-start'等效。横向布局时，内容元素存在文本时按照文本基线对齐，否则底部对齐。 |
 | scrollbar-color<sup>6+</sup>   | &lt;color&gt;  | -            | 否   | 设置滚动条的颜色。                                           |
 | scrollbar-width<sup>6+</sup>   | &lt;length&gt; | -            | 否   | 设置滚动条的宽度。                                           |
-| overscroll-effect<sup>6+</sup> | string         | -            | 否   | 设置滚动边缘效果，可选值为：<br/>-&nbsp;spring：弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹；<br/>-&nbsp;fade：渐隐物理动效，滑动到边缘后展示一个波浪形的渐隐，根据速度和滑动距离的变化渐隐也会发送一定的变化；<br/>-&nbsp;none：滑动到边缘后无效果 |
+| overscroll-effect<sup>6+</sup> | string         | -            | 否   | 设置滚动边缘效果，可选值为：<br/>-&nbsp;spring：弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。<br/>-&nbsp;fade：渐隐物理动效，滑动到边缘后展示一个波浪形的渐隐，根据速度和滑动距离的变化渐隐也会发生一定的变化。<br/>-&nbsp;none：滑动到边缘后无效果。 |
 
 
 ## 事件
@@ -133,7 +134,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001127285076](figures/zh-cn_image_0000001127285076.png)
+   ![div](figures/div.png)
 
 2. Flex Wrap样式
    ```html
@@ -180,7 +181,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001213396721](figures/zh-cn_image_0000001213396721.png)
+   ![flexWrap](figures/flexWrap.png)
 
 3. Grid样式
 
@@ -246,7 +247,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001213276619](figures/zh-cn_image_0000001213276619.png)
+   ![Grid样式](figures/Grid样式.png)
 
 4. 拖拽<sup>7+</sup>
    ```html
@@ -296,7 +297,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001213284927](figures/zh-cn_image_0000001213284927.gif)
+   ![drag](figures/drag.gif)
 
    ```html
    <!-- xxx.hml -->
@@ -359,7 +360,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001168005276](figures/zh-cn_image_0000001168005276.gif)
+   ![div01](figures/div01.gif)
 
 5. 手指捏合<sup>7+</sup>
    ```html
@@ -415,4 +416,4 @@
    }
    ```
 
-   ![zh-cn_image_0000001168440692](figures/zh-cn_image_0000001168440692.gif)
+   ![div02](figures/div02.gif)

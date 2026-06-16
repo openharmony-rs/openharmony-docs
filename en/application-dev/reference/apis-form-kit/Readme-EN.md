@@ -1,9 +1,9 @@
 # Form Kit<!--form-kit-->
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 - ArkTS APIs<!--form-arkts-->
@@ -27,7 +27,7 @@
     - [LiveFormExtensionContext](js-apis-application-LiveFormExtensionContext.md)
     <!--Del-->
     - [FormExtensionContext (System API)](js-apis-inner-application-formExtensionContext-sys.md)
-    - [LiveFormExtensionContext (for System Applications Only)](js-apis-application-LiveFormExtensionContext-sys.md)
+    - [LiveFormExtensionContext (System API)](js-apis-application-LiveFormExtensionContext-sys.md)
    <!--DelEnd-->
 - APIs No Longer Maintained<!--form-arkts-dep-->
   - [@ohos.application.formBindingData (formBindingData)](js-apis-application-formBindingData.md)
@@ -40,4 +40,4 @@
   - [@ohos.application.formInfo (FormInfo) (System API)](js-apis-application-formInfo-sys.md)
   <!--DelEnd-->
 - Error Codes<!--form-arkts-errcode-->
-  - [Form Error Codes](errorcode-form.md)
+  - [Widget Error Codes](errorcode-form.md)

@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **batteryStatistics** module provides APIs for querying software and hardware power consumption statistics.
 
@@ -100,7 +100,7 @@ batteryStats.getBatteryStats((err: Error, data : batteryStats.BatteryStatsInfo[]
 
 getAppPowerValue(uid: number): number
 
-Obtains the power consumption of an application.
+Obtains the power consumption of an application, in unit of mAh.
 
 **System API**: This is a system API.
 
@@ -159,7 +159,7 @@ Obtains the proportion of the power consumption of an application.
 
 | Type  | Description                     |
 | ------ | ------------------------- |
-| number | Proportion of the power consumption of an application with this UID.|
+| number | Proportion of the power consumption of an application with this UID. The value ranges from 0.00 to 1.00.|
 
 **Error codes**
 
@@ -186,7 +186,7 @@ try {
 
 getHardwareUnitPowerValue(type: ConsumptionType): number
 
-Obtains the power consumption of a hardware unit according to the consumption type.
+Obtains the power consumption of a hardware unit according to the consumption type, in unit of mAh.
 
 **System API**: This is a system API.
 
@@ -245,7 +245,7 @@ Obtains the proportion of the power consumption of a hardware unit according to 
 
 | Type  | Description                              |
 | ------ | ---------------------------------- |
-| number | Proportion of the power consumption of the hardware unit corresponding to the power consumption type.|
+| number | Proportion of the power consumption of the hardware unit corresponding to the power consumption type. The value ranges from 0.00 to 1.00.|
 
 **Error codes**
 
@@ -280,9 +280,9 @@ Describes the device power consumption information.
 
 | Name | Type                               | Read-Only| Optional| Description                  |
 | ----- | ----------------------------------- | ---- | ---- | ---------------------- |
-| uid   | number                              | No  | No  | UID related to power consumption information.   |
-| type  | [ConsumptionType](#consumptiontype) | No  | No  | Power consumption type.  |
-| power | number                              | No  | No  | Power consumption, in unit of mAh.|
+| uid   | number                              | No  | No  | The uid related to power consumption information.   |
+| type  | [ConsumptionType](#consumptiontype) | No  | No  | The power consumption type.  |
+| power | number                              | No  | No  | The power consumption, in unit of mAh.       |
 
 ## ConsumptionType
 

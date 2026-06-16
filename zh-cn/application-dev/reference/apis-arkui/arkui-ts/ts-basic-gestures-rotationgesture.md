@@ -10,7 +10,7 @@
 
 >  **说明：**
 >
->  从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 接口
@@ -38,6 +38,8 @@ RotationGesture(options?: RotationGestureHandlerOptions)
 设置旋转手势事件。与[RotationGesture](#rotationgesture-1)相比，options参数新增了isFingerCountLimited参数，表示是否检查触摸屏幕的手指数量。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,6 +128,8 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。与[on
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -178,4 +182,4 @@ struct RotationGestureExample {
 }
 ```
 
- ![zh-cn_image_0000001174264372](figures/zh-cn_image_0000001174264372.png)
+ ![rotationGesture](figures/rotationGesture.png)

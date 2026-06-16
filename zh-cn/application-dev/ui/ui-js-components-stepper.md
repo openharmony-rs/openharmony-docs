@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 当一个任务需要多个步骤时，可以使用stepper组件展示当前进展。具体用法请参考[stepper API](../reference/apis-arkui/arkui-js/js-components-container-stepper.md)。
@@ -44,7 +44,7 @@ text{
 }
 ```
 
-![zh-cn_image_0000001234289455](figures/zh-cn_image_0000001234289455.gif)
+![stepper-Component](figures/stepper-Component.gif)
 
 
 ## 设置index属性
@@ -83,7 +83,7 @@ text{
 }
 ```
 
-![zh-cn_image_0000001234011019](figures/zh-cn_image_0000001234011019.gif)
+![Setting-Index](figures/Setting-Index-1.gif)
 
 通过设置label属性，自定义stepper-item的提示按钮。
 
@@ -144,7 +144,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001163531210](figures/zh-cn_image_0000001163531210.gif)
+![Setting-Index](figures/Setting-Index.gif)
 
 
 ## 设置样式
@@ -188,7 +188,7 @@ text{
 }
 ```
 
-![zh-cn_image_0000001234130975](figures/zh-cn_image_0000001234130975.png)
+![Setting-Styles-3](figures/Setting-Styles-3.png)
 
 
 ## 添加事件
@@ -267,14 +267,14 @@ export default {
     })
   },
   stepperChange(e){
-    console.log("stepperChange"+e.index)
+    console.info("stepperChange"+e.index)
     promptAction.showToast({
       // index表示当前步骤的序号
       message: 'Previous step: '+e.prevIndex+"-------Current step:"+e.index
     })
   },
   stepperNext(e){
-    console.log("stepperNext"+e.index)
+    console.info("stepperNext"+e.index)
     promptAction.showToast({
       // pendingIndex表示将要跳转的序号
       message: 'Current step:'+e.index+"-------Next step:"+e.pendingIndex
@@ -283,11 +283,11 @@ export default {
     return index;
   },
   stepperBack(e){
-    console.log("stepperBack"+e.index)
+    console.info("stepperBack"+e.index)
     var index = {pendingIndex: e.pendingIndex }
     return index;
   }
 }
 ```
 
-![zh-cn_image_0000001189089950](figures/zh-cn_image_0000001189089950.gif)
+![Adding-Events-1](figures/Adding-Events-1.gif)

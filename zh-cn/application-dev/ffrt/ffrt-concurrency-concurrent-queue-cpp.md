@@ -2,10 +2,10 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -16,8 +16,9 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 
 ## 示例：银行服务系统
 
-举例实现一个银行服务系统，每个客户向系统提交一个服务请求，可以区分普通用户和VIP用户，VIP用户的服务请求可以优先得到执行。
-银行系统中有2个窗口，可以并行取出用户提交的服务请求办理。可以利用FFRT的并行队列范式做如下建模：
+举例实现一个银行服务系统，每个客户向系统提交一个服务请求，可以区分普通用户和VIP用户，VIP用户的服务请求可以优先得到执行。银行系统中有2个窗口，可以并行取出用户提交的服务请求办理。
+
+可以利用FFRT的并行队列范式做如下建模：
 
 - **排队逻辑**：并行队列。
 - **服务窗口**：并行队列的并发度，同时也对应FFRT Worker数量。
@@ -25,10 +26,23 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 
 实现代码如下所示：
 
-```cpp
-#include <iostream>
+<!-- @[concurrent_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue_cpp.h) -->
+
+``` C
 #include <unistd.h>
+#include "hilog/log.h"
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
+
+#undef LOG_TAG
+#define LOG_TAG "ConcurrentCppTag"
+```
+
+<!-- @[concurrent_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue_cpp.cpp) -->
+
+``` C++
+
+const int SLEEP_TIME = 100 * 1000;
+const int BANK_CONCURRENCY = 2;
 
 class BankQueueSystem {
 private:
@@ -39,13 +53,13 @@ public:
     {
         queue_ = std::make_unique<ffrt::queue>(
             ffrt::queue_concurrent, name, ffrt::queue_attr().max_concurrency(concurrency));
-        std::cout << "bank system has been initialized" << std::endl;
+        OH_LOG_INFO(LOG_APP, "bank system has been initialized");
     }
 
     ~BankQueueSystem()
     {
         queue_ = nullptr;
-        std::cout << "bank system has been destroyed" << std::endl;
+        OH_LOG_INFO(LOG_APP, "bank system has been destroyed");
     }
 
     // 开始排队，即提交队列任务
@@ -69,19 +83,19 @@ public:
 
 void BankBusiness()
 {
-    usleep(100 * 1000);
-    std::cout << "saving or withdraw ordinary customer" << std::endl;
+    usleep(SLEEP_TIME);
+    OH_LOG_INFO(LOG_APP, "saving or withdraw ordinary customer");
 }
 
 void BankBusinessVIP()
 {
-    usleep(100 * 1000);
-    std::cout << "saving or withdraw VIP" << std::endl;
+    usleep(SLEEP_TIME);
+    OH_LOG_INFO(LOG_APP, "saving or withdraw VIP");
 }
 
-int main()
+int ConcurrentQueueCppExec()
 {
-    BankQueueSystem bankQueue("Bank", 2);
+    BankQueueSystem bankQueue("Bank", BANK_CONCURRENCY);
 
     auto task1 = bankQueue.Enter(BankBusiness, "customer1", ffrt_queue_priority_low, 0);
     auto task2 = bankQueue.Enter(BankBusiness, "customer2", ffrt_queue_priority_low, 0);

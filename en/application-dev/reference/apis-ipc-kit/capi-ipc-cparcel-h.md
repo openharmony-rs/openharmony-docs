@@ -10,6 +10,8 @@
 
 Provides C APIs for IPC serialization and deserialization.
 
+**File to include**: <IPCKit/ipc_cparcel.h>
+
 **Library**: libipc_capi.so
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -24,7 +26,7 @@ Provides C APIs for IPC serialization and deserialization.
 
 | Name| typedef Keyword| Description|
 | ---- | ------------- | ---- |
-| [OHIPCParcel](capi-ohipcparcel.md) | OHIPCParcel | Defines an IPC serialized object.|
+| [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)| OHIPCParcel | Defines an IPC serialized object.|
 | [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) | OHIPCRemoteProxy | Defines an IPC remote proxy object.|
 | [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) | OHIPCRemoteStub | Defines an IPC remote service object.|
 
@@ -50,6 +52,14 @@ Provides C APIs for IPC serialization and deserialization.
 | [int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)](#oh_ipcparcel_readint32) | - | Reads an int32_t value from an **OHIPCParcel** object.|
 | [int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)](#oh_ipcparcel_writeint64) | - | Writes an int64_t value to an **OHIPCParcel** object.|
 | [int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)](#oh_ipcparcel_readint64) | - | Reads an int64_t value from an **OHIPCParcel** object.|
+| [int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)](#oh_ipcparcel_writeuint8) | - | Writes a uint8_t value to an **OHIPCParcel** object.|
+| [int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)](#oh_ipcparcel_readuint8) | - | Reads a uint8_t value from an **OHIPCParcel** object.|
+| [int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)](#oh_ipcparcel_writeuint16) | - | Writes a uint16_t value to an **OHIPCParcel** object.|
+| [int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)](#oh_ipcparcel_readuint16) | - | Reads a uint16_t value from an **OHIPCParcel** object.|
+| [int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)](#oh_ipcparcel_writeuint32) | - | Writes a uint32_t value to an **OHIPCParcel** object.|
+| [int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)](#oh_ipcparcel_readuint32) | - | Reads a uint32_t value from an **OHIPCParcel** object.|
+| [int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)](#oh_ipcparcel_writeuint64) | - | Writes a uint64_t value to an **OHIPCParcel** object.|
+| [int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)](#oh_ipcparcel_readuint64) | - | Reads a uint64_t value from an **OHIPCParcel** object.|
 | [int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)](#oh_ipcparcel_writefloat) | - | Writes a float value to an **OHIPCParcel** object.|
 | [int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)](#oh_ipcparcel_readfloat) | - | Reads a float value from an **OHIPCParcel** object.|
 | [int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)](#oh_ipcparcel_writedouble) | - | Writes a double value to an **OHIPCParcel** object.|
@@ -73,7 +83,7 @@ Provides C APIs for IPC serialization and deserialization.
 ### OH_IPC_MemAllocator()
 
 ```C
-typedef void* (OH_IPC_MemAllocator)(int32_t len)
+typedef void* (*OH_IPC_MemAllocator)(int32_t len)
 ```
 
 **Description**
@@ -138,7 +148,7 @@ Destroys an **OHIPCParcel** object.
 
 ### OH_IPCParcel_GetDataSize()
 
-``` C
+```C
 int OH_IPCParcel_GetDataSize(const OHIPCParcel *parcel)
 ```
 
@@ -172,7 +182,7 @@ int OH_IPCParcel_GetWritableBytes(const OHIPCParcel *parcel)
 
 Obtains the number of bytes that can be written to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -198,7 +208,7 @@ int OH_IPCParcel_GetReadableBytes(const OHIPCParcel *parcel)
 
 Obtains the number of bytes that can be read from an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -246,7 +256,7 @@ int OH_IPCParcel_GetWritePosition(const OHIPCParcel *parcel)
 
 Obtains the position where data is written in an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -353,7 +363,7 @@ int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)
 
 Reads an int8_t value from an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -380,7 +390,7 @@ int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)
 
 Writes an int16_t value to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -407,7 +417,7 @@ int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int16_t *value)
 
 Reads an int16_t value from an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -434,7 +444,7 @@ int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)
 
 Writes an int32_t value to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -461,7 +471,7 @@ int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)
 
 Reads an int32_t value from an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -488,7 +498,7 @@ int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)
 
 Writes an int64_t value to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -515,7 +525,7 @@ int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)
 
 Reads an int64_t value from an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -525,6 +535,222 @@ Reads an int64_t value from an **OHIPCParcel** object.
 | ------ | ---- |
 | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
 | int64_t *value | Pointer to the buffer for holding the read data. It cannot be NULL.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.|
+
+### OH_IPCParcel_WriteUint8()
+
+```C
+int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)
+```
+
+**Description**
+
+Writes a uint8_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint8_t value | Value to write.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.|
+
+### OH_IPCParcel_ReadUint8()
+
+```C
+int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)
+```
+
+**Description**
+
+Reads a uint8_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint8_t *value | Pointer to the buffer for holding the read data. It cannot be NULL.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.|
+
+### OH_IPCParcel_WriteUint16()
+
+```C
+int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)
+```
+
+**Description**
+
+Writes a uint16_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint16_t value | Value to write.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.|
+
+### OH_IPCParcel_ReadUint16()
+
+```C
+int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)
+```
+
+**Description**
+
+Reads a uint16_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint16_t *value | Pointer to the buffer for holding the read data. It cannot be NULL.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.|
+
+### OH_IPCParcel_WriteUint32()
+
+```C
+int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)
+```
+
+**Description**
+
+Writes a uint32_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint32_t value | Value to write.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.|
+
+### OH_IPCParcel_ReadUint32()
+
+```C
+int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)
+```
+
+**Description**
+
+Reads a uint32_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint32_t *value | Pointer to the buffer for holding the read data. It cannot be NULL.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.|
+
+### OH_IPCParcel_WriteUint64()
+
+```C
+int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)
+```
+
+**Description**
+
+Writes a uint64_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint64_t value | Value to write.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.|
+
+### OH_IPCParcel_ReadUint64()
+
+```C
+int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)
+```
+
+**Description**
+
+Reads a uint64_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint64_t *value | Pointer to the buffer for holding the read data. It cannot be NULL.|
 
 **Returns**
 
@@ -542,7 +768,7 @@ int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)
 
 Writes a float value to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -569,7 +795,7 @@ int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)
 
 Reads a float value from an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -596,7 +822,7 @@ int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)
 
 Writes a double value to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -623,7 +849,7 @@ int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)
 
 Reads a double value from an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -650,7 +876,7 @@ int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)
 
 Writes a string including a string terminator to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -677,7 +903,7 @@ const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)
 
 Reads a string from an **OHIPCParcel** object. You can obtain the length of the string from **strlen**.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -703,7 +929,7 @@ int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t
 
 Writes data of the specified length from the memory to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -731,7 +957,7 @@ const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)
 
 Reads memory information of the specified length from an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -758,7 +984,7 @@ int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stu
 
 Writes an **OHIPCRemoteStub** object to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -785,7 +1011,7 @@ OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)
 
 Reads the **OHIPCRemoteStub** object from an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -811,7 +1037,7 @@ int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *p
 
 Writes an **OHIPCRemoteProxy** object to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -838,7 +1064,7 @@ OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)
 
 Reads the **OHIPCRemoteProxy** object from an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -864,7 +1090,7 @@ int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)
 
 Writes a file descriptor to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -891,7 +1117,7 @@ int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)
 
 Reads a file descriptor from an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -918,7 +1144,7 @@ int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)
 
 Appends data to an **OHIPCParcel** object.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -945,7 +1171,7 @@ int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)
 
 Writes an interface token to an **OHIPCParcel** object for interface identity verification.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
@@ -972,7 +1198,7 @@ int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int
 
 Reads an interface token from an **OHIPCParcel** object for interface identity verification.
 
-**System capability**: SystemCapability.Communication.IPC
+**System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 

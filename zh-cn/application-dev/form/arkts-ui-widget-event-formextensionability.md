@@ -1,9 +1,9 @@
 # 卡片传递消息给应用（message事件）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 在卡片页面中可以通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口触发message事件拉起[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)，通过[onFormEvent](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)接口回调通知，以完成点击卡片控件后传递消息给应用的功能，然后由FormExtensionAbility刷新卡片内容，下面是这种刷新方式的简单示例。
@@ -76,8 +76,8 @@
 
 - 在EntryFormAbility.ets中，导入相关模块
 
-    ```ets
-    //entry/src/main/ets/entryformability/EntryFormAbility.ts
+    ```TypeScript
+    // entry/src/main/ets/entryformability/EntryFormAbility.ts
     import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
     import { Configuration, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -98,10 +98,12 @@
       onFormEvent(formId: string, message: string): void {
         // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
         hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+    
         class FormDataClass {
           title: string = 'Title Update.'; // 和卡片布局中对应
           detail: string = 'Description update success.'; // 和卡片布局中对应
         }
+    
         // 请根据业务替换为实际刷新的卡片数据
         let formData = new FormDataClass();
         let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
@@ -114,6 +116,7 @@
     
       // ...
     }
+    
     ```
   
   运行效果如下图所示。

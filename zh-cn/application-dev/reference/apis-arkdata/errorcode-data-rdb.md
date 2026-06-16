@@ -2,13 +2,15 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+>
+> 错误码排查请参考：[关系型数据库错误码常见场景及排查步骤](../../database/data-faq.md#关系型数据库错误码常见场景及排查步骤)。
 
 ##  14800000 内部错误
 
@@ -75,19 +77,25 @@ Failed to open or delete the database by an invalid database path.
 
 **错误信息**
 
-Failed to open the database because it is corrupted.
+The current operation failed because the database is corrupted.
 
 **错误描述**
 
-数据库异常，打开失败。
+数据库异常，当前操作失败。
 
 **可能原因**
 
-数据库文件不完整、数据库fd被误操作、数据库内存被踩等。
+1. 文件接口冲突：在数据库使用过程中使用文件接口直接操作数据库。
+2. 文件描述符误用：数据库fd被误操作，存在fd的double close和关闭后使用（use-after-close）问题。
+3. 内存访问异常：内存越界误写入数据库内存，导致数据库异常。
+4. 数据库文件不完整：文件拷贝或下载过程中断，导致文件内容不完整。
+5. 数据库文件不匹配：如：db文件和wal文件不是同一个数据库，导致数据库异常。
 
 **处理步骤**
 
-如果可以接受数据库数据丢失，则可尝试删除数据库后重新创建。否则，需要备份数据库以便恢复。具体操作可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+1. **问题定位**：优先排查使用场景，再查看日志。可在日志中搜索"fdsan"进行排查，详见[fdsan使用指导](../../napi/fdsan.md)。
+
+2. **数据库恢复**：如果可以接受数据库数据丢失，则可尝试删除数据库后重新创建。否则，需要备份数据库以便恢复。具体操作可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 ## 14800012 结果集为空或指定位置不合法
 
@@ -101,7 +109,7 @@ ResultSet is empty or pointer index is out of bounds.
 
 **可能原因**
 
-结果集为空或结果集指定行号超出位置范围[0, m - 1]，m = resultsetV9.rowCount。
+结果集为空或结果集指定行号超出位置范围[0, m - 1]，m = ResultSet.rowCount。
 
 **处理步骤**
 
@@ -111,7 +119,7 @@ ResultSet is empty or pointer index is out of bounds.
 
 **错误信息**
 
-ResultSet is empty or column index is out of bounds.
+Column index is out of bounds.
 
 **错误描述**
 
@@ -119,30 +127,27 @@ ResultSet is empty or column index is out of bounds.
 
 **可能原因**
 
-1. 结果集为空。
-2. 结果集当前行号超出范围[0, m - 1]，m = resultsetV9.rowCount。
-3. 当前列号超出范围[0, n - 1]，n = resultsetV9.columnCount。
-4. 当前列数据类型接口不支持。
+1. 当前列号超出范围[0, n - 1]，n = ResultSet.columnCount。
+2. 当前列数据类型接口不支持。
 
 **处理步骤**
 
-1. 检查结果集是否为空。
-2. 检查结果集当前行号、列号是否超出范围。
-3. 检查当前列数据类型是否支持。
+1. 检查结果集当前列号是否超出范围。
+2. 检查当前列数据类型是否支持。
 
-## 14800014 数据库或结果集关闭
+## 14800014 目标实例已关闭
 
 **错误信息**
 
-The RdbStore or ResultSet is already closed.
+The target instance is already closed.
 
 **错误描述**
 
-数据库或结果集关闭。
+目标实例已关闭。
 
 **可能原因**
 
-RdbStore或者ResultSet等带有close接口的对象，已调用过close或者没有打开成功。
+实例未成功打开，或者所属实例已关闭（如RdbStore、ResultSet对象已调用close方法，Transaction对象已调用commit或rollback方法）。
 
 **处理步骤**
 
@@ -202,6 +207,7 @@ StoreConfig is changed.
 **处理步骤**
 
 保持原配置不变或者用原配置导出数据，删除旧库，用新配置创建新库，数据存入新库。
+
 检查是否使用chmod修改了数据库文件的读写权限，确保当前用户有足够的权限来读写数据库文件。
 
 ## 14800018 查询结果没有数据符合条件
@@ -334,7 +340,7 @@ SQLite数据库文件已锁定。
 
 **可能原因**
 
-1. 同一应用两个进程，例如UIability和datashareability同时打开了同一个数据库，进行增删改操作，或者不同应用的同一个group组内的进程通过group组打开同一个数据库，进行增删改操作。
+1. 同一应用两个进程，例如UIAbility和DataShareExtensionAbility同时打开了同一个数据库，进行增删改操作，或者不同应用的同一个group组内的进程通过group组打开同一个数据库，进行增删改操作。
 2. 参见SQLITE_BUSY的相关错误场景。
 
 **处理步骤**
@@ -551,6 +557,24 @@ SQLite：库使用不正确。
 1. 确保数据库操作之间有适当的同步，比如使用锁或其他同步机制。
 2. 确保数据库连接在使用前是打开的，在结束操作后是关闭的。
 3. 确保所有数据库对象在使用完毕后都已正确释放。
+
+## 14800041 类型转换失败
+
+**错误信息**
+
+Type conversion failed.
+
+**错误描述**
+
+类型转换失败。
+
+**可能原因**
+
+通过resultSet的获取数据时，传入字段的数据类型不匹配。
+
+**处理步骤**
+
+确保传入字段的数据类型与使用的接口匹配。
 
 ## 14800047 WAL文件大小超过默认上限
 

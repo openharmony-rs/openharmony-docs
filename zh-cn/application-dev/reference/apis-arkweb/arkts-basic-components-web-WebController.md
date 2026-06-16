@@ -1,14 +1,14 @@
-# Class (WebController, deprecated)
+# Class (WebController)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebController可以控制Web组件各种行为。一个WebController对象只能控制一个Web组件，且必须在Web组件和WebController绑定后，才能调用WebController上的方法。
+WebController是ArkWeb组件的控制器类，用于控制Web组件的各种行为。一个WebController对象只能与一个Web组件绑定，绑定后开发者可通过该控制器对Web组件进行页面导航（前进/后退/加载）、焦点控制、缩放调整、页面刷新与停止、Cookie管理、JavaScript注入与执行等操作。
 
-从API version 9开始不再维护，建议使用[WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md)代替。
+WebController适用于需要在应用侧对嵌入式Web组件进行主动控制的场景，例如实现浏览器式的前进后退导航、在应用侧与网页侧之间建立JavaScript交互通道、动态加载网页内容或管理Cookie数据。
 
 > **说明：**
 >
@@ -16,7 +16,9 @@
 >
 > - 本Class首批接口从API version 8开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 该组件从API version 9开始废弃，建议使用[WebviewController](./arkts-apis-webview-WebviewController.md)代替。
+>
+> - 示例效果请以真机运行为准。
 
 ## 创建对象
 
@@ -33,7 +35,7 @@ WebController的构造函数。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。并且不再提供新的接口作为替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[constructor<sup>11+</sup>](./arkts-apis-webview-WebviewController.md#constructor11)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -43,7 +45,9 @@ getCookieManager(): WebCookie
 
 获取Web组件cookie管理对象。
 
-从API version 9开始不再维护，建议使用[getCookie](./arkts-apis-webview-WebCookieManager.md#getcookiedeprecated)代替。
+> **说明：**
+>
+> 从API version 9开始支持，从API version 9开始废弃，建议使用[getCookie](./arkts-apis-webview-WebCookieManager.md#getcookiedeprecated)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -78,9 +82,11 @@ getCookieManager(): WebCookie
 
 requestFocus()
 
-使当前web页面获取焦点。
+使当前Web页面获取焦点。
 
-从API version 9开始不再维护，建议使用[requestFocus<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#requestfocus)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[requestFocus<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#requestfocus)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -111,7 +117,9 @@ accessBackward(): boolean
 
 当前页面是否可后退，即当前页面是否有返回历史记录。
 
-从API version 9开始不再维护，建议使用[accessBackward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessbackward)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[accessBackward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessbackward)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -149,7 +157,9 @@ accessForward(): boolean
 
 当前页面是否可前进，即当前页面是否有前进历史记录。
 
-从API version 9开始不再维护，建议使用[accessForward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessforward)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[accessForward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessforward)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -187,7 +197,9 @@ accessStep(step: number): boolean
 
 当前页面是否可前进或者后退给定的step步。
 
-从API version 9开始不再维护，建议使用[accessStep<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessstep)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[accessStep<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#accessstep)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -232,7 +244,9 @@ backward()
 
 按照历史栈，后退一个页面。一般结合accessBackward一起使用。
 
-从API version 9开始不再维护，建议使用[backward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#backward)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[backward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#backward)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -263,7 +277,9 @@ forward()
 
 按照历史栈，前进一个页面。一般结合accessForward一起使用。
 
-从API version 9开始不再维护，建议使用[forward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#forward)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[forward<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#forward)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -294,7 +310,9 @@ deleteJavaScriptRegister(name: string)
 
 删除通过registerJavaScriptProxy注册到window上的指定name的应用侧JavaScript对象。删除后立即生效，无须调用[refresh](#refreshdeprecated)接口。
 
-从API version 9开始不再维护，建议使用[deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -332,7 +350,9 @@ getHitTest(): HitTestType
 
 获取当前被点击区域的元素类型。
 
-从API version 9开始不再维护，建议使用[getHitTest<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#gethittestdeprecated)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getHitTest<sup>(deprecated)</sup>](./arkts-apis-webview-WebviewController.md#gethittestdeprecated)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -368,13 +388,15 @@ getHitTest(): HitTestType
 
 loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })
 
-baseUrl为空时，通过”data“协议加载指定的一段字符串。
+baseUrl为空时，通过“data”协议加载指定的一段字符串。
 
-当baseUrl为”data“协议时，编码后的data字符串将被Web组件作为”data"协议加载。
+当baseUrl为“data”协议时，编码后的data字符串将被Web组件作为“data”协议加载。
 
-当baseUrl为“http/https"协议时，编码后的data字符串将被Web组件以类似loadUrl的方式以非编码字符串处理。
+当baseUrl为“http/https”协议时，编码后的data字符串将被Web组件以类似loadUrl的方式以非编码字符串处理。
 
-从API version 9开始不再维护，建议使用[loadData<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#loaddata)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[loadData<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#loaddata)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -382,11 +404,11 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 
 | 参数名        | 类型   | 必填   | 说明                                     |
 | ---------- | ------ | ---- | ---------------------------------------- |
-| data       | string | 是   | 按照”Base64“或者”URL"编码后的一段字符串。              |
+| data       | string | 是   | 按照“Base64”或者“URL”编码后的一段字符串。              |
 | mimeType   | string | 是   | 媒体类型（MIME）。                              |
-| encoding   | string | 是   | 编码类型，具体为“Base64"或者”URL编码。                |
-| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/"data"协议），并由Web组件赋值给`window.origin`。 |
-| historyUrl | string | 否   | 历史记录URL。非空时，可被历史记录管理，实现前后后退功能。当baseUrl为空时，此属性无效。 |
+| encoding   | string | 是   | 编码类型，具体为“Base64”或者“URL”编码。                |
+| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/“data”协议），并由Web组件赋值给`window.origin`。默认值为空字符串。 |
+| historyUrl | string | 否   | 历史记录URL。默认值为空字符串。非空时，可被历史记录管理，实现前进后退功能。当baseUrl为空时，此属性无效。 |
 
 **示例：**
 
@@ -417,13 +439,15 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 
 loadUrl(options: { url: string | Resource, headers?: Array\<Header\> })
 
-使用指定的http头加载指定的URL。
+使用指定的HTTP头加载指定的URL。
 
 通过loadUrl注入的对象只在当前document有效，即通过loadUrl导航到新的页面会无效。
 
 而通过registerJavaScriptProxy注入的对象，在loadUrl导航到新的页面也会有效。
 
-从API version 9开始不再维护，建议使用[loadUrl<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#loadurl)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[loadUrl<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#loadurl)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -461,7 +485,9 @@ onActive(): void
 
 调用此接口通知Web组件进入前台激活状态。
 
-从API version 9开始不再维护，建议使用[onActive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#onactive)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[onActive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#onactive)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -492,7 +518,9 @@ onInactive(): void
 
 调用此接口通知Web组件进入未激活状态。
 
-从API version 9开始不再维护，建议使用[onInactive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#oninactive)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[onInactive<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#oninactive)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -523,7 +551,9 @@ zoom(factor: number): void
 
 调整当前网页的缩放比例。
 
-从API version 9开始不再维护，建议使用[zoom<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#zoom)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[zoom<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#zoom)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -531,7 +561,7 @@ zoom(factor: number): void
 
 | 参数名    | 类型   | 必填   | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| factor | number | 是    | 基于当前网页所需调整的相对缩放比例，正值为放大，负值为缩小。 |
+| factor | number | 是    | 基于当前网页所需调整的相对缩放比例，当入参为1时为默认加载网页的缩放比例，小于1为缩小，大于1为放大。取值范围(0, 100]。 |
 
 **示例：**
 
@@ -561,7 +591,9 @@ refresh()
 
 调用此接口通知Web组件刷新网页。
 
-从API version 9开始不再维护，建议使用[refresh<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#refresh)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[refresh<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#refresh)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -590,9 +622,11 @@ refresh()
 
 registerJavaScriptProxy(options: { object: object, name: string, methodList: Array\<string\> })
 
-注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refreshdeprecated)接口生效。
+注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注入的对象在页面下一次（重新）加载前不会出现在JavaScript中。
 
-从API version 9开始不再维护，建议使用[registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -671,7 +705,9 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 
 异步执行JavaScript脚本，并通过回调方式返回脚本执行的结果。runJavaScript需要在loadUrl完成后，比如onPageEnd中调用。
 
-从API version 9开始不再维护，建议使用[runJavaScript<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#runjavascript)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[runJavaScript<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#runjavascript)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -680,7 +716,7 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 | 参数名      | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
 | script   | string                   | 是   | JavaScript脚本。                            |
-| callback | (result: string) => void | 否   | 回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。 |
+| callback | (result: string) => void | 否   | 回调执行JavaScript脚本结果。JavaScript脚本若执行失败或无返回值时，返回null。不传入时不进行回调。 |
 
 **示例：**
 
@@ -737,7 +773,9 @@ stop()
 
 停止页面加载。
 
-从API version 9开始不再维护，建议使用[stop<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#stop)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[stop<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#stop)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -768,7 +806,9 @@ clearHistory(): void
 
 删除所有前进后退记录。
 
-从API version 9开始不再维护，建议使用[clearHistory<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#clearhistory)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[clearHistory<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#clearhistory)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

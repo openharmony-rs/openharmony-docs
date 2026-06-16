@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
-<!--Designer: @lizhiqi-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,7 +14,7 @@ typedef struct ArkUI_TextMenuItem ArkUI_TextMenuItem
 
 定义文本菜单项结构体。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 

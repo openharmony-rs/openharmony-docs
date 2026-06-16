@@ -1,8 +1,8 @@
 # native_audiostream_base.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -48,14 +48,17 @@
 | [OH_AudioStream_State](#oh_audiostream_state) | OH_AudioStream_State | 定义音频流的状态。 |
 | [OH_AudioStream_SourceType](#oh_audiostream_sourcetype) | OH_AudioStream_SourceType | 定义音频流使用场景。<br> 通常用来描述音频输入流的使用场景。 |
 | [OH_AudioStream_Event](#oh_audiostream_event) | OH_AudioStream_Event | 定义音频事件。(API20废弃) |
-| [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype) | OH_AudioInterrupt_ForceType | 定义音频中断类型。<br> 当用户监听到音频中断时，将获取此信息。<br> 此类型表示本次音频打断的操作是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint)获取。 |
-| [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint) | OH_AudioInterrupt_Hint | 定义音频中断提示类型。<br> 当用户监听到音频中断时，将获取此信息。<br> 此类型表示根据焦点策略，当前需要对音频流的具体操作（如暂停、调整音量等）。<br> 可以结合[OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype)信息，判断该操作是否已由系统强制执行。 |
+| [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype) | OH_AudioInterrupt_ForceType | 定义音频中断类型。<br> 当用户监听到音频中断时，将获取此信息。<br> 此类型表示本次音频打断的操作是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)获取。 |
+| [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint) | OH_AudioInterrupt_Hint | 定义音频中断提示类型。<br> 当用户监听到音频中断时，将获取此信息。<br> 此类型表示根据焦点策略，当前需要对音频流的具体操作（如暂停、调整音量等）。<br> 可以结合[OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype)信息，判断该操作是否已由系统强制执行。 |
 | [OH_AudioInterrupt_Mode](#oh_audiointerrupt_mode) | OH_AudioInterrupt_Mode | 定义音频中断模式。 |
 | [OH_AudioStream_AudioEffectMode](#oh_audiostream_audioeffectmode) | OH_AudioStream_AudioEffectMode | 定义音效模式。 |
 | [OH_AudioStream_FastStatus](#oh_audiostream_faststatus) | OH_AudioStream_FastStatus | 定义低时延状态。 |
 | [OH_AudioStream_DeviceChangeReason](#oh_audiostream_devicechangereason) | OH_AudioStream_DeviceChangeReason | 流设备变更原因。 |
 | [OH_AudioStream_PrivacyType](#oh_audiostream_privacytype) | OH_AudioStream_PrivacyType | 用于标识对应播放音频流是否支持被其他应用录制。 |
 | [OH_AudioData_Callback_Result](#oh_audiodata_callback_result) | OH_AudioData_Callback_Result | 定义音频数据回调结果。 |
+| [OH_AudioStream_LatencyType](#oh_audiostream_latencytype) | OH_AudioStream_LatencyType | 定义音频时延类型。 |
+| [OH_AudioStream_PlaybackCaptureMode](#oh_audiostream_playbackcapturemode) | OH_AudioStream_PlaybackCaptureMode | 表示内录（录制设备内部应用的声音）的过滤类型，每种过滤类型可录制不同的播放流类型。该API暂不对外支持。 |
+| [OH_AudioStream_PlaybackCaptureStartState](#oh_audiostream_playbackcapturestartstate) | OH_AudioStream_PlaybackCaptureStartState | 定义内录的启动状态，该状态在调用[OH_AudioCapturer_RequestPlaybackCaptureStart](./capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart)函数后异步返回。该API暂不对外支持。 |
 
 ### 函数
 
@@ -64,7 +67,7 @@
 | [typedef void (\*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason)](#oh_audiorenderer_outputdevicechangecallback) | OH_AudioRenderer_OutputDeviceChangeCallback | 输出音频流设备变更的回调函数。 |
 | [typedef void (\*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)](#oh_audiorenderer_onmarkreachedcallback) | OH_AudioRenderer_OnMarkReachedCallback | 到达标记位置时回调。 |
 | [typedef int32_t (\*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize)](#oh_audiorenderer_writedatawithmetadatacallback) | OH_AudioRenderer_WriteDataWithMetadataCallback | 该函数指针将指向用于同时写入音频数据和元数据的回调函数。 |
-| [typedef OH_AudioData_Callback_Result (\*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallback) | OH_AudioRenderer_OnWriteDataCallback | 该函数指针将指向用于写入音频数据的回调函数。<br> 回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。<br> 该函数的返回结果表示填充到缓冲区的数据是否有效。如果结果无效，用户填写的数据将不被播放。<br> 回调函数结束后，音频服务会把audioData指针数据放入队列里等待播放，因此请勿在回调外再次更改audioData指向的数据，且务必保证往audioData填满audioDataSize长度的待播放数据, 否则会导致音频服务播放杂音。<br> 参数audioDataSize可以通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置。 |
+| [typedef OH_AudioData_Callback_Result (\*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallback) | OH_AudioRenderer_OnWriteDataCallback | 该函数指针将指向用于写入音频数据的回调函数。<br> 回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。<br> 该函数的返回结果表示填充到缓冲区的数据是否有效。如果结果无效，用户填写的数据将不被播放。<br> 回调函数结束后，音频服务会把audioData指针数据放入队列里等待播放，因此请勿在回调外再次更改audioData指向的数据，且务必保证往audioData填满audioDataSize长度的待播放数据，否则会导致音频服务播放杂音。<br> 参数audioDataSize可以通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置。<br> 为避免音频播放启动和停止时数据不连续可能出现的杂音，系统通常会在启动和停止时对音频数据做20ms以内的淡入淡出处理。 |
 
 ## 枚举类型说明
 
@@ -263,7 +266,7 @@ enum OH_AudioStream_SourceType
 | AUDIOSTREAM_SOURCE_TYPE_INVALID = -1 | 不合法状态。 |
 | AUDIOSTREAM_SOURCE_TYPE_MIC = 0 | 录音。 |
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_RECOGNITION = 1 | 语音识别。 |
-| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | 播放录音。 |
+| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | 播放录音。<br>**废弃版本：** 12<br>**替代接口：** [OH_AVScreenCapture](../apis-media-kit/capi-avscreencapture-oh-avscreencapture.md) |
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION = 7 | 通话。 |
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE = 10 | 语音消息。<br>**起始版本：** 12 |
 | AUDIOSTREAM_SOURCE_TYPE_CAMCORDER = 13 | 录像。<br>**起始版本：** 13 |
@@ -284,9 +287,11 @@ enum OH_AudioStream_Event
 
 **废弃版本：** 20
 
+**替代接口：** [OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback)
+
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOSTREAM_EVENT_ROUTING_CHANGED = 0 | 音频的路由已更改。<br>**起始版本：** 10<br>**废弃版本：** 20<br>**替代接口：** [OH_AudioRenderer_OutputDeviceChangeCallback](#oh_audiorenderer_outputdevicechangecallback) |
+| AUDIOSTREAM_EVENT_ROUTING_CHANGED = 0 | 音频的路由已更改。 |
 
 ### OH_AudioInterrupt_ForceType
 
@@ -296,14 +301,14 @@ enum OH_AudioInterrupt_ForceType
 
 **描述**
 
-定义音频中断类型。<br> 当用户监听到音频中断时，将获取此信息。<br> 此类型表示本次音频打断的操作是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint)获取。
+定义音频中断类型。<br> 当用户监听到音频中断时，将获取此信息。<br> 此类型表示本次音频打断的操作是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)获取。
 
 **起始版本：** 10
 
 | 枚举项 | 描述 |
 | -- | -- |
 | AUDIOSTREAM_INTERRUPT_FORCE = 0 | 强制打断类型，即具体操作已由系统强制执行。 |
-| AUDIOSTREAM_INTERRUPT_SHARE = 1 | 共享打断类型，即系统不执行具体操作，通过[OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint)提示并建议应用操作，应用可自行决策下一步处理方式。 |
+| AUDIOSTREAM_INTERRUPT_SHARE = 1 | 共享打断类型，即系统不执行具体操作，通过[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)提示并建议应用操作，应用可自行决策下一步处理方式。 |
 
 ### OH_AudioInterrupt_Hint
 
@@ -313,14 +318,14 @@ enum OH_AudioInterrupt_Hint
 
 **描述**
 
-定义音频中断提示类型。<br> 当用户监听到音频中断时，将获取此信息。<br> 此类型表示根据焦点策略，当前需要对音频流的具体操作（如暂停、调整音量等）。<br> 可以结合[OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype)信息，判断该操作是否已由系统强制执行。
+定义音频中断提示类型。<br> 当用户监听到音频中断时，将获取此信息。<br> 此类型表示根据焦点策略，当前需要对音频流的具体操作（如暂停、调整音量等）。<br> 可以结合[OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype)信息，判断该操作是否已由系统强制执行。
 
 **起始版本：** 10
 
 | 枚举项 | 描述 |
 | -- | -- |
 | AUDIOSTREAM_INTERRUPT_HINT_NONE = 0 | 不提示。 |
-| AUDIOSTREAM_INTERRUPT_HINT_RESUME = 1 | 提示音频恢复，应用可主动触发开始渲染或开始采集的相关操作。<br> 此操作无法由系统强制执行，其对应的[OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype)一定为AUDIOSTREAM_INTERRUPT_SHARE类型。 |
+| AUDIOSTREAM_INTERRUPT_HINT_RESUME = 1 | 提示音频恢复，应用可主动触发开始渲染或开始采集的相关操作。<br> 此操作无法由系统强制执行，其对应的[OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype)一定为AUDIOSTREAM_INTERRUPT_SHARE类型。 |
 | AUDIOSTREAM_INTERRUPT_HINT_PAUSE = 2 | 提示音频暂停，暂时失去音频焦点。<br> 后续待焦点可用时，会出现AUDIOSTREAM_INTERRUPT_HINT_RESUME事件。 |
 | AUDIOSTREAM_INTERRUPT_HINT_STOP = 3 | 提示音频停止，彻底失去音频焦点。 |
 | AUDIOSTREAM_INTERRUPT_HINT_DUCK = 4 | 提示音频躲避开始，音频降低音量播放，而不会停止。 |
@@ -416,7 +421,7 @@ enum OH_AudioStream_PrivacyType
 | -- | -- |
 | AUDIO_STREAM_PRIVACY_TYPE_PUBLIC = 0 | 表示音频流可以被其他应用录制或屏幕投射，不包含隐私类型的流。 |
 | AUDIO_STREAM_PRIVACY_TYPE_PRIVATE = 1 | 表示音频流不可以被其他应用录制或屏幕投射。 |
-| AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2 | 表示音频流可以被其他应用录制或屏幕投射，包含隐私类型的流。<br>     例如，在PRIVACY_TYPE_PUBLIC策略下，[AUDIOSTREAM_USAGE_VOICE_COMMUNICATION](#oh_audiostream_usage)类型音频流不会被其他应用录制或屏幕投射。然而，在PRIVACY_TYPE_SHARED策略下，这些音频流将会允许被其他应用录制或屏幕投射。<br>**起始版本：** 21 |
+| AUDIO_STREAM_PRIVACY_TYPE_SHARED = 2 | 表示音频流可以被其他应用录制或屏幕投射，包含隐私类型的流。<br>     例如，在PRIVACY_TYPE_PUBLIC策略下，[AUDIOSTREAM_USAGE_VOICE_COMMUNICATION](capi-native-audiostream-base-h.md#oh_audiostream_usage)类型音频流不会被其他应用录制或屏幕投射。然而，在PRIVACY_TYPE_SHARED策略下，这些音频流将会允许被其他应用录制或屏幕投射。<br>**起始版本：** 21 |
 
 ### OH_AudioData_Callback_Result
 
@@ -434,6 +439,60 @@ enum OH_AudioData_Callback_Result
 | -- | -- |
 | AUDIO_DATA_CALLBACK_RESULT_INVALID = -1 | 表示音频数据回调结果无效，音频数据不播放。 |
 | AUDIO_DATA_CALLBACK_RESULT_VALID = 0 | 表示音频数据回调结果有效，音频数据将被播放。 |
+
+### OH_AudioStream_LatencyType
+
+```c
+enum OH_AudioStream_LatencyType
+```
+
+**描述**
+
+定义音频时延类型。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| AUDIOSTREAM_LATENCY_TYPE_ALL = 0 | 获取包含软件与硬件在内的整体音频处理时延。 |
+| AUDIOSTREAM_LATENCY_TYPE_SOFTWARE = 1 | 获取软件部分的时延，包括软件侧音效处理。 |
+| AUDIOSTREAM_LATENCY_TYPE_HARDWARE = 2 | 获取硬件部分的时延，包括硬件抽象层（HAL） 、驱动与硬件侧音效处理。 |
+
+### OH_AudioStream_PlaybackCaptureMode
+
+```c
+enum OH_AudioStream_PlaybackCaptureMode
+```
+
+**描述**
+
+表示内录（录制设备内部应用的声音）的过滤类型，每种过滤类型可录制不同的播放流类型。该API暂不对外支持。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_DEFAULT = 0x0 | 默认模式。录制大部分音频流，但不包括提示音流和隐私流。<br>**起始版本：** 23 |
+| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_MEDIA = 0x1 | 媒体模式。获取媒体、语音消息和未知流等。<br>**起始版本：** 23 |
+| AUDIOSTREAM_PLAYBACKCAPTURE_MODE_EXCLUDING_SELF = 0x8000 | 排除自身模式。获取除应用自身播放的音频以外的流。<br>**起始版本：** 23 |
+
+### OH_AudioStream_PlaybackCaptureStartState
+
+```c
+enum OH_AudioStream_PlaybackCaptureStartState
+```
+
+**描述**
+
+定义内录的启动状态，该状态在调用[OH_AudioCapturer_RequestPlaybackCaptureStart](./capi-native-audiocapturer-h.md#oh_audiocapturer_requestplaybackcapturestart)函数后异步返回。该API暂不对外支持。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_SUCCESS = 0 | 启动内录成功。<br>**起始版本：** 23 |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_FAILED = 1 | 启动内录失败。原因是请求焦点（根据流类型做优先级的选择）过程中被打断，或发生系统内部错误。<br>**起始版本：** 23 |
+| AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_NOT_AUTHORIZED = 2 | 用户未授权，启动内录失败。<br>**起始版本：** 23 |
 
 
 ## 函数说明
@@ -515,7 +574,7 @@ typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_
 
 **描述**
 
-该函数指针将指向用于写入音频数据的回调函数。<br> 回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。<br> 该函数的返回结果表示填充到缓冲区的数据是否有效。如果结果无效，用户填写的数据将不被播放。<br> 回调函数结束后，音频服务会把audioData指针数据放入队列里等待播放，因此请勿在回调外再次更改audioData指向的数据，且务必保证往audioData填满audioDataSize长度的待播放数据, 否则会导致音频服务播放杂音。<br> 参数audioDataSize可以通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置。
+该函数指针将指向用于写入音频数据的回调函数。<br> 回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。<br> 该函数的返回结果表示填充到缓冲区的数据是否有效。如果结果无效，用户填写的数据将不被播放。<br> 回调函数结束后，音频服务会把audioData指针数据放入队列里等待播放，因此请勿在回调外再次更改audioData指向的数据，且务必保证往audioData填满audioDataSize长度的待播放数据，否则会导致音频服务播放杂音。<br> 参数audioDataSize可以通过[OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback)设置。<br> 为避免音频播放启动和停止时数据不连续可能出现的杂音，系统通常会在启动和停止时对音频数据做20ms以内的淡入淡出处理。
 
 **起始版本：** 12
 
@@ -532,4 +591,6 @@ typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioData_Callback_Result](#oh_audiodata_callback_result) | AUDIO_DATA_CALLBACK_RESULT_INVALID：音频数据回调结果无效，音频数据不播放。<br>         AUDIO_DATA_CALLBACK_RESULT_VALID：音频数据回调结果有效，音频数据将被播放。 |
+| [OH_AudioData_Callback_Result](capi-native-audiostream-base-h.md#oh_audiodata_callback_result) | AUDIO_DATA_CALLBACK_RESULT_INVALID：音频数据回调结果无效，音频数据不播放。<br>         AUDIO_DATA_CALLBACK_RESULT_VALID：音频数据回调结果有效，音频数据将被播放。 |
+
+

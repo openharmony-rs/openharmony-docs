@@ -6,12 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+An image that contains special information can be decoded into a picture object, which generally contains the main picture, auxiliary picture, and metadata. The main picture contains most information about the image and is mainly used to render the image. The auxiliary picture is used to store data related to but different from the main picture, revealing more comprehensive details. The metadata is generally used to store information about the image file. The picture object class is used to read or write picture objects. Before calling any API in Picture, you must use [image.createPicture](arkts-apis-image-f.md#imagecreatepicture13) to create a Picture object.
+
+Images occupy a large amount of memory. When you finish using a Picture instance, call [release](#release13) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 13.
-
-An image that contains special information can be decoded into a picture object, which generally contains the main picture, auxiliary picture, and metadata. The main picture contains most information about the image and is mainly used to render the image. The auxiliary picture is used to store data related to but different from the main picture, revealing more comprehensive details. The metadata is generally used to store information about the image file. The picture object class is used to read or write picture objects. Before calling any API in Picture, you must use [createPicture](arkts-apis-image-f.md#imagecreatepicture13) to create a Picture object.
 
 ## Modules to Import
 
@@ -104,6 +106,69 @@ async function GetHdrComposedPixelmap(pictureObj : image.Picture) {
 }
 ```
 
+## getHdrComposedPixelmapWithOptions<sup>23+</sup>
+
+getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise\<PixelMap | undefined>
+
+Composites an HDR image and returns PixelMap of the image. Composition options (such as PixelMapFormat) can be passed. This API uses a promise to return the result.
+
+The Picture object that calls this API must contain the main picture, gain map, and metadata.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name          | Type                | Mandatory| Description        |
+| ---------------- | -------------------- | ---- | ------------ |
+| options             | [HdrComposeOptions](arkts-apis-image-i.md#hdrcomposeoptions23) | No  | Options for HDR composition.|
+
+**Return value**
+
+| Type                         | Description                       |
+| ----------------------------- | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise, which returns the PixelMap object or **undefined**.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message              |
+| -------- | ---------------------- |
+| 7600201 | Unsupported operation.|
+
+**Example**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
+  if (picture == null) {
+    console.error('picture is null');
+    return;
+  }
+
+  let opt: image.HdrComposeOptions = {
+    desiredPixelFormat: image.PixelMapFormat.RGBA_1010102
+  };
+  let hdrComposedPixelmap: image.PixelMap | undefined = await picture.getHdrComposedPixelmapWithOptions(opt);
+  if (hdrComposedPixelmap == null || hdrComposedPixelmap == undefined) {
+    console.error(`GetHdrComposedPixelmapWithOptions failed`);
+    return;
+  }
+
+  hdrComposedPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
+    if (imageInfo !== null) {
+      console.info(`GetHdrComposedPixelmapWithOptions information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`GetHdrComposedPixelmapWithOptions information failed error.code: ${error.code} ,error.message: ${error.message}`);
+  });
+}
+```
+
 ## getGainmapPixelmap<sup>13+</sup>
 
 getGainmapPixelmap(): PixelMap | null
@@ -163,7 +228,7 @@ Sets an auxiliary picture.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -174,7 +239,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 ```ts
 async function SetAuxiliaryPicture(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // Support for HDR images is required.
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // An HDR-compatible image is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -219,7 +284,7 @@ Obtains an auxiliary picture by type.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -240,7 +305,7 @@ async function GetAuxiliaryPicture(pictureObj : image.Picture) {
 
 setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
-Sets the metadata for this Picture object.
+Sets the metadata for this Picture object. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -259,7 +324,7 @@ Sets the metadata for this Picture object.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -273,7 +338,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function SetPictureObjMetadata(exifContext: Context) {
   const exifResourceMgr = exifContext.resourceManager;
-  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let exifOps: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -295,7 +360,7 @@ async function SetPictureObjMetadata(exifContext: Context) {
       console.error('Failed to set metadata. error.code: ' +JSON.stringify(error.code) + ' ,error.message:' + JSON.stringify(error.message));
     });
   } else {
-    console.error('exifPictureOb is null');
+    console.error('exifPictureObj is null');
   }
 }
 ```
@@ -304,7 +369,7 @@ async function SetPictureObjMetadata(exifContext: Context) {
 
 getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
-Obtains the metadata of this Picture object.
+Obtains the metadata of this Picture object. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -322,7 +387,7 @@ Obtains the metadata of this Picture object.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -363,7 +428,7 @@ Marshals this Picture object and writes it to a MessageSequence object.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -423,6 +488,10 @@ release(): void
 
 Releases this Picture object.
 
+Images occupy a large amount of memory. When you finish using a Picture instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Example**
@@ -442,3 +511,4 @@ async function Release(pictureObj : image.Picture) {
   }
 }
 ```
+<!--no_check-->

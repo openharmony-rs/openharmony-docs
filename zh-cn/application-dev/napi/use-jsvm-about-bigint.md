@@ -1,7 +1,7 @@
 # 使用JSVM-API接口操作bigint类型值
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -98,7 +98,7 @@ OH_JSVM_GetValueBigintWords signBit: 0.
 
 ### OH_JSVM_CreateBigintWords
 
-根据给定的Uint64_t数组创建一个JavaScript BigInt对象。
+根据给定的uint64_t数组创建一个JavaScript BigInt对象。
 
 cpp部分代码：
 
@@ -145,7 +145,7 @@ JSVM OH_JSVM_CreateBigintWords success
 
 ### OH_JSVM_CreateBigintUint64
 
-根据给定的Uint64类型对象创建JavaScript BigInt对象。
+根据给定的uint64类型对象创建JavaScript BigInt对象。
 
 cpp部分代码：
 
@@ -191,7 +191,7 @@ JSVM OH_JSVM_CreateBigintUint64 success
 
 ### OH_JSVM_GetValueBigintUint64
 
-获取给定JavaScript BigInt的Uint64_t基础类型值。
+获取给定JavaScript BigInt的uint64_t基础类型值。
 
 cpp部分代码：
 
@@ -212,7 +212,7 @@ static JSVM_Value GetValueBigintUint64(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetValueBigintUint64(env, args[0], &value, &lossLess);
     // 判断从JS侧获取bigint是否为无损转换，如果不是抛出异常
     if (!lossLess) {
-        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless converted");
+        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless conversion");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM GetValueBigintUint64 success");
@@ -242,7 +242,7 @@ JSVM GetValueBigintUint64 success
 
 ### OH_JSVM_CreateBigintInt64
 
-根据给定的Uint64类型对象创建JavaScript BigInt对象。
+根据给定的uint64类型对象创建JavaScript BigInt对象。
 
 cpp部分代码：
 
@@ -307,7 +307,7 @@ static JSVM_Value GetBigintInt64(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetValueBigintInt64(env, args[0], &value, &lossLess);
     // 判断从JS侧获取bigint是否为无损转换，如果不是抛出异常
     if (!lossLess) {
-        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless converted");
+        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless conversion");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM GetBigintInt64 success");

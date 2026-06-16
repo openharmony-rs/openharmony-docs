@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的pin码认证用户处理功能对象。示例代码参考[onVerifyPin](./arkts-basic-components-web-events.md#onverifypin22)。
+Web组件返回的PIN码认证用户处理功能对象。示例代码参考[onVerifyPin](./arkts-basic-components-web-events.md#onverifypin22)。
 
 > **说明：**
 >
@@ -14,7 +14,7 @@ Web组件返回的pin码认证用户处理功能对象。示例代码参考[onVe
 >
 > - 本Class首批接口从API version 22开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## constructor<sup>22+</sup>
 

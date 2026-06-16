@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @li-weifeng2024-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 开发者可以通过该模块管理和获取应用的上下文[Context](../../application-models/application-context-stage.md)，以及控制应用进程的状态。
 
@@ -28,22 +28,23 @@ import { application } from '@kit.AbilityKit';
 
 | 名称                 | 值  | 说明                               |
 | -------------------- | --- | --------------------------------- |
-| UNSPECIFIED    | 0   |    未发生预加载或预加载数据已被清除。       |
+| UNSPECIFIED                  | 0   |    未发生预加载或预加载数据已被清除。       |
 | TYPE_CREATE_PROCESS          | 1   |    进程最终预加载到进程创建完成阶段。      |
-| TYPE_CREATE_ABILITY_STAGE  | 2   |     进程最终预加载到[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成阶段。   |
-| TYPE_CREATE_WINDOW_STAGE        | 3   |    进程最终预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
+| TYPE_CREATE_ABILITY_STAGE    | 2   |     进程最终预加载到[AbilityStage](./js-apis-app-ability-abilityStage.md)创建完成阶段。   |
+| TYPE_CREATE_WINDOW_STAGE     | 3   |    进程最终预加载到[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。           |
+| TYPE_CREATE_BACKGROUND_ABILITY <sup>23+</sup>          | 4   |    进程最终预加载到[onBackground](./js-apis-app-ability-uiAbility.md#onbackground)执行完成阶段。      |
 
-## application.createModuleContext<sup>12+</sup>
+## application.createModuleContext
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
-创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包应用资源](../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。使用Promise异步回调。
+创建指定模块的上下文。创建出的模块上下文中[resourceManager.Configuration](../apis-localization-kit/js-apis-resource-manager.md#configuration)资源继承自入参上下文，便于开发者获取[跨HAP/HSP包资源](../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。使用Promise异步回调。
 
 > **说明：**
 >
 > 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
-**原子化服务API**：从API version 12开始，该接口支持在元服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -140,7 +141,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## application.getApplicationContextInstance<sup>22+</sup>
+## application.getApplicationContextInstance<sup>23+</sup>
 
 getApplicationContextInstance(): ApplicationContext
 
@@ -148,7 +149,7 @@ getApplicationContextInstance(): ApplicationContext
 
 重复调用该接口，将获取同一个ApplicationContext实例。
 
-**原子化服务API**：从API version 22开始，该接口支持在元服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在元服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -246,8 +247,8 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 
 - 如果存在备选主控进程，系统会将备选主控进程链表首节点的进程设置为主控进程，触发[onNewProcessRequest](js-apis-app-ability-abilityStage.md#onnewprocessrequest11)回调。
 - 如果不存在备选主控进程，系统会根据组件类型执行相应的操作。
-	- 对于UIAbility组件，系统将创建新的空进程作为主控进程。
-	- 对于UIExtensionAbility组件，系统会优先复用已有的UIExtensionAbility进程作为新的主控进程，无可用进程时则创建新的空进程作为主控进程。
+  - 对于UIAbility组件，系统将创建新的空进程作为主控进程。
+  - 对于UIExtensionAbility组件，系统会优先复用已有的UIExtensionAbility进程作为新的主控进程，无可用进程时则创建新的空进程作为主控进程。
 
 > **说明：**
 > 
@@ -425,7 +426,7 @@ getAppPreloadType(): AppPreloadType
 > - AbilityStage创建完成后，应用的预加载数据将被清除，调用该接口将返回UNSPECIFIED，无法获取到真实的预加载类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-	
+
 **返回值：**
 
 | 类型            | 说明            |

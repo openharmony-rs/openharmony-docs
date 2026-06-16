@@ -15,7 +15,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 
    For details about how to generate an RSA asymmetric key pair, see the following example. To learn more, see [RSA](crypto-asym-key-generation-conversion-spec.md#rsa) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). There may be differences between the input parameters in the reference documents and those in the following example.
 
-2. Call [OH_CryptoAsymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_create) with the string parameter **'RSA1024|PKCS1'** to create a **Cipher** instance for encryption. The key type is **RSA1024**, and the padding mode is **PKCS1**.
+2. Call [OH_CryptoAsymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_create) with the string parameter **'RSA1024|PKCS1'** to create a **Cipher** instance for encryption and decryption. The key type is **RSA1024**, and the padding mode is **PKCS1**.
 
 3. Call [OH_CryptoAsymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_ENCRYPT_MODE**, and specify the key for encryption (**keyPair**).
 
@@ -35,9 +35,10 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 
 3. Call [OH_CryptoAsymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_final) for multiple times and pass the ciphertext to obtain the decrypted data.
 
-- Example (using asynchronous APIs):
 
-```C++
+<!-- @[rsa_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/rsa/RSAEncryptDecrypt.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 #include <algorithm>
 #include <vector>
@@ -119,7 +120,7 @@ static std::vector<uint8_t> doTestRsaDec(OH_CryptoKeyPair *keyPair, std::vector<
     return decryptText;
 }
 
-static OH_Crypto_ErrCode doTestRsaEncLongMessage()
+OH_Crypto_ErrCode doTestRsaEncLongMessage()
 {
     OH_CryptoAsymKeyGenerator *keyGen = nullptr;
     OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create("RSA1024", &keyGen);
@@ -134,14 +135,14 @@ static OH_Crypto_ErrCode doTestRsaEncLongMessage()
     }
 
     std::string message =
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!";
+        "This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!";
 
     std::vector<uint8_t> plainText(message.begin(), message.end());
     std::vector<uint8_t> cipherText = doTestRsaEnc(keyPair, plainText);

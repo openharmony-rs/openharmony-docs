@@ -1,6 +1,9 @@
 # OpenHarmony Release Notes
 
 ## OpenHarmony 6.x Releases
+- [OpenHarmony v6.1 Release (2026-03-08)](OpenHarmony-v6.1-release.md)
+- [OpenHarmony v6.0.0.1 Release (2025-12-23)](OpenHarmony-v6.0.0.1-release.md)
+- [OpenHarmony v6.0.0.2 Release (2026-03-24)](OpenHarmony-v6.0.0.2-release.md)
 - [OpenHarmony v6.0 Release (2025-09-06)](OpenHarmony-v6.0-release.md)
 - [OpenHarmony v6.0 Beta1 (2025-06-19)](OpenHarmony-v6.0-beta1.md)
 

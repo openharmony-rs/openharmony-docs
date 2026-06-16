@@ -1,8 +1,8 @@
 # Interface (AudioSessionManager)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -26,6 +26,8 @@ import { audio } from '@kit.AudioKit';
 activateAudioSession(strategy: AudioSessionStrategy): Promise\<void>
 
 激活音频会话。使用Promise异步回调。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -73,6 +75,8 @@ deactivateAudioSession(): Promise\<void>
 
 停用音频会话。使用Promise异步回调。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **返回值：**
@@ -107,6 +111,8 @@ isAudioSessionActivated(): boolean
 
 检查音频会话是否已激活。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **返回值：**
@@ -126,6 +132,8 @@ let isActivated = audioSessionManager.isAudioSessionActivated();
 on(type: 'audioSessionDeactivated', callback: Callback\<AudioSessionDeactivatedEvent>): void
 
 监听音频会话停用事件（当音频会话停用时触发）。使用callback异步回调。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -159,6 +167,8 @@ audioSessionManager.on('audioSessionDeactivated',
 off(type: 'audioSessionDeactivated', callback?: Callback\<AudioSessionDeactivatedEvent>): void
 
 取消监听音频会话停用事件。使用callback异步回调。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -310,6 +320,8 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将继续从扬声器发声。
+
 **参数：**
 
 | 参数名     | 类型             | 必填   | 说明                                                      |
@@ -371,6 +383,59 @@ getDefaultOutputDevice(): DeviceType
 
 ```ts
 let deviceType = audioSessionManager.getDefaultOutputDevice();
+```
+
+## setMediaOutputDevice
+
+setMediaOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
+
+当连接其他音频外设（如蓝牙耳机或有线耳机）时，将媒体输出设备切换为内置扬声器。使用Promise异步回调。
+
+> **说明：**
+>
+> - 本接口仅适用于媒体播放场景，并且会作用于应用内发起的所有媒体流。
+> - 若存在更高优先级的并发播放流或用户手动选择输出设备，则应用程序实际使用的输出设备将与本接口设置的设备不同。应用程序可通过监听[CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20)事件获取当前活跃的输出设备。
+> - 当应用程序需要清除之前通过接口设置的扬声器输出配置时，可通过调用接口将媒体输出设备设置为DEFAULT（系统默认设备）来实现。该设置仅在应用程序运行期间有效，当应用程序退出时，此接口的设置将自动清除。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**设备行为差异：** 当该接口在无扬声器的设备上设置输出设备为扬声器时，该设置不会生效。
+
+**参数：**
+
+| 参数名     | 类型             | 必填   | 说明                                                      |
+| ---------- |----------------| ------ |---------------------------------------------------------|
+| deviceType | [DeviceType](arkts-apis-audio-e.md#devicetype) | 是     | 设备类型。<br>仅支持以下设备：SPEAKER（扬声器）和DEFAULT（系统默认设备）。 |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed, for example, the selected device type is not supported. |
+| 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.setMediaOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+  console.info('setMediaOutputDevice Success!');
+}).catch((err: BusinessError) => {
+  console.error(`setMediaOutputDevice Fail: ${err}`);
+});
 ```
 
 ## on('currentOutputDeviceChanged')<sup>20+</sup>
@@ -613,7 +678,7 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
+  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
   console.info('Succeeded in doing getAvailableDevices.');
 
   if (data[0]) {
@@ -633,8 +698,7 @@ try {
 
 getSelectedMediaInputDevice(): AudioDeviceDescriptor
 
-获得通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。
-如果没有设置，返回一个deviceType属性为INVALID的设备。
+获得通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。如果没有设置，返回一个deviceType属性为INVALID的设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -735,6 +799,8 @@ setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPre
 | 6800101 | Parameter verification failed. |
 | 6800301 | Audio client call audio service error, System error. |
 
+**示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -767,6 +833,8 @@ getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredR
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -853,4 +921,150 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 
 audioSessionManager.off('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+```
+
+## enableMuteSuggestionWhenMixWithOthers<sup>23+</sup>
+
+enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
+
+启用混音播放下接收静音播放建议通知功能。
+
+通常，当使用混音模式时，如果其他应用同时播放音频，会和其他应用进行混音播放。但在某些场景下（如游戏或广播），应用自身会通过静音自身的音频以给用户提供更好的体验。
+
+如果启用此功能，当订阅音频会话状态更改事件后静音建议和取消静音建议提示将通过[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)回调发送。收到静音建议表示其他应用程序开始播放音频，且播放的音频和本应用的音频不能混音。
+
+此功能仅支持已设置[AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20)并激活模式模式为CONCURRENCY_MIX_WITH_OTHERS的音频会话使用。并且仅在激活音频会话期间生效一次，每次激活音频会话前都必须重新启用。
+
+详细说明请参考[启用混音播放下静音建议通知](../../media/audio/audio-session-management.md#启用混音播放下静音建议通知)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名   | 类型               | 必填 | 说明      |
+| -------- | ----------------- | ---- | --------- |
+| enable   | boolean           | 是   | 是否启用混音播放下接收静音播放建议通知功能。true表示启用，false表示不启用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800103 | Function is called without setting [AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20) or called after audio session activation.|
+| 6800301 | Audio client call audio service error, system internal error. |
+
+**示例：**
+
+```ts
+audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOthers(true);
+```
+
+
+## setCapturerMuteHint<sup>24+</sup>
+
+setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
+
+应用将当前音频会话内录音流的自身静音状态传递给系统音频模块。<!--RP1-->该接口不会触发录音流静音，当前仅在部分PC/2in1设备上用于优化设备功耗。<!--RP1End-->使用Promise异步回调。
+
+> **说明：**
+>
+> - 该接口用于向系统音频模块上报当前音频会话内录音流的静音状态，不会改变录音流的实际静音状态。
+> - 该接口仅在当前音频会话存在运行中的录音流时允许调用，否则返回错误码6800103。
+> - 若某条录音流同时调用了流级接口[AudioCapturer.setMuteHint](arkts-apis-audio-AudioCapturer.md#setmutehint24)和本接口，流级接口设置优先级更高，以流级接口设置值为准。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名   | 类型               | 必填 | 说明      |
+| -------- | ----------------- | ---- | --------- |
+| mute   | boolean           | 是   | 应用自身给系统音频模块上报的静音状态。true表示应用将当前流静音，false表示取消静音。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800103 | Operation not permitted at current state, there is no audio capturer running. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioSessionManager.setCapturerMuteHint(true).then(() => {
+  console.info('Successfully set capturer mute hint.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setCapturerMuteHint. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## isOtherMediaPlaying<sup>23+</sup>
+
+isOtherMediaPlaying(): boolean
+
+检查是否有其他应用正在播放MUSIC、MOVIE、AUDIOBOOK、GAME四种媒体类型的音频，已激活媒体类型的音频会话也将会被检查。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**返回值：**
+
+| 类型                                              | 说明                                    |
+| ------------------------------------------------- |---------------------------------------|
+| boolean | 是否有其他应用正在播放媒体类型的音频。true表示有，false表示没有。 |
+
+**示例：**
+
+```ts
+let isExistence = audioSessionManager.isOtherMediaPlaying();
+```
+
+## setAudioSessionBehavior<sup>24+</sup>
+
+setAudioSessionBehavior(behavior: number): void
+
+设置音频会话行为参数，支持多种标志位的组合使用。
+
+> **说明：**
+>
+> 当音频会话在激活状态时调用此接口后，必须重新调用接口[activateAudioSession](./arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)使其生效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名   | 类型               | 必填 | 说明      |
+| -------- | ----------------- | ---- | --------- |
+| behavior   | number           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permitted in the current state. |
+
+**示例：**
+
+```ts
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioSessionManager.setAudioSessionBehavior(behavior);
 ```

@@ -22,12 +22,61 @@
 
 4. 调用[OH_CryptoKdf_Derive](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_derive)，指定目标密钥的字节长度，进行密钥派生。
 
-```C++
-#include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
-#include <string.h>
+<!-- @[pbkdf2_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/cpp/types/project/pbkdf2_test.cpp) -->
 
-static OH_Crypto_ErrCode doTestPbkdf2()
+``` C++
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+#include <cstdio>
+#include <cstring>
+#include "file.h"
+
+static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
+{
+    char password[] = "123456";
+    const char *salt = "saltstring";
+    int iterations = 10000;
+    // 设置密码。
+    Crypto_DataBlob passwordBlob = {
+        .data = reinterpret_cast<uint8_t *>(const_cast<char *>(password)),
+        .len = strlen(password)
+    };
+    OH_Crypto_ErrCode ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_KEY_DATABLOB, &passwordBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        (void)memset(password, 0, sizeof(password));
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
+    }
+
+    // 设置盐值。
+    Crypto_DataBlob saltBlob = {
+        .data = reinterpret_cast<uint8_t *>(const_cast<char *>(salt)),
+        .len = strlen(salt)
+    };
+    ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_SALT_DATABLOB, &saltBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        (void)memset(password, 0, sizeof(password));
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
+    }
+
+    // 设置迭代次数。
+    Crypto_DataBlob iterationsBlob = {
+        .data = reinterpret_cast<uint8_t *>(&iterations),
+        .len = sizeof(int)
+    };
+    ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_ITER_COUNT_INT, &iterationsBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        (void)memset(password, 0, sizeof(password));
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
+    }
+    return CRYPTO_SUCCESS;
+}
+
+OH_Crypto_ErrCode doTestPbkdf2()
 {
     // 创建PBKDF2参数对象。
     OH_CryptoKdfParams *params = nullptr;
@@ -36,39 +85,8 @@ static OH_Crypto_ErrCode doTestPbkdf2()
         return ret;
     }
 
-    // 设置密码。
-    const char *password = "123456";
-    Crypto_DataBlob passwordBlob = {
-        .data = reinterpret_cast<uint8_t *>(const_cast<char *>(password)),
-        .len = strlen(password)
-    };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_KEY_DATABLOB, &passwordBlob);
+    ret = setParams(&params);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
-        return ret;
-    }
-
-    // 设置盐值。
-    const char *salt = "saltstring";
-    Crypto_DataBlob saltBlob = {
-        .data = reinterpret_cast<uint8_t *>(const_cast<char *>(salt)),
-        .len = strlen(salt)
-    };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_SALT_DATABLOB, &saltBlob);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
-        return ret;
-    }
-
-    // 设置迭代次数。
-    int iterations = 10000;
-    Crypto_DataBlob iterationsBlob = {
-        .data = reinterpret_cast<uint8_t *>(&iterations),
-        .len = sizeof(int)
-    };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_ITER_COUNT_INT, &iterationsBlob);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
         return ret;
     }
 

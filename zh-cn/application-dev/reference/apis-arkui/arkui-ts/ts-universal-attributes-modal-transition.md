@@ -1,8 +1,8 @@
 # 全屏模态转场
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,11 +10,13 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  不支持横竖屏切换。
+> - 本模块接口仅可在Stage模型下使用。
 >
->  不支持路由跳转。
+> - 不支持横竖屏切换。
+>
+> - 不支持路由跳转。
 
 ## bindContentCover
 
@@ -35,8 +37,8 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition
 | 参数名  | 类型                                        | 必填 | 说明                                                         |
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | isShow  | boolean                        | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
-| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。                                       |
-| type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否   | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 同transition同时设置时，此属性不生效。                                 |
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。builder里面的根节点需要唯一。                           |
+| type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否   | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 与transition同时设置时，此属性不生效。                                 |
 
 **返回值：**
 
@@ -77,7 +79,7 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCover
 
 | 名称              | 类型                                       | 只读 |  可选   | 说明            |
 | --------------- | ---------------------------------------- | ---- | ---- | ------------- |
-| modalTransition | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否 | 是    | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 同transition同时设置时，此属性不生效。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| modalTransition | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否 | 是    | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 与transition同时设置时，此属性不生效。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | onWillDismiss<sup>12+</sup> | Callback&lt;[DismissContentCoverAction](#dismisscontentcoveraction12类型说明)&gt; | 否 | 是   | 全屏模态页面交互式关闭回调函数。<br/>**说明：**<br />当用户执行back事件关闭交互操作时，如果注册该回调函数，则不会立刻关闭。在回调函数中可以通过reason得到阻拦关闭页面的操作类型，从而根据原因选择是否关闭全屏模态页面。在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否 | 是   | 全屏模态页面的自定义转场方式。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | enableSafeArea<sup>20+</sup> | boolean  | 否 | 是  | 全屏模态是否适配安全区域，true表示全屏模态适配安全区域，将内容限制在安全区内，避让导航条和状态栏，false表示不做处理，和之前的样式保持一致。默认值为false。  <br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
@@ -191,7 +193,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_none_1](figures/zh-cn_full_screen_modal_none_1.gif)
+![fullScreenModalNone1](figures/fullScreenModalNone1.gif)
 
 ### 示例2（自定义转场动画）
 
@@ -305,7 +307,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_none_2](figures/zh-cn_full_screen_modal_none_2.gif)
+![fullScreenModalNone2](figures/fullScreenModalNone2.gif)
 
 ### 示例3（上下切换转场）
 
@@ -403,7 +405,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_default](figures/zh-cn_full_screen_modal_default.gif)
+![fullScreenModalDefault](figures/fullScreenModalDefault.gif)
 
 ### 示例4（透明度渐变转场）
 
@@ -502,7 +504,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_alpha](figures/zh-cn_full_screen_modal_alpha.gif)
+![fullScreenModalAlpha](figures/fullScreenModalAlpha.gif)
 
 ### 示例5（设置不同效果的自定义转场）
 
@@ -618,11 +620,11 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_alpha](figures/zh-cn_full_screen_modal_transition.gif)
+![fullScreenModalTransition](figures/fullScreenModalTransition.gif)
 
-### 示例6（设置全模态适配安全区）
+### 示例6（设置全屏模态适配安全区）
 
-从API version 20开始，该示例主要演示通过设置enableSafeArea = true时，全模态适配安全区后，其内容效果。全模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
+从API version 20开始，该示例主要演示设置enableSafeArea为true后全屏模态适配安全区的内容效果。全屏模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
 
 ```ts
 // xxx.ets
@@ -681,4 +683,4 @@ struct SafeAreaController {
 }
 ```
 
-![zh-cn-enableSafeArea](figures/zh-cn-enablesafearea.png)
+![enableSafeArea](figures/enableSafeArea.png)

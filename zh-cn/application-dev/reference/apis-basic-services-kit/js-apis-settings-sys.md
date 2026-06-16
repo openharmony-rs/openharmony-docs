@@ -5,7 +5,7 @@
 <!--Owner: @YingCong-->
 <!--Designer: @Kun_Wu-->
 <!--Tester: @dyx118186878-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 本模块提供访问设置数据项的能力。
 
@@ -17,7 +17,7 @@
 ## 导入模块
 
 ```js
-import settings from '@ohos.settings';
+import { settings } from '@kit.BasicServicesKit';
 ```
 
 ## domainName

@@ -337,7 +337,7 @@ Process maps information
 
 For Use-After-Free (Write) problems, the logs are different in the problem overview. The following is an example output:
 
-```
+```text
 ptrBeg was re-written after free 0x000100946540[1], 0x000100946548 5555555500000009:5555555555555555
 ```
 

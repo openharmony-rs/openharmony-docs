@@ -7,9 +7,13 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_KeyMaterialRsa {...}
+```
+
 ## Overview
 
-Defines the struct of an RSA key.
+Defines the struct for an RSA key.
 
 **Since**: 9
 

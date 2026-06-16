@@ -14,9 +14,9 @@ Web组件获取控制台信息对象。示例代码参考[onConsole事件](./ark
 >
 > - 本Class首批接口从API version 8开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
-## constructor
+## constructor<sup>(deprecated)</sup>
 
 constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)
 
@@ -49,7 +49,7 @@ ConsoleMessage的构造函数。
 
 getLineNumber(): number
 
-获取ConsoleMessage的行数。
+获取ConsoleMessage的行号。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -57,7 +57,7 @@ getLineNumber(): number
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回ConsoleMessage的行数。 |
+| number | 返回ConsoleMessage的行号。 |
 
 ## getMessage
 
@@ -91,7 +91,7 @@ getMessageLevel(): MessageLevel
 
 getSourceId(): string
 
-获取网页源文件路径和名字。
+获取网页源文件路径和文件名。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -99,7 +99,7 @@ getSourceId(): string
 
 | 类型     | 说明            |
 | ------ | ------------- |
-| string | 返回网页源文件路径和名字。 |
+| string | 返回网页源文件路径和文件名。 |
 
 ## getSource<sup>23+</sup>
 

@@ -1,7 +1,7 @@
 # PinchGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -60,7 +60,7 @@ Sets the parameters for the pinch gesture. Compared with [PinchGesture](#pinchge
 
 onActionStart(event: (event: GestureEvent) => void)
 
-Triggered when the pinch gesture is recognized.
+Triggered after the pinch gesture is recognized.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -124,7 +124,7 @@ Triggered when a touch cancellation event occurs after successful pinch gesture 
 
 onActionCancel(event: Callback\<GestureEvent\>)
 
-Callback invoked when a touch cancellation event occurs after successful pinch gesture recognition. Compared with [onActionCancel](#onactioncancel), this callback returns gesture event information.
+Triggered when a touch cancellation event occurs after successful pinch gesture recognition. Compared with [onActionCancel](#onactioncancel), this callback returns gesture event information.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -187,7 +187,7 @@ struct PinchGestureExample {
 }
 ```
 
- ![en-us_image_0000001174582848](figures/en-us_image_0000001174582848.png)
+ ![pinchGesture1](figures/pinchGesture1.png)
 
 ### Example 2: Implementing Image Scaling with Finger Tracking
 
@@ -252,7 +252,7 @@ struct PinchGestureExample {
           // Upper left corner coordinates before scaling
           const left = (this.screenWidth - displayWidth) / 2 + this.offsetX;
           const top = (this.screenHeight - displayHeight) / 2 + this.offsetY;
-          // Relative position (as a percentage) of the pinch center relative to the upper left corner of the displayed image
+          // Pinch center position (as a percentage) relative to the upper left corner of the displayed image
           this.pntX = (event.pinchCenterX - left) / displayWidth;
           this.pntY = (event.pinchCenterY - top) / displayHeight;
           // Scale factor before the current operation

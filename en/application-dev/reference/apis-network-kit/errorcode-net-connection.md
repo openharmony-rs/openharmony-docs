@@ -129,3 +129,57 @@ This error code is reported if the number of network requests exceeds the maximu
 1. Locate the fault based on the "Over the max request number" log record.
 
 2. After using **NetConnection.register**, call **NetConnection.unregister** to cancel the registered listener in a timely manner.
+
+## 2100301 Failed to Authenticate the Caller (Non-VPN Application)
+
+**Error Message**
+
+Incorrect usage in non-VPN application.
+
+**Description**
+
+The API caller is not a VPN application.
+
+**Cause**
+
+The API caller is not a VPN application.
+
+**Procedure**
+
+Ensure that the API is called in a VPN application.
+
+## 2100400 Incorrect NIC Name (Non-Ethernet)
+
+**Error Message**
+
+The input network interface is incorrect.
+
+**Description**
+
+The NIC name passed in the API call is incorrect.
+
+**Cause**
+
+The NIC name passed in the API call is not an Ethernet NIC name such as **eth0**.
+
+**Procedure**
+
+Ensure that the NIC name is an Ethernet NIC name such as **eth0**.
+
+## 2100401 No IP Address Configured on the VLAN Is Found
+
+**Error Message**
+
+The input ip address not found.
+
+**Description**
+
+The input IP address is not found.
+
+**Cause**
+
+The input IP address is not found on the VLAN.
+
+**Procedure**
+
+Ensure that the input IP address is configured on the VLAN.

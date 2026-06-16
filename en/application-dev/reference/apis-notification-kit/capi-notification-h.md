@@ -1,4 +1,10 @@
 # notification.h
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 ## Overview
 
@@ -26,7 +32,7 @@ Defines APIs for notification services.
 
 ### OH_Notification_IsNotificationEnabled()
 
-```
+```c
 bool OH_Notification_IsNotificationEnabled(void)
 ```
 
@@ -40,4 +46,4 @@ Checks whether the notification of the specified application is enabled.
 
 | Type| Description|
 | -- | -- |
-| bool | **true** - Notification is enabled for the specified application.<br>**false** - Notification is not enabled for the specified application. |
+| bool | **true** - Notification is enabled for the specified application.<br>         **false** - Notification is not enabled for the specified application.|

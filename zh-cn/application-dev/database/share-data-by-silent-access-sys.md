@@ -64,7 +64,8 @@
 ## 约束与限制
 
 - 目前持久化数据中仅关系型数据库支持静默数据访问方式。
-- 整个系统最多同时并发32路查询，有多出来的查询请求需要排队处理。
+- 整个系统最多同时并发32路查询，有多出来的查询请求需要重试处理。
+- 查询完成后返回的数据共享结果集应在使用后及时释放，参见[DataShareResultSet](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close)。
 - 持久化数据不支持代理创建数据库，如果需要创建数据库，需要拉起数据提供方。
 - 数据提供方如果是normal级别签名的应用，配置的数据读写权限必须为system_basic及以上权限。
 - 调用静默访问接口（insert、delete、update或者query）时需遵循流量控制机制：每30秒为一个流控周期，若在该流控周期内调用对应接口的次数大于等于3000次，则该流控周期剩余时间内调用该接口均返回失败，到下一个流控周期重新开始计数，接口恢复正常。建议避免短时间高频调用接口，合理控制接口调用频率。
@@ -72,7 +73,7 @@
 
 ## 接口说明
 
-以下是静默数据访问的相关接口，大部分为异步接口。异步接口均有callback和Promise两种返回形式，下表均以callback形式为例，更多接口及使用方式请见[数据共享](../reference/apis-arkdata/js-apis-data-dataShare-sys.md)。
+以下是静默数据访问的相关接口，更多接口及使用方式请见[数据共享](../reference/apis-arkdata/js-apis-data-dataShare-sys.md)。
 
 ### 通用接口
 
@@ -128,12 +129,12 @@
 
    **module.json5配置样例：**
 
+   以下配置仅作示例，应用需根据具体业务需求和数据库结构配置各个字段。
+
    ```json
-   // 以下配置以settingsdata为例，应用需根据实际情况配置各个字段
    "proxyData": [
      {
-       "uri": "datashareproxy://com.ohos.settingsdata/entry/settingsdata/USER_SETTINGSDATA_SECURE",
-       // 实际请按照应用具体场景需要的安全权限配置，如配置应用自定义权限、系统权限或用户授权权限，当前权限仅为示例
+       "uri": "datashareproxy://com.ohos.datashareprovider/datapath",
        "requiredReadPermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "requiredWritePermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "metadata": {
@@ -181,7 +182,7 @@
 2. 定义与数据提供方通信的URI字符串。
 
    ```ts
-   let dseUri = ('datashareproxy://com.ohos.settingsdata/entry/settingsdata/USER_SETTINGSDATA_SECURE');
+   let dseUri = 'datashareproxy://com.ohos.datashareprovider/datapath';
    ```
 
 3. 使用createDataShareHelper()方法传入URI创建DataShareHelper对象。
@@ -277,7 +278,7 @@
    }
    let templateId: dataShare.TemplateId = {
      subscriberId: "111",
-     bundleNameOfOwner: "com.ohos.settingsdata"
+     bundleNameOfOwner: "com.ohos.datashareprovider"
    }
    // 使用数据管理服务修改数据时触发onCallback回调，回调内容是template中的规则查到的数据
    let result: Array<dataShare.OperationResult> = (dsHelper as dataShare.DataShareHelper).on("rdbDataChange", [dseUri], templateId, onCallback);
@@ -306,12 +307,12 @@
 
 **module.json5配置样例：**
 
+以下配置仅为示例，应用需根据实际情况配置各个字段。
+
 ```json
-// 以下配置仅为示例，应用需根据实际情况配置各个字段
 "proxyData": [
   {
     "uri": "datashareproxy://com.acts.ohos.data.datasharetest/weather",
-    // 实际请按照应用具体场景需要的安全权限配置，如配置应用自定义权限、系统权限或用户授权权限，当前权限仅为示例
     "requiredReadPermission": "ohos.permission.READ_WEATHER_DATA",
     "requiredWritePermission": "ohos.permission.KEEP_BACKGROUND_RUNNING"
   }
@@ -332,7 +333,7 @@
 2. 定义与数据提供方通信的URI字符串。
 
    ```ts
-   let dseUri = ('datashareproxy://com.acts.ohos.data.datasharetest/weather');
+   let dseUri = 'datashareproxy://com.acts.ohos.data.datasharetest/weather';
    ```
 
 3. 创建工具接口类对象。
@@ -409,7 +410,7 @@
 2. 定义与数据提供方通信的URI字符串。
 
    ```ts
-   let dseUri = ('datashare:///com.ohos.settingsdata/entry/DB00/TBL00');
+   let dseUri = 'datashare:///com.acts.ohos.data.datasharetest/entry/DB00/TBL00';
    ```
 
 3. 创建工具接口类对象。

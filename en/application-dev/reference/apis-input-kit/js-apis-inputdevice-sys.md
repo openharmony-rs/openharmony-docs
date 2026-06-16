@@ -5,16 +5,16 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:23:24.731Z pushedAt=2026-06-12T07:12:55.872Z -->
 
 The **inputDevice** module provides APIs for input device management, including querying input device information, setting/obtaining the keyboard repeat delay, and setting the input device switch status.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.multimodalInput.inputDevice (Input Device)](js-apis-inputdevice.md).
-
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.multimodalInput.inputDevice (Input Device)](js-apis-inputdevice.md).
 
 ## Modules to Import
 
@@ -37,7 +37,7 @@ Sets the keyboard repeat delay. This API uses an asynchronous callback to return
 | Name    | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | delay    | number                    | Yes   | Keyboard repeat delay, in ms. The value range is [300, 1000] and the default value is **500**.|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes    | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -46,12 +46,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202 | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -61,15 +62,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.setKeyboardRepeatDelay(350, (error: Error) => {
+            // Set Keyboard Repeat Delay
+            inputDevice.setKeyboardRepeatDelay(350, (error: BusinessError) => {
               if (error) {
-                console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set keyboard repeat delay success`);
+              console.info(`Succeeded in setting keyboard repeat delay.`);
             });
           } catch (error) {
-            console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -97,7 +99,7 @@ Sets the keyboard repeat delay. This API uses a promise to return the result.
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | A promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -106,12 +108,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202 | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -121,11 +124,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the key repeat delay to 350 ms
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
-              console.info(`Set keyboard repeat delay success`);
-            });
+              console.info(`Succeeded in setting keyboard repeat delay.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
           } catch (error) {
-            console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -147,7 +153,7 @@ Obtains the keyboard repeat delay. This API uses an asynchronous callback to ret
 
 | Name    | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback   | AsyncCallback&lt;number&gt;                    | Yes   | Callback used to return the keyboard repeat delay.|
+| callback   | AsyncCallback&lt;number&gt;                    | Yes    | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the keyboard repeat rate. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -156,12 +162,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -171,15 +178,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatDelay((error: Error, delay: Number) => {
+            // Obtaining the Key Repeat Delay
+            inputDevice.getKeyboardRepeatDelay((error: BusinessError, delay: number) => {
               if (error) {
-                console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Get keyboard repeat delay success`);
+              console.info(`Succeeded in getting keyboard repeat delay.`);
             });
           } catch (error) {
-            console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -210,12 +218,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -225,11 +234,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatDelay().then((delay: Number) => {
-              console.info(`Get keyboard repeat delay success`);
-            });
+            // Obtaining the Key Repeat Delay
+            inputDevice.getKeyboardRepeatDelay().then((delay: number) => {
+              console.info(`Succeeded in getting keyboard repeat delay.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
           } catch (error) {
-            console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -252,7 +264,7 @@ Sets the keyboard repeat rate. This API uses an asynchronous callback to return 
 | Name    | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | rate    | number                    | Yes   | Keyboard repeat rate, in ms/time. The value range is [36, 100] and the default value is 50.|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes    | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -261,12 +273,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -276,15 +289,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.setKeyboardRepeatRate(60, (error: Error) => {
+            // Key repeat rate 60ms/time
+            inputDevice.setKeyboardRepeatRate(60, (error: BusinessError) => {
               if (error) {
-                console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set keyboard repeat rate success`);
+              console.info(`Succeeded in setting keyboard repeat rate.`);
             });
           } catch (error) {
-            console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -312,7 +326,7 @@ Sets the keyboard repeat rate. This API uses a promise to return the result.
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | A promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -321,12 +335,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -336,11 +351,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Key repeat rate 60ms/time
             inputDevice.setKeyboardRepeatRate(60).then(() => {
-              console.info(`Set keyboard repeat rate success`);
-            });
+              console.info(`Succeeded in setting keyboard repeat rate.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
           } catch (error) {
-            console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -362,7 +380,7 @@ Obtains the keyboard repeat rate. This API uses an asynchronous callback to retu
 
 | Name      | Type                         | Mandatory  | Description            |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the keyboard repeat rate.|
+| callback | AsyncCallback&lt;number&gt; | Yes    | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the keyboard repeat rate. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -371,12 +389,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -386,15 +405,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatRate((error: Error, rate: Number) => {
+            // Obtain Key Repeat Rate
+            inputDevice.getKeyboardRepeatRate((error: BusinessError, rate: number) => {
               if (error) {
-                console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Get keyboard repeat rate success`);
+              console.info(`Succeeded in getting keyboard repeat rate.`);
             });
           } catch (error) {
-            console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -425,12 +445,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -440,11 +461,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatRate().then((rate: Number) => {
-              console.info(`Get keyboard repeat rate success`);
-            });
+            // Obtaining the Keyboard Repeat Rate
+            inputDevice.getKeyboardRepeatRate().then((rate: number) => {
+              console.info(`Succeeded in getting keyboard repeat rate.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
           } catch (error) {
-            console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -456,7 +480,7 @@ struct Index {
 
 setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
-Sets the input switch status of an input device. Take the touchscreen as an example. If the input switch is off, the touchscreen does not respond when being touched. If the input switch is on, the touchscreen wakes up when being touched.
+Sets the input switch status of an input device. Take the touchscreen as an example. If the input switch is off, the touchscreen does not respond when being touched. If the input switch is on, the touchscreen wakes up when being touched. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.INPUT_DEVICE_CONTROLLER
 
@@ -471,22 +495,28 @@ Sets the input switch status of an input device. Take the touchscreen as an exam
 | deviceId | number  | Yes  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.             |
 | enabled  | boolean | Yes  | Switch status of the input device. The value **true** indicates that the input device is enabled, and the value **false** indicates the opposite.|
 
+**Return value**
+
+| Type                 | Description              |
+| ------------------- | ---------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Device Error Codes](errorcode-inputdevice.md).
-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. The application does not have the permission required to call the API |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900001  | The specified device does not exist.                         |
 
 **Example**
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -496,11 +526,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Set the device ID to 0
             inputDevice.setInputDeviceEnabled(0, true).then(() => {
-              console.info(`Set input device enable success`);
-            });
+              console.info(`Succeeded in setting input device enabled.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set device enabled, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
           } catch (error) {
-            console.error(`Set input device enable error`);
+            console.error(`Failed to set device enabled, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

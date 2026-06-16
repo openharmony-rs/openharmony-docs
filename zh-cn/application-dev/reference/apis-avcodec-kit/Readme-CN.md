@@ -25,6 +25,7 @@
     - [native_avcodec_base.h](capi-native-avcodec-base-h.md)
     - [media_types.h](capi-media-types-h.md)
     - [native_audio_channel_layout.h](capi-native-audio-channel-layout-h.md)
+    - [native_audio_vivid.h](capi-native-audio-vivid-h.md)
     - [native_avbuffer.h](capi-native-avbuffer-h.md)
     - [native_avbuffer_info.h](capi-native-avbuffer-info-h.md)
     - [native_averrors.h](capi-native-averrors-h.md)
@@ -46,7 +47,6 @@
     - [NativeWindow](capi-codecbase-nativewindow.md)
     - [OH_AVCodec](capi-codecbase-oh-avcodec.md)
     - [OH_AVBuffer](capi-core-oh-avbuffer.md)
-    - [OH_NativeBuffer](capi-core-oh-nativebuffer.md)
     - [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md)
     - [OH_AVFormat](capi-core-oh-avformat.md)
     - [OH_AVMemory](capi-core-oh-avmemory.md)
@@ -56,6 +56,10 @@
     - [OH_AVSource](capi-avsource-oh-avsource.md)
     - [DrmSubsample](capi-multimedia-drm-drmsubsample.md)
     - [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md)
+    - [OH_CartesianPosition](capi-core-oh-cartesianposition.md)
+    - [OH_PolarPosition](capi-core-oh-polarposition.md)
+    - [OH_AudioObjectPosition](capi-core-oh-audioobjectposition.md)
+    - [OH_AudioVividMetaBuilderStruct](capi-core-oh-audiovividmetabuilderstruct.md)
   - 已停止维护的接口<!--avcodec-arkts-dep-->
     - 模块<!--avcodec-module-arkts-dep-->
       - [AudioDecoder](capi-audiodecoder.md)

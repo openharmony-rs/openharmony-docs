@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-详细接口说明可参考[API参考](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md)。
+详细接口说明可参考[@ohos.security.certManagerDialog (证书管理对话框模块)](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md)。
 
 以上场景涉及的常用接口如下表所示。
 

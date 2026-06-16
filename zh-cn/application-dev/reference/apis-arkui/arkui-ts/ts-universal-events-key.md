@@ -7,6 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 按键事件是指组件与物理键盘、遥控器等按键设备交互时触发的事件，适用于所有可获焦组件，例如Button。对于默认不可获焦的组件，如Text，Image等，可以将[focusable](ts-universal-attributes-focus.md#focusable)属性设置为true后使用按键事件。
+
 按键事件触发的流程和具体时机参考[按键事件数据流](../../../ui/arkts-interaction-development-guide-keyboard.md#按键事件数据流)。
 
 >  **说明：**
@@ -38,9 +39,11 @@ onKeyEvent(event: (event: KeyEvent) => void): T
 ## onKeyEvent<sup>15+</sup>
 onKeyEvent(event: Callback\<KeyEvent, boolean>): T
 
-当绑定该方法的组件获得焦点后，按键操作将触发此回调。若此回调的返回值为`true`，则视为按键事件已被处理。
+当绑定该方法的组件获焦后，按键操作将触发此回调。若此回调的返回值为`true`，则视为按键事件已被处理。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +69,8 @@ onKeyPreIme(event: Callback<KeyEvent, boolean>): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -90,6 +95,8 @@ onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -112,18 +119,18 @@ onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 | 名称                                    | 类型                    | 只读    |  可选   |  说明                         |
 | ------------------------------------- | ---------------------------------------- |--------- | ------------- | -------------------------- |
 | type                                  | [KeyType](ts-appendix-enums.md#keytype) |  否  |  否     |按键的类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| [keyCode](../../apis-input-kit/js-apis-keycode.md#keycode) | number           |  否        |  否     |按键的键码。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
-| keyText                               | string                   |  否   |  否     |按键的键值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| keyCode | number           |  否        |  否     |按键的键值。按键设备提供的键值请参考[KeyCode](../../apis-input-kit/js-apis-keycode.md#keycode)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| keyText                               | string                   |  否   |  否     |按键的名称。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
 | keySource                             | [KeySource](ts-appendix-enums.md#keysource) |  否 |  否     |触发当前按键的输入设备类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
 | deviceId                              | number                |  否    |  否     |触发当前按键的输入设备ID。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
 | metaKey                               | number            |  否         |  否     |按键发生时元键（即键盘左下角紧挨Ctrl键或Fn标记了窗口logo的按键）的状态，1表示按压态，0表示未按压态。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | timestamp                             | number                 |  否      |  否     |事件时间戳。触发事件时距离系统启动的时间间隔，单位：ns。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | stopPropagation                       | () => void             |  否    |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                  |
-| intentionCode<sup>10+</sup>           | [IntentionCode](#intentioncode10) |  否   |  否     |按键对应的意图。<br/>默认值：IntentionCode.INTENTION_UNKNOWN。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| unicode<sup>14+</sup>                              | number              |  否         |  是     |按键的Unicode码值。支持范围为非空格的基本拉丁字符：0x0021-0x007E，不支持字符为0。组合键场景下，返回当前keyEvent对应按键的Unicode码值。 <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| isNumLockOn<sup>19+</sup>                               | boolean              |  否        |  是    |NumLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                     |
-| isCapsLockOn<sup>19+</sup>                               | boolean         |  否        |  是     |CapsLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                     |
-| isScrollLockOn<sup>19+</sup>                               | boolean        |  否      |  是     |ScrollLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                     |
+| intentionCode<sup>10+</sup>           | [IntentionCode](#intentioncode10) |  否   |  否     |按键对应的意图。<br/>默认值：IntentionCode.INTENTION_UNKNOWN。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。       |
+| unicode<sup>14+</sup>                              | number              |  否         |  是     |按键的Unicode码值。支持范围为非空格的基本拉丁字符：0x0021-0x007E，不支持字符为0。组合键场景下，返回当前keyEvent对应按键的Unicode码值。 <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| isNumLockOn<sup>19+</sup>                               | boolean              |  否        |  是    |NumLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                     |
+| isCapsLockOn<sup>19+</sup>                               | boolean         |  否        |  是     |CapsLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                     |
+| isScrollLockOn<sup>19+</sup>                               | boolean        |  否      |  是     |ScrollLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                     |
 
 ### getModifierKeyState<sup>12+</sup>
 
@@ -133,13 +140,15 @@ getModifierKeyState?(keys: Array&lt;string&gt;): boolean
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| keys | Array&lt;string&gt; | 是   | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
+| keys | Array&lt;string&gt; | 是   | 功能键列表。支持功能键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
 
 **返回值：** 
 
@@ -157,17 +166,19 @@ getModifierKeyState?(keys: Array&lt;string&gt;): boolean
 
 ## IntentionCode<sup>10+</sup>
 
-type IntentionCode = IntentionCode
+type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode').IntentionCode
 
 按键对应的意图。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [IntentionCode](../../apis-input-kit/js-apis-intentioncode.md) | 按键对应的意图。|
+| import('../api/@ohos.multimodalInput.intentionCode').[IntentionCode](../../apis-input-kit/js-apis-intentioncode.md#intentioncode) | 按键对应的意图。|
 
 ## 示例
 

@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -29,6 +29,7 @@ The file declares the APIs for obtaining picture data and information.
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) | OH_PictureNative | Describes the picture, which is used to perform operations related to the picture.|
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) | OH_AuxiliaryPictureNative | Describes the auxiliary picture, which is used to perform operations related to the auxiliary picture.|
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) | OH_AuxiliaryPictureInfo | Describes the auxiliary picture information, which is used to perform operations related to the auxiliary picture information.|
+| [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) | OH_ComposeOptions | HDR composition option struct encapsulated at the native layer. It is used to specify parameters used for HDR composition, such as the target pixel format.|
 
 ### Enums
 
@@ -40,46 +41,51 @@ The file declares the APIs for obtaining picture data and information.
 
 | Name| Description|
 | -- | -- |
+| [Image_ErrorCode OH_ComposeOptions_Create(OH_ComposeOptions **options)](#oh_composeoptions_create) | Creates an **OH_ComposeOptions** instance.|
+| [Image_ErrorCode OH_ComposeOptions_SetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT desiredPixelFormat)](#oh_composeoptions_setdesiredpixelformat) | Sets the pixel format in **OH_ComposeOptions**.|
+| [Image_ErrorCode OH_ComposeOptions_GetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT *desiredPixelFormat)](#oh_composeoptions_getdesiredpixelformat) | Obtains the pixel format in **OH_ComposeOptions**.|
+| [Image_ErrorCode OH_ComposeOptions_Release(OH_ComposeOptions *options)](#oh_composeoptions_release) | Releases the pointer to **OH_ComposeOptions**.|
 | [Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, OH_PictureNative **picture)](#oh_picturenative_createpicture) | Creates the pointer to an OH_PictureNative object.|
 | [Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_PixelmapNative **mainPixelmap)](#oh_picturenative_getmainpixelmap) | Obtains the pointer to the OH_PixelmapNative object of a main picture.|
 | [Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *picture, OH_PixelmapNative **hdrPixelmap)](#oh_picturenative_gethdrcomposedpixelmap) | Obtains the pointer to the OH_PixelmapNative object of an HDR picture.|
+| [Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmapWithOptions(OH_PictureNative *picture, OH_ComposeOptions *options, OH_PixelmapNative **hdrPixelmap)](#oh_picturenative_gethdrcomposedpixelmapwithoptions) | Obtains the pointer to **OH_PixelmapNative** of an HDR picture based on **OH_ComposeOptions**.|
 | [Image_ErrorCode OH_PictureNative_GetGainmapPixelmap(OH_PictureNative *picture, OH_PixelmapNative **gainmapPixelmap)](#oh_picturenative_getgainmappixelmap) | Obtains the pointer to the OH_PixelmapNative object of a gain map.|
-| [Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type,OH_AuxiliaryPictureNative *auxiliaryPicture)](#oh_picturenative_setauxiliarypicture) | Sets an auxiliary picture.|
-| [Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type,OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_picturenative_getauxiliarypicture) | Obtains an auxiliary picture by type.|
-| [Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata **metadata)](#oh_picturenative_getmetadata) | Obtains the metadata of a main picture.|
-| [Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata *metadata)](#oh_picturenative_setmetadata) | Sets the metadata for a main picture.|
+| [Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative *auxiliaryPicture)](#oh_picturenative_setauxiliarypicture) | Sets an auxiliary picture.|
+| [Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_picturenative_getauxiliarypicture) | Obtains an auxiliary picture by type.|
+| [Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType, OH_PictureMetadata **metadata)](#oh_picturenative_getmetadata) | Obtains the metadata of a main picture.|
+| [Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType, OH_PictureMetadata *metadata)](#oh_picturenative_setmetadata) | Sets the metadata for a main picture.|
 | [Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)](#oh_picturenative_release) | Releases the pointer to an OH_PictureNative object.|
-| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size,Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | Creates the pointer to an OH_AuxiliaryPictureNative object.|
-| [Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source,size_t bufferSize)](#oh_auxiliarypicturenative_writepixels) | Reads pixels in the buffer and writes the result to an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination,size_t *bufferSize)](#oh_auxiliarypicturenative_readpixels) | Reads pixels of an auxiliary picture and writes the result to the buffer.|
-| [Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_AuxiliaryPictureType *type)](#oh_auxiliarypicturenative_gettype) | Obtains the type of an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture,OH_AuxiliaryPictureInfo **info)](#oh_auxiliarypicturenative_getinfo) | Obtains the information of an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture,OH_AuxiliaryPictureInfo *info)](#oh_auxiliarypicturenative_setinfo) | Sets the information for an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_MetadataType metadataType, OH_PictureMetadata **metadata)](#oh_auxiliarypicturenative_getmetadata) | Obtains the metadata of an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_MetadataType metadataType, OH_PictureMetadata *metadata)](#oh_auxiliarypicturenative_setmetadata) | Sets the metadata for an auxiliary picture.|
+| [Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_auxiliarypicturenative_create) | Creates the pointer to an OH_AuxiliaryPictureNative object. This API supports only continuous pixel data whose [pixel format](./capi-pixelmap-native-h.md#pixel_format) is BGRA_8888 and creates an auxiliary picture in RGBA_8888 format.|
+| [Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source, size_t bufferSize)](#oh_auxiliarypicturenative_writepixels) | Reads pixels in the buffer and writes the result to an auxiliary picture.|
+| [Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination, size_t *bufferSize)](#oh_auxiliarypicturenative_readpixels) | Reads pixels of an auxiliary picture and writes the result to the buffer.|
+| [Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_AuxiliaryPictureType *type)](#oh_auxiliarypicturenative_gettype) | Obtains the type of an auxiliary picture.|
+| [Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture, OH_AuxiliaryPictureInfo **info)](#oh_auxiliarypicturenative_getinfo) | Obtains the information of an auxiliary picture.|
+| [Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture, OH_AuxiliaryPictureInfo *info)](#oh_auxiliarypicturenative_setinfo) | Sets the information for an auxiliary picture.|
+| [Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_MetadataType metadataType, OH_PictureMetadata **metadata)](#oh_auxiliarypicturenative_getmetadata) | Obtains the metadata of an auxiliary picture.|
+| [Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_MetadataType metadataType, OH_PictureMetadata *metadata)](#oh_auxiliarypicturenative_setmetadata) | Sets the metadata for an auxiliary picture.|
 | [Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *picture)](#oh_auxiliarypicturenative_release) | Releases the pointer to an OH_AuxiliaryPictureNative object.|
 | [Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)](#oh_auxiliarypictureinfo_create) | Creates an OH_AuxiliaryPictureInfo object.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType *type)](#oh_auxiliarypictureinfo_gettype) | Obtains the auxiliary picture type from the auxiliary picture information.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType type)](#oh_auxiliarypictureinfo_settype) | Sets the auxiliary picture type in the auxiliary picture information.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_getsize) | Obtains the size of an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_setsize) | Sets the size for an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t *rowStride)](#oh_auxiliarypictureinfo_getrowstride) | Obtains the row stride of an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t rowStride)](#oh_auxiliarypictureinfo_setrowstride) | Sets the row stride for an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT *pixelFormat)](#oh_auxiliarypictureinfo_getpixelformat) | Obtains the pixel format of an auxiliary picture.|
-| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)](#oh_auxiliarypictureinfo_setpixelformat) | Sets the pixel format for an auxiliary picture.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType *type)](#oh_auxiliarypictureinfo_gettype) | Obtains the auxiliary picture type in **OH_AuxiliaryPictureInfo**.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType type)](#oh_auxiliarypictureinfo_settype) | Sets the auxiliary picture type in **OH_AuxiliaryPictureInfo**.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_getsize) | Obtains the image size in **OH_AuxiliaryPictureInfo**.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)](#oh_auxiliarypictureinfo_setsize) | Sets the image size in **OH_AuxiliaryPictureInfo**.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t *rowStride)](#oh_auxiliarypictureinfo_getrowstride) | Obtains the row stride in **OH_AuxiliaryPictureInfo**.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t rowStride)](#oh_auxiliarypictureinfo_setrowstride) | Sets the row stride in **OH_AuxiliaryPictureInfo**.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT *pixelFormat)](#oh_auxiliarypictureinfo_getpixelformat) | Obtains the pixel format in **OH_AuxiliaryPictureInfo**.|
+| [Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)](#oh_auxiliarypictureinfo_setpixelformat) | Sets the pixel format in **OH_AuxiliaryPictureInfo**.|
 | [Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)](#oh_auxiliarypictureinfo_release) | Releases the pointer to an OH_AuxiliaryPictureInfo object.|
 
 ## Enum Description
 
 ### Image_AuxiliaryPictureType
 
-```
+```c
 enum Image_AuxiliaryPictureType
 ```
 
 **Description**
 
-Enumerates the auxiliary picture types.
+Type of the auxiliary picture.
 
 **Since**: 13
 
@@ -94,9 +100,107 @@ Enumerates the auxiliary picture types.
 
 ## Function Description
 
+### OH_ComposeOptions_Create()
+
+```c
+Image_ErrorCode OH_ComposeOptions_Create(OH_ComposeOptions **options)
+```
+
+**Description**
+
+Creates an **OH_ComposeOptions** instance.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) **options | Pointer to **OH_ComposeOptions**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+
+### OH_ComposeOptions_SetDesiredPixelFormat()
+
+```c
+Image_ErrorCode OH_ComposeOptions_SetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT desiredPixelFormat)
+```
+
+**Description**
+
+Sets the pixel format in **OH_ComposeOptions**.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) *options | Pointer to **OH_ComposeOptions**.|
+| [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) desiredPixelFormat | Pixel format. The RGBA_1010102, YCBCR_P010, and YCRCB_P010 formats are supported.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: The parameter is incorrect. For example, **options** is nullptr or the passed **desiredPixelFormat** is not supported.|
+
+### OH_ComposeOptions_GetDesiredPixelFormat()
+
+```c
+Image_ErrorCode OH_ComposeOptions_GetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT *desiredPixelFormat)
+```
+
+**Description**
+
+Obtains the pixel format in **OH_ComposeOptions**.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) *options | Pointer to **OH_ComposeOptions**.|
+| [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format) *desiredPixelFormat | Pixel format in the composition options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+
+### OH_ComposeOptions_Release()
+
+```c
+Image_ErrorCode OH_ComposeOptions_Release(OH_ComposeOptions *options)
+```
+
+**Description**
+
+Releases the pointer to **OH_ComposeOptions**.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) *options | Pointer to **OH_ComposeOptions**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+
 ### OH_PictureNative_CreatePicture()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, OH_PictureNative **picture)
 ```
 
@@ -106,23 +210,22 @@ Creates the pointer to an OH_PictureNative object.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *mainPixelmap | Pointer to the OH_PixelmapNative object of the main picture.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *mainPixelmap | Pointer to the OH_PixelmapNative object of the main picture.|
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **picture | Double pointer to the OH_PictureNative object created.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_PictureNative_GetMainPixelmap()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_PixelmapNative **mainPixelmap)
 ```
 
@@ -132,23 +235,22 @@ Obtains the pointer to the OH_PixelmapNative object of a main picture.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object.|
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **mainPixelmap | Double pointer to the OH_PixelmapNative object obtained.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **mainPixelmap | Double pointer to the OH_PixelmapNative object obtained.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_PictureNative_GetHdrComposedPixelmap()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *picture, OH_PixelmapNative **hdrPixelmap)
 ```
 
@@ -158,23 +260,48 @@ Obtains the pointer to the OH_PixelmapNative object of an HDR picture.
 
 **Since**: 13
 
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **hdrPixelmap | Double pointer to the OH_PixelmapNative object of the HDR picture.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_OPERATION**: The operation is not supported. For example, the Picture object does not contain a gain map.|
+
+### OH_PictureNative_GetHdrComposedPixelmapWithOptions()
+
+```c
+Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmapWithOptions(OH_PictureNative *picture, OH_ComposeOptions *options, OH_PixelmapNative **hdrPixelmap)
+```
+
+**Description**
+
+Obtains the pointer to **OH_PixelmapNative** of an HDR picture based on **OH_ComposeOptions**.
+
+**Since**: 23
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object.|
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **hdrPixelmap | Double pointer to the OH_PixelmapNative object of the HDR picture.|
+| [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) *options | Pointer to **OH_ComposeOptions**.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **hdrPixelmap | Pointer to **OH_PixelmapNative** of the obtained HDR picture.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_UNSUPPORTED_OPERATION**: The operation is not supported. For example, the Picture object does not contain a gain map.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_OPERATION**: The operation is not supported. For example, the Picture object does not contain a gain map.|
 
 ### OH_PictureNative_GetGainmapPixelmap()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_GetGainmapPixelmap(OH_PictureNative *picture, OH_PixelmapNative **gainmapPixelmap)
 ```
 
@@ -184,24 +311,23 @@ Obtains the pointer to the OH_PixelmapNative object of a gain map.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object.|
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **gainmapPixelmap | Double pointer to the OH_PixelmapNative object of the gain map.|
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **gainmapPixelmap | Double pointer to the OH_PixelmapNative object of the gain map.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_PictureNative_SetAuxiliaryPicture()
 
-```
-Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type,OH_AuxiliaryPictureNative *auxiliaryPicture)
+```c
+Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative *auxiliaryPicture)
 ```
 
 **Description**
@@ -210,25 +336,24 @@ Sets an auxiliary picture.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object.|
-| [Image_AuxiliaryPictureType](#image_auxiliarypicturetype) type | Type of the auxiliary picture.|
+| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) type | Type of the auxiliary picture.|
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) *auxiliaryPicture | Pointer to an OH_AuxiliaryPictureNative object.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_PictureNative_GetAuxiliaryPicture()
 
-```
-Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type,OH_AuxiliaryPictureNative **auxiliaryPicture)
+```c
+Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)
 ```
 
 **Description**
@@ -237,25 +362,24 @@ Obtains an auxiliary picture by type.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to an OH_PictureNative object.|
-| [Image_AuxiliaryPictureType](#image_auxiliarypicturetype) type | Type of the auxiliary picture.|
+| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) type | Type of the auxiliary picture.|
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) **auxiliaryPicture | Double pointer to the OH_AuxiliaryPictureNative object obtained.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_PictureNative_GetMetadata()
 
-```
-Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata **metadata)
+```c
+Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType, OH_PictureMetadata **metadata)
 ```
 
 **Description**
@@ -263,7 +387,6 @@ Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_Me
 Obtains the metadata of a main picture.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -277,12 +400,12 @@ Obtains the metadata of a main picture.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_UNSUPPORTED_METADATA**: unsupported metadata type.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: unsupported metadata type.|
 
 ### OH_PictureNative_SetMetadata()
 
-```
-Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType,OH_PictureMetadata *metadata)
+```c
+Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType, OH_PictureMetadata *metadata)
 ```
 
 **Description**
@@ -290,7 +413,6 @@ Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_Me
 Sets the metadata for a main picture.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -304,11 +426,11 @@ Sets the metadata for a main picture.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_UNSUPPORTED_METADATA**: unsupported metadata type.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: unsupported metadata type.|
 
 ### OH_PictureNative_Release()
 
-```
+```c
 Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)
 ```
 
@@ -317,7 +439,6 @@ Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)
 Releases the pointer to an OH_PictureNative object.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -329,20 +450,19 @@ Releases the pointer to an OH_PictureNative object.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureNative_Create()
 
-```
-Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size,Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)
+```c
+Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)
 ```
 
 **Description**
 
-Creates the pointer to an OH_AuxiliaryPictureNative object.
+Creates the pointer to an OH_AuxiliaryPictureNative object. This API supports only continuous pixel data whose [pixel format](./capi-pixelmap-native-h.md#pixel_format) is BGRA_8888 and creates an auxiliary picture in RGBA_8888 format.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -351,19 +471,19 @@ Creates the pointer to an OH_AuxiliaryPictureNative object.
 | uint8_t *data | Pointer to the image data.|
 | size_t dataLength | Length of the image data.|
 | [Image_Size](capi-image-nativemodule-image-size.md) *size | Pointer to the size of the auxiliary picture.|
-| [Image_AuxiliaryPictureType](#image_auxiliarypicturetype) type | Type of the auxiliary picture.|
+| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) type | Type of the auxiliary picture.|
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) **auxiliaryPicture | Double pointer to the OH_AuxiliaryPictureNative object created.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureNative_WritePixels()
 
-```
-Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source,size_t bufferSize)
+```c
+Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source, size_t bufferSize)
 ```
 
 **Description**
@@ -371,7 +491,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative 
 Reads pixels in the buffer and writes the result to an auxiliary picture.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -385,12 +504,12 @@ Reads pixels in the buffer and writes the result to an auxiliary picture.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_ALLOC_FAILED**: memory allocation failure.<br> **IMAGE_COPY_FAILED**: memory copy failure.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_ALLOC_FAILED**: memory allocation failure.<br>         **IMAGE_COPY_FAILED**: memory copy failure.|
 
 ### OH_AuxiliaryPictureNative_ReadPixels()
 
-```
-Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination,size_t *bufferSize)
+```c
+Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination, size_t *bufferSize)
 ```
 
 **Description**
@@ -398,7 +517,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *
 Reads pixels of an auxiliary picture and writes the result to the buffer.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -412,12 +530,12 @@ Reads pixels of an auxiliary picture and writes the result to the buffer.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_ALLOC_FAILED**: memory allocation failure.<br> **IMAGE_COPY_FAILED**: memory copy failure.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_ALLOC_FAILED**: memory allocation failure.<br>         **IMAGE_COPY_FAILED**: memory copy failure.|
 
 ### OH_AuxiliaryPictureNative_GetType()
 
-```
-Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_AuxiliaryPictureType *type)
+```c
+Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_AuxiliaryPictureType *type)
 ```
 
 **Description**
@@ -426,24 +544,23 @@ Obtains the type of an auxiliary picture.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) *auxiliaryPicture | Pointer to an OH_AuxiliaryPictureNative object.|
-| [Image_AuxiliaryPictureType](#image_auxiliarypicturetype) *type | Pointer to the auxiliary picture type.|
+| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) *type | Pointer to the auxiliary picture type.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureNative_GetInfo()
 
-```
-Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture,OH_AuxiliaryPictureInfo **info)
+```c
+Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture, OH_AuxiliaryPictureInfo **info)
 ```
 
 **Description**
@@ -451,7 +568,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *aux
 Obtains the information of an auxiliary picture.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -464,12 +580,12 @@ Obtains the information of an auxiliary picture.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureNative_SetInfo()
 
-```
-Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture,OH_AuxiliaryPictureInfo *info)
+```c
+Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture, OH_AuxiliaryPictureInfo *info)
 ```
 
 **Description**
@@ -477,7 +593,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *aux
 Sets the information for an auxiliary picture.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -490,12 +605,12 @@ Sets the information for an auxiliary picture.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureNative_GetMetadata()
 
-```
-Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_MetadataType metadataType, OH_PictureMetadata **metadata)
+```c
+Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_MetadataType metadataType, OH_PictureMetadata **metadata)
 ```
 
 **Description**
@@ -503,7 +618,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative 
 Obtains the metadata of an auxiliary picture.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -517,12 +631,12 @@ Obtains the metadata of an auxiliary picture.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_UNSUPPORTED_METADATA**: unsupported metadata type, or mismatch between the metadata type and the auxiliary picture type.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: unsupported metadata type, or mismatch between the metadata type and the auxiliary picture type.|
 
 ### OH_AuxiliaryPictureNative_SetMetadata()
 
-```
-Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture,Image_MetadataType metadataType, OH_PictureMetadata *metadata)
+```c
+Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_MetadataType metadataType, OH_PictureMetadata *metadata)
 ```
 
 **Description**
@@ -530,7 +644,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative 
 Sets the metadata for an auxiliary picture.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -544,11 +657,11 @@ Sets the metadata for an auxiliary picture.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_UNSUPPORTED_METADATA**: unsupported metadata type, or mismatch between the metadata type and the auxiliary picture type.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: unsupported metadata type, or mismatch between the metadata type and the auxiliary picture type.|
 
 ### OH_AuxiliaryPictureNative_Release()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *picture)
 ```
 
@@ -557,7 +670,6 @@ Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *pic
 Releases the pointer to an OH_AuxiliaryPictureNative object.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -569,11 +681,11 @@ Releases the pointer to an OH_AuxiliaryPictureNative object.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureInfo_Create()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)
 ```
 
@@ -582,7 +694,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)
 Creates an OH_AuxiliaryPictureInfo object.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -594,72 +705,69 @@ Creates an OH_AuxiliaryPictureInfo object.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureInfo_GetType()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType *type)
 ```
 
 **Description**
 
-Obtains the auxiliary picture type from the auxiliary picture information.
+Obtains the auxiliary picture type in **OH_AuxiliaryPictureInfo**.
 
 **Since**: 13
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
-| [Image_AuxiliaryPictureType](#image_auxiliarypicturetype) *type | Pointer to the type of the auxiliary picture.|
+| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) *type | Pointer to the type of the auxiliary picture.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureInfo_SetType()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType type)
 ```
 
 **Description**
 
-Sets the auxiliary picture type in the auxiliary picture information.
+Sets the auxiliary picture type in **OH_AuxiliaryPictureInfo**.
 
 **Since**: 13
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
-| [Image_AuxiliaryPictureType](#image_auxiliarypicturetype) type | Type of the auxiliary picture.|
+| [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) type | Type of the auxiliary picture.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureInfo_GetSize()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)
 ```
 
 **Description**
 
-Obtains the size of an auxiliary picture.
+Obtains the image size in **OH_AuxiliaryPictureInfo**.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -672,20 +780,19 @@ Obtains the size of an auxiliary picture.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureInfo_SetSize()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)
 ```
 
 **Description**
 
-Sets the size for an auxiliary picture.
+Sets the image size in **OH_AuxiliaryPictureInfo**.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -698,72 +805,69 @@ Sets the size for an auxiliary picture.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureInfo_GetRowStride()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t *rowStride)
 ```
 
 **Description**
 
-Obtains the row stride of an auxiliary picture.
+Obtains the row stride in **OH_AuxiliaryPictureInfo**.
 
 **Since**: 13
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
-| uint32_t *rowStride | Pointer to the row stride, which is the number of bytes from one row of pixels in memory to the next row of pixels in memory.|
+| uint32_t *rowStride | Pointer to the row stride, which is the space occupied by each row of pixels in memory.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureInfo_SetRowStride()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t rowStride)
 ```
 
 **Description**
 
-Sets the row stride for an auxiliary picture.
+Sets the row stride in **OH_AuxiliaryPictureInfo**.
 
 **Since**: 13
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
-| uint32_t rowStride | Row stride, which is the number of bytes from one row of pixels in memory to the next row of pixels in memory.|
+| uint32_t rowStride | Row stride, which is the space occupied by each row of pixels in memory.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureInfo_GetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT *pixelFormat)
 ```
 
 **Description**
 
-Obtains the pixel format of an auxiliary picture.
+Obtains the pixel format in **OH_AuxiliaryPictureInfo**.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -776,20 +880,19 @@ Obtains the pixel format of an auxiliary picture.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureInfo_SetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)
 ```
 
 **Description**
 
-Sets the pixel format for an auxiliary picture.
+Sets the pixel format in **OH_AuxiliaryPictureInfo**.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -802,11 +905,11 @@ Sets the pixel format for an auxiliary picture.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_AuxiliaryPictureInfo_Release()
 
-```
+```c
 Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)
 ```
 
@@ -815,7 +918,6 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)
 Releases the pointer to an OH_AuxiliaryPictureInfo object.
 
 **Since**: 13
-
 
 **Parameters**
 
@@ -827,4 +929,4 @@ Releases the pointer to an OH_AuxiliaryPictureInfo object.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|

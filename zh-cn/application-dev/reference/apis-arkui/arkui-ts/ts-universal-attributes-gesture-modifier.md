@@ -1,7 +1,7 @@
 # 动态手势设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## gestureModifier
 
@@ -78,8 +80,9 @@ class MyButtonModifier implements GestureModifier {
         new TapGestureHandler({
           count: 2,
           fingers: 1,
+          // 从API version 23开始，新增distanceThreshold属性
           distanceThreshold: 100
-        })//从API version 23开始，新增distanceThreshold属性。
+        })
           .tag("aaa")
           .onAction((event: GestureEvent) => {
             console.info('Gesture Info is', JSON.stringify(event));

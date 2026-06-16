@@ -5,11 +5,11 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
+支持媒体密钥管理。在调用MediaKeySession方法之前，必须使用[createMediaKeySession](arkts-apis-drm-MediaKeySystem.md#createmediakeysession)获取一个MediaKeySession实例。
+
 > **说明：**
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-支持媒体密钥管理。在调用MediaKeySession方法之前，必须使用[createMediaKeySession](arkts-apis-drm-MediaKeySystem.md#createmediakeysession)获取一个MediaKeySession实例。
 
 ## 导入模块
 
@@ -32,9 +32,9 @@ generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: nu
 | 参数名     | 类型                                             | 必填 | 说明                                                                                                     |
 | -------- | ----------------------------------------------- | ---- |--------------------------------------------------------------------------------------------------------|
 | mimeType  | string     | 是   | 媒体类型，DRM解决方案名称，可通过[isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported-1)查询。 |
-| initData  | Uint8Array     | 是   | 初始数据。                                                                                                  |
-| mediaKeyType| number     | 是   | 媒体密钥类型。0表示在线，1表示离线。                                                                                    |
-| options  | [OptionsData[]](arkts-apis-drm-i.md#optionsdata)     | 否   | 可选数据。                                                                                                  |
+| initData  | Uint8Array     | 是   | 初始数据，即加密流中的PSSH box中的实际PSSH数据。可通过监听AVPlayer的'mediaKeySystemInfoUpdate'事件（[on('mediaKeySystemInfoUpdate')](../apis-media-kit/arkts-apis-media-AVPlayer.md#onmediakeysysteminfoupdate11)）获取DRM信息，从中提取pssh字段生成initData。具体开发流程可参考[基于AVPlayer播放DRM节目(ArkTS)](../../media/drm/drm-avplayer-arkts-integration.md)。                                                                                                     |
+| mediaKeyType| number     | 是   | 媒体密钥类型。取值范围为[0, 1]。0表示在线，1表示离线。<br>传入指定范围外的参数会导致参数校验失败，抛出错误码401。                                                                                    |
+| options  | [OptionsData[]](arkts-apis-drm-i.md#optionsdata)     | 否   | 可选数据。默认值为空数组。                                                                                                  |
 
 **返回值：**
 
@@ -44,7 +44,7 @@ generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: nu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -56,7 +56,6 @@ generateMediaKeyRequest(mimeType: string, initData: Uint8Array, mediaKeyType: nu
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -64,8 +63,6 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let uint8pssh = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateMediaKeyRequest("video/avc", uint8pssh, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE).then((mediaKeyRequest: drm.MediaKeyRequest) =>{
   console.info('generateMediaKeyRequest' + mediaKeyRequest);
-}).catch((err: BusinessError) => {
-  console.error(`generateMediaKeyRequest: ERROR: ${err}`);
 });
 ```
 
@@ -93,7 +90,7 @@ processMediaKeyResponse(response: Uint8Array): Promise<Uint8Array\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -105,7 +102,6 @@ processMediaKeyResponse(response: Uint8Array): Promise<Uint8Array\>
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -113,8 +109,6 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let mediaKeyResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint8Array) => {
   console.info('processMediaKeyResponse:' + mediaKeyId);
-}).catch((err: BusinessError) => {
-  console.error(`processMediaKeyResponse: ERROR: ${err}`);
 });
 ```
 
@@ -147,16 +141,10 @@ mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-try {
-  let keyStatus: drm.MediaKeyStatus[] =  mediaKeySession.checkMediaKeyStatus();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`checkMediaKeyStatus ERROR: ${error}`);
-}
+let keyStatus: drm.MediaKeyStatus[] =  mediaKeySession.checkMediaKeyStatus();
 ```
 
 ## clearMediaKeys
@@ -182,7 +170,6 @@ clearMediaKeys(): void
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -190,15 +177,8 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let mediaKeyResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processMediaKeyResponse(mediaKeyResponse).then((mediaKeyId: Uint8Array) => {
   console.info('processMediaKeyResponse:' + mediaKeyId);
-}).catch((err: BusinessError) => {
-  console.error(`processMediaKeyResponse: ERROR: ${err}`);
 });
-try {
-  mediaKeySession.clearMediaKeys();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`clearMediaKeys ERROR: ${error}`);
-}
+mediaKeySession.clearMediaKeys();
 ```
 
 ## generateOfflineReleaseRequest
@@ -225,7 +205,7 @@ generateOfflineReleaseRequest(mediaKeyId: Uint8Array): Promise<Uint8Array\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -237,7 +217,6 @@ generateOfflineReleaseRequest(mediaKeyId: Uint8Array): Promise<Uint8Array\>
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -245,8 +224,6 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRequest: Uint8Array) => {
   console.info('generateOfflineReleaseRequest:' + offlineReleaseRequest);
-}).catch((err: BusinessError) => {
-  console.error(`generateOfflineReleaseRequest: ERROR: ${err}`);
 });
 ```
 
@@ -255,6 +232,8 @@ mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRe
 processOfflineReleaseResponse(mediaKeyId: Uint8Array, response: Uint8Array): Promise<void\>
 
 处理离线媒体密钥释放响应。使用Promise异步回调。
+
+如果设备上的DRM解决方案不支持离线媒体密钥释放，将抛出错误码24700101。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -271,11 +250,11 @@ processOfflineReleaseResponse(mediaKeyId: Uint8Array, response: Uint8Array): Pro
 
 | 类型                                             | 说明                           |
 | ----------------------------------------------- | ---------------------------- |
-| Promise<void\>          | Promise对象，设备上的DRM解决方案支持离线媒体密钥释放处理，则返回。                   |
+| Promise<void\>          | Promise对象，无返回结果。                   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -287,7 +266,6 @@ processOfflineReleaseResponse(mediaKeyId: Uint8Array, response: Uint8Array): Pro
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -295,15 +273,11 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.generateOfflineReleaseRequest(mediaKeyId).then((offlineReleaseRequest: Uint8Array) => {
   console.info('generateOfflineReleaseRequest:' + offlineReleaseRequest);
-}).catch((err: BusinessError) => {
-  console.error(`generateOfflineReleaseRequest: ERROR: ${err}`);
 });
 // offlineReleaseResponse是从DRM服务获取的离线媒体密钥释放响应，请按实际长度申请内存。
 let offlineReleaseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.processOfflineReleaseResponse(mediaKeyId, offlineReleaseResponse).then(() => {
   console.info('processOfflineReleaseResponse');
-}).catch((err: BusinessError) => {
-  console.error(`processOfflineReleaseResponse: ERROR: ${err}`);
 });
 ```
 
@@ -327,11 +301,11 @@ restoreOfflineMediaKeys(mediaKeyId: Uint8Array): Promise<void\>
 
 | 类型                                             | 说明                           |
 | ----------------------------------------------- | ---------------------------- |
-| Promise<void\>          | Promise对象。                   |
+| Promise<void\>          | Promise对象，无返回结果。                   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -343,7 +317,6 @@ restoreOfflineMediaKeys(mediaKeyId: Uint8Array): Promise<void\>
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -351,8 +324,6 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySession.restoreOfflineMediaKeys(mediaKeyId).then(() => {
   console.info("restoreOfflineMediaKeys");
-}).catch((err: BusinessError) => {
-  console.error(`restoreOfflineMediaKeys: ERROR: ${err}`);
 });
 ```
 
@@ -385,16 +356,11 @@ getContentProtectionLevel(): ContentProtectionLevel
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-try {
-  let contentProtectionLevel: drm.ContentProtectionLevel = mediaKeySession.getContentProtectionLevel();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getContentProtectionLevel ERROR: ${error}`);
-}
+let contentProtectionLevel: drm.ContentProtectionLevel = mediaKeySession.getContentProtectionLevel();
+console.info(`contentProtectionLevel: ${contentProtectionLevel}`);
 ```
 
 ## requireSecureDecoderModule
@@ -421,7 +387,7 @@ requireSecureDecoderModule(mimeType: string): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -433,16 +399,10 @@ requireSecureDecoderModule(mimeType: string): boolean
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-try {
-  let status: boolean = mediaKeySession.requireSecureDecoderModule("video/avc");
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`requireSecureDecoderModule ERROR: ${error}`);
-} 
+let status: boolean = mediaKeySession.requireSecureDecoderModule("video/avc");
 ```
 
 ## on('keyRequired')
@@ -464,7 +424,7 @@ on(type: 'keyRequired', callback: (eventInfo: EventInfo) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -489,6 +449,8 @@ off(type: 'keyRequired', callback?: (eventInfo: EventInfo) => void): void
 
 注销密钥请求事件监听。使用callback异步回调。
 
+该接口用于注销已在on('keyRequired')中注册的监听，当播放DRM节目需要获取媒体密钥时触发的事件。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
@@ -498,11 +460,11 @@ off(type: 'keyRequired', callback?: (eventInfo: EventInfo) => void): void
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keyRequired'。 |
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，返回事件信息。可选。                |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，返回事件信息。可选参数，不传时注销该事件类型的所有监听。                |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -538,7 +500,7 @@ on(type: 'keyExpired', callback: (eventInfo: EventInfo) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -572,11 +534,11 @@ off(type: 'keyExpired', callback?: (eventInfo: EventInfo) => void): void
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keyExpired'。 |
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，返回事件信息。可选。                |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，返回事件信息。可选参数，不传时注销该事件类型的所有监听。                |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -612,7 +574,7 @@ on(type: 'vendorDefined', callback: (eventInfo: EventInfo) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -646,11 +608,11 @@ off(type: 'vendorDefined', callback?: (eventInfo: EventInfo) => void): void
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件，固定为'vendorDefined'。 |
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，返回事件信息。可选。                |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，返回事件信息。可选参数，不传时注销该事件类型的所有监听。                |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -686,7 +648,7 @@ on(type: 'expirationUpdate', callback: (eventInfo: EventInfo) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -720,11 +682,11 @@ off(type: 'expirationUpdate', callback?: (eventInfo: EventInfo) => void): void
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'expirationUpdate'。 |
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，返回事件信息。可选。                |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 否   | 回调函数，返回事件信息。可选参数，不传时注销该事件类型的所有监听。                |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -760,7 +722,7 @@ on(type: 'keysChange', callback: (keyInfo: KeysInfo[], newKeyAvailable: boolean)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -796,11 +758,11 @@ off(type: 'keysChange', callback?: (keyInfo: KeysInfo[], newKeyAvailable: boolea
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 监听事件类型，固定为'keysChange'。 |
-| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void | 否   | 回调函数，返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。                |
+| callback | (keyInfo: [KeysInfo[]](arkts-apis-drm-i.md#keysinfo), newKeyAvailable: boolean) => void | 否   | 回调函数，返回事件信息，包含密钥标识和密钥状态描述的列表及密钥是否可用。<br>可选参数，不传时注销该事件类型的所有监听。                |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -840,15 +802,8 @@ destroy(): void
 
 ```ts
 import { drm } from '@kit.DrmKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
-try {
-  mediaKeySession.destroy();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`mediaKeySession destroy ERROR: ${error}`);
-}
-
+mediaKeySession.destroy();
 ```

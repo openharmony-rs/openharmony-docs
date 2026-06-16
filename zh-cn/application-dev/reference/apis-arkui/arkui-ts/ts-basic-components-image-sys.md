@@ -10,7 +10,7 @@ Image为图片组件，常用于在应用中显示图片。
 
 > **说明：**
 >
-> 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[Image](ts-basic-components-image.md)。
 
@@ -23,6 +23,8 @@ analyzerConfig(config: ImageAnalyzerConfig)
 设置AI分析类型，包括主体识别和文字识别功能，默认全部开启。分析类型不支持动态修改。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +44,8 @@ edgeAntialiasing(value: number)
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -57,6 +61,8 @@ pointLight(value: PointLightStyle)
 设置点光源样式。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ enhancedImageQuality(imageQuality: ResolutionQuality)
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -86,14 +94,16 @@ enhancedImageQuality(imageQuality: ResolutionQuality)
 
 ## ResolutionQuality<sup>12+</sup>
 
-图像解码时的图像解码分辨率选项。
+type ResolutionQuality = import('../api/@ohos.multimedia.image').default.ResolutionQuality
+
+画质效果等级类型。
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 值                     | 说明                    |
-| ------ | --------------------------  | --------------------------  |
-| Low   | 1  | 低图像分辨率，解码时间适中。   |
-| Medium | 2 | 中等图像分辨率，解码时间适中。  |
-| High   | 3   | 高图像分辨率，解码时间长。    |
+| 类型     | 说明       |
+| ------ | ---------- |
+| import('../api/@ohos.multimedia.image').default.[ResolutionQuality](../../apis-image-kit/js-apis-image-sys.md#resolutionquality12) | 画质效果等级类型。 |

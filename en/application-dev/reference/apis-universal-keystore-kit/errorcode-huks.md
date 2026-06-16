@@ -122,15 +122,15 @@ Locate and rectify the IPC failure.
 
 **Error Message**
 
-Crypto engine error.
+Crypto engine error or UKey driver error.
 
 **Description**
 
-Crypto operation failed.
+The algorithm library operation or UKey driver operation fails.
 
 **Possible Causes**
 
-The algorithm library operation fails. The possible causes include the following:
+The possible causes are as follows:
 
 1. The encryption and decryption on the algorithm library failed due to incorrect ciphertext data.
 2. Incorrect key parameters exist.
@@ -193,7 +193,7 @@ The token of the current user has timed out.
 
 **Possible Causes**
 
-The authentication failed because the authentication token timed out.
+The user authentication access control attribute is set for the key, and the authentication timeout interval (**timeout**) is specified. However, the user authentication is not completed within the **timeout** period after the key **init** operation. As a result, the authentication token expires, and the current key session becomes invalid.
 
 **Solution**
 
@@ -222,7 +222,7 @@ The number of concurrent key operation sessions has reached the maximum (15).
 
 **Error Message**
 
-The entity does not exist.
+Queried entity does not exist.
 
 **Description**
 
@@ -249,11 +249,17 @@ The device environment or input parameters are abnormal.
 
 **Possible Causes**
 
-An external error, such as a hardware fault or file error, occurs.
+<!--RP1-->
+The external hardware, file, or input parameter is abnormal.
+ <!--RP1End-->
 
 **Solution**
 
-Provide the error code and log information to the related party.
+<!--RP2-->
+1. Check whether the input parameters are valid and whether the parameter types and value ranges meet the requirements.
+2. Check whether the device environment is normal and whether the hardware and system status are normal.
+3. If no error is found, submit the error code and logs to the community for help.
+<!--RP2End-->
 
 ## 12000013 The Credential Does Not Exist
 
@@ -357,3 +363,148 @@ The entered parameter is invalid.
 **Solution**
 
 Make sure all the mandatory parameters are passed in and the types of the passed-in parameter are valid. If parameter verification fails, read the parameter specifications and locate the fault based on the possible causes.
+
+## 12000019 Provider Name Already Registered
+
+**Error Message**
+
+The provider is already registered.
+
+**Description**
+
+The provider to be registered already exists.
+
+**Possible Causes**
+
+The provider with the same name is registered repeatedly, or the previously registered provider is not unregistered.
+
+**Solution**
+
+Check whether the provider to be registered is correct. If the provider is correct, deregister the provider and register it again.
+
+## 12000020 Dependent Module Error
+
+**Error Message**
+
+The provider operation failed.
+
+**Description**
+
+The downstream dependent module reports an error.
+
+**Possible Causes**
+
+The downstream dependent module reports an error.
+
+**Solution**
+
+Check the cause of the error reported by the downstream module based on the error code or error message returned.
+
+## 12000021 UKey PIN Locked
+
+**Error Message**
+
+The UKey PIN is locked.
+
+**Description**
+
+The UKey PIN is locked.
+
+**Possible Causes**
+
+The PIN is locked due to too many incorrect PIN attempts.
+
+**Solution**
+
+Contact the bank to unlock the UKey.
+
+## 12000022 Incorrect UKey PIN
+
+**Error Message**
+
+The UKey PIN is incorrect.
+
+**Description**
+
+The UKey PIN is incorrect.
+
+**Possible Causes**
+
+The PIN is incorrect.
+
+**Solution**
+
+Enter the correct PIN.
+
+## 12000023 Unauthenticated UKey PIN
+
+**Error Message**
+
+The UKey PIN is not authenticated.
+
+**Description**
+
+The UKey PIN is not authenticated.
+
+**Possible Causes**
+
+PIN authentication is required for the operation, but the PIN has not been authenticated.
+
+**Solution**
+
+Authenticate the UKey PIN and then perform the operation that requires authentication.
+
+## 12000024 Device or Resource Busy
+
+**Error Message**
+
+The provider or UKey is busy.
+
+**Description**
+
+The device or resource is busy.
+
+**Possible Causes**
+
+The device or resource is busy.
+
+**Solution**
+
+Try again, or remove and insert the UKey and try again.
+
+## 12000025 Resource Limit Exceeded
+
+**Error Message**
+
+The resource exceeds the limit.
+
+**Description**
+
+The resource limit is exceeded.
+
+**Possible Causes**
+
+The resource limit is exceeded.
+
+**Solution**
+
+Check whether there are unreleased resources. If yes, release the resources and try again.
+
+## 12000026 Secure Element Fault
+
+**Error Message**
+
+the secure element is not available.
+
+**Description**
+
+The secure element is faulty.
+
+**Possible Causes**
+
+The secure element is faulty.
+
+**Solution**
+
+1. Try again later or restart the device and try again.
+2. If the fault persists, submit the error code and logs to the community.

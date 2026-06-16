@@ -24,6 +24,8 @@ setMenuOptions(options: TextMenuOptions): void
 
 **原子化服务API：** 从API version 16开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -102,6 +104,8 @@ static disableSystemServiceMenuItems(disable: boolean): void
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -175,6 +179,10 @@ static disableMenuItems(items: Array\<TextMenuItemId>): void
 >
 > - 使用该接口时，全局生效，多次调用以最后一次为准。
 >
+> - 禁用一级菜单项，会同时禁用其所有的二级菜单项。例如禁用一级菜单项[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的autoFill（父菜单项），会同时禁用二级菜单项[TextMenuItemId](./arkui-ts/ts-text-common.md#textmenuitemid12)中的密码保险箱passwordVault（子菜单项）。
+>
+> - 不支持禁用二级菜单项。如果需要，可通过禁用对应的一级菜单项实现。
+>
 > - 可以通过以下三种方式恢复禁用菜单：
 >
 >   - 仅设置disableSystemServiceMenuItems(true)禁用菜单时，设置false即可恢复禁用；
@@ -182,6 +190,8 @@ static disableMenuItems(items: Array\<TextMenuItemId>): void
 >   - 当disableSystemServiceMenuItems与disableMenuItems同时使用时，则前者设置为false，后者设置为空数组，即可恢复禁用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

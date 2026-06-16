@@ -3,7 +3,7 @@
 <!--Subsystem: Request-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
 The **request** module provides applications with basic upload, download, and background transmission agent capabilities.
@@ -83,11 +83,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | permission denied. |
+| 201 | Permission denied. |
 | 202 | permission verification failed, application which is not a system application uses system API. |
-| 401 | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
-| 13400003 | task service ability error. |
-| 21900006 | task not found. |
+| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
+| 13400003 | Task service ability error. |
+| 21900006 | Task removed or not found. |
 
 **Example**
 
@@ -134,11 +134,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | permission denied. |
+| 201 | Permission denied. |
 | 202 | permission verification failed, application which is not a system application uses system API. |
-| 401 | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
-| 13400003 | task service ability error. |
-| 21900006 | task not found. |
+| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
+| 13400003 | Task service ability error. |
+| 21900006 | Task removed or not found. |
 
 **Example**
 

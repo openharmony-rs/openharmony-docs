@@ -1,8 +1,8 @@
 # 通知错误码
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -102,6 +102,7 @@ Notification slot disabled.
 
 2、通知设置里查看应用该类型渠道状态，要保持开启状态。
 
+<!--Del-->
 ## 1600006 通知删除失败
 
 **错误信息**
@@ -119,6 +120,7 @@ Notification deletion disabled.
 **处理步骤**
 
 参考[NotificationRequest](./js-apis-inner-notification-notificationRequest.md)通知禁止删除属性。
+<!--DelEnd-->
 
 ## 1600007 通知不存在
 
@@ -192,6 +194,7 @@ Distributed operation failed.
 
 检查分布式连接是否正常。
 
+<!--Del-->
 ## 1600011 读模板配置文件错误
 
 **错误信息**
@@ -209,8 +212,9 @@ Failed to read the template configuration.
 **处理步骤**
 
 请检查系统中模板配置文件是否存在，配置文件路径：/system/etc/notification_template/external.json。
+<!--DelEnd-->
 
-## 1600012 内存空间不够
+## 1600012 内存空间不足
 
 **错误信息**
 
@@ -218,9 +222,11 @@ No memory space.
 
 **错误描述**
 
-内存申请出现错误，方法将返回该错误码。
+内存申请可能因内存空间不足出现错误，方法将返回该错误码。
 
 **可能原因**
+
+内存空间不足。
 
 内存申请出现错误。
 
@@ -301,6 +307,7 @@ The notification version for this update is too low.
 
 确认通知版本。
 
+<!--Del-->
 ## 1600017 没有对应的代理关系配置
 
 **错误信息**
@@ -318,6 +325,7 @@ There is no corresponding agent relationship configuration.
 **处理步骤**
 
 确认代理关系配置。
+<!--DelEnd-->
 
 ## 1600018 通知设置页面已经拉起
 
@@ -337,6 +345,7 @@ The notification settings window is already displayed.
 
 确认通知设置页面是否拉起。
 
+<!--Del-->
 ## 1600019 没有对应勿扰模式编号的配置信息
 
 **错误信息**
@@ -354,6 +363,7 @@ The do-not-disturb profile does not exist.
 **处理步骤**
 
 确认查询的勿扰模式编号是否正确。
+<!--DelEnd-->
 
 ## 1600020 不允许权限管控名单中的应用发布通知
 
@@ -373,6 +383,7 @@ The application is not allowed to send notifications due to permission settings.
 
 该应用受到[企业设备管理](../../mdm/mdm-kit-intro.md)的权限管控，应用无法主动退出权限管控名单。
 
+<!--Del-->
 ## 1600021 跨设备通信超时
 
 **错误信息**
@@ -390,7 +401,9 @@ Distributed operation timed out.
 **处理步骤**
 
 检查设备间连接是否正常（例如手机与手表是否配对成功）。
+<!--DelEnd-->
 
+<!--Del-->
 ## 1600022 无效的包信息
 
 **错误信息**
@@ -408,6 +421,7 @@ The specified bundle is invalid.
 **处理步骤**
 
 检查包信息是否正确。
+<!--DelEnd-->
 
 ## 1600023 app NotificationSubscriberExtensionAbility未实现
 
@@ -427,6 +441,7 @@ The application does not implement the NotificationSubscriberExtensionAbility.
 
 应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考[ExtensionAbility组件](../../application-models/extensionability-overview.md)中的[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。
 
+<!--Del-->
 ## 1600024 未配置自定义铃声
 
 **错误信息**
@@ -444,3 +459,84 @@ The specified bundle has no custom ringtone information.
 **处理步骤**
 
 检查指定应用是否配置自定义铃声信息。
+<!--DelEnd-->
+
+<!--Del-->
+## 1600025 地理围栏开关关闭
+
+**错误信息**
+
+Geofencing disabled.
+
+**错误描述**
+
+当地理围栏开关为关闭状态时，方法将返回该错误码。
+
+**可能原因**
+
+地理围栏开关为关闭状态。
+
+**处理步骤**
+
+需要用户在通知设置里开启地理围栏开关。
+<!--DelEnd-->
+
+<!--Del-->
+## 1600026 位置功能开关关闭
+
+**错误信息**
+
+The location switch is off.
+
+**错误描述**
+
+位置功能的开关未开启导致注册地理围栏失败。
+
+**可能原因**
+
+位置功能的开关未开启，导致持续定位，单次定位和地理围栏等功能不可用。
+
+**处理步骤**
+
+请提示用户开启位置功能的开关。
+<!--DelEnd-->
+
+<!--Del-->
+## 1600027 位置系统服务的“感知与提醒”开关关闭
+
+**错误信息**
+
+The "Awareness & suggestions" switch of the location-based service is off.
+
+**错误描述**
+
+位置系统服务的“感知与提醒”开关关闭，导致注册地理围栏失败。
+
+**可能原因**
+
+设置->隐私和安全->位置->最底部“系统服务”->感知与提醒 开关被关闭。
+
+**处理步骤**
+
+打开如下位置开关，设置->隐私和安全->位置->最底部“系统服务”->感知与提醒。
+<!--DelEnd-->
+
+<!--Del-->
+## 1600028 当前通知不支持该接口
+
+**错误信息**
+
+This notification is not supported.
+
+**错误描述**
+
+当前通知不支持该接口。
+
+**可能原因**
+
+设置稍后提醒时，该通知类型为三方实况、系统实况或者其他无法删除的类型。
+
+**处理步骤**
+
+设置稍后提醒时，检查该通知类型是否为三方实况、系统实况或者其他无法删除的类型。
+<!--DelEnd-->

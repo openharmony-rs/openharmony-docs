@@ -21,8 +21,8 @@ Only the first notification is displayed on the device. Duplicate notifications 
 
 ## Constraints
 
-- The uniqueness of the [appMessageId](../../application-dev/reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) field must be ensured. This field for the same notification must stay consistent on all devices.
-- The [appMessageId](../../application-dev/reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) field is valid only within 24 hours after the notification is published. If the notification is published beyond 24 hours or the device is restarted, this field becomes invalid.
+- You must ensure the uniqueness of **appMessageId**. The same notification must retain the same value for this field across all device form factors.
+- This field is only valid within 24 hours after the notification is published. It becomes invalid after 24 hours or when the device is restarted.
 
 ## Available APIs
 
@@ -34,34 +34,38 @@ Only the first notification is displayed on the device. Duplicate notifications 
 
 1. Import the related modules.
 
-    ```typescript
-    import { notificationManager } from '@kit.NotificationKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    ```
+   <!-- @[clear_duplicate_notifications_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
+   
+   ``` TypeScript
+   import { notificationManager } from '@kit.NotificationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 2. Publish a notification that contains the **appMessageId** field.
 
-    ```typescript
-    // publish callback
-    let publishCallback = (err: BusinessError): void => {
-        if (err) {
-            console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
-        } else {
-            console.info(`Succeeded in publishing notification.`);
-        }
-    }
-    // NotificationRequest object
-    let notificationRequest: notificationManager.NotificationRequest = {
-        id: 1,
-        content: {
-            notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
-            normal: {
-            title: 'test_title',
-            text: 'test_text',
-            additionalText: 'test_additionalText'
-            }
-        },
-        appMessageId: 'test_appMessageId_1'
-    };
-    notificationManager.publish(notificationRequest, publishCallback);
-    ```
+   <!-- @[pub_appmsgid_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
+   
+   ``` TypeScript
+   // publish callback
+   let publishCallback = (err: BusinessError): void => {
+     if (err) {
+       console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info(`Succeeded in publishing notification.`);
+     }
+   };
+   // NotificationRequest object
+   let notificationRequest: notificationManager.NotificationRequest = {
+     id: 1,
+     content: {
+       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+       normal: {
+         title: 'test_title',
+         text: 'test_text',
+         additionalText: 'test_additionalText'
+       }
+     },
+     appMessageId: 'test_appMessageId_1'
+   };
+   notificationManager.publish(notificationRequest, publishCallback);
+   ```

@@ -10,7 +10,7 @@
 
 ## 接口说明
 
-以下是示例中使用的主要接口，更多接口及使用方式请见[接口文档](../../reference/apis-basic-services-kit/js-apis-zlib.md)。
+以下是示例中使用的主要接口，更多接口及使用方式请见[@ohos.zlib (Zip模块)](../../reference/apis-basic-services-kit/js-apis-zlib.md)。
 
 | 接口名                                                       | 接口描述                     |
 | ------------------------------------------------------------ | ---------------------------- |
@@ -113,7 +113,7 @@
 
 ### 已知大小缓冲区的压缩与解压
 
-针对一个已知大小的缓冲区中的数据，使用接口[compress()](../../reference/apis-basic-services-kit/js-apis-zlib.md#compress12)将其压缩到一个目的缓冲区中，使用接口[compressBound()](../../reference/apis-basic-services-kit/js-apis-zlib.md#compressbound12)计算压缩目的缓冲区大小的上限值，使用接口[uncompress()](../../reference/apis-basic-services-kit/js-apis-zlib.md#uncompress12)对存储压缩数据的缓冲区进行解压。由于解压时无法获取解压后原始数据的大小，为了确认解压后目的缓冲区的大小，需要在压缩前获取原始数据的大小并保存，示例代码如下。
+针对一个已知大小的缓冲区中的数据，使用接口[compress()](../../reference/apis-basic-services-kit/js-apis-zlib.md#compress12)将其压缩到一个目标缓冲区中，使用接口[compressBound()](../../reference/apis-basic-services-kit/js-apis-zlib.md#compressbound12)计算压缩目标缓冲区大小的上限值，使用接口[uncompress()](../../reference/apis-basic-services-kit/js-apis-zlib.md#uncompress12)对存储压缩数据的缓冲区进行解压。由于解压时无法获取解压后原始数据的大小，为了确认解压后目标缓冲区的大小，需要在压缩前获取原始数据的大小并保存，示例代码如下。
 
   <!-- @[deflate_and_inflate_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages2/Index.ets) -->
   
@@ -124,7 +124,7 @@
   @Entry
   @Component
   struct Index {
-    @State dataSize: number = 0;  //用于保存原始数据的大小
+    @State dataSize: number = 0;  // 用于保存原始数据的大小
   
     build() {
       Row() {
@@ -246,7 +246,7 @@
   // 从一个文件中，不断的读入数据，进行压缩，并写入到另一个文件中
   async function deflateFile(src: fs.File, dest: fs.File) {
     let flush = zlib.CompressFlushMode.NO_FLUSH;
-    let strm: zlib.ZStream = {};  //初始化一个压缩流
+    let strm: zlib.ZStream = {};  // 初始化一个压缩流
     const BUFLEN = 4096;
     let inBuf = new ArrayBuffer(BUFLEN);  // 初始化一个输入缓冲区
     let outBuf = new ArrayBuffer(BUFLEN); // 初始化一个输出缓冲区
@@ -298,7 +298,7 @@
   // 从一个文件中，不断的读入已压缩的数据，进行解压，并写入到另一个文件中
   async function inflateFile(src: fs.File, dest: fs.File) {
     let status: zlib.ReturnStatus = zlib.ReturnStatus.OK;
-    let strm: zlib.ZStream = {};  //初始化一个压缩流
+    let strm: zlib.ZStream = {};  // 初始化一个压缩流
     const BUFLEN = 4096;
     let inBuf = new ArrayBuffer(BUFLEN);  // 初始化一个输入缓冲区
     let outBuf = new ArrayBuffer(BUFLEN); // 初始化一个输出缓冲区
@@ -399,7 +399,7 @@
   // 从一个文件中，不断的读入数据，进行压缩，并写入到另一个文件中
   async function deflateGzipFile(src: fs.File, dest: fs.File) {
     let flush = zlib.CompressFlushMode.NO_FLUSH;
-    let strm: zlib.ZStream = {};  //初始化一个压缩流
+    let strm: zlib.ZStream = {};  // 初始化一个压缩流
     const BUFLEN = 4096;
     let inBuf = new ArrayBuffer(BUFLEN);  // 初始化一个输入缓冲区
     let outBuf = new ArrayBuffer(BUFLEN); // 初始化一个输出缓冲区
@@ -454,7 +454,7 @@
   // 从一个文件中，不断的读入已压缩的数据，进行解压，并写入到另一个文件中
   async function inflateGzipFile(src: fs.File, dest: fs.File) {
     let status: zlib.ReturnStatus = zlib.ReturnStatus.OK;
-    let strm: zlib.ZStream = {};  //初始化一个压缩流
+    let strm: zlib.ZStream = {};  // 初始化一个压缩流
     const BUFLEN = 4096;
     let inBuf = new ArrayBuffer(BUFLEN);  // 初始化一个输入缓冲区
     let outBuf = new ArrayBuffer(BUFLEN); // 初始化一个输出缓冲区
@@ -513,8 +513,8 @@
 
 1. 17800005 传入的数据错误
 
-   可能原因和处理步骤，请参见[错误码17800005](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800005-传入的数据错误)。
+   可能原因和处理步骤，请参见错误码[17800005](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800005-传入的数据错误)。
 
 2. 17800007 传入的缓冲区错误
 
-   可能原因和处理步骤，请参见[错误码17800007](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800007-传入的缓冲区错误)。
+   可能原因和处理步骤，请参见错误码[17800007](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800007-传入的缓冲区错误)。

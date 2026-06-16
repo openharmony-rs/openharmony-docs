@@ -4,7 +4,7 @@
 <!--Owner: @aftott-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @HelloCrease-->
 
 > **说明：**
 >
@@ -157,7 +157,7 @@ es2abc执行过程中出现错误。
 
 **处理步骤**
 
-请参考[es2abc 错误码](./errorcode-es2abc.md)进行处理。
+请参考[Es2abc编译器错误码](errorcode-es2abc.md)进行处理。
 
 ## 10311010 懒加载导入重新导出错误
 

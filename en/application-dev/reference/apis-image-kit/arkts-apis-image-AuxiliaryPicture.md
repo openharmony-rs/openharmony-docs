@@ -6,12 +6,16 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+The **AuxiliaryPicture** class is used to read or write auxiliary picture data of an image and obtain auxiliary picture information of an image. The supported types of auxiliary pictures can be found in [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13).
+
+Before calling any API in AuxiliaryPicture, you must create an AuxiliaryPicture instance using [image.createAuxiliaryPicture](arkts-apis-image-f.md#imagecreateauxiliarypicture13) or [getAuxiliaryPicture](./arkts-apis-image-Picture.md#getauxiliarypicture13) in Picture.
+
+Images occupy a large amount of memory. When you finish using an AuxiliaryPicture instance, call [release](#release13) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 13.
-
-The auxiliary picture is generally used to assist the main picture in displaying special information, so that the image includes richer information. The AuxiliaryPicture class is used to read or write auxiliary picture data of an image and obtain auxiliary picture information of an image. Before calling any API in AuxiliaryPicture, you must use [createAuxiliaryPicture](arkts-apis-image-f.md#imagecreateauxiliarypicture13) to create a AuxiliaryPicture object.
 
 ## Modules to Import
 
@@ -41,7 +45,7 @@ Reads pixels from an ArrayBuffer and writes the data to this AuxiliaryPicture ob
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -52,7 +56,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 ```ts
 async function WritePixelsFromBuffer(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // Support for HDR images is required.
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // An HDR-compatible image is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -91,7 +95,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadPixelsToBuffer(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // Support for HDR images is required.
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // An HDR-compatible image is required.
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -161,7 +165,7 @@ Sets the metadata for this auxiliary picture. This API uses a promise to return 
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -175,7 +179,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function SetAuxPictureObjMetadata(exifContext: Context, auxPictureObj: image.AuxiliaryPicture) {
   const exifResourceMgr = exifContext.resourceManager;
-  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg"); // The image contains Exif metadata.
+  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg"); // An image containing Exif metadata is required.
   let exifOps: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -224,7 +228,7 @@ Obtains the metadata of this auxiliary picture. This API uses a promise to retur
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -249,7 +253,7 @@ async function GetAuxPictureObjMetadata(auxPictureObj: image.AuxiliaryPicture) {
 }
 ```
 
-## getAuxiliaryPictureinfo<sup>13+</sup>
+## getAuxiliaryPictureInfo<sup>13+</sup>
 
 getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 
@@ -279,7 +283,7 @@ async function GetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
 }
 ```
 
-## setAuxiliaryPictureinfo<sup>13+</sup>
+## setAuxiliaryPictureInfo<sup>13+</sup>
 
 setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 
@@ -295,7 +299,7 @@ Sets the auxiliary picture information.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | :----------------------------------------------------------- |
@@ -326,6 +330,10 @@ async function SetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
 release():void
 
 Releases this AuxiliaryPicture object. No value is returned.
+
+Images occupy a large amount of memory. When you finish using an AuxiliaryPicture instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

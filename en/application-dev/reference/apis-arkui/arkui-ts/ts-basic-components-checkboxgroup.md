@@ -22,7 +22,7 @@ CheckboxGroup(options?: CheckboxGroupOptions)
 
 Creates a check box group for controlling the select-all or deselect-all state of check boxes within the group. Check boxes and check box groups with the same **group** value belong to the same group.
 
-When this API is used with components that come with a pre-loading mechanism, such as the [List](ts-container-list.md) component, those check boxes that have not been created yet need to be manually selected or unselected. For details, see [Example 4](#example-4-implementing-the-select-all-functionality).
+When this API is used with components that come with the caching mechanism, such as the [List](ts-container-list.md) component, those check boxes that have not been created yet need to be manually selected or unselected. For details, see [Example 4](#example-4-implementing-the-select-all-functionality).
 
 **Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
 
@@ -63,6 +63,7 @@ Sets whether to select all check boxes in the group. If the **select** attribute
 When used with components that have caching functionality (such as [List](ts-container-list.md)), the selection state of uncreated check boxes must be controlled by the developer.
 
 Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
+
 Since API version 18, this attribute supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
 **Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
@@ -103,7 +104,7 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 selectedColor(value: ResourceColor)
 
-Sets the color of the selected check box.	
+Sets the color of the selected check box.
 
 **Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
 
@@ -338,11 +339,11 @@ Enumerates the selection states of check boxes in the check box group.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Description|
-| ----- | -------------------- |
-| All   | All check boxes in the group are selected.|
-| Part  | Some check boxes in the group are selected.|
-| None  | None of the check boxes in the group are selected.|
+| Name | Value| Description|
+| ----- | -------------------- | -------------------- |
+| All   | 0  | All check boxes in the group are selected.|
+| Part  | 1 | Some check boxes in the group are selected.|
+| None  | 2 | None of the check boxes in the group are selected.|
 
 ## CheckBoxGroupConfiguration<sup>21+</sup>
 
@@ -609,7 +610,7 @@ struct Index {
       Row() {
         Checkbox({ name: 'Check box 2', group: 'checkboxGroup' })
           .onChange((value: boolean) => {
-            console.info('Check box 2 change to ' + value);
+            console.info('Check box 2 change to ' value);
           })
         Text('Check box 2').fontSize(20)
       }

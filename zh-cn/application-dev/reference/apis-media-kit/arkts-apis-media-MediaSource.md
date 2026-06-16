@@ -6,14 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+媒体数据信息。来源于[createMediaSourceWithUrl](arkts-apis-media-f.md#mediacreatemediasourcewithurl12)。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
-
-媒体数据信息。来源自[createMediaSourceWithUrl](arkts-apis-media-f.md#mediacreatemediasourcewithurl12)。
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
 
 ## 导入模块
 
@@ -92,3 +90,37 @@ let resourceLoader: media.MediaSourceLoader = {
 
 mediaSource.setMediaResourceLoaderDelegate(resourceLoader);
 ```
+
+## enableOfflineCache<sup>23+</sup>
+
+enableOfflineCache(enable: boolean): void
+
+是否在视频播放期间启用离线缓存。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                 |
+| -------- | -------- | ---- | -------------------- |
+| enable | boolean | 是   | 是否在视频播放期间启用离线缓存。true表示启用，false表示不启用。 |
+
+## getID
+
+getID(): string
+
+获取媒体源的标识符。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**返回值：**
+
+| 类型                            | 说明                                                         |
+| ------------------------------- | ------------------------------------------------------------ |
+| string | 返回媒体源的标识符，失败时返回空字符串。 |

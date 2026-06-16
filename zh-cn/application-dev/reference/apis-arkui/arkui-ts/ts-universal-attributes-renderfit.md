@@ -1,8 +1,8 @@
 # 组件内容填充方式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,13 +10,15 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## renderFit
 
 renderFit(fitMode: RenderFit): T
 
-设置宽高动画过程中的组件内容填充方式。
+设置宽高动画过程中的组件内容填充方式。不通过该接口设置，保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -28,7 +30,7 @@ renderFit(fitMode: RenderFit): T
 
 | 参数名  | 类型                            | 必填 | 说明                                                         |
 | ------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| fitMode | [RenderFit](ts-appendix-enums.md#renderfit10) | 是   | 设置宽高动画过程中的组件内容填充方式。<br/>当不设置renderFit属性时，取默认值RenderFit.TOP_LEFT。 |
+| fitMode | [RenderFit](ts-appendix-enums.md#renderfit10) | 是   | 设置宽高动画过程中的组件内容填充方式。 |
 
 **返回值：**
 
@@ -40,7 +42,7 @@ renderFit(fitMode: RenderFit): T
 
 renderFit(fitMode: Optional\<RenderFit>): T
 
-设置宽高动画过程中的组件内容填充方式。与[renderFit](#renderfit)相比，fitMode参数新增了对undefined类型的支持。
+设置宽高动画过程中的组件内容填充方式。不通过该接口设置，保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。与[renderFit](#renderfit)相比，fitMode参数新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -52,7 +54,7 @@ renderFit(fitMode: Optional\<RenderFit>): T
 
 | 参数名  | 类型                                       | 必填 | 说明                                                         |
 | ------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| fitMode | Optional\<[RenderFit](ts-appendix-enums.md#renderfit10)> | 是   | 设置宽高动画过程中的组件内容填充方式。<br/>当fitMode的值为undefined时，取默认值。恢复为内容填充方式为RenderFit.TOP_LEFT的效果。 |
+| fitMode | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[RenderFit](ts-appendix-enums.md#renderfit10)> | 是   | 设置宽高动画过程中的组件内容填充方式。<br/>当fitMode的值为undefined时，取默认值。恢复为内容填充方式为RenderFit.TOP_LEFT的效果。 |
 
 **返回值：**
 

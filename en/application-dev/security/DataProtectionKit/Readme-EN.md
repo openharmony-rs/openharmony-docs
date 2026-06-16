@@ -2,12 +2,11 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
 - DLP Service<!--dlp-->
   - [DLP Service Overview](dlp-overview.md)
-  <!--Del-->
-  - [DLP Service Development](dlp-guidelines.md)
-  <!--DelEnd-->
+  - [DLP Service Development (ArkTS)](dlp-guidelines.md)
+  - [DLP Service Development (C/C++)](dlp-guidelines-ndk.md)<!--RP1--><!--RP1End-->

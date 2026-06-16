@@ -1,14 +1,14 @@
 # 使用AVScreenCapture录屏写文件(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
 屏幕录制主要为主屏幕录屏功能。
 
-开发者可以调用录屏（[AVScreenCapture](media-kit-intro.md#avscreencapture)）模块的C API接口，完成屏幕录制，采集设备内、麦克风等的音视频源数据。可以调用录屏模块获取音视频文件，然后通过文件的形式流转到其他模块进行播放或处理，达成文件形式分享屏幕内容的场景。
+开发者可以调用[AVScreenCapture](media-kit-intro.md#avscreencapture)模块的C API接口，完成屏幕录制，采集设备内、麦克风等的音视频源数据。可以调用录屏模块获取音视频文件，然后通过文件的形式流转到其他模块进行播放或处理，达成文件形式分享屏幕内容的场景。
 
 录屏模块和窗口（Window）、图形（Graphic）等模块协同完成整个视频采集的流程。
 
@@ -28,12 +28,13 @@
 ## 开发步骤及注意事项
 
 使用AVScreenCapture时要明确其状态的变化，在创建实例后，调用对应的方法可以进入指定的状态实现对应的行为。
+
 在确定的状态下执行不合适的方法会导致AVScreenCapture发生错误，开发者需要在调用状态转换的方法前进行状态检查，避免程序运行异常。
 
 **在 CMake 脚本中链接动态库**
 
 ```c++
-target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
+target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runtime.so libnative_display_manager.so)
 ```
 
 1. 添加头文件。
@@ -43,6 +44,9 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
     #include <multimedia/player_framework/native_avscreen_capture.h>
     #include <multimedia/player_framework/native_avscreen_capture_base.h>
     #include <multimedia/player_framework/native_avscreen_capture_errors.h>
+    #include <AbilityKit/ability_runtime/application_context.h>
+    #include <window_manager/oh_display_info.h>
+    #include <window_manager/oh_display_manager.h>
     #include <fcntl.h>
     #include <string>
     #include <unistd.h>
@@ -75,15 +79,27 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
         .audioChannels = 2,
         .audioSource = OH_ALL_PLAYBACK
     };
-
+    // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
+    // 此处音频比特率取值为高质量录屏的取值。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
     OH_AudioEncInfo audioEncInfo = {
-        .audioBitrate = 48000,
+        .audioBitrate = 128000,
         .audioCodecformat = OH_AAC_LC
     };
 
+    // 获取屏幕信息
+    uint64_t displayId = 0;
+    NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
+
+    NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
+    ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+    if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+        // 处理异常结果并返回
+    }
+    int32_t screenWidth = displayInfo->width;
+    int32_t screenHeight = displayInfo->height;
     OH_VideoCaptureInfo videoCapInfo = {
-        .videoFrameWidth = 768,
-        .videoFrameHeight = 1280,
+        .videoFrameWidth = screenWidth,
+        .videoFrameHeight = screenHeight,
         .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
     };
 
@@ -140,12 +156,18 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
 #include <multimedia/player_framework/native_avscreen_capture.h>
 #include <multimedia/player_framework/native_avscreen_capture_base.h>
 #include <multimedia/player_framework/native_avscreen_capture_errors.h>
+#include <AbilityKit/ability_runtime/application_context.h>
+#include <window_manager/oh_display_info.h>
+#include <window_manager/oh_display_manager.h>
 #include <fcntl.h>
 #include <string>
 #include <unistd.h>
 
 int32_t outputFd;
 struct OH_AVScreenCapture* capture;
+
+constexpr int32_t PRIVACY_MASK_MODE_FULL_SCREEN = 0;
+constexpr int32_t PRIVACY_MASK_MODE_WINDOW = 1;
 
 void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCode stateCode, void *userData) {
     (void)capture;
@@ -191,19 +213,17 @@ void OnCaptureContentChanged(struct OH_AVScreenCapture *capture, OH_AVScreenCapt
 void OnUserSelected(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData) {
     (void)capture;
     (void)userData;
-    int* selectType = new int;
-    uint64_t* displayId = new uint64_t;
+    int selectType = 0;
+    uint64_t displayId = 0;
 
     // 通过获取接口，拿到对应的选择类型和屏幕Id。OH_AVScreenCapture_UserSelectionInfo* selections仅在OnUserSelected回调中有效。
-    OH_AVSCREEN_CAPTURE_ErrCode errorSelectType = OH_AVScreenCapture_GetCaptureTypeSelected(selections, selectType);
-    OH_AVSCREEN_CAPTURE_ErrCode errorDisplayId = OH_AVScreenCapture_GetDisplayIdSelected(selections, displayId);
-
-    // 在使用完成后，对申请的内存进行释放
-    delete selectType, displayId;
+    OH_AVSCREEN_CAPTURE_ErrCode errorSelectType = OH_AVScreenCapture_GetCaptureTypeSelected(selections, &selectType);
+    OH_AVSCREEN_CAPTURE_ErrCode errorDisplayId = OH_AVScreenCapture_GetDisplayIdSelected(selections, &displayId);
 }
 
 // 开始录屏时调用StartScreenCapture。
 static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
+    // 初始化录屏参数，传入配置信息OH_AVScreenCaptureConfig。
     OH_AVScreenCaptureConfig config;
     OH_AudioCaptureInfo micCapInfo = {
         .audioSampleRate = 48000, 
@@ -218,13 +238,26 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     };
 
     OH_AudioEncInfo audioEncInfo = {
-        .audioBitrate = 48000, 
+        .audioBitrate = 128000, 
         .audioCodecformat = OH_AudioCodecFormat::OH_AAC_LC
     };
 
+    // 获取屏幕信息
+    uint64_t displayId = 0;
+    NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
+
+    NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
+    ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+    if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+        napi_value errCode;
+        napi_create_double(env, ret, &errCode);
+        return errCode;
+    }
+    int32_t screenWidth = displayInfo->width;
+    int32_t screenHeight = displayInfo->height;
     OH_VideoCaptureInfo videoCapInfo = {
-        .videoFrameWidth = 768, 
-        .videoFrameHeight = 1280, 
+        .videoFrameWidth = screenWidth, 
+        .videoFrameHeight = screenHeight, 
         .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
     };
 
@@ -255,9 +288,19 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // 实例化ScreenCapture。
     capture = OH_AVScreenCapture_Create();
 
-    // 初始化录屏参数，传入配置信息OH_AVScreenRecorderConfig。
+    // 获取沙箱路径
+    char *fileDirPath;
+    int32_t bufferSize = 1000;
+    int32_t writeLength = 0;
+    AbilityRuntime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, bufferSize, &writeLength);
+    if (!fileDirPath) {
+        napi_value errCode;
+        napi_create_double(env, result, &errCode);
+        return errCode;
+    }
+
     OH_RecorderInfo recorderInfo;
-    const std::string SCREEN_CAPTURE_ROOT = "/data/storage/el2/base/files/";
+    const std::string SCREEN_CAPTURE_ROOT = fileDirPath;
     outputFd = open((SCREEN_CAPTURE_ROOT + "screen01.mp4").c_str(), O_RDWR | O_CREAT, 0777);
 
     // 处理打开失败或创建失败的情况，返回报错结果。
@@ -279,8 +322,8 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     OH_Rect* area = nullptr;
     OH_AVScreenCapture_SetCaptureContentChangedCallback(capture, OnCaptureContentChanged, area);
 
-    // 可选，设置隐私窗口屏蔽模式。
-    int value = 0;
+    // 可选，设置隐私窗口屏蔽模式，value值取0表示全屏屏蔽模式，取1表示隐私窗口屏蔽模式。开发者可根据实际需求选择合适取值。
+    int value = PRIVACY_MASK_MODE_FULL_SCREEN;
     OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
     OH_AVScreenCapture_StrategyForPrivacyMaskMode(strategy, value);
     OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);

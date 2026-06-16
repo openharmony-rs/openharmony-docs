@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoKeyAgreement OH_CryptoKeyAgreement
+```
+
 ## Overview
 
 Defines a struct for key agreement.

@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.deviceStatus（设备状态感知）（系统接口）
+# @ohos.multimodalAwareness.deviceStatus (设备状态感知)(系统接口)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
@@ -29,7 +29,7 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **错误码**：
 

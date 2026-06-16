@@ -1,8 +1,8 @@
 # @ohos.arkui.UIContext (UIContext)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,11 +10,13 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 本模块接口仅可在Stage模型下使用。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.arkui.UIContext (UIContext)](arkts-apis-uicontext-uicontext.md)。
+> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[Class (UIContext)](arkts-apis-uicontext-uicontext.md)。
 
 ## UIContext
 
@@ -32,6 +34,8 @@ setDynamicDimming(id: string, value: number): void
 > 设置该属性后设置其他效果类属性会导致效果冲突。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -70,6 +74,8 @@ freezeUINode(id: string, isFrozen: boolean): void
 通过id设置组件冻结状态，防止组件被标记为脏从而触发布局更新。
 
 **原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +194,8 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 通过uniqueId设置组件的冻结状态，防止组件被标记为脏从而触发布局更新。
 
 **原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -321,7 +329,7 @@ struct Index {
 
 setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void
 
-设置键盘样式，包括模糊效果和流光效果，仅在沉浸式模式下生效，沉浸式定义可参见[KeyboardAppearance枚举说明](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15枚举说明)。其中，流光效果依赖于模糊效果，若需启用流光效果，则需同时开启模糊效果，最终显示效果取决于输入法处理。
+设置键盘样式，包括模糊效果和流光效果，仅在沉浸式模式下生效，沉浸式定义可参见[KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15枚举说明)。其中，流光效果依赖于模糊效果，若需启用流光效果，则需同时开启模糊效果，最终显示效果取决于输入法处理。
 
 **系统接口：** 此接口为系统接口。
 
@@ -409,6 +417,78 @@ struct MyStateSample {
 }
 ```
 
+### getLuminanceSampler<sup>23+</sup>
+
+getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
+
+获取[LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md)取色对象，通过该对象设置背景亮度取色参数、注册亮度变化监听回调、取消注册监听回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。 
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名     | 类型    | 必填   | 说明      |
+| --- | --- | --- | --- |
+| target | [TargetInfo](arkts-apis-uicontext-i.md#targetinfo18) | 是 | 目标组件的标识。 |
+
+**返回值**：
+
+| 类型                                              | 说明                                                         |
+| ------------------------------------------------- | ------------------------------------------------------------ |
+| [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) | 返回背景亮度取色器。 |
+
+**示例：**
+
+参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23)接口的示例。
+
+### recycleInvisibleImageMemory<sup>23+</sup>
+
+recycleInvisibleImageMemory(enabled: boolean): void
+
+设置不可见Image组件的内存回收开关（[组件可见性](../../../application-dev/ui/arkts-manage-components-visibility.md)是指组件在屏幕上的显示状态）。开启后，当Image组件不参与渲染时，其内部持有的图像内存资源将在系统空闲时（如应用退后台）主动回收，以降低应用系统内存占用；当组件重新参与渲染时，将按需重新加载相关图像资源。
+
+该接口主要用于内存敏感场景下的优化，适用于图片数量较多、页面频繁切换前后台或组件可见性变化较为明显的场景。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。 
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明 |
+| -------- | ------- | ---- | ---- |
+| enabled  | boolean | 是   | 是否开启不可见Image组件的内存回收能力。<br/>true表示开启内存回收，Image组件在不可见时将主动释放图像内存资源；<br/>false表示关闭内存回收，Image组件在不可见时仍保留图像内存资源。<br/>默认值为false，传入`undefined`时将恢复为默认值。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct ImageRecycleSample {
+  build() {
+    Column({ space: 12 }) {
+      Button('Enable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(true)
+        })
+
+      Button('Disable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(false)
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
 ## ComponentSnapshot<sup>12+</sup>
 
 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
@@ -428,6 +508,8 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明                                       |
@@ -445,12 +527,13 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码和[接口调用异常错误码](errorcode-internal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------- |
-| 202     | The caller is not a system application. |
+| 202    | The caller is not a system application. |
 | 100001 | Invalid ID detected. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：** 
 
@@ -461,6 +544,7 @@ import { image } from '@kit.ImageKit';
 @Component
 struct SnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined
+
   build() {
     Column() {
       Row() {
@@ -472,22 +556,47 @@ struct SnapshotExample {
               Row() {
                 Text('Text3').id('text3')
               }.id('root5').backgroundColor('#E4E8F0')
-            }.width('80%').height('80%').justifyContent(FlexAlign.SpaceAround).backgroundColor('#C1D1F0').id('root4')
-          }.width('80%').height('80%').justifyContent(FlexAlign.Center).backgroundColor('#FFEEF0').id('root3')
+            }
+            .width('80%')
+            .height('80%')
+            .justifyContent(FlexAlign.SpaceAround)
+            .backgroundColor('#C1D1F0')
+            .id('root4')
+          }
+          .width('80%')
+          .height('80%')
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor('#FFEEF0')
+          .id('root3')
           .backgroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.LIGHT })
-        }.width('80%').height('80%').justifyContent(FlexAlign.Center).backgroundColor('#D5D5D5').id('root2')
-      }.width('50%').height('50%').justifyContent(FlexAlign.Center).backgroundColor('#E4E8F0').id('root1')
+        }
+        .width('80%')
+        .height('80%')
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#D5D5D5')
+        .id('root2')
+      }
+      .width('50%')
+      .height('50%')
+      .justifyContent(FlexAlign.Center)
+      .backgroundColor('#E4E8F0')
+      .id('root1')
+
       Row() {
         Button("getWithRange")
           .onClick(() => {
-            this.getUIContext().getComponentSnapshot().getWithRange('root2', 'root4', true)
+            this.getUIContext()
+              .getComponentSnapshot()
+              .getWithRange('root2', 'root4', true)
               .then((pixmap: image.PixelMap) => {
                 this.pixmap = pixmap
-              }).catch((err:Error) => {
-              console.error("error: " + err)
-            })
+              })
+              .catch((err: Error) => {
+                console.error("error: " + err)
+              })
           }).margin(10)
       }.justifyContent(FlexAlign.SpaceAround)
+
       Row() {
         Image(this.pixmap).width(200).height(300).border({ color: Color.Black, width: 2 }).margin(5)
       }.justifyContent(FlexAlign.SpaceAround)
@@ -500,4 +609,5 @@ struct SnapshotExample {
 }
 ```
 
-![zh-cn_image_getWithRange](figures/zh-cn_image_getWithRange.gif)
+![zh-cn_image_getWithRange](figures/image-getWithRange.gif)
+

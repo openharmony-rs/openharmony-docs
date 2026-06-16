@@ -8,9 +8,11 @@
 <!--Adviser: @zhang_yixin13-->
 
 This module implements virtual private network (VPN) management, such as starting and stopping a third-party VPN.
+
 Third-party VPNs refer to VPN services provided by third parties. They usually support more security and privacy functions and more comprehensive customization options.
 
 > **NOTE**
+>
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.net.vpnExtension (VPN Extension)](js-apis-net-vpnExtension.md).
 
@@ -40,7 +42,7 @@ Enables or disables the **always on** mode. This API uses a promise to return th
 | Name    | Type   | Mandatory| Description                                                   |
 | ---------- | ------- | ---- | ------------------------------------------------------- |
 | enable     | boolean | Yes  | Whether to enable the **always on** mode. The value **true** means to enable the **always on** mode, and the value **false** means the opposite.                                  |
-| bundleName | string  | Yes  | Bundle name of the application (generally a third-party application).|
+| bundleName | string  | Yes  | Bundle name of the third-party application.|
 
 **Return value**
 
@@ -71,9 +73,9 @@ let want: Want = {
 };
 
 vpnExtension.setAlwaysOnVpnEnabled(true, want.bundleName).then(() => {
-  console.info('setAlwaysOnVpnEnabled success.');
+  console.info(`setAlwaysOnVpnEnabled success.`);
 }).catch((err : BusinessError) => {
-  console.error('setAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
+  console.error(`setAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}`);
 });
 ```
 
@@ -126,9 +128,9 @@ let want: Want = {
 };
 
 vpnExtension.isAlwaysOnVpnEnabled(want.bundleName).then((data : boolean) => {
-  console.info('isAlwaysOnVpnEnabled success.');
+  console.info(`isAlwaysOnVpnEnabled success.`);
 }).catch((err : BusinessError) => {
-  console.error('isAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
+  console.error(`isAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}`);
 });
 ```
 

@@ -64,16 +64,16 @@ export default {
 }
 ```
 
-![en-us_image_0000001222807812](figures/en-us_image_0000001222807812.gif)
+![componentAnimation](figures/componentAnimation.gif)
 
 > **NOTE**
-> - When using the animate method, you must pass the keyframes and options parameters.
+> -   When using the **animate** method, you must pass the **keyframes** and **options** parameters.
 > - If **animate** is called multiple times and the **replace** policy is used, parameters passed to the last call will take effect.
 
 
 ## Setting Animation Parameters
 
-After obtaining an animation object, you can set its style working on the component by using the keyframes parameter.
+After obtaining an **animation** object, you can set its style working on the component by using the **keyframes** parameter.
 
 ```html
 <!-- xxx.hml -->
@@ -143,11 +143,11 @@ export default {
 }
 ```
 
-![en-us_image_0000001267647897](figures/en-us_image_0000001267647897.gif)
+![settingAnimationParameters](figures/settingAnimationParameters.gif)
 
 > **NOTE**
 > - The sequence of **translate**, **scale**, and **rotate** affects the animation effect.
-> 
+>
 > - **transformOrigin** works only for **scale** and **rotate**.
 
 Set the animation attributes by using the **options** parameter.
@@ -211,7 +211,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001222967796](figures/en-us_image_0000001222967796.gif)
+![componentAnimation](figures/componentAnimation.gif)
 
 > **NOTE**
 >

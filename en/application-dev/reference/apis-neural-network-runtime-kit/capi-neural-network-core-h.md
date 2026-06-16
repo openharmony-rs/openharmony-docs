@@ -17,7 +17,7 @@ Currently, the APIs of Neural Network Core do not support multi-thread calling.
 
 **Library**: libneural_network_core.so
 
-**System capability**: SystemCapability.Ai.NeuralNetworkRuntime
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
 
@@ -84,7 +84,7 @@ Currently, the APIs of Neural Network Core do not support multi-thread calling.
 
 ### OH_NNCompilation_Construct()
 
-```
+```c
 OH_NNCompilation *OH_NNCompilation_Construct(const OH_NNModel *model)
 ```
 
@@ -125,7 +125,7 @@ After this API is called to create an [OH_NNCompilation](capi-neuralnetworkrunti
 
 ### OH_NNCompilation_ConstructWithOfflineModelFile()
 
-```
+```c
 OH_NNCompilation *OH_NNCompilation_ConstructWithOfflineModelFile(const char *modelPath)
 ```
 
@@ -156,7 +156,7 @@ During development, offline compilation needs to be performed and offline models
 
 ### OH_NNCompilation_ConstructWithOfflineModelBuffer()
 
-```
+```c
 OH_NNCompilation *OH_NNCompilation_ConstructWithOfflineModelBuffer(const void *modelBuffer, size_t modelSize)
 ```
 
@@ -186,7 +186,7 @@ The returned [OH_NNCompilation](capi-neuralnetworkruntime-oh-nncompilation.md) i
 
 ### OH_NNCompilation_ConstructForCache()
 
-```
+```c
 OH_NNCompilation *OH_NNCompilation_ConstructForCache()
 ```
 
@@ -210,7 +210,7 @@ Call [OH_NNCompilation_SetCache](capi-neural-network-core-h.md#oh_nncompilation_
 
 ### OH_NNCompilation_ExportCacheToBuffer()
 
-```
+```c
 OH_NN_ReturnCode OH_NNCompilation_ExportCacheToBuffer(OH_NNCompilation *compilation,const void *buffer,size_t length,size_t *modelSize)
 ```
 
@@ -242,7 +242,7 @@ The model cache stores the result of [OH_NNCompilation_Build](capi-neural-networ
 
 ### OH_NNCompilation_ImportCacheFromBuffer()
 
-```
+```c
 OH_NN_ReturnCode OH_NNCompilation_ImportCacheFromBuffer(OH_NNCompilation *compilation,const void *buffer,size_t modelSize)
 ```
 
@@ -275,7 +275,7 @@ The **compilation** instance only stores the **buffer** pointer, but does not co
 
 ### OH_NNCompilation_AddExtensionConfig()
 
-```
+```c
 OH_NN_ReturnCode OH_NNCompilation_AddExtensionConfig(OH_NNCompilation *compilation,const char *configName,const void *configValue,const size_t configValueSize)
 ```
 
@@ -307,7 +307,7 @@ You need to obtain their names and values from the device vendor's documentation
 
 ### OH_NNCompilation_SetDevice()
 
-```
+```c
 OH_NN_ReturnCode OH_NNCompilation_SetDevice(OH_NNCompilation *compilation, size_t deviceID)
 ```
 
@@ -335,7 +335,7 @@ In the compilation phase, you need to specify the device for model compilation a
 
 ### OH_NNCompilation_SetCache()
 
-```
+```c
 OH_NN_ReturnCode OH_NNCompilation_SetCache(OH_NNCompilation *compilation, const char *cachePath, uint32_t version)
 ```
 
@@ -373,7 +373,7 @@ This API performs different operations based on the model cache directory and ve
 
 ### OH_NNCompilation_SetPerformanceMode()
 
-```
+```c
 OH_NN_ReturnCode OH_NNCompilation_SetPerformanceMode(OH_NNCompilation *compilation,OH_NN_PerformanceMode performanceMode)
 ```
 
@@ -401,7 +401,7 @@ NNRt allows you to set the performance mode for model computing to meet the requ
 
 ### OH_NNCompilation_SetPriority()
 
-```
+```c
 OH_NN_ReturnCode OH_NNCompilation_SetPriority(OH_NNCompilation *compilation, OH_NN_Priority priority)
 ```
 
@@ -429,7 +429,7 @@ NNRt allows you to set computing priorities for models. The priorities apply onl
 
 ### OH_NNCompilation_EnableFloat16()
 
-```
+```c
 OH_NN_ReturnCode OH_NNCompilation_EnableFloat16(OH_NNCompilation *compilation, bool enableFloat16)
 ```
 
@@ -457,7 +457,7 @@ By default, the floating-point model uses float32 for computing. If this API is 
 
 ### OH_NNCompilation_Build()
 
-```
+```c
 OH_NN_ReturnCode OH_NNCompilation_Build(OH_NNCompilation *compilation)
 ```
 
@@ -486,7 +486,7 @@ After this API is called, additional compilation operations cannot be performed.
 
 ### OH_NNCompilation_Destroy()
 
-```
+```c
 void OH_NNCompilation_Destroy(OH_NNCompilation **compilation)
 ```
 
@@ -507,7 +507,7 @@ This API needs to be used to destroy the model compilation instances created by 
 
 ### OH_NNTensorDesc_Create()
 
-```
+```c
 NN_TensorDesc *OH_NNTensorDesc_Create()
 ```
 
@@ -537,7 +537,7 @@ This API copies the [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) 
 
 ### OH_NNTensorDesc_Destroy()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensorDesc_Destroy(NN_TensorDesc **tensorDesc)
 ```
 
@@ -566,7 +566,7 @@ If <b>tensorDesc</b> or <b>\*tensorDesc</b> is a null pointer, an error is retur
 
 ### OH_NNTensorDesc_SetName()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensorDesc_SetName(NN_TensorDesc *tensorDesc, const char *name)
 ```
 
@@ -596,7 +596,7 @@ If <b>tensorDesc</b> or <b>name</b> is a null pointer, an error is returned.
 
 ### OH_NNTensorDesc_GetName()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensorDesc_GetName(const NN_TensorDesc *tensorDesc, const char **name)
 ```
 
@@ -629,7 +629,7 @@ You do not need to release the memory of **name**. When **tensorDesc** is destro
 
 ### OH_NNTensorDesc_SetDataType()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensorDesc_SetDataType(NN_TensorDesc *tensorDesc, OH_NN_DataType dataType)
 ```
 
@@ -659,7 +659,7 @@ If <b>tensorDesc</b> is a null pointer, an error is returned.
 
 ### OH_NNTensorDesc_GetDataType()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensorDesc_GetDataType(const NN_TensorDesc *tensorDesc, OH_NN_DataType *dataType)
 ```
 
@@ -689,7 +689,7 @@ If <b>tensorDesc</b> or <b>dataType</b> is a null pointer, an error is returned.
 
 ### OH_NNTensorDesc_SetShape()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensorDesc_SetShape(NN_TensorDesc *tensorDesc, const int32_t *shape, size_t shapeLength)
 ```
 
@@ -720,7 +720,7 @@ If <b>tensorDesc</b> or <b>shape</b> is a null pointer, or <b>shapeLength</b> is
 
 ### OH_NNTensorDesc_GetShape()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensorDesc_GetShape(const NN_TensorDesc *tensorDesc, int32_t **shape, size_t *shapeLength)
 ```
 
@@ -755,7 +755,7 @@ You do not need to release the memory of **shape**. When **tensorDesc** is destr
 
 ### OH_NNTensorDesc_SetFormat()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensorDesc_SetFormat(NN_TensorDesc *tensorDesc, OH_NN_Format format)
 ```
 
@@ -785,7 +785,7 @@ If <b>tensorDesc</b> is a null pointer, an error is returned.
 
 ### OH_NNTensorDesc_GetFormat()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensorDesc_GetFormat(const NN_TensorDesc *tensorDesc, OH_NN_Format *format)
 ```
 
@@ -815,7 +815,7 @@ If <b>tensorDesc</b> or <b>format</b> is a null pointer, an error is returned.
 
 ### OH_NNTensorDesc_GetElementCount()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensorDesc_GetElementCount(const NN_TensorDesc *tensorDesc, size_t *elementCount)
 ```
 
@@ -847,7 +847,7 @@ If <b>tensorDesc</b> or <b>elementCount</b> is a null pointer, an error is retur
 
 ### OH_NNTensorDesc_GetByteSize()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensorDesc_GetByteSize(const NN_TensorDesc *tensorDesc, size_t *byteSize)
 ```
 
@@ -881,7 +881,7 @@ If <b>tensorDesc</b> or <b>byteSize</b> is a null pointer, an error is returned.
 
 ### OH_NNTensor_Create()
 
-```
+```c
 NN_Tensor *OH_NNTensor_Create(size_t deviceID, NN_TensorDesc *tensorDesc)
 ```
 
@@ -919,7 +919,7 @@ If the [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance is no longer
 
 ### OH_NNTensor_CreateWithSize()
 
-```
+```c
 NN_Tensor *OH_NNTensor_CreateWithSize(size_t deviceID, NN_TensorDesc *tensorDesc, size_t size)
 ```
 
@@ -958,7 +958,7 @@ If the [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance is no longer
 
 ### OH_NNTensor_CreateWithFd()
 
-```
+```c
 NN_Tensor *OH_NNTensor_CreateWithFd(size_t deviceID,NN_TensorDesc *tensorDesc,int fd,size_t size,size_t offset)
 ```
 
@@ -995,7 +995,7 @@ If the [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) instance is no longer
 
 ### OH_NNTensor_Destroy()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensor_Destroy(NN_Tensor **tensor)
 ```
 
@@ -1023,7 +1023,7 @@ If <b>tensor</b> or <b>*tensor</b> is a null pointer, an error is returned but t
 
 ### OH_NNTensor_GetTensorDesc()
 
-```
+```c
 NN_TensorDesc *OH_NNTensor_GetTensorDesc(const NN_Tensor *tensor)
 ```
 
@@ -1056,7 +1056,7 @@ If <b>Tensor</b> is a null pointer, a null pointer is returned.
 
 ### OH_NNTensor_GetDataBuffer()
 
-```
+```c
 void *OH_NNTensor_GetDataBuffer(const NN_Tensor *tensor)
 ```
 
@@ -1087,7 +1087,7 @@ If <b>Tensor</b> is a null pointer, a null pointer is returned.
 
 ### OH_NNTensor_GetFd()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensor_GetFd(const NN_Tensor *tensor, int *fd)
 ```
 
@@ -1117,7 +1117,7 @@ If <b>tensor</b> or <b>fd</b> is a null pointer, an error is returned.
 
 ### OH_NNTensor_GetSize()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensor_GetSize(const NN_Tensor *tensor, size_t *size)
 ```
 
@@ -1149,7 +1149,7 @@ If <b>tensor</b> or <b>size</b> is a null pointer, an error is returned.
 
 ### OH_NNTensor_GetOffset()
 
-```
+```c
 OH_NN_ReturnCode OH_NNTensor_GetOffset(const NN_Tensor *tensor, size_t *offset)
 ```
 
@@ -1180,7 +1180,7 @@ If <b>tensor</b> or <b>offset</b> is a null pointer, an error is returned.
 
 ### OH_NNExecutor_Construct()
 
-```
+```c
 OH_NNExecutor *OH_NNExecutor_Construct(OH_NNCompilation *compilation)
 ```
 
@@ -1206,7 +1206,7 @@ This API constructs a model inference executor for a device based on the specifi
 
 ### OH_NNExecutor_GetOutputShape()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_GetOutputShape(OH_NNExecutor *executor,uint32_t outputIndex,int32_t **shape,uint32_t *shapeLength)
 ```
 
@@ -1241,7 +1241,7 @@ You do not need to release the memory of **shape**. It is released with **execut
 
 ### OH_NNExecutor_Destroy()
 
-```
+```c
 void OH_NNExecutor_Destroy(OH_NNExecutor **executor)
 ```
 
@@ -1262,7 +1262,7 @@ This API needs to be called to release the executor instance created by calling 
 
 ### OH_NNExecutor_GetInputCount()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_GetInputCount(const OH_NNExecutor *executor, size_t *inputCount)
 ```
 
@@ -1290,7 +1290,7 @@ You can obtain the number of input tensors from **executor**, and then use [OH_N
 
 ### OH_NNExecutor_GetOutputCount()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_GetOutputCount(const OH_NNExecutor *executor, size_t *outputCount)
 ```
 
@@ -1318,7 +1318,7 @@ You can obtain the number of output tensors from **executor**, and then use [OH_
 
 ### OH_NNExecutor_CreateInputTensorDesc()
 
-```
+```c
 NN_TensorDesc *OH_NNExecutor_CreateInputTensorDesc(const OH_NNExecutor *executor, size_t index)
 ```
 
@@ -1346,7 +1346,7 @@ The description contains all types of attribute values of the tensor. If the val
 
 ### OH_NNExecutor_CreateOutputTensorDesc()
 
-```
+```c
 NN_TensorDesc *OH_NNExecutor_CreateOutputTensorDesc(const OH_NNExecutor *executor, size_t index)
 ```
 
@@ -1374,7 +1374,7 @@ The description contains all types of attribute values of the tensor. If the val
 
 ### OH_NNExecutor_GetInputDimRange()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_GetInputDimRange(const OH_NNExecutor *executor,size_t index,size_t **minInputDims,size_t **maxInputDims,size_t *shapeLength)
 ```
 
@@ -1412,7 +1412,7 @@ You do not need to release the memory of <b>minInputDims</b> and <b>maxInputDims
 
 ### OH_NNExecutor_SetOnRunDone()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_SetOnRunDone(OH_NNExecutor *executor, NN_OnRunDone onRunDone)
 ```
 
@@ -1440,7 +1440,7 @@ For details about the callback function, see [NN_OnRunDone](capi-neural-network-
 
 ### OH_NNExecutor_SetOnServiceDied()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_SetOnServiceDied(OH_NNExecutor *executor, NN_OnServiceDied onServiceDied)
 ```
 
@@ -1468,7 +1468,7 @@ For details about the callback function, see [NN_OnServiceDied](capi-neural-netw
 
 ### OH_NNExecutor_RunSync()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_RunSync(OH_NNExecutor *executor,NN_Tensor *inputTensor[],size_t inputCount,NN_Tensor *outputTensor[],size_t outputCount)
 ```
 
@@ -1501,7 +1501,7 @@ If the output tensor has a dynamic shape, you can obtain the actual shape of the
 
 ### OH_NNExecutor_RunAsync()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_RunAsync(OH_NNExecutor *executor,NN_Tensor *inputTensor[],size_t inputCount,NN_Tensor *outputTensor[],size_t outputCount,int32_t timeout,void *userData)
 ```
 
@@ -1544,7 +1544,7 @@ If the inference times out, it is terminated immediately and the error code [OH_
 
 ### OH_NNDevice_GetAllDevicesID()
 
-```
+```c
 OH_NN_ReturnCode OH_NNDevice_GetAllDevicesID(const size_t **allDevicesID, uint32_t *deviceCount)
 ```
 
@@ -1574,7 +1574,7 @@ When device IDs are returned through the size_t array, each element of the array
 
 ### OH_NNDevice_GetName()
 
-```
+```c
 OH_NN_ReturnCode OH_NNDevice_GetName(size_t deviceID, const char **name)
 ```
 
@@ -1601,7 +1601,7 @@ Obtains the name of the specified device.
 
 ### OH_NNDevice_GetType()
 
-```
+```c
 OH_NN_ReturnCode OH_NNDevice_GetType(size_t deviceID, OH_NN_DeviceType *deviceType)
 ```
 

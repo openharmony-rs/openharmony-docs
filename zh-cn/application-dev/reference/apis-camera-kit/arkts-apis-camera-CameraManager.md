@@ -22,7 +22,9 @@ import { camera } from '@kit.CameraKit';
 
 getSupportedCameras(): Array\<CameraDevice\>
 
-获取支持的相机设备对象，同步返回结果。
+获取支持的基础相机设备对象（如获取CameraType为CAMERA_TYPE_DEFAULT的默认相机），同步返回结果。
+
+如果需要获取额外的相机设备对象（如获取CameraType为CAMERA_TYPE_TELEPHOTO的长焦相机），可通过[getCameraDevices](#getcameradevices23)接口获取。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -65,7 +67,7 @@ getSupportedSceneModes(camera: CameraDevice): Array\<SceneMode\>
 
 | 参数名         | 类型                                                            | 必填 | 说明                      |
 | ------------ |--------------------------------------------------------------- | -- | -------------------------- |
-| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | 是 | 相机设备，通过 [getSupportedCameras](#getsupportedcameras) 接口获取。传参异常时，会返回错误码。       |
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | 是 | 相机设备，通过[getSupportedCameras](#getsupportedcameras)接口获取。传参异常时，会返回错误码[7400101](./errorcode-camera.md#7400101-无效入参)。       |
 
 **返回值：**
 
@@ -118,6 +120,46 @@ getSupportedOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutpu
 ```ts
 function getSupportedOutputCapability(camera: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability {
   let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedOutputCapability(camera, sceneMode);
+  return cameraOutputCapability;
+}
+```
+
+## getSupportedFullOutputCapability<sup>23+</sup>
+
+getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutputCapability
+
+查询指定相机在指定模式下支持的完整输出能力，包括未压缩图（YUV）、HEIF和HDR等能力。
+
+> **说明：**
+>
+> 使用YUV，HEIF或HDR等能力前，需要先显式调用此方法确保获取完整输出能力。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名         | 类型                                                            | 必填 | 说明                      |
+| ------------ |--------------------------------------------------------------- | -- | -------------------------- |
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | 是 | 相机设备信息，通过[getSupportedCameras](#getsupportedcameras)接口获取。       |
+| mode | [SceneMode](arkts-apis-camera-e.md#scenemode11)                              | 是 | 相机模式，通过[getSupportedSceneModes](#getsupportedscenemodes11)接口获取。       |
+
+**返回值：**
+
+| 类型                                             | 说明                           |
+| ----------------------------------------------- | ---------------------------- |
+| [CameraOutputCapability](arkts-apis-camera-i.md#cameraoutputcapability)            | 相机输出能力。                   |
+
+**示例：**
+
+```ts
+import { camera } from '@kit.CameraKit';
+
+function getSupportedFullOutputCapability(camera: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability {
+  let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedFullOutputCapability(camera, sceneMode);
   return cameraOutputCapability;
 }
 ```
@@ -180,8 +222,8 @@ createCameraInput(camera: CameraDevice): CameraInput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400102                |  Operation not allowed.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400102                |  Operation not allowed.<br>适用版本：12+               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -235,8 +277,8 @@ createCameraInput(position: CameraPosition, type: CameraType): CameraInput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400102                |  Operation not allowed.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400102                |  Operation not allowed.<br>适用版本：12+               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -288,7 +330,7 @@ createPreviewOutput(profile: Profile, surfaceId: string): PreviewOutput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -358,6 +400,56 @@ function createPreviewOutput(cameraManager: camera.CameraManager, surfaceId: str
 }
 ```
 
+## createDeferredPreviewOutput<sup>24+</sup>
+
+createDeferredPreviewOutput(profile: Profile): PreviewOutput
+
+创建延迟预览输出对象，在配流时替代普通的预览输出对象加入数据流。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型             | 必填 | 说明       |
+| -------- | --------------- | ---- | --------- |
+| profile | [Profile](arkts-apis-camera-i.md#profile) | 是 | 支持的预览配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability11)接口获取。|
+
+**返回值：**
+
+| 类型        | 说明                          |
+| ---------- | ----------------------------- |
+| [PreviewOutput](arkts-apis-camera-PreviewOutput.md)  | PreviewOutput实例。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400101                |  Parameter missing or parameter type incorrect.               |
+| 7400201                |  Camera service fatal error.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function createPreviewOutput(cameraOutputCapability: camera.CameraOutputCapability, cameraManager: camera.CameraManager): camera.PreviewOutput | undefined {
+  let profile: camera.Profile = cameraOutputCapability.previewProfiles[0];
+  let previewOutput: camera.PreviewOutput | undefined = undefined;
+  try {
+    previewOutput = cameraManager.createDeferredPreviewOutput(profile);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The createPreviewOutput call failed. error code: ${err.code}`);
+  }
+  return previewOutput;
+}
+```
+
 ## createPhotoOutput<sup>11+</sup>
 
 createPhotoOutput(profile?: Profile): PhotoOutput
@@ -387,7 +479,7 @@ createPhotoOutput(profile?: Profile): PhotoOutput
 | 错误码ID    | 错误信息                                           |
 |----------|------------------------------------------------|
 | 7400101  | Parameter missing or parameter type incorrect. |
-| 7400201  | Camera service fatal error.                    |
+| 7400201  | Camera service fatal error.<br>适用版本：12+    |
 
 **示例：**
 
@@ -414,6 +506,13 @@ createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 
 创建录像输出对象，同步返回结果。
 
+在录像模式下，使能SDR或HDR_VIVID拍摄效果时，CameraFormat与ColorSpace必须按照下列表格中的对应关系配置，若不满足表格中CameraFormat与ColorSpace配置，会导致预览异常等问题。
+
+| SDR/HDR拍摄         | CameraFormat             | ColorSpace       |
+|--------------------|--------------------------|------------------|
+| SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
+| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -438,7 +537,7 @@ createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -537,7 +636,7 @@ createMetadataOutput(metadataObjectTypes: Array\<MetadataObjectType\>): Metadata
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -585,7 +684,7 @@ createSession\<T extends Session\>(mode: SceneMode): T
 
 | 错误码ID   | 错误信息                                                                                                                                           |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |  
+| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed.<br>适用版本：19+ |  
 | 7400201 | Camera service fatal error.                                                                                                                    |
 
 **示例：**
@@ -750,7 +849,7 @@ isTorchSupported(): boolean
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| boolean    | 返回true表示设备支持手电筒，返回false表示设备不支持手电。若接口调用失败，返回undefined。 |
+| boolean    | 表示设备是否支持手电筒，true表示设备支持手电筒，false表示设备不支持手电。<br>如果返回false，则[isTorchModeSupported](#istorchmodesupported11)、[getTorchMode](#gettorchmode11)、[setTorchMode](#settorchmode11)、[isTorchLevelControlSupported](#istorchlevelcontrolsupported)和[setTorchModeOnWithLevel](#settorchmodeonwithlevel)都不会生效。<br>若接口调用失败，返回undefined。 |
 
 **示例：**
 
@@ -840,8 +939,9 @@ setTorchMode(mode: TorchMode): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102 | Operation not allowed. |
-| 7400201 | Camera service fatal error. |
+| 7400101 | Parameter missing or parameter type incorrect.<br>适用版本：11-17 |
+| 7400102 | Operation not allowed.<br>适用版本：12+ |
+| 7400201 | Camera service fatal error.<br>适用版本：12+ |
 
 **示例：**
 
@@ -923,11 +1023,80 @@ function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void 
 }
 ```
 
+## isTorchLevelControlSupported
+
+isTorchLevelControlSupported(): boolean
+
+检测设备是否支持手电筒亮度调节功能。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型        | 说明                          |
+| ---------- | ----------------------------- |
+| boolean    | 表示设备是否支持手电筒亮度调节功能。返回true表示支持，返回false表示不支持。若接口调用失败，返回undefined。 |
+
+**示例：**
+
+```ts
+function isTorchLevelControlSupported(cameraManager: camera.CameraManager): boolean {
+  let isSupported = cameraManager.isTorchLevelControlSupported();
+  return isSupported;
+}
+```
+
+## SetTorchModeOnWithLevel
+
+SetTorchModeOnWithLevel(torchLevel: number): void
+
+手电筒设置指定亮度级别。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型             | 必填 | 说明       |
+| -------- | --------------- | ---- | --------- |
+| torchLevel | number| 是 | 手电筒亮度级别。通常范围是[0.0, 1.0]（0.0为最暗，1.0为最亮）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400201 | Camera service fatal error. |
+| 7400102 | Operation not allowed. |
+
+**示例：**
+
+```ts
+function SetTorchModeOnWithLevel(cameraManager: camera.CameraManager, torchLevel: number): void {
+  cameraManager.setTorchModeOnWithLevel(torchLevel);
+  return ;
+}
+```
+
 ## getCameraDevice<sup>18+</sup>
 
-getCameraDevice(position:CameraPosition, type: CameraType): CameraDevice
+getCameraDevice(position: CameraPosition, type: CameraType): CameraDevice
 
 根据相机位置和相机类型查询对应相机。
+
+获取指定[CameraPosition](arkts-apis-camera-e.md#cameraposition)和[CameraType](arkts-apis-camera-e.md#cameratype)的相机镜头，如果该接口返回结果为undefined，表示当前设备未查询到该镜头。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -987,7 +1156,7 @@ getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectTyp
 | 参数名      | 类型                                                    | 必填 | 说明                                                 |
 | ----------- | ------------------------------------------------------- | ---- | ---------------------------------------------------- |
 | position    | [CameraPosition](arkts-apis-camera-e.md#cameraposition) | 是   | 相机的位置。 |
-| types       | Array\<[CameraType](arkts-apis-camera-e.md#cameratype)>  | 是   | 相机的类型。 |
+| types       | Array\<[CameraType](arkts-apis-camera-e.md#cameratype)>  | 是   | 相机类型数组。 |
 | connectType | [ConnectionType](arkts-apis-camera-e.md#connectiontype) | 是   | 相机的连接类型。 |
 
 **返回值：**
@@ -1036,7 +1205,7 @@ getCameraConcurrentInfos(cameras: Array\<CameraDevice\>): Array\<CameraConcurren
 
 | 参数名     | 类型             | 必填 | 说明       |
 | -------- | --------------- | ---- | --------- |
-| cameras | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\>  | 是   | 一组CameraDevice相机设备，并得到与这一组CamraDevice对应的并发信息，推荐设置为由[getCameraDevice](#getcameradevice18)获取的前置与后置两个用于并发的相机设备。 |
+| cameras | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\>  | 是   | 一组CameraDevice相机设备，并得到与这一组CameraDevice对应的并发信息，推荐设置为由[getCameraDevice](#getcameradevice18)获取的前置与后置两个用于并发的相机设备。 |
 
 **返回值：**
 
@@ -1111,7 +1280,9 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 创建拍照输出对象，同步返回结果。
 
 > **说明：**
-> 从 API version 10开始支持，从API version 11开始废弃。建议使用[createPhotoOutput](#createphotooutput11)替代。
+>
+> - 从API version 10开始支持，从API version 11开始废弃。建议使用[createPhotoOutput](#createphotooutput11)替代。
+> - 该接口只支持创建JPEG格式的拍照输出对象。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

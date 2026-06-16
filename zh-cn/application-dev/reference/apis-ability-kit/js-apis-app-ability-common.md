@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供Ability Kit中常用公共能力的纯类型定义，包含各类上下文对象、回调接口和数据结构。本模块仅导出类型声明，不包含具体实现逻辑或可执行代码。
 
@@ -119,7 +119,7 @@ type ExtensionContext = _ExtensionContext.default
 
 type FormExtensionContext = _FormExtensionContext.default
 
-[FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)组件上下文，继承自Context。
+[FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)组件上下文，继承自[ExtensionContext](./js-apis-inner-application-extensionContext.md)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -311,6 +311,150 @@ type AppServiceExtensionContext = _AppServiceExtensionContext.default
 | --- | --- |
 | [_AppServiceExtensionContext.default](js-apis-inner-application-appServiceExtensionContext.md) | AppServiceExtensionAbility组件上下文。 |
 
+## FormEditExtensionContext<sup>22+</sup>
+
+type FormEditExtensionContext = _FormEditExtensionContext.default
+
+[FormEditExtensionAbility](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)组件上下文，继承自[UIExtensionContext](./js-apis-inner-application-uiExtensionContext.md)。
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.Form
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_FormEditExtensionContext.default](../apis-form-kit/js-apis-inner-application-formEditExtensionContext.md) | FormEditExtensionAbility组件上下文。 |
+
+## LiveFormExtensionContext<sup>22+</sup>
+
+type LiveFormExtensionContext = _LiveFormExtensionContext.default
+
+[LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)组件上下文，继承自[ExtensionContext](./js-apis-inner-application-extensionContext.md)。
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.Form
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_LiveFormExtensionContext.default](../apis-form-kit/js-apis-application-LiveFormExtensionContext.md) | LiveFormExtensionAbility组件上下文。 |
+
+## AgentCard<sup>24+</sup>
+
+type AgentCard = _AgentCard
+
+[AgentCard](../apis-ability-kit/js-apis-inner-application-AgentCard.md)相当于Agent(智能体)的"名片"，用于描述Agent的能力和技能，由开发者在Agent的配置文件agent_config.json中配置。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentCard](../apis-ability-kit/js-apis-inner-application-AgentCard.md) | Agent(智能体)的"名片"，用于描述Agent的能力和技能。 |
+
+## AgentProvider<sup>24+</sup>
+
+type AgentProvider = _AgentProvider
+
+[AgentProvider](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentprovider)表示Agent的服务提供商。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentProvider](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentprovider) | Agent的服务提供商。 |
+
+## AgentCapabilities<sup>24+</sup>
+
+type AgentCapabilities = _AgentCapabilities
+
+[AgentCapabilities](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentcapabilities)用来定义Agent支持的可选能力。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentCapabilities](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentcapabilities) | 定义Agent支持的可选能力。 |
+
+## AgentSkill<sup>24+</sup>
+
+type AgentSkill = _AgentSkill
+
+[AgentSkill](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentskill)表示Agent可以执行的不同能力或功能。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentSkill](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentskill) | 表示Agent可以执行的不同能力或功能。 |
+
+## AgentAppInfo<sup>24+</sup>
+
+type AgentAppInfo = _AgentAppInfo
+
+[AgentAppInfo](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentappinfo)表示Agent所属的应用信息。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentAppInfo](../apis-ability-kit/js-apis-inner-application-AgentCard.md#agentappinfo) | Agent所属的应用信息。 |
+
+## AgentHostProxy<sup>24+</sup>
+
+type AgentHostProxy = _AgentHostProxy
+
+[AgentHostProxy](../apis-ability-kit/js-apis-inner-application-agentHostProxy.md)用于从[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端向客户端发送数据或安全认证请求。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentHostProxy](../apis-ability-kit/js-apis-inner-application-agentHostProxy.md) | 用于从[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端向客户端发送数据或安全认证请求。 |
+
+## AgentExtensionContext<sup>24+</sup>
+
+type AgentExtensionContext = _AgentExtensionContext
+
+[AgentExtensionContext](../apis-ability-kit/js-apis-inner-application-agentExtensionContext.md)是[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_AgentExtensionContext](../apis-ability-kit/js-apis-inner-application-agentExtensionContext.md) | [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。 |
+
 **示例：**
 
 ```ts
@@ -335,4 +479,13 @@ let photoEditorExtensionContext: common.PhotoEditorExtensionContext;
 let uiServiceProxy : common.UIServiceProxy;
 let uiServiceExtensionConnectCallback : common.UIServiceExtensionConnectCallback;
 let appServiceExtensionContext : common.AppServiceExtensionContext;
+let formEditExtensionContext : common.FormEditExtensionContext;
+let liveFormExtensionContext : common.LiveFormExtensionContext;
+let agentCard: common.AgentCard;
+let agentProvider: common.AgentProvider;
+let agentCapabilities: common.AgentCapabilities;
+let agentSkill: common.AgentSkill;
+let agentAppInfo: common.AgentAppInfo;
+let agentHostProxy: common.AgentHostProxy;
+let agentExtensionContext: common.AgentExtensionContext;
 ```

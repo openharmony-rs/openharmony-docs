@@ -1,7 +1,7 @@
 # 使用JSVM-API接口设置JavaScript对象的属性
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -57,7 +57,7 @@ static JSVM_Value GetPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_GetPropertyNames(env, args[0], &result);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "Failed to get propertynames");
+        OH_JSVM_ThrowError(env, nullptr, "Failed to get property names");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_GetPropertyNames success");
@@ -245,6 +245,7 @@ JSVM OH_JSVM_HasProperty success:0
 ### OH_JSVM_DeleteProperty
 
 尝试从给定的Object中删除由key指定的属性，并返回操作的结果。
+
 如果对象是一个不可扩展的对象，或者属性是不可配置的，则可能无法删除该属性。
 
 cpp部分代码：
@@ -699,7 +700,7 @@ static JSVM_Value GetAllPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
                                          JSVM_KeyFilter::JSVM_KEY_WRITABLE,
                                          JSVM_KeyConversion::JSVM_KEY_NUMBERS_TO_STRINGS, &result);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "Failed to get allpropertynames");
+        OH_JSVM_ThrowError(env, nullptr, "Failed to get all property names");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_GetAllPropertyNames success");

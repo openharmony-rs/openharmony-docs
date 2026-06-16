@@ -80,9 +80,7 @@ OH_AVErrCode OH_AVTranscoderConfig_Release(OH_AVTranscoder_Config* config)
 
 **Description**
 
-Releases the resources of the transcoding configuration parameters.
-
-After a successful call, the instance specified by **config** is released and set to nullptr.
+Releases the resources of the transcoding configuration parameters.<br> After a successful call, the instance specified by **config** is released and set to nullptr.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -109,9 +107,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetSrcFD(OH_AVTranscoder_Config *config, int3
 
 **Description**
 
-Sets the file descriptor of the source video for transcoding.
-
-This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
+Sets the file descriptor of the source video for transcoding.<br> This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -141,9 +137,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstFD(OH_AVTranscoder_Config *config, int3
 
 **Description**
 
-Sets the file descriptor of the output video for transcoding.
-
-This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
+Sets the file descriptor of the output video for transcoding.<br> This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -171,11 +165,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoType(OH_AVTranscoder_Config *confi
 
 **Description**
 
-Sets the encoding format of the output video for transcoding.
-
-Currently, only AVC and HEVC are supported. If the source video is in HEVC format, the default value is **HEVC**. Otherwise, the default value is **AVC**.
-
-This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
+Sets the encoding format of the output video for transcoding.<br> Currently, only AVC and HEVC are supported. If the source video is in HEVC format, the default value is **HEVC**. Otherwise, the default value is **AVC**.<br> This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -203,11 +193,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioType(OH_AVTranscoder_Config *confi
 
 **Description**
 
-Sets the encoding format of the output audio for transcoding.
-
-Currently, only AAC is supported. If this parameter is not set, AAC is used by default.
-
-This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
+Sets the encoding format of the output audio for transcoding.<br> Currently, only AAC is supported. If this parameter is not set, AAC is used by default.<br> This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -235,11 +221,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstFileType(OH_AVTranscoder_Config *config
 
 **Description**
 
-Sets the container format of the output video file for transcoding.
-
-Currently, only MP4 is supported.
-
-This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
+Sets the container format of the output video file for transcoding.<br> Currently, only MP4 is supported.<br> This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -267,9 +249,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioBitrate(OH_AVTranscoder_Config *co
 
 **Description**
 
-Sets the bit rate of the output audio for transcoding.
-
-This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
+Sets the bit rate of the output audio for transcoding.<br> This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -297,9 +277,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoBitrate(OH_AVTranscoder_Config *co
 
 **Description**
 
-Sets the bit rate of the output video for transcoding.
-
-This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
+Sets the bit rate of the output video for transcoding.<br> This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -327,9 +305,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoResolution(OH_AVTranscoder_Config 
 
 **Description**
 
-Sets the resolution of the output video for transcoding, in px, where **width** is the width of the output video frame and **height** is the height of the output video frame.
-
-This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
+Sets the resolution of the output video for transcoding, in px, where **width** is the width of the output video frame and **height** is the height of the output video frame.<br> This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare).
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -358,11 +334,7 @@ OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, 
 
 **Description**
 
-Enables B-frame encoding for the output video during transcoding.
-
-For details about the constraints on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints).
-
-If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.
+Enables B-frame encoding for the output video during transcoding.<br>For details about the constraints on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints).<br>If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -374,7 +346,7 @@ If the current environment does not meet these constraints, B-frames will be ski
 | Name| Description|
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | Pointer to an OH_AVTranscoder_Config instance, which is created by running [OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create).|
-| bool enabled | Whether to enable B-frame encoding. **true** to enable, **false** otherwise.|
+| bool enabled | Whether to enable B-frame encoding. The values include **true** (yes) and **false** (no). The default value is **false**.|
 
 **Returns**
 
@@ -410,9 +382,7 @@ OH_AVErrCode OH_AVTranscoder_Prepare(OH_AVTranscoder *transcoder, OH_AVTranscode
 
 **Description**
 
-Sets the parameters for video transcoding and prepares for transcoding.
-
-This function must be called before [OH_AVTranscoder_Start](#oh_avtranscoder_start). Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_PREPARED state.
+Sets the parameters for video transcoding and prepares for transcoding.<br> This function must be called before [OH_AVTranscoder_Start](#oh_avtranscoder_start). Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_PREPARED state.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -440,9 +410,7 @@ OH_AVErrCode OH_AVTranscoder_Start(OH_AVTranscoder *transcoder)
 
 **Description**
 
-Starts transcoding.
-
-This function must be called after a successful call to [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare). Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_STARTED state.
+Starts transcoding.<br> This function must be called after a successful call to [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare). Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_STARTED state.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -469,9 +437,7 @@ OH_AVErrCode OH_AVTranscoder_Pause(OH_AVTranscoder *transcoder)
 
 **Description**
 
-Pauses transcoding.
-
-This function must be called when the AVTranscoder is in the AVTRANSCODER_STARTED state. Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_PAUSED state.
+Pauses transcoding.<br> This function must be called when the AVTranscoder is in the AVTRANSCODER_STARTED state. Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_PAUSED state.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -498,9 +464,7 @@ OH_AVErrCode OH_AVTranscoder_Resume(OH_AVTranscoder *transcoder)
 
 **Description**
 
-Resumes transcoding.
-
-This function must be called when the AVTranscoder is in the AVTRANSCODER_PAUSED state. Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_STARTED state again.
+Resumes transcoding.<br> This function must be called when the AVTranscoder is in the AVTRANSCODER_PAUSED state. Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_STARTED state again.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -527,9 +491,7 @@ OH_AVErrCode OH_AVTranscoder_Cancel(OH_AVTranscoder *transcoder)
 
 **Description**
 
-Cancels transcoding.
-
-This function must be called when the AVTranscoder is in the AVTRANSCODER_STARTED or AVTRANSCODER_PAUSED state. Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_CANCELLED state.
+Cancels transcoding.<br> This function must be called when the AVTranscoder is in the AVTRANSCODER_STARTED or AVTRANSCODER_PAUSED state. Upon a successful call to this function, the AVTranscoder enters the AVTRANSCODER_CANCELLED state.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -583,13 +545,7 @@ OH_AVErrCode OH_AVTranscoder_SetStateCallback(OH_AVTranscoder *transcoder, OH_AV
 
 **Description**
 
-Registers a callback for transcoding state change events.
-
-This callback is invoked when the state of the transcoding process changes.
-
-An application can subscribe to only one transcoding state change event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
-
-The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.
+Registers a callback for transcoding state change events.<br> This callback is invoked when the state of the transcoding process changes.<br> An application can subscribe to only one transcoding state change event. When the application initiates multiple subscriptions to this event, the last subscription is applied.<br> The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -618,15 +574,7 @@ OH_AVErrCode OH_AVTranscoder_SetErrorCallback(OH_AVTranscoder *transcoder, OH_AV
 
 **Description**
 
-Registers a callback for transcoding error events.
-
-This callback is invoked when an error occurs during the transcoding process.
-
-If this event is reported, call [OH_AVTranscoder_Release](#oh_avtranscoder_release) to exit the transcoding.
-
-An application can subscribe to only one transcoding error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
-
-The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.
+Registers a callback for transcoding error events.<br> This callback is invoked when an error occurs during the transcoding process.<br> If this event is reported, call [OH_AVTranscoder_Release](#oh_avtranscoder_release) to exit the transcoding.<br> An application can subscribe to only one transcoding error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.<br> The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -655,13 +603,7 @@ OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcod
 
 **Description**
 
-Registers a callback for transcoding progress update events.
-
-This callback is invoked when the progress of the transcoding process is updated.
-
-An application can subscribe to only one transcoding error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
-
-The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.
+Registers a callback for transcoding progress update events.<br> This callback is invoked when the progress of the transcoding process is updated.<br> An application can subscribe to only one transcoding error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.<br> The callback must be registered before [OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare) is called.
 
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 

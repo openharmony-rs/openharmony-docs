@@ -56,7 +56,7 @@
         Column() {
           Text(`${this.value}`)
           // 点击Index中的Button改变value值，父组件Parent和子组件Child中的Text将同步更新。
-          Button(`change value`).onClick(() => {
+          Button(`change value in parent component`).onClick(() => {
             this.value++;
           })
           // 使用@Param与@Event语法实现自定义组件双向绑定。
@@ -76,7 +76,7 @@
         Column() {
           Text(`${this.value}`)
           // 点击子组件Child中的Button，调用`this.$value(10)`方法，父组件Parent和子组件Child中的Text将同步更新。
-          Button(`change value`).onClick(() => {
+          Button(`change value in child component`).onClick(() => {
             this.$value(10);
           })
         }
@@ -98,7 +98,7 @@
        Column() {
          Text(`${this.value}`)
          // 点击Index中的Button改变value值，父组件Index和子组件Star中的Text将同步更新。
-         Button(`change value`).onClick(() => {
+         Button(`change value in parent component`).onClick(() => {
            this.value++;
          })
          // 使用!!语法糖实现自定义组件双向绑定。
@@ -117,7 +117,7 @@
        Column() {
          Text(`${this.value}`)
          // 点击子组件Star中的Button，调用`this.$value(10)`方法，父组件Index和子组件Star中的Text将同步更新。
-         Button(`change value`).onClick(() => {
+         Button(`change value in child component`).onClick(() => {
            this.$value(10);
          })
        }
@@ -170,6 +170,7 @@ struct BindMenuInterface {
               },
             ])
       }.height('50%')
+      
       Text('isShow: ' + this.isShow).fontSize(18).fontColor(Color.Red)
       Row() {
         Button('Click')

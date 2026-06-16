@@ -1,8 +1,8 @@
 # 通用样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -183,7 +183,7 @@
 | steelblue            | \#4682b4 | ![steelblue](figures/steelblue.png)      |
 | tan                  | \#d2b48c | ![tan](figures/tan.png)                  |
 | teal                 | \#008080 | ![teal](figures/teal.png)                |
-| thistle              | \#d8Bfd8 | ![thistle](figures/thistle.png)          |
+| thistle              | \#d8bfd8 | ![thistle](figures/thistle.png)          |
 | tomato               | \#ff6347 | ![tomato](figures/tomato.png)            |
 | turquoise            | \#40e0d0 | ![turquoise](figures/turquoise.png)      |
 | violet               | \#ee82ee | ![violet](figures/violet.png)            |

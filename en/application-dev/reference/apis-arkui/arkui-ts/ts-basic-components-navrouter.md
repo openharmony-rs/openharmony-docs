@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **NavRouter** component provides default processing logic for responding to clicks, eliminating the need for manual logic definition.
@@ -28,19 +28,27 @@ This component must contain two child components, the second of which must be [N
 
 ## APIs
 
-### NavRouter
+### NavRouter<sup>(deprecated)</sup>
 
 NavRouter()
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 13. You are advised to use [NavPathStack](ts-basic-components-navigation.md#navpathstack10) and [navDestination](ts-basic-components-navigation.md#navdestination10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### NavRouter<sup>10+</sup>
+### NavRouter<sup>(deprecated)</sup>
 
 NavRouter(value: RouteInfo)
 
 Provides route information so that clicking the **NavRouter** component redirects the user to the specified navigation destination page.
+
+> **NOTE**
+>
+> This API is supported since API version 10 and deprecated since API version 13. You are advised to use [NavPathStack](ts-basic-components-navigation.md#navpathstack10) and [navDestination](ts-basic-components-navigation.md#navdestination10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -50,17 +58,21 @@ Provides route information so that clicking the **NavRouter** component redirect
 
 | Name    | Type                               | Mandatory  | Description         |
 | ------- | ----------------------------------- | ---- | ------------- |
-| value   | [RouteInfo](#routeinfo10) | Yes   | Route information.|
+| value   | [RouteInfo](#routeinfodeprecated)| Yes   | Route information.|
 
 ## Attributes
 
 In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
 
-### mode<sup>10+</sup>
+### mode<sup>(deprecated)</sup>
 
 mode(mode: NavRouteMode)
 
 Sets the route mode used for redirecting the user from the **NavRouter** component to the specified navigation destination page.
+
+> **NOTE**
+>
+> This API is supported since API version 10 and deprecated since API version 13. You are advised to use [LaunchMode](ts-basic-components-navigation.md#launchmode12) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -70,9 +82,11 @@ Sets the route mode used for redirecting the user from the **NavRouter** compone
 
 | Name                          | Type                                    | Mandatory                                  | Description                                      |
 | ----------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| mode                  | [NavRouteMode](#navroutemode10)                                  | Yes                                | Route mode used for redirection.<br>Default value: **NavRouteMode.PUSH_WITH_RECREATE**|
+| mode                  | [NavRouteMode](#navroutemodedeprecated)                                 | Yes                                | Route mode used for redirection.<br>Default value: **NavRouteMode.PUSH_WITH_RECREATE**|
 
-## RouteInfo<sup>10+</sup>
+## RouteInfo<sup>(deprecated)</sup>
+
+Route information.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -80,10 +94,16 @@ Sets the route mode used for redirecting the user from the **NavRouter** compone
 
 | Name                | Type                                                    | Read-Only| Optional| Description                                                        |
 | -------------------- | ------------------------------------------------------- |---- | ---- | ------------------------------------------------------------ |
-| name             | string            | No  | No  | Name of the navigation destination page to be redirected to.|
-| param             | unknown            | No  | Yes  | Parameter transferred during redirection.|
+| name             | string            | No  | No  | Name of the navigation destination page to be redirected to.<br>**NOTE**<br>This API is supported since API version 10 and deprecated since API version 13. You are advised to use [name](ts-basic-components-navigation.md#properties-1) instead.|
+| param             | unknown            | No  | Yes  | Parameter transferred during redirection.<br>**NOTE**<br>This API is supported since API version 10 and deprecated since API version 13. You are advised to use [param](ts-basic-components-navigation.md#properties-1) instead.|
 
-## NavRouteMode<sup>10+</sup>
+## NavRouteMode<sup>(deprecated)</sup>
+
+Defines the routing policy.
+
+> **NOTE**
+>
+> This API is supported since API version 10 and deprecated since API version 13. You are advised to use [NavPathStack](ts-basic-components-navigation.md#navpathstack10) and [navDestination](ts-basic-components-navigation.md#navdestination10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -97,11 +117,15 @@ Sets the route mode used for redirecting the user from the **NavRouter** compone
 
 ## Events
 
-### onStateChange
+### onStateChange<sup>(deprecated)</sup>
 
 onStateChange(callback: (isActivated: boolean) => void)
 
 Called when the component activation status changes. **onStateChange(true)** is called when the **NavRouter** component is activated and its **NavDestination** child component is loaded. **onStateChange(false)** is called when the **NavDestination** child component is not displayed.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 13. You are advised to use [onShown](ts-basic-components-navdestination.md#onshown10) and [onHidden](ts-basic-components-navdestination.md#onhidden10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

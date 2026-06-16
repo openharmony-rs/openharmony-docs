@@ -17,6 +17,7 @@
     <!--DelEnd-->
   - Device Management<!--device-management-arkts-->
     - [@ohos.batteryInfo (Battery Information)](js-apis-battery-info.md)
+    - [@ohos.busManager.serial (Serial Port Management)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (Device Information)](js-apis-device-info.md)
     - [@ohos.power (System Power Management)](js-apis-power.md)
     - [@ohos.runningLock (Running Lock)](js-apis-runninglock.md)
@@ -27,6 +28,7 @@
     - [@ohos.batteryInfo (Battery Information) (System API)](js-apis-battery-info-sys.md)
     - [@ohos.batteryStatistics (Battery Statistics) (System API)](js-apis-batteryStatistics-sys.md)
     - [@ohos.brightness (Screen Brightness) (System API)](js-apis-brightness-sys.md)
+    - [@ohos.busManager.serial (Serial Port Management) (System API)](js-apis-busmanager-serial-sys.md)
     - [@ohos.charger (Charging Type) (System API)](js-apis-charger-sys.md)
     - [@ohos.deviceAttest (Device Attestation) (System API)](js-apis-deviceAttest-sys.md)
     - [@ohos.power (Power Management) (System API)](js-apis-power-sys.md)
@@ -45,15 +47,15 @@
     - [@ohos.request (Upload and Download)](js-apis-request.md)
     - [@ohos.request.cacheDownload (Download and Cache)](js-apis-request-cacheDownload.md)
     - [@ohos.zlib (Zip)](js-apis-zlib.md)
+    - [@ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility)](js-apis-selectionInput-selectionExtensionAbility.md)
+    - [@ohos.selectionInput.SelectionExtensionContext (Word Selection Extension Context)](js-apis-selectionInput-selectionExtensionContext.md)
+    - [@ohos.selectionInput.selectionManager (Word Selection Management)](js-apis-selectionInput-selectionManager.md)
+    - [@ohos.selectionInput.SelectionPanel (Word Selection Panel)](js-apis-selectionInput-selectionPanel.md)
     <!--Del-->
     - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability) (System API)](js-apis-app-ability-PrintExtensionAbility-sys.md)
     - [@ohos.print (Print) (System API)](js-apis-print-sys.md)
     - [@ohos.scan (Scan) (System API)](js-apis-scan-sys.md)
     - [@ohos.request (Upload and Download) (System API)](js-apis-request-sys.md)
-    - [@ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility) (System API)](js-apis-selectionInput-selectionExtensionAbility-sys.md)
-    - [@ohos.selectionInput.SelectionExtensionContext (SelectionExtensionContext) (System API)](js-apis-selectionInput-selectionExtensionContext-sys.md)
-    - [@ohos.selectionInput.selectionManager (Word Selection Management) (System API)](js-apis-selectionInput-selectionManager-sys.md)
-    - @ohos.selectionInput.SelectionPanel (Word Selection Panel) (System API) (js-apis-selectionInput-selectionPanel-sys.md)
     <!--DelEnd-->
   - Process and Thread Communication<!--process-thread-communi-arkts-->
     - [System Common Events](common_event/commonEventManager-definitions.md)
@@ -83,6 +85,7 @@
     - [@ohos.wallpaper (Wallpaper)](js-apis-wallpaper.md)
     - [@ohos.resourceschedule.systemload (System Load Level Management)](js-apis-resourceschedule-systemload.md)
     - [@ohos.systemDateTime (System Time and Time Zone)](js-apis-date-time.md)
+    - [@ohos.intelligentScene (Intelligent Scene)](js-apis-intelligentScene.md)
     <!--Del-->
     - [@ohos.configPolicy (Configuration Policy) (System API)](js-apis-configPolicy-sys.md)
     - [@ohos.settings (Data Item Settings) (System API)](js-apis-settings-sys.md)
@@ -102,7 +105,7 @@
     - [@system.request (Upload and Download)](js-apis-system-request.md)
     - [@ohos.screenLock (Screen Lock)](js-apis-screen-lock.md)
     <!--Del-->
-    - [@ohos.commonEvent (Common Event) (System API)](js-apis-commonEvent-sys.md)
+    - [@ohos.commonEvent (Common Event) (System API) (Deprecated)](js-apis-commonEvent-sys.md)
     - [@ohos.usb (USB) (System API)](js-apis-usb-deprecated-sys.md)
     - [@ohos.systemParameter (System Parameter) (System API)](js-apis-system-parameter-sys.md)
     <!--DelEnd-->
@@ -140,6 +143,14 @@
     - [Print_Margin](capi-oh-print-print-margin.md)
     - [Print_PageSize](capi-oh-print-print-pagesize.md)
     - [Print_Range](capi-oh-print-print-range.md)
+    - [Print_DefaultValue](capi-oh-print-print-defaultvalue.md)
+    - [Print_PrinterCapability](capi-oh-print-print-printercapability.md)
+    - [Print_PrinterInfo](capi-oh-print-print-printerinfo.md)
+    - [Print_PrintJob](capi-oh-print-print-printjob.md)
+    - [Print_Property](capi-oh-print-print-property.md)
+    - [Print_PropertyList](capi-oh-print-print-propertylist.md)
+    - [Print_Resolution](capi-oh-print-print-resolution.md)
+    - [Print_StringList](capi-oh-print-print-stringlist.md)
     - [Print_PrintAttributes](capi-oh-print-print-printattributes.md)
     - [Print_PrintDocCallback](capi-oh-print-print-printdoccallback.md)
     - [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)
@@ -147,6 +158,7 @@
     - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
 - Error Codes<!--basic-services-arkts-errcode-->
   - [USB Error Codes](errorcode-usb.md)
+  - [Serial Port Management Error Codes](errorcode-busmanager-serial.md)
   - [Running Lock Error Codes](errorcode-runninglock.md)
   - [zlib Error Codes](errorcode-zlib.md)
   <!--Del-->
@@ -171,9 +183,11 @@
   <!--DelEnd-->
   - [Print Service Error Codes](errorcode-print.md)
   - [Settings Error Codes](errorcode-settings.md)
+  - [Word Selection Service Error Codes](errorcode-selection.md)
+  - [Intelligent Scene Error Codes](errorcode-intelligentScene.md)
   <!--Del-->
   - [Screen Lock Management Error Codes](errorcode-screenlock.md)
   - [Device Attestation Error Codes](errorcode-deviceAttest.md)
   - [Intelligent Voice Error Codes](errorcode-intelligentVoice.md)
-  - [Word Selection Service Error Codes](errorcode-selection.md)
   <!--DelEnd-->
+  - [deviceInfo Error Codes](errorcode-device-info.md)

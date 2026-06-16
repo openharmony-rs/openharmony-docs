@@ -4,13 +4,13 @@
 <!--Owner: @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 应用文件分享是应用之间通过分享URI（Uniform Resource Identifier）进行文件共享的过程。
 
 ## 通过拉起文件处理类应用进行文件分享(startAbility)
 
-基于[文件选择器(startAbility)](../application-models/file-processing-apps-startup.md)的分享方式，应用可分享单个文件，通过[ohos.app.ability.wantConstant的wantConstant.Flags接口](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags)以只读或读写权限授权给其他应用。被分享应用可通过[ohos.file.fs的fs.open](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopen)打开URI，并进行读写操作。
+基于[文件选择器(startAbility)](../application-models/file-processing-apps-startup.md)的分享方式，应用可分享单个文件，通过[ohos.app.ability.wantConstant的wantConstant.Flags接口](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags)以只读或读写权限授权给其他应用。被分享应用可通过[fileIo.open](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopen)打开URI，并进行读写操作。
 
 ## 应用可分享目录
 

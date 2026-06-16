@@ -15,8 +15,6 @@
 > - 本模块接口为系统接口。
 >
 > - 本模块接口仅可在Stage模型下使用。
->
-> - 数据共享结果集在全系统最多同时存在32个，使用完及时释放。
 
 ## 导入模块
 
@@ -36,25 +34,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
-    let uri = ("datashare:///com.samples.datasharetest.DataShare");
+    let uri = "datashare:///com.samples.datasharetest.DataShare";
     let context = this.context;
     dataShare.createDataShareHelper(context, uri, (err:BusinessError, data:dataShare.DataShareHelper) => {
       if (err != undefined) {
-        console.error("createDataShareHelper fail, error message : " + err);
+        console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info("createDataShareHelper end, data : " + data);
         dataShareHelper = data;
       }
       let columns = ["*"];
-      let da = new dataSharePredicates.DataSharePredicates();
+      let predicates = new dataSharePredicates.DataSharePredicates();
       let resultSet: DataShareResultSet | undefined = undefined;
-      da.equalTo("name0", "ZhangSan");
+      predicates.equalTo("name0", "ZhangSan");
       if (dataShareHelper != undefined) {
-        (dataShareHelper as dataShare.DataShareHelper).query(uri, da, columns).then((data: DataShareResultSet) => {
+        (dataShareHelper as dataShare.DataShareHelper).query(uri, predicates, columns).then((data: DataShareResultSet) => {
           console.info("query end, data : " + data);
           resultSet = data;
         }).catch((err: BusinessError) => {
-          console.error("query fail, error message : " + err);
+          console.error(`Failed to query. Code: ${err.code}, message: ${err.message}`);
         });
       }
     });
@@ -69,7 +67,7 @@ export default class EntryAbility extends UIAbility {
 
 ### 属性
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 | 名称        | 类型      | 只读 | 可选 | 说明                     |
 | ----------- | ------------- | ---- | ---- | ------------------------ |
@@ -108,7 +106,7 @@ goToLastRow(): boolean
 
 转到结果集的最后一行。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **返回值：**
 
@@ -131,7 +129,7 @@ goToNextRow(): boolean
 
 转到结果集的下一行。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **返回值：**
 
@@ -154,7 +152,7 @@ goToPreviousRow(): boolean
 
 转到结果集的上一行。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **返回值：**
 
@@ -177,7 +175,7 @@ goTo(offset: number): boolean
 
 相对于当前位置向前或向后移动指定行数。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -207,13 +205,13 @@ goToRow(position: number): boolean
 
 转到结果集的指定行。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
 | **参数名** | **类型** | **必填** | 说明                                    |
 | ---------- | -------- | -------- | --------------------------------------- |
-| position   | number   | 是       | 表示要移动到的指定位置，从 0 开始。 |
+| position   | number   | 是       | 表示要移动到的指定位置，从0开始，取值范围[0, rowCount-1]。 |
 
 **返回值：**
 
@@ -239,13 +237,13 @@ getBlob(columnIndex: number): Uint8Array
 
 如果当前行中指定的列或键的值为空，或者指定的列或键不是Blob类型，则使用方需要确定是否抛出此异常。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
 | **参数名**  | **类型** | **必填** | 说明                    |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | 是       | 指定的列索引，从0开始。 |
+| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 
@@ -276,13 +274,13 @@ getString(columnIndex: number): string
 
 如果当前行中指定的列或键的值为空，或者指定的列或键不是string类型，则使用方需要确定是否抛出此异常。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
 | **参数名**  | **类型** | **必填** | 说明                    |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | 是       | 指定的列索引，从0开始。 |
+| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 
@@ -296,8 +294,12 @@ getString(columnIndex: number): string
 let columnIndex = 1;
 if (resultSet != undefined) {
   let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
-  let getString = (resultSet as DataShareResultSet).getString(columnIndex);
-  console.info('resultSet.getString: ' + getString);
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getString = (resultSet as DataShareResultSet).getString(columnIndex);
+    console.info('resultSet.getString: ' + getString);
+  }
 }
 ```
 
@@ -309,13 +311,13 @@ getLong(columnIndex: number): number
 
 如果当前行中指定的列或键的值为空，或者指定的列或键不是long类型，则使用方需要确定是否抛出此异常。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
 | **参数名**  | **类型** | **必填** | 说明                    |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | 是       | 指定的列索引，从0开始。 |
+| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 
@@ -329,8 +331,12 @@ getLong(columnIndex: number): number
 let columnIndex = 1;
 if (resultSet != undefined) {
   let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
-  let getLong = (resultSet as DataShareResultSet).getLong(columnIndex);
-  console.info('resultSet.getLong: ' + getLong);
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getLong = (resultSet as DataShareResultSet).getLong(columnIndex);
+    console.info('resultSet.getLong: ' + getLong);
+  }
 }
 ```
 
@@ -342,13 +348,13 @@ getDouble(columnIndex: number): number
 
 如果当前行中指定的列或键的值为空，或者指定的列或键不是double类型，则使用方需要确定是否抛出此异常。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
 | **参数名**  | **类型** | **必填** | 说明                    |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | 是       | 指定的列索引，从0开始。 |
+| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 
@@ -362,8 +368,12 @@ getDouble(columnIndex: number): number
 let columnIndex = 1;
 if (resultSet != undefined) {
   let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
-  let getDouble = (resultSet as DataShareResultSet).getDouble(columnIndex);
-  console.info('resultSet.getDouble: ' + getDouble);
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getDouble = (resultSet as DataShareResultSet).getDouble(columnIndex);
+    console.info('resultSet.getDouble: ' + getDouble);
+  }
 }
 ```
 
@@ -375,7 +385,7 @@ close(): void
 
 对结果集调用此方法将释放其所有资源并使其无效。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **示例：**
 
@@ -393,7 +403,7 @@ getColumnIndex(columnName: string): number
 
 列名作为输入参数传递。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -425,13 +435,13 @@ getColumnName(columnIndex: number): string
 
 列索引作为输入参数传递。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
 | **参数名**  | **类型** | **必填** | 说明                       |
 | ----------- | -------- | -------- | -------------------------- |
-| columnIndex | number   | 是       | 表示结果集中指定列的索引。 |
+| columnIndex | number   | 是       | 表示结果集中指定列的索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 
@@ -457,13 +467,13 @@ getDataType(columnIndex: number): DataType
 
 如果当前行中指定的列或键的值为空，或者指定的列或键不是DataType类型，则使用方需要确定是否抛出此异常。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
 | **参数名**  | **类型** | **必填** | 说明                       |
 | ----------- | -------- | -------- | -------------------------- |
-| columnIndex | number   | 是       | 表示结果集中指定列的索引。 |
+| columnIndex | number   | 是       | 表示结果集中指定列的索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 
@@ -476,8 +486,13 @@ getDataType(columnIndex: number): DataType
 ```ts
 let columnIndex = 1;
 if (resultSet != undefined) {
-  let getDataType = (resultSet as DataShareResultSet).getDataType(columnIndex);
-  console.info('resultSet.getDataType: ' + getDataType);
+  let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getDataType = (resultSet as DataShareResultSet).getDataType(columnIndex);
+    console.info('resultSet.getDataType: ' + getDataType);
+  }
 }
 ```
 
@@ -485,7 +500,7 @@ if (resultSet != undefined) {
 
 数据类型枚举。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 | 名称        | 值 | 说明                 |
 | ----------- | ------ | -------------------- |

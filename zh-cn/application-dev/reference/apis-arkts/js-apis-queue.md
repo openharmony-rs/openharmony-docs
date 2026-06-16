@@ -1,14 +1,14 @@
 # @ohos.util.Queue (线性容器Queue)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
 Queue的特点是先进先出，在尾部增加元素，在头部删除元素。根据循环队列的数据结构实现。
 
-Queue和[Deque](js-apis-deque.md)相比，Queue只能在一端删除一端增加，Deque可以两端增删。
+Queue和[Deque](js-apis-deque.md)相比，Queue在尾部增加元素，在头部删除元素；而Deque支持在两端进行增删操作。
 
 **推荐使用场景：** 一般符合先进先出的场景可以使用Queue。
 
@@ -189,8 +189,7 @@ console.info("result:", result);  // result: 2
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, Queue?: Queue&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, Queue?: Queue&lt;T&gt;) => void, thisArg?: Object): void
 
 在遍历Queue实例对象中每一个元素的过程中，对每个元素执行回调函数。
 
@@ -215,11 +214,10 @@ callbackfn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**

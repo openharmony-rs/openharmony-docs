@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块提供文件哈希处理能力，对文件内容进行哈希处理。
 
@@ -57,7 +57,7 @@ hash(path: string, algorithm: string): Promise&lt;string&gt;
 
   | 类型                    | 说明                         |
   | --------------------- | -------------------------- |
-  | Promise&lt;string&gt; | Promise对象。返回文件的哈希值。表示为十六进制数字串，所有字母均大写。 |
+  | Promise&lt;string&gt; | Promise对象，返回文件的哈希值。表示为十六进制数字串，所有字母均大写。 |
 
 **错误码：**
 
@@ -74,9 +74,9 @@ hash(path: string, algorithm: string): Promise&lt;string&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
   hash.hash(filePath, "sha256").then((str: string) => {
-    console.info("calculate file hash succeed:" + str);
+    console.info("Succeeded in calculating file hash: " + str);
   }).catch((err: BusinessError) => {
-    console.error("calculate file hash failed with error message: " + err.message + ", error code: " + err.code);
+    console.error("Failed to calculate file hash. Code: " + err.code + ", message: " + err.message);
   });
   ```
 
@@ -96,7 +96,7 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
 | --------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | path      | string                      | 是   | 待计算哈希值文件的应用沙箱路径。                             |
 | algorithm | string                      | 是   | 哈希计算采用的算法。可选&nbsp;"md5"、"sha1"&nbsp;或&nbsp;"sha256"。建议采用安全强度更高的&nbsp;"sha256"。 |
-| callback  | AsyncCallback&lt;string&gt; | 是   | 异步计算文件哈希操作之后的回调函数（其中给定文件哈希值表示为十六进制数字串，所有字母均大写）。 |
+| callback  | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回哈希值（哈希值表示为十六进制数字串，所有字母均大写）。 |
 
 **错误码：**
 
@@ -114,9 +114,9 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
   let filePath = pathDir + "/test.txt";
   hash.hash(filePath, "sha256", (err: BusinessError, str: string) => {
     if (err) {
-      console.error("calculate file hash failed with error message: " + err.message + ", error code: " + err.code);
+      console.error("Failed to calculate file hash. Code: " + err.code + ", message: " + err.message);
     } else {
-      console.info("calculate file hash succeed:" + str);
+      console.info("Succeeded in calculating file hash: " + str);
     }
   });
   ```
@@ -154,12 +154,12 @@ createHash(algorithm: string): HashStream
 
   ```ts
   // pages/xxx.ets
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   function hashFileWithStream() {
     const filePath = pathDir + "/test.txt";
     // 创建文件可读流
-    const rs = fs.createReadStream(filePath);
+    const rs = fileIo.createReadStream(filePath);
     // 创建哈希流
     const hs = hash.createHash('sha256');
     rs.on('data', (emitData) => {
@@ -169,7 +169,7 @@ createHash(algorithm: string): HashStream
     rs.on('close', async () => {
       const hashResult = hs.digest();
       const fileHash = await hash.hash(filePath, 'sha256');
-      console.info(`hashResult: ${hashResult}, fileHash: ${fileHash}`);
+      console.info(`Succeeded in calculating file hash. hashResult: ${hashResult}, fileHash: ${fileHash}`);
     });
   }
   ```
@@ -211,14 +211,14 @@ update(data: ArrayBuffer): void
   hs.update(new Uint8Array('abcdefg'?.split('').map((x: string) => x.charCodeAt(0))).buffer);
   const hashResult = hs.digest();
   // 88A00F46836CD629D0B79DE98532AFDE3AEAD79A5C53E4848102F433046D0106
-  console.info(`hashResult: ${hashResult}`);
+  console.info(`Succeeded in calculating file hash. hashResult: ${hashResult}`);
   ```
 
 ### digest<sup>12+</sup>
 
 digest(): string
 
-计算传给被哈希的所有数据的摘要。
+计算传递给哈希处理的所有数据的摘要。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -246,5 +246,5 @@ digest(): string
   hs.update(new Uint8Array('abcdefg'?.split('').map((x: string) => x.charCodeAt(0))).buffer);
   const hashResult = hs.digest();
   // 88A00F46836CD629D0B79DE98532AFDE3AEAD79A5C53E4848102F433046D0106
-  console.info(`hashResult: ${hashResult}`);
+  console.info(`Succeeded in calculating file hash. hashResult: ${hashResult}`);
   ```

@@ -1,16 +1,16 @@
 # @ohos.inputMethodList (输入法切换列表控件)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块主要面向系统应用和输入法应用，提供输入法切换列表控件，控件中显示默认输入法子类型和三方输入法应用列表，对于默认输入法应用，提供模式切换入口。
 
 > **说明：**
 >
-> 该组件从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
@@ -77,10 +77,10 @@ struct SettingsItem {
   @State defaultPattern: number = 1;
   private oneHandAction: PatternOptions = {
     defaultSelected: this.defaultPattern,
-    patterns: [
+    patterns: [ // patterns中的图标需要在工程的resource中添加对应图标资源后使用
       {
-        icon: $r('app.media.hand_icon'),
-        selectedIcon: $r('app.media.hand_icon_selected')
+        icon: $r('app.media.hand_icon'), // 此处为输入法模式选项的图标资源，例如单手模式图标
+        selectedIcon: $r('app.media.hand_icon_selected') // 此处为输入法模式选项的图标资源选中状态，例如单手模式选中状态的图标
       },
       {
         icon: $r('app.media.hand_icon1'),
@@ -116,5 +116,7 @@ struct SettingsItem {
   }
 }
 ```
+
 示例效果图：
+
 ![示例效果图](./figures/示例效果图.png)

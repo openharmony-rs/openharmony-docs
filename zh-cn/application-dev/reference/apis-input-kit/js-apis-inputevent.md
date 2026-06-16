@@ -5,13 +5,13 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 设备上报的基本事件。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -31,6 +31,6 @@ import { InputEvent } from '@kit.InputKit';
 | ---------- | ------ | ---- | ---- | -------------- |
 | id         | number | 否    | 否    | 事件ID。 |
 | deviceId   | number | 否    | 否    | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。    |
-| actionTime | number | 否    | 否    | 上报输入事件的时间。      |
+| actionTime | number | 否    | 否    | 上报输入事件的时间，表示系统启动运行至今逝去的微秒数，单位为微秒（μs）。    |
 | screenId   | number | 否    | 否    | 目标屏幕ID。         |
 | windowId   | number | 否    | 否    | 目标窗口ID。         |

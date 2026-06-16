@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的弹窗确认或弹窗取消功能对象。示例代码参考[onAlert事件](./arkts-basic-components-web-events.md#onalert)。
+Web组件返回的弹窗确认或取消功能对象。示例代码参考[onAlert事件](./arkts-basic-components-web-events.md#onalert)。
 
 > **说明：**
 >
@@ -14,7 +14,7 @@ Web组件返回的弹窗确认或弹窗取消功能对象。示例代码参考[o
 >
 > - 本Class首批接口从API version 8开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## constructor
 

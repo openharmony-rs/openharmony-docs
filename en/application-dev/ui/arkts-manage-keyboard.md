@@ -20,13 +20,13 @@ through the following methods:
 
 3. External keyboard navigation: pressing **Tab**, **Shift+Tab**, or arrow keys (which shows the physical keyboard toolbar instead of the soft keyboard)
 
-The system distinguishes between system soft keyboards and custom keyboards. The [enableKeyboardOnFocus](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enablekeyboardonfocus10) attribute affects system keyboard display but not custom keyboards. When **enableKeyboardOnFocus** is set to **false**, the system soft keyboard only appears when focus is acquired through clicking or key press interactions. External physical keyboards suppress system soft keyboards but do not affect custom keyboards.
+The system distinguishes between system soft keyboards and custom keyboards. The [enableKeyboardOnFocus](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enablekeyboardonfocus10) attribute affects system keyboard display but not custom keyboards. When **enableKeyboardOnFocus** is set to **false**, the system soft keyboard only appears when focus is acquired through clicking or key press interactions. **enableKeyboardOnFocus** does not affect custom keyboards. External physical keyboards suppress system soft keyboards but do not affect custom keyboards.
 
 ### Interactive Focus
 
-The following demonstrates soft keyboard behavior during input field tapping, double-tapping, or long-pressing.
+Tapping, double-tapping, or long-pressing will trigger the display of soft keyboard.
 
-![click](figures/click.gif)
+
 
 ### Programmatic Focus
 
@@ -131,7 +131,7 @@ struct Index {
 }
 ```
 
-![keyboard_textInput_user_close](figures/keyboard_textInput_user_close.gif)
+
 
 ### Text Dragging
 
@@ -165,15 +165,15 @@ struct Index {
 
 ### Swipe Gestures
 
-Swipe gestures hide the soft keyboard. The figure below demonstrates this dismissal scenario.
+While the soft keyboard remains displayed, users can swipe from the side to collapse it.
 
-![keyboard_textInput_gesture_return](figures/keyboard_textInput_gesture_return.gif)
+
 
 ### Page Navigation
 
 Navigating away from the text input pages hides the keyboard.
 
-For details about the page navigation syntax, see [Component Navigation (Navigation) (Recommended)](./arkts-navigation-navigation.md).
+For details about the page navigation syntax, see [Page Routing](./arkts-navigation-jump.md).
 
 Source page:
 
@@ -291,7 +291,7 @@ struct demo {
   }
 }
 ```
-![stopEditing](figures/stopEditing.gif)
+
 
 ### Focus Transfer
 

@@ -53,6 +53,7 @@ selected(value: number | Resource)
 Sets the index of the initially selected option in the drop-down menu, where the first option has an index of 0. When **selected** is set to an invalid value or is not set, the default default **-1** is used, which indicates no selection. When **selected** is set to **undefined** or **null**, the first option is selected.
 
 Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
+
 Since API version 18, this attribute supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -63,7 +64,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 | Name| Type                                                        | Mandatory| Description                    |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------ |
-| value  | number \| [Resource](ts-types.md#resource)<sup>11+</sup> | Yes  | Index of the initially selected option. The index is zero-based.|
+| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<sup>11+</sup> | Yes  | Index of the initially selected option. The index is zero-based.|
 
 ### selected<sup>18+</sup>
 
@@ -81,7 +82,7 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| numCount | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Index of the initially selected option.<br>When **numCount** is set to **undefined**, the first option is selected.|
+| numCount | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)> | Yes  | Index of the initially selected option.<br>When **numCount** is set to **undefined**, the first option is selected.|
 
 ### value
 
@@ -90,6 +91,7 @@ value(value: ResourceStr)
 Sets the text content of drop-down button. After a menu option is selected, the button text will automatically update to display the selected option's text.
 
 Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
+
 Since API version 18, this attribute supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -118,7 +120,7 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resStr | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceStr](ts-types.md#resourcestr)> | Yes  | Text of the drop-down button.<br>If **resStr** is set to **undefined**, the previous value is retained.|
+| resStr | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceStr](ts-types.md#resourcestr)> | Yes  | Text of the drop-down button.<br>If **resStr** is set to **undefined**, the previous value is retained.|
 
 ### controlSize<sup>12+</sup>
 
@@ -134,7 +136,7 @@ Sets the size of the **Select** component.
 
 | Name| Type                                                        | Mandatory| Description                                             |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------- |
-| value  | [ControlSize](ts-basic-components-button.md#controlsize11)<sup>11+</sup> | Yes  | Size of the **Select** component.<br>Default value: **ControlSize.NORMAL**.|
+| value  | [ControlSize](ts-basic-components-button.md#controlsize11)<sup>11+</sup> | Yes  | Size of the **Select** component.<br>Default value: **ControlSize.NORMAL**|
 
 The priorities of **controlSize**, **width**, and **height** are as follows:
 
@@ -158,7 +160,7 @@ Sets the size of the **Select** component. Compared with [controlSize](#controls
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| size   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ControlSize](ts-basic-components-button.md#controlsize11)> | Yes  | Size of the **Select** component.<br>If **size** is set to **undefined**, the default value **ControlSize.NORMAL** is used.|
+| size   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ControlSize](ts-basic-components-button.md#controlsize11)> | Yes  | Size of the **Select** component.<br>If **size** is set to **undefined**, the default value **ControlSize.NORMAL** is used.|
 
 The priorities of **controlSize**, **width**, and **height** are as follows:
 
@@ -206,7 +208,7 @@ Creates a content modifier for the drop-down menu. Compared with [menuItemConten
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<MenuItemConfiguration>](#menuitemconfiguration12)> | Yes  | Content modifier to apply to the drop-down menu.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.<br>If **modifier** is set to **undefined**, no content modifier is used.|
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<MenuItemConfiguration>](#menuitemconfiguration12)> | Yes  | Content modifier to apply to the drop-down menu.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.<br>If **modifier** is set to **undefined**, no content modifier is used.|
 
 ### divider<sup>12+</sup>
 
@@ -222,7 +224,7 @@ Sets the divider style. If this attribute is not set, the divider is displayed b
 
 | Name| Type   | Mandatory| Description                                                                 |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| options  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[DividerOptions](ts-basic-components-textpicker.md#divideroptions12)> \| null | Yes  | Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style.<br>Default value:<br>{<br>strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2. If this parameter is set to **null**, the divider is not displayed.<br>3. If the value of **strokeWidth** is too larger, the divider may overlap the text. The divider extends both upwards and downwards from the bottom of each item.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
+| options  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DividerOptions](ts-basic-components-textpicker.md#divideroptions12)> \| null | Yes  | Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style.<br>Default value:<br>{<br>strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2. If this parameter is set to **null**, the divider is not displayed.<br>3. If the value of **strokeWidth** is too larger, the divider may overlap the text. The divider extends both upwards and downwards from the bottom of each item.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
 
 ### dividerStyle<sup>19+</sup>
 
@@ -238,7 +240,7 @@ Sets the divider style. If this attribute is not set, the divider is displayed b
 
 | Name| Type   | Mandatory| Description                                                                 |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[DividerStyleOptions](ts-types.md#dividerstyleoptions12)>  | Yes  | Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style.<br>Default value:<br>{<br>strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2. If this parameter is set to **null** or **undefined**, the default divider is displayed.<br>3. When **mode** is set to **FLOAT_ABOVE_MENU**, be careful with the **strokeWidth** settings to avoid covering text. The divider extends both upwards and downwards from the bottom of each item. When **mode** is **EMBEDDED_IN_MENU**, the divider expands to fill its own space within the menu.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DividerStyleOptions](ts-types.md#dividerstyleoptions12)>  | Yes  | Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style.<br>Default value:<br>{<br>strokeWidth: '1px' , <br>color: '#33182431'<br>}<br>2. If this parameter is set to **null** or **undefined**, the default divider is displayed.<br>3. When **mode** is set to **FLOAT_ABOVE_MENU**, be careful with the **strokeWidth** settings to avoid covering text. The divider extends both upwards and downwards from the bottom of each item. When **mode** is **EMBEDDED_IN_MENU**, the divider expands to fill its own space within the menu.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
 
 ### font
 
@@ -254,7 +256,7 @@ Sets the text style of the drop-down button. When **size** is set to **0**, the 
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | Yes  | Text style of the drop-down list button.<br>Default value:<br>API version 11 and earlier versions:<br>{<br>size: `$r('sys.float.ohos_id_text_size_button1')`,<br>weight: FontWeight.Medium<br>} <br>Since API version 12: The default value of **size** is **$r('sys.float.ohos_id_text_size_button2')** in the case of **controlSize.SMALL** and **$r('sys.float.ohos_id_text_size_button1')** in other cases.|
+| value  | [Font](ts-types.md#font) | Yes  | Text style of the drop-down list button.<br>For API versions 11 and earlier, the default value is as follows:<br>{<br>size:&nbsp;`$r('sys.float.ohos_id_text_size_button1')`,<br>weight:&nbsp;FontWeight.Medium<br>} <br>Since API version 12: The default value of **size** is **$r('sys.float.ohos_id_text_size_button2')** in the case of **controlSize.SMALL** and **$r('sys.float.ohos_id_text_size_button1')** in other cases.|
 
 ### font<sup>18+</sup>
 
@@ -270,7 +272,7 @@ Sets the text style of the drop-down button. When **size** is set to **0**, the 
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Font](ts-types.md#font)> | Yes  | Text style of the drop-down list button.<br>If **controlSize** is set to **controlSize.SMALL**, the default value of **size** is **$r('sys.float.ohos_id_text_size_button2')**. Otherwise, the default value is **$r('sys.float.ohos_id_text_size_button1')**.<br>If **selectFont** is set to **undefined**, the default font style is used.|
+| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Font](ts-types.md#font)> | Yes  | Text style of the drop-down list button.<br>If **controlSize** is set to **controlSize.SMALL**, the default value of **size** is **$r('sys.float.ohos_id_text_size_button2')**. Otherwise, the default value is **$r('sys.float.ohos_id_text_size_button1')**.<br>If **selectFont** is set to **undefined**, the default font style is used.|
 
 ### fontColor
 
@@ -302,7 +304,7 @@ Sets the font color of the drop-down button. Compared with [fontColor](#fontcolo
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of the drop-down button.<br>When **resColor** is set to **undefined**, the default value is a blend of **$r('sys.color.ohos_id_color_text_primary')** with the opacity of **$r('sys.color.ohos_id_alpha_content_primary')**.<br>If **value** is set to **undefined**, the previous value is retained.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of the drop-down button.<br>When **resColor** is set to **undefined**, the default value is a blend of **$r('sys.color.ohos_id_color_text_primary')** with the opacity of **$r('sys.color.ohos_id_alpha_content_primary')**.<br>If **value** is set to **undefined**, the previous value is retained.|
 
 ### selectedOptionBgColor
 
@@ -334,7 +336,7 @@ Sets the background color of the selected option in the drop-down menu. Compared
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of the selected option in the drop-down menu.<br>When **resColor** is set to **undefined**, the default value is a blend of **$r('sys.color.ohos_id_color_component_activated')** with the opacity of **$r('sys.color.ohos_id_alpha_highlight_bg')**.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of the selected option in the drop-down menu.<br>When **resColor** is set to **undefined**, the default value is a blend of **$r('sys.color.ohos_id_color_component_activated')** with the opacity of **$r('sys.color.ohos_id_alpha_highlight_bg')**.|
 
 ### selectedOptionFont
 
@@ -350,7 +352,7 @@ Sets the text font of the selected option in the drop-down menu. When **size** i
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | Yes  | Text font of the selected option in the drop-down menu.<br>Default value:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
+| value  | [Font](ts-types.md#font) | Yes  | Text font of the selected option in the drop-down menu.<br>Default value:<br>{<br>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br>weight:&nbsp;FontWeight.Regular<br>} |
 
 ### selectedOptionFont<sup>18+</sup>
 
@@ -366,7 +368,7 @@ Sets the text font of the selected option in the drop-down menu. When **size** i
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Font](ts-types.md#font)> | Yes  | Text font of the selected option in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
+| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Font](ts-types.md#font)> | Yes  | Text font of the selected option in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br>weight:&nbsp;FontWeight.Regular<br>} |
 
 ### selectedOptionFontColor
 
@@ -398,7 +400,7 @@ Sets the font color of the selected option in the drop-down menu. Compared with 
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of the selected option in the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **$r('sys.color.ohos_id_color_text_primary_activated')** is used.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of the selected option in the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **$r('sys.color.ohos_id_color_text_primary_activated')** is used.|
 
 ### optionBgColor
 
@@ -430,7 +432,7 @@ Sets the background color of options in the drop-down menu. Compared with [optio
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of options in the drop-down menu.<br>When the value of resColor is undefined, the background color of the drop-down menu item is Color.White.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of options in the drop-down menu.<br>When the value of resColor is undefined, the background color of the drop-down menu item is Color.White.|
 
 ### optionFont
 
@@ -446,7 +448,7 @@ Sets the text font of options in the drop-down menu. When **size** is set to **0
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | Yes  | Text font of options in the drop-down menu.<br>Default value:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
+| value  | [Font](ts-types.md#font) | Yes  | Text font of options in the drop-down menu.<br>Default value:<br>{<br>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br>weight:&nbsp;FontWeight.Regular<br>} |
 
 ### optionFont<sup>18+</sup>
 
@@ -464,7 +466,7 @@ Compared with [optionFont](#optionfont), this API supports the **undefined** typ
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Font](ts-types.md#font)> | Yes  | Text font of options in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
+| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Font](ts-types.md#font)> | Yes  | Text font of options in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size:&nbsp;$r('sys.float.ohos_id_text_size_body1'),<br>weight:&nbsp;FontWeight.Regular<br>} |
 
 ### optionFontColor
 
@@ -496,7 +498,7 @@ Sets the font color of options in the drop-down menu. Compared with [optionFontC
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of options in the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **$r('sys.color.ohos_id_color_text_primary')** is used.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of options in the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **$r('sys.color.ohos_id_color_text_primary')** is used.|
 
 ### space<sup>10+</sup>
 
@@ -528,7 +530,7 @@ Sets the spacing between the text and arrow of a drop-down menu option. This att
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| spaceLength | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Length](ts-types.md#length)> | Yes  | Spacing between the text and arrow of an option.<br>If **spaceLength** is set to **undefined**, the default value **8** is used.|
+| spaceLength | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Length](ts-types.md#length)> | Yes  | Spacing between the text and arrow of an option.<br>If **spaceLength** is set to **undefined**, the default value **8** is used.|
 
 ### arrowPosition<sup>10+</sup>
 
@@ -560,7 +562,7 @@ Sets the alignment between the text and arrow of an option. Compared with [arrow
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| position | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ArrowPosition](#arrowposition10)> | Yes  | Alignment between the text and arrow of an option.<br>If **position** is set to **undefined**, the default value **ArrowPosition.END** is used.|
+| position | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ArrowPosition](#arrowposition10)> | Yes  | Alignment between the text and arrow of an option.<br>If **position** is set to **undefined**, the default value **ArrowPosition.END** is used.|
 
 ### menuAlign<sup>10+</sup>
 
@@ -593,14 +595,14 @@ Sets the alignment between the drop-down button and the drop-down menu. Compared
 
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| alignType | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[MenuAlignType](#menualigntype10)> | Yes  | Alignment type.<br>If **alignType** is set to **undefined**, the default value **MenuAlignType.START** is used.|
+| alignType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[MenuAlignType](#menualigntype10)> | Yes  | Alignment type.<br>If **alignType** is set to **undefined**, the default value **MenuAlignType.START** is used.|
 | offset    | [Offset](ts-types.md#offset)                                 | No  | Offset of the drop-down menu relative to the drop-down button after alignment based on the alignment type.<br> Default value: **{dx: 0, dy: 0}**|
 
 ### optionWidth<sup>11+</sup>
 
 optionWidth(value: Dimension | OptionWidthMode )
 
-Sets the width for the drop-down menu option. Percentage values not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button.
+Sets the width for the drop-down menu option. Percentage values are not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button.
 
 If an invalid value or a value less than the minimum width of 56 vp is set, the attribute has no effect. In this case, the option width uses the default value, which is the width of two columns.
 
@@ -614,13 +616,13 @@ The **Select** component maintains 16 vp spacing from both left and right screen
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | [Dimension](ts-types.md#dimension10) \| [OptionWidthMode](ts-appendix-enums.md#optionwidthmode11) | Yes  | Width of the drop-down menu option.|
+| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OptionWidthMode](ts-appendix-enums.md#optionwidthmode11) | Yes  | Width of the drop-down menu option.|
 
 ### optionWidth<sup>18+</sup>
 
 optionWidth(width: Optional\<Dimension | OptionWidthMode> )
 
-Sets the width for the drop-down menu option. Percentage values not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button. Compared with [optionWidth](#optionwidth11)<sup>11+</sup>, this API supports the **undefined** type for the **width** parameter.
+Sets the width for the drop-down menu option. Percentage values are not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button. Compared with [optionWidth](#optionwidth11)<sup>11+</sup>, this API supports the **undefined** type for the **width** parameter.
 
 If an invalid value or a value less than the minimum width of 56 vp is set, the attribute has no effect. In this case, the option width uses the default value, which is the width of two columns.
 
@@ -634,13 +636,13 @@ The **Select** component maintains 16 vp spacing from both left and right screen
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Dimension](ts-types.md#dimension10) \| [OptionWidthMode](ts-appendix-enums.md#optionwidthmode11)> | Yes  | Width of the drop-down menu option.<br>If **width** is set to **undefined**, it has no effect. In this case, the option width uses the default value, which is the width of two columns.|
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OptionWidthMode](ts-appendix-enums.md#optionwidthmode11)> | Yes  | Width of the drop-down menu option.<br>If **width** is set to **undefined**, it has no effect. In this case, the option width uses the default value, which is the width of two columns.|
 
 ### optionHeight<sup>11+</sup>
 
 optionHeight(value: Dimension)
 
-Sets the maximum height for the drop-down menu. Percentage values not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit.
+Sets the maximum height for the drop-down menu. Percentage values are not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit.
 
 This attribute has no effect when set to abnormal values or zero.
 
@@ -660,7 +662,7 @@ If the actual height of all drop-down menu options is less than the set height, 
 
 optionHeight(height: Optional\<Dimension>)
 
-Sets the maximum height for the drop-down menu. Percentage values not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit. Compared with [optionHeight](#optionheight11)<sup>11+</sup>, this API supports the **undefined** type for the **height** parameter.
+Sets the maximum height for the drop-down menu. Percentage values are not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit. Compared with [optionHeight](#optionheight11)<sup>11+</sup>, this API supports the **undefined** type for the **height** parameter.
 
 This attribute has no effect when set to abnormal values or zero.
 
@@ -674,7 +676,7 @@ If the actual height of all drop-down menu options is less than the set height, 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| height | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Dimension](ts-types.md#dimension10)> | Yes  | Maximum height of the drop-down menu.<br>If **height** is set to **undefined**, the default value, which is 80% of the available screen height, is used.|
+| height | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)> | Yes  | Maximum height of the drop-down menu.<br>If **height** is set to **undefined**, the default value, which is 80% of the available screen height, is used.|
 
 ### menuBackgroundColor<sup>11+</sup>
 
@@ -710,7 +712,7 @@ Sets the background color of the drop-down menu. Compared with [menuBackgroundCo
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **Color.Transparent** is used.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of the drop-down menu.<br>If **resColor** is set to **undefined**, the default value **Color.Transparent** is used.|
 
 ### menuBackgroundBlurStyle<sup>11+</sup>
 
@@ -730,7 +732,7 @@ Sets the background blur style of the drop-down menu.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | Yes  | Background blur style of the drop-down menu.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**.|
+| value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | Yes  | Background blur style of the drop-down menu.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**|
 
 ### menuBackgroundBlurStyle<sup>18+</sup>
 
@@ -746,7 +748,7 @@ Sets the background blur style of the drop-down menu. Compared with [menuBackgro
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Background blur style of the drop-down menu.<br>If **style** is set to **undefined**, the default value **BlurStyle.COMPONENT_ULTRA_THICK** is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes  | Background blur style of the drop-down menu.<br>If **style** is set to **undefined**, the default value **BlurStyle.COMPONENT_ULTRA_THICK** is used.|
 
 ### avoidance<sup>19+</sup>
 
@@ -762,7 +764,7 @@ Sets the avoidance mode for the drop-down menu.
 
 | Name   | Type                                     | Mandatory| Description                                                        |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode      | [AvoidanceMode](#avoidancemode19)  | Yes  | Avoidance mode for the drop-down menu.<br>Default value: **AvoidanceMode.COVER_TARGET**.|
+| mode      | [AvoidanceMode](#avoidancemode19)  | Yes  | Avoidance mode for the drop-down menu.<br>Default value: **AvoidanceMode.COVER_TARGET**|
 
 ### menuOutline<sup>20+</sup>
 
@@ -794,7 +796,7 @@ Sets whether to display the default selection icon.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| show  | boolean | Yes  | Whether to display the default selection icon.<br>true: The default icon is displayed. false: The default icon is not displayed. The background color is highlighted to indicate that the icon is selected.<br>Default value: **false**.<br>When show is set to true and the background color of the selected option is set, the background color of the selected option and the icon selected by default are displayed. If the background color of the selected item is not set using selectedOptionBgColor, the background color is not highlighted and only the icon selected by default is displayed.|
+| show  | boolean | Yes  | Whether to display the default selection icon.<br>**true**: The default icon is displayed. **false**: The default icon is not displayed. The background color is highlighted to indicate that the icon is selected.<br>Default value: **false**<br>When **show** is set to **true** and the background color of the selected option is set, both the background color of the selected option and the icon selected by default are displayed. If the background color of the selected item is not set via **selectedOptionBgColor**, the background color is not highlighted and only the icon selected by default is displayed.|
 
 ### textModifier<sup>20+</sup>
 
@@ -814,7 +816,7 @@ Creates a text modifier to customize the text style of the **Select** button. Af
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | Yes  | Text modifier to apply to the **Select** button for customizing the text style.|
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | Yes  | Text modifier to apply to the **Select** button for customizing the text style.|
 
 ### arrowModifier<sup>20+</sup>
 
@@ -834,7 +836,7 @@ Creates an arrow modifier to customize the drop-down arrow icon style of the **S
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)> | Yes  | Arrow modifier to apply to the **Select** button for customizing the drop-down arrow icon style.|
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)> | Yes  | Arrow modifier to apply to the **Select** button for customizing the drop-down arrow icon style.|
 
 ### optionTextModifier<sup>20+</sup>
 
@@ -856,7 +858,7 @@ If both [optionFont](#optionfont) and **Font** of **optionTextModifier** are set
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | Yes  | Option text modifier to apply to the **Select** component for customizing the text style of unselected options in the drop-down menu.|
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | Yes  | Option text modifier to apply to the **Select** component for customizing the text style of unselected options in the drop-down menu.|
 
 ### selectedOptionTextModifier<sup>20+</sup>
 
@@ -878,23 +880,61 @@ If both [selectedOptionFont](#selectedoptionfont) and **Font** of **selectedOpti
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | Yes  | Selected-option text modifier to apply to the **Select** component for customizing the text style of selected options in the drop-down menu.<br>You can manage and maintain the text style as needed.|
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | Yes  | Selected-option text modifier to apply to the **Select** component for customizing the text style of selected options in the drop-down menu.<br>You can manage and maintain the text style as needed.|
 
 ### showInSubWindow<sup>20+</sup>
 
 showInSubWindow(showInSubWindow:Optional\<boolean>)
 
-Sets whether the menu of the **Select** component is displayed in a subwindow.
+Sets whether the drop-down menu is displayed in the subwindow. If this API is not used, the drop-down menu is not displayed in the subwindow by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior difference**: This API is supported on PCs and 2-in-1 devices but not available on other devices.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the menu of the **Select** component is displayed in a subwindow.<br>**true**: The menu of the **Select** component is displayed in a subwindow. This is effective only for 2-in-1 devices.<br>**false**: The menu of the **Select** component is not displayed in a subwindow.<br>Default value: **true** for 2-in-1 devices and **false** for other devices|
+| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether the drop-down menu is displayed in the subwindow.<br>**true**: The drop-down menu is displayed in the subwindow.<br>**false**: The drop-down menu is not displayed in the subwindow.|
+
+### keyboardAvoidMode<sup>23+</sup>
+
+keyboardAvoidMode(mode:Optional\<MenuKeyboardAvoidMode>)
+
+Sets whether the drop-down menu avoids the soft keyboard. If this API is not used, the drop-down menu avoids the soft keyboard by default.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description          |
+| ------ | ------ | ---- | -------------- |
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[MenuKeyboardAvoidMode](ts-universal-attributes-menu.md#menukeyboardavoidmode23)> | Yes| Whether the drop-down menu avoids the soft keyboard. If the value is **undefined**, it is treated as **MenuKeyboardAvoidMode.NONE**.|
+
+### minKeyboardAvoidDistance<sup>23+</sup>
+
+minKeyboardAvoidDistance(distance:Optional\<LengthMetrics>)
+
+Sets the minimum distance for the **Select** component to avoid the soft keyboard. If this API is not used, the minimum distance is 8 vp by default. This API is valid only when [keyboardAvoidMode](#keyboardavoidmode23) is set to avoid the soft keyboard.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description          |
+| ------ | ------ | ---- | -------------- |
+| distance | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | Yes| Sets the minimum distance for the drop-down menu to avoid the soft keyboard. If the value is set to a negative number or **undefined**, the value 8 vp will be used.|
 
 ## ArrowPosition<sup>10+</sup>
 
@@ -949,7 +989,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 | value  | [ResourceStr](ts-types.md#resourcestr) | No | No | Text content of the drop-down menu option.<br>**NOTE**<br>If the length of the text exceeds the width of the menu item text area, the text will be truncated.|
 | icon  | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Icon of the drop-down menu option.<br>**NOTE**<br>The string type can be used to load network images and local images.|
 | symbolIcon  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | No  | Yes | Symbol icon of the drop-down menu option.|
-| selected  | boolean | No | No | Whether the drop-down menu option is selected. The value **true** means that the option is selected, and **false** means the opposite.<br>Default value: **false**.|
+| selected  | boolean | No | No | Whether the drop-down menu option is selected. The value **true** means that the option is selected, and **false** means the opposite.<br>Default value: **false**|
 | index  | number | No | No | Index of the drop-down menu option. The index is zero-based.|
 | triggerSelect  | (index: number, value: string) :void | No | No | Invoked when a drop-down menu option is selected.<br>**index**: index of the selected option.<br>**value**: text of the selected option.<br>**NOTE**<br>The value of **index** will be assigned to the **index** parameter in the [onSelect](#onselect) callback; the value of **value** will be returned to the **Select** component for display and will also be assigned to the **value** parameter in the [onSelect](#onselect) callback.|
 
@@ -963,8 +1003,8 @@ Defines the outline of the drop-down menu.
 
 | Name  | Type                  |Read-Only                                     |Optional                                     | Description                                                        |
 | ------ | ----------------------|-------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| width  | [Dimension](ts-types.md#dimension10) \| [EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11)| No| Yes| Width of the outline. Percentage values are not supported.<br>Default value: **0**|
-| color  | [ResourceColor](ts-types.md#resourcecolor) \| [EdgeColors](ts-types.md#edgecolors9)|No|Yes| Color of the outline.<br>Default value: **#19ffffff**|
+| width  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11)| No| Yes| Width of the outline. Percentage values are not supported.<br>Default value: **0**|
+| color  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)|No|Yes| Color of the outline.<br>Default value: **#19ffffff**|
 
 ## Events
 
@@ -999,7 +1039,7 @@ Triggered when a drop-down menu option is selected. Compared with [onSelect](#on
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnSelectCallback](#onselectcallback18)> | Yes  | Callback invoked when a drop-down menu option is selected.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnSelectCallback](#onselectcallback18)> | Yes  | Callback invoked when a drop-down menu option is selected.<br>If **callback** is set to **undefined**, the callback function is not used.|
 
 ## OnSelectCallback<sup>18+</sup>
 
@@ -1018,7 +1058,8 @@ Defines the callback invoked when a drop-down menu option is selected.
 | index  | number | Yes  | Index of the selected option. The index is zero-based.|
 | selectStr | string | Yes  | Value of the selected option.  |
 
-##  Example 1: Creating a Drop-down Menu
+## Example
+### Example 1: Creating a Drop-down Menu
 
 This example demonstrates how to create a drop-down menu by configuring [SelectOption](#selectoption) and how to implement menu avoidance using the [avoidance](#avoidance19) attribute, available since API version 19.
 
@@ -1067,7 +1108,7 @@ struct SelectExample {
 
 
 
-##  Example 2: Setting the Symbol Icon
+### Example 2: Setting the Symbol Icon
 This example demonstrates how to create a drop-down menu with symbol icons in the **Select** component and implement menu avoidance using the [avoidance](#avoidance19) attribute, available since API version 19.
 
 ```ts
@@ -1120,7 +1161,7 @@ struct SelectExample {
 
 ![](figures/SelectSymbol.png)
 
-##  Example 3: Implementing a Custom Drop-down Menu
+### Example 3: Implementing a Custom Drop-down Menu
 This example implements a custom drop-down menu, each option of which consists of text + symbol + blank area + text + drawn triangle. After a menu option is clicked, the text content of the menu option is displayed.
 
 ```ts
@@ -1193,7 +1234,7 @@ struct SelectExample {
 ```
 ![](figures/SelectBuilderSymbol.png)
 
-##  Example 4: Using the Divider Style
+### Example 4: Using the Divider Style
 This example uses **DividerOptions** to create a divider-style drop-down menu and implements menu avoidance using the [avoidance](#avoidance19) attribute, available since API version 19.
 
 ```ts
@@ -1242,7 +1283,7 @@ struct SelectExample {
 ```
 ![](figures/SelectCustomDivider.png)
 
-##  Example 5: Using the No-Divider Style
+### Example 5: Using the No-Divider Style
 This example sets the **divider** attribute to **null** to remove dividers, and implements menu avoidance using the [avoidance](#avoidance19) attribute, available since API version 19.
 
 ```ts
@@ -1286,7 +1327,7 @@ struct SelectExample {
 ```
 ![](figures/SelectHideDivider.png)
 
-##  Example 6: Setting the Text and Arrow Styles of the Select Component
+### Example 6: Setting the Text and Arrow Styles of the Select Component
 
 This example illustrates how to configure the text and arrow styles of the **Select** component using the [textModifier](#textmodifier20) and [arrowModifier](#arrowmodifier20) attributes, available since API version 20.
 
@@ -1353,7 +1394,7 @@ struct SelectExample {
 ```
 ![](figures/SelectModifier.png)
 
-##  Example 7: Setting the Text Styles of Selected and Unselected Drop-Down Menu Options
+### Example 7: Setting the Text Styles of Selected and Unselected Drop-Down Menu Options
 
 This example demonstrates how to use the [optionTextModifier](#optiontextmodifier20) and [selectedOptionTextModifier](#selectedoptiontextmodifier20) attributes to set text styles for unselected and selected drop-down menu options, available since API version 20.
 
@@ -1423,7 +1464,7 @@ struct SelectExample {
 ```
 ![](figures/SelectOptionModifier.png)
 
-## Example 8: Setting the Divider Mode
+### Example 8: Setting the Divider Mode
 
 This example shows how to set the divider mode by configuring the **mode** property of [DividerStyleOptions](ts-types.md#dividerstyleoptions12), supported since API version 19.
 
@@ -1451,7 +1492,7 @@ struct Index {
 
 ![dividerStyleMode](figures/SelectdividerStyleMode.png)
 
-## Example 9: Setting the Outline Style of the Drop-Down Menu
+### Example 9: Setting the Outline Style of the Drop-Down Menu
 
 This example shows how to set the outline style of the drop-down menu using the **width** and **color** properties of **menuOutline**, supported since API version 20.
 
@@ -1500,3 +1541,60 @@ struct SelectExample {
 ```
 
 ![select-menu-outline](figures/selectMenuOutline.png)
+
+### Example 10: Setting the Pop-Up Menu of Select to Avoid the Soft Keyboard
+
+This example demonstrates how to configure the drop-down menu to avoid the soft keyboard and customize the minimum distance for avoiding the soft keyboard by calling the [keyboardAvoidMode](#keyboardavoidmode23) and [minKeyboardAvoidDistance](#minkeyboardavoiddistance23) APIs.
+
+The **keyboardAvoidMode** and **minKeyboardAvoidDistance** APIs are added since API version 23.
+
+``` ts
+import { inputMethod } from '@kit.IMEKit';
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private inputController: inputMethod.InputMethodController = inputMethod.getController();
+
+  build() {
+    RelativeContainer() {
+      Select([{ value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' }])
+        .value('Click Show Options')
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center },
+        })
+        .keyboardAvoidMode(MenuKeyboardAvoidMode.TRANSLATE_AND_RESIZE)
+        .minKeyboardAvoidDistance(LengthMetrics.vp(20))
+        .onClick(() => {
+          setTimeout(() => {
+            this.attachAndListener()
+          }, 2000)
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+
+  async attachAndListener() {
+    focusControl.requestFocus('Index')
+    try {
+      await this.inputController.attach(true, {
+        inputAttribute: {
+          textInputType: inputMethod.TextInputType.TEXT,
+          enterKeyType: inputMethod.EnterKeyType.SEARCH
+        }
+      })
+    } catch (err) {
+      console.error('Fail to attach')
+    }
+  }
+}
+```
+
+![select-menu-keyboard-avoid](figures/selectKeyboardAvoid.gif)

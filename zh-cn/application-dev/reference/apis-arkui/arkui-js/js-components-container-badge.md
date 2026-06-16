@@ -1,9 +1,9 @@
 # badge
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
@@ -113,4 +113,4 @@ export default {
 }
 ```
 
-![zh-cn_image_000000117726526811](figures/zh-cn_image_000000117726526811.png)
+![badge](figures/badge.png)

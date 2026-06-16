@@ -171,6 +171,7 @@ In the following example, **createWebMessagePorts** is used to create two messag
 
 ### What should I do if the application cannot receive messages sent by the HTML5 page?
 Check whether the data type is correct. **WebMessage** supports the string and ArrayBuffer types. 
+
 To pass the object type, use the **JSON.stringify** method to convert it to the string type. Example:
 
 ```ts

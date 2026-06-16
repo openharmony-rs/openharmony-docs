@@ -2,10 +2,10 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供延迟任务回调能力。开发者可重写模块接口，在延迟任务触发时，系统可通过本模块接口回调应用，在回调里处理任务逻辑。
 
@@ -25,13 +25,17 @@ import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
 type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
 
+WorkSchedulerExtensionContext是WorkSchedulerExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 | 类型 | 说明 |
 | -------- |  -------- |
-| [_WorkSchedulerExtensionContext](js-apis-inner-application-WorkSchedulerExtensionContext.md)|  WorkSchedulerExtension的上下文环境。 |
+| [_WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)|  WorkSchedulerExtension的上下文环境。 |
 
 ## WorkSchedulerExtensionAbility
+
+延迟任务回调，当满足调度条件或调度结束时，系统会回调应用WorkSchedulerExtensionAbility中[onWorkStart()](#onworkstart)或[onWorkStop()](#onworkstop)的方法。
 
 ### 属性
 
@@ -39,7 +43,7 @@ type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context<sup>10+</sup> | [WorkSchedulerExtensionContext](js-apis-inner-application-WorkSchedulerExtensionContext.md)  | 否 | 否 | WorkSchedulerExtension的上下文环境，继承自ExtensionContext。 |
+| context<sup>10+</sup> | [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)  | 否 | 否 | WorkSchedulerExtension的上下文环境，继承自ExtensionContext。 |
 
 ### onWorkStart
 
@@ -49,7 +53,7 @@ onWorkStart(work: workScheduler.WorkInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名  | 类型                                       | 必填   | 说明             |
 | ---- | ---------------------------------------- | ---- | -------------- |
@@ -77,7 +81,7 @@ onWorkStop(work: workScheduler.WorkInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名  | 类型                                       | 必填   | 说明             |
 | ---- | ---------------------------------------- | ---- | -------------- |

@@ -89,7 +89,7 @@ In the **startup_config.json** file, add the configuration for the startup param
 
    The following is an example of the **startup_config.json** file:
 
-   ```json
+   ```json5
    {
      "startupTasks": [
        // A startup task.
@@ -97,7 +97,7 @@ In the **startup_config.json** file, add the configuration for the startup param
      "appPreloadHintStartupTasks": [
        // A .so file preloading task.
      ],
-     "configEntry": "./ets/startup/StartupConfig.ets" // Startup parameter configuration.
+     "configEntry": "./ets/startup/StartupConfig.ets" // Startup parameter configuration
    }
    ```
 
@@ -122,7 +122,7 @@ It is assumed that the application has six startup tasks. The dependencies betwe
 
    The following is an example of the **startup_config.json** file:
 
-   ```json
+   ```json5
    {
      "startupTasks": [
        {
@@ -211,7 +211,7 @@ It is assumed that AppStartup has six .so file preloading tasks. The dependencie
 
    The following is an example of the **startup_config.json** file:
 
-   ```json
+   ```json5
    {
      "startupTasks": [
        // A startup task.
@@ -457,7 +457,7 @@ export default class StartupTask_001 extends StartupTask {
         }
         ```
 
-For details about other steps, see [Setting Startup Parameters](#setting-startup-parameters) and [Adding a Startup Task for Each Component to Be Initialized](#adding-a-startup-task-for-each-component-to-be-initialized).
+  For details about other steps, see [Setting Startup Parameters](#setting-startup-parameters) and [Adding a Startup Task for Each Component to Be Initialized](#adding-a-startup-task-for-each-component-to-be-initialized).
 
 
 ### Changing Startup Mode
@@ -511,7 +511,8 @@ import { startupManager } from '@kit.AbilityKit';
 @Entry
 @Component
 struct Index {
-  @State message: ResourceStr = $r('app.string.manual_mode'); // $r('app.string.manual_mode') is a custom resource.
+  // Replace $r('app.string.manual_mode') with the actual resource file. In this example, the value in the resource file is "Manual mode".
+  @State message: ResourceStr = $r('app.string.manual_mode');
   @State startParams1: Array<string> = ['StartupTask_006'];
   @State startParams2: Array<string> = ['libentry_006'];
 
@@ -572,7 +573,7 @@ Suppose you want to automatically execute StartupTask_004 and libentry_006 tasks
 
 1. Modify the **startup_config.json** file in [Defining Startup Task Configuration](#defining-startup-task-configuration) to add **matchRules** for StartupTask_004 and libentry_006.
 
-    ```json
+    ```json5
     {
       "startupTasks": [
         {
@@ -659,7 +660,7 @@ Starting from API version 21, configuring the startup task scheduling phase is s
 
 For example, the home page of an application needs to obtain feed stream data through network requests, and you want this task to run concurrently with the AbilityStage module loading on an asynchronous thread. Assuming the network request task is StartupTask_004 defined in [Defining Startup Task Configuration](#defining-startup-task-configuration), the development procedure is as follows:
 
-  1. Configure the task to be scheduled before the AbilityStage module loads. In the **startupconfig.json** file, set the **schedulerPhase** field of StartupTask_004 to **preAbilityStageLoad**.
+  1. Configure the task to be scheduled before the AbilityStage module loads. In the **startup_config.json** file, set the **schedulerPhase** field of StartupTask_004 to **preAbilityStageLoad**.
   2. Configure the task to execute concurrently with AbilityStage module loading on an asynchronous thread. Set the **runOnThread** field of StartupTask_004 to **taskPool** and the **waitOnMainThread** field to **false**.
 
   ```json

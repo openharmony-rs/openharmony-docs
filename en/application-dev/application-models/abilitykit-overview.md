@@ -1,4 +1,4 @@
-# Introduction to Ability Kit
+# About This Kit
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -34,6 +34,7 @@ Ability Kit provides an application model for application development and runnin
 ## Highlights
 
 1. **Separation of UI and service logic**
+
    This architecture enforces a development paradigm where service logic and UI interactions are clearly separated.
    - From service logic to UI: Developers implement core service logic within the ability. Data is then passed to the UI framework through binding mechanisms. Based on declarative syntax, ArkUI automatically renders the view and triggers UI updates when the state changes.
    - From UI to service logic: User inputs captured from UI interactions are synchronized back to the ability framework through event callbacks or state binding mechanisms, reflecting the user's actions in the service logic layer.

@@ -3,9 +3,9 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ```c
 typedef struct HiAppEvent_AppEventInfo {...} HiAppEvent_AppEventInfo
@@ -30,6 +30,6 @@ typedef struct HiAppEvent_AppEventInfo {...} HiAppEvent_AppEventInfo
 | const char* domain | 事件领域。 |
 | const char* name | 事件名称。 |
 | enum [EventType](capi-hiappevent-h.md#eventtype) type | 事件类型。 |
-| const char* params | Json格式字符串类型的事件参数列表。 |
+| const char* params | json格式字符串类型的事件参数列表。 |
 
 

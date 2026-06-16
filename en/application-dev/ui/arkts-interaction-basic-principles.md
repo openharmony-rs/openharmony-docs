@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 For pointer-based interactions including [touch events](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md), [mouse events](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md), and [axis events](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md), the interaction framework determines event and gesture targets through coordinate-based hit testing. This process assembles a response chain by identifying components within the interaction area. The system then dispatches events to appropriate UI components by correlating touch coordinates, event types, and layout information. Multiple events can combine to trigger gestures or features, for example, long press, click, and drag.
 
@@ -33,16 +33,12 @@ The event interaction pipeline describes the end-to-end process where ArkUI rece
     Components with registered gestures form a gesture response chain. The system combines events to detect gestures, resolves gesture conflicts through competition logic, and triggers the callback of the winning gesture.
 
    (4) Event Interception
+   
+    You can intercept events at two levels:<br>Pre-chain: Configure hit test properties to affect the formation of the event response chain.<br> Post-chain:
 
-    You can intercept events at two levels:
+    During event dispatch to the touch event response chain, you can block touch event propagation using touch interceptors.
 
-   - Pre-chain: Configure hit test properties to affect the formation of the event response chain.
-
-   - Post-chain:
-
-     During event dispatch to the touch event response chain, you can block touch event propagation using touch interceptors.
-
-     During dispatch to the gesture response chain, you can suppress gesture recognition using gesture interceptors.
+    During dispatch to the gesture response chain, you can suppress gesture recognition using gesture interceptors.
 
 3. Callback Execution
 
@@ -50,15 +46,23 @@ The event interaction pipeline describes the end-to-end process where ArkUI rece
 
 ## Event Response Chain Mechanism
 
-ArkUI constructs event response chains through hit testing using a reverse post-order traversal (right-subtree-first) of the component tree.
+The event response chain refers to an ordered chain of components that can respond to a given interaction, collected through hit testing. When a user touches the screen, the system starts from the touch point and follows a right‑subtree‑first post-order traversal sequence (that is, starting from the innermost component and collecting information from bottom to top, right to left). This process forms a complete response chain.
 
-Consider the following component tree, where all components have **hitTestBehavior** set to **Default**. If the user taps component 5, the final response chain collected will be [5 -> 3 -> 1].
+The following figure illustrates the hierarchical structure of the component tree and the process of collecting the event response chain. In the figure, the parent and child nodes correspond to the parent and child components, respectively. The left and right subtrees correspond to sibling components. The components corresponding to the right subtree are displayed above those corresponding to the left subtree.
 
-This is because component 3 has **hitTestBehavior** set to **Default**, which blocks the collection from its sibling nodes after receiving the event, thereby excluding the left subtree of component 1 (that is, component 2) from the response chain.
+![EventResponseChain](figures/EventResponseChain.png)
 
-  ![EventResponseChain](figures/EventResponseChain.png)
+You can use the [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior) attribute to set the hit test mode of a component. In this example, the touch test mode of all components is set to [HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9).Default. If the user taps component 5, the response chain collection process is as follows:
 
+1. The system detects that the hit point falls on component 5, and component 5 is collected.
 
+2. The event bubbles up to parent component 3, and component 3 is collected.
+
+3. Since component 3's hit test mode is HitTestMode.Default, the sibling component will be blocked after the event is collected. Therefore, component 2 will not be collected.
+
+4. The event continues to bubble up to root component 1, and component 1 is collected.
+
+Therefore, the final response chain (in order of component hierarchy) is 5, 3, and 1.
 
 ## Hit Testing
 
@@ -70,7 +74,7 @@ For dispatching pointer events, the system does not recursively traverse all com
 
 ![touch test](figures/interaction-basic-touch-test-01.png)
 
-The basic process of hit testing is as follows: When the user presses down, the system traverses the component tree from top to bottom and from right to left, collects gestures and events bound to each component, and then bubbles up this information level by level to parent components for consolidation, constructing a complete event response chain.
+The basic process of hit testing is as follows: When the user triggers a press event, the system traverses the component tree from top to bottom and right to left, collects gestures and events bound to each component, and then bubbles up this information level by level to parent components for consolidation, constructing a complete event response chain.
 
 Assume that the user presses at point T (Touch Down). Components A, B, and D are identified as hit, and the chain formed by these components is called the response chain for this interaction. Base events are propagated along this chain: They are first delivered to the leaf node, and then passed to parent nodes, bubbling upward. This process is known as event bubbling.
 
@@ -87,13 +91,23 @@ Applications can intervene in hit test results through the following methods to 
 | Intervention Mode      | Description                            | API        | Remarks                                                                                                                                                                                                                                                                                                                                     |
 | -------------- | ------------------------------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Response region setting  | Sets the region where a component can respond to user interactions.| [responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)   | 1. The response region is used to determine whether the user's touch falls within its range; only touches within the range will be collected.<br>2. The response region also affects gesture recognition, such as clicks, which are triggered only when the touch is released within the response region range.<br>                                                                                                                                                                    |
+| Response region setting  | Sets the region where a component can respond to mouse interactions.| [mouseResponseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#mouseresponseregion10)   | Sets one or more mouse response regions. The function is similar to that of **responseRegion**, but it takes effect only for mouse events.<br>                                                                                                                                                                    |
+| Response region setting  | Sets the touch response list for the component.| [responseRegionList](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregionlist22)   | Sets the list of touch response regions for the component. You can specify the input tool type (such as mouse or touch) applicable to each region. When this API is called, the **responseRegion** and **mouseResponseRegion** APIs do not take effect. This function is supported since API version 22.<br>                                                                                                                                                                    |
 | Hit test control  | Intervenes in the collection results of the component itself and other components.        | [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)  | **hitTestBehavior** works similarly to **onTouchIntercept**, but it is statically configured.                                                                                                                                                                                                                                                                              |
-| Custom event interception| Intervenes in the collection results of the component itself and other components.        | [onTouchIntercept](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md#ontouchintercept) | This callback is triggered when the user presses down and the system begins collecting all components that need to participate in event processing at the current position. Applications can return a **HitTestMode** value through this callback to influence the system's behavior in collecting child or sibling nodes. This enables dynamic control over interaction responses, such as allowing certain components to participate in interactions only under specific service conditions.<br>**onTouchIntercept** works similarly to **hitTestBehavior**, but it is a dynamic callback.|
+| Custom event interception| Intervenes in the collection results of the component itself and other components.        | [onTouchIntercept](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md#ontouchintercept) | This callback is triggered when the user triggers a press event and the system begins collecting all components that need to participate in event processing at the current position. Applications can return a **HitTestMode** value through this callback to influence the system's behavior in collecting child or sibling nodes. This enables dynamic control over interaction responses, such as allowing certain components to participate in interactions only under specific service conditions.<br>**onTouchIntercept** works similarly to **hitTestBehavior**, but it is a dynamic callback.|
 
 
 1. Response Region Setting
 
-   By default, a component's response region matches its own position and size, ensuring maximum consistency between user actions and visual feedback. In rare cases, applications may need to adjust the response region size to limit or expand the component's response range. This is achieved through the **responseRegion** API.
+   By default, a component's response region matches its own position and size, ensuring maximum consistency between user actions and visual feedback. In rare cases, an application may need to adjust the size of the response region to limit or expand the scope of operations that a component can respond to.
+
+   ArkUI provides the following APIs to set the touch response region of a component:
+
+   - **responseRegion**: sets one or more response regions, applicable to all input device types (such as touch and mouse). This API is supported since API version 8.
+
+   - **mouseResponseRegion**: Sets one or more mouse response regions, which take effect only for mouse events. This API is supported since API version 10.
+
+   - **responseRegionList**: Sets the list of touch response regions for the component. You can specify the input tool type applicable to each region. When this API is called, the **responseRegion** and **mouseResponseRegion** APIs do not take effect. This function is supported since API version 22.
 
    The response region affects the dispatch of pointer events and can be specified relative to the component's own area. One or more areas can be defined to partition the component's response region into multiple sections.
 
@@ -101,23 +115,53 @@ Applications can intervene in hit test results through the following methods to 
    >
    > **x** and **y** can be set to a positive or negative percentage value. Setting **x** to **'100%'** shifts the response region rightward by the component's width, while setting **x** to **'-100%'** shifts the response region leftward by the component's width. Setting **y** to **'100%'** shifts the response region downward by the component's height, while setting **y** to **'-100%'** shifts the response region upward by the component's height.
    >
-   > **width** and **height** can only be set to positive percentage values. When **width** is set to **'100%'**, the width of the response region is equal to that of the component. For example, if the width of a component is 100 vp, **'100%'** indicates that the width of the response region is also 100 vp. when **height** is set to **'100%'**, the height of the response region is equal to that of the component.
+   > **width** and **height** can only be set to positive percentage values. When **width** is set to **'100%'**, the width of the response region is equal to that of the component. For example, if the width of a component is 100 vp, **'100%'** indicates that the width of the response region is also 100 vp. When **height** is set to **'100%'**, the height of the response region is equal to that of the component.
    >
    > Percentage values are calculated relative to the component's own width and height.
 
    The following is an example of binding multiple response regions:
-
-   ```ts
-   Button("Button")
-     .responseRegion([
-        { x: 0, y: 0, width: '30%', height: '100%' },      // First response region: left 1/3 of the button
-        { x: '70%', y: 0, width: '30%', height: '100%' },  // Second response region: right 1/3 of the button
-      ])
+   <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct FocusOnclickExample {
+     @State text: string = '';
+     @State number: number = 0;
+   
+     build() {
+       Column() {
+         Text(this.text)
+           .margin({ bottom: 20 })
+         // Replace $r('app.string.button') with the actual resource file. In this example, the value in the resource file is "Button."
+         Button($r('app.string.button'))
+           .responseRegion([
+             {
+               x: 0,
+               y: 0,
+               width: '30%',
+               height: '100%'
+             }, // First response region: left 1/3 of the button
+             {
+               x: '70%',
+               y: 0,
+               width: '30%',
+               height: '100%'
+             },// Second response region: right 1/3 of the button
+           ])
+           .onClick(() => {
+             this.number++;
+             this.text = 'button' + this.number + 'clicked';
+           })
+           .width(200)
+       }.width('100%').justifyContent(FlexAlign.Center)
+     }
+   }
    ```
 
    The above code divides the button into three parts, with the middle 40% area non-responsive to clicks, while the remaining areas on both sides remain responsive.
 
-   ![response region](figures/interaction-basic-respose-region-01.png)
+   ![response region](figures/interaction-basic-response-region-01.png)
 
 2. Hit Test Control
 
@@ -141,7 +185,7 @@ Applications can intervene in hit test results through the following methods to 
 
      ![hitTestModeTransparent](figures/hitTestModeTransparent.png)
 
-   - **HitTestMode.BLOCK_HIERARCHY** (available since API version 20): In this mode, the node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.
+   - **HitTestMode.BLOCK_HIERARCHY** (available since API version 20): In this mode, the node itself and its child nodes respond to the hit test, while all parent nodes and sibling nodes with lower priority are blocked from participating in the hit test.
 
      ![hitTestModeBLOCK_HIERARCHY.png](figures/hitTestModeBLOCK_HIERARCHY.png)
 
@@ -177,6 +221,6 @@ Basic events propagate through the response chain following a bubbling mechanism
 
 ## Cancel Event
 
-When processing basic events, you will find that there are various types of cancel events, such as **TouchType.Cancel** and **MouseAction.CANCEL**. These events are system generated in specific scenarios. For example, in a drag operation, when the user drags an object that supports dragging (using **onDragStart**) with a finger or mouse device, the application will normally receive touch or mouse events before **onDragStart** is triggered. Once the drag action starts, the system will send a cancel event to inform the application that the normal basic events have ended.
+When handling basic events, you will encounter various types of cancel events, such as [TouchType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#touchtype).Cancel and [MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8).CANCEL. These cancel events are generated by the system in specific scenarios. For example, during a drag operation, when the user drags a draggable object (configured with **onDragStart**) with a finger or mouse device, the application typically receives touch or mouse events first. Once the displacement threshold is reached, the [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) callback is triggered. Once the drag action starts, the system dispatches a cancel event to inform the application that the normal basic events have ended.
 
 The meaning of Cancel is the same as that of Up, both indicating the end of event processing. If you are handling scenarios involving **Up** and **Release** events, you should also handle cancel events simultaneously.

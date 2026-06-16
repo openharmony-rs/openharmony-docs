@@ -1,8 +1,8 @@
 # 使用AVScreenCaptureRecorder录屏写文件(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -16,7 +16,7 @@
 
 开始屏幕录制时正在通话中或者屏幕录制过程中来电，录屏将自动停止。因通话中断的录屏会上报SCREENCAPTURE_STATE_STOPPED_BY_CALL状态。
 
-本开发指导将以完成一次屏幕数据录制的过程为例，向开发者讲解如何使用AVScreenCaptureRecorder进行屏幕录制，详细的API声明请参考[AVScreenCaptureRecorder API参考](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md)。
+本开发指导将以完成一次屏幕数据录制的过程为例，向开发者讲解如何使用AVScreenCaptureRecorder进行屏幕录制，详细的API声明请参考[AVScreenCaptureRecorder](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md)。
 
 如果配置了采集麦克风音频数据，需对应配置麦克风权限ohos.permission.MICROPHONE和申请长时任务，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
 
@@ -42,7 +42,8 @@
     ```javascript
     import { common } from '@kit.AbilityKit';
     import { media } from '@kit.MediaKit';
-    import { fileIo as fs } from '@kit.CoreFileKit';
+    import { fileIo } from '@kit.CoreFileKit';
+    import { display } from '@kit.ArkUI';
     ```
 
 2. 创建AVScreenCaptureRecorder类型的成员变量screenCapture。
@@ -58,20 +59,20 @@
 
     ```javascript
     this.screenCapture.on('stateChange', async (infoType: media.AVScreenCaptureStateCode) => {
-    	switch (infoType) {
+      switch (infoType) {
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STARTED:
-              	console.info("录屏成功开始后会收到的回调");
-              	break;
+                console.info("录屏成功开始后会收到的回调");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_CANCELED:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("不允许使用录屏功能");
-              	break;
+                console.info("不允许使用录屏功能");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_USER:
                 this.screenCapture?.release();
                 this.screenCapture = undefined;
-              	console.info("通过录屏胶囊结束录屏，底层录制会停止");
-              	break;
+                console.info("通过录屏胶囊结束录屏，底层录制会停止");
+                break;
             case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER:
                 console.info("录屏因其他中断而停止，底层录制会停止");
                 break;
@@ -98,7 +99,7 @@
                 console.info("用户账号切换，底层录制会停止");
                 break;
             default:
-              	break;
+                break;
         }
     })
     this.screenCapture.on('error', (err) => {
@@ -119,16 +120,28 @@
     ```javascript
     const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     let filePath: string = context.filesDir + '/screenCapture.mp4';
-    let captureFile: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
     if (!captureFile) {
       console.error("处理异常情况");
       return;
     }
-
+    let displayClass: display.Display | undefined = undefined;
+    try {
+      displayClass = display.getDefaultDisplaySync();
+      console.info(`The display info is: ${JSON.stringify(displayClass)}`);
+    } catch (exception) {
+      console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+    }
+    if (!displayClass) {
+      console.error("Failed to get displayClass.");
+      return;
+    }
     captureConfig: media.AVScreenCaptureRecordConfig = {
-        // 开发者可以根据自身的需要设置宽高。
-        frameWidth: 768,
-        frameHeight: 1280,
+        // 开发者可根据屏幕宽高设置相应尺寸。
+        // 屏幕宽度应设置为64的倍数。
+        frameWidth: displayClass.width,
+        // 根据屏幕的高设置高度。
+        frameHeight: displayClass.height,
         // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
         fd: captureFile.fd,
         // 可选参数及其默认值。
@@ -141,20 +154,20 @@
     };
     ```
 
-5. 基于预先配置的屏幕录制参数，调用init()方法初始化screenCapture。
+5. 基于预先配置的屏幕录制参数，调用[init](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#init12)方法初始化screenCapture。
 
     ```javascript
     await this.screenCapture.init(this.captureConfig);
     ```
 
-6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见[窗口API](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
+6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
 
     ```javascript
     let windowIDs = [57, 86];
     await this.screenCapture.skipPrivacyMode(windowIDs);
     ```
 
-7. 调用startRecording()方法开始进行屏幕录制，并通过监听函数监听状态。
+7. 调用[startRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)方法开始进行屏幕录制，并通过监听函数监听状态。
 
     ```javascript
     await this.screenCapture.startRecording();
@@ -162,15 +175,15 @@
 
 8. 停止录屏。
 
-    - 点击录屏胶囊中的结束按钮停止录制：基于回调函数实现，录屏对象实例screenCapture会触发SCREENCAPTURE_STATE_STOPPED_BY_USER的回调，通知应用此次录屏已停止，不需要开发者主动调用stopRecording()方法。
+    - 点击录屏胶囊中的结束按钮停止录制：基于回调函数实现，录屏对象实例screenCapture会触发SCREENCAPTURE_STATE_STOPPED_BY_USER的回调，通知应用此次录屏已停止，不需要开发者主动调用[stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12)方法。
 
-    - 应用主动调用stopRecording()方法，停止录屏。
+    - 应用主动调用[stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12)方法，停止录屏。
 
       ```javascript
       await this.screenCapture.stopRecording();
       ```
 
-9. 调用release()方法销毁实例，释放资源。
+9. 调用[release](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#release12)方法销毁实例，释放资源。
 
     ```javascript
     await this.screenCapture.release();
@@ -182,33 +195,51 @@
 
 ```javascript
 import { media } from '@kit.MediaKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { display } from '@kit.ArkUI';
 
 export class AVScreenCaptureDemo {
   private screenCapture?: media.AVScreenCaptureRecorder;
-  private captureFile: fs.File | undefined = undefined;
+  private captureFile: fileIo.File | undefined = undefined;
   private captureConfig: media.AVScreenCaptureRecordConfig | undefined = undefined;
+  private displayClass: display.Display | undefined = undefined;
 
   private openFile(context: Context): void {
     const path: string = context.filesDir + '/screenCapture.mp4'; // 文件沙箱路径，文件后缀名应与封装格式对应。
-    this.captureFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    this.captureFile = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   }
 
   private closeFile(): void {
     if (!this.captureFile) {
       return;
     }
-    fs.closeSync(this.captureFile);
+    try {
+      fileIo.closeSync(this.captureFile.fd);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to close fd, error code: ${err.code}, message: ${err.message}`);
+    }
   }
 
   private setConfig(): void {
     if (!this.captureFile) {
       return;
     }
+    try {
+      this.displayClass = display.getDefaultDisplaySync();
+      console.info(`The display info is: ${JSON.stringify(this.displayClass)}`);
+    } catch (exception) {
+      console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+    }
+    if (!this.displayClass) {
+      return;
+    }
     this.captureConfig = {
-        // 开发者可以根据自身的需要设置宽高。
-        frameWidth: 768,
-        frameHeight: 1280,
+        // 开发者可根据屏幕宽高设置相应尺寸。
+        // 设置宽为屏幕的宽度，屏幕宽度应设置为64的倍数。
+        frameWidth: this.displayClass.width,
+        // 设置高为屏幕的高度。
+        frameHeight: this.displayClass.height,
         // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
         fd: this.captureFile.fd,
         // 可选参数及其默认值。
@@ -294,7 +325,7 @@ export class AVScreenCaptureDemo {
     await this.screenCapture?.init(this.captureConfig);
 
     this.registerScreenCaptureCallback();
-    // 豁免隐私窗口。
+    // 豁免隐私窗口，窗口id获取方式可参见开发步骤及注意事项6。
     let windowIDs = [57, 86];
     await this.screenCapture?.skipPrivacyMode(windowIDs);
 

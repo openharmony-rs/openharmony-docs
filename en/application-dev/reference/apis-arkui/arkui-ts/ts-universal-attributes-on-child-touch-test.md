@@ -1,18 +1,18 @@
 # Custom Event Dispatch
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
 When handling a touch event, ArkUI performs [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) on the touch point and the component area before the event is triggered – to determine the components targeted by the event – and dispatches the event based on the test result. You can use **onChildTouchTest** on a parent node to specify how to perform the hit test on child nodes and thereby exert an impact on touch event dispatch. For details about the impact, see [TouchTestStrategy](#touchteststrategy11).
 
->  **NOTE**
+> **NOTE**
 >
->  - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  - With use of **onChildTouchTest**, the **onClick**, rotation, and pinch gesture events may receive no response due to the touch target not being hit.
+> - With use of **onChildTouchTest**, the **onClick**, rotation, and pinch gesture events may receive no response due to the touch target not being hit.
 
 ## onChildTouchTest<sup>11+</sup>
 
@@ -20,11 +20,11 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 Allows the current component to customize the hit test and control child component behavior during the test by setting a callback.
 
->**NOTE**
+> **NOTE**
 >
->- The array of child node information only includes information about named nodes, that is, nodes for which the **id** attribute is explicitly set.
+> - The array of child node information only includes information about named nodes, that is, nodes for which the **id** attribute is explicitly set.
 >
->- This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+> - This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -71,10 +71,10 @@ Describes the position, width, and height of a component.
 
 | Name     | Type  | Read-Only| Optional | Description|
 | ------- | ------ | ----- | -------- | ---------- |
-| x     | number | No| No| X-coordinate.|
-| y     | number |  No| No| Y-coordinate.|
-| width | number | No| No| Content width.|
-| height | number | No| No| Content height.|
+| x     | number | No| No| X-coordinate.<br>Unit: vp.|
+| y     | number |  No| No| Y-coordinate.<br>Unit: vp.|
+| width | number | No| No| Content width.<br>Unit: vp.|
+| height | number | No| No| Content height.<br>Unit: vp.|
 
 ## TouchResult<sup>11+</sup>
 
@@ -141,11 +141,11 @@ struct ListExample {
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring)
       .onScrollIndex((start: number, end: number) => {
-        console.info('first' + start)
-        console.info('last' + end)
+        console.info(`first ${start}`)
+        console.info(`last ${end}`)
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState.toString() + `, scrollOffset = ` + scrollOffset)
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`)
       })
       .width('100%')
       .height('65%')
@@ -216,11 +216,11 @@ struct ListExample {
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring)
       .onScrollIndex((start: number, end: number) => {
-        console.info('first' + start)
-        console.info('last' + end)
+        console.info(`first ${start}`)
+        console.info(`last ${end}`)
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState + `, scrollOffset = ` + scrollOffset)
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`)
       })
       .width('100%')
       .height('65%')
@@ -291,11 +291,11 @@ struct ListExample {
       .scrollBar(BarState.Off)
       .edgeEffect(EdgeEffect.Spring)
       .onScrollIndex((start: number, end: number) => {
-        console.info('first' + start)
-        console.info('last' + end)
+        console.info(`first ${start}`)
+        console.info(`last ${end}`)
       })
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onScroll scrollState = ScrollState` + scrollState.toString() + `, scrollOffset = ` + scrollOffset)
+        console.info(`onScroll scrollState = ScrollState ${scrollState.toString()}, scrollOffset = ${scrollOffset}`)
       })
       .width('100%')
       .height('65%')

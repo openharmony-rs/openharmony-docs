@@ -37,7 +37,7 @@ getUri(): string
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -92,7 +92,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 
-同时请求动态照片的图片内容和视频内容，并写入参数指定的对应的uri中。
+同时请求动态照片的图片内容和视频内容，并写入参数指定的对应的uri中。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -114,11 +114,11 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<void> | Promise对象，返回void。 |
+| Promise\<void> |Promise对象，无返回结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -186,7 +186,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(resourceType: ResourceType, fileUri: string): Promise\<void>
 
-请求指定资源类型的动态照片内容，并写入参数指定的uri中。
+请求指定资源类型的动态照片内容，并写入参数指定的uri中。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -208,11 +208,11 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise\<void>
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<void> | Promise对象，返回void。 |
+| Promise\<void> |Promise对象，无返回结果。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -275,7 +275,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(resourceType: ResourceType): Promise\<ArrayBuffer>
 
-请求指定资源类型的动态照片内容，以ArrayBuffer的形式返回。
+请求指定资源类型的动态照片内容，以ArrayBuffer的形式返回。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -300,7 +300,7 @@ requestContent(resourceType: ResourceType): Promise\<ArrayBuffer>
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |

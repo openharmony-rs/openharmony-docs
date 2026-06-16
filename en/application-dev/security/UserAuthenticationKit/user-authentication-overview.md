@@ -1,4 +1,4 @@
-# Introduction to User Authentication Kit
+# About This Kit
 
 <!--Kit: User Authentication Kit-->
 <!--Subsystem: UserIAM-->
@@ -67,7 +67,7 @@ The user authentication framework consists of the following:
 
 2. Unified user authentication framework: consists of authentication SAs and drivers, responsible for scheduling various authentication capabilities and the user authentication widget to complete user authentication requests initiated by services through the unified user authentication APIs.
 
-3. User authentication widget: provides interactive authentication interfaces for different authentication modes to ensure consistent user authentication experience.
+3. User authentication widget: provides interactive authentication interfaces for different authentication modes to ensure consistent user authentication experience. This widget can be called by the unified user authentication framework.
 
 4. Authentication capabilities: enable identity verification based on lock screen passwords, facial characteristics, and fingerprints under the scheduling of the unified user authentication framework.
 
@@ -102,7 +102,7 @@ Tag
 
 | Name| Content| Type| Description|
 | -------- | -------- | -------- | -------- |
-| tag | Tag of the ciphertext| uint8_t[16] | Tag generated after the ciphertext is encrypted using AES-GCM.|
+| tag | Tag of the ciphertext| uint8_t[16] | Tag generated during AES-GCM encryption of the ciphertext.|
 | iv | Initialization vector (IV) used to encrypt the ciphertext.| uint8_t[12] | Random IV used for AES-GCM encryption.|
 | sign | Signature of the AuthToken| uint8_t[32] | Signature that protects the integrity of the AuthToken.|
 
@@ -119,20 +119,21 @@ The system uses the following metrics to measure the biometric authentication ca
 - Spoof Acceptance Rate (SAR): percentage of times that a non-lived, previously recorded sample is accepted by a system.
 
 The lower the FAR, the higher the FRR, which increases the authentication security but also raises the likelihood of the authorized users being rejected by mistake, reducing convenience.
+
 Conversely, the higher FAR, the lower the FRR, which decreases the authentication security but increases convenience.
 
-| Authentication Trust Level| Metrics|
+| Authentication Capability Level| Metrics|
 | -------- | -------- |
-| ATL4 | FAR ≤ 0.001%, SAR ≤ 3% when FRR = 10%|
-| ATL3 | FAR ≤ 0.002%, SAR ≤ 7% when FRR = 10%|
-| ATL2 | FAR ≤ 0.002%, 7% < SAR ≤ 20% when FRR = 10%|
-| ATL1 | FAR ≤ 1%, 7% < SAR ≤ 20% when FRR = 10%|
+| ACL4 | FAR ≤ 0.0001%, SAR ≤ 3% when FRR = 10%|
+| ACL3 | FAR ≤ 0.002%, SAR ≤ 7% when FRR = 10%|
+| ACL2 | FAR ≤ 0.002%, 7% < SAR ≤ 20% when FRR = 10%|
+| ACL1 | FAR ≤ 1%, 7% < SAR ≤ 20% when FRR = 10%|
 
 Generally, the biometric authentication system comprises five execution units: source data collection, biometric feature extraction, biometric feature storage, biometric feature comparison, and authentication result issuance. The following Executor Security Levels (ESLs) are defined for the execution units.
 
 | ESL| Definition|
 | -------- | -------- |
-| ESL3 | Operations are performed in a secure hardware-back trusted environment, such as a secure coprocessor or a secure element (SE).|
+| ESL3 | Operations are performed in a secure hardware-backed trusted environment, such as a secure coprocessor or a secure element (SE).|
 | ESL2 | Operations are performed in a trusted execution environment (TEE) based on hardware RoT isolation, such as a TEE and an SGX.|
 | ESL1 | Operations are performed in an execution environment with access control, such as Linux.|
 | ESL0 | Operations are performed in an execution environment without access control, such as a single-process lightweight system.|
@@ -144,7 +145,7 @@ The following table lists the mappings between AuthTrustLevels and ACLs & ASLs.
 | Authentication Trust Level| Mapping Rule| Description| Application Scenario|
 | -------- | ------------ | -------- | -------- |
 | ATL4 | ACL ≥ 3, ASL ≥ 2| Capable of accurately identifying individual users with strong liveness detection capabilities, such as specially enhanced secure fingerprint and 3D facial authentication.| Small-amount payment|
-| ATL3 | ACL ≥ 3, ASL ≥ 1<br>ACL ≥ 2, ASL ≥ 2| Capable of precisely identifying individual users with moderate liveness detection capabilities, such as specially enhanced secure fingerprint and 2D facial authentication.| Device unlocking, application login, and account login|
+| ATL3 | ACL ≥ 3, ASL ≥ 1<br>ACL ≥ 2, ASL ≥ 2| Capable of precisely identifying individual users with moderate liveness detection capabilities, such as specially enhanced secure 2D facial authentication.| Device unlocking, application login, and account login|
 | ATL2 | ACL ≥ 2, ASL ≥ 1<br>ACL ≥ 1, ASL ≥ 2| Capable of precisely identifying individual users with regular liveness detection capabilities, such as 2D facial authentication using a common camera to collect images.| Maintaining the unlocked state of a device|
 | ATL1 | ACL = 1, ASL = 1| Capable of identifying individual users with limited liveness detection capabilities, such as voiceprint authentication.| Service risk control, targeted recommendations, and personalized services|
 
@@ -153,3 +154,5 @@ The following table lists the mappings between AuthTrustLevels and ACLs & ASLs.
 - The built-in user authentication widget must be used when a third-party application needs to use the authentication capability of the system.
 
 - Third-party applications are not allowed to initiate user authentication requests in the background.
+
+<!--RP2--><!--RP2End-->

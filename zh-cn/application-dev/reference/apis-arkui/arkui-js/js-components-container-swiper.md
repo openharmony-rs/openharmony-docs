@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
@@ -163,6 +163,6 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167823326](figures/zh-cn_image_0000001167823326.gif)
+![swiper](figures/swiper.gif)
 
 

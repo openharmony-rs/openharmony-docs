@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 10开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## getType<sup>10+</sup>
 
@@ -28,7 +28,7 @@ getType(): WebMessageType
 
 | 类型           | 说明                                                      |
 | --------------| --------------------------------------------------------- |
-| [WebMessageType](./arkts-apis-webview-e.md#webmessagetype10) | [webMessagePort](./arkts-apis-webview-WebMessagePort.md)接口所支持的数据类型。 |
+| [WebMessageType](./arkts-apis-webview-e.md#webmessagetype10) | [WebMessagePort](./arkts-apis-webview-WebMessagePort.md)接口所支持的数据类型。 |
 
 ## getString<sup>10+</sup>
 
@@ -174,7 +174,7 @@ setType(type: WebMessageType): void
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| type  | [WebMessageType](./arkts-apis-webview-e.md#webmessagetype10) | 是   | [webMessagePort](./arkts-apis-webview-WebMessagePort.md)接口所支持的数据类型。 |
+| type  | [WebMessageType](./arkts-apis-webview-e.md#webmessagetype10) | 是   | [WebMessagePort](./arkts-apis-webview-WebMessagePort.md)接口所支持的数据类型。 |
 
 **错误码：**
 

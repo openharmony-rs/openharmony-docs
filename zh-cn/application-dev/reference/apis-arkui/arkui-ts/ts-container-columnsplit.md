@@ -34,13 +34,13 @@ ColumnSplit()
 
 > **说明：**
 >
-> ColumnSplit组件[通用属性clip](ts-universal-attributes-sharp-clipping.md)的默认值为true。
+> ColumnSplit组件[形状裁剪](ts-universal-attributes-sharp-clipping.md)的默认值为true。
 
 ### resizeable
 
 resizeable(value: boolean)
 
-设置分割线是否可拖拽。
+设置分割线是否可拖动。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -50,7 +50,7 @@ resizeable(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                 |
 | ------ | ------- | ---- | ------------------------------------ |
-| value  | boolean | 是   | 分割线是否可拖拽。设置为true时表示分割线可拖拽，设置为false时表示分割线不可拖拽。<br/>默认值：false <br />非法值：按默认值处理。 |
+| value  | boolean | 是   | 分割线是否可拖动。设置为true时表示分割线可拖动，设置为false时表示分割线不可拖动。<br/>默认值：false <br />非法值：按默认值处理。 |
 
 ### divider<sup>10+</sup>
 
@@ -60,26 +60,30 @@ divider(value: ColumnSplitDividerStyle | null)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ColumnSplitDividerStyle](#columnsplitdividerstyle10对象说明)&nbsp;\|&nbsp;null | 是   | 分割线的margin，即设置分割线与上下子节点的距离。<br/>默认值：null。当设置为null时，分割线上下margin为0.0vp。<br />非法值：按默认值处理。 |
+| value  | [ColumnSplitDividerStyle](#columnsplitdividerstyle10对象说明)&nbsp;\|&nbsp;null | 是   | 分割线的margin，即设置分割线与子组件的距离。<br/>默认值：null。当设置为null时，分割线与子组件的距离为0vp。<br />非法值：按默认值处理。 |
 
 ## ColumnSplitDividerStyle<sup>10+</sup>对象说明
 
-设置分割线与上下子节点的距离。
+设置子组件与上下分割线的距离。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| startMargin | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 分割线与其上方子组件的距离。<br/>默认值：0 <br />非法值：按默认值处理。 |
-| endMargin   | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 分割线与其下方子组件的距离。<br/>默认值：0 <br />非法值：按默认值处理。 |
+| startMargin | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 子组件与其上方分割线的距离。<br/>默认值：0vp <br />非法值：按默认值处理，此时[getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9)接口获取到的属性值为undefined。 |
+| endMargin   | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 子组件与其下方分割线的距离。<br/>默认值：0vp <br />非法值：按默认值处理，此时[getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9)接口获取到的属性值为undefined。 |
 
 >  **说明：**
 >
@@ -93,15 +97,17 @@ divider(value: ColumnSplitDividerStyle | null)
 
 ## 示例
 
-ColumnSplit的基本用法：设置可拖动的纵向布局子组件。
+### 示例1（设置可拖动的ColumnSplit组件）
 
-```ts
+本示例展示如何设置可拖动的ColumnSplit组件及其效果。
+
+``` ts
 // xxx.ets
 @Entry
 @Component
 struct ColumnSplitExample {
   build() {
-    Column(){
+    Column() {
       Text('The dividing line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
       ColumnSplit() {
         Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
@@ -118,4 +124,34 @@ struct ColumnSplitExample {
 }
 ```
 
-![zh-cn_image_0000001219982708](figures/zh-cn_image_0000001219982708.gif)
+![columnSplitDividerStyle](figures/columnSplitDividerStyle.gif)
+
+### 示例2（设置带有间隔的ColumnSplit组件）
+
+本示例展示如何设置带有间隔的ColumnSplit组件及其效果。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct ColumnSplitDividerExample {
+  build() {
+    Column() {
+      Text('The dividing line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      ColumnSplit() {
+        Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('2').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('3').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('4').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('5').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+      }
+      .borderWidth(1)
+      .divider({ startMargin: 5, endMargin: 5 }) // 设置间隔
+      .width('90%')
+      .height('60%')
+    }.width('100%')
+  }
+}
+```
+
+![ColumnSplitDividerExample](figures/ColumnSplitDividerExample.png)

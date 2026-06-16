@@ -1,7 +1,7 @@
 # ComposeListItem
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -14,12 +14,14 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 如果ComposeListItem设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ComposeListItem本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ComposeListItem设置通用属性和通用事件。
 
 
 ## 导入模块
 
-```
+```ts
 import { ComposeListItem } from "@kit.ArkUI";
 ```
 
@@ -197,7 +199,7 @@ struct ComposeListItemExample {
   }
 }
 ```
-![示例1-ComposeListItem示例 左右元素+文本](figures/zh-cn_image_composelistitem_demo_01.jpg)
+![示例1-ComposeListItem示例 左右元素+文本](figures/image-composelistitem-demo-01.jpg)
 
 ### 示例2（设置右侧不同元素自定义播报）
 从API version 18开始，该示例通过设置属性accessibilityText、accessibilityDescription、accessibilityLevel，实现右侧图标、按钮、单选框自定义屏幕朗读播报文本。
@@ -261,7 +263,7 @@ struct ComposeListItemExample {
               icon: {
                 value: $r('sys.media.ohos_app_icon'),
                 action: () => {
-                this.getUIContext().getPromptAction().showToast({
+                  this.getUIContext().getPromptAction().showToast({
                     message: 'icon'
                   });
                 },
@@ -277,7 +279,7 @@ struct ComposeListItemExample {
   }
 }
 ```
-![示例2-ComposeListItem示例2 设置右侧元素自定义播报](figures/zh-cn_image_composelistitem_demo_02.png)
+![示例2-ComposeListItem示例2 设置右侧元素自定义播报](figures/image-composelistitem-demo-02.png)
 
 ### 示例3（设置Symbol类型图标）
 
@@ -352,4 +354,4 @@ struct ComposeListItemExample {
 }
 ```
 
-![示例3-ComposeListItem示例3 设置Symbol类型图标](figures/zh-cn_image_composelistitem_demo_03.png)
+![示例3-ComposeListItem示例3 设置Symbol类型图标](figures/image-composelistitem-demo-03.png)

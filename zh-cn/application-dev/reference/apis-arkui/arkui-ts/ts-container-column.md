@@ -23,6 +23,7 @@
 ## 接口
 
 ### Column
+
 Column(options?: ColumnOptions)
 
 创建垂直方向线性布局容器，可以设置子组件的间距。
@@ -41,7 +42,7 @@ Column(options?: ColumnOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options<sup>18+</sup> | [ColumnOptions](#columnoptions18对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number或string类型。 |
+| options<sup>18+</sup> | [ColumnOptions](#columnoptions18对象说明) | 否 | 纵向布局元素的配置选项，可设置子组件的垂直方向间距。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### Column<sup>18+</sup>
 Column(options?: ColumnOptions | ColumnOptionsV2)
@@ -52,13 +53,15 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number、string或Resource类型。 |
+| options | [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素的配置选项，可设置子组件的垂直方向间距。|
 
 ## ColumnOptions<sup>18+</sup>对象说明
 
@@ -71,6 +74,8 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,6 +90,8 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,6 +108,8 @@ Column组件构造函数中space支持的数据类型，取值类型为下表类
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -165,13 +174,15 @@ reverse(isReversed: Optional\<boolean\>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean\> | 是   | 子组件在垂直方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。 |
+| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\> | 是   | 子组件在垂直方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。 |
 
 >  **说明：**
 >
@@ -205,53 +216,55 @@ reverse(isReversed: Optional\<boolean\>)
 @Component
 struct ColumnExample {
   build() {
-    Column({ space: 5 }) {
-      // 设置子元素垂直方向间距为5
-      Text('space').width('90%')
+    Scroll() {
       Column({ space: 5 }) {
-        Column().width('100%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('100%').height(30).backgroundColor(0x00FFFF)
-      }.width('90%').height(100).border({ width: 1 })
+        // 设置子元素垂直方向间距为5
+        Text('space').width('90%')
+        Column({ space: 5 }) {
+          Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('100%').height(30).backgroundColor(0x00FFFF)
+        }.width('90%').height(100).border({ width: 1 })
 
-      // 通过资源引用方式设置子元素垂直方向间距
-      Text('Resource space').width('90%')
-      Column({ space: $r('app.string.stringSpace') }) {
-        Column().width('100%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('100%').height(30).backgroundColor(0x00FFFF)
-      }.width('90%').height(100).border({ width: 1 })
+        // 通过资源引用方式设置子元素垂直方向间距
+        Text('Resource space').width('90%')
+        Column({ space: $r('app.string.stringSpace') }) {
+          Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('100%').height(30).backgroundColor(0x00FFFF)
+        }.width('90%').height(100).border({ width: 1 })
 
-      // 设置子元素水平方向对齐方式
-      Text('alignItems(Start)').width('90%')
-      Column() {
-        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('50%').height(30).backgroundColor(0x00FFFF)
-      }.alignItems(HorizontalAlign.Start).width('90%').border({ width: 1 })
+        // 设置子元素水平方向对齐方式
+        Text('alignItems(Start)').width('90%')
+        Column() {
+          Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('50%').height(30).backgroundColor(0x00FFFF)
+        }.alignItems(HorizontalAlign.Start).width('90%').border({ width: 1 })
 
-      Text('alignItems(End)').width('90%')
-      Column() {
-        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('50%').height(30).backgroundColor(0x00FFFF)
-      }.alignItems(HorizontalAlign.End).width('90%').border({ width: 1 })
+        Text('alignItems(End)').width('90%')
+        Column() {
+          Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('50%').height(30).backgroundColor(0x00FFFF)
+        }.alignItems(HorizontalAlign.End).width('90%').border({ width: 1 })
 
-      Text('alignItems(Center)').width('90%')
-      Column() {
-        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('50%').height(30).backgroundColor(0x00FFFF)
-      }.alignItems(HorizontalAlign.Center).width('90%').border({ width: 1 })
+        Text('alignItems(Center)').width('90%')
+        Column() {
+          Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('50%').height(30).backgroundColor(0x00FFFF)
+        }.alignItems(HorizontalAlign.Center).width('90%').border({ width: 1 })
 
-      // 设置子元素垂直方向的对齐方式
-      Text('justifyContent(Center)').width('90%')
-      Column() {
-        Column().width('90%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('90%').height(30).backgroundColor(0x00FFFF)
-      }.height(100).border({ width: 1 }).justifyContent(FlexAlign.Center)
+        // 设置子元素垂直方向的对齐方式
+        Text('justifyContent(Center)').width('90%')
+        Column() {
+          Column().width('90%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('90%').height(30).backgroundColor(0x00FFFF)
+        }.height(100).border({ width: 1 }).justifyContent(FlexAlign.Center)
 
-      Text('justifyContent(End)').width('90%')
-      Column() {
-        Column().width('90%').height(30).backgroundColor(0xAFEEEE)
-        Column().width('90%').height(30).backgroundColor(0x00FFFF)
-      }.height(100).border({ width: 1 }).justifyContent(FlexAlign.End)
-    }.width('100%').padding({ top: 5 })
+        Text('justifyContent(End)').width('90%')
+        Column() {
+          Column().width('90%').height(30).backgroundColor(0xAFEEEE)
+          Column().width('90%').height(30).backgroundColor(0x00FFFF)
+        }.height(100).border({ width: 1 }).justifyContent(FlexAlign.End)
+      }.width('100%').padding({ top: 5 })
+    }.width('100%').height('100%')
   }
 }
 ```

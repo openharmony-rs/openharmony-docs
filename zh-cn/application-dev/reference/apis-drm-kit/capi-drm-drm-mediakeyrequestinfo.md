@@ -29,7 +29,7 @@ typedef struct DRM_MediaKeyRequestInfo {...} DRM_MediaKeyRequestInfo
 | [DRM_MediaKeyType](capi-native-drm-common-h.md#drm_mediakeytype) type | 密钥类型。 |
 | int32_t initDataLen | 初始数据长度。 |
 | uint8_t initData[MAX_INIT_DATA_LEN] | base64解码后格式为PSSH的初始数据。 |
-| char mimeType[MAX_MIMETYPE_LEN] | 媒体上下文的mime类型。 |
+| char mimeType[MAX_MIMETYPE_LEN] | 媒体上下文的MIME类型。 |
 | uint32_t optionsCount | 选项数据计数。 |
 | char optionName[MAX_MEDIA_KEY_REQUEST_OPTION_COUNT][MAX_MEDIA_KEY_REQUEST_OPTION_NAME_LEN] | 选项名称集合。 |
 | char optionData[MAX_MEDIA_KEY_REQUEST_OPTION_COUNT][MAX_MEDIA_KEY_REQUEST_OPTION_DATA_LEN] | 选项数据集合。 |

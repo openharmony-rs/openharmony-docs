@@ -32,7 +32,7 @@ This API is asynchronous and does not support concurrent calls.
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. You are advised to use [registerFont](arkts-apis-uicontext-font.md#registerfont) instead on the obtained [Font](arkts-apis-uicontext-font.md) object.
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [registerFont](arkts-apis-uicontext-font.md#registerfont) instead. Before calling this API, you need to obtain the [Font](arkts-apis-uicontext-font.md) object using the [getFont](arkts-apis-uicontext-uicontext.md#getfont) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **registerFont** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
 > - Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
 
@@ -134,7 +134,7 @@ struct FontExample {
 
 getSystemFontList(): Array\<string>
 
-Obtains the system font list.
+Obtains this system font list.
 
 This API only takes effect on PCs/2-in-1 devices and returns an empty array on other devices.
 
@@ -142,11 +142,13 @@ You are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getSystemFontList](arkts-apis-uicontext-font.md#getsystemfontlist) instead on the obtained [Font](arkts-apis-uicontext-font.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getSystemFontList](arkts-apis-uicontext-font.md#getsystemfontlist) instead. Before calling this API, you need to obtain the [Font](arkts-apis-uicontext-font.md) object using the [getFont](arkts-apis-uicontext-uicontext.md#getfont) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **getSystemFontList** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
-> Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
+> - Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,7 +160,7 @@ You are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/
 
 > **NOTE**
 >
-> Directly using **font** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context by using the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md).
+> Directly using **font** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context by using the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](./arkts-apis-uicontext-uicontext.md).
 
 **Example**
 
@@ -194,11 +196,13 @@ Obtains information about a system font based on the font name.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getFontByName](arkts-apis-uicontext-font.md#getfontbyname) instead on the obtained [Font](arkts-apis-uicontext-font.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getFontByName](arkts-apis-uicontext-font.md#getfontbyname) instead. Before calling this API, you need to obtain the [Font](arkts-apis-uicontext-font.md) object using the [getFont](arkts-apis-uicontext-uicontext.md#getfont) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **getFontByName** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
-> Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
+> - Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -219,6 +223,8 @@ Obtains information about a system font based on the font name.
 Information about the system font.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -275,11 +281,16 @@ struct FontExample {
 ```
 
 ## font.getUIFontConfig<sup>11+</sup>
+
 getUIFontConfig() : UIFontConfig
 
-Obtains the UI font configuration of the system.
+Obtains the UI font configuration information in the system font configuration file.
+
+This API can only obtain the information in the configuration file. If the UI context is not clear, **undefined** may be returned. If you want to obtain the full font configuration information, you are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/js-apis-graphics-text.md#textgetsystemfontfullnamesbytype14) API of the font engine.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,6 +305,8 @@ UI font configuration of the system.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |
 | -------------- | ------- | ------------------------- | ------- | ------------------------- |
@@ -306,6 +319,8 @@ UI font configuration of the system.
 Defines a list of supported generic font families.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |
@@ -320,6 +335,8 @@ Defines a list of fallback generic font families.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |
 | -------------- | ------- | ------------------------- | ------------------------- | ------------------------- |
@@ -331,6 +348,8 @@ Defines a list of fallback generic font families.
 Defines font alias configuration information.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |
@@ -344,6 +363,8 @@ Provides a mapping list between the original weight value of a font and the actu
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |
 | -------------- | ------- | ------- | ------------------------- | ------------------------- |
@@ -355,6 +376,8 @@ Provides a mapping list between the original weight value of a font and the actu
 Provides the fallback font of the font set.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |

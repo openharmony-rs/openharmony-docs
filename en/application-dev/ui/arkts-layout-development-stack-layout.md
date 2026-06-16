@@ -59,7 +59,7 @@ Alignment of elements in the **Stack** component is set through the [alignConten
 
   **Figure 2** Alignment modes in the Stack component 
 
-![en-us_image_0000001562940621](figures/en-us_image_0000001562940621.png)
+![alignment2](figures/alignment2.png)
 
 <!-- @[StackLayoutAlignContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutAlignContent.ets) -->
 
@@ -89,23 +89,23 @@ The stacking order of child elements in the **Stack** component is set through t
 ``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
   Column() {
-    // The value in the 'app.string.stack_num1' resource file is 'Stack child element 1'.
+    // Replace $r('app.string.stack_num1') with the actual resource file. In this example, the value in the resource file is "Stack child element 1."
     Text($r('app.string.stack_num1')).textAlign(TextAlign.End).fontSize(20)
   }.width(100).height(100).backgroundColor(0xffd306)
 
   Column() {
-    // The value in the 'app.string.stack_num2' resource file is 'Stack child element 2'.
+    // Replace $r('app.string.stack_num2') with the actual resource file. In this example, the value in the resource file is "Stack child element 2."
     Text($r('app.string.stack_num2')).fontSize(20)
   }.width(150).height(150).backgroundColor(Color.Pink)
 
   Column() {
-    // The value in the 'app.string.stack_num3' resource file is 'Stack child element 3'.
+    // Replace $r('app.string.stack_num3') with the actual resource file. In this example, the value in the resource file is "Stack child element 3."
     Text($r('app.string.stack_num3')).fontSize(20)
   }.width(200).height(200).backgroundColor(Color.Grey)
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
 
-![en-us_image_0000001511900544](figures/en-us_image_0000001511900544.png)
+![stackLayoutNozIndex](figures/stackLayoutNozIndex.png)
 
 In the preceding figure, the size of the stacked element 3 is greater than that of all the elements before it. Therefore, the first two elements are completely hidden. To show these elements, modify their **zIndex** attribute settings.
 
@@ -115,23 +115,23 @@ In the preceding figure, the size of the stacked element 3 is greater than that 
 ``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
   Column() {
-    // The value in the 'app.string.stack_num1' resource file is 'Stack child element 1'.
+    // Replace $r('app.string.stack_num1') with the actual resource file. In this example, the value in the resource file is "Stack child element 1."
     Text($r('app.string.stack_num1')).fontSize(20)
   }.width(100).height(100).backgroundColor(0xffd306).zIndex(2)
 
   Column() {
-    // The value in the 'app.string.stack_num2' resource file is 'Stack child element 2'.
+    // Replace $r('app.string.stack_num2') with the actual resource file. In this example, the value in the resource file is "Stack child element 2."
     Text($r('app.string.stack_num2')).fontSize(20)
   }.width(150).height(150).backgroundColor(Color.Pink).zIndex(1)
 
   Column() {
-    // The value in the 'app.string.stack_num3' resource file is 'Stack child element 3'.
+    // Replace $r('app.string.stack_num3') with the actual resource file. In this example, the value in the resource file is "Stack child element 3."
     Text($r('app.string.stack_num3')).fontSize(20)
   }.width(200).height(200).backgroundColor(Color.Grey)
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
 
-![en-us_image_0000001563060797](figures/en-us_image_0000001563060797.png)
+![stackLayoutzIndex](figures/stackLayoutzIndex.png)
 
 
 ## Example Scenario
@@ -163,11 +163,11 @@ struct StackSample {
       }.width('100%').height('100%')
 
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // The value in the 'app.string.contacts' resource file is 'Contacts'.
+        // Replace $r('app.string.contacts') with the actual resource file. In this example, the value in the resource file is "Contacts."
         Text($r('app.string.contacts')).fontSize(16)
-        // The value in the 'app.string.settings' resource file is 'Settings'.
+        // Replace $r('app.string.setting') with the actual resource file. In this example, the value in the resource file is "Settings."
         Text($r('app.string.setting')).fontSize(16)
-        // The value in the 'app.string.text_message' resource file is 'Messaging'.
+        // Replace $r('app.string.text_message') with the actual resource file. In this example, the value in the resource file is "Messaging."
         Text($r('app.string.text_message')).fontSize(16)
       }
       .width('50%')
@@ -181,5 +181,5 @@ struct StackSample {
 ```
 
 
-![en-us_image_0000001511421368](figures/en-us_image_0000001511421368.png)
+![stackLayoutSceneExample](figures/stackLayoutSceneExample.png)
 <!--RP1--><!--RP1End-->

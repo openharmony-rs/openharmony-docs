@@ -11,7 +11,7 @@ The **mediaquery** module provides different styles for different media types.
 
 > **NOTE**
 >
-> - The APIs of this module are no longer maintained since API version 7. You are advised to use [`@ohos.mediaquery`](js-apis-mediaquery.md) instead.
+> - The APIs of this module are no longer maintained since API version 7. You are advised to use [@ohos.mediaquery](js-apis-mediaquery.md) instead.
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
@@ -66,9 +66,9 @@ Defines a media query event.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type   | Read-Only| Optional  | Description   |
-| ------- | ------- | ---- | ---- | ----- |
-| matches | boolean | No|No   | Matching result. The value **true** means that the query condition is met, and **false** means the opposite.|
+| Name     | Type   | Optional  | Description   |
+| ------- | ------- | ---- | ----- |
+| matches | boolean | No   | Matching result. The value **true** means that the query condition is met, and **false** means the opposite.|
 
 ## MediaQueryList
 
@@ -82,9 +82,9 @@ Represents media query list information.
 
 | Name     | Type   | Read-Only| Optional  | Description               |
 | ------- | ------- | ---- |---- | ----------------- |
-| media   | string  | No|  Yes   | Serialized media query condition. This parameter is read-only.|
-| matches | boolean | No|  Yes    | Matching result. The value **true** means that the query condition is met, and **false** means the opposite.           |
-| onchange | (matches: boolean) => void | No|  Yes    | Callback invoked when the match result changes. **matches** indicates whether the media query condition is met. The value **true** means that the query condition is met, and **false** means the opposite.|
+| media   | string  | Yes|  Yes   | Serialized media query condition.|
+| matches | boolean | Yes|  Yes    | Matching result. The value **true** means that the query condition is met, and **false** means the opposite.           |
+| onchange | (matches: boolean) => void | Yes|  Yes    | Callback invoked when the match result changes. **matches** indicates whether the media query condition is met. The value **true** means that the query condition is met, and **false** means the opposite.|
 
 
 ### MediaQueryList.addListener

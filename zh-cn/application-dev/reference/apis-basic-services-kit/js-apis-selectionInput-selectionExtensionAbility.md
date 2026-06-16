@@ -11,7 +11,8 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅支持PC/2in1设备。
 
 ## 导入模块
 
@@ -20,13 +21,13 @@ import { SelectionExtensionAbility } from '@kit.BasicServicesKit';
 ```
 ## SelectionExtensionAbility
 
-### 属性
-
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context | [SelectionExtensionContext](./js-apis-selectionInput-selectionExtensionContext-sys.md) | 否 | 否 | SelectionExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。 |
+| context | [SelectionExtensionContext](./js-apis-selectionInput-selectionExtensionContext.md) | 否 | 否 | SelectionExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。 |
 
 ### onConnect
 
@@ -36,11 +37,13 @@ onConnect(want: Want): rpc.RemoteObject
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明                             |
 | ------ | ----------- | ---- | ------------------------------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 当前SelectionExtensionAbility的Want类型信息，包括Ability名称、Bundle名称等。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是 | 当前SelectionExtensionAbility的Want类型信息，包括Ability名称、Bundle名称等。 |
 
 **返回值：**
 | 类型   | 说明                                                                 |
@@ -84,6 +87,8 @@ onDisconnect(): void
 仅当SelectionExtensionAbility正常退出时会触发该回调，异常退出场景（例如低内存终止进程）不会触发该回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 

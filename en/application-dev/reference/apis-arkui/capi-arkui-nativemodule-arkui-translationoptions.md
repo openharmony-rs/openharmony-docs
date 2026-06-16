@@ -1,10 +1,14 @@
 # ArkUI_TranslationOptions
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_TranslationOptions
+```
 
 ## Overview
 
@@ -22,6 +26,6 @@ Defines the translation effect object for component transitions.
 
 | Name| Description|
 | -- | -- |
-| float x | Translation distance along the x-axis.|
-| float y | Translation distance along the y-axis.|
-| float z | Translation distance along the z-axis.|
+| float x | X-axis translation distance, in vp.|
+| float y | Y-axis translation distance, in vp.|
+| float z | Z-axis translation distance, in vp.|

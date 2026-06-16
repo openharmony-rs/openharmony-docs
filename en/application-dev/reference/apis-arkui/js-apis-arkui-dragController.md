@@ -12,6 +12,8 @@ This module provides APIs for initiating drag actions. When receiving a gesture 
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
+> - The APIs of this module can be used only in the stage model.
+>
 > - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
@@ -30,7 +32,7 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. You are advised to use [executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11) instead on the obtained [DragController](arkts-apis-uicontext-dragcontroller.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11) instead. Before calling this API, you need to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) instance using the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 11, you can use the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) object associated with the current UI context.
 
@@ -75,7 +77,8 @@ class DragInfo {
 struct DragControllerPage {
   @State text: string = ''
 
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -90,8 +93,8 @@ struct DragControllerPage {
     Column() {
       Button('touch to execute drag')
         .margin(10)
-        .onTouch((event?:TouchEvent) => {
-          if(event){
+        .onTouch((event?: TouchEvent) => {
+          if (event) {
             if (event.type == TouchType.Down) {
               let text = new unifiedDataChannel.PlainText()
               text.textContent = 'drag text'
@@ -104,8 +107,10 @@ struct DragControllerPage {
                 extraParams: ''
               }
               let eve: DragInfo = new DragInfo();
-              this.getUIContext().getDragController().executeDrag(()=>{this.DraggingBuilder()}, dragInfo, (err, eve) => { // You are advised to use this.getUIContext().getDragController().executeDrag().
-                if(eve.event){
+              this.getUIContext().getDragController().executeDrag(() => {
+                this.DraggingBuilder()
+              }, dragInfo, (err, eve) => { // You are advised to use this.getUIContext().getDragController().executeDrag().
+                if (eve.event) {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
                   } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
@@ -119,10 +124,10 @@ struct DragControllerPage {
       Text(this.text)
         .height(100)
         .width(150)
-        .margin({top:20})
-        .border({color:Color.Black,width:1})
-        .onDrop((dragEvent?:DragEvent)=>{
-          if(dragEvent){
+        .margin({ top: 20 })
+        .border({ color: Color.Black, width: 1 })
+        .onDrop((dragEvent?: DragEvent) => {
+          if (dragEvent) {
             let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
             let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
             this.text = plainText.textContent;
@@ -143,7 +148,7 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. You are advised to use [executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11-1) instead on the obtained [DragController](arkts-apis-uicontext-dragcontroller.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [executeDrag](arkts-apis-uicontext-dragcontroller.md#executedrag11-1) instead. Before calling this API, you need to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) instance using the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 11, you can use the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) object associated with the current UI context.
 
@@ -190,10 +195,11 @@ class DragInfo {
 @Entry
 @Component
 struct DragControllerPage {
-  @State pixmap: image.PixelMap|undefined = undefined
+  @State pixmap: image.PixelMap | undefined = undefined
   @State text: string = ''
 
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -203,7 +209,8 @@ struct DragControllerPage {
     .backgroundColor(Color.Blue)
   }
 
-  @Builder PixmapBuilder() {
+  @Builder
+  PixmapBuilder() {
     Column() {
       Text("PixmapBuilder")
         .fontColor(Color.White)
@@ -227,8 +234,8 @@ struct DragControllerPage {
     Column() {
       Button('touch to execute drag')
         .margin(10)
-        .onTouch((event?:TouchEvent) => {
-          if(event){
+        .onTouch((event?: TouchEvent) => {
+          if (event) {
             if (event.type == TouchType.Down) {
               let text = new unifiedDataChannel.PlainText()
               text.textContent = 'drag text'
@@ -242,11 +249,15 @@ struct DragControllerPage {
               }
               let dragItemInfo: DragItemInfo = {
                 pixelMap: this.pixmap,
-                builder: ()=>{this.DraggingBuilder()},
+                builder: () => {
+                  this.DraggingBuilder()
+                },
                 extraInfo: "DragItemInfoTest"
               }
               let eve: DragInfo = new DragInfo();
-              this.getUIContext().getDragController().executeDrag(dragItemInfo, dragInfo) // You are advised to use this.getUIContext().getDragController().executeDrag().
+              this.getUIContext()
+                .getDragController()
+                .executeDrag(dragItemInfo, dragInfo) // You are advised to use this.getUIContext().getDragController().executeDrag().
                 .then((eve) => {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
@@ -254,7 +265,7 @@ struct DragControllerPage {
                     // ...
                   }
                 })
-                .catch((err:Error) => {
+                .catch((err: Error) => {
                 })
             }
           }
@@ -262,10 +273,10 @@ struct DragControllerPage {
       Text(this.text)
         .height(100)
         .width(150)
-        .margin({top:20})
-        .border({color:Color.Black,width:1})
-        .onDrop((dragEvent?:DragEvent)=>{
-          if(dragEvent){
+        .margin({ top: 20 })
+        .border({ color: Color.Black, width: 1 })
+        .onDrop((dragEvent?: DragEvent) => {
+          if (dragEvent) {
             let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
             let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
             this.text = plainText.textContent;
@@ -290,8 +301,138 @@ Defines the attributes required for initiating a drag action and information car
 | data        | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | No |  Yes | Data carried in the dragging process.<br>The default value is null.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
 | extraParams | string                                                 | No |  Yes | Additional information about the drag action. Not supported currently.<br>The default value is null.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | touchPoint<sup>11+</sup>    | [TouchPoint](arkui-ts/ts-types.md#touchpoint11)  | No |  Yes | Coordinates of the touch point. If this parameter is not set, the touch point is centered horizontally and shifted downward by 20% from the top.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| previewOptions<sup>11+</sup>| [DragPreviewOptions](arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)                                | No  |  Yes | Processing mode of the drag preview and the display of the number badge during dragging.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| previewOptions<sup>11+</sup>| [DragPreviewOptions](arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11-1)                                | No  |  Yes | Processing mode of the drag preview and the display of the number badge during dragging.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| autoHideComponentUniqueIds | number&nbsp;\|&nbsp;number[] | No  |  Yes | Unique ID of the component that is automatically hidden by the system during proactive dragging. A single unique ID or an array of unique IDs can be passed.<br>After the proactive dragging is successfully initiated, the system automatically hides the target component before displaying the drag preview window.<br>If the proactive dragging source also needs to be hidden, its unique ID must be passed as well.<br>The unique ID of a component can be obtained by using [UIContext.getFrameNodeById()](arkts-apis-uicontext-uicontext.md#getframenodebyid12) together with [FrameNode.getUniqueId()](js-apis-arkui-frameNode.md#getuniqueid12).<br>You need to restore the component display status as required in the drag end callback.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
 | dataLoadParams<sup>20+</sup>| [unifiedDataChannel.DataLoadParams](../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20)                                | No  |  Yes | Parameters for deferred data loading from the drag source. This API provides data loading parameters to the system instead of directly providing complete data objects. When the user drops data on the target application, the system will use these parameters to request the actual data from the drag source. If set together with **data**, **dataLoadParams** takes effect.<br>The default value is null.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+
+**Example**
+
+In this example, the **autoHideComponentUniqueIds** attribute of [DragInfo](#draginfo) is used to automatically hide the specified component after the proactive dragging is successfully initiated.
+
+The **autoHideComponentUniqueIds** attribute is added for **DragInfo** since API version 26.0.0.
+
+```ts
+import { dragController } from '@kit.ArkUI';
+import { unifiedDataChannel } from '@kit.ArkData';
+
+@Entry
+@Component
+struct DragInfoAutoHideSample {
+  @State sourceVisibility: Visibility = Visibility.Visible;
+  @State badgeVisibility: Visibility = Visibility.Visible;
+  @State statusText: string = 'Status: waiting for proactive dragging'
+
+  @Builder
+  PreviewBuilder() {
+    Text('Drag Preview')
+      .width(140)
+      .height(60)
+      .backgroundColor('#3F51B5')
+      .borderRadius(10)
+      .fontColor(Color.White);
+  }
+
+  private buildData(content: string): unifiedDataChannel.UnifiedData {
+    let plainText = new unifiedDataChannel.PlainText();
+    plainText.textContent = content;
+    plainText.abstract = content;
+    return new unifiedDataChannel.UnifiedData(plainText);
+  }
+
+  private collectHideIds(): number[] {
+    let hideIds: number[] = [];
+    let sourceNode = this.getUIContext().getFrameNodeById('active_source');
+    let badgeNode = this.getUIContext().getFrameNodeById('active_badge');
+    if (sourceNode?.getUniqueId() !== undefined) {
+      hideIds.push(sourceNode.getUniqueId());
+    }
+    if (badgeNode?.getUniqueId() !== undefined) {
+      hideIds.push(badgeNode.getUniqueId());
+    }
+    return hideIds;
+  }
+
+  private hideTargets(): void {
+    this.sourceVisibility = Visibility.Hidden;
+    this.badgeVisibility = Visibility.Hidden;
+    this.statusText = 'Status: Proactively dragging. The target component has been hidden.';
+  }
+
+  private restoreTargets(): void {
+    this.sourceVisibility = Visibility.Visible;
+    this.badgeVisibility = Visibility.Visible;
+    this.statusText = 'Status: Dragging ended. The component has been displayed.';
+  }
+
+  build() {
+    Column({ space: 12 }) {
+      Text(this.statusText)
+        .width('100%')
+        .fontSize(14)
+        .fontColor('#BF360C');
+
+      Row({ space: 12 }) {
+        Column() {
+          Text('Proactive dragging source')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium);
+          Text('id: active_source')
+            .fontSize(10)
+            .fontColor('#E8F5E9');
+        }
+          .id('active_source')
+          .width(140)
+          .height(90)
+          .backgroundColor('#2E7D32')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.sourceVisibility);
+
+        Column() {
+          Text('Follow the hidden component')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium);
+          Text('id: active_badge')
+            .fontSize(10)
+            .fontColor('#E3F2FD');
+        }
+          .id('active_badge')
+          .width(140)
+          .height(90)
+          .backgroundColor('#1565C0')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.badgeVisibility);
+      }
+
+      Button ('Initiate Drag')
+        .width('100%')
+        .height(56)
+        .backgroundColor('#FF8F00')
+        .onTouch((touchEvent) => {
+          if (!touchEvent || touchEvent.type !== TouchType.Down) {
+            return;
+          }
+          let hideIds = this.collectHideIds();
+          let dragInfo: dragController.DragInfo = {
+            pointerId: 0,
+            data: this.buildData('active drag data'),
+            extraParams: '',
+            autoHideComponentUniqueIds: hideIds
+          };
+          this.hideTargets();
+          this.getUIContext().getDragController().executeDrag(() => {
+            this.PreviewBuilder();
+          }, dragInfo, () => {
+            this.restoreTargets();
+          });
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
 
 ## dragController.createDragAction<sup>(deprecated)</sup>
 
@@ -301,7 +442,7 @@ Creates a drag action object for initiating drag and drop operations. You need t
 
 > **NOTE**
 >
-> - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [createDragAction](arkts-apis-uicontext-dragcontroller.md#createdragaction11) instead on the obtained [DragController](arkts-apis-uicontext-dragcontroller.md) object.
+> - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [createDragAction](arkts-apis-uicontext-dragcontroller.md#createdragaction11) instead. Before calling this API, you need to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) instance using the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 11, you can use the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) object associated with the current UI context.
 >
@@ -349,8 +490,10 @@ struct DragControllerPage {
   @State pixmap: image.PixelMap | null = null
   @State text: string = ''
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -370,8 +513,8 @@ struct DragControllerPage {
           .height('100%')
           .fontColor(Color.White)
           .fontSize(18)
-          .onDrop((dragEvent?:DragEvent)=>{
-            if(dragEvent){
+          .onDrop((dragEvent?: DragEvent) => {
+            if (dragEvent) {
               let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
               let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
               this.text = plainText.textContent;
@@ -383,14 +526,20 @@ struct DragControllerPage {
       .backgroundColor(Color.Red)
       .margin(10)
 
-      Button('Drag Multiple Objects').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('Drag Multiple Objects').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             console.info("multi drag Down by listener");
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -399,16 +548,19 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             }
-            try{
-              this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // You are advised to use this.getUIContext().getDragController().createDragAction().
-              if(!this.dragAction){
+            try {
+              this.dragAction = this.getUIContext()
+                .getDragController()
+                .createDragAction(this.customBuilders,
+                  dragInfo) // You are advised to use this.getUIContext().getDragController().createDragAction().
+              if (!this.dragAction) {
                 console.info("listener dragAction is null");
                 return
               }
-              this.dragAction.on('statusChange', (dragAndDropInfo: dragController.DragAndDropInfo)=>{
+              this.dragAction.on('statusChange', (dragAndDropInfo: dragController.DragAndDropInfo) => {
                 if (dragAndDropInfo.status == dragController.DragStatus.STARTED) {
                   console.info("drag has start");
-                } else if (dragAndDropInfo.status == dragController.DragStatus.ENDED){
+                } else if (dragAndDropInfo.status == dragController.DragStatus.ENDED) {
                   console.info("drag has end");
                   if (!this.dragAction) {
                     return
@@ -416,20 +568,23 @@ struct DragControllerPage {
                   this.dragAction.off('statusChange')
                 }
               })
-              this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
-                console.error("start drag Error:" + err.message);
+              this.dragAction.startDrag().then(() => {
+              }).catch((err: Error) => {
+                console.error(`start drag Error:${err.message}`);
               })
-            } catch(err) {
-              console.error("create dragAction Error:" + err.message);
+            } catch (err) {
+              console.error(`create dragAction Error:${err.message}`);
             }
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
 ```
   ![en-us_executeDrag3](figures/executeDrag3.gif)
+
+
 ## DragAction<sup>11+</sup>
 
 Implements a **DragAction** object to subscribe to drag state changes and start the drag service.
@@ -474,8 +629,10 @@ import { unifiedDataChannel } from '@kit.ArkData';
 @Component
 struct DragControllerPage {
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -488,11 +645,13 @@ struct DragControllerPage {
 
   build() {
     Column() {
-      Button('touch to execute drag').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('touch to execute drag').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -501,21 +660,25 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             }
-            try{
-              this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // You are advised to use this.getUIContext().getDragController().createDragAction().
-              if(!this.dragAction){
+            try {
+              this.dragAction = this.getUIContext()
+                .getDragController()
+                .createDragAction(this.customBuilders,
+                  dragInfo) // You are advised to use this.getUIContext().getDragController().createDragAction().
+              if (!this.dragAction) {
                 console.info("listener dragAction is null");
                 return;
               }
-              this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
+              this.dragAction.startDrag().then(() => {
+              }).catch((err: Error) => {
                 console.error(`start drag Error: ${err.message}`);
               })
-            } catch(err) {
+            } catch (err) {
               console.error(`create dragAction Error: ${err.message}`);
             }
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
@@ -527,7 +690,7 @@ Since API version 20, you can configure **dataLoadParams** in [DragInfo](#dragin
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
-import { fileUri, fileIo as fs } from '@kit.CoreFileKit';
+import { fileUri, fileIo as fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { dragController } from '@kit.ArkUI';
 
@@ -566,12 +729,12 @@ struct ImageExample {
                     let data =
                       context.resourceManager.getRawFdSync('test1.mp4');
                     let filePath = context.filesDir + '/test1.mp4';
-                    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+                    let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
                     let bufferSize = data.length as number;
                     let buf = new ArrayBuffer(bufferSize);
-                    fs.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
-                    fs.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
-                    fs.closeSync(file.fd);
+                    fileIo.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
+                    fileIo.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
+                    fileIo.closeSync(file.fd);
                     context.resourceManager.closeRawFdSync('test1.mp4')
                     this.uri = fileUri.getUriFromPath(filePath);
                     let videoMp: uniformDataStruct.FileUri = {
@@ -726,8 +889,10 @@ import { unifiedDataChannel } from '@kit.ArkData';
 @Component
 struct DragControllerPage {
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -740,11 +905,13 @@ struct DragControllerPage {
 
   build() {
     Column() {
-      Button('touch to execute drag').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('touch to execute drag').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -756,23 +923,27 @@ struct DragControllerPage {
             let func = (dragAndDropInfo: dragController.DragAndDropInfo) => {
               console.info(`Register to listen on drag status ${JSON.stringify(dragAndDropInfo)}`);
             }
-            try{
-              this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // You are advised to use this.getUIContext().getDragController().createDragAction().
-              if(!this.dragAction){
+            try {
+              this.dragAction = this.getUIContext()
+                .getDragController()
+                .createDragAction(this.customBuilders,
+                  dragInfo) // You are advised to use this.getUIContext().getDragController().createDragAction().
+              if (!this.dragAction) {
                 console.info("listener dragAction is null");
                 return;
               }
               // Subscribe to drag state changes. The information in func will be logged once a change is detected.
               this.dragAction.on('statusChange', func);
-              this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
+              this.dragAction.startDrag().then(() => {
+              }).catch((err: Error) => {
                 console.error(`start drag Error: ${err.message}`);
               })
-            } catch(err) {
+            } catch (err) {
               console.error(`create dragAction Error: ${err.message}`);
             }
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
@@ -808,8 +979,10 @@ import { unifiedDataChannel } from '@kit.ArkData';
 @Component
 struct DragControllerPage {
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -822,11 +995,13 @@ struct DragControllerPage {
 
   build() {
     Column() {
-      Button('touch to execute drag').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('touch to execute drag').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -838,20 +1013,24 @@ struct DragControllerPage {
             let func = (dragAndDropInfo: dragController.DragAndDropInfo) => {
               console.info(`Register to listen on drag status ${JSON.stringify(dragAndDropInfo)}`);
             }
-            this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // You are advised to use this.getUIContext().getDragController().createDragAction().
-            if(!this.dragAction){
+            this.dragAction = this.getUIContext()
+              .getDragController()
+              .createDragAction(this.customBuilders,
+                dragInfo) // You are advised to use this.getUIContext().getDragController().createDragAction().
+            if (!this.dragAction) {
               console.info("listener dragAction is null");
               return;
             }
             this.dragAction.on('statusChange', func);
             // Unsubscribe from drag state changes. The information in func will not be logged after a drag operation starts.
             this.dragAction.off('statusChange', func);
-            this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
+            this.dragAction.startDrag().then(() => {
+            }).catch((err: Error) => {
               console.error(`start drag Error: ${err.message}`);
             })
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
@@ -895,7 +1074,7 @@ Defines parameters related to drag-and-drop animation effects.
 | Name       | Type                                                  | Read-Only |  Optional| Description                                    |
 | ----------- | ------------------------------------------------------ | ---- | ---- | ---------------------------------------- |
 | duration    | number                                                 | No |  Yes  | Animation duration, in ms.<br>Default value: **1000**<br>**NOTE**<br>- If this parameter is set to a value less than 0, the value **0** is used.<br>- Floating-point values will be rounded down to integers. For example, if the value set is 1.2, **1** will be used.|
-| curve       | [Curve](arkui-ts/ts-appendix-enums.md#curve) \| [ICurve](js-apis-curve.md#icurve9) | No |  Yes | Animation curve.<br>Default value: **Curve.EaseInOut**|                          |
+| curve       |&nbsp;[Curve](arkui-ts/ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](js-apis-curve.md#icurve9) | No |  Yes | Animation curve.<br>Default value: **Curve.EaseInOut**|
 
 ## DragEventParam<sup>12+</sup>
 
@@ -918,7 +1097,7 @@ Obtains the **DragPreview** object, which represents the preview displayed durin
 
 > **NOTE**
 >
-> - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [getDragPreview](arkts-apis-uicontext-dragcontroller.md#getdragpreview11) instead on the obtained [DragController](arkts-apis-uicontext-dragcontroller.md) object.
+> - This API is supported since API version 11 and deprecated since API version 18. You are advised to use [getDragPreview](arkts-apis-uicontext-dragcontroller.md#getdragpreview11) instead. Before calling this API, you need to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) instance using the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 11, you can use the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [DragController](arkts-apis-uicontext-dragcontroller.md) object associated with the current UI context.
 
@@ -988,144 +1167,150 @@ Applies a foreground color animation to the drag preview. This API does not work
 > You are advised to use the [getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11) to obtain the **DragController** object associated with the current UI context.
 
 1. In the **EntryAbility.ets** file, obtain the UI context and save it to LocalStorage.
-  ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window, UIContext } from '@kit.ArkUI';
+   ```ts
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { window, UIContext } from '@kit.ArkUI';
 
-let uiContext: UIContext;
-let localStorage: LocalStorage = new LocalStorage('uiContext');
+   let uiContext: UIContext;
+   let localStorage: LocalStorage = new LocalStorage('uiContext');
 
-export default class EntryAbility extends UIAbility {
-  storage: LocalStorage = localStorage;
+   export default class EntryAbility extends UIAbility {
+     storage: LocalStorage = localStorage;
 
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  }
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+     }
 
-  onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-  }
+     onDestroy(): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+     }
 
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+     onWindowStageCreate(windowStage: window.WindowStage): void {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent('pages/Index', this.storage, (err, data) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', `Code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',  `Code is ${err.code}, message is ${err.message}`);
-      windowStage.getMainWindow((err, data) => {
-        if (err.code) {
-          hilog.error(0x0000, `Failed to abtain the main window. Cause: ${err.message}`, '');
-          return;
-        }
-        uiContext = data.getUIContext();
-        this.storage.setOrCreate<UIContext>('uiContext', uiContext);
-      })
-    });
-  }
-}
-  ```
+       windowStage.loadContent('pages/Index', this.storage, (err, data) => {
+         if (err.code) {
+           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s',
+             `Code is ${err.code}, message is ${err.message}`);
+           return;
+         }
+         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
+           `Code is ${err.code}, message is ${err.message}`);
+         windowStage.getMainWindow((err, data) => {
+           if (err.code) {
+             hilog.error(0x0000, `Failed to obtain the main window. Cause: ${err.message}`, '');
+             return;
+           }
+           uiContext = data.getUIContext();
+           this.storage.setOrCreate<UIContext>('uiContext', uiContext);
+         })
+       });
+     }
+   }
+   ```
 2. In the **Index.ets** file, call **this.getUIContext().getSharedLocalStorage()** to obtain the UI context and then use the **DragController** object obtained to perform subsequent operations.
-  ```ts
+   ```ts
 
-import { unifiedDataChannel } from '@kit.ArkData';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { dragController, curves, promptAction, UIContext } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+   import { unifiedDataChannel } from '@kit.ArkData';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { dragController, curves, promptAction, UIContext } from '@kit.ArkUI';
+   import { image } from '@kit.ImageKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-class DragInfo {
-  event: DragEvent | undefined = undefined;
-  extraParams: string = '';
-}
+   class DragInfo {
+     event: DragEvent | undefined = undefined;
+     extraParams: string = '';
+   }
 
-@Entry()
-@Component
-struct DragControllerPage {
-  @State pixmap: image.PixelMap|null = null;
-  storages = this.getUIContext().getSharedLocalStorage();
+   @Entry()
+   @Component
+   struct DragControllerPage {
+     @State pixmap: image.PixelMap | null = null;
+     storages = this.getUIContext().getSharedLocalStorage();
 
-  @Builder DraggingBuilder() {
-    Column() {
-      Text("DraggingBuilder")
-        .fontColor(Color.White)
-        .fontSize(12)
-    }
-    .width(100)
-    .height(100)
-    .backgroundColor(Color.Blue)
-  }
+     @Builder
+     DraggingBuilder() {
+       Column() {
+         Text("DraggingBuilder")
+           .fontColor(Color.White)
+           .fontSize(12)
+       }
+       .width(100)
+       .height(100)
+       .backgroundColor(Color.Blue)
+     }
 
-  @Builder PixmapBuilder() {
-    Column() {
-      Text("PixmapBuilder")
-    }
-    .width(100)
-    .height(100)
-    .backgroundColor(Color.Blue)
-  }
+     @Builder
+     PixmapBuilder() {
+       Column() {
+         Text("PixmapBuilder")
+       }
+       .width(100)
+       .height(100)
+       .backgroundColor(Color.Blue)
+     }
 
-  build() {
-    Column() {
-      Button('Drag Here')
-        .margin(10)
-        .onDragEnter(() => {
-        try {
-          let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
-          let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
-          let foregroundColor: ResourceColor = Color.Green;
+     build() {
+       Column() {
+         Button('Drop Here')
+           .margin(10)
+           .onDragEnter(() => {
+             try {
+               let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
+               let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
+               let foregroundColor: ResourceColor = Color.Green;
 
-          let previewAnimation: dragController.AnimationOptions = {
-            curve: curves.cubicBezierCurve(0.2,0,0,1),
-          }
-          previewObj.animate(previewAnimation, () => {
-            previewObj.setForegroundColor(foregroundColor);
-          });
-        } catch (error) {
-          let msg = (error as BusinessError).message;
-          let code = (error as BusinessError).code;
-          hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
-        }
-      })
-        .onDrop(() => {
-          this.getUIContext().getPromptAction().showToast({duration: 100, message: 'Drag Success', bottom: 400})
-        })
-      Button('Drag').onTouch((event?:TouchEvent) => {
-        if(event){
-          if (event.type == TouchType.Down) {
-            let text = new unifiedDataChannel.Text()
-            let unifiedData = new unifiedDataChannel.UnifiedData(text)
-            let dragInfo: dragController.DragInfo = {
-              pointerId: 0,
-              data: unifiedData,
-              extraParams: ''
-            }
-            let eve: DragInfo = new DragInfo();
-            this.getUIContext().getDragController().executeDrag(() => { // You are advised to usethis.getUIContext().getDragController().executeDrag().
-              this.DraggingBuilder()
-            }, dragInfo, (err , eve) => {
-              hilog.info(0x0000, `${JSON.stringify(err)}`, '')
-              if (eve && eve.event) {
-                if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
-                  hilog.info(0x0000, 'success', '');
-                } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
-                  hilog.info(0x0000, 'failed', '');
-                }
-              }
-            })
-          }
-        }
-      }).margin({top:100})
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-  ```
-  ![en-us_executeDrag5](figures/executeDrag5.gif)
+               let previewAnimation: dragController.AnimationOptions = {
+                 curve: curves.cubicBezierCurve(0.2, 0, 0, 1),
+               }
+               previewObj.animate(previewAnimation, () => {
+                 previewObj.setForegroundColor(foregroundColor);
+               });
+             } catch (error) {
+               let msg = (error as BusinessError).message;
+               let code = (error as BusinessError).code;
+               hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
+             }
+           })
+           .onDrop(() => {
+             this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success', bottom: 400 })
+           })
+         Button('Drag').onTouch((event?: TouchEvent) => {
+           if (event) {
+             if (event.type == TouchType.Down) {
+               let text = new unifiedDataChannel.Text()
+               let unifiedData = new unifiedDataChannel.UnifiedData(text)
+               let dragInfo: dragController.DragInfo = {
+                 pointerId: 0,
+                 data: unifiedData,
+                 extraParams: ''
+               }
+               let eve: DragInfo = new DragInfo();
+               this.getUIContext()
+                 .getDragController()
+                 .executeDrag(() => { // You are advised to use this.getUIContext().getDragController().executeDrag().
+                   this.DraggingBuilder()
+                 }, dragInfo, (err, eve) => {
+                   hilog.info(0x0000, `${JSON.stringify(err)}`, '')
+                   if (eve && eve.event) {
+                     if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+                       hilog.info(0x0000, 'success', '');
+                     } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
+                       hilog.info(0x0000, 'failed', '');
+                     }
+                   }
+                 })
+             }
+           }
+         }).margin({ top: 100 })
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
+   ![en-us_executeDrag5](figures/executeDrag5.gif)
 
 ## DragStartRequestStatus<sup>18+</sup>
 
@@ -1151,10 +1336,10 @@ Enumerates hover detection states during drag operations.
 
 | Name| Value|Description                                                         |
 | ------ | --------------------- |--------------------------------------- |
-| BEGIN  | - |Initial state when a dragged item enters the component boundary and remains stationary for the specified duration. This state enables preparation operations.|
-| UPDATE | - |Periodic notification state during sustained hover detection. In this state, periodic updates refresh UI effects to highlight the hover state.|
-| END    | - |Final state indicating completion of the hover detection cycle, which is triggered when the dragged item remains stationary after the last update notification. Hover detection will only restart after the dragged item exits and re-enters the component boundary or enters a child component. In this state, the application can perform cleanup, navigation, or view switching operations.|
-| CANCEL | - |Interruption state of hover detection triggered by termination events, which include the following: finger or mouse release, window switching, screen off, exiting the component boundary, entering child components, or exceeding the movement threshold within the component. The application will restore the UI style and cancel pending navigation and view switching operations.|
+| BEGIN  | 0 |Initial state when a dragged item enters the component boundary and remains stationary for the specified duration. This state enables preparation operations.|
+| UPDATE | 1 |Periodic notification state during sustained hover detection. In this state, periodic updates refresh UI effects to highlight the hover state.|
+| END    | 2 |Final state indicating completion of the hover detection cycle, which is triggered when the dragged item remains stationary after the last update notification. Hover detection will only restart after the dragged item exits and re-enters the component boundary or enters a child component. In this state, the application can perform cleanup, navigation, or view switching operations.|
+| CANCEL | 3 |Interruption state of hover detection triggered by termination events, which include the following: finger or mouse release, window switching, screen off, exiting the component boundary, entering child components, or exceeding the movement threshold within the component. The application will restore the UI style and cancel pending navigation and view switching operations.|
 
 ## DragSpringLoadingConfiguration<sup>20+</sup>
 
@@ -1166,10 +1351,10 @@ Defines the configuration parameters for drag hover detection. The default setti
 
 | Name                | Type  |Read-Only| Optional| Description                                  |
 | --------------------- | ------ | ---- | --- | ---------------------------------------------------- |
-| stillTimeLimit         | number | No  |    Yes  |Time (in ms) required to remain stationary to enter the BEGIN state of hover detection. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **500**.|
-| updateInterval         | number | No  |    Yes  |Time interval (in ms) at which update notifications are sent after hover detection enters the UPDATE state. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.|
+| stillTimeLimit         | number | No  |    Yes  |Time required to remain stationary to enter the BEGIN state of hover detection, in ms. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **500**.|
+| updateInterval         | number | No  |    Yes  |Interval at which update notifications are sent after hover detection enters the UPDATE state, in ms. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.|
 | updateNotifyCount      | number | No  |    Yes  |Maximum number of update notifications after hover detection enters the UPDATE state. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **3**.|
-| updateToFinishInterval | number | No  |    Yes  |Maximum waiting time (in ms) from the UPDATE state to the END state. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.|
+| updateToFinishInterval | number | No  |    Yes  |Maximum waiting time from the UPDATE state to the END state, in ms. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.|
 
 ## SpringLoadingDragInfos<sup>20+</sup>
 

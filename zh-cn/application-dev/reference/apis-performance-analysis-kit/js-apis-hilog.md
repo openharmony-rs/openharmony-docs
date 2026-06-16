@@ -2,10 +2,10 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifeifei;@buzhenwang-->
-<!--Designer: @shenchenkai-->
+<!--Owner: @buzhenwang-->
+<!--Designer: @milkbread123-->
 <!--Tester: @liyang2235-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 hilog日志系统，使应用/服务可以按照指定级别、标识和格式字符串输出日志内容，帮助开发者了解应用/服务的运行状态，更好地调试程序。
 
@@ -34,7 +34,7 @@ isLoggable(domain: number, tag: string, level: LogLevel) : boolean
 | 参数名 | 类型                  | 必填 | 说明                                                         |
 | ------ | --------------------- | ---- | ------------------------------------------------------------ |
 | domain | number                | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。 |
-| tag    | string                | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
+| tag    | string                | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | level  | [LogLevel](#loglevel) | 是   | 日志级别。                                                   |
 
 **返回值：**
@@ -82,7 +82,7 @@ DEBUG级别的日志在正式发布版本中默认不被打印，只有在调试
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | domain | number | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。 |
-| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
+| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
 | args   | any[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
 
@@ -97,7 +97,7 @@ hilog.debug(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
 <!--RP3-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  D     hello World <private>
 ```
 <!--RP3End-->
@@ -117,7 +117,7 @@ info(domain: number, tag: string, format: string, ...args: any[]) : void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | domain | number | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
-| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
+| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
 | args   | any[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
 
@@ -132,7 +132,7 @@ hilog.info(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
 <!--RP4-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  I     hello World <private>
 ```
 <!--RP4End-->
@@ -152,7 +152,7 @@ warn(domain: number, tag: string, format: string, ...args: any[]) : void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | domain | number | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
-| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
+| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
 | args   | any[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
 
@@ -167,7 +167,7 @@ hilog.warn(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
 <!--RP5-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  W     hello World <private>
 ```
 <!--RP5End-->
@@ -187,7 +187,7 @@ error(domain: number, tag: string, format: string, ...args: any[]) : void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | domain | number | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
-| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。 tag最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。|
+| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。 tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。|
 | format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
 | args   | any[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
 
@@ -202,7 +202,7 @@ hilog.error(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
 <!--RP6-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  E     hello World <private>
 ```
 <!--RP6End-->
@@ -222,7 +222,7 @@ fatal(domain: number, tag: string, format: string, ...args: any[]) : void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | domain | number | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
-| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
+| tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
 | args   | any[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
 
@@ -237,7 +237,7 @@ hilog.fatal(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
 <!--RP7-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  F     hello World <private>
 ```
 <!--RP7End-->
@@ -286,7 +286,7 @@ hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
 
 <!--RP1-->
 最终打印结果如下所示：
-```
+```text
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 5
@@ -352,7 +352,7 @@ hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
 
 <!--RP2-->
 最终打印结果如下所示：
-```
+```text
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 2
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
@@ -398,7 +398,7 @@ hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 
 **打印结果：**
 <!--RP8-->
-```
+```text
 08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
 08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
 08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  private flag: <private> <private>, print null: null
@@ -408,3 +408,247 @@ hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 08-09 13:26:29.095  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print boolean: true
 ```
 <!--RP8End-->
+
+
+## OutputType
+
+hilog输出类型的枚举值，DEFAULT和CONSOLE_ONLY适用于仅输出到控制台的场景，PRIVATE_SANDBOX_ONLY适用于隐私日志存储，SHARE_SANDBOX_ONLY适用于需要云端采集日志的场景，PRIVATE_SANDBOX_WITH_CONSOLE和SHARE_SANDBOX_WITH_CONSOLE适用于同时需要控制台输出和沙箱存储的场景。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+| 名称  |   值   | 说明                                                         |
+| ------ | --------------------- | ------------------------------------------------------------ |
+| DEFAULT | 0 | 默认输出类型，hilog仅输出至控制台，等价于CONSOLE_ONLY。 |
+| CONSOLE_ONLY | 0 | hilog仅输出至控制台，等价于DEFAULT。 |
+| PRIVATE_SANDBOX_ONLY | 1 | hilog落盘至应用私有沙箱，该路径仅自身可访问。 |
+| SHARE_SANDBOX_ONLY | 2 | hilog落盘至应用公有沙箱，该路径允许应用自身及系统访问。 |
+| PRIVATE_SANDBOX_WITH_CONSOLE | 3 | 同时启用CONSOLE_ONLY和PRIVATE_SANDBOX_ONLY。 |
+| SHARE_SANDBOX_WITH_CONSOLE | 4 | 同时启用CONSOLE_ONLY和SHARE_SANDBOX_ONLY。 |
+
+## hilog.setOutputType
+
+setOutputType(type: OutputType): OutputType
+
+设置hilog的输出类型。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                                                         |
+| ------ | --------------------- | ---- | ------------------------------------------------------------ |
+| type  | [OutputType](#outputtype) | 是   | hilog的输出类型。                                                   |
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| [OutputType](#outputtype) | 返回上一次设置的输出类型。 |
+
+**示例：**
+```js
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_ONLY);
+hilog.info(0x0001, "testTag", 'sandbox log to share sandbox only');
+hilog.flush();
+```
+
+**打印结果：**
+
+沙箱日志输出。
+```text
+05-15 16:57:04.238 40518 40518 I A00001/testTag: sandbox log to share sandbox only
+```
+
+## hilog.setOutputTypeByDomainID
+
+setOutputTypeByDomainID(type: OutputType, domainIDs: Array&lt;number&gt;, isExclude: boolean): OutputType
+
+设置hilog的输出类型，并且配置输出的domainID列表，可选择仅输出列表中的domainID，或不输出列表中的domainID。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                                                         |
+| ------ | --------------------- | ---- | ------------------------------------------------------------ |
+| type  | [OutputType](#outputtype) | 是   | hilog的输出类型。                                                   |
+| domainIDs  | Array&lt;number&gt; | 是   | domainID列表，每个domainID取值范围为0x0000~0xFFFF，仅对应用domain生效。                                                   |
+| isExclude  | boolean | 是   | 用于决定domainIDs是否对输出类型生效。<br>true表示排除domainIDs列表，仅对非列表中的domain生效；false表示仅对列表中的domain生效。|
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| [OutputType](#outputtype) | 返回上一次设置的输出类型。 |
+
+**示例：**
+
+```js
+hilog.setOutputTypeByDomainID(hilog.OutputType.SHARE_SANDBOX_ONLY, [0x0001, 0x0002, 0x0003], false);
+hilog.info(0x0001, "testTag", 'sandbox log to share sandbox only');
+hilog.info(0x0002, "testTag", 'sandbox log to share sandbox only');
+hilog.info(0x0003, "testTag", 'sandbox log to share sandbox only');
+hilog.info(0x0004, "testTag", 'sandbox log to share sandbox only');
+hilog.flush();
+```
+
+**打印结果：**
+
+沙箱日志输出，domain 0x0004的日志没有被打印。
+```text
+05-15 16:57:04.238 40518 40518 I A00001/testTag: sandbox log to share sandbox only
+05-15 16:57:04.238 40518 40518 I A00002/testTag: sandbox log to share sandbox only
+05-15 16:57:04.238 40518 40518 I A00003/testTag: sandbox log to share sandbox only
+```
+
+## hilog.getOutputType
+
+getOutputType(): OutputType
+
+获取当前hilog的输出类型。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| [OutputType](#outputtype) | 返回当前hilog的输出类型。 |
+
+**示例：**
+```js
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+let last = hilog.getOutputType();
+hilog.info(0x0001, "testTag", 'last output type:%{public}d', last);
+```
+
+**打印结果：**
+
+控制台输出。
+```text
+05-15 16:57:04.238  40518-40518  A00001/testTag  com.example.hilogDemo  I  last output type:4
+```
+
+## hilog.getOutputDir
+
+getOutputDir(): string
+
+返回hilog日志在沙箱中的路径，如果hilog的输出类型为DEFAULT，则返回空。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| string | hilog日志的沙箱路径。 |
+
+**示例：**
+```js
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+let dir = hilog.getOutputDir();
+hilog.info(0x0001, "testTag", 'sandbox output dir:%{public}s', dir);
+```
+
+**打印结果：**
+
+控制台输出。
+```text
+05-15 16:57:04.238  40518-40518  A00001/testTag  com.example.hilogDemo  I  sandbox output dir:/data/storage/el2/log/hiapplog/
+```
+
+## hilog.clean
+
+clean(): void
+
+删除沙箱中的所有hilog日志。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**示例：**
+```js
+hilog.clean();
+```
+
+## hilog.flush
+
+flush(): void
+
+刷新沙箱中的hilog日志。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**示例：**
+```js
+hilog.flush();
+```
+
+## hilog.getLogFile
+
+getLogFile(latestSeconds: number): Array&lt;string&gt;
+
+返回指定秒数内修改过的hilog沙箱日志文件。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                                                         |
+| ------ | --------------------- | ---- | ------------------------------------------------------------ |
+| latestSeconds  | number | 是   | 距离现在的时间间隔，以秒为单位。<br>若传入的值小于0，则为无效值，返回值为空。             |
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| Array&lt;string&gt; | 指定时间段内写入过的沙箱文件列表。 |
+
+**示例：**
+
+获取5分钟之内修改过的文件。
+```js
+hilog.setOutputType(hilog.OutputType.SHARE_SANDBOX_WITH_CONSOLE);
+hilog.info(0x0001, "testTag", 'sandbox log to share sandbox with console');
+hilog.flush();
+let logs = hilog.getLogFile(300);
+hilog.info(0x0001, "testTag", 'sandbox log files:%{public}s', logs.toString());
+```
+
+**打印结果：**
+
+沙箱日志输出。
+```text
+05-15 16:57:04.238 40518 40518 I A00001/testTag: sandbox log files:hiapplog.40518.001.20260515-165602.log
+```

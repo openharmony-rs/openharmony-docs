@@ -1,10 +1,14 @@
 # OH_NativeXComponent_HistoricalPoint
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @pengzhiwen3-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} OH_NativeXComponent_HistoricalPoint
+```
 
 ## Overview
 

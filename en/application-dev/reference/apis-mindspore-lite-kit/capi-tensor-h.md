@@ -58,7 +58,7 @@ Provides tensor-related APIs, which can be used to create tensors and modify ten
 
 ### OH_AI_TensorCreate()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_TensorCreate(const char *name, OH_AI_DataType type, const int64_t *shape,size_t shape_num, const void *data, size_t data_len)
 ```
 
@@ -88,7 +88,7 @@ Creates a tensor object.
 
 ### OH_AI_TensorDestroy()
 
-```
+```c
 OH_AI_API void OH_AI_TensorDestroy(OH_AI_TensorHandle *tensor)
 ```
 
@@ -107,7 +107,7 @@ Destroys a tensor object.
 
 ### OH_AI_TensorClone()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_TensorClone(OH_AI_TensorHandle tensor)
 ```
 
@@ -132,7 +132,7 @@ Clones a tensor.
 
 ### OH_AI_TensorSetName()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetName(OH_AI_TensorHandle tensor, const char *name)
 ```
 
@@ -152,7 +152,7 @@ Sets the tensor name.
 
 ### OH_AI_TensorGetName()
 
-```
+```c
 OH_AI_API const char *OH_AI_TensorGetName(const OH_AI_TensorHandle tensor)
 ```
 
@@ -177,7 +177,7 @@ Obtains the tensor name.
 
 ### OH_AI_TensorSetDataType()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetDataType(OH_AI_TensorHandle tensor, OH_AI_DataType type)
 ```
 
@@ -197,7 +197,7 @@ Sets the data type of a tensor.
 
 ### OH_AI_TensorGetDataType()
 
-```
+```c
 OH_AI_API OH_AI_DataType OH_AI_TensorGetDataType(const OH_AI_TensorHandle tensor)
 ```
 
@@ -222,7 +222,7 @@ Obtains the tensor type.
 
 ### OH_AI_TensorSetShape()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetShape(OH_AI_TensorHandle tensor, const int64_t *shape, size_t shape_num)
 ```
 
@@ -243,7 +243,7 @@ Sets the tensor shape.
 
 ### OH_AI_TensorGetShape()
 
-```
+```c
 OH_AI_API const int64_t *OH_AI_TensorGetShape(const OH_AI_TensorHandle tensor, size_t *shape_num)
 ```
 
@@ -269,7 +269,7 @@ Obtains the tensor shape.
 
 ### OH_AI_TensorSetFormat()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetFormat(OH_AI_TensorHandle tensor, OH_AI_Format format)
 ```
 
@@ -289,7 +289,7 @@ Sets the tensor data format.
 
 ### OH_AI_TensorGetFormat()
 
-```
+```c
 OH_AI_API OH_AI_Format OH_AI_TensorGetFormat(const OH_AI_TensorHandle tensor)
 ```
 
@@ -314,7 +314,7 @@ Obtains the tensor data format.
 
 ### OH_AI_TensorSetData()
 
-```
+```c
 OH_AI_API void OH_AI_TensorSetData(OH_AI_TensorHandle tensor, void *data)
 ```
 
@@ -334,7 +334,7 @@ Sets the tensor data.
 
 ### OH_AI_TensorGetData()
 
-```
+```c
 OH_AI_API const void *OH_AI_TensorGetData(const OH_AI_TensorHandle tensor)
 ```
 
@@ -359,7 +359,7 @@ Obtains the pointer to tensor data.
 
 ### OH_AI_TensorGetMutableData()
 
-```
+```c
 OH_AI_API void *OH_AI_TensorGetMutableData(const OH_AI_TensorHandle tensor)
 ```
 
@@ -384,7 +384,7 @@ Obtains the pointer to variable tensor data. If the data is empty, memory will b
 
 ### OH_AI_TensorGetElementNum()
 
-```
+```c
 OH_AI_API int64_t OH_AI_TensorGetElementNum(const OH_AI_TensorHandle tensor)
 ```
 
@@ -409,7 +409,7 @@ Obtains the number of tensor elements.
 
 ### OH_AI_TensorGetDataSize()
 
-```
+```c
 OH_AI_API size_t OH_AI_TensorGetDataSize(const OH_AI_TensorHandle tensor)
 ```
 
@@ -434,7 +434,7 @@ Obtains the number of bytes of the tensor data.
 
 ### OH_AI_TensorSetUserData()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TensorSetUserData(OH_AI_TensorHandle tensor, void *data, size_t data_size)
 ```
 
@@ -461,7 +461,7 @@ Sets the tensor as the user data. This function allows you to reuse user data as
 
 ### OH_AI_TensorGetAllocator()
 
-```
+```c
 OH_AI_API OH_AI_AllocatorHandle OH_AI_TensorGetAllocator(OH_AI_TensorHandle tensor)
 ```
 
@@ -486,7 +486,7 @@ Obtains a memory allocator. The allocator is responsible for allocating memory f
 
 ### OH_AI_TensorSetAllocator()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TensorSetAllocator(OH_AI_TensorHandle tensor, OH_AI_AllocatorHandle allocator)
 ```
 

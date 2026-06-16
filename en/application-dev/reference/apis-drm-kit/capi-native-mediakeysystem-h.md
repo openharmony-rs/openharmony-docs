@@ -9,9 +9,7 @@
 
 ## Overview
 
-The file declares the MediaKeySystem APIs for DRM operations.
-
-The APIs can be used to check the support for a DRM solution, create a media key session, obtain and set configurations, obtain DRM metrics, obtain the content protection level, generate media key system requests, process responses to media key system requests, listen for events, and manage offline media keys.
+The file declares the MediaKeySystem APIs for DRM operations.  <br>The APIs can be used to check the support for a DRM solution, create a media key session, obtain and set configurations, obtain DRM metrics, obtain the content protection level, generate media key system requests, process responses to media key system requests, listen for events, and manage offline media keys.
 
 **File to include**: <multimedia/drm_framework/native_mediakeysystem.h>
 
@@ -29,13 +27,13 @@ The APIs can be used to check the support for a DRM solution, create a media key
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef  Drm_ErrCode (\*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#mediakeysystem_callback) | MediaKeySystem_Callback | Defines the callbacks for media key system events. It does not provide a MediaKeySystem instance, making it suitable for single-system scenarios.|
-| [typedef Drm_ErrCode (\*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#oh_mediakeysystem_callback) | OH_MediaKeySystem_Callback | Defines the callbacks for media key system events. It provides a MediaKeySystem instance, making it suitable for multi-system scenarios.|
+| [typedef  Drm_ErrCode (\*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#mediakeysystem_callback) | MediaKeySystem_Callback | Defines the callback function called when a MediaKeySystem event is triggered. This callback does not return a MediaKeySystem instance and applies to scenarios where a single MediaKeySystem is used.|
+| [typedef Drm_ErrCode (\*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#oh_mediakeysystem_callback) | OH_MediaKeySystem_Callback | Defines the callback function called when a MediaKeySystem event is triggered. This callback returns a MediaKeySystem instance, making it suitable for scenarios where multiple MediaKeySystems are used.|
 | [Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_MediaKeySystem_Callback callback)](#oh_mediakeysystem_setcallback) | - | Sets a media key system event callback.|
-| [Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *infos, uint32_t *count)](#oh_mediakeysystem_getmediakeysystems) | - | Obtains the name and ID list of DRM solutions supported by the device.|
+| [Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *descs, uint32_t *count)](#oh_mediakeysystem_getmediakeysystems) | - | Obtains the name and ID list of DRM solutions supported by the device.|
 | [bool OH_MediaKeySystem_IsSupported(const char *name)](#oh_mediakeysystem_issupported) | - | Checks whether the device supports the specified DRM solution.|
-| [bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)](#oh_mediakeysystem_issupported2) | - | Checks whether the device supports the combination of the DRM solution and MIME type.|
-| [bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_ContentProtectionLevel contentProtectionLevel)](#oh_mediakeysystem_issupported3) | - | Checks whether the device supports the combination of the DRM solution, MIME type, and content protection level.|
+| [bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)](#oh_mediakeysystem_issupported2) | - | Checks whether the device supports the specified DRM solution and MIME type. You can use the [OH_MediaKeySystem_IsSupported](#oh_mediakeysystem_issupported) API to check whether the device supports the DRM solution specified by **name**.|
+| [bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_ContentProtectionLevel contentProtectionLevel)](#oh_mediakeysystem_issupported3) | - | Checks whether the device supports the specified DRM solution, MIME type, and content protection level. You can use the [OH_MediaKeySystem_IsSupported2](#oh_mediakeysystem_issupported2) API to check whether the MIME type is supported.|
 | [Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKeySystem)](#oh_mediakeysystem_create) | - | Creates a MediaKeySystem instance.|
 | [Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySystem, const char *configName, const char *value)](#oh_mediakeysystem_setconfigurationstring) | - | Sets a configuration item in the form of a string.|
 | [Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySystem, const char *configName, char *value, int32_t valueLen)](#oh_mediakeysystem_getconfigurationstring) | - | Obtains the value of a configuration item in the form of a string.|
@@ -57,13 +55,13 @@ The APIs can be used to check the support for a DRM solution, create a media key
 
 ### MediaKeySystem_Callback()
 
-```
+```c
 typedef  Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info,int32_t infoLen, char *extra)
 ```
 
 **Description**
 
-Defines the callbacks for media key system events. It does not provide a MediaKeySystem instance, making it suitable for single-system scenarios.
+Defines the callback function called when a MediaKeySystem event is triggered. This callback does not return a MediaKeySystem instance and applies to scenarios where a single MediaKeySystem is used.
 
 **Since**: 11
 
@@ -85,13 +83,13 @@ Defines the callbacks for media key system events. It does not provide a MediaKe
 
 ### OH_MediaKeySystem_Callback()
 
-```
+```c
 typedef Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType,uint8_t *info, int32_t infoLen, char *extra)
 ```
 
 **Description**
 
-Defines the callbacks for media key system events. It provides a MediaKeySystem instance, making it suitable for multi-system scenarios.
+Defines the callback function called when a MediaKeySystem event is triggered. This callback returns a MediaKeySystem instance, making it suitable for scenarios where multiple MediaKeySystems are used.
 
 **Since**: 12
 
@@ -114,7 +112,7 @@ Defines the callbacks for media key system events. It provides a MediaKeySystem 
 
 ### OH_MediaKeySystem_SetCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_MediaKeySystem_Callback callback)
 ```
 
@@ -140,8 +138,8 @@ Sets a media key system event callback.
 
 ### OH_MediaKeySystem_GetMediaKeySystems()
 
-```
-Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *infos, uint32_t *count)
+```c
+Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *descs, uint32_t *count)
 ```
 
 **Description**
@@ -155,18 +153,18 @@ Obtains the name and ID list of DRM solutions supported by the device.
 
 | Name| Description|
 | -- | -- |
-| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) *infos | Pointer to the list of the names and UUIDs of DRM solutions.|
+| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) *descs | Pointer to the list of the names and UUIDs of DRM solutions.|
 | uint32_t *count | Pointer to the number of DRM solutions in the list.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: Possible causes:<br>                            1. The input parameter **infos** or **count** is nullptr.<br>                            2. The input parameter **infos** has insufficient length.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: Possible causes:<br>                            1. The input parameter **descs** or **count** is a null pointer.<br>                            2. The length of the input parameter **descs** is insufficient.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySystem_IsSupported()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported(const char *name)
 ```
 
@@ -181,24 +179,24 @@ Checks whether the device supports the specified DRM solution.
 
 | Name| Description|
 | -- | -- |
-| const char *name | Pointer to the DRM solution name.|
+| const char *name | DRM solution name. This is an input parameter. You can obtain the DRM solution name supported by the device through the [OH_MediaKeySystem_GetMediaKeySystems](#oh_mediakeysystem_getmediakeysystems) API. Example: **com.clearplay.drm**|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| bool | Check result for the support of the DRM solution. **true** if supported, **false** otherwise.  |
+| bool |  Whether the specified DRM solution is supported. The value **true** indicates yes, and the value **false** indicates no.   |
 
 
 ### OH_MediaKeySystem_IsSupported2()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 ```
 
 **Description**
 
-Checks whether the device supports the combination of the DRM solution and MIME type.
+Checks whether the device supports the specified DRM solution and MIME type. You can use the [OH_MediaKeySystem_IsSupported](#oh_mediakeysystem_issupported) API to check whether the device supports the DRM solution specified by **name**.
 
 **Since**: 11
 
@@ -207,24 +205,24 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 | Name| Description|
 | -- | -- |
-| const char *name | Pointer to the DRM solution name.|
-| const char *mimeType | Pointer to the MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hev.|
+| const char *name | DRM solution name. This is an input parameter. You can obtain the DRM solution name supported by the device through the [OH_MediaKeySystem_GetMediaKeySystems](#oh_mediakeysystem_getmediakeysystems) API.|
+| const char *mimeType | MIME type, which is an input parameter. The supported MIME types depend on the DRM solution. For example, **video/avc** and **video/hevc**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| bool |  Check result for the support of the combination. **true** if supported, **false** otherwise.   |
+| bool |  Whether the specified DRM solution and MIME type are supported. If both are supported, **true** is returned. Otherwise, **false** is returned. If the **name** or **mimeType** parameter is not specified or invalid, **false** is returned.   |
 
 ### OH_MediaKeySystem_IsSupported3()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType,DRM_ContentProtectionLevel contentProtectionLevel)
 ```
 
 **Description**
 
-Checks whether the device supports the combination of the DRM solution, MIME type, and content protection level.
+Checks whether the device supports the specified DRM solution, MIME type, and content protection level. You can use the [OH_MediaKeySystem_IsSupported2](#oh_mediakeysystem_issupported2) API to check whether the MIME type is supported.
 
 **Since**: 11
 
@@ -233,19 +231,19 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 
 | Name| Description|
 | -- | -- |
-| const char *name | Pointer to the DRM solution name.|
-| const char *mimeType | Pointer to the MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hev.|
-| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) contentProtectionLevel | Content protection level.|
+| const char *name | DRM solution name. This is an input parameter. You can obtain the DRM solution name supported by the device through the [OH_MediaKeySystem_GetMediaKeySystems](#oh_mediakeysystem_getmediakeysystems) API.|
+| const char *mimeType | MIME type, which is an input parameter. The supported MIME types depend on the DRM solution. For example, **video/avc** and **video/hevc**.|
+| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) contentProtectionLevel | Content protection level. This is an input parameter.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| bool |  Check result for the support of the combination. **true** if supported, **false** otherwise.   |
+| bool |  Whether the specified DRM solution, MIME type, and content protection level are supported. If all of them are supported, **true** is returned. Otherwise, **false** is returned.   |
 
 ### OH_MediaKeySystem_Create()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKeySystem)
 ```
 
@@ -271,7 +269,7 @@ Creates a MediaKeySystem instance.
 
 ### OH_MediaKeySystem_SetConfigurationString()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySystem,const char *configName, const char *value)
 ```
 
@@ -298,7 +296,7 @@ Sets a configuration item in the form of a string.
 
 ### OH_MediaKeySystem_GetConfigurationString()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySystem,const char *configName, char *value, int32_t valueLen)
 ```
 
@@ -326,7 +324,7 @@ Obtains the value of a configuration item in the form of a string.
 
 ### OH_MediaKeySystem_SetConfigurationByteArray()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKeySystem,const char *configName, uint8_t *value, int32_t valueLen)
 ```
 
@@ -354,7 +352,7 @@ Sets a configuration item in the form of an array.
 
 ### OH_MediaKeySystem_GetConfigurationByteArray()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKeySystem,const char *configName, uint8_t *value, int32_t *valueLen)
 ```
 
@@ -382,7 +380,7 @@ Obtains the value of a configuration item in the form of an array.
 
 ### OH_MediaKeySystem_GetStatistics()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_Statistics *statistics)
 ```
 
@@ -408,7 +406,7 @@ Obtains the metrics of a media key system.
 
 ### OH_MediaKeySystem_GetMaxContentProtectionLevel()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetMaxContentProtectionLevel(MediaKeySystem *mediaKeySystem,DRM_ContentProtectionLevel *contentProtectionLevel)
 ```
 
@@ -434,7 +432,7 @@ Obtains the maximum content protection level supported by the device.
 
 ### OH_MediaKeySystem_SetMediaKeySystemCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetMediaKeySystemCallback(MediaKeySystem *mediaKeySystem,MediaKeySystem_Callback callback)
 ```
 
@@ -460,7 +458,7 @@ Sets a media key system event callback.
 
 ### OH_MediaKeySystem_CreateMediaKeySession()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_CreateMediaKeySession(MediaKeySystem *mediaKeySystem,DRM_ContentProtectionLevel *level, MediaKeySession **mediaKeySession)
 ```
 
@@ -487,7 +485,7 @@ Creates a MediaKeySession instance.
 
 ### OH_MediaKeySystem_GenerateKeySystemRequest()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeySystem, uint8_t *request,int32_t *requestLen, char *defaultUrl, int32_t defaultUrlLen)
 ```
 
@@ -516,7 +514,7 @@ Generates a request to obtain a device certificate.
 
 ### OH_MediaKeySystem_ProcessKeySystemResponse()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeySystem,uint8_t *response, int32_t responseLen)
 ```
 
@@ -543,7 +541,7 @@ Processes the response to a previously generated device certificate request.
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyIds()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySystem,DRM_OfflineMediakeyIdArray *offlineMediaKeyIds)
 ```
 
@@ -569,7 +567,7 @@ Obtains the list of offline media key IDs, which are used to manage offline medi
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyStatus()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeySystem,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, DRM_OfflineMediaKeyStatus *status)
 ```
 
@@ -597,7 +595,7 @@ Obtains the status of an offline media key.
 
 ### OH_MediaKeySystem_ClearOfflineMediaKeys()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)
 ```
 
@@ -624,7 +622,7 @@ Clears offline media keys with the specified IDs.
 
 ### OH_MediaKeySystem_GetCertificateStatus()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySystem,DRM_CertificateStatus *certStatus)
 ```
 
@@ -650,7 +648,7 @@ Obtains the status of a device certificate.
 
 ### OH_MediaKeySystem_Destroy()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)
 ```
 

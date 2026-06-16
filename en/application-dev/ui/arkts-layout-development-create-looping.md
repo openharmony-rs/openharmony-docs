@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -14,14 +14,14 @@ The **Swiper** component provides a preloading mechanism, which you can use to i
 
 ## Layout and Constraints
 
-The **Swiper** component follows its own size settings if they are configured. If the component does not have its own size settings configured, it follows the size of its parent component when the **prevMargin** or **nextMargin** attribute is set, or adapts its size to its child components otherwise.
+The **Swiper** component follows its own size settings if they are configured. If the component does not have its own size settings configured, it follows the size of its parent component when the [prevMargin](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#prevmargin10) or [nextMargin](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#nextmargin10) attribute is set, or adapts its size to its child components otherwise.
 
 
 ## Loop Playback
 
-The **loop** attribute sets whether to enable loop playback. Its default value is **true**.
+The [loop](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#loop) attribute sets whether to enable loop playback. The default value is **true**.
 
-When **loop** is set to **true**, the user can switch to the previous or next page when they are on the first or last page.  
+When **loop** is set to **true**, the user can switch to the previous or next page when they are on the first or last page. When **loop** is set to **false**, this behavior is disabled.
 
 - Example of setting **loop** to **true**:
 
@@ -73,7 +73,7 @@ When **loop** is set to **true**, the user can switch to the previous or next pa
 
 ## Automatic Playback
 
-The **autoPlay** attribute sets whether to enable automatic playback for child component switching. Its default value is **false**.
+The [autoPlay](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#autoplay) attribute sets whether to enable automatic playback for child component switching. Its default value is **false**.
 
 When **autoPlay** is set to **true**, automatic playback is enabled for child component switching. The playback interval is specified by the **interval** attribute, which is **3000** by default, in milliseconds.
 
@@ -94,7 +94,7 @@ When **autoPlay** is set to **true**, automatic playback is enabled for child co
 
 ## Navigation Indicator
 
-The **Swiper** component comes with default indicator and arrow styles, with the indicators centered at the bottom and arrows hidden.
+The **Swiper** component comes with default indicator and arrow styles, with the indicators centered at the bottom and arrows hidden by default. You can customize the position and style of the indicator using the [indicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicator) attribute.
 
 With the **indicator** attribute, you can set the position of the indicator relative to the edges of the **Swiper** component, in addition to the size, color, and mask of each indicator as well as the color of the selected indicator.
 
@@ -200,7 +200,9 @@ The **Swiper** component supports three page switching modes: swiping with finge
 <!-- @[switch_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperPageSwitchMethod.ets) -->
 
 ``` TypeScript
-@Entry
+
+// To use it as the entry of a page, uncomment @Entry and delete the export keyword.
+// @Entry
 @Component
 export struct SwiperPageSwitchMethod {
   private swiperBackgroundColors: Color[] = [Color.Blue, Color.Brown, Color.Gray, Color.Green, Color.Orange,
@@ -218,7 +220,7 @@ export struct SwiperPageSwitchMethod {
   }
 
   build() {
-    // ···
+    // ...
           Column({ space: 5 }) {
             Swiper(this.swiperController) {
               ForEach(this.swiperBackgroundColors, (backgroundColor: Color, index: number) => {
@@ -230,7 +232,7 @@ export struct SwiperPageSwitchMethod {
                   .fontSize(30)
               })
             }
-            // ···
+            // ...
             .indicator(true)
 
             Row({ space: 12 }) {
@@ -267,7 +269,7 @@ export struct SwiperPageSwitchMethod {
                 })
             }.margin(5)
           }
-        // ···
+          // ...
   }
 
   private toSwiperAnimationModeStr() {
@@ -285,14 +287,14 @@ export struct SwiperPageSwitchMethod {
 }
 ```
 
-![controll](figures/controll.gif)
+![control](figures/control.gif)
 
 
 ## Playback Direction
 
-You can set the playback direction for the Swiper component through its **vertical** attribute.
+The **Swiper** component supports both horizontal and vertical swiping, controlled primarily by the [vertical](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#vertical) attribute.
 
-When **vertical** is set to **true**, vertical swiping is used. The default value of **vertical** is **false**.
+When **vertical** is set to **true**, vertical swiping is used. When **vertical** is set to **false**, horizontal swiping is used. The default value of **vertical** is **false**.
 
 
 - Example of using horizontal swiping:
@@ -381,7 +383,9 @@ Use the [customContentTransition](../reference/apis-arkui/arkui-ts/ts-container-
 <!-- @[customize_transition_animations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperCustomAnimation.ets) -->
 
 ``` TypeScript
-@Entry
+
+// To use it as the entry of a page, uncomment @Entry and delete the export keyword.
+// @Entry
 @Component
 export struct SwiperCustomAnimation {
   private DISPLAY_COUNT: number = 2;
@@ -402,9 +406,9 @@ export struct SwiperCustomAnimation {
   }
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
           Swiper() {
             ForEach(this.backgroundColors, (backgroundColor: Color, index: number) => {
               Text(index.toString())
@@ -451,10 +455,10 @@ export struct SwiperCustomAnimation {
               }
             }
           })
-        // ···
+          // ...
       }
       .width('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -463,7 +467,7 @@ export struct SwiperCustomAnimation {
 
 ## Synchronizing the Swiper with the Tabs
 
-When the selected item in the **Swiper** changes, the new index is passed to the **onSelected** callback. You can then call **tabsController.changeIndex(index)** to synchronize the **Tabs** component.
+Since API version 18, when the selected item in the **Swiper** changes, the new index is passed to the [onSelected](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#onselected18) callback. You can then call [tabsController.changeIndex(index)](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#changeindex) to synchronize the **Tabs** component.
 
 <!-- @[swiper_tabs_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperAndTabsLinkage.ets) -->
 
@@ -491,7 +495,8 @@ class MyDataSource implements IDataSource {
   }
 }
 
-@Entry
+// To use it as the entry of a page, uncomment @Entry and delete the export keyword.
+// @Entry
 @Component
 export struct SwiperAndTabsLinkage {
   @State fontColor: string = '#182431';
@@ -501,6 +506,7 @@ export struct SwiperAndTabsLinkage {
   private tabsController: TabsController = new TabsController();
   private swiperController: SwiperController = new SwiperController();
   private swiperData: MyDataSource = new MyDataSource([]);
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   aboutToAppear(): void {
     for (let i = 0; i <= 9; i++) {
@@ -525,11 +531,13 @@ export struct SwiperAndTabsLinkage {
   }
 
   build() {
-    // ···
+    // ...
           Column() {
             Tabs({ barPosition: BarPosition.Start, controller: this.tabsController }) {
               ForEach(this.list, (index: number) =>{
-                TabContent().tabBar(this.tabBuilder(index, 'Tab ' + this.list[index]))
+                // Configure a resource whose name is 'swiper_text1' and value is a non-empty string in the resources\base\element\string.json file.
+                TabContent().tabBar(this.tabBuilder(index,
+                  this.context.resourceManager.getStringByNameSync('swiper_text1') + this.list[index]))
               })
             }
             .onTabBarClick((index: number) => {
@@ -559,12 +567,12 @@ export struct SwiperAndTabsLinkage {
             }
             .loop(false)
             .onSelected((index: number) => {
-              console.info("onSelected:" + index);
+              console.info('onSelected:' + index);
               this.currentIndex = index;
               this.tabsController.changeIndex(index);
             })
           }
-        // ···
+          // ...
   }
 }
 ```
@@ -572,7 +580,7 @@ export struct SwiperAndTabsLinkage {
 
 ## Setting the Spacing Between Dots
 
-Use the **space** property of **DotIndicator** to set the spacing between dots.
+Since API version 19, use the [space](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#space19) attribute of **DotIndicator** to set the spacing between dots.
 
 <!-- @[dot_indicator_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIgnoreComponentSize.ets) -->
 
@@ -590,7 +598,7 @@ Swiper(
 
 ## Ignoring the Navigation Indicator Component Size
 
-After the bottom of the navigation indicator is set to 0, there is still spacing between the indicator bottom and the **Swiper** bottom. To eliminate this spacing, invoke the **bottom(bottom, ignoreSize)** attribute. Set **ignoreSize** to **true** to ignore the navigation indicator component size.
+After the [bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom) of the navigation point is set to **0**, there is still a certain spacing between the bottom of the navigation point and the bottom of the **Swiper**. To eliminate this spacing, you can call the [bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom19)(bottom, ignoreSize) attribute from API version 19. Set **ignoreSize** to **true** to ignore the navigation indicator component size.
 
 - Ignoring the dot navigation indicator component size:
 
@@ -630,7 +638,7 @@ Complete sample code for setting the dot spacing and ignoring the component size
 
 ``` TypeScript
 import { LengthMetrics } from '@kit.ArkUI';
-// ···
+// ...
 
 
 class MyDataSource implements IDataSource {
@@ -655,7 +663,8 @@ class MyDataSource implements IDataSource {
   }
 }
 
-@Entry
+// To use it as the entry of a page, uncomment @Entry and delete the export keyword.
+// @Entry
 @Component
 export struct SwiperIgnoreComponentSize {
 
@@ -679,7 +688,7 @@ export struct SwiperIgnoreComponentSize {
   }
 
   build() {
-    // ···
+    // ...
           Scroll() {
             Column({ space: 20 }) {
               Swiper(
@@ -726,16 +735,16 @@ export struct SwiperIgnoreComponentSize {
               }.margin(2)
             }.width('100%')
           }
-        // ···
+          // ...
   }
 }
 ```
 
-![controll](figures/indicator_space.gif)
+![indicator_space](figures/indicator_space.gif)
 
 ## Maintaining the Visible Content Position
 
-When using **LazyForEach** to load data (for example, adding data through **onDataAdd**), set the [maintainVisibleContentPosition](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#maintainvisiblecontentposition20) attribute to keep the visible content position stable, preventing view jumps caused by data addition or deletion. The default value is **false**.
+Since API version 20, when using **LazyForEach** to load data (for example, adding data through **onDataAdd**), set the [maintainVisibleContentPosition](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#maintainvisiblecontentposition20) attribute to keep the visible content position stable, preventing view jumps caused by data addition or deletion. The default value is **false**.
 
 When **maintainVisibleContentPosition** is set to **true**, the visible content position remains unchanged when data is inserted or deleted above or before the display area.
 
@@ -787,16 +796,17 @@ class MyDataSource implements IDataSource {
   }
 }
 
-@Entry
+// To use it as the entry of a page, uncomment @Entry and delete the export keyword.
+// @Entry
 @Component
 export struct SwiperVisibleContentPosition {
   private data: MyDataSource = new MyDataSource();
   @State index: number = 3;
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
             Swiper() {
               LazyForEach(this.data, (item: string) => {
                 Text(item.toString())
@@ -812,28 +822,29 @@ export struct SwiperVisibleContentPosition {
             })
             .index(3)
             .maintainVisibleContentPosition(true)
-            // ···
+            // ...
 
             Column({ space: 12 }) {
               Text('index:' + this.index).fontSize(20)
               Row() {
-                // Add data to the position whose LazyForEach index is 0.
+                // Insert data at index 0 of the LazyForEach data source.
                 Button('header data add').height(30).onClick(() => {
                   this.data.addData(0, 'header Data');
                 })
-                // Delete data from the position whose LazyForEach index is 0.
+                // Delete data at index 0 of the LazyForEach data source.
                 Button('header data delete').height(30).onClick(() => {
                   this.data.deleteData(0);
                 })
               }
             }.margin(5)
-            // ···
+            // ...
       }.width('100%')
       .margin({ top: 5 })
-    // ···
+      // ...
   }
 }
 ```
 
-![controll](figures/maintainVisibleContentPosition_true.gif)
+![maintainVisibleContentPosition_true](figures/maintainVisibleContentPosition_true.gif)
 
+<!--RP1--><!--RP1End-->

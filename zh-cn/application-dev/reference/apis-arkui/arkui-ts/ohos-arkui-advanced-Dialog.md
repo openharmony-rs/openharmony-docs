@@ -1,7 +1,7 @@
 #  弹出框 (Dialog)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -14,11 +14,13 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 如果Dialog设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到Dialog本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议Dialog设置通用属性和通用事件。
 
 ## 导入模块
 
-```
+```ts
 import { TipsDialog, SelectDialog, ConfirmDialog, AlertDialog, LoadingDialog, CustomContentDialog } from '@kit.ArkUI';
 ```
 
@@ -45,14 +47,14 @@ TipsDialog({controller: CustomDialogController, imageRes: ResourceStr | PixelMap
 | 名称                          | 类型                                                                                                                                  | 必填 | 装饰器类型 | 说明                                                                                                                                                                  |
 | ----------------------------- |-------------------------------------------------------------------------------------------------------------------------------------| ---- | ---------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | controller                    | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                                                    | 是 | -          | 提示弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                 |
-| imageRes                      | [ResourceStr<sup>12+</sup>](ts-types.md#resourcestr) \| [PixelMap<sup>12+</sup>](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | -          | 展示的图片。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                          |
+| imageRes                      | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | -          | 展示的图片。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                          |
 | imageSize                     | [SizeOptions](ts-types.md#sizeoptions)                                                                                              | 否   | -          | 自定义图片尺寸。<br/>默认值：64*64vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                        |
 | title                         | [ResourceStr](ts-types.md#resourcestr)                                                                                              | 否   | -          | 提示弹出框标题。<br/>默认不设置或设置为undefined，弹出框标题不显示。<br/>  **说明：**  标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                        |
 | content                       | [ResourceStr](ts-types.md#resourcestr)                                                                                              | 否   | -          | 提示弹出框内容。<br/>默认不设置或设置为undefined，弹出框内容不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                       |
 | checkTips                     | [ResourceStr](ts-types.md#resourcestr)                                                                                              | 否   | -          | checkbox的提示内容。<br/>默认不设置或设置为undefined，提示内容不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                  |
 | isChecked                     | boolean                                                                                                                             | 否   | \@Prop     | value为true时，表示checkbox已选中，value为false时，表示未选中。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                     |
 | checkAction<sup>12+</sup>     | (isChecked: boolean) => void                                                                                                        | 否   | -          | checkbox的选中状态改变事件。isChecked为true时，表示checkbox已选中，isChecked为false时，表示checkbox未选中。现推荐使用onCheckedChange<sup>12+</sup>。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| onCheckedChange<sup>12+</sup> | [Callback](ts-types.md#callback12)\<boolean>                                                                                        | 否   | -          | checkbox的选中状态改变事件。value为Callback\<true>时，表示checkbox已选中，isChecked为Callback\<false>时，表示checkbox未选中。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。               |
+| onCheckedChange<sup>12+</sup> | [Callback](ts-types.md#callback12)\<boolean>                                                                                        | 否   | -          | checkbox的选中状态改变事件回调。回调参数类型为boolean，true表示checkbox已选中，false表示checkbox未选中。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。               |
 | primaryButton                 | [ButtonOptions](#buttonoptions)                                                                                                     | 否   | -          | 提示弹出框左侧按钮。<br/>默认不设置或设置为undefined，左侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                              |
 | secondaryButton               | [ButtonOptions](#buttonoptions)                                                                                                     | 否   | -          | 提示弹出框右侧按钮。<br/>默认不设置或设置为undefined，右侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                   |
 | theme<sup>12+</sup>           | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme)                                    | 否   | -          | 主题信息，可以是CustomTheme或从onWillApplyTheme中获取的Theme实例。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                               |
@@ -96,7 +98,7 @@ ConfirmDialog({controller: CustomDialogController, title: ResourceStr, content?:
 | content                       | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | -          | 确认弹出框内容。<br/>默认不设置或设置为undefined，确认弹出框内容不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                  |
 | checkTips                     | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | -          | checkbox的提示内容。<br/>默认不设置或设置为undefined，checkbox的提示内容不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                   |
 | isChecked                     | boolean                                                                                          | 否   | \@Prop     | value为true时，表示checkbox已选中，value为false时，表示未选中。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                      |
-| onCheckedChange<sup>12+</sup> | [Callback](ts-types.md#callback12)\<boolean>                                                     | 否   | -          | checkbox的选中状态改变事件。value为Callback\<true>时，表示checkbox已选中，isChecked为Callback\<false>时，表示checkbox未选中。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| onCheckedChange<sup>12+</sup> | [Callback](ts-types.md#callback12)\<boolean>                                                     | 否   | -          | checkbox的选中状态改变事件回调。回调参数类型为boolean，true表示checkbox已选中，false表示checkbox未选中。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | primaryButton                 | [ButtonOptions](#buttonoptions)                                                                  | 否   | -          | 确认弹出框左侧按钮。<br/>默认不设置或设置为undefined，确认弹出框左侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                         |
 | secondaryButton               | [ButtonOptions](#buttonoptions)                                                                  | 否   | -          | 确认弹出框右侧按钮。<br/>默认不设置或设置为undefined，确认弹出框右侧按钮不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                         |
 | theme<sup>12+</sup>           | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | 否   | -          | 主题信息，可以是CustomTheme或从onWillApplyTheme中获取的Theme实例。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                |
@@ -127,7 +129,7 @@ AlertDialog({controller: CustomDialogController, primaryTitle?: ResourceStr, sec
 
 ## LoadingDialog
 
-LoadingDialog({controller: CustomDialogController, content?: ResourceStr, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
+LoadingDialog({Controller: CustomDialogController, content?: ResourceStr, theme?: Theme | CustomTheme, themeColorMode?: ThemeColorMode})
 
 进度加载类弹出框，用于显示操作执行中的提示信息。
 
@@ -137,7 +139,7 @@ LoadingDialog({controller: CustomDialogController, content?: ResourceStr, theme?
 
 | 名称                | 类型                                                                                               | 必填 | 说明                                                                                                    |
 | ------------------- |--------------------------------------------------------------------------------------------------| ---- |-------------------------------------------------------------------------------------------------------|
-| controller         | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | 加载弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| Controller         | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                 | 是 | 加载弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | content             | [ResourceStr](ts-types.md#resourcestr)                                                           | 否   | 加载弹出框内容。<br/> 默认不设置或设置为undefined，加载弹出框内容不显示。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
 | theme<sup>12+</sup> | [Theme](../js-apis-arkui-theme.md#theme) \| [CustomTheme](../js-apis-arkui-theme.md#customtheme) | 否   | 主题信息，可以是CustomTheme或从onWillApplyTheme中获取的Theme实例。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | themeColorMode<sup>12+</sup> | [ThemeColorMode](ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)                                | 否 | 自定义弹出框深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
@@ -187,7 +189,7 @@ PopoverDialog({visible: boolean, popover: PopoverOptions, targetBuilder: Callbac
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| visible | boolean | 是 | \@Link | 跟手弹出框显示状态。value为true时，表示显示弹出框，value为false时，表示隐藏弹出框。<br/>默认值为false，隐藏弹出框。 |
+| visible | boolean | 是 | \@Link | 跟手弹出框显示状态。visible为true时，表示显示弹出框，visible为false时，表示隐藏弹出框。<br/>默认值为false，隐藏弹出框。 |
 | popover | [PopoverOptions](#popoveroptions14) | 是 | \@Prop<br/>\@Require | 配置跟手弹出框的参数。 |
 | targetBuilder | [Callback](ts-types.md#callback12)\<void> | 是 | \@Require<br/>\@BuilderParam | 跟手弹出框基于的目标组件。 |
 
@@ -205,6 +207,7 @@ PopoverDialog({visible: boolean, popover: PopoverOptions, targetBuilder: Callbac
 | buttonStyle<sup>12+</sup> | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否 | 是 | 按钮的样式。<br/>默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | role<sup>12+</sup>        | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明) | 否 | 是 | 按钮的角色。<br/>默认值：ButtonRole.NORMAL<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                          |
 | defaultFocus<sup>18+</sup> | boolean | 否 | 是 | 按钮是否设置默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br/>默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。          |
+| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 按钮文本的对齐方式。<br/>默认值：TextAlign.Start <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。          |
 
 >  **说明：**
 >
@@ -295,7 +298,7 @@ import { SelectDialog } from '@kit.ArkUI';
 @Component
 struct Index {
   // 设置默认选中radio的index
-  radioIndex = 0;
+  radioIndex: number = 0;
   dialogControllerList: CustomDialogController = new CustomDialogController({
     builder: SelectDialog({
       title: '文本标题',
@@ -360,7 +363,7 @@ import { ConfirmDialog } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  isChecked = false;
+  isChecked: boolean = false;
   dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
     builder: ConfirmDialog({
       title: '文本标题',
@@ -575,7 +578,7 @@ struct Index {
   dialogController: CustomDialogController = new CustomDialogController({
     builder: LoadingDialog({
       content: 'Text',
-      themeColorMode: ThemeColorMode.DARK, //设置弹出框深浅色模式为深色模式
+      themeColorMode: ThemeColorMode.DARK, // 设置弹出框深浅色模式为深色模式
     })
   });
 
@@ -742,7 +745,7 @@ struct Index {
       },
       secondaryButton: {
         value: 'TRUE',
-        defaultFocus: true, //设置该按钮为默认获焦按钮。
+        defaultFocus: true, // 设置该按钮为默认获焦按钮。
         action: () => {}
       },
     })

@@ -7,13 +7,17 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_KeyMaterialDh {...}
+```
+
 ## Overview
 
-Defines the struct of a Diffie-Hellman (DH) key.
+Defines the struct for a DH key.
 
 **Since**: 9
 
-**Related module:** [HuksTypeApi](capi-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-hukstypeapi.md)
 
 **Header file**: [native_huks_type.h](capi-native-huks-type-h.md)
 
@@ -27,4 +31,4 @@ Defines the struct of a Diffie-Hellman (DH) key.
 | uint32_t keySize | Length of the DH key.|
 | uint32_t pubKeySize | Length of the public key.|
 | uint32_t priKeySize | Length of the private key.|
-| uint32_t reserved | Reserved.|
+| uint32_t reserved | Reserved field.|

@@ -1,4 +1,10 @@
-# 地理围栏开发指导(ArkTS)
+# 基于设备自身定位的地理围栏开发指导
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
 
 ## 场景概述
 
@@ -10,7 +16,7 @@
 
 ## 接口说明
 
-地理围栏所使用的接口如下，详细说明参见：[Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
+地理围栏所使用的接口如下，详细说明参见Location Kit：[@ohos.geoLocationManager (位置服务)](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |

@@ -7,6 +7,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+A utility class that provides only static methods to convert data structs defined in other modules and [common2D](js-apis-graphics-common2D.md).
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -16,8 +18,6 @@
 > - This module uses the physical pixel unit, px.
 >
 > - The module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
-
-A utility class that provides only static methods to convert data structs defined in other modules and [common2D](js-apis-graphics-common2D.md).
 
 ## Modules to Import
 

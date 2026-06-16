@@ -5,11 +5,16 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:20:31.742Z pushedAt=2026-06-12T02:47:37.894Z -->
+
+```c
+typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallback
+```
 
 ## Overview
 
-Defines the structure of interceptor callback events, including mouse events, touch events, and axis events.
+Defines the interceptor callback event structure, which is used to define the callback function types required for input event interception. Mouse interception events, touch input events, key events, and axis events are supported.
 
 **Since**: 12
 
@@ -23,27 +28,24 @@ Defines the structure of interceptor callback events, including mouse events, to
 
 | Name| Description|
 | -- | -- |
-| Input_MouseEventCallback mouseCallback | Callback for mouse events.<br>**Since**: 12|
-| Input_TouchEventCallback touchCallback | Callback used to return the touch event.<br>**Since**: 12|
-| Input_AxisEventCallback axisCallback | Callback for axis events.<br>**Since**: 12|
-
+| [Input_MouseEventCallback()](#input_mouseeventcallback) mouseCallback | Callback for mouse events.|
+| [Input_TouchEventCallback()](#input_toucheventcallback) touchCallback | Callback used to return the touch event.|
+| [Input_AxisEventCallback()](#input_axiseventcallback) axisCallback | Callback for axis events.|
 
 ### Member functions
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)](#input_keyeventcallback) | Input_KeyEventCallback() | Defines the lifecycle callback for **keyEvent**. If the callback is triggered, **keyEvent** will be destroyed.<br>**Since**: 12|
-| [typedef void (\*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)](#input_mouseeventcallback) | Input_MouseEventCallback() | Defines the lifecycle callback for **mouseEvent**. If the callback is triggered, **mouseEvent** will be destroyed.<br>**Since**: 12|
-| [typedef void (\*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)](#input_toucheventcallback) | Input_TouchEventCallback() | Defines the lifecycle callback for **touchEvent**. If the callback is triggered, **touchEvent** will be destroyed.<br>**Since**: 12|
-| [typedef void (\*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)](#input_axiseventcallback) | Input_AxisEventCallback() | Defines the lifecycle callback for **axisEvent**. If the callback is triggered, **axisEvent** will be destroyed.<br>**Since**: 12|
-| [typedef void (\*Input_DeviceAddedCallback)(int32_t deviceId)](#input_deviceaddedcallback) | Input_DeviceAddedCallback() | Defines the callback used to receive device insertion events.<br>**Since**: 13|
-| [typedef void (\*Input_DeviceRemovedCallback)(int32_t deviceId)](#input_deviceremovedcallback) | Input_DeviceRemovedCallback() | Defines the callback used to receive device removal events.<br>**Since**: 13|
+| [typedef void (\*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)](#input_keyeventcallback) | Input_KeyEventCallback() | Defines the lifecycle callback for **keyEvent**. If the callback is triggered, **keyEvent** will be destroyed.|
+| [typedef void (\*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)](#input_mouseeventcallback) | Input_MouseEventCallback() | Defines the lifecycle callback for **mouseEvent**. If the callback is triggered, **mouseEvent** will be destroyed.|
+| [typedef void (\*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)](#input_toucheventcallback) | Input_TouchEventCallback() | Defines the lifecycle callback for **touchEvent**. If the callback is triggered, **touchEvent** will be destroyed.|
+| [typedef void (\*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)](#input_axiseventcallback) | Input_AxisEventCallback() | Defines the lifecycle callback for **axisEvent**. If the callback is triggered, **axisEvent** will be destroyed.|
 
 ## Member Function Description
 
 ### Input_KeyEventCallback()
 
-```
+```c
 typedef void (*Input_KeyEventCallback)(const Input_KeyEvent* keyEvent)
 ```
 
@@ -61,7 +63,7 @@ Defines the lifecycle callback for **keyEvent**. If the callback is triggered, *
 
 ### Input_MouseEventCallback()
 
-```
+```c
 typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)
 ```
 
@@ -79,7 +81,7 @@ Defines the lifecycle callback for **mouseEvent**. If the callback is triggered,
 
 ### Input_TouchEventCallback()
 
-```
+```c
 typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)
 ```
 
@@ -97,7 +99,7 @@ Defines the lifecycle callback for **touchEvent**. If the callback is triggered,
 
 ### Input_AxisEventCallback()
 
-```
+```c
 typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)
 ```
 
@@ -112,39 +114,3 @@ Defines the lifecycle callback for **axisEvent**. If the callback is triggered, 
 | Name| Description|
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object.|
-
-### Input_DeviceAddedCallback()
-
-```
-typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
-```
-
-**Description**
-
-Defines the callback used to receive device insertion events.
-
-**Since**: 13
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| int32_t deviceId | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
-
-### Input_DeviceRemovedCallback()
-
-```
-typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
-```
-
-**Description**
-
-Defines the callback used to receive device removal events.
-
-**Since**: 13
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| int32_t deviceId | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|

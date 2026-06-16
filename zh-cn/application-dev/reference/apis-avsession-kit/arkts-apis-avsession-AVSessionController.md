@@ -1,22 +1,23 @@
 # Interface (AVSessionController)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+
+AVSessionController控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 10开始支持。
 
-AVSessionController控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
-
 ## 导入模块
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## 属性
@@ -33,7 +34,7 @@ import { avSession } from '@kit.AVSessionKit';
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+// Index.ets
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -50,10 +51,8 @@ struct Index {
     avSession.createAVSession(this.getUIContext().getHostContext(), this.tag, "audio").then(async (data: avSession.AVSession) => {
       this.currentAVSession = data;
       this.sessionId = this.currentAVSession.sessionId;
-      this.AVSessionController = await this.currentAVSession.getController();
-      console.info('CreateAVSession :  SUCCESS :sessionId = ${this.sessionId}');
-    }).catch((err: BusinessError) => {
-      console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
+      this.avsessionController = await this.currentAVSession.getController();
+      console.info(`Succeeded in creating AV session, sessionId: ${this.sessionId}`);
     });
   }
 
@@ -97,14 +96,12 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
+avcontroller.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
   if (err) {
-    console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getAVPlaybackState : SUCCESS');
+    console.error(`Failed to get AV playback state, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in getting AV playback state.');
 });
 ```
 
@@ -122,7 +119,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 
 | 类型                                                        | 说明                                                         |
 | --------- | ------------------------------------------------------------ |
-| Promise<[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>  | Promise对象。返回远端播放状态。  |
+| Promise<[AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)\>  | Promise对象,返回远端播放状态。  |
 
 **错误码：**
 
@@ -137,12 +134,8 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
-  console.info('getAVPlaybackState : SUCCESS');
-}).catch((err: BusinessError) => {
-  console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
+  console.info('Succeeded in getting AV playback state.');
 });
 ```
 
@@ -175,12 +168,8 @@ getAVMetadata(): Promise\<AVMetadata>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getAVMetadata().then((metadata: avSession.AVMetadata) => {
-  console.info(`GetAVMetadata : SUCCESS : assetId : ${metadata.assetId}`);
-}).catch((err: BusinessError) => {
-  console.error(`GetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.getAVMetadata().then((metadata: avSession.AVMetadata) => {
+  console.info(`Succeeded in getting AV metadata, assetId: ${metadata.assetId}`);
 });
 ```
 
@@ -211,14 +200,12 @@ getAVMetadata(callback: AsyncCallback\<AVMetadata>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getAVMetadata((err: BusinessError, metadata: avSession.AVMetadata) => {
+avcontroller.getAVMetadata((err: BusinessError, metadata: avSession.AVMetadata) => {
   if (err) {
-    console.error(`GetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`GetAVMetadata : SUCCESS : assetId : ${metadata.assetId}`);
+    console.error(`Failed to get AV metadata, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in getting AV metadata, assetId: ${metadata.assetId}`);
 });
 ```
 
@@ -251,12 +238,8 @@ getAVQueueTitle(): Promise\<string>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getAVQueueTitle().then((title: string) => {
-  console.info(`GetAVQueueTitle : SUCCESS : title : ${title}`);
-}).catch((err: BusinessError) => {
-  console.error(`GetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.getAVQueueTitle().then((title: string) => {
+  console.info(`Succeeded in getting AV queue title: ${title}`);
 });
 ```
 
@@ -287,14 +270,12 @@ getAVQueueTitle(callback: AsyncCallback\<string>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getAVQueueTitle((err: BusinessError, title: string) => {
+avcontroller.getAVQueueTitle((err: BusinessError, title: string) => {
   if (err) {
-    console.error(`GetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`GetAVQueueTitle : SUCCESS : title : ${title}`);
+    console.error(`Failed to get AV queue title, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in getting AV queue title: ${title}`);
 });
 ```
 
@@ -327,12 +308,8 @@ getAVQueueItems(): Promise\<Array\<AVQueueItem>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
-  console.info(`GetAVQueueItems : SUCCESS : length : ${items.length}`);
-}).catch((err: BusinessError) => {
-  console.error(`GetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
+  console.info(`Succeeded in getting AV queue items, length: ${items.length}`);
 });
 ```
 
@@ -363,14 +340,12 @@ getAVQueueItems(callback: AsyncCallback\<Array\<AVQueueItem>>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getAVQueueItems((err: BusinessError, items: avSession.AVQueueItem[]) => {
+avcontroller.getAVQueueItems((err: BusinessError, items: avSession.AVQueueItem[]) => {
   if (err) {
-    console.error(`GetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`GetAVQueueItems : SUCCESS : length : ${items.length}`);
+    console.error(`Failed to get AV queue items, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in getting AV queue items, length: ${items.length}`);
 });
 ```
 
@@ -398,7 +373,7 @@ skipToQueueItem(itemId: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -410,13 +385,9 @@ skipToQueueItem(itemId: number): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let queueItemId = 0;
-avsessionController.skipToQueueItem(queueItemId).then(() => {
-  console.info('SkipToQueueItem successfully');
-}).catch((err: BusinessError) => {
-  console.error(`SkipToQueueItem BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.skipToQueueItem(queueItemId).then(() => {
+  console.info('Succeeded in skipping to queue item.');
 });
 ```
 
@@ -437,7 +408,7 @@ skipToQueueItem(itemId: number, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -449,15 +420,13 @@ skipToQueueItem(itemId: number, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let queueItemId = 0;
-avsessionController.skipToQueueItem(queueItemId, (err: BusinessError) => {
+avcontroller.skipToQueueItem(queueItemId, (err: BusinessError) => {
   if (err) {
-    console.error(`SkipToQueueItem BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('SkipToQueueItem successfully');
+    console.error(`Failed to skip to queue item, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in skipping to queue item.');
 });
 ```
 
@@ -489,12 +458,8 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getOutputDevice().then((deviceInfo: avSession.OutputDeviceInfo) => {
-  console.info('GetOutputDevice : SUCCESS');
-}).catch((err: BusinessError) => {
-  console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.getOutputDevice().then((deviceInfo: avSession.OutputDeviceInfo) => {
+  console.info('Succeeded in getting output device.');
 });
 ```
 
@@ -524,14 +489,12 @@ getOutputDevice(callback: AsyncCallback\<OutputDeviceInfo>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getOutputDevice((err: BusinessError, deviceInfo: avSession.OutputDeviceInfo) => {
+avcontroller.getOutputDevice((err: BusinessError, deviceInfo: avSession.OutputDeviceInfo) => {
   if (err) {
-    console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('GetOutputDevice : SUCCESS');
+    console.error(`Failed to get output device, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in getting output device.');
 });
 ```
 
@@ -553,7 +516,7 @@ sendAVKeyEvent(event: KeyEvent): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -574,16 +537,12 @@ sendAVKeyEvent(event: KeyEvent): Promise\<void>
 
 ```ts
 import { Key, KeyEvent } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyItem: Key = {code:0x49, pressedTime:2, deviceId:0};
 let event:KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
-
-avsessionController.sendAVKeyEvent(event).then(() => {
-  console.info('SendAVKeyEvent Successfully');
-}).catch((err: BusinessError) => {
-  console.error(`SendAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.sendAVKeyEvent(event).then(() => {
+  console.info('Succeeded in sending AV key event.');
 });
 ```
 
@@ -604,7 +563,7 @@ sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -623,12 +582,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyItem: Key = {code:0x49, pressedTime:2, deviceId:0};
 let event:KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
-avsessionController.sendAVKeyEvent(event, (err: BusinessError) => {
+avcontroller.sendAVKeyEvent(event, (err: BusinessError) => {
   if (err) {
-    console.error(`SendAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('SendAVKeyEvent Successfully');
+    console.error(`Failed to send AV key event, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in sending AV key event.');
 });
 ```
 
@@ -661,12 +620,8 @@ getLaunchAbility(): Promise\<WantAgent>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getLaunchAbility().then((agent: object) => {
-  console.info(`GetLaunchAbility : SUCCESS : wantAgent : ${agent}`);
-}).catch((err: BusinessError) => {
-  console.error(`GetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.getLaunchAbility().then((agent: object) => {
+  console.info(`Succeeded in getting launch ability: ${agent}`);
 });
 ```
 
@@ -697,14 +652,12 @@ getLaunchAbility(callback: AsyncCallback\<WantAgent>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getLaunchAbility((err: BusinessError, agent: object) => {
+avcontroller.getLaunchAbility((err: BusinessError, agent: object) => {
   if (err) {
-    console.error(`GetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`GetLaunchAbility : SUCCESS : wantAgent : ${agent}`);
+    console.error(`Failed to get launch ability, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in getting launch ability: ${agent}`);
 });
 ```
 
@@ -736,7 +689,7 @@ getRealPlaybackPositionSync(): number
 **示例：**
 
 ```ts
-let time: number = avsessionController.getRealPlaybackPositionSync();
+let time: number = avcontroller.getRealPlaybackPositionSync();
 ```
 
 ## isActive<sup>10+</sup>
@@ -768,12 +721,8 @@ isActive(): Promise\<boolean>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.isActive().then((isActive: boolean) => {
-  console.info(`IsActive : SUCCESS : isactive : ${isActive}`);
-}).catch((err: BusinessError) => {
-  console.error(`IsActive BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.isActive().then((isActive: boolean) => {
+  console.info(`Succeeded in checking active state: ${isActive}`);
 });
 ```
 
@@ -804,14 +753,12 @@ isActive(callback: AsyncCallback\<boolean>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.isActive((err: BusinessError, isActive: boolean) => {
+avcontroller.isActive((err: BusinessError, isActive: boolean) => {
   if (err) {
-    console.error(`IsActive BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`IsActive : SUCCESS : isactive : ${isActive}`);
+    console.error(`Failed to check active state, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in checking active state: ${isActive}`);
 });
 ```
 
@@ -843,12 +790,8 @@ destroy(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.destroy().then(() => {
-  console.info('Destroy : SUCCESS ');
-}).catch((err: BusinessError) => {
-  console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.destroy().then(() => {
+  console.info('Succeeded in destroying.');
 });
 ```
 
@@ -878,14 +821,12 @@ destroy(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.destroy((err: BusinessError) => {
+avcontroller.destroy((err: BusinessError) => {
   if (err) {
-    console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Destroy : SUCCESS ');
+    console.error(`Failed to destroy controller, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in destroying.');
 });
 ```
 
@@ -918,12 +859,8 @@ getValidCommands(): Promise\<Array\<AVControlCommandType>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getValidCommands().then((validCommands: avSession.AVControlCommandType[]) => {
-  console.info(`GetValidCommands : SUCCESS : size : ${validCommands.length}`);
-}).catch((err: BusinessError) => {
-  console.error(`GetValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.getValidCommands().then((validCommands: avSession.AVControlCommandType[]) => {
+  console.info(`Succeeded in getting valid commands, size: ${validCommands.length}`);
 });
 ```
 
@@ -954,14 +891,12 @@ getValidCommands(callback: AsyncCallback\<Array\<AVControlCommandType>>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getValidCommands((err: BusinessError, validCommands: avSession.AVControlCommandType[]) => {
+avcontroller.getValidCommands((err: BusinessError, validCommands: avSession.AVControlCommandType[]) => {
   if (err) {
-    console.error(`GetValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`GetValidCommands : SUCCESS : size : ${validCommands.length}`);
+    console.error(`Failed to get valid commands, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in getting valid commands, size: ${validCommands.length}`);
 });
 ```
 
@@ -973,7 +908,7 @@ sendControlCommand(command: AVControlCommand): Promise\<void>
 
 > **说明：**
 >
-> 媒体控制方在使用sendControlCommand命令前，需要确保控制对应的媒体会话注册了对应的监听，注册媒体会话相关监听的方法请参见接口[on'play'](arkts-apis-avsession-AVSession.md#onplay10)、[on'pause'](arkts-apis-avsession-AVSession.md#onpause10)等。
+> 媒体控制方在使用sendControlCommand命令前，需要确保控制对应的媒体会话注册了对应的监听，注册媒体会话相关监听的方法请参见接口[on('play')](arkts-apis-avsession-AVSession.md#onplay10)、[on('pause')](arkts-apis-avsession-AVSession.md#onpause10)等。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -993,7 +928,7 @@ sendControlCommand(command: AVControlCommand): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1008,13 +943,9 @@ sendControlCommand(command: AVControlCommand): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let avCommand: avSession.AVControlCommand = {command:'play'};
-avsessionController.sendControlCommand(avCommand).then(() => {
-  console.info('SendControlCommand successfully');
-}).catch((err: BusinessError) => {
-  console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.sendControlCommand(avCommand).then(() => {
+  console.info('Succeeded in sending control command.');
 });
 ```
 
@@ -1026,7 +957,7 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 
 > **说明：**
 >
-> 媒体控制方在使用sendControlCommand命令前，需要确保控制对应的媒体会话注册了对应的监听，注册媒体会话相关监听的方法请参见接口[on'play'](arkts-apis-avsession-AVSession.md#onplay10)、[on'pause'](arkts-apis-avsession-AVSession.md#onpause10)等。
+> 媒体控制方在使用sendControlCommand命令前，需要确保控制对应的媒体会话注册了对应的监听，注册媒体会话相关监听的方法请参见接口[on('play')](arkts-apis-avsession-AVSession.md#onplay10)、[on('pause')](arkts-apis-avsession-AVSession.md#onpause10)等。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1039,7 +970,7 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
@@ -1054,21 +985,19 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let avCommand: avSession.AVControlCommand = {command:'play'};
-avsessionController.sendControlCommand(avCommand, (err: BusinessError) => {
+avcontroller.sendControlCommand(avCommand, (err: BusinessError) => {
   if (err) {
-    console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('SendControlCommand successfully');
+    console.error(`Failed to send control command, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in sending control command.');
 });
 ```
 
 ## sendCommonCommand<sup>10+</sup>
 
-sendCommonCommand(command: string, args: Record\<string, Object>): Promise\<void>
+sendCommonCommand(command: string, args: {[key: string]: Object}): Promise\<void>
 
 通过会话控制器发送自定义控制命令到其对应的会话。结果通过Promise异步回调方式返回。
 
@@ -1081,23 +1010,25 @@ sendCommonCommand(command: string, args: Record\<string, Object>): Promise\<void
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | command | string | 是   | 需要设置的自定义控制命令的名称。 |
-| args |Record\<string, Object> | 是   | 需要传递的控制命令键值对。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}。|
+| args | {[key: string]: Object}  | 是   | 需要传递的控制命令键值对。|
 
 > **说明：**
-> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+>
+> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **返回值：**
 
 | 类型           | 说明                          |
 | -------------- | ----------------------------- |
-| Promise\<void> | Promise对象。当命令发送成功，无返回结果，否则返回错误对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1108,33 +1039,16 @@ sendCommonCommand(command: string, args: Record\<string, Object>): Promise\<void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
 
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
-});
 let commandName = "my_command";
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).sendCommonCommand(commandName, {command : "This is my command"}).then(() => {
-    console.info('SendCommonCommand successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`SendCommonCommand BusinessError: code: ${err.code}, message: ${err.message}`);
-  })
-}
+avcontroller.sendCommonCommand(commandName, {command : "This is my command"}).then(() => {
+  console.info('Succeeded in sending common command.');
+});
 ```
 
 ## sendCommonCommand<sup>10+</sup>
 
-sendCommonCommand(command: string, args: Record\<string, Object>, callback: AsyncCallback\<void>): void
+sendCommonCommand(command: string, args: {[key: string]: Object}, callback: AsyncCallback\<void>): void
 
 通过会话控制器发送自定义命令到其对应的会话。结果通过callback异步回调方式返回。
 
@@ -1145,50 +1059,39 @@ sendCommonCommand(command: string, args: Record\<string, Object>, callback: Asyn
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | command | string | 是   | 需要设置的自定义控制命令的名称。 |
-| args |  Record\<string, Object> | 是   | 需要传递的控制命令键值对。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}。|
+| args |  {[key: string]: Object} | 是   | 需要传递的控制命令键值对。|
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。                     |
 
 > **说明：**
-> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+>
+> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist.     |
 | 6600103  | The session controller does not exist.   |
 | 6600105  | Invalid session command. |
-| 6600106  | The session is not activated.                |
+| 6600106  | The session is not activated. |
 | 6600107  | Too many commands or events. |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
-          
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
-});
+
 let commandName = "my_command";
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).sendCommonCommand(commandName, {command : "This is my command"}, (err: BusinessError) => {
-    if (err) {
-      console.error(`SendCommonCommand BusinessError: code: ${err.code}, message: ${err.message}`);
-    }
-  })
-}
+avcontroller.sendCommonCommand(commandName, {command : "This is my command"}, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to send common command, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in sending common command.');
+})
 ```
 
 ## sendCustomData<sup>20+</sup>
@@ -1226,7 +1129,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+// Index.ets
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1244,10 +1147,7 @@ struct Index {
         this.currentAVSession = data;
         this.sessionId = this.currentAVSession.sessionId;
         this.controller = await this.currentAVSession.getController();
-        console.info(`CreateAVSession : SUCCESS :sessionId = ${this.sessionId}`);
-      })
-      .catch((err: BusinessError) => {
-        console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
+        console.info(`Succeeded in creating AV session, sessionId: ${this.sessionId}`);
       });
 
     if (this.controller !== undefined) {
@@ -1270,7 +1170,7 @@ struct Index {
 
 ## getExtras<sup>10+</sup>
 
-getExtras(): Promise\<Record\<string, Object>>
+getExtras(): Promise\<{[key: string]: Object}>
 
 获取媒体提供方设置的自定义媒体数据包。使用Promise异步回调。
 
@@ -1282,14 +1182,15 @@ getExtras(): Promise\<Record\<string, Object>>
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-| Promise\<Record\<string, Object>>  | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 20开始发生兼容变更，在API version 19及之前的版本其返回值类型为：Promise\<{[key: string]: Object}>。 |
+| Promise\<{[key: string]: Object}> | Promise对象，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1299,7 +1200,7 @@ getExtras(): Promise\<Record\<string, Object>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+// Index.ets
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1318,15 +1219,11 @@ struct Index {
         this.currentAVSession = data;
         this.sessionId = this.currentAVSession.sessionId;
         this.controller = await this.currentAVSession.getController();
-        console.info(`CreateAVSession : SUCCESS :sessionId = ${this.sessionId}`);
-      }).catch((err: BusinessError) => {
-      console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
-    });
+        console.info(`Succeeded in creating AV session, sessionId: ${this.sessionId}`);
+      });
     if (this.controller !== undefined) {
       (this.controller as avSession.AVSessionController).getExtras().then((extras) => {
-        console.info(`getExtras : SUCCESS : ${extras}`);
-      }).catch((err: BusinessError) => {
-        console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
+        console.info(`Succeeded in getting extras: ${extras}`);
       });
     }
   }
@@ -1346,7 +1243,7 @@ struct Index {
 
 ## getExtras<sup>10+</sup>
 
-getExtras(callback: AsyncCallback\<Record\<string, Object>>): void
+getExtras(callback: AsyncCallback\<{[key: string]: Object}>): void
 
 获取媒体提供方设置的自定义媒体数据包。使用callback异步回调。
 
@@ -1356,14 +1253,15 @@ getExtras(callback: AsyncCallback\<Record\<string, Object>>): void
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| callback | AsyncCallback\<Record\<string, Object>> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 <br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：AsyncCallback\<{[key: string]: Object}>。 |
+| callback | AsyncCallback\<{[key: string]: Object}> | 是   | 回调函数，返回媒体提供方设置的自定义媒体数据包，数据包的内容与setExtras设置的内容完全一致。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 | 6600103  | The session controller does not exist. |
@@ -1373,36 +1271,20 @@ getExtras(callback: AsyncCallback\<Record\<string, Object>>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
-
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
+avcontroller.getExtras((err: BusinessError, extras) => {
+  if (err) {
+    console.error(`Failed to get extras, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting extras: ${extras}`);
 });
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).getExtras((err, extras) => {
-    if (err) {
-      console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`getExtras : SUCCESS : ${extras}`);
-    }
-  });
-}
 ```
 
 ## getExtrasWithEvent<sup>18+</sup>
 
 getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
-根据远端分布式事件类型，获取远端分布式媒体提供方设置的自定义媒体数据包。结果通过Promise异步回调方式返回。
+根据远端分布式事件类型，获取远端分布式媒体提供方设置的自定义媒体数据包。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -1410,13 +1292,13 @@ getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| extraEvent | string | 是 | 远端分布式事件类型。<br>当前支持的事件类型包括：<br>'AUDIO_GET_VOLUME'：获取远端设备音量，<br>'AUDIO_GET_AVAILABLE_DEVICES'：获取远端所有可连接设备，<br>'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO'：获取远端实际发声设备。 |
+| extraEvent | string | 是 |  远端分布式事件类型。可获取的事件类型来自于[setExtras](arkts-apis-avsession-AVSession.md#setextras10)。<br>对Wearable设备类型，额外提供以下预设的事件类型：<br>'AUDIO_GET_VOLUME'：获取远端设备音量。<br>'AUDIO_GET_AVAILABLE_DEVICES'：获取远端所有可连接设备。<br>'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO'：获取远端实际发声设备。 |
 
 **返回值：**
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-| Promise<[ExtraInfo](arkts-apis-avsession-t.md#extrainfo18)\>   | Promise对象，返回远端分布式媒体提供方设置的自定义媒体数据包。<br>参数ExtraInfo支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。 |
+| Promise<[ExtraInfo](arkts-apis-avsession-t.md#extrainfo18)\>   | Promise对象，返回远端分布式媒体提供方设置的自定义媒体数据包。<br>参数ExtraInfo支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。 |
 
 **错误码：**
 
@@ -1432,8 +1314,6 @@ getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let controller: avSession.AVSessionController | ESObject;
 const COMMON_COMMAND_STRING_1 = 'AUDIO_GET_VOLUME';
 const COMMON_COMMAND_STRING_2 = 'AUDIO_GET_AVAILABLE_DEVICES';
@@ -1441,27 +1321,395 @@ const COMMON_COMMAND_STRING_3 = 'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_
 if (controller !== undefined) {
   controller.getExtrasWithEvent(COMMON_COMMAND_STRING_1).then(() => {
     console.info(`${[COMMON_COMMAND_STRING_1]}`);
-  }).catch((err: BusinessError) => {
-    console.error(`getExtrasWithEvent failed with err: ${err.code}, ${err.message}`);
   })
 
   controller.getExtrasWithEvent(COMMON_COMMAND_STRING_2).then(() => {
     console.info(`${[COMMON_COMMAND_STRING_2]}`);
-  }).catch((err: BusinessError) => {
-    console.error(`getExtrasWithEvent failed with err: ${err.code}, ${err.message}`);
   })
 
   controller.getExtrasWithEvent(COMMON_COMMAND_STRING_3).then(() => {
     console.info(`${[COMMON_COMMAND_STRING_3]}`);
-  }).catch((err: BusinessError) => {
-    console.error(`getExtrasWithEvent failed with err: ${err.code}, ${err.message}`);
   })
 }
 ```
 
+## isDesktopLyricEnabled<sup>23+</sup>
+
+isDesktopLyricEnabled(): Promise\<boolean>
+
+查询是否启用桌面歌词功能。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<boolean> | Promise对象。返回true表示启用桌面歌词功能；返回false表示不启用桌面歌词功能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+```ts
+avcontroller.isDesktopLyricEnabled();
+```
+
+## onDesktopLyricEnabled<sup>23+</sup>
+
+onDesktopLyricEnabled(callback: Callback\<boolean>): void
+
+桌面歌词功能启用状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 是   | 回调函数。返回true表示桌面歌词功能启用；返回false表示桌面歌词功能未启用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.onDesktopLyricEnabled((enabled: boolean) => {
+  console.info(`desktop lyric enabled state : ${enabled}`);
+})
+```
+
+## offDesktopLyricEnabled<sup>23+</sup>
+
+offDesktopLyricEnabled(callback?: Callback\<boolean>): void
+
+取消桌面歌词启用状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词功能启用状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.offDesktopLyricEnabled();
+```
+
+## setDesktopLyricVisible<sup>23+</sup>
+
+setDesktopLyricVisible(visible: boolean): Promise\<void>
+
+设置当前会话桌面歌词的显示状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明       |
+| ------ | ------ | ---- | ---------- |
+| visible | boolean | 是   | 是否显示桌面歌词。true表示显示；false表示不显示。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> |  Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+avcontroller.setDesktopLyricVisible(true);
+```
+
+## isDesktopLyricVisible<sup>23+</sup>
+
+isDesktopLyricVisible(): Promise\<boolean>
+
+查询当前会话桌面歌词的显示状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<boolean> | Promise对象。返回true表示显示桌面歌词；返回false表示不显示桌面歌词。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+avcontroller.isDesktopLyricVisible();
+```
+
+## onDesktopLyricVisibilityChanged<sup>23+</sup>
+
+onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
+
+显示桌面歌词状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 是   | 回调函数。返回true表示开启显示桌面歌词状态；返回false表示关闭显示桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.onDesktopLyricVisibilityChanged((visible: boolean) => {
+  console.info(`desktop lyric visible state: ${visible}`);
+});
+```
+
+## offDesktopLyricVisibilityChanged<sup>23+</sup>
+
+offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
+
+取消显示桌面歌词状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<boolean> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有显示桌面歌词状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.offDesktopLyricVisibilityChanged();
+```
+
+## setDesktopLyricState<sup>23+</sup>
+
+setDesktopLyricState(state: DesktopLyricState): Promise\<void>
+
+设置当前会话桌面歌词状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明       |
+| ------ | ------ | ---- | ---------- |
+| state | [DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23) | 是   | 桌面歌词状态。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> |  Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+let state: avSession.DesktopLyricState = {
+  isLocked: true,
+};
+avcontroller.setDesktopLyricState(state);
+```
+
+## getDesktopLyricState<sup>23+</sup>
+
+getDesktopLyricState(): Promise\<DesktopLyricState>
+
+获取当前会话桌面歌词状态。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise对象。返回桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
+| 6600110  | The desktop lyrics feature of this application is not enabled. |
+| 6600111  | The desktop lyrics feature is not supported. |
+
+**示例：**
+
+```ts
+avcontroller.getDesktopLyricState();
+```
+
+## onDesktopLyricStateChanged<sup>23+</sup>
+
+onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
+
+桌面歌词状态变更的监听事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 是   | 回调函数。返回桌面歌词状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+  console.info(`desktop lyric isLocked : ${state.isLocked}`);
+})
+```
+
+## offDesktopLyricStateChanged<sup>23+</sup>
+
+offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
+
+取消桌面歌词状态变更事件监听，取消后将不再对该事件进行监听。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有桌面歌词状态变更事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.offDesktopLyricStateChanged();
+```
+
 ## on('metadataChange')<sup>10+</sup>
 
-on(type: 'metadataChange', filter: Array\<string> | 'all', callback: (data: AVMetadata) => void): void
+on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (data: AVMetadata) => void)
 
 设置元数据变化的监听事件。
 
@@ -1476,26 +1724,27 @@ on(type: 'metadataChange', filter: Array\<string> | 'all', callback: (data: AVMe
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'metadataChange'`：当元数据需要更新时，触发该事件。<br>需要更新表示对应属性值被重新设置过，不论新值与旧值是否相同。 |
-| filter   | Array\<string>\|'all' | 是   |'all'表示关注通话状态所有字段变化；Array\<string>表示关注Array中的字段变化。<br>API version 20开始发生兼容变更，在API version 19及之前filter参数类型为：Array\<keyof AVMetadata> \| 'all'。|
+| filter   | Array\<keyof AVMetadata>\|'all' | 是   |'all'表示关注通话状态所有字段变化；Array\<keyof AVMetadata>表示关注Array中的字段变化。|
 | callback | (data: [AVMetadata](arkts-apis-avsession-i.md#avmetadata10)) => void                    | 是   | 回调函数，参数data是需要更新的元数据。只包含需要更新的元数据属性，不代表当前全量的元数据。   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.on('metadataChange', 'all', (metadata: avSession.AVMetadata) => {
+avcontroller.on('metadataChange', 'all', (metadata: avSession.AVMetadata) => {
   console.info(`on metadataChange assetId : ${metadata.assetId}`);
 });
 
-avsessionController.on('metadataChange', ['assetId', 'title', 'description'], (metadata: avSession.AVMetadata) => {
+avcontroller.on('metadataChange', ['assetId', 'title', 'description'], (metadata: avSession.AVMetadata) => {
   console.info(`on metadataChange assetId : ${metadata.assetId}`);
 });
 
@@ -1503,7 +1752,7 @@ avsessionController.on('metadataChange', ['assetId', 'title', 'description'], (m
 
 ## off('metadataChange')<sup>10+</sup>
 
-off(type: 'metadataChange', callback?: (data: AVMetadata) => void): void
+off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
 
 取消元数据变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -1520,22 +1769,23 @@ off(type: 'metadataChange', callback?: (data: AVMetadata) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.off('metadataChange');
+avcontroller.off('metadataChange');
 ```
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
+on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void)
 
 设置播放状态变化的监听事件。
 
@@ -1550,26 +1800,27 @@ on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
 | type     | string    | 是   | 事件回调类型，支持事件`'playbackStateChange'`，当播放状态需要更新时，触发该事件。<br>需要更新表示对应属性值被重新设置过，不论新值与旧值是否相同。 |
-| filter   | Array\<string>\|'all' | 是   | 'all'表示关注播放状态所有字段更新。<br>Array\<string> 表示关注Array中的字段更新。<br>API version 20开始发生兼容变更，在API version 19及之前filter参数类型为：Array\<keyof AVPlaybackstate> \| 'all'。 |
+| filter   | Array\<keyof AVPlaybackState>\|'all' | 是   | 'all'表示关注播放状态所有字段更新。<br>Array\<keyof AVPlaybackstate> 表示关注Array中的字段更新。 |
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void       | 是   | 回调函数，参数state是需要更新的播放状态。只包含需要更新的播放状态属性，并不代表当前全量的播放状态。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
+avcontroller.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 
-avsessionController.on('playbackStateChange', ['state', 'speed', 'loopMode'], (playbackState: avSession.AVPlaybackState) => {
+avcontroller.on('playbackStateChange', ['state', 'speed', 'loopMode'], (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 ```
@@ -1593,22 +1844,23 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.off('playbackStateChange');
+avcontroller.off('playbackStateChange');
 ```
 
 ## on('callMetadataChange')<sup>11+</sup>
 
-on(type: 'callMetadataChange', filter: Array\<string> | 'all', callback: Callback\<CallMetadata>): void
+on(type: 'callMetadataChange', filter: Array\<keyof CallMetadata> | 'all', callback: Callback\<CallMetadata>): void
 
 设置通话元数据变化的监听事件。
 
@@ -1623,12 +1875,12 @@ on(type: 'callMetadataChange', filter: Array\<string> | 'all', callback: Callbac
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
 | type     | string    | 是   | 事件回调类型，支持事件`'callMetadataChange'`：当通话元数据变化时，触发该事件。 |
-| filter   |  Array\<string>\|'all'| 是   |'all'表示关注通话元数据所有字段变化；Array<string\> 表示关注Array中的字段变化。<br>API version 20开始发生兼容变更，在API version 19及之前filter参数类型为：Array\<keyof CallMetadata> \| 'all'。|
+| filter   |  Array\<keyof CallMetadata>\|'all'| 是   |'all'表示关注通话元数据所有字段变化；Array<keyof CallMetadata\> 表示关注Array中的字段变化。\| 'all'。|
 | callback | Callback<[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>   | 是   | 回调函数，参数callmetadata是变化后的通话元数据。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -1639,11 +1891,11 @@ on(type: 'callMetadataChange', filter: Array\<string> | 'all', callback: Callbac
 **示例：**
 
 ```ts
-avsessionController.on('callMetadataChange', 'all', (callmetadata: avSession.CallMetadata) => {
+avcontroller.on('callMetadataChange', 'all', (callmetadata: avSession.CallMetadata) => {
   console.info(`on callMetadataChange state : ${callmetadata.name}`);
 });
 
-avsessionController.on('callMetadataChange', ['name'], (callmetadata: avSession.CallMetadata) => {
+avcontroller.on('callMetadataChange', ['name'], (callmetadata: avSession.CallMetadata) => {
   console.info(`on callMetadataChange state : ${callmetadata.name}`);
 });
 ```
@@ -1667,7 +1919,7 @@ off(type: 'callMetadataChange', callback?: Callback\<CallMetadata>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -1678,12 +1930,12 @@ off(type: 'callMetadataChange', callback?: Callback\<CallMetadata>): void
 **示例：**
 
 ```ts
-avsessionController.off('callMetadataChange');
+avcontroller.off('callMetadataChange');
 ```
 
 ## on('callStateChange')<sup>11+</sup>
 
-on(type: 'callStateChange', filter: Array\<string> | 'all', callback: Callback\<AVCallState>): void
+on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback: Callback\<AVCallState>): void
 
 设置通话状态变化的监听事件。
 
@@ -1698,7 +1950,7 @@ on(type: 'callStateChange', filter: Array\<string> | 'all', callback: Callback\<
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
 | type     | string    | 是   | 事件回调类型，支持事件`'callStateChange'`：当通话状态变化时，触发该事件。 |
-| filter   |  Array\<string>\|'all' | 是   | 'all' 表示关注通话状态所有字段变化；Array\<string>表示关注Array中的字段变化。<br>API version 20开始发生兼容变更，在API version 19及之前filter参数类型为：Array\<keyof AVCallState> \| 'all'。 |
+| filter   |  Array\<keyof AVCallState>\|'all' | 是   | 'all' 表示关注通话状态所有字段变化；Array\<keyof AVCallState>表示关注Array中的字段变化。\| 'all'。 |
 | callback | Callback<[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\>       | 是   | 回调函数，参数callstate是变化后的通话状态。|
 
 **错误码：**
@@ -1714,11 +1966,11 @@ on(type: 'callStateChange', filter: Array\<string> | 'all', callback: Callback\<
 **示例：**
 
 ```ts
-avsessionController.on('callStateChange', 'all', (callstate: avSession.AVCallState) => {
+avcontroller.on('callStateChange', 'all', (callstate: avSession.AVCallState) => {
   console.info(`on callStateChange state : ${callstate.state}`);
 });
 
-avsessionController.on('callStateChange', ['state'], (callstate: avSession.AVCallState) => {
+avcontroller.on('callStateChange', ['state'], (callstate: avSession.AVCallState) => {
   console.info(`on callStateChange state : ${callstate.state}`);
 });
 ```
@@ -1753,12 +2005,12 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 **示例：**
 
 ```ts
-avsessionController.off('callMetadataChange');
+avcontroller.off('callStateChange');
 ``` 
 
 ## on('sessionDestroy')<sup>10+</sup>
 
-on(type: 'sessionDestroy', callback: () => void): void
+on(type: 'sessionDestroy', callback: () => void)
 
 会话销毁的监听事件。
 
@@ -1772,29 +2024,30 @@ on(type: 'sessionDestroy', callback: () => void): void
 
 | 参数名   | 类型       | 必填 | 说明                                                         |
 | -------- | ---------- | ---- | ------------------------------------------------------------ |
-| type     | string     | 是   | 事件回调类型，支持事件`'sessionDestroy'`：当检测到会话销毁时，触发该事件）。 |
+| type     | string     | 是   | 事件回调类型，支持事件`'sessionDestroy'`：当检测到会话销毁时，触发该事件。 |
 | callback | () => void | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。                  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.on('sessionDestroy', () => {
-  console.info('on sessionDestroy : SUCCESS ');
+avcontroller.on('sessionDestroy', () => {
+  console.info('Succeeded in session destroy.');
 });
 ```
 
 ## off('sessionDestroy')<sup>10+</sup>
 
-off(type: 'sessionDestroy', callback?: () => void): void
+off(type: 'sessionDestroy', callback?: () => void)
 
 取消监听会话的销毁事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -1811,22 +2064,23 @@ off(type: 'sessionDestroy', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.off('sessionDestroy');
+avcontroller.off('sessionDestroy');
 ```
 
 ## on('activeStateChange')<sup>10+</sup>
 
-on(type: 'activeStateChange', callback: (isActive: boolean) => void): void
+on(type: 'activeStateChange', callback: (isActive: boolean) => void)
 
 会话的激活状态的监听事件。
 
@@ -1845,24 +2099,25 @@ on(type: 'activeStateChange', callback: (isActive: boolean) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  |The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.on('activeStateChange', (isActive: boolean) => {
-  console.info(`on activeStateChange : SUCCESS : isActive ${isActive}`);
+avcontroller.on('activeStateChange', (isActive: boolean) => {
+  console.info(`Succeeded in active state change: ${isActive}`);
 });
 ```
 
 ## off('activeStateChange')<sup>10+</sup>
 
-off(type: 'activeStateChange', callback?: (isActive: boolean) => void): void
+off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
 
 取消监听会话激活状态变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -1879,22 +2134,23 @@ off(type: 'activeStateChange', callback?: (isActive: boolean) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.off('activeStateChange');
+avcontroller.off('activeStateChange');
 ```
 
 ## on('validCommandChange')<sup>10+</sup>
 
-on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>) => void): void
+on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>) => void)
 
 会话支持的有效命令变化监听事件。
 
@@ -1913,25 +2169,26 @@ on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
-  console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
-  console.info(`validCommandChange : SUCCESS : validCommands : ${validCommands.values()}`);
+avcontroller.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
+  console.info(`Succeeded in valid command change, size: ${validCommands.length}`);
+  console.info(`Succeeded in valid command change, validCommands: ${validCommands.values()}`);
 });
 ```
 
 ## off('validCommandChange')<sup>10+</sup>
 
-off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandType>) => void): void
+off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandType>) => void)
 
 取消监听会话有效命令变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -1948,17 +2205,18 @@ off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandTyp
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.off('validCommandChange');
+avcontroller.off('validCommandChange');
 ```
 
 ## on('outputDeviceChange')<sup>10+</sup>
@@ -1993,7 +2251,7 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 **示例：**
 
 ```ts
-avsessionController.on('outputDeviceChange', (state: avSession.ConnectionState, device: avSession.OutputDeviceInfo) => {
+avcontroller.on('outputDeviceChange', (state: avSession.ConnectionState, device: avSession.OutputDeviceInfo) => {
   console.info(`on outputDeviceChange state: ${state}, device : ${device}`);
 });
 ```
@@ -2028,12 +2286,12 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 **示例：**
 
 ```ts
-avsessionController.off('outputDeviceChange');
+avcontroller.off('outputDeviceChange');
 ```
 
 ## on('sessionEvent')<sup>10+</sup>
 
-on(type: 'sessionEvent', callback: (sessionEvent: string, args: Record\<String, Object>) => void): void
+on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: Object}) => void): void
 
 媒体控制器设置会话自定义事件变化的监听器。
 
@@ -2048,44 +2306,30 @@ on(type: 'sessionEvent', callback: (sessionEvent: string, args: Record\<String, 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'sessionEvent'`：当会话事件变化时，触发该事件。 |
-| callback | (sessionEvent: string, args: Record\<String, Object>) => void         | 是   | 回调函数，sessionEvent为变化的会话事件名，args为事件的参数。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(sessionEvent: string, args: {[key: string]: Object}) => void。|
+| callback | (sessionEvent: string, args: {[key: string]: Object}) => void  | 是   | 回调函数，sessionEvent为变化的会话事件名，args为事件的参数。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
-       
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
+// Index.ets
+avcontroller.on('sessionEvent', (sessionEvent, args) => {
+  console.info(`OnSessionEvent, sessionEvent is ${sessionEvent}, args: ${JSON.stringify(args)}`);
 });
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).on('sessionEvent', (sessionEvent, args) => {
-    console.info(`OnSessionEvent, sessionEvent is ${sessionEvent}, args: ${JSON.stringify(args)}`);
-  });
-}
 ```
 
 ## off('sessionEvent')<sup>10+</sup>
 
-off(type: 'sessionEvent', callback?: (sessionEvent: string, args: Record\<String, Object>) => void): void
+off(type: 'sessionEvent', callback?: (sessionEvent: string, args: {[key: string]: Object}) => void): void
 
 取消会话事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -2098,21 +2342,22 @@ off(type: 'sessionEvent', callback?: (sessionEvent: string, args: Record\<String
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'sessionEvent'`。    |
-| callback | sessionEvent: string, args: Record\<String, Object> => void       | 否   | 回调函数，参数sessionEvent是变化的事件名，args为事件的参数。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(sessionEvent: string, args: {[key: string]: Object}) => void。|
+| callback | (sessionEvent: string, args: {[key: string]: Object}) => void     | 否   | 回调函数，参数sessionEvent是变化的事件名，args为事件的参数。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.off('sessionEvent');
+avcontroller.off('sessionEvent');
 ```
 
 ## on('queueItemsChange')<sup>10+</sup>
@@ -2136,7 +2381,7 @@ on(type: 'queueItemsChange', callback: (items: Array<[AVQueueItem](arkts-apis-av
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -2147,7 +2392,7 @@ on(type: 'queueItemsChange', callback: (items: Array<[AVQueueItem](arkts-apis-av
 **示例：**
 
 ```ts
-avsessionController.on('queueItemsChange', (items: avSession.AVQueueItem[]) => {
+avcontroller.on('queueItemsChange', (items: avSession.AVQueueItem[]) => {
   console.info(`OnQueueItemsChange, items length is ${items.length}`);
 });
 ```
@@ -2171,7 +2416,7 @@ off(type: 'queueItemsChange', callback?: (items: Array<[AVQueueItem](arkts-apis-
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -2182,7 +2427,7 @@ off(type: 'queueItemsChange', callback?: (items: Array<[AVQueueItem](arkts-apis-
 **示例：**
 
 ```ts
-avsessionController.off('queueItemsChange');
+avcontroller.off('queueItemsChange');
 ```
 
 ## on('queueTitleChange')<sup>10+</sup>
@@ -2204,7 +2449,7 @@ on(type: 'queueTitleChange', callback: (title: string) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -2215,7 +2460,7 @@ on(type: 'queueTitleChange', callback: (title: string) => void): void
 **示例：**
 
 ```ts
-avsessionController.on('queueTitleChange', (title: string) => {
+avcontroller.on('queueTitleChange', (title: string) => {
   console.info(`queueTitleChange, title is ${title}`);
 });
 ```
@@ -2239,7 +2484,7 @@ off(type: 'queueTitleChange', callback?: (title: string) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
@@ -2250,12 +2495,12 @@ off(type: 'queueTitleChange', callback?: (title: string) => void): void
 **示例：**
 
 ```ts
-avsessionController.off('queueTitleChange');
+avcontroller.off('queueTitleChange');
 ```
 
 ## on('extrasChange')<sup>10+</sup>
 
-on(type: 'extrasChange', callback: (extras: Record\<string, Object>) => void): void
+on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): void
 
 媒体控制器设置自定义媒体数据包事件变化的监听器。
 
@@ -2268,44 +2513,29 @@ on(type: 'extrasChange', callback: (extras: Record\<string, Object>) => void): v
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'extrasChange'`：当媒体提供方设置自定义媒体数据包时，触发该事件。 |
-| callback | (extras: Record\<string, Object>) => void         | 是   | 回调函数，extras为媒体提供方新设置的自定义媒体数据包，该自定义媒体数据包与dispatchSessionEvent方法设置的数据包完全一致。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(extras: {[key: string]: Object}) => void。|
+| callback |  (extras: {[key: string]: Object}) => void   | 是   | 回调函数，extras为媒体提供方新设置的自定义媒体数据包，该自定义媒体数据包与dispatchSessionEvent方法设置的数据包完全一致。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
-
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
+avcontroller.on('extrasChange', (extras) => {
+  console.info(`Caught extrasChange event,the new extra is: ${JSON.stringify(extras)}`);
 });
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).on('extrasChange', (extras) => {
-    console.info(`Caught extrasChange event,the new extra is: ${JSON.stringify(extras)}`);
-  });
-}
 ```
 
 ## off('extrasChange')<sup>10+</sup>
 
-off(type: 'extrasChange', callback?: (extras: Record\<string, Object>) => void): void
+off(type: 'extrasChange', callback?: (extras: {[key: string]: Object}) => void): void
 
 取消自定义媒体数据包变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -2318,21 +2548,22 @@ off(type: 'extrasChange', callback?: (extras: Record\<string, Object>) => void):
 | 参数名    | 类型                    | 必填 | 说明                                                                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
 | type     | string                  | 是   | 取消对应的监听事件，支持事件`'extrasChange'`。                                                         |
-|  callback | (extras: Record\<string, Object>) => void | 否   | 注册监听事件时的回调函数。<br>该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(extras: {[key: string]: Object}) => void。|
+|  callback |  (extras: {[key: string]: Object}) => void | 否   | 注册监听事件时的回调函数。<br>该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ----------------                       |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-avsessionController.off('extrasChange');
+avcontroller.off('extrasChange');
 ```
 
 ## on('customDataChange')<sup>20+</sup>
@@ -2364,25 +2595,10 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
-
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
-}).catch((err: BusinessError) => {
-  console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
+avcontroller.on('customDataChange', (callback) => {
+  console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
 });
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).on('customDataChange', (callback) => {
-    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
-  });
-}
+
 ```
 
 ## off('customDataChange')<sup>20+</sup>
@@ -2414,7 +2630,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 **示例：**
 
 ```ts
-avsessionController.off('customDataChange');
+avcontroller.off('customDataChange');
 ```
 
 ## getAVPlaybackStateSync<sup>10+</sup>
@@ -2446,14 +2662,7 @@ getAVPlaybackStateSync(): AVPlaybackState;
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let playbackState: avSession.AVPlaybackState = avsessionController.getAVPlaybackStateSync();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getAVPlaybackStateSync error, error code: ${error.code}, error message: ${error.message}`);
-}
+let playbackState: avSession.AVPlaybackState = avcontroller.getAVPlaybackStateSync();
 ```
 
 ## getAVMetadataSync<sup>10+</sup>
@@ -2483,15 +2692,9 @@ getAVMetadataSync(): AVMetadata
 | 6600103  | The session controller does not exist. |
 
 **示例：**
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let metaData: avSession.AVMetadata = avsessionController.getAVMetadataSync();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getAVMetadataSync error, error code: ${error.code}, error message: ${error.message}`);
-}
+```ts
+let metaData: avSession.AVMetadata = avcontroller.getAVMetadataSync();
 ```
 
 ## getAVCallState<sup>11+</sup>
@@ -2521,12 +2724,8 @@ getAVCallState(): Promise\<AVCallState>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getAVCallState().then((callstate: avSession.AVCallState) => {
-  console.info(`getAVCallState : SUCCESS : state : ${callstate.state}`);
-}).catch((err: BusinessError) => {
-  console.error(`getAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.getAVCallState().then((callstate: avSession.AVCallState) => {
+  console.info(`Succeeded in getting AV call state: ${callstate.state}`);
 });
 ```
 
@@ -2557,14 +2756,8 @@ getAVCallState(callback: AsyncCallback\<AVCallState>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getAVCallState((err: BusinessError, callstate: avSession.AVCallState) => {
-  if (err) {
-    console.error(`getAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`getAVCallState : SUCCESS : state : ${callstate.state}`);
-  }
+avcontroller.getAVCallState((err: BusinessError, callstate: avSession.AVCallState) => {
+  console.info(`Succeeded in getting AV call state: ${callstate.state}`);
 });
 ```
 
@@ -2595,12 +2788,8 @@ getCallMetadata(): Promise\<CallMetadata>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getCallMetadata().then((calldata: avSession.CallMetadata) => {
-  console.info(`getCallMetadata : SUCCESS : name : ${calldata.name}`);
-}).catch((err: BusinessError) => {
-  console.error(`getCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
+avcontroller.getCallMetadata().then((calldata: avSession.CallMetadata) => {
+  console.info(`Succeeded in getting call metadata, name: ${calldata.name}`);
 });
 ```
 
@@ -2631,14 +2820,8 @@ getCallMetadata(callback: AsyncCallback\<CallMetadata>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avsessionController.getCallMetadata((err: BusinessError, calldata: avSession.CallMetadata) => {
-  if (err) {
-    console.error(`getCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`getCallMetadata : SUCCESS : name : ${calldata.name}`);
-  }
+avcontroller.getCallMetadata((calldata: avSession.CallMetadata) => {
+  console.info(`Succeeded in getting call metadata, name: ${calldata.name}`);
 });
 ```
 
@@ -2671,14 +2854,7 @@ getAVQueueTitleSync(): string
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let currentQueueTitle: string = avsessionController.getAVQueueTitleSync();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getAVQueueTitleSync error, error code: ${error.code}, error message: ${error.message}`);
-}
+let currentQueueTitle: string = avcontroller.getAVQueueTitleSync();
 ```
 
 ## getAVQueueItemsSync<sup>10+</sup>
@@ -2710,14 +2886,7 @@ getAVQueueItemsSync(): Array\<AVQueueItem\>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let currentQueueItems: Array<avSession.AVQueueItem> = avsessionController.getAVQueueItemsSync();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getAVQueueItemsSync error, error code: ${error.code}, error message: ${error.message}`);
-}
+let currentQueueItems: Array<avSession.AVQueueItem> = avcontroller.getAVQueueItemsSync();
 ```
 
 ## getOutputDeviceSync<sup>10+</sup>
@@ -2748,14 +2917,7 @@ getOutputDeviceSync(): OutputDeviceInfo
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let currentOutputDevice: avSession.OutputDeviceInfo = avsessionController.getOutputDeviceSync();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getOutputDeviceSync error, error code: ${error.code}, error message: ${error.message}`);
-}
+let currentOutputDevice: avSession.OutputDeviceInfo = avcontroller.getOutputDeviceSync();
 ```
 
 ## isActiveSync<sup>10+</sup>
@@ -2787,14 +2949,7 @@ isActiveSync(): boolean
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let isActive: boolean = avsessionController.isActiveSync();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`isActiveSync error, error code: ${error.code}, error message: ${error.message}`);
-}
+let isActive: boolean = avcontroller.isActiveSync();
 ```
 
 ## getValidCommandsSync<sup>10+</sup>
@@ -2826,12 +2981,344 @@ getValidCommandsSync(): Array\<AVControlCommandType\>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+let validCommands: Array<avSession.AVControlCommandType> = avcontroller.getValidCommandsSync();
+```
 
-try {
-  let validCommands: Array<avSession.AVControlCommandType> = avsessionController.getValidCommandsSync();
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`getValidCommandsSync error, error code: ${error.code}, error message: ${error.message}`);
-}
+## getSupportedPlaySpeeds
+
+getSupportedPlaySpeeds(): Promise\<Array\<number>>
+
+获取应用支持的播放倍速列表。使用Promise异步回调。
+
+该列表通过[setSupportedPlaySpeeds](arkts-apis-avsession-AVSession.md#setsupportedplayspeeds)接口设置。如果应用未设置或者设置为空列表，则返回空列表。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<Array\<number>> | Promise对象。返回支持的播放倍速列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.getSupportedPlaySpeeds().then((speeds: number[]) => {
+  console.info(`Succeeded in getting supported play speeds, size: ${speeds.length}`);
+});
+```
+
+## getSupportedLoopModes
+
+getSupportedLoopModes(): Promise\<Array\<LoopMode>>
+
+获取应用支持的循环模式列表。使用Promise异步回调。
+
+该列表通过[setSupportedLoopModes](arkts-apis-avsession-AVSession.md#setsupportedloopmodes)接口设置。如果应用未设置或者设置为空列表，则返回空列表。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<Array\<[LoopMode](arkts-apis-avsession-e.md#loopmode10)>> | Promise对象。返回支持的循环模式列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.getSupportedLoopModes().then((loopModes: avSession.LoopMode[]) => {
+  console.info(`Succeeded in getting supported loop modes, size: ${loopModes.length}`);
+});
+```
+
+## getMediaCenterControlType
+
+getMediaCenterControlType(): Promise\<Array\<AVMediaCenterControlType>>
+
+获取应用通过[setMediaCenterControlType](arkts-apis-avsession-AVSession.md#setmediacentercontroltype)接口设置优先显示的控制类型列表。使用Promise异步回调。
+
+如果应用未设置或者设置为空列表，则返回空列表。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<Array\<[AVMediaCenterControlType](arkts-apis-avsession-t.md#avmediacentercontroltype)>> | Promise对象。返回应用希望优先显示的控制类型列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.getMediaCenterControlType().then((types: avSession.AVMediaCenterControlType[]) => {
+  console.info(`Succeeded in getting media center control types, size: ${types.length}`);
+});
+```
+
+## onMediaCenterControlTypeChanged
+
+onMediaCenterControlTypeChanged(callback: Callback\<Array\<AVMediaCenterControlType>>): void
+
+注册控制类型列表变化的监听事件。使用callback异步回调。
+
+其中控制类型列表由应用通过[setMediaCenterControlType](arkts-apis-avsession-AVSession.md#setmediacentercontroltype)接口设置。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<Array\<[AVMediaCenterControlType](arkts-apis-avsession-t.md#avmediacentercontroltype)>> | 是   | 回调函数。返回变化后的控制类型列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.onMediaCenterControlTypeChanged((types: avSession.AVMediaCenterControlType[]) => {
+  console.info(`Media center control types changed, size: ${types.length}`);
+});
+```
+
+## offMediaCenterControlTypeChanged
+
+offMediaCenterControlTypeChanged(callback?: Callback\<Array\<AVMediaCenterControlType>>): void
+
+取消控制类型列表变化的监听事件。
+
+取消后将不再对该事件进行监听。其中控制类型列表由应用通过[setMediaCenterControlType](arkts-apis-avsession-AVSession.md#setmediacentercontroltype)接口设置。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<Array\<[AVMediaCenterControlType](arkts-apis-avsession-t.md#avmediacentercontroltype)>> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为对所有控制类型列表变化事件取消监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.offMediaCenterControlTypeChanged();
+```
+
+## onSupportedPlaySpeedsChange
+
+onSupportedPlaySpeedsChange(callback: Callback\<Array\<number>>): void
+
+注册支持的播放倍速列表变化的监听事件。使用callback异步回调。
+
+其中播放倍速列表由应用通过[setSupportedPlaySpeeds](arkts-apis-avsession-AVSession.md#setsupportedplayspeeds)接口设置。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback  | Callback\<Array\<number>> | 是   | 回调函数。返回变化后支持的播放倍速列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.onSupportedPlaySpeedsChange((speeds: number[]) => {
+  console.info(`Supported play speeds changed, size: ${speeds.length}`);
+});
+```
+
+## offSupportedPlaySpeedsChange
+
+offSupportedPlaySpeedsChange(callback?: Callback\<Array\<number>>): void
+
+取消支持的播放倍速列表变化事件监听。
+
+取消后将不再对该事件进行监听。其中播放倍速列表由应用通过[setSupportedPlaySpeeds](arkts-apis-avsession-AVSession.md#setsupportedplayspeeds)接口设置。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<Array\<number>> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为对所有支持的播放倍速列表变化事件取消监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.offSupportedPlaySpeedsChange();
+```
+
+## onSupportedLoopModesChange
+
+onSupportedLoopModesChange(callback: Callback\<Array\<LoopMode>>): void
+
+注册支持的循环模式列表变化的监听事件。使用callback异步回调。
+
+其中循环模式列表由应用通过[setSupportedLoopModes](arkts-apis-avsession-AVSession.md#setsupportedloopmodes)接口设置。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<Array\<[LoopMode](arkts-apis-avsession-e.md#loopmode10)>> | 是   | 回调函数。返回变化后支持的循环模式列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.onSupportedLoopModesChange((loopModes: avSession.LoopMode[]) => {
+  console.info(`Supported loop modes changed, size: ${loopModes.length}`);
+});
+```
+
+## offSupportedLoopModesChange
+
+offSupportedLoopModesChange(callback?: Callback\<Array\<LoopMode>>): void
+
+取消支持的循环模式列表变化事件监听。
+
+取消后将不再对该事件进行监听。其中循环模式列表由应用通过[setSupportedLoopModes](arkts-apis-avsession-AVSession.md#setsupportedloopmodes)接口设置。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| callback   | Callback\<Array\<[LoopMode](arkts-apis-avsession-e.md#loopmode10)>> | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为对所有支持的循环模式列表变化事件取消监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600103  | The session controller does not exist. |
+
+**示例：**
+
+```ts
+avcontroller.offSupportedLoopModesChange();
 ```

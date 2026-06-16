@@ -14,7 +14,7 @@
 - DNS策略的配置能力，包括配置禁止/允许解析的域名、解析使用的DNS服务器（主选/备选）（应用级）。
 
 > **说明：**
-> 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅[API参考](../reference/apis-network-kit/js-apis-net-netfirewall.md)。
+> 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅[@ohos.net.netFirewall (网络防火墙)](../reference/apis-network-kit/js-apis-net-netfirewall.md)。
 
 ## 场景介绍
 
@@ -102,7 +102,7 @@
          family: 1,
          type: 1,
          address: '10.10.1.1',
-         mask: 24
+         mask: 32
        },{
        family: 1,
        type: 2,
@@ -114,7 +114,7 @@
          family: 1,
          type: 1,
          address: '20.10.1.1',
-         mask: 24
+         mask: 32
        },{
        family: 1,
        type: 2,

@@ -1,9 +1,9 @@
 # @ohos.inputMethodEngine (输入法服务)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块面向输入法应用（包括系统输入法应用、三方输入法应用），为输入法应用提供能力，包括：创建软键盘窗口、插入/删除字符、选中文本、监听物理键盘按键事件等。
@@ -113,7 +113,7 @@ getInputMethodEngine(): InputMethodEngine
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getInputMethodAbility()](#inputmethodenginegetinputmethodability9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.getInputMethodAbility()](#inputmethodenginegetinputmethodability9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -137,7 +137,7 @@ createKeyboardDelegate(): KeyboardDelegate
 
 > **说明：**
 >
->从API version 8开始支持，API version 9开始废弃，建议使用[getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9)替代。
+>从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -163,8 +163,8 @@ type CommandDataType = number | string | boolean;
 
 | 类型    | 说明                 |
 | ------- | -------------------- |
-| string  | 表示值类型为字符串。  |
 | number  | 表示值类型为数字。   |
+| string  | 表示值类型为字符串。  |
 | boolean | 表示值类型为布尔值。 |
 
 ## SizeChangeCallback<sup>15+</sup>
@@ -198,7 +198,7 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, textInputCli
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[on('inputStart')](#oninputstart9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[inputMethodEngine.InputMethodAbility.on](#oninputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -228,7 +228,7 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputC
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[off('inputStart')](#offinputstart9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[inputMethodEngine.InputMethodAbility.off](#offinputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -257,7 +257,7 @@ on(type: 'keyboardShow'|'keyboardHide', callback: () => void): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[on('keyboardShow'|'keyboardHide')](#onkeyboardshowkeyboardhide9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[inputMethodEngine.InputMethodAbility.on](#onkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -287,7 +287,7 @@ off(type: 'keyboardShow'|'keyboardHide', callback?: () => void): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[off('keyboardShow'|'keyboardHide')](#offkeyboardshowkeyboardhide9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[inputMethodEngine.InputMethodAbility.off](#offkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -627,8 +627,8 @@ on(type: 'privateCommand', callback: Callback<Record<string, CommandDataType>>):
 ```ts
 let privateCommandCallback: (record: Record<string, inputMethodEngine.CommandDataType>) => void =
   (record: Record<string, inputMethodEngine.CommandDataType>) => {
-    for (let i :number = 0; i < record.length; i++) {
-      console.info(`private command key: ${i}, value: ${record[i]}`);
+    for (const key in record) {
+      console.info(`private command key: ${key}, value: ${record[key]}`);
     }
   }
 inputMethodEngine.getInputMethodAbility().on('privateCommand', privateCommandCallback);
@@ -787,6 +787,8 @@ getSecurityMode(): SecurityMode
 
 **错误码：**
 
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 12800004 | not an input method application. |
@@ -821,30 +823,39 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback\<Panel>):
 
 **错误码：**
 
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 401        | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401        | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12800004   | not an input method application. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMethodEngine, InputMethodExtensionAbility } from '@kit.IMEKit';
+import { Want } from '@kit.AbilityKit';
 
 let panelInfo: inputMethodEngine.PanelInfo = {
   type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
 
-if (!this.context) {
-  inputMethodEngine.getInputMethodAbility()
-    .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
-      if (err) {
-        console.error(`Failed to createPanel. Code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      console.info('Succeed in creating panel.');
-    })
+class InputMethodExt extends InputMethodExtensionAbility {
+    onCreate(want: Want): void {
+        console.info(`onCreate, want: ${want.abilityName}`);
+        if (!this.context) {
+            inputMethodEngine.getInputMethodAbility()
+            .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
+                if (err) {
+                console.error(`Failed to createPanel. Code is ${err.code}, message is ${err.message}`);
+                return;
+              }
+                console.info('Succeed in creating panel.');
+            })
+        }
+    }
 }
 ```
 
@@ -875,28 +886,37 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise\<Panel>
 
 **错误码：**
 
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 401        | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401        | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12800004   | not an input method application. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMethodEngine, InputMethodExtensionAbility } from '@kit.IMEKit';
+import { Want } from '@kit.AbilityKit';
 
 let panelInfo: inputMethodEngine.PanelInfo = {
   type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
 
-if (this.context) {
-  inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo)
-    .then((panel: inputMethodEngine.Panel) => {
-      console.info('Succeed in creating panel.');
-    }).catch((err: BusinessError) => {
-    console.error(`Failed to create panel. Code is ${err.code}, message is ${err.message}`);
-  })
+class InputMethodExt extends InputMethodExtensionAbility {
+    onCreate(want: Want): void {
+        console.info(`onCreate, want: ${want.abilityName}`);
+        if (this.context) {
+            inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo)
+                .then((panel: inputMethodEngine.Panel) => {
+                console.info('Succeed in creating panel.');
+            }).catch((err: BusinessError) => {
+                console.error(`Failed to create panel. Code is ${err.code}, message is ${err.message}`);
+            })
+        }
+    }
 }
 ```
 
@@ -921,7 +941,7 @@ destroyPanel(panel: Panel, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -982,7 +1002,7 @@ destroyPanel(panel: Panel): Promise\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -1039,8 +1059,8 @@ on(type: 'keyDown'|'keyUp', callback: (event: KeyEvent) => boolean): void
 
 ```ts
 inputMethodEngine.getKeyboardDelegate().on('keyUp', (keyEvent: inputMethodEngine.KeyEvent) => {
-  console.info(`inputMethodEngine keyCode.(keyDown): ${keyEvent.keyCode}`);
-  console.info(`inputMethodEngine keyAction.(keyDown): ${keyEvent.keyAction}`);
+  console.info(`inputMethodEngine keyCode.(keyUp): ${keyEvent.keyCode}`);
+  console.info(`inputMethodEngine keyAction.(keyUp): ${keyEvent.keyAction}`);
   return true;
 });
 inputMethodEngine.getKeyboardDelegate().on('keyDown', (keyEvent: inputMethodEngine.KeyEvent) => {
@@ -1120,7 +1140,7 @@ off(type: 'keyEvent', callback?: (event: InputKeyEvent) => boolean): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 设置监听类型，固定取值为'keyEvent'。 |
-| callback | function | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | (event: [InputKeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent)) => boolean | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 
@@ -1350,7 +1370,7 @@ setUiContent(path: string, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -1392,7 +1412,7 @@ setUiContent(path: string): Promise\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -1428,7 +1448,7 @@ setUiContent(path: string, storage: LocalStorage, callback: AsyncCallback\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -1473,7 +1493,7 @@ setUiContent(path: string, storage: LocalStorage): Promise\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -1517,7 +1537,7 @@ resize(width: number, height: number, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -1566,7 +1586,7 @@ resize(width: number, height: number): Promise\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -1602,7 +1622,7 @@ moveTo(x: number, y: number, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1645,7 +1665,7 @@ moveTo(x: number, y: number): Promise\<void>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1673,7 +1693,7 @@ startMoving(): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801 | capability not supported. |
+| 801 | capability not supported. [since 18] |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. |
@@ -1852,11 +1872,11 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800013 | window manager service error. |
 
 **示例：**
@@ -1878,7 +1898,9 @@ let portraitRect: window.Rect = {
   height: 300
 };
 
+// 目标面板状态类型
 let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// 目标面板横屏状态及竖屏状态的横坐标，纵坐标，宽度以及高度
 let panelRect: inputMethodEngine.PanelRect = {
   landscapeRect: landscapeRect,
   portraitRect: portraitRect
@@ -1911,11 +1933,11 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12800013 | window manager service error.                                |
 | 12800017 | invalid panel type or panel flag.                            |
 
@@ -1939,8 +1961,9 @@ let portraitRect1: window.Rect = {
   height: 800
 }
 let portraitInputRegion: Array<window.Rect> = [portraitRect1];
-
+// 目标面板状态类型。
 let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。
 let panelRect: inputMethodEngine.EnhancedPanelRect = {
   landscapeAvoidY: 650,
   landscapeInputRegion: landscapeInputRegion,
@@ -1949,6 +1972,284 @@ let panelRect: inputMethodEngine.EnhancedPanelRect = {
   fullScreenMode: true
 };
 panel.adjustPanelRect(panelFlag, panelRect);
+```
+
+### updatePanelRect
+
+updatePanelRect(flag: PanelFlag, rect: PanelRect): Promise\<void>
+
+预设置输入法应用横竖屏大小。使用Promise异步回调。
+
+> **说明:**
+>
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
+>
+> 此接口为异步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | -------- |
+| flag | [PanelFlag](#panelflag10) | 是 | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。 |
+| rect | [PanelRect](#panelrect12) | 是   | 目标面板横屏状态及竖屏状态的横坐标，纵坐标，宽度以及高度。固定态：高度不能超过屏幕高度的70%，宽度不能超过屏幕宽度；悬浮态：高度不能超过屏幕高度，宽度不能超过屏幕宽度。|
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------- |------------------|
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 12800013 | window manager service error. |
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+let landscapeRect: window.Rect = {
+  left: 100,
+  top: 100,
+  width: 400,
+  height: 400
+};
+
+let portraitRect: window.Rect = {
+  left: 200,
+  top: 200,
+  width: 300,
+  height: 300
+};
+
+// 目标面板状态类型
+let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// 目标面板横屏状态及竖屏状态的横坐标，纵坐标，宽度以及高度
+let panelRect: inputMethodEngine.PanelRect = {
+  landscapeRect: landscapeRect,
+  portraitRect: portraitRect
+};
+panel.updatePanelRect(panelFlag, panelRect);
+```
+
+### updatePanelRect
+
+updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise\<void>
+
+预设置输入法应用横竖屏大小、位置、自定义避让区域以及热区。使用Promise异步回调。
+
+> **说明:**
+>
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
+>
+> 此接口为异步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型                                      | 必填 | 说明                                                       |
+| ------ | ----------------------------------------- | ---- | ---------------------------------------------------------- |
+| flag   | [PanelFlag](#panelflag10)                 | 是   | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。          |
+| rect   | [EnhancedPanelRect](#enhancedpanelrect15) | 是   | 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。 |
+
+**返回值：**
+
+| 类型   | 说明               |
+| ------- |------------------|
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 12800013 | window manager service error.                                |
+| 12800017 | invalid panel type or panel flag.                            |
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+let landscapeRect1: window.Rect = {
+  left: 300,
+  top: 650,
+  width: 2000,
+  height: 500
+};
+let landscapeInputRegion: Array<window.Rect> = [landscapeRect1];
+
+let portraitRect1: window.Rect = {
+  left: 0,
+  top: 1800,
+  width: 1200,
+  height: 800
+}
+let portraitInputRegion: Array<window.Rect> = [portraitRect1];
+// 目标面板状态类型。
+let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。
+let panelRect: inputMethodEngine.EnhancedPanelRect = {
+  landscapeAvoidY: 650,
+  landscapeInputRegion: landscapeInputRegion,
+  portraitAvoidY: 1800,
+  portraitInputRegion: portraitInputRegion,
+  fullScreenMode: true
+};
+panel.updatePanelRect(panelFlag, panelRect);
+```
+
+### updatePanelRectSync
+
+updatePanelRectSync(flag: PanelFlag, rect: PanelRect): void
+
+预设置输入法应用横竖屏大小。
+
+> **说明:**
+>
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
+>
+> 此接口为同步接口，接口返回代表系统侧收到设置的请求，并已完成设置。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | -------- |
+| flag | [PanelFlag](#panelflag10) | 是 | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。 |
+| rect | [PanelRect](#panelrect12) | 是   | 目标面板横屏状态及竖屏状态的横坐标，纵坐标，宽度以及高度。固定态：高度不能超过屏幕高度的70%，宽度不能超过屏幕宽度；悬浮态：高度不能超过屏幕高度，宽度不能超过屏幕宽度。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 12800013 | window manager service error. |
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+let landscapeRect: window.Rect = {
+  left: 100,
+  top: 100,
+  width: 400,
+  height: 400
+};
+
+let portraitRect: window.Rect = {
+  left: 200,
+  top: 200,
+  width: 300,
+  height: 300
+};
+
+// 目标面板状态类型
+let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// 目标面板横屏状态及竖屏状态的横坐标，纵坐标，宽度以及高度
+let panelRect: inputMethodEngine.PanelRect = {
+  landscapeRect: landscapeRect,
+  portraitRect: portraitRect
+};
+panel.updatePanelRectSync(panelFlag, panelRect);
+```
+
+### updatePanelRectSync
+
+updatePanelRectSync(flag: PanelFlag, rect: EnhancedPanelRect): void
+
+预设置输入法应用横竖屏大小、位置、自定义避让区域以及热区。
+
+> **说明:**
+>
+> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
+>
+> 此接口为同步接口，接口返回代表系统侧收到设置的请求，并已完成设置。
+>
+> 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型                                      | 必填 | 说明                                                       |
+| ------ | ----------------------------------------- | ---- | ---------------------------------------------------------- |
+| flag   | [PanelFlag](#panelflag10)                 | 是   | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。          |
+| rect   | [EnhancedPanelRect](#enhancedpanelrect15) | 是   | 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 12800013 | window manager service error.                                |
+| 12800017 | invalid panel type or panel flag.                            |
+
+**示例：**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+let landscapeRect1: window.Rect = {
+  left: 300,
+  top: 650,
+  width: 2000,
+  height: 500
+};
+let landscapeInputRegion: Array<window.Rect> = [landscapeRect1];
+
+let portraitRect1: window.Rect = {
+  left: 0,
+  top: 1800,
+  width: 1200,
+  height: 800
+}
+let portraitInputRegion: Array<window.Rect> = [portraitRect1];
+// 目标面板状态类型。
+let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。
+let panelRect: inputMethodEngine.EnhancedPanelRect = {
+  landscapeAvoidY: 650,
+  landscapeInputRegion: landscapeInputRegion,
+  portraitAvoidY: 1800,
+  portraitInputRegion: portraitInputRegion,
+  fullScreenMode: true
+};
+panel.updatePanelRectSync(panelFlag, panelRect);
 ```
 
 ### updateRegion<sup>15+</sup>
@@ -1977,7 +2278,7 @@ updateRegion(inputRegion: Array&lt;window.Rect&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12800013 | window manager service error.                                |
 | 12800017 | invalid panel type or panel flag.                            |
 
@@ -2100,7 +2401,7 @@ off(type: 'show', callback?: () => void): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -2129,7 +2430,7 @@ off(type: 'hide', callback?: () => void): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -2189,7 +2490,7 @@ changeFlag(flag: PanelFlag): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 
 **示例：**
 
@@ -2221,7 +2522,7 @@ setPrivacyMode(isPrivacyMode: boolean): void
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
 | 201      | permissions check fails.  |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -2250,7 +2551,7 @@ setImmersiveMode(mode: ImmersiveMode): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.           |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013  | window manager service error.                          |
 
@@ -2543,7 +2844,7 @@ hideKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[hide](#hide9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.KeyboardController.hide](#hide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2575,7 +2876,7 @@ hideKeyboard(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[hide](#hide9-1)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.KeyboardController.hide](#hide9-1)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2773,7 +3074,7 @@ inputMethodEngine.getInputMethodAbility()
           console.info('OnTerminated.');
         },
         onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-          console.info('recv message.');
+          console.info(`recv message, msgId is ${msgId}, msgParam is ${JSON.stringify(msgParam)}`);
         }
       }
       inputClient.recvMessage(messageHandler);
@@ -2807,7 +3108,7 @@ inputMethodEngine.getInputMethodAbility()
           console.info('OnTerminated.');
         },
         onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-          console.info('recv message.');
+          console.info(`recv message, msgId is ${msgId}, msgParam is ${JSON.stringify(msgParam)}`);
         }
       }
       inputClient.recvMessage(messageHandler);
@@ -2839,7 +3140,7 @@ sendKeyFunction(action:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
  **示例：**
@@ -2888,7 +3189,7 @@ sendKeyFunction(action: number): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -2929,7 +3230,7 @@ getForward(length:number, callback: AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -2974,7 +3275,7 @@ getForward(length:number): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -3017,7 +3318,7 @@ getForwardSync(length:number): string
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -3050,7 +3351,7 @@ getBackward(length:number, callback: AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -3095,7 +3396,7 @@ getBackward(length:number): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -3138,7 +3439,7 @@ getBackwardSync(length:number): string
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -3171,7 +3472,7 @@ deleteForward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -3220,7 +3521,7 @@ deleteForward(length:number): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -3261,7 +3562,7 @@ deleteForwardSync(length:number): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -3293,7 +3594,7 @@ deleteBackward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -3342,7 +3643,7 @@ deleteBackward(length:number): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -3383,7 +3684,7 @@ deleteBackwardSync(length:number): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -3415,7 +3716,7 @@ insertText(text:string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -3464,7 +3765,7 @@ insertText(text:string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -3504,7 +3805,7 @@ insertTextSync(text: string): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
@@ -3637,7 +3938,7 @@ moveCursor(direction: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -3680,7 +3981,7 @@ moveCursor(direction: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -3715,7 +4016,7 @@ moveCursorSync(direction: number): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -3745,7 +4046,7 @@ selectByRange(range: Range, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -3789,7 +4090,7 @@ selectByRange(range: Range): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -3825,7 +4126,7 @@ selectByRangeSync(range: Range): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -3856,7 +4157,7 @@ selectByMovement(movement: Movement, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -3900,7 +4201,7 @@ selectByMovement(movement: Movement): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -3936,7 +4237,7 @@ selectByMovementSync(movement: Movement): void
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
@@ -4075,7 +4376,7 @@ sendExtendAction(action: ExtendAction, callback: AsyncCallback&lt;void&gt;): voi
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -4125,7 +4426,7 @@ sendExtendAction(action: ExtendAction): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
@@ -4151,6 +4452,7 @@ sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&
 >
 > - 私有数据通道是系统预置输入法应用与系统特定组件（如文本框、桌面应用等）的通信机制，常用于设备级厂商在特定设备上实现自定义的输入法功能。
 > - 私有数据规格限制：总大小32KB，数量限制5条。
+> - 私有数据默认发送给文本框，如果需要发送给桌面应用，请在私有数据中携带一条`{'sys_cmd':1}`数据。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4172,7 +4474,7 @@ sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800010 | not the preconfigured default input method. |
 
@@ -4247,6 +4549,7 @@ setPreviewText(text: string, range: Range): Promise&lt;void&gt;
 
 **参数：**
 
+<!--Table: auto; auto; 10%; 60%-->
 | 参数名 | 类型              | 必填 | 说明                                                         |
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
 | text   | string            | 是   | 将被预上屏的文本。                                           |
@@ -4264,7 +4567,7 @@ setPreviewText(text: string, range: Range): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800011 | text preview not supported.                               |
 
@@ -4291,6 +4594,7 @@ setPreviewTextSync(text: string, range: Range): void
 
 **参数：**
 
+<!--Table: auto; auto; 10%; 60%-->
 | 参数名 | 类型              | 必填 | 说明                                                         |
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
 | text   | string            | 是   | 将被预上屏的文本。                                           |
@@ -4302,7 +4606,7 @@ setPreviewTextSync(text: string, range: Range): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800011 | text preview not supported.                               |
 
@@ -4412,7 +4716,7 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void&gt;
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length.  |
+| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length.  |
 | 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800009 | input method client detached.               |
 | 12800014 | the input method is in basic mode.          |
@@ -4455,11 +4759,11 @@ recvMessage(msgHandler?: MessageHandler): void;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息         |
 | -------- | ---------------- |
-| 401      | parameter error. Possible causes: 1. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -4495,6 +4799,14 @@ getAttachOptions(): AttachOptions
 | ---- | ------------ |
 | [AttachOptions](#attachoptions19) | 返回绑定输入法时的附加选项内容。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                       |
+| -------- | ---------------------------------------------- |
+| 801 | Capability not supported. [since 19 - 19]. |
+
 > **注意：**
 >
 > 从API version 20 开始，错误码`801 Capability not supported.`被移除。
@@ -4520,6 +4832,14 @@ on(type: 'attachOptionsDidChange', callback: Callback\<AttachOptions>): void
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 绑定输入法时的附加选项变更事件，固定取值为'attachOptionsDidChange'。 |
 | callback | Callback\<[AttachOptions](#attachoptions19)> | 是   | 回调函数，返回绑定输入法时的附加选项。       |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                       |
+| -------- | ---------------------------------------------- |
+| 801 | Capability not supported. [since 19 - 19]. |
 
 > **注意：**
 >
@@ -4568,7 +4888,7 @@ inputClient.off('attachOptionsDidChange', attachOptionsDidChangeCallback);
 console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 ```
 
-### CapitalizeMode<sup>20+</sup>
+## CapitalizeMode<sup>20+</sup>
 
 枚举，定义了文本首字母大写的不同模式。
 
@@ -4581,26 +4901,27 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 | WORDS | 2 | 每个单词的首字母大写。|
 | CHARACTERS | 3 | 每个字母都大写。|
 
-### EditorAttribute
+## EditorAttribute
 
 编辑框属性值。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-| 名称         | 类型 | 只读 | 可选 | 说明               |
-| ------------ | -------- | ---- | ---- | ------------------ |
-| enterKeyType | number   | 是   | 否   | 编辑框的功能属性，详见[常量中的功能键定义](#常量)。 |
-| inputPattern | number   | 是   | 否   | 编辑框的文本属性，详见[常量中的编辑框定义](#常量)。 |
-| isTextPreviewSupported<sup>12+</sup> | boolean | 否 | 否 | 编辑框是否支持预上屏。<br/>- 值为true，表示支持。<br/>- 值为false，表示不支持。 |
-| bundleName<sup>14+</sup> | string | 是 | 是 | 编辑框所属应用包名；该值可能为""，使用该属性时需要考虑为""的场景。 |
-| immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | 是   | 是   | 输入法沉浸模式。 |
-| windowId<sup>18+</sup> | number | 是 | 是 | 编辑框设置所属窗口ID。 |
-| displayId<sup>18+</sup> | number | 是   | 是   | 编辑框设置窗口对应的屏幕ID。如果没有设置windowId，取当前焦点窗口屏幕ID。|
-| placeholder<sup>20+</sup> | string | 是 | 是 | 编辑框设置的占位符信息。|
-| abilityName<sup>20+</sup> | string | 是 | 是 | 编辑框设置的ability名称。|
-| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 是 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。|
-| gradientMode<sup>20+</sup> | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。|
-| extraConfig<sup>22+</sup> | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。|
+| 名称                                   | 类型 | 只读 | 可选 | 说明                                                                                                                              |
+|--------------------------------------| -------- | ---- | ---- |---------------------------------------------------------------------------------------------------------------------------------|
+| enterKeyType                         | number   | 是   | 否   | 编辑框的功能属性，详见[常量中的功能键定义](#常量)。                                                                                                    |
+| inputPattern                         | number   | 是   | 否   | 编辑框的文本属性，详见[常量中的编辑框定义](#常量)。                                                                                                    |
+| isTextPreviewSupported<sup>12+</sup> | boolean | 否 | 否 | 编辑框是否支持预上屏。<br/>- 值为true，表示支持。<br/>- 值为false，表示不支持。                                                                             |
+| bundleName<sup>14+</sup>             | string | 是 | 是 | 编辑框所属应用包名；该值可能为""，使用该属性时需要考虑为""的场景。                                                                                             |
+| immersiveMode<sup>15+</sup>          | [ImmersiveMode](#immersivemode15) | 是   | 是   | 输入法沉浸模式。                                                                                                                        |
+| windowId<sup>18+</sup>               | number | 是 | 是 | 编辑框设置所属窗口ID。                                                                                                                    |
+| displayId<sup>18+</sup>              | number | 是   | 是   | 编辑框设置窗口对应的屏幕ID。如果没有设置windowId，取当前焦点窗口屏幕ID。                                                                                      |
+| placeholder<sup>20+</sup>            | string | 是 | 是 | 编辑框设置的占位符信息。                                                                                                                    |
+| abilityName<sup>20+</sup>            | string | 是 | 是 | 编辑框设置的ability名称。                                                                                                                |
+| capitalizeMode<sup>20+</sup>         | [CapitalizeMode](#capitalizemode20) | 是 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。                                                                                         |
+| gradientMode<sup>20+</sup>           | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。                                                                                                    |
+| extraConfig<sup>22+</sup>            | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。                                                                                                                        |
+| consumeKeyEvents      | boolean   | 是   | 是   | 编辑框是否具有完整处理字母、字符、功能等按键的能力。<br/>- 值为true，表示具备此能力。<br/>- 值为false，表示不具备此能力。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 
 ## KeyEvent
 
@@ -4785,7 +5106,7 @@ getForward(length:number, callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getForward](#getforward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getForward](#getforward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4819,7 +5140,7 @@ getForward(length:number): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getForward](#getforward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getForward](#getforward9-1)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4856,7 +5177,7 @@ getBackward(length:number, callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getBackward](#getbackward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4890,7 +5211,7 @@ getBackward(length:number): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getBackward](#getbackward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4927,7 +5248,7 @@ deleteForward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[deleteForward](#deleteforward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4965,7 +5286,7 @@ deleteForward(length:number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[deleteForward](#deleteforward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5006,7 +5327,7 @@ deleteBackward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[deleteBackward](#deletebackward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5044,7 +5365,7 @@ deleteBackward(length:number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[deleteBackward](#deletebackward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5084,7 +5405,7 @@ sendKeyFunction(action: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[sendKeyFunction](#sendkeyfunction9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5122,7 +5443,7 @@ sendKeyFunction(action: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[sendKeyFunction](#sendkeyfunction9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5163,7 +5484,7 @@ insertText(text:string, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[insertText](#inserttext9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5200,7 +5521,7 @@ insertText(text:string): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[insertText](#inserttext9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5240,7 +5561,7 @@ getEditorAttribute(callback: AsyncCallback&lt;EditorAttribute&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getEditorAttribute](#geteditorattribute9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5275,7 +5596,7 @@ getEditorAttribute(): Promise&lt;EditorAttribute&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getEditorAttribute](#geteditorattribute9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

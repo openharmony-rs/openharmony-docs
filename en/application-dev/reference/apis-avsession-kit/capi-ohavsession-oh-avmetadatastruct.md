@@ -1,12 +1,12 @@
 # OH_AVMetadataStruct
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_AVMetadataStruct OH_AVMetadata
 ```
 

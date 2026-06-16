@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## 如何判断某个应用是否为系统应用(API 9)
 
@@ -14,7 +14,7 @@
 
 **参考链接**
 
-[@ohos.bundle.bundleManager \(应用程序包管理模块\)](../reference/apis-ability-kit/js-apis-bundleManager.md)
+[@ohos.bundle.bundleManager (应用程序包管理模块)](../reference/apis-ability-kit/js-apis-bundleManager.md)
 
 
 ## 如何获取应用配置的versionCode和versionName(API 9)
@@ -25,7 +25,7 @@
 
 **代码示例**
 
-```
+```ts
 import bundleManager from '@ohos.bundle.bundleManager';
 import hilog from '@ohos.hilog';
 let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
@@ -55,10 +55,10 @@ try {
 
 **代码示例**
 
-```
+```ts
 import common from '@ohos.app.ability.common';
 const context = getContext(this) as common.UIAbilityContext
-console.log(`bundleName: ${context.abilityInfo.bundleName}`)
+console.info(`bundleName: ${context.abilityInfo.bundleName}`)
 ```
 
 **参考链接**
@@ -74,12 +74,12 @@ console.log(`bundleName: ${context.abilityInfo.bundleName}`)
 
    在bundleInfo中包含App版本号、版本名信息。
 
-   ```
+   ```ts
    import bundleManager from '@ohos.bundle.bundleManager';
-   ...
+   // ...
    bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION).then((bundleInfo)=>{
-     let versionName = bundleInfo.versionName;//应用版本名
-     let versionNo = bundleInfo.versionCode;//应用版本号
+     let versionName = bundleInfo.versionName;// 应用版本名
+     let versionNo = bundleInfo.versionCode;// 应用版本号
    }).catch((error)=>{
      console.error("get bundleInfo failed,error is "+error)
    })
@@ -87,9 +87,9 @@ console.log(`bundleName: ${context.abilityInfo.bundleName}`)
 
 2. 在模块\@ohos.app.ability.Configuration中获取screenDensity，其中包含屏幕分辨率信息。
 
-   ```
+   ```ts
    import common from '@ohos.app.ability.common';
-   ...
+   // ...
    let context = getContext(this) as common.UIAbilityContext;
    let screenDensity = context.config.screenDensity;
    ```
@@ -101,7 +101,7 @@ console.log(`bundleName: ${context.abilityInfo.bundleName}`)
 
 - 方式一：使用应用上下文context获取。
 
-  ```
+  ```ts
   this.uiAbilityContext.abilityInfo.applicationInfo.codePath
   ```
 
@@ -110,7 +110,7 @@ console.log(`bundleName: ${context.abilityInfo.bundleName}`)
   1. 导入\@ohos.bundle.bundleManager模块，使用bundleManager.getBundleInfoForSelf()获取bundleInfo信息。
   2. 使用bundleInfo.appInfo.codePath获取应用源文件路径。
 
-  ```
+  ```ts
   import bundleManager from '@ohos.bundle.bundleManager';
   bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION).then((bundleInfo)=>{
     this.sourcePath = bundleInfo.appInfo.codePath;
@@ -134,7 +134,7 @@ console.log(`bundleName: ${context.abilityInfo.bundleName}`)
 
 **参考链接**
 
-[@ohos.bundle.bundleManager \(应用程序包管理模块\)](../reference/apis-ability-kit/js-apis-bundleManager.md)
+[@ohos.bundle.bundleManager (应用程序包管理模块)](../reference/apis-ability-kit/js-apis-bundleManager.md)
 
 
 ## 如何查询进程的pid(API 9)
@@ -145,7 +145,7 @@ console.log(`bundleName: ${context.abilityInfo.bundleName}`)
 
 **代码示例**
 
-```
+```ts
 import process from '@ohos.process';
 private pid = process.pid;
 ```
@@ -169,7 +169,7 @@ private pid = process.pid;
 
 **代码示例**
 
-```
+```ts
 "abilities": [
   {
     "name": "EntryAbility",
@@ -197,5 +197,5 @@ private pid = process.pid;
 
 **参考链接**
 
-[supportWindowModes参考文档](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md)
+[supportWindowModes参考文档](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md#abilityinfo-1)
 

@@ -21,11 +21,15 @@ This topic describes how to import a key, using AES256, RSA2048, and X25519 keys
 
     For details about **HuksParam** and **HuksOptions**, see [HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) and [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions).
 
+
 ### Importing an AES256 Key
-```ts
+<!-- @[import_keys_in_plaintext_AES256](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/AES256.ets) -->
+
+``` TypeScript
+
 /* Import an AES 256-bit key in plaintext. This example uses callback-based APIs. */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 /* Key material */
 let plainTextSize32 = new Uint8Array([
@@ -36,16 +40,16 @@ let plainTextSize32 = new Uint8Array([
 let keyAlias = 'AES256Alias_sample';
 
 /* 2. Encapsulate the key property set and key material. */
-let properties: Array<huks.HuksParam> = [{
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_AES
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-  },
+let properties: huks.HuksParam[] = [{
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_AES
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+},
 ]
 let options: huks.HuksOptions = {
   properties: properties,
@@ -54,7 +58,7 @@ let options: huks.HuksOptions = {
 
 /* 3. Import the key in plaintext. */
 async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): Promise<boolean> {
-  console.info("promise: enter importKeyItem");
+  console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
@@ -79,11 +83,15 @@ async function testImport() {
   console.info(`testImport success`);
 }
 ```
+<!-- -->
+
 ### Importing an RSA2048 Key Pair
-```ts
+<!-- @[import_keys_in_plaintext_RSA2048](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/RSA2048.ets) -->
+
+``` TypeScript
 /* Import an RSA 2048-bit key in plaintext. This example uses callback-based APIs. */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let rsa2048KeyPairMaterial = new Uint8Array([
   0x01, 0x00, 0x00, 0x00, // Key algorithm (expressed in little-endian) huks.HuksKeyAlg.HUKS_ALG_RSA = 1
@@ -132,22 +140,22 @@ let rsa2048KeyPairMaterial = new Uint8Array([
 /* 1. Set the key alias. */
 let keyAlias = 'RSA_sample';
 /* 2. Encapsulate the key property set and key material. */
-let properties: Array<huks.HuksParam> = [{
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_RSA
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
-  }, {
-    // This tag indicates the usage of the key after it is imported. The tag cannot be changed after the key is imported.
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-  }, {
-    // This tag indicates the type of the key to be imported.
-    tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
-    // The value here means to import a key pair. To import a public key, set value to HUKS_KEY_TYPE_PUBLIC_KEY.
-    value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR
-  },
+let properties: huks.HuksParam[] = [{
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_RSA
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048
+}, {
+  // This tag indicates the usage of the key after it is imported. The tag cannot be changed after the key is imported.
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+}, {
+  // This tag indicates the type of the key to be imported.
+  tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
+  // The value here means to import a key pair. To import a public key, set value to HUKS_KEY_TYPE_PUBLIC_KEY.
+  value: huks.HuksImportKeyType.HUKS_KEY_TYPE_KEY_PAIR
+}
 ]
 let options: huks.HuksOptions = {
   properties: properties,
@@ -156,7 +164,7 @@ let options: huks.HuksOptions = {
 
 /* 3. Import the key in plaintext. */
 async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): Promise<boolean> {
-  console.info("promise: enter importKeyItem");
+  console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
@@ -181,11 +189,15 @@ async function testImport() {
   console.info(`testImport success`);
 }
 ```
+<!-- -->
+
 ### Importing the Public Key of an X25519 Key Pair
-```ts
+<!-- @[import_keys_in_plaintext_X25519](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/X25519.ets) -->
+
+``` TypeScript
 /* Import the public key of an X25519 key pair. This example uses callback-based APIs. */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // X25519 public key data. The private key and public key in the X25519 key pair are both 32 bytes (256 bits). For details about the algorithm, see related cryptography materials.
 let x25519KeyPubMaterial = new Uint8Array([
@@ -196,22 +208,22 @@ let x25519KeyPubMaterial = new Uint8Array([
 /* 1. Set the key alias. */
 let keyAlias = 'X25519_Pub_import_sample';
 /* 2. Encapsulate the key property set and key material. */
-let properties: Array<huks.HuksParam> = [{
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_X25519
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
-  }, {
-    // This tag indicates the usage of the key after it is imported. The tag cannot be changed after the key is imported.
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-  }, {
-    // This tag indicates the type of the key to be imported.
-    tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
-    // The value indicates the public key to import. If the value is HUKS_KEY_TYPE_KEY_PAIR, a key pair is to be imported.
-    value: huks.HuksImportKeyType.HUKS_KEY_TYPE_PUBLIC_KEY
-  },
+let properties: huks.HuksParam[] = [{
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_X25519
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_CURVE25519_KEY_SIZE_256
+}, {
+  // This tag indicates the usage of the key after it is imported. The tag cannot be changed after the key is imported.
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+}, {
+  // This tag indicates the type of the key to be imported.
+  tag: huks.HuksTag.HUKS_TAG_IMPORT_KEY_TYPE,
+  // The value indicates the public key to import. If the value is HUKS_KEY_TYPE_KEY_PAIR, a key pair is to be imported.
+  value: huks.HuksImportKeyType.HUKS_KEY_TYPE_PUBLIC_KEY
+},
 ]
 let options: huks.HuksOptions = {
   properties: properties,
@@ -220,7 +232,7 @@ let options: huks.HuksOptions = {
 
 /* 3. Import the key in plaintext. */
 async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): Promise<boolean> {
-  console.info("promise: enter importKeyItem");
+  console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
@@ -245,6 +257,8 @@ async function testImport() {
   console.info(`testImport success`);
 }
 ```
+<!-- -->
+
 ## Verification
 
 Use [huks.isKeyItemExist](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksiskeyitemexist9) to check whether the key exists. If the key exists, the key is successfully imported.

@@ -28,7 +28,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 2. 调用[OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为加密（CRYPTO_ENCRYPT_MODE），指定加密密钥（OH_CryptoSymKey），初始化加密Cipher实例。
    
-   ECB模式无加密参数，params直接传入null。
+   ECB模式无需设置额外加密参数，创建空的参数对象传入即可。
 
 3. 调用[OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)，更新数据（明文）。
    
@@ -44,7 +44,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 1. 调用[OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create)，指定字符串参数'3DES192|ECB|PKCS7'，创建对称密钥类型为3DES192、分组模式为ECB、填充模式为PKCS7的Cipher实例，用于完成解密操作。
 
-2. 调用[OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为解密（CRYPTO_DECRYPT_MODE），指定解密密钥（OH_CryptoSymKey），初始化解密Cipher实例。ECB模式无加密参数，传入null。
+2. 调用[OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为解密（CRYPTO_DECRYPT_MODE），指定解密密钥（OH_CryptoSymKey），初始化解密Cipher实例。ECB模式无需设置额外加密参数，创建空的参数对象传入即可。
 
 3. 调用[OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)，更新数据（密文）。
    
@@ -67,25 +67,26 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 如果使用CBC、CTR、OFB、CFB分组模式，需设置加解密参数IV。请参考[设置加解密参数IV](#设置加解密参数iv)，无论加密还是解密，在生成和初始化Cipher实例时均需修改相关参数。
 
-```c++
+<!-- @[crypt_decrypt_flow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidance3DES/entry/src/main/cpp/types/project/3des_ecb_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTest3DesEcb()
+OH_Crypto_ErrCode doTest3DesEcb()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
     OH_CryptoSymCipher *decCtx = nullptr;
     OH_CryptoSymKey *keyCtx = nullptr;
+    OH_CryptoSymCipherParams *params = nullptr;
     char *plainText = const_cast<char *>("this is test!");
     Crypto_DataBlob input = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
-    Crypto_DataBlob encData = {.data = nullptr, .len = 0};
-    Crypto_DataBlob decData = {.data = nullptr, .len = 0};
-
-    // 随机生成对称密钥。
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("3DES192", &genCtx);
+    Crypto_DataBlob outUpdate = {.data = nullptr, .len = 0};
+    Crypto_DataBlob decUpdate = {.data = nullptr, .len = 0};
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("3DES192", &genCtx); // 随机生成对称密钥
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -93,44 +94,42 @@ static OH_Crypto_ErrCode doTest3DesEcb()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-
-    // 加密操作。
-    ret = OH_CryptoSymCipher_Create("3DES192|ECB|PKCS7", &encCtx);
+    ret = OH_CryptoSymCipherParams_Create(&params); // 创建参数
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    // 如果是CBC、CTR、OFB、CFB分段模式，此处需要修改为对应模式并添加加解密参数IV。
-    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, nullptr);
+    ret = OH_CryptoSymCipher_Create("3DES192|ECB|PKCS7", &encCtx); // 加密操作
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Final(encCtx, &input, &encData);
+    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-
-    // 解密操作。
-    ret = OH_CryptoSymCipher_Create("3DES192|ECB|PKCS7", &decCtx);
+    ret = OH_CryptoSymCipher_Final(encCtx, &input, &outUpdate);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    // 如果是CBC、CTR、OFB、CFB分段模式，此处需要修改为对应模式并添加加解密参数IV。
-    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, nullptr);
+    ret = OH_CryptoSymCipher_Create("3DES192|ECB|PKCS7", &decCtx); // 解密操作
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Final(decCtx, &encData, &decData);
+    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-
+    ret = OH_CryptoSymCipher_Final(decCtx, &outUpdate, &decUpdate);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
 end:
+    OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
     OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
-    OH_Crypto_FreeDataBlob(&encData);
-    OH_Crypto_FreeDataBlob(&decData);
+    OH_Crypto_FreeDataBlob(&outUpdate);
+    OH_Crypto_FreeDataBlob(&decUpdate);
     return ret;
 }
 ```
@@ -165,5 +164,5 @@ end:
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    // 本段代码只展示CBC、CTR、OFB、CFB分段模式的不同，其他流程请参考开发示例。
+    // 本段代码只展示CBC、CTR、OFB、CFB分组模式的不同，其他流程请参考开发示例。
 ```

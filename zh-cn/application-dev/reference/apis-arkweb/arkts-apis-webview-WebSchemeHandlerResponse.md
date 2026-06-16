@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 导入模块
 
@@ -138,7 +138,7 @@ setStatus(code: number): void
 
 | 参数名   | 类型    |  必填  | 说明                       |
 | --------| ------- | ---- | ---------------------------|
-|  code | number | 是   | Http状态码。 |
+|  code | number | 是   | HTTP状态码。 |
 
 **错误码：**
 
@@ -263,7 +263,8 @@ setHeaderByName(name: string, value: string, overwrite: boolean): void
 getUrl(): string
 
 获取重定向或由于HSTS而更改后的URL。
-风险提示：如果想获取url来做JavascriptProxy通信接口认证，请使用[getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](./arkts-apis-webview-WebviewController.md#getlastjavascriptproxycallingframeurl12)
+
+风险提示：如果想获取URL来做JavascriptProxy通信接口认证，请使用[getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](./arkts-apis-webview-WebviewController.md#getlastjavascriptproxycallingframeurl12)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -299,7 +300,7 @@ getNetErrorCode(): WebNetErrorList
 
 getStatus(): number
 
-获取Response的Http状态码。
+获取Response的HTTP状态码。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -307,7 +308,7 @@ getStatus(): number
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| number | 获取Response的Http状态码。|
+| number | 获取Response的HTTP状态码。|
 
 **示例：**
 

@@ -56,7 +56,7 @@ Enumerates the dynamic range types of media assets.
 
 ## AlbumType
 
-Enumerates the album types.
+Enumerates the album types, for example, user albums, system albums, or albums created by an application.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -64,7 +64,7 @@ Enumerates the album types.
 | --------| ---- | ------------|
 | USER                | 0    | User album.  |
 | SYSTEM              | 1024 | System album.|
-| SOURCE<sup>22+</sup>| 2048 | Album created by an application.|
+| SOURCE<sup>23+</sup>| 2048 | Album created by an application.|
 
 ## AlbumSubtype
 
@@ -78,7 +78,7 @@ Enumerate the album subtypes.
 | FAVORITE        | 1025       | Favorites.|
 | VIDEO  | 1026       | Video album.|
 | IMAGE<sup>12+</sup>               | 1031       | Photo album.|
-| SOURCE\_GENERIC<sup>22+</sup>     | 2049       | Source album.|
+| SOURCE\_GENERIC<sup>23+</sup>     | 2049       | Source album.|
 | ANY    | 2147483647 | Any album.|
 
 ## PositionType<sup>16+</sup>
@@ -101,9 +101,9 @@ Enumerates the keys available for image or video files.
 
 | Name         | Value             | Description                                                      |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| URI           | 'uri'                 | URI of the file.<br>**NOTE**<br>Only the [DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10) predicate can be used for this field during photo query.<br>**Atomic service API**: This API can be used in atomic services since API version 20.           |
+| URI           | 'uri'                 | URI of the file.<br>**Note**:<br>Only the [DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10) predicate can be used for this field during photo query.<br>**Atomic service API**: This API can be used in atomic services since API version 20.           |
 | PHOTO_TYPE    | 'media_type'           | Type of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
-| DISPLAY_NAME  | 'display_name'        | File name displayed. The file name must meet the following requirements:<br>- A valid file name must include a base name and a supported image or video extension.<br>- The total length of the file name must be between 1 and 255 characters.<br>- The base name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ]<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
+| DISPLAY_NAME  | 'display_name'        | File name displayed. The file name must meet the following requirements:<br>- A valid file name must include a base name and a supported image or video extension.<br>- The file name length ranges from 1 to 255.<br>- The base name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ].<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
 | SIZE          | 'size'                | File size, in bytes. The size of a moving photo includes the total size of the image and video.<br>**Atomic service API**: This API can be used in atomic services since API version 20.   |
 | DATE_ADDED    | 'date_added'          | Unix timestamp when the file was created, in seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 20.        |
 | DATE_MODIFIED | 'date_modified'       | Unix timestamp when the file content (not the file name) was last modified, in seconds. This value is updated when the file content is modified, but not when the file name is modified.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -114,8 +114,8 @@ Enumerates the keys available for image or video files.
 | ORIENTATION   | 'orientation'         | Orientation of the file, in degrees.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
 | FAVORITE      | 'is_favorite'            | Whether the file is marked as favorites.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                |
 | TITLE         | 'title'               | Title of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                |
-| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | Unix timestamp when the file was created, in milliseconds.<br>**NOTE**<br>The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
-| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | Unix timestamp when the file was modified, in milliseconds. This value is updated when the file content is modified, but not when the file name is modified.<br>**NOTE**<br>The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
+| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | Unix timestamp when the file was created, in milliseconds.<br>**Note**:<br>The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
+| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | Unix timestamp when the file was modified, in milliseconds. This value is updated when the file content is modified, but not when the file name is modified.<br>**Note**:<br>The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
 | PHOTO_SUBTYPE<sup>12+</sup>   | 'subtype'               | Subtype of the media file.<br>**Atomic service API**: This API can be used in atomic services since API version 20.    |
 | DYNAMIC_RANGE_TYPE<sup>12+</sup>   | 'dynamic_range_type'               | Dynamic range type of the media asset.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
 | COVER_POSITION<sup>12+</sup>   | 'cover_position'               | Position of the moving photo cover, which is the video timestamp (in μs) corresponding to the cover frame.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
@@ -128,6 +128,8 @@ Enumerates the keys available for image or video files.
 | MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | File name extension.                              |
 | OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | ID of the album to which the photo belongs.|
 | ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | Aspect ratio of the image or video.<br> **Model restriction**: This API can be used only in the stage model.|
+| CHANGE_TIME<sup>23+</sup>  | 'change_time' | Time when the photo is changed.|
+| LOCAL_ASSET_SIZE | 'local_asset_size' | Actual size of the local file.<br>- This property indicates only the size of the local file. The default value **0** indicates a cloud file or an unidentified local file.<br>- This property changes when the local file is a dynamic photo and the mode changes. For example, when a dynamic photo in Gallery is in the disabled state, this property indicates only the size of the cover frame.<br>**Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.|
 
 ## AlbumKeys
 
@@ -139,7 +141,8 @@ Enumerates the album keys.
 | ------------- | ------------------- | ---------------------------------------------------------- |
 | URI           | 'uri'                 | URI of the album.                                                  |
 | ALBUM_NAME    | 'album_name'          | Name of the album.                                                  |
-| ALBUM_LPATH<sup>22+</sup>          | 'lpath'                 | Virtual path of the album.<br>Albums and their virtual path values:<br>- Camera application album: '/DCIM/Camera'<br>- Screenshot application album: '/Pictures/Screenshots'<br>- Screen recording application album: '/Pictures/Screenrecords'<br>- User-created album: '/Pictures/Users/{Custom album name}'                    |
+| ALBUM_LPATH<sup>23+</sup>          | 'lpath'                 | Virtual path of the album.<br>Albums and their virtual path values:<br>- Camera application album: '/DCIM/Camera'<br>- Screenshot application album: '/Pictures/Screenshots'<br>- Screen recording application album: '/Pictures/Screenrecords'<br>- User-created album: '/Pictures/Users/{Custom album name}'                    |
+| CHANGE_TIME<sup>23+</sup>          | 'change_time'                 | Time when the album is changed.                                                  |
 
 ## ResourceType<sup>11+</sup>
 
@@ -187,8 +190,8 @@ Enumerates the **DefaultChangeUri** subtypes.
 
 | Name             | Value                     | Description                                                        |
 | ----------------- | ----------------------- | ------------------------------------------------------------ |
-| DEFAULT_PHOTO_URI | 'file://media/Photo'      | Default **PhotoAsset** URI, which must be used with **forChildUris{true}** to subscribe to change notifications of all photo assets.|
-| DEFAULT_ALBUM_URI | 'file://media/PhotoAlbum' | Default album URI, which must be used with **forChildUris{true}** to subscribe to change notifications of all albums.|
+| DEFAULT_PHOTO_URI | 'file://media/Photo'      | Default **PhotoAsset** URI, which must be used with **forSubUri{true}** to subscribe to change notifications of all photo assets.|
+| DEFAULT_ALBUM_URI | 'file://media/PhotoAlbum' | Default album URI, which must be used with **forSubUri{true}** to subscribe to change notifications of all albums.|
 
 ## PhotoViewMIMETypes
 
@@ -357,6 +360,35 @@ Enumerates the states of moving photo badges.
 | MOVING_PHOTO_ENABLED | 1    | The moving photo effect is enabled.|
 | MOVING_PHOTO_DISABLED | 2   | The moving photo effect is disabled.|
 
+## SceneType<sup>23+</sup>
+
+Enumerates the scene types of the moving photo playback.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name               | Value  | Description            |
+|------------------- |--------|----------------------|
+| GRID_TO_PHOTO_BROWSER   | 0      | Tap the grid icon to browse the large image.|
+| PHOTO_BROWSER_SWIPE | 1    | Swipe left or right in the large image scene.|
+
+## PlayMode<sup>23+</sup>
+
+Enumerates whether to support automatic playback of the moving photo.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name               | Value  | Description            |
+|------------------- |--------|----------------------|
+| DEFAULT   | 0      | The automatic playback of the moving photo is not supported.|
+| AUTO_PLAY | 1    | The automatic playback of the moving photo is supported.|
 
 ## VideoMode<sup>22+</sup>
 
@@ -368,3 +400,113 @@ Enumerates the log modes of video files.
 | ----- |  ---- |  ---- |
 | DEFAULT |  0 |  Default type.<br>A value of **0** indicates that the video is either not in log mode or its type has not yet been determined. This value may later be updated to **1** for some videos after type determination, so it is not recommended for use in queries.|
 | LOG_VIDEO |  1 |  Video file in log mode. |
+
+## OperationType<sup>22+</sup>
+
+Enumerates the predicates.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name                   | Value| Description                         |
+| -----------------------|---- | -------------------------------- |
+| EQUAL_TO    | 1  | Checks for equality, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| NOT_EQUAL_TO    | 2   | Checks for inequality, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| GREATER_THAN    | 3   | Checks whether the value is greater than the predicate, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| LESS_THAN    | 4   | Checks whether the value is less than the predicate, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| GREATER_THAN_OR_EQUAL_TO    | 5   | Checks whether the value is greater than or equal to the predicate, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| LESS_THAN_OR_EQUAL_TO    | 6   | Checks whether the value is less than or equal to the predicate, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| AND    | 7   | Logical 'AND', similar to 'and' in database queries. No **field** or **value** is needed.|
+| OR    | 8  | Logical 'OR', similar to 'or' in database queries. No **field** or **value** is needed.|
+| IN    | 9   | Matches fields within a specified range, with a maximum value length of 10.|
+| NOT_IN    | 10   | Matches fields outside a specified range, with a maximum value length of 10.|
+| BEGIN_WRAP    | 11   | Adds a left parenthesis to the predicate, similar to "(" in database queries. It must be used with a right parenthesis. No **field** or **value** is needed.|
+| END_WRAP    | 12   | Adds a right parenthesis to the predicate, similar to ")" in database queries. It must be used with a left parenthesis. No **field** or **value** is needed.|
+| BETWEEN    | 13   | Matches fields within a specified range,<br>including both endpoints (closed interval). It uses the first two elements of the **value** array, where the first element is the lower boundary and the second is the upper boundary. For example, in the array [1, 2, 3, 4], the first two elements are used, with 1 as the lower boundary and 2 as the upper boundary.|
+| NOT_BETWEEN    | 14   | Matches fields outside a specified range,<br>excluding both endpoints (open interval). It uses the first two elements of the **value** array, where the first element is the lower boundary and the second is the upper boundary. For example, in the array [1, 2, 3, 4], the first two elements are used, with 1 as the lower boundary and 2 as the upper boundary.|
+
+## GridLevel<sup>23+</sup>
+    
+Enumerates the levels of grid columns after Picker is started.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+    
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+    
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| SPACIOUS |  0 |  Spacious grid level. This level is the number of standard grid columns minus 1.|
+| STANDARD |  1 |  Standard grid level. The number of standard grid columns varies with the device size. If no number of standard grid columns is configured, the system uses the default number of columns.|
+| COMPACT |  2 |  Compact grid level. This level is the number of standard grid columns plus 1.|
+
+## GridPinchModeType<sup>23+</sup>
+    
+Enumerates the grid pinch mode types.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+    
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+    
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| FULL_FUNCTION_GRID | 0 | Users are allowed to pinch the grid, and then select it or click it to operate the large image.|
+
+
+## AvailabilityStatus
+
+Enumerates the availability status of the media library.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| AVAILABLE |  'available' |  The media library is available.|
+| UNAVAILABLE |  'unavailable' |  The media library is unavailable.|
+
+## MediaAssetPermissionState
+
+Enumerates the permission states for reading media library assets.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| URI_FORMAT_ERROR | 0 | The URI format is incorrect or the URI is not a media library URI.|
+| FILE_NOT_EXIST | 1 | The asset does not exist. The asset may be hidden, moved to the recycle bin, or permanently deleted.|
+| READ_PERMISSION | 2 | The application has the read permission when obtaining the asset.|
+| NO_READ_PERMISSION | 3 | The application does not have the read permission when obtaining the asset.|
+
+## PreferredCompatibleMode
+
+Enumerates the transcoding modes based on the configured asset compatibility.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  Transcoding is performed based on the configured asset compatibility function.|
+| CURRENT |  1 |  No transcoding is performed. Assets are returned in their original format.|
+| COMPATIBLE |  2 |  All assets are transcoded into the most widely compatible format (such as JPEG).|

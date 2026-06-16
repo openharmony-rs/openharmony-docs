@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoSymCipherParams OH_CryptoSymCipherParams
+```
+
 ## Overview
 
 Defines symmetric encryption and decryption parameters.

@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-保存控件允许用户通过点击按钮临时获取存储权限，无需权限弹框确认。
+保存控件允许用户通过点击按钮临时获取存储权限，无需权限弹窗确认。
 
 集成保存控件后，当用户点击该控件时，应用会在短时间内获取访问媒体库特权接口的授权。在API version 19及之前的版本中，授权持续时间为10秒；在API version 20及之后的版本中，授权持续时间为1分钟。这适用于任何需要将文件保存到媒体库的应用场景，例如保存图片或视频等。
 
@@ -15,7 +15,7 @@
 
 保存控件效果如图所示。
 
-![zh-cn_image_0000001701740676](figures/zh-cn_image_0000001701740676.png)
+![save-control-effect](figures/save-control-effect.png)
 
 ## 约束与限制
 
@@ -23,7 +23,7 @@
 
 - 应用在点击控件触发onClick()回调到调用媒体库特权接口的时间间隔需控制在授权时间内。在API version 19及之前的版本中，授权持续时间为10秒；在API version 20及之后的版本中，授权持续时间为1分钟。
 
-- 保存控件仅支持在[应用主窗口和子窗口](../../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)中使用，且不支持在[UIExtension](../../reference/apis-arkui/js-apis-arkui-uiExtension.md)中使用。
+- 保存控件仅支持在[WindowType](../../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)中定义的应用主窗口和子窗口中使用，且不支持在[UIExtension](../../reference/apis-arkui/js-apis-arkui-uiExtension.md)中使用。
 
 - 用户点击一次控件，仅获取一次授权调用。
 
@@ -32,7 +32,7 @@
 - 当开发者需要自定义保存控件的图标和文本时，需要向应用市场申请ohos.permission.CUSTOMIZE_SAVE_BUTTON权限。
 
   > **注意：**
-  > ohos.permission.CUSTOMIZE_SAVE_BUTTON受限开放，仅默认样式无法满足业务场景时可申请，申请方式请参考<!--RP1-->[申请使用受限权限](declare-permissions-in-acl.md)<!--RP1End-->。
+  > ohos.permission.CUSTOMIZE_SAVE_BUTTON受限开放，仅默认样式无法满足业务场景时可申请，申请方式请参考[申请使用受限权限](declare-permissions-in-acl.md)。
 
 ## 开发步骤
 
@@ -47,7 +47,7 @@
 
 2. 设置图片资源并添加保存控件。
    
-   保存控件是由图标、文本和背景组成的类似按钮的安全控件。其中，背景是必选的，图标和文本至少选择一个。图标和文本可以从已有的选项中选择，也可以通过[setIcon](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md#seticon20)和[setText](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md#settext20)自定义。在声明安全控件的接口时，有传参和不传参两种方式。不传参将默认创建一个包含图标、文字和背景的按钮；传参则根据参数创建，不包含未配置的元素。
+   保存控件是由图标、文本和背景组成的类似按钮的安全控件。其中，背景是必选的，图标和文本至少选择一个。图标和文本可以从已有的选项中选择，也可以通过[setIcon](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md#seticon20)和[setText](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md#settext20)自定义。在声明安全控件的接口时，有传参和不传参两种方式。不传参将默认创建一个包含图标、文本和背景的按钮；传参则根据参数创建，不包含未配置的元素。
 
    当前示例使用默认参数。具体请参见[SaveButton控件](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。此外，所有安全控件都继承了[安全控件通用属性](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md)，可用于定制样式。
    
@@ -114,5 +114,4 @@
      }
    }
    ```
-
 

@@ -64,6 +64,7 @@ The following example uses multiple image loading tasks that provide real-time u
    <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
 
 3. In the host thread, use **onReceiveData()** to receive messages.
+
    This allows the host thread to receive data sent by the task through **notice()**.
 
    ```ts

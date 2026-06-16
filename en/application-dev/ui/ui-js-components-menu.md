@@ -44,7 +44,7 @@ Create a **&lt;menu&gt;** component in the .hml file under **pages/index** and a
 }
 ```
 
-![en-us_image_0000001232162284](figures/en-us_image_0000001232162284.gif)
+![menu-Component](figures/menu-Component.gif)
 
 > **NOTE**
 > - The **&lt;menu&gt;** component supports only the [option](../reference/apis-arkui/arkui-js/js-components-basic-option.md) child component.
@@ -101,12 +101,12 @@ option{
 }
 ```
 
-![en-us_image_0000001275803137](figures/en-us_image_0000001275803137.gif)
+![Setting-Styles-1](figures/Setting-Styles-1.gif)
 
 
 ## Binding Events
 
-Bind the **&lt;menu&gt;** component with the **onselected** event (triggered when a value in the menu is selected) and the **oncancel** event (triggered when an operation is canceled). Click the **&lt;text&gt;** component to call the **show** method to set the coordinates of the **&lt;menu&gt;** component.
+Bind the **oncancel** event to the **&lt;menu&gt;** component. (The event is triggered when an operation is canceled.)
 
 
 ```html
@@ -169,4 +169,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001226815403](figures/en-us_image_0000001226815403.gif)
+![Binding-Events](figures/Binding-Events.gif)

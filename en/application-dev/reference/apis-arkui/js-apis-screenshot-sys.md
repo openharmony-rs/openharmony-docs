@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-The module provides APIs for you to set information such as the region to capture and the size of the screen region when capturing a screen.
+The **Screenshot** module provides APIs for you to set information such as the region to capture and the size of the screen region when capturing a screen.
 
 >  **NOTE**
 >
@@ -49,6 +49,22 @@ Describes the HDR screenshot options.
 | displayId | number        | No| Yes  | ID of the [display](js-apis-display.md#display) device on which the screen region is to be captured. The value must be an integer. The default value is **0**.|
 | isNotificationNeeded| boolean        | No| Yes  | Whether to send a notification after a snapshot is captured. **true** to send, **false** otherwise. The default value is **true**. Such a notification can be listened for through [captureStatusChange](js-apis-display.md#displayoncapturestatuschange12).  |
 | isCaptureFullOfScreen | boolean        | No| Yes  | Whether to capture all displays on the current screen. If the screen contains multiple displays, the value **true** means that the entire screen is captured, and **false** means that only the region of the logical screen associated with the specified display ID is captured. The default value is **false**.|
+| displayIntent | [DisplayIntentType](#displayintenttype)        | No| Yes  | Rendering mode of the captured HDR image. This does not affect the SDR image effect. The default value is **screenshot.DisplayIntentType.CANONICAL**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+
+## DisplayIntentType 
+
+Enumerates the rendering modes of the captured HDR image.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| CANONICAL | 0 | The specified screenshot is rendered based on the standard HDR display attribute to optimize the display effect of the screenshot on different HDR displays.|
+| LOCAL | 1 |The specified screenshot is rendered based on the current HDR display attribute to ensure that the display effect of the screenshot is consistent with that of the current display from which the screenshot is captured.|
 
 ## Size
 
@@ -90,7 +106,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API.|
 | 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 1400001 | Invalid display or screen. |
 
 **Example**
@@ -194,13 +209,13 @@ Obtains a screenshot. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
 
 | ID| Error Message|
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API.|
 | 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 1400001 | Invalid display or screen. |
 
 **Example**
 
@@ -261,7 +276,7 @@ Obtains a screenshot. This API uses a promise to return the result. SDR stands f
 
 | Type                         | Description                                           |
 | ----------------------------- | ----------------------------------------------- |
-| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;&gt; | Promise used to an array of PixelMap objects. If the screen contains HDR resources (even if they are partially obscured), the array contains two PixelMaps: the first is an SDR PixelMap, and the second is an HDR PixelMap. If there are no HDR resources, the array contains a single SDR PixelMap.|
+| Promise&lt;Array&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;&gt; | Promise used to return an array of PixelMap objects. If the screen contains HDR resources (even if they are partially obscured), the array contains two PixelMaps: the first is an SDR PixelMap, and the second is an HDR PixelMap. If there are no HDR resources, the array contains a single SDR PixelMap.|
 
 **Error codes**
 
@@ -285,7 +300,8 @@ import { image } from '@kit.ImageKit';
 let hdrScreenshotOptions: screenshot.HdrScreenshotOptions = {
   "displayId": 0,
   "isNotificationNeeded": true,
-  "isCaptureFullOfScreen": true
+  "isCaptureFullOfScreen": true,
+  "displayIntent": screenshot.DisplayIntentType.CANONICAL
 };
 try {
   let promise = screenshot.saveHdrPicture(hdrScreenshotOptions);

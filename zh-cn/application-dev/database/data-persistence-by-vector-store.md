@@ -45,6 +45,7 @@
 | TEXT | 字符串类型 | 是 |
 | BLOB | 二进制类型 | 是 |
 | FLOATVECTOR | 向量数据类型 | 是 |
+| GEOMETRY (搭载OpenHarmony 7.0.0及以上版本设备支持) | 地理坐标类型 | 是 |
 
 ### 字段约束
 
@@ -125,7 +126,7 @@ SQL语句中的函数，如下所示：
 
 ## 接口说明
 
-以下是向量数据库持久化功能的相关接口，更多接口及使用方式请见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+以下是向量数据库持久化功能的相关接口，更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |
@@ -142,11 +143,13 @@ SQL语句中的函数，如下所示：
 
 1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
 
-   <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { UIContext } from '@kit.ArkUI';
    // ...
      // 判断当前系统是否支持向量数据库
      let ret = relationalStore.isVectorSupported();
@@ -168,11 +171,12 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->    
+   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
-   let context = getContext();
+   /* context为应用的上下文信息，此处获取方式仅为示例。 */
+   let context: Context = new UIContext().getHostContext() as common.UIAbilityContext;
    const STORE_CONFIG: relationalStore.StoreConfig = {
      name: 'VectorTest.db', // 数据库文件名
      securityLevel: relationalStore.SecurityLevel.S1, // 数据库安全级别
@@ -270,6 +274,17 @@ SQL语句中的函数，如下所示：
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    }
    
+   // 搭载OpenHarmony 7.0.0及以上版本的设备，支持使用表达式进行加权打分，基于表达式得分排序查询
+   try {
+     // 创建第二张表
+     let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY, location text, people text, age int, repr floatvector(2));';
+     await store!.execute(CREATE_SQL);
+     let resultSet = await store!.querySql('select *, (1000 * (location='local') + 500 * (people like 'Mike') + 100 * (age > 18)) as score from test1 where repr <-> '[6.2, 7.3]' < 0.8 order by score limit 5;');
+     resultSet!.close();
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   }
+
    // 子查询
    try {
      // 创建第二张表

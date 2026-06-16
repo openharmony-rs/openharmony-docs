@@ -5,13 +5,19 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 appRecovery模块提供了应用在故障状态下的恢复能力。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。API9仅支持单进程中单Ability的应用恢复。API10支持进程中包含多个Ability的场景。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> API9仅支持单进程中单Ability的应用恢复。
+>
+> API10支持进程中包含多个Ability的场景。
+>
+> API24支持发生CPP_CRASH时应用恢复。
 
 ## 导入模块
 ```ts
@@ -22,16 +28,16 @@ import { appRecovery } from '@kit.AbilityKit';
 
 应用重启标志，[enableAppRecovery](#apprecoveryenableapprecovery)接口重启选项参数，该类型为枚举。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
-| ALWAYS_RESTART   | 0    | 总是重启应用。 |
-| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。 |
-| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。 |
-| NO_RESTART           | 0xFFFF    | 总是不重启应用。 |
+| ALWAYS_RESTART   | 0    | 总是重启应用。 <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
+| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| RESTART_WHEN_CPP_CRASH<sup>24+</sup>    | 0x0004    | 发生CPP_CRASH时重启应用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| NO_RESTART           | 0xFFFF    | 总是不重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## SaveOccasionFlag
 
@@ -101,9 +107,12 @@ restartApp(): void
 
 重启当前进程，并拉起应用启动时第一个Ability，如果该Ability存在已经保存的状态，这些状态数据会在Ability的onCreate生命周期回调的want参数中作为wantParam属性传入。
 
-API10时将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Ability。如果没有指定则按以下规则启动：\
-如果当前应用前台的Ability支持恢复，则重新拉起该Ability。\
-如果存在多个支持恢复的Ability处于前台，则只拉起最后一个。\
+API10时将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Ability。如果没有指定则按以下规则启动：
+
+如果当前应用前台的Ability支持恢复，则重新拉起该Ability。
+
+如果存在多个支持恢复的Ability处于前台，则只拉起最后一个。
+
 如果没有Ability处于前台，则不拉起。
 
 可以配合[errorManager](js-apis-app-ability-errorManager.md)相关接口使用。两次重启的间隔应大于一分钟，一分钟之内重复调用此接口只会退出应用不会重启应用。自动重启的行为与主动重启一致。

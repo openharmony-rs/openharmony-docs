@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 资源管理导入sendableResourceManager模块，通过调用[resourceToSendableResource](#sendableresourcemanagerresourcetosendableresource)和[sendableResourceToResource](#sendableresourcemanagersendableresourcetoresource)方法可以将[Resource](#resource)对象和[SendableResource](#sendableresource)对象进行互转。
 
@@ -52,7 +52,7 @@ resourceToSendableResource(resource: Resource): SendableResource
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -107,7 +107,7 @@ sendableResourceToResource(resource: SendableResource): Resource
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [

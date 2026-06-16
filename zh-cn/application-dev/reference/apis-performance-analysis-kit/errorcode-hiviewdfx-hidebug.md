@@ -2,10 +2,10 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 > **说明：**
 >
@@ -50,6 +50,26 @@ The interface call failed due to a remote exception.
 **处理步骤**
 
 建议重启设备后重试。若重试后依然失败，请[导出日志信息](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-setup-hilog#section2114542680)<!--RP1-->并向官方反馈。<!--RP1End-->
+
+## 11400106 配额超限
+
+**错误信息**
+
+The number of available invocations for the interface is insufficient. Please wait until the number of available invocations for the interface is reset.
+
+**错误描述**
+
+接口调用配额已超限，无法继续执行操作。
+
+**可能原因**
+
+1.进程调用次数超出配额（1次/天）。
+
+2.整机调用次数超出配额（5次/周）。
+
+**处理步骤**
+
+等待进程或整机的调用配额刷新或者在开发者模式下调用接口。
 
 ## 11400107 dump子进程fork失败
 

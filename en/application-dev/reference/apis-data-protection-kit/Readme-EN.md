@@ -11,6 +11,7 @@
   - [@ohos.security.identifySensitiveContent (Identifying Sensitive Content)](js-apis-identifySensitiveContent.md)
   <!--Del-->
   - [@ohos.dlpPermission (DLP) (System API)](js-apis-dlppermission-sys.md)
+  - [@ohos.dlpSetDlpFeature (DLP) (System API)](js-apis-dlpsetdlpfeature-sys.md)
   <!--DelEnd-->
 - C APIs<!--data-protection-c-->
   - Modules<!--data-protection-module-->

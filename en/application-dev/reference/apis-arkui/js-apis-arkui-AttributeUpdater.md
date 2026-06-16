@@ -1,17 +1,18 @@
 # AttributeUpdater
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 **AttributeUpdater** directly set attributes to a component to trigger UI re-renders, without marking them as state variables.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 >
+> - The APIs of this module can be used only in the stage model.
 
 
 ## Modules to Import
@@ -36,6 +37,8 @@ import { AttributeUpdater } from '@kit.ArkUI';
 >  5. Currently, **updateConstructorParams** supports only the following components: **Button**, **Image**, **Text**, **Span**, **SymbolSpan**, **ImageSpan**.
 >  
 >  6. **AttributeUpdater** does not support operations related to state management, such as switching between light and dark modes.
+>
+>  7. When the API of the [AttributeUpdater](#attributeupdatert-c--initializert) object is invoked in the scenario of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) API of [UIContext](./arkts-apis-uicontext-uicontext.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
 
 ## Initializer\<T>
 type Initializer\<T> = () => T
@@ -79,7 +82,7 @@ Defines the function for updating attributes in normal state.
 ### initializeModifier
 initializeModifier(instance: T): void
 
-Initialize the attributes to the values initially set by **AttributeUpdater** for the component.
+Initializes the component's attributes to the default values defined in this **AttributeUpdater**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -107,7 +110,7 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
       .width('80%')
   }
 
-  // Triggered when the AttributeUpdater object is used or updated.
+  // Triggered when the AttributeUpdater object is applied or updated.
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.borderWidth(1);
   }
@@ -125,8 +128,8 @@ struct Index {
         Button(this.flushTheButton)
           .attributeModifier(this.modifier)
           .onClick(() => {
-            // Modify the attribute by using attribute of AttributeUpdater.
-            // Note that you need to use the attributeModifier attribute method of the component to establish the binding relationship between the component and AttributeUpdater.
+            // Update component attributes via AttributeUpdater's attribute property.
+            // Note: The component must be bound to the AttributeUpdater via its attributeModifier attribute method.
             this.modifier.attribute?.backgroundColor('#ff2787d9').labelStyle({ maxLines: 5 });
           })
           .margin('10%')
@@ -134,7 +137,7 @@ struct Index {
           .width('80%')
           .labelStyle({ maxLines: 2 })
           .onClick(() => {
-            this.flushTheButton = this.flushTheButton + ' Updated' ;
+            this.flushTheButton = this.flushTheButton + ' Updated';
           })
       }
       .width('100%')
@@ -207,7 +210,7 @@ struct updaterDemo2 {
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| updateConstructorParams | [C](#attributeupdatert-c--initializert) | No| No| Modifies component constructor parameters. **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component. |
+| updateConstructorParams | [C](#attributeupdatert-c--initializert) | No| No| **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component. The type is used to change the constructor input parameters of the component.|
 
 **Example**
 
@@ -276,8 +279,8 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
       .height(30);
   }
 
-  onComponentChanged(instance: ButtonAttribute) :void {
-    instance.backgroundColor('#ff2787d9')
+  onComponentChanged(instance: ButtonAttribute): void {
+    instance.backgroundColor('#ff519db4')
       .width('50%')
       .height(30);
   }
@@ -295,7 +298,7 @@ struct updaterDemo4 {
         Button("Test")
           .onClick(() => {
             this.btnState = !this.btnState;
-        })
+          }).margin({ bottom: 20 })
 
         if (this.btnState) {
           Button("Button")
@@ -311,3 +314,4 @@ struct updaterDemo4 {
   }
 }
 ```
+![](figures/attribute-updater4.gif)

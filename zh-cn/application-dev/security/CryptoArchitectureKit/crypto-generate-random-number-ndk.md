@@ -49,11 +49,14 @@
 
 4. 调用[OH_CryptoRand_GetAlgoName](../../reference/apis-crypto-architecture-kit/capi-crypto-rand-h.md#oh_cryptorand_getalgoname)，获取随机数生成器使用的算法名称。
 
-```C++
-#include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
+<!-- @[rand_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureRandomNumberGeneration/entry/src/main/cpp/types/project/rand_test.cpp) -->
 
-static OH_Crypto_ErrCode doTestRandomNumber()
+``` C++
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+#include <cstdio>
+#include "file.h"
+
+OH_Crypto_ErrCode doTestRandomNumber()
 {
     // 创建随机数生成器。
     OH_CryptoRand *rand = nullptr;
@@ -76,7 +79,7 @@ static OH_Crypto_ErrCode doTestRandomNumber()
 
     // 生成指定长度的随机数。
     Crypto_DataBlob out = {0};
-    uint32_t randomLength = 24; // 生成24字节的随机数。
+    int randomLength = 24; // 生成24字节的随机数。
     ret = OH_CryptoRand_GenerateRandom(rand, randomLength, &out);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoRand_Destroy(rand);

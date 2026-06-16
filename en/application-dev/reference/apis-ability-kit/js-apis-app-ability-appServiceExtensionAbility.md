@@ -17,7 +17,7 @@ The AppServiceExtensionAbility module provides extended capabilities for backgro
 ## Constraints
 
 - Currently, only 2-in-1 devices are supported.
-- To integrate an AppServiceExtensionAbility, applications must request the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION). This ACL permission is available only for enterprise applications.
+- To integrate an AppServiceExtensionAbility, applications must request the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION). Currently, the ACL permission is available only to common enterprise applications. For details about how to apply for the permission, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
 ## Lifecycle
 
@@ -26,18 +26,23 @@ The AppServiceExtensionAbility provides the following lifecycle callbacks: [onCr
 ![AppServiceExtensionAbility-lifecycle](figures/AppServiceExtensionAbility-lifecycle.png)
 
 - **onCreate**
+
   Called when an AppServiceExtensionAbility instance is created.
 
 - **onDestroy**
+
   Called when an AppServiceExtensionAbility instance is destroyed.
 
 - **onRequest**
+
   Called when an AppServiceExtensionAbility instance is started by calling [startAppServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20).
 
 - **onConnect**
+
   Called when an AppServiceExtensionAbility instance is connected by calling [connectAppServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20).
 
 - **onDisconnect**
+
   Called when all connections to an AppServiceExtensionAbility instance are interrupted.
 
 ## Modules to Import
@@ -48,7 +53,7 @@ import { AppServiceExtensionAbility } from '@kit.AbilityKit';
 
 ## AppServiceExtensionAbility
 
-AppServiceExtensionAbility provides extended capabilities for background services, including lifecycle callbacks for creating, destroying, connecting, and disconnecting background services.
+The AppServiceExtensionAbility module provides extended capabilities for background services, including lifecycle callbacks for creating, destroying, connecting, and disconnecting background services.
 
 ### Properties
 

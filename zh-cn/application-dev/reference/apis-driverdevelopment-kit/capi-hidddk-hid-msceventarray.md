@@ -1,10 +1,10 @@
 # Hid_MscEventArray
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Hid_MscEventArray {...} Hid_MscEventArray
@@ -26,7 +26,7 @@ typedef struct Hid_MscEventArray {...} Hid_MscEventArray
 
 | 名称 | 描述 |
 | -- | -- |
-| Hid_MscEvent* hidMscEvent | 其他特殊事件属性编码 |
-| uint16_t length | 数组长度 |
+| [Hid_MscEvent](capi-hid-ddk-types-h.md#hid_mscevent)* hidMscEvent | 其他特殊事件属性编码 |
+| uint16_t length | 数组的有效长度 |
 
 

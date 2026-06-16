@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 很多应用由多个页面组成，比如用户可以从音乐列表页面点击歌曲，跳转到该歌曲的播放界面。开发者需要通过页面路由将这些页面串联起来，按需实现跳转。
@@ -90,4 +90,4 @@ export default {
 
 运行效果如下图所示：
 
-![zh-cn_image_0000001070707559](figures/zh-cn_image_0000001070707559.png)
+![Implementing-Redirection](figures/Implementing-Redirection.png)

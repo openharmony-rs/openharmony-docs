@@ -4,7 +4,7 @@
 <!--Owner: @hw-xpc-->
 <!--Designer: @xuchuanqi87-->
 <!--Tester: @sl_sunshineGirl-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用域名校验能力，支持查询应用与域名之间的映射关系。
 
@@ -32,6 +32,8 @@ queryAssociatedDomains(bundleName: string): string[]
 
 通过应用的包名查询其关联的网站域名列表。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **需要权限：** ohos.permission.GET_APP_DOMAIN_BUNDLE_INFO
 
 **系统能力：** SystemCapability.BundleManager.AppDomainVerify
@@ -52,14 +54,14 @@ queryAssociatedDomains(bundleName: string): string[]
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle.appDomainVerify错误码](errorcode-appDomainVerify-sys.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[应用域名校验错误码](errorcode-appDomainVerify-sys.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | System API accessed by non-system app. |
 | 401 | Parameter error.|
-| 29900001 | System internal error. |
+| 29900001 |  Internal error. |
 
 **示例：**
 
@@ -81,6 +83,8 @@ queryAssociatedBundleNames(domain: string): string[]
 
 通过网站域名查询其关联的应用包名列表。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **需要权限：** ohos.permission.GET_APP_DOMAIN_BUNDLE_INFO
 
 **系统能力：** SystemCapability.BundleManager.AppDomainVerify
@@ -101,14 +105,14 @@ queryAssociatedBundleNames(domain: string): string[]
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle.appDomainVerify错误码](errorcode-appDomainVerify-sys.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[应用域名校验错误码](errorcode-appDomainVerify-sys.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | System API accessed by non-system app. |
 | 401 | Parameter error.|
-| 29900001 | System internal error. |
+| 29900001 |  Internal error. |
 
 **示例：**
 

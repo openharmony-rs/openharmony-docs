@@ -1,8 +1,8 @@
 # 自定义绘制设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## drawModifier
 
@@ -79,6 +81,7 @@ drawFront?(drawContext: DrawContext): void
 drawContent?(drawContext: DrawContext): void
 
 自定义绘制内容的接口，若重载该方法则可进行内容的自定义绘制，会替换组件原本的内容绘制函数。
+
 该接口的[DrawContext](../js-apis-arkui-graphics.md#drawcontext)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-extension-drawModifier.md#调整自定义绘制canvas的变换矩阵)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -139,7 +142,7 @@ drawForeground(drawContext: DrawContext): void
 
 drawOverlay(drawContext: DrawContext): void
 
-自定义绘制遮罩层的接口，若重载该方法则可进行遮罩层的自定义绘制。需要对其组件的遮罩层进行绘制时重载该方法。与[drawForeground](#drawforeground20)不同的是，drawOverlay可以在组件的边界之外绘制。
+自定义绘制遮罩层的接口，若重载该方法则可进行遮罩层的自定义绘制。需要对其组件的遮罩层进行绘制时重载该方法。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -229,7 +232,7 @@ invalidate(): void
 
 ### DrawContext
 
-type DrawContext = DrawContext
+type DrawContext = import('../api/arkui/Graphics').DrawContext
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -237,7 +240,7 @@ type DrawContext = DrawContext
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 图形绘制上下文。 |
+| import('../api/arkui/Graphics').[DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 图形绘制上下文。 |
 
 ## 示例
 
@@ -314,7 +317,8 @@ class MyFullDrawModifier extends DrawModifier {
     const halfWidth = context.size.width / 2;
     const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
   }
 }
 
@@ -341,7 +345,8 @@ class MyFrontDrawModifier extends DrawModifier {
     const halfWidth = context.size.width / 2;
     const halfHeight = context.size.height / 2;
     const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight), this.uiContext.vp2px(20 * radiusScale));
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
   }
 }
 
@@ -397,6 +402,7 @@ struct DrawModifierExample {
         Button('create')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             this.create();
@@ -404,6 +410,7 @@ struct DrawModifierExample {
         Button('play')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             if (this.drawAnimator) {
@@ -413,6 +420,7 @@ struct DrawModifierExample {
         Button('changeModifier')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             this.count += 1;

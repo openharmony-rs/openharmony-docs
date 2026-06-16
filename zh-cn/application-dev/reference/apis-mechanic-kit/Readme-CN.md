@@ -1,10 +1,10 @@
 # Mechanic Kit（机械体设备控制器）<!--mechanic-api-->
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @Marssssss-->
+<!--Tester: @Aullar-->
+<!--Adviser: @hu-zhiqiong-->
 
 - ArkTS API<!--mechanic-arkts-->
   - [@ohos.distributedHardware.mechanicManager (机械体控制模块)](js-apis-mechanicManager.md)

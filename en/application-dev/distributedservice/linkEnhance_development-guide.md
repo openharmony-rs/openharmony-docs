@@ -31,6 +31,9 @@ The implementation process is as follows: 1. Enable the enhanced connection func
 
 - The **linkEnhance** module provides only connection capabilities, with the link security policy following the Bluetooth pairing policy initially set by the caller, such as Numeric Comparison, Passkey Entry, Just Works, and Out of Band.
 
+<!--RP1-->
+<!--RP1End-->
+
 ## Environment preparation
 
 ### Environment requirement
@@ -40,7 +43,7 @@ Bluetooth is enabled on the client and server devices.
 ### Environment Setup
 
 1. Install DevEco Studio 4.1 or later on the PC.
-2. Update the public-SDK to API version 20 or later.
+2. Update the public-SDK to API version 20 or later<!--Del-->. For details, see OpenHarmony SDK upgrade assistant<!--DelEnd-->.
 3. Connect device A and device B to the PC using USB cables.
 4. Enable Bluetooth on device A and device B.
 
@@ -62,7 +65,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 | start()                                    | Starts the server.                                                                                        |   
 | stop()                                     | Stops the server.                                                                                          |
 | close()                                    | Destroys a **Server** object and cancels all subscribed event callbacks. The **Server** object cannot be used after this API is called.                   |
-| on(type: 'acceptConnected')                | Subscribes to **acceptConnected** events.                                                                          |
+| on(type: 'connectionAccepted')                | Subscribes to **acceptConnected** events.                                                                          |
 | on(type: 'serverStopped')                  | Subscribes to **serverStopped** events.                                                                          |
 | createServer(name: string)                 | Creates a **Server** object.                                                                                     |
 
@@ -123,7 +126,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
       }
     }
     ```
-5. Save the **Connection** object when the connection is established.
+4. Save the **Connection** object when the connection is established.
     ```ts
     serverAcceptOnCallback = (connection: linkEnhance.Connection): void => {
       console.info(TAG + 'serverOnCallback');
@@ -148,7 +151,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
       }
     }
     ```
-6. Disconnect from the peer end and destroy the **Connection** object.
+5. Disconnect from the peer end and destroy the **Connection** object.
     ```ts
     // Disconnect from the peer end.
     linkEnhanceDisconnect(connection: linkEnhance.Connection) {
@@ -162,7 +165,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
       }
     }
     ```
-7. Stop the server and destroy the **Server** object.
+6. Stop the server and destroy the **Server** object.
     ```ts
     // Stop the server.
     linkEnhanceStop(server: linkEnhance.Server) {
@@ -190,7 +193,7 @@ The following table describes the commonly used APIs. For details, see [@ohos.di
 
 1. Import the required module.
     ```ts
-    import linkEnhance from '@kit.DistributedServiceKit';
+    import { linkEnhance } from '@kit.DistributedServiceKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
 2. Declare the **ohos.permission.DISTRIBUTED_DATASYNC** permission in the **module.json5** file.

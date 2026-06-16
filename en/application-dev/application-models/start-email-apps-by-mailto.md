@@ -28,7 +28,7 @@ Typical development scenarios are as follows:
 
 The standard mailto format is as follows:
 
-```
+``` txt
 mailto:someone@example.com?key1=value1&key2=value2
 ```
 
@@ -61,7 +61,7 @@ Refer to the following for the mapping between common symbols and ASCII codes:
 Hyperlinks on web pages must comply with the mailto protocol. Example:
 
 
-```
+``` html
 <a href="mailto:support@example.com?subject=Product Inquiry&body=I am interested in...">Contact Us</a>
 ```
 Replace the email address with the actual one, and configure the email content as required.
@@ -90,7 +90,6 @@ struct Index {
   }
 }
 ```
-
 
 ## Developing a Target Application
 

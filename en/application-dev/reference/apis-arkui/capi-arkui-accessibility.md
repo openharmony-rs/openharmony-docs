@@ -1,8 +1,8 @@
 # ArkUI_Accessibility
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Owner: @wangyinhua-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 

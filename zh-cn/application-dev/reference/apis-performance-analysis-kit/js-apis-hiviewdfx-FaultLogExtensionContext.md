@@ -4,7 +4,7 @@
 <!--Owner: @hello_harmony-->
 <!--Designer: @StevenLai1994-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 FaultLogExtensionContext是[FaultLogExtensionAbility](js-apis-hiviewdfx-FaultLogExtensionAbility.md)的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 

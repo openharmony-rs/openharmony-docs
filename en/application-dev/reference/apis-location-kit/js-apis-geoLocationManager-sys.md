@@ -70,7 +70,7 @@ Location information.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| isFromMock | Boolean | No| Yes| **true**: The location information is obtained from the mock location switch.<br>**false**: The location information is not obtained from the location simulation function.<br>**System API**: This is a system API.|
+| isFromMock | Boolean | No| Yes| **true**: The location information is obtained from the mock location switch.<br>**false**: The location information is not obtained from the mock location switch.<br>**System API**: This is a system API.|
 
 
 ## ReverseGeocodingMockInfo
@@ -83,8 +83,8 @@ Defines the configuration of the mock reverse geocoding function.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| location |  [ReverseGeoCodeRequest](js-apis-geoLocationManager.md#reversegeocoderequest) | No| No| Latitude and longitude information. **System API**: This is a system API.|
-| geoAddress |  [GeoAddress](#geoaddress) | No| No|Geographical name. **System API**: This is a system API.|
+| location |  [ReverseGeoCodeRequest](js-apis-geoLocationManager.md#reversegeocoderequest) | No| No| Latitude and longitude information.<br>**System API**: This is a system API.|
+| geoAddress |  [GeoAddress](#geoaddress) | No| No|Geographical name.<br>**System API**: This is a system API.|
 
 
 ## LocationMockConfig
@@ -97,8 +97,8 @@ Defines the configuration of the mock location switch.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| timeInterval | number | No| No| Time interval at which mock locations are reported, in seconds. **System API**: This is a system API.|
-| locations | Array&lt;[Location](#location)&gt; | No| No| Array of mocked locations. **System API**: This is a system API.|
+| timeInterval | number | No| No| Time interval at which mock locations are reported, in seconds.<br>**System API**: This is a system API.|
+| locations | Array&lt;[Location](#location)&gt; | No| No| Array of mocked locations.<br>**System API**: This is a system API.|
 
 ## LocatingRequiredDataConfig<sup>10+</sup>
 
@@ -110,10 +110,13 @@ Defines the configuration for obtaining the required data of the location servic
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| type | [LocatingRequiredDataType](#locatingrequireddatatype10) | No| No| Type of the required data. **System API**: This is a system API.|
-| needStartScan |  boolean | No| No| **true**: Scanning needs to be initiated.<br>**false**: Scanning does not need to be initiated. **System API**: This is a system API.|
-| scanInterval |  number | No| Yes| Scanning interval, in milliseconds. The specified value must be greater than **0**. The default value is **10000**. **System API**: This is a system API.|
-| scanTimeout |  number | No| Yes| Scanning timeout interval, in milliseconds. The value ranges from **0** to **600000**. The default value is **10000**. **System API**: This is a system API.|
+| type | [LocatingRequiredDataType](#locatingrequireddatatype10) | No| No| Type of the required data.<br>**System API**: This is a system API.|
+| needStartScan |  boolean | No| No| **true**: Scanning needs to be initiated.<br>**false**: Scanning does not need to be initiated.<br>**System API**: This is a system API.|
+| scanInterval |  number | No| Yes| Scanning interval, in milliseconds. The specified value must be greater than **0**. The default value is **10000**.<br>**System API**: This is a system API.|
+| scanTimeout |  number | No| Yes| Scanning timeout interval, in milliseconds. The value ranges from **0** to **600000**. The default value is **10000**.<br>**System API**: This is a system API.|
+| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
+| arfcn<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Absolute Radio Frequency Channel Number (ARFCN).<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
+| plmnId<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Public Land Mobile Network Identifier (PLMN ID) of a SIM card.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
 
 
 ## ContinuousLocationRequest<sup>12+</sup>
@@ -126,7 +129,7 @@ Defines a continuous location request.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| sportsType<sup>18+</sup> | [SportsType](#sportstype18) | No| Yes| Sports type.<br>**Atomic service API**: This API can be used in atomic services since API version 18. **System API**: This is a system API.|
+| sportsType<sup>18+</sup> | [SportsType](#sportstype18) | No| Yes| Sports type.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**System API**: This is a system API.|
 
 
 ## LocatingRequiredData<sup>10+</sup>
@@ -139,8 +142,11 @@ Defines the required data of the location service, including the Wi-Fi or Blueto
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| wifiData | [WifiScanInfo](#wifiscaninfo10) | No| Yes| Wi-Fi scanning result. **System API**: This is a system API.|
-| bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | No| Yes| Bluetooth scanning result. **System API**: This is a system API.|
+| wifiData | [WifiScanInfo](#wifiscaninfo10) | No| Yes| Wi-Fi scanning result.<br>**System API**: This is a system API.|
+| bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | No| Yes| Bluetooth scanning result.<br>**System API**: This is a system API.|
+| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
+| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Camped cell information.<br> **System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
+| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Neighboring cell information.<br> **System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
 
 
 ## WifiScanInfo<sup>10+</sup>
@@ -153,11 +159,11 @@ Defines the Wi-Fi scanning information, including the SSID, BSSID, and RSSI of t
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | No| No| Service set identifier (SSID) of a Wi-Fi hotspot, in UTF-8 format. **System API**: This is a system API.|
-| bssid | string | No| No| Base station subsystem identifier (BSSID) of a Wi-Fi hotspot. **System API**: This is a system API.|
-| rssi | number | No| No| Received signal strength indicator (RSSI) of a Wi-Fi hotspot, in dBm. **System API**: This is a system API.|
-| frequency | number | No| No| Frequency of a Wi-Fi hotspot, in Hz. **System API**: This is a system API.|
-| timestamp | number | No| No| Scanning timestamp. **System API**: This is a system API.|
+| ssid | string | No| No| Service set identifier (SSID) of a Wi-Fi hotspot, in UTF-8 format.<br>**System API**: This is a system API.|
+| bssid | string | No| No| Base station subsystem identifier (BSSID) of a Wi-Fi hotspot.<br> **System API**: This is a system API.|
+| rssi | number | No| No| Received signal strength indicator (RSSI) of a Wi-Fi hotspot, in dBm.<br> **System API**: This is a system API.|
+| frequency | number | No| No| Frequency of a Wi-Fi hotspot, in Hz.<br>**System API**: This is a system API.|
+| timestamp | number | No| No| Timestamp, in microseconds.<br> **System API**: This is a system API.|
 
 
 ## BluetoothScanInfo<sup>10+</sup>
@@ -170,10 +176,35 @@ Defines the Bluetooth scanning information.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| deviceName | string | No| No| Name of a Bluetooth device. **System API**: This is a system API.|
-| macAddress | string | No| No| MAC address of a Bluetooth device. **System API**: This is a system API.|
-| rssi | number | No| No| Signal strength of a Bluetooth device, in dBm. **System API**: This is a system API.|
-| timestamp | number | No| No| Scanning timestamp. **System API**: This is a system API.|
+| deviceName | string | No| No| Name of a Bluetooth device.<br> **System API**: This is a system API.|
+| macAddress | string | No| No| MAC address of a Bluetooth device.<br> **System API**: This is a system API.|
+| rssi | number | No| No| Signal strength of a Bluetooth device, in dBm.<br> **System API**: This is a system API.|
+| timestamp | number | No| No| Timestamp, in microseconds.<br> **System API**: This is a system API.|
+
+
+## CellInfo<sup>23+</sup>
+
+Defines cellular cell information.
+
+**System capability**: SystemCapability.Location.Location.Core
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Type| Read Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| timeSinceBoot | number | No| No| Duration from the time when the device is started to the time when the location is successfully obtained, in nanoseconds. Enabling and then disabling the airplane mode is not considered as a device restart.<br>**System API**: This is a system API.|
+| cellId | number | No| No| Cellular cell ID.<br> **System API**: This is a system API.|
+| lac | number | No| No| Location area code.<br>**System API**: This is a system API.|
+| mcc | number | No| No| Mobile country code (MCC).<br>**System API**: This is a system API.|
+| mnc | number | No| No| Mobile network code (MNC).<br> **System API**: This is a system API.|
+| rat | number | No| No| Radio access technology.<br> **System API**: This is a system API.|
+| signalIntensity | number | No| No| Signal strength.<br>**System API**: This is a system API.|
+| arfcn | number | No| No| Absolute Radio Frequency Channel Number (ARFCN).<br> **System API**: This is a system API.|
+| pci | number | No| No| Physical cell ID.<br>**System API**: This is a system API.|
+| additionsMap | Map&lt;string, string&gt; | No| No| Additional information.<br>**System API**: This is a system API.|
+
 
 ## LocationPrivacyType
 
@@ -185,9 +216,9 @@ Defines the privacy statement type.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| OTHERS | 0 | Other scenarios. Reserved field. **System API**: This is a system API.|
-| STARTUP | 1 | Privacy statement displayed in the startup wizard. The user needs to choose whether to agree with the statement. **System API**: This is a system API.|
-| CORE_LOCATION | 2 | Privacy statement displayed when enabling the location service. **System API**: This is a system API.|
+| OTHERS | 0 | Other scenarios. Reserved field.<br>**System API**: This is a system API.|
+| STARTUP | 1 | Privacy statement displayed in the startup wizard. The user needs to choose whether to agree with the statement.<br> **System API**: This is a system API.|
+| CORE_LOCATION | 2 | Privacy statement displayed when enabling the location service.<br> **System API**: This is a system API.|
 
 ## LocatingRequiredDataType<sup>10+</sup>
 
@@ -199,8 +230,9 @@ Defines the type of the required data of the location service.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| WIFI  | 1 | Wi-Fi scanning information. **System API**: This is a system API.|
-| BLUETOOTH | 2 | Bluetooth scanning information. **System API**: This is a system API.|
+| WIFI  | 1 | Wi-Fi scanning information.<br> **System API**: This is a system API.|
+| BLUETOOTH | 2 | Bluetooth scanning information.<br> **System API**: This is a system API.|
+| CELLULAR<sup>23+</sup> | 3 | Cellular cell information.<br> **System API**: This is a system API.|
 
 
 ## LocationIconStatus<sup>12+</sup>
@@ -213,9 +245,9 @@ Defines the location icon status.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| LOCATING_NOT_STARTED  | 0 | No location services are available and the location icon does not need to be displayed. **System API**: This is a system API.|
-| LOCATING_STARTED | 1 | Common location is in progress, and the common location icon needs to be displayed. **System API**: This is a system API.|
-| HD_LOCATING_STARTED | 2 | High-precision location is in progress, and the high-precision location icon needs to be displayed. **System API**: This is a system API.|
+| LOCATING_NOT_STARTED  | 0 | No location services are available and the location icon does not need to be displayed.<br> **System API**: This is a system API.|
+| LOCATING_STARTED | 1 | Common location is in progress, and the common location icon needs to be displayed.<br> **System API**: This is a system API.|
+| HD_LOCATING_STARTED | 2 | High-precision location is in progress, and the high-precision location icon needs to be displayed.<br> **System API**: This is a system API.|
 
 
 ## SportsType<sup>18+</sup>
@@ -255,7 +287,7 @@ Subscribes to changes in the required data of the location service, including Wi
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -269,14 +301,15 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let callback = (code:Array<geoLocationManager.LocatingRequiredData>):void => {
-      console.info('locatingRequiredDataChange: ' + JSON.stringify(code));
+
+  let callback = (code: Array<geoLocationManager.LocatingRequiredData>): void => {
+    console.info('locatingRequiredDataChange: ' + JSON.stringify(code));
   }
-  let config:geoLocationManager.LocatingRequiredDataConfig = {'type': 1, 'needStartScan': true, 'scanInterval': 10000};
+  let config: geoLocationManager.LocatingRequiredDataConfig = { 'type': 1, 'needStartScan': true, 'scanInterval': 10000 };
   try {
-      geoLocationManager.on('locatingRequiredDataChange', config, callback);
+    geoLocationManager.on('locatingRequiredDataChange', config, callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -302,7 +335,7 @@ Unsubscribes from changes in the required data of the location service and stops
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -315,15 +348,16 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let callback = (code:Array<geoLocationManager.LocatingRequiredData>):void => {
-      console.info('locatingRequiredDataChange: ' + JSON.stringify(code));
+
+  let callback = (code: Array<geoLocationManager.LocatingRequiredData>): void => {
+    console.info('locatingRequiredDataChange: ' + JSON.stringify(code));
   }
-  let config:geoLocationManager.LocatingRequiredDataConfig = {'type': 1, 'needStartScan': true, 'scanInterval': 10000};
+  let config: geoLocationManager.LocatingRequiredDataConfig = { 'type': 1, 'needStartScan': true, 'scanInterval': 10000 };
   try {
-      geoLocationManager.on('locatingRequiredDataChange', config, callback);
-      geoLocationManager.off('locatingRequiredDataChange', callback);
+    geoLocationManager.on('locatingRequiredDataChange', config, callback);
+    geoLocationManager.off('locatingRequiredDataChange', callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -347,7 +381,7 @@ Enables the location service. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -361,14 +395,15 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.enableLocation((err) => {
-          if (err) {
-              console.error('enableLocation: err=' + JSON.stringify(err));
-          }
-      });
+    geoLocationManager.enableLocation((err) => {
+      if (err) {
+        console.error('enableLocation: err=' + JSON.stringify(err));
+      }
+    });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -393,7 +428,7 @@ Enables the location service. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -407,15 +442,16 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
-      geoLocationManager.enableLocation().then(() => {
-          console.info('promise, enableLocation succeed');
-      })
-      .catch((error:BusinessError) => {
-          console.error('promise, enableLocation: error=' + JSON.stringify(error));
+    geoLocationManager.enableLocation().then(() => {
+      console.info('promise, enableLocation succeed');
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, enableLocation: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -433,7 +469,7 @@ Disables the location service.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -446,10 +482,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.disableLocation();
+    geoLocationManager.disableLocation();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -467,7 +504,7 @@ Enables the mock location switch.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -481,10 +518,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.enableLocationMock();
+    geoLocationManager.enableLocationMock();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -503,7 +541,7 @@ Disables the mock location switch.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -517,10 +555,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.disableLocationMock();
+    geoLocationManager.disableLocationMock();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -547,7 +586,7 @@ This API can be invoked only after [geoLocationManager.enableLocationMock](#geol
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -562,19 +601,75 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let locations:Array<geoLocationManager.Location> = [
-      {"latitude": 30.12, "longitude": 120.11, "altitude": 123, "accuracy": 1, "speed": 5.2, "timeStamp": 16594326109, "direction": 123.11, "timeSinceBoot": 1000000000, "additionSize": 0, "isFromMock": true},
-      {"latitude": 31.13, "longitude": 121.11, "altitude": 123, "accuracy": 2, "speed": 5.2, "timeStamp": 16594326109, "direction": 123.11, "timeSinceBoot": 2000000000, "additionSize": 0, "isFromMock": true},
-      {"latitude": 32.14, "longitude": 122.11, "altitude": 123, "accuracy": 3, "speed": 5.2, "timeStamp": 16594326109, "direction": 123.11, "timeSinceBoot": 3000000000, "additionSize": 0, "isFromMock": true},
-      {"latitude": 33.15, "longitude": 123.11, "altitude": 123, "accuracy": 4, "speed": 5.2, "timeStamp": 16594326109, "direction": 123.11, "timeSinceBoot": 4000000000, "additionSize": 0, "isFromMock": true},
-      {"latitude": 34.16, "longitude": 124.11, "altitude": 123, "accuracy": 5, "speed": 5.2, "timeStamp": 16594326109, "direction": 123.11, "timeSinceBoot": 5000000000, "additionSize": 0, "isFromMock": true}
+
+  let locations: Array<geoLocationManager.Location> = [
+    {
+      "latitude": 30.12,
+      "longitude": 120.11,
+      "altitude": 123,
+      "accuracy": 1,
+      "speed": 5.2,
+      "timeStamp": 16594326109,
+      "direction": 123.11,
+      "timeSinceBoot": 1000000000,
+      "additionSize": 0,
+      "isFromMock": true
+    },
+    {
+      "latitude": 31.13,
+      "longitude": 121.11,
+      "altitude": 123,
+      "accuracy": 2,
+      "speed": 5.2,
+      "timeStamp": 16594326109,
+      "direction": 123.11,
+      "timeSinceBoot": 2000000000,
+      "additionSize": 0,
+      "isFromMock": true
+    },
+    {
+      "latitude": 32.14,
+      "longitude": 122.11,
+      "altitude": 123,
+      "accuracy": 3,
+      "speed": 5.2,
+      "timeStamp": 16594326109,
+      "direction": 123.11,
+      "timeSinceBoot": 3000000000,
+      "additionSize": 0,
+      "isFromMock": true
+    },
+    {
+      "latitude": 33.15,
+      "longitude": 123.11,
+      "altitude": 123,
+      "accuracy": 4,
+      "speed": 5.2,
+      "timeStamp": 16594326109,
+      "direction": 123.11,
+      "timeSinceBoot": 4000000000,
+      "additionSize": 0,
+      "isFromMock": true
+    },
+    {
+      "latitude": 34.16,
+      "longitude": 124.11,
+      "altitude": 123,
+      "accuracy": 5,
+      "speed": 5.2,
+      "timeStamp": 16594326109,
+      "direction": 123.11,
+      "timeSinceBoot": 5000000000,
+      "additionSize": 0,
+      "isFromMock": true
+    }
   ];
-  let config:geoLocationManager.LocationMockConfig = {"timeInterval": 5, "locations": locations};
+  let config: geoLocationManager.LocationMockConfig = { "timeInterval": 5, "locations": locations };
   try {
-      geoLocationManager.enableLocationMock();
-      geoLocationManager.setMockedLocations(config);
+    geoLocationManager.enableLocationMock();
+    geoLocationManager.setMockedLocations(config);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -593,7 +688,7 @@ Enables the mock reverse geocoding function.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -606,10 +701,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.enableReverseGeocodingMock();
+    geoLocationManager.enableReverseGeocodingMock();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -628,7 +724,7 @@ Disables the mock geocoding function.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -641,10 +737,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.disableReverseGeocodingMock();
+    geoLocationManager.disableReverseGeocodingMock();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -671,7 +768,7 @@ This API can be invoked only after [geoLocationManager.enableReverseGeocodingMoc
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -685,18 +782,84 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let mockInfos:Array<geoLocationManager.ReverseGeocodingMockInfo> = [
-      {"location": {"locale": "zh", "latitude": 30.12, "longitude": 120.11, "maxItems": 1}, "geoAddress": {"locale": "zh", "latitude": 30.12, "longitude": 120.11, "isFromMock": true}},
-      {"location": {"locale": "zh", "latitude": 31.12, "longitude": 121.11, "maxItems": 1}, "geoAddress": {"locale": "zh", "latitude": 31.12, "longitude": 121.11, "isFromMock": true}},
-      {"location": {"locale": "zh", "latitude": 32.12, "longitude": 122.11, "maxItems": 1}, "geoAddress": {"locale": "zh", "latitude": 32.12, "longitude": 122.11, "isFromMock": true}},
-      {"location": {"locale": "zh", "latitude": 33.12, "longitude": 123.11, "maxItems": 1}, "geoAddress": {"locale": "zh", "latitude": 33.12, "longitude": 123.11, "isFromMock": true}},
-      {"location": {"locale": "zh", "latitude": 34.12, "longitude": 124.11, "maxItems": 1}, "geoAddress": {"locale": "zh", "latitude": 34.12, "longitude": 124.11, "isFromMock": true}},
+
+  let mockInfos: Array<geoLocationManager.ReverseGeocodingMockInfo> = [
+    {
+      "location": {
+        "locale": "zh",
+        "latitude": 30.12,
+        "longitude": 120.11,
+        "maxItems": 1
+      },
+      "geoAddress": {
+        "locale": "zh",
+        "latitude": 30.12,
+        "longitude": 120.11,
+        "isFromMock": true
+      }
+    },
+    {
+      "location": {
+        "locale": "zh",
+        "latitude": 31.12,
+        "longitude": 121.11,
+        "maxItems": 1
+      },
+      "geoAddress": {
+        "locale": "zh",
+        "latitude": 31.12,
+        "longitude": 121.11,
+        "isFromMock": true
+      }
+    },
+    {
+      "location": {
+        "locale": "zh",
+        "latitude": 32.12,
+        "longitude": 122.11,
+        "maxItems": 1
+      },
+      "geoAddress": {
+        "locale": "zh",
+        "latitude": 32.12,
+        "longitude": 122.11,
+        "isFromMock": true
+      }
+    },
+    {
+      "location": {
+        "locale": "zh",
+        "latitude": 33.12,
+        "longitude": 123.11,
+        "maxItems": 1
+      },
+      "geoAddress": {
+        "locale": "zh",
+        "latitude": 33.12,
+        "longitude": 123.11,
+        "isFromMock": true
+      }
+    },
+    {
+      "location": {
+        "locale": "zh",
+        "latitude": 34.12,
+        "longitude": 124.11,
+        "maxItems": 1
+      },
+      "geoAddress": {
+        "locale": "zh",
+        "latitude": 34.12,
+        "longitude": 124.11,
+        "isFromMock": true
+      }
+    },
   ];
   try {
-      geoLocationManager.enableReverseGeocodingMock();
-      geoLocationManager.setReverseGeocodingMockInfo(mockInfos);
+    geoLocationManager.enableReverseGeocodingMock();
+    geoLocationManager.setReverseGeocodingMockInfo(mockInfos);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -725,7 +888,7 @@ Checks whether a user agrees with the privacy statement of the location service.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -738,10 +901,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      let isConfirmed = geoLocationManager.isLocationPrivacyConfirmed(1);
+    let isConfirmed = geoLocationManager.isLocationPrivacyConfirmed(1);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -767,7 +931,7 @@ Sets the user confirmation status for the privacy statement of the location serv
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -781,10 +945,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      geoLocationManager.setLocationPrivacyConfirmStatus(1, true);
+    geoLocationManager.setLocationPrivacyConfirmStatus(1, true);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -815,7 +980,7 @@ Obtains the required data of the location service. This API uses a promise to re
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -830,16 +995,17 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let config:geoLocationManager.LocatingRequiredDataConfig = {'type': 1, 'needStartScan': true, 'scanInterval': 10000};
+
+  let config: geoLocationManager.LocatingRequiredDataConfig = { 'type': 1, 'needStartScan': true, 'scanInterval': 10000 };
   try {
-      geoLocationManager.getLocatingRequiredData(config).then((result) => {
-          console.info('getLocatingRequiredData return: ' + JSON.stringify(result));
-      })  
-      .catch((error:BusinessError) => {
-          console.error('promise, getLocatingRequiredData: error=' + JSON.stringify(error));
+    geoLocationManager.getLocatingRequiredData(config).then((result) => {
+      console.info('getLocatingRequiredData return: ' + JSON.stringify(result));
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, getLocatingRequiredData: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -863,7 +1029,7 @@ Subscribes to status changes of the location icon. This API uses an asynchronous
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -876,13 +1042,14 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let callback = (code: geoLocationManager.LocationIconStatus):void => {
-      console.info('LocationIconStatus: ' + JSON.stringify(code));
+
+  let callback = (code: geoLocationManager.LocationIconStatus): void => {
+    console.info('LocationIconStatus: ' + JSON.stringify(code));
   }
   try {
-      geoLocationManager.on('locationIconStatusChange', callback);
+    geoLocationManager.on('locationIconStatusChange', callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -906,7 +1073,7 @@ Unsubscribes from status changes of the location icon.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -919,14 +1086,15 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
-  let callback = (code: geoLocationManager.LocationIconStatus):void => {
-      console.info('LocationIconStatus: ' + JSON.stringify(code));
+
+  let callback = (code: geoLocationManager.LocationIconStatus): void => {
+    console.info('LocationIconStatus: ' + JSON.stringify(code));
   }
   try {
-      geoLocationManager.on('locationIconStatusChange', callback);
-	  geoLocationManager.off('locationIconStatusChange', callback);
+    geoLocationManager.on('locationIconStatusChange', callback);
+    geoLocationManager.off('locationIconStatusChange', callback);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -949,7 +1117,7 @@ Obtains the current location icon status.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -961,10 +1129,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      let iconStatus = geoLocationManager.getLocationIconStatus();
+    let iconStatus = geoLocationManager.getLocationIconStatus();
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -995,7 +1164,7 @@ Enables the location switch for the specified system account. This API uses a pr
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1009,17 +1178,18 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
-      // Enable the location switch for the specified system account. For example, if the account ID is below 101, you can enable the location switch for the account whose ID is 100.
-      let userId:number = 100;
-      geoLocationManager.enableLocationByUserId(userId).then(() => {
-          console.info('promise, enableLocationByUserId succeed');
-      })
-      .catch((error:BusinessError) => {
-          console.error('promise, enableLocationByUserId: error=' + JSON.stringify(error));
+    // Enable the location switch for the specified system account. For example, if the account ID is below 101, you can enable the location switch for the account whose ID is 100.
+    let userId: number = 100;
+    geoLocationManager.enableLocationByUserId(userId).then(() => {
+      console.info('promise, enableLocationByUserId succeed');
+    })
+      .catch((error: BusinessError) => {
+        console.error('promise, enableLocationByUserId: error=' + JSON.stringify(error));
       });
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1044,7 +1214,7 @@ Disables the location switch for the specified system account.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1057,12 +1227,13 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      // Disable the location switch for the specified system account. For example, if the account ID is below 101, you can disable the location switch for the account whose ID is 100.
-      let userId:number = 100;
-      geoLocationManager.disableLocationByUserId(userId);
+    // Disable the location switch for the specified system account. For example, if the account ID is below 101, you can disable the location switch for the account whose ID is 100.
+    let userId: number = 100;
+    geoLocationManager.disableLocationByUserId(userId);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1091,7 +1262,7 @@ Checks whether the location switch is enabled for the specified system account.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1103,12 +1274,13 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      // Check whether the location switch is enabled for the specified system account. For example, if the account ID is below 101, you can check whether the location switch is enabled for the account whose ID is 100.
-      let userId:number = 100;
-      let locationEnabled = geoLocationManager.isLocationEnabledByUserId(userId);
+    // Check whether the location switch is enabled for the specified system account. For example, if the account ID is below 101, you can check whether the location switch is enabled for the account whose ID is 100.
+    let userId: number = 100;
+    let locationEnabled = geoLocationManager.isLocationEnabledByUserId(userId);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
 
@@ -1135,7 +1307,7 @@ If this parameter is set to **true**, the application can obtain the location in
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1148,10 +1320,11 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+
   try {
-      let isIgnored:boolean = true;
-      geoLocationManager.setLocationSwitchIgnored(isIgnored);
+    let isIgnored: boolean = true;
+    geoLocationManager.setLocationSwitchIgnored(isIgnored);
   } catch (err) {
-      console.error("errCode:" + err.code + ", message:"  + err.message);
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```

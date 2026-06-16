@@ -12,7 +12,7 @@ The APIs provided by **DataSharePredicates** correspond to the filter criteria o
 
 **DataSharePredicates** applies to the following scenario:
 
-- It is used as a search criterion in the media file management service. For details, see [Fetch Options of the Album Management](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#fetchoptions). In this scenario, you do not need to pay attention to the database type.
+- It is used as a search criterion in the media file management service. For details, see [FetchOptions](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#fetchoptions) in the fetch options of the album management. In this scenario, you do not need to pay attention to the database type.
 
 <!--Del-->
 - It is used as a search criterion when APIs of the [RDB store](js-apis-data-relationalStore-sys.md) and [KV store](js-apis-distributedKVStore-sys.md) are called. In this scenario, use the corresponding predicate based on the database type.
@@ -173,7 +173,7 @@ Currently, both the RDB store and KV store support this predicate.
 
 | Name  | Type  | Mandatory| Description          |
 | -------- | ------ | ---- | -------------- |
-| total    | number | Yes  | Maximum number of records.<br>If the KV store is used and **total** is **undefined** or **null**, the maximum number of records is 0. For details about the value range, see the description of this parameter in [limit](./js-apis-distributedKVStore.md#limit).<br>If the RDB store is used and **total** is **undefined** or **null**, the maximum number of records is not limited. For details about the value range, see the description of this parameter in [limitAs](./js-apis-distributedKVStore.md#limit).|
+| total    | number | Yes  | Maximum number of records.<br>If the KV store is used and **total** is **undefined** or **null**, the maximum number of records is 0. For details about the value range, see the description of this parameter in [limit](./js-apis-distributedKVStore.md#limit).<br>If the RDB store is used and **total** is **undefined** or **null**, the maximum number of records is not limited. For details about the value range, see the description of this parameter in [limitAs](./js-apis-distributedKVStore.md#limit).<br> <br> |
 | offset | number | Yes  | Start position of the query result.<br>If this parameter is set to **undefined** or **null**, the start position is the beginning of the result set.<br>For details about the value range in a KV store, see the description of this parameter in [limit](./js-apis-distributedKVStore.md#limit).<br>For details about the value range in an RDB store, see the description of the **rowOffset** parameter in [offsetAs](arkts-apis-data-relationalStore-RdbPredicates.md#offsetas).|
 
 **Return value**

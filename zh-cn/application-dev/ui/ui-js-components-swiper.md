@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -59,7 +59,7 @@ text{
 ```
 
 
-![zh-cn_image_0000001181495038](figures/zh-cn_image_0000001181495038.gif)
+![swiper-Component](figures/swiper-Component.gif)
 
 
 > **说明：** 
@@ -120,7 +120,7 @@ text{
 }
 ```
 
-![zh-cn_image_0000001181655292](figures/zh-cn_image_0000001181655292.gif)
+![Adding-Attributes](figures/Adding-Attributes.gif)
 
 > **说明：**
 > - 设置indicator（是否启用导航点指示器）属性为true时digital（是否启用数字导航点）属性才会生效。
@@ -186,7 +186,7 @@ text{
 }
 ```
 
-![zh-cn_image_0000001226896657](figures/zh-cn_image_0000001226896657.gif)
+![Setting-Style-1](figures/Setting-Style-1.gif)
 
 
 ## 绑定事件
@@ -288,7 +288,7 @@ export default{
 }
 ```
 
-![zh-cn_image_0000001227016767](figures/zh-cn_image_0000001227016767.gif)
+![Binding-Event-5](figures/Binding-Event-5.gif)
 
 
 ## 场景示例
@@ -305,7 +305,7 @@ export default{
     </div>
   </swiper>
   <div class="content">
-    <div class="content_item {{index == $idx?'actived':''}}" for="item in list" onclick="imageTo({{$idx}})">
+    <div class="content_item {{index == $idx?'activated':''}}" for="item in list" onclick="imageTo({{$idx}})">
       <image src="{{item.src}}"></image>
     </div>
   </div>
@@ -341,7 +341,7 @@ swiper{
   padding: 5px;
   transform: scale(0.5);
 }
-.actived{
+.activated{
   transform: scale(1);
   border: 1px solid #b20937ea;
 }
@@ -350,7 +350,6 @@ swiper{
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   data:{
     index: 0,
@@ -370,7 +369,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001263359599](figures/zh-cn_image_0000001263359599.gif)
+![Example-Scenario-13](figures/Example-Scenario-13.gif)
 
 
 ## 相关实例

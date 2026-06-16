@@ -2,14 +2,14 @@ Prebuilts for Clang/LLVM-based Tools Used in OpenHarmony
 ====================================================
 
 1. For the latest version of this doc, please make sure to visit:
-[OpenHarmony Clang/LLVM-based Tools Readme Doc](https://gitee.com/openharmony/third_party_llvm-project/blob/master/llvm-build/README.md)
+[OpenHarmony Clang/LLVM-based Tools Readme Doc](https://gitcode.com/openharmony/third_party_llvm-project/blob/master/llvm-build/README.md)
 
 2. Build instructions
 ------------------
 
 ```
 # Get source code
-repo init -u https://gitee.com/openharmony/manifest.git -b llvm_toolchain-dev
+repo init -u https://gitcode.com/openharmony/manifest.git -b llvm_toolchain-dev
 repo sync -c 
 repo forall -c 'git lfs pull'
 cp -r toolchain/llvm-project/llvm-build toolchain

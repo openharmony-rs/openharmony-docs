@@ -1,7 +1,7 @@
 # scsi_peripheral_types.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -18,7 +18,7 @@ Provides the enum variables, structures, and macros used in the SCSI Peripheral 
 
 **Since**: 18
 
-**Related module**: [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
 
 ## Summary
 
@@ -27,37 +27,37 @@ Provides the enum variables, structures, and macros used in the SCSI Peripheral 
 | Name                                                                                  | typedef Keyword| Description|
 |--------------------------------------------------------------------------------------| -- | -- |
 | [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) | ScsiPeripheral_DeviceMemMap | Represents the device memory mapping created by calling **OH_ScsiPeripheral_CreateDeviceMemMap**. The buffer that uses the device memory mapping can provide better performance.|
-| [ScsiPeripheral_IORequest](capi-scsiperipheralddk-scsiperipheral-iorequest.md)       | ScsiPeripheral_IORequest | Read/write operation request.|
-| [ScsiPeripheral_Request](capi-scsiperipheralddk-scsiperipheral-request.md)           | ScsiPeripheral_Request | Request structure.|
-| [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md)         | ScsiPeripheral_Response | Response structure.|
-| [ScsiPeripheral_TestUnitReadyRequest](capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md) | ScsiPeripheral_TestUnitReadyRequest | Request structure of the **test unit ready** command.|
-| [ScsiPeripheral_InquiryRequest](capi-scsiperipheralddk-scsiperipheral-inquiryrequest.md)            | ScsiPeripheral_InquiryRequest | Request structure of the **inquiry** command.|
-| [ScsiPeripheral_InquiryInfo](capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md)                  | ScsiPeripheral_InquiryInfo | SCSI inquiry data.|
-| [ScsiPeripheral_ReadCapacityRequest](capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md)  | ScsiPeripheral_ReadCapacityRequest | Request structure of the **read capacity** command.|
+| [ScsiPeripheral_IORequest](capi-scsiperipheralddk-scsiperipheral-iorequest.md)       | ScsiPeripheral_IORequest | Defines the read/write operation request.|
+| [ScsiPeripheral_Request](capi-scsiperipheralddk-scsiperipheral-request.md)           | ScsiPeripheral_Request | Defines the request structure.|
+| [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md)         | ScsiPeripheral_Response | Defines the response structure.|
+| [ScsiPeripheral_TestUnitReadyRequest](capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md) | ScsiPeripheral_TestUnitReadyRequest | Defines the request structure of the **test unit ready** command.|
+| [ScsiPeripheral_InquiryRequest](capi-scsiperipheralddk-scsiperipheral-inquiryrequest.md)            | ScsiPeripheral_InquiryRequest | Defines the request structure of the **inquiry** command.|
+| [ScsiPeripheral_InquiryInfo](capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md)                  | ScsiPeripheral_InquiryInfo | Defines the SCSI inquiry data.|
+| [ScsiPeripheral_ReadCapacityRequest](capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md)  | ScsiPeripheral_ReadCapacityRequest | Defines the request structure of the **read capacity** command.|
 | [ScsiPeripheral_CapacityInfo](capi-scsiperipheralddk-scsiperipheral-capacityinfo.md)                | ScsiPeripheral_CapacityInfo | SCSI read capacity.|
-| [ScsiPeripheral_RequestSenseRequest](capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md)  | ScsiPeripheral_RequestSenseRequest | Request structure of the **request sense** command.|
-| [ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md)            | ScsiPeripheral_BasicSenseInfo | Basic information about the sense data.|
-| [ScsiPeripheral_VerifyRequest](capi-scsiperipheralddk-scsiperipheral-verifyrequest.md)              | ScsiPeripheral_VerifyRequest | Request structure of the **verify** command.|
-| [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md)                            | ScsiPeripheral_Device | Opaque SCSI device structure.|
+| [ScsiPeripheral_RequestSenseRequest](capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md)  | ScsiPeripheral_RequestSenseRequest | Defines the request structure of the **Request Sense** command.|
+| [ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md)            | ScsiPeripheral_BasicSenseInfo | Defines the basic information about the sense data.|
+| [ScsiPeripheral_VerifyRequest](capi-scsiperipheralddk-scsiperipheral-verifyrequest.md)              | ScsiPeripheral_VerifyRequest | Defines the request structure of the **verify** command.|
+| [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md)                            | ScsiPeripheral_Device | Defines the opaque SCSI device structure.|
 
 ### Enums
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ScsiPeripheral_DdkErrCode](#scsiperipheral_ddkerrcode) | ScsiPeripheral_DdkErrCode | SCSI Peripheral DDK error codes.|
-| [ScsiPeripheral_Status](#scsiperipheral_status) | ScsiPeripheral_Status | SCSI status used for the response.|
+| [ScsiPeripheral_DdkErrCode](#scsiperipheral_ddkerrcode) | ScsiPeripheral_DdkErrCode | Enumerates the SCSI Peripheral DDK error codes.|
+| [ScsiPeripheral_Status](#scsiperipheral_status) | ScsiPeripheral_Status | Enumerates the SCSI status codes used for the response.|
 
 ## Enum Description
 
 ### ScsiPeripheral_DdkErrCode
 
-```
+```c
 enum ScsiPeripheral_DdkErrCode
 ```
 
 **Description**
 
-SCSI Peripheral DDK error codes.
+Enumerates the SCSI Peripheral DDK error codes.
 
 **Since**: 18
 
@@ -76,7 +76,7 @@ SCSI Peripheral DDK error codes.
 
 ### ScsiPeripheral_Status
 
-```
+```c
 enum ScsiPeripheral_Status
 ```
 
@@ -96,3 +96,87 @@ Enumerates the SCSI status codes used for the response.
 | SCSIPERIPHERAL_STATUS_TASK_SET_FULL = 0x28 | Task set already full.|
 | SCSIPERIPHERAL_STATUS_ACA_ACTIVE = 0x30 | ACA activity status.|
 | SCSIPERIPHERAL_STATUS_TASK_ABORTED = 0x40 | Task aborted.|
+
+### SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE
+
+```c
+SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE 8
+```
+
+**Description**
+
+Defines the minimum length of the sensing data in the descriptor format.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE
+
+```c
+SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE 18
+```
+
+**Description**
+
+Defines the minimum length of the sensing data in the fixed format.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN
+
+```c
+SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN 16
+```
+
+**Description**
+
+Maximum length of a command description block.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_MAX_SENSE_DATA_LEN
+
+```c
+SCSIPERIPHERAL_MAX_SENSE_DATA_LEN 252
+```
+
+**Description**
+
+Defines the maximum length of the sensing data.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_VENDOR_ID_LEN
+
+```c
+SCSIPERIPHERAL_VENDOR_ID_LEN 8
+```
+
+**Description**
+
+Defines the length of a vendor ID.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_PRODUCT_ID_LEN
+
+```c
+SCSIPERIPHERAL_PRODUCT_ID_LEN 16
+```
+
+**Description**
+
+Defines the length of a product ID.
+
+**Since**: 18
+
+### SCSIPERIPHERAL_PRODUCT_REV_LEN
+
+```c
+SCSIPERIPHERAL_PRODUCT_REV_LEN 4
+```
+
+**Description**
+
+Defines the length of a product revision version.
+
+**Since**: 18

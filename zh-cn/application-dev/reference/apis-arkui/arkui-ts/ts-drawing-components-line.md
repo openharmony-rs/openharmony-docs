@@ -1,8 +1,8 @@
 # Line
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -18,10 +18,13 @@
 
 无
 
-
 ## 接口
 
-Line(options?: LineOptions)
+### Line
+
+new Line(options?: LineOptions)
+
+用于绘制直线的构造函数。 
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -33,7 +36,25 @@ Line(options?: LineOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [LineOptions](ts-drawing-components-line.md#lineoptions18对象说明) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理。 |
+| options | [LineOptions](ts-drawing-components-line.md#lineoptions18对象说明) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+
+### Line
+
+Line(options?: LineOptions)
+
+用于绘制直线的构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [LineOptions](ts-drawing-components-line.md#lineoptions18对象说明) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## LineOptions<sup>18+</sup>对象说明
 
@@ -46,6 +67,8 @@ Line(options?: LineOptions)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,7 +133,7 @@ fill(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：Color.Black<br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Black<br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
 
 ### fillOpacity
 
@@ -146,7 +169,7 @@ stroke(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照Color.Black处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。 |
 
 ### strokeDashArray
 
@@ -290,7 +313,7 @@ antiAlias(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true<br/>异常值undefined和null按照默认值处理。 |
+| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true<br/>异常值undefined和null按照false处理。 |
 
 ## 示例
 
@@ -348,7 +371,7 @@ struct LineExample {
 }
 ```
 
-![zh-cn_image_0000001219982725](figures/zh-cn_image_0000001219982725.png)
+![line1](figures/line1.png)
 
 ### 示例2（边框端点绘制）
 
@@ -397,7 +420,7 @@ struct LineExample1 {
 }
 ```
 
-![zh-cn_image1_0000001219982725](figures/zh-cn_image1_0000001219982725.png)
+![line](figures/line.png)
 
 ### 示例3（边框间隙绘制）
 
@@ -458,7 +481,7 @@ struct LineExample {
 }
 ```
 
-![zh-cn_image2_0000001219982725](figures/zh-cn_image2_0000001219982725.PNG)
+![line2](figures/line2.PNG)
 
 ### 示例4（宽和高使用不同参数类型绘制直线）
 
@@ -511,7 +534,7 @@ struct LineTypeExample {
 class MyLineModifier implements AttributeModifier<LineAttribute> {
   applyNormalAttribute(instance: LineAttribute): void {
     // 一个起始点为（10, 10），终点为（120, 10）的直线，边框颜色#2787D9，边框间隙[20]，向左偏移15，线条两端样式为半圆，边框透明度0.5，边框宽度10，抗锯齿开启
-    instance.startPoint([10,10])
+    instance.startPoint([10, 10])
     instance.endPoint([120, 10])
     instance.stroke("#2787D9")
     instance.strokeDashArray([20])

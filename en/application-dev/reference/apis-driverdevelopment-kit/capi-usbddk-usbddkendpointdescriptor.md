@@ -1,10 +1,14 @@
 # UsbDdkEndpointDescriptor
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct UsbDdkEndpointDescriptor {...} UsbDdkEndpointDescriptor
+```
 
 ## Overview
 
@@ -12,7 +16,7 @@ Defines endpoint descriptors.
 
 **Since**: 10
 
-**Related module**: [UsbDDK](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-usbddk.md)
 
 **Header file:** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

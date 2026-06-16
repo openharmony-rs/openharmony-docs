@@ -1,4 +1,4 @@
-# 使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的的任务
+# 使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
@@ -45,12 +45,18 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
       napi_threadsafe_function tsfn;
       napi_async_work work;
   };
-  // ArkTS线程的回调实现
   static void CallJs(napi_env env, napi_value jsCb, void *context, void *data)
   {
       if (env == nullptr) {
           return;
       }
+  
+      napi_handle_scope scope = nullptr;
+      napi_status status = napi_open_handle_scope(env, &scope);
+      if (status != napi_ok) {
+          return;
+      }
+  
       napi_value resultNumber = nullptr;
       napi_value undefined = nullptr;
       napi_get_undefined(env, &undefined);
@@ -61,43 +67,72 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
       napi_value argv[2] = {number1, number2};
       napi_call_function(env, undefined, jsCb, INT_ARG_2, argv, &resultNumber);
       int32_t res = 0;
+      // 获取resultNumber对应的int32值
       napi_get_value_int32(env, resultNumber, &res);
+  
+      napi_close_handle_scope(env, scope);
   }
   
   // 异步线程中调用该接口向ArkTS线程投递指定优先级和入队方式的任务
   static void ExecuteWork(napi_env env, void *data)
   {
       CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
-      // 执行任务为napi_priority_idle优先级，入队方式为队列尾部入队
+      // 投递指定优先级为napi_priority_idle，入队方式为队列尾部入队的任务
       napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_idle, true);
+      // 投递指定优先级为napi_priority_low，入队方式为队列尾部入队的任务
       napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_low, true);
+      // 投递指定优先级为napi_priority_high，入队方式为队列尾部入队的任务
       napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_high, true);
+      // 投递指定优先级为napi_priority_immediate，入队方式为队列尾部入队的任务
       napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_immediate, true);
-      // 执行任务为napi_priority_high优先级，入队方式为队列头部入队
+      // 投递指定优先级为napi_priority_high，入队方式为队列头部入队的任务
       napi_call_threadsafe_function_with_priority(callbackData->tsfn, nullptr, napi_priority_high, false);
   }
   
   static void WorkComplete(napi_env env, napi_status status, void *data)
   {
       CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
-      napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
-      napi_delete_async_work(env, callbackData->work);
-      callbackData->work = nullptr;
-      callbackData->tsfn = nullptr;
+      if (callbackData->tsfn != nullptr) {
+          napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
+          callbackData->tsfn = nullptr;
+      }
+      if (callbackData->work != nullptr) {
+          napi_delete_async_work(env, callbackData->work);
+          callbackData->work = nullptr;
+      }
+      delete callbackData;
   }
   
   static napi_value CallThreadSafeWithPriority(napi_env env, napi_callback_info info)
   {
-      CallbackData *callbackData = new CallbackData();
       size_t argc = 1;
       napi_value jsCb = nullptr;
+      CallbackData *callbackData = new CallbackData();
       napi_get_cb_info(env, info, &argc, &jsCb, nullptr, nullptr);
       napi_value resourceName = nullptr;
       napi_create_string_utf8(env, "Thread-safe Function Demo", NAPI_AUTO_LENGTH, &resourceName);
-      napi_create_threadsafe_function(env, jsCb, nullptr, resourceName, 0, 1, callbackData, nullptr, callbackData, CallJs,
-                                      &callbackData->tsfn);
-      napi_create_async_work(env, nullptr, resourceName, ExecuteWork, WorkComplete, callbackData, &callbackData->work);
-      napi_queue_async_work(env, callbackData->work);
+      if (napi_create_threadsafe_function(env, jsCb, nullptr, resourceName, 0, 1, nullptr, nullptr, nullptr, CallJs,
+                                          &callbackData->tsfn) != napi_ok) {
+          delete callbackData;
+          return nullptr;
+      }
+      // 创建一个异步任务对象
+      if (napi_create_async_work(env, nullptr, resourceName,
+                                 ExecuteWork, WorkComplete, callbackData, &callbackData->work) != napi_ok) {
+          if (callbackData->tsfn != nullptr) {
+              napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
+          }
+          delete callbackData;
+          return nullptr;
+      }
+      if (napi_queue_async_work(env, callbackData->work) != napi_ok) {
+          if (callbackData->tsfn != nullptr) {
+              napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
+          }
+          napi_delete_async_work(env, callbackData->work);
+          delete callbackData;
+          return nullptr;
+      }
       return nullptr;
   }
   ```

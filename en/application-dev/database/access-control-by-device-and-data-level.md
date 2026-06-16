@@ -12,18 +12,16 @@ Distributed data management implements access control based on data security lab
 
 A higher data security label and device security level indicate stricter encryption and access control measures and higher data security.
 
-
 ### Data Security Labels
 
 The data can be rated into four security levels as below.
 
-  | Risk Level| Security Level| Definition| Example| 
+| Risk Level| Security Level| Definition| Example| 
 | -------- | -------- | -------- | -------- |
 | Critical| S4 | Special data types defined by industry laws and regulations, involving the most private individual information or data that may cause severe adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Political opinions, religious and philosophical belief, trade union membership, genetic data, biological information, health and sexual life status, sexual orientation, device authentication, and personal credit card information| 
 | High| S3 | Data that may cause critical adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Individual real-time precise positioning information and movement trajectory| 
 | Moderate| S2 | Data that may cause major adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Detailed addresses and nicknames of individuals| 
 | Low| S1 | Data that may cause minor adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Gender, nationality, and user application records| 
-
 
 ### Device Security Levels
 <!--RP1-->
@@ -32,7 +30,7 @@ Device security levels are classified into SL1 to SL5 based on devices' security
 During device networking, you can run the **hidumper -s 3511** command to query the device security level. If no result is displayed, run the **service_control start dslm_service** command to start the corresponding process and then run the **hidumper** command to query the security level. The following example shows how to query the security level of the RK3568 device:
 <!--RP1End-->
 <!--Del-->
-![en-us_image_0000001542496993](figures/en-us_image_0000001542496993.png)
+![Device-Security-Levels](figures/Device-Security-Levels.png)
 <!--DelEnd-->
 
 ## Access Control Mechanism in Cross-Device Sync
@@ -177,11 +175,14 @@ For details about the APIs, see [RDB Store](../reference/apis-arkdata/arkts-apis
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
+import { UIContext } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
 
 export async function accessControlByDeviceAndDataLevel() {
+  /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
+  const context = new UIContext().getHostContext() as common.UIAbilityContext;
   try {
     const STORE_CONFIG: relationalStore.StoreConfig = {
       name: 'RdbTest.db',

@@ -2,18 +2,21 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
-The **Vibrator** module provides APIs for controlling LED lights and vibrators. You can use the APIs to query the LED light list, turn on and off the LED light, query the vibrator list, query the vibrator effect, and trigger and turn off the vibrator.
+The **Vibrator** module provides APIs for controlling LED lights and vibrators. You can use the APIs to query the LED light list, vibrator list, and vibration effect, and turn on or off the LED light and the vibrator.
 
 Misc devices refer to LED lights and vibrators on devices. LED lights are mainly used for indication (for example, indicating the charging state) and blinking (such as tri-colored lights). Vibrators are mainly used in scenarios such as the alarm clock, power-on/off, and incoming call vibration.
 
 
 > **NOTE**
+>
+> - Module maintenance policy:
+ >   - For lite wearables, this module is constantly maintained and available.
+ >   - For other device types, this module is no longer maintained since API version 8, and you are advised to use the new [@ohos.vibrator](js-apis-vibrator.md) module.
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs of this module are no longer maintained since API version 8. You are advised to use [`@ohos.vibrator`](js-apis-vibrator.md) instead.
 > - This module requires hardware support and can only be debugged on real devices.
 
 
@@ -23,12 +26,17 @@ Misc devices refer to LED lights and vibrators on devices. LED lights are mainly
 ```ts
 import { Vibrator } from '@kit.SensorServiceKit';
 ```
+## Vibrator
 
-## Vibrator.vibrate
+### Vibrator.vibrate
 
- vibrate(options?: VibrateOptions): void
+ static vibrate(options?: VibrateOptions): void
 
 Triggers device vibration.
+
+> **NOTE**
+>
+> For devices other than lite wearables, you are advised to use [vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9) since API version 8.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -40,7 +48,7 @@ Triggers device vibration.
 | ------- | --------------------------------- | ---- | ---------- |
 | options | [VibrateOptions](#vibrateoptions) | No  | Vibration options.|
 
-**Example**
+**ArkTS example**
 
 ```ts
 import { Vibrator, VibrateOptions } from '@kit.SensorServiceKit';
@@ -54,10 +62,82 @@ let vibrateOptions: VibrateOptions = {
     console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
   },
   complete: () => {
-    console.info('completed in vibrating');
+    console.info('vibration completed');
   }
 };
 Vibrator.vibrate(vibrateOptions);
+```
+
+**JS example**
+
+```js
+import vibrator from '@system.vibrator';
+
+export default {
+  data: {
+    TAG: "WearLiteSample:",
+    result: ''
+  },
+  vibrate() {
+    try {
+      let vibrateOptions = {
+        mode: 'short',
+        success: () => {
+          console.info('Succeeded in vibrating');
+          this.result = 'Succeeded in vibrating';
+        },
+        fail: (data, code) => {
+          console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
+          this.result = `Failed to vibrate. Data: ${data}, code: ${code}`;
+        },
+        complete: () => {
+          console.info('vibration completed');
+        }
+      };
+      vibrator.vibrate(vibrateOptions);
+    } catch (e) {
+      console.error(this.TAG + 'vibrate exception occurred, message:' + JSON.stringify(e))
+    }
+  }
+};
+```
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title">
+    {{ result }}
+  </text>
+  <input class="buttonText" type="button" onclick="vibrate">Tap to vibrate</input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+.buttonText {
+  background-color: blue;
+  radius: 30px;
+  text-color: white;
+  font-size: 25px;
+  width: 150px;
+  height:50px;
+  margin-top: 20px;
+  font-weight: bolder;
+  align-items: center;
+}
 ```
 
 ## VibrateOptions
@@ -68,9 +148,9 @@ Defines the vibration options.
 
 **System capability**: SystemCapability.Sensors.MiscDevice.Lite
 
-| Name    | Type    | Mandatory| Description                                                        |
-| -------- | -------- | ---- | ------------------------------------------------------------ |
-| mode     | string   | No  | Vibration mode. The value **long** indicates long vibration, and **short** indicates short vibration. The default value is **long**.|
-| success  | Function | No  | Called when the vibrator data changes.                            |
-| fail     | Function | No  | Called when the API call fails.                                    |
-| complete | Function | No  | Called when the API call is complete.                                    |
+| Name    | Type    | Read-Only| Optional| Description                                                        |
+| -------- | -------- | ---- | ---- | ------------------------------------------------------------ |
+| mode     | string   | No  | Yes  | Vibration mode. The value **long** indicates long vibration, and **short** indicates short vibration. The default value is **long**.|
+| success  | Function | No  | No  | Called when the vibrator data changes.                            |
+| fail     | Function | No  | Yes  | Called when the API call fails.                                    |
+| complete | Function | No  | Yes  | Called when the API call is complete.                                    |

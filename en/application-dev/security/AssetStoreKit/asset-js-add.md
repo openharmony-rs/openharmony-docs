@@ -51,52 +51,54 @@ The following table describes the attributes of **AssetMap** for adding an asset
 
 - Custom service data storage
 
-  ASSET provides 12 custom asset attributes starting with **DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an ASSET attribute.
+  Asset Store Kit provides 12 custom asset attributes starting with **DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an attribute of this kit.
 
-  ASSET protects the integrity of the attributes starting with **DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
+  Asset Store Kit protects the integrity of the attributes starting with **DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
 
 ## Example
 
 > **NOTE**
 >
-> The **asset** module provides an asynchronous API and a synchronous API for adding an asset. The following uses the asynchronous API as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
+> This module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
 > For details about how to add an asset to a group, see [Adding an Asset to a Group](asset-js-group-access-control.md#adding-an-asset-to-a-group).
 
 Add an asset that is accessible when the user unlocks the device for the first time. The asset includes password **demo_pwd**, alias **demo_alias**, and additional information **demo_label**.
 
-<!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+1. Include the header file and define the tool function.
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+   
+   ``` TypeScript
+   import { asset } from '@kit.AssetStoreKit';
+   import { util } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   function stringToArray(str: string): Uint8Array {
+     let textEncoder = new util.TextEncoder();
+     return textEncoder.encodeInto(str);
+   }
+   ```
 
-``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
-
-export async function addAsset(): Promise<string> {
-  let result: string = '';
-  let attr: asset.AssetMap = new Map();
-  attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
-  attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-  attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
-  attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-  try {
-    await asset.add(attr).then(() => {
-      console.info(`Succeeded in adding Asset.`);
-      result = 'Succeeded in adding Asset';
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-      result = 'Failed to add Asset';
-    })
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-    result = 'Failed to add Asset';
-  }
-  return result;
-}
-```
+2. Develop the desired feature.
+   <!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+   
+   ``` TypeScript
+   let attr: asset.AssetMap = new Map();
+   attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
+   attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+   attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
+   attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
+   try {
+     asset.add(attr).then(() => {
+       console.info(`Succeeded in adding Asset.`);
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
+       // ...
+     })
+   } catch (error) {
+     let err = error as BusinessError;
+     console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
+     // ...
+   }
+   ```

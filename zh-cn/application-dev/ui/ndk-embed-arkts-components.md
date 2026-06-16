@@ -1,8 +1,8 @@
 # 嵌入ArkTS组件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -802,7 +802,7 @@ ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Nati
    #endif // MYAPPLICATION_UITIMER_H
    ```
 
-7. 使用[接入ArkTS页面](ndk-access-the-arkts-page.md)章节的页面结构，并沿用[定时器模块相关简单实现](ndk-embed-arkts-components.md)，将Refresh组件作为文本列表的父组件。
+7. 使用[接入ArkTS页面](ndk-access-the-arkts-page.md)章节的页面结构，将Refresh组件作为文本列表的父组件。
    <!-- @[mixed_refresh_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/MixedRefreshExample.h) -->
    
    ``` C

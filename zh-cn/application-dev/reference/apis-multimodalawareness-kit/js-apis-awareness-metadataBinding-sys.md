@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.metadataBinding (记忆链接)
+# @ohos.multimodalAwareness.metadataBinding (记忆链接)(系统接口)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @codexu62-->
@@ -23,11 +23,11 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 ## metadataBinding.encodeImage
 encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelMap&gt;
 
-在图片中加入信息。
+在图片中加入信息。使用promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
@@ -49,7 +49,7 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |   202    | Permission check failed. A non-system application uses the system API. |
-| 32100001 | Internal handling failed. File creation failed. |
+| 32100001 | Internal handling failed. |
 | 32100002 | Encode process fail. Possible causes: 1. Image processing error; 2. Channel coding error. |
 
 **示例**：
@@ -70,13 +70,13 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 ```
 
 ## metadataBinding.decodeImage
-function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
+decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
-解析图片中携带的信息。
+解析图片中携带的信息。使用promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：  
 
@@ -97,7 +97,7 @@ function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |   202    | Permission check failed. A non-system application uses the system API. |
-| 32100001 | Internal handling failed. File read failed. |
+| 32100001 | Internal handling failed. |
 | 32100003 | Decode process fail. Possible causes: 1. Image is not an encoded Image; 2. Image destroyed, decoding failed. |
 
 **示例：**  
@@ -116,19 +116,25 @@ metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
 ```
 
 ## metadataBinding.notifyMetadataBindingEvent
-notifyMetadataBindingEvent(metadata: string): void
+notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
-推送待嵌入的信息给调用编码接口的应用或服务。
+推送待嵌入的信息给调用编码接口的应用或服务。使用promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：  
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| metadata     | string                           | 是   | 要嵌入图片中的信息。 |
+|bundleName|string|是|获取applink的应用包名.|
+
+**返回值：**
+
+| 类型                          | 说明        |
+| ---------------------------- | ---------- |
+| Promise&lt;string&gt; | Promise 对象, 当前所在页面的applink信息.|
 
 **错误码**：  
 
@@ -137,7 +143,7 @@ notifyMetadataBindingEvent(metadata: string): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |   202    | Permission check failed. A non-system application uses the system API. |
-| 32100001 | Internal handling failed. Obtain metadata failed. |
+| 32100001 | Internal handling failed. |
 
 **示例**：
 
@@ -145,8 +151,10 @@ notifyMetadataBindingEvent(metadata: string): void
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let metadata: string = '';
-metadataBinding.notifyMetadataBindingEvent(metadata).catch((error: BusinessError) => {
+let bundleName: string = '';
+metadataBinding.notifyMetadataBindingEvent(bundleName).then((appLink:string)=>{
+  console.info("notify metadata:" + appLink);
+}).catch((error: BusinessError) => {
   console.error("notify metadata error" + error);
 });
 ```

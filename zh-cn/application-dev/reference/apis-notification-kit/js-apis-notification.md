@@ -1,10 +1,16 @@
 # @ohos.notification (Notification模块)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 本模块提供通知管理的能力，包括发布、取消发布通知，创建、获取、移除通知通道，订阅、取消订阅通知，获取通知的使能状态、角标使能状态，获取通知的相关信息等。
 
 > **说明：**
 >
-> 从API version 9开始，该接口不再维护，推荐使用新接口[@ohos.notificationManager](js-apis-notificationManager.md)。
+> 从API version 9开始，该模块不再维护，建议使用[@ohos.notificationManager](js-apis-notificationManager.md)替代。
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 通知订阅和取消订阅仅对系统应用开放。
@@ -128,7 +134,7 @@ import Base from '@ohos.base';
 // cancel回调
 let cancelCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("cancel failed " + JSON.stringify(err));
+    console.error("cancel failed " + JSON.stringify(err));
   } else {
     console.info("cancel success");
   }
@@ -165,7 +171,7 @@ cancel(id: number, label?: string): Promise\<void\>
 import Base from '@ohos.base';
 
 Notification.cancel(0).then(() => {
-	console.info("cancel success");
+  console.info("cancel success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancel failed, code is ${err}`);
 });
@@ -196,7 +202,7 @@ import Base from '@ohos.base';
 // cancel回调
 let cancelCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("cancel failed " + JSON.stringify(err));
+    console.error("cancel failed " + JSON.stringify(err));
   } else {
     console.info("cancel success");
   }
@@ -228,7 +234,7 @@ import Base from '@ohos.base';
 // cancel回调
 let cancelAllCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("cancelAll failed " + JSON.stringify(err));
+    console.error("cancelAll failed " + JSON.stringify(err));
   } else {
     console.info("cancelAll success");
   }
@@ -256,7 +262,7 @@ cancelAll(): Promise\<void\>
 import Base from '@ohos.base';
 
 Notification.cancelAll().then(() => {
-	console.info("cancelAll success");
+  console.info("cancelAll success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancelAll failed, code is ${err}`);
 });
@@ -285,7 +291,7 @@ import Base from '@ohos.base';
 // addslot回调
 let addSlotCallBack = (err: Base.BusinessError) => {
   if (err) {
-    console.info("addSlot failed " + JSON.stringify(err));
+    console.error("addSlot failed " + JSON.stringify(err));
   } else {
     console.info("addSlot success");
   }
@@ -348,7 +354,7 @@ import Base from '@ohos.base';
 // getSlot回调
 let getSlotCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("getSlot failed " + JSON.stringify(err));
+    console.error("getSlot failed " + JSON.stringify(err));
   } else {
     console.info("getSlot success");
   }
@@ -412,7 +418,7 @@ import Base from '@ohos.base';
 // getSlots回调
 function getSlotsCallback(err: Base.BusinessError) {
   if (err) {
-    console.info("getSlots failed " + JSON.stringify(err));
+    console.error("getSlots failed " + JSON.stringify(err));
   } else {
     console.info("getSlots success");
   }
@@ -469,7 +475,7 @@ import Base from '@ohos.base';
 // removeSlot回调
 let removeSlotCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("removeSlot failed " + JSON.stringify(err));
+    console.error("removeSlot failed " + JSON.stringify(err));
   } else {
     console.info("removeSlot success");
   }
@@ -532,7 +538,7 @@ import Base from '@ohos.base';
 
 let removeAllCallBack = (err: Base.BusinessError) => {
   if (err) {
-    console.info("removeAllSlots failed " + JSON.stringify(err));
+    console.error("removeAllSlots failed " + JSON.stringify(err));
   } else {
     console.info("removeAllSlots success");
   }
@@ -587,7 +593,7 @@ import Base from '@ohos.base';
 
 let getActiveNotificationCountCallback = (err: Base.BusinessError, data: number) => {
   if (err) {
-    console.info("getActiveNotificationCount failed " + JSON.stringify(err));
+    console.error("getActiveNotificationCount failed " + JSON.stringify(err));
   } else {
     console.info("getActiveNotificationCount success");
   }
@@ -618,7 +624,7 @@ import Base from '@ohos.base';
 Notification.getActiveNotificationCount().then((data: number) => {
   console.info("getActiveNotificationCount success, data: " + JSON.stringify(data));
 }).catch((err: Base.BusinessError) => {
-  console.error(`getAllActiveNotifications failed, code is ${err}`);
+  console.error(`getActiveNotificationCount failed, code is ${err}`);
 });
 ```
 
@@ -644,7 +650,7 @@ import NotificationManager from '@ohos.notificationManager';
 
 let getActiveNotificationsCallback = (err: Base.BusinessError, data: NotificationManager.NotificationRequest[]) => {
   if (err) {
-    console.info("getActiveNotifications failed " + JSON.stringify(err));
+    console.error("getActiveNotifications failed " + JSON.stringify(err));
   } else {
     console.info("getActiveNotifications success");
   }
@@ -674,9 +680,9 @@ import Base from '@ohos.base';
 import NotificationManager from '@ohos.notificationManager';
 
 Notification.getActiveNotifications().then((data: NotificationManager.NotificationRequest[]) => {
-  console.info("removeGroupByBundle success, data: " + JSON.stringify(data));
+  console.info("getActiveNotifications success, data: " + JSON.stringify(data));
 }).catch((err: Base.BusinessError) => {
-  console.error(`removeGroupByBundle failed, code is ${err}`);
+  console.error(`getActiveNotifications failed, code is ${err}`);
 });
 ```
 
@@ -702,7 +708,7 @@ import Base from '@ohos.base';
 
 let cancelGroupCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("cancelGroup failed " + JSON.stringify(err));
+    console.error("cancelGroup failed " + JSON.stringify(err));
   } else {
     console.info("cancelGroup success");
   }
@@ -740,7 +746,7 @@ import Base from '@ohos.base';
 
 let groupName: string = "GroupName";
 Notification.cancelGroup(groupName).then(() => {
-	console.info("cancelGroup success");
+  console.info("cancelGroup success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancelGroup failed, code is ${err}`);
 });
@@ -750,7 +756,7 @@ Notification.cancelGroup(groupName).then(() => {
 
 isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): void
 
-查询模板是否存在（Callback形式）。
+在使用[通知模板](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -758,7 +764,7 @@ isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): voi
 
 | 参数名       | 类型                     | 必填 | 说明                       |
 | ------------ | ------------------------ | ---- | -------------------------- |
-| templateName | string                   | 是   | 模板名称。                   |
+| templateName | string                   | 是   | 模板名称。当前仅支持'downloadTemplate'。                   |
 | callback     | AsyncCallback\<boolean\> | 是   | 查询模板是否存在的回调函数。 |
 
 **示例：**
@@ -769,7 +775,7 @@ import Base from '@ohos.base';
 let templateName: string = 'process';
 function isSupportTemplateCallback(err: Base.BusinessError, data: boolean) {
   if (err) {
-    console.info("isSupportTemplate failed " + JSON.stringify(err));
+    console.error("isSupportTemplate failed " + JSON.stringify(err));
   } else {
     console.info("isSupportTemplate success");
   }
@@ -782,7 +788,7 @@ Notification.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-查询模板是否存在（Promise形式）。
+在使用[通知模板](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -790,7 +796,7 @@ isSupportTemplate(templateName: string): Promise\<boolean\>
 
 | 参数名       | 类型   | 必填 | 说明     |
 | ------------ | ------ | ---- | -------- |
-| templateName | string | 是   | 模板名称。 |
+| templateName | string | 是   | 模板名称。当前仅支持'downloadTemplate'。 |
 
 **返回值：**
 
@@ -832,7 +838,7 @@ import Base from '@ohos.base';
 
 let requestEnableNotificationCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("requestEnableNotification failed " + JSON.stringify(err));
+    console.error("requestEnableNotification failed " + JSON.stringify(err));
   } else {
     console.info("requestEnableNotification success");
   }
@@ -888,7 +894,7 @@ import Base from '@ohos.base';
 
 let isDistributedEnabledCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("isDistributedEnabled failed " + JSON.stringify(err));
+    console.error("isDistributedEnabled failed " + JSON.stringify(err));
   } else {
     console.info("isDistributedEnabled success " + JSON.stringify(data));
   }

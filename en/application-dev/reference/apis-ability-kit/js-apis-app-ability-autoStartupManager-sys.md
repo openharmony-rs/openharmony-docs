@@ -33,6 +33,11 @@ Registers a callback to listen for auto-startup status changes of an application
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**
+- Starting from API version 21, this API can be properly called only on phones, 2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 16000050.
+- Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
+- For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
+
 **Parameters**
 
 | Name       | Type                                      | Mandatory  | Description            |
@@ -82,6 +87,11 @@ Unregisters the callback used to listen for auto-startup status changes of an ap
 **Required permissions**: ohos.permission.MANAGE_APP_BOOT
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**
+- Starting from API version 21, this API can be properly called only on phones, 2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 16000050.
+- Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
+- For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
 **Parameters**
 
@@ -134,7 +144,7 @@ Sets an application component to automatically start upon system boot. This API 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
-- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 21, this API can be properly called only on phones, 2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 16000050.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
@@ -193,7 +203,7 @@ Sets an application component to automatically start upon system boot. This API 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
-- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 21, this API can be properly called only on phones, 2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 16000050.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
@@ -255,7 +265,7 @@ Cancels the auto-startup setting for an application component. This API uses an 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
-- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 21, this API can be properly called only on phones, 2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 16000050.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
@@ -314,7 +324,7 @@ Cancels the auto-startup setting for an application component. This API uses a p
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
-- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 21, this API can be properly called only on phones, 2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 16000050.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
@@ -376,7 +386,7 @@ Obtains information about all auto-startup application components. This API uses
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
-- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 21, this API can be properly called only on phones, 2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 16000050.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
@@ -429,7 +439,7 @@ Obtains information about all auto-startup application components. This API uses
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
-- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 21, this API can be properly called only on phones, 2-in-1 devices, tablets, and wearables. On other devices, it returns the error code 16000050.
 - Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
 - For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 

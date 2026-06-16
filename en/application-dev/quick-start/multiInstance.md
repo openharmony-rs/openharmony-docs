@@ -13,7 +13,7 @@ Multiple application instances on the home screen are independent in terms of th
 Relationship between multiple application instances:
 - The application icons of multiple instances are the same.
 - All instances share the file data in the [application file directory](../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path).
-- You can log in to a single instance by switching accounts.
+- You can switch between accounts. A single instance supports logging in with different accounts.
 
 ## Constraints
 
@@ -40,5 +40,4 @@ Application multi-instance can run on only 2-in-1 devices.
 2. Create a multi-instance.
 
 - Build and package the configured project and install it on the device.
-- Right-click an application icon on the home screen to open an application process. Then right-click the application icon again and choose **Open**.
-In this case, two application process pages of the same application are displayed on the home screen.
+- Right-click an application icon on the home screen to open an application process. Then right-click the application icon again and choose **Open**. In this case, two application process pages of the same application are displayed on the home screen.

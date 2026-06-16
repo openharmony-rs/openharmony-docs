@@ -2,14 +2,14 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 接口说明
 
-分布式跟踪接口由HiTraceChain模块提供，详细API请参考[分布式跟踪C API](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
+分布式跟踪接口由HiTraceChain模块提供，详细API请参考[trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
 
 下表所示的接口提供基本的分布式跟踪功能，ArkTS中也有相应的接口。
 
@@ -71,27 +71,30 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
 
 2. 在“entry &gt; src &gt; main &gt; cpp &gt; CMakeLists.txt”文件中新增libhitrace_ndk.z.so和libhilog_ndk.z.so动态链接库，完整的文件内容如下：
 
-   ```cmake
+   <!-- @[hitracechain_ndk_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` Text
    # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.5.0)
    project(HiTraceChainTest03)
    
-   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+   set(NATIVERENDER_ROOT_PATH &#36;{CMAKE_CURRENT_SOURCE_DIR})
    
    if(DEFINED PACKAGE_FIND_FILE)
-       include(${PACKAGE_FIND_FILE})
+       include(&#36;{PACKAGE_FIND_FILE})
    endif()
    
-   include_directories(${NATIVERENDER_ROOT_PATH}
-                       ${NATIVERENDER_ROOT_PATH}/include)
+   include_directories(&#36;{NATIVERENDER_ROOT_PATH}
+                       &#36;{NATIVERENDER_ROOT_PATH}/include)
    
    add_library(entry SHARED napi_init.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhitrace_ndk.z.so libhilog_ndk.z.so)
    ```
 
+
 3. 编辑“entry &gt; src &gt; main &gt; cpp &gt; napi_init.cpp”文件，使用HiTraceChain跟踪多线程任务，完整的示例代码如下：
 
-   <!-- @[hitracechain_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp) -->   
+   <!-- @[hitracechain_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include <thread>
@@ -112,7 +115,7 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
        // 为当前线程设置带spanId的HiTraceId
        OH_HiTrace_SetId(&id);
        OH_LOG_INFO(LogType::LOG_APP, "Print2");
-       // 结束当前线程分布式跟踪，功能同OH_HiTrace_EndChain()
+       // 结束当前线程的分布式跟踪，功能同OH_HiTrace_EndChain()
        OH_HiTrace_ClearId();
        OH_LOG_INFO(LogType::LOG_APP, "Print2, HiTraceChain end");
    }
@@ -127,7 +130,7 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
        OH_HiTrace_SetId(&id);
        OH_LOG_INFO(LogType::LOG_APP, "Print1");
        std::thread(Print2, OH_HiTrace_GetId()).detach();
-       // 结束当前线程分布式跟踪
+       // 结束当前线程的分布式跟踪
        OH_HiTrace_EndChain();
        OH_LOG_INFO(LogType::LOG_APP, "Print1, HiTraceChain end");
    }
@@ -205,7 +208,7 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
    
    编辑“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”文件，在按钮点击事件里调用Add方法，完整的示例代码如下：
    
-   <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->   
+   <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';

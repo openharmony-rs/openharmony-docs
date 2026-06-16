@@ -1,9 +1,9 @@
 # @ohos.InputMethodExtensionContext (InputMethodExtensionContext)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 InputMethodExtensionContext模块是InputMethodExtensionAbility的上下文环境，继承于ExtensionContext，提供InputMethodExtensionAbility具有的能力和接口，包括启动、停止、绑定、解绑Ability。
@@ -29,7 +29,7 @@ import { Want } from '@kit.AbilityKit';
 
 class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context: InputMethodExtensionContext = this.context;
+    console.info('onCreate, want:' + want.abilityName);
   }
 }
 ```
@@ -57,7 +57,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context: InputMethodExtensionContext = this.context;
+    console.info('onCreate, want:' + want.abilityName);
   }
 
   onDestroy() {
@@ -95,7 +95,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context: InputMethodExtensionContext = this.context;
+    console.info('onCreate, want:' + want.abilityName);
   }
 
   onDestroy() {
@@ -130,11 +130,11 @@ startAbility(want: Want): Promise&lt;void&gt;;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)，[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 16000001 | The specified ability does not exist.                   |
 | 16000002 | Incorrect ability type.                                 |
 | 16000004 | Cannot start an invisible component.                    |

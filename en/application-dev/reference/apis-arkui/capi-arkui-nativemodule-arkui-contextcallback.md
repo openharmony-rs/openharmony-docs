@@ -1,12 +1,12 @@
 # ArkUI_ContextCallback
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} ArkUI_ContextCallback
 ```
 
@@ -26,7 +26,7 @@ Defines the event callback type.
 
 | Name| Description|
 | -- | -- |
-| void* userData | Custom type.|
+| void* userData | Custom type. The data of the custom type is passed as a parameter during callback.|
 
 
 ### Member Functions
@@ -39,7 +39,7 @@ Defines the event callback type.
 
 ### callback()
 
-```
+```c
 void (*callback)(void* userData)
 ```
 

@@ -18,7 +18,6 @@ You can refer to the corresponding development guide and samples based on your d
 - [Using Image_NativeModule to Decode Pictures](../../media/image/image-source-picture-c.md)
 - [Using Image_NativeModule to Receive Images](../../media/image/image-receiver-c.md)
 - [Using Image_NativeModule for PixelMap Operations](../../media/image/pixelmap-c.md)
-- [Using Image_NativeModule to Process Image Information](../../media/image/image-info-c.md)
 - [Using Image_NativeModule to Encode Images](../../media/image/image-packer-c.md)
 - [Using Image_NativeModule to Encode Pictures](../../media/image/image-packer-picture-c.md)
 
@@ -29,7 +28,7 @@ You can refer to the corresponding development guide and samples based on your d
 | Name| Description|
 | -- | -- |
 | [image_common.h](capi-image-common-h.md) | Declares the common enums and structs used by the image interface.|
-| [image_native.h](capi-image-native-h.md) | Declares the cropping rectangle, size, and component data of an image.|
+| [image_native.h](capi-image-native-h.md) | Declares the APIs for cropping rectangle, size, and component data of an image.|
 | [image_packer_native.h](capi-image-packer-native-h.md) | Declares the APIs for image encoding.|
 | [image_receiver_native.h](capi-image-receiver-native-h.md) | Declares the APIs used to obtain image data from the native layer.|
 | [image_source_native.h](capi-image-source-native-h.md) | Declares the APIs for image decoding.|

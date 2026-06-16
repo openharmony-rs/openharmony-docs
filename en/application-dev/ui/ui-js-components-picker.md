@@ -32,7 +32,7 @@ Create a **\<picker>** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001223287716](figures/en-us_image_0000001223287716.gif)
+![picker-Component](figures/picker-Component.gif)
 
 
 ## Setting the Picker Type
@@ -73,14 +73,14 @@ export default {
 }
 ```
 
-![en-us_image_0000001267647893](figures/en-us_image_0000001267647893.gif)
+
 
 > **NOTE**
 >
 > When setting the value range of a common selector, you must use the data binding mode.
 
 
-## Setting the Time Format
+## Setting the Time Display Format
 
 Set the **hours** attribute to specify the time format used by the time picker. Available values include **12** and **24**, indicating the 12-hour format and 24-hour format, respectively.
 
@@ -109,7 +109,7 @@ Set the **hours** attribute to specify the time format used by the time picker. 
 }
 ```
 
-![en-us_image_0000001222807808](figures/en-us_image_0000001222807808.gif)
+![Time-Display-Format](figures/Time-Display-Format.gif)
 
 > **NOTE**
 > - When **hours** is set to **12**, the time is displayed in 12-hour format and distinguished by a.m. and p.m.
@@ -167,7 +167,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001223127748](figures/en-us_image_0000001223127748.gif)
+![Response-Events-1](figures/Response-Events-1.gif)
 
 
 ## Example Scenario
@@ -300,4 +300,4 @@ export default {
 ```
 
 
-![en-us_image_0000001267887877](figures/en-us_image_0000001267887877.gif)
+

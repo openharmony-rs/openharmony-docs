@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -48,7 +48,7 @@
 
 calendardata示例：
 
-```
+```json
 {
 "year":2021,
 "month":1,
@@ -200,5 +200,5 @@ calendardata示例：
 ```
 **4*4卡片**
 
-![zh-cn_image_0000001231452477](figures/zh-cn_image_0000001231452477.png)
+![zh-cn_image_0000001231452477](figures/calendar-example.png)
 

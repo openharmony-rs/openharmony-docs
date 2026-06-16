@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 childProcessManager模块提供子进程管理能力，支持子进程创建和启动操作。
 
@@ -229,7 +229,7 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
-| 16000062  | The number of child processes exceeds the upper limit. |
+| 16000062  | The number of child processes exceeds the upper limit. <br>适用版本：13+ |
 
 **示例：**
 
@@ -346,7 +346,7 @@ startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: Ch
 
 **示例：**
 
-子进程部分，详见[Native子进程开发指导（C/C++）- 创建支持参数传递的Native子进程](../../application-models/capi_nativechildprocess_development_guideline.md#创建支持参数传递的native子进程)：
+子进程部分，详见[Native子进程开发指导（C/C++）- 创建支持参数传递的Native子进程](../../application-models/capi-nativechildprocess-development-guideline.md#创建支持参数传递的native子进程)：
 
 ```c++
 #include <AbilityKit/native_child_process.h>
@@ -415,6 +415,102 @@ struct Index {
                 })
             } catch (err) {
               console.error(`startChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            }
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+## childProcessManager.isArkChildProcessSupported
+
+isArkChildProcessSupported(): boolean
+
+查询是否允许调用者在此设备上创建[ArkTS子进程](../../application-models/ability-terminology.md#arkts子进程)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型    | 说明                                          |
+| :------ | --------------------------------------------- |
+| boolean | 是否允许调用者创建ArkTS子进程。<br>true：允许创建ArkTS子进程。<br>false：不允许创建ArkTS子进程。<br>默认值：false。|
+
+**示例：**
+
+```ts
+import { childProcessManager } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('Click')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            try {
+              let isSupport: boolean = childProcessManager.isArkChildProcessSupported();
+              console.info(`isArkChildProcessSupported: ${isSupport}`);
+            } catch (err) {
+              console.error(`isArkChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            }
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+## childProcessManager.isNativeChildProcessSupported
+
+isNativeChildProcessSupported(): boolean
+
+查询是否允许调用者在此设备上创建[Native子进程](../../application-models/ability-terminology.md#native子进程)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型    | 说明                                          |
+| :------ | --------------------------------------------- |
+| boolean | 是否允许调用者创建Native子进程。<br>true：允许创建Native子进程。<br>false：不允许创建Native子进程。<br>默认值：false。|
+
+**示例：**
+
+```ts
+import { childProcessManager } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('Click')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            try {
+              let isSupport: boolean = childProcessManager.isNativeChildProcessSupported();
+              console.info(`isNativeChildProcessSupported: ${isSupport}`);
+            } catch (err) {
+              console.error(`isNativeChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
             }
           });
       }

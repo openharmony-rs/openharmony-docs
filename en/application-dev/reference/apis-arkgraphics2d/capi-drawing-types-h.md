@@ -14,6 +14,8 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -24,8 +26,9 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Point2D | Describes a two-dimensional coordinate point.|
-| [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) | OH_Drawing_Point3D | Describes a three-dimensional coordinate point.|
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Point2D | Defines a two-dimensional coordinate point.|
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Corner_Radii | Defines a struct for the radii of a rounded corner. The radii consist of the x-axis radius and y-axis radius.|
+| [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) | OH_Drawing_Point3D | Defines a three-dimensional coordinate point.|
 | [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md) | OH_Drawing_Image_Info | Describes the image information.|
 | [OH_Drawing_RectStyle_Info](capi-drawing-oh-drawing-rectstyle-info.md) | OH_Drawing_RectStyle_Info | Describes the style of a rectangle.|
 | [OH_Drawing_String](capi-drawing-oh-drawing-string.md) | OH_Drawing_String | Describes a string of characters encoded in UTF-16.|
@@ -34,6 +37,8 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 | [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) | OH_Drawing_Region | Defines a struct for a region, which represents a closed area on the canvas for more accurate graphic control.|
 | [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) | OH_Drawing_Brush | Defines a struct for a brush, which is used to describe the style and color to fill in a shape.|
 | [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) | OH_Drawing_Path | Defines a struct for a path, which is used to customize various shapes.|
+| [OH_Drawing_PathIterator](capi-drawing-oh-drawing-pathiterator.md) | OH_Drawing_PathIterator | Defines a path operation iterator. You can read path operation instructions by traversing the iterator.|
+| [OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md) | OH_Drawing_Lattice | Defines a struct for a rectangle grid, which is used to divide an image by rectangle grid.|
 | [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md) | OH_Drawing_Bitmap | Defines a struct for a bitmap, which is a memory area that contains the pixel data of a shape.|
 | [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) | OH_Drawing_Point | Defines a struct for a coordinate point.|
 | [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) | OH_Drawing_PixelMap | Defines a struct for a pixel map, which is used to wrap the real pixel map supported by the image framework.|
@@ -78,7 +83,7 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 ### OH_Drawing_ColorFormat
 
-```
+```c
 enum OH_Drawing_ColorFormat
 ```
 
@@ -99,7 +104,7 @@ Defines an enum for the storage formats of bitmap pixels.
 
 ### OH_Drawing_AlphaFormat
 
-```
+```c
 enum OH_Drawing_AlphaFormat
 ```
 
@@ -118,7 +123,7 @@ Defines an enum for the alpha formats of bitmap pixels.
 
 ### OH_Drawing_BlendMode
 
-```
+```c
 enum OH_Drawing_BlendMode
 ```
 
@@ -162,7 +167,7 @@ Defines an enum for blend modes. In blend mode, each operation generates a new c
 
 ### OH_Drawing_TextEncoding
 
-```
+```c
 enum OH_Drawing_TextEncoding
 ```
 

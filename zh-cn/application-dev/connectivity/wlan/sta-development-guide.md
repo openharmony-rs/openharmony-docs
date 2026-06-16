@@ -44,44 +44,49 @@ Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端�
 4. 开启设备Wi-Fi。
 5. 示例代码：
 
-```ts
-import { wifiManager } from '@kit.ConnectivityKit';
+   ```ts
+   import { wifiManager } from '@kit.ConnectivityKit';
 
-try {
-  let recvPowerNotifyFunc = (result: number) => {
-    let wifiState = "";
-    switch (result) {
-      case 0:
-        wifiState += 'DISABLING';
-        break;
-      case 1:
-        wifiState += 'DISABLED';
-        break;
-      case 2:
-        wifiState += 'ENABLING';
-        break;
-      case 3:
-        wifiState += 'ENABLED';
-        break;
-      default:
-        wifiState += 'UNKNOWN STATUS';
-        break;
-    }
-  }
-  // 监听Wi-Fi当前状态
-  wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
-  // 判断Wi-Fi是否打开
-  let isWifiActive = wifiManager.isWifiActive();
-  if (!isWifiActive) {
-    console.info("Wi-Fi not enabled"); // 请先手动打开Wi-Fi
-    return;
-  }
-
-  wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
-} catch (error) {
-  console.error(`WiFi state monitor failed. ${error.message}`);
-}
-```
+   let recvPowerNotifyFunc: (result: number) => void = (result: number) => {
+     let wifiState = "";
+     switch (result) {
+       case 0:
+         wifiState += 'DISABLED';
+         break;
+       case 1:
+         wifiState += 'ENABLED';
+         break;
+       case 2:
+         wifiState += 'ENABLING';
+         break;
+       case 3:
+         wifiState += 'DISABLING';
+         break;
+       default:
+         wifiState += 'UNKNOWN STATUS';
+         break;
+     }
+     console.info(`Wi-Fi state changed: ${wifiState}`);
+   };
+   try {
+     wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
+     let isWifiActive = wifiManager.isWifiActive();
+     if (!isWifiActive) {
+       console.info("Wi-Fi not enabled. Skipping monitor.");
+     } else {
+       console.info("Wi-Fi is enabled. Starting monitor...");
+     }
+   } catch (error) {
+     console.error(`WiFi state monitor failed: ${error.message}`);
+   } finally {
+     try {
+       wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
+       console.info("Wi-Fi monitor off: listener removed.");
+     } catch (e) {
+        console.error(`WiFi state monitor failed. ${e.message}`);
+     }
+   }
+   ```
 
 ### 建立Wi-Fi连接
 1. 导入需要的Wi-Fi模块。
@@ -132,5 +137,5 @@ try {
      console.error(`WiFi Connection failed. ${error.message}`);
    }
    ```
-6. Wi-Fi连接状态值，详情请参考[ConnState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#connstate9)。
+6. Wi-Fi连接状态值，详情请参考[ConnState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#connstate)。
 7. 错误码详情请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。

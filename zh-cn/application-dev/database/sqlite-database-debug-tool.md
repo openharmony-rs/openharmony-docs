@@ -9,10 +9,13 @@
 SQLite是一款轻量级、嵌入式、无服务器的关系型数据库管理系统，其核心优势在于将整个数据库存储于单一文件中，无需独立服务器进程，支持跨平台运行，被广泛应用于移动应用、嵌入式设备和桌面软件等场景。
 
 本调试工具基于hdc命令实现对SQLite数据库的操作，提供一种通过命令行接口高效管理SQLite数据库的方式，适用于开发、调试和运维阶段对数据库的快速操作与验证。
+
 <!--RP1-->
 >**说明：**
 >
->从OpenHarmony 6.0开始，支持使用SQLite调试工具。
+> - 从OpenHarmony 6.0开始，支持使用SQLite调试工具。
+> 
+> - 开发者也可以通过DevEco Studio调试数据库，具体操作方式请参考[访问应用数据库](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-database-inspector)。
 <!--RP1End-->
 
 ## 环境要求
@@ -57,7 +60,7 @@ Enter ".help" for usage hints.
 sqlite>create table t1(a int);
 Error: unable to open database "a.db": unable to open database file
 # 打开asd.db数据库
-sqlite> .open asd.db
+sqlite>.open asd.db
 Error: unable to open database "asd.db": unable to open database file
 Notice: using substitute in-memory database instead of "asd.db"
 ```
@@ -69,7 +72,7 @@ Notice: using substitute in-memory database instead of "asd.db"
 sqlite>create table t1(a int);
 Error: unable to open database "a.db": unable to open database file
 # 打开asd.db数据库
-sqlite> .open asd.db
+sqlite>.open asd.db
 Error: unable to open database "asd.db": unable to open database file
 Notice: using substitute in-memory database instead of "asd.db"
 ```
@@ -80,9 +83,9 @@ SQLite version 3.44.4 2025-02-19 00:18:53
 Enter ".help" for usage hints.
 sqlite> select * from sqlite_master;
 Parse error: file is not a database (26)
-sqlite> .table
+sqlite>.table
 Error: file is not a database
-sqlite> .q
+sqlite>.q
 ```
 
 ## 命令列表
@@ -130,7 +133,7 @@ sqlite>.help
   ```
 
 
-- 创建并打开新数据库	
+- 创建并打开新数据库
 
   若指定的数据库文件不存在，SQLite将自动创建该文件：
 
@@ -273,7 +276,7 @@ sqlite>.tables
 
 ### 更新数据
 
-在sqlite>提示符下，可通过SQL语句`UPDATE 表名称 SET age = 31 WHERE name = '张三';`语句插入单条数据
+在sqlite>提示符下，可通过SQL语句`UPDATE 表名称 SET age = 31 WHERE name = '张三';`更新数据
 
 ```sql
 sqlite>UPDATE COMPANY SET age = 31 WHERE name = '张三';
@@ -285,12 +288,12 @@ sqlite>SELECT * FROM COMPANY;
 
 ### 删除数据
 
-在sqlite>提示符下，可通过SQL语句`DELETE FROM 表名称 WHERE name = '王五';`语句删除数据
+在sqlite>提示符下，可通过SQL语句`DELETE FROM 表名称 WHERE name = '王五';`删除数据
 
 ```sql
 sqlite> DELETE FROM COMPANY WHERE name = '王五';
 sqlite> SELECT * FROM COMPANY;
-1|张三|28|北京市朝阳区|20000.5
+1|张三|31|北京市朝阳区|20000.5
 4|赵六|40|深圳市南山区|30000.25
 ```
 

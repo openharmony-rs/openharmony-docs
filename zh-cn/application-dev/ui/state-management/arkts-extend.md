@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @BlYynNe-->
-<!--Designer: @lixingchi1-->
+<!--Designer: @BlYynNe-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -10,6 +10,8 @@
 
 
 > **说明：**
+>
+> 从API version 9开始支持。
 >
 > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
 >
@@ -46,7 +48,22 @@
   }
   ```
 
-- 和\@Styles不同，\@Extend装饰的方法支持参数，开发者可以在调用时传递参数，调用遵循TS方法传值调用。
+- 使用\@Extend封装指定组件的私有属性、私有事件和自身定义的全局方法时，不支持和\@Styles混用。
+  ``` TypeScript
+  @Styles
+  function fancy() {
+    .backgroundColor(Color.Red)
+  }
+
+  // superFancyText不可以调用预定义的fancy
+  @Extend(Text)
+  function superFancyText(size: number) {
+    .fontSize(size)
+    .fancy()
+  }
+  ```
+
+- 和\@Styles不同，\@Extend装饰的方法支持传入参数，调用遵循TS方法传值调用。
   <!-- @[Extend_private_property_fancy_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendParameterUsage.ets) -->
   
   ``` TypeScript
@@ -107,7 +124,7 @@
   ``` TypeScript
   @Extend(Text)
   function fancy(fontSize: number) {
-    .fontColor(Color.Red)
+    .fontColor(Color.Blue)
     .fontSize(fontSize)
   }
   
@@ -117,16 +134,18 @@
     @State fontSizeValue: number = 20;
   
     build() {
-      Row({ space: 10 }) {
+      Column({ space: 10 }) {
         Text('Fancy')
           .fancy(this.fontSizeValue)
           .onClick(() => {
             this.fontSizeValue = 30;
           })
       }
+      .width('100%')
     }
   }
   ```
+![](figures/arkts-extend-1.gif)
 
 ## 限制条件
 
@@ -180,9 +199,94 @@ struct FancyUse {
 }
 ```
 
+- @Extend装饰的函数仅限当前文件使用，不支持导出，不支持在其他文件调用。
+
+【反例】
+
+``` TypeScript
+  // 错误写法 不要在pageTwo当中使用在其他文件比如pageOne中定义的@Extend函数
+  // pageOne.ets
+  @Extend(Button)
+  function ButtonUse() {
+    .width(100)
+    .buttonStyle(ButtonStyleMode.NORMAL)
+  }
+
+  @Entry
+  @Component
+  struct extendUseOne {
+    build() {
+      Row() {
+        Button()
+          .ButtonUse()
+          .height(200)
+      }
+    }
+  }
+  
+  // pageTwo.ets
+  @Entry
+  @Component
+  struct TextUse {
+    build() {
+      Row() {
+        Text('this is TextUse')
+
+        Button()
+          .ButtonUse()  // 会有编译告警提示: Property 'ButtonUse' does not exist on type 'ButtonAttribute'.
+          .height(50)
+      }
+    }
+  }
+```
+
+【正例】
+
+``` TypeScript
+  // 正确写法 在pageTwo文件当中可以定义与pageOne文件中的@Extend函数不重名的@Extend函数
+  // pageOne.ets
+  @Extend(Button)
+  function ButtonUse() {
+    .width(100)
+    .buttonStyle(ButtonStyleMode.NORMAL)
+  }
+
+  @Entry
+  @Component
+  struct extendUseOne {
+    build() {
+      Row() {
+        Button()
+          .ButtonUse()
+          .height(200)
+      }
+    }
+  }
+  
+  // pageTwo.ets
+  @Extend(Button)
+  function ButtonUse2() {
+    .width(200)
+    .buttonStyle(ButtonStyleMode.EMPHASIZED)
+  }
+
+  @Entry
+  @Component
+  struct TextUse {
+    build() {
+      Row() {
+        Text('this is TextUse')
+  
+        Button()
+          .ButtonUse2()
+          .height(50)
+      }
+    }
+  }
+```
 ## 使用场景
 
-以下示例声明了3个Text组件，每个Text组件均设置了fontStyle、fontWeight和backgroundColor样式。
+以下示例声明了3个Text组件，每个Text组件均设置了[fontStyle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontstyle)、[fontWeight](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontweight) 和[backgroundColor](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)样式。
 <!-- @[Extend_Usage_Scenario_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenario.ets) -->
 
 ``` TypeScript
@@ -195,20 +299,21 @@ struct FancyUse {
     Row({ space: 10 }) {
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
-        .fontWeight(100)
-        .backgroundColor(Color.Blue)
+        .fontWeight(500)
+        .backgroundColor(Color.Yellow)
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
-        .fontWeight(200)
+        .fontWeight(600)
         .backgroundColor(Color.Pink)
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
-        .fontWeight(300)
+        .fontWeight(700)
         .backgroundColor(Color.Orange)
     }.margin('20%')
   }
 }
 ```
+![](figures/arkts-extend-2.png)
 
 使用@Extend将样式组合复用，示例如下。
 <!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) -->

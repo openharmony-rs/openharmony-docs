@@ -16,11 +16,13 @@
 
 overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptions ): T
 
-在当前组件上，增加遮罩文本或者叠加自定义组件以及[ComponentContent](#componentcontent12)作为该组件的浮层。浮层的定位同样基于当前组件进行计算。浮层不通过组件树进行渲染，部分接口（例如[getRectangleById](../js-apis-arkui-componentUtils.md#componentutilsgetrectanglebyiddeprecated)）不支持获取浮层中的组件。
+在当前组件上，增加遮罩文本或者叠加自定义组件以及[ComponentContent](#componentcontent12)作为该组件的浮层。浮层的定位同样基于当前组件进行计算。浮层不通过组件树进行渲染，部分接口（例如[getRectangleById](../arkts-apis-uicontext-componentutils.md#getrectanglebyid)）不支持获取浮层中的组件。
 
 >**说明：**
 >
-> overlay会将浮层组件覆盖在所绑定的组件上方，阻塞用户对浮层下方组件的所有交互操作。若需用户可操作下方组件，应参照[示例2（通过builder设置浮层）](#示例2通过builder设置浮层)中的实现，在浮层builder的最外层组件上配置`.hitTestBehavior(HitTestMode.Transparent)`。此配置在通过浮层实现水印时尤其重要，因为水印显示不应妨碍用户对下层组件的操作。
+> - overlay会将浮层组件覆盖在所绑定的组件上方，阻塞用户对浮层下方组件的所有交互操作。若需用户可操作下方组件，应参照[示例2（通过builder设置浮层）](#示例2通过builder设置浮层)中的实现，在浮层builder的最外层组件上配置`.hitTestBehavior(HitTestMode.Transparent)`。此配置在通过浮层实现水印时尤其重要，因为水印显示不应妨碍用户对下层组件的操作。
+>
+> - 多次调用overlay接口时，如果同时传入string类型和[CustomBuilder](ts-types.md#custombuilder8)类型，或者同时传入string类型和[ComponentContent](#componentcontent12)类型，浮层内容会叠加显示。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -55,6 +57,8 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                  | 类型                                       | 只读 | 可选  | 说明                                                |
@@ -76,26 +80,30 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 类型                                                      | 只读 | 可选  | 说明                                                |
 | ------- | ---------------------------------------------------------| ---- | ------| --------------------------------------------------- |
-| x<sup>7+</sup>        | number                                                   | 否   | 是    | 横向偏移量。<br />单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
-| y<sup>7+</sup>        | number                                                   | 否   | 是    | 纵向偏移量。<br />单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
+| x<sup>7+</sup>        | number                                                   | 否   | 是    | 横向偏移量。<br/>默认值：0<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
+| y<sup>7+</sup>        | number                                                   | 否   | 是    | 纵向偏移量。<br/>默认值：0<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
 
 ## ComponentContent<sup>12+</sup>
 
-type ComponentContent\<T \= Object\> = ComponentContent\<T\>
+type ComponentContent\<T \= Object\> = import('../api/arkui/ComponentContent').ComponentContent\<T\>
 
 组件内容的实体封装。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型|说明 |
 | ----- | ----------------- |
-| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
+| import('../api/arkui/ComponentContent').[ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
 
 ## 示例
 
@@ -128,7 +136,7 @@ struct OverlayExample {
 }
 ```
 
-![zh-cn_image_0000001205769446](figures/zh-cn_image_0000001205769446.png)
+![floatingLayer](figures/floatingLayer.png)
 
 ### 示例2（通过builder设置浮层）
 
@@ -139,7 +147,8 @@ struct OverlayExample {
 @Entry
 @Component
 struct OverlayExample {
-  @Builder OverlayNode() {
+  @Builder
+  OverlayNode() {
     Column() {
       // $r('app.media.img1')需要替换为开发者所需的图像资源文件
       Image($r('app.media.img1'))
@@ -162,7 +171,7 @@ struct OverlayExample {
   }
 }
 ```
-![zh-cn_image_0000001210111632](figures/zh-cn_image_0000001210111632.png)
+![floatingLayer2](figures/floatingLayer2.png)
 
 ### 示例3（通过ComponentContent设置浮层）
 
@@ -172,16 +181,17 @@ struct OverlayExample {
 // xxx.ets
 import { ComponentContent } from '@kit.ArkUI';
 
-class Params{
+class Params {
   backgroundColor: string | Resource = ""
+
   constructor(backgroundColor: string | Resource) {
     this.backgroundColor = backgroundColor;
   }
 }
 
 @Builder
-function overlayBuilder(params: Params){
-  Row(){
+function overlayBuilder(params: Params) {
+  Row() {
   }.width('100%').height('100%').backgroundColor(params.backgroundColor)
 }
 
@@ -190,7 +200,8 @@ function overlayBuilder(params: Params){
 struct Page_4040 {
   @State overlayColor: string = 'rgba(0, 0, 0, 0.6)';
   private uiContext: UIContext = this.getUIContext();
-  private overlayNode: ComponentContent<Params> = new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor))
+  private overlayNode: ComponentContent<Params> =
+    new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor))
 
   aboutToAppear(): void {
     setInterval(() => {
@@ -206,7 +217,7 @@ struct Page_4040 {
 
   build() {
     Row() {
-      Column(){
+      Column() {
         Text(this.overlayColor)
           .fontSize(40)
           .fontWeight(FontWeight.Bold)

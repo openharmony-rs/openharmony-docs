@@ -12,7 +12,7 @@
 
 >  **说明：**
 >
->  从API version 12开始，该组件不再维护，推荐使用通用属性[bindSheet](ts-universal-attributes-sheet-transition.md)。
+>  从API version 12开始，该组件不再维护，推荐使用通用属性[bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)。
 >
 >  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -30,6 +30,8 @@
 
 Panel(show: boolean)
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -38,7 +40,7 @@ Panel(show: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| show | boolean | 是 | 控制Panel显示或隐藏。<br/>**说明：** <br/>如果设置为false时，则不占位隐藏。[Visible.None](ts-universal-attributes-visibility.md)或者show之间有一个生效时，都会生效不占位隐藏。 |
+| show | boolean | 是 | 控制Panel显示或隐藏。<br/>**说明：** <br/>如果设置为false时，则不占位隐藏。[Visibility](ts-appendix-enums.md#visibility).None或者show之间有一个生效时，都会生效不占位隐藏。 |
 
 ## 属性
 
@@ -49,6 +51,8 @@ Panel(show: boolean)
 type(value: PanelType)
 
 可滑动面板的类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -66,6 +70,8 @@ mode(value: PanelMode)
 
 可滑动面板的初始状态。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -81,6 +87,8 @@ mode(value: PanelMode)
 dragBar(value: boolean)
 
 设置是否存在控制条。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -98,6 +106,8 @@ customHeight(value: Dimension | PanelHeight)
 
 指定PanelType.CUSTOM状态下的高度。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -113,6 +123,8 @@ customHeight(value: Dimension | PanelHeight)
 fullHeight(value: number | string)
 
 指定PanelType.Full状态下的高度。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -130,6 +142,8 @@ halfHeight(value: number | string)
 
 指定PanelMode.Half状态下的高度。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -145,6 +159,8 @@ halfHeight(value: number | string)
 miniHeight(value: number | string)
 
 指定PanelMode.Mini状态下的高度。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -162,6 +178,8 @@ show(value: boolean)
 
 当滑动面板弹出时调用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -177,6 +195,8 @@ show(value: boolean)
 backgroundMask(color: ResourceColor)
 
 指定Panel的背景蒙层。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -194,6 +214,8 @@ showCloseIcon(value: boolean)
 
 设置是否显示关闭图标。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -205,6 +227,8 @@ showCloseIcon(value: boolean)
 | value   | boolean | 是   | 设置是否显示关闭图标，true表示显示，false表示不显示。<br/>默认值：false |
 
 ## PanelType枚举说明
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -219,6 +243,8 @@ showCloseIcon(value: boolean)
 
 ## PanelMode枚举说明
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -230,6 +256,8 @@ showCloseIcon(value: boolean)
 | Full |2  | 类全屏状态。 |
 
 ## PanelHeight<sup>10+</sup>枚举说明
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -248,6 +276,8 @@ onChange(event:&nbsp;(width:&nbsp;number,&nbsp;height:&nbsp;number,&nbsp;mode:&n
 
 当可滑动面板发生状态变化时触发。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -265,6 +295,8 @@ onChange(event:&nbsp;(width:&nbsp;number,&nbsp;height:&nbsp;number,&nbsp;mode:&n
 onHeightChange(callback: (value: number) => void)
 
 当可滑动面板发生高度变化时触发。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -316,4 +348,4 @@ struct PanelExample {
 }
 ```
 
-![zh-cn_image_0000001174422896](figures/zh-cn_image_0000001174422896.gif)
+![panel](figures/panel.gif)

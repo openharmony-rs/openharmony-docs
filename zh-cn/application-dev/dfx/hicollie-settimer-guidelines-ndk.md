@@ -5,11 +5,15 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
 任务执行超时指要监控的业务代码逻辑执行时长超过业务逻辑预期时间。本文面向开发者介绍HiCollie模块对外提供函数执行时间超长的检测能力。
+
+> **注意：**
+>
+> 当开发者通过DevEco Studio的Debug按钮安装并启动应用时，会自动关闭当前工程的超时检测机制。避免调试过程出现超时检测影响开发者调试。
 
 ## 接口说明
 
@@ -56,14 +60,12 @@
 
    引入头文件及定义LOG_TAG。
 
-   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[EventSub_napi_nohiappevent_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include "napi/native_api.h"
-   #include "json/json.h"
+   // ...
    #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
-   #include "hiappevent/hiappevent_event.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"
@@ -78,10 +80,10 @@
 
    构造任务执行时间超时场景，并使用OH_HiCollie_SetTimer及OH_HiCollie_CancelTimer函数进行监控。
 
-   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
    
    ``` C++
-   //定义回调函数
+   // 定义回调函数
    void CallBack(void*)
    {
        OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimerNdk CallBack");  // 回调函数中打印日志
@@ -120,6 +122,7 @@
    ```
 
 5. 编辑“Index.ets”文件。
+   
    引入调用C接口的头文件。
 
    <!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
@@ -130,10 +133,10 @@
 
    在Index页面新增触发TestHiCollieTimerNdk方法的按钮。
 
-   <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-   //添加点击事件，触发TestHiCollieTimerNdk方法。
+   // 添加点击事件，触发TestHiCollieTimerNdk方法。
    Button('TestHiCollieTimerNdk')
      .type(ButtonType.Capsule)
      .margin({
@@ -153,13 +156,13 @@
 
    （1）点击“TestHiCollieTimerNdk”按钮执行程序，日志窗口打印任务id。
 
-   ```
+   ```text
    .../testTag ... HiCollieTimer taskId: x
    ```
 
    （2）等待2s后，执行回调函数，日志窗口打印。
 
-   ```
+   ```text
    .../testTag ... HiCollieTimerNdk CallBack
    ```
 

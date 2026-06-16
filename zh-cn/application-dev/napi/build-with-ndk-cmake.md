@@ -26,11 +26,11 @@
 
 windows/linux 使用 SDK 包解压完成效果如下图所示：
 
-![zh-cn_image_0000001726080989](figures/zh-cn_image_0000001726080989.png)
+![ndk-decomp-structure](figures/ndk-decomp-structure.png)
 
 mac使用 SDK 包解压完成效果如下图所示：
 
-![zh-cn_image_20-24-01-16-14-35](figures/zh-cn_image_20-24-01-16-14-35.png)
+![macos-unzip](figures/macos-unzip.png)
 
 <!--RP1End-->
 ### 配置环境变量
@@ -60,13 +60,13 @@ mac使用 SDK 包解压完成效果如下图所示：
 
    + 配置 windows 下的环境变量
 
-    右键点击我的电脑，在下拉框中选择【属性】，然后点击【高级系统设置】，进入【环境变量】，找到【Path】并点击【编辑】，接着点击【新建】添加路径，保存后退出。最后打开cmd（若下一步不能够实现，请重启电脑尝试）。
+      右键点击我的电脑，在下拉框中选择【属性】，然后点击【高级系统设置】，进入【环境变量】，找到【Path】并点击【编辑】，接着点击【新建】添加路径，保存后退出。最后打开cmd（若下一步不能够实现，请重启电脑尝试）。
 
-    ![zh-cn_image_20-25-11-18-11-56](figures/zh-cn_image_20-25-11-18-11-56.PNG)
+      ![windows-path-log](figures/windows-path-log.PNG)
 
-    打开命令框，输入{cmake实际安装路径}\cmake.exe -version，命令行正确回显cmake的版本号，说明环境变量配置完成。
+      打开命令框，输入cmake.exe -version，命令行正确回显cmake的版本号，说明环境变量配置完成。
 
-    ![zh-cn_image_20-25-11-18-11-59](figures/zh-cn_image_20-25-11-18-11-59.PNG)
+      ![cmake-version-check](figures/cmake-version-check.PNG)
 
 
 2. 查看CMake默认路径。
@@ -182,19 +182,19 @@ int sum(int a, int b)
 
 在工程目录的模块目录下，创建build目录，用来放置CMake构建时产生的中间文件。注意: ohos-sdk是下载下来的SDK的根目录，开发者需要自行替换成实际的下载目录。
 
-1. 采用OHOS_STL=c++_shared动态链接c++库方式构建工程，如不指定，默认采用c++_shared；DOHOS_ARCH参数可根据系统架构来决定具体值，例如当DOHOS_ARCH=armeabi-v7a会编译32位动态库，而当DOHOS_ARCH=arm64-v8a会编译64位动态库。
+1. 采用OHOS_STL=c++_shared动态链接c++库方式构建工程，如不指定，默认采用c++_shared；OHOS_ARCH参数可根据系统架构来决定具体值，例如当OHOS_ARCH=armeabi-v7a会编译32位动态库，而当OHOS_ARCH=arm64-v8a会编译64位动态库。
 
    ```shell
     >mkdir build && cd build
-    >cmake -DOHOS_STL=c++_shared -DOHOS_ARCH=arm64-v8a -DOHOS_PLATFORM=OHOS -DCMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
+    >cmake -D OHOS_STL=c++_shared -D OHOS_ARCH=arm64-v8a -D OHOS_PLATFORM=OHOS -D CMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
     >cmake --build .
    ```
 
-2. 采用OHOS_STL=c++_static静态链接c++库方式构建工程，当DOHOS_ARCH=armeabi-v7a会编译32位静态库，而当DOHOS_ARCH=arm64-v8a会编译64位静态库。
+2. 采用OHOS_STL=c++_static静态链接c++库方式构建工程，当OHOS_ARCH=armeabi-v7a会编译32位静态库，而当OHOS_ARCH=arm64-v8a会编译64位静态库。
 
    ```shell
     >mkdir build && cd build
-    >cmake -DOHOS_STL=c++_static -DOHOS_ARCH=arm64-v8a -DOHOS_PLATFORM=OHOS -DCMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
+    >cmake -D OHOS_STL=c++_static -D OHOS_ARCH=arm64-v8a -D OHOS_PLATFORM=OHOS -D CMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
     >cmake --build .
    ```
 
@@ -202,15 +202,19 @@ int sum(int a, int b)
    
    CMAKE_TOOLCHAIN_FILE指定了toolchain文件，在此文件中默认给clang++设置了--sysroot={ndk_sysroot目录}，告诉编译器查找系统头文件的根目录。
 
+> **注意**：
+>
+> 动态链接在运行时加载库文件，能有效节省磁盘空间和内存，但也增加运行时加载开销，略微影响启动性能。静态链接则将库代码直接嵌入可执行文件，启动快，但生成的文件体积更大，适合对启动性能敏感或运行环境受限的场景，不适用于对磁盘空间敏感的应用或设备。
+
 **windows系统环境下**
 
 在windows下使用cmake进行编译，与linux下不同的是，使用cmake要加入参数 -G 选择使用的生成器，直接回车会列出下面的生成器。
 
-![zh-cn_image_20-24-01-16-14-56](figures/zh-cn_image_20-24-01-16-14-56.png)
+![cmake-windows-G](figures/cmake-windows-G.png)
 
 这里使用的是cmake .. -G "Ninja" 引号里面跟的参数就是上图查看的环境所支持的生成器，这里ndk中自带的生成器是Ninja。
 
-![zh-cn_image_20-24-01-16-14-57](figures/zh-cn_image_20-24-01-16-14-57.png)
+![cmake-ninja-bin](figures/cmake-ninja-bin.png)
 
 Step 1. 同样在工程目录的模块目录下创建 build 文件夹，进入build目录并执行以下指令：
 ```shell
@@ -218,16 +222,18 @@ Step 1. 同样在工程目录的模块目录下创建 build 文件夹，进入bu
 ```
 > **注意**：
 >
-> 如需debug调试，增加参数 -D CMAKE_BUILD_TYPE=normal；cmake路径和编译工具链ohos.toolchain.cmake路径都是下载好的ndk路径。<br>执行结果如下图：
+> 如需debug调试，增加参数 -D CMAKE_BUILD_TYPE=Debug；cmake路径和编译工具链ohos.toolchain.cmake路径都是下载好的ndk路径。<br>执行结果如下图：
 
-![zh-cn_image_20-24-01-16-14-58](figures/zh-cn_image_20-24-01-16-14-58.png)
+![cmake-config-log](figures/cmake-config-log.png)
 
 这里生成的build.ninja文件就是我们需要的 。
 
 Step 2. 让我们用ninja指令来编译生成目标文件，其位置如下图所示：
 
-![zh-cn_image_20-24-01-16-14-59](figures/zh-cn_image_20-24-01-16-14-59.png)
+![build-dir-list](figures/build-dir-list.png)
 
 ninja -f build.ninja 或者用 cmake --build .   执行结果如下：
 
-![zh-cn_image_20-24-01-16-14-60](figures/zh-cn_image_20-24-01-16-14-60.png)
+![ninja-build-log](figures/ninja-build-log.png)
+
+编译生成的可执行文件位于创建的build目录下的src目录中。

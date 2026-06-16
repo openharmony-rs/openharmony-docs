@@ -12,6 +12,8 @@
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-apis-uicontext-uicontext.md)说明。
 >
 > - 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
@@ -75,7 +77,8 @@ class DragInfo {
 struct DragControllerPage {
   @State text: string = ''
 
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -90,8 +93,8 @@ struct DragControllerPage {
     Column() {
       Button('touch to execute drag')
         .margin(10)
-        .onTouch((event?:TouchEvent) => {
-          if(event){
+        .onTouch((event?: TouchEvent) => {
+          if (event) {
             if (event.type == TouchType.Down) {
               let text = new unifiedDataChannel.PlainText()
               text.textContent = 'drag text'
@@ -104,8 +107,10 @@ struct DragControllerPage {
                 extraParams: ''
               }
               let eve: DragInfo = new DragInfo();
-              this.getUIContext().getDragController().executeDrag(()=>{this.DraggingBuilder()}, dragInfo, (err, eve) => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
-                if(eve.event){
+              this.getUIContext().getDragController().executeDrag(() => {
+                this.DraggingBuilder()
+              }, dragInfo, (err, eve) => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
+                if (eve.event) {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
                   } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
@@ -119,10 +124,10 @@ struct DragControllerPage {
       Text(this.text)
         .height(100)
         .width(150)
-        .margin({top:20})
-        .border({color:Color.Black,width:1})
-        .onDrop((dragEvent?:DragEvent)=>{
-          if(dragEvent){
+        .margin({ top: 20 })
+        .border({ color: Color.Black, width: 1 })
+        .onDrop((dragEvent?: DragEvent) => {
+          if (dragEvent) {
             let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
             let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
             this.text = plainText.textContent;
@@ -190,10 +195,11 @@ class DragInfo {
 @Entry
 @Component
 struct DragControllerPage {
-  @State pixmap: image.PixelMap|undefined = undefined
+  @State pixmap: image.PixelMap | undefined = undefined
   @State text: string = ''
 
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -203,7 +209,8 @@ struct DragControllerPage {
     .backgroundColor(Color.Blue)
   }
 
-  @Builder PixmapBuilder() {
+  @Builder
+  PixmapBuilder() {
     Column() {
       Text("PixmapBuilder")
         .fontColor(Color.White)
@@ -227,8 +234,8 @@ struct DragControllerPage {
     Column() {
       Button('touch to execute drag')
         .margin(10)
-        .onTouch((event?:TouchEvent) => {
-          if(event){
+        .onTouch((event?: TouchEvent) => {
+          if (event) {
             if (event.type == TouchType.Down) {
               let text = new unifiedDataChannel.PlainText()
               text.textContent = 'drag text'
@@ -242,11 +249,15 @@ struct DragControllerPage {
               }
               let dragItemInfo: DragItemInfo = {
                 pixelMap: this.pixmap,
-                builder: ()=>{this.DraggingBuilder()},
+                builder: () => {
+                  this.DraggingBuilder()
+                },
                 extraInfo: "DragItemInfoTest"
               }
               let eve: DragInfo = new DragInfo();
-              this.getUIContext().getDragController().executeDrag(dragItemInfo, dragInfo) // 建议使用 this.getUIContext().getDragController().executeDrag()接口
+              this.getUIContext()
+                .getDragController()
+                .executeDrag(dragItemInfo, dragInfo) // 建议使用 this.getUIContext().getDragController().executeDrag()接口
                 .then((eve) => {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
@@ -254,7 +265,7 @@ struct DragControllerPage {
                     // ...
                   }
                 })
-                .catch((err:Error) => {
+                .catch((err: Error) => {
                 })
             }
           }
@@ -262,10 +273,10 @@ struct DragControllerPage {
       Text(this.text)
         .height(100)
         .width(150)
-        .margin({top:20})
-        .border({color:Color.Black,width:1})
-        .onDrop((dragEvent?:DragEvent)=>{
-          if(dragEvent){
+        .margin({ top: 20 })
+        .border({ color: Color.Black, width: 1 })
+        .onDrop((dragEvent?: DragEvent) => {
+          if (dragEvent) {
             let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
             let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
             this.text = plainText.textContent;
@@ -290,8 +301,138 @@ struct DragControllerPage {
 | data        | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 否  |  是  | 设置拖拽过程中携带的数据。 <br/>默认值：空<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。               |
 | extraParams | string                                                 | 否  |  是  | 设置拖拽事件额外信息，具体功能暂未实现。<br/>默认值：空<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | touchPoint<sup>11+</sup>    | [TouchPoint](arkui-ts/ts-types.md#touchpoint11)  | 否  |  是  | 配置跟手点坐标。不配置时，左右居中，顶部向下偏移20%。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| previewOptions<sup>11+</sup>| [DragPreviewOptions](arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)                                | 否   |  是  | 设置拖拽过程中背板图处理模式及数量角标的显示。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| previewOptions<sup>11+</sup>| [DragPreviewOptions](arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11-1)                                | 否   |  是  | 设置拖拽过程中背板图处理模式及数量角标的显示。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| autoHideComponentUniqueIds | number&nbsp;\|&nbsp;number[] | 否   |  是  | 设置在主动拖拽过程中由系统自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。<br/>主动拖拽成功发起后，系统会在显示拖拽预览窗口前自动隐藏目标组件。<br/>若主动拖拽源本身也需要被隐藏，需要同时传入其uniqueId。<br/>组件的uniqueId可通过[UIContext.getFrameNodeById()](arkts-apis-uicontext-uicontext.md#getframenodebyid12)配合[FrameNode.getUniqueId()](js-apis-arkui-frameNode.md#getuniqueid12)获取。<br/>开发者需要在拖拽结束回调中按需恢复组件显示状态。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | dataLoadParams<sup>20+</sup>| [unifiedDataChannel.DataLoadParams](../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20)                                | 否   |  是  | 设置拖起方延迟提供数据。调用此方法向系统提供数据加载参数，而非直接传入完整的数据对象。当用户将数据拖拽至目标应用程序并释放时，系统将使用此参数从起拖方请求实际数据。与data同时设置时，dataLoadParams生效。<br/>默认值：空<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+
+**示例：**
+
+该示例通过[DragInfo](#draginfo)的autoHideComponentUniqueIds属性，在主动拖拽成功发起后自动隐藏指定组件。
+
+从API版本26.0.0开始，DragInfo新增autoHideComponentUniqueIds属性。
+
+```ts
+import { dragController } from '@kit.ArkUI';
+import { unifiedDataChannel } from '@kit.ArkData';
+
+@Entry
+@Component
+struct DragInfoAutoHideSample {
+  @State sourceVisibility: Visibility = Visibility.Visible;
+  @State badgeVisibility: Visibility = Visibility.Visible;
+  @State statusText: string = '状态：等待主动拖拽';
+
+  @Builder
+  PreviewBuilder() {
+    Text('Drag Preview')
+      .width(140)
+      .height(60)
+      .backgroundColor('#3F51B5')
+      .borderRadius(10)
+      .fontColor(Color.White);
+  }
+
+  private buildData(content: string): unifiedDataChannel.UnifiedData {
+    let plainText = new unifiedDataChannel.PlainText();
+    plainText.textContent = content;
+    plainText.abstract = content;
+    return new unifiedDataChannel.UnifiedData(plainText);
+  }
+
+  private collectHideIds(): number[] {
+    let hideIds: number[] = [];
+    let sourceNode = this.getUIContext().getFrameNodeById('active_source');
+    let badgeNode = this.getUIContext().getFrameNodeById('active_badge');
+    if (sourceNode?.getUniqueId() !== undefined) {
+      hideIds.push(sourceNode.getUniqueId());
+    }
+    if (badgeNode?.getUniqueId() !== undefined) {
+      hideIds.push(badgeNode.getUniqueId());
+    }
+    return hideIds;
+  }
+
+  private hideTargets(): void {
+    this.sourceVisibility = Visibility.Hidden;
+    this.badgeVisibility = Visibility.Hidden;
+    this.statusText = '状态：主动拖拽中，目标组件已隐藏';
+  }
+
+  private restoreTargets(): void {
+    this.sourceVisibility = Visibility.Visible;
+    this.badgeVisibility = Visibility.Visible;
+    this.statusText = '状态：拖拽结束，组件已恢复显示';
+  }
+
+  build() {
+    Column({ space: 12 }) {
+      Text(this.statusText)
+        .width('100%')
+        .fontSize(14)
+        .fontColor('#BF360C');
+
+      Row({ space: 12 }) {
+        Column() {
+          Text('主动拖拽源')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium);
+          Text('id: active_source')
+            .fontSize(10)
+            .fontColor('#E8F5E9');
+        }
+          .id('active_source')
+          .width(140)
+          .height(90)
+          .backgroundColor('#2E7D32')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.sourceVisibility);
+
+        Column() {
+          Text('跟随隐藏组件')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium);
+          Text('id: active_badge')
+            .fontSize(10)
+            .fontColor('#E3F2FD');
+        }
+          .id('active_badge')
+          .width(140)
+          .height(90)
+          .backgroundColor('#1565C0')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.badgeVisibility);
+      }
+
+      Button('发起主动拖拽')
+        .width('100%')
+        .height(56)
+        .backgroundColor('#FF8F00')
+        .onTouch((touchEvent) => {
+          if (!touchEvent || touchEvent.type !== TouchType.Down) {
+            return;
+          }
+          let hideIds = this.collectHideIds();
+          let dragInfo: dragController.DragInfo = {
+            pointerId: 0,
+            data: this.buildData('active drag data'),
+            extraParams: '',
+            autoHideComponentUniqueIds: hideIds
+          };
+          this.hideTargets();
+          this.getUIContext().getDragController().executeDrag(() => {
+            this.PreviewBuilder();
+          }, dragInfo, () => {
+            this.restoreTargets();
+          });
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
 
 ## dragController.createDragAction<sup>(deprecated)</sup>
 
@@ -349,8 +490,10 @@ struct DragControllerPage {
   @State pixmap: image.PixelMap | null = null
   @State text: string = ''
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -370,8 +513,8 @@ struct DragControllerPage {
           .height('100%')
           .fontColor(Color.White)
           .fontSize(18)
-          .onDrop((dragEvent?:DragEvent)=>{
-            if(dragEvent){
+          .onDrop((dragEvent?: DragEvent) => {
+            if (dragEvent) {
               let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
               let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
               this.text = plainText.textContent;
@@ -383,14 +526,20 @@ struct DragControllerPage {
       .backgroundColor(Color.Red)
       .margin(10)
 
-      Button('多对象dragAction customBuilder拖拽').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('多对象dragAction customBuilder拖拽').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             console.info("multi drag Down by listener");
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -399,16 +548,19 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             }
-            try{
-              this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
-              if(!this.dragAction){
+            try {
+              this.dragAction = this.getUIContext()
+                .getDragController()
+                .createDragAction(this.customBuilders,
+                  dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
+              if (!this.dragAction) {
                 console.info("listener dragAction is null");
                 return
               }
-              this.dragAction.on('statusChange', (dragAndDropInfo: dragController.DragAndDropInfo)=>{
+              this.dragAction.on('statusChange', (dragAndDropInfo: dragController.DragAndDropInfo) => {
                 if (dragAndDropInfo.status == dragController.DragStatus.STARTED) {
                   console.info("drag has start");
-                } else if (dragAndDropInfo.status == dragController.DragStatus.ENDED){
+                } else if (dragAndDropInfo.status == dragController.DragStatus.ENDED) {
                   console.info("drag has end");
                   if (!this.dragAction) {
                     return
@@ -416,20 +568,23 @@ struct DragControllerPage {
                   this.dragAction.off('statusChange')
                 }
               })
-              this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
-                console.error("start drag Error:" + err.message);
+              this.dragAction.startDrag().then(() => {
+              }).catch((err: Error) => {
+                console.error(`start drag Error:${err.message}`);
               })
-            } catch(err) {
-              console.error("create dragAction Error:" + err.message);
+            } catch (err) {
+              console.error(`create dragAction Error:${err.message}`);
             }
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
 ```
   ![zh-cn_executeDrag3](figures/executeDrag3.gif)
+
+
 ## DragAction<sup>11+</sup>
 
 监听状态改变，启动拖拽服务的对象。
@@ -474,8 +629,10 @@ import { unifiedDataChannel } from '@kit.ArkData';
 @Component
 struct DragControllerPage {
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -488,11 +645,13 @@ struct DragControllerPage {
 
   build() {
     Column() {
-      Button('touch to execute drag').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('touch to execute drag').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -501,21 +660,25 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             }
-            try{
-              this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
-              if(!this.dragAction){
+            try {
+              this.dragAction = this.getUIContext()
+                .getDragController()
+                .createDragAction(this.customBuilders,
+                  dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
+              if (!this.dragAction) {
                 console.info("listener dragAction is null");
                 return;
               }
-              this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
+              this.dragAction.startDrag().then(() => {
+              }).catch((err: Error) => {
                 console.error(`start drag Error: ${err.message}`);
               })
-            } catch(err) {
+            } catch (err) {
               console.error(`create dragAction Error: ${err.message}`);
             }
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
@@ -527,7 +690,7 @@ struct DragControllerPage {
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
-import { fileUri, fileIo as fs } from '@kit.CoreFileKit';
+import { fileUri, fileIo as fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { dragController } from '@kit.ArkUI';
 
@@ -566,12 +729,12 @@ struct ImageExample {
                     let data =
                       context.resourceManager.getRawFdSync('test1.mp4');
                     let filePath = context.filesDir + '/test1.mp4';
-                    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+                    let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
                     let bufferSize = data.length as number;
                     let buf = new ArrayBuffer(bufferSize);
-                    fs.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
-                    fs.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
-                    fs.closeSync(file.fd);
+                    fileIo.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
+                    fileIo.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
+                    fileIo.closeSync(file.fd);
                     context.resourceManager.closeRawFdSync('test1.mp4')
                     this.uri = fileUri.getUriFromPath(filePath);
                     let videoMp: uniformDataStruct.FileUri = {
@@ -726,8 +889,10 @@ import { unifiedDataChannel } from '@kit.ArkData';
 @Component
 struct DragControllerPage {
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -740,11 +905,13 @@ struct DragControllerPage {
 
   build() {
     Column() {
-      Button('touch to execute drag').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('touch to execute drag').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -756,23 +923,27 @@ struct DragControllerPage {
             let func = (dragAndDropInfo: dragController.DragAndDropInfo) => {
               console.info(`Register to listen on drag status ${JSON.stringify(dragAndDropInfo)}`);
             }
-            try{
-              this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
-              if(!this.dragAction){
+            try {
+              this.dragAction = this.getUIContext()
+                .getDragController()
+                .createDragAction(this.customBuilders,
+                  dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
+              if (!this.dragAction) {
                 console.info("listener dragAction is null");
                 return;
               }
               // 监听状态改变，触发后打印func中的日志
               this.dragAction.on('statusChange', func);
-              this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
+              this.dragAction.startDrag().then(() => {
+              }).catch((err: Error) => {
                 console.error(`start drag Error: ${err.message}`);
               })
-            } catch(err) {
+            } catch (err) {
               console.error(`create dragAction Error: ${err.message}`);
             }
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
@@ -808,8 +979,10 @@ import { unifiedDataChannel } from '@kit.ArkData';
 @Component
 struct DragControllerPage {
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -822,11 +995,13 @@ struct DragControllerPage {
 
   build() {
     Column() {
-      Button('touch to execute drag').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('touch to execute drag').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -838,20 +1013,24 @@ struct DragControllerPage {
             let func = (dragAndDropInfo: dragController.DragAndDropInfo) => {
               console.info(`Register to listen on drag status ${JSON.stringify(dragAndDropInfo)}`);
             }
-            this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
-            if(!this.dragAction){
+            this.dragAction = this.getUIContext()
+              .getDragController()
+              .createDragAction(this.customBuilders,
+                dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
+            if (!this.dragAction) {
               console.info("listener dragAction is null");
               return;
             }
             this.dragAction.on('statusChange', func);
             // 取消监听，发起拖拽后不会打印func中的日志
             this.dragAction.off('statusChange', func);
-            this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
+            this.dragAction.startDrag().then(() => {
+            }).catch((err: Error) => {
               console.error(`start drag Error: ${err.message}`);
             })
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
@@ -1012,10 +1191,12 @@ animate(options: AnimationOptions, handler: () => void): void
 
        windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
-           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', `Code is ${err.code}, message is ${err.message}`);
+           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s',
+             `Code is ${err.code}, message is ${err.message}`);
            return;
          }
-         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',  `Code is ${err.code}, message is ${err.message}`);
+         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
+           `Code is ${err.code}, message is ${err.message}`);
          windowStage.getMainWindow((err, data) => {
            if (err.code) {
              hilog.error(0x0000, `Failed to obtain the main window. Cause: ${err.message}`, '');
@@ -1045,10 +1226,11 @@ animate(options: AnimationOptions, handler: () => void): void
    @Entry()
    @Component
    struct DragControllerPage {
-     @State pixmap: image.PixelMap|null = null;
+     @State pixmap: image.PixelMap | null = null;
      storages = this.getUIContext().getSharedLocalStorage();
 
-     @Builder DraggingBuilder() {
+     @Builder
+     DraggingBuilder() {
        Column() {
          Text("DraggingBuilder")
            .fontColor(Color.White)
@@ -1059,7 +1241,8 @@ animate(options: AnimationOptions, handler: () => void): void
        .backgroundColor(Color.Blue)
      }
 
-     @Builder PixmapBuilder() {
+     @Builder
+     PixmapBuilder() {
        Column() {
          Text("PixmapBuilder")
        }
@@ -1073,28 +1256,28 @@ animate(options: AnimationOptions, handler: () => void): void
          Button('拖拽至此处')
            .margin(10)
            .onDragEnter(() => {
-           try {
-             let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
-             let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
-             let foregroundColor: ResourceColor = Color.Green;
+             try {
+               let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
+               let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
+               let foregroundColor: ResourceColor = Color.Green;
 
-             let previewAnimation: dragController.AnimationOptions = {
-               curve: curves.cubicBezierCurve(0.2,0,0,1),
+               let previewAnimation: dragController.AnimationOptions = {
+                 curve: curves.cubicBezierCurve(0.2, 0, 0, 1),
+               }
+               previewObj.animate(previewAnimation, () => {
+                 previewObj.setForegroundColor(foregroundColor);
+               });
+             } catch (error) {
+               let msg = (error as BusinessError).message;
+               let code = (error as BusinessError).code;
+               hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
              }
-             previewObj.animate(previewAnimation, () => {
-               previewObj.setForegroundColor(foregroundColor);
-             });
-           } catch (error) {
-             let msg = (error as BusinessError).message;
-             let code = (error as BusinessError).code;
-             hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
-           }
-         })
-           .onDrop(() => {
-             this.getUIContext().getPromptAction().showToast({duration: 100, message: 'Drag Success', bottom: 400})
            })
-         Button('拖起').onTouch((event?:TouchEvent) => {
-           if(event){
+           .onDrop(() => {
+             this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success', bottom: 400 })
+           })
+         Button('拖起').onTouch((event?: TouchEvent) => {
+           if (event) {
              if (event.type == TouchType.Down) {
                let text = new unifiedDataChannel.Text()
                let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -1104,21 +1287,23 @@ animate(options: AnimationOptions, handler: () => void): void
                  extraParams: ''
                }
                let eve: DragInfo = new DragInfo();
-               this.getUIContext().getDragController().executeDrag(() => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
-                 this.DraggingBuilder()
-               }, dragInfo, (err , eve) => {
-                 hilog.info(0x0000, `${JSON.stringify(err)}`, '')
-                 if (eve && eve.event) {
-                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
-                     hilog.info(0x0000, 'success', '');
-                   } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
-                     hilog.info(0x0000, 'failed', '');
+               this.getUIContext()
+                 .getDragController()
+                 .executeDrag(() => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
+                   this.DraggingBuilder()
+                 }, dragInfo, (err, eve) => {
+                   hilog.info(0x0000, `${JSON.stringify(err)}`, '')
+                   if (eve && eve.event) {
+                     if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+                       hilog.info(0x0000, 'success', '');
+                     } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
+                       hilog.info(0x0000, 'failed', '');
+                     }
                    }
-                 }
-               })
+                 })
              }
            }
-         }).margin({top:100})
+         }).margin({ top: 100 })
        }
        .width('100%')
        .height('100%')
@@ -1151,10 +1336,10 @@ animate(options: AnimationOptions, handler: () => void): void
 
 | 名称 | 值|说明                                                          |
 | ------ | --------------------- |--------------------------------------- |
-| BEGIN  | - |拖拽进入组件范围静止一段时间，被识别为悬停状态。此时允许进行一些悬停检测的准备操作。 |
-| UPDATE | - |拖拽已处于悬停状态，如果继续静止会定期触发UPDATE通知，以检查悬停状态。此时允许UI效果刷新以突出悬停状态。 |
-| END    | - |如果最后一次UPDATE通知后拖拽继续静止会进入END，整个悬停检测结束。进入END后拖拽需要移出组件范围后再次进入组件或移入组件内子组件才会重新开始悬停检测。此时应用程序可进行清理、导航或视图切换操作。 |
-| CANCEL | - |拖拽进入BEGIN后，在手指/鼠标抬起、切换窗口、息屏、移出组件范围、移入组件内子组件或组件内移动超过检测阈值等场景会触发CANCEL通知，悬停检测中断。应用程序将恢复UI样式，并取消待定的导航及视图切换操作。 |
+| BEGIN  | 0 |拖拽进入组件范围静止一段时间，被识别为悬停状态。此时允许进行一些悬停检测的准备操作。 |
+| UPDATE | 1 |拖拽已处于悬停状态，如果继续静止会定期触发UPDATE通知，以检查悬停状态。此时允许UI效果刷新以突出悬停状态。 |
+| END    | 2 |如果最后一次UPDATE通知后拖拽继续静止会进入END，整个悬停检测结束。进入END后拖拽需要移出组件范围后再次进入组件或移入组件内子组件才会重新开始悬停检测。此时应用程序可进行清理、导航或视图切换操作。 |
+| CANCEL | 3 |拖拽进入BEGIN后，在手指/鼠标抬起、切换窗口、息屏、移出组件范围、移入组件内子组件或组件内移动超过检测阈值等场景会触发CANCEL通知，悬停检测中断。应用程序将恢复UI样式，并取消待定的导航及视图切换操作。 |
 
 ## DragSpringLoadingConfiguration<sup>20+</sup>
 
@@ -1166,10 +1351,10 @@ animate(options: AnimationOptions, handler: () => void): void
 
 | 名称                 | 类型   |只读| 可选 | 说明                                   |
 | --------------------- | ------ | ---- | --- | ---------------------------------------------------- |
-| stillTimeLimit         | number | 否   |    是   |进入悬停检测BEGIN状态所需保持静止的时间（ms）。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值500。 |
-| updateInterval         | number | 否   |    是   |进入悬停检测UPDATE状态后，更新通知的时间间隔（ms）。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。|
+| stillTimeLimit         | number | 否   |    是   |进入悬停检测BEGIN状态所需保持静止的时间，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值500。 |
+| updateInterval         | number | 否   |    是   |进入悬停检测UPDATE状态后，更新通知的时间间隔，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。|
 | updateNotifyCount      | number | 否   |    是   |进入悬停检测UPDATE状态后，更新通知的最大次数。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值3。|
-| updateToFinishInterval | number | 否   |    是   |从UPDATE状态到END状态的最长等待时间（ms）。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。 |
+| updateToFinishInterval | number | 否   |    是   |从UPDATE状态到END状态的最长等待时间，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。 |
 
 ## SpringLoadingDragInfos<sup>20+</sup>
 

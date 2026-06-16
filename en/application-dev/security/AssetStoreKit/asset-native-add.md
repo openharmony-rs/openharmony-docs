@@ -51,9 +51,9 @@ The following table describes the attributes for adding an asset.
 
 - Custom service data storage
 
-  - ASSET provides 12 custom asset attributes starting with **ASSET_TAG_DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an ASSET attribute.
+  - Asset Store Kit provides 12 custom asset attributes starting with **ASSET_TAG_DATA_LABEL** for services. If the 12 custom attributes are used, you can combine multiple data segments in a certain format (for example, JSON) into an ASSET attribute.
 
-  - ASSET protects the integrity of the attributes starting with **ASSET_TAG_DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
+  - Asset Store Kit protects the integrity of the attributes starting with **ASSET_TAG_DATA_LABEL_CRITICAL**. These attributes cannot be changed once written.
 
 ## Example
 
@@ -68,37 +68,36 @@ For details about how to add an asset to a group, see [Adding an Asset to a Grou
 
 2. Include header files.
    <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-#include "napi/native_api.h"
-#include <string.h>
-#include "asset/asset_api.h"
-```
-
+   
+   ``` C++
+   #include "napi/native_api.h"
+   #include <string.h>
+   #include "asset/asset_api.h"
+   ```
 
 3. Add an asset.
    <!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value AddAsset(napi_env env, napi_callback_info info)
-{
-    const char *secretStr = "demo_pwd";
-    const char *aliasStr = "demo_alias";
-    const char *labelStr = "demo_label";
-
-    Asset_Blob secret = {(uint32_t)(strlen(secretStr)), (uint8_t *)secretStr};
-    Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
-    Asset_Blob label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
-    Asset_Attr attr[] = {
-        {.tag = ASSET_TAG_ACCESSIBILITY, .value.u32 = ASSET_ACCESSIBILITY_DEVICE_FIRST_UNLOCKED},
-        {.tag = ASSET_TAG_SECRET, .value.blob = secret},
-        {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
-        {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
-    };
-
-    int32_t addResult = OH_Asset_Add(attr, sizeof(attr) / sizeof(attr[0]));
-    napi_value ret;
-    napi_create_int32(env, addResult, &ret);
-    return ret;
-}
-```
+   
+   ``` C++
+   static napi_value AddAsset(napi_env env, napi_callback_info info)
+   {
+       const char *secretStr = "demo_pwd";
+       const char *aliasStr = "demo_alias";
+       const char *labelStr = "demo_label";
+   
+       Asset_Blob secret = {(uint32_t)(strlen(secretStr)), (uint8_t *)secretStr};
+       Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+       Asset_Blob label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
+       Asset_Attr attr[] = {
+           {.tag = ASSET_TAG_ACCESSIBILITY, .value.u32 = ASSET_ACCESSIBILITY_DEVICE_FIRST_UNLOCKED},
+           {.tag = ASSET_TAG_SECRET, .value.blob = secret},
+           {.tag = ASSET_TAG_ALIAS, .value.blob = alias},
+           {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = label},
+       };
+   
+       int32_t addResult = OH_Asset_Add(attr, sizeof(attr) / sizeof(attr[0]));
+       napi_value ret;
+       napi_create_int32(env, addResult, &ret);
+       return ret;
+   }
+   ```

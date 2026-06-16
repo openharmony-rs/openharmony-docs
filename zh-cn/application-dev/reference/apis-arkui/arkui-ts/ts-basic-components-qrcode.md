@@ -1,20 +1,20 @@
 # QRCode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 用于显示单个二维码的组件。
 
 >  **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > 
-> 二维码组件的像素点数量与内容有关，组件尺寸过小可能导致内容无法展示，此时需要适当调整组件尺寸。
-
-
+> - 二维码组件的像素点数量与内容有关，组件尺寸过小可能导致内容无法展示，此时需要适当调整组件尺寸。
+>
+> <!--RP1--><!--RP1End-->
 ## 子组件
 
 无
@@ -86,6 +86,8 @@ contentOpacity(value: number | Resource)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -152,7 +154,7 @@ struct QRCodeExample {
         // $r('app.media.ocean')需要替换为开发者所需的图像资源文件。
         Image($r('app.media.ocean'))
         // 设置二维码背景色为透明
-        QRCode(this.value).width(200).height(200).backgroundColor("#00ffffff")
+        QRCode(this.value).width(200).height(200).backgroundColor('#00ffffff')
       }.width(200).height(200)
     }.width('100%').margin({ top: 5 })
   }

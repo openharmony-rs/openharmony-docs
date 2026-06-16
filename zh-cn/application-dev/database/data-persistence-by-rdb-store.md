@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 
@@ -49,7 +49,7 @@
 
 ## 接口说明
 
-以下是关系型数据库持久化功能的相关接口，大部分为异步接口。异步接口均有callback和Promise两种返回形式，下表均以callback形式为例，更多接口及使用方式请见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+以下是关系型数据库持久化功能的相关接口，更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 | 接口名称 | 描述 | 
 | -------- | -------- |
@@ -75,7 +75,7 @@
    
    Stage模型示例：
      
-   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
@@ -84,7 +84,6 @@
    const DOMAIN = 0x0000;
    
    let store: relationalStore.RdbStore | undefined = undefined;
-   let context = getContext();
    let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
    let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
    if (!tokenTypeSupported) {
@@ -105,7 +104,7 @@
      // 可选参数，指定用户在全文搜索场景(FTS)下使用哪种分词器。默认在FTS下仅支持英文分词，不支持其他语言分词。
      tokenizer: tokenType,
    };
-   // ···
+   // ...
      // 判断数据库版本，如果不匹配则需进行升降级操作
      // 假设当前数据库版本为3，表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
      // 建表Sql语句, IDENTITY为bigint类型，sql中指定类型为UNLIMITED INT
@@ -143,7 +142,7 @@
        // 当前数据库存在并且版本为1，数据库需要从1版本升级到2版本
        if (storeVersion === 1) {
          // version = 1：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
-         //=> version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
+         // => version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
          try {
            await transaction.execute('ALTER TABLE EMPLOYEE ADD COLUMN IDENTITY UNLIMITED INT');
            storeVersion = 2;
@@ -158,7 +157,7 @@
        // 当前数据库存在并且版本为2，数据库需要从2版本升级到3版本
        if (storeVersion === 2) {
          // version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
-         //=> version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
+         // => version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
          try {
            await transaction.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
            storeVersion = 3;
@@ -404,9 +403,10 @@
 5. 使用事务对象执行数据的插入、删除和更新操作。
    
    调用createTransaction方法创建事务对象并执行相应操作。
+   
    支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
 
-   具体信息请参见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)。
+   具体信息请参见[createTransaction](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14)。
    <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript

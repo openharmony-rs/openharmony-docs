@@ -14,6 +14,8 @@ This file declares the functions related to the shadow in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -31,7 +33,7 @@ This file declares the functions related to the shadow in the drawing module.
 
 ### OH_Drawing_ShadowLayerCreate()
 
-```
+```c
 OH_Drawing_ShadowLayer* OH_Drawing_ShadowLayerCreate(float blurRadius, float x, float y, uint32_t color)
 ```
 
@@ -61,7 +63,7 @@ Creates an **OH_Drawing_ShadowLayer** object.<br>This API may return an error co
 
 ### OH_Drawing_ShadowLayerDestroy()
 
-```
+```c
 void OH_Drawing_ShadowLayerDestroy(OH_Drawing_ShadowLayer* shadowLayer)
 ```
 

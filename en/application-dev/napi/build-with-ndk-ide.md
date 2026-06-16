@@ -28,7 +28,7 @@ You can use the application template provided by DevEco Studio to quickly genera
 
 The NDK project created using the DevEco Studio template contains the automatically generated **CMakeLists.txt** script, as shown in the following:
 
-```
+```txt
 # the minimum version of CMake.
 cmake_minimum_required(VERSION 3.4.1)
 project(MyApplication) 
@@ -54,7 +54,7 @@ The source code, header files, and third-party libraries required for compilatio
 ## externalNativeOptions
 
 The **externalNativeOptions** parameter in the module-level **build-profile.json5** file is the entry for configuring C/C++ file compilation of the NDK project. You can use **path** to specify the path to the CMake script, **arguments** to set CMake parameters, **cppFlags** to set C++ compiler parameters, and **abiFilters** to set the compilation architecture.
-```
+```json
 "apiType": "stageMode",
 "buildOption": {
   "arkOptions": {

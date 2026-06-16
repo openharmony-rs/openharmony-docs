@@ -2,10 +2,23 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+矩阵对象。
+
+表示为3*3的矩阵，如下图所示：
+
+![matrix_3x3](figures/matrix3X3.PNG)
+
+矩阵中的元素从左到右，从上到下分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。
+
+设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：
+
+![matrix-xy](figures/matrix-xy.PNG)
+
 
 > **说明：**
 >
@@ -16,17 +29,6 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-矩阵对象。
-
-表示为3*3的矩阵，如下图所示：
-
-![matrix_3x3](figures/matrix3X3.PNG)
-
-矩阵中的元素从左到右，从上到下分别表示水平缩放系数、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放系数、垂直位移系数、X轴透视系数、Y轴透视系数、透视缩放系数。
-设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：
-
-![matrix_xy](figures/matrix_xy.PNG)
 
 ## 导入模块
 
@@ -138,8 +140,8 @@ setSkew(kx: number, ky: number, px: number, py: number): void
 | ----------- | ---------------------------------------- | ---- | -------------------             |
 | kx          | number                  | 是    | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。        |
 | ky          | number                  | 是    | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。        |
-| px          | number                  | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。     |
-| py          | number                  | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。     |
+| px          | number                  | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。     |
+| py          | number                  | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。     |
 
 **示例：**
 
@@ -165,8 +167,8 @@ setSinCos(sinValue: number, cosValue: number, px: number, py: number): void
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | sinValue          | number                  | 是    | 旋转角度的正弦值。仅当正弦值和余弦值的平方和为1时，为旋转变换，否则矩阵可能包含平移缩放等其他变换。          |
 | cosValue          | number                  | 是    | 旋转角度的余弦值。仅当正弦值和余弦值的平方和为1时，为旋转变换，否则矩阵可能包含平移缩放等其他变换。            |
-| px          | number                  | 是    | 旋转中心的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。     |
-| py          | number                  | 是    | 旋转中心的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。    |
+| px          | number                  | 是    | 旋转中心的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。     |
+| py          | number                  | 是    | 旋转中心的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。    |
 
 **示例：**
 
@@ -190,8 +192,8 @@ setRotation(degree: number, px: number, py: number): void
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | degree      | number                  | 是    | 角度，单位为度。正数表示顺时针旋转，负数表示逆时针旋转，该参数为浮点数。|
-| px          | number                  | 是    | 旋转轴点的横坐标，该参数为浮点数。     |
-| py          | number                  | 是    | 旋转轴点的纵坐标，该参数为浮点数。     |
+| px          | number                  | 是    | 旋转轴点的横坐标，该参数为浮点数。单位为物理像素px。     |
+| py          | number                  | 是    | 旋转轴点的纵坐标，该参数为浮点数。单位为物理像素px。     |
 
 **错误码：**
 
@@ -224,8 +226,8 @@ setScale(sx: number, sy: number, px: number, py: number): void
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | sx          | number                  | 是    | x轴方向缩放系数，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。     |
 | sy          | number                  | 是    | y轴方向缩放系数，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。     |
-| px          | number                  | 是    |  缩放中心点的横坐标，该参数为浮点数。      |
-| py          | number                  | 是    |  缩放中心点的纵坐标，该参数为浮点数。      |
+| px          | number                  | 是    |  缩放中心点的横坐标，该参数为浮点数。单位为物理像素px。      |
+| py          | number                  | 是    |  缩放中心点的纵坐标，该参数为浮点数。单位为物理像素px。      |
 
 **错误码：**
 
@@ -256,8 +258,8 @@ setTranslation(dx: number, dy: number): void
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| dx          | number                  | 是    | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。     |
-| dy          | number                  | 是    | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。     |
+| dx          | number                  | 是    | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。单位为物理像素px。     |
+| dy          | number                  | 是    | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。单位为物理像素px。     |
 
 **错误码：**
 
@@ -428,7 +430,7 @@ matrix1.postConcat(matrix2);
 
 ## isEqual<sup>12+</sup>
 
-isEqual(matrix: Matrix): Boolean
+isEqual(matrix: Matrix): boolean
 
 判断两个矩阵是否相等。
 
@@ -444,7 +446,7 @@ isEqual(matrix: Matrix): Boolean
 
 | 类型                        | 说明                  |
 | --------------------------- | -------------------- |
-| Boolean | 返回两个矩阵的比较结果。true表示两个矩阵相等，false表示两个矩阵不相等。 |
+| boolean | 返回两个矩阵的比较结果。true表示两个矩阵相等，false表示两个矩阵不相等。 |
 
 **错误码：**
 
@@ -472,7 +474,7 @@ if (matrix1.isEqual(matrix2)) {
 
 ## invert<sup>12+</sup>
 
-invert(matrix: Matrix): Boolean
+invert(matrix: Matrix): boolean
 
 将矩阵matrix设置为当前矩阵的逆矩阵，并返回是否设置成功的结果。
 
@@ -488,7 +490,7 @@ invert(matrix: Matrix): Boolean
 
 | 类型                        | 说明                  |
 | --------------------------- | -------------------- |
-| Boolean | 返回matrix是否被设置为逆矩阵的结果。true表示当前矩阵可逆，matrix被设置为逆矩阵，false表示当前矩阵不可逆，matrix不被设置。 |
+| boolean | 返回matrix是否被设置为逆矩阵的结果。true表示当前矩阵可逆，matrix被设置为逆矩阵，false表示当前矩阵不可逆，matrix不被设置。 |
 
 **错误码：**
 
@@ -516,7 +518,7 @@ if (matrix1.invert(matrix2)) {
 
 ## isIdentity<sup>12+</sup>
 
-isIdentity(): Boolean
+isIdentity(): boolean
 
 判断矩阵是否是单位矩阵。
 
@@ -526,7 +528,7 @@ isIdentity(): Boolean
 
 | 类型                        | 说明                  |
 | --------------------------- | -------------------- |
-| Boolean | 返回矩阵是否是单位矩阵。true表示矩阵是单位矩阵，false表示矩阵不是单位矩阵。 |
+| boolean | 返回矩阵是否是单位矩阵。true表示矩阵是单位矩阵，false表示矩阵不是单位矩阵。 |
 
 **示例：**
 
@@ -572,7 +574,7 @@ getValue(index: number): number
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 for (let i = 0; i < 9; i++) {
@@ -593,8 +595,8 @@ postRotate(degree: number, px: number, py: number): void
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | degree | number | 是   | 旋转角度，单位为度。正数表示顺时针旋转，负数表示逆时针旋转，该参数为浮点数。 |
-| px | number | 是   | 旋转中心点的横坐标，该参数为浮点数。 |
-| py | number | 是   | 旋转中心点的纵坐标，该参数为浮点数。 |
+| px | number | 是   | 旋转中心点的横坐标，该参数为浮点数。单位为物理像素px。 |
+| py | number | 是   | 旋转中心点的纵坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -607,7 +609,7 @@ postRotate(degree: number, px: number, py: number): void
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let degree: number = 2;
@@ -631,8 +633,8 @@ postScale(sx: number, sy: number, px: number, py: number): void
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | sx | number | 是   | x轴方向缩放系数，负数表示先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
 | sy | number | 是   | y轴方向缩放系数，负数表示先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
-| px | number | 是   | 缩放中心点的横坐标，该参数为浮点数。 |
-| py | number | 是   | 缩放中心点的纵坐标，该参数为浮点数。 |
+| px | number | 是   | 缩放中心点的横坐标，该参数为浮点数。单位为物理像素px。 |
+| py | number | 是   | 缩放中心点的纵坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -645,7 +647,7 @@ postScale(sx: number, sy: number, px: number, py: number): void
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let sx: number = 2;
@@ -668,8 +670,8 @@ postTranslate(dx: number, dy: number): void
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| dx | number | 是   | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。 |
-| dy | number | 是   | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。 |
+| dx | number | 是   | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。单位为物理像素px。 |
+| dy | number | 是   | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -682,7 +684,7 @@ postTranslate(dx: number, dy: number): void
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let dx: number = 3;
@@ -704,8 +706,8 @@ preRotate(degree: number, px: number, py: number): void
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | degree | number | 是   | 旋转角度，单位为度。正数表示顺时针旋转，负数表示逆时针旋转，该参数为浮点数。 |
-| px | number | 是   | 旋转中心点的横坐标，该参数为浮点数。 |
-| py | number | 是   | 旋转中心点的纵坐标，该参数为浮点数。 |
+| px | number | 是   | 旋转中心点的横坐标，该参数为浮点数。单位为物理像素px。 |
+| py | number | 是   | 旋转中心点的纵坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -718,7 +720,7 @@ preRotate(degree: number, px: number, py: number): void
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let degree: number = 2;
@@ -742,13 +744,14 @@ postSkew(kx: number, ky: number, px: number, py: number): void
 | ----------- | ---------------------------------------- | ---- | -------------------   |
 | kx          | number                  | 是    | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。           |
 | ky          | number                  | 是    | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。           |
-| px          | number                  | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。    |
-| py          | number                  | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。   |
+| px          | number                  | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。    |
+| py          | number                  | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。   |
 
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D"
+import { drawing } from "@kit.ArkGraphics2D"
+
 let matrix = new drawing.Matrix();
 matrix.postSkew(2.0, 1.0, 2.0, 1.0);
 ```
@@ -767,13 +770,14 @@ matrix.postSkew(2.0, 1.0, 2.0, 1.0);
 | ----------- | ---------------------------------------- | ---- | -------------------   |
 | kx          | number                  | 是    | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。           |
 | ky          | number                  | 是    | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。           |
-| px          | number                  | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。        |
-| py          | number                  | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。        |
+| px          | number                  | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。单位为物理像素px。        |
+| py          | number                  | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。单位为物理像素px。        |
 
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D"
+import { drawing } from "@kit.ArkGraphics2D"
+
 let matrix = new drawing.Matrix();
 matrix.preSkew(2.0, 1.0, 2.0, 1.0);
 ```
@@ -790,18 +794,18 @@ mapRadius(radius: number): number
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| radius  | number | 是   | 用于计算的圆的半径，浮点数。如果是负数，则按照绝对值进行计算。 |
+| radius  | number | 是   | 用于计算的圆的半径，浮点数。如果是负数，则按照绝对值进行计算。单位为物理像素px。 |
 
 **返回值：**
 
 | 类型                        | 说明                  |
 | --------------------------- | -------------------- |
-| number | 返回经过变换之后的平均半径。 |
+| number | 返回经过变换之后的平均半径。单位为物理像素px。 |
 
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D"
+import { drawing } from "@kit.ArkGraphics2D"
 
 let matrix = new drawing.Matrix();
 matrix.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
@@ -823,8 +827,8 @@ preScale(sx: number, sy: number, px: number, py: number): void
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | sx | number | 是   | x轴方向缩放系数，为负数时可看作是先关于y = px作镜像翻转后再进行缩放，该参数为浮点数。 |
 | sy | number | 是   | y轴方向缩放系数，为负数时可看作是先关于x = py作镜像翻转后再进行缩放，该参数为浮点数。 |
-| px | number | 是   | 轴心点横坐标，该参数为浮点数。 |
-| py | number | 是   | 轴心点纵坐标，该参数为浮点数。 |
+| px | number | 是   | 轴心点横坐标，该参数为浮点数。单位为物理像素px。 |
+| py | number | 是   | 轴心点纵坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -837,7 +841,7 @@ preScale(sx: number, sy: number, px: number, py: number): void
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let sx: number = 2;
@@ -860,8 +864,8 @@ preTranslate(dx: number, dy: number): void
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| dx | number | 是   | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。 |
-| dy | number | 是   | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。 |
+| dx | number | 是   | x轴方向平移距离，正数表示往x轴正方向平移，负数表示往x轴负方向平移，该参数为浮点数。单位为物理像素px。 |
+| dy | number | 是   | y轴方向平移距离，正数表示往y轴正方向平移，负数表示往y轴负方向平移，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -874,7 +878,7 @@ preTranslate(dx: number, dy: number): void
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let dx: number = 3;
@@ -894,7 +898,7 @@ reset(): void
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 matrix.postScale(2, 3, 4, 5);
@@ -933,7 +937,7 @@ mapPoints(src: Array\<common2D.Point>): Array\<common2D.Point>
 **示例：**
 
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import { drawing, common2D } from "@kit.ArkGraphics2D";
 
 let src: Array<common2D.Point> = [];
 src.push({x: 15, y: 20});
@@ -962,7 +966,7 @@ getAll(): Array\<number>
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 console.info("matrix "+ matrix.getAll());
@@ -974,7 +978,7 @@ mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 
 将目标矩形设置为源矩形通过矩阵变换后的图形的外接矩形。如下图所示，蓝色矩形为源矩形，假设黄色矩形为源矩形通过矩阵变换形成的图形，此时黄色矩形的边不与坐标轴平行，无法使用矩形对象表示，因此，将目标矩形设置为黄色矩形的外接矩形，即黑色矩形。
 
-![mapRect](figures/zh-ch_matrix_mapRect.png)
+![mapRect](figures/matrix-mapRect.png)
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1002,7 +1006,7 @@ mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 **示例：**
 
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import { drawing, common2D } from "@kit.ArkGraphics2D";
 
 let dst: common2D.Rect = { left: 100, top: 20, right: 130, bottom: 60 };
 let src: common2D.Rect = { left: 100, top: 80, right: 130, bottom: 120 };
@@ -1045,7 +1049,7 @@ setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): b
 **示例：**
 
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import { drawing, common2D } from "@kit.ArkGraphics2D";
 
 let src: common2D.Rect = { left: 100, top: 100, right: 300, bottom: 300 };
 let dst: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
@@ -1089,7 +1093,7 @@ setPolyToPoly(src: Array\<common2D.Point>, dst: Array\<common2D.Point>, count: n
 **示例：**
 
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import { drawing, common2D } from "@kit.ArkGraphics2D";
 
 let srcPoints: Array<common2D.Point> = [ {x: 10, y: 20}, {x: 200, y: 150} ];
 let dstPoints: Array<common2D.Point> = [{ x:0, y: 10 }, { x:300, y: 600 }];

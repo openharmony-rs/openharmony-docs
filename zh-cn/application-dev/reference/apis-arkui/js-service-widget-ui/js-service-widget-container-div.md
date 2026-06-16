@@ -11,7 +11,7 @@
 
 >  **说明：**
 >
-> 从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -97,7 +97,7 @@
    ```
     **2*4卡片**
 
-    ![zh-cn_image_0000001231610863](figures/zh-cn_image_0000001231610863.png)
+    ![zh-cn_image_0000001231610863](figures/Flex-example.png)
 
 2. Flex Wrap样式
   
@@ -147,5 +147,5 @@
    ```
    **4*4卡片**
 
-   ![zh-cn_image_0000001186131150](figures/zh-cn_image_0000001186131150.png)
+   ![zh-cn_image_0000001186131150](figures/Flex-Wrap-example.png)
 

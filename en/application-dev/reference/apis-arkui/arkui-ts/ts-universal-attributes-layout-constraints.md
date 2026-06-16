@@ -10,7 +10,7 @@ Layout constraints refer to constraints on the aspect ratio and display priority
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## aspectRatio
 
@@ -33,7 +33,7 @@ After the **aspectRatio** attribute is set, the component's width and height wil
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Aspect ratio of the component.<br>The default value varies by API version.<br>API version 9 and earlier: **1.0**<br><br>API version 10: none<br>**NOTE**<br>This parameter takes effect only when a valid value greater than 0 is specified.<br>For example, if a **Row** component has only its width set and does not have any child component, then when **aspectRatio** is not set or is set to a negative value, the height of the **Row** component is 0.|
+| value  | number | Yes  | Aspect ratio of the component.<br>The default value varies by API version.<br>API version 9 and earlier: **1.0**<br>API version 10: none<br>**NOTE**<br>This parameter takes effect only when a valid value greater than 0 is specified.<br>For example, if a **Row** component has only its width set and does not have any child component, then when **aspectRatio** is not set or is set to a negative value, the height of the **Row** component is 0.|
 
 **Return value**
 
@@ -125,10 +125,10 @@ struct AspectRatioExample {
 ```
 
 **Figure 1** Portrait display<br>
-![en-us_image_0000001219744205](figures/en-us_image_0000001219744205.PNG)
+![layoutConstraints2](figures/layoutConstraints2.PNG)
 
 **Figure 2** Landscape display<br>
-![en-us_image_0000001174264382](figures/en-us_image_0000001174264382.PNG)
+![layoutConstraints1](figures/layoutConstraints1.PNG)
 
 ### Example 2: Setting the Component Display Priority
 
@@ -192,4 +192,4 @@ struct DisplayPriorityExample {
 
 Landscape display in containers of different sizes
 
-![en-us_image_0000001212058504](figures/en-us_image_0000001212058504.gif)
+![displayPriority](figures/displayPriority.gif)

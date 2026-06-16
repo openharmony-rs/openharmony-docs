@@ -1,9 +1,9 @@
 # @ohos.InputMethodExtensionAbility (InputMethodExtensionAbility)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块支持开发者自行开发输入法应用，以及管理输入法Extension的生命周期。
@@ -57,7 +57,7 @@ import { Want } from '@kit.AbilityKit';
 
 class InputMethodExt extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    console.info('onCreate, want:' + want.abilityName);
+    console.info('onCreate, want:' + want?.abilityName);
   }
 }
 ```

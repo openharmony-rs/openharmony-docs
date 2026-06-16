@@ -2,9 +2,9 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Designer: @chenxi0605-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 BackupExtensionAbility模块提供备份恢复服务相关扩展能力，为应用提供扩展的备份恢复能力。
 
@@ -101,7 +101,7 @@ class BackupExt extends BackupExtensionAbility {
   onBackupEx(backupInfo: string): string {
     try {
       if (backupInfo == "") {
-        //当backupInfo为空时，应用根据业务自行做处理。
+        // 当backupInfo为空时，应用根据业务自行做处理。
         console.info("backupInfo is empty");
       }
       console.info(`onBackupEx ok`);
@@ -134,11 +134,11 @@ interface ErrorInfo {
   errorInfo: string
 }
 class BackupExt extends BackupExtensionAbility {
-  //异步实现
+  // 异步实现
   async onBackupEx(backupInfo: string): Promise<string> {
     try {
       if (backupInfo == "") {
-        //当backupInfo为空时，应用根据业务自行做处理。
+        // 当backupInfo为空时，应用根据业务自行做处理。
         console.info("backupInfo is empty");
       }
       console.info(`onBackupEx ok`);
@@ -224,7 +224,7 @@ class BackupExt extends BackupExtensionAbility {
   async onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): Promise<string> {
     try {
       if (restoreInfo == "") {
-        //当restoreInfo为空时，应用根据业务自行做处理。
+        // 当restoreInfo为空时，应用根据业务自行做处理。
         console.info("restoreInfo is empty");
       }
       console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
@@ -261,7 +261,7 @@ class BackupExt extends BackupExtensionAbility {
   onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): string {
     try {
       if (restoreInfo == "") {
-        //当restoreInfo为空时，应用根据业务自行做处理。
+        // 当restoreInfo为空时，应用根据业务自行做处理。
         console.info("restoreInfo is empty");
       }
       console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
@@ -297,6 +297,7 @@ onProcess(): string
 > **说明：**
 >
 > - onProcess可以不实现，系统有默认处理机制；若要实现，返回值结构严格按照示例代码返回。
+> - onProcess具有超时机制，执行不可超过1秒，系统每5秒调用一次onProcess，累计3次超时后，直接结束应用当前备份或恢复任务。
 > - 实现onProcess时，业务需要将onBackup(onBackupEx)/onRestore(onRestoreEx)做异步实现，且需要单独开辟子线程，否则onProcess相关功能无法正常运行。具体使用方式见示例代码。
 > - onProcess()推荐使用示例如下。
 

@@ -60,10 +60,10 @@ Enumerates the directions of pixel rounding at the component level.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| start | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's start edge.|
-| top | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's top edge.|
-| end | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's end edge.|
-| bottom | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's bottom edge.|
+| start | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's start edge.<br>Invalid values are rounded using the round‑half‑up rule.|
+| top | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's top edge.<br>Invalid values are rounded using the round-half-up rule.|
+| end | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's end edge.<br>Invalid values are rounded using the round-half-up rule.|
+| bottom | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |No| Yes| Rounding alignment for the component's bottom edge.<br>Invalid values are rounded using the round-half-up rule.|
 
 ## FAQs
 
@@ -72,7 +72,7 @@ Enumerates the directions of pixel rounding at the component level.
 | When a child component is intended to fully fill its parent container, a 1px gap appears due to inconsistent rounding behaviors (the parent container rounds up, while the child component rounds down) of offset and size values.| 1. Use the ceil rounding method for the child component in the direction where the gap appears.<br>2. Disable pixel rounding for both parent and child components.|
 | When a **List** component is configured with dividers set, the dividers may disappear under specific cases.          | 1. Set a 2 px space on the **List** component.<br>2. Disable pixel rounding on the corresponding components.|
 | Overlapping occurs on specific devices.                                        | 1. Set a 2 px space on the **List** component.<br>2. Disable pixel rounding on the component.<br>3. Obtain the DPI value of the device through media query APIs and implement customized adaptation.|
-| When a component rendered with an animation, there is a slight flicker.                            | Disable pixel rounding on the corresponding components.                                  |
+| When a component is rendered with an animation, there is a slight flicker.                            | Disable pixel rounding on the corresponding components.                                  |
 | The layout within a container is compact, and the sizes of child components are inconsistent.                          | Disable pixel rounding on the corresponding components.                                  |
 
 ## Example
@@ -129,8 +129,8 @@ In this example, when pixel rounding is initially disabled (that is, the **pixel
 
 **Figure 1** Layout with pixelRound
 
-![en-us_image_pixel_round_enable.png](figures/en-us_image_pixel_round_enable.png)
+![image-pixel-round-enable.png](figures/image-pixel-round-enable.png)
 
 **Figure 2** Layout without pixelRound
 
-![en-us_image_pixel_round_disable.png](figures/en-us_image_pixel_round_disable.png)
+![image-pixel-round-disable.png](figures/image-pixel-round-disable.png)

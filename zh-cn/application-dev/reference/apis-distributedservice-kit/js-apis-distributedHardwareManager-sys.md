@@ -5,6 +5,7 @@
 <!--Designer: @hwzhangchuang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
+
 分布式硬件管理模块提供控制分布式硬件的能力，包括暂停、恢复和停止被控端分布式硬件业务。
 
 > **说明：**
@@ -23,12 +24,14 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 
 表示分布式硬件的描述信息。
 
+**需要权限**：ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
+
 **系统能力**：SystemCapability.DistributedHardware.DistributedHardwareFWK
 
-| 名称         | 类型                                                | 必填 | 说明                                                         |
-| ------------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type         | [DistributedHardwareType](#distributedhardwaretype) | 是   | 分布式硬件类型。<br/>**需要权限**：ohos.permission.ACCESS_DISTRIBUTED_HARDWARE |
-| srcNetworkId | string                                              | 否   | 表示源端设备，缺省时表示所有源端设备。<br/>**需要权限**：ohos.permission.ACCESS_DISTRIBUTED_HARDWARE |
+| 名称         | 类型                                                | 只读 | 可选 | 说明                                                         |
+| ------------ | --------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| type         | [DistributedHardwareType](#distributedhardwaretype) | 否   | 否   | 分布式硬件类型。 |
+| srcNetworkId | string                                              | 否   | 是   | 表示源端设备，缺省时表示所有源端设备。 |
 
 ## DistributedHardwareType
 
@@ -38,7 +41,7 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 
 | 名称          | 值   | 说明                         |
 | :------------ | ---- | ---------------------------- |
-| ALL           | 0    | 表示所有分布式应用。         |
+| ALL           | 0    | 表示所有分布式硬件。         |
 | CAMERA        | 1    | 表示分布式相机。             |
 | SCREEN        | 8    | 表示分布式屏幕。             |
 | MODEM_MIC     | 256  | 表示分布式移动通话的麦克风。 |
@@ -93,7 +96,7 @@ pauseDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
   ```ts
   import { hardwareManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   try {
     let description: hardwareManager.HardwareDescriptor = {
@@ -147,7 +150,7 @@ resumeDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
   ```ts
   import { hardwareManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let description: hardwareManager.HardwareDescriptor = {
@@ -203,7 +206,7 @@ stopDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
   ```ts
   import { hardwareManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   try {
     let description: hardwareManager.HardwareDescriptor = {

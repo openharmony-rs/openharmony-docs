@@ -40,6 +40,8 @@
 | [int32_t OHOS_NetConn_UnregisterDnsResolver(void)](#ohos_netconn_unregisterdnsresolver) | 取消注册自定义DNS解析器。 |
 | [int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registerdnsresolver) | 注册自定义DNS解析器。 |
 | [int32_t OH_NetConn_UnregisterDnsResolver(void)](#oh_netconn_unregisterdnsresolver) | 取消注册自定义DNS解析器。 |
+| [int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)](#oh_netconn_registercustomdnsresolver) | 注册自定义DNS解析器。 |
+| [int32_t OH_NetConn_UnregisterCustomDnsResolver(void)](#oh_netconn_unregistercustomdnsresolver) | 取消注册自定义DNS解析器。 |
 | [int32_t OH_NetConn_BindSocket(int32_t socketFd, NetConn_NetHandle *netHandle)](#oh_netconn_bindsocket) | 将套接字绑定到特定的网络。 |
 | [int32_t OH_NetConn_SetAppHttpProxy(NetConn_HttpProxy *httpProxy)](#oh_netconn_setapphttpproxy) | 为当前应用设置http代理配置信息。 |
 | [int32_t OH_NetConn_RegisterAppHttpProxyCallback(OH_NetConn_AppHttpProxyChange appHttpProxyChange, uint32_t *callbackId)](#oh_netconn_registerapphttpproxycallback) | 注册监听应用http代理变化的回调。 |
@@ -254,7 +256,7 @@ int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, st
 | char *serv | 服务名。 |
 | struct addrinfo *hint | 指向addrinfo结构体的指针。 |
 | struct addrinfo **res | 存放DNS查询结果，以链表形式返回。 |
-| int32_t netId | DNS查询netId为0时，使用默认netid查询。 |
+| int32_t netId | DNS查询netId为0时，使用默认netId查询。 |
 
 **返回：**
 
@@ -383,7 +385,9 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 **描述**
 
-注册自定义DNS解析器。
+注册自定义DNS解析器。不再使用时，应调用 [OH_NetConn_UnregisterDnsResolver](#oh_netconn_unregisterdnsresolver)注销自定义DNS解析器。
+
+建议使用[OH_NetConn_RegisterCustomDnsResolver](#oh_netconn_registercustomdnsresolver)接口注册。当使用[OH_NetConn_RegisterCustomDnsResolver](#oh_netconn_registercustomdnsresolver)时，需要使用[OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)接口取消注册。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -421,6 +425,60 @@ int32_t OH_NetConn_UnregisterDnsResolver(void)
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 0 - 成功。<br>          2100002 - 无法连接到服务。<br>         2100003 - 内部错误。 |
+
+### OH_NetConn_RegisterCustomDnsResolver()
+
+```c
+int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolver)
+```
+
+**描述**
+
+注册自定义DNS解析器。注册后，系统DNS解析请求将优先回调该解析器，由开发者按需返回自定义解析结果；若未返回自定义结果，则继续使用系统默认DNS解析规则。
+
+同一时间全局仅支持一个自定义DNS解析器生效。如需更换解析器，应先调用[OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)注销已注册的解析器，再重新注册。
+
+作用范围：适用于系统DNS查询，以及应用通过系统网络库发起的DNS查询；不适用于应用自行实现的HTTPDNS解析、加密DNS解析（如 DoH/DoT）等非系统 DNS 通道的解析请求。不再使用时，应调用 [OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)注销自定义DNS解析器。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+|[OH_NetConn_CustomDnsResolver](capi-net-connection-type-h.md#oh_netconn_customdnsresolver) resolver   | 指向自定义DNS解析器的指针。  |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 0 - 成功。<br>          401 - 参数错误。<br>         2101008 - 解析器已存在。 |
+
+### OH_NetConn_UnregisterCustomDnsResolver()
+
+```c
+int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
+```
+
+**描述**
+
+取消注册自定义DNS解析器。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**起始版本：** 26.0.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 0 - 成功。<br>          2100003 - 内部错误。 |
 
 ### OH_NetConn_BindSocket()
 
@@ -609,7 +667,7 @@ int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t callBackId | 需要被注销的回调对应id。 |
+| uint32_t callBackId | 需要被注销的回调对应ID。 |
 
 **返回：**
 
@@ -677,7 +735,9 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 
 **描述**
 
-查询网络探测结果。
+查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口涉及网络操作，避免在主流程调用，否则可能导致UI卡顿。
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -688,8 +748,8 @@ int32_t OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn
 
 | 参数项 | 描述 |
 | -- | -- |
-| char *destination | 目的地址。 |
-| int32_t duration | 探测持续时间。单位：秒。 |
+| char *destination | 需要探测的目标域名或者IP地址。对于域名，探测前会进行域名解析，将域名解析为目标IP，之后发起探测。域名解析时间不包含在duration指示的探测持续时间内。 |
+| int32_t duration | 探测持续时间。单位：秒。探测间隔为1秒，因此可通过本字段控制探测次数。 |
 | [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) *probeResultInfo | 丢包率和往返时间（RTT）。 |
 
 **返回：**
@@ -707,6 +767,10 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 **描述**
 
 查询网络跟踪路由。
+
+> **说明：**
+>
+> 应用调用该接口需申请精确位置权限。<!--RP1-->根据[申请位置权限开发指导](../../device/location/location-permission-guidelines.md)<!--RP1End-->，调用方需同时申请ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION。
 
 **需要权限：** ohos.permission.INTERNET、ohos.permission.LOCATION 和 ohos.permission.ACCESS_NET_TRACE_INFO
 

@@ -6,7 +6,7 @@ The existing distributed account nickname and profile picture specifications can
 
 Therefore, the distributed account nickname and profile picture specifications are expanded.
 
-**Change Impacts**
+**Change Impact**
 
 The API change is forward compatible. Applications developed based on earlier versions can use the APIs in accordance with the new specifications, without affecting the original logic.
 

@@ -11,19 +11,24 @@
 
 ## 在配置文件中声明权限
 
-应用必须在module.json5配置文件的requestPermissions标签中声明权限。
+应用必须在[module.json5配置文件](../../quick-start/module-configuration-file.md)的requestPermissions标签中声明权限。
 
 | 属性 | 含义 | 数据类型 | 取值范围 |
 | -------- | -------- | -------- | -------- |
 | name | 需要使用的权限名称。 | 字符串 | **必填**，需为系统已定义的权限，取值范围请参考[应用权限列表](app-permissions.md)。 |
 | reason | 申请权限的原因。 | 字符串 | **可选填写**，该字段用于应用上架校验，申请user_grant/manual_settings权限时必填并需多语种适配。<br>格式为$string: \*\*\*。string资源引用需要在string.json文件配置标签"name": "reason"，配置样例可参考[资源文件示例](../../quick-start/resource-categories-and-access.md#资源文件示例)。<br/>reason填写内容可参考[权限使用理由的文案内容规范](#权限使用理由的文案内容规范)。 |
-| usedScene | 权限使用的场景，该字段用于应用上架校验。包括abilities和when两个子项。<br/>- abilities：使用权限的UIAbility或者ExtensionAbility组件的名称。<br/>- when：调用时机。 | 对象 | **申请user_grant/manual_settings权限时，usedScene必填，其他情况下选填。<br>**<br/>- abilities：**可选填写**，可以配置为多个UIAbility或者ExtensionAbility名称的字符串数组。<br/>- when：**可选填写**，但如果配置此字段，只能填入固定值inuse（使用时）或always（始终），不能为空。<br/>当申请的权限为user_grant/manual_settings权限时建议填写。 |
+| usedScene | 权限使用的场景，该字段用于应用上架校验。包括abilities和when两个子项。<br/>- abilities：使用权限的UIAbility或者ExtensionAbility组件的名称。<br/>- when：调用时机。 | 对象 | **申请user_grant/manual_settings权限时，usedScene必填，其他情况下选填。**<br/>- abilities：可以配置为多个UIAbility或者ExtensionAbility名称的字符串数组。<br/>- when：配置此字段，只能填入固定值**inuse**（使用时）或**always**（始终），不能为空。 |
+| <!--DelRow-->requiredFeature | 权限声明生效所需的设备特性。当设备不支持该特性时，将不会声明此权限。 | 字符串 | **可选填写**，仅对系统应用生效。长度不超过64个字符，只能包含字母、数字和英文句点，且必须以字母开头。<br>**起始版本**：26.0.0 |
 
 > **说明：**
 >
-> 已在子模块中申请的权限无需在主项目中重复添加，权限将在整个应用中生效。
+> 在多HAP场景下，已在[entry](../../quick-start/hap-package.md)模块中声明的权限，无需在[feature](../../quick-start/hap-package.md)模块中重复添加，权限将在整个应用中生效。
+> 
+> 同理，在[feature](../../quick-start/hap-package.md)模块中已声明的权限，在[entry](../../quick-start/hap-package.md)模块也无需重复添加。
 
 ## 声明样例
+
+在[module.json5配置文件](../../quick-start/module-configuration-file.md)的requestPermissions标签中声明权限。
 
 > **说明：**
 >

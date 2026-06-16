@@ -1,12 +1,12 @@
 # chart Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **&lt;chart&gt;** component displays line charts, gauge charts, and bar charts. For details, see [chart](../reference/apis-arkui/arkui-js/js-components-basic-chart.md).
+The **&lt;chart&gt;** component displays line charts, bar charts, and gauge charts. For details, see [chart](../reference/apis-arkui/arkui-js/js-components-basic-chart.md).
 
 
 ## Creating a &lt;chart&gt; Component
@@ -67,7 +67,7 @@ export default {
 ```
 
 
-![en-us_image_0000001231683156](figures/en-us_image_0000001231683156.png)
+![chart-Component](figures/chart-Component.png)
 
 
 ## Setting the Chart Type
@@ -214,7 +214,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001275803181](figures/en-us_image_0000001275803181.gif)
+![Chart-Type](figures/Chart-Type.gif)
 
 > **NOTE**
 >
@@ -409,7 +409,7 @@ Select the data display status using **&lt;switch&gt;**. When **&lt;switch&gt;**
 export default {
   data: {
     interval: null,
-    title: "Data Display",
+    title: "Data display",
     allowScale: true,
     dataLength: 30,
     barGroup: 3,
@@ -525,4 +525,4 @@ export default {
 
 ```
 
-![en-us_image_0000001232162328](figures/en-us_image_0000001232162328.gif)
+![Example-Scenario-4](figures/Example-Scenario-4.gif)

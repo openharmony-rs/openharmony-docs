@@ -557,7 +557,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
   console.info('getCurrentTopAbility callback');
   ability = data;
   let state = abilityDelegator.getAbilityState(ability);
-  console.info('getAbilityState ${state}');
+  console.info(`getAbilityState ${state}`);
 });
 ```
 
@@ -973,7 +973,7 @@ Prints log information to the unit test console.
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| msg    | string | Yes  | Log string.|
+| msg    | string | Yes  | Log string. The value contains a maximum of 10,000 characters.|
 
 **Error codes**
 
@@ -1009,7 +1009,7 @@ Prints log information to the unit test console. This API uses an asynchronous c
 
 | Name  | Type                | Mandatory| Description              |
 | -------- | -------------------- | ---- | ------------------ |
-| msg      | string               | Yes  | Log string.        |
+| msg      | string               | Yes  | Log string. The value contains a maximum of 10,000 characters.        |
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the log information is printed to the unit test console, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -1041,7 +1041,7 @@ Prints log information to the unit test console. This API uses a promise to retu
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| msg    | string | Yes  | Log string.|
+| msg    | string | Yes  | Log string. The value contains a maximum of 10,000 characters.|
 
 **Return value**
 
@@ -1150,7 +1150,7 @@ Only the following shell commands are supported: aa, bm, cp, mkdir, rm, uinput, 
 | Name     | Type  | Mandatory| Description                         |
 | ----------- | ------ | ---- | ----------------------------- |
 | cmd         | string | Yes  | Shell command string.              |
-| timeoutSecs | number | No  | Command timeout period, in seconds.|
+| timeoutSecs | number | No  | Command timeout period, in seconds. The default value is **0**, indicating that the timeout period is not set.|
 
 **Return value**
 

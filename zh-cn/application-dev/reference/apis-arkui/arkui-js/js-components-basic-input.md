@@ -93,7 +93,7 @@
 
 | 名称                  | 参数                                       | 描述                                       |
 | ------------------- | ---------------------------------------- | ---------------------------------------- |
-| focus               | {<br>&nbsp;focus:&nbsp;true\|false<br>&nbsp;}，<br>focus不传值时默认为true。 | 使组件获得或者失去焦点，type为text \| email \| date \| time \| number \| password时，可弹出或收起输入法。 |
+| focus               | {<br>&nbsp;focus:&nbsp;true\|false<br>&nbsp;}，<br>focus不传值时默认为true。 | 使组件获得或者失去焦点，type为text \| email \| date \| time \| number \| password时，可弹出或收起软键盘。 |
 | showError           | {<br>&nbsp;error:&nbsp;string&nbsp;<br>} | 展示输入错误提示，type为text \| email \| date \| time \| number \| password时生效。 |
 | delete<sup>6+</sup> | -                                        | type为text \| email \| date \| time \| number \| password时，根据当前光标位置删除文本内容，如果当前输入组件没有光标，默认删除最后一个字符并展示光标。 |
 
@@ -154,7 +154,7 @@
    ```
 
 
-   ![zh-cn_image_0000001252835901](figures/zh-cn_image_0000001252835901.png)
+   ![submit-button](figures/submit-button.png)
 
 2. type为button
    ```html
@@ -176,7 +176,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001207995958](figures/zh-cn_image_0000001207995958.png)
+   ![input](figures/input.png)
 
 3. type为checkbox
    ```html
@@ -209,7 +209,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001208155956](figures/zh-cn_image_0000001208155956.png)
+   ![input01](figures/input01.png)
 
 4. type为radio
    ```html
@@ -246,4 +246,4 @@
    }
    ```
 
-   ![zh-cn_image_0000001208315918](figures/zh-cn_image_0000001208315918.png)
+   ![input02](figures/input02.png)

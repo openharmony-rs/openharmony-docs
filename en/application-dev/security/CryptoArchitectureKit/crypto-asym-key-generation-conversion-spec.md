@@ -71,7 +71,7 @@ When you create an asymmetric key generator, the RSA key can be generated based 
 
 - x indicates that the property that cannot be used to construct a key parameter.
 
-|  | Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- | -------- |
 | n | × | √ | × | √ | 
 | pk | N/A | √ | N/A | √ | 
@@ -97,6 +97,7 @@ When creating an asymmetric key generator instance, you need to specify the key 
 
 | Asymmetric Key Algorithm| Key Length (Bit)| Curve Name| String Parameter| API Version| 
 | -------- | -------- | -------- | -------- | -------- |
+| ECC | 192 | NID_X9_62_prime192v1 | ECC192 | 26.0.0+ | 
 | ECC | 224 | NID_secp224r1 | ECC224 | 9+ | 
 | ECC | 256 | NID_X9_62_prime256v1 | ECC256 | 9+ | 
 | ECC | 384 | NID_secp384r1 | ECC384 | 9+ | 
@@ -145,7 +146,7 @@ When you create an asymmetric key generator, the ECC key can be generated based 
 
 - √ indicates the property used to construct a key parameter.
 
-|  | Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- | -------- |
 | fieldType | √ | √ | √ | √ | 
 | p | √ | √ | √ | √ | 
@@ -173,7 +174,7 @@ Since API version 11, the ECC common parameter can be generated based on a curve
 
 ## DSA
 
-Digital Signature Algorithm (DSA) is a public-key algorithm based on the modular exponentiation and discrete logarithm problem. It is used for digital signatures and signature verification, but not for encryption and decryption.
+Digital Signature Algorithm (DSA) is a public-key algorithm based on the modulo and discrete logarithm problem in finite fields of integers. It is used for digital signing and signature verification, but not for encryption and decryption.
 
 A DSA key can be generated based on a string parameter or key parameters.
 
@@ -223,7 +224,7 @@ When you create an asymmetric key generator, the DSA key can be generated based 
 
 - x indicates that the property that cannot be used to construct a key parameter.
 
-|  | Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- | -------- |
 | p | √ | √ | × | √ | 
 | q | √ | √ | × | √ | 
@@ -274,7 +275,7 @@ When you create an asymmetric key generator, the SM2 key can be generated based 
 
 - √ indicates the property used to construct a key parameter.
 
-|  | Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- | -------- |
 | fieldType | √ | √ | √ | √ | 
 | p | √ | √ | √ | √ | 
@@ -328,7 +329,7 @@ When you create an asymmetric key generator, the Ed25519 key can be generated ba
 
 - √ indicates the property used to construct a key parameter.
 
-|  | Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- |
 | pk | √ | N/A | √ | 
 | sk | N/A | √ | √ | 
@@ -365,7 +366,7 @@ The following table illustrates the composition of the X25519 key parameters.
 
 - √ indicates the property used to construct a key parameter.
 
-|  | Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- |
 | pk | √ | N/A | √ | 
 | sk | N/A | √ | √ | 
@@ -422,7 +423,7 @@ The following table illustrates the composition of the DH key parameters.
 
 - √ indicates the property used to construct a key parameter.
 
-|  | Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- | -------- |
 | p | √ | √ | √ | √ | 
 | g | √ | √ | √ | √ | 

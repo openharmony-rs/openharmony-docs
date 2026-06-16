@@ -2,13 +2,15 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
-<!--Designer: @liveery-->
+<!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
 ## 概述
 
 声明用于查询终端设备信息的API。
+
+**引用文件：** <deviceinfo.h>
 
 **库：** libdeviceinfo_ndk.z.so
 

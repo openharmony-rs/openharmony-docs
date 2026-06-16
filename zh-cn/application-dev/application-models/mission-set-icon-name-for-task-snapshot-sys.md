@@ -4,14 +4,15 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 设置任务快照的图标和名称是为了提高用户界面的可视化性和用户体验，以便更好地管理和跟踪应用程序中的任务和功能。通过为每个任务快照设置不同的图标和名称，可以更轻松地区分和识别每个任务的功能。
 
 默认情况下任务快照的图标和名称采用的是[module.json5配置文件](../quick-start/module-configuration-file.md)的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)中的icon和label字段，如下图所示。
 
-图1 UIAbility对应的任务快照   
+图1 UIAbility对应的任务快照
+
 ![](figures/mission-list-recent.png)
 
 也可以使用[`UIAbilityContext.setMissionIcon()`](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#setmissionicon)和[`UIAbilityContext.setMissionLabel()`](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setmissionlabel)方法，根据需要自定义任务快照的图标和名称。例如，对于UIAbility的多实例启动模式，可以根据不同的功能配置相应的任务快照的图标和名称。
@@ -45,14 +46,15 @@ context.setMissionIcon(pixelMap, (err: BusinessError) => {
   if (err.code) {
     hilog.error(DOMAIN_NUMBER, TAG, `Failed to set mission icon. Code is ${err.code}, message is ${err.message}`);
   } else {
-    hilog.info(DOMAIN_NUMBER, TAG, `Success to set mission icon.`);
+    hilog.info(DOMAIN_NUMBER, TAG, `Succeeded to set mission icon.`);
   }
 })
 ```
 
 效果示意如下图所示。
 
-图2 设置任务快照的图标   
+图2 设置任务快照的图标
+
 ![](figures/mission-set-task-snapshot-icon.png)
 
 ## 设置任务快照的名称
@@ -79,5 +81,6 @@ context.setMissionLabel('test').then(() => {
 
 效果示意如下图所示。
 
-图3 设置任务快照的名称   
+图3 设置任务快照的名称
+   
 ![](figures/mission-set-task-snapshot-label.png)

@@ -1,18 +1,18 @@
 # WindowManager_Rect
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} WindowManager_Rect
 ```
 
 ## Overview
 
-The struct describes the window rectangle, including the window position, width, and height.
+Describes the window rectangle, including the window position, width, and height.
 
 **Since**: 15
 

@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_Blob {...}
+```
+
 ## Overview
 
 Defines the struct of a binary large object (BLOB).
@@ -24,4 +28,4 @@ Defines the struct of a binary large object (BLOB).
 | Name| Description|
 | -- | -- |
 | uint32_t size | Data size.|
-| uint8_t *data | Pointer to the memory in which the data is stored.|
+| uint8_t *data | Pointer to the data.|

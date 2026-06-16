@@ -4,7 +4,7 @@
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
 <!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 The **systemTime** module provides system time and time zone features. You can obtain the system time and time zone by using the following APIs.
 
@@ -45,7 +45,7 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 | Name  | Type      | Mandatory| Description                            |
 | -------- | -------------- | ---- | ------------------ |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time elapsed since the Unix epoch.        |
 
 **Error codes**
@@ -136,7 +136,7 @@ Obtains the time elapsed since the Unix epoch. This API uses a promise to return
 
 | Name| Type   | Mandatory| Description                    |
 | ------ | ------- | ---- | ------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 
 **Return value**
 
@@ -185,7 +185,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 | Name  | Type                       | Mandatory| Description  |
 | -------- | ---------- | ---- | -------------------------- |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time.|
 
 **Error codes**
@@ -260,8 +260,8 @@ try {
 }
 ```
 
-## systemDateTime.getRealActiveTime<sup>(deprecated)</sup>
 
+## systemDateTime.getRealActiveTime<sup>(deprecated)</sup>
 getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 Obtains the time elapsed since system startup, excluding the deep sleep time. This API uses a promise to return the result.
@@ -276,7 +276,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | ----------------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 
 **Return value**
 
@@ -325,7 +325,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 | Name  | Type                       | Mandatory| Description  |
 | -------- | --------------- | ---- | ------------------------------- |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time.  |
 
 **Error codes**
@@ -371,7 +371,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 | Name  | Type                       | Mandatory| Description     |
 | -------- | --------- | ---- | --------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time.  |
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result.  |
 
 **Error codes**
 
@@ -416,7 +416,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ------------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 
 **Return value**
 
@@ -461,7 +461,7 @@ Obtains the time elapsed since the Unix epoch. This API returns the result synch
 
 | Name       | Type   | Mandatory| Description                                                        |
 | ------------- | ------- | ---- | ------------------------------------------------------------ |
-| isNanoseconds | boolean | No  | Whether the time to return is in nanoseconds.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).<br>The default value is **false**.|
+| isNanoseconds | boolean | No  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.<br>The default value is **false**.|
 
 **Return value**
 
@@ -495,7 +495,7 @@ Obtains the time elapsed since system startup. This API returns the result synch
 | Name       | Type                   | Mandatory| Description                                                                               |
 | ------------- | ----------------------- | ---- |-----------------------------------------------------------------------------------|
 | timeType      | [TimeType](#timetype10) | Yes  | Type of the time to be obtained. The value can only be `STARTUP` or `ACTIVE`.                                                 |
-| isNanoseconds | boolean                 | No  | Whether the time to return is in nanoseconds.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).<br>The default value is **false**.|
+| isNanoseconds | boolean                 | No  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.<br>The default value is **false**.|
 
 **Return value**
 
@@ -532,7 +532,7 @@ Obtains the current system date. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use **new Date()**, which returns the **Date** object.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -577,7 +577,7 @@ Obtains the current system date. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use **new Date()**, which returns the **Date** object.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -753,7 +753,7 @@ Obtains the switch status of the automatic time setting. This API returns the re
 
 | Type  | Description                                                      |
 | ------ | ---------------------------------------------------------- |
-| boolean | Switch status of the automatic time setting.<br>- **true**: The auto time setting is on.<br>- **false**: The auto time setting is off.|
+| boolean | Switch status of the automatic time setting.<br>- **true**: The automatic time setting is on.<br>- **false**: The automatic time setting is off.|
 
 **Error codes**
 

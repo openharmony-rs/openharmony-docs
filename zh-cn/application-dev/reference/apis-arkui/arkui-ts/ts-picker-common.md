@@ -18,6 +18,8 @@
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型                                     | 只读 | 可选 | 说明                      |
@@ -30,6 +32,8 @@
 选择器弹窗的按钮样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,13 +49,15 @@
 | fontFamily  |  [Resource](ts-types.md#resource)&nbsp;\|&nbsp;string  | 否   | 是   | 字体列表。默认字体'HarmonyOS Sans'，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。 |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 按钮背景色。                     |
 | borderRadius  | [Length](ts-types.md#length) \| [BorderRadiuses](ts-types.md#borderradiuses9)| 否   | 是   | 圆角半径。 |
-| primary  | boolean | 否   | 是   | 弹出弹窗后，未使用Tab键切换焦点时，Enter键是否默认由该按钮响应。<br/> 默认值：false |
+| primary  | boolean | 否   | 是   | 弹出弹窗后，未使用Tab键切换焦点时，Enter键是否默认由该按钮响应。<br/>true：弹出弹窗后，未使用Tab键切换焦点时，按下Enter键会触发该按钮绑定的事件。<br/>false：弹出弹窗后，未使用Tab键切换焦点时，按下Enter键不会触发该按钮绑定的事件。<br/>默认值：false |
 
 ## DateRange<sup>19+</sup>对象说明
 
 日期区间，用于描述起止日期区间。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

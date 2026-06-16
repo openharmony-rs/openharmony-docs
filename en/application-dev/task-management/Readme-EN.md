@@ -2,12 +2,12 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
-- [Introduction to Background Tasks Kit](background-task-overview.md)
+- [About This Kit](background-task-overview.md)
 - [Transient Task (ArkTS)](transient-task.md)
 - [Transient Task (C/C++)](native-transient-task.md)
 - [Continuous Task (ArkTS)](continuous-task.md)

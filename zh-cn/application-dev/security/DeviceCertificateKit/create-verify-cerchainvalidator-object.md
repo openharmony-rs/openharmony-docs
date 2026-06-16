@@ -11,18 +11,18 @@
 
 样例中可以看到GlobalSign自签名了证书，GlobalSign也签发了GlobalSign RSA OV SSL CA 2018的证书，GlobalSign RSA OV SSL CA 2018又签发了第三级证书。
 
-![zh-cn_image_0000001746997074](figures/zh-cn_image_0000001746997074.png)
+![certificate-chain-example](figures/certificate-chain-example.png)
 
 开发者可以参考示例将已有的多个证书构建出证书链数据。
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. [cert.createCertChainValidator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecertchainvalidator)创建证书链校验器对象。
+2. 调用[cert.createCertChainValidator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecertchainvalidator)创建证书链校验器对象。
 
 3. 基于已有的证书数据，创建证书链数据对象[CertChainData](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchaindata)。
    
@@ -30,7 +30,9 @@
 
 4. 调用[CertChainValidator.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate)校验证书链数据。
 
-```ts
+<!-- @[certificate_chain_validator_object_creation_and_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateVerifyCerchainvalidatorObject.ets) -->
+
+``` TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 import { util } from '@kit.ArkTS';
 
@@ -96,7 +98,7 @@ function certChainValidatorSample(): void {
   let uint8ArrayOfCaCertDataLen = new Uint8Array(new Uint16Array([uint8ArrayOfCaCertData.byteLength]).buffer);
 
   // 二级CA证书数据。
-  let uint8ArrayOf2ndCaCertData =  textEncoder.encodeInto(secondCaCertData);
+  let uint8ArrayOf2ndCaCertData = textEncoder.encodeInto(secondCaCertData);
 
   // 二级CA证书数据的长度。
   let uint8ArrayOf2ndCaCertDataLen = new Uint8Array(new Uint16Array([uint8ArrayOf2ndCaCertData.byteLength]).buffer);
@@ -111,7 +113,8 @@ function certChainValidatorSample(): void {
     encodingData[uint8ArrayOf2ndCaCertDataLen.length + i] = uint8ArrayOf2ndCaCertData[i];
   }
   for (let i = 0; i < uint8ArrayOfCaCertDataLen.length; i++) {
-    encodingData[uint8ArrayOf2ndCaCertDataLen.length + uint8ArrayOf2ndCaCertData.length + i] = uint8ArrayOfCaCertDataLen[i];
+    encodingData[uint8ArrayOf2ndCaCertDataLen.length + uint8ArrayOf2ndCaCertData.length + i] =
+      uint8ArrayOfCaCertDataLen[i];
   }
   for (let i = 0; i < uint8ArrayOfCaCertData.length; i++) {
     encodingData[uint8ArrayOf2ndCaCertDataLen.length + uint8ArrayOf2ndCaCertData.length +
@@ -134,7 +137,7 @@ function certChainValidatorSample(): void {
       console.error(`validate failed, errCode: ${err.code}, errMsg: ${err.message}`);
     } else {
       // 校验成功。
-      console.info('validate success');
+      console.info('validate result: success.');
     }
   });
 }

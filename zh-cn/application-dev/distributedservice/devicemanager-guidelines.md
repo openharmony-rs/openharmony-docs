@@ -22,9 +22,9 @@
 
 - **查询**<br/>
   查询功能包含：查询本机设备信息、查询周围的在线的可信设备、查询可信设备信息。
-
+  
 - **监听**<br/>
-  监听设备上、下线。设备上线表示设备间已经可信，业务可以发起分布式操作；设备下线表示分布业务不可用。
+  监听设备上、下线。设备上线表示设备间已经可信，业务可以发起分布式操作；设备下线表示分布式业务不可用。
 
 ### 运作机制
 
@@ -35,6 +35,9 @@
   使用设备管理能力，需要用户确认不同设备已连接同一局域网或者蓝牙开关已开启，否则该能力不可用。
 
   设备信息属于用户敏感数据，所以即使用户已连接同一局域网或者蓝牙开关已开启，应用在获取设备位置前仍需向用户申请数据同步权限。在用户确认允许后，系统才会向应用提供设备管理能力。
+
+<!--RP1-->
+<!--RP1End-->
 
 ## 申请分布式数据同步权限开发指导
 
@@ -76,28 +79,28 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
    import { abilityAccessCtrl } from '@kit.AbilityKit';
    ```
 
-3. 分布式数据同步权限的授权方式为user_grant，因此需要调用requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。
+3. 分布式数据同步权限的授权方式为user_grant，因此需要调用[requestPermissionsFromUser()](../../application-dev/reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)接口，以动态弹窗的方式向用户申请授权。
 
-   <!-- @[permissions_user_grant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    let atManager = abilityAccessCtrl.createAtManager();
-    atManager.requestPermissionsFromUser(getContext(this), ['ohos.permission.DISTRIBUTED_DATASYNC'])
-      .then(async (data) => {
-        logger.info(`data: ${JSON.stringify(data)}`);
-		// ···
-      })
-      .catch((err: BusinessError) => {
-        logger.error(`requestPermissionsFromUser error: ${JSON.stringify(err)}`);
-    });
-```
+   <!-- @[permissions_user_grant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   let atManager = abilityAccessCtrl.createAtManager();
+   atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC'])
+     .then(async (data) => {
+       logger.info(`data: ${JSON.stringify(data)}`);
+       // ...
+     })
+     .catch((err: BusinessError) => {
+       logger.error(`requestPermissionsFromUser error: ${JSON.stringify(err)}`);
+     });
+   ```
 
 
 ## 设备发现开发指导
 
 ### 场景概述
 
-开发者可以调用DeviceManager设备发现相关接口，获取周边可用的设备。
+开发者可以调用设备发现相关接口，获取周边可用的设备。
 
 ### 接口说明
 
@@ -124,7 +127,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口。
 
-   <!-- @[create_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
+   <!-- @[create_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    async createDeviceManager(): Promise<void> {
@@ -150,15 +153,13 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 5. 注册发现设备的回调，调用发现接口发现周边设备。发现状态持续两分钟，超过两分钟，会停止发现，最大发现数量99个。
    
-   <!-- @[start_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
+   <!-- @[start_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    startDeviceDiscovery(): void {
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-       promptAction.showToast({
-         message: 'deviceManager has not initialized'
-       });
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
      let self = this;
@@ -192,6 +193,28 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
    ```
 
 
+6. 发现结束或页面退出时，调用停止发现接口释放发现监听。
+
+   <!-- @[stop_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
+
+   ``` TypeScript
+   stopDeviceDiscovery(): void {
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       return;
+     }
+
+     try {
+       this.deviceManager.stopDiscovering();
+       this.deviceManager.off('discoverSuccess');
+       this.deviceManager.off('discoverFailure');
+     } catch (err) {
+       let error: BusinessError = err as BusinessError;
+       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + error.toString());
+     }
+   }
+   ```
+
 ## 设备绑定开发指导
 
 ### 场景概述
@@ -212,16 +235,14 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
    
 3. 选择不可信设备id，发起设备绑定。
 
-   <!-- @[bind_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
+   <!-- @[bind_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    authenticateDevice(device: distributedDeviceManager.DeviceBasicInfo): void {
      logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice ' + JSON.stringify(device));
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-       promptAction.showToast({
-         message: 'deviceManager has not initialized'
-       });
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
    
@@ -276,15 +297,13 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
 4. 查询周围上线并且可信的设备。
 
-   <!-- @[get_available_device_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
+   <!-- @[get_available_device_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    getTrustedDeviceList(): void {
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-       promptAction.showToast({
-         message: 'deviceManager has not initialized'
-       });
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
    
@@ -292,12 +311,9 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
      try {
        this.trustedDeviceList = this.deviceManager.getAvailableDeviceListSync();
        // ...
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
+     } catch (error) {
        logger.error('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}' + error.toString());
-       promptAction.showToast({
-         message: 'getTrustedDeviceList failed'
-       });
+       this.showErrMsg('getTrustedDeviceList failed');
      }
    }
    ```
@@ -334,16 +350,14 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口，并注册设备上下线回调。
 
-   <!-- @[device_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
+   <!-- @[device_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    registerDeviceStateListener(): void {
      logger.info('[DeviceManager.RemoteDeviceModel] registerDeviceStateListener');
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-       promptAction.showToast({
-         message: 'deviceManager has not initialized'
-       });
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
    

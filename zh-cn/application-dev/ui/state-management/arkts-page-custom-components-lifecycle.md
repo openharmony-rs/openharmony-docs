@@ -1,7 +1,7 @@
 # 自定义组件生命周期
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiyujia926; @huyisuo-->
+<!--Owner: @jiyujia926; @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
@@ -13,7 +13,7 @@
 
 - [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12)：在组件首次渲染触发的build函数执行完成之后回调该接口，后续组件重新渲染将不回调该接口。开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
 
-- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)：aboutToDisappear函数在自定义组件析构销毁之前执行。不允许在aboutToDisappear函数中改变状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。
+- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)：aboutToDisappear函数在自定义组件析构销毁之前执行。不允许在aboutToDisappear函数中改变状态变量，特别是[@Link变量](./arkts-link.md)的修改可能会导致应用程序行为不稳定。
 
 > **说明：**
 >
@@ -54,7 +54,7 @@
 
 1. 在删除组件之前，将调用其aboutToDisappear生命周期函数，标记着该节点将要被销毁。ArkUI的节点删除机制是：后端节点直接从组件树上摘下，后端节点被销毁，对前端节点解引用，前端节点已经没有引用时，将被Ark虚拟机垃圾回收。
 
-2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[同步源](arkts-state-management-glossary.md#数据源同步源data-source)上取消注册。
+2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[状态数据源](arkts-state-management-glossary.md#state-data-source状态数据源)上取消注册。
 
 不建议在生命周期`aboutToDisappear`中使用`async await`。如果在此生命周期中使用异步操作（如 Promise 或回调方法），自定义组件将被保留在Promise的闭包中，直到回调方法执行完毕，这会阻止自定义组件的垃圾回收。
 
@@ -90,16 +90,16 @@ struct Parent {
 
   build() {
     Column() {
-      // this.showChild为true，创建Child子组件，执行Child aboutToAppear
+      // this.showChild为true，创建Child子组件，执行Child aboutToAppear和Child onDidBuild。
       if (this.showChild) {
         Child()
       }
-      Button('delete Child')
+      Button(this.showChild ? 'delete Child' : 'add Child')
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
-          // 更改this.showChild为false，删除Child子组件，执行Child aboutToDisappear
-          // 更改this.showChild为true，添加Child子组件，执行Child aboutToAppear
+          // 更改this.showChild为false，删除Child子组件，执行Child aboutToDisappear。
+          // 更改this.showChild为true，添加Child子组件，执行Child aboutToAppear和Child onDidBuild。
           this.showChild = !this.showChild;
         })
     }

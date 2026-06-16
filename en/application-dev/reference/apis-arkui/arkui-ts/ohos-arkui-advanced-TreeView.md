@@ -278,6 +278,8 @@ Unregisters a listener.
 
 ## TreeListenType
 
+Enumerates the listening types of tree view nodes.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -426,7 +428,7 @@ struct TreeViewDemo {
   }}
 ```
 
-![en-us_image_0000001664822257](figures/en-us_image_0000001664822257.png)
+![Directory](figures/Directory.png)
 
 ### Example 2: Setting the Symbol Icon
 
@@ -552,4 +554,4 @@ struct TreeViewDemo {
   }}
 ```
 
-![Example 2-Setting the Symbol Icon](figures/en-us_image_treeview_demo_02.png)
+![Example 2-Setting the Symbol Icon](figures/image-treeview-demo-02.png)

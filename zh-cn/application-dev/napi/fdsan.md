@@ -6,11 +6,11 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @fang-jinxu-->
 
-## 1. 功能介绍
+## 功能介绍
 
 fdsan主要用于检测不同使用者对相同文件描述符的错误操作，如多次关闭（double-close）和关闭后使用（use-after-close）。这些文件描述符可以是操作系统中的文件、目录、网络套接字或其他I/O设备等。在程序中，打开文件或套接字会生成一个文件描述符。如果此文件描述符在使用后出现反复关闭或关闭后使用等情形，会导致内存泄露或文件句柄泄露等安全隐患。这类问题非常隐蔽，难以排查。为此，引入了fdsan这种检测工具。
 
-## 2. 实现原理
+## 实现原理
 
 设计思路：当打开已有文件或创建一个新文件的时候，在得到返回fd后，设置一个关联的tag，来标记fd的属主信息；关闭文件前，检测fd关联的tag，判断是否符合预期(属主信息一致)，符合就继续走正常文件关闭流程；如果不符合就是检测到异常，根据设置，调用对应的异常处理。
 
@@ -26,7 +26,7 @@ value用于标识实际的owner tag。
 
 
 
-## 3. 接口说明
+## 接口说明
 
 ### fdsan_set_error_level
 
@@ -163,7 +163,7 @@ uint64_t fdsan_get_tag_value(uint64_t tag);
 
 **返回值：** 返回对应tag的value。
 
-## 4. 使用示例
+## 使用示例
 
 如何使用fdsan？这是一个简单的double-close问题：
 
@@ -276,6 +276,19 @@ Tid:15312, Name:e.myapplication
 #10 pc 000700b0 /system/lib/ld-musl-arm.so.1(3de40c79448a2bbced06997e583ef614)
 ```
 此时，从crash信息中可以看到bad_close存在问题，同时crash中包含所有打开的文件，协助定位问题，提升效率。
+
+OpenFiles列出所有打开的文件
+
+**字段说明：**
+
+`fd->对象描述`：文件描述符`fd`关联的内核对象标识。
+
+`[方括号内容]`：对象内部标识：
+- 对于socket/pipe：内核分配的伪文件系统ID；
+- 对于普通文件：文件系统inode编号（操作系统用于管理该文件元数据及数据块的数据结构）；
+- 对于anon_inode：对象类型名称。
+
+`native object of unknown type 0`：该fd对应的tag标签值为0。
 
 ```txt
 OpenFiles:
@@ -447,7 +460,17 @@ void good_write()
 
 此时运行该程序可以检测到另一个线程的double-close问题，详细信息可以<a href="#日志信息">参考日志</a>。同样也可以设置error_level为fatal，这样可以使fdsan在检测到crash之后主动crash以获取更多信息。
 
-## 5. close函数信号安全性说明
+## 多线程场景下的注意事项
+
+在多线程环境中使用fdsan时，由于文件描述符（fd）的分配和回收是全局性的，fdsan检测到的tag不匹配错误信息可能存在与实际根因不一致的情况。开发者需要注意以下场景：
+
+**fd快速回收导致报错指向错误属主：** 当线程A关闭一个fd后，该fd可能立即被线程B回收并绑定新的tag。此时如果线程A（或系统中其他模块）对该fd执行了非法close或double close，fdsan报错信息中显示的owner将是线程B的tag，而非原始属主的信息。这并不意味着线程B的tag设置有误，而是当前进程内其他业务逻辑存在非法close或double close的问题。
+
+**检测与执行的竞态窗口：** `fdsan_close_with_tag`内部在"校验tag"与"执行close"之间存在极小的时间窗口。在多线程并发场景下，fd可能在该窗口内被回收并重新分配给其他线程，导致校验结果指向的属主并非当前fd的实际使用者。
+
+**排查建议：** 当看到fdsan报错时，不应直接认定日志中显示的owner就是问题的直接责任方。建议结合fd的生命周期、调用栈信息以及系统中其他模块对fd的使用情况进行综合排查，确认是否存在其他模块的非法close或double close行为。
+
+## close函数信号安全性说明
 在POSIX标准中，`close`函数原本被定义为信号安全函数（async-signal-safe），这意味着它可以安全地在信号处理函数（signal handler）中调用。然而，在集成了fdsan（File Descriptor Sanitizer）机制的系统实现中，这一性质发生了变化。
 
 由于fdsan的实现依赖于mmap系统调用，而`mmap`本身不是信号安全函数，这会导致close函数也不再是信号安全的。因此，在信号处理函数中避免使用 `close`，可以通过其他系统调用来实现相同功能。

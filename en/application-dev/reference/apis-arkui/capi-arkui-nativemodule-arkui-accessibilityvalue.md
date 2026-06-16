@@ -1,14 +1,18 @@
 # ArkUI_AccessibilityValue
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Owner: @wangyinhua-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_AccessibilityValue ArkUI_AccessibilityValue
+```
+
 ## Overview
 
-Defines a struct for the component accessibility value.
+Defines a component accessibility value.
 
 **Since**: 12
 

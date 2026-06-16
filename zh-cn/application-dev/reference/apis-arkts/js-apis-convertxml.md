@@ -1,8 +1,8 @@
 # @ohos.convertxml (xml转换JavaScript)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -52,11 +52,10 @@ fastConvertToJSObject(xml: string, options?: ConvertOptions) : Object
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200002 | Invalid xml string. |
 
 **示例：**
@@ -71,12 +70,19 @@ try {
     '</note>';
   let conv = new convertxml.ConvertXML();
   let options: convertxml.ConvertOptions = {
-    trim: false, declarationKey: "_declaration",
-    instructionKey: "_instruction", attributesKey: "_attributes",
-    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
-    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
-    nameKey: "_name", elementsKey: "_elements"
-  }
+    trim: false,
+    declarationKey: "_declaration",
+    instructionKey: "_instruction",
+    attributesKey: "_attributes",
+    textKey: "_text",
+    cdataKey: "_cdata",
+    doctypeKey: "_doctype",
+    commentKey: "_comment",
+    parentKey: "_parent",
+    typeKey: "_type",
+    nameKey: "_name",
+    elementsKey: "_elements"
+  };
   let result = JSON.stringify(conv.fastConvertToJSObject(xml, options));
   console.info(result);
 } catch (e) {
@@ -93,6 +99,8 @@ largeConvertToJSObject(xml: string, options?: ConvertOptions): Object
 将XML文本转换为Object类型对象，此方法支持解析单个节点大小超过10M的大型XML文本。
 
 > **说明：**
+>
+> 当传入的XML文本无法正确解析为Object类型对象时，打印异常信息并返回一个仅包含XML标签头的基础Object对象。
 >
 > 在Windows环境中，通常以回车符（CR）和换行符（LF）一对字符来表示换行。本接口转换后的对象以换行符（LF）表示换行。
 
@@ -143,12 +151,19 @@ try {
     '</catalog>';
   let conv = new convertxml.ConvertXML();
   let options: convertxml.ConvertOptions = {
-    trim: false, declarationKey: "_declaration",
-    instructionKey: "_instruction", attributesKey: "_attributes",
-    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
-    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
-    nameKey: "_name", elementsKey: "_elements"
-  }
+    trim: false,
+    declarationKey: "_declaration",
+    instructionKey: "_instruction",
+    attributesKey: "_attributes",
+    textKey: "_text",
+    cdataKey: "_cdata",
+    doctypeKey: "_doctype",
+    commentKey: "_comment",
+    parentKey: "_parent",
+    typeKey: "_type",
+    nameKey: "_name",
+    elementsKey: "_elements"
+  };
   let result = JSON.stringify(conv.largeConvertToJSObject(xmlstr, options));
   console.info(result);
 } catch (e) {
@@ -187,11 +202,10 @@ convertToJSObject(xml: string, options?: ConvertOptions) : Object
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200002 | Invalid xml string. |
 
 **示例：**
@@ -207,12 +221,19 @@ try {
       '</note>';
   let conv = new convertxml.ConvertXML();
   let options: convertxml.ConvertOptions = {
-    trim: false, declarationKey: "_declaration",
-    instructionKey: "_instruction", attributesKey: "_attributes",
-    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
-    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
-    nameKey: "_name", elementsKey: "_elements"
-  }
+    trim: false,
+    declarationKey: "_declaration",
+    instructionKey: "_instruction",
+    attributesKey: "_attributes",
+    textKey: "_text",
+    cdataKey: "_cdata",
+    doctypeKey: "_doctype",
+    commentKey: "_comment",
+    parentKey: "_parent",
+    typeKey: "_type",
+    nameKey: "_name",
+    elementsKey: "_elements"
+  };
   let result = JSON.stringify(conv.convertToJSObject(xml, options));
   console.info(result);
 } catch (e) {
@@ -258,11 +279,20 @@ let xml =
     '    <todo>Play</todo>' +
     '</note>';
 let conv = new convertxml.ConvertXML();
-let options: convertxml.ConvertOptions = {trim : false, declarationKey:"_declaration",
-  instructionKey : "_instruction", attributesKey : "_attributes",
-  textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
-  commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
-  nameKey : "_name", elementsKey : "_elements"}
+let options: convertxml.ConvertOptions = {
+  trim: false,
+  declarationKey: "_declaration",
+  instructionKey: "_instruction",
+  attributesKey: "_attributes",
+  textKey: "_text",
+  cdataKey: "_cdata",
+  doctypeKey: "_doctype",
+  commentKey: "_comment",
+  parentKey: "_parent",
+  typeKey: "_type",
+  nameKey: "_name",
+  elementsKey: "_elements"
+};
 let result = JSON.stringify(conv.convert(xml, options));
 console.info(result);
 // 输出(宽泛型)

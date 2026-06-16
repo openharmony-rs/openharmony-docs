@@ -37,11 +37,14 @@ The Window module has the following features:
 
 ### Window Type
 
-The Window module provides system windows and application windows.
-- A **system window** implements specific functionalities of the system. Examples include the volume bar, wallpaper, notification panel, status bar, and navigation bar.
-- An **application window** is related to the application display. Based on the displayed content, application windows are further classified into main windows and child windows.
-  - A main window shows the application UI and appears on the task management page.
-  - A child window is an auxiliary window of an application, such as a dialog box and floating window. It is not displayed on the task management page. Its lifecycle follows that of the main window.
+Windows are classified into system windows and application windows.
+- A **system window** implements specific functionalities of the system. Examples include the volume bar, wallpaper, notification panel, status bar, and navigation bar. System windows are available only for system applications.
+- **Application windows**, which are different from system windows, are related to the display of application content. Depending on how they are managed and their purpose, application windows can be further divided into main windows and auxiliary windows.
+  - Main windows are created by default when a UIAbility is created and are displayed as an independent mission card on the mission management screen. They are used to show the main interface of the application's UIAbility.
+  - Auxiliary windows are managed, created, and destroyed by the application itself and are not displayed as an independent mission card on the mission management screen. They can be used to show auxiliary content of the application, such as pop-up windows. Auxiliary windows include child windows, global floating windows, modal windows, picture-in-picture, and floating ball windows.
+
+
+
 
 ### Application Window Mode
 
@@ -94,8 +97,7 @@ In the stage model, the lifecycle states of the main window include:
 > **NOTE**
 >
 > The RESUMED and PAUSED events are triggered when the window switches to the foreground and background, respectively. However, in some scenarios, the triggering of these events may differ.
->
-> For example, in some system-controlled scenarios, such as application management, when an application window switches to the foreground and enters an authentication screen, the PAUSED event is triggered. After authentication is successful, the RESUMED event is triggered.
+> - For example, in some system-controlled scenarios, such as application management, when an application window switches to the foreground and enters an authentication screen, the PAUSED event is triggered. After authentication is successful, the RESUMED event is triggered.
 
 |**Lifecycle State**|**Example Triggers**|
 |---------------|---------------|

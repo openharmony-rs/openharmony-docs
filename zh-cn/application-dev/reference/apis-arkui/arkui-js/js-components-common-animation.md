@@ -1,8 +1,8 @@
 # 动画样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,6 +12,7 @@
 
 组件支持动态的旋转、平移、缩放效果，可在style或css中设置。
 
+## 属性
 
 | 名称                                | 类型                                       | 描述                                       |
 | --------------------------------- | ---------------------------------------- | ---------------------------------------- |
@@ -68,7 +69,7 @@
 | background-position<sup>6+</sup> | string&nbsp;\|&nbsp;&lt;percentage&gt;&nbsp;\|&nbsp;&lt;length&gt;&nbsp;string&nbsp;\|<br>&nbsp;&lt;percentage&gt;&nbsp;\|&nbsp;&lt;length&gt; | 50%&nbsp;50% | 背景图位置。单位支持百分比和px，第一个值是水平位置，第二个值是垂直位置。如果仅设置一个值，另一个值为50%。第一个string的可选值为：left&nbsp;\|&nbsp;center&nbsp;\|&nbsp;right&nbsp;，第二个string的可选值为：top&nbsp;\|&nbsp;center&nbsp;\|&nbsp;bottom。<br/>示例：<br/>-&nbsp;background-position:&nbsp;200px&nbsp;30%<br/>-&nbsp;background-position:&nbsp;100px&nbsp;top<br/>-&nbsp;background-position:&nbsp;center&nbsp;center |
 
 
-对于不支持起始值或终止值缺省的情况，可以通过from和to显示指定起始和结束。可以通过百分比指定动画运行的中间状态<sup>6+</sup>。示例：
+对于不支持起始值或终止值缺省的情况，可以通过from和to显式指定起始和结束。可以通过百分比指定动画运行的中间状态<sup>6+</sup>。示例：
 
 ```html
 <!-- xxx.hml -->
@@ -111,7 +112,7 @@
 ```
 
 
-![zh-cn_image_0000001173324797](figures/zh-cn_image_0000001173324797.gif)
+![Animation-Styles02](figures/Animation-Styles02.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -160,7 +161,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001127285034](figures/zh-cn_image_0000001127285034.gif)
+![animation-styles](figures/animation-styles.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -219,7 +220,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001152833768](figures/zh-cn_image_0000001152833768.gif)
+![animation-styles01](figures/animation-styles01.gif)
 
 
 >  **说明：**
@@ -227,4 +228,4 @@ export default {
 >
 >  steps函数的end和start含义如下图所示。
 >
->  ![zh-cn_image_0000001127125220](figures/zh-cn_image_0000001127125220.png)
+>  ![steps](figures/steps.png)

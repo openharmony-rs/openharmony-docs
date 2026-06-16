@@ -39,6 +39,49 @@ Obtains an **AccountManager** instance.
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   ```
 
+## osAccount.isDomainAccountSupported
+
+isDomainAccountSupported(): Promise&lt;boolean&gt;
+
+Checks whether this domain account is supported. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                  | Description                                     |
+| :--------------------- | :----------------------------------------- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means this domain account is supported; the value **false** means the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
+
+| ID| Error Message            |
+| -------- | ------------------- |
+| 12300001 | The system service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  osAccount.isDomainAccountSupported().then((isSupported: boolean) => {
+    console.info('isDomainAccountSupported successfully, isSupported: ' + isSupported);
+  }).catch((err: BusinessError) => {
+    console.error(`isDomainAccountSupported failed, code is ${err.code}, message is: ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`isDomainAccountSupported exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## OsAccountType
 
 Enumerates the system account types.
@@ -507,7 +550,7 @@ Checks whether this system account is unlocked. This API uses a promise to retur
 
 | Type                  | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account is unlocked; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -539,7 +582,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a system account has been verified. This API uses an asynchronous callback to return the result.
+Checks whether this system account is unlocked. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -597,7 +640,7 @@ Checks whether this system account has been verified. This API uses a promise to
 
 | Type                  | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means this system account has been verified; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -1046,6 +1089,53 @@ For details about the error codes, see [Account Management Error Codes](errorcod
     console.error(`getOsAccountLocalIdForUidSync exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### getOsAccountLocalIds
+
+getOsAccountLocalIds(): Promise&lt;number[]&gt;
+
+Obtains the local IDs of all non-system-level system accounts. Non-system-level system accounts are visible to users and are usually used for operations such as login. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Required permission**: ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                 | Description                                   |
+| :------------------- | :------------------------------------- |
+| Promise&lt;number[]&gt; | Promise used to return the local IDs of all non-system-level system accounts.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message            |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 12300001 | The system service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+try {
+  accountManager.getOsAccountLocalIds().then((localIds: number[]) => {
+    console.info('getOsAccountLocalIds localIds: ' + localIds);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountLocalIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### getOsAccountLocalIdForDomain<sup>9+</sup>
 
@@ -1816,7 +1906,7 @@ Checks whether multiple system accounts are supported. This API uses an asynchro
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [checkMultiOsAccountEnabled](#checkmultiosaccountenabled9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkMultiOsAccountEnabled](#checkmultiosaccountenabled9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1849,7 +1939,7 @@ Checks whether multiple system accounts are supported. This API uses a promise t
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [checkMultiOsAccountEnabled](#checkmultiosaccountenabled9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkMultiOsAccountEnabled](#checkmultiosaccountenabled9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2038,7 +2128,7 @@ Checks whether this system account is a test account. This API uses an asynchron
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [checkOsAccountTestable](#checkosaccounttestable9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkOsAccountTestable](#checkosaccounttestable9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2071,7 +2161,7 @@ Checks whether this system account is a test account. This API uses a promise to
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [checkOsAccountTestable](#checkosaccounttestable9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkOsAccountTestable](#checkosaccounttestable9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2102,7 +2192,7 @@ Checks whether a system account has been verified. This API uses an asynchronous
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkOsAccountVerified](#checkosaccountverifieddeprecated).
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkOsAccountVerified](#checkosaccountverifieddeprecated) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2213,7 +2303,7 @@ Obtains the number of system accounts created. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountCount](#getosaccountcount9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountCount](#getosaccountcount9) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2248,7 +2338,7 @@ Obtains the number of system accounts created. This API uses a promise to return
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountCount](#getosaccountcount9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountCount](#getosaccountcount9-1) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2281,7 +2371,7 @@ Obtains the ID of the system account to which the current process belongs. This 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountLocalId](#getosaccountlocalid9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountLocalId](#getosaccountlocalid9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2314,7 +2404,7 @@ Obtains the ID of the system account to which the current process belongs. This 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountLocalId](#getosaccountlocalid9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountLocalId](#getosaccountlocalid9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2345,7 +2435,7 @@ Obtains the system account ID based on the process UID. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountLocalIdForUid](#getosaccountlocalidforuid9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForUid](#getosaccountlocalidforuid9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2380,7 +2470,7 @@ Obtains the system account ID based on the process UID. This API uses a promise 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountLocalIdForUid](#getosaccountlocalidforuid9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForUid](#getosaccountlocalidforuid9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2418,7 +2508,7 @@ Obtains the system account ID based on the domain account information. This API 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2455,7 +2545,7 @@ Obtains the system account ID based on the domain account information. This API 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9-1) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2572,7 +2662,7 @@ Obtains information about all activated system accounts. This API uses an asynch
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2606,7 +2696,7 @@ queryActivatedOsAccountIds(): Promise&lt;Array&lt;number&gt;&gt;
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9-1) instead.
 
 Obtains information about all activated system accounts. This API uses a promise to return the result.
 
@@ -2707,7 +2797,7 @@ Obtains the type of the account to which the current process belongs. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountType](#getosaccounttype9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountType](#getosaccounttype9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2740,7 +2830,7 @@ Obtains the type of the account to which the current process belongs. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getOsAccountType](#getosaccounttype9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getOsAccountType](#getosaccounttype9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2771,7 +2861,7 @@ Obtains the ID of a distributed virtual device. This API uses an asynchronous ca
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications) or ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -2806,7 +2896,7 @@ Obtains the ID of this distributed virtual device. This API uses a promise to re
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9-1) instead.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications) or ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -2839,7 +2929,7 @@ Obtains the system account ID based on the SN. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2874,7 +2964,7 @@ Obtains the system account ID based on the SN. This API uses a promise to return
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2912,7 +3002,7 @@ Obtains the SN of a system account based on the account ID. This API uses an asy
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2947,7 +3037,7 @@ Obtains the SN of a system account based on the account ID. This API uses a prom
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9-1) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -3017,6 +3107,61 @@ For details about the error codes, see [Account Management Error Codes](errorcod
   }
   ```
 
+### getOsAccountNameByLocalId
+
+getOsAccountNameByLocalId(localId: number): Promise&lt;string&gt;
+
+Obtains the name of a system account based on its local ID. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Required permission**: ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                    |
+| -------- | ------ | ---- | ----------------------- |
+| localId  | number | Yes  | Local ID of the target system account.|
+
+**Return value**
+
+| Type               | Description                    |
+| ------------------- | ----------------------- |
+| Promise&lt;string&gt; | Promise used to return the name of the target system account.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                    |
+| -------- | --------------------------- |
+| 201 | Permission denied. |
+| 12300001 | The system service works abnormally. |
+| 12300003 | Account not found. |
+| 12300008 | Restricted Account. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+try {
+  accountManager.getOsAccountNameByLocalId(100).then((name: string) => {
+    console.info('getOsAccountNameByLocalId, name: ' + name);
+  }).catch((err: BusinessError) => {
+    console.error('getOsAccountNameByLocalId err: ' + err);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountNameByLocalId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### getForegroundOsAccountLocalId<sup>15+</sup>
 
 getForegroundOsAccountLocalId(): Promise&lt;number&gt;
@@ -3029,7 +3174,7 @@ Obtains the ID of the foreground system account. This API uses a promise to retu
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.|
+| Promise&lt;number&gt; | Promise used to return the ID of the foreground system account.|
 
 **Error codes**
 
@@ -3077,7 +3222,7 @@ Obtains the domain account information associated with a specified system accoun
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise used to return the result.|
+| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise used to return the domain account information obtained.|
 
 **Error codes**
 
@@ -3185,8 +3330,8 @@ Represents information about a system account.
 | isVerified<sup>(deprecated)</sup> | boolean                                                   | No| No | Whether the account has been verified. The value **true** means the specified account has been verified; the value **false** means the opposite.<br>Note: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isUnlocked** instead.          |
 | isUnlocked<sup>11+</sup>      | boolean                                                       | No| No | Whether the account is unlocked (whether the **el2/** directory is decrypted). The value **true** means the specified account is unlocked; the value **false** means the opposite.                     |
 | photo<sup>8+</sup>             | string                                                       | No| No | Avatar of the system account. By default, no value is passed in.                     |
-| createTime<sup>8+</sup>        | number                                                       | No| No | Time when the system account was created.                 |
-| lastLoginTime<sup>8+</sup>     | number                                                       | No| No | Last login time of the system account. By default, no value is passed in.         |
+| createTime<sup>8+</sup>        | number                                                       | No| No | System account creation time. The value is a Unix timestamp (in seconds).                 |
+| lastLoginTime<sup>8+</sup>     | number                                                       | No| No | Last login time of the system account. The value is a Unix timestamp (in seconds).         |
 | serialNumber<sup>8+</sup>      | number                                                       | No| No | SN of the system account.                     |
 | isActived<sup>(deprecated)</sup>         | boolean                                            | No| No | Whether the system account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.<br>Note: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isActivated** instead.                 |
 | isActivated<sup>11+</sup>         | boolean                                                   | No| No | Whether the system account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.                 |
@@ -3205,6 +3350,8 @@ Represents the domain account information.
 | domain      | string | No| No | Domain name.    |
 | accountName | string | No| No | Domain account name.|
 | serverConfigId<sup>18+</sup> | string | No| Yes | Domain account configuration ID, which is an empty string by default.|
+| additionalInfo | Record<string, Object> | No| Yes| Additional information about the domain account.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.|
+
 
 ## DomainServerConfig<sup>18+</sup>
 

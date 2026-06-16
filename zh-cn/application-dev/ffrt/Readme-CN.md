@@ -2,10 +2,10 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
+<!--Adviser: @jinqiuheng-->
 
 - [Function Flow Runtime Kit概述](ffrt-overview.md)
 - [Function Flow Runtime并发范式](ffrt-concurrency-paradigm.md)
@@ -20,3 +20,4 @@
   - [Function Flow Runtime任务伙伴(C++)](ffrt-concurrency-job-partner-cpp.md)
 - [Function Flow Runtime开发指导](ffrt-development-guideline.md)
 - [Function Flow Runtime C API](ffrt-api-guideline-c.md)
+- [Function Flow Runtime术语](ffrt-glossary.md)

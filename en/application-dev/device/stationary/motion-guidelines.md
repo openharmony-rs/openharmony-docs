@@ -48,6 +48,8 @@ To use the motion module to obtain the operating hand, you need to request the *
  - Multi-finger operations are not supported in window rotation scenarios.
 
  - The effective range does not include the area within 8 mm from the screen edge.
+ 
+ - Result is reported after the first subscription or operating hand switchover and the operation is triggered for several consecutive times.
 
 ### How to Develop
 

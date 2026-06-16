@@ -9,6 +9,8 @@
 
 You can use the keys in HUKS to encrypt or decrypt data.
 
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
+
 ## Supported Algorithms
 
 The following table lists the supported specifications for key encryption and decryption.
@@ -18,7 +20,7 @@ The key management service specifications include mandatory specifications and o
 **You are advised to use mandatory specifications in your development for compatibility purposes.**
 <!--DelEnd-->
 
-**Specifications****<!--RP1--> for standard devices<!--RP1End-->**
+**Specifications<!--RP1--> for standard devices<!--RP1End-->**
 
 | Algorithm/Cipher Mode/Padding Mode| Description| API Version| <!--DelCol4-->Mandatory|
 | -------- | -------- | -------- | -------- |
@@ -35,7 +37,7 @@ The key management service specifications include mandatory specifications and o
 | DES/CBC/NoPadding<br>DES/ECB/NoPadding | The **IV** parameter is mandatory in CBC mode.| 18+ | Yes|
 | 3DES/CBC/NoPadding<br>3DES/ECB/NoPadding | The **IV** parameter is mandatory in CBC mode.| 18+ | Yes|
 
-**Specifications****<!--RP2--> for mini-system devices<!--RP2End-->**
+**Specifications<!--RP2--> for mini-system devices<!--RP2End-->**
 
 <!--Del-->
 Before implementing the specifications for mini-system devices, determine whether your device supports the related specifications.
@@ -52,3 +54,4 @@ Before implementing the specifications for mini-system devices, determine whethe
 | RSA/ECB/NoPadding | - | 12+ |
 | RSA/ECB/PKCS1_V1_5 | - | 12+ |
 | RSA/ECB/OAEP | SHA-256 is used as the MD algorithm.| 12+ |
+<!--no_check-->

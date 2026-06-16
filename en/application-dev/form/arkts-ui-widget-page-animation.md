@@ -1,9 +1,9 @@
 # Using Animations in ArkTS Widgets
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 To make your ArkTS widgets more engaging, you can apply animations to it, including [explicit animation](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md), [property animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md), and [component transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md). Pay attention to the following restrictions when using animations in ArkTS widgets.
@@ -86,7 +86,7 @@ struct TransitionEffectExample1 {
         // Apply the same transition effect to the appearance and disappearance of the image.
         // When the image appears, it changes from the state where the opacity is 0 and the rotation angle is 180° around the z-axis to the state where the opacity is 1 and the rotation angle is 0°. The durations of the opacity and rotation animations are both 1000 ms.
         // When the image disappears, it changes from the state where the opacity is 1 and the rotation angle is 0° to the state where the opacity is 0 and the rotation angle is 180° around the z-axis. The durations of the opacity and rotation animations are both 1000 ms.
-        // Replace $r('app.media.testImg') with the resource file you use.
+        // Replace $r('app.media.testImg') with the image resource file you use.
         Image($r('app.media.testImg')).width(200).height(200)
           .transition(TransitionEffect.OPACITY.animation({ duration: 1000, curve: Curve.Ease }).combine(
             TransitionEffect.rotate({ z: 1, angle: 180 })

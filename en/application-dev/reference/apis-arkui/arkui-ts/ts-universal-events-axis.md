@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-An axis event is triggered when a component is scrolled via the mouse wheel or two-finger sliding on a touchpad in a specific direction (axis). "Axis" refers to a direction in a two-dimensional coordinate system, categorized into horizontal (x-axis) and vertical (y-axis) directions.
+An axis event is triggered when the pointer from a device like a mouse or touchpad is within a component's area, and an action such as scrolling the wheel or sliding two fingers along a specific direction (axis) on the touchpad is performed. "Axis" refers to a direction in a two-dimensional coordinate system, categorized into horizontal (x-axis) and vertical (y-axis) directions.
 
 >  **NOTE**
 >
@@ -16,7 +16,7 @@ An axis event is triggered when a component is scrolled via the mouse wheel or t
 
 onAxisEvent(event: Callback\<AxisEvent>): T
 
-Triggered when the mouse wheel is scrolled or two fingers slide on the touchpad.
+Triggered by mouse wheel scrolling, a two-finger sliding gesture, or a pinch gesture on the touchpad.
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
@@ -49,16 +49,16 @@ Describes the axis event object. Inherits from [BaseEvent](ts-gesture-customize-
 | Name           | Type | Read-Only|Optional                             | Description                                                   |
 | ------------------- | -----------------------|------|----- | -------------------------------------------------------- |
 | action              | [AxisAction](ts-appendix-enums.md#axisaction17)           | No  | No  | Action type of the axis event.<br>**Atomic service API**: This API can be used in atomic services since API version 17.                  |
-| x                   | number                 | No  | No  | X-coordinate of the cursor relative to the left edge of the element.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17. |
-| y                   | number                 | No  | No  | Y-coordinate of the cursor relative to the top edge of the element.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17. |
-| windowX             | number                 | No  | No  | X-coordinate of the cursor relative to the upper left corner of the current window.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
-| windowY             | number                 | No  | No  | Y-coordinate of the cursor relative to the upper left corner of the current window.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
-| displayX            | number                 | No  | No  | X-coordinate of the cursor relative to the upper left corner of the screen.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
-| displayY            | number                 | No  | No  | Y-coordinate of the cursor relative to the upper left corner of the current screen.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
+| x                   | number                 | No  | No  | X coordinate of the cursor in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17. |
+| y                   | number                 | No  | No  | Y coordinate of the cursor in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17. |
+| windowX             | number                 | No  | No  | X coordinate of the cursor in the coordinate system of the current application window.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
+| windowY             | number                 | No  | No  | Y coordinate of the cursor in the coordinate system of the current application window.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
+| displayX            | number                 | No  | No  | X coordinate of the cursor in the coordinate system of the current application screen.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
+| displayY            | number                 | No  | No  | Y coordinate of the cursor in the coordinate system of the current application screen.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
 | scrollStep          | number                 | No  | Yes  | Scroll step length for the mouse wheel.<br> Note: Only the mouse wheel is supported. The value ranges from 0 to 65535.<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
 | propagation         | Callback\<void>        | No  | No  | Enables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.<br>**Atomic service API**: This API can be used in atomic services since API version 17.  |
-| globalDisplayX<sup>20+</sup> | number | No| Yes| X-coordinate of the cursor relative to the upper left corner of the global display.<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| globalDisplayY<sup>20+</sup> | number | No| Yes| Y-coordinate of the cursor relative to the upper left corner of the global display.<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayX<sup>20+</sup> | number | No| Yes| X coordinate of the cursor in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayY<sup>20+</sup> | number | No| Yes| Y coordinate of the cursor in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ### getHorizontalAxisValue
 
@@ -132,7 +132,7 @@ Checks whether this axis event contains the specified axis type.
 
 ## Example
 
-This example shows how to set up an axis event on a button. When the user scrolls the mouse wheel over the button, the event parameters are captured and displayed. Starting from API version 21, this example uses [axisPinch](./ts-gesture-customize-judge.md#baseevent8) and [getPinchAxisScaleValue](#getpinchaxisscalevalue21) to obtain the two-finger pinch scale ratio. Starting from API version 22, this example uses [hasAxis](#hasaxis22) to determine whether the axis event contains the specified axis type.
+This example shows how to set up an axis event on a button. When the user scrolls the mouse wheel over the button, the event parameters are captured and displayed. Starting from API version 21, this example uses [axisPinch](./ts-gesture-customize-judge.md#properties) and [getPinchAxisScaleValue](#getpinchaxisscalevalue21) to obtain the two-finger pinch scale ratio. Starting from API version 22, this example uses [hasAxis](#hasaxis22) to determine whether the axis event contains the specified axis type.
 
 ```ts
 // xxx.ets
@@ -167,3 +167,4 @@ struct AxisEventExample {
 The figure below shows the event parameters captured when the user scrolls the mouse wheel.
 
 ![onAxisEvent](figures/onAxisEvent.png)
+<!--no_check-->

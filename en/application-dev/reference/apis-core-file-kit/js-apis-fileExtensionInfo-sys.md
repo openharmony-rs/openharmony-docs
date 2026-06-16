@@ -1,10 +1,10 @@
 # @ohos.file.fileExtensionInfo (User File Access and Management Attribute Information) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 The **fileExtensionInfo** module defines attributes in **RootInfo** and **FileInfo** of the user file access and management module.
 
@@ -12,6 +12,7 @@ The **fileExtensionInfo** module defines attributes in **RootInfo** and **FileIn
 >
 >- The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >- The APIs provided by this module are system APIs.
+>- The APIs of this module are deprecated since API version 23. The following APIs are not recommended.
 
 ## Modules to Import
 

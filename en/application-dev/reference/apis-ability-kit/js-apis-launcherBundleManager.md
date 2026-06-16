@@ -22,7 +22,7 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 
 getLauncherAbilityInfoSync(bundleName: string, userId: number) : Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>
 
-Obtains the launcher ability information based on the given bundle name and user ID. This API uses an asynchronous callback to return the result.
+Obtains the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) based on the given bundle name and user ID.
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -39,7 +39,7 @@ Obtains the launcher ability information based on the given bundle name and user
 
 | Type                         | Description                                              |
 | ----------------------------- | -------------------------------------------------- |
-| Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\> | Array of the LauncherAbilityInfo objects obtained.|
+| Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\> | Array of the [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) objects obtained.|
 
 **Error codes**
 
@@ -59,12 +59,12 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let data = launcherBundleManager.getLauncherAbilityInfoSync("com.example.demo", 100);
-    console.info("data is " + JSON.stringify(data));
+  let data = launcherBundleManager.getLauncherAbilityInfoSync("com.example.demo", 100);
+  console.info("data is " + JSON.stringify(data));
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 

@@ -12,13 +12,13 @@ The file declares the APIs used to pack an image or a PixelMap into a buffer or 
 
 The packing process is as follows:
 
-1. Call **OH_ImagePacker_Create** to create an ImagePacker object.
+Create an encoder object using **OH_ImagePacker_Create**.
 
-2. Call **OH_ImagePacker_InitNative** to convert the ImagePacker object to an ImagePacker_Native object.
+Convert the encoder object to a native encoder object using **OH_ImagePacker_InitNative**.
 
-3. Call **OH_ImagePacker_PackToData** or OH_ImagePacker_PackToFile to pack the source into the target area with the specified packing options.
+Call **OH_ImagePacker_PackToData** or OH_ImagePacker_PackToFile to pack the source into the target area with the specified packing options.
 
-4. Call **OH_ImagePacker_Release** to release an ImagePacker_Native object.
+Release the encoder object using **OH_ImagePacker_Release**.
 
 **File to include**: <multimedia/image_framework/image_packer_mdk.h>
 
@@ -53,7 +53,7 @@ The packing process is as follows:
 
 ### OH_ImagePacker_Create()
 
-```
+```c
 int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)
 ```
 
@@ -79,7 +79,7 @@ Obtains an ImagePacker object at the JavaScript native layer.
 
 ### OH_ImagePacker_InitNative()
 
-```
+```c
 ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)
 ```
 
@@ -109,7 +109,7 @@ Converts an ImagePacker object at the JavaScript native layer into an ImagePacke
 
 ### OH_ImagePacker_PackToData()
 
-```
+```c
 int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source,ImagePacker_Opts* opts, uint8_t* outData, size_t* size)
 ```
 
@@ -142,7 +142,7 @@ Packs a PixelMap object or an ImagePacker object at the JavaScript native layer 
 
 ### OH_ImagePacker_PackToFile()
 
-```
+```c
 int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source,ImagePacker_Opts* opts, int fd)
 ```
 
@@ -174,7 +174,7 @@ Packs a PixelMap object or an ImagePacker object at the JavaScript native layer 
 
 ### OH_ImagePacker_Release()
 
-```
+```c
 int32_t OH_ImagePacker_Release(ImagePacker_Native* native)
 ```
 

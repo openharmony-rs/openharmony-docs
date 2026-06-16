@@ -2,9 +2,9 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Designer: @chenxi0605-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
+<!--Adviser: @jinqiuheng-->
 
 The **file.backup** module provides APIs for backing up and restoring data for applications.
 
@@ -36,7 +36,7 @@ Defines a file data object, which includes the file descriptor (FD) of the file 
 
 > **NOTE**
 >
-> The **FileData** must be closed after being used. Otherwise, memory leakage may occur. For details about how to close a **FileData** object, see [fs.closeSync](js-apis-file-fs.md#fsclosesync) provided by [@ohos.file.fs](js-apis-file-fs.md).
+> The **FileData** must be closed after being used. Otherwise, memory leakage may occur. For details about how to close a **FileData** object, see [fileIo.closeSync](js-apis-file-fs.md#fileioclosesync) provided by [@ohos.file.fs](js-apis-file-fs.md).
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
@@ -50,7 +50,7 @@ Defines a file data object, which includes the file descriptor (FD) of the file 
 
 > **NOTE**
 >
-> For details about how to close **FileManifestData**, see [fs.closeSync](js-apis-file-fs.md#fsclosesync).
+> For details about how to close **FileManifestData**, see [fileIo.closeSync](js-apis-file-fs.md#fileioclosesync).
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
@@ -102,6 +102,7 @@ Represents an incremental backup object, which inherits from [IncrementalBackupT
 ## File
 
 Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](#filedata).
+
  
 
 > **NOTE**
@@ -113,6 +114,7 @@ Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](
 ## File<sup>12+</sup>
 
 Defines a file object, which inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
+
  
 
 > **NOTE**
@@ -120,6 +122,22 @@ Defines a file object, which inherits from [FileMeta](#filemeta), [FileData](#fi
 > **file.backup.File** is different from [File](js-apis-file-fs.md#file) provided in @ohos.file.fs. The former is an object that inherits from [FileMeta](#filemeta) and [FileData](#filedata), while the latter has only one FD object. Pay attention to the difference between them.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
+
+## FileSystemRequestConfig<sup>23+</sup>
+
+Configures the parameters required for the system to perform defragmentation.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.StorageService.backup
+
+| Name       | Type  | Read-Only| Optional| Description                                                  |
+| ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
+| triggerType | number |  No |  No | Trigger type for defragmentation. Currently, only the value **0** is supported, which indicates the execution of device defragmentation.|
+| writeSize   | number |  No |  No | Target size for defragmentation. The expected available storage space that can be freed up is equal to this target value. The unit is MB. The value ranges from 0 to 2097152.|
+| waitTime    | number |  No |  No | Maximum duration for defragmentation. If the actual duration exceeds the value, the task times out. The unit is second. The value ranges from 0 to 180.|
 
 ## GeneralCallbacks
 
@@ -172,7 +190,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   onFileReady: (err: BusinessError, file: backup.File) => {
     if (err) {
@@ -180,7 +198,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       return;
     }
     console.info(`onFileReady success with file: ${file.bundleName}, ${file.uri}`);
-    fs.closeSync(file.fd);
+    fileIo.closeSync(file.fd);
   }
   ```
 
@@ -203,7 +221,7 @@ Called when the application backup or restore starts. If the callback is success
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                             |
 | -------- | ----------------------------------------------------- |
@@ -249,7 +267,7 @@ Called when the application backup or restore ends. If the callback is successfu
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                       |
 | -------- | ------------------------------- |
@@ -259,7 +277,6 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13600001 | IPC error.                       |
 | 13900005 | I/O error.                      |
 | 13900011 | Out of memory.                   |
-| 13900020 | Invalid argument.                |
 | 13900025 | No space left on device.         |
 | 13900042 | Unknown error.                   |
 
@@ -342,12 +359,26 @@ Called when the backup or restore is complete. If the callback is invoked succes
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-**Return value**
+**Parameters**
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
 | bundleName | string | Yes  | Bundle name of the application.                       |
 | result     | string | Yes  | Application backup/restore information returned in JSON format.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID| Error Message               |
+| -------- | ----------------------- |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 13600001 | IPC error.               |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900025 | No space left on device. |
+| 13900042 | Unknown error.           |
 
 **Example**
 
@@ -370,12 +401,29 @@ Called to report the backup or restore progress information. If the callback is 
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-**Return value**
+**Parameters**
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
 | bundleName | string | Yes  | Bundle name of the application.                       |
 | process     | string | Yes  | Backup/restore progress information in JSON format.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID| Error Message               |
+| -------- | ----------------------- |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 13500006 | Tar error.               |
+| 13500008 | Untar error.               |
+| 13600001 | IPC error.               |
+| 13900001 | Operation not permitted.               |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900020 | Invalid argument.           |
+| 13900025 | No space left on device. |
 
 **Example**
 
@@ -387,6 +435,62 @@ Called to report the backup or restore progress information. If the callback is 
     console.info('onProcess processInfo : ' + process);
   }
   ```
+
+## backup.fileSystemServiceRequest<sup>23+</sup>
+
+fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;number&gt;
+
+Sorts out the fragmented space of storage components to improve user experience. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.BACKUP
+
+**System capability**: SystemCapability.FileManagement.StorageService.Backup
+
+**Parameters**
+| Name  | Type                                      | Mandatory| Description                                              |
+| -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
+|  config  | [FileSystemRequestConfig](#filesystemrequestconfig23)| Yes| Parameters required for the system to perform defragmentation.|
+
+**Return value**
+
+| Type               | Description                   |
+| ------------------- | ----------------------- |
+| Promise&lt;number&gt;  | Promise that returns the error code generated during defragmentation.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID| Error Message               |
+| -------- | ----------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 13900020 | Invalid argument.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { backup } from '@kit.CoreFileKit';
+
+async function testFunction(size: number) {
+  try {
+    const result = await backup.fileSystemServiceRequest({
+      triggerType: 0,
+      writeSize: size,
+      waitTime: 180
+    });
+    console.info(`fileSystemServiceRequest result: ${result}`);
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`fileSystemServiceRequest err:` + err);
+  }
+}
+```
 
 ## backup.getBackupVersion<sup>18+</sup>
 
@@ -408,7 +512,7 @@ Obtains the backup or restore version information.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message               |
 | -------- | ----------------------- |
@@ -472,7 +576,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   try {
     backup.getLocalCapabilities((err: BusinessError, fileData: backup.FileData) => {
@@ -482,7 +586,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       }
       console.info('getLocalCapabilities success');
       console.info('fileData info:' + fileData.fd);
-      fs.closeSync(fileData.fd);
+      fileIo.closeSync(fileData.fd);
     });
   } catch (error) {
     let err: BusinessError = error as BusinessError;
@@ -490,7 +594,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   }
   ```
 
-The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
+The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fileiostat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
 
  ```json
  {
@@ -543,14 +647,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   async function getLocalCapabilities() {
     try {
       let fileData = await backup.getLocalCapabilities();
       console.info('getLocalCapabilities success');
       console.info('fileData info:' + fileData.fd);
-      fs.closeSync(fileData.fd);
+      fileIo.closeSync(fileData.fd);
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
@@ -558,7 +662,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   }
   ```
 
-  The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
+  The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fileiostat) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
 
  ```json
  {
@@ -603,7 +707,7 @@ Obtains local capabilities. The local capabilities of an application are queried
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -613,7 +717,6 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13600001 | IPC error.                                                                                      |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -621,7 +724,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   async function getLocalCapabilities() {
     try {
@@ -632,7 +735,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       let fileData = await backup.getLocalCapabilities(backupApps);
       console.info('getLocalCapabilities success');
       console.info('fileData info:' + fileData.fd);
-      fs.closeSync(fileData.fd);
+      fileIo.closeSync(fileData.fd);
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
@@ -666,19 +769,19 @@ Obtains information about the application to back up.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { backup } from '@kit.CoreFileKit';
 
   function getBackupInfo() {
     try {
@@ -719,11 +822,13 @@ Sets the duration of application backup or restoration. This method must be call
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -764,7 +869,7 @@ Updates the rate at which the backup application sends file descriptors (FDs). T
 
 | Name         | Type    | Mandatory| Description                      |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName|string | Yes  | Name of the target application.
+| bundleName|string | Yes  | Name of the target application.|
 | sendRate | number | Yes  | Send rate to set, in file descriptors (FDs) per second.<br>Value range: 0 to 800<br>Default value: 60 FDs/second <br>The value **0** means to stop transmission. If the value is greater than **800**, the send rate is 800 FDs/second.|
 
 **Return value**
@@ -775,11 +880,13 @@ Updates the rate at which the backup application sends file descriptors (FDs). T
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 | ID| Error Message               |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -855,7 +962,7 @@ A constructor used to create a **SessionBackup** instance.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -864,7 +971,7 @@ A constructor used to create a **SessionBackup** instance.
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -935,7 +1042,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   interface test { // Parse the capability file.
     bundleInfos: [];
@@ -965,7 +1072,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1007,18 +1114,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       if (fileData) {
         console.info('getLocalCapabilities success');
         console.info('fileData info:' + fileData.fd);
-        if (!fs.accessSync(basePath)) {
-          fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+        if (!fileIo.accessSync(basePath)) {
+          fileIo.mkdirSync(basePath);
+          console.info('create success' + basePath);
         }
-        fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
-        fs.closeSync(fileData.fd);
+        fileIo.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
+        fileIo.closeSync(fileData.fd);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
     }
-    let data = fs.readTextSync(path, 'utf8'); // Obtain information from the local capability file.
+    let data = fileIo.readTextSync(path, 'utf8'); // Obtain information from the local capability file.
     try {
       const jsonsObj: test | null = JSON.parse(data); // Parse the local capability file and print some information.
       if (jsonsObj) {
@@ -1039,7 +1146,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
+The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fileiostat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
 
  ```json
  {
@@ -1062,7 +1169,7 @@ The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-Obtains the amount of data to be backed up. This method is called before **appendBundles**. The scanning result is returned at a fixed interval of 5 seconds by calling the general callback **onBackupSizeReport** asynchronously until all application data in the datalist is returned.
+Obtains the amount of data to be backed up. This method is called before **appendBundles**. **getBackupDataSize** is used together with **onBackupSizeReport**. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1101,14 +1208,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
-  interface scanedInfos { // Parse the scanning result.
-    scaned: [];
+  interface scannedInfos { // Parse the scanning result.
+    scanned: [];
     scanning: string;
   }
 
-  interface ScanedInfo { // Parse the scanning result of an application.
+  interface ScannedInfo { // Parse the scanning result of an application.
     bundleName: string;
     dataSize: number;
     incDataSize: number;
@@ -1121,7 +1228,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1153,11 +1260,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application that is obtaining the data size.
+    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application whose data size is being retrieved. onBackupSizeReport in generalCallbacks returns the scan result every 5 seconds, or immediately if the data retrieval process is completed within 5 seconds, until all application data in dataList is returned.
       console.info('dataSizeCallback success');
-      const jsonObj: scanedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
+      const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
       if (jsonObj) {
-        const infos: ScanedInfo [] = jsonObj.scaned;
+        const infos: ScannedInfo [] = jsonObj.scanned;
         for (let i = 0; i < infos.length; i++) {
           console.info('name: ' + infos[i].bundleName);
           console.info('dataSize: ' + infos[i].dataSize);
@@ -1184,9 +1291,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example of a JSON string returned asynchronously:**
 
-```json
+```json5
 {
- "scaned": [ // Scanned application. The result will not be returned in the next callback.
+ "scanned": [ // Scanned application. The result will not be returned in the next callback.
      {
          "name": "com.example.hiworld", // Application name.
          "dataSize": 1006060, // Data size.
@@ -1239,7 +1346,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -1248,7 +1355,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1344,7 +1451,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -1353,7 +1460,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1465,7 +1572,7 @@ Releases the backup session when the backup process is complete. This API discon
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -1481,7 +1588,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -1490,7 +1597,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1554,7 +1661,7 @@ Cancels the backup of an application when data exceptions occur.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -1566,7 +1673,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -1578,7 +1685,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1839,7 +1946,7 @@ A constructor used to create a **SessionRestore** instance.
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -1849,7 +1956,7 @@ A constructor used to create a **SessionRestore** instance.
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1920,7 +2027,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   interface test { // Parse the capability file.
     bundleInfos: [];
@@ -1950,7 +2057,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -1992,18 +2099,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       if (fileData) {
         console.info('getLocalCapabilities success');
         console.info('fileData info:' + fileData.fd);
-        if (!fs.accessSync(basePath)) {
-          fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+        if (!fileIo.accessSync(basePath)) {
+          fileIo.mkdirSync(basePath);
+          console.info('create success' + basePath);
         }
-        fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
-        fs.closeSync(fileData.fd);
+        fileIo.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
+        fileIo.closeSync(fileData.fd);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed with code: ${err.code}, message: ${err.message}`);
     }
-    let data = fs.readTextSync(path, 'utf8'); // Obtain information from the local capability file.
+    let data = fileIo.readTextSync(path, 'utf8'); // Obtain information from the local capability file.
     try {
       const jsonsObj: test | null = JSON.parse(data); // Parse the local capability file and print some information.
       if (jsonsObj) {
@@ -2024,7 +2131,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
+The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fileiostat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
 
  ```json
  {
@@ -2086,7 +2193,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -2095,7 +2202,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -2150,7 +2257,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
     } finally {
-      fs.closeSync(fileData.fd);
+      fileIo.closeSync(fileData.fd);
     }
   }
   ```
@@ -2160,6 +2267,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
 
 Appends the applications whose data needs to be restored. From API version 12, the optional parameter **infos** is added to carry information about each application to be restored. The mappings between **infos** and **bundlesToBackup** are identified by index.
+
 Currently, the obtained **SessionRestore** instance can be called only once in the entire restore process. This API uses a promise to return the result.
 
 > **NOTE**
@@ -2206,7 +2314,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
@@ -2215,7 +2323,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -2290,7 +2398,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
     } finally {
-      fs.closeSync(fileData.fd);
+      fileIo.closeSync(fileData.fd);
     }
   }
   ```
@@ -2303,7 +2411,7 @@ Obtains the handle to the shared file from the service. This API uses an asynchr
 
 > **NOTE**
 >
-> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fs.copyFile](js-apis-file-fs.md#fscopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
+> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
 > - Before using **getFileHandle**, you need to obtain a **SessionRestore** instance and add the applications with data to be restored by using **appendBundles**.
 > - You can use **onFileReady** to obtain the file handle. When file operations are completed at the client, you need to use **publishFile** to publish the file.
 > - **getFileHandle** can be called multiple times based on the number of files to be restored.
@@ -2336,7 +2444,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -2346,7 +2454,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -2400,7 +2508,7 @@ Obtains the handle to the shared file from the service. This API uses a promise 
 
 > **NOTE**
 >
-> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fs.copyFile](js-apis-file-fs.md#fscopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
+> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
 > - Before using **getFileHandle**, you need to obtain a **SessionRestore** instance and add the applications with data to be restored by using **appendBundles**.
 > - You can use **onFileReady** to obtain the file handle. When file operations are completed at the client, you need to use **publishFile** to publish the file.
 > - **getFileHandle** can be called multiple times based on the number of files to be restored.
@@ -2438,7 +2546,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -2448,7 +2556,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -2505,7 +2613,7 @@ Publishes **FileMeta** to the backup service to indicate that the file content i
 
 > **NOTE**
 >
-> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fs.copyFile](js-apis-file-fs.md#fscopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
+> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
 > - After the server returns a file handle through **onFileReady**, the client can copy data to the file corresponding to the file handle provided by the server through zero-copy operations.
 > - This API can be called only after the caller has written all the data to be restored. The caller must ensure the consistency and integrity of the data to be written.
 
@@ -2536,7 +2644,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let g_session: backup.SessionRestore;
@@ -2554,7 +2662,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
           return;
         }
         console.info('onFileReady success');
-        fs.closeSync(file.fd);
+        fileIo.closeSync(file.fd);
         let cnt = countMap.get(file.bundleName) || 0;
         countMap.set(file.bundleName, cnt + 1); // Update the number of written files.
         // Called only when the number of files to be restored is the same as the number of files actually written. This ensures data consistency and integrity.
@@ -2617,7 +2725,7 @@ Publishes **FileMeta** to the backup service to indicate that the file content i
 
 > **NOTE**
 >
-> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fs.copyFile](js-apis-file-fs.md#fscopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
+> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
 > - After the server returns a file handle through **onFileReady**, the client can copy data to the file corresponding to the file handle provided by the server through zero-copy operations.
 > - This API can be called only after the caller has written all the data to be restored. The caller must ensure the consistency and integrity of the data to be written.
 
@@ -2653,7 +2761,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let g_session: backup.SessionRestore;
@@ -2678,7 +2786,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
           return;
         }
         console.info('onFileReady success');
-        fs.closeSync(file.fd);
+        fileIo.closeSync(file.fd);
         let cnt = countMap.get(file.bundleName) || 0;
         countMap.set(file.bundleName, cnt + 1); // Update the number of written files.
         // Called only when the number of files to be restored is the same as the number of files actually written. This ensures data consistency and integrity.
@@ -2744,7 +2852,7 @@ Releases the restore session when the restore process is complete. This API disc
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -2759,7 +2867,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let g_session: backup.SessionRestore;
@@ -2777,7 +2885,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
           return;
         }
         console.info('onFileReady success');
-        fs.closeSync(file.fd);
+        fileIo.closeSync(file.fd);
         let cnt = countMap.get(file.bundleName) || 0;
         countMap.set(file.bundleName, cnt + 1); // Update the number of written files.
         // Called only when the number of files to be restored is the same as the number of files actually written. This ensures data consistency and integrity.
@@ -2860,7 +2968,7 @@ Cancels the restoration of an application when data exceptions occur.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -2871,7 +2979,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -2884,7 +2992,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3150,7 +3258,7 @@ A constructor used to create an **IncrementalBackupSession** instance.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3161,7 +3269,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3171,7 +3279,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3241,7 +3349,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   interface test { // Parse the capability file.
@@ -3272,7 +3380,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3314,18 +3422,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       if (fileData) {
         console.info('getLocalCapabilities success');
         console.info('fileData info:' + fileData.fd);
-        if (!fs.accessSync(basePath)) {
-          fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+        if (!fileIo.accessSync(basePath)) {
+          fileIo.mkdirSync(basePath);
+          console.info('create success' + basePath);
         }
-        fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
-        fs.closeSync(fileData.fd);
+        fileIo.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
+        fileIo.closeSync(fileData.fd);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
       console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
     }
-    let data = fs.readTextSync(path, 'utf8'); // Obtain information from the local capability file.
+    let data = fileIo.readTextSync(path, 'utf8'); // Obtain information from the local capability file.
     try {
       const jsonsObj: test | null = JSON.parse(data); // Parse the local capability file and print some information.
       if (jsonsObj) {
@@ -3346,7 +3454,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
+The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fileiostat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
 
  ```json
  {
@@ -3369,7 +3477,7 @@ The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-Obtains the amount of data to be backed up. This method is called before **appendBundles**. The scanning result is returned at a fixed interval of 5 seconds by calling the general callback **onBackupSizeReport** asynchronously until all application data in the datalist is returned.
+Obtains the amount of data to be backed up. This method is called before **appendBundles**. **getBackupDataSize** is used together with **onBackupSizeReport**. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -3407,15 +3515,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  interface scanedInfos { // Parse the scanning result.
-    scaned: [];
+  interface scannedInfos { // Parse the scanning result.
+    scanned: [];
     scanning: string;
   }
 
-  interface ScanedInfo { // Parse the scanning result of an application.
+  interface ScannedInfo { // Parse the scanning result of an application.
     bundleName: string;
     dataSize: number;
     incDataSize: number;
@@ -3428,7 +3536,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3460,11 +3568,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application that is obtaining the data size.
+    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application whose data size is being retrieved. onBackupSizeReport in generalCallbacks returns the scan result every 5 seconds, or immediately if the data retrieval process is completed within 5 seconds, until all application data in dataList is returned.
       console.info('dataSizeCallback success');
-      const jsonObj: scanedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
+      const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
       if (jsonObj) {
-        const infos: ScanedInfo [] = jsonObj.scaned;
+        const infos: ScannedInfo [] = jsonObj.scanned;
         for (let i = 0; i < infos.length; i++) {
           console.info('name: ' + infos[i].bundleName);
           console.info('dataSize: ' + infos[i].dataSize);
@@ -3492,9 +3600,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example of a JSON string returned asynchronously:**
 
-```json
+```json5
 {
- "scaned": [ // Scanned application. The result will not be returned in the next callback.
+ "scanned": [ // Scanned application. The result will not be returned in the next callback.
      {
          "name": "com.example.hiworld", // Application name.
          "dataSize": 1006060, // Data size.
@@ -3536,7 +3644,7 @@ Appends applications that require incremental backup. In the current process, **
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3547,14 +3655,13 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3564,7 +3671,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3613,7 +3720,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 ### appendBundles<sup>12+</sup>
 
-appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string[]): Promise&lt;void&gt;
+appendBundles(bundlesToAppend: Array&lt;IncrementalBackupData&gt;, infos: string[]): Promise&lt;void&gt;
 
 Appends applications that require incremental backup. In the current process, **appendBundles** can be called before **Release()** is called. This API uses a promise to return the result.
 
@@ -3627,7 +3734,7 @@ Appends applications that require incremental backup. In the current process, **
 
 | Name         | Type                                                          | Mandatory| Description                      |
 | --------------- | -------------------------------------------------------------- | ---- | -------------------------- |
-| bundlesToBackup | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes  | Array of applications that require incremental backup.|
+| bundlesToAppend | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes  | Array of applications that require incremental backup.|
 | infos  | string[] | Yes  | Array of the information about each application to be backed up. The mappings between **infos** and **bundlesToBackup** are identified by index. This parameter is supported since API version 12.|
 
 **Return value**
@@ -3638,7 +3745,7 @@ Appends applications that require incremental backup. In the current process, **
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3649,14 +3756,13 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3666,7 +3772,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3774,7 +3880,7 @@ Releases the session for the incremental backup. This API uses a promise to retu
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3784,13 +3890,12 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13600001 | IPC error.                                                                                      |
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
-| 13900020 | Invalid argument.                                                                               |
 | 13900042 | Unknown error.                                                                                  |
 
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3800,7 +3905,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3864,7 +3969,7 @@ Cancels the incremental backup of an application when data exceptions occur.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                                                      |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3875,7 +3980,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3888,7 +3993,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {

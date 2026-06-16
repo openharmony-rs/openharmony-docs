@@ -6,7 +6,13 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-实现长按页面元素或鼠标右键弹出来的菜单信息。示例代码参考[onContextMenuShow事件](./arkts-basic-components-web-events.md#oncontextmenushow9)。
+WebContextMenuParam是ArkWeb组件中用于承载长按页面元素或鼠标右键弹出的上下文菜单信息的参数类，作为`onContextMenuShow`事件回调的数据载体，封装了菜单弹出位置、链接地址、媒体类型、选中文本、编辑状态等关键信息。
+
+开发者在自定义Web组件的上下文菜单时，通过WebContextMenuParam获取用户长按/右击位置处的网页元素详细信息（如链接URL、图片内容、媒体类型、输入框类型、编辑状态等），据此判断用户操作场景，进而决定是否拦截默认菜单并构建自定义菜单项。
+
+当需要在Web组件中自定义长按或右键弹出菜单的行为时（如替换默认菜单、根据不同元素类型提供差异化菜单项、预览图片等），在`onContextMenuShow`事件回调中使用WebContextMenuParam获取上下文信息。
+
+示例代码参考[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)。
 
 > **说明：**
 >
@@ -14,7 +20,7 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## constructor<sup>9+</sup>
 
@@ -28,21 +34,21 @@ WebContextMenuParam的构造函数。
 
 x(): number
 
-弹出菜单的x坐标。
+弹出菜单的x坐标，相对于Web组件左上角的水平距离。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
 
-| 类型     | 说明                 |
-| ------ | ------------------ |
-| number | 显示正常返回非负整数，否则返回-1。<br>单位：vp。 |
+| 类型     | 说明                                 |
+| ------ |------------------------------------|
+| number | 显示正常返回非负整数，否则返回-1。<br>单位：px（物理像素）。 |
 
 ## y<sup>9+</sup>
 
 y(): number
 
-弹出菜单的y坐标。
+弹出菜单的y坐标，相对于Web组件左上角的垂直距离。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,13 +56,13 @@ y(): number
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
-| number | 显示正常返回非负整数，否则返回-1。<br>单位：vp。 |
+| number | 显示正常返回非负整数，否则返回-1。<br>单位：px（物理像素）。 |
 
 ## getLinkUrl<sup>9+</sup>
 
 getLinkUrl(): string
 
-获取经过安全检查的url链接地址。
+获取经过安全检查的URL链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,13 +70,13 @@ getLinkUrl(): string
 
 | 类型     | 说明                        |
 | ------ | ------------------------- |
-| string | 如果长按位置是链接，返回经过安全检查的url链接。 |
+| string | 如果长按位置是链接，返回经过安全检查的URL链接。 |
 
 ## getUnfilteredLinkUrl<sup>9+</sup>
 
 getUnfilteredLinkUrl(): string
 
-获取原始url链接地址。
+获取原始URL链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -78,7 +84,7 @@ getUnfilteredLinkUrl(): string
 
 | 类型     | 说明                    |
 | ------ | --------------------- |
-| string | 如果长按位置是链接，返回原始的url链接。 |
+| string | 如果长按位置是链接，返回原始的URL链接。 |
 
 ## getSourceUrl<sup>9+</sup>
 
@@ -92,7 +98,7 @@ getSourceUrl(): string
 
 | 类型     | 说明                       |
 | ------ | ------------------------ |
-| string | 如果选中的元素有src属性，返回src的url。返回url的最大上限为2M，超出上限时返回空字符串。 |
+| string | 如果选中的元素有src属性，返回src的URL。返回URL的最大上限为2MB，超出上限时返回空字符串。 |
 
 ## existsImageContents<sup>9+</sup>
 
@@ -112,7 +118,7 @@ existsImageContents(): boolean
 
 getMediaType(): ContextMenuMediaType
 
-获取触发上下文菜单的网页元素类型。
+获取网页元素媒体类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -168,7 +174,7 @@ getInputFieldType(): ContextMenuInputFieldType
 
 isEditable(): boolean
 
-获取网页元素是否可编辑标识。
+判断网页元素是否可编辑。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -204,7 +210,7 @@ getPreviewWidth(): number
 
 | 类型     | 说明       |
 | ------ | ----------- |
-| number | 预览图的宽。<br>单位：vp。 |
+| number | 预览图的宽。<br>单位：px（物理像素）。 |
 
 ## getPreviewHeight<sup>13+</sup>
 
@@ -218,13 +224,13 @@ getPreviewHeight(): number
 
 | 类型     | 说明       |
 | ------ | ----------  |
-| number | 预览图的高。<br>单位：vp。 |
+| number | 预览图的高。<br>单位：px（物理像素）。 |
 
 ## getContextMenuMediaType<sup>22+</sup>
 
 getContextMenuMediaType(): ContextMenuDataMediaType
 
-获取触发上下文菜单的网页元素类型（增强获取类型能力）。
+在上报上下文菜单事件时，获取用户点击的网页元素类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

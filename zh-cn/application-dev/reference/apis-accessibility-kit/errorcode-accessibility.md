@@ -10,6 +10,37 @@
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+
+## 9300000 无障碍系统服务工作异常
+
+**错误信息**
+
+System abnormality.
+
+**错误描述**
+
+当系统服务工作异常时，会报此错误码。
+
+**可能原因**
+
+该错误码表示无障碍系统服务工作异常，可能原因如下：
+1. 内部操作失败（Internal operation failed）。
+2. 获取必要的服务或客户端对象失败（空指针）（Failed to obtain the required service or client object (null pointer)）。
+3. IPC通信失败（IPC communication failed）。
+4. 获取无障碍服务代理失败（Failed to obtain the accessibility service proxy）。
+5. 等待异步操作结果超时（Timed out while waiting for the result of an asynchronous operation）。
+6. 监听器或观察者已注册（The listener or observer has already been registered）。
+7. 监听器或观察者未注册（The listener or observer is not registered）。
+8. 客户端未连接（The client is not connected）。
+9. 目标应用连接无障碍服务失败（The target application failed to connect to the accessibility service）。
+10. 从ACE接收的元素信息无效（The element information received from ACE is invalid）。
+11. 在ACE中执行操作失败（Failed to perform an action in ACE）。
+12. 注入手势事件失败（Failed to inject a gesture event）。
+
+**处理步骤**
+
+系统服务工作异常，请稍后重试。若无效，请尝试重启无障碍扩展应用或重启设备。
+
 <!--Del-->
 ## 9300001 输入无效的包名称或者Ability名称
 
@@ -106,6 +137,8 @@ This action is not supported.
 
 确认该无障碍节点元素支持的操作列表中是否包含该操作。
 
+<!--Del-->
+
 ## 9300006 目标应用和无障碍服务建立连接失败
 
 **错误信息**
@@ -142,3 +175,24 @@ Trigger magnification failed.
 **处理步骤**
 
 先开启放大手势功能并配置放大模式。
+<!--DelEnd-->
+
+## 9300008 应用分身索引不合法
+
+**错误信息**
+
+The appIndex is invalid. Possible causes: 1. The appIndex is out of the valid range. 2. The application corresponding to the appIndex does not exist.
+
+**错误描述**
+
+应用分身索引不合法。
+
+**可能原因**
+
+该错误码表示应用分身索引不合法，可能原因如下：
+1. 应用分身索引不在合法范围，要求是大于等于0的整数。
+2. 该索引对应的应用不存在。
+
+**处理步骤**
+
+检查应用分身索引的值是否合法。

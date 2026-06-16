@@ -1,8 +1,8 @@
 # 前景属性设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## foregroundEffect
 
@@ -35,6 +37,7 @@ foregroundEffect(options: ForegroundEffectOptions): T
 | T | 返回当前组件。 |
 
 ## ForegroundEffectOptions<sup>12+</sup>
+
 前景效果参数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -43,7 +46,7 @@ foregroundEffect(options: ForegroundEffectOptions): T
 
 | 名称        |   类型         |   只读 |   可选 |  说明                        |
 | ----         |  ----         |   ---- |   ---- | --------------------------  |
-| radius       | number        |   否   |   否   |   模糊半径，取值范围：[0, +∞)，默认为0。<br/> 仅在组件范围内生效，与其他接口连用时超出组件范围的效果无法生效。     |
+| radius       | number        |   否   |   否   |   模糊半径，取值范围：[0, +∞)。<br/> 仅在组件范围内生效，与其他接口连用时超出组件范围的效果无法生效。     |
 
 ## 示例
 
@@ -70,6 +73,7 @@ struct Index {
 ```
 
 效果图如下：
+
 radius表示模糊半径，数值越大，效果越模糊。
 
 ![foregroundColor_circle](figures/foregroundEffect.jpg)

@@ -1,8 +1,8 @@
 # Interface (AudioStreamManager)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -26,6 +26,10 @@ import { audio } from '@kit.AudioKit';
 getCurrentAudioRendererInfoArray(callback: AsyncCallback&lt;AudioRendererChangeInfoArray&gt;): void
 
 获取当前音频渲染器的信息。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
 
 **系统能力**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -55,6 +59,10 @@ getCurrentAudioRendererInfoArray(): Promise&lt;AudioRendererChangeInfoArray&gt;
 
 获取当前音频渲染器的信息。使用Promise异步回调。
 
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **返回值：**
@@ -79,6 +87,10 @@ audioStreamManager.getCurrentAudioRendererInfoArray().then((audioRendererChangeI
 getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
 
 获取当前音频渲染器的信息。同步返回结果。
+
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -108,6 +120,10 @@ getCurrentAudioCapturerInfoArray(callback: AsyncCallback&lt;AudioCapturerChangeI
 
 获取当前音频采集器的信息。使用callback异步回调。
 
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **参数：**
@@ -136,6 +152,10 @@ getCurrentAudioCapturerInfoArray(): Promise&lt;AudioCapturerChangeInfoArray&gt;
 
 获取当前音频采集器的信息。使用Promise异步回调。
 
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **返回值：**
@@ -161,6 +181,10 @@ audioStreamManager.getCurrentAudioCapturerInfoArray().then((audioCapturerChangeI
 getCurrentAudioCapturerInfoArraySync(): AudioCapturerChangeInfoArray
 
 获取当前音频采集器的信息。同步返回结果。
+
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -189,6 +213,10 @@ try {
 on(type: 'audioRendererChange', callback: Callback&lt;AudioRendererChangeInfoArray&gt;): void
 
 监听音频渲染器更改事件（当音频播放流状态变化或设备变化时触发）。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -221,6 +249,10 @@ audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: aud
 off(type: 'audioRendererChange', callback?: Callback&lt;AudioRendererChangeInfoArray&gt;): void
 
 取消监听音频渲染器更改事件。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -259,6 +291,10 @@ on(type: 'audioCapturerChange', callback: Callback&lt;AudioCapturerChangeInfoArr
 
 监听音频采集器更改事件（当音频录制流状态变化或设备变化时触发）。使用callback异步回调。
 
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **参数：**
@@ -290,6 +326,10 @@ audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audi
 off(type: 'audioCapturerChange', callback?: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
 
 取消监听音频采集器更改事件。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -783,5 +823,235 @@ try {
 } catch (err) {
   let error = err as BusinessError;
   console.error(`isIntelligentNoiseReductionEnabledForCurrentDevice ERROR: ${error}`);
+}
+```
+
+## isFastPlaybackSupported
+
+isFastPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+查询指定音频流信息和使用场景下是否支持低时延播放。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名   | 类型                               | 必填    | 说明                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+
+**返回值：**
+
+| 类型         | 说明                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | 是否支持低时延播放。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isFastPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`isFastPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isFastPlaybackSupported function. code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isOffloadPlaybackSupported
+
+isOffloadPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+查询指定音频流信息和使用场景下是否支持低功耗通路播放。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名   | 类型                               | 必填    | 说明                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+
+**返回值：**
+
+| 类型         | 说明                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | 是否支持低功耗通路播放。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isOffloadPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`isOffloadPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isOffloadPlaybackSupported function. code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isDirectPlaybackSupported
+
+isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+查询指定音频流信息和使用场景下是否支持直通播放。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名   | 类型                               | 必填    | 说明                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+
+**返回值：**
+
+| 类型         | 说明                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | 是否支持直通播放。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isDirectPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`isDirectPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isDirectPlaybackSupported function. code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isFastRecordingSupported
+
+isFastRecordingSupported(streamInfo: AudioStreamInfo, source: SourceType): boolean
+
+查询指定音频流信息和音源类型下是否支持低时延录制。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名   | 类型                               | 必填    | 说明                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
+| source | [SourceType](arkts-apis-audio-e.md#sourcetype8) | 是 | 音源类型，用于决定音频设备和通路类型的选择结果。 |
+
+**返回值：**
+
+| 类型         | 说明                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | 是否支持低时延录制。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_STEREO
+};
+
+try {
+  let isSupported = audioStreamManager.isFastRecordingSupported(streamInfo, audio.SourceType.SOURCE_TYPE_MIC);
+  console.info(`isFastRecordingSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isFastRecordingSupported function. code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## isMultichannelPlaybackSupported
+
+isMultichannelPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
+
+查询指定音频流信息和使用场景下是否支持多声道播放。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名   | 类型                               | 必填    | 说明                        |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
+
+**返回值：**
+
+| 类型         | 说明                                   |
+| ------------ | --------------------------------------- |
+|  boolean     | 是否支持多声道播放。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+
+let streamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_3,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+  channelLayout: audio.AudioChannelLayout.CH_LAYOUT_2POINT1
+};
+
+try {
+  let isSupported = audioStreamManager.isMultichannelPlaybackSupported(streamInfo, audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`isMultichannelPlaybackSupported: ${isSupported}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isMultichannelPlaybackSupported function. code: ${error.code}, message: ${error.message}`);
 }
 ```

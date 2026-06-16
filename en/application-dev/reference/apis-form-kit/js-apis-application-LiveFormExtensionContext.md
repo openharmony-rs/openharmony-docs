@@ -1,22 +1,28 @@
 # LiveFormExtensionContext
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 **LiveFormExtensionContext**, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), is the context of [LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md).
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 ```ts
-import { LiveFormExtensionAbility } from '@kit.FormKit';
+import { common } from '@kit.AbilityKit';
 ```
+
+>  **NOTE**
+>
+> - In versions earlier than API version 22, you need to import LiveFormExtensionContext with `import LiveFormExtensionContext from 'application/LiveFormExtensionContext'; `. This import mode is marked in red in DevEco Studio, but does not affect compilation and running. You can use LiveFormExtensionContext directly.
+>
+> - In API version 22 and later versions, you can import LiveFormExtensionContext with `import { common } from '@kit.AbilityKit';` and use it in the form of **common.LiveFormExtensionContext**.
 
 ## LiveFormExtensionContext
 
@@ -30,9 +36,7 @@ Starts the widget provider (application) page. This API uses a promise to return
 
 This API can only be used to start the page of the interactive widget provider (application). If this API is used to start the page of another application, error code 16501011 will be reported.
 
-You are advised to call this API in click event callbacks. Calling it in callbacks of other gesture events is not recommended, and direct calls in non-gesture events are not allowed. Otherwise, the error code 16501011 will be reported.
-
-In addition, this API can be directly called in the click event callback but cannot be called after a delay. Otherwise, the error code 16501011 will be reported.
+This API can only be called within the click event callback and must be called directly. Delayed calls are not supported. Otherwise, the error code 16501011 will be reported.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -81,19 +85,19 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 ```
 ```ts
 // pages/MyLiveFormPage.ets
+import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry
 @Component
 struct MyLiveFormPage {
   private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
-  private liveFormContext: LiveFormExtensionContext | undefined = undefined;
+  private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
 
   aboutToAppear(): void {
     // 2. Obtain LiveFormExtensionContext.
     this.storageForMyLiveFormPage = this.getUIContext().getSharedLocalStorage();
-    this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
+    this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
   }
 
    private startAbilityByLiveForm(): void {
@@ -115,9 +119,15 @@ struct MyLiveFormPage {
   }
 
   build() {
+    // Replace the page with the actual one.
     Stack() {
-      // Replace the page with the actual one.
+      Column()
+        .width('50%')
+        .height('50%')
+        .backgroundColor('#2875F5')
     }
+    .width('100%')
+    .height('100%')
     .onClick(() => {
       // 3. Use the API in the click event callback.
       console.info('MyLiveFormPage click to start ability');

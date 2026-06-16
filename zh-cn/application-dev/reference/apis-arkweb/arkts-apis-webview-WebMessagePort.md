@@ -14,7 +14,7 @@
 >
 > - 本Interface首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 导入模块
 
@@ -72,8 +72,21 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.ports = this.controller.createWebMessagePorts();
+            this.ports[1].onMessageEvent((msg) => {
+                if (typeof (msg) == "string") {
+                    console.info("received string message from HTML5, string is:" + msg);
+                } else if (typeof (msg) == "object") {
+                    if (msg instanceof ArrayBuffer) {
+                        console.info("received arraybuffer from HTML5, length is:" + msg.byteLength);
+                    } else {
+                        console.info("not support");
+                    }
+                } else {
+                    console.info("not support");
+                }
+            })            
             this.controller.postMessage('__init_port__', [this.ports[0]], '*');
-            this.ports[1].postMessageEvent("post message from ets to html5");
+            this.ports[1].postMessageEvent("post message from ETS to HTML5");
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -214,7 +227,7 @@ class TestObj {
   }
 }
 
-// 应用与网页互发消息的示例：使用"init_web_messageport"的通道，通过端口0在应用侧接受网页发送的消息，通过端口1在网页侧接受应用发送的消息。
+// 应用与网页互发消息的示例：使用"init_web_messageport"的通道，通过端口0在应用侧接收网页发送的消息，通过端口1在网页侧接收应用发送的消息。
 @Entry
 @Component
 struct WebComponent {

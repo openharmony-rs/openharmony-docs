@@ -1,8 +1,8 @@
 # 从OpenSL ES切换到OHAudio(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -42,7 +42,7 @@ OpenSL ES:
 通过全局接口获取到Engine对象，基于Engine结合不同输入输出配置参数，构造出不同音频播放对象。
 
 ```cpp
-// 生成Engine Inteface对象。
+// 生成Engine Interface对象。
 SLEngineItf engine;
 // ...
 

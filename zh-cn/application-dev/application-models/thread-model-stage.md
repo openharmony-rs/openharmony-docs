@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 
 线程是操作系统进行运算调度的基本单位，是[进程](./process-model-stage.md)中的执行流，共享进程的资源。一个进程可以包含多个线程。
@@ -23,8 +23,10 @@
   - 用于执行耗时操作，支持设置调度优先级、负载均衡等功能，推荐使用。
 - [Worker线程](../reference/apis-arkts/js-apis-worker.md)
   - 用于执行耗时操作，支持线程间通信。
-TaskPool与Worker的运作机制、通信手段和使用方法可以参考[TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)。
-![thread-model-stage](figures/thread-model-stage.png)
+
+    TaskPool与Worker的运作机制、通信手段和使用方法可以参考[TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)。
+
+    ![thread-model-stage](figures/thread-model-stage.png)
 
 > **说明：**
 >

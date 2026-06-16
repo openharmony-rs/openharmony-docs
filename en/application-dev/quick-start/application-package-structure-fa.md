@@ -11,11 +11,11 @@ The following figure shows the package structure of an application developed bas
 
 >
 > **NOTE**
-> It is the only application development model supported by API version 8 and earlier. Now, the stage model is recommended for application development.
+> The FA application development model is supported in API version 8 and earlier. Now, the stage model is recommended for application development.
 >
 
 
-The difference between the application package structures in the FA model and stage model lies in the location where the internal files of a HAP file are stored. In the FA model, all the resource files, library files, and code files are stored in the **assets** folder, where the files are further organized.
+The storage locations of internal files differ between the FA model and the Stage model. In the FA model, all resource files, library files, and code files are stored in the **assets** folder and further differentiated within the folder. For the storage locations of internal files in the Stage model, see [Application Package Structure in Stage Model](./application-package-structure-stage.md).
 
 
 - **config.json** is an application configuration file, where the template code is automatically created by DevEco Studio. You can modify the configuration as required. For details about the fields, see [Overview of Application Configuration Files in FA Model](application-configuration-file-overview-fa.md#configuration-file-internal-structure).

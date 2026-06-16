@@ -1,10 +1,10 @@
 # 机械体控制模块错误码
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @Marssssss-->
+<!--Tester: @Aullar-->
+<!--Adviser: @hu-zhiqiong-->
 
 > **说明：**
 >

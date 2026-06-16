@@ -75,11 +75,11 @@ Check the RDB store path.
 
 **Error Message**
 
-Failed to open the database because it is corrupted.
+The current operation failed because the database is corrupted.
 
 **Description**
 
-This error code is reported if the database is abnormal and fails to be opened.
+The operation failed due to a database exception.
 
 **Possible Causes**
 
@@ -101,7 +101,7 @@ This error code is reported if the result set is empty or the specified location
 
 **Possible Causes**
 
-The result set is empty, or the specified row number in the result set is out of range [0, m - 1]. **m** is **resultsetV9.rowCount**.
+The result set is empty, or the specified row number in the result set is out of range [0, m - 1]. **m** is **ResultSet.rowCount**.
 
 **Solution**
 
@@ -111,7 +111,7 @@ Check whether the result set is empty or whether the specified row number is out
 
 **Error Message**
 
-ResultSet is empty or column index is out of bounds.
+Column index is out of bounds.
 
 **Description**
 
@@ -119,30 +119,27 @@ This error code is reported if the column value is null, or the column data type
 
 **Possible Causes**
 
-1. The result set is empty.
-2. The current row number in the result set is out of range [0, m - 1]. **m** is **resultsetV9.rowCount**.
-3. The column number is out of the range [0, n - 1]. **n** is **resultsetV9.columnCount**.
-4. The API called does not support the type of the column data.
+1. The column number is out of the range [0, n - 1]. **n** is **ResultSet.columnCount**.
+2. The API called does not support the type of the column data.
 
 **Solution**
 
-1. Check whether the result set is empty.
-2. Check whether the row number and column number of the result set are out of range.
-3. Check whether the column data type is supported.
+1. Check whether the column number of the result set is out of range.
+2. Check whether the column data type is supported.
 
-## 14800014 RdbStore or ResultSet Closed
+## 14800014 Target Instance Closed
 
 **Error Message**
 
-The RdbStore or ResultSet is already closed.
+The target instance is already closed.
 
 **Description**
 
-This error code is reported if the RDB store or result set is closed.
+The target instance is closed.
 
 **Possible Causes**
 
-**close()** is called to close the RDB store or result set, or the RDB store or result set fails to be opened.
+The instance was not opened successfully, or the owning instance has been closed (for example, the **close** method has been called on a **ResultSet**/**RdbStore** object, or the **commit**/**rollback** method has been called on a **Transaction** object).
 
 **Solution**
 
@@ -202,6 +199,7 @@ Key configuration, such as **area**, **securityLevel**, or the read/write permis
 **Solution**
 
 Restore the original configuration if required. Otherwise, delete the old RDB store, use the new configuration to create a new RDB store, and import the data to the new RDB store.
+
 Check whether the read/write permission on the database file is modified using chmod. Ensure that the current user has sufficient permissions to read and write the database file.
 
 ## 14800018 No Match
@@ -334,7 +332,7 @@ This error code is reported if the SQLite database file is locked.
 
 **Possible Causes**
 
-1. Two processes of the same application, for example, UIability and DataShareability, perform addition, deletion, and modification operations in the same database, or processes in the same group of different applications perform addition, deletion, and modification operations in the same database via the group.
+1. Two processes of the same application, for example, **UIAbility** and **DataShareExtensionAbility**, perform addition, deletion, and modification operations in the same database, or processes in the same group of different applications perform addition, deletion, and modification operations in the same database via the group.
 2. See SQLITE_BUSY.
 
 **Solution**
@@ -355,7 +353,7 @@ This error code is reported if an SQLite database table is locked.
 **Possible Causes**
 
 1. The database file to write has been locked by another process. A transaction is being performed in the RDB store, or the write attempt is blocked by a lock mechanism.
-2. See SQLITE_LOCKED.
+2. See **SQLITE_LOCKED**.
 
 **Solution**
 
@@ -551,6 +549,24 @@ This error code is reported if the SQLite interface is used incorrectly.
 1. Check that proper synchronization mechanisms like locks are used between database operations.
 2. Check that a database connection is opened before use and closed after the operation is complete.
 3. Check that all database objects are correctly released after being used.
+
+## 14800041 Type Conversion Failure
+
+**Error Message**
+
+Type conversion failed.
+
+**Description**
+
+Type conversion failed.
+
+**Possible Causes**
+
+The data type of the specified column does not match the type of the data obtained from **resultSet**.
+
+**Solution**
+
+Ensure the data type of the specified column matches the type required by the corresponding API.
 
 ## 14800047 WAL File Size Exceeds the Default Limit
 

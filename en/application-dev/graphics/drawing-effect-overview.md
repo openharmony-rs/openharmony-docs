@@ -7,25 +7,25 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-After a canvas is created, it has a default fill effect and stroke effect. You can directly draw graphical elements. However, the default effects cannot meet the requirements in most cases. For example, the default color is black, and only black shapes can be drawn. No blur or gradient effect is available by default. If more drawing effects are required, for example, drawing a red shape, adding a blur effect, or gradient effect, you need to set a custom brush or pen for the canvas.
+After a canvas is created, it has default fill and stroke effects. You can directly draw primitives. However, the default effects cannot meet requirements in most cases. For example, the default color is black, and only black graphics can be drawn. The default effects do not include blurring or gradient effects. For more effects, such as red graphics, blurring effects, or gradient effects, you need to set a custom brush or pen for the canvas.
 
 
-A brush is used to implement the fill effect, which is applicable to the internal area of a shape. The basic effects include the fill color and anti-aliasing.
+A brush is used to implement the fill effect for the internal area of a graphic. The basic effects include the fill color and anti-aliasing.
 
 
-A pen is used to implement the stroke effect, which is applicable to the outline of a shape. The basic effects include the stroke color, width, line connection mode, and line endpoint style.
+A pen is used to implement the stroke effect for the outline of a graphic. The basic effects include the stroke color, width, line connection mode, and line endpoint style.
 
 
-In addition, brushes and pens can implement more complex effects, such as:
+In addition, the brush and pen can implement more complex effects, such as:
 
 
-- Blend mode.
+- Blend mode
 
-- Path effect (dashed line effect)
+- Path effect (dashed line)
 
-- Shader effect (linear gradient and radial gradient)
+- Shader effect (linear gradient, radial gradient)
 
-- Filtering effect (blur effect)
+- Filtering effect (blurring)
 
 
-You can select either a brush or a pen as required, or set both or neither. If neither is set, the default black brush is used.
+You can set either a brush or a pen, or both or neither. If neither is set, the default black brush is used.

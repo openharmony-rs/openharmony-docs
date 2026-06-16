@@ -1,7 +1,7 @@
 # @ohos.bundleState (Device Usage Statistics)
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,9 +10,9 @@ This module provides APIs for collecting statistics on device usage.
 
 > **NOTE**
 >
-> - The APIs of this module are deprecated since API version 9. The substitute APIs are open only to system applications.
+> The APIs of this module are deprecated since API version 9. The substitute APIs are open only to system applications.
 >
-> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import

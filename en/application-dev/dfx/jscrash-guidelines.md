@@ -3,7 +3,7 @@
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @wanghuan2025-->
 <!--Designer: @Maplestory91-->
-<!--Tester: @yufeifei-->
+<!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 ## Overview
@@ -57,11 +57,11 @@ The fault log file name format is **jscrash-Process name-Process UID-Millisecond
 |---|---|---|---|---|
 | Device info | Device information.| 8 | Yes| - |
 | Build info | Version information.| 8 | Yes| - |
-| DeviceDebuggable | Whether the device can be debugged.| 23 | Yes| - |
+| DeviceDebuggable | Whether the system version of the device can be debugged, which is irrelevant to **Developer options**.| 23 | Yes| - |
 | Fingerprint | Fault feature, which is a hash value for faults of the same type.| 8 | Yes| - |
 | Timestamp | Timestamp.| 8 | Yes| - |
 | Module name | Bundle name or Process name.| 8 | Yes| - |
-| ReleaseType | Release type of the SDK used for application packing. For details, see **releaseType** in [ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).| 23 | Yes| - |
+| ReleaseType | Application version type. The value **release** indicates that the application is a [release-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916), and the value **debug** indicates that the application is a [debug-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916).| 23 | Yes| - |
 | CpuAbi | ABI type.| 23 | Yes| - |
 | Version | HAP version.| 8 | Yes| - |
 | VersionCode | Version code.| 8 | Yes| - |
@@ -79,16 +79,17 @@ The fault log file name format is **jscrash-Process name-Process UID-Millisecond
 | HybridStack | Cross-language fault stack between C++ and JS.| 22 | No| In the ARM 64-bit system, if the stacktrace is a JS stack, this field is displayed. A maximum of 256 layers can be displayed.|
 | SubmitterStacktrace | Submitter thread stack.| 20 | No| By default, the asynchronous thread stack tracing functionality is enabled only in the ARM 64-bit system.<br>For versions earlier than API version 22, the functionality of submitting asynchronous tasks by third-party and system applications through [libuv](../reference/native-lib/libuv.md) and [ffrt](../reference/apis-ffrt-kit/capi-ffrt.md) is enabled only in the debug version by default.<br>Since API version 22, the functionality of submitting asynchronous tasks by third-party applications through **libuv** is enabled by default in both debug and release versions. The functionality of submitting asynchronous tasks by third-party and system applications through **ffrt** is enabled by default only in the debug version.|
 | HiLog | HiLog logs printed before the fault occurs. A maximum of 1000 lines can be printed.| 20 | Yes| - |
+| AsyncStack | Promise stack.| 23 | No| In ARM64, if the promise stack is enabled, this field is contained.|
 
 Example of the JS crash log specifications:
 ```text
 Device info:XXX <- Device information
 Build info:XXX-XXXX X.X.X.XX(XXXXXXXX) <- Build information
-DeviceDebuggable:No <- Whether the device can be debugged.
+DeviceDebuggable:No <- Whether the system version of the device can be debugged.
 Fingerprint:ed1811f3f5ae13c7262b51aab73ddd01df95b2c64466a204e0d70e6461cf1697 <- Fault features
 Timestamp:XXXX-XX-XX XX:XX:XX.XXX <- Timestamp
 Module name:com.example.myapplication <- Bundle name/Process name
-ReleaseType:Release <- Release type of the SDK used for application packing.
+ReleaseType:release <- Application version type.
 CpuAbi:arm64-v8a <- ABI type.
 Version:1.0.0 <- HAP version
 VersionCode:1000000 <- Version code
@@ -131,7 +132,7 @@ HybridStack: <- Cross-language call stack between C++ and JS
 
 HiLog:
  ^
- Add 1000 lines of HiLog logs related to the exception to the generated crash log file.
+ HiLog logs generated before the fault occurs are added to the generated crash log file. A maximum of 1000 lines are supported.
 
 ```
 ### Log Specifications for Asynchronous Thread Stack Tracing Faults
@@ -246,7 +247,7 @@ at \<Execution method name> (\<Module name|Dependent module name|Version number|
 The following is an example:
 
 
-```
+```text
 at onPageShow (entry|har1|1.0.0|src/main/ets/pages/Index.ts:7:13)
 ```
 
@@ -278,7 +279,7 @@ at \<Execution method name> \<Dependent module name> (\<Source code path>:\<Line
 The following is an example:
 
 
-```
+```text
 at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
 ```
 
@@ -306,3 +307,60 @@ Since API version 22, the cross-language call stack between C++ and JS can be pr
 For details about the C++ code stack, see [C++ Exception Code Stack Formats](cppcrash-guidelines.md#common-faults).
 
 For details about the JS call stack, see [JS Exception Code Call Stack Formats](#exception-code-call-stack-formats)
+
+### Promise Stack
+
+The promise stack is disabled by default. Since API version 23, you can run the following command to enable it in ARM64. The setting takes effect for the entire device.
+```cmd
+hdc shell param set persist.ark.properties 0x80105c
+hdc shell reboot
+```
+
+Run the following command to disable the promise stack.
+```cmd
+hdc shell param set persist.ark.properties 0x105c
+hdc shell reboot
+```
+
+By default, an exception thrown in a promise task does not cause a JS crash. However, you can capture a rejected promise using [ErrorManager unhandledRejection](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12) and then throw the exception to trigger a JS crash.
+
+When the promise stack is enabled, if an exception is thrown in a promise task and a JS crash occurs, the JS crash log displays the stack information about the promise task creation.
+
+The format of the promise stack in the JS crash log is as follows:
+
+```text
+Stacktrace:
+...
+HybridStack:
+...
+AsyncStack: <- After the promise stack is enabled, the stack information when the promise task is created is displayed.
+    submitter#00: <- Each promise task corresponds to a submitter. The stack of a submitter supports a maximum of 48 backtracing layers.
+    #00 pc 0000000000266a0c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #01 pc 000000000020ba3c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #02 pc 0000000000dfd330 /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+    #03 pc 00000000004533d8 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis1Imm8V8V8StwCopy+388)
+    #04 at bar entry (entry/src/main/ets/pages/Index.ets:36:29)
+    #05 at foo entry (entry/src/main/ets/pages/Index.ets:33:3)
+    #06 pc 000000000083bf64 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #07 pc 00000000007f42f8 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #08 pc 00000000007e8e88 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #09 pc 0000000000dfcebc /system/lib64/module/arkcompiler/stub.an(RTStub_AsmInterpreterEntry+484)
+    #10 pc 0000000000dfcd18 /system/lib64/module/arkcompiler/stub.an(RTStub_AsmInterpreterEntry+64)
+    ...
+    submitter#01: <- Multiple submitters indicate that asynchronous nesting exists. A maximum of eight submitters are supported.
+    #00 pc 0000000000266a0c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #01 pc 0000000000ad9e4c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #02 pc 0000000000dfaa8c /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+44)
+    #03 pc 0000000000518bcc /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+68)
+    #04 at foo entry (entry/src/main/ets/pages/Index.ets:32:3)
+    #05 at anonymous entry (entry/src/main/ets/pages/Index.ets:23:11)
+    #06 pc 0000000000801f5c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #07 pc 0000000000803470 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::Call(panda::ecmascript::EcmaVM const*, panda::Local<panda::JSValueRef>, panda::Local<panda::JSValueRef> const*, int)+548)(e0c4624849e028140f5bff13122863b7)
+    #08 pc 0000000000ad79e8 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    #09 pc 0000000000e98440 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    #10 pc 00000000013208a0 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    ...
+
+HiLog:
+...
+```

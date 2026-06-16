@@ -1,10 +1,10 @@
 # @ohos.enterprise.usbManager（USB管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供USB管理能力。
 
@@ -32,7 +32,7 @@ addAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 
 以下情况下，调用本接口会报策略冲突：
 
-1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB能力。
+1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB或者USB转串口能力。
 2. 已经通过[setUsbStorageDeviceAccessPolicy](#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为禁用。
 3. 已经通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。
 
@@ -42,6 +42,7 @@ addAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -75,8 +76,8 @@ let wantTemp: Want = {
 };
 try {
   let usbDeviceIds: Array<usbManager.UsbDeviceId> = [{
-      vendorId: 1,
-      productId: 1
+    vendorId: 1,
+    productId: 1
   }];
   usbManager.addAllowedUsbDevices(wantTemp, usbDeviceIds);
   console.info(`Succeeded in adding allowed USB devices.`);
@@ -97,6 +98,7 @@ removeAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -129,8 +131,8 @@ let wantTemp: Want = {
 };
 try {
   let usbDeviceIds: Array<usbManager.UsbDeviceId> = [{
-      vendorId: 1,
-      productId: 1
+    vendorId: 1,
+    productId: 1
   }];
   usbManager.removeAllowedUsbDevices(wantTemp, usbDeviceIds);
   console.info(`Succeeded in removing allowed USB devices.`);
@@ -217,12 +219,13 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
 通过本接口设置，或者通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加存储类型的USB设备，均可禁用USB存储设备。推荐使用后者。
 
-**需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
+**需要权限：** API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（应用[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)）。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控), 严格优先级： 禁用 > 只读 > 可读可写。
 
 **参数：**
 
@@ -269,7 +272,7 @@ getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
 获取USB存储设备访问策略。
 
-**需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
+**需要权限：** API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（应用[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)）。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -336,6 +339,7 @@ addDisallowedUsbDevices(admin: Want, usbDevices: Array\<UsbDeviceType>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -369,10 +373,10 @@ let wantTemp: Want = {
 };
 try {
   let usbDevices: Array<usbManager.UsbDeviceType> = [{
-      baseClass: 8,
-      subClass: 0,
-      protocol: 0,
-      descriptor: usbManager.Descriptor.INTERFACE
+    baseClass: 8,
+    subClass: 0,
+    protocol: 0,
+    descriptor: usbManager.Descriptor.INTERFACE
   }];
   usbManager.addDisallowedUsbDevices(wantTemp, usbDevices);
   console.info(`Succeeded in adding disallowed USB devices.`);
@@ -393,6 +397,7 @@ removeDisallowedUsbDevices(admin: Want, usbDevices: Array\<UsbDeviceType>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -425,10 +430,10 @@ let wantTemp: Want = {
 };
 try {
   let usbDevices: Array<usbManager.UsbDeviceType> = [{
-      baseClass: 8,
-      subClass: 0,
-      protocol: 0,
-      descriptor: usbManager.Descriptor.INTERFACE
+    baseClass: 8,
+    subClass: 0,
+    protocol: 0,
+    descriptor: usbManager.Descriptor.INTERFACE
   }];
   usbManager.removeDisallowedUsbDevices(wantTemp, usbDevices);
   console.info(`Succeeded in removing disallowed USB devices.`);

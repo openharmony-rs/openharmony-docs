@@ -11,19 +11,21 @@ When calling asynchronous ArkTS APIs in the ArkTS running environment, you can u
 
 ## Example
 If asynchronous ArkTS APIs are called, you can use **napi_run_event_loop** to run the events in the asynchronous thread cyclically. The underlying asynchronous tasks in the event queue will be processed based on the event loop mode. Currently, Node-API provides two modes for running event loops: **napi_event_mode_nowait** and **napi_event_mode_default**.
+
 If **napi_event_mode_nowait** is used, the current asynchronous thread will not be blocked while the system attempts to process a task in the underlying event queue. After the task is complete, the event loop stops. If there is no task in the event queue, the event loop stops immediately.
+
 If **napi_event_mode_default** is used, the system blocks the current asynchronous thread and keeps trying to obtain tasks from the event queue and execute these tasks. If you do not want the current thread to be blocked, use **napi_stop_event_loop** to stop the event loop.
 
 ### Sample Code
 - Functionality implementation
-  <!-- @[napi_event_loop_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
+  <!-- @[napi_event_loop_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->  
   
   ``` C++
   #include "napi/native_api.h"
-  // ...
   #include <pthread.h>
   #include <hilog/log.h>
   #include <napi/common.h>
+  static constexpr int INT_ARG_2 = 2; // Input parameter index.
   // ...
   static napi_value ResolvedCallback(napi_env env, napi_callback_info info)
   {

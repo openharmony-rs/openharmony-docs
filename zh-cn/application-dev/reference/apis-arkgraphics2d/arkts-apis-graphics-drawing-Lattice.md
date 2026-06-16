@@ -2,10 +2,12 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+矩形网格对象。该对象用于将图片按照矩形网格进行划分。
 
 > **说明：**
 >
@@ -16,8 +18,6 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-矩形网格对象。该对象用于将图片按照矩形网格进行划分。
 
 ## 导入模块
 
@@ -73,7 +73,7 @@ class DrawingRenderNode extends RenderNode {
   }
 }
 ```
-![zh-ch_Lattice.png](figures/zh-ch_Lattice.png)
+![Lattice.png](figures/Lattice.png)
 
 ## createImageLattice<sup>18+</sup>
 

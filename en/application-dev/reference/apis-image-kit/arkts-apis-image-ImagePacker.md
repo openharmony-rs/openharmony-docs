@@ -6,13 +6,19 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+The **ImagePacker** class provides APIs to compress and encode images.
+
+Before calling any API in ImagePacker, you must use [image.createImagePacker](arkts-apis-image-f.md#imagecreateimagepacker) to create an ImagePacker instance.
+
+During encoding, do not modify or release the ImageSource, PixelMap, or Picture object that is being used as the input. Otherwise, a crash or other undefined behavior may occur.
+
+Images occupy a large amount of memory. When you finish using an ImagePacker instance, call [release](#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
+Currently, the following formats are supported: jpeg, webp, png, heic<sup>12+</sup>, and gif<sup>18+</sup>. (The supported formats may vary depending on the hardware. You can refer to the **supportedFormats** property of ImagePacker to see which ones are supported.)
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-The **ImagePacker** class provides APIs to compress and encode images. Before calling any API in ImagePacker, you must use [createImagePacker](arkts-apis-image-f.md#imagecreateimagepacker) to create an ImagePacker instance.
-
-Currently, the following formats are supported: jpeg, webp, png, heic<sup>12+</sup>, and gif<sup>18+</sup>. (The supported formats may vary depending on the hardware. You can refer to the **supportedFormats** property of ImagePacker to see which ones are supported.)
 
 ## Modules to Import
 
@@ -26,7 +32,7 @@ import { image } from '@kit.ImageKit';
 
 | Name            | Type          | Read Only| Optional| Description                      |
 | ---------------- | -------------- | ---- | ---- | -------------------------- |
-| supportedFormats | Array\<string> | Yes  | No  | Supported formats for image encoding.|
+| supportedFormats | Array\<string> | Yes  | No  | Supported formats for image encoding, including jpeg, webp, png, heic<sup>12+</sup>, and gif<sup>18+</sup>. (The supported formats may vary depending on the hardware.)|
 
 ## packToData<sup>13+</sup>
 
@@ -45,9 +51,15 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 | source | [ImageSource](arkts-apis-image-ImageSource.md)     | Yes  | Image source to compress or re-encode.|
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | Yes  | Encoding parameters.|
 
+**Return value**
+
+| Type                        | Description                                         |
+| ---------------------------- | --------------------------------------------- |
+| Promise\<ArrayBuffer>        | Promise used to return the compressed or encoded image data.|
+
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -60,12 +72,6 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 | 62980120 | Add pixelmap out of range. |
 | 62980172 | Failed to encode icc. |
 | 62980252 | Failed to create surface. |
-
-**Return value**
-
-| Type                        | Description                                         |
-| ---------------------------- | --------------------------------------------- |
-| Promise\<ArrayBuffer>        | Promise used to return the compressed or encoded image data.|
 
 **Example**
 
@@ -94,7 +100,6 @@ packToData(source: PixelMap, options: PackingOption): Promise\<ArrayBuffer>
 Compresses or re-encodes an image. This API uses a promise to return the result.
 
 > **NOTE**
->
 > If error code 401 is returned, the parameters are abnormal. The possible cause is that the PixelMap object is released in advance. You need to check the code and ensure that the PixelMap object is released after this API is called.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
@@ -116,7 +121,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -176,7 +181,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -203,7 +208,6 @@ async function Packing(context: Context) {
     let opts: image.PackingOption = {
       format: "image/jpeg",
       quality: 98,
-      bufferSize: 10,
       desiredDynamicRange: image.PackingDynamicRange.AUTO,
       needsPackProperties: true};
     await imagePackerObj.packing(pictureObj, opts).then((data: ArrayBuffer) => {
@@ -279,7 +283,9 @@ release(callback: AsyncCallback\<void>): void
 
 Releases this ImagePacker instance. This API uses an asynchronous callback to return the result.
 
-ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the ImagePacker object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+Images occupy a large amount of memory. When you finish using an ImagePacker instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
@@ -312,7 +318,9 @@ release(): Promise\<void>
 
 Releases this ImagePacker instance. This API uses a promise to return the result.
 
-ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the ImagePacker object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+Images occupy a large amount of memory. When you finish using an ImagePacker instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
@@ -374,7 +382,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   // 'test.png' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
@@ -382,7 +390,7 @@ async function PackToFile(context : Context) {
   const imageSourceObj: image.ImageSource = image.createImageSource(path);
   let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
   const filePath: string = context.filesDir + "/image_source.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   imagePackerObj.packToFile(imageSourceObj, file.fd, packOpts, (err: BusinessError) => {
     if (err) {
@@ -436,7 +444,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   // 'test.png' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
@@ -444,7 +452,7 @@ async function PackToFile(context : Context) {
   const imageSourceObj: image.ImageSource = image.createImageSource(path);
   let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
   const filePath: string = context.filesDir + "/image_source.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   imagePackerObj.packToFile(imageSourceObj, file.fd, packOpts).then(() => {
     console.info('Succeeded in packing the image to file.');
@@ -494,7 +502,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
@@ -502,7 +510,7 @@ async function PackToFile(context : Context) {
   const path: string = context.filesDir + "/pixel_map.jpg";
   image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
-    let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     const imagePackerObj: image.ImagePacker = image.createImagePacker();
     imagePackerObj.packToFile(pixelmap, file.fd, packOpts, (err: BusinessError) => {
       if (err) {
@@ -560,7 +568,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to create. The value is calculated as follows: height * width *4.
@@ -568,7 +576,7 @@ async function PackToFile(context : Context) {
   const path: string = context.filesDir + "/pixel_map.jpg";
   image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
-    let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     const imagePackerObj: image.ImagePacker = image.createImagePacker();
     imagePackerObj.packToFile(pixelmap, file.fd, packOpts)
       .then(() => {
@@ -604,7 +612,7 @@ Encodes the Picture into a file based on the specified encoding parameters. This
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -615,7 +623,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context: Context) {
   const resourceMgr = context.resourceManager;
@@ -631,11 +639,10 @@ async function PackToFile(context: Context) {
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   if (imagePackerObj != null) {
     const filePath: string = context.filesDir + "/test.jpg";
-    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     let packOpts: image.PackingOption = {
       format: "image/jpeg",
       quality: 98,
-      bufferSize: 10,
       desiredDynamicRange: image.PackingDynamicRange.AUTO,
       needsPackProperties: true};
     await imagePackerObj.packToFile(pictureObj, file.fd, packOpts).then(() => {
@@ -682,7 +689,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const resourceMgr = context.resourceManager;
@@ -692,7 +699,7 @@ async function PackToFile(context : Context) {
   let imageSource = image.createImageSource(color);
   let pixelMapList = await imageSource.createPixelMapList();
   let path: string = context.cacheDir + '/result.gif';
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   let ops: image.PackingOptionsForSequence = {
     frameCount: 3, // Set the number of frames in GIF encoding to 3.
     delayTimeList: [10, 10, 10], // Set the delay time of three frames in GIF encoding to 100 ms, 100 ms, and 100 ms, respectively.
@@ -857,7 +864,8 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 13. Use [packToData](#packtodata13) instead.
->
+
+> **NOTE**
 > If the message "PixelMap mismatch" is returned, the parameters are abnormal. The possible cause is that the PixelMap object is released in advance. You need to check the code and ensure that the PixelMap object is released after this API is called.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.

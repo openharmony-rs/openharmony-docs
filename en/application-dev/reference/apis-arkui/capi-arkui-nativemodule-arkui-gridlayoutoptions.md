@@ -2,10 +2,14 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs-->
+<!--Owner: @guozejun-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_GridLayoutOptions ArkUI_GridLayoutOptions
+```
 
 ## Overview
 

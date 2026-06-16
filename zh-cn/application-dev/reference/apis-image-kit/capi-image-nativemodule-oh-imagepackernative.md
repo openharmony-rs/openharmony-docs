@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -20,7 +20,7 @@ ImagePacker结构体类型，用于执行ImagePacker相关操作。
 | -------- | -------- | -------- | -------- | -------- |
 | OH_ImageSourceNative | imageSource | 图片源 | [OH_ImagePackerNative_PackToDataFromImageSource](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafromimagesource) | 将ImageSource编码为指定格式的数据。 |
 |OH_PixelmapNative | pixelmap | native层的pixelmap | [OH_ImagePackerNative_PackToDataFromPixelmap](capi-image-packer-native-h.md#oh_imagepackernative_packtodatafrompixelmap) | 将Pixelmap编码为指定格式的数据。|
-|int32_t | imagesourceFd | imagesource关联的文件描述符 | [OH_ImagePackerNative_PackToFileFromImageSource](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefromimagesource) | 将一个ImageSource编码到文件中。|
+|int32_t | imagesourceFd | ImageSource关联的文件描述符 | [OH_ImagePackerNative_PackToFileFromImageSource](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefromimagesource) | 将一个ImageSource编码到文件中。|
 |int32_t | pixelmapFd | pixelmap关联的文件描述符| [OH_ImagePackerNative_PackToFileFromPixelmap](capi-image-packer-native-h.md#oh_imagepackernative_packtofilefrompixelmap) | 将一个Pixelmap编码到文件中。|
 
 创建OH_ImagePackerNative对象使用[OH_ImagePackerNative_Create](capi-image-packer-native-h.md#oh_imagepackernative_create)函数。

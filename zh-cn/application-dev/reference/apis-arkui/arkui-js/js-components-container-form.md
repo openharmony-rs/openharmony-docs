@@ -77,13 +77,13 @@
 // xxx.js
 export default{
   onSubmit(result) {
-    console.log(result.value.radioGroup) // radio1 or radio2
-    console.log(result.value.user) // text input value
+    console.info(result.value.radioGroup) // radio1 or radio2
+    console.info(result.value.user) // text input value
   },
   onReset() {
-    console.log('reset all value')
+    console.info('reset all value')
   }
 }
 ```
 
-![zh-cn_image_0000001180658376](figures/zh-cn_image_0000001180658376.gif)
+![form](figures/form.gif)

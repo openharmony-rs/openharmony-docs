@@ -1,9 +1,9 @@
-# Introduction to IME Kit
+# About This Kit
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 IME Kit is responsible for establishing a communication channel between the application in which the text input box is located and the input method application, to ensure that the two work together to provide text input, and also enables system applications to manage the input method application.
@@ -47,6 +47,7 @@ ArkUI: With respect to soft keyboards and custom text input boxes, IME Kit can u
 
 For the system API for switching between input method applications, the system permission is required. Some APIs can be called only by the current input method application.
 
+<!--RP1--><!--RP1End-->
 
 ## API Reference
 

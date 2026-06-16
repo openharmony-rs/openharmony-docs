@@ -2,20 +2,20 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
 ## Available APIs
 
-You can use [remove(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremove), an asynchronous API, or [removeSync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremovesync12), a synchronous API, to remove assets. If the asset alias is specified, the specified asset will be removed. If no asset alias is specified, all assets will be removed.
+You can use [remove(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremove) (asynchronous API) or [removeSync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremovesync12) (synchronous API) to remove an asset.
 
 The following table describes the attributes of **AssetMap** for removing an asset.
 
->**NOTE**
+> **NOTE**
 >
->In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
+> In the following table, the attributes **ALIAS** and those containing **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 | Attribute Name (Tag)       | Value                                            | Mandatory | Description                                            |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------ |
@@ -44,41 +44,45 @@ The following table describes the attributes of **AssetMap** for removing an ass
 
 > **NOTE**
 >
-> The **asset** module provides an asynchronous API and a synchronous API for removing an asset. The following uses the asynchronous API as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
+> This module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [@ohos.security.asset (Asset Store Service)](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
 > For details about how to remove an asset from a group, see [Removing an Asset from a Group](asset-js-group-access-control.md#removing-an-asset-from-a-group).
+>
+> Before removing an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
 
 Remove asset **demo_alias**.
 
-<!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
+1. Include the header file and define the tool function.
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
+   
+   ``` TypeScript
+   import { asset } from '@kit.AssetStoreKit';
+   import { util } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   function stringToArray(str: string): Uint8Array {
+     let textEncoder = new util.TextEncoder();
+     return textEncoder.encodeInto(str);
+   }
+   ```
 
-``` TypeScript
-import { asset } from '@kit.AssetStoreKit';
-import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
-
-export async function removeAsset(): Promise<string> {
-  let result: string = '';
-  let query: asset.AssetMap = new Map();
-  query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the asset alias to remove a single asset. To remove all assets, leave the alias unspecified.
-  try {
-    await asset.remove(query).then(() => {
-      console.info(`Succeeded in removing Asset.`);
-      result = 'Succeeded in removing Asset';
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-      result = 'Failed to remove Asset';
-    });
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-    result = 'Failed to remove Asset';
-  }
-  return result;
-}
-```
+2. Develop the desired feature.
+   <!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
+   
+   ``` TypeScript
+   let query: asset.AssetMap = new Map();
+   query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the asset alias to remove a single asset. To remove all assets, leave the alias unspecified.
+   try {
+     asset.remove(query).then(() => {
+       console.info(`Succeeded in removing Asset.`);
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
+       // ...
+     });
+   } catch (error) {
+     let err = error as BusinessError;
+     console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
+     // ...
+   }
+   ```

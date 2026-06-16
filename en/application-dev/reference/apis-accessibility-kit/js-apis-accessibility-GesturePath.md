@@ -36,11 +36,11 @@ Defines a gesture path.
 
 constructor(durationTime: number);
 
-A constructor used to create a **GesturePath** instance.
+Defines a constructor used to create a **GesturePath** instance.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 

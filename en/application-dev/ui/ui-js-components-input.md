@@ -34,7 +34,7 @@ Create an **&lt;input&gt;** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001222807768](figures/en-us_image_0000001222807768.png)
+![input-Component](figures/input-Component.png)
 
 
 ## Setting the Input Type
@@ -56,7 +56,7 @@ Set the **type** attribute of the **&lt;input&gt;** component to **button**, **d
     <input onchange="checkboxOnChange" checked="true" type="checkbox"></input>
   </div>
   <div class="content">
-    <input type="date" class="flex" placeholder="Enter data"></input>
+    <input type="date" class="flex" placeholder="Enter date"></input>
   </div>
 </div>
 ```
@@ -105,17 +105,17 @@ export default {
 ```
 
 
-![en-us_image_0000001223287672](figures/en-us_image_0000001223287672.gif)
+![Input-Type](figures/Input-Type.gif)
 
 
 > **NOTE**
 >
-> - The settings of **checked** take effect only when the input type is set to **checkbox** or **radio**. The default value of **checked** is **false**.
+> The settings take effect only when the input type is set to **checkbox** or **radio**. The default value is **false**.
 
 
 ## Binding Events
 
-  Add the **search** and **translate** events to the **&lt;input&gt;** component.
+Add the translate event to the **&lt;input&gt;** component.
 ```html
 <!-- xxx.hml -->
 <div class="content">
@@ -230,7 +230,7 @@ import promptAction from '@ohos.promptAction'
  }
 ```
 
-![en-us_image_0000001223127708](figures/en-us_image_0000001223127708.gif)
+![Input-Error-Message](figures/Input-Error-Message.gif)
 
 > **NOTE**
 >
@@ -318,4 +318,4 @@ export default {
 ```
 
 
-![en-us_image_0000001222807760](figures/en-us_image_0000001222807760.gif)
+![Example-Scenario](figures/Example-Scenario.gif)

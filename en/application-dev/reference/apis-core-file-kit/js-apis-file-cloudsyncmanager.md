@@ -1,12 +1,12 @@
 # @ohos.file.cloudSyncManager (Device-Cloud Sync Management)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @zsyztt; @Hermits; @reminder2352-->
-<!--Designer: @yunlanying-->
-<!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Owner: @Hermits; @reminder2352-->
+<!--Designer: @oh_create_jiawei-->
+<!--Tester: @zsyztt-->
+<!--Adviser: @jinqiuheng-->
 
-The **cloudSyncManager** module provides APIs for managing device-cloud synergy for applications. You can use the APIs to enable or disable device-cloud synergy, change the device-cloud sync switch for an application, notify cloud data changes, and clear or retain cloud files when a cloud account exits.
+The **cloudSyncManager** module provides APIs for managing device-cloud sync for applications. You can use the APIs to manage the full download state, the reason why the full download stops, and number of local and cloud files.
 
 > **NOTE**
 >
@@ -19,7 +19,7 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 ## DownloadStopReason<sup>20+</sup>
 
-Enumerates the reasons why the download stops. The default value is **NO_STOP**.
+Enumerates the reasons why the full download stops. The default value is **NO_STOP**.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -35,7 +35,7 @@ Enumerates the reasons why the download stops. The default value is **NO_STOP**.
 
 ## DownloadState<sup>20+</sup>
 
-Enumerates the download states.
+Enumerates the full download states.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -47,7 +47,7 @@ Enumerates the download states.
 
 ## DownloadProgress<sup>20+</sup>
 
-Represents the downgrade download progress.
+Describes the full download progress.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

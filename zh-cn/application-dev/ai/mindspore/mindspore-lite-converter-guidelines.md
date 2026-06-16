@@ -21,7 +21,7 @@ MindSpore Lite AI模型部署流程是：
 
 | 组件                                                    | 硬件平台 | 操作系统     | 链接                                                         | SHA-256                                                      |
 | ------------------------------------------------------- | -------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 端侧推理和训练benchmark工具、converter工具、cropper工具 | CPU      | Linux-x86_64 | [mindspore-lite-2.3.0-linux-x64.tar.gz](https://ms-release.obs.cn-north-4.myhuaweicloud.com/2.3.0/MindSpore/lite/release/linux/x86_64/mindspore-lite-2.3.0-linux-x64.tar.gz) | 060d698a171b52c38b64c8d65927816daf4b81d8e2b5069718aeb91a9f8a154c |
+| 端侧推理和训练benchmark工具、converter工具、cropper工具 | CPU      | Linux-x86_64 | [mindspore-lite-2.7.0-linux-x64.tar.gz](https://ms-release.obs.cn-north-4.myhuaweicloud.com/2.7.0/MindSporeLite/lite/release/linux/x86_64/mindspore-lite-2.7.0-linux-x64.tar.gz) | 8bb1097100c9fec12675670ba2d4264a2cd6da3a9be093eb56631d00fc0c455b |
 
 ### 通过源码编译
 
@@ -41,8 +41,7 @@ MindSpore Lite AI模型部署流程是：
      -  CMake >= 3.18.3
      -  Git >= 2.28.0
 
-2. 取[MindSpore Lite源码](https://gitcode.com/openharmony/third_party_mindspore)。
-   MindSpore Lite完整源码位于：`mindspore-src/source/`。
+2. 取[MindSpore Lite源码](https://gitcode.com/openharmony/third_party_mindspore)。MindSpore Lite完整源码位于：`mindspore-src/source/`。
 
 3. 执行编译。
 
@@ -69,8 +68,8 @@ export LD_LIBRARY_PATH=${PACKAGE_PATH}/tools/converter/lib:${LD_LIBRARY_PATH}
 ## 参数说明
 
 MindSpore Lite模型转换工具提供了多种参数设置，用户可根据需要来选择使用。此外，用户可输入`./converter_lite --help`获取实时帮助。
-下面提供详细的参数说明。
 
+下面提供详细的参数说明。
 
 |        参数        | 是否必选            | 参数说明                                                     | 取值范围                                         |
 | :----------------: | ------------------- | ------------------------------------------------------------ | ------------------------------------------------ |
@@ -99,6 +98,7 @@ MindSpore Lite模型转换工具提供了多种参数设置，用户可根据需
 ./converter_lite --fmk=CAFFE --modelFile=lenet.prototxt --weightFile=lenet.caffemodel --outputFile=lenet
 ```
 本例中，因为采用了CAFFE模型，所以需要模型结构、模型权值两个输入文件。再加上其他必需的fmk类型和输出路径两个参数，即可成功执行。
+
 结果显示为：
 
 ```bash
@@ -146,10 +146,10 @@ extended_parameters=key_foo:value_foo;key_bar:value_bar
 - `input_dtypes`：[必选]模型输入数据类型，格式：类型，多个输入用`;`间隔。
 - `input_shapes`：[必选]模型输入形状，格式：整数数组，多个输入用`;`间隔。
 - `input_formats`：[可选]模型输入内存布局，格式：字符串，多个输入用`;`间隔，默认值NHWC。
-- `output_names`：[可选]模型输入名称，格式：字符串，多个输入用`;`间隔。
+- `output_names`：[可选]模型输出名称，格式：字符串，多个输出用`;`间隔。
 - `output_dtypes`：[必选]模型输出数据类型，格式：类型，多个输出用`;`间隔。
 - `output_shapes`：[必选]模型输出形状，格式：整数数组，多个输出用`;`间隔。
-- `output_formats`：[可选]模型输出内存布局，格式：字符串，多个输入用`;`间隔，默认值NHWC。
+- `output_formats`：[可选]模型输出内存布局，格式：字符串，多个输出用`;`间隔，默认值NHWC。
 - `extended_parameters`：[可选]推理硬件自定义配置，字符串键值对格式，会通过NNRt后端传给硬件。
 
 ## 附录

@@ -1,9 +1,9 @@
 # qrcode开发指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 生成并显示二维码，具体用法请参考[qrcode](../reference/apis-arkui/arkui-js/js-components-basic-qrcode.md)。
@@ -34,7 +34,7 @@
 }
 ```
 
-![zh-cn_image_0000001229155403](figures/zh-cn_image_0000001229155403.png)
+![qrcode-Component](figures/qrcode-Component.png)
 
 > **说明：** 
 >
@@ -43,7 +43,7 @@
 
 ## 设置组件类型
 
-通过设置qrcode的type属性来选择按钮类型，如定义qrcode为矩形二维码、圆形二维码。
+通过设置qrcode的type属性来选择二维码类型，如定义qrcode为矩形二维码、圆形二维码。
 
 
 ```html
@@ -87,7 +87,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001218439850](figures/zh-cn_image_0000001218439850.gif)
+![Component-Type](figures/Component-Type.gif)
 
 
 ## 设置样式
@@ -120,7 +120,7 @@ qrcode{
 }
 ```
 
-![zh-cn_image_0000001183595750](figures/zh-cn_image_0000001183595750.png)
+![Setting-Styles](figures/Setting-Styles.png)
 
 > **说明：**
 > - width和height不一致时，取二者较小值作为二维码的边长，且最终生成的二维码居中显示。
@@ -172,4 +172,4 @@ export default{
 }
 ```
 
-![zh-cn_image_0000001183431656](figures/zh-cn_image_0000001183431656.gif)
+![Example-Scenarios](figures/Example-Scenarios.gif)

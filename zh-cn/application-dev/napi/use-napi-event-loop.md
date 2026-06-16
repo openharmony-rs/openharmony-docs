@@ -11,7 +11,9 @@
 
 ## 调用异步的ArkTS接口示例
 调用的ArkTS接口为异步接口时，需要通过扩展接口napi_run_event_loop将异步线程中的事件循环运行起来，底层事件队列中的异步任务将被处理执行。当前Node-API扩展了两种事件循环模式来运行异步线程的事件循环，分别为napi_event_mode_nowait模式和napi_event_mode_default模式。
+
 如果使用napi_event_mode_nowait模式运行底层事件循环，系统会尝试从底层的事件队列中取出一个任务并处理，完成之后事件循环停止，如果底层的事件队列中没有任务，事件循环会立刻停止，当前的异步线程不会被阻塞；
+
 如果使用napi_event_mode_default模式来运行底层事件循环，系统会阻塞当前的线程，同时会一直尝试从事件队列中获取任务并执行处理这些任务。如果不想当前线程继续被阻塞，可以使用扩展接口napi_stop_event_loop将正在运行的事件循环停止。
 
 ### 示例代码
@@ -37,56 +39,84 @@
       return nullptr;
   }
   
+  static bool CallSetTimeoutWithCallbacks(napi_env env, napi_value objectUtils)
+  {
+      napi_value setTimeout = nullptr;
+      napi_value promise = nullptr;
+  
+      if (napi_get_named_property(env, objectUtils, "SetTimeout", &setTimeout) != napi_ok) {
+          return false;
+      }
+      if (napi_call_function(env, objectUtils, setTimeout, 0, nullptr, &promise) != napi_ok) {
+          return false;
+      }
+  
+      napi_value theFunc = nullptr;
+      if (napi_get_named_property(env, promise, "then", &theFunc) != napi_ok) {
+          return false;
+      }
+  
+      napi_value resolvedCallback = nullptr;
+      napi_value rejectedCallback = nullptr;
+      if (napi_create_function(env, "resolvedCallback", NAPI_AUTO_LENGTH,
+                               ResolvedCallback, nullptr, &resolvedCallback) != napi_ok) {
+          return false;
+      }
+      if (napi_create_function(env, "rejectedCallback", NAPI_AUTO_LENGTH,
+                               RejectedCallback, nullptr, &rejectedCallback) != napi_ok) {
+          return false;
+      }
+      napi_value argv[2] = {resolvedCallback, rejectedCallback};
+      if (napi_call_function(env, promise, theFunc, INT_ARG_2, argv, nullptr) != napi_ok) {
+          return false;
+      }
+      return true;
+  }
+  
   static void *RunEventLoopFunc(void *arg)
   {
       // 1. 创建ArkTS实例
-      napi_env env;
+      napi_env env = nullptr;
       napi_status ret = napi_create_ark_runtime(&env);
       if (ret != napi_ok) {
           return nullptr;
       }
   
-      napi_handle_scope scope;
-      ret = napi_open_handle_scope(env, &scope);
-      if (ret != napi_ok) {
-          napi_destroy_ark_runtime(&env);
-          return nullptr;
-      }
+      napi_handle_scope scope = nullptr;
+      napi_open_handle_scope(env, &scope);
   
       // 2. 加载自定义的模块
-      napi_value objectUtils;
+      napi_value objectUtils = nullptr;
       // 'com.example.myapplication' 为当前应用的bundleName
       ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/ObjectUtils", "com.example.myapplication/entry",
                                        &objectUtils);
       if (ret != napi_ok) {
+          OH_LOG_INFO(LOG_APP, "Failed to load module");
+          napi_close_handle_scope(env, scope);
+          napi_destroy_ark_runtime(&env);
           return nullptr;
       }
   
       // 3. 调用异步SetTimeout接口
-      napi_value setTimeout = nullptr;
-      napi_value promise = nullptr;
-  
-      napi_get_named_property(env, objectUtils, "SetTimeout", &setTimeout);
-      napi_call_function(env, objectUtils, setTimeout, 0, nullptr, &promise);
-  
-      napi_value theFunc = nullptr;
-      if (napi_get_named_property(env, promise, "then", &theFunc) != napi_ok) {
+      if (!CallSetTimeoutWithCallbacks(env, objectUtils)) {
+          napi_close_handle_scope(env, scope);
+          napi_destroy_ark_runtime(&env);
           return nullptr;
       }
   
-      napi_value resolvedCallback = nullptr;
-      napi_value rejectedCallback = nullptr;
-      napi_create_function(env, "resolvedCallback", NAPI_AUTO_LENGTH, ResolvedCallback, nullptr, &resolvedCallback);
-      napi_create_function(env, "rejectedCallback", NAPI_AUTO_LENGTH, RejectedCallback, nullptr, &rejectedCallback);
-      napi_value argv[2] = {resolvedCallback, rejectedCallback};
-      napi_call_function(env, promise, theFunc, INT_ARG_2, argv, nullptr);
-  
       auto flag = reinterpret_cast<bool *>(arg);
       if (*flag == true) {
-          napi_run_event_loop(env, napi_event_mode_default);
+          if (napi_run_event_loop(env, napi_event_mode_default) != napi_ok) {
+              napi_close_handle_scope(env, scope);
+              napi_destroy_ark_runtime(&env);
+              return nullptr;
+          }
       } else {
-          // 非阻塞式的处理任务，有可能队列中还没有任务就已经返回了
-          napi_run_event_loop(env, napi_event_mode_nowait);
+          if (napi_run_event_loop(env, napi_event_mode_nowait) != napi_ok) {
+              napi_close_handle_scope(env, scope);
+              napi_destroy_ark_runtime(&env);
+              return nullptr;
+          }
       }
   
       if (scope != nullptr) {

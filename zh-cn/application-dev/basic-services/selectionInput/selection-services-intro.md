@@ -1,4 +1,4 @@
-# 划词服务子系统概述
+# 划词服务概述
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
@@ -7,19 +7,17 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-从API version 20开始，新增划词服务子系统，该子系统具有全局获取用户选中文本及管理划词应用的能力。
-
-开发者可通过调用该子系统提供的接口，在现有应用的基础上，轻松实现划词扩展能力。该扩展能力支持在全局范围内捕获用户选中的文本内容。开发者可基于捕获到的文本内容实现自己的业务逻辑，如文本翻译、内容摘要、智能扩写等。同时，划词服务提供了完善的面板管理能力，支持开发者创建、显示、移动、隐藏、销毁面板。开发者可自定义面板的UI样式与交互逻辑，灵活呈现翻译结果、摘要信息等内容，最终实现“选中文本—>弹出智能面板”的流畅体验。具体的接口描述和使用方法可参见[实现一个划词扩展能力](./selection-services-application-guide.md)。
+从API version 24开始，新增划词服务，该服务具有全局获取用户选中文本的能力。开发者可调用该服务提供的接口，实现划词弹窗功能。
 
 ## 框架原理
 
 划词服务的业务流程依赖于划词应用、被划词应用、系统设置应用、系统服务管理、多模输入以及剪贴板服务等模块的协同工作，这些模块的介绍及相关业务内容如下所述：
 
-**划词应用**：本文档将实现了划词扩展能力的应用统称为划词应用。当划词应用被划词服务成功拉起后，可通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#onselectioncompleted)事件以识别用户选词操作,可调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent22)获取选中的文本内容，可调用[createPanel](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#createpanel)和[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)创建和显示面板。对应下图序号6。具体的接口描述和使用方法可参见[实现一个划词扩展能力](./selection-services-application-guide.md)。
+**划词应用**：本文档将实现了划词扩展能力的应用统称为划词应用。当划词应用被划词服务成功拉起后，可通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)事件以识别用户选词操作,可调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent)获取选中的文本内容，同时也可调用[createPanel](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#createpanel)和[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)创建和显示面板。对应下图序号6。具体的接口描述和使用方法可参见[实现一个划词扩展能力](./selection-services-application-guide.md)。
 
 **被划词应用**：本文档将用户选中文本内容所在的应用统称为被划词应用。当前划词服务的方案采用标准的系统复制机制，因此无需被划词应用进行任何适配和修改，划词服务即可实现跨应用的划词功能。对应下图序号11。然而，对于部分不支持系统级复制操作的应用（如某些受控的WebView、沙箱环境应用，或仅限于内部粘贴的应用），划词服务将无法通过标准的系统复制机制获取到用户选中的文本内容。在此类场景下，划词功能会失效。因此，建议开发者在开发划词应用时，配套使用白名单或黑名单机制，将希望支持划词功能的被划词应用放入白名单内。
 
-**系统设置应用**：系统设置应用即系统中内置的设置应用。针对划词功能，系统设置应用会主动扫描并识别系统中所有实现了划词扩展能力的应用，将其统一列于“设置—>系统—>智慧划词”界面，供用户选择划词应用（未选择时会默认选择列表中第一个划词应用）。同时，用户可在智慧划词界面选择开启或关闭全局划词功能，以及选择划词面板的触发方式（选中文本后直接触发划词面板、选中文本后按下ctrl触发划词面板）。所有配置项都会由系统设置应用同步设置到系统参数中供其他模块访问。对应下图序号2。
+**系统设置应用**：系统设置应用即系统中内置的设置应用。针对划词功能，系统设置应用会主动扫描并识别系统中所有实现了划词扩展能力的应用，将其统一列于“设置—>系统—>智慧划词”界面，供用户选择划词应用（未选择时会默认选择列表中第一个划词应用）。同时，用户可在智慧划词界面选择开启或关闭全局划词功能，以及选择划词面板的触发方式（当前仅支持用户通过鼠标或触控板选中文本后按下CTRL键触发）。所有配置项都会由系统设置应用同步设置到系统参数中供其他模块访问。对应下图序号2。
 
 **系统服务管理**：系统服务管理是统一管理系统服务的模块。针对划词服务，系统服务管理模块会监听系统参数中划词开关参数（sys.selection.switch）的变化。当监听到划词开关参数的值为on时，会拉起划词服务；当监听到划词开关参数的值为off时，会终止划词服务。对应下图序号1、3。有关系统服务管理的详细介绍可参见[系统服务管理](https://gitcode.com/openharmony/systemabilitymgr_samgr)。
 
@@ -39,7 +37,7 @@
 
 - 触发方式：
 
-  支持选中文本后直接触发划词面板、选中文本后按下ctrl触发划词面板两种方式，可在设置—>系统—>智慧划词界面切换。
+  当前仅支持用户通过鼠标或触控板选中文本（鼠标左键双击/三击/按下滑动）后按下CTRL键触发。
 
 - 面板管理：
 

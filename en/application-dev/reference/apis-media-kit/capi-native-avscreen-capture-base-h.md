@@ -34,10 +34,12 @@ The file declares the common structs, character constants, and enums used for ru
 | [OH_VideoInfo](capi-avscreencapture-oh-videoinfo.md) | OH_VideoInfo | Describes the video information.|
 | [OH_RecorderInfo](capi-avscreencapture-oh-recorderinfo.md) | OH_RecorderInfo | Describes the recording file information.|
 | [OH_AVScreenCaptureConfig](capi-avscreencapture-oh-avscreencaptureconfig.md) | OH_AVScreenCaptureConfig | Describes the screen capture configuration.|
+| [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md) | OH_PrivacyProtectInfo | Defines the privacy protection information.|
 | [OH_AVScreenCaptureCallback](capi-avscreencapture-oh-avscreencapturecallback.md) | OH_AVScreenCaptureCallback | Defines all the asynchronous callback function pointers of an OH_AVScreenCapture instance. To ensure the normal running of OH_AVScreenCapture, you must register the instance of this struct with the OH_AVScreenCapture instance and process the information reported by the callback functions.<br> Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnError](#oh_avscreencapture_onerror) and [OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable) instead.|
 | [OH_Rect](capi-avscreencapture-oh-rect.md) | OH_Rect | Describes the width, height, and image information of the rectangle used for screen capture.|
 | [OH_AudioBuffer](capi-avscreencapture-oh-audiobuffer.md) | OH_AudioBuffer | Describes the configuration such as the size, type, and timestamp of audio data.|
 | [OH_AVScreenCaptureHighlightConfig](capi-avscreencapture-oh-avscreencapturehighlightconfig.md) | OH_AVScreenCaptureHighlightConfig | Describes the style of the highlight border shown during screen capture, including its shape, thickness, and color.|
+| [OH_MultiDisplayCapability](capi-avscreencapture-oh-multidisplaycapability.md) | OH_MultiDisplayCapability | Describes the multi-screen recording capability. It includes whether the multi-screen supports joint recording and the width and height of the screen for joint recording.|
 | [OH_NativeBuffer](capi-avscreencapture-avscreencapture-oh-nativebuffer.md) | OH_NativeBuffer | Describes the native video stream class for screen capture.|
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) | OH_AVScreenCapture | Describes a screen capture instance used to obtain original video and audio streams.|
 | [OH_AVScreenCapture_ContentFilter](capi-avscreencapture-oh-avscreencapture-contentfilter.md) | OH_AVScreenCapture_ContentFilter | Describes the filter used to filter audio and video content.|
@@ -76,6 +78,7 @@ The file declares the common structs, character constants, and enums used for ru
 | [typedef void (\*OH_AVScreenCapture_OnDisplaySelected)(OH_AVScreenCapture *capture, uint64_t displayId, void *userData)](#oh_avscreencapture_ondisplayselected) | OH_AVScreenCapture_OnDisplaySelected | Called when screen capture starts.|
 | [typedef void (\*OH_AVScreenCapture_OnCaptureContentChanged)(OH_AVScreenCapture* capture, OH_AVScreenCaptureContentChangedEvent event, OH_Rect* area, void *userData)](#oh_avscreencapture_oncapturecontentchanged) | OH_AVScreenCapture_OnCaptureContentChanged | Called when the screen capture content changes during the running of an OH_AVScreenCapture instance.|
 | [typedef void (\*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData)](#oh_avscreencapture_onuserselected) | OH_AVScreenCapture_OnUserSelected | Called to return the parameters selected by the user on the authorization UI to the application.|
+| [typedef void (\*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture, OH_PrivacyProtectInfo* privacyProtect, void *userData)](#oh_avscreencapture_onprivacyprotect) | OH_AVScreenCapture_OnPrivacyProtect | Called when a privacy protection event occurs during the running of the **OH_AVScreenCapture** instance.|
 
 ## Enum Description
 
@@ -254,6 +257,10 @@ Enumerates the screen capture states.
 | OH_SCREEN_CAPTURE_STATE_ENTER_PRIVATE_SCENE = 8 | The system enters a privacy screen.|
 | OH_SCREEN_CAPTURE_STATE_EXIT_PRIVATE_SCENE = 9 | The system exits a privacy screen.|
 | OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER_SWITCHES = 10 | Screen capture is interrupted by system user switching.|
+| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_USER = 11 | Screen capture is paused by the user.<br>**Since**: 26.0.0|
+| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_USER = 12 | Screen capture is resumed by the user.<br>**Since**: 26.0.0|
+| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_APP = 13 | Screen capture is paused by the application.<br>**Since**: 26.0.0|
+| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_APP = 14 | Screen capture is resumed by the application.<br>**Since**: 26.0.0|
 
 ### OH_AVScreenCaptureBufferType
 
@@ -329,7 +336,7 @@ Enumerates the image fill modes.
 | Enum Item| Description|
 | -- | -- |
 | OH_SCREENCAPTURE_FILLMODE_ASPECT_SCALE_FIT = 0 | Keeps the original aspect ratio of the image to fit the target size. Black bars may appear if the aspect ratios differ.|
-| OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL = 1 | Stretches the image to fill the target size. The image may stretch and distort if the aspect ratios differ.|
+| OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL = 1 | Stretches the image to fit the target size. The image may be distorted if the aspect ratios differ.|
 
 ### OH_ScreenCaptureHighlightMode
 
@@ -377,9 +384,7 @@ typedef void (*OH_AVScreenCaptureOnError)(OH_AVScreenCapture *capture, int32_t e
 
 **Description**
 
-Called when an error occurs during the running of an OH_AVScreenCapture instance.
-
-Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnError](#oh_avscreencapture_onerror) instead.
+Called when an error occurs during the running of an OH_AVScreenCapture instance.<br> Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnError](#oh_avscreencapture_onerror) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -400,9 +405,7 @@ typedef void (*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *cap
 
 **Description**
 
-Called when an audio buffer is available during the running of an OH_AVScreenCapture instance.
-
-Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable) instead.
+Called when an audio buffer is available during the running of an OH_AVScreenCapture instance.<br> Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -413,7 +416,7 @@ Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBuffe
 | Parameter| Description|
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | Pointer to the OH_AVScreenCapture instance.|
-|  bool isReady | Whether the audio buffer is available.|
+|  bool isReady | Whether the audio buffer is available. The values include **true** (yes) and **false** (no).|
 | [OH_AudioCaptureSourceType](#oh_audiocapturesourcetype) type | Audio source type.|
 
 ### OH_AVScreenCaptureOnVideoBufferAvailable()
@@ -424,9 +427,7 @@ typedef void (*OH_AVScreenCaptureOnVideoBufferAvailable)(OH_AVScreenCapture *cap
 
 **Description**
 
-Called when a video buffer is available during the running of an OH_AVScreenCapture instance.
-
-Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable) instead.
+Called when a video buffer is available during the running of an OH_AVScreenCapture instance.<br> Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -437,7 +438,7 @@ Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBuffe
 | Parameter| Description|
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | Pointer to the OH_AVScreenCapture instance.|
-|  bool isReady | Whether the video buffer is available.|
+|  bool isReady | Whether the video buffer is available. The values include **true** (yes) and **false** (no).|
 
 ### OH_AVScreenCapture_OnStateChange()
 
@@ -571,3 +572,23 @@ Called to return the parameters selected by the user on the authorization UI to 
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)* capture | Pointer to the OH_AVScreenCapture instance.|
 | [OH_AVScreenCapture_UserSelectionInfo](capi-avscreencapture-oh-avscreencapture-userselectioninfo.md)* selections | Pointer to capture parameters selected by the user on the authorization UI.|
 |  void *userData | Pointer to user-defined data.|
+
+### OH_AVScreenCapture_OnPrivacyProtect()
+
+```c
+typedef void (*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture, OH_PrivacyProtectInfo* privacyProtect, void *userData)
+```
+ 
+**Description**
+
+Called when a privacy protection event occurs during the running of the [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) instance.
+  
+**Since**: 24
+
+**Parameters**
+  
+| Parameter| Description|
+| -- | -- |
+| [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)* capture | Pointer to the OH_AVScreenCapture instance.|
+| [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)* privacyProtect | Pointer to the privacy protection information.|
+| void *userData | Pointer to user-defined data.|

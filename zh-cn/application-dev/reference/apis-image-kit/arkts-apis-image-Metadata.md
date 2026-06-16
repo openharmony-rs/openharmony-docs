@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -21,11 +21,11 @@ import { image } from '@kit.ImageKit';
 
 ## getProperties<sup>13+</sup>
 
-getProperties(key: Array\<string>): Promise\<Record\<string, string | null>>
+getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 获取图像中属性的值。使用Promise异步回调。
 
-如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)和[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -39,11 +39,11 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string | null>>
 
 | 类型                                     | 说明                                                         |
 | ---------------------------------------- | ------------------------------------------------------------ |
-| Promise\<Record<string, string \| null>> | Promise对象，返回元数据要获取的属性的值，如获取失败则返回错误码。 |
+| Promise\<Record\<string, string \| null>> | Promise对象，返回元数据要获取的属性的值，如获取失败则返回错误码。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -70,7 +70,7 @@ async function GetProperties(context: Context) {
     await metaData.getProperties(["ImageWidth", "ImageLength"]).then((data2) => {
       console.info('Get properties ',JSON.stringify(data2));
     }).catch((error: BusinessError) => {
-      console.error(`Get properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -80,11 +80,11 @@ async function GetProperties(context: Context) {
 
 ## setProperties<sup>13+</sup>
 
-setProperties(records: Record\<string, string | null>): Promise\<void>
+setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 批量设置图片元数据中的指定属性的值。使用Promise异步回调。
 
-如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)和[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -92,7 +92,7 @@ setProperties(records: Record\<string, string | null>): Promise\<void>
 
 | 参数名  | 类型                           | 必填 | 说明                     |
 | ------- | ------------------------------ | ---- | ------------------------ |
-| records | Record<string, string \| null> | 是   | 要修改的属性和值的数组。 |
+| records | Record\<string, string \| null> | 是   | 要修改的属性和值的数组。 |
 
 **返回值：**
 
@@ -102,7 +102,7 @@ setProperties(records: Record\<string, string | null>): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -131,7 +131,7 @@ async function SetProperties(context: Context) {
       "ImageLength": "300"
     };
     await metaData.setProperties(setkey).then(async () => {
-      console.info('Set AuxPictureObj properties success.');
+      console.info('Succeeded in setting AuxPictureObj properties.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
     })
@@ -143,11 +143,11 @@ async function SetProperties(context: Context) {
 
 ## getAllProperties<sup>13+</sup>
 
-getAllProperties(): Promise\<Record<string, string | null>>
+getAllProperties(): Promise\<Record\<string, string \| null>>
 
 获取图片中所有元数据的属性和值。使用Promise异步回调。
 
-如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)和[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -155,7 +155,7 @@ getAllProperties(): Promise\<Record<string, string | null>>
 
 | 类型                                     | 说明                                        |
 | ---------------------------------------- | ------------------------------------------- |
-| Promise\<Record<string, string \| null>> | Promise对象，返回元数据拥有的所有属性的值。 |
+| Promise\<Record\<string, string \| null>> | Promise对象，返回元数据拥有的所有属性的值。 |
 
 **示例：**
 
@@ -179,7 +179,7 @@ async function GetAllProperties(context: Context) {
       console.info('Metadata have ', count, ' properties');
       console.info(`Get metadata all properties: ${data2}`);
     }).catch((error: BusinessError) => {
-      console.error(`Get metadata all properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get metadata all properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -222,10 +222,115 @@ async function Clone(context: Context) {
     new_metadata.getProperties(["ImageWidth"]).then((data1) => {
       console.info(`Clone new_metadata and get Properties: ${data1}`);
     }).catch((err: BusinessError) => {
-      console.error(`Clone new_metadata failed, error : ${err}`);
+      console.error(`Failed to clone new_metadata, error : ${err}`);
     });
   } else {
     console.error('Metadata is null.');
+  }
+}
+```
+
+## getBlob<sup>23+</sup>
+
+getBlob(): Promise\<ArrayBuffer>
+
+以二进制数据的形式获取元数据。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型                  | 说明                                  |
+| --------------------- | ------------------------------------- |
+| Promise\<ArrayBuffer> | Promise对象，返回元数据的二进制数据。 |
+
+**示例：**
+
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function GetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let blob = await metaData.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
+
+## setBlob<sup>23+</sup>
+
+setBlob(blob: ArrayBuffer): Promise\<void>
+
+使用二进制数据替换当前元数据。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型        | 必填 | 说明                 |
+| ------ | ----------- | ---- | -------------------- |
+| blob   | ArrayBuffer | 是   | 要替换的二进制数据。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600206  | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
+
+**示例：**
+
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function setBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let blob = await metaData.getBlob();
+    if (blob != undefined) {
+      console.info("Succeeded in getting blob.");
+      metaData.setBlob(blob);
+    }
+    let new_blob = metaData.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
   }
 }
 ```

@@ -1,7 +1,7 @@
 # JSVM_CreateVMOptions
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -32,4 +32,4 @@ Defines options for creating a JavaScript VM.
 | size_t initialYoungGenerationSize | Initial size of the young-generation memory.|
 | const char* snapshotBlobData | Startup snapshot data.|
 | size_t snapshotBlobSize | Size of the startup snapshot data.|
-| bool isForSnapshotting | Whether the VM is used for snapshotting.|
+| bool isForSnapshotting | Whether the VM is used for snapshotting. If the value is **true**, VM is used for snapshotting. If the value is **false**, VM is not used for snapshotting.|

@@ -1,7 +1,7 @@
 # 使用TaskPool执行独立的耗时任务
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -12,8 +12,9 @@
 
 1. 实现子线程需要执行的任务。
 
-   ```ts
-   // IconItemSource.ets
+   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IconItemSource.ets) -->
+   
+   ``` TypeScript
    export class IconItemSource {
      image: string | Resource = '';
      text: string | Resource = '';
@@ -24,13 +25,13 @@
      }
    }
    ```
-   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IconItemSource.ets) -->
 
-   ```ts
-   // IndependentTask.ets
+   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IndependentTask.ets) -->
+   
+   ``` TypeScript
    import { IconItemSource } from './IconItemSource';
-    
-   // 在TaskPool线程中执行的方法，需要添加@Concurrent注解，否则无法正常调用。
+   
+   // 在Task中执行的方法，需要添加@Concurrent注解，否则无法正常调用。
    @Concurrent
    export function loadPicture(count: number): IconItemSource[] {
      let iconItemSourceList: IconItemSource[] = [];
@@ -48,12 +49,12 @@
      return iconItemSourceList;
    }
    ```
-   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IndependentTask.ets) -->
 
 2. 使用TaskPool的execute方法执行任务，加载图片。
 
-   ```ts
-   // Index.ets
+   <!-- @[execute_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IndependentTimeConsumingTask.ets) -->
+   
+   ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
    import { IconItemSource } from './IconItemSource';
    import { loadPicture } from './IndependentTask';
@@ -77,8 +78,9 @@
                taskpool.execute(loadPictureTask).then((res: object) => {
                  // loadPicture方法的执行结果
                  iconItemSourceList = res as IconItemSource[];
-                 // 输出结果是：The length of iconItemSourceList is 180
-                 console.info("The length of iconItemSourceList is " + iconItemSourceList.length);
+                 this.message = 'success';
+               }).catch(() => {
+                 console.error(`Failed to execute taskpool.`);
                })
              })
          }
@@ -88,4 +90,3 @@
      }
    }
    ```
-   <!-- @[execute_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IndependentTimeConsumingTask.ets) -->

@@ -45,15 +45,13 @@ The file declares the functions related to an audio resource manager.
 
 ### OH_AudioManager_GetAudioResourceManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceManager **resourceManager)
 ```
 
 **Description**
 
-Obtains an audio resource manager.
-
-Before using the features related to the audio resource manager, you must obtain an audio resource manager instance.
+Obtains an audio resource manager.<br> Before using the features related to the audio resource manager, you must obtain an audio resource manager instance.
 
 **Since**: 20
 
@@ -72,7 +70,7 @@ Before using the features related to the audio resource manager, you must obtain
 
 ### OH_AudioResourceManager_CreateWorkgroup()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceManager *resourceManager,const char *name, OH_AudioWorkgroup **group)
 ```
 
@@ -95,11 +93,11 @@ Creates an audio workgroup.
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **resourceManager** parameter is nullptr.<br>                                                        2. The **name** parameter is nullptr.<br>                                                        3. The **group** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: The workgroup fails to be created, and the returned workgroup is nullptr.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **resourceManager** parameter is **nullptr**.<br>                                                        2. The **name** parameter is **nullptr**.<br>                                                        3. The **group** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_NO_MEMORY**: The memory is insufficient.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system processing error occurs.|
 
 ### OH_AudioResourceManager_ReleaseWorkgroup()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceManager *resourceManager,OH_AudioWorkgroup *group)
 ```
 
@@ -121,11 +119,11 @@ Releases an audio workgroup.
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **resourceManager** parameter is nullptr.<br>                                                        2. The **group** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: The workgroup fails to be released.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **resourceManager** parameter is **nullptr**.<br>                                                        2. The **group** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system processing error occurs.|
 
 ### OH_AudioWorkgroup_AddCurrentThread()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *group, int32_t *tokenId)
 ```
 
@@ -147,11 +145,11 @@ Adds a thread to an audio workgroup.
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **group** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: The thread fails to be added to the workgroup.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **group** parameter is **nullptr**.<br>                                                        2. The **tokenId** parameter is **nullptr**.<br>         **AUDIOCOMMON_RESULT_ERROR_NO_MEMORY**: The memory is insufficient.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system processing error occurs.|
 
 ### OH_AudioWorkgroup_RemoveThread()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, int32_t tokenId)
 ```
 
@@ -173,11 +171,11 @@ Removes a thread from an audio workgroup.
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **group** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: The thread fails to be removed from the workgroup.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **group** parameter is **nullptr**.<br>                                                        2. The **tokenId** parameter is set to an invalid value.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system processing error occurs.|
 
 ### OH_AudioWorkgroup_Start()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t startTime, uint64_t deadlineTime)
 ```
 
@@ -200,11 +198,11 @@ Notifies the system that an audio workgroup starts working and provides the expe
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **group** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: The workgroup fails to notify the system of the start.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) |  **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **group** parameter is **nullptr**.<br>                                                        2. The **startTime** parameter is set to an invalid value.<br>                                                        3. The **deadlineTime** parameter is set to an invalid value.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system processing error occurs.|
 
 ### OH_AudioWorkgroup_Stop()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_Stop(OH_AudioWorkgroup *group)
 ```
 
@@ -225,4 +223,4 @@ Notifies the system that an audio workgroup finishes working.
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **group** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: The workgroup fails to notify the system of the end.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **group** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system processing error occurs.|

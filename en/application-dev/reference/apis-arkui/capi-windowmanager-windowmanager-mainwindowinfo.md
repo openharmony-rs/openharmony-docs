@@ -2,18 +2,18 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} WindowManager_MainWindowInfo
 ```
 
 ## Overview
 
-The struct describes the main window information.
+Describes the main window information.
 
 **Since**: 21
 

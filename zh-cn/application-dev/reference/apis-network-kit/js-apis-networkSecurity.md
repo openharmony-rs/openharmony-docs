@@ -23,7 +23,6 @@ import { networkSecurity } from '@kit.NetworkKit';
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -78,7 +77,7 @@ networkSecurity.certVerification(cert, caCert)
 
 certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
-从证书管理获取系统预置的CA证书和用户安装的CA证书，对应用传入的证书进行校验。使用Promise异步回调。
+系统将使用证书管理中的预置CA证书和用户安装的CA证书来校验应用传入的证书。使用Promise异步回调。
 
 **系统能力**: SystemCapability.Communication.NetStack
 
@@ -128,7 +127,6 @@ certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert:networkSecurity.CertBlob = {
@@ -160,7 +158,7 @@ networkSecurity.certVerification(cert, caCert)
 
 certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
-从证书管理获取系统预置的CA证书和用户安装的CA证书，对应用传入的证书进行校验，使用同步方式返回。
+系统将使用证书管理中的预置CA证书和用户安装的CA证书来校验应用传入的证书，使用同步方式返回。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
@@ -210,7 +208,6 @@ certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Create certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -269,7 +266,6 @@ isCleartextPermitted(): boolean
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let result: boolean = networkSecurity.isCleartextPermitted();
@@ -313,7 +309,6 @@ isCleartextPermittedByHostName(hostName: string): boolean
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let result: boolean = networkSecurity.isCleartextPermittedByHostName("xxx");

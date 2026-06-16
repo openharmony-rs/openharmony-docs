@@ -25,7 +25,7 @@
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> [--force true]
 ```
 
@@ -45,7 +45,7 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode app --app-path <path> --out-path <path> [--force true]
 ```
 
@@ -64,7 +64,7 @@ java -jar app_unpacking_tool.jar --mode app --app-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --rpcid true --hap-path <path> --out-path <path> [--force true]
 ```
 
@@ -84,7 +84,7 @@ java -jar app_unpacking_tool.jar --mode hap --rpcid true --hap-path <path> --out
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> [--force true] [--libs true] [--cpu-abis option]
 ```
 
@@ -105,7 +105,7 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> [--force true]
 ```
 
@@ -124,7 +124,7 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> [--force true] [--libs true] [--cpu-abis option]
 ```
 
@@ -145,7 +145,7 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <path> [--force true]
 ```
 
@@ -166,10 +166,10 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 
 | 类名               | 接口原型                                                     | 类型     | 接口详细描述                                                            |
 | ------------------ | ------------------------------------------------------------ | -------- |-------------------------------------------------------------------|
-| UncompressEntrance | UncompressResult parseApp(String appPath, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析app包的pack.info信息。<br/>输入参数：appPath app包路径，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
-| UncompressEntrance | UncompressResult parseApp(InputStream input, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析app包的pack.info信息。<br/>输入参数：input app文件流，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
-| UncompressEntrance | UncompressResult parseHap(String hapPath)                    | Java接口 | 接口功能：根据参数解析app包的json配置文件。<br/>输入参数：hapPath HAP包路径。<br/>返回值：UncompressResult。    |
-| UncompressEntrance | UncompressResult parseHap(InputStream input)                 | Java接口 | 接口功能：根据参数解析app包的json配置文件。<br/>输入参数：input HAP包文件流。<br/>返回值：UncompressResult。   |
+| UncompressEntrance | UncompressResult parseApp(String appPath, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析App包的pack.info信息。<br/>输入参数：appPath App包路径，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
+| UncompressEntrance | UncompressResult parseApp(InputStream input, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析App包的pack.info信息。<br/>输入参数：input App文件流，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
+| UncompressEntrance | UncompressResult parseHap(String hapPath)                    | Java接口 | 接口功能：根据参数解析HAP包的json配置文件。<br/>输入参数：hapPath HAP包路径。<br/>返回值：UncompressResult。    |
+| UncompressEntrance | UncompressResult parseHap(InputStream input)                 | Java接口 | 接口功能：根据参数解析HAP包的json配置文件。<br/>输入参数：input HAP包文件流。<br/>返回值：UncompressResult。   |
 
 ## 拆包工具信息字段
 
@@ -235,6 +235,21 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | compileSdkType                 | String  | 标识编译该应用时使用的sdk类别。   | 仅限API10及以后的应用。   |
 | labels                         | HashMap\<String, String> | 标识多语言应用程序AppJson的标签。 | NA          |
 | descriptions                   | HashMap\<String, String> | 标识多语言应用程序AppJson的说明。 | NA          |
+| buildVersion                    | String  | 标识App中的[buildVersion](../quick-start/app-configuration-file.md#配置文件标签)信息。  | 从API version 23开始支持。          |
+| alternateIcons                  | List\<[AlternateIcon](#alternateicon)\> | 标识应用的动态图标列表。 | 从API版本26.0.0开始支持。  |
+
+### AlternateIcon
+
+应用的备选图标，支持应用在运行时动态切换图标。
+
+详情请参考[alternateIcons标签](../quick-start/app-configuration-file.md#alternateicons标签)。
+
+**起始版本：** API版本26.0.0
+
+| 字段  | 类型   | 描述                           |
+| ----- | ------ | ----------------------------- |
+| name  | String | 标识动态图标的名称。           |
+| icon  | String | 标识动态图标的资源路径。       |
 
 ### HapInfo结构体信息
 
@@ -271,6 +286,8 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | compressedSize       | long                        | 标识HAP包压缩后的大小，单位字节。         | NA              |
 | originalSize         | long                        | 标识HAP包的原始大小，单位字节。         | NA             |
 | isModuleAbcCompressed  | boolean                   | 标识[modules.abc](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)文件是否为压缩状态。true表示压缩状态，false表示非压缩状态。         | NA             |
+| skillProfiles    | List\<[SkillProfileInfo](#skillprofileinfo)\>  | 标识当前模块的技能配置信息列表，用于定义AI代理的技能能力。   | 从API版本26.0.0开始支持。  |
+<!--RP1--><!--RP1End-->
 
 ### AbilityInfo结构体信息
 
@@ -597,3 +614,14 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 |-----------------|---------|-------------------------------------| ---- |
 | designWidth     | int     | 标识模块已用场景的设计宽度。           | NA   |
 | autoDesignWidth | boolean | 标识ModuleUsedScene的autoDesignWidth。true表示designWidth将会被忽略，设计基准宽度由设备宽度与屏幕密度计算得出，false表示设计基准宽度为designWidth。 | NA   |
+
+### SkillProfileInfo
+
+**起始版本：** API版本26.0.0
+
+| 字段               | 类型           | 描述                                                         | 备注 |
+| ------------------ | -------------- | ------------------------------------------------------------ | ---- |
+| name               | String         | 标识技能的名称，在当前模块中唯一。仅允许使用小写字母、数字和`-`（连字符），必须以小写字母或数字开头和结尾，最大长度为64字节。 | NA   |
+| abilityName        | String         | 标识与该技能关联的组件名称。仅适用于entry、feature、shared类型的模块，对于skill类型的模块不支持该字段。缺省值为入口Ability名称。 | NA   |
+| srcEntries         | List\<String\> | 标识实现技能的代码文件路径列表，指向技能实现逻辑的.ets文件。每个元素为相对于当前模块skills目录的文件路径。 | NA   |
+| permissions        | List\<String\> | 标识调用该技能所需要的权限列表。 | NA   |

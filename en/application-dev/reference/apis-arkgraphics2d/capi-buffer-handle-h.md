@@ -1,12 +1,19 @@
 # buffer_handle.h
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 ## Overview
 
-This file declares the BufferHandle struct used by the NativeWindow module.
+This file declares the **BufferHandle** struct used by the **NativeWindow** module.
 
-**File to include**: <native_window//buffer_handle.h>
+**File to include**: <native_window/buffer_handle.h>
 
 **Library**: libnative_window.so
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **Since**: 8
 
