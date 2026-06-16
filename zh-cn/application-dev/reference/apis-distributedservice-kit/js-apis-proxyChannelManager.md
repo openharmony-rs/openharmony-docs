@@ -50,6 +50,8 @@ ArkTS-Sta: openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;int&
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390101，不支持分布式业务的Wearable设备中会返回错误码801。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **ArkTS-Dyn起始版本**：20
@@ -172,6 +174,8 @@ ArkTS-Sta: closeProxyChannel(channelId:&nbsp;int):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390006，不支持分布式业务的Wearable设备中会返回错误码801。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **ArkTS-Dyn起始版本**：20
@@ -236,6 +240,8 @@ ArkTS-Sta: sendData(channelId:int, data:ArrayBuffer):Promise&lt;void&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390006，不支持分布式业务的Wearable设备中会返回错误码801。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -313,6 +319,8 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
@@ -378,6 +386,8 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -573,6 +583,8 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
@@ -638,6 +650,8 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
