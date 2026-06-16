@@ -428,6 +428,8 @@ ArkTS-Sta: mesh(value: Array&lt;double&gt; | undefined, column: int | undefined,
 
 通过Shape组件绘制矩形、椭圆和直线路径。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -580,12 +582,161 @@ struct ShapeExample {
   }
 }
 ```
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Text, Shape, Rect, Ellipse, Path, Color, LineCapStyle, LineJoinStyle, ViewportRect, ColumnOptions, Margin, Offset } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShapeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text('basic').fontSize(11).fontColor(0xCCCCCC).width(320)
+      Shape() {
+        Rect().width(300).height(50)
+        Ellipse().width(300).height(50).offset({ x: 0, y: 60 })
+        Path().width(300).height(10).commands('M0 0 L900 0').offset({ x: 0, y: 120 })
+      }
+      .width(350)
+      .height(140)
+      .viewPort({
+        x: -2,
+        y: -2,
+        width: 304,
+        height: 130
+      } as ViewportRect)
+      .fill(0x317AF7)
+      .stroke(Color.Black)
+      .strokeWidth(4)
+      .strokeDashArray([20])
+      .strokeDashOffset(10)
+      .strokeLineCap(LineCapStyle.Round)
+      .strokeLineJoin(LineJoinStyle.Round)
+      .antiAlias(true)
+
+      Shape() {
+        Rect().width(300).height(50)
+      }
+      .width(350)
+      .height(80)
+      .viewPort({
+        x: 0,
+        y: 0,
+        width: 320,
+        height: 70
+      } as ViewportRect)
+      .fill(0x317AF7)
+      .stroke(Color.Black)
+      .strokeWidth(10)
+
+      Shape() {
+        Rect().width(300).height(50)
+      }
+      .width(350)
+      .height(80)
+      .viewPort({
+        x: -5,
+        y: -5,
+        width: 320,
+        height: 70
+      } as ViewportRect)
+      .fill(0x317AF7)
+      .stroke(Color.Black)
+      .strokeWidth(10)
+
+      Text('path').fontSize(11).fontColor(0xCCCCCC).width(320)
+      Shape() {
+        Path().width(300).height(10).commands('M0 0 L900 0')
+      }
+      .width(350)
+      .height(20)
+      .viewPort({
+        x: 0,
+        y: -5,
+        width: 300,
+        height: 20
+      } as ViewportRect)
+      .stroke(0xEE8443)
+      .strokeWidth(10)
+      .strokeDashArray([20])
+
+      Shape() {
+        Path().width(300).height(10).commands('M0 0 L900 0')
+      }
+      .width(350)
+      .height(20)
+      .viewPort({
+        x: 0,
+        y: -5,
+        width: 300,
+        height: 20
+      } as ViewportRect)
+      .stroke(0xEE8443)
+      .strokeWidth(10)
+      .strokeDashArray([20])
+      .strokeDashOffset(10)
+
+      Shape() {
+        Path().width(300).height(10).commands('M0 0 L900 0')
+      }
+      .width(350)
+      .height(20)
+      .viewPort({
+        x: 0,
+        y: -5,
+        width: 300,
+        height: 20
+      } as ViewportRect)
+      .stroke(0xEE8443)
+      .strokeWidth(10)
+      .strokeOpacity(0.5)
+
+      Shape() {
+        Path().width(300).height(10).commands('M0 0 L900 0')
+      }
+      .width(350)
+      .height(20)
+      .viewPort({
+        x: 0,
+        y: -5,
+        width: 300,
+        height: 20
+      } as ViewportRect)
+      .stroke(0xEE8443)
+      .strokeWidth(10)
+      .strokeDashArray([20])
+      .strokeLineCap(LineCapStyle.Round)
+
+      Shape() {
+        Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
+      }
+      .width(300)
+      .height(200)
+      .viewPort({
+        x: -20,
+        y: -5,
+        width: 310,
+        height: 90
+      } as ViewportRect)
+      .fill(0x317AF7)
+      .stroke(0xEE8443)
+      .strokeWidth(10)
+      .strokeLineJoin(LineJoinStyle.Miter)
+      .strokeMiterLimit(5)
+    }.width('100%').margin({ top: 15 } as Margin)
+  }
+}
+```
 
 ![shape](figures/shape.png)
 
 ### 示例2（使用不同参数类型绘制图形）
 
 各属性通过不同的长度类型绘制图形。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -624,11 +775,51 @@ struct ShapeTypeExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Shape, Rect, Ellipse, Path, Color, LineCapStyle, LineJoinStyle, ViewportRect, ColumnOptions, Margin, $r } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShapeTypeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Shape() {
+        Rect().width('300').height('50')
+        Ellipse().width(300).height(50).offset({ x: 0, y: 60 })
+        Path().width(300).height(10).commands('M0 0 L900 0').offset({ x: 0, y: 120 })
+      }
+      .width(350)
+      .height(140)
+      .viewPort({
+        x: '-2',
+        y: '-2',
+        width: $r('app.string.ViewportRectWidth'),
+        height: $r('app.string.ViewportRectHeight')
+      } as ViewportRect)
+      .fill(Color.Orange)
+      .stroke(Color.Black)
+      .strokeWidth(4)
+      .strokeDashArray([20])
+      .strokeDashOffset(10)
+      .strokeLineCap(LineCapStyle.Round)
+      .strokeLineJoin(LineJoinStyle.Round)
+      .strokeMiterLimit(5)
+      .antiAlias(true)
+    }.width('100%').margin({ top: 15 } as Margin)
+  }
+}
+```
+
 ![shapeDemo2](figures/shapeDemo2.png)
 
 ### 示例3（使用attributeModifier动态设置Shape组件的属性）
 
 以下示例展示了如何使用attributeModifier动态设置Shape组件的fill、fillOpacity、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeLineJoin、strokeMiterLimit、strokeOpacity、strokeWidth和antiAlias属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -668,11 +859,55 @@ struct ShapeModifierDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Shape, Rect, Ellipse, Path, ShapeAttribute, AttributeModifier, LineCapStyle, LineJoinStyle, Offset } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyShapeModifier implements AttributeModifier<ShapeAttribute> {
+  applyNormalAttribute(instance: ShapeAttribute): void {
+    instance.fill("#707070")
+    instance.fillOpacity(0.5)
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20, 15])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeLineJoin(LineJoinStyle.Miter)
+    instance.strokeMiterLimit(5)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct ShapeModifierDemo {
+  @State modifier: MyShapeModifier = new MyShapeModifier()
+
+  build() {
+    Column() {
+      Shape() {
+        Rect().width(200).height(50).offset({ x: 20, y: 20 })
+        Ellipse().width(200).height(50).offset({ x: 20, y: 80 })
+        Path().width(200).height(10).commands('M0 0 L900 0').offset({ x: 20, y: 160 })
+      }
+      .width(250).height(200)
+      .attributeModifier(this.modifier)
+    }
+  }
+}
+```
+
 ![](figures/shapeModifier.png)
 
 ### 示例4（使用mesh实现图像局部扭曲）
 
 以下示例展示了如何使用mesh属性设置网格效果，实现图像局部扭曲。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -700,6 +935,44 @@ struct Index {
       .height(250)
       .mesh(this.meshArray, 2, 2)
 
+Shape(this.pixelMap)
+      .backgroundColor(Color.Grey)
+      .width(250)
+      .height(250)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { image } from '@kit.ImageKit';
+import { Entry, Component, Column, Shape, Color, OffscreenCanvasRenderingContext2D, ImageBitmap } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  private context: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(200, 200)
+  private meshArray: Array<Double> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
+  @State pixelMap: image.PixelMap | undefined = undefined
+
+  aboutToAppear(): void {
+    let img: ImageBitmap = new ImageBitmap("resources/base/media/img.png")
+    this.context.drawImage(img, 0, 0, 200, 200)
+    this.pixelMap = this.context.getPixelMap(0, 0, 200, 200)
+  }
+
+  build() {
+    Column() {
+      Shape(this.pixelMap)
+      .backgroundColor(Color.Grey)
+      .width(250)
+      .height(250)
+      .mesh(this.meshArray, 2, 2)
+
       Shape(this.pixelMap)
       .backgroundColor(Color.Grey)
       .width(250)
@@ -708,4 +981,5 @@ struct Index {
   }
 }
 ```
+
 ![](figures/shapeMesh.png)
