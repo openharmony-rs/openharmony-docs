@@ -1490,6 +1490,12 @@ ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapt
 
 注册Adapter相关回调事件。在相关回调事件不需要之后，需要执行[OH_ArkUI_NodeAdapter_UnregisterEventReceiver](#oh_arkui_nodeadapter_unregistereventreceiver)接口注销相关回调事件。
 
+> **说明：**
+>
+> 在API版本26.0.0之前，如果事件接收回调处理的是[NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE](#arkui_nodeadaptereventtype)事件，则会在宿主节点挂载到主树时触发该事件。开发者可以在NodeAdapter绑定到宿主节点后、宿主节点挂载到主树前完成事件监听器注册，并在宿主节点挂载到主树时收到该事件。
+>
+> 从API版本26.0.0开始，该事件会在NodeAdapter绑定到宿主节点时立即触发，而不是在宿主节点挂载到主树时触发。此时宿主节点可能尚未挂载到主树。如果回调逻辑依赖节点已挂载（例如访问布局信息或执行动画），建议将相关逻辑放入宿主节点的onAppear回调中执行。请在将NodeAdapter绑定到宿主节点前完成事件监听器注册，否则该事件可能无法触发。
+
 **起始版本：** 12
 
 

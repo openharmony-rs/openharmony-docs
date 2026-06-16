@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
+FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。<!--RP2--><!--RP2End-->
 
 > **说明：**
 >
@@ -8198,6 +8198,12 @@ getAllAvailableItems(): Array&lt;FrameNode&gt;
 onAttachToNode?(target: FrameNode): void
 
 FrameNode绑定NodeAdapter时回调。
+
+> **说明：**
+>
+> 在API版本26.0.0之前，该回调在宿主节点挂载到主树时触发。如果通过动态赋值方式设置该回调，开发者可以在调用[attachNodeAdapter](#attachnodeadapter12)后、宿主节点挂载到主树前完成设置，并在宿主节点挂载到主树时收到该回调。
+>
+> 从API版本26.0.0开始，该回调会在NodeAdapter绑定到宿主节点时立即触发，而不是在宿主节点挂载到主树时触发。此时宿主节点可能尚未挂载到主树。如果回调逻辑依赖节点已挂载（例如访问布局信息或执行动画），建议在该回调中注册[onAppear](./arkui-ts/ts-universal-events-show-hide.md#onappear)，并将相关逻辑放入onAppear中执行。如果通过动态赋值方式设置该回调，请在调用[attachNodeAdapter](#attachnodeadapter12)前完成设置，否则回调可能无法触发。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
