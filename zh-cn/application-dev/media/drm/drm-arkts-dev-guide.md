@@ -158,8 +158,8 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
     let initData = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
     // 根据DRM解决方案要求设置可选数据的值。
     let optionalData:drm.OptionsData[] = [{
-        name: "optionalDataName",
-        value: "optionalDataValue"
+        name: "licenseServerUrl",
+        value: "https://license.example.com"
     }];
     // 在线媒体密钥请求和响应。
     mediaKeySession.generateMediaKeyRequest("video/mp4", initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData).then(async (licenseRequest: drm.MediaKeyRequest) => {

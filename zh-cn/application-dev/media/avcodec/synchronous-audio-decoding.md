@@ -148,7 +148,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ![Audio decoder format range description](figures/decoder_format.png)
    <!--RP2End-->
 
-   从API version 20开始，支持通过[OH_AVCapability_GetAudioSupportedSampleRateRanges](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)接口进行采样率范围能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
+   从API version 20开始，支持[采样率范围](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
 
    | 音频解码类型 |    采样率(Hz)   |
    | ----------- | --------------- |
@@ -280,6 +280,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    if (errNo != AV_ERR_OK) {
        // 异常处理。
    }
+   cencInfo = nullptr;
    ```
 
 8. 同步模式调用，写入待解码的数据，获取解码的输出。
