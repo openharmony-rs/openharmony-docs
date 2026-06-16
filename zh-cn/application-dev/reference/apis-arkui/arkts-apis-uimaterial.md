@@ -324,7 +324,7 @@ struct SystemMaterialPage {
 {
   "module": {
     // ···
-    "type": "entry",
+    "type": "entry", // 需注意只有在entry类型的module中配置才会生效。
     // ···
     "metadata": [{
       "name": "ohos.arkui.UIMaterial.state",
