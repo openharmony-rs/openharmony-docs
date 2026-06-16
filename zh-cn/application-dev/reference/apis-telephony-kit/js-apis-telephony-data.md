@@ -753,10 +753,10 @@ import { common } from '@kit.AbilityKit';
 
 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
 data.showSystemApnSettings(context).then(() => {
-	console.info("showSystemApnSettings success");
+    console.info("showSystemApnSettings success");
 }).catch(() => {
-	console.error("showSystemApnSettings failed");
-	}
+    console.error("showSystemApnSettings failed");
+    }
 )
 ```
 
