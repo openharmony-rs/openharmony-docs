@@ -84,7 +84,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<ContainerSpanAttribute
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ContainerSpanAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ContainerSpanAttribute> \| undefined | 是   | 动态设置组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
-### debugLine<sup>26+</sup>
+### debugLine
 
 debugLine(sourceLine: string, moduleName?: string)
 
