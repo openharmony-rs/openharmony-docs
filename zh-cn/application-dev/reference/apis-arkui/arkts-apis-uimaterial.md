@@ -157,9 +157,9 @@ getMaterialInfo(): MaterialInfo
 
 | 名称       | 类型                                                        | 只读 | 可选 | 说明                                                     |
 | ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
-| style   | [ImmersiveStyle](#immersivestyle)                                   | 否 | 是   | 材质样式。不同样式对应不同的材质参数，影响材质的厚度。<br/>**说明**：该参数仅对高档和中档算力设备的显示效果生效。<br/>默认值：ImmersiveStyle.REGULAR |
-| materialColor   | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)                                   | 否 | 是   | 材质层赋色，该参数会为材质滤镜再混合一层纯色效果。该颜色需要带一定的透明度值，不能为纯不透明的颜色，否则会将材质滤镜效果完全遮挡。<br/>**说明**：该参数仅对高档和中档算力设备的显示效果生效。<br/>默认值：Color.Transparent |
-| colorInvert   | boolean                                   | 否 | 是   | 设置了材质对象的节点的子树是否自动适配材质到背景色的反色。<br/>若为false，则不会自动反色。<br/>若为true，则只有材质参数足够薄时才会自动反色。具体能反色的材质由系统定义，材质样式至少为THIN或ULTRA_THIN，且与设置应用的沉浸光感的强弱配置相关。材质越薄、沉浸光感越强，越容易符合反色材质的要求。<br/>自动反色能力仅对部分属性接口设置特殊资源值时生效，生效的属性接口包括：Text组件的[fontColor](arkui-ts/ts-basic-components-text.md#fontcolor)，Button组件的[fontColor](arkui-ts/ts-basic-components-button.md#fontcolor)，SymbolGlyph组件的[fontColor](arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)，Image组件的[fillColor](arkui-ts/ts-basic-components-image.md#fillcolor)，Search组件的[placeholderColor](arkui-ts/ts-basic-components-search.md#placeholdercolor)、[fontColor](arkui-ts/ts-basic-components-search.md#fontcolor10)、[searchIcon](arkui-ts/ts-basic-components-search.md#searchicon10)中的图标颜色、[cancelButton](arkui-ts/ts-basic-components-search.md#cancelbutton10)中的图标颜色、[caretStyle](arkui-ts/ts-basic-components-search.md#caretstyle10)中的光标颜色，TabContent组件的[tabBar](arkui-ts/ts-container-tabcontent.md#tabbar)属性使用[BottomTabBarStyle](arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)样式时其中的文本和图标颜色。<br/>**说明**：该参数仅对高档和中档算力设备的显示效果生效。<br/>默认值：false |
+| style   | [ImmersiveStyle](#immersivestyle)                                   | 否 | 是   | 材质样式。不同样式对应不同的材质参数，影响材质的厚度。<br/>**说明**：该参数仅对高算力和中算力设备的显示效果生效。<br/>默认值：ImmersiveStyle.REGULAR |
+| materialColor   | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)                                   | 否 | 是   | 材质层赋色。对于高算力和中算力设备，若不设置该参数或该参数为undefined，不额外混合纯色效果；若设置该参数为有效颜色值，该参数会为材质滤镜再混合一层纯色效果，若该颜色为纯不透明的颜色，会遮挡材质滤镜效果。对于低算力设备，若不设置该参数或该参数为undefined，生效低算力设备材质自带的背景色效果；若设置该参数为有效颜色值，该参数作为背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)属性值。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：undefined |
+| colorInvert   | boolean                                   | 否 | 是   | 设置了材质对象的节点的子树是否自动适配材质到背景色的反色。<br/>若为false，则不会自动反色。<br/>若为true，则只有材质参数足够薄时才会自动反色。具体能反色的材质由系统定义，材质样式至少为THIN或ULTRA_THIN，且与设置应用的沉浸光感的强弱配置相关。材质越薄、沉浸光感越强，越容易符合反色材质的要求。<br/>自动反色能力仅对部分属性接口设置特殊资源值时生效，生效的属性接口包括：Text组件的[fontColor](arkui-ts/ts-basic-components-text.md#fontcolor)，Button组件的[fontColor](arkui-ts/ts-basic-components-button.md#fontcolor)，SymbolGlyph组件的[fontColor](arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)，Image组件的[fillColor](arkui-ts/ts-basic-components-image.md#fillcolor)，Search组件的[placeholderColor](arkui-ts/ts-basic-components-search.md#placeholdercolor)、[fontColor](arkui-ts/ts-basic-components-search.md#fontcolor10)、[searchIcon](arkui-ts/ts-basic-components-search.md#searchicon10)中的图标颜色、[cancelButton](arkui-ts/ts-basic-components-search.md#cancelbutton10)中的图标颜色、[caretStyle](arkui-ts/ts-basic-components-search.md#caretstyle10)中的光标颜色，TabContent组件的[tabBar](arkui-ts/ts-container-tabcontent.md#tabbar)属性使用[BottomTabBarStyle](arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)样式时其中的文本和图标颜色。<br/>**说明**：该参数仅对高算力和中算力设备的显示效果生效。<br/>默认值：false |
 | applyShadow   | boolean                                   | 否 | 是   | 是否添加材质的阴影效果。<br/>当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。<br/>**说明**：该参数仅对所有档位的算力设备的显示效果生效。<br/>默认值：true |
 | interactive   | boolean                                   | 否 | 是   | 是否为设置材质的组件设置交互形变效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：false |
 | lightEffect   | [LightEffectOptions](#lighteffectoptions) \| null                                   | 否 | 是   | 是否为设置材质的组件设置光感交互反馈效果。当该参数为null时，禁用光感交互反馈效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：undefined，不设置光感交互反馈效果。 |
@@ -236,7 +236,7 @@ static get empty(): Material
 
 沉浸式材质类，继承自[Material](#material)。
 
-沉浸式材质根据设备算力有分档表现，设备算力的高、中、低档由设备厂商决定，定义在系统配置文件中。在高档和中档算力设备上，影响材质层滤镜效果和阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)效果。在低档算力设备上，影响背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)效果。且同一材质的效果，会受到设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置下，材质的参数和效果存在差异。
+沉浸式材质根据设备算力有分档表现，设备算力的高、中、低档由设备厂商决定，定义在系统配置文件中。在高算力和中算力设备上，影响材质层滤镜效果和阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)效果以实现材质效果，若systemMaterial属性生效后，已设置的背景色属性[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)会被恢复为透明色，已设置的边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)属性会被恢复为无边框效果。在低算力设备上，影响背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)效果以实现材质效果。同一材质的效果，会受到设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置下，材质的参数和效果存在差异。
 
 ### constructor
 
@@ -258,7 +258,7 @@ ImmersiveMaterial的构造函数。
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  options      | [ImmersiveOptions](#immersiveoptions)                      | 否   | 系统材质配置选项，包括材质样式、材质层赋色等。<br/>默认值参考ImmersiveOptions接口各参数的默认值，即{style:ImmersiveStyle.REGULAR, materialColor:Color.Transparent, colorInvert:false, applyShadow:true, interactive:false, lightEffect:undefined}。    |
+|  options      | [ImmersiveOptions](#immersiveoptions)                      | 否   | 系统材质配置选项，包括材质样式、材质层赋色等。<br/>默认值参考ImmersiveOptions接口各参数的默认值，即{style:ImmersiveStyle.REGULAR, materialColor:undefined, colorInvert:false, applyShadow:true, interactive:false, lightEffect:undefined}。    |
 
 ## 示例
 
@@ -355,15 +355,15 @@ struct SystemMaterialPage {
 }
 ```
 
-在低档算力设备上表现：
+在低算力设备上表现：
 
 ![systemMaterial](figures/immersiveMaterialSmooth.jpg)
 
-在中档算力设备上表现：
+在中算力设备上表现：
 
 ![systemMaterial](figures/immersiveMaterialGentle.jpg)
 
-在高档算力设备上表现：
+在高算力设备上表现：
 
 ![systemMaterial](figures/immersiveMaterialExquisite.jpg)
 
@@ -437,7 +437,7 @@ struct MaterialInfoPage {
 }
 ```
 
-在高档算力设备上表现：
+在高算力设备上表现：
 
 ![systemMaterialState](figures/immersiveMaterialStateExquisite.jpg)
 
