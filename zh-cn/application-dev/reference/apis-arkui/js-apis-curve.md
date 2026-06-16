@@ -1,8 +1,8 @@
 # @ohos.curves (插值计算)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -481,4 +481,4 @@ struct ImageComponent {
 }
 ```
 
-![zh-cn_image_0000001174104410](figures/zh-cn_image_0000001174104410.gif)
+![zh-cn_image_0000001174104410](figures/curves-spring-example.gif)

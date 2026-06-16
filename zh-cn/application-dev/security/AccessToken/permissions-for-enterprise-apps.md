@@ -672,6 +672,63 @@ UDID（Unified Device ID）是设备的唯一标识。
 
 **起始版本**：26.0.0
 
+## ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA
+
+允许应用跨应用拉起EmbeddedUIExtension。
+
+<!--RP3--><!--RP3End-->
+
+<!--RP2--><!--RP2End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.SUPPORT_NP_PLUGIN_FOR_WEB
+
+允许应用释放插件库。
+
+<!--RP4--><!--RP4End-->
+
+<!--RP2--><!--RP2End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY_FOR_WEB
+
+允许应用加载二进制证书签名的插件库。
+
+<!--RP5--><!--RP5End-->
+
+<!--RP2--><!--RP2End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
 ## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
 
 允许企业普通应用获取已安装全量应用列表。

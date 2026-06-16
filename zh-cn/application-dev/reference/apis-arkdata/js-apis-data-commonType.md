@@ -2,11 +2,11 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @lvcong_oh-->
-<!--Designer: @hollokin; @yuchaozhng-->
-<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Designer: @yuchaozhng-->
+<!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
 
-数据通用类型（commonType）是数据管理中通用的数据类型。
+数据通用类型（commonType）是数据管理中通用的数据类型，提供了资产状态枚举、资产信息和键值对存储等基础数据类型，用于支持分布式数据管理场景下的数据统一表示和传递。
 
 > **说明：**
 >
@@ -46,7 +46,7 @@ import { commonType } from '@kit.ArkData';
 | path       | string                      | 否   | 否   | 资产在应用沙箱里的路径。           |
 | createTime | string                      | 否   | 否   | 资产被创建出来的时间。             |
 | modifyTime | string                      | 否   | 否   | 资产最后一次被修改的时间。         |
-| size       | string                      | 否   | 否   | 资产占用空间的大小。确保在全链路中保持统一、一致的存储格式与取值逻辑。建议所有系统节点均采用标准化处理方式（单位为字节（Byte），取值为非负整数）。 |
+| size       | string                      | 否   | 否   | 资产占用空间的大小（单位为字节（Byte），取值为非负整数）。 |
 | status     | [AssetStatus](#assetstatus) | 否   | 是   | 资产的状态，默认值为ASSET_NORMAL。 |
 
 ## Assets
@@ -83,7 +83,7 @@ type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets
 
 type ValuesBucket = Record<string, ValueType>
 
-用于存储键值对的类型。该类型不是多线程安全的，如果应用中存在多线程同时操作该类派生出的实例，注意加锁保护。
+用于存储键值对的类型。该类型不是并发安全的，如果应用中存在多线程同时操作该类派生出的实例，注意加锁保护。
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
 

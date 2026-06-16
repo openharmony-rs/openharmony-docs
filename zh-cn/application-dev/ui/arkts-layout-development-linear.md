@@ -83,7 +83,7 @@ Row({ space: 35 }) {
 }.width('90%')
 ```
 
-![zh-cn_image_0000001562700509](figures/zh-cn_image_0000001562700509.png)
+![rowLayoutExample](figures/rowLayoutExample.png)
 
 ## 布局子元素在主轴上的排列方式
 
@@ -113,7 +113,7 @@ Row({ space: 35 }) {
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Start)
   ```
 
-  ![zh-cn_image_0000001562700501](figures/zh-cn_image_0000001562700501.png)
+  ![columnLayoutJustifyContentStart](figures/columnLayoutJustifyContentStart.png)
 
 - justifyContent(FlexAlign.Center)：元素在垂直方向中心对齐，第一个元素与行首的距离与最后一个元素与行尾距离相同。
 
@@ -132,7 +132,7 @@ Row({ space: 35 }) {
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Center)
   ```
 
-  ![zh-cn_image_0000001562700517](figures/zh-cn_image_0000001562700517.png)
+  ![columnLayoutJustifyContentCenter](figures/columnLayoutJustifyContentCenter.png)
 
 - justifyContent(FlexAlign.End)：元素在垂直方向尾部对齐，最后一个元素与行尾对齐，其他元素与后一个对齐。
 
@@ -151,7 +151,7 @@ Row({ space: 35 }) {
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.End)
   ```
 
-  ![zh-cn_image_0000001562940585](figures/zh-cn_image_0000001562940585.png)
+  ![columnLayoutJustifyContentEnd](figures/columnLayoutJustifyContentEnd.png)
 
 - justifyContent(FlexAlign.SpaceBetween)：垂直方向均匀分配元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。
 
@@ -170,7 +170,7 @@ Row({ space: 35 }) {
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceBetween)
   ```
 
-  ![zh-cn_image_0000001511900532](figures/zh-cn_image_0000001511900532.png)
+  ![columnLayoutJustifyContentSpaceBetween](figures/columnLayoutJustifyContentSpaceBetween.png)
 
 - justifyContent(FlexAlign.SpaceAround)：垂直方向均匀分配元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。
 
@@ -189,7 +189,7 @@ Row({ space: 35 }) {
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceAround)
   ```
 
-  ![zh-cn_image_0000001562700525](figures/zh-cn_image_0000001562700525.png)
+  ![columnLayoutJustifyContentSpaceAround](figures/columnLayoutJustifyContentSpaceAround.png)
 
 - justifyContent(FlexAlign.SpaceEvenly)：垂直方向均匀分配元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距都完全一样。
 
@@ -208,7 +208,7 @@ Row({ space: 35 }) {
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceEvenly)
   ```
 
-  ![zh-cn_image_0000001563060785](figures/zh-cn_image_0000001563060785.png)
+  ![columnLayoutJustifyContentSpaceEvenly](figures/columnLayoutJustifyContentSpaceEvenly.png)
 
 
 ### Row容器内子元素在水平方向上的排列
@@ -234,7 +234,7 @@ Row({ space: 35 }) {
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Start)
   ```
 
-  ![zh-cn_image_0000001511421356](figures/zh-cn_image_0000001511421356.png)
+  ![rowLayoutJustifyContentStart](figures/rowLayoutJustifyContentStart.png)
 
 - justifyContent(FlexAlign.Center)：元素在水平方向中心对齐，第一个元素与行首的距离与最后一个元素与行尾距离相同。
 
@@ -253,7 +253,7 @@ Row({ space: 35 }) {
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Center)
   ```
 
-  ![zh-cn_image_0000001511900516](figures/zh-cn_image_0000001511900516.png)
+  ![rowLayoutJustifyContentCenter](figures/rowLayoutJustifyContentCenter.png)
 
 - justifyContent(FlexAlign.End)：元素在水平方向尾部对齐，最后一个元素与行尾对齐，其他元素与后一个对齐。
 
@@ -272,7 +272,7 @@ Row({ space: 35 }) {
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.End)
   ```
 
-  ![zh-cn_image_0000001562940601](figures/zh-cn_image_0000001562940601.png)
+  ![rowLayoutJustifyContentEnd](figures/rowLayoutJustifyContentEnd.png)
 
 - justifyContent(FlexAlign.SpaceBetween)：水平方向均匀分配元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。
 
@@ -291,7 +291,7 @@ Row({ space: 35 }) {
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceBetween)
   ```
 
-  ![zh-cn_image_0000001562700521](figures/zh-cn_image_0000001562700521.png)
+  ![rowLayoutJustifyContentSpaceBetween](figures/rowLayoutJustifyContentSpaceBetween.png)
 
 - justifyContent(FlexAlign.SpaceAround)：水平方向均匀分配元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。
 
@@ -310,7 +310,7 @@ Row({ space: 35 }) {
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceAround)
   ```
 
-  ![zh-cn_image_0000001562820893](figures/zh-cn_image_0000001562820893.png)
+  ![rowLayoutJustifyContentSpaceAround](figures/rowLayoutJustifyContentSpaceAround.png)
 
 - justifyContent(FlexAlign.SpaceEvenly)：水平方向均匀分配元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距都完全一样。
 
@@ -329,7 +329,7 @@ Row({ space: 35 }) {
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceEvenly)
   ```
 
-  ![zh-cn_image_0000001511421352](figures/zh-cn_image_0000001511421352.png)
+  ![rowLayoutJustifyContentSpaceEvenly](figures/rowLayoutJustifyContentSpaceEvenly.png)
 
 ## 布局子元素在交叉轴上的对齐方式
 
@@ -361,7 +361,7 @@ Row({ space: 35 }) {
   }.width('100%').alignItems(HorizontalAlign.Start).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![zh-cn_image_0000001511580964](figures/zh-cn_image_0000001511580964.png)
+  ![rowLayoutHorizontalAlignStart](figures/rowLayoutHorizontalAlignStart.png)
 
 - HorizontalAlign.Center（默认值）：子元素在水平方向居中对齐。
 
@@ -380,7 +380,7 @@ Row({ space: 35 }) {
   }.width('100%').alignItems(HorizontalAlign.Center).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![zh-cn_image_0000001562820897](figures/zh-cn_image_0000001562820897.png)
+  ![rowLayoutHorizontalAlignCenter](figures/rowLayoutHorizontalAlignCenter.png)
 
 - HorizontalAlign.End：子元素在水平方向右对齐。
 
@@ -399,7 +399,7 @@ Row({ space: 35 }) {
   }.width('100%').alignItems(HorizontalAlign.End).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![zh-cn_image_0000001511421348](figures/zh-cn_image_0000001511421348.png)
+  ![rowLayoutHorizontalAlignEnd](figures/rowLayoutHorizontalAlignEnd.png)
 
 
 ### Row容器内子元素在垂直方向上的排列
@@ -425,7 +425,7 @@ Row({ space: 35 }) {
   }.width('100%').height(200).alignItems(VerticalAlign.Top).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![zh-cn_image_0000001563060765](figures/zh-cn_image_0000001563060765.png)
+  ![rowLayoutVerticalAlignTop](figures/rowLayoutVerticalAlignTop.png)
 
 - VerticalAlign.Center（默认值）：子元素在垂直方向居中对齐。
 
@@ -444,7 +444,7 @@ Row({ space: 35 }) {
   }.width('100%').height(200).alignItems(VerticalAlign.Center).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![zh-cn_image_0000001562700505](figures/zh-cn_image_0000001562700505.png)
+  ![rowLayoutVerticalAlignCenter](figures/rowLayoutVerticalAlignCenter.png)
 
 - VerticalAlign.Bottom：子元素在垂直方向底部对齐。
 
@@ -463,7 +463,7 @@ Row({ space: 35 }) {
   }.width('100%').height(200).alignItems(VerticalAlign.Bottom).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![zh-cn_image_0000001563060781](figures/zh-cn_image_0000001563060781.png)
+  ![rowLayoutVerticalAlignBottom](figures/rowLayoutVerticalAlignBottom.png)
 
 ## 自适应拉伸
 
@@ -490,11 +490,11 @@ struct BlankExample {
 
   **图9** 竖屏（自适应屏幕窄边）
 
-![zh-cn_image_0000001562820881](figures/zh-cn_image_0000001562820881.png)
+![blankExample](figures/blankExample.png)
 
   **图10** 横屏（自适应屏幕宽边） 
 
-![zh-cn_image_0000001511421332](figures/zh-cn_image_0000001511421332.png)
+![row10](figures/row10.png)
 
 
 ## 自适应缩放
@@ -555,11 +555,11 @@ struct BlankExample {
 
     **图11** 横屏  
 
-  ![zh-cn_image_0000001511421336](figures/zh-cn_image_0000001511421336.png)
+  ![column11](figures/column11.png)
 
     **图12** 竖屏  
 
-  ![zh-cn_image_0000001511580968](figures/zh-cn_image_0000001511580968.png)
+  ![row12](figures/row12.png)
 
 - 父容器尺寸确定时，使用百分比设置子元素和兄弟元素的宽度，使他们在任意尺寸的设备下保持固定的自适应占比。
 
@@ -594,7 +594,7 @@ struct BlankExample {
 
     **图13** 横屏  
 
-  ![zh-cn_image_0000001563060777](figures/zh-cn_image_0000001563060777.png)
+  ![row13](figures/row13.png)
 
     **图14** 竖屏  
 
@@ -647,7 +647,7 @@ struct BlankExample {
   }
   ```
 
-  ![zh-cn_image_0000001511900524](figures/zh-cn_image_0000001511900524.gif)
+  ![scrollVerticalExample](figures/scrollVerticalExample.gif)
 
   水平方向布局中使用Scroll组件：
 
@@ -688,4 +688,4 @@ struct BlankExample {
   }
   ```
 
-  ![zh-cn_image_0000001562940609](figures/zh-cn_image_0000001562940609.gif)
+  ![scrollHorizontalExample](figures/scrollHorizontalExample.gif)

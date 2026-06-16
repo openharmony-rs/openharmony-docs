@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin; @oh_wangxk; @gmiao522-->
-<!--Designer: @wangyanglan; @liumingxiang-->
+<!--Designer: @wanyanglan; @liumingxiang-->
 <!--Tester: @nobuggers; @yhl0101-->
 <!--Adviser: @ge-yafang-->
 

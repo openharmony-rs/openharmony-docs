@@ -34,7 +34,7 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray } fr
 
 ## SegmentButton
 
-SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
+SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked?: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
 
 **装饰器类型：**@Component
 
@@ -97,6 +97,10 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为"capsule"且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | 是 | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButton的动效发生改变。<br/>对于胶囊类多选按钮（即type为"capsule"且multiply为true），该属性不生效。<br/>默认值：无材质效果。<br/>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+> **说明：**
+>
+> 从API版本26.0.0开始，除胶囊类多选按钮（即type为"capsule"且multiply为true）外，backgroundSystemMaterial设置自动反色的新材质时，fontColor和selectedFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。
 
 ### constructor
 
@@ -1309,7 +1313,7 @@ struct Index12 {
 ![segmentbutton-sample83](figures/segmentbutton-sample83.gif)
 
 ### 示例8（设置背景板材质）
-以下示例通过backgroundSystemMaterial属性，为分段按钮设置了半透明的背景板材质。
+以下示例通过backgroundSystemMaterial属性，为分段按钮设置了透明的背景板材质、开启自动反色和交互形变效果，并自定义反馈光感的颜色。
 
 从API版本26.0.0开始，[SegmentButtonOptions](#segmentbuttonoptions)和[CommonSegmentButtonOptions](#commonsegmentbuttonoptions)中新增backgroundSystemMaterial属性。
 
@@ -1331,26 +1335,38 @@ struct IndexCl {
       text: '页签按钮3'
     }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundColor: Color.Transparent,
-    // 设置为半透明材质
-    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+    // 将fontColor设置为特殊系统资源值，启用自动反色能力。
+    fontColor: $r('sys.color.font_primary'),
+    // 设置为系统材质样式为ULTRA_THIN，并开启自动反色和交互形变效果、自定义反馈光感的颜色。
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      colorInvert: true,
+      interactive: true,
+      lightEffect: { color: undefined }
+    })
   });
-
-  @State tabSelectedIndexes: number[] = [2];
+  @State tabSelectedIndexes: number[] = [0];
 
   build() {
-    Stack() {
-      // 作为分段按钮的背景，其中('app.media.pic')需要替换为开发者所需的图片
-      Image($r('app.media.pic'))
-      Column() {
-        SegmentButton({
-          options: this.tabOptions,
-          selectedIndexes: $tabSelectedIndexes
-        })
-      }
+    Column({ space: 20 }) {
+      SegmentButton({
+        options: this.tabOptions,
+        selectedIndexes: $tabSelectedIndexes
+      })
     }
+    .width('100%')
+    .height('20%')
+    .padding(20)
+    .linearGradient({
+      angle: 90, // 渐变角度，90度是从上到下。
+      colors: [
+        ['#FF9A9E', 0.0], // 起始颜色及位置（0.0表示起点）。
+        ['#FECFEF', 0.1], // 中间颜色及位置。
+        ['#3B324C', 1.0] // 结束颜色及位置（1.0表示终点）。
+      ]
+    })
   }
 }
-
 ```
 
-![segmentbutton-sample7](figures/segmentbutton-sample7.png)
+![segmentbutton-sample7](figures/segment_button_material.gif)

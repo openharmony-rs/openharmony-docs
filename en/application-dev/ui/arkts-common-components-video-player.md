@@ -27,7 +27,7 @@ The **Video** component supports both local and online videos. For details about
 
   To load a local video, specify the corresponding video file in the local **rawfile** directory, as shown in the following figure.
 
-  ![en-us_image_0000001562700409](figures/en-us_image_0000001562700409.png)
+  ![videoplayer-local](figures/videoplayer-local.png)
 
   Use **$rawfile()** to reference the video resource.
 

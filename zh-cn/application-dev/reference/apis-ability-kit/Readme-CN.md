@@ -110,7 +110,7 @@
     - [@ohos.app.ability.dataUriUtils (DataUriUtils模块)](js-apis-app-ability-dataUriUtils.md)
     - [@ohos.app.ability.dialogRequest (dialogRequest模块)](js-apis-app-ability-dialogRequest.md)
     - [@ohos.app.ability.errorManager (错误管理模块)](js-apis-app-ability-errorManager.md)
-    - [@ohos.app.ability.hyperSnapManager (应用快照管理)](js-apis-app-ability-hyperSnapManager.md)
+    - [@ohos.app.ability.hyperSnapManager (应用快启管理)](js-apis-app-ability-hyperSnapManager.md)
     - [@ohos.app.ability.kioskManager (Kiosk模式管理)](js-apis-app-ability-kioskManager.md)
     - [@ohos.app.ability.Want (Want)](js-apis-app-ability-want.md)
     - [@ohos.app.ability.wantAgent (WantAgent模块)](js-apis-app-ability-wantAgent.md)
@@ -134,7 +134,8 @@
     - [@ohos.bundle.bundleManager (应用程序包管理模块)](js-apis-bundleManager.md)
     - [@ohos.bundle.defaultAppManager (默认应用管理)](js-apis-defaultAppManager.md)
     - [@ohos.bundle.launcherBundleManager (launcherBundleManager模块)](js-apis-launcherBundleManager.md)
-    - [@ohos.bundle.overlay (overlay模块)](js-apis-overlay.md)
+    - [@ohos.bundle.overlay (overlay特征模块)](js-apis-overlay.md)
+    - [@ohos.bundle.pluginBundleManager (pluginBundleManager模块)](js-apis-pluginBundleManager.md)
     - [@ohos.bundle.shortcutManager (shortcutManager模块)](js-apis-shortcutManager.md)
     - [@ohos.bundle.skillManager (skillManager模块)](js-apis-skillManager.md)
     <!--Del-->
@@ -230,7 +231,6 @@
       - [ViewData (系统接口)](js-apis-inner-application-viewData-sys.md)
       - [AgentExtensionConnectCallback (系统接口)](js-apis-inner-application-agentExtensionConnectCallback-sys.md)
       - [AgentProxy (系统接口)](js-apis-inner-application-agentProxy-sys.md)
-      - [ToolInfo (系统接口)](js-apis-inner-application-ToolInfo-sys.md)
       <!--DelEnd-->
     - bundleManager<!--bundlemanager-->
       - [abilityInfo](js-apis-bundleManager-abilityInfo.md)
@@ -242,6 +242,7 @@
       - [launcherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)
       - [metadata](js-apis-bundleManager-metadata.md)
       - [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)
+      - [PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo.md)
       - [Skill](js-apis-bundleManager-skill.md)
       - [shortcutInfo](js-apis-bundleManager-shortcutInfo.md)
       - [skillInfo](js-apis-bundleManager-SkillInfo.md)

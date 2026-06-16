@@ -1445,7 +1445,7 @@ Use the **reuseId** attribute in the correct scenario.
 The V1 decorator \'xxx\' cannot be applied to a Function-type variable \'yyy\'.
 
 **Description**<br>
-This error code is reported at runtime when the V1 decorator is used for variables of the **Function** or **() => void** type since API version 23.
+This error code is reported at runtime when the ArkUI state management V1 decorator is used for variables of the **Function** or **() => void** type. Since API version 23, this issue is intercepted in the compilation phase to avoid potential runtime exceptions. The ArkUI state management V1 decorators include [\@State](../../../application-dev/ui/state-management/arkts-state.md), [\@Prop](../../../application-dev/ui/state-management/arkts-prop.md), [\@Link](../../../application-dev/ui/state-management/arkts-link.md), [\@Provide](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@Consume](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), [\@StorageProp](../../../application-dev/ui/state-management/arkts-appstorage.md#storageprop), [\@LocalStorageLink](../../../application-dev/ui/state-management/arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](../../../application-dev/ui/state-management/arkts-localstorage.md#localstorageprop), [\@ObjectLink](../../../application-dev/ui/state-management/arkts-observed-and-objectlink.md).
 
 **Possible Cause**<br>
 The V1 decorator is used for a variable of the **Function** or **() => void** type.

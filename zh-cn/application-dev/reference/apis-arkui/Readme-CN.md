@@ -92,6 +92,7 @@
       - [FrameNode](js-apis-arkui-frameNode.md)
       - [Graphics](js-apis-arkui-graphics.md)
       - [LayoutAlgorithm](js-apis-arkui-layoutAlgorithm.md)
+      - [LazyLayoutAlgorithm](js-apis-arkui-lazyLayoutAlgorithm.md)
       - [NodeController](js-apis-arkui-nodeController.md)
       - [RenderNode](js-apis-arkui-renderNode.md)
       - [AttributeUpdater](js-apis-arkui-AttributeUpdater.md)
@@ -102,7 +103,7 @@
       - [Graphics (系统接口)](js-apis-arkui-graphics-sys.md)
       <!--DelEnd-->
   - 窗口管理<!--window-manager-api-->
-    - [@ohos.window.floatView (标准悬浮窗)](js-apis-floatView.md)
+    - [@ohos.window.floatView (闪控窗)](js-apis-floatView.md)
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
     <!--Del-->
     - [@ohos.PiPWindow (画中画窗口)(系统接口)](js-apis-pipWindow-sys.md)
@@ -206,8 +207,8 @@
       - [点击回弹效果](arkui-ts/ts-universal-attributes-click-effect.md)
       - [特效绘制合并](arkui-ts/ts-universal-attributes-use-effect.md)
       - [组件内容填充方式](arkui-ts/ts-universal-attributes-renderfit.md)
-      - [空间效果](arkui-ts/ts-universal-attributes-spatial-effect.md)
       <!--Del-->
+      - [空间效果 (系统接口)](arkui-ts/ts-universal-attributes-spatial-effect-sys.md)
       - [点光源设置 (系统接口)](arkui-ts/ts-universal-attributes-point-light-style-sys.md)
       - [图像效果 (系统接口)](arkui-ts/ts-universal-attributes-image-effect-sys.md)
       - [融合效果 (系统接口)](arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
@@ -276,6 +277,8 @@
     - [Row](arkui-ts/ts-container-row.md)
     - [Stack](arkui-ts/ts-container-stack.md)
     - [RelativeContainer](arkui-ts/ts-container-relativecontainer.md)
+    - [DynamicLayout](arkui-ts/ts-container-dynamiclayout.md)
+    - [ContainerReader](arkui-ts/ts-container-containerreader.md)
      <!--Del-->
     - [Flex (系统接口)](arkui-ts/ts-container-flex-sys.md)
     - [Column (系统接口)](arkui-ts/ts-container-column-sys.md)
@@ -288,10 +291,6 @@
     - [ColumnSplit](arkui-ts/ts-container-columnsplit.md)
     - [RowSplit](arkui-ts/ts-container-rowsplit.md)
     - [SideBarContainer](arkui-ts/ts-container-sidebarcontainer.md)
-  - 动态布局<!--dynamic-layout-->
-    - [DynamicLayout](arkui-ts/ts-container-dynamiclayout.md)
-  - 断点容器<!--container-reader-->
-    - [ContainerReader](arkui-ts/ts-container-containerreader.md)
   - 滚动与滑动<!--scroll-and-swipe-->
     - [List](arkui-ts/ts-container-list.md)
     - [ListItem](arkui-ts/ts-container-listitem.md)
@@ -308,6 +307,7 @@
     - [LazyVGridLayout](arkui-ts/ts-container-lazyvgridlayout.md)
     - [LazyVWaterFlowLayout](arkui-ts/ts-container-lazyvwaterflowlayout.md)
     - [LazyColumnLayout](arkui-ts/ts-container-lazycolumnlayout.md)
+    - [LazyDynamicLayout](arkui-ts/ts-container-lazydynamiclayout.md)
     - [ScrollBar](arkui-ts/ts-basic-components-scrollbar.md)
     - [Refresh](arkui-ts/ts-container-refresh.md)
     - [ArcScrollBar](arkui-ts/ts-basic-components-arcscrollbar.md)
@@ -353,6 +353,7 @@
     - [Span](arkui-ts/ts-basic-components-span.md)
     - [ImageSpan](arkui-ts/ts-basic-components-imagespan.md)
     - [ContainerSpan](arkui-ts/ts-basic-components-containerspan.md)
+    - [SelectionContainer](arkui-ts/ts-basic-components-selectioncontainer.md)
     - [SymbolSpan](arkui-ts/ts-basic-components-symbolSpan.md)
     - [SymbolGlyph](arkui-ts/ts-basic-components-symbolGlyph.md)
     - [Hyperlink](arkui-ts/ts-container-hyperlink.md)
@@ -425,8 +426,6 @@
     <!--Del-->
     - [XComponent (系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
     <!--DelEnd-->
-  - 景深效果<!--depth-of-field -->
-    - [DepthComponent](arkui-ts/ts-basic-components-depthcomponent.md)
     <!--Del-->
     - [DepthComponent (系统接口)](arkui-ts/ts-basic-components-depthcomponent-sys.md)
     <!--DelEnd-->
@@ -463,9 +462,21 @@
     - [自定义弹窗 (CustomDialog) (系统接口)](arkui-ts/ts-methods-custom-dialog-box-sys.md)
     <!--DelEnd-->
     - [日历选择器弹窗 (CalendarPickerDialog)](arkui-ts/ts-methods-calendarpicker-dialog.md)
+    <!--Del-->
+    - [日历选择器弹窗 (CalendarPickerDialog) (系统接口)](arkui-ts/ts-methods-calendarpicker-dialog-sys.md)
+    <!--DelEnd-->
     - [日期滑动选择器弹窗 (DatePickerDialog)](arkui-ts/ts-methods-datepicker-dialog.md)
+    <!--Del-->
+    - [日期滑动选择器弹窗 (DatePickerDialog) (系统接口)](arkui-ts/ts-methods-datepicker-dialog-sys.md)
+    <!--DelEnd-->
     - [时间滑动选择器弹窗 (TimePickerDialog)](arkui-ts/ts-methods-timepicker-dialog.md)
+    <!--Del-->
+    - [时间滑动选择器弹窗 (TimePickerDialog) (系统接口)](arkui-ts/ts-methods-timepicker-dialog-sys.md)
+    <!--DelEnd-->
     - [文本滑动选择器弹窗 (TextPickerDialog)](arkui-ts/ts-methods-textpicker-dialog.md)
+    <!--Del-->
+    - [文本滑动选择器弹窗 (TextPickerDialog) (系统接口)](arkui-ts/ts-methods-textpicker-dialog-sys.md)
+    <!--DelEnd-->
     - [弹出框 (Dialog)](arkui-ts/ohos-arkui-advanced-Dialog.md)
   - 卡片<!--service-widgets-->
     - [FormLink](arkui-ts/ts-container-formlink.md)
@@ -503,16 +514,18 @@
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
+    - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
     - 组件扩展装饰器<!--arkts-extend-component-decorator-->
       - [定义可动画属性 (@AnimatableExtend)](arkui-ts/ts-animatable-extend.md)
-      - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
       - [wrapBuilder: 封装全局@Builder](arkui-ts/ts-universal-wrapBuilder.md)
       - [mutableBuilder: 实现全局@Builder动态更新](arkui-ts/ts-universal-mutableBuilder.md)
   - 组件预览<!--component-preview-->
     - [组件预览](arkui-ts/ts-universal-component-previewer.md)
   - 系统预置UI组件库<!--system-preset-ui-component-library-->
     - [Chip](arkui-ts/ohos-arkui-advanced-Chip.md)
+    - [ChipV2](arkui-ts/ohos-arkui-advanced-ChipV2.md)
     - [ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)
+    - [ChipGroupV2](arkui-ts/ohos-arkui-advanced-ChipGroupV2.md)
     - [ComposeListItem](arkui-ts/ohos-arkui-advanced-ComposeListItem.md)
     - [ComposeTitleBar](arkui-ts/ohos-arkui-advanced-ComposeTitleBar.md)
     - [DownloadFileButton](arkui-ts/ohos-arkui-advanced-DownloadFileButton.md)
@@ -543,6 +556,7 @@
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
     - [advanced.Counter](arkui-ts/ohos-arkui-advanced-Counter.md)
     - [CounterV2](arkui-ts/ohos-arkui-advanced-CounterV2.md)
+    - [DatePickerComponent](arkui-ts/ohos-arkui-advanced-DatePickerComponent.md)
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
     - [状态管理V1装饰器参数](arkui-ts/ts-state-management-v1-parameter.md)
@@ -635,11 +649,15 @@
       - [ArkUI_NodeAttributeType（XComponent组件相关属性）](capi-native-node-h-nodeattributetype-xcomponent.md)
       - [ArkUI_NodeAttributeType（EmbeddedComponent组件相关属性）](capi-native-node-h-nodeattributetype-embeddedcomponent.md)
       - [ArkUI_NodeAttributeType（其他）](capi-native-node-h-nodeattributetype-other.md)
+    - [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md)
     - [native_node_napi.h](capi-native-node-napi-h.md)
     - [native_render.h](capi-native-render-h.md)
     - [native_type.h](capi-native-type-h.md)
+    - [native_type_visual.h](capi-native-type-visual-h.md)
     - [native_xcomponent_key_event.h](capi-native-xcomponent-key-event-h.md)
+    - [navigation_router.h](capi-navigation-router-h.md)
     - [styled_string.h](capi-styled-string-h.md)
+    - [swiper.h](capi-swiper-h.md)
     - [ui_input_event.h](capi-ui-input-event-h.md)
     - [oh_window.h](capi-oh-window-h.md)
     - [oh_window_comm.h](capi-oh-window-comm-h.md)

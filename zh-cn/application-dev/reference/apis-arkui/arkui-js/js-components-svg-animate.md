@@ -56,7 +56,7 @@
 ```
 
 
-![zh-cn_image_0000001173324703](figures/zh-cn_image_0000001173324703.gif)
+![animate01](figures/animate01.gif)
 
 
 ```html
@@ -72,7 +72,7 @@
 ```
 
 
-![zh-cn_image_0000001167662852](figures/zh-cn_image_0000001167662852.gif)
+![animate](figures/animate.gif)
 
 
 ```html
@@ -87,7 +87,7 @@
 ```
 
 
-![zh-cn_image_0000001127284938](figures/zh-cn_image_0000001127284938.gif)
+![example-1](figures/example-1.gif)
 
 
 ```html
@@ -121,4 +121,4 @@
 ```
 
 
-![zh-cn_image_0000001127125126](figures/zh-cn_image_0000001127125126.gif)
+![Repeating-image](figures/Repeating-image.gif)

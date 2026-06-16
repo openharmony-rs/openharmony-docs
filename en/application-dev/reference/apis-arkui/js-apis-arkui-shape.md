@@ -1,8 +1,8 @@
 # @ohos.arkui.shape (Shape)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,7 +11,9 @@ The **shape** module provides [clipShape](arkui-ts/ts-universal-attributes-sharp
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -263,7 +265,7 @@ Represents the parameter of the constructor used to create a **PathShape** objec
 
 | Name        | Type                                              | Read-Only                                            | Optional                                            | Description                                        |
 | ----------- | -------------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| commands | string | No| Yes| Path drawing commands. For details, see [commands](./arkui-ts/ts-drawing-components-path.md#commands).|
+| commands | string | No| Yes| Path drawing commands. For more about the commands, see [commands](./arkui-ts/ts-drawing-components-path.md#commands).|
 
 ## RectShapeOptions
 

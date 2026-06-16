@@ -1,8 +1,8 @@
 # ArkUI_AnimateCompleteCallback
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -26,7 +26,7 @@ Defines the callback type for when the animation playback is complete.
 
 | Name                                                                             | Description|
 |---------------------------------------------------------------------------------| -- |
-| [ArkUI_FinishCallbackType](capi-native-type-h.md#arkui_finishcallbacktype) type | Callback type for when the animation playback is complete.|
+| [ArkUI_FinishCallbackType](capi-native-type-visual-h.md#arkui_finishcallbacktype) type | Callback type for when the animation playback is complete.|
 | void* userData                                                                  | Custom data passed upon animation end callback.|
 
 
@@ -34,7 +34,7 @@ Defines the callback type for when the animation playback is complete.
 
 | Name| Description|
 | -- | -- |
-| [void (\*callback)(void* userData)](#callback) | Callback invoked when the animation playback is complete.|
+| [void (\*callback)(void* userData)](#callback) | Callback for when the animation playback is complete.|
 
 ## Member Function Description
 
@@ -47,4 +47,4 @@ void (*callback)(void* userData)
 **Description**
 
 
-Callback invoked when the animation playback is complete.
+Invoked when the animation playback is complete.

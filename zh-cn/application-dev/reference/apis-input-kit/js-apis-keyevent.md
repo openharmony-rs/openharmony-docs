@@ -44,7 +44,7 @@ import { Action, Key, KeyEvent } from '@kit.InputKit';
 | 名称        | 类型 | 只读 | 可选 | 说明           |
 | ----------- | -------- | ---- | ---- | -------------- |
 | code        | [KeyCode](js-apis-keycode.md#keycode)  | 否   | 否   | 键值。         |
-| pressedTime | number   | 否   | 否   | 按键按下时间，单位：μs。 |
+| pressedTime | number   | 否   | 否   | 按键按下时间，表示系统启动运行至今逝去的微秒数，单位为微秒（μs）。 |
 | deviceId    | number   | 否   | 否   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。   |
 
 ## KeyEvent

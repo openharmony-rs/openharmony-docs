@@ -1,9 +1,9 @@
 # ArkUI_NodeAttributeType（滚动容器类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong; @guozejun-->
-<!--Designer: @yylong; @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Owner: @shengu_lancer; @yylong; @yangcan18-->
+<!--Designer: @yylong;@guozejun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
@@ -267,7 +267,7 @@ NODE_SCROLL_OFFSET = 1002009
 | .value[0].f32 | 水平滑动偏移，单位为vp。取值范围：当值小于0时按0处理，表示不带动画的滚动。值大于0表示带动画的滚动，默认滚动到起始位置后停止。可通过设置ScrollOptions中的animation参数，使滚动在越界时启动回弹动画。 |
 | .value[1].f32 | 垂直滑动偏移，单位为vp。取值范围：当值小于0时按0处理，表示不带动画的滚动。值大于0表示带动画的滚动，默认滚动到起始位置后停止。可通过设置animation参数，使滚动在越界时启动回弹动画。 |
 | .value[2]?.i32 | 可选值，滚动时长，单位为毫秒，默认值1000。 |
-| .value[3]?.i32 | 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-h.md#arkui_animationcurve)。 |
+| .value[3]?.i32 | 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-visual-h.md#arkui_animationcurve)。 |
 | .value[4]?.i32 | 可选值，是否使能默认弹簧动效，默认值为0不使能。 |
 | .value[5]?.i32 | 可选值，设置动画滚动到边界是否转换为越界回弹动画，默认值为0不转换越界回弹动画。 |
 | .value[6]?.i32 | 可选值，设置滚动是否可以停留在越界位置，默认值为0不停留在越界位置。该参数从API version 20开始支持。 |
@@ -718,6 +718,29 @@ NODE_SCROLL_AUTO_ADJUST_MARGIN = 1002028
 | -- | -- |
 | .value[0].i32 | 是否自动调整边距，0：自动调整边距，1：不自动调整边距。 |
 
+
+## NODE_SCROLL_BAR_HEIGHT
+
+```c
+NODE_SCROLL_BAR_HEIGHT = 1002029
+```
+
+定义滚动条滑轨高度。支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 滚动条滑轨高度，单位：vp。默认值：自适应滚动组件高度。<br>取值范围：值必须大于等于0。设置为小于0时使用默认值，儿童智能表则恢复至默认值37vp。设置为0时不显示滚动条。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 滚动条滑轨高度，单位：vp。 |
 
 ## NODE_LIST_DIRECTION
 

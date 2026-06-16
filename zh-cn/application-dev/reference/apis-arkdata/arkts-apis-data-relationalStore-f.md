@@ -26,10 +26,10 @@ getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback&lt;Rd
 
 开发者在创建数据库时，应谨慎配置是否进行数据库加密的参数[encrypt](arkts-apis-data-relationalStore-i.md#storeconfig)，数据库创建后，禁止对该参数进行修改。
 
-| 当前开库的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
+| 当前打开数据库时配置的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
 | ------- | -------------------------------- | ---- |
-| 非加密 | 加密                          | 将数据库以加密方式打开。   |
-| 加密 | 非加密                          | 将数据库以非加密方式打开。   |
+| 非加密 | 加密                          | 使用加密配置（encrypt=true）打开数据库。   |
+| 加密 | 非加密                          | 使用非加密配置（encrypt=false）打开数据库。   |
 
 getRdbStore支持多线程并发操作。
 
@@ -41,7 +41,7 @@ getRdbStore支持多线程并发操作。
 | -------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                        | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)               | 是   | 与此RDB存储相关的数据库配置。                                |
-| callback | AsyncCallback&lt;[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)&gt; | 是   | 指定callback回调函数，返回RdbStore对象。                   |
+| callback | AsyncCallback&lt;[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)&gt; | 是   | 回调函数。当获取RdbStore成功，err为undefined，data为RdbStore对象；否则为错误对象。                   |
 
 **错误码：**
 
@@ -132,10 +132,10 @@ getRdbStore(context: Context, config: StoreConfig): Promise&lt;RdbStore&gt;
 
 开发者在创建数据库时，应谨慎配置是否进行数据库加密的参数[encrypt](arkts-apis-data-relationalStore-i.md#storeconfig)，数据库创建后，禁止对该参数进行修改。
 
-| 当前开库的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
+| 当前打开数据库时配置的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
 | ------- | -------------------------------- | ---- |
-| 非加密 | 加密                          | 将数据库以加密方式打开。   |
-| 加密 | 非加密                          | 将数据库以非加密方式打开。   |
+| 非加密 | 加密                          | 使用加密配置（encrypt=true）打开数据库。   |
+| 加密 | 非加密                          | 使用非加密配置（encrypt=false）打开数据库。   |
 
 getRdbStore支持多线程并发操作。
 
@@ -237,10 +237,10 @@ getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
 
 开发者在创建数据库时，应谨慎配置是否进行数据库加密的参数[encrypt](arkts-apis-data-relationalStore-i.md#storeconfig)，数据库创建后，禁止对该参数进行修改。如果有修改参数，则会报错误码。
 
-| 当前开库的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
+| 当前打开数据库时配置的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
 | ------- | -------------------------------- | ---- |
-| 非加密 | 加密                          | 将数据库以加密方式打开。   |
-| 加密 | 非加密                          | 将数据库以非加密方式打开。   |
+| 非加密 | 加密                          | 使用加密配置（encrypt=true）打开数据库。   |
+| 加密 | 非加密                          | 使用非加密配置（encrypt=false）打开数据库。   |
 
 getRdbStoreSync支持多线程并发操作。
 
@@ -323,8 +323,8 @@ deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&g
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| name     | string                    | 是   | 数据库名称。                                                 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 指定callback回调函数。                                       |
+| name     | string                    | 是   | 数据库名称，不能为空字符串且不能包含路径分隔符/。                                                 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当删除数据库成功，err为undefined，否则为错误对象。                                       |
 
 **错误码：**
 
@@ -384,7 +384,7 @@ class EntryAbility extends UIAbility {
 
 deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 
-使用指定的数据库文件配置删除数据库，使用Promise异步回调。
+删除数据库文件，使用Promise异步回调。
 
 删除成功后，建议将数据库对象置为null。建立数据库时，若在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置了自定义路径，则调用此接口进行删库无效，必须使用 [deleteRdbStore](#relationalstoredeleterdbstore10-1) 接口进行删库。
 
@@ -397,13 +397,13 @@ deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 | 参数名  | 类型    | 必填 | 说明                                                         |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
 | context | Context | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| name    | string  | 是   | 数据库名称。                                                 |
+| name    | string  | 是   | 数据库名称，不能为空字符串且不能包含路径分隔符/。                                                 |
 
 **返回值**：
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -473,7 +473,7 @@ deleteRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<v
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                     | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
-| callback | AsyncCallback&lt;void&gt;   | 是   | 指定callback回调函数。                                       |
+| callback | AsyncCallback&lt;void&gt;   | 是   | 回调函数。当删除数据库成功，err为undefined，否则为错误对象。                                       |
 
 **错误码：**
 
@@ -563,7 +563,7 @@ deleteRdbStore(context: Context, config: StoreConfig): Promise\<void>
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -728,7 +728,7 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| table | string              | 是   | 要写入数据的数据库表名。 |
+| table | string              | 是   | 要写入数据的数据库表名，不能为空字符串。 |
 | values | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 是 | 要写入数据库中数据的字段信息以及对应的值信息。 |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | 否 |指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。 |
 

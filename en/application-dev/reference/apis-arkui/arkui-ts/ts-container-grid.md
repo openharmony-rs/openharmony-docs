@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **Grid** component consists of cells formed by rows and columns. You can specify the cells where items are located to form various layouts.
@@ -1129,7 +1129,7 @@ struct GridExample {
 }
 ```
 
-![en-us_image_0000001219744183](figures/en-us_image_0000001219744183.gif)
+![grid1](figures/grid1.gif)
 
 ### Example 2: Implementing a Scrollable Grid with Scroll Events
 

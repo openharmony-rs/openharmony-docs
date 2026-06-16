@@ -122,7 +122,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
   **图1** PersistProp初始化流程  
 
-  ![zh-cn_image_0000001553348833](figures/zh-cn_image_0000001553348833.png)
+  ![zh-cn_image_0000001553348833](figures/PersistProp-initialization.png)
 
 - 触发点击事件后：
   1. 状态变量\@StorageLink('aProp') aProp改变，触发Text组件重新刷新。

@@ -457,9 +457,9 @@ revokePermission(tokenID: number): Promise&lt;void&gt;
 
 撤销指定应用的持久化文件授权，使用Promise异步回调。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.REVOKE_FILE_ACCESS_PERSIST
 
@@ -518,9 +518,9 @@ revokePermission(tokenID: number, policies: Array&lt;PolicyInfo&gt;): Promise&lt
 
 撤销指定应用对URIs的持久化授权，使用Promise异步回调。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.REVOKE_FILE_ACCESS_PERSIST
 
@@ -596,9 +596,9 @@ getPersistentPolicy(tokenID: number): Promise&lt;Array&lt;PolicyInfo&gt;&gt;
 
 获取应用程序的持久化授权策略，使用Promise异步回调。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.GET_FILE_ACCESS_PERSIST
 

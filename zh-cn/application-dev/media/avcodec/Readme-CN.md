@@ -21,9 +21,11 @@
   - [B帧视频编码](video-encoding-b-frame.md)
   - [典型场景的视频编码配置](video-encoding-configuration-typical-scenarios.md)
   - [ROI视频编码](video-encoding-ROI.md)
+  - [编码支持一入二出](video-encoding-preproc-one-in-dual-out.md)
+  - [编码支持前处理](video-encoding-preproc.md)
   - [视频解码](video-decoding.md)
   - [视频解码同步模式](synchronous-video-decoding.md)
-  - [视频可变帧率](video-variable-refreshrate.md)<!--RP1--><!--RP1End-->
+  - [视频可变帧率](video-variable-refreshrate.md)<!--RP1--><!--RP1End--><!--RP3--><!--RP3End-->
 - 媒体数据封装与解析<!--file-muxing-demuxing-->
   - [媒体数据封装](audio-video-muxer.md)
   - [媒体数据解析](audio-video-demuxer.md)<!--RP2--><!--RP2End-->

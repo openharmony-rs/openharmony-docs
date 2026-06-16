@@ -1,8 +1,8 @@
 # 传统曲线
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -115,5 +115,5 @@ struct CurveDemo {
 ```
 
 
-![zh-cn_image_0000001641260233](figures/zh-cn_image_0000001641260233.gif)
+![zh-cn_image_0000001641260233](figures/Traditional-Curve.gif)
 

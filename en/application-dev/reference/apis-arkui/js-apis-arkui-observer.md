@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
-<!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
+<!--Owner: @piggyguy; @lushi871202; @hehongyang3-->
+<!--Designer: @piggyguy; @lushi871202; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,6 +12,8 @@ Provides APIs for listening for UI component behavior changes. [UIObserver](./ar
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 >
 > - UIObserver can only listen for relevant information within the current process and does not support obtaining information in cross-process scenarios<!--Del--> such as [UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)<!--DelEnd-->.
 
@@ -86,7 +88,7 @@ Enumerates the **TabContent** component states.
 
 ## NavDestinationInfo
 
-Information about the **NavDestination** component, returned by the system to developers.
+Provides information about the **NavDestination** component, returned by the system to developers.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1288,7 +1290,7 @@ struct TabsExample {
   }
 
   aboutToDisappear(): void {
-    // Unregister the listeners.
+    // Unregister the listener.
     uiObserver.off('tabContentUpdate', callbackFunc);
   }
 
@@ -1378,7 +1380,7 @@ struct TabsExample {
   }
 
   aboutToDisappear(): void {
-    // Unregister the listeners.
+    // Unregister the listener.
     uiObserver.off('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 
