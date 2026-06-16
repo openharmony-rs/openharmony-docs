@@ -1,4 +1,10 @@
 # 定位JS代码阻塞导致的卡死问题
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @qq_44167590-->
+<!--Designer: @hjoksky-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 ## 问题描述
 
@@ -11,12 +17,12 @@
 ## 定位步骤
 
 当发生JS代码阻塞渲染进程时，系统会在以下路径生成日志文件：
-```
+```c
 /data/log/faultlog/faultlogger/appfreezewarning-xxx.log
 ```
 
 打开日志文件，查找 **Reason** 字段，日志示例如下：
-```
+```c
 Device info:xxx
 Build info:xxx
 Fingerprint:xxx
@@ -48,11 +54,11 @@ TID = xxx
 如果 **Reason** 字段的值为 **RENDER_JS_FREEZE** ，则说明此次卡死是由JS代码阻塞渲染进程导致的。
 
 然后在日志中全局搜索以下关键字：
-```
+```c
 Collect Freezelog Callback
 ```
 根据返回的JS堆栈信息，开发者可以进一步排查代码阻塞的具体原因。JS堆栈示例如下：
-```
+```c
 Collect Freezelog Callback Start Time:2026/06/05-12:10:16:442
 startInfiniteLoop (resource://rawfile/page.html:17:9)
 jsTest (resource://rawfile/page.html:20:9)
