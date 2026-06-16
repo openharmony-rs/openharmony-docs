@@ -47,4 +47,4 @@
 ```
 
 
-![zh-cn_image_0000001173164793](figures/zh-cn_image_0000001173164793.png)
+![ellipse](figures/ellipse.png)

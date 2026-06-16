@@ -176,7 +176,7 @@ struct Index {
 }
 ```
 
-![en-us_image_tabtitlebar_example01](figures/en-us_image_tabtitlebar_example01.png)
+![en-us_image_tabtitlebar_example01](figures/image-tabtitlebar-example01.png)
 
 ### Example 2: Implementing Announcement for the Custom Button on the Right Side
 This example customizes the screen reader announcement text by setting the **accessibilityText**, **accessibilityDescription**, and **accessibilityLevel** properties of the custom button on the right side of the title bar. This functionality is supported since API version 18.
@@ -281,7 +281,7 @@ struct Index {
   }
 }
 ```
-![en-us_image_tabtitlebar_example02](figures/en-us_image_tabtitlebar_example02.png)
+![en-us_image_tabtitlebar_example02](figures/image-tabtitlebar-example02.png)
 
 ### Example 3: Setting the Symbol Icon
 This example demonstrates how to use **symbolStyle** in **TabTitleBarTabItem** and **TabTitleBarMenuItem** to set custom symbol icons. This functionality is supported since API version 18.
@@ -393,4 +393,4 @@ struct Index {
   }
 }
 ```
-![en-us_image_tabtitlebar_example03](figures/en-us_image_tabtitlebar_example03.png)
+![en-us_image_tabtitlebar_example03](figures/image-tabtitlebar-example03.png)

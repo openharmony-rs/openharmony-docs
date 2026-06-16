@@ -1329,3 +1329,31 @@ Allows an application to manage the printing system.
 **Supported devices**: PCs/2-in-1 devices | phones | tablets
 
 **Since**: 24
+
+## ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
+
+Allows an application to install and load self-distributed plug-ins.
+
+<!--RP90--><!--RP90End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.ALLOW_USE_BM
+
+Allows an application to call BM tools in developer mode.
+
+<!--RP94--><!--RP94End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0

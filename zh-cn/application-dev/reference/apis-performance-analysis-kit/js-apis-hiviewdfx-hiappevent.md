@@ -282,6 +282,10 @@ setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&l
 - APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#自定义规格设置)）
 - RESOURCE_OVERLIMIT（参数配置详见[资源泄漏事件检测](../../dfx/hiappevent-watcher-resourceleak-events.md#自定义规格设置)）
 
+ > **说明：**
+ >
+ > 从API版本26.0.0开始，configEventPolicy已支持本接口所有设置，推荐使用[configEventPolicy](#hiappeventconfigeventpolicy22)。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
@@ -900,7 +904,7 @@ setUserId(name: string, value: string): void
 | 参数名     | 类型                      | 必填 | 说明           |
 | --------- | ------------------------- | ---- | -------------  |
 | name      | string                    | 是   | 用户ID的key。只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。   |
-| value     | string                    | 是   | 用户ID的值。长度不超过256，当值为null或空字符串时，则清除用户ID。 |
+| value     | string                    | 是   | 用户ID的值。长度不超过256个字符，当值为null或空字符串时，则清除用户ID。 |
 
 **错误码：**
 
@@ -983,7 +987,7 @@ setUserProperty(name: string, value: string): void
 | 参数名     | 类型                      | 必填 | 说明           |
 | --------- | ------------------------- | ---- | -------------- |
 | name      | string                    | 是   | 用户属性的key。只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。  |
-| value     | string                    | 是   | 用户属性的值。长度不超过1024，当值为null或空字符串时，则清除用户属性。  |
+| value     | string                    | 是   | 用户属性的值。长度不超过1024个字符，当值为null或空字符串时，则清除用户属性。  |
 
 **错误码：**
 

@@ -44,7 +44,7 @@ function testGenCipherTextBySpec() {
 
 1. 准备符合国密标准的ASN.1格式的SM2密文。
 
-2. 调用[getCipherTextSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genciphertextbyspec12)，从标准密文中，获取具体的SM2密文参数。
+2. 调用[getCipherTextSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getciphertextspec12)，从标准密文中，获取具体的SM2密文参数。
 
 3. 根据业务需要，自行拼接SM2密文参数，形成其他格式的SM2密文。
 

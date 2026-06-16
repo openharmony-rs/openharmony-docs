@@ -4599,3 +4599,48 @@ keyboardAppearance(mode: WebKeyboardAppearanceMode)
   </body>
   </html>
   ```
+
+## enableFullscreenVideoOverlay
+
+enableFullscreenVideoOverlay(enabled: boolean)
+
+设置Web组件是否开启覆盖式全屏播放功能。当属性没有显式调用时，默认不开启该能力。
+
+> **说明：**
+>
+> - 当前只支持H264、H265解码格式的视频。
+> - 只有视频元素发出的全屏请求才会响应。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone/Tablet设备中可正常调用，在其他设备中无效。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                         |
+| ------ | -------- | ---- | -------------------------------- |
+| enabled | boolean  | 是   | 设置web组件是否开启覆盖式全屏播放功能。<br>true表示开启该功能。<br>false表示不开启。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .enableFullscreenVideoOverlay(true)
+      }
+    }
+  }
+  ```

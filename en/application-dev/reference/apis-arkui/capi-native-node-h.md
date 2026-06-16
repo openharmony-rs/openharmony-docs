@@ -48,7 +48,6 @@ Provides type definitions for **NativeNode** APIs.
 | [ArkUI_NodeAttributeType](#arkui_nodeattributetype) | ArkUI_NodeAttributeType | Enumerates the attribute types that can be set by ArkUI on the native side.|
 | [ArkUI_NodeEventType](#arkui_nodeeventtype) | ArkUI_NodeEventType | Enumerates the event types supported by the **NativeNode** component.|
 | [ArkUI_NodeDirtyFlag](#arkui_nodedirtyflag) | ArkUI_NodeDirtyFlag | Enumerates the flags passed to indicate the need to re-execute measurement, layout, or rendering when a custom component calls the **::markDirty** API.|
-| [ArkUI_NodeCustomEventType](#arkui_nodecustomeventtype) | ArkUI_NodeCustomEventType | Enumerates custom component event types.|
 | [ArkUI_NodeAdapterEventType](#arkui_nodeadaptereventtype) | ArkUI_NodeAdapterEventType | Enumerates node adapter event types.|
 | [ArkUI_NodeContentEventType](#arkui_nodecontenteventtype) | ArkUI_NodeContentEventType | Enumerates the event types of **NodeContent**.|
 | [ArkUI_InspectorErrorCode](#arkui_inspectorerrorcode) | ArkUI_InspectorErrorCode | Enumerates inspector error codes.|
@@ -178,6 +177,8 @@ Provides type definitions for **NativeNode** APIs.
 | [int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node, float expectedUpdateInterval, void* userData, void (*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonareaapproximatechangeevent) | - | Registers a callback for listening for component size and area changes. This API can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node at any time. The newly registered callback will replace the previously registered callback for this event and take effect from the next frame. When the callback is no longer needed, use [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released.|
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent(ArkUI_NodeHandle node)](#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) | - | Unregisters the callback for listening for component size and area changes.|
 | [ArkUI_GestureCollectInterceptInfo* OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo(ArkUI_NodeEvent* nodeEvent)](#oh_arkui_nodeevent_getgesturecollectinterceptinfo) | - | Obtains the **ArkUI_GestureCollectInterceptInfo** object from a specified **ArkUI_NodeEvent** object.<br>**Since**: 26.0.0|
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)](#oh_arkui_nativemodule_setchildmountpolicy) | - | Sets the child node mounting policy for a target node.<br>**Since**: 26.0.0|
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)](#oh_arkui_nativemodule_getchildmountpolicy) | - | Obtains the current child node mounting policy of a target node. The default child node mounting policy of a target node is [OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](./capi-native-type-h.md#oh_arkui_nodemountpolicy).<br>**Since**: 26.0.0|
 
 ### Macros
 
@@ -340,7 +341,7 @@ Enumerates the event types supported by the **NativeNode** component.
 | NODE_TEXT_SPAN_ON_LONG_PRESS = 1001 | Long-press event for the span component. This callback is triggered when the component is long-pressed.<br> When the event callback occurs, the [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) object can be obtained from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object.<br>**Since**: 20  |
 | NODE_TEXT_ON_TEXT_SELECTION_CHANGE = 1002 | Event triggered when the text selection position changes. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: start position of the text selection range.<br> **ArkUI_NodeComponentEvent.data[1].i32**: end position of the text selection range.<br><br>**Since**: 26.0.0|
 | NODE_TEXT_ON_COPY = 1003 | Event triggered when the copy button on the clipboard, which displays when the text box is long pressed, is clicked. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md).<br> [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) contains the following parameter:<br> **ArkUI_StringAsyncEvent.pStr**: text to be copied.<br>**Since**: 26.0.0|
-| NODE_TEXT_ON_WILL_COPY = 1004| Event triggered before text is copied. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md).<br> [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) contains the following parameter:<br> **ArkUI_StringAsyncEvent.pStr**: text to be copied.<br>You can use [OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue) to set the return value.<br>**value.i32** whose **index** is set to **0** indicates whether to intercept the default copying behavior of the component.<br>**0**: intercept the default copying behavior of the component. **1**: not intercept the default copying behavior of the component.<br>**Since**: 26.0.0|
+| NODE_TEXT_ON_WILL_COPY = 1004 | Event triggered before text is copied. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md).<br> [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md) contains the following parameter:<br> **ArkUI_StringAsyncEvent.pStr**: text to be copied.<br>You can use [OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue) to set the return value.<br>**value.i32** whose **index** is set to **0** indicates whether to intercept the default copying behavior of the component.<br>**0**: intercept the default copying behavior of the component. **1**: not intercept the default copying behavior of the component.<br>**Since**: 26.0.0|
 | NODE_IMAGE_ON_COMPLETE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE = 4000 | Image loading success event. This event is triggered when an image is successfully loaded or decoded.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: loading status. The value **0** indicates that the image is loaded successfully, and **1** indicates that the image is decoded successfully.<br> **ArkUI_NodeComponentEvent.data[1].f32**: width of the image, in px.<br> **ArkUI_NodeComponentEvent.data[2].f32**: height of the image, in px.<br> **ArkUI_NodeComponentEvent.data[3].f32**: width of the component, in px.<br> **ArkUI_NodeComponentEvent.data[4].f32**: height of the component, in px.<br> **ArkUI_NodeComponentEvent.data[5].f32**: offset of the rendered content relative to the component on the x-axis, in px.<br> **ArkUI_NodeComponentEvent.data[6].f32**: offset of the rendered content relative to the component on the y-axis, in px.<br> **ArkUI_NodeComponentEvent.data[7].f32**: actual rendered width of the image, in px.<br> **ArkUI_NodeComponentEvent.data[8].f32**: actual rendered height of the image, in px. |
 | NODE_IMAGE_ON_ERROR = 4001 | Image loading failure event. This event is triggered when an error occurs during image loading.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameter:<br> **ArkUI_NodeComponentEvent.data[0].i32**: result code.<br> **401**: The image could not be obtained because the image path is invalid.<br> **103101**: The image format is not supported. |
 | NODE_IMAGE_ON_SVG_PLAY_FINISH = 4002 | SVG animation playback completion event. This event is triggered when the animation playback in the loaded SVG image is complete.<br> When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters. |
@@ -472,29 +473,6 @@ Enumerates the flags passed to indicate the need to re-execute measurement, layo
 | NODE_NEED_MEASURE = 1 | Remeasure. When this type of flag is specified, re-layout is triggered by default.|
 | NODE_NEED_LAYOUT = 2 | Re-layout.|
 | NODE_NEED_RENDER = 3 | Re-rendering.|
-
-### ArkUI_NodeCustomEventType
-
-```c
-enum ArkUI_NodeCustomEventType
-```
-
-**Description**
-
-
-Enumerates custom component event types.
-
-**Since**: 12
-
-| Value| Description|
-| -- | -- |
-| ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0 | Custom measurement.|
-| ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1 | Custom layout.|
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2 | Custom content layer drawing.|
-| ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3 | Custom foreground drawing.|
-| ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4 | Custom overlay drawing.|
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5 | Custom content layer foreground drawing.<br>**Since**: 20|
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6 | Custom content layer background drawing.<br>**Since**: 20|
 
 ### ArkUI_NodeAdapterEventType
 
@@ -1523,7 +1501,7 @@ Obtains the event type through a custom component event.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_NodeCustomEventType](capi-native-node-h.md#arkui_nodecustomeventtype) | Type of the custom component event.|
+| [ArkUI_NodeCustomEventType](capi-native-node-node-attributes-node-attr-custom-h.md#arkui_nodecustomeventtype) | Type of the custom component event.|
 
 ### OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo()
 
@@ -3710,5 +3688,57 @@ Obtains the **ArkUI_GestureCollectInterceptInfo** object from a specified **ArkU
 | Type| Description|
 | -- | -- |
 | [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md)* | Pointer to the **ArkUI_GestureCollectInterceptInfo** object. This return value is valid only during the callback and does not need to be released.<br>**null** is returned if the input parameter is invalid or is not the gesture collection interception information.|
+
+### OH_ArkUI_NativeModule_SetChildMountPolicy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)
+```
+
+**Description**
+
+Sets the child node mounting policy for a target node.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
+| [OH_ArkUI_NodeMountPolicy](./capi-native-type-h.md#oh_arkui_nodemountpolicy) policy | Mounting policy to be set.|
+
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.|
+
+### OH_ArkUI_NativeModule_GetChildMountPolicy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy* policy)
+```
+
+**Description**
+
+Obtains the current child node mounting policy of a target node. The default child node mounting policy of a target node is [OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](./capi-native-type-h.md#oh_arkui_nodemountpolicy).
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
+| [OH_ArkUI_NodeMountPolicy](./capi-native-type-h.md#oh_arkui_nodemountpolicy)* policy | Pointer to the child node mounting policy of the target node.|
+
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.|
 
 ## More

@@ -7,9 +7,9 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-## 简介
+## 场景介绍
 
-串口通信模块（`@ohos.busManager.serial`）提供面向对象的串口管理能力，支持获取设备可用串口列表、打开/关闭串口、数据读写、硬件信号控制以及流控配置等功能。该模块适用于工业自动化、物联网设备互联、嵌入式设备调试、GPS模块通信等需要通过串口进行数据交换的场景。
+串口通信模块（`@ohos.busManager.serial`）提供面向对象的串口管理能力，支持获取设备可用串口列表、打开/关闭串口、数据读写、硬件信号控制（RTS/CTS、DTR/DSR）、断开事件监听以及流控配置等功能。该模块适用于工业自动化、物联网设备互联、嵌入式设备调试、GPS模块通信等需要通过串口进行数据交换的场景。
 
 ## 基本概念
 
@@ -46,10 +46,11 @@
 1. **获取串口列表**：系统枚举当前可用的串口设备，返回串口对象列表。
 2. **打开串口**：选择目标串口，配置波特率、数据位、校验位、停止位等通信参数并打开。首次打开时系统会弹窗请求用户授权，用户同意后方可访问串口设备；用户拒绝则接口抛出35700007错误码。
 3. **数据收发**：通过写入接口发送数据，通过注册数据回调监听接收数据。
-4. **硬件信号控制**：通过RTS/CTS等信号线进行硬件流控和状态检测。
-5. **关闭串口**：通信结束后关闭串口，释放资源。
+4. **硬件信号控制**：通过RTS/CTS、DTR/DSR等信号线进行硬件流控和状态检测。
+5. **断开事件监听**：通过注册断开事件回调，监听USB虚拟串口的拔出等断开事件。
+6. **关闭串口**：通信结束后关闭串口，释放资源。
 
-**图1** 串口通信数据流
+串口通信数据流
 
 ``` txt
 应用层写入数据 → 串口驱动发送 → 物理串口线 → 对端串口设备
@@ -102,6 +103,10 @@
 | [SerialPort.setRts](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#setrts)(enable: boolean): Promise&lt;void&gt; | 设置RTS（请求发送）信号状态。使用Promise异步回调。 |
 | [SerialPort.getCts](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#getcts)(): Promise&lt;boolean&gt; |  获取CTS（清除发送）信号状态。使用Promise异步回调。 |
 | [SerialPort.sendBrk](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#sendbrk)(): Promise&lt;void&gt; | 发送BRK（中断）信号。使用Promise异步回调。 |
+| [SerialPort.setDtr](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#setdtr)(enable: boolean): Promise&lt;void&gt; | 设置DTR（数据终端就绪）信号状态。使用Promise异步回调。 |
+| [SerialPort.getDsr](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#getdsr)(): Promise&lt;boolean&gt; | 获取DSR（数据设备就绪）信号状态。使用Promise异步回调。 |
+| [SerialPort.onDisconnect](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#ondisconnect)(callback: Callback&lt;void&gt;): void | 监听串口断开事件。使用callback异步回调。 |
+| [SerialPort.offDisconnect](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#offdisconnect)(callback?: Callback&lt;void&gt;): void | 取消监听串口断开事件。 |
 
 [SerialConfigs](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialconfigs)配置参数说明：
 
@@ -234,7 +239,7 @@
 
 7. 硬件信号控制。
 
-   * 设置RTS信号为高电平
+   * 设置RTS信号为高电平。
 
      <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
@@ -252,7 +257,7 @@
      }
      ```
 
-   * 获取CTS信号状态
+   * 获取CTS信号状态。
 
      <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
@@ -270,7 +275,7 @@
      }
      ```
 
-   * 发送break信号
+   * 发送break信号。
 
      <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
@@ -288,7 +293,64 @@
      }
      ```
 
-8. 注销数据接收回调和关闭串口设备。
+   * 设置DTR信号为高电平。
+
+     <!-- @[setDtr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     try {
+       if (!this.port) {
+         console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+         return;
+       }
+       await this.port.setDtr(true);
+       console.info(`${TAG} setDtr(true) success`);
+     } catch (err) {
+       const e = err as BusinessError;
+       console.error(`${TAG} setDtr failed, code: ${e.code}, message: ${e.message}`);
+     }
+     ```
+
+   * 获取DSR信号状态。
+
+     <!-- @[getDsr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     try {
+       if (!this.port) {
+         console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+         return;
+       }
+       const dsrStatus = await this.port.getDsr();
+       console.info(`${TAG} getDsr success, DSR: ${dsrStatus}`);
+     } catch (err) {
+       const e = err as BusinessError;
+       console.error(`${TAG} getDsr failed, code: ${e.code}, message: ${e.message}`);
+     }
+     ```
+
+8. 监听串口断开事件。
+
+   <!-- @[onDisconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   try {
+     if (!this.port) {
+       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+       return;
+     }
+     this.disconnectedCallback = () => {
+       console.info(`${TAG} onDisconnect: serial port disconnected`);
+     };
+     this.port.onDisconnect(this.disconnectedCallback);
+     console.info(`${TAG} onDisconnect registered`);
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} onDisconnect failed, code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
+9. 注销数据接收回调和关闭串口设备。
 
    <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    

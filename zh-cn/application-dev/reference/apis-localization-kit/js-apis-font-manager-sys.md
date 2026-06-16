@@ -25,7 +25,7 @@ import { fontManager } from '@kit.LocalizationKit';
 
 installFont(path: string): Promise&lt;number&gt;
 
-安装指定路径下的字体，使用promise异步回调。
+安装指定路径下的字体。使用promise异步回调。
 
 **需要权限:** ohos.permission.UPDATE_FONT
 
@@ -62,7 +62,7 @@ installFont(path: string): Promise&lt;number&gt;
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
-  async installFont() {
+  async function installFont() {
     try {
       let res = await fontManager.installFont('fontPath');
       console.info('installFont suc. res is ' + res);
@@ -77,7 +77,7 @@ installFont(path: string): Promise&lt;number&gt;
 
 uninstallFont(fullName: string): Promise&lt;number&gt;
 
-卸载指定名称的字体，使用promise异步回调。
+卸载指定名称的字体。使用promise异步回调。
 
 **需要权限:** ohos.permission.UPDATE_FONT
 
@@ -111,7 +111,7 @@ uninstallFont(fullName: string): Promise&lt;number&gt;
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
-  async uninstallFont() {
+  async function uninstallFont() {
     try {
       let res = await fontManager.uninstallFont('fontName');
       console.info('uninstallFont suc. res is ' + res);
@@ -124,7 +124,7 @@ uninstallFont(fullName: string): Promise&lt;number&gt;
 
 ## dataMigration<sup>23+</sup>
 
-dataMigration(callback: DataMigrationCallback): int
+dataMigration(callback: DataMigrationCallback): number
 
 设备升级时使用的数据迁移接口，用于拉起迁移任务。
 
@@ -142,7 +142,7 @@ dataMigration(callback: DataMigrationCallback): int
 
 | 类型                    | 说明                     |
 | --------------------- | ---------------------- |
-| int | 返回拉起数据迁移任务结果。返回为0表示拉起成功，否则拉起失败。 |
+| number | 返回拉起数据迁移任务结果。返回为0表示拉起成功，否则拉起失败。 |
 
 **错误码：**
 
@@ -159,15 +159,15 @@ dataMigration(callback: DataMigrationCallback): int
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
-  dataMigration() {
+  async function dataMigration() {
     const callback: fontManager.DataMigrationCallback = {
       onHeartBeat: () => {
         console.info('onHeartBeat callback');
       },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
+      onProgress: (progress : fontManager.DataMigrationProgress) => {
         console.info('onProgress callback');
       },
-      onResult(result : int) => {
+      onResult: (result : number) => {
         console.info('onResult callback');
       }
     }
@@ -177,7 +177,6 @@ dataMigration(callback: DataMigrationCallback): int
     } catch (error) {
       console.error('dataMigration err.' + error.code);
     }
-    return;
   }
   ```
 
@@ -197,15 +196,15 @@ onHeartBeat(): void
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
-  dataMigration() {
+  async function dataMigration() {
     const callback: fontManager.DataMigrationCallback = {
       onHeartBeat: () => {
         console.info('onHeartBeat callback');
       },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
+      onProgress: (progress : fontManager.DataMigrationProgress) => {
         console.info('onProgress callback');
       },
-      onResult(result : int) => {
+      onResult: (result : number) => {
         console.info('onResult callback');
       }
     }
@@ -215,7 +214,6 @@ onHeartBeat(): void
     } catch (error) {
       console.error('dataMigration err.' + error.code);
     }
-    return;
   }
   ```
 
@@ -237,15 +235,15 @@ onProgress(progress : DataMigrationProgress): void
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
-  dataMigration() {
+  async function dataMigration() {
     const callback: fontManager.DataMigrationCallback = {
       onHeartBeat: () => {
         console.info('onHeartBeat callback');
       },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
+      onProgress: (progress : fontManager.DataMigrationProgress) => {
         console.info('onProgress callback');
       },
-      onResult(result : int) => {
+      onResult: (result : number) => {
         console.info('onResult callback');
       }
     }
@@ -255,13 +253,12 @@ onProgress(progress : DataMigrationProgress): void
     } catch (error) {
       console.error('dataMigration err.' + error.code);
     }
-    return;
   }
   ```
 
 ### onResult<sup>23+</sup>
 
-onResult(result : int): void
+onResult(result : number): void
 
 回调函数，用于返回数据迁移的结果。
 
@@ -271,21 +268,21 @@ onResult(result : int): void
 
 | 参数名  | 类型   | 必填 | 说明                               |
 | ------- | ------ | ---- | ---------------------------------- |
-| result | int | 是   | 数据迁移结果。<br>0：数据迁移成功。<br>1：无需进行数据迁移。<br>2：获取用户ID失败。<br>3：检查目录失败。<br>4：初始化缓存目录失败。<br>5：打开源文件失败。<br>6：拷贝失败。<br>7：文件重命名失败。<br>8：文件删除失败。|
+| result | number | 是   | 数据迁移结果。<br>0：数据迁移成功。<br>1：无需进行数据迁移。<br>2：获取用户ID失败。<br>3：检查目录失败。<br>4：初始化缓存目录失败。<br>5：打开源文件失败。<br>6：拷贝失败。<br>7：文件重命名失败。<br>8：文件删除失败。|
 
 **示例：**
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
-  dataMigration() {
+  async function dataMigration() {
     const callback: fontManager.DataMigrationCallback = {
       onHeartBeat: () => {
         console.info('onHeartBeat callback');
       },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
+      onProgress: (progress : fontManager.DataMigrationProgress) => {
         console.info('onProgress callback');
       },
-      onResult(result : int) => {
+      onResult: (result : number) => {
         console.info('onResult callback');
       }
     }
@@ -295,7 +292,6 @@ onResult(result : int): void
     } catch (error) {
       console.error('dataMigration err.' + error.code);
     }
-    return;
   }
   ```
 
@@ -307,5 +303,5 @@ onResult(result : int): void
 
 | 名称     | 类型 | 只读 | 可选    | 说明  |
 | -------- | ---------------|--------|---------|-------------------------------- |
-| timeRemaining | int  |是 | 否 | 表示预计剩余时间，单位：秒。    |
-| progressPercentage | int |是 | 否 | 表示数据迁移百分比进展，取值：0-100。|
+| timeRemaining | number  |是 | 否 | 表示预计剩余时间，单位：秒。    |
+| progressPercentage | number |是 | 否 | 表示数据迁移百分比进展，取值：0-100。|

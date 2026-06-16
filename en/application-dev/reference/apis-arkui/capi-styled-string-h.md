@@ -289,6 +289,8 @@ Defines text styles and text layout managers for the component whose [ArkUI_Node
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetLinearGradient(const OH_ArkUI_ParagraphStyle* paragraphStyle, OH_ArkUI_LinearGradientOptions* linearGradient)](#oh_arkui_paragraphstyle_getlineargradient) | Obtains the linear gradient of the paragraph style.|
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetRadialGradient(OH_ArkUI_ParagraphStyle* paragraphStyle, const OH_ArkUI_RadialGradientOptions* radialGradient)](#oh_arkui_paragraphstyle_setradialgradient) | Sets radial gradient for a paragraph style.|
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetRadialGradient(const OH_ArkUI_ParagraphStyle* paragraphStyle, OH_ArkUI_RadialGradientOptions* radialGradient)](#oh_arkui_paragraphstyle_getradialgradient) | Obtains the radial gradient of the paragraph style.|
+| [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTailIndents(OH_ArkUI_ParagraphStyle* paragraphStyle, const float* tailIndents, uint32_t size)](#oh_arkui_paragraphstyle_settailindents) | Sets tail indentation for a paragraph style.|
+| [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTailIndents(const OH_ArkUI_ParagraphStyle* paragraphStyle, float** tailIndents, uint32_t tailIndentsSize, uint32_t* writeLength)](#oh_arkui_paragraphstyle_gettailindents) | Obtains the tail indentation of the paragraph style.|
 
 ## Enum Description
 
@@ -4016,7 +4018,7 @@ Obtains whether the display of multiple decorative lines is enabled in the text 
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md)* decorationStyle | Pointer to the [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md) object.|
-| bool* enableMultiType | Pointer to the **enableMultiType** parameter indicating whether the display of multiple decorative lines is enabled. **true** if enabled; **false** otherwise.|
+| bool* enableMultiType | Pointer to the **enableMultiType** parameter indicating whether the display of multiple decorative lines is enabled. **true** indicates the display of multiple decorative lines is enabled, and **false** indicates the opposite.|
 
 **Return value**
 
@@ -6076,3 +6078,65 @@ Obtains the radial gradient of the paragraph style.
 | Type| Description|
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_ParagraphStyle_SetTailIndents()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTailIndents(OH_ArkUI_ParagraphStyle* paragraphStyle, const float* tailIndents, uint32_t size)
+```
+
+**Description**
+
+Sets tail indentation for a paragraph style.
+
+> **NOTE**
+> 
+> All input pointer parameters must be allocated, managed, and released by the caller.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
+| const float* tailIndents | Pointer to the tail indentation value array. The unit is vp. The value range is [0, +∞). The valid length is specified by **size**. If the value of **size** is 1, all text lines use the same tail indentation value specified by **tailIndents[0]**. If the value of **size** is greater than 1, the *i*th line (counted from 0) uses **tailIndents[i]** as the tail indentation value. When the number of text lines exceeds the value of **size**, the value of **tailIndents[size - 1]** is reused for indentation of the excess lines.|
+| uint32_t size | Number of valid tail indentation values in the **tailIndents** array.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+
+### OH_ArkUI_ParagraphStyle_GetTailIndents()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTailIndents(const OH_ArkUI_ParagraphStyle* paragraphStyle, float** tailIndents, uint32_t tailIndentsSize, uint32_t* writeLength)
+```
+
+**Description**
+
+Obtains the tail indentation of the paragraph style.
+
+> **NOTE**
+>
+> All input pointer parameters must be allocated, managed, and released by the caller.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
+| float** tailIndents | Double pointer to the tail indentation value array, in vp.|
+| uint32_t tailIndentsSize | Size of the **tailIndents** buffer.|
+| uint32_t* writeLength | Pointer to the number of tail indentation values actually written to the buffer.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer length is less than the minimum limit.|

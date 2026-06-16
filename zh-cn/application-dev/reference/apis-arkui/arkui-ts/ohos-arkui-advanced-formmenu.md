@@ -223,10 +223,10 @@ struct WidgetCard {
 
 **高级自定义控件界面**
 
-![zh-cn_image_0000001616959836](figures/zh-cn_image_add_form_to_desktop.jpeg)
+![zh-cn_image_0000001616959836](figures/add-form-to-desktop.jpeg)
 
 **调用高级自定义控件桌面加桌结果**
 
 左侧是formbindingdata为空加桌结果，右侧是formbindingdata为{ data: 'share' }的加桌结果。
 
-![zh-cn_image_0000001616959836](figures/zh-cn_image_add_form_to_desktop_result.jpeg)
+![zh-cn_image_0000001616959836](figures/add-form-to-desktop-result.jpeg)

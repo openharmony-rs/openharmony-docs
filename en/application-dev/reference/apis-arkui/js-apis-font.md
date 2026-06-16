@@ -148,6 +148,8 @@ You are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -199,6 +201,8 @@ Obtains information about a system font based on the font name.
 > - Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

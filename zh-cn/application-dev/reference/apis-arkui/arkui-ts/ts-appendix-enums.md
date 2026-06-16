@@ -271,17 +271,17 @@
 
 | 名称                     | 值            | 说明                                                         |
 | ------------------------ | ------------- | ------------------------------------------------------------ |
-| Black                    | 0x000000      | ![zh-cn_image_0000001219864153](figures/zh-cn_image_0000001219864153.png) |
-| Blue                     | 0x0000ff      | ![zh-cn_image_0000001174104404](figures/zh-cn_image_0000001174104404.png) |
-| Brown                    | 0xa52a2a      | ![zh-cn_image_0000001219744201](figures/zh-cn_image_0000001219744201.png) |
-| Gray                     | 0x808080      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png) |
-| Grey                     | 0x808080      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png) |
-| Green                    | 0x008000      | ![zh-cn_image_0000001174422914](figures/zh-cn_image_0000001174422914.png) |
-| Orange                   | 0xffa500      | ![zh-cn_image_0000001219662661](figures/zh-cn_image_0000001219662661.png) |
-| Pink                     | 0xffc0cb      | ![zh-cn_image_0000001219662663](figures/zh-cn_image_0000001219662663.png) |
-| Red                      | 0xff0000      | ![zh-cn_image_0000001219662665](figures/zh-cn_image_0000001219662665.png) |
-| White                    | 0xffffff      | ![zh-cn_image_0000001174582866](figures/zh-cn_image_0000001174582866.png) |
-| Yellow                   | 0xffff00      | ![zh-cn_image_0000001174582864](figures/zh-cn_image_0000001174582864.png) |
+| Black                    | 0x000000      | ![black](figures/black.png) |
+| Blue                     | 0x0000ff      | ![blue](figures/blue.png) |
+| Brown                    | 0xa52a2a      | ![brown](figures/brown.png) |
+| Gray                     | 0x808080      | ![gray](figures/gray.png) |
+| Grey                     | 0x808080      | ![gray](figures/gray.png) |
+| Green                    | 0x008000      | ![green](figures/green.png) |
+| Orange                   | 0xffa500      | ![orange](figures/orange.png) |
+| Pink                     | 0xffc0cb      | ![pink](figures/pink.png) |
+| Red                      | 0xff0000      | ![red](figures/red.png) |
+| White                    | 0xffffff      | ![white](figures/white.png) |
+| Yellow                   | 0xffff00      | ![yellow](figures/yellow.png) |
 | Transparent<sup>9+</sup> | rgba(0,0,0,0) | 透明色                                                       |
 
 ## ColorSpace<sup>20+</sup>
@@ -324,7 +324,7 @@
 | None        | 0 | 不支持复制。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | InApp       | 1 | 支持仅在当前应用内复制粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | LocalDevice | 2 | 支持复制后在所有应用内粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| CROSS_DEVICE<sup>(deprecated)</sup> | 3 | 支持跨设备复制。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 从API version 11开始支持，从API version 12开始废弃。 |
+| CROSS_DEVICE<sup>(deprecated)</sup> | 3 | 支持跨设备复制。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 从API version 11开始支持，从API version 12开始废弃。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CheckBoxShape<sup>11+</sup>
 
@@ -1026,7 +1026,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | ---- | ----- | ----- |
 | Down | 0 | 按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Up   | 1 | 按键松开。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| CANCEL   | 3 | 取消按键事件。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| CANCEL   | 3 | 取消按键事件。在[全局基础输入事件监听](ts-inputeventmonitor.md)场景中，当Up事件被阻止传递后自动补发CANCEL事件。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## LineJoinStyle
 
@@ -1188,6 +1188,8 @@ type Nullable\<T> = T | undefined
 在使用该类型时，该类型的对象可以是自定义类型，也可以是undefined。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 

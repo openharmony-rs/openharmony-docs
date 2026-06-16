@@ -201,7 +201,9 @@ Declares the APIs of **NativeRender**. For details, see [Building a Rendering No
 | [int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetforegroundbluroption) | - | Resets a foreground blur style for a render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setcontentbluroption) | - | Sets a content blur style for a render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetcontentbluroption) | - | Resets a content blur style for a render node.|
-
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)](#oh_arkui_rendernodeutils_insertrendernodeat) | - | Inserts a child render node at a specified position under a parent node.|
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)](#oh_arkui_rendernodeutils_getrendernodechildrencount) | - | Obtains the number of child render nodes of a specified parent node.|
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getrendernodeat) | - | Obtains the child render node at a specified position under a parent node.|
 
 ## Function Description
 
@@ -604,7 +606,7 @@ Obtains the background color of the render node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| uint32_t* color | Integer pointer used to store the obtained RGBA color value.<br>Default value: **0x00000000**.<br>**Description of color byte layout**:<br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque).<br>- Bits 16-23: red channel.<br>- Bits 8-15: green channel.<br>- Bits 0-7: blue channel.|
+| uint32_t* color | Integer pointer used to store the obtained ARGB color value.<br>Default value: **0x00000000**.<br>**Description of color byte layout**:<br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque).<br>- Bits 16-23: red channel.<br>- Bits 8-15: green channel.<br>- Bits 0-7: blue channel.|
 
 **Return value**
 | Type| Description|
@@ -1111,7 +1113,7 @@ Obtains the shadow color of the render node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| uint32_t* color | Integer pointer used to store the obtained RGBA color value.<br>Default value: **0xFF000000**.<br>**Description of color byte layout**:<br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque).<br>- Bits 16-23: red channel.<br>- Bits 8-15: green channel.<br>- Bits 0-7: blue channel.|
+| uint32_t* color | Integer pointer used to store the obtained ARGB color value.<br>Default value: **0xFF000000**.<br>**Description of color byte layout**:<br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque).<br>- Bits 16-23: red channel.<br>- Bits 8-15: green channel.<br>- Bits 0-7: blue channel.|
 
 **Return value**
 | Type| Description|
@@ -2768,7 +2770,7 @@ Sets the command values for the custom drawing path option.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CommandPathOption](./capi-arkui-nativemodule-arkui-commandpathoption.md)* option | Pointer to the custom drawing path option.|
-| char* commands | Command values. The input parameter format is [\<path>shape](./arkui-ts/ts-basic-svg.md#basic-shapes).|
+| char* commands | Command values. The input parameter format is the \<path> shape label in [Basic Shapes](./arkui-ts/ts-basic-svg.md#basic-shapes) of SVG.|
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRectShape()
 
@@ -3202,7 +3204,7 @@ Sets a background blur style for a render node.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the background blur style is to be set.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the background blur style is to be set.|
 | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md) pointer to the blur style to be set.|
 
 **Return value**
@@ -3227,7 +3229,7 @@ Resets a background blur style for a render node. After the reset, there is no b
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the background blur style is to be reset.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the background blur style is to be reset.|
 
 **Return value**
 
@@ -3251,7 +3253,7 @@ Sets a foreground blur style for a render node.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the foreground blur style is to be set.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the foreground blur style is to be set.|
 | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md) pointer to the blur style to be set.|
 
 **Return value**
@@ -3276,7 +3278,7 @@ Resets a foreground blur style for a render node. After the reset, there is no f
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the foreground blur style is to be reset.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the foreground blur style is to be reset.|
 
 **Return value**
 
@@ -3300,7 +3302,7 @@ Sets a content blur style for a render node.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the content blur style is to be set.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the content blur style is to be set.|
 | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md) pointer to the blur style to be set.|
 
 **Return value**
@@ -3325,10 +3327,89 @@ Resets a content blur style for a render node. After the reset, there is no cont
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the content blur style is to be reset.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the content blur style is to be reset.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
 | int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the target node originates from a FrameNode.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.|
+
+### OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)
+```
+
+**Description**
+
+Inserts a child render node at a specified position under a parent node.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target parent node. Only nodes of the **ARKUI_NODE_CUSTOM** type in [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype) are supported.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child | Child render node to be inserted.|
+| int32_t position | Index of the child render node to be inserted.<br>The index range must be [0, Number of the current child nodes].<br>If the index is equal to the number of the current child nodes, the operation is equivalent to an addition operation.|
+
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_NOT_CUSTOM_NODE](capi-native-type-h.md#arkui_errorcode) if the target node is not a custom node.<br>         Returns [ARKUI_ERROR_CODE_CHILD_EXISTED](capi-native-type-h.md#arkui_errorcode) if the parent node already has a child node.<br>         Returns [ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED](capi-native-type-h.md#arkui_errorcode) if the target rendering node already has a parent node.<br>         Returns [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the current render node originates from a FrameNode that has been either detached as a child node or destroyed.|
+
+### OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)
+```
+
+**Description**
+
+Obtains the number of child render nodes of a specified parent node.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Parent node to be queried.|
+| int32_t* count | Pointer to the number of child render nodes.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.|
+
+### OH_ArkUI_RenderNodeUtils_GetRenderNodeAt()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)
+```
+
+**Description**
+
+Obtains the child render node at a specified position under a parent node.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target parent node.|
+| int32_t position | Index of the child render node. The index range must be [0, Number of the current child nodes – 1].|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* child | Pointer to the output parameter of the function for receiving the child render node. The pointer cannot be null.|
+
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.|

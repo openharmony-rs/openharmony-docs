@@ -1,7 +1,7 @@
 # 输入框类组件通用接口 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -272,7 +272,7 @@ setTextSelection选中文字时的配置。
 
 ## SymbolGlyphModifier<sup>12+</sup>
 
-type SymbolGlyphModifier = SymbolGlyphModifier
+type SymbolGlyphModifier = import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier
 
 SymbolGlyphModifier类型，用于设置自定义图标小符号。
 
@@ -282,7 +282,7 @@ SymbolGlyphModifier类型，用于设置自定义图标小符号。
 
 | 类型  | 说明       |
 | ----- | -------- |
-| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 返回当前的SymbolGlyphModifier。 |
+| import('../api/arkui/SymbolGlyphModifier').[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 返回当前的SymbolGlyphModifier。 |
 
 ## TextContentControllerOptions<sup>15+</sup>
 

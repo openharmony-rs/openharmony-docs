@@ -119,4 +119,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001192960596](figures/zh-cn_image_0000001192960596.gif)
+![grid-col](figures/grid-col.gif)

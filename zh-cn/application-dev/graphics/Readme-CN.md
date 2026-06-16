@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
-<!--Designer: @liumingxiang; @wangyanglan-->
+<!--Designer: @liumingxiang; @wanyanglan-->
 <!--Tester: @yhl0101; @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -66,4 +66,4 @@
   - [NativeWindow开发指导 (C/C++)](native-window-guidelines.md)
   - [GPU/CPU内存访问同步操作开发指南 (C/C++)](native-fence-guidelines.md)
   - [图形缓冲区常见稳定性问题](native-common-mistakes.md)  
-- [图形开发术语](graphic-term.md)
+- [ArkGraphics 2D术语](graphic-term.md)

@@ -14,6 +14,8 @@
 >
 > - 本Class首批接口从API version 10开始支持。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 以下API需先使用UIContext中的[getComponentUtils()](./arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取到ComponentUtils对象，再通过该对象调用对应方法。
 
 ## getRectangleById

@@ -805,13 +805,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Status before and after execution of the frame-by-frame animation in the current playback direction. The parameter type is [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode). The default value is **ARKUI_ANIMATION_FILL_MODE_FORWARDS**.|
+| .value[0].i32 | Status before and after execution of the frame-by-frame animation in the current playback direction. The parameter type is [ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode). The default value is **ARKUI_ANIMATION_FILL_MODE_FORWARDS**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Status before and after execution of the frame-by-frame animation in the current playback direction. The parameter type is [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode).|
+| .value[0].i32 | Status before and after execution of the frame-by-frame animation in the current playback direction. The parameter type is [ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode).|
 
 ## NODE_IMAGE_ANIMATOR_ITERATION
 
