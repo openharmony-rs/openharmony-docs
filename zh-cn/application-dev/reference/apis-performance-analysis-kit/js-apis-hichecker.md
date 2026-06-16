@@ -54,7 +54,7 @@ addCheckRule(rule: bigint): void
 **错误码：**
 
 | 错误码ID | 错误信息 |
-| ------- | ----------- |
+| ------- | ----------------------------------------------------------------- |
 | 401 | the parameter check failed, only one bigint type parameter is needed  |
 
 **示例：**
@@ -92,7 +92,7 @@ removeCheckRule(rule: bigint): void
 **错误码：**
 
 | 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
+| ------- | ----------------------------------------------------------------- |
 | 401 | the parameter check failed, only one bigint type parameter is needed  |
 
 **示例：**
@@ -136,7 +136,7 @@ containsCheckRule(rule: bigint): boolean
 **错误码：**
 
 | 错误码ID | 错误信息 |
-| ------- | ------------------ |
+| ------- | ----------------------------------------------------------------- |
 | 401 | the parameter check failed, only one bigint type parameter is needed  |
 
 **示例：**
