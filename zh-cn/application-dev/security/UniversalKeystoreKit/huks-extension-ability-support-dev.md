@@ -93,7 +93,7 @@
        return Promise.resolve(result);
      }
 
-     // 解析 resource index，不同api版本解析方式不同
+     // 解析 resource index，API版本不同解析方式也不同。
      let index: string;
      const apiVersion = deviceInfo.sdkApiVersion;
      if (apiVersion >= 26) {
