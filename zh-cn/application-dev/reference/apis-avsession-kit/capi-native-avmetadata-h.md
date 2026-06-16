@@ -27,7 +27,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_AVMetadataBuilderStruct](capi-ohavsession-oh-avmetadatabuilderstruct.md) | OH_AVMetadataBuilder | 会话元数据构造器。构造器用于构造会话元数据。 |
-| [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md) | OH_AVMetadata | 会话元数据。资源设置的avmetadata的实例。 |
+| [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md) | OH_AVMetadata | 会话元数据。资源设置的AVMetadata实例。 |
 
 ### 函数
 
@@ -71,7 +71,7 @@ AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)** builder |  该引用指向创建的构造器实例。 |
+| [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)** builder |  指向指针的指针，用于接收创建的构造器实例。 |
 
 **返回：**
 
@@ -120,7 +120,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | 指向元数据构造器的实例。 |
-| const char* assetId | 资源id。 |
+| const char* assetId | 资源ID。 |
 
 **返回：**
 
@@ -311,7 +311,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* bu
 
 **描述**
 
-设置媒体图片数据。
+设置媒体图片的URI地址。
 
 **起始版本：** 13
 
@@ -320,7 +320,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* bu
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | 指向元数据构造器的实例。 |
-| const char* mediaImageUri | 网络资源图片数据地址。 |
+| const char* mediaImageUri | 媒体图片的URI地址。 |
 
 **返回：**
 
@@ -426,7 +426,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* bu
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数intervals为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数intervals无效。 |
 
 ### OH_AVMetadataBuilder_SetDisplayTags()
 
@@ -445,7 +445,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* buil
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | 指向元数据构造器的实例。 |
-| int32_t tags | 用于显示在播控的媒体资源的金标类型。 |
+| int32_t tags | 用于在播控中心显示的媒体资源金标类型。 |
 
 **返回：**
 
@@ -495,7 +495,7 @@ AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMetadataBuilder](capi-ohavsession-oh-avmetadatabuilderstruct.md)* builder | 指向元数据构造器的实例。 |
-| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)** avMetadata | 指向元数据的指针对象。 |
+| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)** avMetadata | 指向指针的指针，用于接收生成的元数据实例。 |
 
 **返回：**
 
@@ -519,7 +519,7 @@ AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)* avMetadata | 指向元数据的指针对象。 |
+| [OH_AVMetadata](capi-ohavsession-oh-avmetadatastruct.md)* avMetadata | 指向元数据实例的指针。 |
 
 **返回：**
 

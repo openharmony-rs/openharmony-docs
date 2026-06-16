@@ -49,7 +49,7 @@ AVSession_ErrCode OH_DeviceInfo_GetAVCastCategory(AVSession_DeviceInfo *deviceIn
 
 **描述**
 
-获取目标设备的Cast类别。
+获取目标设备的投播类别。
 
 **起始版本：** 23
 
@@ -83,7 +83,7 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceId(AVSession_DeviceInfo *deviceInfo, ch
 | 参数项 | 描述 |
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | 表示设备信息实例指针。 |
-| char **deviceId | 返回设备ID值的指针变量。 |
+| char **deviceId | 用于获取设备ID字符串指针。 |
 
 **返回：**
 
@@ -108,7 +108,7 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceName(AVSession_DeviceInfo *deviceInfo, 
 | 参数项 | 描述 |
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | 表示设备信息实例指针。 |
-| char **deviceName | 返回设备名称的指针变量。 |
+| char **deviceName | 用于获取设备名称字符串指针。 |
 
 **返回：**
 
@@ -158,7 +158,7 @@ AVSession_ErrCode OH_DeviceInfo_GetSupportedProtocols(AVSession_DeviceInfo *devi
 | 参数项 | 描述 |
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | 表示设备信息实例指针。 |
-| uint32_t *deviceProtocolType | 返回设备支持协议的指针变量。 |
+| uint32_t *deviceProtocolType | 用于获取设备支持协议类型的指针。 |
 
 **返回：**
 

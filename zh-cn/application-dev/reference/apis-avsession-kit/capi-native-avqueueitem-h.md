@@ -83,7 +83,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_Create(OH_AVSession_AV
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)** builder | 指向创建结果的构建器对象。 |
+| [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)** builder | 指向用于接收创建结果的构建器对象指针的指针。 |
 
 **返回：**
 
@@ -313,7 +313,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetDuration(OH_AVSessi
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数duration为nullptr。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数duration无效。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetMediaUri()
 
@@ -357,7 +357,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetStartPosition(OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)* builder | 表示音视频媒体描述构建器实例指针。 |
-| const int32_t startPosition | 媒体资源的起始位置。 |
+| const int32_t startPosition | 媒体资源的起始位置。单位为毫秒。 |
 
 **返回：**
 
@@ -457,7 +457,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetAssetId(OH_AVSession_AVMed
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md)* description | 表示音视频媒体描述实例指针。 |
-| char** assetId | 指针变量将返回媒体资源的当前资产ID。 |
+| char** assetId | 指针变量，用于接收媒体资源的当前资产ID。 |
 
 **返回：**
 
@@ -806,7 +806,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_Destroy(OH_AVSession_AVMediaD
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md)* avMediaDescription | 指向用于接收avMediaDescription对象的指针变量。 |
+| [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md)* avMediaDescription | 指向要释放的avMediaDescription对象。 |
 
 **返回：**
 

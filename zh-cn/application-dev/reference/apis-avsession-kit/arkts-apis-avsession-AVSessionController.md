@@ -665,7 +665,7 @@ avcontroller.getLaunchAbility((err: BusinessError, agent: object) => {
 
 getRealPlaybackPositionSync(): number
 
-获取当前播放位置。
+使用同步方法获取当前播放位置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1724,7 +1724,7 @@ on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'metadataChange'`：当元数据需要更新时，触发该事件。<br>需要更新表示对应属性值被重新设置过，不论新值与旧值是否相同。 |
-| filter   | Array\<keyof AVMetadata>\|'all' | 是   |'all'表示关注通话状态所有字段变化；Array\<keyof AVMetadata>表示关注Array中的字段变化。|
+| filter   | Array\<keyof AVMetadata>\|'all' | 是   |'all'表示关注元数据所有字段变化；Array\<keyof AVMetadata>表示关注Array中的字段变化。|
 | callback | (data: [AVMetadata](arkts-apis-avsession-i.md#avmetadata10)) => void                    | 是   | 回调函数，参数data是需要更新的元数据。只包含需要更新的元数据属性，不代表当前全量的元数据。   |
 
 **错误码：**
