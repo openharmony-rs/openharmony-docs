@@ -43,6 +43,8 @@ addCheckRule(rule: bigint): void
 
 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈，当有相应规则触发时可在hilog中grep HiChecker查看运行信息。
 
+如果传入的规则级别为线程级别，则仅在当前线程中生效。
+
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
 **ArkTS-Dyn起始版本**：9
@@ -53,7 +55,7 @@ addCheckRule(rule: bigint): void
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| rule   | bigint | 是   | 需要添加的规则。 |
+| rule   | bigint | 是   | 需要添加的规则。支持使用或运算组合多个规则。可选值包括：<br>RULE_CAUTION_PRINT_LOG（记录日志）、RULE_CAUTION_TRIGGER_CRASH（应用退出）、RULE_THREAD_CHECK_SLOW_PROCESS（检测耗时函数调用）等，详见[常量](#常量)定义。 |
 
 **错误码：**
 
@@ -83,6 +85,8 @@ removeCheckRule(rule: bigint): void
 
 删除一条或多条规则，删除的规则后续将不再生效。
 
+如果传入的规则级别为线程级别，则仅从当前线程中删除。
+
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
 **ArkTS-Dyn起始版本**：9
@@ -93,7 +97,7 @@ removeCheckRule(rule: bigint): void
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| rule   | bigint | 是   | 需要删除的规则。 |
+| rule   | bigint | 是   | 需要删除的规则。支持使用或运算组合多个规则。可选值包括：<br>RULE_CAUTION_PRINT_LOG（记录日志）、RULE_CAUTION_TRIGGER_CRASH（应用退出）、RULE_THREAD_CHECK_SLOW_PROCESS（检测耗时函数调用）等，详见常量定义。 |
 
 **错误码：**
 
@@ -121,7 +125,9 @@ try {
 
 containsCheckRule(rule: bigint): boolean
 
-当前已添加的规则集中是否包含了某一个特定的规则。如果传入的规则级别为线程级别，则仅在当前线程中进行查询。
+当前已添加的规则集中是否包含了某一个特定的规则。
+
+如果传入的规则级别为线程级别，则仅在当前线程中进行查询。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
@@ -255,7 +261,7 @@ getRule(): bigint
 hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
 
 // 获取已添加的规则
-hichecker.getRule();   // return 1n;
+hichecker.getRule();
 ```
 
 ## hichecker.contains<sup>(deprecated)</sup>
