@@ -6263,6 +6263,174 @@
 
 **起始版本**：20
 
+## ohos.permission.automotive.SET_ADAS_CMD
+
+允许系统应用设置高级驾驶辅助系统（Advanced Driver Assistance Systems, ADAS）的指令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.GET_ADAS_INFO
+
+允许系统应用获取高级驾驶辅助系统（Advanced Driver Assistance Systems, ADAS）的信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.GET_CLUSTER_INFO
+
+允许系统应用获取车机上的仪表信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.SET_CLUSTER_CMD
+
+允许系统应用设置车机上的仪表指令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.SET_MMS_CMD
+
+允许系统应用设置MMS命令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.GET_MMS_INFO
+
+允许系统应用获取感知盒子信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.GET_XCALL_INFO
+
+允许系统应用获取车机专有通信信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.SET_XCALL_CMD
+
+允许系统应用设置车机专有通信命令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.SET_SECBOX_CMD
+
+允许系统应用设置车机保密箱。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.GET_SECBOX_INFO
+
+允许系统应用获取车机保密箱信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.RECV_HUAP_INFO
+
+允许系统应用接收车机代理服务数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.automotive.SEND_HUAP_MSG
+
+允许系统应用发送车机代理服务消息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.TV_ACCESSORY_MANAGE
 
 允许系统应用查询与设置智慧屏配件信息。
