@@ -551,7 +551,7 @@ int32_t OH_SensorSubscriptionId_SetType(Sensor_SubscriptionId* id, const Sensor_
 | 参数项 | 描述 |
 | -- | -- |
 | [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)* id | 指向传感器订阅ID的指针。 |
-| [const Sensor_Type](capi-oh-sensor-type-h.md#sensor_type) sensorType | 要设置的传感器类型，用于指定订阅的传感器类型。取值范围为[Sensor_Type](#sensor_type)枚举中定义的传感器类型，如SENSOR_TYPE_ACCELEROMETER(加速度传感器)等。 |
+| const [Sensor_Type](capi-oh-sensor-type-h.md#sensor_type) sensorType | 要设置的传感器类型，用于指定订阅的传感器类型。取值范围为[Sensor_Type](#sensor_type)枚举中定义的传感器类型，如SENSOR_TYPE_ACCELEROMETER(加速度传感器)等。 |
 
 **返回：**
 
