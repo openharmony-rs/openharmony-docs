@@ -15,3 +15,4 @@
 - [代理提醒(ArkTS)](agent-powered-reminder.md)<!--Del-->
 - [能效资源申请(ArkTS)（仅对系统特权应用开放）](efficiency-resource-request-sys.md)
 - [设备使用信息统计(ArkTS)（仅对系统应用开放）](../device-usage-statistics/Readme-CN.md)<!--DelEnd--><!--RP1--><!--RP1End-->
+- [Background Tasks Kit术语](background-tasks-glossary.md)
