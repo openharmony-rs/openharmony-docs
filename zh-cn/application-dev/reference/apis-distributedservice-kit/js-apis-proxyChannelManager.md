@@ -2,7 +2,7 @@
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @jzy_123-->
-<!--Designer: @yangjun044-->
+<!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @w_Machine_cc-->
 
