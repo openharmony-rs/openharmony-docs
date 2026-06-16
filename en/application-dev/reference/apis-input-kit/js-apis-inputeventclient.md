@@ -6,11 +6,10 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:24:10.470Z pushedAt=2026-06-12T07:45:22.599Z -->
 
 The input event injection module provides the capability to simulate keyboard, mouse, and touch input events.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
 ## Modules to Import
 
@@ -22,29 +21,29 @@ import { inputEventClient } from '@kit.InputKit';
 
 createKeyboardController(): Promise&lt;KeyboardController&gt;
 
-Creates a keyboard controller for simulating key operations. This API uses an asynchronous callback.
+Creates a keyboard controller for simulating key operations. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device Behavior Differences**: This API can be called normally only on PC/2in1 devices. On other devices, it returns error code 801.
+**Device behavior differences**: This API is supported on PCs/2-in-1 devices. On other device types, it returns error code 801.
 
-**Return Value**
+**Returns**
 
-| Type                   | Description       |
+| Type                  | Description      |
 | --------------------- | --------- |
-| Promise&lt;[KeyboardController](#keyboardcontroller)&gt; | Promise object, returns a keyboard controller instance.|
+| Promise&lt;[KeyboardController](#keyboardcontroller)&gt; | Promise used to return the keyboard controller instance.|
 
-**Error Codes**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID  | Error Message             |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
@@ -80,29 +79,29 @@ struct Index {
 
 createMouseController(): Promise&lt;MouseController&gt;
 
-Creates a mouse controller for simulating mouse operations. Uses a Promise asynchronous callback.
+Creates a mouse controller for simulating mouse operations. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can only be used in the Stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device behavior differences**: This API can only be called normally on PC/2in1 devices. On other devices, it returns error code 801.
+**Device behavior differences**: This API is supported on PCs/2-in-1 devices. On other device types, it returns error code 801.
 
-**Return Value**
+**Returns**
 
-| Type                   | Description       |
+| Type                  | Description      |
 | --------------------- | --------- |
-| Promise&lt;[MouseController](#mousecontroller)&gt; | Promise object, returns the mouse controller instance.|
+| Promise&lt;[MouseController](#mousecontroller)&gt; | Promise used to return the mouse controller instance.|
 
-**Error Codes**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID  | Error Message             |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
@@ -138,29 +137,29 @@ struct Index {
 
 createTouchController(): Promise&lt;TouchController&gt;
 
-Creates a touch controller for simulating touch operations. This API uses a promise asynchronous callback.
+Creates a touch controller for simulating touch operations. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can only be used in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device Behavior Differences:** This API can be called normally only on PC/2in1 devices. On other devices, it returns error code 801.
+**Device behavior differences**: This API is supported on PCs/2-in-1 devices. On other device types, it returns error code 801.
 
-**Return Value**
+**Returns**
 
-| Type                   | Description       |
+| Type                  | Description      |
 | --------------------- | --------- |
-| Promise&lt;[TouchController](#touchcontroller)&gt; | Promise object, returns the touch controller instance.|
+| Promise&lt;[TouchController](#touchcontroller)&gt; | Promise used to return the touch controller instance.|
 
-**Error Codes**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID  | Error Message             |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
@@ -194,7 +193,7 @@ struct Index {
 
 ## KeyboardController
 
-Provides the function of simulating key operations. The simulated key operation sequence must meet the following requirements:
+Provides the capability of simulating key operations. The simulated key operation sequence must meet the following requirements:
 
 1. A key can only be pressed when it is in the released state, or when it is the most recently pressed key and has not been released.
 2. A key can only be released after it has been pressed.
@@ -204,41 +203,41 @@ Provides the function of simulating key operations. The simulated key operation 
 
 pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
-Presses a key. This API uses a Promise asynchronous callback.
+Presses a key. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device Behavior Differences:** This API can be normally called only on PC/2in1 devices and does not take effect on other devices.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
-**Parameter:**
+**Parameters**
 
-| Parameter Name      | Type                   | Mandatory  | Description       |
+| Name     | Type                  | Mandatory | Description      |
 | -------- | --------------------- | ---- | --------- |
-| keyCode | [KeyCode](js-apis-keycode.md#keycode) | Yes   | Key code of the key to press.|
+| keyCode | [KeyCode](js-apis-keycode.md#keycode) | Yes  | Key code of the key to be pressed.|
 
-**Return Value**
+**Returns**
 
-| Type                   | Description       |
+| Type                  | Description      |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | Promise object, with no return result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error Codes**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID  | Error Message             |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
 | 4300001  | The key is already pressed and is not the most recently pressed key.  |
 
-**Example**
+**Example:**
 
 ```js
 import { inputEventClient, KeyCode } from '@kit.InputKit';
@@ -275,35 +274,35 @@ struct Index {
 
 releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
-Releases a key. This API uses an asynchronous callback.
+Releases a key. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can only be used in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device Behavior Differences**: This API can be called normally only on PC/2in1 devices. Calling it on other devices has no effect.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
-**Parameter**
+**Parameters**
 
-| Parameter Name      | Type                   | Mandatory  | Description       |
+| Name     | Type                  | Mandatory | Description      |
 | -------- | --------------------- | ---- | --------- |
-| keyCode | [KeyCode](js-apis-keycode.md#keycode) | Yes   | Key code of the key to be released.|
+| keyCode | [KeyCode](js-apis-keycode.md#keycode) | Yes  | Key code of the key to be released.|
 
-**Return Value**
+**Returns**
 
-| Type                   | Description       |
+| Type                  | Description      |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | Promise object, no return result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error Code**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID  | Error Message             |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
@@ -311,58 +310,58 @@ For details about the following error codes, see [Input Event Injection Error Co
 
 **Example:**
 
-See the [pressKey](#presskey) example.
+For details, see [pressKey](#presskey).
 
 ## MouseController
 
-Provides the functionality to simulate mouse operations. The sequence of simulated mouse operations must meet the following requirements:
+Provides the capability of simulating mouse operations. The simulated mouse operation sequence must meet the following requirements:
 
-1. A mouse button can only be pressed when it is in the released state.
+1. A mouse button can be pressed only when it is in the released state.
 2. A mouse button can only be released after it has been pressed.
-3. A valid axis event sequence must first call beginAxis to start the event, then call updateAxis zero or more times to update the event, and finally call endAxis to end the event.
+3. A valid axis event sequence must begin with a **beginAxis** call, followed by zero or more **updateAxis** calls, and end with an **endAxis** call.
 4. Only one axis event sequence can be in progress at a time.
 
 ### moveTo
 
 moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&gt;
 
-Moves the mouse cursor to the specified display coordinate. This API uses an asynchronous callback.
+Moves the mouse cursor to the specified display coordinates. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device behavior differences**: This interface can only be called normally on PC/2in1 devices and does not take effect when called on other devices.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
-**Parameter:**
+**Parameters**
 
-| Parameter Name      | Type                   | Mandatory  | Description       |
+| Name     | Type                  | Mandatory | Description      |
 | -------- | --------------------- | ---- | --------- |
-| displayId | number | Yes   | Target display ID.|
-| displayX | number | Yes   | X coordinate of the target position relative to the left edge of the display, in pixels (px). If it exceeds the valid range of the display, the actual coordinate value will be clamped to the valid range [0, display width - 1].|
-| displayY | number | Yes   | Y coordinate of the target position relative to the top edge of the display, in pixels (px). If it exceeds the valid range of the display, the actual coordinate value will be clamped to the valid range [0, display height - 1].|
+| displayId | number | Yes  | ID of the target display.|
+| displayX | number | Yes  | X coordinate relative to the left edge of the display, in px. If the value exceeds the valid range of the display, the actual coordinate will be clamped to the valid range [0, display width - 1].|
+| displayY | number | Yes  | Y coordinate relative to the top edge of the display, in px. If the value exceeds the valid range of the display, the actual coordinate will be clamped to the valid range [0, display height - 1].|
 
-**Return Value**
+**Returns**
 
 | Type                  | Description      |
-| --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise object, no return result.|
+| --------------------- | --------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error Codes**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
 | 4300002  | The display does not exist.  |
 
-**Example**
+**Example:**
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
@@ -395,35 +394,35 @@ struct Index {
 
 pressButton(button: Button): Promise&lt;void&gt;
 
-Presses a mouse button. This API uses a Promise asynchronous callback.
+Presses a mouse button. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can only be used in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device Behavior Differences**: This API can be called normally only on PC/2in1 devices. Calling it on other devices has no effect.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
-**Parameter:**
+**Parameters**
 
-| Parameter Name      | Type                   | Mandatory  | Description       |
+| Name     | Type                  | Mandatory | Description      |
 | -------- | --------------------- | ---- | --------- |
-| button | [Button](js-apis-mouseevent.md#button) | Yes   | Mouse button to press.|
+| button | [Button](js-apis-mouseevent.md#button) | Yes  | Mouse button to be pressed.|
 
-**Return Value**
+**Returns**
 
-| Type                   | Description       |
+| Type                  | Description      |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | Promise object, no return result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error Codes**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID  | Error Message             |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
@@ -466,84 +465,84 @@ struct Index {
 
 releaseButton(button: Button): Promise&lt;void&gt;
 
-Releases a mouse button. This API uses a promise asynchronous callback.
+Release a mouse button. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can only be used in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device Behavior Differences**: This API can be called normally only on PC/2in1 devices and does not take effect when called on other devices.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
-**Parameter**
+**Parameters**
 
-| Parameter Name      | Type                   | Mandatory  | Description       |
+| Name     | Type                  | Mandatory | Description      |
 | -------- | --------------------- | ---- | --------- |
-| button | [Button](js-apis-mouseevent.md#button) | Yes   | Mouse button to release.|
+| button | [Button](js-apis-mouseevent.md#button) | Yes  | Mouse button to be released.|
 
-**Return Value**
+**Returns**
 
-| Type                   | Description       |
+| Type                  | Description      |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | Promise object, no return result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error Code**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID  | Error Message             |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
 | 4300001  | The mouse button is not pressed.  |
 
-**Example**
+**Example:**
 
-See the example in [pressButton](#pressbutton).
+For details, see [pressButton](#pressbutton).
 
 ### beginAxis
 
 beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
-Begins an axis event. This API uses an asynchronous callback.
+Starts an axis event. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device Behavior Differences**: This API can be called normally only on PC/2in1 devices. Calling it on other devices has no effect.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
-**Parameter:**
+**Parameters**
 
-| Parameter Name      | Type                   | Mandatory  | Description       |
+| Name     | Type                  | Mandatory | Description      |
 | -------- | --------------------- | ---- | --------- |
-| axis | [Axis](js-apis-mouseevent.md#axis) | Yes   | Axis type.|
-| value | number | Yes   | Axis value.|
+| axis | [Axis](js-apis-mouseevent.md#axis) | Yes  | Axis type.|
+| value | number | Yes  | Axis value.|
 
-**Return Value:**
+**Returns**
 
-| Type              | Description                          |
-| ----------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise object, no return result. |
+| Type                  | Description      |
+| --------------------- | --------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error Codes**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID | Error Message                                                                 |
-| ------------- | ----------------------------------------------------------------------------- |
-| 201           | Permission verification failed. The application does not have the permission required to call the API. |
-| 3800001       | Input service exception.                                                      |
-| 4300001       | The axis event is in progress.                                                |
+| Error Code | Error Message            |
+| ---- | --------------------- |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 3800001  | Input service exception.  |
+| 4300001  | The axis event is in progress.  |
 
-**Example**
+**Example:**
 
 ```js
 import { inputEventClient, Axis } from '@kit.InputKit';
@@ -584,151 +583,151 @@ struct Index {
 
 updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
-Updates an axis event. This API uses a Promise asynchronous callback.
+Updates an axis event. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device Behavior Differences**: This interface can only be called normally on PC/2in1 devices and does not take effect when called on other devices.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
-**Parameter:**
+**Parameters**
 
-| Parameter Name      | Type                   | Mandatory  | Description       |
+| Name     | Type                  | Mandatory | Description      |
 | -------- | --------------------- | ---- | --------- |
-| axis | [Axis](js-apis-mouseevent.md#axis) | Yes   | Axis type.|
-| value | number | Yes   | Axis value.|
+| axis | [Axis](js-apis-mouseevent.md#axis) | Yes  | Axis type.|
+| value | number | Yes  | Axis value.|
 
-**Return Value**
+**Returns**
 
 | Type                  | Description      |
-| --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise object, no return result.|
+| --------------------- | --------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error Codes**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
 | 4300001  | The axis event is not in progress.  |
 
-**Example**
+**Example:**
 
-See the example in [beginAxis](#beginaxis).
+For details, see [beginAxis](#beginaxis).
 
 ### endAxis
 
 endAxis(axis: Axis): Promise&lt;void&gt;
 
-Ends an axis event. This API uses an asynchronous callback.
+Ends an axis event. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can only be used in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device Behavior Differences:** This API can be called normally only on PC/2in1 devices and does not take effect when called on other devices.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
-**Parameter**
+**Parameters**
 
-| Parameter Name      | Type                   | Mandatory  | Description       |
+| Name     | Type                  | Mandatory | Description      |
 | -------- | --------------------- | ---- | --------- |
-| axis | [Axis](js-apis-mouseevent.md#axis) | Yes   | Axis type.|
+| axis | [Axis](js-apis-mouseevent.md#axis) | Yes  | Axis type.|
 
-**Return Value**
+**Returns**
 
-| Type                   | Description       |
+| Type                  | Description      |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | Promise object, no return result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error Code**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID  | Error Message             |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
 | 4300001  | The axis event is not in progress.  |
 
-**Example**
+**Example:**
 
-See the example in [beginAxis](#beginaxis).
+For details, see [beginAxis](#beginaxis).
 
 ## TouchPoint
 
-Represents information about a single touch point on the screen.
+Represents information about a single touch point on the display.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can only be used in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-| Name        | Type   | Read-only   | Optional   | Description      |
+| Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| id | number | No | No | Unique identifier of the touch point. The value range is [0, 9] and must be an integer. |
-| displayId | number | No | No | Unique identifier of the screen where the touch point is located, which must be an integer. |
-| displayX | number | No | No | X coordinate of the touch point relative to the left edge of the screen, in pixels (px), which must be an integer. |
-| displayY | number | No | No | Y coordinate of the touch point relative to the top edge of the screen, in pixels (px), which must be an integer. |
+| id | number | No| No| Unique ID of a touch point. The value must be an integer in the range of [0, 9].|
+| displayId | number | No| No| Unique ID of the display where the touch point is located. The value must be an integer.|
+| displayX | number | No| No| X coordinate of the touch point relative to the left edge of the display, in pixels. The value must be an integer.|
+| displayY | number | No| No| Y coordinate of the touch point relative to the top edge of the display, in pixels. The value must be an integer.|
 
 ## TouchController
 
-Provides the function of simulating touch operations. The simulated touch operation sequence must meet the following requirements:
+Provides the capability of simulating touch operations. The simulated touch operation sequence must meet the following requirements:
 
-1. The displayId of all touch points must be the same.
-2. Each touch point must start with `touchDown()` and end with `touchUp()`, and may include multiple `touchMove()` in between.
+1. All touch points must share the same **displayId**.
+2. Each touch point must begin with a **touchDown()** call, followed by zero or more **touchMove()** calls, and end with an **touchUp()** call.
 
 ### touchDown
 
 touchDown(touch: TouchPoint): Promise&lt;void&gt;
 
-Presses a touch point. This API uses a promise asynchronous callback.
+Presses down a touch point. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device Behavior Differences**: This API can be called normally only on PC/2in1 devices and does not take effect on other devices.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
-**Parameter:**
+**Parameters**
 
-| Parameter Name | Type | Mandatory | Description |
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| touch | [TouchPoint](#touchpoint) | Yes | Touch point information in contact with the screen. |
+| touch | [TouchPoint](#touchpoint) | Yes| Information about the touch point that is in contact with the display.|
 
-**Return Value**
+**Returns**
 
-| Type                   | Description       |
+| Type                  | Description      |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | Promise object, no return result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error Codes**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID  | Error Message             |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is touching the display; 2. The touch point ID is not within the valid range [0,9]. |
 | 4300002 | The display does not exist. |
 | 3800001 | Input service exception. |
 
-**Example**
+**Example:**
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
@@ -785,35 +784,35 @@ struct Index {
 
 touchMove(touch: TouchPoint): Promise&lt;void&gt;
 
-Moves a touch point. This API uses an asynchronous callback.
+Moves a touch point. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device behavior differences**: This API can be called normally only on PC/2in1 devices. Calling it on other devices has no effect.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
-**Parameter:**
+**Parameters**
 
-| Parameter Name | Type | Mandatory | Description |
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| touch | [TouchPoint](#touchpoint) | Yes | Information about the touch point to be moved. |
+| touch | [TouchPoint](#touchpoint) | Yes| Information about the touch point to be moved.|
 
-**Return Value**
+**Returns**
 
-| Type                   | Description       |
+| Type                  | Description      |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | Promise object, no return result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error Codes**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID  | Error Message             |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0,9]. |
@@ -821,41 +820,41 @@ For details about the following error codes, see [Input Event Injection Error Co
 
 **Example:**
 
-See the [touchDown](#touchdown) example.
+For details, see [touchDown](#touchdown).
 
 ### touchUp
 
 touchUp(touch: TouchPoint): Promise&lt;void&gt;
 
-Lifts the touch point. Uses a Promise asynchronous callback.
+Releases a touch point. This API uses a promise to return the result.
 
-**Initial Version:** 26.0.0
+**Since:** 26.0.0
 
-**Model Constraints:** This API can only be used in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System Capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+**System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-**Permissions Required:** ohos.permission.CONTROL_DEVICE
+**Required permissions**: ohos.permission.CONTROL_DEVICE
 
-**Device Behavior Differences:** This API can be called normally only on PC/2in1 devices. Calling it on other devices has no effect.
+**Device behavior differences:** This API is supported on PCs/2-in-1 devices. On other device types, it does not take effect.
 
-**Parameter**
+**Parameters**
 
-| Parameter Name | Type | Mandatory | Description |
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| touch | [TouchPoint](#touchpoint) | Yes | Information about the touch point that is about to leave the screen. |
+| touch | [TouchPoint](#touchpoint) | Yes| Information about the touch point to be released.|
 
-**Return Value**
+**Returns**
 
-| Type                   | Description       |
+| Type                  | Description      |
 | --------------------- | --------- |
-| Promise&lt;void&gt; | Promise object, with no return result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error Code**
+**Error codes**
 
-For details about the following error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Event Injection Error Codes](errorcode-inputeventclient.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID  | Error Message             |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0,9]. |
@@ -863,4 +862,4 @@ For details about the following error codes, see [Input Event Injection Error Co
 
 **Example:**
 
-See the [touchDown](#touchdown) example.
+For details, see [touchDown](#touchdown).
