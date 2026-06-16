@@ -23,6 +23,7 @@
   - [ROI视频编码](video-encoding-ROI.md)
   - [视频解码](video-decoding.md)
   - [视频解码同步模式](synchronous-video-decoding.md)
+  - [智能流畅倍速解码](video-smart-fluency-decoding.md)
   - [视频可变帧率](video-variable-refreshrate.md)<!--RP1--><!--RP1End-->
 - 媒体数据封装与解析<!--file-muxing-demuxing-->
   - [媒体数据封装](audio-video-muxer.md)
