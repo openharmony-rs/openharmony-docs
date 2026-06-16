@@ -37,7 +37,7 @@ enable(isEnable: boolean): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTS-Dyn起始版本**：20
+**ArkTS-Dyn起始版本**：12
 
 **ArkTS-Sta起始版本**：26.1.0
 
@@ -163,7 +163,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本**：20
 
 **ArkTS-Sta起始版本**：26.1.0
 
