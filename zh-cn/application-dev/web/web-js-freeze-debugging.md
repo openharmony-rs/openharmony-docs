@@ -38,7 +38,7 @@ PROCESS_NAME:com.xxx.demo:render
 **************************
 start time:xxx
 DOMAIN = AAFWK
-EVENTNAME = BUSSINESS_THREAD_BLOCK_3S
+EVENTNAME = BUSINESS_THREAD_BLOCK_3S
 TIMESTAMP = xxx
 PID = xxx
 UID = xxx
