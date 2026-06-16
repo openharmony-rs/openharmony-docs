@@ -36,8 +36,8 @@ import { formBindingData } from '@kit.FormKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| key<sup>10+</sup> | string | 否 | 否 | 卡片代理刷新的订阅标识，与数据发布者保持一致。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
-| subscriberId<sup>10+</sup> | string | 否 | 是 | 卡片代理刷新的订阅条件，默认值为当前卡片的formId。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23|
+| key<sup>10+</sup> | string | 否 | 否 | 卡片代理刷新的订阅标识，与数据发布者保持一致。|
+| subscriberId<sup>10+</sup> | string | 否 | 是 | 卡片代理刷新的订阅条件，默认值为当前卡片的formId。|
 
 
 ## FormBindingData
@@ -54,7 +54,7 @@ FormBindingData相关描述。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- |-------- | -------- |
-| data | ArkTS-Dyn: Object<br>ArkTS-Sta: RecordData | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者JSON格式的字符串。|
+| data | ArkTS-Dyn: Object<br>ArkTS-Sta: RecordData | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者JSON格式的字符串。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 是 | 卡片代理刷新的订阅信息，默认为空数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>|
 
 ## formBindingData.createFormBindingData
@@ -65,7 +65,7 @@ ArkTS-Sta: createFormBindingData(obj?: RecordData): FormBindingData
 
 创建一个FormBindingData对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
 

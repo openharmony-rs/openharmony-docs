@@ -36,12 +36,14 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务。
+
 **系统能力：** SystemCapability.Ability.Form
 
 ### 属性
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
+ 	 
 **系统能力：** SystemCapability.Ability.Form
 
 | 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
@@ -265,6 +267,7 @@ ArkTS-Sta: onChangeFormVisibility(newStatus: Record\<string, int>): void
 | 参数名  | 类型   | 必填 | 说明                   |
 | ------- | ------ | ---- | ---------------------- |
 | newStatus  | ArkTS-Dyn: Record\<string, number> <br>ArkTS-Sta: Record\<string, int>| 是   | 请求修改的卡片标识和可见状态。<br>**说明：** number参数是取值范围[0, 2]的整数，0是未知类型，1是可见状态，2是不可见状态。<br>详细参考 [formInfo.VisibilityType](js-apis-app-form-formInfo.md#visibilitytype) |
+
 **示例：**
 
 ArkTS-Dyn示例：
