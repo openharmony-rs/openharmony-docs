@@ -83,7 +83,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_Create(OH_AVSession_AV
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)** builder | 指向用于接收创建结果的构建器对象指针的指针。 |
+| [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)** builder | 指向用于接收创建结果的构建器对象。 |
 
 **返回：**
 
@@ -307,13 +307,13 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetDuration(OH_AVSessi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)* builder | 表示音视频媒体描述构建器实例指针。 |
-| const int32_t duration | 媒体资源的持续时间。单位为毫秒。 |
+| const int32_t duration | 媒体资源的持续时间。单位为毫秒（ms）。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数duration无效。 |
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | AVQUEUEITEM_SUCCESS：函数执行成功。<br>         AVQUEUEITEM_ERROR_INVALID_PARAM：<br>                                        1. 参数builder为nullptr。<br>                                        2. 参数duration为nullptr。 |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetMediaUri()
 
@@ -357,7 +357,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetStartPosition(OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)* builder | 表示音视频媒体描述构建器实例指针。 |
-| const int32_t startPosition | 媒体资源的起始位置。单位为毫秒。 |
+| const int32_t startPosition | 媒体资源的起始位置。单位为毫秒（ms）。 |
 
 **返回：**
 

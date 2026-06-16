@@ -154,4 +154,4 @@ struct CounterExample {
 }
 ```
 
-![zh-cn_image_0000001219982711](figures/zh-cn_image_0000001219982711.gif)
+![counter](figures/counter.gif)

@@ -291,7 +291,7 @@ AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char*
 
 **描述**
 
-获取会话id。
+获取会话ID。
 
 **起始版本：** 13
 

@@ -31,7 +31,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 ## 开发步骤及注意事项
 
 开发者可以通过以下几个步骤在NDK接入本地会话。
-1. 创建会话并激活会话，需要传入会话类型`AVSession_Type`，自定义的TAG，以及应用的包名、ability名字。
+1. 创建并激活会话，需要传入会话类型`AVSession_Type`，自定义的TAG，以及应用的包名、ability名字。
 
    <!-- @[create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -91,7 +91,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
    OH_AVSession_SetAVMetadata(avsession, ohMetadata);
    ```
    
-   在不使用AVMetadata之后，开发者应该执行OH_AVMetadata_Destroy接口销毁元数据对象，并执行OH_AVMetadataBuilder_Destroy接口销毁构造器，且不要继续使用。
+   如果不使用AVMetadata，开发者应该执行OH_AVMetadata_Destroy接口销毁元数据对象，同时执行OH_AVMetadataBuilder_Destroy接口销毁构造器，且不能继续使用。
    
    <!-- @[destroy_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
    

@@ -14,7 +14,7 @@
 
 ## 按键事件数据流
 
-![zh-cn_image_0000001511580944](figures/zh-cn_image_0000001511580944.png)
+![zh-cn_image_0000001511580944](figures/Key-Event.png)
 
 
 按键事件由外设键盘等设备触发，经驱动和多模处理转换后发送给当前获焦的窗口，窗口获取到事件后，会尝试分发三次事件。三次分发的优先顺序如下，一旦事件被消费，则跳过后续分发流程。
@@ -101,7 +101,7 @@ struct KeyEventExample {
 上述示例中给组件Button和其父容器Column绑定onKeyEvent。应用打开页面加载后，组件树上第一个可获焦的非容器组件自动获焦，设置Button为当前页面的默认焦点，由于Button是Column的子节点，Button获焦也同时意味着Column获焦。获焦机制见[支持焦点处理](arkts-common-events-focus-event.md)。
 
 
-![zh-cn_image_0000001511421324](figures/zh-cn_image_0000001511421324.gif)
+![zh-cn_image_0000001511421324](figures/onKeyEvent.gif)
 
 
 打开应用后，依次在键盘上按这些按键：空格、回车、左Ctrl、左Shift、字母A、字母Z。
@@ -173,7 +173,7 @@ struct KeyEventPreventBubble {
 }
 ```
 
-![zh-cn_image_0000001511900508](figures/zh-cn_image_0000001511900508.gif)
+![zh-cn_image_0000001511900508](figures/onKeyEvent02.gif)
 
 使用OnKeyPreIme屏蔽在输入框中使用方向左键。
 
@@ -209,7 +209,7 @@ struct PreImeEventExample {
 }
 ```
 
-![zh-cn_image_00012427222](figures/zh-cn_image_00012427222.gif)
+![zh-cn_image_00012427222](figures/onKeyEvent04.gif)
 
 使用onKeyEventDispatch分发按键事件到子组件，子组件使用onKeyEvent。
 
@@ -266,7 +266,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_00012427111](figures/zh-cn_image_00012427111.PNG)
+![zh-cn_image_00012427111](figures/onKeyEvent03.PNG)
 
 使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
 

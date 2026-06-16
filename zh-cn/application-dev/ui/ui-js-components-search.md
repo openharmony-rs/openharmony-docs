@@ -35,7 +35,7 @@
 }
 ```
 
-![zh-cn_image_0000001218760480](figures/zh-cn_image_0000001218760480.png)
+![search-Component](figures/search-Component.png)
 
 
 ## 设置属性
@@ -63,7 +63,7 @@
 }
 ```
 
-![zh-cn_image_0000001183438596](figures/zh-cn_image_0000001183438596.png)
+![Setting-Attributes-1](figures/Setting-Attributes-1.png)
 
 
 ## 添加样式
@@ -96,7 +96,7 @@ search{
 }
 ```
 
-![zh-cn_image_0000001228920921](figures/zh-cn_image_0000001228920921.gif)
+![Adding-Styles](figures/Adding-Styles.gif)
 
 
 ## 绑定事件
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001182187434](figures/zh-cn_image_0000001182187434.gif)
+![Binding-Events-3](figures/Binding-Events-3.gif)
 
 
 ## 场景示例
@@ -263,4 +263,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001183283966](figures/zh-cn_image_0000001183283966.gif)
+![Example-Scenario-11](figures/Example-Scenario-11.gif)

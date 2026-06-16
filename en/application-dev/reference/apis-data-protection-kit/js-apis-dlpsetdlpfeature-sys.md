@@ -12,11 +12,10 @@ This module controls the Data Loss Prevention (DLP) feature, including enabling 
 - Data security compliance requirements must be met.
 - Access control and encryption protection are provided for confidential files.
 
-**Since:** 26.0.0
-
 > **NOTE**
 >
-> The APIs provided by this module are system APIs.
+> - The initial APIs of this module are supported since API version 26. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs provided by this module are system APIs.
 
 ## Key Classes and APIs
 
@@ -56,13 +55,13 @@ This API is used to enable or disable the DLP function in enterprise policies.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| status | [DlpFeatureStatus](#dlpfeaturestatus) | Yes| DLP status. The value **ENABLED_FEATURE** indicates the DLP feature is enabled; the value **NOT_ENABLED_FEATURE** indicates the DLP feature is disabled, and the encryption option is not displayed in the menu. If the value is out of range, error code 19100001 is thrown.|
+| status | [DlpFeatureStatus](#dlpfeaturestatus) | Yes| DLP status. The value **ENABLED_FEATURE** indicates the DLP feature is enabled, and the encryption option is displayed in the menu. The value **NOT_ENABLED_FEATURE** indicates the DLP feature is disabled, and the encryption option is not displayed in the menu. If the value is out of range, error code 19100001 is thrown.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[StatusInfoResult](#statusinforesult)&gt; | Promise used to return the DLP status. If the operation is successful, a **StatusInfoResult** object is returned. If the operation fails, a **BusinessError** error code is thrown.|
+| Promise&lt;[StatusInfoResult](#statusinforesult)&gt; | Promise used to return the DLP status that is set. |
 
 **Error codes**
 
@@ -83,7 +82,7 @@ async function exampleFunction() {
   let statusInfoResult: dlpSetDlpFeature.StatusInfoResult =
     await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE); // Record the execution result.
   console.info('setDlpFeature result: ', JSON.stringify(statusInfoResult));
-}
+} // Set the DLP status.
 
 exampleFunction();
 ```

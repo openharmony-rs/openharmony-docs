@@ -277,13 +277,13 @@ enum AVSession_PlaybackSpeed
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SPEED_FORWARD_0_75_X = 0 | 以正常播速的0.75倍速播放。 |
-| SPEED_FORWARD_1_00_X = 1 | 以正常播速（1.00x）播放。 |
-| SPEED_FORWARD_1_25_X = 2 | 以正常播速的1.25倍速播放。 |
-| SPEED_FORWARD_1_75_X = 3 | 以正常播速的1.75倍速播放。 |
-| SPEED_FORWARD_2_00_X = 4 | 以正常播速的2倍速播放。 |
-| SPEED_FORWARD_0_50_X = 5 | 以正常播速的0.5倍速播放。 |
-| SPEED_FORWARD_1_50_X = 6 | 以正常播速的1.5倍速播放。 |
+| SPEED_FORWARD_0_75_X = 0 | 以正常播速的0.75倍速播放音视频。 |
+| SPEED_FORWARD_1_00_X = 1 | 以正常播速（1.00x）播放音视频。 |
+| SPEED_FORWARD_1_25_X = 2 | 以正常播速的1.25倍速播放音视频。 |
+| SPEED_FORWARD_1_75_X = 3 | 以正常播速的1.75倍速播放音视频。 |
+| SPEED_FORWARD_2_00_X = 4 | 以正常播速的2倍速播放音视频。 |
+| SPEED_FORWARD_0_50_X = 5 | 以正常播速的0.5倍速播放音视频。 |
+| SPEED_FORWARD_1_50_X = 6 | 以正常播速的1.5倍速播放音视频。 |
 
 ### AVSession_PlaybackFilter
 

@@ -868,27 +868,16 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit'
-  private idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
-  getDeviceUdids(deviceIds: Array<string>): void {
-    let deviceManager: distributedDeviceManager.DeviceManager | null = null;
-    try {
-      deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
-      this.idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
-      console.info("Successfully retrieved UDID list");
-    } catch (error) {
-      console.error('Get device UDID failed:', error);
-      this.idsLists = [];
-    } finally {
-      if (deviceManager) {
-        try {
-          distributedDeviceManager.releaseDeviceManager(deviceManager);
-          console.info("deviceManager released successfully");
-        } catch (releaseError) {
-          console.error('Release device manager failed:', releaseError);
-        }
-      }
-    }
+
+  let idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
+  let deviceIds: Array<string> = [];
+  try {
+    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
+    idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
+    console.info("Successfully retrieved UDID list");
+  } catch (error) {
+    console.error('Get device UDID failed:', error);
+    idsLists = [];
   }
   ```
 

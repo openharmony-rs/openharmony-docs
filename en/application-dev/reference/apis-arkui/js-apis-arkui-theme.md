@@ -217,9 +217,9 @@ struct Index {
 }
 ```
 
-![en-us_image_setDefaultTheme_light](figures/en-us_image_setDefaultTheme_lights.png)
+![en-us_image_setDefaultTheme_light](figures/image-setDefaultTheme-lights.png)
 
-![en-us_image_setDefaultTheme_night](figures/en-us_image_setDefaultTheme_nights.png)
+![en-us_image_setDefaultTheme_night](figures/image-setDefaultTheme-nights.png)
 
 ### Example 2: Setting Theme Colors for a Component
 

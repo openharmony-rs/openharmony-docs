@@ -859,7 +859,7 @@ getStyledString(): MutableStyledString
 
 ## LineMetrics<sup>12+</sup>
 
-type LineMetrics = LineMetrics
+type LineMetrics = import('../api/@ohos.graphics.text').default.LineMetrics
 
 用于描述文本布局中单行文字的度量信息。
 
@@ -869,11 +869,11 @@ type LineMetrics = LineMetrics
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics) | 用于描述文本布局中单行文字的度量信息。 |
+| import('../api/@ohos.graphics.text').default.[LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics) | 用于描述文本布局中单行文字的度量信息。 |
 
 ## Affinity<sup>12+</sup>
 
-type Affinity = Affinity
+type Affinity = import('../api/@ohos.graphics.text').default.Affinity
 
 位置亲和度枚举。
 
@@ -883,11 +883,11 @@ type Affinity = Affinity
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) | 位置亲和度枚举。 |
+| import('../api/@ohos.graphics.text').default.[Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) | 位置亲和度枚举。 |
 
 ## TextBox<sup>14+</sup>
 
-type TextBox = TextBox
+type TextBox = import('../api/@ohos.graphics.text').default.TextBox
 
 文本矩形区域。
 
@@ -897,11 +897,11 @@ type TextBox = TextBox
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) | 文本矩形区域。 |
+| import('../api/@ohos.graphics.text').default.[TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) | 文本矩形区域。 |
 
 ## Paragraph<sup>20+</sup>
 
-type Paragraph = Paragraph
+type Paragraph = import('../api/@ohos.graphics.text').default.Paragraph
 
 保存文本内容及样式的载体，支持排版与绘制操作。
 
@@ -909,11 +909,11 @@ type Paragraph = Paragraph
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) | 保存文本内容及样式的载体，支持排版与绘制操作。 |
+| import('../api/@ohos.graphics.text').default.[Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) | 保存文本内容及样式的载体，支持排版与绘制操作。 |
 
 ## RectHeightStyle<sup>14+</sup>
 
-type RectHeightStyle = RectHeightStyle
+type RectHeightStyle = import('../api/@ohos.graphics.text').default.RectHeightStyle
 
 矩形区域高度规格枚举。
 
@@ -923,11 +923,11 @@ type RectHeightStyle = RectHeightStyle
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | 矩形区域高度规格枚举。 |
+| import('../api/@ohos.graphics.text').default.[RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | 矩形区域高度规格枚举。 |
 
 ## RectWidthStyle<sup>14+</sup>
 
-type RectWidthStyle = RectWidthStyle
+type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectWidthStyle
 
 矩形区域宽度规格枚举。
 
@@ -937,7 +937,7 @@ type RectWidthStyle = RectWidthStyle
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | 矩形区域宽度规格枚举。 |
+| import('../api/@ohos.graphics.text').default.[RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | 矩形区域宽度规格枚举。 |
 
 ## TextChangeOptions<sup>15+</sup>对象说明
 
@@ -1327,7 +1327,7 @@ constructor(options?: NumericTextTransitionOptions)
 
 ## InputMethodExtraConfig<sup>22+</sup>
 
-type InputMethodExtraConfig = InputMethodExtraConfig
+type InputMethodExtraConfig = import('../api/@ohos.inputMethod.ExtraConfig').InputMethodExtraConfig
 
 输入法扩展信息。
 
@@ -1337,7 +1337,7 @@ type InputMethodExtraConfig = InputMethodExtraConfig
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 输入法扩展信息。 |
+| import('../api/@ohos.inputMethod.ExtraConfig').[InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 输入法扩展信息。 |
 
 ## AccessibilitySpanOptions<sup>23+</sup>对象说明
 

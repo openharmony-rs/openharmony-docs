@@ -40,21 +40,21 @@
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
-  async function castAudio() {
-    let audioManager = audio.getAudioManager();
-    let audioRoutingManager = audioManager.getRoutingManager();
-    try {
-      let audioDevices = await audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
-      console.info(`Promise returned to indicate that the device list is obtained.`);
-      if (audioDevices !== undefined) {
-        await AVSessionManager.castAudio('all', audioDevices);
-        console.info(`castAudio : SUCCESS`);
-      }
-    } catch (err) {
-      let error = err as BusinessError;
-      console.error(`Failed to get devices or cast audio. Code: ${error.code}, message: ${error.message}`);
-    }
-  }
+   async function castAudio() {
+     let audioManager = audio.getAudioManager();
+     let audioRoutingManager = audioManager.getRoutingManager();
+     try {
+       let audioDevices = await audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
+       console.info(`Promise returned to indicate that the device list is obtained.`);
+       if (audioDevices !== undefined) {
+         await AVSessionManager.castAudio('all', audioDevices);
+         console.info(`castAudio : SUCCESS`);
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       console.error(`Failed to get devices or cast audio. Code: ${error.code}, message: ${error.message}`);
+     }
+   }
    ```
 
    系统应用在投播主控端发起投播后，媒体会话框架会通知远端设备的AVSession服务创建远端媒体会话。投播主控端的媒体会话变化时（例如媒体信息变化、播放状态变化等），媒体会话框架会自动同步变化到远端设备。

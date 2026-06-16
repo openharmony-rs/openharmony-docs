@@ -36,7 +36,7 @@
 
 媒体会话管理器（AVSessionManager），提供了管理AVSession的能力，可以创建AVSession、创建AVSessionController、发送系统控制事件，也支持对AVSession的状态进行监听。
 
-实际上，AVSessionManager与AVSession、AVSessionController对象不同，并不是一个具体的对象，它是媒体会话的模块命名域。在实际编程过程中，可以通过如下方式引入：
+实际上，AVSessionManager与AVSession、AVSessionController对象不同，并不是一个具体的对象，而是媒体会话的模块命名域。在实际编程过程中，可以通过如下方式引入：
 
 <!-- @[avSession_manager_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
 

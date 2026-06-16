@@ -40,5 +40,5 @@
 
 | 是否开启显示优化 | 示意效果                                                     |
 | ---------------- | ------------------------------------------------------------ |
-| 未开启           | ![zh-cn_image_undefined_off_ts](figures/zh-cn_image_undefined_off_ts.png) |
-| 开启             | ![zh-cn_image_undefined_on_ts](figures/zh-cn_image_undefined_on_ts.png) |
+| 未开启           | ![undefined-off-ts](figures/undefined-off-ts.png) |
+| 开启             | ![undefined-on-ts](figures/undefined-on-ts.png) |

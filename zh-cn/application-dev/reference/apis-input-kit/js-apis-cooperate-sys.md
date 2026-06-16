@@ -533,6 +533,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 
 ```ts
 import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -572,7 +573,7 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
 | 参数名                | 类型                                                              | 必填    | 说明                           |
 | --------             | ----------------------------                                     | ----   | ----------------------------   |
-| type                 | string                                                           |  是    | 注册类型，取值“cooperation”。         |
+| type                 | string                                                           |  是    | 注册类型，取值'cooperation'。         |
 | callback             | AsyncCallback\<void> |  否  | 回调函数。当取消注册成功，err为undefined，否则为错误对象。若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码**：
@@ -590,6 +591,7 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
 ```ts
 import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -616,6 +618,7 @@ struct Index {
 ```
 ```ts
 import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component

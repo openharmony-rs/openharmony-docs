@@ -41,7 +41,7 @@ Row(options?: RowOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options<sup>18+</sup> | [RowOptions](#rowoptions18对象说明) | 否 | 横向布局元素间距，支持设置number或string类型。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| options<sup>18+</sup> | [RowOptions](#rowoptions18对象说明) | 否 | 横向布局元素的配置选项，可设置子组件的水平方向间距。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### Row<sup>18+</sup>
 Row(options?: RowOptions | RowOptionsV2)
@@ -60,7 +60,7 @@ Row(options?: RowOptions | RowOptionsV2)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [RowOptions](#rowoptions18对象说明)  \| [RowOptionsV2](#rowoptionsv218对象说明) | 否 | 横向布局元素间距，支持设置number、string或Resource类型。 |
+| options | [RowOptions](#rowoptions18对象说明)  \| [RowOptionsV2](#rowoptionsv218对象说明) | 否 | 横向布局元素的配置选项，可设置子组件的水平方向间距。|
 
 ## RowOptions<sup>18+</sup>对象说明
 

@@ -154,7 +154,7 @@
    ```
 
 
-   ![zh-cn_image_0000001252835901](figures/zh-cn_image_0000001252835901.png)
+   ![submit-button](figures/submit-button.png)
 
 2. type为button
    ```html

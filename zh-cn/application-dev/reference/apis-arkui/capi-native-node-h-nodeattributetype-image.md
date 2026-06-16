@@ -805,13 +805,13 @@ NODE_IMAGE_ANIMATOR_FILL_MODE = 19005
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 当前播放方向下，动画开始前和结束后的状态，参数类型为[ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode)，默认值为ARKUI_ANIMATION_FILL_MODE_FORWARDS。 |
+| .value[0].i32 | 当前播放方向下，动画开始前和结束后的状态，参数类型为[ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode)，默认值为ARKUI_ANIMATION_FILL_MODE_FORWARDS。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 当前播放方向下，动画开始前和结束后的状态，参数类型为[ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode)。 |
+| .value[0].i32 | 当前播放方向下，动画开始前和结束后的状态，参数类型为[ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode)。 |
 
 ## NODE_IMAGE_ANIMATOR_ITERATION
 
