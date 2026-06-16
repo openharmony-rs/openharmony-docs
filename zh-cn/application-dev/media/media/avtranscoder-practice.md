@@ -144,11 +144,11 @@
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
          await transcoder?.release()
- 	     if (transcoder.fdDst != undefined) {
- 	       fs.closeSync(transcoder.fdDst);
- 	     }
+		 if (transcoder.fdDst != undefined) {
+		 	fs.closeSync(transcoder.fdDst);
+		 }
  	     if (transcoder.fdSrc != undefined) {
- 	       fs.closeSync(transcoder.fdSrc.fd);
+ 	     	fs.closeSync(transcoder.fdSrc.fd);
          }
          workerPort.postMessage('complete');
        })
