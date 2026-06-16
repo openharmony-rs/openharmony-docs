@@ -769,6 +769,6 @@
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | 2in1 | Tablet
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
