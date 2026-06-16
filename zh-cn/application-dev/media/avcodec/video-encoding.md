@@ -966,7 +966,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    ![copy by line](figures/copy-yuv-encoder.png)
 
-   **图5** RGBA图像排布示意图
+   **图5** RGBA1010102图像排布示意图
 
    ![copy by line](figures/copy-rgb-encoder.png)
 
