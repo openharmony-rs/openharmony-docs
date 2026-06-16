@@ -22,7 +22,7 @@ Not supported.
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| value | string | - | Yes| Content used to generate the QR code The value contains a maximum of 256 characters.|
+| value | string | - | Yes| Content used to generate the QR code. The value contains a maximum of 256 characters.|
 | id | string | - | No| Unique ID of the component.|
 | style | string | - | No| Style declaration of the component.|
 | class | string | - | No| Style class of the component, which is used to refer to a style table.|
