@@ -17281,6 +17281,46 @@
 						"start_line":120
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets",
+				"functions":[
+					{
+						"end_line":231,
+						"name":"Add_list_select",
+						"start_line":196
+					},
+					{
+						"end_line":246,
+						"name":"Add_list_GestureRecognizerJudgeBegin",
+						"start_line":232
+					},
+					{
+						"end_line":209,
+						"name":"Add_list_item_select",
+						"start_line":200
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets",
+				"functions":[
+					{
+						"end_line":260,
+						"name":"Add_list_select",
+						"start_line":225
+					},
+					{
+						"end_line":275,
+						"name":"Add_list_GestureRecognizerJudgeBegin",
+						"start_line":261
+					},
+					{
+						"end_line":238,
+						"name":"Add_list_item_select",
+						"start_line":229
+					}
+				]
 			}
 		]
 	},
@@ -17529,6 +17569,36 @@
 						"end_line":65,
 						"name":"long_list",
 						"start_line":57
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets",
+				"functions":[
+					{
+						"end_line":220,
+						"name":"Add_grid_select",
+						"start_line":185
+					},
+					{
+						"end_line":198,
+						"name":"Add_grid_item_select",
+						"start_line":189
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets",
+				"functions":[
+					{
+						"end_line":247,
+						"name":"Add_grid_select",
+						"start_line":212
+					},
+					{
+						"end_line":225,
+						"name":"Add_grid_item_select",
+						"start_line":216
 					}
 				]
 			}
