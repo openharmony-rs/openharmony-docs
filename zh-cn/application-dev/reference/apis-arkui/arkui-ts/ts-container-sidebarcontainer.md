@@ -633,7 +633,7 @@ ArkTS-Sta: onChange(callback: ((value: boolean) => void) | undefined)
 
 **参数：** 
 
-| 参数名 | 类型    | 必填 | 说明                          |
+| 参数名    | 类型                          | 必填 | 说明                                                                                   |
 | ------ | ------- | ---- | ----------------------------- |
 | callback  | ArkTS-Dyn: (value: boolean) => void<br/>ArkTS-Sta: ((value: boolean) => void) \| undefined| 是   | 侧边栏状态变化时触发的回调。<br/>value：侧边栏是否显示，true表示显示，false表示隐藏。<br/>取值为undefined时，不使用回调函数。 |
 
