@@ -453,6 +453,8 @@ onReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&nb
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
@@ -518,6 +520,8 @@ offReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&n
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -717,6 +721,8 @@ onChannelStateChange(channelId:&nbsp;int, callback:&nbsp;Callback&lt;ChannelStat
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
@@ -783,6 +789,8 @@ offChannelStateChange(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;ChannelSt
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
