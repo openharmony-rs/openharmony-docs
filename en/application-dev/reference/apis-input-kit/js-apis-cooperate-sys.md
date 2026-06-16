@@ -644,3 +644,4 @@ Enumerates screen hopping events.
 | MSG_COOPERATE_INFO_FAIL      | 202       |  Screen hopping fails.     |
 | MSG_COOPERATE_STATE_ON       | 500       |  Screen hopping is enabled.  |
 | MSG_COOPERATE_STATE_OFF      | 501       |  Screen hopping is disabled.  |
+<!--no_check-->
