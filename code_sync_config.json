@@ -6454,16 +6454,20 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":22,
+						"end_line":20,
 						"name":"TestHiTraceChain_Import",
-						"start_line":20
+						"start_line":18
 					},
 					{
-						"end_line":69,
+						"end_line":67,
 						"name":"TestHiTraceChain_TestFunc",
-						"start_line":24
+						"start_line":22
 					},
 					{
 						"end_line":84,
@@ -6479,21 +6483,25 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS_Sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":22,
+						"end_line":20,
 						"name":"TestHiTraceMeter_Import",
-						"start_line":20
+						"start_line":18
 					},
 					{
-						"end_line":71,
+						"end_line":69,
 						"name":"TestHiTraceMeter_FUNC",
-						"start_line":24
+						"start_line":22
 					},
 					{
-						"end_line":84,
+						"end_line":82,
 						"name":"TestHiTraceMeter_BUTTON",
-						"start_line":81
+						"start_line":79
 					}
 				]
 			}
