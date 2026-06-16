@@ -878,14 +878,16 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    }
    ```
 
-   对跨距进行偏移，以NV12图像为例，示例如下：
+   跨距偏移处理用于去除图像内存中填充占位（padding）区域，不同像素格式内存排布逻辑不同，开发者需结合图像格式进行适配。
 
-   以NV12图像为例，width、height、wStride、hStride图像排布参考下图：
+   以NV12图像为例，结合示意图讲解跨距偏移实现方式，width、height、wStride、hStride图像排布参考下图：
 
    - OH_MD_KEY_WIDTH表示width；
    - OH_MD_KEY_HEIGHT表示height；
    - OH_MD_KEY_VIDEO_STRIDE表示wStride；
    - OH_MD_KEY_VIDEO_SLICE_HEIGHT表示hStride。
+
+   **图3** NV12图像排布示意图
 
    ![copy by line](figures/copy-by-line-encoder.png)
 
@@ -957,6 +959,17 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    一般需要获取数据的宽、高、跨距、像素格式来保证编码输入数据被正确的处理。
 
    具体实现请参考：[Buffer模式](#buffer模式)的步骤3-调用OH_VideoEncoder_RegisterCallback接口设置回调函数来获取数据的宽、高、跨距、像素格式。
+
+   常见图像格式排布示意图如下：
+
+   **图4** YUVI420图像排布示意图
+
+   ![copy by line](figures/copy-yuv-encoder.png)
+
+   **图5** RGBA图像排布示意图
+
+   ![copy by line](figures/copy-rgb-encoder.png)
+
 
 9. 通知编码器结束。
 
