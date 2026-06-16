@@ -57,6 +57,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -118,6 +119,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -149,6 +151,7 @@ struct Index {
 ```
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -402,6 +405,7 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -460,6 +464,7 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
