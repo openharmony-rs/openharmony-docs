@@ -450,7 +450,7 @@ Allows an application to start its UIAbility by using C APIs.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices | tablets
+**Supported devices**: PCs/2-in-1 devices | tablets | Phone
 
 **Valid since**: 15
 
