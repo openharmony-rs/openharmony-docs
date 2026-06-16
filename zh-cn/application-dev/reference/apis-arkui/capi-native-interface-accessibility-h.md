@@ -716,7 +716,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElement
 
 > **说明**
 > 
-> - 适用于具备可勾选语义的组件（例如ArkUI的CheckBox、Toggle、Radio）。
+> - 适用于具备可勾选语义的组件（例如ArkUI的[CheckBox](arkui-ts/ts-basic-components-checkbox.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[Radio](arkui-ts/ts-basic-components-radio.md)）。
 > - 无障碍辅助应用会根据checkable状态向用户播报"可勾选"提示，并告知用户可以通过操作来切换勾选状态。
 > - 设置checkable为true时，应同时通过[OH_ArkUI_AccessibilityElementInfoSetChecked](#oh_arkui_accessibilityelementinfosetchecked)来设置checked来表示当前勾选状态。
 
@@ -782,7 +782,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElement
 
 > **说明**
 > 
-> - 适用于可聚焦的交互组件（例如ArkUI的TextInput、Button）。
+> - 适用于可聚焦的交互组件（例如ArkUI的[TextInput](arkui-ts/ts-basic-components-textinput.md)、[Button](arkui-ts/ts-basic-components-button.md)）。
 > - 无障碍辅助应用等辅助应用在遍历可聚焦节点时，会跳过focusable为false的节点。
 > - 设置focusable为true的组件通常也需要通过[OH_ArkUI_AccessibilityElementInfoSetClickable](#oh_arkui_accessibilityelementinfosetclickable)设置clickable为true，并注册相应的操作动作。
 > - focusable与accessibilityFocused是不同的概念：focusable表示输入焦点能力，accessibilityFocused表示无障碍辅助焦点的当前状态。
@@ -913,7 +913,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementI
 
 > **说明**
 > 
-> - 适用于具备选中语义的组件（例如ArkUI的Tab、ListItem）。
+> - 适用于具备选中语义的组件（例如ArkUI的[Tab](arkui-ts/ts-container-tabs.md)、[ListItem](arkui-ts/ts-container-listitem.md)）。
 > - 无障碍辅助应用会根据selected状态播报"已选中"或"未选中"。在[Tab](arkui-ts/ts-container-tabs.md)页签场景中，selected为true的Tab页签会被朗读为当前活动页签。
 > - 在列表场景中，selected可与accessibilityGroup（通过[OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup](#oh_arkui_accessibilityelementinfosetaccessibilitygroup)设置）配合使用，标记当前激活的列表项。
 
@@ -1079,7 +1079,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElemen
 
 > **说明**
 > 
-> - 适用于支持内容滚动的容器组件（例如ArkUI的List、Grid、Scroll、Swiper）。
+> - 适用于支持内容滚动的容器组件（例如ArkUI的[List](arkui-ts/ts-container-list.md)、[Grid](arkui-ts/ts-container-grid.md)、[Scroll](arkui-ts/ts-container-scroll.md)、[Swiper](arkui-ts/ts-container-swiper.md)）。
 > - 无障碍辅助应用等辅助应用会根据scrollable状态向用户提供滚动操作提示，用户可通过辅助应用执行向前滚动（[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD](#arkui_accessibility_actiontype)）或向后滚动（[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD](#arkui_accessibility_actiontype)）操作。
 > - 设置scrollable为true时，需要通过[OH_ArkUI_AccessibilityElementInfoSetOperationActions](#oh_arkui_accessibilityelementinfosetoperationactions)在operationActions中添加滚动操作，包括[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD](#arkui_accessibility_actiontype)和[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD](#arkui_accessibility_actiontype)，否则用户无法通过辅助应用对该组件执行滚动操作。
 
@@ -1249,7 +1249,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElem
 
 > **说明**
 > 
-> - gridItem用于设置[Grid](arkui-ts/ts-container-grid.md)组件中每个子项的属性，包括是否为标题、是否被选中、所在行列下标及跨度信息。适用于网格/列表类容器的子项（例如ArkUI的Grid、List、Flex、Select、Swiper的子项）。
+> - gridItem用于设置[Grid](arkui-ts/ts-container-grid.md)组件中每个子项的属性，包括是否为标题、是否被选中、所在行列下标及跨度信息。适用于网格/列表类容器的子项（例如ArkUI的[Grid](arkui-ts/ts-container-grid.md)、[List](arkui-ts/ts-container-list.md)、[Flex](arkui-ts/ts-container-flex.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)的子项）。
 > - 无障碍辅助应用会根据gridItem的rowIndex和columnIndex播报子项的位置信息，如"第2行第3列"。
 > - [ArkUI_AccessibleGridItemInfo](capi-arkui-accessibility-arkui-accessiblegriditeminfo.md)中的heading为true时，无障碍辅助应用会播报"标题"。
 > - gridItem和elementInfo不支持传入空指针，否则返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
