@@ -80,14 +80,14 @@ ArkTS-Sta示例：
 Radio({ value: 'Radio1', group: 'radioGroup' })
   .onChange((isChecked: boolean) => {
     if(isChecked) {
-      // 需要执行的操作
+      //需要执行的操作
       // ...
     }
   })
 Radio({ value: 'Radio2', group: 'radioGroup' })
   .onChange((isChecked: boolean) => {
     if(isChecked) {
-      // 需要执行的操作
+      //需要执行的操作
       // ...
     }
   })
