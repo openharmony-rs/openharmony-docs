@@ -458,7 +458,7 @@ struct LightEffect {
     Column() {
       Row() {
         Row({ space: this.spaceValue }) {
-          ForEach(this.itemsKey, () => {
+          ForEach(this.itemsKey, (_: number, __: number) => {
             Row()
               .width(this.circleRadius * 2)
               .height(this.circleRadius * 2)
