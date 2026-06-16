@@ -104,6 +104,8 @@ export struct Embedded {
 }
 ```
 
+<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
+
 ArkTS-Sta示例：
 
 ``` TypeScript
@@ -224,6 +226,8 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 ```
 
 
+<!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/extensionability/ExampleEmbeddedAbility.ets) -->
+
 ArkTS-Sta示例：
 
 ``` TypeScript
@@ -324,6 +328,8 @@ struct Extension {
   }
 }
 ```
+<!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets) -->
+
 ArkTS-Sta示例：
 
 ``` TypeScript
