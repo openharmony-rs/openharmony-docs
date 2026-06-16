@@ -4,7 +4,8 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:06:37.987Z pushedAt=2026-06-16T14:13:30.950Z -->
 
 A Harmony Archive (HAR) is a static shared package that can contain code, C++ libraries, resource files, and configuration files (also called profiles). It enables modules and projects to share code of ArkUI components, resources, and more.
 
@@ -370,7 +371,7 @@ After [code obfuscation](../arkts-utils/source-obfuscation.md) is enabled, DevEc
 The obfuscation capability is enabled by default for the HAR module. When the compilation module is release, simple code obfuscation is automatically performed for the HAR module of API version 10 or later. **Since DevEco Studio 5.0.3.600, the code obfuscation is disabled by default when a project is created.** You can enable this feature by setting **enable** in the **ruleOptions** field in the **build-profile.json5** file of the HAR module. For details, see [Using Obfuscation for Code Hardening](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-build-obfuscation). The configuration is as follows:
 
   <!-- @[har_package_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/build-profile.json5) -->
-  
+
   ``` JSON5
   {
     "apiType": "stageMode",

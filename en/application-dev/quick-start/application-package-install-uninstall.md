@@ -4,7 +4,8 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:05:42.213Z pushedAt=2026-06-16T14:12:55.269Z -->
 
 This topic describes application installation, uninstallation, and two update modes.
 

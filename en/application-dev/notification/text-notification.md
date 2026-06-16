@@ -1,11 +1,11 @@
 # Publishing a Text Notification
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:23:18.140Z pushedAt=2026-06-16T14:15:38.771Z -->
 
 You can publish text notifications to send SMS messages, alert messages, and more. There are two types of text notifications: normal text and multi-line text.
 
@@ -30,7 +30,7 @@ The following table describes the APIs for notification publishing. You specify 
 1. Import the module.
 
    <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
-   
+
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -44,7 +44,7 @@ The following table describes the APIs for notification publishing. You specify 
    - A normal text notification consists of the **title**, **text**, and **additionalText** fields. For details, see [NotificationBasicContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationbasiccontent).
 
      <!-- @[pub_plaintext_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
-     
+
      ``` TypeScript
      let notificationRequest: notificationManager.NotificationRequest = {
        id: 1,
@@ -66,11 +66,11 @@ The following table describes the APIs for notification publishing. You specify 
        hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
      });
      ```
-     
+
    - In addition to the fields in the normal text notification, the multi-line text notification provides the **lines**, **briefText**, and **longTitle** fields. For details, see [NotificationMultiLineContent](../reference/apis-notification-kit/js-apis-inner-notification-notificationContent.md#notificationmultilinecontent).
 
      <!-- @[pub_multi_line_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
-     
+
      ``` TypeScript
      let notificationRequest: notificationManager.NotificationRequest = {
        id: 3,
@@ -95,4 +95,3 @@ The following table describes the APIs for notification publishing. You specify 
        hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
      });
      ```
-        

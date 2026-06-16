@@ -1,11 +1,11 @@
 # Updating a Notification
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:23:01.699Z pushedAt=2026-06-16T14:15:28.714Z -->
 
 Starting from API version 18, applications can update only published notifications. such as the upload/download progress and IMs.
 
@@ -29,7 +29,7 @@ The following uses the progress bar notification as an example.
 1. Import modules.
 
    <!-- @[update_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
-   
+
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -42,7 +42,7 @@ The following uses the progress bar notification as an example.
 2. Publish the progress bar notification.
 
    <!-- @[pub_progress_bar_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
-   
+
    ``` TypeScript
    let notificationRequest: notificationManager.NotificationRequest = {
      id: 5,
@@ -75,7 +75,7 @@ The following uses the progress bar notification as an example.
 3. Update the progress bar notification using the **updateOnly** field in the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) API.
 
    <!-- @[update_prog_only_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
-   
+
    ``` TypeScript
    let notificationRequest: notificationManager.NotificationRequest = {
      id: 5,

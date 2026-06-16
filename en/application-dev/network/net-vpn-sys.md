@@ -1,4 +1,4 @@
-# VPN Management (For System Applications Only)
+# VPN Management (for System Applications Only)
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->

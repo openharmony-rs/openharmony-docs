@@ -1,11 +1,11 @@
 # Notification Kit (User Notification Service)<!--notification-kit-->
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:23:16.807Z pushedAt=2026-06-16T14:15:36.151Z -->
 
 - [About This Kit](notification-overview.md)
 - [Requesting Notification Authorization](notification-enable.md)

@@ -6,6 +6,7 @@
 <!--Designer: @qyhuo32-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:06:09.701Z pushedAt=2026-06-16T14:13:06.433Z -->
 
 ## Purpose
 
@@ -486,7 +487,7 @@ To maintain code consistency and readability, use single quotes.
 <!-- @[single_quotation_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-let message1 = 'world';
+let message1 = "world";
 console.info(message1);
 ```
 
@@ -637,7 +638,7 @@ function foo2() {
   // ...
 }
 ```
- 
+
 ## Programming Practices
 
 ### Add Accessible Modifiers for Class Properties
@@ -879,7 +880,8 @@ export function getObject1(value: number): I {
 <!-- @[noESObject_app_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-import { getObject1 } from './lib'
+// Index.ets
+import { getObject1 } from './lib';
 // ...
 let obj1: I = getObject1(123);
 ```
@@ -920,7 +922,7 @@ ArkTS provides two array types: **T[]** and **Array\<T>**. To improve code reada
 
 **[Incorrect Example]**
 
-<!-- @[use_T[]_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->    
+<!-- @[use_T_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 let x: Array<number> = [1, 2, 3];
@@ -929,7 +931,7 @@ let y: Array<string> = ['a', 'b', 'c'];
 
 **[Correct Example]**
 
-<!-- @[use_T[]_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[use_T_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // Use the T[] syntax.

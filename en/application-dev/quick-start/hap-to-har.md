@@ -4,7 +4,8 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:07:49.341Z pushedAt=2026-06-16T14:13:28.484Z -->
 
 HAR allows you to export APIs or ArkUI components from a module and share the module as a second-party or third-party library with other modules or applications, while HAP does not. This topic will walk you through how to convert a HAP project to a HAR project by modifying configuration items.
 
@@ -22,7 +23,7 @@ HAR allows you to export APIs or ArkUI components from a module and share the mo
     - UIAbility is not supported by the HAR module in API version 13 or earlier. Therefore, you need to delete the **abilities** tag and delete the associated UIAbility component or migrate it to the HAP module.
 
     <!-- @[hap_to_har_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/src/main/module.json5) -->
-    
+
     ``` JSON5
     {
       "module": {
@@ -41,7 +42,7 @@ HAR allows you to export APIs or ArkUI components from a module and share the mo
 3. Replace the content in the **hvigorfile.ts** file of the HAP module with the following:
 
     <!-- @[hap_to_har_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/hvigorfile.ts) -->
-    
+
     ``` TypeScript
     import { harTasks } from '@ohos/hvigor-ohos-plugin';
     
@@ -54,7 +55,7 @@ HAR allows you to export APIs or ArkUI components from a module and share the mo
 4. Create an **Index.ets** file in the root directory of the HAP module, and set the file in the **main** tag of the **oh-package.json5** file. The **Index.ets** file is used to export ArkUI components or APIs. For details, see [Developing a HAR](./har-package.md#developing-a-har).
 
     <!-- @[hap_to_har_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HapToHar/entry/oh-package.json5)  -->
-    
+
     ``` JSON5
     {
       // ...

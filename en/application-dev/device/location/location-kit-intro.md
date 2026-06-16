@@ -1,5 +1,13 @@
 # About This Kit
 
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:13:09.747Z pushedAt=2026-06-16T12:04:11.620Z -->
+
 ## Overview
 
 People take their mobile devices wherever they go. Mobile devices have become a necessity in people's daily routines, whether it be for looking at the weather forecast, browsing news, hailing a taxi, navigating, or recording data from a workout. All these activities are so much associated with the location services on mobile devices.
@@ -12,20 +20,23 @@ Your application can call location-specific APIs to obtain the location informat
 
 Location awareness helps determine where a mobile device locates. Location Kit allows your system to identify the location of a mobile device with its coordinates, and uses location technologies such as Global Navigation Satellite System (GNSS) and network positioning (for example, base station positioning or WLAN/Bluetooth positioning) to provide diverse location-based services.
 
-These advanced location technologies make it possible to obtain the accurate location of the mobile device, regardless of whether it is indoors or outdoors.
-
 - **Coordinate**<br>
+
   A coordinate describes a location on the earth using the longitude and latitude in reference to the World Geodetic Coordinate System 1984.
 
 - **GNSS positioning**<br>
+
   GNSS positioning locates a mobile device by using the location algorithm offered by the device chip to compute the location information provided by the global navigation satellite system (GNSS), for example, GPS, GLONASS, BeiDou, and Galileo. Whichever positioning system will be used during the location process depends on a hardware capability of the device.
 
 - **Base station positioning**<br>
+
   Base station positioning estimates the current location of a mobile device based on the location of the resident base station in reference to the neighboring base stations. This technology provides only a low accuracy and requires access to the cellular network.
 
 - **WLAN or Bluetooth positioning**<br>
+
   WLAN or Bluetooth positioning estimates the current location of a mobile device based on the locations of WLANs and Bluetooth devices that can be discovered by the device. The location accuracy of this technology depends on the distribution of fixed WLAN access points (APs) and Bluetooth devices around the device. A high density of WLAN APs and Bluetooth devices can produce a more accurate location result than base station positioning. This technology also requires access to the network.
 
+<!--RP1--><!--RP1End-->
 
 ### Constraints
 
@@ -37,8 +48,6 @@ Since the location information is considered sensitive, your application still n
 
 Depending on the hardware support, Location Kit provides different capabilities on different devices. For example, a GPS or Beidou positioning chip provides devices with the GNSS positioning capabilities. If a WLAN or cellular network module, instead of a positioning chip, is available, then the devices can use the WLAN or base station positioning capabilities.
 
-### Related Examples
+<!--RP2--><!--RP2End-->
 
-The following sample is provided to help you better understand how to use Location Kit:
-
-- [`Location`: Location Kit (ArkTS) (API9) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Location)
+<!--RP3--><!--RP3End-->

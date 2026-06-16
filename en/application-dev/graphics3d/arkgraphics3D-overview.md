@@ -5,6 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:04:17.043Z pushedAt=2026-06-16T14:10:11.525Z -->
 
 ArkGraphics 3D provides basic 3D scene rendering capabilities based on the lightweight 3D engine and render pipelines. With this service, you can efficiently build and render a 3D scene.
 
@@ -35,3 +36,6 @@ The ArkGraphics 3D service consists of three key parts: graphics backend, engine
 ## Constraints
 
 To use the ArkGraphics 3D service, the device must support the GPU driver of OpenGL ES 3.2 or later or Vulkan 1.0 or later.
+
+<!--RP1-->
+<!--RP1End-->
