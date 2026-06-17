@@ -616,7 +616,7 @@ function foo3(a: number, b: number): void {}
 |  0xcf |  IMM8 |  copyrestargs +AA |  A：形参列表中[剩余参数](https://262.ecma-international.org/12.0/#prod-FunctionRestParameter)所在的位次   |  复制剩余参数，并将复制出的参数数组副本存放到acc中。   |
 |  0xd0 |  IMM8_ID16_V8 |  stsuperbyname RR, @AAAA, vBB |  默认入参：acc：值<br>R：方舟运行时内部使用的8位保留数字<br>A：string id<br>B：对象   |  在当前函数中，将acc中的值存放到`super`的键值为索引A对应的字符串的属性上。<br>若该属性为访问器属性，则将B中的对象作为调用该属性setter函数时的`this`参数。   |
 |  0xd1 |  IMM16_ID16_V8    |  stsuperbyname RRRR, @AAAA, vBB   |  默认入参：acc：值<br>R：方舟运行时内部使用的16位保留数字<br>A：string id<br>B：对象  |  在当前函数中，将acc中的值存放到`super`的键值为索引A对应的字符串的属性上。<br>若该属性为访问器属性，则将B中的对象作为调用该属性setter函数时的`this`参数。   |
-|  0xd2 |  IMM16_V8_V8  |  stownbyvaluewithnameset RRRR, vAA, vBB   |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的8位保留数字<br>A：对象<br>B：属性键值  |  将acc中的值存放到对象A的键值为B的属性上，并将函数的名称设置为B。   |
+|  0xd2 |  IMM16_V8_V8  |  stownbyvaluewithnameset RRRR, vAA, vBB   |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的16位保留数字<br>A：对象<br>B：属性键值  |  将acc中的值存放到对象A的键值为B的属性上，并将函数的名称设置为B。   |
 |  0xd3 |  ID16 |  ldbigint @AAAA   |  A：string id |  基于索引A对应的字符串，创建**BigInt**类型的值，并将其存放到acc中。   |
 |  0xd4 |  IMM16_ID16_V8    |  stownbynamewithnameset RRRR, @AAAA, vBB  |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的16位保留数字<br>A：string id<br>B：对象    |  将acc中的函数对象存放到对象B的键值为索引A对应的字符串的属性上，并将函数的名称设置为索引A对应的字符串。   |
 |  0xd5 |  NONE |  nop  | - |  无操作。   |
