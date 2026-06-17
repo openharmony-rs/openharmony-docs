@@ -6307,7 +6307,7 @@
 
 ## ohos.permission.HDC_REPORT_INFO
 
-允许系统服务订阅hdc事件。
+允许系统服务或系统应用订阅hdc事件。
 
 **权限级别**：system_basic
 
