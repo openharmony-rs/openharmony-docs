@@ -74,7 +74,7 @@ Column() {
 
 **可能原因**
 
-[materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数的作用是为材质滤镜[materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)再混合一层纯色效果。该颜色必须带有一定的透明度值，如果传入纯不透明颜色（如`Color.Red`或`'#FFFF0000'`），会将材质滤镜效果完全遮挡。
+[materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数的作用是为材质滤镜[materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)再混合一层纯色效果。该颜色需要带有一定的透明度值，如果传入纯不透明颜色（如`Color.Red`或`'#FFFF0000'`），会遮挡材质滤镜效果。
 
 **解决措施**
 
@@ -82,7 +82,7 @@ Column() {
 
 > **说明：**
 >
-> materialColor参数仅对高档和中档算力设备的显示效果生效，在低档算力设备上该参数不生效。
+> [materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数对所有档位的算力设备均生效。在高算力和中算力设备上，该参数为材质滤镜再混合一层纯色效果；在低算力设备上，该参数作为背景色[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)属性值。
 
 **代码示例**
 
