@@ -27,7 +27,7 @@
 
 | 实例名            | 接口名                                                       | 描述                                                         |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| window静态方法    | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | 创建子窗口或系统窗口。<br/>-`config`：创建窗口时的参数。     |
+| window静态方法    | createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | 创建子窗口或系统窗口。<br>-`config`：创建窗口时的参数。     |
 | Window            | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | 改变当前窗口大小。                                           |
 | Window            | moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void | 移动当前窗口位置。                                           |
 | Window            | setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void | 根据当前工程中某个页面的路径为窗口加载具体的页面内容。<br>其中path为要加载到窗口中的页面内容的路径，在Stage模型下该路径需添加到工程的main_pages.json文件中。                                     |
