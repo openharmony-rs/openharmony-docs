@@ -210,7 +210,7 @@ Function pointer used when an async operation is complete. When an async operati
 
 **napi_threadsafe_function_call_js**
 
-Function pointer used in the event loop thread to interact with ArkTS/JS to implement more complex scenarios. It is used in **napi_create_threadsafe_function(napi_env env,…,napi_threadsafe_function_call_js call_js_cb,...)**.
+Function pointer used in the event loop thread to interact with ArkTS/JS to implement more complex scenarios. It is used in **napi_create_threadsafe_function(napi_env env,...,napi_threadsafe_function_call_js call_js_cb,...)**.
 
 **napi_cleanup_hook**
 
@@ -586,7 +586,7 @@ napi_status napi_queue_async_work_with_qos(napi_env env,
                                            napi_qos_t qos);
 ```
 
-This API has the same usage as **napi_queue_async_work**. The difference is you can specify the QoS for the work to run. For details about how to use **napi_queue_async_work_with_qos**, see "Prioritizing Asynchronous Tasks". For details about QoS, see [QoS Development](qos-guidelines.md).
+This API has the same usage as **napi_queue_async_work**. The difference is you can specify the QoS for the work to run. For details about how to use **napi_queue_async_work_with_qos**, see "Prioritizing Asynchronous Tasks". For details about QoS, see [QoS Development](../kernel-enhance/qos-guidelines.md).
 
 **napi_run_script_path**
 
