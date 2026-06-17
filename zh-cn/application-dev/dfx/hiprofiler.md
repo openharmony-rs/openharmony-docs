@@ -227,8 +227,9 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 
 开启fp回栈+跨语言回栈（其中绿色部分为js栈）：
 > **说明：**
+>
 > fp_unwind参数需要设置为true。
-> js_stack_report参数需要设置为1，否则无法回出js栈。
+> js_stack_report参数需要设置为1，否则无法回溯出js栈。
 
 ```shell
 $ hiprofiler_cmd \
@@ -270,8 +271,9 @@ CONFIG
 
 开启dwarf回栈和跨语言回栈（可以展示出native -&gt; js -&gt;native的栈）：
 > **说明：**
+>
 > fp_unwind参数需要设置为false。
-> js_stack_report参数需要设置为1，否则无法回出js栈。
+> js_stack_report参数需要设置为1，否则无法回溯出js栈。
 
 ```shell
 $ hiprofiler_cmd \
@@ -313,7 +315,8 @@ CONFIG
 
 开启统计模式，在此模式下，栈数据会周期性展示：
 > **说明：**
-> statistics_interval参数必须设置一个大于0的值，表示每隔多少s进行一次统计。设置为10，表示每10s进行一次统计。
+>
+> statistics_interval参数必须设置一个大于0的值，表示每隔多少秒进行一次统计。设置为10，表示每10秒进行一次统计。
 
 ```shell
 $ hiprofiler_cmd \
@@ -356,6 +359,7 @@ CONFIG
 
 开启非统计模式，在此模式下，栈数据不会周期性展示：
 > **说明：**
+>
 > statistics_interval必须设置为0或者不设置。
 
 ```shell
@@ -1123,7 +1127,7 @@ $ hiprofiler_cmd stop
 
 ### 使用文件缓存模式
 
-从 API version 24 开始支持使用文件缓存模式，可通过如下方式对com.example.insight_test_stage进程进行内存录制
+从API version 24开始支持使用文件缓存模式，可通过如下方式对com.example.insight_test_stage进程进行内存录制。
 
 > **说明：**
 >
