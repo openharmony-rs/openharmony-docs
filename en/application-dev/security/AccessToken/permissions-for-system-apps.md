@@ -6291,7 +6291,7 @@ Allows a system application to invoke ArkWebCore extended capabilities.
 
 ## ohos.permission.HDC_REPORT_INFO
 
-Allows a system service or a system application to subscribe to the hdc events.
+Allows a system application to subscribe to the hdc events.
 
 **Permission level**: system_basic
 
