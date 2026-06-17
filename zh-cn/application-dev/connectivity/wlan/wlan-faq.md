@@ -17,7 +17,7 @@ wifiManager.getLinkedInfo()仅获取当前已连接的Wi-Fi基础信息（如 SS
 
 虽然获取 SSID 不需要位置权限，但如果需要获取设备 MAC 地址，则需根据策略申请 ohos.permission.GET_WIFI_LOCAL_MAC（物理地址）或使用随机 MAC，但这两者均与位置权限无关。
 
-## App在使用addCandidateConfig连接WiFi时偶现错误码201，需明确错误原因及修复方式以优化用户体验
+## 在使用addCandidateConfig连接Wi-Fi时偶现错误码201
 需要权限： ohos.permission.SET_WIFI_INFO。
 
 错误码含义：在鸿蒙网络框架中，错误码 201 通常对应 权限不足 (Permission Denied) 或 系统服务不可用。
