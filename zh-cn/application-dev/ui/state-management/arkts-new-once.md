@@ -41,7 +41,7 @@
 
 - \@Once仅在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中与\@Param搭配使用。
 
-  <!-- @[once_param_componentV2_pair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) -->
+  <!-- @[once_param_componentV2_pair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) --> 
   
   ``` TypeScript
   @ComponentV2
@@ -77,7 +77,7 @@
 
 \@Once用于期望变量仅初始化同步数据源一次，之后不再继续同步变化的场景。
 
-<!-- @[once_init_sync_noMore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) --> 
+<!-- @[once_init_sync_noMore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets) -->  
 
 ``` TypeScript
 @ComponentV2
@@ -88,7 +88,10 @@ struct ChildComponent {
   build() {
     Column() {
       Text(`onceParam: ${this.onceParam}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 
@@ -101,21 +104,28 @@ struct MyComponent {
   build() {
     Column() {
       Text(`Parent message: ${this.message}`)
+        .fontSize(20)
+        .margin(10)
       Button('change message')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message = 'Hello Tomorrow';
         })
       ChildComponent({ onceParam: this.message })
     }
+    .width('100%')
   }
 }
 ```
+
+![once-sync-0](figures/once-sync-0.gif)
 
 ### 本地修改\@Param变量
 
 当\@Once与\@Param结合使用时，可以解除\@Param无法在本地修改的限制，并能够触发UI刷新。此时，使用\@Param和\@Once的效果类似于[\@Local](arkts-new-local.md)，但\@Param和\@Once还能接收外部传入的初始值。
 
-<!-- @[once_param_modify_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[once_param_modify_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 @ObservedV2
@@ -134,16 +144,25 @@ struct Child {
   build() {
     Column() {
       Text(`Child onceParamNum: ${this.onceParamNum}`)
+        .fontSize(20)
+        .margin(10)
       Text(`Child onceParamInfo: ${this.onceParamInfo.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('changeOnceParamNum')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.onceParamNum++;
         })
       Button('changeParamInfo')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.onceParamInfo = new Info('Cindy');
         })
     }
+    .width('100%')
   }
 }
 @Entry
@@ -155,12 +174,20 @@ struct Index {
   build() {
     Column() {
       Text(`Parent localNum: ${this.localNum}`)
+        .fontSize(20)
+        .margin(10)
       Text(`Parent localInfo: ${this.localInfo.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('changeLocalNum')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.localNum++;
         })
       Button('changeLocalInfo')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.localInfo = new Info('Cindy');
         })
@@ -169,7 +196,9 @@ struct Index {
         onceParamInfo: this.localInfo
       })
     }
+    .width('100%')
   }
 }
 ```
 
+![once-sync-1](figures/once-sync-1.gif)
