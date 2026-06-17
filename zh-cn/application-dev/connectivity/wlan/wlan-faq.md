@@ -28,12 +28,18 @@ wifiManager.getLinkedInfo()仅获取当前已连接的Wi-Fi基础信息（如 SS
 检查权限：确保 module.json5 中已声明 ohos.permission.SET_WIFI_INFO，并在运行时（如 API 9+）或初始化阶段正确申请。
 
 ## 是否有API支持切换网络，以解决在特定情况下无法连接外网的问题
-默认不会自动回连无连接记录的网络。
 
-HarmonyOS 提供 WLAN 候选网络相关 API，可用于在当前 Wi-Fi 无外网访问能力时，主动连接应用添加的备用 Wi-Fi/热点。
-先使用 addCandidateConfig 添加候选网络，该动作只保存候选配置，不会自动连接；添加后的候选网络属于应用维度，和系统 WLAN 页面配置隔离。
-需要切换时，可调用 connectToCandidateConfig(networkId) 发起连接；如果希望用户确认信任并连接，可在 API 20+ 使用 connectToCandidateConfigWithUserAction(networkId)。后者会弹出用户确认，用户确认前不会执行连接，并可通过错误码区分拒绝或未响应。
-对无连接记录的候选网络，系统不会自动回连；通过用户确认并连接成功后，后续可依据系统策略自动回连。
+默认情况下，系统不会自动回连无连接记录的网络。
+
+OpenHarmony提供WLAN候选网络相关 API，可用于在当前 Wi-Fi 无外网访问能力时，主动连接应用添加的备用 Wi-Fi/热点。具体流程如下：
+
+1. 添加候选网络：使用 [addCandidateConfig](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#addcandidateconfig7) 添加候选网络配置。该操作仅保存候选配置，不会自动连接。添加后的候选网络属于应用维度，与系统 WLAN 页面配置相互隔离。
+2. 发起连接：需要切换时，调用 [connectToCandidateConfig](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#connecttocandidateconfig7)(networkId) 发起连接。
+3. 用户确认连接（推荐）：如需用户确认后再连接，从 API version 20 起可使用 [connectToCandidateConfigWithUserAction](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#connecttocandidateconfigwithuseraction20)(networkId)。该接口会弹出用户确认弹窗，用户确认前不会执行连接。可通过错误码区分用户拒绝（2100301）或未响应（2100302）。
+
+> **说明：** 
+>
+> 对无连接记录的候选网络，系统不会自动回连。通过用户确认并连接成功后，后续可依据系统策略自动回连。
 
 ## 在连接到没有网络的热点时，系统会自动断开连接且未触发Wi-Fi连接状态变化的回调，导致无法正常监听连接状态变化
 当前网络无法访问互联网。点击【使用】连接，或点击【不使用】以继续搜索更佳网络。
