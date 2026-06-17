@@ -6,9 +6,9 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供系统材质的接口定义。不同的系统材质对应不同的UI效果，包括背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)、材质层滤镜[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)效果。材质对象本身在不同算力的设备上表现存在差异，设备算力的高、中、低档由设备厂商决定，分档效果具体参考[ImmersiveMaterial](#immersivematerial)的描述。
+本模块提供系统材质的接口定义。不同的系统材质对应不同的UI效果，包括背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)、材质层滤镜[materialFilter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)效果。材质对象本身在不同算力的设备上表现存在差异，设备算力的高、中、低档由设备厂商决定，分档效果具体参考[ImmersiveMaterial](#immersivematerial)的描述。
 
-开发指导请参考[沉浸光感](../../ui/arkts-immersive-light-sense.md#沉浸光感)指南文档。
+开发指导请参考[沉浸光感](../../ui/arkts-immersive-light-sense.md)指南文档。
 
 **起始版本：** 26.0.0
 
@@ -22,7 +22,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 沉浸式材质类，继承自[Material](#material)。
 
-沉浸式材质根据设备算力有分档表现，设备算力的高、中、低档由设备厂商决定，定义在系统配置文件中。在高算力和中算力设备上，通过材质层滤镜属性[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)和阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果，当systemMaterial属性生效后，已设置的背景色属性[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)会被恢复为透明色，已设置的边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)属性会被恢复为无边框效果。在低算力设备上，通过背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果。同一材质的效果，会受到系统设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置下，材质的参数和效果存在差异。
+沉浸式材质根据设备算力有分档表现，设备算力的高、中、低档由设备厂商决定，定义在系统配置文件中。在高算力和中算力设备上，通过材质层滤镜属性[materialFilter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)和阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果，当systemMaterial属性生效后，已设置的背景色属性[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)会被恢复为透明色，已设置的边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)属性会被恢复为无边框效果。在低算力设备上，通过背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果。同一材质的效果，会受到系统设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置下，材质的参数和效果存在差异。
 
 ### constructor
 
