@@ -16,12 +16,12 @@
 
 **可能原因**
 
-沉浸式系统材质的视觉层级位于组件的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等属性之下。如果同时设置了不透明的背景色或背景模糊参数，这些属性会覆盖在材质层之上，导致材质效果被遮挡不可见。
+沉浸式系统材质的视觉层级位于组件的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等属性之下。如果同时设置了不透明的背景色或背景模糊样式，这些属性会覆盖在材质层之上，导致材质效果被遮挡不可见。
 
 **解决措施**
 
 1. 将组件的背景色设置为透明（`Color.Transparent`）或移除背景色设置。
-2. 移除[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等背景模糊参数，避免模糊效果覆盖材质层。
+2. 移除[backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)等背景模糊样式，避免模糊效果覆盖材质层。
 
 **代码示例**
 
@@ -100,15 +100,15 @@ new uiMaterial.ImmersiveMaterial({
 })
 ```
 
-## 低档算力设备上沉浸光感效果与高档设备差异较大
+## 低算力设备上沉浸光感效果与高算力设备差异较大
 
 **问题现象**
 
-在低档算力设备上运行应用时，沉浸式系统材质的视觉效果与高档设备相比差异较大，部分材质参数设置后没有生效。
+在低算力设备上运行应用时，沉浸式系统材质的视觉效果与高算力设备相比差异较大，部分材质参数设置后没有生效。
 
 **可能原因**
 
-沉浸式系统材质的效果会根据设备算力档位自动适配。在高档和中档算力设备上，影响材质滤镜[materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)效果和阴影效果；在低档算力设备上，仅影响背景色、边框颜色、边框宽度和阴影效果。
+沉浸式系统材质的效果会根据设备算力档位自动适配。在高算力和中算力设备上，影响材质滤镜[materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)效果和阴影效果；在低算力设备上，仅影响背景色、边框颜色、边框宽度和阴影效果。
 
 **解决措施**
 
@@ -142,7 +142,7 @@ new uiMaterial.ImmersiveMaterial({
 
 **可能原因**
 
-当沉浸式系统材质的[applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数为true（默认值）时，材质的阴影效果固定生效，且优先级高于[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性，此时自定义的shadow设置不会生效。
+当沉浸式系统材质的[applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数为true（默认值）时，材质中的阴影效果固定生效，优先于[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性，此时自定义的shadow设置不会生效；当该参数为false时，[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性生效，材质的阴影效果不生效。
 
 **解决措施**
 
@@ -193,7 +193,7 @@ Column() {
 
 **问题现象**
 
-在DEFAULT模式下，[Dialog](arkts-base-dialog-overview.md)、[Toast](arkts-create-toast.md)等组件未呈现沉浸式系统材质的视觉效果。
+在[DEFAULT](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，[Dialog](arkts-base-dialog-overview.md)、[Toast](arkts-create-toast.md)等组件未呈现沉浸式系统材质的视觉效果。
 
 **可能原因**
 
