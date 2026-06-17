@@ -791,9 +791,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
   // 本接口应在激活音频会话前调用。
   // 若音频会话在激活状态时调用此接口后，必须重新激活音频会话使其生效。
-  // behavior参数支持位或操作，可同时设置多个会话行为标志。
-  let behavior =
-    audio.AudioSessionBehaviorFlags.VOIP_PRIVACY_TYPE_PUBLIC | audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+  let behavior = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
   audioSessionManager.setAudioSessionBehavior(behavior);
 
   // 设置音频会话策略。
