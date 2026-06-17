@@ -71,6 +71,7 @@ HUKS handle结构体。
 | outData    | Uint8Array                      | 否   | 是   | 表示输出数据。默认为空。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | properties | Array\<[HuksParam](#huksparam)> | 否   | 是   | 表示属性信息。默认为undefined。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | certChains | Array\<string>                  | 否   | 是   | 表示证书链数据。默认为undefined。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| sharedSecret | Uint8Array                  | 否   | 是   | 表示密钥封装或解封装生成的共享密钥。默认为空。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## HuksListAliasesReturnResult<sup>12+</sup>
 
@@ -1885,6 +1886,166 @@ unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8Array): Pr
 
 <!--RP3--><!--RP3End-->
 
+## huks.encapsulate
+
+encapsulate(keyAlias: string, params: HuksParam[], sharedKeyAlias?: string, sharedKeyParams?: HuksParam[]): Promise\<HuksReturnResult>
+
+密钥封装，使用ML-KEM公钥生成密文和共享密钥。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                         |
+| -------- | --------------------------- | ---- | -------------------------------------------- |
+| keyAlias | string                      | 是   | ML-KEM公钥密钥别名。 |
+| params  | [HuksParam[]](#huksparam) | 是   | 密钥封装操作参数集。 |
+| sharedKeyAlias | string | 否   | 共享密钥存储别名。 |
+| sharedKeyParams | [HuksParam[]](#huksparam) | 否   | 共享密钥的属性参数集。 |
+
+**返回值：**
+
+| 类型                                           | 说明                                                         |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise对象，返回调用接口的结果。outData为封装后的密文数据，sharedSecret为共享密钥（sharedKeyAlias非空时sharedSecret为空）。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 801 | API is not supported. |
+| 12000001 | Algorithm mode is not supported |
+| 12000002 | Algorithm parameters are missing, please check the algorithm parameters. |
+| 12000003 | The algorithm parameters are invalid, please check the algorithm parameters. |
+| 12000004 | File operation failed. |
+| 12000005 | IPC communication failed. |
+| 12000006 | The algorithm engine reported an error, please check the input parameters. |
+| 12000011 | The queried key does not exist, please check the key-related parameters. |
+| 12000012 | Device environment or input parameters are abnormal. |
+| 12000013 | Queried credential does not exist |
+| 12000014 | Memory is insufficient. |
+| 12000015 | Failed to obtain the security information via UserIAM. |
+| 12000016 | The screen lock password is not set. |
+| 12000017 | The key with the same alias already exists. |
+| 12000018 | The input parameter is invalid. |
+
+**示例：**
+
+```ts
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let keyAlias = 'ml_kem_pub_key_b';
+let params: huks.HuksParam[] = [{
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_ML_KEM,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_ML_KEM_KEY_PARAM_SET_768,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_WRAP,
+}];
+
+try {
+  huks.encapsulate(keyAlias, params).then((data: huks.HuksReturnResult) => {
+    console.info(`encapsulate success, encapsulatedData length: ${(data.outData as Uint8Array).length}`);
+    console.info(`sharedSecret length: ${(data.sharedSecret as Uint8Array).length}`);
+  }).catch((error: BusinessError) => {
+    console.error(`encapsulate failed, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`encapsulate input arg invalid`);
+}
+```
+
+## huks.decapsulate
+
+decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Array, sharedKeyAlias?: string, sharedKeyParams?: HuksParam[]): Promise\<HuksReturnResult>
+
+密钥解封装，使用ML-KEM私钥从密文中恢复共享密钥。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                         |
+| -------- | --------------------------- | ---- | -------------------------------------------- |
+| keyAlias | string                      | 是   | ML-KEM私钥密钥别名。 |
+| params  | [HuksParam[]](#huksparam) | 是   | 密钥解封装操作参数集。 |
+| encapData | Uint8Array | 是   | 封装密文数据。 |
+| sharedKeyAlias | string | 否   | 共享密钥存储别名。 |
+| sharedKeyParams | [HuksParam[]](#huksparam) | 否   | 共享密钥的属性参数集。 |
+
+**返回值：**
+
+| 类型                                           | 说明                                                         |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| Promise<[HuksReturnResult](#huksreturnresult9)> | Promise对象，返回调用接口的结果。sharedSecret为共享密钥（sharedKeyAlias非空时sharedSecret为空）。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 801 | API is not supported. |
+| 12000001 | Algorithm mode is not supported |
+| 12000002 | The algorithm parameter is missing. Check the algorithm parameter. |
+| 12000003 | The algorithm parameter is invalid. Check the algorithm parameter. |
+| 12000004 | The file operation failed. |
+| 12000005 | IPC communication failed. |
+| 12000006 | The algorithm engine reports an error. Check the input parameters. |
+| 12000011 | The queried key does not exist. Check the key-related parameters. |
+| 12000012 | The device environment or input parameter is abnormal. |
+| 12000013 | Queried credential does not exist |
+| 12000014 | Insufficient memory. |
+| 12000015 | Failed to obtain the security information using UserIAM. |
+| 12000016 | The lock screen password is not set. |
+| 12000017 | A key with the same alias already exists. |
+| 12000018 | Invalid input parameter. |
+
+**示例：**
+
+```ts
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let keyAlias = 'ml_kem_key_b';
+let params: huks.HuksParam[] = [{
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_ML_KEM,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_ML_KEM_KEY_PARAM_SET_768,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_UNWRAP,
+}];
+
+let encapData = new Uint8Array(784);
+
+try {
+  huks.decapsulate(keyAlias, params, encapData).then((data: huks.HuksReturnResult) => {
+    console.info(`decapsulate success, sharedSecret length: ${(data.sharedSecret as Uint8Array).length}`);
+  }).catch((error: BusinessError) => {
+    console.error(`decapsulate failed, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`decapsulate input arg invalid`);
+}
+```
+
 ## huks.getKeyItemProperties<sup>9+</sup>
 
 getKeyItemProperties(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<HuksReturnResult>) : void
@@ -3456,6 +3617,8 @@ async function testListAliases() {
 | HUKS_ML_DSA_KEY_PARAM_SET_44          | 44  | 表示使用ML-DSA算法的安全参数集为44。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_ML_DSA_KEY_PARAM_SET_65          | 65  | 表示使用ML-DSA算法的安全参数集为65。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_ML_DSA_KEY_PARAM_SET_87          | 87  | 表示使用ML-DSA算法的安全参数集为87。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
+| HUKS_ML_KEM_KEY_PARAM_SET_768  | 768  | 表示ML-KEM算法的密钥长度为768。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
+| HUKS_ML_KEM_KEY_PARAM_SET_1024  | 1024  | 表示ML-KEM算法的密钥长度为1024。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 
 ## HuksKeyAlg
 
@@ -3483,6 +3646,7 @@ async function testListAliases() {
 | HUKS_ALG_3DES<sup>12+</sup> | 161  | 表示使用3DES算法（API 12开始支持<!--RP4-->轻量级设备<!--RP4End-->，API 18开始支持<!--RP5-->标准设备<!--RP5End-->）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_ALG_CMAC<sup>12+</sup> | 162  | 表示使用CMAC算法（API 12开始支持<!--RP4-->轻量级设备<!--RP4End-->，API 18开始支持<!--RP5-->标准设备<!--RP5End-->）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 | HUKS_ALG_ML_DSA           | 201    | 表示使用ML-DSA算法。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
+| HUKS_ALG_ML_KEM | 200  | 表示使用ML-KEM算法。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core|
 
 ## HuksKeyGenerateType
 
