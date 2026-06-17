@@ -104,7 +104,7 @@ To hide an entry icon on the home screen, you must configure the **AllowAppDeskt
 
 ## Configuring Application Version Declaration
 
-To declare the application version, set the **version** field under **app** in the **config.json** file to specify the version number, version name, and earliest compatible version number. For details, see [Internal Structure of the version Attribute](../quick-start/app-structure.md#internal-structure-of-the-version-attribute).
+To declare the application version, set the **version** field under **app** in the **config.json** file to specify the version number, version name, and earliest compatible version number. For details, see [version Object Internal Structure](../quick-start/app-structure.md#version-object-internal-structure).
 
 ## Configuring Device Types Supported by the Module
 
