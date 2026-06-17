@@ -1,4 +1,4 @@
-# Int
+# Long
 <!--Kit: ArkTS-->
 <!--Subsystem: RuntimeCore-->
 <!--Owner: @lijin1039-->
@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供`Int`装箱类型及`int`相关转换、比较、格式化和算术接口。
+本模块提供`Long`装箱类型及`long`相关转换、比较、格式化和算术接口。
 
 > **说明：**
 >
@@ -14,11 +14,11 @@
 >
 > - 本模块首批接口从API version 24开始支持。
 
-## Int
+## Long
 
-export final class Int extends Integral implements Comparable\<Int>
+export final class Long extends Integral implements Comparable\<Long>
 
-`int`值的装箱类型。`Int`实例保存一个`int`值，并提供基础类型转换、字符串转换、比较和算术方法。继承自[Integral](arkts-sta-numeric.md#integral)。
+`long`值的装箱类型。`Long`实例保存一个`long`值，并提供基础类型转换、字符串转换、比较和算术方法。继承自[Integral](arkts-sta-numeric.md#integral)。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -28,44 +28,42 @@ export final class Int extends Integral implements Comparable\<Int>
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 26.0.0
-
 | 常量 | 类型 | 说明 |
 | :--- | :--- | :--- |
-| MIN_VALUE | int | 最小`int`值，值为`-2147483648`。 |
-| MAX_VALUE | int | 最大`int`值，值为`2147483647`。 |
-| BIT_SIZE | byte | `int`位数，值为`32`。 |
-| BYTE_SIZE | byte | `int`字节数，值为`4`。 |
+| MIN_VALUE | long | 最小`long`值，值为`-9223372036854775808`。 |
+| MAX_VALUE | long | 最大`long`值，值为`9223372036854775807`。 |
+| BIT_SIZE | byte | `long`位数，值为`64`。 |
+| BYTE_SIZE | byte | `long`字节数，值为`8`。 |
 
 **示例：**
 
 ```ts
-console.info(Int.MIN_VALUE); // -2147483648
-console.info(Int.MAX_VALUE); // 2147483647
-console.info(Int.BIT_SIZE);  // 32
-console.info(Int.BYTE_SIZE); // 4
+console.info(Long.MIN_VALUE); // -9223372036854775808
+console.info(Long.MAX_VALUE); // 9223372036854775807
+console.info(Long.BIT_SIZE);  // 64
+console.info(Long.BYTE_SIZE); // 8
 ```
 
 ### constructor
 
 public constructor()
 
-创建值为`0`的`Int`实例。
+创建值为`0`的`Long`实例。
 
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例：**
 
 ```ts
-const zero = new Int();
-console.info(zero); // 0
+const value = new Long();
+console.info(value); // 0
 ```
 
 ### constructor
 
-public constructor(value: int)
+public constructor(value: long)
 
-按指定`int`值创建`Int`实例。
+按指定`long`值创建`Long`实例。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -73,20 +71,20 @@ public constructor(value: int)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | int | 是 | 初始`int`值。 |
+| value | long | 是 | 初始`long`值。 |
 
 **示例：**
 
 ```ts
-const n = new Int(123);
-console.info(n); // 123
+const value = new Long(42);
+console.info(value); // 42
 ```
 
 ### toByte
 
 public override toByte(): byte
 
-将当前`Int`实例保存的值转换为`byte`并返回。当值超出`byte`范围时，截断低8位。
+将当前`Long`实例保存的值转换为`byte`并返回。当值超出`byte`范围时，截断低8位。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -101,16 +99,16 @@ public override toByte(): byte
 **示例：**
 
 ```ts
-console.info(new Int(100).toByte()); // 100
+console.info(new Long(12).toByte()); // 12
 // 超出byte范围，截断低8位
-console.info(new Int(300).toByte()); // 44
+console.info(new Long(300).toByte()); // 44
 ```
 
 ### toShort
 
 public override toShort(): short
 
-将当前`Int`实例保存的值转换为`short`并返回。当值超出`short`范围时，截断低16位。
+将当前`Long`实例保存的值转换为`short`并返回。当值超出`short`范围时，截断低16位。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -125,37 +123,16 @@ public override toShort(): short
 **示例：**
 
 ```ts
-console.info(new Int(16).toShort()); // 16
+console.info(new Long(123).toShort()); // 123
 // 超出short范围，截断低16位
-console.info(new Int(40000).toShort()); // -25536
+console.info(new Long(40000).toShort()); // -25536
 ```
 
 ### toInt
 
 public override toInt(): int
 
-返回当前`Int`实例保存的`int`值。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**返回值：**
-
-| 类型 | 说明 |
-| :--- | :--- |
-| int | 当前实例保存的`int`值。 |
-
-**示例：**
-
-```ts
-const a = new Int(65);
-console.info(a.toInt()); // 65
-```
-
-### toLong
-
-public override toLong(): long
-
-将当前`Int`实例保存的值转换为`long`并返回。
+将当前`Long`实例保存的值转换为`int`并返回。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -165,20 +142,43 @@ public override toLong(): long
 
 | 类型 | 说明 |
 | :--- | :--- |
-| long | 转换后的`long`值。 |
+| int | 转换后的`int`值。 |
 
 **示例：**
 
 ```ts
-const a = new Int(65);
-console.info(a.toLong()); // 65
+console.info(new Long(1234).toInt()); // 1234
+// 超出int范围，截断低32位
+console.info(new Long(2147483648).toInt()); // -2147483648
+```
+
+### toLong
+
+public override toLong(): long
+
+返回当前`Long`实例保存的`long`值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**返回值：**
+
+| 类型 | 说明 |
+| :--- | :--- |
+| long | 当前实例保存的`long`值。 |
+
+**示例：**
+
+```ts
+const value = new Long(1234);
+const result: long = value.toLong();
+console.info(result); // 1234
 ```
 
 ### toFloat
 
 public override toFloat(): float
 
-将当前`Int`实例保存的值转换为`float`并返回。
+将当前`Long`实例保存的值转换为`float`并返回。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -193,17 +193,16 @@ public override toFloat(): float
 **示例：**
 
 ```ts
-console.info(new Int(65).toFloat()); // 65
-console.info(new Int(-65).toFloat()); // -65
+console.info(new Long(7).toFloat()); // 7
 // 超出Float.MAX_SAFE_INTEGER（即2²⁴-1），可能会丢失精度
-console.info(new Int(16777217).toFloat()); // 16777216
+console.info(new Long(16777217).toFloat()); // 16777216
 ```
 
 ### toDouble
 
 public override toDouble(): double
 
-将当前`Int`实例保存的值转换为`double`并返回。
+将当前`Long`实例保存的值转换为`double`并返回。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -218,17 +217,16 @@ public override toDouble(): double
 **示例：**
 
 ```ts
-const a = new Int(65);
-console.info(a.toDouble()); // 65
-const b = new Int(-65);
-console.info(b.toDouble()); // -65
+console.info(new Long(7).toDouble()); // 7
+// 超出Double.MAX_SAFE_INTEGER（即2⁵³-1），可能会丢失精度
+console.info(new Long(9007199254740993).toDouble()); // 9007199254740992
 ```
 
 ### toChar
 
 public toChar(): char
 
-将当前`Int`实例保存的数值转换为对应编码点的`char`。传入无效编码点（负数或超出Unicode有效范围）时行为未定义。
+将当前`Long`实例保存的数值转换为对应编码点的`char`。传入无效编码点（负数或超出Unicode有效范围0~0x10FFFF）时行为未定义。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -243,24 +241,16 @@ public toChar(): char
 **示例：**
 
 ```ts
-const a = new Int(65);
-console.info(a.toChar()); // "A"
-// 中文字符
-const b = new Int(0x4E2D);
-console.info(b.toChar()); // "中"
-// 无效编码点（负数），行为未定义，应避免使用
-const c = new Int(-1);
-console.info(c.toChar()); // 结果未定义
-// 无效编码点（超出Unicode上限0x10FFFF），行为未定义，应避免使用
-const d = new Int(0x110000);
-console.info(d.toChar()); // 结果未定义
+const value = new Long(65);
+const result: char = value.toChar();
+console.info(result); // "A"
 ```
 
 ### toByte
 
-public static native toByte(value: int): byte
+public static native toByte(value: long): byte
 
-将传入的`int`值转换为`byte`。当值超出`byte`范围时，截断低8位。
+将传入的`long`值转换为`byte`。当值超出`byte`范围时，截断低8位。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -270,7 +260,7 @@ public static native toByte(value: int): byte
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | int | 是 | 待转换的`int`值。 |
+| value | long | 是 | 待转换的`long`值。 |
 
 **返回值：**
 
@@ -281,16 +271,16 @@ public static native toByte(value: int): byte
 **示例：**
 
 ```ts
-console.info(Int.toByte(65)); // 65
+console.info(Long.toByte(8)); // 8
 // 超出byte范围，截断低8位
-console.info(Int.toByte(300)); // 44
+console.info(Long.toByte(300)); // 44
 ```
 
 ### toShort
 
-public static native toShort(value: int): short
+public static native toShort(value: long): short
 
-将传入的`int`值转换为`short`。当值超出`short`范围时，截断低16位。
+将传入的`long`值转换为`short`。当值超出`short`范围时，截断低16位。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -300,7 +290,7 @@ public static native toShort(value: int): short
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | int | 是 | 待转换的`int`值。 |
+| value | long | 是 | 待转换的`long`值。 |
 
 **返回值：**
 
@@ -311,16 +301,16 @@ public static native toShort(value: int): short
 **示例：**
 
 ```ts
-console.info(Int.toShort(64)); // 64
+console.info(Long.toShort(1024)); // 1024
 // 超出short范围，截断低16位
-console.info(Int.toShort(40000)); // -25536
+console.info(Long.toShort(40000)); // -25536
 ```
 
-### toLong
+### toInt
 
-public static native toLong(value: int): long
+public static native toInt(value: long): int
 
-将传入的`int`值转换为`long`。
+将传入的`long`值转换为`int`。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -330,25 +320,27 @@ public static native toLong(value: int): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | int | 是 | 待转换的`int`值。 |
+| value | long | 是 | 待转换的`long`值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | :--- | :--- |
-| long | 转换后的`long`值。 |
+| int | 转换后的`int`值。 |
 
 **示例：**
 
 ```ts
-console.info(Int.toLong(65)); // 65
+console.info(Long.toInt(1024)); // 1024
+// 超出int范围，截断低32位
+console.info(Long.toInt(2147483648)); // -2147483648
 ```
 
 ### toFloat
 
-public static native toFloat(value: int): float
+public static native toFloat(value: long): float
 
-将传入的`int`值转换为`float`。
+将传入的`long`值转换为`float`。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -358,7 +350,7 @@ public static native toFloat(value: int): float
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | int | 是 | 待转换的`int`值。 |
+| value | long | 是 | 待转换的`long`值。 |
 
 **返回值：**
 
@@ -369,17 +361,16 @@ public static native toFloat(value: int): float
 **示例：**
 
 ```ts
-console.info(Int.toFloat(65)); // 65
-console.info(Int.toFloat(-65)); // -65
+console.info(Long.toFloat(9)); // 9
 // 超出Float.MAX_SAFE_INTEGER（即2²⁴-1），可能会丢失精度
-console.info(Int.toFloat(16777217)); // 16777216
+console.info(Long.toFloat(16777217)); // 16777216
 ```
 
 ### toDouble
 
-public static native toDouble(value: int): double
+public static native toDouble(value: long): double
 
-将传入的`int`值转换为`double`。
+将传入的`long`值转换为`double`。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -389,7 +380,7 @@ public static native toDouble(value: int): double
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | int | 是 | 待转换的`int`值。 |
+| value | long | 是 | 待转换的`long`值。 |
 
 **返回值：**
 
@@ -400,15 +391,16 @@ public static native toDouble(value: int): double
 **示例：**
 
 ```ts
-console.info(Int.toDouble(65)); // 65
-console.info(Int.toDouble(-65)); // -65
+console.info(Long.toDouble(9)); // 9
+// 超出Double.MAX_SAFE_INTEGER（即2⁵³-1），可能会丢失精度
+console.info(Long.toDouble(9007199254740993)); // 9007199254740992
 ```
 
 ### toChar
 
-public static native toChar(value: int): char
+public static native toChar(value: long): char
 
-将传入的`int`值转换为对应编码点的`char`。传入无效编码点（负数或超出Unicode有效范围）时行为未定义。
+将传入的`long`值转换为对应编码点的`char`。传入无效编码点（负数或超出Unicode有效范围0~0x10FFFF）时行为未定义。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -418,7 +410,7 @@ public static native toChar(value: int): char
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | int | 是 | 待转换的`int`值。 |
+| value | long | 是 | 待转换的`long`值。 |
 
 **返回值：**
 
@@ -429,20 +421,15 @@ public static native toChar(value: int): char
 **示例：**
 
 ```ts
-console.info(Int.toChar(65)); // "A"
-// 中文字符
-console.info(Int.toChar(0x4E2D)); // "中"
-// 无效编码点（负数），行为未定义，应避免使用
-console.info(Int.toChar(-1)); // 结果未定义
-// 无效编码点（超出Unicode上限0x10FFFF），行为未定义，应避免使用
-console.info(Int.toChar(0x110000)); // 结果未定义
+const result: char = Long.toChar(65);
+console.info(result); // "A"
 ```
 
-### toInt
+### toLong
 
-public static toInt(value: int): int
+public static toLong(value: long): long
 
-返回传入的`int`值。该方法用于和其他数值装箱类型的静态转换接口保持一致。
+返回传入的`long`值。该方法用于和其他数值装箱类型的静态转换接口保持一致。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -450,27 +437,26 @@ public static toInt(value: int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | int | 是 | 待返回的`int`值。 |
+| value | long | 是 | 待返回的`long`值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | :--- | :--- |
-| int | 原始`int`值。 |
+| long | 原始`long`值。 |
 
 **示例：**
 
 ```ts
-// 用于泛型场景下统一调用静态转换接口
-const result: int = Int.toInt(65);
-console.info(result); // 65
+const result: long = Long.toLong(256);
+console.info(result); // 256
 ```
 
 ### compareTo
 
-public override compareTo(other: Int): int
+public override compareTo(other: Long): int
 
-比较当前`Int`实例与`other`的大小。当前值更小时返回`-1`，相等时返回`0`，更大时返回`1`。
+比较当前`Long`实例与`other`的大小。当前值更小时返回`-1`，相等时返回`0`，更大时返回`1`。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -480,7 +466,7 @@ public override compareTo(other: Int): int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| other | Int | 是 | 参与比较的另一个`Int`实例。 |
+| other | Long | 是 | 参与比较的另一个`Long`实例。 |
 
 **返回值：**
 
@@ -491,20 +477,20 @@ public override compareTo(other: Int): int
 **示例：**
 
 ```ts
-const a = new Int(65);
-// 65大于64
-console.info(a.compareTo(new Int(64))); // 1
+const a = new Long(3);
+// 3小于5
+console.info(a.compareTo(new Long(5))); // -1
 // 相等
-console.info(a.compareTo(new Int(65))); // 0
-// 65小于66
-console.info(a.compareTo(new Int(66))); // -1
+console.info(a.compareTo(new Long(3))); // 0
+// 3大于1
+console.info(a.compareTo(new Long(1))); // 1
 ```
 
 ### toString
 
-public static toString(v: int): string
+public static toString(v: long): string
 
-将传入的`int`值转换为十进制字符串。
+将传入的`long`值转换为十进制字符串。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -512,7 +498,7 @@ public static toString(v: int): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| v | int | 是 | 待转换的`int`值。 |
+| v | long | 是 | 待转换的`long`值。 |
 
 **返回值：**
 
@@ -523,14 +509,15 @@ public static toString(v: int): string
 **示例：**
 
 ```ts
-console.info(Int.toString(65)); // "65"
+const text: string = Long.toString(123);
+console.info(text); // "123"
 ```
 
 ### toString
 
 public override toString(): String
 
-将当前`Int`实例保存的值转换为十进制字符串。
+将当前`Long`实例保存的值转换为十进制字符串。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -543,15 +530,15 @@ public override toString(): String
 **示例：**
 
 ```ts
-const a = new Int(65);
-console.info(a.toString()); // "65"
+const value = new Long(123);
+console.info(value.toString()); // "123"
 ```
 
 ### toString
 
 public toString(radix: int): string
 
-按指定进制将当前`Int`实例保存的值转换为字符串。`radix`的有效范围为`2`到`36`。
+按指定进制将当前`Long`实例保存的值转换为字符串。`radix`的有效范围为`2`到`36`，超出范围会抛出`RangeError`。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -572,19 +559,19 @@ public toString(radix: int): string
 **示例：**
 
 ```ts
-const value = new Int(255);
-console.info(value.toString(2));  // "11111111"
-console.info(value.toString(8));  // "377"
+const value = new Long(255);
 console.info(value.toString(16)); // "ff"
 ```
 
 ### equals
 
-equals(other: Any): boolean
+public equals(other: Any): boolean
 
-判断`other`是否与当前`Int`实例保存相同的`int`值。`other`为`Int`实例或`int`原始值且值相同时返回`true`，否则返回`false`。
+判断`other`是否也是`Long`实例且保存相同的`long`值。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -601,20 +588,16 @@ equals(other: Any): boolean
 **示例：**
 
 ```ts
-const left = new Int(10);
-const right = new Int(10);
+const left = new Long(10);
+const right = new Long(10);
 console.info(left.equals(right)); // true
-// 值不同返回false
-console.info(left.equals(new Int(20))); // false
-// 非数值类型返回false
-console.info(left.equals("10" as Any)); // false
 ```
 
 ### toLocaleString
 
 public toLocaleString(locales?: Intl.LocalesArgument, options?: Intl.NumberFormatOptions): String
 
-按指定区域设置和数字格式选项格式化当前`Int`值。
+按指定区域设置和数字格式选项格式化当前`Long`值。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -636,15 +619,15 @@ public toLocaleString(locales?: Intl.LocalesArgument, options?: Intl.NumberForma
 **示例：**
 
 ```ts
-const value = new Int(1234);
-console.info(value.toLocaleString("en-US")); // "1,234"
+const value = new Long(1234);
+console.info(new Long(1234).toLocaleString("en-US")); // "1,234"
 ```
 
 ### toLocaleString
 
 public override toLocaleString(locales?: Intl.LocalesArgument, options?: object): String
 
-按指定区域设置格式化当前`Int`值。若`options`不是`Intl.NumberFormatOptions`实例，则忽略该参数。
+按指定区域设置格式化当前`Long`值。若`options`不是`Intl.NumberFormatOptions`实例，则忽略该参数。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -666,16 +649,16 @@ public override toLocaleString(locales?: Intl.LocalesArgument, options?: object)
 **示例：**
 
 ```ts
-const value = new Int(1234);
+const value = new Long(1234);
 const options: Intl.NumberFormatOptions = { style: 'currency', currency: 'CNY' };
 console.info(value.toLocaleString("en-US", options)); // "CN¥1,234.00"
 ```
 
 ### add
 
-public add(other: Int): Int
+public add(other: Long): Long
 
-返回当前值与`other`相加后的新`Int`实例。
+返回当前值与`other`相加后的新`Long`实例。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -685,27 +668,27 @@ public add(other: Int): Int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| other | Int | 是 | 加法右操作数。 |
+| other | Long | 是 | 加法右操作数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | :--- | :--- |
-| Int | 相加后的新实例。 |
+| Long | 相加后的新实例。 |
 
 **示例：**
 
 ```ts
-console.info(new Int(6).add(new Int(4))); // 10
-// 溢出：Int.MAX_VALUE + 1超出int范围，结果回绕为负数
-console.info(new Int(Int.MAX_VALUE).add(new Int(1))); // -2147483648
+console.info(new Long(6).add(new Long(4))); // 10
+// 溢出：Long.MAX_VALUE + 1超出long范围，结果回绕为负数
+console.info(new Long(Long.MAX_VALUE).add(new Long(1))); // -9223372036854775808
 ```
 
 ### sub
 
-public sub(other: Int): Int
+public sub(other: Long): Long
 
-返回当前值减去`other`后的新`Int`实例。
+返回当前值减去`other`后的新`Long`实例。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -715,27 +698,27 @@ public sub(other: Int): Int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| other | Int | 是 | 减法右操作数。 |
+| other | Long | 是 | 减法右操作数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | :--- | :--- |
-| Int | 相减后的新实例。 |
+| Long | 相减后的新实例。 |
 
 **示例：**
 
 ```ts
-console.info(new Int(6).sub(new Int(4))); // 2
-// 溢出：Int.MIN_VALUE - 1超出int范围，结果回绕为正数
-console.info(new Int(Int.MIN_VALUE).sub(new Int(1))); // 2147483647
+console.info(new Long(6).sub(new Long(4))); // 2
+// 溢出：Long.MIN_VALUE - 1超出long范围，结果回绕为正数
+console.info(new Long(Long.MIN_VALUE).sub(new Long(1))); // 9223372036854775807
 ```
 
 ### mul
 
-public mul(other: Int): Int
+public mul(other: Long): Long
 
-返回当前值与`other`相乘后的新`Int`实例。
+返回当前值与`other`相乘后的新`Long`实例。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -745,27 +728,27 @@ public mul(other: Int): Int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| other | Int | 是 | 乘法右操作数。 |
+| other | Long | 是 | 乘法右操作数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | :--- | :--- |
-| Int | 相乘后的新实例。 |
+| Long | 相乘后的新实例。 |
 
 **示例：**
 
 ```ts
-console.info(new Int(6).mul(new Int(4))); // 24
-// 溢出：Int.MAX_VALUE * 2超出int范围，结果回绕
-console.info(new Int(Int.MAX_VALUE).mul(new Int(2))); // -2
+console.info(new Long(6).mul(new Long(4))); // 24
+// 溢出：Long.MAX_VALUE * 2超出long范围，结果回绕
+console.info(new Long(Long.MAX_VALUE).mul(new Long(2))); // -2
 ```
 
 ### div
 
-public div(other: Int): Int
+public div(other: Long): Long
 
-返回当前值除以`other`后的新`Int`实例。`other`为`0`时抛出异常。当结果超出`int`范围时发生溢出，例如`Int.MIN_VALUE`除以`-1`时结果仍为`Int.MIN_VALUE`。
+返回当前值除以`other`后的新`Long`实例。`other`为`0`时抛出异常。当结果超出`long`范围时发生溢出，例如`Long.MIN_VALUE`除以`-1`时结果仍为`Long.MIN_VALUE`。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -775,23 +758,23 @@ public div(other: Int): Int
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| other | Int | 是 | 除法右操作数。 |
+| other | Long | 是 | 除法右操作数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | :--- | :--- |
-| Int | 相除后的新实例。 |
+| Long | 相除后的新实例。 |
 
 **示例：**
 
 ```ts
-console.info(new Int(8).div(new Int(4))); // 2
-// 溢出：Int.MIN_VALUE / -1应为2147483648，超出int范围，结果仍为Int.MIN_VALUE
-console.info(new Int(Int.MIN_VALUE).div(new Int(-1))); // -2147483648
+console.info(new Long(8).div(new Long(4))); // 2
+// 溢出：Long.MIN_VALUE / -1应为正值，超出long范围，结果仍为Long.MIN_VALUE
+console.info(new Long(Long.MIN_VALUE).div(new Long(-1))); // -9223372036854775808
 // 除零抛出异常
 try {
-  new Int(8).div(new Int(0));
+  new Long(8).div(new Long(0));
 } catch (e) {
   console.info(e instanceof ArithmeticError); // true
 }
@@ -799,7 +782,7 @@ try {
 
 ### isLessThan
 
-public isLessThan(other: Int): boolean
+public isLessThan(other: Long): boolean
 
 判断当前值是否小于`other`。
 
@@ -811,7 +794,7 @@ public isLessThan(other: Int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| other | Int | 是 | 参与比较的另一个`Int`实例。 |
+| other | Long | 是 | 参与比较的另一个`Long`实例。 |
 
 **返回值：**
 
@@ -822,13 +805,13 @@ public isLessThan(other: Int): boolean
 **示例：**
 
 ```ts
-console.info(new Int(3).isLessThan(new Int(4))); // true
-console.info(new Int(4).isLessThan(new Int(4))); // false
+console.info(new Long(3).isLessThan(new Long(4))); // true
+console.info(new Long(4).isLessThan(new Long(4))); // false
 ```
 
 ### isLessEqualThan
 
-public isLessEqualThan(other: Int): boolean
+public isLessEqualThan(other: Long): boolean
 
 判断当前值是否小于或等于`other`。
 
@@ -840,7 +823,7 @@ public isLessEqualThan(other: Int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| other | Int | 是 | 参与比较的另一个`Int`实例。 |
+| other | Long | 是 | 参与比较的另一个`Long`实例。 |
 
 **返回值：**
 
@@ -852,14 +835,14 @@ public isLessEqualThan(other: Int): boolean
 
 ```ts
 // 3小于4
-console.info(new Int(3).isLessEqualThan(new Int(4))); // true
+console.info(new Long(3).isLessEqualThan(new Long(4))); // true
 // 4等于4
-console.info(new Int(4).isLessEqualThan(new Int(4))); // true
+console.info(new Long(4).isLessEqualThan(new Long(4))); // true
 ```
 
 ### isGreaterThan
 
-public isGreaterThan(other: Int): boolean
+public isGreaterThan(other: Long): boolean
 
 判断当前值是否大于`other`。
 
@@ -871,7 +854,7 @@ public isGreaterThan(other: Int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| other | Int | 是 | 参与比较的另一个`Int`实例。 |
+| other | Long | 是 | 参与比较的另一个`Long`实例。 |
 
 **返回值：**
 
@@ -882,13 +865,13 @@ public isGreaterThan(other: Int): boolean
 **示例：**
 
 ```ts
-console.info(new Int(5).isGreaterThan(new Int(4))); // true
-console.info(new Int(4).isGreaterThan(new Int(4))); // false
+console.info(new Long(5).isGreaterThan(new Long(4))); // true
+console.info(new Long(4).isGreaterThan(new Long(4))); // false
 ```
 
 ### isGreaterEqualThan
 
-public isGreaterEqualThan(other: Int): boolean
+public isGreaterEqualThan(other: Long): boolean
 
 判断当前值是否大于或等于`other`。
 
@@ -900,7 +883,7 @@ public isGreaterEqualThan(other: Int): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | :--- | :--- | :--- | :--- |
-| other | Int | 是 | 参与比较的另一个`Int`实例。 |
+| other | Long | 是 | 参与比较的另一个`Long`实例。 |
 
 **返回值：**
 
@@ -912,16 +895,16 @@ public isGreaterEqualThan(other: Int): boolean
 
 ```ts
 // 5大于4
-console.info(new Int(5).isGreaterEqualThan(new Int(4))); // true
+console.info(new Long(5).isGreaterEqualThan(new Long(4))); // true
 // 5等于5
-console.info(new Int(5).isGreaterEqualThan(new Int(5))); // true
+console.info(new Long(5).isGreaterEqualThan(new Long(5))); // true
 ```
 
 ### parseInt
 
-public static native parseInt(s: String, r: int): int
+public static native parseInt(s: String, r: int): long
 
-按指定进制解析字符串并返回`int`值。`r`应在`2`到`36`之间；传入`0`时按十进制处理。解析结果超出`int`范围时抛出`FormatError`。
+按指定进制解析字符串并返回`long`值。`r`应在`2`到`36`之间；传入`0`时按十进制处理。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -938,23 +921,11 @@ public static native parseInt(s: String, r: int): int
 
 | 类型 | 说明 |
 | :--- | :--- |
-| int | 解析得到的`int`值。 |
+| long | 解析得到的`long`值。 |
 
 **示例：**
 
 ```ts
-// 十六进制解析
-console.info(Int.parseInt("2a", 16)); // 42
-// 二进制解析
-console.info(Int.parseInt("1010", 2)); // 10
-// 八进制解析
-console.info(Int.parseInt("77", 8)); // 63
-// 传入0时始终按十进制处理（标准JS中传入0时，若字符串以"0x"开头会自动按十六进制解析）
-console.info(Int.parseInt("0x2a", 0)); // 0（按十进制解析，遇'x'停止，仅解析出前缀"0"）
-// 结果超出int范围时抛出FormatError
-try {
-  Int.parseInt("2147483648", 10);
-} catch (e) {
-  console.info(e instanceof FormatError); // true
-}
+const result: long = Long.parseInt("ff", 16);
+console.info(result); // 255
 ```
