@@ -13,7 +13,7 @@ typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
 
 ## 概述
 
-当前进程所有线程的CPU使用率结构体定义。 
+当前进程所有线程的CPU使用率结构体定义。
 
 使用场景：
 
