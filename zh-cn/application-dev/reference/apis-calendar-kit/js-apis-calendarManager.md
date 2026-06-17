@@ -123,7 +123,7 @@ export default class EntryAbility extends UIAbility {
 
 createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>): void
 
-根据日历账户信息，创建一个Calendar对象，若创建的账户已存在，则返回之前的Calendar对象，使用callback异步回调。
+根据日历账户信息，创建一个Calendar对象，若创建的账户已存在（与CalendarAccount的name和type相同的账户已被创建），则返回之前的Calendar对象，使用callback异步回调。
 
 **需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
 
@@ -1226,7 +1226,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 updateEvent(event: Event, callback: AsyncCallback\<void>): void
 
-更新日程，入参[Event](#event)需要填写被修改日程的id，否则无法修改该日程，使用callback异步回调。
+更新日程，入参[Event](#event)需要填写被修改日程的id，否则无法修改日程，使用callback异步回调。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1923,7 +1923,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
 | 名称        | 类型                          | 只读 | 可选 | 说明                                                                      |
 | ----------- | ----------------------------- | ---- |----|-------------------------------------------------------------------------|
 | name        | string                        | 是   | 否  | 账户名称（面向开发者），长度建议为[0,5000]字符。                           |
-| type        | [CalendarType](#calendartype) | 否   | 否  | 账户类型。若两账户的name与type完全一致，则判定为重复账户。                                                                   |
+| type        | [CalendarType](#calendartype) | 否   | 否  | 账户类型。                                                                   |
 | displayName | string                        | 否   | 是  | 账户显示在日历应用上的名称（面向用户）。不填时，默认为空字符串，长度限制为[0,64]字符，长度超限制会导致日历应用上账户名显示不全，被截断。 |
 
 ## CalendarConfig
@@ -1953,7 +1953,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
 | endTime        | number                            | 否   | 否  | 日程结束时间，需要13位时间戳。全天日程时，该字段转换为传入日期24:00对应的时间戳。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                          |
 | isAllDay       | boolean                           | 否   | 是  | 是否为全天日程。当取值为true时，说明为全天日程；当取值为false时，说明不是全天日程，默认为非全天日程。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                               |
 | attendee       | [Attendee](#attendee)[]           | 否   | 是  | 会议日程参与者。不填时，默认为undefined。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                  |
-| timeZone       | string                            | 否   | 是  |日程时区。长度建议为[0,5000]字符，本系统采用的时区遵循IANA时区数据库标准，格式为“区域/城市”，如“Asia/Shanghai”。不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过[systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone)获取当前系统时区。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| timeZone       | string                            | 否   | 是  | 日程时区。长度建议为[0,5000]字符，不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过[systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone)获取当前系统时区。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | reminderTime   | number[]                          | 否   | 是  | 日程提醒时间，单位为分钟。填写x分钟，即距开始时间提前x分钟提醒，不填时，默认为不提醒。为负值时表示延期多长时间提醒。全天日程时此字段表示上午9:00前x分钟提醒，可取负值，负值表示上午9:00后多长时间提醒。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                              |
 | recurrenceRule | [RecurrenceRule](#recurrencerule) | 否   | 是  | 日程重复规则，设置了此字段的日程为重复日程。不填时，默认为非重复日程，默认值为undefined。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                   |
 | description    | string                            | 否   | 是  | 日程描述。长度建议为[0,5000]字符，不填时，默认为空字符串。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                    |
@@ -2267,7 +2267,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ## EventService
 
-日程服务，填写应用uri后，能够一键跳转该应用。
+日程服务，一键服务日程的配置参数详见：<!--RP2--><!--RP2End-->。非一键服务日程可不填。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
