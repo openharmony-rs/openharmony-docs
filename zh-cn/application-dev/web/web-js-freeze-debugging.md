@@ -16,7 +16,7 @@
 
 ## 定位步骤
 
-当发生JS代码阻塞渲染进程时，系统会在以下路径生成日志文件：
+当发生JS代码阻塞渲染进程超过5秒时，系统会在以下路径生成日志文件：
 ```c
 /data/log/faultlog/faultlogger/appfreezewarning-xxx.log
 ```
