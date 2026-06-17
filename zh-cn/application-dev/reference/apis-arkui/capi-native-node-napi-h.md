@@ -357,7 +357,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_Nav
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
-| [ArkUI_NavDestinationState](capi-native-type-h.md#arkui_navdestinationstate)* state | NavDestination的状态值写回该参数中。 |
+| [ArkUI_NavDestinationState](capi-navigation-router-h.md#arkui_navdestinationstate)* state | NavDestination的状态值写回该参数中。 |
 
 **返回：**
 
@@ -522,7 +522,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterP
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
-| [ArkUI_RouterPageState](capi-native-type-h.md#arkui_routerpagestate)* state | Router页面的状态值写回该参数中。 |
+| [ArkUI_RouterPageState](capi-navigation-router-h.md#arkui_routerpagestate)* state | Router页面的状态值写回该参数中。 |
 
 **返回：**
 
