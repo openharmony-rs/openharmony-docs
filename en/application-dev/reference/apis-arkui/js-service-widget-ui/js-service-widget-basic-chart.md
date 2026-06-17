@@ -323,7 +323,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
    }
    ```
     
-   ![barchart](figures/barchart.png)
+   ![barchart](figures/barchart.PNG)
 
 3. Gauge chart
    
@@ -353,4 +353,4 @@ The [universal events](js-service-widget-common-events.md) are supported.
    }
    ```
    
-   ![gauge](figures/gauge.png)
+   ![gauge](figures/gauge.PNG)

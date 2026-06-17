@@ -13,7 +13,7 @@
 >  **NOTE**
 >
 > The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
-> - You can customize the width of each **<list-item>**. However, if you retain the default value **stretch** of **align-items** for the parent component **<list>**, the width of **<list-item>** is equal to that of **<list>**. To make the customized **<list-item>** width take effect, set **align-items** to other values rather than **stretch**.
+> - You can customize the width of each **\<list-item>**. However, if you retain the default value **stretch** of **align-items** for the parent component **\<list>**, the width of **\<list-item>** is equal to that of **\<list>**. To make the customized **\<list-item>** width take effect, set **align-items** to other values rather than **stretch**.
 > 
 > - Whenever possible, do not design the long press or drag gestures for the **\<list-item>** component.
 

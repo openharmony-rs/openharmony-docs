@@ -80,4 +80,4 @@ The [universal events](js-service-widget-common-events.md) are supported.
 ```
 **4 x 4 widget**
 
-![stack](figures/stack.png)
+![stack](figures/stack.PNG)

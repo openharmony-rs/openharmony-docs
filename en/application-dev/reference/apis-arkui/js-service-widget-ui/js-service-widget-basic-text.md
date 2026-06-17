@@ -54,7 +54,7 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 > 
 > - The following escape characters are supported: **\a**, **\b**, **\f**, **\n**, **\r**, **\t**, **\v**, **\'**, **\"**, and **\0**.
 > 
-> - When you use **<span>** as a child component to form a text paragraph, note that if a **<span>** style is abnormal, the text paragraph cannot be displayed.
+> - When you use **\<span>** as a child component to form a text paragraph, note that if a **\<span>** style is abnormal, the text paragraph cannot be displayed.
 > 
 > - The **letter-spacing**, **text-align**, **line-height**, **text-overflow**, and **max-lines** styles take effect on text content held by the **\<text>** component and its child components (**\<span>**).
 > 
