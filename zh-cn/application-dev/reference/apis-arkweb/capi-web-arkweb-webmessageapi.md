@@ -107,6 +107,12 @@ ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
 |-------------------------------------|----|
 | [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | 消息结构体指针。   |
 
+**返回：**
+
+| 类型 | 说明    |
+|----|-------|
+| [ArkWeb_WebMessageType](capi-arkweb-type-h.md#arkweb_webmessagetype)   | 消息类型。   |
+
 ### setData()
 
 ```c
