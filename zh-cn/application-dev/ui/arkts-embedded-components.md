@@ -67,19 +67,12 @@ export struct Embedded {
     bundleName: 'com.samples.uiextensionandaccessibility',
     abilityName: 'ExampleEmbeddedAbility',
   };
-  @State dpiFollowStrategy: EmbeddedDpiFollowStrategy = EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI;
-  @State windowStrategy: EmbeddedWindowModeFollowStrategy = EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
-
   build() {
     // ...
       Row() {
         Column() {
           Text(this.message).fontSize(30)
-          // 可以在构造时传递options参数以设置相关策略
-          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION, {
-            windowModeFollowStrategy: this.windowStrategy,
-            dpiFollowStrategy: this.dpiFollowStrategy
-          })
+          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
             .width('100%')
             .height('90%')
             .onTerminated((info) => {
@@ -89,10 +82,6 @@ export struct Embedded {
             .onError((error) => {
               // 失败或异常触发onError回调，文本框显示如下报错内容
               this.message = `Error: code = ${error.code}`;
-            })
-            .onDrawReady(() => {
-              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
-              this.message = 'onDrawReady';
             })
         }
         .width('100%')
@@ -107,51 +96,37 @@ ArkTS-Sta示例：
 <!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
 
 ``` TypeScript
-import { State } from '@ohos.arkui.stateManagement'
-import { Entry, wrapBuilder, Component, ComponentContent, Column, Color, Row, Text, EmbeddedType, LoadingProgress, EmbeddedComponent, EmbeddedDpiFollowStrategy, EmbeddedWindowModeFollowStrategy, TerminationInfo} from '@ohos.arkui.component';
-import { Callback, ErrorCallback, BusinessError, RecordData } from '@ohos.base';
+import { Entry, Component, Row, Column, Text, EmbeddedComponent, EmbeddedType, NavDestination, $r } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import Want from '@ohos.app.ability.Want';
 
-@Builder
-function LoadingBuilder() {
-  Column(undefined) {
-    LoadingProgress()
-      .color(Color.Blue)
-  }
-}
 @Entry
 @Component
-struct Embedded {
+export struct Embedded {
   @State message: string = 'Message: ';
-  private initPlaceholder : ComponentContent = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder));
-  build() {
-    Row() {
-      Text(this.message).fontSize(30)
-      EmbeddedComponent({
-          bundleName: 'com.samples.uiextensionandaccessibility',
-          abilityName: 'ExampleEmbeddedAbility',
-        }, EmbeddedType.EMBEDDED_UI_EXTENSION,
-        {
-          placeholder: this.initPlaceholder,
-          areaChangePlaceholder: {
-            "FOLD_TO_EXPAND" : this.initPlaceholder,
-          },
-          windowModeFollowStrategy: EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE,
-          dpiFollowStrategy: EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI
-        })
+  private want: Want = {
+    bundleName: 'com.samples.uiextensionandaccessibility',
+    abilityName: 'ExampleEmbeddedAbility',
+  };
+  build(): void {
+    // ...
+      Row() {
+        Column() {
+          Text(this.message).fontSize(30)
+          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
+            .width('100%')
+            .height('90%')
+            .onTerminated((info) => {
+              this.message = `Termination: code = ${info.code} , want = ${JSON.stringify(info.want)}`;
+            })
+            .onError((error) => {
+              this.message = `Error: code = ${error.code}`;
+            })
+        }
         .width('100%')
-        .height('90%')
-        .onTerminated((info: TerminationInfo) => {
-          this.message = `Termination: code = ${info.code} , want = ${JSON.stringify(info.want)}`;
-        } as Callback<TerminationInfo>)
-        .onError((error: BusinessError) => {
-          this.message = `Error: code = ${error.code}`;
-        } as ErrorCallback<BusinessError>)
-        .onDrawReady(() => {
-          // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
-          this.message = `onDrawReady`;
-        })
-    }
-    .height('100%')
+      }
+      .height('100%')
+      // ...
   }
 }
 ```

@@ -662,7 +662,7 @@ export struct AccessibilityText {
           .accessibilityGroup(true)
           .accessibilityLevel('yes')
           .accessibilityText('分组')
-          .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
+          .accessibilityDescription('Column组件可以被选中，播报的内容是"分组"')
           .accessibilityVirtualNode(this.customAccessibilityNode)
           .accessibilityChecked(true)
           .accessibilitySelected(undefined)
