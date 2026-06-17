@@ -122,6 +122,7 @@ enum PreferStrategy
 ## 函数说明
 
 各接口具体使用说明可查阅：[使用HiLog打印日志（C/C++）](../../dfx/hilog-guidelines-ndk.md)。
+
 ### OH_LOG_Print()
 
 ```c
