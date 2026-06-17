@@ -389,11 +389,11 @@ struct MaterialInfoPage {
 
 ![systemMaterialState](figures/immersiveMaterialStateExquisite.jpg)
 
-在中档算力设备上表现：
+在中算力设备上表现：
 
 ![systemMaterialState](figures/immersiveMaterialStateGentle.jpg)
 
-在低档算力设备上表现：
+在低算力设备上表现：
 
 ![systemMaterialState](figures/immersiveMaterialStateSmooth.jpg)
 
