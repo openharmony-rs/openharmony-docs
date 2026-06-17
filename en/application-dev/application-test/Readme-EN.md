@@ -6,9 +6,6 @@
 <!--Tester: @laonie666-->
 <!--Adviser: @Brilliantry_Rui-->
 - [About This Kit](test-kit-overview.md)
-- Automated Test Framework User Guides<!--arkxtest-guidelines-->
-  - [JsUnit User Guide](unittest-guidelines.md)
-  - [UITest User Guide](uitest-guidelines.md)
-  - [PerfTest User Guide](perftest-guideline.md)
-- [SmartPerf User Guide](smartperf-guidelines.md)
-- [wukong User Guide](wukong-guidelines.md)
+<!--Del-->
+- [Application Testing](../test/Readme-EN.md)
+<!--DelEnd-->
