@@ -81,7 +81,7 @@ ComposeTitleBarV2MenuItem(params?: ComposeTitleBarV2MenuItemParams)
 | value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源。 |
 | symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于value，item左侧头像不支持设置该属性。 |
 | label | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标标签描述。 |
-| isEnabled | boolean | 否 | 是 | 是否启用，默认启用。<br> isEnabled为true时，表示为启用。<br> isEnabled为false时，表示为禁用。<br>item属性不支持触发isEnabled属性。<br/>默认值：true。 |
+| isEnabled | boolean | 否 | 是 | 是否启用，默认启用。<br> isEnabled为true时，表示启用。<br> isEnabled为false时，表示禁用。<br>item属性不支持触发isEnabled属性。<br/>默认值：true。 |
 | action | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 触发时的动作闭包，item属性不支持触发action事件。 |
 | accessibilityLevel | string | 否 | 是 | 标题栏右侧自定义按钮无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会根据情况转换成'yes'或'no'。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：有label默认值为当前项label属性内容，没有设置label时，默认值为" "。 |
