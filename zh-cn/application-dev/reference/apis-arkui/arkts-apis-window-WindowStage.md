@@ -44,7 +44,7 @@ getMainWindow(callback: AsyncCallback&lt;Window&gt;): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                          |
 | -------- | -------------------------------------- | ---- | --------------------------------------------- |
-| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt; | 是   | 回调函数。返回当前WindowStage下的主窗口对象。 |
+| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt; | 是   | 回调函数，用于返回当前WindowStage下的主窗口对象。 |
 
 **错误码：**
 
@@ -225,7 +225,7 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                          |
 | -------- | -------------------------------------- | ---- | --------------------------------------------- |
-| name     | string                                 | 是   | 子窗口的名字。                                |
+| name     | string                                 | 是   | 子窗口的名字，用于唯一标识子窗口。建议使用有意义的名称。 |
 | callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt; | 是   | 回调函数。返回当前WindowStage下的子窗口对象。 |
 
 **错误码：**
@@ -415,7 +415,7 @@ export default class EntryAbility extends UIAbility {
 
 getSubWindow(callback: AsyncCallback&lt;Array&lt;Window&gt;&gt;): void
 
-获取该WindowStage实例下的所有子窗口，使用callback异步回调。
+获取该WindowStage实例下的所有子窗口，使用callback异步回调。调用成功后返回所有子窗口对象数组。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -427,7 +427,7 @@ getSubWindow(callback: AsyncCallback&lt;Array&lt;Window&gt;&gt;): void
 
 | 参数名   | 类型                                                | 必填 | 说明                                              |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | 是   | 回调函数。返回当前WindowStage下的所有子窗口对象。 |
+| callback | AsyncCallback&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | 是   | 回调函数。返回当前WindowStage下的所有子窗口对象，若无子窗口则返回空数组。 |
 
 **错误码：**
 
@@ -468,7 +468,7 @@ export default class EntryAbility extends UIAbility {
 
 getSubWindow(): Promise&lt;Array&lt;Window&gt;&gt;
 
-获取该WindowStage实例下的所有子窗口，使用Promise异步回调。
+获取该WindowStage实例下的所有子窗口，使用Promise异步回调。调用成功后返回所有子窗口对象数组。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -480,7 +480,7 @@ getSubWindow(): Promise&lt;Array&lt;Window&gt;&gt;
 
 | 类型                                          | 说明                                                 |
 | --------------------------------------------- | ---------------------------------------------------- |
-| Promise&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | Promise对象。返回当前WindowStage下的所有子窗口对象。 |
+| Promise&lt;Array&lt;[Window](arkts-apis-window-Window.md)&gt;&gt; | Promise对象。返回当前WindowStage下的所有子窗口对象，若无子窗口则返回空数组。 |
 
 **错误码：**
 
@@ -1041,7 +1041,7 @@ on(eventType: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | eventType  | string                                                       | 是   | 监听事件，固定为'windowStageEvent'，即WindowStage生命周期变化事件。 |
-| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 是   | 回调函数。返回当前的WindowStage生命周期状态。                |
+| callback | Callback&lt;[WindowStageEventType](arkts-apis-window-e.md#windowstageeventtype9)&gt; | 是   | 回调函数。当WindowStage生命周期状态发生变化时会调用此函数，返回当前的WindowStage生命周期状态。 |
 
 **错误码：**
 
