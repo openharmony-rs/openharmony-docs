@@ -297,7 +297,7 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 | 名称 | 类型 | 只读 | 可选 | 说明               |
 |-----|-----|------|----|---------------------------------|
 | bundleName | string | 否 | 否  | 卡片所属包的Bundle名称。           |
-| moduleName | string | 否 | 否  | 卡片所属模块的模块名称。 |
+| moduleName | string | 否 | 否  | 卡片所属模块的名称。 |
 | abilityName | string | 否 | 否  | 卡片所属的Ability名称。 |
 | formName | string | 否 | 否  | 卡片名称。 |
 | dimension | string | 否 | 否  | 卡片规格 |
@@ -470,7 +470,7 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |-----|-----|------|----|------|
 | bundleName | string | 否 | 否 | 卡片所属包的Bundle名称。 |
-| moduleName | string | 否 | 否 | 卡片所属模块的模块名称。 |
+| moduleName | string | 否 | 否 | 卡片所属模块的名称。 |
 | abilityName | string | 否 | 否 | 卡片所属的Ability名称。 |
 | formName | string | 否 | 否 | 卡片名称。 |
 | isShowInFormCenter | boolean | 否 | 否 | 卡片是否在卡片中心展示。<br/>-&nbsp;true：在卡片中心展示。<br/>-&nbsp;false：不在卡片中心展示。 |
