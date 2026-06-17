@@ -340,7 +340,7 @@ void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider,
 |--------------------------------------------------------------------------------------------------| -- |
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)* provider | 第三方平台接入provider句柄。 |
 | [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)* eventInfo                                                      | 表示指向Accessibility事件信息的指针。 |
-| void (*callback)(int32_t errorCode)                                                                                         | 表示指向SendAccessibilityAsyncEvent的回调。 |
+| void (*callback)(int32_t errorCode)                                                                                         | 表示指向SendAccessibilityAsyncEvent回调。 |
 
 ### OH_ArkUI_AddAndGetAccessibilityElementInfo()
 
@@ -478,8 +478,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementI
 > 
 > - contents是组件的主要文本内容，无障碍辅助应用会将其作为主要播报内容朗读给用户。
 > - 对于文本类组件（如[Text](arkui-ts/ts-basic-components-text.md)、[TextInput](arkui-ts/ts-basic-components-textinput.md)），contents通常设置为组件显示的文本。
-> - 对于非文本类组件（如[Button](arkui-ts/ts-basic-components-button.md)、[Image](arkui-ts/ts-basic-components-image.md)），若设置了accessibilityText，则无障碍辅助应用优先使用accessibilityText，否则使用contents作为朗读内容。
-> - accessibilityText通过[OH_ArkUI_AccessibilityElementInfoSetAccessibilityText](#oh_arkui_accessibilityelementinfosetaccessibilitytext)设置。
+> - 对于非文本类组件（如[Button](arkui-ts/ts-basic-components-button.md)、[Image](arkui-ts/ts-basic-components-image.md)），若设置了accessibilityText，则无障碍辅助应用优先使用accessibilityText。
+> - 通过[OH_ArkUI_AccessibilityElementInfoSetAccessibilityText](#oh_arkui_accessibilityelementinfosetaccessibilitytext)设置accessibilityText，否则使用contents作为朗读内容。
 > - 当组件同时设置了contents和accessibilityText时，无障碍辅助应用优先使用accessibilityText。
 > - contents不支持传入空指针，传入空指针将返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
@@ -606,7 +606,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElem
 
 **描述：**
 
-设置[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的孩子节点数量和孩子节点ID集合。
+设置[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的子节点数量和子节点ID集合。
 
 > **说明**
 > 
@@ -642,15 +642,6 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_Accessibility
 
 
 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置组件支持的无障碍操作列表。
-
-> **说明**
-> 
-> - operationActions定义了该节点支持的所有无障碍操作，如点击、长按、滚动、复制、粘贴等。
-> - 无障碍辅助应用等辅助应用根据operationActions向用户提供可用的操作提示，并在用户执行操作时通过executeAccessibilityAction[ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)回调通知三方框架。
-> - 每次调用本接口将清空之前设置的所有操作信息，替换为本次传入的操作集合（覆盖式更新，非追加）。
-> - 必须设置operationCount大于0，且operationActions数组中至少包含operationCount个有效元素。
-> - 若组件需要同时支持点击和长按，需在一次调用中同时传入[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK](#arkui_accessibility_actiontype)（表示点击操作）和[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_LONG_CLICK](#arkui_accessibility_actiontype)（表示长点击操作）两种操作类型。
-> - operationActions和elementInfo不支持传入空指针，operationCount不支持小于等于0，否则返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
 **起始版本：** 13
 
@@ -1180,7 +1171,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElement
 
 > **说明**
 > 
-> - rangeInfo用于设置具有连续范围值的组件的当前值、最小值和最大值，适用于在连续数值范围内取值的组件（例如[Slider](arkui-ts/ts-basic-components-slider.md)、[Rating](arkui-ts/ts-basic-components-rating.md)、[Progress](arkui-ts/ts-basic-components-progress.md)等组件）。
+> - rangeInfo用于设置具有连续范围值的组件的当前值、最小值和最大值，适用于在连续数值范围内取值的组件（例如[Slider](arkui-ts/ts-basic-components-slider.md)、[Rating](arkui-ts/ts-basic-components-rating.md)、[Progress](arkui-ts/ts-basic-components-progress.md)、SeekBar）。
 > - 无障碍辅助应用会根据rangeInfo播报当前值和范围，例如“进度50%，范围0到100”。
 > - rangeInfo中的current表示当前值，min表示最小值，max表示最大值。
 > - 设置rangeInfo时，应确保min不大于max，current应在min和max之间。
@@ -1194,7 +1185,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElement
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| [ArkUI_AccessibleRangeInfo](capi-arkui-accessibility-arkui-accessiblerangeinfo.md)* rangeInfo | 表示特定组件的当前值、最大值、最小值，不能为空指针。适用于[Slider](arkui-ts/ts-basic-components-slider.md)、[Rating](arkui-ts/ts-basic-components-rating.md)、[Progress](arkui-ts/ts-basic-components-progress.md)等组件。 |
+| [ArkUI_AccessibleRangeInfo](capi-arkui-accessibility-arkui-accessiblerangeinfo.md)* rangeInfo | 表示特定组件的当前值、最大值、最小值，不能为空指针。 |
 
 **返回：**
 
@@ -1285,7 +1276,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_Accessibilit
 >
 > - selectedTextStart用于文本类可编辑组件，标记当前选中文本的起始字符索引位置（从0开始计数）。
 > - 无障碍辅助应用等辅助应用会根据selectedTextStart和selectedTextEnd播报当前选中的文本范围。
-> - 当用户通过辅助应用执行[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT](#arkui_accessibility_actiontype)操作时，三方框架应获取起始位置，通过[ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md)中的selectTextBegin参数获取起始位置。
+> - 当用户通过辅助应用执行[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT](#arkui_accessibility_actiontype)操作时，三方框架应获取起始位置。
+> - 通过[ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md)中的selectTextBegin参数获取起始位置。
 > - selectedTextStart应与selectedTextEnd（通过[OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd](#oh_arkui_accessibilityelementinfosetselectedtextend)设置）配合使用，且selectedTextStart不应大于selectedTextEnd。
 
 **起始版本：** 13
@@ -1700,7 +1692,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityE
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| const char* backgroundImage | 表示背景图片资源路径或描述，不能为空指针。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
+| const char* backgroundImage | 表示背景图片资源路径或描述。不能为空指针。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
