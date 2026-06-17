@@ -16,7 +16,7 @@
 
 应用要使用OHAudio提供的音频会话管理（AudioSessionManager）能力，需要添加对应的头文件。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSessionSampleC?_fb=blob)。
 
 ### 在 CMake 脚本中链接动态库
 
@@ -210,7 +210,7 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 
 启用静音建议通知后，本应用播放音频的同时，其他应用播放了不可与本应用并发播放的音频，本应用会收到静音建议通知，此时本应用可以选择不做处理，让本应用和其他应用进行并发播放；也可以选择将自身静音播放，让其他应用单独播放音频。
 
-启用混音播放下静音建议通知，需要先调用接口[OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)设置场景参数并订阅音频会话状态更改事件[OH_AudioSession_StateChangeHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint)，启用后再调用[OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession)接口激活AudioSession。启用静音建议通知的前提是[OH_AudioSession_ConcurrencyMode](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode)模式必须为CONCURRENCY_MIX_WITH_OTHERS。
+启用混音播放下静音建议通知，需要先调用接口[OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)设置场景参数，并调用[OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers)开启功能，同时订阅音频会话状态更改事件[OH_AudioSession_StateChangeHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint)，最后调用[OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession)接口激活AudioSession。启用静音建议通知的前提是[OH_AudioSession_ConcurrencyMode](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode)模式必须为CONCURRENCY_MIX_WITH_OTHERS。
 
 <!-- @[cenable_muteSuggestion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
