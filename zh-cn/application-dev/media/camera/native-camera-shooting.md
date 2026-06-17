@@ -578,7 +578,7 @@
   {
     Camera_PhotoQualityPrioritization quality = Camera_PhotoQualityPrioritization::CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY;
     bool isSupported = false;
-    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, isSupported);
+    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, &isSupported);
     if (isSupported) {
       ret = OH_PhotoOutput_SetPhotoQualityPrioritization(photoOutput, quality);
       if (ret != 0) {
@@ -639,7 +639,7 @@
   {
     Camera_PhotoQualityPrioritization quality = Camera_PhotoQualityPrioritization::CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY;
     bool isSupported = false;
-    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, isSupported);
+    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, &isSupported);
     if (isSupported) {
       ret = OH_PhotoOutput_SetPhotoQualityPrioritization(photoOutput, quality);
       if (ret != 0) {
