@@ -60,7 +60,7 @@ XComponent组件的类型需要在组件创建时通过[ArkUI_NodeType](capi-nat
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | XComponent组件的类型，参数类型为[ArkUI_XComponentType](capi-native-type-h.md#arkui_xcomponenttype)。 |
+| .value[0].i32 | XComponent组件的类型，参数类型为[ArkUI_XComponentType](capi-xcomponent-h.md#arkui_xcomponenttype)。 |
 
 ## NODE_XCOMPONENT_SURFACE_SIZE
 
