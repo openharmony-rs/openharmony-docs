@@ -34,12 +34,14 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    <!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
    
    ``` C
+   #include "hilog/log.h"
    #include "napi/native_api.h"
+   #include <window_manager/oh_display_info.h>
+   #include <window_manager/oh_display_manager.h>
+   #include <AbilityKit/ability_runtime/application_context.h>
    #include <multimedia/player_framework/native_avscreen_capture.h>
    #include <multimedia/player_framework/native_avscreen_capture_base.h>
-   #include <multimedia/player_framework/native_avbuffer.h>
    #include <multimedia/player_framework/native_avscreen_capture_errors.h>
-   #include "hilog/log.h"
    #include <unistd.h>
    #include <fcntl.h>
    #include <string>
@@ -111,12 +113,15 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    }
    ```
    方式一：需传入期望录制的窗口ID进行录屏。
+   
+   <!-- @[screenCapture_withWindow_forID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
    ``` C++
    // 如果期望录制单个窗口，需传入单个窗口ID；如果期望同时录制多个窗口，需传入期望录制的窗口ID列表。
-   std::vector<int32_t> missionIds = {88}; // 指定录制的窗口ID。
+   g_missionIds = new int32_t[1]{g_windowId}; // 指定录制的窗口ID。
    config.videoInfo.videoCapInfo.missionIDs = missionIds.data();
-   config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+   int32_t missionIdsLen = sizeof(g_missionIds) / sizeof(g_missionIds[0]);
+   config.videoInfo.videoCapInfo.missionIDsLen = missionIdsLen;
    config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW; // 设置录屏模式为录制指定窗口。
 
    // 设置为false，代表录屏启动后不弹出系统Picker，弹出隐私提示弹窗。
@@ -127,7 +132,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
 
    方式二（推荐）：通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
 
-   <!-- @[screenCapture_createCaptureStrategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[screenCapture_withWindow_forPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // 通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。

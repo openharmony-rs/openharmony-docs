@@ -39,7 +39,9 @@
 
 1. 添加头文件。
 
-   ``` TypeScript
+   <!-- @[screenCapture_arkts_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/AVScreenCaptureDemo.ets) -->
+
+   ```javascript
    import { common } from '@kit.AbilityKit';
    import { media } from '@kit.MediaKit';
    import { fileIo } from '@kit.CoreFileKit';
@@ -64,6 +66,16 @@
    ``` TypeScript
    // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
    this.screenCapture = await media.createAVScreenCaptureRecorder();
+   <!-- @[screenCapture_arkts_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/AVScreenCaptureDemo.ets) -->
+
+   ```javascript
+   // 声明一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
+   private screenCapture?: media.AVScreenCaptureRecorder;
+
+   async createAVScreenCapture(): Promise<void> {
+     // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
+     this.screenCapture = await media.createAVScreenCaptureRecorder();
+   }
    ```
 
 3. 对成员变量screenCapture设置监听函数，分别监听不同状态和异常情况。
@@ -284,9 +296,11 @@
 
 6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
 
-   ``` TypeScript
+   <!-- @[screenCapture_arkts_skipPrivacyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/AVScreenCaptureDemo.ets) -->
+
+   ```javascript
    let windowIDs = [57, 86];
-   await this.screenCapture.skipPrivacyMode(windowIDs);
+   await this.screenCapture?.skipPrivacyMode(windowIDs);
    ```
 
 7. 调用[startRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)方法开始进行屏幕录制，并通过监听函数监听状态。
@@ -348,6 +362,7 @@
 import { media } from '@kit.MediaKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { display } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export class AVScreenCaptureDemo {
   private screenCapture?: media.AVScreenCaptureRecorder;
