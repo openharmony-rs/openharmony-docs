@@ -210,7 +210,7 @@ Function pointer used when an async operation is complete. When an async operati
 
 **napi_threadsafe_function_call_js**
 
-Function pointer used in the event loop thread to interact with ArkTS/JS to implement more complex scenarios. It is used in **napi_create_threadsafe_function(napi_env env,…,napi_threadsafe_function_call_js call_js_cb,...)**.
+Function pointer used in the event loop thread to interact with ArkTS/JS to implement more complex scenarios. It is used in **napi_create_threadsafe_function(napi_env env,...,napi_threadsafe_function_call_js call_js_cb,...)**.
 
 **napi_cleanup_hook**
 
