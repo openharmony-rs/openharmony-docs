@@ -446,7 +446,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityEle
 > 
 > - componentType用于标识无障碍节点的组件类型，如Button、Text、Image、List。
 > - 无障碍服务（如无障碍辅助应用）根据组件类型决定如何向用户描述和交互该节点。例如，Button类型会被朗读为按钮，Text类型会被朗读为文本。三方框架可使用自身组件类型名称，建议使用与ArkUI组件名称一致的字符串以便获得最佳朗读效果。
-> - 建议使用的组件类型名称与对应ArkUI组件文档如下：[Button](arkui-ts/ts-basic-components-button.md)、[Text](arkui-ts/ts-basic-components-text.md)、[Image](arkui-ts/ts-basic-components-image.md)、[List](arkui-ts/ts-container-list.md)、[TextInput](arkui-ts/ts-basic-components-textinput.md)、[Slider](arkui-ts/ts-basic-components-slider.md)、[Rating](arkui-ts/ts-basic-components-rating.md)、[Progress](arkui-ts/ts-basic-components-progress.md)、[CheckBox](arkui-ts/ts-basic-components-checkbox.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[Grid](arkui-ts/ts-container-grid.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Tab](arkui-ts/ts-container-tabs.md)。
+> - 建议使用的组件类型名称包括：[Button](arkui-ts/ts-basic-components-button.md)、[Text](arkui-ts/ts-basic-components-text.md)、[Image](arkui-ts/ts-basic-components-image.md)、[List](arkui-ts/ts-container-list.md)、[TextInput](arkui-ts/ts-basic-components-textinput.md)、[Slider](arkui-ts/ts-basic-components-slider.md)、[Rating](arkui-ts/ts-basic-components-rating.md)、[Progress](arkui-ts/ts-basic-components-progress.md)、[CheckBox](arkui-ts/ts-basic-components-checkbox.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[Grid](arkui-ts/ts-container-grid.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Tab](arkui-ts/ts-container-tabs.md)。
 
 **起始版本：** 13
 
@@ -512,7 +512,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementI
 
 > **说明**
 > 
-> - hintText用于为组件提供辅助说明，通常用于可编辑组件的占位提示文本（例如输入框）。无障碍辅助应用在组件处于提示状态（isHint为true）时，会朗读hintText代替contents。例如，当输入框为空时显示的占位文本"请输入用户名"，应通过hintText传递。
+> - hintText用于为组件提供辅助说明，通常用于可编辑组件的占位提示文本（例如输入框）。无障碍辅助应用在组件处于提示状态（isHint为true）时，会朗读hintText代替contents。例如，当输入框为空时显示的占位文本“请输入用户名”，应通过hintText传递。
 > - hintText与isHint配合使用：当isHint为true时，无障碍辅助应用播报hintText；当isHint为false时，播报contents。isHint通过[OH_ArkUI_AccessibilityElementInfoSetIsHint](#oh_arkui_accessibilityelementinfosetishint)设置，contents通过[OH_ArkUI_AccessibilityElementInfoSetContents](#oh_arkui_accessibilityelementinfosetcontents)设置。
 > - hintText不支持传入空指针，传入空指针将返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
@@ -546,7 +546,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_Accessibilit
 > **说明**
 > 
 > - accessibilityText是无障碍专用的替代文本，用于覆盖contents提供给无障碍辅助应用的内容。
-> - 当组件设置了accessibilityText且不为空时，无障碍辅助应用会优先播报accessibilityText而非contents。适用于视觉内容需要额外描述的场景，例如：图片组件可设置accessibilityText为"一张大海照片"，即使图片本身无文本内容，无障碍辅助应用也能向用户描述图片含义。
+> - 当组件设置了accessibilityText且不为空时，无障碍辅助应用会优先播报accessibilityText而非contents。适用于视觉内容需要额外描述的场景，例如：图片组件可设置accessibilityText为“一张大海照片”，即使图片本身无文本内容，无障碍辅助应用也能向用户描述图片含义。
 > - 若accessibilityText为空字符串，无障碍辅助应用会回退使用contents。
 > - accessibilityText不支持传入空指针，传入空指针将返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
@@ -579,7 +579,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_Acces
 > **说明**
 > 
 > - accessibilityDescription用于为组件提供额外的无障碍描述信息。
-> - 无障碍辅助应用在播报完组件的主要内容（accessibilityText或contents）后，会继续播报accessibilityDescription。例如，一个按钮的contents为"提交"，accessibilityDescription可设置为"点击提交表单数据"，无障碍辅助应用将播报"提交，点击提交表单数据"。此属性适用于需要为用户提供额外操作提示或状态说明的场景。
+> - 无障碍辅助应用在播报完组件的主要内容（accessibilityText或contents）后，会继续播报accessibilityDescription。例如，一个按钮的contents为“提交”，accessibilityDescription可设置为“点击提交表单数据”，无障碍辅助应用将播报“提交，点击提交表单数据”。此属性适用于需要为用户提供额外操作提示或状态说明的场景。
 > - accessibilityDescription不支持传入空指针，传入空指针将返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
 **起始版本：** 13
@@ -717,7 +717,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElement
 > **说明**
 > 
 > - 适用于具备可勾选语义的组件（例如ArkUI的[CheckBox](arkui-ts/ts-basic-components-checkbox.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[Radio](arkui-ts/ts-basic-components-radio.md)）。
-> - 无障碍辅助应用会根据checkable状态向用户播报"可勾选"提示，并告知用户可以通过操作来切换勾选状态。
+> - 无障碍辅助应用会根据checkable状态向用户播报“可勾选”提示，并告知用户可以通过操作来切换勾选状态。
 > - 设置checkable为true时，应同时通过[OH_ArkUI_AccessibilityElementInfoSetChecked](#oh_arkui_accessibilityelementinfosetchecked)来设置checked来表示当前勾选状态。
 
 **起始版本：** 13
@@ -749,7 +749,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementIn
 
 > **说明**
 > 
-> - 无障碍辅助应用会根据checked状态播报"已勾选"或"未勾选"。本接口仅设置勾选状态，不会自动设置checkable属性。
+> - 无障碍辅助应用会根据checked状态播报“已勾选”或“未勾选”。本接口仅设置勾选状态，不会自动设置checkable属性。
 > - 若需要组件被识别为可勾选，需同时调用[OH_ArkUI_AccessibilityElementInfoSetCheckable](#oh_arkui_accessibilityelementinfosetcheckable)设置checkable属性为true。
 > - 仅设置checked而不设置checkable为true时，checked状态不会在辅助应用中体现。
 
@@ -914,7 +914,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementI
 > **说明**
 > 
 > - 适用于具备选中语义的组件（例如ArkUI的[Tab](arkui-ts/ts-container-tabs.md)、[ListItem](arkui-ts/ts-container-listitem.md)）。
-> - 无障碍辅助应用会根据selected状态播报"已选中"或"未选中"。在[Tab](arkui-ts/ts-container-tabs.md)页签场景中，selected为true的Tab页签会被朗读为当前活动页签。
+> - 无障碍辅助应用会根据selected状态播报“已选中”或“未选中”。在[Tab](arkui-ts/ts-container-tabs.md)页签场景中，selected为true的Tab页签会被朗读为当前活动页签。
 > - 在列表场景中，selected可与accessibilityGroup（通过[OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup](#oh_arkui_accessibilityelementinfosetaccessibilitygroup)设置）配合使用，标记当前激活的列表项。
 
 **起始版本：** 13
@@ -948,7 +948,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElement
 > 
 > - 无障碍辅助应用会向用户提示该组件可点击，用户可通过辅助应用执行点击操作时，系统会通过[ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)中的executeAccessibilityAction回调通知三方框架。
 > - 设置clickable为true时，通常需要通过[OH_ArkUI_AccessibilityElementInfoSetOperationActions](#oh_arkui_accessibilityelementinfosetoperationactions)在operationActions中添加[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK](#arkui_accessibility_actiontype)，否则用户无法通过辅助应用对该组件执行点击操作。
-> - clickable与enabled（通过[OH_ArkUI_AccessibilityElementInfoSetEnabled](#oh_arkui_accessibilityelementinfosetenabled)设置）应配合使用：当clickable为true但enabled为false时，无障碍辅助应用会播报"已禁用"，提示用户该组件虽可点击但当前不可用。
+> - clickable与enabled（通过[OH_ArkUI_AccessibilityElementInfoSetEnabled](#oh_arkui_accessibilityelementinfosetenabled)设置）应配合使用：当clickable为true但enabled为false时，无障碍辅助应用会播报“已禁用”，提示用户该组件虽可点击但当前不可用。
 
 **起始版本：** 13
 
@@ -1012,7 +1012,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementIn
 
 > **说明**
 > 
-> - 当isEnabled为false时，无障碍辅助应用会播报"已禁用"或"不可用"，提示用户该组件当前不可交互。
+> - 当isEnabled为false时，无障碍辅助应用会播报“已禁用”或“不可用”，提示用户该组件当前不可交互。
 > - 对于被禁用的组件（如灰色按钮），应设置isEnabled为false，并通过[OH_ArkUI_AccessibilityElementInfoSetClickable](#oh_arkui_accessibilityelementinfosetclickable)设置clickable为true，这样无障碍辅助应用会提示用户该组件存在但当前不可用。
 > - 如果isEnabled为false且clickable也为false，无障碍辅助应用可能完全跳过该组件。
 > - 所有需要被用户交互的组件必须显式设置为true。
@@ -1046,7 +1046,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElemen
 
 > **说明**
 > 
-> - 当isPassword为true时，无障碍辅助应用不会朗读具体的密码字符内容，而是播报"密码框"或"已输入密码"等替代提示，以防止密码被朗读泄露。
+> - 当isPassword为true时，无障碍辅助应用不会朗读具体的密码字符内容，而是播报“密码框”或“已输入密码”等替代提示，以防止密码被朗读泄露。
 > - 对于[TextInput](arkui-ts/ts-basic-components-textinput.md)等文本输入组件，若用于密码输入场景，必须设置isPassword为true。
 > - 若未设置或设置为false，无障碍辅助应用可能直接朗读密码内容，造成安全隐患。
 
@@ -1115,7 +1115,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementI
 > - editable表示该组件的文本内容是否可以被用户编辑，适用于[TextInput](arkui-ts/ts-basic-components-textinput.md)、[TextArea](arkui-ts/ts-basic-components-textarea.md)等可编辑文本组件。
 > - 无障碍辅助应用会根据editable状态向用户提示该组件可编辑，并允许用户通过辅助应用输入或修改文本。
 > - 设置editable为true的组件，通常还应通过[OH_ArkUI_AccessibilityElementInfoSetOperationActions](#oh_arkui_accessibilityelementinfosetoperationactions)注册相应的无障碍操作动作，如[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_TEXT](#arkui_accessibility_actiontype)、[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_COPY](#arkui_accessibility_actiontype)、[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PASTE](#arkui_accessibility_actiontype)、[ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CUT](#arkui_accessibility_actiontype)等，以便用户通过辅助应用执行编辑操作。
-> - editable为true且isPassword（通过[OH_ArkUI_AccessibilityElementInfoSetIsPassword](#oh_arkui_accessibilityelementinfosetispassword)设置）为true时，无障碍辅助应用会播报"密码编辑框"。默认值为false。
+> - editable为true且isPassword（通过[OH_ArkUI_AccessibilityElementInfoSetIsPassword](#oh_arkui_accessibilityelementinfosetispassword)设置）为true时，无障碍辅助应用会播报“密码编辑框”。默认值为false。
 
 **起始版本：** 13
 
@@ -1148,7 +1148,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInf
 > 
 > - 当isHint为true时，无障碍辅助应用会朗读hintText（提示文本，通过[OH_ArkUI_AccessibilityElementInfoSetHintText](#oh_arkui_accessibilityelementinfosethinttext)设置）而非contents（主文本内容，通过[OH_ArkUI_AccessibilityElementInfoSetContents](#oh_arkui_accessibilityelementinfosetcontents)设置）。
 > - 此属性主要用于可编辑文本组件（如[TextInput](arkui-ts/ts-basic-components-textinput.md)）在用户尚未输入内容时显示占位提示文本的场景。
-> - 例如：输入框显示"请输入用户名"时，isHint应设为true，hintText应设为"请输入用户名"；用户输入内容后，isHint应设为false，contents应设为用户输入的文本。
+> - 例如：输入框显示“请输入用户名”时，isHint应设为true，hintText应设为“请输入用户名”；用户输入内容后，isHint应设为false，contents应设为用户输入的文本。
 > - 若isHint设置为true但未设置hintText，无障碍辅助应用可能播报空内容。
 
 **起始版本：** 13
@@ -1181,7 +1181,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElement
 > **说明**
 > 
 > - rangeInfo用于设置具有连续范围值的组件的当前值、最小值和最大值，适用于在连续数值范围内取值的组件（例如[Slider](arkui-ts/ts-basic-components-slider.md)、[Rating](arkui-ts/ts-basic-components-rating.md)、[Progress](arkui-ts/ts-basic-components-progress.md)等组件）。
-> - 无障碍辅助应用会根据rangeInfo播报当前值和范围，例如"进度50%，范围0到100"。
+> - 无障碍辅助应用会根据rangeInfo播报当前值和范围，例如“进度50%，范围0到100”。
 > - rangeInfo中的current表示当前值，min表示最小值，max表示最大值。
 > - 设置rangeInfo时，应确保min不大于max，current应在min和max之间。
 > - rangeInfo和elementInfo不支持传入空指针，否则返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
@@ -1216,7 +1216,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementI
 > **说明**
 > 
 > - gridInfo用于设置网格类容器的行数、列数和选择模式，适用于[Grid](arkui-ts/ts-container-grid.md)、[List](arkui-ts/ts-container-list.md)、[Flex](arkui-ts/ts-container-flex.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)等容器组件。
-> - 无障碍辅助应用会根据gridInfo播报网格的结构信息，如"第2行，共5行3列"。
+> - 无障碍辅助应用会根据gridInfo播报网格的结构信息，如“第2行，共5行3列”。
 > - rowCount表示行数，columnCount表示列数，selectionMode表示选择模式（值为0表示单行选择，非0表示多行选择）。
 > - gridInfo和elementInfo不支持传入空指针，否则返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
@@ -1250,8 +1250,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElem
 > **说明**
 > 
 > - gridItem用于设置[Grid](arkui-ts/ts-container-grid.md)组件中每个子项的属性，包括是否为标题、是否被选中、所在行列下标及跨度信息。适用于网格/列表类容器的子项（例如ArkUI的[Grid](arkui-ts/ts-container-grid.md)、[List](arkui-ts/ts-container-list.md)、[Flex](arkui-ts/ts-container-flex.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)的子项）。
-> - 无障碍辅助应用会根据gridItem的rowIndex和columnIndex播报子项的位置信息，如"第2行第3列"。
-> - [ArkUI_AccessibleGridItemInfo](capi-arkui-accessibility-arkui-accessiblegriditeminfo.md)中的heading为true时，无障碍辅助应用会播报"标题"。
+> - 无障碍辅助应用会根据gridItem的rowIndex和columnIndex播报子项的位置信息，如“第2行第3列”。
+> - [ArkUI_AccessibleGridItemInfo](capi-arkui-accessibility-arkui-accessiblegriditeminfo.md)中的heading为true时，无障碍辅助应用会播报“标题”。
 > - gridItem和elementInfo不支持传入空指针，否则返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
 **起始版本：** 13
@@ -1352,8 +1352,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_Accessibility
 > **说明**
 > 
 > - currentItemIndex用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tab](arkui-ts/ts-container-tabs.md)等容器类组件，表示当前获得焦点或处于激活状态的子项在容器中的位置索引（从0开始计数）。
-> - 无障碍辅助应用会播报当前项的位置信息，如"第3项，共10项"。
-> - currentItemIndex应与itemCount（通过[OH_ArkUI_AccessibilityElementInfoSetItemCount](#oh_arkui_accessibilityelementinfosetitemcount)设置）配合使用，以便辅助应用播报"第X项，共Y项"的完整信息。
+> - 无障碍辅助应用会播报当前项的位置信息，如“第3项，共10项”。
+> - currentItemIndex应与itemCount（通过[OH_ArkUI_AccessibilityElementInfoSetItemCount](#oh_arkui_accessibilityelementinfosetitemcount)设置）配合使用，以便辅助应用播报“第X项，共Y项”的完整信息。
 > - currentItemIndex的值应在0到itemCount-1的范围内。
 
 **起始版本：** 13
@@ -1452,7 +1452,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElement
 > **说明**
 > 
 > - itemCount用于[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tab](arkui-ts/ts-container-tabs.md)等容器类组件，表示容器中子项的总数量。
-> - 无障碍辅助应用等辅助应用结合currentItemIndex（通过[OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex](#oh_arkui_accessibilityelementinfosetcurrentitemindex)设置）和itemCount播报位置信息，如"第3项，共10项"。
+> - 无障碍辅助应用等辅助应用结合currentItemIndex（通过[OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex](#oh_arkui_accessibilityelementinfosetcurrentitemindex)设置）和itemCount播报位置信息，如“第3项，共10项”。
 > - itemCount的值应为容器中所有子项的总数（包括可见和不可见的），而不仅是当前屏幕可见区域的子项数。
 > - itemCount应为非负整数，设置为0表示容器为空。
 
@@ -1464,7 +1464,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElement
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| int32_t itemCount | 表示容器中子项的总数（包括可见和不可见的），用于辅助应用播报"第X项，共Y项"。如[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tab](arkui-ts/ts-container-tabs.md)等容器组件使用。 |
+| int32_t itemCount | 表示容器中子项的总数（包括可见和不可见的），用于辅助应用播报“第X项，共Y项”。如[List](arkui-ts/ts-container-list.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)、[Tab](arkui-ts/ts-container-tabs.md)等容器组件使用。 |
 
 **返回：**
 
@@ -1556,10 +1556,10 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_Accessibili
 > - accessibilityLevel用于控制组件是否被无障碍辅助服务识别，影响无障碍节点树中该节点的可见性。
 > - 无障碍辅助应用等辅助应用根据accessibilityLevel决定是否向用户展示该节点。
 > - 取值范围及含义如下：
-> - "auto"：由系统根据当前组件的属性自动判断该组件是否重要，决定是否让辅助服务识别该组件。通常具有可交互属性（如clickable）或文本内容的组件会被自动识别为重要。
-> - "yes"：表示该组件重要，允许辅助服务识别该组件。无论组件属性如何，辅助服务都会识别。
-> - "no"：表示该组件不重要，不允许辅助服务识别该组件。辅助服务会跳过该节点，但其子节点仍可被识别。
-> - "no-hide-descendants"：表示该组件及其所有子孙节点都不重要，辅助服务不会识别该组件及其子孙节点。适用于纯装饰性容器，避免辅助服务播报无意义的内容。
+> - “auto”：由系统根据当前组件的属性自动判断该组件是否重要，决定是否让辅助服务识别该组件。通常具有可交互属性（如clickable）或文本内容的组件会被自动识别为重要。
+> - “yes”：表示该组件重要，允许辅助服务识别该组件。无论组件属性如何，辅助服务都会识别。
+> - “no”：表示该组件不重要，不允许辅助服务识别该组件。辅助服务会跳过该节点，但其子节点仍可被识别。
+> - “no-hide-descendants”：表示该组件及其所有子孙节点都不重要，辅助服务不会识别该组件及其子孙节点。适用于纯装饰性容器，避免辅助服务播报无意义的内容。
 > - accessibilityLevel不支持传入空指针，传入空指针将返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
 **起始版本：** 13
@@ -1570,7 +1570,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_Accessibili
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| const char* accessibilityLevel | 表示组件的无障碍重要性级别，取值为"auto"/"yes"/"no"/"no-hide-descendants"，不能为空指针。 |
+| const char* accessibilityLevel | 表示组件的无障碍重要性级别，取值为“auto”/“yes”/“no”/“no-hide-descendants”，不能为空指针。 |
 
 **返回：**
 
@@ -1657,7 +1657,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityE
 > **说明**
 > 
 > - backgroundColor表示组件的背景颜色。此属性主要供UiTest自动化测试框架使用，用于识别组件的视觉背景色。
-> - 数据格式为"#ARGB"字符串，例如非透明白色为"#FFFFFFFF"，半透明红色为"#80FF0000"。
+> - 数据格式为“#ARGB”字符串，例如非透明白色为“#FFFFFFFF”，半透明红色为“#80FF0000”。
 > - backgroundColor不支持传入空指针，传入空指针将返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
 **起始版本：** 13
@@ -1668,7 +1668,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityE
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
-| const char* backgroundColor | 表示背景色。数据为"#ARGB"格式，例如非透明白色即"#FFFFFFFF"。不能为空指针。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
+| const char* backgroundColor | 表示背景色。数据为“#ARGB”格式，例如非透明白色即“#FFFFFFFF”。不能为空指针。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
@@ -1755,10 +1755,10 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityE
 > 
 > - hitTestBehavior用于控制组件在触摸测试过程中的响应行为，决定触摸事件是否可以穿透该组件。
 > - 此属性主要供UiTest自动化测试框架使用。取值范围参考HitTestMode，包括：
-> - "Default"：默认行为，不阻断触摸事件。
-> - "Block"：阻断自身及子组件的触摸事件。
-> - "Transparent"：自身不响应触摸事件，但子组件可以响应。
-> - "None"：自身和子组件都不响应触摸事件。
+> - “Default”：默认行为，不阻断触摸事件。
+> - “Block”：阻断自身及子组件的触摸事件。
+> - “Transparent”：自身不响应触摸事件，但子组件可以响应。
+> - “None”：自身和子组件都不响应触摸事件。
 > - hitTestBehavior不支持传入空指针，传入空指针将返回[ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode)。
 
 **起始版本：** 13
