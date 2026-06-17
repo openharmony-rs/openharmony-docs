@@ -1,10 +1,11 @@
-# @SyncMonitor
+# @SyncMonitor：状态变量修改同步监听
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zany_pink-->
-<!--SE: @zhangboren-->
-<!--TSE: @TerryTsao-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 @SyncMonitor用于状态管理V2中，同步监听状态变量修改，使得状态变量具有深度监听的能力。开发指南参考：[\@SyncMonitor装饰器：状态变量修改同步监听](../../../ui/state-management/arkts-new-syncmonitor.md)。
 
@@ -49,8 +50,10 @@ struct Index {
       Text(`name: ${this.name}`)
       Button('change string')
         .onClick(() => {
-          this.message += '!'; // 修改message，同步触发onStrChange回调
-          this.name = 'Jack'; // 修改name，同步触发onStrChange回调
+          // 修改message，同步触发onStrChange回调
+          this.message += '!';
+          // 修改name，同步触发onStrChange回调
+          this.name = 'Jack';
         })
     }
   }
