@@ -107,7 +107,7 @@ NODE_BACKGROUND_IMAGE = 3
 | 参数项 | 描述 |
 | -- | -- |
 | .string | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)资源，不支持[svg](arkui-js/js-components-svg.md)图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。 |
-| .value[0]?.i32 | 可选值，repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)，默认值为ARKUI_IMAGE_REPEAT_NONE。 |
+| .value[0]?.i32 | 可选值，repeat参数，参数类型[ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat)，默认值为ARKUI_IMAGE_REPEAT_NONE。 |
 | .object | PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。<br>.object参数和.string参数二选一，不可同时设置。 |
 
 **返回：**
@@ -115,5 +115,5 @@ NODE_BACKGROUND_IMAGE = 3
 | 类型 | 说明 |
 | -- | -- |
 | .string | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。 |
-| .value[0].i32 | repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)。 |
+| .value[0].i32 | repeat参数，参数类型[ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat)。 |
 | .object | PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。 |

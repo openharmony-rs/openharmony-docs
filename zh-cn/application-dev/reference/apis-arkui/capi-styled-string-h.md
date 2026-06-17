@@ -5290,7 +5290,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetObjectFit(OH_ArkUI_ImageAttachment* 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。 |
-| [ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit) objectFit | 图片缩放类型。取值为[ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit)中的枚举。 |
+| [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit) objectFit | 图片缩放类型。取值为[ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit)中的枚举。 |
 
 **返回：**
 
@@ -5315,7 +5315,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetObjectFit(const OH_ArkUI_ImageAttach
 | 参数项 | 描述 |
 | -- | -- |
 | const [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。 |
-| [ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit)* objectFit | 图片缩放类型。取值为[ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit)中的枚举。 |
+| [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit)* objectFit | 图片缩放类型。取值为[ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit)中的枚举。 |
 
 **返回：**
 

@@ -37,6 +37,9 @@
       - [密钥协商介绍及算法规格](huks-key-agreement-overview.md)
       - [密钥协商(ArkTS)](huks-key-agreement-arkts.md)
       - [密钥协商(C/C++)](huks-key-agreement-ndk.md)
+    - 密钥封装<!--huks-kem-->
+      - [密钥封装机制介绍及算法规格](huks-kem-overview.md)
+      - [密钥封装(ArkTS)](huks-kem-arkts.md)
     - 密钥派生<!--huks-key-derivation-->
       - [密钥派生介绍及算法规格](huks-key-derivation-overview.md)
       - [密钥派生(ArkTS)](huks-key-derivation-arkts.md)

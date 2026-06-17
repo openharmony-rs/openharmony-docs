@@ -1971,6 +1971,10 @@ Navigation分割线颜色及上下边距。
 
 标题栏滚动模糊效果选项。
 
+> **说明：**
+>
+> - 如果同时设置了[NavigationTitleOptions](#navigationtitleoptions11)中的backgroundColor，则滚动模糊效果会被标题栏背景色覆盖。
+
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -1982,8 +1986,8 @@ Navigation分割线颜色及上下边距。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | scrollEffectType | [ScrollEffectType](#scrolleffecttype) | 否 | 是 | 标题栏滚动模糊效果类型。<br/>默认值：ScrollEffectType.COMMON_BLUR |
-| blurEffectiveStartOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 启用标题栏滚动模糊效果的最小滑动距离。<br/>默认值：0vp |
-| blurEffectiveEndOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 达到标题栏最终模糊样式的最大滑动距离。<br/>默认值：8vp |
+| blurEffectiveStartOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 启用标题栏滚动模糊效果的最小滑动距离。<br/>不支持使用[LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12)设置最小滑动距离。<br/>默认值：0vp |
+| blurEffectiveEndOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 达到标题栏最终模糊样式的最大滑动距离。<br/>不支持使用[LengthMetrics.percent](../js-apis-arkui-graphics.md#percent12)设置最大滑动距离。<br/>默认值：8vp |
 
 ## NavigationTitleOptions<sup>11+</sup>
 
