@@ -1,4 +1,12 @@
-# Geofencing (ArkTS)
+# Geofencing Development Based on Device Location
+
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:12:59.200Z pushedAt=2026-06-16T11:29:03.946Z -->
 
 ## Scenario
 
@@ -10,7 +18,7 @@ A typical application of geofencing is to create a geofence around an enterprise
 
 ## Available APIs
 
-The following table lists the APIs used in geofencing. For details, see [Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md).
+The following table lists the APIs used in geofencing. For details, see [@ohos.geoLocationManager (Geolocation Manager)](../../reference/apis-location-kit/js-apis-geoLocationManager.md).
 
 | API| Description| 
 | -------- | -------- |

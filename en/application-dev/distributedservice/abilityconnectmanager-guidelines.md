@@ -1,20 +1,21 @@
 # Cross-Device UIAbility Connection Development
+
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @w_Machine_cc-->
-
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:08:25.622Z pushedAt=2026-06-16T13:57:13.714Z -->
 
 ## Introduction
 
 Cross-device connection and communication (including data transmission) is supported since API version 18. This feature utilizes the distributed component management framework to enable multi-device collaboration (that is, applications on different devices working together to fulfill the same service scenario), which has become one of the core functionalities of the distributed system. A typical use case is that the photo control application on the smart watch can remotely invoke the camera function on the mobile phone and implement real-time bidirectional data interaction across devices.
 
-
 ### Available Capabilities
 
 - Cross-device application launch: Supports launching associated applications in a distributed networking environment to implement multi-device service collaboration (application adaptation required).
+
 - Cross-device data interaction: Supports cross-device data transmission. The cross-device data interaction capability varies depending on the application type. Specifically, system applications can transmit text, byte streams, images, and transport streams, while third-party applications can only transmit text.
 
 ### Basic Concepts
@@ -22,7 +23,7 @@ Cross-device connection and communication (including data transmission) is suppo
 Before you get started, familiarize yourself with the following concepts:
 
 - **Distributed Management Service (DMS)**
-  
+
   A framework that provides distributed component management capabilities.
 
 - **UIAbility**
@@ -30,7 +31,7 @@ Before you get started, familiarize yourself with the following concepts:
   [UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/uiability-overview) is a component that implements tasks specific to application UIs, such as lifecycle management, user interaction, and UI rendering.
 
 - **Byte stream**
-  
+
   Data of the [ArrayBuffer](../arkts-utils/arraybuffer-object.md) type, which can be used to store binary data, for example, image or audio data.
 
 ### Implementation Principles
@@ -41,19 +42,24 @@ Cross-device connection management is built on a distributed component managemen
 
 ![how-abilityconnectmanager-works](figures/how-abilityconnectmanager-works.png)
 
-
 ### Constraints
 
-- This feature is supported only on devices whose API version is 18 or later, and you need to log in with the same HUAWEI ID on related devices.
+- This feature is limited to devices with API version 18 or later.
 
-- Cross-device collaboration is supported only for UIAbility applications with the same bundle name on different devices.
+- When both devices are logged in with the same account, collaboration between apps with the same or different bundleName is supported. In a different-account scenario, the system verifies the app's AppID, and only collaboration between apps with the same AppID is supported.
+
 <!--Del-->
+
 - The byte stream, image, and transport stream capabilities are supported only for system applications.
+
 <!--DelEnd-->
+
 - After the service collaboration is complete, the collaboration status must be ended in a timely manner. To ensure system security and proper resource utilization, if an application has not requested a continuous task, the collaboration lifecycle will be ended when the screen is locked or the application is switched to the background for more than 5 seconds.
 
 - The distributed component management framework does not censor the transmitted content during the collaboration process. If data privacy is involved, it is recommended that the application employs measures such as pop-up notification to notify users.
 
+<!--RP2-->
+<!--RP2End-->
 
 ## Environment Setup
 
@@ -61,14 +67,15 @@ Cross-device connection management is built on a distributed component managemen
 
 You have logged in to devices A and B with the same HUAWEI ID and the two devices are successfully networked via [Device Manager](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/devicemanager-guidelines) APIs.
 
-
 ### Setting Up the Environment
 
-1. Download and install DevEco Studio on the PC. For details, see [Downloading Software](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-software-download-V5) and [Installing DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-software-install-V5). The DevEco Studio version must be 4.1 or later.
-2. Update the public SDK to API version 18 or later.
-3. Connect device A or device B to the PC using a USB cable.
-4. Enable Bluetooth on device A and device B to implement networking.
+1. Download and install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) on the PC. The DevEco Studio version must be 4.1 or later.
 
+2. Update the public SDK to API version 18 or later.
+
+3. Connect device A or device B to the PC using a USB cable.
+
+4. Enable Wi-Fi and Bluetooth on device A and device B. If you are logged in with the same HUAWEI ID, the devices will automatically form a network. In a different-account environment, you need to first establish a trusted relationship through [Device Discovery](devicemanager-guidelines.md#discovering-devices) and [Device Binding](devicemanager-guidelines.md#binding-a-device) to complete networking.
 
 ### Verifying the Environment
 
@@ -80,7 +87,6 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 ```
 
 If the networking is successful, the number of networking devices is displayed, for example, **remote device num = 1**.
-
 
 ## How to Develop
 
@@ -102,7 +108,7 @@ The following table describes the APIs for cross-device connection management. F
 | on(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | Enable listening for <!--Del-->the **connect**, **disconnect**, **receiveMessage**, and **receiveData**<!--DelEnd-->events.|
 | off(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | Cancels listening for <!--Del-->the **connect**, **disconnect**, **receiveMessage**, and **receiveData**<!--DelEnd-->events.|
 | sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;; | Sends a text message.|
-
+| sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;; | Sends an **ArrayBuffer** byte stream. This API uses a promise to return the result. |
 
 ### Development Procedure
 
@@ -116,11 +122,9 @@ The application on device A starts and connects to the application on device B t
 import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
 ```
 
-
 **Discovering Devices**
 
-The application on device A needs to discover device B and use its **networkId** as the input parameter of the collaboration API. You can call APIs of the distributed device management module to discover and select the peer device. For details, see [Distributed Device Management Development](devicemanager-guidelines.md).
-
+On device A, the application needs to discover and select the [networkId](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) of device B as an input parameter for the collaboration APIs. You can use the APIs provided by the distributed device management module to discover and select the target device. For details, see [Querying Device Information](devicemanager-guidelines.md#querying-device-information).
 
 **Initiating a Session Between Applications**
 
@@ -208,7 +212,6 @@ function getRemoteDeviceId(): string | undefined {
   }
 ```
 
-
 **2. Device B**
 
 After the application on device A calls **connect()**, the application on device B is started in collaboration mode, and the collaboration lifecycle function **onCollaborate()** is triggered. You can configure the **createAbilityConnectionSession()** and **acceptConnect()** calls in this API.
@@ -254,7 +257,6 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 }
 ```
 
-
 **Enabling Event Listening**
 
 After the application creates a session and obtains the session ID, you can call **on()** to listen for the corresponding events and notify the listener through a callback.
@@ -286,7 +288,6 @@ After the application creates a session and obtains the session ID, you can call
   }
 ```
 
-
 <!--RP1End-->  
 <!--Del-->
 **Sending Data**
@@ -294,6 +295,8 @@ After the application creates a session and obtains the session ID, you can call
 **<!--Del-->1.<!--DelEnd-->Send messages.**
 
 After the applications are successfully connected, you can call **sendMessage()** on device A or device B to send text messages to the peer application.
+
+<!-- @[sendmessage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -305,9 +308,12 @@ After the applications are successfully connected, you can call **sendMessage()*
     hilog.error(0x0000, 'testTag', "connect failed");
   })
   ```
+
 **2. Send byte streams.**
 
 After the applications are successfully connected, you can call **sendData()** on device A or device B to send byte streams to the peer application.
+
+<!-- @[senddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -328,6 +334,8 @@ After the applications are successfully connected, you can call **sendData()** o
 
 After the service collaboration is complete, the collaboration status must be ended in a timely manner. If service collaboration is required in a near future, you can call **disconnect()** to disconnect the connection between applications while retaining the session ID. This allows you to reuse the same session ID for establishing a connection next time. If service coordination is not required, you can directly call **destroyAbilityConnectionSession()** to destroy the session. In this case, the connection is automatically disconnected.
 
+<!-- @[disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -343,14 +351,16 @@ After the service collaboration is complete, the collaboration status must be en
   abilityConnectionManager.destroyAbilityConnectionSession(this.sessionId);
   ```
 
-
 ### Debugging and Verification
 
 After application development is complete, you can install the application on device A and device B. The test procedure is as follows:
 
 1. Tap the **Connect** button of the application on device A. The application on device B is started.
+
 2. Tap the **sendMessage** button of the application on device A. The application on device B triggers the callback of the **on()** API to receive the text strings.
+
 3. Tap the **sendData** button of the application on device A. The application on device B triggers the callback of the **on()** API to receive the byte streams.
+
 4. Tap the **Disconnect** button of the application on device A or device B. The connection between the two devices is disconnected. The callback of the **connect()** API is triggered to report a disconnection event to the applications on both devices.
 
 ## FAQs
@@ -366,11 +376,12 @@ After application development is complete, you can install the application on de
 **Solution**
 
 - For cause 1, enable the USB debugging function on device A and device B, and use a USB cable to connect the devices to the PC. Run the following shell command on the PC:
-   
+
   ```shell
   hdc shell
   hidumper -s 4700 -a "buscenter -l remote_device_info"
   ```
+
   If **remote device num = 0** is displayed in the command output, the networking has failed. Ensure that you log in to devices using the same HUAWEI ID and connect them through Bluetooth. If the networking is successful, the number of networking devices is displayed, for example, **remote device num = 1**.
 
 - For cause 2, add the desired to the device list to ensure that it is selected during device query and selection.

@@ -4,7 +4,8 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:05:45.366Z pushedAt=2026-06-16T14:13:01.339Z -->
 
 
 The following figure shows the package structure of an application developed based on the [FA Model](application-configuration-file-overview-fa.md). You should have a basic understanding of the related concepts.

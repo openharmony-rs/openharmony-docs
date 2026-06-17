@@ -4,23 +4,24 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:05:37.393Z pushedAt=2026-06-16T14:12:53.014Z -->
 
 ## A
 
-### APP 
+### APP
 
 To release an application to AppGallery, the bundle must be packaged into an .app file, that is, an Application Package (App Pack).
 
 ## E
 
-### ExtensionAbility 
+### ExtensionAbility
 
 A component that provides extension abilities for specific scenarios (such as service widgets and input methods) in the stage model.
 
 ## F
 
-### FA 
+### FA
 
 Feature Ability, an ability with a UI to interact with users in the FA model.
 
@@ -30,15 +31,15 @@ It is the only application development model supported by API version 8 and earl
 
 ## H
 
-### HAP 
+### HAP
 
 Harmony Ability Package, released with the file name extension .hap, contains all content of an application, including code, resources, third-party libraries, and an application configuration file.
 
-### HAR 
+### HAR
 
 HarmonyOS Archive, released with the file name extension .har, is a static shared package and can be reused in the compilation state. It can contain code, C++ libraries, resources, and configuration files, and is used to share code and resources.
 
-### HSP 
+### HSP
 
 Harmony Shared Package, released with the file name extension .hsp, is a dynamic shared package and can be reused during runtime. It can contain code, C++ libraries, resources, and configuration files, and is used to share code and resources.
 

@@ -1,17 +1,25 @@
 # User Status Awareness Development
+
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
 <!--Designer: @zou_ye-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:12:58.089Z pushedAt=2026-06-16T13:35:15.586Z -->
 
 The UserStatus module, designed for user status awareness, empowers the system to perceive specific conditions of the operator, such as determining their age group.
 
-For details about the APIs, see the [userStatus API Reference](../../reference/apis-multimodalawareness-kit/js-apis-awareness-userStatus.md).
+For detailed API description, refer to [@ohos.multimodalAwareness.userStatus (User Status Awareness)](../../reference/apis-multimodalawareness-kit/js-apis-awareness-userStatus.md).
 
-## How to Develop 
+> **NOTE**
+> 
+> The initial APIs of this module are supported since API version 20 and deprecated since API version 24.
+
+## How to Develop
+
 ### When to Use
+
 An application can invoke the UserStatus module when it needs to obtain the age group of users. This way, the application can determine, for example, whether the individual interacting with the device is a child or an adult.
 
 The APIs of this module are supported since API version 20.
@@ -26,30 +34,35 @@ The APIs of this module are supported since API version 20.
 ### Constraints
 
  - If the device does not support the age group detection function, error code 801 is returned.
+
 <!--RP1--> <!--RP1End-->
 
 ### Development Procedure
 
 1. Import the related modules.
 
+   <!-- @[import_the_user_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    import { userStatus } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   <!-- @[import_the_user_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 2. Define the callback function used to listen for the age group detection result changes.
 
-   ```
+   <!-- @[user_status_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
    let callback : Callback<userStatus.UserClassification> = (data : userStatus.UserClassification) => {
      console.info('callback succeeded, ageGroup:' + data.ageGroup + ", confidence:" + data.confidence);
    };
    ```
-   <!-- @[user_status_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 3. Enable the age group detection function.
 
-   ```
+   <!-- @[user_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
    try {
       userStatus.on('userAgeGroupDetected', callback);  
       console.info("on succeeded");
@@ -58,11 +71,12 @@ The APIs of this module are supported since API version 20.
       console.error("Failed on and err code is " + error.code);
    }
    ```
-   <!-- @[user_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 4. Disable the age group detection function.
 
-   ```
+   <!-- @[user_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
    try {
       userStatus.off('userAgeGroupDetected');
       console.info("off succeeded");
@@ -71,4 +85,3 @@ The APIs of this module are supported since API version 20.
       console.error("Failed off and err code is " + error.code);
    }
    ```
-   <!-- @[user_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
