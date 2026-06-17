@@ -801,7 +801,7 @@ libhttp_interceptor.so
                };
                httpRequest.request(HTTP_URL_BAIDU, options, (err: BusinessError, res: http.HttpResponse) => {
                  if (err) {
-                   hilog.info(0x0000, LOG_TAG, `request fail, error code: ${err.code}, msg: ${err.message}`);
+                   hilog.error(0x0000, LOG_TAG, `request fail, error code: ${err.code}, msg: ${err.message}`);
                    httpRequest.destroy();
                  } else {
                    hilog.info(0x0000, LOG_TAG, `res:${JSON.stringify(res)}`);
