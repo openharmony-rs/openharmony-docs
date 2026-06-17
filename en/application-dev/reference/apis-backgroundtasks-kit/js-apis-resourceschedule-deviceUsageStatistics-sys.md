@@ -4,7 +4,7 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The **usageStatistics** module provides APIs for collecting statistics on device usage. For example, you can use the APIs to query whether an application is commonly used and an application's priority group, usage duration, system events (hibernation, wakeup, unlocking, and screen locking), application events (foreground, background, and start and end of continuous tasks), and the number of notifications.
 
