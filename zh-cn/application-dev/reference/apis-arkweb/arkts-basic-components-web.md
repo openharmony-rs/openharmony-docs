@@ -209,13 +209,13 @@ ArkTS-Dyn示例：
   @Entry
   @Component
   struct WebComponent {
-    exampleControllerDyn: webview.WebviewController = new webview.WebviewController();
-    w3ControllerDyn: webview.WebviewController = new webview.WebviewController();
+    exampleController: webview.WebviewController = new webview.WebviewController();
+    w3Controller: webview.WebviewController = new webview.WebviewController();
 
     build() {
       Column() {
-        Web({ src: 'www.example.com', controller: this.exampleControllerDyn, sharedRenderProcessToken: '111' })
-        Web({ src: 'www.w3.org', controller: this.w3ControllerDyn, sharedRenderProcessToken: '111' })
+        Web({ src: 'www.example.com', controller: this.exampleController, sharedRenderProcessToken: '111' })
+        Web({ src: 'www.w3.org', controller: this.w3Controller, sharedRenderProcessToken: '111' })
       }
     }
   }
@@ -231,13 +231,13 @@ ArkTS-Sta示例：
   @Entry
   @Component
   struct WebComponent {
-    exampleControllerSta: webview.WebviewController = new webview.WebviewController(undefined);
-    w3ControllerSta: webview.WebviewController = new webview.WebviewController(undefined);
+    exampleController: webview.WebviewController = new webview.WebviewController(undefined);
+    w3Controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
-        Web({ src: 'www.example.com', controller: this.exampleControllerSta, sharedRenderProcessToken: '111' })
-        Web({ src: 'www.w3.org', controller: this.w3ControllerSta, sharedRenderProcessToken: '111' })
+        Web({ src: 'www.example.com', controller: this.exampleController, sharedRenderProcessToken: '111' })
+        Web({ src: 'www.w3.org', controller: this.w3Controller, sharedRenderProcessToken: '111' })
       }
     }
   }
@@ -253,13 +253,13 @@ ArkTS-Dyn示例：
   @Entry
   @Component
   struct WebComponent {
-    noEmulateControllerDyn: webview.WebviewController = new webview.WebviewController();
-    emulateTouchControllerDyn: webview.WebviewController = new webview.WebviewController();
+    noEmulateController: webview.WebviewController = new webview.WebviewController();
+    emulateTouchController: webview.WebviewController = new webview.WebviewController();
 
     build() {
       Column() {
-        Web({ src: 'www.example.com', controller: this.noEmulateControllerDyn, emulateTouchFromMouseEvent: false })
-        Web({ src: 'www.w3.org', controller: this.emulateTouchControllerDyn, emulateTouchFromMouseEvent: true })
+        Web({ src: 'www.example.com', controller: this.noEmulateController, emulateTouchFromMouseEvent: false })
+        Web({ src: 'www.w3.org', controller: this.emulateTouchController, emulateTouchFromMouseEvent: true })
       }
     }
   }
@@ -275,13 +275,13 @@ ArkTS-Sta示例：
   @Entry
   @Component
   struct WebComponent {
-    noEmulateControllerSta: webview.WebviewController = new webview.WebviewController(undefined);
-    emulateTouchControllerSta: webview.WebviewController = new webview.WebviewController(undefined);
+    noEmulateController: webview.WebviewController = new webview.WebviewController(undefined);
+    emulateTouchController: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
-        Web({ src: 'www.example.com', controller: this.noEmulateControllerSta, emulateTouchFromMouseEvent: false })
-        Web({ src: 'www.w3.org', controller: this.emulateTouchControllerSta, emulateTouchFromMouseEvent: true })
+        Web({ src: 'www.example.com', controller: this.noEmulateController, emulateTouchFromMouseEvent: false })
+        Web({ src: 'www.w3.org', controller: this.emulateTouchController, emulateTouchFromMouseEvent: true })
       }
     }
   }
