@@ -34,9 +34,7 @@ Callback\<T> {
 
 }
 
-通用回调函数。
-
-开发者在使用时，可自定义data的类型，回调将返回对应类型的信息。
+通用回调函数，用于在异步操作完成时回传处理结果。类型由开发者自定义。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -58,9 +56,9 @@ ErrorCallback\<T extends Error = BusinessError> {
 
 }
 
-通用回调函数，携带错误参数。
+通用回调函数，携带错误参数，用于在接口调用失败时回传错误信息。
 
-回调返回的信息为[BusinessError](#businesserror)类型的信息。
+回调返回的信息为[BusinessError](#businesserror)类型的错误参数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -70,7 +68,7 @@ ErrorCallback\<T extends Error = BusinessError> {
 
 | 参数名 | 类型 | 必填 | 说明                         |
 | ---- | ---- | ---- | ---------------------------- |
-| err  | T    | 是   | 接口调用失败的公共错误信息。 |
+| err  | T    | 是   | 接口调用失败的公共错误信息，类型默认为BusinessError，包含错误码（code）和可选附加数据（data）。 |
 
 ## AsyncCallback
 
@@ -80,9 +78,9 @@ AsyncCallback\<T, E = void> {
 
 }
 
-通用回调函数，携带错误参数和异步返回值。
+通用回调函数，携带错误参数和异步返回值，用于在异步操作完成时同时回传错误信息或成功数据。
 
-错误参数为[BusinessError](#businesserror)类型的信息。
+错误参数为[BusinessError](#businesserror)类型。
 
 异步返回值的类型由开发者自定义，回调将返回对应类型的信息。
 
@@ -96,8 +94,8 @@ AsyncCallback\<T, E = void> {
 
 | 参数名 | 类型                                                         | 必填 | 说明                         |
 | ---- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| err  | [BusinessError](#businesserror) | 是   | 接口调用失败的公共错误信息。 |
-| data | T                                                            | 是   | 接口调用成功时的异步返回数据，类型由开发者自定义。接口调用失败时，此参数不可用。   |
+| err  | [BusinessError](#businesserror) | 是   | 接口调用失败的公共错误信息。接口调用成功时，此参数返回null |
+| data | T                   | 是   | 接口调用成功时的异步返回数据，类型由开发者自定义。接口调用失败时，此参数不可用。   |
 
 ## BusinessError
 
