@@ -1081,6 +1081,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts",
+				"functions":[
+					{
+						"end_line":114,
+						"name":"rdb_Store",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -22842,6 +22852,21 @@
 						"end_line":79,
 						"name":"custom_dialog_with_key_board_distance",
 						"start_line":18
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/native-vector-store-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"vector_include",
+						"start_line":19
 					}
 				]
 			}
