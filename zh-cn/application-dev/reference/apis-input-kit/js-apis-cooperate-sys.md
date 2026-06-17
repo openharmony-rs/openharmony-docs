@@ -515,7 +515,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 
 | 参数名                | 类型                                                             | 必填 | 说明                            |
 | --------             | ----------------------------                                    | ---- | ----------------------------   |
-| type                 | string                                                          |  是  | 注册类型，取值”cooperation“。         |
+| type                 | string                                                          |  是  | 注册类型，取值'cooperation'。         |
 | callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsgdeprecated) }> |  是  | 回调函数。当接收键鼠穿越事件成功，err为undefined，data为键鼠穿越事件信息；否则为错误对象。    |
 
 **错误码**：
@@ -607,7 +607,7 @@ struct Index {
           }
           try {
             inputDeviceCooperate.on('cooperation', callbackOn);
-            inputDeviceCooperate.off("cooperation", callbackOn);
+            inputDeviceCooperate.off('cooperation', callbackOn);
           } catch (error) {
             console.error(`Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -634,7 +634,7 @@ struct Index {
           }
           try {
             inputDeviceCooperate.on('cooperation', callback);
-            inputDeviceCooperate.off("cooperation");
+            inputDeviceCooperate.off('cooperation');
           } catch (error) {
             console.error(`Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
