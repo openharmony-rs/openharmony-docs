@@ -50,7 +50,7 @@ getText(range?: TextRange): string
 
 ## KeyboardGradientMode<sup>20+</sup>枚举说明
 
-键盘模糊效果。
+键盘渐变模糊效果。
 
 **系统接口：** 此接口为系统接口。
 
@@ -84,7 +84,7 @@ getText(range?: TextRange): string
 
 | 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
-| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20枚举说明) | 否   | 是   | 键盘的模糊效果。<br/>默认值：KeyboardGradientMode.NONE |
+| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20枚举说明) | 否   | 是   | 键盘的渐变模糊效果。<br/>默认值：KeyboardGradientMode.NONE |
 | fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20枚举说明) | 否   | 是   | 键盘的流光效果。<br/>默认值：KeyboardFluidLightMode.NONE |
 
 ## TextChangeReason<sup>20+</sup>
