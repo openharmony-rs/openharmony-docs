@@ -359,7 +359,7 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 
 **描述**
 
-通过给定的pc地址获取详细的符号信息，该函数非异步信号安全。不能在异步信号处理函数中使用
+通过给定的pc地址获取详细的符号信息，该函数非异步信号安全。不能在异步信号处理函数中使用。
 
 > **注意**：
 >
