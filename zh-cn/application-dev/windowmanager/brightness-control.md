@@ -31,11 +31,11 @@
 
   屏幕亮度可通过**控制中心**或者**设置 &gt; 显示和亮度**进行调整。目前没有直接设置系统屏幕亮度的接口，但当[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1时，窗口亮度恢复为系统屏幕亮度。
 
-## 控制窗口常亮
+## 控制屏幕常亮
 
-控制窗口常亮指通过调用[setWindowKeepScreenOn()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9-1)接口设置当前窗口位于前台时设备的屏幕是否为常亮状态。当前台存在已设置为常亮的窗口时，设备的超时自动熄屏能力将被禁用。在异源虚拟屏上不生效。
+控制屏幕常亮指通过调用[setWindowKeepScreenOn()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9-1)接口设置当前窗口位于前台时设备的屏幕是否为常亮状态。当前台存在已设置为常亮的窗口时，设备的超时自动熄屏能力将被禁用。在异源虚拟屏上不生效。
 
-建议在明确且有必要保持窗口常亮的场景下使用，例如导航、视频播放、绘画、游戏等。在无屏幕交互、纯音频播放或其他无需持续点亮屏幕的场景下，不建议设置窗口常亮。
+建议在明确且有必要保持屏幕常亮的场景下使用，例如导航、视频播放、绘画、游戏等。在无屏幕交互、纯音频播放或其他无需持续点亮屏幕的场景下，不建议设置屏幕常亮。
 
 当窗口退到后台时，系统会自动释放该窗口持有的常亮锁。对于视频播放类应用，当音频流或视频流中断一段时间后，例如暂停、网络卡顿等场景，系统也会自动释放常亮锁。
 

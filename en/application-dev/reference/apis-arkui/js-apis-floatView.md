@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
-<!--Designer: @zhoulin_-->
+<!--Designer: @loumou-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -1006,7 +1006,7 @@ try {
 
 onLimitsChange(callback: Callback&lt;FloatViewLimits&gt;): void
 
-Registers a callback for listening to limit changes of the float view. When the limit changes, for example, when the device is folded or unfolded, the callback is triggered. To prevent memory leaks, remember to unregister the callback when it is no longer needed.
+Registers a callback for listening to limit changes of the float view. When the limit changes (for example, the screen width changes or the template is switched), the callback is triggered and the limit information of the current window template type is returned. To prevent memory leaks, remember to unregister the callback when it is no longer needed.
 
 **Since**: 26.0.0
 

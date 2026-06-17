@@ -212,8 +212,8 @@ typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, doub
 | -- | -- |
 | const char* webTag | Web组件名称。 |
 |  void* userData | 用户自定义的数据。 |
-|  double x | X轴滚动偏移。 |
-|  double y | Y轴滚动偏移。 |
+|  double x | X轴滚动偏移。单位：vp。 |
+|  double y | Y轴滚动偏移。单位：vp。 |
 
 ### ArkWeb_OnMessageEventHandler()
 

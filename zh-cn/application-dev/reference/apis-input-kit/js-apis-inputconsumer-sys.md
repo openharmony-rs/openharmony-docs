@@ -57,6 +57,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -78,7 +79,7 @@ struct Index {
           }
           try {
             // 订阅按键事件
-            inputConsumer.on("key", keyOptions, callback);
+            inputConsumer.on('key', keyOptions, callback);
           } catch (error) {
             console.error(`Failed to subscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -118,6 +119,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -135,9 +137,9 @@ struct Index {
           let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
           try {
             // 订阅按键事件
-            inputConsumer.on("key", keyOption, callback);
+            inputConsumer.on('key', keyOption, callback);
             // 取消订阅按键事件
-            inputConsumer.off("key", keyOption, callback);
+            inputConsumer.off('key', keyOption, callback);
             console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
             console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -149,6 +151,7 @@ struct Index {
 ```
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -166,9 +169,9 @@ struct Index {
           let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
           try {
             // 订阅按键事件
-            inputConsumer.on("key", keyOption, callback);
+            inputConsumer.on('key', keyOption, callback);
             // 取消订阅按键事件
-            inputConsumer.off("key", keyOption);
+            inputConsumer.off('key', keyOption);
             console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
             console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -402,6 +405,7 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -460,6 +464,7 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component

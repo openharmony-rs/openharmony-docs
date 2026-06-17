@@ -20,11 +20,13 @@
 
 用于混合颜色。
 
-### createHDRColorWithLinearExposure<sup>24+</sup>
+### createHDRColorWithLinearExposure
 
 static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
 使用[ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20)、线性曝光系数和rgba格式颜色实例化支持HDR的ColorMetrics类。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,11 +49,13 @@ static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: Colo
 | ------------- | ---------------- |
 | [ColorMetrics](#colormetrics) | ColorMetrics类的实例。|
 
-### createHDRColorWithLogExposure<sup>24+</sup>
+### createHDRColorWithLogExposure
 
 static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
 使用[ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20)、指数型曝光系数和rgba格式颜色实例化支持HDR的ColorMetrics类。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,11 +78,13 @@ static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace, r
 | ------------- | ---------------- |
 | [ColorMetrics](#colormetrics) | ColorMetrics类的实例。|
 
-### createHDRColor<sup>24+</sup>
+### createHDRColor
 
-static createHDRColorWithLogExposure(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
+static createHDRColor(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
 使用[ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20)和rgba格式颜色实例化支持HDR的ColorMetrics类。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,11 +106,13 @@ static createHDRColorWithLogExposure(colorSpace: ColorSpace, red: number, green:
 | ------------- | ---------------- |
 | [ColorMetrics](#colormetrics) | ColorMetrics类的实例。|
 
-### getColorSpace<sup>24+</sup>
+### getColorSpace
 
 getColorSpace(): ColorSpace
 
 获取ColorMetrics的色彩空间。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,11 +124,13 @@ getColorSpace(): ColorSpace
 | ------------- | ---------------- |
 | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | 色彩空间。 |
 
-### isHDR<sup>24+</sup>
+### isHDR
 
 isHDR(): boolean
 
 获取ColorMetrics是否呈现了HDR色彩。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,13 +140,15 @@ isHDR(): boolean
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| boolean | ColorMetrics是否呈现了HDR色彩。当色彩是通过createHDRColorWithXx方法，如[createHDRColorWithLinearExposure](#createhdrcolorwithlinearexposure24)创建，或任意RGB分量值大于1.0时，将返回true；否则返回false，表示ColorMetrics未呈现HDR色彩。 |
+| boolean | ColorMetrics是否呈现了HDR色彩。当色彩是通过createHDRColorWithXx方法，如[createHDRColorWithLinearExposure](#createhdrcolorwithlinearexposure)创建，或任意RGB分量值大于1.0时，将返回true；否则返回false，表示ColorMetrics未呈现HDR色彩。 |
 
-### getRedValue<sup>24+</sup>
+### getRedValue
 
 getRedValue(): number
 
 获取ColorMetrics颜色的R分量（红色）。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,11 +160,13 @@ getRedValue(): number
 | ------------- | ---------------- |
 | number | 颜色的R分量（红色），值是大于等于0的浮点数。 |
 
-### getGreenValue<sup>24+</sup>
+### getGreenValue
 
 getGreenValue(): number
 
 获取ColorMetrics颜色的G分量（绿色）。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,11 +178,13 @@ getGreenValue(): number
 | ------------- | ---------------- |
 | number | 颜色的G分量（绿色），值是大于等于0的浮点数。 |
 
-### getBlueValue<sup>24+</sup>
+### getBlueValue
 
 getBlueValue(): number
 
 获取ColorMetrics颜色的B分量（蓝色）。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

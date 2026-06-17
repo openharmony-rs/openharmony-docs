@@ -194,9 +194,9 @@
       OH_Drawing_PenLineJoinStyle转角样式可选分类对应如下：
       | 转角样式 | 说明 | 示意图 |
       | -------- | -------- | -------- |
-      | LINE_MITER_JOIN | 转角类型为尖角 | ![zh-cn_image_0000002194025261](figures/zh-cn_image_0000002194025261.png) |
-      | LINE_ROUND_JOIN | 转角类型为圆头 | ![zh-cn_image_0000002194110901](figures/zh-cn_image_0000002194110901.png) |
-      | LINE_BEVEL_JOIN | 转角类型为平头 | ![zh-cn_image_0000002158744158](figures/zh-cn_image_0000002158744158.png) |
+      | LINE_MITER_JOIN | 转角类型为尖角 | ![LINE-MITER-JOIN](figures/LINE-MITER-JOIN.png) |
+      | LINE_ROUND_JOIN | 转角类型为圆头 | ![LINE-ROUND-JOIN](figures/LINE-ROUND-JOIN.png) |
+      | LINE_BEVEL_JOIN | 转角类型为平头 | ![LINE-BEVEL-JOIN](figures/LINE-BEVEL-JOIN.png) |
 
 3. 使用OH_Drawing_CanvasAttachPen()接口给Canvas画布设置画笔。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)；另一个是要设置的画笔对象。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 

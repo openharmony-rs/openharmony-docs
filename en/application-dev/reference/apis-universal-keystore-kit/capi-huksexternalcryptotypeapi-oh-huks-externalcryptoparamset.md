@@ -17,7 +17,7 @@ Defines an external cryptographic parameter set.
 
 **Since**: 22
 
-**Related modules**: [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)
+**Related module**: [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)
 
 **Header file**: [native_huks_external_crypto_type.h](capi-native-huks-external-crypto-type-h.md)
 

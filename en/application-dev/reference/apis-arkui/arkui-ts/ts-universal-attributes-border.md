@@ -237,7 +237,7 @@ struct BorderExample {
 }
 ```
 
-![en-us_image_0000001219982705](figures/en-us_image_0000001219982705.gif)
+![borderStyling1](figures/borderStyling1.gif)
 
 ### Example 2: Setting the Border Width Type and Border Color
 

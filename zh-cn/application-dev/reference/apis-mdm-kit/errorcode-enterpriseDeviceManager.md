@@ -133,6 +133,7 @@ The specified user ID is invalid.
 
 1. 检查调用接口中指定的user ID是否是有效的user ID。
 2. 检查调用者user ID和指定设置的user ID是否是同一user ID，DA模式下不允许跨用户设置策略。
+<!--DelEnd-->
 
 ## 9200007 系统服务工作异常
 
@@ -155,7 +156,6 @@ The system ability works abnormally.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试，或者重启设备尝试。
-<!--DelEnd-->
 
 ## 9200008 系统订阅事件无效
 
@@ -1167,6 +1167,43 @@ Failed to install the HAP due to enterprise device verification failure.
 
 确认设备是否在企业设备管理范围内，并通过企业设备管理验证。
 
+## 9201040 系统账号数量已达到最大限制
+
+**错误信息**
+
+The number of accounts reaches the upper limit.
+
+**错误描述**
+
+已创建的系统账号数量达到最大限制。
+
+**可能原因**
+
+当已创建系统账号的数量达到最大值，再创建新系统账号时，会产生此错误码。
+
+**处理步骤**
+
+确认已创建系统账号数量是否达到上限，及时移除不需要保留的系统账号。
+
+## 9201041 系统账号类型受限
+
+**错误信息**
+
+Restricted account.
+
+**错误描述**
+
+当前类型的系统账号不支持此类操作。
+
+**可能原因**
+
+1. 移除系统账号时，移除的是默认系统账号。
+2. 切换系统账号时，不支持切换为此类型系统账号。
+
+**处理步骤**
+
+确认系统账号的类型是否支持此类操作。
+
 ## 9201043 API调用的前置条件未满足
 
 **错误信息**
@@ -1220,3 +1257,21 @@ This permission cannot be disallowed.
 **处理步骤**
 
 检查需要禁用的权限的APL等级是否为normal或system_basic。
+
+## 9201046 已登录系统账号数量达到上限
+
+**错误信息**
+
+The number of signed-in accounts reaches the upper limit.
+
+**错误描述**
+
+当前设备上已登录的系统账号数量达到最大上限。
+
+**可能原因**
+
+当前创建并登录的系统账号已达到最大限制。
+
+**处理步骤**
+
+尝试注销多余的系统账号，并及时移除不再需要保留的系统账号。

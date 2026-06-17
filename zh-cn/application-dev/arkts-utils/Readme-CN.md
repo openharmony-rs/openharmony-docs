@@ -1,8 +1,8 @@
 # ArkTS（方舟编程语言）
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @flyingwolf; @wang_zhaoyong-->
-<!--Designer: @flyingwolf-->
+<!--Owner: @vigavi; @wang_zhaoyong-->
+<!--Designer: @vigavi-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @HelloCrease; @ge-yafang-->
 
@@ -25,7 +25,7 @@
   - [并发概述](concurrency-overview.md)
   - [异步并发](async-concurrency-overview.md)
   - 多线程并发<!--multithread-concurrency-->
-    - [多线程并发概述](multi-thread-concurrency-overview.md)
+    - [多线程并发概述](multi-thread-concurrency-overview.md)<!--RP1--><!--RP1End-->
     - [TaskPool简介](taskpool-introduction.md)
     - [Worker简介](worker-introduction.md)
     - [TaskPool与Worker对比 (TaskPool和Worker)](taskpool-vs-worker.md)
@@ -55,6 +55,7 @@
       - [Worker和宿主线程的即时消息通信](worker-communicates-with-mainthread.md)
       - [Worker同步调用宿主线程的接口](worker-invoke-mainthread-interface.md)
       - [多级Worker间高性能消息通信](worker-postMessage-sendable.md)
+      - [Worker向宿主线程进行消息插队通信](worker-postMessageAtFront.md)
   - 应用多线程开发实践<!--multithread-develop-guide-->
     - [应用多线程开发概述](multithread-develop-overview.md)
     - 耗时任务并发场景<!--time-consuming-task-->

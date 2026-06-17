@@ -472,7 +472,7 @@ enum Input_TouchEventToolType
 | -- | -- |
 | TOOL_TYPE_FINGER = 0 | 表示手指。 |
 | TOOL_TYPE_PEN = 1 | 表示手写笔设备。 |
-| TOOL_TYPE_RUBBER = 2 | 表示橡皮檫类设备。 |
+| TOOL_TYPE_RUBBER = 2 | 表示橡皮擦类设备。 |
 | TOOL_TYPE_BRUSH = 3 | 表示画笔类设备。 |
 | TOOL_TYPE_PENCIL = 4 | 表示铅笔类设备。 |
 | TOOL_TYPE_AIRBRUSH = 5 | 表示喷枪类设备。 |
@@ -863,6 +863,8 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备上生效，在其他设备上调用无效果。
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -1906,7 +1908,7 @@ int64_t OH_Input_GetTouchEventActionTime(const struct Input_TouchEvent* touchEve
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | 返回触屏输入事件发生的时间。 |
+| int64_t | 返回触屏输入事件发生的时间，表示系统启动运行至今逝去的微秒数，单位为微秒（μs）。 |
 
 ### OH_Input_SetTouchEventWindowId()
 
@@ -3146,7 +3148,7 @@ void OH_Input_SetPreKeys(Input_Hotkey *hotkey, int32_t *preKeys, int32_t size)
 | -- | -- |
 | [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | hotkey 快捷键对象的实例。 |
 | int32_t *preKeys | preKeys 修饰键列表。 |
-| int32_t size | 修饰键个数， 取值范围1~2个。 |
+| int32_t size | 修饰键个数，取值范围[1, 2]。 |
 
 ### OH_Input_GetPreKeys()
 
@@ -3893,6 +3895,8 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+**设备行为差异**：该接口仅在PC/2in1设备上正常调用，在其他设备上返回201错误码。
+
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
 **起始版本：** 12
@@ -3953,7 +3957,7 @@ Input_Result OH_Input_QueryMaxTouchPoints(int32_t *count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t *count | 设备支持的最大触屏报点数，count取值范围为0-10，-1表示未知数量。 |
+| int32_t *count | 设备支持的最大触屏报点数，count取值范围为[0, 10]，-1表示未知数量。 |
 
 **返回：**
 
@@ -3975,6 +3979,8 @@ int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEven
 从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备上正常调用，在其他设备上返回201错误码。
 
 **起始版本：** 20
 
@@ -4090,6 +4096,8 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备上正常调用，在其他设备上返回201错误码。
 
 **起始版本：** 20
 
@@ -4823,7 +4831,7 @@ Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int3
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 指定鼠标光标信息对象。可以通过[OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo)查询指定鼠标事件的鼠标光标信息、或通过[OH_Input_GetCursorInfo](#oh_input_getcursorinfo)接口查询当前的鼠标光标信息。|
-| int32_t* sizeLevel | 鼠标光标信息的光标大小档位。取值范围为整数1~7，数值越大则光标越大。应用自定义光标[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)请以实际位图大小为准。|
+| int32_t* sizeLevel | 鼠标光标信息的光标大小档位。取值范围为整数[1, 7]，数值越大则光标越大。应用自定义光标[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)请以实际位图大小为准。|
 
 **返回：**
 
