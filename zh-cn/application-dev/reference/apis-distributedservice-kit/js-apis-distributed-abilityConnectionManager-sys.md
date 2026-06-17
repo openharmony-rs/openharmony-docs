@@ -41,7 +41,7 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'，当协同状态发生变化时触发该事件。   |
 | sessionId | number  | 是    | 表示创建的协同会话ID。    |
-| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | 是    | 表示注册的回调函数，callback返回协同事件的信息。    |
+| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | 是    | 回调函数，返回协同事件的信息。    |
 
 **错误码：**
 
@@ -86,7 +86,7 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'receiveImage'，当接收到对端设备发送的图片时触发该事件。   |
 | sessionId | number  | 是    | 表示创建的协同会话ID。    |
-| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 表示注册的回调函数，用于接收图片接收事件信息。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 是    | 回调函数，用于接收图片接收事件信息。    |
 
 **错误码：**
 

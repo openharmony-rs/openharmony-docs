@@ -95,9 +95,9 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
     import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
- 
+    
     let deviceManager: distributedDeviceManager.DeviceManager;
- 
+    
     function initDmClass(): void {
       try {
         // 创建设备管理器实例
@@ -107,7 +107,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
         hilog.error(0x0000, 'testTag', `createDeviceManager failed. Code: ${error.code}, message: ${error.message}`);
       }
     }
- 
+    
    function getRemoteDeviceId(): string | undefined {
      initDmClass();
      if (typeof deviceManager === 'object' && deviceManager !== null) {
@@ -127,7 +127,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
        return;
      }
    }
- 
+    
    @Entry
    @Component
    struct Index {
@@ -143,7 +143,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
         const connectionParams: Record<string, string> = {
           'newKey1': 'value1',
         };
- 
+    
        // 定义连接选项
         const connectOptions: abilityConnectionManager.ConnectOptions = {
           needSendData: true,
@@ -160,12 +160,9 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
           hilog.error(0x0000, 'testTag', `createAbilityConnectionSession failed. Code: ${err.code}, message: ${err.message}`);
         }
       }
-  
-      build() {
-      }
-    }
-    ```
-
+   }
+   ```
+   
 2. 在设备B上，对于createAbilityConnectionSession接口的调用，可在应用被拉起后触发协同生命周期函数onCollaborate时，在onCollaborate内进行。
 
    ```ts
@@ -210,7 +207,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
         return sessionId;
       }
     }
-    ```
+   ```
 
 ## abilityConnectionManager.destroyAbilityConnectionSession
 
@@ -310,7 +307,7 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;ConnectResult&gt; | 以Promise形式返回连接结果。成功时resolve返回[ConnectResult](#connectresult)（包含isConnected和errorCode字段），失败时reject返回错误对象。 |
+| Promise&lt;ConnectResult&gt; | Promise对象，成功时resolve返回[ConnectResult](#connectresult)（包含isConnected和errorCode字段），失败时reject返回错误对象。 |
 
 **错误码：**
 
@@ -361,9 +358,9 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
 
 **返回值：**
 
-| 类型                  | 说明               |
-| ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。成功接受连接时resolve，接受连接失败时reject。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -535,7 +532,7 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connect'，需通过[abilityConnectionManager.on('connect')](#abilityconnectionmanageronconnect)注册后才能取消。    |
 | sessionId | number  | 是    | 创建的协同会话ID。取值范围是大于100的整数。    |
-| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 要取消的回调函数，不传则取消所有该事件的回调监听。    |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | 否    | 回调函数，不传则取消所有该事件的回调监听。    |
 
 **错误码：**
 
@@ -794,7 +791,7 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
-创建协同会话成功并获得会话ID、调用connect接口建立连接成功后，设备A或设备B可向对端设备发送文本信息。文本信息通过底层分布式通道传输，最大限制为1KB。如需传输更大数据，请使用sendData接口。
+创建协同会话成功并获得会话ID、调用connect接口建立连接成功后，设备A或设备B可向对端设备发送文本信息。文本信息通过底层分布式通道传输，最大限制为1KB。如需传输更大数据，请使用sendData接口。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -841,7 +838,7 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
 
 sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
 
-创建协同会话成功并获得会话ID、应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流。字节流数据适合传输较大数据或二进制数据，与sendMessage相比支持更大数据量。
+创建协同会话成功并获得会话ID、应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流。字节流数据适合传输较大数据或二进制数据，与sendMessage相比支持更大数据量。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
