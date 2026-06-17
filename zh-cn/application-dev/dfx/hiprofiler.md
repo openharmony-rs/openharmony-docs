@@ -229,6 +229,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 > **说明：**
 >
 > fp_unwind参数需要设置为true。
+>
 > js_stack_report参数需要设置为1，否则无法回溯出js栈。
 
 ```shell
@@ -273,6 +274,7 @@ CONFIG
 > **说明：**
 >
 > fp_unwind参数需要设置为false。
+>
 > js_stack_report参数需要设置为1，否则无法回溯出js栈。
 
 ```shell
