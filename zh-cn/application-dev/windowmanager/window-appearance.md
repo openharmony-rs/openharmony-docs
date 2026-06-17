@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
+<!--Owner: @liu_hongxian-->
+<!--Designer: @shinmy; @qinliwen0417-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -51,51 +51,7 @@
      - 子窗的阴影和圆角消失。
      - 子窗矩形区域的左上部分变为透明不可交互，通过点击“Create Test Window”按钮，事件透传到该按钮，创建出绿色的测试窗口。
 
-```ts
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  // ...
-  private windowMaskSub: window.Window | undefined = undefined;
-  // ...
-  private winWidth: number  = 800;
-  private winHeight: number  = 800;
-
-  // ...
-  // 设置子窗windowMask
-  setWindowMask(window: window.Window) {
-    let windowMask: Uint8Array = new Uint8Array(this.winWidth * this.winHeight);
-    for (let i = 0; i < this.winHeight; i++) {
-      for (let k = 0; k < this.winWidth; k++) {
-        if ((i + k) < (this.winHeight + this.winWidth) / 2) {
-          windowMask[i * this.winWidth + k] = 0;
-        } else {
-          windowMask[i * this.winWidth + k] = 255;
-        }
-      }
-    }
-    window.setWindowMaskWithAlpha(windowMask, this.winWidth, this.winHeight);
-  }
-  build() {
-    // ...
-    Button("setWindowMask for Sub Window")
-    .width('90%')
-    .type(ButtonType.Capsule)
-    .margin({
-    top: 10
-    }).fontSize(18)
-    .onClick(() => {
-    if(this.windowMaskSub) {
-      this.setWindowMask(this.windowMaskSub);
-    }
-    })
-  // ...
-  }
-}
-```
+<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
 
 ![setWindowMaskWithAlphaDemo](figures/setWindowMaskWithAlphaDemo.gif)
 
