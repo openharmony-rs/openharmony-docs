@@ -620,6 +620,8 @@
   - 头文件<!--arkui-headerfile-->
     - [drag_and_drop.h](capi-drag-and-drop-h.md)
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)
+    - [image.h](capi-image-h.md)
+    - [image_animator.h](capi-image-animator-h.md)
     - [native_animate.h](capi-native-animate-h.md)
     - [native_dialog.h](capi-native-dialog-h.md)
     - [native_gesture.h](capi-native-gesture-h.md)
@@ -656,6 +658,7 @@
     - [native_type_visual.h](capi-native-type-visual-h.md)
     - [native_xcomponent_key_event.h](capi-native-xcomponent-key-event-h.md)
     - [navigation_router.h](capi-navigation-router-h.md)
+    - [picker.h](capi-picker-h.md)
     - [styled_string.h](capi-styled-string-h.md)
     - [swiper.h](capi-swiper-h.md)
     - [ui_input_event.h](capi-ui-input-event-h.md)
