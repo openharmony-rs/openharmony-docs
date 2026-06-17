@@ -44,7 +44,7 @@ getMainWindow(callback: AsyncCallback&lt;Window&gt;): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                          |
 | -------- | -------------------------------------- | ---- | --------------------------------------------- |
-| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt; | 是   | 回调函数，用于返回当前WindowStage下的主窗口对象。 |
+| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt; | 是   | 回调函数。返回当前WindowStage下的主窗口对象。 |
 
 **错误码：**
 
