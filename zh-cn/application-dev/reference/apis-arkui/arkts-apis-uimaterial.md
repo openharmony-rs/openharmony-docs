@@ -8,7 +8,7 @@
 
 本模块提供系统材质的接口定义。不同的系统材质对应不同的UI效果，包括背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)、材质层滤镜效果[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)。材质对象本身在不同算力的设备上表现存在差异，设备算力的高、中、低档由设备厂商决定，分档效果具体参考[ImmersiveMaterial](#immersivematerial)的描述。
 
-具体指南请参考[沉浸光感](../../ui/arkts-immersive-light-sense.md#沉浸光感)
+开发指导请参考[沉浸光感](../../ui/arkts-immersive-light-sense.md#沉浸光感)指南文档。
 
 **起始版本：** 26.0.0
 
@@ -42,7 +42,7 @@ ImmersiveMaterial的构造函数。
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  options      | [ImmersiveOptions](#immersiveoptions)                      | 否   | 系统材质配置选项，包括材质样式、材质层赋色等。<br/>默认值参考ImmersiveOptions接口各参数的默认值，即{style:uiMaterial.ImmersiveStyle.REGULAR, materialColor:Color.Transparent, colorInvert:false, applyShadow:true, interactive:false, lightEffect:undefined}。    |
+|  options      | [ImmersiveOptions](#immersiveoptions)                    | 否   | 系统材质配置选项，包括材质样式、材质层赋色等。<br/>默认值参考ImmersiveOptions接口各参数的默认值，即{style:uiMaterial.ImmersiveStyle.REGULAR, materialColor:undefined, colorInvert:false, applyShadow:true, interactive:false, lightEffect:undefined}。    |
 
 ## Material
 
