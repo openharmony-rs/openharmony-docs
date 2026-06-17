@@ -541,7 +541,7 @@ HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerCon
 
 | 参数项 | 描述 |
 | -- | -- |
-| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)* config |  指向Perf采样配置结构体[HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)的指针。 配置参数决定了采样的具体行为，如采样频率、目标线程等。|
+| [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)* config |  指向Perf采样配置结构体[HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)的指针。配置参数决定了采样的具体行为，如采样频率、目标线程等。|
 | [OH_HiDebug_ThreadLiteSamplingCallback](capi-hidebug-h.md#oh_hidebug_threadlitesamplingcallback) stacksCallback | 采样结束时的回调函数，用于返回采样结果。采样完成后，系统将调用此函数并将采样数据作为参数传递。 |
 
 **返回：**
