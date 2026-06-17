@@ -482,7 +482,7 @@ struct Index {
 
 ## inputDevice.on('change')<sup>9+</sup>
 
-on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
+on(type: 'change', listener: Callback&lt;DeviceListener&gt;): void
 
 注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。
 
@@ -549,7 +549,7 @@ struct Index {
                 console.error(`Failed to get Device List, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               });
               // 2.监听设备热插拔
-              inputDevice.on("change", (data) => {
+              inputDevice.on('change', (data) => {
                 // 打印日志
                 hilog.info(DOMAIN, 'InputDevice', `Device event info: %{public}s`, JSON.stringify(data));
                 // 获取键盘类型
@@ -644,7 +644,7 @@ struct Index {
 
 ## inputDevice.off('change')<sup>9+</sup>
 
-off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
+off(type: 'change', listener?: Callback&lt;DeviceListener&gt;): void
 
 取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。使用callback异步回调。
 
@@ -690,7 +690,7 @@ struct Index {
 
           try {
             // 监听设备热插拔事件
-            inputDevice.on("change", callback);
+            inputDevice.on('change', callback);
           } catch (error) {
             console.error(`Failed to listen device event , Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -698,7 +698,7 @@ struct Index {
           // 取消指定的监听。
           try {
             // 取消监听设备热插拔事件
-            inputDevice.off("change", callback);
+            inputDevice.off('change', callback);
           } catch (error) {
             console.error(`Failed to cancel listening device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -706,7 +706,7 @@ struct Index {
           // 取消所有监听。
           try {
             // 取消监听设备热插拔事件
-            inputDevice.off("change");
+            inputDevice.off('change');
           } catch (error) {
             console.error(`Failed to cancel all listening device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
