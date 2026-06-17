@@ -27,7 +27,7 @@ typedef struct {...} ArkWeb_JavaScriptObject
 | 名称                                                                                        | 描述 |
 |-------------------------------------------------------------------------------------------| -- |
 | const uint8_t* buffer                                                                     | 注入的JavaScript代码。 |
-| size_t size                                                                               | JavaScript代码长度。 |
+| size_t size                                                                               | JavaScript代码长度。单位：字节 |
 | [ArkWeb_OnJavaScriptCallback](capi-arkweb-type-h.md#arkweb_onjavascriptcallback) callback | JavaScript执行完成的回调。 |
 | void* userData                                                                            | 需要在回调中携带的自定义数据。 |
 
