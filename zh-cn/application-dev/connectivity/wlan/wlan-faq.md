@@ -11,9 +11,11 @@
 
 不需要。
 
-原理：wifiManager.getLinkedInfo() 仅获取当前已连接的 Wi-Fi 基础信息（如 SSID、BSSID、信号强度等）。由于设备已经处于连接状态，系统认为用户已知晓当前网络环境，因此不涉及基于 Wi-Fi 扫描的位置隐私保护逻辑。
-对比：只有在调用 getScanResult() 进行主动扫描时，才需要申请 ohos.permission.LOCATION 权限，因为扫描结果可用于估算用户物理位置。
-注意：虽然获取 SSID 不需要位置权限，但如果需要获取设备 MAC 地址，则需根据策略申请 ohos.permission.GET_WIFI_LOCAL_MAC（物理地址）或使用随机 MAC，但这两者均与位置权限无关。
+wifiManager.getLinkedInfo()仅获取当前已连接的Wi-Fi基础信息（如 SSID、BSSID、信号强度等）。由于设备已经处于连接状态，系统认为用户已知晓当前网络环境，因此不涉及基于 Wi-Fi 扫描的位置隐私保护逻辑。
+
+只有在调用 getScanResult() 进行主动扫描时，才需要申请 ohos.permission.LOCATION 权限，因为扫描结果可用于估算用户物理位置。
+
+虽然获取 SSID 不需要位置权限，但如果需要获取设备 MAC 地址，则需根据策略申请 ohos.permission.GET_WIFI_LOCAL_MAC（物理地址）或使用随机 MAC，但这两者均与位置权限无关。
 
 ## App在使用addCandidateConfig连接WiFi时偶现错误码201，需明确错误原因及修复方式以优化用户体验
 需要权限： ohos.permission.SET_WIFI_INFO。
