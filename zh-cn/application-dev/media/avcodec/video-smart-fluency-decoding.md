@@ -29,7 +29,7 @@
 
 ## 参数说明
 
-本能力需主动下发配置才可以生效。通过在[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)中配置以下键值对来精确控制行为。
+本能力需主动下发配置才可以生效。通过在[OH_AVFormat](../../reference/apis-avcodec-kit/capi-core-oh-avformat.md)中配置以下键值对来精确控制行为。
 
 1. **OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE（模式配置）**
    - 类型：`int32_t`
