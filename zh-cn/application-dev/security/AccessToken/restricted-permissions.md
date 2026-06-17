@@ -1358,7 +1358,6 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：26.0.0
 
-
 ## ohos.permission.ACCESS_DIGITAL_IDENTITY
 
 允许应用使用数字身份服务导入数字凭证。
