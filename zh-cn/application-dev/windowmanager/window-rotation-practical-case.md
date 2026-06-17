@@ -1,4 +1,4 @@
-# 窗口旋转场景实例
+# 窗口旋转实践案例
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
