@@ -334,6 +334,8 @@ SVG路径描述规范支持的命令如下：
 
 通过commands、fillOpacity、stroke属性分别绘制路径、透明度、边框颜色。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -413,11 +415,93 @@ struct PathExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Text, Flex, Path, Color, FlexAlign, Margin, ColumnOptions, FlexOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PathExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text('Straight line')
+        .fontSize(11)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+      Path()
+        .width('600px')
+        .height('10px')
+        .commands('M0 0 L600 0')
+        .stroke(Color.Black)
+        .strokeWidth(3)
+
+      Text('Straight line graph')
+        .fontSize(11)
+        .fontColor(0xCCCCCC)
+        .width('90%')
+      Flex({ justifyContent: FlexAlign.SpaceBetween } as FlexOptions) {
+        Path()
+          .width('210px')
+          .height('310px')
+          .commands('M100 0 L200 240 L0 240 Z')
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+        Path()
+          .width('210px')
+          .height('310px')
+          .commands('M0 0 H200 V200 H0 Z')
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+        Path()
+          .width('210px')
+          .height('310px')
+          .commands('M100 0 L0 100 L50 200 L150 200 L200 100 Z')
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+      }.width('95%')
+
+      Text('Curve graphics').fontSize(11).fontColor(0xCCCCCC).width('90%')
+      Flex({ justifyContent: FlexAlign.SpaceBetween } as FlexOptions) {
+        Path()
+          .width('250px')
+          .height('310px')
+          .commands("M0 300 S100 0 240 300 Z")
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+        Path()
+          .width('210px')
+          .height('310px')
+          .commands('M0 150 C0 100 140 0 200 150 L100 300 Z')
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+        Path()
+          .width('210px')
+          .height('310px')
+          .commands('M0 100 A30 20 20 0 0 200 100 Z')
+          .fillOpacity(0)
+          .stroke(Color.Black)
+          .strokeWidth(3)
+      }.width('95%')
+    }.width('100%')
+    .margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![path1](figures/path1.png)
 
 ### 示例2（使用不同参数类型绘制路径）
 
 width、height、commands属性分别使用不同的长度类型绘制图形。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -450,17 +534,90 @@ struct PathTypeExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Path, Color, PathOptions, ColumnOptions, Margin, $r } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PathTypeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Path({ width: '600px', height: '10px' } as PathOptions)
+        .commands('M0 0 L600 0')
+        .fillOpacity(0)
+        .stroke(Color.Black)
+        .strokeWidth(3)
+      Path({ width: 200, height: 100 } as PathOptions)
+        .commands('M200 0 H400 V200 H200 Z')
+        .fillOpacity(0)
+        .stroke(Color.Black)
+        .strokeWidth(3)
+      Path({ width: $r('app.string.PathWidth'), height: $r('app.string.PathHeight') } as PathOptions)
+        .commands($r('app.string.PathCommands'))
+        .fillOpacity(0)
+        .stroke(Color.Black)
+        .strokeWidth(3)
+    }.width('100%')
+    .margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![pathDemo2](figures/pathDemo2.png)
 
 ### 示例3（使用attributeModifier动态设置Path组件的属性）
 
 以下示例展示了如何使用attributeModifier动态设置Path组件的commands、fill、fillOpacity、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeLineJoin、strokeMiterLimit、strokeOpacity、strokeWidth和antiAlias属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 class MyPathModifier implements AttributeModifier<PathAttribute> {
   applyNormalAttribute(instance: PathAttribute): void {
     // 使用字符串commands绘制一个三角形，填充颜色#707070，填充透明度0.5，边框颜色#2787D9，边框间隙[20]，向左偏移15，线条两端样式为半圆，拐角样式使用尖角连接路径段，斜接长度与边框宽度比值的极限值为5，边框透明度0.5，边框宽度10，抗锯齿开启
+    instance.commands('M100 0 L200 240 L0 240 Z')
+    instance.fill("#707070")
+    instance.fillOpacity(0.5)
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeLineJoin(LineJoinStyle.Miter)
+    instance.strokeMiterLimit(5)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct PathModifierDemo {
+  @State modifier: MyPathModifier = new MyPathModifier()
+
+  build() {
+    Column() {
+      Path()
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Path, PathAttribute, AttributeModifier, LineCapStyle, LineJoinStyle, Offset } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyPathModifier implements AttributeModifier<PathAttribute> {
+  applyNormalAttribute(instance: PathAttribute): void {
     instance.commands('M100 0 L200 240 L0 240 Z')
     instance.fill("#707070")
     instance.fillOpacity(0.5)
