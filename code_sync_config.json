@@ -4834,7 +4834,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest1.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":71,
 						"name":"EventDecoratorTest1",
 						"start_line":15
 					}
@@ -4844,7 +4844,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest2.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":57,
 						"name":"EventDecoratorTest2",
 						"start_line":15
 					}
@@ -10529,7 +10529,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":46,
 						"name":"link_usage",
 						"start_line":16
 					}
@@ -10539,7 +10539,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage2.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":47,
 						"name":"link_usage_two",
 						"start_line":16
 					}
@@ -10569,7 +10569,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesMapType.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":84,
 						"name":"link_map_type",
 						"start_line":16
 					}
@@ -10579,7 +10579,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesSetType.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":75,
 						"name":"link_set_type",
 						"start_line":16
 					}
@@ -10589,7 +10589,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesDateType.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":76,
 						"name":"link_data_type",
 						"start_line":16
 					}
@@ -10599,7 +10599,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UseWatchToChangeLocalVariables.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":68,
 						"name":"link_watch",
 						"start_line":16
 					}
@@ -10609,7 +10609,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingUnionTypes.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":73,
 						"name":"link_union_type",
 						"start_line":16
 					}
@@ -13608,7 +13608,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/RealizeObservation.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":71,
 						"name":"Realize_Observation",
 						"start_line":15
 					}
@@ -13618,7 +13618,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/ObserveChanges.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":44,
 						"name":"Observe_Changes",
 						"start_line":15
 					}
@@ -13628,7 +13628,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/InheritedChanges.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":43,
 						"name":"Inherited_Changes",
 						"start_line":15
 					}
@@ -13638,7 +13638,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/StaticAttribute.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":38,
 						"name":"Static_Attribute",
 						"start_line":15
 					}
@@ -13648,7 +13648,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/UiRefreshCannotTriggered.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":48,
 						"name":"UiRefresh_CannotTriggered",
 						"start_line":15
 					}
@@ -13658,7 +13658,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/UseMixture.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":63,
 						"name":"Use_Mixture",
 						"start_line":15
 					}
@@ -13668,7 +13668,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":69,
 						"name":"Inheritance_Mixture",
 						"start_line":15
 					}
@@ -13678,7 +13678,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/NestedClass.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":74,
 						"name":"Nested_Class",
 						"start_line":15
 					}
@@ -13688,7 +13688,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/InheritanceClass.ets",
 				"functions":[
 					{
-						"end_line":92,
+						"end_line":98,
 						"name":"Inheritance_Class",
 						"start_line":15
 					}
@@ -13698,7 +13698,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationFoundation.ets",
 				"functions":[
 					{
-						"end_line":114,
+						"end_line":138,
 						"name":"Decoration_Foundation",
 						"start_line":15
 					}
@@ -13708,7 +13708,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorativeObject.ets",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":85,
 						"name":"Decorative_Object",
 						"start_line":15
 					}
@@ -13718,7 +13718,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationMap.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":76,
 						"name":"Decoration_Map",
 						"start_line":15
 					}
@@ -13728,7 +13728,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationSet.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":67,
 						"name":"Decoration_Set",
 						"start_line":15
 					}
@@ -13738,7 +13738,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorateDate.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":63,
 						"name":"Decorate_Date",
 						"start_line":15
 					}
@@ -13748,7 +13748,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/SerializationAndDeserialization.ets",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":114,
 						"name":"Serialization_And_Deserialization",
 						"start_line":15
 					}
@@ -13758,7 +13758,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/RouterIndex.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":56,
 						"name":"Router_Index",
 						"start_line":15
 					}
@@ -13768,7 +13768,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/ChildPage.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":36,
 						"name":"Child_Page",
 						"start_line":15
 					}
@@ -15830,7 +15830,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":51,
 						"name":"NewType",
 						"start_line":15
 					}
@@ -16749,7 +16749,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":52,
 						"name":"count_modifier",
 						"start_line":15
 					}
@@ -16769,7 +16769,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets",
 				"functions":[
 					{
-						"end_line":116,
+						"end_line":128,
 						"name":"parent_component",
 						"start_line":16
 					}
@@ -16779,7 +16779,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":58,
 						"name":"use_property_name",
 						"start_line":15
 					}
@@ -16947,7 +16947,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV1V2Recommend.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":56,
 						"name":"state_mixed_scene_js_v1_v2_recommend",
 						"start_line":15
 					}
@@ -16961,7 +16961,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV2V1Recommend.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":60,
 						"name":"state_mixed_scene_js_v2_v1_recommend",
 						"start_line":15
 					}
@@ -16975,7 +16975,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV1V2.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":69,
 						"name":"state_mixed_scene_observed_class_v1_v2",
 						"start_line":15
 					}
@@ -16985,7 +16985,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV2V1.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":69,
 						"name":"state_mixed_scene_observed_class_v2_v1",
 						"start_line":15
 					}
@@ -16995,7 +16995,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV1V2Recommend.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":58,
 						"name":"state_mixed_scene_built_type_v1_v2_recommend",
 						"start_line":15
 					}
@@ -17009,7 +17009,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV2V1Recommend.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":56,
 						"name":"state_mixed_scene_built_type_v2_v1_recommend",
 						"start_line":15
 					}
@@ -17023,7 +17023,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneTwoBitArrayV1V2.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":84,
 						"name":"state_mixed_scene_two_bit_array_v1_v2",
 						"start_line":15
 					}
@@ -17033,7 +17033,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneTwoBitArrayV2V1.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":85,
 						"name":"state_mixed_scene_two_bit_array_v2_v1",
 						"start_line":15
 					}
@@ -17043,7 +17043,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneNestedTypeV1V2.ets",
 				"functions":[
 					{
-						"end_line":133,
+						"end_line":147,
 						"name":"state_mixed_scene_nested_type_v1_v2",
 						"start_line":15
 					}
@@ -17053,7 +17053,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneNestedTypeV2V1.ets",
 				"functions":[
 					{
-						"end_line":128,
+						"end_line":141,
 						"name":"state_mixed_scene_nested_type_v2_v1",
 						"start_line":15
 					}
@@ -17223,14 +17223,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":35,
 						"name":"HelloComponent_Hello",
 						"start_line":15
 					},
 					{
-						"end_line":48,
+						"end_line":54,
 						"name":"ArkUI_message",
-						"start_line":33
+						"start_line":36
 					}
 				]
 			},
@@ -17292,7 +17292,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParameterSpecification.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":46,
 						"name":"Parameter_specification",
 						"start_line":15
 					}
@@ -17302,7 +17302,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentFunction.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":56,
 						"name":"Function_passing",
 						"start_line":15
 					}
@@ -17312,7 +17312,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentBuild.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":37,
 						"name":"build_function",
 						"start_line":15
 					}
@@ -17322,7 +17322,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuilderMethod.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":43,
 						"name":"Builder_decoration",
 						"start_line":16
 					}
@@ -17356,7 +17356,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentStyle.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":40,
 						"name":"Custom_style",
 						"start_line":15
 					}
@@ -17461,7 +17461,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/TwowayBinding.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":53,
 						"name":"Twoway_Binding",
 						"start_line":16
 					}
@@ -17471,7 +17471,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/NoTwowayBinding.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":53,
 						"name":"No_Twoway_Binding",
 						"start_line":16
 					}
@@ -17481,7 +17481,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":93,
 						"name":"Decorative_Array",
 						"start_line":16
 					}
@@ -17491,7 +17491,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":96,
 						"name":"Decorative_Date",
 						"start_line":16
 					}
@@ -17501,7 +17501,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":122,
 						"name":"Decorative_Map",
 						"start_line":16
 					}
@@ -17511,7 +17511,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":108,
 						"name":"Decorative_Set",
 						"start_line":16
 					}
@@ -17521,7 +17521,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DragDrop.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":54,
 						"name":"Drag_Drop",
 						"start_line":16
 					}
@@ -17531,7 +17531,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":82,
 						"name":"Decorative_Complex",
 						"start_line":16
 					}
@@ -17541,7 +17541,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/ProviderSame.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":59,
 						"name":"Provider_Same",
 						"start_line":16
 					}
@@ -17551,7 +17551,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":76,
 						"name":"Decorative_Initialized",
 						"start_line":16
 					}
@@ -17561,7 +17561,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/BuilderNode.ets",
 				"functions":[
 					{
-						"end_line":132,
+						"end_line":147,
 						"name":"Builder_Node",
 						"start_line":15
 					}
@@ -18500,7 +18500,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets",
 				"functions":[
 					{
-						"end_line":86,
+						"end_line":88,
 						"name":"nested_custom_components",
 						"start_line":16
 					}
@@ -19975,7 +19975,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page1.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":42,
 						"name":"UI_will_not_refresh",
 						"start_line":15
 					}
@@ -19985,7 +19985,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page2.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":52,
 						"name":"MakeObserved_only_applies_to_input_parameters",
 						"start_line":15
 					}
@@ -20005,7 +20005,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":73,
 						"name":"function_threadGetData",
 						"start_line":15
 					}
@@ -20065,7 +20065,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page9.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":46,
 						"name":"makeObserved_Component",
 						"start_line":15
 					}
@@ -20075,7 +20075,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page10.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":50,
 						"name":"getTarget_observedObj",
 						"start_line":15
 					}
@@ -20880,7 +20880,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ComponentBuilderModify.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":61,
 						"name":"component_builder_modify",
 						"start_line":15
 					}
@@ -20890,7 +20890,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":46,
 						"name":"builder_make_binding",
 						"start_line":15
 					}
@@ -20900,7 +20900,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ReferencePassing.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":63,
 						"name":"pass_by_reference_one",
 						"start_line":30
 					}
@@ -20910,7 +20910,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ParentRefSync.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":80,
 						"name":"pass_by_reference_two",
 						"start_line":30
 					}
@@ -20920,7 +20920,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderThisDiff.ets",
 				"functions":[
 					{
-						"end_line":102,
+						"end_line":124,
 						"name":"pass_by_reference_three",
 						"start_line":30
 					}
@@ -20930,7 +20930,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ValuePassing.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":55,
 						"name":"pass_by_value",
 						"start_line":30
 					}
@@ -20940,7 +20940,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/V2LocalBuilderUpdate.ets",
 				"functions":[
 					{
-						"end_line":129,
+						"end_line":112,
 						"name":"LocalBuilder_in_V2_use",
 						"start_line":30
 					}
@@ -21429,7 +21429,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/ObservationChangeInheritance.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":81,
 						"name":"Observation_ChangeInheritance",
 						"start_line":15
 					}
@@ -21443,7 +21443,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/ReadOnlyVariable.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":66,
 						"name":"variables_decorated_ObjectLink_read_only",
 						"start_line":15
 					}
@@ -21473,7 +21473,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/TwoDimensionalArray.ets",
 				"functions":[
 					{
-						"end_line":81,
+						"end_line":88,
 						"name":"Two_dimensional_array_example",
 						"start_line":16
 					}
@@ -21523,7 +21523,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/BasicNesting.ets",
 				"functions":[
 					{
-						"end_line":118,
+						"end_line":134,
 						"name":"Basic_nesting",
 						"start_line":15
 					}
@@ -21533,7 +21533,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexMethodsNesting.ets",
 				"functions":[
 					{
-						"end_line":83,
+						"end_line":85,
 						"name":"Complex_Methods_Nesting",
 						"start_line":15
 					}
@@ -21543,7 +21543,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexNestingComplete.ets",
 				"functions":[
 					{
-						"end_line":122,
+						"end_line":131,
 						"name":"Complex_nested_observation_levels",
 						"start_line":15
 					}
@@ -21553,7 +21553,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DifferencesPropObjectLink.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":73,
 						"name":"Differences_Prop_ObjectLink",
 						"start_line":15
 					}
@@ -21563,7 +21563,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ObjectLinkDataSourceUpdate.ets",
 				"functions":[
 					{
-						"end_line":93,
+						"end_line":100,
 						"name":"ObjectLink_Data_source_update_timing",
 						"start_line":15
 					}
@@ -21587,7 +21587,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/StateToObjectlink.ets",
 				"functions":[
 					{
-						"end_line":56,
+						"end_line":58,
 						"name":"State_To_Objectlink",
 						"start_line":15
 					}
@@ -22557,7 +22557,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":41,
 						"name":"wrapbuilder_page_two",
 						"start_line":15
 					}
@@ -22567,7 +22567,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":55,
 						"name":"wrapbuilder_page_three",
 						"start_line":15
 					}
@@ -22577,7 +22577,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":51,
 						"name":"wrapbuilder_page_four",
 						"start_line":15
 					}
@@ -22587,7 +22587,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":57,
 						"name":"wrapbuilder_page_five",
 						"start_line":15
 					}
@@ -22987,7 +22987,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":66,
 						"name":"custom_component_use",
 						"start_line":15
 					}
@@ -22997,7 +22997,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":60,
 						"name":"ObservedV2_Class_User",
 						"start_line":15
 					}
@@ -23007,7 +23007,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputingPropertyResolution.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":68,
 						"name":"Computing_Property_Resolution",
 						"start_line":15
 					}
@@ -23017,7 +23017,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets",
 				"functions":[
 					{
-						"end_line":86,
+						"end_line":95,
 						"name":"Computed_Init_Param",
 						"start_line":16
 					}
@@ -23167,17 +23167,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/MyComponent.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":66,
 						"name":"once_param_componentV2_pair",
-						"start_line":29
+						"start_line":33
 					},
 					{
-						"end_line":58,
+						"end_line":67,
 						"name":"once_param_order_irrelevant",
-						"start_line":30
+						"start_line":34
 					},
 					{
-						"end_line":60,
+						"end_line":68,
 						"name":"once_init_sync_noMore",
 						"start_line":16
 					}
@@ -23187,7 +23187,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewOnce/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":88,
 						"name":"once_param_modify_init",
 						"start_line":16
 					}
@@ -23508,7 +23508,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/pages/UiEnvironment.ets",
 				"functions":[
 					{
-						"end_line":34,
+						"end_line":38,
 						"name":"ui_Environment",
 						"start_line":16
 					}
@@ -23969,7 +23969,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/AppStorageV2.ets",
 				"functions":[
 					{
-						"end_line":103,
+						"end_line":119,
 						"name":"appStorageV2_index",
 						"start_line":15
 					}
@@ -23989,7 +23989,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets",
 				"functions":[
 					{
-						"end_line":66,
+						"end_line":75,
 						"name":"appStorageV2_pageOne",
 						"start_line":15
 					}
@@ -23999,7 +23999,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":67,
 						"name":"appStorageV2_pageTwo",
 						"start_line":15
 					}
@@ -24018,7 +24018,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetObject.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":48,
 						"name":"Changes_to_the_content_in_the_original",
 						"start_line":15
 					}
@@ -24033,7 +24033,7 @@
 						"start_line":17
 					},
 					{
-						"end_line":59,
+						"end_line":72,
 						"name":"nonObservedClass_out",
 						"start_line":15
 					}
@@ -24043,7 +24043,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetNoChange.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":47,
 						"name":"nonObservedObject_1",
 						"start_line":15
 					}
@@ -24053,7 +24053,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetAgentObject.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":46,
 						"name":"observedObject_globalObservedObject",
 						"start_line":15
 					}
@@ -24063,7 +24063,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetBeforeAgent.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":61,
 						"name":"NonObservedClass_outs",
 						"start_line":15
 					}
@@ -24082,7 +24082,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/WatchDecoratorLimitationsV1.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":72,
 						"name":"monitor_watch_decorator_limitations_v1",
 						"start_line":15
 					}
@@ -24092,7 +24092,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorMultiWatchCompV2.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":47,
 						"name":"monitor_decorator_multi_watch_comp_v2",
 						"start_line":15
 					}
@@ -24102,7 +24102,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceCompV2.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":64,
 						"name":"monitor_decorator_object_trace_comp_v2",
 						"start_line":15
 					}
@@ -24112,7 +24112,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorMultiWatchObservedV2.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":84,
 						"name":"monitor_decorator_multi_watch_observed_v2",
 						"start_line":15
 					}
@@ -24122,7 +24122,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceObservedV2.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":51,
 						"name":"monitor_decorator_object_trace_observed_v2",
 						"start_line":15
 					}
@@ -24132,7 +24132,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorInheritanceSupportObservedV2.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":63,
 						"name":"monitor_decorator_inheritance_support_observed_v2",
 						"start_line":15
 					}
@@ -24142,7 +24142,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorArraySupport.ets",
 				"functions":[
 					{
-						"end_line":113,
+						"end_line":124,
 						"name":"monitor_decorator_array_support",
 						"start_line":15
 					}
@@ -24152,7 +24152,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectSupport.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":79,
 						"name":"monitor_decorator_object_support",
 						"start_line":15
 					}
@@ -24162,7 +24162,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorLastWrite.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":57,
 						"name":"monitor_decorator_last_write",
 						"start_line":15
 					}
@@ -24172,7 +24172,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationLastListenerWins.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":50,
 						"name":"monitor_limitation_last_listener_wins",
 						"start_line":15
 					}
@@ -24182,7 +24182,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationMultiplePathParams.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":67,
 						"name":"monitor_limitation_multiple_path_params",
 						"start_line":15
 					}
@@ -24192,7 +24192,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationParameterStringConstraint.ets",
 				"functions":[
 					{
-						"end_line":93,
+						"end_line":108,
 						"name":"monitor_limitation_parameter_string_constraint",
 						"start_line":15
 					}
@@ -24202,7 +24202,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorSceneDeepAttributeChanges.ets",
 				"functions":[
 					{
-						"end_line":80,
+						"end_line":84,
 						"name":"monitor_scene_deep_attribute_changes",
 						"start_line":30
 					}
@@ -24212,7 +24212,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemEffectTimeCompV2.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":99,
 						"name":"monitor_problem_effect_time_comp_v2",
 						"start_line":15
 					}
@@ -24222,7 +24222,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemEffectTimeClass.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":54,
 						"name":"monitor_problem_effect_time_class",
 						"start_line":15
 					}
@@ -24232,7 +24232,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassDelayed.ets",
 				"functions":[
 					{
-						"end_line":96,
+						"end_line":104,
 						"name":"monitor_problem_class_delayed",
 						"start_line":15
 					}
@@ -24242,7 +24242,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets",
 				"functions":[
 					{
-						"end_line":96,
+						"end_line":101,
 						"name":"monitor_problem_class_failure_time_set_comp",
 						"start_line":15
 					}
@@ -24252,7 +24252,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeEmptyObject.ets",
 				"functions":[
 					{
-						"end_line":96,
+						"end_line":101,
 						"name":"monitor_problem_class_failure_time_empty_object",
 						"start_line":15
 					}
@@ -24262,7 +24262,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamCounterExample1.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":50,
 						"name":"monitor_problem_param_counter_example_1",
 						"start_line":15
 					}
@@ -24272,7 +24272,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamPositiveExample1.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":49,
 						"name":"monitor_problem_param_positive_example_1",
 						"start_line":15
 					}
@@ -24292,7 +24292,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamPositiveExample2.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":51,
 						"name":"monitor_problem_param_positive_example_2",
 						"start_line":15
 					}
@@ -24302,7 +24302,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamStateVariables.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":45,
 						"name":"monitor_problem_param_state_variables",
 						"start_line":15
 					}
@@ -24312,7 +24312,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemStateChangeUseAddMonitor.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":65,
 						"name":"monitor_problem_state_change_use_addMonitor",
 						"start_line":15
 					}
@@ -24322,7 +24322,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportObjectProperty.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":64,
 						"name":"monitor_wildcard_support_object_property",
 						"start_line":15
 					}
@@ -24332,7 +24332,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportNestedObject.ets",
 				"functions":[
 					{
-						"end_line":96,
+						"end_line":108,
 						"name":"monitor_wildcard_support_nested_object",
 						"start_line":15
 					}
@@ -24342,7 +24342,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportArray.ets",
 				"functions":[
 					{
-						"end_line":138,
+						"end_line":157,
 						"name":"monitor_wildcard_support_array",
 						"start_line":15
 					}
@@ -24352,7 +24352,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportDate.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":63,
 						"name":"monitor_wildcard_support_date",
 						"start_line":15
 					}
@@ -24362,7 +24362,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportMap.ets",
 				"functions":[
 					{
-						"end_line":93,
+						"end_line":112,
 						"name":"monitor_wildcard_support_map",
 						"start_line":15
 					}
@@ -24372,7 +24372,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportSet.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":85,
 						"name":"monitor_wildcard_support_set",
 						"start_line":15
 					}
@@ -24387,7 +24387,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTwo.ets",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":90,
 						"name":"appstorage_page_two",
 						"start_line":15
 					}
@@ -24397,7 +24397,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":88,
 						"name":"appstorage_page_three",
 						"start_line":15
 					}
@@ -24407,7 +24407,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFour.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":57,
 						"name":"appstorage_page_four",
 						"start_line":15
 					}
@@ -24417,7 +24417,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFive.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":71,
 						"name":"appstorage_page_five",
 						"start_line":15
 					}
@@ -24427,7 +24427,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSix.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":62,
 						"name":"appstorage_page_six",
 						"start_line":15
 					}
@@ -24467,7 +24467,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":53,
 						"name":"appstorage_page_ten",
 						"start_line":15
 					}
@@ -24477,7 +24477,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":67,
 						"name":"appstorage_Index",
 						"start_line":16
 					}
@@ -24487,7 +24487,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Page.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":71,
 						"name":"appstorage_Page",
 						"start_line":16
 					}
@@ -24497,7 +24497,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageOne.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":60,
 						"name":"appstorage_page_one",
 						"start_line":15
 					}
@@ -24682,7 +24682,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageOneMessageStorage.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":45,
 						"name":"Persistent_page_one",
 						"start_line":15
 					}
@@ -24707,7 +24707,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFourMessageChange.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":62,
 						"name":"Persistent_page_four",
 						"start_line":15
 					}
@@ -24717,7 +24717,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFivePersistedDate.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":75,
 						"name":"Persistent_page_five",
 						"start_line":15
 					}
@@ -24727,7 +24727,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSixPersistedMap.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":64,
 						"name":"Persistent_page_six",
 						"start_line":15
 					}
@@ -24737,7 +24737,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSevenPersistedSet.ets",
 				"functions":[
 					{
-						"end_line":83,
+						"end_line":85,
 						"name":"Persistent_page_seven",
 						"start_line":15
 					}
@@ -25463,7 +25463,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBidirectionalSync.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":69,
 						"name":"provide_consume_bidirectional_sync",
 						"start_line":15
 					}
@@ -25473,7 +25473,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeMapSync.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":89,
 						"name":"provide_consume_map_sync",
 						"start_line":15
 					}
@@ -25483,7 +25483,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeSetSync.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":80,
 						"name":"provide_consume_set_sync",
 						"start_line":15
 					}
@@ -25493,7 +25493,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDateSync.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":75,
 						"name":"provide_consume_date_sync",
 						"start_line":15
 					}
@@ -25503,7 +25503,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeFederation.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":61,
 						"name":"provide_consume_Provide_Consume",
 						"start_line":15
 					}
@@ -25518,9 +25518,9 @@
 						"start_line":15
 					},
 					{
-						"end_line":77,
+						"end_line":85,
 						"name":"Provide_Consume_Provide_AllowOverride2",
-						"start_line":28
+						"start_line":29
 					}
 				]
 			},
@@ -25533,9 +25533,9 @@
 						"start_line":15
 					},
 					{
-						"end_line":93,
+						"end_line":117,
 						"name":"Provide_Consume_Decorated_Variable2",
-						"start_line":28
+						"start_line":29
 					}
 				]
 			},
@@ -25543,7 +25543,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeTwoWay.ets",
 				"functions":[
 					{
-						"end_line":149,
+						"end_line":159,
 						"name":"provide_consume_Two_Way",
 						"start_line":15
 					}
@@ -25553,7 +25553,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideError.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":78,
 						"name":"provide_consume_Two_Way",
 						"start_line":15
 					}
@@ -25577,7 +25577,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeArraySync.ets",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":79,
 						"name":"provide_consume_array_sync",
 						"start_line":15
 					}
@@ -25592,7 +25592,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":68,
 						"name":"Index_start",
 						"start_line":15
 					}
@@ -25602,7 +25602,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass2.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":90,
 						"name":"AddLog_start",
 						"start_line":15
 					}
@@ -26040,7 +26040,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamDecoratorLimitations.ets",
 				"functions":[
 					{
-						"end_line":89,
+						"end_line":97,
 						"name":"Param_Decorator_Limitations",
 						"start_line":30
 					}
@@ -26050,7 +26050,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeVariable.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":90,
 						"name":"Param_Observe_Change_Variable",
 						"start_line":30
 					}
@@ -26060,7 +26060,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeClass.ets",
 				"functions":[
 					{
-						"end_line":91,
+						"end_line":105,
 						"name":"Param_Observe_Change_Class",
 						"start_line":30
 					}
@@ -26070,7 +26070,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeArray.ets",
 				"functions":[
 					{
-						"end_line":81,
+						"end_line":107,
 						"name":"Param_Observe_Change_Array",
 						"start_line":30
 					}
@@ -26080,7 +26080,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeNestedClass.ets",
 				"functions":[
 					{
-						"end_line":116,
+						"end_line":140,
 						"name":"Param_Observe_Change_Nested_Class",
 						"start_line":30
 					}
@@ -26090,7 +26090,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneParentToChild.ets",
 				"functions":[
 					{
-						"end_line":103,
+						"end_line":114,
 						"name":"Param_Use_Scene_Parent_To_Child",
 						"start_line":30
 					}
@@ -26100,7 +26100,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneArray.ets",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":93,
 						"name":"Param_Use_Scene_Array",
 						"start_line":30
 					}
@@ -26110,7 +26110,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneDate.ets",
 				"functions":[
 					{
-						"end_line":83,
+						"end_line":89,
 						"name":"Param_Use_Scene_Date",
 						"start_line":30
 					}
@@ -26120,7 +26120,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneMap.ets",
 				"functions":[
 					{
-						"end_line":83,
+						"end_line":103,
 						"name":"Param_Use_Scene_Map",
 						"start_line":30
 					}
@@ -26130,7 +26130,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneSet.ets",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":93,
 						"name":"Param_Use_Scene_Set",
 						"start_line":30
 					}
@@ -26140,7 +26140,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneUnite.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":64,
 						"name":"Param_Use_Scene_Unite",
 						"start_line":30
 					}
@@ -26165,7 +26165,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/page/Page1.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":96,
 						"name":"Persistence_Use_Case_Data_Page",
 						"start_line":16
 					}
@@ -26175,7 +26175,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/page/Page2.ets",
 				"functions":[
 					{
-						"end_line":66,
+						"end_line":72,
 						"name":"Persistence_Use_Case_Data_Page",
 						"start_line":16
 					}
@@ -26185,7 +26185,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2GlobalConnect.ets",
 				"functions":[
 					{
-						"end_line":160,
+						"end_line":172,
 						"name":"persistence_v2_global_connect",
 						"start_line":15
 					}
@@ -26195,7 +26195,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets",
 				"functions":[
 					{
-						"end_line":100,
+						"end_line":104,
 						"name":"persistence_v2_module_connect_storage_one",
 						"start_line":16
 					}
@@ -26205,7 +26205,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":74,
 						"name":"persistence_v2_connect_migration_one",
 						"start_line":16
 					}
@@ -26215,7 +26215,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration2.ets",
 				"functions":[
 					{
-						"end_line":94,
+						"end_line":96,
 						"name":"persistence_v2_connect_migration_two",
 						"start_line":16
 					}
@@ -26225,7 +26225,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/demo/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":72,
 						"name":"persistence_v2_module_connect_storage_two",
 						"start_line":16
 					}
@@ -26235,7 +26235,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelCollectionsArray.ets",
 				"functions":[
 					{
-						"end_line":97,
+						"end_line":108,
 						"name":"top_level_collections_array",
 						"start_line":16
 					}
@@ -26245,7 +26245,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassA.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":70,
 						"name":"top_level_array_classa",
 						"start_line":16
 					}
@@ -26255,7 +26255,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelDate.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":44,
 						"name":"top_level_date",
 						"start_line":16
 					}
@@ -26275,7 +26275,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/CircularReferenceOfObject.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":76,
 						"name":"circular_reference_of_object",
 						"start_line":16
 					}
@@ -26285,7 +26285,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassAAPIs.ets",
 				"functions":[
 					{
-						"end_line":106,
+						"end_line":123,
 						"name":"top_level_array_classa_apis",
 						"start_line":16
 					}
@@ -26295,7 +26295,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2NotifyOnError.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":86,
 						"name":"persistence_v2_notifyOnError",
 						"start_line":16
 					}
@@ -26305,7 +26305,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ChangeDataStructure.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":64,
 						"name":"persistence_v2_change_data_structure",
 						"start_line":16
 					}
@@ -26868,7 +26868,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageOneDoubleSYN.ets",
 				"functions":[
 					{
-						"end_line":80,
+						"end_line":90,
 						"name":"localStorage_page_one_double_syn",
 						"start_line":16
 					}
@@ -26882,7 +26882,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoWaySYN.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":47,
 						"name":"localStorage_page_two_way_syn",
 						"start_line":15
 					}
@@ -26892,7 +26892,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFourStateVariableSYN.ets",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":103,
 						"name":"localStorage_page_four_state_variable_syn",
 						"start_line":15
 					}
@@ -26912,7 +26912,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShare.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":47,
 						"name":"localStorage_page_five_share",
 						"start_line":15
 					}
@@ -26922,7 +26922,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShareChange.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":60,
 						"name":"localStorage_page_five_share2",
 						"start_line":15
 					}
@@ -26932,7 +26932,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorage.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":60,
 						"name":"localStorage_page_six_local_storage",
 						"start_line":15
 					}
@@ -26962,7 +26962,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageMyNavigation.ets",
 				"functions":[
 					{
-						"end_line":159,
+						"end_line":167,
 						"name":"localStorage_page_my_navigation",
 						"start_line":15
 					}
@@ -26972,7 +26972,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageLocalStorageLink.ets",
 				"functions":[
 					{
-						"end_line":81,
+						"end_line":91,
 						"name":"localStorage_page_local_storage_link",
 						"start_line":15
 					}
@@ -26982,7 +26982,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalDateSample.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":57,
 						"name":"localStorage_local_date_sample",
 						"start_line":15
 					}
@@ -26992,7 +26992,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalMapSample.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":71,
 						"name":"localStorage_local_map_sample",
 						"start_line":15
 					}
@@ -27002,7 +27002,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalSetSample.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":62,
 						"name":"localStorage_local_set_sample",
 						"start_line":15
 					}
@@ -27012,7 +27012,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":51,
 						"name":"localStorage_change_local_set_sample",
 						"start_line":15
 					}
@@ -27022,7 +27022,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSingleSYN.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":58,
 						"name":"localStorage_page_two_single_syn",
 						"start_line":15
 					}
@@ -27032,7 +27032,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalArraySample.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":60,
 						"name":"localStorage_local_array_sample",
 						"start_line":15
 					}
@@ -31532,7 +31532,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":66,
 						"name":"custom_component_use",
 						"start_line":15
 					}
@@ -31542,7 +31542,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":60,
 						"name":"ObservedV2_Class_User",
 						"start_line":15
 					}
@@ -31552,7 +31552,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets",
 				"functions":[
 					{
-						"end_line":86,
+						"end_line":95,
 						"name":"Computed_Init_Param",
 						"start_line":16
 					}
@@ -52279,7 +52279,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":93,
 						"name":"Decorative_Array",
 						"start_line":16
 					}
@@ -52289,7 +52289,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":96,
 						"name":"Decorative_Date",
 						"start_line":16
 					}
@@ -52299,7 +52299,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":122,
 						"name":"Decorative_Map",
 						"start_line":16
 					}
@@ -52309,7 +52309,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":108,
 						"name":"Decorative_Set",
 						"start_line":16
 					}
@@ -52319,7 +52319,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":82,
 						"name":"Decorative_Complex",
 						"start_line":16
 					}
@@ -52329,7 +52329,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":76,
 						"name":"Decorative_Initialized",
 						"start_line":16
 					}
