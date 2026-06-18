@@ -90,7 +90,7 @@ let outputAudioRendererFilter: audio.AudioRendererFilter  = {
     usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
     rendererFlags: 0 // 音频渲染器标志。
   } as audio.AudioRendererInfo,
-  rendererId: 0 // 此值为示例，使用时需替换为实际Id值
+  rendererId: 0 // 此值为示例，使用时需替换为实际ID值。
 };
 
 let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
