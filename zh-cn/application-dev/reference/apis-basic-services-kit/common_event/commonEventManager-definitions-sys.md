@@ -514,6 +514,21 @@
 **取值：** "usual.event.data.VOLUME_EJECT"
 
 
+### COMMON_EVENT_DISK_VOLUME_STATE_CHANGE<sup>26+</sup>
+
+表示系统数据盘卷状态发生变化的公共事件。
+
+当系统数据盘卷在格式化或修复等操作过程中状态发生变化（如操作开始、成功或失败）时，会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER
+
+**取值：** "usual.event.data.DISK_VOLUME_STATE_CHANGE"
+
+
 ### COMMON_EVENT_RESTORE_START<sup>13+</sup>
 
 表示某个应用开始恢复的公共事件。
