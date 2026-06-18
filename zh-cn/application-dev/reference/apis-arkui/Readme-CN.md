@@ -660,6 +660,7 @@
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)
     - [image.h](capi-image-h.md)
     - [image_animator.h](capi-image-animator-h.md)
+    - [embedded_component.h](capi-embedded-component-h.md)
     - [native_animate.h](capi-native-animate-h.md)
     - [native_dialog.h](capi-native-dialog-h.md)
     - [native_gesture.h](capi-native-gesture-h.md)
@@ -707,6 +708,7 @@
     - [oh_display_capture.h](capi-oh-display-capture-h.md)
     - [oh_display_info.h](capi-oh-display-info-h.md)
     - [oh_display_manager.h](capi-oh-display-manager-h.md)
+    - [xcomponent.h](capi-xcomponent-h.md)
   - 结构体<!--arkui-struct-->
     - [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)
     - [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md)
