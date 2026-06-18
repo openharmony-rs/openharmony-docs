@@ -65,10 +65,8 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      if (sceneModes === undefined) {
        return;
      }
-     let isSupported = sceneModes.findIndex((sceneMode: camera.SceneMode) => {
-       return sceneMode === camera.SceneMode.NORMAL_PHOTO;
-     });
-     if (isSupported == -1) {
+     let isSupported: boolean = sceneModes.includes(camera.SceneMode.NORMAL_PHOTO); 
+     if (!isSupported) {
        return;
      }
      let cameraOutputCapability = cameraManager.getSupportedOutputCapability(curCameraDeviceFront, camera.SceneMode.NORMAL_PHOTO);
