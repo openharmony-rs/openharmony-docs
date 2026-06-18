@@ -3693,7 +3693,7 @@ ArkTS-Sta: triggerKey(keyCode: int, displayId: int): Promise\<void>
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
 | keyCode | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
-| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br/>**说明：** 传入displayId不存在时，将抛出401异常。  |
+| displayId | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br/>**说明：** 传入displayId不存在时，将抛出17000007异常。  |
 
 **返回值：**
 
@@ -4592,7 +4592,7 @@ ArkTS-Sta: screenCap(savePath: string, displayId: int): Promise\<boolean>
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | 是   | 文件保存路径。路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。 |
-| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出401异常。                  |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
@@ -5422,7 +5422,7 @@ ArkTS-Sta: fling(direction: UiDirection, speed: int, displayId: int): Promise\<v
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
 | speed     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
-| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出401异常。                  |
+| displayId     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是  | 指定设备屏幕ID。取值范围：大于等于0的整数。 <br/>**说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
 
