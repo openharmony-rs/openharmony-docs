@@ -23,6 +23,7 @@
 ## 接口
 
 ### Column
+
 Column(options?: ColumnOptions)
 
 创建垂直方向线性布局容器，可以设置子组件的间距。
@@ -41,7 +42,7 @@ Column(options?: ColumnOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options<sup>18+</sup> | [ColumnOptions](#columnoptions18对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number或string类型。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| options<sup>18+</sup> | [ColumnOptions](#columnoptions18对象说明) | 否 | 纵向布局元素的配置选项，可设置子组件的垂直方向间距。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### Column<sup>18+</sup>
 Column(options?: ColumnOptions | ColumnOptionsV2)
@@ -60,7 +61,7 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number、string或Resource类型。 |
+| options | [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素的配置选项，可设置子组件的垂直方向间距。|
 
 ## ColumnOptions<sup>18+</sup>对象说明
 

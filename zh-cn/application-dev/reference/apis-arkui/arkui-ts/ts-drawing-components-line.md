@@ -371,7 +371,7 @@ struct LineExample {
 }
 ```
 
-![zh-cn_image_0000001219982725](figures/zh-cn_image_0000001219982725.png)
+![line1](figures/line1.png)
 
 ### 示例2（边框端点绘制）
 
@@ -420,7 +420,7 @@ struct LineExample1 {
 }
 ```
 
-![zh-cn_image1_0000001219982725](figures/zh-cn_image1_0000001219982725.png)
+![line](figures/line.png)
 
 ### 示例3（边框间隙绘制）
 
@@ -481,7 +481,7 @@ struct LineExample {
 }
 ```
 
-![zh-cn_image2_0000001219982725](figures/zh-cn_image2_0000001219982725.PNG)
+![line2](figures/line2.PNG)
 
 ### 示例4（宽和高使用不同参数类型绘制直线）
 

@@ -39,7 +39,7 @@ This module applies to the following scenarios:
 
 ![Class relationship diagram](figures/uml_useraccessctrl.png)
 
-## APIs Called in Pairs
+## APIs Used in Combination
 
 The typical process of using the **userAccessCtrl** module is as follows:
 

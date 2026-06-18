@@ -399,7 +399,7 @@ pid context     request started max ready   free_async_space
 | code | 客户端和服务端达成一致约束的业务码。 |
 | wait | 通信等待时长。 |
 | frz_state | 进程冻结状态。<br/>-1 未知；<br/>1 默认；<br/>2 正在向用户态发送binder状态信息；<br/>3 走到了binder接收线程。 |
-| ns | 客户端进程号、线程号 to 服务端进程号、线程号（非卓易通内进程显示-1）。 |
+| ns | 客户端进程号、线程号 to 服务端进程号、线程号。 |
 | debug | IPC通信双方的信息补充。 |
 | active_code | 正在处理的异步消息code。 |
 | active_thread | 处理这个异步消息的线程。 |
@@ -586,7 +586,7 @@ DisplayPowerInfo:powerState:AWAKE
 
 在上述示例中，上次分发的事件是430，上次处理的事件是429，上次标记的事件是428，表明430事件已分发完毕，在处理环节，已超时8000毫秒。此日志可以用于APP_INPUT_BLOCK事件的简单定界，帮助问题分析。
 
-## AppFreeze（应用冻屏）增强日志信息
+## AppFreeze（应用冻屏）增强日志信息（采样栈）
 
 从API version 21开始，支持获取AppFreeze的增强日志。该日志通过采集整机及主线程的运行负载，并抓取多份主线程调用栈，帮助开发者分析问题根源。相比原有日志，AppFreeze的增强日志主要解决了以下两个不足：
 

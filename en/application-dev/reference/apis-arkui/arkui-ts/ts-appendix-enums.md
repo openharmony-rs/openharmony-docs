@@ -255,17 +255,17 @@ Sets the color type.
 
 | Name                    | Value           | Description                                                        |
 | ------------------------ | ------------- | ------------------------------------------------------------ |
-| Black                    | 0x000000      | ![en-us_image_0000001219864153](figures/en-us_image_0000001219864153.png) |
-| Blue                     | 0x0000ff      | ![en-us_image_0000001174104404](figures/en-us_image_0000001174104404.png) |
-| Brown                    | 0xa52a2a      | ![en-us_image_0000001219744201](figures/en-us_image_0000001219744201.png) |
-| Gray                     | 0x808080      | ![en-us_image_0000001174264376](figures/en-us_image_0000001174264376.png) |
-| Grey                     | 0x808080      | ![en-us_image_0000001174264376](figures/en-us_image_0000001174264376.png) |
-| Green                    | 0x008000      | ![en-us_image_0000001174422914](figures/en-us_image_0000001174422914.png) |
-| Orange                   | 0xffa500      | ![en-us_image_0000001219662661](figures/en-us_image_0000001219662661.png) |
-| Pink                     | 0xffc0cb      | ![en-us_image_0000001219662663](figures/en-us_image_0000001219662663.png) |
-| Red                      | 0xff0000      | ![en-us_image_0000001219662665](figures/en-us_image_0000001219662665.png) |
-| White                    | 0xffffff      | ![en-us_image_0000001174582866](figures/en-us_image_0000001174582866.png) |
-| Yellow                   | 0xffff00      | ![en-us_image_0000001174582864](figures/en-us_image_0000001174582864.png) |
+| Black                    | 0x000000      | ![black](figures/black.png) |
+| Blue                     | 0x0000ff      | ![blue](figures/blue.png) |
+| Brown                    | 0xa52a2a      | ![brown](figures/brown.png) |
+| Gray                     | 0x808080      | ![gray](figures/gray.png) |
+| Grey                     | 0x808080      | ![gray](figures/gray.png) |
+| Green                    | 0x008000      | ![green](figures/green.png) |
+| Orange                   | 0xffa500      | ![orange](figures/orange.png) |
+| Pink                     | 0xffc0cb      | ![pink](figures/pink.png) |
+| Red                      | 0xff0000      | ![red](figures/red.png) |
+| White                    | 0xffffff      | ![white](figures/white.png) |
+| Yellow                   | 0xffff00      | ![yellow](figures/yellow.png) |
 | Transparent<sup>9+</sup> | rgba(0,0,0,0) | Transparent                                                      |
 
 ## ColorSpace<sup>20+</sup>

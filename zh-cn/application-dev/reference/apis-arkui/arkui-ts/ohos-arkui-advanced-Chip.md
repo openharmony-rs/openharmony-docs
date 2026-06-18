@@ -245,7 +245,7 @@ LabelOptions定义文本属性。
 
 > **说明：**
 >
-> 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的新材质时，fontColor使用支持反色的特殊系统资源，文字颜色自动适配到材质背景色的反色；activatedBackgroundSystemMaterial设置自动反色的新材质时，activatedFontColor使用支持反色的特殊系统资源，操作块激活时的文字颜色自动适配到材质背景色的反色。
+> 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的系统材质时，fontColor使用支持反色的特殊系统资源，文字颜色自动适配到材质背景色的反色；activatedBackgroundSystemMaterial设置自动反色的系统材质时，activatedFontColor使用支持反色的特殊系统资源，操作块激活时的文字颜色自动适配到材质背景色的反色。
 
 ## CloseOptions<sup>14+</sup>
 

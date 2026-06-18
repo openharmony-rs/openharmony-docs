@@ -188,7 +188,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| nonce      | Uint8Array | 否   | 否   | 指明加解密参数nonce。对于AES算法的CCM模式长度为7-13字节；对于AES算法的GCM模式、SM4算法的GCM模式和ChaCha20算法的Poly1305模式长度为1-128字节。       |
+| nonce      | Uint8Array | 否   | 否   | 指明加解密参数nonce。对于AES算法的CCM模式长度为7-13字节；对于AES算法的GCM模式、SM4算法的GCM模式长度为1-128字节；对于ChaCha20算法的Poly1305模式长度为12字节。       |
 | authenticatedData     | Uint8Array | 否   | 是   | 指明加解密参数aad，长度为任意字节。                             |
 | tagLen | number | 否   | 是   | 指定加解密参数authTag长度，单位为字节。对于AES算法的CCM模式，tagLen仅支持4、6、8、10、12、14、16，若不填则默认为12；对于AES算法的GCM模式与SM4算法的GCM模式，tagLen仅支持4、8、12、13、14、15、16，若不填则默认为16；对于ChaCha20算法的Poly1305模式，tagLen仅支持16。 |
 
@@ -273,7 +273,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | EC_PRIVATE_K | 6 | 表示椭圆曲线（EC）私钥的 K。 |
 | EC_PRIVATE_04_X_Y_K | 7 | 表示椭圆曲线（EC）私钥的 04\|\|X\|\|Y\|\|K。 |
 | EC_PUBLIC_X_Y | 8 | 表示椭圆曲线（EC）公钥的 X\|\|Y。 |
-| EC_PUBLIC_04_X_Y | 9 | 表示椭圆曲线（EC）公钥的 04\|\|X\|\|Y 。 |
+| EC_PUBLIC_04_X_Y | 9 | 表示椭圆曲线（EC）公钥的 04\|\|X\|\|Y。 |
 | EC_PUBLIC_COMPRESS_X | 10 | 表示椭圆曲线（EC）公钥的 02\|\|X 或 03\|\|X。 |
 
 ## AsyKeySpecType<sup>10+</sup>
@@ -303,7 +303,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-API version 10-11 系统能力为 SystemCapability.Security.CryptoFramework；从 API version 12 开始为SystemCapability.Security.CryptoFramework.Cipher
+API version 10-11 系统能力为 SystemCapability.Security.CryptoFramework；从 API version 12 开始为SystemCapability.Security.CryptoFramework.Cipher。
 
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
@@ -331,9 +331,9 @@ API version 10-11 系统能力为SystemCapability.Security.CryptoFramework；从
 | PSS_SALT_LEN_NUM | 103 | 表示RSA算法中，使用PSS模式时，盐值的长度，长度以字节为单位。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | PSS_TRAILER_FIELD_NUM | 104 | 表示RSA算法中，使用PSS模式时，用于编码操作的整数。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | SM2_USER_ID_UINT8ARR<sup>11+</sup> | 105 | 表示SM2算法中，用户身份标识字段。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ML_DSA_DETERMINISTIC_BOOL | 106 | 表示ML-DSA算法中，是否使用确定性签名，该参数仅对签名时有效，不设置时默认值为false。<br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| ML_DSA_MU_BOOL | 107 | 表示ML-DSA算法中，是否使用外部μ哈希模式，不设置时默认值为false，设置为true时，待签名数据需是64字节的哈希。<br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| ML_DSA_CONTEXT_UINT8ARR | 108 | 表示ML-DSA算法中，设置上下文字符串，最大长度为255字节，用于标识签名验签场景，该参数在设置ML_DSA_MU_BOOL为true时无效，不设置时默认值为空字符串。<br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| ML_DSA_DETERMINISTIC_BOOL | 106 | 表示ML-DSA算法中，是否使用确定性签名，该参数仅对签名时有效，不设置时默认值为false。<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| ML_DSA_MU_BOOL | 107 | 表示ML-DSA算法中，是否使用外部μ哈希模式，不设置时默认值为false，设置为true时，待签名数据需是64字节的哈希。<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| ML_DSA_CONTEXT_UINT8ARR | 108 | 表示ML-DSA算法中，设置上下文字符串，最大长度为255字节，用于标识签名验签场景，该参数在设置ML_DSA_MU_BOOL为true时无效，不设置时默认值为空字符串。<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## AsyKeySpec<sup>10+</sup>
 
@@ -1612,7 +1612,7 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
 | format  | string | 是   | 指定的获取密钥字符串的编码格式。其中，私钥可为'PKCS1' 或'PKCS8'格式。|
-| config | [KeyEncodingConfig](#keyencodingconfig18) | 是 | 指定编码的算法跟口令，对私钥进行编码操作。 |
+| config | [KeyEncodingConfig](#keyencodingconfig18) | 是 | 指定编码的算法和口令，对私钥进行编码操作。 |
 
 **返回值：**
 

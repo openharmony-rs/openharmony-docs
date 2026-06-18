@@ -153,7 +153,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001224354967](figures/en-us_image_0000001224354967.png)
+![isPointInPath](figures/isPointInPath.png)
 
 ### isPointInStroke
 

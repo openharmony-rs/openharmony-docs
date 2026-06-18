@@ -79,7 +79,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
    background: linear-gradient(to right, rgb(255,0,0) 90px, rgb(0, 255, 0) 60%);
    ```
 
-   ![zh-cn_image_0000001236694521](figures/zh-cn_image_0000001236694521.png)
+   ![linearGradientHorizontal](figures/linearGradientHorizontal.png)
 
 4. 重复渐变。
 

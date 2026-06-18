@@ -508,7 +508,7 @@ onEnterSelectedArea(callback: Callback\<TimePickerResult>)
 
 ## DateTimeOptions<sup>12+</sup>类型说明
 
-type DateTimeOptions = DateTimeOptions
+type DateTimeOptions = import('../api/@ohos.intl').default.DateTimeOptions
 
 时间、日期格式化时可设置的配置项。
 
@@ -520,7 +520,7 @@ type DateTimeOptions = DateTimeOptions
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| [DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) | 创建时间、日期格式化对象时可设置的配置项。 |
+| import('../api/@ohos.intl').default.[DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) | 创建时间、日期格式化对象时可设置的配置项。 |
 
 ## OnTimePickerChangeCallback<sup>18+</sup>
 
