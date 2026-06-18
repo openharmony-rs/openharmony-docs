@@ -135,7 +135,7 @@ struct WithEnvExample1 {
         .width('100%')
         .alignItems(HorizontalAlign.Start)
       }
-      .env(WritableEnvKey.FONT_SCALE, this.fontScale)
+      .env(WritableEnvKey.FONT_SCALE, this.fontScale) // 设置局部字体缩放比例
     }
     .padding(12)
     .width('100%')
@@ -178,7 +178,7 @@ struct WithEnvExample2 {
 
         }.backgroundColor('#D5D5D5').width(200).height(50)
       }
-      .env(WritableEnvKey.DIRECTION, this.directionValue)
+      .env(WritableEnvKey.DIRECTION, this.directionValue) // 设置局部布局方向
 
       Button('change direction').onClick(() => {
         if (this.directionValue === Direction.Ltr) {
