@@ -1,10 +1,12 @@
 # JSVM_CompileOptions
+
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:20:47.662Z pushedAt=2026-06-18T09:07:36.516Z -->
 
 ```c
 typedef struct {...} JSVM_CompileOptions
@@ -13,6 +15,10 @@ typedef struct {...} JSVM_CompileOptions
 ## Overview
 
 Defines a struct that represents the type of the elements in **options** of [OH_JSVM_CompileScriptWithOptions](capi-jsvm-h.md#oh_jsvm_compilescriptwithoptions).
+
+**Use scenario:** Applying custom compilation settings for JS scripts, such as setting the compilation optimization level, enabling debug information, and configuring the module resolution strategy.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
 
