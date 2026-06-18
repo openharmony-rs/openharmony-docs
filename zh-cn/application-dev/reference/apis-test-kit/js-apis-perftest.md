@@ -128,7 +128,7 @@ static create(strategy: PerfTestStrategy): PerfTest
 
 **错误码：**
 
-以下错误码的详细介绍请参见[perftest错误码](errorcode-perftest.md)。
+以下错误码的详细介绍请参见[PerfTest错误码](errorcode-perftest.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
