@@ -52,7 +52,7 @@ ArkTS-Sta: setPointerSpeed(speed: int, callback: AsyncCallback&lt;void&gt;): voi
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types.3.Parameter verification failed. |
 
 
@@ -156,7 +156,7 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types.3.Parameter verification failed. |
 
 
@@ -332,7 +332,7 @@ ArkTS-Sta: getPointerSpeed(callback: AsyncCallback&lt;int&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -430,7 +430,7 @@ ArkTS-Sta: getPointerSpeed(): Promise&lt;int&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 
 **示例**：
 
