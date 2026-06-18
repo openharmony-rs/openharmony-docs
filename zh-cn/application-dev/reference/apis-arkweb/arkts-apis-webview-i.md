@@ -14,6 +14,45 @@
 >
 > - 示例效果请以真机运行为准。
 
+## 概述
+
+本页面汇总了ArkWeb Webview模块（`@kit.ArkWeb`）中的辅助接口与数据结构类型。这些类型主要作为Web组件各能力的方法入参、回调出参或状态枚举使用，配合[WebviewController](./arkts-apis-webview-WebviewController.md)、[WebCookieManager](./arkts-apis-webview-WebCookieManager.md)、[WebStorage](./arkts-apis-webview-WebStorage.md)等核心类共同完成Web网页的加载、渲染、交互、媒体接管及性能优化等控制能力。
+
+本模块提供Web控制能力，网页显示的能力请参考[组件描述](arkts-basic-components-web.md)；Web控制能力的完整说明及核心控制器类请参考[ArkWeb Webview模块描述](./arkts-apis-webview.md)。
+
+### 模块功能分类与接口概览
+
+本页面接口按所属功能域分类如下：
+
+- **网络请求与协议**
+  - [WebHeader](#webheader)：Web组件返回的请求/响应头对象。
+  - [RequestInfo](#requestinfo12)：Web组件发送的资源请求信息。
+  - [WebCustomScheme](#webcustomscheme)：自定义协议配置。
+- **存储与缓存**
+  - [WebStorageOrigin](#webstorageorigin)：Web SQL数据库的使用信息。
+  - [CacheOptions](#cacheoptions12)：预编译JavaScript生成字节码缓存的配置对象。
+  - [OfflineResourceMap](#offlineresourcemap12)：本地离线资源注入内存缓存的配置对象。
+- **绘制与截图**
+  - [SnapshotInfo](#snapshotinfo12)：获取全量绘制结果的入参。
+  - [SnapshotResult](#snapshotresult12)：全量绘制回调结果。
+  - [PdfConfiguration](#pdfconfiguration14)：createPdf函数输入参数。
+- **滚动与交互**
+  - [ScrollOffset](#scrolloffset13)：网页当前的滚动偏移量。
+  - [HitTestValue](#hittestvalue)：点击区域的元素信息。
+  - [RectEvent](#rectevent12)：矩形定义。
+- **媒体**
+  - [MediaInfo](#mediainfo12)：网页中媒体的信息，用于应用接管网页媒体播放。
+- **Cookie**
+  - [WebHttpCookie](#webhttpcookie23)：cookie的相关字段。
+- **历史记录**
+  - [HistoryItem](#historyitem)：页面历史记录项。
+- **白屏加载优化**
+  - [BlanklessInfo](#blanklessinfo20)：页面首屏加载预测信息。
+  - [BlanklessFrameInterpolationInfo](#blanklessframeinterpolationinfo23)：白屏插帧状态信息。
+  - [BlanklessLoadingParam](#blanklessloadingparam23)：白屏插帧加载参数。
+- **控制器状态**
+  - [ControllerAttachState](#controllerattachstate20)：WebViewController与Web组件的绑定状态。
+
 ## WebStorageOrigin
 
 提供Web SQL数据库的使用信息。
