@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:52:39.108Z pushedAt=2026-06-15T02:39:36.687Z -->
+<!-- md-trans-meta sourceCommit=7b96ce2cdc47279f6264c88642e4fd07a8682bf6 translatedAt=2026-06-18T01:35:48.982Z pushedAt=2026-06-18T01:37:24.542Z -->
 
 The **cryptoFramework** module provides APIs for cryptographic operations, shielding the underlying hardware and algorithm library.
 
@@ -804,7 +804,6 @@ Represents the SM2 ciphertext parameters. You can use this object to generate SM
 > - During the generation of ciphertext in C1C3C2 format, if the length of x (**C1_X**) or y (**C1_Y**) is less than 32 bytes, zeros must be added to the high-order bits to extend them to 32 bytes.
 
 ## KeyEncodingConfig<sup>18+</sup>
-
 Represents the RSA private key encoding parameters. You can use it to generate an encoded private key string with the specified algorithm and password.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
@@ -823,7 +822,6 @@ Represents the RSA private key encoding parameters. You can use it to generate a
 > - **cipherName** specifies the algorithm used for encoding. It is mandatory. Currently, only **AES-128-CBC**, **AES-192-CBC**, **AES-256-CBC**, and **DES-EDE3-CBC** are supported.
 
 ## MacSpec<sup>18+</sup>
-
 Represents the message authentication code (MAC) parameters. You need to construct a child class object and use it as a parameter when generating an HMAC or a CMAC.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
@@ -839,7 +837,6 @@ Represents the message authentication code (MAC) parameters. You need to constru
 > **algName** specifies the MAC algorithm to use. It is mandatory.
 
 ## HmacSpec<sup>18+</sup>
-
 Represents the child class of the message authentication code [MacSpec](#macspec18). It is used as an input parameter for HMAC generation.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
@@ -855,7 +852,6 @@ Represents the child class of the message authentication code [MacSpec](#macspec
 > **mdName** specifies the HMAC digest algorithm. It is mandatory.
 
 ## CmacSpec<sup>18+</sup>
-
 Represents the child class of the message authentication code [MacSpec](#macspec18). It is used as an input parameter for CMAC generation.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
@@ -1275,7 +1271,6 @@ async function testgetAsyKeySpec() {
   console.info('ecc item --- p: ' + p.toString(16));
 }
 ```
-
 ### getEncodedDer<sup>12+</sup>
 
 getEncodedDer(format: string): DataBlob
@@ -1408,7 +1403,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
 | format  | string | Yes  | Encoding format of the key data to obtain. The format of a private key can be **'PKCS1'** or **'PKCS8'**.|
-| config | [KeyEncodingConfig](#keyencodingconfig18) | Yes| Options (including the password and algorithm) for encoding the private key.|
+| config | [KeyEncodingConfig](#keyencodingconfig18) | Yes | Options (including the password and algorithm) for encoding the private key. |
 
 **Return value**
 
@@ -3864,7 +3859,6 @@ For details about the complete encryption and decryption process, see [Encryptio
 A complete symmetric encryption/decryption process is slightly different from the asymmetric encryption/decryption process.
 
 - Symmetric encryption and decryption: **init()** and **doFinal()** are mandatory. **update()** is optional and can be called multiple times to encrypt or decrypt big data. After **doFinal()** is called to complete an encryption or decryption operation, **init()** can be called to start a new encryption or decryption operation.
-
 - RSA or SM2 asymmetric encryption and decryption: **init()** and **doFinal()** are mandatory, and **update()** is not supported. **doFinal()** can be called multiple times to encrypt or decrypt big data. **init()** cannot be called repeatedly. If the encryption/decryption mode or padding mode is changed, a new **Cipher** object must be created.
 
 ### Attributes
@@ -4132,8 +4126,8 @@ doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 (1) Processes the remaining data and the data passed in this time, and completes the encryption or decryption operation for symmetric encryption and decryption. This API uses an asynchronous callback to return the encrypted or decrypted data. If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in all the data without using **update()**. If all the data has been passed in by [GcmParamsSpec](#gcmparamsspec), you can pass in **null** in **data** of **doFinal()**. The output of **doFinal()** varies with the symmetric block cipher mode in use.
 
 - In a single encryption process with GCM or CCM mode, concatenating the results of each **update()** and **doFinal()** procedures the ciphertext and **authTag**. In GCM mode, **authTag** is the last 16 bytes. In CCM mode, **authTag** is the last 12 bytes. The rest part is the ciphertext. If **data** passed to **doFinal()** is **null**, the **doFinal()** result is only the **authTag**. During decryption, **authTag** must be set in [CcmParamsSpec](#ccmparamsspec) or [Cipher](#cipher), and the ciphertext must be set in **data**.
-
 - For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **update()** and **doFinal()** throughout the process will yield the complete plaintext or ciphertext.
+
 
 (2) Encrypts or decrypts the data passed in this time in RSA and SM2 asymmetric encryption or decryption. This API uses an asynchronous callback to return the encrypted or decrypted data. If a large amount of data needs to be encrypted/decrypted, call **doFinal()** multiple times and concatenate the result of each **doFinal()** to obtain the complete plaintext/ciphertext.
 
@@ -4229,7 +4223,6 @@ doFinal(data: DataBlob | null): Promise\<DataBlob>
 (1) Encrypts or decrypts the remaining data (generated by the block cipher mode) and the data passed in this time to finalize the symmetric encryption or decryption. This API uses a promise to return the encrypted or decrypted data.<br>If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in data without using **update()**. If all the data has been passed in by **update()**, you can pass in **null** in **data** of **doFinal()**.<br>The output of **doFinal()** varies with the symmetric encryption/decryption mode in use.
 
 - Symmetric encryption in GCM and CCM mode: The result consists of the ciphertext and **authTag** (the last 16 bytes for GCM and the last 12 bytes for CCM). If **data** in **doFinal** is null, the result of **doFinal** is **authTag**.<br>During decryption, **authTag** must be set in [CcmParamsSpec](#ccmparamsspec) or [Cipher](#cipher), and the ciphertext must be set in **data**.
-
 - For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **update()** and **doFinal()** throughout the process will yield the complete plaintext or ciphertext.
 
 (2) Encrypts or decrypts the data passed in RSA and SM2 asymmetric encryption or decryption. This API uses a promise to return the encrypted or decrypted data. If a large amount of data is to be processed, call **doFinal()** multiple times and concatenate the results to obtain the complete plaintext or ciphertext.
@@ -4336,7 +4329,6 @@ The output of **doFinalSync()** varies with the symmetric block cipher mode in u
 - In a single encryption process with GCM or CCM mode, concatenating the results of each **updateSync()** and **doFinalSync()** procedures the ciphertext and **authTag**. In GCM mode, **authTag** is the last 16 bytes. In CCM mode, **authTag** is the last 12 bytes. The rest part is the ciphertext. If **data** in **doFinalSync()** is **null**, the result of **doFinalSync()** is **authTag**. 
 
   During decryption, **authTag** must be set in [CcmParamsSpec](#ccmparamsspec) or [doFinal](#dofinal), and the ciphertext must be set in **data**.
-
 - For other symmetric encryption and decryption modes and GCM and CCM decryption modes, concatenating the results of **updateSync()** and **doFinalSync()** throughout the process will yield the complete plaintext or ciphertext.
 
 (2) Encrypts or decrypts the input data for RSA or SM2 asymmetric encryption/decryption. This API returns the encrypted or decrypted data synchronously. If a large amount of data is to be processed, call **doFinalSync()** multiple times and concatenate the results to obtain the complete plaintext or ciphertext.
@@ -5106,6 +5098,7 @@ setSignSpec(itemType: SignSpecItem, itemValue: number): void
 setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
 Sets signing specifications. You can use this API to set signing parameters that cannot be set by [createSign](#signspecitem10).
+
 
 Currently, only RSA and SM2 are supported. Since API version 11, SM2 signing parameters can be set.
 
@@ -6456,6 +6449,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
+
 | Error Code| Error Message              |
 | -------- | ---------------------- |
 | 17620001 | memory operation failed.           |
@@ -6904,6 +6898,7 @@ Updates the MAC status. This API returns the result synchronously.
 | Name| Type    | Mandatory| Description      |
 | ------ | -------- | ---- | ---------- |
 | input  | [DataBlob](#datablob) | Yes  | Data to pass in.|
+
 
 **Error codes**
 
@@ -7460,9 +7455,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 17620001 | memory operation failed.          |
 
 **Example**
-
 - PBKDF2
-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -7518,7 +7511,6 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 **Example**
 
 - PBKDF2
-
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -7540,7 +7532,6 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
   ```
 
 - HKDF
-
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -7599,7 +7590,6 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 **Example**
 
 - PBKDF2
-
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -7621,7 +7611,6 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
   ```
 
 - HKDF
-
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -7679,7 +7668,6 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 **Example**
 
 - PBKDF2
-
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -7696,7 +7684,6 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
   ```
 
 - HKDF
-
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -7769,6 +7756,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
     }
   }
   ```
+
 
 ### genEccSignature<sup>20+</sup>
 
