@@ -858,3 +858,20 @@ Allows the enterprise MDM application to perform operations on multiple users.
 **Supported devices**: phones | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.ENTERPRISE_VPN
+    
+Allows an MDM application to possess the VPN access permission by default.
+
+With this permission, an application can establish VPN connections by default without requiring user confirmation.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
