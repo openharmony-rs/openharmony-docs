@@ -3386,7 +3386,7 @@ try {
   kvStore!.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then(() => {
     console.info('Succeeded in putting data');
     const deviceId = 'no_exist_device_id';
-    kvStore!.removeDeviceData(deviceid).then(() => {
+    kvStore!.removeDeviceData(deviceId).then(() => {
       console.info('succeeded in removing device data');
       kvStore!.get(KEY_TEST_STRING_ELEMENT).then((data: boolean | string | number | Uint8Array) => {
         console.info(`Succeeded in getting data. Data=${data}`);
@@ -5413,7 +5413,7 @@ sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
 | deviceIds | string[]              | 是   | 同一组网环境下，需要同步的设备的networkId列表。 |
 | query     | [Query](#query)        | 是   | 表示数据库的查询谓词条件。                      |
 | mode      | [SyncMode](#syncmode) | 是   | 同步模式。                                     |
- | delayMs   | number                | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
+| delayMs   | number                | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
 
 **错误码：**
 
