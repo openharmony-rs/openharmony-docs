@@ -15,16 +15,16 @@
 
 > **说明：**
 >
-> - 该组件从API version 26.0.0开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->
-> - 该组件仅可在Stage模型下使用。
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 如果TreeViewV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到TreeViewV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议TreeViewV2设置通用属性和通用事件。
+
+**起始版本：** 26.0.0
 
 ## 导入模块
 
 ```ts
-import { TreeViewV2 } from "@kit.ArkUI";
+import { TreeViewV2 } from '@kit.ArkUI';
 ```
 
 
@@ -36,9 +36,11 @@ import { TreeViewV2 } from "@kit.ArkUI";
 
 TreeViewV2({ treeControllerV2: TreeControllerV2 })
 
-**装饰器类型：**\@ComponentV2
+树视图作为一种分层显示的列表，适合显示嵌套结构。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**装饰器类型：** \@ComponentV2
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,32 +49,22 @@ TreeViewV2({ treeControllerV2: TreeControllerV2 })
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 
-| 名称 | 类型 | 必填 | 说明 |
+| 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- |
-| treeControllerV2 | [TreeControllerV2](#treecontrollerv2) | 是 | 树视图节点控制器。 |
+| treeControllerV2 | [TreeControllerV2](#treecontrollerv2) | 是 | @Param | 树视图节点控制器。 |
 
 
 ## TreeControllerV2
 
 树视图组件的控制器，可以将此对象绑定至树视图组件，然后通过它控制树的节点信息，同一个控制器不可以控制多个树视图组件。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**跨平台能力：** 该接口支持跨平台使用。
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-
 ### addNode
-
 
 addNode(nodeParam?: NodeParamV2): TreeControllerV2
 
 点击某个节点后，调用该方法可以触发新增子节点。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +90,7 @@ removeNode(): void
 
 点击某个节点后，调用该方法可以触发删除该节点。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,7 +104,7 @@ modifyNode(): void
 
 点击某个节点后，调用该方法可以触发修改该节点。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,7 +120,7 @@ buildDone(): void
 
 建立树视图。节点增加完毕后，必须调用该方法，触发树信息的保存。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,7 +135,7 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 更新树视图。调用该方法，更新当前节点的信息。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,7 +155,7 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 节点参数接口，用于配置树节点的属性。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,14 +168,14 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 | parentNodeId | number | 否 | 是 | 父节点Id。<br />取值范围：大于等于-1。<br />默认值：-1，根节点id值为-1。若设置数值小于-1，做不生效处理。                               |
 | currentNodeId | number | 否 | 是 | 当前子节点Id。<br />取值范围：大于等于-1。<br />不能为根节点id，不能为null，否则会抛出异常。且不能设置两个相同的currentNodeId。<br />默认值：-1  |
 | isFolder | boolean | 否 | 是 | 是否是目录。<br />默认值：false<br />true：是目录，false：不是目录。                                                         |
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标。<br/>默认值：空字符串                                                                             |
-| symbolIconStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标样式，优先级大于icon。<br/>默认值：undefined                                                        |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 选中图标。<br/>默认值：空字符串                                                                           |
-| symbolSelectedIconStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol选中图标样式，优先级大于selectedIcon。<br/>默认值：undefined                                              |
-| editIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 编辑图标。<br/>默认值：空字符串                                                                           |
-| symbolEditIconStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol编辑图标样式，优先级大于editIcon。<br/>默认值：undefined                                                  |
-| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 主标题。<br/>默认值：空字符串                                                                            |
-| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 副标题。<br/>默认值：空字符串                                                                            |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标。<br/>默认值：空字符串。                  |
+| symbolIconStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标样式，优先级大于icon。<br/>默认值：undefined，不显示Symbol图标                  |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 选中图标。<br/>默认值：空字符串。        |
+| symbolSelectedIconStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol选中图标样式，优先级大于selectedIcon。<br/>默认值：undefined，选中时显示与未选中一样        |
+| editIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 编辑图标。<br/>默认值：空字符串。          |
+| symbolEditIconStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol编辑图标样式，优先级大于editIcon。<br/>默认值：undefined，编辑时显示与非编辑态一样     |
+| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 主标题。<br/>默认值：空字符串。                           |
+| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 副标题。<br/>默认值：空字符串。                         |
 | container | [OnContainerCallback](#oncontainercallback) | 否 | 是 | 绑定在节点上的右键子组件，子组件由@Builder修饰。<br/>默认值：()&nbsp;=&gt;&nbsp;void                                 |
 
 ## TreeListenerManagerV2
@@ -199,7 +191,7 @@ static getInstance(): TreeListenerManagerV2
 
 获取监听管理器单例对象。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,7 +199,7 @@ static getInstance(): TreeListenerManagerV2
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-**返回值**:
+**返回值：**
 
 | 类型              | 说明               |
 | --------------- |------------------|
@@ -220,7 +212,7 @@ getTreeListener(): TreeListenerV2
 
 获取树监听器实例。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -243,9 +235,9 @@ getTreeListener(): TreeListenerV2
 
 onNodeClick(callback: OnChangedCallback): void
 
-注册节点点击事件监听，持续监听节点点击事件。
+注册节点点击事件监听，持续监听节点点击事件。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,9 +256,9 @@ onNodeClick(callback: OnChangedCallback): void
 
 onceNodeClick(callback: OnChangedCallback): void
 
-注册节点点击事件监听，监听一次后自动销毁。
+注册节点点击事件监听，监听一次后自动销毁。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -285,9 +277,9 @@ onceNodeClick(callback: OnChangedCallback): void
 
 offNodeClick(callback?: OnChangedCallback): void
 
-取消节点点击事件监听。
+取消节点点击事件监听。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -306,9 +298,9 @@ offNodeClick(callback?: OnChangedCallback): void
 
 onNodeAdd(callback: OnChangedCallback): void
 
-注册节点添加事件监听，持续监听节点添加事件。
+注册节点添加事件监听，持续监听节点添加事件。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -327,9 +319,9 @@ onNodeAdd(callback: OnChangedCallback): void
 
 onceNodeAdd(callback: OnChangedCallback): void
 
-注册节点添加事件监听，监听一次后自动销毁。
+注册节点添加事件监听，监听一次后自动销毁。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,9 +340,9 @@ onceNodeAdd(callback: OnChangedCallback): void
 
 offNodeAdd(callback?: OnChangedCallback): void
 
-取消节点添加事件监听。
+取消节点添加事件监听。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -369,9 +361,9 @@ offNodeAdd(callback?: OnChangedCallback): void
 
 onNodeDelete(callback: OnChangedCallback): void
 
-注册节点删除事件监听，持续监听节点删除事件。
+注册节点删除事件监听，持续监听节点删除事件。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -390,9 +382,9 @@ onNodeDelete(callback: OnChangedCallback): void
 
 onceNodeDelete(callback: OnChangedCallback): void
 
-注册节点删除事件监听，监听一次后自动销毁。
+注册节点删除事件监听，监听一次后自动销毁。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -411,9 +403,9 @@ onceNodeDelete(callback: OnChangedCallback): void
 
 offNodeDelete(callback?: OnChangedCallback): void
 
-取消节点删除事件监听。
+取消节点删除事件监听。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -432,9 +424,9 @@ offNodeDelete(callback?: OnChangedCallback): void
 
 onNodeModify(callback: OnChangedCallback): void
 
-注册节点修改事件监听，持续监听节点修改事件。
+注册节点修改事件监听，持续监听节点修改事件。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -453,9 +445,9 @@ onNodeModify(callback: OnChangedCallback): void
 
 onceNodeModify(callback: OnChangedCallback): void
 
-注册节点修改事件监听，监听一次后自动销毁。
+注册节点修改事件监听，监听一次后自动销毁。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -474,9 +466,9 @@ onceNodeModify(callback: OnChangedCallback): void
 
 offNodeModify(callback?: OnChangedCallback): void
 
-取消节点修改事件监听。
+取消节点修改事件监听。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -495,9 +487,9 @@ offNodeModify(callback?: OnChangedCallback): void
 
 onNodeMove(callback: OnChangedCallback): void
 
-注册节点移动事件监听，持续监听节点移动事件。节点移动通过拖拽操作触发。
+注册节点移动事件监听，持续监听节点移动事件。节点移动通过拖拽操作触发。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -516,9 +508,9 @@ onNodeMove(callback: OnChangedCallback): void
 
 onceNodeMove(callback: OnChangedCallback): void
 
-注册节点移动事件监听，监听一次后自动销毁。
+注册节点移动事件监听，监听一次后自动销毁。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -537,9 +529,9 @@ onceNodeMove(callback: OnChangedCallback): void
 
 offNodeMove(callback?: OnChangedCallback): void
 
-取消节点移动事件监听。
+取消节点移动事件监听。使用callback回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -560,17 +552,23 @@ type OnChangedCallback = (callbackParam: CallbackParamV2) => void
 
 节点事件回调函数类型。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **跨平台能力：** 该接口支持跨平台使用。
 
+**参数：**
+
+| 参数名     | 类型      | 必填 | 说明                                            |
+| :------ |:--------| :- | :-------------------------------------------------- |
+| callbackParam | [CallbackParamV2](#callbackparamv2) | 是  | 节点回调参数，用于传递节点事件回调的参数信息。 |
+
 ## CallbackParamV2
 
 节点回调参数接口，用于传递节点事件回调的参数信息。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -590,7 +588,7 @@ type OnContainerCallback = () => void
 
 容器回调函数类型，用于定义绑定在树节点上的子组件回调。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -605,7 +603,7 @@ type OnContainerCallback = () => void
 
 ### 示例1（设置简单树视图）
 
-通过树视图组件的控制器对树的节点进行新增、删除、重命名，展示新增不同参数节点的实现效果。
+从API版本26.0.0开始，通过树视图组件的控制器接口对树的节点进行新增、删除、重命名，展示新增不同参数节点的实现效果。
 
 ```ts
 import {
@@ -690,8 +688,8 @@ struct TreeViewV2Demo {
       icon: normalResource,
       selectedIcon: selectedResource,
       editIcon: editResource,
-      primaryTitle: "目录1",
-      secondaryTitle: "6"
+      primaryTitle: '目录1',
+      secondaryTitle: '6'
     };
 
     this.treeControllerV2
@@ -700,13 +698,13 @@ struct TreeViewV2Demo {
         parentNodeId: 1,
         currentNodeId: 2,
         isFolder: false,
-        primaryTitle: "项目1_1"
+        primaryTitle: '项目1_1'
       })
       .addNode({
         parentNodeId: -1,
         currentNodeId: 7,
         isFolder: true,
-        primaryTitle: "目录2"
+        primaryTitle: '目录2'
       })
       .addNode({
         parentNodeId: -1,
@@ -715,13 +713,13 @@ struct TreeViewV2Demo {
         icon: normalResource,
         selectedIcon: selectedResource,
         editIcon: editResource,
-        primaryTitle: "目录3"
+        primaryTitle: '目录3'
       })
       .addNode({
         parentNodeId: -1,
         currentNodeId: 24,
         isFolder: false,
-        primaryTitle: "项目4"
+        primaryTitle: '项目4'
       })
       .addNode({
         parentNodeId: -1,
@@ -730,8 +728,8 @@ struct TreeViewV2Demo {
         icon: normalResource,
         selectedIcon: selectedResource,
         editIcon: editResource,
-        primaryTitle: "目录5",
-        secondaryTitle: "0"
+        primaryTitle: '目录5',
+        secondaryTitle: '0'
       })
       .addNode({
         parentNodeId: -1,
@@ -740,8 +738,8 @@ struct TreeViewV2Demo {
         icon: normalResource,
         selectedIcon: selectedResource,
         editIcon: editResource,
-        primaryTitle: "目录6",
-        secondaryTitle: "0"
+        primaryTitle: '目录6',
+        secondaryTitle: '0'
       })
       .addNode({
         parentNodeId: 32,
@@ -750,8 +748,8 @@ struct TreeViewV2Demo {
         icon: normalResource,
         selectedIcon: selectedResource,
         editIcon: editResource,
-        primaryTitle: "目录6-1",
-        secondaryTitle: "0"
+        primaryTitle: '目录6-1',
+        secondaryTitle: '0'
       })
       .addNode({
         parentNodeId: -1,
@@ -760,24 +758,24 @@ struct TreeViewV2Demo {
         icon: normalResource,
         selectedIcon: selectedResource,
         editIcon: editResource,
-        primaryTitle: "目录7",
-        secondaryTitle: "0"
+        primaryTitle: '目录7',
+        secondaryTitle: '0'
       })
       .addNode({
         parentNodeId: 33,
         currentNodeId: 34,
         isFolder: false,
-        primaryTitle: "项目8"
+        primaryTitle: '项目8'
       })
       .addNode({
         parentNodeId: -1,
         currentNodeId: 36,
         isFolder: false,
-        primaryTitle: "项目9"
+        primaryTitle: '项目9'
       })
       .buildDone();
 
-    this.treeControllerV2.refreshNode(-1, "父节点", "子节点");
+    this.treeControllerV2.refreshNode(-1, '父节点', '子节点');
   }
 
   build(): void {
@@ -818,7 +816,7 @@ struct TreeViewV2Demo {
 
 ### 示例2（设置Symbol类型图标）
 
-该示例通过设置NodeParamV2的属性symbolIconStyle、symbolEditIconStyle、symbolSelectedIconStyle，展示了自定义Symbol类型图标。
+从API版本26.0.0开始，该示例通过设置[NodeParamV2](#nodeparamv2)的属性symbolIconStyle、symbolEditIconStyle、symbolSelectedIconStyle，展示了自定义Symbol类型图标。
 
 ```ts
 import {
@@ -911,8 +909,8 @@ struct TreeViewV2Demo {
       icon: normalResource,
       selectedIcon: selectedResource,
       editIcon: editResource,
-      primaryTitle: "目录1",
-      secondaryTitle: "6"
+      primaryTitle: '目录1',
+      secondaryTitle: '6'
     };
 
     this.treeControllerV2
@@ -921,13 +919,13 @@ struct TreeViewV2Demo {
         parentNodeId: 1,
         currentNodeId: 2,
         isFolder: false,
-        primaryTitle: "项目1_1"
+        primaryTitle: '项目1_1'
       })
       .addNode({
         parentNodeId: -1,
         currentNodeId: 7,
         isFolder: true,
-        primaryTitle: "目录2"
+        primaryTitle: '目录2'
       })
       .addNode({
         parentNodeId: -1,
@@ -939,13 +937,13 @@ struct TreeViewV2Demo {
         symbolSelectedIconStyle: selectedSymbolResource,
         editIcon: editResource,
         symbolEditIconStyle: editSymbolResource,
-        primaryTitle: "目录3"
+        primaryTitle: '目录3'
       })
       .addNode({
         parentNodeId: -1,
         currentNodeId: 24,
         isFolder: false,
-        primaryTitle: "项目4"
+        primaryTitle: '项目4'
       })
       .addNode({
         parentNodeId: -1,
@@ -957,8 +955,8 @@ struct TreeViewV2Demo {
         symbolSelectedIconStyle: selectedSymbolResource,
         editIcon: editResource,
         symbolEditIconStyle: editSymbolResource,
-        primaryTitle: "目录5",
-        secondaryTitle: "0"
+        primaryTitle: '目录5',
+        secondaryTitle: '0'
       })
       .addNode({
         parentNodeId: -1,
@@ -970,8 +968,8 @@ struct TreeViewV2Demo {
         symbolSelectedIconStyle: selectedSymbolResource,
         editIcon: editResource,
         symbolEditIconStyle: editSymbolResource,
-        primaryTitle: "目录6",
-        secondaryTitle: "0"
+        primaryTitle: '目录6',
+        secondaryTitle: '0'
       })
       .addNode({
         parentNodeId: 32,
@@ -983,8 +981,8 @@ struct TreeViewV2Demo {
         symbolSelectedIconStyle: selectedSymbolResource,
         editIcon: editResource,
         symbolEditIconStyle: editSymbolResource,
-        primaryTitle: "目录6-1",
-        secondaryTitle: "0"
+        primaryTitle: '目录6-1',
+        secondaryTitle: '0'
       })
       .addNode({
         parentNodeId: -1,
@@ -996,24 +994,24 @@ struct TreeViewV2Demo {
         symbolSelectedIconStyle: selectedSymbolResource,
         editIcon: editResource,
         symbolEditIconStyle: editSymbolResource,
-        primaryTitle: "目录7",
-        secondaryTitle: "0"
+        primaryTitle: '目录7',
+        secondaryTitle: '0'
       })
       .addNode({
         parentNodeId: 33,
         currentNodeId: 34,
         isFolder: false,
-        primaryTitle: "项目8"
+        primaryTitle: '项目8'
       })
       .addNode({
         parentNodeId: -1,
         currentNodeId: 36,
         isFolder: false,
-        primaryTitle: "项目9"
+        primaryTitle: '项目9'
       })
       .buildDone();
 
-    this.treeControllerV2.refreshNode(-1, "父节点", "子节点");
+    this.treeControllerV2.refreshNode(-1, '父节点', '子节点');
   }
 
   build(): void {
