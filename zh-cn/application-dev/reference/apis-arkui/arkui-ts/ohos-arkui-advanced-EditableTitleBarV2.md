@@ -12,11 +12,11 @@
 
 > **说明：**
 >
-> - 该组件从API version 26.0.0开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->
 > - 该组件仅可在Stage模型下使用。
 >
 > - 如果EditableTitleBarV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到EditableTitleBarV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议EditableTitleBarV2设置通用属性和通用事件。
+
+**起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -32,9 +32,11 @@ import { EditableTitleBarV2 } from '@kit.ArkUI';
 
 EditableTitleBarV2({leftIcon?: EditableLeftIconV2, title: ResourceStr \| EditableTitleV2, imageItem?: EditableTitleBarItemV2, menuItems?: Array&lt;EditableTitleBarMenuItemV2&gt;, saveButton?: EditableSaveButtonV2, options: EditableTitleBarStyleV2})
 
-**装饰器类型：**\@ComponentV2
+编辑型标题栏，适用于多选界面或内容编辑界面，一般采取左叉右勾的形式。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**装饰器类型：** \@ComponentV2
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,7 +63,7 @@ type OnActionCallback = () => void
 
 点击事件的回调函数类型。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +72,7 @@ type OnActionCallback = () => void
 
 左侧图标类型枚举。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,7 +87,7 @@ type OnActionCallback = () => void
 
 左侧图标配置选项接口。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,7 +101,7 @@ type OnActionCallback = () => void
 
 左侧图标配置类，使用@ObservedV2装饰器，支持状态观察。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,7 +129,7 @@ constructor(options?: [EditableLeftIconV2Options](#editablelefticonv2options))
 
 标题配置选项接口。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,7 +142,7 @@ constructor(options?: [EditableLeftIconV2Options](#editablelefticonv2options))
 
 标题配置类，使用@ObservedV2装饰器，支持状态观察。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -167,7 +169,7 @@ constructor(options?: [EditableTitleV2Options](#editabletitlev2options))
 
 菜单项配置选项接口。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -187,7 +189,7 @@ constructor(options?: [EditableTitleV2Options](#editabletitlev2options))
 
 菜单项配置类，使用@ObservedV2装饰器，支持状态观察。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -223,7 +225,7 @@ type EditableTitleBarItemV2 = EditableTitleBarMenuItemV2
 
 左侧图像项类型别名。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,7 +241,7 @@ type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 
 左侧图像项配置选项类型别名。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,7 +254,7 @@ type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 
 保存按钮配置选项接口。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -266,7 +268,7 @@ type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 
 保存按钮配置类，使用@ObservedV2装饰器，支持状态观察。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,7 +296,7 @@ constructor(options?: [EditableSaveButtonV2Options](#editablesavebuttonv2options
 
 标题栏样式配置选项接口。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -310,7 +312,7 @@ constructor(options?: [EditableSaveButtonV2Options](#editablesavebuttonv2options
 
 标题栏样式配置类，使用@ObservedV2装饰器，支持状态观察。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
