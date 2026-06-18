@@ -6,6 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
+<!-- md-trans-meta sourceCommit=7b96ce2cdc47279f6264c88642e4fd07a8682bf6 translatedAt=2026-06-18T03:37:01.800Z pushedAt=2026-06-18T07:24:16.925Z -->
 
 The **AbilityDelegator** module can listen for and manage the lifecycle changes of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) through [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) instances. For example, you can obtain the current state of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), obtain the UIAbility that currently has the focus, wait for the UIAbility to enter a lifecycle node (for example, the **onForeground** state), start a specified UIAbility, and set the timeout mechanism.
 
@@ -676,8 +677,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -740,8 +741,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |

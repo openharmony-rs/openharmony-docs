@@ -1,10 +1,12 @@
 # @ohos.sensor (Sensor) (System API)
+
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=7b96ce2cdc47279f6264c88642e4fd07a8682bf6 translatedAt=2026-06-18T03:36:10.984Z pushedAt=2026-06-18T07:56:09.968Z -->
 
 The **Sensor** module provides APIs for obtaining the sensor list and subscribing to sensor data. It also provides some common sensor algorithms.
 
@@ -13,7 +15,6 @@ The **Sensor** module provides APIs for obtaining the sensor list and subscribin
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > The APIs provided by this module are system APIs.
-
 
 ## Modules to Import
 
@@ -415,7 +416,6 @@ Describes the color sensor data. It extends from [Response](js-apis-sensor.md#re
 
 **System API**: This is a system API.
 
-
 | Name            | Type  | Read-Only| Optional| Description                         |
 | ---------------- | ------ | ---- | ---- | ----------------------------- |
 | lightIntensity   | number | No  | No  | Intensity of light, in lux.|
@@ -429,11 +429,9 @@ Describes the SAR sensor data. It extends from [Response](js-apis-sensor.md#resp
 
 **System API**: This is a system API.
 
-
 | Name           | Type  | Read-Only| Optional| Description                           |
 | --------------- | ------ | ---- | ---- | ------------------------------- |
 | absorptionRatio | number | No  | No  | Absorption ratio, in W/kg.|
-
 
 ## SensorInfoParam<sup>19+</sup>
 
@@ -445,5 +443,5 @@ Defines sensor parameters.
 
 | Name        | Type    | Read-Only| Optional| Description                     |
 | ----------- | -------- | ---- | ---- | -------------------------- |
-| deviceId    | number   | No  | Yes  | Device ID. The default value is **-1**, indicating the local device. You can use [getSensorList](js-apis-sensor.md#sensorgetsensorlist9) or [on](js-apis-sensor.md#sensorstatuschange19) to obtain the device ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.  |
-| sensorIndex   | number | No  | Yes  | Sensor index. The default value is **0**, which indicates the default sensor on the device. You can use [getSensorList](js-apis-sensor.md#sensorgetsensorlist9) or [on](js-apis-sensor.md#sensorstatuschange19) to obtain the sensor ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| deviceId    | number   | No   | Yes   | Device ID. The default value is -1, indicating the local device. The device ID can be obtained by calling [getSensorList](js-apis-sensor.md#sensorgetsensorlist9) or by listening for device online/offline events through the [sensorStatusChange](js-apis-sensor.md#sensorstatuschange19) API.<br/>**Atomic service API**: This API can be used in atomic services since API version 19.   |
+| sensorIndex   | number | No   | Yes   | Sensor index. The default value is 0, indicating the default sensor on the device. Other sensor IDs can be obtained by calling [getSensorList](js-apis-sensor.md#sensorgetsensorlist9) or by listening for device online/offline events through the [sensorStatusChange](js-apis-sensor.md#sensorstatuschange19) API.<br/>**Atomic service API**: This API can be used in atomic services since API version 19. |

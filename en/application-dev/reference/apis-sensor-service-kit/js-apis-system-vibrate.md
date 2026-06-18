@@ -2,9 +2,10 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=7b96ce2cdc47279f6264c88642e4fd07a8682bf6 translatedAt=2026-06-18T03:36:12.161Z pushedAt=2026-06-18T07:24:16.919Z -->
 
 The **Vibrator** module provides APIs for controlling LED lights and vibrators. You can use the APIs to query the LED light list, vibrator list, and vibration effect, and turn on or off the LED light and the vibrator.
 

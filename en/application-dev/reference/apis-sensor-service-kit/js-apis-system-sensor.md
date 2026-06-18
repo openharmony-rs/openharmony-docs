@@ -2,9 +2,10 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=7b96ce2cdc47279f6264c88642e4fd07a8682bf6 translatedAt=2026-06-18T03:36:07.589Z pushedAt=2026-06-18T07:24:16.916Z -->
 
 The **Sensor** module provides APIs for querying the sensor list, subscribing to or unsubscribing from sensor data, and executing control commands.
 
@@ -58,7 +59,7 @@ let accelerometerOptions: subscribeAccelerometerOptions = {
     console.info('Succeeded in subscribing. Z-axis data: ' + ret.z);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeAccelerometer(accelerometerOptions);
@@ -111,7 +112,7 @@ let subscribeCompassOptions: SubscribeCompassOptions = {
     console.info('Succeeded in subscribing. Get data direction:' + ret.direction);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeCompass(subscribeCompassOptions);
@@ -164,7 +165,7 @@ let subscribeProximityOptions: SubscribeProximityOptions = {
     console.info('Succeeded in subscribing. Get data distance:' + ret.distance);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeProximity(subscribeProximityOptions);
@@ -219,7 +220,7 @@ let subscribeLightOptions: SubscribeLightOptions = {
     console.info('Succeeded in subscribing. Get data intensity:' + ret.intensity);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeLight(subscribeLightOptions);
@@ -274,7 +275,7 @@ let subscribeStepCounterOptions: SubscribeStepCounterOptions = {
     console.info('Succeeded in subscribing. Get step value:' + ret.steps);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeStepCounter(subscribeStepCounterOptions);
@@ -328,7 +329,7 @@ let subscribeBarometerOptions: SubscribeBarometerOptions = {
     console.info('Succeeded in subscribing. Get data value:' + ret.pressure);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeBarometer(subscribeBarometerOptions);
@@ -383,7 +384,7 @@ let subscribeHeartRateOptions: SubscribeHeartRateOptions = {
     console.info('Succeeded in subscribing. Get heartRate value:' + ret.heartRate);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeHeartRate(subscribeHeartRateOptions);
@@ -437,7 +438,7 @@ let subscribeOnBodyStateOptions: SubscribeOnBodyStateOptions = {
     console.info('Succeeded in subscribing. Get on-body state value:' + ret.value);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeOnBodyState(subscribeOnBodyStateOptions);
@@ -486,7 +487,7 @@ let getOnBodyStateOptions: GetOnBodyStateOptions = {
     console.info('Succeeded in subscribing. On body state: ' + ret.value);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.getOnBodyState(getOnBodyStateOptions);
@@ -525,7 +526,7 @@ let subscribeDeviceOrientationOptions: SubscribeDeviceOrientationOptions = {
     console.info('Succeeded in subscribing. Gamma data: ' + ret.gamma);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   }
 };
 Sensor.subscribeDeviceOrientation(subscribeDeviceOrientationOptions);
@@ -585,7 +586,7 @@ let subscribeGyroscopeOptions: SubscribeGyroscopeOptions = {
     console.info('Succeeded in subscribing. Z-axis data: ' + ret.z);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   }
 };
 Sensor.subscribeGyroscope(subscribeGyroscopeOptions);
@@ -626,7 +627,7 @@ Defines the type of data to return for a subscription to data changes of the acc
 | success  | [AccelerometerResponse](#accelerometerresponse) | Yes  | Callback invoked when the acceleration sensor data changes.                          |
 | fail     | Function                                        | No  | Callback invoked when an API call fails.                                    |
 
-## AccelerometerResponse 
+## AccelerometerResponse
 
 Defines the callback invoked when the acceleration sensor data changes. 
 
@@ -651,7 +652,7 @@ Defines the type of data to return for a subscription to data changes of the com
 | success | [CompassResponse](#compassresponse) | Yes  | Callback invoked when the compass sensor data changes.|
 | fail    | Function                            | No  | Callback invoked when an API call fails.      |
 
-## CompassResponse 
+## CompassResponse
 
 Defines a **CompassResponse** object.
 
@@ -674,7 +675,7 @@ Defines the type of data to return for a subscription to data changes of the pro
 | success | [ProximityResponse](#proximityresponse) | Yes  | Defines a **ProximityResponse** object.|
 | fail    | Function                                | No  | Callback invoked when an API call fails.          |
 
-## ProximityResponse 
+## ProximityResponse
 
 Callback invoked when the proximity sensor data changes.
 
@@ -699,7 +700,7 @@ Defines the type of data to return for a subscription to data changes of the amb
 | success | [LightResponse](#lightresponse) | Yes  | Callback invoked when the ambient light sensor data changes.|
 | fail    | Function                        | No  | Callback invoked when an API call fails.      |
 
-## LightResponse 
+## LightResponse
 
 Defines a **LightResponse** object.
 
@@ -724,7 +725,7 @@ Defines the type of data to return for a subscription to data changes of the ste
 | success | [StepCounterResponse](#stepcounterresponse) | Yes  | Defines a **StepCounterResponse** object.|
 | fail    | Function                                    | No  | Callback invoked when an API call fails.        |
 
-## StepCounterResponse 
+## StepCounterResponse
 
 Callback invoked when the step counter sensor data changes.
 
@@ -747,7 +748,7 @@ Defines the type of data to return for a subscription to data changes of the bar
 | success | [BarometerResponse](#barometerresponse) | Yes  | Callback invoked when the barometer sensor data changes.|
 | fail    | Function                                | No  | Callback invoked when an API call fails.        |
 
-## BarometerResponse 
+## BarometerResponse
 
 Defines a **BarometerResponse** object.
 
@@ -770,7 +771,7 @@ Defines the type of data to return for a subscription to data changes of the hea
 | success | [HeartRateResponse](#heartrateresponse) | Yes  | Callback invoked when the heart rate sensor data changes. This callback is invoked every five seconds.|
 | fail    | Function                                | No  | Callback invoked when an API call fails.                       |
 
-## HeartRateResponse 
+## HeartRateResponse
 
 Defines a **HeartRateResponse** object.
 
@@ -793,7 +794,7 @@ Defines the callback invoked upon change in the wearing state of the device that
 | success | [OnBodyStateResponse](#onbodystateresponse) | Yes  | Callback invoked when the wearing state of the device that houses the sensor is successfully obtained.|
 | fail    | Function                                    | No  | Callback invoked when an API call fails.  |
 
-## OnBodyStateResponse 
+## OnBodyStateResponse
 
 Specifies whether the device that houses the sensor is worn.
 
@@ -829,7 +830,7 @@ Defines the type of data to return for a subscription to data changes of the dev
 | success  | [DeviceOrientationResponse](#deviceorientationresponse6) | Yes  | Callback invoked when the device orientation sensor data changes.                  |
 | fail     | Function                                                 | No  | Callback invoked when an API call fails.                                    |
 
-## DeviceOrientationResponse<sup>6+</sup> 
+## DeviceOrientationResponse<sup>6+</sup>
 
 Defines a **DeviceOrientationResponse** object.
 
@@ -843,7 +844,7 @@ Defines a **DeviceOrientationResponse** object.
 | beta  | number | Yes  | Rotation angle around the X axis when the Y/Z axis of the device coincides with the Y/Z axis of the earth.|
 | gamma | number | Yes  | Rotation angle around the Y axis when the X/Z axis of the device coincides with the X/Z axis of the earth.|
 
-## SubscribeGyroscopeOptions<sup>6+</sup> 
+## SubscribeGyroscopeOptions<sup>6+</sup>
 
 Defines the type of data to return for a subscription to data changes of the gyroscope sensor.
 
@@ -857,7 +858,7 @@ Defines the type of data to return for a subscription to data changes of the gyr
 | success  | [GyroscopeResponse](#gyroscoperesponse6) | Yes  | Callback invoked when the gyroscope sensor data changes.                          |
 | fail     | Function                                 | No  | Callback invoked when an API call fails.                                    |
 
-## GyroscopeResponse<sup>6+</sup> 
+## GyroscopeResponse<sup>6+</sup>
 
 Defines a **GyroscopeResponse** object.
 
