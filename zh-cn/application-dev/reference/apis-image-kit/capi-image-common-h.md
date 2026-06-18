@@ -562,7 +562,7 @@ Image_ErrorCode OH_PictureMetadata_GetBlobData(OH_PictureMetadata *metadata, uin
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：</li><br>                                <li>1. metadata或blob为空指针。</li><br>                                <li>2. blobSize为0或小于要求。</li><br>         <li>IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型。</li><br>         <li>IMAGE_UNSUPPORTED_OPERATION：无法获取二进制数据。</li><br>         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadata或blob为空指针、blobSize为0。</li><br>         <li>IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型。</li><br>         <li>IMAGE_UNSUPPORTED_OPERATION：无法获取二进制数据。</li><br>         </ul> |
 
 ### OH_PictureMetadata_GetPropertyWithNull()
 
