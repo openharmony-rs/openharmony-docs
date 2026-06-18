@@ -110,7 +110,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
 | iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为1~128字节，常用为12字节。                             |
-| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为0~INT_MAX字节，常用为16字节。                             |
+| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为0~INT_MAX字节。                             |
 | authTag | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需从[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)输出的[DataBlob](#datablob)中提取末尾16字节，作为[init()](#init-1)或[initSync()](#initsync12)方法中GcmParamsSpec的authTag。 |
 
 > **说明：**
@@ -6754,8 +6754,6 @@ update(input: DataBlob, callback: AsyncCallback\<void>): void
 
 API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
 
-**设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
-
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明         |
@@ -6854,8 +6852,6 @@ digest(callback: AsyncCallback\<DataBlob>): void
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
 
 API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
-
-**设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
 
 **参数：**
 
@@ -7765,8 +7761,6 @@ generateRandom(len: number, callback: AsyncCallback\<DataBlob>): void
 **系统能力：** SystemCapability.Security.CryptoFramework.Rand
 
 API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
-
-**设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
 
 **参数：**
 
