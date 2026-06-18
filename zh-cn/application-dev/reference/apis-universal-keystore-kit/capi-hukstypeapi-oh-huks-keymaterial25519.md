@@ -8,7 +8,7 @@
 <!--Adviser: @zengyawen-->
 
 ```c
-typedef struct OH_Huks_KeyMaterial25519 {...} OH_Huks_KeyMaterial25519
+struct OH_Huks_KeyMaterial25519 {...}
 ```
 
 ## 概述
