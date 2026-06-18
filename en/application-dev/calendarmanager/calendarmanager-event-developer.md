@@ -44,7 +44,7 @@ The table below lists the main APIs used for event management. For details about
 
 2. Apply for the required permission. When using Calendar Kit, declare the **ohos.permission.READ_CALENDAR** and **ohos.permission.WRITE_CALENDAR** permissions in the **module.json5** file .for reading and writing calendar events. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
-3. Obtain the **calendarMgr** object based on the context to manage calendars. You are advised to perform managements in the **EntryAbility.ets** file.
+3. Obtain the **calendarMgr** object based on the context to manage calendars. You are advised to perform management in the **EntryAbility.ets** file.
 
     <!-- @[calendarEvent_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
