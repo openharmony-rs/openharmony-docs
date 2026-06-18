@@ -34,3 +34,4 @@ typedef struct {...} OH_MIDIDeviceInformation
 | uint64_t productId | 产品ID。<br>**起始版本：** 24 |
 | char deviceAddress[64] | 设备物理地址（BLE设备）。<br>**起始版本：** 24 |
 
+
