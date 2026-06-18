@@ -30,7 +30,9 @@ ArkTS-Sta: onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array&lt;Measur
 
 ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的节点信息和尺寸范围通过onMeasureSize传递给该开发者。不允许在onMeasureSize函数中改变状态变量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +62,9 @@ ArkTS-Sta: onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array&lt;Layo
 
 ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节点自身的尺寸范围通过onPlaceChildren传递给该自定义组件。不允许在onPlaceChildren函数中改变状态变量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,7 +88,9 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 父组件（自定义组件）布局信息，继承自[SizeResult](#sizeresult10)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +108,8 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 子组件布局信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -112,8 +120,8 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 | 名称         | 类型       | 只读|可选|  说明                                                      |
 |--------------|---------------------------------- | ------|-----------------------------------------------------|---------------------|
-| measureResult| [MeasureResult](#measureresult10) |   否|否| 子组件测量后的尺寸信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>单位：vp <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23    |
-| uniqueId<sup>18+</sup>| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 |是| 系统为子组件分配的唯一标识UniqueID。<br>取值范围[0,+∞)。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18<br/> **ArkTS-Sta起始版本：** 23|
+| measureResult| [MeasureResult](#measureresult10) |   否|否| 子组件测量后的尺寸信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>单位：vp <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23    |
+| uniqueId<sup>18+</sup>| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 |是| 系统为子组件分配的唯一标识UniqueID。<br>取值范围[0,+∞)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18<br/> **ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### layout<sup>10+</sup>
 
@@ -123,7 +131,9 @@ ArkTS-Sta: layout(position: Position | undefined): void
 
 调用此方法对子组件的位置信息进行限制。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,7 +155,9 @@ ArkTS-Sta: getMargin() : DirectionalEdgesT\<double> | undefined
 
 调用此方法获取子组件的margin信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -167,7 +179,9 @@ ArkTS-Sta: getPadding() : DirectionalEdgesT\<double> | undefined
 
 调用此方法获取子组件的padding信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,7 +203,9 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
 调用此方法获取子组件的borderWidth信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,7 +223,9 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
 子组件位置信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,7 +235,7 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
 ### 属性
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -227,7 +245,7 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| uniqueId<sup>18+</sup>| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 系统为子组件分配的唯一标识UniqueID。|
+| uniqueId<sup>18+</sup>| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 系统为子组件分配的唯一标识UniqueID。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### measure
 
@@ -237,7 +255,9 @@ ArkTS-Sta: measure(constraint: ConstraintSizeOptions | undefined): MeasureResult
 
 调用此方法限制子组件的尺寸范围。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -265,7 +285,9 @@ ArkTS-Sta: getMargin() : DirectionalEdgesT\<double\> | undefined
 
 获取子组件的margin信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -287,7 +309,9 @@ ArkTS-Sta: getPadding() : DirectionalEdgesT\<double\> | undefined
 
 获取子组件的padding信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -309,7 +333,9 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 
 获取子组件的borderWidth信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -328,7 +354,9 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 
 测量后的组件布局信息。继承自[SizeResult](#sizeresult10)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,7 +376,9 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 >- 子组件设置的位置信息，offset、position、markAnchor优先级大于onPlaceChildren设置的位置信息，其他位置设置属性不生效。
 >- 使用自定义布局方法时，需要同时调用onMeasureSize和onPlaceChildren方法，否则可能出现布局异常。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -371,7 +401,7 @@ ArkUI框架会在自定义组件布局时，将该自定义组件的子节点信
 >
 > 从API version 9开始支持，从API version 10开始废弃，推荐使用[onPlaceChildren](#onplacechildren10)替代。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -394,7 +424,7 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 >
 > 从API version 9开始支持，从API version 10开始废弃，推荐使用[onMeasureSize](#onmeasuresize10)替代。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -417,7 +447,7 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节
 
 ### 属性
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -441,7 +471,7 @@ measure(childConstraint: ConstraintSizeOptions)
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[Measurable](#measurable10)或者[Layoutable](#layoutable10)替代。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -463,7 +493,7 @@ layout(childLayoutInfo: LayoutInfo)
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[Measurable](#measurable10)或者[Layoutable](#layoutable10)替代。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -483,7 +513,7 @@ layout(childLayoutInfo: LayoutInfo)
 >
 > 从API version 9开始支持，从API version 10开始废弃。建议使用[getBorderWidth](#getborderwidth12)，[getMargin](#getmargin12)和[getPadding](#getpadding12)替代。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -503,7 +533,7 @@ layout(childLayoutInfo: LayoutInfo)
 >
 > 从API version 9开始支持，从API version 10开始废弃。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

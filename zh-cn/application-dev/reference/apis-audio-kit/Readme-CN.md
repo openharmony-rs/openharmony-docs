@@ -1,8 +1,8 @@
 # Audio Kit（音频服务）
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -11,6 +11,7 @@
     - [模块描述](arkts-apis-audio.md)
     - [Functions](arkts-apis-audio-f.md)
     - [Interface (AudioCapturer)](arkts-apis-audio-AudioCapturer.md)
+    - [Interface (AudioDeviceEnhanceManager)](arkts-apis-audio-AudioDeviceEnhanceManager.md)
     - [Interface (AudioManager)](arkts-apis-audio-AudioManager.md)
     - [Interface (AudioRenderer)](arkts-apis-audio-AudioRenderer.md)
     - [Interface (AudioRoutingManager)](arkts-apis-audio-AudioRoutingManager.md)
@@ -56,6 +57,7 @@
     - [native_audio_common.h](capi-native-audio-common-h.md)
     - [native_audio_converter.h](capi-native-audio-converter-h.md)
     - [native_audio_device_base.h](capi-native-audio-device-base-h.md)
+    - [native_audio_device_enhance_manager.h](capi-native-audio-device-enhance-manager-h.md)
     - [native_audio_resource_manager.h](capi-native-audio-resource-manager-h.md)
     - [native_audiostream_base.h](capi-native-audiostream-base-h.md)
     - [native_audiostreambuilder.h](capi-native-audiostreambuilder-h.md)
@@ -75,6 +77,7 @@
     - [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md)
     - [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md)
     - [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md)
+    - [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md)
     - [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md)
     - [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md)
     - [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md)

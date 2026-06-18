@@ -1,8 +1,8 @@
 # Web组件支持视频沉浸式全屏播放
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @GrowUpEveryday-->
-<!--Designer: @qiu-gongkai-->
+<!--Owner: @zhangyao75477-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 

@@ -1,9 +1,9 @@
 # Game Controller Kit开发指南
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
-<!--Owner: @zhaoshuhao123-->
+<!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
-<!--Tester: @csp1992-->
+<!--Tester: @fei_0805-->
 <!--Adviser: @luwy2025-->
 - [Game Controller Kit简介](game-controller-introduction.md)
 - [监听设备上下线（C/C++）](game-controller-monitor-device.md)

@@ -34,9 +34,9 @@ import { PropRef } from '@kit.ArkUI';
 
 - 当装饰的变量为boolean、string、number等类型时，数据源的变化可以被同步观察到。
 
-  ```ts
-  'use static'
-
+  <!-- @[PropRefBasicTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefBasicTypes.ets) --> 
+  
+  ``` TypeScript
   import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
   @Entry
   @Component
@@ -47,9 +47,17 @@ import { PropRef } from '@kit.ArkUI';
     build() {
       Column() {
         Text(`State ${this.count}`)
+          .fontSize(20)
+          .margin(10)
         Text(`State ${this.message}`)
+          .fontSize(20)
+          .margin(10)
         Text(`State ${this.flag}`)
+          .fontSize(20)
+          .margin(10)
         Button('change State')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 对数据源的更改会同步给子组件
             this.count++;
@@ -62,6 +70,7 @@ import { PropRef } from '@kit.ArkUI';
           flag: this.flag
         })
       }
+      .width('100%')
     }
   }
   @Component
@@ -72,18 +81,29 @@ import { PropRef } from '@kit.ArkUI';
     build() {
       Column() {
         Text(`PropRef ${this.count}`)
+          .fontSize(20)
+          .margin(10)
         Text(`PropRef ${this.message}`)
+          .fontSize(20)
+          .margin(10)
         Text(`PropRef ${this.flag}`)
+          .fontSize(20)
+          .margin(10)
         Button('change PropRef')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.count++;
             this.message += '!';
             this.flag = !this.flag;
           })
       }
+      .width('100%')
     }
   }
   ```
+
+![propref-one-way-sync-1](../figures/propref1.gif)
 
 - 装饰的变量为内置类型时，可观察变量整体赋值和API调用的变化。
 
@@ -96,12 +116,7 @@ import { PropRef } from '@kit.ArkUI';
 
 ## 限制条件
 
-1. \@PropRef接收外部传入时，不能接收undefined类型：
-
-    - 若初始化时传入undefined类型，该值将不会生效，而是使用本地的默认值。
-    - 若从数据源更新时传入undefined，则本次从数据源的更新不会生效。
-
-2. \@PropRef不支持装饰Function与() => void类型的变量，API version 23之前，框架会抛出运行时错误。从API version 23开始，添加对\@PropRef装饰Function与() => void类型变量的校验，编译期会报错。
+1. \@PropRef不支持装饰Function与() => void类型的变量，API version 23之前，框架会抛出运行时错误。从API version 23开始，添加对\@PropRef装饰Function与() => void类型变量的校验，编译期会报错。
 
 ## 使用场景
 
@@ -109,9 +124,9 @@ import { PropRef } from '@kit.ArkUI';
 
 \@PropRef可以接收父组件传递的数据源，并与之单向同步。
 
-```ts
-'use static'
+<!-- @[PropRefParentChild](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefParentChild.ets) --> 
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
@@ -120,13 +135,18 @@ struct Index {
   build() {
     Column() {
       Text(`State ${this.count}`)
+        .fontSize(20)
+        .margin(10)
       Button('change State')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 对数据源的更改会同步给子组件
           this.count++;
       })
       Child({ count: this.count })
     }
+    .width('100%')
   }
 }
 @Component
@@ -135,22 +155,29 @@ struct Child {
   build() {
     Column() {
       Text(`PropRef ${this.count}`)
+        .fontSize(20)
+        .margin(10)
       Button('change PropRef')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.count++;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-one-way-sync-2](../figures/propref2.gif)
 
 ### \@PropRef获得父组件中数据源的引用
 
 \@PropRef会获得父组件数据源的引用，对于复杂类型，修改属性将在父组件中体现。若希望不影响父组件中的数据源，则需重新赋值对象。
 
-```ts
-'use static'
+<!-- @[PropRefDataSourceRef](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefDataSourceRef.ets) --> 
 
+``` TypeScript
 import { 
   Entry, 
   Text, 
@@ -181,10 +208,13 @@ struct Index {
   build() {
     Column() {
       Text(`data property code is ${this.data.code}`)
+        .fontSize(20)
+        .margin(10)
       Child({
         childData: this.data
       })
     }
+    .width('100%')
   }
 }
 
@@ -195,29 +225,38 @@ struct Child {
   build() {
     Column() {
       Text(`childData property code is ${this.childData.code}`)
+        .fontSize(20)
+        .margin(10)
       Button('modify childData property code')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 如果只点击该Button，由于childData是父组件中数据源的引用，则父组件中数据源的属性也会修改。
           this.childData.code += 10;
         })
 
       Button('replace childData')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 如果点击该Button，本地的childData变量会引用新的对象，所以不会影响父组件中的数据源。
           this.childData = new Data(200);
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-data-source-ref](../figures/propref3.gif)
 
 ### 装饰Array类型
 
 当使用\@PropRef装饰数组类型时，可以观察到数组整体及其元素的变化。通过API操作更改数组内容也能被观测到。
 
-```ts
-'use static'
+<!-- @[PropRefArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefArray.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
@@ -227,6 +266,7 @@ struct Index {
     Column() {
       Child({ arr: this.arr })
     }
+    .width('100%')
   }
 }
 @Component
@@ -235,24 +275,37 @@ struct Child {
   build() {
     Column() {
       Text(`${this.arr}`)
-      Button(`change arr[0]: ${this.arr[0]}`).onClick((e: ClickEvent) => {
+        .fontSize(20)
+        .margin(10)
+      Button(`change arr[0]: ${this.arr[0]}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 修改arr变量中元素的值，触发UI刷新
           this.arr[0]++;
       })
-      Button(`push item: ${this.arr.length}`).onClick((e: ClickEvent) => {
+      Button(`push item: ${this.arr.length}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 向arr变量中添加元素，触发UI刷新
           this.arr.push(Double.toInt(this.arr.length));
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-array](../figures/propref4.gif)
 
 ### 装饰Map类型
 
 使用\@PropRef装饰Map类型时，可以观察到Map整体及其API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[PropRefMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefMap.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
@@ -262,6 +315,7 @@ struct Index {
     Column() {
       Child({ map: this.map })
     }
+    .width('100%')
   }
 }
 @Component
@@ -270,24 +324,37 @@ struct Child {
   build() {
     Column() {
       Text(`${this.map}`)
-      Button(`change map[0]: ${this.map.get(0)}`).onClick((e: ClickEvent) => {
+        .fontSize(20)
+        .margin(10)
+      Button(`change map[0]: ${this.map.get(0)}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 更新键值对，触发UI刷新
           this.map.set(0, this.map.get(0)! + 1);
       })
-      Button(`add item: ${this.map.size}`).onClick((e: ClickEvent) => {
+      Button(`add item: ${this.map.size}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 新增键值对，触发UI刷新
           this.map.set(this.map.size, this.map.size);
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-map](../figures/propref5.gif)
 
 ### 装饰Set类型
 
 使用\@PropRef装饰Set类型时，可以观察到Set整体以及API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[PropRefSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefSet.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
@@ -297,6 +364,7 @@ struct Index {
     Column() {
       Child({ set: this.set })
     }
+    .width('100%')
   }
 }
 @Component
@@ -304,31 +372,51 @@ struct Child {
   @PropRef set: Set<int>;
   build() {
     Column() {
-      Text(`${this.set}`)
-      Button('init set').onClick((e: ClickEvent) => {
-        this.set = new Set<int>([0, 1, 2, 3, 4]);
+      Text(`${Array.from(this.set)}`)
+        .fontSize(20)
+        .margin(10)
+      Button('init set')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.set = new Set<int>([0, 1, 2, 3, 4]);
       })
-      Button('set new one').onClick((e: ClickEvent) => {
-        this.set.add(5);
+      Button('set new one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 新增元素，触发UI刷新
+          this.set.add(5);
       })
-      Button('clear').onClick((e: ClickEvent) => {
-        this.set.clear();
+      Button('clear')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 清空Set，触发UI刷新
+          this.set.clear();
       })
-      Button('delete the first one').onClick((e: ClickEvent) => {
-        this.set.delete(0);
+      Button('delete the first one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 删除元素，触发UI刷新
+          this.set.delete(0);
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-set](../figures/propref6.gif)
 
 ### 装饰Date类型
 
 使用\@PropRef装饰Date类型时，可以观察到Date整体及其API操作的变化。
 
-```ts
-'use static'
+<!-- @[PropRefDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefDate.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
@@ -338,6 +426,7 @@ struct Index {
     Column() {
       Child({ date: this.date })
     }
+    .width('100%')
   }
 }
 @Component
@@ -346,19 +435,40 @@ struct Child {
   build() {
     Column() {
       Text(`${this.date}`)
-      Button(`change update`).onClick((e: ClickEvent) => {
-        this.date = new Date('2023-09-09');
+        .fontSize(20)
+        .margin(10)
+      Button(`change update`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 通过给date重新赋值新的Date实例，触发UI刷新
+          this.date = new Date('2023-09-09');
       })
-      Button('increase the year by 1').onClick((e: ClickEvent) => {
-        this.date.setFullYear(this.date.getFullYear() + 1);
+      Button('increase the year by 1')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 调用Date的setFullYear接口修改年份，触发UI刷新
+          this.date.setFullYear(this.date.getFullYear() + 1);
       })
-      Button('increase the month by 1').onClick((e: ClickEvent) => {
-        this.date.setMonth(this.date.getMonth() + 1);
+      Button('increase the month by 1')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 调用Date的setMonth接口修改月份，触发UI刷新
+          this.date.setMonth(this.date.getMonth() + 1);
       })
-      Button('parent increase the day by 1').onClick((e: ClickEvent) => {
-        this.date.setDate(this.date.getDate() + 1);
+      Button('increase the day by 1')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 调用Date的setDate接口修改日期，触发UI刷新
+          this.date.setDate(this.date.getDate() + 1);
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-date](../figures/propref7.gif)

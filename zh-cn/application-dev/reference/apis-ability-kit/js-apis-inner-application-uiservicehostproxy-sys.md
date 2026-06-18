@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 UIServiceHostProxy提供代理能力，可以将数据从[UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md)服务端发送到客户端。

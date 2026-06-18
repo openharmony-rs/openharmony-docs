@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -106,10 +106,19 @@ ArkTS-Sta: static createBlendModeColorFilter(color: common2D.Color | int, mode: 
 
 **示例：**
 
+
+ArkTS-Dyn示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
 let colorFilter = drawing.ColorFilter.createBlendModeColorFilter(0xffff0000, drawing.BlendMode.SRC);
+```
+
+ArkTS-Sta示例：
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let colorFilter = drawing.ColorFilter.createBlendModeColorFilter((0xffff0000).toInt(), drawing.BlendMode.SRC);
 ```
 
 ## createComposeColorFilter
@@ -155,7 +164,7 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
 let colorFilter1 = drawing.ColorFilter.createBlendModeColorFilter(color, drawing.BlendMode.SRC);
 let colorFilter2 = drawing.ColorFilter.createBlendModeColorFilter(color, drawing.BlendMode.DST);
-let colorFilter = drawing.ColorFilter.createComposeColorFilter(colorFilter1, colorFilter2);
+let colorFilter = drawing.ColorFilter.createComposeColorFilter(colorFilter1!, colorFilter2!);
 ```
 
 ## createLinearToSRGBGamma

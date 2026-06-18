@@ -14,9 +14,17 @@
 
 在ArkTS-Sta中使用时，开发指南参考：[LocalStorage：页面级UI状态存储（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-localstorage.md)。
 
+## @LocalStoragePropRef
+
+@interface LocalStoragePropRef
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型   | 必填 | 说明                         |
 | -------- | ------ | ---- | ---------------------------- |
@@ -45,4 +53,3 @@ struct Parent {
   }
 }
 ```
-

@@ -186,7 +186,7 @@ struct DividerExample {
 }
 ```
 
-![en-us_image_0000001174422926](figures/en-us_image_0000001174422926.png)
+![divider1](figures/divider1.png)
 
 ### Example 2: Configuring the Divider Line Cap Style
 

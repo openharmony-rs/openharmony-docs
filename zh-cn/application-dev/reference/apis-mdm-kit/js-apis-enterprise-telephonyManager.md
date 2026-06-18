@@ -16,7 +16,7 @@
 >
 > 本模块接口仅对设备管理应用开放，调用接口前需激活该应用，详情请参考[MDM Kit开发指南](../../mdm/mdm-kit-guide.md)。
 >
-> 全局通用限制类策略由restrictions提供，若要全局禁用通话，请参考[@ohos.enterprise.restrictions（限制类策略）](js-apis-enterprise-restrictions.md)。
+> 全局通用限制类策略由restrictions提供，若要全局禁用通话，请参考[@ohos.enterprise.restrictions （限制类策略）](js-apis-enterprise-restrictions.md)。
 
 ## 导入模块
 
@@ -768,7 +768,7 @@ setDefaultData(admin: Want, slotId: number): void
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200012  | Parameter verification failed. |
-| 9201020  | set default data sim failed. |
+| 9201020  | Failed to set the default data SIM card. The airplane mode is enabled or no SIM card is inserted. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 203      | This function is prohibited by enterprise management policies. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |

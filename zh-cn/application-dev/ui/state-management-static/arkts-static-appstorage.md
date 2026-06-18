@@ -224,9 +224,9 @@ link2!.get() // == 49
 
 @StorageLink与AppStorage配合使用，通过AppStorage中的属性创建双向数据同步。
 
-```ts
-'use static'
+<!-- @[AppStorageUI](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStorageUI.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, StorageLink, Text } from '@kit.ArkUI';
 
 class Data {
@@ -240,35 +240,43 @@ class Data {
 @Entry
 @Component
 struct Index {
-  @StorageLink('PropA') storageLink: number = 1;
-  @LocalStorageLink('LinkA') localStorageLink: number = 1;
-  @StorageLink('PropB') storageLinkObject: Data = new Data(1);
-  @LocalStorageLink('LinkB') localStorageLinkObject: Data = new Data(1);
+  @StorageLink('StorageLinkBasic') storageLink: number = 1;
+  @LocalStorageLink('LocalStorageLinkBasic') localStorageLink: number = 1;
+  @StorageLink('StorageLinkObject') storageLinkObject: Data = new Data(1);
+  @LocalStorageLink('LocalStorageLinkObject') localStorageLinkObject: Data = new Data(1);
   static {
-    AppStorage.setOrCreate<Double>('PropA', 47);
-    AppStorage.setOrCreate<Data>('PropB', new Data(50));
+    AppStorage.setOrCreate<number>('StorageLinkBasic', 47);
+    AppStorage.setOrCreate<Data>('StorageLinkObject', new Data(50));
   }
 
   build() {
     Column() {
       Button(`From AppStorage ${this.storageLink}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.storageLink += 1;
         })
 
       Button(`From LocalStorage ${this.localStorageLink}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.localStorageLink += 1;
         })
 
       // class属性监听需要使用@Observed装饰才能观察变化
       Button(`From AppStorage ${this.storageLinkObject.code}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.storageLinkObject.code += 1;
         })
 
       // class属性监听需要使用@Observed装饰才能观察变化
       Button(`From LocalStorage ${this.localStorageLinkObject.code}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.localStorageLinkObject.code += 1;
         })
@@ -279,13 +287,15 @@ struct Index {
 }
 ```
 
+![appstorage-withlocalstorage](../figures/appstorage_1.gif)
+
 ### \@StoragePropRef获得AppStorage中数据源的引用
 
 \@StoragePropRef会获得数据源的引用，对于复杂类型，修改属性将在AppStorage中体现。若希望不影响AppStorage中的数据源，则需重新赋值对象。
 
-```ts
-'use static'
+<!-- @[AppStoragePropRefDataRef](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStoragePropRefDataRef.ets) -->
 
+``` TypeScript
 import { 
   Entry, 
   Text, 
@@ -311,39 +321,48 @@ class Data {
 @Entry
 @Component
 struct Index {
-  @StoragePropRef('PropA') data: Data = new Data(100);
+  @StoragePropRef('PropRefA') data: Data = new Data(100);
   static {
-    AppStorage.setOrCreate<Data>('PropA', new Data(50));
+    AppStorage.setOrCreate<Data>('PropRefA', new Data(50));
   }
 
   build() {
     Column() {
       Text(`data property code is ${this.data.code}`)
+        .fontSize(20)
+        .margin(10)
       Button('modify data property code')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.data.code += 10;
           // 如果只点击该Button，由于data是AppStorage中数据源的引用，则AppStorage中数据源的属性也会修改。
-          console.info(`PropA in AppStorage ${AppStorage.get<Data>('PropA')!.code}`);
+          console.info(`PropRefA in AppStorage ${AppStorage.get<Data>('PropRefA')!.code}`);
         })
 
       Button('replace data')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.data = new Data(200);
           // 如果点击该Button，本地的data变量会引用新的对象，所以不会影响AppStorage中的数据源。
-          console.info(`PropA in AppStorage ${AppStorage.get<Data>('PropA')!.code}`);
+          console.info(`PropRefA in AppStorage ${AppStorage.get<Data>('PropRefA')!.code}`);
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![appstorage-storageref](../figures/appstorage_2.gif)
 
 ### AppStorage支持联合类型
 
 在下面的示例中，变量A的类型为number | null，变量B的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
-```ts
-'use static'
+<!-- @[AppStorageUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStorageUnionType.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Row, StorageLink, StoragePropRef, Text } from '@kit.ArkUI';
 
 @Component
@@ -354,13 +373,24 @@ struct StorageLinkComponent {
   build() {
     Column() {
       Text('@StorageLink接口初始化，@StorageLink取值')
-      Text(`${this.LinkA}`).fontSize(20).onClick((e: ClickEvent) => {
-        this.LinkA ? this.LinkA = null : this.LinkA = 1;
+        .fontSize(20)
+        .margin(10)
+      Button(`${this.LinkA}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 改变LinkA变量的值
+          this.LinkA ? this.LinkA = null : this.LinkA = 1;
       })
-      Text(`${this.LinkB}`).fontSize(20).onClick((e: ClickEvent) => {
-        this.LinkB ? this.LinkB = undefined : this.LinkB = 1;
+      Button(`${this.LinkB}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 改变LinkB变量的值
+          this.LinkB ? this.LinkB = undefined : this.LinkB = 1;
       })
     }
+    .width('100%')
     .borderWidth(3)
 
   }
@@ -374,13 +404,24 @@ struct StoragePropComponent {
   build() {
     Column() {
       Text('@StoragePropRef接口初始化，@StoragePropRef取值')
-      Text(`${this.PropA}`).fontSize(20).onClick((e: ClickEvent) => {
-        this.PropA ? this.PropA = null : this.PropA = 1;
+        .fontSize(20)
+        .margin(10)
+      Button(`${this.PropA}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 改变PropA变量的值
+          this.PropA ? this.PropA = null : this.PropA = 1;
       })
-      Text(`${this.PropB}`).fontSize(20).onClick((e: ClickEvent) => {
-        this.PropB ? this.PropB = undefined : this.PropB = 1;
+      Button(`${this.PropB}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 改变PropB变量的值
+          this.PropB ? this.PropB = undefined : this.PropB = 1;
       })
     }
+    .width('100%')
     .borderWidth(3)
   }
 }
@@ -401,80 +442,118 @@ struct Index {
 }
 ```
 
+![appstorage-union-type](../figures/appstorage_3.gif)
+
 ### 装饰Date类型变量
 
 以下示例中，@StorageLink装饰的selectedDate类型为Date。点击Button改变selectedDate的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[AppStorageDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStorageDate.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct DateSample {
-  @StorageLink('date') selectedDate: Date = new Date('2021-08-08');
+  @StorageLink('date') selectedDate: Date = new Date('2021-08-08'); // 使用@StorageLink装饰Date类型变量
 
   build() {
     Column() {
       Text(`${this.selectedDate}`)
+        .fontSize(20)
+        .margin(10)
       Button('set selectedDate to 2023-07-08')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 通过给selectedDate重新赋值新的Date实例，触发UI刷新
           AppStorage.setOrCreate('date', new Date('2023-07-08'));
         })
       Button('increase the year by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setFullYear接口修改年份，触发UI刷新
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setMonth接口修改月份，触发UI刷新
           this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setDate接口修改日期，触发UI刷新
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
-    }.width('100%')
+    }
+    .width('100%')
   }
 }
 ```
+
+![appstorage-date](../figures/appstorage_4.gif)
 
 ### 装饰Map类型变量
 
 在下面的示例中，@StorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[AppStorageMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStorageMap.ets) -->
 
-import { AppStorage, Button, ClickEvent, Column, Component, Entry, Row, StorageLink, Text } from '@kit.ArkUI';
+``` TypeScript
+import { AppStorage, Button, ClickEvent, Column, Component, Entry, Row, StorageLink, Text, ForEach } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct MapSample {
-  @StorageLink('map') message: Map<number, string> = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
+  @StorageLink('map') message: Map<number, string> = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]); // 使用@StorageLink装饰Map类型变量
 
   build() {
     Row() {
       Column() {
-        Text(`${this.message}`)
-        Button('init map').onClick((e: ClickEvent) => {
-          this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
+        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
+          Text(`key: ${item[0]}, value: ${item[1]}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('set new one').onClick((e: ClickEvent) => {
-          this.message.set(4, 'd');
+        Button('init map')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
-        Button('clear').onClick((e: ClickEvent) => {
-          this.message.clear();
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 新增键值对，触发UI刷新
+            this.message.set(4, 'd');
         })
-        Button('replace the existing one').onClick((e: ClickEvent) => {
-          this.message.set(0, 'aa');
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 清空Map，触发UI刷新
+            this.message.clear();
         })
-        Button('delete the existing one').onClick((e: ClickEvent) => {
-          AppStorage.get<Map<number, string>>('map')?.delete(0);
+        Button('replace the existing one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 更新键值对，触发UI刷新
+            this.message.set(0, 'aa');
+        })
+        Button('delete the existing one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 删除键值对，触发UI刷新
+            AppStorage.get<Map<number, string>>('map')?.delete(0);
         })
       }
       .width('100%')
@@ -484,39 +563,54 @@ struct MapSample {
 }
 ```
 
+![appstorage-map](../figures/appstorage_5.gif)
+
 
 ### 装饰Set类型变量
 
 在下面的示例中，@StorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[AppStorageSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStorageSet.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Row, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct SetSample {
-  @StorageLink('set') memberSet: Set<number> = new Set<number>([0, 1, 2, 3, 4]);
+  @StorageLink('set') memberSet: Set<number> = new Set<number>([0, 1, 2, 3, 4]); // 使用@StorageLink装饰Set类型变量
 
   build() {
     Row() {
       Column() {
-        Text(`${this.memberSet}`)
+        Text(`${Array.from(this.memberSet)}`)
+          .fontSize(20)
+          .margin(10)
         Button('init set')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.memberSet = new Set<number>([0, 1, 2, 3, 4]);
           })
         Button('set new one')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
+            // 新增元素，触发UI刷新
             AppStorage.get<Set<number>>('set')?.add(5);
           })
         Button('clear')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
+            // 清空Set，触发UI刷新
             this.memberSet.clear();
           })
         Button('delete the first one')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
+            // 删除元素，触发UI刷新
             this.memberSet.delete(0);
           })
       }
@@ -526,3 +620,5 @@ struct SetSample {
   }
 }
 ```
+
+![appstorage-set](../figures/appstorage_6.gif)

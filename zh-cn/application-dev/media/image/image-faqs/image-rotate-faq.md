@@ -27,9 +27,9 @@ Exif标准中定义了8个Orientation值和它们的字符串表示。
 | 7      | "Right-bottom" | 先水平镜像翻转，再顺时针旋转90°。 |
 | 8      | "Left-bottom"  | 顺时针旋转270°。                |
 
-ArkTS场景下读取和编辑图片的旋转角度信息，可参考：[编辑图片Exif信息](../image-tool.md)，对应的propertyKey需要设置为：ORIENTATION。
+ArkTS场景下读取和编辑图片的旋转角度信息，可参考：[读取和编辑图片Exif信息](../image-tool.md)，对应的propertyKey需要设置为：ORIENTATION。
 
-C/C++场景下读取和编辑图片的旋转角度信息，可参考：[使用Image_NativeModule编辑图片Exif信息](../image-tool-c.md)，对应的key需要设置为：OHOS_IMAGE_PROPERTY_ORIENTATION。
+C/C++场景下读取和编辑图片的旋转角度信息，可参考：[使用Image_NativeModule读取和编辑图片Exif信息](../image-tool-c.md)，对应的key需要设置为：OHOS_IMAGE_PROPERTY_ORIENTATION。
 
 ## 常见问题
 

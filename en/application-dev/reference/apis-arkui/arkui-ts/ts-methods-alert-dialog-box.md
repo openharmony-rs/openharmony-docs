@@ -419,7 +419,7 @@ struct AlertDialogExample {
 }
 ```
 
-![en-us_image_alert](figures/en-us_image_alert.gif)
+![image-alert](figures/image-alert.gif)
 
 ### Example 2: Opening a Dialog Box Outside the Main Window
 
@@ -489,7 +489,7 @@ struct AlertDialogExample {
 }
 ```
 
-![en-us_image_alert_showinsubwindow](figures/en-us_image_alert_showinsubwindow.jpg)
+![image-alert-showinsubwindow](figures/image-alert-showinsubwindow.jpg)
 
 ### Example 3: Setting the Dialog Box Animation
 
@@ -536,7 +536,7 @@ struct AlertDialogExample {
 }
 ```
 
-![en-us_image_alert_animation](figures/en-us_image_alert_animation.gif)
+![image-alert-animation](figures/image-alert-animation.gif)
 
 ### Example 4: Setting the Dialog Box Style
 
@@ -601,7 +601,7 @@ struct AlertDialogExample {
 }
 ```
 
-![en-us_image_alert_style](figures/en-us_image_alert_style.gif)
+![image-alert-style](figures/image-alert-style.gif)
 
 ### Example 5: Configuring a Dialog Box in the Hover State
 
@@ -709,7 +709,7 @@ struct Example2 {
 }
 ```
 
-![en-us_image_alert_lifecycle](figures/en-us_image_alert_lifecycle.gif)
+![image-alert-lifecycle](figures/image-alert-lifecycle.gif)
 
 ### Example 7: Customizing the Background Blur Effect
 
@@ -760,7 +760,7 @@ struct AlertDialogExample {
 }
 ```
 
-![en-us_image_alert_backgroundBlurStyleOptions](figures/en-us_image_alert_backgroundBlurStyleOptions.png)
+![image-alert-backgroundBlurStyleOptions](figures/image-alert-backgroundBlurStyleOptions.png)
 
 ### Example 8: Customizing the Background Effect
 
@@ -812,4 +812,4 @@ struct AlertDialogExample {
 }
 ```
 
-![en-us_image_alert_backgroundEffect](figures/en-us_image_alert_backgroundEffect.png)
+![image-alert-backgroundEffect](figures/image-alert-backgroundEffect.png)

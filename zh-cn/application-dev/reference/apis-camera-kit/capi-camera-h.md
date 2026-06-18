@@ -39,7 +39,7 @@
 | [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | 要设置的拍照捕获选项。 |
 | [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | 帧快门回调信息。 |
 | [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | 捕获结束信息。 |
-| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)， 返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
+| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)，返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
 | [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | Camera_MetadataObject | 元数据对象基础。 |
 | [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | Camera_TorchStatusInfo | 手电筒状态信息。 |
 | [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | Camera_SmoothZoomInfo | 平滑变焦参数信息。 |
@@ -53,6 +53,7 @@
 | [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | OH_Camera_ZoomRange | 变焦范围配置。 |
 | [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | OH_Camera_PhysicalAperture | 物理光圈配置。 |
 | [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md) | OH_Camera_ZoomPointInfo | 描述变焦点信息。 |
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md) | OH_Camera_Rect_Ext | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)，返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
 | [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | 相机管理器对象。<br> 可以使用[OH_Camera_GetCameraManager](#oh_camera_getcameramanager)方法创建指针。 |
 
 ### 枚举
@@ -92,6 +93,7 @@
 | [OH_Camera_OISMode](#oh_camera_oismode) | OH_Camera_OISMode | 光学防抖（Optical Image Stabilization）模式枚举。 |
 | [OH_Camera_OISAxes](#oh_camera_oisaxes) | OH_Camera_OISAxes | 光学防抖（OIS）轴枚举。 |
 | [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | 枚举相机曝光状态。 |
+| [OH_Camera_MetadataObjectEmotion](#oh_camera_metadataobjectemotion) | OH_Camera_MetadataObjectEmotion | 元数据对象情绪类型枚举。 |
 
 ### 函数
 
@@ -257,6 +259,7 @@ enum Camera_Format
 | -- | -- |
 | CAMERA_FORMAT_RGBA_8888 = 3 | RGBA 8888格式。 |
 | CAMERA_FORMAT_DNG = 4 | DNG格式。<br>**起始版本：** 24 |
+| CAMERA_FORMAT_DNG_XDRAW = 5 | 增强型DNG格式。<br>**起始版本：** 26.0.0 |
 | CAMERA_FORMAT_YUV_420_SP = 1003 | YUV 420格式。 |
 | CAMERA_FORMAT_JPEG = 2000 | JPEG格式。 |
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010 格式。<br>**起始版本：** 12 |
@@ -662,6 +665,7 @@ enum Camera_ControlCenterEffectType
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | 控制器效果类型：美颜。 |
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | 控制器效果类型：人像虚化。 |
 | CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | 控制器效果类型：自动对焦。<br>**起始版本：** 24 |
+| CONTROL_CENTER_EFFECT_TYPE_COLOR_EFFECT = 3 | 控制器效果类型：XMAGE风格。<br>**起始版本：** 26.0.0 |
 
 ### Camera_PhotoQualityPrioritization
 
@@ -731,6 +735,25 @@ enum OH_Camera_ExposureState
 | -- | -- |
 | OH_CAMERA_EXPOSURE_STATE_SCAN = 0 | 表示曝光处于扫描状态。<br>**起始版本：** 26.0.0 |
 | OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 | 表示曝光已经收敛。<br>**起始版本：** 26.0.0 |
+
+### OH_Camera_MetadataObjectEmotion
+
+```c
+enum OH_Camera_MetadataObjectEmotion
+```
+
+**描述**
+
+元数据对象情绪类型枚举。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_NEUTRAL = 0 | 平静。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SADNESS = 1 | 悲伤。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2 | 微笑。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3 | 惊讶。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明

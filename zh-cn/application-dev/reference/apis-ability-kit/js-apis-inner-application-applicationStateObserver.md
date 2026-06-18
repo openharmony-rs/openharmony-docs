@@ -3,14 +3,16 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 应用状态监听器，可以作为入参传入[on('applicationState')](js-apis-app-ability-appManager.md#appmanageronapplicationstate14)方法，监听应用的生命周期变化。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -26,6 +28,10 @@ onForegroundApplicationChanged(appStateData: AppStateData): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -39,6 +45,10 @@ onAbilityStateChanged(abilityStateData: AbilityStateData): void
 Ability状态发生变化时执行的回调函数。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -54,6 +64,10 @@ onProcessCreated(processData: ProcessData): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -67,6 +81,10 @@ onProcessDied(processData: ProcessData): void
 进程销毁时执行的回调函数。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -82,6 +100,10 @@ onProcessStateChanged(processData: ProcessData): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -95,6 +117,10 @@ onAppStarted(appStateData: AppStateData): void
 应用第一个进程创建时执行的回调函数。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -110,6 +136,10 @@ onAppStopped(appStateData: AppStateData): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -124,11 +154,34 @@ type ProcessData = _ProcessData.default
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
+
 | 类型 | 说明 |
 | --- | --- |
-| [_ProcessData.default](js-apis-inner-application-processData.md) | 进程数据信息。 |
+| [ProcessData](js-apis-inner-application-processData.md) | 进程数据信息。 |
+
+## ProcessData<sup>23+</sup>
+
+type ProcessData = _ProcessData
+
+进程数据信息。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                     | 说明           |
+| -------------------------------------------------------- | -------------- |
+| [_ProcessData](js-apis-inner-application-processData.md) | 进程数据信息。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { appManager } from '@kit.AbilityKit';
 
@@ -156,4 +209,44 @@ let applicationStateObserver: appManager.ApplicationStateObserver = {
   }
 };
 let observerCode = appManager.on('applicationState', applicationStateObserver);
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+
+class ApplicationStateObserverCustom implements appManager.ApplicationStateObserver {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
+    console.info(`onForegroundApplicationChanged, appStateData: ${JSON.stringify(appStateData)}.`);
+  }
+
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
+    console.info(`onAbilityStateChanged, abilityStateData: ${JSON.stringify(abilityStateData)}.`);
+  }
+
+  onProcessCreated(processData: appManager.ProcessData) {
+    console.info(`onProcessCreated, processData: ${JSON.stringify(processData)}.`);
+  }
+
+  onProcessDied(processData: appManager.ProcessData) {
+    console.info(`onProcessDied, processData: ${JSON.stringify(processData)}.`);
+  }
+
+  onProcessStateChanged(processData: appManager.ProcessData) {
+    console.info(`onProcessStateChanged, processData: ${JSON.stringify(processData)}.`);
+  }
+
+  onAppStarted(appStateData: appManager.AppStateData) {
+    console.info(`onAppStarted, appStateData: ${JSON.stringify(appStateData)}.`);
+  }
+
+  onAppStopped(appStateData: appManager.AppStateData) {
+    console.info(`onAppStopped, appStateData: ${JSON.stringify(appStateData)}.`);
+  }
+}
+
+let applicationStateObserver = new ApplicationStateObserverCustom();
+let observerCode = appManager.onApplicationStateChange(applicationStateObserver);
 ```

@@ -28,7 +28,9 @@
 
 ## 接口
 
-Shape(value?: PixelMap)
+### Shape
+
+new Shape(value?: PixelMap)
 
 用于绘制Shape组件的构造函数。 
 
@@ -44,6 +46,33 @@ Shape(value?: PixelMap)
 | -------- | -------- | -------- | -------- |
 | value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
+### Shape
+
+Shape(value: PixelMap)
+
+用于绘制Shape组件的构造函数。 
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+
+### Shape
+
+Shape()
+
+用于绘制Shape组件的无参构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ViewportRect<sup>18+</sup>对象说明
 
@@ -56,6 +85,8 @@ Shape(value?: PixelMap)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,7 +204,7 @@ ArkTS-Dyn: strokeDashArray(value: Array&lt;any&gt;)
 
 ArkTS-Sta: strokeDashArray(value: Array&lt;Length&gt; | undefined)
 
-设置边框间隙，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。取值范围为≥0，异常值按照默认值处理。
+设置边框的虚线长度和虚线间隙长度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。取值范围为≥0，异常值按照默认值处理。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -189,7 +220,7 @@ ArkTS-Sta: strokeDashArray(value: Array&lt;Length&gt; | undefined)
 
 | 参数名 | 类型             | 必填 | 说明                      |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | ArkTS-Dyn: Array&lt;any&gt;<br/>ArkTS-Sta: Array&lt;[Length](./ts-types.md#length)&gt; \| undefined | 是   | 定义Shape轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
+| value  | ArkTS-Dyn: Array&lt;any&gt;<br/>ArkTS-Sta: Array&lt;[Length](./ts-types.md#length)&gt; \| undefined | 是   | 定义Shape边框的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
 
 ### strokeDashOffset
 
@@ -387,9 +418,9 @@ ArkTS-Sta: mesh(value: Array&lt;double&gt; | undefined, column: int | undefined,
 
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: Array&lt;any&gt; <br/>ArkTS-Sta: Array&lt;double&gt; \| undefined | 是   | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。<br/>设置异常值undefined、null时value按照空数组处理，设置空数组时column和row按0处理，value按空数组处理。 |
-| column | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined              | 是   | mesh矩阵列数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
-| row    | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined              | 是   | mesh矩阵行数。<br/>设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。 |
+| value  | ArkTS-Dyn: Array&lt;any&gt; <br/>ArkTS-Sta: Array&lt;double&gt; \| undefined | 是   | 长度（row + 1）* （column + 1）* 2的数组，记录扭曲后的位图各个顶点位置。<br/>ArkTS-Dyn: 设置异常值undefined、null时value按照空数组处理，设置空数组时column和row按0处理，value按空数组处理。<br/>ArkTS-Sta: 设置异常值undefined时value按照空数组处理，设置空数组时column和row按0处理，value按空数组处理。 |
+| column | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined              | 是   | mesh矩阵列数。<br/>ArkTS-Dyn: 设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。<br/>ArkTS-Sta: 设置异常值undefined时column和row按0处理，value按空数组处理。 |
+| row    | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined              | 是   | mesh矩阵行数。<br/>ArkTS-Dyn: 设置异常值undefined、null、NaN和Infinity时column和row按0处理，value按空数组处理。<br/>ArkTS-Sta: 设置异常值undefined时column和row按0处理，value按空数组处理。 |
 
 ## 示例
 
@@ -550,7 +581,7 @@ struct ShapeExample {
 }
 ```
 
-![zh-cn_image_0000001184628104](figures/zh-cn_image_0000001184628104.png)
+![shape](figures/shape.png)
 
 ### 示例2（使用不同参数类型绘制图形）
 

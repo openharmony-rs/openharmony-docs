@@ -1,4 +1,4 @@
-# \@Env：环境变量
+# \@Env：环境变量 (ArkTS-Sta)
 
 在多设备开发的场景中，开发者可以使用\@Env装饰器监听系统环境变量的改变，并根据系统环境变量来进行相应的场景判断，以减少不同设备间的适配逻辑和重复开发。
 
@@ -20,7 +20,11 @@
 
 ## \@Env支持参数
 
-@Env支持的参数请参考[SystemProperties枚举类型说明](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#systemproperties)。
+\@Env装饰器的参数为环境变量的key值，支持以下形式：
+
+- 从API version 24起，支持使用[SystemProperties](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#systemproperties)的枚举值作为key，具体请参考[SystemProperties枚举类型说明](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#systemproperties)。
+- 从API版本26.0.0起，额外支持使用字符串字面量作为key，格式为`'ReadonlyEnvKey.<keyName>'`或`'WritableEnvKey.<keyName>'`。其中`<keyName>`必须为[ReadonlyEnvKey](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#readonlyenvkey)或[WritableEnvKey](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#writableenvkey)中声明的成员变量，不支持任意字符串。
+
 
 ## \@Env和Environment能力对比
 
@@ -233,9 +237,9 @@
    - 查找当前窗口：有\@Env对应的`SystemProperties.BREAK_POINT`实例。
    - 复用窗口中`SystemProperties.BREAK_POINT`对应的环境变量实例。
 
-```ts
-'use static'
+<!-- @[env_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EnvDecorator/entry/src/main/ets/pages/EnvInitialization.ets) -->
 
+``` TypeScript
 import {
   Env,
   Entry,
@@ -337,9 +341,9 @@ struct GrandChild2 {
 - 将\@Env装饰的变量传递给`CompV2`中[\@Param](./arkts-static-new-param.md)装饰的变量和`Comp`中的常规变量。
 - 点击`Button('Landscape')`和`Button('Portrait')`切换横竖屏，`Index`、`CompV2`和`Comp`关联组件进行对应的刷新，`orientationChange`被触发监听回调。
 
-```ts
-'use static'
+<!-- @[env_component_v2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EnvDecorator/entry/src/main/ets/pages/EnvComponentV2.ets) -->
 
+``` TypeScript
 import {
   Env,
   Entry,
@@ -493,9 +497,9 @@ struct Comp {
 
 \@Env在\@Component中使用和其在\@ComponentV2中使用类似，示例如下。
 
-```ts
-'use static'
+<!-- @[env_component](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EnvDecorator/entry/src/main/ets/pages/EnvComponent.ets) -->
 
+``` TypeScript
 import {
   Env,
   Entry,
@@ -646,7 +650,7 @@ struct Comp {
 ```
 
 ### 通过BuilderNode切换窗口 
-\@Env用于展示\@Component/\@ComponentV2所在[窗口](../../reference/apis-arkui/arkts-apis-window-Window.md)的环境变量信息。开发者通过BuilderNode切换@Component/\@ComponentV2所在的窗口实例时，\@Env会根据新的窗口获取对应的环境变量信息，并触发关联的UI组件刷新。以`SystemProperties.BREAK_POINT`为例。
+\@Env用于展示\@Component/\@ComponentV2所在窗口的环境变量信息。开发者通过BuilderNode切换@Component/\@ComponentV2所在的窗口实例时，\@Env会根据新的窗口获取对应的环境变量信息，并触发关联的UI组件刷新。以`SystemProperties.BREAK_POINT`为例。
 
 在下面的示例中：
 1. 点击```Button('add node to tree')```，创建BuilderNode节点挂载到`NodeContainer`下。
@@ -658,9 +662,9 @@ struct Comp {
 
 下面的示例包含了创建子窗的流程，具体可参考[管理应用窗口（Stage模型）](../../windowmanager/application-window-stage.md)。
 
-```ts
-'use static'
+<!-- @[EnvEntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EnvDecorator/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
 // EntryAbility.ets
 import UIAbility from '@ohos.app.ability.UIAbility';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
@@ -688,17 +692,17 @@ class EntryAbility extends UIAbility {
         // 在AppStorage中创建windowStage变量
         AppStorage.setOrCreate<window.WindowStage>('windowStage', windowStage);
       });
-    } catch (e: Error) {
+    } catch (e) {
       hilog.info(0x0000, 'testTag', 'loadContent catch error: -----------' + e.message);
     }
   }
 }
 ```
 
-```ts
-'use static'
+<!-- @[env_builder_node](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EnvDecorator/entry/src/main/ets/pages/EnvBuilderNode.ets) -->
 
-// Index.ets
+``` TypeScript
+// EnvBuilderNode.ets
 import {
   Entry,
   Text,
@@ -825,7 +829,7 @@ struct Index {
           sub_windowClass!.moveWindowTo(200, 1300);
           // 调整子窗口大小
           sub_windowClass!.resize(900, 1800);
-        } catch (err: Error) {
+        } catch (err) {
           // 如果移动或调整窗口大小失败，打印错误日志
           hilog.error(DOMAIN, 'testTag', 'Failed to move or change the window. Cause:' + JSON.stringify(err));
         }
@@ -860,7 +864,9 @@ struct Index {
       return;
     }
     // 调用destroyWindow方法销毁子窗口
-    sub_windowClass!.destroyWindow((err: BusinessError<void>): void => {
+    try {
+      sub_windowClass!.destroyWindow();
+    } catch(err) {
       // 检查销毁是否成功
       let errCode: number = err.code;
       if (errCode) {
@@ -869,7 +875,7 @@ struct Index {
       }
       // 窗口销毁成功，打印成功日志
       hilog.info(DOMAIN, 'testTag', 'Succeeded in destroying the window.');
-    });
+    }
   }
 
   build() {
@@ -955,11 +961,11 @@ struct Comp {
 }
 ```
 
-```ts
-'use static'
+<!-- @[SubWindow](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EnvDecorator/entry/src/main/ets/pages/SubWindow.ets) -->
 
+``` TypeScript
 // SubWindow.ets
-import { MyNodeController } from './Index';
+import { MyNodeController } from './EnvBuilderNode';
 import { Entry, Text, Column, Component, Button, ClickEvent, NodeContainer, ColumnOptions } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 import window from '@ohos.window';
@@ -1010,10 +1016,10 @@ struct SubWindow {
 
 具体示例如下。
 
-```ts
-'use static'
+<!-- @[env_lambda_closure](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EnvDecorator/entry/src/main/ets/pages/EnvLambdaClosure.ets) -->
 
-// Index.ets
+``` TypeScript
+// EnvLambdaClosure.ets
 import {
   Entry,
   Text,
@@ -1140,12 +1146,12 @@ struct Index {
           sub_windowClass!.moveWindowTo(200, 1300);
           // 调整子窗口大小
           sub_windowClass!.resize(900, 1800);
-        } catch (err: Error) {
+        } catch (err) {
           // 如果移动或调整窗口大小失败，打印错误日志
           hilog.error(DOMAIN, 'testTag', 'Failed to move or change the window. Cause:' + JSON.stringify(err));
         }
         // 子窗口加载对应的目标页面
-        sub_windowClass!.setUIContent('pages/SubWindow', (err: BusinessError<void> | null): void => {
+        sub_windowClass!.setUIContent('pages/SubWindowLambda', (err: BusinessError<void> | null): void => {
           // 检查加载页面是否成功
           if (err?.code) {
             hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause:' + JSON.stringify(err));
@@ -1175,7 +1181,9 @@ struct Index {
       return;
     }
     // 调用destroyWindow方法销毁子窗口
-    sub_windowClass!.destroyWindow((err: BusinessError<void>): void => {
+    try {
+      sub_windowClass!.destroyWindow();
+    } catch(err) {
       // 检查销毁是否成功
       let errCode: number = err.code;
       if (errCode) {
@@ -1184,7 +1192,7 @@ struct Index {
       }
       // 窗口销毁成功，打印成功日志
       hilog.info(DOMAIN, 'testTag', 'Succeeded in destroying the window.');
-    });
+    }
   }
 
   build() {

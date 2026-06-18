@@ -4,16 +4,16 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yangxuguang-huawei-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 agentConstant模块提供Agent相关的常量。
 
+**起始版本：** 26.0.0
+
 > **说明：**
 >
-> 本模块首批接口从API版本26.0.0开始支持。
->
-> 本模块接口仅可在Stage模型下使用。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -25,9 +25,15 @@ import { agentConstant } from '@kit.AbilityKit';
 
 Agent卡片的类型。
 
-**原子化服务API**：从API版本26.0.0开始，该枚举支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API(仅ArkTS-Dyn)**：从API版本26.0.0开始，该枚举支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 | 名称      | 值   | 说明                   |
 | --------- | ---- | ---------------------- |

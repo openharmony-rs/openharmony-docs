@@ -5132,7 +5132,7 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 
 ### addAccountImplicitly<sup>(deprecated)</sup>
 
-addAccountImplicitly(owner: string, authType: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+addAccountImplicitly(owner: string, authType: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 根据指定的账号所有者隐式地添加应用账号。使用callback异步回调。
 
@@ -6308,7 +6308,7 @@ off(type: 'change', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): voi
 
 ### authenticate<sup>(deprecated)</sup>
 
-authenticate(name: string, owner: string, authType: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+authenticate(name: string, owner: string, authType: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
 
@@ -7392,7 +7392,7 @@ ArkTS-Dyn示例：
             authType: 'getSocialData'
           }
       };
-      callback.onResult(appAccount.ResultCode.SUCCESS, result);
+      callback.onResult(0, result);
   }).catch((err: BusinessError) => {
       console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
   });
@@ -7470,7 +7470,7 @@ ArkTS-Dyn示例：
           authType: 'getSocialData'
         }
       };
-      callback.onResult(appAccount.ResultCode.SUCCESS, result);
+      callback.onResult(0, result);
     }
   }
   ```
@@ -7564,7 +7564,7 @@ OAuth认证器回调接口。
 
 ### onResult<sup>(deprecated)</sup>
 
-onResult: (code: number, result: {[key: string]: any;}) =&gt; void
+onResult: (code: number, result: { [key: string]: any }) =&gt; void
 
 通知请求结果。
 
@@ -7677,13 +7677,13 @@ createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthC
 
 ### addAccountImplicitly<sup>(deprecated)</sup>
 
-addAccountImplicitly(authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+addAccountImplicitly(authType: string, callerBundleName: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 根据指定的鉴权类型和可选项，隐式地添加应用账号。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 8开始支持, 从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly9-2)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly9-2)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7748,13 +7748,13 @@ auth(name: string, authType: string, options: Record&lt;string, RecordData&gt;, 
 
 ### authenticate<sup>(deprecated)</sup>
 
-authenticate(name: string, authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+authenticate(name: string, authType: string, callerBundleName: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 对应用账号进行鉴权，获取OAuth令牌。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 8开始支持, 从API version 9开始废弃。建议使用[auth](#auth9-2)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[auth](#auth9-2)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

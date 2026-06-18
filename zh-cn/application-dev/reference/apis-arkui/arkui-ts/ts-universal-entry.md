@@ -1,4 +1,4 @@
-# @Entry：页面入口
+# \@Entry：页面入口
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Entry装饰的自定义组件将作为UI页面的入口。
+\@Entry装饰的自定义组件将作为UI页面的入口。
 
 > **说明：**
 >
@@ -15,13 +15,13 @@
 >
 > 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-## @Entry
+## \@Entry
 
-在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
+在单个UI页面中，仅允许存在一个由\@Entry装饰的自定义组件作为页面的入口。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,15 +42,17 @@ struct Index {
 
 命名路由跳转选项。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
 | 名称                         | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------------------------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| routeName                      | string                                                       | 否  | 是 | 表示作为命名路由页面的名字。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| storage                        | [LocalStorage](../../../ui/state-management/arkts-localstorage.md) | 否 | 是  | 页面级的UI状态存储。当未传入时，框架会创建一个新的LocalStorage实例作为默认值。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| useSharedStorage<sup>12+</sup> | boolean                                                      | 否  | 是 | 是否使用[loadContent](../arkts-apis-window-WindowStage.md#loadcontent9)传入的LocalStorage实例对象。默认值false。true：使用共享的LocalStorage实例对象。false：不使用共享的LocalStorage实例对象。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| routeName                      | string                                                       | 否  | 是 | 表示作为命名路由页面的名字。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| storage                        | [LocalStorage](../../../ui/state-management/arkts-localstorage.md) | 否 | 是  | 页面级的UI状态存储。当未传入时，框架会创建一个新的LocalStorage实例作为默认值。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| useSharedStorage<sup>12+</sup> | boolean                                                      | 否  | 是 | 是否使用[loadContent](../arkts-apis-window-WindowStage.md#loadcontent9)传入的LocalStorage实例对象。默认值false。true：使用共享的LocalStorage实例对象。false：不使用共享的LocalStorage实例对象。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 

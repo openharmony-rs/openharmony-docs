@@ -3,13 +3,15 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yzkp-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 
 本模块提供[应用启动框架](../../application-models/app-startup.md)配置的能力。
 
 > **说明：**
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -32,6 +34,10 @@ onConfig?(): StartupConfig
 开发者可以在该回调中设置启动框架配置信息，详细使用方法可参考[设置启动参数](../../application-models/app-startup.md#设置启动参数)章节。
 
 **系统能力**：SystemCapability.Ability.AppStartup
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -82,6 +88,10 @@ onRequestCustomMatchRule(want: Want): string
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -103,7 +113,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
   // ...
 
   onRequestCustomMatchRule(want: Want): string {
-    if (want?.parameters?.customParam == 'param1') {
+    if (want?.parameters!['customParam'] == 'param1') {
       return 'customRule1';
     }
     return '';

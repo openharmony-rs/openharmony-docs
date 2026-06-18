@@ -465,6 +465,9 @@ onUpdate(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 卡片示例。
 
 该示例创建一张2 * 2尺寸大小的卡片，并注册事件回调。
+
+ArkTS-Dyn示例：
+
 ```ts
 // card.ets
 @Entry
@@ -511,6 +514,65 @@ struct CardExample {
         })
         .onUpdate((form: FormCallbackInfo)=>{
           console.info(`form update done : ${form?.id}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// card.ets
+'use static'
+import { Entry, Component, State, Column, Text, FontWeight, Visibility } from '@kit.ArkUI'
+import { FormComponent, FormCallbackInfo, FormDimension } from '@ohos.arkui.component'
+@Entry
+@Component
+struct CardExample {
+  @State formId:string = '0';
+  build() {
+    Column() {
+      Text('this is a card')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+      FormComponent({
+        id:this.formId,
+        name:"Form1",
+        bundle:"com.example.cardexample",
+        ability:"FormAbility",
+        module:"entry",
+        dimension:FormDimension.Dimension_2_2,
+        temporary:false
+      })
+        .allowUpdate(true)
+        .size({width:360,height:360})
+        .visibility(Visibility.Visible)
+        .onAcquired((form: FormCallbackInfo)=>{
+          console.info(`form info : ${form.id}`);
+          // Invalid form id
+          if (form.id == -1) {
+            this.formId = form.idString;
+          } else {
+            this.formId = form.id.toString();
+          }
+        })
+        .onError((error)=>{
+          console.error(`fail to add form, error code: ${error?.errcode}, error message: ${error?.msg}`);
+        })
+        .onUninstall((form: FormCallbackInfo)=>{
+          console.info(`uninstall form success : ${form.id}`);
+          // Invalid form id
+          if (form.id == -1) {
+            this.formId = form.idString;
+          } else {
+            this.formId = form.id.toString();
+          }
+        })
+        .onUpdate((form: FormCallbackInfo)=>{
+          console.info(`form update done : ${form.id}`);
         })
     }
     .width('100%')

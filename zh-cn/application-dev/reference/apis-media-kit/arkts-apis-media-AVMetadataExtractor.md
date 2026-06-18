@@ -535,7 +535,7 @@ ArkTS-Sta: fetchMetadataWithTimeout(timeoutMs: long): Promise\<AVMetadata | unde
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
-| 5400104  | Operation timeout. Returned by promise. |
+| 5400104  | Operation timeout. |
 | 5400106  | Unsupported format. Returned by promise.  |
 | 5400108  | Parameter check failed. Returned by promise.  |
 | 5411012  | Http cleartext traffic is not permitted. |

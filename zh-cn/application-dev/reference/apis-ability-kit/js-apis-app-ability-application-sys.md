@@ -4,15 +4,18 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 开发者可以通过该模块创建[Context](../../application-models/application-context-stage.md)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -27,7 +30,7 @@ createModuleContext(context: Context, bundleName: string, moduleName: string): P
 
 > **说明：**
 >
-> - 从API version 18开始，Context支持获取当前应用的进程名[processName](js-apis-inner-application-context.md#context)。createModuleContext创建的Context中的processName属性与入参Context中的processName属性一致，其他属性根据入参Context、bundleName和moduleName获得相应的属性值。
+> - 从API version 18开始，Context支持获取当前应用的进程名[Context](js-apis-inner-application-context.md#context)。createModuleContext创建的Context中的processName属性与入参Context中的processName属性一致，其他属性根据入参Context、bundleName和moduleName获得相应的属性值。
 >
 > - 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
@@ -37,11 +40,15 @@ createModuleContext(context: Context, bundleName: string, moduleName: string): P
 
 **需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| context | [Context](../../reference/apis-ability-kit/js-apis-inner-application-context.md) | 是 | 表示应用上下文。 | 
+| context | [Context](../../reference/apis-ability-kit/js-apis-inner-application-context.md) | 是 | 表示应用上下文。 |
 | bundleName | string   | 是    | 表示应用包名。取值为空字符串时，默认为当前应用。|
 | moduleName | string | 是 | 表示应用模块名。 |
 
@@ -64,17 +71,18 @@ createModuleContext(context: Context, bundleName: string, moduleName: string): P
 **示例：**
 
 ```ts
-import { UIAbility, application, common } from '@kit.AbilityKit';
+import { UIAbility, application, common, Context } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
     let moduleContext: common.Context;
     try {
-      application.createModuleContext(this.context, 'bundlename', 'entry').then((data: Context)=>{
+      application.createModuleContext(this.context, 'bundlename', 'entry').then((data: Context) => {
         moduleContext = data;
         console.info('createModuleContext success!');
-      }).catch((error : BusinessError)=>{
+      }).catch((err: Error) => {
+        let error = err as BusinessError;
         console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
       })
     } catch (error) {
@@ -92,7 +100,7 @@ createBundleContext(context: Context, bundleName: string): Promise\<Context>
 
 > **说明：**
 >
-> 从API version 18开始，Context支持获取当前应用的进程名[processName](js-apis-inner-application-context.md#context)。createBundleContext创建的Context中的processName属性与入参Context中的processName属性一致，其他属性根据入参Context、bundleName和moduleName获得相应的属性值。
+> 从API version 18开始，Context支持获取当前应用的进程名[Context](js-apis-inner-application-context.md#context)。createBundleContext创建的Context中的processName属性与入参Context中的processName属性一致，其他属性根据入参Context、bundleName和moduleName获得相应的属性值。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -100,11 +108,15 @@ createBundleContext(context: Context, bundleName: string): Promise\<Context>
 
 **需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| context | [Context](../../reference/apis-ability-kit/js-apis-inner-application-context.md) | 是 | 表示应用上下文。 | 
+| context | [Context](../../reference/apis-ability-kit/js-apis-inner-application-context.md) | 是 | 表示应用上下文。 |
 | bundleName | string   | 是    | 表示应用包名。 |
 
 **返回值：**
@@ -123,21 +135,20 @@ createBundleContext(context: Context, bundleName: string): Promise\<Context>
 | 202 | Permission denied, non-system app called system api.|
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
-
 **示例：**
 
 ```ts
-import { UIAbility, application, common } from '@kit.AbilityKit';
+import { UIAbility, application, common, Context } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
     let moduleContext: common.Context;
     try {
-      application.createBundleContext(this.context, 'bundlename').then((data: Context)=>{
+      application.createBundleContext(this.context, 'bundlename').then((data: Context) => {
         moduleContext = data;
         console.info('createBundleContext success!');
-      }).catch((error : BusinessError)=>{
+      }).catch((error: Error) => {
         console.error(`createBundleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
       })
     } catch (error) {
@@ -158,6 +169,10 @@ createPluginModuleContextForHostBundle(context: Context, pluginBundleName: strin
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -186,19 +201,20 @@ createPluginModuleContextForHostBundle(context: Context, pluginBundleName: strin
 **示例：**
 
 ```ts
-import { AbilityConstant, UIAbility, application, common, Want } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, application, common, Context, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let moduleContext: common.Context;
     try {
-      application.createPluginModuleContextForHostBundle(this.context, 'com.example.pluginBundleName', 'pluginModuleName', 'com.example.hostBundleName')
+      application.createPluginModuleContextForHostBundle(this.context, 'com.example.pluginBundleName',
+        'pluginModuleName', 'com.example.hostBundleName')
         .then((data: Context) => {
           moduleContext = data;
           console.info('createPluginModuleContextForHostBundle success!');
         })
-        .catch((error: BusinessError) => {
+        .catch((error: Error) => {
           let code: number = (error as BusinessError).code;
           let message: string = (error as BusinessError).message;
           console.error(`createPluginModuleContextForHostBundle failed, error.code: ${code}, error.message: ${message}`);

@@ -2,11 +2,11 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-[应用接管网页媒体播放功能](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)中用于同层渲染的 surface 信息。
+使用[enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)来进行同层渲染的surface信息配置，以开启应用接管网页媒体播放功能。
 
 > **说明：**
 >

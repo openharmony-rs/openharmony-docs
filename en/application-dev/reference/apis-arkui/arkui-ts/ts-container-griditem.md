@@ -285,7 +285,7 @@ struct GridItemExample {
 }
 ```
 
-![en-us_image_0000001174582870](figures/en-us_image_0000001174582870.gif)
+![gridItem1](figures/gridItem1.gif)
 
 ### Example 2: Setting the Grid Item Style
 
@@ -352,4 +352,4 @@ struct GridItemExample {
 }
 ```
 
-![en-us_image_griditem_griditemoptions](figures/en-us_image_griditem_griditemoptions.png)
+![image-griditem-griditemoptions](figures/image-griditem-griditemoptions.png)

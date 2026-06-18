@@ -14,7 +14,15 @@
 
 在ArkTS-Sta中使用时，开发指南参考：[\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-new-observedV2-and-trace.md)。
 
+## @Trace
+
+@interface Trace
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 

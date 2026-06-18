@@ -21,7 +21,7 @@
    
    @Sendable
    class Config {
-     public lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock;
+     public lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
      public isLogin: boolean = false;
      public loginUser?: string;
      public wifiOn: boolean = false;

@@ -82,4 +82,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001177428498](figures/zh-cn_image_0000001177428498.gif)
+![piece](figures/piece.gif)

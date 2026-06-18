@@ -33,7 +33,11 @@ dial\(phoneNumber: string, callback: AsyncCallback\<boolean\>\): void
 
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -65,7 +69,11 @@ dial\(phoneNumber: string, options: DialOptions, callback: AsyncCallback\<boolea
 
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -100,7 +108,11 @@ dial\(phoneNumber: string, options?: DialOptions\): Promise\<boolean\>
 
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -1091,6 +1103,64 @@ call.rejectCall((err: BusinessError) => {
 });
 ```
 
+## call.getCallTransferInfo
+
+getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTransferResult\>
+
+获取带有电话号码的呼叫转移信息。使用Promise异步回调。
+
+**起始版本**: 26.0.0
+
+**模型约束**: 该接口可在FA模型和Stage模型下使用。
+
+**需要权限**：ohos.permission.GET_CALL_TRANSFER_INFO
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |
+| type   | CallTransferType               | 是   | 指示要获取哪种类型的呼叫转移。  |
+| number | string              | 是   | 指示用于获取呼叫转移状态的号码。 |
+
+**返回值：**
+
+| 类型                | 说明                        |
+| ------------------- | --------------------------- |
+| Promise&lt;CallTransferResult&gt; | Promise对象，返回呼叫转移结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 801      | Capability not supported.                    |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8401002  | Invalid input call number.                   |
+| 8401003  | Operation too frequent.                      |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let type: call.CallTransferType = call.CallTransferType.TRANSFER_TYPE_UNCONDITIONAL;
+let number: string = "138xxxxxxxx";
+
+call.getCallTransferInfo(type, number)
+    .then((data: call.CallTransferResult) => {
+        console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
+    })
+    .catch((err:BusinessError) => {
+        console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
+    });
+```
 
 ## DialOptions
 
@@ -1126,6 +1196,8 @@ call.rejectCall((err: BusinessError) => {
 拨打电话的可选参数。
 
 **系统能力**：SystemCapability.Applications.Contacts
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
 |        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
@@ -1187,3 +1259,47 @@ call.rejectCall((err: BusinessError) => {
 |    名称     | 类型   | 只读 | 可选 | 说明                                                       |
 | ----------- | ------ | ---- | ---- | ---------------------------------------------------------- |
 | countryCode | string | 否   | 是   | 国家码，支持所有国家的国家码，如：CN（中国）。默认为：CN。 |
+
+## TransferStatus
+
+转移状态。
+
+**起始版本**: 26.0.0
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称             | 值   | 说明     |
+| ---------------- | ---- | -------- |
+| TRANSFER_DISABLE | 0    | 禁用转移。 |
+| TRANSFER_ENABLE  | 1    | 启用转移。 |
+
+## CallTransferType
+
+呼叫转移类型。
+
+**起始版本**: 26.0.0
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称                        | 值   | 说明         |
+| --------------------------- | ---- | ------------ |
+| TRANSFER_TYPE_UNCONDITIONAL | 0    | 无条件转移。   |
+| TRANSFER_TYPE_BUSY          | 1    | 忙线转移。     |
+| TRANSFER_TYPE_NO_REPLY      | 2    | 无回复转移。   |
+| TRANSFER_TYPE_NOT_REACHABLE | 3    | 无法访问转移。 |
+
+## CallTransferResult
+
+呼叫转移结果。
+
+**起始版本**: 26.0.0
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+|          名称            |                 类型               | 必填 |       说明       |
+| ------------------------ | ---------------------------------- | ---- | ---------------- |
+| status                   | [TransferStatus](#transferstatus) |  是  | 转移状态。         |
+| startHour   | number                             |  是  | 开始时间的小时数。 |
+| startMinute | number                             |  是  | 开始时间的分钟数。 |
+| endHour     | number                             |  是  | 结束时间的小时数。 |
+| endMinute   | number                             |  是  | 结束时间的分钟数。 |

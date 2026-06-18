@@ -31,7 +31,15 @@
   ```JSON5
   "requestPermissions":[
       {
-        "name" : "ohos.permission.ACTIVITY_MOTION"
+        "name" : "ohos.permission.ACTIVITY_MOTION",
+        // reason和usedScene按需填写
+        "reason" : "", // 用于应用上架校验
+        "usedScene" : {
+           "abilities" : [
+              "" // 使用权限的名称
+           ],
+           "when" : "" // 调用时机
+        },
       },
       {
         "name" : "ohos.permission.DETECT_GESTURE"

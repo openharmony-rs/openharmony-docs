@@ -1,8 +1,8 @@
 # @arkts.math.Decimal (高精度数学库Decimal)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @wang_zhaoyong-->
-<!--Designer: @Malzahar-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -105,14 +105,14 @@ ArkTS-Dyn类型说明：
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| [Rounding](#rounding)  | 模运算下的舍入类型。与[Rounding](#常量)表示的舍入模式相同。      |
+| [Rounding](#rounding)  | 模运算下的舍入类型。与[Rounding](#rounding)表示的舍入模式相同。      |
 | 9                      | 余模运算下，余数始终为正。欧几里得除法，与[Decimal.EUCLIDEAN](#常量)一致。      |
 
 ArkTS-Sta类型说明：
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 取值范围：0-9。<br>模运算下的舍入类型。与[Rounding](#常量)表示的舍入模式相同。<br>9：余模运算下，余数始终为正。欧几里得除法。与[Decimal.EUCLIDEAN](#常量)一致。     |
+| int  | 取值范围：0-9。<br>模运算下的舍入类型。与[Rounding](#rounding)表示的舍入模式相同。<br>9：余模运算下，余数始终为正。欧几里得除法。与[Decimal.EUCLIDEAN](#常量)一致。     |
 
 ## DecimalConfig
 

@@ -26,7 +26,9 @@
 
 如下示例演示了在[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)中使用外部定义的状态变量，从系统日志中可以观察到报错异常。
 
-```ts
+<!-- @[parallelExternalState_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParallelizeUI/entry/src/main/ets/pages/ExternalState.ets) -->
+
+``` TypeScript
 // ArkTS-Sta示例
 import { Entry, Text, Column, Component } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
@@ -55,7 +57,9 @@ struct Index {
 
 如下示例演示了如何使用[ParallelizeUI\<T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuit)进行参数构造。
 
-```ts
+<!-- @[parallelParameter_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParallelizeUI/entry/src/main/ets/pages/ParameterConstruction.ets) -->
+
+``` TypeScript
 // ArkTS-Sta示例
 import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
@@ -99,7 +103,9 @@ struct Index {
 
 该场景示例介绍了如何使用[ParallelizeUI](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeui)并行创建多个组件。
 
-```ts
+<!-- @[parallelComponents_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParallelizeUI/entry/src/main/ets/pages/Page.ets) -->
+
+``` TypeScript
 // ArkTS-Sta示例
 import { Entry, Text, Column, Component, Button, ClickEvent, Margin, Row, GridItem, Image, ImageFit, $r, Grid, ForEach } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
@@ -226,36 +232,38 @@ struct Page {
 
   
 
-  ```ts
+  <!-- @[parallelNoList_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParallelizeUI/entry/src/main/ets/pages/ParallelDemo.ets) -->
+  
+  ``` TypeScript
   // ArkTS-Sta示例
   import { Entry, Column, Component, Image, Text, Stack, $r, ImageFit, FontWeight, Margin } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   import { ParallelizeUI } from '@ohos.arkui.Parallelize';
-
+  
   class CardInfo {
     title: string
     desc: string
     cover: string
-
+  
     constructor(title: string, desc: string, cover: string) {
       this.title = title
       this.desc = desc
       this.cover = cover
     }
   }
-
+  
   @Entry
   @Component
   struct ParallelDemo {
     @State arr: Array<Int> = [1]
-
+  
     aboutToAppear() {
       // 构造并行循环创建的数据源，创建10个Stack组件
       for (let i = 2; i <= 10; i++) {
         this.arr.push(i)
       }
     }
-
+  
     build() {
       Column() {
         Text('ParallelizeUI 循环创建示例')
@@ -263,7 +271,7 @@ struct Page {
           .fontWeight(FontWeight.Bold)
           .fontColor('#333')
           .margin({ bottom: 12 } as Margin)
-
+  
         // 循环并行创建
         ParallelizeUI<Int, CardInfo>({ enable: true }, this.arr,
           (item: Int, index: Int) => {
@@ -282,13 +290,13 @@ struct Page {
                 .height(180)
                 .borderRadius(10)
                 .objectFit(ImageFit.Cover)
-
+  
               Column() {
                 Text(param.title) // 卡片标题
                   .fontSize(18)
                   .fontWeight(FontWeight.Medium)
                   .fontColor('#FFF')
-
+  
                 Text(param.desc) // 卡片描述
                   .fontSize(14)
                   .fontColor('#DDD')
@@ -311,12 +319,14 @@ struct Page {
 
 - 在List和Grid容器中使用时，[ParallelizeUI\<V, T\>](../reference/apis-arkui/js-apis-arkui-Parallelize.md#parallelizeuiv-t23)仅按需并行创建当前可见区域内的节点，并在节点滑出可见区域后自动释放。
 
-  ```ts
+  <!-- @[parallelList_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParallelizeUI/entry/src/main/ets/pages/ListParallel.ets) -->
+  
+  ``` TypeScript
   // ArkTS-Sta示例
   import { Entry, Text, Column, Component, List, ListItem, Image, Row, Stack, $r, ImageFit, Alignment, FontWeight, TextOverflow  } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   import { ParallelizeUI } from '@ohos.arkui.Parallelize';
-
+  
   class Info {
     title: string
     up: string
@@ -331,20 +341,20 @@ struct Page {
       this.coverRes = coverRes
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     @State arr: Array<Int> = [1]
     @State stateVar: string = 'state var';
-
+  
     aboutToAppear() {
       // 构造并行循环创建的数据源，创建50个ListItem子组件
       for (let i = 2; i <= 50; i++) {
         this.arr.push(i)
       }
     }
-
+  
     build() {
       Column() {
         List({ space: 10 }) {
@@ -353,7 +363,7 @@ struct Page {
             (item: Int, index: Int) => {
               const coverIndex = ((item - 1) % 5) + 1   // 为每个Item生成Index
               const coverResId = `app.media.cover${coverIndex}`
-
+  
               return new Info(
                 `【热门】搞笑视频 ${item}`,
                 `UP主：用户${item}`,
@@ -373,7 +383,7 @@ struct Page {
                       .borderRadius(8)
                       .objectFit(ImageFit.Cover)
                       .alt('video cover')
-
+  
                     // 播放量右下角浮层
                     Row() {
                       Text(param.views)
@@ -384,20 +394,20 @@ struct Page {
                     }
                     .align(Alignment.BottomEnd)
                   }
-
+  
                   // 标题
                   Text(param.title)
                     .fontSize(18)
                     .fontWeight(FontWeight.Medium)
                     .maxLines(2)
                     .textOverflow({ overflow: TextOverflow.Ellipsis })
-
+  
                   // 底部信息行（up主、点赞量）
                   Row() {
                     Text(param.up)
                       .fontSize(14)
                       .fontColor('#888')
-
+  
                     Text(` · ${param.likes}`)
                       .fontSize(14)
                       .fontColor('#888')

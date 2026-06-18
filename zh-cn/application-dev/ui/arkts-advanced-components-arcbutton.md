@@ -13,6 +13,9 @@
 ## 创建按钮
 
 ArcButton通过调用以下接口来创建。
+
+ArkTS-Dyn示例：
+
 <!-- @[button_align_top](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
 
 ``` TypeScript
@@ -25,17 +28,35 @@ ArcButton({
   })
 })
 ```
-  其中，[label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮文字，[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮类型，[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮样式。
+
+ArkTS-Sta示例：
+
+<!-- @[button_align_top](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
+
+``` TypeScript
+ArcButton({
+  options: new ArcButtonOptions({
+    label: 'OK',
+    position: ArcButtonPosition.TOP_EDGE,
+    styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+    // ...
+  })
+})
+```
+  其中，[label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#属性-1)设置按钮文字，[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#属性-1)设置按钮类型，[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#属性-1)设置按钮样式。
 
   ![top](figures/ArcButtonTop.png)
 
 ## 设置按钮类型
 
-ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮类型。
+ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#属性-1)设置按钮类型。
 
 - 下弧形按钮（默认类型）。
 
-  通过将[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性设置为ArcButtonPosition.BOTTOM_EDGE，可以将按钮设置为下弧形按钮。
+  通过将[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#属性-1)属性设置为ArcButtonPosition.BOTTOM_EDGE，可以将按钮设置为下弧形按钮。
+
+  ArkTS-Dyn示例：
+
   <!-- @[button_align_bottom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignBottom.ets) -->
   
   ``` TypeScript
@@ -49,11 +70,31 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
   
   })
   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[button_align_bottom](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ButtonComponent/entry/src/main/ets/pages/ButtonAlignBottom.ets) -->
+   
+   ``` TypeScript
+   ArcButton({
+     options: new ArcButtonOptions({
+       label: 'OK',
+       position: ArcButtonPosition.BOTTOM_EDGE,
+       styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+       // ...
+     })
+   
+   })
+   ```
+ 
   ![bottom](figures/ArcButtonBottom.png)
 
 - 上弧形按钮。
 
-  通过将[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性设置为ArcButtonPosition.TOP_EDGE，可以将按钮设置为上弧形按钮。
+  通过将[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#属性-1)属性设置为ArcButtonPosition.TOP_EDGE，可以将按钮设置为上弧形按钮。
+
+  ArkTS-Dyn示例：
+
   <!-- @[button_align_top](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
   
   ``` TypeScript
@@ -66,14 +107,46 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
     })
   })
   ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[button_align_top](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
+  
+  ``` TypeScript
+  ArcButton({
+    options: new ArcButtonOptions({
+      label: 'OK',
+      position: ArcButtonPosition.TOP_EDGE,
+      styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+      // ...
+    })
+  })
+  ```
   ![top](figures/ArcButtonTOP_EDGE.png)
 
 ## 自定义样式
 
 - 设置背景色。
 
-  使用[backgroundColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性设置按钮的背景色。
+  使用[backgroundColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#属性-1)属性设置按钮的背景色。
+
+  ArkTS-Dyn示例：
+
   <!-- @[button_bcg_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonBcgColor.ets) -->
+  
+  ``` TypeScript
+  ArcButton({
+    options: new ArcButtonOptions({
+      label: 'OK',
+      styleMode: ArcButtonStyleMode.CUSTOM,
+      backgroundColor: ColorMetrics.resourceColor('#707070')
+    })
+  })
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[button_bcg_color](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ButtonComponent/entry/src/main/ets/pages/ButtonBcgColor.ets) -->
   
   ``` TypeScript
   ArcButton({
@@ -88,8 +161,26 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 
 - 设置文本颜色。
 
-  使用[fontColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性设置按钮的文本颜色。
+  使用[fontColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#属性-1)属性设置按钮的文本颜色。
+
+  ArkTS-Dyn示例：
+
   <!-- @[button_font_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonFontColor.ets) -->
+  
+  ``` TypeScript
+  ArcButton({
+    options: new ArcButtonOptions({
+      label: 'OK',
+      styleMode: ArcButtonStyleMode.CUSTOM,
+      backgroundColor: ColorMetrics.resourceColor('#E84026'),
+      fontColor: ColorMetrics.resourceColor('#707070')
+    })
+  })
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[button_font_color](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ButtonComponent/entry/src/main/ets/pages/ButtonFontColor.ets) -->
   
   ``` TypeScript
   ArcButton({
@@ -105,8 +196,25 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 
 - 设置阴影颜色。
 
-  使用[shadowEnabled](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性启用按钮阴影，并通过[shadowColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)属性设置按钮的阴影颜色。
+  使用[shadowEnabled](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#属性-1)属性启用按钮阴影，并通过[shadowColor](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#属性-1)属性设置按钮的阴影颜色。
+
+  ArkTS-Dyn示例：
+
   <!-- @[button_shadow_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonShadow.ets) -->
+  
+  ``` TypeScript
+  ArcButton({
+    options: new ArcButtonOptions({
+      label: 'OK',
+      shadowEnabled: true,
+      shadowColor: ColorMetrics.resourceColor('#ffec1022')
+    })
+  })
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[button_shadow_color](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ButtonComponent/entry/src/main/ets/pages/ButtonShadow.ets) -->
   
   ``` TypeScript
   ArcButton({
@@ -122,6 +230,9 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 ## 添加事件
 
 - 绑定[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)事件来响应点击操作后的自定义行为。
+
+  ArkTS-Dyn示例：
+
   <!-- @[button_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
   
   ``` TypeScript
@@ -135,7 +246,26 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
     })
   })
   ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[button_click](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ButtonComponent/entry/src/main/ets/pages/ButtonAlignTop.ets) -->
+  
+  ``` TypeScript
+  ArcButton({
+    options: new ArcButtonOptions({
+      label: 'OK',
+      // ...
+      onClick: () => {
+        hilog.info(DOMAIN, TAG, 'ArcButton onClick');
+      },
+    })
+  })
+  ```
 - 绑定[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件来响应触摸操作后的自定义行为。
+
+  ArkTS-Dyn示例：
+
   <!-- @[button_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonAlignBottom.ets) -->
   
   ``` TypeScript
@@ -151,11 +281,31 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
   })
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[button_touch](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ButtonComponent/entry/src/main/ets/pages/ButtonAlignBottom.ets) -->
+  
+  ``` TypeScript
+  ArcButton({
+    options: new ArcButtonOptions({
+      label: 'OK',
+      // ...
+      onTouch: (event: TouchEvent) => {
+        hilog.info(DOMAIN, TAG, 'ArcButton onTouch');
+      }
+    })
+  
+  })
+  ```
+
 ## 场景示例
 
 在亮度设置界面，进度条显示当前亮度为30%。点击重置后，亮度值将被重置为默认的50%。
 
 运行该示例推荐在Wearable设备上以获得最佳显示效果，同时支持在其他设备上运行。若要在Wearable设备上运行，在src/main目录下的工程配置文件[module.json5](../quick-start/module-configuration-file.md)中[deviceTypes标签](../quick-start/module-configuration-file.md#devicetypes标签)内配置wearable。
+
+ArkTS-Dyn示例：
+
 <!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) -->
 
 ``` JSON5
@@ -167,6 +317,8 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
   // ···
 }
 ```
+
+ArkTS-Dyn示例：
 
 <!-- @[brightness_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/ets/pages/ButtonBrightness.ets) -->
 
@@ -245,4 +397,107 @@ struct BrightnessPage {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[brightness_page](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ButtonComponent/entry/src/main/ets/pages/ButtonBrightness.ets) -->
+
+``` TypeScript
+import {
+  ArcButton,
+  ArcButtonOptions,
+  ArcButtonStyleMode
+} from '@ohos.arkui.advanced.ArcButton';
+import {
+  Entry,
+  ComponentV2,
+  RelativeContainer,
+  Text,
+  Color,
+  HorizontalAlign,
+  VerticalAlign,
+  Slider,
+  SliderOptions,
+  SliderStyle,
+  SliderChangeMode,
+  LengthMetrics,
+  LengthUnit,
+  $r,
+  AlignRuleOption
+} from '@kit.ArkUI';
+import { Local } from '@ohos.arkui.stateManagement';
+
+const BRIGHT_NESS_VALUE: number = 30;
+const BRIGHT_NESS_VALUE_DEFAULT: number = 50;
+
+@Entry
+@ComponentV2
+struct BrightnessPage {
+  @Local brightnessValue: number = BRIGHT_NESS_VALUE;
+  private defaultBrightnessValue: number = BRIGHT_NESS_VALUE_DEFAULT;
+
+  build() {
+    RelativeContainer() {
+      // 请将$r('app.string.Brightness')替换为实际资源文件，在本示例中该资源文件的value值为"设置亮度"
+      Text($r('app.string.Brightness'))
+        .fontColor(Color.White)
+        .id('id_brightness_set_text')
+        .fontSize(24)
+        .margin({ top: 16 })
+        .alignRules({
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        } as AlignRuleOption)
+
+      Text(`${this.brightnessValue} %`)
+        .fontColor(Color.White)
+        .id('id_brightness_min_text')
+        .margin({ left: 16 })
+        .alignRules({
+          left: { anchor: '__container__', align: HorizontalAlign.Start },
+          center: { anchor: '__container__', align: VerticalAlign.Center }
+        } as AlignRuleOption)
+
+      Slider({
+        value: this.brightnessValue,
+        min: 0,
+        max: 100,
+        style: SliderStyle.InSet
+      } as SliderOptions)
+        .blockColor('#191970')
+        .trackColor('#ADD8E6')
+        .selectedColor('#4169E1')
+        .width(150)
+        .id('id_brightness_slider')
+        .margin({ left: 16, right: 16 })
+        .onChange((value: number, mode: SliderChangeMode) => {
+          this.brightnessValue = value;
+        })
+        .alignRules({
+          center: { anchor: 'id_brightness_min_text', align: VerticalAlign.Center },
+          right: { anchor: 'id_brightness_min_text', align: HorizontalAlign.End }
+        } as AlignRuleOption)
+
+      ArcButton({
+        options: new ArcButtonOptions({
+          // 请将$r('app.string.Reset')替换为实际资源文件，在本示例中该资源文件的value值为"重置"
+          label: $r('app.string.Reset'),
+          styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
+          fontSize: new LengthMetrics(19, LengthUnit.FP),
+          onClick: () => {
+            this.brightnessValue = this.defaultBrightnessValue;
+          }
+        })
+      })
+        .alignRules({
+          middle: { anchor: '__container__', align: HorizontalAlign.Center },
+          bottom: { anchor: '__container__', align: VerticalAlign.Bottom }
+        } as AlignRuleOption)
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Black)
+  }
+}
+```
+
 ![example](figures/example_normal.png)

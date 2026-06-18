@@ -79,7 +79,7 @@ export default class EntryAbility extends UIAbility {
     try {
       dataShare.createDataShareHelper(context, uri, (err:BusinessError, data:dataShare.DataShareHelper) => {
         if (err !== undefined) {
-          console.error(`createDataShareHelper error: code: ${err.code}, message: ${err.message} `);
+          console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info("createDataShareHelper succeed, data : " + data);
@@ -88,10 +88,10 @@ export default class EntryAbility extends UIAbility {
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.error(`createDataShareHelper error: code: ${code}, message: ${message} `);
+      console.error(`Failed to create DataShareHelper. Code: ${code}, message: ${message}`);
     };
-  };
-};
+  }
+}
 ```
 
 ## dataShare.createDataShareHelper<sup>10+</sup>
@@ -140,7 +140,7 @@ export default class EntryAbility extends UIAbility {
     try {
       dataShare.createDataShareHelper(context, uri, {isProxy : true}, (err:BusinessError, data:dataShare.DataShareHelper) => {
         if (err !== undefined) {
-          console.error(`createDataShareHelper error: code: ${err.code}, message: ${err.message} `);
+          console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info("createDataShareHelper succeed, data : " + data);
@@ -149,10 +149,10 @@ export default class EntryAbility extends UIAbility {
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.error(`createDataShareHelper error: code: ${code}, message: ${message} `);
+      console.error(`Failed to create DataShareHelper. Code: ${code}, message: ${message}`);
     };
-  };
-};
+  }
+}
 ```
 ## dataShare.createDataShareHelper
 
@@ -210,15 +210,15 @@ export default class EntryAbility extends UIAbility {
         console.info("createDataShareHelper succeed, data : " + data);
         dataShareHelper = data;
       }).catch((err: BusinessError) => {
-        console.error(`createDataShareHelper error: code: ${err.code}, message: ${err.message} `);
+        console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.error(`createDataShareHelper error: code: ${code}, message: ${message} `);
+      console.error(`Failed to create DataShareHelper. Code: ${code}, message: ${message}`);
     };
-  };
-};
+  }
+}
 ```
 
 ## dataShare.enableSilentProxy<sup>11+</sup>
@@ -274,10 +274,10 @@ export default class EntryAbility extends UIAbility {
     dataShare.enableSilentProxy(context, uri).then(() => {
       console.info("enableSilentProxy succeed");
     }).catch((err: BusinessError) => {
-      console.error(`enableSilentProxy error: code: ${err.code}, message: ${err.message} `);
+      console.error(`Failed to enable silent proxy. Code: ${err.code}, message: ${err.message}`);
     });
-  };
-};
+  }
+}
 ```
 
 ## dataShare.disableSilentProxy<sup>11+</sup>
@@ -333,10 +333,10 @@ export default class EntryAbility extends UIAbility {
     dataShare.disableSilentProxy(context, uri).then(() => {
       console.info("disableSilentProxy succeed");
     }).catch((err: BusinessError) => {
-      console.error(`disableSilentProxy error: code: ${err.code}, message: ${err.message} `);
+      console.error(`Failed to disable silent proxy. Code: ${err.code}, message: ${err.message}`);
     });
-  };
-};
+  }
+}
 
 ```
 
@@ -1013,7 +1013,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let onCallback: (err: BusinessError, node: dataShare.RdbDataChangeNode) => void = (err: BusinessError, node:dataShare.RdbDataChangeNode): void => {
   if (!node.data.length) {
-    console.error("node.data.length is empty");
+    console.info("node.data.length is empty");
     return;
   }
   console.info("onCallback " + JSON.stringify(node.uri));
@@ -1073,7 +1073,7 @@ onRdbDataChange(uris: Array&lt;string&gt;, templateId: TemplateId, callback: Cal
 ```ts
 let onCallback: (node: dataShare.RdbDataChangeNode) => void = (node:dataShare.RdbDataChangeNode): void => {
   if (!node.data.length) {
-    console.error("node.data.length is empty");
+    console.info("node.data.length is empty");
     return;
   }
   console.info("onCallback " + JSON.stringify(node.uri));
@@ -1468,7 +1468,7 @@ try {
     (dataShareHelper as dataShare.DataShareHelper).publish(dataArray, "com.acts.ohos.data.datasharetest", version, publishCallback);
   }
 } catch (e) {
-  console.error("publish error " + JSON.stringify(e));
+  console.error(`Failed to publish. Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
@@ -1724,7 +1724,7 @@ try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).insert(uri, valueBucket, (err: BusinessError, data: number) => {
       if (err !== undefined) {
-        console.error(`insert error: code: ${err.code}, message: ${err.message} `);
+        console.error(`Failed to insert. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info("insert succeed, data : " + data);
@@ -1733,7 +1733,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`insert error: code: ${code}, message: ${message} `);
+  console.error(`Failed to insert. Code: ${code}, message: ${message}`);
 };
 ```
 
@@ -1755,7 +1755,7 @@ try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).insert(uri, valueBucket, (err: BusinessError | null, data: int | undefined) => {
       if (err?.message) {
-        console.error(`insert error: code: ${err?.code}, message: ${err?.message} `);
+        console.error(`Failed to insert. Code: ${err?.code}, message: ${err?.message}`);
         return;
       }
       if (data != undefined) {
@@ -1764,7 +1764,7 @@ try {
     });
   }
 } catch (err: BusinessError) {
-  console.error(`insert error: code: ${err.code}, message: ${err.message} `);
+  console.error(`Failed to insert. Code: ${err.code}, message: ${err.message}`);
 };
 ```
 
@@ -1833,13 +1833,13 @@ try {
     (dataShareHelper as dataShare.DataShareHelper).insert(uri, valueBucket).then((data: number) => {
       console.info("insert succeed, data : " + data);
     }).catch((err: BusinessError) => {
-      console.error(`insert error: code: ${err.code}, message: ${err.message} `);
+      console.error(`Failed to insert. Code: ${err.code}, message: ${err.message}`);
     });
   }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`insert error: code: ${code}, message: ${message} `);
+  console.error(`Failed to insert. Code: ${code}, message: ${message}`);
 };
 ```
 
@@ -1863,7 +1863,7 @@ try {
     console.info("insert succeed, data : " + data);
   }
 } catch (err: BusinessError) {
-  console.error(`insert error: code: ${err.code}, message: ${err.message} `);
+  console.error(`Failed to insert. Code: ${err.code}, message: ${err.message}`);
 };
 ```
 
@@ -1917,7 +1917,7 @@ try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).delete(uri, da, (err: BusinessError, data: number) => {
       if (err !== undefined) {
-        console.error(`delete error: code: ${err.code}, message: ${err.message} `);
+        console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info("delete succeed, data : " + data);
@@ -1926,7 +1926,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`delete error: code: ${code}, message: ${message} `);
+  console.error(`Failed to delete. Code: ${code}, message: ${message}`);
 };
 ```
 
@@ -1942,7 +1942,7 @@ try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).delete(uri, da, (err: BusinessError | null, data: int | undefined) => {
       if (err?.message) {
-        console.error(`delete error: code: ${err?.code}, message: ${err?.message} `);
+        console.error(`Failed to delete. Code: ${err?.code}, message: ${err?.message}`);
         return;
       }
       if (data != undefined) {
@@ -1951,7 +1951,7 @@ try {
     });
   }
 } catch (err: BusinessError) {
-  console.error(`delete error: code: ${err.code}, message: ${err.message} `);
+  console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
 };
 ```
 
@@ -2011,13 +2011,13 @@ try {
     (dataShareHelper as dataShare.DataShareHelper).delete(uri, da).then((data: number) => {
       console.info("delete succeed, data : " + data);
     }).catch((err: BusinessError) => {
-      console.error(`delete error: code: ${err.code}, message: ${err.message} `);
+      console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
     });
   }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`delete error: code: ${code}, message: ${message} `);
+  console.error(`Failed to delete. Code: ${code}, message: ${message}`);
 };
 ```
 
@@ -2035,7 +2035,7 @@ try {
     console.info("delete succeed, data : " + data);
   }
 } catch (err: BusinessError) {
-  console.error(`delete error: code: ${err.code}, message: ${err.message} `);
+  console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
 };
 ```
 
@@ -2090,7 +2090,7 @@ try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).query(uri, da, columns, (err: BusinessError, data: DataShareResultSet) => {
       if (err !== undefined) {
-        console.error(`query error: code: ${err.code}, message: ${err.message} `);
+        console.error(`Failed to query. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info("query succeed, rowCount : " + data.rowCount);
@@ -2099,8 +2099,8 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`query error: code: ${code}, message: ${message} `);
-};
+  console.error(`Failed to query. Code: ${code}, message: ${message}`);
+}
 ```
 
 ### query
@@ -2160,14 +2160,14 @@ try {
     (dataShareHelper as dataShare.DataShareHelper).query(uri, da, columns).then((data: DataShareResultSet) => {
       console.info("query succeed, rowCount : " + data.rowCount);
     }).catch((err: BusinessError) => {
-      console.error(`query error: code: ${err.code}, message: ${err.message} `);
+      console.error(`Failed to query. Code: ${err.code}, message: ${err.message}`);
     });
   }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`query error: code: ${code}, message: ${message} `);
-};
+  console.error(`Failed to query. Code: ${code}, message: ${message}`);
+}
 ```
 
 ### update
@@ -2232,7 +2232,7 @@ try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).update(uri, da, va, (err: BusinessError, data: number) => {
       if (err !== undefined) {
-        console.error(`update error: code: ${err.code}, message: ${err.message} `);
+        console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info("update succeed, data : " + data);
@@ -2241,7 +2241,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`update error: code: ${code}, message: ${message} `);
+  console.error(`Failed to update. Code: ${code}, message: ${message}`);
 };
 ```
 
@@ -2265,7 +2265,7 @@ try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).update(uri, da, va, (err: BusinessError | null, data: int | undefined) => {
       if (err?.message) {
-        console.error(`update error: code: ${err?.code}, message: ${err?.message} `);
+        console.error(`Failed to update. Code: ${err?.code}, message: ${err?.message}`);
         return;
       }
       if (data != undefined) {
@@ -2274,7 +2274,7 @@ try {
     });
   }
 } catch (err: BusinessError) {
-  console.error(`update error: code: ${err.code}, message: ${err.message} `);
+  console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
 };
 ```
 
@@ -2346,13 +2346,13 @@ try {
     (dataShareHelper as dataShare.DataShareHelper).update(uri, da, va).then((data: number) => {
       console.info("update succeed, data : " + data);
     }).catch((err: BusinessError) => {
-      console.error(`update error: code: ${err.code}, message: ${err.message} `);
+      console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
     });
   }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`update error: code: ${code}, message: ${message} `);
+  console.error(`Failed to update. Code: ${code}, message: ${message}`);
 };
 ```
 
@@ -2378,7 +2378,7 @@ try {
     console.info("update succeed, data : " + data);
   }
 } catch (err: BusinessError) {
-  console.error(`update error: code: ${err.code}, message: ${err.message} `);
+  console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
 };
 ```
 
@@ -2469,14 +2469,14 @@ try {
         }
       }
     }).catch((err: BusinessError) => {
-      console.error(`Batch update error: code: ${err.code}, message: ${err.message} `);
+      console.error(`Failed to batch update. Code: ${err.code}, message: ${err.message}`);
     });
   }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`Batch update error: code: ${code}, message: ${message} `);
-};
+  console.error(`Failed to batch update. Code: ${code}, message: ${message}`);
+}
 ```
 
 ### batchInsert
@@ -2529,7 +2529,7 @@ try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).batchInsert(uri, vbs, (err, data) => {
       if (err !== undefined) {
-        console.error(`batchInsert error: code: ${err.code}, message: ${err.message} `);
+        console.error(`Failed to batch insert. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info("batchInsert succeed, data : " + data);
@@ -2538,7 +2538,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`batchInsert error: code: ${code}, message: ${message} `);
+  console.error(`Failed to batch insert. Code: ${code}, message: ${message}`);
 };
 ```
 
@@ -2556,7 +2556,7 @@ try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).batchInsert(uri, vbs, (err: BusinessError | null, data: int | undefined) => {
       if (err?.message) {
-        console.error(`batchInsert error: code: ${err?.code}, message: ${err?.message} `);
+        console.error(`Failed to batch insert. Code: ${err?.code}, message: ${err?.message}`);
         return;
       }
       if (data != undefined) {
@@ -2565,7 +2565,7 @@ try {
     });
   }
 } catch (err: BusinessError) {
-  console.error(`batchInsert error: code: ${err.code}, message: ${err.message} `);
+  console.error(`Failed to batch insert. Code: ${err.code}, message: ${err.message}`);
 };
 ```
 
@@ -2625,13 +2625,13 @@ try {
     (dataShareHelper as dataShare.DataShareHelper).batchInsert(uri, vbs).then((data: number) => {
       console.info("batchInsert succeed, data : " + data);
     }).catch((err: BusinessError) => {
-      console.error(`batchInsert error: code: ${err.code}, message: ${err.message} `);
+      console.error(`Failed to batch insert. Code: ${err.code}, message: ${err.message}`);
     });
   }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error(`batchInsert error: code: ${code}, message: ${message} `);
+  console.error(`Failed to batch insert. Code: ${code}, message: ${message}`);
 };
 ```
 
@@ -2651,7 +2651,7 @@ try {
     console.info("batchInsert succeed, data : " + data);
   }
 } catch (err: BusinessError) {
-  console.error(`batchInsert error: code: ${err.code}, message: ${err.message} `);
+  console.error(`Failed to batch insert. Code: ${err.code}, message: ${err.message}`);
 };
 ```
 
@@ -2728,7 +2728,7 @@ let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri, (err: BusinessError, data: string) => {
     if (err !== undefined) {
-      console.info("normalizeUri failed, error message : " + err);
+      console.error(`Failed to normalize URI. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info("normalizeUri = " + data);
     }
@@ -2780,7 +2780,7 @@ if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri).then((data: string) => {
     console.info("normalizeUri = " + data);
   }).catch((err: BusinessError) => {
-    console.info("normalizeUri failed, error message : " + err);
+    console.error(`Failed to normalize URI. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -2823,7 +2823,7 @@ let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).denormalizeUri(uri, (err: BusinessError, data: string) => {
     if (err !== undefined) {
-      console.error("denormalizeUri failed, error message : " + err);
+      console.error(`Failed to denormalize URI. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info("denormalizeUri = " + data);
     }
@@ -2875,7 +2875,7 @@ if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).denormalizeUri(uri).then((data: string) => {
     console.info("denormalizeUri = " + data);
   }).catch((err: BusinessError) => {
-    console.error("denormalizeUri failed, error message : " + err);
+    console.error(`Failed to denormalize URI. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```

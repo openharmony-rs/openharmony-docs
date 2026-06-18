@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c; @xuzhihao666-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 UIServiceExtensionAbility提供浮窗组件相关扩展能力，继承自[ExtensionAbility](js-apis-app-ability-extensionAbility.md)。主要用于向三方应用提供带界面的服务。

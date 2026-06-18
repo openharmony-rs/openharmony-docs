@@ -42,7 +42,7 @@
 
 2. 发布通知消息，通知消息中包含`appMessageId`字段。
 
-   <!-- @[pub_appmsgid_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
+   <!-- @[pub_appMsgId_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
    
    ``` TypeScript
    // publish回调

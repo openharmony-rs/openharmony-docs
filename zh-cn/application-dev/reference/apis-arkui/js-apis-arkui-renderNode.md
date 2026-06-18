@@ -13,6 +13,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 > 
 > - 不建议对[BuilderNode](./js-apis-arkui-builderNode.md)中的RenderNode进行修改操作。BuilderNode中持有的[FrameNode](./js-apis-arkui-frameNode.md)仅用于将该BuilderNode作为子节点挂载到其他FrameNode上，对该FrameNode或对应的RenderNode进行属性设置与子节点操作可能会产生未定义行为，包括但不限于显示异常、事件异常、稳定性问题等。
 >
@@ -32,7 +34,9 @@ constructor()
 
 RenderNode的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +93,9 @@ appendChild(node: RenderNode): void
 
 在RenderNode最后一个子节点后添加新的子节点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -170,7 +176,9 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 
 在RenderNode指定子节点之后添加新的子节点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -265,7 +273,9 @@ removeChild(node: RenderNode): void
 
 从RenderNode中删除指定的子节点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -341,7 +351,9 @@ clearChildren(): void
 
 清除当前RenderNode的所有子节点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -408,7 +420,9 @@ ArkTS-Sta: getChild(index: int): RenderNode | null
 
 获取当前RenderNode指定位置的子节点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -565,7 +579,9 @@ getFirstChild(): RenderNode | null
 
 获取当前RenderNode的第一个子节点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -651,7 +667,9 @@ getNextSibling(): RenderNode | null
 
 获取当前RenderNode的下一个同级节点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -737,7 +755,9 @@ getPreviousSibling(): RenderNode | null
 
 获取当前RenderNode的上一个同级节点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -825,7 +845,9 @@ ArkTS-Sta: set backgroundColor(color: int)
 
 设置当前RenderNode的背景颜色。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -845,7 +867,9 @@ ArkTS-Sta: get backgroundColor(): int
 
 获取当前RenderNode的背景颜色。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -950,7 +974,9 @@ set clipToFrame(useClip: boolean)
 
 设置是否对当前RenderNode剪裁。若设置为true，则超出该RenderNode大小的部分将会被截断。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -968,7 +994,9 @@ get clipToFrame(): boolean
 
 获取当前RenderNode是否需要进行剪裁。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1036,7 +1064,9 @@ ArkTS-Sta: set opacity(value: double)
 
 设置当前RenderNode的不透明度。若输入的数值小于0，会被视为0。若输入的数值大于1，会被视为1。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1056,7 +1086,9 @@ ArkTS-Sta: get opacity(): double
 
 获取当前RenderNode的不透明度。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1164,7 +1196,9 @@ set size(size: Size)
 
 设置当前RenderNode的大小。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1182,7 +1216,9 @@ get size(): Size
 
 获取当前RenderNode的大小。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1244,7 +1280,9 @@ ArkTS-Sta: set position(position: NodePosition)
 
 设置当前RenderNode的位置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1264,7 +1302,9 @@ ArkTS-Sta: get position(): NodePosition
 
 获取当前RenderNode的位置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1325,7 +1365,9 @@ set frame(frame: Frame)
 
 设置当前RenderNode的大小和位置。当和[position](#position)、[size](#size)同时使用时，以后设置的为准。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1343,7 +1385,9 @@ get frame(): Frame
 
 获取当前RenderNode的大小和位置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1403,7 +1447,9 @@ set pivot(pivot: Pivot)
 
 设置当前RenderNode的轴心，影响RenderNode的缩放和旋转效果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1421,7 +1467,9 @@ get pivot(): Pivot
 
 获取当前RenderNode的轴心。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1484,7 +1532,9 @@ set scale(scale: Scale)
 
 设置当前RenderNode的比例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1502,7 +1552,9 @@ get scale(): Scale
 
 获取当前RenderNode的比例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1563,7 +1615,9 @@ set translation(translation: Translation)
 
 设置当前RenderNode的平移量。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1581,7 +1635,9 @@ get translation(): Translation
 
 获取当前RenderNode的平移量。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1642,7 +1698,9 @@ set rotation(rotation: Rotation)
 
 设置当前RenderNode的旋转角度。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1660,7 +1718,9 @@ get rotation(): Rotation
 
 获取当前RenderNode的旋转角度。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1721,7 +1781,9 @@ set transform(transform: Matrix4)
 
 设置当前RenderNode的变换矩阵。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1747,7 +1809,9 @@ get transform(): Matrix4
 ]
 ```
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1815,7 +1879,9 @@ ArkTS-Sta: set shadowColor(color: int)
 
 设置当前RenderNode的阴影颜色，ARGB格式。若设置了[shadowAlpha](#shadowalpha)，则不透明度以shadowAlpha为准。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1835,7 +1901,9 @@ ArkTS-Sta: get shadowColor(): int
 
 获取当前RenderNode的阴影颜色。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1942,7 +2010,9 @@ ArkTS-Sta: set shadowOffset(offset: NodeOffset)
 
 设置当前RenderNode的阴影偏移。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1962,7 +2032,9 @@ ArkTS-Sta: get shadowOffset(): NodeOffset
 
 获取当前RenderNode的阴影偏移。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2026,7 +2098,9 @@ set label(label: string)
 
 设置当前RenderNode的标签。若当前节点是通过new创建的RenderNode，则设置的标签信息会在节点Inspector信息的属性中。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2044,7 +2118,9 @@ get label(): string
 
 获取当前RenderNode的标签。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2108,7 +2184,9 @@ ArkTS-Sta: set shadowAlpha(alpha: double)
 
 设置当前RenderNode的阴影颜色的Alpha值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2128,7 +2206,9 @@ ArkTS-Sta: get shadowAlpha(): double
 
 获取当前RenderNode的阴影颜色的Alpha值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2240,7 +2320,9 @@ ArkTS-Sta: set shadowElevation(elevation: double)
 
 设置当前RenderNode的阴影的光照高度。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2260,7 +2342,9 @@ ArkTS-Sta: get shadowElevation(): double
 
 获取当前RenderNode的阴影的光照高度。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2371,7 +2455,9 @@ ArkTS-Sta: set shadowRadius(radius: double)
 
 设置当前RenderNode的阴影模糊半径。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2391,7 +2477,9 @@ ArkTS-Sta: get shadowRadius(): double
 
 获取当前RenderNode的阴影模糊半径。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2517,9 +2605,11 @@ draw(context: DrawContext): void
 >
 > RenderNode初始化时，会调用两次draw方法。第一次调用是在首次创建FrameNode时触发Render流程，第二次调用是在首次设置modifier时触发绘制。后续绘制流程皆由modifier触发。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -2700,7 +2790,9 @@ invalidate(): void
 
 该方法会触发RenderNode的重新渲染。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2781,7 +2873,9 @@ ArkTS-Sta: set borderStyle(style: NodeEdges\<BorderStyle>)
 
 设置当前RenderNode的边框样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2801,7 +2895,9 @@ ArkTS-Sta: get borderStyle(): NodeEdges\<BorderStyle> | undefined
 
 获取当前RenderNode的边框样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2921,7 +3017,9 @@ ArkTS-Sta: set borderWidth(width: NodeEdges\<double>)
 
 设置当前RenderNode的边框宽度。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2933,7 +3031,7 @@ ArkTS-Sta: set borderWidth(width: NodeEdges\<double>)
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| width  |ArkTS-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTS-Sta: [NodeEdges\<double>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框宽度，单位为vp。 |
+| width  |ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<double> | 是   | RenderNode的边框宽度，单位为vp。 |
 
 ArkTS-Dyn: get borderWidth(): Edges\<number>
 
@@ -2941,7 +3039,9 @@ ArkTS-Sta: get borderWidth(): NodeEdges\<double> | undefined
 
 获取当前RenderNode的边框宽度。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2953,7 +3053,7 @@ ArkTS-Sta: get borderWidth(): NodeEdges\<double> | undefined
 
 | 类型                                                | 说明                   |
 | --------------------------------------------------- | ---------------------- |
-|ArkTS-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTS-Sta: [NodeEdges\<double>](./js-apis-arkui-graphics.md#nodeedgest20) \| undefined| RenderNode的边框宽度，默认所有边框宽度为0vp，默认undefined。 |
+|ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<double> \| undefined| RenderNode的边框宽度，默认所有边框宽度为0vp，默认undefined。 |
 
 **示例：**
 
@@ -3047,7 +3147,9 @@ ArkTS-Sta: set borderColor(color: NodeEdges\<int>)
 
 设置当前RenderNode的边框颜色。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3059,7 +3161,7 @@ ArkTS-Sta: set borderColor(color: NodeEdges\<int>)
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| color  |ArkTS-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTS-Sta: [NodeEdges\<int>](./js-apis-arkui-graphics.md#nodeedgest20) | 是   | RenderNode的边框颜色。 |
+| color  |ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<int> | 是   | RenderNode的边框颜色。 |
 
 ArkTS-Dyn: get borderColor(): Edges\<number>
 
@@ -3067,7 +3169,9 @@ ArkTS-Sta: get borderColor(): NodeEdges\<int> | undefined
 
 获取当前RenderNode的边框颜色。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3079,7 +3183,7 @@ ArkTS-Sta: get borderColor(): NodeEdges\<int> | undefined
 
 | 类型                                                | 说明                   |
 | --------------------------------------------------- | ---------------------- |
-|ArkTS-Dyn: [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) <br> ArkTS-Sta: [NodeEdges\<int>](./js-apis-arkui-graphics.md#nodeedgest20) \| undefined | RenderNode的边框颜色，默认undefined。 |
+|ArkTS-Dyn: [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> <br> ArkTS-Sta: [NodeEdges](./js-apis-arkui-graphics.md#nodeedgest20)\<int> \| undefined | RenderNode的边框颜色，默认undefined。 |
 
 **示例：**
 
@@ -3176,7 +3280,9 @@ ArkTS-Sta: set borderRadius(radius: NodeBorderRadiuses)
 
 设置当前RenderNode的边框圆角。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3197,7 +3303,9 @@ ArkTS-Sta: get borderRadius(): NodeBorderRadiuses | undefined
 
 获取当前RenderNode的边框圆角。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3303,7 +3411,9 @@ set shapeMask(shapeMask: ShapeMask)
 
 设置当前RenderNode的遮罩。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3323,7 +3433,9 @@ ArkTS-Sta: get shapeMask(): ShapeMask | undefined
 
 获取当前RenderNode的遮罩。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3442,7 +3554,9 @@ set shapeClip(shapeClip: ShapeClip)
 
 设置当前RenderNode的裁剪形状。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3460,7 +3574,9 @@ get shapeClip(): ShapeClip
 
 获取当前RenderNode的裁剪形状。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3580,7 +3696,9 @@ dispose(): void
 
 立即释放当前RenderNode。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3650,7 +3768,9 @@ set markNodeGroup(isNodeGroup: boolean)
 
 ![markNodeGroup](./figures/renderNode-markNodeGroup.png)
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3668,7 +3788,9 @@ get markNodeGroup(): boolean
 
 获取当前节点是否标记了优先绘制。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3749,7 +3871,9 @@ set lengthMetricsUnit(unit: LengthMetricsUnit)
 
 设置RenderNode各个属性使用的单位。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3767,7 +3891,9 @@ get lengthMetricsUnit(): LengthMetricsUnit
 
 获取RenderNode各个属性使用的单位。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3846,13 +3972,16 @@ isDisposed(): boolean
 
 查询当前RenderNode对象是否已解除与后端实体节点的引用关系。前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。由于业务需求，可能存在节点在dispose后仍被调用接口的情况。为此，提供此接口以供开发者在操作节点前检查其有效性，避免潜在风险。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型    | 说明               |
@@ -4073,3 +4202,347 @@ ArkTS-Sta中使用ArkTS-Dyn的RenderNode对象。
     }
     ```
     ![image](figures/renderNodeTransfer.png) 
+
+### backgroundBlur
+
+set backgroundBlur(blurValue: BackgroundBlur | undefined)
+
+设置背景模糊效果。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                           |
+| ------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
+| blurValue | [BackgroundBlur](./js-apis-arkui-graphics.md#backgroundblur) \| undefined | 是   | 背景模糊效果。undefined表示无背景模糊效果。 |
+
+get backgroundBlur(): BackgroundBlur
+
+获取背景模糊效果。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                         | 说明                                     |
+| ------------------------------------------------------------ | ---------------------------------------- |
+| [BackgroundBlur](./js-apis-arkui-graphics.md#backgroundblur) | 背景模糊效果。默认值为{radius: 0}。 |
+
+**示例：**
+
+```ts
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    let frameNode = new FrameNode(uiContext);
+    frameNode.commonAttribute
+      .width(200)
+      .height(200)
+      .backgroundColor('0xffd5d5d5')
+      .backgroundImage($r('app.media.img')) // 需要替换为开发者所需的图像资源文件。
+      .backgroundImagePosition({ x: 25, y: 25 })
+      .backgroundImageSize({ width: 150, height: 100 });
+    this.rootNode.appendChild(frameNode);
+    let blurRenderNode = frameNode.getRenderNode();
+    // 设置背景模糊效果。
+    if (blurRenderNode != null) {
+      blurRenderNode.backgroundBlur = {
+        radius: 20,
+        grayscale: [10, 10]
+      };
+      const backgroundBlur = blurRenderNode.backgroundBlur;
+      console.info(`background blur radius: ${backgroundBlur.radius} grayscale: [${backgroundBlur.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/backgroundBlur.png)
+
+### contentBlur
+
+set contentBlur(blurValue: ContentBlur | undefined)
+
+设置内容模糊效果。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                       | 必填 | 说明                                           |
+| ------- | ---------------------------------------------------------- | ---- | ---------------------------------------------- |
+| blurValue | [ContentBlur](./js-apis-arkui-graphics.md#contentblur) \| undefined | 是   | 内容模糊效果。undefined表示无内容模糊效果。 |
+
+get contentBlur(): ContentBlur
+
+获取内容模糊效果。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                       | 说明                                     |
+| ---------------------------------------------------------- | ---------------------------------------- |
+| [ContentBlur](./js-apis-arkui-graphics.md#contentblur) | 内容模糊效果。默认值为{radius: 0}。 |
+
+**示例：**
+
+```ts
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// 继承RenderNode，实现自定义绘制方法
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 25,
+      y: 25,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // 绘制RenderNode时调用此函数
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 39,
+      green: 135,
+      blue: 217
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200);
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // 设置内容模糊效果。
+      myRenderNode.contentBlur = {
+        radius: 20,
+        grayscale: [10, 10]
+      };
+      renderNode.appendChild(myRenderNode)
+      const contentBlurConfig = myRenderNode.contentBlur;
+      console.info(`content blur radius: ${contentBlurConfig.radius} grayscale: [${contentBlurConfig.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/contentBlur.png)
+
+### foregroundBlur
+
+set foregroundBlur(blurValue: ForegroundBlur | undefined)
+
+设置前景模糊效果。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                           | 必填 | 说明                                         |
+| ------- | -------------------------------------------------------------- | ---- | -------------------------------------------- |
+| blurValue | [ForegroundBlur](./js-apis-arkui-graphics.md#foregroundblur) \| undefined | 是   | 前景模糊效果。undefined表示无前景模糊效果。 |
+
+get foregroundBlur(): ForegroundBlur
+
+获取前景模糊效果。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                           | 说明                                   |
+| -------------------------------------------------------------- | -------------------------------------- |
+| [ForegroundBlur](./js-apis-arkui-graphics.md#foregroundblur) | 前景模糊效果。默认值为{radius: 0}。 |
+
+**示例：**
+
+```ts
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// 继承RenderNode，实现自定义绘制方法
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 25,
+      y: 25,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // 绘制RenderNode时调用此函数
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 39,
+      green: 135,
+      blue: 217
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200);
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // 设置前景模糊效果。
+      myRenderNode.foregroundBlur = {
+        radius: 20
+      };
+      renderNode.appendChild(myRenderNode);
+      const foregroundBlur = myRenderNode.foregroundBlur;
+      console.info(`foreground blur radius: ${foregroundBlur.radius}`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/foregroundBlur.png)

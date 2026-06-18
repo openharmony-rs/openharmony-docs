@@ -1,7 +1,7 @@
 # Class (BitVector)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -97,11 +97,10 @@ ArkTS-Sta: push(element: int): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The push method cannot be bound.                             |
 | 10200201 | Concurrent modification error.                               |
 
@@ -239,11 +238,10 @@ ArkTS-Sta: setBitsByRange(element: int, fromIndex: int, toIndex: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The setBitsByRange method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -284,11 +282,10 @@ ArkTS-Sta: setAllBits(element: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The setAllBits method cannot be bound.                       |
 | 10200201 | Concurrent modification error.                               |
 
@@ -335,11 +332,10 @@ ArkTS-Sta: getBitsByRange(fromIndex: int, toIndex: int): BitVector
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getBitsByRange method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -385,11 +381,10 @@ ArkTS-Sta: resize(size: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200011 | The resize method cannot be bound.                           |
 | 10200201 | Concurrent modification error.                               |
 
@@ -440,11 +435,10 @@ ArkTS-Sta: getBitCountByRange(element: int, fromIndex: int, toIndex: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getBitCountByRange method cannot be bound.               |
 | 10200201 | Concurrent modification error.                               |
@@ -506,11 +500,10 @@ ArkTS-Sta: getIndexOf(element: int, fromIndex: int, toIndex: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getIndexOf method cannot be bound.                       |
 | 10200201 | Concurrent modification error.                               |
@@ -572,11 +565,10 @@ ArkTS-Sta: getLastIndexOf(element: int, fromIndex: int, toIndex: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getLastIndexOf method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -630,11 +622,10 @@ ArkTS-Sta: flipBitByIndex(index: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of index is out of range.                          |
 | 10200011 | The flipBitByIndex method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -676,11 +667,10 @@ ArkTS-Sta: flipBitsByRange(fromIndex: int, toIndex: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。|
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The flipBitsByRange method cannot be bound.                  |
 | 10200201 | Concurrent modification error.                               |

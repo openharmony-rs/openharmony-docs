@@ -14,7 +14,15 @@
 
 在ArkTS-Sta中使用时，开发指南参考：[@Monitor装饰器：状态变量修改监听（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-new-monitor.md)。
 
+## @Monitor
+
+@interface Monitor
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -61,9 +69,19 @@ struct Index {
 
 当监听的变量变化时，状态管理框架侧将回调开发者注册的函数，并传入变化信息。变化信息的类型即为IMonitor类型。
 
-### 属性
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+### 属性
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型            | 只读  | 可选 | 说明             |
 | ------------------- | --------------- | ---- | --- | ---------------- |
@@ -75,7 +93,11 @@ value\<T\>(path?: string): IMonitorValue\<T\> | undefined
 
 获取指定path的变化信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -139,7 +161,11 @@ struct Index {
 
 ### 属性
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
@@ -184,7 +210,11 @@ type MonitorValueCallback = () => Any
 
 监听状态变量的回调类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -237,7 +267,11 @@ type MonitorCallback = (iMonitor: IMonitor) => void
 
 触发监听时被调用的回调函数。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -285,9 +319,19 @@ struct Page {
 
 ## IMonitorDecoratedVariable
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Sta起始版本：** 23
+
 ### 属性
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
@@ -340,7 +384,11 @@ struct Page {
 
 定义一个提供变量相关功能的自定义组件API。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 

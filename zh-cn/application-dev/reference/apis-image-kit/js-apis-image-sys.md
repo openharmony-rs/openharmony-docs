@@ -20,6 +20,22 @@
 import { image } from '@kit.ImageKit';
 ```
 
+## GainmapParams
+
+Gainmap（增益图）参数设置选项。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称               | 类型              | 只读 | 可选 | 说明             |
+| ------------------ | ----------------- | ---- | ---- | ---------------- |
+| isFullSizeGainmap| boolean | 否   | 否   | 返回Picture中的Gainmap（增益图）是否使用全尺寸图。<br/>true表示使用全尺寸图，宽高和主图一致；false表示不使用全尺寸图，宽高均为主图的一半。默认值为false。|
+
 ## DecodingOptions<sup>7+</sup>
 
 图像解码设置选项。
@@ -47,6 +63,27 @@ import { image } from '@kit.ImageKit';
 | LOW     | 1     | 低画质效果，解码耗时短。<br/>此接口为系统接口。|
 | MEDIUM             | 2    | 中等画质效果，解码耗时中等。<br/>此接口为系统接口。|
 | HIGH             | 3    | 最高等级画质效果，解码耗时长。<br/>此接口为系统接口。|
+
+## PropertyKey<sup>7+</sup>
+
+枚举，Exif（Exchangeable image file format）图像信息。
+
+- 格式示例中的key为：image.PropertyKey.XXX（XXX为枚举的名称，如：image.PropertyKey.XTSTYLE_TEMPLATE_NAME） 。
+- 格式示例仅用于说明修改传值和读取结果的格式。具体接口使用方法请参考：[modifyImageProperty](arkts-apis-image-ImageSource.md#modifyimageproperty11)（修改单个Exif字段）、[modifyImageProperties](arkts-apis-image-ImageSource.md#modifyimageproperties12)（修改多个Exif字段）、[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)（读取单个Exif字段）、[getImageProperties](arkts-apis-image-ImageSource.md#getimageproperties12)（读取多个Exif字段）。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称                         | 值      | 说明       |
+| ---------------------------- | ------ | ---------- |
+| XTSTYLE_TEMPLATE_NAME     | 'HwMnoteXtStyleTemplateName'     | 个性色卡模板名称。<br>**起始版本：** 26.0.0|
+| XTSTYLE_CUSTOM_LIGHT_AND_SHADOW             | 'HwMnoteXtStyleCustomLightAndShadow'    | 个性色卡自定义光影。<br>**起始版本：** 26.0.0|
+| XTSTYLE_CUSTOM_SATURATION             | 'HwMnoteXtStyleCustomSaturation'    | 个性色卡自定义饱和度。<br>**起始版本：** 26.0.0|
+| XTSTYLE_CUSTOM_HUE             | 'HwMnoteXtStyleCustomHue'    | 个性色卡自定义色调。<br>**起始版本：** 26.0.0|
+| XTSTYLE_EXPOSURE_PARAM             | 'HwMnoteXtStyleExposureParam'    | 个性色卡曝光参数。<br>**起始版本：** 26.0.0|
 
 ## image.createPictureByHdrAndSdrPixelMap<sup>20+</sup>
 
@@ -114,6 +151,169 @@ async function CreatePictureTest(context: Context) {
   }).catch((error : BusinessError) => {
     console.error('Failed to pack the image. And the error is: ' + error);
   })
+}
+```
+
+## image.createPictureByHdrAndSdrPixelMap
+
+createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap, params: GainmapParams): Promise\<Picture>
+
+根据HDR PixelMap和SDR PixelMap创建Picture对象。系统将使用HDR和SDR PixelMap生成一个Gainmap（增益图），返回的Picture对象将包含SDR PixelMap和生成的Gainmap PixelMap，像素格式为RGBA8888。Gainmap PixelMap的尺寸可以通过设置params进行选择。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名       | 类型                | 必填 | 说明             |
+| ------------ | ------------------- | ---- | ---------------- |
+| hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_F16/RGBA_1010102/YCBCR_P010，色彩空间是BT2020_HLG。 |
+| sdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | SDR PixelMap，位深8bit，像素格式为RGBA_8888/NV21，色彩空间是P3。 |
+| params | [GainmapParams](#gainmapparams) | 是   | Gainmap Params，增益图参数设置选项，决定是否使用全尺寸增益图。|
+
+**返回值：**
+
+| 类型               | 说明              |
+| ------------------ | ----------------- |
+|Promise\<[Picture](arkts-apis-image-Picture.md)> | Promise对象，返回Picture包含SDR和Gainmap，像素格式为RGBA_8888。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
+|  202      | Non-system applications are not allowed to use system APIs. |
+
+ **示例：**
+
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+async function CreatePictureTest(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // 获取SDR图片。
+  let imageSource: image.ImageSource = image.createImageSource(rawFile);
+  let decodingOptionsForSDR: image.DecodingOptions = {
+    desiredDynamicRange : image.DecodingDynamicRange.SDR,
+  }
+  let decodingOptionsForHDR: image.DecodingOptions = {
+    desiredDynamicRange : image.DecodingDynamicRange.HDR, // 通过AIHDR将SDR解码为HDR。
+  }
+  let sdrPixelMap = await imageSource.createPixelMap(decodingOptionsForSDR);
+  let hdrPixelMap = await imageSource.createPixelMap(decodingOptionsForHDR);
+  let params : image.GainmapParams = {
+    isFullSizeGainmap: true
+  }
+
+  // 获取计算生成的gainmap并编码。
+  let picture: image.Picture = await image.createPictureByHdrAndSdrPixelMap(hdrPixelMap, sdrPixelMap, params);
+  if (picture != null) {
+    console.info('Succeeded in creating picture');
+  } else {
+    console.error('Create picture failed');
+  }
+  const imagePackerObj = image.createImagePacker();
+  let packOpts : image.PackingOption = { format : "image/jpeg", quality: 98};
+  packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
+  const path: string = context.filesDir + "/hdr-test.jpg";
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  imagePackerObj.packToFile(picture, file.fd, packOpts).then(() => {
+  }).catch((error : BusinessError) => {
+    console.error('Failed to pack the image. And the error is: ' + error);
+  })
+}
+```
+
+## HdrDecomposeOptions
+
+HDR PixelMap分解为Picture的配置选项，分解后的Picture包含一张SDR主图和一张增益图（GainMap）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称               | 类型              | 只读 | 可选 | 说明             |
+| ----------------- | ----------------- | ---- | ---- | ---------------- |
+| isFullSizeGainmap | boolean | 否   | 是   | 是否生成全尺寸增益图。<br>true表示生成全尺寸增益图，增益图尺寸和主图一致；false表示不生成全尺寸增益图，增益图尺寸是主图的一半。默认值为false。|
+| desiredPixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否   | 是   | 分解后SDR PixelMap和增益图的像素格式。支持RGBA_8888、NV12、NV21。默认值为RGBA_8888。 |
+
+## image.decomposeToPicture
+
+decomposeToPicture(hdrPixelMap : PixelMap, options?: HdrDecomposeOptions): Promise\<Picture | undefined>
+
+将HDR PixelMap分解为包含SDR PixelMap和增益图（gainmap）的Picture对象。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名       | 类型                | 必填 | 说明             |
+| ------------ | ------------------- | ---- | ---------------- |
+| hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，像素格式需为RGBA_F16、RGBA_1010102、YCBCR_P010或YCRCB_P010。 |
+| options | [HdrDecomposeOptions](#hdrdecomposeoptions) | 否   | HDR分解配置选项，包含增益图尺寸和像素格式设置。 |
+
+**返回值：**
+
+| 类型               | 说明              |
+| ------------------ | ----------------- |
+|Promise\<[Picture](arkts-apis-image-Picture.md) \| undefined> | Promise对象。返回包含SDR PixelMap和增益图的Picture对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 202      | Non-system applications are not allowed to use system APIs.  |
+| 7600201  | Unsupported operation. hdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010\YCRCB_P010. |
+| 7600206  | Invalid parameter. Possible cause: hdrPixelMap is empty.     |
+| 7600208  | HDR image decomposition failed. Possible causes: 1. Decomposition processing is not supported. 2. Processing error occurs. |
+| 7600301  | Alloc memory failed.                                         |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function DecomposeToPictureTest(context: Context) {
+  const resourceMgr = context.resourceManager;
+  const rawFile = await resourceMgr.getRawFileContent("test.jpg");
+  let imageSource: image.ImageSource = image.createImageSource(rawFile);
+  let decodingOptions: image.DecodingOptions = {
+    desiredDynamicRange: image.DecodingDynamicRange.HDR,
+  };
+  let hdrPixelMap = await imageSource.createPixelMap(decodingOptions);
+  // 指定gainmap为全尺寸，像素格式为NV12。
+  let options: image.HdrDecomposeOptions = {
+    isFullSizeGainmap: true,
+    desiredPixelFormat: image.PixelMapFormat.NV12,
+  };
+  let picture: image.Picture | undefined = await image.decomposeToPicture(hdrPixelMap, options);
+  if (picture != undefined) {
+    console.info('Decompose to picture with options successfully');
+  } else {
+    console.error('Decompose to picture with options failed');
+  }
 }
 ```
 

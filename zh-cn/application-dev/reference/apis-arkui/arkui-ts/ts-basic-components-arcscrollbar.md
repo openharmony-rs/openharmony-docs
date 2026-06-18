@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 弧形滚动条组件ArcScrollBar，用于配合可滚动组件使用，如[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)。
@@ -43,6 +43,28 @@ ArcScrollBar的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | options |  [ArcScrollBarOptions](#arcscrollbaroptions)| 是 | 滚动条组件参数。 |
+
+## 属性
+
+除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<ArcScrollBarAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+动态设置ArcScrollBar组件的属性方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
+| -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier)\<ArcScrollBarAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>ArcScrollBarAttribute：当前组件的[属性](#属性)。 |
 
 ## ArcScrollBarOptions
 

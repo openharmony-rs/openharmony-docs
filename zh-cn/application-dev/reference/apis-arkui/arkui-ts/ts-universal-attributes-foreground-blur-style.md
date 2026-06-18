@@ -1,8 +1,8 @@
 # 组件内容模糊
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,6 +11,8 @@
 >  **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -24,7 +26,7 @@ foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T
 >
 > 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +55,7 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 为当前组件提供内容模糊能力。与[foregroundBlurStyle](#foregroundblurstyle)相比，style参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -87,7 +89,7 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 >  foregroundBlurStyle接口为实时模糊接口，每帧执行实时渲染，性能负载较大。当模糊内容与模糊半径均无需变动时，推荐采用静态模糊接口[blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)。最佳实践请参考：[图像模糊动效优化-使用场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519)。
 
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,7 +115,7 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 ## foregroundBlurStyle<sup>23+</sup>
 
-foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): this
+foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions)
 
 为当前组件提供内容模糊能力。
 
@@ -125,7 +127,7 @@ foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleO
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[foregroundBlurStyle](#foregroundblurstyle)，[foregroundBlurStyle<sup>10+</sup>](#foregroundblurstyle18)和[foregroundBlurStyle<sup>10+</sup>](#foregroundblurstyle19)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[foregroundBlurStyle](#foregroundblurstyle)，[foregroundBlurStyle<sup>18+</sup>](#foregroundblurstyle18)和[foregroundBlurStyle<sup>19+</sup>](#foregroundblurstyle19)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -137,17 +139,11 @@ foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleO
 | options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明) |  否 | 是 | 可选参数，内容模糊选项。                                     |
 | sysOptions   |  [SystemAdaptiveOptions](ts-universal-attributes-background.md#systemadaptiveoptions19)    | 否 | 是 | 系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## ForegroundBlurStyleOptions对象说明
 
 继承自[BlurStyleOptions](#blurstyleoptions)，设置内容模糊选项。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -159,16 +155,16 @@ foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleO
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------- | ------| ------- | ------- | --------|
-| colorMode     | [ThemeColorMode](#themecolormode枚举说明) | 否 | 是  | 内容模糊效果使用的深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
-| adaptiveColor | [AdaptiveColor](#adaptivecolor枚举说明)   | 否 | 是   | 内容模糊效果使用的取色模式。<br/>默认值：AdaptiveColor.DEFAULT<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
-| blurOptions<sup>11+</sup> | [BlurOptions](#bluroptions11)         | 否 | 是    | 灰阶模糊参数。<br/>默认值：grayscale: [0,0] <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23|
-| scale<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否 | 是  | 内容模糊效果程度。<br/>默认值：1.0 <br/>取值范围：[0.0, 1.0] <br/>1.0表示模糊程度最高。 <br/>0.0表示模糊程度最低。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23|
+| colorMode     | [ThemeColorMode](#themecolormode枚举说明) | 否 | 是  | 内容模糊效果使用的深浅色模式。<br/>默认值：ThemeColorMode.SYSTEM<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
+| adaptiveColor | [AdaptiveColor](#adaptivecolor枚举说明)   | 否 | 是   | 内容模糊效果使用的取色模式。<br/>默认值：AdaptiveColor.DEFAULT<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23 |
+| blurOptions<sup>11+</sup> | [BlurOptions](#bluroptions11)         | 否 | 是    | 灰阶模糊参数。<br/>默认值：grayscale: [0,0] <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11<br/> **ArkTS-Sta起始版本：** 23|
+| scale<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否 | 是  | 内容模糊效果程度。<br/>默认值：1.0 <br/>取值范围：[0.0, 1.0] <br/>1.0表示模糊程度最高。 <br/>0.0表示模糊程度最低。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23|
 
 ## ThemeColorMode枚举说明
 
 设置颜色模式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,7 +182,7 @@ foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleO
 
 取色模式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -203,7 +199,7 @@ foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleO
 
 灰阶模糊参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -213,7 +209,7 @@ foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleO
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------- | ------| ------- | ------- | --------|
-| grayscale   |  [number, number]   |  否 | 否 |  灰阶模糊参数，两参数取值范围均为[0,127] 。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰），有效值范围0-127。例如：设置参数为（20,20），图片中的黑色像素RGB:[0, 0, 0]会调整为[20,20,20]，白色像素RGB:[255,255,255]会调整为[235,235,235]（255-20），图像中的彩色像素维持不变。 |
+| grayscale   | ArkTS-Dyn: [number, number]<br/>ArkTS-Sta: [double, double] \| undefined   |  否 | 否 |  灰阶模糊参数，两参数取值范围均为[0,127] 。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰），有效值范围0-127。例如：设置参数为（20,20），图片中的黑色像素RGB:[0, 0, 0]会调整为[20,20,20]，白色像素RGB:[255,255,255]会调整为[235,235,235]（255-20），图像中的彩色像素维持不变。 |
 
 
 ## 示例
@@ -241,4 +237,4 @@ struct ForegroundBlurStyleDemo {
 }
 ```
 
-![zh-cn_image_background_blur_style](figures/zh-cn_image_foreground_blur_style.png)
+![zh-cn_image_background_blur_style](figures/image-foreground-blur_style.png)

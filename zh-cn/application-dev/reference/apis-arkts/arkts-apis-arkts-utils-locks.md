@@ -163,11 +163,10 @@ static query(name: string): AsyncLockState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **示例：**
@@ -242,11 +241,10 @@ lockAsync\<T>(callback: AsyncLockCallback\<T>): Promise\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **示例：**
@@ -283,11 +281,10 @@ lockAsync\<T>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode): Promise\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **示例：**
@@ -325,11 +322,10 @@ lockAsync\<T, U>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode, options: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist.     |
 | 10200031 | Timeout exceeded. |
 

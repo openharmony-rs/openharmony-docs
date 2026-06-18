@@ -18,7 +18,7 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +37,7 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +52,7 @@
 | role | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明) | 否   | 是   | Button组件的角色。                     |
 | fontSize  | [Length](ts-types.md#length)                 | 否   | 是   | 文本显示字号。 |
 | fontColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 文本显示颜色。                     |
-| fontWeight  | [FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string| 否   | 是   | 文本的字体粗细。number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"200"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。 |
+| fontWeight  |      ArkTS-Dyn: [FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string <br>ArkTS-Sta: [FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string | 否   | 是   | 文本的字体粗细。number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"200"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。 |
 | fontStyle | [FontStyle](ts-appendix-enums.md#fontstyle) | 否   | 是   | 文本的字体样式。                     |
 | fontFamily  |  [Resource](ts-types.md#resource)&nbsp;\|&nbsp;string  | 否   | 是   | 字体列表。默认字体'HarmonyOS Sans'，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../js-apis-font.md)。 |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 按钮背景色。                     |
@@ -65,7 +65,7 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

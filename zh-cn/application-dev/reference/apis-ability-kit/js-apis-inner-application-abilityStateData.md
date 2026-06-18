@@ -4,13 +4,15 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 AbilityStateData是Ability状态信息的数据结构。使用[on](js-apis-app-ability-appManager.md#appmanageronapplicationstate14)注册生命周期变化监听后，可以通过[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md)的onAbilityStateChanged回调的入参获取该数据结构。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -25,16 +27,16 @@ import { appManager } from '@kit.AbilityKit';
 
 | 名称                     | 类型     | 只读 | 可选 | 说明                       |
 | ----------------------- | ---------| ---- | ---- | ------------------------- |
-| pid                     | number   | 否   | 否   | 进程ID。                    |
-| bundleName              | string   | 否   | 否  | 应用Bundle名称。          |
-| abilityName            | string   | 否   | 否   | Ability名称。               |
-| uid                    | number   | 否   | 否   | 所属应用程序的UID。                  |
-| state                   | number   | 否   | 否   | Ability状态。<br>- [Stage模型](../../application-models/ability-terminology.md#stage模型)：[UIAbility](js-apis-app-ability-uiAbility.md)的状态参见[UIAbility状态](#uiability状态)；[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的状态参见[ExtensionAbility状态](#extensionability状态)；[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的状态参见[UIExtensionAbility状态](#uiextensionability状态)。<br>- [FA模型](../../application-models/ability-terminology.md#fa模型)：参见[Ability状态](#ability状态)。                |
-| moduleName | string   | 否   | 否   | Ability所属的模块名称。    |
-| abilityType | number | 否   | 否   | [Ability类型](#ability类型)：[UIAbility](js-apis-app-ability-uiAbility.md)或[ExtensionAbility](js-apis-app-ability-extensionAbility.md)等。 |
-| isAtomicService | boolean | 否 | 否 | 判断Ability所属应用是否为原子化服务。<br>true: 是原子化服务。<br>false: 不是原子化服务。 |
-| appCloneIndex          | number   | 否   | 是   | 应用包的[分身](../../quick-start/app-clone.md)索引标识。                  |
-| callerBundleName<sup>23+</sup> | string | 否 | 是 | Ability创建时的拉起方Bundle名称。 |
+| pid                     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 进程ID。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
+| bundleName              | string   | 否   | 否  | 应用Bundle名称。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityName            | string   | 否   | 否   | Ability名称。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| uid                    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 所属应用程序的UID。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| state                   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | Ability状态。<br>- [Stage模型](../../application-models/ability-terminology.md#stage模型)：[UIAbility](js-apis-app-ability-uiAbility.md)的状态参见[UIAbility状态](#uiability状态)；[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的状态参见[ExtensionAbility状态](#extensionability状态)；[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的状态参见[UIExtensionAbility状态](#uiextensionability状态)。<br>- [FA模型](../../application-models/ability-terminology.md#fa模型)：参见[Ability状态](#ability状态)。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| moduleName | string   | 否   | 否   | Ability所属的模块名称。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityType | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | [Ability类型](#ability类型)：[UIAbility](js-apis-app-ability-uiAbility.md)或[ExtensionAbility](js-apis-app-ability-extensionAbility.md)等。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| isAtomicService | boolean | 否 | 否 | 判断Ability所属应用是否为原子化服务。<br>true: 是原子化服务。<br>false: 不是原子化服务。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| appCloneIndex          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 应用包的[分身](../../quick-start/app-clone.md)索引标识。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| callerBundleName<sup>23+</sup> | string | 否 | 是 | Ability创建时的拉起方Bundle名称。<br/>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ### UIAbility状态
 
@@ -48,6 +50,11 @@ import { appManager } from '@kit.AbilityKit';
 | 5    | ABILITY_STATE_TERMINATED   | UIAbility已经销毁。        |
 
 ### ExtensionAbility状态
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 值   | 状态    | 说明                  |
 | ---- | -------------------------- | ---------------------- |
 | 0    | EXTENSION_STATE_CREATE     | ExtensionAbility正在创建中。  |
@@ -68,6 +75,10 @@ import { appManager } from '@kit.AbilityKit';
 
 ### Ability状态
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 值   | 状态                       | 说明                   |
 | ---- | -------------------------- | ---------------------- |
 | 0    | ABILITY_STATE_CREATE       | Ability正在创建中。      |
@@ -80,6 +91,10 @@ import { appManager } from '@kit.AbilityKit';
 | 8    | ABILITY_STATE_DISCONNECTED | 后台服务与客户端断开连接。 |
 
 ### Ability类型
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 值   | 状态    | 说明                  |
 | ---- | ------- | --------------------- |

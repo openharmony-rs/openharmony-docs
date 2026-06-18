@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
@@ -28,9 +30,9 @@ import { bundleMonitor } from '@kit.AbilityKit';
 
 | 名称       | 类型   | 只读 | 可选 | 说明                       |
 | ---------- | ------ | ---- | ---- | -------------------------- |
-| bundleName | string | 是   | 否   | 应用状态发生变化的应用Bundle名称。 |
-| userId     | number | 是   | 否   | 应用状态发生变化的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。   |
-| appIndex<sup>12+</sup>   | number | 是   | 否   |  应用状态发生变化的应用分身索引。  |
+| bundleName | string | 是   | 否   | 应用状态发生变化的应用Bundle名称。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 应用状态发生变化的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| appIndex<sup>12+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   |  应用状态发生变化的应用分身索引。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ## BundleChangedEvent
 
@@ -43,6 +45,10 @@ type BundleChangedEvent = 'add' | 'update' | 'remove'
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：**  此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 | 类型       | 说明                                      |
 | ---------- | ----------------------------------------- |
@@ -65,12 +71,16 @@ on(type: BundleChangedEvent, callback: Callback\<BundleChangedInfo>): void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名                       | 类型     | 必填 | 说明               |
 | ---------------------------- | -------- | ---- | ------------------ |
-| type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| 是   | 注册监听的事件类型。 |
-| callback | callback\<BundleChangedInfo>| 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
+| type | [BundleChangedEvent](#bundlechangedevent) | 是   | 注册监听的事件类型。 |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 是   | 注册监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
 
 **错误码：**
 
@@ -100,6 +110,171 @@ try {
 }
 ```
 
+## bundleMonitor.onAdd<sup>23+</sup>
+
+onAdd(callback: Callback\<BundleChangedInfo>): void
+
+注册监听应用的安装。
+>**说明：**
+>
+>该方法需要与[bundleMonitor.offAdd](#bundlemonitoroffadd23)配合使用，在组件、页面、应用的生命周期结束时，使用[bundleMonitor.offAdd](#bundlemonitoroffadd23)注销对应用的安装事件的监听。
+
+**需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
+
+**系统接口：**  此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#bundlemonitoron)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名                       | 类型     | 必填 | 说明               |
+| ---------------------------- | -------- | ---- | ------------------ |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 是   | 注册监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Verify permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { bundleMonitor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  bundleMonitor.onAdd((bundleChangeInfo) => {
+    console.info(`bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
+  })
+} catch (errData) {
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
+}
+```
+
+## bundleMonitor.onUpdate<sup>23+</sup>
+
+onUpdate(callback: Callback\<BundleChangedInfo>): void
+
+注册监听应用的更新。
+>**说明：**
+>
+>该方法需要与[bundleMonitor.offUpdate](#bundlemonitoroffupdate23)配合使用，在组件、页面、应用的生命周期结束时，使用[bundleMonitor.offUpdate](#bundlemonitoroffupdate23)注销对应用的更新事件的监听。
+
+**需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
+
+**系统接口：**  此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#bundlemonitoron)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名                       | 类型     | 必填 | 说明               |
+| ---------------------------- | -------- | ---- | ------------------ |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 是   | 注册监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Verify permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { bundleMonitor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  bundleMonitor.onUpdate((bundleChangeInfo) => {
+    console.info(`bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
+  })
+} catch (errData) {
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
+}
+```
+
+## bundleMonitor.onRemove<sup>23+</sup>
+
+onRemove(callback: Callback\<BundleChangedInfo>): void
+
+注册监听应用的卸载。
+>**说明：**
+>
+>该方法需要与[bundleMonitor.offRemove](#bundlemonitoroffremove23)配合使用，在组件、页面、应用的生命周期结束时，使用[bundleMonitor.offRemove](#bundlemonitoroffremove23)注销对应用的卸载事件的监听。
+
+**需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
+
+**系统接口：**  此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#bundlemonitoron)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名                       | 类型     | 必填 | 说明               |
+| ---------------------------- | -------- | ---- | ------------------ |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 是   | 注册监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Verify permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { bundleMonitor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  bundleMonitor.onRemove((bundleChangeInfo) => {
+    console.info(`bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
+  })
+} catch (errData) {
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
+}
+```
+
 ## bundleMonitor.off
 
 off(type: BundleChangedEvent, callback?: Callback\<BundleChangedInfo>): void
@@ -112,12 +287,16 @@ off(type: BundleChangedEvent, callback?: Callback\<BundleChangedInfo>): void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名                       | 类型     | 必填 | 说明                                                       |
 | ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
-| type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| 是   | 注销监听的事件类型。                                         |
-| callback | callback\<BundleChangedInfo>| 否   | [回调函数](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
+| type | [BundleChangedEvent](#bundlechangedevent) | 是   | 注销监听的事件类型。                                         |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 否   | 注销监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
 
 **错误码：**
 
@@ -142,6 +321,156 @@ let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
 
 try {
   bundleMonitor.off('add', callbackFun);
+} catch (errData) {
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
+}
+```
+
+## bundleMonitor.offAdd<sup>23+</sup>
+
+offAdd(callback?: Callback\<BundleChangedInfo>): void
+
+注销监听应用的安装。
+
+**需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
+
+**系统接口：**  此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#bundlemonitoroff)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名                       | 类型     | 必填 | 说明                                                       |
+| ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 否   | 注销监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Verify permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { bundleMonitor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  bundleMonitor.offAdd();
+} catch (errData) {
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
+}
+```
+
+## bundleMonitor.offUpdate<sup>23+</sup>
+
+offUpdate(callback?: Callback\<BundleChangedInfo>): void
+
+注销监听应用的更新。
+
+**需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
+
+**系统接口：**  此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#bundlemonitoroff)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名                       | 类型     | 必填 | 说明                                                       |
+| ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 否   | 注销监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Verify permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { bundleMonitor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  bundleMonitor.offUpdate();
+} catch (errData) {
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
+}
+```
+
+## bundleMonitor.offRemove<sup>23+</sup>
+
+offRemove(callback?: Callback\<BundleChangedInfo>): void
+
+注销监听应用的卸载。
+
+**需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
+
+**系统接口：**  此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#bundlemonitoroff)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名                       | 类型     | 必填 | 说明                                                       |
+| ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 否   | 注销监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Verify permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { bundleMonitor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  bundleMonitor.offRemove();
 } catch (errData) {
   let message = (errData as BusinessError).message;
   let errCode = (errData as BusinessError).code;

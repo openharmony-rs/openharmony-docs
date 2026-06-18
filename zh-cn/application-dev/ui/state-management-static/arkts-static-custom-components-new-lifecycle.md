@@ -78,7 +78,8 @@
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
-```typescript
+<!-- @[LifecycleNest](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleNest.ets) -->
+``` TypeScript
 'use static'
 
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -216,7 +217,8 @@ struct Child {
 
 通过以下示例，来详细说明自定义组件在使用时，回收复用的生命周期调用时序：
 
-```typescript
+<!-- @[LifecycleReuse](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleReuse.ets) -->
+``` TypeScript
 'use static'
 
 import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentDisappear, ComponentReuse, ComponentRecycle, Entry, Component, State, Column, Button, Reusable, Text, ReuseObject } from '@kit.ArkUI';
@@ -309,7 +311,6 @@ struct Child {
       }
     }
     .borderWidth(1)
-    .height(100)
   }
 }
 
@@ -361,7 +362,6 @@ struct GrandChild {
         .fontSize(30)
     }
     .borderWidth(1)
-    .height(100)
   }
 }
 ```
@@ -390,7 +390,8 @@ struct GrandChild {
 
 [CustomComponentLifecycleObserver](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycleobserver)用于监听自定义组件的生命周期，开发者可以根据自己的需求重写CustomComponentLifecycleObserver中的回调函数。
 
-```typescript
+<!-- @[LifecycleObserver](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleObserver.ets) -->
+``` TypeScript
 'use static'
 
 import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle, Entry, Component, State, Column, Button, FontWeight, Reusable, Text, ReuseObject } from '@kit.ArkUI';
@@ -500,7 +501,7 @@ MyObserver aboutToReuse
 
 可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所以无法监听组件的aboutToAppear。
 
-```typescript
+``` TypeScript
 Column() {
   Text('Hello World')
 }
@@ -541,9 +542,10 @@ Column() {
 
 以下示例展示了Navigation和TabContent混用场景下，`@ComponentActive`和`@ComponentInactive`生命周期装饰器的触发时机：
 
-```ts
+<!-- @[LifecycleActiveInactive](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleActiveInactive.ets) -->
+``` TypeScript
 'use static'
- 
+
  import { BarMode, BarPosition, ComponentActive, ComponentInactive, Builder, Button, ButtonType, Color, Column, ComponentV2, Consumer, Entry, IMonitor, Local, Margin, Monitor, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, Param, Provider, Require, TabContent, Tabs, TabsController, Text } from '@kit.ArkUI';
  
  @ComponentV2
@@ -776,18 +778,18 @@ Column() {
 
 aboutToAppear是自定义组件build之前执行，aboutToDisappear是自定义组件销毁前执行。但有时自定义组件没有build，就被销毁。为了执行一个完整的生命周期，aboutToDisappear会判断，该组件是否执行了aboutToAppear，如果没有执行便强制触发一次aboutToAppear。\@ComponentAppear装饰的函数和\@ComponentDisappear装饰的函数受状态机约束，\@ComponentDisappear装饰的函数不会误调用\@ComponentAppear装饰的函数。例子如下所示：
 
-```typescript
+<!-- @[LifecycleSwiper](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleSwiper.ets) -->
+``` TypeScript
 // Index.ets
 'use static'
 
 import { SwiperExample } from './SwiperPage';
-import { Entry, Component, State, TabsController, RelativeContainer, Text, Button } from '@kit.ArkUI';
+import { Entry, Component, State, RelativeContainer, Text, Button } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  controller: TabsController = new TabsController();
   @State show: boolean = false;
   @State currentTabIndex: number = 0;
 
@@ -818,8 +820,7 @@ struct Index {
   }
 }
 ```
-
-```typescript
+``` TypeScript
 // SwiperPage.ets
 'use static'
 
@@ -967,7 +968,8 @@ SwiperPage:aboutToDisappear 4
 
 自定义组件在BUILT状态时，即将转化为RECYCLED时，先调用aboutToRecycle后调用\@ComponentRecycle装饰的函数。
 
-```typescript
+<!-- @[LifecycleReuseDiff](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleReuseDiff.ets) -->
+``` TypeScript
 'use static'
 
 import { ComponentAppear, ComponentBuilt, ComponentReuse, Entry, Component, State, Column, Button, Reusable, Require, PropRef, ReuseObject, Text } from '@kit.ArkUI';

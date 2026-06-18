@@ -4,18 +4,20 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 开发者可以通过该模块引用Ability公共模块类。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.common (Ability公共模块)](js-apis-app-ability-common.md)。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.common (Ability公共模块)](js-apis-app-ability-common.md)。
 
 ## 导入模块
 
@@ -33,9 +35,31 @@ ServiceExtensionContext二级模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 | 类型 | 说明 |
 | --- | --- |
-| [_ServiceExtensionContext.default](js-apis-inner-application-serviceExtensionContext-sys.md) | ServiceExtensionContext二级模块。 |
+| [ServiceExtensionContext](js-apis-inner-application-serviceExtensionContext-sys.md) | ServiceExtensionContext二级模块。 |
+
+## ServiceExtensionContext<sup>23+</sup>
+
+type ServiceExtensionContext = _ServiceExtensionContext
+
+ServiceExtensionContext二级模块。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                         | 说明                              |
+| ------------------------------------------------------------ | --------------------------------- |
+| [_ServiceExtensionContext](js-apis-inner-application-serviceExtensionContext-sys.md) | ServiceExtensionContext二级模块。 |
 
 ## AutoFillExtensionContext<sup>11+</sup>
 
@@ -47,9 +71,31 @@ AutoFillExtensionContext二级模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
 | 类型 | 说明 |
 | --- | --- |
-| [_AutoFillExtensionContext.default](js-apis-inner-application-autoFillExtensionContext-sys.md) | AutoFillExtensionContext二级模块。 |
+| [AutoFillExtensionContext](js-apis-inner-application-autoFillExtensionContext-sys.md) | AutoFillExtensionContext二级模块。 |
+
+## AutoFillExtensionContext<sup>23+</sup>
+
+type AutoFillExtensionContext = _AutoFillExtensionContext
+
+AutoFillExtensionContext二级模块。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                         | 说明                               |
+| ------------------------------------------------------------ | ---------------------------------- |
+| [_AutoFillExtensionContext](js-apis-inner-application-autoFillExtensionContext-sys.md) | AutoFillExtensionContext二级模块。 |
 
 ## AutoStartupInfo<sup>11+</sup>
 
@@ -60,6 +106,10 @@ AutoStartupInfo二级模块。
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明 |
 | --- | --- |
@@ -75,6 +125,10 @@ AutoStartupCallback二级模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md) | AutoStartupCallback二级模块。 |
@@ -89,9 +143,31 @@ UIServiceExtensionContext二级模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
+
 | 类型 | 说明 |
 | --- | --- |
-| [_UIServiceExtensionContext.default](js-apis-inner-application-uiserviceExtensionContext-sys.md) | UIServiceExtensionContext二级模块。 |
+| [UIServiceExtensionContext](js-apis-inner-application-uiserviceExtensionContext-sys.md) | UIServiceExtensionContext二级模块。 |
+
+## UIServiceExtensionContext<sup>23+</sup>
+
+type UIServiceExtensionContext = _UIServiceExtensionContext
+
+UIServiceExtensionContext二级模块。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| [_UIServiceExtensionContext](js-apis-inner-application-uiserviceExtensionContext-sys.md) | UIServiceExtensionContext二级模块。 |
 
 ## UIServiceHostProxy<sup>14+</sup>
 
@@ -103,9 +179,31 @@ UIServiceHostProxy二级模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
+
 | 类型 | 说明 |
 | --- | --- |
-| [_UIServiceHostProxy.default](js-apis-inner-application-uiservicehostproxy-sys.md) | UIServiceHostProxy二级模块。 |
+| [UIServiceHostProxy](js-apis-inner-application-uiservicehostproxy-sys.md) | UIServiceHostProxy二级模块。 |
+
+## UIServiceHostProxy<sup>23+</sup>
+
+type UIServiceHostProxy = _UIServiceHostProxy
+
+UIServiceHostProxy二级模块。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                         | 说明                         |
+| ------------------------------------------------------------ | ---------------------------- |
+| [_UIServiceHostProxy](js-apis-inner-application-uiservicehostproxy-sys.md) | UIServiceHostProxy二级模块。 |
 
 ## AgentProxy<sup>24+</sup>
 
@@ -120,6 +218,10 @@ AgentProxy二级模块。
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 类型 | 说明 |
 | --- | --- |
@@ -139,11 +241,97 @@ AgentExtensionConnectCallback二级模块。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 | 类型 | 说明 |
 | --- | --- |
 | [_AgentExtensionConnectCallback](../apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md) | 提供回调接口给开发者来接收服务端发送的数据和安全认证请求，以及感知AgentExtensionAbility服务端的断开连接操作。 |
 
+## ToolInfo
+
+type ToolInfo = _ToolInfo
+
+[ToolInfo](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo)用于描述系统命令行工具（CLI）的基本信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_ToolInfo](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo) | 用于描述系统命令行工具（CLI）的基本信息。 |
+
+## ToolSummary
+
+type ToolSummary = _ToolSummary
+
+[ToolSummary](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolsummary)用于描述系统命令行工具（CLI）的摘要信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_ToolSummary](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolsummary) | 用于描述系统命令行工具（CLI）的摘要信息。 |
+
+## CliToolEvent
+
+type CliToolEvent = _CliToolEvent
+
+[CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md)用于描述CLI工具进程运行期间产生的会话事件信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
+
+## ToolEventCallback
+
+type ToolEventCallback = _ToolEventCallback
+
+[ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md)用于接收CLI工具进程运行期间产生的会话事件。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md) | 用于接收CLI工具进程运行期间产生的会话事件。 |
+
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -163,6 +351,39 @@ let abilityStartCallback: common.AbilityStartCallback;
 let connectOptions: common.ConnectOptions;
 let autoFillExtensionContext: common.AutoFillExtensionContext;
 let uiServiceExtensionContext: common.UIServiceExtensionContext;
+let uiServiceHostProxy: common.UIServiceHostProxy;
+let autoStartupInfo: common.AutoStartupInfo;
+let autoStartupCallback: common.AutoStartupCallback;
+let agentProxy: common.AgentProxy;
+let agentExtensionConnectCallback: common.AgentExtensionConnectCallback;
+let toolInfo: common.ToolInfo;
+let toolSummary: common.ToolSummary;
+let cliToolEvent: common.CliToolEvent;
+let toolEventCallback: common.ToolEventCallback;
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common } from '@kit.AbilityKit';
+
+let uiAbilityContext: common.UIAbilityContext;
+let abilityStageContext: common.AbilityStageContext;
+let applicationContext: common.ApplicationContext;
+let baseContext: common.BaseContext;
+let context: common.Context;
+let extensionContext: common.ExtensionContext;
+let eventHub: common.EventHub;
+let pacMap: common.PacMap;
+let abilityResult: common.AbilityResult;
+let abilityStartCallback: common.AbilityStartCallback;
+let connectOptions: common.ConnectOptions;
+let autoFillExtensionContext: common.AutoFillExtensionContext;
+let serviceExtensionContext: common.ServiceExtensionContext;
+let uiServiceExtensionContext: common.UIServiceExtensionContext;
+let autoStartupInfo: common.AutoStartupInfo;
+let autoStartupCallback: common.AutoStartupCallback;
 let uiServiceHostProxy: common.UIServiceHostProxy;
 let agentProxy: common.AgentProxy;
 let agentExtensionConnectCallback: common.AgentExtensionConnectCallback;

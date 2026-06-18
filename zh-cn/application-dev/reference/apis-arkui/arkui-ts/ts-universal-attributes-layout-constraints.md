@@ -27,9 +27,9 @@ ArkTS-Sta: aspectRatio(value: double | undefined): this
 
 设置aspectRatio属性后，组件宽高会受父组件内容区大小限制，[constraintSize](ts-universal-attributes-size.md#constraintsize)的优先级高于aspectRatio。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,9 +57,9 @@ ArkTS-Sta: displayPriority(value: double | undefined): this
 
 设置当前组件在布局容器中显示的优先级。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -196,10 +196,10 @@ struct AspectRatioExample {
 }
 ```
 **图1** 竖屏显示<br>
-![zh-cn_image_0000001219744205](figures/zh-cn_image_0000001219744205.PNG)
+![layoutConstraints2](figures/layoutConstraints2.PNG)
 
 **图2** 横屏显示<br>
-![zh-cn_image_0000001174264382](figures/zh-cn_image_0000001174264382.PNG)
+![portraitMode](figures/portraitMode.PNG)
 
 ### 示例2（设置组件显示优先级）
 
@@ -326,4 +326,4 @@ struct DisplayPriorityExample {
 
 横屏显示
 
-![zh-cn_image_0000001219662667](figures/zh-cn_image_0000001219662667.gif)
+![displayPriority](figures/displayPriority.gif)

@@ -262,7 +262,7 @@ panel.setShadow(shadowRadius, shadowColor, offsetX, offsetY);
 
 | 名称         | 类型 | 只读 | 可选 | 说明               |
 | ------------ | -------- | ---- | ---- | ------------------ |
-| fluidLightMode | [FluidLightMode](#fluidlightmode20) | 是 | 是 | 流光模式。如果没有设置或设置非法值，默认不使用流光模式。<br>该属性仅系统应用可以使用。|
+| fluidLightMode | [FluidLightMode](#fluidlightmode20) | 是 | 是 | 流光模式。如果没有设置或设置非法值，默认不使用流光模式。<br>该属性仅系统应用可以使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
 
 ## ImmersiveEffect<sup>20+</sup>
 

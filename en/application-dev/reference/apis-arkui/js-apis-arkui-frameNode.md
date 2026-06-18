@@ -1527,7 +1527,7 @@ struct Index {
 }
 ```
 
-![en-us_image_dispose](figures/en-us_image_dispose.gif)
+![en-us_image_dispose](figures/image-dispose.gif)
 
 ### commonAttribute<sup>12+</sup>
 
@@ -2028,7 +2028,7 @@ struct Index {
 }
 ```
 
-![en-us_image_disposeTree](figures/en-us_image_disposeTree.gif)
+![en-us_image_disposeTree](figures/image-disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 

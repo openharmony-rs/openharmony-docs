@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -27,13 +29,17 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
 | UPLOADING |  0 | 上行同步中。 |
 | UPLOAD_FAILED |  1 | 上行同步失败。 |
 | DOWNLOADING |  2 | 下行同步中。 |
 | DOWNLOAD_FAILED |  3 | 下行同步失败。 |
-| COMPLETED |  4 | 同步成功。 |
+| COMPLETED |  4 | 同步成功或首次注册同步状态回调成功均返回。 |
 | STOPPED |  5 | 同步已停止。 |
 
 ## ErrorType<sup>12+</sup>
@@ -49,15 +55,15 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
-| NO_ERROR |  0 | 没有错误。 |
-| NETWORK_UNAVAILABLE |  1 | 所有网络不可用。 |
-| WIFI_UNAVAILABLE |  2 | WIFI不可用。 |
-| BATTERY_LEVEL_LOW |  3 | 低电量（低于10%）。 |
-| BATTERY_LEVEL_WARNING |  4 | 告警电量（低于15%）。 |
-| CLOUD_STORAGE_FULL |  5 | 云端空间不足。 |
-| LOCAL_STORAGE_FULL |  6 | 本地空间不足。 |
-| DEVICE_TEMPERATURE_TOO_HIGH |  7 | 设备温度过高。 |
-| REMOTE_SERVER_ABNORMAL<sup>20+</sup> |  8 | 远端服务不可用。 |
+| NO_ERROR |  0 | 没有错误。<br>**ArkTS-Dyn起始版本**：12<br> **ArkTS-Sta起始版本**：23 |
+| NETWORK_UNAVAILABLE |  1 | 所有网络不可用。<br>**ArkTS-Dyn起始版本**：12<br> **ArkTS-Sta起始版本**：23 |
+| WIFI_UNAVAILABLE |  2 | WIFI不可用。<br>**ArkTS-Dyn起始版本**：12<br> **ArkTS-Sta起始版本**：23 |
+| BATTERY_LEVEL_LOW |  3 | 低电量（低于10%）。<br>**ArkTS-Dyn起始版本**：12<br> **ArkTS-Sta起始版本**：23 |
+| BATTERY_LEVEL_WARNING |  4 | 告警电量（低于15%）。<br>**ArkTS-Dyn起始版本**：12<br> **ArkTS-Sta起始版本**：23 |
+| CLOUD_STORAGE_FULL |  5 | 云端空间不足。<br>**ArkTS-Dyn起始版本**：12<br> **ArkTS-Sta起始版本**：23 |
+| LOCAL_STORAGE_FULL |  6 | 本地空间不足。<br>**ArkTS-Dyn起始版本**：12<br> **ArkTS-Sta起始版本**：23 |
+| DEVICE_TEMPERATURE_TOO_HIGH |  7 | 设备温度过高。<br>**ArkTS-Dyn起始版本**：12<br> **ArkTS-Sta起始版本**：23 |
+| REMOTE_SERVER_ABNORMAL<sup>20+</sup> |  8 | 远端服务不可用。<br>**ArkTS-Dyn起始版本**：20<br> **ArkTS-Sta起始版本**：23 |
 
 ## SyncProgress<sup>12+</sup>
 
@@ -66,6 +72,10 @@ import { cloudSync } from '@kit.CoreFileKit';
 ### 属性
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
@@ -77,6 +87,10 @@ import { cloudSync } from '@kit.CoreFileKit';
 云文件下载状态，为枚举类型。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
@@ -93,11 +107,15 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [State](#state11) | 否   | 否   | 枚举值，云文件下载状态。|
-| processed | number | 否   | 否   | 已下载数据大小，取值范围[0，9223372036854775807]（单位：Byte）。|
-| size | number | 否   | 否   | 当前云文件大小，取值范围[0，9223372036854775807]（单位：Byte）。|
+| processed | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 已下载数据大小，取值范围[0，9223372036854775807]（单位：Byte）。|
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 当前云文件大小，取值范围[0，9223372036854775807]（单位：Byte）。|
 | uri | string | 否   | 否   | 当前云文件URI。|
 | error | [DownloadErrorType](#downloaderrortype11) | 否   | 否   | 下载的错误类型。|
 
@@ -107,6 +125,10 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 ### constructor<sup>12+</sup>
 
 constructor()
@@ -114,6 +136,10 @@ constructor()
 端云同步流程的构造函数，用于获取FileSync类的实例。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **错误码：**
 
@@ -135,7 +161,15 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 云盘同步对象添加同步过程事件监听。
 
+当应用首次注册callback时，SyncProgress中的SyncState初始返回值为4，代表COMPLETED；后续重新注册时，该值将反映实际同步结果，例如若上次上行失败，返回值为1，代表UPLOAD_FAILED。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onProgress](#onprogress23)。
+
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -164,13 +198,58 @@ let callback = (pg: cloudSync.SyncProgress) => {
 fileSync.on('progress', callback);
 ```
 
+### onProgress<sup>23+</sup>
+
+onProgress(callback: Callback\<SyncProgress>): void
+
+添加同步过程事件监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on](#onprogress12)。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| callback | Callback\<[SyncProgress](#syncprogress12)> | 是   | 回调函数。同步过程事件。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
+
+**示例：**
+
+```ts
+let fileSync = new cloudSync.FileSync();
+let callback = (pg: cloudSync.SyncProgress): void => {
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+}
+fileSync.onProgress(callback);
+```
+
 ### off('progress')<sup>12+</sup>
 
 off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
 云盘同步对象移除'progress'类型的指定callback回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offProgress](#offprogress23)。
+
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
 
 **参数：**
 
@@ -202,6 +281,46 @@ fileSync.on('progress', callback);
 fileSync.off('progress', callback);
 ```
 
+### offProgress<sup>23+</sup>
+
+offProgress(callback?: Callback\<SyncProgress>): void
+
+移除同步过程事件监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off](#offprogress12)。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| callback | Callback\<[SyncProgress](#syncprogress12)> |  否   | 回调函数。同步过程事件， 默认值为null。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
+
+**示例：**
+
+```ts
+let fileSync = new cloudSync.FileSync();
+let callback = (pg: cloudSync.SyncProgress): void => {
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+}
+fileSync.onProgress(callback);
+fileSync.offProgress(callback);
+```
+
 ### start<sup>12+</sup>
 
 start(): Promise&lt;void&gt;
@@ -209,6 +328,10 @@ start(): Promise&lt;void&gt;
 异步方法启动云盘端云同步。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -230,6 +353,8 @@ start(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -248,6 +373,23 @@ fileSync.start().then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileSync = new cloudSync.FileSync();
+let callback = (pg: cloudSync.SyncProgress): void => {
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+}
+fileSync.on('progress', callback);
+fileSync.start().then<void>((): void => {
+  console.info("start sync successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ### start<sup>12+</sup>
 
 start(callback: AsyncCallback&lt;void&gt;): void
@@ -255,6 +397,10 @@ start(callback: AsyncCallback&lt;void&gt;): void
 异步方法启动云盘端云同步。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -276,6 +422,8 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -283,6 +431,21 @@ let fileSync = new cloudSync.FileSync();
 
 fileSync.start((err: BusinessError) => {
   if (err) {
+    console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start sync successfully");
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileSync = new cloudSync.FileSync();
+fileSync.start((err: BusinessError<void> | null): void => {
+  if (err && err.code) {
     console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
   } else {
     console.info("start sync successfully");
@@ -299,6 +462,10 @@ stop(): Promise&lt;void&gt;
 调用stop接口，同步流程会停止。再次调用[start](#start12)接口会继续同步。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -317,6 +484,8 @@ stop(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -325,6 +494,19 @@ let fileSync = new cloudSync.FileSync();
 fileSync.stop().then(() => {
   console.info("stop sync successfully");
 }).catch((err: BusinessError) => {
+  console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileSync = new cloudSync.FileSync();
+fileSync.stop().then<void>((): void => {
+  console.info("stop sync successfully");
+}).catch((err: BusinessError<void>): void => {
   console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
@@ -338,6 +520,10 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 调用stop接口，同步流程会停止。再次调用[start](#start12)接口会继续同步。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -356,6 +542,8 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -370,19 +558,40 @@ fileSync.stop((err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileSync = new cloudSync.FileSync();
+fileSync.stop((err: BusinessError<void> | null): void => {
+  if (err && err.code) {
+    console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop sync successfully");
+  }
+});
+```
+
 ### getLastSyncTime<sup>12+</sup>
 
-getLastSyncTime(): Promise&lt;number&gt;
+ArkTS-Dyn: getLastSyncTime(): Promise&lt;number&gt;
+
+ArkTS-Sta: getLastSyncTime(): Promise&lt;long&gt;
 
 异步方法获取上次同步时间。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;number&gt; | Promise对象，返回上次同步时间。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回上次同步时间。 |
 
 **错误码：**
 
@@ -394,6 +603,8 @@ getLastSyncTime(): Promise&lt;number&gt;
 | 13600001  | IPC error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -409,19 +620,39 @@ fileSync.getLastSyncTime().then((timeStamp: number) => {
 
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileSync = new cloudSync.FileSync();
+fileSync.getLastSyncTime().then<long>((timeStamp: long): void => {
+  let date = new Date(timeStamp);
+  console.info("get last sync time successfully: "+ date);
+}).catch((err: BusinessError<void>): void => {
+  console.error("get last sync time failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ### getLastSyncTime<sup>12+</sup>
 
-getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getLastSyncTime(callback: AsyncCallback&lt;long&gt;): void
 
 获取上次同步时间。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。异步获取上次同步时间。|
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 回调函数。异步获取上次同步时间。|
 
 **错误码：**
 
@@ -433,6 +664,8 @@ getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 | 13600001  | IPC error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -449,11 +682,35 @@ fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileSync = new cloudSync.FileSync();
+fileSync.getLastSyncTime((err: BusinessError<void> | null, timeStamp: long | undefined): void => {
+  if (err && err.code) {
+    console.error("get last sync time with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    if (timeStamp == undefined) {
+      console.error("get last sync time successfully, but timeStamp is undefined.");
+      return;
+    }
+    let date = new Date(timeStamp);
+    console.info("get last sync time successfully: "+ date);
+  }
+});
+```
+
 ## CloudFileCache<sup>11+</sup>
 
 云盘文件缓存对象，用来支撑文件管理应用原文件下载流程。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 ### construct<sup>11+</sup>
 
@@ -462,6 +719,10 @@ constructor()
 云盘文件缓存流程的构造函数，用于获取CloudFileCache类的实例。多个实例之间不互相共享数据。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **错误码：**
 
@@ -483,7 +744,13 @@ on(event: 'progress', callback: Callback\<DownloadProgress>): void
 
 添加云盘文件缓存过程事件监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onProgress](#onprogress23-1)。
+
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：11
 
 **参数：**
 
@@ -525,7 +792,13 @@ on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): voi
 
 添加云文件批量缓存事件的监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onBatchDownload](#onbatchdownload23)。
+
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -566,13 +839,115 @@ try {
 }
 ```
 
+### onProgress<sup>23+</sup>
+
+onProgress(callback: Callback\<DownloadProgress>): void
+
+添加云盘文件缓存过程事件监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on](#onprogress11)。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 是   | 回调函数。云文件下载过程事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (pg: cloudSync.DownloadProgress): void => {
+  console.info("download state: " + pg.state);
+};
+try {
+  fileCache.onProgress(callback);
+} catch (error) {
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### onBatchDownload<sup>23+</sup>
+
+onBatchDownload(callback: Callback&lt;MultiDownloadProgress&gt;): void
+
+添加云文件批量缓存事件的监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on](#onbatchdownload20)。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                              | 必填 | 说明                                                          |
+| -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------- |
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 是   | 回调函数。云文件批量缓存过程的事件。                                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
+| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress): void => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.COMPLETED) {
+    console.info('Batch download finished.');
+  } else if (data.state == cloudSync.State.FAILED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
+  }
+};
+try {
+  fileCache.onBatchDownload(callback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ### off('progress')<sup>11+</sup>
 
 off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
 云盘文件缓存对象移除'progress'类型的指定callback回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offProgress](#offprogress23-1)。
+
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：11
 
 **参数：**
 
@@ -616,7 +991,13 @@ off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): v
 
 云盘文件缓存对象移除由[on](#onbatchdownload20)接口添加的云文件批量缓存过程事件的监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offBatchDownload](#offbatchdownload23)。
+
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
 
 **参数：**
 
@@ -653,6 +1034,99 @@ try {
 }
 ```
 
+### offProgress<sup>23+</sup>
+
+offProgress(callback?: Callback\<DownloadProgress>): void
+
+移除云盘文件缓存过程事件监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off](#offprogress11)。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- | 
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 否   | 回调函数。云文件下载过程事件。若填写，将视为取消指定的回调函数；否则为取消当前订阅的所有回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (pg: cloudSync.DownloadProgress): void => {
+  console.info("download state: " + pg.state);
+}
+try {
+  fileCache.onProgress(callback);
+  fileCache.offProgress(callback);
+} catch (error) {
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### offBatchDownload<sup>23+</sup>
+
+offBatchDownload(callback?: Callback&lt;MultiDownloadProgress&gt;): void
+
+移除云盘文件缓存过程事件监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off](#offbatchdownload20)。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名   | 类型                                                              | 必填 | 说明                                                                                                    |
+| -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 否   | 回调函数。云文件批量缓存过程事件。如果填写此参数，将取消指定的回调函数；否则，将取消当前订阅的相同事件类型的所有回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
+| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (pg: cloudSync.MultiDownloadProgress): void => {
+  console.info("download state: " + pg.state);
+}
+try {
+  fileCache.onBatchDownload(callback);
+  fileCache.offBatchDownload(callback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ### start<sup>11+</sup>
 
 start(uri: string): Promise&lt;void&gt;
@@ -660,6 +1134,10 @@ start(uri: string): Promise&lt;void&gt;
 异步方法启动云盘文件缓存。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -687,6 +1165,8 @@ start(uri: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
@@ -711,6 +1191,29 @@ fileCache.start(uri).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+try {
+  fileCache.on('progress', (pg: cloudSync.DownloadProgress): void => {
+    console.info("download state: " + pg.state);
+  });
+} catch (error) {
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
+fileCache.start(uri).then<void>((): void => {
+  console.info("start download successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ### start<sup>11+</sup>
 
 start(uri: string, callback: AsyncCallback&lt;void&gt;): void
@@ -718,6 +1221,10 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 异步方法启动云盘文件缓存。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -740,6 +1247,8 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
@@ -757,15 +1266,39 @@ fileCache.start(uri, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+fileCache.start(uri, (err: BusinessError<void> | null): void => {
+  if (err && err.code) {
+    console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start download successfully");
+  }
+});
+```
+
 ### startBatch<sup>20+</sup>
 
-startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;number&gt;
+ArkTS-Dyn: startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;number&gt;
+
+ArkTS-Sta: startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;long&gt;
 
 启动云文件批量缓存。使用Promise异步回调。
 
 不同的批量缓存任务可以通过接口返回的任务ID区分。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -778,7 +1311,7 @@ startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;n
 
 |         类型          |               说明                           |
 | --------------------- | ------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回启动的云文件批量缓存任务的ID。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回启动的云文件批量缓存任务的ID。 |
 
 **错误码：**
 
@@ -793,6 +1326,8 @@ startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;n
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -815,6 +1350,28 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+try {
+  fileCache.on('batchDownload', (pg: cloudSync.MultiDownloadProgress): void => {
+    console.info(`batch download state: ${pg.state}`);
+  });
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
+}
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then<long>((downloadId: long): void => {
+  console.info(`start batch download successfully, taskId: ${downloadId}`);
+}).catch((err: BusinessError<void>): void => {
+  console.error(`start download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
 ### stop<sup>11+</sup>
 
 stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
@@ -824,6 +1381,10 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 调用stop接口，当前文件下载流程会终止，默认不删除缓存文件，再次调用start接口重新启动下载。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -851,6 +1412,8 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
@@ -866,6 +1429,22 @@ fileCache.stop(uri, true).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+fileCache.stop(uri, true).then<void>((): void => {
+  console.info("stop download successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ### stop<sup>11+</sup>
 
 stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
@@ -875,6 +1454,10 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 调用stop接口，当前文件下载流程会终止，不删除缓存文件，再次调用start接口重新启动下载。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -896,6 +1479,8 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
@@ -913,9 +1498,29 @@ fileCache.stop(uri, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+fileCache.stop(uri, (err: BusinessError<void> | null): void => {
+  if (err && err.code) {
+    console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop download successfully");
+  }
+});
+```
+
 ### stopBatch<sup>20+</sup>
 
-stopBatch(downloadId: number, needClean?: boolean): Promise&lt;void&gt;
+ArkTS-Dyn: stopBatch(downloadId: number, needClean?: boolean): Promise&lt;void&gt;
+
+ArkTS-Sta: stopBatch(downloadId: long, needClean?: boolean): Promise&lt;void&gt;
 
 停止由[startBatch](#startbatch20)启动的云文件批量缓存任务。使用Promise异步回调。
 
@@ -923,11 +1528,15 @@ stopBatch(downloadId: number, needClean?: boolean): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型    | 必填 | 说明                                                              |
 | ---------- | ------- | ---- | ----------------------------------------------------------------- |
-| downloadId | number  | 是   | 需要停止缓存的任务ID。                                            |
+| downloadId | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 需要停止缓存的任务ID。                                            |
 | needClean  | boolean | 否   | 是否删除未完成缓存的文件。默认值为false表示不删除；true表示删除。 |
 
 **返回值：**
@@ -947,6 +1556,8 @@ stopBatch(downloadId: number, needClean?: boolean): Promise&lt;void&gt;
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -971,6 +1582,30 @@ if (needStop && taskId > 0) {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let taskId: long = -1;
+let uriList: Array<string> = [];
+let fileCache = new cloudSync.CloudFileCache();
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then<long>((downloadId: long): void => {
+  taskId = downloadId;
+  console.info("start batch download successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+let needStop: boolean = true;
+if (needStop && taskId > 0) {
+  fileCache.stopBatch(taskId, true).then<void>((): void => {
+    console.info("stop batch download successfully");
+  }).catch((err: BusinessError<void>): void => {
+    console.error(`stop batch download failed with error message: ${err.message}, error code: ${err.code}`);
+  });
+}
+```
+
 ### cleanFileCache<sup>20+</sup>
 
 cleanFileCache(uri: string): void
@@ -978,6 +1613,10 @@ cleanFileCache(uri: string): void
 同步方法删除文件缓存。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1001,6 +1640,8 @@ cleanFileCache(uri: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
@@ -1018,11 +1659,146 @@ try {
 
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+try {
+  fileCache.cleanFileCache(uri);
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`clean file cache failed with error message: ${error.code}, message is ${error.message}`);
+}
+```
+
+### cleanFileCache
+
+cleanFileCache(): Promise&lt;void&gt;
+
+删除所有已缓存文件，未上云文件、写打开文件及缩略图文件不会被删除。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+fileCache.cleanFileCache().then(() => {
+  console.info("clean file cache successfully");
+}).catch((err: BusinessError) => {
+  console.error(`clean file cache failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+fileCache.cleanFileCache().then<void>((): void => {
+  console.info("clean file cache successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.error(`clean file cache failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+### getCachedTotalSize
+
+ArkTS-Dyn: getCachedTotalSize(): Promise&lt;number&gt;
+
+ArkTS-Sta: getCachedTotalSize(): Promise&lt;long&gt;
+
+获取已缓存文件的总大小，包含本地新增未上云文件、本地新增已上云文件及已下载文件大小，不包含缩略图文件大小。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**返回值：**
+
+| 类型  | 说明 |
+| ------ | ---- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回已缓存文件总大小。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+fileCache.getCachedTotalSize().then((totalDownloadSize: number) => {
+  console.info("totalDownloadSize: " + totalDownloadSize);
+}).catch((err: BusinessError) => {
+  console.error("get totalDownloadSize failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+fileCache.getCachedTotalSize().then<long>((totalDownloadSize: long): void => {
+  console.info("totalDownloadSize: " + totalDownloadSize);
+}).catch((err: BusinessError<void>): void => {
+  console.error("get totalDownloadSize failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ## DownloadErrorType<sup>11+</sup>
 
 端云下载错误类型，为枚举类型。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
@@ -1039,6 +1815,10 @@ try {
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | 名称      | 值  | 说明                |
 | --------- | --- | ------------------- |
 | CONTENT   | 0   | content类型文件。   |
@@ -1050,6 +1830,10 @@ try {
 云文件批量缓存失败列表及失败原因。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 | 名称  | 类型                                      | 只读 | 可选 | 说明                   |
 | ----- | ----------------------------------------- | ---- | ---- | ---------------------- |
@@ -1065,15 +1849,19 @@ try {
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | 名称            | 类型                                      | 只读 | 可选 | 说明                                                                                               |
 | --------------- | ----------------------------------------- | ---- | ---- | -------------------------------------------------------------------------------------------------- |
 | state           | [State](#state11)                         | 否   | 否   | 批量缓存任务的执行状态。                                                                             |
-| taskId          | number                                    | 否   | 否   | 批量缓存任务的ID，取值范围为0到INT64_MAX。如果进度异常，返回值为-1。                                       |
-| successfulCount | number                                    | 否   | 否   | 缓存成功的文件数量，取值范围为0至400，单位：个。如果进度异常，返回值为-1。                                           |
-| failedCount     | number                                    | 否   | 否   | 缓存失败的文件数，取值范围为0至400，单位：个。如果进度异常，返回值为-1。                                   |
-| totalCount      | number                                    | 否   | 否   | 文件总数，取值范围为0至400，单位：个。如果进度异常，返回值为-1。                                           |
-| downloadedSize  | number                                    | 否   | 否   | 已缓存的文件大小，取值范围为 [0, INT64_MAX)，单位：Byte。如果进度异常，返回值为 INT64_MAX。            |
-| totalSize       | number                                    | 否   | 否   | 待缓存的文件总大小，取值范围为 [0, INT64_MAX)，单位为 Byte。如果进度异常，返回值为 INT64_MAX。 |
+| taskId          | ArkTS-Dyn: number<br>ArkTS-Sta: long      | 否   | 否   | 批量缓存任务的ID，取值范围为0到INT64_MAX。如果进度异常，返回值为-1。                                       |
+| successfulCount | ArkTS-Dyn: number<br>ArkTS-Sta: int       | 否   | 否   | 缓存成功的文件数量，取值范围为0至400，单位：个。如果进度异常，返回值为-1。                                           |
+| failedCount     | ArkTS-Dyn: number<br>ArkTS-Sta: int       | 否   | 否   | 缓存失败的文件数，取值范围为0至400，单位：个。如果进度异常，返回值为-1。                                   |
+| totalCount      | ArkTS-Dyn: number<br>ArkTS-Sta: int       | 否   | 否   | 文件总数，取值范围为0至400，单位：个。如果进度异常，返回值为-1。                                           |
+| downloadedSize  | ArkTS-Dyn: number<br>ArkTS-Sta: long      | 否   | 否   | 已缓存的文件大小，取值范围为 [0, INT64_MAX)，单位：Byte。如果进度异常，返回值为 INT64_MAX。            |
+| totalSize       | ArkTS-Dyn: number<br>ArkTS-Sta: long      | 否   | 否   | 待缓存的文件总大小，取值范围为 [0, INT64_MAX)，单位为 Byte。如果进度异常，返回值为 INT64_MAX。 |
 | errType         | [DownloadErrorType](#downloaderrortype11) | 否   | 否   | 返回批量缓存任务执行失败时的错误类型。 |
 
 ### getFailedFiles<sup>20+</sup>
@@ -1083,6 +1871,10 @@ getFailedFiles(): Array&lt;FailedFileInfo&gt;
 获取批量缓存失败的文件列表。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1099,6 +1891,8 @@ getFailedFiles(): Array&lt;FailedFileInfo&gt;
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1130,6 +1924,36 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let taskId: number = -1;
+let failedList: Array<cloudSync.FailedFileInfo> = [];
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.FAILED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
+    failedList = data.getFailedFiles();
+  }
+};
+try {
+  fileCache.on('batchDownload', callback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then<long>((downloadId: long): void => {
+  taskId = downloadId;
+  console.info("start batch download successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
 ### getSuccessfulFiles<sup>20+</sup>
 
 getSuccessfulFiles(): Array&lt;string&gt;
@@ -1137,6 +1961,10 @@ getSuccessfulFiles(): Array&lt;string&gt;
 获取批量缓存成功的文件列表。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1153,6 +1981,8 @@ getSuccessfulFiles(): Array&lt;string&gt;
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1182,6 +2012,34 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let finishedList: Array<string> = [];
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.COMPLETED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
+    finishedList = data.getSuccessfulFiles();
+  }
+};
+try {
+  fileCache.on('batchDownload', callback);
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then<long>((downloadId: long): void => {
+  console.info(`start batch download successfully, taskId: ${downloadId}`);
+}).catch((err: BusinessError<void>): void => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
 ## cloudSync.registerChange<sup>12+</sup>
 
 registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData&gt;): void
@@ -1189,6 +2047,10 @@ registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData
 订阅监听指定文件的变化通知。callback返回更改的数据。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1212,12 +2074,33 @@ registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { fileUri } from '@kit.CoreFileKit';
 
 let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
+  if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
+    // file has been added, do something
+  } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
+    // file has been removed, do something
+  }
+}
+cloudSync.registerChange(uri, false, onCallback1);
+// 取消注册监听
+cloudSync.unregisterChange(uri);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+let onCallback1 = (changeData: cloudSync.ChangeData): void => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
     // file has been added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
@@ -1236,6 +2119,10 @@ unregisterChange(uri: string): void
 取消订阅监听指定文件的变化通知。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1257,6 +2144,8 @@ unregisterChange(uri: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { fileUri } from '@kit.CoreFileKit';
 
@@ -1274,11 +2163,34 @@ cloudSync.registerChange(uri, false, onCallback1);
 cloudSync.unregisterChange(uri);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+let onCallback1 = (changeData: cloudSync.ChangeData): void => {
+  if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
+    // file has been added, do something
+  } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
+    // file has been removed, do something
+  }
+}
+cloudSync.registerChange(uri, false, onCallback1);
+// 取消注册监听
+cloudSync.unregisterChange(uri);
+```
+
 ## NotifyType<sup>12+</sup>
 
 数据变更通知类型。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
@@ -1292,6 +2204,10 @@ cloudSync.unregisterChange(uri);
 定义变更数据。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
@@ -1308,10 +2224,14 @@ cloudSync.unregisterChange(uri);
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
-| editedTime | number | 否   | 否   | 文件内容修改的时间戳，单位：ms。 |
-| fileSize | number | 否   | 否   | 文件大小，单位：Byte。 |
+| editedTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 文件内容修改的时间戳，单位：ms。 |
+| fileSize | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 文件大小，单位：Byte。 |
 | versionId | string | 否   | 否   | 文件版本号。 |
 | originalFileName | string | 否   | 否   | 当前版本对应的文件名。 |
 | sha256 | string | 否   | 否   | 当前版本对应文件内容的哈希值。 |
@@ -1339,15 +2259,23 @@ cloudSync.unregisterChange(uri);
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [State](#state11) | 否   | 否   | 所选版本云文件的下载状态。 |
-| progress | number | 否   | 否   | 下载进度，单位：百分比。 |
+| progress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 下载进度，单位：百分比。 |
 | errType | [DownloadErrorType](#downloaderrortype11) | 否   | 否   | 若出现下载失败，失败的错误类型。 |
 
 ## FileVersion<sup>20+</sup>
 
 端云文件版本管理类。支持对端云文件的历史版本进行管理，提供获取文件历史版本信息列表的能力，通过历史版本信息，可将历史版本下载到本地；并提供历史版本文件替换当前本地文件的能力，针对版本冲突，提供查询冲突标志，解除冲突标志的能力。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 ### construct<sup>20+</sup>
 
@@ -1356,6 +2284,10 @@ constructor()
 端云文件版本管理的构造函数，用于获取FileVersion类的实例。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **错误码：**
 
@@ -1373,7 +2305,9 @@ let fileVersion = new cloudSync.FileVersion();
 
 ### getHistoryVersionList<sup>20+</sup>
 
-getHistoryVersionList(uri: string, versionNumLimit: number): Promise&lt;Array&lt;HistoryVersion&gt;&gt;
+ArkTS-Dyn: getHistoryVersionList(uri: string, versionNumLimit: number): Promise&lt;Array&lt;HistoryVersion&gt;&gt;
+
+ArkTS-Sta: getHistoryVersionList(uri: string, versionNumLimit: int): Promise&lt;Array&lt;HistoryVersion&gt;&gt;
 
 获取历史版本列表，返回内容按修改时间排序，修改时间越早，位置越靠后。使用Promise异步回调。
 
@@ -1383,12 +2317,16 @@ getHistoryVersionList(uri: string, versionNumLimit: number): Promise&lt;Array&lt
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   |  文件的URI。 |
-| versionNumLimit | number | 是 | 历史版本列表长度限制，取值范围[0, 100000]（单位：个）。当输入值大于100000时，按照最大值返回列表。 |
+| versionNumLimit | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 历史版本列表长度限制，取值范围[0, 100000]（单位：个）。当输入值大于100000时，按照最大值返回列表。 |
 
 **返回值：**
 
@@ -1413,6 +2351,8 @@ getHistoryVersionList(uri: string, versionNumLimit: number): Promise&lt;Array&lt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { fileUri } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1432,6 +2372,25 @@ fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileVersion = new cloudSync.FileVersion();
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+let limit: int = 10;
+fileVersion.getHistoryVersionList(uri, limit).then<Array<cloudSync.HistoryVersion>>((versionList: Array<cloudSync.HistoryVersion>): void => {
+  for(let i = 0, len = versionList.length; i < len; i++) {
+    console.info("get history versionId: " + versionList[i].versionId);
+  }
+}).catch((err: BusinessError<void>): void => {
+  console.error("get history version failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ### downloadHistoryVersion<sup>20+</sup>
 
 downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt;): Promise&lt;string&gt;
@@ -1439,6 +2398,10 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[Ve
 根据版本号获取指定文件的某一版本的文件内容。用户通过版本号指定云上某一版本，将其下载到本地临时存储路径，临时文件由应用自行决定是否替换原始文件，也可以选择保留或直接删除。callback返回文件下载进度，Promise返回历史版本临时文件的URI。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1471,6 +2434,8 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[Ve
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { fileUri } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1498,6 +2463,32 @@ fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: stri
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileVersion = new cloudSync.FileVersion();
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+let versionId: string = '123456'; // 以 getHistoryVersionList 方法返回的格式为准，此处仅作为 demo 示例。
+let callback = (data: cloudSync.VersionDownloadProgress): void => {
+  if (data.state == cloudSync.State.RUNNING) {
+    console.info("download progress: " + data.progress);
+  } else if (data.state == cloudSync.State.FAILED) {
+    console.info("download failed errType: " + data.errType);
+  } else if (data.state == cloudSync.State.COMPLETED) {
+    console.info("download version file success");
+  }
+};
+fileVersion.downloadHistoryVersion(uri, versionId, callback).then<string>((fileUri: string): void => {
+  console.info("success to begin download, downloadFileUri: " + fileUri);
+}).catch((err: BusinessError<void>): void => {
+  console.error("download history version file failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ### replaceFileWithHistoryVersion<sup>20+</sup>
 
 replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise&lt;void&gt;
@@ -1505,6 +2496,10 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise&
 提供使用历史版本文件替换本地文件的能力。在替换前，需要调用[downloadHistoryVersion](#downloadhistoryversion20)方法对选择的历史版本进行下载并拿到versionUri；直接调用此接口或者versionUri非法会产生异常；替换完成后会删除临时存储文件。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1537,6 +2532,8 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise&
 | 22400007 | The version file specified to replace the original file does not exist. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { fileUri } from '@kit.CoreFileKit';
@@ -1572,6 +2569,39 @@ fileVersion.replaceFileWithHistoryVersion(uri, versionUri).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileVersion = new cloudSync.FileVersion();
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+let versionId: string = '123456'; // 以 getHistoryVersionList 方法返回的格式为准，此处仅作为 demo 示例。
+let callback = (data: cloudSync.VersionDownloadProgress): void => {
+  if (data.state == cloudSync.State.RUNNING) {
+    console.info("download progress: " + data.progress);
+  } else if (data.state == cloudSync.State.FAILED) {
+    console.info("download failed errType: " + data.errType);
+  } else if (data.state == cloudSync.State.COMPLETED) {
+    console.info("download version file success");
+  }
+};
+let versionUri: string = "";
+fileVersion.downloadHistoryVersion(uri, versionId, callback).then<string>((fileUri: string): void => {
+  versionUri = fileUri;
+  console.info("success to begin download, downloadFileUri: " + fileUri);
+}).catch((err: BusinessError<void>): void => {
+  console.error(`download history version file failed with error message: ${err.message}, error code: ${err.code}`);
+});
+fileVersion.replaceFileWithHistoryVersion(uri, versionUri).then<void>((): void => {
+  console.info("replace file with history version success.");
+}).catch((err: BusinessError<void>): void => {
+  console.error("replace file with history version filed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ### isFileConflict<sup>20+</sup>
 
 isFileConflict(uri: string): Promise&lt;boolean&gt;
@@ -1581,6 +2611,10 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 当应用配置手动解冲突后，调用此方法会返回当前文件是否与云侧文件产生冲突，并且由应用提示用户对冲突进行处理，在冲突解决前不会再自动同步上云。当处理完冲突后，需要调用[clearFileConflict](#clearfileconflict20)方法来清除冲突标志，后续才会继续触发同步，与云端保持一致。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1610,6 +2644,8 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { fileUri } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1626,6 +2662,22 @@ fileVersion.isFileConflict(uri).then((isConflict: boolean) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileVersion = new cloudSync.FileVersion();
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+fileVersion.isFileConflict(uri).then<boolean>((isConflict: boolean): void => {
+  console.info("current file is conflict: " + isConflict);
+}).catch((err: BusinessError<void>): void => {
+  console.error("get current file conflict flag failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ### clearFileConflict<sup>20+</sup>
 
 clearFileConflict(uri: string): Promise&lt;void&gt;
@@ -1633,6 +2685,10 @@ clearFileConflict(uri: string): Promise&lt;void&gt;
 清除本地文件版本冲突标志。如果产生冲突，本地解决冲突后需要调用此方法来清除冲突标记，后续才可以触发自动同步机制，和云上保持一致。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1662,6 +2718,8 @@ clearFileConflict(uri: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { fileUri } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1685,6 +2743,29 @@ fileVersion.clearFileConflict(uri).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileVersion = new cloudSync.FileVersion();
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+let isConflict: boolean = false;
+fileVersion.isFileConflict(uri).then<boolean>((isConflictRet: boolean): void => {
+  isConflict = isConflictRet;
+  console.info("current file is conflict: " + isConflictRet);
+}).catch((err: BusinessError<void>): void => {
+  console.error(`get current file conflict flag failed with error message: ${err.message}, error code: ${err.code}`);
+});
+fileVersion.clearFileConflict(uri).then<void>((): void => {
+  console.info("clean file conflict flag success");
+}).catch((err: BusinessError<void>): void => {
+  console.error("clean file conflict flag failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ## cloudSync.getCoreFileSyncState<sup>20+</sup>
 
 getCoreFileSyncState(uri: string): FileState
@@ -1692,6 +2773,10 @@ getCoreFileSyncState(uri: string): FileState
 同步方法获取云盘文件同步上行状态。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1723,6 +2808,8 @@ getCoreFileSyncState(uri: string): FileState
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
@@ -1737,11 +2824,31 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+try {
+  let state: cloudSync.FileState = cloudSync.getCoreFileSyncState(uri);
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`getCoreFileSyncState failed with error ${error.code}, message is ${error.message}`);
+}
+```
+
 ## FileState<sup>20+</sup>
 
 端云文件同步状态，为枚举类型。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |

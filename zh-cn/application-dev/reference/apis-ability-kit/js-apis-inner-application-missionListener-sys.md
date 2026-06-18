@@ -4,15 +4,18 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 定义系统任务状态监听，可以通过[on](js-apis-app-ability-missionManager-sys.md#missionmanageronmission)注册。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块接口为系统接口。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口为系统接口。
 
 ## 导入模块
 
@@ -160,6 +163,9 @@ onMissionClosed(mission: number): void
 | mission | number | 是 | 表示关闭的任务ID。 |
 
 **示例**：
+
+ArkTS-Dyn示例：
+
 ```ts
 import { missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -193,5 +199,52 @@ try {
   let listenerId = missionManager.on('mission', listener);
 } catch (paramError) {
   console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { PixelMap } from '@ohos.arkui.component';
+
+class ListenerCustom implements missionManager.MissionListener {
+  onMissionCreated(mission: int) {
+    console.info(`onMissionCreated mission: ${JSON.stringify(mission)}`);
+  }
+
+  onMissionDestroyed(mission: int) {
+    console.info(`onMissionDestroyed mission: ${JSON.stringify(mission)}`);
+  }
+
+  onMissionSnapshotChanged(mission: int) {
+    console.info(`onMissionSnapshotChanged mission: ${JSON.stringify(mission)}`);
+  }
+
+  onMissionMovedToFront(mission: int) {
+    console.info(`onMissionMovedToFront mission: ${JSON.stringify(mission)}`);
+  }
+
+  onMissionLabelUpdated(mission: int) {
+    console.info(`onMissionLabelUpdated mission: ${JSON.stringify(mission)}`);
+  }
+
+  onMissionIconUpdated(mission: int, icon: PixelMap) {
+    console.info(`onMissionIconUpdated mission: ${JSON.stringify(mission)}`);
+    console.info(`onMissionIconUpdated icon: ${JSON.stringify(icon)}`);
+  }
+
+  onMissionClosed(mission: int) {
+    console.info(`onMissionClosed mission: ${JSON.stringify(mission)}`);
+  }
+}
+
+try {
+  let listener = new ListenerCustom();
+  let listenerId = missionManager.onMission(listener);
+} catch (paramError) {
+  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
 }
 ```

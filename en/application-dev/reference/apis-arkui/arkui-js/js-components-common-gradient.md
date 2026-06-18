@@ -61,7 +61,7 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
 
    
 
-   ![111](figures/111.png)
+   ![Transition-Color01](figures/Transition-Color01.png)
 
 2. Gradient at an angle of 45°
 
@@ -72,7 +72,7 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
 
    
 
-   ![222](figures/222.png)
+   ![Transition-Color](figures/Transition-Color.png)
 
 3. Gradient from left to right
 

@@ -1616,6 +1616,14 @@ ArkTS-Sta: static checkLeapMonth(gregorianYear: int, cyclicalYear: int, month: i
 | ---------------------- | ----- |
 | boolean | 是否存在闰月。true表示该月存在闰月，false表示该月不存在闰月。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 8900001   | Invalid parameter. Possible causes: Parameter verification failed. |
+
 **示例：**
 ```ts
 let isExist = i18n.ChineseCalendar.checkLeapMonth(2026, 43, 2);
@@ -4818,6 +4826,57 @@ let endDate = new Date(2026, 3, 27, 18, 20, 0);
 let parts = formatter.formatRangeToParts(startDate, endDate); // parts[0].type = 'dayPeriod'
 ```
 
+
+### parse
+
+ArkTS-Dyn: parse(text: string, lenientMode: boolean): number
+
+ArkTS-Sta: parse(text: string, lenientMode: boolean): long
+
+解析本地化时间日期字符串，返回对应的时间戳。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| text | string | 是    | 待解析的本地化时间日期字符串。 |
+| lenientMode | boolean | 是    | 是否采用宽松模式，true表示采用宽松模式，false表示不采用宽松模式。<br>宽松模式下，能够处理不符合常规逻辑的时间日期值，如"5月32日"会自动转换成"6月1日"进行解析。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 时间日期字符串解析后对应的时间戳。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID  | 错误信息                   |
+| ------ | ---------------------- |
+| 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  dateStyle: 'full'
+});
+let result = formatter.parse('2026年5月10日星期日', false); // result = 1778342400000
+```
+
 ### resolvedOptions
 
 resolvedOptions(): ResolvedSymbolDateTimeFormatOptions
@@ -4868,7 +4927,7 @@ let options = formatter.resolvedOptions(); // options.timeStyle = 'short', optio
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
-| amPMSymbol     | string[] |   否 |   是   |  指定的上午和下午符号，要求数组长度不小于2，其中第一个元素为上午符号，第二个元素为下午符号。默认值：区域默认的符号。   |
+| amPMSymbol     | string[] \| undefined |   否 |   是   |  指定的上午和下午符号，要求数组长度不小于2，其中第一个元素为上午符号，第二个元素为下午符号。默认值：区域默认的符号。   |
 
 ### ResolvedSymbolDateTimeFormatOptions
 
@@ -5119,9 +5178,9 @@ let result = formatter.format(new Date(2026, 2, 15, 12, 0, 0));
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | ------- | ------- | ------- | --------------------------------------- |
-| dateFormat   | string |   否   |   是   |  日期格式。取值包括：<br>**calendar**：日期模式为**YYYY-MM-DD**。<br>**ordinal**：日期模式为**YYYY-DDD**。<br>**week**：日期模式为**YYYY-Www-D**。<br>默认值：**calendar**。模式中字符含义参考[日期字段符号表](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)。   |
-| timePrecision   | string |   否   |   是   |  时间精度。取值包括：<br>**dateOnly**：只显示日期。<br>**hours**：显示小时。<br>**minutes**：显示时分。<br>**seconds**：显示时分秒。<br>**milliSeconds**：显示时分秒毫秒。<br>默认值：**seconds**。  |
-| separatorStyle  | string |   否   |   是   |  分隔符风格。取值包括：<br>**extended**：显示日期和时间分隔符。<br>**basic**：不显示日期和时间分隔符。<br>默认值：**extended**。   |
+| dateFormat   | 'calendar' \| 'ordinal' \| 'week' |   否   |   是   |  日期格式。取值包括：<br>**calendar**：日期模式为**YYYY-MM-DD**。<br>**ordinal**：日期模式为**YYYY-DDD**。<br>**week**：日期模式为**YYYY-Www-D**。<br>默认值：**calendar**。模式中字符含义参考[日期字段符号表](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)。   |
+| timePrecision   | 'dateOnly' \| 'hours' \| 'minutes' \| 'seconds' \| 'milliSeconds' |   否   |   是   |  时间精度。取值包括：<br>**dateOnly**：只显示日期。<br>**hours**：显示小时。<br>**minutes**：显示时分。<br>**seconds**：显示时分秒。<br>**milliSeconds**：显示时分秒毫秒。<br>默认值：**seconds**。  |
+| separatorStyle  | 'extended' \| 'basic' |   否   |   是   |  分隔符风格。取值包括：<br>**extended**：显示日期和时间分隔符。<br>**basic**：不显示日期和时间分隔符。<br>默认值：**extended**。   |
 | timeZone        | [TimeZone](#timezone) |   否   |   是   |  时区。默认值：**UTC**。   |
 | displayTimeZone     | boolean |   否  |   是   |  是否显示时区，true表示显示时区，false表示不显示时区。默认值：true。  |
 
@@ -5489,6 +5548,54 @@ let formatter = new i18n.SymbolNumberFormat(locale, {
 let result = formatter.formatRangeToParts(10, 20); // result[0].type = 'integer'
 ```
 
+### parse
+
+ArkTS-Dyn: parse(text: string, lenientMode: boolean): number
+
+ArkTS-Sta: parse(text: string, lenientMode: boolean): double
+
+解析本地化数字字符串，返回对应的数字。无法正确解析使用自定义符号的本地化数字字符串。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| text | string | 是    | 待解析的本地化数字字符串。 |
+| lenientMode | boolean | 是    | 是否采用宽松模式，true表示采用宽松模式，false表示不采用宽松模式。<br>宽松模式下，能够识别错误的千分符，如"1,23,456"可以正确解析为"123456"。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 本地化数字字符串解析后的数字。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID  | 错误信息                   |
+| ------ | ---------------------- |
+| 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale);
+let result = formatter.parse('125 米', false); // result = 125
+```
+
 ### resolvedOptions
 
 resolvedOptions(): ResolvedSymbolNumberFormatOptions
@@ -5540,12 +5647,12 @@ let result = formatter.resolvedOptions(); // result.style = 'unit', result.unit 
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
-| zero     | string  |   否    |   是   |  零符号。默认值：区域默认的符号。   |
-| nan     | string  |   否    |   是   |  NaN符号。默认值：区域默认的符号。   |
-| minusSign     | string  |   否    |   是   |  减符号。默认值：区域默认的符号。   |
-| plusSign     | string  |   否    |   是   |  加符号。默认值：区域默认的符号。   |
-| infinity     | string  |   否    |   是   |  无穷符号。默认值：区域默认的符号。   |
-| groupingSeparator     | string |   否    |   是   |  分组符号。默认值：区域默认的符号。   |
+| zero     | string \| undefined  |   否    |   是   |  零符号。默认值：区域默认的符号。   |
+| nan     | string \| undefined  |   否    |   是   |  NaN符号。默认值：区域默认的符号。   |
+| minusSign     | string \| undefined  |   否    |   是   |  减符号。默认值：区域默认的符号。   |
+| plusSign     | string \| undefined  |   否    |   是   |  加符号。默认值：区域默认的符号。   |
+| infinity     | string \| undefined  |   否    |   是   |  无穷符号。默认值：区域默认的符号。   |
+| groupingSeparator     | string \| undefined |   否    |   是   |  分组符号。默认值：区域默认的符号。   |
 
 ### ResolvedSymbolNumberFormatOptions
 

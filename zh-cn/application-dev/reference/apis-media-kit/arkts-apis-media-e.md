@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -174,21 +174,19 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                               | 值                                   | 说明                                       |
 | ---------------------------------- | ------------------------------------ | ------------------------------------------ |
-| PREPARE_DURATION                   | 'prepare_duration'                   | 表示准备时长，单位为毫秒（ms）。           |
-| RESOURCE_CONNECTION_DURATION       | 'resource_connection_duration'       | 表示资源建链时长，单位为毫秒（ms）。       |
-| FIRST_FRAME_DECAPSULATION_DURATION | 'first_frame_decapsulation_duration' | 表示第一帧的解封装时长，单位为毫秒（ms）。 |
-| TOTAL_PLAYING_TIME                 | 'total_playback_time'                | 表示总的播放时长，单位为毫秒（ms）。       |
-| DOWNLOAD_REQUESTS_COUNT            | 'loading_requests_count'             | 表示总的请求次数。<br> **模型约束：** 此接口仅可在Stage模型下使用。                         |
-| TOTAL_DOWNLOAD_TIME                | 'total_loading_time'                 | 表示总的加载时长，单位为毫秒（ms）。       |
-| TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | 表示总的加载大小，单位为字节（Byte）。<br> **模型约束：** 此接口仅可在Stage模型下使用。             |
-| STALLING_COUNT                     | 'stalling_count'                     | 表示总的卡顿次数。                         |
-| TOTAL_STALLING_TIME                | 'total_stalling_time'                | 表示总的卡顿时长，单位为毫秒（ms）。       |
+| PREPARE_DURATION                   | 'prepare_duration'                   | 表示准备时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23           |
+| RESOURCE_CONNECTION_DURATION       | 'resource_connection_duration'       | 表示资源建链时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23       |
+| FIRST_FRAME_DECAPSULATION_DURATION | 'first_frame_decapsulation_duration' | 表示第一帧的解封装时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| TOTAL_PLAYING_TIME                 | 'total_playback_time'                | 表示总的播放时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23       |
+| DOWNLOAD_REQUESTS_COUNT            | 'loading_requests_count'             | 表示总的请求次数。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23                         |
+| TOTAL_DOWNLOAD_TIME                | 'total_loading_time'                 | 表示总的加载时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23       |
+| TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | 表示总的加载大小，单位为字节（Byte）。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23             |
+| STALLING_COUNT                     | 'stalling_count'                     | 表示总的卡顿次数。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23                         |
+| TOTAL_STALLING_TIME                | 'total_stalling_time'                | 表示总的卡顿时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23       |
+| LIP_ASYNC_COUNT                    | 'lip_async_count'                    | 表示总的音画不同步的次数。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0       |
+| TOTAL_LIP_ASYNC_TIME               | 'total_lip_async_time'               | 表示总的音画不同步时长，单位为毫秒（ms）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0       |
 
 ## BufferingInfoType<sup>8+</sup>
 
@@ -505,6 +503,10 @@ Codec MIME类型枚举。
 | WINDOW_ONLY | 0    | 仅显示窗口列表。 |
 | SCREEN_ONLY | 1    | 仅显示屏幕列表。 |
 | SCREEN_AND_WINDOW | 2    | 同时显示屏幕列表和窗口列表。 |
+| APP_ONLY | 3    | 仅显示应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_AND_APP | 4    | 同时显示窗口和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SCREEN_AND_APP | 5    | 同时显示屏幕和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SCREEN_WINDOW_AND_APP | 6    | 同时显示屏幕、窗口和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AVMetricsEventType<sup>23+</sup>
 

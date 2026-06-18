@@ -124,14 +124,6 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): ISendable | 
 | -------- | -------- |
 | [ISendable](#isendable) \| null | 返回ISendable数据或null。入参为null时，返回null。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息      |
-| -------- | ------------- |
-| 401      | Parameter error. Invalid JSON string. |
-
 **示例：**
 
 ```ts
@@ -194,14 +186,6 @@ stringify(value: Object | null | undefined): string
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 转换后的JSON字符串。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息      |
-| -------- | ------------- |
-| 401      | Parameter error. Invalid ArkTS value. |
 
 **示例：**
 

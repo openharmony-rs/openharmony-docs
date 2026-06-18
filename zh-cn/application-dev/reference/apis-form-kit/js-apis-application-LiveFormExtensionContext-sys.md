@@ -1,9 +1,9 @@
 # LiveFormExtensionContext (系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 LiveFormExtensionContext是[LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md)的上下文，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
@@ -61,6 +61,7 @@ connectServiceExtensionAbility(want: Want, connection: ConnectOptions): number
 ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-models/extensionability-overview.md)组件，这类组件由系统提供，通常用于提供指定场景后台服务能力，不支持开发者自定义。
 
 ServiceExtensionAbility提供后台服务扩展能力，支持后台运行并对外提供相应能力。三方应用可以连接该ExtensionAbility，并进行通信。
+ 
 通过本接口连接成功后，会启动ServiceExtensionAbility组件，具体请参考[组件启动规则](../../application-models/component-startup-rules.md)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。

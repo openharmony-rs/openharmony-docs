@@ -2551,3 +2551,73 @@ struct Child {
   }
 }
 ```
+
+## @Component和@ComponentV2的全局复用配置类型修改
+
+**规则解释：**
+
+在ArkTS-Sta中，@Component和@ComponentV2参数[poolAccepts](./state-management/arkts-global-reuse-pool.md#componentcomponentv2配置参数)从传入复用组件类型，改为传入复用组件名称；参数[reusePool](./state-management/arkts-global-reuse-pool.md#复用池所有权模式)从传入字符串，改为传入枚举值。
+
+**变更原因：**
+
+ArkTS-Sta的装饰器参数只能接受简单类型或简单类型的容器，不能接受Function[]类型，所以改为string[]；reusePool使用枚举值能够校验传入的数据是固定值，能力等价于ArkTS-Dyn的字符串联合类型。
+
+**适配建议：**
+
+poolAccepts参数改为string[]类型；reusePool传入ReusePoolOwnership对应的枚举值。
+
+**示例：**
+
+ArkTS-Dyn
+
+```ts
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  build() {
+    Text('ReusableChild')
+  }
+}
+
+@Entry
+@ComponentV2({ 
+  reusePool: 'perInstance', // 全局复用池所有权，动态ArkTS传入字符串
+  poolAccepts: [ReusableChild], // 全局复用池接纳组件，动态ArkTS传组件类型
+  freezeWhenInactive: false
+})
+struct PoolOwner {
+  build() {
+    Column() {
+      ReusableChild()
+    }
+  }
+}
+```
+
+ArkTS-Sta
+
+```ts
+'use static'
+import { ReusableV2, ComponentV2, Text, Entry, ReusePoolOwnership, Column } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  build() {
+    Text('ReusableChild')
+  }
+}
+
+@Entry
+@ComponentV2({ 
+  reusePool: ReusePoolOwnership.PER_INSTANCE, // 全局复用池所有权，静态ArkTS传入枚举值
+  poolAccepts: ['ReusableChild'] // 全局复用池接纳组件，静态ArkTS传组件名称
+})
+struct PoolOwner {
+  build() {
+    Column() {
+      ReusableChild()
+    }
+  }
+}
+```

@@ -1,8 +1,8 @@
 # Types
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -18,7 +18,7 @@
 
 ArkTS-Dyn: type WebviewController = import('../api/@ohos.web.webview').default.WebviewController
 
-ArkTS-Sta: type WebviewController = WebviewController
+ArkTS-Sta: type WebviewController = import('../api/@ohos.web.webview').default.WebviewController
 
 提供Web控制器的方法。
 
@@ -30,7 +30,7 @@ ArkTS-Sta: type WebviewController = WebviewController
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [WebviewController](./arkts-apis-webview-WebviewController.md)  | 通过WebviewController可以控制Web组件各种行为。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。 |
+| [import('../api/@ohos.web.webview').default.WebviewController](./arkts-apis-webview-WebviewController.md)  | 通过WebviewController可以控制Web组件各种行为。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。 |
 
 ## OnAdsBlockedCallback<sup>12+</sup>
 

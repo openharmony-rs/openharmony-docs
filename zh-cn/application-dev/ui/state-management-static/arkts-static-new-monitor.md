@@ -48,10 +48,11 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
 - \@Monitor监听的变量需要被\@Local、\@Param、\@Provider、\@Consumer、\@Computed装饰，未被状态变量装饰器装饰的变量在变化时无法被监听。\@Monitor可以同时监听多个状态变量，这些变量名之间用","隔开。
 
-   ```ts
-   'use static'
+   <!-- @[MonitorComponentV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorComponentV2.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor } from '@kit.ArkUI';
+   
    @Entry
    @ComponentV2
    struct Index {
@@ -79,12 +80,12 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
 - \@Monitor监听的状态变量为类对象时，仅能监听对象整体的变化。监听类属性的变化需要类属性被\@Trace装饰。
 
-   ```ts
-   'use static'
+   <!-- @[MonitorClassObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorClassObject.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor, Text } from '@kit.ArkUI';
    
-   class Info {
+   export class Info {
      name: string;
      age: number;
      constructor(name: string, age: number) {
@@ -126,13 +127,13 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
 - \@Monitor监听的对象属性需要被\@Trace装饰，未被\@Trace装饰的属性的变化无法被监听。\@Monitor可以同时监听多个属性，这些属性之间用","隔开。
 
-   ```ts
-   'use static'
+   <!-- @[MonitorObservedV2Class](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorObservedV2Class.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Info {
+   export class Info {
      @Trace name: string = 'Tom';
      @Trace region: string = 'North';
      @Trace job: string = 'Teacher';
@@ -184,17 +185,17 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
 - \@Monitor可以监听深层属性的变化，该深层属性需要被@Trace装饰。
 
-   ```ts
-   'use static'
+   <!-- @[MonitorDeepProperty](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorDeepProperty.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Inner {
+   export class Inner {
      @Trace num: number = 0;
    }
    @ObservedV2
-   class Outer {
+   export class Outer {
      @Trace inner: Inner = new Inner();
      @Monitor(['inner.num'])
      onChange(monitor: IMonitor): void {
@@ -218,13 +219,13 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
 - 在继承类场景下，可以在继承链中对同一个属性进行多次监听。
 
-   ```ts
-   'use static'
+   <!-- @[MonitorInheritClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorInheritClass.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Base {
+   export class Base {
      @Trace name: string;
      // 基类监听name属性
      @Monitor(['name'])
@@ -236,7 +237,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
      }
    }
    @ObservedV2
-   class Derived extends Base {
+   export class Derived extends Base {
      @Trace age: int = 0;
      // 继承类监听name属性
      @Monitor(['name'])
@@ -266,13 +267,13 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
 - \@Monitor支持对数组中的项进行监听，包括多维数组，对象数组。\@Monitor无法监听内置类型（Array、Map、Date、Set）的API调用引起的变化。当\@Monitor监听数组整体时，只能观测到数组整体的赋值。可以通过监听数组的长度变化来判断数组是否有插入、删除等变化。当前仅支持使用"."的方式表达深层属性、数组项的监听。
 
-   ```ts
-   'use static'
+   <!-- @[MonitorArrayChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorArrayChange.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Info {
+   export class Info {
      @Trace name: string;
      @Trace age: number;
      
@@ -282,7 +283,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
      }
    }
    @ObservedV2
-   class ArrMonitor {
+   export class ArrMonitor {
      @Trace dimensionTwo: number[][] = [[1,1,1],[2,2,2],[3,3,3]];
      @Trace dimensionThree: number[][][] = [[[1],[2],[3]],[[4],[5],[6]],[[7],[8],[9]]];
      @Trace infoArr: Info[] = [new Info('Jack', 24), new Info('Lucy', 18)];
@@ -363,13 +364,13 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
    如果只点击Step2或Step3，改变name、age的值，此时会触发onNameChange和onAgeChange方法。
 
-   ```ts
-   'use static'
+   <!-- @[MonitorObjectWholeChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorObjectWholeChange.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Info {
+   export class Info {
      @Trace person: Person;
      @Monitor(['person.name'])
      onNameChange(monitor: IMonitor): void {
@@ -384,7 +385,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
      }
    }
    @ObservedV2
-   class Person {
+   export class Person {
      @Trace name: string;
      @Trace age: number;
      constructor(name: string, age: number) {
@@ -417,13 +418,13 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
 - 在一次事件中多次改变被\@Monitor监听的属性，以最后一次修改为准。
 
-   ```ts
-   'use static'
+   <!-- @[MonitorFrequency](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorFrequency.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Frequence {
+   export class Frequence {
      @Trace count: number = 0;
      @Monitor(['count'])
      onCountChange(monitor: IMonitor): void {
@@ -483,9 +484,9 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
 当使用通配符监听对象时，对象的任意@Trace装饰的属性变化，或者对象本身被整体赋新值时，触发@Monitor回调。
 
-``` TypeScript
-'use static'
+<!-- @[MonitorWildcardObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorWildcardObject.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, ComponentV2, Button,
   ObservedV2, Trace, Local, Monitor, IMonitor } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
@@ -535,9 +536,9 @@ struct MonitorWildcardObject {
 
 观察嵌套对象属性变化的示例如下。
 
-``` TypeScript
-'use static'
+<!-- @[MonitorWildcardNested](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorWildcardNested.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, ComponentV2, Button,
   ObservedV2, Trace, Local, Monitor, IMonitor } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
@@ -620,9 +621,9 @@ struct MonitorWildcardNestedObject {
 
 使用配置项的@Monitor可以监听到数组的API调用。任意数组的方法被调用时，@Monitor回调都会被执行，即使数组为空或并未实际修改数组的内容。API包括`push`、`pop`、`shift`、`splice`、`unshift`、`copyWithin`、`fill`、`reverse`、`sort`。
 
-``` TypeScript
-'use static'
+<!-- @[MonitorWildcardArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorWildcardArray.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, ComponentV2, Button,
   ObservedV2, Trace, Local, Monitor, IMonitor } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
@@ -755,9 +756,9 @@ onDateChange(m: IMonitor) {
 
 使用通配符监听Date对象的示例如下。
 
-``` TypeScript
-'use static'
+<!-- @[MonitorWildcardDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorWildcardDate.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, ComponentV2, Button,
   ObservedV2, Trace, Local, Monitor, IMonitor } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
@@ -820,9 +821,9 @@ onMapChange(m: IMonitor) {
 
 使用通配符监听Map对象的示例如下。
 
-``` TypeScript
-'use static'
+<!-- @[MonitorWildcardMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorWildcardMap.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, ComponentV2, Button, BorderStyle, Color,
   ObservedV2, Trace, Local, Monitor, IMonitor } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
@@ -923,9 +924,9 @@ onSetChange(m: IMonitor) {
 
 使用通配符监听Set对象的示例如下。
 
-``` TypeScript
-'use static'
+<!-- @[MonitorWildcardSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorWildcardSet.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, ComponentV2, Button,
   ObservedV2, Trace, Local, Monitor, IMonitor } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
@@ -1003,7 +1004,7 @@ struct MonitorWildcardSet {
    const t3: string = 't3'; // const常量
    let t4: string = 't4'; // 变量
    @ObservedV2
-   class Info {
+   export class Info {
      @Trace t1: number = 0;
      @Trace t2: number = 0;
      @Trace t3: number = 0;
@@ -1032,7 +1033,7 @@ struct MonitorWildcardSet {
 
    ```ts
    @ObservedV2
-   class Info {
+   export class Info {
      @Trace count: number = 0;
      @Monitor(['count'])
      onCountChange(monitor: IMonitor): void {
@@ -1047,7 +1048,7 @@ struct MonitorWildcardSet {
   import { IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
 
   @ObservedV2
-  class Info {
+  export class Info {
     @Trace name: string = 'Tom';
     @Trace region: string = 'North';
     @Trace job: string = 'Teacher';
@@ -1055,12 +1056,12 @@ struct MonitorWildcardSet {
     // job属性被@Trace装饰，编译成功
     @Monitor(['job'])
     onJobChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<string>()?.before} to ${monitor.value<string>()?.now}`);
     }
     // age属性未被@Trace装饰，编译成功，但会显示Plugin warning的告警
     @Monitor(['age'])
     onAgeChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
     }
   }
   ```
@@ -1073,7 +1074,7 @@ struct MonitorWildcardSet {
   import { Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Param, Trace } from '@kit.ArkUI';
   
   @ObservedV2
-  class UserV2 {
+  export class UserV2 {
     @Trace name: string = 'Tom';
     age: number = 1;
   }
@@ -1089,12 +1090,12 @@ struct MonitorWildcardSet {
     // 编译成功
     @Monitor(['user'])
     onUserChange(monitor: IMonitor) {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<UserV2>()?.before} to ${monitor.value<UserV2>()?.now}`);
     }
     // 编译成功，但会显示Plugin warning的告警
     @Monitor(['age']) 
     onAgeChange(monitor: IMonitor) {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
     }
     
     build() {
@@ -1112,26 +1113,26 @@ struct MonitorWildcardSet {
   import { Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
   
   @ObservedV2 
-  class UserV2 {
+  export class UserV2 {
     @Trace name: string = 'Tom';
     age: number = 1;
   }
   
   @ObservedV2
-  class Info {
+  export class Info {
     @Trace age: number = 25;
     @Trace user: UserV2 = new UserV2();
-
+  
     // age1不存在，会导致编译报错
     @Monitor(['age1'])
     onAgeChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
     }
-
+  
     // user.age1不存在，会导致编译报错
     @Monitor(['user.age1'])
     onUserAgeChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
     }
   }
   
@@ -1144,13 +1145,13 @@ struct MonitorWildcardSet {
     // user1不存在，会导致编译报错
     @Monitor(['user1'])  
     onUserChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
     } 
   
     // user.age1不存在，会导致编译报错
     @Monitor(['user.age1'])  
     onUserAgeChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
     }
   
     build() {
@@ -1181,22 +1182,23 @@ struct MonitorWildcardSet {
 
 下面的示例中监听了属性value的变化，并根据变化的幅度改变Text组件显示的样式。
 
-```ts
-'use static'
+<!-- @[MonitorDeepStyle](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MonitorDecorator/entry/src/main/ets/pages/MonitorDeepStyle.ets) --> 
 
+``` TypeScript
 import { Button, Color, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
-class Info {
+export class Info {
   @Trace value: number = 50;
 }
 @ObservedV2
-class UIStyle {
+export class UIStyle {
   info: Info = new Info();
   @Trace color: Color = Color.Black;
   @Trace fontSize: number = 45;
   @Monitor(['info.value'])
   onValueChange(monitor: IMonitor): void {
+    // lastValue与curValue决定了如何修改this.color与this.fontSize变量的值
     let lastValue: number = monitor.value<number>()?.before as number;
     let curValue: number = monitor.value<number>()?.now as number;
     if (lastValue != 0) {
@@ -1221,13 +1223,21 @@ struct Index {
   build() {
     Column() {
       Text(`Important Value: ${this.textStyle.info.value}`)
+        .fontSize(20)
+        .margin(10)
         .fontColor(this.textStyle.color)
         .fontSize(this.textStyle.fontSize)
       Button('change!')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
+          // 使用随机数改变this.textStyle.info.value的值
           this.textStyle.info.value = Math.floor(Math.random() * 100) + 1;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![monitor-deep-property](../figures/monitor1.gif)

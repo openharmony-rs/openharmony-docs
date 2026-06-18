@@ -12,7 +12,7 @@
 
 ### onScroll
 
-ArkTS-Dyn接口声明：[onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void)](../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrolldeprecated)
+ArkTS-Dyn接口声明：[onScroll](../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrolldeprecated)
 
 替代的ArkTS-Sta接口声明：[onDidScroll(handler: OnScrollCallback): T](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12)
 
@@ -334,7 +334,7 @@ ArkTS-Dyn接口声明：[EditMode](../reference/apis-arkui/arkui-ts/ts-container
 
 ### onScroll
 
-ArkTS-Dyn接口声明：[onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void)](../reference/apis-arkui/arkui-ts/ts-container-grid.md#onscrolldeprecated)
+ArkTS-Dyn接口声明：[onScroll](../reference/apis-arkui/arkui-ts/ts-container-grid.md#onscrolldeprecated)
 
 替代的ArkTS-Sta接口声明：[onDidScroll(handler: OnScrollCallback): T](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12)
 
@@ -677,7 +677,7 @@ struct ScrollExample {
 ## Swiper
 
 ### indicatorStyle
-ArkTS-Dyn接口声明：[indicatorStyle(value?: IndicatorStyle): SwiperAttribute](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated)
+ArkTS-Dyn接口声明：[indicatorStyle(value?: IndicatorStyle)](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated)
 
 替代的ArkTS-Sta接口声明：[indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicator)
 
@@ -691,14 +691,24 @@ Swiper().indicatorStyle()
 
 ArkTS-Sta示例：
 
-```ts
- Swiper().indicator(true)
+<!-- @[indicator_bool](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperDeprecated.ets) -->
+
+``` TypeScript
+Swiper(this.swiperController) {
+  LazyForEach(this.data, (item: string, index: int) => {
+    Text(item)
+      .width('100%')
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+  })
+}
+.indicator(true)
 ```
 
 ### IndicatorStyle
-ArkTS-Dyn接口声明：[declare interface IndicatorStyle](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
+ArkTS-Dyn接口声明：[IndicatorStyle](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
 
-替代的ArkTS-Sta接口声明：[declare class DotIndicator extends Indicator\<DotIndicator>](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
+替代的ArkTS-Sta接口声明：[DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
 
 
 
@@ -710,15 +720,17 @@ let a: IndicatorStyle = {color: "#FFFF00FF"}
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[DotIndicator](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperDeprecated.ets) -->
+
+``` TypeScript
 let a: DotIndicator = new DotIndicator().color("#FFFF00FF")
 ```
 
 
 ### color
-ArkTS-Dyn接口声明：[IndicatorStyle.color?: ResourceColor](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
+ArkTS-Dyn接口声明：[color](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
 
-替代的ArkTS-Sta接口声明：[color(value: ResourceColor): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
+替代的ArkTS-Sta接口声明：[color(value: ResourceColor): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#color)
 
 
 
@@ -730,15 +742,25 @@ Swiper().indicatorStyle({color: "#FFFF00FF"})
 
 ArkTS-Sta示例：
 
-```ts
-Swiper().indicator(new DotIndicator().color("#FFFF00FF"))
+<!-- @[indicator_color](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperDeprecated.ets) -->
+
+``` TypeScript
+Swiper(this.swiperController) {
+  LazyForEach(this.data, (item: string, index: int) => {
+    Text(item)
+      .width('100%')
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+  })
+}
+.indicator(new DotIndicator().color("#FFFF00FF"))
 ```
 
 
 ### right
-ArkTS-Dyn接口声明：[IndicatorStyle.right?: Length](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
+ArkTS-Dyn接口声明：[right](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
 
-替代的ArkTS-Sta接口声明：[right(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
+替代的ArkTS-Sta接口声明：[right(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#right)
 
 
 
@@ -750,15 +772,25 @@ Swiper().indicatorStyle({right: 0})
 
 ArkTS-Sta示例：
 
-```ts
-Swiper().indicator(new DotIndicator().right(0))
+<!-- @[indicator_right](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperDeprecated.ets) -->
+
+``` TypeScript
+Swiper(this.swiperController) {
+  LazyForEach(this.data, (item: string, index: int) => {
+    Text(item)
+      .width('100%')
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+  })
+}
+.indicator(new DotIndicator().right(0))
 ```
 
 
 ### left
-ArkTS-Dyn接口声明：[IndicatorStyle.left?: Length](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
+ArkTS-Dyn接口声明：[left](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
 
-替代的ArkTS-Sta接口声明：[left(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
+替代的ArkTS-Sta接口声明：[left(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#left)
 
 
 
@@ -770,15 +802,25 @@ Swiper().indicatorStyle({left: 0})
 
 ArkTS-Sta示例：
 
-```ts
-Swiper().indicator(new DotIndicator().left(0))
+<!-- @[indicator_left](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperDeprecated.ets) -->
+
+``` TypeScript
+Swiper(this.swiperController) {
+  LazyForEach(this.data, (item: string, index: int) => {
+    Text(item)
+      .width('100%')
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+  })
+}
+.indicator(new DotIndicator().left(0))
 ```
 
 
 ### top
-ArkTS-Dyn接口声明：[IndicatorStyle.top?: Length](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
+ArkTS-Dyn接口声明：[top](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
 
-替代的ArkTS-Sta接口声明：[top(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
+替代的ArkTS-Sta接口声明：[top(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#top)
 
 
 
@@ -790,15 +832,25 @@ Swiper().indicatorStyle({top: 0})
 
 ArkTS-Sta示例：
 
-```ts
-Swiper().indicator(new DotIndicator().top(0))
+<!-- @[indicator_top](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperDeprecated.ets) -->
+
+``` TypeScript
+Swiper(this.swiperController) {
+  LazyForEach(this.data, (item: string, index: int) => {
+    Text(item)
+      .width('100%')
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+  })
+}
+.indicator(new DotIndicator().top(0))
 ```
 
 
 ### bottom
-ArkTS-Dyn接口声明：[IndicatorStyle.bottom?: Length](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
+ArkTS-Dyn接口声明：[bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
 
-替代的ArkTS-Sta接口声明：[bottom(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
+替代的ArkTS-Sta接口声明：[bottom(value: Length): T](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom)
 
 
 
@@ -810,15 +862,26 @@ Swiper().indicatorStyle({bottom: 0})
 
 ArkTS-Sta示例：
 
-```ts
-Swiper().indicator(new DotIndicator().bottom(0))
+<!-- @[indicator_bottom](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperDeprecated.ets) -->
+
+``` TypeScript
+Swiper(this.swiperController) {
+  LazyForEach(this.data, (item: string, index: int) => {
+    Text(item)
+      .width('100%')
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+  })
+}
+.indicator(new DotIndicator().bottom(0))
 ```
 
 
-### selectedColor
-ArkTS-Dyn接口声明：[IndicatorStyle.selectedColor?: ResourceColor](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
 
-替代的ArkTS-Sta接口声明：[selectedColor(value: ResourceColor): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
+### selectedColor
+ArkTS-Dyn接口声明：[selectedColor](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
+
+替代的ArkTS-Sta接口声明：[selectedColor(value: ResourceColor): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#selectedcolor)
 
 
 
@@ -830,15 +893,25 @@ Swiper().indicatorStyle({selectedColor: "#FFFF00FF"})
 
 ArkTS-Sta示例：
 
-```ts
-Swiper().indicator(new DotIndicator().selectedColor("#FFFF00FF"))
+<!-- @[indicator_selectedColor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperDeprecated.ets) -->
+
+``` TypeScript
+Swiper(this.swiperController) {
+  LazyForEach(this.data, (item: string, index: int) => {
+    Text(item)
+      .width('100%')
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+  })
+}
+.indicator(new DotIndicator().selectedColor(0))
 ```
 
 
 ### mask
-ArkTS-Dyn接口声明：[IndicatorStyle.mask?: boolean](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
+ArkTS-Dyn接口声明：[mask](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
 
-替代的ArkTS-Sta接口声明：[mask(value: boolean): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
+替代的ArkTS-Sta接口声明：[mask(value: boolean): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#mask)
 
 
 
@@ -850,15 +923,25 @@ Swiper().indicatorStyle({mask: true})
 
 ArkTS-Sta示例：
 
-```ts
-Swiper().indicator(new DotIndicator().mask(true))
+<!-- @[indicator_mask](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperDeprecated.ets) -->
+
+``` TypeScript
+Swiper(this.swiperController) {
+  LazyForEach(this.data, (item: string, index: int) => {
+    Text(item)
+      .width('100%')
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+  })
+}
+.indicator(new DotIndicator().mask(true))
 ```
 
 
 ### size
-ArkTS-Dyn接口声明：[IndicatorStyle.size?: Length](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
+ArkTS-Dyn接口声明：[size](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicatorstyledeprecated对象说明)
 
-替代的ArkTS-Sta接口声明：[itemWidth(value: Length): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#dotindicator10)
+替代的ArkTS-Sta接口声明：[itemWidth(value: Length): DotIndicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#itemwidth)
 
 
 
@@ -870,8 +953,18 @@ Swiper().indicatorStyle({size: 100})
 
 ArkTS-Sta示例：
 
-```ts
-Swiper().indicator(new DotIndicator().itemWidth(100).itemHeight(100).selectedItemWidth(100).selectedItemHeight(100))
+<!-- @[indicator_size](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperDeprecated.ets) -->
+
+``` TypeScript
+Swiper(this.swiperController) {
+  LazyForEach(this.data, (item: string, index: int) => {
+    Text(item)
+      .width('100%')
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+  })
+}
+.indicator(new DotIndicator().itemWidth(100).itemHeight(100).selectedItemWidth(100).selectedItemHeight(100))
 ```
 
 
@@ -890,8 +983,18 @@ Swiper().displayMode(SwiperDisplayMode.Stretch)
 
 ArkTS-Sta示例：
 
-```ts
-Swiper().displayMode(SwiperDisplayMode.STRETCH)
+<!-- @[indicator_Stretch](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperDeprecated.ets) -->
+
+``` TypeScript
+Swiper(this.swiperController) {
+  LazyForEach(this.data, (item: string, index: int) => {
+    Text(item)
+      .width('100%')
+      .backgroundColor(0xAFEEEE)
+      .textAlign(TextAlign.Center)
+  })
+}
+.displayMode(SwiperDisplayMode.STRETCH)
 ```
 
 
@@ -960,47 +1063,87 @@ struct SwiperExample {
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[auto_line](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/swiper/SwiperAutoLinear.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Column,
+  Scroller,
+  Scroll,
+  Swiper,
+  ForEach,
+  Text,
+  Row,
+  Button,
+  ScrollDirection,
+  BarState,
+  EdgeEffect,
+  TextAlign,
+  RowOptions,
+  ScrollOptions,
+  ScrollAnimationOptions,
+  Curve,
+  NavDestination,
+  $r,
+  State,
+} from '@kit.ArkUI';
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
 @Entry
 @Component
-struct ScrollExample {
-  private data: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+export struct ScrollExample {
+  private data: int[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   private scroller: Scroller = new Scroller();
 
-  build() {
-    Column() {
-      Scroll(this.scroller) {
-        Row() {
-          ForEach(this.data, (item: number) => {
-            Column() {
-              Text(item.toString())
-                .width('100%')
-                .height('100%')
-                .textAlign(TextAlign.Center)
-            }
-            .width(90)
-            .height(160)
-            .backgroundColor(0xAFEEEE)
-            .margin({ right: item === this.data[this.data.length - 1] ? 0 : 20 })
-          })
-        }.height(160)
-      }
-      .scrollable(ScrollDirection.Horizontal)
-      .scrollBar(BarState.Off)
-      .edgeEffect(EdgeEffect.Spring)
-      Row({ space: 12 }) {
-        Button('showNext')
-          .onClick(() => {
-            const xOffset: number = this.scroller.currentOffset().xOffset;
-            this.scroller.scrollTo({ xOffset: xOffset + 90 + 20, yOffset: 0, animation: { duration: 1000, curve: Curve.Linear } });
-          })
-        Button('showPrevious')
-          .onClick(() => {
-            const xOffset: number = this.scroller.currentOffset().xOffset;
-            this.scroller.scrollTo({ xOffset: xOffset - 90 - 20, yOffset: 0, animation: { duration: 1000, curve: Curve.Linear } });
-          })
-      }.margin(5)
-    }.width('100%')
+  build(): void {
+    NavDestination() {
+      Column(undefined) {
+        Scroll(this.scroller) {
+          Row(undefined) {
+            ForEach(this.data, (item: int) => {
+              Column(undefined) {
+                Text(item.toString())
+                  .width('100%')
+                  .height('100%')
+                  .textAlign(TextAlign.Center)
+              }
+              .width(90)
+              .height(160)
+              .backgroundColor(0xAFEEEE)
+              .margin({ right: item === this.data[this.data.length - 1] ? 0 : 20 })
+            })
+          }.height(160)
+        }
+        .scrollable(ScrollDirection.Horizontal)
+        .scrollBar(BarState.Off)
+        .edgeEffect(EdgeEffect.Spring)
+
+        Row({ space: 12 } as RowOptions) {
+          Button('showNext')
+            .onClick(() => {
+              const xOffset: double = this.scroller.currentOffset()!.xOffset;
+              this.scroller.scrollTo({
+                xOffset: xOffset + 90 + 20,
+                yOffset: 0,
+                animation: { duration: 1000, curve: Curve.Linear } as ScrollAnimationOptions
+              } as ScrollOptions);
+            })
+          Button('showPrevious')
+            .onClick(() => {
+              const xOffset: double = this.scroller.currentOffset()!.xOffset;
+              this.scroller.scrollTo({
+                xOffset: xOffset - 90 - 20,
+                yOffset: 0,
+                animation: { duration: 1000, curve: Curve.Linear } as ScrollAnimationOptions
+              } as ScrollOptions);
+            })
+        }.margin(5)
+      }.width('100%')
+    }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.swiperAutoLinear_title'))
   }
 }
 ```
@@ -1009,13 +1152,13 @@ struct ScrollExample {
 
 ### RefreshOptions-offset
 
-ArkTS-Dyn接口声明：[RefreshOptions-offset](../reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)
+ArkTS-Dyn接口声明：[offset](../reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)
 
 替代的ArkTS-Sta接口声明：ArkTS-Sta暂无替代接口。
 
 ### RefreshOptions-friction
 
-ArkTS-Dyn接口声明：[RefreshOptions-friction](../reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)
+ArkTS-Dyn接口声明：[friction](../reference/apis-arkui/arkui-ts/ts-container-refresh.md#refreshoptions对象说明)
 
 替代的ArkTS-Sta接口声明：[pullDownRatio(ratio: Optional\<number>)](../reference/apis-arkui/arkui-ts/ts-container-refresh.md#pulldownratio12)
 

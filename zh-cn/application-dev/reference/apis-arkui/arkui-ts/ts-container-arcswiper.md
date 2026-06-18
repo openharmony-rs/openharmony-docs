@@ -863,7 +863,7 @@ finishTransition(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 18
 

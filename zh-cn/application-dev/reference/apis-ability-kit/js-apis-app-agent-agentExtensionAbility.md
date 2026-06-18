@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 AgentExtensionAbility继承自[ExtensionAbility](js-apis-app-ability-extensionAbility.md)，提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。
@@ -16,6 +16,8 @@ AgentExtensionAbility继承自[ExtensionAbility](js-apis-app-ability-extensionAb
 > 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
+>
+> 本模块接口不支持在[har](../../quick-start/har-package.md)包中使用。
 
 ## 导入模块
 
@@ -201,7 +203,7 @@ onAuth(proxy: AgentHostProxy, handshakeData: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- |  -------- |
 | proxy | [AgentHostProxy](js-apis-inner-application-agentHostProxy.md) | 是 | [AgentHostProxy](js-apis-inner-application-agentHostProxy.md)对象，用于向客户端发送安全认证请求。 |
-| data | string | 是 | 表示接收到的安全认证数据。 |
+| handshakeData | string | 是 | 表示接收到的安全认证数据。 |
 
 **示例：**
 

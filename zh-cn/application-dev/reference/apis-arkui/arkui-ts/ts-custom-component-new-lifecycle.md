@@ -10,7 +10,9 @@
 
 >**说明：**
 >
->- 本模块首批接口从API version 23开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 23开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## \@ComponentInit
 
@@ -18,11 +20,11 @@ ComponentInit: MethodDecorator
 
 \@ComponentInit装饰的函数在自定义组件初始化即将完成时执行。开发者可以在此时注册监听和修改变量。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
 
@@ -34,11 +36,11 @@ ComponentAppear: MethodDecorator
 
 与aboutToAppear相似，\@ComponentAppear装饰的函数在创建自定义组件的新实例后，在其build()函数执行前调用，不同的是，\@ComponentAppear装饰的函数仅在自定义组件处于[CustomComponentLifecycleState](#customcomponentlifecyclestate).INIT状态才会触发。允许在\@ComponentAppear装饰的函数中改变状态变量，更改将在后续执行build()函数中生效。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
 
@@ -50,11 +52,11 @@ ComponentBuilt: MethodDecorator
 
 \@ComponentBuilt装饰的函数在自定义组件的build()函数首次执行后调用，即从CustomComponentLifecycleState.APPEARED到CustomComponentLifecycleState.BUILT的阶段触发。开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
 
@@ -66,11 +68,11 @@ ComponentDisappear: MethodDecorator
 
 \@ComponentDisappear装饰的函数在自定义组件析构销毁时执行。不建议在此函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
 
@@ -88,11 +90,11 @@ ComponentReuse: MethodDecorator
 >
 > -  在状态管理V2的组件里，\@ComponentReuse装饰的函数没有入参。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -110,11 +112,11 @@ ComponentRecycle: MethodDecorator
 
 当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用此装饰器装饰的函数，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发。最后，回收会递归遍历所有子组件，对每个完成回收的子组件调用子组件中\@ComponentRecycle装饰的函数。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例：**
 
@@ -128,7 +130,7 @@ ArkTS-Dyn: ComponentActive: MethodDecorator
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -142,7 +144,7 @@ ArkTS-Dyn: ComponentInactive: MethodDecorator
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -156,17 +158,21 @@ ArkTS-Dyn: ComponentInactive: MethodDecorator
 
 CustomComponentLifecycle用于监控自定义组件生命周期的变化，开发者可以通过[UIUtils.getLifecycle](../js-apis-stateManagement.md#getlifecycle23)获取CustomComponentLifecycle实例。
 
+**ArkTS-Sta起始版本：** 24
+
 ### getCurrentState
 
 getCurrentState(): CustomComponentLifecycleState
 
 getCurrentState函数用于获得自定义组件当前的生命周期状态。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -202,11 +208,13 @@ addObserver(observer: CustomComponentLifecycleObserver): void
 
 addObserver函数用于注册自定义组件生命周期监听器。当自定义组件的生命周期发生变化时，会触发监听器中相应的生命周期回调函数。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -220,11 +228,13 @@ removeObserver(observer: CustomComponentLifecycleObserver): void
 
 removeObserver函数用于移除自定义组件生命周期监听器。解除注册后，即使自定义组件的生命周期状态发生变化，也不会触发监听器中相应的生命周期回调函数。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -236,53 +246,85 @@ removeObserver函数用于移除自定义组件生命周期监听器。解除注
 
 用户注册自定义组件生命周期回调后，当该自定义组件的生命周期发生变化时，将触发监听器中相应的生命周期回调。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 ### aboutToAppear
 
-aboutToAppear?(): void
+
+ArkTS-Sta: aboutToAppear(): void
+
+ArkTS-Dyn: aboutToAppear?(): void
 
 aboutToAppear函数在创建自定义组件的新实例后，执行其build()函数之前执行。开发者可以在此阶段修改状态变量。其功能与[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)类似，但是在自定义组件状态机的约束下触发的。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
 
 ### onDidBuild
 
-onDidBuild?(): void
+
+ArkTS-Sta: onDidBuild(): void
+
+ArkTS-Dyn: onDidBuild?(): void
 
 onDidBuild函数在自定义组件的新实例构建完成后，执行其build()函数之后执行。开发者可以在此阶段实现一些不影响实际UI的功能，例如事件数据上报。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
 
 ### aboutToDisappear
 
-aboutToDisappear?(): void
+
+ArkTS-Sta: aboutToDisappear(): void
+
+ArkTS-Dyn: aboutToDisappear?(): void
 
 aboutToDisappear函数在自定义组件被销毁之前执行。不建议在aboutToDisappear函数中修改状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。其功能与[aboutToDisappear](./ts-custom-component-lifecycle.md#abouttodisappear)类似，不同的是，CustomComponentLifecycleObserver中的aboutToDisappear函数受状态机约束，只有被监听的自定义组件状态向CustomComponentLifecycleState.DISAPPEARED转变前触发回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
 
 ### aboutToReuse
 
-aboutToReuse?(params?: Record<string, Object | undefined | null>): void
+
+ArkTS-Sta: aboutToReuse(params?: ReuseObject): void
+
+ArkTS-Dyn: aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
 当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，以接收组件的构造参数。当params存在时，表示V1组件的复用回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -292,15 +334,21 @@ aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
 ### aboutToRecycle
 
-aboutToRecycle?(): void
+ArkTS-Sta: aboutToRecycle(): void
+
+ArkTS-Dyn: aboutToRecycle?(): void
 
 当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用aboutToRecycle函数。随后该组件被冻结，以避免该组件处于回收池时进行UI更新。最后，aboutToRecycle函数会递归遍历所有子组件，对每个完成回收的组件调用aboutToRecycle函数。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
 
 **示例：**
 ```ts
@@ -397,11 +445,13 @@ export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
 
 自定义组件当前的生命周期状态。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 值 | 说明 |
 | -- | -- | -- |
