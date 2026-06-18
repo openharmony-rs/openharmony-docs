@@ -4336,7 +4336,6 @@ struct ListNodeTest {
     .width('100%')
   }
 }
-
 ```
 ![invalidateAttributes](./figures/invalidateAttributes.png)
 
@@ -4409,6 +4408,5 @@ struct Index {
     .width('100%')
   }
 }
-
 ```
 ![isInRenderState](./figures/isInRenderState.png)
