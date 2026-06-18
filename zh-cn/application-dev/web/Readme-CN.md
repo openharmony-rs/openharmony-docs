@@ -68,7 +68,7 @@
   - [使用Web组件的智能分词能力](web-data-detector.md)
 - 同层渲染<!--same-layer-rendering-->
   - [同层渲染](web-same-layer.md)
-<!--RP3--><!--RP3End-->
+  <!--RP3--><!--RP3End-->
 - [使用离线Web组件](web-offline-mode.md)
 - [使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景](web-native-messaging.md)
 - Web调试维测<!--web-debugging-->
