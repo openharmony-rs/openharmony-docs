@@ -132,6 +132,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -152,7 +153,7 @@ struct Index {
           }
           try {
             // 订阅热键变更事件
-            inputConsumer.on("hotkeyChange", hotkeyOptions, hotkeyCallback);
+            inputConsumer.on('hotkeyChange', hotkeyOptions, hotkeyCallback);
           } catch (error) {
             console.error(`Failed to Subscribe hot key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -191,6 +192,7 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -208,9 +210,9 @@ struct Index {
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
             // 订阅热键变更事件
-            inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
+            inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
             // 取消订阅热键变更事件
-            inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
+            inputConsumer.off('hotkeyChange', hotkeyOption, hotkeyCallback);
             console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
             console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -223,6 +225,7 @@ struct Index {
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -240,9 +243,9 @@ struct Index {
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
             // 订阅热键变更事件
-            inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
+            inputConsumer.on('hotkeyChange', hotkeyOption, hotkeyCallback);
             // 取消订阅热键变更事件
-            inputConsumer.off("hotkeyChange", hotkeyOption);
+            inputConsumer.off('hotkeyChange', hotkeyOption);
             console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
             console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -286,6 +289,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -343,6 +347,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 ```js
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -366,7 +371,7 @@ struct Index {
             // 取消订阅按键按下事件
             inputConsumer.off('keyPressed', callback);
             // 取消当前已订阅的所有回调函数
-            inputConsumer.off("keyPressed");
+            inputConsumer.off('keyPressed');
           } catch (error) {
             console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }

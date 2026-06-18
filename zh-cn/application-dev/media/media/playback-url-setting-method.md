@@ -1,7 +1,7 @@
 # 使用AVPlayer设置播放URL(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->

@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 可滚动的容器组件，当子组件的布局尺寸超过父组件的尺寸时，内容可以滚动。

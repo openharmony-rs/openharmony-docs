@@ -1,8 +1,8 @@
 # Web组件渲染模式
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc-->
-<!--Designer: @LongLie-->
+<!--Owner: @pxlstrong-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 

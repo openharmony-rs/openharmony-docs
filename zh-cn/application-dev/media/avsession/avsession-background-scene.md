@@ -58,9 +58,9 @@
 关于AVSession的创建和释放时机，建议在应用启动或开始播放业务之前进行创建，并在应用进程结束或完全退出播放业务且不再播放时予以释放，以避免频繁创建和释放AVSession，从而保证应用播放业务的连续性和稳定性。应用后台播放时，需要确保AVSession对象实例在应用后台活动期间一直存在，避免被系统回收、释放，比如不要使用局部变量保存AVSession对象等。<br>
 创建AVSession后，为了保证接入体验，要求设置以下元数据并注册以下控制命令。
 
-- 元数据：标题、副标题/歌手、封面图。具体操作请参考[设置元数据](avsession-access-scene.md#设置元数据)。
+- 元数据：标题、副标题/歌手、封面图。具体操作请参考[设置元数据信息](avsession-access-scene.md#设置元数据信息)。
 
-- 注册控制命令：播放/暂停。具体操作请参考[注册控制命令](avsession-access-scene.md#注册控制命令)。
+- 注册控制命令：播放/暂停。具体操作请参考[控制命令的处理](avsession-access-scene.md#控制命令的处理)。
 
 AVSession的接入开发请参考指南[应用接入AVSession场景介绍](avsession-access-scene.md)。
 

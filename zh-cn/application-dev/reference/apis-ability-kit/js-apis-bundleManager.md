@@ -856,7 +856,7 @@ try {
 
 getLaunchWant(): Want
 
-获取本应用[入口UIAbility](../../quick-start/application-package-glossary.md#入口uiability)的Want参数。
+获取本应用[入口UIAbility](../../quick-start/application-package-glossary.md#entry-uiability入口uiability)的Want参数。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -1427,7 +1427,7 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回\<AppCloneIdentity>。 |
+| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity数组。 |
 
 **错误码：**
 

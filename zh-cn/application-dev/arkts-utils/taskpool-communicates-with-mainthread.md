@@ -39,7 +39,7 @@
    }
    ```
 
-   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
+   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) --> 
    
    ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
@@ -87,8 +87,8 @@
                loadPictureTask.onReceiveData(notice);
                taskpool.execute(loadPictureTask).then((res: object) => {
                  iconItemSourceList = res as IconItemSource[];
+                 this.message = 'success';
                })
-               this.message = 'success';
              })
          }
          .width('100%')

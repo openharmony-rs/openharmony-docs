@@ -132,6 +132,7 @@
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
       - [动态布局 (DynamicLayout)](arkts-layout-development-dynamiclayout.md)
+      - [容器断点 (ContainerReader)](arkts-layout-development-container-reader.md)
       - [选项卡 (Tabs)](arkts-navigation-tabs.md)<!--RP1--><!--RP1End-->
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
@@ -300,8 +301,7 @@
   - 使用动画<!--arkts-use-animation-ndk-->
     - [动画概述](ndk-use-animation.md)
     - [使用动画开发指导](ndk-use-animation-scene.md)
-  - 使用选择类组件<!--arkts-build-picker-ndk-->
-      - [使用滑动选择器 (Picker)](ndk-picker.md)
+  - [使用滑动选择器 (Picker)](ndk-picker.md)
   - [添加事件响应](ndk-add-event-response.md)
     - [添加事件监听](ndk-add-component-events.md)
     - [绑定基础输入事件](ndk-bind-input-events.md)
@@ -407,7 +407,9 @@
     - [使用文本常见问题](arkts-text-faq.md)
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
-    - [UI并行化常见问题](multi-thread-ui-build-faq.md)
+    - [UI并行化常见问题](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
+    - [沉浸光感常见问题](arkts-immersive-light-sense-faq.md)
+    
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
 - [ArkUI术语](arkui-glossary.md)
