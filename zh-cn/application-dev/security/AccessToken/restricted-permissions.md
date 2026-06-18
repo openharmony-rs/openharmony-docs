@@ -710,7 +710,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.USE_FLOAT_BALL
 
-允许应用使用全局闪控球的能力。
+允许应用使用闪控球的能力。
 
 <!--RP46--><!--RP46End-->
 
@@ -724,7 +724,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
-允许应用使用全局闪控球的自动恢复到应用主窗口的能力。
+允许应用使用闪控球的自动恢复到应用主窗口的能力。
 
 **申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起，才可申请此权限。
 
@@ -1329,3 +1329,47 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：PC/2in1 | Phone | Tablet
 
 **起始版本**：24
+
+## ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
+
+允许应用安装与加载自分发插件。
+
+<!--RP90--><!--RP90End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.ALLOW_USE_BM
+
+允许应用在开发者模式下调用BM工具。
+
+<!--RP94--><!--RP94End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY
+
+允许应用使用数字身份服务导入数字凭证。
+
+获取该权限后，应用可以将用户的数字身份凭证导入设备，进行安全存储以及后续便捷出示。
+
+<!--RP91--><!--RP91End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0

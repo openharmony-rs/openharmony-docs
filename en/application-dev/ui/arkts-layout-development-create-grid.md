@@ -22,7 +22,7 @@ ArkUI provides the [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)
 Each item in the **Grid** container corresponds to a **GridItem** component, as shown below.
 
   **Figure 1** Relationship between Grid and GridItem components 
-![en-us_image_0000001511900472](figures/en-us_image_0000001511900472.png)
+![relationship](figures/relationship.png)
 
 >**NOTE**
 >
@@ -31,7 +31,7 @@ Each item in the **Grid** container corresponds to a **GridItem** component, as 
 The grid layout is a two-dimensional layout. The **Grid** component allows you to define the number of rows and columns, proportion of each row and column, number of rows or columns that child components span, and the horizontal and vertical alignment. When it has its size changed, its child components and spacing are adjusted proportionally. By leveraging these layout capabilities, you can build grid layouts of different styles, as shown below.
 
   **Figure 2** Grid layout 
-![en-us_image_0000001562700473](figures/en-us_image_0000001562700473.png)
+![grid2](figures/grid2.png)
 
 The size of the **Grid** component follows its width and height settings (if configured) or adapts to the size of its parent component.
 
@@ -54,7 +54,7 @@ You can set the number and proportion of rows and columns to determine the overa
 The values of **rowsTemplate** and **columnsTemplate** are a string consisting of 'number+fr' segments, separated by spaces. Wherein **fr** indicates the number of rows or columns in the grid layout, and the number in front of **fr** is used to calculate the proportion of the row or column in the grid width, thereby determining the width of the row or column.
 
   **Figure 3** Example of the proportion of rows and columns 
-![en-us_image_0000001562820833](figures/en-us_image_0000001562820833.png)
+![grid3](figures/grid3.png)
 
 The preceding figure shows a grid layout with three rows and three columns. The grid layout is divided into three parts in the vertical direction with each row taking up 1/3, and four parts in the horizontal direction with the first column taking up 1/4, the second column 2/4, and the third column 1/4.
 
@@ -81,13 +81,13 @@ In real-world applications, an uneven grid layout, where grid cells span a varyi
 
   **Figure 4** Uneven grid layout
 
-![en-us_image_0000001511900480](figures/en-us_image_0000001511900480.png)
+![grid4](figures/grid4.png)
 
 A common application with an uneven grid layout is the calculator. As shown in the following figure, the **0** key spans the first and second columns, and the **=** key spans the fifth and sixth rows. For a grid layout created using the **Grid** component, the row and column numbers start from 0 and increase incrementally.
 
   **Figure 5** Calculator 
 
-![en-us_image_0000001511421292](figures/en-us_image_0000001511421292.png)
+![calculator](figures/calculator.png)
 
 In the grid, use the **onGetRectByIndex** callback to return the array [rowStart, columnStart, rowSpan, columnSpan] to achieve a layout that spans rows and columns, wherein **rowStart** and **columnStart** indicate the start row and column numbers of the current element, and **rowSpan** and **columnSpan** indicate how many rows and columns the current element spans.
 
@@ -123,7 +123,7 @@ When neither the number nor proportion is set for rows and columns in a grid lay
 
   **Figure 6** Main axis direction 
 
-![en-us_image_0000001562700469](figures/en-us_image_0000001562700469.png)
+![grid6](figures/grid6.png)
 
 When **layoutDirection** is set to **Row**, child components are arranged from left to right. When a row is full, a new row is added. When **layoutDirection** is set to **Column**, child components are arranged from top to bottom. When a column is full, a new column is added. In this example, the **maxCount** attribute is set to **3**, indicating that the maximum number of grid cells displayed along the main axis is 3.
 
@@ -150,7 +150,7 @@ The grid layout organizes its internal elements in two-dimensional layout mode, 
 
 **Figure 7** General office services 
 
-![en-us_image_0000001563060729](figures/en-us_image_0000001563060729.png)
+![grid7](figures/grid7.png)
 
 The **Grid** component can display a group of **GridItem** child components in two-dimensional layout mode.
 
@@ -238,7 +238,7 @@ The horizontal spacing between two grid cells is called row spacing, and the ver
 
 **Figure 8** Row spacing and column spacing 
 
-![en-us_image_0000001511580908](figures/en-us_image_0000001511580908.png)
+![grid8](figures/grid8.png)
 
 To configure the row and column spacing of a grid layout, use the [rowsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#rowsgap) and [columnsGap](../reference/apis-arkui/arkui-ts/ts-container-grid.md#columnsgap) attributes of the **Grid** component. In the calculator shown in Figure 5, the row spacing is 15 vp, and the column spacing is 10vp.
 
@@ -258,7 +258,7 @@ The scrollable grid layout is often used on the file list, product list, video l
 
 **Figure 9** Horizontal scrollable grid layout
 
-![en-us_image_0000001511740512](figures/en-us_image_0000001511740512.gif)
+![grid9](figures/grid9.gif)
 
 If **columnsTemplate** is set, the grid scrolls vertically. If **rowsTemplate** is set, the grid scrolls horizontally.
 
@@ -310,7 +310,7 @@ Similar to the Back to top button in a list layout, the feature of controlling t
 
   **Figure 10** Page turning in the calendar application 
 
-![en-us_image_0000001562940549](figures/en-us_image_0000001562940549.gif)
+![grid10](figures/grid10.gif)
 
 When the **Grid** component is initialized, it can be bound to a [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) object for scrolling control. In this example, the [scrollPage](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrollpage9) API of the **Scroller** object is used to turn pages.
 

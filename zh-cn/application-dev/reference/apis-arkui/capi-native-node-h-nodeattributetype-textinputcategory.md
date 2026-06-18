@@ -1211,8 +1211,8 @@ NODE_TEXT_INPUT_LINEAR_GRADIENT = 7051
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度属性生效，否则按线性渐变的方向属性为主要布局方式。取值范围为(-∞,+∞)，0点方向顺时针旋转为正向角度，当超过360时，是按照360取余处理，默认值：180。 |
-| .value[1].i32 | 线性渐变的方向。取值为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)中的枚举。设置除[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM之外的线性渐变方向后，线性渐变的起始角度不生效。默认值：[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM |
+| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度属性生效，否则按线性渐变的方向属性为主要布局方式。取值范围为(-∞,+∞)，0点方向顺时针旋转为正向角度，当超过360时，是按照360取余处理，默认值：180。 |
+| .value[1].i32 | 线性渐变的方向。取值为[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)中的枚举。设置除[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM之外的线性渐变方向后，线性渐变的起始角度不生效。默认值：[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM |
 | .value[2].i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
 | .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。想要实现多个颜色渐变效果时，数组元素建议递增设置，如后一个数组元素比前一个数组元素小的话，按照等于前一个数组元素的值处理。 <br> size：颜色个数，若小于colors数组长度则仅生效前size个颜色，不建议设置大于colors数组长度或小于等于0的值以及异常值。 |
 
@@ -1220,8 +1220,8 @@ NODE_TEXT_INPUT_LINEAR_GRADIENT = 7051
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度为设置值，其他情况均为默认值0。 |
-| .value[1].i32 | 线性渐变的方向。对应取值及含义请参考[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)。 |
+| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度为设置值，其他情况均为默认值0。 |
+| .value[1].i32 | 线性渐变的方向。对应取值及含义请参考[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)。 |
 | .value[2].i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
 | .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。 <br> size：生效后渐变色的颜色个数。 |
 
@@ -1473,13 +1473,13 @@ NODE_TEXT_AREA_CARET_COLOR = 8005
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| .value[0].u32 | 光标颜色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 背景色数值，0xargb格式。 |
+| .value[0].u32 | 光标颜色数值，0xargb格式。 |
 
 ## NODE_TEXT_AREA_EDITING
 
@@ -2486,8 +2486,8 @@ NODE_TEXT_AREA_LINEAR_GRADIENT = 8048
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度属性生效，否则按线性渐变的方向属性为主要布局方式。取值范围为(-∞,+∞)，0点方向顺时针旋转为正向角度，当超过360时，是按照360取余处理，默认值：180。 |
-| .value[1].i32 | 线性渐变的方向。取值为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)中的枚举。设置除[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM之外的线性渐变方向后，线性渐变的起始角度不生效。默认值：[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM |
+| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度属性生效，否则按线性渐变的方向属性为主要布局方式。取值范围为(-∞,+∞)，0点方向顺时针旋转为正向角度，当超过360时，是按照360取余处理，默认值：180。 |
+| .value[1].i32 | 线性渐变的方向。取值为[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)中的枚举。设置除[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM之外的线性渐变方向后，线性渐变的起始角度不生效。默认值：[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM |
 | .value[2].i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
 | .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。想要实现多个颜色渐变效果时，数组元素建议递增设置，如后一个数组元素比前一个数组元素小的话，按照等于前一个数组元素的值处理。 <br> size：颜色个数，若小于colors数组长度则仅生效前size个颜色，不建议设置大于colors数组长度或小于等于0的值以及异常值。 |
 
@@ -2495,8 +2495,8 @@ NODE_TEXT_AREA_LINEAR_GRADIENT = 8048
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度为设置值，其他情况均为默认值0。 |
-| .value[1].i32 | 线性渐变的方向。对应取值及含义请参考[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)。 |
+| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度为设置值，其他情况均为默认值0。 |
+| .value[1].i32 | 线性渐变的方向。对应取值及含义请参考[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)。 |
 | .value[2].i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
 | .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。 <br> size：生效后渐变色的颜色个数。 |
 

@@ -758,3 +758,17 @@ With this permission, the application can set audio sound effects and manage aud
 **Supported devices**: cars
 
 **Since**: 26.0.0
+
+## ohos.permission.DCAS_RUN_MODEL
+
+Allows an application to access device-side model runtime management.
+
+With this permission, the application can access device-side model runtime management capabilities to complete model loading and inference.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0

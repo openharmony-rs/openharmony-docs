@@ -9,6 +9,8 @@
 
 从API版本26.0.0开始，[AES](crypto-sym-encrypt-decrypt-spec.md#aes)对称密钥（CCM模式）的加解密支持使用AeadParamsSpec参数。
 
+当用户不希望显式保存authTag或用户需要指定authTag的长度时，使用AeadParamsSpec参数。
+
 **密钥生成**
 
 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)、[SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1)，生成密钥算法为AES、密钥长度为128位的对称密钥（SymKey）。

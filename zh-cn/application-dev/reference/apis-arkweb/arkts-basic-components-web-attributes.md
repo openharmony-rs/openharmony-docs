@@ -1545,9 +1545,11 @@ javaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 >
 > - 该脚本按照字典序执行，非数组本身顺序，若需数组本身顺序，建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)接口。
 >
-> - 不建议与[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)同时使用。
->
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
+>
+> - 本接口不支持[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)。
+>
+> - 建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1625,9 +1627,11 @@ javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 >
 > - 该脚本按照字典序执行，非数组本身顺序。
 >
-> - 不建议与[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend15)同时使用。
->
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
+>
+> - 本接口不支持[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)。
+>
+> - 建议使用[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend15)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1692,8 +1696,6 @@ runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 > - 网页文档根元素（HTML Element）创建后、但尚未加载任何其他内容之前注入脚本。
 >
 > - 该脚本按照数组本身顺序执行。
->
-> - 不建议与[javaScriptOnDocumentStart](#javascriptondocumentstart11)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 
@@ -1775,8 +1777,6 @@ runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 > - 该脚本将在页面的任何JavaScript代码之后运行，并且DOM树此时已经加载、渲染完毕。
 >
 > - 该脚本按照数组本身顺序执行。
->
-> - 不建议与[javaScriptOnDocumentEnd](#javascriptondocumentend11)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 
@@ -4598,4 +4598,49 @@ keyboardAppearance(mode: WebKeyboardAppearanceMode)
     <input type="text" placeholder="Text">
   </body>
   </html>
+  ```
+
+## enableFullscreenVideoOverlay
+
+enableFullscreenVideoOverlay(enabled: boolean)
+
+设置Web组件是否开启覆盖式全屏播放功能。当属性没有显式调用时，默认不开启该能力。
+
+> **说明：**
+>
+> - 当前只支持H264、H265解码格式的视频。
+> - 只有视频元素发出的全屏请求才会响应。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone/Tablet设备中可正常调用，在其他设备中无效。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                         |
+| ------ | -------- | ---- | -------------------------------- |
+| enabled | boolean  | 是   | 设置web组件是否开启覆盖式全屏播放功能。<br>true表示开启该功能。<br>false表示不开启。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .enableFullscreenVideoOverlay(true)
+      }
+    }
+  }
   ```

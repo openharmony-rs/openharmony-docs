@@ -481,4 +481,4 @@ struct ImageComponent {
 }
 ```
 
-![en-us_image_0000001174104410](figures/en-us_image_0000001174104410.gif)
+![curves-spring-example](figures/curves-spring-example.gif)

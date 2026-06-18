@@ -35,7 +35,7 @@ Create a **\<grid-container>** component in the .hml file under **pages/index** 
 }
 ```
 
-![en-us_image_0000001226897009](figures/en-us_image_0000001226897009.png)
+![grid-container-Component](figures/grid-container-Component.png)
 
 > **NOTE**
 >
@@ -104,7 +104,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001227135613](figures/en-us_image_0000001227135613.gif)
+![Calling-Methods](figures/Calling-Methods.gif)
 
 ## Adding \<grid-col>
 
@@ -161,7 +161,7 @@ text{
 }
 ```
 
-![en-us_image_0000001227135731](figures/en-us_image_0000001227135731.png)
+![grid-col](figures/grid-col.png)
 
 > **NOTE**
 >
@@ -237,4 +237,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001263160403](figures/en-us_image_0000001263160403.gif)
+![Example-Scenario-5](figures/Example-Scenario-5.gif)

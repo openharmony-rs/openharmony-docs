@@ -140,7 +140,7 @@ struct IndexComponent {
   }
 }
 ```
-![en-us_image_lifecycle](figures/en-us_image_lifecycle.gif)
+![en-us_image_lifecycle](figures/image-lifecycle.gif)
 
 ## onNewParam<sup>19+</sup>
 

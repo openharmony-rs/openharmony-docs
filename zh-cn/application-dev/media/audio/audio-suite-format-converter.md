@@ -217,6 +217,8 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    OH_AudioConverter_Destroy(converter);
    ```
    
-## 完整示例
+<!--RP1-->
+## 完整示例代码
 
 - [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
+<!--RP1End-->

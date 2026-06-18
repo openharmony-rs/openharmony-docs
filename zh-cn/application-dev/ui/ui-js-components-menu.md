@@ -44,7 +44,7 @@
 }
 ```
 
-![zh-cn_image_0000001226815299](figures/zh-cn_image_0000001226815299.png)
+![menu-Component](figures/menu-Component.png)
 
 > **说明：**
 > - menu仅支持[option](../reference/apis-arkui/arkui-js/js-components-basic-option.md)子组件。
@@ -101,7 +101,7 @@ option{
 }
 ```
 
-![zh-cn_image_0000001181337170](figures/zh-cn_image_0000001181337170.png)
+![Setting-Styles-1](figures/Setting-Styles-1.png)
 
 
 ## 绑定事件
@@ -169,4 +169,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001181495744](figures/zh-cn_image_0000001181495744.gif)
+![Binding-Events](figures/Binding-Events.gif)

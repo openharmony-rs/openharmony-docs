@@ -12,7 +12,13 @@
 
 ## Resource
 
+type Resource = import('../api/global/resource').Resource
+
 资源引用类型，用于设置组件属性的值。各类资源文件，需要放入特定子目录中存储管理，资源目录的示例请参考[资源分类](../../../quick-start/resource-categories-and-access.md#资源分类)。
+
+| 类型                    | 说明                        |
+| --------------------- | ------------------------- |
+| import('../api/global/resource').[Resource](../../apis-localization-kit/js-apis-resource.md#resource-1)             | 资源引用类型。                    |
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -58,7 +64,57 @@
 | number                | 默认单位vp。                                |
 | [Resource](#resource) | 资源引用类型，引入系统资源或者应用资源中的尺寸。               |
 
+## LengthMetricsUnit<sup>12+</sup>
+
+type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit
+
+定义长度属性单位。
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|import('../api/arkui/Graphics').[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)   | 长度属性单位。 |
+
+## LengthMetrics<sup>12+</sup>
+
+type LengthMetrics = import('../api/arkui/Graphics').LengthMetrics
+
+定义长度属性。
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|import('../api/arkui/Graphics').[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 长度属性。 |
+
+## ColorMetrics<sup>12+</sup>
+
+declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics
+
+定义混合颜色。
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|import('../api/arkui/Graphics').[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)   | 混合颜色。 |
+
 ## ResourceStr
+
+type ResourceStr = string | Resource
 
 字符串类型，用于描述字符串入参可以使用的类型。
 
@@ -629,6 +685,8 @@ type CustomBuilderT\<T> = (t: T) => void
 
 ## Dimension<sup>10+</sup>
 
+type Dimension = PX | VP | FP | LPX | Percentage | Resource
+
 长度类型，用于描述尺寸单位。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
@@ -650,7 +708,11 @@ type CustomBuilderT\<T> = (t: T) => void
 
 ## PX<sup>10+</sup>
 
+type PX = { number }px
+
 长度类型，用于描述以px像素单位为单位的长度。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -660,11 +722,15 @@ type CustomBuilderT\<T> = (t: T) => void
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}px               | 需要指定以px像素单位，如'10px'。 |
+| { number }px               | 需要指定以px像素单位，如'10px'。 |
 
 ## VP<sup>10+</sup>
 
+type VP = { number }vp | number
+
 长度类型，用于描述以vp像素单位为单位的长度。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -674,11 +740,15 @@ type CustomBuilderT\<T> = (t: T) => void
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}vp\|number | 需要指定数字或vp像素单位，如10或'10vp'。 |
+| { number }vp \| number | 需要指定数字或vp像素单位，如10或'10vp'。 |
 
 ## FP<sup>10+</sup>
 
+type FP = { number }fp
+
 长度类型，用于描述以fp像素单位为单位的长度。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -688,11 +758,15 @@ type CustomBuilderT\<T> = (t: T) => void
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}fp               | 需要指定以fp像素单位，如'10fp'。 |
+| { number }fp            | 需要指定以fp像素单位，如'10fp'。 |
 
 ## LPX<sup>10+</sup>
 
+type LPX = { number }lpx
+
 长度类型，用于描述以lpx像素单位为单位的长度。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -702,7 +776,7 @@ type CustomBuilderT\<T> = (t: T) => void
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}lpx               | 需要指定以lpx像素单位，如'10lpx'。 |
+| { number }lpx             | 需要指定以lpx像素单位，如'10lpx'。 |
 
 ## Percentage<sup>10+</sup>
 
@@ -897,7 +971,7 @@ type ResponsiveFillType = PresetFillType
 | top  | T    | 否|否|顶部边缘的属性。 |
 | bottom | T    | 否|否|底部边缘的属性。 |
 
-## Bias对象说明
+## Bias<sup>11+</sup>对象说明
 
 设置组件在锚点约束下的偏移参数。
 
@@ -909,7 +983,11 @@ type ResponsiveFillType = PresetFillType
 
 ![bias_vertical_example.png](figures/bias_vertical_example.png)
 
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

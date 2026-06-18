@@ -19,6 +19,7 @@
   - [@ohos.multimodalInput.touchEvent (Touch Event)](js-apis-touchevent.md)
   - [@ohos.multimodalInput.infraredEmitter (IR Management)](js-apis-infraredemitter.md)
   - [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys)](js-apis-inputconsumer.md)
+  - [@ohos.multimodalInput.inputEventClient (Input Event Injection)](js-apis-inputeventclient.md)
   <!--Del-->
   - [@ohos.multimodalInput.pointer (Mouse Pointer) (System API)](js-apis-pointer-sys.md)
   - [@ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)](js-apis-shortKey-sys.md)
@@ -63,3 +64,4 @@
   - [Input Device Error Codes](errorcode-inputdevice.md)
   - [Mouse Pointer Error Codes](errorcode-pointer.md)
   - [IR Management Error Codes](errorcode-infraredemitter.md)
+  - [Input Event Injection Error Codes](errorcode-inputeventclient.md)

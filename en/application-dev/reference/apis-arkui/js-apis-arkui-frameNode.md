@@ -1892,7 +1892,7 @@ struct Index {
 }
 ```
 
-![en-us_image_dispose](figures/en-us_image_dispose.gif)
+![en-us_image_dispose](figures/image-dispose.gif)
 
 ### commonAttribute<sup>12+</sup>
 
@@ -2423,7 +2423,7 @@ struct Index {
 }
 ```
 
-![en-us_image_disposeTree](figures/en-us_image_disposeTree.gif)
+![en-us_image_disposeTree](figures/image-disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 
@@ -5358,7 +5358,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API 15 and will not be threw above API 24. [since 15 - 24] |
+| 100021   | The FrameNode is not modifiable.<br>Applicable versions: 15-24|
 
 **Example**
 

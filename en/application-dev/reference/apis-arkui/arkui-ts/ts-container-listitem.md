@@ -413,7 +413,7 @@ struct ListItemExample {
 }
 ```
 
-![en-us_image_0000001219864159](figures/en-us_image_0000001219864159.gif)
+![listItem1](figures/listItem1.gif)
 
 ### Example 2: Setting the Swipe Action Item
 This example shows how to set the swipe action item for a list item using **swipeAction**.

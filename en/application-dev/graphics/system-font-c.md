@@ -106,7 +106,7 @@ The following table lists the common APIs and structs related to system fonts. F
 
    The following figure shows some system font configuration information of the application device system. The configuration information varies according to devices.
 
-   ![image_0000002211603636](figures/image_0000002211603636.png)
+   ![System-Font-Information](figures/System-Font-Information.png)
 
 5. Release the memory occupied by the configuration information if it is no longer needed.
 

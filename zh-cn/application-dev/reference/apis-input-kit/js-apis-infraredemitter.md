@@ -50,6 +50,7 @@ transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
 ```js
 import { infraredEmitter } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -100,6 +101,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 ```js
 import { infraredEmitter } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component

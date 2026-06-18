@@ -811,7 +811,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onAdminPolicyChanged(event: common.PolicyChangedEvent): void
 
-策略变更事件回调。超级设备管理应用可以通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_POLICIES_CHANGED事件后可接收此回调。企业设备管理场景下，当任意MDM应用调用表1中的接口时，系统会通知当前用户下的超级设备管理应用。
+策略变更事件回调。超级设备管理应用可以通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_POLICIES_CHANGED事件后可接收此回调。企业设备管理场景下，当任意MDM应用调用[策略变更上报列表](../../mdm/mdm-kit-appendix.md#策略变更上报列表)中的接口时，系统会通知当前用户下的超级设备管理应用。
 
 **起始版本：** 26.0.0
 
@@ -838,31 +838,3 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 }
 ```
-
-**表1 策略变更事件：**
-|接口名称|策略变更事件[PolicyChangedEvent](./js-apis-enterprise-common.md#policychangedevent)中parameters参数返回示例|
-| --- | --- |
-|[setDomainAccountPolicy](./js-apis-enterprise-accountManager.md#accountmanagersetdomainaccountpolicy19)|{"domainAccountInfo":{"domain":"","accountName":"test"},"policy":{"authenticationValidityPeriod":300,"passwordValidityPeriod":420,"passwordExpirationNotification":60}}|
-|[setAllowedKioskApps](./js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)|{"appIdentifiers":["6917****3569"]}|
-|[setPolicySync](./js-apis-enterprise-browser.md#browsersetpolicysync)|{"appId":"com.example.******_******/******5t5CoBM=","policyName":"InsecurePrivateNetworkRequestsAllowed","policyValue":"1"}|
-|[setValue](./js-apis-enterprise-deviceSettings.md#devicesettingssetvalue)|{"item":"screenOff","value":"30000"}|
-|[setHomeWallpaper](./js-apis-enterprise-deviceSettings.md#devicesettingssethomewallpaper20)|""|
-|[setUnlockWallpaper](./js-apis-enterprise-deviceSettings.md#devicesettingssetunlockwallpaper20)|""|
-|[setSwitchStatus](./js-apis-enterprise-deviceSettings.md#devicesettingssetswitchstatus)|{"key":1,"value":0}|
-|[addFirewallRule](./js-apis-enterprise-networkManager.md#networkmanageraddfirewallrule)|{"firewallRule":{"srcAddr":"192.168.1.1-192.168.22.66","destAddr":"10.1.1.1","srcPort":"8080","destPort":"8080","appUid":"9696","direction":1,"action":1,"protocol":2,"family": 1,"logType":0}}|
-|[removeFirewallRule](./js-apis-enterprise-networkManager.md#networkmanagerremovefirewallrule)|{"firewallRule":{"srcAddr":"192.168.1.1-192.168.22.66","destAddr":"10.1.1.1","srcPort":"8080","destPort":"8080","appUid":"9696","direction":1,"action":1,"protocol":2,"family": 1,"logType":0}}|
-|[addDomainFilterRule](./js-apis-enterprise-networkManager.md#networkmanageradddomainfilterrule)|{"domainFilterRule":{"domainName":"www.example.com","appUid":"9696","action":1,"direction":1,"family":1,"logType":0}}|
-|[removeDomainFilterRule](./js-apis-enterprise-networkManager.md#networkmanagerremovedomainfilterrule)|{"domainFilterRule":{"domainName":"www.example.com","appUid":"9696","action":1,"direction":1,"family":1,"logType":0}}|
-|[setGlobalProxySync](./js-apis-enterprise-networkManager.md#networkmanagersetglobalproxysync)|{"httpProxy":{"host":"192.168.xx.xxx","port":8080,"exclusionList":["192.168"]}}|
-|[setGlobalProxyForAccount](./js-apis-enterprise-networkManager.md#networkmanagersetglobalproxyforaccount15)|{"httpProxy":{"host":"192.168.xx.xx","port":8080,"exclusionList":["192.168"]},"accountId":100}|
-|[addApn](./js-apis-enterprise-networkManager.md#networkmanageraddapn20)|{"apnId":"3","apnName":"CTENT"}|
-|[deleteApn](./js-apis-enterprise-networkManager.md#networkmanagerdeleteapn20)|{"apnId":"3","apnName":"CTENT"}|
-|[updateApn](./js-apis-enterprise-networkManager.md#networkmanagerupdateapn20)|{"apnInfo":{"apn":"CTENT","apnName":"CTENT","mcc":"460","mnc":"11"},"apnId":"1"}|
-|[setPreferredApn](./js-apis-enterprise-networkManager.md#networkmanagersetpreferredapn20)|{"apnId":"3","apnName":"CTENT"}|
-|[setEthernetConfig](./js-apis-enterprise-networkManager.md#networkmanagersetethernetconfig23)|{"networkInterface":"eth0"}|
-|[setPasswordPolicy](./js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)|{"policy":{"complexityRegex":"^(?=.\*[a-zA-Z])(?=.\*\\\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}|
-|[uninstallEnterpriseReSignatureCertificate](./js-apis-enterprise-securityManager.md#securitymanageruninstallenterpriseresignaturecertificate24)|{"certificateAlias":"test.cer","accountId":100}|
-|[installEnterpriseReSignatureCertificate](./js-apis-enterprise-securityManager.md#securitymanagerinstallenterpriseresignaturecertificate24)|{"certificateAlias":"test.cer","accountId":100}|
-|[setNTPServer](./js-apis-enterprise-systemManager.md#systemmanagersetntpserver)|{"server":"ntpserver.com"}|
-|[setActivationLockDisabled](./js-apis-enterprise-systemManager.md#systemmanagersetactivationlockdisabled24)|{"isAllowed":true}|
-|[setWifiProfileSync](./js-apis-enterprise-wifiManager.md#wifimanagersetwifiprofilesync)|{"profile":{"ssid":"guest-Wi-Fi","bssid":"AA:BB:CC:DD:EE:FF"}}|

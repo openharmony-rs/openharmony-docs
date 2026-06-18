@@ -344,7 +344,7 @@ Called when a window is minimized.
 
 | Name              | Type                           | Mandatory| Description            |
 | -------------------- | ------------------------------- | ---- | ---------------- |
-| minimizingWindowTarget | [WindowAnimationTarget](#windowanimationtarget)           | Yes  | Target window to minimize.   |
+| minimizingWindowTarget | [WindowAnimationTarget](#windowanimationtarget)           | Yes  | Target window to display the animation.   |
 | finishCallback       | [WindowAnimationFinishedCallback](#windowanimationfinishedcallback) | Yes  | Callback invoked when the animation is finished.|
 
 **Example**

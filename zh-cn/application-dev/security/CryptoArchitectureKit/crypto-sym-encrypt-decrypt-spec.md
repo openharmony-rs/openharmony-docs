@@ -211,7 +211,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 从API版本26.0.0开始，支持流密码算法[RC4](crypto-sym-key-generation-conversion-spec.md#rc4)，无需分组与填充。密钥长度支持8位～4096位。
 
-算法库当前提供RC4加解密，RC4为流密码模式，无需分组模式跟填充模式。
+算法库当前提供RC4加解密，RC4为流密码模式，无需分组模式和填充模式。
 
 当前支持以字符串参数完成RC4加解密，字符串参数为RC4：
 

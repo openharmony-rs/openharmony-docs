@@ -40,11 +40,11 @@ Basic layout algorithm of the [DynamicLayout](./arkui-ts/ts-container-dynamiclay
 
 Custom layout algorithm class.
 
+**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **NOTE**
 >
 > The object of the **CustomLayoutAlgorithm** class can be used as the input parameter of the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component to specify a layout algorithm.
-
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 ### onMeasure
 onMeasure(self: FrameNode, constraint: LayoutConstraint): void
@@ -54,8 +54,6 @@ Customizes the size of the child component to be measured. When the size of the 
 > **NOTE**
 >
 > In this callback, you can call [getChild()](js-apis-arkui-frameNode.md#getchild12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to obtain the child component **FrameNode** and call [measure()](js-apis-arkui-frameNode.md#measure12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to measure the size of the child component. For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout Algorithm](./arkui-ts/ts-container-dynamiclayout.md#example-1-implementing-waterfall-layout-using-a-custom-layout-algorithm).
-
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -81,8 +79,6 @@ Customizes the position of the child component to be arranged. When the position
 >
 > In this callback, you can call [getChild()](js-apis-arkui-frameNode.md#getchild12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to obtain the child component **FrameNode** and call [layout()](js-apis-arkui-frameNode.md#layout12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to set the position of the child component. For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout Algorithm](./arkui-ts/ts-container-dynamiclayout.md#example-1-implementing-waterfall-layout-using-a-custom-layout-algorithm).
 
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 **Model restriction**: This API can be used only in the stage model.
   
 **Widget capability**: This API can be used in ArkTS widgets since API version 24.
@@ -106,15 +102,13 @@ For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout
 
 Horizontal linear layout algorithm class.
 
+**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **NOTE**
 >
 > The object of the **RowLayoutAlgorithm** class can be used as the input parameter of the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component to specify a layout algorithm.
 
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 ### Attributes
-
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -136,8 +130,6 @@ Horizontal linear layout algorithm class.
 constructor(option?: RowLayoutAlgorithmOptions)
 
 Constructs the horizontal linear layout algorithm class.
-
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -180,15 +172,13 @@ Sets the spacing, main axis alignment method, cross axis alignment method, and m
 
 Vertical linear layout algorithm class.
 
+**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **NOTE**
 >
 > The object of the **ColumnLayoutAlgorithm** class can be used as the input parameter of the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component to specify a layout algorithm.
 
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 ### Attributes
-
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -210,8 +200,6 @@ Vertical linear layout algorithm class.
 constructor(option?: ColumnLayoutAlgorithmOptions)
 
 Constructs the vertical linear layout algorithm class.
-
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -254,16 +242,13 @@ Sets the spacing, main axis alignment method, cross axis alignment method, and m
 
 Stack layout algorithm class.
 
+**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **NOTE**
 >
 > The object of the **StackLayoutAlgorithm** class can be used as the input parameter of the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component to specify a layout algorithm.
 
-
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 ### Attributes
-
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -282,8 +267,6 @@ Stack layout algorithm class.
 constructor(option?: StackLayoutAlgorithmOptions)
 
 Constructs the stack layout algorithm class.
-
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -323,15 +306,13 @@ Sets the alignment method of the stack layout algorithm.
 
 Grid layout algorithm class.
 
+**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **NOTE**
 >
 > The object of the **GridLayoutAlgorithm** class can be used as the input parameter of the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component to specify a layout algorithm.
 
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 ### Attributes
-
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -350,8 +331,6 @@ Grid layout algorithm class.
 constructor(option?: GridLayoutAlgorithmOptions)
 
 Constructs the grid layout algorithm class.
-
-**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **Model restriction**: This API can be used only in the stage model.
 
