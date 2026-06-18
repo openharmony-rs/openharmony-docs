@@ -104,7 +104,7 @@ struct Child {
         .fontColor(this.fontColor)
         .fontSize(20)
         .margin(10)
-      // 使用changeFactory更改父组件中的变量type
+      // 使用changeFactory更改父组件中的变量
       Button('change to Title Two')
         .width(300)
         .margin(10)

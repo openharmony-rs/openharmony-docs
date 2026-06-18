@@ -787,8 +787,8 @@ struct Page10 {
         .fontSize(20)
         .margin(10)
         .onClick(() => {
-          // 通过getTarget获取其原始对象，将this.observedObj赋值为不可观察的数据
-          let rawObj: Info= UIUtils.getTarget(this.observedObj);
+          // 通过getTarget获取this.observedObj的原始对象，原始对象为不可观察的数据
+          let rawObj: Info = UIUtils.getTarget(this.observedObj);
           // 不会触发UI刷新，但数据会正常赋值
           rawObj.id = 20;
         })
