@@ -505,7 +505,7 @@ int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)
 
 **描述：**
 
-向OHIPCParcel对象写入int16_t值。
+向OHIPCParcel对象写入int16_t值。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -613,7 +613,7 @@ int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)
 
 **描述：**
 
-向OHIPCParcel对象写入int64_t值。
+向OHIPCParcel对象写入int64_t值。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -667,7 +667,7 @@ int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)
 
 **描述：**
 
-向OHIPCParcel对象写入uint8_t值。
+向OHIPCParcel对象写入uint8_t值。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -721,7 +721,7 @@ int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)
 
 **描述：**
 
-向OHIPCParcel对象写入uint16_t值。
+向OHIPCParcel对象写入uint16_t值。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -829,7 +829,7 @@ int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)
 
 **描述：**
 
-向OHIPCParcel对象写入uint64_t值。
+向OHIPCParcel对象写入uint64_t值。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -883,7 +883,7 @@ int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)
 
 **描述：**
 
-向OHIPCParcel对象写入float值。
+向OHIPCParcel对象写入float值。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -937,7 +937,7 @@ int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)
 
 **描述：**
 
-向OHIPCParcel对象写入double值。
+向OHIPCParcel对象写入double值。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -991,7 +991,7 @@ int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)
 
 **描述：**
 
-向OHIPCParcel对象写入字符串，包括字符串结束符。
+向OHIPCParcel对象写入字符串，包括字符串结束符。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **调用后的行为**
 
@@ -1074,7 +1074,7 @@ int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t
 
 **描述：**
 
-向OHIPCParcel对象写入指定长度的内存信息。常用于写入二进制数据、图片数据、自定义结构体、共享内存内容等场景。
+向OHIPCParcel对象写入指定长度的内存信息。常用于写入二进制数据、图片数据、自定义结构体、共享内存内容等场景。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **调用后的行为**
 
@@ -1247,7 +1247,7 @@ int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *p
 
 **描述：**
 
-向OHIPCParcel对象写入OHIPCRemoteProxy对象。常用于跨进程传递代理对象、实现IPC客户端的远程调用、代理对象共享等场景。
+向OHIPCParcel对象写入OHIPCRemoteProxy对象。常用于跨进程传递代理对象、实现IPC客户端的远程调用、代理对象共享等场景。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **调用后的行为**
 
@@ -1334,7 +1334,7 @@ int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)
 
 **描述：**
 
-向OHIPCParcel对象写入文件描述符。常用于跨进程传递文件句柄、共享内存文件描述符、管道文件描述符等场景。
+向OHIPCParcel对象写入文件描述符。常用于跨进程传递文件句柄、共享内存文件描述符、管道文件描述符等场景。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **调用后的行为**
 
@@ -1452,7 +1452,7 @@ int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)
 
 **描述：**
 
-向OHIPCParcel对象写入接口描述符，用于接口身份校验。常用于IPC通信中的安全验证场景，例如：防止恶意进程发送伪造请求、确保消息发送到正确的服务接口、多接口服务中区分不同的接口调用。不支持多线程并发访问同一对象。
+向OHIPCParcel对象写入接口描述符，用于接口身份校验。常用于IPC通信中的安全验证场景，例如：防止恶意进程发送伪造请求、确保消息发送到正确的服务接口、多接口服务中区分不同的接口调用。不支持多线程并发访问同一对象。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 **调用后的行为**
 
