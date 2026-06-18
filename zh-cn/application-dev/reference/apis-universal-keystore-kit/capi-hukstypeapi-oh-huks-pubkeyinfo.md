@@ -8,7 +8,7 @@
 <!--Adviser: @zengyawen-->
 
 ```c
-typedef struct OH_Huks_PubKeyInfo {...} OH_Huks_PubKeyInfo
+struct OH_Huks_PubKeyInfo {...}
 ```
 
 ## 概述
