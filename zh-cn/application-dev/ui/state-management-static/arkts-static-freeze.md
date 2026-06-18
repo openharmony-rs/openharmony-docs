@@ -1,4 +1,10 @@
 # V1自定义组件冻结场景
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zany_pink-->
+<!--Designer: @jiyujia926-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 当@Component装饰的自定义组件处于冻结状态时，状态变量将不响应更新，即@Watch不会调用，状态变量关联的节点不会刷新。
 
@@ -31,7 +37,7 @@ V1自定义组件冻结支持场景为：
 
 页面1：
 
-<!-- @[FreezePageRouter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezePageRouter.ets) -->
+<!-- @[FreezePageRouter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezePageRouter.ets) --> 
 ``` TypeScript
 'use static'
 
@@ -53,16 +59,25 @@ struct Page1 {
 
   build() {
     Column() {
-      Text(`From first Page ${this.getValue()}`).fontSize(50)
-      Button('first page storageLink + 1').fontSize(30)
+      Text(`From first Page ${this.getValue()}`)
+        .fontSize(20)
+        .margin(10)
+      Button('first page storageLink + 1') // 修改状态变量storageLink
+        .width(300)
+        .margin(10)
+        .fontSize(15)
         .onClick(() => {
           this.storageLink += 1;
         })
-      Button('go to next page').fontSize(30)
+      Button('go to next page') // 跳转到页面2
+        .width(300)
+        .margin(10)
+        .fontSize(15)
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({ url: 'pages/FreezePage2' });
         })
     }
+    .width('100%')
   }
 }
 
@@ -70,7 +85,7 @@ struct Page1 {
 
 页面2：
 
-<!-- @[FreezePage2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezePage2.ets) -->
+<!-- @[FreezePage2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezePage2.ets) --> 
 ``` TypeScript
 'use static'
 
@@ -93,20 +108,30 @@ struct Page2 {
   build() {
     Column() {
 
-      Text(`second Page ${this.getValue()}`).fontSize(50)
-      Button('back')
+      Text(`second Page ${this.getValue()}`)
+        .fontSize(20)
+        .margin(10)
+      Button('back') // 返回页面1
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.getUIContext().getRouter().back();
         })
 
-      Button('second page storageLink2 + 2').fontSize(30)
+      Button('second page storageLink2 + 2') // 修改状态变量storageLink2
+        .width(300)
+        .margin(10)
+        .fontSize(15)
         .onClick(() => {
           this.storageLink2 += 2;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![custom-component-lifecycle-demo1](../figures/arkts-static-freeze-0.gif)
 
 在上面的示例中：
 
@@ -129,7 +154,7 @@ struct Page2 {
 
 ![freezeWithTab](../state-management/figures/freezewithTabs.png)
 
-<!-- @[FreezeTabContent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeTabContent.ets) -->
+<!-- @[FreezeTabContent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeTabContent.ets) --> 
 ``` TypeScript
 'use static'
 
@@ -148,9 +173,12 @@ struct TabContentTest {
   build() {
     Row() {
       Column() {
-        Button('change message').onClick(() => {
-          this.message++;
-        })
+        Button('change message') // 修改状态变量message
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message++;
+          })
 
         Tabs() {
           ForEach(this.data, (item: number) => {
@@ -181,17 +209,20 @@ struct FreezeChild {
 
   build() {
     Text('message' + `${this.getValue()}, index: ${this.index}`)
-      .fontSize(50)
+      .fontSize(20)
+      .margin(10)
       .fontWeight(FontWeight.Bold)
   }
 }
 ```
 
+![custom-component-lifecycle-demo2](../figures/arkts-static-freeze-1.gif)
+
 在上面的示例中：
 
 1.点击`change message`更改message的值，当前正在显示的TabContent组件中的@Watch注册的方法onMessageUpdated被触发。
 
-2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。 
+2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
 
 3.再次点击`change message`更改message的值，仅当前显示的TabContent子组件中的@Watch注册的方法onMessageUpdated被触发。
 
@@ -199,7 +230,7 @@ struct FreezeChild {
 
 对LazyForEach中缓存的自定义组件进行冻结，修改状态变量不会触发缓存组件的更新。
 
-<!-- @[FreezeLazyForEach](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeLazyForEach.ets) -->
+<!-- @[FreezeLazyForEach](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeLazyForEach.ets) --> 
 ``` TypeScript
 'use static'
 
@@ -288,9 +319,12 @@ struct LazyForEachSample {
 
   build() {
     Column() {
-      Button('change message').onClick(() => {
-        this.message++;
-      })
+      Button('change message') // 修改状态变量message
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.message++;
+        })
 
       List() {
         LazyForEach<string>(this.data, (item: string, index: int): void => {
@@ -299,9 +333,12 @@ struct LazyForEachSample {
           }
         }, (item: string, index: int): string => item)
       }
-      .height('100%').width('90%')
-      .borderWidth(2).clip(true)
+      .height('100%')
+      .width('90%')
+      .borderWidth(2)
+      .clip(true)
     }
+    .width('100%')
   }
 }
 @Component
@@ -310,7 +347,7 @@ struct FreezeChild {
   index: string = '';
 
   aboutToAppear() {
-    console.info(`FreezeChild aboutToAppear index: ${this.index}`);
+    console.info(`FreezeChild aboutToAppear index: ${this.index}`); // FreezeChild在build前触发aboutToAppear
   }
 
   getValue(): number {
@@ -324,15 +361,18 @@ struct FreezeChild {
 
   build() {
     Text('message' + `${this.getValue()}, index: ${this.index}`)
+      .fontSize(20)
+      .margin(10)
       .width('90%')
       .height(160)
       .backgroundColor(0xAFEEEE)
       .textAlign(TextAlign.Center)
-      .fontSize(30)
       .fontWeight(FontWeight.Bold)
   }
 }
 ```
+
+![custom-component-lifecycle-demo3](../figures/arkts-static-freeze-2.gif)
 
 在上面的示例中：
 
@@ -348,7 +388,7 @@ struct FreezeChild {
 
 在下面例子中，NavigationContentMsgStack会被设置成非激活态，将不再响应状态变量的变化，也不会触发组件刷新。
 
-<!-- @[FreezeNavigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeNavigation.ets) -->
+<!-- @[FreezeNavigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeNavigation.ets) --> 
 ``` TypeScript
 'use static'
 
@@ -379,24 +419,27 @@ struct MyNavigationTestStack {
   build() {
     Column() {
       Button('change message')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.message++;
         })
       Navigation(this.pageInfo) {
         Column() {
           Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-            .width('80%')
-            .height(40)
+            .width(300)
             .margin(20)
             .onClick((e: ClickEvent) => {
               let info: NavPathInfo = new NavPathInfo("pageOne", undefined)
               this.pageInfo.pushPath(info); //将name指定的NavDestination页面信息入栈
             })
         }
+        .width('100%')
       }.title('NavIndex')
       .navDestination(this.PageMap)
       .mode(NavigationMode.Stack)
     }
+    .width('100%')
   }
 }
 
@@ -412,24 +455,25 @@ struct PageOneStack {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
         Text('cur stack size:' + `${this.pageInfo.size()}`)
-          .fontSize(30)
+          .fontSize(20)
+          .margin(10)
           .fontWeight(FontWeight.Bold)
-        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转到pageTwo页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             let info: NavPathInfo = new NavPathInfo("pageTwo", undefined)
             this.pageInfo.pushPath(info); //将name指定的NavDestination页面信息入栈
           })
-        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转回上一个页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             this.pageInfo.pop();
           })
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageOne')
   }
 }
@@ -446,24 +490,25 @@ struct PageTwoStack {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
         Text('cur stack size:' + `${this.pageInfo.size()}`)
-          .fontSize(30)
+          .fontSize(20)
+          .margin(10)
           .fontWeight(FontWeight.Bold)
-        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转到pageThree页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             let info: NavPathInfo = new NavPathInfo("pageThree", undefined)
             this.pageInfo.pushPath(info); //将name指定的NavDestination页面信息入栈
           })
-        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转回上一个页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             this.pageInfo.pop();
           })
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageTwo')
   }
 }
@@ -480,31 +525,32 @@ struct PageThreeStack {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
         Text('cur stack size:' + `${this.pageInfo.size()}`)
-          .fontSize(30)
+          .fontSize(20)
+          .margin(10)
           .fontWeight(FontWeight.Bold)
-        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转到pageOne页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             let info: NavPathInfo = new NavPathInfo("pageOne", undefined)
             this.pageInfo.pushPath(info); //将name指定的NavDestination页面信息入栈
           })
-        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转回上一个页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             this.pageInfo.pop();
           })
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageThree')
   }
 }
 
 @Component
 struct NavigationContentMsgStack {
-  @Link @Watch('info') message: number;
+  @Link @Watch('info') message: number; // message修改时，触发info方法
   @Link index: number;
   @Link logNumber: number;
 
@@ -522,16 +568,23 @@ struct NavigationContentMsgStack {
   build() {
     Column() {
       Button('msg:' + `${this.getValue()}`)
-        .fontSize(30)
+        .width(300)
+        .margin(10)
+        .fontSize(20)
         .fontWeight(FontWeight.Bold)
 
       Button('log number:' + `${this.logNumber}`)
-        .fontSize(30)
+        .width(300)
+        .margin(10)
+        .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
+    .width('100%')
   }
 }
 ```
+
+![custom-component-lifecycle-demo4](../figures/arkts-static-freeze-3.gif)
 
 在上面的示例中：
 
@@ -563,7 +616,7 @@ struct NavigationContentMsgStack {
 
 在数据很多的长列表滑动场景下，开发者会使用LazyForEach来按需创建组件，同时配合组件复用降低在滑动过程中因创建和销毁组件带来的开销。但是开发者如果根据其复用类型不同，设置了[reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)，或者为了保证滑动性能设置了较大的cacheCount，这就可能使复用池或者LazyForEach缓存较多的节点。在这种情况下，如果开发者触发List下所有子节点的刷新，就会带来节点刷新数量过多的问题，这个时候，可以考虑搭配组件冻结使用。
 
-<!-- @[FreezeReuse](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeReuse.ets) -->
+<!-- @[FreezeReuse](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeReuse.ets) --> 
 ``` TypeScript
 'use static'
 
@@ -591,9 +644,13 @@ struct ChildComponent {
     Column() {
       Text(`ChildComponent index: ${this.index} item: ${this.item}`)
         .fontSize(20)
+        .margin(10)
       Text(`desc: ${this.getValue()}`)
         .fontSize(20)
-    }.border({width: 2, color: Color.Pink})
+        .margin(10)
+    }
+      .border({width: 2, color: Color.Pink})
+      .width('100%')
   }
 }
 
@@ -611,18 +668,23 @@ struct Page {
 
   build() {
     Column() {
-      Button(`change desc`).onClick(() => {
-        this.desc += '!';
-      })
+      Button(`change desc`)
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.desc += '!';
+        })
       List({ space: 3 }) {
         LazyForEach(this.data, (item: string, index: int) => {
           ListItem() {
             ChildComponent({index: index, item: item, desc: this.desc})
           }
         }, (item: string) => item)
-      }.cachedCount(5)
+      }
+      .cachedCount(5) // 设置ListItem的缓存数量
     }
     .height('100%')
+    .width('100%')
   }
 }
 
@@ -713,7 +775,7 @@ class TestDataSource extends BasicDataSource<string> {
 
 **Navigation和TabContent的混用**
 
-<!-- @[FreezeMixNavTab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeMixNavTab.ets) -->
+<!-- @[FreezeMixNavTab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeMixNavTab.ets) --> 
 ``` TypeScript
 'use static'
 
@@ -797,7 +859,9 @@ struct TabsComponent {
 
   build() {
     Column() {
-      Button(`Incr state ${this.getValue()}`)
+      Button(`Incr state ${this.getValue()}`) // 修改状态变量tabState
+        .width(300)
+        .margin(10)
         .fontSize(25)
         .onClick((e: ClickEvent) => {
           console.info('Button increment state value');
@@ -823,6 +887,7 @@ struct TabsComponent {
       .height(200)
       .backgroundColor(0xF5F5F5)
     }
+    .width('100%')
   }
 }
 
@@ -844,19 +909,20 @@ struct MyNavigationTestStack {
     Column() {
       Navigation(this.pageInfo) {
         Column() {
-          Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-            .width('80%')
-            .height(40)
+          Button('Next Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转到pageOne页面
+            .width(300)
             .margin(20)
             .onClick((e: ClickEvent) => {
               let info: NavPathInfo = new NavPathInfo("pageOne", undefined)
               this.pageInfo.pushPath(info);
             })
         }
+        .width('100%')
       }.title('NavIndex')
       .navDestination(this.PageMap)
       .mode(NavigationMode.Stack)
     }
+    .width('100%')
   }
 }
 
@@ -869,15 +935,16 @@ struct PageOneStack {
       Column() {
         TabsComponent();
 
-        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转到pageTwo页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             let info: NavPathInfo = new NavPathInfo("pageTwo", undefined)
             this.pageInfo.pushPath(info);
           })
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageOne')
     .onBackPressed(() => {
       this.pageInfo.pop();
@@ -893,18 +960,21 @@ struct PageTwoStack {
   build() {
     NavDestination() {
       Column() {
-        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转回上一个页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             this.pageInfo.pop();
           })
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageTwo')
   }
 }
 ```
+
+![custom-component-lifecycle-demo5](../figures/arkts-static-freeze-4.gif)
 
 在上述示例代码中：
 

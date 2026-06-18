@@ -1,4 +1,10 @@
 # rememberVariable：@Builder内部状态（ArkTS-Sta）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 开发者可以在[@Builder](../state-management/arkts-builder.md)函数内声明新的状态变量并用于UI组件，修改这些状态变量能触发UI组件的更新。
 
@@ -62,7 +68,7 @@ rememberVariable支持以下类型的变量：
 
 基础类型初始值可以直接传入rememberVariable用于在@Builder函数内创建状态变量，建议不要使用回调传入基础类型的初始值，避免创建回调本身带来的性能损耗。
 
-<!-- @[RememberBasicType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberBasicType.ets) -->
+<!-- @[RememberBasicType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberBasicType.ets) --> 
 ``` TypeScript
 'use static'
 import { rememberVariable, MutableVariable, Entry, Component, Column, Text,
@@ -94,7 +100,7 @@ struct Index {
 
 内置类型（Array、Map、Set和Date）需要通过[UIUtils.makeObserved](./arkts-static-new-makeObserved.md)封装后，再传给rememberVariable创建状态变量，才具有观察能力。推荐使用回调初始化rememberVariable，避免在UI刷新时重复创建实例。
 
-<!-- @[RememberBuiltinType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberBuiltinType.ets) -->
+<!-- @[RememberBuiltinType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberBuiltinType.ets) --> 
 ``` TypeScript
 'use static'
 import { rememberVariable, MutableVariable, UIUtils, Entry, Component, Column,
@@ -127,7 +133,7 @@ struct Index {
 
 interface字面量需要通过makeObserved封装后，再传给rememberVariable创建状态变量，才具有观察能力。推荐使用回调初始化rememberVariable，避免在UI刷新时重复创建实例。
 
-<!-- @[RememberInterfaceType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberInterfaceType.ets) -->
+<!-- @[RememberInterfaceType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberInterfaceType.ets) --> 
 ``` TypeScript
 'use static'
 import { rememberVariable, MutableVariable, UIUtils, Entry, Component, Column,
@@ -164,7 +170,7 @@ struct Index {
 
 class需要被@Observed或@ObservedV2装饰才具有观测能力。推荐使用回调初始化rememberVariable，避免在UI刷新时重复创建实例。
 
-<!-- @[RememberClassType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberClassType.ets) -->
+<!-- @[RememberClassType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberClassType.ets) --> 
 ``` TypeScript
 'use static'
 import { rememberVariable, MutableVariable, UIUtils, Entry, Component, Column,
@@ -204,7 +210,7 @@ struct Index {
 
 在@Builder函数中声明的MutableVariable类型的状态变量，能传递给其他@Builder函数，同样支持状态变量的同步和UI刷新功能。
 
-<!-- @[RememberPassVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberPassVariable.ets) -->
+<!-- @[RememberPassVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberPassVariable.ets) --> 
 ``` TypeScript
 'use static'
 import { rememberVariable, MutableVariable, UIUtils, Entry, Component, Column,
@@ -243,7 +249,7 @@ struct Index {
 
 使用rememberVariable可以存储Function类型的状态变量，对Function状态变量赋值修改后能触发UI刷新。
 
-<!-- @[RememberFunctionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberFunctionType.ets) -->
+<!-- @[RememberFunctionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberFunctionType.ets) --> 
 ``` TypeScript
 'use static'
 import { rememberVariable, MutableVariable, Entry, Component, Column,
@@ -291,7 +297,7 @@ struct Index {
 
 在build()内使用rememberVariable封装已有的状态变量只能记录状态变量初始值，不能同步状态变量的改动。
 
-<!-- @[RememberInitFromState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberInitFromState.ets) -->
+<!-- @[RememberInitFromState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberInitFromState.ets) --> 
 ``` TypeScript
 'use static'
 import { rememberVariable, MutableVariable, Entry, Component, Column, Text,
@@ -319,4 +325,4 @@ struct Index {
 }
 ```
 
-![arkts-sta-remembervariable-init-from-state.gif](../figures/arkts-sta-remembervariable-init-from-state.gif)
+![arkts-static-remembervariable-0.gif](../figures/arkts-static-remembervariable-0.gif)
