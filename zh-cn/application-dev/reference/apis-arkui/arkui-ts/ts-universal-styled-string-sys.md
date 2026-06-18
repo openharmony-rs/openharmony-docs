@@ -138,7 +138,7 @@ type StyledStringMarshallingValue = UserDataSpan
 
 | 类型  | 说明   |
 | ------ | ---------- |
-| [UserDataSpan](ts-universal-styled-string.md#userdataspan) | UserDataSpan样式。 |
+| [UserDataSpan](ts-universal-styled-string.md#userdataspan) | UserDataSpan自定义数据片段。 |
 
 ## StyledStringMarshallCallback<sup>19+</sup>
 
