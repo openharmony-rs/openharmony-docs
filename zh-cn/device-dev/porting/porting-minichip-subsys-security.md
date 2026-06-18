@@ -21,11 +21,17 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
      
    ```
    {
-     "subsystem": "security",
-     "components": [
-       { "component": "hichainsdk", "features":[] },
-       { "component": "huks", "features":[]}
-     ]
+        "subsystem": "security",
+        "components": [
+          { "component": "device_auth", "features":[] },
+          { "component": "huks", "features":
+            [
+              "huks_use_lite_storage = true",
+              "huks_use_hardware_root_key = true",
+              "huks_config_file = \"hks_config_lite.h\""
+            ]
+          }
+        ]
    },
    ```
 
@@ -44,7 +50,7 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
    }
    ```
 
-   根据代码我们可以看出需要配置“MBEDTLS_NO_PLATFORM_ENTROPY”、“MBEDTLS_ENTROPY_HARDWARE_ALT”两个宏，才能编译硬件随机数的相关代码。
+   根据代码我们可以看出需要配置“MBEDTLS_NO_PLATFORM_ENTROPY”、“MBEDTLS_ENTROPY_HARDWARE_ALT”、“MBEDTLS_ENTROPY_NV_SEED”三个宏，才能编译硬件随机数的相关代码。
 
    路径：“third_party/mbedtls/library/entropy.c”
 
@@ -56,13 +62,17 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
                                    MBEDTLS_ENTROPY_MIN_PLATFORM,
                                    MBEDTLS_ENTROPY_SOURCE_STRONG );
    #endif
-   ......
    #if defined(MBEDTLS_ENTROPY_HARDWARE_ALT)
        mbedtls_entropy_add_source( ctx, mbedtls_hardware_poll, NULL,
                                    MBEDTLS_ENTROPY_MIN_HARDWARE,
                                    MBEDTLS_ENTROPY_SOURCE_STRONG );
    #endif
-   ......
+   #if defined(MBEDTLS_ENTROPY_NV_SEED)
+    mbedtls_entropy_add_source(ctx, mbedtls_nv_seed_poll, NULL,
+                               MBEDTLS_ENTROPY_BLOCK_SIZE,
+                               MBEDTLS_ENTROPY_SOURCE_STRONG);
+    ctx->initial_entropy_run = 0;
+   #endif
    #endif /* MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES */
    }
    ```
@@ -70,7 +80,7 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 3. 适配硬件随机数接口。
    接口定义如下：
 
-   路径：“third_party/mbedtls/include/mbedtls/entropy_poll.h”
+   路径：“third_party/mbedtls/library/entropy_poll.h”
 
      
    ```
