@@ -32,13 +32,15 @@ constructor(options?: ImmersiveOptions)
 
 ImmersiveMaterial的构造函数。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：** 
 
@@ -50,8 +52,6 @@ ImmersiveMaterial的构造函数。
 
 系统材质对象基类。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -59,6 +59,10 @@ ImmersiveMaterial的构造函数。
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 ### empty
 
@@ -68,13 +72,15 @@ static get empty(): Material
 
 在enable模式下，可通过设置`systemMaterial(uiMaterial.Material.empty)`来单独关闭某个组件的沉浸式系统材质效果。如果组件未支持组件级沉浸式系统材质接口，则无法通过此方法关闭材质效果。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
