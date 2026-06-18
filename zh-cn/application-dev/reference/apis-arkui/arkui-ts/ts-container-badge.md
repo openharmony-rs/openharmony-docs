@@ -81,7 +81,7 @@ Badge(value: BadgeParamWithString)
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | position | [BadgePosition](#badgeposition枚举说明)\|[Position<sup>10+</sup>](ts-types.md#position) | 否 | 是 | 设置提示点显示位置。<br/>默认值：BadgePosition.RightTop <br/>**说明：** <br/> Position作为入参，不支持设置百分比；设置为非法值时，默认(0,0)处理。(0,0)为组件左上角位置。<br/>BadgePosition作为入参时，会跟随[Direction](ts-appendix-enums.md#direction)属性控制镜像显示。|
-| style | [BadgeStyle](#badgestyle对象说明) | 否 | 否 | Badge组件可设置样式，支持设置文本颜色、尺寸、圆点颜色和尺寸。 |
+| style | [BadgeStyle](#badgestyle对象说明) | 否 | 否 | Badge组件可设置样式，支持设置文本颜色、大小、提示点颜色和提示点大小。 |
 
 
 ## BadgeParamWithNumber对象说明
@@ -125,13 +125,13 @@ BadgeParamWithString继承自[BadgeParam](#badgeparam对象说明)，具有Badge
 
 | 名称 | 值 | 说明 |
 | -------- | -------- |-------- |
-| RightTop | - | 圆点显示在右上角。 |
-| Right | - | 圆点显示在右侧纵向居中。 |
-| Left | - | 圆点显示在左侧纵向居中。 |
+| RightTop | - | 提示点显示在右上角。 |
+| Right | - | 提示点显示在右侧纵向居中。 |
+| Left | - | 提示点显示在左侧纵向居中。 |
 
 ## BadgeStyle对象说明
 
-Badge的样式。包括文本颜色、尺寸、字重、圆点颜色和尺寸。
+Badge的样式。包括文本颜色、大小、字重、提示点颜色和提示点大小。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
