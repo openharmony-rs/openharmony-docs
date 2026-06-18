@@ -96,7 +96,7 @@
    }
    ```
 
-![zh-ch_image_BlendMode_SrcIn.png](figures/zh-ch_image_BlendMode_SrcIn.png)
+![BlendMode-SrcIn.png](figures/BlendMode-SrcIn.png)
 
 
 ## 路径效果
@@ -254,7 +254,7 @@
    }
    ```
 
-![zh-cn_image_0000002158744106](figures/zh-cn_image_0000002158744106.png)
+![Gradient-Shader-Effect](figures/Gradient-Shader-Effect.png)
 
 
 ### 径向渐变着色器效果

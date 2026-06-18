@@ -8,7 +8,7 @@
 
 对于播放音频类的应用，开发者需要关注该应用的音频流的状态以做出相应的操作，比如监听到状态为播放中/暂停时，及时改变播放按钮的UI显示。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRendererSampleJS)。
 
 ## 读取或监听应用内音频流状态变化
 
@@ -27,12 +27,27 @@
 
 - 方法2：注册stateChange监听AudioRenderer的状态变化：
 
-  <!-- @[regist_listeningrendererchange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+  ArkTS-Dyn示例：
+
+  <!-- @[regist_listeningrendererchange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->   
   
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
   // ...
       audioRenderer.on('stateChange', (rendererState: audio.AudioState) => {
+        console.info(`Succeeded in using on function, state change to: ${rendererState}`);
+        // ...
+      });
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[regist_listeningrendererchange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/renderer.ets) -->
+  
+  ``` TypeScript
+  import { audio } from '@kit.AudioKit';
+  // ...
+      audioRenderer!.onStateChange((rendererState: audio.AudioState) => {
         console.info(`Succeeded in using on function, state change to: ${rendererState}`);
         // ...
       });
@@ -74,7 +89,9 @@
 
 2. 使用[on('audioRendererChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiorendererchange9)监听音频播放流的变化。如果音频流监听应用需要在音频播放流状态变化、设备变化时获取通知，可以订阅该事件。
 
-   <!-- @[regist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+   ArkTS-Dyn示例：
+
+   <!-- @[regist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->   
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -85,7 +102,22 @@
      });
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[regist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/renderer.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   // ...
+     audioStreamManager.onAudioRendererChange((audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+       console.info(`Succeeded in using on function. AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}`);
+       globalLogUpdate(`Succeeded in using on function. AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}`, false);
+     });
+   ```
+
 3. （可选）使用[off('audioRendererChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#offaudiorendererchange9)取消监听音频播放流变化。
+
+   ArkTS-Dyn示例：
 
    <!-- @[unregist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
  
@@ -94,11 +126,22 @@
    console.info('RendererChange Off is called ');
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[unregist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/renderer.ets) -->
+   
+   ``` TypeScript
+   audioStreamManager.offAudioRendererChange();
+   console.info('Succeeded in using off function.');
+   ```
+
 4. （可选）使用[getCurrentAudioRendererInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiorendererinfoarray9)获取所有音频播放流的信息。该接口可获取音频播放流唯一ID、音频渲染器信息以及音频播放设备信息。
 
    > **说明：**
    >
    > 对所有音频流状态进行监听的应用需要[声明权限](../../security/AccessToken/declare-permissions.md)ohos.permission.USE_BLUETOOTH，否则无法获得实际的设备名称和设备地址信息，查询到的设备名称和设备地址（蓝牙设备的相关属性）将为空字符串。
+
+   ArkTS-Dyn示例：
 
    <!-- @[get_allstreaminfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
    
@@ -113,6 +156,27 @@
          console.info(`Succeeded in getting current audio renderer info array. AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}`);
          globalLogUpdate(`Succeeded in getting current audio renderer info array. AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}`, false);
        }).catch((err: BusinessError ) => {
+         console.error(`Failed to get current audio renderer info array. Code: ${err.code}, message: ${err.message}`);
+         // ...
+       });
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[get_allstreaminfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/renderer.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   // ...
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+   async function getCurrentAudioRendererInfoArray(): Promise<void> {
+     await audioStreamManager.getCurrentAudioRendererInfoArray()
+       .then((audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
+         console.info(`Succeeded in getting current audio renderer info array. AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}`);
+         globalLogUpdate(`Succeeded in getting current audio renderer info array. AudioRendererChangeInfoArray: ${JSON.stringify(audioRendererChangeInfoArray)}`, false);
+       }).catch((err: Error) => {
          console.error(`Failed to get current audio renderer info array. Code: ${err.code}, message: ${err.message}`);
          // ...
        });

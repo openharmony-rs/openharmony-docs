@@ -114,7 +114,7 @@ ArkTS-Dyn: fontWeight(value: number | FontWeight | string)
 
 ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
 
-设置SymbolSpan组件粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。
+设置SymbolSpan组件字体粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular" 、"medium"分别对应FontWeight中相应的枚举值。
 
 sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
@@ -136,7 +136,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 | 参数名 | 类型                                                         | 必填 | 说明                                               |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | SymbolSpan组件粗细。<br/>默认值：FontWeight.Normal<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | SymbolSpan组件字体粗细。<br/>默认值：FontWeight.Normal<br/>取值为undefined时，按默认值处理。 |
 
 ### renderingStrategy
 

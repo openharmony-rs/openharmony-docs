@@ -146,11 +146,11 @@ struct BlankExample {
 
 竖屏状态
 
-![zh-cn_image_0000001219662649](figures/zh-cn_image_0000001219662649.gif)
+![blank2](figures/blank2.gif)
 
 横屏状态
 
-![zh-cn_image_0000001174104388](figures/zh-cn_image_0000001174104388.gif)
+![blank](figures/blank.gif)
 
 
 ### 示例2（填充固定宽度）

@@ -121,7 +121,9 @@ attributeModifier(modifier: AttributeModifier\<StackAttribute> | AttributeModifi
 
 ### syncLoad
 
-syncLoad(enable: boolean)
+ArkTS-Dyn: syncLoad(enable: boolean)
+
+ArkTS-Sta: syncLoad(enable: boolean | undefined)
 
 设置是否同步加载Stack区域内所有子组件。
 
@@ -139,7 +141,7 @@ syncLoad(enable: boolean)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enable   | boolean | 是   | 是否同步加载Stack区域内所有子组件。<br/>true表示同步加载；false表示异步加载。<br/>默认值：true<br/>**说明：** <br/>设置为false时，在首次显示场景，若当前帧布局耗时超过50ms，会将Stack区域内尚未布局的子组件延后到下一帧进行布局。 |
+| enable   | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否同步加载Stack区域内所有子组件。<br/>true表示同步加载；false表示异步加载。<br/>默认值：true<br/>取值为undefined时，按默认值处理。<br/>**说明：** <br/>设置为false时，在首次显示场景，若当前帧布局耗时超过50ms，会将Stack区域内尚未布局的子组件延后到下一帧进行布局。 |
 
 ## 事件
 
@@ -187,4 +189,22 @@ struct StackExample {
 }
 ```
 
-![zh-cn_image_0000001219982699](figures/zh-cn_image_0000001219982699.PNG)
+**ArkTS-Sta示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Stack, Alignment, Margin } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct StackExample {
+  build() {
+    Stack({ alignContent: Alignment.Bottom }) {
+      Text('First child, show in bottom').width('90%').height('100%').backgroundColor(0xd2cab3).align(Alignment.Top)
+      Text('Second child, show in top').width('70%').height('60%').backgroundColor(0xc1cbac).align(Alignment.Top)
+    }.width('100%').height(150).margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![stack](figures/stack.PNG)

@@ -67,8 +67,8 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let data = launcherBundleManager.getLauncherAbilityInfoSync("com.example.demo", 100);
-  console.info("data is " + JSON.stringify(data));
+  let launcherAbilityInfos = launcherBundleManager.getLauncherAbilityInfoSync("com.example.demo", 100);
+  console.info("data is " + JSON.stringify(launcherAbilityInfos));
 } catch (errData) {
   let code = (errData as BusinessError).code;
   let message = (errData as BusinessError).message;
@@ -80,7 +80,7 @@ try {
 
 type LauncherAbilityInfo = _LauncherAbilityInfo
 
-LauncherAbilityInfo信息。
+桌面应用Ability的基础信息，包含应用标识、图标、名称等核心属性。详细信息请参见[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 

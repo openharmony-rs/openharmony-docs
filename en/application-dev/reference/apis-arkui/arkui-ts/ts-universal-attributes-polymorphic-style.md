@@ -189,7 +189,7 @@ struct StyleExample {
 }
 ```
 
-![en-us_image_0000001188742468](figures/en-us_image_0000001188742468.gif)
+![polymorphicStyle1](figures/polymorphicStyle1.gif)
 
 ### Example 2: Setting Polymorphic Styles for the Radio Component
 

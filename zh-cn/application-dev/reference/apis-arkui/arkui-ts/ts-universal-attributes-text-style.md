@@ -142,7 +142,7 @@ ArkTS-Sta: addText(text: string, textOperationOptions?: TextContentControllerOpt
 
 setStyledPlaceholder(styledString: StyledString): void
 
-触发属性字符串的绑定或更新。
+设置属性字符串样式的占位文本，触发绑定或更新。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -322,7 +322,7 @@ setTextSelection选中文字时的配置。
 
 ## SymbolGlyphModifier<sup>12+</sup>
 
-type SymbolGlyphModifier = SymbolGlyphModifier
+type SymbolGlyphModifier = import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier
 
 SymbolGlyphModifier类型，用于设置自定义图标小符号。
 
@@ -336,7 +336,7 @@ SymbolGlyphModifier类型，用于设置自定义图标小符号。
 
 | 类型  | 说明       |
 | ----- | -------- |
-| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 返回当前的SymbolGlyphModifier。 |
+| import('../api/arkui/SymbolGlyphModifier').[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 返回当前的SymbolGlyphModifier。 |
 
 ## TextContentControllerOptions<sup>15+</sup>
 

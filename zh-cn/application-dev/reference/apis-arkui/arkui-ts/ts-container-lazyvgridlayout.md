@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @guozejun-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 该组件用于实现支持懒加载的网格布局。
@@ -429,7 +429,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
-![](figures/zh-cn_image_lazyvgridlayout1.gif)
+![](figures/image-lazyvgridlayout1.gif)
 
 ### 示例2（设置头部组件或尾部组件及吸附效果）
 

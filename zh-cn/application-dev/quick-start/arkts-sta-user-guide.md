@@ -81,6 +81,7 @@ ArkTS静态类型通过严格的类型限制和低运行时开销设计，显著
 - 了解ArkUI的语法和接口变更：[从ArkTS-Dyn到ArkTS-Sta的UI语法规则适配](../ui/arkts-dyn-sta-ui-rules.md)。
 - 了解SDK的语法和规则变更：[SDK规则变更](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_20250702/zh-cn/application-dev/quick-start/arkts-dyn-to-sta-sdk-rules.md)。
 - 了解ArkTS-Sta与ArkTS-Dyn进行互操作的规格指南：[ArkTS动静态类型易用互操作规格指南](./arkts-sta-interop-spec.md)。
+- 了解ArkTS-Sta与ArkTS-Dyn使用显式接口进行互操作的使用指南：[ArkTS动静态类型互操作显式接口使用指南](./arkts-sta-interop-interface.md)。
 - 了解ArkTS-Sta与ArkTS-Dyn进行互操作声明文件生成工具Declgen的规格指南：[ArkTS动静态类型互操作声明文件生成工具Declgen规格指南](./arkts-sta-declgen-spec.md)。
 - 了解ArkTS-Sta的应用迁移改造：[ArkTS新增静态类型及应用迁移改造概述](./arkts-sta-additions-application-migration.md)。 
 - 了解ArkTS-Sta的类型改造示例：[ArkTS静态类型改造案例](./arkts-sta-transformation-case.md)。

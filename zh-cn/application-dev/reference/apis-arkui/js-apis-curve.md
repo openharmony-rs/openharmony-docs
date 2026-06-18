@@ -771,4 +771,4 @@ struct ImageComponent {
 }
 ```
 
-![zh-cn_image_0000001174104410](figures/zh-cn_image_0000001174104410.gif)
+![zh-cn_image_0000001174104410](figures/curves-spring-example.gif)

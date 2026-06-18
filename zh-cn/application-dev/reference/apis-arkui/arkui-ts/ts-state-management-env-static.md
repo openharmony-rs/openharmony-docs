@@ -1,4 +1,4 @@
-# \@Env：环境变量
+# \@Env：环境变量 (ArkTS-Sta)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhushilin5-->
@@ -93,3 +93,16 @@ protected constructor()
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
+
+### 属性
+
+| 名称 | 类型 | 说明 |
+| -------- | -------- | ------ |
+| WINDOW_AVOID_AREA | [ReadonlySystemEnvKey](#readonlysystemenvkey) |[\@Env](#env)变量参数，通过\@Env('ReadonlyEnvKey.WINDOW_AVOID_AREA')可获取[UIEnvWindowAvoidAreaInfoVP](../arkts-apis-window-i.md#uienvwindowavoidareainfovp23)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management-static/arkts-static-create-component.md)或[\@ComponentV2](../../../ui/state-management-static/arkts-static-componentv2.md)中时，用于获取当前自定义组件所在窗口的避让区域信息，单位为vp。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_AVOID_AREA_PX | [ReadonlySystemEnvKey](#readonlysystemenvkey) |[\@Env](#env)变量参数，通过\@Env('ReadonlyEnvKey.WINDOW_AVOID_AREA_PX')可获取[UIEnvWindowAvoidAreaInfoPX](../arkts-apis-window-i.md#uienvwindowavoidareainfopx23)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management-static/arkts-static-create-component.md)或[\@ComponentV2](../../../ui/state-management-static/arkts-static-componentv2.md)中时，用于获取当前自定义组件所在窗口的避让区域信息，单位为px。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_SIZE | [ReadonlySystemEnvKey](#readonlysystemenvkey) |[\@Env](#env)变量参数，通过\@Env('ReadonlyEnvKey.WINDOW_SIZE')可获取[SizeInVP](../arkts-apis-window-i.md#sizeinvp23)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management-static/arkts-static-create-component.md)或[\@ComponentV2](../../../ui/state-management-static/arkts-static-componentv2.md)中时，用于获取当前自定义组件所在窗口的大小信息，单位为vp。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_SIZE_PX | [ReadonlySystemEnvKey](#readonlysystemenvkey) |[\@Env](#env)变量参数，通过\@Env('ReadonlyEnvKey.WINDOW_SIZE_PX')可获取[Size](../arkts-apis-window-i.md#size7)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management-static/arkts-static-create-component.md)或[\@ComponentV2](../../../ui/state-management-static/arkts-static-componentv2.md)中时，用于获取当前自定义组件所在窗口的大小信息，单位为px。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_DISPLAY_ID | [ReadonlySystemEnvKey](#readonlysystemenvkey) |[\@Env](#env)变量参数，通过\@Env('ReadonlyEnvKey.WINDOW_DISPLAY_ID')可获取long类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management-static/arkts-static-create-component.md)或[\@ComponentV2](../../../ui/state-management-static/arkts-static-componentv2.md)中时，用于获取当前自定义组件所在窗口的屏幕ID。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_SYSTEM_DENSITY | [ReadonlySystemEnvKey](#readonlysystemenvkey) |[\@Env](#env)变量参数，通过\@Env('ReadonlyEnvKey.WINDOW_SYSTEM_DENSITY')可获取double类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management-static/arkts-static-create-component.md)或[\@ComponentV2](../../../ui/state-management-static/arkts-static-componentv2.md)中时，用于获取当前自定义组件所在窗口的系统显示大小缩放系数。该参数为浮点数，取值范围为[0.5, 4.0]或-1.0。4.0表示窗口可显示的最大显示大小缩放系数，-1.0表示窗口使用系统显示大小缩放系数。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_IS_FOCUSED | [ReadonlySystemEnvKey](#readonlysystemenvkey) |[\@Env](#env)变量参数，通过\@Env('ReadonlyEnvKey.WINDOW_IS_FOCUSED')可获取boolean类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management-static/arkts-static-create-component.md)或[\@ComponentV2](../../../ui/state-management-static/arkts-static-componentv2.md)中时，用于获取当前自定义组件所在窗口是否处于获焦状态，true表示当前处于获焦状态，false表示当前不处于获焦状态。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_IS_HIGHLIGHTED | [ReadonlySystemEnvKey](#readonlysystemenvkey) |[\@Env](#env)变量参数，通过\@Env('ReadonlyEnvKey.WINDOW_IS_HIGHLIGHTED')可获取boolean类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management-static/arkts-static-create-component.md)或[\@ComponentV2](../../../ui/state-management-static/arkts-static-componentv2.md)中时，用于获取当前自定义组件所在窗口是否处于高亮状态，true表示当前处于高亮状态，false表示当前不处于高亮状态。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |

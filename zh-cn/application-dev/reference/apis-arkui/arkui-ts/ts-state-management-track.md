@@ -1,18 +1,25 @@
-# @Track
+# @Track：class对象属性级更新
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zany_pink-->
-<!--SE: @s10021109-->
-<!--TSE: @TerryTsao-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+@Track用于状态管理V1中，观测class对象的属性级更新。
+
+在ArkTS-Dyn中使用时，开发指南参考：[@Track装饰器：class对象属性级更新（ArkTS-Dyn）](../../../ui/state-management/arkts-track.md)。
 
 > **说明：**
 >
 > 从API version 11开始，支持该装饰器。
 
-@Track用于状态管理V1中，观测class对象的属性级更新。
+## @Track
 
-在ArkTS-Dyn中使用时，开发指南参考：[@Track装饰器：class对象属性级更新（ArkTS-Dyn）](../../../ui/state-management/arkts-track.md)。
+const Track: PropertyDecorator
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -24,7 +31,9 @@
 
 ```ts
 class Info {
+  // @Track添加属性精准观测能力
   @Track id: number;
+  age: string = '';
 
   constructor(id: number) {
     this.id = id;
@@ -41,6 +50,7 @@ struct Index {
       Text(`id: ${this.info.id}`)
       Button('change')
         .onClick(() => {
+          // 修改@Track属性能触发UI更新
           this.info.id++;
         })
     }

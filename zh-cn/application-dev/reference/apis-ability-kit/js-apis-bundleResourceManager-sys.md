@@ -24,9 +24,7 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
-## 枚举
-
-### ResourceFlag
+## ResourceFlag
 
 资源信息标志，指示需要获取的资源信息的内容。
 
@@ -44,9 +42,7 @@ import { bundleResourceManager } from '@kit.AbilityKit';
 | GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY<sup>20+</sup>   | 0x00000020 | 用于获取仅在桌面上展示图标的Ability资源，它仅在[getLauncherAbilityResourceInfo](#bundleresourcemanagergetlauncherabilityresourceinfo)和[getAllLauncherAbilityResourceInfo](#bundleresourcemanagergetalllauncherabilityresourceinfo)接口中生效。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 
-## 接口
-
-### bundleResourceManager.getBundleResourceInfo
+## bundleResourceManager.getBundleResourceInfo
 
 getBundleResourceInfo(bundleName: string, resourceFlags?: number): BundleResourceInfo
 
@@ -107,7 +103,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getLauncherAbilityResourceInfo
+## bundleResourceManager.getLauncherAbilityResourceInfo
 
 getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number): Array\<LauncherAbilityResourceInfo>
 
@@ -167,7 +163,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getAllBundleResourceInfo
+## bundleResourceManager.getAllBundleResourceInfo
 
 ArkTS-Dyn: getAllBundleResourceInfo(resourceFlags: number, callback: AsyncCallback<Array\<BundleResourceInfo>>): void
 
@@ -204,7 +200,7 @@ ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int, callback: AsyncCallback<
 
 **示例：**
 
-ArkTS-Dyn: 
+ArkTS-Dyn示例:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -224,7 +220,7 @@ try {
   let message = (err as BusinessError).message;
 }
 ```
-ArkTS-Sta: 
+ArkTS-Sta示例:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -244,7 +240,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getAllBundleResourceInfo
+## bundleResourceManager.getAllBundleResourceInfo
 
 ArkTS-Dyn: getAllBundleResourceInfo(resourceFlags: number): Promise<Array\<BundleResourceInfo>>
 
@@ -286,7 +282,7 @@ ArkTS-Sta: getAllBundleResourceInfo(resourceFlags: int): Promise<Array\<BundleRe
 
 **示例：**
 
-ArkTS-Dyn: 
+ArkTS-Dyn示例:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -305,7 +301,7 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
 }
 ```
-ArkTS-Sta: 
+ArkTS-Sta示例:
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -323,7 +319,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getAllLauncherAbilityResourceInfo
+## bundleResourceManager.getAllLauncherAbilityResourceInfo
 
 ArkTS-Dyn: getAllLauncherAbilityResourceInfo(resourceFlags: number, callback: AsyncCallback<Array\<LauncherAbilityResourceInfo>>): void
 
@@ -403,7 +399,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getAllLauncherAbilityResourceInfo
+## bundleResourceManager.getAllLauncherAbilityResourceInfo
 
 ArkTS-Dyn: getAllLauncherAbilityResourceInfo(resourceFlags: number): Promise<Array\<LauncherAbilityResourceInfo>>
 
@@ -484,7 +480,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getBundleResourceInfo<sup>12+</sup>
+## bundleResourceManager.getBundleResourceInfo<sup>12+</sup>
 
 ArkTS-Dyn: getBundleResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): BundleResourceInfo
 
@@ -550,7 +546,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getLauncherAbilityResourceInfo<sup>12+</sup>
+## bundleResourceManager.getLauncherAbilityResourceInfo<sup>12+</sup>
 
 ArkTS-Dyn: getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): Array\<LauncherAbilityResourceInfo>
 
@@ -614,7 +610,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getExtensionAbilityResourceInfo<sup>20+</sup>
+## bundleResourceManager.getExtensionAbilityResourceInfo<sup>20+</sup>
 
 ArkTS-Dyn: getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityType: bundleManager.ExtensionAbilityType, resourceFlags: number, appIndex?: number): Array\<LauncherAbilityResourceInfo>
 
@@ -680,7 +676,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getAllUninstalledBundleResourceInfo<sup>21+</sup>
+## bundleResourceManager.getAllUninstalledBundleResourceInfo<sup>21+</sup>
 
 getAllUninstalledBundleResourceInfo(resourceFlags: number): Promise\<Array\<BundleResourceInfo>>
 
@@ -734,7 +730,7 @@ try {
 }
 ```
 
-### bundleResourceManager.getLauncherAbilityResourceInfoList<sup>23+</sup>
+## bundleResourceManager.getLauncherAbilityResourceInfoList<sup>23+</sup>
 
 ArkTS-Dyn: getLauncherAbilityResourceInfoList(optionsList: Array\<BundleOptions>, resourceFlags: number): Promise\<Array\<LauncherAbilityResourceInfo>>
 
@@ -777,8 +773,8 @@ ArkTS-Sta: getLauncherAbilityResourceInfoList(optionsList: Array\<BundleOptions>
 | 202      | Permission denied. A non-system application is not allowed to call a system API. |
 | 801      | Capability not supported. |
 | 17700001 | The specified bundle is not found.  |
-| 17700002 | The specified module is not found.  |
-| 17700003 | The specified ability is not found. |
+| 17700002 | The specified module is not existed. |
+| 17700003 | The specified ability is not existed. |
 | 17700061 | The specified app index is invalid. |
 
 **示例：**

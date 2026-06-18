@@ -218,7 +218,7 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 | outputParams | ArkTS-Dyn: Array&lt;Record\<string, Object\>&gt;<br>ArkTS-Sta: Array&lt;Record\<string, RecordData\>> | 是 | 是 | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。 |
 | uiAbility | [UIAbilityIntentInfo](#uiabilityintentinfo23) | 是 | 是 | 表示意图绑定的UIAbility组件信息，包含"ability"字段和"executeMode"字段。 |
 | uiExtension | [UIExtensionIntentInfo](#uiextensionintentinfo23) | 是 | 是 | 表示意图绑定的UIExtensionAbility组件信息。 |
-| from | [FormIntentInfo](#formintentinfo20) | 是 | 是 | 表示意图绑定的卡片信息。 |
+| form | [FormIntentInfo](#formintentinfo20) | 是 | 是 | 表示意图绑定的卡片信息。 |
 | serviceExtension | [ServiceExtensionIntentInfo](#serviceextensionintentinfo23) | 是 | 是 | 表示意图绑定的ServiceExtensionAbility组件信息。 |
 | entities | ArkTS-Dyn: Record\<string, Object\><br>ArkTS-Sta: Record\<string, RecordData\> | 是 | 是 | 表示意图包含的实体信息。 |
 
@@ -311,7 +311,7 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | className | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类名。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | entityId | string | 是 | 否 | 表示意图实体的ID。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | entityCategory | string | 是 | 否 | 表示意图实体类别。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-| parameters | string | 是 | 否 | 表示意图实体参数的数据格式声明，用于意图调用时定义实体参数的数据格式。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| parameters | Record\<string, Object> | 是 | 否 | 表示意图实体参数的数据格式声明，用于意图调用时定义实体参数的数据格式。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | parentClassName | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类的父类名。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | isQueryable | boolean | 是 | 是 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的意图实体类是否支持查询，只有继承自[insightIntent.AppIntentEntity](./js-apis-app-ability-insightIntent.md#appintententity)类的意图实体支持查询。<br> - true：支持查询。<br> - false：不支持查询。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | supportedQueryProperties | string[] | 是 | 是 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的意图实体支持通过哪些属性进行查询。意图实体查询参数[parameters](./js-apis-app-ability-insightIntent.md#queryentityparam)的key值必须在该属性列表中。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
@@ -469,8 +469,8 @@ execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000137 | Cross-device execution failed due to a connection error. |
-| 16000138 | Device disconnected during cross-device intent execution. |
+| 16000137 | Cross-device execution failed due to a connection error. <br>适用版本：26.0.0+ |
+| 16000138 | Device disconnected during cross-device intent execution. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -566,8 +566,8 @@ execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000137 | Cross-device execution failed due to a connection error. |
-| 16000138 | Device disconnected during cross-device intent execution. |
+| 16000137 | Cross-device execution failed due to a connection error. <br>适用版本：26.0.0+ |
+| 16000138 | Device disconnected during cross-device intent execution. <br>适用版本：26.0.0+ |
 
 **示例：**
 

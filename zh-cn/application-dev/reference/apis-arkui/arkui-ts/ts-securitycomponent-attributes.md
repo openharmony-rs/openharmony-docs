@@ -230,7 +230,7 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | string | Resource | undefined): 
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> <br> ArkTS-Sta: int \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> \| undefined |是 |安全控件上文字粗细。<br/>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br/>string类型支持使用数字字符串（如'400'），以及FontWeight中的枚举值对应的字符串（如'bold'、'bolder'、'lighter'、'regular'、'medium'）。<br/>从API version 20开始，支持Resource类型。Resource类型仅支持'integer'和'string'，当类型为'integer'时，取值参考前述number类型；当类型为'string'时，取值参考前述string类型。<br/>如果控件未设置fontWeight，文字粗细将默认设置为FontWeight.Medium；如果value入参为非法值，文字粗细将被设置为FontWeight.Normal。<br/>ArkTS-Sta：设定为undefined时使用FontWeight.Medium进行设置。|
+| value | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> <br> ArkTS-Sta: int \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> \| undefined |是 |安全控件上文字粗细。<br/>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br/>string类型支持使用数字字符串（如'400'），以及FontWeight中的枚举值对应的字符串（如'bold'、'bolder'、'lighter'、'regular'、'medium'）。<br/>从API version 20开始，支持Resource类型。Resource类型仅支持'integer'和'string'，当类型为'integer'时，取值参考前述number类型；当类型为'string'时，取值参考前述string类型。<br/>如果控件未设置fontWeight，文字粗细将默认设置为FontWeight.Medium；如果value入参为非法值，文字粗细将被设置为FontWeight.Normal。<br/>ArkTS-Sta：设定为undefined时使用FontWeight.Medium进行设置。如果value入参为''，文字粗细将被设置为FontWeight.Medium。|
 
 **返回值：**
 

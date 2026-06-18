@@ -430,7 +430,7 @@ struct Parent {
 
 ![Video-link-UsageScenario-two](../figures/Video-link-UsageScenario-two.gif)
 
-状态管理框架可以观察到数组元素的添加、删除和替换。在该示例中，\@State和\@Link的类型均为number[]，不支持将\@Link定义成number类型（\@Link item : number），并用\@State数组中的每个数据项在父组件中创建子组件。如需使用这种场景，可以参考[\@Prop](arkts-prop.md)和[\@Observed](./arkts-observed-and-objectlink.md)。
+状态管理框架可以观察到数组元素的添加、删除和替换。在该示例中，\@State和\@Link的类型均为int[]，不支持将\@Link定义成int类型（\@Link item : int），并用\@State数组中的每个数据项在父组件中创建子组件。如需使用这种场景，可以参考[\@PropRef](./arkts-static-propref.md)和[\@Observed](./arkts-static-observed-and-objectlink.md)。
 
 ### 装饰Map类型变量
 

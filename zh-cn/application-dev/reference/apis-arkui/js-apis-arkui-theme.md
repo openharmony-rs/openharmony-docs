@@ -234,8 +234,8 @@ struct MyStateSample {
   }
 }
 ```
-
 ArkTS-Sta示例：
+
 ```ts
 import { Text, Column, Component, $r, Entry, Color } from '@kit.ArkUI';
 import { CustomColors, CustomDarkColors, ThemeControl, CustomTheme } from '@ohos.arkui.theme';

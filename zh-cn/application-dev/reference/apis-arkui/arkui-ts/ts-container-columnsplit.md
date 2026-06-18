@@ -74,7 +74,7 @@ ArkTS-Dyn: resizeable(value: boolean)
 
 ArkTS-Sta: resizeable(value: boolean | undefined)
 
-设置分割线是否可拖拽。
+设置分割线是否可拖动。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -88,7 +88,7 @@ ArkTS-Sta: resizeable(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                 |
 | ------ | ------- | ---- | ------------------------------------ |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 分割线是否可拖拽。设置为true时表示分割线可拖拽，设置为false时表示分割线不可拖拽。<br/>默认值：false <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 分割线是否可拖拽。设置为true时表示分割线可拖动，设置为false时表示分割线不可拖拽。<br/>默认值：false <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### divider<sup>10+</sup>
 
@@ -221,7 +221,34 @@ struct ColumnSplitExample {
 }
 ```
 
-![zh-cn_image_0000001219982708](figures/zh-cn_image_0000001219982708.gif)
+**ArkTS-Sta示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Column, ColumnSplit, TextAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ColumnSplitExample {
+  build() {
+    Column(){
+      Text('The dividing line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      ColumnSplit() {
+        Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('2').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('3').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('4').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('5').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+      }
+      .borderWidth(1)
+      .resizeable(true) // 可拖动
+      .width('90%').height('60%')
+    }.width('100%')
+  }
+}
+```
+
+![columnSplitDividerStyle](figures/columnSplitDividerStyle.gif)
 
 ### 示例2（设置带有间隔的ColumnSplit组件）
 

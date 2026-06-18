@@ -759,7 +759,7 @@ export struct OnFocusBlur {
 ```
 
 
-![zh-cn_image_0000001511740584](figures/zh-cn_image_0000001511740584.gif)
+![focus-event](figures/focus-event.gif)
 
 
 上述示例包含以下3步：

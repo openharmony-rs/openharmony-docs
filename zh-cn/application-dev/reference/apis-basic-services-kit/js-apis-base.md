@@ -38,6 +38,8 @@ Callback\<T> {
 
 开发者在使用时，可自定义data的类型，回调将返回对应类型的信息。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Base
@@ -46,7 +48,9 @@ Callback\<T> {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | 说明                       |
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                       |
 | ---- | ---- | ---- | -------------------------- |
 | data | T    | 是   | 接口调用时的公共回调信息。 |
 
@@ -78,23 +82,17 @@ ErrorCallback\<T extends Error = BusinessError> {
 
 ## AsyncCallback
 
-**ArkTS-Dyn：**   
+ArkTS-Dyn: AsyncCallback\<T, E = void> = (err: BusinessError\<E>, data: T) => void
 
-AsyncCallback\<T, E = void> {
-
-(err: BusinessError\<E>, data: T): void;
-
-}
-
-**ArkTS-Sta：**   
-
-AsyncCallback\<T, E = void> = (err: BusinessError\<E> | null, data: T | undefined) => void
+ArkTS-Sta: AsyncCallback\<T, E = void> = (err: BusinessError\<E> | null, data: T | undefined) => void
 
 通用回调函数，携带错误参数和异步返回值。
 
 错误参数为[BusinessError](#businesserror)类型的信息。
 
 异步返回值的类型由开发者自定义，回调将返回对应类型的信息。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -104,10 +102,13 @@ AsyncCallback\<T, E = void> = (err: BusinessError\<E> | null, data: T | undefine
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型                                                         | 必填 | 说明                         |
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                         |
 | ---- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| err  | [BusinessError](#businesserror) | 是   | 接口调用失败的公共错误信息。 |
-| data | T                                                            | 是   | 接口调用时的公共回调信息。   |
+| err  | ArkTS-Dyn:[BusinessError](#businesserror) <br/> ArkTS-Sta:[BusinessError](#businesserror) \| null | 是   | 接口调用失败的公共错误信息。 |
+| data | ArkTS-Dyn:T <br/> ArkTS-Sta:T \| undefined                                         | 是   | 接口调用时的公共回调信息。   |
+
 
 ## BusinessError
 
@@ -119,6 +120,8 @@ code: number;
 data?: T;
 
 }
+
+错误参数。
 
 | 名称 | 类型    | 只读 | 可选 | 说明                                                       |
 | ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
@@ -134,9 +137,9 @@ public data?: T;
 
 }
 
-| 名称 | 类型    | 只读 | 可选 | 说明                                                       |
-| ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| data | T      | 否   | 是   | 接口调用时的公共回调信息。如未填写，则回调不返回相关信息。 |
+错误参数。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -145,6 +148,11 @@ public data?: T;
 **ArkTS-Dyn起始版本：** 6
 
 **ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型    | 只读 | 可选 | 说明                                                       |
+| ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
+| data | T      | 否   | 是   | 接口调用时的公共回调信息。如未填写，则回调不返回相关信息。 |
+
 
 ### constructor<sup>23+</sup>    
 
@@ -156,6 +164,8 @@ BusinessError的构造函数。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**ArkTS-Sta起始版本：** 23
+
 ### constructor<sup>23+</sup>    
 
 constructor(code: int, error: Error)    
@@ -165,6 +175,8 @@ BusinessError的构造函数。
 **系统能力：** SystemCapability.Base  
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -186,7 +198,9 @@ BusinessError的构造函数。
 
 **系统能力：** SystemCapability.Base      
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。   
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -210,6 +224,8 @@ BusinessError的构造函数。
 **系统能力：** SystemCapability.Base    
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

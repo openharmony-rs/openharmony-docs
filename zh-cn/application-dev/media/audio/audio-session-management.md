@@ -359,8 +359,11 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
 > **说明：**
 >
 > 如果应用同时注册了AudioRenderer的焦点事件监听，需要注意以下两点：
-> 1. 应用会收到AudioSession焦点状态变化和AudioRenderer焦点变化的回调（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)），根据需要处理这些回调即可。
-> 2. 如果AudioSession的焦点被暂停，恢复暂停状态时，只会给AudioSession发送焦点恢复事件，不会再给AudioRenderer发送焦点恢复事件。收到恢复事件后，当应用需要通过AudioSession申请焦点恢复播放时，必须重新调用[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置场景参数，再调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)激活AudioSession。
+> - 应用会收到AudioSession焦点状态变化和AudioRenderer焦点变化的回调（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)），根据需要处理这些回调即可。
+> - 当AudioSession的焦点由暂停转为恢复时，系统仅向AudioSession发送焦点恢复事件，不会同步向AudioRenderer发送该事件。此时应用如需恢复播放，必须按以下顺序操作：
+>    1. 调用[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置对应的音频会话场景。
+>    2. 调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)激活AudioSession。
+>    3. 调用[start](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8)恢复播放。
 
 ### 开发步骤
 

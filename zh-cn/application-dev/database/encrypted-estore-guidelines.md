@@ -607,7 +607,7 @@ export class Mover {
 
 **ArkTS-Dyn示例：**
 
-<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->
+<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->  
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';

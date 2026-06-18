@@ -585,8 +585,8 @@ setXComponentSurfaceSize(value: {surfaceWidth: number, surfaceHeight: number}): 
 
 | 参数名           | 类型   | 必填   | 说明                      |
 | ------------- | ------ | ---- | ----------------------- |
-| surfaceWidth  | number | 是    | XComponent持有Surface的宽度。 |
-| surfaceHeight | number | 是    | XComponent持有Surface的高度。 |
+| surfaceWidth  | number | 是    | XComponent持有Surface的宽度。 单位：px。|
+| surfaceHeight | number | 是    | XComponent持有Surface的高度。 单位：px。|
 
 
 ### getXComponentContext

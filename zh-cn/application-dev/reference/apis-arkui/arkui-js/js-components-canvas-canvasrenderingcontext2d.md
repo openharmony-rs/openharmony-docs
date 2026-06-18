@@ -1,8 +1,8 @@
 # CanvasRenderingContext2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -840,7 +840,7 @@ stroke(): void
   }
   ```
 
-  ![zh-cn_image_0000001236697937](figures/zh-cn_image_0000001236697937.png)
+  ![Blue-cursor](figures/Blue-cursor.png)
 
 
 ### beginPath

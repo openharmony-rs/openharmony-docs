@@ -60,9 +60,9 @@
 
 创建AVSession后，为了保证接入体验，要求设置以下元数据并注册以下控制命令。
 
-- 元数据：标题、副标题/歌手、封面图。具体操作请参考[设置元数据](avsession-access-scene.md#设置元数据)。
+- 元数据：标题、副标题/歌手、封面图。具体操作请参考[设置元数据信息](avsession-access-scene.md#设置元数据信息)。
 
-- 注册控制命令：播放/暂停。具体操作请参考[注册控制命令](avsession-access-scene.md#注册控制命令)。
+- 注册控制命令：播放/暂停。具体操作请参考[控制命令的处理](avsession-access-scene.md#控制命令的处理)。
 
 AVSession的接入开发请参考指南[应用接入AVSession场景介绍](avsession-access-scene.md)。
 

@@ -65,7 +65,7 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
   Progress({ value: 20, total: 100, type: ProgressType.Linear } as ProgressOptions).width(50).height(200)
   ```
 
-  ![zh-cn_image_0000001562700417](figures/zh-cn_image_0000001562700417.png)
+  ![progress-vertical](figures/progress-vertical.png)
 
 - 环形无刻度样式进度条
 

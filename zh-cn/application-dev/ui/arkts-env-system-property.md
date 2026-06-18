@@ -1,4 +1,4 @@
-# \@Env：环境变量
+# \@Env：环境变量 (ArkTS-Dyn)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->

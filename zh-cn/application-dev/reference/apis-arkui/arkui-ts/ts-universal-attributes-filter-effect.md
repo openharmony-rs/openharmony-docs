@@ -188,7 +188,7 @@ ArkTS-Sta: materialFilter(filter: Filter | undefined): this
 
 ## Filter
 
-ArkTS-Dyn: type Filter = Filter
+ArkTS-Dyn: type Filter = import('../api/@ohos.graphics.uiEffect').default.Filter
 
 ArkTS-Sta: type Filter = uiEffect.Filter
 
@@ -204,11 +204,11 @@ ArkTS-Sta: type Filter = uiEffect.Filter
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter)<br/>ArkTS-Sta: uiEffect.Filter | 用于将相应的效果添加到指定的组件上。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.uiEffect').default.[Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter)<br/>ArkTS-Sta: uiEffect.Filter | 用于将相应的效果添加到指定的组件上。 |
 
 ## VisualEffect
 
-ArkTS-Dyn: type VisualEffect = VisualEffect
+ArkTS-Dyn: type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.VisualEffect
 
 ArkTS-Sta: type VisualEffect = uiEffect.VisualEffect
 
@@ -224,7 +224,7 @@ ArkTS-Sta: type VisualEffect = uiEffect.VisualEffect
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect)<br/>ArkTS-Sta: uiEffect.[VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | 用于将相应的效果添加到指定的组件上。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.uiEffect').default.[VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect)<br/>ArkTS-Sta: uiEffect.[VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | 用于将相应的效果添加到指定的组件上。 |
 
 ## 示例
 

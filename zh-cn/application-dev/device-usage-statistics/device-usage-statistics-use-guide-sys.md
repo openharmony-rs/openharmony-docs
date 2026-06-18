@@ -57,6 +57,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise方式
     usageStatistics.queryBundleEvents(0, 20000000000000).then((res: Array<usageStatistics.BundleEvents>) => {
@@ -87,6 +88,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise方式
     usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res: usageStatistics.BundleStatsMap) => {
@@ -111,6 +113,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise方式
     usageStatistics.queryCurrentBundleEvents(0, 20000000000000).then((res: Array<usageStatistics.BundleEvents>) => {
@@ -141,6 +144,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise方式
     usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000).then((res: Array<usageStatistics.BundleStatsInfo>) => {
@@ -172,6 +176,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // promise方式
     usageStatistics.queryAppGroup().then((res : number) => {
@@ -198,6 +203,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise方式
     usageStatistics.isIdleState("com.ohos.camera").then((res: boolean) => {
@@ -223,6 +229,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise方式
     usageStatistics.queryModuleUsageRecords(1000).then((res: Array<usageStatistics.HapModuleInfo>) => {
@@ -277,6 +284,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise方式
     usageStatistics.queryNotificationEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
@@ -301,6 +309,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise方式
     usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
@@ -325,6 +334,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 有bundleName异步promise方式
     let bundleName = "com.ohos.camera";
@@ -349,6 +359,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise
     let bundleName = "com.example.deviceUsageStatistics";
@@ -376,6 +387,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise形式
     function  onBundleGroupChanged (res: usageStatistics.AppGroupCallbackInfo) {
@@ -414,6 +426,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
+    import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // promise
     usageStatistics.unregisterAppGroupCallBack().then(() => {

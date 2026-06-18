@@ -1812,6 +1812,68 @@ freeze(freeze: Optional\<boolean>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
+
+## systemMaterial
+
+ArkTS-Dyn: systemMaterial(material: SystemUiMaterial | undefined): T
+
+ArkTS-Sta: systemMaterial(material: SystemUiMaterial | undefined): this
+
+设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)、材质层滤镜效果，影响的属性与设备算力档位相关，参考[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)。使用示例请参考[示例1（设置沉浸式系统材质）](../arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
+
+> **说明：**
+> 
+> - 在同时设置了材质影响的通用属性发生冲突时，除阴影外，总体原则为后设置的生效，对于阴影属性取决于[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的applyShadow参数。
+>   - 先设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性后设置[systemMaterial](#systemmaterial)属性：backgroundColor属性被覆盖。在高算力和中算力设备上，背景色属性被清空为透明色；在低算力设备上，材质自带的背景色效果覆盖了先设置的backgroundColor属性。
+>   - 先设置[systemMaterial](#systemmaterial)属性后设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性：systemMaterial属性影响的背景色效果被覆盖，背景色属性生效为后设置的backgroundColor属性的颜色。
+> - 对于所有设备算力档位均需要材质颜色的场景，可以通过[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的materialColor参数承载，不再设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型                            | 必填 | 说明                                                         |
+| ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
+| material  | [SystemUiMaterial](#systemuimaterial) &nbsp;\|&nbsp; undefined  | 是   | 组件的系统材质对象。设置为undefined时恢复为无材质的效果，若同时设置了材质对象影响的通用属性，会恢复至对应通用属性设置的值，冲突的属性由材质对象决定，参考[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)。  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
+
+## SystemUiMaterial
+
+type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material
+
+系统材质对象基类。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 类型                              | 说明           |
+| --------------------------------- | -------------- |
+| import('../api/@ohos.arkui.uiMaterial').default.[Material](../arkts-apis-uimaterial.md#material)     | 系统材质对象基类。 |
+
 ## doubleSided
 
 ArkTS-Dyn: doubleSided(value: Optional\<boolean>): T
@@ -2063,7 +2125,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_effect_blendMode2](figures/zh-cn_image_effect_blendMode.png)
+![zh-cn_image_effect_blendMode2](figures/image-effect-blendMode.png)
 
 ### 示例5（前景智能取反色）
 
