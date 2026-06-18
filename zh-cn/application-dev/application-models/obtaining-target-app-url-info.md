@@ -159,39 +159,39 @@
     > - 应用安装检测：在拉起目标应用前，建议先检测应用是否已安装。
 
    <!-- @[Deep Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) -->
-
-    ``` TypeScript
-    import { common } from '@kit.AbilityKit'
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    
-    @Entry
-    @Component
-    struct SpecifiedPage {
-    
-      build() {
-        Row() {
-          Column() {
-            Button("拉起目标应用")
-              .onClick(() => {
-                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-                let link: string = 'appurl://www.example.com/path1';
-    
-                context.openLink(link, { appLinkingOnly: false })
-                  .then(() => {
-                    hilog.info(0x0000, 'testTag', `Succeeded in opening link.`);
-                  })
-                  .catch((error: BusinessError) => {
-                    hilog.error(0x0000, 'testTag', `Failed to open link, code: ${error.code}, message: ${error.message}`);
-                  });
-              })
-          }
-          .width('100%')
-        }
-        .height('100%')
-      }
-    }
-    ```
+   
+   ``` TypeScript
+   import { common } from '@kit.AbilityKit'
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   @Entry
+   @Component
+   struct SpecifiedPage {
+   
+     build() {
+       Row() {
+         Column() {
+           Button("拉起目标应用")
+             .onClick(() => {
+               let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+               let link: string = 'appurl://www.example.com/path1';
+   
+               context.openLink(link, { appLinkingOnly: false })
+                 .then(() => {
+                   hilog.info(0x0000, 'testTag', `Succeeded in opening link.`);
+                 })
+                 .catch((error: BusinessError) => {
+                   hilog.error(0x0000, 'testTag', `Failed to open link, code: ${error.code}, message: ${error.message}`);
+                 });
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
 
 6. 调试验证。
 
