@@ -883,8 +883,6 @@ openFormManagerCrossBundle(want: Want): void
 
 **需要权限：** ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Ability.Form
 
 **ArkTS-Dyn起始版本：** 20
