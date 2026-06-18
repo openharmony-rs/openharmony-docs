@@ -29,36 +29,6 @@ Web组件属性用于在ArkUI声明式语法下以链式调用的方式配置Web
 
 - **属性与控制器分工：** 属性负责声明Web组件的能力开关与运行环境；动态行为请使用[WebviewController](./arkts-apis-webview-WebviewController.md)的对应方法，二者配合构成完整的Web开发能力。
 
-**简要使用示例：**
-
-以下示例展示属性最典型的使用方式——在创建Web组件时以链式调用一次性声明安全策略与运行环境，然后再交由控制器加载业务URL。
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          // 安全优先：按业务需要开启DOM Storage、文件系统、图片自动加载。
-          .domStorageAccess(true)
-          .fileAccess(true)
-          .imageAccess(true)
-          // 渐进增强：在保证基础加载能力的前提下，再叠加脚本执行等运行环境配置。
-          .javaScriptAccess(true)
-      }
-    }
-  }
-  ```
-> **说明：**
->
-> 上述示例仅用于传递属性链式声明的设计意图，各属性的完整参数、默认值与生效条件请参考下文逐项说明。
-
 ## domStorageAccess
 
 ArkTS-Dyn: domStorageAccess(domStorageAccess: boolean)
