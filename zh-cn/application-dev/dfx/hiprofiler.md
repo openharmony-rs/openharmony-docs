@@ -401,8 +401,6 @@ CONFIG
 ```
 ![hiprofiler-nativehook-non-statistical](figures/hiprofiler-nativehook-non-statistical.png)
 
-[更多命令...](#常用命令)
-
 ### ftrace plugin插件
 
 **参数介绍**
