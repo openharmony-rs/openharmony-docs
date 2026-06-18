@@ -323,7 +323,7 @@ struct IndexFour {
 
 V2装饰器不能和\@Observed一起使用，V1传递\@Observed装饰的class类给V2自定义组件时，不直接用\@Param接收数据，如下图所示先定义V1BridgeComponent组件作为桥接层。在桥接层监听V1组件的数据，同步到V2定义的单例数据。V1组件直接使用V1BridgeComponent，在V1BridgeComponent中引入V2自定义组件。
 
-![mixsuage-example-observed-class](./figures/mixsuage-example-observed-class.png)
+![mixusage-example-observed-class](./figures/mixusage-example-observed-class.png)
 
 具体实现可参考以下示例代码：
 

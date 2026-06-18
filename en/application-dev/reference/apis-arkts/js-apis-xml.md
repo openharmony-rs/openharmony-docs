@@ -1,8 +1,8 @@
 # @ohos.xml (XML Parsing and Generation)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -11,6 +11,10 @@ The xml module provides APIs for generating and parsing XML files.
 The module offers two methods for generating XML files:
 * [XmlSerializer](#xmlserializer): suitable for scenarios where the size of the XML text is known in advance.
 * [XmlDynamicSerializer<sup>20+</sup>](#xmldynamicserializer20): suitable for scenarios where the size of the XML text is not known in advance.
+
+The module provides two methods for parsing XML files:
+* [XmlPullParser](#xmlpullparser): applies to random access and flexible parsing of XML text.
+* [XmlSAXParser<sup>24+</sup>](#xmlsaxparser24): applies to scenarios where XML text is parsed in streaming mode. If the XML text is large, other parsing methods may consume a significant amount of memory. In such cases, streaming parsing is recommended.
 
 > **NOTE**
 >
@@ -334,11 +338,11 @@ console.info(result); // <!--Hello, World!-->
 
 setCDATA(text: string): void
 
-Adds data to the CDATA tag. The structure of the generated CDATA tag is "\<! <![CDATA\["+ Data added + "\]\]\>".
+Provides the ability to add data to a CDATA tag. The structure of the generated CDATA tag is "\<!\[CDATA\[" + added data + "\]\]\>".
 
 > **NOTE**
 >
-> This API does not perform standard XML verification on the data to add. Ensure that the data complies with the XML specifications. For example, as stipulated in the specifications, you are not allowed to add data that contains the string \]\]\> to the CDATA tag.
+> This API does not perform standard XML verification on the data to add. Ensure that the data complies with the XML specifications. For example, data containing the "\]\]\>" string cannot be added to a CDATA tag.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -808,11 +812,11 @@ console.info(result); // <!--Hello, World!-->
 
 setCdata(text: string): void
 
-Adds data to the CDATA tag. The structure of the generated CDATA tag is "\<! <![CDATA\["+ Data added + "\]\]\>".
+Provides the ability to add data to a CDATA tag. The structure of the generated CDATA tag is "\<!\[CDATA\[" + added data + "\]\]\>".
 
 > **NOTE**
 >
-> This API does not perform standard XML verification on the data to add. Ensure that the data complies with the XML specifications. For example, as stipulated in the specifications, you are not allowed to add data that contains the string \]\]\> to the CDATA tag.
+> This API does not perform standard XML verification on the data to add. Ensure that the data complies with the XML specifications. For example, data containing the "\]\]\>" string cannot be added to a CDATA tag.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1147,7 +1151,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getColumnNumber() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // Determine whether to continue parsing; used to resume or terminate the parsing process.
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1191,7 +1195,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getDepth() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // Determine whether to continue parsing; used to resume or terminate the parsing process.
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1227,7 +1231,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getLineNumber() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // Determine whether to continue parsing; used to resume or terminate the parsing process.
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1263,7 +1267,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getName() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // Determine whether to continue parsing; used to resume or terminate the parsing process.
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1302,7 +1306,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getNamespace() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // Determine whether to continue parsing; used to resume or terminate the parsing process.
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:false, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1341,7 +1345,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getPrefix() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // Determine whether to continue parsing; used to resume or terminate the parsing process.
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:false, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1377,7 +1381,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getText() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // Determine whether to continue parsing; used to resume or terminate the parsing process.
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1416,7 +1420,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.isEmptyElementTag() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // Determine whether to continue parsing; used to resume or terminate the parsing process.
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1455,7 +1459,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.isWhitespace() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // Determine whether to continue parsing; used to resume or terminate the parsing process.
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1489,7 +1493,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getAttributeCount() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // Determine whether to continue parsing; used to resume or terminate the parsing process.
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1518,3 +1522,272 @@ Enumerates the event types.
 | INSTRUCTION      | 8    | XML processing instruction event.|
 | ENTITY_REFERENCE | 9    | Entity reference event.       |
 | WHITESPACE       | 10   | Whitespace character event.           |
+
+## XmlSAXParser<sup>24+</sup>
+
+The XmlSAXParser class is used to parse XML text in streaming mode. Applies to scenarios that require processing while reading. XML data can be read from the [stream.Readable](js-apis-stream.md#readable) stream and parsed.
+
+> **NOTE**
+>
+> - This API uses streaming parsing, which theoretically allows XML text of any size to be parsed. However, considering the actual performance, it is recommended that the size of data parsed at a time be less than or equal to 300 MB. Otherwise, the parsing time may be too long, affecting user experience.
+
+### constructor<sup>24+</sup>
+
+constructor(inputStream: stream.Readable, encoding?: string)
+
+Constructor of XmlSAXParser.
+
+> **NOTE**
+>
+> - The `inputStream` parameter must be a class instance that is inherited from [Readable](js-apis-stream.md#readable) and implements [Doread](js-apis-stream.md#doread). You can pass a class that meets this condition from another module, for example, [ReadStream](../apis-core-file-kit/js-apis-file-fs.md#readstream12).
+
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name      | Type            | Mandatory| Description                                            |
+| ------------ | ---------------- | ---- | ------------------------------------------------ |
+| inputStream  | [stream.Readable](js-apis-stream.md#readable)  | Yes  | Readable stream instance used to read XML data.                   |
+| encoding     | string           | No  | Encoding format. The default value is **'utf-8'** (the only format currently supported).    |
+
+**Example**
+
+```ts
+import { xml, stream } from '@kit.ArkTS';
+
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: number) {
+  }
+}
+
+let readableStream = new TestReadable();
+let saxParser = new xml.XmlSAXParser(readableStream, 'utf-8');
+```
+
+### parse<sup>24+</sup>
+
+parse(xmlSAXHandler: XmlSAXHandler): void
+
+Parses XML data using the Simple API for XML (SAX).
+
+> **NOTE**
+>
+> - After the parse function is called, users can control the parsing progress through stream control. After any data block is pushed, the parser parses the corresponding progress. For details about stream control, see [@ohos.util.stream (data stream base class stream)](js-apis-stream.md).
+> - It can be used together with the stream that automatically controls data, for example, [ReadStream](../apis-core-file-kit/js-apis-file-fs.md#readstream12). In this case, users do not need to manually control data.
+> - The parse API registers the on listener of the stream, which automatically reads data from the stream. It is not recommended to perform further operations on stream listeners or read data, as potential conflicts may cause the API capability to fail.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name        | Type                              | Mandatory| Description                   |
+| -------------- | ---------------------------------- | ---- | ----------------------- |
+| xmlSAXHandler  | [XmlSAXHandler](#xmlsaxhandler24)  | Yes  | SAX processor object.        |
+
+**Example**
+
+```ts
+import { xml, stream } from '@kit.ArkTS';
+
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: number) {
+  }
+}
+
+let readableStream = new TestReadable();
+let saxParser = new xml.XmlSAXParser(readableStream);
+
+let handler: xml.XmlSAXHandler = {
+  startDocument: () => {
+  },
+  endDocument: () => {
+  },
+  startElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined,
+    attributes: Map<string, string>) => {
+  },
+  endElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined) => {
+  },
+  characters: (content: string) => {
+  }
+};
+
+saxParser.parse(handler);
+```
+
+## XmlSAXHandler<sup>24+</sup>
+
+XmlSAXHandler defines the callback methods used when the SAX parses XML text. You need to implement these callback methods to process different parts of the XML text. These callback methods are triggered at the corresponding time during XML parsing. startDocument is triggered when the document parsing starts, endDocument is triggered when the document parsing ends, startElement is triggered when the element parsing starts, endElement is triggered when the element parsing ends, and characters is triggered when the text content between elements is parsed.
+
+### startDocument<sup>24+</sup>
+
+startDocument(): void
+
+Callback function triggered when the parser starts parsing the XML text. You need to implement the callback function yourself. For details about the example, see [characters<sup>24+</sup>](#characters24).
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+### endDocument<sup>24+</sup>
+
+endDocument(): void
+
+Callback function triggered when the parser ends parsing the XML text. You need to implement the callback function yourself. For details about the example, see [characters<sup>24+</sup>](#characters24).
+
+> **NOTE**
+>
+> This callback is triggered when the readable stream ends. This callback is triggered when push() is called in the stream and null is passed.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+### startElement<sup>24+</sup>
+
+startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined, attributes: Map<string, string>): void
+
+Callback function triggered when the parser starts parsing an element in the XML text. You need to implement the callback function yourself. For details about the example, see [characters<sup>24+</sup>](#characters24).
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name       | Type                     | Mandatory| Description                                  |
+| ------------- | ------------------------- | ---- | -------------------------------------- |
+| elementName   | string                    | Yes  | Name of the element returned by the parser (excluding the namespace prefix). For example, elementName is "child" for `<ns2:child>`.|
+| namespaceURI  | string \| undefined       | Yes  | Namespace URI returned by the parser. For example, namespaceURI is `"http://example.com/ns2"` for `xmlns:ns2="http://example.com/ns2"`. If the element does not have a namespace, the value is undefined.|
+| qName        | string \| undefined       | Yes  | Qualified name of the element returned by the parser (including the namespace prefix). For example, qName is "ns2:child" for `<ns2:child>`. If the element does not have a namespace, qName is undefined.|
+| attributes    | Map<string, string>       | Yes  | Attribute mapping table of the element returned by the parser. The key is the attribute name (which may contain a namespace prefix, for example, "ns2:attrA"), and the value is the attribute value.|
+
+### endElement<sup>24+</sup>
+
+endElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined): void
+
+Callback function triggered when the parser ends parsing an element in the XML text. You need to implement the callback function yourself. For details about the example, see [characters<sup>24+</sup>](#characters24).
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name       | Type                     | Mandatory| Description                                  |
+| ------------- | ------------------------- | ---- | -------------------------------------- |
+| elementName   | string                    | Yes  | Name of the element returned by the parser (excluding the namespace prefix). For example, elementName is "child" for `<ns2:child>`.|
+| namespaceURI  | string \| undefined       | Yes  | Namespace URI returned by the parser. For example, namespaceURI is `"http://example.com/ns2"` for `xmlns:ns2="http://example.com/ns2"`. If the element does not have a namespace, the value is undefined.|
+| qName        | string \| undefined       | Yes  | Qualified name of the element returned by the parser (including the namespace prefix). For example, qName is "ns2:child" for `<ns2:child>`. If the element does not have a namespace, qName is undefined.|
+
+### characters<sup>24+</sup>
+
+characters(content: string): void
+
+Callback function called when the parser encounters text content within an XML element. You need to implement the callback function yourself.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description            |
+| -------- | ------ | ---- | ---------------- |
+| content  | string | Yes  | Text content in the element returned by the parser.      |
+
+**Example**
+
+```ts
+import { xml, stream } from '@kit.ArkTS';
+
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: number) {
+  }
+}
+
+const saxHandler: xml.XmlSAXHandler = {
+  startDocument() {
+    console.info("startDocument");
+  },
+  endDocument() {
+    console.info("endDocument");
+  },
+  startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined,
+    attributes: Map<string, string>) {
+    console.info("startElement elementName:", elementName);
+    console.info("startElement namespaceURI:", namespaceURI);
+    console.info("startElement qName:", qName);
+    if (attributes) {
+      attributes.forEach((value, key) => {
+        console.info("startElement attribute:", key, "=", value);
+      });
+    }
+  },
+  endElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined) {
+    console.info("endElement elementName:", elementName);
+  },
+  characters(content: string) {
+    console.info("characters:", content);
+  }
+};
+
+let readableStream = new TestReadable();
+let saxParser = new xml.XmlSAXParser(readableStream);
+saxParser.parse(saxHandler);
+
+let testData = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<root xmlns:ns1="http://example.com/ns1">\n' +
+  '  <ns1:child ns1:attr1="value1" attr2="value2">Text content</ns1:child>\n' +
+  '</root>';
+
+readableStream.push(testData);
+readableStream.push(null);
+// Output example:
+// startDocument
+// startElement elementName: root
+// startElement namespaceURI: undefined
+// startElement qName: undefined
+// characters: 
+// 
+// startElement elementName: child
+// startElement namespaceURI: http://example.com/ns1
+// startElement qName: ns1:child
+// startElement attribute: attr2 = value2
+// startElement attribute: ns1:attr1 = value1
+// characters: Text content
+// endElement elementName: child
+// characters: 
+// endElement elementName: root
+// endDocument
+```

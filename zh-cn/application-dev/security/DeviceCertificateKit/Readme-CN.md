@@ -13,7 +13,7 @@
   - [证书对象的创建、解析和校验](create-parse-verify-cert-object.md)
   - [证书扩展信息对象的创建、解析和校验](create-parse-verify-certextension-object.md)
   - [证书吊销列表对象的创建、解析和校验](create-parse-verify-crl-object.md)
-  - [证书链校验时从p12文件构造TrustAnchor对象数组](create-trustanchor-from-p12.md)
+  - [证书链校验时从PKCS #12文件构造TrustAnchor对象数组](create-trustanchor-from-p12.md)
   - [证书链校验器对象的创建和校验](create-verify-cerchainvalidator-object.md)
   - [证书集合及证书吊销列表集合对象的创建和获取](create-get-cert-crl-object.md)
   - [证书链对象的创建和校验](create-verify-certchain-object.md)
@@ -22,7 +22,7 @@
   - [证书CMS封装](create-cms-enveloped-object.md)
   - [证书CMS验签](create-cms-verify-object.md)
   - [证书CMS解封装](create-cms-decapsulation-object.md)
-  - [证书PKCS12的创建和解析](create-parse-pkcs12.md)
+  - [证书PKCS #12的创建和解析](create-parse-pkcs12.md)
   - [证书链在线校验证书吊销状态](create-verify-cerchainvalidator-revocation-object.md)
   - [证书链校验时下载缺失的中间CA证书](allow-download-Intermediate-Cert.md)
 - 证书管理<!--certmanager-->

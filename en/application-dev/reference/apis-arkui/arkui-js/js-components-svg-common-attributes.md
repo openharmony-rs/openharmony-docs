@@ -1,21 +1,22 @@
 # Universal Attributes
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b9b716c1423f6952b7169df5eb4de15f02019de4 translatedAt=2026-06-10T02:07:39.544Z pushedAt=2026-06-10T03:44:35.484Z -->
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
-
+>  Supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | fill | &lt;color&gt; | black | No| Fill color of an element using the shorthand attribute. Attribute animations are supported.|
 | fill-opacity | number | 1 | No| Opacity of a fill color. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.|
-| fill-rule | nonzero&nbsp;\|&nbsp;evenodd | nonzero | No| Fill rule.<br>**nonzero**: non-zero rule.<br>**evenodd**: parity rule.|
+| fill-rule | nonzero&nbsp;\|&nbsp;evenodd | nonzero | No | Fill rule. **nonzero**: non-zero rule.&nbsp;**evenodd**: parity rule. |
 | opacity | number | 1 | No| Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.|
 | stroke | &lt;color&gt; | - | No| Color of the stroke. Attribute animations are supported.|
 | stroke-dasharray | &lt;string&gt; | - | No| Length of the dashes and notches. The format is [length length length length]. The length values of dashes and notches are separated by a space and appear in pairs.|

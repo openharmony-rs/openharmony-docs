@@ -1,8 +1,8 @@
 # native_node_napi.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -29,10 +29,10 @@ Provides the APIs used to convert [FrameNode](js-apis-arkui-frameNode.md) on the
 | Name| Description|
 | -- | -- |
 | [int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, ArkUI_NodeHandle* handle)](#oh_arkui_getnodehandlefromnapivalue) | Obtains an **ArkUI_NodeHandle** object on the native side mapped from the **FrameNode** object created on the ArkTS side.|
-| [int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_ContextHandle* context)](#oh_arkui_getcontextfromnapivalue) | Obtains a **UIContext** object on the ArkTS side and maps it to an **ArkUI_ContextHandle** object on the native side.|
-| [int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)](#oh_arkui_getnodecontentfromnapivalue) | Obtains a **NodeContent** object on the ArkTS side and maps it to an **ArkUI_NodeContentHandle** object on the native side.|
+| [int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_ContextHandle* context)](#oh_arkui_getcontextfromnapivalue) | Obtains an **ArkUI_ContextHandle** object on the native side mapped from the **UIContext** object created on the ArkTS side.|
+| [int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)](#oh_arkui_getnodecontentfromnapivalue) | Obtains an **ArkUI_NodeContentHandle** object on the native side mapped from the **NodeContent** object created on the ArkTS side.|
 | [int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)](#oh_arkui_getdrawabledescriptorfromnapivalue) | Maps a **DrawableDescriptor** object on the ArkTS side to an **ArkUI_DrawableDescriptor** object on the native side.|
-| [int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)](#oh_arkui_getdrawabledescriptorfromresourcenapivalue) | Maps an $r resource object on the ArkTS side to an **ArkUI_DrawableDescriptor** object on the native side.|
+| [int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)](#oh_arkui_getdrawabledescriptorfromresourcenapivalue) | Converts the resource object obtained through **$r()** on the ArkTS side into an **ArkUI_DrawableDescriptor** object that can be used on the native side.|
 | [ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavigationid) | Obtains the ID of the **Navigation** component where the specified node is located.|
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavdestinationname) | Obtains the name of the **NavDestination** component where the specified node is located.|
 | [ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* length)](#oh_arkui_getnavstacklength) | Obtains the length of the **Navigation** stack where the specified node is located.|
@@ -40,7 +40,7 @@ Provides the APIs used to convert [FrameNode](js-apis-arkui-frameNode.md) on the
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavdestinationid) | Obtains the ID of the **NavDestination** component where the specified node is located.|
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_NavDestinationState* state)](#oh_arkui_getnavdestinationstate) | Obtains the state of the **NavDestination** component where the specified node is located.|
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* index)](#oh_arkui_getnavdestinationindex) | Obtains the index of the **NavDestination** component where the specified node is located in the navigation stack.|
-| [napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)](#oh_arkui_getnavdestinationparam) | Obtains the parameters of the **NavDestination** component where the specified node is located.|
+| [napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)](#oh_arkui_getnavdestinationparam) | Obtains the parameter of the **NavDestination** component where the specified node is located.|
 | [ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* index)](#oh_arkui_getrouterpageindex) | Obtains the index of the page where the specified node is located in the page stack for routing.|
 | [ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpagename) | Obtains the name of the page where the specified node is located.|
 | [ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getrouterpagepath) | Obtains the path to the page where the specified node is located.|
@@ -90,7 +90,7 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 **Description**
 
 
-Obtains a [UIContext](arkts-apis-uicontext-uicontext.md) object on the ArkTS side and maps it to **ArkUI_ContextHandle** on the native side.
+Obtains an **ArkUI_ContextHandle** object on the native side mapped from a [UIContext](arkts-apis-uicontext-uicontext.md) object created on the ArkTS side.
 
 **Since**: 12
 
@@ -118,7 +118,7 @@ int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, Ark
 **Description**
 
 
-Obtains a **NodeContent** object on the ArkTS side and maps it to an **ArkUI_NodeContentHandle** object on the native side.
+Obtains an **ArkUI_NodeContentHandle** object on the native side mapped from the **NodeContent** object created on the ArkTS side.
 
 **Since**: 12
 
@@ -212,15 +212,15 @@ Obtains the ID of the [Navigation](arkui-ts/ts-basic-components-navigation.md) c
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| char* buffer | Buffer to which the obtained ID is written.|
+| char* buffer | Pointer to the buffer to which the obtained ID is written.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | Length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     Minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     pointer to the minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the data size exceeds the specified buffer size.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the data size exceeds the specified buffer size.|
 
 ### OH_ArkUI_GetNavDestinationName()
 
@@ -241,15 +241,15 @@ Obtains the name of the [NavDestination](arkui-ts/ts-basic-components-navdestina
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| char* buffer | Buffer to which the obtained name is written.|
+| char* buffer | Pointer to the buffer to which the obtained name is written.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | Length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     Minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     pointer to the minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the specified buffer size is smaller than the minimum buffer size required to hold the target.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the specified buffer size is smaller than the minimum buffer size required to hold the target.|
 
 ### OH_ArkUI_GetNavStackLength()
 
@@ -270,13 +270,13 @@ Obtains the length of the **Navigation** stack where the specified node is locat
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| int32_t* length | Length of the navigation stack. The result, if obtained successfully, is written back to this parameter.|
+| int32_t* length | Pointer to the length of the navigation stack. The result, if obtained successfully, is written back to this parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.|
 
 ### OH_ArkUI_GetNavDestinationNameByIndex()
 
@@ -298,15 +298,15 @@ Obtains the name of the page in the navigation stack where the specified node is
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
 | int32_t index | Index of the target page in the navigation stack.|
-| char* buffer | Buffer to which the obtained name is written.|
+| char* buffer | Pointer to the buffer to which the obtained name is written.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | Length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     Minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     pointer to the minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_NODE_INDEX_INVALID](capi-native-type-h.md#arkui_errorcode) if the index is invalid.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the specified buffer size is smaller than the minimum buffer size required to hold the target.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_NODE_INDEX_INVALID](capi-native-type-h.md#arkui_errorcode) if the index is invalid.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the specified buffer size is smaller than the minimum buffer size required to hold the target.|
 
 ### OH_ArkUI_GetNavDestinationId()
 
@@ -327,15 +327,15 @@ Obtains the ID of the **NavDestination** component where the specified node is l
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| char* buffer | Buffer to which the obtained ID is written.|
+| char* buffer | Pointer to the buffer to which the obtained ID is written.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | Length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     Minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     pointer to the minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the data size exceeds the specified buffer size.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the data size exceeds the specified buffer size.|
 
 ### OH_ArkUI_GetNavDestinationState()
 
@@ -356,13 +356,13 @@ Obtains the state of the **NavDestination** component where the specified node i
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| [ArkUI_NavDestinationState](capi-native-type-h.md#arkui_navdestinationstate)* state | State of the **NavDestination** component. The result, if obtained successfully, is written back to this parameter.|
+| [ArkUI_NavDestinationState](capi-native-type-h.md#arkui_navdestinationstate)* state | Pointer to the state of the **NavDestination** component. The result, if obtained successfully, is written back to this parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.|
 
 ### OH_ArkUI_GetNavDestinationIndex()
 
@@ -383,13 +383,13 @@ Obtains the index of the **NavDestination** component where the specified node i
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| int32_t* index | Zero-based index.|
+| int32_t* index | Pointer to the zero-based index.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.|
 
 ### OH_ArkUI_GetNavDestinationParam()
 
@@ -400,7 +400,7 @@ napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)
 **Description**
 
 
-Obtains the parameters of the **NavDestination** component where the specified node is located.
+Obtains the parameter of the **NavDestination** component where the specified node is located.
 
 **Since**: 12
 
@@ -436,13 +436,13 @@ Obtains the index of the [Router](arkts-apis-uicontext-router.md) page stack whe
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| int32_t* index | One-based index.|
+| int32_t* index | Pointer to the one-based index.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if the node or index specified is invalid.<br>Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if the node or index specified is invalid.<br>Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.|
 
 ### OH_ArkUI_GetRouterPageName()
 
@@ -463,9 +463,9 @@ Obtains the name of the **Router** page where the specified node is located.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| char* buffer | Buffer to which the obtained name is written.|
+| char* buffer | Pointer to the buffer to which the obtained name is written.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | Length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     Minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     pointer to the minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
@@ -492,9 +492,9 @@ Obtains the path of the **Router** page where the specified node is located.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| char* buffer | Buffer to which the page path is written.|
+| char* buffer | Pointer to the buffer to which the page path is written.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | Length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     Minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     pointer to the minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
@@ -521,7 +521,7 @@ Obtains the status of the **Router** page where the specified node is located.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| [ArkUI_RouterPageState](capi-native-type-h.md#arkui_routerpagestate)* state | Status of the **Router** page.|
+| [ArkUI_RouterPageState](capi-native-type-h.md#arkui_routerpagestate)* state | Pointer to the status of the **Router** page. The result, if obtained successfully, is written back to this parameter.|
 
 **Return value**
 
@@ -548,9 +548,9 @@ Obtains the ID of the **Router** page where the specified node is located.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| char* buffer | Buffer to which the page ID is written.|
+| char* buffer | Pointer to the buffer to which the page ID is written.|
 | int32_t bufferSize | Buffer size.|
-| int32_t* writeLength | Length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     Minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned;                     pointer to the minimum size of the buffer required to hold the target when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
@@ -623,7 +623,7 @@ Registers a callback function to be executed during the next frame rendering. Th
 | Name| Description|
 | -- | -- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | Pointer to the [UIContext](arkui-ts/ts-custom-component-api.md#uicontext) object, which is used to bind an instance.|
-| void* userData | Custom event parameter, which is passed in the callback when the event is triggered.|
+| void* userData | Pointer to the custom event parameter, which is passed in the callback when the event is triggered.|
 | callback | Custom callback function.|
 | uint64_t nanoTimestamp | Timestamp of the frame signal.|
 | uint32_t frameCount | Frame number.|
@@ -653,7 +653,7 @@ Registers a callback function that will be executed after the rendering of the n
 | Name| Description|
 | -- | -- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | **UIContext** object used to bind the instance.|
-| void* userData | Custom event parameter, which is passed in the callback when the custom callback is triggered.|
+| void* userData | Pointer to the custom event parameter, which is passed in the callback when the custom callback is triggered.|
 | callback | Custom callback function, which is executed when the remaining time until the next frame event exceeds 1 ms.|
 | uint64_t nanoTimeLeft | Remaining time after the next frame is rendered.|
 | uint32_t frameCount | Frame number.|

@@ -5,6 +5,7 @@
 <!--Designer: @liveery-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:50:12.929Z pushedAt=2026-06-15T02:39:36.664Z -->
 
 The **device** module provides APIs for checking information about the current device.
 
@@ -21,10 +22,10 @@ The **device** module provides APIs for checking information about the current d
 ## Modules to Import
 
 ```typescript
-import device from '@system.device';
+import Device from '@system.device';
 ```
-
-## device.getInfo<sup>(deprecated)</sup>
+## Device
+## Device.getInfo<sup>(deprecated)</sup>
 
 getInfo(options?: GetDeviceOptions): void
 
@@ -53,7 +54,7 @@ export default class Page {
     }
 
     try {
-      device.getInfo({
+      Device.getInfo({
         success: (data: DeviceData) => {
           console.info('Device information obtained successfully. Device brand:' + data.brand);
         },
@@ -119,7 +120,7 @@ JS example:
 
 ```js
 //xxx.js
-import device from '@system.device';
+import Device from '@system.device';
 
 export default {
     data: {
@@ -128,7 +129,7 @@ export default {
     
     getDeviceInfo() {
         try {
-            device.getInfo({
+            Device.getInfo({
                 success: (data) => {
                     console.info('Device information obtained successfully. Device brand:' + data.brand);
                     this.brandInfo = 'Device brand: ' + data.brand;

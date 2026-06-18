@@ -1,10 +1,12 @@
 # Interface (ManualFocus)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leoqsl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=417fc360382b810eaca71d157c09ed3f2422bbbb translatedAt=2026-06-10T02:10:36.974Z pushedAt=2026-06-10T05:56:30.865Z -->
 
 **ManualFocus** inherits from [ManualFocusQuery](arkts-apis-camera-ManualFocusQuery.md).
 
@@ -68,7 +70,7 @@ function getFocusDistance(photoSession: camera.PhotoSession): number {
 
 setFocusDistance(distance: number): void
 
-Sets the focus distance, in the range [0.0, 1.0], where **0.0** indicates the shortest achievable focus distance and **1.0** indicates the longest focus distance. The default value is **1.0**.
+Sets the focus distance, in the range [0.0, 1.0], where **0.0** indicates the shortest achievable focus distance and **1.0** indicates the longest focus distance. The default value is **1.0**. If the value of the input parameter is out of range, the nearest boundary value is used.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 

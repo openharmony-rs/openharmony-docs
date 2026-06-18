@@ -1,16 +1,18 @@
 # xcomponent
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9fc8de61c9856085ad7066dda1e30828589acb6a translatedAt=2026-06-09T03:14:36.020Z pushedAt=2026-06-09T07:48:43.010Z -->
 
 > **NOTE**
 > 
 > This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
-The **\<xcomponent>** displays the components to which the EGL/OpenGLES or media data is written.
+The **\<xcomponent>** displays the components to which the EGL/OpenGL ES or media data is written.
 
 ## Required Permissions
 
@@ -72,7 +74,7 @@ export default {
     onload() {
         var surfaceId = this.$element('xcomponent').getXComponentSurfaceId();
         camera.createPreviewOutput(surfaceId).then((previewOutput) => {
-            console.log('Promise returned with the PreviewOutput instance');
+            console.info('Promise returned with the PreviewOutput instance');
         })
     }
 }

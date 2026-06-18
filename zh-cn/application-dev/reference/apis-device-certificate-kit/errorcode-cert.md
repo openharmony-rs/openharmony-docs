@@ -38,7 +38,7 @@ Runtime error.
 
 **错误描述**
 
-运行时外部错误。
+运行时错误。
 
 **可能原因**
 
@@ -52,7 +52,7 @@ Runtime error.
 
 **错误信息**
 
-Indicates that parameter check failed.
+Parameter check failed.
 
 **错误描述**
 
@@ -66,7 +66,7 @@ Indicates that parameter check failed.
 
 检查输入参数的正确性。
 
-## 19030001 算法相关的操作错误，调用三方算法库API出错
+## 19030001 调用三方算法库API出错
 
 **错误信息**
 
@@ -161,7 +161,7 @@ Failed to obtain the certificate issuer.
 
 检查证书的正确性。
 
-## 19030006 证书的密钥用途不包括证书签名
+## 19030006 证书的密钥用途不含证书签名
 
 **错误信息**
 
@@ -179,7 +179,7 @@ The key cannot be used for signing a certificate.
 
 检查证书的正确性。
 
-## 19030007 证书的密钥用途不包括数字签名
+## 19030007 证书的密钥用途不含数字签名
 
 **错误信息**
 
@@ -201,7 +201,7 @@ The key cannot be used for digital signature.
 
 **错误信息**
 
-The password may be wrong.
+Maybe wrong password.
 
 **错误描述**
 

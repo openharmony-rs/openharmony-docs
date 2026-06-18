@@ -1,10 +1,11 @@
 # MDM Kit Development
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:11:02.548Z pushedAt=2026-06-16T14:10:20.814Z -->
 
 ## Introduction
 
@@ -61,7 +62,7 @@ Before declaring the required permissions, ensure that the [basic principles for
 1. Import modules. MDM Kit provides a wide variety of APIs for application management, communication management, security management, feature restriction management, system management, device settings and query, device control, and more. Import related modules based on service requirements. In this example, **adminManager** and **restrictions** are imported.
 
    <!-- @[import_mdm_kit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
-   
+
    ``` TypeScript
    import { adminManager, restrictions } from '@kit.MDMKit';
    ```
@@ -70,7 +71,7 @@ Before declaring the required permissions, ensure that the [basic principles for
 2. Call APIs to implement related functionalities. For example, disable Wi-Fi for devices.
 
    <!-- @[set_disallowed_policy_wifi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->
-   
+
    ``` TypeScript
    import { adminManager, restrictions } from '@kit.MDMKit';
    // ...

@@ -1,15 +1,16 @@
 # slot
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @seaside_wu1-->
 <!--Designer: @shiyu_huang-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b9b716c1423f6952b7169df5eb4de15f02019de4 translatedAt=2026-06-10T02:07:11.310Z pushedAt=2026-06-10T03:02:02.006Z -->
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
-
+>  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Default Slot
 
@@ -24,6 +25,7 @@ You can use the **\<slot>** tag to create a slot inside a custom component to fi
 ```
 
 The following references the custom component:
+
 ```html
 <!-- xxx.hml --> 
  <element name='comp' src='../common/component/comp.hml'></element>  
@@ -33,7 +35,6 @@ The following references the custom component:
    </comp>  
  </div>
 ```
-
 
 ## Named Slot
 
@@ -49,6 +50,7 @@ When multiple slots are needed inside a custom component, you can name them, so 
 ```
 
 The following references the custom component:
+
 ```html
 <!-- xxx.hml --> 
  <element name='comp' src='../common/component/comp.hml'></element>  

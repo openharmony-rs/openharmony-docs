@@ -1,10 +1,12 @@
 # Interface (WhiteBalance)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d0c7a5fb2bc1f1b1c7630c4a5886ec88f6136925 translatedAt=2026-06-09T10:28:00.861Z pushedAt=2026-06-10T01:59:42.646Z -->
 
 **WhiteBalance** inherits from [WhiteBalanceQuery](arkts-apis-camera-WhiteBalanceQuery.md).
 
@@ -41,7 +43,7 @@ Sets a white balance mode. Before the setting, run [isWhiteBalanceModeSupported]
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
@@ -81,7 +83,7 @@ Obtains the white balance mode in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -124,7 +126,7 @@ Before the setting, run [getWhiteBalanceRange](arkts-apis-camera-WhiteBalanceQue
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
@@ -165,7 +167,7 @@ Obtains the current white balance value.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 

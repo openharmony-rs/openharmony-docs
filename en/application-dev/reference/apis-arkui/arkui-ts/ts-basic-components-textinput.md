@@ -2943,6 +2943,8 @@ struct EllipsisModeExample {
 }
 ```
 
+![textInputEllipsisMode](figures/textInputEllipsisMode.gif)
+
 ### Example 17: Implementing Callbacks for Input Status Changes and More
 
 This example uses the [onEditChange](#oneditchange8), [onCopy](#oncopy8), [onCut](#oncut8), [onPaste](#onpaste8) (available since API version 8), and [onContentScroll](#oncontentscroll10) (available since API version 10) callbacks to monitor the input status change and handle copy, cut, paste, and content scrolling events. The [selectAll](#selectall11) (available since API version 11) attribute can be used to determine whether to select all text in the text box in the initial state.
@@ -3424,6 +3426,7 @@ struct demo {
 
 ```
 
+![textInput_barState](figures/textInput_barState.gif)
 
 ### Example 26: Setting Leading Punctuation Compression
 
@@ -3519,6 +3522,7 @@ struct Index {
 }
 ```
 
+![textInputIncludeFontPadding](figures/TextInput_IncludeFontPadding.gif)
 
 ### Example 28: Setting the Drag Preview Style for Text Being Dragged
 
@@ -3619,6 +3623,7 @@ struct TextInputExample {
 }
 ```
 
+![textTextInputDirection](figures/textTextInputDirection.PNG)
 
 ### Example 31: Scrolling the Text in a Specified Range to the Visible Area
 
@@ -3647,6 +3652,6 @@ struct TextInputExample {
 }
 ```
 
-
+![textinputscrolltovisible](figures/textinput_scroll_to_visible.gif)
 
 <!--no_check-->

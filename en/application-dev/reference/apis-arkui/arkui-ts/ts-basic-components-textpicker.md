@@ -21,7 +21,7 @@
 
 ## Child Components
 
-Not supported
+This component is a basic component and does not contain child components.
 
 
 ## APIs
@@ -46,10 +46,11 @@ Defines the configuration options of the text picker.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| range | string[]&nbsp;\|&nbsp;string[][]<sup>10+</sup> \| [Resource](ts-types.md#resource)&nbsp;\|<br>[TextPickerRangeContent](#textpickerrangecontent10)[]<sup>10+</sup>&nbsp;\|&nbsp;[TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<sup>10+</sup> | No| No| Data selection range of the picker. This parameter cannot be set to an empty array. If it is set to an empty array, no value is displayed. If it is dynamically changed to an empty array, the current valid value remains displayed.<br>**NOTE**<br>1. Single-column pickers: string[], [Resource](ts-types.md#resource), or [TextPickerRangeContent](#textpickerrangecontent10)[]<br>2. Multi-column independent pickers: string[][]<br>3. Multi-column cascading pickers: [TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<br>4. The Resource type supports only [strarray.json](../../../quick-start/resource-categories-and-access.md#resource-group-directories).<br>5. The type and number of columns in the range cannot be dynamically modified.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| selected | number&nbsp;\|&nbsp;number[]<sup>10+</sup> | No| Yes| Index of the selected item in the data list. The index is zero-based.<br>Default value: **0**<br>**NOTE**<br>1. Single-column pickers: number<br>2. Multi-column pickers: number[]<br>3. Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| range | string[]&nbsp;\|&nbsp;string[][]<sup>10+</sup> \| [Resource](ts-types.md#resource)&nbsp;\|<br>[TextPickerRangeContent](#textpickerrangecontent10)[]<sup>10+</sup>&nbsp;\|&nbsp;[TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<sup>10+</sup>| No| No| Data selection range of the picker. This parameter cannot be set to an empty array. If it is set to an empty array, no value is displayed. If it is dynamically changed to an empty array, the current valid value remains displayed.<br>**NOTE**<br>1. Single-column pickers: string[], [Resource](ts-types.md#resource), or [TextPickerRangeContent](#textpickerrangecontent10)[]<br>2. Multi-column independent pickers: string[][]<br>3. Multi-column cascading pickers: [TextCascadePickerRangeContent](#textcascadepickerrangecontent10)[]<br>4. The Resource type supports only [strarray.json](../../../quick-start/resource-categories-and-access.md#resource-group-directories).<br>5. The type and number of columns in the range cannot be dynamically modified.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| selected | number&nbsp;\|&nbsp;number[]<sup>10+</sup> | No| Yes| Index of the selected item or items in the data list. The index is zero-based.<br>Default value: **0**<br>**NOTE**<br>1. Use the number type for single-column pickers.<br>2. Use the number[] type for multi-column pickers.<br>3. Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | value | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)[] | No| Yes| Value of the selected item. The priority of this parameter is lower than that of **selected**.<br>Default value: value of the first item in the data list.<br> **NOTE**<br>1. Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>2. The [Resource](ts-types.md#resource) type is supported since API version 20.<br>3. This parameter works only when the picker contains text only. It does not work when the picker contains images or mixed content.<br>4. Single-column pickers: [ResourceStr](ts-types.md#resourcestr)<br>5. Multi-column pickers: [ResourceStr](ts-types.md#resourcestr)[]<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | columnWidths<sup>18+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)[] | No| Yes| Custom widths for each column.<br>Default value: Each column has equal width, calculated by dividing the total component width by the number of columns.<br>**NOTE**<br>1. Text truncation occurs when content exceeds column width.<br>2. Invalid values are treated as the default value.<br>3. Individual array elements can be **Undefined** or **Null**, but the entire array cannot be **Undefined[]** or **Null[]**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
@@ -183,7 +184,7 @@ Sets the text style of edge items (the second item above or below the selected i
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Text style of edge items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)>| Yes  | Text style of edge items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -243,7 +244,7 @@ Sets the text style of candidate items (the first item immediately above or belo
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Style of candidate items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)>| Yes  | Style of candidate items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -301,7 +302,7 @@ Sets the text style of the selected item, covering the following: text color, fo
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)> | Yes  | Text style of the selected item, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)\|[TextPickerTextStyle](#textpickertextstyle15)>| Yes  | Text style of the selected item, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 ### selectedIndex<sup>10+</sup>
 
@@ -382,7 +383,7 @@ If the sum of **startMargin** and **endMargin** in [DividerOptions](#divideropti
 **Parameters**
 | Name| Type   | Mandatory| Description                                                                 |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| value | [DividerOptions](#divideroptions12) \| null | Yes  | Default value:<br>{<br>strokeWidth: '2px', <br>startMargin: 0, <br>endMargin: 0, <br>color: '#33000000'<br>}<br>1. If **textDivider** is a valid [DividerOptions](#divideroptions12) object, the divider is rendered using the specified style.<br>2. If **textDivider** is **null**, the divider is hidden.|
+| value | [DividerOptions](#divideroptions12) \| null| Yes  | Default value:<br>{<br>strokeWidth: '2px', <br>startMargin: 0, <br>endMargin: 0, <br>color: '#33000000'<br>}<br>1. If **textDivider** is a valid [DividerOptions](#divideroptions12) object, the divider is rendered using the specified style.<br>2. If **textDivider** is **null**, the divider is hidden.|
 
 ### divider<sup>18+</sup>
 
@@ -454,7 +455,7 @@ Sets whether to disable the animation effect of text style changes during scroll
 
 defaultTextStyle(style: TextPickerTextStyle)
 
-Sets the text style of the items when the text style change animation during the scrolling process is disabled. This setting takes effect only when [disableTextStyleAnimation](#disabletextstyleanimation15) is set to **true**.
+Sets the text style of the items when the text style change animation during scrolling is disabled. This setting takes effect only when [disableTextStyleAnimation](#disabletextstyleanimation15) is set to **true**.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -464,7 +465,7 @@ Sets the text style of the items when the text style change animation during the
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [TextPickerTextStyle](#textpickertextstyle15) | Yes  | Text style of the items when the text style change animation during the scrolling process is disabled.<br>Default value: same as the default value of the [Text](ts-basic-components-text.md) component|
+| style  | [TextPickerTextStyle](#textpickertextstyle15) | Yes  | Text style of the items when the text style change animation during scrolling is disabled.<br>Default value: same as the default value of the [Text](ts-basic-components-text.md) component|
 
 To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
 
@@ -1045,7 +1046,7 @@ struct TextPickerExample {
         .canLoop(this.isLoop)
 
       Row() {
-        Text('Loopable scrolling').fontSize(20)
+        Text('Loop scroll').fontSize(20)
 
         Toggle({ type: ToggleType.Switch, isOn: false })
           .onChange((isOn: boolean) => {
@@ -1234,4 +1235,3 @@ struct TextPickerExample {
 ```
 
 ![textpicker](figures/TextPickerDemo11.gif)
-<!--no_check-->

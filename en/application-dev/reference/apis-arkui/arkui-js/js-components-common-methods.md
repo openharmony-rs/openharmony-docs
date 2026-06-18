@@ -1,34 +1,37 @@
 # Universal Methods
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9fc8de61c9856085ad7066dda1e30828589acb6a translatedAt=2026-06-09T03:14:34.610Z pushedAt=2026-06-10T02:01:54.084Z -->
 
 >  **NOTE**
 >
->  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
+>  Supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
 After a component is assigned the **id** attribute, you can use the ID to obtain the component objects and call methods on them.
-
 
 ## animate
 
 animate( keyframes: Keyframes, options: Options): void
+
+A list of objects for setting animation styles and animation attributes.
 
 **Parameters**
 
 | Name      | Type     | Mandatory  | Description                                  |
 | --------- | --------- | ---- | ------------------------------------ |
 | keyframes | keyframes | Yes   | Animation style.                              |
-| options   | Options   | Yes   | Array of objects used to set animation attributes. For details, see **Options**.|
+| options   | Options   | Yes   | Array of objects used to set animation attributes. For details, see **Table 3** Options.|
 
   **Table 1** keyframes
 
 | Name    | Type                | Description                                    |
 | ------ | ------------------ | -------------------------------------- |
-| frames | Array&lt;Style&gt; | Array of objects used to set animation attributes. For details, see **Style attributes**.|
+| frames | Array&lt;Style&gt; | Array of objects used to set animation attributes. For details, see **Table 2** Style attributes.|
 
   **Table 2** Style attributes
 
@@ -48,7 +51,7 @@ animate( keyframes: Keyframes, options: Options): void
 | Name                    | Type                        | Default Value   | Description                                      |
 | ---------------------- | -------------------------- | ------ | ---------------------------------------- |
 | duration               | number                     | 0      | Duration for playing the animation, in milliseconds.                       |
-| easing                 | string                     | linear | Time curve of the animation. For details about the supported types, see **Available values of the easing attribute**.          |
+| easing                 | string                     | linear | Time curve of the animation. For details about the supported types, see **Table 4** Available values of the easing attribute.          |
 | delay                  | number                     | 0      | Delay for the animation start. The default value indicates no delay.                   |
 | iterations             | number \| string | 1      | Number of times the animation will be played. **number** indicates a fixed number of playback operations, and **Infinity** indicates an unlimited number of playback operations.|
 | direction<sup>6+</sup> | string                     | normal | Mode of playing the animation.<br>**normal**: Plays the animation in forward loop mode.<br>**reverse**: Plays the animation in reverse loop mode.<br>**alternate**: Plays the animation in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in backward direction. <br>**alternate-reverse**: plays the animation in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction.|
@@ -75,8 +78,8 @@ animate( keyframes: Keyframes, options: Options): void
 
 | Name       | Type     | Description                                      |
 | --------- | ------- | ---------------------------------------- |
-| finished  | boolean | Read-only attribute, which indicates whether the animation playback is complete.                     |
-| pending   | boolean | Read-only attribute, which indicates whether the animation is waiting for the completion of other asynchronous operations (for example, start an animation with a delay).|
+| finished  | boolean | Read-only attribute, which indicates whether the animation playback is complete. The value **true** indicates the animation playback is complete, and **false** indicates the opposite.                     |
+| pending   | boolean | Read-only attribute, which indicates whether the animation is waiting for the completion of other asynchronous operations (for example, start an animation with a delay). The value **true** indicates the animation is waiting, and **false** indicates the opposite.|
 | playState | string  | Read-write attribute, which indicates the playback status of the animation:<br>- **idle**: The animation is not running (playback ended or not started).<br>- **running**: The animation is running.<br>- **paused**: The animation is paused.<br>- **finished**: The animation finishes playing.|
 | startTime | number  | Read-write attribute, which indicates the animation start time. This attribute is similar to **delay** in the **options** attribute. |
 
@@ -100,6 +103,7 @@ animate( keyframes: Keyframes, options: Options): void
 | repeat             | The animation repeats. |
 
 **Example**
+
 ```html
 <!-- xxx.hml -->
 <div class="container">
@@ -204,11 +208,13 @@ Obtains the size of the element and its position relative to the window.
 | top    | number | Offset between the upper boundary of the element and the window.|
 
 **Example**
+
 ```js
 // xxx.js
 var rect = this.$element('id').getBoundingClientRect();
 console.info(`current element position is ${rect.left}, ${rect.top}`);
 ```
+
 ## createIntersectionObserver
 
 createIntersectionObserver(param?:  ObserverParam): Observer
@@ -229,7 +235,7 @@ Listens for the visibility of the element on the current page.
 
 **Return value**
 
-  **Table 7** Methods supported Observer<sup>6+</sup>
+  **Table 7** Methods supported by Observer<sup>6+</sup>
 
 | Method       | Parameter                     | Description                                 |
 | --------- | ----------------------- | ----------------------------------- |
@@ -237,6 +243,7 @@ Listens for the visibility of the element on the current page.
 | unobserve | -                       | Unsubscribes from events of the observed object.                   |
 
 **Example**
+
 ```js
 // xxx.js
 let observer = this.$element('broad').createIntersectionObserver({

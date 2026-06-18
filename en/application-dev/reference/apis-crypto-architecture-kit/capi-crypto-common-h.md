@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:05:30.369Z pushedAt=2026-06-10T10:59:32.509Z -->
 
 ## **Overview**
 
@@ -96,7 +97,6 @@ void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 Releases a **dataBlob** instance.
 
 **Since**: 12
-
 
 **Parameters**
 

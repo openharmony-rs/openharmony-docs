@@ -4,7 +4,8 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:06:13.144Z pushedAt=2026-06-16T14:13:13.784Z -->
 
 The **deviceConfig** tag contains device-specific configuration of the application, including properties such as **default**, **tv**, **car**, and **wearable**.
 

@@ -1,10 +1,12 @@
 # picker
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9fc8de61c9856085ad7066dda1e30828589acb6a translatedAt=2026-06-09T03:13:25.096Z pushedAt=2026-06-10T02:05:16.738Z -->
 
 >  **NOTE**
 >
@@ -12,16 +14,13 @@
 
 The **\<picker>** component supports common, date, time, date and time, and multi-column text selectors.
 
-
 ## Required Permissions
 
 None
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -30,7 +29,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | Name  | Type    | Default Value | Mandatory  | Description                                      |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | type | string | -    | No   | Picker type. Dynamic modification is not supported. The options are as follows:<br>- **text**: text selector.<br>- **date**: date selector.<br>- **time**: time selector.<br>- **datetime**: date and time selector.<br>- **multi-text**: multi-column text selector.|
-
 
 ### Common Selector
 
@@ -41,7 +39,6 @@ When **type** is set to **text**, a common selector is used.
 | range    | Array  | -    | No   | Value range of the common selector, for example, **["15", "20", "25"]**.<br>Use the data binding mode, for example, `range = {{data}}`. Declare the corresponding variable `data: ["15", "20", "25"]` in JavaScript.|
 | selected | string | 0    | No   | Default value of the common selector. The value should be the index of **range**.|
 | value    | string | -    | No   | Value of the common selector.                              |
-
 
 ### Date Selector
 
@@ -56,18 +53,16 @@ When **type** is set to **date**, a date selector is used.
 | lunar<sup>5+</sup> | boolean      | false      | No   | Whether the pop-up window displays the lunar calendar.                     |
 | lunarswitch        | boolean      | false      | No   | Whether the date selector displays the lunar calendar switch, which is used to switch between the Gregorian calendar and lunar calendar. The value **true** means to display the lunar calendar switch for users to switch between the Gregorian calendar and lunar calendar. The value **false** means not to display the lunar calendar switch.<br>When both **lunarswitch** and **lunar** are set to **true**, the switch is selected.|
 
-
 ### Time Selector
 
 When **type** is set to **time**, a time selector is used.
 
 | Name           | Type     | Default Value                                | Mandatory  | Description                                      |
 | ------------- | ------- | ----------------------------------- | ---- | ---------------------------------------- |
-| containsecond | boolean | false                               | No   | Whether seconds are contained.                           |
-| selected      | string  | Current time                               | No   | Default value of the time selector, in format of HH:mm. If seconds are contained, the format is HH:mm:ss.<br> |
+| containsecond | boolean | false                               | No   | Whether seconds are contained. <br/>Default value: **false**, indicating that seconds are not contained.                          |
+| selected      | string  | Current time                               | No   | Default value of the time selector, in format of *HH:mm*. If seconds are contained, the format is *HH:mm:ss*.<br> |
 | value         | string  | -                                   | No   | Value of the time selector.                              |
-| hours         | number  | 24<sup>1-4</sup><br>-<sup>5+</sup> | No   | Time format used by the time selector. Available values are as follows:<br>- **12**: displayed in 12-hour format and distinguished by a.m. and p.m.<br>- **24**: displayed in 24-hour format.<br>Since API version 5, the default value is the most commonly-used hour format in the current locale.|
-
+| hours         | number  | 24<sup>1-4</sup><br/>-<sup>5+</sup> | No    | Time format used by the time selector. Available values are as follows:<br/>-&nbsp;**12**: displayed in 12-hour format and distinguished by a.m. and p.m.<br/>-&nbsp;**24**: displayed in 24-hour format.<br/>Since API version 5, the default value is the most commonly-used hour format in the current locale. |
 
 ### Date and Time Selector
 
@@ -77,10 +72,9 @@ When **type** is set to **datetime**, a date and time selector is used.
 | ------------------ | ------- | ----------------------------------- | ---- | ---------------------------------------- |
 | selected           | string  | Current date and time                             | No   | Default value of the date and time selector. The value can be in either of the following formats:<br>- MM-DD-HH-mm<br>- YYYY-MM-DD-HH-mm<br>If the year is not set, the current year is used by default. The value you set is the date selected by default in the pop-up window.|
 | value              | string  | -                                   | Yes   | Value of the date and time selector.                            |
-| hours              | number  | 24<sup>1-4</sup><br>-<sup>5+</sup> | No   | Time format used by the date and time selector. Available values are as follows:<br>- **12**: displayed in 12-hour format and distinguished by a.m. and p.m.<br>- **24**: displayed in 24-hour format.<br>Since API version 5, the default value is the most commonly-used hour format in the current locale.|
+| hours              | number  | 24<sup>1-4</sup><br/>-<sup>5+</sup> | No    | Time format used by the date and time selector. Available values are as follows:<br/>-&nbsp;**12**: displayed in 12-hour format and distinguished by a.m. and p.m.<br/>-&nbsp;**24**: displayed in 24-hour format.<br/>Since API version 5, the default value is the most commonly-used hour format in the current locale. |
 | lunar<sup>5+</sup> | boolean | false                               | No   | Whether the pop-up window displays the lunar calendar.                   |
 | lunarswitch        | boolean | false                               | No   | Whether the date selector displays the lunar calendar switch, which is used to switch between the Gregorian calendar and lunar calendar. The value **true** means to display the lunar calendar switch for users to switch between the Gregorian calendar and lunar calendar. The value **false** means not to display the lunar calendar switch.<br>When both **lunarswitch** and **lunar** are set to **true**, the switch is selected.|
-
 
 ### Multi-Column Text Selector
 
@@ -90,9 +84,8 @@ When **type** is set to **multi-text**, a multi-column text selector is used.
 | -------- | ------- | --------- | ---- | ---------------------------------------- |
 | columns  | number  | -         | Yes   | Number of columns in the multi-column text selector.                           |
 | range    | Two-dimensional array| -         | No   | Items of the multi-column text selector. **range** is a two-dimensional array that indicates the number of columns. Each item in the array indicates the data of each column, for example, **[["a", "b"], ["c", "d"]]**.<br>Use the data binding mode, for example, `range = {{data}}`. Declare the corresponding variable `data: ["15", "20", "25"]` in JavaScript.|
-| selected | Array   | [0,0,0,…] | No   | Default value of the multi-column text selector, which is an array consisting of the indexes of the selected items in each column.|
+| selected | Array   | [0,0,0,...] | No   | Default value of the multi-column text selector, which is an array consisting of the indexes of the selected items in each column.|
 | value    | Array   | -         | No   | Value of the multi-column text selector, which is an array consisting of the values of the selected items in each column.           |
-
 
 ## Styles
 
@@ -111,11 +104,9 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | line-height                | &lt;length&gt;             | 0px        | No   | Text line height of the selector.                               |
 | column-height<sup>5+</sup> | &lt;length&gt;             | -          | No   | Height of the selector option list.                            |
 
-
 ## Events
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
-
 
 ### Common Selector
 
@@ -124,14 +115,12 @@ In addition to the [universal events](js-components-common-events.md), the follo
 | change | { newValue: newValue, newSelected: newSelected } | Triggered when an item is selected and the OK button is clicked in the displayed pop-up window. **newSelected** is the index.|
 | cancel | -                                        | Triggered when the cancel button is clicked.                     |
 
-
 ### Date Selector
 
 | Name    | Parameter                                      | Description                                      |
 | ------ | ---------------------------------------- | ---------------------------------------- |
-| change | { year: year, month: month, day: day } | Triggered when an item is selected and the OK button is clicked in the displayed pop-up window.<br>The value of **month** ranges from **0** (January) to **11** (December) since API version 5.|
+| change | {&nbsp;year:&nbsp;year,&nbsp;month:&nbsp;month,&nbsp;day:&nbsp;day&nbsp;} | Triggered when an item is selected and the OK button is clicked in the displayed pop-up window.<br/>The value of **month** ranges from **0** (January) to **11** (December) since API version 5. |
 | cancel | -                                        | Triggered when the cancel button is clicked.                     |
-
 
 ### Date and Time Selector
 
@@ -140,7 +129,6 @@ In addition to the [universal events](js-components-common-events.md), the follo
 | change | { year: year, month: month, day: day,  hour: hour, minute: minute} | Triggered when an item is selected and the OK button is clicked in the displayed pop-up window.|
 | cancel | -                                        | Triggered when the cancel button is clicked.         |
 
-
 ### Time Selector
 
 | Name    | Parameter                                      | Description                                      |
@@ -148,15 +136,13 @@ In addition to the [universal events](js-components-common-events.md), the follo
 | change | { hour: hour, minute: minute, [second: second] } | Triggered when an item is selected and the OK button is clicked in the displayed pop-up window. If **containsecond** is set to true, value contains seconds.|
 | cancel | -                                        | Triggered when the cancel button is clicked.                     |
 
-
 ### Multi-Column Text Selector
 
 | Name          | Parameter                                      | Description                                      |
 | ------------ | ---------------------------------------- | ---------------------------------------- |
-| change       | { newValue: [newValue1, newValue2, newValue3, …], newSelected:[newSelected1, newSelected2, newSelected3, …]  | Triggered when an item is selected and the OK button is clicked in the displayed pop-up window.<br>- **newValue** is an array consisting of the values of the selected items.<br>- **newSelected** is an array consisting of the indexes of the selected items. The lengths of **newValue** and **newSelected** are the same as the length of **range**.|
+| change       | { newValue: [newValue1, newValue2, newValue3, ...], newSelected:[newSelected1, newSelected2, newSelected3, ...]  | Triggered when an item is selected and the OK button is clicked in the displayed pop-up window.<br>- **newValue** is an array consisting of the values of the selected items.<br>- **newSelected** is an array consisting of the indexes of the selected items. The lengths of **newValue** and **newSelected** are the same as the length of **range**.|
 | columnchange | { column: column, newValue: newValue, newSelected: newSelected } | Triggered when the value of a column in the multi-column selector changes.<br>- **column**: column whose value has changed.<br>- **newValue**: selected value.<br>- **newSelected**: index of the selected value.|
 | cancel       | -                                        | Triggered when the cancel button is clicked.                     |
-
 
 ## Methods
 
@@ -165,7 +151,6 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 | Name  | Parameter  | Description             |
 | ---- | ---- | --------------- |
 | show | -    | Shows the picker.|
-
 
 ## Example
 
@@ -324,4 +309,3 @@ export default {
 }
 ```
 
-![mmmm](figures/mmmm.gif)

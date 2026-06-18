@@ -1,10 +1,12 @@
 # @ohos.file.volumeManager (Volume Management) (System API)
+
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @ning-jingyou-->
+<!--Designer: @renguang1116; @wang_zhangjun-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:05:27.191Z pushedAt=2026-06-10T10:59:32.499Z -->
 
 The **volumeManager** module provides APIs for querying and managing volumes and disks, including querying volume information, mounting or unmounting a volume, partitioning a disk, and formatting a volume.
 
@@ -41,7 +43,7 @@ Obtains information about all volumes of this external storage device. This API 
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -82,7 +84,7 @@ Obtains information about all volumes of this external storage device. This API 
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -127,7 +129,7 @@ Mounts a volume. This API uses a promise to return the result. Currently, only t
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -174,7 +176,7 @@ Mounts a volume. This API uses an asynchronous callback to return the result. Cu
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -224,7 +226,7 @@ Unmounts a volume. This API uses a promise to return the result.
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -271,7 +273,7 @@ Unmounts a volume. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -321,7 +323,7 @@ Obtains information about a volume based on the universally unique identifier (U
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -365,7 +367,7 @@ Obtains information about a volume based on the UUID. This API uses an asynchron
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -412,7 +414,7 @@ Obtains information about a volume based on the volume ID. This API uses a promi
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -456,7 +458,7 @@ Obtains information about a volume based on the volume ID. This API uses an asyn
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -479,7 +481,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
-Sets volume description. This API uses a promise to return the result.
+Sets volume description. This API uses a promise to return the result. Currently, only the device descriptions of NTFS and exFAT file systems can be modified, and only for volume devices in the unmounted state.
 
 **System API**: This is a system API.
 
@@ -504,7 +506,7 @@ Sets volume description. This API uses a promise to return the result.
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -532,7 +534,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&lt;void&gt;): void
 
-Sets volume description. This API uses an asynchronous callback to return the result.
+Sets volume description. This API uses an asynchronous callback to return the result. Currently, only the device descriptions of NTFS and exFAT file systems can be modified, and only for volume devices in the unmounted state.
 
 **System API**: This is a system API.
 
@@ -552,7 +554,7 @@ Sets volume description. This API uses an asynchronous callback to return the re
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -578,7 +580,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
-Formats a volume. This API uses a promise to return the result. Currently, only the virtual file allocation table (VFAT) and exFAT file systems are supported. Only unmounted volumes can be formatted. After a volume is formatted, the UUID, mounting path, and description of the volume will change.
+Formats a volume. This API uses a promise to return the result. Currently, only the VFAT and exFAT file systems are supported. Only unmounted volumes can be formatted. After a volume is formatted, the UUID, mounting path, and description of the volume will change.
 
 **System API**: This is a system API.
 
@@ -603,7 +605,7 @@ Formats a volume. This API uses a promise to return the result. Currently, only 
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -631,7 +633,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): void
 
-Formats a volume. This API uses an asynchronous callback to return the result. Currently, only the virtual file allocation table (VFAT) and exFAT file systems are supported. Only unmounted volumes can be formatted. After a volume is formatted, the UUID, mounting path, and description of the volume will change.
+Formats a volume. This API uses an asynchronous callback to return the result. Currently, only the VFAT and exFAT file systems are supported. Only unmounted volumes can be formatted. After a volume is formatted, the UUID, mounting path, and description of the volume will change.
 
 **System API**: This is a system API.
 
@@ -651,7 +653,7 @@ Formats a volume. This API uses an asynchronous callback to return the result. C
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -677,7 +679,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 partition(diskId: string, type: number): Promise&lt;void&gt;
 
-Partitions a disk. This API uses a promise to return the result. The system supports access to multi-partition disks. Currently, this API can partition a disk into only one partition.
+Partitions a disk. This API uses a promise to return the result. The system supports access to multi-partition disks. Currently, this API can partition a disk into only one partition. Partitioning optical discs is not supported.
 
 **System API**: This is a system API.
 
@@ -702,7 +704,7 @@ Partitions a disk. This API uses a promise to return the result. The system supp
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -728,7 +730,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): void
 
-Partitions a disk. This API uses an asynchronous callback to return the result. The system supports access to multi-partition disks. Currently, this API can partition a disk into only one partition.
+Partitions a disk. This API uses an asynchronous callback to return the result. The system supports access to multi-partition disks. Currently, this API can partition a disk into only one partition. Partitioning optical discs is not supported.
 
 **System API**: This is a system API.
 
@@ -748,7 +750,7 @@ Partitions a disk. This API uses an asynchronous callback to return the result. 
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -785,4 +787,4 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | removable   | boolean | No| No| Whether the volume can be removed. Currently, only removable storage devices are supported. The value **true** means the device can be removed; the value **false** means the opposite.|
 | state       | number  | No| No| Volume status.<br>**0**: The volume is unmounted.<br> **1**: The volume is being checked.<br> **2**: The volume is mounted.<br> **3**: The volume is being ejected.         |
 | path        | string  | No| No| Path of the volume mounted. Generally, the path is **/mnt/data/external/{uuid}**.        |
-| fsType<sup>12+</sup>        | string  | No| No| File system type. Common file systems are **ext2**, **vfat**, and **NTFS**.      |
+| fsType<sup>12+</sup>        | string  | No | No | File system type. Common file systems are **ext2**, **vfat**, and **NTFS**.<br>Note: ISO9660 and UDF are supported since API version 24.     |

@@ -5,6 +5,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:50:13.925Z pushedAt=2026-06-15T02:39:36.667Z -->
 
 This module provides APIs for collecting statistics on device usage.
 
@@ -52,7 +53,8 @@ Queries the application usage duration statistics based on the specified start t
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfos(0, 20000000000000, (err: BusinessError ,
   res: bundleState.BundleActiveInfoResponse ) => {
@@ -94,7 +96,8 @@ Queries the application usage duration statistics based on the specified start t
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfos(0, 20000000000000).then((res: bundleState.BundleActiveInfoResponse) => {
   console.info('BUNDLE_ACTIVE queryBundleStateInfos promise success.');
@@ -129,7 +132,8 @@ Queries the application usage duration statistics in the specified time frame at
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED, 0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleStateInfo>) => {
   if (err) {
@@ -174,7 +178,8 @@ Queries the application usage duration statistics in the specified time frame at
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED, 0, 20000000000000).then((res: Array<bundleState.BundleStateInfo>) => {
   console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise success.');
@@ -211,7 +216,8 @@ Queries events of all applications based on the specified start time and end tim
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleActiveStates(0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleActiveState>) => {
   if (err) {
@@ -255,7 +261,8 @@ Queries events of all applications based on the specified start time and end tim
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
   console.info('BUNDLE_ACTIVE queryBundleActiveStates promise success.');
@@ -288,7 +295,8 @@ Queries the priority group of this application. This API uses a promise to retur
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryAppUsagePriorityGroup().then((res: number) => {
   console.info('BUNDLE_ACTIVE QueryPackageGroup promise succeeded. result: ' + JSON.stringify(res));
@@ -317,7 +325,8 @@ Queries the priority group of this application. This API uses an asynchronous ca
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryAppUsagePriorityGroup((err: BusinessError, res: number) => {
   if(err) {
@@ -350,7 +359,8 @@ Queries events of this application based on the specified start time and end tim
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryCurrentBundleActiveStates(0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleActiveState>) => {
   if (err) {
@@ -392,7 +402,8 @@ Queries events of this application based on the specified start time and end tim
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryCurrentBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
   console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise success.');

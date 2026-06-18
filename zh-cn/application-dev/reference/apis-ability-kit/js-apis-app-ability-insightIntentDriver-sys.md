@@ -119,7 +119,7 @@ PageIntentInfo用于描述[@InsightIntentPage](./js-apis-app-ability-InsightInte
 | uiAbility | string | 是 | 否 | Ability名称。 |
 | pagePath | string | 是 | 否 | 页面名称。 |
 | navigationId | string | 是 | 否 |  表示与意图绑定[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md)的id。 |
-| navDestinationName | string | 是 | 否 | 表示与意图绑定[NavDestination组件](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)的名称。 |
+| navDestinationName | string | 是 | 否 | 表示与意图绑定[navDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)的名称。 |
 
 ## FunctionIntentInfo<sup>20+<sup>
 
@@ -178,7 +178,7 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 | outputParams | Array&lt;Record\<string, Object\>&gt; | 是 | 是 | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。 |
 | uiAbility | [UIAbilityIntentInfo](#uiabilityintentinfo23) | 是 | 是 | 表示意图绑定的UIAbility组件信息，包含"ability"字段和"executeMode"字段。 |
 | uiExtension | [UIExtensionIntentInfo](#uiextensionintentinfo23) | 是 | 是 | 表示意图绑定的UIExtensionAbility组件信息。 |
-| from | [FormIntentInfo](#formintentinfo20) | 是 | 是 | 表示意图绑定的卡片信息。 |
+| form | [FormIntentInfo](#formintentinfo20) | 是 | 是 | 表示意图绑定的卡片信息。 |
 | serviceExtension | [ServiceExtensionIntentInfo](#serviceextensionintentinfo23) | 是 | 是 | 表示意图绑定的ServiceExtensionAbility组件信息。 |
 | entities | Record\<string, Object\> | 是 | 是 | 表示意图包含的实体信息。 |
 
@@ -255,7 +255,7 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | className | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类名。 |
 | entityId | string | 是 | 否 | 表示意图实体的ID。 |
 | entityCategory | string | 是 | 否 | 表示意图实体类别。 |
-| parameters | string | 是 | 否 | 表示意图实体参数的数据格式声明，用于意图调用时定义实体参数的数据格式。 |
+| parameters | Record\<string, Object> | 是 | 否 | 表示意图实体参数的数据格式声明，用于意图调用时定义实体参数的数据格式。 |
 | parentClassName | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类的父类名。 |
 
 ## InsightIntentInfo<sup>20+<sup>
@@ -376,6 +376,8 @@ execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
+| 16000137 | Cross-device execution failed due to a connection error. <br>适用版本：26.0.0+ |
+| 16000138 | Device disconnected during cross-device intent execution. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -464,6 +466,8 @@ execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
+| 16000137 | Cross-device execution failed due to a connection error. <br>适用版本：26.0.0+ |
+| 16000138 | Device disconnected during cross-device intent execution. <br>适用版本：26.0.0+ |
 
 **示例：**
 

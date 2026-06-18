@@ -1,7 +1,7 @@
 # ArkUI_TextChangeEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_TextChangeEvent
 
 ## 概述
 
-定义组件事件的混合类型数据。
+定义文本变化事件的数据。
 
 **起始版本：** 15
 

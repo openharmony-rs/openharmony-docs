@@ -6,6 +6,8 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d0c7a5fb2bc1f1b1c7630c4a5886ec88f6136925 translatedAt=2026-06-09T10:28:54.271Z pushedAt=2026-06-10T01:59:42.681Z -->
+
 ## Overview
 
 Defines APIs for obtaining Wi-Fi switch state.
@@ -28,7 +30,7 @@ Defines APIs for obtaining Wi-Fi switch state.
 | -------- | -------- |
 | WIFI_MAX_SSID_LEN 33 | Length of the **ssid** array of the [OH_WifiLinkedInfo](capi-oh-wifi-h.md#oh_wifilinkedinfo) member variables. The value is 32 plus the terminator (\0).<br>**Since**: 24|
 | WIFI_MAC_LEN 18 | Lengths of the **macAddress** and **bssid** arrays of the [OH_WifiLinkedInfo](capi-oh-wifi-h.md#oh_wifilinkedinfo) member variables. The value is 17 plus the terminator (\0).<br>**Since**: 24|
-      
+
 ### Enums
 
 | Name| typedef Keyword| Description|
@@ -76,7 +78,6 @@ Enumerates the error codes returned by Wi-Fi APIs.
 | WIFI_NOT_SUPPORTED = 801 | Function not supported due to limited device capabilities.|
 | WIFI_OPERATION_FAILED = 2501000 | Operation failed.<br> Possible cause: The internal execution of the service fails.|
 | WIFI_STA_DISABLED = 2501001 | STA service not started.<br> Possible cause: Wi-Fi is disabled.<br>**Since**: 21|
-
 
 ### OH_WifiConnState
 
@@ -183,7 +184,7 @@ Enumerates the Wi-Fi 7 connection types.
 | OH_WIFI_LINK_DISCONNECT = -1 | Not connected.|
 | OH_WIFI_LINK_DEFAULT_LINK = 0 | Default connection.|
 | OH_WIFI_LINK_WIFI7_SINGLE_LINK = 1 | Wi-Fi 7 single-link connection.|
-| OH_WIFI_LINK_WIFI7_MLSR = 2 | Wi-Fi 7 multi-link single radio (MLSR) connection.|
+| OH_WIFI_LINK_WIFI7_MLSR = 2 | Wi-Fi 7 multi-link single radio (MLSR) connection. |
 | OH_WIFI_LINK_WIFI7_EMLSR = 3 | Wi-Fi 7 enhanced multi-link single radio (EMLSR) connection.|
 | OH_WIFI_LINK_WIFI7_STR = 4 | Wi-Fi 7 simultaneous transmit and receive (STR) connection.|
 | OH_WIFI_LINK_WIFI7_LEGACY = 5 | Wi-Fi 7 traditional mode.|
@@ -223,7 +224,7 @@ Provides the WLAN connection information. Information about the connected Wi-Fi 
 | wifiStandard | [OH_WifiStandard](capi-oh-wifi-h.md#oh_wifistandard) | No| No| Wi-Fi standard used by the connected hotspot. For details, see **OH_WifiStandard**.|
 | supportedWifiCategory | [OH_WifiCategory](capi-oh-wifi-h.md#oh_wificategory) | No| No| Highest Wi-Fi category supported by the hotspot. For details, see **OH_WifiCategory**.|
 | isHiLinkNetwork | bool | No| No| Whether HiLink is supported by the hotspot. The value **true** indicates that HiLink is supported, and the value **false** indicates the opposite.|
-| wifiLinkType | [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) | No| No| Wi-Fi 7 connection type. For details, see **OH_WifiLinkType**.|
+| wifiLinkType | [OH_WifiLinkType](capi-oh-wifi-h.md#oh_wifilinktype) | No | Yes | Wi-Fi 7 connection type. For details, see **OH_WifiLinkType**. |
 
 ## Function Description
 
@@ -306,4 +307,4 @@ Obtains Wi-Fi connection information.
 
 | Type| Description|
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | Operation result, which is specified by [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode). The value can be:<br>     [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode): The Wi-Fi connection information is obtained successfully.<br>     [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode): The permission is denied.<br>     [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode): The connection information cannot be obtained.<br>     [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode): The input **info** is a null pointer.<br>     [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode): An internal error occurs during internal execution.|
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | Operation result, which is specified by [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode).<br>     [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode): The Wi-Fi connection information is obtained successfully.<br>     [WIFI_PERMISSION_DENIED](capi-oh-wifi-h.md#wifi_resultcode): The permission is denied.<br>     [WIFI_NOT_SUPPORTED](capi-oh-wifi-h.md#wifi_resultcode): The connection information cannot be obtained.<br>     [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode): The input **info** is a null pointer.<br>     [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode): An internal error occurs during internal execution.<br>     [WIFI_STA_DISABLED](capi-oh-wifi-h.md#wifi_resultcode): The Wi-Fi STA mode is disabled. |

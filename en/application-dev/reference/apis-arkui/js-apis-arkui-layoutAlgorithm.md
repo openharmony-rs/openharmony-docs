@@ -38,11 +38,11 @@ Basic layout algorithm of the [DynamicLayout](./arkui-ts/ts-container-dynamiclay
 
 Custom layout algorithm class.
 
+**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **NOTE**
 >
 > The object of the **CustomLayoutAlgorithm** class can be assigned to a variable of the **LayoutAlgorithm** type as the input parameter of the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component to specify the layout algorithm.
-
-**Decorator**: \@ObservedV2
 
 ### onMeasure
 onMeasure(self: FrameNode, constraint: LayoutConstraint): void
@@ -52,8 +52,6 @@ Customizes the size of the child component to be measured. When the size of the 
 > **NOTE**
 >
 > In this callback, you can call [getChild()](js-apis-arkui-frameNode.md#getchild12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to obtain the child component **FrameNode** and call [measure()](js-apis-arkui-frameNode.md#measure12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to measure the size of the child component. For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout Algorithm](./arkui-ts/ts-container-dynamiclayout.md#example-1-implementing-waterfall-layout-using-a-custom-layout-algorithm).
-
-**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -79,8 +77,6 @@ Customizes the position of the child component to be arranged. When the position
 >
 > In this callback, you can call [getChild()](js-apis-arkui-frameNode.md#getchild12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to obtain the child component **FrameNode** and call [layout()](js-apis-arkui-frameNode.md#layout12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to set the position of the child component. For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout Algorithm](./arkui-ts/ts-container-dynamiclayout.md#example-1-implementing-waterfall-layout-using-a-custom-layout-algorithm).
 
-**Decorator**: \@ObservedV2
-
 **Model restriction**: This API can be used only in the stage model.
   
 **Widget capability**: This API can be used in ArkTS widgets since API version 24.
@@ -104,15 +100,13 @@ For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout
 
 Horizontal linear layout algorithm class.
 
+**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **NOTE**
 >
 > The object of the **RowLayoutAlgorithm** class can be assigned to a variable of the **LayoutAlgorithm** type as the input parameter of the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component to specify the layout algorithm.
 
-**Decorator**: \@ObservedV2
-
 ### Attributes
-
-**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -124,18 +118,16 @@ Horizontal linear layout algorithm class.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| space | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Horizontal spacing between elements in a horizontal layout.<br> Default value: **LengthMetrics.vp(0)**<br> Invalid values are treated as the default value.<br>Decorator: @Trace|
-| alignItems | [VerticalAlign](./arkui-ts/ts-appendix-enums.md#verticalalign) | No| Yes| Vertical alignment mode of all child components.<br> Default value: **VerticalAlign.Center**<br> Invalid values are treated as the default value.<br>Decorator: @Trace|
-| justifyContent | [FlexAlign](./arkui-ts/ts-appendix-enums.md#flexalign) | No| Yes| Horizontal alignment mode of all child components.<br> Default value: **FlexAlign.Start**<br> Invalid values are treated as the default value.<br>Decorator: @Trace|
-| isReverse | boolean | No| Yes| Whether to reverse the horizontal arrangement of child components. **true** indicates to reverse the horizontal arrangement of child components. The horizontal direction is affected by the common attribute [direction](./arkui-ts/ts-universal-attributes-location.md#direction). If the [direction](./arkui-ts/ts-universal-attributes-location.md#direction) attribute takes effect, the arrangement is reversed again. **false** indicates to arrange child components in the horizontal direction in normal order.<br>Default value: **false**<br> Invalid values are treated as the default value.<br>Decorator: @Trace|
+| space | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Horizontal spacing between elements in a horizontal layout.<br> Default value: **LengthMetrics.vp(0)**<br> Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
+| alignItems | [VerticalAlign](./arkui-ts/ts-appendix-enums.md#verticalalign) | No| Yes| Vertical alignment mode of all child components.<br> Default value: **VerticalAlign.Center**<br> Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
+| justifyContent | [FlexAlign](./arkui-ts/ts-appendix-enums.md#flexalign) | No| Yes| Horizontal alignment mode of all child components.<br> Default value: **FlexAlign.Start**<br> Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
+| isReverse | boolean | No| Yes| Whether to reverse the horizontal arrangement of child components. **true** indicates to reverse the horizontal arrangement of child components. The horizontal direction is affected by the common attribute [direction](./arkui-ts/ts-universal-attributes-location.md#direction). If the [direction](./arkui-ts/ts-universal-attributes-location.md#direction) attribute takes effect, the arrangement is reversed again. **false** indicates to arrange child components in the horizontal direction in normal order.<br>Default value: **false**<br> Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
 
 ### constructor
 
 constructor(option?: RowLayoutAlgorithmOptions)
 
 Constructs the horizontal linear layout algorithm class.
-
-**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -178,15 +170,13 @@ Sets the spacing, main axis alignment method, cross axis alignment method, and m
 
 Vertical linear layout algorithm class.
 
+**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **NOTE**
 >
 > The object of the **ColumnLayoutAlgorithm** class can be assigned to a variable of the **LayoutAlgorithm** type as the input parameter of the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component to specify the layout algorithm.
 
-**Decorator**: \@ObservedV2
-
 ### Attributes
-
-**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -198,18 +188,16 @@ Vertical linear layout algorithm class.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| space | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Vertical spacing between elements in a vertical layout.<br> Default value: **LengthMetrics.vp(0)**<br> Invalid values are treated as the default value.<br>Decorator: @Trace|
-| alignItems | [HorizontalAlign](./arkui-ts/ts-appendix-enums.md#horizontalalign) | No| Yes| Horizontal alignment mode of all child components.<br> Default value: **HorizontalAlign.Center**<br>  Invalid values are treated as the default value.<br>Decorator: @Trace|
-| justifyContent | [FlexAlign](./arkui-ts/ts-appendix-enums.md#flexalign) | No| Yes| Vertical alignment mode of all child components.<br> Default value: **FlexAlign.Start**<br> Invalid values are treated as the default value.<br>Decorator: @Trace|
-| isReverse | boolean | No| Yes| Whether to reverse the vertical arrangement of child components. **true** indicates to reverse the vertical arrangement of child components. **false** indicates to arrange child components in the vertical direction in normal order.<br>Default value: **false**<br> Invalid values are treated as the default value.<br>Decorator: @Trace|
+| space | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Vertical spacing between elements in a vertical layout.<br> Default value: **LengthMetrics.vp(0)**<br> Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
+| alignItems | [HorizontalAlign](./arkui-ts/ts-appendix-enums.md#horizontalalign) | No| Yes| Horizontal alignment mode of all child components.<br> Default value: **HorizontalAlign.Center**<br>  Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
+| justifyContent | [FlexAlign](./arkui-ts/ts-appendix-enums.md#flexalign) | No| Yes| Vertical alignment mode of all child components.<br> Default value: **FlexAlign.Start**<br> Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
+| isReverse | boolean | No| Yes| Whether to reverse the vertical arrangement of child components. **true** indicates to reverse the vertical arrangement of child components. **false** indicates to arrange child components in the vertical direction in normal order.<br>Default value: **false**<br> Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
 
 ### constructor 
 
 constructor(option?: ColumnLayoutAlgorithmOptions)
 
 Constructs the vertical linear layout algorithm class.
-
-**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -252,16 +240,13 @@ Sets the spacing, main axis alignment method, cross axis alignment method, and m
 
 Stack layout algorithm class.
 
+**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **NOTE**
 >
 > The object of the **StackLayoutAlgorithm** class can be assigned to a variable of the **LayoutAlgorithm** type as the input parameter of the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component to specify the layout algorithm.
 
-
-**Decorator**: \@ObservedV2
-
 ### Attributes
-
-**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -273,15 +258,13 @@ Stack layout algorithm class.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| alignContent | [LocalizedAlignment](./arkui-ts/ts-appendix-enums.md#localizedalignment20) | No| Yes| Alignment mode of child components in the stack layout algorithm.<br> Default value: **LocalizedAlignment.CENTER**.<br> Invalid values are treated as the default value.<br>Decorator: @Trace|
+| alignContent | [LocalizedAlignment](./arkui-ts/ts-appendix-enums.md#localizedalignment20) | No| Yes| Alignment mode of child components in the stack layout algorithm.<br> Default value: **LocalizedAlignment.CENTER**.<br> Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
 
 ### constructor
 
 constructor(option?: StackLayoutAlgorithmOptions)
 
 Constructs the stack layout algorithm class.
-
-**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -321,15 +304,13 @@ Sets the alignment method of the stack layout algorithm.
 
 Grid layout algorithm class.
 
+**Decorator**: [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **NOTE**
 >
 > The object of the **GridLayoutAlgorithm** class can be assigned to a variable of the **LayoutAlgorithm** type as the input parameter of the [DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md) component to specify the layout algorithm.
 
-**Decorator**: \@ObservedV2
-
 ### Attributes
-
-**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -339,17 +320,15 @@ Grid layout algorithm class.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| columnsTemplate | string \| [ItemFillPolicy](./arkui-ts/ts-types.md#itemfillpolicy22) | No| Yes| Number of columns in the grid layout.<br> Default value: **'1fr'**<br> Invalid values are treated as the default value.<br>Decorator: @Trace|
-| columnsGap | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Spacing between columns.<br> Default value: **LengthMetrics.vp(0)**<br> Invalid values are treated as the default value.<br>Decorator: @Trace|
-| rowsGap | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Spacing between rows.<br> Default value: **LengthMetrics.vp(0)**<br> Invalid values are treated as the default value.<br>Decorator: @Trace|
+| columnsTemplate | string \| [ItemFillPolicy](./arkui-ts/ts-types.md#itemfillpolicy22) | No| Yes| Number of columns in the grid layout.<br> Default value: **'1fr'**<br> Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
+| columnsGap | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Spacing between columns.<br> Default value: **LengthMetrics.vp(0)**<br> Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
+| rowsGap | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Spacing between rows.<br> Default value: **LengthMetrics.vp(0)**<br> Invalid values are treated as the default value.<br>Decorator: [@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)|
 
 ### constructor
 
 constructor(option?: GridLayoutAlgorithmOptions)
 
 Constructs the grid layout algorithm class.
-
-**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 

@@ -125,9 +125,6 @@ struct MouseEventExample {
             }
             // 判断触发的鼠标动作类型
             switch (event.action) {
-              case MouseAction.Hover:
-                this.action = 'Hover';
-                break;
               case MouseAction.Press:
                 this.action = 'Press';
                 break;
@@ -136,6 +133,12 @@ struct MouseEventExample {
                 break;
               case MouseAction.Release:
                 this.action = 'Release';
+                break;
+              case MouseAction.ENTER_WINDOW:
+                this.action = 'ENTER_WINDOW';
+                break;
+              case MouseAction.LEAVE_WINDOW:
+                this.action = 'LEAVE_WINDOW';
                 break;
             }
             // 拼接鼠标事件全量信息并展示

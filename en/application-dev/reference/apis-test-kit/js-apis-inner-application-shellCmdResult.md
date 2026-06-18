@@ -6,6 +6,7 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
+<!-- md-trans-meta sourceCommit=7b96ce2cdc47279f6264c88642e4fd07a8682bf6 translatedAt=2026-06-18T03:36:59.542Z pushedAt=2026-06-18T07:24:16.922Z -->
 
 The **ShellCmdResult** module provides the shell command execution result.
 
@@ -21,22 +22,12 @@ The **ShellCmdResult** module provides the shell command execution result.
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 ```
 
-## ShellCmdResult
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-| Name     | Type  | Read-Only| Optional| Description                                                        |
-| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| stdResult | string | No  | No  | Standard output of the shell command.|
-| exitCode  | number | No  | No  | Result code of the shell command.|
-
 ## Usage
 
-The result is obtained by calling [executeShellCommand](js-apis-inner-application-abilityDelegator.md#executeshellcommand) in **abilityDelegator**.
+Obtain the result through the [executeShellCommand](js-apis-inner-application-abilityDelegator.md#executeshellcommand) method in **abilityDelegator**.
 
-**Example**
+**Example:**
+
 ```ts
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -53,3 +44,14 @@ abilityDelegator.executeShellCommand(cmd, (error: BusinessError, data) => {
   }
 });
 ```
+
+## ShellCmdResult
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name     | Type  | Read-Only| Optional| Description                                                        |
+| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| stdResult | string | No  | No  | Standard output of the shell command.|
+| exitCode  | number | No  | No  | Result code of the shell command.|

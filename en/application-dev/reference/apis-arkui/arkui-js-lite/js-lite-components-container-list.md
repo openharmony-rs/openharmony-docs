@@ -4,8 +4,9 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:49:52.769Z pushedAt=2026-06-15T02:39:36.656Z -->
 
 The **list** component provides a list container that presents a series of list items arranged in a column with the same width. It supports presentations of the same data in a multiple and coherent row style, for example, images or text.
 

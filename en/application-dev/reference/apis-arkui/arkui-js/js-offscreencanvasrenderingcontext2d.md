@@ -1,18 +1,18 @@
 # OffscreenCanvasRenderingContext2D
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b9b716c1423f6952b7169df5eb4de15f02019de4 translatedAt=2026-06-10T02:08:15.575Z pushedAt=2026-06-10T06:22:46.993Z -->
 
 >  **NOTE**
 >
 >  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
-
 Use **OffscreenCanvasRenderingContext2D** to draw rectangles, images, and texts on an [OffscreenCanvas](js-components-canvas-offscreencanvas.md) object.
-
 
 ## Attributes
 
@@ -20,13 +20,14 @@ In addition to the attributes that are supported by [CanvasRenderingContext2D](j
 
 | Name    | Type    | Description                                      |
 | ------ | ------ | ---------------------------------------- |
-| filter | string | Image filter.<br>Available options are as follows:<br>- **blur**: applies the Gaussian blur for the image.<br>- **brightness**: applies a linear multiplication to the image to make it look brighter or darker.<br>- **contrast**: adjusts the image contrast.<br>- **drop-shadow**: sets a shadow effect for the image.<br>- **grayscale**: converts the image to a grayscale image.<br>- **hue-rotate**: applies hue rotation to the image.<br>- **invert**: inverts the image.<br>- **opacity**: sets the image opacity.<br>- **saturate**: sets the image saturation.<br>- **sepia**: converts the image to sepia.|
+| filter | string | Image filter.<br/>Available options are as follows:<br/>-&nbsp;**blur**: applies the Gaussian blur for the image.<br/>-&nbsp;**brightness**: applies a linear multiplication to the image to make it look brighter or darker.<br/>-&nbsp;**contrast**: adjusts the image contrast.<br/>-&nbsp;**drop-shadow**: sets a shadow effect for the image.<br/>-&nbsp;**grayscale**: converts the image to a grayscale image.<br/>-&nbsp;**hue-rotate**: applies hue rotation to the image.<br/>-&nbsp;**invert**: inverts the image.<br/>-&nbsp;**opacity**: sets the image opacity.<br/>-&nbsp;**saturate**: sets the image saturation.<br/>-&nbsp;**sepia**: converts the image to sepia. |
 
 **Example**
+
 ```html
 <!-- xxx.hml -->
 <div style="width: 500px; height: 500px;">
-  <canvas ref="canvasId" style="width: 500px; height: 500px; background-color: #ffff00;"></canvas>
+  <canvas ref="canvasId" style="width: 500px; height: 500px; padding: 80px; background-color: rgb(213, 213, 213);"></canvas>
 </div>
 ```
 
@@ -38,7 +39,7 @@ export default {
     var offscreen = new OffscreenCanvas(360, 500);
     var offCanvas2 = offscreen.getContext("2d");
     var img = new Image();
-    // Replace 'common/images/flower.jpg' with the resource file you use.
+    // Replace 'common/images/flower.jpg' with the image resource file you use.
     img.src = 'common/images/flower.jpg';
     offCanvas2.drawImage(img, 0, 0, 100, 100);
     offCanvas2.filter = 'blur(5px)';
@@ -76,10 +77,11 @@ export default {
 }
 ```
 
+![en-us_image_js_offsetscreencanvas_rendering](figures/en-us_image_js_offsetscreencanvas_rendering.png)
+
 ## Methods
 
 In addition to the methods that are supported by **CanvasRenderingContext2D**, the following methods are supported.
-
 
 ### isPointInPath
 
@@ -88,6 +90,7 @@ isPointInPath(path?: Path2D, x: number, y: number): boolean
 Checks whether a specified point is in the path area.
 
 **Parameters**
+
 | Name | Type  | Mandatory  | Description                           |
 | ---- | ------ | ---- | ----------------------------- |
 | path | Path2D | No    | Path used for checking. If this parameter is not set, the current path is used.|
@@ -95,11 +98,13 @@ Checks whether a specified point is in the path area.
 | y    | number | Yes   | Y-coordinate of the point used for checking.                   |
 
 **Return value**
+
 | Type     | Description           |
 | ------- | ------------- |
-| boolean | Whether a specified point is in the path area. Returns **true** if the point is inside the path area; returns **false** otherwise.|
+| boolean | Whether a specified point is in the path area. Returns **true** if the point is in the path area; returns **false** otherwise.|
 
 **Example**
+
 ```html
 <!-- xxx.hml -->
 <div class="container" style="width: 500px; height: 500px;">
@@ -159,9 +164,10 @@ export default {
 
 isPointInStroke(path?: Path2D, x: number, y: number): boolean
 
-Checks whether a specified point is on the edge line of a path.
+Checks whether a specified point is in the stroke area of a path.
 
 **Parameters**
+
 | Name | Type  | Mandatory  | Description                           |
 | ---- | ------ | ---- | ----------------------------- |
 | path | Path2D | No    | Path used for checking. If this parameter is not set, the current path is used.|
@@ -169,11 +175,13 @@ Checks whether a specified point is on the edge line of a path.
 | y    | number | Yes   | Y-coordinate of the point used for checking.                   |
 
 **Return value**
+
 | Type     | Description           |
 | ------- | ------------- |
-| boolean | Whether a specified point is in the path area.|
+| boolean | Whether a specified point is in the stroke area of a path. Returns **true** if the point is in the stroke area of the path; returns **false** otherwise. |
 
 **Example**
+
 ```html
 <!-- xxx.hml -->
 <div class="container" style="width: 500px; height: 500px;">
@@ -233,7 +241,10 @@ export default {
 
 resetTransform(): void
 
+Resets this transformation matrix to an identity matrix.
+
 **Example**
+
 ```html
 <!-- xxx.hml -->
 <div class="container" style="width: 500px; height: 500px;">

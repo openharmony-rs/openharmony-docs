@@ -4,7 +4,8 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:06:46.359Z pushedAt=2026-06-16T14:13:33.270Z -->
 
 Currently, the HAR has a problem with duplicate packaging, leading an oversize application package. To fix this problem, you can convert the HAR to the HSP by changing the configuration items.
 
@@ -18,7 +19,7 @@ Currently, the HAR has a problem with duplicate packaging, leading an oversize a
 
 1. Set **type** to **shared** and add the **deliveryWithInstall** and **pages** fields in the **module.json5** file of the HAR module.
     <!-- @[har_to_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/module.json5) -->
-    
+
     ``` JSON5
     {
       "module": {
@@ -43,7 +44,7 @@ Currently, the HAR has a problem with duplicate packaging, leading an oversize a
 3. Create a **pages** folder in the **ets** directory. Then add the **PageIndex.ets** file to the created folder and configure it as follows:
 
     <!-- @[har_to_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/ets/pages/PageIndex.ets) -->
-    
+
     ``` TypeScript
     @Entry
     @Component
@@ -69,7 +70,7 @@ Currently, the HAR has a problem with duplicate packaging, leading an oversize a
 5. Replace the content in the **hvigorfile.ts** file of the HAR module with the following content:
 
     <!-- @[har_to_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/hvigorfile.ts) -->
-    
+
     ``` TypeScript
     // library\hvigorfile.ts
     import { hspTasks } from '@ohos/hvigor-ohos-plugin';
@@ -83,7 +84,7 @@ Currently, the HAR has a problem with duplicate packaging, leading an oversize a
 6. Add the **packageType** field in the **oh-package.json5** file.
 
     <!-- @[har_to_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/oh-package.json5) -->
-    
+
     ``` JSON5
     {
       // ...
@@ -94,7 +95,7 @@ Currently, the HAR has a problem with duplicate packaging, leading an oversize a
 7. Add the **targets** tag to **build-profile.json5** > **modules** > **library** in the root directory of the project.
 
     <!-- @[har_to_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/build-profile.json5) -->
-    
+
     ``` JSON5
     "modules": [
       // ...

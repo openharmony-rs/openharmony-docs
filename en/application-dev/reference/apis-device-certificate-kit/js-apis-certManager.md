@@ -6,8 +6,11 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=a16dcd5380f352b729da625973de1c33bd7c6a2a translatedAt=2026-06-10T11:02:58.977Z pushedAt=2026-06-11T09:14:54.393Z -->
 
 The **certManager** module provides system-level certificate management capabilities to implement management and secure use of certificates throughout their lifecycle (installation, storage, use, and destruction).
+
+This module can be used to verify the HTTPS certificate chain of an application server and log in to a website or application server through two-way HTTPS authentication.
 
 > **NOTE**
 >
@@ -38,7 +41,7 @@ Enumerates the digest algorithms that can be used for signing and signature veri
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
-| CM_DIGEST_NONE | 0      | No digest algorithm is required. If this option is used, the service needs to pass in the data with the digest generated for signing or signature verification.|
+| CM_DIGEST_NONE | 0      | No digest algorithm is required. If this option is used, the application needs to pass in the data with the digest generated for signing or signature verification. |
 | CM_DIGEST_MD5 | 1      | MD5.|
 | CM_DIGEST_SHA1 | 2      | SHA-1.|
 | CM_DIGEST_SHA224 | 3      | SHA-224.|
@@ -68,9 +71,8 @@ Represents a set of parameters used for signing or signature verification, inclu
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | purpose          | [CmKeyPurpose](#cmkeypurpose)                       | No | No | Purpose of using the key.|
-| padding        | [CmKeyPadding](#cmkeypadding)                       | No  | Yes | Padding mode.|
-| digest        | [CmKeyDigest](#cmkeydigest)                       | No  | Yes | Digest algorithm.|
-
+| padding        | [CmKeyPadding](#cmkeypadding)                       | No   | Yes  | Enum for the padding mode. The default value is **CM_PADDING_PSS**, indicating that PSS padding is used. |
+| digest        | [CmKeyDigest](#cmkeydigest)                       | No   | Yes  | Enum for the digest algorithm. The default value is **CM_DIGEST_SHA256**, indicating that SHA256 is used. |
 
 ## CertInfo
 
@@ -87,7 +89,7 @@ Represents detailed information about a certificate.
 | subjectName          | string   | No | No | Name of the certificate subject. The value contains up to 1024 bytes.|
 | serial          | string     | No | No | Serial number of a certificate. The value contains up to 64 bytes. The value is a hexadecimal string, for example, **62C2CB4DE8405E96**.|
 | notBefore          | string         | No | No | Start date of a certificate. The value contains up to 32 bytes.|
-| notAfter          | string   | No | No | Expiry date of a certificate. The value contains up to 32 bytes.|
+| notAfter          | string   | No | No | Expiration date of a certificate. The value contains up to 32 bytes.|
 | fingerprintSha256     | string     | No | No | Fingerprint of a certificate. The value contains up to 128 bytes.|
 | cert          | Uint8Array         | No | No | Binary data of a certificate. The value contains up to 8196 bytes.|
 
@@ -176,7 +178,7 @@ Enumerates the error codes used in the certificate management APIs.
 | CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | The application has not obtained user authorization.|
 | CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | The device enters the advanced security mode.|
 | CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | The device does not support the specified certificate storage path.  |
-| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | The USB credential service fails to be accessed.  |
+| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | The USB key service fails to be accessed. |
 | CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | The input parameter validation fails.<br>For example, the parameter format is incorrect or the parameter range is invalid.  |
 
 ## CertType<sup>18+</sup>
@@ -210,7 +212,7 @@ Enumerates the certificate algorithms.
 | Name           | Value| Description                      |
 |---------------| ------ |--------------------------|
 | INTERNATIONAL | 1      | International cryptographic algorithm, such as RSA and NIST ECC.|
-| SM            | 2      | Commercial cryptographic algorithm, such as SM2 and SM4.     |
+| SM            | 2      | Commercial cryptographic algorithm, such as SM2 and SM4. Devices outside China do not support certificates using this algorithm.      |
 
 ## CertStoreProperty<sup>18+</sup>
 
@@ -222,7 +224,7 @@ Represents the storage information about a certificate, including the certificat
 |-----------|-----------------------------------| ---- | ------------------------------------------------------------ |---------------------------------------------|
 | certType  | [CertType](#certtype18)           | No | No | Type of the certificate.                                   |
 | certScope | [CertScope](#certscope18)         | No  | Yes | Scope of the certificate. This parameter is mandatory when **certType** is **CA_CERT_USER**.      |
-| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | No  | Yes | Certificate algorithm. This parameter is valid only when **certType** is set to **CA_CERT_SYSTEM**. The default value is **INTERNATIONAL**.|
+| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | No   | Yes  | This parameter is valid only when **certType** is set to **CA_CERT_SYSTEM**. The default value is **INTERNATIONAL**. Devices outside China do not support the SM algorithm. |
 
 ## AuthStorageLevel<sup>18+</sup>
 
@@ -251,7 +253,7 @@ Enumerates the usage of a credential.
 
 ## UkeyInfo<sup>22+</sup>
 
-Provides USB credential attributes.
+Provides USB Key certificate credential attributes.
 
 **System capability**: System SystemCapability.Security.CertificateManager
 
@@ -282,7 +284,7 @@ Installs a private credential. This API uses an asynchronous callback to return 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -291,6 +293,7 @@ For details about the following error codes, see [Certificate Management Error C
 | 17500004 | The number of certificates or credentials reaches the maximum allowed. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -341,7 +344,7 @@ Installs a private credential. This API uses a promise to return the result.
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -401,7 +404,7 @@ Installs a private credential and specifies its storage level. This API uses a p
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID              | Error Message                                                    |
+| Error Code              | Error Message                                                    |
 | ---------------------- | ------------------------------------------------------------ |
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -455,14 +458,15 @@ Obtains detailed information about a private credential. This API uses an asynch
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | The certificate does not exist. |
+| 17500002 | The certificate does not exist. Possible causes: 1. The certificate URI is incorrect; 2. The certificate has been uninstalled. Please check the certificate URI. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -511,7 +515,7 @@ Obtains detailed information about a private credential. This API uses a promise
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -519,6 +523,7 @@ For details about the following error codes, see [Certificate Management Error C
 | 17500002 | The certificate does not exist. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -544,7 +549,7 @@ try {
 
 uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>): void
 
-Uninstalls a private credential. This API uses an asynchronous callback to return the result.
+Uninstalls a specified private credential. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -561,7 +566,7 @@ Uninstalls a private credential. This API uses an asynchronous callback to retur
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -569,6 +574,7 @@ For details about the following error codes, see [Certificate Management Error C
 | 17500002 | The certificate does not exist. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -590,7 +596,7 @@ try {
 
 uninstallPrivateCertificate(keyUri: string): Promise\<void>
 
-Uninstalls a private credential. This API uses a promise to return the result.
+Uninstalls a specified private credential. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -612,7 +618,7 @@ Uninstalls a private credential. This API uses a promise to return the result.
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -620,6 +626,7 @@ For details about the following error codes, see [Certificate Management Error C
 | 17500002 | The certificate does not exist. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -638,7 +645,7 @@ try {
 
 ## certificateManager.installUserTrustedCertificateSync<sup>18+</sup>
 
-installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMResult
+installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope): CMResult
 
 Installs a user CA certificate.
 
@@ -663,7 +670,7 @@ Installs a user CA certificate.
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID                 | Error Message                                                                                                                                           |
+| Error Code                 | Error Message                                                                                                                                           |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -708,13 +715,13 @@ Uninstalls a user CA certificate.
 
 | Name      | Type                        | Mandatory| Description          |
 |-----------|----------------------------|----|--------------|
-| certUri     | string                 | Yes | Unique identifier of the certificate to be uninstalled. The value contains up to 256 bytes.   |
+| certUri     | string                | Yes  | Unique identifier of the certificate to be uninstalled. The value contains up to 256 bytes.    |
 
 **Error codes**
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID                 | Error Message                                                                                                                                           |
+| Error Code                 | Error Message                                                                                                                                           |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -738,7 +745,7 @@ try {
 
 init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>): void
 
-Initializes the signing or signature verification operation using the specified credential. This API uses an asynchronous callback to return the result.
+Initializes the signing or signature verification operation using the specified credential. This is the first step in the signing or signature verification process. Call the **update** and **finish** APIs in sequence to complete the operation. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -756,15 +763,16 @@ Initializes the signing or signature verification operation using the specified 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005 | The application is not authorized by the user. |
+| 17500005 | The application is not authorized by the user. Please call [openAuthorizeDialog](./js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog20) method to request user authorization for the certificate or credential.<br>Applicable version: 12+ |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -814,7 +822,7 @@ Initializes the signing or signature verification operation using the specified 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -823,6 +831,7 @@ For details about the following error codes, see [Certificate Management Error C
 | 17500005 | The application is not authorized by the user. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -848,7 +857,7 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): void
 
-Updates the data for the signing or signature verification operation. This API uses an asynchronous callback to return the result.
+Updates the data for the signing or signature verification operation. This API must be called after the **init** operation. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -858,7 +867,7 @@ Updates the data for the signing or signature verification operation. This API u
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
+| handle | Uint8Array                   | Yes   | Operation handle, which needs to be obtained by calling [init](#certificatemanagerinit). |
 | data | Uint8Array                   | Yes  | Data to be signed or verified.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -866,13 +875,14 @@ Updates the data for the signing or signature verification operation. This API u
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -910,7 +920,7 @@ Updates the data for the signing or signature verification operation. This API u
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
+| handle | Uint8Array                   | Yes   | Operation handle, which needs to be obtained by calling [init](#certificatemanagerinit). |
 | data | Uint8Array                   | Yes  | Data to be signed or verified.|
 
 **Return value**
@@ -923,13 +933,14 @@ Updates the data for the signing or signature verification operation. This API u
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -956,7 +967,7 @@ try {
 
 finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
-Finishes the signing operation. This API uses an asynchronous callback to return the result.
+Finishes the signing operation, which is the last step in the signing process. You need to call the **init** and **update** APIs before using this API. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -966,20 +977,21 @@ Finishes the signing operation. This API uses an asynchronous callback to return
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
+| handle | Uint8Array                   | Yes  | Operation handle, which needs to be obtained by calling [init](#certificatemanagerinit). |
 | callback | AsyncCallback\<[CMResult](#cmresult)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the signature, that is, **outData** of the [CMResult](#cmresult) object. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -1019,7 +1031,7 @@ Finishes the signature verification operation. This API uses an asynchronous cal
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
+| handle | Uint8Array                   | Yes   | Operation handle, which needs to be obtained by calling [init](#certificatemanagerinit). |
 | signature | Uint8Array                   | Yes  | Data to sign or verify.|
 | callback | AsyncCallback\<[CMResult](#cmresult)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -1027,13 +1039,14 @@ Finishes the signature verification operation. This API uses an asynchronous cal
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -1061,7 +1074,7 @@ try {
 
 finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
-Finishes the signing or signature verification operation. This API uses a promise to return the result.
+Finishes signing or signature verification. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1071,8 +1084,8 @@ Finishes the signing or signature verification operation. This API uses a promis
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
-| signature | Uint8Array                   | No  | Data to sign or verify.|
+| handle | Uint8Array | Yes | Operation handle, which needs to be obtained by calling [init](#certificatemanagerinit). |
+| signature | Uint8Array | No | Signature data used for signature verification. This parameter does not need to be passed for signing. |
 
 **Return value**
 
@@ -1084,13 +1097,14 @@ Finishes the signing or signature verification operation. This API uses a promis
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1148,13 +1162,14 @@ Aborts the signing or signature verification operation. This API uses an asynchr
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -1201,13 +1216,14 @@ Aborts the signing or signature verification operation. This API uses a promise 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1231,7 +1247,7 @@ try {
 
 getPublicCertificate(keyUri: string): Promise\<CMResult>
 
-Obtains detailed information about a public credential. This API uses a promise to return the result.
+Obtains the details about a user public credential. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1253,7 +1269,7 @@ Obtains detailed information about a public credential. This API uses a promise 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1262,6 +1278,7 @@ For details about the following error codes, see [Certificate Management Error C
 | 17500005 | The application is not authorized by the user. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1309,13 +1326,14 @@ Checks whether this application is authorized by the specified user credential. 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1340,7 +1358,7 @@ try {
 
 getAllUserTrustedCertificates(): Promise\<CMResult>
 
-Obtains all user trusted root CA certificates of the device. This API uses a promise to return the result.
+Obtains the list of all user root CA certificates in the current user and device public directories. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1356,12 +1374,13 @@ Obtains all user trusted root CA certificates of the device. This API uses a pro
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1388,7 +1407,7 @@ try {
 
 getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 
-Obtains the user root CA certificates based on the certificate scope. This API uses a promise to return the result.
+Obtains the list of user root CA certificates based on the certificate storage path. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1410,7 +1429,7 @@ Obtains the user root CA certificates based on the certificate scope. This API u
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1446,7 +1465,7 @@ try {
 
 getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
-Obtains the detailed information about a user root CA certificate. This API uses a promise to return the result.
+Obtains the details about a user root CA certificate. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1468,7 +1487,7 @@ Obtains the detailed information about a user root CA certificate. This API uses
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1476,6 +1495,7 @@ For details about the following error codes, see [Certificate Management Error C
 | 17500002 | The certificate does not exist. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1496,11 +1516,12 @@ try {
   console.error(`Failed to get user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
 ## certificateManager.getPrivateCertificates<sup>13+</sup>
 
 getPrivateCertificates(): Promise\<CMResult>
 
-Obtains the credentials for installing the application. This API uses a promise to return the result asynchronously.
+Obtains the credentials for installing the application. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1516,12 +1537,13 @@ Obtains the credentials for installing the application. This API uses a promise 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1543,11 +1565,12 @@ try {
   console.error(`Failed to get all private certificates installed by the application. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
 ## certificateManager.getCertificateStorePath<sup>18+</sup>
 
-getCertificateStorePath(property: CertStoreProperty): string;
+getCertificateStorePath(property: CertStoreProperty): string
 
-Obtains the certificate storage path.
+Obtains the storage path of a certificate.
 
 **System capability**: System SystemCapability.Security.CertificateManager
 
@@ -1567,13 +1590,14 @@ Obtains the certificate storage path.
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message     |
+| Error Code   | Error Message     |
 |----------| ------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. For example, CertStoreProperty.certType is set to CA_CERT_USER, but CertStoreProperty.certScope is not specified.  |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500009 | The device does not support the specified certificate storage path, For example, the device outside China does not support the certificate that uses SM algorithm. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -1612,36 +1636,37 @@ try {
   console.error(`Failed to get store path. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
 ## certificateManager.getUkeyCertificate<sup>22+</sup>
 
 getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-Obtains the details of a USB credential. This API uses a promise to return the result.
+Obtains details about a USB Key certificate credential. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
 **System capability**: System SystemCapability.Security.CertificateManager
 
-**Device behavior differences**: This API can be properly called on PCs. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
 | Name  | Type  | Mandatory| Description   |
 | -------- | ------- | ---- | ------ |
-| keyUri | string | Yes  | Unique identifier of a USB credential. The value contains up to 256 bytes.|
-| ukeyInfo | [UkeyInfo](#ukeyinfo22)  | Yes  | Attributes of a USB credential.|
+| keyUri | string | Yes | Unique identifier of the USB Key certificate credential. The value contains up to 256 bytes. |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22) | Yes | Attributes of the USB Key certificate credential. |
 
 **Return value**
 
 | Type | Description |
 | ----- | ----- |
-| Promise\<[CMResult](#cmresult)> | Promise used to return the obtained USB credential details.|
+| Promise\<[CMResult](#cmresult)> | Promise used to return details about the USB Key certificate credential, that is, credentialDetailList in [CMResult](#cmresult). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message     |
+| Error Code   | Error Message     |
 |----------| ------------- |
 | 201      | Permission verification failed. |
 | 801      | Capability not supported. The application does not have the permission required to call the API. |
@@ -1651,6 +1676,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.  |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';

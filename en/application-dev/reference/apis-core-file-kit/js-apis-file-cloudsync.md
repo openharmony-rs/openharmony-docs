@@ -1,10 +1,12 @@
 # @ohos.file.cloudSync (Device-Cloud Sync)
+
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:04:35.474Z pushedAt=2026-06-10T10:59:32.465Z -->
 
 The **cloudSync** module provides the device-cloud sync capabilities for applications. You can use the APIs to start or stop device-cloud sync and start or stop the download of images.
 
@@ -17,6 +19,7 @@ The **cloudSync** module provides the device-cloud sync capabilities for applica
 ```ts
 import { cloudSync } from '@kit.CoreFileKit';
 ```
+
 ## SyncState<sup>12+</sup>
 
 Enumerates the device-cloud sync states.
@@ -41,8 +44,11 @@ Enumerates the device-cloud sync states.
 Enumerates the device-cloud sync errors.
 
 - In the current phase, **NETWORK_UNAVAILABLE** is returned only when the mobile data network and Wi-Fi are unavailable. If the mobile data network is available, the synchronization can be performed normally.
+
 - During the sync process, if the battery level is lower than 10% in non-charging scenarios, **BATTERY_LEVEL_LOW** will be return when the current upload is complete.
+
 - When sync is being triggered, if the battery level is lower than 10% in non-charging scenarios, sync is not allowed.
+
 - If the cloud space is insufficient when a file is uploaded, the upload will fail and there is no such a file in the cloud.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -134,6 +140,8 @@ let fileSync = new cloudSync.FileSync()
 on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 Registers a listener for the device-cloud sync progress.
+
+During initial registration of a callback, **4** is returned for **SyncState** in **SyncProgress**, representing the sync state of **COMPLETED**. In subsequent registrations, this value reflects the actual sync result. For example, if the last upload failed, the return value is **1**, representing the sync state of **UPLOAD_FAILED**.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1056,7 +1064,6 @@ Represents a list of files that fail to be downloaded from the Drive Kit and fai
 | uri   | string                                    | No  | No  | URI of the file that fails to be downloaded.     |
 | error | [DownloadErrorType](#downloaderrortype11) | No  | No  | Error type of the file download failure.|
 
-
 ## MultiDownloadProgress<sup>20+</sup>
 
 Represents the batch download progress of a file from the Drive Kit.
@@ -1186,7 +1193,7 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 
 registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData&gt;): void
 
-Subscribes to the change of a file. The callback returns the changed data.
+Subscribes to the change of a file. This API uses a callback to return the changed data.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1299,7 +1306,6 @@ Represents the data change information.
 | isDirectory | Array&lt;boolean&gt; | No  | No  | Whether the URIs with data changed are of directories. The value **true** means the URIs are of directories; the value **false** means the opposite.|
 | uris | Array&lt;string&gt; | No  | No  | List of URIs whose data needs to be changed.|
 
-
 ## HistoryVersion<sup>20+</sup>
 
 Represents the historical version information of the device-cloud file when the [gethistoryversionlist](#gethistoryversionlist20) method of the [FileVersion](#fileversion20) class is called.
@@ -1311,7 +1317,7 @@ Represents the historical version information of the device-cloud file when the 
 | Name    | Type  | Read-Only| Optional| Description|
 | ---------- | ------ | ---- | ---- | ---- |
 | editedTime | number | No  | No  | Time when the file content is modified.|
-| fileSize | number | No  | No  | File size in bytes.|
+| fileSize | number | No  | No  | File size, in bytes.|
 | versionId | string | No  | No  | File version.|
 | originalFileName | string | No  | No  | File name of the current version.|
 | sha256 | string | No  | No  | Hash value of the file content of the current version.|
@@ -1436,7 +1442,7 @@ fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync
 
 downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt;): Promise&lt;string&gt;
 
-Obtains the content of a file of a specified version based on the version number. You can download a file of a specified version from the cloud to a temporary local path. The application determines whether to replace the original file with the temporary file, or retain or delete the temporary file. The callback returns the file download progress, and the promise returns the URI of the temporary file of an earlier version.
+Obtains the content of a file of a specified version based on the version number. You can download a file of a specified version from the cloud to a temporary local path. The application determines whether to replace the original file with the temporary file, or retain or delete the temporary file. This API uses a callback to return the file download progress, and a promise to return the URI of the temporary file of an earlier version.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

@@ -1,10 +1,12 @@
 # @ohos.application.DistributedExtensionAbility (Distributed Extension)
+
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a16dcd5380f352b729da625973de1c33bd7c6a2a translatedAt=2026-06-10T11:03:16.884Z pushedAt=2026-06-11T06:01:28.663Z -->
 
 The **DistributedExtensionAbility** module provides distributed extension capabilities and lifecycle callbacks for distributed ability creation, destruction, and connection.
 
@@ -24,6 +26,8 @@ import { DistributedExtensionAbility} from '@kit.DistributedServiceKit';
 
 ### Attributes
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name   | Type                         | Read-Only| Optional| Description                                                      |
@@ -35,6 +39,8 @@ import { DistributedExtensionAbility} from '@kit.DistributedServiceKit';
 onCreate(want: Want): void
 
 Callback invoked to initialize the service logic when a **DistributedExtensionAbility** instance is created.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -64,6 +70,8 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 onCollaborate(wantParam: Record <string, Object>) : AbilityConstant.CollaborateResult
 
 Callback invoked to return the collaboration result in multi-device collaboration scenarios.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -103,7 +111,9 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 
 onDestroy(): void
 
-Callback invoked to clear resources when a **ServiceExtensionAbility** instance is destroyed.
+Callback invoked to clear resources when the **DistributedExtensionAbility** instance is destroyed.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 

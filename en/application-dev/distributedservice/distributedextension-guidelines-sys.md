@@ -1,10 +1,12 @@
 # DistributedExtensionAbility Development (for System Applications Only)
+
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:08:36.495Z pushedAt=2026-06-16T13:58:18.414Z -->
 
 ## Overview
 
@@ -25,19 +27,23 @@ During cross-device collaboration, when device A is running in the background an
 Before you get started, familiarize yourself with the following concepts:
 
 * **Distributed Message Service (DMS)**
-  
+
   A framework that provides distributed component management capabilities.
+
 * **UIAbility**
-  
+
   A component that implements tasks specific to application UIs, such as lifecycle management, user interaction, and UI rendering.
+
 * **ExtensionAbility**
-  
+
   A component that extends application functions or implements cross-device collaboration. It allows applications to run some tasks in the background or migrates some functions to other devices for execution, implementing distributed capabilities.
+
 * **Byte stream**
-  
+
   Data of the [ArrayBuffer](../arkts-utils/arraybuffer-object.md) type, which can be used to store binary data, for example, image or audio data.
+
 * **Transport stream**
-  
+
   Media streams that can be used to transmit images, audios, text information, and bytes.
 
 ## Implementation Principles
@@ -49,7 +55,11 @@ The application on device A integrates **DistributedExtensionAbility**. When DSo
 ## Constraints
 
 * You need to log in with the same HUAWEI ID on different devices.
+
 * Cross-device collaboration is supported only for UIAbility applications with the same bundle name on different devices.
+
+<!--RP1-->
+<!--RP1End-->
 
 ## Environment Setup
 
@@ -60,7 +70,9 @@ You have logged in to devices A and B with the same HUAWEI ID and the two device
 ### Setting Up the Environment
 
 1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/) 4.1 or later on the PC.
+
 2. Update the public-SDK to API version 20 or later.
+
 3. Enable Bluetooth on devices A and B to implement networking.
 
 ### Verifying the Environment
@@ -80,7 +92,7 @@ Cross-device connection management enables real-time processing of application b
 
 ### Available APIs
 
-For details about how to use the **DistributedExtensionAbility** APIs, see [DistributedExtensionAbility API Reference](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md).
+For API usage guidelines of the distributed extension capability, see [@ohos.application.DistributedExtensionAbility (Distributed Extension)](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md).
 
 | Name                                                              | Description                      |
 | -------------------------------------------------------------------- | -------------------------- |
@@ -91,11 +103,11 @@ For details about how to use the **DistributedExtensionAbility** APIs, see [Dist
 ### Development Procedure
 
 1. Register the `Extension` component in the configuration file.
-   
+
    In the application configuration file `module.json5`, add the `"extensionAbilities"` field, set `"type"` to `"distributed"`, and add an entry whose `"name"` is `"ohos.extension.DistributedExtension"` to ["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md).
-   
+
    Example:
-   
+
    ```json
    "extensionAbilities": [
      {
@@ -112,16 +124,18 @@ For details about how to use the **DistributedExtensionAbility** APIs, see [Dist
      }
    ]
    ```
+
 2. Import the required modules.
-   
+
    ```ts
    import { AbilityConstant, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager, DistributedExtensionAbility } from '@kit.DistributedServiceKit';
    ```
+
 3. Customize the `MDSExtension.ets` file. Specifically, inherit the `DistributedExtensionAbility` class and rewrite the `onCreate`, `onDestroy`, and `onCollaborate` methods to create and destroy `DistributedExtension` and implement connection callback.
-   
+
    The following is an empty `MDSExtension.ets` file. You can observe its lifecycle based on the corresponding `Logger`.
-   
+
    ```ts
    import { AbilityConstant, Want } from '@kit.AbilityKit';
    import { abilityConnectionManager, DistributedExtensionAbility } from '@kit.DistributedServiceKit';   

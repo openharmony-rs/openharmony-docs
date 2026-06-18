@@ -5,6 +5,7 @@
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=8ca7e424d5a57548a2c73f8e2ce0b0728333dffd translatedAt=2026-06-12T05:59:30.524Z pushedAt=2026-06-12T06:28:00.616Z -->
 
 The native **PostWebMessage** is provided to implement communication between the frontend page and the application, which reduces unnecessary switching to the ArkTS environment and allows messages and callbacks to be reported in non-UI threads to avoid UI blocking. Currently, only the string and buffer can be sent.
 
@@ -195,7 +196,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
 * ArkTS code:
 
   <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry5/src/main/ets/pages/Index.ets) -->
-  
+
   ``` TypeScript
   import testNapi from 'libentry.so';
   import { webview } from '@kit.ArkWeb';
@@ -459,7 +460,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
 * ArkTS APIs exposed on the Node-API side
 
   <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry5/src/main/cpp/types/libentry5/Index.d.ts) -->
-  
+
   ``` TypeScript
   // entry5/src/main/cpp/types/libentry5/index.d.ts
   export const nativeWebInit: (webName: string) => void;
@@ -508,12 +509,12 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
 * Node-API layer code
 
   <!-- @[the_node_api_layer_code_for_the_data_channel_between_the_application_side_and_the_frontend_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry5/src/main/cpp/hello.cpp) -->
-  
+
   ``` C++
-  #include "napi/native_api.h"
-  #include <string>
   #include "hilog/log.h"
+  #include "napi/native_api.h"
   #include "web/arkweb_interface.h"
+  #include <string>
   #include <thread>
   
   constexpr unsigned int LOG_PRINT_DOMAIN = 0xFF00;
@@ -698,7 +699,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums
   
       // Wait until all threads are detached.
       for (int i = 0; i < numThreads; ++i) {
-          threads[i].detach();
+          threads[i].join();
       }
       delete[] webTagValue;
       return nullptr;

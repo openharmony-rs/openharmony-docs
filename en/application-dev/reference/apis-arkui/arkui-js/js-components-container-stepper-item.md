@@ -1,26 +1,25 @@
 # stepper-item
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b9b716c1423f6952b7169df5eb4de15f02019de4 translatedAt=2026-06-10T02:07:12.802Z pushedAt=2026-06-10T02:56:13.625Z -->
 
 >  **NOTE**
 > This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.
 
 The **\<stepper-item>** component displays a step in the step navigator. This component is the child component of **\<stepper>**.
 
-
 ## Required Permissions
 
 None
 
-
 ## Child Components
 
 Supported
-
 
 ## Attributes
 
@@ -38,7 +37,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | nextLabel | string | - | Text content of the next button at the bottom of the step navigator.|
 | status | string | normal | Initial status of the current step in the step navigator. Available values are as follows:<br>- **normal**: The right button is clickable and can navigate users to the next step when it is clicked.<br>- **disabled**: The right button is grayed out and unavailable.<br>- **waiting**: The right button is not displayed, and a progress bar is displayed instead.|
 
-
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
@@ -49,7 +47,7 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | font-size | &lt;length&gt; | - | No| Text size.|
 | allow-scale | boolean | true | No| Whether the font size changes with the system's font size settings.|
 | font-style | string | normal | No| Text font style. Available values are as follows:<br>- **normal**: standard font style<br>- **italic**: italic font style|
-| font-weight | number\|string | normal | No| Text font weight. The number value must be an exact multiple of 100 ranging from 100 to 900. The default value is 400. A larger value indicates a bigger weight. Available values of the string type are **lighter**, **normal**, **bold**, or **bolder**.|
+| font-weight | number \| string | normal | No | Text font weight. The number value must be an exact multiple of 100 ranging from 100 to 900. The default value is 400. A larger value indicates a bigger weight. Available values of the string type are **lighter**, **normal**, **bold**, or **bolder**. |
 | text-decoration | string | none | No| Text decoration. Available values are as follows:<br>- **underline**: An underline is used.<br>- **line-through**: A strikethrough is used.<br>- **none**: The standard text is used.|
 | font-family | string | sans-serif | No| Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
 
@@ -58,21 +56,18 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 > 
 > - The **position** style is not supported.
 
-
 ## Events
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
 
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
-| appear | - | Triggered when this step is displayed.|
+| appear | - | Triggered when this step appears.|
 | disappear | - | Triggered when this step disappears.|
-
 
 ## Method
 
 The [universal methods](js-components-common-methods.md) are supported.
-
 
 ## Example
 

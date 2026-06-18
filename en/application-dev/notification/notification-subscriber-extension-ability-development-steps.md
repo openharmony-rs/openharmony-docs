@@ -1,10 +1,12 @@
 # Developing the ExtensionAbility for Notification Subscription
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:22:47.850Z pushedAt=2026-06-16T14:15:24.474Z -->
+
 ## Available APIs
 | API                             | Description               |
 | ---------------------------------- | --------------------|
@@ -22,8 +24,8 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
 1. Create the **entry/src/main/ets/extensionability** directory.
 
 2. Create the **NotificationSubscriberExtAbility.ets** file in the **entry/src/main/ets/extensionability** directory. The file content is as follows:
-   <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
-   
+   <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
+
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
@@ -55,8 +57,8 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
 4. After implementing [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md), call the [openSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API at an appropriate time to open the notification subscription settings screen and guide the user to grant the permission for obtaining notifications from the device. This screen is displayed as a semi-modal dialog box. It is recommended that you provide a notification authorization button on the device management screen. When the user taps the button, the [openSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API is called.
 
 5. Configure **ExtensionAbilities** in the **module.json5** file of the application.
-   <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/module.json5)-->
-   
+   <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/module.json5)-->
+
    ``` JSON5
    {
      "name": "NotificationSubscriberExtAbility",
@@ -89,8 +91,8 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
 10. If message transmission fails, the application will re-establish the connection and retry sending the message once the connection is successfully established.
 
 11. Apply for the [ohos.permission.ACCESS_BLUETOOTH](../security/AccessToken/permissions-for-all-user.md#ohospermissionaccess_bluetooth) permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
-    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
-    
+    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
+
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';

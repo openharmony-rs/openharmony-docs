@@ -22,6 +22,8 @@ None
 
 Circle(value?: CircleOptions)
 
+Constructor for drawing a circle.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.

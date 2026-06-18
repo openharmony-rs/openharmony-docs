@@ -2737,7 +2737,7 @@ Triggered to check whether a bound **Web** instance exists based on the name whe
 
 > **NOTE**
 >
-> - Binding a **Web** instance by name: Call the **event.handler.setWebController** method in the [onWindowNew] (#onwindownew9) callback and transfer the controller of the new **Web** instance.
+> - Binding a **Web** instance by name: Call the **event.handler.setWebController** method in the [onWindowNew](#onwindownew9) callback and transfer the controller of the new **Web** instance.
 > - The name must comply with the regular expression **[a-zA-Z0-9_]+**. When the name is used as the value of the **target** attribute of the \<a> or \<form> tag, the bound **Web** instance also triggers this callback function.
 
 **System capability**: SystemCapability.Web.Webview.Core

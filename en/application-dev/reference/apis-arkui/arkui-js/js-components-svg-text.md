@@ -1,11 +1,12 @@
 # text
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=b9b716c1423f6952b7169df5eb4de15f02019de4 translatedAt=2026-06-10T02:07:48.599Z pushedAt=2026-06-10T05:54:06.987Z -->
 
 >  **NOTE**
 >
@@ -23,11 +24,9 @@ The **\<text>** component is used to display a piece of textual information.
 
 None
 
-
 ## Child Components
 
-The following are supported: [\<tspan>](js-components-svg-tspan.md), [\<textpath>](js-components-svg-textpath.md), [\<animate>](js-components-svg-animate.md), and [\<animateTransform>](js-components-svg-animatetransform.md).
-
+The following are supported: \<[tspan](js-components-svg-tspan.md)>, \<[textPath](js-components-svg-textpath.md)>, \<[animate](js-components-svg-animate.md)>, and \<[animateTransform](js-components-svg-animatetransform.md)>.
 
 ## Attributes
 
@@ -48,7 +47,6 @@ The attributes in the following table are supported.
 | stroke         | &lt;color&gt;                      | black | No   | Stroke color.                             |
 | stroke-width   | number                             | 1px   | No   | Stroke width.                                  |
 | stroke-opacity | number                             | 1.0   | No   | Stroke opacity.                                 |
-
 
 ## Example
 

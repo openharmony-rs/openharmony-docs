@@ -6,6 +6,7 @@
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b96ce2cdc47279f6264c88642e4fd07a8682bf6 translatedAt=2026-06-18T03:37:06.198Z pushedAt=2026-06-18T07:24:16.923Z -->
 
 PerfTest provides white-box performance testing capabilities. It can test performance data of specified code segments or scenarios, automatically execute test code segments, and collect performance data such as time consumption, CPU, memory, latency, and frame rate.
 
@@ -14,7 +15,6 @@ PerfTest provides white-box performance testing capabilities. It can test perfor
 > - The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
 > - The APIs of this module do not support concurrent calls.
 > - The APIs of this module are applicable to phones, tablets, PCs/2-in-1 devices, smart TVs, and head units.
-
 
 ## Modules to Import
 
@@ -60,7 +60,6 @@ Represents performance metrics that can be collected by the framework.
 > - Supported scenarios: list scrolling of the **List**, **Grid**, **Scroll**, and **WaterFlow** components in the ArkUI subsystem.
 > - During a test, only the first list scrolling frame rate in the specified application is collected.
 
-
 ## PerfTestStrategy
 
 Represents the performance test strategy.
@@ -80,8 +79,8 @@ Represents the performance test strategy.
 
 > **NOTE**
 >
-> The input parameter type of the **actionCode** and **resetCode** attributes is the **Callback\<boolean>**. You need to call this callback in the code segment to notify the framework that the code segment execution is complete. Otherwise, the code segment execution times out.
-> The callback parameter is of the **Boolean** type. The value **true** indicates that the code segment execution meets the expectation, and false indicates the opposite. For details, see [code example](#create)
+> The input parameter type of the **actionCode** and **resetCode** properties is the callback function **Callback\<boolean>**. In the code segment, you need to actively call this callback function to notify the framework that the code segment execution is complete. Otherwise, the code segment execution will time out.
+> The parameter of the callback function is of the boolean type. The value **true** indicates that the code segment execution meets expectations, and **false** indicates that the code segment execution does not meet expectations. [Code Example](#create).
 
 ## PerfMeasureResult
 
@@ -98,7 +97,6 @@ Represents the measurement result data corresponding to the performance metric.
 | maximum       | number        | Yes| No| Maximum value of the measurement data of each round (the value **-1** is excluded). |
 | minimum       | number        | Yes| No| Minimum value of the measurement data of each round (the value **-1** is excluded). |
 | average       | number        | Yes| No| Average value of the measurement data of each round (the value **-1** is excluded). |
-
 
 ## PerfTest
 

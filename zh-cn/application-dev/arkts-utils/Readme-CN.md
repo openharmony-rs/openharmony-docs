@@ -1,8 +1,8 @@
 # ArkTS（方舟编程语言）
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @flyingwolf-->
-<!--Designer: @flyingwolf-->
+<!--Owner: @vigavi-->
+<!--Designer: @vigavi-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @HelloCrease-->
 

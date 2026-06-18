@@ -6,7 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:57:56.561Z pushedAt=2026-06-09T10:12:44.377Z -->
+<!-- md-trans-meta sourceCommit=417fc360382b810eaca71d157c09ed3f2422bbbb translatedAt=2026-06-10T02:10:06.413Z pushedAt=2026-06-10T05:56:30.855Z -->
 
 The **usbManager** module provides USB device management functions, including USB device list query, bulk data transfer, control transfer, and permission control on the host side as well as USB interface management, and function switch and query on the device side.
 
@@ -1413,8 +1413,8 @@ Represents the USB endpoint from which data is sent or received. You can obtain 
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
 | address       | number                                      | No  | No|Endpoint address.        |
 | attributes    | number                                      | No  | No|Endpoint attributes.        |
-| interval      | number                                      | No  | No|Endpoint interval.        |
-| maxPacketSize | number                                      | No  | No|Maximum size of data packets on the endpoint.   |
+| interval      | number                                      | No   | No |Endpoint interval, in milliseconds.         |
+| maxPacketSize | number                                      | No   | No |Maximum size of data packets on the endpoint, in  bytes.    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | No  | No|Endpoint direction.       |
 | number        | number                                      | No  | No|Endpoint number.         |
 | type          | number                                      | No  | No|Endpoint type. For details, see [UsbEndpointTransferType](#usbendpointtransfertype18).        |

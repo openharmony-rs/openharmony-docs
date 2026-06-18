@@ -1,11 +1,11 @@
 # Adding a Custom Ringtone to a Notification
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:22:14.608Z pushedAt=2026-06-16T14:15:12.857Z -->
 
 Starting from API version 12, applications can use custom notification ringtones when publishing notifications. The audio resources for these ringtones must be pre-included in the application. Starting from API version 24, the system has enhanced this field, allowing applications to use non-preloaded audio resources as notification ringtones, such as audio downloaded from the internet or user-generated audio files.
 
@@ -29,7 +29,7 @@ Supported formats: m4a, aac, mp3, ogg, wav, flac, amr, ...
 1. Import modules.
 
     <!-- @[specified_customized_ringtone_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
-    
+
     ``` TypeScript
     import { notificationManager } from '@kit.NotificationKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -50,7 +50,7 @@ Supported formats: m4a, aac, mp3, ogg, wav, flac, amr, ...
    (1) Place the audio resources in the **resources/rawfile** directory of the project.<br>
    (2) Create the sound information for the notification.
     <!-- @[specified_resources_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
-    
+
     ``` TypeScript
     let soundFile: string = SOUND_FILE_NAME; // Replace it with the corresponding audio file in the resources/rawfile directory.
     ```
@@ -59,7 +59,7 @@ Supported formats: m4a, aac, mp3, ogg, wav, flac, amr, ...
 
    (1) Generate the sandbox audio resource path.
     <!-- @[specified_customized_ringtone_getAppContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
-    
+
     ``` TypeScript
     // Generate the sandbox audio resource path.
     const uiContext: UIContext = this.getUIContext();
@@ -77,7 +77,7 @@ Supported formats: m4a, aac, mp3, ogg, wav, flac, amr, ...
    (2) Place internet-downloaded or user-generated audio resources in the **files** directory or its subdirectories in the EL1 area of the [sandbox directory](../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path). The example below copies audio from **resources/rawfile** to the specified sandbox directory.
 
     <!-- @[specified_customized_ringtone_copyToSandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
-    
+
     ``` TypeScript
     // Copy the audio file in the resources/rawfile/ directory to the files directory of the application sandbox EL1.
     try {
@@ -98,7 +98,7 @@ Supported formats: m4a, aac, mp3, ogg, wav, flac, amr, ...
    (3) Create the sound information for the notification.
 
     <!-- @[specified_sandbox_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
-    
+
     ``` TypeScript
     // Obtain the URI of the sandbox file.
     let sandboxFileUri: string = fileUri.getUriFromPath(sandboxFilePath)
@@ -107,7 +107,7 @@ Supported formats: m4a, aac, mp3, ogg, wav, flac, amr, ...
 3. Publish a notification with a custom ringtone.
 
     <!-- @[specified_customized_ringtone_publish_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
-    
+
     ``` TypeScript
     let notificationRequest: notificationManager.NotificationRequest = {
       id: 0,

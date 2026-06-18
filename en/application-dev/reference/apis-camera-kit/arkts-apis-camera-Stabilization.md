@@ -1,16 +1,18 @@
 # Interface (Stabilization)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d0c7a5fb2bc1f1b1c7630c4a5886ec88f6136925 translatedAt=2026-06-09T10:27:06.202Z pushedAt=2026-06-10T01:59:42.614Z -->
 
 **Stabilization** inherits from [StabilizationQuery](arkts-apis-camera-StabilizationQuery.md).
 
 It provides APIs to set video stabilization.
 
-Video stabilization can be set only when the session has a recording stream ([VideoOutput](arkts-apis-camera-VideoOutput.md)). Among the enums of [VideoStabilizationMode](arkts-apis-camera-e.md#videostabilizationmode), the **HIGH** mode only takes effect when the resolution set in [Profile](arkts-apis-camera-i.md#profile) is 1920×1080.
+You can set video stabilization only when a [VideoOutput](arkts-apis-camera-VideoOutput.md) stream exists in the session.
 
 > **NOTE**
 >
@@ -43,7 +45,7 @@ Obtains the video stabilization mode in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -85,7 +87,7 @@ Sets a video stabilization mode. Before the setting, call [isVideoStabilizationM
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 

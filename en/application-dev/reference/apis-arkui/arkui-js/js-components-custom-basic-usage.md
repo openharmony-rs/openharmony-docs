@@ -1,10 +1,12 @@
 # Basic Usage of Custom Components
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @seaside_wu1-->
 <!--Designer: @shiyu_huang-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b9b716c1423f6952b7169df5eb4de15f02019de4 translatedAt=2026-06-10T02:07:13.887Z pushedAt=2026-06-10T03:00:47.823Z -->
 
 Custom components are existing components encapsulated based on service requirements. A custom component can be invoked multiple times in a project to improve the code readability. You can import a custom component to the host page through **element** as shown in the following code snippet:
 
@@ -27,7 +29,6 @@ The following is an example of using a custom component with **if-else**, which 
 ```
 
 The **name** attribute indicates the custom component name (optional), which is case-insensitive and is in lowercase by default. The **src** attribute indicates the **.hml** file path (mandatory) of the custom component. If **name** is not set, the **.hml** file name is used as the component name by default.
-
 
 ## Custom Events
 
@@ -152,9 +153,7 @@ export default {
 
 ![EventParameters](figures/EventParameters.gif)
 
-
 ## Custom Component Data
-
 
 In the JS file of a custom component, you can define, pass, and process data by declaring fields such as **data**, **props**, and **computed**. For details about how to use **props** and **computed**, see [Data Transfer and Processing](js-components-custom-props.md).
 
@@ -162,6 +161,6 @@ In the JS file of a custom component, you can define, pass, and process data by 
 
 | Name     | Type           | Description                                    |
 | -------- | --------------- | ---------------------------------------- |
-| data     | Object \| Function | Data model of the page. If the attribute is of the function type, the return value must be of the object type. The name cannot start with a dollar sign ($) or underscore (\_). Do not use reserved words (**for**, **if**, **show**, and **tid**).<br>Do not use this attribute and **private** or **public** at the same time.|
+| data     | Object&nbsp;\|&nbsp;Function | Data model of the page, in the type of an object or a function. If the attribute is of the function type, the return value must be of the object type. The name cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**,&nbsp;**if**,&nbsp;**show**,&nbsp;and **tid**).<br/>Do not use this attribute and **private** or **public** at the same time. |
 | props    | Array \| Object    | Used for communication between components. This attribute can be passed to components through **\<tag xxxx='value'>**. A **props** name must be in lowercase and cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**) in the name. Currently, **props** does not support functions.|
 | computed | Object          | Used for pre-processing for reading and setting parameters. The result is cached. The name cannot start with a dollar sign ($) or underscore (\_). Do not use reserved words.|

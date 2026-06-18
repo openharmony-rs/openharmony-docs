@@ -192,7 +192,7 @@ Failed to install the HAP because the HAP path is invalid or the HAP is too larg
 **处理步骤**<br/>
 1. 确认HAP是否存在。
 2. 查看HAP的可执行权限，是否可读。
-3. 查看HAP的大小是否超过4G。
+3. 查看HAP的大小是否超过4GB。
 
 ## 17700015 多个HAP配置信息不同导致应用安装失败
 
@@ -547,7 +547,7 @@ The specified shared bundle does not exist.
 
 **可能原因**<br/>
 1. 当前指定卸载的版本不存在与被卸载的shared library中。
-2. 当前指定卸载的shared library不存在与设备中。
+2. 当前指定卸载的shared library在设备中不存在。
 
 **处理步骤**<br/>
 1. 检查被卸载的shared library是否存在于当前设备中。
@@ -1085,7 +1085,7 @@ The destination path is invalid.
 3. 目标路径不能转换为指定路径。
 
 **处理步骤**<br/>
-传入真实存在的路径，不能包含"../"特殊路径。
+开发者应传入真实存在的路径，且不能包含"../"路径序列，以确保路径有效且安全。
 
 ## 17700082 用户身份认证失败
 
@@ -1292,7 +1292,7 @@ Bundle manager service exception.
     ls -ls
     ```
 
-3. 导出crash文件和日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+3. 导出crash文件和日志文件<!--RP1-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP1End-->
 
     ```shell
     hdc file recv /data/log/faultlog/faultlogger/

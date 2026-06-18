@@ -4,7 +4,8 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:07:52.693Z pushedAt=2026-06-16T14:13:52.124Z -->
 
 Multi-instance allows an application to run on multiple processes so that a user can log in multiple accounts and run the application at the same time without affecting each other. For example, a user can run several social accounts, or primary and secondary game accounts simultaneously without frequent log-in and log-out.
 
@@ -24,7 +25,7 @@ Application multi-instance can run on only 2-in-1 devices.
 
     Configure the [multiAppMode](app-configuration-file.md#multiappmode) field in the **App/app.json5** configuration file in the project. The code snippet is as follows:
     <!-- @[multi_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/Multiinstance/AppScope/app.json5)  -->
-    
+
     ``` JSON5
     {
       "app": {

@@ -1,14 +1,16 @@
 # vibrator.h
+
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=7b96ce2cdc47279f6264c88642e4fd07a8682bf6 translatedAt=2026-06-18T03:35:40.090Z pushedAt=2026-06-18T07:24:16.908Z -->
 
 ## Overview
 
-Declares the APIs for starting or stopping vibration.
+Provides standard open APIs for starting and stopping vibrator.
 
 **Header file**: <sensors/vibrator.h>
 

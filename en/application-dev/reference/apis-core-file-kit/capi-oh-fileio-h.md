@@ -6,6 +6,7 @@
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:04:15.992Z pushedAt=2026-06-10T10:59:32.462Z -->
 
 ## Overview
 
@@ -55,7 +56,6 @@ Enumerates the file locations.
 | CLOUD = 2 | The file is stored on the cloud.|
 | LOCAL_AND_CLOUD = 3 | The file is stored on the local device and cloud.|
 
-
 ## Function Description
 
 ### OH_FileIO_GetFileLocation()
@@ -82,4 +82,4 @@ Obtains the location of a file.
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode). |

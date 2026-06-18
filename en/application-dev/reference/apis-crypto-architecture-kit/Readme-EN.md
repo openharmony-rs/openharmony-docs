@@ -1,66 +1,125 @@
 # Crypto Architecture Kit (Crypto Architecture Service)
+
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @zxz--3-->
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:51:55.047Z pushedAt=2026-06-15T02:39:36.678Z -->
 
 - ArkTS APIs<!--crypto-architecture-arkts-->
+
   - [@ohos.security.cryptoFramework (Crypto Framework)](js-apis-cryptoFramework.md)
+
   - APIs No Longer Maintained<!--crypto-architecture-arkts-dep-->
+
     - [@system.cipher (Cipher Algorithm)](js-apis-system-cipher.md)
+
 - C APIs<!--crypto-architecture-c-->
+
   - Modules<!--crypto-architecture-module-->
+
     - [CryptoArchitectureKit](capi-cryptoarchitecturekit.md)
+
     - [CryptoAsymCipherApi](capi-cryptoasymcipherapi.md)
+
     - [CryptoAsymKeyApi](capi-cryptoasymkeyapi.md)
+
     - [CryptoCommonApi](capi-cryptocommonapi.md)
+
     - [CryptoDigestApi](capi-cryptodigestapi.md)
+
     - [CryptoKdfApi](capi-cryptokdfapi.md)
+
     - [CryptoKeyAgreementApi](capi-cryptokeyagreementapi.md)
+
     - [CryptoMacApi](capi-cryptomacapi.md)
+
     - [CryptoRandApi](capi-cryptorandapi.md)
+
     - [CryptoSignatureApi](capi-cryptosignatureapi.md)
+
     - [CryptoSymCipherApi](capi-cryptosymcipherapi.md)
+
     - [CryptoSymKeyApi](capi-cryptosymkeyapi.md)
+
   - Header Files<!--crypto-architecture-headerfile-->
+
     - [crypto_architecture_kit.h](capi-crypto-architecture-kit-h.md)
+
     - [crypto_asym_cipher.h](capi-crypto-asym-cipher-h.md)
+
     - [crypto_asym_key.h](capi-crypto-asym-key-h.md)
+
     - [crypto_common.h](capi-crypto-common-h.md)
+
     - [crypto_digest.h](capi-crypto-digest-h.md)
+
     - [crypto_kdf.h](capi-crypto-kdf-h.md)
+
     - [crypto_key_agreement.h](capi-crypto-key-agreement-h.md)
+
     - [crypto_mac.h](capi-crypto-mac-h.md)
+
     - [crypto_rand.h](capi-crypto-rand-h.md)
+
     - [crypto_signature.h](capi-crypto-signature-h.md)
+
     - [crypto_sym_cipher.h](capi-crypto-sym-cipher-h.md)
+
     - [crypto_sym_key.h](capi-crypto-sym-key-h.md)
+
   - Structs<!--crypto-architecture-struct-->
+
     - [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md)
+
     - [OH_CryptoAsymCipher](capi-cryptoasymcipherapi-oh-cryptoasymcipher.md)
+
     - [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md)
+
     - [OH_CryptoKeyPair](capi-cryptoasymkeyapi-oh-cryptokeypair.md)
+
     - [OH_CryptoPubKey](capi-cryptoasymkeyapi-oh-cryptopubkey.md)
+
     - [OH_CryptoPrivKey](capi-cryptoasymkeyapi-oh-cryptoprivkey.md)
+
     - [OH_CryptoAsymKeyGenerator](capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md)
+
     - [OH_CryptoPrivKeyEncodingParams](capi-cryptoasymkeyapi-oh-cryptoprivkeyencodingparams.md)
+
     - [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md)
+
     - [OH_CryptoAsymKeyGeneratorWithSpec](capi-cryptoasymkeyapi-oh-cryptoasymkeygeneratorwithspec.md)
+
     - [OH_CryptoEcPoint](capi-cryptoasymkeyapi-oh-cryptoecpoint.md)
+
     - [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md)
+
     - [OH_CryptoKdf](capi-cryptokdfapi-oh-cryptokdf.md)
+
     - [OH_CryptoKdfParams](capi-cryptokdfapi-oh-cryptokdfparams.md)
+
     - [OH_CryptoKeyAgreement](capi-cryptokeyagreementapi-oh-cryptokeyagreement.md)
+
     - [OH_CryptoMac](capi-cryptomacapi-oh-cryptomac.md)
+
     - [OH_CryptoRand](capi-cryptorandapi-oh-cryptorand.md)
+
     - [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md)
+
     - [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md)
+
     - [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md)
+
     - [OH_CryptoSymCipher](capi-cryptosymcipherapi-oh-cryptosymcipher.md)
+
     - [OH_CryptoSymCipherParams](capi-cryptosymcipherapi-oh-cryptosymcipherparams.md)
+
     - [OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md)
+
     - [OH_CryptoSymKeyGenerator](capi-cryptosymkeyapi-oh-cryptosymkeygenerator.md)
+
 - Error Codes<!--crypto-architecture-arkts-errcode-->
+
   - [Crypto Framework Error Codes](errorcode-crypto-framework.md)

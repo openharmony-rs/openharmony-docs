@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:05:59.669Z pushedAt=2026-06-10T10:59:32.528Z -->
 
 ## Overview
 
@@ -87,7 +88,6 @@ Enumerates the types of signature verification parameters.
 | CRYPTO_PSS_TRAILER_FIELD_INT = 104 | Trailer field used in the encoding operation when PSS padding mode is used in RSA. The value is **1**.|
 | CRYPTO_SM2_USER_ID_DATABLOB = 105 | User ID field in SM2.|
 
-
 ## Function Description
 
 ### OH_CryptoVerify_Create()
@@ -146,7 +146,6 @@ Initializes a **Verify** instance by using the public key.
 
 [OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final)
 
-
 ### OH_CryptoVerify_Update()
 
 ```c
@@ -178,7 +177,6 @@ Updates the data to be verified.
 
 [OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final)
 
-
 ### OH_CryptoVerify_Final()
 
 ```c
@@ -203,14 +201,13 @@ Verifies the signature of the data.
 
 | Type| Description|
 | -- | -- |
-| bool | **true** if the signature verification is successful; **false** otherwise.|
+| bool | Whether the signature verification is successful. The value **true** indicates that the signature verification is successful, and the value **false** indicates that the signature verification fails. |
 
 **Reference**
 
 [OH_CryptoVerify_Init](capi-crypto-signature-h.md#oh_cryptoverify_init)
 
 [OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update)
-
 
 ### OH_CryptoVerify_Recover()
 
@@ -388,7 +385,6 @@ Initializes a signature instance.
 
 [OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final)
 
-
 ### OH_CryptoSign_Update()
 
 ```c
@@ -419,7 +415,6 @@ Updates the data to be signed.
 [OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
 
 [OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final)
-
 
 ### OH_CryptoSign_Final()
 
@@ -452,7 +447,6 @@ Finalizes the signing operation.<br> Note: After the use is complete, the memory
 [OH_CryptoSign_Init](capi-crypto-signature-h.md#oh_cryptosign_init)
 
 [OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update)
-
 
 ### OH_CryptoSign_GetAlgoName()
 

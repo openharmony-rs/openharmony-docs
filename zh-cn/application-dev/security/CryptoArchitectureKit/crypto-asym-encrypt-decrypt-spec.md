@@ -25,7 +25,7 @@
 
 - [PKCS1_OAEP](#填充模式为pkcs1_oaep)：即RFC3447规范中的RSAES-OAEP模式，对应OpenSSL中的RSA_PKCS1_OAEP_PADDING。
   
-  此模式需要设置两个摘要（md和mgf1_md），加密时，输入数据长度必须小于RSA密钥字节长度 - 2 *md摘要字节长度 - 2；输出数据长度与RSA密钥字节长度相同。
+  此模式需要设置两个摘要（md和mgf1_md），加密时，输入数据长度必须小于RSA密钥字节长度 - 2 * md摘要字节长度 - 2；输出数据长度与RSA密钥字节长度相同。
 
   此模式可设置pSource字节流以定义OAEP填充的编码输入，并获取PKCS1_OAEP的相关参数。
 
@@ -146,7 +146,7 @@
 
 ## SM2
 
-[SM2](crypto-asym-key-generation-conversion-spec.md#sm2)为非对称加密算法，加密长度需要在固定长度进行。算法库目前支持以GM/T 0009-2012定义的格式加密或解密数据。
+[SM2](crypto-asym-key-generation-conversion-spec.md#sm2)为非对称加密算法，加密数据长度需满足固定长度要求。算法库目前支持以GM/T 0009-2012定义的格式加密或解密数据。
 
 SM2非对称加密的结果由C1、C2、C3三部分组成。其中C1是根据生成的随机数计算出的椭圆曲线点，C2是密文数据，C3是通过指定的摘要算法计算的值。
 

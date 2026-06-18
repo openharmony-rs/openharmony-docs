@@ -6,6 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=a16dcd5380f352b729da625973de1c33bd7c6a2a translatedAt=2026-06-10T11:02:23.997Z pushedAt=2026-06-11T09:14:52.504Z -->
 
 The **certManager** module provides system-level certificate management capabilities to implement management and secure use of certificates throughout their lifecycle (installation, storage, use, and destruction).
 
@@ -52,7 +53,7 @@ Obtains all private credentials. This API uses an asynchronous callback to retur
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -60,6 +61,7 @@ For details about the following error codes, see [Certificate Management Error C
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -105,13 +107,14 @@ Obtains all private credentials. This API uses a promise to return the result.
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -156,13 +159,14 @@ Obtains all system credentials. This API uses a promise to return the result.
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 
 **Example**
+
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';

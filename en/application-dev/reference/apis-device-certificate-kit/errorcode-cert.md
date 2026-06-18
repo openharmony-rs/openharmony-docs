@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=78ccb426dbebf6bd52a61c4c1cbe9736d238a9de translatedAt=2026-06-15T00:52:11.885Z pushedAt=2026-06-15T02:39:36.685Z -->
 
 > **NOTE**
 >
@@ -15,7 +16,7 @@
 
 **Error Message**
 
-Memory error.
+Memory malloc failed.
 
 **Description**
 
@@ -52,7 +53,7 @@ Check whether the system is running properly.
 
 **Error Message**
 
-Indicates that parameter check failed.
+Parameter check failed.
 
 **Description**
 
@@ -201,7 +202,7 @@ Check whether the certificate is correct.
 
 **Error Message**
 
-The password may be wrong.
+Maybe wrong password.
 
 **Description**
 

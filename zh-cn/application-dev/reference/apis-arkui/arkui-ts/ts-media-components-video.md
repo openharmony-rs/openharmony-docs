@@ -135,7 +135,7 @@ controls(value: boolean)
 
 > **说明：**
 >
-> Video组件自带的控制器无法自定义。若有其他需求，可隐藏自带控制器并自定义控制器的样式或功能。参考<!--RP1-->[视频播放](https://gitcode.com/harmonyos_samples/video-play)<!--RP1End-->。
+> Video组件自带的控制器无法自定义。若有其他需求，可隐藏自带控制器并自定义控制器的样式或功能。参考<!--RP1-->[视频播放](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/VideoPlay)<!--RP1End-->。
 
 ### objectFit
 
@@ -246,7 +246,7 @@ enableShortcutKey(enabled: boolean)
 
 onStart(event:&nbsp;VoidCallback)
 
-播放时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+开始播放时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -256,7 +256,7 @@ onStart(event:&nbsp;VoidCallback)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | 视频播放的回调函数。        |
+| event  | [VoidCallback](ts-types.md#voidcallback12)    | 是   | 视频开始播放的回调函数。        |
 
 ### onPause
 

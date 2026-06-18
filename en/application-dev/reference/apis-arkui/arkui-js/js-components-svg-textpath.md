@@ -1,13 +1,14 @@
 # textPath
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b9b716c1423f6952b7169df5eb4de15f02019de4 translatedAt=2026-06-10T02:07:46.598Z pushedAt=2026-06-10T06:02:34.425Z -->
 
 The **\<textPath>** component is used to draw text along the path.
-
 
 >  **NOTE**
 >  - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
@@ -20,17 +21,13 @@ The **\<textPath>** component is used to draw text along the path.
 
 None
 
-
 ## Child Components
 
 The **[\<tspan>](js-components-svg-tspan.md)** child component is supported.
 
-
 ## Attributes
 
-
 The attributes in the following table are supported.
-
 
 | Name          | Type                              | Default Value| Description                                                        |
 | -------------- | ---------------------------------- | ------ | ------------------------------------------------------------ |
@@ -45,7 +42,6 @@ The attributes in the following table are supported.
 | stroke         | &lt;color&gt;                      | black  | Stroke color.<br>Default value: **black**                  |
 | stroke-width   | number                             | 1px    | Stroke width.<br>Default value: **1px**                              |
 | stroke-opacity | number                             | 1.0    | Stroke opacity.<br>Default value: **1.0**                            |
-
 
 ## Example
 
@@ -75,7 +71,6 @@ The following is an example of the **\<textspan>** attributes, where text is dra
     width: 600px;
 }
 ```
-
 
 ![textpath-part1](figures/textpath-part1.png)
 
@@ -207,7 +202,7 @@ Attribute animation of the **\<textPath>** and **\<tspan>** in combination
 
 (2) **"tspan attribute dx|opacity"**: The text is drawn after the "tspan static." drawing is complete. The horizontal offset moves from 0% to 30%, and the opacity changes from shallow to deep.
 
-(3) **tspan move**: After the previous **\<tspan>** is drawn, the next **\<tspan>** is drawn with an offset of 5%, creating the effect of following the previous **\<tspan>**.
+(3) **"tspan move"**: After the previous **\<tspan>** is drawn, the next **\<tspan>** is drawn with a backward offset of 5%, creating the effect of following the previous **\<tspan>**.
 
 Attribute animation of the **\<textPath>** and **\<tspan>** in combination
 

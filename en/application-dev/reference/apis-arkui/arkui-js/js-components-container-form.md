@@ -5,6 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b9b716c1423f6952b7169df5eb4de15f02019de4 translatedAt=2026-06-10T02:06:37.603Z pushedAt=2026-06-10T02:23:40.552Z -->
 
 >  **NOTE**
 >
@@ -78,11 +79,11 @@ The [universal methods](js-components-common-methods.md) are supported.
 // xxx.js
 export default{
   onSubmit(result) {
-    console.log(result.value.radioGroup) // radio1 or radio2
-    console.log(result.value.user) // text input value
+    console.info(result.value.radioGroup) // radio1 or radio2
+    console.info(result.value.user) // text input value
   },
   onReset() {
-    console.log('reset all value')
+    console.info('reset all value')
   }
 }
 ```

@@ -4,7 +4,8 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a1815a6960f035b2f960cbb3747e78fb7c1af4a8 translatedAt=2026-06-15T08:05:04.907Z pushedAt=2026-06-16T14:12:40.340Z -->
 
 Application clone allows multiple instances of the same application to be installed on one device, enabling simultaneous login and independent operation for multiple accounts. When users log in with two different accounts to a social media or a game application simultaneously, they do not have to switch accounts, reducing frequent logins.
 
@@ -28,7 +29,7 @@ The input method application cannot create an application clone.
 
     Configure the [multiAppMode](app-configuration-file.md#multiappmode) field in the **AppScope/application.json5** configuration file in the project. The code snippet is as follows:
     <!-- @[app_clone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppClone/AppScope/app.json5) -->
-    
+
     ``` JSON5
     {
       "app": {
@@ -44,7 +45,7 @@ The input method application cannot create an application clone.
 2. Clone an application.
 
     - Build and package the configured project and install it on the device.
- 
+
       ![Figure 2](figures/app-clone4.png)
 
     - Choose **Settings** > **System** > **App Clone**, and tap **Create**.

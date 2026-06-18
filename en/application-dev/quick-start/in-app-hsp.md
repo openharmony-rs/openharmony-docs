@@ -38,7 +38,7 @@ A Harmony Shared Package (HSP) is a dynamic shared package that can contain code
 
 
 ## Creating an HSP
-Create an HSP module for calling C++ code on DevEco Studio and turn on **Enable native** on the **Configure New Module** page. For details, see [Creating an HSP Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hsp#section7717162312546). The following uses the **library** module as an example. The basic project directory structure is as follows:
+Create an HSP module for calling C++ code on DevEco Studio and turn on **Enable native** on the **Configure New Module** page. For details, see [Creating an HSP Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hsp#section79378499185). The following uses the **library** module as an example. The basic project directory structure is as follows:
 ```txt
 MyApplication
 ├── library
