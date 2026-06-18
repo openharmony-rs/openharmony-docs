@@ -265,15 +265,20 @@ struct Child {
     Column({ space: 15 }) {
       // 更改将同步至LocalStorage中的'PropA'以及Parent.parentLinkNumber
       Button(`Child from LocalStorage ${this.childLinkNumber}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.childLinkNumber += 1;
         })
       // 更改将同步至LocalStorage中的'PropB'以及Parent.parentLinkObject.code
       Button(`Child from LocalStorage ${this.childLinkObject.code}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.childLinkObject.code += 1;
         })
     }
+    .width('100%')
   }
 }
 
@@ -290,17 +295,22 @@ struct Parent {
     Column({ space: 15 }) {
       // 由于LocalStorage中PropA已经被初始化，因此this.parentLinkNumber的值为47
       Button(`Parent from LocalStorage ${this.parentLinkNumber}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.parentLinkNumber += 1;
         })
       // 由于LocalStorage中PropB已经被初始化，因此this.parentLinkObject.code的值为50
       Button(`Parent from LocalStorage ${this.parentLinkObject.code}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.parentLinkObject.code += 1;
         })
       // @Component子组件自动获得对Parent LocalStorage实例的访问权限
       Child()
     }
+    .width('100%')
   }
 }
 ```
@@ -331,11 +341,14 @@ struct ParentOne {
     Column({ space: 15 }) {
       // 点击后从47开始加1，只改变当前组件显示的storagePropOne ，不会同步到LocalStorage中
       Button(`ParentOne from LocalStorage ${this.storagePropOne}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.storagePropOne += 1;
         })
       ChildOne()
     }
+    .width('100%')
   }
 }
 
@@ -348,7 +361,10 @@ struct ChildOne {
     Column({ space: 15 }) {
       // 当ParentOne改变时，当前storagePropTwo不会改变，显示47
       Text(`ParentOne from LocalStorage ${this.storagePropTwo}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -375,15 +391,19 @@ struct ParentTwo {
   build() {
     Column() {
       Text(`incr @LocalStorageLink variable`)
-      // 点击“incr @LocalStorageLink variable”，this.storageLink加1，改变同步回storage，全局变量linkToPropA也会同步改变
-
+        .fontSize(15)
+        .margin(10)
+        // 点击“incr @LocalStorageLink variable”，this.storageLink加1，改变同步回storage，全局变量linkToPropA也会同步改变
         .onClick(() => {
           this.storageLink += 1;
         })
 
       // 并不建议在组件内使用全局变量linkToPropA.get()，因为可能会有生命周期不同引起的错误。
       Text(`@LocalStorageLink: ${this.storageLink} - linkToPropA: ${linkToPropA.get()}`)
+        .fontSize(15)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -423,6 +443,7 @@ struct ChildFour {
         .width(50)
         .height(60)
         .fontSize(12)
+        .margin(10)
       Text(`playCountLink ${this.playCountLink}: inc by 1`)
         .onClick(() => {
           this.playCountLink += 1;
@@ -430,6 +451,7 @@ struct ChildFour {
         .width(200)
         .height(60)
         .fontSize(12)
+        .margin(10)
     }
     .width(300)
     .height(60)
@@ -448,6 +470,7 @@ struct ParentFour {
           .width(50)
           .height(60)
           .fontSize(12)
+          .margin(10)
         Text(`playCount ${this.playCount} dec by 1`)
           .onClick(() => {
             this.playCount -= 1;
@@ -455,6 +478,7 @@ struct ParentFour {
           .width(250)
           .height(60)
           .fontSize(12)
+          .margin(10)
       }
       .width(300)
       .height(60)
@@ -464,6 +488,7 @@ struct ParentFour {
           .width(50)
           .height(60)
           .fontSize(12)
+          .margin(10)
         Text(`countStorage ${this.playCount} incr by 1`)
           .onClick(() => {
             storageFour.set<number | undefined>('countStorage', Number(storageFour.get<number>('countStorage')) + 1);
@@ -471,6 +496,7 @@ struct ParentFour {
           .width(250)
           .height(60)
           .fontSize(12)
+          .margin(10)
       }
       .width(300)
       .height(60)
@@ -482,7 +508,9 @@ struct ParentFour {
         .width(300)
         .height(60)
         .fontSize(12)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -544,7 +572,10 @@ struct PageFiveShare {
           Text(`${this.propA}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
           Button('To Page')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               this.pageStack.pushPathByName('Page', null);
             })
@@ -580,13 +611,18 @@ struct PageFiveShareChange {
           Text(`${this.propA}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
 
           Button('Change propA')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               this.propA = 100;
             })
 
           Button('Back PageFiveShare')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               this.pathStack.pop();
             })
@@ -664,6 +700,7 @@ struct TestIndex {
         Text(this.propA)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         // 使用LocalStorage实例localStorageTwo
         ChildSix({ count: this.count }, localStorageTwo)
       }
@@ -684,6 +721,7 @@ struct ChildSix {
     Text(this.propB)
       .fontSize(50)
       .fontWeight(FontWeight.Bold)
+      .margin(10)
   }
 }
 ```
@@ -855,6 +893,8 @@ struct PageOneStack {
         NavigationContentMsgStack()
         // 显示绑定的LocalStorage中'PropA'对应的值'propA'
         Text(`${this.propA}`)
+          .fontSize(20)
+          .margin(10)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -882,6 +922,8 @@ struct PageTwoStack {
         NavigationContentMsgStack()
         // 如果绑定的LocalStorage中没有'PropB',显示本地初始化的值'Hello World'
         Text(`${this.propB}`)
+          .fontSize(20)
+          .margin(10)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -911,6 +953,8 @@ struct PageThreeStack {
 
         // 如果绑定的LocalStorage中没有'PropC',显示本地初始化的值'pageThreeStack'
         Text(`${this.propC}`)
+          .fontSize(20)
+          .margin(10)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -937,7 +981,9 @@ struct NavigationContentMsgStack {
       Text(`${this.propA}`)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -958,18 +1004,23 @@ struct LocalStorageLinkComponent {
   build() {
     Column() {
       Text('@LocalStorageLink API Initialization, @LocalStorageLink Value')
+        .fontSize(20)
+        .margin(10)
       Text(`${this.linkA}`)
         .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.linkA ? this.linkA = null : this.linkA = 1;
         })
       Text(`${this.linkB}`)
         .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.linkB ? this.linkB = undefined : this.linkB = 1;
         })
     }
     .borderWidth(3).borderColor(Color.Green)
+    .width('95%')
   }
 }
 
@@ -981,19 +1032,24 @@ struct LocalStoragePropComponent {
   build() {
     Column() {
       Text('@LocalStorageProp API Initialization, @LocalStorageProp Value')
+        .fontSize(20)
+        .margin(10)
       Text(`${this.propA}`)
         .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.propA ? this.propA = null : this.propA = 1;
         })
       Text(`${this.propB}`)
         .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.propB ? this.propB = undefined : this.propB = 1;
         })
     }
     .borderWidth(3)
     .borderColor(Color.Yellow)
+    .width('95%')
   }
 }
 
@@ -1063,6 +1119,7 @@ struct Index {
         .width(300)
         .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -1087,21 +1144,25 @@ struct LocalDateSample {
     Column() {
       // 更新Date类型变量，触发UI刷新
       Button('set selectedDate to 2023-07-08')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate = new Date('2023-07-08');
         })
       Button('increase the year by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
@@ -1136,26 +1197,45 @@ struct LocalMapSample {
     Row() {
       Column() {
         ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Text(`${item[1]}`).fontSize(30)
+          Text(`${item[0]}`)
+            .fontSize(30)
+            .margin(10)
+          Text(`${item[1]}`)
+            .fontSize(30)
+            .margin(10)
           Divider()
         })
         // 初始化Map类型变量，触发UI刷新
-        Button('init map').onClick(() => {
-          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
-        Button('set new one').onClick(() => {
-          this.message.set(4, 'd');
-        })
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
-        Button('replace the existing one').onClick(() => {
-          this.message.set(0, 'aa');
-        })
-        Button('delete the existing one').onClick(() => {
-          this.message.delete(0);
-        })
+        Button('init map')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+          })
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.set(4, 'd');
+          })
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.clear();
+          })
+        Button('replace the existing one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.set(0, 'aa');
+          })
+        Button('delete the existing one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.delete(0);
+          })
       }
       .width('100%')
     }
@@ -1186,22 +1266,31 @@ struct LocalSetSample {
         ForEach(Array.from(this.memberSet.entries()), (item: [number, number]) => {
           Text(`${item[0]}`)
             .fontSize(30)
+            .margin(10)
           Divider()
         })
         // 初始化Set类型变量，触发UI刷新
         Button('init set')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet = new Set([0, 1, 2, 3, 4]);
           })
         Button('set new one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet.add(5);
           })
         Button('clear')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet.clear();
           })
         Button('delete the first one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet.delete(0);
           })
@@ -1239,12 +1328,17 @@ struct Test {
   build() {
     Column() {
       Text(`count value: ${this.count}`)
+        .fontSize(20)
+        .margin(10)
       Button('change')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 自定义组件外改变状态变量，触发UI刷新
           model.call('count', this.count + 1);
         })
     }
+    .width('100%')
   }
 }
 ```

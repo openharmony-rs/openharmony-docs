@@ -211,8 +211,8 @@ get varName(): T {
    - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
 
    <!-- @[custom_component_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
    const TAG = '[Sample_Textcomponent]';
@@ -235,16 +235,28 @@ get varName(): T {
      build() {
        Column() {
          Text(this.lastName + ' ' + this.firstName)
+           .fontSize(20)
+           .margin(10)
          Text(this.lastName + ' ' + this.firstName)
+           .fontSize(20)
+           .margin(10)
          Divider()
          Text(this.fullName)
+           .fontSize(20)
+           .margin(10)
          Text(this.fullName)
+           .fontSize(20)
+           .margin(10)
          Button('changed lastName')
+           .width(300)
+           .margin(10)
            .onClick(() => {
              this.lastName += 'a';
            })
    
          Button('changed age')
+           .width(300)
+           .margin(10)
            .onClick(() => {
              this.age++;  // 无法触发Computed
            })
@@ -293,12 +305,20 @@ get varName(): T {
      build() {
        Column() {
          Text(this.name1.fullName)
+           .fontSize(20)
+           .margin(10)
          Text(this.name1.fullName)
+           .fontSize(20)
+           .margin(10)
          // 点击Button改变lastName，触发fullName重新计算，且只被计算一次
-         Button('changed lastName').onClick(() => {
-           this.name1.lastName += 'a';
-         })
+         Button('changed lastName')
+           .width(300)
+           .margin(10)
+           .onClick(() => {
+             this.name1.lastName += 'a';
+           })
        }
+       .width('100%')
      }
    }
    ```
@@ -400,9 +420,12 @@ get varName(): T {
       Column() {
         Text(`Shopping List: `)
           .fontSize(30)
+          .margin(10)
         ForEach(this.shoppingBasket, (item: Article) => {
           Row() {
             Text(`unitPrice: ${item.unitPrice}`)
+              .fontSize(20)
+              .margin(10)
             // 点击Button减少quantity，触发total和qualifiesForDiscount重新计算
             Button('-')
               .onClick(() => {
@@ -411,17 +434,21 @@ get varName(): T {
                 }
               })
             Text(`quantity: ${item.quantity}`)
+              .fontSize(20)
+              .margin(10)
             // 点击Button增加quantity，触发total和qualifiesForDiscount重新计算
             Button('+')
               .onClick(() => {
                 item.quantity++;
               })
           }
+          .width('100%')
   
           Divider()
         })
         Child({ total: this.total, qualifiesForDiscount: this.qualifiesForDiscount })
-      }.alignItems(HorizontalAlign.Start)
+      }
+      .alignItems(HorizontalAlign.Start)
     }
   }
   
@@ -434,8 +461,10 @@ get varName(): T {
       Row() {
         Text(`Total: ${this.total} `)
           .fontSize(30)
+          .margin(10)
         Text(`Discount: ${this.qualifiesForDiscount} `)
           .fontSize(30)
+          .margin(10)
       }
     }
   }

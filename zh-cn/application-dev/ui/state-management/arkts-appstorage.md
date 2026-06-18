@@ -242,6 +242,8 @@ struct TestStorageProp {
     Column({ space: 20 }) {
       // @StorageLink与AppStorage建立双向联系，更改数据会同步回AppStorage中key为'propA'的值
       Text(`storageLink ${this.storageLink}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.storageLink += 1;
         })
@@ -249,6 +251,8 @@ struct TestStorageProp {
       // @StorageProp与AppStorage建立单向联系，更改数据不会同步回AppStorage中key为'propA'的值
       // 但能被AppStorage的set/setorCreate更新值
       Text(`storageProp ${this.storageProp}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.storageProp += 1;
         })
@@ -256,21 +260,28 @@ struct TestStorageProp {
       // AppStorage的API虽然能获取值，但是不具有刷新UI的能力，日志能看到数值更改
       // 依赖@StorageLink/@StorageProp才能建立起与自定义组件的联系，刷新UI
       Text(`change by AppStorage: ${AppStorage.get<number>('propA')}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           hilog.info(DOMAIN, TAG, `Appstorage.get: ${AppStorage.get<number>('propA')}`);
           AppStorage.set<number>('propA', 100);
         })
 
       Text(`storageLinkObject ${this.storageLinkObject.code}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.storageLinkObject.code += 1;
         })
 
       Text(`storagePropObject ${this.storagePropObject.code}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.storagePropObject.code += 1;
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -290,15 +301,24 @@ struct StorageLinkComponent {
   build() {
     Column() {
       Text('@StorageLink接口初始化，@StorageLink取值')
+        .fontSize(20)
+        .margin(10)
       // linkA为null时，点击后会切换为1；linkA为1时，点击后会切换为null
-      Text(`${this.linkA}`).fontSize(20).onClick(() => {
-        this.linkA ? this.linkA = null : this.linkA = 1;
-      })
-      Text(`${this.linkB}`).fontSize(20).onClick(() => {
-        this.linkB ? this.linkB = undefined : this.linkB = 1;
-      })
+      Text(`${this.linkA}`)
+        .fontSize(20)
+        .margin(10)
+        .onClick(() => {
+          this.linkA ? this.linkA = null : this.linkA = 1;
+        })
+      Text(`${this.linkB}`)
+        .fontSize(20)
+        .margin(10)
+        .onClick(() => {
+          this.linkB ? this.linkB = undefined : this.linkB = 1;
+        })
     }
     .borderWidth(3).borderColor(Color.Red)
+    .width('100%')
   }
 }
 
@@ -310,14 +330,23 @@ struct StoragePropComponent {
   build() {
     Column() {
       Text('@StorageProp接口初始化，@StorageProp取值')
-      Text(`${this.propA}`).fontSize(20).onClick(() => {
-        this.propA ? this.propA = null : this.propA = 1;
-      })
-      Text(`${this.propB}`).fontSize(20).onClick(() => {
-        this.propB ? this.propB = undefined : this.propB = 1;
-      })
+        .fontSize(20)
+        .margin(10)
+      Text(`${this.propA}`)
+        .fontSize(20)
+        .margin(10)
+        .onClick(() => {
+          this.propA ? this.propA = null : this.propA = 1;
+        })
+      Text(`${this.propB}`)
+        .fontSize(20)
+        .margin(10)
+        .onClick(() => {
+          this.propB ? this.propB = undefined : this.propB = 1;
+        })
     }
     .borderWidth(3).borderColor(Color.Blue)
+    .width('100%')
   }
 }
 
@@ -358,33 +387,34 @@ struct ArraySample {
       })
       // 新增数组元素，触发UI刷新
       Button('Push element')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.push(4);
         })
-        .width(300)
-        .margin(10)
       // 删除数组元素，触发UI刷新
       Button('Pop element')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.pop();
         })
-        .width(300)
-        .margin(10)
       // 对数组整体重新赋值，触发UI刷新
       Button('Reset array')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message = [9, 8, 7, 6];
         })
-        .width(300)
-        .margin(10)
       // 更新数组元素，触发UI刷新
       Button('Modify element[0]')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message[0] = 10;
         })
-        .width(300)
-        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -408,22 +438,26 @@ struct DateSample {
   build() {
     Column() {
       Button('set selectedDate to 2023-07-08')
+        .width(300)
         .margin(10)
         .onClick(() => {
           AppStorage.setOrCreate('date', new Date('2023-07-08'));
         })
       // 点击Button更新selectedDate年份数据，触发视图刷新
       Button('increase the year by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
@@ -458,26 +492,45 @@ struct MapSample {
     Row() {
       Column() {
         ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Text(`${item[1]}`).fontSize(30)
+          Text(`${item[0]}`)
+            .fontSize(30)
+            .margin(10)
+          Text(`${item[1]}`)
+            .fontSize(30)
+            .margin(10)
           Divider()
         })
         // 点击Button初始化message
-        Button('init map').onClick(() => {
-          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
-        Button('set new one').onClick(() => {
-          this.message.set(4, 'd');
-        })
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
-        Button('replace the existing one').onClick(() => {
-          this.message.set(0, 'aa');
-        })
-        Button('delete the existing one').onClick(() => {
-          AppStorage.get<Map<number, string>>('map')?.delete(0);
-        })
+        Button('init map')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+          })
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.set(4, 'd');
+          })
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.clear();
+          })
+        Button('replace the existing one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.set(0, 'aa');
+          })
+        Button('delete the existing one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            AppStorage.get<Map<number, string>>('map')?.delete(0);
+          })
       }
       .width('100%')
     }
@@ -509,22 +562,31 @@ struct SetSample {
         ForEach(Array.from(this.memberSet.entries()), (item: [number, number]) => {
           Text(`${item[0]}`)
             .fontSize(30)
+            .margin(10)
           Divider()
         })
         // 点击Button初始化memberSet
         Button('init set')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet = new Set([0, 1, 2, 3, 4]);
           })
         Button('set new one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             AppStorage.get<Set<number>>('set')?.add(5);
           })
         Button('clear')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet.clear();
           })
         Button('delete the first one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet.delete(0);
           })
@@ -560,20 +622,28 @@ struct Index {
           Text(`${this.linkA}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
           Text(`${this.propB}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
           Button('Change linkA')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               // 刷新UI，修改将会被同步回AppStorage
               this.linkA++;
             })
           Button('Change propB')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               // 刷新UI，修改不会被同步回AppStorage
               this.propB++;
             })
           Button('To Page')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               this.pageStack.pushPathByName('Page', null);
             })
@@ -608,20 +678,28 @@ struct Page {
           Text(`${this.linkA}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
           Text(`${this.propB}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
           Button('Change linkA')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               // 刷新UI，修改将会被同步回AppStorage
               this.linkA++;
             })
           Button('Change propB')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               // 刷新UI，修改不会被同步回AppStorage
               this.propB++;
             })
           Button('Back Index')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               this.pageStack.pop();
             })
@@ -707,7 +785,7 @@ struct Gallery {
         })
       }.columnsTemplate('1fr 1fr')
     }
-
+    .width('100%')
   }
 }
 
@@ -909,7 +987,7 @@ struct Gallery {
         })
       }.columnsTemplate('1fr 1fr')
     }
-
+    .width('100%')
   }
 }
 
@@ -970,13 +1048,18 @@ struct PageStorageProp {
   build() {
     Column() {
       Text(`${this.propA}`)
+        .fontSize(20)
+        .margin(10)
       Button('change')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           AppStorage.setOrCreate('propA', false);
           // 输出当前this.propA的值
           hilog.info(DOMAIN, TAG, `propA: ${this.propA}`);
         })
     }
+    .width('100%')
   }
 }
 ```

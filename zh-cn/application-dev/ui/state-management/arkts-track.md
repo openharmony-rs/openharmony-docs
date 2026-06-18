@@ -53,22 +53,30 @@ struct Index {
     Column() {
       Text(`name: ${this.info.name}`)
         .fontSize(this.getFontSize(1))
+        .margin(10)
       Text(`age: ${this.info.age}`)
         .fontSize(this.getFontSize(2))
+        .margin(10)
 
       // 点击当前Button，可以发现当前虽然仅改变了name属性
       // 但是依旧会触发两个Text的刷新
       // Text(`age: ${this.info.age}`)是冗余刷新
-      Button('change name').onClick(() => {
-        this.info.name = 'Jane';
-      })
+      Button('change name')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.info.name = 'Jane';
+        })
 
       // 点击当前Button，可以发现当前虽然仅改变了age属性
       // 但是依旧会触发两个Text的刷新
       // Text(`name: ${this.info.name}`)是冗余刷新
-      Button('change age').onClick(() => {
-        this.info.age++;
-      })
+      Button('change age')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.info.age++;
+        })
     }
     .height('100%')
     .width('100%')
@@ -164,21 +172,29 @@ struct AddLog {
           .id('str1')
           .fontSize(this.isRender(1))
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         Text(this.logTrack.str2) // Text2
           .fontSize(this.isRender(2))
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         Button('change logTrack.str1')
           .id('str2')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.logTrack.str1 = 'Bye';
           })
         Text(this.logNotTrack.str1) // Text3
           .fontSize(this.isRender(3))
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         Text(this.logNotTrack.str2) // Text4
           .fontSize(this.isRender(4))
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         Button('change logNotTrack.str1')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.logNotTrack.str1 = 'Bye';
           })
