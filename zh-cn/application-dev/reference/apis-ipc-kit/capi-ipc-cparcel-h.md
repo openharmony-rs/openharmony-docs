@@ -659,7 +659,7 @@ int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)
 | ---- | ---- |
 | int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 读取失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
-### OH_IPCParcel_WriteUint8()<sup>26+</sup>
+### OH_IPCParcel_WriteUint8()
 
 ```C
 int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)
@@ -686,7 +686,7 @@ int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)
 | ---- | ---- |
 | int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 写入失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
-### OH_IPCParcel_ReadUint8()<sup>26+</sup>
+### OH_IPCParcel_ReadUint8()
 
 ```C
 int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)
@@ -713,7 +713,7 @@ int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)
 | ---- | ---- |
 | int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 读取失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
-### OH_IPCParcel_WriteUint16()<sup>26+</sup>
+### OH_IPCParcel_WriteUint16()
 
 ```C
 int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)
@@ -740,7 +740,7 @@ int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)
 | ---- | ---- |
 | int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 写入失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
-### OH_IPCParcel_ReadUint16()<sup>26+</sup>
+### OH_IPCParcel_ReadUint16()
 
 ```C
 int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)
@@ -767,7 +767,7 @@ int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)
 | ---- | ---- |
 | int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 读取失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
-### OH_IPCParcel_WriteUint32()<sup>26+</sup>
+### OH_IPCParcel_WriteUint32()
 
 ```C
 int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)
@@ -794,7 +794,7 @@ int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)
 | ---- | ---- |
 | int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 写入失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
-### OH_IPCParcel_ReadUint32()<sup>26+</sup>
+### OH_IPCParcel_ReadUint32()
 
 ```C
 int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)
@@ -821,7 +821,7 @@ int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)
 | ---- | ---- |
 | int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 读取失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
-### OH_IPCParcel_WriteUint64()<sup>26+</sup>
+### OH_IPCParcel_WriteUint64()
 
 ```C
 int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)
@@ -848,7 +848,7 @@ int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)
 | ---- | ---- |
 | int | 成功返回[OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 参数不合法时返回[OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)；<br> 写入失败返回[OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode)。 |
 
-### OH_IPCParcel_ReadUint64()<sup>26+</sup>
+### OH_IPCParcel_ReadUint64()
 
 ```C
 int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)
@@ -1172,7 +1172,7 @@ int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stu
 
 **配对调用：**
 
-- 必须与OH_IPCParcel_ReadRemoteStub()方法配对使用。
+- 必须与[OH_IPCParcel_ReadRemoteStub()](#oh_ipcparcel_readremotestub)方法配对使用。
 - 调用顺序：先调用WriteRemoteStub()写入Stub对象，接收端再调用ReadRemoteStub()读取。
 - 未正确配对：如果未按顺序调用或未配对使用，会导致接收端无法正确获取Stub对象引用，影响IPC通信建立。
 
@@ -1259,8 +1259,8 @@ int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *p
 
 **配对调用：**
 
-- 必须与OH_IPCParcel_ReadRemoteProxy()方法配对使用。
-- 调用顺序：先调用WriteRemoteProxy()写入Proxy对象，接收端再调用ReadRemoteProxy()读取。
+- 必须与[OH_IPCParcel_ReadRemoteProxy()](#oh_ipcparcel_readremoteproxy)方法配对使用。
+- 调用顺序：先调用[OH_IPCParcel_WriteRemoteProxy()](#oh_ipcparcel_writeremoteproxy)写入Proxy对象，接收端再调用[OH_IPCParcel_ReadRemoteProxy()](#oh_ipcparcel_readremoteproxy)读取。
 - 未正确配对：如果未按顺序调用或未配对使用，会导致接收端无法正确获取Proxy对象引用，影响IPC通信建立。
 
 **约束和限制**
@@ -1346,8 +1346,8 @@ int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)
 
 **配对调用：**
 
-- 必须与OH_IPCParcel_ReadFileDescriptor()方法配对使用。
-- 调用顺序：先调用WriteFileDescriptor()写入文件描述符，接收端再调用ReadFileDescriptor()读取。
+- 必须与[OH_IPCParcel_ReadFileDescriptor()](#oh_ipcparcel_readfiledescriptor)方法配对使用。
+- 调用顺序：先调用[OH_IPCParcel_WriteFileDescriptor()](#oh_ipcparcel_writefiledescriptor)写入文件描述符，接收端再调用[OH_IPCParcel_ReadFileDescriptor()](#oh_ipcparcel_readfiledescriptor)读取。
 - 未正确配对：如果未按顺序调用或未配对使用，会导致接收端无法获取正确的文件描述符，影响跨进程文件共享和访问。
 
 **约束和限制**
@@ -1463,8 +1463,8 @@ int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)
 3. 接口描述符数据被序列化存储在Parcel对象中。
 
 **配对调用：**
-- 必须与OH_IPCParcel_ReadInterfaceToken()方法配对使用。
-- 调用顺序：客户端先调用WriteInterfaceToken()写入接口描述符，服务端再调用ReadInterfaceToken()读取并校验。
+- 必须与[OH_IPCParcel_ReadInterfaceToken()](#oh_ipcparcel_readinterfacetoken)方法配对使用。
+- 调用顺序：客户端先调用[OH_IPCParcel_WriteInterfaceToken()](#oh_ipcparcel_writeinterfacetoken)写入接口描述符，服务端再调用[OH_IPCParcel_ReadInterfaceToken()](#oh_ipcparcel_readinterfacetoken)读取并校验。
 - 未正确配对：如果未按顺序调用或未配对使用，会导致接口身份校验失败，请求可能被拒绝或发送到错误的接口，造成接口混淆。
 
 **约束和限制**
