@@ -52642,9 +52642,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":31,
 						"name":"screenCapture_import",
-						"start_line":20
+						"start_line":19
 					}
 				]
 			},
@@ -52657,9 +52657,9 @@
 						"start_line":452
 					},
 					{
-						"end_line":106,
+						"end_line":219,
 						"name":"screenCapture_config",
-						"start_line":56
+						"start_line":159
 					},
 					{
 						"end_line":480,
