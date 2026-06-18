@@ -134,7 +134,6 @@ type Vector4 = Vector4
 从API版本26.0.0开始，新增系统组件DistortionComponent。
 
 ```ts
-// 示例：
 @Entry
 @Component
 struct DistortionCornerExample {
