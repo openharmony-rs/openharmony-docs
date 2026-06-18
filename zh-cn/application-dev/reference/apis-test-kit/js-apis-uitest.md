@@ -1089,7 +1089,7 @@ isBefore(com: Component): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1180,7 +1180,7 @@ isAfter(com: Component): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1271,7 +1271,7 @@ within(com: Component): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1451,7 +1451,7 @@ ArkTS-Sta: belongingDisplay(displayId: int): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1499,7 +1499,7 @@ originalText(text: string, pattern?: MatchPattern): On
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1542,7 +1542,7 @@ click(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1586,7 +1586,7 @@ doubleClick(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1630,7 +1630,7 @@ longClick(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1674,7 +1674,7 @@ getId(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1722,7 +1722,7 @@ getText(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1766,7 +1766,7 @@ getType(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1810,7 +1810,7 @@ getBounds(): Promise\<Rect>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1854,7 +1854,7 @@ getBoundsCenter(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1898,7 +1898,7 @@ isClickable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1944,7 +1944,7 @@ isLongClickable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -1990,7 +1990,7 @@ isChecked(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2036,7 +2036,7 @@ isCheckable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2082,7 +2082,7 @@ isScrollable(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2129,7 +2129,7 @@ isEnabled(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2175,7 +2175,7 @@ isFocused(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2221,7 +2221,7 @@ isSelected(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2273,7 +2273,7 @@ inputText(text: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2325,7 +2325,7 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2370,7 +2370,7 @@ clearText(): Promise\<void>
 | Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2422,7 +2422,7 @@ scrollSearch(on: On): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2480,7 +2480,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2538,7 +2538,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: int): Promise\<Component \| nu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2589,7 +2589,7 @@ ArkTS-Sta: scrollToTop(speed?: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2642,7 +2642,7 @@ ArkTS-Sta: scrollToBottom(speed?: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2695,7 +2695,7 @@ dragTo(target: Component): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2749,7 +2749,7 @@ ArkTS-Sta: pinchOut(scale: double): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2802,7 +2802,7 @@ ArkTS-Sta: pinchIn(scale: double): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -2847,7 +2847,7 @@ getDescription(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2890,7 +2890,7 @@ getHint(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2935,7 +2935,7 @@ ArkTS-Sta: getDisplayId(): Promise\<int>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2979,7 +2979,7 @@ getOriginalText(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3029,7 +3029,7 @@ static create(): Driver
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3076,7 +3076,7 @@ ArkTS-Sta: delayMs(duration: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3125,7 +3125,7 @@ findComponent(on: On): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3172,7 +3172,7 @@ findComponent(on: On): Promise\<Component \| null>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3221,7 +3221,7 @@ findComponents(on: On): Promise\<Array\<Component>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3268,7 +3268,7 @@ findComponents(on: On): Promise\<Array\<Component> | null\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3317,7 +3317,7 @@ findWindow(filter: WindowFilter): Promise\<UiWindow>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3364,7 +3364,7 @@ findWindow(filter: WindowFilter): Promise\<UiWindow | null\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3414,7 +3414,7 @@ waitForComponent(on: On, time: number): Promise\<Component>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3462,7 +3462,7 @@ waitForComponent(on: On, time: int): Promise\<Component | null\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3509,7 +3509,7 @@ assertComponentExist(on: On): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3555,7 +3555,7 @@ pressBack(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3603,7 +3603,7 @@ ArkTS-Sta: pressBack(displayId: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3652,7 +3652,7 @@ ArkTS-Sta: triggerKey(keyCode: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3703,7 +3703,7 @@ ArkTS-Sta: triggerKey(keyCode: int, displayId: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3755,7 +3755,7 @@ triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3810,7 +3810,7 @@ ArkTS-Sta: triggerCombineKeys(key0: int, key1: int, key2?: int, displayId?: int)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3860,7 +3860,7 @@ ArkTS-Sta: click(x: int, y: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3907,7 +3907,7 @@ clickAt(point: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -3955,7 +3955,7 @@ clickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4009,7 +4009,7 @@ ArkTS-Sta: doubleClick(x: int, y: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4056,7 +4056,7 @@ doubleClickAt(point: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4106,7 +4106,7 @@ ArkTS-Sta: longClick(x: int, y: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4177,7 +4177,7 @@ longClickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4235,7 +4235,7 @@ ArkTS-Sta: swipe(startx: int, starty: int, endx: int, endy: int, speed?: int): P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4286,7 +4286,7 @@ ArkTS-Sta: swipeBetween(from: Point, to: Point, speed?: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4335,7 +4335,7 @@ swipeBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4395,7 +4395,7 @@ ArkTS-Sta: drag(startx: int, starty: int, endx: int, endy: int, speed?: int): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4448,7 +4448,7 @@ ArkTS-Sta: dragBetween(from: Point, to: Point, speed?: int, duration?: int): Pro
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4499,7 +4499,7 @@ dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4552,7 +4552,7 @@ screenCap(savePath: string): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4602,7 +4602,7 @@ ArkTS-Sta: screenCap(savePath: string, displayId: int): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4652,7 +4652,7 @@ ArkTS-Sta: dumpLayout(savePath: string, displayId?: int): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4702,7 +4702,7 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4747,7 +4747,7 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4795,7 +4795,7 @@ ArkTS-Sta: getDisplayRotation(displayId: int): Promise\<DisplayRotation>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4844,7 +4844,7 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4889,7 +4889,7 @@ getDisplaySize(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4937,7 +4937,7 @@ ArkTS-Sta: getDisplaySize(displayId: int): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -4982,7 +4982,7 @@ getDisplayDensity(): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5030,7 +5030,7 @@ ArkTS-Sta: getDisplayDensity(displayId: int): Promise\<Point>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5071,7 +5071,7 @@ wakeUpDisplay(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5113,7 +5113,7 @@ pressHome(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5163,7 +5163,7 @@ ArkTS-Sta: pressHome(displayId: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5213,7 +5213,7 @@ ArkTS-Sta: waitForIdle(idleTime: int, timeout: int): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5265,7 +5265,7 @@ ArkTS-Sta: fling(from: Point, to: Point, stepLen: int, speed: int): Promise\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5315,7 +5315,7 @@ ArkTS-Sta: injectMultiPointerAction(pointers: PointerMatrix, speed?: int): Promi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -5381,7 +5381,7 @@ ArkTS-Sta: fling(direction: UiDirection, speed: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5432,7 +5432,7 @@ ArkTS-Sta: fling(direction: UiDirection, speed: int, displayId: int): Promise\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5480,7 +5480,7 @@ screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5537,7 +5537,7 @@ ArkTS-Sta: mouseClick(p: Point, btnId: MouseButton, key1?: int, key2?: int): Pro
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5588,7 +5588,7 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5635,7 +5635,7 @@ mouseMoveTo(p: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5676,7 +5676,7 @@ createUIEventObserver(): UIEventObserver
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -5729,7 +5729,7 @@ ArkTS-Sta: mouseScroll(p: Point, down: boolean, d: int, key1?: int, key2?: int, 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5781,7 +5781,7 @@ ArkTS-Sta: mouseDoubleClick(p: Point, btnId: MouseButton, key1?: int, key2?: int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5833,7 +5833,7 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5888,7 +5888,7 @@ ArkTS-Sta: mouseLongClick(p: Point, btnId: MouseButton, key1?: int, key2?: int, 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5939,7 +5939,7 @@ ArkTS-Sta: mouseMoveWithTrack(from: Point, to: Point, speed?: int): Promise\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5992,7 +5992,7 @@ mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6046,7 +6046,7 @@ ArkTS-Sta: mouseDrag(from: Point, to: Point, speed?: int, duration?: int): Promi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6098,7 +6098,7 @@ mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6155,7 +6155,7 @@ inputText(p: Point, text: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6208,7 +6208,7 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6273,7 +6273,7 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6328,7 +6328,7 @@ ArkTS-Sta: touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6376,7 +6376,7 @@ penClick(point: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6426,7 +6426,7 @@ ArkTS-Sta: penLongClick(point: Point, pressure?: double): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6474,7 +6474,7 @@ penDoubleClick(point: Point): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6526,7 +6526,7 @@ ArkTS-Sta: penSwipe(startPoint: Point, endPoint: Point, speed?: int, pressure?: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6578,7 +6578,7 @@ ArkTS-Sta: injectPenPointerAction(pointers: PointerMatrix, speed?: int, pressure
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6641,7 +6641,7 @@ triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6699,7 +6699,7 @@ ArkTS-Sta: crownRotate(d: int, speed?: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6759,7 +6759,7 @@ ArkTS-Sta: knuckleKnock(pointers: Array\<Point>, times: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6818,7 +6818,7 @@ ArkTS-Sta: injectKnucklePointerAction(pointers: PointerMatrix, speed?: int): Pro
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6878,7 +6878,7 @@ ArkTS-Sta: isComponentPresentWhenLongClick(on: On, point: Point, duration?: int)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6931,7 +6931,7 @@ ArkTS-Sta: isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: in
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6983,7 +6983,7 @@ ArkTS-Sta: isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: i
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -7133,7 +7133,7 @@ getBundleName(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7177,7 +7177,7 @@ getBounds(): Promise\<Rect>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7221,7 +7221,7 @@ getTitle(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7265,7 +7265,7 @@ getWindowMode(): Promise\<WindowMode>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7309,7 +7309,7 @@ isFocused(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7357,7 +7357,7 @@ isActived(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7401,7 +7401,7 @@ focus(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7456,7 +7456,7 @@ ArkTS-Sta: moveTo(x: int, y: int): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7512,7 +7512,7 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -7558,7 +7558,7 @@ split(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -7605,7 +7605,7 @@ maximize(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7652,7 +7652,7 @@ minimize(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7699,7 +7699,7 @@ resume(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7746,7 +7746,7 @@ close(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
@@ -7791,7 +7791,7 @@ isActive(): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
@@ -7837,7 +7837,7 @@ ArkTS-Sta: getDisplayId(): Promise\<int>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -8084,7 +8084,7 @@ once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowCh
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8139,7 +8139,7 @@ onceWindowChange(windowChangeType: WindowChangeType, options: WindowChangeOption
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8197,7 +8197,7 @@ once(type: 'componentEventOccur', componentEventType: ComponentEventType, option
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -8257,7 +8257,7 @@ onceComponentEventOccur(componentEventType: ComponentEventType, options: Compone
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -9462,7 +9462,7 @@ assertComponentExist(by: By): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+以下错误码的详细介绍请参见[UiTest错误码](errorcode-uitest.md)。
 
 | 错误码ID | 错误信息                                         |
 | -------- | ------------------------------------------------ |
