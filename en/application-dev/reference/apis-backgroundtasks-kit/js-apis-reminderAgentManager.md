@@ -1144,7 +1144,7 @@ Defines a reminder for a scheduled timer.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | triggerTimeInSeconds | number | No| No| Number of seconds in the countdown timer.<br> Unit: s|
-| repeatInterval | number | No| Yes| Repeat interval. There is no default value. If no value is set, there is no repeat interval. This parameter must be used together with **repeatCount**.<br>The value range is [86400, +∞), in senconds. If the value is out of range, error code 401 is returned.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| repeatInterval | number | No| Yes| Repeat interval. There is no default value. If no value is set, there is no repeat interval. This parameter must be used together with **repeatCount**.<br>The value range is [86400, +∞), in seconds. If the value is out of range, error code 401 is returned.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 | repeatCount | number | No| Yes| Number of repetitions. The default value is **0**, indicating infinite repetitions. This parameter must be used together with **repeatInterval**.<br>The value range is [0, +∞). If the value is out of range, error code 401 is returned.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 
