@@ -2267,7 +2267,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ## EventService
 
-日程服务，一键服务日程的配置参数详见：<!--RP2--><!--RP2End-->。非一键服务日程可不填。
+日程服务，<!--RP2--><!--RP2End-->非一键服务日程可不填。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
