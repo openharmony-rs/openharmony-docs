@@ -4154,24 +4154,24 @@
 						"start_line":16
 					},
 					{
-						"end_line":199,
+						"end_line":244,
 						"name":"MDNS_add_local_service",
-						"start_line":169
+						"start_line":214
 					},
 					{
-						"end_line":212,
+						"end_line":257,
 						"name":"MDNS_resolve_local_service",
-						"start_line":204
+						"start_line":249
 					},
 					{
-						"end_line":232,
+						"end_line":277,
 						"name":"MDNS_remove_local_service",
-						"start_line":224
+						"start_line":269
 					},
 					{
-						"end_line":254,
+						"end_line":299,
 						"name":"create_discovery_service_object",
-						"start_line":240
+						"start_line":285
 					},
 					{
 						"end_line":282,
