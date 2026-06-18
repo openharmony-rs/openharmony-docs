@@ -14,7 +14,7 @@
 
 ## When to Use
 
-Asset store service (ASSET) can be used in the scenario, in which users need to view their bank card numbers using a financial/banking application. To ensure security, you can store bank card numbers in an asset store and enforce a user identity authentication before the back card number is accessed.
+Asset Store Kit (ASSET) can be used in the scenario, in which users need to view their bank card numbers using a financial/banking application. To ensure security, you can store bank card numbers in an asset store and enforce a user identity authentication before the bank card number is accessed.
 
 When a user wants to view the bank card number, the application requests an identity authentication (for example, the user needs to enter a lock screen password or pass certain biometric authentication). When the identity authentication is successful, the application obtains the bank card number from ASSET and presents it to the user.
 
@@ -26,7 +26,7 @@ The following figure illustrates the development process.
 >
 > UserIAM provides only ArkTS APIs. Therefore, only ArkTS APIs can be used.
 
- ![](figures/flowchat-auth-required.png)
+ ![](figures/flowchart-auth-required.png)
 
 1. The service queries an asset and determines whether the asset exists in the asset store based on the query result.
 

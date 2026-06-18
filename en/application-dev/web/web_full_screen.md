@@ -1,23 +1,24 @@
 # Enabling Immersive Full-Screen Video Playback
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @GrowUpEveryday-->
-<!--Designer: @qiu-gongkai-->
+<!--Owner: @zhangyao75477-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=8ca7e424d5a57548a2c73f8e2ce0b0728333dffd translatedAt=2026-06-12T05:59:03.834Z pushedAt=2026-06-12T07:09:47.188Z -->
 
 ArkWeb provides events for entering and exiting the full-screen mode. An application can listen for these events to enter and exit the immersive full-screen mode.
 
-When a **Web** component references a video loaded by a third-party HTML5 page and the video is displayed in full screen, the video is extended to the entire **Web** component area and cannot be displayed in full screen, as shown in Figure 2. To achieve the immersive full-screen video playback (as shown in Figure 3), an application needs to listen for the full-screen events and adjust the attributes of other components on the page.
-
+When a video loaded from a third-party HTML5 page referenced by the **Web** component is clicked for full-screen display, the video only expands to the entire **Web** component area and cannot achieve system-level full-screen display (as shown in Figure 2). To achieve the immersive video playback effect of system-level full-screen (as shown in Figure 3), the application needs to listen for the full-screen entry event and adjust the properties of other components on the UI.
 
 | Figure 1 Exiting the full-screen mode| Figure 2 Non-immersive full-screen mode| Figure 3 Immersive full-screen mode|
 | :--------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: |
 | ![web_fullscreen1](figures/web_fullscreen1.png)| ![web_fullscreen2](figures/web_fullscreen2.png) | ![web_fullscreen3](figures/web_fullscreen3.png) |
 
-The **Web** component can use [onFullScreenEnter](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenenter9) and [onFullScreenExit](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenexit9) to listen for full-screen button click events. **OnFullScreenEnter** indicates that the **Web** component enters the full-screen mode, and **onFullScreenExit** indicates that the **Web** component exits the full-screen mode. In these two events, you can adjust some global variables based on the specific service scenario, such as the display status and **margin** attribute of the component, to implement the page effect of exiting and entering the immersive full-screen mode, as shown in Figure 1 and Figure 3.
+The **Web** component can listen for the click event of the full-screen button through the [onFullScreenEnter](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenenter9) and [onFullScreenExit](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfullscreenexit9) callbacks. **onFullScreenEnter** indicates that the **Web** component enters full-screen mode, and **onFullScreenExit** indicates that the **Web** component exits full-screen mode. In these two listening events, you can adjust certain global variables based on specific service scenarios, such as the visibility status of components and the **margin** property of components, to achieve the UI effects of exiting and entering immersive full-screen mode, as shown in Figure 1 and Figure 3.
 
-The [visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md) attribute is a common component attribute provided by ArkUI. You can control the visibility of a component by setting its **visibility** attribute.
+[Visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility) is a common component attribute provided by ArkUI. You can control the visibility status of a component by setting different values for the component's visibility attribute.
 
 <!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets) -->
 
