@@ -59,7 +59,7 @@ putBatch(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;):
 
 | **错误码ID** | **错误信息**                             |
 | ------------ | ---------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100003     | Database corrupted.                      |
 | 15100005     | Database or result set already closed.   |
@@ -77,17 +77,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
 try {
-  let bucket1: ValuesBucket = {key:"name", value: "LiSi"};
-  let bucket2: ValuesBucket = {key:"age", value: 20};
-  let bucket3: ValuesBucket = {key:"deposits", value: 12.34};
+  let bucket1: ValuesBucket = {key: 'name', value: 'LiSi'};
+  let bucket2: ValuesBucket = {key: 'age', value: 20};
+  let bucket3: ValuesBucket = {key: 'deposits', value: 12.34};
   let people: Array<ValuesBucket> = new Array(bucket1, bucket2, bucket3);
   kvStore.putBatch(people, (err: BusinessError) => {
-    if (err != undefined) {
+    if (err) {
       console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
       return;
     }
     console.info('Succeeded in putting batch');
-  })
+  });
 } catch (e) {
   let error = e as BusinessError;
   console.error(`Failed to do putBatch error.code is ${error.code},message is ${error.message}`);
@@ -124,7 +124,7 @@ putBatch(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                             |
 | ------------ | ---------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100003     | Database corrupted.                      |
 | 15100005     | Database or result set already closed.   |
@@ -142,12 +142,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
 try {
-  let bucket1: ValuesBucket = {key:"name", value: "LiSi"};
-  let bucket2: ValuesBucket = {key:"age", value: 20};
-  let bucket3: ValuesBucket = {key:"deposits", value: 12.34};
+  let bucket1: ValuesBucket = {key: 'name', value: 'LiSi'};
+  let bucket2: ValuesBucket = {key: 'age', value: 20};
+  let bucket3: ValuesBucket = {key: 'deposits', value: 12.34};
   let people: Array<ValuesBucket> = new Array(bucket1, bucket2, bucket3);
   kvStore.putBatch(people).then(() => {
-    console.info(`Succeeded in putting patch`);
+    console.info(`Succeeded in putting batch`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to do putBatch error.code is ${err.code},message is ${err.message}`);
   });
@@ -182,7 +182,7 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100003     | Database corrupted.                    |
 | 15100005    | Database or result set already closed. |
@@ -201,20 +201,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let arr = ["name"];
+  let arr = ['name'];
   predicates.inKeys(arr);
-  kvStore.put("name", "bob", (err:BusinessError) => {
-    if (err != undefined) {
+  kvStore.put('name', 'bob', (err: BusinessError) => {
+    if (err) {
       console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
       return;
     }
-    console.info("Succeeded in putting");
+    console.info('Succeeded in putting');
     if (kvStore != null) {
-      kvStore.delete(predicates, (err:BusinessError) => {
-        if (err == undefined) {
-          console.info('Succeeded in deleting');
-        } else {
+      kvStore.delete(predicates, (err: BusinessError) => {
+        if (err) {
           console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+        } else {
+          console.info('Succeeded in deleting');
         }
       });
     }
@@ -255,7 +255,7 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                             |
 | ------------ | ---------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100003     | Database corrupted.                      |
 | 15100005     | Database or result set already closed.   |
@@ -274,9 +274,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let arr = ["name"];
+  let arr = ['name'];
   predicates.inKeys(arr);
-  kvStore.put("name", "bob").then(() => {
+  kvStore.put('name', 'bob').then(() => {
     console.info(`Succeeded in putting data`);
     if (kvStore != null) {
       kvStore.delete(predicates).then(() => {
@@ -319,7 +319,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
@@ -334,9 +334,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-    if (err != undefined) {
+    if (err) {
       console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
       return;
     }
@@ -344,7 +344,7 @@ try {
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-        if (err != undefined) {
+        if (err) {
           console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
           return;
         }
@@ -388,7 +388,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
@@ -403,7 +403,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
@@ -459,7 +459,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
@@ -474,9 +474,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-    if (err != undefined) {
+    if (err) {
       console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
       return;
     }
@@ -484,7 +484,7 @@ try {
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-        if (err != undefined) {
+        if (err) {
           console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
           return;
         }
@@ -528,7 +528,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
@@ -543,7 +543,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
@@ -593,7 +593,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
@@ -608,9 +608,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet('localDeviceId', predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-    if (err != undefined) {
+    if (err) {
       console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
       return;
     }
@@ -618,7 +618,7 @@ try {
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-        if (err != undefined) {
+        if (err) {
           console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
           return;
         }
@@ -667,7 +667,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
@@ -682,7 +682,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet('localDeviceId', predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
