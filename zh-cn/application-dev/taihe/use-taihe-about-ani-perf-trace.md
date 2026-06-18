@@ -16,7 +16,7 @@ Taihe在ANI场景下提供按需开启的性能拆解模式，该模式旨在拆
 
 ## 基本概念
 
-性能拆解模式自Taihe编译器工具1.10版本起引入，自该版本后，Taihe会为在生成的ANI桥接代码中增加分阶段的trace信息。编译相应文件时如果定义`TH_ANI_ENABLE_PERF_TRACE`宏，则在运行时每次调用都会输出参数转换、Native调用和返回值转换等阶段的耗时信息。
+性能拆解模式自Taihe编译器工具1.10版本起引入，自该版本后，Taihe会在生成的ANI桥接代码中增加分阶段的trace信息。编译相应文件时如果定义`TH_ANI_ENABLE_PERF_TRACE`宏，则在运行时每次调用都会输出参数转换、Native调用和返回值转换等阶段的耗时信息。
 
 一次调用通常会被拆分为以下几个阶段：
 
@@ -105,7 +105,7 @@ add_library(entry SHARED
     ani_constructor.cpp
 )
 
-# 链接HiTrace库
+# 如果需要在运行时输出HiTrace信息，则需要链接libhitrace_ndk.z.so库
 target_link_libraries(entry PUBLIC libhitrace_ndk.z.so)
 ```
 
@@ -142,5 +142,24 @@ function main() {
 [TRACE] [math_demo.add::return] Start
 [TRACE] [math_demo.add::return] End, duration = 321ns
 ```
+
+如果在HiTrace环境中运行，则可以在HiTrace结果中看到类似如下的输出：
+
+```text
+$ hitrace --trace_begin app  # 开启trace
+$ hitrace --trace_level D  # 设置trace级别为Debug
+$ hitrace --trace_dump | grep test_taihe_ani  # 查看trace结果
+ .test_taihe_ani-6247    (   6247) [010] .... 474102.425404: tracing_mark_write: B|6247|H:math_demo.add::param::a|D62
+ .test_taihe_ani-6247    (   6247) [010] .... 474102.425404: tracing_mark_write: E|6247|D62
+ .test_taihe_ani-6247    (   6247) [010] .... 474102.425405: tracing_mark_write: B|6247|H:math_demo.add::param::b|D62
+ .test_taihe_ani-6247    (   6247) [010] .... 474102.425405: tracing_mark_write: E|6247|D62
+ .test_taihe_ani-6247    (   6247) [010] .... 474102.425406: tracing_mark_write: B|6247|H:math_demo.add::call|D62
+ .test_taihe_ani-6247    (   6247) [010] .... 474102.425419: tracing_mark_write: E|6247|D62
+ .test_taihe_ani-6247    (   6247) [010] .... 474102.425420: tracing_mark_write: B|6247|H:math_demo.add::return|D62
+ .test_taihe_ani-6247    (   6247) [010] .... 474102.425420: tracing_mark_write: E|6247|D62
+$ hitrace --trace_finish  # 关闭trace
+```
+
+对于以上输出的进一步分析和理解，可以参考[查看HiTraceMeter日志](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/hitracemeter-view)。
 
 通过这些信息，可以快速判断耗时主要集中在参数处理、实际Native执行，还是返回值回传阶段。

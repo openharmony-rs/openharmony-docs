@@ -76,7 +76,7 @@ add_library(entry SHARED
     ani_constructor.cpp
 )
 
-# 链接HiLog库
+# 如果需要使用HiLog输出日志，则需要链接libhilog_ndk.z.so库
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 ```
 
