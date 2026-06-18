@@ -172,7 +172,7 @@ import { distributedKVStore } from '@kit.ArkData';
 | kvStoreType     | [KVStoreType](#kvstoretype)     | 否    | 是   | 设置要创建的数据库类型，默认为DEVICE_COLLABORATION，即多设备协同数据库。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
 | securityLevel   | [SecurityLevel](#securitylevel) | 否    | 否   | 设置数据库安全级别。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
 | schema          | [Schema](#schema)               | 否    | 是   | 设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
-| rootDir<sup>24+</sup> | string                         | 否    | 是  | 设置数据库文件存储路径，不设置即为默认路径（context.databaseDir）。长度范围1-4096字符，不能设置空字符串，创建数据库和删除数据库时目录必须有访问权限且存在，关闭数据库不校验此参数。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+| rootDir<sup>24+</sup> | string                         | 否    | 是  | 设置数据库文件存储路径，不设置即为默认路径（context.databaseDir）。不能设置空字符串，创建数据库和删除数据库时目录必须有访问权限且存在，关闭数据库不校验此参数。<br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
 
 ## BackupConfig<sup>24+</sup>
 
@@ -5326,7 +5326,7 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 | --------- | --------------------- | ---- | ---------------------------------------------- |
 | deviceIds | string[]              | 是   | 同一组网环境下，需要同步的设备的networkId列表。 |
 | mode      | [SyncMode](#syncmode) | 是   | 同步模式。                                     |
-| delayMs   | number                | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0，取值范围为0或[100, 86400000]。超出范围时，将使用默认值0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
+| delayMs   | number                | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
 
 **错误码：**
 
@@ -5413,7 +5413,7 @@ sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
 | deviceIds | string[]              | 是   | 同一组网环境下，需要同步的设备的networkId列表。 |
 | query     | [Query](#query)        | 是   | 表示数据库的查询谓词条件。                      |
 | mode      | [SyncMode](#syncmode) | 是   | 同步模式。                                     |
-| delayMs   | number                | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0，取值范围为0或[100, 86400000]。超出范围时，将使用默认值0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
+ | delayMs   | number                | 否   | 可选参数，允许延时时间，单位：ms（毫秒），默认为0。设置delayMs后，调用sync接口时延时时间为delayMs。未设置时以[setSyncParam](#setsyncparam)设置的时长为准。|
 
 **错误码：**
 
