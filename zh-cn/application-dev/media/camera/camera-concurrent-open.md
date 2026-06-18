@@ -410,6 +410,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
       try {
         await videoOutput?.start();
         await avRecorder?.start();
+        isRecording = true;
       } catch (error) {
         console.error(`startVideo err`);
       }
@@ -417,7 +418,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 
     // 停止录制。
     async function stopVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-      if (isRecording) {
+      if (!isRecording) {
         return;
       }
       try {
