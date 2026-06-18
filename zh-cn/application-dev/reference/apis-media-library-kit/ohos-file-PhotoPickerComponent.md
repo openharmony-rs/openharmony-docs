@@ -2,7 +2,7 @@
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xuchangda-->
-<!--Designer: @guxinggang-->
+<!--Designer: @tangjun-->
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
 
