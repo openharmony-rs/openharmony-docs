@@ -11,12 +11,16 @@ Wi-Fi编译文件内容如下：
   路径：“foundation/communication/wifi_lite/BUILD.gn”
   
 ```
+config("include") {
+  include_dirs = [ "interfaces/wifiservice" ]
+}
+
 group("wifi") {
-  deps = [ "$ohos_board_adapter_dir/hals/communication/wifi_lite/wifiservice:wifiservice" ]
+  public_configs = [ ":include" ] 
 }
 ```
 
-从中可以看到厂商适配相关接口的.c文件存放目录应为“$ohos_board_adapter_dir/hals/communication/wifi_lite/wifiservice”，且该目录下BUILD.gn文件中的目标应为“wifiservice”。需要厂商适配的Wi-Fi接口见表1 、表2 和表3，蓝牙接口见表4和表5。
+从中可以看到厂商适配相关接口的.c文件存放目录应为“foundation/communication/wifi_lite/interfaces/wifiservice”，且该目录下BUILD.gn文件中的目标应为“wifiservice”。需要厂商适配的Wi-Fi接口见表1 、表2 和表3，蓝牙接口见表4和表5。
 
   **表1** wifi_device.h
 
@@ -116,16 +120,18 @@ group("wifi") {
 
      
    ```
-   { 
-       "subsystem": "communication", 
-       "components": [ 
-           { "component": "wifi_lite", "features":[] }
-       ] 
+   {
+        "subsystem": "communication",
+        "components": [
+          { "component": "wifi_lite", "features":[] },
+          { "component": "dsoftbus", "features":[] },
+          { "component": "wifi_aware", "features":[]}
+        ]
    },
    ```
 
 2. 添加适配文件。
 
-   在“vendor/MyVendorCompany/MyProduct/config.json”文件中，通常将配置“ohos_board_adapter_dir”配置为 “//vendor/MyVendorCompany/MyProduct/adapter”。
+   在“vendor/MyVendorCompany/MyProduct/config.json”文件中，通常将配置“vendor_adapter_dir”配置为 “//device/MyVendorCompany/MyProduct/adapter”。
 
-   在“ohos_board_adapter_dir”目录下根据上述适配指导中提到的头文件，适配Wi-Fi、蓝牙接口。
+   在“vendor_adapter_dir”目录下根据上述适配指导中提到的头文件，适配Wi-Fi、蓝牙接口。
