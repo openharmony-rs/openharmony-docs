@@ -441,7 +441,7 @@ int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_Past
 
 **描述：**
 
-取消对剪贴板数据变更事件的订阅。调用此方法前，剪贴板数据变更事件必须已通过OH_Pasteboard_Subscribe订阅。
+取消对剪贴板数据变更事件的订阅。调用此方法前，必须先调用OH_Pasteboard_Subscribe订阅剪贴板数据变更事件。
 
 **使用场景**：不再需要监听剪贴板数据变更时，应取消订阅释放资源。
 
@@ -798,7 +798,7 @@ void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams
 
 **描述：**
 
-向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)设置文件冲突选项。调用此函数后，冲突处理策略会被记录，在后续调用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)进行文件拷贝时生效，决定目标路径存在同名文件时的处理方式。
+向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)设置文件冲突选项。调用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)时，需将已设置文件冲突选项的[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)作为参数传入。
 
 **使用场景**：拷贝文件时，目标路径存在同名文件，需要设置冲突处理策略。
 
@@ -835,7 +835,7 @@ void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* p
 | 参数项                                                                              | 描述 |
 |----------------------------------------------------------------------------------| -- |
 | [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params             | 表示指向剪贴板Pasteboard_GetDataParams的指针。 |
-| const [OH_Pasteboard_ProgressListener](#oh_pasteboard_progresslistener) listener | 表示进度上报回调函数，仅在[progressIndicator](#oh_pasteboard_getdataparams_setprogressindicator)设置为PASTEBOARD_NONE时生效。参数可为NULL，表示不设置进度回调。 |
+| const [OH_Pasteboard_ProgressListener](#oh_pasteboard_progresslistener) listener | 表示进度上报回调函数，仅在[progressIndicator](#oh_pasteboard_getdataparams_setprogressindicator)设置为PASTEBOARD_NONE时生效。该参数支持传入NULL，以表示无需进度回调。 |
 
 ### OH_Pasteboard_ProgressInfo_GetProgress()
 
@@ -869,9 +869,9 @@ void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)
 
 **描述：**
 
-取消正在进行的粘贴操作。该函数用于在获取粘贴数据过程中中断数据传输。调用此函数后，正在进行的粘贴操作会被中断，停止数据传输。已传输的数据可能会保留在目标位置，也可能被清理，具体取决于操作状态。取消正在进行的粘贴操作后，如需获取剪贴板数据，需要重新调用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)来重新获取数据。
+取消正在进行的粘贴操作。该函数用于中断[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)执行过程中的数据传输。调用后，当前粘贴操作将被终止，已传输的部分数据可能保留或清理，取决于具体操作状态。取消后如需再次获取剪贴板数据，需重新调用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)。
 
-**使用场景**：用户主动取消粘贴操作、检测到错误需要中断传输、或应用需要限制粘贴时间时使用。
+**使用场景**：适用于用户主动取消、错误中断传输，或限制粘贴超时等情形。
 
 **约束和限制：**
 
