@@ -624,7 +624,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElem
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)的指针。 |
 | int32_t childCount | 表示孩子节点数量，必须大于0。 |
-int64_t* childNodeIds | 表示子节点id集合，每个ID应指向已存在的子节点elementId，不能为空指针。
+| int64_t* childNodeIds | 表示子节点id集合，每个ID应指向已存在的子节点elementId，不能为空指针。|
 
 **返回：**
 
