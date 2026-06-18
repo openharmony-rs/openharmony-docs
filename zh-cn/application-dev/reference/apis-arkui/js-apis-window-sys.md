@@ -68,7 +68,7 @@ import { window } from '@kit.ArkUI';
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
 | ---------- | --------- | ---- | ---- |-------------- |
 | zIndex<sup>20+</sup>       | number | 否 | 是 | 当前系统窗口的层级，仅在[WindowType](#windowtype7)为TYPE_DYNAMIC时生效。<br>**系统能力：** SystemCapability.Window.SessionManager|
-| defaultDensityEnabled<sup>20+</sup> | boolean| 否 | 是 |是否使用系统默认Density，使用系统默认Density之后，窗口不会跟随系统显示大小变化重新布局。<br>当创建的系统窗口设置此参数为true时，表示当前窗口使用系统默认Density，且不会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的相关影响。<br>当创建的系统窗口设置此参数为false时，表示当前窗口不使用系统默认Density，且会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的相关影响。<br>默认为false。<br>**系统能力：** SystemCapability.Window.SessionManager|
+| defaultDensityEnabled<sup>20+</sup> | boolean| 否 | 是 |是否使用系统默认Density，使用系统默认Density之后，窗口不会跟随系统显示大小变化重新布局。<br>当创建的系统窗口设置此参数为true时，表示当前窗口使用系统默认Density，且不会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的布局缩放设置影响。<br>当创建的系统窗口设置此参数为false时，表示当前窗口不使用系统默认Density，且会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的相关影响。<br>默认为false。<br>**系统能力：** SystemCapability.Window.SessionManager|
 
 ## WindowMode<sup>7+</sup>
 
@@ -230,8 +230,8 @@ import { window } from '@kit.ArkUI';
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | anchorType             | [WindowAnchor](arkts-apis-window-e.md#windowanchor20)                 | 否   | 否   | 一级子窗与主窗保持相对位置不变时的窗口锚点枚举。|
-| offsetX             |     number           | 否   | 是   | 一级子窗锚点与主窗锚点位置的X轴偏移量，单位为px。仅支持整数输入，浮点数向下取整，默认值为0。|
-| offsetY             |     number           | 否   | 是   | 一级子窗锚点与主窗锚点位置的Y轴偏移量，单位为px。仅支持整数输入，浮点数向下取整，默认值为0。|
+| offsetX             |     number           | 否   | 是   | 一级子窗锚点与主窗锚点位置的X轴偏移量，单位为px。仅支持整数输入，浮点数向下取整，默认值为0，取值范围(-∞, +∞)。|
+| offsetY             |     number           | 否   | 是   | 一级子窗锚点与主窗锚点位置的Y轴偏移量，单位为px。仅支持整数输入，浮点数向下取整，默认值为0，取值范围(-∞, +∞)。|
 
 ## SubWindowAttachOptions<sup>24+</sup>
 
@@ -257,7 +257,7 @@ import { window } from '@kit.ArkUI';
 
 > **说明：**
 >
-> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代接口。
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃。此接口已完全移除，无替代方案。
 
 **系统接口：** 此接口为系统接口。
 
@@ -265,8 +265,8 @@ import { window } from '@kit.ArkUI';
 
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
-| WINDOW_LAYOUT_MODE_CASCADE<sup>(deprecated)</sup>  | 0    | 表示使用层叠布局模式。层叠布局下，多个自由窗口层叠放置，以Z轴次序区分。<br>**说明：** <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代枚举。|
-| WINDOW_LAYOUT_MODE_TILE<sup>(deprecated)</sup> | 1    | 表示使用平铺布局模式。平铺布局下，新打开的应用窗口出现在最右侧。<br>**说明：** <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃，无替代枚举。|
+| WINDOW_LAYOUT_MODE_CASCADE<sup>(deprecated)</sup>  | 0    | 表示使用层叠布局模式。层叠布局下，多个自由窗口层叠放置，以Z轴次序区分。<br>**说明：** <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃。此接口已完全移除，无替代方案。|
+| WINDOW_LAYOUT_MODE_TILE<sup>(deprecated)</sup> | 1    | 表示使用平铺布局模式。平铺布局下，新打开的应用窗口出现在最右侧。<br>**说明：** <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃。此接口已完全移除，无替代方案。|
 
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
@@ -1913,7 +1913,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上调用不生效不报错。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上（如Phone、支持自由多窗模式的Tablet等）正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上（如Wearable、不支持自由多窗模式的Tablet等）调用不生效不报错。
 
 **参数：**
 
@@ -1939,7 +1939,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally.|
 | 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
-| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is maximized.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is not in floating mode.|
 
 **示例：**
 
@@ -2011,7 +2011,7 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上调用不生效不报错。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上（如Phone、支持自由多窗模式的Tablet等）正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上（如Wearable、不支持自由多窗模式的Tablet等）调用不生效不报错。
 
 **返回值：**
 

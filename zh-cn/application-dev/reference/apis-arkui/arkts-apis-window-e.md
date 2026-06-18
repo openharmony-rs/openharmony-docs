@@ -100,8 +100,8 @@
 
 | 名称                  | 值   | 说明                                                         |
 | --------------------- | ---- | ------------------------------------------------------------ |
-| UNDEFINED                 | 0    | 默认值。                                                   |
-| MAXIMIZE                | 1    | 窗口最大化。                                                   |
+| UNDEFINED                 | 0    | 默认值，表示窗口矩形变化的原因未定义或未知。      |
+| MAXIMIZE                | 1    | 窗口最大化。窗口将铺满整个工作区域，保留窗口边框和标题栏，用户仍可通过拖拽调整大小。  |
 | RECOVER              | 2    | 窗口恢复到上一次的状态。                                                   |
 | MOVE | 3    | 窗口拖拽移动。 |
 | DRAG  | 4    | 窗口拖拽缩放。 |
@@ -148,9 +148,9 @@
 | UNDEFINED  | 0    | 表示APP未定义窗口模式。       |
 | FULL_SCREEN | 1    | 表示APP全屏模式。<br>[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br>可通过[maximize()](arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br>非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。|
 | MAXIMIZE    | 2    | 表示APP窗口最大化模式，[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，不需要hover就可以显示dock栏、状态栏和标题栏。非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，不存在该状态。|
-| MINIMIZE    | 3    | 表示APP窗口最小化模式。   |
-| FLOATING    | 4    | 表示APP自由悬浮形式窗口模式。   |
-| SPLIT_SCREEN  | 5    | 表示APP分屏模式。   |
+| MINIMIZE    | 3    | 表示APP窗口最小化模式，窗口隐藏到后台但不关闭，可通过任务管理器或再次启动恢复。  |
+| FLOATING    | 4    |表示APP自由悬浮形式窗口模式，窗口可以自由移动和缩放，适用于需要多窗口同时使用的场景。   |
+| SPLIT_SCREEN  | 5    | 表示APP分屏模式，屏幕同时显示两个应用窗口，每个窗口占据屏幕的一半空间，适用于多任务并行处理的场景。   |
 
 ## PixelUnit<sup>22+</sup>
 
@@ -162,25 +162,36 @@
 
 | 名称    | 值   | 说明   |
 | ------- | ---- | ----- |
-| PX | 0  | 物理像素单位（px）。  |
-| VP | 1  | 虚拟像素单位（vp）。  |
+| PX | 0  | 物理像素单位，单位：vp。  |
+| VP | 1  | 虚拟像素单位，单位：vp。  |
 
 ## MaximizePresentation<sup>12+</sup>
 
 窗口最大化时的布局枚举。
+
+**使用场景**：
+- **FOLLOW_APP_IMMERSIVE_SETTING**：适用于应用已经有明确的全屏模式设置的场景
+- **EXIT_IMMERSIVE**：适用于最大化时需要保留系统UI（如状态栏、dock栏）的场景
+- **ENTER_IMMERSIVE**：适用于媒体播放、游戏等需要沉浸式体验的场景
+- **ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER**：适用于需要完全沉浸式体验，不希望hover时显示UI的场景
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
 | FOLLOW_APP_IMMERSIVE_SETTING  | 0    | 最大化时，跟随应用app当前设置的全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| EXIT_IMMERSIVE | 1    | 最大化时，如果当前窗口设置了全屏模式会退出全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。             |
+| EXIT_IMMERSIVE | 1    | 最大化时，如果当前窗口设置了全屏模式会退出全屏模式，显示系统栏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。             |
 | ENTER_IMMERSIVE    | 2    | 最大化时，进入全屏模式，鼠标Hover在热区上显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
 | ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER<sup>14+</sup>    | 3    | 最大化时，进入全屏模式，鼠标Hover在热区上不显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。   |
 
 ## AcrossDisplayPresentation
 
 折叠屏的跨屏策略枚举，用于控制折叠2in1设备在悬停态下主窗口最大化时的瀑布流模式行为。
+
+**使用场景**：
+- **FOLLOW_ACROSS_DISPLAY_SETTING**：适用于需要遵循系统默认行为的应用
+- **ENTER_ACROSS_DISPLAY_MODE**：适用于视频播放、电子书阅读等需要利用双屏显示内容的场景
+- **EXIT_ACROSS_DISPLAY_MODE**：适用于需要在单屏显示的应用，如传统应用界面
 
 **起始版本：** 26.0.0
 

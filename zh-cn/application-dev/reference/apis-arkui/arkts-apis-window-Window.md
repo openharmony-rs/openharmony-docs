@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-当前窗口实例，窗口管理器管理的基本单元。
+当前窗口实例，窗口管理器（Window Manager）管理的基本单元。
 
 下列API示例中都需先使用[getLastWindow()](arkts-apis-window-f.md#windowgetlastwindow9)、[createWindow()](arkts-apis-window-f.md#windowcreatewindow9)、[findWindow()](arkts-apis-window-f.md#windowfindwindow9)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
 
@@ -354,7 +354,7 @@ promise.then(() => {
 
 moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
-移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
+移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口坐标系统](window-coordinate.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。适用于拖拽窗口位置、窗口自动定位、动画场景等需要调整窗口位置的场景。
 
 > **说明：**
 >
@@ -376,9 +376,9 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------------------------------------------- |
-| x        | number                    | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y        | number                    | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                     |
+| x        | number                    | 是 | 窗口在x轴方向移动到的坐标位置，单位：px，取值范围为[0, screenWidth]，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。超出范围时抛出异常。|
+| y        | number                    | 是 | 窗口在y轴方向移动到的坐标位置，单位：px，取值范围为[0, screenHeight]，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。超出范围时抛出异常。|
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收异步操作结果。回调签名：(err: BusinessError) => void，其中err为错误对象，成功时为null，失败时包含错误码和错误信息。|
 
 **错误码：**
 
@@ -386,34 +386,26 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. Solution: Check that all required parameters are provided and have correct types. |
 | 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: The window manager service is not running properly. Please check if the window manager service is started. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
-      return;
-    }
+// windowClass通过getLastWindow()、createWindow()或findWindow()获取
+windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
     console.info('Succeeded in moving the window.');
   });
-} catch (exception) {
-  console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
-}
 ```
 
 ## moveWindowTo<sup>9+</sup>
 
 moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
-移动窗口位置，使用Promise异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
+移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口坐标系统](window-coordinate.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
 
 > **说明：**
 >
@@ -435,8 +427,8 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位：px，取值范围为[0, screenWidth]，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。超出范围时抛出异常。|
+| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位：px，取值范围为[0, screenHeight]，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。超出范围时抛出异常。|
 
 **返回值：**
 
@@ -450,25 +442,20 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401     |  Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. Solution: Check that all required parameters are provided and have correct types. |
 | 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: The window manager service is not running properly. Please check if the window manager service is started.|
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  let promise = windowClass.moveWindowTo(300, 300);
+// windowClass通过getLastWindow()、createWindow()或findWindow()获取
+let promise = windowClass.moveWindowTo(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
   });
-} catch (exception) {
-  console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
-}
 ```
 
 ## moveWindowToAsync<sup>12+</sup>
@@ -499,8 +486,8 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示位置在x轴右侧；值为负表示位置在x轴左侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在y轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位：px，值为正表示位置在x轴右侧；值为负表示位置在x轴左侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位：px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在y轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
 
 **返回值：**
 
@@ -514,10 +501,10 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. Solution: Check device capabilities using canIUse() before calling the API. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The window type is not supported for this operation.|
 | 1300003 | This window manager service works abnormally. |
-| 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING. |
+| 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING. Solution: Ensure the window is in FLOATING mode before calling this API. |
 
 **示例：**
 
@@ -525,6 +512,7 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
   let promise = windowClass.moveWindowToAsync(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -566,8 +554,8 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | number | 是 | 窗口在x轴方向移动的值，值为正表示右移，单位为px，该参数应该为整数，非整数输入将向下取整。 |
-| y | number | 是 | 窗口在y轴方向移动的值，值为正表示下移，单位为px，该参数应该为整数，非整数输入将向下取整。 |
+| x | number | 是 | 窗口在x轴方向移动的值，值为正表示右移，单位：px，该参数应该为整数，非整数输入将向下取整。 |
+| y | number | 是 | 窗口在y轴方向移动的值，值为正表示下移，单位：px，该参数应该为整数，非整数输入将向下取整。 |
 | moveConfiguration | [MoveConfiguration](arkts-apis-window-i.md#moveconfiguration15) | 否 | 窗口移动选项，仅支持主屏和扩展屏，未设置将默认保持为当前屏幕。 |
 
 **返回值：**
@@ -597,6 +585,7 @@ try {
   let moveConfiguration: window.MoveConfiguration = {
     displayId: 0
   };
+  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
   let promise = windowClass.moveWindowToAsync(300, 300, moveConfiguration);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -632,8 +621,8 @@ moveWindowToGlobal(x: number, y: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | number | 是 | 表示以屏幕左上角为起点，窗口在x轴方向移动的值，单位为px。值为正表示右移，值为负表示左移。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y | number | 是 | 表示以屏幕左上角为起点，窗口在y轴方向移动的值，单位为px。值为正表示下移，值为负表示上移。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| x | number | 是 | 表示以屏幕左上角为起点，窗口在x轴方向移动的值，单位：px。值为正表示右移，值为负表示左移。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| y | number | 是 | 表示以屏幕左上角为起点，窗口在y轴方向移动的值，单位：px。值为正表示下移，值为负表示上移。该参数仅支持整数输入，浮点数输入将向下取整。 |
 
 **返回值：**
 
@@ -658,6 +647,7 @@ moveWindowToGlobal(x: number, y: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
   let promise = windowClass.moveWindowToGlobal(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -693,8 +683,8 @@ moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | number | 是 | 表示以目标屏幕左上角为起点，窗口在x轴方向移动的值，单位为px。值为正表示右移，值为负表示左移。该参数应该为整数，非整数输入将向下取整。 |
-| y | number | 是 | 表示以目标屏幕左上角为起点，窗口在y轴方向移动的值，单位为px。值为正表示下移，值为负表示上移。该参数应该为整数，非整数输入将向下取整。 |
+| x | number | 是 | 表示以目标屏幕左上角为起点，窗口在x轴方向移动的值，单位：px。值为正表示右移，值为负表示左移。该参数应该为整数，非整数输入将向下取整。 |
+| y | number | 是 | 表示以目标屏幕左上角为起点，窗口在y轴方向移动的值，单位：px。值为正表示下移，值为负表示上移。该参数应该为整数，非整数输入将向下取整。 |
 | moveConfiguration | [MoveConfiguration](arkts-apis-window-i.md#moveconfiguration15) | 否 | 窗口移动选项，仅支持主屏和扩展屏，未设置将默认保持为当前屏幕。 |
 
 **返回值：**
@@ -724,6 +714,7 @@ try {
   let moveConfiguration: window.MoveConfiguration = {
     displayId: 0
   };
+  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
   let promise = windowClass.moveWindowToGlobal(300, 300, moveConfiguration);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -751,7 +742,7 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 > 
 > - 窗口移动后，如果窗口跨越多个屏幕，窗口将归属于与其重叠面积最大的屏幕。
 >
-> - [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。回弹规格详情请参考：[窗口回弹规格](https://developer.huawei.com/consumer/cn/doc/design-guides/window-0000002321868010#section142701449114818)
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -759,8 +750,8 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | number | 是 | 表示以主屏幕左上角为起点，窗口在x轴方向移动的值，单位为px。值为正表示右移，值为负表示左移。该参数应该为整数，非整数输入将向下取整。 |
-| y | number | 是 | 表示以主屏幕左上角为起点，窗口在y轴方向移动的值，单位为px。值为正表示下移，值为负表示上移。该参数应该为整数，非整数输入将向下取整。 |
+| x | number | 是 | 表示以主屏幕左上角为起点，窗口在x轴方向移动的值，单位：px。值为正表示右移，值为负表示左移。该参数应该为整数，非整数输入将向下取整。 |
+| y | number | 是 | 表示以主屏幕左上角为起点，窗口在y轴方向移动的值，单位：px。值为正表示下移，值为负表示上移。该参数应该为整数，非整数输入将向下取整。 |
 
 **返回值：**
 
@@ -778,7 +769,7 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter type. Solution: Check that all parameter values are within the allowed range and have correct types. |
 
 **示例：**
 
@@ -801,7 +792,7 @@ try {
 
 clientToGlobalDisplay(winX: number, winY: number): Position
 
-将相对于当前窗口左上角的坐标转换为相对于主屏幕左上角的全局坐标。
+将相对于当前窗口左上角的坐标转换为相对于主屏幕左上角的全局坐标。适用于跨窗口定位、全局动画、悬浮窗定位、多屏协同等需要在不同坐标系间转换的场景。
 
 不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的智慧多窗悬浮窗场景。
 
@@ -811,8 +802,8 @@ clientToGlobalDisplay(winX: number, winY: number): Position
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| winX | number | 是 | 表示以当前窗口左上角为原点的x轴方向偏移量，单位为px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应为整数，非整数输入将向下取整。 |
-| winY | number | 是 | 表示以当前窗口左上角为原点的y轴方向偏移量，单位为px。值为正表示在原点下方，值为负表示在原点上方。该参数应为整数，非整数输入将向下取整。 |
+| winX | number | 是 | 表示以当前窗口左上角为原点的x轴方向偏移量，单位：px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应为整数，非整数输入将向下取整。 |
+| winY | number | 是 | 表示以当前窗口左上角为原点的y轴方向偏移量，单位：px。值为正表示在原点下方，值为负表示在原点上方。该参数应为整数，非整数输入将向下取整。 |
 
 **返回值：**
 
@@ -829,12 +820,13 @@ clientToGlobalDisplay(winX: number, winY: number): Position
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300010 | The operation in the current window status is invalid. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter type. Solution: Check that all parameter values are within the allowed range and have correct types. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
   let position = windowClass.clientToGlobalDisplay(100, 100);
   console.info(`Succeeded in converting the position in the current window to the position in global display. Position: ` + JSON.stringify(position));
 } catch (exception) {
@@ -874,12 +866,13 @@ globalDisplayToClient(globalDisplayX: number, globalDisplayY: number): Position
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300010 | The operation in the current window status is invalid. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter type. Solution: Check that all parameter values are within the allowed range and have correct types. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
   let position = windowClass.globalDisplayToClient(100, 100);
   console.info(`Succeeded in converting in the position in global display to the position in the current window. Position: ` + JSON.stringify(position));
 } catch (exception) {
@@ -891,7 +884,7 @@ try {
 
 resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
-基于窗口左上角顶点改变当前窗口大小，使用callback异步回调。
+基于窗口左上角顶点改变当前窗口大小，使用callback异步回调。适用于用户拖拽调整窗口、响应式布局适配、多窗口分屏场景等需要调整窗口大小的场景。
 
 调用成功即返回，该接口返回后无法立即获取最终生效结果，如需立即获取，建议使用接口[resizeAsync()](#resizeasync12)。
 
@@ -917,9 +910,9 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | ------------------------ |
-| width    | number                    | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
-| height   | number                    | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。                |
+| width    | number                    | 是 | 当前窗口的目标宽度，单位为px，取值范围为[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。超出范围时自动修正为边界值。|
+| height   | number                    | 是 | 当前窗口的目标高度，单位为px，取值范围为[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。超出范围时自动修正为边界值。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收异步操作结果。回调签名：(err: BusinessError) => void，其中err为错误对象，成功时为null，失败时包含错误码和错误信息。|
 
 **错误码：**
 
@@ -937,6 +930,7 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
   windowClass.resize(500, 1000, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -980,8 +974,8 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
-| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，取值范围[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，取值范围[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
 
 **返回值：**
 
@@ -1036,7 +1030,7 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，主窗口调用不生效。
+> - 主窗口处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）时，在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1046,8 +1040,8 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
-| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，取值范围[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，取值范围[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
 
 **返回值：**
 
@@ -1061,7 +1055,7 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: Invalid parameter range.  |
+| 401     | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter type. Solution: Check that all parameter values are within the allowed range and have correct types.  |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.  Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
@@ -1073,6 +1067,7 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
   let promise = windowClass.resizeAsync(500, 1000);
   promise.then(() => {
     console.info('Succeeded in changing the window size.');
@@ -1326,12 +1321,13 @@ getGlobalRect(): Rect
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Failed to convert result into JS value object. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: The window manager service is not running properly. Please check if the window manager service is started. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
   let rect = windowClass.getGlobalRect();
   console.info(`Succeeded in getting window rect: ` + JSON.stringify(rect));
 } catch (exception) {
@@ -7649,7 +7645,7 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 > **说明：**
 >
-> - 针对主窗口，仅在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效，非自由窗口状态下不生效不报错。
+> - 针对主窗口，仅在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效，非自由窗口状态下不生效不报错，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
