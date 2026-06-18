@@ -507,7 +507,7 @@ key(value: string | undefined)
 | -------- | -------- | -------- | -------- |
 | value | string \| undefined | 是 | 组件的键值。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
 
-### debugLine<sup>24+</sup>
+### debugLine
 
 debugLine(sourceLine: string, moduleName?: string)
 
@@ -517,7 +517,7 @@ debugLine(sourceLine: string, moduleName?: string)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
