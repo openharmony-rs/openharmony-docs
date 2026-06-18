@@ -642,7 +642,7 @@ Image_ErrorCode OH_PictureNative_DeepCopyWithItems(OH_PictureNative *source, con
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：</li><br>                                <li>1. source或picture为空指针；</li><br>                                <li>2. 获取picture失败或数量不匹配；</li><br>                                <li>3. 数量不为零但对应数组为空指针。</li><br>         <li>IMAGE_ALLOC_FAILED：内存分配失败。</li><br>         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：source或picture为空指针、获取picture失败或数量不匹配、数量不为零但对应数组为空指针。</li><br>         <li>IMAGE_ALLOC_FAILED：内存分配失败。</li><br>         </ul> |
 
 ### OH_PictureNative_Release()
 
