@@ -722,7 +722,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_CreateUsingAllocator(uint8_t *data, ui
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_INVALID_PARAMETER：</li><br>                                <li>1. info或auxiliaryPicture为空指针；</li><br>                                <li>2. allocator无效；</li><br>                                <li>3. 辅助图大小无效或类型不支持；</li><br>                                <li>4. dataLength小于所需大小。</li><br>         <li>IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE：不支持的内存类型。<br>         例如使用共享内存创建增益图，仅DMA支持HDR元数据。</li><br>         <li>IMAGE_ALLOC_FAILED：内存分配失败。</li><br>         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_INVALID_PARAMETER：info或auxiliaryPicture为空指针、allocator无效、辅助图大小无效或类型不支持、dataLength小于所需大小。</li><br>         <li>IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE：不支持的内存类型。<br>         例如使用共享内存创建增益图，仅DMA支持HDR元数据。</li><br>         <li>IMAGE_ALLOC_FAILED：内存分配失败。</li><br>         </ul> |
 <!--DelEnd-->
 ### OH_AuxiliaryPictureNative_WritePixels()
 
