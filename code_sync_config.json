@@ -14348,6 +14348,26 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeInvalidateAttributes.ets",
+				"functions":[
+					{
+						"end_line":109,
+						"name":"frameNodeInvalidateAttributes_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeIsInRenderState.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"frameNodeIsInRenderState_start",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
