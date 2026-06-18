@@ -32,19 +32,17 @@ import { FormExtensionAbility } from '@kit.FormKit';
 
 卡片扩展类。包含卡片提供方接收创建卡片、修改可见性等的通知接口。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.Form
-
 ### 属性
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务。
 
 **系统能力：** SystemCapability.Ability.Form
 
 | 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 否   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 否   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。|
 
 ### FormExtensionAbility.onAddForm
 
