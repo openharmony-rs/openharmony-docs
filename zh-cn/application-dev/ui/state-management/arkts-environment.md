@@ -91,8 +91,12 @@ Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicont
         Column() {
           // 输出当前设备的languageCode
           Text(this.languageCode)
+            .fontSize(20)
+            .margin(10)
         }
+        .width('100%')
       }
+      .height('100%')
     }
   }
   ```

@@ -36,11 +36,14 @@ struct HelloComponent {
     // HelloComponent自定义组件组合系统组件Row和Text
     Row() {
       Text(this.message)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           // 状态变量message的改变驱动UI刷新，UI从'Hello, World!'刷新为'Hello, ArkUI!'
           this.message = 'Hello, ArkUI!';
         })
     }
+    .height('100%')
   }
 }
 ```
@@ -61,10 +64,13 @@ struct ParentComponent {
     Column() {
       // 多次创建HelloComponent，实现自定义组件的重用
       Text('ArkUI message')
+        .fontSize(20)
+        .margin(10)
       HelloComponent({ message: 'Hello World!' })
       Divider()
       HelloComponent({ message: 'Hello ArkTS!' })
     }
+    .width('100%')
   }
 }
 ```
@@ -287,8 +293,11 @@ struct MyComponent {
   build() {
     Column() {
       Text(`${this.countDownFrom}`)
+        .fontSize(20)
+        .margin(10)
         .backgroundColor(this.color)
     }
+    .width('100%')
   }
 }
 
@@ -302,6 +311,7 @@ struct ParentComponent {
       // 创建MyComponent实例，并将创建MyComponent成员变量countDownFrom初始化为10，将成员变量color初始化为this.someColor
       MyComponent({ countDownFrom: 10, color: this.someColor })
     }
+    .width('100%')
   }
 }
 ```
@@ -322,9 +332,12 @@ struct Parent {
   build() {
     Column() {
       Text(`${this.cnt}`)
+        .fontSize(20)
+        .margin(10)
       // 父组件中的函数传递给子组件
       Son({ submitArrow: this.submit })
     }
+    .width('100%')
   }
 }
 
@@ -335,6 +348,8 @@ struct Son {
   build() {
     Row() {
       Button('add')
+        .width(300)
+        .margin(10)
         .width(80)
         .onClick(() => {
           if (this.submitArrow) {
@@ -342,7 +357,7 @@ struct Son {
           }
         })
     }
-    .height(56)
+    .height('100%')
   }
 }
 ```
@@ -365,6 +380,7 @@ struct Son {
       Row() {
         ChildComponent()
       }
+      .height('100%')
     }
   }
   
@@ -434,6 +450,8 @@ struct Son {
     @Builder
     doSomeRender() {
       Text(`Hello World`)
+        .fontSize(20)
+        .margin(10)
     }
   
     build() {
@@ -442,7 +460,10 @@ struct Son {
         this.doSomeRender()
         // 正例：参数可以为调用TS方法的返回值
         Text(this.calcTextValue())
+          .fontSize(20)
+          .margin(10)
       }
+      .width('100%')
     }
   }
   ```
@@ -586,6 +607,8 @@ struct Son {
 struct ChildComponent {
   build() {
     Button(`Hello World`)
+      .width('90%')
+      .margin(10)
   }
 }
 
@@ -596,10 +619,11 @@ struct MyComponent {
     Row() {
       // 属性设置给ChildComponent而不是ChildComponent中的Button
       ChildComponent()
-        .width(200)
+        .width(300)
         .height(300)
-        .backgroundColor(Color.Red)
+        .backgroundColor(Color.Pink)
     }
+    .height('100%')
   }
 }
 ```

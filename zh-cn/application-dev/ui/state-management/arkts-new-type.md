@@ -98,13 +98,15 @@ struct TestCase {
   build() {
     Column() {
       Text('childNumber value:' + this.sample.sampleChild?.childNumber)
+        .fontSize(30)
+        .margin(10)
         .onClick(() => {
           this.sample.sampleChild = new SampleChild();
           this.sample.sampleChild.childNumber = 2;
           PersistenceV2.save(Sample);
         })
-        .fontSize(30)
     }
+    .width('100%')
   }
 }
 ```

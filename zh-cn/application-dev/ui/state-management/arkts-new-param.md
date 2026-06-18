@@ -68,6 +68,8 @@ struct Index {
   build() {
     Column() {
       Button('change Info')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.info = new Info(100, 100);
         })
@@ -79,6 +81,7 @@ struct Index {
         infoState: this.info
       })
     }
+    .width('100%')
   }
 }
 
@@ -94,8 +97,13 @@ struct Child {
   build() {
     Column() {
       Text(`ObjectLink region: ${this.region.x}-${this.region.y}`)
+        .fontSize(20)
+        .margin(10)
       Text(`Prop regionProp: ${this.regionProp.x}-${this.regionProp.y}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -139,9 +147,17 @@ struct Child {
     build() {
       Column() {
         Text(`Local ${this.count}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Local ${this.message}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Local ${this.flag}`)
+          .fontSize(20)
+          .margin(10)
         Button('change Local')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // 对数据源的更改会同步给子组件
             this.count++;
@@ -154,6 +170,7 @@ struct Child {
           flag: this.flag
         })
       }
+      .width('100%')
     }
   }
   
@@ -166,9 +183,16 @@ struct Child {
     build() {
       Column() {
         Text(`Param ${this.count}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Param ${this.message}`)
+          .fontSize(20)
+          .margin(10)
         Text(`Param ${this.flag}`)
+          .fontSize(20)
+          .margin(10)
       }
+      .width('100%')
     }
   }
   ```
@@ -203,14 +227,22 @@ struct Child {
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.observedObject.name}`)
+          .fontSize(20)
+          .margin(10)
         Button('change object')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // 对类对象整体的修改均能观察到
             this.rawObject = new RawObject('new rawObject');
             this.observedObject = new ObservedObject('new observedObject');
           })
         Button('change name')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // @Local与@Param均不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
             this.rawObject.name = 'new rawObject name';
@@ -222,6 +254,7 @@ struct Child {
           observedObject: this.observedObject
         })
       }
+      .width('100%')
     }
   }
   
@@ -233,8 +266,13 @@ struct Child {
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.observedObject.name}`)
+          .fontSize(20)
+          .margin(10)
       }
+      .width('100%')
     }
   }
   ```
@@ -252,12 +290,24 @@ struct Child {
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[1]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[2]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[0][0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[1][1]}`)
+          .fontSize(20)
+          .margin(10)
         // 装饰的变量为简单类型数组时，可观察到数组项变化
         Button('change array item')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.numArr[0]++;
             this.numArr[1] += 2;
@@ -266,6 +316,8 @@ struct Child {
           })
         // 装饰的变量为简单类型数组时，可观察到数组整体变化
         Button('change whole array')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.numArr = [5, 4, 3, 2, 1];
             this.dimensionTwo = [[7, 8, 9], [0, 1, 2]];
@@ -275,6 +327,7 @@ struct Child {
           dimensionTwo: this.dimensionTwo
         })
       }
+      .width('100%')
     }
   }
   
@@ -286,11 +339,22 @@ struct Child {
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[1]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.numArr[2]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[0][0]}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.dimensionTwo[1][1]}`)
+          .fontSize(20)
+          .margin(10)
       }
+      .width('100%')
     }
   }
   ```
@@ -332,25 +396,39 @@ struct Child {
         ForEach(this.infoArr, (info: Info) => {
           Row() {
             Text(`name: ${info.name}`)
+              .fontSize(15)
+              .margin(10)
             Text(`region: ${info.region.x}-${info.region.y}`)
+              .fontSize(15)
+              .margin(10)
           }
         })
         Row() {
           Text(`Origin name: ${this.originInfo.name}`)
+            .fontSize(15)
+            .margin(10)
           Text(`Origin region: ${this.originInfo.region.x}-${this.originInfo.region.y}`)
+            .fontSize(15)
+            .margin(10)
         }
   
         Button('change infoArr item')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // 由于属性name被@Trace装饰，所以能够观察到
             this.infoArr[0].name = 'Win';
           })
         Button('change originInfo')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // 由于变量originInfo被@Local装饰，所以能够观察到
             this.originInfo = new Info('Origin', 100, 100);
           })
         Button('change originInfo region')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             // 由于属性x、y被@Trace装饰，所以能够观察到
             this.originInfo.region.x = 25;
@@ -361,6 +439,7 @@ struct Child {
           originInfo: this.originInfo
         })
       }
+      .width('100%')
     }
   }
   
@@ -374,14 +453,23 @@ struct Child {
         ForEach(this.infoArr, (info: Info) => {
           Row() {
             Text(`name: ${info.name}`)
+              .fontSize(15)
+              .margin(10)
             Text(`region: ${info.region.x}-${info.region.y}`)
+              .fontSize(15)
+              .margin(10)
           }
         })
         Row() {
           Text(`Origin name: ${this.originInfo.name}`)
+            .fontSize(15)
+            .margin(10)
           Text(`Origin region: ${this.originInfo.region.x}-${this.originInfo.region.y}`)
+            .fontSize(15)
+            .margin(10)
         }
       }
+      .width('100%')
     }
   }
   ```
@@ -539,12 +627,15 @@ struct Index {
       })
       // 修改数组元素及对象属性，触发MiddleComponent和SubComponent更新。
       Button('change')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.infoList[0] = new Info('Atom', 40, 27, 90);
           this.infoList[1].name = 'Bob';
           this.infoList[2].region = new Region(7, 9);
         })
     }
+    .width('100%')
   }
 }
 
@@ -556,10 +647,15 @@ struct MiddleComponent {
   build() {
     Column() {
       Text(`name: ${this.info.name}`)
+        .fontSize(20)
+        .margin(10)
       Text(`age: ${this.info.age}`)
+        .fontSize(20)
+        .margin(10)
       // 将Region对象继续传递给子组件的@Param。
       SubComponent({ region: this.info.region })
     }
+    .width('100%')
   }
 }
 
@@ -571,7 +667,10 @@ struct SubComponent {
   build() {
     Column() {
       Text(`region: ${this.region.x}-${this.region.y}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -590,7 +689,9 @@ struct Child {
   build() {
     Column() {
       ForEach(this.count, (item: number) => {
-        Text(`${item}`).fontSize(30)
+        Text(`${item}`)
+          .fontSize(30)
+          .margin(10)
         Divider()
       })
     }
@@ -609,21 +710,33 @@ struct Index {
       Column() {
         Child({ count: this.count })
         // 对数组整体重新赋值，触发子组件更新。
-        Button('init array').onClick(() => {
-          this.count = [9, 8, 7];
-        })
+        Button('init array')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.count = [9, 8, 7];
+          })
         // 新增数组元素，触发子组件更新。
-        Button('push').onClick(() => {
-          this.count.push(0);
-        })
+        Button('push')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.count.push(0);
+          })
         // 翻转数组元素，触发子组件更新。
-        Button('reverse').onClick(() => {
-          this.count.reverse();
-        })
+        Button('reverse')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.count.reverse();
+          })
         // 使用同一元素填充数组，触发子组件更新。
-        Button('fill').onClick(() => {
-          this.count.fill(6);
-        })
+        Button('fill')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.count.fill(6);
+          })
       }
       .width('100%')
     }
@@ -652,6 +765,7 @@ struct DateComponent {
         selected: this.selectedDate
       })
     }
+    .width('100%')
   }
 }
 
@@ -665,30 +779,35 @@ struct Index {
     Column() {
       // 对Date类型变量整体重新赋值，触发子组件更新。
       Button('parent update the new date')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.parentSelectedDate = new Date('2023-07-07');
         })
       // 调用Date的setFullYear方法修改年份，触发子组件更新。
       Button('increase the year by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.parentSelectedDate.setFullYear(this.parentSelectedDate.getFullYear() + 1);
         })
       // 调用Date的setMonth方法修改月份，触发子组件更新。
       Button('increase the month by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.parentSelectedDate.setMonth(this.parentSelectedDate.getMonth() + 1);
         })
       // 调用Date的setDate方法修改日期，触发子组件更新。
       Button('parent increase the day by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.parentSelectedDate.setDate(this.parentSelectedDate.getDate() + 1);
         })
       DateComponent({ selectedDate: this.parentSelectedDate })
     }
+    .width('100%')
   }
 }
 ```
@@ -708,11 +827,16 @@ struct Child {
   build() {
     Column() {
       ForEach(Array.from(this.value.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(30)
+          .margin(10)
+        Text(`${item[1]}`)
+          .fontSize(30)
+          .margin(10)
         Divider()
       })
     }
+    .width('100%')
   }
 }
 
@@ -727,25 +851,40 @@ struct Index {
       Column() {
         Child({ value: this.message })
         // 对Map整体重新赋值，触发子组件更新。
-        Button('init map').onClick(() => {
-          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
+        Button('init map')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+          })
         // 新增键值对，触发子组件更新。
-        Button('set new one').onClick(() => {
-          this.message.set(4, 'd');
-        })
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.set(4, 'd');
+          })
         // 清空Map，触发子组件更新。
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.clear();
+          })
         // 更新键值对，触发子组件更新。
-        Button('replace the first one').onClick(() => {
-          this.message.set(0, 'aa');
-        })
+        Button('replace the first one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.set(0, 'aa');
+          })
         // 删除键值对，触发子组件更新。
-        Button('delete the first one').onClick(() => {
-          this.message.delete(0);
-        })
+        Button('delete the first one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.delete(0);
+          })
       }
       .width('100%')
     }
@@ -769,7 +908,9 @@ struct Child {
   build() {
     Column() {
       ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[0]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(30)
+          .margin(10)
         Divider()
       })
     }
@@ -788,21 +929,33 @@ struct Index {
       Column() {
         Child({ message: this.message })
         // 对Set整体重新赋值，触发子组件更新。
-        Button('init set').onClick(() => {
-          this.message = new Set([0, 1, 2, 3, 4]);
-        })
+        Button('init set')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message = new Set([0, 1, 2, 3, 4]);
+          })
         // 新增元素，触发子组件更新。
-        Button('set new one').onClick(() => {
-          this.message.add(5);
-        })
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.add(5);
+          })
         // 清空Set，触发子组件更新。
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.clear();
+          })
         // 删除元素，触发子组件更新。
-        Button('delete the first one').onClick(() => {
-          this.message.delete(0);
-        })
+        Button('delete the first one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.delete(0);
+          })
       }
       .width('100%')
     }
@@ -829,6 +982,8 @@ struct Index {
       MyComponent({ count: this.count })
       // 修改联合类型值，触发子组件更新。
       Button('change')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.count = undefined;
         })
@@ -844,6 +999,8 @@ struct MyComponent {
   build() {
     Column() {
       Text(`count(${this.count})`)
+        .fontSize(30)
+        .margin(10)
     }
   }
 }

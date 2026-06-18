@@ -86,6 +86,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
  function myBuilder(value: string, size: number) {
    Text(value)
      .fontSize(size)
+     .margin(10)
  }
  
  // 使用wrapBuilder封装myBuilder，并赋值给globalBuilder变量
@@ -120,6 +121,7 @@ function myBuilder0(value: string, size: number) {
   Text(value)
     .fontSize(size)
     .fontColor(Color.Blue)
+    .margin(10)
 }
 
 @Builder
@@ -127,6 +129,7 @@ function yourBuilder(value: string, size: number) {
   Text(value)
     .fontSize(size)
     .fontColor(Color.Pink)
+    .margin(10)
 }
 
 const builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(myBuilder0), wrapBuilder(yourBuilder)];
@@ -212,7 +215,10 @@ class Tmp {
 function overBuilder(param: Tmp) {
   Column() {
     Text(`wrapBuildervalue:${param.paramA2}`)
+      .fontSize(20)
+      .margin(10)
   }
+  .width('100%')
 }
 
 const wBuilder: WrappedBuilder<[Tmp]> = wrapBuilder(overBuilder);
@@ -226,10 +232,14 @@ struct Parent {
     Column() {
       // 引用传递参数，label.paramA2的改变会引起overBuilder内的UI刷新
       wBuilder.builder({ paramA2: this.label.paramA2 });
-      Button('Click me').onClick(() => {
-        this.label.paramA2 = 'ArkUI';
-      })
+      Button('Click me')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.label.paramA2 = 'ArkUI';
+        })
     }
+    .width('100%')
   }
 }
 ```
@@ -247,12 +257,14 @@ struct Parent {
 function myBuilderFirst(value: string, size: number) {
   Text('MyBuilderFirst：' + value)
     .fontSize(size)
+    .margin(10)
 }
 
 @Builder
 function myBuilderSecond(value: string, size: number) {
   Text('MyBuilderSecond：' + value)
     .fontSize(size)
+    .margin(10)
 }
 
 interface BuilderModel {
@@ -275,7 +287,7 @@ struct TestBuilderIndex {
   build() {
     Row() {
       Column() {
-        this.builderObj.globalBuilder.builder(this.message, 20)
+        this.builderObj.globalBuilder.builder(this.message, 20);
       }
       .width('100%')
     }

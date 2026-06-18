@@ -67,16 +67,23 @@
     build() {
       Column() {
         Text(`info.name: ${this.info.name}`)
+          .fontSize(20)
+          .margin(10)
         Button('Change Proxy Object Properties')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.info.name = 'Alice'; // Text组件能够刷新
           })
         Button('Change Original Object Properties')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             let rawInfo: Info = UIUtils.getTarget(this.info);
             rawInfo.name = 'Bob'; // Text组件不能刷新
           })
       }
+      .width('100%')
     }
   }
   ```
@@ -129,8 +136,13 @@ struct GetTargetNoChange {
   build() {
     Column() {
       Text(`this.observedObject === observedClass: ${this.observedObject === observedClass}`) // true
+        .fontSize(20)
+        .margin(10)
       Text(`this.nonObservedObject === nonObservedClass: ${this.nonObservedObject === nonObservedClass}`) // false
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -167,17 +179,30 @@ struct GetTargetAgent {
     Column() {
       Text(`this.observedObject === observedClass: ${this.observedObject ===
         observedClass}`) // true
+        .fontSize(20)
+        .margin(10)
       Text(`UIUtils.getTarget(this.nonObservedObject) === nonObservedClass: ${UIUtils.getTarget(this.nonObservedObject) ===
         nonObservedClass}`) // true
+        .fontSize(20)
+        .margin(10)
       Text(`UIUtils.getTarget(this.numberList) === globalNumberList: ${UIUtils.getTarget(this.numberList) ===
         globalNumberList}`) // true
+        .fontSize(20)
+        .margin(10)
       Text(`UIUtils.getTarget(this.sampleMap) === globalSampleMap: ${UIUtils.getTarget(this.sampleMap) ===
         globalSampleMap}`) // true
+        .fontSize(20)
+        .margin(10)
       Text(`UIUtils.getTarget(this.sampleSet) === globalSampleSet: ${UIUtils.getTarget(this.sampleSet) ===
         globalSampleSet}`) // true
+        .fontSize(20)
+        .margin(10)
       Text(`UIUtils.getTarget(this.sampleDate) === globalSampleDate: ${UIUtils.getTarget(this.sampleDate) ===
         globalSampleDate}`) // true
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -210,8 +235,13 @@ struct GetAgentObject {
   build() {
     Column() {
       Text(`this.observedObject === globalObservedObject ${this.observedObject === globalObservedObject}`) // true
+        .fontSize(20)
+        .margin(10)
       Text(`this.numberList === globalNumberList ${this.numberList === globalNumberList}`) // false
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -244,15 +274,26 @@ struct GetBeforeAgent {
     Column() {
       Text(`this.observedObject === globalObservedObject ${this.observedObject ===
         globalObservedObject}`) // true
+        .fontSize(20)
+        .margin(10)
       Text(`UIUtils.getTarget(this.numberList) === globalNumberList: ${UIUtils.getTarget(this.numberList) ===
         globalNumberList}`) // true
+        .fontSize(20)
+        .margin(10)
       Text(`UIUtils.getTarget(this.sampleMap) === globalSampleMap: ${UIUtils.getTarget(this.sampleMap) ===
         globalSampleMap}`) // true
+        .fontSize(20)
+        .margin(10)
       Text(`UIUtils.getTarget(this.sampleSet) === globalSampleSet: ${UIUtils.getTarget(this.sampleSet) ===
         globalSampleSet}`) // true
+        .fontSize(20)
+        .margin(10)
       Text(`UIUtils.getTarget(this.sampleDate) === globalSampleDate: ${UIUtils.getTarget(this.sampleDate) ===
         globalSampleDate}`) // true
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```

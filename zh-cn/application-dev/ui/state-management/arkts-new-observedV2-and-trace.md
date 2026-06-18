@@ -117,6 +117,7 @@ struct Child {
         Text(`name: ${this.son.name} age: ${this.son.age}`)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
+          .margin(10)
           .onClick(() => {
             this.son.age++;
           })
@@ -136,6 +137,7 @@ struct Index {
     Column() {
       Child({ son: this.father.son })
     }
+    .width('100%')
   }
 }
 ```
@@ -182,10 +184,13 @@ struct Index {
     Column() {
       // 当点击改变age时，Text组件会刷新
       Text(`${this.father.son.age}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.father.son.age++;
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -212,10 +217,13 @@ struct Index {
     Column() {
       // 当点击改变name时，Text组件会刷新
       Text(`${this.son.name}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.son.name = 'Jack';
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -237,10 +245,13 @@ struct Index {
     Column() {
       // 当点击改变count时，Text组件会刷新
       Text(`${Manager.count}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           Manager.count++;
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -278,15 +289,20 @@ struct Index {
     Column() {
       // age被@Trace装饰，用在UI中可以触发UI刷新
       Text(`${this.person.age}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.person.age++; // 点击会触发UI刷新
         })
       // id未被@Trace装饰，用在UI中不会触发UI刷新
       Text(`${this.person.id}`) // 当id变化时不会刷新
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.person.id++; // 点击不会触发UI刷新
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -363,17 +379,28 @@ struct Index {
   build() {
     Column() {
       Text(`name: ${this.info.name}`)
+        .fontSize(20)
+        .margin(10)
       Text(`age: ${this.info.age}`)
+        .fontSize(20)
+        .margin(10)
       Text(`jobName: ${this.info.job.jobName}`)
+        .fontSize(20)
+        .margin(10)
       Button('change age')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.info.age++;
         })
       Button('Change job')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.info.job.jobName = 'Doctor';
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -411,17 +438,28 @@ struct Index {
   build() {
     Column() {
       Text(`name: ${this.message.name}`)
+        .fontSize(20)
+        .margin(10)
       Text(`age: ${this.message.age}`)
+        .fontSize(20)
+        .margin(10)
       Text(`jobName: ${this.message.job.jobName}`)
+        .fontSize(20)
+        .margin(10)
       Button('change age')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.age++;
         })
       Button('Change job')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.message.job.jobName = 'Doctor';
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -482,17 +520,23 @@ struct Page {
     Column() {
       Text('pencil length' + this.son.bag.pencil.length)
         .fontSize(this.isRender(1)) // UINode (1)
+        .margin(10)
       Button('change length')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 点击更改length值，UINode（1）会刷新
           this.son.bag.pencil.length += 100;
         })
       Button('assign Son')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 由于变量son非状态变量，因此无法刷新UINode（1）
           this.son = new Son();
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -570,14 +614,20 @@ struct Index {
         Text(`Son ${this.son.age}`)
           .fontSize(this.isRender(1))
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         Text(`Cousin ${this.cousin.age}`)
           .fontSize(this.isRender(2))
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         Button('change Son age')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.son.age++;
           })
         Button('change Cousin age')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.cousin.age++;
           })
@@ -621,20 +671,24 @@ struct Index {
     Column() {
       Text(`length: ${this.arr.numberArr.length}`)
         .fontSize(40)
+        .margin(10)
       Divider()
       if (this.arr.numberArr.length >= 3) {
         Text(`${this.arr.numberArr[0]}`)
           .fontSize(40)
+          .margin(10)
           .onClick(() => {
             this.arr.numberArr[0]++;
           })
         Text(`${this.arr.numberArr[1]}`)
           .fontSize(40)
+          .margin(10)
           .onClick(() => {
             this.arr.numberArr[1]++;
           })
         Text(`${this.arr.numberArr[2]}`)
           .fontSize(40)
+          .margin(10)
           .onClick(() => {
             this.arr.numberArr[2]++;
           })
@@ -645,55 +699,75 @@ struct Index {
       ForEach(this.arr.numberArr, (item: number, index: number) => {
         Text(`${index} ${item}`)
           .fontSize(40)
+          .margin(10)
       })
 
       // numberArr是@Trace装饰的数组
       // 使用数组API操作numberArr时，可以观测到对应的变化
       Button('push')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.numberArr.push(50);
         })
 
       Button('pop')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.numberArr.pop();
         })
 
       Button('shift')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.numberArr.shift();
         })
 
       Button('splice')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.numberArr.splice(1, 0, 60);
         })
 
       Button('unshift')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.numberArr.unshift(100);
         })
 
       Button('copywithin')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.numberArr.copyWithin(0, 1, 2);
         })
 
       Button('fill')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.numberArr.fill(0, 2, 4);
         })
 
       Button('reverse')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.numberArr.reverse();
         })
 
       Button('sort')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.numberArr.sort();
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -739,22 +813,26 @@ struct Index {
     Column() {
       Text(`length: ${this.info.personList.length}`)
         .fontSize(40)
+        .margin(10)
       Divider()
       if (this.info.personList.length >= 3) {
         Text(`${this.info.personList[0].age}`)
           .fontSize(40)
+          .margin(10)
           .onClick(() => {
             this.info.personList[0].age++;
           })
 
         Text(`${this.info.personList[1].age}`)
           .fontSize(40)
+          .margin(10)
           .onClick(() => {
             this.info.personList[1].age++;
           })
 
         Text(`${this.info.personList[2].age}`)
           .fontSize(40)
+          .margin(10)
           .onClick(() => {
             this.info.personList[2].age++;
           })
@@ -765,8 +843,10 @@ struct Index {
       ForEach(this.info.personList, (item: Person, index: number) => {
         Text(`${index} ${item.age}`)
           .fontSize(40)
+          .margin(10)
       })
     }
+    .width('100%')
   }
 }
 ```
@@ -795,28 +875,40 @@ struct MapSample {
         ForEach(Array.from(this.info.memberMap.entries()), (item: [number, string]) => {
           Text(`${item[0]}`)
             .fontSize(30)
+            .margin(10)
           Text(`${item[1]}`)
             .fontSize(30)
+            .margin(10)
           Divider()
         })
         // 被@Trace装饰的Map类型属性可以观测到调用API带来的变化
         Button('init map')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.info.memberMap = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
           })
         Button('set new one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.info.memberMap.set(4, 'd');
           })
         Button('clear')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.info.memberMap.clear();
           })
         Button('set the key: 0')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.info.memberMap.set(0, 'aa');
           })
         Button('delete the first one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.info.memberMap.delete(0);
           })
@@ -852,22 +944,31 @@ struct SetSample {
         ForEach(Array.from(this.info.memberSet.entries()), (item: [number, number]) => {
           Text(`${item[0]}`)
             .fontSize(30)
+            .margin(10)
           Divider()
         })
         // 被@Trace装饰的Set类型属性可以观测到调用API带来的变化
         Button('init set')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.info.memberSet = new Set([0, 1, 2, 3, 4]);
           })
         Button('set new one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.info.memberSet.add(5);
           })
         Button('clear')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.info.memberSet.clear();
           })
         Button('delete the first one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.info.memberSet.delete(0);
           })
@@ -902,21 +1003,25 @@ struct DateSample {
     Column() {
       // @Trace装饰的Date类型属性可以观测调用API带来的变化
       Button('set selectedDate to 2023-07-08')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.info.selectedDate = new Date('2023-07-08');
         })
       Button('increase the year by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.info.selectedDate.setFullYear(this.info.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.info.selectedDate.setMonth(this.info.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.info.selectedDate.setDate(this.info.selectedDate.getDate() + 1);
@@ -926,7 +1031,8 @@ struct DateSample {
         end: new Date('2100-1-1'),
         selected: this.info.selectedDate
       })
-    }.width('100%')
+    }
+    .width('100%')
   }
 }
 ```
@@ -1081,6 +1187,8 @@ struct SerializationAndDeserialization {
   build() {
     Column() {
       Text(`name: ${this.person?.info?.name}, age: ${this.person?.info?.age}`)
+        .fontSize(20)
+        .margin(10)
         .onClick(() => {
           if (this.person?.info?.age) {
             this.person!.info!.age++; // 修改可观察
@@ -1088,6 +1196,8 @@ struct SerializationAndDeserialization {
         })
       ForEach(this.person?.friends, (item: Info) => {
         Text(`friend name: ${item.name}, age: ${item.age}`)
+          .fontSize(20)
+          .margin(10)
           .onClick(() => {
             if (item.age) {
               item.age++; // 修改可观察
@@ -1096,6 +1206,8 @@ struct SerializationAndDeserialization {
       })
 
       Button('Refresh Info')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           let json: string =
             `{
@@ -1120,6 +1232,7 @@ struct SerializationAndDeserialization {
           this.person = plainToInstance(Person, JSON.parse(json.replaceAll('__ob_', '')));
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -1224,11 +1337,16 @@ struct RouterIndex {
   build() {
     Column() {
       Text('Parent page')
+        .fontSize(20)
+        .margin(10)
       Button('Jump')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.onJumpClick();
         })
     }
+    .width('100%')
   }
 }
 ```
@@ -1250,7 +1368,10 @@ struct Detail {
   build() {
     Column() {
       Text(`Detail Page: ${this.params?.id} ${this.params?.info}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```

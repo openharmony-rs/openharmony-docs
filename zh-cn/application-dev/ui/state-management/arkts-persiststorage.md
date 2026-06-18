@@ -101,14 +101,20 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
        Row() {
          Column() {
            Text(this.message)
+             .fontSize(20)
+             .margin(10)
            // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
            // 未修改时默认值为47
            Text(`${this.aProp}`)
+             .fontSize(20)
+             .margin(10)
              .onClick(() => {
                this.aProp += 1;
              })
          }
+         .width('100%')
        }
+       .height('100%')
      }
    }
    ```
@@ -199,15 +205,25 @@ struct TestCase6 {
         Text(this.p + '')
           .fontSize(FONT_SIZE_LARGE)
           .fontWeight(FontWeight.Bold)
-        Button('changeToNumber').onClick(() => {
-          this.p = DEFAULT_NUMBER;
-        })
-        Button('changeTo undefined').onClick(() => {
-          this.p = undefined;
-        })
-        Button('changeTo null').onClick(() => {
-          this.p = null;
-        })
+          .margin(10)
+        Button('changeToNumber')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.p = DEFAULT_NUMBER;
+          })
+        Button('changeTo undefined')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.p = undefined;
+          })
+        Button('changeTo null')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.p = null;
+          })
       }
       .width('100%')
     }
@@ -239,18 +255,23 @@ struct PersistedDate {
       ListItem() {
         Column() {
           Text(`Persisted Date is ${this.persistedDate.toString()}`)
+            .fontSize(20)
             .margin(20)
 
           Text(`Persisted Date year is ${this.persistedDate.getFullYear()}`)
+            .fontSize(20)
             .margin(20)
 
           Text(`Persisted Date hours is ${this.persistedDate.getHours()}`)
+            .fontSize(20)
             .margin(20)
 
           Text(`Persisted Date minutes is ${this.persistedDate.getMinutes()}`)
+            .fontSize(20)
             .margin(20)
 
           Text(`Persisted Date time is ${this.persistedDate.toLocaleTimeString()}`)
+            .fontSize(20)
             .margin(20)
 
           Button() {
@@ -270,8 +291,8 @@ struct PersistedDate {
             // 改变persistedDate的值，视图会随之刷新
             this.updateDate();
           })
-
-        }.width('100%')
+        }
+        .width('100%')
       }
     }
   }
@@ -302,9 +323,12 @@ struct PersistedMap {
       ListItem() {
         Column() {
           Text(`Persisted Map String is `)
+            .fontSize(20)
             .margin(20)
           ForEach(Array.from(this.persistedMapString.entries()), (item: [number, string]) => {
             Text(`${item[0]} ${item[1]}`)
+              .fontSize(20)
+              .margin(10)
           })
 
           Button() {
@@ -324,8 +348,8 @@ struct PersistedMap {
             // 点击Button改变persistedMapString的值，视图会随之刷新
             this.persistMapString();
           })
-
-        }.width('100%')
+        }
+        .width('100%')
       }
     }
   }
@@ -359,9 +383,12 @@ struct PersistedSet {
       ListItem() {
         Column() {
           Text(`Persisted Set is `)
+            .fontSize(20)
             .margin(20)
           ForEach(Array.from(this.persistedSet.entries()), (item: [number, number]) => {
             Text(`${item[1]}`)
+              .fontSize(20)
+              .margin(10)
           })
 
           Button() {
@@ -398,7 +425,6 @@ struct PersistedSet {
             // 点击Button改变persistedSet的值，视图会随之刷新
             this.clearSet();
           })
-
         }
         .width('100%')
       }
