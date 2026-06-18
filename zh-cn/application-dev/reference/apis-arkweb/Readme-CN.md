@@ -25,6 +25,7 @@
     - [Class (SecurityParams)](arkts-apis-webview-SecurityParams.md)
     - [Class (WebviewController)](arkts-apis-webview-WebviewController.md)
     - [AIPageCommand](arkts-apis-webview-AIPageCommand.md)
+    - [AIPageInteraction](arkts-apis-webview-AIPageInteraction.md)
     - [Class (WebCookieManager)](arkts-apis-webview-WebCookieManager.md)
     - [Class (WebDataBase)](arkts-apis-webview-WebDataBase.md)
     - [Class (WebDownloadDelegate)](arkts-apis-webview-WebDownloadDelegate.md)
