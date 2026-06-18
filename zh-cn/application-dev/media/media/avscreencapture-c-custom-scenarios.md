@@ -136,10 +136,10 @@ OH_AVScreenCapture_SkipPrivacyMode(capture, windowIdsSkipPrivacy.empty() ? nullp
 
 ```c++
 OH_Rect* region = new OH_Rect;
-    region->x = 0;
-    region->y = 0;
-    region->width = 100;
-    region->height = 100;
+region->x = 0;
+region->y = 0;
+region->width = CAPTURE_REGION_SIZE;
+region->height = CAPTURE_REGION_SIZE;
 uint64_t regionDisplayId = 0; // 传入矩形区域所在的屏幕Id。
 OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
 delete region;
@@ -167,7 +167,7 @@ OH_AVScreenCapture_ShowCursor(capture, false);
 <!-- @[screenCapture_buffer_setMaxVideoFrameRate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ```c++
-OH_AVScreenCapture_SetMaxVideoFrameRate(capture, 20);
+OH_AVScreenCapture_SetMaxVideoFrameRate(capture, CAPTURE_VIDEO_FRAME_RATE);
 ```
 
 ## 设置屏幕分辨率
@@ -177,7 +177,7 @@ OH_AVScreenCapture_SetMaxVideoFrameRate(capture, 20);
 <!-- @[screenCapture_buffer_resizeCanvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ```c++
-OH_AVScreenCapture_ResizeCanvas(capture, 768, 1280);
+OH_AVScreenCapture_ResizeCanvas(capture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIGHT);
 ```
 
 ## 设置内容过滤

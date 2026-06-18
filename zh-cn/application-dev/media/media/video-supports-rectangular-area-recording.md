@@ -27,7 +27,7 @@
 **在CMake脚本中链接动态库**
 
 ```cmake
-target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_display_manager.so)
+target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_display_manager.so libability_runtime.so)
 ```
 
 > **说明：**
@@ -37,14 +37,18 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 
 **添加头文件**
 
+<!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
+
 ```c++
 #include "hilog/log.h"
 #include "napi/native_api.h"
 #include <window_manager/oh_display_info.h>
 #include <window_manager/oh_display_manager.h>
+#include <AbilityKit/ability_runtime/application_context.h>
 #include <multimedia/player_framework/native_avscreen_capture.h>
 #include <multimedia/player_framework/native_avscreen_capture_base.h>
 #include <multimedia/player_framework/native_avscreen_capture_errors.h>
+#include <unistd.h>
 #include <fcntl.h>
 #include <string>
 ```
@@ -80,40 +84,8 @@ if (g_avCapture == nullptr) {
 OpenFile("Demo");
 SetCallback(g_avCapture);
 // 初始化录屏，传入配置信息OH_AVScreenRecorderConfig。
-OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC};
-OH_AudioCaptureInfo innerCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_ALL_PLAYBACK};
-OH_AudioEncInfo audioEncInfo = {.audioBitrate = 128000, .audioCodecformat = OH_AAC_LC};
-
-OH_AudioInfo audioInfo = {
-    .micCapInfo = micCapInfo,
-    .innerCapInfo = innerCapInfo,
-    .audioEncInfo = audioEncInfo
-};
-// 获取屏幕信息
-uint64_t displayId = 0;
-NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
-
-NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
-ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
-if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
-    napi_value res;
-    napi_create_int32(env, ret, &res);
-    return res;
-}
-int32_t screenWidth = displayInfo->width;
-int32_t screenHeight = displayInfo->height;
-OH_VideoCaptureInfo videoCapInfo = {.videoFrameWidth = screenWidth, .videoFrameHeight = screenHeight,
-                                    .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA};
-OH_VideoEncInfo videoEncInfo = {.videoCodec = OH_H264, .videoBitrate = 2000000, .videoFrameRate = 30};
-
-OH_VideoInfo videoInfo = {
-    .videoCapInfo = videoCapInfo,
-    .videoEncInfo = videoEncInfo
-};
-OH_AVScreenCaptureConfig config = {.captureMode = OH_CAPTURE_HOME_SCREEN, // 录屏模式设置。
-                                    .dataType = OH_ORIGINAL_STREAM,
-                                    .audioInfo = audioInfo,
-                                    .videoInfo = videoInfo};
+OH_AVScreenCaptureConfig config;
+SetConfig05(config);
 OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_Init(g_avCapture, config);
 if (result != AV_SCREEN_CAPTURE_ERR_OK) {
     OH_LOG_ERROR(LOG_APP, "==ScreenCaptureSample== ScreenCapture OH_AVScreenCapture_Init failed %{public}d", result);
@@ -122,8 +94,8 @@ if (result != AV_SCREEN_CAPTURE_ERR_OK) {
 OH_Rect* region = new OH_Rect;
 region->x = 0;
 region->y = 0;
-region->width = 100;
-region->height = 100;
+region->width = CAPTURE_REGION_SIZE;
+region->height = CAPTURE_REGION_SIZE;
 // 2.传入矩形区域所在的屏幕Id。
 uint64_t regionDisplayId = 0;
 OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);

@@ -51,9 +51,13 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 
 添加头文件：
 
+<!-- @[screenCapture_import_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+
 ```c++
 #include "hilog/log.h"
 #include "napi/native_api.h"
+#include <window_manager/oh_display_info.h>
+#include <window_manager/oh_display_manager.h>
 #include <multimedia/player_framework/native_avscreen_capture.h>
 #include <multimedia/player_framework/native_avscreen_capture_base.h>
 #include <multimedia/player_framework/native_avscreen_capture_errors.h>
@@ -89,17 +93,9 @@ g_avCapture = OH_AVScreenCapture_Create();
 
 ```c++
 // 录屏时获取麦克风，如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
-OH_AudioCaptureInfo micCapInfo = {
-    .audioSampleRate = 48000,
-    .audioChannels = 2,
-    .audioSource = OH_MIC
-}; 
+OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC}; 
 // 录屏时获取内录数据，内录参数必填。如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
-OH_AudioCaptureInfo innerCapInfo = {
-    .audioSampleRate = 48000,
-    .audioChannels = 2,
-    .audioSource = OH_ALL_PLAYBACK
-};
+OH_AudioCaptureInfo innerCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_ALL_PLAYBACK};
 // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
 // 此处音频比特率取值为高质量录屏的取值。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
 OH_AudioEncInfo audioEncInfo = {
@@ -199,11 +195,11 @@ void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCo
         // 可选 配置录屏旋转
         int32_t ret = OH_AVScreenCapture_SetCanvasRotation(capture, true);
         // 可选 修改Canvas分辨率
-        ret = OH_AVScreenCapture_ResizeCanvas(g_avCapture, 768, 1280);
+        ret = OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIGHT);
         // 可选 设置是否显示光标
         ret = OH_AVScreenCapture_ShowCursor(g_avCapture, true);
         // 可选 设置视频最大帧率
-        ret = OH_AVScreenCapture_SetMaxVideoFrameRate(g_avCapture, 30);
+        ret = OH_AVScreenCapture_SetMaxVideoFrameRate(g_avCapture, CAPTURE_VIDEO_FRAME_RATE);
     }
     if (stateCode == OH_SCREEN_CAPTURE_STATE_INTERRUPTED_BY_OTHER) {
         // 处理状态变更
@@ -421,8 +417,8 @@ g_avCapture = nullptr;
 
 ```c++
 // 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
-config.videoInfo.videoCapInfo.videoFrameWidth = 2880;
-config.videoInfo.videoCapInfo.videoFrameHeight = 1920;
+config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
+config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
 
 // 设置录屏模式为OH_CAPTURE_SPECIFIED_SCREEN，传入屏幕Id。
 config.captureMode = OH_CAPTURE_SPECIFIED_SCREEN;
@@ -441,8 +437,8 @@ config.videoInfo.videoCapInfo.displayId = 0;
 
 ```c++
 // 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
-config.videoInfo.videoCapInfo.videoFrameWidth = 2880;
-config.videoInfo.videoCapInfo.videoFrameHeight = 1920;
+config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
+config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
 
 // 设置录屏模式为OH_CAPTURE_HOME_SCREEN，传入屏幕Id。
 config.captureMode = OH_CAPTURE_HOME_SCREEN;
@@ -460,20 +456,19 @@ config.captureMode = OH_CAPTURE_HOME_SCREEN;
 
 ```c++
 // 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
-config.videoInfo.videoCapInfo.videoFrameWidth = 2880;
-config.videoInfo.videoCapInfo.videoFrameHeight = 1920;
+config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
+config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
 
 // 设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入屏幕Id。
 config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config.videoInfo.videoCapInfo.displayId = 0;
 
 // (可选)若有期望录制的窗口，可传入单个窗口Id。
-g_missionIds = new int32_t[1]{61}; // 表示弹出的Picker默认选中61号窗口。
-config.videoInfo.videoCapInfo.missionIDs = &g_missionIds[0];
-int32_t missionIdsLen = sizeof(g_missionIds) / sizeof(g_missionIds[0]);
-config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIdsLen);
+g_missionIds = {61}; // 表示弹出的Picker默认选中61号窗口。
+config.videoInfo.videoCapInfo.missionIDs = g_missionIds.data();
+config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.size());
 
-// 在配置参数结束后执行"delete[] g_missionIds"。
+// 在配置参数结束后执行"g_missionIds.clear()"。
 ```
 
 <!--RP2--><!--RP2End-->
@@ -484,20 +479,19 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIdsLen
 
 ```c++
 // 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
-config.videoInfo.videoCapInfo.videoFrameWidth = 2880;
-config.videoInfo.videoCapInfo.videoFrameHeight = 1920;
+config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
+config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
 
 // 设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入屏幕Id。
 config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config.videoInfo.videoCapInfo.displayId = 0;
 
 // 传入多个窗口Id。
-g_missionIds2 = new int32_t[2]{60, 61}; // 表示期望同时录制60、61号窗口。
-config.videoInfo.videoCapInfo.missionIDs = &g_missionIds2[0];
-int32_t missionIdsLen = sizeof(g_missionIds2) / sizeof(g_missionIds2[0]);
-config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIdsLen);
+g_missionIds2 = {60, 61}; // 表示期望同时录制60、61号窗口。
+config.videoInfo.videoCapInfo.missionIDs = g_missionIds2.data();
+config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2.size());
 
-// 在配置参数结束后执行"delete[] g_missionIds2"。
+// 在配置参数结束后执行"g_missionIds2.clear()"。
 ```
 
 ## Phone/Tablet弹窗模式配置说明
@@ -509,21 +503,18 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIdsLen
 <!-- @[screenCapture_buffer_strategy_pickerPopUp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ```c++
-void SetStrategyForPickerPopUp(OH_AVScreenCapture *capture)
-{
-    // 创建CaptureStrategy对象。
-    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+// 创建CaptureStrategy对象。
+OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
 
-    // 设置是否弹出屏幕捕获Picker。
-    // 设置为true，代表录屏启动后统一弹出Picker。
-    OH_AVScreenCapture_StrategyForPickerPopUp(strategy, true);
+// 设置是否弹出屏幕捕获Picker。
+// 设置为true，代表录屏启动后统一弹出Picker。
+OH_AVScreenCapture_StrategyForPickerPopUp(strategy, true);
 
-    // 设置CaptureStrategy到AVScreenCapture实例。
-    OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+// 设置CaptureStrategy到AVScreenCapture实例。
+OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 
-    // 释放CaptureStrategy对象。
-    OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
-}
+// 释放CaptureStrategy对象。
+OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 ```
 
 ## 更多资源
