@@ -12887,7 +12887,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets",
 				"functions":[
 					{
-						"end_line":166,
+						"end_line":160,
 						"name":"mesh",
 						"start_line":16
 					}
