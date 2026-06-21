@@ -21,6 +21,7 @@
 
 示例代码如下：
 
+ArkTS-Dyn示例：
 <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -85,6 +86,9 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[rotation_policy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->
+
 ## 视频类应用横竖屏切换
 
 视频类应用横竖屏切换是指在视频类应用中，播放界面的详情页采用竖屏方式显示，用户可通过全屏按钮将页面切换至横屏方式显示，从而提供更佳的观看体验。
@@ -131,6 +135,7 @@ struct Index {
 
 4. 调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略锁定显示方向。
 
+ArkTS-Dyn示例：
 <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -201,3 +206,6 @@ struct SpecificSceneSetOrientationIndex {
   }
 }
 ```
+
+ArkTS-Sta示例：
+<!-- @[convert_orientation_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
