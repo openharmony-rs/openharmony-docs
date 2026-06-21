@@ -39,7 +39,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 
 getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
-获取接入主设备的USB设备列表。
+获取接入主设备的USB设备列表。调用成功后返回已连接设备的详细信息列表包括设备名称、厂商产品信息等。
 
 > **说明：**
 >
@@ -123,9 +123,9 @@ console.info(`devicesList = ${devicesList}`);
 
 connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
-根据getDevices()返回的设备信息打开USB设备。如果USB服务异常，可能返回`undefined`，注意需要对接口返回值做判空处理。
+根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。如果USB服务异常，可能返回`undefined`，注意需要对接口返回值做判空处理。
 
-1. 需要调用[usbManager.getDevices](#usbmanagergetdevices)获取设备信息以及device;
+1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备信息以及device;
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)请求使用该设备的权限。
 
 **系统能力：**  SystemCapability.USB.USBManager
@@ -318,7 +318,7 @@ function removeRight(): boolean {
 
 claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): number
 
-声明对USB设备某个接口的控制权。
+声明对USB设备某个接口的控制权。调用成功后应用程序获得该接口的独占控制权可以进行数据传输等操作，其他程序无法访问该接口。
 
 > **说明：**
 >
@@ -333,7 +333,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取接口的索引，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
-| force | boolean | 否 | 可选参数，是否强制获取。默认值为false&nbsp;，表示不强制获取，用户按需选择。|
+| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取；设置为true时，将强制从内核驱动或其他程序中释放该接口的控制权并交由用户空间程序控制。用户按需选择。|
 
 **返回值：**
 
@@ -400,7 +400,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| 401      | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
 
 **示例：**
@@ -436,7 +436,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| config | [USBConfiguration](#usbconfiguration) | 是 | 用于确定需要设置的配置，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id用于确定唯一设置。|
+| config | [USBConfiguration](#usbconfiguration) | 是 | 用于确定需要设置的配置，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一设置。|
 
 **返回值：**
 
@@ -491,7 +491,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| iface | [USBInterface](#usbinterface)   | 是 | 用于确定需要设置的接口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id和alternateSetting确定唯一接口。|
+| iface | [USBInterface](#usbinterface)   | 是 | 用于确定需要设置的接口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id和alternateSetting确定唯一接口，alternateSetting为0时表示不支持可选模式。|
 
 **返回值：**
 
@@ -649,7 +649,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
+| 401      | Parameter error.Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
 
 **示例：**
@@ -693,7 +693,7 @@ function usbControlTransfer() {
 
 bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: number): Promise&lt;number&gt;
 
-批量传输。使用Promise异步回调。
+批量传输。调用成功后完成批量数据传输，返回实际传输或接收到的数据块大小。使用Promise异步回调。
 
 > **说明：** 
 >
@@ -953,7 +953,7 @@ closePipe(pipe: USBDevicePipe): number
 
 关闭设备消息控制通道。
 
-1. 需要调用[usbManager.getDevices](#usbmanagergetdevices)获取设备列表；
+1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备列表；
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)获取设备请求权限；
 3. 调用[usbManager.connectDevice](#usbmanagerconnectdevice)得到devicepipe作为参数。
 
@@ -1228,7 +1228,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 关闭配件文件描述符。
 
-需要调用[usbManager.openAccessory](#usbmanageropenaccessory14)获取配件列表，得到[USBAccessoryHandle](#usbaccessoryhandle14)作为参数。
+需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，然后调用[usbManager.openAccessory](#usbmanageropenaccessory14)获取配件句柄，得到[USBAccessoryHandle](#usbaccessoryhandle14)作为参数。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1337,7 +1337,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备消息传输通道对象，用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。|
 | timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
@@ -1444,7 +1444,7 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 | name           | string                                           | 否 | 否 |配置的名称，可以为空。     |
 | isRemoteWakeup | boolean                                          | 否 | 否 |检查当前配置是否支持远程唤醒。true表示支持，false表示不支持。 |
 | isSelfPowered  | boolean                                          | 否 | 否 |检查当前配置是否支持独立电源。true表示支持，false表示不支持。 |
-| interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | 否 | 否 |配置支持的接口属性。      |
+| interfaces     | Array<[USBInterface](#usbinterface)> | 否 | 否 |配置支持的接口属性。      |
 
 ## USBDevice
 
@@ -1458,7 +1458,7 @@ USB设备信息。
 | devAddress       | number                               | 否 | 否 |设备地址。      |
 | serial           | string                               | 否 | 否 |序列号。       |
 | name             | string                               | 否 | 否 |设备名字。      |
-| manufacturerName | string                               | 否 | 否 | 产商信息。      |
+| manufacturerName | string                               | 否 | 否 |厂商信息。      |
 | productName      | string                               | 否 | 否 |产品信息。      |
 | version          | string                               | 否 | 否 |版本。        |
 | vendorId         | number                               | 否 | 否 |厂商ID。      |
@@ -1487,11 +1487,11 @@ USB设备消息传输通道，用于确定设备。
 
 | 名称      | 类型                                            | 只读 | 可选               |说明               |
 | ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
-| bmRequestType | number                                    | 否 | 否   |请求控制类型。            |
-| bRequest  | number                                        | 否 | 否   |请求类型。          |
-| wValue | number                                           | 否 | 否   |请求参数。          |
-| wIndex   | number                                         | 否 | 否   |请求参数value对应的索引值。            |
-| wLength   | number                                        | 否 | 否   |请求数据的长度。 |
+| bmRequestType | number                                    | 否 | 否   |请求控制类型，用于指定控制传输的方向和类型。            |
+| bRequest  | number                                        | 否 | 否   |请求类型，用于指定具体的USB控制请求命令（如获取描述符，设置地址等）。          |
+| wValue | number                                           | 否 | 否   |请求参数，用于向USB设备传递控制请求所需的参数内容。          |
+| wIndex   | number                                         | 否 | 否   |请求参数value对应的索引值，用于指定控制请求的目标接口或端点索引。            |
+| wLength   | number                                        | 否 | 否   |请求数据的长度，用于指定控制传输中期望接收或发送的数据字节数。 |
 | data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区。     |
 
 ## USBRequestTargetType
@@ -1502,10 +1502,10 @@ USB设备消息传输通道，用于确定设备。
 
 | 名称                         | 值   | 说明   |
 | ---------------------------- | ---- | ------ |
-| USB_REQUEST_TARGET_DEVICE    | 0    | 设备。 |
-| USB_REQUEST_TARGET_INTERFACE | 1    | 接口。 |
-| USB_REQUEST_TARGET_ENDPOINT  | 2    | 端点。 |
-| USB_REQUEST_TARGET_OTHER     | 3    | 其它。 |
+| USB_REQUEST_TARGET_DEVICE    | 0    | 将控制请求的目标设置为USB设备本身，用于对整个设备进行控制操作（如设置设备地址、获取设备描述符等）。 |
+| USB_REQUEST_TARGET_INTERFACE | 1    | 将控制请求的目标设置为USB设备的某个接口，用于对接口进行控制操作（如设置接口特性、获取接口描述符等）。 |
+| USB_REQUEST_TARGET_ENDPOINT  | 2    | 将控制请求的目标设置为USB设备的某个端点，用于对端点进行控制操作（如清除端点停止状态、获取端点状态等）。 |
+| USB_REQUEST_TARGET_OTHER     | 3    | 将控制请求的目标设置为其他单元，用于对非标设备、接口或端点的单元进行控制操作。 |
 
 ## USBControlRequestType
 
@@ -1515,9 +1515,9 @@ USB设备消息传输通道，用于确定设备。
 
 | 名称                      | 值   | 说明   |
 | ------------------------- | ---- | ------ |
-| USB_REQUEST_TYPE_STANDARD | 0    | 标准。 |
-| USB_REQUEST_TYPE_CLASS    | 1    | 类。   |
-| USB_REQUEST_TYPE_VENDOR   | 2    | 厂商。 |
+| USB_REQUEST_TYPE_STANDARD | 0    | 标准请求类型，用于发送USB协议定义的标准控制请求（如设备描述符、设置地址、设置配置等）。 |
+| USB_REQUEST_TYPE_CLASS    | 1    | 类请求类型，用于发送特定设备类定义的控制请求（如HID类、Mass Storage类等特定请求）。   |
+| USB_REQUEST_TYPE_VENDOR   | 2    | 厂商请求类型，用于发送厂商自定义的控制请求，具体请求内容由设备厂商定义。 |
 
 ## USBRequestDirection
 
