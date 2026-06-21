@@ -524,7 +524,7 @@ struct Page {
             formProvider.closeFormEditAbility();
             console.info(`${TAG} close FormEditAbility success.`);
           } catch (error) {
-            console.error(`${TAG} close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+            console.error(`${TAG} close FormEditAbility failed, code: ${error.code}, message: ${error.message}`);
           }
         })
     }
