@@ -43,5 +43,8 @@
 | [native_node_napi.h](capi-native-node-napi-h.md) | 提供ArkTS侧的FrameNode转换NodeHandle的方式。 |
 | [native_type.h](capi-native-type-h.md) | 提供NativeModule公共的类型定义。 |
 | [picker.h](capi-picker-h.md) | 为NativeNode API提供Picker节点类型定义。 |
+| [button.h](capi-button-h.md) | 为NativeNode API提供Button节点类型定义。 |
+| [checkbox.h](capi-checkbox-h.md) | 为NativeNode API提供Checkbox节点类型定义。 |
+| [slider.h](capi-slider-h.md) | 为NativeNode API提供Slider节点类型定义。 |
 | [styled_string.h](capi-styled-string-h.md) | 提供ArkUI在Native侧的属性字符串能力。 |
 | [xcomponent.h](capi-xcomponent-h.md) | XComponent组件的枚举类型定义。 |
