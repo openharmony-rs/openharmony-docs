@@ -174,7 +174,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMetaLen(const OH_AudioVividMetaBuilder 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| const [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | bool withStaticMeta | 设置输出的长度是否包含静态元数据。true表示输出长度包含静态元数据；false表示输出长度仅包含动态元数据。 |
 | int32_t *len | 用于接收元数据长度的指针。单位为字节。 |
 
@@ -200,7 +200,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMeta(const OH_AudioVividMetaBuilder *bu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
+| const [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | 指向OH_AudioVividMetaBuilder的指针。 |
 | bool withStaticMeta | 设置输出的长度是否包含静态元数据。true表示输出缓冲区包含静态元数据；false表示输出缓冲区仅包含动态元数据。 |
 | uint8_t *buffer | 用于接收元数据内容的缓冲区指针。 |
 | int32_t len | 缓冲区长度。单位为字节。 |
