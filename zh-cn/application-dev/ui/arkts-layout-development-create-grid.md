@@ -401,7 +401,7 @@ private scroller: Scroller = new Scroller();
 
 ### 设置编辑模式
 
-通过[enableEditMode](../reference/apis-arkui/arkui-ts/ts-container-grid.md#enableeditmode)设置是否进入编辑模式。设置为true，Grid进入编辑模式，用户可以单指滑动经过多个GridItem进行批量选择或取消选择；设置为false，Grid退出编辑模式。通过[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-grid.md#oneditmodechange)监听编辑模式变化，将侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
+通过[enableEditMode](../reference/apis-arkui/arkui-ts/ts-container-grid.md#enableeditmode)设置是否进入编辑模式。设置为true，Grid进入编辑模式，用户可以单指滑动经过多个GridItem进行批量选择或取消选择；设置为false，Grid退出编辑模式。通过[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-grid.md#oneditmodechange)监听编辑模式变化，将系统返回、侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
 
 通过[editModeOptions](../reference/apis-arkui/arkui-ts/ts-container-grid.md#editmodeoptions23)配置编辑模式下的多选行为。editModeOptions中有两个滑动多选相关参数，分别是useDefaultMultiSelectStyle和enableTwoFingerMultiSelect，默认值均为true。前者控制是否显示GridItem右下角的系统复选框，后者控制是否允许用户通过双指滑动自动进入编辑模式并进行多选。开发者需要自定义样式时，可将useDefaultMultiSelectStyle设置为false。开发者需要关闭双指滑动自动进入编辑模式时，可将enableTwoFingerMultiSelect设置为false。
 <!-- @[Add_grid_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets) -->
