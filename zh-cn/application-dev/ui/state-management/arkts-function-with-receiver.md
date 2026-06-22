@@ -110,6 +110,7 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 - Function-with-Receiver方法的参数可以为function，作为Event事件的句柄。
 
   <!-- @[ReceiverEvent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverEvent.ets) --> 
+  
   ``` TypeScript
   import { ClickEvent, Color, Component, Entry, Row, Text, TextAttribute, State } from '@kit.ArkUI';
   
