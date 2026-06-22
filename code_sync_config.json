@@ -32684,7 +32684,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ContainerObject.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":71,
 						"name":"example_container_obj",
 						"start_line":16
 					}
@@ -32714,9 +32714,9 @@
 						"start_line":16
 					},
 					{
-						"end_line":71,
+						"end_line":81,
 						"name":"taskpool_execute_concurrent_function",
-						"start_line":42
+						"start_line":49
 					}
 				]
 			}
@@ -50496,7 +50496,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":81,
+						"end_line":86,
 						"name":"across_concurrent_instance_transfer_large_data",
 						"start_line":16
 					}
@@ -50676,12 +50676,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets",
 				"functions":[
 					{
-						"end_line":100,
+						"end_line":106,
 						"name":"process_image_histogram",
 						"start_line":16
 					},
 					{
-						"end_line":41,
+						"end_line":42,
 						"name":"call_worker_message",
 						"start_line":19
 					},
@@ -50771,7 +50771,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":83,
 						"name":"taskpool_listen_sensor_data",
 						"start_line":16
 					},
@@ -50829,7 +50829,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/MultiThreadConcurrencyOverview/entry/src/main/ets/managers/actormodel.ets",
 				"functions":[
 					{
-						"end_line":110,
+						"end_line":112,
 						"name":"actor_model",
 						"start_line":16
 					}
@@ -50999,7 +50999,7 @@
 						"start_line":17
 					},
 					{
-						"end_line":75,
+						"end_line":78,
 						"name":"implement_child_thread_task",
 						"start_line":16
 					}
@@ -51024,7 +51024,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/generaluse.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":62,
 						"name":"concurrent_taskpool_common_usage",
 						"start_line":18
 					}
@@ -51034,7 +51034,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/returnpromise.ets",
 				"functions":[
 					{
-						"end_line":124,
+						"end_line":128,
 						"name":"concurrent_taskpool_promise_return",
 						"start_line":18
 					}
@@ -51044,7 +51044,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/customclasses.ets",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":96,
 						"name":"concurrent_taskpool_custom_class_function",
 						"start_line":18
 					}
@@ -51089,7 +51089,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/TransferabledObject.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":72,
 						"name":"example_pass_obj",
 						"start_line":16
 					}
@@ -51124,7 +51124,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerCommunicatesWithMainthread.ets",
 				"functions":[
 					{
-						"end_line":77,
+						"end_line":81,
 						"name":"respond_worker_instant_message",
 						"start_line":16
 					}
