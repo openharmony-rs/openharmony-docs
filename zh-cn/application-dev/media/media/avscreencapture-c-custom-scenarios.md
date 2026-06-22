@@ -19,7 +19,7 @@ AVScreenCapture支持应用完成场景化的自定义配置，具体配置可�
 
 <!-- @[screenCapture_buffer_strategy_keepCaptureDuringCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
 OH_AVScreenCapture_StrategyForKeepCaptureDuringCall(strategy, true);
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
@@ -34,7 +34,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 <!-- @[screenCapture_buffer_strategy_BFramesEncoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
 OH_AVScreenCapture_StrategyForBFramesEncoding(strategy, true);
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
@@ -51,7 +51,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 <!-- @[screenCapture_buffer_strategy_pickerPopUp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 // 创建CaptureStrategy对象。
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
 
@@ -76,7 +76,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 <!-- @[screenCapture_buffer_strategy_canvasFollowRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
 // 设为true，表示跟随屏幕旋转，并在横竖屏旋转后，自动调换虚拟屏尺寸，确保输出画面及时跟随旋转。
 OH_AVScreenCapture_StrategyForCanvasFollowRotation(strategy, true);
@@ -96,7 +96,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 <!-- @[screenCapture_buffer_strategy_setMicrophoneEnabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 bool isMic = true;
 OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
 ```
@@ -107,7 +107,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
 
 <!-- @[screenCapture_buffer_strategy_privacyMaskMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 // value值设为0，表示全屏屏蔽模式。value值设为1，表示窗口屏蔽模式。默认为全屏屏蔽模式。开发者可根据实际需求选择合适取值。
 int value = PRIVACY_MASK_MODE_FULL_SCREEN;
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
@@ -120,7 +120,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 <!-- @[screenCapture_buffer_skipPrivacyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 std::vector<int> windowIdsSkipPrivacy = {};
 OH_AVScreenCapture_SkipPrivacyMode(capture, windowIdsSkipPrivacy.empty() ? nullptr : &windowIdsSkipPrivacy[0],
     static_cast<int32_t>(windowIdsSkipPrivacy.size()));
@@ -134,7 +134,7 @@ OH_AVScreenCapture_SkipPrivacyMode(capture, windowIdsSkipPrivacy.empty() ? nullp
 
 <!-- @[screenCapture_buffer_setCaptureArea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 OH_Rect* region = new OH_Rect;
 region->x = 0;
 region->y = 0;
@@ -154,7 +154,7 @@ region = nullptr;
 
 <!-- @[screenCapture_buffer_showCursor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 OH_AVScreenCapture_ShowCursor(capture, false);
 ```
 
@@ -166,7 +166,7 @@ OH_AVScreenCapture_ShowCursor(capture, false);
 
 <!-- @[screenCapture_buffer_setMaxVideoFrameRate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 OH_AVScreenCapture_SetMaxVideoFrameRate(capture, CAPTURE_VIDEO_FRAME_RATE);
 ```
 
@@ -176,7 +176,7 @@ OH_AVScreenCapture_SetMaxVideoFrameRate(capture, CAPTURE_VIDEO_FRAME_RATE);
 
 <!-- @[screenCapture_buffer_resizeCanvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 OH_AVScreenCapture_ResizeCanvas(capture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIGHT);
 ```
 
@@ -190,7 +190,7 @@ OH_AVScreenCapture_ResizeCanvas(capture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIG
 
 <!-- @[screenCapture_buffer_excludeContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 OH_AVScreenCapture_ContentFilter *contentFilter= OH_AVScreenCapture_CreateContentFilter();
 // 添加过滤通知音。
 OH_AVScreenCapture_ContentFilter_AddAudioContent(contentFilter, OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO);

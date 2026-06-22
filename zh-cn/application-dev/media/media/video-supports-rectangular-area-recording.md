@@ -26,7 +26,7 @@
 
 **在CMake脚本中链接动态库**
 
-```cmake
+```CMake
 target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_display_manager.so libability_runtime.so)
 ```
 
@@ -39,7 +39,7 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 
 <!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
 
-```C++
+``` C
 #include "hilog/log.h"
 #include "napi/native_api.h"
 #include <window_manager/oh_display_info.h>
@@ -76,7 +76,7 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 
 <!-- @[screenCapture_startScreenCapture_rectangular](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```C++
+``` C++
 g_avCapture = OH_AVScreenCapture_Create();
 if (g_avCapture == nullptr) {
     OH_LOG_ERROR(LOG_APP, "create screen capture failed");
