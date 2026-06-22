@@ -302,7 +302,7 @@ struct Parent {
    @Component
    struct Child {
      @ObjectLink num: Info;
-
+   
      build() {
        Column() {
          Text(`num value: ${this.num.count}`)
@@ -316,12 +316,12 @@ struct Parent {
        .width('100%')
      }
    }
-
+   
    @Entry
    @Component
    struct Parent {
      @State num: Info = new Info(10);
-
+   
      build() {
        Column() {
          Text(`count value: ${this.num.count}`)
