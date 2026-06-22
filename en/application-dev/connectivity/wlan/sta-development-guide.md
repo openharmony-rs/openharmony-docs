@@ -44,44 +44,49 @@ The following table describes the related APIs.
 4. Enable Wi-Fi on the device.
 5. Sample code:
 
-```ts
-import { wifiManager } from '@kit.ConnectivityKit';
+   ```ts
+   import { wifiManager } from '@kit.ConnectivityKit';
 
-try {
-  let recvPowerNotifyFunc = (result: number) => {
-    let wifiState = "";
-    switch (result) {
-      case 0:
-        wifiState += 'DISABLING';
-        break;
-      case 1:
-        wifiState += 'DISABLED';
-        break;
-      case 2:
-        wifiState += 'ENABLING';
-        break;
-      case 3:
-        wifiState += 'ENABLED';
-        break;
-      default:
-        wifiState += 'UNKNOWN STATUS';
-        break;
-    }
-  }
-  // Subscribe to Wi-Fi connection state changes.
-  wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
-  // Check whether Wi-Fi is enabled.
-  let isWifiActive = wifiManager.isWifiActive();
-  if (!isWifiActive) {
-    console.info("Wi-Fi not enabled"); // Enable Wi-Fi manually.
-    return;
-  }
-
-  wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
-} catch (error) {
-  console.error(`WiFi state monitor failed. ${error.message}`);
-}
-```
+   let recvPowerNotifyFunc: (result: number) => void = (result: number) => {
+     let wifiState = "";
+     switch (result) {
+       case 0:
+         wifiState += 'DISABLED';
+         break;
+       case 1:
+         wifiState += 'ENABLED';
+         break;
+       case 2:
+         wifiState += 'ENABLING';
+         break;
+       case 3:
+         wifiState += 'DISABLING';
+         break;
+       default:
+         wifiState += 'UNKNOWN STATUS';
+         break;
+     }
+     console.info(`Wi-Fi state changed: ${wifiState}`);
+   };
+   try {
+     wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
+     let isWifiActive = wifiManager.isWifiActive();
+     if (!isWifiActive) {
+       console.info("Wi-Fi not enabled. Skipping monitor.");
+     } else {
+       console.info("Wi-Fi is enabled. Starting monitor...");
+     }
+   } catch (error) {
+     console.error(`WiFi state monitor failed: ${error.message}`);
+   } finally {
+     try {
+       wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
+       console.info("Wi-Fi monitor off: listener removed.");
+     } catch (e) {
+        console.error(`WiFi state monitor failed. ${e.message}`);
+     }
+   }
+   ```
 
 ### Establishing a Wi-Fi Connection
 1. Import the required Wi-Fi module.

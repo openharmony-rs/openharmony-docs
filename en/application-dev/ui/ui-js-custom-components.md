@@ -102,4 +102,4 @@ In this example, the parent component passes the customized attribute through **
 
 **Figure 1** Running effect
 
-![en-us_image_0000001222807816](figures/en-us_image_0000001222807816.png)
+![en-us_image_0000001222807816](figures/Custom-Components-example.png)

@@ -150,7 +150,9 @@ onDataAdded(index: number): void
 
 Invoked when data is added to the position indicated by the specified index.  
 
-> This API is deprecated since API version 8. You are advised to use [onDataAdd](#ondataadd8) instead.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 8. Use [onDataAdd](#ondataadd8) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,11 +168,11 @@ onDataMoved(from: number, to: number): void
 
 Invoked when data is moved, that is, when data is swapped between the **from** and **to** positions.
 
-> This API is deprecated since API version 8. You are advised to use [onDataMove](#ondatamove8) instead.
-
 > **NOTE**
 >
-> The ID must remain unchanged before and after data movement. If the ID changes, APIs for deleting and adding data must be called.  
+> - This API is supported since API version 7 and deprecated since API version 8. Use [onDataMove](#ondatamove8) instead.
+>
+> - The ID must remain unchanged before and after data movement. If the ID changes, APIs for deleting and adding data must be called.  
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -187,7 +189,9 @@ onDataDeleted(index: number): void
 
 Invoked when data is deleted from the position indicated by the specified index. LazyForEach will update the displayed content accordingly.  
 
-> This API is deprecated since API version 8. You are advised to use [onDataDelete](#ondatadelete8) instead.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 8. Use [onDataDelete](#ondatadelete8) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -203,7 +207,9 @@ onDataChanged(index: number): void
 
 Invoked when data in the position indicated by the specified index is changed.  
 
-> This API is deprecated since API version 8. You are advised to use [onDataChange](#ondatachange8) instead.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 8. Use [onDataChange](#ondatachange8) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -327,8 +333,8 @@ Represents an operation for adding data.
 | Name| Type                     | Read-Only| Optional| Description                |
 | ------ | ------------------------- | ---- | ---- | -------------------- |
 | type   | [DataOperationType](#dataoperationtype).ADD     | No| No  | Type of data addition.        |
-| index  | number                    | No| No  | Index at which to insert the data record. The value range is [0, data source length - 1].|
-| count  | number                    | No| Yes  | Number of data records to insert.<br>Default value: **1**.  |
+| index  | number                    | No| No  | Index at which to insert the data record. The value range is [0, data source length].|
+| count  | number                    | No| Yes  | Number of data records to insert.<br>Default value: **1**  |
 | key    | string \| Array\<string\> | No| Yes  | Keys to assign to the inserted data records. The original keys are used by default.|
 
 ### DataDeleteOperation
@@ -343,7 +349,7 @@ Represents an operation for deleting data.
 | ------ | ------------------------- | ---- | ---- | -------------------- |
 | type   | [DataOperationType](#dataoperationtype).DELETE     | No| No  | Type of data deletion.        |
 | index  | number                    | No| No  | Index at which to start deleting data. The value range is [0, data source length - 1].|
-| count  | number                    | No| Yes  | Number of data records to delete.<br>Default value: **1**.   |
+| count  | number                    | No| Yes  | Number of data records to delete.<br>Default value: **1**   |
 
 ### DataChangeOperation
 

@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:24:52.012Z pushedAt=2026-06-12T08:35:47.756Z -->
 
 The **mouseEvent** module provides mouse events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
@@ -66,7 +67,6 @@ Enumerates mouse axis types.
 | SCROLL_HORIZONTAL | 1 | Horizontal scroll axis of the mouse.|
 | PINCH             | 2 | Pinch axis of the mouse.  |
 
-
 ## AxisValue
 
 Defines the mouse axis type and axis value.
@@ -75,7 +75,7 @@ Defines the mouse axis type and axis value.
 
 | Name   | Type  | Read-Only  | Optional  | Description  |
 | ----- | ------ | ---- | ---- | ---- |
-| axis  | [Axis](#axis)   | No   | No   | Enumerates mouse axis types. |
+| axis  | [Axis](#axis)   | No   | No   | Mouse axis type. |
 | value | number | No   | No   | Mouse axis value. |
 
 ## ToolType<sup>11+</sup>
@@ -100,13 +100,13 @@ Defines the mouse event.
 | Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | action         | [Action](#action)      | No   | No   | Enumerates mouse event types.                        |
-| screenX        | number      | No   | No   | X coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be set to an integer.|
-| screenY        | number      | No   | No   | Y coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be set to an integer.|
-| windowX        | number      | No   | No   | X coordinate in the relative coordinate system with the upper-left corner of the window where the mouse is located as the origin. The value can only be set to an integer. |
-| windowY        | number      | No   | No   | Y coordinate in the relative coordinate system with the upper-left corner of the window where the mouse is located as the origin. The value can only be set to an integer. |
-| rawDeltaX      | number      | No   | No   | X coordinate offset of the current mouse event relative to the last event. The value can only be set to an integer.|
-| rawDeltaY      | number      | No   | No   | Y coordinate offset of the current mouse event relative to the last event. The value can only be set to an integer.|
-| button         | [Button](#button)      | No   | No   | Enumerates mouse buttons.                      |        
+| screenX        | number      | No    | No    | X coordinate of the mouse event in the relative coordinate system with the upper left corner of the specified screen as the origin, in px. Currently, the value can only be an integer. |
+| screenY        | number      | No    | No    | Y coordinate of the mouse event in the relative coordinate system with the upper left corner of the specified screen as the origin, in px. Currently, the value can only be an integer.  |
+| windowX        | number      | No    | No    | X coordinate in the relative coordinate system with the upper left corner of the window where the mouse is located as the origin, in px. Currently, the value can only be an integer.  |
+| windowY        | number      | No    | No    | Y coordinate in the relative coordinate system with the upper left corner of the window where the mouse is located as the origin, in px. Currently, the value can only be an integer. |
+| rawDeltaX      | number      | No    | No    | X coordinate offset of the current mouse event relative to the previous event, in px. Currently, the value can only be an integer.  |
+| rawDeltaY      | number      | No    | No    | Y coordinate offset of the current mouse event relative to the previous event, in px. Currently, the value can only be an integer.  |
+| button         | [Button](#button)      | No   | No   | Enumerates mouse buttons.                      |
 | pressedButtons | [Button](#button)[]    | No   | No   | Button being pressed.                             |
 | axes           | [AxisValue](#axisvalue)[] | No   | No   | Defines the mouse axis type and axis value.                              |
 | pressedKeys    | [KeyCode](js-apis-keycode.md#keycode)[]   | No   | No   | List of pressed keys.                           |
@@ -119,5 +119,6 @@ Defines the mouse event.
 | numLock        | boolean     | No   | No   | Whether numLock is enabled.<br>The value **true** indicates that numLock is enabled, and the value **false** indicates the opposite.                       |
 | scrollLock     | boolean     | No   | No   | Whether scrollLock is enabled.<br>The value **true** indicates that scrollLock is enabled, and the value **false** indicates the opposite.                    |
 | toolType<sup>11+</sup> | [ToolType](#tooltype11) | No   | No   | Tool type.                    |
-| globalX<sup>20+</sup> | number | No   | Yes   | X coordinate of the mouse event in the global coordinate system with the upper-left corner of the primary screen as the origin. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the X coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|
-| globalY<sup>20+</sup> | number | No   | Yes   | Y coordinate of the mouse event in the global coordinate system with the upper-left corner of the primary screen as the origin. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the Y coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|
+| globalX<sup>20+</sup> | number | No    | Yes    | X coordinate of the mouse event in the global coordinate system with the upper left corner of the primary screen as the origin, in px. When this parameter is used as an input parameter, it is mandatory and supports only integers if [MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11) is set to **true**. If **MouseEventData.useGlobalCoordinate** is set to **false**, this parameter is optional, and the X coordinate in the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. When this parameter is used as an output parameter, it is reported by the system. |
+| globalY<sup>20+</sup> | number | No    | Yes    | Y coordinate of the mouse event in the global coordinate system with the upper left corner of the primary screen as the origin, in px. When this parameter is used as an input parameter, it is mandatory and supports only integers if [MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11) is set to **true**. If **MouseEventData.useGlobalCoordinate** is set to **false**, this parameter is optional, and the Y coordinate in the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. When this parameter is used as an output parameter, it is reported by the system. |
+<!--no_check-->

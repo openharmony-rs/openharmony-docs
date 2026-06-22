@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -105,7 +105,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 7. 创建ImageSource实例。
 
-   <!-- @[decodingPixel_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+   <!-- @[decodingPixel_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
    
    ``` C++
    // 返回ErrorCode。
@@ -122,7 +122,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    napi_value GetSupportedFormats(napi_env env, napi_callback_info info)
    {
        Image_MimeType* mimeType = nullptr;
-       size_t length = 10;
+       size_t length = 0;
        Image_ErrorCode errCode = OH_ImageSourceNative_GetSupportedFormats(&mimeType, &length);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetSupportedFormats failed, "
@@ -199,7 +199,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    - 创建定义图片信息的结构体对象，并获取图片信息。
 
-     <!-- @[get_imageInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+     <!-- @[get_imageInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
      
      ``` C++
      // 创建定义图片信息的结构体对象，并获取图片信息。
@@ -215,8 +215,20 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
          
          uint32_t width;
          uint32_t height;
-         OH_ImageSourceInfo_GetWidth(g_thisImageSource->imageInfo, &width);
-         OH_ImageSourceInfo_GetHeight(g_thisImageSource->imageInfo, &height);
+         errCode = OH_ImageSourceInfo_GetWidth(g_thisImageSource->imageInfo, &width);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageSourceInfo_GetWidth failed, errCode: %{public}d.", errCode);
+             OH_ImageSourceInfo_Release(g_thisImageSource->imageInfo);
+             g_thisImageSource->imageInfo = nullptr;
+             return GetJsResult(env, errCode);
+         }
+         errCode = OH_ImageSourceInfo_GetHeight(g_thisImageSource->imageInfo, &height);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageSourceInfo_GetHeight failed, errCode: %{public}d.", errCode);
+             OH_ImageSourceInfo_Release(g_thisImageSource->imageInfo);
+             g_thisImageSource->imageInfo = nullptr;
+             return GetJsResult(env, errCode);
+         }
          OH_LOG_INFO(LOG_APP, "OH_ImageSourceNative_GetImageInfo success,"
                     "width: %{public}d, height: %{public}d.", width, height);
          OH_ImageSourceInfo_Release(g_thisImageSource->imageInfo);
@@ -227,7 +239,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    - 读取、编辑Exif信息。
 
-     <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+     <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
      
      ``` C++
      // 获取指定property的value值。
@@ -247,12 +259,16 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
          Image_String getKey;
          getKey.data = key;
          getKey.size = keySize;
-         Image_String getValue;
+         Image_String getValue = {nullptr, 0};
          OH_LOG_INFO(LOG_APP, "OH_ImageSourceNative_GetImageProperty key: %{public}s.", getKey.data);
          Image_ErrorCode errCode = OH_ImageSourceNative_GetImagePropertyWithNull(g_thisImageSource->source,
                                                                                  &getKey, &getValue);
          if (errCode != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetImageProperty failed, errCode: %{public}d.", errCode);
+             if (getValue.data != nullptr) {
+                 free(getValue.data);
+                 getValue.data = nullptr;
+             }
              return GetJsResult(env, errCode);
          }
          napi_value resultNapi = nullptr;
@@ -293,7 +309,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
          OH_LOG_INFO(LOG_APP, "ModifyImageProperty value: %{public}s.", setValue.data);
      
          Image_ErrorCode errCode = OH_ImageSourceNative_ModifyImageProperty(g_thisImageSource->source, &setKey, &setValue);
-         return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_ModifyImageProperty");
+         return GetJsResult(env, errCode);
      }
      ```
 
@@ -317,7 +333,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    - 通过图片解码参数创建Pixelmap列表。
 
-     <!-- @[create_pixelmapList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->            
+     <!-- @[create_pixelmapList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->             
      
      ``` C++
      // 通过图片解码参数创建Pixelmap列表。
@@ -325,12 +341,18 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
      {
          OH_DecodingOptions *opts = nullptr;
          OH_DecodingOptions_Create(&opts);
-         OH_PixelmapNative** resVecPixMap = new OH_PixelmapNative* [g_thisImageSource->frameCnt];
+         OH_PixelmapNative** resVecPixMap = new OH_PixelmapNative* [g_thisImageSource->frameCnt]();
          size_t outSize = g_thisImageSource->frameCnt;
          Image_ErrorCode errCode = OH_ImageSourceNative_CreatePixelmapList(g_thisImageSource->source,
                                                                            opts, resVecPixMap, outSize);
          OH_DecodingOptions_Release(opts);
          opts = nullptr;
+         for (size_t index = 0; index < outSize; index++) {
+             if (resVecPixMap[index] != nullptr) {
+                 OH_PixelmapNative_Release(resVecPixMap[index]);
+                 resVecPixMap[index] = nullptr;
+             }
+         }
          delete[] resVecPixMap;
          return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_CreatePixelmapList");
      }
@@ -338,7 +360,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    - 获取图像延迟时间列表。
 
-     <!-- @[get_delayTimeList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->       
+     <!-- @[get_delayTimeList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->        
      
      ``` C++
      // 获取图像延迟时间列表。
@@ -348,7 +370,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
          size_t size = g_thisImageSource->frameCnt;
          OH_LOG_INFO(LOG_APP, "GetDelayTimeList size: %{public}zu.", size);
          Image_ErrorCode errCode = OH_ImageSourceNative_GetDelayTimeList(g_thisImageSource->source, delayTimeList, size);
+         if (errCode == IMAGE_SUCCESS) {
+             for (size_t index = 0; index < size; index++) {
+                 OH_LOG_INFO(LOG_APP, "Frame %{public}zu delay time: %{public}d ms.", index, delayTimeList[index]);
+             }
+         }
          delete[] delayTimeList;
+         delayTimeList = nullptr;
          return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_GetDelayTimeList");
      }
      ```
@@ -368,3 +396,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
        return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_Release");
    }
    ```
+   
+ ## 进阶主题
+
+- **内存优化解码**：使用DMA内存和YUV像素格式降低内存占用、提升解码性能，参见[图片解码内存优化](image-allocator-type-c.md)。
+- **区域解码**：解码图片指定区域，适用于大图局部查看和裁剪预览场景，参见[图片区域解码与下采样](image-region-and-downsampling-c.md)。
+- **下采样解码**：解码时直接缩放目标尺寸，避免解码后缩放的性能开销，适用于缩略图生成场景，参见[图片区域解码与下采样](image-region-and-downsampling-c.md)。
+- **多图对象解码**：解码包含主图和辅助图的Picture对象，适用于HDR图片和HEIF专业格式处理，参见[使用Image_NativeModule完成多图对象解码](image-source-picture-c.md)。

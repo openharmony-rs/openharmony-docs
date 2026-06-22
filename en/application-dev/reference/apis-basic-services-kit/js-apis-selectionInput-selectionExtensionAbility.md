@@ -23,7 +23,7 @@ import { SelectionExtensionAbility } from '@kit.BasicServicesKit';
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -37,13 +37,13 @@ Called when the SelectionExtensionAbility instance is created. You can execute i
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name| Type         | Mandatory| Description                            |
 | ------ | ----------- | ---- | ------------------------------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Want information of the SelectionExtensionAbility, including the ability name and bundle name.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | Yes| Want information of the SelectionExtensionAbility, including the ability name and bundle name.|
 
 **Return value**
 | Type  | Description                                                                |
@@ -88,7 +88,7 @@ The callback is invoked only when the SelectionExtensionAbility exits gracefully
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Example**
 

@@ -1,7 +1,7 @@
 # TreeView
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -23,7 +23,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { TreeView } from "@kit.ArkUI";
 ```
 
@@ -78,7 +78,7 @@ addNode(nodeParam?: NodeParam): TreeController
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| nodeParam | [NodeParam](#nodeparam) | 否 | 节点信息。 |
+| nodeParam | [NodeParam](#nodeparam) | 否 | 节点信息，用于指定新增节点的属性。如果不传该参数，在当前选中的节点下添加一个标题为“新建文件夹”节点。 |
 
 **返回值：** 
 
@@ -276,7 +276,7 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 否 | 节点信息。 |
+| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 否 | 节点信息。传入时取消对应的节点信息的监听，否则取消该类型的所有节点信息的监听。 |
 
 ## TreeListenType
 
@@ -430,7 +430,7 @@ struct TreeViewDemo {
   }}
 ```
 
-![zh-cn_image_0000001664822257](figures/zh-cn_image_0000001664822257.png)
+![clickid](figures/clickid.png)
 
 ### 示例2（设置Symbol类型图标）
 
@@ -556,4 +556,4 @@ struct TreeViewDemo {
   }}
 ```
 
-![示例2-TreeView示例2 设置Symbol类型图标](figures/zh-cn_image_treeview_demo_02.png)
+![示例2-TreeView示例2 设置Symbol类型图标](figures/image-treeview-demo-02.png)

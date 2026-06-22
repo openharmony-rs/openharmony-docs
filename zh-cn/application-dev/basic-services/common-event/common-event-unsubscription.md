@@ -1,9 +1,8 @@
 # 取消动态订阅公共事件
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -40,7 +39,7 @@
    <!-- @[UnsubscribePublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
-   // subscriber为订阅事件时创建的订阅者对象
+   // subscriberCustom为订阅事件时创建的订阅者对象
    if (subscriberCustom !== null) {
      commonEventManager.unsubscribe(subscriberCustom, (err: BusinessError) => {
        if (err) {

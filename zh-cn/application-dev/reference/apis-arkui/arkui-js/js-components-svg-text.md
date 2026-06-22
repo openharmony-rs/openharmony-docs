@@ -80,7 +80,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001173324697](figures/zh-cn_image_0000001173324697.png)
+![text](figures/text.png)
 
 属性动画示例
 
@@ -109,7 +109,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001173324699](figures/zh-cn_image_0000001173324699.gif)
+![text01](figures/text01.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -124,7 +124,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001173164783](figures/zh-cn_image_0000001173164783.gif)
+![text](figures/text.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -143,4 +143,4 @@
 </div>
 ```
 
-![zh-cn_image_0000001127125122](figures/zh-cn_image_0000001127125122.gif)
+![text-attribute-stroke](figures/text-attribute-stroke.gif)

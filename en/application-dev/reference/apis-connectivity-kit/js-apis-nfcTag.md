@@ -15,7 +15,7 @@ The **tag** module provides APIs for operating and managing NFC tags. The follow
 >
 >1. The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >2. When calling the APIs and constants of this module, use **canIUse("SystemCapability.Communication.NFC.Tag")** to check whether the device supports NFC. If the device does not support NFC, the application stability may be affected. For details, see [NFC Tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md).
->3. If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability Development](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
+>3. If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
 
 ## **Modules to Import**
 
@@ -1351,6 +1351,8 @@ Enumerates the tag technology types.
 | MIFARE_CLASSIC               |  number | 8      | MIFARE Classic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
 | MIFARE_ULTRALIGHT            |  number | 9      | MIFARE Ultralight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.     |
 | NFC_BARCODE<sup>18+</sup>    |  number | 10     | BARCODE technology.<br>**Atomic service API**: This API can be used in atomic services since API version 18.              |
+| RTD_TEXT<sup>9+</sup>        | number[] | [0x54] | NDEF record of the text type. For details, see **NFCForum-TS-NDEF_1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| RTD_URI<sup>9+</sup>         | number[] | [0x55] | NDEF record of the URI type. For details, see **NFCForum-TS-NDEF_1.0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## TnfType<sup>9+</sup>
 Enumerates the TNF types. For details, see *NFCForum-TS-NDEF_1.0*.
@@ -1368,18 +1370,6 @@ Enumerates the TNF types. For details, see *NFCForum-TS-NDEF_1.0*.
 | TNF_EXT_APP      | 0x4    | NFC Forum external type [NFC RTD].             |
 | TNF_UNKNOWN      | 0x5    | Unknown.                                       |
 | TNF_UNCHANGED    | 0x6    | Unchanged (see section 2.3.3 in *NFCForum-TS-NDEF_1.0*).                 |
-
-## NDEF Record RTD
-Enumerates the NDEF record types. For details about the RTD, see *NFCForum-TS-NDEF_1.0*.
-
-**System capability**: SystemCapability.Communication.NFC.Tag
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-| **Name**             |**Type**| **Value**| **Description**               |
-| --------------------- | ------ | ------ | ----------------------- |
-| RTD_TEXT<sup>9+</sup> |number[]| [0x54] | NDEF record of the text type.|
-| RTD_URI<sup>9+</sup>  |number[]| [0x55] | NDEF record of the URI type. |
 
 ## NfcForumType<sup>9+</sup>
 Enumerates the NFC Forum tag types.

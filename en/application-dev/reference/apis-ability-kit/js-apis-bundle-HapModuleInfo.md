@@ -14,7 +14,7 @@ The HapModuleInfo module provides information about an HAP module. Unless otherw
 > 
 > The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) instead.
 
-## HapModuleInfo<sup>(deprecated)<sup>
+## HapModuleInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >

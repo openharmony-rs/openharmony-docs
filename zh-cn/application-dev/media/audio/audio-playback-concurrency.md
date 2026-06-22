@@ -1,8 +1,8 @@
 # 音频焦点介绍
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -32,7 +32,7 @@
 
 若音频焦点请求成功，音频流将正常启动；反之，若音频焦点请求被拒绝，音频流将无法开始播放或录制。
 
-建议应用主动通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，一旦音频焦点请求被拒绝，应用将接收到[音频焦点事件（InterruptEvent）](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)。
+建议应用主动通过监听音频焦点来[处理音频焦点变化](#处理音频焦点变化)事件，一旦音频焦点请求被拒绝，应用将接收到音频焦点事件（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）。
 
 如果应用希望只申请一次焦点，连续播放多条音频流不被中断，可使用[音频会话管理](audio-session-management.md)相关的接口进行操作。
 
@@ -80,7 +80,7 @@
 
 ### 焦点模式
 
-针对同一应用创建的多个音频流，应用可通过设置[焦点模式（InterruptMode）](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)，选择由应用自主管控，或由系统统一管理。
+针对同一应用创建的多个音频流，应用可通过设置焦点模式（[InterruptMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)），选择由应用自主管控，或由系统统一管理。
 
 系统预设了两种焦点模式：
 
@@ -102,7 +102,7 @@
 
 ### 处理音频焦点变化
 
-在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据[音频焦点策略](#音频焦点策略)进行焦点处理。若判定本音频流的焦点有变化，需要执行暂停、继续、降低音量、恢复音量等操作，则系统会自动执行一些必要的操作，并通过[音频焦点事件（InterruptEvent）](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)通知应用。
+在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据[音频焦点策略](#音频焦点策略)进行焦点处理。若判定本音频流的焦点有变化，需要执行暂停、继续、降低音量、恢复音量等操作，则系统会自动执行一些必要的操作，并通过音频焦点事件（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)）通知应用。
 
 因此，为了维持应用和系统的状态一致性，保证良好的用户体验，推荐应用监听音频焦点事件，并在焦点发生变化时，根据[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)做出必要的响应。
 

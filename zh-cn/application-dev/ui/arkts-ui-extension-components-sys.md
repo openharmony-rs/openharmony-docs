@@ -6,7 +6,7 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-UIExtension允许开发者创建可以嵌入到其他应用窗口上的界面扩展，使得应用能够提供更加丰富和灵活的用户体验。
+[UIExtension](../reference/apis-arkui/js-apis-arkui-uiExtension.md)允许开发者创建可以嵌入到其他应用窗口上的界面扩展，使得应用能够提供更加丰富和灵活的用户体验。
 
 ![uiextension-ability](figures/uiextension-ability.png)
 
@@ -53,7 +53,7 @@ UIExtension为了实现跨应用的能力共享，存在较开放的灵活性，
 
 **通用属性**
 
-当前组件可以通过属性影响其他组件或者使用方应用信息（应用上下文UIContext、应用窗口信息等）的能力，但由于跨进程的机制问题，UIExtension组件默认不支持。
+当前组件可以通过属性影响其他组件或者使用方应用信息（应用上下文[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)、[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)等）的能力，但由于跨进程的机制问题，UIExtension组件默认不支持。
 
 组件支持的属性存在跨组件场景的情况下，不支持如下能力：
 
@@ -90,15 +90,15 @@ UIExtension为了实现跨应用的能力共享，存在较开放的灵活性，
 | [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md) | 不支持   | EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成页面布局和渲染。 | 由于是一种跨应用调度的能力，UIExtension中暂不支持嵌套拉起。  |
 | [RemoteWindow](../reference/apis-arkui/arkui-ts/ts-basic-components-remotewindow-sys.md) | 不支持   | 远程控制窗口组件，可以通过此组件控制应用窗口，提供启动退出过程中控件动画和应用窗口联动动画能力。 | UIExtension中的组件已经在另一个进程中，无法影响控制宿主应用的窗口。 |
 | [RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md) | 不支持   | 富文本组件，解析并显示HTML格式文本。                         | —                                                            |
-| [FolderStack](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md) | 不支持   | 通常用于有Abc热更新（可动态替换Isolated加载的abc文件，无需通过重新安装应用的方式实现内容更新）诉求的模块化开发场景。FolderStack继承于Stack(层叠布局)控件，新增了折叠屏悬停能力，通过识别upperItems自动避让折叠屏折痕区后移到上半屏。 | 折叠屏划分组件能力，需要和宿主方窗口形成联动，从而需要在提供方内获取宿主主窗的信息，目前无法支持。 |
-| [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) | 不支持   | 可用于EGL/OpenGLES和媒体数据写入，并显示在XComponent组件。   | —                                                            |
+| [FolderStack](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md) | 不支持   | 通常用于有Abc热更新（可动态替换Isolated加载的abc文件，无需通过重新安装应用的方式实现内容更新）诉求的模块化开发场景。FolderStack继承于[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)(层叠布局)控件，新增了折叠屏悬停能力，通过识别upperItems自动避让折叠屏折痕区后移到上半屏。 | 折叠屏划分组件能力，需要和宿主方窗口形成联动，从而需要在提供方内获取宿主主窗的信息，目前无法支持。 |
+| [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) | 不支持   | 可用于[EGL/OpenGLES](../../third-party-cases/how-to-use-opengl-to-draw-3d-graphics.md)和媒体数据写入，并显示在XComponent组件。   | —                                                            |
 | [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md) | 不支持   | 提供静态卡片交互组件，用于静态卡片内部和提供方应用间的交互，当前支持router、message和call三种类型的事件。 | 卡片提供的是跨进程的组件调用能力，UIExtension中嵌套使用会导致进程关系复杂，导致功能性能方面的问题。 |
 | [HyperLink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md) | 不支持   | 超链接组件，组件宽高范围内点击实现跳转。                     | —                                                            |
 | [ContextMenu](../reference/apis-arkui/arkui-ts/ts-methods-menu.md) | 不支持   | 在页面范围内关闭通过[bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu12)属性绑定的菜单。 | —                                                            |
-| [警告弹窗](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md) | 部分支持 | 显示警告弹窗组件，可设置文本内容与响应回调。若在UIExtension中设置showInSubWindow为true, 弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
+| [警告弹窗](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md) | 部分支持 | 显示警告弹窗组件，可设置文本内容与响应回调。若在UIExtension中设置[showInSubWindow](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)为true，弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
 | [列表选择弹窗](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md) | 部分支持 | 列表弹窗。若在UIExtension中设置showInSubWindow为true, 弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
-| [自定义弹窗](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md) | 部分支持 | 通过CustomDialogController类显示自定义弹窗。使用弹窗组件时，可优先考虑自定义弹窗，便于自定义弹窗的样式与内容。若在UIExtension中设置showInSubWindow为true, 弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
-| [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) | 部分支持 | 该组件从API Version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为。 | 1、如果UIExtension未设置模态或沉浸式，Navigation无法扩展到安全区。<br/>2、无法路由到宿主方的页面中。 |
+| [自定义弹窗](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md) | 部分支持 | 通过[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)类显示自定义弹窗。使用弹窗组件时，可优先考虑自定义弹窗，便于自定义弹窗的样式与内容。若在UIExtension中设置showInSubWindow为true，弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
+| [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) | 部分支持 | 该组件从API Version 11开始默认支持安全区避让特性(默认值为：[expandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为。 | 1、如果UIExtension未设置模态或沉浸式，Navigation无法扩展到安全区。<br/>2、无法路由到宿主方的页面中。 |
 
 **Node-API接口**
 

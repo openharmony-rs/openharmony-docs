@@ -26,7 +26,7 @@ import { audio } from '@kit.AudioKit';
 
 getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the volume of a stream. This API uses an asynchronous callback to return the result.
+Obtains the volume level of a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) instead.
@@ -38,7 +38,7 @@ Obtains the volume of a stream. This API uses an asynchronous callback to return
 | Name    | Type                               | Mandatory| Description              |
 | ---------- | ----------------------------------- | ---- | ------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.      |
-| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
+| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume level obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 
 **Example**
 
@@ -58,7 +58,7 @@ audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessErr
 
 getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-Obtains the volume of a stream. This API uses a promise to return the result.
+Obtains the volume level of a stream. This API uses a promise to return the result.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) instead.
@@ -75,7 +75,7 @@ Obtains the volume of a stream. This API uses a promise to return the result.
 
 | Type                 | Description                     |
 | --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise used to return the volume of the stream. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
+| Promise&lt;number&gt; | Promise used to return the stream volume level. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 
 **Example**
 
@@ -89,7 +89,7 @@ audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: numb
 
 getVolumeSync(volumeType: AudioVolumeType): number
 
-Obtains the volume of a stream. This API returns the result synchronously.
+Obtains the volume level of a stream. This API returns the result synchronously.
 
 > **NOTE**
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) instead.
@@ -106,7 +106,7 @@ Obtains the volume of a stream. This API returns the result synchronously.
 
 | Type                 | Description                     |
 | --------------------- | ------------------------- |
-| number | Volume of the stream. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
+| number | Volume level of the stream. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolumedeprecated) and [getMaxVolume](#getmaxvolumedeprecated).|
 
 **Error codes**
 
@@ -135,7 +135,7 @@ try {
 
 getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the minimum volume allowed for a stream. This API uses an asynchronous callback to return the result.
+Obtains the minimum volume level of a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20) instead.
@@ -147,7 +147,7 @@ Obtains the minimum volume allowed for a stream. This API uses an asynchronous c
 | Name    | Type                               | Mandatory| Description              |
 | ---------- | ----------------------------------- | ---- | ------------------ |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.      |
-| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum stream volume obtained; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum stream volume level obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -167,7 +167,7 @@ audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: Business
 
 getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-Obtains the minimum volume allowed for a stream. This API uses a promise to return the result.
+Obtains the minimum volume level of a stream. This API uses a promise to return the result.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20) instead.
@@ -184,7 +184,7 @@ Obtains the minimum volume allowed for a stream. This API uses a promise to retu
 
 | Type                 | Description                     |
 | --------------------- | ------------------------- |
-| Promise&lt;number&gt; | Promise used to return the minimum volume.|
+| Promise&lt;number&gt; | Promise used to return the minimum volume level.|
 
 **Example**
 
@@ -198,7 +198,7 @@ audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: n
 
 getMinVolumeSync(volumeType: AudioVolumeType): number
 
-Obtains the minimum volume allowed for a stream. This API returns the result synchronously.
+Obtains the minimum volume level of a stream. This API returns the result synchronously.
 
 > **NOTE**
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20) instead.
@@ -215,7 +215,7 @@ Obtains the minimum volume allowed for a stream. This API returns the result syn
 
 | Type                 | Description                     |
 | --------------------- | ------------------------- |
-| number | Minimum volume.|
+| number | Minimum volume level.|
 
 **Error codes**
 
@@ -244,7 +244,7 @@ try {
 
 getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the maximum volume allowed for a stream. This API uses an asynchronous callback to return the result.
+Obtains the maximum volume level of a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20) instead.
@@ -256,7 +256,7 @@ Obtains the maximum volume allowed for a stream. This API uses an asynchronous c
 | Name    | Type                               | Mandatory| Description                  |
 | ---------- | ----------------------------------- | ---- | ---------------------- |
 | volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | Yes  | Audio volume type.          |
-| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum stream volume obtained; otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;number&gt;         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the maximum stream volume level obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -276,7 +276,7 @@ audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: Business
 
 getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 
-Obtains the maximum volume allowed for a stream. This API uses a promise to return the result.
+Obtains the maximum volume level of a stream. This API uses a promise to return the result.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20) instead.
@@ -293,7 +293,7 @@ Obtains the maximum volume allowed for a stream. This API uses a promise to retu
 
 | Type                 | Description                         |
 | --------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise used to return the maximum volume.|
+| Promise&lt;number&gt; | Promise used to return the maximum volume level.|
 
 **Example**
 
@@ -307,7 +307,7 @@ audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((value: n
 
 getMaxVolumeSync(volumeType: AudioVolumeType): number
 
-Obtains the maximum volume allowed for a stream. This API returns the result synchronously.
+Obtains the maximum volume level of a stream. This API returns the result synchronously.
 
 > **NOTE**
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20) instead.
@@ -324,7 +324,7 @@ Obtains the maximum volume allowed for a stream. This API returns the result syn
 
 | Type                 | Description                         |
 | --------------------- | ----------------------------- |
-| number | Maximum volume.|
+| number | Maximum volume level.|
 
 **Error codes**
 

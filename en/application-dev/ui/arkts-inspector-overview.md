@@ -10,7 +10,7 @@ You can use the Inspector tool in DevEco Studio to inspect page layouts. Its bid
 
 ArkUI obtains comprehensive information about all components on the currently displayed page, including the component tree's parent-child hierarchy, size, position, styles, attributes, and states. After collecting this component tree data, the Inspector generates and displays it as a visual component tree. For details about how to use DevEco Studio, see [Inspector Debugging Capability](ui-inspector-profiler.md#inspector-debugging-capability).
 
-Inspector also provides C APIs for registering and unregistering listeners for UI component layout or drawing display events. For more details, see [Listening for Component Layout and Drawing Events](ndk-inspector-component-observer.md).
+Inspector also provides C APIs for registering and unregistering listeners for UI component layout or drawing display events. For more details, see [Adding an Event Listener](ndk-add-component-events.md).
 
 ## Constraints
 
@@ -22,7 +22,7 @@ Inspector also provides C APIs for registering and unregistering listeners for U
 
 ## Querying Component Tree and Component Information Using UIContext
 
-ArkUI provides the @ohos.arkui.UIContext (UIContext) extension capability. Use [getFilteredInspectorTree](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12) to obtain the component tree and component attributes, and [getFilteredInspectorTreeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12) to obtain attributes of specified components and their child components. Querying with filter conditions is supported.
+ArkUI provides the @ohos.arkui.UIContext([UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)) extension capability. Use [getFilteredInspectorTree](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12) to obtain the component tree and component attributes, and [getFilteredInspectorTreeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12) to obtain attributes of specified components and their child components. Querying with filter conditions is supported.
 
 The following example demonstrates the basic usage of **getFilteredInspectorTree** and **getFilteredInspectorTreeById**.
 
@@ -90,7 +90,7 @@ struct ComponentPage {
 
 ## Using Layout Callbacks
 
-The [@ohos.arkui.inspector (Layout Callback)](../reference/apis-arkui/js-apis-arkui-inspector.md) module provides APIs for registering the component layout and drawing completion callbacks.
+ArkUI provides the ability to register callbacks for component layout and drawing completion notifications via [@ohos.arkui.inspector (Layout Callback)](../reference/apis-arkui/js-apis-arkui-inspector.md).
 
 The following example demonstrates the basic usage of layout callbacks.
 

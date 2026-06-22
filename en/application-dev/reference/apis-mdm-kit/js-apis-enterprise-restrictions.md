@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 This **restrictions** module provides APIs for disallowing general features of devices. You can globally disable or enable the features such as Bluetooth, HDC, USB, and Wi-Fi.
 
@@ -41,7 +41,7 @@ Disallows a feature.
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
-| feature  | string                                                  | Yes  | For features that can be set, see Table 1.<br> **NOTE**<br>Since API version 15, applications granted with the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission and [activated as device administrator applications](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) can set the following features: **bluetooth**, **hdc**, **microphone**, **usb**, **wifi**, **tethering**, and **camera**<!--RP3--><!--RP3End-->.|
+| feature  | string                                                  | Yes  | For features that can be set, see Table 1.<br> **Note**: Since API version 15, applications granted with the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission and [activated as device administrator applications](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) can use this API to set the following features: **bluetooth**, **hdc**, **microphone**, **usb**, **wifi**, **tethering**, and **camera**<!--RP3--><!--RP3End-->. Since API version 26.0.0, this API can be used to set the **mtpServer** feature.|
 | disallow | boolean                                                 | Yes  | Whether to disallow the feature. The value **true** means to disallow the feature; the value **false** means the opposite.                       |
 
 **Table 1 Supported features**
@@ -59,7 +59,7 @@ Disallows a feature.
 |inactiveUserFreeze<sup>14+</sup>|Capability of freezing inactive users. When this capability is disabled, non-**UIAbility** processes will generally not be frozen, and background tasks requested by **UIAbility** (such as transient tasks, continuous tasks, deferred tasks, or energy efficiency resources) will also not be frozen. Currently, this capability is supported only on PCs/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |camera<sup>14+</sup>|Device camera capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |mtpClient<sup>18+</sup>|Media Transfer Protocol (MTP) client capability (including read and write capabilities), currently supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices. A policy conflict occurs if this API is used to disable MTP client capability after MTP client write access has been disabled for specific users via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14).|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
-|mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|Versions earlier than API version 26.0.0: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS; API version 26.0.0 or later: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |sambaClient<sup>20+</sup>|Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. <br>Server Messages Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN), enabling access to shared file systems, printers, and other resources between devices on the same LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sambaServer<sup>20+</sup>|Samba server capability, currently supported only on PC/2-in-1 devices.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will be dimmed. Currently, this feature is supported only on phones and tablets. To completely disable the backup and restore capability, you are advised to call [applicationManager.addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync) to disable applications with this feature, such as Backup & Restore, HiSuite, and Cloud.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
@@ -78,7 +78,7 @@ Disallows a feature.
 |randomMac<sup>21+</sup>|Random MAC address capability for Wi-Fi connections. When this feature is disabled, only the device's physical MAC address can be used for Wi-Fi connections.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |unmuteDevice<sup>22+</sup>|Device audio playback capability. When this feature is disabled, media playback will be muted, while [cellular calls](../../media/audio/audio-call-overview.md) remain unaffected.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |hdcRemote<sup>22+</sup>|Capability of the device to debug other devices through HDC. Currently, this feature can be set only for PCs/2-in-1 devices. Disabling this capability prevents debugging smartphones, tablets, PCs, smart watches, and other devices via HDC.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
-|virtualService<sup>23+</sup>|Device virtualization service capability, which refers to the system capability of running other operating system platforms (such as Linux and Windows) through virtualization technology by leveraging the redundancy of the device's hardware resources. If this capability is disabled, it is recommended to uninstall all applications related to the virtualization service and prohibit their reinstallation.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|virtualService<sup>23+</sup>|Device virtualization service capability, which refers to the system capability of running other operating system platforms (such as Linux and Windows) through virtualization technology by leveraging the redundancy of the device's hardware resources. If this capability is disabled, it is advised to uninstall all applications related to the virtualization service and prohibit their reinstallation.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |usbSerial<sup>24+</sup>|Device USB-to-serial port capability. After the capability is disabled, external USB-to-serial port devices will be unavailable. A policy conflict occurs in the following scenarios:<br>1. A list of allowed USB devices has been configured via the [addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices) API.<br>2. The USB device has been disabled by calling the [setDisallowedPolicy](#restrictionssetdisallowedpolicy) API (with the **feature** parameter set to **usb**).|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 <!--RP1--><!--RP1End-->
 
@@ -131,7 +131,7 @@ Queries whether a feature is disabled.
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
-| feature | string                                                  | Yes  | For features that can be queried, see Table 2.<br> **NOTE**<br>Since API version 15, applications granted with the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission and [activated as device administrator applications](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) can obtain the following features: **bluetooth**, **hdc**, **microphone**, **usb**, **wifi**, **tethering**, and **camera**<!--RP4--><!--RP4End-->.|
+| feature | string                                                  | Yes  | For features that can be queried, see Table 2.<br> **Note**: Since API version 15, applications granted with the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission and [activated as device administrator applications](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) can use this API to obtain the status of following features: **bluetooth**, **hdc**, **microphone**, **usb**, **wifi**, **tethering**, and **camera**<!--RP4--><!--RP4End-->. Since API version 26.0.0, this API can be used to obtain the status of the **mtpServer** feature.|
 
 **Table 2** Features that can be queried
 |Feature|Description|Required Permission|
@@ -148,7 +148,7 @@ Queries whether a feature is disabled.
 |inactiveUserFreeze<sup>14+</sup>|Capability of freezing inactive users. When this capability is disabled, non-**UIAbility** processes will generally not be frozen, and background tasks requested by **UIAbility** (such as transient tasks, continuous tasks, deferred tasks, or energy efficiency resources) will also not be frozen. Currently, this capability is supported only on PCs/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |camera<sup>14+</sup>|Device camera capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |mtpClient<sup>18+</sup>|Media Transfer Protocol (MTP) client capability (including read and write capabilities), currently supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
-|mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|Versions earlier than API version 26.0.0: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS; API version 26.0.0 or later: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |sambaClient<sup>20+</sup>|Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. <br>Server Messages Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN), enabling access to shared file systems, printers, and other resources between devices on the same LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sambaServer<sup>20+</sup>|Samba server capability, currently supported only on PC/2-in-1 devices.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will be dimmed. Currently, this feature is supported only on phones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
@@ -224,6 +224,7 @@ Disallows a feature for a specified user.
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
@@ -277,6 +278,7 @@ Obtains the status of a feature for a specified user.
 
 **Parameters**
 
+<!--Table: 10%; 20%; 10%; 60%-->
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
@@ -506,6 +508,7 @@ Sets restrictions on user behaviors.
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
@@ -557,6 +560,7 @@ Obtains the disabled status of a setting item.
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
@@ -715,3 +719,259 @@ try {
   console.error(`Failed to get user restricted. Code is ${err.code}, message is ${err.message}`);
 }
 ```
+## restrictions.setDisallowedPolicy<sup>24+</sup>
+
+setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: boolean): void
+
+Enables or disables a specified device feature. Once disabled, the feature cannot be used.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
+
+**Parameters**
+
+| Name  | Type                                                   | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
+| feature  | [FeatureForDevice](#featurefordevice24)                                                  | Yes  | Device feature to be enabled or disabled.<br> **Note**: An application that has obtained the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission and has been [activated as the built-in device administrator application](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) can use this API to set the [FeatureForDevice.WIFI_P2P](#featurefordevice24) feature.|
+| disallow | boolean                                                 | Yes  | Whether to disallow the feature. The value **true** means to disallow the feature; the value **false** means the opposite.                       |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured. |
+| 9200013  | The enterprise management policy has been successfully set, but the function has not taken effect in real time. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  restrictions.setDisallowedPolicy(wantTemp, restrictions.FeatureForDevice.WIFI_P2P, true);
+  console.info('Succeeded in setting Wi-Fi P2P disabled');
+} catch (err) {
+  console.error(`Failed to set Wi-Fi P2P disabled. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## restrictions.getDisallowedPolicy<sup>24+</sup>
+
+getDisallowedPolicy(admin: Want \| null, feature: FeatureForDevice): boolean
+
+Queries whether a specified device feature is disabled.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                                   | Mandatory| Description                                                        |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
+| feature | [FeatureForDevice](#featurefordevice24)                                                  | Yes  | Device feature to be queried.|
+
+**Return value**
+
+| Type   | Description                                                        |
+| ------- | ------------------------------------------------------------ |
+| boolean | The value **true** indicates the device feature is disabled, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: boolean = restrictions.getDisallowedPolicy(wantTemp, restrictions.FeatureForDevice.WIFI_P2P);
+  console.info(`Succeeded in querying whether Wi-Fi P2P is disabled. Disabled status: ${result}`);
+} catch (err) {
+  console.error(`Failed to get Wi-Fi P2P disabled status. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## restrictions.setDisallowedPolicyForAccount
+
+setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number): void
+
+Disallows a feature for a specified user.
+
+**Since**: 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
+
+**Parameters**
+
+| Name   | Type                                                   | Mandatory| Description                                                        |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| feature   | [FeatureForAccount](#featureforaccount)                 | Yes  | User feature to be disabled or enabled.<br>If SuperHub has been added to the user's list of non-disableable applications through the [addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22) API, setting this parameter to **SUPER_HUB** will cause a policy conflict and error code 9200010 will be reported. In this case, call the [removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22) API to remove SuperHub from the user's list of non-disableable applications to resolve the conflict.|
+| disallow  | boolean                                                 | Yes  | Whether to disallow the feature. The value **true** means to disallow the feature; the value **false** means the opposite.                               |
+| accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br>You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.<br>When **feature** is set to **SUPER_HUB**, this parameter can only be set to the ID of the current user. Otherwise, error code 9200012 will be reported.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured.                       |
+| 9200012  | Parameter verification failed.                               |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Replace parameters with actual values.
+  restrictions.setDisallowedPolicyForAccount(wantTemp, restrictions.FeatureForAccount.SUPER_HUB, true, 100);
+  console.info('Succeeded in setting super hub disabled');
+} catch (err) {
+  console.error(`Failed to set super hub disabled. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## restrictions.getDisallowedPolicyForAccount
+
+getDisallowedPolicyForAccount(admin: Want | null, feature: FeatureForAccount, accountId: number): boolean
+
+Obtains the status of a feature for a specified user.
+
+**Since**: 26.0.0
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name   | Type                                                        | Mandatory| Description                                                        |
+| --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| feature   | [FeatureForAccount](#featureforaccount)                      | Yes  | User feature to be queried.|
+| accountId | number                                                       | Yes  | User ID, which must be greater than or equal to 0.<br>You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
+
+**Return value**
+
+| Type   | Description                                                        |
+| ------- | ------------------------------------------------------------ |
+| boolean | The value **true** means the feature is disabled; the value **false** means the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                               |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Replace parameters with actual values.
+  let result: boolean = restrictions.getDisallowedPolicyForAccount(wantTemp, restrictions.FeatureForAccount.SUPER_HUB, 100);
+  console.info(`Succeeded in querying whether the super hub is disabled: ${result}`);
+} catch (err) {
+  console.error(`Failed to get whether super hub is disabled. Code is ${err.code}, message is ${err.message}`);
+}
+```
+## FeatureForDevice<sup>24+</sup>
+
+Enumerates device features.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name                       | Value | Description   |
+| ----------------------------| ----| ------------------------------- |
+| WIFI_P2P   | 0   | Wi-Fi P2P (peer-to-peer connection), which allows devices to directly connect to each other without an access point. Once this feature is disallowed, devices cannot be connected through Wi-Fi P2P, affecting application functions that require direct Wi-Fi connections, such as file transfer, online gaming, and screen sharing.|
+
+## FeatureForAccount
+
+Enumerates the features that can be disabled or enabled for a specified user.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name     | Value  | Description    |
+| --------- | ---- | -------- |
+| MULTI_WINDOW | 0    | System multi-window. Currently, this feature is available only on phones and tablets. Once disabled, the system multi-window feature (split-screen, one-click split-screen, Multi-Window, and floating window) cannot be used. If the feature is currently active, the current usage remains unaffected. However, it cannot be used once closed.|
+| SUPER_HUB | 2    | SuperHub. Currently, this feature is available only on phones and tablets. Once disabled, the SuperHub feature cannot be used. If SuperHub is currently active, the current usage remains unaffected. However, it cannot be used once closed.|

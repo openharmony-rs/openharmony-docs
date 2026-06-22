@@ -36,7 +36,7 @@ beginConfig(): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400105                |  Session config locked.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+             |
 
 **示例：**
 
@@ -190,7 +190,8 @@ addInput(cameraInput: CameraInput): void
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400103                |  Session not config.<br>适用版本：11-17                                  |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+                              |
 
 **示例：**
 
@@ -231,8 +232,9 @@ removeInput(cameraInput: CameraInput): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>适用版本：11-17                 |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+            |
 
 **示例：**
 
@@ -304,8 +306,9 @@ addOutput(cameraOutput: CameraOutput): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>适用版本：11-17                 |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+            |
 
 **示例：**
 
@@ -346,8 +349,9 @@ removeOutput(cameraOutput: CameraOutput): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>适用版本：11-17                 |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+            |
 
 **示例：**
 
@@ -387,7 +391,7 @@ start(callback: AsyncCallback\<void\>): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>适用版本：12+                 |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
 
@@ -429,7 +433,7 @@ start(): Promise\<void\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>适用版本：12+                 |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
 

@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -200,7 +200,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* opt
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageReceiverOptions](capi-image-nativemodule-oh-imagereceiveroptions.md)* options| 表示OH_ImageReceiverOptions对象的指针。 |
-| int32_t capacity | 表示图片缓存容量对象的指针。 |
+| int32_t capacity | 表示图片缓存容量值。 |
 
 **返回：**
 

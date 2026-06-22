@@ -1,14 +1,19 @@
-# 系统公共事件定义(待停用)
+# 系统公共事件定义 (已废弃)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
 本文档提供系统所定义的公共事件类型的索引。
 
 公共事件类型定义在[ohos.commonEvent模块的Support枚举](../js-apis-commonEvent.md#support)中。
+
+> **说明：**
+>
+> 从API version 7 开始支持，从API version 9 开始废弃，建议使用[系统定义的公共事件](commonEventManager-definitions.md)替代。
+
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

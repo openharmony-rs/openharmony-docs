@@ -30,7 +30,7 @@ import { image } from '@kit.ImageKit';
 
 | Name            | Type          | Read Only| Optional| Description                                                        |
 | ---------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
-| supportedFormats | Array\<string> | Yes  | No  | Supported image formats, include PNG, JPEG, BMP, GIF, WEBP, DNG, HEIC<sup>12+</sup>, WBMP<sup>23+</sup>, HEIFS<sup>23+</sup>, and TIFF<sup>23+</sup>. Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20) API before calling this API to dynamically query the decoding capabilities of the current device.|
+| supportedFormats | Array\<string> | Yes  | No  | Supported image formats, including PNG, JPEG, BMP, GIF, WebP, DNG, HEIC<sup>12+</sup>, WBMP<sup>23+</sup>, HEIFS<sup>23+</sup>, and TIFF<sup>23+</sup>. Since API version 26.0.0, the AVIF format is supported. Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20) API before calling this API to dynamically query the decoding capabilities of the current device.|
 
 ## getImageInfo
 
@@ -246,7 +246,7 @@ getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey,
 
 Obtains the values of properties with the given names in this image. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF, WEBP<sup>23+</sup>, or DNG<sup>23+</sup>format and contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF, WEBP<sup>23+</sup>, or DNG<sup>23+</sup>format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -297,7 +297,7 @@ Obtains the value of a specified Exif property. This API returns the result sync
 
 >**NOTE**
 >
-> - This API applies only to images that are in JPEG, PNG, HEIF, WEBP<sup>23+</sup>, or DNG<sup>23+</sup>format and contain Exif information. (The supported formats may vary depending on the hardware.)
+> - This API applies only to images that are in JPEG, PNG, HEIF, WEBP<sup>23+</sup>, or DNG<sup>23+</sup>format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 >
 > - Exif information is metadata of the image, including shooting time, camera model, aperture, focal length, and ISO.
 >
@@ -526,7 +526,7 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetada
 
 Reads image metadata. You can use **propertyKeys** to specify the keys of metadata. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF, WEBP, or DNG format and contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF, WEBP, DNG, GIF, TIFF, HEIFS, or JFIF format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -538,6 +538,12 @@ This API applies only to images that are in JPEG, PNG, HEIF, WEBP, or DNG format
 > - **GPSVersionID**: If there is no valid GPS data, the GPS version number is cleared and **0** is returned.
 > - **GPSAltitudeRef**: If **GPSAltitude** is not set, this property is set to **0xFFFFFFFF**.
 > - **ISOSpeedRatings**: If its value is **0** or **65535**, the recommended exposure index is used first. If the recommended exposure index does not exist, the standard output sensitivity, ISO speed, and exposure index are used in sequence.
+> - Since API version 24, DNG metadata can be read. For details about the properties, see [DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24).
+> - Since API version 24, HEIFS metadata can be read. For details about the properties, see [HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23).
+> - Since API version 26.0.0, PNG metadata can be read. For details about the properties, see [PngPropertyKey](arkts-apis-image-e.md#pngpropertykey).
+> - Since API version 26.0.0, JFIF metadata can be read. For details about the properties, see [JfifPropertyKey](arkts-apis-image-e.md#jfifpropertykey).
+> - Since API version 26.0.0, TIFF metadata can be read. For details about the properties, see [TiffPropertyKey](arkts-apis-image-e.md#tiffpropertykey).
+> - Since API version 26.0.0, GIF metadata can be read. For details about the properties, see [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20).
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -648,13 +654,19 @@ readImageMetadataByType(metadataTypes?: MetadataType[], index?: number): Promise
 
 Reads the metadata of an image source. You can use **metadataTypes** to specify the metadata types. If **metadataTypes** is not specified, all supported metadata is returned. This API uses a promise to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF, WEBP, DNG, or HEIFS format. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF, WEBP, DNG, GIF, TIFF, HEIFS, or JFIF format. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
 > - **EXIF_METADATA** applies to JPEG, PNG, HEIF, WEBP, and DNG images.
 > - **HEIFS_METADATA** applies to HEIFS images.
 > - If the input **MetadataType** does not match the image format, error code **7700102** will be returned.
+> - Since API version 24, DNG metadata can be read. For details about the properties, see [DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24).
+> - Since API version 24, HEIFS metadata can be read. For details about the properties, see [HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23).
+> - Since API version 26.0.0, PNG metadata can be read. For details about the properties, see [PngPropertyKey](arkts-apis-image-e.md#pngpropertykey).
+> - Since API version 26.0.0, JFIF metadata can be read. For details about the properties, see [JfifPropertyKey](arkts-apis-image-e.md#jfifpropertykey).
+> - Since API version 26.0.0, TIFF metadata can be read. For details about the properties, see [TiffPropertyKey](arkts-apis-image-e.md#tiffpropertykey).
+> - Since API version 26.0.0, GIF metadata can be read. For details about the properties, see [GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20).
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -698,6 +710,53 @@ async function ReadImageMetadataByType(imageSource : image.ImageSource, type: im
   }).catch((error: BusinessError) => {
     console.error(`ReadImageMetadataByType failed error.code is ${error.code}, error.message is ${error.message}`);
   })
+}
+```
+
+## createImageRawData<sup>24+</sup>
+
+createImageRawData(): Promise\<ImageRawData>
+
+Obtains image raw data. This API uses a promise to return the result. Currently, only the raw data of DNG images can be obtained.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| Promise\<[ImageRawData](arkts-apis-image-i.md#imagerawdata24)> | Promise used to return the ImageRawData object, which contains the data buffer and pixel bits.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message              |
+| -------- | ---------------------- |
+| 7700101  | Bad source.  |
+| 7700102  | Unsupported MIME type. |
+
+**Example**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function createImageRawData(imageSourceObj: image.ImageSource) {
+  await imageSourceObj.createImageRawData().then((data: image.ImageRawData) => {
+    console.info(`createImageRawData success. length: ${data.buffer.byteLength}, bitPerPixel:${data.bitsPerPixel}`);
+    if (data.bitsPerPixel == 16) {
+      let array: Uint16Array = new Uint16Array();
+      let value: string = "";
+      array = new Uint16Array(data.buffer);
+      for (let i = 0; i < array.length && i < 10; i++) {
+        value += array[i] + ', ';
+      }
+      console.info(`get dng rawdata is:${value}.`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`createImageRawData failed error.code is ${error.code}, error.message is ${error.message}`);
+  });
 }
 ```
 
@@ -806,7 +865,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed. |
-| 7700301  | Failed to decode image.                                      |
+| 7700203  | Unsupported options. For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. |
+| 7700301  | Decode failed.                                               |
 
 **Example**
 
@@ -1411,6 +1471,173 @@ async function CreatePixelMapUsingAllocator(context : Context) {
 }
 ```
 
+## createThumbnail
+
+createThumbnail(options?: DecodingOptionsForThumbnail): Promise\<PixelMap \| undefined>
+
+Creates a thumbnail PixelMap object based on image decoding options. This API uses a promise to return the result.
+
+Currently, thumbnail PixelMap objects can be created for JPEG and HEIF images.
+
+Thumbnails contained in image files are decoded preferentially. If an image file does not contain a thumbnail, the original image is decoded.
+
+> **NOTE**
+>
+> - Concurrent calls to this API on the same ImageSource instance are not supported.
+> - Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly.
+> - Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Parameters**
+
+| Name | Type                                                        | Mandatory| Description      |
+| ------- | ------------------------------------------------------------ | ---- | ---------- |
+| options | [DecodingOptionsForThumbnail](arkts-apis-image-i.md#decodingoptionsforthumbnail) | No  | Decoding options, which control whether to generate a thumbnail and the target dimensions of the thumbnail.<br>Default behavior:<br>- If the image has a thumbnail, the original thumbnail is decoded, and the width and height of the returned PixelMap object are the same as those of the original thumbnail.<br>- If the original image does not have a thumbnail, the image is decoded and a thumbnail is generated through downsampling based on the decoding options. The width and height of the generated thumbnail PixelMap object are limited to 512 pixels.|
+
+**Return value**
+
+| Type                                                        | Description                       |
+| ------------------------------------------------------------ | --------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise used to return the PixelMap object.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message                                      |
+| -------- | ---------------------------------------------- |
+| 7700102  | Unsupported mimetype.                          |
+| 7700103  | Image too large.                               |
+| 7700204  | Invalid parameter, e.g, invalid generate size. |
+| 7700301  | Decode failed.                                 |
+| 7700303  | Image does not carry thumbnail data.           |
+| 7700305  | Thumbnail generation failed.                   |
+
+**Example**
+
+```ts
+async function CreateThumbnail(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
+  try {
+    if (!imageSource) {
+      console.error('CreateThumbnail: imageSource is null or undefined');
+      return undefined;
+    }
+    const imageInfo = await imageSource.getImageInfo();
+    const supportedMimeTypes = ['image/jpeg', 'image/heif', 'image/heic'];
+    if (!supportedMimeTypes.includes(imageInfo.mimeType)) {
+      console.error(`CreateThumbnail: Unsupported MIME type: ${imageInfo.mimeType}`);
+      return undefined;
+    }
+
+    const decodingOptions: image.DecodingOptionsForThumbnail = {
+      generateThumbnailIfAbsent: true,
+      maxGeneratedPixelDimension: 200,
+    };
+
+    const pixelmap = await imageSource.createThumbnail(decodingOptions);
+    if (pixelmap) {
+      console.info('Succeeded in creating thumbnail pixelMap object.');
+      return pixelmap;
+    } else {
+      console.error('Failed to create thumbnail pixelMap.');
+      return undefined;
+    }
+  } catch (error) {
+    console.error('CreateThumbnail error:', JSON.stringify(error));
+    return undefined;
+  }
+}
+```
+
+## createThumbnailSync
+
+createThumbnailSync(options?: DecodingOptionsForThumbnail): PixelMap \| undefined
+
+Creates a thumbnail synchronously based on image decoding options. This API returns a [PixelMap](arkts-apis-image-PixelMap.md) object.
+
+Currently, thumbnail PixelMap objects can be created for JPEG and HEIF images.
+
+Thumbnails contained in image files are decoded preferentially. If an image file does not contain a thumbnail, the original image is decoded.
+
+> **NOTE**
+>
+> - Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly.
+> - Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+> - This API operates synchronously and will block the current thread during execution. It should not be invoked from the main thread, as doing so can lead to application lag, frame drops, or delayed responsiveness. For details, see [Overview of Concurrency in Time-Consuming Tasks](../../arkts-utils/time-consuming-task-overview.md).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Parameters**
+
+| Name | Type                                                        | Mandatory| Description      |
+| ------- | ------------------------------------------------------------ | ---- | ---------- |
+| options | [DecodingOptionsForThumbnail](arkts-apis-image-i.md#decodingoptionsforthumbnail) | No  | Decoding options, which control whether to generate a thumbnail and the target dimensions of the thumbnail.<br>Default behavior:<br>- If the image has a thumbnail, the original thumbnail is decoded, and the width and height of the returned PixelMap object are the same as those of the original thumbnail.<br>- If the original image does not have a thumbnail, the image is decoded and a thumbnail is generated through downsampling based on the decoding options. The width and height of the generated thumbnail PixelMap object are limited to 512 pixels.|
+
+**Return value**
+
+| Type                                                 | Description                  |
+| ----------------------------------------------------- | ---------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | PixelMap object.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID| Error Message                                      |
+| -------- | ---------------------------------------------- |
+| 7700102  | Unsupported mimetype.                          |
+| 7700103  | Image too large.                               |
+| 7700204  | Invalid parameter, e.g, invalid generate size. |
+| 7700301  | Decode failed.                                 |
+| 7700303  | Image does not carry thumbnail data.           |
+| 7700305  | Thumbnail generation failed.                   |
+
+**Example**
+
+```ts
+async function CreateThumbnailSync(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
+  try {
+    if (!imageSource) {
+      console.error('CreateThumbnailSync: imageSource is null or undefined');
+      return undefined;
+    }
+    const imageInfo = await imageSource.getImageInfo();
+    const supportedMimeTypes = ['image/jpeg', 'image/heif', 'image/heic'];
+    if (!supportedMimeTypes.includes(imageInfo.mimeType)) {
+      console.error(`CreateThumbnailSync: Unsupported MIME type: ${imageInfo.mimeType}`);
+      return undefined;
+    }
+
+    const decodingOptionsForThumbnail: image.DecodingOptionsForThumbnail = {
+      generateThumbnailIfAbsent: true,
+      maxGeneratedPixelDimension: 200,
+    };
+
+    const pixelmap = imageSource.createThumbnailSync(decodingOptionsForThumbnail);
+
+    if (pixelmap) {
+      console.info('Succeeded in creating thumbnail pixelMap object.');
+      return pixelmap;
+    } else {
+      console.error('Failed to create thumbnail pixelMap.');
+      return undefined;
+    }
+  } catch (error) {
+    console.error('CreateThumbnailSync error:', JSON.stringify(error));
+    return undefined;
+  }
+}
+```
+
 ## getDelayTimeList<sup>10+</sup>
 
 getDelayTimeList(callback: AsyncCallback<Array\<number>>): void
@@ -1898,4 +2125,3 @@ async function ModifyImageProperty(imageSourceObj : image.ImageSource) {
   })
 }
 ```
-<!--no_check-->

@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 HAR（Harmony Archive）是静态共享包，可以包含代码、C++库、资源和配置文件。通过HAR可以实现多个模块或多个工程共享ArkUI组件、资源等相关代码。
 
@@ -363,7 +363,7 @@ struct Index {
 
 ### 混淆配置
 
-HAR可以作为二方库和三方库提供给其他应用使用，如果需要对代码资产进行保护，建议[开启混淆](../arkts-utils/source-obfuscation-guide.md#开启源码混淆)。
+HAR可以作为二方库和三方库提供给其他应用使用，如果需要对代码资产进行保护，建议按照[HAR包混淆建议](../arkts-utils/source-obfuscation-practice.md#har包混淆建议)来进行源码混淆。
 
 [混淆能力](../arkts-utils/source-obfuscation.md)开启后，DevEco Studio在构建HAR时，会对代码进行编译、混淆及压缩处理，保护代码资产。
 

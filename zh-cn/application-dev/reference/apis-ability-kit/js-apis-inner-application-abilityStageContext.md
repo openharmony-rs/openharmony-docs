@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AbilityStageContext是AbilityStage的上下文环境，继承自[Context](js-apis-inner-application-context.md)。
 

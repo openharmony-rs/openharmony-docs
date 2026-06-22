@@ -1,8 +1,8 @@
 # @ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility)(系统接口)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -26,7 +26,7 @@ import { StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**系统API**：该接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 | 名称    | 类型                                                         | 只读 | 可选 | 说明     |
 | ------- | ------------------------------------------------------------ | ---- | ---- | -------- |

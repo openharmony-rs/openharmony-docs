@@ -104,3 +104,23 @@ Sets whether to enable offline caching during video playback.
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
 | enable | boolean | Yes  | Whether to enable offline caching during video playback. **true** to enable, **false** otherwise.|
+
+## getID
+
+getID(): string
+
+Obtains the ID of a media source.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**Return value**
+
+| Type                           | Description                                                        |
+| ------------------------------- | ------------------------------------------------------------ |
+| string | ID of the media source. If the operation fails, an empty string is returned.|

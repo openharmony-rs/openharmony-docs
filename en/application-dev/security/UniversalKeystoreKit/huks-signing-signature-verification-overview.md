@@ -20,7 +20,7 @@ The key management service specifications include mandatory specifications and o
 **You are advised to use mandatory specifications in your development for compatibility purposes.**
 <!--DelEnd-->
 
-**Specifications****<!--RP3--> for standard devices<!--RP3End-->**
+**Specifications<!--RP3--> for standard devices<!--RP3End-->**
 
 | Algorithm/MD Algorithm/Padding Mode| Description| API Version| <!--DelCol4-->Mandatory|
 | -------- | -------- | -------- | -------- |
@@ -37,7 +37,7 @@ The key management service specifications include mandatory specifications and o
 | SM2/SM3 | The signature is in the ASN1 format.| 9+ | Yes|
 | SM2/NoDigest | The signature is in the ASN1 format.<br>**TAG HuksKeyDigest.HUKS_DIGEST_NONE** must be specified with **NoDigest**. The service side hashes the plaintext using SM3 and passes in the hashed data. The length of the hashed data must meet the MD algorithm specifications supported by SM2 signing and signature verification.| 22+ | Yes|
 
-**Specifications****<!--RP4--> for mini-system devices<!--RP4End-->**
+**Specifications<!--RP4--> for mini-system devices<!--RP4End-->**
 
 <!--Del-->
 Before implementing the specifications for mini-system devices, determine whether your device supports the related specifications.

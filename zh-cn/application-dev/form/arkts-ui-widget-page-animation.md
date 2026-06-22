@@ -1,9 +1,9 @@
 # ArkTS卡片为组件添加动效
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 ArkTS卡片开放了使用动画效果的能力，支持[显式动画](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)、[属性动画](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)、[组件内转场](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)能力。ArkTS卡片使用动画效果时具有以下限制：
@@ -12,7 +12,7 @@ ArkTS卡片开放了使用动画效果的能力，支持[显式动画](../refere
 
 | 名称 | 参数说明 | 限制描述 |
 | -------- | -------- | -------- |
-| duration | 动画播放时长 | 最长动效播放时长为2000毫秒，当设置大于2000毫秒时，动效时长仍为2000毫秒。<br/>**说明：** <br/>在26.0.0之前的版本，最长动效播放时长为1000毫秒。 |
+| duration | 动画播放时长 | 最长动效播放时长为2000毫秒，当设置大于2000毫秒时，动效时长仍为2000毫秒。<br/>**说明：** <br/>在API版本26.0.0之前，最长动效播放时长为1000毫秒。 |
 | tempo | 动画播放速度 | 卡片中禁止设置此参数，使用默认值1。 |
 | delay | 动画延迟执行的时长 | 卡片中禁止设置此参数，使用默认值0毫秒。 |
 | iterations | 动画播放次数 | 卡片中禁止设置此参数，使用默认值1次。 |

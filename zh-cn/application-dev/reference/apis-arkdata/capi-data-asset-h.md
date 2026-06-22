@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
@@ -232,7 +232,7 @@ int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 | 参数项 | 描述 |
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | 表示指向[Data_Asset](capi-rdb-data-asset.md)实例的指针。 |
-| size_t size | 表示要设置的占用空间的大小。 |
+| size_t size | 表示要设置的占用空间的大小（单位为字节（Byte），取值为非负整数）。 |
 
 **返回：**
 

@@ -1,8 +1,8 @@
 # Custom Component Node (FrameNode)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ For third-party frameworks with custom frontend definitions, such as those in JS
 
 ![en-us_image_frame-node01](figures/frame-node01.png)
 
-The aforementioned conversion process, which relies on additional data-driven bindings to the [Builder](../ui/state-management/arkts-builder.md), is complex and can be performance-intensive. Such frameworks typically leverage ArkUI's layout and event handling, as well as basic node operations and customization capabilities. While most components are customized, some built-in components are needed for mixed display. This is where [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md) comes into the picture. In the example shown below, while the custom method of **FrameNode** is used for drawing, a built-in component **Column** and its child component **Text** are mounted to the root FrameNode through **BuilderNode**, thereby achieving mixed display.
+The aforementioned conversion process, which relies on additional data-driven bindings to the [Builder](../ui/state-management/arkts-builder.md), is complex and can be performance-intensive. Such frameworks typically leverage ArkUI's layout and event handling, as well as basic node operations and customization capabilities. Most components are implemented through customization, but some system components need to be used in combination to achieve hybrid display. For example, the figure below uses both the custom drawing method of **FrameNode** and the system components [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md) and its child [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md), which are mounted onto the root node's FrameNode via [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md) for hybrid rendering.
 
 ![en-us_image_frame-node02](figures/frame-node02.png)
 
@@ -198,8 +198,7 @@ class MyNodeController extends NodeController {
         hilog.info(0x0000, `${TEST_TAG} appendChild success`, 'success');
       }
     } catch (err) {
-      console.error(TEST_TAG + ' appendChild fail : ' + (err as BusinessError).code + ' : ' +
-      (err as BusinessError).message);
+      console.error(`${TEST_TAG} appendChild fail : ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
     }
   }
 }
@@ -216,8 +215,10 @@ struct Index {
       List({ space: 20, initialIndex: 0 }) {
         ListItem() {
           Column({ space: 5 }) {
-            /* Replace $r('app.string.Verify_The_Child_Node_Function_Of_FrameNode') with the actual resource file.
-               In this example, the value in the resource file is "Verify the addition, deletion, and modification of FrameNode child nodes." */
+            /**
+             * Replace $r('app.string.Verify_The_Child_Node_Function_Of_FrameNode') with the actual resource file.
+             * In this example, the value in the resource file is "Verify the addition, deletion, and modification of FrameNode child nodes."
+             */
             Text($r('app.string.Verify_The_Child_Node_Function_Of_FrameNode'))
             // Replace $r('app.string.Operate_On_Custom_FrameNode') with the actual resource file. In this example, the value in the resource file is "Perform operations on the custom FrameNode."
             Button($r('app.string.Operate_On_Custom_FrameNode'))
@@ -227,8 +228,10 @@ struct Index {
                 // Add, delete, and modify FrameNode child nodes, which is properly implemented.
                 this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.frameNode);
               })
-            /* Replace $r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode') with the actual resource file.
-               In this example, the value in the resource file is "Perform operations on the proxy nodes in BuilderNode." */
+            /**
+             * Replace $r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode') with the actual resource file.
+             * In this example, the value in the resource file is "Perform operations on the proxy nodes in BuilderNode."
+             */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode'))
               .fontSize(16)
               .width(400)
@@ -237,8 +240,10 @@ struct Index {
                 this.myNodeController.operationFrameNodeWithFrameNode
                 (this.myNodeController?.buttonNode?.getFrameNode());
               })
-            /* Replace $r('app.string.Operate_On_Proxy_Nodes_In_System_Components') with the actual resource file.
-               In this example, the value in the resource file is "Perform operations on the proxy nodes in the system components." */
+            /**
+             * Replace $r('app.string.Operate_On_Proxy_Nodes_In_System_Components') with the actual resource file.
+             * In this example, the value in the resource file is "Perform operations on the proxy nodes in the system components."
+             */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_System_Components'))
               .fontSize(16)
               .width(400)
@@ -251,8 +256,10 @@ struct Index {
 
         ListItem() {
           Column({ space: 5 }) {
-            /* Replace $r('app.string.Verify_Special_Scenarios_Of_FrameNode_Adding_Child_Nodes') with the actual resource file.
-               In this example, the value in the resource file is "Verify the special scenario where a child node is added to FrameNode." */
+            /**
+             * Replace $r('app.string.Verify_Special_Scenarios_Of_FrameNode_Adding_Child_Nodes') with the actual resource file.
+             * In this example, the value in the resource file is "Verify the special scenario where a child node is added to FrameNode."
+             */
             Text($r('app.string.Verify_Special_Scenarios_Of_FrameNode_Adding_Child_Nodes'))
             // Replace $r('app.string.Add_Proxy_Nodes_Of_BuilderNode') with the actual resource file. In this example, the value in the resource file is "Add proxy nodes of BuilderNode."
             Button($r('app.string.Add_Proxy_Nodes_Of_BuilderNode'))
@@ -263,7 +270,7 @@ struct Index {
                 buttonNode.build(wrapBuilder<[Params]>(buttonBuilder), { text: 'BUTTON' })
                 this.myNodeController.checkAppendChild(this.myNodeController?.frameNode, buttonNode?.getFrameNode());
               })
-            //Replace $r('app.string.Add_Proxy_Nodes_Of_System_Components') with the actual resource file. In this example, the value in the resource file is "Add proxy nodes of system components."
+            // Replace $r('app.string.Add_Proxy_Nodes_Of_System_Components') with the actual resource file. In this example, the value in the resource file is "Add proxy nodes of system components."
             Button($r('app.string.Add_Proxy_Nodes_Of_System_Components'))
               .fontSize(16)
               .width(400)
@@ -298,8 +305,10 @@ struct Index {
                   this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.frameNode);
                 }, 2000)
               })
-            /* Replace $r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode_Again') with the actual resource file.
-               In this example, the value in the resource file is "Perform operations on the proxy nodes in BuilderNode." */
+            /**
+             * Replace $r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode_Again') with the actual resource file.
+             * In this example, the value in the resource file is "Perform operations on the proxy nodes in BuilderNode."
+             */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_BuilderNode_Again'))
               .fontSize(16)
               .width(400)
@@ -308,8 +317,10 @@ struct Index {
                 this.result =
                   this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.buttonNode?.getFrameNode());
               })
-            /* Replace $r('app.string.Operate_On_Proxy_Nodes_In_System_Components_Again') with the actual resource file.
-               In this example, the value in the resource file is "Perform operations on the proxy nodes in the system components." */
+            /**
+             * Replace $r('app.string.Operate_On_Proxy_Nodes_In_System_Components_Again') with the actual resource file.
+             * In this example, the value in the resource file is "Perform operations on the proxy nodes in the system components."
+             */
             Button($r('app.string.Operate_On_Proxy_Nodes_In_System_Components_Again'))
               .fontSize(16)
               .width(400)
@@ -641,7 +652,6 @@ Use [setNeedsLayout](../reference/apis-arkui/js-apis-arkui-frameNode.md#setneeds
 <!-- @[frameNodeDraw_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeDraw.ets) --> 
 
 ``` TypeScript
-
 import { DrawContext, FrameNode, NodeController, Position, Size, UIContext, LayoutConstraint } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -685,7 +695,7 @@ class MyFrameNode extends FrameNode {
   // Override the layout measurement method.
   onMeasure(constraint: LayoutConstraint): void {
     let sizeRes: Size = { width: this.uiContext.vp2px(100), height: this.uiContext.vp2px(100) };
-    
+
     // Iterate through all child nodes to calculate the total size.
     for (let i = 0; i < this.getChildrenCount(); i++) {
       let child = this.getChild(i);
@@ -775,7 +785,7 @@ struct Index {
             this.nodeController?.rootNode?.addWidth();
             this.nodeController?.rootNode?.invalidate();
           })
-        
+
         // Trigger layout update.
         Button('UpdateLayout')
           .onClick(() => {
@@ -949,7 +959,7 @@ struct Index {
 ```
 ## Creating a FrameNode of a Specific Type Using typeNode
 
-By creating a FrameNode of a specific type using **typeNode**, you can obtain user-set attribute information through attribute obtaining APIs.
+When creating a FrameNode of a specific type using [typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12), you can retrieve the attribute information set by the user through the attribute retrieval API.
 
 <!-- @[frameNodeTypeNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTypeNode.ets) --> 
 
@@ -1276,7 +1286,7 @@ To disassociate the current **FrameNode** object from the entity FrameNode, call
 
 > **NOTE**
 >
-> After the **dispose** API is called, the **FrameNode** object no longer corresponds to any actual FrameNode. In this case, any attempt to call the following APIs will result in a [JS crash](../ui/arkts-stability-guide.md#javascript-crash-jscrash) in the application: **getMeasuredSize**, **getLayoutPosition**, **getUserConfigBorderWidth**, **getUserConfigPadding**, **getUserConfigMargin**, **getUserConfigSize**.
+> After the **dispose** API is called, the **FrameNode** object no longer corresponds to any actual FrameNode. At this point, attempting to call the following query APIs will cause the application to trigger a [JavaScript crash](../ui/arkts-stability-guide.md#javascript-crash-jscrash): [getMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12), [getLayoutPosition](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlayoutposition12), [getUserConfigBorderWidth](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigborderwidth12), [getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12), [getUserConfigMargin](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigmargin12), and [getUserConfigSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigsize12).
 >
 > To check whether the current **FrameNode** object corresponds to an entity FrameNode, you can use [getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12) API. A **UniqueId** value greater than 0 indicates that the object is associated with an entity FrameNode.
 
@@ -1301,11 +1311,11 @@ struct TestComponent {
   }
 
   aboutToAppear() {
-    console.error(TEST_TAG + ' aboutToAppear');
+    console.info(`${TEST_TAG} aboutToAppear`);
   }
 
   aboutToDisappear() {
-    console.error(TEST_TAG + ' aboutToDisappear');
+    console.info(`${TEST_TAG} aboutToDisappear`);
   }
 }
 
@@ -1460,7 +1470,7 @@ struct Index {
 ```
 ## Using the Lazy Loading Capability of FrameNode
 
-To implement lazy loading for custom nodes, you can use the [NodeAdapter](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) object, the counterpart of **LazyForEach** on ArkTS.
+The [NodeAdapter](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) object is provided to replace the [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md) function on the ArkTS side. It supports data lazy loading for custom nodes, enabling on-demand data iteration.
 
 > **NOTE**
 >
@@ -1765,8 +1775,7 @@ class BasicDataSource implements IDataSource {
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-      // Method 2: listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // Method 2: listener.onDatasetChange([{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     })
   }
 
@@ -1974,7 +1983,6 @@ Use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis
 <!-- @[frameNodeCanvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCanvas.ets) --> 
 
 ``` TypeScript
-
 import { NodeController, UIContext, DrawContext, FrameNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -2114,7 +2122,6 @@ struct Index {
 Starting from API version 21, you can use the [invalidateAttributes](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidateattributes21) API of FrameNode to force node updates within the current frame, avoiding flickering during component switching.
 
 ```ts
- //index.ets
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
 
 // Implement a custom NodeAdapter controller by extending NodeController.
@@ -2214,7 +2221,6 @@ struct ListNodeTest {
 Starting from API version 23, you can use the [isInRenderState](../reference/apis-arkui/js-apis-arkui-frameNode.md#isinrenderstate23) API of FrameNode to check whether a FrameNode is in render state.
 
 ```ts
- //index.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -2232,9 +2238,9 @@ struct Index {
     }
     let isOnRenderTree = buttonNode!.isInRenderState();
     if (isOnRenderTree) {
-      hilog.info(1,'frameNode', 'is on render tree');
+      hilog.info(1, 'frameNode', 'is on render tree');
     } else {
-      hilog.info(1,'frameNode', 'is not no render tree');
+      hilog.info(1, 'frameNode', 'is not no render tree');
     }
   }
 
@@ -2263,13 +2269,13 @@ struct Index {
         let textNode8 = this.getUIContext().getFrameNodeById("hello8");
         if (textNode8 != null) {
           let isOnRenderTree = textNode8!.isInRenderState();
-          hilog.info(1,'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
+          hilog.info(1, 'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
         }
         let textNode1 = this.getUIContext().getFrameNodeById("hello1");
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
           isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
-          hilog.info(1,'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
+          hilog.info(1, 'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })
     }

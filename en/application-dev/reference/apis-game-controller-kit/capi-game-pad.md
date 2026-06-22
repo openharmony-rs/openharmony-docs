@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines APIs for game controllers.
+Defines APIs for gamepads.
 
 **File to include**: <GameControllerKit/game_pad.h>
 

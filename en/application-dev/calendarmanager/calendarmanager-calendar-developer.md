@@ -3,9 +3,10 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @huangxinwei-->
+<!--Designer: @windsky6-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:37:24.878Z pushedAt=2026-06-17T07:25:45.354Z -->
 
 Calendar is used to store and manage personal or team events. Users can easily view, edit, and share event information on the calendar.
 
@@ -28,13 +29,12 @@ The table below lists the main APIs used for calendar management. For details ab
 | setConfig(config: CalendarConfig): Promise\<void>           | Sets the calendar configuration information. This API uses a promise to return the result.                     |
 | getAccount(): CalendarAccount                               | Obtains the calendar account information.                                          |
 
-
 ## How to Develop
 
 1. Import dependencies.
 
-	<!-- @[calendarData_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
-    
+    <!-- @[calendarData_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
     ``` TypeScript
     import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -47,8 +47,8 @@ The table below lists the main APIs used for calendar management. For details ab
 
 3. Obtain the **calendarMgr** object based on the context to manage calendars. You are advised to perform managements in the **EntryAbility.ets** file.
 
-	<!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
-    
+    <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
     ``` TypeScript
     const DOMAIN = 0x0000;
     
@@ -58,16 +58,16 @@ The table below lists the main APIs used for calendar management. For details ab
     
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onCreate");
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
       }
     
       onDestroy(): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onDestroy");
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
       }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {
-        // Main window is created, set main page for this ability
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onWindowStageCreate");
+        // The main window has been created. Set the main page for this ability.
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
             hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
@@ -87,65 +87,63 @@ The table below lists the main APIs used for calendar management. For details ab
       }
     
       onWindowStageDestroy(): void {
-        // Main window is destroyed, release UI related resources
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onWindowStageDestroy");
+        // The main window has been destroyed. Release UI-related resources.
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
       }
     
       onForeground(): void {
-        // Ability has brought to foreground
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onForeground");
+        // The ability enters the foreground.
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
       }
     
       onBackground(): void {
-        // Ability has back to background
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onBackground");
+        // The ability enters the background.
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
       }
     }
     ```
 
 4. Create a **Calendar** object based on the calendar account information.
 
-   Query the account information and create a calendar when an exception indicating that the calendar does not exist is thrown. Otherwise, the calendar may be created repeatedly.
+   Before creating a calendar account, query the account information first. If the account does not exist, an exception is thrown. Create the calendar account after catching the exception. Otherwise, duplicate accounts may be created.
 
-	<!-- @[calendarData_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[calendarData_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
     import { calendarMgr } from '../entryability/EntryAbility';
     import { calendarManager } from '@kit.CalendarKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    
-    const DOMAIN = 0x0000;
     
     let calendar: calendarManager.Calendar | undefined = undefined;
     // Specify the calendar account information.
     const calendarAccount: calendarManager.CalendarAccount = {
-      // Calendar name.
+      // Calendar account name.
       name: 'MyCalendar',
-      // Calendar type.
+      // Calendar account type.
       type: calendarManager.CalendarType.LOCAL,
-      // Display name of the calendar. If this field is left blank, the created calendar is displayed as an empty string on the UI.
+      // Display name of the calendar account. If this field is left blank, the created calendar account is displayed as an empty string on the UI.
       displayName: 'MyCalendar'
     };
     ```
+
     <!-- @[calendarData_createAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-    
+
     ``` TypeScript
-    // Create a calendar.
+    // Create a calendar account.
     calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
-      hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in creating calendar data->${JSON.stringify(data)}`);
+      console.info('%{public}s', `Succeeded in creating calendar data->${JSON.stringify(data)}`);
       calendar = data;
       // Ensure that the calendar account is created before performing subsequent operations.
       // ...
     }).catch((error: BusinessError) => {
-      hilog.error(DOMAIN, 'testTag', `Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+      console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
     });
     ```
 
 5. After a calendar account is created, its color is black by default. If no color is specified, the display effect of the calendar account in dark mode may be poor on some versions or devices. You need to call **setConfig()** to set calendar configuration information, including event reminder and calendar color.
 
-	<!-- @[calendarData_setConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[calendarData_setConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     const calendarAccounts: calendarManager.CalendarAccount = {
       name: 'MyCalendar',
@@ -156,7 +154,7 @@ The table below lists the main APIs used for calendar management. For details ab
     calendarMgr?.getCalendar(calendarAccounts, (err, data) => {
       // Obtain the calendar account.
       if (err) {
-        hilog.error(DOMAIN, 'testTag', `Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
+        console.error(`Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
       } else {
         const config: calendarManager.CalendarConfig = {
           // Enable the event reminder.
@@ -166,69 +164,68 @@ The table below lists the main APIs used for calendar management. For details ab
         };
         // Set the calendar configuration information.
         data.setConfig(config).then(() => {
-          hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in setting config, data->${JSON.stringify(config)}`);
+          console.info('%{public}s', `Succeeded in setting config, data->${JSON.stringify(config)}`);
         }).catch((err: BusinessError) => {
-          hilog.error(DOMAIN, 'testTag', `Failed to set config. Code: ${err.code}, message: ${err.message}`);
+          console.error(`Failed to set config. Code: ${err.code}, message: ${err.message}`);
         })
       }
     });
     ```
 
-
 6. Query a specified calendar.
 
-	<!-- @[calendarData_getAccountByParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[calendarData_getAccountByParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     calendarMgr?.getCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
-      hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
+      console.info('%{public}s', `Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN, 'testTag', `Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
     });
     ```
 
 7. Query a default calendar. The default **Calendar** object is created when the data storage runs for the first time. You can use the default calendar for a new event.
 
-	<!-- @[calendarData_getDefaultAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-    
+    <!-- @[calendarData_getDefaultAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
-      hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
+      console.info('%{public}s', `Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN, 'testTag', `Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
     });
     ```
 
 8. Obtain the created and default **Calendar** objects of the current application.
 
    Due to data privacy and security concerns, applications with restricted permissions cannot obtain account information created by other applications.
-   
-   <!-- @[calendarData_getAllCalendars](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
-     hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in getting all calendars, data -> ${JSON.stringify(data)}`);
-     data.forEach((calendar) => {
-       const account = calendar.getAccount();
-       hilog.info(DOMAIN, 'testTag', '%{public}s', `account -> ${JSON.stringify(account)}`);
-     })
-   }).catch((err: BusinessError) => {
-     hilog.error(DOMAIN, 'testTag', `Failed to get all calendars. Code: ${err.code}, message: ${err.message}`);
-   });
-   ```
+
+    <!-- @[calendarData_getAllCalendars](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
+      console.info('%{public}s', `Succeeded in getting all calendars, data -> ${JSON.stringify(data)}`);
+      data.forEach((calendar) => {
+        const account = calendar.getAccount();
+        console.info('%{public}s', `account -> ${JSON.stringify(account)}`);
+      })
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to get all calendars. Code: ${err.code}, message: ${err.message}`);
+    });
+    ```
 
 9. Delete the specified calendar, whose subordinate events are also deleted.
 
-	 <!-- @[calendarData_deleteCalendar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-     
-     ``` TypeScript
-     if (!calendar || calendar === null) {
-       hilog.error(DOMAIN, 'testTag', 'Failed to delete calendar. calendar is null');
-       return;
-     }
-     calendarMgr?.deleteCalendar(calendar).then(() => {
-       hilog.info(DOMAIN, 'testTag', '%{public}s', "Succeeded in deleting calendar");
-     }).catch((err: BusinessError) => {
-       hilog.error(DOMAIN, 'testTag', `Failed to delete calendar. Code: ${err.code}, message: ${err.message}`);
-     });
-     ```
+    <!-- @[calendarData_deleteCalendar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+
+    ``` TypeScript
+    if (!calendar || calendar === null) {
+      console.error('Failed to delete calendar. calendar is null');
+      return;
+    }
+    calendarMgr?.deleteCalendar(calendar).then(() => {
+      console.info('%{public}s', 'Succeeded in deleting calendar');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to delete calendar. Code: ${err.code}, message: ${err.message}`);
+    });
+    ```

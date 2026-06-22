@@ -1069,7 +1069,7 @@ if (enrollIntelligentVoiceEngine != null) {
     if (err) {
       console.error(`Failed to initialize enrollIntelligentVoice engine. Code:${err.code}, message:${err.message}`);
     } else {
-      console.info(`Succeeded in initialzing enrollIntelligentVoice engine.`);
+      console.info(`Succeeded in initializing enrollIntelligentVoice engine.`);
     }
   });
 }

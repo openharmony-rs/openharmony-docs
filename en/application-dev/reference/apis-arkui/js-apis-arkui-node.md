@@ -1,8 +1,8 @@
-# @ohos.arkui.node 
+# @ohos.arkui.node (Custom Node)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,7 +11,9 @@ The **Node** module provides level-2 module APIs of custom nodes to export and u
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> 
+>
+> - The APIs of this module can be used only in the stage model.
+>
 > - Custom nodes are not available in DevEco Studio Previewer.
 
 ## BuilderNode
@@ -53,9 +55,7 @@ The [XComponentNode](./js-apis-arkui-xcomponentNode.md) module provides APIs a X
 
 
 ## Obtaining UI Context
-To obtain the UI context, use any of the following methods:
-
-1. Call [getUIContext()](arkts-apis-window-Window.md#getuicontext10) in **ohos.window** to obtain the **UIContext **instance.
+To obtain the UI context, use any of the following methods:<br>1. Call [getUIContext()](arkts-apis-window-Window.md#getuicontext10) in **ohos.window** to obtain the **UIContext **instance.
 
 2. Call the built-in method [getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext) of the custom component.
 

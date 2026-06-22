@@ -50,7 +50,7 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 | controller | [LaunchController](#launchcontroller) | Yes| - | Controller for launching the atomic service.|
 | onReceive<sup>20+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | No| - | Callback triggered when the embedded atomic service is launched through [Window](../../../windowmanager/application-window-stage.md) API calls.|
 | onError<sup>23+<sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| - | Callback triggered when an exception occurs during the execution of an embedded atomic service. You can obtain the error information based on the **code**, **name**, and **message** parameters in the callback and rectify the exception accordingly.|
-| onTerminated<sup>23+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | No| - | Callback triggered when an embedded atomic service is exited properly by clicking the exit button or calling [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself) This callback is not triggered when the atomic service is exited by a swipe gesture.|
+| onTerminated<sup>23+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | No| - | Callback triggered when an embedded atomic service exits normally because the user taps the exit button and [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself) is called. This callback is not triggered when the atomic service exits with a swipe gesture.|
 
 ## LaunchController
 
@@ -90,7 +90,7 @@ import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 struct Index {
 
   @Builder
-  ColumChild() {
+  ColumnChild() {
     Column() {
       Text('InnerFullScreenLaunchComponent').fontSize(16).margin({top: 100})
       Button('Start Sunrise/Sunset')
@@ -110,7 +110,7 @@ struct Index {
   build() {
     Column() {
       InnerFullScreenLaunchComponent({
-          content: this.ColumChild,
+          content: this.ColumnChild,
           controller: this.controller,
           onReceive: (data) => {
             console.info("onReceive, data: " + data['ohos.atomicService.window']);

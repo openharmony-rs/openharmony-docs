@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @lvcong_oh-->
-<!--Designer: @hollokin; @yuchaozhng-->
-<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Designer: @yuchaozhng-->
+<!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供管理基本数据对象的相关能力，包括创建、查询、删除、修改、订阅等；同时支持相同应用多设备间的分布式数据对象协同能力。分布式数据对象处理数据时，不会解析用户数据的内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。
@@ -53,9 +53,9 @@ create(context: Context, source: object): DataObject
 FA模型示例：
 <!--code_no_check_fa-->
 ```ts
+
 // 导入模块
 import { featureAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 // 获取context
 let context = featureAbility.getContext();
 class SourceObject {
@@ -171,7 +171,7 @@ type DataObserver = (sessionId: string, fields: Array&lt;string&gt;) => void
 
 | 参数名     | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| sessionId | string                           | 是   |   标识变更对象的sessionId。长度需小于128字节，且只能包含字母、数字或下划线_。                                          |
+| sessionId | string                           | 是   | 标识变更对象的sessionId。长度不大于128字节，且只能包含字母、数字或下划线_。                                          |
 | fields    | Array&lt;string&gt;                   | 是   | 标识对象变更的属性名。属性名可自定义，要求字符串非空且长度不超过128字节。                                     |
 
 ## StatusObserver<sup>20+</sup>
@@ -223,7 +223,7 @@ setSessionId(sessionId: string, callback: AsyncCallback&lt;void&gt;): void
 
   | 参数名    | 类型                      | 必填 | 说明                                                                                                           |
   | --------- | ------------------------- | ---- | -------------------------------------------------------------------------------------------------------------- |
-  | sessionId | string                    | 是   | 分布式数据对象在可信组网中的标识ID，长度不大于128，且只能包含字母数字或下划线_。当传入""、null时表示退出分布式组网。 |
+  | sessionId | string                    | 是   | 分布式数据对象在可信组网中的标识ID，长度不大于128字节，且只能包含字母数字或下划线_。当传入""、null时表示退出分布式组网。 |
   | callback  | AsyncCallback&lt;void&gt; | 是   | 加入session的异步回调。                                                                                        |
 
 **错误码：**
@@ -240,11 +240,11 @@ setSessionId(sessionId: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 // g_object加入分布式组网
-g_object.setSessionId(distributedDataObject.genSessionId(), ()=>{
+g_object.setSessionId(distributedDataObject.genSessionId(), () => {
     console.info("join session");
 });
 // g_object退出分布式组网
-g_object.setSessionId("", ()=>{
+g_object.setSessionId("", () => {
     console.info("leave all session");
 });
 ```
@@ -255,6 +255,10 @@ setSessionId(callback: AsyncCallback&lt;void&gt;): void
 
 退出所有已加入的session，使用callback方式异步回调。
 
+**需要权限：**
+- API版本20+：N/A
+- API版本9-19：ohos.permission.DISTRIBUTED_DATASYNC
+ 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
 **参数：**
@@ -269,6 +273,7 @@ setSessionId(callback: AsyncCallback&lt;void&gt;): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
+  | 201      | Permission verification failed. <br/> 适用版本：9-19|
   | 401      | Parameter error. Incorrect parameter types. |
   | 15400001 | Failed to create the in-memory database. |
 
@@ -276,7 +281,7 @@ setSessionId(callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 // g_object加入分布式组网
-g_object.setSessionId(distributedDataObject.genSessionId(), ()=>{
+g_object.setSessionId(distributedDataObject.genSessionId(), () => {
     console.info("join session");
 });
 // 退出分布式组网
@@ -299,13 +304,13 @@ setSessionId(sessionId?: string): Promise&lt;void&gt;
 
   | 参数名    | 类型   | 必填 | 说明                                                                                                                         |
   | --------- | ------ | ---- | ---------------------------------------------------------------------------------------------------------------------------- |
-  | sessionId | string | 否   | 分布式数据对象在可信组网中的标识ID，长度不大于128，且只能包含字母数字或下划线_。当传入""、null或不传入参数时表示退出分布式组网。 |
+  | sessionId | string | 否   | 分布式数据对象在可信组网中的标识ID，长度不大于128字节，且只能包含字母数字或下划线_。当传入""、null或不传入参数时表示退出分布式组网。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -321,16 +326,16 @@ setSessionId(sessionId?: string): Promise&lt;void&gt;
 
 ```ts
 // g_object加入分布式组网
-g_object.setSessionId(distributedDataObject.genSessionId()).then (()=>{
+g_object.setSessionId(distributedDataObject.genSessionId()).then(() => {
     console.info("join session.");
-    }).catch((error: BusinessError)=>{
-        console.error("error:" + error.code + error.message);
+}).catch((error: BusinessError) => {
+    console.error("error:" + error.code + error.message);
 });
 // 退出分布式组网
-g_object.setSessionId().then (()=>{
+g_object.setSessionId().then(() => {
     console.info("leave all session.");
-    }).catch((error: BusinessError)=>{
-        console.error("error:" + error.code + error.message);
+}).catch((error: BusinessError) => {
+    console.error("error:" + error.code + error.message);
 });
 ```
 
@@ -453,7 +458,7 @@ off(type: 'status', callback?:(sessionId: string, networkId: string, status: 'on
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 事件类型，固定为'status'，表示对象上下线。 |
-| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId； <br>networkId：标识变更对象； <br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId； <br>networkId：标识对象设备； <br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
 **错误码：**
 
@@ -494,7 +499,7 @@ save(deviceId: string, callback: AsyncCallback&lt;SaveSuccessResponse&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | deviceId | string | 是 | 保存数据的deviceId，当deviceId为"local"，代表存储在本地设备。 |
+  | deviceId | string | 是 | 存储数据的设备号，标识需要保存对象的设备。"local"表示本地设备，否则表示其他设备的设备号。 |
   | callback | AsyncCallback&lt;[SaveSuccessResponse](#savesuccessresponse9)&gt; | 是 | 回调函数。返回SaveSuccessResponse，包含sessionId、version、deviceId等信息。 |
 
 **错误码：**
@@ -543,7 +548,7 @@ save(deviceId: string): Promise&lt;SaveSuccessResponse&gt;
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | deviceId | string | 是 | 保存数据的设备号，当deviceId默认为"local"，标识需要保存对象的设备。 |
+  | deviceId | string | 是 | 存储数据的设备号，标识需要保存对象的设备。"local"表示本地设备，否则表示其他设备的设备号。 |
 
 **返回值：**
 
@@ -674,7 +679,7 @@ g_object.save("local").then((result: distributedDataObject.SaveSuccessResponse) 
 g_object.revokeSave().then((result: distributedDataObject.RevokeSaveSuccessResponse) => {
     console.info("revokeSave callback");
     console.info("sessionId" + result.sessionId);
-}).catch((err: BusinessError)=> {
+}).catch((err: BusinessError) => {
     console.error("revokeSave failed, error code = " + err.code);
     console.error("revokeSave failed, error message = " + err.message);
 });
@@ -783,7 +788,7 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise&lt;void&gt;
 
   | 类型                | 说明          |
   | ------------------- | ------------- |
-  | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -839,10 +844,10 @@ class EntryAbility extends UIAbility {
       assetName: attachment.name as string
     }
 
-    g_object.bindAssetStore("attachment", bindInfo).then(() => {
+    g_object.bindAssetStore('attachment', bindInfo).then(() => {
       console.info('bindAssetStore success.');
     }).catch((err: BusinessError) => {
-      console.error("bindAssetStore failed, error code = " + err.code);
+      console.error('bindAssetStore failed, error code = ' + err.code);
     });
   }
 }
@@ -1031,7 +1036,7 @@ try {
 
 off(type: 'progressChanged', callback?: ProgressObserver): void
 
-当不再进行资产传输进度监听时，使用此接口取消监听。
+当不再进行资产传输进度监听时，使用此接口删除资产传输进度监听的回调实例。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
@@ -1040,7 +1045,7 @@ off(type: 'progressChanged', callback?: ProgressObserver): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 事件类型，固定为'progressChanged'，表示资产传输进度变化事件。 |
-| callback | [ProgressObserver](#progressobserver20) | 否 | 需要取消监听的事件回调，若不设置，则取消对该事件的所有监听。 |
+| callback | [ProgressObserver](#progressobserver20) | 否 | 需要取消监听的回调实例，若不设置，则取消对该事件的所有监听。 |
 
 **示例：**
 
@@ -1102,7 +1107,7 @@ setAsset(assetKey: string, uri: string): Promise&lt;void&gt;
 
   | 类型                | 说明          |
   | ------------------- | ------------- |
-  | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1147,11 +1152,11 @@ class EntryAbility extends UIAbility {
     let note: Note = new Note('test', 'test', attachment);
     let g_object: distributedDataObject.DataObject = distributedDataObject.create(this.context, note);
 
-    let uri = "file://test/test.img";
-    g_object.setAsset("attachment", uri).then(() => {
+    let uri = 'file://test/test.img';
+    g_object.setAsset('attachment', uri).then(() => {
       console.info('setAsset success.');
     }).catch((err: BusinessError) => {
-      console.error("setAsset failed, error code = " + err.code);
+      console.error('setAsset failed, error code = ' + err.code);
     });
   }
 }
@@ -1193,7 +1198,7 @@ setAssets(assetsKey: string, uris: Array&lt;string&gt;): Promise&lt;void&gt;
 
   | 类型                | 说明          |
   | ------------------- | ------------- |
-  | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1238,11 +1243,11 @@ class EntryAbility extends UIAbility {
     let note: Note = new Note('test', 'test', attachment);
     let g_object: distributedDataObject.DataObject = distributedDataObject.create(this.context, note);
 
-    let uris: Array<string> = ["file://test/test_1.txt", "file://test/test_2.txt"];
-    g_object.setAssets("attachment", uris).then(() => {
+    let uris: Array<string> = ['file://test/test_1.txt', 'file://test/test_2.txt'];
+    g_object.setAssets('attachment', uris).then(() => {
       console.info('setAssets success.');
     }).catch((err: BusinessError) => {
-      console.error("setAssets failed, error code = " + err.code);
+      console.error('setAssets failed, error code = ' + err.code);
     });
   }
 }
@@ -1499,7 +1504,7 @@ off(type: 'status', callback?: (sessionId: string, networkId: string, status: 'o
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 事件类型，固定为'status'，表示对象上下线。 |
-| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId； <br>networkId：标识变更对象； <br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
+| callback | (sessionId: string, networkId: string, status: 'online' \| 'offline' ) => void | 否 | 需要删除的上下线回调，若不设置则删除该对象所有的上下线回调。<br>sessionId：标识变更对象的sessionId； <br>networkId：标识对象设备； <br>status：标识对象为'online'(上线)或'offline'(下线)的状态。 |
 
 
 **示例：**

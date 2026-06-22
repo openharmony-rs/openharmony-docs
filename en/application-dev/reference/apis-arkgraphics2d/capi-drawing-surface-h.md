@@ -71,7 +71,7 @@ OH_Drawing_Surface* OH_Drawing_SurfaceCreateOnScreen(OH_Drawing_GpuContext* gpuC
 
 **Description**
 
-Creates an **OH_Drawing_Surface** object bound to the window using the GPU context to manage the content drawn on the canvas.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **gpuContext** or **window** is NULL.
+Creates an **OH_Drawing_Surface** object bound to the window using the GPU context to manage the content drawn on the canvas.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **gpuContext** or **window** is NULL.<br>The width and height of imageInfo must be the same as those of window.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 

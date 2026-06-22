@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 本模块主要提供串口管理功能，包括打开和关闭设备的串口、写入和读取数据、设置和获取串口的配置参数、权限管理等。
 
@@ -48,8 +48,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function getPortList() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -68,7 +68,7 @@ hasSerialRight(portId: number): boolean
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 
 **返回值：**
 
@@ -102,8 +102,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function hasSerialRight() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('portList: ', JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -112,7 +112,7 @@ function hasSerialRight() {
   if (serialManager.hasSerialRight(portId)) {
     console.info('The serial port is accessible');
   } else {
-    console.info('No permission to access the serial port');
+    console.error('No permission to access the serial port');
   }
 }
 ```
@@ -129,7 +129,7 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 
 **返回值：**
 
@@ -163,8 +163,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function requestSerialRight() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -174,7 +174,7 @@ function requestSerialRight() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.info('user is not granted the operation permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -196,7 +196,7 @@ open(portId: number): void
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 
 **错误码：**
 
@@ -225,8 +225,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function open() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -236,7 +236,7 @@ function open() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -266,7 +266,7 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 
 **返回值：**
 
@@ -300,8 +300,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function getAttribute() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -311,7 +311,7 @@ function getAttribute() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -354,7 +354,7 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 
 | 参数名       | 类型                                  | 必填 | 说明          |
 |-----------|-------------------------------------|----|-------------|
-| portId    | number                              | 是  | 端口号。 |
+| portId    | number                              | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 | attribute | [SerialAttribute](#serialattribute) | 是  | 串口参数。     |
 
 **错误码：**
@@ -383,8 +383,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function setAttribute() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -394,7 +394,7 @@ function setAttribute() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -439,9 +439,9 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号。      |
+| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。      |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：ms）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
+| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
 
 **返回值：**
 
@@ -477,8 +477,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function read() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -488,7 +488,7 @@ function read() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -526,9 +526,9 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号。|
+| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。|
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：ms）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
+| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
 
 **返回值：**
 
@@ -564,8 +564,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function readSync() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -575,7 +575,7 @@ function readSync() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -614,9 +614,9 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号。      |
+| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。      |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：ms），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。 |
+| timeout | number     | 否  | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。 |
 
 **返回值：**
 
@@ -653,8 +653,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function write() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -664,7 +664,7 @@ function write() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -702,9 +702,9 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号。     |
+| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。     |
 | buffer  | Uint8Array | 是  | 写入目标缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：ms），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。|
+| timeout | number     | 否  | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。|
 
 **返回值：**
 
@@ -741,8 +741,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function writeSync() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -752,7 +752,7 @@ function writeSync() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -791,7 +791,7 @@ close(portId: number): void
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 
 **错误码：**
 
@@ -819,8 +819,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function close() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -830,7 +830,7 @@ function close() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -869,7 +869,7 @@ cancelSerialRight(portId: number): void
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 
 **错误码：**
 
@@ -898,8 +898,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function cancelSerialRight() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -909,7 +909,7 @@ function cancelSerialRight() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -935,10 +935,10 @@ function cancelSerialRight() {
 
 | 名称       |          类型        |  只读   |  可选 | 说明        |
 |----------|--------|----------|-----------|----------------------|
-| baudRate | [BaudRates](#baudrates) |   否   | 否  | 串口波特率。  |
-| dataBits | [DataBits](#databits)   |   否   | 是  | 串口数据位，默认值为8位。  |
+| baudRate | [BaudRates](#baudrates) |   否   | 否  | 串口波特率，单位：比特/秒  |
+| dataBits | [DataBits](#databits)   |   否   | 是  | 串口数据位，默认值为8，单位：比特  |
 | parity   | [Parity](#parity)       |   否   | 是  | 串口奇偶校验，默认值为None，无奇偶校验。 |
-| stopBits | [StopBits](#stopbits)   |   否   | 是  | 串口停止位，默认值为1位。  |
+| stopBits | [StopBits](#stopbits)   |   否   | 是  | 串口停止位，默认值为1，单位：比特  |
 
 ## SerialPort
 
@@ -953,46 +953,46 @@ function cancelSerialRight() {
 
 ## BaudRates
 
-表示波特率的枚举
+表示波特率的枚举，单位：比特/秒
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
-| BAUDRATE_50  | 50  | 传输波特率为50。  |
-| BAUDRATE_75  | 75  | 传输波特率为75。  |
-| BAUDRATE_110  | 110  | 传输波特率为110。  |
-| BAUDRATE_134  | 134  | 传输波特率为134。  |
-| BAUDRATE_150  | 150  | 传输波特率为150。  |
-| BAUDRATE_200  | 200  | 传输波特率为200。  |
-| BAUDRATE_300  | 300  | 传输波特率为300。  |
-| BAUDRATE_600  | 600  | 传输波特率为600。  |
-| BAUDRATE_1200  | 1200  | 传输波特率为1200。  |
-| BAUDRATE_1800  | 1800  | 传输波特率为1800。  |
-| BAUDRATE_2400  | 2400  | 传输波特率为2400。  |
-| BAUDRATE_4800  | 4800  | 传输波特率为4800。  |
-| BAUDRATE_9600  | 9600  | 传输波特率为9600。  |
-| BAUDRATE_19200  | 19200  | 传输波特率为19200。  |
-| BAUDRATE_38400  | 38400  | 传输波特率为38400。  |
-| BAUDRATE_57600  | 57600  | 传输波特率为57600。  |
-| BAUDRATE_115200  | 115200  | 传输波特率为115200。  |
-| BAUDRATE_230400  | 230400  | 传输波特率为230400。  |
-| BAUDRATE_460800  | 460800  | 传输波特率为460800。  |
-| BAUDRATE_500000  | 500000  | 传输波特率为500000。  |
-| BAUDRATE_576000  | 576000  | 传输波特率为576000。  |
-| BAUDRATE_921600  | 921600  | 传输波特率为921600。  |
-| BAUDRATE_1000000  | 1000000  | 传输波特率为1000000。  |
-| BAUDRATE_1152000  | 1152000  | 传输波特率为1152000。  |
-| BAUDRATE_1500000  | 1500000  | 传输波特率为1500000。  |
-| BAUDRATE_2000000  | 2000000  | 传输波特率为2000000。  |
-| BAUDRATE_2500000  | 2500000  | 传输波特率为2500000。  |
-| BAUDRATE_3000000  | 3000000  | 传输波特率为3000000。  |
-| BAUDRATE_3500000  | 3500000  | 传输波特率为3500000。  |
-| BAUDRATE_4000000  | 4000000  | 传输波特率为4000000。  |
+| BAUDRATE_50  | 50  | 传输波特率为50比特/秒。  |
+| BAUDRATE_75  | 75  | 传输波特率为75比特/秒。  |
+| BAUDRATE_110  | 110  | 传输波特率为110比特/秒。  |
+| BAUDRATE_134  | 134  | 传输波特率为134比特/秒。  |
+| BAUDRATE_150  | 150  | 传输波特率为150比特/秒。  |
+| BAUDRATE_200  | 200  | 传输波特率为200比特/秒。  |
+| BAUDRATE_300  | 300  | 传输波特率为300比特/秒。  |
+| BAUDRATE_600  | 600  | 传输波特率为600比特/秒。  |
+| BAUDRATE_1200  | 1200  | 传输波特率为1200比特/秒。  |
+| BAUDRATE_1800  | 1800  | 传输波特率为1800比特/秒。  |
+| BAUDRATE_2400  | 2400  | 传输波特率为2400比特/秒。  |
+| BAUDRATE_4800  | 4800  | 传输波特率为4800比特/秒。  |
+| BAUDRATE_9600  | 9600  | 传输波特率为9600比特/秒。  |
+| BAUDRATE_19200  | 19200  | 传输波特率为19200比特/秒。  |
+| BAUDRATE_38400  | 38400  | 传输波特率为38400比特/秒。  |
+| BAUDRATE_57600  | 57600  | 传输波特率为57600比特/秒。  |
+| BAUDRATE_115200  | 115200  | 传输波特率为115200比特/秒。  |
+| BAUDRATE_230400  | 230400  | 传输波特率为230400比特/秒。  |
+| BAUDRATE_460800  | 460800  | 传输波特率为460800比特/秒。  |
+| BAUDRATE_500000  | 500000  | 传输波特率为500000比特/秒。  |
+| BAUDRATE_576000  | 576000  | 传输波特率为576000比特/秒。  |
+| BAUDRATE_921600  | 921600  | 传输波特率为921600比特/秒。  |
+| BAUDRATE_1000000  | 1000000  | 传输波特率为1000000比特/秒。  |
+| BAUDRATE_1152000  | 1152000  | 传输波特率为1152000比特/秒。  |
+| BAUDRATE_1500000  | 1500000  | 传输波特率为1500000比特/秒。  |
+| BAUDRATE_2000000  | 2000000  | 传输波特率为2000000比特/秒。  |
+| BAUDRATE_2500000  | 2500000  | 传输波特率为2500000比特/秒。  |
+| BAUDRATE_3000000  | 3000000  | 传输波特率为3000000比特/秒。  |
+| BAUDRATE_3500000  | 3500000  | 传输波特率为3500000比特/秒。  |
+| BAUDRATE_4000000  | 4000000  | 传输波特率为4000000比特/秒。  |
 
 ## DataBits
 
-表示数据位宽的枚举
+表示数据位宽的枚举，单位：比特
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -1019,7 +1019,7 @@ function cancelSerialRight() {
 
 ## StopBits
 
-表示停止位宽的枚举
+表示停止位宽的枚举，单位：比特
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 

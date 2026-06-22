@@ -1,10 +1,14 @@
 # 事件
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+
+Web组件事件模块是ArkWeb框架中Web组件的事件回调接口集合，为开发者提供监听和响应Web组件各类运行时事件的机制。这些事件覆盖了Web页面加载的完整生命周期（从加载开始到完成）、JavaScript对话框交互、资源请求拦截与错误处理、安全认证（HTTP Auth、SSL错误、客户端证书）、权限管理、渲染进程状态、UI交互（上下文菜单、滚动、缩放、全屏）、窗口管理、同层渲染、性能度量以及多媒体设备状态等场景。开发者通过注册对应的事件回调，可以在Web组件运行过程中获取关键信息、拦截或自定义处理逻辑，实现应用对Web内容的精细管控和用户体验优化。
+
+当应用需要在嵌入式Web场景中对网页行为进行拦截、自定义或监控时——例如自定义JavaScript弹窗样式、拦截URL请求返回本地数据、处理SSL证书错误、管理摄像头/麦克风权限、监听页面加载进度、感知渲染进程异常、实现同层渲染交互等——应使用本模块提供的各事件回调API。
 
 通用事件仅支持[onAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)、[onDisAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)、[onBlur](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur)、[onFocus](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus)、[onDragEnd](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10)、[onDragEnter](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter)、[onDragStart](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)、[onDragMove](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove)、[onDragLeave](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave)、[onDrop](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop)、[onHover](../apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover)、[onMouse](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse)、[onKeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent)、[onTouch](../apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)、[onVisibleAreaChange](../apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)。
 
@@ -991,7 +995,7 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 
 onShowFileSelector(callback: Callback\<OnShowFileSelectorEvent, boolean\>)
 
-调用此函数以处理具有“文件”输入类型的HTML表单。如果不调用此函数或返回false，Web组件会提供默认的“选择文件”处理界面。如果返回true，应用可以自定义“选择文件”的响应行为。
+调用此函数以处理具有“文件”输入类型的HTML表单。若不调用此函数或返回false，Web组件会提供默认的“选择文件”处理界面。若返回true，应用可以自定义“选择文件”的响应行为。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1605,7 +1609,6 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
 import { certificateManager } from '@kit.DeviceCertificateKit';
-import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1821,7 +1824,6 @@ struct Index {
     ```ts
     import { webview } from '@kit.ArkWeb';
     import CertManagerService from './CertMgrService';
-    import { promptAction } from '@kit.ArkUI';
 
     @Entry
     @Component
@@ -2097,7 +2099,7 @@ onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\>)
 
 onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
 
-长按特定元素（例如图片，链接）或鼠标右键，跳出菜单。
+长按特定元素（例如图片，链接）或鼠标右键，弹出菜单。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2330,9 +2332,9 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 >
 > 通知的是页面全局滚动位置，局部滚动位置的变化是无法触发此回调。
 >
-> 判断页面是否是全局滚动，在滚动前后打印window.pagYOffset或者window.pagXOffset。
+> 判断页面是否是全局滚动，在滚动前后打印window.pageYOffset或者window.pageXOffset。
 >
-> 如果是全局滚动，window.pagYOffset或者window.pagXOffset的值在滚动前后会有变化，反之没有变化。
+> 如果是全局滚动，window.pageYOffset或者window.pageXOffset的值在滚动前后会有变化，反之没有变化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2340,7 +2342,7 @@ onScroll(callback: Callback\<OnScrollEvent\>)
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> | 是 | 当页面滑动到指定位置时触发。 |
+| callback | Callback\<[OnScrollEvent](./arkts-basic-components-web-i.md#onscrollevent12)\> | 是 | 当页面滚动到指定位置时触发。 |
 
 **示例：**
 
@@ -3344,6 +3346,10 @@ onLargestContentfulPaint(callback: [OnLargestContentfulPaintCallback](./arkts-ba
 onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
+
+> **说明：**
+>
+> - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在[onInterceptRequest](#oninterceptrequest9)或者通过WebSchemeHandler的[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)中获取。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5246,7 +5252,7 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 
 通知用户当前网页中麦克风状态，麦克风有三个状态，未工作（None），捕获中（Active），暂停中（Paused）。使用callback异步回调。
 
-可以通过resumeMicrophone，pauseMicrophone，stopMicrophone这三个接口来切换麦克风的状态。这三个接口功能分别对应解除暂停，暂停，停止麦克风。示例使用场景详见[网页中麦克风的使用](./arkts-apis-webview-WebviewController.md#resumemicrophone23)。
+可以通过resumeMicrophone，pauseMicrophone，stopMicrophone这三个接口来切换麦克风的状态。这三个接口功能分别对应解除暂停，暂停，停止麦克风。示例使用场景详见[resumeMicrophone<sup>23+</sup>](./arkts-apis-webview-WebviewController.md#resumemicrophone23)。
 
 > **说明：**
 >
@@ -5487,3 +5493,57 @@ onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
     }
   }
   ```
+
+## onInputmethodAttached
+
+onInputmethodAttached(callback: OnInputmethodAttachedCallback)
+
+网页绑定输入法成功时触发此回调，使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnInputmethodAttachedCallback](./arkts-basic-components-web-t.md#oninputmethodattachedcallback) | 是    | 回调函数，设置Web组件检测到输入法绑定成功时的回调。 |
+
+**示例：**
+
+  ```ts
+  import { webview } from '@kit.ArkWeb'
+  import { inputMethod } from '@kit.IMEKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller }).onInputmethodAttached(() => {
+          inputMethod.getController().showTextInput();
+        })
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+```html
+<!--test.html-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta charset="UTF-8"><title>示例页面</title></head>
+  <body>
+    <div>
+      <label for="main-input">输入框</label>
+      <input type="text" id="main-input" name="keyword" placeholder="请输入关键词..." autofocus>
+    </div>
+  </body>
+</html>
+```

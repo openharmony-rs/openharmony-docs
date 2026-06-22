@@ -47,7 +47,7 @@ Navigator()
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 13开始废弃，建议使用[NavigationAttribute](ts-basic-components-navigation.md#属性)替代。NavigationAttribute为Navigation组件的属性。
+> 从API version 7开始支持，从API version 13开始废弃，建议使用NavigationAttribute替代。NavigationAttribute为[Navigation](ts-basic-components-navigation.md)组件的属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -231,4 +231,4 @@ struct BackExample {
 }
 ```
 
-![zh-cn_image_0000001219864145](figures/zh-cn_image_0000001219864145.gif)
+![navigator](figures/navigator.gif)

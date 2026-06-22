@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @BlYynNe-->
-<!--Designer: @lixingchi1-->
+<!--Designer: @BlYynNe-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -63,7 +63,7 @@ Apart from [\@Styles](arkts-style.md) used to reuse styles, ArkUI also provides 
   }
   ```
 
-- Unlike \@Styles, \@Extend enables decorated methods to accept parameters. When calling these methods, you pass parameters following standard TypeScript parameter passing conventions.
+- Different from \@Styles decorated methods, the \@Extend decorated methods support passing parameters. The calling complies with the TS method calling convention.
   <!-- @[Extend_private_property_fancy_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendParameterUsage.ets) -->
   
   ``` TypeScript
@@ -199,6 +199,91 @@ struct FancyUse {
 }
 ```
 
+- Functions decorated with @Extend can be used only in the current file and cannot be exported or called in other files.
+
+**Incorrect Usage**
+
+``` TypeScript
+  // Incorrect usage. In the pageTwo file, do not use the @Extend decorated functions defined in another file, for example, pageOne.
+  // pageOne.ets
+  @Extend(Button)
+  function ButtonUse() {
+    .width(100)
+    .buttonStyle(ButtonStyleMode.NORMAL)
+  }
+
+  @Entry
+  @Component
+  struct extendUseOne {
+    build() {
+      Row() {
+        Button()
+          .ButtonUse()
+          .height(200)
+      }
+    }
+  }
+  
+  // pageTwo.ets
+  @Entry
+  @Component
+  struct TextUse {
+    build() {
+      Row() {
+        Text('this is TextUse')
+
+        Button()
+          .ButtonUse() // A following compilation alarm is displayed: Property 'ButtonUse' does not exist on type 'ButtonAttribute'.
+          .height(50)
+      }
+    }
+  }
+```
+
+**Correct Usage**
+
+``` TypeScript
+  // Correct usage: In the pageTwo file, you can define an @Extend decorated function whose name does not conflict with the @Extend decorated function defined in the pageOne file.
+  // pageOne.ets
+  @Extend(Button)
+  function ButtonUse() {
+    .width(100)
+    .buttonStyle(ButtonStyleMode.NORMAL)
+  }
+
+  @Entry
+  @Component
+  struct extendUseOne {
+    build() {
+      Row() {
+        Button()
+          .ButtonUse()
+          .height(200)
+      }
+    }
+  }
+  
+  // pageTwo.ets
+  @Extend(Button)
+  function ButtonUse2() {
+    .width(200)
+    .buttonStyle(ButtonStyleMode.EMPHASIZED)
+  }
+
+  @Entry
+  @Component
+  struct TextUse {
+    build() {
+      Row() {
+        Text('this is TextUse')
+  
+        Button()
+          .ButtonUse2()
+          .height(50)
+      }
+    }
+  }
+```
 ## Use Cases
 
 The following example declares three Text components, each of which is set with the [fontStyle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontstyle), [fontWeight](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontweight), and [backgroundColor](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor) styles.

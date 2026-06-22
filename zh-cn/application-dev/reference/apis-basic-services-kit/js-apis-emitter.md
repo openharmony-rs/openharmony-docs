@@ -1,9 +1,8 @@
 # @ohos.events.emitter (Emitter)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -251,7 +250,7 @@ off(eventId: number): void
 **示例：**
 
 ```ts
-// 取消eventID为1的所有事件回调处理函数
+// 取消eventId为1的所有事件回调处理函数
 emitter.off(1);
 ```
 
@@ -276,8 +275,8 @@ off(eventId: string): void
 **示例：**
 
 ```ts
-// 取消eventID为"eventId"的所有事件回调处理函数
-emitter.off("eventId");
+// 取消eventId为"eventId1"的所有事件回调处理函数
+emitter.off("eventId1");
 ```
 
 ## emitter.off<sup>10+</sup>
@@ -307,7 +306,7 @@ import { Callback } from '@kit.BasicServicesKit';
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 }
-// 取消eventID为1的事件回调处理函数，callback对象应使用订阅时的对象
+// 取消eventId为1的事件回调处理函数，callback对象应使用订阅时的对象
 // 如果该回调处理函数没有被订阅，则不做任何处理
 emitter.off(1, callback);
 ```
@@ -339,9 +338,9 @@ import { Callback } from '@kit.BasicServicesKit';
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 }
-// 取消eventID为"eventId"的事件回调处理函数，callback对象应使用订阅时的对象
+// 取消eventId为"eventId1"的事件回调处理函数，callback对象应使用订阅时的对象
 // 如果该回调处理函数没有被订阅，则不做任何处理
-emitter.off("eventId", callback);
+emitter.off("eventId1", callback);
 ```
 
 ## emitter.off<sup>12+</sup>
@@ -385,9 +384,9 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
     eventData?.data?.printCount();
   }
 }
-// 取消eventID为"eventId"的事件回调处理函数，callback对象应使用订阅时的对象
+// 取消eventId为"eventId1"的事件回调处理函数，callback对象应使用订阅时的对象
 // 如果该回调处理函数没有被订阅，则不做任何处理
-emitter.off("eventId", callback);
+emitter.off("eventId1", callback);
 ```
 
 ## emitter.emit

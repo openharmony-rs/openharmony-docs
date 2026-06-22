@@ -38,7 +38,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   TextInput()
   ```
 
-  ![en-us_image_0000001511580844](figures/en-us_image_0000001511580844.png)
+  ![textinput-create](figures/textinput-create.png)
 
 
 - Multi-line input box
@@ -49,7 +49,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   TextArea()
   ```
 
-  ![en-us_image_0000001562940481](figures/en-us_image_0000001562940481.png)
+  ![textarea-create](figures/textarea-create.png)
 
 - The **TextArea** component automatically wraps text so that each line does not have more than the width of the component.
 
@@ -62,7 +62,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
     .width(300)
   ```
 
-  ![en-us_image_0000001511580836](figures/en-us_image_0000001511580836.png)
+  ![textinput-default](figures/textinput-default.png)
 
 - Search box
 
@@ -74,7 +74,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
     .searchButton($r('app.string.Creat_TextInput_Content'))
   ```
 
-  ![en-us_image_ui_arkts-common-components-text-input_search_default](figures/en-us_image_ui_arkts-common-components-text-input_search_default.png)
+  ![textinput-search](figures/textinput-search.png)
 
 ## Setting the Input Box Type
 
@@ -91,7 +91,7 @@ TextInput()
   .type(InputType.Normal)
 ```
 
-![en-us_image_0000001562820765](figures/en-us_image_0000001562820765.png)
+![textinput-normal](figures/textinput-normal.png)
 
 ### Password Mode
 
@@ -105,7 +105,7 @@ TextInput()
   .type(InputType.Password)
 ```
 
-![en-us_image_0000001511580840](figures/en-us_image_0000001511580840.png)
+![textinput-password](figures/textinput-password.png)
 
 ### Email Address Input Mode
 
@@ -210,7 +210,7 @@ TextArea()
   TextInput({ placeholder: $r('app.string.i_am_placeholder') })
   ```
 
-  ![en-us_image_0000001511900400](figures/en-us_image_0000001511900400.png)
+  ![textinput-placeholder](figures/textinput-placeholder.png)
 
 
 - Set the current text input.
@@ -226,7 +226,7 @@ TextArea()
   })
   ```
 
-  ![en-us_image_0000001562820761](figures/en-us_image_0000001562820761.png)
+  ![textinput-border](figures/textinput-border.png)
 
 - Use **backgroundColor** to set the background color of the text box.
 
@@ -242,7 +242,7 @@ TextArea()
     .backgroundColor(Color.Pink)
   ```
 
-  ![en-us_image_0000001511740444](figures/en-us_image_0000001511740444.png)
+  ![textinput-pink-bg](figures/textinput-pink-bg.png)
 
   More styles can be implemented by leveraging the [universal attributes](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md).
 

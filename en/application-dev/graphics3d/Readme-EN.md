@@ -14,3 +14,5 @@
   - [Creating and Using Environment Resources](arkgraphics3D-resource-environment.md)
   - [Requirements on the .shader File Format](arkgraphics3D-shader-resource.md)
 - [Controlling and Managing ArkGraphics 3D Scene Animations](arkgraphics3D-animation.md)
+<!--RP1-->
+<!--RP1End-->

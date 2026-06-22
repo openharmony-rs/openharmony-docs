@@ -40,11 +40,13 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 
 Takes a screenshot of the entire screen. This function can be used to capture a full-screen screenshot on the specified display.
 
-**Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE
+**Required permission**:
+- API version 22+: **ohos.permission.CUSTOM_SCREEN_CAPTURE** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 14 to 21: **ohos.permission.CUSTOM_SCREEN_CAPTURE**
 
 **Since**: 14
 
-**Device behavior differences**: In versions earlier than API version 21, this API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 21, this API can be properly called on PC/2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 

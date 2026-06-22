@@ -1,9 +1,9 @@
-# @ohos.data.sendableRelationalStore (共享关系型数据库)
+# @ohos.data.sendableRelationalStore（共享关系型数据库）
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 该模块针对关系型数据库（Relational Database，RDB）提供了sendable支持。支持从查询结果集中获取sendable类型ValuesBucket用于并发实例间传递。
@@ -249,7 +249,7 @@ fromSendableValues(values: collections.Array\<ValueType>): NonSendableValues
 
 | 参数名 | 类型            | 必填 | 说明                      |
 | ------ | --------------- | ---- | :------------------------ |
-| values  | collections.Array\<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | 是   | 可跨线程传递的数组数据。 |
+| values  | [collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<[ValueType](#valuetype)> | 是   | 可跨线程传递的数组数据。 |
 
 **返回值**：
 
@@ -296,7 +296,7 @@ toSendableValues(values: NonSendableValues): collections.Array\<ValueType>
 
 | 类型                                   | 说明                        |
 | -------------------------------------- | --------------------------- |
-| collections.Array\<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | 可跨线程传递的数组数据。 |
+| [collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<[ValueType](#valuetype)> | 可跨线程传递的数组数据。 |
 
 **错误码：**
 
@@ -445,7 +445,7 @@ async function insert(context: Context, dataItem: sendableRelationalStore.Values
   console.info(`Create table test successfully!`);
 
   // 数据插入
-  const rowId = await store.insertSync("test", dataItem);
+  const rowId = store.insertSync("test", dataItem);
   await store.close();
   return rowId;
 }

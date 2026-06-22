@@ -148,7 +148,7 @@ wukong部件架构图以及部件内子模块职责如下所述。
     -k, --spec_insomnia        power on/off event
     -T, --time                 total time of test
     -C, --component            component event
-    -p, --screenshot           get screenshot(only in componment input)
+    -p, --screenshot           get screenshot(only in component input)
     -r, --record               record user operation
     -R, --replay               replay user operation
     -u, --uitest               uitest dumpLayout
@@ -351,6 +351,52 @@ C:\Users\xxx>hdc file recv /data/local/tmp/wukong/report/20170805_170053/wukong.
 [I][2024-01-03 20:08:02] HdcFile::TransferSummary success
 FileTransfer finish, Size:76492, File count = 1, time:16ms rate:4780.75kB/s
 ```
+
+### 测试报告解析
+
+包含基本信息、事件注入统计、Ability统计、故障统计。
+
+1. 基本信息（Base Info）
+
+    | 字段                      | 描述              |
+    | ------------------------ | ------------------|
+    | task status              | 任务状态。success表示成功，fail表示失败。|
+    | task time                | 任务执行时间。单位：秒。|
+    | seed                     | 随机种子。|
+    | task count               | 事件注入总次数。|
+
+2. 故障注入统计（Input Message Statistics）
+
+    | 类型                            | 描述                               |
+    | -------------------------------| ---------------------------------- |
+    | type                           | 事件或控件注入的类型，事件注入类型范围请参考[随机测试命令参数](#随机测试)，控件注入类型范围请参考<!--RP2-->[ArkTS组件](../reference/apis-arkui/Readme-CN.md)<!--RP2End-->。|
+    | execTimes                      | 事件或者控件注入执行次数。|
+    | proportion                     | 当前事件操作在事件注入执行总次数里的占比。|
+    | inputedTimes                   | 遍历的控件类型个数。|
+    | expectInputTimes               | 应用控件类型总数。|
+    | coverage                       | 控件遍历覆盖率。|
+
+3. Ability统计（ability Statistics）
+
+    | 字段                     | 描述               |
+    | -----------------       | ------------------ |
+    | bundleName              | 应用的bundleName。|
+    | inputedAbilityCount     | 遍历的Ability数量。|
+    | abilitiesCount          | 应用的Ability总数。|
+    | coverage                | Ability遍历覆盖率。|
+
+4. 故障统计（Exception Message Statistics）
+
+    > **说明**
+    >
+    > 故障日志路径：/data/log/faultlog/faultlogger/
+
+    | 字段               | 描述               |
+    | ----------------- | ------------------ |
+    | type              | 故障类型，故障类型包含：CPP_CRASH、JS_CRASH、SYS_FREEZE、APP_FREEZE等。|
+    | times             | 故障次数。 |
+    | proportion        | 当前故障在故障总数里的占比。|
+
 
 ## 常见问题
 ### failed to connect to AAMS
