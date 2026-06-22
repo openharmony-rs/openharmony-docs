@@ -50,7 +50,7 @@ This module is mainly used in the following scenarios:
 
 - **[AtManager](#atmanager):** Program access control management class, providing capabilities such as permission verification, permission dialog box request, settings page authorization guidance, and permission status monitoring.
 
-![](figures/accessAccessCtrl.png)
+![](figures/abilityAccessCtrl.png)
 
 ### API Combination Usage Description
 

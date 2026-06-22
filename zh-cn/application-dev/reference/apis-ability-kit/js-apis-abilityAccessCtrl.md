@@ -41,7 +41,7 @@
 
 - **[AtManager](#atmanager)：** 程序访问控制管理类，提供权限校验、权限弹窗申请、设置页授权引导和权限状态监听等能力。
 
-![](figures/accessAccessCtrl.png)
+![](figures/abilityAccessCtrl.png)
 
 ### API组合使用关系说明
 
