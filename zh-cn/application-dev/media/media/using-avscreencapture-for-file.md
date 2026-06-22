@@ -33,7 +33,7 @@
 
 **在 CMake 脚本中链接动态库**
 
-```c++
+```C++
 target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runtime.so libnative_display_manager.so)
 ```
 
@@ -41,7 +41,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    <!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
 
-   ```c++
+   ```C++
    #include "hilog/log.h"
    #include "napi/native_api.h"
    #include <window_manager/oh_display_info.h>
@@ -59,7 +59,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    <!-- @[screenCapture_create_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-   ```c++
+   ```C++
    g_avCapture = OH_AVScreenCapture_Create();
    ```
 
@@ -73,7 +73,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-   ```c++
+   ```C++
    // 录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
    OH_AudioCaptureInfo micCapInfo = {
        .audioSampleRate = 48000,
@@ -139,7 +139,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    <!-- @[screenCapture_startScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-   ```c++
+   ```C++
    result = OH_AVScreenCapture_StartScreenRecording(g_avCapture);
    ```
 
@@ -147,7 +147,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    <!-- @[screenCapture_stopScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-   ```c++
+   ```C++
    result = OH_AVScreenCapture_StopScreenRecording(g_avCapture);
    ```
 
@@ -155,7 +155,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    <!-- @[screenCapture_releaseScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-   ```c++
+   ```C++
    result = OH_AVScreenCapture_Release(g_avCapture);
    ```
 

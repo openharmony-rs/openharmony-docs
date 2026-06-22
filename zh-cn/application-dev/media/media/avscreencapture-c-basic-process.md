@@ -53,7 +53,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 
 <!-- @[screenCapture_import_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
 
-```c++
+```C++
 #include "hilog/log.h"
 #include "napi/native_api.h"
 #include <window_manager/oh_display_info.h>
@@ -72,7 +72,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 
 <!-- @[screenCapture_create_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 g_avCapture = OH_AVScreenCapture_Create();
 ```
 
@@ -91,7 +91,7 @@ g_avCapture = OH_AVScreenCapture_Create();
 
 <!-- @[screenCapture_config_buffer_audio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 录屏时获取麦克风，如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
 OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC}; 
 // 录屏时获取内录数据，内录参数必填。如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
@@ -118,7 +118,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(capture, isMic);
 
 <!-- @[screenCapture_config_buffer_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 获取屏幕信息
 uint64_t displayId = 0;
 NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
@@ -159,7 +159,7 @@ AVScreenCapture实例的配置信息为[OH_AVScreenCaptureConfig](../../referenc
 
 <!-- @[screenCapture_config_buffer_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 初始化录屏，传入配置信息OH_AVScreenCaptureConfig。
 config = {
     .captureMode = OH_CAPTURE_HOME_SCREEN, // 录屏模式设置。
@@ -176,7 +176,7 @@ config = {
 
 <!-- @[screenCapture_config_buffer_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 设置回调。
 // 错误事件发生回调函数OnError()。
 void OnError(OH_AVScreenCapture *capture, int32_t errorCode, void *userData)
@@ -297,7 +297,7 @@ void SetCallback(struct OH_AVScreenCapture *capture)
 
 <!-- @[screenCapture_startScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 result = OH_AVScreenCapture_StartScreenCapture(g_avCapture);
 ```
 
@@ -307,7 +307,7 @@ result = OH_AVScreenCapture_StartScreenCapture(g_avCapture);
 
 <!-- @[screenCapture_config_buffer_OnBufferAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 获取并处理音视频原始码流数据回调函数OnBufferAvailable()。
 void HandleVideoBuffer(OH_AVBuffer *buffer)
 {
@@ -380,7 +380,7 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
 
 <!-- @[screenCapture_stopScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 停止录屏。
 result = OH_AVScreenCapture_StopScreenCapture(g_avCapture);
 ```
@@ -391,7 +391,7 @@ result = OH_AVScreenCapture_StopScreenCapture(g_avCapture);
 
 <!-- @[screenCapture_releaseScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 释放录屏资源。
 result = OH_AVScreenCapture_Release(g_avCapture);
 if (result != AV_SCREEN_CAPTURE_ERR_BASE) {
@@ -415,7 +415,7 @@ g_avCapture = nullptr;
 
 <!-- @[screenCapture_PCSpecifiedScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
 config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
 config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
@@ -435,7 +435,7 @@ config.videoInfo.videoCapInfo.displayId = 0;
 
 <!-- @[screenCapture_PCHomeScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
 config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
 config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
@@ -454,7 +454,7 @@ config.captureMode = OH_CAPTURE_HOME_SCREEN;
 
 <!-- @[SetPCSpecifiedWindowScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
 config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
 config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
@@ -477,7 +477,7 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.
 
 <!-- @[SetPCSpecifiedWindowScreenConfigBuffer2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
 config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
 config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
@@ -502,7 +502,7 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 
 <!-- @[screenCapture_buffer_strategy_pickerPopUp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
-```c++
+```C++
 // 创建CaptureStrategy对象。
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
 
