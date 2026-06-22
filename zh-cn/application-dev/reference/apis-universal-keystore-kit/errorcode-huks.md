@@ -19,17 +19,17 @@ The feature or capability is not supported.
 
 **错误描述**
 
-不支持使用的特性（功能）。
+当前调用的特性（功能）不支持使用，具体特性（功能）可通过打印的errorMessage获取。
 
 **可能原因**
 
-1. 使用的算法参数不支持。
-2. 子特性不支持。
+1. 不支持使用的子特性。
+2. 不支持使用的算法参数。
 
 **处理步骤**
 
-1. 调整API参数，使用支持的算法参数。
-2. 查看errorMessage确认不支持的子特性。
+1. 查看errorMessage确认不支持的子特性，请避免在当前设备环境中调用该特性；如确属业务必要，请前往官方开发者社区提交反馈。
+2. 参考[HUKS开发指南](../../security/UniversalKeystoreKit/huks-overview.md)中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，使用支持的算法参数。
 
 ## 12000002 缺少密钥算法参数
 
@@ -39,7 +39,7 @@ The algorithm param is missing.
 
 **错误描述**
 
-缺少密钥算法参数失败。
+缺少密钥操作必要的算法参数。
 
 **可能原因**
 
@@ -47,8 +47,8 @@ The algorithm param is missing.
 
 **处理步骤**
 
-1. 查看errorMessage确认缺失的密钥参数名。
-2. 添加对应的密钥参数。
+1. 查看errorMessage确认缺失的密钥参数。
+2. 参考[HUKS开发指南](../../security/UniversalKeystoreKit/huks-overview.md)中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，添加对应的密钥参数。
 
 ## 12000003 无效的密钥算法参数
 
@@ -67,7 +67,7 @@ The algorithm argument is invalid.
 **处理步骤**
 
 1. 查看errorMessage确认无效的密钥参数名。
-2. 修改对应的密钥参数。
+2. 参考[HUKS开发指南](../../security/UniversalKeystoreKit/huks-overview.md)中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，修改对应的密钥参数为合法值。
 
 ## 12000004 文件错误
 
@@ -82,14 +82,14 @@ The file operation failed.
 **可能原因**
 
 1. 磁盘空间已满。
-2. 无效的文件大小。
-3. 文件无法访问，具体原因可参考返回的errorMessage。
+2. 获取文件大小失败。
+3. 文件无法操作，具体原因可参考返回的errorMessage。
 
 **处理步骤**
 
-1. 查看是否磁盘空间已经写满、文件系统是否有其他异常。
-2. 清理磁盘。
-3. 确认是否拥有对应文件的操作权限。
+1. 若磁盘空间已经写满，请先清理磁盘。
+2. 确认对应文件的操作权限，请查看[文件目录说明](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。
+3. 若文件系统存在其他异常，请前往官方开发者社区提交反馈。
 
 ## 12000005 进程通信错误
 
@@ -294,11 +294,11 @@ The credential does not exist.
 
 **错误信息**
 
-Failed to obtain the security information via UserIAM.
+Failed to obtain the information via UserIAM.
 
 **错误描述**
 
-无法通过UserIAM获取安全信息。
+无法通过UserIAM获取认证相关信息。
 
 **可能原因**
 
