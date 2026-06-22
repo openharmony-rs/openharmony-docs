@@ -6,7 +6,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:20:49.111Z pushedAt=2026-06-22T03:21:12.857Z -->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:20:49.111Z pushedAt=2026-06-22T06:06:45.669Z -->
 
 ```c
 typedef JSVM_CallbackStruct* JSVM_Callback
@@ -20,7 +20,7 @@ Defines the pointer types of the native functions provided by user. These functi
 
 **Problem solved:** A standardized function pointer type is defined, making it easier to expose C/C++ functions to the JavaScript environment.
 
-**Features:** A type-safe function pointer definition is provided, supporting interaction between native and JavaScript.
+**Features:** A type-safe function pointer definition is provided, supporting interaction between the native and JavaScript layers.
 
 **System capability:** SystemCapability.ArkCompiler.JSVM
 

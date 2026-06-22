@@ -10,11 +10,11 @@
 
 > **NOTE**
 >
-> The asset data mentioned in this topic refers to sensitive data less than 1024 bytes in size, including passwords, app tokens, and other critical data (such as bank card numbers).
+> The asset data mentioned in this topic refers to sensitive data, including passwords, app tokens, and other critical data (such as bank card numbers).
 
 ## When to Use
 
-Asset store service (ASSET) is used in the logins of the users who select **Remember password** on the login page. The application/browser stores the user passwords in an asset store, which ensures the password security.
+Asset Store Kit (ASSET) is used in the logins of the users who select **Remember password** on the login page. The application/browser stores the user passwords in an asset store, which ensures the password security.
 
 When a user opens the login page again, the application/browser obtains the user password from the asset store and automatically fills the password in the **Password** text box. The user only needs to tap the **Log In** button to complete the login.
 
@@ -24,7 +24,7 @@ When a user opens the login page again, the application/browser obtains the user
 
 The following figure illustrates the development process for the passwords (assets) protected.
 
-![](figures/flowchat-no-auth-required.png)
+![](figures/flowchart-no-auth-required.png)
 
 1. The service queries an asset and determines whether the asset exists in the asset store based on the query result.
 

@@ -547,7 +547,7 @@ Defines the reminder to publish.
 | actionButton | [[ActionButton](#actionbuttondeprecated)?, [ActionButton](#actionbuttondeprecated)?] | No| Yes| Button displayed in the reminder notification. (The parameter is optional. Up to two buttons are supported.)|
 | wantAgent | WantAgent | No| Yes| Information about the ability that is redirected to when the notification is clicked.|
 | maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagentdeprecated) | No| Yes| Information about the ability that is automatically started when the reminder arrives. If the device is in use, a notification will be displayed.|
-| ringDuration | number | No| Yes| Ringing duration,<br> in seconds. The default value is **-1**.|
+| ringDuration | number | No| Yes| Ringing duration,<br> in seconds. The default value is **1**.|
 | snoozeTimes | number | No| Yes| Number of reminder snooze times. The default value is **0**.|
 | timeInterval | number | No| Yes| Reminder snooze interval,<br> in seconds. The default value is **0**.|
 | title | string | No| Yes| Reminder title.|

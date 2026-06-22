@@ -667,7 +667,7 @@ constructor(value?: GestureStyleInterface)
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| value | [GestureStyleInterface](#gesturestyleinterface对象说明) | 否   | 事件设置项。 |
+| value | [GestureStyleInterface](#gesturestyleinterface对象说明) | 否   | 事件手势设置项。 |
 
 ## GestureStyleInterface对象说明
 
@@ -1038,7 +1038,7 @@ abstract onMeasure(measureInfo: CustomSpanMeasureInfo): CustomSpanMetrics
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| measureInfo | [CustomSpanMeasureInfo](#customspanmeasureinfo对象说明) | 是   | 文本的字体大小。 |
+| measureInfo | [CustomSpanMeasureInfo](#customspanmeasureinfo对象说明) | 是   | 自定义绘制Span的测量信息。 |
 
 **返回值：**
 

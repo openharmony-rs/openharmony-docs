@@ -6,7 +6,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:22:01.359Z pushedAt=2026-06-22T03:21:12.880Z -->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:22:01.359Z pushedAt=2026-06-22T06:06:53.231Z -->
 
 ```c
 typedef struct {...} JSVM_PropertyHandler
@@ -18,7 +18,7 @@ Defines the pointer to the callback function triggered when a class is called as
 
 **Use scenario**: Intercepting and customizing the function call behavior of objects to enable custom logic for property access.
 
-**Features**: Triggering custom callbacks when an instance object is called as a function; triggering the corresponding callback function when instance object properties are accessed.
+**Features**: Triggering custom callbacks when an instance object is called as a function; triggering corresponding callback functions when instance object properties are accessed.
 
 **Problems solved**: Implementing the proxy pattern for objects and customizing function call behavior. Providing an interception mechanism for property access to enhance code flexibility and extensibility.
 
