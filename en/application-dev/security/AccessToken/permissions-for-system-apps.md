@@ -6289,6 +6289,20 @@ Allows a system application to invoke ArkWebCore extended capabilities.
 
 **Valid since**: 26.0.0
 
+## ohos.permission.HDC_REPORT_INFO
+
+Allows a system application to subscribe to the hdc events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.vehicle.VEHICLE_THERMAL
 
 Allows an application to access thermal control information of the cockpit device.
