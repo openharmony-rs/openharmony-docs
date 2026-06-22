@@ -546,10 +546,6 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 
 设置录屏屏幕数据旋转。<br> 调用该方法可以设置录屏屏幕数据是否旋转，当canvasRotation为true时，打开录屏屏幕数据旋转功能，录制的屏幕数据保持正向。<br> 默认为false。
 
-约束与限制：
-
-- 该接口仅允许在录屏开始之前调用。
-
 > **说明：**
 >
 > 从API version 20开始，支持折叠PC/2in1设备。
