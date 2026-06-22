@@ -124,9 +124,8 @@ struct Page2 {
 ![freezeWithTab](../state-management/figures/freezewithTabs.png)
 
 <!-- @[FreezeTabContent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezeTabContent.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, FontWeight, ForEach, IMonitor, Local, Monitor, Param, Repeat, Row, TabContent, Tabs, Text } from '@kit.ArkUI';
 
 @Entry
@@ -175,7 +174,6 @@ struct FreezeChild {
       .margin(10)
   }
 }
-
 ```
 
 ![custom-components-freezeV2-1](../figures/custom-components-freezeV2-1.gif)
