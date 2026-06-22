@@ -31,7 +31,7 @@ Binds a custom event interception callback to a component.
 
 | Name       | Type                   | Mandatory | Description                        |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | Callback<[TouchEvent](ts-universal-events-touch.md#touchevent), [HitTestMode](ts-appendix-enums.md#hittestmode9)> | Yes    |  Custom event interception callback. Triggered during [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) and sets the [hit test behavior](ts-universal-attributes-hit-test-behavior.md) for the component based on the return value.|
+| callback      | Callback<[TouchEvent](ts-universal-events-touch.md#touchevent), [HitTestMode](ts-appendix-enums.md#hittestmode9)> | Yes    |  Custom event interception callback. Triggered during [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing). Its return value determines the component's [HitTestMode](ts-appendix-enums.md#hittestmode9).|
 
 **Return value**
 

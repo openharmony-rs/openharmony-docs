@@ -34,7 +34,7 @@ Allows the current component to customize the hit test and control child compone
 
 | Name| Type                                      | Mandatory| Description                  |
 | ------ | ------------------------------------------ | ---- | ---------------------- |
-| event  | (value: Array<[TouchTestInfo>](#touchtestinfo11)) => TouchResult | Yes  | Touch event information. **value**: array of child node information.|
+| event  | (value: Array<[TouchTestInfo](#touchtestinfo11)>) => TouchResult | Yes  | Touch event information. **value**: array of child node information.|
 
 **Return value**
 
@@ -59,7 +59,7 @@ Provides information about the coordinate system, ID, and size of the component 
 | x   | number| No | No|X-coordinate of the touch point relative to the upper left corner of the child component.<br>Unit: vp.|
 | y   | number| No |No| Y-coordinate of the touch point relative to the upper left corner of the child component.<br>Unit: vp.|
 | rect   | [RectResult](#rectresult)| No |No|Position, width, and height of the child component. |
-| [id](ts-universal-attributes-component-id.md)   | string| No | No|Unique ID of the child component.|
+| [id](ts-universal-attributes-component-id.md#id)   | string| No | No|Unique ID of the child component.|
 
 ## RectResult
 

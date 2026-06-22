@@ -53,7 +53,7 @@ Defines tap gesture parameters. Inherits from [BaseHandlerOptions](./ts-gestureh
 
 >  **NOTE**
 >
->  The component binds gesture objects of different **GestureType** instances through gesture events. Each gesture object provides gesture-related information in the gesture response event. In the following example, the **TapGesture** object provides gesture-related information in the [onAction](#onaction) event. For details about the event definitions of other gestures, see the corresponding gesture sections. To bind multiple gestures, use [combined gestures](ts-combined-gestures.md).
+>  The component binds gesture objects of different **GestureType** instances through gesture events. Each gesture object provides gesture-related information in the gesture response event. In the following example, the **TapGesture** object provides gesture-related information in the [onAction](#onaction) event. For details about the event definitions of other gestures, see the corresponding gesture sections. To bind gestures of multiple types, use [GestureGroup](ts-combined-gestures.md).
 >
 >  In **fingerList** of [GestureEvent](ts-gesture-common.md#gestureevent), the index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty. You are advised to use **fingerInfos** when possible.
 

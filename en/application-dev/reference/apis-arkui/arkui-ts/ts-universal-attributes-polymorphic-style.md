@@ -12,7 +12,7 @@ You can set state-specific styles for components.
 >
 > - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - Since API version 11, you can also dynamically set component attributes through [attributeModifier](./ts-universal-attributes-attribute-modifier.md).
+> - Since API version 11, you can also dynamically set component attributes through [attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier).
 >
 > - Polymorphic styles only support [universal attributes](ts-component-general-attributes.md). If a polymorphic style does not take effect, the attribute you are modifying might be a private attribute of the component, for example, **fontColor** or [backgroundColor](./ts-universal-attributes-background.md#backgroundcolor18) of the [TextInput](./ts-basic-components-textinput.md) component. In this case, you can use **attributeModifier** to dynamically set these component-specific attributes.
 >

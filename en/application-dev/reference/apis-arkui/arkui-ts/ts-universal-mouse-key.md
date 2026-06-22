@@ -44,8 +44,8 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 
 | Name                   | Type                   | Read-Only   |  Optional  |     Description                         |
 | ---------------------- | -------------------------------------- |-------------- |------------- |  --------------------------- |
-| x                      | number                                  | No          |  No    |X coordinate of the mouse point in the component coordinate system based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
-| y                      | number                                    |  No        |  No    |Y coordinate of the mouse point in the component coordinate system based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
+| x                      | number                                  | No          |  No    |X coordinate of the mouse point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
+| y                      | number                                    |  No        |  No    |Y coordinate of the mouse point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
 | button                 | [MouseButton](ts-appendix-enums.md#mousebutton8)      |  No    |  No    |Mouse button.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
 | action                 | [MouseAction](ts-appendix-enums.md#mouseaction8)       |  No  |  No    |Mouse action.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
 | stopPropagation        | () => void                            |  No         |  No    |Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                     |
@@ -53,13 +53,14 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 | windowY<sup>10+</sup> | number                           |  No        |  No    |Y coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | displayX<sup>10+</sup> | number                          |  No        |  No    |X coordinate of the mouse position in the coordinate system of the current screen window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | displayY<sup>10+</sup> | number                         |  No         |  No    |Y coordinate of the mouse position in the coordinate system of the current screen window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| screenX<sup>(deprecated)</sup> | number                 |  No        |  No    |X coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>**NOTE**<br>This API is supported since API version 8 and deprecated since API version 10. You are advised to use **windowX** instead.|
+| screenX<sup>(deprecated)</sup> | number                 |  No        |  No    |X coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>Note: This API is supported since API version 8 and deprecated since API version 10. You are advised to use **windowX** instead.|
 | screenY<sup>(deprecated)</sup> | number                 |  No         |  No    |Y coordinate of the mouse position in the coordinate system of the current application window.<br>Unit: vp.<br>Note: This API is supported since API version 8 and deprecated since API version 10. You are advised to use **windowY** instead.|
 | rawDeltaX<sup>15+</sup> | number      |  No  |  Yes    |Movement increment of the mouse along the X axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | rawDeltaY<sup>15+</sup> | number      |  No    |  Yes   |Movement increment of the mouse along the Y axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | pressedButtons<sup>15+</sup> | MouseButton[]      |  No     | Yes    |Set of buttons being pressed.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | globalDisplayX<sup>20+</sup> | number       |  No   |  Yes   |X coordinate of the mouse position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | globalDisplayY<sup>20+</sup> | number      | No     |  Yes   |Y coordinate of the mouse position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| eventHandleId<sup>24+</sup> | number | No| Yes| Unique ID for handling an event.<br> Value range: [0, +∞).<br> Note: This field is used when events are dispatched through the [postInputEventWithStrategy](../js-apis-arkui-builderNode.md#postinputeventwithstrategy24) API. Its value increases by 100,000 each time an event is dispatched.<br> Dispatching events repeatedly with the same **eventHandleId** will cause abnormal event responses. Assign a value to this field only when constructing an event; no further operations are required in other scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 24.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## Example
 
@@ -81,7 +82,8 @@ struct MouseEventExample {
   build() {
     Column({ space: 20 }) {
       Button(this.hoverText)
-        .width(180).height(80)
+        .width(180)
+        .height(80)
         .backgroundColor(this.color)
         .fontSize(24)
         .onHover((isHover: boolean, event: HoverEvent) => {
@@ -97,7 +99,7 @@ struct MouseEventExample {
       Button('onMouse')
         .width(180).height(80)
         .fontSize(24)
-        // Use onMouse to listen to mouse events, parse the buttons, actions, coordinates, and other information, and combines the information.
+        // Use onMouse to listen for mouse events, parse the buttons, actions, coordinates, and other information, and combines the information.
         .onMouse((event: MouseEvent): void => {
           if (event) {
             // Determine the type of the pressed mouse button.
@@ -123,9 +125,6 @@ struct MouseEventExample {
             }
             // Determine the type of the triggered mouse action.
             switch (event.action) {
-              case MouseAction.Hover:
-                this.action = 'Hover';
-                break;
               case MouseAction.Press:
                 this.action = 'Press';
                 break;
@@ -134,6 +133,12 @@ struct MouseEventExample {
                 break;
               case MouseAction.Release:
                 this.action = 'Release';
+                break;
+              case MouseAction.ENTER_WINDOW:
+                this.action = 'ENTER_WINDOW';
+                break;
+              case MouseAction.LEAVE_WINDOW:
+                this.action = 'LEAVE_WINDOW';
                 break;
             }
             // Combine and display all information about the mouse event.
@@ -157,4 +162,3 @@ struct MouseEventExample {
 The figure below shows how the button looks when clicked.
 
 ![mouse](figures/mouse.gif)
-<!--no_check-->

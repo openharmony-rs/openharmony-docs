@@ -51,6 +51,7 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8). In non-even
 | changedTouches      | [TouchObject](#touchobject)[] | No| No| Information about touch points that changed and triggered the event. When using this property, you need to check whether it is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | stopPropagation      | () => void | No| No| Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | preventDefault<sup>12+</sup>      | () => void | No| No|  Blocks the default event.<br> Note: This API is only supported by the [Hyperlink](ts-container-hyperlink.md) component. Using it with unsupported components throws an exception. Asynchronous calls and **Modifier** API integration are not yet supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| eventHandleId<sup>24+</sup> | number | No| Yes| Unique ID for handling an event.<br> Value range: [0, +∞).<br> Note: This field is used when events are dispatched through the [postInputEventWithStrategy](../js-apis-arkui-builderNode.md#postinputeventwithstrategy24) API. Its value increases by 100,000 each time an event is dispatched.<br> Dispatching events repeatedly with the same **eventHandleId** will cause abnormal event responses. Assign a value to this field only when constructing an event; no further operations are required in other scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 24.<br>**Model restriction**: This API can be used only in the stage model.|
 
 **Error codes**
 
@@ -64,7 +65,7 @@ For details about the error codes, see [Interaction Event Error Codes](../errorc
 
 getHistoricalPoints(): Array&lt;HistoricalPoint&gt;
 
-Obtains all historical touch points for the current frame. The touch event frequency per frame varies by device. This API can be called only in [TouchEvent](#touchevent). This API is only available within [TouchEvent](#touchevent) during [onTouch](#ontouch) invocations. Typically, [onTouch](#ontouch) is invoked once per frame. If multiple [TouchEvent](#touchevent) instances are received in a single frame, the last point is returned through **onTouch**, and the remaining points are stored as historical points. For multi-touch events within the same frame, multiple** onTouch** calls may occur.
+Obtains all historical touch points for the current frame. The touch event frequency per frame varies by device. This API can be called only in [TouchEvent](#touchevent). This API is only available within [TouchEvent](#touchevent) during [onTouch](#ontouch) invocations. Typically, [onTouch](#ontouch) is called once per frame. If multiple [TouchEvent](#touchevent) instances are received in a single frame, the last point is returned through [onTouch](#ontouch), and the remaining points are stored as historical points. For multi-touch events within the same frame, multiple** onTouch** calls may occur.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -85,8 +86,8 @@ Obtains all historical touch points for the current frame. The touch event frequ
 | ------- | ----------------------------------|-----| -------------- | ------------------------------------- |
 | type    | [TouchType](ts-appendix-enums.md#touchtype) | No| No| Type of the touch event.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                     |
 | id      | number                                      | No| No| Unique identifier of a finger.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                     |
-| x       | number                                      | No| No| X coordinate of the touch point in the component coordinate system based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| y       | number                                      | No| No| Y coordinate of the touch point in the component coordinate system based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| x       | number                                      | No| No| X coordinate of the touch point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| y       | number                                      | No| No| Y coordinate of the touch point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event-responsive component.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | windowX<sup>10+</sup>  | number                       | No| No| X coordinate of the touch point in the coordinate system of the current application window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
 | windowY<sup>10+</sup>  | number                       | No| No| Y coordinate of the touch point in the coordinate system of the current application window.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
 | displayX<sup>10+</sup> | number                       | No| No| X coordinate of the touch point in the coordinate system of the current application screen.<br>Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
@@ -199,4 +200,3 @@ struct TouchExample {
 ```
 
 ![touch](figures/touch.gif)
-<!--no_check-->
