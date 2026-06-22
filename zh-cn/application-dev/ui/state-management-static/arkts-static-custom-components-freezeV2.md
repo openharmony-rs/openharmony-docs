@@ -191,9 +191,8 @@ struct FreezeChild {
 当[NavDestination](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)不可见时，会将其子自定义组件设置成非激活态，不会触发组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Monitor回调进行刷新。
 
 <!-- @[FreezeNavigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezeNavigation.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Builder, Button, ButtonType, ClickEvent, Column, ComponentV2, Consumer, Entry, IMonitor, Local, Monitor, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, Param, Provider, Text } from '@kit.ArkUI';
 
 @Entry
