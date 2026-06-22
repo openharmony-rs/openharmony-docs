@@ -859,7 +859,7 @@ writeShort(val: number): void
 
   | 参数名 | 类型   | 必填 | 说明 |
   | ------ | ------ | ---  | ---  |
-  | val    | number | 是   | 要写入的短整数值。取值范围：[-2^15, 2^15-1]。适用于传输小范围整数数据(如端口号、标识ID等)。超出此范围会导致数据截断或写入失败。对于0-255范围建议使用writeByte,对于标准整数建议使用writeInt,对于大整数建议使用writeLong。 |
+  | val    | number | 是   | 要写入的短整数值。取值范围：[-2^15, 2^15-1]。适用于传输小范围整数数据(如端口号、标识ID等)。超出此范围会导致数据截断或写入失败。对于0-255范围建议使用writeByte，对于标准整数建议使用writeInt，对于大整数建议使用writeLong。 |
 
 **错误码：**
 
@@ -1153,7 +1153,7 @@ try {
 
 readFloat(): number
 
-从MessageSequence实例中读取浮点值。由于系统内部对float类型的数据是按照double处理的,读取的数据按double精度返回。
+从MessageSequence实例中读取浮点值。由于系统内部对float类型的数据是按照double处理的，读取的数据按double精度返回。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1364,7 +1364,7 @@ writeChar(val: number): void
 
   | 参数名 | 类型   | 必填 | 说明                 |
   | ------ | ------ | ---- | -------------------- |
-  | val    | number | 是   | 要写入的单个字符值。取值范围：[0, 65535],对应Unicode字符编码范围。超出此范围可能导致字符编码异常。 |
+  | val    | number | 是   | 要写入的单个字符值。取值范围：[0, 65535]，对应Unicode字符编码范围。超出此范围可能导致字符编码异常。 |
 
 **错误码：**
 
@@ -1738,7 +1738,7 @@ readByteArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明               |
   | ------ | -------- | ---- | ------------------ |
-  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的字节数组,需预先创建空数组且长度应与写入时的数组长度一致。 |
+  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的字节数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -1866,7 +1866,7 @@ readShortArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明                 |
   | ------ | -------- | ---- | -------------------- |
-  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的短整数数组,需预先创建空数组且长度应与写入时的数组长度一致。 |
+  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的短整数数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -1990,7 +1990,7 @@ readIntArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明               |
   | ------ | -------- | ---- | ------------------ |
-  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的整数数组,需预先创建空数组且长度应与写入时的数组长度一致。 |
+  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的整数数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -2114,7 +2114,7 @@ readLongArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明                 |
   | ------ | -------- | ---- | -------------------- |
-  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的长整数数组,需预先创建空数组且长度应与写入时的数组长度一致。 |
+  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的长整数数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -2362,7 +2362,7 @@ readDoubleArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明                     |
   | ------ | -------- | ---- | ------------------------ |
-  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的双精度浮点数组,需预先创建空数组且长度应与写入时的数组长度一致。 |
+  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的双精度浮点数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -2486,7 +2486,7 @@ readBooleanArray(dataIn: boolean[]): void
 
   | 参数名 | 类型      | 必填 | 说明               |
   | ------ | --------- | ---- | ------------------ |
-  | dataIn | boolean[] | 是   | 用于存储从MessageSequence读取的布尔数组,需预先创建空数组且长度应与写入时的数组长度一致。 |
+  | dataIn | boolean[] | 是   | 用于存储从MessageSequence读取的布尔数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
