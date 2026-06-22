@@ -76,6 +76,7 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 - Function-with-Receiver的返回值声明为this，可以用于链式调用。
 
   <!-- @[ReceiverChain](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverChain.ets) --> 
+  
   ``` TypeScript
   import { Color, Component, Entry, Row, Text, TextAttribute } from '@kit.ArkUI';
   
