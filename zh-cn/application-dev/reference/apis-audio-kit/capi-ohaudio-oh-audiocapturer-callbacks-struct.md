@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callbacks；
+typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callbacks;
 ```
 
 ## 概述
@@ -44,7 +44,7 @@ typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callback
 ## 成员函数说明
 
 > **说明：**
-> 以下回调接口的返回值没有枚举定义，当前版本实现并不按返回值区分处理。但为保证后续版本可扩展，建议不要对返回值做额外处理，或者将返回值固定为0。
+> 以下回调接口的返回值没有枚举定义，当前版本实现并不按返回值区分处理。但为保证后续版本可扩展，建议不要对返回值做额外处理，此时默认返回0；如果手动给定返回值，建议固定为0。
 
 ### OH_AudioCapturer_OnReadData()
 
