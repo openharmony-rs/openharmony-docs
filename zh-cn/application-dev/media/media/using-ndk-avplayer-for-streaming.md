@@ -111,7 +111,7 @@
        // 设置播放策略。
        OH_AVPlaybackStrategy *myStrategy = OH_AVPlaybackStrategy_Create();
        double waterLine = 6.0;
-       OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(myStrategy, waterLine); // 直播场景设置智能追帧。
+       OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(myStrategy, waterLine); //直播场景设置智能追帧。
        int32_t ret = OH_AVPlayer_SetPlaybackStrategy(player, myStrategy);
        LOG("OH_AVPlayer_SetPlaybackStrategy ret:%{public}d", ret);
        OH_AVPlaybackStrategy_Destroy(myStrategy);
@@ -159,7 +159,7 @@
    ret = OH_AVPlayer_Prepare(player); // 设置播放源后触发该状态上报。
    if (ret != AV_ERR_OK) {
        // 处理异常。
-       LOG("player %{public}s", "OH_AVPlayer_Prepare Err");
+       LOG("player  %{public}s", "OH_AVPlayer_Prepare Err");
    }
    ```
 
