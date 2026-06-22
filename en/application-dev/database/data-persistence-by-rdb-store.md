@@ -6,7 +6,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:40:06.647Z pushedAt=2026-06-22T08:22:54.155Z -->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:40:06.647Z pushedAt=2026-06-22T10:04:33.363Z -->
 
 ## When to Use
 
@@ -392,7 +392,7 @@ The following example demonstrates how to perform FTS with Chinese keywords:
    }
    if (store !== undefined) {
      try {
-       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['测试']);
+       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['test']);
        while (resultSet.goToNextRow()) {
          const name = resultSet.getValue(resultSet.getColumnIndex('name'));
          hilog.info(DOMAIN, 'rdbDataPersistence', `name=${name}`);
@@ -525,3 +525,9 @@ The following example demonstrates how to perform FTS with Chinese keywords:
      hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in deleting RdbStore.');
    });
    ```
+
+
+
+ 
+
+ 
