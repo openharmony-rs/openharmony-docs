@@ -4,7 +4,8 @@
 <!--Owner: @yao_dashuai-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:22:50.938Z pushedAt=2026-06-22T03:21:12.895Z -->
 
 The **Timer** module provides basic timer capabilities. You can use the APIs of this module to execute functions at the specified time.
 

@@ -5,6 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:21:23.539Z pushedAt=2026-06-22T03:21:12.868Z -->
 
 ```c
 typedef struct {...} JSVM_DefineClassOptions
@@ -13,6 +14,8 @@ typedef struct {...} JSVM_DefineClassOptions
 ## Overview
 
 Defines the options of a class.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
 

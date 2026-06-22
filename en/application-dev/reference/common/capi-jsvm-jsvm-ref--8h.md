@@ -1,10 +1,12 @@
 # JSVM_Ref__*
+
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:22:08.308Z pushedAt=2026-06-22T03:21:12.882Z -->
 
 ```c
 typedef struct JSVM_Ref__* JSVM_Ref
@@ -13,6 +15,12 @@ typedef struct JSVM_Ref__* JSVM_Ref
 ## Overview
 
 Defines the reference to the JavaScript value.
+
+**Use cases:** Holding references to JavaScript objects in native-JavaScript interaction scenarios.
+
+**Features:** A stable reference to a JavaScript value is provided, preventing it from being garbage collected; passing JavaScript values across functions and scopes.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
 

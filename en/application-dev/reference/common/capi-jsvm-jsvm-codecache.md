@@ -1,10 +1,11 @@
 # JSVM_CodeCache
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:20:47.134Z pushedAt=2026-06-22T03:21:12.853Z -->
 
 ```c
 typedef struct {...} JSVM_CodeCache
@@ -13,6 +14,8 @@ typedef struct {...} JSVM_CodeCache
 ## Overview
 
 Defines a struct that represents the code cache when **id** is **JSVM_COMPILE_CODE_CACHE**.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
 
