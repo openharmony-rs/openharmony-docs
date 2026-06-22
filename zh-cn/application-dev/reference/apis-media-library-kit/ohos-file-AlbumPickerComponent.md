@@ -8,7 +8,7 @@
 
 应用可以在布局中嵌入AlbumPickerComponent组件，通过此组件，应用无需申请权限，即可访问公共目录中的相册列表。
 
-需要注意的是，AlbumPickerComponent不能嵌套使用，且不建议在AlbumPickerComponent上覆盖设置overlay属性或者层级更高的组件，否则将导致AlbumPickerComponent无法接受手势事件。
+请注意AlbumPickerComponent不支持嵌套，且不应在其上覆盖设置overlay属性或更高层级组件，以免导致手势事件失效。
 
 需配合[PhotoPickerComponent](ohos-file-PhotoPickerComponent.md)一起使用，用户通过AlbumPickerComponent组件选择对应相册并通知PhotoPickerComponent组件刷新为对应相册的图片和视频。
 
