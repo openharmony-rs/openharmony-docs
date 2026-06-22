@@ -19,16 +19,6 @@
 ## 概述
 Web组件属性用于在ArkUI声明式语法下以链式调用的方式配置Web组件的网页加载行为、安全策略、运行环境与交互能力，是定制Web组件行为的主要入口。其中通用的样式与布局类属性（如尺寸、边距、背景、可见性等）请参考[尺寸设置](../apis-arkui/arkui-ts/ts-universal-attributes-size.md)，本章仅描述Web组件特有的属性；运行期动态控制类能力（如加载URL、前进后退、注册/反注册JS对象、运行JavaScript、注入CSS等）请配合[WebviewController](./arkts-apis-webview-WebviewController.md)使用。
 
-**设计思想：**
-
-- **安全优先：** 涉及文件系统、DOM Storage、地理位置、摄像头、麦克风、Cookie、自动播放等敏感能力的属性默认采用最小权限策略，即未显式开启时默认关闭。开发者应按业务实际需要最小化开启权限，避免一次性放开所有开关引入安全风险。
-
-- **渐进增强：** 建议先确保基础网页可以正常加载与渲染，再按需叠加多媒体播放、字体注入、广告拦截、智能分流、多窗口等增强能力，避免首屏阶段一次性启用过多可选项导致加载与渲染性能下降。
-
-- **声明优先、初始化阶段配置：** 属性应在Web组件创建阶段以链式调用一次性声明。部分属性（如[javaScriptProxy](#javascriptproxy)）的对象参数不支持更新；运行期动态变更其他属性可能引发页面重新加载或行为不一致。
-
-- **属性与控制器分工：** 属性负责声明Web组件的能力开关与运行环境；动态行为请使用[WebviewController](./arkts-apis-webview-WebviewController.md)的对应方法，二者配合构成完整的Web开发能力。
-
 ## domStorageAccess
 
 ArkTS-Dyn: domStorageAccess(domStorageAccess: boolean)
