@@ -247,7 +247,7 @@ import { collections } from '@kit.ArkTS';
 
 // 反例：
 // import { collections } from '@kit.ArkTS';
-//
+
 // try {
 //   let arr1: collections.Array<Array<number>> = new collections.Array<Array<number>>();
 //   let arr2: Array<number> = new Array<number>();
