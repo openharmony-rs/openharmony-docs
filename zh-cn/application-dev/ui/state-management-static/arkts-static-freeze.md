@@ -38,9 +38,8 @@ V1自定义组件冻结支持场景为：
 页面1：
 
 <!-- @[FreezePageRouter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezePageRouter.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, Column, Component, Entry, StorageLink, Text, Watch } from '@kit.ArkUI';
 
 @Entry
@@ -80,7 +79,6 @@ struct Page1 {
     .width('100%')
   }
 }
-
 ```
 
 页面2：
