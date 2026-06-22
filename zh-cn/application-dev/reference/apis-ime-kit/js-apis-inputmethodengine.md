@@ -4987,11 +4987,11 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 
 | 名称                 | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| landscapeRect        | [window.Rect](../apis-arkui/arkts-apis-window-i.md#rect7)         | 否   | 是   | 横屏状态时输入法面板窗口的位置大小。<br/>- 当fullScreenMode不填写或值为false时，此属性为必选。 |
-| portraitRect         | [window.Rect](../apis-arkui/arkts-apis-window-i.md#rect7)         | 否   | 是   | 竖屏状态时，输入法面板窗口的位置大小。<br/>- 当fullScreenMode不填写或值为false时，此属性为必选。 |
-| landscapeAvoidY      | number                                                       | 否   | 是   | 横屏状态时，面板中的避让线距离面板顶部的距离，单位px。默认值为0。<br/>- 应用内其他系统组件会对避让线以下的输入法面板区域进行避让。<br/>- 面板为固定态时，避让线到屏幕底部的高度不能超过屏幕高度的70%。 |
+| landscapeRect        | [window.Rect](../apis-arkui/arkts-apis-window-i.md#rect7)    | 否   | 是   | 横屏状态时输入法面板窗口的位置大小。<br/>- 当fullScreenMode不填写或值为false时，此属性为必选。 |
+| portraitRect         | [window.Rect](../apis-arkui/arkts-apis-window-i.md#rect7)    | 否   | 是   | 竖屏状态时，输入法面板窗口的位置大小。<br/>- 当fullScreenMode不填写或值为false时，此属性为必选。 |
+| landscapeAvoidY      | number                                                       | 否   | 是   | 横屏状态时，面板中的避让线距离面板顶部的距离，单位px。默认值为0。<br/>- 应用内其他系统组件会对避让线以下的输入法面板区域进行避让。<br/>- 面板为固定态时，避让线到屏幕底部的高度不能超过屏幕高度的70%。当面板高度大于屏幕高度70%时，取默认值0将无法通过此校验，需要开发者手动设置，使得避让线到屏幕底部的高度不超过屏幕高度的70%。 |
 | landscapeInputRegion | Array&lt;[window.Rect](../apis-arkui/arkts-apis-window-i.md#rect7)&gt; | 否   | 是   | 横屏状态时，面板接收输入事件的区域。<br/>- 数组大小限制为[1, 4]。默认值为横屏时的面板大小。<br/>- 传入的热区位置是相对于输入法面板窗口左顶点的位置。 |
-| portraitAvoidY       | number                                                       | 否   | 是   | 竖屏状态时，面板中的避让线距离面板顶部的距离，单位px。默认值为0。<br/>- 应用内其他系统组件会对避让线以下的输入法面板区域进行避让。<br/>- 面板为固定态时，避让线到屏幕底部的高度不能超过屏幕高度的70%。 |
+| portraitAvoidY       | number                                                       | 否   | 是   | 竖屏状态时，面板中的避让线距离面板顶部的距离，单位px。默认值为0。<br/>- 应用内其他系统组件会对避让线以下的输入法面板区域进行避让。<br/>- 面板为固定态时，避让线到屏幕底部的高度不能超过屏幕高度的70%。当面板高度大于屏幕高度70%时，取默认值0将无法通过此校验，需要开发者手动设置，使得避让线到屏幕底部的高度不超过屏幕高度的70%。 |
 | portraitInputRegion  | Array&lt;[window.Rect](../apis-arkui/arkts-apis-window-i.md#rect7)&gt; | 否   | 是   | 竖屏状态时，面板接收输入事件的区域。<br/>- 数组大小限制为[1, 4]。默认值为竖屏时的面板大小。<br/>- 传入的热区位置是相对于输入法面板窗口左顶点的位置。 |
 | fullScreenMode       | boolean                                                      | 否   | 是   | 是否开启全屏模式。默认值为false。<br/>- 值为true，landscapeRect和portraitRect可不填写。<br/>- 值为false，landscapeRect和portraitRect为必选属性。 |
 
