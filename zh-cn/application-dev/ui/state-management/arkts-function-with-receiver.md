@@ -46,16 +46,14 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 
   <!-- @[ReceiverParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverParam.ets) --> 
   ``` TypeScript
-  'use static'
-
   import { Color, Component, Entry, Row, Text, TextAttribute } from '@kit.ArkUI';
-
+  
   function fancy(this: TextAttribute, fontSize: number): TextAttribute {
     this.fontColor(Color.Red);
     this.fontSize(fontSize);
     return this;
   }
-
+  
   @Entry
   @Component
   struct FancyUse {
@@ -79,20 +77,18 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 
   <!-- @[ReceiverChain](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverChain.ets) --> 
   ``` TypeScript
-  'use static'
-
   import { Color, Component, Entry, Row, Text, TextAttribute } from '@kit.ArkUI';
-
+  
   function fancySize(this: TextAttribute, fontSize: number): TextAttribute {
     this.fontSize(fontSize);
     return this;
   }
-
+  
   function fancyColor(this: TextAttribute): TextAttribute {
     this.fontColor(Color.Red);
     return this;
   }
-
+  
   @Entry
   @Component
   struct FancyUse {
@@ -115,25 +111,23 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 
   <!-- @[ReceiverEvent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverEvent.ets) --> 
   ``` TypeScript
-  'use static'
-
   import { ClickEvent, Color, Component, Entry, Row, Text, TextAttribute, State } from '@kit.ArkUI';
-
+  
   function makeMeClick(this: TextAttribute, onClick: (e: ClickEvent) => void): TextAttribute {
     this.backgroundColor(Color.Pink);
     this.onClick(onClick);
     return this;
   }
-
+  
   @Entry
   @Component
   struct FancyUse {
     @State label: string = 'Hello World';
-
+  
     onClickHandler() {
       this.label = 'Hello ArkUI';
     }
-
+  
     build() {
       Row() {
         Text(`${this.label}`)
@@ -154,16 +148,14 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 
   <!-- @[ReceiverState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverState.ets) --> 
   ``` TypeScript
-  'use static'
-
   import { ClickEvent, Color, Component, Entry, Row, Text, TextAttribute, State } from '@kit.ArkUI';
-
+  
   function fancy(this: TextAttribute, fontSize: number): TextAttribute {
     this.fontColor(Color.Red);
     this.fontSize(fontSize);
     return this;
   }
-
+  
   @Entry
   @Component
   struct FancyUse {
@@ -199,9 +191,8 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 
 
 <!-- @[ReceiverScenarioBefore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverScenarioBefore.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Color, Component, Entry, FontStyle, Row, Text } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -240,9 +231,8 @@ Function-with-Receiver将样式组合复用，使得代码更加简洁，增强�
 
 
 <!-- @[ReceiverScenarioAfter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverScenarioAfter.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Color, Component, FontStyle, Entry, Row, Text, TextAttribute, State } from '@kit.ArkUI';
 
 function fancyText(this: TextAttribute, weightValue: int, color: Color): TextAttribute {
