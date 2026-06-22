@@ -295,7 +295,7 @@ struct TestBuilderIndex {
   build() {
     Row() {
       Column() {
-        this.builderObj.globalBuilder.builder(this.message, 20)
+        this.builderObj.globalBuilder.builder(this.message, 20);
       }
       .width('100%')
     }
