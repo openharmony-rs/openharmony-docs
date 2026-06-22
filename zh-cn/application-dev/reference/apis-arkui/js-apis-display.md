@@ -1990,7 +1990,6 @@ on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -2040,7 +2039,6 @@ off(type: 'availableAreaChange', callback?: Callback&lt;Rect&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
