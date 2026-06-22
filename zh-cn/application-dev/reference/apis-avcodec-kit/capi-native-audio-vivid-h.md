@@ -333,7 +333,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *bui
 
 **描述**
 
-从Audio Vivid元数据构造器内删除一个音频对象。只有通过[OH_AudioVividMetaBuilder_AddObject](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_addobject)函数创建的音频对象可以被删除。通过[OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy)函数新增的音频对象无法删除。删除音频对象后，其他音频对象的索引保持不变。
+从Audio Vivid元数据构造器内删除一个音频对象。只有通过[OH_AudioVividMetaBuilder_AddObject](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_addobject)函数新增的音频对象可以被删除。通过[OH_AudioVividMetaBuilder_CreateEmptyBuilder](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_createemptybuilder)函数新增的音频对象无法删除。删除音频对象后，其他音频对象的索引保持不变。
 
 **起始版本：** 26.0.0
 
