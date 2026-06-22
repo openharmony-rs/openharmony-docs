@@ -79,3 +79,13 @@ import { wantConstant } from '@kit.AbilityKit';
 | WINDOW        | 0 | 表示独立窗口拉起模式。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。  |
 | EMBEDDED_FULL       | 1 | 表示嵌入式全屏拉起模式。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | EMBEDDED_HALF<sup>23+</sup>       | 2 | 表示嵌入式半屏拉起模式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+
+## Action<sup>26+</sup>
+
+表示要执行的通用操作。
+
+**系统能力**：SystemCapability.Ability.AbilityBase
+
+| 名称                                | 值 | 说明           |
+| ----------------------------------- |---|--------------|
+| ACTION_SEND_TO_DATA        | ohos.want.action.sendToData | 指示启动向指定接收方发送消息界面的操作。  |
