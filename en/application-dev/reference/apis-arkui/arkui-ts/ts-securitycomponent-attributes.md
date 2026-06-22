@@ -582,7 +582,7 @@ Sets the alignment rules for child components within a relative container. This 
 
 | Name | Type                                        | Mandatory | Description                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9-object-description) | Yes   | Alignment rule configuration object that defines anchor alignment options (**top**, **bottom**, **left**, **right**, and **center**). Specifies the alignment position and method of the security component in [RelativeContainer](ts-container-relativecontainer.md). |
+| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9) | Yes   | Alignment rule configuration object that defines anchor alignment options (**top**, **bottom**, **left**, **right**, and **center**). Specifies the alignment position and method of the security component in [RelativeContainer](ts-container-relativecontainer.md). |
 
 **Return value**
 
@@ -859,7 +859,7 @@ Sets the style of the system focus box for the security component.
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| style  | [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12-object-description) | Yes   | Configuration object for the focus box style. Contains properties such as **margin** (the spacing between the focus box and the component) and **strokeColor** (the stroke color of the focus box) to customize the appearance of the system focus box. |
+| style  | [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12) | Yes   | Configuration object for the focus box style. Contains properties such as **margin** (the spacing between the focus box and the component) and **strokeColor** (the stroke color of the focus box) to customize the appearance of the system focus box. |
 
 **Return value**
 
