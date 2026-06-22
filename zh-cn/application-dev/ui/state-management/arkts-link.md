@@ -215,30 +215,30 @@
     【正例】
 
     <!-- @[link_usage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage2.ets) --> 
-
+    
     ``` TypeScript
     class LinkInfo2 {
       public info: string = 'Hello';
     }
-
+    
     @Component
     struct LinkChild2 {
       @Link msg: string;
       @Link info: LinkInfo2;
-
+    
       build() {
         Text(this.msg + this.info.info)
           .fontSize(20)
           .margin(10)
       }
     }
-
+    
     @Entry
     @Component
     struct LinkExample2 {
       @State message: string = 'Hello';
       @State info: LinkInfo2 = new LinkInfo2();
-
+    
       build() {
         Column() {
           // 正确写法
