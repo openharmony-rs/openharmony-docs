@@ -56169,5 +56169,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/avcodec/video-smart-fluency-decoding.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp",
+				"functions":[
+					{
+						"end_line":112,
+						"name":"configure_full_baseline",
+						"start_line":86
+					},
+					{
+						"end_line":344,
+						"name":"onUserSpeedChanged",
+						"start_line":315
+					},
+					{
+						"end_line":366,
+						"name":"onThermalWarningReceived",
+						"start_line":346
+					}
+				]
+			}
+		]
 	}
 ]
