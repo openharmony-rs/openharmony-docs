@@ -4501,7 +4501,7 @@ struct Index {
 ![UpdateParagraphAndTypingStyle](figures/richEditorUpdateParagraphAndTypingStyle.gif)
 
 ### 示例8（设置文本字重与阴影）
-通过[updateSpanStyle](#updateSpanStyle)接口设置文本字重与阴影。
+通过[updateSpanStyle](#updatespanstyle)接口设置文本字重与阴影。
 
 ``` ts
 @Entry
