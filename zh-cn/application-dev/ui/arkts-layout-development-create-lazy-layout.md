@@ -343,6 +343,7 @@ LazyVWaterFlowLayout() {
 ``` TypeScript
 List({ space: 10 }) {
   // ...
+  // 瀑布流布局
   LazyVWaterFlowLayout() {
     LazyForEach(this.flowData, (item: number) => {
       // ...
@@ -462,6 +463,7 @@ export struct ListNestedLazyLayout {
               .fontColor(Color.Gray)
           }
 
+          // 等宽的网格布局
           LazyVGridLayout() {
             LazyForEach(this.gridData, (item: number) => {
               Text('item' + item.toString())
@@ -479,6 +481,7 @@ export struct ListNestedLazyLayout {
             console.info('LazyVGridLayout visible indexes: start: ' + start + ', end: ' + end);
           })
 
+          // 不等宽的网格布局
           LazyVGridLayout() {
             LazyForEach(this.gridData, (item: number) => {
               Text('item' + (this.gridData.totalCount() + item).toString())
@@ -506,6 +509,7 @@ export struct ListNestedLazyLayout {
               .fontColor(Color.Gray)
           }
 
+          // 瀑布流布局
           LazyVWaterFlowLayout() {
             LazyForEach(this.flowData, (item: number) => {
               Text('item' + item.toString())
@@ -829,7 +833,7 @@ build() {
               }, (item: number) => `${index}_${item}`)
             }
             // ...
-            .header(this.MonthHeaderBuilder(group.title, group.photos.totalCount()))
+            .header(this.MonthHeaderBuilder(group.title, group.photos.totalCount())) // 内层分组header：显示月份标题
             // ...
           }, (group: PhotoGroup) => group.title)
           // ...
@@ -862,7 +866,7 @@ build() {
           // ...
         }
         // ...
-        .footer(this.GroupFooterBuilder())
+        .footer(this.GroupFooterBuilder()) // 外层footer：显示"已经到底了"
       }
       .scrollable(ScrollDirection.Vertical)
       .width('100%')
@@ -1069,12 +1073,12 @@ export struct LazyLayoutGroup {
               .columnsTemplate('1fr 1fr 1fr')
               .rowsGap(LengthMetrics.vp(2))
               .columnsGap(LengthMetrics.vp(2))
-              .header(this.MonthHeaderBuilder(group.title, group.photos.totalCount()))
+              .header(this.MonthHeaderBuilder(group.title, group.photos.totalCount())) // 内层分组header：显示月份标题
               .sticky(StickyStyle.Header) // header吸顶
             }, (group: PhotoGroup) => group.title)
           }
           .space(LengthMetrics.vp(12))
-          .footer(this.GroupFooterBuilder())
+          .footer(this.GroupFooterBuilder()) // 外层footer：显示"已经到底了"
         }
         .scrollable(ScrollDirection.Vertical)
         .width('100%')
