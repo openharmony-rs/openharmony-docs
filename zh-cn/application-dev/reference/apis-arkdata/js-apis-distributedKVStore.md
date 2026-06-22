@@ -5987,8 +5987,7 @@ try {
     }
     console.info('Succeeded in putting');
     if (kvStore != null) {
-      // 获取指定键的值
-      kvStore.get(KEY_TEST_STRING_ELEMENT, (err: BusinessError, data: boolean | string | number | Uint8Array) => {
+      kvStore.get('localDeviceId', KEY_TEST_STRING_ELEMENT, (err: BusinessError, data: boolean | string | number | Uint8Array) => {
         if (err) {
           console.error(`Failed to get. Code: ${err.code}, message: ${err.message}`);
           return;
