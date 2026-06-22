@@ -26,7 +26,7 @@ on(type: 'error', observer: ErrorObserver): number
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
-配对调用： 与[errorManager.off('error')](#errormanagerofferror18)方法配合使用，使用完成后可调用off方法注销监听器。
+配对调用： 与[errorManager.off('error')](#errormanagerofferror)方法配合使用，使用完成后可调用off方法注销监听器。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
