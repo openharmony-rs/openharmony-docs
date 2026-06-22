@@ -1,8 +1,8 @@
 # Interfaces (Others)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -133,7 +133,7 @@ The **audioSourceType** and **videoSourceType** parameters are used to distingui
 | profile         | [AVRecorderProfile](#avrecorderprofile9) | No  | No  | Recording profile. This parameter is mandatory.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | url             | string                                   | No  | No  | Recording output URL: fd://xx (fd number).<br>![img](figures/en-us_image_url.png)<br>This parameter is mandatory.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 |fileGenerationMode<sup>12+</sup> | [FileGenerationMode](arkts-apis-media-e.md#filegenerationmode12)  | No  |  Yes  |  Mode for creating the file, which is used together with [on('photoAssetAvailable')](arkts-apis-media-AVRecorder.md#onphotoassetavailable12).|
-| rotation<sup>(deprecated)</sup>        | number                                   | No  | Yes  | Rotation angle of the recorded video. The value can be 0 (default), 90, 180, or 270 for MP4 videos.<br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use **[AVMetadata](#avmetadata11).videoOrientation** instead.<br>If both parameters are set, **[AVMetadata](#avmetadata11).videoOrientation** is used.    |
+| rotation<sup>(deprecated)</sup>        | number                                   | No  | Yes  | Rotation angle of the video to record, in degrees. For MP4 videos, the value can be **0°** (default), **90°**, **180°**, or **270°**.<br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use **[AVMetadata](#avmetadata11).videoOrientation** instead.<br>If both parameters are set, **[AVMetadata](#avmetadata11).videoOrientation** is used.    |
 | location<sup>(deprecated)</sup>        | [Location](#location)                    | No  | Yes  | Geographical location of the recorded video. By default, the geographical location information is not recorded.<br>This API is supported since API version 6 and deprecated since API version 12. You are advised to use **[AVMetadata](#avmetadata11).location** instead.<br>If both parameters are set, **[AVMetadata](#avmetadata11).location** is used.|
 | metadata<sup>12+</sup>        | [AVMetadata](#avmetadata11)              | No  | Yes  | Metadata. For details, see [AVMetadata](#avmetadata11).                 |
 | maxDuration<sup>18+</sup>        | number             | No  | Yes  | Maximum recording duration, in seconds. The value range is [1, 2^31-1]. If an invalid value is provided, it is reset to the maximum allowed duration. Once the recording reaches the specified duration, it stops automatically and notifies via the stateChange callback that the recording has stopped: [AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) = 'stopped', [StateChangeReason](arkts-apis-media-e.md#statechangereason9) = BACKGROUND.|
@@ -475,4 +475,3 @@ Describes audio recording configurations.
 | uri                                 | string                                       | No  | No  | Audio output URI. Supported: fd://xx (fd number)<br>![](figures/en-us_image_url.png) <br>The file must be created by the caller and granted with proper permissions.<br>Note: This parameter is supported since API version 6 and deprecated since API version 9. You are advised to use **url** in [AVRecorderConfig](#avrecorderconfig9) instead.|
 | audioEncoderMime<sup>8+</sup>       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Yes  | Container encoding format.<br>Note: This parameter is supported since API version 8 and deprecated since API version 9. You are advised to use **audioCodec** in [AVRecorderProfile](#avrecorderprofile9) instead.|
 | fileFormat<sup>8+</sup>             | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | No  | Yes  | Audio encoding format.<br>Note: This parameter is supported since API version 8 and deprecated since API version 9. You are advised to use **fileFormat** in [AVRecorderProfile](#avrecorderprofile9) instead.|
-<!--no_check-->

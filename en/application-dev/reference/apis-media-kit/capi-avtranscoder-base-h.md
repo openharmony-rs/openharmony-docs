@@ -1,10 +1,12 @@
 # avtranscoder_base.h
+
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @wang-haizhou6-->
 <!--Designer: @HmQQQ-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=320793da1b58e6a20565f5e582fc3e50f69572ee translatedAt=2026-06-22T03:38:47.632Z pushedAt=2026-06-22T09:23:26.603Z -->
 
 ## Overview
 
@@ -67,7 +69,6 @@ Enumerates the transcoding states.
 | AVTRANSCODER_CANCELLED = 4 | The transcoding process has been canceled.|
 | AVTRANSCODER_COMPLETED = 5 | The transcoding process is completed.|
 
-
 ## Function Description
 
 ### OH_AVTranscoder_OnStateChange()
@@ -83,7 +84,6 @@ Defines a callback invoked when the state of the transcoding process changes.
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -107,13 +107,12 @@ Defines a callback invoked when an error occurs during the transcoding process.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | Pointer to an OH_AVTranscoder instance.|
-| int32_t errorCode | Error code.<br>                  **AV_ERR_NO_MEMORY**: No memory. The value is **1**.<br>                  **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed. The value is **2**.<br>                  **AV_ERR_INVALID_VAL**: The parameter check fails. The value is **3**.<br>                  **AV_ERR_IO**: I/O error. The value is **4**.<br>                  **AV_ERR_INVALID_STATE**: The operation is not supported in the current state. The value is **8**.<br>                  **AV_ERR_UNSUPPORT**: The function is not supported. The value is **9**.|
+| int32_t errorCode | Error code.<br>                  **AV_ERR_NO_MEMORY**: No memory. Value: **1**.<br>                  **AV_ERR_OPERATE_NOT_PERMIT**: Operation not permitted. Value: **2**.<br>                  **AV_ERR_INVALID_VAL**: Parameter check failed. Value: **3**.<br>                  **AV_ERR_IO**: I/O error. Value: **4**.<br>                  **AV_ERR_INVALID_STATE**: The current state does not support this operation. Value: **8**.<br>                  **AV_ERR_UNSUPPORT**: Unsupported API. Value: **9**. |
 | const char *errorMsg | Pointer to the error message.|
 | void *userData | Pointer to user-defined data.|
 
@@ -131,11 +130,10 @@ Defines a callback invoked when the progress of the transcoding process is updat
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | Pointer to an OH_AVTranscoder instance.|
-| int32_t progress | Transcoding progress.|
+| int32_t progress | Transcoding progress in percentage. |
 | void *userData | Pointer to user-defined data.|

@@ -1,10 +1,11 @@
 # Deprecated Interface (VideoPlayer, deprecated)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=320793da1b58e6a20565f5e582fc3e50f69572ee translatedAt=2026-06-22T03:36:27.803Z pushedAt=2026-06-22T09:23:26.561Z -->
 
 VideoPlayer is a class for video playback management. It provides APIs to manage and play videos. Before calling any API in VideoPlayer, you must use [createVideoPlayer()](arkts-apis-media-f.md#mediacreatevideoplayerdeprecated) to create a VideoPlayer instance.
 

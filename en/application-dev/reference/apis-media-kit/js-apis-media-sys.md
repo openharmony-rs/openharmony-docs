@@ -1,10 +1,12 @@
 # @ohos.multimedia.media (Media) (System API)
+
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=320793da1b58e6a20565f5e582fc3e50f69572ee translatedAt=2026-06-22T03:39:21.809Z pushedAt=2026-06-22T09:23:26.604Z -->
 
 The multimedia subsystem provides a set of simple and easy-to-use APIs for you to access the system and use media resources.
 
@@ -37,7 +39,6 @@ createVideoRecorder(callback: AsyncCallback\<VideoRecorder>): void
 
 Creates a **VideoRecorder** instance. Each device supports only one **VideoRecorder** instance. This API uses an asynchronous callback to return the result.
 
-
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API**: This is a system API.
@@ -50,7 +51,7 @@ Creates a **VideoRecorder** instance. Each device supports only one **VideoRecor
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                      |
 | -------- | ------------------------------ |
@@ -91,7 +92,7 @@ Creates a **VideoRecorder** instance. Each device supports only one **VideoRecor
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                     |
 | -------- | ----------------------------- |
@@ -205,7 +206,8 @@ Obtains configuration parameters for system- and application-level privacy prote
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
+
 | ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 202      | Called from Non-System applications. Return by promise.               |
@@ -244,7 +246,7 @@ Obtains a ScreenCaptureMonitor instance. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                     |
 | -------- | ----------------------------- |
@@ -287,7 +289,7 @@ If a SoundPool instance created using [createSoundPool](arkts-apis-media-f.md#me
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                     |
 | -------- | ----------------------------- |
@@ -371,7 +373,7 @@ Obtains the video timestamp corresponding to a video frame number. (Only MP4 vid
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
@@ -416,7 +418,7 @@ Obtains the video frame number corresponding to a video timestamp. (Only MP4 vid
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
@@ -451,7 +453,7 @@ isWatermarkSupported(): Promise\<boolean>
 
 Checks whether the device supports the hardware digital watermark. This API uses a promise to return the result.
 
-This API can be called after the [prepare()](arkts-apis-media-AVRecorder.md#prepare9-1), [start()](arkts-apis-media-AVRecorder.md#start9), or [paused()](arkts-apis-media-AVRecorder.md#pause9) event is triggered.
+This API can be called after the [prepare()](arkts-apis-media-AVRecorder.md#prepare9-1), [start()](arkts-apis-media-AVRecorder.md#start9), or [pause()](arkts-apis-media-AVRecorder.md#pause9) event is successfully triggered.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
@@ -526,6 +528,7 @@ avRecorder.setWatermark(watermark, watermarkConfig).then(() => {
 ```
 
 ### setMetadata<sup>19+</sup>
+
 setMetadata(metadata: Record\<string, string\>): void
 
 Sets custom metadata for the recording file of AVRecorder.
@@ -617,7 +620,7 @@ Sets video recording parameters. This API uses an asynchronous callback to retur
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -691,7 +694,7 @@ Sets video recording parameters. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -761,7 +764,7 @@ This API can be called only after [prepare()](#prepare9) is called.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -811,7 +814,7 @@ This API can be called only after [prepare()](#prepare9-1) is called.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -855,7 +858,7 @@ This API can be called only after [prepare()](#prepare9) and [getInputSurface()]
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -899,7 +902,7 @@ This API can be called only after [prepare()](#prepare9-1) and [getInputSurface(
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -941,7 +944,7 @@ This API can be called only after [start()](#start9) is called. You can resume r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -985,7 +988,7 @@ This API can be called only after [start()](#start9-1) is called. You can resume
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1025,7 +1028,7 @@ Resumes video recording. This API uses an asynchronous callback to return the re
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -1067,7 +1070,7 @@ Resumes video recording. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1109,7 +1112,7 @@ To start another recording, you must call [prepare()](#prepare9) and [getInputSu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -1153,7 +1156,7 @@ To start another recording, you must call [prepare()](#prepare9-1) and [getInput
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1193,7 +1196,7 @@ Releases video recording resources. This API uses an asynchronous callback to re
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
@@ -1233,7 +1236,7 @@ Releases video recording resources. This API uses a promise to return the result
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
@@ -1273,7 +1276,7 @@ To start another recording, you must call [prepare()](#prepare9) and [getInputSu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
@@ -1316,7 +1319,7 @@ To start another recording, you must call [prepare()](#prepare9-1) and [getInput
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1356,7 +1359,7 @@ Subscribes to video recording error events. After an error event is reported, yo
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+For details about the following error codes, see [General Error Code Description Document](../errorcode-universal.md) and [Media error codes](errorcode-media.md).
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
@@ -1408,7 +1411,7 @@ The **audioSourceType** and **videoSourceType** parameters are used to distingui
 | audioSourceType | [AudioSourceType](arkts-apis-media-e.md#audiosourcetype9)           | No  | Yes  | Type of the audio source for video recording. This parameter is mandatory for audio recording.                     |
 | videoSourceType | [VideoSourceType](arkts-apis-media-e.md#videosourcetype9)           | No  | No  | Type of the video source for video recording.                                      |
 | profile         | [VideoRecorderProfile](#videorecorderprofile9) | No  | No  | Video recording profile.                                         |
-| rotation        | number                                         | No  | Yes  | Rotation angle of the recorded video. The value can only be 0 (default), 90, 180, or 270.      |
+| rotation        | number                                         | No   | Yes   | Rotation angle of the recorded video, in degrees (°). Only **0°**, **90°**, **180°**, and **270°** are supported. The default value is **0°**.       |
 | location        | [Location](arkts-apis-media-i.md#location)                          | No  | Yes  | Geographical location of the recorded video. By default, the geographical location information is not recorded.                |
 | url             | string                                         | No  | No  | Video output URL. Supported: fd://xx (fd number)<br>![](figures/en-us_image_url.png) |
 
@@ -1475,7 +1478,7 @@ Subscribes to state change events of the system screen recorder. From the Screen
 | Name  | Type         | Mandatory| Description                                                        |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
 | type     | string        | Yes  | Event type, which is **'systemScreenRecorder'** in this case.<br>This event is triggered when the state of the system screen recorder changes.|
-| callback | function | Yes  | Callback used to return the state of system screen recorder. where [ScreenCaptureEvent](#screencaptureevent18) indicates the new state.                                      |
+| callback | function | Yes  | Callback used to return the state of system screen recorder. [ScreenCaptureEvent](#screencaptureevent18) indicates the new state.                                      |
 
 **Error codes**
 
@@ -1511,7 +1514,7 @@ Unsubscribes from state change events of the system screen recorder. This API us
 | Name  | Type         | Mandatory| Description                                                        |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
 | type     | string        | Yes  | Event type, which is **'systemScreenRecorder'** in this case.<br>This event is triggered when the state of the system screen recorder changes.|
-| callback | function | No  | Callback used to return the state of system screen recorder. where [ScreenCaptureEvent](#screencaptureevent18) indicates the new state. If this parameter is not specified, the last subscription event is canceled.|
+| callback | function | No  | Callback used to return the state of system screen recorder. [ScreenCaptureEvent](#screencaptureevent18) indicates the new state. If this parameter is not specified, the last subscription event is canceled.|
 
 **Error codes**
 

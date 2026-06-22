@@ -1,10 +1,12 @@
 # avrecorder.h
+
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_dyOv3Sds-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=320793da1b58e6a20565f5e582fc3e50f69572ee translatedAt=2026-06-22T03:37:50.898Z pushedAt=2026-06-22T09:23:26.585Z -->
 
 ## Overview
 
@@ -79,7 +81,6 @@ Sets AVRecorder parameters to prepare for recording. This function must be calle
 
 **Since**: 18
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -106,7 +107,6 @@ Obtains the AVRecorder configuration. This function must be called after the rec
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -135,7 +135,6 @@ Obtains an input surface. This function must be called after [OH_AVRecorder_Prep
 
 **Since**: 18
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -163,13 +162,12 @@ Updates the video rotation angle. This function must be called after [OH_AVRecor
 
 **Since**: 18
 
-
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | Pointer to the OH_AVRecorder instance.|
-| int32_t rotation | Video rotation angle. The value must be an integer in the range [0, 90, 180, 270].|
+| int32_t rotation | Video rotation angle, in degrees (°). The value must be one of the integers 0°, 90°, 180°, and 270°. |
 
 **Returns**
 
@@ -190,7 +188,6 @@ Starts recording. This function must be called after [OH_AVRecorder_Prepare](#oh
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -218,7 +215,6 @@ Pauses recording. This function must be called after [OH_AVRecorder_Start](#oh_a
 
 **Since**: 18
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -244,7 +240,6 @@ Resumes recording. This function must be called after [OH_AVRecorder_Pause](#oh_
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -272,7 +267,6 @@ Stops recording. This function must be called after [OH_AVRecorder_Start](#oh_av
 
 **Since**: 18
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -298,7 +292,6 @@ Resets the recording state. This function must be called when the AVRecorder is 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -326,7 +319,6 @@ Releases recording resources. After this function is successfully called, the AV
 
 **Since**: 18
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -352,7 +344,6 @@ Obtains the available encoders and encoder information of the AVRecorder.<br>**i
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -382,7 +373,6 @@ Sets a state callback so that the application can respond to state change events
 
 **Since**: 18
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -410,7 +400,6 @@ Sets an error callback so that the application can respond to error events gener
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -440,7 +429,6 @@ Sets a URI callback so that the application can respond to URI events generated 
 
 **Since**: 18
 
-
 **Parameters**
 
 | Parameter| Description|
@@ -468,7 +456,6 @@ Sets whether to enable the mute interruption mode.
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 
 **Since**: 20
-
 
 **Parameters**
 

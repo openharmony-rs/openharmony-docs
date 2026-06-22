@@ -1,11 +1,12 @@
 # Interface (AVRecorder)
+
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_dyOv3Sds-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
-
+<!-- md-trans-meta sourceCommit=320793da1b58e6a20565f5e582fc3e50f69572ee translatedAt=2026-06-22T03:35:45.865Z pushedAt=2026-06-22T09:23:26.549Z -->
 
 AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling the methods of the AVRecorder class, you need to call the [createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9) API to create an **AVRecorder** instance.
 
@@ -109,7 +110,6 @@ Sets audio and video recording parameters. This API uses a promise to return the
 **Required permissions:** ohos.permission.MICROPHONE
 
 If audio recording is not involved, the **ohos.permission.MICROPHONE** permission is not required.
-
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -284,7 +284,7 @@ The **updateRotation** API can be called only after the [prepare](#prepare9-1) A
 
 | Name  | Type                | Mandatory| Description                       |
 | -------- | -------------------- | ---- | --------------------------- |
-| rotation | number | Yes  | Rotation angle, which can only be 0, 90, 180, or 270 degrees.|
+| rotation | number | Yes | Rotation angle, in degrees (°). Only **0°**, **90°**, **180°**, and **270°** are supported.|
 
 **Return value**
 
@@ -1402,6 +1402,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 **Example**
 
 <!--code_no_check-->
+
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 let photoAsset: photoAccessHelper.PhotoAsset;
