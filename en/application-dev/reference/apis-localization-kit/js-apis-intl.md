@@ -241,7 +241,7 @@ Options for initializing the **Locale** object. Since API version 9, the **Local
 
 > This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) instead.
 
-Performs date and time formatting.
+Provides the date and time formatting capability.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -447,7 +447,7 @@ Defines the options for a **DateTimeOptions** object. Since API version 9, the *
 
 ## NumberFormat
 
-Performs standard number formatting.
+Provides the standard number formatting capability.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -768,7 +768,7 @@ Since API version 9, the attributes in **CollatorOptions** are optional.
 
 > This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules) instead.
 
-Obtains the plural rule type.
+Provides the capability for obtaining the plural rule type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -887,7 +887,7 @@ Defines the options for creating a **PluralRules** object. Since API version 9, 
 
 > This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat) instead.
 
-Provides the capability of formatting the relative time.
+Provides the relative time formatting capability.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1303,3 +1303,4 @@ The following uses the relative time **1 day ago** and locale IDs **fr-FR** and 
 | long   | Long relative time display  | il y a 1 jour  | 1 day ago       |
 | short  | Short relative time display  | il y a 1 j     | 1 day ago       |
 | narrow | Narrow relative time display| -1 j           | 1 day ago       |
+<!--no_check-->
