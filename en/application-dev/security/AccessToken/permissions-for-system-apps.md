@@ -3930,6 +3930,8 @@ Allows a system application to apply for IP addresses from the DHCP server.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Certificate-based authorization**: true
 
 **Since**: 12
