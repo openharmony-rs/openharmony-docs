@@ -88,15 +88,15 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
      .fontSize(size)
      .margin(10)
  }
-
+ 
  // 使用wrapBuilder封装myBuilder，并赋值给globalBuilder变量
  let globalBuilder: WrappedBuilder<[string, number]> = wrapBuilder(myBuilder);
-
+ 
  @Entry
  @Component
  struct TestIndex {
    @State message: string = 'Hello World';
-
+ 
    build() {
      Row() {
        Column() {
