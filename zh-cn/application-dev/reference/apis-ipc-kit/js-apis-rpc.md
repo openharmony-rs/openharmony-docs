@@ -14,11 +14,6 @@
 >
 > - 本模块从API version 9开始支持异常返回功能。
 
-本模块提供进程间通信能力，主要包含以下功能:
-
-- IPC通信:设备内进程间通信，基于Binder驱动。
-- RPC通信:设备间进程间通信，基于软总线驱动。
-
 ## 导入模块
 
 ```ts
@@ -77,15 +72,6 @@ static create(): MessageSequence
 
 静态方法，创建MessageSequence对象。调用此方法后，系统会在内存中分配一块连续的缓冲区空间，用于存储待传输的序列化数据。该对象在IPC/RPC通信中用于封装请求和响应数据。
 
-**原理说明**
-
-该方法底层会:
-
-1. 申请一段连续的内存空间作为数据缓冲区。
-2. 初始化读写指针位置。
-3. 设置初始容量和数据大小。
-4. 返回MessageSequence实例对象。
-
 **约束和限制**
 
 - 创建的MessageSequence对象必须在使用完毕后调用reclaim()释放资源，否则会导致内存泄漏。
@@ -129,6 +115,17 @@ reclaim(): void
 
 释放不再使用的MessageSequence对象。
 
+**配对关系：**
+
+必须与create()方法配对使用，调用create()创建MessageSequence对象后，必须在使用完毕后调用reclaim()释放资源。未及时调用reclaim()会导致内存资源泄漏。
+
+**约束和限制**
+
+- 必须在MessageSequence对象使用完毕后调用。
+- 调用后对象不能再被使用。
+- 建议在finally块或任务结束时调用，确保资源释放。
+- 不要在异步操作中跨线程释放。
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **示例：**
@@ -153,16 +150,6 @@ try {
 writeRemoteObject(obj: IRemoteObject): void
 
 序列化远程对象并将其写入[MessageSequence](#messagesequence9)对象。调用此方法后，IRemoteObject对象会被序列化为特定格式并存入MessageSequence的缓冲区中，同时会更新内部写指针位置。该序列化对象可在接收端通过readRemoteObject方法反序列化读取。
-
-**原理说明**
-
-该方法底层实现:
-
-1. 检查IRemoteObject对象的有效性。
-2. 获取对象的接口描述符和代理信息。
-3. 将对象信息按照Binder协议序列化为二进制格式。
-4. 将序列化数据写入MessageSequence缓冲区。
-5. 更新写指针偏移量。
 
 **约束和限制**
 
@@ -225,16 +212,6 @@ readRemoteObject(): IRemoteObject
 
 从MessageSequence读取远程对象。此方法用于反序列化MessageSequence对象以生成IRemoteObject。远程对象按写入MessageSequence的顺序读取。调用此方法后，会从MessageSequence缓冲区中读取已序列化的远程对象数据，并反序列化为IRemoteObject实例。读取操作会更新内部读指针位置。
 
-**原理说明**
-
-该方法底层实现:
-
-1. 从缓冲区当前读指针位置读取序列化数据。
-2. 解析Binder协议格式的二进制数据。
-3. 根据接口描述符重建IRemoteObject代理对象。
-4. 更新读指针偏移量。
-5. 返回反序列化的IRemoteObject实例。
-
 **约束和限制**
 
 - 读取顺序必须与写入顺序一致，否则会导致数据解析错误。
@@ -296,15 +273,6 @@ writeInterfaceToken(token: string): void
 
 将接口描述符写入MessageSequence对象，远端对象可使用该信息校验本次通信。适用于需要验证通信双方接口一致性的场景，如跨进程服务调用、安全通信验证等。建议使用唯一且有意义的描述符字符串（如"com.example.service"），避免使用敏感信息，长度应小于40960字节。调用此方法后，接口描述符字符串会被序列化并存入MessageSequence缓冲区。远端在接收到通信请求后，可读取该描述符来验证请求来源的合法性。
 
-**原理说明**
-
-该方法底层实现:
-
-1. 检查字符串长度是否超过限制(40960字节)。
-2. 将字符串转换为UTF-8编码的字节数组。
-3. 写入长度信息和字节数据到缓冲区。
-4. 更新写指针位置。
-
 接口描述符的作用:
 
 - 用于标识服务端提供的接口类型。
@@ -359,6 +327,13 @@ readInterfaceToken(): string
 
 从MessageSequence对象中读取接口描述符，接口描述符按写入MessageSequence的顺序读取，本地对象可使用该信息检验本次通信。
 
+**配对调用**
+
+- 必须与writeInterfaceToken配对使用。
+- 读取顺序必须与写入顺序一致。
+- 读取前应确保缓冲区中有可读数据。
+- 建议在收到IPC请求后立即读取校验。
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
@@ -399,6 +374,12 @@ try {
 getSize(): number
 
 获取当前创建的MessageSequence对象的数据大小。
+
+**使用场景**
+
+- 查看已写入数据的总大小。
+- 判断缓冲区使用情况。
+- 在数据传输前检查数据大小。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -768,15 +749,6 @@ writeByte(val: number): void
 
 将字节值写入MessageSequence实例。调用此方法后，字节值会被以8位无符号整数形式存入缓冲区当前写指针位置，并自动更新写指针。该方法适用于传输小范围整数或标志位数据。
 
-**原理说明**
-
-该方法底层实现:
-
-1. 检查参数类型是否为number。
-2. 将数值转换为单字节(8位)格式。
-3. 写入缓冲区当前写指针位置。
-4. 写指针向后移动1字节。
-
 字节存储格式:
 - 占用1字节(8位)存储空间。
 - 存储范围:0-255(无符号)或-128-127(有符号)。
@@ -794,7 +766,7 @@ writeByte(val: number): void
 
   | 参数名 | 类型   | 必填 | 说明  |
   | ------ | ------ | ---- | ----- |
-  | val    | number | 是   | 要写入的字节值。取值范围[0， 255]。超出此范围会导致数据截断或写入失败。 |
+  | val    | number | 是   | 要写入的字节值。取值范围[0, 255]。超出此范围时，数值会被自动截断为8位，可能导致数据精度丢失。建议传入前先检查数值范围。 |
 
 **错误码：**
 
@@ -827,6 +799,12 @@ try {
 readByte(): number
 
 从MessageSequence实例中读取字节值。
+
+**配对调用**
+
+- 必须与writeByte配对使用。
+- 读取顺序必须与写入顺序一致。
+- 一次写入对应一次读取。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -869,13 +847,19 @@ writeShort(val: number): void
 
 将短整数值写入MessageSequence实例。
 
+**约束和限制**
+
+- 超出范围会导致数据截断。
+- 建议先检查getWritableBytes确保有2字节空间。
+- 必须与readShort配对使用。
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
   | 参数名 | 类型   | 必填 | 说明 |
   | ------ | ------ | ---  | ---  |
-  | val    | number | 是   | 要写入的短整数值。取值范围:-2^15到2^15-1之间的整数。超出此范围会导致数据截断或写入失败。建议使用合适的数值类型以确保数据的完整性和传输效率。 |
+  | val    | number | 是   | 要写入的短整数值。取值范围：[-2^15, 2^15-1]。适用于传输小范围整数数据(如端口号、标识ID等)。超出此范围会导致数据截断或写入失败。对于0-255范围建议使用writeByte，对于标准整数建议使用writeInt，对于大整数建议使用writeLong。 |
 
 **错误码：**
 
@@ -952,15 +936,6 @@ writeInt(val: number): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**原理说明**
-
-该方法底层实现:
-
-1. 检查参数类型和数值范围。
-2. 将数值转换为32位(4字节)整数格式。
-3. 按照系统字节序写入缓冲区。
-4. 写指针向后移动4字节。
-
 整数存储格式:
 
 - 占用4字节(32位)存储空间。
@@ -970,7 +945,7 @@ writeInt(val: number): void
 
 **约束和限制**
 
-- 取值范围:-2147483648到2147483647。
+- 取值范围：[-2^31, 2^31-1]。
 - 超出范围会导致数据截断或写入失败。
 - 写入前建议检查getWritableBytes确保至少有4字节空间。
 - 对于小范围数值建议使用writeByte/writeShort提高效率。
@@ -982,7 +957,7 @@ writeInt(val: number): void
 
   | 参数名 | 类型   | 必填 | 说明             |
   | ------ | ------ | ---- | ---------------- |
-  | val    | number | 是   | 要写入的整数值。取值范围:-2^31到2^31-1之间的整数。超出此范围会导致数据截断或写入失败。建议使用合适的数值类型(writeInt/writeShort/writeLong)以确保数据的完整性和传输效率。 |
+  | val    | number | 是   | 要写入的整数值。取值范围：[-2^31, 2^31-1]。适用于传输标准整数数据(如计数器、索引值、配置参数等)。超出此范围会导致数据截断或写入失败。对于小范围数值(0-255或-128-127)建议使用writeByte提高效率，对于小范围整数(-32768-32767)建议使用writeShort，对于大整数建议使用writeLong。 |
 
 **错误码：**
 
@@ -1065,7 +1040,7 @@ writeLong(val: number): void
 
   | 参数名 | 类型   | 必填 | 说明             |
   | ------ | ------ | ---- | ---------------- |
-  | val    | number | 是   | 要写入的长整数值。取值范围:-2^63到2^63-1之间的整数。超出此范围会导致数据截断或写入失败。建议使用合适的数值类型以确保数据的完整性和传输效率。 |
+  | val    | number | 是   | 要写入的长整数值。取值范围：[-2^63, 2^63-1]。超出此范围会导致数据截断或写入失败。建议根据数值范围选择合适的类型(writeByte/writeShort/writeInt/writeLong)以提高传输效率。 |
 
 **错误码：**
 
@@ -1178,7 +1153,7 @@ try {
 
 readFloat(): number
 
-从MessageSequence实例中读取双精度浮点值。
+从MessageSequence实例中读取浮点值。由于系统内部对float类型的数据是按照double处理的，读取的数据按double精度返回。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1389,7 +1364,7 @@ writeChar(val: number): void
 
   | 参数名 | 类型   | 必填 | 说明                 |
   | ------ | ------ | ---- | -------------------- |
-  | val    | number | 是   | 要写入的单个字符值。 |
+  | val    | number | 是   | 要写入的单个字符值。取值范围：[0, 65535]，对应Unicode字符编码范围。超出此范围可能导致字符编码异常。 |
 
 **错误码：**
 
@@ -1465,17 +1440,6 @@ writeString(val: string): void
 将字符串值写入MessageSequence实例。调用此方法后，字符串会被转换为UTF-8编码并序列化存入缓冲区。写入时会先存储字符串长度，再存储实际的UTF-8字节数据。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**原理说明**
-
-该方法底层实现:
-
-1. 检查字符串参数类型。
-2. 计算UTF-8编码后的字节长度。
-3. 验证长度是否超过40960字节限制。
-4. 先写入4字节的长度信息。
-5. 再写入UTF-8编码的字节数据。
-6. 更新写指针位置。
 
 字符串存储格式:
 
@@ -1575,16 +1539,6 @@ writeParcelable(val: Parcelable): void
 
 将自定义序列化对象写入MessageSequence实例。调用此方法后，会调用Parcelable对象的marshalling方法，将对象的成员变量逐个序列化写入MessageSequence。该方法支持传输自定义数据结构对象适用于传输复杂数据结构、业务对象、配置信息等场景。
 
-**原理说明**
-
-该方法底层实现:
-
-1. 检查参数是否为Parcelable对象实例。
-2. 调用对象的marshalling方法。
-3. 在marshalling中由业务实现成员变量的写入逻辑。
-4. 写入完成后更新写指针。
-5. 返回写入结果。
-
 Parcelable工作机制:
 
 - Parcelable接口定义了序列化和反序列化的标准方法。
@@ -1665,6 +1619,13 @@ try {
 readParcelable(dataIn: Parcelable): void
 
 从MessageSequence实例中读取成员变量到指定的对象（dataIn）。
+
+**约束和限制**
+
+- dataIn参数必须为已实例化的Parcelable对象。
+- unmarshalling方法必须按与marshalling相同的顺序读取。
+- 反序列化顺序必须与序列化顺序一致。
+- 建议在unmarshalling中处理异常情况。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1769,7 +1730,7 @@ try {
 
 readByteArray(dataIn: number[]): void
 
-从MessageSequence实例中读取字节数组，并将其写入到创建的空数组中。
+从MessageSequence实例中读取字节数组，并将其写入到创建的空数组中。读取后dataIn数组会被填充读取的字节数据，读指针向后移动相应字节数。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1777,7 +1738,7 @@ readByteArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明               |
   | ------ | -------- | ---- | ------------------ |
-  | dataIn | number[] | 是   | 要读取的字节数组。 |
+  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的字节数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -1814,7 +1775,7 @@ try {
 
 readByteArray(): number[]
 
-从MessageSequence实例中读取字节数组。
+从MessageSequence实例中读取字节数组。读取后返回字节数组数据，读指针向后移动相应字节数。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1905,7 +1866,7 @@ readShortArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明                 |
   | ------ | -------- | ---- | -------------------- |
-  | dataIn | number[] | 是   | 要读取的短整数数组。 |
+  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的短整数数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -1989,7 +1950,7 @@ writeIntArray(intArray: number[]): void
 
   | 参数名   | 类型     | 必填 | 说明               |
   | -------- | -------- | ---- | ------------------ |
-  | intArray | number[] | 是   | 要写入的整数数组。数组元素的取值范围:-2^31到2^31-1之间的整数，超出此范围会导致数据截断或写入失败。 |
+  | intArray | number[] | 是   | 要写入的整数数组。数组元素的取值范围：[-2^31, 2^31-1]，超出此范围会导致数据截断或写入失败。 |
 
 **错误码：**
 
@@ -2029,7 +1990,7 @@ readIntArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明               |
   | ------ | -------- | ---- | ------------------ |
-  | dataIn | number[] | 是   | 要读取的整数数组。 |
+  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的整数数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -2113,7 +2074,7 @@ writeLongArray(longArray: number[]): void
 
   | 参数名    | 类型     | 必填 | 说明                 |
   | --------- | -------- | ---- | -------------------- |
-  | longArray | number[] | 是   | 要写入的长整数数组。 |
+  | longArray | number[] | 是   | 要写入的长整数数组，每个元素为64位整数。超出范围会导致数据截断。建议使用BigInt处理超大数值。 |
 
 **错误码：**
 
@@ -2153,7 +2114,7 @@ readLongArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明                 |
   | ------ | -------- | ---- | -------------------- |
-  | dataIn | number[] | 是   | 要读取的长整数数组。 |
+  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的长整数数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -2401,7 +2362,7 @@ readDoubleArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明                     |
   | ------ | -------- | ---- | ------------------------ |
-  | dataIn | number[] | 是   | 要读取的双精度浮点数组。 |
+  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的双精度浮点数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -2525,7 +2486,7 @@ readBooleanArray(dataIn: boolean[]): void
 
   | 参数名 | 类型      | 必填 | 说明               |
   | ------ | --------- | ---- | ------------------ |
-  | dataIn | boolean[] | 是   | 要读取的布尔数组。 |
+  | dataIn | boolean[] | 是   | 用于存储从MessageSequence读取的布尔数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -2649,7 +2610,7 @@ readCharArray(dataIn: number[]): void
 
   | 参数名 | 类型     | 必填 | 说明                   |
   | ------ | -------- | ---- | ---------------------- |
-  | dataIn | number[] | 是   | 要读取的单个字符数组。 |
+  | dataIn | number[] | 是   | 用于存储从MessageSequence读取的单个字符数组，需预先创建空数组且长度应与写入时的数组长度一致。 |
 
 **错误码：**
 
@@ -3311,6 +3272,18 @@ static closeFileDescriptor(fd: number): void
 
 静态方法，关闭给定的文件描述符。
 
+**使用场景**
+
+- 文件使用完毕后及时关闭。
+- 在文件传输完成后关闭。
+- 避免资源泄漏。
+
+**约束和限制**
+
+- 关闭前确保文件操作已完成。
+- 不要关闭已关闭的文件描述符。
+- 关闭后不能再读写文件。
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
@@ -3351,6 +3324,18 @@ try {
 static dupFileDescriptor(fd: number): number
 
 静态方法，复制给定的文件描述符。
+
+**使用场景**
+
+- IPC传输前复制，避免原描述符被关闭。
+- 多进程共享同一文件。
+- 需要独立管理文件偏移量。
+
+**约束和限制**
+
+- 复制后两个描述符需要分别关闭。
+- 不要复制无效的文件描述符。
+- 复制后独立管理生命周期。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -3435,16 +3420,6 @@ writeFileDescriptor(fd: number): void
 
 写入文件描述符到MessageSequence。 调用此方法后，文件描述符会被封装并通过Binder机制跨进程传递。接收端可通过readFileDescriptor获取文件描述符并进行文件操作。
 
-**原理说明**
-
-该方法底层实现:
-
-1. 检查文件描述符参数的有效性。
-2. 通过Binder驱动将文件描述符信息封装。
-3. 使用特殊的IPC机制传递文件描述符。
-4. 文件描述符在接收端会被映射为新的描述符。
-5. 写入文件描述符信息到MessageSequence。
-
 文件描述符传递机制:
 
 - 文件描述符通过Binder的FD传递机制跨进程传输。
@@ -3501,7 +3476,19 @@ try {
 
 readFileDescriptor(): number
 
-从MessageSequence中读取文件描述符。
+从MessageSequence中读取文件描述符。接收端读取到的是映射后的新文件描述符编号，与发送端写入的描述符编号不同，但指向同一个文件资源。读取后建议及时使用并关闭，防止资源泄漏。如需长期使用，可调用dupFileDescriptor复制描述符。
+
+**配对调用**
+
+- 必须与writeFileDescriptor配对使用。
+- 读取后需要及时使用或关闭。
+- 不要依赖源端的fd编号。
+
+**约束和限制**
+
+- 读取后需要管理生命周期。
+- 建议及时使用避免资源浪费。
+- 使用完毕后及时关闭。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -3619,6 +3606,20 @@ try {
 readAshmem(): Ashmem
 
 从MessageSequence读取匿名共享对象。使用前需先调用mapReadWriteAshmem方法进行内存映射。
+
+**使用流程：**
+
+1. readAshmem()获取对象。
+2. mapReadWriteAshmem()映射内存。
+3. readDataFromAshmem()读取数据。
+4. unmapAshmem()取消映射。
+5. closeAshmem()关闭对象。
+
+**约束和限制：**
+
+- 必须先映射才能读取数据。
+- 数据读取后需要取消映射。
+- 及时关闭避免内存泄漏。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -3990,6 +3991,18 @@ try {
 readArrayBuffer(typeCode: TypeCode): ArrayBuffer
 
 从MessageSequence读取ArrayBuffer类型数据。
+
+**配对调用：**
+
+- 必须与writeArrayBuffer配对使用。
+- 读取typeCode必须与写入typeCode一致。
+- 顺序必须匹配。
+
+**约束和限制：**
+
+- typeCode必须正确匹配。
+- 不匹配会导致数据异常或错误。
+- 建议根据业务类型选择合适的TypeCode。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -5209,7 +5222,7 @@ writeChar(val: number): boolean
 
   | 参数名 | 类型   | 必填 | 说明                 |
   | ------ | ------ | ---- | -------------------- |
-  | val    | number | 是   | 要写入的单个字符值。取值范围[0, 65535]，对应Unicode字符编码范围。超出此范围可能导致字符编码异常。 |
+  | val    | number | 是   | 要写入的单个字符值。取值范围：[0, 65535]，对应Unicode字符编码范围。超出此范围可能导致字符编码异常。 |
 
 **返回值：**
 
@@ -10881,6 +10894,21 @@ let testRemoteObject = new TestRemoteObject("testObject");
 提供与匿名共享内存对象相关的方法，包括创建、关闭、映射和取消映射Ashmem、从Ashmem读取数据和写入数据、获取Ashmem大小、设置Ashmem保护。
 
 共享内存只适用与本设备内跨进程通信。
+
+**使用场景：**
+
+- 大数据传输：传输大量数据(如图片、文件)时使用共享内存提升效率。
+- 跨进程数据共享：多个进程需要共享访问同一块内存数据。
+
+**解决的问题：**
+
+- 传输效率问题：大数据通过共享内存传输避免序列化开销，提升传输效率。
+- 内存复用问题：多进程可共享访问同一内存，避免数据拷贝。
+
+**带来的收益：**
+
+- 提升传输性能：共享内存机制大幅提升大数据传输效率。
+- 减少内存占用：避免数据多次拷贝，节省内存资源。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
