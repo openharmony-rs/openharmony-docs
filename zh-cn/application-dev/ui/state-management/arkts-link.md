@@ -735,6 +735,7 @@ struct UnionChild {
         .onClick(() => {
           this.name = undefined;
         })
+
     }
     .width('100%')
   }
