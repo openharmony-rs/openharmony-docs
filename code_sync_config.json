@@ -20940,7 +20940,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/V2LocalBuilderUpdate.ets",
 				"functions":[
 					{
-						"end_line":112,
+						"end_line":122,
 						"name":"LocalBuilder_in_V2_use",
 						"start_line":30
 					}
@@ -21607,7 +21607,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ChangePropertyInConstructor.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":51,
 						"name":"Change_Property_In_Constructor",
 						"start_line":15
 					}
@@ -23052,7 +23052,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/ForEachIndex.ets",
 				"functions":[
 					{
-						"end_line":144,
+						"end_line":143,
 						"name":"foreach_update_refresh",
 						"start_line":17
 					}
@@ -24387,7 +24387,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTwo.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":89,
 						"name":"appstorage_page_two",
 						"start_line":15
 					}
@@ -24447,7 +24447,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets",
 				"functions":[
 					{
-						"end_line":124,
+						"end_line":129,
 						"name":"appstorage_page_eight",
 						"start_line":15
 					}
@@ -26882,7 +26882,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoWaySYN.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":46,
 						"name":"localStorage_page_two_way_syn",
 						"start_line":15
 					}
@@ -27022,7 +27022,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSingleSYN.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":57,
 						"name":"localStorage_page_two_single_syn",
 						"start_line":15
 					}
@@ -31327,7 +31327,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":67,
 						"name":"state_problem_unregister_state_callback",
 						"start_line":17
 					}
@@ -47363,7 +47363,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/Index.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":59,
 						"name":"Internal_localStorage_multi_instance_1",
 						"start_line":16
 					}
