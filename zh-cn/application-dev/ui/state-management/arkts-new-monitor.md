@@ -1810,7 +1810,7 @@ struct Child {
   @Param @Require infoWrapper: InfoWrapper;
 
   aboutToDisappear(): void {
-    hilog.info(0xFF00, 'testTag', '%{public}s', 'Child aboutToDisappear', this.infoWrapper.info?.age);
+    hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
   }
 
   build() {
@@ -1911,7 +1911,7 @@ struct Child {
   }
 
   aboutToDisappear(): void {
-    hilog.info(0xFF00, 'testTag', '%{public}s', 'Child aboutToDisappear', this.infoWrapper.info?.age);
+    hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
   }
 
   build() {
@@ -1942,7 +1942,6 @@ struct Index {
         .onClick(() => {
           this.showFlag = !this.showFlag;
         })
-        .margin(10)
       Button('change number')
         .onClick(() => {
           hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
@@ -1950,7 +1949,6 @@ struct Index {
             info.age += 100;
           })
         })
-        .margin(10)
       if (this.showFlag) {
         Column() {
           Text('Children')
@@ -2007,7 +2005,7 @@ struct Child {
   @Param @Require infoWrapper: InfoWrapper;
 
   aboutToDisappear(): void {
-    hilog.info(0xFF00, 'testTag', '%{public}s', 'Child aboutToDisappear', this.infoWrapper.info?.age);
+    hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
     this.infoWrapper.info = undefined; // 使InfoWrapper对info.age的监听失效
   }
 
@@ -2038,7 +2036,6 @@ struct Index {
         .onClick(() => {
           this.showFlag = !this.showFlag;
         })
-        .margin(10)
       Button('change number')
         .onClick(() => {
           hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
@@ -2046,7 +2043,6 @@ struct Index {
             info.age += 100;
           })
         })
-        .margin(10)
       if (this.showFlag) {
         Column() {
           Text('Children')

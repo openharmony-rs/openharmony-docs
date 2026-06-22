@@ -133,7 +133,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
            // 重启应用：Repeat组件再次显示数组项
            Button('array.splice(0, 2, random, random)')
              .onClick(() => {
-               this.array.splice(2, 2, Math.round(100*Math.random()), Math.round(100*Math.random()));
+               this.array.splice(0, 2, Math.round(100*Math.random()), Math.round(100*Math.random()));
              })
              .width(300)
              .margin(10)
@@ -238,7 +238,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
                  .margin(10)
              }
            })
-         // 点击'add item',显示`propA 'a' propB 'b'report?.'a' - 'b'`, 杀掉应用，再次进入，会显示上次的结果
+         // 点击'add item',显示`propA 'a' propB 'b'report?.()'a - b'`, 杀掉应用，再次进入，会显示上次的结果
          Button('add item')
            .width(300)
            .margin(10)
@@ -611,7 +611,7 @@ class PersistClass {
          .onClick(() => {
            let tempA = new ClassA();
            tempA.propA = Math.round(100 * Math.random());
-           this.arr.splice(2, 2,
+           this.arr.splice(0, 2,
              UIUtils.makeObserved(tempA),
              UIUtils.makeObserved(tempA));
          })
@@ -1063,14 +1063,14 @@ struct Page1 {
         })
         .fontSize(25)
         .margin(10)
-        .fontColor(Color.Pink)
+        .fontColor(Color.Red)
       Text('Key connect2: ' + this.p2.father.childId.toString())
         .onClick(() => {
           this.p2.father.childId += 1;
         })
         .fontSize(25)
         .margin(10)
-        .fontColor(Color.Pink)
+        .fontColor(Color.Red)
 
       // 跳转
       Button('Jump to newModule')
