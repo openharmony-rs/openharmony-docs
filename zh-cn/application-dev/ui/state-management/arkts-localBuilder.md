@@ -28,7 +28,7 @@
 ``` TypeScript
 @LocalBuilder
 myBuilderFunction() {
-  // ···
+  // ...
 }
 ```
 
