@@ -394,9 +394,8 @@ struct NavigationContentMsgStack {
 ### Navigation和TabContent的混用
 
 <!-- @[FreezeMixNavigationTab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezeMixNavigationTab.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { BarMode, BarPosition, Builder, Button, ButtonType, Color, Column, ComponentV2, Consumer, Entry, IMonitor, Local, Margin, Monitor, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, Param, Provider, Require, TabContent, Tabs, TabsController, Text } from '@kit.ArkUI';
 
 @ComponentV2
