@@ -1,7 +1,7 @@
 # ArkUI术语
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @Brilliantry_Rui-->
