@@ -772,9 +772,8 @@ class TestDataSource extends BasicDataSource<string> {
 **Navigation和TabContent的混用**
 
 <!-- @[FreezeMixNavTab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeMixNavTab.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { BarMode, BarPosition, Builder, Button, ButtonType, ClickEvent, Color, Column, Component, Entry, Link, Margin, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, PropRef, Row, State, StorageLink, TabContent, Tabs, TabsController, Text, Watch } from '@kit.ArkUI';
 
 @Component
