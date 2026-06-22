@@ -1,7 +1,7 @@
 # 简单文本绘制与显示（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -27,7 +27,6 @@
    ``` TypeScript
    let canvas = context.canvas;
    ```
-   <!-- -->
 
 2. 初始化文本样式，此处设置字体颜色为红色，字体大小为100px。
 
@@ -47,7 +46,6 @@
      fontSize: 100
    };
    ```
-   <!-- -->
 
 3. 初始化段落样式。
 
@@ -58,7 +56,6 @@
      textStyle: myTextStyle,
    };
    ```
-   <!-- -->
 
 4. 初始化段落对象，并添加文本。
 
@@ -72,7 +69,6 @@
    // 添加文本
    ParagraphGraphBuilder.addText("Hello World");
    ```
-   <!-- -->
 
 5. 排版段落并进行文本绘制。
 

@@ -44,7 +44,7 @@ GridRow(option?: GridRowOptions)
 
 | 参数名 |类型|必填|说明|
 |-----|-----|----|----|
-| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
+| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件布局选项。 |
 
 ## GridRowOptions对象说明
 
@@ -205,7 +205,7 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 >
 > - 栅格元素仅支持Row/RowReverse排列，不支持column/ColumnReverse方向排列。
 > - 栅格子组件仅能通过span、offset计算子组件位置与大小。多个子组件span超过规定列数时自动换行。
-> - 单个元素span大小超过最大列数时后台默认span为最大column数。
+> - 单个元素span大小超过最大列数时后台默认span为最大列数。
 > - 新一行的Offset加上子组件的span超过总列数时，将下一个子组件在新的一行放置。
 > - 例：Item1: GridCol({ span: 6 })， Item2: GridCol({ span: 8, offset:11 })。 
 >
@@ -256,19 +256,15 @@ ArkTS-Sta: alignItems(value: ItemAlign | undefined)
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [ItemAlign](ts-appendix-enums.md#itemalign)<br/>ArkTS-Sta: [ItemAlign](ts-appendix-enums.md#itemalign) \| undefined | 是   | GridRow中的GridCol垂直主轴方向对齐方式。<br/>默认值：ItemAlign.Start <br />非法值：按默认值处理。<br/>**说明**：<br/>ItemAlign支持的枚举：ItemAlign.Start、ItemAlign.Center、ItemAlign.End、ItemAlign.Stretch。<br/>取值为undefined时，按默认值处理。 |
 
-### attributeModifier<sup>12+</sup>
+### attributeModifier<sup>23+</sup>
 
-ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<GridRowAttribute>)
-
-ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<GridRowAttribute> | AttributeModifier\<CommonMethod> | undefined)
+attributeModifier(modifier: AttributeModifier\<GridRowAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
 设置组件的动态属性。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -276,7 +272,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<GridRowAttribute> | At
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridRowAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridRowAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置GridRow组件的属性。<br/>取值为undefined时，按默认值处理。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridRowAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置GridRow组件的属性。<br/>取值为undefined时，按默认值处理。 |
 
 ## 事件
 

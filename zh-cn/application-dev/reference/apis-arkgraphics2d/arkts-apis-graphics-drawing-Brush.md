@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -188,11 +188,20 @@ ArkTS-Sta: setColor(color: int): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
 const brush = new drawing.Brush();
 brush.setColor(0xffff0000);
+```
+
+ArkTS-Sta示例：
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+const brush = new drawing.Brush();
+brush.setColor((0xffff0000).toInt());
 ```
 
 ## setColor4f<sup>20+</sup>
@@ -600,7 +609,7 @@ ArkTS-Sta示例：
 import { drawing } from '@kit.ArkGraphics2D';
 
 const brush = new drawing.Brush();
-let shaderEffect = drawing.ShaderEffect.createLinearGradient({x: 100, y: 100}, {x: 300, y: 300}, [0xFF00FF00, 0xFFFF0000], drawing.TileMode.REPEAT);
+let shaderEffect = drawing.ShaderEffect.createLinearGradient({x: 100, y: 100}, {x: 300, y: 300}, [(0xFF00FF00).toInt(), (0xFFFF0000).toInt()], drawing.TileMode.REPEAT);
 if (shaderEffect != undefined) {
   brush.setShaderEffect(shaderEffect!);
 }

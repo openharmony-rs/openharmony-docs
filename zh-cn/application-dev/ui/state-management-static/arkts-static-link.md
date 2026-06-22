@@ -37,9 +37,9 @@ import { Link } from '@kit.ArkUI';
 
 - 当装饰interface字面量类型时，可以观察到字面量整体及其属性的变化。
 
-  ```ts
-  'use static'
+  <!-- @[LinkInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkInterface.ets) -->
   
+  ``` TypeScript
   import { ClickEvent, Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
   
   interface Info {
@@ -143,9 +143,9 @@ import { Link } from '@kit.ArkUI';
 
     【正例】
 
-    ```ts
-    'use static'
-
+    <!-- @[LinkTypeConsistent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkTypeConsistent.ets) -->
+    
+    ``` TypeScript
     import { Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
     
     class Info {
@@ -215,10 +215,10 @@ import { Link } from '@kit.ArkUI';
     ```
     
     【正例】
+
+    <!-- @[LinkStateVarInit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkStateVarInit.ets) -->
     
-    ```ts
-    'use static'
-    
+    ``` TypeScript
     import { Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
     
     class Info {
@@ -262,9 +262,9 @@ import { Link } from '@kit.ArkUI';
 
   2.当点击父组件ShufflingContainer中的Button时，@State会发生变化，并同步给\@Link，子组件也会进行对应的刷新。
 
-```ts
-'use static'
+<!-- @[LinkBasicTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkBasicTypes.ets) -->
 
+``` TypeScript
 import {
   Button,
   ClickEvent,
@@ -372,9 +372,9 @@ struct ShufflingContainer {
 
 当装饰数组时，可以观察到数组整体和数组项的变化，同时可以通过调用Array的接口 `push`、`pop`、`shift`、`unshift`、`splice`、`copyWithin`、`fill`、`reverse`、`sort`更新Array的数据。
 
-```ts
-'use static'
+<!-- @[LinkArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkArray.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, ForEach, Link, State, Text } from '@kit.ArkUI';
 @Component
 struct Child {
@@ -430,15 +430,15 @@ struct Parent {
 
 ![Video-link-UsageScenario-two](../figures/Video-link-UsageScenario-two.gif)
 
-状态管理框架可以观察到数组元素的添加、删除和替换。在该示例中，\@State和\@Link的类型均为number[]，不支持将\@Link定义成number类型（\@Link item : number），并用\@State数组中的每个数据项在父组件中创建子组件。如需使用这种场景，可以参考[\@Prop](arkts-prop.md)和[\@Observed](./arkts-observed-and-objectlink.md)。
+状态管理框架可以观察到数组元素的添加、删除和替换。在该示例中，\@State和\@Link的类型均为int[]，不支持将\@Link定义成int类型（\@Link item : int），并用\@State数组中的每个数据项在父组件中创建子组件。如需使用这种场景，可以参考[\@PropRef](./arkts-static-propref.md)和[\@Observed](./arkts-static-observed-and-objectlink.md)。
 
 ### 装饰Map类型变量
 
 在下面的示例中，message类型为Map\<int, string\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[LinkMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkMap.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Link, Row, State, Text } from '@kit.ArkUI';
 @Component
 struct Child {
@@ -447,17 +447,30 @@ struct Child {
   build() {
     Column() {
       ForEach(Array.from(this.value.entries()), (item: [int, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+          .margin(10)
+        Text(`${item[1]}`)
+          .fontSize(20)
+          .margin(10)
         Divider()
       })
-      Button('child replace the first one').onClick((e: ClickEvent) => {
-        this.value.set(0, 'aa');
+      Button('child replace the first one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 更新键值对，触发UI刷新
+          this.value.set(0, 'aa');
       })
-      Button('child delete the first one').onClick((e: ClickEvent) => {
-        this.value.delete(0);
+      Button('child delete the first one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 删除键值对，触发UI刷新
+          this.value.delete(0);
       })
     }
+    .width('100%')
   }
 }
 
@@ -470,14 +483,25 @@ struct MapSample {
     Row() {
       Column() {
         Child({ value: this.message })
-        Button('parent init one').onClick((e: ClickEvent) => {
-          this.message = new Map<int, string>([[0, 'a'], [1, 'b'], [2, 'c']]);
+        Button('parent init one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            this.message = new Map<int, string>([[0, 'a'], [1, 'b'], [2, 'c']]);
         })
-        Button('parent set new one').onClick((e: ClickEvent) => {
-          this.message.set(3, 'd');
+        Button('parent set new one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 新增键值对，触发UI刷新
+            this.message.set(3, 'd');
         })
-        Button('parent clear').onClick((e: ClickEvent) => {
-          this.message.clear();
+        Button('parent clear')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 清空Map，触发UI刷新
+            this.message.clear();
         })
       }
       .width('100%')
@@ -487,13 +511,15 @@ struct MapSample {
 }
 ```
 
+![link-map](../figures/link_1.gif)
+
 ### 装饰Set类型变量
 
 在下面的示例中，message类型为Set\<int\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[LinkSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkSet.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Link, Row, State, Text } from '@kit.ArkUI';
 
 @Component
@@ -503,14 +529,23 @@ struct Child {
   build() {
     Column() {
       ForEach(Array.from(this.message.entries()), (item: [int, int]) => {
-        Text(`${item[0]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+          .margin(10)
         Divider()
       })
-      Button('child init set').onClick((e: ClickEvent) => {
-        this.message = new Set<int>([0, 1, 2, 3, 4]);
+      Button('child init set')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.message = new Set<int>([0, 1, 2, 3, 4]);
       })
-      Button('child set new one').onClick((e: ClickEvent) => {
-        this.message.add(5);
+      Button('child set new one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 新增元素，触发UI刷新
+          this.message.add(5);
       })
     }
     .width('100%')
@@ -526,11 +561,19 @@ struct SetSample {
     Row() {
       Column() {
         Child({ message: this.message })
-        Button('parent clear').onClick((e: ClickEvent) => {
-          this.message.clear();
+        Button('parent clear')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 清空Set，触发UI刷新
+            this.message.clear();
         })
-        Button('parent delete the first one').onClick((e: ClickEvent) => {
-          this.message.delete(0);
+        Button('parent delete the first one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 删除元素，触发UI刷新
+            this.message.delete(0);
         })
       }
       .width('100%')
@@ -540,13 +583,15 @@ struct SetSample {
 }
 ```
 
+![link-set](../figures/link_2.gif)
+
 ### 装饰Date类型变量
 
 在下面的示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[LinkDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkDate.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
 
 @Component
@@ -556,19 +601,31 @@ struct DateComponent {
   build() {
     Column() {
       Text(`${this.selectedDate}`)
+        .fontSize(20)
+        .margin(10)
       Button('child increase the year by 1')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setFullYear接口修改年份，触发UI刷新
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
-      Button('child increace the day by 1')
+      Button('child increase the day by 1')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setDate接口修改日期，触发UI刷新
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
       Button('child update the new date')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 通过给selectedDate重新赋值新的Date实例，触发UI刷新
           this.selectedDate = new Date('2023-09-09');
         })
     }
+    .width('100%')
   }
 }
 @Entry
@@ -579,19 +636,30 @@ struct ParentComponent {
   build() {
     Column() {
       Text(`${this.parentSelectedDate}`)
+        .fontSize(20)
+        .margin(10)
       Button('parent increase the month by 1')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setMonth接口修改月份，触发UI刷新
           this.parentSelectedDate.setMonth(this.parentSelectedDate.getMonth() + 1);
         })
       Button('parent update the new date')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 通过给parentSelectedDate重新赋值新的Date实例，触发UI刷新
           this.parentSelectedDate = new Date('2023-07-07');
         })
       DateComponent({ selectedDate:this.parentSelectedDate })
     }
+    .width('100%')
   }
 }
 ```
+
+![link-date](../figures/link_3.gif)
 
 ### 使用双向同步机制更改本地其他变量
 
@@ -599,9 +667,9 @@ struct ParentComponent {
 
 以下示例中，在\@Link的\@Watch回调中修改\@State装饰的状态变量memberMessage，实现父子组件间的变量同步。但是在本地修改\@State装饰的变量memberMessage不会影响到父组件中的变量改变。
 
-```ts
-'use static'
+<!-- @[LinkWatch](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkWatch.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, Link, State, Text, Watch } from '@kit.ArkUI';
 
 @Entry
@@ -612,14 +680,17 @@ struct Parent {
   build() {
     Column() {
       Text(`父组件的sourceNumber：` + this.sourceNumber)
+        .fontSize(20)
+        .margin(10)
       Child({ sourceNumber: this.sourceNumber })
       Button('父组件更改sourceNumber')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.sourceNumber++;
         })
     }
     .width('100%')
-    .height('100%')
   }
 }
 
@@ -629,29 +700,39 @@ struct Child {
   @Link @Watch('onSourceChange') sourceNumber: int;
 
   onSourceChange(propertyName: string) {
+    // 给memberMessage变量赋新的值
     this.memberMessage = this.sourceNumber.toString();
   }
 
   build() {
     Column() {
       Text(this.memberMessage)
+        .fontSize(20)
+        .margin(10)
       Text(`子组件的sourceNumber：` + this.sourceNumber.toString())
+        .fontSize(20)
+        .margin(10)
       Button('子组件更改memberMessage')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.memberMessage = 'Hello memberMessage';
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![link-watch](../figures/link1.gif)
 
 ### \@Link支持联合类型
 
 `@Link`支持联合类型、`undefined`和`null`。在以下示例中，`name`类型为`string | undefined`。点击父组件`Index`中的按钮可以改变`name`的属性或类型，`Child`组件也会相应刷新。
 
-```ts
-'use static'
+<!-- @[LinkUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkUnionType.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
 
 @Component
@@ -661,10 +742,14 @@ struct Child {
   build() {
     Column() {
       Button('Child change name to Bob')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.name = 'Bob';
         })
       Button('Child change name to undefined')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.name = undefined;
         })
@@ -679,19 +764,28 @@ struct Index {
 
   build() {
     Column() {
-      Text(`The name is  ${this.name}`).fontSize(30)
+      Text(`The name is  ${this.name}`) // 显示name变量的值
+        .fontSize(20)
+        .margin(10)
       Child({ name: this.name })
       Button('Parents change name to Peter')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.name = 'Peter';
         })
       Button('Parents change name to undefined')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.name = undefined;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![link-union-type](../figures/link_4.gif)
 
 <!--no_check-->

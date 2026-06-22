@@ -8,9 +8,11 @@
 
 本模块提供对用户动作的感知能力，包括用户的手势、动作等。
 
+**起始版本**：26.0.0
+
 > **说明：**
 >
-> 本模块首批接口从API版本26.0.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块为系统接口。
 
 ## 导入模块
 
@@ -21,6 +23,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 ## PickupEvent
 
 拾取事件枚举。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -33,6 +37,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 ## RotateEvent
 
 旋转事件枚举。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -49,6 +55,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 ## PhysicalOrientation
 
 传感器检测到的物理方向枚举。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -67,6 +75,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 由智能算法计算出的逻辑方向枚举。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **系统接口**：该接口为系统接口。
@@ -83,6 +93,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 智能旋转传感器事件的基本数据结构。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **系统接口**：该接口为系统接口。
@@ -97,6 +109,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 onPickupChange(callback: Callback&lt;PickupEvent&gt;): void
 
 订阅拾取传感器事件。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -114,9 +128,9 @@ onPickupChange(callback: Callback&lt;PickupEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 801      | Capability not supported.                                    |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 
@@ -124,13 +138,10 @@ onPickupChange(callback: Callback&lt;PickupEvent&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { motion } from '@kit.MultimodalAwarenessKit';
 
-let callback: Callback<motion.PickupEvent> = (data: motion.PickupEvent) => {
-    console.info('callback succeeded: ' + data);
-};
-
 try {
-    motion.onPickupChange(callback);
-    console.info("onPickupChange succeeded");
+    motion.onPickupChange((data: motion.PickupEvent) => {
+        console.info('callback succeeded: ' + data);
+    });
 } catch (err) {
     let error = err as BusinessError;
     console.error("Failed onPickupChange and err code is " + error.code);
@@ -142,6 +153,8 @@ try {
 onRotateChange(callback: Callback&lt;RotateEvent&gt;): void
 
 订阅旋转传感器事件。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -159,9 +172,9 @@ onRotateChange(callback: Callback&lt;RotateEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 801      | Capability not supported.                                    |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 
@@ -169,13 +182,10 @@ onRotateChange(callback: Callback&lt;RotateEvent&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { motion } from '@kit.MultimodalAwarenessKit';
 
-let callback: Callback<motion.RotateEvent> = (data: motion.RotateEvent) => {
-    console.info('callback succeeded: ' + data);
-};
-
 try {
-    motion.onRotateChange(callback);
-    console.info("onRotateChange succeeded");
+    motion.onRotateChange((data: motion.RotateEvent) => {
+        console.info('callback succeeded: ' + data);
+    });
 } catch (err) {
     let error = err as BusinessError;
     console.error("Failed onRotateChange and err code is " + error.code);
@@ -187,6 +197,8 @@ try {
 onSmartRotateChange(callback: Callback&lt;SmartRotateEvent&gt;): void
 
 订阅智能旋转传感器事件。
+
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -204,9 +216,9 @@ onSmartRotateChange(callback: Callback&lt;SmartRotateEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 801      | Capability not supported.                                    |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 
@@ -214,13 +226,10 @@ onSmartRotateChange(callback: Callback&lt;SmartRotateEvent&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { motion } from '@kit.MultimodalAwarenessKit';
 
-let callback: Callback<motion.SmartRotateEvent> = (data: motion.SmartRotateEvent) => {
-    console.info('callback succeeded: physicalOrientation=' + data.physicalOrientation);
-};
-
 try {
-    motion.onSmartRotateChange(callback);
-    console.info("onSmartRotateChange succeeded");
+    motion.onSmartRotateChange((data: motion.SmartRotateEvent) => {
+        console.info('callback succeeded: physicalOrientation=' + data.physicalOrientation);
+    });
 } catch (err) {
     let error = err as BusinessError;
     console.error("Failed onSmartRotateChange and err code is " + error.code);
@@ -233,6 +242,8 @@ offPickupChange(callback?: Callback&lt;PickupEvent&gt;): void
 
 取消订阅拾取传感器事件。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **系统接口**：此接口为系统接口，仅系统应用可调用。
@@ -241,7 +252,7 @@ offPickupChange(callback?: Callback&lt;PickupEvent&gt;): void
 
 | 参数名   | 类型                                             | 必填 | 说明                                   |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback&lt;[PickupEvent](#pickupevent)&gt;     | 否   | 需取消的拾取事件回调函数。             |
+| callback | Callback&lt;[PickupEvent](#pickupevent)&gt;     | 否   | 需取消的拾取事件回调函数，若无此参数，则取消订阅拾取事件的所有回调函数。             |
 
 **错误码**：
 
@@ -249,8 +260,8 @@ offPickupChange(callback?: Callback&lt;PickupEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 
@@ -273,6 +284,8 @@ offRotateChange(callback?: Callback&lt;RotateEvent&gt;): void
 
 取消订阅旋转传感器事件。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **系统接口**：此接口为系统接口，仅系统应用可调用。
@@ -281,7 +294,7 @@ offRotateChange(callback?: Callback&lt;RotateEvent&gt;): void
 
 | 参数名   | 类型                                             | 必填 | 说明                                   |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback&lt;[RotateEvent](#rotateevent)&gt;     | 否   | 需取消的旋转事件回调函数。             |
+| callback | Callback&lt;[RotateEvent](#rotateevent)&gt;     | 否   | 需取消的旋转事件回调函数，若无此参数，则取消订阅旋转事件的所有回调函数。             |
 
 **错误码**：
 
@@ -289,8 +302,8 @@ offRotateChange(callback?: Callback&lt;RotateEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 
@@ -313,6 +326,8 @@ offSmartRotateChange(callback?: Callback&lt;SmartRotateEvent&gt;): void
 
 取消订阅智能旋转传感器事件。
 
+**起始版本**：26.0.0
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **系统接口**：此接口为系统接口，仅系统应用可调用。
@@ -321,7 +336,7 @@ offSmartRotateChange(callback?: Callback&lt;SmartRotateEvent&gt;): void
 
 | 参数名   | 类型                                                     | 必填 | 说明                                       |
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------ |
-| callback | Callback&lt;[SmartRotateEvent](#smartrotateevent)&gt;   | 否   | 需取消的智能旋转事件回调函数。             |
+| callback | Callback&lt;[SmartRotateEvent](#smartrotateevent)&gt;   | 否   | 需取消的智能旋转事件回调函数，若无此参数，则取消订阅智能旋转事件的所有回调函数。             |
 
 **错误码**：
 
@@ -329,8 +344,8 @@ offSmartRotateChange(callback?: Callback&lt;SmartRotateEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 

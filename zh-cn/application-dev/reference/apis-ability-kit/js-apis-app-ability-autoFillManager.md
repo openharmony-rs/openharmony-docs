@@ -57,7 +57,7 @@ type OnFillSuccessFn = (viewData: ViewData) => void
 
 当填充请求成功时，会触发该回调。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -348,7 +348,6 @@ import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uiContext = AppStorage.get<UIContext>("uiContext");
 let callback: autoFillManager.AutoSaveCallback = {
   onSuccess: () => {
     console.info(`save request on success.`);
@@ -401,6 +400,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
+
 // EntryAbility.ets
 import { UIAbility, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -438,6 +439,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 ```ts
+'use static'
+
 // Index.ets
 import { autoFillManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -608,6 +611,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
+
 // Index.ets
 import { autoFillManager } from '@kit.AbilityKit';
 import { Entry, Component, Button, UIContext, State, GridRow, GridCol, TextInput, InputType } from '@kit.ArkUI';
@@ -802,6 +807,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
+
 // Index.ets
 import { autoFillManager } from '@kit.AbilityKit';
 import { Entry, Component, Button, UIContext, State, GridRow, GridCol, TextInput, InputType } from '@kit.ArkUI';
@@ -886,7 +893,7 @@ type ViewData = _ViewData.default
 
 自动填充的视图数据信息。
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -924,7 +931,7 @@ type PageNodeInfo = _PageNodeInfo.default
 
 自动填充的页面节点信息。
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -980,7 +987,7 @@ type FillRequest = _AutoFillRequest.FillRequest
 
 自动填充的请求信息。
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1018,7 +1025,7 @@ type SaveRequest = _AutoFillRequest.SaveRequest
 
 自动保存的请求信息。
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1026,7 +1033,7 @@ type SaveRequest = _AutoFillRequest.SaveRequest
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
 | 类型                                                                                     | 说明                    |
 | ---------------------------------------------------------------------------------------- | ----------------------- |
@@ -1056,7 +1063,7 @@ type AutoFillRect = _AutoFillRect.default
 
 用于自动填充的矩形区域。
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -1064,7 +1071,7 @@ type AutoFillRect = _AutoFillRect.default
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
 | 类型                                                                              | 说明                        |
 | --------------------------------------------------------------------------------- | --------------------------- |

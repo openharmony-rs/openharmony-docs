@@ -149,6 +149,28 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 | 'hangUp'<sup>11+</sup> | 挂断。无需传入参数。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23        |
 |'toggleCallMute'<sup>11+</sup>  | 设置通话静音状态。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。无需传入参数。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23 |
 
+## AVMediaCenterControlType
+
+type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode' | 'toggleFavorite'
+
+播控中心控制命令类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 类型             | 说明         |
+| ---------------- | ------------ |
+| 'playNext'       | 下一首。 |
+| 'playPrevious'   | 上一首。 |
+| 'fastForward'    | 快进。 |
+| 'rewind'         | 快退。 |
+| 'setSpeed'       | 设置播放倍速。 |
+| 'setLoopMode'    | 设置循环模式。 |
+| 'toggleFavorite' | 是否收藏。 |
+
 ## NoParamCallback<sup>22+</sup>
 
 type NoParamCallback = () => void

@@ -104,4 +104,4 @@ Supported.
 }
 ```
 
-![en-us_image_0000001380789188](figures/en-us_image_0000001380789188.png)
+![stack](figures/stack.png)

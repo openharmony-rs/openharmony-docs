@@ -103,8 +103,10 @@ type OnCompletedFn = (error: BusinessError\<void>) => void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { StartupConfig, StartupConfigEntry, StartupListener } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';

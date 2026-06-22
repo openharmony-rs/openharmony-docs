@@ -1,6 +1,6 @@
 # V2自定义组件冻结场景
 
-当[`@ComponentV2`](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-componentv2-static.md)装饰的自定义组件处于冻结状态时，状态变量将不响应更新，即[`@Monitor`](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor-static.md)不会调用，状态变量关联的节点不会刷新。
+当[@ComponentV2](../state-management/arkts-create-custom-components.md#componentv2)装饰的自定义组件处于冻结状态时，状态变量将不响应更新，即[`@Monitor`](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor-static.md)不会调用，状态变量关联的节点不会刷新。
 
 V2自定义组件冻结支持场景为：[页面路由](#页面路由)、[TabContent](#tabcontent)、[Navigation](#navigation)以及[它们的混用](#混用场景)。
 
@@ -24,7 +24,8 @@ V2自定义组件冻结支持场景为：[页面路由](#页面路由)、[TabCon
 
 页面1：
 
-```ts
+<!-- @[FreezePageRouter1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezePage1.ets) -->
+``` TypeScript
 'use static'
 
 import { Button, ClickEvent, Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
@@ -56,7 +57,7 @@ export struct Page1 {
         })
       Button('go to next page').fontSize(25)
         .onClick(() => {
-          this.getUIContext().getRouter().pushUrl({ url: 'pages/Page2' });
+          this.getUIContext().getRouter().pushUrl({ url: 'pages/FreezePage2' });
           setTimeout(() => {
             this.bookTest = new Book(`Jane Austen's Pride and Prejudice`); // 从Page2返回Page1后触发@Monitor
           }, 1000);
@@ -68,7 +69,8 @@ export struct Page1 {
 
 页面2：
 
-```ts
+<!-- @[FreezePageRouter2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezePage2.ets) -->
+``` TypeScript
 'use static'
 
 import { Button, ClickEvent, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
@@ -101,7 +103,8 @@ struct Page2 {
 
 ![freezeWithTab](../state-management/figures/freezewithTabs.png)
 
-```ts
+<!-- @[FreezeTabContent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezeTabContent.ets) -->
+``` TypeScript
 'use static'
 
 import { Button, ClickEvent, Column, ComponentV2, Entry, FontWeight, ForEach, IMonitor, Local, Monitor, Param, Repeat, Row, TabContent, Tabs, Text } from '@kit.ArkUI';
@@ -163,7 +166,8 @@ struct FreezeChild {
 
 当[NavDestination](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)不可见时，会将其子自定义组件设置成非激活态，不会触发组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Monitor回调进行刷新。
 
-```ts
+<!-- @[FreezeNavigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezeNavigation.ets) -->
+``` TypeScript
 'use static'
 
 import { Builder, Button, ButtonType, ClickEvent, Column, ComponentV2, Consumer, Entry, IMonitor, Local, Monitor, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, Param, Provider, Text } from '@kit.ArkUI';
@@ -335,7 +339,8 @@ struct NavigationContentMsgStack {
 
 ### Navigation和TabContent的混用
 
-```ts
+<!-- @[FreezeMixNavigationTab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezeMixNavigationTab.ets) -->
+``` TypeScript
 'use static'
 
 import { BarMode, BarPosition, Builder, Button, ButtonType, Color, Column, ComponentV2, Consumer, Entry, IMonitor, Local, Margin, Monitor, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, Param, Provider, Require, TabContent, Tabs, TabsController, Text } from '@kit.ArkUI';

@@ -17,8 +17,27 @@
 
 无
 
-
 ## 接口
+
+### Circle
+
+new Circle(value?: CircleOptions)
+
+用于绘制圆形的构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | [CircleOptions](#circleoptions对象说明) | 否 | 设置圆形尺寸。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+
+### Circle
 
 Circle(value?: CircleOptions)
 
@@ -34,7 +53,7 @@ Circle(value?: CircleOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [CircleOptions](#circleoptions对象说明) | 否 | 设置圆形尺寸<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| value | [CircleOptions](#circleoptions对象说明) | 否 | 设置圆形尺寸。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## CircleOptions对象说明
 
@@ -259,6 +278,8 @@ antiAlias(value: boolean)
 
 通过fillOpacity、stroke、strokeDashArray属性可分别设置圆的透明度、边框颜色和边框间隙样式。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -281,11 +302,37 @@ struct CircleExample {
 }
 ```
 
-![zh-cn_image_0000001219744191](figures/zh-cn_image_0000001219744191.png)
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Circle, Color, ColumnOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CircleExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Circle({ width: 150, height: 150 })
+      Circle()
+        .width(150)
+        .height(200)
+        .fillOpacity(0)
+        .strokeWidth(3)
+        .stroke(Color.Red)
+        .strokeDashArray([1, 2])
+    }.width('100%')
+  }
+}
+```
+
+![circle1](figures/circle1.png)
 
 ### 示例2（宽和高使用不同参数类型绘制圆）
 
 width、height属性分别使用不同的长度类型绘制圆。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -305,11 +352,32 @@ struct CircleTypeExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Circle, CircleOptions, ColumnOptions, $r } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CircleTypeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Circle({ width: '50', height: '50' } as CircleOptions)
+      Circle({ width: 100, height: 100 } as CircleOptions)
+      Circle({ width: $r('app.string.CircleWidth'), height: $r('app.string.CircleHeight') } as CircleOptions)
+    }.width('100%')
+  }
+}
+```
+
 ![circleDemo2](figures/circleDemo2.png)
 
 ### 示例3（使用attributeModifier动态设置Circle组件的属性）
 
 以下示例展示了如何使用attributeModifier动态设置Circle组件的fill、fillOpacity、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeOpacity、strokeWidth和antiAlias属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -336,6 +404,42 @@ struct CircleModifierDemo {
   build() {
     Column() {
       Circle({ width: 150, height: 150 })
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Circle, CircleOptions, CircleAttribute, AttributeModifier, LineCapStyle } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyCircleModifier implements AttributeModifier<CircleAttribute> {
+  applyNormalAttribute(instance: CircleAttribute): void {
+    instance.fill("#707070")
+    instance.fillOpacity(0.5)
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct CircleModifierDemo {
+  @State modifier: MyCircleModifier = new MyCircleModifier()
+
+  build() {
+    Column() {
+      Circle({ width: 150, height: 150 } as CircleOptions)
         .attributeModifier(this.modifier)
         .offset({ x: 20, y: 20 })
     }

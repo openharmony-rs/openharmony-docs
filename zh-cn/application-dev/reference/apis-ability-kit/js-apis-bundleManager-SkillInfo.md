@@ -6,14 +6,14 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @HelloCrease-->
 
-技能（Skill）是系统为AI 代理提供的能力封装单元。技能通过[module.json5配置文件](../../quick-start/module-configuration-file.md#skillprofiles标签)中的skillProfiles标签声明能力。应用可以通过[skillManager](js-apis-skillManager.md)中提供的接口查询已安装的技能信息，发现并调用设备上的AI 代理能力。
+技能（Skill）是系统为AI代理提供的能力封装单元。技能通过[module.json5配置文件](../../quick-start/module-configuration-file.md#skillprofiles标签)中的skillProfiles标签声明能力。应用可以通过[skillManager](js-apis-skillManager.md)中提供的接口查询已安装的技能信息，发现并调用设备上的AI代理能力。
 
 >
 >**说明：**
 >
 >本模块仅适用于ArkTS-Dyn。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -23,9 +23,9 @@ import { skillManager } from '@kit.AbilityKit';
 
 ## SkillInfo
 
-技能配置信息，用于定义AI 代理的技能能力。
+技能配置信息，用于定义AI代理的技能能力。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -42,20 +42,20 @@ import { skillManager } from '@kit.AbilityKit';
 | skillPath   | string | 是   | 否   | 技能的安装路径。   |
 | abilityName   | string | 是   | 否   | 技能关联的ability名称。   |
 | versionCode   | number | 是   | 否   | 技能的版本号。   |
-| description   | string | 是   | 是   | 技能的描述信息。默认值为undefined。 |
-| srcEntries   | Array\<string\> | 是   | 是   | 实现技能的代码文件路径列表。默认值为undefined。  |
-| permissions   | Array\<string\> | 是   | 是   | 调用该技能所需要的权限列表。默认值为undefined。  |
-| requestPermissions   | Array\<string\> | 是   | 是   | 技能所在的模块申请的权限。默认值为undefined。|
+| description   | string | 是   | 是   | 技能的描述信息。当应用调用[skillManager](js-apis-skillManager.md)接口，传入的[SkillInfoFlag](js-apis-skillManager.md#skillinfoflag)不包含GET_SKILL_INFO_WITH_DESCRIPTION时，该字段将返回默认值为undefined，开发者使用时需要进行有效值判断以防代码异常。 |
+| srcEntries   | Array\<string\> | 是   | 是   | 实现技能的代码文件路径列表。当应用调用[skillManager](js-apis-skillManager.md)接口，传入的[SkillInfoFlag](js-apis-skillManager.md#skillinfoflag)不包含GET_SKILL_INFO_WITH_SRC_ENTRIES时，该字段将返回默认值为undefined，开发者使用时需要进行有效值判断以防代码异常。  |
+| permissions   | Array\<string\> | 是   | 是   | 调用该技能所需要的权限列表。当应用调用[skillManager](js-apis-skillManager.md)接口，传入的[SkillInfoFlag](js-apis-skillManager.md#skillinfoflag)不包含GET_SKILL_INFO_WITH_PERMISSIONS时，该字段将返回默认值为undefined，开发者使用时需要进行有效值判断以防代码异常。  |
+| requestPermissions   | Array\<string\> | 是   | 是   | 技能所在的模块申请的权限。当应用调用[skillManager](js-apis-skillManager.md)接口，传入的[SkillInfoFlag](js-apis-skillManager.md#skillinfoflag)不包含GET_SKILL_INFO_WITH_REQUEST_PERMISSIONS时，该字段将返回默认值为undefined，开发者使用时需要进行有效值判断以防代码异常。|
 
 ## SkillType
 
 技能类型的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

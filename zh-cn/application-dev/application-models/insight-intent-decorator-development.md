@@ -599,16 +599,16 @@
 
     **示例：**
 
-    <!-- @[appIntentEntity_PlayMusicListImpl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
-
     ArkTS-Dyn示例：
 
-    ```ts
+    <!-- @[appIntentEntity_AppPlaylistEntity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
+    
+    ``` TypeScript
     import { insightIntent, InsightIntentEntity, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     const LOG_TAG: string = 'testTag';
-
+    
     // 意图实体定义
     @InsightIntentEntity({
       entityCategory: 'playlist_entity_category',
@@ -620,7 +620,7 @@
           'entityId': {
             'type': 'string',
             'description': 'Playlist unique identifier',
-            'title': '歌单ID'
+            'title': '歌单id'
           },
           'playlistName': {
             'type': 'string',
@@ -646,24 +646,24 @@
       public playlistName: string = '';
       public displayName: string = '';
       public owner: string = '';
-
+    
       async onQueryEntity(params: insightIntent.QueryEntityParam): Promise<Array<AppPlaylistEntity>> {
         const playlists: AppPlaylistEntity[] = [
           this.createEntity('p001', '夜跑歌单', '夜跑歌单', 'Alice'),
           this.createEntity('p002', '通勤歌单', '通勤歌单', 'Bob'),
           this.createEntity('p003', '睡前轻音乐', '睡前轻音乐', 'Alice')
         ];
-
+    
         if (params.queryType === insightIntent.QueryType.ALL) {
           return playlists;
         }
-
+    
         const query = params.parameters ?? {};
         const validKeys = Object.keys(query).filter((key) => ['entityId', 'playlistName', 'owner'].includes(key));
         if (validKeys.length === 0) {
           return [];
         }
-
+    
         return playlists.filter((item) => {
           return validKeys.every((key) => {
             const queryValue = query[key];
@@ -680,7 +680,7 @@
           });
         });
       }
-
+    
       private createEntity(entityId: string, playlistName: string, displayName: string, owner: string): AppPlaylistEntity {
         const entity = new AppPlaylistEntity();
         entity.entityId = entityId;
@@ -692,19 +692,19 @@
     }
     ```
 
-    <!-- @[appIntentEntity_PlayMusicListImpl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
-
     ArkTS-Sta示例：
 
-    ```ts
+    <!-- @[appIntentEntity_AppPlaylistEntity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
+     
+    ``` TypeScript
     'use static'
-
+    
     import { insightIntent, InsightIntentEntity, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
     import { RecordData } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     const LOG_TAG: string = 'testTag';
-
+    
     const entityParam = {
       '$id': '/schemas/AppPlaylistEntity',
       'type': 'object',
@@ -713,7 +713,7 @@
         'entityId': {
           'type': 'string',
           'description': 'Playlist unique identifier',
-          'title': '歌单ID'
+          'title': '歌单id'
         } as Record<string, RecordData>,
         'playlistName': {
           'type': 'string',
@@ -732,7 +732,7 @@
       } as Record<string, RecordData>,
       'required': ['playlistName', 'displayName']
     } as Record<string, RecordData>
-
+    
     // 意图实体定义
     @InsightIntentEntity({
       entityCategory: 'playlist_entity_category',
@@ -744,24 +744,24 @@
       public playlistName: string = '';
       public displayName: string = '';
       public owner: string = '';
-
+    
       async onQueryEntity(params: insightIntent.QueryEntityParam): Promise<Array<AppPlaylistEntity>> {
         const playlists: AppPlaylistEntity[] = [
           this.createEntity('p001', '夜跑歌单', '夜跑歌单', 'Alice'),
           this.createEntity('p002', '通勤歌单', '通勤歌单', 'Bob'),
           this.createEntity('p003', '睡前轻音乐', '睡前轻音乐', 'Alice')
         ];
-
+    
         if (params.queryType === insightIntent.QueryType.ALL) {
           return playlists;
         }
-
+    
         const query : Record<string, RecordData> = params.parameters ?? {};
         const validKeys = Object.keys(query).filter((key) => ['entityId', 'playlistName', 'owner'].includes(key));
         if (validKeys.length === 0) {
           return [];
         }
-
+    
         return playlists.filter((item) => {
           return validKeys.every((key) => {
             const queryValue = query[key];
@@ -778,7 +778,7 @@
           });
         });
       }
-
+    
       private createEntity(entityId: string, playlistName: string, displayName: string, owner: string): AppPlaylistEntity {
         const entity = new AppPlaylistEntity();
         entity.entityId = entityId;

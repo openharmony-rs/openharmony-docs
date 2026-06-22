@@ -170,6 +170,7 @@ ArkTS-Sta示例：
 当点击账号选择界面选择任意账号时，调用reloadInModal接口再次触发自动填充服务，在AutoFillExtensionAbility的onFillRequest生命周期中拉起模态页面。
 
 ```ts
+'use static'
 // AutoFillAbility.ts
 import { autoFillManager, UIExtensionContentSession } from '@kit.AbilityKit';
 import AutoFillExtensionAbility from '@ohos.app.ability.AutoFillExtensionAbility';

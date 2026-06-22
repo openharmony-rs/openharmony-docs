@@ -107,13 +107,15 @@ Sendable interface需同时满足以下两个规则：
 
 **Sendable支持const enum类型使用示例：**
 
-```ts
+<!-- @[example_sendable_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/Test.ets) --> 
+
+``` TypeScript
 export const enum ModelState {
   ACTIVE,
   INACTIVE
 }
 ```
-<!-- @[example_modify_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/enumusage.ets) -->
+<!-- @[example_modify_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/enumusage.ets) --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -177,7 +179,7 @@ struct enumusage {
 
 **SharedHeap与LocalHeap关系图**
 
-![zh-cn_image_0000002001521153](figures/zh-cn_image_0000002001521153.png)
+![Sendable-communication-Process](figures/Sendable-communication-Process.png)
 
 各个并发实例的LocalHeap是隔离的。SharedHeap是进程级别的堆，可以被所有并发实例共享，但SharedHeap不能引用LocalHeap中的对象。
 

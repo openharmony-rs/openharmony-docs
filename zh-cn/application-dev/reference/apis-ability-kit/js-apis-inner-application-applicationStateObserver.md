@@ -214,6 +214,7 @@ let observerCode = appManager.on('applicationState', applicationStateObserver);
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { appManager } from '@kit.AbilityKit';
 
 class ApplicationStateObserverCustom implements appManager.ApplicationStateObserver {

@@ -196,6 +196,8 @@ ArkTS-Sta: revokeUserGrantedPermission(tokenID: int, permissionName: Permissions
 
 **ArkTS-Sta起始版本：** 23
 
+当权限状态从“已授权”变为“未授权”时，应用进程会被终止。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
@@ -1080,6 +1082,8 @@ ArkTS-Sta: revokePermission(tokenID: int, permissionName: Permissions, permissio
 **ArkTS-Dyn起始版本：** 21
 
 **ArkTS-Sta起始版本：** 23
+
+当killProcess参数为true且权限状态从“已授权”变为“未授权”时，应用进程会被终止。
 
 **系统接口：** 此接口为系统接口。
 

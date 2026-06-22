@@ -38,30 +38,30 @@
 
 ```text
 project/
-├── entry/                           # ArkTS-Dyn主模块
+├── entry/                                         # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets     # ArkTS-Dyn主模块入口页面，导入并使用ArkTS-Sta自定义组件
+│                   └── StatemgmtV1AppStorage.ets  # ArkTS-Dyn主模块入口页面，导入并使用ArkTS-Sta自定义组件
 │
-└── static_module/                    # ArkTS-Sta子模块
+└── static_module/                                 # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets   # 定义ArkTS-Sta自定义组件并导出
+                    └── StaAppStorage.ets          # 定义ArkTS-Sta自定义组件并导出
 ```
 
 示例如下：
 
 - 创建ArkTS-Sta子模块`static_module`，并导出ArkTS-Sta自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-```TypeScript
-'use static'
+<!-- @[DynInteropStaStatemgmtV1IndexAppStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/Index.ets) -->
 
-// static_module/index.ets
-export { MainPage } from './src/main/ets/components/MainPage'; // 导出ArkTS-Sta自定义组件
+``` TypeScript
+// static_module/Index.ets
+export { MainPage } from './src/main/ets/components/StaAppStorage'; // 导出ArkTS-Sta自定义组件
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
@@ -83,10 +83,10 @@ export { MainPage } from './src/main/ets/components/MainPage'; // 导出ArkTS-St
 
 - 创建ArkTS-Sta子模块`static_module`，在ArkTS-Dyn中创建并导出自定义组件。
 
-```TypeScript
-'use static'
+<!-- @[DynInteropStaStatemgmtV1StaAppStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/src/main/ets/components/StaAppStorage.ets) -->
 
-// static_module/src/main/ets/components/MainPage.ets
+``` TypeScript
+// static_module/src/main/ets/components/StaAppStorage.ets
 import { Component, Column, Button } from '@ohos.arkui.component';
 import { AppStorage } from '@ohos.arkui.stateManagement';
 
@@ -111,8 +111,10 @@ export struct MainPage { // 定义ArkTS-Sta自定义组件
 
 - 在ArkTS-Dyn模块中配置相关模块依赖后，导入ArkTS-Sta自定义组件。
 
-```TypeScript
-// entry/src/main/ets/pages/Index.ets
+<!-- @[DynInteropStaStatemgmtV1AppStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/entry/src/main/ets/pages/StatemgmtV1AppStorage.ets) -->
+
+``` TypeScript
+// entry/src/main/ets/pages/StatemgmtV1AppStorage.ets
 import { MainPage } from 'static_module'; // 导入ArkTS-Sta自定义组件
 
 @Entry
@@ -145,15 +147,15 @@ struct Index {
 
 - 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件。
 
-```TypeScript
-'use static'
+<!-- @[DynInteropStaStatemgmtV1StaAppStorageData](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/src/main/ets/components/StaAppStorageData.ets) -->
 
-// static_module/src/main/ets/components/MainPage.ets
+``` TypeScript
+// static_module/src/main/ets/components/StaAppStorageData.ets
 import { Component, Row, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { AppStorage, StorageLink, StoragePropRef } from '@ohos.arkui.stateManagement';
 
 @Component
-export struct MainPage {
+export struct AppStoragePage {
   // ArkTS-Sta绑定ArkTS-Dyn AppStorage数据
   @StorageLink('LinkA') appLink: string = 'staticA';
   @StoragePropRef('LinkA') appProp: string = 'staticA';
@@ -195,9 +197,11 @@ export struct MainPage {
 
 - 在ArkTS-Dyn主模块中引入ArkTS-Sta组件。
 
-```TypeScript
-// entry/src/main/ets/pages/Index.ets
-import { MainPage } from 'static_module'; // 导入ArkTS-Sta自定义组件
+<!-- @[DynInteropStaStatemgmtV1AppStorageData](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/entry/src/main/ets/pages/StatemgmtV1AppStorageData.ets) -->
+
+``` TypeScript
+// entry/src/main/ets/pages/StatemgmtV1AppStorageData.ets
+import { AppStoragePage } from 'static_module'; // 导入ArkTS-Sta自定义组件
 
 // ArkTS-Dyn使用AppStorage，初始化key 'LinkA'
 AppStorage.setOrCreate<string>('LinkA', '333');
@@ -236,7 +240,7 @@ struct Index {
         })
         .width(300)
         .margin(10)
-      MainPage()
+      AppStoragePage()
     }
     .width('100%')
   }
@@ -255,15 +259,15 @@ struct Index {
 
 - 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件。
 
-```TypeScript
-'use static'
+<!-- @[DynInteropStaStatemgmtV1StaLocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/src/main/ets/components/StaLocalStorage.ets) -->
 
-// static_module/src/main/ets/components/MainPage.ets
+``` TypeScript
+// static_module/src/main/ets/components/StaLocalStorage.ets
 import { Component, Row, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { LocalStorage, LocalStorageLink, LocalStoragePropRef } from '@ohos.arkui.stateManagement';
 
 @Component
-export struct MainPage { // 定义ArkTS-Sta自定义组件
+export struct LocalStoragePage { // 定义ArkTS-Sta自定义组件
   // ArkTS-Sta绑定ArkTS-Dyn LocalStorage数据
   @LocalStorageLink('LinkA') localLink: string = 'staticA';
   @LocalStoragePropRef('LinkA') localProp: string = 'staticA';
@@ -305,9 +309,11 @@ export struct MainPage { // 定义ArkTS-Sta自定义组件
 
 - 在ArkTS-Dyn主模块中引入ArkTS-Sta组件。
 
-```TypeScript
-// entry/src/main/ets/pages/Index.ets
-import { MainPage } from 'static_module';
+<!-- @[DynInteropStaStatemgmtV1LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/entry/src/main/ets/pages/StatemgmtV1LocalStorage.ets) -->
+
+``` TypeScript
+// entry/src/main/ets/pages/StatemgmtV1LocalStorage.ets
+import { LocalStoragePage } from 'static_module';
 
 // 初始化ArkTS-Dyn中的LocalStorage数据
 const para: Record<string, string> = { 'LinkA': 'test' };
@@ -348,7 +354,7 @@ struct Index {
         })
         .width(300)
         .margin(10)
-      MainPage()
+      LocalStoragePage()
     }
     .width('100%')
   }
@@ -367,15 +373,15 @@ struct Index {
 
 - 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件。
 
-```TypeScript
-'use static'
+<!-- @[DynInteropStaStatemgmtV1StaPersistentStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/src/main/ets/components/StaPersistentStorage.ets) -->
 
-// static_module/src/main/ets/components/MainPage.ets
+``` TypeScript
+// static_module/src/main/ets/components/StaPersistentStorage.ets
 import { Component, Row, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { PersistentStorage, StorageLink, StoragePropRef } from '@ohos.arkui.stateManagement';
 
 @Component
-export struct MainPage { // 定义ArkTS-Sta自定义组件
+export struct PersistentStoragePage { // 定义ArkTS-Sta自定义组件
   // ArkTS-Sta绑定ArkTS-Dyn PersistentStorage数据
   @StorageLink('LinkA') persistLink: string = 'staticB';
   @StoragePropRef('LinkA') persistProp: string = 'staticB';
@@ -419,9 +425,11 @@ export struct MainPage { // 定义ArkTS-Sta自定义组件
 
 - 在ArkTS-Dyn主模块中引入ArkTS-Sta组件。
 
-```TypeScript
-// entry/src/main/ets/pages/Index.ets
-import { MainPage } from 'static_module';
+<!-- @[DynInteropStaStatemgmtV1PersistentStorage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/entry/src/main/ets/pages/StatemgmtV1PersistentStorage.ets) -->
+
+``` TypeScript
+// entry/src/main/ets/pages/StatemgmtV1PersistentStorage.ets
+import { PersistentStoragePage } from 'static_module';
 
 // ArkTS-Dyn使用PersistentStorage，初始化key 'LinkA'
 PersistentStorage.persistProp('LinkA', 'hello');
@@ -463,7 +471,7 @@ struct Index {
         })
         .width(300)
         .margin(10)
-      MainPage()
+      PersistentStoragePage()
     }
     .width('100%')
   }
@@ -482,15 +490,15 @@ struct Index {
 
 - 创建ArkTS-Sta子模块`static_module`，在`static_module/src/main/ets/components`目录创建并导出自定义组件。
 
-```TypeScript
-'use static'
+<!-- @[DynInteropStaStatemgmtV1StaEnvironment](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/src/main/ets/components/StaEnvironment.ets) -->
 
-// static_module/src/main/ets/components/MainPage.ets
+``` TypeScript
+// static_module/src/main/ets/components/StaEnvironment.ets
 import { Component, Row, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
 import { Environment, StorageLink, StoragePropRef } from '@ohos.arkui.stateManagement';
 
 @Component
-export struct MainPage { // 定义ArkTS-Sta自定义组件
+export struct EnvironmentPage { // 定义ArkTS-Sta自定义组件
   // ArkTS-Sta绑定ArkTS-Dyn Environment数据
   @StorageLink('fontScale') fontScaleLink: number = 4.0;
   @StoragePropRef('fontScale') fontScaleProp: number = 4.0;
@@ -532,9 +540,11 @@ export struct MainPage { // 定义ArkTS-Sta自定义组件
 
 - 在ArkTS-Dyn主模块中引入ArkTS-Sta组件。
 
-```TypeScript
-// entry/src/main/ets/pages/Index.ets
-import { MainPage } from 'static_module'; // 导入ArkTS-Sta自定义组件
+<!-- @[DynInteropStaStatemgmtV1Environment](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/entry/src/main/ets/pages/StatemgmtV1Environment.ets) -->
+
+``` TypeScript
+// entry/src/main/ets/pages/StatemgmtV1Environment.ets
+import { EnvironmentPage } from 'static_module'; // 导入ArkTS-Sta自定义组件
 
 // ArkTS-Dyn使用Environment，获取fontScale
 Environment.envProp<number>('fontScale', 2.0);
@@ -573,7 +583,7 @@ struct Index { // 定义ArkTS-Dyn主组件
         })
         .width(300)
         .margin(10)
-      MainPage()
+      EnvironmentPage()
     }
     .width('100%')
   }

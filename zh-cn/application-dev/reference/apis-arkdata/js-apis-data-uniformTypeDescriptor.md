@@ -259,7 +259,7 @@ belongsTo(type: string): boolean
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -333,7 +333,7 @@ isLowerLevelType(type: string): boolean
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -393,7 +393,7 @@ isHigherLevelType(type: string): boolean
 
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
-| type    | string  | 是    |所指定的标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID）。   |
+| type    | string  | 是    |所指定的标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。   |
 
 **返回值：**
 
@@ -407,7 +407,7 @@ isHigherLevelType(type: string): boolean
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -417,7 +417,8 @@ ArkTS-Dyn示例：
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
+try {
+    // 获取TypeDescriptor对象
     let typeObj : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
     let ret = typeObj.isHigherLevelType('general.type-script');
     if(ret) {
@@ -481,7 +482,7 @@ equals(typeDescriptor: TypeDescriptor): boolean
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -491,7 +492,8 @@ ArkTS-Dyn示例：
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
+try {
+    // 获取两个TypeDescriptor对象进行比较
     let typeA : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
     let typeB : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.python-script');
     if(!typeA.equals(typeB)) {
@@ -561,7 +563,7 @@ ArkTS-Sta: getTypeDescriptor(typeId: string): TypeDescriptor | null
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -649,7 +651,7 @@ getUniformDataTypeByFilenameExtension(filenameExtension: string, belongsTo?: str
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -710,7 +712,7 @@ getUniformDataTypeByMIMEType(mimeType: string, belongsTo?: string): string
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -746,6 +748,11 @@ getUniformDataTypesByFilenameExtension(filenameExtension: string, belongsTo?: st
 
 根据给定的文件后缀名和所归属的标准化数据类型查询标准化数据类型ID列表。
 
+**使用场景：**
+- 展示某个文件后缀对应的所有可能数据类型
+- 文件类型选择器中提供多种类型选项
+- 分析文件格式与数据类型的对应关系
+
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本**：13
@@ -771,7 +778,7 @@ getUniformDataTypesByFilenameExtension(filenameExtension: string, belongsTo?: st
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -832,7 +839,7 @@ getUniformDataTypesByMIMEType(mimeType: string, belongsTo?: string): Array\<stri
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 

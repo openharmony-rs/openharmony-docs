@@ -174,7 +174,7 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 
 ## LayoutSafeAreaEdge<sup>12+</sup>
 
-扩展安全区域的边缘。
+扩展布局安全区域的边缘。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -28,8 +28,8 @@ Describes battery information.
 
 | Name     | Type       | Read-Only|  Description    |
 | --------------- | ------------------- | ---- | ---------------------|
-| batterySOC                                | number                                         | Yes  | Battery state of charge (SoC) of the device, in unit of percentage.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                          |
-| chargingStatus                            | [BatteryChargeState](#batterychargestate)      | Yes  | Battery charging state of the current device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                              |
+| batterySOC                                | number                                         | Yes  | Battery state of charge (SoC) of the device, in unit of percentage.<br><strong>Atomic service API</strong>: This API can be used in atomic services since API version 12.                          |
+| chargingStatus                            | [BatteryChargeState](#batterychargestate)      | Yes  | Battery charging state of the current device.<br><strong>Atomic service API</strong>: This API can be used in atomic services since API version 12.                              |
 | healthStatus                              | [BatteryHealthState](#batteryhealthstate)      | Yes  | Battery health status of the device.                              |
 | pluggedType                               | [BatteryPluggedType](#batterypluggedtype)      | Yes  | Charger type of the device.                            |
 | voltage                                   | number                                         | Yes  | Battery voltage of the device, in unit of microvolt.                        |

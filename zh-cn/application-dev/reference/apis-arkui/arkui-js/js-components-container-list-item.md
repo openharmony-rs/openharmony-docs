@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
@@ -54,7 +54,7 @@
 
 | 名称 | 参数 | 描述 |
 | -------- | -------- | -------- |
-| sticky | {&nbsp;state:&nbsp;boolean&nbsp;} | 吸顶组件回调事件。<br/>value:&nbsp;false表示当前item处于非吸顶状态；<br/>value:&nbsp;true表示当前item处于吸顶状态；<br/>说明：仅当item设置sticky属性时支持注册此事件。 |
+| sticky | {&nbsp;state:&nbsp;boolean&nbsp;} | 吸顶组件回调事件。<br/>state:&nbsp;false表示当前item处于非吸顶状态；<br/>state:&nbsp;true表示当前item处于吸顶状态；<br/>说明：仅当item设置sticky属性时支持注册此事件。 |
 
 ## 方法
 

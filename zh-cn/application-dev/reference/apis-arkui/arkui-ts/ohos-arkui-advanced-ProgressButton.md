@@ -301,7 +301,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_progressbutton_example02](figures/zh-cn_image_progressbutton_example02.png)
+![zh-cn_image_progressbutton_example02](figures/image-progressbutton-example02.png)
 
 ### 示例3（自定义圆角按钮）
 该示例实现了一个简单的自定义圆角的文本下载按钮。
@@ -412,4 +412,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_progressbutton_example03](figures/zh-cn_image_progressbutton_example03.png)
+![zh-cn_image_progressbutton_example03](figures/image-progressbutton-example03.png)

@@ -24,7 +24,7 @@ ArkTS-Sta: shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizer
 
 提供系统内置手势与响应链上其他组件的手势设置并行关系的回调事件。此接口对应的C API接口为[setInnerGestureParallelTo](../capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +50,7 @@ type ShouldBuiltInRecognizerParallelWithCallback = (current: GestureRecognizer, 
 
 系统内置手势与响应链上其他组件的手势设置并行关系的回调事件类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,7 +82,7 @@ ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCa
 新增exposeInnerGesture参数作为是否将ArkUI系统组合组件的内置组件的手势暴露给开发者的标识。当该标识置为true时，将ArkUI系统组合组件的内置组件的手势暴露给开发者。<br>
 对于不需要将ArkUI系统组合组件的内置组件的手势暴露给开发者的场景，建议采用原有[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)接口。若要求将ArkUI系统组合组件的内置组件的手势暴露给开发者，建议使用该接口并将exposeInnerGesture设置为true。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,7 +111,7 @@ ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCa
 
 给组件绑定自定义手势识别器判定回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,10 +143,10 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | 当前基础手势事件信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
-| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 是   | 当前即将要响应的识别器对象。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
-| recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上的其他手势识别器对象。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
-| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](./ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上的Touch识别器对象。 默认值为null，表示在当前手势绑定组件及其子孙组件没有可响应的Touch识别器。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24|
+| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | 当前基础手势事件信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
+| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 是   | 当前即将要响应的识别器对象。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
+| recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上的其他手势识别器对象。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
+| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](./ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上的Touch识别器对象。 默认值为null，表示在当前手势绑定组件及其子孙组件没有可响应的Touch识别器。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24|
 
 **返回值：**
 
@@ -162,7 +162,7 @@ ArkTS-Sta: onTouchTestDone(callback: TouchTestDoneCallback | undefined): this;
 
 提供在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，指定手势识别器是否参与后续处理的能力。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,7 +188,7 @@ type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array\<Gestu
 
 动态指定手势识别器是否参与手势处理的回调事件类型，回调内参数的生命周期跟随回调本身，参数内的方法仅支持在回调内同步使用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -211,7 +211,7 @@ ArkTS-Sta: onGestureCollectIntercept(callback: GestureCollectInterceptCallback):
 
 在当前节点及更高优先级节点上的事件和手势被收集完成后触发该回调。该回调可用于干预事件和手势的收集结果。使用callback异步回调。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,7 +239,7 @@ type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>,
 
 定义在[onGestureCollectIntercept](#ongesturecollectintercept)中使用的回调类型。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -260,7 +260,7 @@ type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>,
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [GestureCollectIntervention](./ts-appendix-enums.md#gesturecollectintervention) | 手势收集干预结果。 |
+| [GestureCollectIntervention](./ts-appendix-enums.md#gesturecollectintervention) | 手势收集干预结果。<br/>取值为异常值时按照GestureCollectIntervention.[CONTINUE](./ts-appendix-enums.md#gesturecollectintervention)处理。 |
 
 ## shouldRecognizerParallelWith
 
@@ -270,7 +270,7 @@ ArkTS-Sta: shouldRecognizerParallelWith(callback: ShouldRecognizerParallelWithCa
 
 提供手势与响应链上其他组件的手势设置并行关系的回调事件。使用callback异步回调。此接口对应的C API接口为[setGestureParallelTo](../capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto)。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -297,7 +297,7 @@ type ShouldRecognizerParallelWithCallback = (current: GestureRecognizer, others:
 
 手势与响应链上其他组件的手势设置并行关系的回调事件类型。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -665,7 +665,7 @@ struct Index {
 
  ![example](figures/gesture_recognizer_obtain_attributes.gif)
 
- ### 示例4（手势触发成功时取消子组件上的Touch事件）
+### 示例4（手势触发成功时取消子组件上的Touch事件）
 
 该示例通过配置onGestureRecognizerJudgeBegin判定手势，在父容器手势触发成功时，调用cancelTouch()强制取消子组件上的Touch事件，实现父子组件手势控制的精准切换。
 
@@ -863,7 +863,7 @@ struct FatherControlChild {
 ```
 ![example](figures/canceltouch.gif)
 
- ### 示例5（自定义手势识别器是否参与手势处理）
+### 示例5（自定义手势识别器是否参与手势处理）
 
 从API version 20开始，该示例通过配置[onTouchTestDone](#ontouchtestdone20)指定手势识别器不参与后续手势处理，触发回调时，调用[preventBegin](./ts-gesture-common.md#preventbegin20)阻止手势识别器参与后续处理。点击Tap2和Tap1的重合区域，不调用preventBegin时，触发Tap2对应的手势；调用preventBegin阻止Tap2时，触发Tap1对应的手势。
 
@@ -951,13 +951,14 @@ struct TouchTestDoneExample {
 ```
 ![example](figures/touchTestDone.gif)
 
- ### 示例6（自定义干预事件和手势的收集结果）
+### 示例6（自定义干预事件和手势的收集结果）
 
 该示例通过配置[onGestureCollectIntercept](#ongesturecollectintercept)指定手势识别器或者触摸识别器是否透传到其他节点。点击button2时，不透传触摸事件到Column。点击button1时，透传触摸事件到Column，Column变色。
 
 从API版本26.0.0开始，新增onGestureCollectIntercept接口。
 
 ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -972,6 +973,7 @@ struct Index {
     Column() {
       Column() {
         Row({ space: 20 } as RowOptions) {
+          // 组件button1未设置点击事件
           Button('button1')
             .width('30%')
             .height(40)
@@ -980,12 +982,16 @@ struct Index {
               this.backgroundColorButton1 = '#E5E5E5';
             })
             .backgroundColor(this.backgroundColorButton1)
+          // 组件button2设置了点击事件
           Button('button2')
             .width('30%')
             .height(40)
             .id('button2')
             .onTouch((e?: TouchEvent) => {
               this.backgroundColorButton2 = '#E5E5E5';
+            })
+            .onClick((e?: ClickEvent) => {
+              console.info("button2 is clicked")
             })
             .backgroundColor(this.backgroundColorButton2)
         }
@@ -1004,6 +1010,7 @@ struct Index {
           } else {
             for (let i = 0; i < touchRecognizers.length; i++) {
               let id = touchRecognizers[i].getEventTargetInfo().getId();
+              //当命中存在点击事件区域button2时，事件无需透传给Column
               if (id == 'button2') {
                 return GestureCollectIntervention.DISCARD_LOWER;
               }
@@ -1046,6 +1053,7 @@ struct Index {
     Column() {
       Column() {
         Row({ space: 20 } as RowOptions) {
+          // 组件button1未设置点击事件
           Button('button1')
             .width('30%')
             .height(40)
@@ -1054,12 +1062,16 @@ struct Index {
               this.backgroundColorButton1 = '#E5E5E5';
             })
             .backgroundColor(this.backgroundColorButton1)
+          // 组件button2设置了点击事件
           Button('button2')
             .width('30%')
             .height(40)
             .id('button2')
             .onTouch((e?: TouchEvent) => {
               this.backgroundColorButton2 = '#E5E5E5';
+            })
+            .onClick((e?: ClickEvent) => {
+              console.info("button2 is clicked")
             })
             .backgroundColor(this.backgroundColorButton2)
         }
@@ -1078,6 +1090,7 @@ struct Index {
           } else {
             for (let i = 0; i < touchRecognizers.length; i++) {
               let id = touchRecognizers[i].getEventTargetInfo().getId();
+              //当命中存在点击事件区域button2时，事件无需透传给Column
               if (id == 'button2') {
                 return GestureCollectIntervention.DISCARD_LOWER;
               }
@@ -1101,6 +1114,21 @@ struct Index {
 }
 ```
 ![example](figures/gestureCollectIntercept.gif)
+
+示例对应的组件树如下图所示。
+```mermaid
+graph TD
+    A((Column))
+    B((Column))
+    C((Row))
+    D((Button1))
+    E((Button2))
+
+    A --> B
+    A --> C
+    C --> D
+    C --> E
+```
 
 ### 示例7（非内置手势嵌套滚动）
 

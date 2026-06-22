@@ -157,8 +157,10 @@ getDialogSessionInfo(dialogSessionId: string): [DialogSessionInfo | null](#dialo
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { dialogSession, Want, UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
 const TAG: string = '[testTag] UIExtAbility';

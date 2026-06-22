@@ -879,6 +879,85 @@ ws.onOpen(callback1);
 // 可以指定传入onOpen中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 ws.offOpen(callback1);
 ```
+### on('openInfo')
+
+on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
+
+订阅WebSocket的打开信息事件，使用callback异步回调。该事件用于获取WebSocket连接成功后的详细信息。该接口需要在调用[connect](#connect)发起连接请求前调用。
+ 
+ **系统能力**：SystemCapability.Communication.NetStack
+ 
+ **ArkTS-Dyn起始版本：** 26.0.0
+ 
+ **ArkTS-Sta起始版本：** 26.0.0
+ 
+ **模型约束**：此接口仅可在Stage模型下使用。
+ 
+ **参数：**
+
+ | 参数名   | 类型                    | 必填 | 说明                          |
+ | -------- | ----------------------- | ---- | ----------------------------- |
+ | type     | string                  | 是   | 订阅的事件类型。'openInfo'：WebSocket的打开信息事件。 |
+ | callback | AsyncCallback\<[WebSocketOpenInfo](#websocketopeninfo)\> | 是   | 回调函数。返回WebSocket连接的详细信息。 |
+
+ **示例：**
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
+});
+```
+
+ ### off('openInfo')
+
+ off(type: 'openInfo', callback?: AsyncCallback\<WebSocketOpenInfo\>): void
+
+ 取消订阅WebSocket的打开信息事件，使用callback异步回调。
+
+ > **说明：**
+ >
+ > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+ **系统能力**：SystemCapability.Communication.NetStack
+ 
+ **ArkTS-Dyn起始版本：** 26.0.0
+ 
+ **ArkTS-Sta起始版本：** 26.0.0
+
+ **模型约束**：此接口仅可在Stage模型下使用。
+
+ **参数：**
+
+ | 参数名   | 类型                    | 必填 | 说明                          |
+ | -------- | ----------------------- | ---- | ----------------------------- |
+ | type     | string                  | 是   | 取消订阅的事件类型。'openInfo'：WebSocket的打开信息事件。 |
+ | callback | AsyncCallback\<[WebSocketOpenInfo](#websocketopeninfo)\> | 否   | 回调函数。 |
+
+ **示例：**
+ 
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+let callback1 = (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
+};
+ws.on('openInfo', callback1);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+ws.off('openInfo', callback1);
+```
 
 ### on('message')
 on(type: 'message', callback: AsyncCallback\<string | ArrayBuffer\>): void
@@ -2793,3 +2872,21 @@ TLS协议类型。
 | TLS_V_1_1  | 1    | TLS版本号1.1。 |
 | TLS_V_1_2 | 2    | TLS版本号1.2。 |
 | TLS_V_1_3 | 3    | TLS版本号1.3。 |
+
+## WebSocketOpenInfo
+
+WebSocket连接成功后的详细信息。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称 | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| status | int | 否 | 否 | 服务器返回的状态码。例如：101表示建链成功并升级为WebSocket协议。 |
+| message | string | 否 | 否 | 服务器返回的状态信息。与status字段对应，例如：status=101时，该字段返回"Switching Protocols"。 |
+| protocol | string | 否 | 是 | 服务器返回的协商后的协议。 |

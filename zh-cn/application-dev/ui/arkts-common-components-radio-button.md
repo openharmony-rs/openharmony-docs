@@ -22,6 +22,8 @@ Radio(options: {value: string, group: string})
 
 Radio支持设置选中状态和非选中状态的样式。
 
+ArkTS-Dyn示例：
+
 <!-- @[click_radio_to_show_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
 
 ``` TypeScript
@@ -31,12 +33,25 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
   .checked(true)
 ```
 
+ArkTS-Sta示例：
 
-![zh-cn_image_0000001562820821](figures/zh-cn_image_0000001562820821.png)
+<!-- @[click_radio_to_show_function](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
+
+``` TypeScript
+Radio({ value: 'Radio1', group: 'radioGroup' })
+  .checked(false)
+Radio({ value: 'Radio2', group: 'radioGroup' })
+  .checked(true)
+```
+
+
+![radio-create](figures/radio-create.png)
 
 ## 添加事件
 
 除支持[通用事件](../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，Radio还用于选中后触发某些操作，可以绑定[onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#onchange)事件来响应选中操作后的自定义行为。
+
+ArkTS-Dyn示例：
 
 <!-- @[click_radio_event_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
 
@@ -57,10 +72,33 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
   })
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[click_radio_event_function](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
+
+``` TypeScript
+Radio({ value: 'Radio1', group: 'radioGroup' })
+  .onChange((isChecked: boolean) => {
+    if(isChecked) {
+      // 需要执行的操作
+      // ...
+    }
+  })
+Radio({ value: 'Radio2', group: 'radioGroup' })
+  .onChange((isChecked: boolean) => {
+    if(isChecked) {
+      // 需要执行的操作
+      // ...
+    }
+  })
+```
+
 
 ## 场景示例
 
 通过点击Radio切换声音模式。
+
+ArkTS-Dyn示例：
 
 <!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) -->
 
@@ -122,5 +160,79 @@ export struct RadioExample {
 }
 ```
 
+ArkTS-Sta示例：
 
-![zh-cn_image_0000001562700457](figures/zh-cn_image_0000001562700457.gif)
+<!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Radio,
+  Row,
+  Column,
+  Text,
+  NavDestination,
+  FlexAlign,
+  promptAction,
+  $r
+} from '@kit.ArkUI'
+import { State } from '@ohos.arkui.stateManagement'
+
+// xxx.ets
+@Entry
+@Component
+export struct RadioExample {
+  @State rst: promptAction.ShowToastOptions = { message: 'Ringing mode.' } as promptAction.ShowToastOptions;
+  @State vst: promptAction.ShowToastOptions = { message: 'Vibration mode.' } as promptAction.ShowToastOptions;
+  @State sst: promptAction.ShowToastOptions = { message: 'Silent mode.' } as promptAction.ShowToastOptions;
+
+  build(): void {
+    // ...
+      Row() {
+        Column() {
+          Radio({ value: 'Ringing', group: 'radioGroup' }).checked(true)
+            .height(50)
+            .width(50)
+            .onChange((isChecked: boolean) => {
+              if (isChecked) {
+                // 切换为响铃模式
+                this.getUIContext().getPromptAction().openToast(this.rst);
+              }
+            })
+          Text('Ringing')
+        }
+
+        Column() {
+          Radio({ value: 'Vibration', group: 'radioGroup' })
+            .height(50)
+            .width(50)
+            .onChange((isChecked: boolean) => {
+              if (isChecked) {
+                // 切换为振动模式
+                this.getUIContext().getPromptAction().openToast(this.vst);
+              }
+            })
+          Text('Vibration')
+        }
+
+        Column() {
+          Radio({ value: 'Silent', group: 'radioGroup' })
+            .height(50)
+            .width(50)
+            .onChange((isChecked: boolean) => {
+              if (isChecked) {
+                // 切换为静音模式
+                this.getUIContext().getPromptAction().openToast(this.sst);
+              }
+            })
+          Text('Silent')
+        }
+      }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+      // ...
+  }
+}
+```
+
+
+![radio-scenario](figures/radio-scenario.gif)

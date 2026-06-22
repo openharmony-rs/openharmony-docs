@@ -18,7 +18,7 @@
 
    配置示例如下：
 
-
+   ArkTS-Dyn示例：
   <!-- @[module_config_formCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/entry/src/main/module.json5) --> 
   
   ``` JSON5
@@ -46,10 +46,39 @@
   }
   ```
   
+   ArkTS-Sta示例：
+  <!-- @[module_config_formCreateSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormStandaloneDemoSta/entry/src/main/module.json5) --> 
+  
+  ``` JSON5
+  {
+    "module": {
+      // ...
+      "extensionAbilities": [
+        {
+          "name": "EntryFormAbility",
+          "srcEntry": "./ets/entryformability/EntryFormAbility.ets",
+          "label": "$string:EntryFormAbility_label",
+          "description": "$string:EntryFormAbility_desc",
+          "type": "form",
+          "metadata": [
+            {
+              "name": "ohos.extension.form",
+              "resource": "$profile:form_config"
+            }
+          ]
+        }
+      ],
+      // 只在独立卡片包形态中会使用，用来关联卡片包模块。
+      "formWidgetModule": "library",
+    }
+  }
+  ```
 
 ## 独立卡片包配置
 相对应地，在卡片包的[module.json5配置文件](../quick-start/module-configuration-file.md)中，`formExtensionModule`字段用来关联应用包的`module`。<br>
 配置示例如下：
+
+   ArkTS-Dyn示例：
 <!-- @[standalone_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/module.json5) --> 
 
 ``` JSON5
@@ -60,6 +89,24 @@
     "description": "$string:shared_desc",
     "deviceTypes": [
       "phone"
+    ],
+    "deliveryWithInstall": true,
+    // 只在独立卡片包形态中会使用，用来关联应用包模块。
+    "formExtensionModule": "entry"
+  }
+}
+```
+   ArkTS-Sta示例：
+<!-- @[standaloneSta_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormStandaloneDemoSta/library/src/main/module.json5) --> 
+
+``` JSON5
+{
+  "module": {
+    "name": "library",
+    "type": "shared",
+    "description": "$string:shared_desc",
+    "deviceTypes": [
+      "default"
     ],
     "deliveryWithInstall": true,
     // 只在独立卡片包形态中会使用，用来关联应用包模块。

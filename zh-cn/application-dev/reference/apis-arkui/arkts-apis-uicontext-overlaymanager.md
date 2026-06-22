@@ -14,6 +14,8 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 以下API需先使用UIContext中的[getOverlayManager()](arkts-apis-uicontext-uicontext.md#getoverlaymanager12)方法获取到OverlayManager对象，再通过该对象调用对应方法。
 >
 > - OverlayManager上节点的层级在Page页面层级之上，在Dialog、Popup、Menu、BindSheet、BindContentCover和Toast等之下。
@@ -27,6 +29,8 @@
 addComponentContent(content: ComponentContent, index?: number): void
 
 在OverlayManager上新增指定节点。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -143,6 +147,8 @@ addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder)
 
 支持在浮层节点创建时指定显示的顺序。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -243,6 +249,8 @@ removeComponentContent(content: ComponentContent): void
 
 删除overlay上的指定节点。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -262,6 +270,8 @@ removeComponentContent(content: ComponentContent): void
 showComponentContent(content: ComponentContent): void
 
 在OverlayManager上显示指定节点。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -283,6 +293,8 @@ hideComponentContent(content: ComponentContent): void
 
 隐藏OverlayManager上的指定节点。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -303,6 +315,8 @@ showAllComponentContents(): void
 
 显示OverlayManager上所有的ComponentContent。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -316,6 +330,8 @@ showAllComponentContents(): void
 hideAllComponentContents(): void
 
 隐藏OverlayManager上的所有ComponentContent。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

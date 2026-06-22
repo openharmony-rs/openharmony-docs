@@ -525,8 +525,10 @@ acquireShareData(missionId: int, callback: AsyncCallback\<Record\<string, Record
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -639,8 +641,10 @@ acquireShareData(missionId: int): Promise\<Record\<string, RecordData>>
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -891,8 +895,10 @@ onAbilityForegroundState(observer: AbilityForegroundStateObserver): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1012,8 +1018,10 @@ offAbilityForegroundState(observer?: AbilityForegroundStateObserver): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1411,6 +1419,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityManager, Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
@@ -1621,6 +1630,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1697,6 +1707,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1773,6 +1784,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1849,6 +1861,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

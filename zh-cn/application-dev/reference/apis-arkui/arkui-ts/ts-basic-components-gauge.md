@@ -71,7 +71,7 @@ Gauge(options: GaugeOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| value<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 量规图的当前数据值，即图中指针指向位置。用于组件创建时量规图初始值的预置。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>value不在min和max范围内时使用min作为默认值。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| value<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined | 否 | 否 | 量规图的当前数据值，即图中指针指向位置。用于组件创建时量规图初始值的预置。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>value不在min和max范围内时使用min作为默认值。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
 | min<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 当前数据段最小值。<br/>默认值：0<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
 | max<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 当前数据段最大值。<br/>默认值：100<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>max小于min时使用默认值0和100。<br/>max和min支持负数。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
 

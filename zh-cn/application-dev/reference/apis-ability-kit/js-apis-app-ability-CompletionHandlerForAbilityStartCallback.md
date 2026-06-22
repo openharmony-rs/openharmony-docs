@@ -146,6 +146,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { AbilityStartFailureCode, common, CompletionHandlerForAbilityStartCallback } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 import { Entry, Column, Button, ButtonType, Row, Component, State } from '@kit.ArkUI';

@@ -120,6 +120,9 @@
    > 百分比相对于组件自身宽高进行计算。
 
    以下是一个绑定多个热区范围的示例：
+
+   ArkTS-Dyn示例：
+
    <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
    
    ``` TypeScript
@@ -152,6 +155,51 @@
            .onClick(() => {
              this.number++;
              this.text = 'button' + this.number + 'clicked';
+           })
+           .width(200)
+       }.width('100%').justifyContent(FlexAlign.Center)
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
+   
+   ``` TypeScript
+   import { Entry, Component, State, Column, Text, Button, $r, Margin, FlexAlign, Rectangle } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct FocusOnclickExample {
+     @State text: string = '';
+     @State clickCount: number = 0;
+   
+     build() {
+       Column() {
+         Text(this.text)
+           .margin({ bottom: 20 } as Margin)
+         // 请将$r('app.string.button')替换为实际资源文件，在本示例中该资源文件的value值为"按钮"
+         Button($r('app.string.button'))
+           .responseRegion([
+             // 第一个热区为按钮的左侧1/3区域
+             {
+               x: 0,
+               y: 0,
+               width: '30%',
+               height: '100%'
+             } as Rectangle,
+             // 第二个热区为按钮的右侧1/3区域
+             {
+               x: '70%',
+               y: 0,
+               width: '30%',
+               height: '100%'
+             } as Rectangle
+           ])
+           .onClick(() => {
+             this.clickCount++;
+             this.text = 'button' + this.clickCount + 'clicked';
            })
            .width(200)
        }.width('100%').justifyContent(FlexAlign.Center)

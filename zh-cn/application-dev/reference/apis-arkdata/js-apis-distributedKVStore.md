@@ -40,8 +40,8 @@ import { distributedKVStore } from '@kit.ArkData';
 
 | 名称     | 类型              | 只读 | 可选 | 说明                                                         |
 | ---------- | ---------------|----- | ---- | ------------------------------------------------------------ |
-| context    | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)    | 否   | 否   |应用的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。<br>从API version 10开始，context的参数类型为[BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)。 |
-| bundleName | string          | 否   | 否   | 调用方的包名。                                               |
+| context    | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)    | 否   | 否   | 应用的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。<br>从API version 10开始，context的参数类型为[BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)。 |
+| bundleName | string          | 否   | 否   | 调用方的包名，不可为空且长度不大于256字节。                                               |
 
 ## Constants
 
@@ -114,7 +114,7 @@ import { distributedKVStore } from '@kit.ArkData';
 | 名称  | 类型                                                                                                                     | 只读 | 可选 | 说明                    |
 | ----- |------------------------------------------------------------------------------------------------------------------------|-----|-----|------------------------ |
 | type | [ValueType](#valuetype)                                                                                                | 否    | 否   |值类型。   |
-| value | ArkTS-Dyn: Uint8Array \| string \| number \| boolean <br/>ArkTS-Sta: Uint8Array \| string \| long \| double \| boolean | 否    | 否   |值。   |
+| value | ArkTS-Dyn: Uint8Array \| string \| number \| boolean <br/>ArkTS-Sta: Uint8Array \| string \| long \| double \| boolean | 否    | 否   |键值对中的值。Uint8Array、string类型的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
 
 ## Entry
 
@@ -128,7 +128,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 | 名称  | 类型        | 只读 | 可选 | 说明     |
 | ----- | ---------- |-- | ---- | -------- |
-| key   | string          | 否    | 否   | 键值。   |
+| key   | string          | 否    | 否   | 表示键名。不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。   |
 | value | [Value](#value) | 否    | 否   | 值对象。 |
 
 ## ChangeNotification
@@ -196,7 +196,8 @@ import { distributedKVStore } from '@kit.ArkData';
 ## SecurityLevel
 
 数据库的安全级别枚举。
-> **说明**：
+
+> **说明：**
 >
 > 在单设备使用场景下，KV数据库支持修改securityLevel参数进行安全等级升级。升级操作需要注意以下几点：
 > * 该操作不支持跨设备同步的数据库。不同安全等级的数据库之间不能进行数据同步。若需升级数据库的安全等级，建议重新创建更高安全等级的数据库。
@@ -210,11 +211,11 @@ import { distributedKVStore } from '@kit.ArkData';
 **ArkTS-Sta起始版本：** 23
 
 | 名称        | 值 | 说明                                                         |
-| -------:   | - | ------------------------------------------------------------ |
-| S1         | 2 | 表示数据库的安全级别为低级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致有限的不利影响。<br>例如，性别、国籍，用户申请记录等。 |
-| S2         | 3 | 表示数据库的安全级别为中级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严重的不利影响。<br>例如，个人详细通信地址，姓名昵称等。 |
-| S3         | 5 | 表示数据库的安全级别为高级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严峻的不利影响。<br>例如，个人实时精确定位信息、运动轨迹等。 |
-| S4         | 6 | 表示数据库的安全级别为关键级别，业界法律法规中定义的特殊数据类型，涉及个人的最私密领域的信息，一旦泄露、篡改、破坏、销毁可能会给个人或组织造成重大的不利影响。<br>例如，政治观点、宗教、哲学信仰、工会成员资格、基因数据、生物信息、健康、性生活状况、性取向、设备认证鉴权或个人的信用卡等财务信息。 |
+| --------   | - | ------------------------------------------------------------ |
+| S1        | 2 | 表示数据库的安全级别为低级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致有限的不利影响。<br>例如，性别、国籍，用户申请记录等。 |
+| S2        | 3 | 表示数据库的安全级别为中级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严重的不利影响。<br>例如，个人详细通信地址，姓名昵称等。 |
+| S3        | 5 | 表示数据库的安全级别为高级别，数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严峻的不利影响。<br>例如，个人实时精确定位信息、运动轨迹等。 |
+| S4        | 6 | 表示数据库的安全级别为关键级别，业界法律法规中定义的特殊数据类型，涉及个人的最私密领域的信息，一旦泄露、篡改、破坏、销毁可能会给个人或组织造成重大的不利影响。<br>例如，政治观点、宗教、哲学信仰、工会成员资格、基因数据、生物信息、健康、性生活状况、性取向、设备认证鉴权或个人的信用卡等财务信息。 |
 
 ## Options
 
@@ -428,7 +429,7 @@ createKVManager(config: KVManagerConfig): KVManager
 
 | 参数名 | 类型                      | 必填 | 说明                                                      |
 | ------ | ----------------------------- | ---- | --------------------------------------------------------- |
-| config | [KVManagerConfig](#kvmanagerconfig) | 是   | 提供KVManager实例的配置信息，包括调用方的包名（不能为空）和用户信息。 |
+| config | [KVManagerConfig](#kvmanagerconfig) | 是   | 提供KVManager实例的配置信息，包括应用的上下文和调用方的包名（不能为空）。 |
 
 **返回值：**
 
@@ -514,9 +515,9 @@ if (kvManager !== undefined) {
 
 getKVStore&lt;T&gt;(storeId: string, options: Options, callback: AsyncCallback&lt;T&gt;): void
 
-通过指定options和storeId，创建并获取分布式键值数据库，使用callback异步回调。
+通过指定options和storeId，创建并获取分布式键值数据库，使用callback异步回调。获取数据库后，在使用完毕时需调用[closeKVStore](#closekvstore)关闭数据库释放资源。
 
-> 注意：
+> **注意：**
 >
 > 在获取已有的分布式键值数据库时，如果数据库文件无法打开（例如文件头损坏），将触发自动重建逻辑，并返回新创建的分布式键值数据库实例。建议对重要且无法重新生成的数据使用备份恢复功能，以防止数据丢失。有关备份恢复的使用方法，请参阅[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
@@ -616,9 +617,9 @@ if (kvStore !== null) {
 
 getKVStore&lt;T&gt;(storeId: string, options: Options): Promise&lt;T&gt;
 
-指定options和storeId，创建并获取分布式键值数据库，使用Promise回调。
+指定options和storeId，创建并获取分布式键值数据库，使用Promise回调。获取数据库后，在使用完毕时需调用[closeKVStore](#closekvstore)关闭数据库释放资源。
 
-> 注意：
+> **注意：**
 >
 > 获取已有的分布式键值数据库时，如果数据库文件无法打开（如文件头损坏），将触发自动重建逻辑，并返回新创建的分布式键值数据库实例。建议对重要且无法重新生成的数据使用备份恢复功能，防止数据丢失。备份恢复的使用方法详见[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
@@ -715,7 +716,7 @@ try {
 
 closeKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt;): void
 
-通过storeId的值关闭指定的分布式键值数据库，使用callback异步回调。
+通过storeId的值关闭指定的分布式键值数据库，使用callback异步回调。此方法与getKVStore()方法配对使用，使用完毕的数据库应通过此方法关闭。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -727,7 +728,7 @@ closeKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt;
 
 | 参数名   | 类型                  | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256字符。                                      |
+| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256字节。                                      |
 | storeId  | string                    | 是   | 要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当要关闭的数据库成功关闭，err为undefined，否则为错误对象。     |
 
@@ -839,7 +840,7 @@ closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise&lt;voi
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256字符。                           |
+| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256字节。                           |
 | storeId | string   | 是   | 要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | kvConfig<sup>24+</sup> | [Options](#options)  | 否   | 要关闭的数据库的配置信息，默认为空。 |
 
@@ -953,7 +954,7 @@ deleteKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt
 
 | 参数名   | 类型                  | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256字符。                                      |
+| appId    | string                    | 是   | 应用的BundleName，不可为空且长度不大于256字节。                                      |
 | storeId  | string                    | 是   | 要删除的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当要删除的数据库成功删除，err为undefined，否则为错误对象。     |
 
@@ -1067,7 +1068,7 @@ deleteKVStore(appId: string, storeId: string, kvConfig?: Options): Promise&lt;vo
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256字符。                           |
+| appId   | string   | 是   | 应用的BundleName，不可为空且长度不大于256字节。                           |
 | storeId | string   | 是   | 要删除的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | kvConfig<sup>24+</sup> | [Options](#options)  | 否   | 要删除的数据库的配置信息，默认为空。 |
 
@@ -1182,7 +1183,7 @@ getAllKVStoreId(appId: string, callback: AsyncCallback&lt;string[]&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                                |
 | -------- | ----------------------------- | ---- | --------------------------------------------------- |
-| appId    | string                        | 是   | 应用的BundleName，不可为空且长度不大于256字符。                              |
+| appId    | string                        | 是   | 应用的BundleName，不可为空且长度不大于256字节。                              |
 | callback | AsyncCallback&lt;string[]&gt; | 是   | 回调函数。返回所有创建的分布式键值数据库的storeId。 |
 
 **错误码：**
@@ -1254,7 +1255,7 @@ getAllKVStoreId(appId: string): Promise&lt;string[]&gt;
 
 | 参数名 | 类型 | 必填 | 说明                   |
 | ------ | -------- | ---- | ---------------------- |
-| appId  | string   | 是   | 应用的BundleName，不可为空且长度不大于256字符。 |
+| appId  | string   | 是   | 应用的BundleName，不可为空且长度不大于256字节。 |
 
 **返回值：**
 
@@ -1775,7 +1776,7 @@ try {
     do {
       moved = resultSet.moveToNext();
       console.info("moveToNext succeed: " + moved);
-    } while (moved)
+    } while (moved);
   }).catch((err: BusinessError) => {
     console.error('getResultSet failed: ' + err);
   });
@@ -1889,7 +1890,7 @@ ArkTS-Sta: move(offset: int): boolean
 
 | 参数名 | 类型 | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是   | 表示与当前位置的相对偏移量，正偏移表示向前移动，负偏移表示向后移动。当游标超出结果集最前或者最后的位置时，接口返回false。|
+| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是   | 表示与当前位置的相对偏移量，正偏移表示向结果集末尾方向移动（行号增大），负偏移表示向结果集起始方向移动（行号减小）。当游标超出结果集最前或者最后的位置时，接口返回false。|
 
 **返回值：**
 
@@ -1985,7 +1986,7 @@ ArkTS-Sta: moveToPosition(position: int): boolean
 | ------------ | ------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 
-**示例**
+**示例：**
 
 ArkTS-Dyn示例：
 
@@ -2337,7 +2338,7 @@ try {
 
 ## Query
 
-使用谓词表示数据库查询，提供创建Query实例、查询数据库中的数据和添加谓词的方法。一个Query对象中谓词数量上限为256个。
+使用谓词表示数据库查询，提供创建Query实例、查询数据库中的数据和添加谓词的方法。Query对象的谓词方法均返回自身，支持链式调用。一个Query对象中谓词数量上限为256个。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -2369,7 +2370,7 @@ reset(): Query
 
 | 类型           | 说明                  |
 | -------------- | --------------------- |
-| [Query](#query) | 返回重置的Query对象。 |
+| [Query](#query) | 返回重置后的Query对象，所有已添加的谓词条件被清空，可用于重新构建查询条件。 |
 
 **示例：**
 
@@ -2415,7 +2416,7 @@ ArkTS-Sta: equalTo(field: string, value: long | double | string | boolean): Quer
 | 参数名  | 类型                                                                | 必填  | 说明                    |
 | -----  |-------------------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                            | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| value  | ArkTS-Dyn: number \|string \|boolean<br/>ArkTS-Sta: long \| double \|string \|boolean | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \|string \|boolean<br/>ArkTS-Sta: long \| double \|string \|boolean | 是    | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。|
 
 **返回值：**
 
@@ -2474,7 +2475,7 @@ ArkTS-Sta: notEqualTo(field: string, value: long | double | string | boolean): Q
 | 参数名  | 类型                                                                | 必填  | 说明                    |
 | -----  |-------------------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                            | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | ArkTS-Dyn: number \| string \|boolean<br/>ArkTS-Sta: long \| double \| string \|boolean | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \| string \|boolean<br/>ArkTS-Sta: long \| double \| string \|boolean | 是    | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。|
 
 **返回值：**
 
@@ -2529,11 +2530,10 @@ ArkTS-Sta: greaterThan(field: string, value: long | double | string | boolean): 
 > 使用Schema创建数据库请参见[通过键值型数据库实现数据持久化](../../database/data-persistence-by-kv-store.md#开发步骤)中使用getKVStore()方法创建并获取键值数据库示例。
 
 **参数：**
-
 | 参数名  | 类型                                                                 | 必填  | 说明                    |
 | -----  |--------------------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                             | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | ArkTS-Dyn: number \| string \| boolean<br/>ArkTS-Sta: long \| double \| string \| boolean | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \| string \| boolean<br/>ArkTS-Sta: long \| double \| string \| boolean | 是    | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。|
 
 **返回值：**
 
@@ -2593,7 +2593,7 @@ ArkTS-Sta: lessThan(field: string, value: long | double | string): Query
 | 参数名  | 类型                                                      | 必填  | 说明                    |
 | -----  |---------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: long \| double \| string | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: long \| double \| string | 是    | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。|
 
 **返回值：**
 
@@ -2652,7 +2652,7 @@ ArkTS-Sta: greaterThanOrEqualTo(field: string, value: long | double | string): Q
 | 参数名  | 类型                                                      | 必填  | 说明                    |
 | -----  |---------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: long \| double \| string | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: long \| double \| string | 是    | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。|
 
 **返回值：**
 
@@ -2711,7 +2711,7 @@ ArkTS-Sta: lessThanOrEqualTo(field: string, value: long | double | string): Quer
 | 参数名  | 类型                                                      | 必填  | 说明                    |
 | -----  |---------------------------------------------------------| ----  | ----------------------- |
 | field  | string                                                  | 是    |表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。  |
-| value  | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: long \| double \| string | 是    | 表示指定的值。|
+| value  | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: long \| double \| string | 是    | 表示指定字段要匹配的值，值的类型应与Schema中定义的字段类型一致。|
 
 **返回值：**
 
@@ -3056,7 +3056,7 @@ like(field: string, value: string): Query
 | 参数名 | 类型 | 必填 | 说明                          |
 | ------ | -------- | ---- | ----------------------------- |
 | field  | string   | 是   | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| value  | string   | 是   | 表示指定的字符串值。          |
+| value  | string   | 是   | 表示指定字段要匹配的字符串值。          |
 
 **返回值：**
 
@@ -3113,7 +3113,7 @@ unlike(field: string, value: string): Query
 | 参数名 | 类型 | 必填 | 说明                          |
 | ------ | -------- | ---- | ----------------------------- |
 | field  | string   | 是   | 表示指定字段，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| value  | string   | 是   | 表示指定的字符串值。          |
+| value  | string   | 是   | 表示指定字段要不匹配的字符串值。       |
 
 **返回值：**
 
@@ -3151,7 +3151,7 @@ try {
 
 and(): Query
 
-构造一个带有与条件的查询对象。
+构造一个带有与条件的查询对象。需先通过equalTo、notEqualTo等谓词方法添加查询条件后，再调用and()连接多个条件，无前置谓词时调用and()无效。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3188,7 +3188,7 @@ try {
 
 or(): Query
 
-构造一个带有或条件的Query对象。
+构造一个带有或条件的Query对象。需先通过equalTo、notEqualTo等谓词方法添加查询条件后，再调用or()连接多个条件，无前置谓词时调用or()无效。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3353,8 +3353,8 @@ ArkTS-Sta: limit(total: int, offset: int): Query
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ------------------ |
-| total  | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是   | 表示最大数据记录数，取值应为非负整数。<br/>当total为负数时，表示查询整个结果集。|
-| offset |ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是   | 指定查询结果的起始位置，取值应为非负整数。<br/>当offset为负数时，表示查询整个结果集。<br/>当offset超出结果集最后位置时，查询结果为空。|
+| total  | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是   | 表示最大数据记录数。<br/>取值为非负整数时表示指定的最大记录数。<br/>取值为负数时，表示查询整个结果集。|
+| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是   | 指定查询结果的起始位置。取值为非负整数时表示指定的起始位置；取值为负数时，表示查询整个结果集。当offset超出结果集最后位置时，查询结果为空。|
 
 **返回值：**
 
@@ -3451,7 +3451,7 @@ try {
 
 beginGroup(): Query
 
-创建一个带有左括号的查询条件组。
+创建一个带有左括号的查询条件组。必须与[endGroup()](#endgroup)成对使用，以形成完整的查询条件分组。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3488,7 +3488,7 @@ try {
 
 endGroup(): Query
 
-创建一个带有右括号的查询条件组。
+创建一个带有右括号的查询条件组。必须与[beginGroup()](#begingroup)成对使用，以形成完整的查询条件分组。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3537,7 +3537,7 @@ prefixKey(prefix: string): Query
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ------------------ |
-| prefix | string   | 是   | 表示指定的键前缀，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| prefix | string   | 是   | 表示指定的键前缀，长度不大于[MAX_KEY_LENGTH](#constants)，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 
 **返回值：**
 
@@ -3588,7 +3588,7 @@ setSuggestIndex(index: string): Query
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ------------------ |
-| index  | string   | 是   | 指示要设置的索引，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| index  | string   | 是   | 表示要设置的索引，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 
 **返回值：**
 
@@ -3643,7 +3643,7 @@ deviceId(deviceId:string):Query
 
 | 参数名   | 类型 | 必填 | 说明               |
 | -------- | -------- | ---- | ------------------ |
-| deviceId | string   | 是   | 指示查询的设备ID，不能为空。 |
+| deviceId | string   | 是   | 表示查询的设备ID，不能为空。 |
 
 **返回值：**
 
@@ -3692,7 +3692,7 @@ getSqlLike():string
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| string | 返回一个字段列中包含对应子串的结果。 |
+| string | 返回Query对象构建的查询语句字符串，可用于查看和调试当前的查询条件。 |
 
 **示例：**
 
@@ -3722,7 +3722,7 @@ ArkTS-Dyn: put(key: string, value: Uint8Array | string | number | boolean, callb
 
 ArkTS-Sta: put(key: string, value: Uint8Array | string | long | double | boolean, callback: AsyncCallback\<void\>): void
 
-添加指定类型键值对到数据库，使用callback异步回调。
+添加指定类型键值对到数据库，使用callback异步回调。若Key已存在则更新对应Value；若已订阅数据变更通知，将触发变更通知回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3735,7 +3735,7 @@ ArkTS-Sta: put(key: string, value: Uint8Array | string | long | double | boolean
 | 参数名  | 类型                                                                                                        | 必填  | 说明                    |
 | -----  |-----------------------------------------------------------------------------------------------------------| ----  | ----------------------- |
 | key    | string                                                                                                    | 是    |要添加数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。   |
-| value  | ArkTS-Dyn: Uint8Array \| string \| number \| boolean<br/>ArkTS-Sta: Uint8Array \| string \| long \| double \| boolean | 是    |要添加数据的value，支持Uint8Array、number 、 string 、boolean，Uint8Array、string 的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
+| value  | ArkTS-Dyn: Uint8Array \| string \| number \| boolean<br/>ArkTS-Sta: Uint8Array \| string \| long \| double \| boolean | 是    |要添加数据的value，支持Uint8Array、string、number、boolean，Uint8Array、string的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
 | callback | AsyncCallback&lt;void&gt;                                                                                 | 是    |回调函数。数据添加成功，err为undefined，否则为错误对象。   |
 
 **错误码：**
@@ -3804,7 +3804,7 @@ ArkTS-Dyn: put(key: string, value: Uint8Array | string | number | boolean): Prom
 
 ArkTS-Sta: put(key: string, value: Uint8Array | string | long | double | boolean): Promise&lt;void&gt;
 
-添加指定类型键值对到数据库，使用Promise异步回调。
+添加指定类型键值对到数据库，使用Promise异步回调。若Key已存在则更新对应Value；若已订阅数据变更通知，将触发变更通知回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -3817,7 +3817,7 @@ ArkTS-Sta: put(key: string, value: Uint8Array | string | long | double | boolean
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
 | key    | string  | 是    |要添加数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。   |
-| value  | ArkTS-Dyn: Uint8Array \| string \| number \| boolean<br/>ArkTS-Sta: Uint8Array \| string \| long \| double \| boolean | 是    |要添加数据的value，支持Uint8Array、number 、 string 、boolean，Uint8Array、string 的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
+| value  | ArkTS-Dyn: Uint8Array \| string \| number \| boolean<br/>ArkTS-Sta: Uint8Array \| string \| long \| double \| boolean | 是    |要添加数据的value，支持Uint8Array、string、number、boolean，Uint8Array、string的长度不大于[MAX_VALUE_LENGTH](#constants)。   |
 
 **返回值：**
 
@@ -3885,7 +3885,7 @@ try {
 
 putBatch(entries: Entry[], callback: AsyncCallback&lt;void&gt;): void
 
-批量插入键值对到SingleKVStore数据库中，使用callback异步回调。
+批量插入键值对到SingleKVStore数据库中，使用callback异步回调。若Key已存在则更新对应Value；若已订阅数据变更通知，将触发变更通知回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -4012,7 +4012,7 @@ try {
 
 putBatch(entries: Entry[]): Promise&lt;void&gt;
 
-批量插入键值对到SingleKVStore数据库中，使用Promise异步回调。
+批量插入键值对到SingleKVStore数据库中，使用Promise异步回调。若Key已存在则更新对应Value；若已订阅数据变更通知，将触发变更通知回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -4130,7 +4130,7 @@ try {
 
 delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 
-从数据库中删除指定键值的数据，使用callback异步回调。
+从数据库中删除指定键值的数据，使用callback异步回调。删除成功后，指定键值对将被永久删除，无法再通过get等方法查询；若已订阅数据变更通知，将触发变更通知回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -4227,7 +4227,7 @@ try {
 
 delete(key: string): Promise&lt;void&gt;
 
-从数据库中删除指定键值的数据，使用Promise异步回调。
+从数据库中删除指定键值的数据，使用Promise异步回调。删除成功后，指定键值对将被永久删除，无法再通过get等方法查询；若已订阅数据变更通知，将触发变更通知回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -4321,7 +4321,7 @@ try {
 
 deleteBatch(keys: string[], callback: AsyncCallback&lt;void&gt;): void
 
-批量删除SingleKVStore数据库中的键值对，使用callback异步回调。
+批量删除SingleKVStore数据库中的键值对，使用callback异步回调。删除成功后，指定键值对将被永久删除，无法再通过get等方法查询；若已订阅数据变更通知，将触发变更通知回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -4333,7 +4333,7 @@ deleteBatch(keys: string[], callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                  | 必填 | 说明                     |
 | -------- | ------------------------- | ---- | ------------------------ |
-| keys     | string[]                  | 是   | 表示要批量删除的键值对，不能为空。 |
+| keys     | string[]                  | 是   | 表示要批量删除的键名列表，不能为空，数组中每个元素的长度不大于[MAX_KEY_LENGTH](#constants)。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。批量删除指定的数据成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -4444,7 +4444,7 @@ try {
 
 deleteBatch(keys: string[]): Promise&lt;void&gt;
 
-批量删除SingleKVStore数据库中的键值对，使用Promise异步回调。
+批量删除SingleKVStore数据库中的键值对，使用Promise异步回调。删除成功后，指定键值对将被永久删除，无法再通过get等方法查询；若已订阅数据变更通知，将触发变更通知回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -4456,7 +4456,7 @@ deleteBatch(keys: string[]): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                     |
 | ------ | -------- | ---- | ------------------------ |
-| keys   | string[] | 是   | 表示要批量删除的键值对，不能为空。 |
+| keys   | string[] | 是   | 表示要批量删除的键名列表，不能为空，数组中每个元素的长度不大于[MAX_KEY_LENGTH](#constants)。 |
 
 **返回值：**
 
@@ -4564,11 +4564,11 @@ try {
 
 removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除指定设备的数据，使用callback异步回调。
+删除指定设备的数据，使用callback异步回调。删除成功后，指定设备的所有数据将从本地数据库中永久移除，无法再通过get等方法查询该设备的数据。
 > **说明：**
 >
 > 其中deviceId为[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)中的networkId，通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
-> deviceId具体获取方式请参考[sync接口示例](#sync)
+> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4670,11 +4670,11 @@ try {
 
 removeDeviceData(deviceId: string): Promise&lt;void&gt;
 
-删除指定设备的数据，使用Promise异步回调。
+删除指定设备的数据，使用Promise异步回调。删除成功后，指定设备的所有数据将从本地数据库中永久移除，无法再通过get等方法查询该设备的数据。
 > **说明：**
 >
 > 其中deviceId为[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)中的networkId，通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
-> deviceId具体获取方式请参考[sync接口示例](#sync)
+> deviceId具体获取方式请参考[sync接口示例](#sync)。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -4713,21 +4713,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const KEY_TEST_STRING_ELEMENT = 'key_test_string_2';
 const VALUE_TEST_STRING_ELEMENT = 'value-string-001';
 try {
-  kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then(() => {
+  kvStore!.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT).then(() => {
     console.info('Succeeded in putting data');
+    const deviceid = 'no_exist_device_id';
+    kvStore!.removeDeviceData(deviceid).then(() => {
+      console.info('succeeded in removing device data');
+      kvStore!.get(KEY_TEST_STRING_ELEMENT).then((data: boolean | string | number | Uint8Array) => {
+        console.info(`Succeeded in getting data. Data=${data}`);
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to get data.code is ${err.code},message is ${err.message}`);
+      });
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to remove device data.code is ${err.code},message is ${err.message}`);
+    });
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put data.code is ${err.code},message is ${err.message} `);
-  });
-  const deviceid = 'no_exist_device_id';
-  kvStore.removeDeviceData(deviceid).then(() => {
-    console.info('succeeded in removing device data');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to remove device data.code is ${err.code},message is ${err.message} `);
-  });
-  kvStore.get(KEY_TEST_STRING_ELEMENT).then((data: boolean | string | number | Uint8Array) => {
-    console.info(`Succeeded in getting data. Data=${data}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get data.code is ${err.code},message is ${err.message} `);
+    console.error(`Failed to put data.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
@@ -4784,7 +4784,7 @@ ArkTS-Sta: get(key: string, callback: AsyncCallback&lt;boolean | string | long |
 | 参数名  | 类型                                                                                                                                                                  | 必填  | 说明                    |
 | -----  |---------------------------------------------------------------------------------------------------------------------------------------------------------------------| ----  | ----------------------- |
 | key    | string                                                                                                                                                              | 是    |要查询数据的Key，不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。  |
-| callback  | ArkTS-Dyn: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br/>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数。返回获取查询的值。  |
+| callback  | ArkTS-Dyn: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br/>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数。返回获取查询的值，值的类型取决于存储时的数据类型。  |
 
 **错误码：**
 
@@ -4885,7 +4885,7 @@ ArkTS-Sta: get(key: string): Promise&lt;boolean | string | long | double | Uint8
 
 | 类型    | 说明       |
 | ------  | -------   |
-|ArkTS-Dyn: Promise&lt;boolean \| string \| number \| Uint8Array&gt;<br/>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; |Promise对象。返回获取查询的值。|
+|ArkTS-Dyn: Promise&lt;boolean \| string \| number \| Uint8Array&gt;<br/>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; |Promise对象。返回指定键对应的值，值的类型取决于存储时的数据类型。|
 
 **错误码：**
 
@@ -5197,9 +5197,9 @@ getEntries(query: Query, callback: AsyncCallback&lt;Entry[]&gt;): void
 
 **参数：**
 
-| 参数名   | 类型                               | 必填 | 说明                                            |
-| -------- | -------------------------------------- | ---- | ----------------------------------------------- |
-| query    | [Query](#query)                         | 是   | 表示要匹配的键前缀。                            |
+| 参数名   | 类型                               | 必填 | 说明                         |
+| -------- | -------------------------------------- | ---- |----------------------------|
+| query    | [Query](#query)                         | 是   | 表示要查询的对象。                  |
 | callback | AsyncCallback&lt;[Entry](#entry)[]&gt; | 是   | 回调函数。返回与指定Query对象匹配的键值对列表。 |
 
 **错误码：**
@@ -5432,10 +5432,10 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 
 **参数：**
 
-| 参数名    | 类型                                                   | 必填 | 说明                                 |
-| --------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
-| keyPrefix | string                                                     | 是   | 表示要匹配的键前缀。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。                 |
-| callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回具有指定前缀的结果集。 |
+| 参数名    | 类型                                                   | 必填 | 说明                                                                                 |
+| --------- | ---------------------------------------------------------- | ---- |------------------------------------------------------------------------------------|
+| keyPrefix | string                                 | 是   | 表示要匹配的键前缀，长度不超过[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回具有指定前缀的结果集。                                                                 |
 
 **错误码：**
 
@@ -5444,7 +5444,7 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -5457,7 +5457,6 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let resultSet: distributedKVStore.KVStoreResultSet;
   let entries: distributedKVStore.Entry[] = [];
   for (let i = 0; i < 10; i++) {
     let key = 'batch_test_string_key';
@@ -5585,7 +5584,7 @@ getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -5610,23 +5609,23 @@ try {
     }
     entries.push(entry);
   }
-  kvStore.putBatch(entries).then(async () => {
+  kvStore!.putBatch(entries).then(() => {
     console.info('Succeeded in putting batch');
+    kvStore!.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
+      console.info('Succeeded in getting result set');
+      resultSet = result;
+      if (kvStore != null) {
+        kvStore.closeResultSet(resultSet).then(() => {
+          console.info('Succeeded in closing result set');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        });
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    });
   }).catch((err: BusinessError) => {
     console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
-  });
-  kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
-    console.info('Succeeded in getting result set');
-    resultSet = result;
-    if (kvStore != null) {
-      kvStore.closeResultSet(resultSet).then(() => {
-        console.info('Succeeded in closing result set');
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
-      });
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
@@ -5693,7 +5692,7 @@ getResultSet(query: Query, callback: AsyncCallback&lt;KVStoreResultSet&gt;): voi
 
 | 参数名   | 类型                                                   | 必填 | 说明                                                      |
 | -------- | ---------------------------------------------------------- | ---- | --------------------------------------------------------- |
-| query    | Query                                                      | 是   | 表示查询对象。                                            |
+| query    | [Query](#query)                                                      | 是   | 表示查询对象。                                            |
 | callback | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数，获取与指定Query对象匹配的KVStoreResultSet对象。 |
 
 **错误码：**
@@ -5703,7 +5702,7 @@ getResultSet(query: Query, callback: AsyncCallback&lt;KVStoreResultSet&gt;): voi
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -5826,7 +5825,7 @@ getResultSet(query: Query): Promise&lt;KVStoreResultSet&gt;
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -5851,18 +5850,17 @@ try {
     }
     entries.push(entry);
   }
-  kvStore.putBatch(entries).then(async () => {
+    kvStore!.putBatch(entries).then(() => {
     console.info('Succeeded in putting batch');
+    const query = new distributedKVStore.Query();
+    query.prefixKey("batch_test");
+    kvStore!.getResultSet(query).then((result: distributedKVStore.KVStoreResultSet) => {
+      console.info(`Succeeded in getting result set size=${result.getCount()}}`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    });
   }).catch((err: BusinessError) => {
     console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
-  });
-  const query = new distributedKVStore.Query();
-  query.prefixKey("batch_test");
-  kvStore.getResultSet(query).then((result: distributedKVStore.KVStoreResultSet) => {
-    console.info('Succeeded in getting result set');
-    resultSet = result;
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
@@ -5912,7 +5910,7 @@ try {
 
 closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback&lt;void&gt;): void
 
-关闭由[SingleKvStore.getResultSet](#getresultset-1)返回的KVStoreResultSet对象，使用callback异步回调。
+关闭由[SingleKVStore.getResultSet](#getresultset-1)返回的KVStoreResultSet对象，使用callback异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -6002,7 +6000,7 @@ try {
 
 closeResultSet(resultSet: KVStoreResultSet): Promise&lt;void&gt;
 
-关闭由[SingleKvStore.getResultSet](#getresultset-1)返回的KVStoreResultSet对象，使用Promise异步回调。
+关闭由[SingleKVStore.getResultSet](#getresultset-1)返回的KVStoreResultSet对象，使用Promise异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -6311,7 +6309,7 @@ try {
 
 backup(file:string, callback: AsyncCallback&lt;void&gt;):void
 
-以指定名称备份数据库，使用callback异步回调。
+以指定名称备份数据库到默认路径（context.databaseDir），使用callback异步回调。如需备份到自定义路径，请使用[backupEx](#backupex24)接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -6380,7 +6378,7 @@ try {
 
 backup(file:string): Promise&lt;void&gt;
 
-以指定名称备份数据库，使用Promise异步回调。
+以指定名称备份数据库到默认路径（context.databaseDir），使用Promise异步回调。如需备份到自定义路径，请使用[backupEx](#backupex24)接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -6527,7 +6525,7 @@ try {
 
 restore(file:string, callback: AsyncCallback&lt;void&gt;):void
 
-从指定的数据库文件恢复数据库，使用callback异步回调。
+从数据库默认路径（context.databaseDir）下指定名称的备份文件恢复数据库，使用callback异步回调。恢复成功后，当前数据库中的数据将被替换为备份文件中的数据，原有的未备份数据将丢失。如需从自定义路径恢复，请使用[restoreEx](#restoreex24)接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -6603,7 +6601,7 @@ try {
 
 restore(file:string): Promise&lt;void&gt;
 
-从指定的数据库文件恢复数据库，使用Promise异步回调。
+从数据库默认路径（context.databaseDir）下指定名称的备份文件恢复数据库，使用Promise异步回调。恢复成功后，当前数据库中的数据将被替换为备份文件中的数据，原有的未备份数据将丢失。如需从自定义路径恢复，请使用[restoreEx](#restoreex24)接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -6680,7 +6678,7 @@ try {
 
 restoreEx(backupConfig:BackupConfig): Promise&lt;void&gt;
 
-从指定的数据库文件恢复数据库，使用Promise异步回调。
+从指定路径和名称的备份文件恢复数据库，使用Promise异步回调。恢复成功后，当前数据库中的数据将被替换为备份文件中的数据，原有的未备份数据将丢失。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -6759,7 +6757,7 @@ ArkTS-Dyn: deleteBackup(files:Array&lt;string&gt;, callback: AsyncCallback&lt;Ar
 
 ArkTS-Sta: deleteBackup(files:Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;[string, int]&gt;&gt;): void
 
-根据指定名称删除备份文件，使用callback异步回调。
+根据指定名称从默认路径（context.databaseDir）删除备份文件，使用callback异步回调。删除备份文件后，将无法再通过[restore](#restore-1)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex24)接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -6838,7 +6836,7 @@ ArkTS-Dyn: deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string,
 
 ArkTS-Sta: deleteBackup(files:Array&lt;string&gt;): Promise&lt;Array&lt;[string, int]&gt;&gt;
 
-根据指定名称删除备份文件，使用Promise异步回调。
+根据指定名称从默认路径（context.databaseDir）删除备份文件，使用Promise异步回调。删除备份文件后，将无法再通过[restore](#restore)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex24)接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -6992,7 +6990,7 @@ try {
 
 startTransaction(callback: AsyncCallback&lt;void&gt;): void
 
-启动SingleKVStore数据库中的事务，使用callback异步回调。
+启动SingleKVStore数据库中的事务，使用callback异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit)提交或[rollback](#rollback)回滚才会结束事务。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -7094,7 +7092,7 @@ try {
 
 startTransaction(): Promise&lt;void&gt;
 
-启动SingleKVStore数据库中的事务，使用Promise异步回调。
+启动SingleKVStore数据库中的事务，使用Promise异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit)提交或[rollback](#rollback)回滚才会结束事务。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -7166,7 +7164,7 @@ try {
 
 commit(callback: AsyncCallback&lt;void&gt;): void
 
-提交SingleKVStore数据库中的事务，使用callback异步回调。
+提交SingleKVStore数据库中的事务，使用callback异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -7238,7 +7236,7 @@ try {
 
 commit(): Promise&lt;void&gt;
 
-提交SingleKVStore数据库中的事务，使用Promise异步回调。
+提交SingleKVStore数据库中的事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -7306,7 +7304,7 @@ try {
 
 rollback(callback: AsyncCallback&lt;void&gt;): void
 
-在SingleKVStore数据库中回滚事务，使用callback异步回调。
+在SingleKVStore数据库中回滚事务，使用callback异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -7378,7 +7376,7 @@ try {
 
 rollback(): Promise&lt;void&gt;
 
-在SingleKVStore数据库中回滚事务，使用Promise异步回调。
+在SingleKVStore数据库中回滚事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -7446,7 +7444,7 @@ try {
 
 enableSync(enabled: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设定是否开启端端同步，使用callback异步回调。
+设定是否开启端端同步，使用callback异步回调。开启端端同步后，数据库中的数据可在多设备间自动同步；关闭后则不会自动同步，需要手动调用[sync](#sync)接口触发同步。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -7512,7 +7510,7 @@ try {
 
 enableSync(enabled: boolean): Promise&lt;void&gt;
 
-设定是否开启端端同步，使用Promise异步回调。
+设定是否开启端端同步，使用Promise异步回调。开启端端同步后，数据库中的数据可在多设备间自动同步；关闭后则不会自动同步，需要手动调用[sync](#sync)接口触发同步。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -7579,7 +7577,7 @@ try {
 
 setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback&lt;void&gt;): void
 
-设置同步范围标签，使用callback异步回调。
+设置同步范围标签，使用callback异步回调。通过设置本地设备和远程设备的同步标签，决定哪些设备间可以进行数据同步。只有当本地设备的标签与远程设备的标签存在交集时，两端才允许同步数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -7591,8 +7589,8 @@ setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: Asy
 
 | 参数名              | 类型                  | 必填 | 说明                             |
 | ------------------- | ------------------------- | ---- | -------------------------------- |
-| localLabels         | string[]                  | 是   | 表示本地设备的同步标签。         |
-| remoteSupportLabels | string[]                  | 是   | 表示要同步数据的设备的同步标签。 |
+| localLabels         | string[]                  | 是   | 表示本地设备的同步标签，用于标识本设备可参与同步的范围。         |
+| remoteSupportLabels | string[]                  | 是   | 表示期望同步数据的对端设备的同步标签，用于标识允许同步的对端设备范围。当本端的remoteSupportLabels与对端的localLabels存在交集时，设备间才允许数据同步。 |
 | callback            | AsyncCallback&lt;void&gt; | 是   | 回调函数。设置成功，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -7650,7 +7648,7 @@ try {
 
 setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise&lt;void&gt;
 
-设置同步范围标签，使用Promise异步回调。
+设置同步范围标签，使用Promise异步回调。通过设置本地设备和远程设备的同步标签，决定哪些设备间可以进行数据同步。只有当本地设备的标签与远程设备的标签存在交集时，两端才允许同步数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -7662,8 +7660,8 @@ setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise&lt;v
 
 | 参数名              | 类型 | 必填 | 说明                             |
 | ------------------- | -------- | ---- | -------------------------------- |
-| localLabels         | string[] | 是   | 表示本地设备的同步标签。         |
-| remoteSupportLabels | string[] | 是   | 表示要同步数据的设备的同步标签。 |
+| localLabels         | string[] | 是   | 表示本地设备的同步标签，用于标识本设备可参与同步的范围。         |
+| remoteSupportLabels | string[] | 是   | 表示期望同步数据的对端设备的同步标签，用于标识允许同步的对端设备范围。当本端的remoteSupportLabels与对端的localLabels存在交集时，设备间才允许数据同步。 |
 
 **返回值：**
 
@@ -7873,7 +7871,7 @@ ArkTS-Dyn: sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 ArkTS-Sta: sync(deviceIds: string[], mode: SyncMode, delayMs?: int): void
 
-在手动同步方式下，触发数据库端端同步。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../database/data-sync-of-kv-store.md)。
+在手动同步方式下，触发数据库端端同步。同步结果可通过订阅[on('syncComplete')](#onsynccomplete)事件获取。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../database/data-sync-of-kv-store.md)。
 > **说明：**
 >
 > 其中deviceIds为[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)中的networkId, 通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
@@ -8010,7 +8008,7 @@ ArkTS-Dyn: sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: num
 
 ArkTS-Sta: sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: int): void
 
-在手动同步方式下，触发数据库端端同步，此方法为同步方法。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../database/data-sync-of-kv-store.md)。
+在手动同步方式下，触发数据库端端同步，支持按查询条件过滤同步数据。同步结果可通过订阅[on('syncComplete')](#onsynccomplete)事件获取。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../database/data-sync-of-kv-store.md)。
 > **说明：**
 >
 > 其中deviceIds为[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)中的networkId, 通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
@@ -8175,7 +8173,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback&lt;ChangeNotific
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -8219,8 +8217,8 @@ onDataChange(type: SubscribeType, listener: Callback&lt;ChangeNotification&gt;):
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)。
 
 | **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 15100001     | Over max  limits.                      |
+| ------------ | ------------------------------------- |
+| 15100001     | Over max limits.                      |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -8775,7 +8773,7 @@ ArkTS-Sta: get(key: string): Promise&lt;boolean | string | long | double | Uint8
 
 | 类型                                                     | 说明                            |
 | -------------------------------------------------------- | ------------------------------- |
-| ArkTS-Dyn: Promise&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; | Promise对象。返回获取查询的值。 |
+| ArkTS-Dyn: Promise&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; | Promise对象。返回获取查询的值，值的类型取决于存储时的数据类型。 |
 
 **错误码：**
 
@@ -8866,7 +8864,7 @@ ArkTS-Sta: get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean
 | -----  |----------------------------------------------------------------------------------------------------------------------------------------------------------| ----  | ----------------------- |
 | deviceId  | string                                                                                                                                                   | 是    |标识要查询其数据的设备。    |
 | key       | string                                                                                                                                                   | 是    |表示要查询Key值的键, 不能为空且长度不大于[MAX_KEY_LENGTH](#constants)。    |
-| callback  | ArkTS-Dyn: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数，返回匹配给定条件的字符串值。    |
+| callback  | ArkTS-Dyn: AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;<br>ArkTS-Sta: AsyncCallback&lt;boolean \| string \| long \| double \| Uint8Array&gt; | 是    |回调函数。成功时返回匹配给定条件的字符串值（值的类型取决于存储时的数据类型），失败时返回错误对象。    |
 
 **错误码：**
 
@@ -8967,7 +8965,7 @@ ArkTS-Sta: get(deviceId: string, key: string): Promise&lt;boolean | string | lon
 
 | 类型                                                                           | 说明       |
 |------------------------------------------------------------------------------| -------   |
-| ArkTS-Dyn: Promise&lt;boolean \|string \|number \| Uint8Array&gt;<br>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; |Promise对象。返回匹配给定条件的字符串值。|
+| ArkTS-Dyn: Promise&lt;boolean \|string \|number \| Uint8Array&gt;<br>ArkTS-Sta: Promise&lt;boolean \| string \| long \| double \| Uint8Array&gt; |Promise对象。返回匹配给定条件的字符串值，值的类型取决于存储时的数据类型。|
 
 **错误码：**
 
@@ -9514,9 +9512,9 @@ getEntries(query: Query, callback: AsyncCallback&lt;Entry[]&gt;): void
 
 **参数：**
 
-| 参数名   | 类型                                   | 必填 | 说明                                                  |
-| -------- | -------------------------------------- | ---- | ----------------------------------------------------- |
-| query    | [Query](#query)                         | 是   | 表示要匹配的键前缀。                                  |
+| 参数名   | 类型                                   | 必填 | 说明                            |
+| -------- | -------------------------------------- | ---- |-------------------------------|
+| query    | [Query](#query)                         | 是   | 表示要查询的对象。                     |
 | callback | AsyncCallback&lt;[Entry](#entry)[]&gt; | 是   | 回调函数。返回本设备与指定Query对象匹配的键值对列表。 |
 
 **错误码：**
@@ -10002,10 +10000,10 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 
 **参数：**
 
-| 参数名    | 类型                                                       | 必填 | 说明                                 |
-| --------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
-| keyPrefix | string                                                     | 是   | 表示要匹配的键前缀。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
-| callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回具有指定前缀的结果集。 |
+| 参数名    | 类型                                                       | 必填 | 说明                                                                                 |
+| --------- | ---------------------------------------------------------- | ---- |------------------------------------------------------------------------------------|
+| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度不超过[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回具有指定前缀的结果集。                                                                 |
 
 **错误码：**
 
@@ -10014,7 +10012,7 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -10148,10 +10146,10 @@ getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
 | **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
+| ------------ | ------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max  limits.                      |
-| 15100003     | Database corrupted.                    |
+| 15100001     | Over max limits.                      |
+| 15100003     | Database corrupted.                   |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -10230,7 +10228,7 @@ getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;KVS
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -10350,7 +10348,7 @@ getResultSet(deviceId: string, keyPrefix: string): Promise&lt;KVStoreResultSet&g
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -10456,7 +10454,7 @@ getResultSet(deviceId: string, query: Query, callback: AsyncCallback&lt;KVStoreR
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -10601,7 +10599,7 @@ getResultSet(deviceId: string, query: Query): Promise&lt;KVStoreResultSet&gt;
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -10733,7 +10731,7 @@ getResultSet(query: Query): Promise&lt;KVStoreResultSet&gt;
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -10798,7 +10796,7 @@ getResultSet(query: Query, callback:AsyncCallback&lt;KVStoreResultSet&gt;): void
 | 参数名   | 类型           | 必填 | 说明                               |
 | -------- | -------------- | ---- | ---------------------------------- |
 | query    | [Query](#query) | 是   | 表示查询对象。                     |
-| callback    | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。         |
+| callback    | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。成功时返回与指定Query对象匹配的KVStoreResultSet对象，失败时返回错误对象。         |
 
 
 **错误码：**
@@ -10808,7 +10806,7 @@ getResultSet(query: Query, callback:AsyncCallback&lt;KVStoreResultSet&gt;): void
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits.                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 

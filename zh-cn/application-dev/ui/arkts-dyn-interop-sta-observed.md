@@ -32,19 +32,19 @@ ArkUI的组件间数据交互能力是支持父子组件、兄弟组件、跨层
 
 ```text
 project/
-├── entry/                           # ArkTS-Dyn主模块
+├── entry/                                           # ArkTS-Dyn主模块
 │   └── src/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets     # 使用静态@Observed装饰的数据
+│                   └── StatemgmtV1Observed.ets      # 使用静态@Observed装饰的数据
 │
-└── static_module/                    # ArkTS-Sta子模块
+└── static_module/                                   # ArkTS-Sta子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets   # 导出静态@Observed装饰的数据
+                    └── StaStatemgmtV1Observed.ets   # 导出静态@Observed装饰的数据
 
 ```
 
@@ -52,10 +52,10 @@ project/
 
 - 创建ArkTS-Sta子模块`static_module`，在`src/main/ets/components`目录创建并导出静态@Observed装饰的数据。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
-```TypeScript
-'use static'
+<!-- @[DynInteropStaStatemgmtV1StaStateMgmtV1Observed](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/src/main/ets/components/StaStatemgmtV1Observed.ets) -->
 
-// static_module/src/main/ets/components/MainPage.ets
+``` TypeScript
+// static_module/src/main/ets/components/StaStatemgmtV1Observed.ets
 import { Observed, Track } from '@ohos.arkui.stateManagement';
 
 @Observed
@@ -67,11 +67,11 @@ export class MyClassA { // 定义静态@Observed装饰的类并导出
 
 - 在ArkTS-Sta子模块`static_module`的`Index.ets`文件中导出静态@Observed装饰的数据。
 
-```TypeScript
-'use static'
+<!-- @[DynInteropStaStatemgmtV1IndexObserved](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/static_module/Index.ets) -->
 
+``` TypeScript
 // static_module/Index.ets
-export { MyClassA } from './src/main/ets/components/MainPage'; // 导出静态@Observed装饰的类
+export { MyClassA } from './src/main/ets/components/StaStatemgmtV1Observed'; // 导出静态@Observed装饰的类MyClassA
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件的`dependencies`字段中添加子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
@@ -86,8 +86,10 @@ export { MyClassA } from './src/main/ets/components/MainPage'; // 导出静态@O
 
 - 在ArkTS-Dyn主模块中使用import语句导入ArkTS-Sta组件。
 
-```TypeScript
-// entry/src/main/ets/pages/Index.ets
+<!-- @[DynInteropStaStatemgmtV1Observed](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynInteropStaState/entry/src/main/ets/pages/StatemgmtV1Observed.ets) -->
+
+``` TypeScript
+// entry/src/main/ets/pages/StatemgmtV1Observed.ets
 
 // 引用ArkTS-Dyn动态@Observed装饰的数据
 import { MyClassA } from 'static_module';
@@ -141,7 +143,7 @@ export struct Index {
 
 `entry/src/main/ets/components/MainPage.ets`文件中@Track的示例如下：
 
-```TypeScript
+``` TypeScript
 'use static'
 
 // static_module/src/main/ets/components/MainPage.ets
@@ -156,7 +158,7 @@ export class MyClassA { // 定义静态@Observed装饰的类并导出
 
 位于`static_module/build/default/intermediates/declgen/default/declgenV1/static_module/src/main/ets/components/MainPage.d.ets`的声明文件，修改前如下：
 
-```TypeScript
+``` TypeScript
 import type { Record } from '../../../../../static.Record';
 
 @Observed
@@ -173,7 +175,7 @@ export declare class MyClassA {
 
 应按如下格式修改：
 
-```TypeScript
+``` TypeScript
 import type { Record } from '../../../../../static.Record';
 
 @Observed

@@ -63,7 +63,7 @@ ArkUI 如下能力已默认适配镜像：
 
 以position为例，需要把绝对方向x、y描述改为新入参类型start、end的描述，其他属性类似。
 
-**ArkTS-Dyn示例：**
+  ArkTS-Dyn示例：
 
   <!-- @[Interface_Layout_Border_Settings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/InterfaceLayoutBorderSettings.ets) -->
   
@@ -92,32 +92,36 @@ ArkUI 如下能力已默认适配镜像：
   }
   ```
   
-**ArkTS-Sta示例：**
+  ArkTS-Sta示例：
 
-``` TypeScript
-import { Entry,Stack,Column,Alignment,LengthMetrics,Component,Color } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct InterfaceLayoutBorderSettings {
-  build() {
-    Stack({ alignContent: Alignment.TopStart }) {
+  <!-- @[Interface_Layout_Border_Settings](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/internationalization/entry/src/main/ets/homePage/InterfaceLayoutBorderSettings.ets) -->
+  
+  ``` TypeScript
+  import {
+    Entry, Component, Stack, Column, Color, LengthMetrics, Alignment
+  } from '@ohos.arkui.component';
+  
+  @Entry
+  @Component
+  struct InterfaceLayoutBorderSettings {
+    build() {
       Stack({ alignContent: Alignment.TopStart }) {
-        Column()
-          .width(100)
-          .height(100)
-          .backgroundColor(Color.Red)
-          .position({ 
-            start: LengthMetrics.px(200), 
-            top: LengthMetrics.px(200) 
-          }) //需要同时支持LTR和RTL时使用API12新增的LocalizedEdges入参类型,
-        //仅支持LTR时等同于.position({ x: '200px', y: '200px' })
-
-      }.backgroundColor(Color.Blue)
-    }.width("100%").height("100%").border({ color: '#880606' })
+        Stack({ alignContent: Alignment.TopStart }) {
+          Column()
+            .width(100)
+            .height(100)
+            .backgroundColor(Color.Red)
+            .position({
+              start: LengthMetrics.px(200),
+              top: LengthMetrics.px(200)
+            }) // 需要同时支持LTR和RTL时使用API12新增的LocalizedEdges入参类型,
+          // 仅支持LTR时等同于.position({ x: '200px', y: '200px' })
+  
+        }.backgroundColor(Color.Blue)
+      }.width('100%').height('100%').border({ color: '#880606' })
+    }
   }
-}
-```
+  ```
 
 ### 自定义绘制Canvas组件
 
@@ -128,6 +132,8 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
 1. 优先级：CanvasRenderingContext2D的direction属性 > Canvas组件通用属性direction > 系统语言决定的水平显示方向。
 2. Canvas组件本身不会自动跟随系统语言切换镜像效果，需要应用监听到系统语言切换后自行重新绘制。
 3. CanvasRenderingContext2D绘制文本时，只有符号等文本会对绘制方向生效，英文字母和数字不响应绘制方向的变化。
+
+  ArkTS-Dyn示例：
 
   <!-- @[Customize_Canvas_Component_Drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets) -->
   
@@ -193,6 +199,81 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
   }
   ```
   
+  ArkTS-Sta示例：
+
+  <!-- @[Customize_Canvas_Component_Drawing](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets) -->
+  
+  ``` TypeScript
+  import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+  import {
+    Entry,
+    Component,
+    Row,
+    Canvas,
+    CanvasRenderingContext2D,
+    RenderingContextSettings,
+    Direction
+  } from '@ohos.arkui.component';
+  import { State } from '@ohos.arkui.stateManagement';
+  
+  @Entry
+  @Component
+  struct CustomizeCanvasComponentDrawing {
+    @State message: string = 'Hello world';
+    private settings: RenderingContextSettings = new RenderingContextSettings(true)
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+  
+    aboutToAppear(): void {
+      // 监听系统语言切换
+      let subscriber: commonEventManager.CommonEventSubscriber | null = null;
+      let subscribeInfo2: commonEventManager.CommonEventSubscribeInfo = {
+        events: ['usual.event.LOCALE_CHANGED'],
+      }
+      commonEventManager.createSubscriber(subscribeInfo2 as commonEventManager.CommonEventSubscribeInfo,
+        (err: BusinessError | null, data: commonEventManager.CommonEventSubscriber | undefined | null) => {
+          if (err) {
+            console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+  
+          if (subscriber !== null) {
+            subscriber = data as commonEventManager.CommonEventSubscriber;
+            commonEventManager.subscribe(subscriber as commonEventManager.CommonEventSubscriber,
+              (err: BusinessError | null, data: commonEventManager.CommonEventData | undefined | null) => {
+                if (err) {
+                  return;
+                }
+                // 监听到语言切换后，需要重新绘制Canvas内容
+                this.drawText();
+              })
+          } else {
+            console.error(`MayTest Need create subscriber`);
+          }
+        })
+    }
+  
+    drawText(): void {
+      console.error('MayTest drawText')
+      this.context.reset()
+      this.context.direction = 'inherit'
+      this.context.font = '30px sans-serif'
+      this.context.fillText('ab%123&*@', 50, 50)
+    }
+  
+    build() {
+      Row() {
+        Canvas(this.context)
+          .direction(Direction.Auto)
+          .width('100%')
+          .height('100%')
+          .onReady(() => {
+            this.drawText()
+          })
+      }
+      .height('100%')
+    }
+  }
+  ```
   
 | 镜像前          | 镜像后                                  |
 | ----------- | ----------------------------------- |

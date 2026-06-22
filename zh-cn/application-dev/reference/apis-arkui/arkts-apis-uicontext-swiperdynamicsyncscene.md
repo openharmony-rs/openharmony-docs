@@ -16,11 +16,13 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - SwiperDynamicSyncScene继承自[DynamicSyncScene](arkts-apis-uicontext-dynamicsyncscene.md)，对应Swiper的动态帧率场景。
 
 ## 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 

@@ -45,7 +45,7 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets     # 在ArkTS-Sta主模块中引入ArkTS-Dyn自定义组件，并给其状态变量赋值
+│                   └── StaDynStateV2.ets     # 在ArkTS-Sta主模块中引入ArkTS-Dyn自定义组件，并给其状态变量赋值
 │
 └── dynamic_module/                   # ArkTS-Dyn子模块
     └── src/
@@ -58,6 +58,8 @@ project/
 示例如下：
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
+
+<!-- @[StaDynStateV2MainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV2/dynamic_module/src/main/ets/components/MainPage.ets) -->
 
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
@@ -96,8 +98,10 @@ export struct MainPage { // ArkTS-Dyn自定义组件
 }
 ```
 
+<!-- @[StaDynStateV2DynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV2/dynamic_module/Index.ets) -->
+
 ```TypeScript
-// dynamic_module/index.ets
+// dynamic_module/Index.ets
 export { MainPage } from './src/main/ets/components/MainPage'; // 导出ArkTS-Dyn自定义组件
 ```
 
@@ -113,10 +117,10 @@ export { MainPage } from './src/main/ets/components/MainPage'; // 导出ArkTS-Dy
 
 - 在ArkTS-Sta主模块`entry`中引入ArkTS-Dyn组件。
 
-```TypeScript
-'use static'
+<!-- @[StaDynStateV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynStatemanagementV2/entry/src/main/ets/pages/StaDynStateV2.ets) -->
 
-// entry/src/main/ets/pages/Index.ets
+```TypeScript
+// entry/src/main/ets/pages/StaDynStateV2.ets
 import { Entry, ComponentV2, Column, Button, ClickEvent } from '@ohos.arkui.component';
 import { Local, Provider } from '@ohos.arkui.stateManagement';
 

@@ -10,13 +10,15 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
 ## 导入模块
 
-```js
+```ts
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
@@ -34,6 +36,10 @@ import { freeInstall } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 值   | 说明             |
 | ---------------- | ---- | ---------------- |
 | NOT_UPGRADE      | 0    | 模块无需升级。     |
@@ -46,6 +52,10 @@ import { freeInstall } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称               | 值         | 说明                               |
 | ------------------ | ---------- | ---------------------------------- |
 | GET_PACK_INFO_ALL  | 0x00000000 | 获取应用包pack.info的所有信息。    |
@@ -53,7 +63,7 @@ import { freeInstall } from '@kit.AbilityKit';
 | GET_BUNDLE_SUMMARY | 0x00000002 | 获取应用包pack.info的bundle摘要信息。  |
 | GET_MODULE_SUMMARY | 0x00000004 | 获取应用包pack.info的module摘要信息。  |
 
-## setHapModuleUpgradeFlag
+## freeInstall.setHapModuleUpgradeFlag
 
 setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: UpgradeFlag, callback: AsyncCallback\<void>):void
 
@@ -65,6 +75,10 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                        | 必填 | 说明                       |
@@ -72,7 +86,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 | bundleName  | string                      | 是   | 应用Bundle名称。     |
 | moduleName  | string                      | 是   | 应用程序模块名称。           |
 | upgradeFlag | [UpgradeFlag](#upgradeflag) | 是   | 仅供内部系统使用标志位。       |
-| callback    | AsyncCallback\<void>        | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，否则为错误对象。 |
+| callback    | AsyncCallback\<void>        | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -89,7 +103,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 **示例：**
 
-```js
+```ts
 import { freeInstall } from '@kit.AbilityKit';
 
 let bundleName = 'com.example.myapplication';
@@ -108,7 +122,7 @@ try {
 }
 ```
 
-## setHapModuleUpgradeFlag
+## freeInstall.setHapModuleUpgradeFlag
 
 setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: UpgradeFlag): Promise\<void>
 
@@ -119,6 +133,10 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 **需要权限：** ohos.permission.INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -149,7 +167,8 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 **示例：**
 
-```js
+ArkTS-Dyn示例:
+```ts
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -166,8 +185,28 @@ try {
   console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
 
-## isHapModuleRemovable
+import { freeInstall } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName和moduleName。
+let bundleName = 'com.example.myapplication';
+let moduleName = 'entry';
+let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
+try {
+  freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag).then(() => {
+    console.info('Operation succeed')
+  }).catch((err: Error) => {
+    console.error('Operation failed:' + JSON.stringify(err as BusinessError));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
+}
+```
+
+## freeInstall.isHapModuleRemovable
 
 isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCallback\<boolean>): void
 
@@ -179,13 +218,17 @@ isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCall
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                   | 必填 | 说明                                          |
 | ---------- | ---------------------- | ---- | --------------------------------------------- |
 | bundleName | string                 | 是   | 应用Bundle名称。                      |
 | moduleName | string                 | 是   | 应用程序模块名称。                            |
-| callback   | AsyncCallback\<boolean> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当获取成功时，err为undefined，data为bool值，true表示可以移除；false表示不可移除；否则为错误对象。 |
+| callback   | AsyncCallback\<boolean> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当获取成功时，err为undefined，data为bool值，true表示可以移除；false表示不可移除；否则为错误对象。 |
 
 **错误码：**
 
@@ -202,7 +245,7 @@ isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCall
 
 **示例：**
 
-```js
+```ts
 import { freeInstall } from '@kit.AbilityKit';
 
 let bundleName = 'com.example.myapplication';
@@ -220,7 +263,7 @@ try {
 }
 ```
 
-## isHapModuleRemovable
+## freeInstall.isHapModuleRemovable
 
 isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 
@@ -231,6 +274,10 @@ isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -260,7 +307,8 @@ isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 
 **示例：**
 
-```js
+ArkTS-Dyn示例:
+```ts
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -276,10 +324,29 @@ try {
   console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
 
-## getBundlePackInfo
+import { freeInstall } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName和moduleName。
+let bundleName = 'com.example.myapplication';
+let moduleName = 'entry';
+try {
+  freeInstall.isHapModuleRemovable(bundleName, moduleName).then((data: boolean) => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: Error) => {
+    console.error('Operation failed:' + JSON.stringify(err as BusinessError));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
+}
+```
 
-getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback: AsyncCallback\<BundlePackInfo>): void
+## freeInstall.getBundlePackInfo
+
+getBundlePackInfo(bundleName: string, bundlePackFlag: BundlePackFlag, callback: AsyncCallback\<BundlePackInfo>): void
 
 基于bundleName和bundlePackFlag来获取bundlePackInfo。使用callback异步回调。
 
@@ -289,13 +356,17 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback:
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                                                         | 必填 | 说明                                                         |
 | -------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | bundleName     | string                                                       | 是   | 应用Bundle名称。                                             |
 | bundlePackFlag | [BundlePackFlag](#bundlepackflag)                            | 是   | 指示要查询的应用包标志。                                     |
-| callback       | AsyncCallback<[BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md)> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为获取到的BundlePackInfo信息。否则为错误对象。 |
+| callback       | AsyncCallback<[BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md)> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为获取到的BundlePackInfo信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -311,7 +382,7 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback:
 
 **示例：**
 
-```js
+```ts
 import { freeInstall } from '@kit.AbilityKit';
 
 let bundleName = 'com.example.myapplication';
@@ -328,9 +399,9 @@ try {
   console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
-## getBundlePackInfo
+## freeInstall.getBundlePackInfo
 
-getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\<BundlePackInfo>
+getBundlePackInfo(bundleName: string, bundlePackFlag: BundlePackFlag): Promise\<BundlePackInfo>
 
 基于bundleName和BundlePackFlag来获取bundlePackInfo。使用Promise异步回调。
 
@@ -339,6 +410,10 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -367,7 +442,8 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\
 
 **示例：**
 
-```js
+ArkTS-Dyn示例:
+```ts
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -383,8 +459,27 @@ try {
   console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
 
-## getDispatchInfo
+import { freeInstall } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 开发者需根据实际工程更新bundleName。
+let bundleName = 'com.example.myapplication';
+let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
+try {
+  freeInstall.getBundlePackInfo(bundleName, bundlePackFlag).then((data: freeInstall.BundlePackInfo) => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: Error) => {
+    console.error('Operation failed:' + JSON.stringify(err as BusinessError));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
+}
+```
+
+## freeInstall.getDispatchInfo
 
 getDispatchInfo(callback: AsyncCallback\<DispatchInfo>): void
 
@@ -396,11 +491,15 @@ getDispatchInfo(callback: AsyncCallback\<DispatchInfo>): void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback<[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为获取到的[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)信息。否则为错误对象。 |
+| callback | AsyncCallback<[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为获取到的[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -414,7 +513,7 @@ getDispatchInfo(callback: AsyncCallback\<DispatchInfo>): void
 
 **示例：**
 
-```js
+```ts
 import { freeInstall } from '@kit.AbilityKit';
 
 try {
@@ -430,7 +529,7 @@ try {
 }
 ```
 
-## getDispatchInfo
+## freeInstall.getDispatchInfo
 
 getDispatchInfo(): Promise\<DispatchInfo>
 
@@ -441,6 +540,10 @@ getDispatchInfo(): Promise\<DispatchInfo>
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -460,7 +563,8 @@ getDispatchInfo(): Promise\<DispatchInfo>
 
 **示例：**
 
-```js
+ArkTS-Dyn示例:
+```ts
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -469,6 +573,22 @@ try {
     console.info('Operation succeed:' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { freeInstall } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  freeInstall.getDispatchInfo().then((data: freeInstall.DispatchInfo) => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: Error) => {
+    console.error('Operation failed:' + JSON.stringify(err as BusinessError));
   });
 } catch (err) {
   console.error('Operation failed:' + JSON.stringify(err));
@@ -485,13 +605,19 @@ type DispatchInfo = _DispatchInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md#dispatchinfo) |免安装结构体和接口版本信息类。 |
 
 ## BundlePackInfo
 
-type BundlePackInfo = _PackInfo.BundlePackInfo
+ArkTS-Dyn: type BundlePackInfo = _PackInfo.BundlePackInfo
+
+ArkTS-Sta: type BundlePackInfo = _BundlePackInfo
 
 应用包信息。
 
@@ -499,13 +625,19 @@ type BundlePackInfo = _PackInfo.BundlePackInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PackInfo.BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md#bundlepackinfo) |应用包信息。 |
+| ArkTS-Dyn: [_PackInfo.BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md#bundlepackinfo)<br>ArkTS-Sta: [_BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md#bundlepackinfo) |应用包信息。 |
 
 ## PackageConfig
 
-type PackageConfig = _PackInfo.PackageConfig
+ArkTS-Dyn: type PackageConfig = _PackInfo.PackageConfig
+
+ArkTS-Sta: type PackageConfig = _PackageConfig
 
 pack.info的包信息。
 
@@ -513,13 +645,19 @@ pack.info的包信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PackInfo.PackageConfig](js-apis-bundleManager-BundlePackInfo-sys.md#packageconfig) |pack.info的包信息。 |
+| ArkTS-Dyn: [_PackInfo.PackageConfig](js-apis-bundleManager-BundlePackInfo-sys.md#packageconfig)<br>ArkTS-Sta: [_PackageConfig](js-apis-bundleManager-BundlePackInfo-sys.md#packageconfig) |pack.info的包信息。 |
 
 ## PackageSummary
 
-type PackageSummary = _PackInfo.PackageSummary
+ArkTS-Dyn: type PackageSummary = _PackInfo.PackageSummary
+
+ArkTS-Sta: type PackageSummary = _PackageSummary
 
 pack.info中的包摘要信息。
 
@@ -527,13 +665,19 @@ pack.info中的包摘要信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PackInfo.PackageSummary](js-apis-bundleManager-BundlePackInfo-sys.md#packagesummary) |pack.info中的包摘要信息。 |
+| ArkTS-Dyn: [_PackInfo.PackageSummary](js-apis-bundleManager-BundlePackInfo-sys.md#packagesummary)<br>ArkTS-Sta: [_PackageSummary](js-apis-bundleManager-BundlePackInfo-sys.md#packagesummary) |pack.info中的包摘要信息。 |
 
 ## BundleConfigInfo
 
-type BundleConfigInfo = _PackInfo.BundleConfigInfo
+ArkTS-Dyn: type BundleConfigInfo = _PackInfo.BundleConfigInfo
+
+ArkTS-Sta: type BundleConfigInfo = _BundleConfigInfo
 
 包的配置信息。
 
@@ -541,13 +685,19 @@ type BundleConfigInfo = _PackInfo.BundleConfigInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PackInfo.BundleConfigInfo](js-apis-bundleManager-BundlePackInfo-sys.md#bundleconfiginfo) |包的配置信息。 |
+| ArkTS-Dyn: [_PackInfo.BundleConfigInfo](js-apis-bundleManager-BundlePackInfo-sys.md#bundleconfiginfo)<br>ArkTS-Sta: [_BundleConfigInfo](js-apis-bundleManager-BundlePackInfo-sys.md#bundleconfiginfo) |包的配置信息。 |
 
 ## ExtensionAbility
 
-type ExtensionAbility = _PackInfo.ExtensionAbility
+ArkTS-Dyn: type ExtensionAbility = _PackInfo.ExtensionAbility
+
+ArkTS-Sta: type ExtensionAbility = _ExtensionAbility
 
 extensionAbilities的配置信息。
 
@@ -555,13 +705,19 @@ extensionAbilities的配置信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PackInfo.ExtensionAbility](js-apis-bundleManager-BundlePackInfo-sys.md#extensionability) |extensionAbilities的配置信息。 |
+| ArkTS-Dyn: [_PackInfo.ExtensionAbility](js-apis-bundleManager-BundlePackInfo-sys.md#extensionability)<br>ArkTS-Sta: [_ExtensionAbility](js-apis-bundleManager-BundlePackInfo-sys.md#extensionability) |extensionAbilities的配置信息。 |
 
 ## ModuleConfigInfo
 
-type ModuleConfigInfo = _PackInfo.ModuleConfigInfo
+ArkTS-Dyn: type ModuleConfigInfo = _PackInfo.ModuleConfigInfo
+
+ArkTS-Sta: type ModuleConfigInfo = _ModuleConfigInfo
 
 包的module配置信息。
 
@@ -569,13 +725,19 @@ type ModuleConfigInfo = _PackInfo.ModuleConfigInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PackInfo.ModuleConfigInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduleconfiginfo) |包的module配置信息。 |
+| ArkTS-Dyn: [_PackInfo.ModuleConfigInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduleconfiginfo)<br>ArkTS-Sta: [_ModuleConfigInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduleconfiginfo) |包的module配置信息。 |
 
 ## ModuleDistroInfo
 
-type ModuleDistroInfo = _PackInfo.ModuleDistroInfo
+ArkTS-Dyn: type ModuleDistroInfo = _PackInfo.ModuleDistroInfo
+
+ArkTS-Sta: type ModuleDistroInfo = _ModuleDistroInfo
 
 module发行版信息。
 
@@ -583,13 +745,19 @@ module发行版信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PackInfo.ModuleDistroInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduledistroinfo) |module发行版信息。 |
+| ArkTS-Dyn: [_PackInfo.ModuleDistroInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduledistroinfo)<br>ArkTS-Sta: [_ModuleDistroInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduledistroinfo) |module发行版信息。 |
 
 ## ModuleAbilityInfo
 
-type ModuleAbilityInfo = _PackInfo.ModuleAbilityInfo
+ArkTS-Dyn: type ModuleAbilityInfo = _PackInfo.ModuleAbilityInfo
+
+ArkTS-Sta: type ModuleAbilityInfo = _ModuleAbilityInfo
 
 module包含的ability组件信息。
 
@@ -597,13 +765,19 @@ module包含的ability组件信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PackInfo.ModuleAbilityInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduleabilityinfo) |module包含的ability组件信息。 |
+| ArkTS-Dyn: [_PackInfo.ModuleAbilityInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduleabilityinfo)<br>ArkTS-Sta: [_ModuleAbilityInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduleabilityinfo) |module包含的ability组件信息。 |
 
 ## AbilityFormInfo
 
-type AbilityFormInfo = _PackInfo.AbilityFormInfo
+ArkTS-Dyn: type AbilityFormInfo = _PackInfo.AbilityFormInfo
+
+ArkTS-Sta: type AbilityFormInfo = _AbilityFormInfo
 
 卡片信息。
 
@@ -611,13 +785,19 @@ type AbilityFormInfo = _PackInfo.AbilityFormInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PackInfo.AbilityFormInfo](js-apis-bundleManager-BundlePackInfo-sys.md#abilityforminfo) |卡片信息。 |
+| ArkTS-Dyn: [_PackInfo.AbilityFormInfo](js-apis-bundleManager-BundlePackInfo-sys.md#abilityforminfo)<br>ArkTS-Sta: [_AbilityFormInfo](js-apis-bundleManager-BundlePackInfo-sys.md#abilityforminfo) |卡片信息。 |
 
 ## Version
 
-type Version = _PackInfo.Version
+ArkTS-Dyn: type Version = _PackInfo.Version
+
+ArkTS-Sta: type Version = _Version
 
 包的版本。
 
@@ -625,13 +805,19 @@ type Version = _PackInfo.Version
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PackInfo.Version](js-apis-bundleManager-BundlePackInfo-sys.md#version) |包的版本。 |
+| ArkTS-Dyn: [_PackInfo.Version](js-apis-bundleManager-BundlePackInfo-sys.md#version)<br>ArkTS-Sta: [_Version](js-apis-bundleManager-BundlePackInfo-sys.md#version) |包的版本。 |
 
 ## ApiVersion
 
-type ApiVersion = _PackInfo.ApiVersion
+ArkTS-Dyn: type ApiVersion = _PackInfo.ApiVersion
+
+ArkTS-Sta: type ApiVersion = _ApiVersion
 
 module的api版本。
 
@@ -639,6 +825,10 @@ module的api版本。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_PackInfo.ApiVersion](js-apis-bundleManager-BundlePackInfo-sys.md#apiversion) |module的api版本。 |
+| ArkTS-Dyn: [_PackInfo.ApiVersion](js-apis-bundleManager-BundlePackInfo-sys.md#apiversion)<br>ArkTS-Sta: [_ApiVersion](js-apis-bundleManager-BundlePackInfo-sys.md#apiversion) |module的api版本。 |

@@ -76,6 +76,7 @@ let observerCode = appManager.on('applicationState', {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

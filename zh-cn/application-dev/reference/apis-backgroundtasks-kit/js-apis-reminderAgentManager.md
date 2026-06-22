@@ -173,7 +173,6 @@ reminderAgentManager.publishReminder(timer).then((reminderId: number) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 let timer: reminderAgentManager.ReminderRequestTimer = {
@@ -183,7 +182,7 @@ let timer: reminderAgentManager.ReminderRequestTimer = {
 
 reminderAgentManager.publishReminder(timer).then((reminderId: int) => {
   console.info(`Succeeded in publishing reminder, reminderId is  ${JSON.stringify(reminderId)}.`);
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error(`Failed to publish reminder. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -310,13 +309,12 @@ reminderAgentManager.cancelReminder(reminderId).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 let reminderId: int = 1;
 reminderAgentManager.cancelReminder(reminderId).then(() => {
   console.info(`Succeeded in canceling reminder`);
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error(`Failed to cancel reminder. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -427,12 +425,11 @@ reminderAgentManager.getValidReminders().then((reminders: Array<reminderAgentMan
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 reminderAgentManager.getValidReminders().then((reminders: Array<reminderAgentManager.ReminderRequest>) => {
   console.info(`Succeeded in getting reminder, info is ${JSON.stringify(reminders)}.`);
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error(`Failed to get reminder. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -543,12 +540,11 @@ reminderAgentManager.cancelAllReminders().then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 reminderAgentManager.cancelAllReminders().then(() => {
   console.info(`Succeeded in canceling all reminders.`);
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error(`Failed to cancel all reminder. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -679,7 +675,6 @@ ArkTS-Sta示例：
 
 ```ts
 import { notificationManager } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 let mySlot: notificationManager.NotificationSlot = {
@@ -687,7 +682,7 @@ let mySlot: notificationManager.NotificationSlot = {
 }
 reminderAgentManager.addNotificationSlot(mySlot).then(() => {
   console.info(`Succeeded in adding slot.`);
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -808,12 +803,11 @@ ArkTS-Sta示例：
 
 ```ts
 import { notificationManager } from '@kit.NotificationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 reminderAgentManager.removeNotificationSlot(notificationManager.SlotType.CONTENT_INFORMATION).then(() => {
   console.info(`Succeeded in removing slot.`);
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error(`Failed to remove slot. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -862,12 +856,11 @@ reminderAgentManager.getAllValidReminders().then((reminders: Array<reminderAgent
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 reminderAgentManager.getAllValidReminders().then((reminders: Array<reminderAgentManager.ReminderInfo>) => {
   console.info(`Succeeded in getting reminder, info is ${JSON.stringify(reminders)}.`);
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error(`Failed to get reminder. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -929,14 +922,13 @@ reminderAgentManager.addExcludeDate(reminderId, date).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 let reminderId: int = 1;
 let date = new Date();
 reminderAgentManager.addExcludeDate(reminderId, date).then(() => {
   console.info(`Succeeded in adding exclude date.`);
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error(`Failed to add exclude date. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -995,13 +987,12 @@ reminderAgentManager.deleteExcludeDates(reminderId).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 let reminderId: int = 1;
 reminderAgentManager.deleteExcludeDates(reminderId).then(() => {
   console.info(`Succeeded in deleting exclude dates`);
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error(`Failed to delete exclude dates. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1063,13 +1054,12 @@ reminderAgentManager.getExcludeDates(reminderId).then((dates) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 let reminderId: int = 1;
 reminderAgentManager.getExcludeDates(reminderId).then((dates: Array<Date>) => {
   console.info(`Succeeded in getting exclude dates, info is ${JSON.stringify(dates)}.`);
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error(`Failed to get exclude dates. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1138,7 +1128,6 @@ ArkTS-Sta示例：
 
 ```ts
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let timer: reminderAgentManager.ReminderRequestTimer = {
   reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,
@@ -1148,7 +1137,7 @@ let timer: reminderAgentManager.ReminderRequestTimer = {
 let reminderId: int = 1;
 reminderAgentManager.updateReminder(reminderId, timer).then(() => {
   console.info(`Succeeded in updating reminder.`);
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error(`Failed to update reminder. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1208,12 +1197,11 @@ ArkTS-Sta示例：
 
 ```ts
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let reminderId: int = 1;
 reminderAgentManager.cancelReminderOnDisplay(reminderId).then(() => {
   console.info("cancel display reminder succeeded");
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error("promise err code:" + err.code + " message:" + err.message);
 });
 ```
@@ -1278,7 +1266,6 @@ ArkTS-Sta示例：
 
 ``` ts
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
   console.info('length is : ' + states.length);
@@ -1286,7 +1273,7 @@ function reminderStateCallback(states: Array<reminderAgentManager.ReminderState>
 
 reminderAgentManager.subscribeReminderState(reminderStateCallback).then(() => {
   console.info('subscribe succeeded');
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error('promise err code:' + err.code + ' message:' + err.message);
 });
 ```
@@ -1348,7 +1335,6 @@ ArkTS-Sta示例：
 
 ``` ts
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 function reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
   console.info('length is : ' + states.length);
@@ -1356,7 +1342,7 @@ function reminderStateCallback(states: Array<reminderAgentManager.ReminderState>
 
 reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => {
   console.info('unsubscribe succeeded');
-}).catch((err: BusinessError): void => {
+}).catch((err): void => {
   console.error('promise err code:' + err.code + ' message:' + err.message);
 });
 ```
@@ -1408,6 +1394,23 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 | RING_CHANNEL_MEDIA | 1 | 媒体通道。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
 | RING_CHANNEL_NOTIFICATION | 2 | 通知通道。<br> **ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 |
 
+## TimeZoneType
+
+时区类型。用于时区变更时，按照变更后的时区重新计算提醒的目标时间。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Notification.ReminderAgent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DEFAULT | 0 | 默认。修改时区，提醒时间的计算方式与固定时区的行为相同；修改时间，提醒时间的计算方式与跟随系统时区的行为相同。建议根据业务场景，明确指定FIXED_TIME_ZONE或者SYSTEM_TIME_ZONE类型。 |
+| FIXED_TIME_ZONE | 1 | 固定时区，用于抢票、开会等场景。例如：设备在东八区创建08:00的提醒，那么无论设备时区如何变化，都会在东八区的08:00提醒，即在东四区显示为04:00，修改系统时间不影响提醒目标时间。 |
+| SYSTEM_TIME_ZONE | 2 | 跟随系统时区，用于早起闹钟、定点运动、睡觉等场景，例如：设备在东八区创建08:00的提醒，在东四区仍为08:00的提醒，修改系统时间不影响提醒目标时间。 |
 
 ## ActionButton
 
@@ -1459,6 +1462,22 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 | pkgName | string | 否 | 否 | 指明提醒到达时自动拉起的目标包名（如果设备在使用中，则只弹出通知横幅框）。 |
 | abilityName | string | 否 | 否 | 指明提醒到达时自动拉起的目标ability名（如果设备在使用中，则只弹出通知横幅框）。 |
 
+## NotificationRequestProxy
+
+通知请求信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Notification.ReminderAgent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| appMessageId | string | 否 | 是 | 应用发送通知携带的唯一标识字段，用于通知去重，默认为空。具体请参考[NotificationRequest.appMessageId](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。 |
+| isAlertOnce | boolean | 否 | 是 | 发布或更新该通知时，是否只进行一次通知提醒，默认为false。具体请参考[NotificationRequest.isAlertOnce](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br/> - true：仅首次发布通知时进行提醒，后续更新该通知时，提醒方式变更为[LEVEL_LOW](../apis-notification-kit/js-apis-notificationManager.md#slotlevel)。<br/> - false：每次均按照配置的通知提醒方式进行提醒。 |
 
 ## ReminderRequest
 
@@ -1496,6 +1515,8 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 | snoozeSlotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明延时提醒的通道渠道类型（不适用于倒计时提醒类型）。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 | customRingUri | string | 否 | 是 | 指明自定义提示音的uri，提示音文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 | ringChannel | [RingChannel](#ringchannel) | 否 | 是 | 指明自定义提示音的音频播放通道，默认为闹钟通道。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
+| fixedTimeZone | [TimeZoneType](#timezonetype) | 否 | 是 | 时区类型，默认为TimeZoneType.DEFAULT。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br> **ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| notificationRequestProxy | [NotificationRequestProxy](#notificationrequestproxy) | 否 | 是 | 通知请求信息，默认为空。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br> **ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ReminderRequestCalendar
 

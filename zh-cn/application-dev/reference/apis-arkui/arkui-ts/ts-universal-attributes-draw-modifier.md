@@ -158,9 +158,9 @@ drawForeground(drawContext: DrawContext): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -181,6 +181,10 @@ drawOverlay(drawContext: DrawContext): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -270,15 +274,21 @@ invalidate(): void
 
 ### DrawContext
 
-type DrawContext = DrawContext
+ArkTS-Dyn: type DrawContext = import('../api/arkui/Graphics').DrawContext
+
+ArkTS-Sta: type DrawContext = _DrawContext
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 图形绘制上下文。 |
+| ArkTS-Dyn: import('../api/arkui/Graphics').[DrawContext](../js-apis-arkui-graphics.md#drawcontext)<br/>ArkTS-Sta: _[DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 图形绘制上下文。 |
 
 ## 示例
 

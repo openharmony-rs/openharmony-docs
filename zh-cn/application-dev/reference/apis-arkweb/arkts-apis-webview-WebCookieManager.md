@@ -278,6 +278,67 @@ struct WebComponent {
 }
 ```
 
+## fetchAllCookies<sup>23+</sup>
+
+static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
+
+获取所有cookie，使用Promise异步回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --------- | ------- | -- | -------------------------------------- |
+| incognito | boolean | 是 | true表示获取隐私模式下webview的所有cookie，false表示正常非隐私模式下的所有cookie。 |
+
+**返回值：**
+
+| 类型   | 说明                      |
+| ------ | ------------------------- |
+| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise对象，用于获取所有cookie及其对应的字段值。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController()
+
+  build() {
+    Row() {
+      Column() {
+        Button('Config Cookie')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+
+        Button('Get All Cookies')
+        .onClick(() => {
+          webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
+            for (let i = 0; i < cookies.length; i++) {
+              console.info('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
+              console.info('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
+            }
+          })
+        })
+
+        Web({ src: 'https://www.example.com', controller: this.controller})
+      }
+    }
+  }
+}
+```
+
 ## configCookieSync<sup>11+</sup>
 
 static configCookieSync(url: string, value: string, incognito?: boolean): void
@@ -989,7 +1050,7 @@ struct WebComponent {
 
 static clearAllCookiesSync(incognito?: boolean): void
 
-清除所有cookie。
+清除所有cookie(包括会话cookie和持久化cookie)。如需仅清除会话cookie，请使用[clearSessionCookieSync](#clearsessioncookiesync11)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1026,7 +1087,7 @@ struct WebComponent {
 
 static clearAllCookies(callback: AsyncCallback\<void>): void
 
-异步callback方式清除所有cookie。
+清除所有cookie(包括会话cookie和持久化cookie)，使用callback异步回调。如需仅清除会话cookie，请使用[clearSessionCookie](#clearsessioncookie11)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1080,7 +1141,7 @@ struct WebComponent {
 
 static clearAllCookies(): Promise\<void>
 
-清除所有cookie。使用Promise异步回调。
+清除所有cookie(包括会话cookie和持久化cookie)，使用Promise异步回调。如需仅清除会话cookie，请使用[clearSessionCookie](#clearsessioncookie11-1)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1310,67 +1371,6 @@ struct WebComponent {
   build() {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-## fetchAllCookies<sup>23+</sup>
-
-static fetchAllCookies(incognito: boolean): Promise\<Array\<WebHttpCookie\>\>
-
-获取所有cookie，使用Promise异步回调。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --------- | ------- | -- | -------------------------------------- |
-| incognito | boolean | 是 | true表示获取隐私模式下webview的所有cookie，false表示正常非隐私模式下的所有cookie。 |
-
-**返回值：**
-
-| 类型   | 说明                      |
-| ------ | ------------------------- |
-| Promise\<Array\<[WebHttpCookie](./arkts-apis-webview-i.md#webhttpcookie23)\>\> | Promise对象，用于获取所有cookie及其对应的字段值。 |
-
-**示例：**
-
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController()
-
-  build() {
-    Row() {
-      Column() {
-        Button('Config Cookie')
-        .onClick(() => {
-          try {
-            webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-
-        Button('Get All Cookies')
-        .onClick(() => {
-          webview.WebCookieManager.fetchAllCookies(false).then((cookies) => {
-            for (let i = 0; i < cookies.length; i++) {
-              console.info('fetchAllCookies cookie[' + i + '].name = ' + cookies[i].name);
-              console.info('fetchAllCookies cookie[' + i + '].value = ' + cookies[i].value);
-            }
-          })
-        })
-
-        Web({ src: 'https://www.example.com', controller: this.controller})
-      }
     }
   }
 }

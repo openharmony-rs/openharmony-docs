@@ -161,6 +161,8 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 云盘同步对象添加同步过程事件监听。
 
+当应用首次注册callback时，SyncProgress中的SyncState初始返回值为4，代表COMPLETED；后续重新注册时，该值将反映实际同步结果，例如若上次上行失败，返回值为1，代表UPLOAD_FAILED。
+
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onProgress](#onprogress23)。
@@ -1672,6 +1674,120 @@ try {
   const error = e as BusinessError;
   console.error(`clean file cache failed with error message: ${error.code}, message is ${error.message}`);
 }
+```
+
+### cleanFileCache
+
+cleanFileCache(): Promise&lt;void&gt;
+
+删除所有已缓存文件，未上云文件、写打开文件及缩略图文件不会被删除。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+fileCache.cleanFileCache().then(() => {
+  console.info("clean file cache successfully");
+}).catch((err: BusinessError) => {
+  console.error(`clean file cache failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+fileCache.cleanFileCache().then<void>((): void => {
+  console.info("clean file cache successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.error(`clean file cache failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+### getCachedTotalSize
+
+ArkTS-Dyn: getCachedTotalSize(): Promise&lt;number&gt;
+
+ArkTS-Sta: getCachedTotalSize(): Promise&lt;long&gt;
+
+获取已缓存文件的总大小，包含本地新增未上云文件、本地新增已上云文件及已下载文件大小，不包含缩略图文件大小。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**返回值：**
+
+| 类型  | 说明 |
+| ------ | ---- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回已缓存文件总大小。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+fileCache.getCachedTotalSize().then((totalDownloadSize: number) => {
+  console.info("totalDownloadSize: " + totalDownloadSize);
+}).catch((err: BusinessError) => {
+  console.error("get totalDownloadSize failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+fileCache.getCachedTotalSize().then<long>((totalDownloadSize: long): void => {
+  console.info("totalDownloadSize: " + totalDownloadSize);
+}).catch((err: BusinessError<void>): void => {
+  console.error("get totalDownloadSize failed with error message: " + err.message + ", error code: " + err.code);
+});
 ```
 
 ## DownloadErrorType<sup>11+</sup>

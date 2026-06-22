@@ -12,331 +12,200 @@
 >
 > - 本模块仅适用于ArkTS-Sta。
 >
-> - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 24开始支持。
 
+## JsonRecordType
 
-## JSONValue
+type JsonRecordType = boolean | bigint | String | undefined | null | Double | Long | Record\<string, JsonRecordType> | Array\<JsonRecordType>
 
-JSONValue是以下所有JSON对象的基类。
+JsonRecordType表示`JSON.parseJsonRecord`可解析出的值类型，可用于描述JSON对象中的基础值、嵌套对象和数组。
 
-| 名称         | 说明             |
-| ---------- | -------------- |
-| JSONObject | 一个JSON对象。      |
-| JSONArray  | 一个JSON数组。      |
-| JSONNumber | 一个JSON数字。      |
-| JSONString | 一个JSON字符串。    |
-| JSONTrue   | 一个JSON值为true。  |
-| JSONFalse  | 一个JSON值为false。 |
-| JSONNull   | 一个JSON值为null。  |
+**系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Sta起始版本：** 26.0.0
 
-## JSONObject
+| 类型 | 说明 |
+| :--- | :--- |
+| boolean | JSON布尔值，对应JSON中的`true`或`false`。 |
+| bigint | 大整数，根据[ParseOptions](arkts-sta-jsonx.md#parseoptions)的`bigIntMode`配置解析。 |
+| String | JSON字符串值。 |
+| undefined | 缺失的值，JSON对象中不存在该键时使用。 |
+| null | JSON中的`null`值。 |
+| Double | 浮点数值，对应JSON中含小数或超出`Long`范围的数字。 |
+| Long | 整数值，对应JSON中在`Long`范围内的数字。 |
+| Record\<string, JsonRecordType> | 嵌套JSON对象，键为字符串，值递归为JsonRecordType。 |
+| Array\<JsonRecordType> | JSON数组，元素递归为JsonRecordType。 |
 
-JSON类型的对象。
+## JsonReplacer
 
+JsonReplacer提供自定义替换接口。实现该接口的对象传入`JSON.stringify`时，会先调用`jsonReplacer`，再将其返回的`Record<String, Any>`序列化。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### jsonReplacer
+
+jsonReplacer(): Record\<String, Any>
+
+返回用于JSON序列化的键值记录。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                 | 说明                 |
+| -------------------- | -------------------- |
+| Record\<String, Any> | 用于序列化的键值记录。 |
+
+**示例：**
+
+```ts
+class Point implements JsonReplacer {
+    x: int = 1;
+    y: int = 2;
+
+    jsonReplacer(): Record<String, Any> {
+        return { "x": this.x, "y": this.y };
+    }
+}
+
+const json = JSON.stringify(new Point());
+console.info(json); // '{"x":1,"y":2}'
+```
+
+## JSONRename
+
+@interface JSONRename
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+JSONRename用于标记对象字段在JSON中的名称。`JSON.stringify`序列化该字段时使用`newName`作为key，`JSON.parse`和`JSON.parseUpdate`解析对象时也按`newName`匹配输入字段。
 
 ### 属性
 
-| 名称        | 类型                               | 只读  | 可选  | 说明             |
-| ---------- | ---------------------------------- | ---- | ---- | ---------------- |
-| keys_      | Array\<[JSONString](#jsonstring)>  | 否   | 否    | key值数组。       |
-| values     | Array\<[JSONValue](#jsonvalue)>    | 否   | 否    | value值数组。     |
-| START_CHAR | Char                               | 是   | 否    | 起始字符。        |
-| END_CHAR   | Char                               | 是   | 否    | 结束字符。        |
-| SEPARATOR  | Char                               | 是   | 否    | 键值间分隔字符。  |
-| DELIMITER  | Char                               | 是   | 否    | 键值对间分隔字符。|
-| EMPTY      | Char                               | 是   | 否    | 空对象字符串。    |
+**系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Sta起始版本：** 26.0.0
 
-
-### getFields
-
-getFields(): Map\<String, JSONValue>
-
-该方法获取JSON对象的元素。
-
-**返回值：**
-
-| 类型                                            | 说明              |
-| ----------------------------------------------- | ----------------- |
-| Map\<String, [JSONValue](#jsonvalue)>           | 一个map类型的对象。 |
+| 名称    | 类型   | 只读 | 可选 | 说明             |
+| ------- | ------ | ---- | ---- | ---------------- |
+| newName | string | 否   | 否   | 字段在JSON中的名称。 |
 
 **示例：**
 
 ```ts
-let json: String = `{\"intValue\":12}`;
-try {
-    let jsonObj: JSONObject = JSONParser.parse(json) as JSONObject;
-    let fields: Map<String, JSONValue> = jsonObj.getFields();
-    console.info(fields.get("intValue")); // 12
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
+class UserName {
+    @JSONRename({ newName: "user_name" })
+    name: string = "Alice";
+
+    @JSONRename("user_age")
+    age: int = 10;
 }
+
+const json = JSON.stringify(new UserName());
+console.info(json); // '{"user_name":"Alice","user_age":10}'
 ```
 
-### toString
+## JSONStringifyIgnore
 
-toString(): String
+@interface JSONStringifyIgnore
 
-该方法将当前对象转换成JSON字符串。
+**系统能力：** SystemCapability.Utils.Lang
 
-**返回值：**
+**ArkTS-Sta起始版本：** 26.0.0
 
-| 类型    | 说明             |
-| ------ | ---------------- |
-| String | JSON格式的字符串。 |
+JSONStringifyIgnore用于标记序列化时需要忽略的对象字段。被标记字段不会出现在`JSON.stringify`输出中。
 
 **示例：**
 
 ```ts
-let json: String = `{\"intValue\":12}`;
-try {
-    let jsonObj: JSONObject = JSONParser.parse(json) as JSONObject;
-    let str: String = jsonObj.toString();
-    console.info(str); // {intValue:12}
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
+class SessionInfo {
+    id: string = "1001";
+
+    @JSONStringifyIgnore
+    token: string = "secret";
 }
+
+const json = JSON.stringify(new SessionInfo());
+console.info(json); // '{"id":"1001"}'
 ```
 
-## JSONArray
+## JSONParseIgnore
 
-JSON格式的数组。
+@interface JSONParseIgnore
 
-### 属性
+**系统能力：** SystemCapability.Utils.Lang
 
-| 名称        | 类型                             | 只读  | 可选  | 说明             |
-| ---------- | -------------------------------- | ---- | ----- | -----------------|
-| values     | Array\<[JSONValue](#jsonvalue)>  | 否   | 否    | JSONValue数组。   |
-| START_CHAR | Char                             | 是   | 否    | 起始字符。        |
-| END_CHAR   | Char                             | 是   | 否    | 结束字符。        |
-| SEPARATOR  | Char                             | 是   | 否    | 间隔字符。        |
+**ArkTS-Sta起始版本：** 26.0.0
 
-
-### toString
-
-toString(): String
-
-转换成JSON格式的字符串。
-
-**返回值：**
-
-| 类型     | 说明          |
-| ------ | ----------- |
-| String | JSON格式的字符串。 |
+JSONParseIgnore用于标记解析时需要忽略的对象字段。`JSON.parseUpdate`更新对象时，被标记字段会保留原值。
 
 **示例：**
 
 ```ts
-let json: String = `[\"A\", \"B\"]`;
-try {
-    let jsonArr: JSONArray = JSONParser.parse(json) as JSONArray;
-    let str: String = jsonArr.toString();
-    console.info(str); // [A,B]
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
+class ParseUser {
+    name: string = "before";
+
+    @JSONParseIgnore
+    role: string = "guest";
 }
+
+const user = new ParseUser();
+JSON.parseUpdate<ParseUser>("{\"name\":\"after\",\"role\":\"admin\"}", user);
+
+console.info(user.name); // "after"
+console.info(user.role); // "guest"
 ```
 
-## JSONNumber
+## JSONStringifyGetter
 
-JSON中表示数字的数据类型。
+@interface JSONStringifyGetter
 
-### 属性
+**系统能力：** SystemCapability.Utils.Lang
 
-| 名称         | 类型   | 只读  | 可选  | 说明             |
-| ----------- | ------ | ----- | ----- | --------------- |
-| value       | Double | 否    | 否    | Double值。      |
-| bigintValue | bigint | 否    | 否    | bigint值。      |
+**ArkTS-Sta起始版本：** 26.0.0
 
-
-### toString
-
-toString(): String
-
-转换成JSON格式的字符串。
-
-**返回值：**
-
-| 类型     | 说明          |
-| ------ | ----------- |
-| String | JSON格式的字符串。 |
+JSONStringifyGetter用于标记零参数的`get`访问器。调用`JSON.stringifyWithGetters`时，被标记访问器的名称会作为JSON key，返回值会作为对应的JSON value。
 
 **示例：**
 
 ```ts
-let json: String = "1.0";
-try {
-    let jsonNum: JSONNumber = JSONParser.parse(json) as JSONNumber;
-    let str: String = jsonNum.toString();
-    console.info(str); // 1
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
+class DisplayName {
+    first: string = "Ada";
+    last: string = "Lovelace";
+
+    @JSONStringifyGetter
+    get fullName(): string {
+        return this.first + " " + this.last;
+    }
 }
-```
 
-## JSONString
-
-JSON格式的字符串。
-
-### 属性
-
-| 名称        | 类型   | 只读  | 可选  | 说明             |
-| ---------- | ------ | ---- | ----- | ---------------- |
-| value      | String | 否   | 否    | String值。       |
-| START_CHAR | Char   | 是   | 否    | 起始字符。        |
-| END_CHAR   | Char   | 是   | 否    | 结束字符。        |
-
-### toString
-
-toString(): String
-
-转换成JSON格式的字符串。
-
-**返回值：**
-
-| 类型    | 说明              |
-| ------ | ----------------- |
-| String | JSON格式的字符串。 |
-
-**示例：**
-
-```ts
-let json: String = "A";
-try {
-    let jsonStr: JSONString = new JSONString();
-    jsonStr.value = json;
-    let str: String = jsonStr.toString();
-    console.info(str); // A
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-## JSONTrue
-
-JSON布尔类型，表示值为true。
-
-### 属性
-
-| 名称        | 类型   | 只读  | 可选  | 说明                           |
-| ---------- | ------ | ---- | ----- | ------------------------------- |
-| value      | String | 是   | 否    | 字符串类型的布尔值，默认为 "true"。|
-| START_CHAR | Char   | 是   | 否    | 起始字符。                       |
-
-### toString
-
-toString(): String
-
-转换成JSON格式的字符串。
-
-**返回值：**
-
-| 类型    | 说明            |
-| ------ | ---------------- |
-| String | JSON格式的字符串。 |
-
-**示例：**
-
-```ts
-try {
-    let jsonTrue: JSONTrue = new JSONTrue();
-    let str: String = jsonTrue.toString();
-    console.info(str); // true
-}catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-## JSONFalse
-
-JSON布尔类型，表示值为false。
-
-### 属性
-
-| 名称        | 类型   | 只读  | 可选  | 说明                            |
-| ---------- | ------ | ----- | ---- | ------------------------------- |
-| value      | String | 是   | 否    | 字符串类型的布尔值，默认为"false"。|
-| START_CHAR | Char   | 是   | 否    | 起始字符。                       |
-
-### toString
-
-toString(): String
-
-转换成JSON格式的字符串。
-
-**返回值：**
-
-| 类型     | 说明          |
-| ------ | ----------- |
-| String | JSON格式的字符串。 |
-
-**示例：**
-
-```ts
-try {
-    let jsonFalse: JSONFalse = new JSONFalse();
-    let str: String = jsonFalse.toString();
-    console.info(str); // false
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-## JSONNull
-
-JSON类型，表示值为null。
-
-### 属性
-
-| 名称        | 类型   | 只读  | 可选  | 说明             |
-| ---------- | ------ | ---- | ----- | ---------------- |
-| value      | String | 是   | 否    | 默认为"null"。    |
-| START_CHAR | Char   | 是   | 否    | 起始字符。        |
-
-
-### toString
-
-toString(): String
-
-转换成JSON格式的字符串。
-
-**返回值：**
-
-| 类型     | 说明          |
-| ------ | ----------- |
-| String | JSON格式的字符串。 |
-
-**示例：**
-
-```ts
-try {
-    let jsonNull: JSONNull = new JSONNull();
-    let str: String = jsonNull.toString();
-    console.info(str); // null
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+const json = JSON.stringifyWithGetters(new DisplayName());
+console.info(json); // '{"first":"Ada","last":"Lovelace","fullName":"Ada Lovelace"}'
 ```
 
 ## JsonSerializable
 
 JsonSerializable提供了一个接口，供外部类通过重写toJSON方法来实现自定义JSON序列化行为。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 ### toJSON
 
 toJSON(): string
 
 外部类通过重写toJSON方法来实现自定义JSON序列化行为。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -348,95 +217,81 @@ toJSON(): string
 
 ```ts
 class testA {
-    a: string = 'Hello'
+    a: string = 'Hello';
 }
 
-console.info(JSON.stringify(new testA())) // {"a":"Hello"}
+console.info(JSON.stringify(new testA())); // '{"a":"Hello"}'
 
 class testB implements JsonSerializable {
-    a: string = 'Hello'
+    a: string = 'Hello';
 
     toJSON(): string {
-        return "testB Hello World"
+        return "testB Hello World";
     }
 }
 
-console.info(JSON.stringify(new testB())) // "testB Hello World"
+console.info(JSON.stringify(new testB())); // '"testB Hello World"'
 ```
 
 ## JsonParseError
 
-JSON的标准错误类型，当发生JSON解析或操作错误时抛出。
+JSON的标准错误类型，当发生JSON解析或操作错误时抛出。继承自`SyntaxError`。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 ### constructor
 
-constructor(msg: String, start_offset?: Int, end_offset?: Int)
+constructor(msg: string, start_offset?: int, end_offset?: int)
 
 JsonParseError的构造函数。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
 | 参数名        | 类型   | 必填  | 说明                           |
 | ------------ | ------ | ---- | ------------------------------- |
-| msg          | String | 是   | 错误信息。                       |
-| start_offset | Int    | 否   | 错误的起始位置，默认为undefined。 |
-| end_offset   | Int    | 否   | 错误的结束位置，默认为undefined。 |
+| msg          | string | 是   | 错误信息。                       |
+| start_offset | int    | 否   | 错误的起始位置，默认为undefined。 |
+| end_offset   | int    | 否   | 错误的结束位置，默认为undefined。 |
 
 **示例：**
 
 ```ts
+let err = new JsonParseError("Failed to opt JSON.");
+console.info(err.message); // "Failed to opt JSON. at undefined..undefined"
+
 try {
-    let typ: Type = Type.of(new Object());
-    const json = JSON.parse<Object>("[1, 2, 3]", typ) as Object;
-} catch (error) {
-    throw new JsonParseError("Failed to opt JSON.");
+    JSON.parse<Object>('{test}', Class.from<Object>());
+} catch(e) {
+    console.info(e instanceof JsonParseError); // true
+    console.info(e.message); // "Unterminated string at 6 at 2..6"
 }
 ```
-
 
 ## JSON
 
 提供JSON序列化和反序列化操作的基础工具类。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 ### stringify
-所有以"stringify"开头的方法均是stringify的别名，推荐直接调用stringify方法，举例如下。
 
-**示例1：**
-```ts
-try {
-    let d: Byte = 1;
-    const json = JSON.stringify(d); // stringifyByte(d: Byte)
-    console.info(json); // 1
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
+static stringify(d: byte): String
 
-**示例2：**
-```ts
-try {
-    let d: Short = 1;
-    const json = JSON.stringify(d); // stringifyShort(d: Short)
-    console.info(json); // 1
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
+将byte类型的值转换成字符串。
 
-
-### stringifyByte
-
-static stringifyByte(d: Byte): String
-
-将Byte类型的值转换成字符串。
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型   | 必填  | 说明           |
 | ----- | ------ | ----- | -------------- |
-| d     | Byte   | 是    | Byte类型的对象。|
+| d     | byte   | 是    | byte类型的值。|
 
 **返回值：**
 
@@ -447,28 +302,51 @@ static stringifyByte(d: Byte): String
 **示例：**
 
 ```ts
-try {
-    let d: Byte = 1;
-    const json = JSON.stringifyByte(d);
-    console.info(json); // 1
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let d: byte = -1;
+console.info(JSON.stringify(d)); // "-1"
 ```
 
+### stringify
 
-### stringifyShort
+static stringify(d: char): String
 
-static stringifyShort(d: Short): String
+将char类型数据转换成字符串。
 
-将Short类型数据转换成字符串。
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填  | 说明           |
+| ----- | ---- | ---- | -------------- |
+| d     | char | 是   | char类型的值。 |
+
+**返回值：**
+
+| 类型     | 说明       |
+| ------ | -------- |
+| String | 转换后的字符串。 |
+
+**示例：**
+
+```ts
+let d: char = c'A';
+const json = JSON.stringify(d);
+console.info(json); // "A"
+```
+
+### stringify
+
+static stringify(d: short): String
+
+将short类型数据转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型  | 必填  | 说明            |
 | ----- | ----- | ---- | --------------- |
-| d     | Short | 是   | Short类型的对象。 |
+| d     | short | 是   | short类型的值。 |
 
 **返回值：**
 
@@ -476,32 +354,26 @@ static stringifyShort(d: Short): String
 | ------ | -------- |
 | String | 转换后的字符串。 |
 
-
 **示例：**
 
 ```ts
-try {
-    let d: Short = 1;
-    const json = JSON.stringifyShort(d);
-    console.info(json); // 1
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let d: short = 1000;
+console.info(JSON.stringify(d)); // "1000"
 ```
 
+### stringify
 
-### stringifyInt
+static stringify(d: int): String
 
-static stringifyInt(d: Int): String
+将int类型数据转换成字符串。
 
-将Int类型数据转换成字符串。
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型  | 必填 | 说明          |
 | ----- | ----- | ---- | ------------- |
-| d     | Int   | 是   | Int类型的对象。|
+| d     | int   | 是   | int类型的值。|
 
 **返回值：**
 
@@ -512,28 +384,23 @@ static stringifyInt(d: Int): String
 **示例：**
 
 ```ts
-try {
-    let d: Int = 1;
-    const json = JSON.stringifyInt(d);
-    console.info(json); // 1
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let d: int = 100000;
+console.info(JSON.stringify(d)); // "100000"
 ```
 
+### stringify
 
-### stringifyLong
+static stringify(d: long): String
 
-static stringifyLong(d: Long): String
+将long类型数据转换成字符串。
 
-将Long类型数据转换成字符串。
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明            |
+| 参数名 | 类型 | 必填  | 说明            |
 | ----- | ---- | ---- | -------------- |
-| d     | Long | 是   | Long类型的对象。 |
+| d     | long | 是   | long类型的值。 |
 
 **返回值：**
 
@@ -544,28 +411,23 @@ static stringifyLong(d: Long): String
 **示例：**
 
 ```ts
-try {
-    let d: Long = 1;
-    const json = JSON.stringifyLong(d);
-    console.info(json); // 1
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let d: long = 9223372036854775807;
+console.info(JSON.stringify(d)); // "9223372036854775807"
 ```
 
+### stringify
 
-### stringifyFloat
+static stringify(d: float): String
 
-static stringifyFloat(d: Float): String
+将float类型数据转换成字符串。非有限值（NaN、Infinity）序列化为null。
 
-将Float类型数据转换成字符串。
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型  | 必填  | 说明            |
 | ----- | ----- | ----- | --------------- |
-| d     | Float | 是    | Float类型的对象。 |
+| d     | float | 是    | float类型的值。 |
 
 **返回值：**
 
@@ -576,28 +438,26 @@ static stringifyFloat(d: Float): String
 **示例：**
 
 ```ts
-try {
-    let d: Float = 1.0;
-    const json = JSON.stringifyFloat(d);
-    console.info(json); // 1
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let d: Float = 1.5f;
+console.info(JSON.stringify(d)); // "1.5"
+// 非有限值序列化为null
+console.info(JSON.stringify(Float.NaN)); // null
+console.info(JSON.stringify(Float.POSITIVE_INFINITY)); // null
 ```
 
+### stringify
 
-### stringifyDouble
+static stringify(d: double): String
 
-static stringifyDouble(d: Double): String
+将double类型数据转换成字符串。非有限值（NaN、Infinity）序列化为null。
 
-将Double类型数据转换成字符串。
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型   | 必填  | 说明              |
 | ----- | ------ | ----- | ---------------- |
-| d     | Double | 是    | Double类型的对象。 |
+| d     | double | 是    | double类型的值。 |
 
 **返回值：**
 
@@ -608,22 +468,20 @@ static stringifyDouble(d: Double): String
 **示例：**
 
 ```ts
-try {
-    let d: Double = 1.0;
-    const json = JSON.stringifyDouble(d);
-    console.info(json); // 1
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let d: Double = 1.5;
+console.info(JSON.stringify(d)); // "1.5"
+// 非有限值序列化为null
+console.info(JSON.stringify(Double.NaN)); // null
+console.info(JSON.stringify(Double.POSITIVE_INFINITY)); // null
 ```
 
+### stringify
 
-### stringifyBigint
-
-static stringifyBigint(d: bigint): String
+static stringify(d: bigint): String
 
 将bigint转换为字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -640,60 +498,23 @@ static stringifyBigint(d: bigint): String
 **示例：**
 
 ```ts
-try {
-    let d: bigint = new bigint(1.0);
-    const json = JSON.stringifyBigint(d);
-    console.info(json); // 1
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let d: bigint = new bigint(9223372036854775807);
+console.info(JSON.stringify(d)); // "9223372036854775807"
 ```
 
+### stringify
 
-### stringifyChar
+static stringify(d: boolean): String
 
-static stringifyChar(d: Char): String
+将boolean类型数据转换为字符串。
 
-将Char类型数据转换成字符串。
-
-**参数：**
-
-| 参数名 | 类型 | 必填  | 说明           |
-| ----- | ---- | ---- | -------------- |
-| d     | Char | 是   | Char类型的对象。 |
-
-**返回值：**
-
-| 类型     | 说明       |
-| ------ | -------- |
-| String | 转换后的字符串。 |
-
-**示例：**
-
-```ts
-try {
-    let d: Char = c'A';
-    const json = JSON.stringifyChar(d);
-    console.info(json); // "A"
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-### stringifyBoolean
-
-static stringifyBoolean(d: Boolean): String
-
-将Boolean类型数据转换为字符串。
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型    | 必填  | 说明              |
 | ----- | ------- | ---- | ------------------ |
-| d     | Boolean | 是   | Boolean类型的对象。 |
+| d     | boolean | 是   | boolean类型的值。 |
 
 **返回值：**
 
@@ -704,22 +525,17 @@ static stringifyBoolean(d: Boolean): String
 **示例：**
 
 ```ts
-try {
-    let d: Boolean = true;
-    const json = JSON.stringifyBoolean(d);
-    console.info(json); // true
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+console.info(JSON.stringify(true)); // "true"
+console.info(JSON.stringify(false)); // "false"
 ```
 
+### stringify
 
-### stringifyString
-
-static stringifyString(d: String): String
+static stringify(d: String): String
 
 将String类型数据格式化。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -736,22 +552,325 @@ static stringifyString(d: String): String
 **示例：**
 
 ```ts
-try {
-    let d: String = "{value: A}";
-    const json = JSON.stringifyString(d);
-    console.info(json); // "{value: A}"
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let d: String = "hello";
+console.info(JSON.stringify(d)); // "hello"
 ```
 
+### stringify
 
-### stringifyAnyObj
+static stringify(d: FixedArray\<byte>): String
 
-static stringifyAnyObj(obj: Any): String
+将FixedArray\<byte>转换成字符串。
 
-将ArkTS-Sta对象、数组和基本数据类型等数据转换为字符串。
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型               | 必填  | 说明          |
+| ----- | ------------------ | ----- | ------------- |
+| d     | FixedArray\<byte>  | 是    | byte数组。 |
+
+**返回值：**
+
+| 类型     | 说明       |
+| ------ | -------- |
+| String | 转换后的字符串。 |
+
+**示例：**
+
+```ts
+let d: FixedArray<byte> = [-1, 0, 127];
+console.info(JSON.stringify(d)); // "[-1,0,127]"
+```
+
+### stringify
+
+static stringify(d: FixedArray\<char>): String
+
+将FixedArray\<char>转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型              | 必填  | 说明          |
+| ----- | ----------------- | ---- | ------------- |
+| d     | FixedArray\<char> | 是   | char数组。 |
+
+**返回值：**
+
+| 类型    | 说明           |
+| ------ | -------------- |
+| String | 转换后的字符串。 |
+
+**示例：**
+
+```ts
+let d: FixedArray<char> = [c'A', c'B', c'C'];
+
+const json = JSON.stringify(d);
+console.info(json); // '["A","B","C"]'
+```
+
+### stringify
+
+static stringify(d: FixedArray\<short>): String
+
+将FixedArray\<short>转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型               | 必填  | 说明           |
+| ----- | -----------------  | ---- | -------------- |
+| d    | FixedArray\<short>  | 是   | short数组。 |
+
+**返回值：**
+
+| 类型   | 说明            |
+| ------ | -------------- |
+| String | 转换后的字符串。 |
+
+**示例：**
+
+```ts
+let d: FixedArray<short> = [-100, 0, 1000];
+console.info(JSON.stringify(d)); // "[-100,0,1000]"
+```
+
+### stringify
+
+static stringify(d: FixedArray\<int>): String
+
+将FixedArray\<int>转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型             | 必填  | 说明         |
+| ----- | -----------------| ---- | ------------ |
+| d     | FixedArray\<int> | 是   | int数组。 |
+
+**返回值：**
+
+| 类型    | 说明           |
+| ------ | -------------- |
+| String | 转换后的字符串。 |
+
+**示例：**
+
+```ts
+let d: FixedArray<int> = [100, 200, 300];
+console.info(JSON.stringify(d)); // "[100,200,300]"
+```
+
+### stringify
+
+static stringify(d: FixedArray\<long>): String
+
+将FixedArray\<long>转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型              | 必填  | 说明          |
+| ----- | ----------------- | ---- | ------------- |
+| d     | FixedArray\<long> | 是   | long数组。 |
+
+**返回值：**
+
+| 类型   | 说明            |
+| ------ | -------------- |
+| String | 转换后的字符串。 |
+
+**示例：**
+
+```ts
+let d: FixedArray<long> = [100, 200, 300];
+console.info(JSON.stringify(d)); // "[100,200,300]"
+```
+
+### stringify
+
+static stringify(d: FixedArray\<float>): String
+
+将FixedArray\<float>转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型               | 必填  | 说明           |
+| ----- | ------------------ | ---- | -------------- |
+| d     | FixedArray\<float> | 是   | float数组。 |
+
+**返回值：**
+
+| 类型   | 说明            |
+| ------ | -------------- |
+| String | 转换后的字符串。 |
+
+**示例：**
+
+```ts
+let d: FixedArray<float> = [1.1f, 2.2f, 3.3f];
+console.info(JSON.stringify(d)); // "[1.1,2.2,3.3]"
+```
+
+### stringify
+
+static stringify(d: FixedArray\<double>): String
+
+将FixedArray\<double>转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型                | 必填  | 说明            |
+| ----- | ------------------- | ---- | --------------- |
+| d     | FixedArray\<double> | 是   | double数组。 |
+
+**返回值：**
+
+| 类型   | 说明            |
+| ------ | -------------- |
+| String | 转换后的字符串。 |
+
+**示例：**
+
+```ts
+let d: FixedArray<double> = [1.1, 2.2, 3.3];
+console.info(JSON.stringify(d)); // "[1.1,2.2,3.3]"
+```
+
+### stringify
+
+static stringify(d: FixedArray\<boolean>): String
+
+将FixedArray\<boolean>转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型                 | 必填  | 说明             |
+| ----- | -------------------- | ---- | ---------------- |
+| d     | FixedArray\<boolean> | 是   | boolean数组。 |
+
+**返回值：**
+
+| 类型    | 说明           |
+| ------ | -------------- |
+| String | 转换后的字符串。 |
+
+**示例：**
+
+```ts
+let d: FixedArray<boolean> = [true, false, true];
+console.info(JSON.stringify(d)); // "[true,false,true]"
+```
+
+### stringify
+
+static stringify(d: Array\<Number>): String
+
+将Array\<Number>转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型            | 必填  | 说明            |
+| ----- | --------------- | ---- | --------------- |
+| d     | Array\<Number>  | 是   | Number数组。 |
+
+**返回值：**
+
+| 类型   | 说明            |
+| ------ | -------------- |
+| String | 转换后的字符串。 |
+
+**示例：**
+
+```ts
+let d: Array<Number> = [1.1, 2.2, 3.3];
+console.info(JSON.stringify(d)); // "[1.1,2.2,3.3]"
+```
+
+### stringify
+
+static stringify(d: ArrayLike\<Number>): String
+
+将ArrayLike\<Number>转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型                | 必填  | 说明            |
+| ----- | ------------------- | ---- | --------------- |
+| d     | ArrayLike\<Number>  | 是   | Number类数组对象。 |
+
+**返回值：**
+
+| 类型   | 说明            |
+| ------ | -------------- |
+| String | 转换后的字符串。 |
+
+**示例：**
+
+```ts
+let d: ArrayLike<Number> = Int8Array.of(1, 2, 3);
+console.info(JSON.stringify(d)); // '{"0":1,"1":2,"2":3}'
+```
+
+### stringify
+
+static stringify(obj: JsonReplacer): String
+
+将实现了`JsonReplacer`接口的对象转换为JSON字符串。先调用对象的`jsonReplacer`方法获取`Record<String, Any>`，再将其序列化。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| obj | [JsonReplacer](#jsonreplacer) | 是 | 实现了JsonReplacer接口的对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| String | JSON格式的字符串。 |
+
+**示例：**
+
+```ts
+class Point implements JsonReplacer {
+    x: int = 1;
+    y: int = 2;
+
+    jsonReplacer(): Record<String, Any> {
+        return { "x": this.x, "y": this.y };
+    }
+}
+
+const json = JSON.stringify(new Point());
+console.info(json); // '{"x":1,"y":2}'
+```
+
+### stringify
+
+static stringify(obj: Any): String
+
+将ArkTS-Sta对象、数组和基本数据类型等数据转换为字符串。传入`undefined`时返回空字符串；传入`Function`时返回空字符串；`float`和`double`为非有限值时序列化为`null`；检测到循环引用时抛出`TypeError`。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -777,22 +896,17 @@ class TestNode {
 }
 
 const nodeA = new TestNode('A');
-
-try {
-    const json = JSON.stringifyAnyObj(nodeA);
-    console.info(json); // {"value":"A"}
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+const json = JSON.stringify(nodeA);
+console.info(json); // '{"value":"A"}'
 ```
 
+### stringify
 
-### stringifyObjValue
-
-static stringifyObjValue(obj: Any, replacer: ((key: String, value: Any) => Any) | undefined | null, space?: String | Int): String
+static stringify(obj: Any, replacer: ((key: string, value: Any) => Any) | undefined | null, space?: string | int): string
 
 将ArkTS-Sta对象、数组和基本数据类型等数据转换成字符串，并添加条件过滤。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -800,13 +914,13 @@ static stringifyObjValue(obj: Any, replacer: ((key: String, value: Any) => Any) 
 | -------- | --------------------------- | --- | ------------------------- |
 | obj      | Any                         | 是  | 一个Any类型的对象。         |
 | replacer | function \|undefined \|null | 否  | 过滤方法，默认为undefined。 |
-| space    | String \| Int               | 否  | 格式化参数，默认为undefined。|
+| space    | string \| int               | 否  | 格式化参数，默认为undefined。|
 
 **返回值：**
 
-| 类型     | 说明    |
-| ------ | -------- |
-| String | 转换后的字符串。 |
+| 类型   | 说明            |
+| ------ | --------------- |
+| string | 转换后的字符串。 |
 
 **示例：**
 
@@ -819,9 +933,7 @@ class TestNode {
     }
 }
 
-const nodeA = new TestNode('A');
-
-function toStringReplacer(key: String, value: Any): Any {
+function toStringReplacer(key: string, value: Any): Any {
     if (key == "value") {
         return 'B';
     }
@@ -829,35 +941,32 @@ function toStringReplacer(key: String, value: Any): Any {
     return value;
 }
 
-try {
-    const json = JSON.stringifyObjValue(nodeA, toStringReplacer, 0);
-    console.info(json); // {"value":"B"}
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+const nodeA = new TestNode('A');
+const json = JSON.stringify(nodeA, toStringReplacer, 0);
+console.info(json); // '{"value":"B"}'
 ```
 
+### stringify
 
-### stringifyDoubleStringFixedArray
-
-static stringifyDoubleStringFixedArray(obj: Any, replacer: FixedArray\<Double | String>, space?: Int | String): String
+static stringify(obj: Any, replacer: FixedArray\<double | string>, space?: int | string): string
 
 将ArkTS-Sta对象、数组、基本数据类型等转换成字符串，并添加条件过滤。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名    | 类型                          | 必填  | 说明                     |
 | -------- | ----------------------------- | ---- | ------------------------- |
 | obj      | Any                           | 是   | 要转换的对象。              |
-| replacer | FixedArray\<Double \| String> | 是   | 过滤器。                   |
-| space    | String \| Int                 | 否   | 格式化缩进，默认为undefined。|
+| replacer | FixedArray\<double \| string> | 是   | 过滤器。                   |
+| space    | int \| string                 | 否   | 格式化缩进，默认为undefined。|
 
 **返回值：**
 
-| 类型    | 说明           |
-| ------ | -------------- |
-| String | 转换后的字符串。 |
+| 类型   | 说明            |
+| ------ | --------------- |
+| string | 转换后的字符串。 |
 
 **示例：**
 
@@ -872,84 +981,32 @@ class TestNode {
 }
 
 const nodeA = new TestNode('A');
-
-let arr: FixedArray<Double | String> = ['name'];
-
-try {
-    const json = JSON.stringifyDoubleStringFixedArray(nodeA, arr, 0);
-    console.info(json); // {"name":"B"}
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let arr: FixedArray<double | string> = ['name'];
+const json = JSON.stringify(nodeA, arr, 0);
+console.info(json); // '{"name":"B"}'
 ```
 
+### stringify
 
-### stringifyDoubleStringArray
-
-static stringifyDoubleStringArray(obj: Any, replacer: Array\<Double | String>, space?: Int | String): String
+static stringify(obj: Any, replacer: Array\<double | string> | Array\<string> | Array\<double>, space?: int | string): string
 
 将ArkTS-Sta对象、数组和基本数据类型等转换成字符串，并添加条件过滤。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名    | 类型                     | 必填  | 说明                       |
 | -------- | ------------------------ | ---- | -------------------------- |
-| obj      | Any                      | 是   | 要转换的对象。              |
-| replacer | Array\<Double \| String> | 是   | 过滤器。                    |
-| space    | String \| Int            | 否   | 格式化缩进，默认为undefined。 |
+| obj      | Any                                                | 是   | 要转换的对象。              |
+| replacer | Array\<double \| string> \| Array\<string> \| Array\<double> | 是   | 过滤器。                    |
+| space    | int \| string                                      | 否   | 格式化缩进，默认为undefined。 |
 
 **返回值：**
 
 | 类型   | 说明            |
-| ------ | -------------- |
-| String | 转换后的字符串。 |
-
-**示例：**
-
-```ts
-class TestNode {
-    value: String;
-    name: String = 'B';
-
-    constructor(value: String) {
-        this.value = value;
-    }
-}
-
-const nodeA = new TestNode('A');
-
-let arr: Array<Double | String> = ['name'];
-
-try {
-    const json = JSON.stringifyDoubleStringArray(nodeA, arr, 0);
-    console.info(json); // {"name":"B"}
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-### stringifyStringArray
-
-static stringifyStringArray(obj: Any, replacer: Array\<String>, space?: Int | String): String
-
-将ArkTS-Sta对象、数组、基本数据类型等转换成字符串，并添加条件过滤。
-
-**参数：**
-
-| 参数名    | 类型           | 必填  | 说明                      |
-| -------- | -------------- | ---- | -------------------------- |
-| obj      | Any            | 是   | 要转换的对象。              |
-| replacer | Array\<String> | 是   | 过滤器。                    |
-| space    | String \| Int  | 否   | 格式化缩进，默认为undefined。 |
-
-**返回值：**
-
-| 类型    | 说明            |
 | ------ | --------------- |
-| String | 转换后的字符串。 |
+| string | 转换后的字符串。 |
 
 **示例：**
 
@@ -964,367 +1021,32 @@ class TestNode {
 }
 
 const nodeA = new TestNode('A');
-
-let arr: Array<String> = ['name'];
-
-try {
-    const json = JSON.stringifyStringArray(nodeA, arr, 0);
-    console.info(json); // {"name":"B"}
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let arr: Array<double | string> = ['name'];
+const json = JSON.stringify(nodeA, arr, 0);
+console.info(json); // '{"name":"B"}'
 ```
-
-
-### stringifyByteFixedArray
-
-static stringifyByteFixedArray(d: FixedArray\<Byte>): String
-
-将FixedArray\<Byte>转换成字符串。
-
-**参数：**
-
-| 参数名 | 类型               | 必填  | 说明          |
-| ----- | ------------------ | ----- | ------------- |
-| d     | FixedArray\<Byte>  | 是    | Byte数组对象。 |
-
-**返回值：**
-
-| 类型     | 说明       |
-| ------ | -------- |
-| String | 转换后的字符串。 |
-
-**示例：**
-
-```ts
-let d: FixedArray<Byte> = [1, 2, 3];
-
-try {
-    const json = JSON.stringifyByteFixedArray(d);
-    console.info(json); // [1,2,3]
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-### stringifyShortFixedArray
-
-static stringifyShortFixedArray(d: FixedArray\<Short>): String
-
-将FixedArray\<Short>转换成字符串。
-
-**参数：**
-
-| 参数名 | 类型               | 必填  | 说明           |
-| ----- | -----------------  | ---- | -------------- |
-| d    | FixedArray\<Short>  | 是   | Short数组对象。 |
-
-**返回值：**
-
-| 类型   | 说明            |
-| ------ | -------------- |
-| String | 转换后的字符串。 |
-
-**示例：**
-
-```ts
-let d: FixedArray<Short> = [1, 2, 3];
-
-try {
-    const json = JSON.stringifyShortFixedArray(d);
-    console.info(json); // [1,2,3]
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-### stringifyIntFixedArray
-
-static stringifyIntFixedArray(d: FixedArray\<Int>): String
-
-将FixedArray\<Int>转换成字符串。
-
-**参数：**
-
-| 参数名 | 类型             | 必填  | 说明         |
-| ----- | -----------------| ---- | ------------ |
-| d     | FixedArray\<Int> | 是   | Int数组对象。 |
-
-**返回值：**
-
-| 类型    | 说明           |
-| ------ | -------------- |
-| String | 转换后的字符串。 |
-
-**示例：**
-
-```ts
-let d: FixedArray<Int> = [1, 2, 3];
-
-try {
-    const json = JSON.stringifyIntFixedArray(d);
-    console.info(json); // [1,2,3]
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-### stringifyLongFixedArray
-
-static stringifyLongFixedArray(d: FixedArray\<Long>): String
-
-将FixedArray\<Long>转换成字符串。
-
-**参数：**
-
-| 参数名 | 类型              | 必填  | 说明          |
-| ----- | ----------------- | ---- | ------------- |
-| d     | FixedArray\<Long> | 是   | Long数组对象。 |
-
-**返回值：**
-
-| 类型   | 说明            |
-| ------ | -------------- |
-| String | 转换后的字符串。 |
-
-**示例：**
-
-```ts
-let d: FixedArray<Long> = [1, 2, 3];
-
-try {
-    const json = JSON.stringifyLongFixedArray(d);
-    console.info(json); // [1,2,3]
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-### stringifyFloatFixedArray
-
-static stringifyFloatFixedArray(d: FixedArray\<Float>): String
-
-将FixedArray\<Float>转换成字符串。
-
-**参数：**
-
-| 参数名 | 类型               | 必填  | 说明           |
-| ----- | ------------------ | ---- | -------------- |
-| d     | FixedArray\<Float> | 是   | Float数组对象。 |
-
-**返回值：**
-
-| 类型   | 说明            |
-| ------ | -------------- |
-| String | 转换后的字符串。 |
-
-**示例：**
-
-```ts
-let d: FixedArray<Float> = [1.1f, 2.2f, 3.3f];
-
-try {
-    const json = JSON.stringifyFloatFixedArray(d);
-    console.info(json); // [1.1,2.2,3.3]
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-### stringifyDoubleFixedArray
-
-static stringifyDoubleFixedArray(d: FixedArray\<Double>): String
-
-将FixedArray\<Double>转换成字符串。
-
-**参数：**
-
-| 参数名 | 类型                | 必填  | 说明            |
-| ----- | ------------------- | ---- | --------------- |
-| d     | FixedArray\<Double> | 是   | Double数组对象。 |
-
-**返回值：**
-
-| 类型   | 说明            |
-| ------ | -------------- |
-| String | 转换后的字符串。 |
-
-**示例：**
-
-```ts
-let d: FixedArray<Double> = [1.1, 2.2, 3.3];
-
-try {
-    const json = JSON.stringifyDoubleFixedArray(d);
-    console.info(json); // [1.1,2.2,3.3]
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-### stringifyCharFixedArray
-
-static stringifyCharFixedArray(d: FixedArray\<Char>): String
-
-将FixedArray\<Char>转换成字符串。
-
-**参数：**
-
-| 参数名 | 类型              | 必填  | 说明          |
-| ----- | ----------------- | ---- | ------------- |
-| d     | FixedArray\<Char> | 是   | Char数组对象。 |
-
-**返回值：**
-
-| 类型    | 说明           |
-| ------ | -------------- |
-| String | 转换后的字符串。 |
-
-**示例：**
-
-```ts
-let d: FixedArray<Char> = [c'A', c'B', c'C'];
-
-try {
-    const json = JSON.stringifyCharFixedArray(d);
-    console.info(json); // ["A","B","C"]
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-### stringifyBooleanFixedArray
-
-static stringifyBooleanFixedArray(d: FixedArray\<Boolean>): String
-
-将FixedArray\<Boolean>转换成字符串。
-
-**参数：**
-
-| 参数名 | 类型                 | 必填  | 说明             |
-| ----- | -------------------- | ---- | ---------------- |
-| d     | FixedArray\<Boolean> | 是   | Boolean数组对象。 |
-
-**返回值：**
-
-| 类型    | 说明           |
-| ------ | -------------- |
-| String | 转换后的字符串。 |
-
-
-**示例：**
-
-```ts
-let d: FixedArray<Boolean> = [true, false, true];
-
-try {
-    const json = JSON.stringifyBooleanFixedArray(d);
-    console.info(json); // [true,false,true]
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-### stringifyNumberArray
-
-static stringifyNumberArray(d: Array\<Number>): String
-
-将FixedArray\<Number>转换成字符串。
-
-**参数：**
-
-| 参数名 | 类型                | 必填  | 说明            |
-| ----- | ------------------- | ---- | --------------- |
-| d     | FixedArray\<Number> | 是   | Number数组对象。 |
-
-**返回值：**
-
-| 类型   | 说明            |
-| ------ | -------------- |
-| String | 转换后的字符串。 |
-
-**示例：**
-
-```ts
-let d: Array<Number> = [1.1, 2.2, 3.3];
-
-try {
-    const json = JSON.stringifyNumberArray(d);
-    console.info(json); // [1.1,2.2,3.3]
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-
-### stringifyNumberArrayLike
-
-static stringifyNumberArrayLike(d: ArrayLike\<Number>): String
-
-将ArrayLike\<Number>转换成字符串。
-
-**参数：**
-
-| 参数名 | 类型                | 必填  | 说明            |
-| ----- | ------------------- | ---- | --------------- |
-| d     | ArrayLike\<Number>  | 是   | Number数组对象。 |
-
-**返回值：**
-
-| 类型   | 说明            |
-| ------ | -------------- |
-| String | 转换后的字符串。 |
-
-**示例：**
-
-```ts
-let d: ArrayLike<Number> = [1.1, 2.2, 3.3];
-
-try {
-    const json = JSON.stringifyNumberArrayLike(d);
-    console.info(json); // {"0":1.1,"1":2.2,"2":3.3}
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
 
 ### stringifyJsonElement
 
-static stringifyJsonElement(elem: jsonx.JsonElementSerializable): String
+static stringifyJsonElement(elem: jsonx.JsonElementSerializable): string
 
 将jsonx.JsonElementSerializable对象转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
 | 参数名 | 类型                                                 | 必填  | 说明                         |
 | ----- | ---------------------------------------------------- | ----- | ---------------------------- |
-| d     | jsonx.[JsonElementSerializable](arkts-sta-jsonx.md#jsonelementserializable) | 是    | JsonElementSerializable对象。 |
+| d     | [jsonx.JsonElementSerializable](arkts-sta-jsonx.md#jsonelementserializable) | 是    | JsonElementSerializable对象。 |
 
 **返回值：**
 
 | 类型   | 说明            |
 | ------ | -------------- |
-| String | 转换后的字符串。 |
+| string | 转换后的字符串。 |
 
 **示例：**
 
@@ -1335,36 +1057,34 @@ class JsonElementClass implements jsonx.JsonElementSerializable {
     }
 }
 
-try {
-    let d: JsonElementClass = new JsonElementClass();
-    const json = JSON.stringifyJsonElement(d);
-    console.info(json); // "test"
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let d: JsonElementClass = new JsonElementClass();
+const json = JSON.stringifyJsonElement(d);
+console.info(json); // '"test"'
 ```
-
 
 ### stringifyJsonElement
 
-static stringifyJsonElement(elem: jsonx.JsonElementSerializable, replacer?: (Double | String)[], space?: Int | String): String
+static stringifyJsonElement(elem: jsonx.JsonElementSerializable, replacer?: (double | string)[], space?: int | string): string
 
 将jsonx.JsonElementSerializable对象转换成字符串，支持传入过滤条件和格式化参数。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
 | 参数名    | 类型                                                 | 必填  | 说明                                   |
 | -------- | ---------------------------------------------------- | ---- | --------------------------------------- |
-| d        | jsonx.[JsonElementSerializable](arkts-sta-jsonx.md#jsonelementserializable) | 是   | JsonElementSerializable对象。            |
-| replacer | Array\<Double \| String>                             | 否   | Double\|String类型的数组，默认为undefined。|
-| space    | Int \| String                                        | 否   | Int\|String类型的对象，默认为undefined。   |
+| d        | [jsonx.JsonElementSerializable](arkts-sta-jsonx.md#jsonelementserializable) | 是   | JsonElementSerializable对象。            |
+| replacer | (double \| string)[]                                 | 否   | double\|string类型的数组，默认为undefined。|
+| space    | int \| string                                        | 否   | int\|string类型的对象，默认为undefined。   |
 
 **返回值：**
 
 | 类型   | 说明            |
 | ------ | -------------- |
-| String | 转换后的字符串。 |
+| string | 转换后的字符串。 |
 
 **示例：**
 
@@ -1375,88 +1095,86 @@ class JsonElementClass implements jsonx.JsonElementSerializable {
     }
 }
 
-try {
-    let d: JsonElementClass = new JsonElementClass();
-    const json = JSON.stringifyJsonElement(d, undefined, 0);
-    console.info(json); // "test"
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let d: JsonElementClass = new JsonElementClass();
+const json = JSON.stringifyJsonElement(d, undefined, 0);
+console.info(json); // '"test"'
 ```
-
 
 ### stringifyJsonElement
 
-static stringifyJsonElement(elem: jsonx.JsonElement): String
+static stringifyJsonElement(elem: jsonx.JsonElement): string
 
 将jsonx.JsonElement对象转换成字符串。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填  | 说明            |
 | ----- | ------------------------------------------ | ---- | ---------------- |
-| d     | jsonx.[JsonElement](arkts-sta-jsonx.md#jsonelement)   | 是   | JsonElement对象。 |
+| d     | [jsonx.JsonElement](arkts-sta-jsonx.md#jsonelement)   | 是   | JsonElement对象。 |
 
 **返回值：**
 
 | 类型   | 说明            |
 | ------ | -------------- |
-| String | 转换后的字符串。 |
+| string | 转换后的字符串。 |
 
 **示例：**
 
 ```ts
-try {
-    let d: jsonx.JsonElement = jsonx.JsonElement.createString("test");
-    const json = JSON.stringifyJsonElement(d);
-    console.info(json); // "test"
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let d: jsonx.JsonElement = jsonx.JsonElement.createString("test");
+const json = JSON.stringifyJsonElement(d);
+console.info(json); // '"test"'
 ```
-
 
 ### stringifyJsonElement
 
-static stringifyJsonElement(elem: jsonx.JsonElement, replacer?: (Double | String)[], space?: Int | String): String
+static stringifyJsonElement(elem: jsonx.JsonElement, replacer?: (double | string)[], space?: int | string): string
 
 将jsonx.JsonElement对象转换成字符串，支持过滤条件和格式化参数。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
 | 参数名    | 类型                                            | 必填  | 说明                                    |
 | -------- | ----------------------------------------------- | ---- | ---------------------------------------- |
-| d        | jsonx.[JsonElement](arkts-sta-jsonx.md#jsonelement)        | 是   | JsonElement对象。                         |
-| replacer | Array\<Double \| String>                        | 否   | Double\|String类型的数组，默认为undefined。|
-| space    | Int \| String                                   | 否   | Int\|String类型的对象，默认为undefined。   |
+| d        | [jsonx.JsonElement](arkts-sta-jsonx.md#jsonelement)        | 是   | JsonElement对象。                         |
+| replacer | (double \| string)[]                            | 否   | double\|string类型的数组，默认为undefined。|
+| space    | int \| string                                   | 否   | int\|string类型的对象，默认为undefined。   |
 
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | --------------- |
-| String | 转换后的字符串。 |
+| string | 转换后的字符串。 |
 
 **示例：**
 
 ```ts
-try {
-    let d: jsonx.JsonElement = jsonx.JsonElement.createString("test");
-    const json = JSON.stringifyJsonElement(d, undefined, 0);
-    console.info(json); // "test"
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
-```
+const map = new Map<string, jsonx.JsonElement>();
+map.set("name", jsonx.JsonElement.createString("Tom"));
+map.set("age", jsonx.JsonElement.createInteger(30));
+const objectElem = jsonx.JsonElement.createObject(map);
 
+const json = JSON.stringifyJsonElement(objectElem, undefined, 0);
+console.info(json); // '{"name":"Tom","age":30}'
+```
 
 ### stringifyWithGetters
 
 static stringifyWithGetters(obj: Any): String
 
 将ArkTS-Sta对象转换成JSON字符串，同时调用使用`@JSONStringifyGetter`注解标记的`get`方法，并将其返回值包含在输出中。`get`方法名作为JSON的key，返回值作为对应的value。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 > **注意：** 
 >
@@ -1503,22 +1221,19 @@ class Person {
 }
 
 const p = new Person("John", "Doe");
-
-try {
-    const json = JSON.stringifyWithGetters(p);
-    console.info(json); // {"firstName":"John","lastName":"Doe","fullName":"John Doe"}
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+const json = JSON.stringifyWithGetters(p);
+console.info(json); // '{"fullName":"John Doe","lastName":"Doe","firstName":"John"}'
 ```
-
 
 ### stringifyWithGetters
 
 static stringifyWithGetters(obj: Any, replacer: ((key: string, value: Any) => Any) | undefined | null, space?: int | string): string
 
 将ArkTS-Sta对象转换成JSON字符串，同时调用`@JSONStringifyGetter`注解标记的`get`方法，支持自定义过滤器和格式化参数。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1562,8 +1277,6 @@ class Person {
     }
 }
 
-const p = new Person("John", "Doe");
-
 function replacer(key: string, value: Any): Any {
     if (key == "fullName") {
         return undefined;
@@ -1571,25 +1284,25 @@ function replacer(key: string, value: Any): Any {
     return value;
 }
 
-try {
-    const json = JSON.stringifyWithGetters(p, replacer, 2);
-    console.info(json); 
-    // {
-    //   "firstName": "John"
-    //   "lastName": "Doe",
-    // }
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+const p = new Person("John", "Doe");
+const json = JSON.stringifyWithGetters(p, replacer, 2);
+// replacer过滤了fullName，space=2表示缩进2个空格
+// {
+//   "lastName": "Doe",
+//   "firstName": "John"
+// }
+console.info(json);
 ```
-
 
 ### stringifyWithGetters
 
 static stringifyWithGetters(obj: Any, replacer: Array\<double | string> | Array\<string> | Array\<double>, space?: int | string): string
 
 将ArkTS-Sta对象转换成JSON字符串，同时调用`@JSONStringifyGetter`注解标记的`get`方法，支持数组过滤器和格式化参数。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1634,37 +1347,31 @@ class Person {
 }
 
 const p = new Person("John", "Doe");
-
 let arr: Array<string> = ["firstName", "fullName"];
-
-try {
-    const json = JSON.stringifyWithGetters(p, arr, 0);
-    console.info(json); // {"firstName":"John","fullName":"John Doe"}
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+const json = JSON.stringifyWithGetters(p, arr, 0);
+console.info(json); // '{"fullName":"John Doe","firstName":"John"}'
 ```
-
 
 ### parse
 
-static parse\<T>(text: String, type: Type):Any
+static parse\<T = Any>(json: string, type: Class): T | null | undefined
 
-将JSON字符串转换成指定类型的对象。
+将JSON字符串转换成指定类型的对象。通过Class传入目标类型。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名  | 类型   | 必填  | 说明             |
 | ------ | ------ | ---- | ----------------- |
-| text   | String | 是   | JSON格式的字符串。 |
-| type   | Type   | 是   | 目标类型。         |
+| json   | string | 是   | JSON格式的字符串。 |
+| type   | Class  | 是   | 目标类型。         |
 
 **返回值：**
 
 | 类型  | 说明                                                   |
 | ----- | ----------------------------------------------------- |
-| Any   | 返回符合条件的具体对象，开发者可以访问其成员变量和成员函数。|
+| T \| null \| undefined  | 返回符合条件的具体对象，开发者可以访问其成员变量和成员函数。|
 
 **示例：**
 
@@ -1674,37 +1381,33 @@ class A {
 }
 
 let text: String = `{\"intValue\":12}`;
-let typ: Type = Type.of(new A());
-try {
-    let result = JSON.parse<A>(text, typ) as A;
-    console.info(result.intValue); // 12
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let typ: Class = Class.from<A>();
+let result = JSON.parse<A>(text, typ) as A;
+console.info(result.intValue); // 12
 ```
-
 
 ### parse
 
-static parse\<T>(text: String, reviver: ((key: String, value: Any) => Any) | undefined, type: Type, options?: jsonx.ParseOptions): Any
+static parse\<T>(json: string, reviver: ((key: string, value: Any) => Any) | undefined, type: Class, options?: jsonx.ParseOptions): T | null | undefined
 
-将JSON字符串转换成符合条件的具体对象，支持自定义过滤器和解析参数。
+将JSON字符串转换成符合条件的具体对象，支持自定义过滤器和解析参数。通过Class传入目标类型。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名   | 类型                                       | 必填  | 说明                       |
 | ------- | ------------------------------------------ | ---- | --------------------------- |
-| text    | String                                     | 是   | JSON格式的字符串。            |
+| json    | string                                     | 是   | JSON格式的字符串。            |
 | reviver | function                                   | 是   | 过滤器。                      |
-| type    | Type                                       | 是   | 目标类型。                    |
-| options | jsonx.[ParseOptions](arkts-sta-jsonx.md#parseoptions)  | 否   | 解析操作参数，默认为undefined。|
+| type    | Class                                      | 是   | 目标类型。                    |
+| options | [jsonx.ParseOptions](arkts-sta-jsonx.md#parseoptions)  | 否   | 解析操作参数，默认为undefined。|
 
 **返回值：**
 
 | 类型  | 说明                                                 |
 | ---- | ----------------------------------------------------- |
-| Any  | 返回符合条件的具体对象，开发者可以访问其成员变量和成员函数。|
+| T \| null \| undefined  | 返回符合条件的具体对象，开发者可以访问其成员变量和成员函数。|
 
 **示例：**
 
@@ -1713,24 +1416,22 @@ class A {
     intValue: Int = 0;
 }
 
-let text: String = `{\"intValue\":12}`;
-let typ: Type = Type.of(new A());
+let text: string = `{\"intValue\":12}`;
+let typ: Class = Class.from<A>();
 let opt: jsonx.ParseOptions = {bigIntMode: jsonx.BigIntMode.DEFAULT} as jsonx.ParseOptions;
-try {
-    let result = JSON.parse<A>(text, undefined, typ, opt) as A;
-    console.info(result.intValue); // 12
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let result = JSON.parse<A>(text, undefined, typ, opt) as A;
+console.info(result.intValue); // 12
 ```
-
 
 ### parseUpdate
 
 static parseUpdate\<T>(json: string, instance: T): T
 
 解析JSON字符串并将结果填充到已有实例的字段中。与parse\<T>(json, type)不同，此方法不要求目标类具有默认构造函数。JSON中不存在的key对应的字段保留实例上的当前值（合并语义）。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **数组字段处理：**
 
@@ -1788,7 +1489,7 @@ cfg.debug = true;
 
 JSON.parseUpdate<Config>('{"host":"example.com"}', cfg);
 
-console.info(cfg.host);  // example.com
+console.info(cfg.host);  // "example.com"
 console.info(cfg.port);  // 9090（保留原值）
 console.info(cfg.debug); // true（保留原值）
 ```
@@ -1811,7 +1512,7 @@ class Widget {
 const w = new Widget();
 JSON.parseUpdate<Widget>('{"name":"button","size":{"width":100,"height":50}}', w);
 
-console.info(w.name);        // button
+console.info(w.name);        // "button"
 console.info(w.size.width);  // 100
 console.info(w.size.height); // 50
 ```
@@ -1844,19 +1545,22 @@ emp.dept.address.zip = "80331";
 
 JSON.parseUpdate<Employee>('{"dept":{"name":"Engineering"}}', emp);
 
-console.info(emp.name);              // Bob（保留原值）
+console.info(emp.name);              // "Bob"（保留原值）
 console.info(emp.age);               // 40（保留原值）
-console.info(emp.dept.name);         // Engineering
-console.info(emp.dept.address.city); // Munich（保留原值）
-console.info(emp.dept.address.zip);  // 80331（保留原值）
+console.info(emp.dept.name);         // "Engineering"
+console.info(emp.dept.address.city); // "Munich"（保留原值）
+console.info(emp.dept.address.zip);  // "80331"（保留原值）
 ```
-
 
 ### parseUpdate
 
 static parseUpdate\<T>(json: string, reviver: ((key: string, value: Any) => Any) | undefined, instance: T, options?: jsonx.ParseOptions): T
 
 解析JSON字符串并将结果填充到已有实例的字段中，支持可选的reviver函数和解析参数。与parse\<T>(json, type)不同，此方法不要求目标类具有默认构造函数。JSON中不存在的key对应的字段保留实例上的当前值（合并语义）。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1865,7 +1569,7 @@ static parseUpdate\<T>(json: string, reviver: ((key: string, value: Any) => Any)
 | json     | string                                    | 是   | JSON格式的字符串。           |
 | reviver  | function \| undefined                     | 是   | 自定义值转换函数，或undefined。|
 | instance | T                                         | 是   | 要填充字段的已有实例对象。     |
-| options  | jsonx.[ParseOptions](arkts-sta-jsonx.md#parseoptions) | 否   | 解析操作参数，默认为undefined。|
+| options  | [jsonx.ParseOptions](arkts-sta-jsonx.md#parseoptions) | 否   | 解析操作参数，默认为undefined。|
 
 **返回值：**
 
@@ -1930,18 +1634,19 @@ JSON.parseUpdate<Car>(
     '{"brand":"BMW","engine":{"model":"V8"},"year":2024}', reviver, car
 );
 
-console.info(car.brand);        // BMW
+console.info(car.brand);        // "BMW"
 console.info(car.year);         // 2024
-console.info(car.engine.model); // V8
+console.info(car.engine.model); // "V8"
 console.info(car.engine === engine); // true（引用保持不变）
 ```
-
 
 ### parseJsonElement
 
 static parseJsonElement(text: string, options?: jsonx.ParseOptions): jsonx.JsonElement
 
 将json字符串转换成JsonElement类型的实例。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -1954,52 +1659,53 @@ static parseJsonElement(text: string, options?: jsonx.ParseOptions): jsonx.JsonE
 
 | 类型                                     | 说明                             |
 | ---------------------------------------- | --------------------------------- |
-| jsonx.[JsonElement](arkts-sta-jsonx.md#jsonelement) | JsonElement对象，支持JSON相关操作。 |
+| [jsonx.JsonElement](arkts-sta-jsonx.md#jsonelement) | JsonElement对象，支持JSON相关操作。 |
 
 **示例：**
 
 ```ts
-let text: String = `{\"numberValue\":123456}` 
-let opt: jsonx.ParseOptions = {bigIntMode: jsonx.BigIntMode.ALWAYS_PARSE_AS_BIGINT} as jsonx.ParseOptions 
-let result: jsonx.JsonElement = JSON.parseJsonElement(text, opt)
-console.info(result.getBigInt("numberValue")) // 123456
+let text: String = `{\"numberValue\":123456}`;
+let opt: jsonx.ParseOptions = {bigIntMode: jsonx.BigIntMode.ALWAYS_PARSE_AS_BIGINT} as jsonx.ParseOptions;
+let result: jsonx.JsonElement = JSON.parseJsonElement(text, opt);
+console.info(result.getBigInt("numberValue")); // 123456
 try {
-    result.getLong("numberValue")
+    result.getLong("numberValue");
 } catch (error) {
     const err: Error = error as Error;
-    console.info(`${err.message}`);  // Expected long, but element stores different value type.
+    console.info(`${err.message}`); // Expected long, but element stores different value type. 
 }
 
-text = `{\"numberValue\":9223372036854775807}`
-opt =  { bigIntMode: jsonx.BigIntMode.PARSE_AS_BIGINT } as jsonx.ParseOptions 
-result = JSON.parseJsonElement(text, opt)
-console.info(result.getLong("numberValue")) // 9223372036854775807
+text = `{\"numberValue\":9223372036854775807}`;
+opt =  { bigIntMode: jsonx.BigIntMode.PARSE_AS_BIGINT } as jsonx.ParseOptions;
+result = JSON.parseJsonElement(text, opt);
+console.info(result.getLong("numberValue")); // 9223372036854775807
 
-text = `{\"numberValue\":9223372036854775808}`
-result = JSON.parseJsonElement(text, opt)
-console.info(result.getBigInt("numberValue")) // 9223372036854775808
+text = `{\"numberValue\":9223372036854775808}`;
+result = JSON.parseJsonElement(text, opt);
+console.info(result.getBigInt("numberValue")); // 9223372036854775808
 try {
-    result.getLong("numberValue")
+    result.getLong("numberValue");
 } catch (error) {
     const err: Error = error as Error;
-    console.info(`${err.message}`);  // Expected long, but element stores different value type.
+    console.info(`${err.message}`); // Expected long, but element stores different value type. 
 }
 
-opt =  { bigIntMode: jsonx.BigIntMode.DEFAULT } as jsonx.ParseOptions 
+opt =  { bigIntMode: jsonx.BigIntMode.DEFAULT } as jsonx.ParseOptions;
 try {
-    result = JSON.parseJsonElement(text, opt)
+    result = JSON.parseJsonElement(text, opt);
 } catch (error) {
     const err: Error = error as Error;
-    console.info(`${err.message}`); // Value exceeds integer limits.
+    console.info(`${err.message}`); // Value exceeds integer limits
 }
 ```
-
 
 ### parseJsonElement
 
 static parseJsonElement(text: string, reviver: (key: string, value: jsonx.JsonElement) => jsonx.JsonElement, options?: jsonx.ParseOptions): jsonx.JsonElement
 
 将JSON字符串转换成JsonElement类型的实例，支持自定义过滤方法。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -2013,7 +1719,7 @@ static parseJsonElement(text: string, reviver: (key: string, value: jsonx.JsonEl
 
 | 类型                                      | 说明                             |
 | ----------------------------------------- | --------------------------------- |
-| jsonx.[JsonElement](arkts-sta-jsonx.md#jsonelement)  | JsonElement对象，支持JSON相关操作。 |
+| [jsonx.JsonElement](arkts-sta-jsonx.md#jsonelement)  | JsonElement对象，支持JSON相关操作。 |
 
 **示例：**
 
@@ -2022,90 +1728,69 @@ const reviver = (key: string, value: jsonx.JsonElement): jsonx.JsonElement => {
     return value;
 };
 
-let text: String = `{\"numberValue\":123456}` 
-let opt: jsonx.ParseOptions = { bigIntMode: jsonx.BigIntMode.ALWAYS_PARSE_AS_BIGINT } as jsonx.ParseOptions 
-let result: jsonx.JsonElement = JSON.parseJsonElement(text, reviver, opt)
-console.info(result.getBigInt("numberValue")) // 123456
+let text: String = `{\"numberValue\":123456}`;
+let opt: jsonx.ParseOptions = { bigIntMode: jsonx.BigIntMode.ALWAYS_PARSE_AS_BIGINT } as jsonx.ParseOptions;
+let result: jsonx.JsonElement = JSON.parseJsonElement(text, reviver, opt);
+console.info(result.getBigInt("numberValue")); // 123456
 try {
-    result.getLong("numberValue")
+    result.getLong("numberValue");
 } catch (error) {
     const err: Error = error as Error;
     console.info(`${err.message}`); // Expected long, but element stores different value type. 
 }
 
-text = `{\"numberValue\":-9223372036854775807}`
-opt =  { bigIntMode: jsonx.BigIntMode.PARSE_AS_BIGINT } as jsonx.ParseOptions 
-result = JSON.parseJsonElement(text, reviver, opt)
-console.info(result.getLong("numberValue")) // -9223372036854775807
+text = `{\"numberValue\":-9223372036854775807}`;
+opt =  { bigIntMode: jsonx.BigIntMode.PARSE_AS_BIGINT } as jsonx.ParseOptions;
+result = JSON.parseJsonElement(text, reviver, opt);
+console.info(result.getLong("numberValue")); // -9223372036854775807
 
-text = `{\"numberValue\":9223372036854775808}`
-result = JSON.parseJsonElement(text, reviver, opt)
-console.info(result.getBigInt("numberValue")) // 9223372036854775808
+text = `{\"numberValue\":9223372036854775808}`;
+result = JSON.parseJsonElement(text, reviver, opt);
+console.info(result.getBigInt("numberValue")); // 9223372036854775808
 try {
-    result.getLong("numberValue")
+    result.getLong("numberValue");
 } catch (error) {
     const err: Error = error as Error;
     console.info(`${err.message}`); // Expected long, but element stores different value type. 
 }
 
-opt =  { bigIntMode: jsonx.BigIntMode.DEFAULT } as jsonx.ParseOptions 
+opt =  { bigIntMode: jsonx.BigIntMode.DEFAULT } as jsonx.ParseOptions;
 try {
-    result = JSON.parseJsonElement(text, reviver, opt)
+    result = JSON.parseJsonElement(text, reviver, opt);
 } catch (error) {
     const err: Error = error as Error;
-    console.info(`${err.message}`); // Value exceeds integer limits.
+    console.info(`${err.message}`); // Value exceeds integer limits
 }
 ```
 
+### parseJsonRecord
 
-## JSONParser
+static parseJsonRecord(text: string, options?: jsonx.ParseOptions): Record\<string, JsonRecordType>
 
-JSON反序列化器，作用是将一个JSON字符串转换为JSONValue对象。
+将JSON对象字符串解析为`Record<string, JsonRecordType>`。JSON根节点必须为对象（以`{`开头）。
 
-### constructor
-constructor(json: String)
+**系统能力：** SystemCapability.Utils.Lang
 
-JSONParser的构造函数。
-
-**参数：**
-
-| 参数名  | 类型   | 必填  | 说明            |
-| ------ | ------ | ---- | ---------------- |
-| json   | String | 是   | JSON格式的字符串。 |
-
-**示例：**
-
-```ts
-let parser: JSONParser = new JSONParser("{\"intValue\": 1}");
-```
-
-### parse
-
-static parse(json: String): JSONValue
-
-将JSON格式的字符串转换成JSONValue对象。
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
-| 参数名  | 类型   | 必填  | 说明             |
-| ------ | ------ | ---- | ---------------- |
-| json   | String | 是   | JSON格式的字符串。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | JSON格式的字符串。 |
+| options | [jsonx.ParseOptions](arkts-sta-jsonx.md#parseoptions) | 否 | 解析操作参数，默认为undefined。 |
 
 **返回值：**
 
-| 类型      | 说明                                                       |
-| --------- | ---------------------------------------------------------  |
-| [JSONValue](#jsonvalue) | JSONValue类型的对象，可以转换成具体的JSON对象。 |
+| 类型 | 说明 |
+| --- | --- |
+| Record\<string, [JsonRecordType](#jsonrecordtype)> | 解析得到的Record对象。 |
 
 **示例：**
 
 ```ts
-let json: String = `{\"intValue\":12}`;
-try {
-    let jsonObj: JSONObject = JSONParser.parse(json) as JSONObject;
-    console.info(jsonObj); // {intValue:12}
-} catch (error) {
-    const err: Error = error as Error;
-    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
-}
+let text = '{"name":"ArkTS","version":24}';
+let record = JSON.parseJsonRecord(text);
+console.info(record["name"]); // "ArkTS"
+console.info(record["version"]); // 24
 ```

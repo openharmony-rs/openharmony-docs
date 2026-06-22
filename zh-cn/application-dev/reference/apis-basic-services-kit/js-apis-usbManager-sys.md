@@ -44,7 +44,7 @@ usbFunctionsFromString(funcs: string): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 转化后的数字掩码。 |
+| number | 功能列表对应的数字掩码。 |
 
 **错误码：**
 
@@ -80,7 +80,7 @@ usbFunctionsToString(funcs: FunctionType): string
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | 是   | USB功能数字掩码。 |
+| funcs  | [FunctionType](#functiontype) | 是   | 功能列表对应的数字掩码。 |
 
 **返回值：**
 
@@ -122,7 +122,7 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | 是   | USB功能数字掩码。 |
+| funcs  | [FunctionType](#functiontype) | 是   | 功能列表对应的数字掩码。 |
 
 **返回值：**
 
@@ -405,7 +405,7 @@ ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| ArkTS-Dyn: number<br> ArkTS-Sta: int | 转化后的数字掩码。 |
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 功能列表对应的数字掩码。 |
 
 **错误码：**
 
@@ -447,7 +447,7 @@ ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| 是   | USB功能数字掩码。 |
+| funcs  | ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| 是   | 功能列表对应的数字掩码。 |
 
 **返回值：**
 
@@ -499,7 +499,7 @@ ArkTS-Sta: setDeviceFunctions(funcs: int): Promise\<void\>
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| 是   | USB功能数字掩码。 |
+| funcs  | ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| 是   | 功能列表对应的数字掩码。 |
 
 **返回值：**
 
@@ -558,7 +558,7 @@ ArkTS-Sta: getDeviceFunctions(): int
 
 | 类型                          | 说明                              |
 | ----------------------------- | --------------------------------- |
-| ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| USB功能数字掩码。 |
+| ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| 功能列表对应的数字掩码。 |
 | undefined |开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
 
 **错误码：**
@@ -570,6 +570,7 @@ ArkTS-Sta: getDeviceFunctions(): int
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.                                    |
+| 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
@@ -613,6 +614,7 @@ getPortList(): Array\<USBPort\>
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
 | 801      | Capability not supported.                                    |
+| 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 

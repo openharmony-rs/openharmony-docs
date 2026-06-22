@@ -121,6 +121,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -296,6 +297,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { fileIo } from '@kit.CoreFileKit';

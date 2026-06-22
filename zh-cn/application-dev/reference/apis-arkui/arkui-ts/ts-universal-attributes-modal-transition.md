@@ -56,7 +56,7 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition
 
 ## bindContentCover<sup>23+</sup>
 
-bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, type?: ModalTransition): this
+bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, type?: ModalTransition)
 
 给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，显示方式可设置无动画过渡，上下切换过渡以及透明渐变过渡。
 
@@ -75,12 +75,6 @@ bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: Cust
 | isShow  | boolean \| Bindable\<boolean\> \| undefined       | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
 | builder | [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置全屏模态页面内容。                                       |
 | type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否   | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 同transition同时设置时，此属性不生效。                                 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## bindContentCover
 
@@ -114,7 +108,7 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCover
 
 ## bindContentCover<sup>23+</sup>
 
-bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: ContentCoverOptions): this
+bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: ContentCoverOptions)
 
 给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，显示方式可设置无动画过渡，上下切换过渡以及透明渐变过渡。
 
@@ -134,12 +128,6 @@ bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: Cust
 | builder | [CustomBuilder](ts-types.md#custombuilder8) \| undefined  | 是   | 配置全屏模态页面内容。                                      |
 | options | [ContentCoverOptions](#contentcoveroptions) | 否   | 配置全屏模态页面的可选属性。                                 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## ContentCoverOptions
 继承自[BindOptions](ts-universal-attributes-sheet-transition.md#bindoptions)。
 
@@ -156,20 +144,28 @@ bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: Cust
 
 ## DismissContentCoverAction<sup>12+</sup>类型说明
 
+### 属性
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称              | 类型                                       | 只读 | 可选   | 说明            |
 | --------------- | -------------------- | -------------------- | ---- | ------------- |
-| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否 | 否    | 全屏模态页面关闭回调函数。开发者需要退出页面时调用。 |
-| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否 | 否    | 返回本次拦截全屏模态页面退出的事件原因。  |
+| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否 | 否    | 全屏模态页面关闭回调函数。开发者需要退出页面时调用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 12 |
+| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否 | 否    | 返回本次拦截全屏模态页面退出的事件原因。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+
+### dismiss<sup>23+</sup>
+
+dismiss(): void
+
+半模态面板关闭回调函数。开发者需要退出时调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ## 示例
 
@@ -269,7 +265,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_none_1](figures/zh-cn_full_screen_modal_none_1.gif)
+![fullScreenModalNone1](figures/fullScreenModalNone1.gif)
 
 ### 示例2（自定义转场动画）
 
@@ -383,7 +379,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_none_2](figures/zh-cn_full_screen_modal_none_2.gif)
+![fullScreenModalNone2](figures/fullScreenModalNone2.gif)
 
 ### 示例3（上下切换转场）
 
@@ -481,7 +477,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_default](figures/zh-cn_full_screen_modal_default.gif)
+![fullScreenModalDefault](figures/fullScreenModalDefault.gif)
 
 ### 示例4（透明度渐变转场）
 
@@ -580,7 +576,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_alpha](figures/zh-cn_full_screen_modal_alpha.gif)
+![fullScreenModalAlpha](figures/fullScreenModalAlpha.gif)
 
 ### 示例5（设置不同效果的自定义转场）
 
@@ -696,7 +692,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_alpha](figures/zh-cn_full_screen_modal_transition.gif)
+![fullScreenModalTransition](figures/fullScreenModalTransition.gif)
 
 ### 示例6（设置全屏模态适配安全区）
 
@@ -759,4 +755,4 @@ struct SafeAreaController {
 }
 ```
 
-![zh-cn-enableSafeArea](figures/zh-cn-enablesafearea.png)
+![enableSafeArea](figures/enableSafeArea.png)

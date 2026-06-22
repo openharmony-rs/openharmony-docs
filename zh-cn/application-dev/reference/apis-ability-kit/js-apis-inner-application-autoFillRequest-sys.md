@@ -190,6 +190,7 @@ struct AutoFillPage {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -371,6 +372,7 @@ struct AutoFillPage {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -468,7 +470,7 @@ onCancel(fillContent?: string): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 202  | Permission denied, non-system app called system api. |
-| 401  | Parameter error. Possible causes: 1. The input parameter is not valid parameter;2. Mandatory parameters are left unspecified. |
+| 401  | Parameter error. Possible causes: 1. The input parameter is not valid parameter;2. Mandatory parameters are left unspecified. <br>适用版本：12+|
 | 16000050 | Internal error. |
 
 **示例：**
@@ -545,6 +547,7 @@ struct AutoFillPage {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -760,6 +763,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -966,6 +970,7 @@ struct SavePage {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1133,6 +1138,7 @@ struct SavePage {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';

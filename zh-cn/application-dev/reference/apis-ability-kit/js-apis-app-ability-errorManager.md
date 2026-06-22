@@ -22,6 +22,7 @@ import { errorManager } from '@kit.AbilityKit';
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import errorManager from '@ohos.app.ability.errorManager';
 ```
 
@@ -874,6 +875,7 @@ oldObserver = errorManager.setDefaultResourceUsageObserver(resourceUsageObserver
 ```
 ArkTS-Sta示例:
 ```ts
+'use static'
 let oldObserver: errorManager.ResourceUsageObserver;
 const resourceUsageObserver: errorManager.ResourceUsageObserver = (resourceType: errorManager.ResourceType,
   resourceSize: long, detailInfo?: Record<string, long>) => {
@@ -960,6 +962,7 @@ export function setFreezeHandler() {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import errorManager from '@ohos.app.ability.errorManager';
 
 let oldHandler: errorManager.FreezeObserver = () => {};

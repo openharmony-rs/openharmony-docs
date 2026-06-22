@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -652,7 +652,7 @@ ArkTS-Sta: measureSingleCharacterWithFeatures(text: string, features: Array\<Fon
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 24
 
@@ -680,7 +680,7 @@ ArkTS-Sta: measureSingleCharacterWithFeatures(text: string, features: Array\<Fon
 **示例：**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {

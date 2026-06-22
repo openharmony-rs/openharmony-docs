@@ -616,3 +616,119 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
   }
 }
 ```
+
+## isLockMetadataObjectTrackingSupported
+
+isLockMetadataObjectTrackingSupported(): boolean
+
+检查设备是否支持锁定元数据对象（如猫脸、狗脸）追踪功能。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型                     | 说明                     |
+| ----------------------  | ------------------------ |
+| boolean          | 表示是否支持锁定元数据对象追踪功能。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+function checkLockMetadataSupport(metadataOutput: camera.MetadataOutput): void {
+  let isSupported: boolean = metadataOutput.isLockMetadataObjectTrackingSupported();
+  console.info(`Lock metadata object tracking supported: ${isSupported}`);
+}
+```
+
+## lockMetadataObjectTracking
+
+lockMetadataObjectTracking(point: Point): void
+
+锁定对特定元数据对象（如猫脸、狗脸）的追踪。
+ 
+> **说明：**
+>
+> - 该功能以point所指向的点所在的对象为追踪对象，如果该点不存在追踪对象，则功能不生效。
+> - 被锁定追踪的对象离开取景范围超过三秒或调用解锁追踪后，锁定追踪自动取消。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名                  | 类型                                               | 必填 | 说明                          |
+| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
+| point  | [Point](arkts-apis-camera-i.md#point)  | 是  | 锁定元数据对象追踪的点位。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400103                |  Session not config, only throw in session usage.                                  |
+| 7400201                |  Camera service fatal error.                           |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function lockMetadata(metadataOutput: camera.MetadataOutput, point: camera.Point): void {
+  try {
+    metadataOutput.lockMetadataObjectTracking(point);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`lockMetadataObjectTracking error. error code: ${err.code}`);
+  }
+}
+```
+
+## unlockMetadataObjectTracking
+
+unlockMetadataObjectTracking(): void
+
+解锁元数据对象（如猫脸、狗脸）追踪。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400103                |  Session not config, only throw in session usage.                                   |
+| 7400201                |  Camera service fatal error.                           |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function unlockMetadata(metadataOutput: camera.MetadataOutput): void {
+  try {
+    metadataOutput.unlockMetadataObjectTracking();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`unlockMetadataObjectTracking error. error code: ${err.code}`);
+  }
+}
+```

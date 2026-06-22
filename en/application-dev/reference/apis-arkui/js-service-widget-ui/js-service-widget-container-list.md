@@ -124,4 +124,4 @@ The [universal events](js-service-widget-common-events.md) are supported.
 ```
 **4 x 4 widget**
 
-![en-us_image_0000001231370803](figures/en-us_image_0000001231370803.png)
+![en-us_image_0000001231370803](figures/list-example.png)

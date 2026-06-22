@@ -1088,6 +1088,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // 以MyStage.ets文件为例，使用AbilityLifecycleCallback监听UIAbility生命周期
 import { AbilityLifecycleCallback, AbilityStage, application, UIAbility } from "@kit.AbilityKit";
 import { hilog } from '@kit.PerformanceAnalysisKit';

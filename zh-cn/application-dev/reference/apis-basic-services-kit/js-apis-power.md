@@ -57,6 +57,7 @@ console.info('power is active: ' + isActive);
 rebootDevice(reason: string): void
 
 > **说明：**<br>从API version 7开始支持，从API version 9开始不再维护<!--Del-->。建议使用[power.reboot](js-apis-power-sys.md#powerreboot9)替代<!--DelEnd-->，替代接口能力仅对系统应用开放。
+
 重启设备。
 
 **需要权限：** ohos.permission.REBOOT,该权限仅系统应用可申请。
@@ -201,11 +202,11 @@ power.isScreenOn()
 
 | 名称                    | 值   | 说明                   |
 | ----------------------- | ---- | ---------------------- |
-| MODE_NORMAL             | 600  | 表示标准模式，默认值。<br/>**ArkTS-Dyn起始版本：**9<br/>**ArkTS-Sta起始版本：**23 |
-| MODE_POWER_SAVE         | 601  | 表示省电模式。<br/>**ArkTS-Dyn起始版本：**9<br/>**ArkTS-Sta起始版本：**23         |
-| MODE_PERFORMANCE        | 602  | 表示性能模式。<br/>**ArkTS-Dyn起始版本：**9<br/>**ArkTS-Sta起始版本：**23        |
-| MODE_EXTREME_POWER_SAVE | 603  | 表示超级省电模式。<br/>**ArkTS-Dyn起始版本：**9<br/>**ArkTS-Sta起始版本：**23     |
-| MODE_CUSTOM_POWER_SAVE<sup>20+</sup> | 650 | 表示自定义省电模式。<br/>**ArkTS-Dyn起始版本：**20<br/>**ArkTS-Sta起始版本：**23   |
+| MODE_NORMAL             | 600  | 表示标准模式，默认值。<br/><strong>ArkTS-Dyn起始版本：</strong>9<br/> <strong>ArkTS-Sta起始版本：</strong>23 |
+| MODE_POWER_SAVE         | 601  | 表示省电模式。<br/><strong>ArkTS-Dyn起始版本：</strong>9<br/><strong>ArkTS-Sta起始版本：</strong>23         |
+| MODE_PERFORMANCE        | 602  | 表示性能模式。<br/><strong>ArkTS-Dyn起始版本：</strong>9<br/><strong>ArkTS-Sta起始版本：</strong>23        |
+| MODE_EXTREME_POWER_SAVE | 603  | 表示超级省电模式。<br/><strong>ArkTS-Dyn起始版本：</strong>9<br/><strong>ArkTS-Sta起始版本：</strong>23     |
+| MODE_CUSTOM_POWER_SAVE<sup>20+</sup> | 650 | 表示自定义省电模式。<br/><strong>ArkTS-Dyn起始版本：</strong>20<br/><strong>ArkTS-Sta起始版本：</strong>23   |
 
 ## PowerKeyFilteringStrategy<sup>21+</sup>
 

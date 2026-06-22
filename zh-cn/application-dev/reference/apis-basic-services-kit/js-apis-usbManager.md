@@ -1516,8 +1516,8 @@ function controlTransfer() {
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
 | address       | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点地址。         |
 | attributes    | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点属性。         |
-| interval      | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点间隔。         |
-| maxPacketSize | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点最大数据包大小。    |
+| interval      | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点间隔，（单位：毫秒）。         |
+| maxPacketSize | ArkTS-Dyn: number<br> ArkTS-Sta: int                                         | 否   | 否 |端点最大数据包大小，（单位：字节）。    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
 | number        | ArkTS-Dyn: number                                         | 否   | 否 |端点号。 <br>**ArkTS模式**：该字段仅适用于ArkTS-Dyn。         |
 | endpointAddr        | ArkTS-Sta: int                                         | 否   | 否 |端点地址。<br>**ArkTS模式**：该字段仅适用于ArkTS-Sta。           |

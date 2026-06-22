@@ -1338,8 +1338,7 @@ Worker线程向宿主线程发送插队消息，消息中的[Sendable对象](../
 // worker文件路径为：entry/src/main/ets/workers/Worker.ets
 // Worker.ets
 
-import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-import { Priority } from '@ohos.worker';
+import { MessageEvents, ThreadWorkerGlobalScope, worker, Priority } from '@kit.ArkTS';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents) => {
@@ -1392,8 +1391,7 @@ workerInstance.onmessage = (e: MessageEvents) => {
 
 <!--code_no_check-->
 ```ts
-import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@kit.ArkTS';
-import { Priority } from '@ohos.worker';
+import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent, Priority } from '@kit.ArkTS';
 
 class ClassA {
   public obj: string = ''

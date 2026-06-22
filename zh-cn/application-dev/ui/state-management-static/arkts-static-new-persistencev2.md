@@ -77,9 +77,9 @@ globalConnect支持以下类型的持久化：
 
 此示例展示通过globalConnect持久化Array类型数据，并在UI中动态添加和展示数组元素。
 
-```ts
-'use static'
+<!-- @[persistence_v2_array](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Array.ets) --> 
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, ForEach, List, ListItem, StorageDefaultSubCreators } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -93,7 +93,6 @@ export class Info {
   @Trace userInfo: int = 1;
   @Trace arr: Array<Inner> = new Array<Inner>();
 }
-
 @ObservedV2
 export class Person {
   @Trace userName: string = 'John';
@@ -110,7 +109,7 @@ const creators = new StorageDefaultSubCreators([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ArrayExample {
   // 通过globalConnect持久化Array<Person>类型数据
   @Local stateVar: Array<Person> = PersistenceV2.globalConnect<Array<Person>>({
     type: Class.from<Array<Person>>(),
@@ -126,8 +125,12 @@ struct Index {
   build() {
     Column(undefined) {
       Text(`length: ${this.stateVar.length}`)
+        .fontSize(20)
+        .margin(10)
       // 点击按钮向数组中添加一个新的Person对象
       Button('push')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.stateVar.push(new Person());
         })
@@ -136,8 +139,9 @@ struct Index {
           ListItem() {
             if (item instanceof Person) {
               Column() {
-                Text(`item: ${item.userName}`)
-                  .fontSize(30)
+                Button(`item: ${item.userName}`)
+                  .width(300)
+                  .margin(10)
                   // 点击修改当前item的userName、userInfo，并添加Inner对象到arr中
                   .onClick(() => {
                     item.userName += '~';
@@ -147,10 +151,17 @@ struct Index {
                     item.info.arr.push(inner);
                   })
                 Text(`userInfo: ${item.info.userInfo}`)
+                  .fontSize(20)
+                  .margin(10)
                 Text(`arr: ${JSON.stringify(item.info.arr)}`)
+                  .fontSize(20)
+                  .margin(10)
               }
+              .width('100%')
             } else {
               Text(`${Class.of(item).getName()}`)
+                .fontSize(20)
+                .margin(10)
             }
           }
         }, (item: Person, index: int) => {
@@ -158,17 +169,20 @@ struct Index {
         })
       }
     }
+    .width('100%')
   }
 }
 ```
+
+![persistence_v2_array](../figures/persistencev2_1.gif)
 
 ### Map类型
 
 此示例展示通过globalConnect持久化Map类型数据，key为string类型，value为自定义类Person。
 
-```ts
-'use static'
+<!-- @[persistence_v2_map](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Map.ets) --> 
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, StorageDefaultCreator, ForEach } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -193,7 +207,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2MapExample {
   // 通过globalConnect持久化Map<string, Person>类型数据
   @Local stateVar: Map<string, Person> = PersistenceV2.globalConnect<Map<string, Person>>({
     type: Class.from<Map<string, Person>>(),
@@ -209,8 +223,12 @@ struct Index {
   build() {
     Column(undefined) {
       Text(`map size: ${this.stateVar.size}`)
+        .fontSize(20)
+        .margin(10)
       // 点击按钮创建一个新的Person对象并添加到Map中
       Button('add')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           let p = new Person();
           p.userName = 'user_' + this.stateVar.size.toString();
@@ -220,6 +238,8 @@ struct Index {
         })
       // 点击按钮删除最后一个Map条目
       Button('delete last')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.stateVar.delete('key_' + (this.stateVar.size - 1));
         })
@@ -231,35 +251,42 @@ struct Index {
               let val = entry.$1 as Person;
               if (val instanceof Person) {
                 Column() {
-                  Text(`[${key}] ${val.userName}`)
-                    .fontSize(20)
+                  Button(`[${key}] ${val.userName}`)
+                    .width(300)
+                    .margin(10)
                     // 点击修改当前条目的userName和age
                     .onClick(() => {
                       val.userName += '~';
                       val.inner.age++;
                     })
                   Text(`userId: ${val.userId}, inner.age: ${val.inner.age}`)
-                    .fontSize(16)
+                    .fontSize(20)
+                    .margin(10)
                 }
+                .width('100%')
               }
             }
+            .width('100%')
           }
         }, (entry: Tuple2<string, Person>, index: int) => {
           return entry.$0 + index.toString();
         })
       }
     }
+    .width('100%')
   }
 }
 ```
+
+![persistence_v2_map](../figures/persistencev2_2.gif)
 
 ### Set类型
 
 此示例展示通过globalConnect持久化Set类型数据，元素为自定义类Person。
 
-```ts
-'use static'
+<!-- @[persistence_v2_set](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Set.ets) --> 
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -284,7 +311,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2SetExample {
   // 通过globalConnect持久化Set<Person>类型数据
   @Local stateVar: Set<Person> = PersistenceV2.globalConnect<Set<Person>>({
     type: Class.from<Set<Person>>(),
@@ -302,8 +329,12 @@ struct Index {
   build() {
     Column(undefined) {
       Text(`set size: ${this.stateVar.size}`)
+        .fontSize(20)
+        .margin(10)
       // 点击按钮创建一个新的Person对象并添加到Set中
       Button('add')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           let p = new Person();
           p.userName = 'user_' + this.stateVar.size.toString();
@@ -314,6 +345,8 @@ struct Index {
         })
       // 点击按钮移除Set中最后添加的元素
       Button('remove last')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           if (this.lastPerson && this.stateVar.has(this.lastPerson!)) {
             this.stateVar.delete(this.lastPerson!);
@@ -333,27 +366,33 @@ struct Index {
               if (item instanceof Person) {
                 Text(`[${index}] ${item.userName}`)
                   .fontSize(20)
+                  .margin(10)
                 Text(`userId: ${item.userId}, inner.age: ${item.inner.age}`)
-                  .fontSize(16)
+                  .fontSize(20)
+                  .margin(10)
               }
             }
+            .width('100%')
           }
         }, (item: Person, index: int) => {
           return item.userId + item.userName + index.toString();
         })
       }
     }
+    .width('100%')
   }
 }
 ```
+
+![persistence_v2_set](../figures/persistencev2_3.gif)
 
 ### Date类型
 
 此示例展示通过globalConnect持久化包含Date类型字段的自定义类，Date对象在持久化时自动完成序列化和反序列化。
 
-```ts
-'use static'
+<!-- @[persistence_v2_date](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Date.ets) --> 
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -380,7 +419,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2DateExample {
   // 通过globalConnect持久化包含Date字段的Event对象
   @Local stateVar: Event = PersistenceV2.globalConnect<Event>({
     type: Class.from<Event>(),
@@ -396,12 +435,24 @@ struct Index {
   build() {
     Column(undefined) {
       Text(`name: ${this.stateVar.name}`)
+        .fontSize(20)
+        .margin(10)
       Text(`createdAt: ${this.stateVar.createdAt.toISOString()}`)
+        .fontSize(20)
+        .margin(10)
       Text(`lastLogin: ${this.stateVar.lastLogin.toISOString()}`)
+        .fontSize(20)
+        .margin(10)
       Text(`inner.tag: ${this.stateVar.inner.tag}`)
+        .fontSize(20)
+        .margin(10)
       Text(`inner.nextDate: ${this.stateVar.inner.nextDate.toISOString()}`)
+        .fontSize(20)
+        .margin(10)
       // 点击按钮更新所有Date字段和name字段
       Button('update')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.stateVar.createdAt = new Date();
           this.stateVar.lastLogin = new Date();
@@ -410,17 +461,20 @@ struct Index {
           this.stateVar.inner.tag = 'tag_' + Date.now().toString();
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![persistence_v2_date](../figures/persistencev2_4.gif)
 
 ### 嵌套自定义类
 
 此示例展示通过globalConnect持久化多层嵌套的自定义类（Company → Dept → Person → Inner，共4层），所有层级的类型均需在`defaultSubCreators`中注册。
 
-```ts
-'use static'
+<!-- @[persistence_v2_nested_class](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2NestedClass.ets) --> 
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -458,7 +512,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2NestedClassExample {
   // 通过globalConnect持久化多层嵌套的Company对象
   @Local stateVar: Company = PersistenceV2.globalConnect<Company>({
     type: Class.from<Company>(),
@@ -474,11 +528,21 @@ struct Index {
   build() {
     Column(undefined) {
       Text(`company: ${this.stateVar.companyName}`)
+        .fontSize(20)
+        .margin(10)
       Text(`dept: ${this.stateVar.dept.deptName}`)
+        .fontSize(20)
+        .margin(10)
       Text(`person: ${this.stateVar.dept.person.userName}`)
+        .fontSize(20)
+        .margin(10)
       Text(`inner.age: ${this.stateVar.dept.person.inner.age}`)
+        .fontSize(20)
+        .margin(10)
       // 点击按钮初始化所有层级的嵌套数据
       Button('init')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.stateVar.companyName = 'MyCompany';
           this.stateVar.dept.deptName = 'Engineering';
@@ -487,6 +551,8 @@ struct Index {
         })
       // 点击按钮逐级修改嵌套数据
       Button('modify')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.stateVar.companyName += '_v2';
           this.stateVar.dept.deptName += '_upd';
@@ -494,17 +560,20 @@ struct Index {
           this.stateVar.dept.person.inner.age += 1;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![persistence_v2_nested_class](../figures/persistencev2_5.gif)
 
 ### 循环引用
 
 此示例展示通过globalConnect持久化包含循环引用的对象。Node的parent字段可指向自身或另一个Node，globalConnect内部会自动处理对象间的引用关系，不会无限递归。
 
-```ts
-'use static'
+<!-- @[persistence_v2_circular_ref](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2CircularRef.ets) --> 
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -523,7 +592,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2CircularRefExample {
   // 通过globalConnect持久化包含循环引用的Node对象
   @Local stateVar: Node = PersistenceV2.globalConnect<Node>({
     type: Class.from<Node>(),
@@ -543,16 +612,27 @@ struct Index {
   build() {
     Column(undefined) {
       Text(`name: ${this.stateVar.name}`)
+        .fontSize(20)
+        .margin(10)
       Text(`value: ${this.stateVar.value}`)
+        .fontSize(20)
+        .margin(10)
       if (this.stateVar.parent !== undefined) {
         Text(`parent.name: ${this.stateVar.parent!.name}`)
+          .fontSize(20)
+          .margin(10)
         Text(`parent === self: ${this.stateVar.parent === this.stateVar}`)
           .fontSize(20)
+          .margin(10)
       } else {
         Text(`parent: undefined`)
+          .fontSize(20)
+          .margin(10)
       }
       // 点击按钮将parent设为自身引用并修改name和value
       Button('set self-ref')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.stateVar.parent = this.stateVar;
           this.stateVar.name = 'root_' + Date.now().toString();
@@ -560,21 +640,26 @@ struct Index {
         })
       // 点击按钮清除循环引用
       Button('clear ref')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.stateVar.parent = undefined;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![persistence_v2_circular_ref](../figures/persistencev2_6.gif)
 
 ### 多种集合类型混合
 
 此示例展示通过globalConnect持久化一个包含Array、Map、Set三种集合类型的自定义类MixedData。
 
-```ts
-'use static'
+<!-- @[persistence_v2_mixed_collection](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2MixedCollection.ets) --> 
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -607,7 +692,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2MixedCollectionExample {
   // 通过globalConnect持久化包含Array、Map、Set的MixedData对象
   @Local stateVar: MixedData = PersistenceV2.globalConnect<MixedData>({
     type: Class.from<MixedData>(),
@@ -624,33 +709,37 @@ struct Index {
     Column(undefined) {
       Text(`tags: ${this.stateVar.tags.length}`)
         .fontSize(20)
+        .margin(10)
       Text(`people: ${this.stateVar.people.size}`)
         .fontSize(20)
+        .margin(10)
       Text(`unique: ${this.stateVar.unique.size}`)
         .fontSize(20)
+        .margin(10)
 
       // 点击按钮初始化所有集合数据
       Button('init all')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          this.stateVar.tags.push('tag_a', 'tag_b', 'tag_c');
+          this.stateVar.tags.push('tag_a');
           let p1 = new Person();
           p1.userName = 'alice';
           p1.inner.age = 25;
-          let p2 = new Person();
-          p2.userName = 'bob';
-          p2.inner.age = 30;
           this.stateVar.people.set('alice', p1);
-          this.stateVar.people.set('bob', p2);
           this.stateVar.unique.add(p1);
-          this.stateVar.unique.add(p2);
         })
       // 点击按钮向tags数组中添加新标签
       Button('add tag')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.stateVar.tags.push('tag_' + this.stateVar.tags.length.toString());
         })
       // 点击按钮创建新的Person对象并添加到Map中
       Button('add person to map')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           let p = new Person();
           p.userName = 'user_' + this.stateVar.people.size.toString();
@@ -659,6 +748,8 @@ struct Index {
         })
       // 点击按钮创建新的Person对象并添加到Set中
       Button('add person to set')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           let p = new Person();
           p.userName = 'set_' + this.stateVar.unique.size.toString();
@@ -668,13 +759,16 @@ struct Index {
 
       // 展示tags数组内容
       Text('--- tags ---')
-        .fontSize(16)
+        .fontSize(20)
+        .margin(10)
       List() {
         ForEach(this.stateVar.tags, (tag: string, index: int) => {
           ListItem() {
             Text(`[${index}] ${tag}`)
-              .fontSize(16)
+              .fontSize(20)
+              .margin(10)
           }
+          .width('100%')
         }, (tag: string, index: int) => {
           return tag + index.toString();
         })
@@ -682,16 +776,19 @@ struct Index {
 
       // 展示people Map内容
       Text('--- people (map) ---')
-        .fontSize(16)
+        .fontSize(20)
+        .margin(10)
       List() {
         ForEach(Array.from(this.stateVar.people.entries()), (entry: Tuple2<string, Person>, index: int) => {
           ListItem() {
             Column() {
               if (entry.$1 instanceof Person) {
                 Text(`${entry.$0}: ${entry.$1.userName} (age ${entry.$1.inner.age})`)
-                  .fontSize(16)
+                  .fontSize(20)
+                  .margin(10)
               }
             }
+            .width('100%')
           }
         }, (entry: Tuple2<string, Person>, index: int) => {
           return entry.$0 + index.toString();
@@ -700,25 +797,31 @@ struct Index {
 
       // 展示unique Set内容
       Text('--- unique (set) ---')
-        .fontSize(16)
+        .fontSize(20)
+        .margin(10)
       List() {
         ForEach(Array.from(this.stateVar.unique.values()), (item: Person, index: int) => {
           ListItem() {
             Column() {
               if (item instanceof Person) {
                 Text(`${item.userName} (age ${item.inner.age})`)
-                  .fontSize(16)
+                  .fontSize(20)
+                  .margin(10)
               }
             }
+            .width('100%')
           }
         }, (item: Person, index: int) => {
           return item.userName + index.toString();
         })
       }
     }
+    .width('100%')
   }
 }
 ```
+
+![persistence_v2_mixed_collection](../figures/persistencev2_7.gif)
 
 ## 使用限制
 
@@ -778,9 +881,9 @@ struct Index {
 
 此示例结合enableAutoSave参数确定是否自动持久化存储数据。
 
-```ts
-'use static'
+<!-- @[persistence_v2_connect_global_connect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ConnectGlobalConnect.ets) --> 
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
   Button, Column, ClickEvent, ComponentV2, Text, ConnectOptions } from '@kit.ArkUI';
 
@@ -805,7 +908,7 @@ class Person {
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ConnectGlobalConnectExample {
   // 调用globalConnect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.globalConnect<Person>({
     type: Class.from<Person>(),
@@ -834,6 +937,8 @@ struct Index {
   build() {
     Column() {
       Button('Change cp1 userId userName userInfo')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.cp1.userId++;
           this.cp1.userName += 'A';
@@ -841,10 +946,18 @@ struct Index {
           console.info(`cp1 userId ${this.cp1.userId}`);
         })
       Text(`userName: ${this.cp1.userName}`) // Person类由@ObservedV2装饰，且该属性由@Trace装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
       Text(`userId: ${this.cp1.userId}`) // Person类由@ObservedV2装饰，但该属性非@Trace装饰，所以刷新不可观测。
+        .fontSize(20)
+        .margin(10)
       Text(`userInfo: ${this.cp1.info.userInfo}`) // Info类由@ObservedV2装饰，且userInfo属性由@Track装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
 
       Button('Change cp2 userId userName userInfo')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.cp2.userId++;
           this.cp2.userName += 'A';
@@ -852,38 +965,48 @@ struct Index {
           console.info(`cp2 userId ${this.cp2.userId}`);
         })
       Text(`userName: ${this.cp2.userName}`) // Person类由@ObservedV2装饰，且该属性由@Trace装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
       Text(`userId: ${this.cp2.userId}`) // Person类由@ObservedV2装饰，但该属性非@Trace装饰，所以刷新不可观测。
+        .fontSize(20)
+        .margin(10)
       Text(`userInfo: ${this.cp2.info.userInfo}`) // Info类由@ObservedV2装饰，且userInfo属性由@Track装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
 
-      Text(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
-      // 点击Text组件后，由于refresh改变，所以引起Text组件刷新，进而使得此处userId刷新。
+      Button(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 点击Button组件后，由于refresh改变，所以引起Button组件刷新，进而使得此处userId刷新。
           this.cp1.userId++;
           PersistenceV2.save('Person'); // 调用save存储该对象。
           this.refresh += 1;
         })
-        .fontSize(25)
 
-      Text(`PersistenceV2 keys: ${PersistenceV2.keys()} refresh: ${this.refresh}`)
+      Button(`All keys: ${PersistenceV2.keys()} refresh: ${this.refresh}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.refresh += 1;
         })
-        .fontSize(25)
 
-      Text('Remove key Person: ' + 'refresh: ' + this.refresh)
+      Button('Remove key Person: ' + 'refresh: ' + this.refresh)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 在PersistenceV2中删除keyorType为Person的对象。
           PersistenceV2.remove('Person');
           this.refresh += 1;
         })
-        .fontSize(25)
 
-      Text('globalConnect key Person2: ' + 'refresh: ' + this.refresh)
+      Button('globalConnect key Person2: ' + 'refresh: ' + this.refresh)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.cp1 = PersistenceV2.globalConnect<Person>(this.options)!;
           this.refresh += 1;
         })
-        .fontSize(25)
     }
     .width('100%')
     .height('100%')
@@ -891,12 +1014,15 @@ struct Index {
 }
 ```
 
+![persistence_v2_connect_global_connect](../figures/persistencev2_8.gif)
+
 ### 通过notifyOnError获取旧的序列化数据
 
 当存储数据的结构与当前数据的结构不同时，可能会导致反序列化失败。开发者可通过向notifyOnError的回调函数参数中加入oldValue参数来获取存于磁盘的旧的序列化数据，从而直观地感知到数据结构的差异。
 
-```ts
-'use static'
+<!-- @[persistence_v2_notify_on_error](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2NotifyOnError.ets) -->
+
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Color } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -924,7 +1050,7 @@ export class Sample {
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2NotifyOnErrorExample {
   static {
     // 接受序列化失败的回调
     PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
@@ -943,7 +1069,6 @@ struct Index {
         .onClick(() => {
           this.p.father.groupId += 1;
         })
-        .fontSize(25)
         .fontColor(Color.Red)
 
       // save接口
@@ -955,7 +1080,6 @@ struct Index {
           PersistenceV2.save('connectSample');
           this.refresh += 1;
         })
-        .fontSize(25)
     }
     .width('100%')
   }
@@ -972,9 +1096,9 @@ error key: connectSample, reason: serialization, message: TypeError: Receiver is
 
 ### connect向globalConnect迁移实现
 
-```ts
-'use static'
+<!-- @[persistence_v2_connect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ConnectUsage.ets) --> 
 
+``` TypeScript
 // 使用connect存储数据
 import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
   Button, Column, ClickEvent, ComponentV2, Text } from '@kit.ArkUI';
@@ -998,7 +1122,7 @@ class Person {
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ConnectUsageExample {
   // 调用connect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.connect<Person>(
     Class.from<Person>(),
@@ -1011,6 +1135,8 @@ struct Index {
   build() {
     Column() {
       Button('Change userId userName userInfo')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.cp1.userId++;
           this.cp1.userName += 'A';
@@ -1018,17 +1144,24 @@ struct Index {
           console.info(`cp1 userId ${this.cp1.userId}`);
         })
       Text(`userName: ${this.cp1.userName}`) // Person类由@ObservedV2装饰，且该属性由@Trace装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
       Text(`userId: ${this.cp1.userId}`) // Person类由@ObservedV2装饰，但该属性非@Trace装饰，所以刷新不可观测。
+        .fontSize(20)
+        .margin(10)
       Text(`userInfo: ${this.cp1.info.userInfo}`) // Info类由@ObservedV2装饰，且userInfo属性由@Track装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
 
-      Text(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
-      // 点击Text组件后，由于refresh改变，所以引起Text组件刷新，进而使得此处userId刷新。
+      Button(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 点击Button组件后，由于refresh改变，所以引起Button组件刷新，进而使得此处userId刷新。
           this.cp1.userId++;
           PersistenceV2.save('Person'); // 调用save存储该对象。
           this.refresh += 1;
         })
-        .fontSize(25)
     }
     .width('100%')
     .height('100%')
@@ -1036,9 +1169,11 @@ struct Index {
 }
 ```
 
-```ts
-'use static'
+![persistence_v2_connect_usage](../figures/persistencev2_9.gif)
 
+<!-- @[persistence_v2_connect_migration](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ConnectMigration.ets) --> 
+
+``` TypeScript
 // 迁移到globalConnect
 import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
   Button, Column, ClickEvent, ComponentV2, Text } from '@kit.ArkUI';
@@ -1093,7 +1228,7 @@ function move() {
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ConnectMigrationExample {
   // 调用globalConnect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.globalConnect<Person>({
     type: Class.from<Person>(),
@@ -1112,6 +1247,8 @@ struct Index {
   build() {
     Column() {
       Button('Change userId userName userInfo')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.cp1.userId++;
           this.cp1.userName += 'A';
@@ -1119,23 +1256,32 @@ struct Index {
           console.info(`cp1 userId ${this.cp1.userId}`);
         })
       Text(`userName: ${this.cp1.userName}`) // Person类由@ObservedV2装饰，且该属性由@Trace装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
       Text(`userId: ${this.cp1.userId}`) // Person类由@ObservedV2装饰，但该属性非@Trace装饰，所以刷新不可观测。
+        .fontSize(20)
+        .margin(10)
       Text(`userInfo: ${this.cp1.info.userInfo}`) // Info类由@ObservedV2装饰，且userInfo属性由@Track装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
 
-      Text(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
-      // 点击Text组件后，由于refresh改变，所以引起Text组件刷新，进而使得此处userId刷新。
+      Button(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 点击Button组件后，由于refresh改变，所以引起Button组件刷新，进而使得此处userId刷新。
           this.cp1.userId++;
           PersistenceV2.save('Person'); // 调用save存储该对象。
           this.refresh += 1;
         })
-        .fontSize(25)
     }
     .width('100%')
     .height('100%')
   }
 }
 ```
+
+![persistence_v2_connect_migration](../figures/persistencev2_10.gif)
 
 connect向globalConnect迁移，需要将key绑定的value赋值给globalConnect进行存储，之后当自定义组件使用globalConnect连接时，globalConnect绑定的数据即为之前使用connect保存的数据，开发者可以自定义move函数，并将其放在合适位置迁移即可。
 
@@ -1145,9 +1291,9 @@ connect向globalConnect迁移，需要将key绑定的value赋值给globalConnect
 
 当开发者将`@Trace`字段的容器元素类型从自定义对象数组`Person[]`改为基本类型数组（如`int[]`），如果defaultCreator中未给数组添加默认元素，此时旧数据中存储的`Person`类型元素会被错误地填充到新类型的数组中，导致运行时类型错误或instanceof检查失败。这是由于框架侧无法获取容器类型的泛型信息，在没有容器默认元素的情况下无法感知到容器元素的类型发生了变更。因此，不建议开发者手动更改容器中的元素类型。
 
-```ts
-'use static'
+<!-- @[persistence_v2_container_type_error](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ContainerTypeError.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
@@ -1163,7 +1309,7 @@ const creators = new Map<Class, StorageDefaultCreator<object>>([
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ContainerTypeErrorExample {
   @Local stateVar: Array<Person> = PersistenceV2.globalConnect<Array<Person>>({
     type: Class.from<Array<Person>>(),
     key: 'PersonArray',
@@ -1230,9 +1376,9 @@ struct Index {
 
 在提供了默认元素的情况下，框架会判断出元素类型发生改变，跳过数据恢复，直接使用默认值。
 
-```ts
-'use static'
+<!-- @[persistence_v2_container_element_change](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ContainerElementChange.ets) -->
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 

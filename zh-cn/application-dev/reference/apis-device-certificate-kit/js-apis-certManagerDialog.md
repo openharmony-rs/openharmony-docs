@@ -7,7 +7,7 @@
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
 
-证书管理对话框主要提供拉起证书管理界面的能力，用户在拉起的证书管理对话框可对证书进行管理（安装，存储，使用，销毁）。
+证书管理对话框主要提供打开证书管理界面的能力，用户在打开的证书管理对话框可对证书进行查看和管理（安装、卸载、授权）。
 
 > **说明：**
 >
@@ -52,7 +52,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | CA_CERT | 1      | CA证书。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
 | CREDENTIAL_USER<sup>22+</sup> | 2      | 用户公共凭据。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 | CREDENTIAL_APP<sup>22+</sup> | 3      | 应用私有凭据。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
-| CREDENTIAL_UKEY<sup>22+</sup> | 4      | USB凭据。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| CREDENTIAL_UKEY<sup>22+</sup> | 4      | USB Key证书凭据。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 | CREDENTIAL_SYSTEM<sup>23+</sup> | 5      | 系统凭据。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CertificateScope<sup>14+</sup>
@@ -66,8 +66,8 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
 | NOT_SPECIFIED<sup>18+</sup>  | 0      | 不指定使用范围。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
-| CURRENT_USER | 1      | 当前用户。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
-| GLOBAL_USER<sup>18+</sup> | 2      | 公共目录。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| CURRENT_USER | 1      | 当前用户。表示证书仅对当前登录用户可用。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| GLOBAL_USER<sup>18+</sup> | 2      | 所有用户。表示证书对设备的所有用户可见。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
 
 
 ## CertificateDialogErrorCode
@@ -80,12 +80,12 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| ERROR_GENERIC  | 29700001      | 表示调用接口时发生内部错误。<br/>**ArkTS-Dyn起始版本**：13<br/>**ArkTS-Sta起始版本**：23 |
-| ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | 表示调用接口时用户取消操作。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
-| ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | 表示调用接口时安装证书失败。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
-| ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | 表示调用接口时设备类型不支持。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
-| ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | 表示调用接口时不符合设备安全策略。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
-| ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示调用接口时参数校验失败。<br>例如：参数格式不正确、参数范围无效<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_GENERIC  | 29700001      | 表示调用接口时发生内部错误。<br>例如IPC通信失败、内存操作失败、文件操作失败。<br/>**ArkTS-Dyn起始版本**：13<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | 表示用户在证书管理对话框中取消操作。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | 表示用户在证书管理对话框中操作失败。<br>例如安装证书失败。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | 表示接口不支持该设备。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | 表示该操作不符合设备安全策略。<br>例如设备不允许用户管理GLOBAL_USER的CA证书。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示输入参数校验失败。<br>例如参数格式不正确或取值范围无效。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 | ERROR_NO_AVAILABLE_CERTIFICATE<sup>22+</sup>  | 29700007      | 表示没有可用证书。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
 
 ## CertificateDialogProperty<sup>18+</sup>
@@ -123,7 +123,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 ## UkeyAuthRequest<sup>22+</sup>
 
-USB证书凭据授权请求信息。
+USB Key PIN码认证请求。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -135,7 +135,7 @@ USB证书凭据授权请求信息。
 
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
-| keyUri | string   | 否   | 否   | 表示USB证书凭据的唯一标识符，长度限制256字节以内。 |
+| keyUri | string   | 否   | 否   | 表示USB Key证书凭据的唯一标识符，长度限制256字节以内。该参数值可通过调用[openAuthorizeDialog](#certificatemanagerdialogopenauthorizedialog22)接口返回的CertReference中获取。 |
 
 ## AuthorizeRequest<sup>22+</sup>
 
@@ -152,16 +152,16 @@ USB证书凭据授权请求信息。
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | certTypes | Array<[CertificateType](#certificatetype14)>   | 否   | 否   | 表示证书类型的列表。 |
-| certPurpose | [certificateManager.CertificatePurpose](js-apis-certManager.md#certificatepurpose22)    | 否   | 是   | 表示证书用途。<br>若certTypes参数中存在CertificateType.CREDENTIAL_UKEY类型，则certPurpose参数生效。 |
-| keyAlgIDs |  Array\<string>  | 否   | 是   | 表示证书公钥的算法类型，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。支持的取值为RSA、EC或ECDSA。<br>若 keyAlgIDs包含不支持的算法，则该筛选器无效。<br>数组最大长度为20。<br>**起始版本：** 26.0.0 |
+| certPurpose | [certificateManager.CertificatePurpose](js-apis-certManager.md#certificatepurpose22)    | 否   | 是   | 表示证书用途。<br>若certTypes参数中存在CertificateType.CREDENTIAL_UKEY类型，则certPurpose参数生效，表示根据指定的证书用途筛选USB Key的证书凭据。 |
+| keyAlgIDs |  Array\<string>  | 否   | 是   | 表示证书公钥的算法类型，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。支持的取值为RSA、EC或ECDSA（区分大小写）。若不传此参数，则不按算法类型筛选证书。<br>若 keyAlgIDs包含不支持的算法，则该筛选器无效。<br>数组最大长度为20。<br>**起始版本：** 26.0.0 |
 | issuers |  Array\<Uint8Array>  | 否   | 是   | 表示以DER格式编码的证书颁发者，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。<br>如果issuers数组中存在长度为0的元素，则issuers筛选器不会生效。<br>数组最大长度为20。<br>**起始版本：** 26.0.0 |
-| uri | string  | 否   | 是   | 表示应用请求使用凭据用于验证服务器的地址，此uri显示在凭据授权对话框中。<br>**起始版本：** 26.0.0 |
+| uri | string  | 否   | 是   | 该URI在授权对话框中进行显示，用于为用户提供更多有关申请授权使用证书凭据的上下文。<br>**起始版本：** 26.0.0 |
 
 ## certificateManagerDialog.openCertificateManagerDialog
 
 openCertificateManagerDialog(context: common.Context, pageType: CertificateDialogPageType): Promise\<void>
 
-表示拉起证书管理对话框，显示相应的页面。使用Promise异步回调。
+打开证书管理对话框，显示相应的页面。调用成功后，用户可以在弹出的对话框中对证书进行查看、安装、卸载等操作。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -222,7 +222,7 @@ try {
 
 openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise\<string>
 
-表示拉起证书管理安装证书向导，显示相应的页面。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+表示拉起证书管理安装证书向导，显示相应的页面。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 14
 
@@ -232,7 +232,9 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
-**设备行为差异：** 该接口在PC/2in1设备可正常调用，在其他设备中certType传入CA_CERT时返回29700004错误码。
+**设备行为差异：**
+1. 入参certType为CA_CERT时，该接口在PC/2in1设备中可以正常调用，在其他设备中会返回29700004错误码。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断本设备是否支持打开CA证书安装对话框。
+2. 入参certType为CREDENTIAL_USER或CREDENTIAL_SYSTEM时，在PC/2in1、phone和tablet设备中可以正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -241,8 +243,8 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
-| certType | [CertificateType](#certificatetype14)                   | 是   | 表示安装证书类型，目前支持CA_CERT、CREDENTIAL_USER、CREDENTIAL_SYSTEM。 |
-| certScope | [CertificateScope](#certificatescope14)                   | 是   | 表示安装证书的使用范围，目前支持CURRENT_USER、NOT_SPECIFIED。 |
+| certType | [CertificateType](#certificatetype14)                   | 是   | 表示安装证书类型，目前仅支持CA_CERT、CREDENTIAL_USER、CREDENTIAL_SYSTEM。 |
+| certScope | [CertificateScope](#certificatescope14)                   | 是   | 表示安装证书的使用范围，目前仅支持CURRENT_USER、NOT_SPECIFIED。 |
 | cert | Uint8Array                  | 是   | 表示安装证书数据。 |
 
 **返回值**：
@@ -299,7 +301,7 @@ try {
 
 openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise\<void>
 
-表示拉起证书管理删除证书向导，显示相应的页面。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+打开证书管理卸载证书向导，显示相应的页面。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -309,7 +311,7 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
-**设备行为差异：** 该接口在PC/2in1设备可正常调用，在其他设备中返回29700004错误码。
+**设备行为差异：** 该接口在PC/2in1设备可正常调用，在其他设备中返回29700004错误码。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书卸载对话框。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -318,8 +320,8 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
-| certType | [CertificateType](#certificatetype14)                   | 是   | 表示删除证书类型。 |
-| certUri | string                  | 是   | 表示待删除证书的唯一标识符，最大长度为256字节。 |
+| certType | [CertificateType](#certificatetype14)                   | 是   | 表示待卸载证书类型，目前仅支持CA_CERT。 |
+| certUri | string                  | 是   | 表示待卸载证书的唯一标识符，最大长度为256字节。 |
 
 **返回值**：
 
@@ -370,7 +372,7 @@ try {
 
 openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property: CertificateDialogProperty): Promise\<void>
 
-表示拉起证书管理对话框显示证书的详情。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+打开证书管理对话框显示证书的详情。调用成功后，将显示证书的基本信息、有效期、颁发者、使用者等详细信息。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -380,7 +382,7 @@ openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property:
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
-**设备行为差异：** 该接口在PC/2in1设备可正常调用，在其他设备中返回29700004错误码。
+**设备行为差异：** 该接口在PC/2in1设备可正常调用，在其他设备中返回29700004错误码。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书详情对话框。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -390,7 +392,7 @@ openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property:
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | cert     | Uint8Array                                                   | 是   | 表示安装证书数据。             |
-| property | [CertificateDialogProperty](#certificatedialogproperty18) | 是   | 表示拉起证书管理对话框的属性。 |
+| property | [CertificateDialogProperty](#certificatedialogproperty18) | 是   | 表示打开证书管理对话框的属性。 |
 
 **返回值**：
 
@@ -442,7 +444,7 @@ try {
 
 openAuthorizeDialog(context: common.Context): Promise\<string>
 
-打开证书管理对话框的授权页面。在弹出的页面中，用户可以为应用授权证书。使用Promise异步回调。
+打开证书管理对话框的证书凭据授权页面。在弹出的页面中，用户可以为应用授权使用证书凭据。调用成功后，应用可通过接口返回的授权证书凭据uri进行签名、验签和查询详情操作。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -503,7 +505,7 @@ try {
 
 openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest): Promise\<CertReference>
 
-打开USB凭据PIN码认证对话框的授权页面。在弹出的页面中，用户为应用程序授权证书，可授权的证书类型包括应用私有凭据、用户公共凭据和USB凭据。使用Promise异步回调。
+打开证书管理对话框的证书凭据授权页面。在弹出的页面中，用户可以为应用授权使用证书凭据。调用成功后，应用可通过接口返回的授权证书凭据uri进行签名、验签和查询详情操作。可授权的证书类型包括应用证书凭据、用户证书凭据和USB Key证书凭据。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -541,7 +543,7 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error; 4. Call other service failed. Please try again.                 |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 | 29700006 | Indicates that the input parameters validation failed. for example, the parameter format is incorrect or the value range is invalid.            |
-| 29700007 | No available certificate for authorization            |
+| 29700007 | No available certificate for authorization. Possible causes: 1. No certificate matches the filter criteria; 2. All certificates have been deleted. |
 
 **示例**：
 ```ts
@@ -576,7 +578,7 @@ try {
 
 openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): Promise\<void>
 
-打开USB凭据PIN码认证对话框的授权页面。在弹出的页面中，用户可以输入PIN码授权USB证书凭据。使用Promise异步回调。
+打开证书管理对话框的USB Key证书凭据PIN码认证页面。在弹出的页面中，用户可以输入PIN码授权USB Key证书凭据。调用成功后，USB Key证书凭据将被解锁，应用可使用该凭据进行签名、加密等操作。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -586,7 +588,9 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：**
+- 从API版本26.0.0开始，该接口在所有设备上无行为差异。
+- 在API版本22-24，该接口在PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -645,7 +649,7 @@ try {
 
 supportsCACertDialog(): boolean
 
-判断设备是否支持打开CA证书管理对话框。
+判断设备是否支持打开CA证书管理对话框的特性，包括[openInstallCertificateDialog](#certificatemanagerdialogopeninstallcertificatedialog14)、[openUninstallCertificateDialog](#certificatemanagerdialogopenuninstallcertificatedialog18)、[openCertificateDetailDialog](#certificatemanagerdialogopencertificatedetaildialog18)方法。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 

@@ -943,7 +943,7 @@ Swiper在主轴上的尺寸大小模式枚举。
 | Stretch<sup>(deprecated)</sup>     | 0 |Swiper滑动一页的宽度为Swiper组件自身的宽度。<br>**说明**：从API version 7开始支持，从API version 10开始废弃，建议使用STRETCH替代。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
 | AutoLinear<sup>(deprecated)</sup>  | 1 |Swiper滑动一页的宽度为子组件宽度中的最大值。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br>**说明**：从API version 7开始支持，从API version 10开始废弃，建议使用AUTO_LINEAR替代。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
 | STRETCH<sup>10+</sup>              | 0 |Swiper滑动一页的宽度为Swiper组件自身的宽度。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| AUTO_LINEAR<sup>(deprecated)</sup> | 0| Swiper滑动一页的宽度为视窗内最左侧子组件的宽度。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br/>**说明**：从API version 10开始支持，从API version 12开始废弃，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)替代。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
+| AUTO_LINEAR<sup>(deprecated)</sup> | 0| Swiper滑动一页的宽度为视窗内最左侧子组件的宽度。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br/>**说明**：从API version 10开始支持，从API version 12开始废弃，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)替代。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
 
 ## SwiperNestedScrollMode<sup>11+</sup>枚举说明
 
@@ -1331,6 +1331,8 @@ ArkTS-Sta: left(value: Length | undefined): this
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1360,6 +1362,8 @@ ArkTS-Sta: top(value: Length | undefined): this
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1391,6 +1395,8 @@ ArkTS-Sta: right(value: Length | undefined): this
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1420,6 +1426,8 @@ ArkTS-Sta: bottom(value: Length | undefined): this
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1547,6 +1555,8 @@ static dot(): DotIndicator
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1568,6 +1578,8 @@ static digit(): DigitIndicator
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1613,6 +1625,8 @@ DotIndicator的构造函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1630,6 +1644,8 @@ Swiper组件圆点导航指示器的宽。
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1661,6 +1677,8 @@ Swiper组件圆点导航指示器的高。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1690,6 +1708,8 @@ ArkTS-Sta: selectedItemWidth(value: Length | undefined): this
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1721,6 +1741,8 @@ ArkTS-Sta: selectedItemHeight(value: Length | undefined): this
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1750,6 +1772,8 @@ ArkTS-Sta: mask(value: boolean | undefined): this
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1781,6 +1805,8 @@ Swiper组件圆点导航指示器的颜色。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1810,6 +1836,8 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined): this
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1851,7 +1879,7 @@ ArkTS-Sta: maxDisplayCount(maxDisplayCount: int | undefined): this
 
 | 参数名          | 类型   | 必填 | 说明                                                         |
 | --------------- | ------ | ---- | ------------------------------------------------------------ |
-| maxDisplayCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined| 是   | 设置圆点导航点指示器样式下，导航点显示个数最大值，当实际导航点个数大于最大导航点个数时，会生效超长效果样式，样式如[示例5](#示例5设置圆点导航点超长显示)所示。<br/>取值范围：[6, 9]<br/>**说明：** <br/>1、超长显示场景，目前暂时不支持交互功能（包括：手指点击拖拽、鼠标操作等）。<br/>2、在超长显示场景下，中间页面对应的选中导航点的位置，并不是完全固定的，取决于之前的翻页操作序列。<br/>3、当前仅支持displayCount为1的场景。<br/>取值为undefined时，等同于没有超长显示效果。 |
+| maxDisplayCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined| 是   | 设置圆点导航点指示器样式下，导航点显示个数最大值，当实际导航点个数大于最大导航点个数时，会生效超长效果样式，样式如[示例5](#示例5设置圆点导航点超长显示)所示。<br/>取值范围：[6, 9]<br/>**说明：** <br/>1、超长显示场景，API版本26.0.0之前不支持交互功能（包括：手指点击拖拽、鼠标操作），从API版本26.0.0开始支持手指点击拖拽的交互功能，不支持鼠标操作的交互功能。<br/>2、在超长显示场景下，中间页面对应的选中导航点的位置，并不是完全固定的，取决于之前的翻页操作序列。<br/>3、当前仅支持displayCount为1的场景。<br/>取值为undefined时，等同于没有超长显示效果。 |
 
 **返回值：** 
 
@@ -1957,6 +1985,8 @@ DigitIndicator的构造函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -1974,6 +2004,8 @@ Swiper组件数字导航点的字体颜色。
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2005,6 +2037,8 @@ ArkTS-Sta: selectedFontColor(value: ResourceColor | undefined): this
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -2035,6 +2069,8 @@ Swiper组件数字导航点的字体样式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -2064,6 +2100,8 @@ ArkTS-Sta: selectedDigitFont(value: Font | undefined): this
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2325,6 +2363,8 @@ ArkTS-Sta: customContentTransition(transition: SwiperContentAnimatedTransition |
 使用说明：
 
 1、循环场景下，设置prevMargin和nextMargin属性，使得Swiper前后端显示同一页面时，该接口不生效。<br>2、在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发[SwiperContentTransitionProxy](#swipercontenttransitionproxy12)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。<br>3、设置displayCount属性的swipeByGroup参数为true时，若同组中至少有一个页面在视窗内时，则会对同组中所有页面触发回调，若同组所有页面均不在视窗内时，则会一起下渲染树。<br>4、在页面跟手滑动和离手后执行切换动画的过程中，默认动画（页面滑动）依然会发生，若希望页面不滑动，可以设置主轴方向上负的位移（translate属性）来抵消页面滑动。例如：当displayCount属性值为2，视窗内有下标为0、1的两个页面时，页面水平滑动过程中，可以逐帧设置第0页的translate属性在x轴上的值为-position * mainAxisLength来抵消第0页的位移，设置第1页的translate属性在x轴上的值为-(position - 1) * mainAxisLength来抵消第1页的位移。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2673,6 +2713,8 @@ Swiper组件动画相关信息集合。
 
 Swiper自定义切换动画相关信息。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -2692,6 +2734,8 @@ Swiper自定义切换动画相关信息。
 
 Swiper自定义切换动画执行过程中，返回给开发者的proxy对象。开发者可通过该对象获取自定义动画视窗内的页面信息，同时，也可以通过调用该对象的finishTransition接口通知Swiper组件页面自定义动画已结束。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -2703,6 +2747,8 @@ Swiper自定义切换动画执行过程中，返回给开发者的proxy对象。
 **ArkTS-Sta起始版本：** 23
 
 ### 属性
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2731,6 +2777,8 @@ Swiper自定义切换动画执行过程中，返回给开发者的proxy对象。
 finishTransition(): void
 
 通知Swiper组件，此页面的自定义动画已结束。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

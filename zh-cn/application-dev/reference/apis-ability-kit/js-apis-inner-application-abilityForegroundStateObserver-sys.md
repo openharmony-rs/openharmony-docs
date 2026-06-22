@@ -70,6 +70,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

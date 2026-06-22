@@ -599,7 +599,41 @@ struct MenuExample {
 }
 ```
 
-![zh-cn_image_0000001174582862](figures/zh-cn_image_0000001174582862.gif)
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import { Entry, Component, Column, Text, Margin } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct MenuExample {
+  build() {
+    Column() {
+      Text('click for Menu')
+        .bindMenu([
+          {
+            value: 'Menu1',
+            action: () => {
+              console.info('handle Menu1 select');
+            }
+          },
+          {
+            value: 'Menu2',
+            action: () => {
+              console.info('handle Menu2 select');
+            }
+          },
+        ])
+    }
+    .width('100%')
+    .margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![menu](figures/menu.gif)
 
 ### 示例2（弹出自定义菜单）
 
@@ -721,7 +755,77 @@ struct MenuExample {
 }
 ```
 
-![zh-cn_image_0000001186807708](figures/zh-cn_image_0000001186807708.gif)
+ArkTS-Sta示例：
+```ts
+'use static'
+
+import {
+  Entry,
+  Component,
+  Column,
+  Row,
+  Text,
+  Margin,
+  Builder,
+  Flex,
+  HapticFeedbackMode,
+  FlexDirection,
+  FlexAlign,
+  ItemAlign,
+  ForEach,
+  Image,
+  Alignment,
+  Divider,
+  $r
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct MenuExample {
+  @State listData: Array<Int> = new Array<Int>(0, 0, 0);
+
+  @Builder
+  MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      ForEach(this.listData, (item: int, index: Double) => {
+        Column() {
+          Row() {
+            // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+            Image($r("app.media.icon")).width(20).height(20).margin({ right: 5 } as Margin)
+            Text(`Menu${index + 1}`).fontSize(20)
+          }
+          .width('100%')
+          .height(30)
+          .justifyContent(FlexAlign.Center)
+          .align(Alignment.Center)
+          .onClick(() => {
+            console.info(`Menu${index + 1} Clicked!`);
+          })
+
+          if (index != this.listData.length - 1) {
+            Divider().height(10).width('80%').color('#ccc')
+          }
+        }.padding(5).height(40)
+      })
+    }.width(100)
+  }
+
+  build() {
+    Column() {
+      Text('click for menu')
+        .fontSize(20)
+        .margin({ top: 20 } as Margin)
+        .bindMenu(this.MenuBuilder, { hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#f0f0f0')
+  }
+}
+```
+
+![menu3](figures/menu3.gif)
 
 ### 示例3（长按弹出菜单）
 
@@ -914,7 +1018,7 @@ struct DirectiveMenuExample {
 }
 ```
 
-![zh-cn_image_0000001689126950](figures/zh-cn_image_0000001689126950.png)
+![DirectiveMenuExample](figures/DirectiveMenuExample.png)
 
 ### 示例5（长按弹出菜单的截图预览样式）
 
@@ -1758,7 +1862,7 @@ struct MenuExample {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_backgroundBlurStyleOptions.png)
+![preview-builder](figures/image-backgroundBlurStyleOptions.png)
 
 ### 示例12（自定义背景效果参数）
 
@@ -1871,7 +1975,7 @@ struct MenuExample {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_backgroundEffect.png)
+![preview-builder](figures/image-backgroundEffect.png)
 
 ### 示例13（设置一镜到底动效支持抬手打断）
 
@@ -2246,7 +2350,7 @@ struct Index {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_bindMenuLifeCycle.gif)
+![preview-builder](figures/image-bindMenuLifeCycle.gif)
 
 ### 示例16（设置菜单蒙层）
 

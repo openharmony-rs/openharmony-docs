@@ -303,6 +303,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { appRecovery, Want } from '@kit.AbilityKit';
 import { Entry, Component, Button, FontWeight } from '@kit.ArkUI';
 

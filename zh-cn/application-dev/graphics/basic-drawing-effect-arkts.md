@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -173,9 +173,9 @@
 
       | 转角样式 | 说明 | 示意图 |
       | -------- | -------- | -------- |
-      | MITER_JOIN | 转角类型为尖角 | ![zh-cn_image_0000002158744154](figures/zh-cn_image_0000002158744154.png) |
-      | ROUND_JOIN | 转角类型为圆头 | ![zh-cn_image_0000002158744146](figures/zh-cn_image_0000002158744146.png) |
-      | BEVEL_JOIN | 转角类型为平头 | ![zh-cn_image_0000002194025257](figures/zh-cn_image_0000002194025257.png) |
+      | MITER_JOIN | 转角类型为尖角 | ![MITER-JOIN](figures/MITER-JOIN.png) |
+      | ROUND_JOIN | 转角类型为圆头 | ![ROUND-JOIN](figures/ROUND-JOIN.png) |
+      | BEVEL_JOIN | 转角类型为平头 | ![BEVEL-JOIN](figures/BEVEL-JOIN.png) |
 
 3. 使用attachPen()接口给Canvas画布设置画笔。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 

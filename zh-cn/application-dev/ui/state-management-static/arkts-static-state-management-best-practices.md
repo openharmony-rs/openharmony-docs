@@ -6,9 +6,8 @@
 
 【反例】
 
-```ts
-'use static'
-
+<!-- @[force_update_counterexample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/ForceUpdateCounterexample.ets) --> 
+``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Local, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -54,9 +53,9 @@ struct MyComponent {
 
 解决此问题，需用[\@Local](./arkts-static-new-local.md)装饰realStateArr成员变量。解决后就不再需要变量needsUpdate。
 
-```ts
-'use static'
+<!-- @[force_update_positive_case](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/ForceUpdatePositiveCase.ets) --> 
 
+``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Local, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -69,17 +68,24 @@ struct CompA {
       ForEach(this.realStateArr,
         (item: number) => {
           Text(`${item}`)
+            .fontSize(20)
+            .margin(10)
         })
-      Text('add item')
+      Button('add item')
+        .width(300)
+        .margin(10)
         .onClick(() => {
-          // 改变realStateArr触发UI视图更新
+          // 改变realStateArr触发UI视图刷新
           this.realStateArr.push(this.realStateArr[this.realStateArr.length-1] + 1);
         })
     }
-    .width(200).height(500)
+    .width('100%')
+    .height(500)
   }
 }
 ```
+
+![force_update_positive_case](../figures/best-practice_1.gif)
 
 ## 精准控制状态变量关联的组件数
 
@@ -87,9 +93,8 @@ struct CompA {
 
 【反例】
 
-```ts
-'use static'
-
+<!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) --> 
+``` TypeScript
 import { $r, Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Image, Local, ObservedV2, Param, Require, Row, Stack, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -154,9 +159,9 @@ struct Page {
 
 【正例】
 
-```ts
-'use static'
+<!-- @[precise_control_positive_cases](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/PreciseControlPositiveCases.ets) --> 
 
+``` TypeScript
 import { $r, Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Image, Local, ObservedV2, Param, Require, Row, Stack, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -171,6 +176,7 @@ struct Title {
       Image($r('app.media.startIcon'))
         .width(50)
         .height(50)
+        .margin(10)
       Text('Title')
         .fontSize(20)
     }
@@ -186,10 +192,12 @@ struct Page1 {
       Title()
       Stack() {
       }
-      .backgroundColor('black')
+      .backgroundColor('#87CEEB')
       .width(200)
       .height(400)
       Button('move')
+        .width(200)
+        .margin(10)
         .onClick(() => {
           this.getUIContext().animateTo({
             duration: 50
@@ -205,15 +213,16 @@ struct Page1 {
 }
 ```
 
+![precise_control_positive_cases](../figures/best-practice_2.gif)
+
 ## 合理控制对象类型状态变量关联的组件数量
 
 如果将一个复杂对象定义为状态变量，需要合理控制其关联的组件数。当对象中某个成员属性发生变化时，会导致该对象关联的所有组件刷新，即使这些组件并未直接使用该属性。
 
 【反例】
 
-```ts
-'use static'
-
+<!-- @[object_control_counterexample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/ObjectControlCounterexample.ets) --> 
+``` TypeScript
 import { Button, ClickEvent, Color, Column, Component, Entry, ForEach, ObjectLink, Observed, Row, Stack, State, Text } from '@kit.ArkUI';
 
 @Observed
@@ -270,9 +279,9 @@ struct Page {
 
 【正例】
 
-```ts
-'use static'
+<!-- @[object_control_positive_case](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/ObjectControlPositiveCase.ets) --> 
 
+``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Local, ObservedV2, Param, Require, Row, Stack, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -296,7 +305,9 @@ struct CompA {
     Column() {
       Text(this.a.prop2) // 当this.a.prop2的值改变时，会执行组件渲染
         .fontSize(this.isRenderText()) // 当Text组件刷新时，会执行isRenderText方法
+        .margin(10)
     }
+    .width('100%')
   }
 }
 
@@ -309,10 +320,12 @@ struct Page {
     Row() {
       Column() {
         Text('Prop1: ' + this.a.prop1)
-          .fontSize(50)
+          .fontSize(20)
+          .margin(10)
         CompA({ a: this.a })
         Button('Change prop1')
-          .width(200)
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.a.prop1 = this.a.prop1 + 1;
           })
@@ -320,10 +333,11 @@ struct Page {
       .width('100%')
     }
     .width('100%')
-    .height('100%')
   }
 }
 ```
+
+![object_control_positive_case](../figures/best-practice_3.gif)
 
 ## 避免在for、while等循环逻辑中频繁读取状态变量
 
@@ -331,9 +345,8 @@ struct Page {
 
 【反例】
 
-```ts
-'use static'
-
+<!-- @[loop_state_inefficient](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/LoopStateInefficient.ets) --> 
+``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -362,9 +375,8 @@ struct Index {
 
 【正例】
 
-```ts
-'use static'
-
+<!-- @[loop_state_optimized](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/LoopStateOptimized.ets) --> 
+``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -400,9 +412,8 @@ struct Index {
 
 【反例】
 
-```ts
-'use static'
-
+<!-- @[calculation_direct_state](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/CalculationDirectState.ets) --> 
+``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 
@@ -438,9 +449,8 @@ struct Index {
 
 【正例】
 
-```ts
-'use static'
-
+<!-- @[calculation_temp_variable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/CalculationTempVariable.ets) --> 
+``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 

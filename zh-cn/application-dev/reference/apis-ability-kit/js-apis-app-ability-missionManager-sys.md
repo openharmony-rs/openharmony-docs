@@ -171,8 +171,10 @@ onMission(listener: MissionListener): long
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -413,8 +415,10 @@ offMission(listenerId: long, callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -661,8 +665,10 @@ offMission(listenerId: long): Promise\<void>
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -1974,6 +1980,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityManager, missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2088,6 +2095,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityManager, missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2203,6 +2211,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityManager, missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2309,6 +2318,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityManager, missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2422,6 +2432,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityManager, missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

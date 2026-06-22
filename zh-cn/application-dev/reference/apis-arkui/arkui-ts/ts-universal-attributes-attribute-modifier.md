@@ -21,6 +21,8 @@
 > - 对于仅需根据条件设置组件单一属性的简单场景，可以使用[三目表达式](../../../ui/state-management/arkts-declarative-ui-description.md#配置属性)（如.width(isFullScreen ? 200 : 100)）。
 >
 > - 从API version 20开始，attributeModifier支持自定义组件。
+>
+> - 如果组件同时处于多种状态，并且分别在各自的状态里设置了一样的属性，那么最终样式生效的优先级为悬浮态&lt;按压态&lt;获焦态&lt;禁用态&lt;选中态。例如，如果组件同时处于悬浮态和按压态，在悬浮态和按压态都设置了背景色，那么此时组件最终显示按压态的背景色。
 
 ## attributeModifier
 
@@ -155,6 +157,30 @@ applySelectedAttribute?(instance: T): void
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                                                                                                         |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[属性](ts-basic-components-button.md#属性)（ButtonAttribute），[Text](ts-basic-components-text.md)组件的[属性](ts-basic-components-text.md#属性)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
+
+### applyHoveredAttribute
+
+ArkTS-Dyn: applyHoveredAttribute?(instance: T) : void
+
+ArkTS-Sta: default applyHoveredAttribute(instance: T) : void
+
+组件悬浮状态的样式。参考[示例9（组件绑定Modifier实现鼠标悬浮态效果）](#示例9组件绑定modifier实现鼠标悬浮态效果)。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -979,6 +1005,88 @@ struct ChildComponent {
 ```
 
 ![attributeModifier_common](figures/attributeModifier_common.gif)
+
+### 示例9（组件绑定Modifier实现鼠标悬浮态效果）
+
+该示例通过Button绑定Modifier实现了鼠标悬浮态的效果。当鼠标移动到Button上时，Button的背景颜色变为红色，此时为悬浮态效果；当鼠标离开Button时，Button的背景颜色变为黑色，此时为普通态效果；同时通过[applyHoveredAttribute](#applyhoveredattribute)接口设置悬浮态样式。
+
+从API版本26.0.0开始，新增[applyHoveredAttribute](#applyhoveredattribute)接口。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+// 设置Button组件属性的自定义AttributeModifier
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Black);
+  }
+
+  // 设置悬浮态样式
+  applyHoveredAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Red);
+  }
+}
+
+@Entry
+@Component
+struct attributeHoveredDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier, AttributeModifierState,
+  ButtonAttribute } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// 设置Button组件属性的自定义AttributeModifier
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Black);
+  }
+
+  // 设置悬浮态样式
+  applyHoveredAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Red);
+  }
+
+  monitoredStates(): int {
+    return AttributeModifierState.HOVERED;
+  }
+}
+
+@Entry
+@Component
+struct attributeHoveredDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![attributeModifier_hoverState](figures/attributeModifier_hoverState.gif)
 
 ## Attribute支持范围
 

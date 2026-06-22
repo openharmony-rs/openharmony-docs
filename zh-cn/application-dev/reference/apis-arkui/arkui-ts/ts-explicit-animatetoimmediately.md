@@ -1,8 +1,8 @@
 # 显式动画立即下发 (animateToImmediately)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -55,9 +55,9 @@ animateToImmediately(value: AnimateParam, processor: VoidCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[animateToImmediately](#animatetoimmediately)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 

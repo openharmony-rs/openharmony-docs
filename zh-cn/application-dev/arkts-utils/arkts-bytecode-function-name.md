@@ -8,7 +8,7 @@
 <!--Adviser: @HelloCrease-->
 
 ## 概述
-本文介绍字节码文件中[Method](arkts-bytecode-file-format.md#method)的`name_off`字段指向的字符串的命名规则，该命名规则从方舟字节码文件版本`12.0.4.0`开始生效。
+本文介绍方舟字节码文件中[Method](arkts-bytecode-file-format.md#method)的`name_off`字段指向的字符串的命名规则，该命名规则从方舟字节码文件版本`12.0.4.0`开始生效。
 ## 入口函数
 模块加载时被执行的函数，名称固定为`func_main_0`。
 ## 非入口函数
@@ -44,7 +44,7 @@
  
 **作用域名称**
  
-源代码中定义作用域时所使用的名称。匿名则为空字符串。为了降低字节码体积，方舟编译器会对较长的作用域名称进行优化，此时作用域名称以`@十六进制数字`的形式体现。这个数字代表作用域名称的字符串在一个字符串数组中的索引：在字节码文件中源代码对应的[Class](arkts-bytecode-file-format.md#class)中有一个名为`scopeNames`的[field](arkts-bytecode-file-format.md#field), 这个field的值是指向一个[LiteralArray](arkts-bytecode-file-format.md#literalarray)的偏移，这个LiteralArray存储的是一个字符串数组。十六进制数字就是代表作用域名称在这个数组中的索引。原函数名不进行索引转换。
+源代码中定义作用域时所使用的名称。匿名则为空字符串。为了降低字节码体积，方舟编译器会对较长的作用域名称进行优化，此时作用域名称以`@十六进制数字`的形式体现。这个数字代表作用域名称的字符串在一个字符串数组中的索引：在方舟字节码文件中源代码对应的[Class](arkts-bytecode-file-format.md#class)中有一个名为`scopeNames`的[field](arkts-bytecode-file-format.md#field), 这个field的值是指向一个[LiteralArray](arkts-bytecode-file-format.md#literalarray)的偏移，这个LiteralArray存储的是一个字符串数组。十六进制数字就是代表作用域名称在这个数组中的索引。原函数名不进行索引转换。
 
 例子：
 <!-- @[scope_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/ScopeName.ts) -->    
