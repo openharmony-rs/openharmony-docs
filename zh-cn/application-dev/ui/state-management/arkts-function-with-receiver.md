@@ -147,6 +147,7 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 - Function-with-Receiver的参数可以为[状态变量](arkts-state-management-overview.md)，当状态变量改变时，UI可以正常的被刷新渲染。
 
   <!-- @[ReceiverState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverState.ets) --> 
+  
   ``` TypeScript
   import { ClickEvent, Color, Component, Entry, Row, Text, TextAttribute, State } from '@kit.ArkUI';
   
