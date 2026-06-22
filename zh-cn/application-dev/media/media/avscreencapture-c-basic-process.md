@@ -142,6 +142,7 @@ OH_VideoEncInfo videoEncInfo = {
     .videoBitrate = 2000000,
     .videoFrameRate = 30
 };
+
 OH_VideoInfo videoInfo = {
     .videoCapInfo = videoCapInfo,
     .videoEncInfo = videoEncInfo

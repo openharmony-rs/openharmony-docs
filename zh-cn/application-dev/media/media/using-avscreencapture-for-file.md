@@ -111,7 +111,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    };
    
    OH_VideoEncInfo videoEncInfo = {
-       .videoCodec = OH_VideoCodecFormat::OH_H264,
+       .videoCodec = OH_H264,
        .videoBitrate = 2000000,
        .videoFrameRate = 30
    };
