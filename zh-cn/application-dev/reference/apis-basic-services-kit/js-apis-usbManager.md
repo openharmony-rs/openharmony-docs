@@ -339,7 +339,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | claim通信接口成功返回0；claim通信接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
+| number | claim通信接口成功返回0；claim通信接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -392,7 +392,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 释放接口成功返回0；释放接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
+| number | 释放接口成功返回0；释放接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -442,7 +442,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备配置成功返回0；设置设备配置失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。<br>- -17：I/O失败。|
+| number | 设置设备配置成功返回0；设置设备配置失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。<br>- -17：I/O失败。|
 
 **错误码：**
 
@@ -497,7 +497,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备接口成功返回0；设置设备接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常 。|
+| number | 设置设备接口成功返回0；设置设备接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -591,7 +591,7 @@ getFileDescriptor(pipe: USBDevicePipe): number
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回设备对应的文件描述符，失败返回其它错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
+| number | 返回设备对应的文件描述符，失败返回其它错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -641,7 +641,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -716,7 +716,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -1329,7 +1329,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [usbControlTransfer](#usbmanagerusbcontroltransfer12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用 [usbControlTransfer](#usbmanagerusbcontroltransfer12) 替代。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1571,7 +1571,7 @@ USB配件句柄。
 | callback | [AsyncCallback](js-apis-base.md#asynccallback)<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调信息。|
 | userData | Uint8Array | 否 | 否 | 用户上下文数据。 |
 | buffer | Uint8Array | 否 | 否 | 用于存储读或者写请求时的数据。 |
-| isoPacketCount | number | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，（单位：个数）。 |
+| isoPacketCount | number | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，（单位：个）。 |
 
 ## UsbTransferFlags<sup>18+</sup>
 
@@ -1644,7 +1644,7 @@ Usb异步传输回调。
 
 >**说明：**
 >
-> 从 API version 9开始支持，从API version 18开始废弃。建议使用 [USBDeviceRequestParams](#usbdevicerequestparams12) 替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用 [USBDeviceRequestParams](#usbdevicerequestparams12) 替代。
 
 **系统能力：** SystemCapability.USB.USBManager
 
