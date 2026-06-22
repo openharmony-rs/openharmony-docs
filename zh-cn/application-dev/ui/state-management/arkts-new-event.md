@@ -88,6 +88,7 @@ struct Index {
         }
       })
     }
+    .width('100%')
   }
 }
 
@@ -101,16 +102,23 @@ struct Child {
     Column() {
       Text(`${this.title}`)
         .fontColor(this.fontColor)
-      // 使用changeFactory更改父组件中的变量type
+        .fontSize(20)
+        .margin(10)
+      // 使用changeFactory更改父组件中的变量
       Button('change to Title Two')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.changeFactory(2);
         })
       Button('change to Title One')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.changeFactory(1);
         })
     }
+    .width('100%')
   }
 }
 ```

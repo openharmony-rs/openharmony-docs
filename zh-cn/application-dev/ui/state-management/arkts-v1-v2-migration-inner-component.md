@@ -878,7 +878,7 @@ struct GrandParent {
 
 @Component
 struct Parent {
-  // @Provide默认不支持重载，支持重载需设置allowOverride函数
+  // @Provide默认不支持重载，支持重载需设置allowOverride选项
   @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = PARENT_REVIEW_VOTES_INITIAL;
 
   build() {

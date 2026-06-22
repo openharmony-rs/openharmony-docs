@@ -1091,7 +1091,7 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
           return newTask;
         });
       } catch (e) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to getRawFileContent', JSON.stringify(e) ?? '');
+        hilog.error(DOMAIN, 'testTag', 'Failed to getRawFileContent: %{public}s', JSON.stringify(e) ?? '');
       }
     }
   }

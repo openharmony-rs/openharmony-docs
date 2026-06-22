@@ -790,10 +790,6 @@ struct Index {
       Text('使用文件管理器，使用本应用打开多个PDF')
         .fontSize($r('app.float.page_text_font_size'))
         .fontWeight(FontWeight.Bold)
-        .alignRules({
-          center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
-        })
       Button('Jump to PDF_A').onClick(() => {
         let wantInfo: Want = {
           bundleName: 'com.samples.paradigmstatemanagement',
@@ -858,7 +854,7 @@ export default class PDFData {
     return this.data;
   }
 
-  setFlage(value: string) {
+  setFlag(value: string) {
     this.flag = value;
   }
 
@@ -881,7 +877,7 @@ export default class PDFAbility extends UIAbility {
     // 用单例存储数据
     const data = this.launchWant.parameters as Record<string, string>;
     PDFData.getInstance().setData(data.key, data.value);
-    PDFData.getInstance().setFlage(this.launchWant.uri || '');
+    PDFData.getInstance().setFlag(this.launchWant.uri || '');
     windowStage.loadContent('pages/internalmigrate/LocalStorageMultiInstance/PDF').catch();
   }
 }

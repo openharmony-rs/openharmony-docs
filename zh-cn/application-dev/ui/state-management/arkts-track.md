@@ -161,7 +161,7 @@ struct AddLog {
   @State logTrack: LogTrack = new LogTrack('Hello');
   @State logNotTrack: LogNotTrack = new LogNotTrack('Hello');
 
-  isRender(index: number) {
+  isRender(index: number): number {
     hilog.info(DOMAIN_NUMBER, TAG, `Text ${index} is rendered`);
     return 50;
   }

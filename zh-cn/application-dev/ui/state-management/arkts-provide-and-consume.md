@@ -1101,7 +1101,7 @@ class TextNodeController extends NodeController {
       try {
         this.rootNode.appendChild(this.builderNode.getFrameNode());
       } catch (e) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to appendChild', JSON.stringify(e) ?? '');
+        hilog.error(DOMAIN, 'testTag', 'Failed to appendChild %{public}s', JSON.stringify(e) ?? '');
       }
     }
   }
@@ -1112,7 +1112,7 @@ class TextNodeController extends NodeController {
       try {
         this.rootNode.removeChild(this.builderNode.getFrameNode());
       } catch (e) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to removeChild', JSON.stringify(e) ?? '');
+        hilog.error(DOMAIN, 'testTag', 'Failed to removeChild %{public}s', JSON.stringify(e) ?? '');
       }
     }
   }

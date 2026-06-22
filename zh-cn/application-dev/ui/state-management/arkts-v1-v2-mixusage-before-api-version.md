@@ -112,7 +112,7 @@ struct IndexSix {
         })
       Divider()
         .color(Color.Blue)
-      // 可以只是使用无参数的V2组件
+      // 可以直接使用无参数的V2组件
       ChildSix()
     }
     .height('100%')
