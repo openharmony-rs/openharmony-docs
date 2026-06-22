@@ -2412,7 +2412,7 @@ struct Index {
   aboutToAppear() {
     // 获取池并调度预渲染。
     const pool = UIUtils.getCustomComponentContext(this).getReusePool();
-    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
+    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder), 1)
       .then(() => {
         console.info('ReusableComponent preRender completes');
       });
