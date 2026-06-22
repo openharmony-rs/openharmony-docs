@@ -17,7 +17,7 @@
    import { cryptoFramework } from '@kit.CryptoArchitectureKit';
    ```
 
-2. 基于已有的CRL数据，调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509crl11)创建X509证书吊销列表的对象。
+2. 基于已有的CRL数据，调用[cert.createX509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509crl11)创建X.509证书吊销列表的对象。
 
 3. 解析证书吊销列表信息。
 
