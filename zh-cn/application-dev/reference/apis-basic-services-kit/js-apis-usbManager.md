@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供管理USB设备的相关功能，包括主设备上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；从设备上端口管理、功能切换及查询等。
+本模块主要提供管理USB设备的相关功能，包括主机端的查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备端的端口管理、功能切换及查询等。
 
 > **说明：**
 > 
@@ -123,7 +123,7 @@ console.info(`devicesList = ${devicesList}`);
 
 connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
-根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。如果USB服务异常，可能返回`undefined`，注意需要对接口返回值做判空处理。
+根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。如果USB服务异常，会返回`undefined`，注意需要对接口返回值做判空处理。
 
 1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备信息以及device;
 2. 调用[usbManager.requestRight](#usbmanagerrequestright)请求使用该设备的权限。
@@ -134,7 +134,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | ---------------- |
-| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用[getDevices](#usbmanagergetdevices)获取的busNum和devAddress确定设备，当前其它属性不做处理。 |
+| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用[getDevices](#usbmanagergetdevices)获取的busNum和devAddress确定设备，当前其它属性（如name、vendorId等）不参与设备匹配。 |
 
 **返回值：**
 
@@ -569,7 +569,7 @@ function getRawDescriptor() {
 
   usbManager.requestRight(devicesList?.[0]?.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
-  let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
+  usbManager.getRawDescriptor(devicepipe);
 }
 ```
 
@@ -664,7 +664,7 @@ class PARA {
   data: Uint8Array = new Uint8Array()
 }
 
-let param: PARA = {
+let param: usbManager.USBDeviceRequestParams = {
   bmRequestType: 0x80,
   bRequest: 0x06,
 
@@ -734,7 +734,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 > 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
 
 ```ts
-// usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
+// usbManager.getDevices returns a data collection, take one device object and get permission.
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
 function bulkTransfer() {
@@ -755,7 +755,7 @@ function bulkTransfer() {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
       let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
-      let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+      usbManager.claimInterface(devicepipe, interfaces);
       let buffer =  new Uint8Array(128);
       usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
         console.info(`bulkTransfer = ${ret}`);
@@ -808,7 +808,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 <!--code_no_check-->
 ```ts
-// usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
+// usbManager.getDevices returns a data collection, take one device object and get permission.
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
 function usbSubmitTransfer() {
@@ -824,12 +824,12 @@ function usbSubmitTransfer() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  // 获取endpoint端点地址。
+  // Get the endpoint address.
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
-  // 获取设备的第一个id。
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  // Get the first id of the device.
+  usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
 
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
@@ -895,7 +895,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 <!--code_no_check-->
 ```ts
-// usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
+// usbManager.getDevices returns a data collection, take one device object and get permission.
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
 function usbCancelTransfer() {
@@ -911,7 +911,7 @@ function usbCancelTransfer() {
     console.info(`connect device fail`);
     return;
   }
-  // 获取endpoint端点地址。
+  // Get the endpoint address.
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
@@ -919,8 +919,8 @@ function usbCancelTransfer() {
     console.info(`invalid endpoint`);
     return;
   }
-  // 获取设备的第一个id。
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
+  // Get the first id of the device.
+  usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
     flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
@@ -1367,7 +1367,7 @@ class PARA {
   data: Uint8Array = new Uint8Array()
 }
 
-let param: PARA = {
+let param: usbManager.USBControlParams = {
   request: 0x06,
   reqType: 0x80,
   target:0,
@@ -1426,7 +1426,7 @@ function controlTransfer() {
 | protocol         | number                                   | 否 | 否 |接口的协议。                |
 | clazz            | number                                   | 否 | 否 |设备类型。                 |
 | subClass         | number                                   | 否 | 否 |设备子类。                 |
-| alternateSetting | number                                   | 否 | 否 |在同一个接口中的多个描述符中进行切换设置。值的大小表示支持可选模式个数，其中0表示不支持可选模式。 |
+| alternateSetting | number                                   | 否 | 否 |在同一个接口中的多个描述符中进行切换设置。alternateSetting的值表示支持可选模式个数，其中0表示不支持可选模式。 |
 | name             | string                                   | 否 | 否 |接口名称。                 |
 | endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | 否 | 否 |当前接口所包含的端点。           |
 
@@ -1441,10 +1441,10 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 | id             | number                                           | 否 | 否 |配置的唯一标识。        |
 | attributes     | number                                           | 否 | 否 |配置的属性。          |
 | maxPower       | number                                           | 否 | 否 |最大功耗，（单位：毫安）。    |
-| name           | string                                           | 否 | 否 |配置的名称，可以为空。     |
+| name           | string                                           | 否 | 否 |配置的名称，可以为空字符串。     |
 | isRemoteWakeup | boolean                                          | 否 | 否 |检查当前配置是否支持远程唤醒。true表示支持，false表示不支持。 |
 | isSelfPowered  | boolean                                          | 否 | 否 |检查当前配置是否支持独立电源。true表示支持，false表示不支持。 |
-| interfaces     | Array<[USBInterface](#usbinterface)> | 否 | 否 |配置支持的接口属性。      |
+| interfaces     | Array<[USBInterface](#usbinterface)>             | 否 | 否 |配置支持的接口列表。      |
 
 ## USBDevice
 
@@ -1458,14 +1458,14 @@ USB设备信息。
 | devAddress       | number                               | 否 | 否 |设备地址。      |
 | serial           | string                               | 否 | 否 |序列号。       |
 | name             | string                               | 否 | 否 |设备名字。      |
-| manufacturerName | string                               | 否 | 否 |厂商信息。      |
-| productName      | string                               | 否 | 否 |产品信息。      |
-| version          | string                               | 否 | 否 |版本。        |
+| manufacturerName | string                               | 否 | 否 |设备厂商名称。      |
+| productName      | string                               | 否 | 否 |设备产品名称。      |
+| version          | string                               | 否 | 否 |设备版本号。        |
 | vendorId         | number                               | 否 | 否 |厂商ID。      |
 | productId        | number                               | 否 | 否 |产品ID。      |
-| clazz            | number                               | 否 | 否 |设备类。       |
-| subClass         | number                               | 否 | 否 |设备子类。      |
-| protocol         | number                               | 否 | 否 |设备协议码。     |
+| clazz            | number                               | 否 | 否 |设备类型代码。       |
+| subClass         | number                               | 否 | 否 |设备子类型代码。      |
+| protocol         | number                               | 否 | 否 |设备协议代码。     |
 | configs          | Array&lt;[USBConfiguration](#usbconfiguration)&gt; | 否 | 否 |设备配置描述符信息。 |
 
 ## USBDevicePipe
@@ -1527,8 +1527,8 @@ USB设备消息传输通道，用于确定设备。
 
 | 名称                        | 值   | 说明                     |
 | --------------------------- | ---- | ------------------------ |
-| USB_REQUEST_DIR_TO_DEVICE   | 0    | 写数据，主设备往从设备。 |
-| USB_REQUEST_DIR_FROM_DEVICE | 0x80 | 读数据，从设备往主设备。 |
+| USB_REQUEST_DIR_TO_DEVICE   | 0    | 写数据，主机向设备。 |
+| USB_REQUEST_DIR_FROM_DEVICE | 0x80 | 读数据，设备向主机。 |
 
 ## USBAccessory<sup>14+</sup>
 
@@ -1568,7 +1568,7 @@ USB配件句柄。
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型。 |
 | timeout | number | 否 | 否 | 超时时间，（单位：毫秒）。 |
 | length | number | 否 |否 | 数据缓冲区的长度，必须是非负数（期望长度），（单位：字节）。 |
-| callback | AsyncCallback<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调信息。|
+| callback | [AsyncCallback](js-apis-base.md#asynccallback)<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调信息。|
 | userData | Uint8Array | 否 | 否 | 用户上下文数据。 |
 | buffer | Uint8Array | 否 | 否 | 用于存储读或者写请求时的数据。 |
 | isoPacketCount | number | 否 | 否 | 实时传输时数据包的数量，仅用于具有实时传输端点的I/O。必须是非负数，（单位：个数）。 |
