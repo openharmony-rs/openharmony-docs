@@ -83,14 +83,14 @@ try {
   let people: Array<ValuesBucket> = new Array(bucket1, bucket2, bucket3);
   kvStore.putBatch(people, (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting batch');
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`Failed to do putBatch error.code is ${error.code},message is ${error.message}`);
+  console.error(`Failed to do putBatch error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -149,11 +149,11 @@ try {
   kvStore.putBatch(people).then(() => {
     console.info(`Succeeded in putting batch`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to do putBatch error.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to do putBatch error. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`Failed to do putBatch error.code is ${error.code},message is ${error.message}`);
+  console.error(`Failed to do putBatch error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -205,14 +205,14 @@ try {
   predicates.inKeys(arr);
   kvStore.put('name', 'bob', (err: BusinessError) => {
     if (err) {
-      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting');
     if (kvStore != null) {
       kvStore.delete(predicates, (err: BusinessError) => {
         if (err) {
-          console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+          console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
         } else {
           console.info('Succeeded in deleting');
         }
@@ -221,7 +221,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -282,15 +282,15 @@ try {
       kvStore.delete(predicates).then(() => {
         console.info('Succeeded in deleting');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -337,7 +337,7 @@ try {
   predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
     if (err) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
@@ -345,7 +345,7 @@ try {
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
         if (err) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
@@ -354,7 +354,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred. Code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -411,16 +411,16 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
 
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -477,7 +477,7 @@ try {
   predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
     if (err) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
@@ -485,7 +485,7 @@ try {
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
         if (err) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
@@ -494,7 +494,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -551,15 +551,15 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -567,7 +567,7 @@ try {
 
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
 
-获取与指定Predicates对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，需要及时调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)方法关闭结果集以释放资源。
+获取指定设备上与指定Predicates对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，需要及时调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)方法关闭结果集以释放资源。
 > **说明：**
 >
 > 其中deviceId通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
@@ -611,7 +611,7 @@ try {
   predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet('localDeviceId', predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
     if (err) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
@@ -619,7 +619,7 @@ try {
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
         if (err) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
@@ -628,7 +628,7 @@ try {
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -636,7 +636,7 @@ try {
 
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KVStoreResultSet&gt;
 
-获取与指定Predicates对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，需要及时调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)方法关闭结果集以释放资源。
+获取指定设备上与指定Predicates对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，需要及时调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)方法关闭结果集以释放资源。
 > **说明：**
 >
 > 其中deviceId通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
@@ -690,14 +690,14 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
