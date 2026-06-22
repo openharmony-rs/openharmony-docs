@@ -419,7 +419,7 @@ struct Child {
             .fontSize(15)
             .margin(10)
         }
-
+  
         Button('change infoArr item')
           .width(300)
           .margin(10)
