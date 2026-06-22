@@ -2410,8 +2410,8 @@ clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
  > **说明：**
  >
-  > 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
-  > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
+ > 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+ > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2476,8 +2476,8 @@ clearCustomDnsRules(): Promise\<void\>
 
  > **说明：**
  >
-  > 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
-  > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
+ > 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+ > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
 
