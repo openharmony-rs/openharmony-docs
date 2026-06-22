@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @lizihao_73-->
-<!--Designer: @wambers584-->
+<!--Designer: @zhoulin_-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
