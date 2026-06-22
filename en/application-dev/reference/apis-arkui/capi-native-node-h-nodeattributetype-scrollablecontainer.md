@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType (Scrollable Container Component Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong; @guozejun-->
-<!--Designer: @yylong; @zcdqs-->
+<!--Owner: @shengu_lancer; @yylong; @yangcan18-->
+<!--Designer: @yylong;@guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -718,6 +718,29 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Whether the scrollbar automatically adjusts its margin. The value **0** indicates that the scrollbar automatically adjusts its margin, and **1** indicates the opposite.|
 
+
+## NODE_SCROLL_BAR_HEIGHT
+
+```c
+NODE_SCROLL_BAR_HEIGHT = 1002029
+```
+
+Scrollbar height. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Scrollbar height, in vp. Default value: auto-adjusted height of the scroll component.<br>Value range: The value must be greater than or equal to 0. If the value is less than 0, the default value is used. For kids' smartwatches, the default value is restored to 37 vp. The value **0** means not to show the scrollbar.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].f32 | Scrollbar height, in vp.|
 
 ## NODE_LIST_DIRECTION
 

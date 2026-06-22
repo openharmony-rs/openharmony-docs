@@ -47,7 +47,7 @@ Sets or returns the position of the component.
 | ------------------- | ----------------------------------- |
 | [Vector2](#vector2) | A vector that contains two values: x and y.<br>Unit: vp.|
 
-## PositionT<sup>12+</sup>
+## PositionT\<T><sup>12+</sup>
 
 type PositionT\<T> = Vector2T\<T>
 
