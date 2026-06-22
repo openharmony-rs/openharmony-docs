@@ -1067,7 +1067,7 @@ struct Index {
     return this.selectedEnd;
   }
   
-  //监听selectedEnd变化，自动更新选中的索引集合
+  // 监听selectedEnd变化，自动更新选中的索引集合
   onSelectedEndChange() {
     let start: number = -1;
     let end: number = -1;
