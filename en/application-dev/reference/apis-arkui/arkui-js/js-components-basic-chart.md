@@ -12,7 +12,7 @@
 >
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-The **\<chart>** component displays line charts, bar charts, gauge charts, circle charts of progresses, circle charts of loading, and circle charts of proportions.
+The **\<chart>** component displays line charts, bar charts, gauge charts, circle charts of progress, circle charts of loading, and circle charts of proportions.
 
 ## Required Permissions
 
