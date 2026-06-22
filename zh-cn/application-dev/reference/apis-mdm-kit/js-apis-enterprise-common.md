@@ -82,7 +82,7 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 
 | 类型 | 说明 |
 | --- | --- |
-| [_EnterpriseAdminExtensionContext.default](js-apis-application-EnterpriseAdminExtensionContext.md) | EnterpriseAdminExtensionAbility组件的上下文。 |
+| _EnterpriseAdminExtensionContext.default | EnterpriseAdminExtensionAbility组件的上下文[EnterpriseAdminExtensionContext](js-apis-application-EnterpriseAdminExtensionContext.md)。 |
 
 ## StartupScene<sup>24+</sup>
 
