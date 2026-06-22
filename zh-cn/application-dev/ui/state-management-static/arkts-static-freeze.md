@@ -152,9 +152,8 @@ struct Page2 {
 ![freezeWithTab](../state-management/figures/freezewithTabs.png)
 
 <!-- @[FreezeTabContent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeTabContent.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, Column, Component, Entry, FontWeight, ForEach, Link, Row, State, TabContent, Tabs, TabsController, Text, Watch } from '@kit.ArkUI';
 
 @Entry
