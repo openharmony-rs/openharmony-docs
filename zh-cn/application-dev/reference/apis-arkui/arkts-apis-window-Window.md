@@ -354,7 +354,7 @@ promise.then(() => {
 
 moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
-移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口坐标系统](window-coordinate.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。适用于拖拽窗口位置、窗口自动定位、动画场景等需要调整窗口位置的场景。
+移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口位置与大小](../../windowmanager/window-layout.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。适用于拖拽窗口位置、窗口自动定位、动画场景等需要调整窗口位置的场景。
 
 > **说明：**
 >
@@ -405,7 +405,7 @@ windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
 
 moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
-移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口坐标系统](window-coordinate.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
+移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口位置与大小](../../windowmanager/window-layout.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
 
 > **说明：**
 >
