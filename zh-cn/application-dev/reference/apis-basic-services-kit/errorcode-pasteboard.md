@@ -92,7 +92,7 @@ Replication is prohibited.
 **处理步骤**
 
 1. 在对相关数据内容进行复制时，首先判断其数据类型是否支持复制。
-2. 若数据内容不支持复制（如只读类型数据），不对此类数据内容进行复制操作。如DLP（Data Loss Prevention，数据防泄漏）只读数据，参见[数据防泄漏服务简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/dlp-overview-V5)。
+2. 若数据内容不支持复制（如只读类型数据），不对此类数据内容进行复制操作。如DLP（Data Loss Prevention，数据防泄漏）只读数据，参见[数据防泄漏服务简介](../../security/DataProtectionKit/dlp-overview.md)。
 
 ## 12900005 请求超时
 
