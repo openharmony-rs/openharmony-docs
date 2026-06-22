@@ -81,9 +81,9 @@ enableAppRecovery(restart?: [RestartFlag](#restartflag), saveOccasion?: [SaveOcc
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| restart | [RestartFlag](#restartflag) | 否 | 枚举类型，发生对应故障时是否重启，默认为重启，默认值为ALWAYS_RESTART，即总是重启应用。|
-| saveOccasion | [SaveOccasionFlag](#saveoccasionflag) | 否 | 枚举类型，用于指定状态保存的触发条件，默认为故障时保存，默认值为SAVE_WHEN_ERROR，即当发生应用故障时保存。|
-| saveMode | [SaveModeFlag](#savemodeflag) | 否 | 枚举类型，用于指定状态保存的实现方式，默认为文件缓存，默认值为SAVE_WITH_FILE，即每次状态保存都会写入到本地文件缓存。|
+| restart | [RestartFlag](#restartflag) | 否 | 枚举类型，发生对应故障时是否重启。默认值为ALWAYS_RESTART，即总是重启应用。|
+| saveOccasion | [SaveOccasionFlag](#saveoccasionflag) | 否 | 枚举类型，用于指定状态保存的触发条件。默认值为SAVE_WHEN_ERROR，即当发生应用故障时保存。|
+| saveMode | [SaveModeFlag](#savemodeflag) | 否 | 枚举类型，用于指定状态保存的实现方式。默认值为SAVE_WITH_FILE，即每次状态保存都会写入到本地文件缓存。|
 
 **示例：**
     
@@ -198,7 +198,7 @@ saveAppState(context?: UIAbilityContext): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| context | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)| 否 | 需要保存状态的UIAbility所对应的context，默认保存当前UIAbility的context。|
+| context | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)| 否 | 需要保存状态的UIAbility所对应的context。|
 
 **返回值：**
 

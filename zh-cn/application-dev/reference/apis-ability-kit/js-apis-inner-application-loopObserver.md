@@ -23,7 +23,7 @@ import { errorManager } from '@kit.AbilityKit';
 
 onLoopTimeOut?(timeout: number): void
 
-当js运行时应用主线程处理事件超时时触发的回调函数。
+当JS运行时应用主线程处理事件超时时触发的回调函数。
 
 使用场景：用于监控应用主线程处理事件的执行情况，当主线程处理事件超时时触发该回调，开发者可以根据超时情况记录日志、优化代码逻辑等。
 
