@@ -1,7 +1,7 @@
 # @system.router (页面路由)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 从API version 8 开始，该接口不再维护，推荐使用新接口[`@ohos.router`](js-apis-router.md)。
+> - 从API version 8 开始，该接口不再维护，推荐使用新接口[@ohos.router](js-apis-router.md)。
 >
 >
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
