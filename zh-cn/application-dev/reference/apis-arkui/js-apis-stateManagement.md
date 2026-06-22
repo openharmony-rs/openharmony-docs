@@ -2413,7 +2413,7 @@ struct Index {
     // 获取池并调度预渲染。
     const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     // 预加载preRenderBuilder内的复用组件到当前的全局复用池中，执行一次preRenderBuilder。
-    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
+    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder), 1)
       .then(() => {
         console.info('ReusableComponent preRender completes');
       });
