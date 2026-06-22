@@ -100,8 +100,8 @@
 
 | 名称                  | 值   | 说明                                                         |
 | --------------------- | ---- | ------------------------------------------------------------ |
-| UNDEFINED                 | 0    | 默认值，表示窗口矩形变化的原因未定义或未知。      |
-| MAXIMIZE                | 1    | 窗口最大化。窗口将铺满整个工作区域，保留窗口边框和标题栏，用户仍可通过拖拽调整大小。  |
+| UNDEFINED                 | 0    | 默认值，表示窗口矩形变化的原因未定义。      |
+| MAXIMIZE                | 1    | 窗口最大化。 |
 | RECOVER              | 2    | 窗口恢复到上一次的状态。                                                   |
 | MOVE | 3    | 窗口拖拽移动。 |
 | DRAG  | 4    | 窗口拖拽缩放。 |
@@ -169,29 +169,18 @@
 
 窗口最大化时的布局枚举。
 
-**使用场景**：
-- **FOLLOW_APP_IMMERSIVE_SETTING**：适用于应用已经有明确的全屏模式设置的场景
-- **EXIT_IMMERSIVE**：适用于最大化时需要保留系统UI（如状态栏、dock栏）的场景
-- **ENTER_IMMERSIVE**：适用于媒体播放、游戏等需要沉浸式体验的场景
-- **ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER**：适用于需要完全沉浸式体验，不希望hover时显示UI的场景
-
 **系统能力：**  SystemCapability.Window.SessionManager
 
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
 | FOLLOW_APP_IMMERSIVE_SETTING  | 0    | 最大化时，跟随应用app当前设置的全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| EXIT_IMMERSIVE | 1    | 最大化时，如果当前窗口设置了全屏模式会退出全屏模式，显示系统栏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。             |
+| EXIT_IMMERSIVE | 1    | 最大化时，如果当前窗口设置了全屏模式会退出全屏模式，显示系统标题栏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。             |
 | ENTER_IMMERSIVE    | 2    | 最大化时，进入全屏模式，鼠标Hover在热区上显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
 | ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER<sup>14+</sup>    | 3    | 最大化时，进入全屏模式，鼠标Hover在热区上不显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。   |
 
 ## AcrossDisplayPresentation
 
 折叠屏的跨屏策略枚举，用于控制折叠2in1设备在悬停态下主窗口最大化时的瀑布流模式行为。
-
-**使用场景**：
-- **FOLLOW_ACROSS_DISPLAY_SETTING**：适用于需要遵循系统默认行为的应用
-- **ENTER_ACROSS_DISPLAY_MODE**：适用于视频播放、电子书阅读等需要利用双屏显示内容的场景
-- **EXIT_ACROSS_DISPLAY_MODE**：适用于需要在单屏显示的应用，如传统应用界面
 
 **起始版本：** 26.0.0
 

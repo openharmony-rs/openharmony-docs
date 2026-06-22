@@ -376,8 +376,8 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------------------------------------------- |
-| x        | number                    | 是 | 窗口在x轴方向移动到的坐标位置，单位：px，取值范围为[0, screenWidth]，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。超出范围时抛出异常。|
-| y        | number                    | 是 | 窗口在y轴方向移动到的坐标位置，单位：px，取值范围为[0, screenHeight]，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。超出范围时抛出异常。|
+| x        | number                    | 是 | 窗口在x轴方向移动到的坐标位置，单位：px。值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。|
+| y        | number                    | 是 | 窗口在y轴方向移动到的坐标位置，单位：px。值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。|
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收异步操作结果。回调签名：(err: BusinessError) => void，其中err为错误对象，成功时为null，失败时包含错误码和错误信息。|
 
 **错误码：**
@@ -386,9 +386,9 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. Solution: Check that all required parameters are provided and have correct types. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. Possible cause: The window manager service is not running properly. Please check if the window manager service is started. |
+| 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
@@ -427,8 +427,8 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位：px，取值范围为[0, screenWidth]，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。超出范围时抛出异常。|
-| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位：px，取值范围为[0, screenHeight]，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。超出范围时抛出异常。|
+| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位：px。值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。|
+| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位：px。值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。|
 
 **返回值：**
 
@@ -442,9 +442,9 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     |  Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. Solution: Check that all required parameters are provided and have correct types. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. Possible cause: The window manager service is not running properly. Please check if the window manager service is started.|
+| 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
@@ -792,7 +792,7 @@ try {
 
 clientToGlobalDisplay(winX: number, winY: number): Position
 
-将相对于当前窗口左上角的坐标转换为相对于主屏幕左上角的全局坐标。适用于跨窗口定位、全局动画、悬浮窗定位、多屏协同等需要在不同坐标系间转换的场景。
+将相对于当前窗口左上角的坐标转换为相对于主屏幕左上角的全局坐标。
 
 不支持在经过显示缩放的窗口中调用，例如手机或平板设备在非自由多窗模式下的智慧多窗悬浮窗场景。
 
@@ -820,7 +820,7 @@ clientToGlobalDisplay(winX: number, winY: number): Position
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300010 | The operation in the current window status is invalid. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter type. Solution: Check that all parameter values are within the allowed range and have correct types. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
 
@@ -866,7 +866,7 @@ globalDisplayToClient(globalDisplayX: number, globalDisplayY: number): Position
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300010 | The operation in the current window status is invalid. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter type. Solution: Check that all parameter values are within the allowed range and have correct types. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
 
@@ -910,8 +910,8 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | ------------------------ |
-| width    | number                    | 是 | 当前窗口的目标宽度，单位为px，取值范围为[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。超出范围时自动修正为边界值。|
-| height   | number                    | 是 | 当前窗口的目标高度，单位为px，取值范围为[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。超出范围时自动修正为边界值。 |
+| width    | number                    | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。|
+| height   | number                    | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收异步操作结果。回调签名：(err: BusinessError) => void，其中err为错误对象，成功时为null，失败时包含错误码和错误信息。|
 
 **错误码：**
@@ -974,8 +974,8 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 当前窗口的目标宽度，单位为px，取值范围[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
-| height | number | 是 | 当前窗口的目标高度，单位为px，取值范围[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
 
 **返回值：**
 
@@ -1040,8 +1040,8 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 当前窗口的目标宽度，单位为px，取值范围[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
-| height | number | 是 | 当前窗口的目标高度，单位为px，取值范围[1, +∞)，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
 
 **返回值：**
 
@@ -1055,7 +1055,7 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter type. Solution: Check that all parameter values are within the allowed range and have correct types.  |
+| 401     | Parameter error. Possible cause: Invalid parameter range. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.  Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
@@ -1321,7 +1321,7 @@ getGlobalRect(): Rect
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Failed to convert result into JS value object. |
-| 1300003 | This window manager service works abnormally. Possible cause: The window manager service is not running properly. Please check if the window manager service is started. |
+| 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
