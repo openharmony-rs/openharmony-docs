@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-以下权限仅对MDM（Mobile Device Management）设备管理应用开放。设备管理应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
+以下权限仅对MDM（Mobile Device Management）设备管理应用开放。MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
 
 > **注意：**
 > 
@@ -689,7 +689,7 @@
 
 ## ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
-允许设备管理应用（MDM）设置user_grant类权限策略。
+允许设备管理应用设置user_grant类权限策略。
 
 获取该权限后，设备管理应用可设置被管理应用user_grant类权限策略，策略支持静默授予，拒绝授予以及默认（即不影响应用申请）。
 
@@ -725,7 +725,7 @@
 
 ## ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
-允许设备管理应用（MDM）生成、解密DLP文件，查询DLP文件策略。
+允许设备管理应用生成、解密DLP文件，查询DLP文件策略。
 
 <!--RP1--><!--RP1End-->
 
@@ -740,7 +740,7 @@
 
 **起始版本**：20
 
-**变更信息**：在API20，该权限面向系统应用开放；从API 21开始，面向设备管理应用开放。
+**变更信息**：在API20，该权限面向系统应用开放；从API 21开始，面向MDM应用开放。
 
 ## ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
 
