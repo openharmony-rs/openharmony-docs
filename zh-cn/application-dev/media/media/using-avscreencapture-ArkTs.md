@@ -362,6 +362,7 @@
 <!-- @[screenCapture_arkts_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
 
 ``` TypeScript
+import { common } from '@kit.AbilityKit';
 import { media } from '@kit.MediaKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { display } from '@kit.ArkUI';
@@ -389,7 +390,6 @@ export class AVScreenCaptureDemo {
       console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
     }
   }
-
   openFile(context: Context): void {
     const path: string = context.filesDir + '/screenCapture.mp4';
     this.captureFile = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);

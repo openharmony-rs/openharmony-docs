@@ -93,7 +93,7 @@ g_avCapture = OH_AVScreenCapture_Create();
 
 ``` C++
 // 录屏时获取麦克风，如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
-OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC}; 
+OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC};
 // 录屏时获取内录数据，内录参数必填。如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
 OH_AudioCaptureInfo innerCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_ALL_PLAYBACK};
 // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
@@ -106,10 +106,10 @@ OH_AudioInfo audioInfo = {
     .micCapInfo = micCapInfo,
     .innerCapInfo = innerCapInfo,
     .audioEncInfo = audioEncInfo
-};  
+};
 // 可以单独设置麦克风开关。
 bool isMic = true;
-OH_AVScreenCapture_SetMicrophoneEnabled(capture, isMic);
+OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
 ```
 
 ### 配置视频采集参数
@@ -135,17 +135,17 @@ OH_VideoCaptureInfo videoCapInfo = {
     .videoFrameWidth = screenWidth,
     .videoFrameHeight = screenHeight,
     .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
- };
+};
 // 录屏输出规格配置。
 OH_VideoEncInfo videoEncInfo = {
     .videoCodec = OH_H264,
     .videoBitrate = 2000000,
     .videoFrameRate = 30
- };
+};
 OH_VideoInfo videoInfo = {
     .videoCapInfo = videoCapInfo,
     .videoEncInfo = videoEncInfo
-};  
+};
 ```
 
 ### 初始化AVScreenCapture实例配置
@@ -271,7 +271,6 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     }
     return;
 }
-
 // 设置获取录屏屏幕Id的回调函数OnDisplaySelected()。
 void OnDisplaySelected(struct OH_AVScreenCapture *capture, uint64_t displayId, void *userData)
 {

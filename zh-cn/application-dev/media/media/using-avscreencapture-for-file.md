@@ -131,7 +131,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .captureMode = OH_CAPTURE_HOME_SCREEN,
        .dataType = OH_CAPTURE_FILE, // 录屏数据类型，文件。
        .audioInfo = audioInfo,
-       .videoInfo = videoInfo,
+       .videoInfo = videoInfo
    };
    ```
 
