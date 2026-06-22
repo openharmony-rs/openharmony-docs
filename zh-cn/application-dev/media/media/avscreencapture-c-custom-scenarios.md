@@ -155,7 +155,7 @@ region = nullptr;
 <!-- @[screenCapture_buffer_showCursor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-OH_AVScreenCapture_ShowCursor(capture, false);
+OH_AVScreenCapture_ShowCursor(g_avCapture, false);
 ```
 
 ## 设置最大帧率
@@ -167,7 +167,7 @@ OH_AVScreenCapture_ShowCursor(capture, false);
 <!-- @[screenCapture_buffer_setMaxVideoFrameRate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-OH_AVScreenCapture_SetMaxVideoFrameRate(capture, CAPTURE_VIDEO_FRAME_RATE);
+OH_AVScreenCapture_SetMaxVideoFrameRate(g_avCapture, CAPTURE_VIDEO_FRAME_RATE);
 ```
 
 ## 设置屏幕分辨率
@@ -177,7 +177,7 @@ OH_AVScreenCapture_SetMaxVideoFrameRate(capture, CAPTURE_VIDEO_FRAME_RATE);
 <!-- @[screenCapture_buffer_resizeCanvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-OH_AVScreenCapture_ResizeCanvas(capture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIGHT);
+OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIGHT);
 ```
 
 ## 设置内容过滤
@@ -191,13 +191,13 @@ OH_AVScreenCapture_ResizeCanvas(capture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIG
 <!-- @[screenCapture_buffer_excludeContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-OH_AVScreenCapture_ContentFilter *contentFilter= OH_AVScreenCapture_CreateContentFilter();
+OH_AVScreenCapture_ContentFilter *contentFilter = OH_AVScreenCapture_CreateContentFilter();
 // 添加过滤通知音。
 OH_AVScreenCapture_ContentFilter_AddAudioContent(contentFilter, OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO);
 // 排除指定窗口id。
 std::vector<int> windowIdsExclude = {};
 OH_AVScreenCapture_ContentFilter_AddWindowContent(contentFilter, windowIdsExclude.empty() ?
-        nullptr : &windowIdsExclude[0], static_cast<int32_t>(windowIdsExclude.size()));
+    nullptr : &windowIdsExclude[0], static_cast<int32_t>(windowIdsExclude.size()));
 
 OH_AVScreenCapture_ExcludeContent(capture, contentFilter);
 OH_AVScreenCapture_ReleaseContentFilter(contentFilter);

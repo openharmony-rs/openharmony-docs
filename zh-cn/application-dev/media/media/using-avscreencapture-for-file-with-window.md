@@ -137,18 +137,18 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    方式二：需传入期望录制的窗口ID进行录屏。
    
    <!-- @[screenCapture_withWindow_forID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    // 如果期望录制单个窗口，需传入单个窗口ID；如果期望同时录制多个窗口，需传入期望录制的窗口ID列表。
    g_missionIds = {g_windowId}; // 指定录制的窗口ID。
    config.videoInfo.videoCapInfo.missionIDs = g_missionIds.data();
    config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.size());
    config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW; // 设置录屏模式为录制指定窗口。
-
+   
    // 设置为false，代表录屏启动后不弹出系统Picker，弹出隐私提示弹窗。
    OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
    OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
-   OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+   OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
    ```
 
 4. 调用[OH_AVScreenCapture_StartScreenRecording](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreenrecording)方法开始进行窗口级录制。
