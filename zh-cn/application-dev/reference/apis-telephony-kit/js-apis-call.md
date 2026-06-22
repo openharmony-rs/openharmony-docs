@@ -325,11 +325,11 @@ call.makeCall(context, "138xxxxxxxx").then(() => {
 });
 ```
 
-## call.makeCallWithToken<sup>26+</sup>
+## call.makeCallWithToken
 
 makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<string\>;
 
-跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。后台调用需要申请ohos.permission.START_ABILITIES_FROM_BACKGROUND权限。
+跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。
 
 **原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -346,7 +346,7 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 
 | 类型                | 说明                              |
 | ------------------- | --------------------------------- |
-| Promise&lt;string&gt; | 以Promise形式异步返回校验token。 |
+| Promise&lt;string&gt; | 以Promise形式异步返回鉴权校验token。 |
 
 **错误码：**
 
@@ -354,26 +354,23 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
 
 **示例：**
 
->**说明：**
->
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
-
-<!--code_no_check-->
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-// 构建MakeCallOptions
-let options : call.MakeCallOptions = {
-    isHideDialScreen : true,
-    isCustomAccessibility : true
+import { call } from '@kit.TelephonyKit';
+
+// 设置通话结束后是否返回当前App与应用是否开启自定义无障碍功能
+let makeOptions: call.MakeCallOptions = {
+  isHideDialScreen: true,
+  isCustomAccessibility : true
 }
-// 从API15开始支持tel格式电话号码，如："tel:13xxxx"
-call.makeCallWithToken("188xxxx", options).then(() => {
+
+call.makeCallWithToken("138xxxxxxxx", makeOptions).then(() => {
     console.info(`makeCallWithToken success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCallWithToken fail, promise: err->${JSON.stringify(err)}`);
