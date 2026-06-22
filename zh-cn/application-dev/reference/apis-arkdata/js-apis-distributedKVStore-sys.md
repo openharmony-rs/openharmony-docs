@@ -180,12 +180,12 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100003     | Database corrupted.                    |
-| 15100005    | Database or result set already closed. |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100003     | Database corrupted.                                                                                            |
+| 15100005    | Database or result set already closed.                                                                         |
 
 以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
@@ -253,12 +253,12 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                             |
-| ------------ | ---------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100003     | Database corrupted.                      |
-| 15100005     | Database or result set already closed.   |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100003     | Database corrupted.                                                                                            |
+| 15100005     | Database or result set already closed.                                                                         |
 
 以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
@@ -317,13 +317,13 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
-| 15100003     | Database corrupted.                    |
-| 15100005     | Database or result set already closed. |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits.                                                                                               |
+| 15100003     | Database corrupted.                                                                                            |
+| 15100005     | Database or result set already closed.                                                                         |
 
 **示例：**
 
@@ -386,13 +386,13 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
-| 15100003     | Database corrupted.                    |
-| 15100005     | Database or result set already closed. |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits.                                                                                               |
+| 15100003     | Database corrupted.                                                                                            |
+| 15100005     | Database or result set already closed.                                                                         |
 
 **示例：**
 
@@ -457,13 +457,13 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
-| 15100003     | Database corrupted.                    |
-| 15100005     | Database or result set already closed. |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits.                                                                                               |
+| 15100003     | Database corrupted.                                                                                            |
+| 15100005     | Database or result set already closed.                                                                         |
 
 **示例：**
 
@@ -526,13 +526,13 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
-| 15100003     | Database corrupted.                    |
-| 15100005     | Database or result set already closed. |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits.                                                                                               |
+| 15100003     | Database corrupted.                                                                                            |
+| 15100005     | Database or result set already closed.                                                                         |
 
 **示例：**
 
@@ -591,13 +591,13 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
-| 15100003     | Database corrupted.                    |
-| 15100005     | Database or result set already closed. |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits.                                                                                               |
+| 15100003     | Database corrupted.                                                                                            |
+| 15100005     | Database or result set already closed.                                                                         |
 
 **示例：**
 
@@ -665,13 +665,13 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                      |
-| 15100003     | Database corrupted.                    |
-| 15100005     | Database or result set already closed. |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits.                                                                                               |
+| 15100003     | Database corrupted.                                                                                            |
+| 15100005     | Database or result set already closed.                                                                         |
 
 **示例：**
 

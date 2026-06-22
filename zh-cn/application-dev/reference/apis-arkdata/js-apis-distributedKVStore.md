@@ -5049,9 +5049,9 @@ enableSync(enabled: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types.  |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **示例：**
 
