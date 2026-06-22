@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @lizihao_73-->
-<!--Designer: @wambers584-->
+<!--Designer: @zhoulin_-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -21,6 +21,7 @@
 
 示例代码如下：
 
+ArkTS-Dyn示例：
 <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -44,6 +45,70 @@ struct Index {
         this.getBreakPointAndSetOrientation();
       };
       display.on('foldDisplayModeChange', callback);
+    } else {
+      this.getBreakPointAndSetOrientation();
+    }
+  }
+
+  private getBreakPointAndSetOrientation(): void {
+    let displayInfo = display.getDefaultDisplaySync();
+    let displayWidth = displayInfo.width;
+    let displayHeight = displayInfo.height;
+    let heightBp = displayHeight / displayWidth;
+    if(displayWidth > displayHeight) {
+      let temp = displayWidth;
+      displayWidth = displayHeight;
+      displayHeight = temp;
+    }
+    // 建议使用单一策略如"FOLLOW_DESKTOP"来应对设备的差异化，如单一策略无法满足需求，可参考断点机制，屏蔽设备差异
+    // 此处是举的特殊示例，原则上支持横屏的应用，旋转策略应该是支持4个方向可旋转，此处是为了说明断点的使用方式，才举此例
+    // 600为宽度断点枚举值其中的边界值， 0.8为高宽比断点枚举值其中的边界值
+    if (displayWidth >= 600 && heightBp < 0.8) {
+      this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.LANDSCAPE);
+      this.currentOrientation = 'LANDSCAPE';
+    } else {
+      this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.PORTRAIT);
+      this.currentOrientation = 'PORTRAIT';
+    }
+  }
+  build() {
+    RelativeContainer() {
+      Text(this.currentOrientation)
+        .fontWeight(600)
+        .fontSize(30)
+        .textAlign(TextAlign.Center)
+        .position({y: 300})
+        .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[rotation_policy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { window, display, Entry, Component, RelativeContainer, Text, TextAlign, State } from '@kit.ArkUI'
+import common from '@ohos.app.ability.common';
+import { Callback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  @State currentOrientation: string = 'UNSPECIFIED';
+  private stage: window.WindowStage = (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage;
+
+  aboutToAppear() {
+    let ret: boolean = false;
+    ret = display.isFoldable();
+    if (ret) {
+      let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+        console.info(`Listening enabled. Data: ${data}`);
+        this.getBreakPointAndSetOrientation();
+      };
+      display.onFoldDisplayModeChange(callback);
     } else {
       this.getBreakPointAndSetOrientation();
     }
@@ -131,6 +196,7 @@ struct Index {
 
 4. 调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略锁定显示方向。
 
+ArkTS-Dyn示例：
 <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -189,6 +255,82 @@ struct SpecificSceneSetOrientationIndex {
         .fontSize(17)
       Button('Set orientation from display')
         .onClick(() => {
+          console.info('Click: Set orientation from display');
+          this.setOrientationByDisplay();
+        })
+        .margin({ top: 20 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[convert_orientation_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { display, window } from '@kit.ArkUI';
+import { Entry, Component, Column, Text, Button, ClickEvent, FlexAlign, HorizontalAlign } from '@ohos.arkui.component';
+import { AppStorage } from '@ohos.arkui.stateManagement';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct SpecificSceneSetOrientationIndex {
+  mainWindow: window.Window = AppStorage.get<window.Window>('mainWindow_SetOrientation') as window.Window;
+  setOrientationByDisplay(): void {
+    try {
+      // 1.获取当前默认Display
+      const disp: display.Display = display.getDefaultDisplaySync();
+      const displayOrientation: int = disp.orientation as int; // 当前屏幕方向（0/1/2/3）
+
+      console.info('Current display orientation = ' + displayOrientation);
+      // 2.将displayOrientation转换为windowOrientation
+      let windowOrientation: int =
+        this.mainWindow.convertOrientationAndRotation(
+          window.RotationInfoType.DISPLAY_ORIENTATION,
+          window.RotationInfoType.WINDOW_ORIENTATION,
+          displayOrientation
+        );
+      // 3.根据windowOrientation映射到window.Orientation
+      let orientation: window.Orientation = window.Orientation.UNSPECIFIED;
+
+      switch (windowOrientation) {
+        case 0:
+          orientation = window.Orientation.PORTRAIT;
+          break;
+        case 1:
+          orientation = window.Orientation.LANDSCAPE_INVERTED;
+          break;
+        case 2:
+          orientation = window.Orientation.PORTRAIT_INVERTED;
+          break;
+        case 3:
+          orientation = window.Orientation.LANDSCAPE;
+          break;
+        default:
+          throw new Error('Invalid orientation value');
+      }
+      // 4.设置旋转策略锁定窗口方向
+      this.mainWindow.setPreferredOrientation(orientation, (err: BusinessError<void> | null): void => {
+        if (err && err.code) {
+          console.error('setPreferredOrientation failed: ' + JSON.stringify(err));
+        }
+      });
+    } catch (exception) {
+      let error = exception as BusinessError;
+      console.error('Exception in setOrientationByDisplay: ' + JSON.stringify(error));
+    }
+  }
+  build() {
+    Column(undefined) {
+      Text('Lock the display orientation')
+        .fontSize(17)
+      Button('Set orientation from display')
+        .onClick((event: ClickEvent) => {
           console.info('Click: Set orientation from display');
           this.setOrientationByDisplay();
         })
