@@ -501,10 +501,10 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities.  |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. The window type is not supported for this operation.|
 | 1300003 | This window manager service works abnormally. |
-| 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING.  |
+| 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING. |
 
 **示例：**
 
@@ -769,7 +769,7 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300010 | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter type. Solution: Check that all parameter values are within the allowed range and have correct types. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
 
@@ -1055,7 +1055,7 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: Invalid parameter range. |
+| 401     | Parameter error. Possible cause: Invalid parameter range.  |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.  Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
