@@ -781,7 +781,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.castToNormalForm(formId).then(() => {
-    console.info('formHost castTempForm success');
+    console.info('formHost castToNormalForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -3080,7 +3080,7 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
 | formId | string | 是   | 卡片标识。 |
-| callback | AsyncCallback\<Record\<string, Object> | 是   | 以callback方式返回接口运行结果及分享数据。 |
+| callback | AsyncCallback\<Record\<string, Object>> | 是   | 以callback方式返回接口运行结果及分享数据。 |
 
 **错误码：**
 
