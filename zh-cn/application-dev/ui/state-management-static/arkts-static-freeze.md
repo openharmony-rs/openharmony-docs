@@ -227,9 +227,8 @@ struct FreezeChild {
 对LazyForEach中缓存的自定义组件进行冻结，修改状态变量不会触发缓存组件的更新。
 
 <!-- @[FreezeLazyForEach](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeLazyForEach.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, Color, Column, Component, DataChangeListener, Entry, FontWeight, ForEach, IDataSource, LazyForEach, Link, List, ListItem, Row, State, Text, TextAlign, Watch } from '@kit.ArkUI';
 
 class BasicDataSource<string> implements IDataSource<string> {
