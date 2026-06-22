@@ -660,6 +660,7 @@
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)
     - [image.h](capi-image-h.md)
     - [image_animator.h](capi-image-animator-h.md)
+    - [layout.h](capi-layout-h.md)
     - [embedded_component.h](capi-embedded-component-h.md)
     - [native_animate.h](capi-native-animate-h.md)
     - [native_dialog.h](capi-native-dialog-h.md)
