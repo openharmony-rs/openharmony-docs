@@ -49,8 +49,8 @@ Describes the axis event object. Inherits from [BaseEvent](ts-gesture-customize-
 | Name           | Type | Read-Only|Optional                             | Description                                                   |
 | ------------------- | -----------------------|------|----- | -------------------------------------------------------- |
 | action              | [AxisAction](ts-appendix-enums.md#axisaction17)           | No  | No  | Action type of the axis event.<br>**Atomic service API**: This API can be used in atomic services since API version 17.                  |
-| x                   | number                 | No  | No  | X coordinate of the cursor in the component coordinate system based on the clicked element.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17. |
-| y                   | number                 | No  | No  | Y coordinate of the cursor in the component coordinate system based on the clicked element.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17. |
+| x                   | number                 | No  | No  | X coordinate of the cursor in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17. |
+| y                   | number                 | No  | No  | Y coordinate of the cursor in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17. |
 | windowX             | number                 | No  | No  | X coordinate of the cursor in the coordinate system of the current application window.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
 | windowY             | number                 | No  | No  | Y coordinate of the cursor in the coordinate system of the current application window.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
 | displayX            | number                 | No  | No  | X coordinate of the cursor in the coordinate system of the current application screen.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
@@ -59,6 +59,7 @@ Describes the axis event object. Inherits from [BaseEvent](ts-gesture-customize-
 | propagation         | Callback\<void>        | No  | No  | Enables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.<br>**Atomic service API**: This API can be used in atomic services since API version 17.  |
 | globalDisplayX<sup>20+</sup> | number | No| Yes| X coordinate of the cursor in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | globalDisplayY<sup>20+</sup> | number | No| Yes| Y coordinate of the cursor in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| eventHandleId<sup>24+</sup> | number | No| Yes| Unique ID for handling an event.<br> Value range: [0, +∞).<br> Note: This field is used when events are dispatched through the [postInputEventWithStrategy](../js-apis-arkui-builderNode.md#postinputeventwithstrategy24) API. Its value increases by 100,000 each time an event is dispatched.<br> Dispatching events repeatedly with the same **eventHandleId** will cause abnormal event responses. Assign a value to this field only when constructing an event; no further operations are required in other scenarios.<br>**Atomic service API**: This API can be used in atomic services since API version 24.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ### getHorizontalAxisValue
 
@@ -112,7 +113,7 @@ Obtains the two-finger pinch zoom ratio from the axis event.
 
 hasAxis(axisType: AxisType): boolean
 
-Checks whether this axis event contains the specified axis type.
+Checks whether the axis event contains the specified axis type.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -167,4 +168,3 @@ struct AxisEventExample {
 The figure below shows the event parameters captured when the user scrolls the mouse wheel.
 
 ![onAxisEvent](figures/onAxisEvent.png)
-<!--no_check-->

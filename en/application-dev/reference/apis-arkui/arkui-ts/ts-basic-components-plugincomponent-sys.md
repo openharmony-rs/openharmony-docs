@@ -85,7 +85,7 @@ The width and height of the component must be explicitly set to non-zero valid v
 
 ## Events
 
-[Gesture events](ts-gesture-settings.md) can be distributed to and processed inside the provider page.
+[Gesture events](ts-gesture-settings.md) can be dispatched to and processed within the provider page.
 
 In addition to the [universal events](ts-component-general-events.md), the following events are supported.
 
@@ -166,7 +166,7 @@ Error code 1 is the default error code. The following table describes the error 
 
 ## Example: Loading a PluginComponent
 
-This example demonstrates the basic usage of the **PluginComponent**. Specifically, you need to create an application acting as the **PluginComponent** [user](#plugincomponent-user) with the bundle name of **"com.example.user"** and an application acting as the **PluginComponent** [provider](#plugincomponent-provider) with the bundle name of **"com.example.provider"**. After building the application projects, perform the following steps for testing:
+This example demonstrates the basic usage of the **PluginComponent** component. You need to create a [user](#plugincomponent-user) application whose **bundleName** is **com.example.user** and a [provider](#plugincomponent-provider) application whose **bundleName** is **com.example.provider**. After building the application projects, perform the following steps for testing:
 1. Install the HAP packages of both applications on the device.
 2. Open the user application page. Both user and provider content should be displayed correctly.
 3. Register listeners by clicking the **Register Push Listener** button on the user side and the **Register Request Listener** button on the provider side.
@@ -228,7 +228,7 @@ The user application has a bundle name of **"com.example.user"** and contains on
     }
   }
   ```
-- Copy the [PluginComponent manager code](#plugincomponent-manager) corresponding to your project model type to the **ets/pages/plugin_component.js** file.
+- Copy the [PluginComponent manager code](#plugincomponent-manager) corresponding to your project model type to the **ets/pages/plugin_component.ets** file.
 - Add the **requestPermissions** tag in the **module.json5** file to allow the user application to query information from other applications:
   ```json
   "requestPermissions": [
@@ -286,7 +286,7 @@ The provider application has a bundle name of **"com.example.provider"** and con
     }
   }
   ```
-- Copy the [PluginComponent manager code](#plugincomponent-manager) corresponding to your project model type to the **ets/pages/plugin_component.js** file.
+- Copy the [PluginComponent manager code](#plugincomponent-manager) corresponding to your project model type to the **ets/pages/plugin_component.ets** file.
 
 ### PluginComponent Manager
 
