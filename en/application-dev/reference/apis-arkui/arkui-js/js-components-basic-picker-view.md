@@ -174,7 +174,7 @@ export default {
 <!-- xxx.hml -->
 <div class="container">
   <text class="title">
-    Selected：{{time}}
+    Selected: {{time}}
   </text>
   <picker-view class="time-picker" type="time" selected="{{defaultTime}}" @change="handleChange"></picker-view>
 </div>
@@ -232,7 +232,7 @@ export default {
 <!-- xxx.hml -->
 <div class="container">
     <text class="title">
-        Selected：{{date}}
+        Selected: {{date}}
     </text>
     <picker-view class="time-picker" type="date" selected="{{defaultTime}}" @change="handleChange" lunarswitch="true"></picker-view>
 </div>
@@ -274,7 +274,7 @@ export default {
 <!-- xxx.hml -->
 <div class="container">
     <text class="title">
-        Selected：{{datetime}}
+        Selected: {{datetime}}
     </text>
     <picker-view class="date-picker" type="datetime"  hours="24" lunarswitch="true" @change="handleChange"></picker-view>
 </div>
@@ -316,7 +316,7 @@ export default {
 <!-- xxx.hml -->
 <div class="container">
     <text class="title">
-        Selected：{{ value }}
+        Selected: {{ value }}
     </text>
     <picker-view class="multitype-picker" type="multi-text" columns="3" range="{{ multitext }}" @columnchange="handleChange"></picker-view>
 </div>
@@ -350,7 +350,7 @@ export default {
         value: ""
     },
     handleChange(data) {
-        this.value = data.column + "," + "value: " + data.newValue + ", Index:" + data.newSelected;
+        this.value = data.column + "," + "Value: " + data.newValue + ", Index:" + data.newSelected;
     },
 }
 ```
