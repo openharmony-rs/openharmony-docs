@@ -24,11 +24,15 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
-## deviceSettings.setScreenOffTime<sup>11+</sup>
+## deviceSettings.setScreenOffTime<sup>(deprecated)</sup>
 
 setScreenOffTime(admin: Want, time: number): void
 
 设置设备息屏时间。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setValue](./js-apis-enterprise-deviceSettings.md#devicesettingssetvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_SCREENOFF_TIME
 
@@ -77,11 +81,15 @@ try {
 }
 ```
 
-## deviceSettings.getScreenOffTime
+## deviceSettings.getScreenOffTime<sup>(deprecated)</sup>
 
 getScreenOffTime(admin: Want, callback: AsyncCallback&lt;number&gt;): void
 
 获取设备息屏时间，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getValue](./js-apis-enterprise-deviceSettings.md#devicesettingsgetvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_SETTINGS
 
@@ -131,11 +139,15 @@ deviceSettings.getScreenOffTime(wantTemp, (err, result) => {
 });
 ```
 
-## deviceSettings.getScreenOffTime
+## deviceSettings.getScreenOffTime<sup>(deprecated)</sup>
 
 getScreenOffTime(admin: Want): Promise&lt;number&gt;
 
 获取设备息屏时间，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getValue](./js-apis-enterprise-deviceSettings.md#devicesettingsgetvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_GET_SETTINGS
 
@@ -189,11 +201,15 @@ deviceSettings.getScreenOffTime(wantTemp).then((result) => {
 });
 ```
 
-## deviceSettings.installUserCertificate
+## deviceSettings.installUserCertificate<sup>(deprecated)</sup>
 
 installUserCertificate(admin: Want, certificate: CertBlob, callback: AsyncCallback&lt;string&gt;): void
 
 安装用户证书，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [installUserCertificate](./js-apis-enterprise-securityManager.md#securitymanagerinstallusercertificate)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -257,11 +273,15 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 });
 ```
 
-## deviceSettings.installUserCertificate
+## deviceSettings.installUserCertificate<sup>(deprecated)</sup>
 
 installUserCertificate(admin: Want, certificate: CertBlob): Promise&lt;string&gt;
 
 安装用户证书，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [installUserCertificate](./js-apis-enterprise-securityManager.md#securitymanagerinstallusercertificate)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -329,11 +349,15 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 });
 ```
 
-## deviceSettings.uninstallUserCertificate
+## deviceSettings.uninstallUserCertificate<sup>(deprecated)</sup>
 
 uninstallUserCertificate(admin: Want, certUri: string, callback: AsyncCallback&lt;void&gt;): void
 
 卸载用户证书，使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [uninstallUserCertificate](./js-apis-enterprise-securityManager.md#securitymanageruninstallusercertificate)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -348,7 +372,7 @@ uninstallUserCertificate(admin: Want, certUri: string, callback: AsyncCallback&l
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
-| certUri    | string    | 是    | 证书uri，由安装用户证书接口[installUserCertificate](#devicesettingsinstallusercertificate)设置返回。 |
+| certUri    | string    | 是    | 证书uri，由安装用户证书接口[installUserCertificate](#devicesettingsinstallusercertificatedeprecated)设置返回。 |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。      |
 
 **错误码**：
@@ -386,11 +410,15 @@ deviceSettings.uninstallUserCertificate(wantTemp, aliasStr, (err) => {
 });
 ```
 
-## deviceSettings.uninstallUserCertificate
+## deviceSettings.uninstallUserCertificate<sup>(deprecated)</sup>
 
 uninstallUserCertificate(admin: Want, certUri: string): Promise&lt;void&gt;
 
 卸载用户证书，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [uninstallUserCertificate](./js-apis-enterprise-securityManager.md#securitymanageruninstallusercertificate)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -405,7 +433,7 @@ uninstallUserCertificate(admin: Want, certUri: string): Promise&lt;void&gt;
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| certUri    | string     | 是    | 证书uri，由安装用户证书接口[installUserCertificate](#devicesettingsinstallusercertificate-1)设置返回。 |
+| certUri    | string     | 是    | 证书uri，由安装用户证书接口[installUserCertificate](#devicesettingsinstallusercertificatedeprecated-1)设置返回。 |
 
 **返回值：**
 
@@ -447,11 +475,15 @@ deviceSettings.uninstallUserCertificate(wantTemp, aliasStr).then(() => {
 });
 ```
 
-## deviceSettings.setPowerPolicy<sup>11+</sup>
+## deviceSettings.setPowerPolicy<sup>(deprecated)</sup>
 
 setPowerPolicy(admin: Want, powerScene: PowerScene, powerPolicy: PowerPolicy): void
 
 设置电源策略。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setValue](./js-apis-enterprise-deviceSettings.md#devicesettingssetvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
@@ -504,11 +536,15 @@ try {
 }
 ```
 
-## deviceSettings.getPowerPolicy<sup>11+</sup>
+## deviceSettings.getPowerPolicy<sup>(deprecated)</sup>
 
 getPowerPolicy(admin: Want, powerScene: PowerScene): PowerPolicy
 
 获取电源策略。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getValue](./js-apis-enterprise-deviceSettings.md#devicesettingsgetvalue)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
