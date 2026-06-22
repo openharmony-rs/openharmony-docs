@@ -261,12 +261,12 @@ struct Child {
       .width('100%')
     }
   }
-
+  
   @ComponentV2
   struct Child {
     @Require @Param rawObject: RawObject;
     @Require @Param observedObject: ObservedObject;
-
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
