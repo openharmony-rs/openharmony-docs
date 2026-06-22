@@ -1680,7 +1680,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 > **说明：**
 >
 > 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
-> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法。
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1732,7 +1732,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 > **说明：**
 >
 > 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
-> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法。
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
 
 **需要权限**：ohos.permission.INTERNET
 
