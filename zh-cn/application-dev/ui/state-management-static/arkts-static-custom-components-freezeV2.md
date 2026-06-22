@@ -84,9 +84,8 @@ struct Page1 {
 页面2：
 
 <!-- @[FreezePageRouter2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezePage2.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
 @Entry
 @ComponentV2
