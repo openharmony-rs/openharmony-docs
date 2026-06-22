@@ -876,7 +876,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
