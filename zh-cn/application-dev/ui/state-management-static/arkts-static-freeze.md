@@ -613,9 +613,8 @@ struct NavigationContentMsgStack {
 在数据很多的长列表滑动场景下，开发者会使用LazyForEach来按需创建组件，同时配合组件复用降低在滑动过程中因创建和销毁组件带来的开销。但是开发者如果根据其复用类型不同，设置了[reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)，或者为了保证滑动性能设置了较大的cacheCount，这就可能使复用池或者LazyForEach缓存较多的节点。在这种情况下，如果开发者触发List下所有子节点的刷新，就会带来节点刷新数量过多的问题，这个时候，可以考虑搭配组件冻结使用。
 
 <!-- @[FreezeReuse](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeReuse.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, ClickEvent, Color, Column, Component, DataChangeListener, Entry, ForEach, IDataSource, LazyForEach, Link, List, ListItem, Reusable, Row, State, Text, Watch } from '@kit.ArkUI';
 
 @Reusable
@@ -627,7 +626,7 @@ struct ChildComponent {
   descChange(propertyName: string) {
     console.info(`ChildComponent messageChange ${this.desc} this.index: ${this.index}`);
   }
-  
+
   getValue(): string {
     console.info(`Child getvalue,id: ${this.index}`);
     return this.desc;
