@@ -1680,7 +1680,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 > **说明：**
 >
 > 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
-> 如果使用的是同一条自定义规则，不需要重复使用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加，一次添加可以一直使用。当不需要使用此条自定义规则时，可以根据第一条说明进行删除 。
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1732,7 +1732,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 > **说明：**
 >
 > 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
-> 如果使用的是同一条自定义规则，不需要重复使用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加，一次添加可以一直使用。当不需要使用此条自定义规则时，可以根据第一条说明进行删除 。
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1786,8 +1786,8 @@ removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
 > **说明：**
 >
-> 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。<br>
-> 如果需要调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)，保证当前不存在另一线程在使用之前[addCustomDnsRule](#connectionaddcustomdnsrule11)配置的自定义规则，避免冲突。
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
+> 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1837,8 +1837,8 @@ removeCustomDnsRule(host: string): Promise\<void\>
 
 > **说明：**
 >
-> 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。<br>
-> 如果需要调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)，保证当前不存在另一线程在使用之前[addCustomDnsRule](#connectionaddcustomdnsrule11)配置的自定义规则，避免冲突。
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
+> 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1889,6 +1889,11 @@ clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
 删除当前应用程序的所有的自定义DNS规则。使用callback异步回调。
 
+> **说明：**
+>
+> 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+> 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
+
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
@@ -1931,6 +1936,11 @@ connection.clearCustomDnsRules((error: BusinessError, data: void) => {
 clearCustomDnsRules(): Promise\<void\>
 
 删除当前应用程序的所有的自定义DNS规则。使用Promise异步回调。
+
+> **说明：**
+>
+> 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+> 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
 
