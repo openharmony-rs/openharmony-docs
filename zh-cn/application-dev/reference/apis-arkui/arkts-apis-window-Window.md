@@ -5381,6 +5381,9 @@ on(type:  'subWindowClose', callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：**
+该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不报错不触发监听事件。
+
 **参数：**
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
