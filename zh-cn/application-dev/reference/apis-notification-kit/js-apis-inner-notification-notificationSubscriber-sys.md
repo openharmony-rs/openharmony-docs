@@ -616,7 +616,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 onBadgeChanged?: (data: BadgeNumberCallbackData) => void
 
-监听应用角标个数变化。
+监听应用角标数量变化。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -630,7 +630,7 @@ onBadgeChanged?: (data: BadgeNumberCallbackData) => void
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| onBadgeChanged | (data: [BadgeNumberCallbackData](#badgenumbercallbackdata10)) => void | 否   | 回调返回监听到的应用信息。 |
+| onBadgeChanged | (data: [BadgeNumberCallbackData](#badgenumbercallbackdata10)) => void | 否   | 回调返回监听到的应用角标数量变化。 |
 
 **示例：**
 
@@ -868,6 +868,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## SubscribeCallbackData
 
+返回携带系统属性值的通知信息。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -888,6 +890,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## EnabledNotificationCallbackData<sup>8+</sup>
 
+应用角标使能状态变化的回调函数类型。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -899,6 +903,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | enable | boolean | 是  | 否  | 应用通知使能状态。<br> - true：允许。<br> - false：禁止。 |
 
 ## EnabledSilentReminderCallbackData<sup>24+</sup>
+
+应用通知静默提醒开关状态的回调函数类型。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -918,6 +924,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## BadgeNumberCallbackData<sup>10+</sup>
 
+应用角标数量变化的回调函数类型。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -933,6 +941,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## EnabledPriorityNotificationCallbackData<sup>23+</sup>
 
+通知优先级总开关状态。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
@@ -942,6 +952,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | enable | boolean | 是  | 否  | 所有通知的优先使能状态。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
 
 ## EnabledPriorityNotificationByBundleCallbackData<sup>23+</sup>
+
+通知通知优先级开关状态。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -958,6 +970,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | 是  | 否  | 应用通知的优先使能状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
 
 ## NotificationSwitchChangedCallbackData
+
+通知开关状态变化的回调函数类型。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -977,6 +991,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## NotificationClassification
 
+通知分类信息。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -992,7 +1008,10 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | classification | string | 是  | 是  | 系统识别的通知分类。 |
 | subClassification | string | 是  | 是  | 系统识别的通知子分类。 |
 
+
 ## VoiceContent
+
+通知语音播报内容。
   
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1007,6 +1026,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | 名称            | 类型                                                                | 只读 | 可选 | 说明     |
 | --------------- |--------------------------------------------------------------------| ---- | --- | -------- |
 | textContent | string                                             | 是  | 是  | 文本语音播报内容。 |
+
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
 
@@ -1070,6 +1090,8 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 ## SystemUpdateCallback<sup>23+</sup>
 
 type SystemUpdateCallback = (data: SubscribeCallbackData) => void
+
+返回携带系统属性值通知信息的回调函数类型。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
