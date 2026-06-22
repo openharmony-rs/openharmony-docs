@@ -381,7 +381,6 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
 <!-- @[screenCapture_stopScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 停止录屏。
 result = OH_AVScreenCapture_StopScreenCapture(g_avCapture);
 ```
 
@@ -392,7 +391,6 @@ result = OH_AVScreenCapture_StopScreenCapture(g_avCapture);
 <!-- @[screenCapture_releaseScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 释放录屏资源。
 result = OH_AVScreenCapture_Release(g_avCapture);
 if (result != AV_SCREEN_CAPTURE_ERR_BASE) {
     OH_LOG_ERROR(LOG_APP, "StopScreenCapture OH_AVScreenCapture_Release: %{public}d", result);

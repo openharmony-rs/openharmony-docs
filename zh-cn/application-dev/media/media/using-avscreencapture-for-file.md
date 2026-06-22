@@ -40,7 +40,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 1. 添加头文件。
 
    <!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
-
+   
    ``` C
    #include "hilog/log.h"
    #include "napi/native_api.h"
@@ -58,7 +58,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 2. 创建AVScreenCapture实例capture。
 
    <!-- @[screenCapture_create_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    g_avCapture = OH_AVScreenCapture_Create();
    ```
@@ -72,7 +72,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
    同时，录屏存文件需要设置状态回调，感知录制状态。
 
    <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    // 录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
    OH_AudioCaptureInfo micCapInfo = {
@@ -80,7 +80,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .audioChannels = 2,
        .audioSource = OH_MIC
    };
-
+   
    OH_AudioCaptureInfo innerCapInfo = {
        .audioSampleRate = 48000,
        .audioChannels = 2,
@@ -92,11 +92,11 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .audioBitrate = 128000,
        .audioCodecformat = OH_AudioCodecFormat::OH_AAC_LC
    };
-
+   
    // 获取屏幕信息
    uint64_t displayId = 0;
    NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
-
+   
    NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
    ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
    if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
@@ -109,24 +109,24 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .videoFrameHeight = screenHeight,
        .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
    };
-
+   
    OH_VideoEncInfo videoEncInfo = {
        .videoCodec = OH_VideoCodecFormat::OH_H264,
        .videoBitrate = 2000000,
        .videoFrameRate = 30
    };
-
+   
    OH_AudioInfo audioInfo = {
        .micCapInfo = micCapInfo,
        .innerCapInfo = innerCapInfo,
        .audioEncInfo = audioEncInfo
    };
-
+   
    OH_VideoInfo videoInfo = {
        .videoCapInfo = videoCapInfo,
        .videoEncInfo = videoEncInfo
    };
-
+   
    config = {
        .captureMode = OH_CAPTURE_HOME_SCREEN,
        .dataType = OH_CAPTURE_FILE, // 录屏数据类型，文件。
@@ -138,7 +138,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 4. 调用StartScreenRecording()方法开始进行屏幕录制。
 
    <!-- @[screenCapture_startScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    result = OH_AVScreenCapture_StartScreenRecording(g_avCapture);
    ```
@@ -146,7 +146,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 5. 调用StopScreenRecording()方法停止录制。
 
    <!-- @[screenCapture_stopScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    result = OH_AVScreenCapture_StopScreenRecording(g_avCapture);
    ```
@@ -154,7 +154,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 6. 调用Release()方法销毁实例，释放资源。
 
    <!-- @[screenCapture_releaseScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    result = OH_AVScreenCapture_Release(g_avCapture);
    ```

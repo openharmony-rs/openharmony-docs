@@ -88,7 +88,8 @@ OH_AVScreenCaptureConfig config;
 SetConfig05(config);
 OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_Init(g_avCapture, config);
 if (result != AV_SCREEN_CAPTURE_ERR_OK) {
-    OH_LOG_ERROR(LOG_APP, "==ScreenCaptureSample== ScreenCapture OH_AVScreenCapture_Init failed %{public}d", result);
+    OH_LOG_ERROR(LOG_APP,
+        "==ScreenCaptureSample== ScreenCapture OH_AVScreenCapture_Init failed %{public}d", result);
 }
 // 1. 可选，可以根据需要设置区域坐标和大小，设置想要捕获的区域，如下方创建了一个从（0, 0）为起点的长100，宽100的矩形区域。
 OH_Rect* region = new OH_Rect;

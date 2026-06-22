@@ -40,8 +40,8 @@
 1. 添加头文件。
 
    <!-- @[screenCapture_arkts_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
-
-   ```javascript
+   
+   ``` TypeScript
    import { common } from '@kit.AbilityKit';
    import { media } from '@kit.MediaKit';
    import { fileIo } from '@kit.CoreFileKit';
@@ -71,7 +71,7 @@
    ```javascript
    // 声明一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
    private screenCapture?: media.AVScreenCaptureRecorder;
-
+   
    async createAVScreenCapture(): Promise<void> {
      // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
      this.screenCapture = await media.createAVScreenCaptureRecorder();
@@ -82,54 +82,54 @@
 
    ArkTS-Dyn示例：
    <!-- @[screenCapture_arkts_Callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
-
+   
    ``` TypeScript
-   this.screenCapture.on('stateChange', async (infoType: media.AVScreenCaptureStateCode) => {
+   this.screenCapture?.on('stateChange', async (infoType: media.AVScreenCaptureStateCode) => {
      switch (infoType) {
-           case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STARTED:
-               console.info(`录屏成功开始后会收到的回调`);
-               break;
-           case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_CANCELED:
-               this.screenCapture?.release();
-               this.screenCapture = undefined;
-               console.info(`不允许使用录屏功能`);
-               break;
-           case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_USER:
-               this.screenCapture?.release();
-               this.screenCapture = undefined;
-               console.info(`通过录屏胶囊结束录屏，底层录制会停止`);
-               break;
-           case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER:
-               console.info(`录屏因其他中断而停止，底层录制会停止`);
-               break;
-           case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_CALL:
-               console.info(`录屏过程因通话中断，底层录制会停止`);
-               break;
-           case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_MIC_UNAVAILABLE:
-               console.info(`录屏麦克风不可用`);
-               break;
-           case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_MIC_MUTED_BY_USER:
-               console.info(`录屏麦克风被用户静音`);
-               break;
-           case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_MIC_UNMUTED_BY_USER:
-               console.info(`录屏麦克风被用户取消静音`);
-               break;
-           case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE:
-               // 目前可以从系统直接注册监听到进入隐私场景。
-               console.info(`录屏进入隐私场景`);
-               break;
-           case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE:
-               console.info(`录屏退出隐私场景`);
-               break;
-           case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES:
-               console.info(`用户账号切换，底层录制会停止`);
-               break;
-           default:
-               break;
-       }
+       case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STARTED:
+         console.info(`录屏成功开始后会收到的回调`);
+         break;
+       case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_CANCELED:
+         this.screenCapture?.release();
+         this.screenCapture = undefined;
+         console.info(`不允许使用录屏功能`);
+         break;
+       case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_USER:
+         this.screenCapture?.release();
+         this.screenCapture = undefined;
+         console.info(`通过录屏胶囊结束录屏，底层录制会停止`);
+         break;
+       case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_INTERRUPTED_BY_OTHER:
+         console.info(`录屏因其他中断而停止，底层录制会停止`);
+         break;
+       case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_CALL:
+         console.info(`录屏过程因通话中断，底层录制会停止`);
+         break;
+       case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_MIC_UNAVAILABLE:
+         console.info(`录屏麦克风不可用`);
+         break;
+       case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_MIC_MUTED_BY_USER:
+         console.info(`录屏麦克风被用户静音`);
+         break;
+       case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_MIC_UNMUTED_BY_USER:
+         console.info(`录屏麦克风被用户取消静音`);
+         break;
+       case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE:
+         // 目前可以从系统直接注册监听到进入隐私场景。
+         console.info(`录屏进入隐私场景`);
+         break;
+       case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE:
+         console.info(`录屏退出隐私场景`);
+         break;
+       case media.AVScreenCaptureStateCode.SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES:
+         console.info(`用户账号切换，底层录制会停止`);
+         break;
+       default:
+         break;
+     }
    })
-   this.screenCapture.on('error', (err) => {
-       console.error(`处理异常情况, code is ${err.code}, message is ${err.message}.`);
+   this.screenCapture?.on('error', (err) => {
+     console.error(`处理异常情况, code is ${err.code}, message is ${err.message}.`);
    })
    ```
    
@@ -298,8 +298,8 @@
 6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
 
    <!-- @[screenCapture_arkts_skipPrivacyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
-
-   ```javascript
+   
+   ``` TypeScript
    let windowIDs: number[] = [57, 86];
    await this.screenCapture?.skipPrivacyMode(windowIDs);
    ```
