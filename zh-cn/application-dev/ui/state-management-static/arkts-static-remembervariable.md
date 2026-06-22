@@ -298,14 +298,14 @@ struct Index {
 在build()内使用rememberVariable封装已有的状态变量只能记录状态变量初始值，不能同步状态变量的改动。
 
 <!-- @[RememberInitFromState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberInitFromState.ets) --> 
+
 ``` TypeScript
-'use static'
 import { rememberVariable, MutableVariable, Entry, Component, Column, Text,
          Button, Builder, State, ColumnOptions } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct Index {
+struct InitFromStatePage {
   @State source: string = 'Hello world';
   build() {
     Column({space: '10px'} as ColumnOptions) {
