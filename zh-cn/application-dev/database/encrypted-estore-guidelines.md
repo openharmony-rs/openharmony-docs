@@ -50,6 +50,25 @@ ECStoreManager类：用于管理应用的E类数据库和C类数据库。
 
 <!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) --> 
 
+``` TypeScript
+import { distributedKVStore } from '@kit.ArkData';
+import Logger from '../common/Logger';
+
+export class Mover {
+  async move(eStore: distributedKVStore.SingleKVStore, cStore: distributedKVStore.SingleKVStore): Promise<void> {
+    if (eStore != null && cStore != null) {
+      try {
+        let entries: distributedKVStore.Entry[] = await cStore.getEntries('key_test_string');
+        await eStore.putBatch(entries);
+        Logger.info(`ECDB_Encry move success`);
+      } catch (e) {
+        Logger.info(`ECDB_Encry move failed,code is ${e.code},message is ${e.message}`);
+      }
+    }
+  }
+}
+```
+
 ### Store
 
 提供了获取数据库，在数据库中插入数据、删除数据、更新数据和获取当前数据数量的接口。
