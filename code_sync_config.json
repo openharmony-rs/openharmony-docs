@@ -31557,6 +31557,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputingPropertyResolution.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"Computing_Property_Resolution",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -52326,6 +52336,56 @@
 						"end_line":76,
 						"name":"Decorative_Initialized",
 						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/TwowayBinding.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"Twoway_Binding",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/NoTwowayBinding.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"No_Twoway_Binding",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DragDrop.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"Drag_Drop",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/ProviderSame.ets",
+				"functions":[
+					{
+						"end_line":59,
+						"name":"Provider_Same",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/BuilderNode.ets",
+				"functions":[
+					{
+						"end_line":147,
+						"name":"Builder_Node",
+						"start_line":15
 					}
 				]
 			}
