@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-屏幕属性提供管理显示设备的一些基础能力，包括获取默认显示设备的信息，获取所有显示设备的信息以及监听显示设备的插拔行为。
+屏幕属性提供管理显示设备的基础能力，包括获取默认显示设备的信息、获取所有显示设备的信息以及监听显示设备的插拔状态变化等。该模块支持多种显示设备类型的管理，适用于多屏协同、折叠屏适配或屏幕状态监听等场景，帮助开发者实现适配不同显示设备的应用布局、响应屏幕状态变化和优化多屏用户体验等功能。
 
 > **说明：**
 >
@@ -319,7 +319,7 @@ getDisplayByIdSync(displayId: number): Display
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1400003 | This display manager service works abnormally. Possible causes: Display is null, display id corresponding display does not exist. |
 
 **示例：**
@@ -364,16 +364,16 @@ getBrightnessInfo(displayId: number): BrightnessInfo
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported.|
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
-| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
 
 ```ts 
 try {
-  let brightNessInfo = display.getBrightnessInfo(0);
-  console.info(`brightness info: ${JSON.stringify(brightNessInfo)}`);
+  let brightnessInfo = display.getBrightnessInfo(0);
+  console.info(`brightness info: ${JSON.stringify(brightnessInfo)}`);
 } catch (error) {
   console.error(`Failed to getDisplayBrightness. Code: ${error.code}, message: ${error.message}`);
 }
@@ -460,7 +460,7 @@ try {
 
 getPrimaryDisplaySync(): Display
 
-获取主屏信息。除2in1之外的设备获取的是设备自带屏幕的Display对象；2in1设备外接屏幕时获取的是当前主屏幕的Display对象；2in1设备没有外接屏幕时获取的是自带屏幕的Display对象。
+获取主屏信息。除PC/2in1之外的设备获取的是设备自带屏幕的Display对象；PC/2in1设备外接屏幕时获取的是当前主屏幕的Display对象；PC/2in1设备没有外接屏幕时获取的是自带屏幕的Display对象。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -591,7 +591,7 @@ on(type: 'add'|'remove'|'change', callback: Callback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -628,7 +628,7 @@ off(type: 'add'|'remove'|'change', callback?: Callback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -834,7 +834,7 @@ on(type: 'foldStatusChange', callback: Callback&lt;FoldStatus&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -875,7 +875,7 @@ off(type: 'foldStatusChange', callback?: Callback&lt;FoldStatus&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -914,9 +914,9 @@ on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, Brightn
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported.|
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
-| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
 
@@ -954,9 +954,9 @@ off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, Brigh
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 801     | Capability not supported.|
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
-| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
 
@@ -994,7 +994,7 @@ on(type: 'foldAngleChange', callback: Callback&lt;Array&lt;number&gt;&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1031,7 +1031,7 @@ off(type: 'foldAngleChange', callback?: Callback&lt;Array&lt;number&gt;&gt;): vo
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1072,7 +1072,7 @@ on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1109,7 +1109,7 @@ off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1154,6 +1154,7 @@ isCaptured(): boolean
 
 ```ts
 let ret: boolean = false;
+// 检查屏幕显示信息是否被获取
 ret = display.isCaptured();
 ```
 
@@ -1184,7 +1185,7 @@ on(type: 'foldDisplayModeChange', callback: Callback&lt;FoldDisplayMode&gt;): vo
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1225,7 +1226,7 @@ off(type: 'foldDisplayModeChange', callback?: Callback&lt;FoldDisplayMode&gt;): 
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1272,7 +1273,7 @@ createVirtualScreen(config:VirtualScreenConfig): Promise&lt;number&gt;
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801     | Capability not supported.function createVirtualScreen can not work correctly due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 
@@ -1290,7 +1291,7 @@ class VirtualScreenConfig {
   supportsFocus ?: boolean = true;
 }
 
-let config : VirtualScreenConfig = {
+let config: VirtualScreenConfig = {
   name: 'screen01',
   width: 1080,
   height: 2340,
@@ -1300,9 +1301,9 @@ let config : VirtualScreenConfig = {
 };
 
 display.createVirtualScreen(config).then((screenId: number) => {
-  console.info(`Succeeded in creating the virtual screen. ScreenId : ${screenId}`);
+  console.info(`Succeeded in creating the virtual screen. ScreenId: ${screenId}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1335,7 +1336,7 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801     | Capability not supported.function destroyVirtualScreen can not work correctly due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -1346,10 +1347,11 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let screenId: number = 1;
+// 销毁虚拟屏幕
 display.destroyVirtualScreen(screenId).then(() => {
   console.info('Succeeded in destroying the virtual screen.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to destroy the virtual screen. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to destroy the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1383,7 +1385,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801     | Capability not supported.function setVirtualScreenSurface can not work correctly due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -1405,7 +1407,7 @@ struct Index {
     display.setVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in setting the surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
     });
   }
   build() {
@@ -1415,7 +1417,7 @@ struct Index {
         controller: this.xComponentController
       })
       Button('setSurface')
-        .onClick((event: ClickEvent) => {
+        .onClick(() => {
           this.setVirtualScreenSurface();
       }).width('100%')
       .height(20)
@@ -1442,7 +1444,7 @@ makeUnique(screenId:number): Promise&lt;void&gt;
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | number | 是   | 要设置成异源模式的屏幕ID。其中id应为大于0的整数，否则返回401错误码。 |
+| screenId  | number | 是   | 要设置成异源模式的屏幕ID。其中ID应为大于0的整数，否则返回401错误码。 |
 
 **返回值：**
 
@@ -1457,7 +1459,7 @@ makeUnique(screenId:number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801     | Capability not supported.function makeUnique can not work correctly due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -1468,10 +1470,11 @@ makeUnique(screenId:number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let screenId: number = 0;
+// 将屏幕设置为异源模式
 display.makeUnique(screenId).then(() => {
   console.info('Succeeded in making unique screens.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to make unique screens. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to make unique screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1504,11 +1507,12 @@ convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): Position
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 1400003 | This display manager service works abnormally. |
-| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
 
 ```ts
+// 定义需要转换的相对坐标
 let relativePosition: display.RelativePosition = {
   displayId: 0,
   position: {
@@ -1518,6 +1522,7 @@ let relativePosition: display.RelativePosition = {
 };
 
 try {
+   // 将相对坐标转换为全局坐标
   let position: display.Position = display.convertRelativeToGlobalCoordinate(relativePosition);
   console.info(`The global coordinate is ${position.x}, ${position.y}`)
 } catch (exception) {
@@ -1540,7 +1545,7 @@ convertGlobalToRelativeCoordinate(position: Position, displayId?: number): Relat
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
 | position  | [Position](#position20) | 是 | 需要转化为相对坐标的全局坐标。 |
-| displayId | number | 否 | 相对坐标系原点所在的屏幕ID，传递该参数表示以指定屏幕左上角为原点转换相对坐标。不指定则不传参，默认转换成全局坐标所在屏幕的相对坐标，若全局坐标不在任何屏幕上，则默认转换成主屏的相对坐标。 |
+| displayId | number | 否 | 相对坐标系原点所在的屏幕ID，传递该参数表示以指定屏幕左上角为原点转换相对坐标。若未传入该参数，默认转换成全局坐标所在屏幕的相对坐标；若全局坐标不在任何屏幕上，则默认转换成主屏的相对坐标。 |
 
 **返回值：**
 
@@ -1555,17 +1560,19 @@ convertGlobalToRelativeCoordinate(position: Position, displayId?: number): Relat
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 1400003 | This display manager service works abnormally. |
-| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
 
 ```ts
+// 定义需要转换的全局坐标
 let position: display.Position = {
     x: 100,
     y: 200
 };
 
 try {
+  // 将全局坐标转换为相对坐标
   let relPos: display.RelativePosition = display.convertGlobalToRelativeCoordinate(position, 0);
   console.info(`The relative coordinate is ${relPos.displayId}, ${relPos.position.x}, ${relPos.position.y}`)
 } catch (exception) {
@@ -1936,7 +1943,7 @@ on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -1986,7 +1993,7 @@ off(type: 'availableAreaChange', callback?: Callback&lt;Rect&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 
