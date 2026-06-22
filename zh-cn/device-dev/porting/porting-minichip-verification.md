@@ -51,20 +51,27 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
    ```
    if (ohos_kernel_type == "liteos_m") {
      all_features += [
+       "//test/xts/acts/ability_lite/ability_hal:ActsAbilityMgrTest",
        "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest",
-       "//test/xts/acts/communication_lite/softbus_hal:ActsSoftBusTest",
-       "//test/xts/acts/communication_lite/wifiservice_hal:ActsWifiServiceTest",
-       "//test/xts/acts/utils_lite/file_hal:ActsUtilsFileTest",
+
+       #"//test/xts/acts/communication_lite/wifiservice_hal:ActsWifiServiceTest",
+       "//test/xts/acts/commonlibrary_lite/file_hal:ActsUtilsFileTest",
        "//test/xts/acts/startup_lite/syspara_hal:ActsParameterTest",
-       "//test/xts/acts/iot_hardware_lite/iot_controller_hal:ActsWifiIotTest",
-       "//test/xts/acts/kernel_lite/kernelcmsis_hal:ActsCMSISTest",
-       "//test/xts/acts/utils_lite/kv_store_hal:ActsKvStoreTest",
-       "//test/xts/acts/security_lite/datahuks_hal:ActsSecurityDataTest",
+       "//test/xts/acts/iothardware_lite/peripheral_hal:ActsWifiIotTest",
+       "//test/xts/acts/distributeddatamgr_lite/kv_store_hal:ActsKvStoreTest",
+       "//test/xts/acts/security_lite/huks/liteos_m_adapter:ActsHuksHalFunctionTest",
        "//test/xts/acts/hiviewdfx_lite/hilog_hal:ActsDfxFuncTest",
-       "//test/xts/acts/distributed_schedule_lite/samgr_hal:ActsSamgrTest",
-       "//test/xts/acts/update_lite/updater_hal:ActsUpdaterFuncTest",
+       "//test/xts/acts/hiviewdfx_lite/hievent_hal:ActsHieventLiteTest",
+       "//test/xts/acts/distributed_schedule_lite/system_ability_manager_hal:ActsSamgrTest",
+       "//test/xts/acts/update_lite/dupdate_hal:ActsUpdaterFuncTest",
        "//test/xts/acts/startup_lite/bootstrap_hal:ActsBootstrapTest",
+       "//test/xts/acts/xts_lite/device_attest_lite/device_attestStart_hal:ActsDeviceAttestTest",
      ]
+     if (bundle_framework_lite_enable_ohos_bundle_manager_service == true) {
+       all_features += [
+         "//test/xts/acts/appexecfwk_lite/appexecfwk_hal:ActsBundleMgrTest",
+       ]
+     }
    }
    ```
 
