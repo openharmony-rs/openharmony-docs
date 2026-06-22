@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -22,7 +22,7 @@ The decorators including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md),
 
 - Declare array items or class properties as types decorated with \@Observed. For an example, see [Nested Object](#nested-object).
 
-- The state variable decorated by \@ObjectLink in a child component is used to receive the class instance decorated by \@Observed of the parent component to establish bidirectional data binding.
+- The state variable decorated with \@ObjectLink in a child component is used to receive the class instance decorated with \@Observed of the parent component to establish bidirectional data binding.
 
 - Before API version 19, \@ObjectLink can receive only class instances decorated with \@Observed. Starting from API version 19, \@ObjectLink can also receive complex types without the \@Observed restriction. However, note that for observing nested types, it must receive either a class instance decorated with \@Observed or the return value of [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19). For details, see [Two-Dimensional Array](#two-dimensional-array).
 
@@ -39,16 +39,16 @@ To implement unidirectional data synchronization, you need to use \@Prop. For de
 | \@ObjectLink Decorator| Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
 | Parameters            | None                                                        |
-| Allowed variable types    | Class instances of Date and [Array](#two-dimensional-array) can be inherited.<br>API version 11 and later versions support the class instances of [Map](#extended-map-class) and [Set](#extended-set-class), and the union type consisting of \@Observed decorative class and undefined or null, for example, ClassA \| ClassB, ClassA \| undefined, or ClassA \| null. For an example, see [Union Type @ObjectLink](#union-type-objectlink).<br>Before API version 19, it must be a class instance decorated by \@Observed.<br>In API version 19 and later, \@ObjectLink can be initialized by complex types, that is, class, object, and built-in types. However, when observing a nested type, you still need to receive the class instance decorated by \@Observed or the return value of makeV1Observed.<br>**NOTE**<br>\@ObjectLink does not support simple types. To use simple types, you can use [\@Prop](arkts-prop.md).|
+| Allowed variable types    | Class instances of Date and [Array](#two-dimensional-array) can be inherited.<br>In API version 11 and later versions, class instances of [Map](#extended-map-class) and [Set](#extended-set-class) can be inherited, and the union type consisting of \@Observed decorated class and **undefined**/**null** is supported, for example, ClassA \| ClassB, ClassA \| undefined, or ClassA \| null. For details, see [@ObjectLink Supports Union Types](#objectlink-supports-union-types).<br>Before API version 19, it must be a class instance decorated by \@Observed.<br>In API version 19 and later, \@ObjectLink can be initialized by complex types, that is, class, object, and built-in types. However, when observing a nested type, you still need to receive the class instance decorated by \@Observed or the return value of makeV1Observed.<br>**NOTE**<br>\@ObjectLink does not support simple types. To use simple types, you can use [\@Prop](arkts-prop.md).|
 | Initial value for the decorated variable    | Disable local initialization.                                            |
 
-The attributes of \@ObjectLink can be changed, but the entire value cannot be assigned. That is, the variables decorated by \@ObjectLink are read-only.
+The \@ObjectLink decorated properties can be changed, but values cannot be assigned. That is, the variables decorated with \@ObjectLink are read-only.
 
 
 ```ts
-// Allowed: assigning a value to a property of an @ObjectLink decorated variable
+// Assignment to data properties decorated with @ObjectLink is allowed.
 this.objLink.a= ...
-// Not allowed: assigning a new value to the @ObjectLink decorated variable itself
+// Reassignment of the data variable itself decorated with @ObjectLink is not allowed.
 this.objLink= ...
 ```
 
@@ -64,69 +64,23 @@ this.objLink= ...
 
 | \@ObjectLink Transfer/Access| Description                                                        |
 | --------------------- | ------------------------------------------------------------ |
-| Initialization from the parent component       | Mandatory.<br>Variables decorated by \@ObjectLink must be initialized using complex types. To observe changes, the following conditions must be met:<br>- Before &nbsp;API version 19, the type must be a class instance decorated by \@Observed.<br>- In API version 19 and later, \@ObjectLink can be initialized by complex types, that is, class, object, and built-in types. However, when observing a nested type, you still need to receive the class instance decorated by \@Observed or the return value of makeV1Observed.<br>- The class or array of the synchronization source must be decorated by [\@State](./arkts-state.md), [\@Link](./arkts-link.md), [\@Provide](./arkts-provide-and-consume.md), [\@Consume](./arkts-provide-and-consume.md), or \@ObjectLink.<br>For an example where the synchronization source is an array item, see [Object Array](#object-array). For an example of the initialized class, see [Nested Object](#nested-object).|
+| Initialization from the parent component       | Mandatory.<br>Variables decorated by \@ObjectLink must be initialized using complex types. To observe changes, the following conditions must be met:<br>- Before API version 19, the type must be a class instance decorated with \@Observed.<br>- In API version 19 and later, \@ObjectLink can be initialized by complex types, that is, class, object, and built-in types. However, when observing a nested type, you still need to receive the class instance decorated with \@Observed or the return value of **makeV1Observed**.<br>- The class or array of the synchronization source must be decorated with [\@State](./arkts-state.md), [\@Link](./arkts-link.md), [\@Provide](./arkts-provide-and-consume.md), [\@Consume](./arkts-provide-and-consume.md), or \@ObjectLink.<br>For an example where the synchronization source is an array item, see [Object Array](#object-array). For an example of the initialized class, see [Nested Object](#nested-object).|
 | Synchronization with the source         | Two-way.                                                      |
 | Subcomponents can be initialized.     | Supported; can be used to initialize a regular variable or \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.|
 
 
   **Figure 1** Initialization rule 
 
-  ![en-us_image_0000001502255261](figures/en-us_image_0000001502255261.PNG)
+  ![en-us_image_0000001502255261](figures/Initialization-rules01.PNG)
 
 
 ## Observed Changes and Behavior
 
 ### Observed Changes
 
-In versions earlier than API version 19, if the attributes of a class decorated by \@Observed are of non-simple types, such as class, Object, Array, Map, Set, and Date, these attributes also need to be decorated by \@Observed, otherwise, the changes of these attributes or the API calls of built-in types cannot be observed. Starting from API version 19, you can also use [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) to observe changes to nested class properties.
+In versions earlier than API version 19, if you need to observe changes in nested scenarios, such as nested classes, two-dimensional arrays, and object arrays, the inner data type also needs to be decorated with \@Observed. Starting from API version 19, you can also use [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) to make the inner data observable. The inner data needs to be passed to \@ObjectLink so that it can be observed on the UI. For details, see [Nested Object](#nested-object).
 
-<!-- @[Observe_the_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/DecoratorDescription.ets) -->
-
-``` TypeScript
-class Child {
-  public num: number;
-
-  constructor(num: number) {
-    this.num = num;
-  }
-}
-
-@Observed
-class Parent {
-  public child: Child;
-  public count: number;
-
-  constructor(child: Child, count: number) {
-    this.child = child;
-    this.count = count;
-  }
-}
-```
-
-In the preceding example, **Parent** is decorated by \@Observed, and the value changes of its member variables can be observed. In contrast, **Child** is not decorated by \@Observed, and therefore its property changes cannot be observed. To observe the attribute modification of Child, see [Nested Object](#nested-object).
-
-
-<!-- @[Modify_and_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/DecoratorDescription.ets) -->
-
-``` TypeScript
-@ObjectLink parent: Parent;
-
-build() {
-  Column() {
-    Button('click me')
-      .onClick(() => {
-        // Value changes can be observed.
-        this.parent.child = new Child(5);
-        this.parent.count = 5;
-        // Child is not decorated by @Observed, therefore, its property changes cannot be observed.
-        this.parent.child.num = 5;
-      // ···
-      })
-  }
-}
-```
-
-\@ObjectLink When receiving an object, if the object is decorated by \@State or other state variable decorators, you can observe the changes at the first layer. For details, see [Object Type](#object-type).
+When @ObjectLink receives an object, if the object is decorated with @State or other state variable decorators, changes to its first-level properties can be observed. For details, see [Object Type](#object-type).
 
 When \@ObjectLink receives a nested object, the inner object must be of the class type decorated by \@Observed. Since API version 19, inner objects also support return values processed by [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19). For details, see [Nested Object](#nested-object).
 
@@ -136,9 +90,9 @@ When \@ObjectLink receives a nested object, the inner object must be of the clas
 
 - If the data source is an array, you can observe the replacement of array items. If the data source is a class, you can observe the change of the properties of the class. For details, see [Object Array](#object-array).
 
-When \@ObjectLink decorates the class inherited from Date, you can view the overall value assignment of Date and call the setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds interface of Date to update the attributes of Date.
+When \@ObjectLink decorates the class inherited from **Date**, you can view the overall value assignment of **Date** and call the **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, **setUTCMilliseconds** APIs of **Date** to update the properties of **Date**.
 
-<!-- @[Observation_ChangeInheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/ObservationChangeInheritance.ets) -->
+<!-- @[Observation_ChangeInheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/ObservationChangeInheritance.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -164,6 +118,7 @@ struct Child {
 
   build() {
     Column() {
+      // When data is decorated with @Observed and @ObjectLink, the assignment of the entire Date object as well as changes caused by calling Date APIs can be observed.
       Button('child increase the day by 1')
         .onClick(() => {
           this.data.setDate(this.data.getDate() + 1);
@@ -208,7 +163,7 @@ When \@ObjectLink decorates a class that extends **Set**, it enables observation
 
 1. Initial rendering:
 
-   a. The instance of the class decorated by \@Observed is wrapped by the proxy object, which proxies the setter and getter methods of the properties on the class.
+   a. The instance of the class decorated by \@Observed is wrapped by the proxy object, which proxies the **setter** and **getter** methods of the properties on the class.
 
    b. The variable decorated by \@ObjectLink in the child component is initialized from the parent component and receives the instance of the class decorated by \@Observed. The wrapper class of \@ObjectLink registers itself with \@Observed class. The registration behavior here means that the \@ObjectLink wrapper class provides its own reference to the \@Observed instance so that the \@Observed instance can add it to the dependency list so that it can be notified of attribute changes.
 
@@ -240,9 +195,7 @@ When \@ObjectLink decorates a class that extends **Set**, it enables observation
    // Incorrect format. Test is not decorated by @Observed, leading to a compilation error.
    @ObjectLink test: Test;
    ```
-
-   <!-- @[Test_Info_Observed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
-   
+     
    ``` TypeScript
    @Observed
    class Info {
@@ -263,8 +216,6 @@ When \@ObjectLink decorates a class that extends **Set**, it enables observation
    // Incorrect usage. An error is reported during compilation.
    @ObjectLink count: CountInfo = new CountInfo(10);
    ```
-
-   <!-- @[Info_Initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/RestrictiveConditionsObserved.ets) -->
    
    ``` TypeScript
    @Observed
@@ -379,9 +330,11 @@ When \@ObjectLink decorates a class that extends **Set**, it enables observation
 
 This scenario contains built-in types (Array, Map, Set, and Date) and common classes. Since API version 19, \@ObjectLink receives the built-in type and common class object transferred by \@State. You can observe the API call and first-layer changes without adding \@Observed. State variable decorators such as \@State add a layer of "proxy" wrapper to the object (outer object), which is equivalent to adding \@Observed decorators.
 
-```ts
+<!-- @[State_To_Objectlink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/StateToObjectlink.ets) -->
+
+``` TypeScript
 class Book {
-  name: string;
+  public name: string;
 
   constructor(name: string) {
     this.name = name;
@@ -495,8 +448,9 @@ struct Index {
 
 In the preceding example:
 
-- When you click change bag.book.name, the Text component in the Index component is not refreshed because the change belongs to the second layer. Therefore, the change of the second layer cannot be observed in \@State. However, the Book component is decorated by \@Observed, and the name attribute of the Book component can be observed by \@ObjectLink. Therefore, the Text component in the BookCard component can be refreshed.
-- Click **change book.name**. The Text component in the Bookcard component is refreshed. The change is at the first layer in the BookCard component and can be observed by \@ObjectLink.
+- For the state variable **@State bag: Bag** in the **Index** component, **bag.book** is the first layer, and **bag.book.name** is the second layer. Therefore, when **this.bag.book.name** is directly modified by clicking **change bag.book.name**, the **Text('Index: ${this.bag.book.name}')** in the **Index** component does not update, because \@State can only observe changes to first-level properties and cannot directly observe changes to the nested property **name** inside an object.
+- For the state variable **@ObjectLink book: Book** in the **BookCard** component, **Book** is decorated with \@Observed, and **book** is received by \@ObjectLink. Changes to **book.name** can be observed by @ObjectLink. Therefore, whether you click **change bag.book.name** in the parent component **Index** or click **change book.name** in the child component **BookCard**, the **Text('BookCard: ${this.book.name}')** inside **BookCard** will update.
+- \@State is responsible for detecting the first-level changes of the outer object **Bag**, while @Observed + @ObjectLink is responsible for detecting the property changes of the inner object **Book**.
 
 ### Object array
 
@@ -506,8 +460,14 @@ An object array is a frequently used data structure. The following example shows
 >
 > NextID is used to generate a unique and persistent key value for each array element during [ForEach: Rendering Repeated Content](../rendering-control/arkts-rendering-control-foreach.md) to identify the corresponding component.
 
-```ts
-let NextID: number = 1;
+<!-- @[Object_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectArray.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArkTSObservedAndObjectlink';
+let nextID: number = 1;
 
 @Observed
 class Info {
@@ -515,7 +475,7 @@ class Info {
   public info: number;
 
   constructor(info: number) {
-    this.id = NextID++;
+    this.id = nextID++;
     this.info = info;
   }
 }
@@ -575,18 +535,14 @@ struct Parent {
           if (this.arrA.length > 0) {
             this.arrA.shift();
           } else {
-            console.info('length <= 0');
+            hilog.info(DOMAIN, TAG, 'length <= 0');
           }
         })
       Button('ViewParent: item property in middle')
         .width(320)
         .margin(10)
         .onClick(() => {
-          if (this.arrA[Math.floor(this.arrA.length / 2)]) {
-            this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
-          } else {
-            console.info('middle element does not exist');
-          }
+          this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
         })
       Button('ViewParent: item property in middle')
         .width(320)
@@ -602,11 +558,11 @@ struct Parent {
 ![Observed_ObjectLink_object_array](figures/Observed_ObjectLink_object_array.gif)
 
 - **this.arrA[Math.floor(this.arrA.length/2)] = new Info(..)**: The change of this state variable triggers two updates.
-  1. ForEach: The [itemGenerator](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md) of ForEach is modified due to the assignment of the array item. Therefore, the array item is identified as changed, and the item builder of ForEach is executed to create a new child component instance.
+  1. ForEach: itemGenerator of [ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md) is modified due to the assignment of the array item. Therefore, the array item is identified as changed, and **item builder** of **ForEach** is executed to create a new child component instance.
   2. Child({ label: 'ViewChild this.arrA[last]', info: this.arrA[this.arrA.length-1] }): The preceding change changes the second element in the array. Therefore, the Child bound to **this.arrA[1]** is updated.
 
 - **this.arrA.push(new Info(0))**: The change of this state variable triggers two updates with different effects.
-  1. ForEach: The newly added Info object is an unknown [itemGenerator](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md) for ForEach. The item builder of ForEach will execute to create a new Child component instance.
+  1. ForEach: The newly added **Info** object is an unknown **itemGenerator** of **ForEach**, so the item builder of **ForEach** will execute, creating a new instance of the **Child** component.
   2. Child({ label: 'ViewChild this.arrA[last]', info: this.arrA[this.arrA.length-1] }): The last item of the array is changed. As a result, the instance of the second Child is changed. For Child({ label: 'ViewChild this.arrA[first]', info: this.arrA[0] }), the change of the array does not trigger the change of an array item. Therefore, the first Child is not refreshed.
 
 - **this.arrA[Math.floor(this.arrA.length/2)].info**: @State cannot observe changes at the second layer. However, as **Info** is decorated by \@Observed, the change of its properties will be observed by \@ObjectLink.
@@ -616,8 +572,6 @@ struct Parent {
 
 @Observed class decoration is required for a two-dimensional array. You can declare an \@Observed decorated class that extends from **Array**.
 
-
-<!-- @[Two_dimensional_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DelayedChange.ets) -->
 
 ``` TypeScript
 @Observed
@@ -629,7 +583,7 @@ Declare an ObservedArray\<T\> class inherited from Array and use the new operato
 
 The following example shows how to use \@Observed to observe the changes of a two-dimensional array.
 
-<!-- @[Two_dimensional_array_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/TwoDimensionalArray.ets) -->
+<!-- @[Two_dimensional_array_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/TwoDimensionalArray.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -654,6 +608,7 @@ struct Item {
 @Entry
 @Component
 struct IndexPage {
+  // An instance of ObservedArray<string> created with the new operator can observe property changes.
   @State arr: Array<ObservedArray<string>> = [
     new ObservedArray<string>('apple'),
     new ObservedArray<string>('banana'),
@@ -700,7 +655,7 @@ Since API version 19, \@ObjectLink can also be initialized with the return value
 
 A complete example is as follows:
 
-<!-- @[Complete_Example_Two_Dimensional_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/CompleteExampleTwoDimensionalArray.ets) -->
+<!-- @[Complete_Example_Two_Dimensional_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/CompleteExampleTwoDimensionalArray.ets) --> 
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -723,6 +678,7 @@ struct Item {
 @Entry
 @Component
 struct IndexPage {
+  // Using makeV1Observed to observe changes in a two-dimensional array.
   @State arr: Array<Array<string>> =
     [UIUtils.makeV1Observed(['apple']), UIUtils.makeV1Observed(['banana']), UIUtils.makeV1Observed(['orange'])];
 
@@ -772,7 +728,7 @@ struct IndexPage {
 
 In the following example, the **myMap** variable is of the MyMap\<number, string\> type. When the button is clicked, the value of **myMap** changes, and the UI is re-rendered.
 
-<!-- @[Inherit_From_Map_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromMapClass.ets) -->
+<!-- @[Inherit_From_Map_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromMapClass.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -827,6 +783,7 @@ struct MapSampleNestedChild {
           Divider().strokeWidth(5)
         })
 
+        // myMap is decorated with @Observed and @ObjectLink, so the assignment of the entire Map and changes caused by calling Map APIs can be observed.
         Button('set new one')
           .width(200)
           .margin(10)
@@ -869,7 +826,7 @@ struct MapSampleNestedChild {
 
 In the following example, the **mySet** variable is of the MySet\<number\> type. When the button is clicked, the value of **mySet** changes, and the UI is re-rendered.
 
-<!-- @[Inherit_From_Set_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromSetClass.ets) -->
+<!-- @[Inherit_From_Set_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromSetClass.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -922,6 +879,7 @@ struct SetSampleNestedChild {
           Text(`${item}`).fontSize(30)
           Divider()
         })
+        // mySet is decorated with @Observed and @ObjectLink, so the assignment of the entire Set and changes caused by calling Set APIs can be observed.
         Button('set new one')
           .width(200)
           .margin(10)
@@ -950,9 +908,9 @@ struct SetSampleNestedChild {
 
 ![Observed_ObjectLink_inherit_set](figures/Observed_ObjectLink_inherit_set.gif)
 
-### Union Type @ObjectLink
+### @ObjectLink Supports Union Types
 
-\@ObjectLink supports the combination of the \@Observed decorative class and undefined or null. In the following example, the count type is Source | Data | undefined. When you click the button in the parent component to change the count attribute or type, the corresponding text component in the child component is refreshed.
+@ObjectLink supports union types composed of @Observed decorated classes and **undefined**/**null**. In the following example, the type of count is **Source | Data | undefined**. When **Button** in the parent component **Parent** is clicked, the property or type of **count** changes, and the corresponding **Text** component in the **Child** component updates.
 
 <!-- @[ObjectLink_Supports_Union_Types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectLinkSupportsUnionTypes.ets) -->
 
@@ -1455,7 +1413,7 @@ This approach enables \@ObjectLink to serve as a proxy for the properties of the
 This approach can be used to implement "two-layer" observation, that is, observation of external objects and internal nested objects. However, it is only applicable to the \@ObjectLink decorator, but not to \@Prop (\@Prop passes objects through deep copy). For details, see [Differences Between \@Prop and \@ObjectLink](#differences-between-prop-and-objectlink).
 
 
-<!-- @[Complex_nested_observation_levels](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexNestingComplete.ets) -->
+<!-- @[Complex_nested_observation_levels](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexNestingComplete.ets) --> 
 
 ``` TypeScript
 let nextId = 1;
@@ -1526,6 +1484,7 @@ struct CounterChild {
 @Entry
 @Component
 struct ParentComp {
+  // @ObjectLink proxies the properties of ParentCounter and SubCounter respectively, and changes to the properties of both classes can be observed.
   @State counter: ParentCounter[] = [new ParentCounter(1), new ParentCounter(2), new ParentCounter(3)];
 
   build() {
@@ -1625,7 +1584,7 @@ struct UserChild {
 
 The following figure shows the relationship in the preceding example.
 
-![en-us_image_0000001653949465](figures/en-us_image_0000001653949465.jpg)
+![en-us_image_0000001653949465](figures/Differences-example.jpg)
 
 ### Member Variable Changes in the \@Observed Decorated Class Constructor Not Taking Effect
 
@@ -1880,13 +1839,17 @@ struct Index {
 
 **Correct Usage**
 
-```ts
+<!-- @[Change_Property_In_Constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ChangePropertyInConstructor.ets) -->
+
+``` TypeScript
 @Observed
 class DataDownloader {
-  state: number;
+  public state: number;
+
   constructor() {
     this.state = 0;
   }
+
   startIntervalUpdate() {
     setInterval(() => {
       this.state += 1;
@@ -1897,10 +1860,12 @@ class DataDownloader {
 @Entry
 @Component
 struct Index {
-  @State dataDownloader: DataDownloader = new DataDownloader()
+  @State dataDownloader: DataDownloader = new DataDownloader();
+
   aboutToAppear() {
-    this.dataDownloader.startIntervalUpdate(); // @Observed: After the decorated class is built, you can modify the attributes to trigger the UI update.
+    this.dataDownloader.startIntervalUpdate(); // Modifying properties after the @Observed decorated class is built triggers a UI refresh.
   }
+
   build() {
     Column() {
       Text(`Download state is ${this.dataDownloader.state}`)
@@ -2051,7 +2016,9 @@ struct ChildComponent {
 
 **Correct Usage**
 
-```ts
+<!-- @[Use_With_LazyForEach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/UseWithLazyForEach.ets) -->
+
+``` TypeScript
 // LazyForEach traverses the data base class.
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -2114,7 +2081,7 @@ class MyDataSource extends BasicDataSource {
 
 @Observed
 class StringData {
-  message: string;
+  public message: string;
 
   constructor(message: string) {
     this.message = message;
@@ -2141,13 +2108,13 @@ struct MyComponent {
           ListItem() {
             ChildComponent({ data: item })
           }.width('100%')
-          //The key of LazyForEach is constructed from the index and message. Each time an element is replaced, the key needs to be modified to trigger UI refresh.
+          // The key of LazyForEach is constructed from the index and message. Each time an element is replaced, the key needs to be modified to trigger a UI refresh.
         }, (item: StringData, index: number) => index.toString() + item.message)
       }.cachedCount(3)
       Button('Replace the first element')
         .onClick(() => {
           this.data.dataArray[0] = new StringData('Hello ' + this.helloCount++);
-          //After the element is replaced, notify LazyForEach that the UI can be refreshed.
+          // After the element is replaced, notify LazyForEach that the UI can be refreshed.
           this.data.notifyDataChanged(0);
         })
       Button('Modify the data of the first element')
@@ -2194,4 +2161,4 @@ struct ChildComponent {
 }
 ```
 
-![observed_lazyforeach_refresh.gif](./figures/observed_lazyforeach_refresh.gif)
+

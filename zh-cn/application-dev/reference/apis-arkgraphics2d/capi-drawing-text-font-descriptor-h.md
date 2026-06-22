@@ -1,7 +1,7 @@
 # drawing_text_font_descriptor.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -20,6 +20,12 @@
 **相关模块：** [Drawing](capi-drawing.md)
 
 ## 汇总
+
+### 结构体
+
+| 名称 | typedef关键字 | 描述 |
+| --- | --- | --- |
+| [OH_Drawing_FontVariationInstanceCoordinate](capi-drawing-oh-drawing-fontvariationinstancecoordinate.md) | OH_Drawing_FontVariationInstanceCoordinate | 可变字体属性键值对。 |
 
 ### 枚举
 

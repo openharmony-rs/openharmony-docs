@@ -158,3 +158,26 @@
 | DOWNLOAD_SUCCESS | 0    | 下载成功。 |
 | DOWNLOADING      | 1    | 下载中。   |
 | DOWNLOAD_FAIL    | 2    | 下载失败。 |
+
+## AVMusicTemplateErrorCode
+
+表示错误码类型的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+| 名称             | 值   | 说明       |
+| ---------------- | ---- | ---------- |
+| ERR_CODE_CREATE_AV_MUSIC_TEMPLATE_FAILED | 35000001 | 音频模板创建失败。|
+| ERR_CODE_CREATE_AV_MUSIC_TEMPLATE_CONTROLLER_FAILED | 35000002 | 音频模板控制器创建失败。 |
+| ERR_CODE_TEMPLATE_LISTENER_NO_EXIT | 35000003 | 模板监听未注册。 |
+| ERR_CODE_CONTROLLER_CALLBACK_NO_EXIT | 35000004 | 未注册模板控制器回调。 |
+| ERR_CODE_AV_MUSIC_TEMPLATE_NOT_EXIST | 35000005 | 音频模板不存在。 |
+| ERR_CODE_CONTROLLER_NOT_EXIST | 35000006 | 模板控制器不存在。 |
+| ERR_CODE_CONTROLLER_IS_EXIST | 35000007 | 模板控制器已经存在。|
+| ERR_CODE_SERVICE_NOT_EXIST | 35000008 | 音频模板管理服务不存在。 |
+| ERR_CODE_SERVICE_EXCEPTION | 35000009 | 音频模板管理服务异常。 |
+| ERR_CODE_EXCEED_MAX_DATA_SIZE | 35000010 | 数据超过了允许的最大传输容量。 |
+| ERR_CODE_WRITE_RESULT_EXCEPTION | 35000011 | 写数据失败，数据不可用。 |
+| ERR_CODE_AV_MUSIC_TEMPLATE_ERROR | 35000012 | 音频模板错误。 |

@@ -1,7 +1,7 @@
 # ArkUI_AccessibilityActionArguments
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct ArkUI_AccessibilityActionArguments ArkUI_AccessibilityActionArgum
 
 ## Overview
 
-Sets the parameters of accessibility actions.
+Sets the arguments of accessibility actions.
 
 **Since**: 13
 

@@ -134,7 +134,7 @@ Canvas(this.context)
 
 ## Canvas Component Drawing Modes
 
-After **onReady()** is invoked, you can use the **Canvas** component for drawing. Alternatively, you can separately define the **Path2d** object to build an ideal path without the **Canvas** component and **onReady()** lifecycle callback, and then use the **Canvas** component for drawing after **onReady()** is invoked.
+After the event callback onReady() of the **Canvas** component is called, you can directly use this component for rendering. Alternatively, you can separately define the **Path2d** object to build an ideal path without the **Canvas** component and **onReady()** lifecycle callback, and then use the **Canvas** component for drawing after **onReady()** is called.
 
 - Use the **CanvasRenderingContext2D** object to call related APIs for drawing.
 
@@ -199,7 +199,7 @@ Canvas(this.context)
     this.context.beginPath();
     this.context.rect(100, 50, 100, 100);
     this.context.stroke();
-    // Draw a circle on the canvas.
+    // Draw a circle.
     this.context.beginPath();
     this.context.arc(150, 250, 50, 0, 6.28);
     this.context.stroke();
@@ -236,7 +236,7 @@ Canvas(this.context)
     this.context.strokeText('Hello World!', 50, 150);
   })
 ```
-
+ 
 
   ![2023022795105(1)](figures/2023022795105.jpg)
 

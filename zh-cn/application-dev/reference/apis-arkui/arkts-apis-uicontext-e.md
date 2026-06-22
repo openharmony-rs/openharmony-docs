@@ -2,14 +2,16 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## KeyboardAvoidMode<sup>11+</sup>
 
@@ -128,3 +130,20 @@ UIContext对象的解析策略。
 | ------ | ---- | ---------- |
 | ENABLED | 0 | 接续。 |
 | DISABLED | 1 | 不接续。 |
+
+## TextSelectionClearPolicy
+
+文本选择清除策略枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称   | 值   | 说明       |
+| ------ | ---- | ---------- |
+| KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 0 | 触摸到文本组件外部时，保留文本选中和手柄。 |
+| CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 1 | 触摸到文本组件外部时，清除文本选中和手柄。 |

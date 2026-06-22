@@ -1,7 +1,7 @@
 # IME Kit（输入法开发服务）<!--ime-api-->
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -14,6 +14,7 @@
   <!--Del-->
   - [@ohos.inputMethod (输入法框架)(系统接口)](js-apis-inputmethod-sys.md)
   - [@ohos.inputMethodEngine (输入法服务)(系统接口)](js-apis-inputmethodengine-sys.md)
+  - [@ohos.inputMethodSystemPanelManager (输入法系统面板管理器)(系统接口)](js-apis-inputmethod-system-panel-manager-sys.md)
   <!--DelEnd-->
   - [@ohos.inputMethod (输入法框架)](js-apis-inputmethod.md)
   - [@ohos.inputMethodEngine (输入法服务)](js-apis-inputmethodengine.md)

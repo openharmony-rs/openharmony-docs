@@ -187,7 +187,7 @@ target_link_libraries(entry PUBLIC
    // 根据SurfaceId创建NativeWindow，注意创建出来的NativeWindow在使用结束后需要主动调用OH_NativeWindow_DestroyNativeWindow进行释放。
    uint64_t outputSurfaceId;
    std::istrstream iss(outputSurfaceIdStr);
-   issue >> outputSurfaceId;
+   iss >> outputSurfaceId;
    OHNativeWindow *outputNativeWindow = nullptr;
    int32_t res = OH_NativeWindow_CreateNativeWindowFromSurfaceId(outputSurfaceId, &outputNativeWindow);
    if (res != 0) {
@@ -197,7 +197,7 @@ target_link_libraries(entry PUBLIC
 
    // 设置输出显示的Surface。
    ImageEffect_ErrorCode errorCode = OH_ImageEffect_SetOutputSurface(imageEffect, outputNativeWindow);
-   if (res != 0) {
+   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
        OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputSurface fail!");
        return;
    }
@@ -490,7 +490,7 @@ target_link_libraries(entry PUBLIC
   // 获取支持的像素类型信息。
   uint32_t supportedFormatsCnt = 0;
   ImageEffect_Format *formatArray = nullptr;
-  OH_EffectFilterInfo_GetSupportedFormats(filterInfo, supportedFormatsCnt, &formatArray);
+  OH_EffectFilterInfo_GetSupportedFormats(filterInfo, &supportedFormatsCnt, &formatArray);
 
   // 销毁OH_EffectFilterInfo实例。
   OH_EffectFilterInfo_Release(filterInfo);

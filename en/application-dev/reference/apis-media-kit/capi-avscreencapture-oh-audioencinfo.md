@@ -26,5 +26,5 @@ The struct describes the audio encoding information.
 
 | Name| Description|
 | -- | -- |
-| int32_t audioBitrate | Audio encoding bit rate.|
+| int32_t audioBitrate | Audio encoding bit rate. The unit is bit/s.|
 | [OH_AudioCodecFormat](capi-native-avscreen-capture-base-h.md#oh_audiocodecformat) audioCodecformat | Audio encoding format.|

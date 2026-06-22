@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供通过PATH获取文件统一资源标识符（Uniform Resource Identifier，URI），后续可通过使用[@ohos.file.fs](js-apis-file-fs.md)进行相关open、read、write等操作，实现文件分享。

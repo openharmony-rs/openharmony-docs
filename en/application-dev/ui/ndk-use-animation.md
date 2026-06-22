@@ -268,7 +268,7 @@ Use **NODE_*XX*_TRANSITION** properties (where *XX* can be **OPACITY**, **TRANSL
     }
     ```
 
-    ![en-us_image_0000001903284256](figures/en-us_image_0000001903284256.gif)
+    ![en-us_image_0000001903284256](figures/Appearance-Disappearance-Transitions.gif)
 
 ## Using Keyframe Animations
 
@@ -387,7 +387,7 @@ column->AddChild(textNode);
 column->AddChild(button);
 ```
 
-![en-us_image_0000001903284256](figures/en-us_image_keyframeAnimateTo.gif)
+![en-us_image_0000001903284256](figures/image-keyframeAnimateTo.gif)
 
 ## Using Frame Animations
 
@@ -611,4 +611,4 @@ std::shared_ptr<ArkUIBaseNode> CreateAnimator()
 }
 ```
 
-![en-us_image_animator](figures/en-us_image_animator.gif)
+![en-us_image_animator](figures/Frame-Animations.gif)

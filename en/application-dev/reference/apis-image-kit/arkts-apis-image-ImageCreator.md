@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-The ImageCreator class provides APIs for applications to request an image data area and compile image data.
+The ImageCreator class, acting as an image producer, is used for writing images into a surface.
 
 Before calling any APIs in ImageCreator, you must use [image.createImageCreator](arkts-apis-image-f.md#imagecreateimagecreator11) to create an ImageCreator instance. ImageCreator does not support multiple threads.
 

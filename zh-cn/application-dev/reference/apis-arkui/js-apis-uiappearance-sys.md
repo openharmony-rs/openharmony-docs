@@ -1,18 +1,20 @@
 # @ohos.uiAppearance (用户界面外观)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。
 
 > **说明：**
 >
-> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.uiAppearance (用户界面外观)](js-apis-uiappearance.md)。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.uiAppearance (用户界面外观)](js-apis-uiappearance.md)。
 
 
 ## 导入模块
@@ -31,6 +33,8 @@ setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
+
+**系统接口：** 此接口为系统接口。
 
 **参数：** 
 
@@ -79,6 +83,8 @@ setDarkMode(mode: DarkMode): Promise\<void>;
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
+
+**系统接口：** 此接口为系统接口。
 
 **参数：** 
 

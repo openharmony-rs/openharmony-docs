@@ -14,7 +14,9 @@
 
 使用AttributeModifier对组件进行[动态属性设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md)，设置某些属性后出现[JS Crash](../dfx/jscrash-guidelines.md)。
 
-![](figures/jscrash_happend.png)
+<!--RP1-->
+![](figures/jscrash_happened.png)
+<!--RP1End-->
 
 **解决措施**
 

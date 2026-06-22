@@ -34,7 +34,7 @@ input是交互式组件，用于接收用户数据。其类型可设置为日期
 }
 ```
 
-![zh-cn_image_0000001165344988](figures/zh-cn_image_0000001165344988.png)
+![input-Component](figures/input-Component.png)
 
 
 ## 设置input类型
@@ -105,12 +105,12 @@ export default {
 ```
 
 
-![zh-cn_image_0000001163375178](figures/zh-cn_image_0000001163375178.gif)
+![Input-Type](figures/Input-Type.gif)
 
 
 > **说明：**
 >
-> 仅当input类型为checkbox和radio时，当前组件选中的属性是checked才生效，默认值为false。
+> 仅当input类型为checkbox或radio时，当前组件选中的属性是checked才生效，默认值为false。
 
 
 ## 事件绑定
@@ -230,11 +230,11 @@ import promptAction from '@ohos.promptAction'
  }
 ```
 
-![zh-cn_image_0000001189248178](figures/zh-cn_image_0000001189248178.gif)
+![Input-Error-Message](figures/Input-Error-Message.gif)
 
 > **说明：** 
 >
-> 该方法在input类型为text、email、date、time、number和password时生效。
+> showError方法仅在input类型为text、email、date、time、number和password时生效。
 
 
 ## 场景示例
@@ -318,4 +318,4 @@ export default {
 ```
 
 
-![zh-cn_image_0000001188771358](figures/zh-cn_image_0000001188771358.gif)
+![Example-Scenario](figures/Example-Scenario.gif)

@@ -148,6 +148,8 @@ borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: Re
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -237,7 +239,7 @@ struct BorderExample {
 }
 ```
 
-![zh-cn_image_0000001219982705](figures/zh-cn_image_0000001219982705.gif)
+![borderRadius](figures/borderRadius.gif)
 
 ### 示例2（边框宽度类型和边框颜色）
 
@@ -315,11 +317,11 @@ struct BorderExample {
 
 从左至右显示语言示例图
 
-![zh-cm_image_border_ltr](figures/zh-cn_image_border_ltr.png)
+![zh-cn_image_border_ltr](figures/image-border-ltr.png)
 
 从右至左显示语言示例图
 
-![zh-cm_image_border_rtl](figures/zh-cn_image_border_rtl.png)
+![zh-cm_image_border_rtl](figures/image-border-rtl.png)
 
 ### 示例3（设置离屏圆角）
 

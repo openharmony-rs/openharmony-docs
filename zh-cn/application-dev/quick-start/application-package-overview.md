@@ -4,10 +4,10 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 
-在基于[Stage模型](application-configuration-file-overview-stage.md)开发应用之前，开发者需要了解应用的设计机制、应用程序包结构等基础知识。
+在开发应用之前，开发者需要了解应用的设计机制、应用程序包结构等基础知识。
 
 ## 应用与应用程序包
 

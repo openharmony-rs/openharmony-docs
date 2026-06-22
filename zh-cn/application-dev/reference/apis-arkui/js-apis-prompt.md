@@ -43,7 +43,7 @@ prompt.showToast({
 });
 ```
 
-![zh-cn_image_0001](figures/zh-cn_image_0001.gif)
+![zh-cn_image_0001](figures/showToast-example.gif)
 
 ## ShowToastOptions
 
@@ -103,7 +103,7 @@ prompt.showDialog({
   })
 ```
 
-![zh-cn_image_0002](figures/zh-cn_image_0002.gif)
+![zh-cn_image_0002](figures/showDialog-example01.gif)
 
 ## prompt.showDialog
 
@@ -146,7 +146,7 @@ prompt.showDialog({
 });
 ```
 
-![zh-cn_image_0004](figures/zh-cn_image_0004.gif)
+![zh-cn_image_0004](figures/showDialog-example02.gif)
 
 ## ShowDialogOptions
 
@@ -211,7 +211,7 @@ prompt.showActionMenu({
 })
 ```
 
-![zh-cn_image_0005](figures/zh-cn_image_0005.gif)
+![zh-cn_image_0005](figures/showActionMenu-example01.gif)
 
 ## prompt.showActionMenu
 
@@ -257,7 +257,7 @@ prompt.showActionMenu({
     console.info('showActionMenu error: ' + err);
   })
 ```
-![zh-cn_image_0006](figures/zh-cn_image_0006.gif)
+![zh-cn_image_0006](figures/showActionMenu-example02.gif)
 
 ## ActionMenuOptions
 

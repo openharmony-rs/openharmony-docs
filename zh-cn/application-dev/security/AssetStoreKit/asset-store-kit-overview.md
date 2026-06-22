@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -17,7 +17,7 @@ Asset Store Kit（关键资产存储服务，简称ASSET）包含了一系列开
 
 - **基于属主的访问控制：** 所有的关键资产都受属主访问控制保护，业务无需设置。
   - 只允许关键资产被其属主（写入该关键资产的业务）访问。
-  - 关键资产属主身份由ASSET从系统服务中获取，即使业务身份被仿冒，仿冒者也无法获取到其他业务的数据。
+  - 关键资产属主身份（应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)）由ASSET从系统服务中获取，即使业务身份被仿冒，仿冒者也无法获取到其他业务的数据。
   - 关键资产加/解密时，其属主身份参与了完整性保护，即使关键资产属主身份被篡改，攻击者也无法获取到其他业务的数据。
 
 - **基于群组的访问控制：**
@@ -46,7 +46,7 @@ Asset Store Kit（关键资产存储服务，简称ASSET）包含了一系列开
 
 - 基于别名的访问
 
-  关键资产以密文的形式存储在ASSET数据库中，以业务身份 + 别名作为唯一索引。故业务需要保证每条关键资产的别名唯一。
+  关键资产以密文的形式存储在ASSET数据库中，以业务身份（应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)） + 别名作为唯一索引。故业务需要保证每条关键资产的别名唯一。
 
 - 批量查询关键资产
 
@@ -65,6 +65,8 @@ Asset Store Kit（关键资产存储服务，简称ASSET）包含了一系列开
   - [IS_PERSISTENT](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性设置为True的关键资产，不允许设置为群组共享。
 
 - 关键资产删除时机
+
+  关键资产有且仅有以下删除时机：
   - 业务主动调用remove删除关键资产时，删除符合条件的数据。详见删除关键资产[ArkTS](asset-js-remove.md)、[C/C++](asset-native-remove.md)开发指导。
   - 应用卸载时，会清除对应的数据。[IS_PERSISTENT](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性设置为true的数据将保留。
      - 从API 21开始：清除存储在ASSET中的非群组数据。群组数据仅在群组内所有应用卸载时清除。

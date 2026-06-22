@@ -154,12 +154,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   // pages/xxx.ets
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   function hashFileWithStream() {
     const filePath = pathDir + "/test.txt";
     // Create a readable stream.
-    const rs = fs.createReadStream(filePath);
+    const rs = fileIo.createReadStream(filePath);
     // Create a hash stream.
     const hs = hash.createHash('sha256');
     rs.on('data', (emitData) => {

@@ -10,9 +10,9 @@ A utility class used to parse JSON strings into [sendable data](../../arkts-util
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This module can be imported only to ArkTS files (with the file name extension .ets).
+> This module can be imported only to ArkTS files (with the file name extension .ets).
 
 ## Modules to Import
 
@@ -50,7 +50,7 @@ Defines the type of the conversion result function.
 | ------ | ------ | ---- | --------------- |
 | this   | [ISendable](#isendable) | Yes| Object to which the key-value pair to parse belongs.|
 | key  | string | Yes| Key to parse.|
-| value  | [ISendable](#isendable) \| undefined \| null| Yes| Value of the key.|
+| value  | [ISendable](#isendable) \| undefined \| null| Yes| Value of the key-value pair to parse.|
 
 **Return value**
 
@@ -113,7 +113,7 @@ Parses a JSON string to generate ISendable data or null.
 | Name| Type  | Mandatory| Description           |
 | ------ | ------ | ---- | --------------- |
 | text   | string | Yes| Valid JSON string.|
-| reviver   | [Transformer](#transformer) | No| Conversion function. This parameter can be used to modify the value generated after parsing. The default value is undefined. Currently, only undefined can be passed in.|
+| reviver   | [Transformer](#transformer) | No| Conversion function. This parameter can be used to modify the value generated after parsing. The default value is undefined. Currently, only the value **undefined** is supported. Other values will be ignored or considered invalid.|
 | options   | [ParseOptions](#parseoptions) | No| Parsing options. This parameter is used to control the type of the parsing result. The default value is undefined.|
 
 **Return value**
@@ -212,14 +212,14 @@ hashMap.set("sh","b");
 hashMap.set("map","c");
 let str1 = ArkTSUtils.ASON.stringify(hashMap);
 console.info(str1);
-// Expected output: '{"sh":"b","ha":"a","map":"c"}'
+// The storage sequence of HashMap is determined by hashCode. Therefore, the storage location is uncertain. The output may be '{"sh":"b","ha":"a","map":"c"}'.
 let hashSet = new HashSet<string>();
 hashSet.add("ha");
 hashSet.add("sh");
 hashSet.add("set");
 let str2 = ArkTSUtils.ASON.stringify(hashSet);
 console.info(str2);
-// Expected output: '["set","sh","ha"]'
+// The storage sequence of HashSet is determined by hashCode. Therefore, the storage location is uncertain. The output may be '["set","sh","ha"]'.
 let map = new Map<string,string>();
 map.set("m","a");
 map.set("a","b");

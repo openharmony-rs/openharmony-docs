@@ -30,7 +30,7 @@ Device security levels are classified into SL1 to SL5 based on devices' security
 During device networking, you can run the **hidumper -s 3511** command to query the device security level. If no result is displayed, run the **service_control start dslm_service** command to start the corresponding process and then run the **hidumper** command to query the security level. The following example shows how to query the security level of the RK3568 device:
 <!--RP1End-->
 <!--Del-->
-![en-us_image_0000001542496993](figures/en-us_image_0000001542496993.png)
+![Device-Security-Levels](figures/Device-Security-Levels.png)
 <!--DelEnd-->
 
 ## Access Control Mechanism in Cross-Device Sync

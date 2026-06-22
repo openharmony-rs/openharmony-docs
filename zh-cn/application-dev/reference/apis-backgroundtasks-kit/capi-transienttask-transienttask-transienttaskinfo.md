@@ -2,10 +2,10 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ```c
 typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTaskInfo
@@ -13,7 +13,7 @@ typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTask
 
 ## 概述
 
-定义所有短时任务信息结构体。
+定义所有短时任务信息结构体。用于返回当日剩余总配额和已申请的所有短时任务信息。
 
 **起始版本：** 20
 

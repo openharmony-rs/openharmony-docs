@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 通过本模块接口，可以设置快捷键拉起Ability的延迟时间，如设置长按快捷键3s后再截屏等。
 
@@ -36,7 +36,7 @@ setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&l
 | ---------- | ------------------- | ---- | ------------------------------------------------------------ |
 | businessKey| string              | 是   | 业务在多模侧注册的唯一标识，与ability_launch_config.json中的businessId对应。调用接口前自行查询。|
 | delay      | number              | 是   | 按下快捷键多长时间后拉起Ability，单位：ms，仅支持快捷键按下触发。 |
-| callback   | AsyncCallback&lt;void&gt; | 是   | 回调函数，设置成功时，err为undefined，否则为错误对象。 |
+| callback   | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置快捷键拉起Ability的延迟时间成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -45,7 +45,7 @@ setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&l
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -61,15 +61,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置延迟拉起时间500ms
             shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
               if (error) {
-                console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set key down duration success`);
+              console.info(`Succeeded in setting key down duration.`);
             });
           } catch (error) {
-            console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -96,7 +97,7 @@ setKeyDownDuration(businessKey: string, delay: number): Promise&lt;void&gt;
 
 | 类型          | 说明          |
 | ------------- | ------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -105,7 +106,7 @@ setKeyDownDuration(businessKey: string, delay: number): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -121,13 +122,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置延迟拉起时间500ms
             shortKey.setKeyDownDuration("businessId", 500).then(() => {
-              console.info(`Set key down duration success`);
+              console.info(`Succeeded in setting key down duration.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set key down failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set key down, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -158,5 +160,5 @@ struct Index {
 | 名称      | 类型                                       |只读   | 可选  |说明                    |
 | --------  | ------------------------                  |-------|------ |--------               |
 | action    | [FingerprintAction](#fingerprintaction12)   | 否    |  否   | 指纹手势事件类型的枚举。           |
-| distanceX | double                                    | 否    |  否   | 相对于侧边指纹器件短轴偏移量（正数表示向右移动，负数表示向左移动）。 |
-| distanceY | double                                    | 否    |  否   | 相对于侧边指纹器件长轴偏移量（正数表示向上移动，负数表示向下移动）。 |
+| distanceX | number                                    | 否    |  否   | 相对于侧边指纹器件短轴偏移量（正数表示向右移动，负数表示向左移动）。 |
+| distanceY | number                                    | 否    |  否   | 相对于侧边指纹器件长轴偏移量（正数表示向上移动，负数表示向下移动）。 |

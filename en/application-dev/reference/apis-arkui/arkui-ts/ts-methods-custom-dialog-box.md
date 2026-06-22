@@ -140,7 +140,7 @@ Defines the style of the custom dialog box.
 | borderStyle<sup>12+</sup> | [BorderStyle](ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](ts-types.md#edgestyles9)  | No| Yes| Border style of the dialog box.<br>Default value: **BorderStyle.Solid**<br>**borderStyle** must be used with **borderWidth** in pairs.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | width<sup>12+</sup> | [Dimension](ts-types.md#dimension10) | No  | Yes | Width of the dialog box.<br>**NOTE**<br>- Default maximum width of the dialog box: 400 vp<br>- When this parameter is set to a percentage, the reference width of the dialog box is the width of the window where the dialog box is located. You can decrease or increase the width as needed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | height<sup>12+</sup> | [Dimension](ts-types.md#dimension10)   | No| Yes| Height of the dialog box.<br>**NOTE**<br>- Default maximum height of the dialog box: 0.9 x (Window height – Safe area)<br>- When this parameter is set to a percentage, the reference height of the dialog box is the height of the window where the dialog box is located minus the safe area. You can decrease or increase the height as needed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| shadow<sup>12+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)   | No| Yes| Shadow of the dialog box.<br> Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| shadow<sup>12+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)  | No| Yes| Shadow of the dialog box.<br> Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise On other devices, the dialog box has no shadow by default.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | backgroundBlurStyle<sup>12+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | No  | Yes | Background blur style of the dialog box.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**<br>**NOTE**<br>Setting this parameter to **BlurStyle.NONE** disables the background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**. If you do, the color display may not produce the expected visual effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)| No| Yes| Options for customizing the background blur style. For details about the default value, see **BackgroundBlurStyleOptions**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No| Yes| Options for customizing the background effect. For details about the default value, see **BackgroundEffectOptions**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
@@ -157,6 +157,7 @@ Defines the style of the custom dialog box.
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](../js-apis-promptAction.md#immersivemode15) | No  | Yes | Overlay effect for the page-level dialog box.<br>**NOTE**<br>- Default value: **ImmersiveMode.DEFAULT**<br>- This parameter takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | levelOrder<sup>18+</sup>       | [LevelOrder](../js-apis-promptAction.md#levelorder18) | No  | Yes | Display order of the dialog box.<br>**NOTE**<br>- Default value: **LevelOrder.clamp(0)**<br>- Dynamic updating is not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | focusable<sup>19+</sup>       | boolean | No  | Yes | Whether the dialog box can gain focus. **true**: The dialog box can gain focus. **false**: The dialog box cannot gain focus.<br>Default value: **true**<br>**NOTE**<br>Only dialog boxes that are displayed on top of the current window can gain focus.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| systemMaterial  | SystemUiMaterial | No| Yes| System material of the dialog box. Different materials have different effects and can affect visual attributes such as the background color, border, and shadow of the dialog box.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 > **NOTE**
 >
@@ -332,7 +333,7 @@ struct CustomDialogUser {
 }
 ```
 
-![en-us_image_custom](figures/en-us_image_custom.gif)
+![image-custom](figures/image-custom.gif)
 
 ### Example 2: Opening a Dialog Box Outside the Main Window
 
@@ -421,7 +422,7 @@ struct CustomDialogUser {
 }
 ```
 
-![en-us_image_custom-showinsubwindow](figures/en-us_image_custom-showinsubwindow.jpg)
+![image-custom-showinsubwindow](figures/image-custom-showinsubwindow.jpg)
 
 ### Example 3: Setting the Dialog Box Style
 This example demonstrates how to set styles of a custom dialog box, including the width, height, background color, and shadow.
@@ -511,7 +512,7 @@ struct CustomDialogUser {
 }
 ```
 
-![en-us_image_custom_style](figures/en-us_image_custom_style.gif)
+![image-custom-style](figures/image-custom-style.gif)
 
 ### Example 4: Configuring a Dialog Box in the Hover State
 
@@ -1108,7 +1109,7 @@ struct Example3 {
 }
 ```
 
-![en-us_image_custom_lifecycle](figures/en-us_image_custom_lifecycle.gif)
+![image-custom-lifecycle](figures/image-custom-lifecycle.gif)
 
 ### Example 10: Implementing Dialog Boxes with Different customStyle Values
 
@@ -1255,7 +1256,7 @@ struct CustomDialogUser {
 }
 ```
 
-![en-us_image_custom-backgroundBlurStyleOptions](figures/en-us_image_custom-backgroundBlurStyleOptions.png)
+![image-custom-backgroundBlurStyleOptions](figures/image-custom-backgroundBlurStyleOptions.png)
 
 ### Example 12: Customizing the Background Effect
 
@@ -1318,7 +1319,7 @@ struct CustomDialogUser {
 }
 ```
 
-![en-us_image_custom-backgroundEffect](figures/en-us_image_custom-backgroundEffect.png)
+![image-custom-backgroundEffect](figures/image-custom-backgroundEffect.png)
 
 ### Example 13: Dynamically Updating the Custom Dialog Box Width
 
@@ -1385,4 +1386,4 @@ struct CustomDialogUser {
 }
 ```
 
-![en-us_image_custom-backgroundEffect](figures/en-us_image_dynamicRefreshwidth.gif)
+![image-dynamicRefreshwidth](figures/image-dynamicRefreshwidth.gif)

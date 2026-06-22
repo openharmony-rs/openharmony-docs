@@ -14,7 +14,7 @@
 >
 >  - 文本的展示内容需要写在元素标签内，可嵌套子元素标签tspan分段。
 >
->  - 文本分段，只支持被父元素标签svg嵌套。
+>  - 文本分段，只支持被父元素标签text嵌套。
 
 ## 权限列表
 
@@ -78,7 +78,7 @@
 }
 ```
 
-![zh-cn_image_0000001127125196](figures/zh-cn_image_0000001127125196.png)
+![spans](figures/spans.png)
 
 属性动画示例
 
@@ -133,7 +133,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001127125198](figures/zh-cn_image_0000001127125198.gif)
+![fill-opacity](figures/fill-opacity.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -149,7 +149,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001173164863](figures/zh-cn_image_0000001173164863.gif)
+![tspan](figures/tspan.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -172,4 +172,4 @@
 </div>
 ```
 
-![zh-cn_image_0000001127125200](figures/zh-cn_image_0000001127125200.gif)
+![stroke-width-opacity](figures/stroke-width-opacity.gif)

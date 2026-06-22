@@ -1,7 +1,7 @@
 # XComponentNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -11,11 +11,13 @@ The **XComponentNode** module provides APIs for the XComponentNode, which repres
 
 > **NOTE**
 >
-> This module is deprecated since API version 12. You are advised to use the [typeNode of the XComponent type](./js-apis-arkui-frameNode.md#xcomponent12) instead.
+> - The APIs of this module are deprecated since API version 12. You are advised to use the APIs of the **typeNode** module in the [XComponent](./js-apis-arkui-frameNode.md#xcomponent12) type instead.
 >
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module can be used only in the stage model.
+>
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> **XComponentNode** is not available in DevEco Studio Previewer.
+> - **XComponentNode** is not available in DevEco Studio Previewer.
 
 ## Modules to Import
 

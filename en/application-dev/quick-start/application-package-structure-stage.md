@@ -22,6 +22,7 @@ Create a project in DevEco Studio and try to create multiple modules of differen
 
 The table below lists the main file types in the project structure.
 
+<!--Table: 25%; 75%-->
 | File Type| Description|
 | -------- | -------- |
 | Configuration files| A collection of application-level and module-level configurations.<br> - **AppScope &gt; [app.json5](app-configuration-file.md)**: application-wide configuration, such as the bundle name, version number, application icon, application name, and dependent SDK version number.<br> - **ModuleName &gt; src &gt; main &gt; [module.json5](module-configuration-file.md)**: basic information, supported device types, component information, and required permissions of the module.|

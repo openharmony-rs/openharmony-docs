@@ -78,7 +78,7 @@ Prepares for screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Parameters               | Description                     |
+| Type               | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -121,6 +121,8 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 **Required permissions**: ohos.permission.COOPERATE_MANAGER
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**Parameters**
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
@@ -168,7 +170,7 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 
 **Return value**
 
-| Parameters               | Description                     |
+| Type               | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -269,7 +271,7 @@ Starts screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Name             | Description                     |
+| Type               | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -367,7 +369,7 @@ Stops screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Name             | Description                     |
+| Type              | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -462,7 +464,7 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 
 **Return value**
 
-| Parameters                  | Description                                                        |
+| Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that screen hopping is enabled, and the value **false** indicates the opposite.|
 
@@ -564,7 +566,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes:1.Incorrect parameter types.2.Parameter verification failed. |
 
 **Example**
 
@@ -737,7 +739,7 @@ Starts screen hopping based on the specified options. This API uses a promise to
 
 **Return value**
 
-| Parameters               | Description                     |
+| Type               | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -883,7 +885,7 @@ Prepares for screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Parameters                | Description                    |
+| Type                | Description                    |
 | ------------------- | ------------------------------- |
 | Promise&lt;void&gt;      | Promise that returns no value.|
 
@@ -925,6 +927,8 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 > This API is deprecated since API version 10. You are advised to use [cooperate.unprepareCooperate](#cooperateunpreparecooperate11).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**Parameters**
 
 | Name  | Type                     | Mandatory| Description                                      |
 | -------- | ------------------------- | ---- | ------------------------------------------ |
@@ -971,7 +975,7 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 
 **Return value**
 
-| Parameters               | Description                                         |
+| Type               | Description                                         |
 | ------------------- | --------------------------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -1075,7 +1079,7 @@ Starts screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Name                 | Description                            |
+| Type                 | Description                            |
 | ---------------------- | ------------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -1177,7 +1181,7 @@ Stops screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Name               | Description                           |
+| Type               | Description                           |
 | --------             | ----------------------------   |
 | Promise&lt;void&gt; |  Promise that returns no value.|
 
@@ -1283,7 +1287,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Return value**
 
-| Parameters                       | Description                    |
+| Type                      | Description                    |
 | -------------------        | ------------------------------- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that screen hopping is enabled, and the value **false** indicates the opposite.|
 

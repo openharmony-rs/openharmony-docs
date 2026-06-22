@@ -19,13 +19,35 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
 
 3. Call [OH_CryptoKeyAgreement_GenerateSecret](../../reference/apis-crypto-architecture-kit/capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_generatesecret) to perform key agreement based on the passed private key (**keyPair.priKey**) and public key (**keyPair.pubKey**) and return the shared key.
 
-```C++
+<!-- @[TestX25519](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiationCpp/entry/src/main/cpp/types/project/X25519.cpp) -->
+
+``` C++
+
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 #include "CryptoArchitectureKit/crypto_key_agreement.h"
-#include <stdio.h>
+#include "file.h"
+#include <cstdio>
 #include <cstring>
 
-static OH_Crypto_ErrCode doTestX25519KeyAgreement()
+
+static OH_Crypto_ErrCode GenerateSecret(OH_CryptoKeyAgreement *x25519KeyAgreement, OH_CryptoKeyPair *keyPairA,
+    OH_CryptoKeyPair *keyPairB, Crypto_DataBlob *secret)
+{
+    OH_CryptoPrivKey *privKey = OH_CryptoKeyPair_GetPrivKey(keyPairA);
+    OH_CryptoPubKey *pubKey = OH_CryptoKeyPair_GetPubKey(keyPairB);
+    return OH_CryptoKeyAgreement_GenerateSecret(x25519KeyAgreement, privKey, pubKey, secret);
+}
+
+static OH_Crypto_ErrCode CompareSecrets(Crypto_DataBlob secret1, Crypto_DataBlob secret2)
+{
+    if ((secret1.len == secret2.len) &&
+        (memcmp(secret1.data, secret2.data, secret1.len) == 0)) {
+        return CRYPTO_SUCCESS;
+    }
+    return CRYPTO_OPERTION_ERROR;
+}
+
+static OH_Crypto_ErrCode CovertKeyPairByBlob(OH_CryptoAsymKeyGenerator *x25519Gen, OH_CryptoKeyPair **keyPair)
 {
     uint8_t pubKeyArray[] = {48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145,
                              147, 101, 139, 57, 74, 225, 119, 196, 207, 0, 50, 232, 93, 147, 188, 21, 225, 228, 54, 251,
@@ -33,84 +55,64 @@ static OH_Crypto_ErrCode doTestX25519KeyAgreement()
     uint8_t priKeyArray[] = {48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 110, 4, 34, 4, 32, 112, 65, 156, 73, 65, 89, 183,
                              39, 119, 229, 110, 12, 192, 237, 186, 153, 21, 122, 28, 176, 248, 108, 22, 242, 239, 179,
                              106, 175, 85, 65, 214, 90};
-    // Create an X25519 key generator.
+    Crypto_DataBlob pubKeyBlob = {pubKeyArray, sizeof(pubKeyArray)};
+    Crypto_DataBlob priKeyBlob = {priKeyArray, sizeof(priKeyArray)};
+    return OH_CryptoAsymKeyGenerator_Convert(x25519Gen, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, keyPair);
+}
+
+OH_Crypto_ErrCode doTestX25519KeyAgreement()
+{
     OH_CryptoAsymKeyGenerator *x25519Gen = nullptr;
+    OH_CryptoKeyPair *keyPairA = nullptr;
+    OH_CryptoKeyPair *keyPairB = nullptr;
+    OH_CryptoKeyAgreement *x25519KeyAgreement = nullptr;
+    Crypto_DataBlob secret1 = {0};
+    Crypto_DataBlob secret2 = {0};
     OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create("X25519", &x25519Gen);
     if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
 
-    // Key pair A passed from an external system.
-    Crypto_DataBlob pubKeyBlob = {pubKeyArray, sizeof(pubKeyArray)};
-    Crypto_DataBlob priKeyBlob = {priKeyArray, sizeof(priKeyArray)};
-    OH_CryptoKeyPair *keyPairA = nullptr;
-    ret = OH_CryptoAsymKeyGenerator_Convert(x25519Gen, CRYPTO_DER, &pubKeyBlob, &priKeyBlob, &keyPairA);
+    ret = CovertKeyPairByBlob(x25519Gen, &keyPairA);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoAsymKeyGenerator_Destroy(x25519Gen);
-        return ret;
+        goto goto_cleanup;
     }
 
-    // Key pair B generated internally.
-    OH_CryptoKeyPair *keyPairB = nullptr;
     ret = OH_CryptoAsymKeyGenerator_Generate(x25519Gen, &keyPairB);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKeyPair_Destroy(keyPairA);
-        OH_CryptoAsymKeyGenerator_Destroy(x25519Gen);
-        return ret;
+        goto goto_cleanup;
     }
 
-    // Create a key agreement generator.
-    OH_CryptoKeyAgreement *x25519KeyAgreement = nullptr;
     ret = OH_CryptoKeyAgreement_Create("X25519", &x25519KeyAgreement);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKeyPair_Destroy(keyPairA);
-        OH_CryptoKeyPair_Destroy(keyPairB);
-        OH_CryptoAsymKeyGenerator_Destroy(x25519Gen);
-        return ret;
+        goto goto_cleanup;
     }
 
     // Use the public key of A and the private key of B to perform key agreement.
-    OH_CryptoPrivKey *privKeyB = OH_CryptoKeyPair_GetPrivKey(keyPairB);
-    OH_CryptoPubKey *pubKeyA = OH_CryptoKeyPair_GetPubKey(keyPairA);
-    Crypto_DataBlob secret1 = {0};
-    ret = OH_CryptoKeyAgreement_GenerateSecret(x25519KeyAgreement, privKeyB, pubKeyA, &secret1);
+    ret = GenerateSecret(x25519KeyAgreement, keyPairB, keyPairA, &secret1);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKeyAgreement_Destroy(x25519KeyAgreement);
-        OH_CryptoKeyPair_Destroy(keyPairA);
-        OH_CryptoKeyPair_Destroy(keyPairB);
-        OH_CryptoAsymKeyGenerator_Destroy(x25519Gen);
-        return ret;
+        goto goto_cleanup;
     }
 
     // Use the private key of A and the public key of B to perform key agreement.
-    OH_CryptoPrivKey *privKeyA = OH_CryptoKeyPair_GetPrivKey(keyPairA);
-    OH_CryptoPubKey *pubKeyB = OH_CryptoKeyPair_GetPubKey(keyPairB);
-    Crypto_DataBlob secret2 = {0};
-    ret = OH_CryptoKeyAgreement_GenerateSecret(x25519KeyAgreement, privKeyA, pubKeyB, &secret2);
+    ret = GenerateSecret(x25519KeyAgreement, keyPairA, keyPairB, &secret2);
     if (ret != CRYPTO_SUCCESS) {
-        OH_Crypto_FreeDataBlob(&secret1);
-        OH_CryptoKeyAgreement_Destroy(x25519KeyAgreement);
-        OH_CryptoKeyPair_Destroy(keyPairA);
-        OH_CryptoKeyPair_Destroy(keyPairB);
-        OH_CryptoAsymKeyGenerator_Destroy(x25519Gen);
-        return ret;
+        goto goto_cleanup;
     }
 
-    // Compare the secrets.
-    if ((secret1.len == secret2.len) && (memcmp(secret1.data, secret2.data, secret1.len) == 0)) {
-        printf("x25519 success\n");
-    } else {
+    ret = CompareSecrets(secret1, secret2);
+    if (ret != CRYPTO_SUCCESS) {
         printf("x25519 result is not equal\n");
-        ret = CRYPTO_OPERTION_ERROR;
+        goto goto_cleanup;
     }
 
-    // Free resources.
+goto_cleanup:
     OH_Crypto_FreeDataBlob(&secret1);
     OH_Crypto_FreeDataBlob(&secret2);
     OH_CryptoKeyAgreement_Destroy(x25519KeyAgreement);
     OH_CryptoKeyPair_Destroy(keyPairA);
     OH_CryptoKeyPair_Destroy(keyPairB);
     OH_CryptoAsymKeyGenerator_Destroy(x25519Gen);
-    return ret;
+    return CRYPTO_SUCCESS;
 }
 ```

@@ -1,8 +1,8 @@
 # 请求自绘制内容绘制帧率
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hudi33-->
-<!--Designer: @hudi33-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -71,7 +71,7 @@
    ```
 
 3. 定义演示页面，包含两个XComponent组件。
-   <!-- @[display_sync_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets) -->
+   <!-- @[display_sync_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/XComponentDisplaySync.ets) -->
    
    ``` TypeScript
    import XComponentContext from '../interface/XComponentContext';
@@ -181,7 +181,7 @@
    ```
 
 5. TS层注册和取消注册每帧回调。
-   <!-- @[display_sync_start_and_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets) -->
+   <!-- @[display_sync_start_and_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/XComponentDisplaySync.ets) -->
    
    ``` TypeScript
    Row() {

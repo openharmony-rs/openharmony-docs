@@ -17,11 +17,19 @@
 
 ## 开发步骤
 1. 业务方设备（设备A）生成SM4密钥，cipherSm4。
-2. 设备A使用生成的SM4密钥加密将导入密钥importKey，加密使用ECB/NoPadding模式，enImportKey=Encrypt(cipherSm4, importKey)。
+2. 设备A使用生成的SM4密钥，以ECB/NoPadding模式对导入的密钥importKey进行加密，得到加密后的密钥为enImportKey=Encrypt(cipherSm4, importKey)。
 3. 密钥导入方（设备B）导出SM2公钥，设备A接收该密钥。
 4. 设备A使用收到的SM2公钥加密生成的SM4密钥，enSm4=Encrypt(Sm2, cipherSm4)。
 5. 设备A将数字信封数据发送给设备B。
-6. 设备B使用导入WrappedKey导入数字信封密钥。若导入密钥是对称密钥，此步骤只需对裸密钥进行加密。若导入非对称密钥的密钥对，则将公钥以DER格式封装，并放入[HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)中。
+6. 设备B使用[importWrappedKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksimportwrappedkeyitem9)导入数字信封密钥。若导入密钥是对称密钥，此步骤只需对裸密钥进行加密。若导入非对称密钥的密钥对，则将公钥以DER格式封装，并放入[HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)中。
+
+> **说明：**
+>
+> 若对端设备非OpenHarmony设备且不支持密钥管理服务，则在构造数字信封数据时需遵循以下要求：
+>
+> - SM2加密结果组合方式为C1C3C2，其中C1x和C1y各32字节；
+>
+> - SM2加密结果采用ASN.1格式，其中bigint采用大端的方式存储；
 
 ### RSA
 ```ts

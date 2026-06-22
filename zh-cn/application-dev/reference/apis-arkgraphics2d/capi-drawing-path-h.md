@@ -1,8 +1,8 @@
 # drawing_path.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -45,6 +45,8 @@
 | [OH_Drawing_ErrorCode OH_Drawing_PathSetPath(OH_Drawing_Path* path, OH_Drawing_Path* other)](#oh_drawing_pathsetpath) | 将一个路径对象设置成当前的路径对象。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PathIsEmpty(OH_Drawing_Path* path, bool* isEmpty)](#oh_drawing_pathisempty) | 判断一个路径对象是否为空。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PathIsRect(OH_Drawing_Path* path, OH_Drawing_Rect* rect, bool* isRect)](#oh_drawing_pathisrect) | 判断路径对象是否构成一个矩形。 |
+| [OH_Drawing_ErrorCode OH_Drawing_PathGetLastPoint(OH_Drawing_Path* path, OH_Drawing_Point2D* point)](#oh_drawing_pathgetlastpoint) | 用于获取路径的最后一个点的坐标。 |
+| [OH_Drawing_ErrorCode OH_Drawing_PathIsEqual(OH_Drawing_Path* path, OH_Drawing_Path* other, bool* equal)](#oh_drawing_pathisequal) | 用于检查两个路径是否相等。 |
 | [void OH_Drawing_PathMoveTo(OH_Drawing_Path* path, float x, float y)](#oh_drawing_pathmoveto) | 用于设置自定义路径的起始点位置。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_PathLineTo(OH_Drawing_Path* path, float x, float y)](#oh_drawing_pathlineto) | 用于添加一条从路径的最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的线段。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_PathArcTo(OH_Drawing_Path* path,float x1, float y1, float x2, float y2, float startDeg, float sweepDeg)](#oh_drawing_patharcto) | 用于给路径添加一段弧线，绘制弧线的方式为角度弧，该方式首先会指定一个矩形边框，<br>矩形边框的内切椭圆将会被用来截取弧线，然后会指定一个起始角度和扫描度数，<br>从起始角度扫描截取的椭圆周长一部分即为绘制的弧线。若路径有内容则会默认添加一条从路径的最后点位置到弧线起始点位置的线段。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
@@ -69,6 +71,7 @@
 | [void OH_Drawing_PathAddPolygon(OH_Drawing_Path* path, const OH_Drawing_Point2D* points, uint32_t count, bool isClosed)](#oh_drawing_pathaddpolygon) | 向路径添加多边形。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path、points任意一个为NULL或者count等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_PathAddCircle(OH_Drawing_Path* path,float x, float y, float radius, OH_Drawing_PathDirection pathDirection)](#oh_drawing_pathaddcircle) | 按指定方向，向路径添加圆形。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；<br>radius小于等于0时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE；<br>pathDirection不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
 | [bool OH_Drawing_PathBuildFromSvgString(OH_Drawing_Path* path, const char* str)](#oh_drawing_pathbuildfromsvgstring) | 解析SVG字符串表示的路径。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path、str任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_ErrorCode OH_Drawing_PathConvertToSvgString(const OH_Drawing_Path* path, char* str, size_t* strSize)](#oh_drawing_pathconverttosvgstring) | 将路径转换为SVG字符串。 |
 | [bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)](#oh_drawing_pathcontains) | 判断指定坐标点是否被路径包含，判定是否被路径包含的规则参考[OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype)。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_PathTransform(OH_Drawing_Path* path, const OH_Drawing_Matrix* matrix)](#oh_drawing_pathtransform) | 对路径进行矩阵变换。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path、matrix任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_PathTransformWithPerspectiveClip(OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix,OH_Drawing_Path* dst, bool applyPerspectiveClip)](#oh_drawing_pathtransformwithperspectiveclip) | 对路径进行矩阵变换。用转换后的路径替换目标路径，如果目标路径为NULL，则替换源路径。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>src、matrix任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
@@ -85,6 +88,9 @@
 | [bool OH_Drawing_PathOp(OH_Drawing_Path* path, const OH_Drawing_Path* other, OH_Drawing_PathOpMode op)](#oh_drawing_pathop) | 将两个路径按照指定的路径操作类型合并。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path、srcPath任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；<br>op不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
 | [bool OH_Drawing_PathGetMatrix(OH_Drawing_Path* path, bool forceClosed,float distance, OH_Drawing_Matrix* matrix, OH_Drawing_PathMeasureMatrixFlags flag)](#oh_drawing_pathgetmatrix) | 获取距路径起始点指定距离的相应变换矩阵。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>path、matrix任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；<br>flag不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PathApproximate(OH_Drawing_Path* path, float acceptableError, float* vals,uint32_t* count)](#oh_drawing_pathapproximate) | 将当前路径转化为由连续直线段构成的近似路径。 |
+| [OH_Drawing_ErrorCode OH_Drawing_PathGetVerbData(const OH_Drawing_Path* path, OH_Drawing_PathIteratorVerb* verbs, uint32_t* count)](#oh_drawing_pathgetverbdata) | 获取路径的数据。在路径（path）图元中，指令数据verb用于描述路径构造过程中的基本绘图动作。 |
+| [OH_Drawing_ErrorCode OH_Drawing_PathGetPointData(const OH_Drawing_Path* path, OH_Drawing_Point2D* points, uint32_t* count)](#oh_drawing_pathgetpointdata) | 获取路径的点数据。<br>在路径（path）图元中，点数据以数值序列的形式存在，与指令verb指令一一对应，用来精确指定绘图操作的几何坐标位置。 |
+| [OH_Drawing_ErrorCode OH_Drawing_PathGetConicWeightData(const OH_Drawing_Path* path, float* conicWeights, uint32_t* count)](#oh_drawing_pathgetconicweightdata) | 获取路径的圆锥曲线权重数据。<br>路径的圆锥曲线权重数据用于描述路径中圆锥曲线的权重信息。<br>在路径（path）图元中，圆锥曲线数据采用有理贝塞尔曲线（Rational Bézier Curve）形式表示，其中每个控制点附带一个权重值（weight）。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PathInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other,float weight, bool* success, OH_Drawing_Path* interpolatedPath)](#oh_drawing_pathinterpolate) | 按照给定权重在当前路径与另一条路径之间进行插值，并将结果存储到目标路径对象中。<br> 两条路径点数相同即可插值成功，目标路径按照当前路径的结构进行创建。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PathIsInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other, bool* result)](#oh_drawing_pathisinterpolate) | 检查当前路径与另一条路径（other）在结构和操作顺序上是否完全一致，以确定两条路径是否兼容插值。<br> 若路径中包含圆锥曲线（Conic）操作，则对应操作的权重值也必须一致，才能视为兼容插值。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PathIsInverseFillType(const OH_Drawing_Path* path, bool* isInverse)](#oh_drawing_pathisinversefilltype) | 检查路径的填充类型是否是取反类型。<br>取反类型即[OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype)中的PATH_FILL_TYPE_INVERSE_WINDING和PATH_FILL_TYPE_INVERSE_EVEN_ODD。 |
@@ -338,6 +344,57 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsRect(OH_Drawing_Path* path, OH_Drawing_Rec
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br> 返回OH_DRAWING_SUCCESS，表示执行成功。<br> 返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数path或者isRect为空。 |
+
+### OH_Drawing_PathGetLastPoint()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_PathGetLastPoint(OH_Drawing_Path* path, OH_Drawing_Point2D* point)
+```
+
+**描述**
+
+用于获取路径的最后一个点的坐标。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针。 |
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* point | 指向坐标点对象[OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)的指针，用于存储最后一个点。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数path或point为空指针，或者path为空路径。 |
+
+### OH_Drawing_PathIsEqual()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_PathIsEqual(OH_Drawing_Path* path, OH_Drawing_Path* other, bool* equal)
+```
+
+**描述**
+
+用于检查两个路径是否相等。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针。 |
+| [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* other | 指向另一个路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针。 |
+| bool* equal | 表示两个路径是否相等。作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行错误码。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数path或other为空指针，或者equal为空指针。 |
 
 ### OH_Drawing_PathMoveTo()
 
@@ -930,6 +987,32 @@ bool OH_Drawing_PathBuildFromSvgString(OH_Drawing_Path* path, const char* str)
 | -- | -- |
 | bool | 函数返回解析SVG字符串是否成功。true表示成功，false表示不成功。 |
 
+### OH_Drawing_PathConvertToSvgString()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_PathConvertToSvgString(const OH_Drawing_Path* path, char* str, size_t* strSize)
+```
+
+**描述**
+
+将路径转换为SVG字符串。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)对象的指针。 |
+| char* str | SVG字符串，开发者需要分配和释放对应的内存。可通过传入空指针以获取字符串的内存大小；作为出参使用时，表示路径转换后的SVG字符串结果。 |
+| size_t* strSize | SVG字符串内存大小，单位为字节。作为出参使用时，用来获取实际字符串内存大小的值。作为入参使用时，表示str分配的内存大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或strSize为nullptr，或strSize过小时则返回OH_DRAWING_ERROR_INCORRECT_PARAMETER。 |
+
 ### OH_Drawing_PathContains()
 
 ```c
@@ -1351,6 +1434,112 @@ OH_Drawing_ErrorCode OH_Drawing_PathApproximate(OH_Drawing_Path* path, float acc
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br> 返回OH_DRAWING_SUCCESS，表示执行成功。<br> 返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数path或者count为空指针。<br> 返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示参数acceptableError小于0。 |
+
+### OH_Drawing_PathGetVerbData()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_PathGetVerbData(const OH_Drawing_Path* path, OH_Drawing_PathIteratorVerb* verbs, uint32_t* count)
+```
+
+**描述**
+
+获取路径的数据。在路径（path）图元中，指令数据verb用于描述路径构造过程中的基本绘图动作。
+
+指令数据以枚举的形式存在，每个取值对应一种几何操作类型，例如：
+
+- [OH_Drawing_PathMoveTo](capi-drawing-path-h.md#oh_drawing_pathmoveto)：将当前绘图点移至指定坐标，不产生线段。
+
+- [OH_Drawing_PathLineTo](capi-drawing-path-h.md#oh_drawing_pathlineto)：从当前点向指定点绘制直线段。
+
+- [OH_Drawing_PathQuadTo](capi-drawing-path-h.md#oh_drawing_pathquadto)：从当前点向指定点绘制二次贝塞尔曲线。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)对象的指针。 |
+| [OH_Drawing_PathIteratorVerb](capi-drawing-path-iterator-h.md#oh_drawing_pathiteratorverb)* verbs | 作为出参使用，表示路径的指令数据数组。 |
+| uint32_t* count | 作为出参使用，表示指令数据数组的大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或count为空，则返回OH_DRAWING_ERROR_INCORRECT_PARAMETER。 |
+
+### OH_Drawing_PathGetPointData()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_PathGetPointData(const OH_Drawing_Path* path, OH_Drawing_Point2D* points, uint32_t* count)
+```
+
+**描述**
+
+获取路径的点数据。
+
+在路径（path）图元中，点数据以数值序列的形式存在，与指令verb指令一一对应，用来精确指定绘图操作的几何坐标位置。
+
+点数据的主要类型包括如下：
+
+- 终点坐标：[OH_Drawing_PathMoveTo](capi-drawing-path-h.md#oh_drawing_pathmoveto)、[OH_Drawing_PathLineTo](capi-drawing-path-h.md#oh_drawing_pathlineto) 等指令配合，定义线段或移动的目标位置。
+
+- 控制点坐标：与曲线指令配合，用于定义贝塞尔曲线的形状（如三次曲线需要两个控制点和一个终点）。
+
+- 闭合点：通常不单独提供坐标，由[OH_Drawing_PathClose](capi-drawing-path-h.md#oh_drawing_pathclose)指令隐式使用路径起点。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)对象的指针。 |
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* points | 作为出参使用，表示路径的点数据数组。 |
+| uint32_t* count | 作为出参使用，表示点数据数组的大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或count为空，则返回OH_DRAWING_ERROR_INCORRECT_PARAMETER。 |
+
+### OH_Drawing_PathGetConicWeightData()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_PathGetConicWeightData(const OH_Drawing_Path* path, float* conicWeights, uint32_t* count)
+```
+
+**描述**
+
+获取路径的圆锥曲线权重数据。
+
+路径的圆锥曲线权重数据用于描述路径中圆锥曲线的权重信息。
+
+在路径（path）图元中，圆锥曲线数据采用有理贝塞尔曲线（Rational Bézier Curve）形式表示，其中每个控制点附带一个权重值（weight）。权重属于曲线定义的几何参数，作用如下：
+
+- 形状调控：权重值越大，曲线越靠近对应控制点；权重为1时退化为标准贝塞尔曲线；权重为0时该控制点不起作用。
+
+- 精确表示圆锥曲线：通过组合权重与二次贝塞尔曲线，可以精确表示圆弧、椭圆弧、抛物线等圆锥曲线段，无需使用分段逼近或专用椭圆弧指令。
+
+- 数据组织：权重通常以数组形式与点数据并列，按顺序对应每个控制点，与相应的指令verb（如[OH_Drawing_PathConicTo](capi-drawing-path-h.md#oh_drawing_pathconicto)）配合使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)对象的指针。 |
+| float* conicWeights | 作为出参使用，表示路径的圆锥曲线权重数据数组。 |
+| uint32_t* count | 作为出参使用，表示圆锥曲线权重数据数组的大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>如果操作成功，则返回OH_DRAWING_SUCCESS。<br>如果path或count为空，则返回OH_DRAWING_ERROR_INCORRECT_PARAMETER。 |
 
 ### OH_Drawing_PathInterpolate()
 

@@ -1,8 +1,8 @@
 # 空间音频能力查询和状态订阅
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @tom_guo-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -62,8 +62,7 @@ let audioRoutingManager = audioManager.getRoutingManager();
 import { audio } from '@kit.AudioKit';
 // ...
   let isSpatializationEnabledForCurrentDevice = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
-  console.info(`Succeeded in using isSpatializationEnabledForCurrentDevice function,
-    IsSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
+  console.info(`Succeeded in checking spatialization enabled for current device is: ${isSpatializationEnabledForCurrentDevice}.`);
 ```
 
 **订阅当前发声设备空间音频渲染效果的开关状态变化事件**
@@ -79,8 +78,7 @@ import { audio } from '@kit.AudioKit';
 // ...
   audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice',
     (isSpatializationEnabledForCurrentDevice: boolean) => {
-    console.info(`Succeeded in using on function, IsSpatializationEnabledForCurrentDevice:
-      ${isSpatializationEnabledForCurrentDevice}.`);
+    console.info(`Succeeded in using isSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
     // ...
   });
 ```

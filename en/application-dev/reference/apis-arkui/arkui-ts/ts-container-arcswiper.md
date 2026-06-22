@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **ArcSwiper** component is designed for circular screens to display child components in a carousel-like manner.
@@ -141,7 +141,7 @@ Sets whether vertical swiping is used.
 
 disableSwipe(disabled: Optional\<boolean>)
 
-Sets whether to disable the swipe feature.
+Sets whether to disable the swipe-to-switch feature of the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -151,7 +151,7 @@ Sets whether to disable the swipe feature.
 
 | Name| Type   | Mandatory| Description                                    |
 | ------ | ------- | ---- | ---------------------------------------- |
-| disabled  | Optional\<boolean> | Yes  | Whether to disable the swipe feature. The value **true** means to disable the feature, and **false** means the opposite.<br>Default value: **false**|
+| disabled  | Optional\<boolean> | Yes  | Whether to disable the swipe-to-switch feature of the component. The value **true** means to disable the feature, and **false** means the opposite.<br>Default value: **false**|
 
 ### digitalCrownSensitivity
 

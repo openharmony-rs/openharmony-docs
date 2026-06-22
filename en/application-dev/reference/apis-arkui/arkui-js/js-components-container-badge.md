@@ -116,4 +116,4 @@ export default {
 }
 ```
 
-![en-us_image_000000117726526811](figures/en-us_image_000000117726526811.png)
+![badge](figures/badge.png)

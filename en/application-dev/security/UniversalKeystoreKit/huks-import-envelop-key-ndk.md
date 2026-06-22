@@ -25,7 +25,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 3. Device B (key importer) exports the SM2 public key. Device A receives the key.
 4. Device A uses the received SM2 public key to encrypt the generated SM4 key (**enSm4** is set to **Encrypt(Sm2, cipherSm4)**).
 5. Device A sends the digital envelope data to device B.
-6. Device B uses the imported **WrappedKey** to import the key using digital envelope. If the key to be imported is an asymmetric key, you only need to encrypt the raw private key in this step. If the key pair of the asymmetric key is imported, the public key is encapsulated in DER format into [OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag).
+6. Device B uses the imported **WrappedKey** to import the key using digital envelope. If the key to be imported is an asymmetric key, you only need to encrypt the raw key in this step. If the key pair of the asymmetric key is imported, the public key is encapsulated in DER format into [OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag).
 
 ### Example of Importing the RSA Key
 ```c

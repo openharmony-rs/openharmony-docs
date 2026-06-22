@@ -422,7 +422,7 @@ new Date("2020-11-03");
 new Date("11-02-2021");
 ```
 
-If the string is in other formats, you can convert it to a date object by calling **new Date(year:number,month:number,day?:number,hour?:number,minute?:number,second?:number,ms?:number)**.
+For strings in other formats, you can convert it to a Date object by calling **new Date(year:number,month:number,day?:number,hour?:number,minute?:number,second?:number,ms?:number)**.
 
 ```ts
 // Syntax for creating a date based on parameters:
@@ -433,7 +433,7 @@ Pass the date parameters as arguments.
 
 - **yearValue**: the year in the ISO 8061 YYYY format, for example, **2021**. If we specify a value in YY format, it may be incorrectly accepted. For example, the value **21** would be regarded as the year 1921 rather than 2021.
 
-- **IndexOfMonth**: index of the month, which starts from 0. It is obtained by subtracting 1 from the month value. For example, for March, the month value is 3, but the value of **IndexOfMonth** will be 2 (that is, 3 – 1 = 2). The value should typically be within the 0–11 range.
+- **IndexOfMonth**: index of the month, which starts from 0. It is obtained by subtracting 1 from the month value. For example, for March, the month value is 3, but the value of **monthIndex** will be 2 (that is, 3 – 1 = 2). The value should typically be within the 0–11 range.
 
 - **dayValue**: day of the month. It should range from 1 to 31 depending on the number of days in the month. For example, for 21-05-2021, the day value is **21**.
 

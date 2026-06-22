@@ -134,7 +134,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    }
    ```
 
-   ![en-us_image_0000001127285076](figures/en-us_image_0000001127285076.png)
+   ![div](figures/div.png)
 
 2. Flex wrap style
    ```html

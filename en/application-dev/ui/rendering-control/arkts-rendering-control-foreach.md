@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-**ForEach** enables array-based rendering of repeated content. It must be used in a container component, and the component it returns must be one allowed inside the container component. For example, for rendering of **ListItem** components, **ForEach** must be used in the [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) component.
+**ForEach** enables array-based rendering of repeated content. It must be used in a container component, and the component it returns must be one allowed inside the container component. For example, the [ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md) component requires the parent container component of **ForEach** to be [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md).
 
 For details about API parameters, see [ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md).
 
@@ -949,7 +949,7 @@ struct GenerationKeyExample {
           GenerationKeyChildItem({ item: item.content.toString() })
         }
           // If the keyGenerator function is not defined, the ArkUI framework uses the default key value generation function.
-          // KeyData's bigint content fails JSON serialization.
+          // JSON serialization fails because the content property is of the bigint type.
           , (item: KeyData) => item.content.toString()
         )
       }

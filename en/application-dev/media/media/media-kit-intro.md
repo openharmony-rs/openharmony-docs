@@ -139,7 +139,7 @@ The table below lists the supported subtitle formats.
 | Subtitle Container Format| Protocol| Loading Mode|
 | -------- | -------- | -------- |
 | srt | File descriptor (FD) for local video on-demand (VOD), and HTTP/HTTPS/HLS/DASH for network VOD| External subtitle|
-| vtt | FD for local VOD, and HTTP/HTTPS/HLS/DASH for network VOD| External subtitle|
+| vtt | File descriptor (FD) for local video on-demand (VOD), and HTTP/HTTPS/HLS/DASH for network VOD| External subtitle|
 | webvtt | DASH for network VOD| Built-in subtitle|
 
 > **NOTE**
@@ -335,3 +335,5 @@ The encoding parameters (format and bit rate) and container format of the source
   - Subtitle tracks are not supported. If the original video has subtitle tracks, they are discarded after transcoding.
   - Only one video track can be output. If the original video has multiple video tracks, the first one is selected for transcoding.
   - Only one audio track can be output. If the original video has multiple audio tracks, the first one is selected for transcoding.
+
+<!--RP2--><!--RP2End-->

@@ -1,7 +1,7 @@
 # InputMethod_CursorInfo
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -12,7 +12,7 @@ typedef struct InputMethod_CursorInfo InputMethod_CursorInfo
 
 ## 概述
 
-光标信息。光标的坐标位置、宽度和高度。
+光标信息，包括坐标位置、宽度和高度。
 
 **起始版本：** 12
 

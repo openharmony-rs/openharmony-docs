@@ -106,7 +106,7 @@ console.info(`getArguments testRunnerClassName: ${args.testRunnerClassName}`);
 
 type AbilityDelegator = _AbilityDelegator
 
-Represents the **AbilityDelegator** module.
+Provides the capability of listening for and managing the lifecycle changes of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) instances through [AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md) instances. For example, you can obtain the current state of a UIAbility (for example, whether the UIAbility has been created or is in the foreground), obtain the UIAbility that currently has the focus, wait for the UIAbility to enter a lifecycle node (for example, the **onForeground** state), start a specified UIAbility, and set the timeout mechanism.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -120,7 +120,7 @@ Represents the **AbilityDelegator** module.
 
 type AbilityDelegatorArgs = _AbilityDelegatorArgs
 
-Represents the **AbilityDelegatorArgs** module.
+Provides the capability of obtaining an **AbilityDelegatorArgs** object during the execution of test cases.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -134,7 +134,7 @@ Represents the **AbilityDelegatorArgs** module.
 
 type AbilityMonitor = _AbilityMonitor
 
-Represents the **AbilityMonitor** module.
+Provides input parameters of [addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9) in **abilityDelegator** to listen for lifecycle changes of a UIAbility.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -148,7 +148,7 @@ Represents the **AbilityMonitor** module.
 
 type ShellCmdResult = _ShellCmdResult
 
-Represents the **ShellCmdResult** module.
+Provides the shell command execution result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -162,7 +162,7 @@ Represents the **ShellCmdResult** module.
 
 type AbilityStageMonitor = _AbilityStageMonitor
 
-Represents the **AbilityStageMonitor** module.
+Provides the capability of listening for a specified [AbilityStage](../apis-ability-kit/js-apis-app-ability-abilityStage.md) object. You can use AbilityStageMonitor as an input parameter of [abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor9) to register a listener.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 

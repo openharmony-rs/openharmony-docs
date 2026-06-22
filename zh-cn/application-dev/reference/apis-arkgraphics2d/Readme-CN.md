@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin; @oh_wangxk; @gmiao522-->
-<!--Designer: @wangyanglan; @liumingxiang-->
+<!--Designer: @wanyanglan; @liumingxiang-->
 <!--Tester: @nobuggers; @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
@@ -30,6 +30,7 @@
     - [Class (PathEffect)](arkts-apis-graphics-drawing-PathEffect.md)
     - [Class (PathIterator)](arkts-apis-graphics-drawing-PathIterator.md)
     - [Class (Pen)](arkts-apis-graphics-drawing-Pen.md)
+    - [Class (PointUtils)](arkts-apis-graphics-drawing-PointUtils.md)
     - [Class (RectUtils)](arkts-apis-graphics-drawing-RectUtils.md)
     - [Class (Region)](arkts-apis-graphics-drawing-Region.md)
     - [Class (RoundRect)](arkts-apis-graphics-drawing-RoundRect.md)
