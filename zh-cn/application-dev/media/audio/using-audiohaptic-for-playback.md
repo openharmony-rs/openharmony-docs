@@ -21,7 +21,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 ### 开发步骤及注意事项
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS)。
+以下各步骤示例为片段代码，可通过示例代码链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS)。
 
 1. 获取音振管理器实例，并注册音频及振动资源，资源支持情况可以查看[AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager)。
 
@@ -31,7 +31,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    > - 方式1：使用[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)接口，通过文件URI来注册资源。
    > - 方式2（推荐）：从API version 20开始，支持使用[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口，通过文件描述符来注册资源，更便于开发者使用。
 
-   <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
    
    ``` TypeScript
    import { audio, audioHaptic } from '@kit.AudioKit';
@@ -45,8 +45,8 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
    // ...
      // 方法1：使用registerSource接口注册资源。
-     let audioUri = 'data/audioTest.wav'; // 此处仅作示例，实际使用时需要将文件替换为应用目标音频资源的Uri。
-     let hapticUri = 'data/hapticTest.json'; // 此处仅作示例，实际使用时需要将文件替换为应用目标振动资源的Uri。
+     let audioUri = 'data/audioTest.wav'; // 此处仅作示例，实际使用时需要将文件替换为应用目标音频资源的URI。
+     let hapticUri = 'data/hapticTest.json'; // 此处仅作示例，实际使用时需要将文件替换为应用目标振动资源的URI。
      let idForUri = 0;
    
      audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
@@ -58,15 +58,15 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
        // ...
      });
      // ...
-     // 方法2:使用registerSourceFromFd接口注册资源。
-     // 此处仅作示例,实际使用时需要将文件替换为应用rawfile目录下的对应文件。
+     // 方法2：使用registerSourceFromFd接口注册资源。
+     // 此处仅作示例，实际使用时需要将文件替换为应用rawfile目录下的对应文件。
      let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg');
      let audioFd: audioHaptic.AudioHapticFileDescriptor = {
        fd: audioFile.fd,
        offset: audioFile.offset,
        length: audioFile.length,
      };
-     // 此处仅作示例,实际使用时需要将文件替换为应用rawfile目录下的对应文件。
+     // 此处仅作示例，实际使用时需要将文件替换为应用rawfile目录下的对应文件。
      let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json');
      let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
        fd: hapticFile.fd,
