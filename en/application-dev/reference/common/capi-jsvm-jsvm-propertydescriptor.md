@@ -1,10 +1,11 @@
 # JSVM_PropertyDescriptor
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:21:49.672Z pushedAt=2026-06-22T03:21:12.877Z -->
 
 ```c
 typedef struct {...} JSVM_PropertyDescriptor
@@ -13,6 +14,8 @@ typedef struct {...} JSVM_PropertyDescriptor
 ## Overview
 
 Defines property descriptor.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
 

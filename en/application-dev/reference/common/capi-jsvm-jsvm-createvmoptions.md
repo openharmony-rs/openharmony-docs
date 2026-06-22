@@ -6,7 +6,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:21:07.215Z pushedAt=2026-06-18T09:19:01.911Z -->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:21:07.215Z pushedAt=2026-06-22T03:21:12.863Z -->
 
 ```c
 typedef struct {...} JSVM_CreateVMOptions

@@ -6,7 +6,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:21:05.361Z pushedAt=2026-06-18T09:10:10.282Z -->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:21:05.361Z pushedAt=2026-06-22T03:21:12.861Z -->
 
 ```c
 typedef const struct {...} JSVM_CompileProfile
@@ -16,7 +16,7 @@ typedef const struct {...} JSVM_CompileProfile
 
 Defines the compilation sampling file transferred together with **JSVM_COMPILE_COMPILE_PROFILE**.
 
-**Use scenario:** Pre-compilation optimization during the secondary startup of an application, which can improve application startup speed and runtime performance. Applicable to application scenarios that require startup performance optimization.
+**Use scenario:** Pre-compilation optimization during the secondary startup of an application, which can improve application startup speed and runtime performance; application scenarios that require startup performance optimization.
 
 **System capability:** SystemCapability.ArkCompiler.JSVM
 

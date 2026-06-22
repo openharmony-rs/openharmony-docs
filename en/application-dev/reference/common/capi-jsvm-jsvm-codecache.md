@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:20:47.134Z pushedAt=2026-06-18T09:01:39.267Z -->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:20:47.134Z pushedAt=2026-06-22T03:21:12.853Z -->
 
 ```c
 typedef struct {...} JSVM_CodeCache

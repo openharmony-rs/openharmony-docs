@@ -1,10 +1,12 @@
 # JSVM_PropertyHandlerConfigurationStruct
+
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:22:10.702Z pushedAt=2026-06-22T03:21:12.884Z -->
 
 ```c
 typedef struct {...} JSVM_PropertyHandlerConfigurationStruct
@@ -13,6 +15,14 @@ typedef struct {...} JSVM_PropertyHandlerConfigurationStruct
 ## Overview
 
 Defines a struct for triggering the corresponding callback when the getter, setter, deleter, or enumerator of an object is executed.
+
+**Use scenario:** Intercepting and handling JavaScript object property operations; enabling dynamic property access control; building proxy objects; implementing property monitoring mechanisms.
+
+**Problem solved:** A mechanism is provided to intercept and customize the property operation behavior of objects, allowing custom logic to be executed during property read, write, delete, and other operations.
+
+**Benefits:** The flexibility and controllability of object operations are enhanced, simplifying the implementation logic of property interception.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
 
@@ -29,8 +39,7 @@ Defines a struct for triggering the corresponding callback when the getter, sett
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) namedPropertyData | Data used for name property callback.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) indexedPropertyData   | Data used for index property callback.|
 
-
-### Member Functions
+### Member Callbacks
 
 | Name| Description|
 | -- | -- |
@@ -43,7 +52,7 @@ Defines a struct for triggering the corresponding callback when the getter, sett
 | [JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertydeletercallback) | Callback triggered by deleting the index property of an instance object.|
 | [JSVM_Value (JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertyenumeratorcallback) | Callback triggered by obtaining all index properties of an object.|
 
-## Member Function Description
+## Member Callback Description
 
 ### genericNamedPropertyGetterCallback()
 

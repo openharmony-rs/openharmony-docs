@@ -1,10 +1,11 @@
 # JSVM_ScriptOrigin
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:22:19.738Z pushedAt=2026-06-22T03:21:12.886Z -->
 
 ```c
 typedef struct {...} JSVM_ScriptOrigin
@@ -13,6 +14,8 @@ typedef struct {...} JSVM_ScriptOrigin
 ## Overview
 
 Defines the original information about a JavaScript code segment, such as the source map path, source file name, and start line/column number in the source file.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
 

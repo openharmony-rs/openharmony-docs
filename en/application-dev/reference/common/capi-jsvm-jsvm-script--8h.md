@@ -1,10 +1,11 @@
 # JSVM_Script__*
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=93671cc034f483d1b8e032e6aa319b90dbbd1186 translatedAt=2026-06-18T08:22:11.052Z pushedAt=2026-06-22T03:21:12.885Z -->
 
 ```c
 typedef struct JSVM_Script__* JSVM_Script
@@ -13,6 +14,8 @@ typedef struct JSVM_Script__* JSVM_Script
 ## Overview
 
 Defines the JavaScript code.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
 
