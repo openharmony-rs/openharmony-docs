@@ -328,25 +328,27 @@ struct MyComponent {
 **允许使用表达式**
 
 <!-- @[BuildExpression](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildExpression.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct MyComponent {
   @State stateVar: int = 1;
   build() {
     Column() {
-      this.stateVar == 1 ? Text('is equal to 1'): Text('is not equal to 1'); // 支持使用表达式
+      this.stateVar == 1 ? Text('is equal to 1').fontSize(20).margin(10): Text('is not equal to 1').fontSize(20).margin(10); // 支持使用表达式
       Text('hello world')
+        .fontSize(20)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.stateVar++;
         })
     }
+    .width('100%')
   }
 }
-
 ```
   > **说明：**
   >

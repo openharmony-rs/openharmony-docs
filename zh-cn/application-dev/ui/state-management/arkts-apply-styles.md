@@ -76,9 +76,9 @@ function applyStyles<T extends CommoMethod>(this: T, styleMethod: (instance: Com
 ### 组件内Styles方法和全局Styles方法的用法
 
 <!-- @[ApplyStylesFancy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ApplyStyles/entry/src/main/ets/pages/ApplyStylesFancy.ets) -->
+
 ``` TypeScript
-import { ClickEvent, Color, Column, CommonMethod, Component, Entry, Text, applyStyles } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { ClickEvent, Color, Column, CommonMethod, Component, Entry, Text, applyStyles, State } from '@kit.ArkUI';
 
 // 定义在全局的Styles方法
 function globalFancy  (instance: CommonMethod) {
@@ -107,11 +107,14 @@ struct FancyUse {
       Text('FancyA')
         .applyStyles(globalFancy)
         .fontSize(30)
+        .margin(10)
       // 使用组件内的Styles方法
       Text('FancyB')
         .applyStyles(this.fancy)
         .fontSize(30)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
