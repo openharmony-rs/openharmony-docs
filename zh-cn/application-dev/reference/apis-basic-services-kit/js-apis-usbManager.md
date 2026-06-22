@@ -332,7 +332,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取接口的索引，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
+| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取控制的接口对象，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
 | force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取；设置为true时，将强制从内核驱动或其他程序中释放该接口的控制权并交由用户空间程序控制。用户按需选择。|
 
 **返回值：**
@@ -386,7 +386,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要释放接口的索引，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
+| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要释放控制的接口对象，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
 
 **返回值：**
 
@@ -436,7 +436,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| config | [USBConfiguration](#usbconfiguration) | 是 | 用于确定需要设置的配置，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一设置。|
+| config | [USBConfiguration](#usbconfiguration) | 是 | 用于确定需要设置的配置，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一配置。|
 
 **返回值：**
 
@@ -873,7 +873,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，该参数同[usbManager.usbSubmitTransfer](#usbmanagerusbsubmittransfer18)接口的入参对象。|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 被取消传输的参数，该参数与[usbManager.usbSubmitTransfer](#usbmanagerusbsubmittransfer18)接口的transfer参数相同。|
 
 **错误码：**
 
@@ -1566,7 +1566,7 @@ USB配件句柄。
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志。 |
 | endpoint | number | 否 | 否 | 端点地址，正整数。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型。 |
-| timeout | number | 否 | 否 | 超时时间，（单位：毫秒）。 |
+| timeout | number | 否 | 否 | 超时时间（单位：毫秒）。 |
 | length | number | 否 |否 | 数据缓冲区的长度，必须是非负数（期望长度），（单位：字节）。 |
 | callback | [AsyncCallback](js-apis-base.md#asynccallback)<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调信息。|
 | userData | Uint8Array | 否 | 否 | 用户上下文数据。 |
@@ -1644,7 +1644,7 @@ Usb异步传输回调。
 
 >**说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃。建议使用 [USBDeviceRequestParams](#usbdevicerequestparams12) 替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用 `[USBDeviceRequestParams](#usbdevicerequestparams12)` 替代。
 
 **系统能力：** SystemCapability.USB.USBManager
 
