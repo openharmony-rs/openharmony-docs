@@ -143,29 +143,29 @@
     【正例】
 
     <!-- @[link_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage.ets) --> 
-
+    
     ``` TypeScript
     class LinkInfo {
       public value: string = 'Hello';
     }
-
+    
     @Component
     struct LinkChild {
       // 在子组件中，使用@Link装饰LinkInfo类型的test变量
       @Link test: LinkInfo;
-
+    
       build() {
         Text(this.test.value)
           .fontSize(20)
           .margin(10)
       }
     }
-
+    
     @Entry
     @Component
     struct LinkExample {
       @State info: LinkInfo = new LinkInfo();
-
+    
       build() {
         Column() {
           // 在父组件中，使用@State装饰的info变量初始化LinkChild组件的test变量
