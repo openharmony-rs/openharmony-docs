@@ -31,9 +31,8 @@ V2自定义组件冻结支持场景为：[页面路由](#页面路由)、[TabCon
 页面1：
 
 <!-- @[FreezePageRouter1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezePage1.ets) --> 
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
