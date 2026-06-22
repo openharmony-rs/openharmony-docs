@@ -245,6 +245,97 @@ ECStoreManager类用于管理应用的E类数据库和C类数据库。支持配�
 
 <!-- @[ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/ECStoreManager.ts) --> 
 
+``` TypeScript
+import { distributedKVStore } from '@kit.ArkData';
+import { Mover } from './Mover';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { StoreInfo, Store } from './Store';
+import { SecretStatus } from './SecretKeyObserver';
+import Logger from '../common/Logger';
+
+let store = new Store();
+
+export class ECStoreManager {
+  config(cInfo: StoreInfo, other: StoreInfo): void {
+    this.cInfo = cInfo;
+    this.eInfo = other;
+  }
+
+  configDataMover(mover: Mover): void {
+    this.mover = mover;
+  }
+
+  async getCurrentStore(screenStatus: number): Promise<distributedKVStore.SingleKVStore> {
+    Logger.info(`ECDB_Encry GetCurrentStore start screenStatus: ${screenStatus}`);
+    if (screenStatus === SecretStatus.UnLock) {
+      try {
+        this.eStore = await store.getECStore(this.eInfo);
+      } catch (e) {
+        let error = e as BusinessError;
+        Logger.error(`Failed to GetECStore.code is ${error.code},message is ${error.message}`);
+      }
+      // 解锁状态 获取e类库
+      if (this.needMove) {
+        if (this.eStore != undefined && this.cStore != undefined) {
+          await this.mover.move(this.eStore, this.cStore);
+        }
+        this.deleteCStore();
+        Logger.info(`ECDB_Encry Data migration is complete. Destroy cstore`);
+        this.needMove = false;
+      }
+      return this.eStore;
+    } else {
+      // 加锁状态 获取c类库
+      this.needMove = true;
+      try {
+        this.cStore = await store.getECStore(this.cInfo);
+      } catch (e) {
+        let error = e as BusinessError;
+        Logger.error(`Failed to GetECStore.code is ${error.code},message is ${error.message}`);
+      }
+      return this.cStore;
+    }
+  }
+
+  closeEStore(): void {
+    try {
+      let kvManager = distributedKVStore.createKVManager(this.eInfo.kvManagerConfig);
+      Logger.info('Succeeded in creating KVManager');
+      if (kvManager != undefined) {
+        kvManager.closeKVStore(this.eInfo.kvManagerConfig.bundleName, this.eInfo.storeId);
+        this.eStore = null;
+        Logger.info(`ECDB_Encry close EStore success`);
+      }
+    } catch (e) {
+      let error = e as BusinessError;
+      Logger.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
+    }
+  }
+
+  deleteCStore(): void {
+    try {
+      let kvManager = distributedKVStore.createKVManager(this.cInfo.kvManagerConfig);
+      Logger.info('Succeeded in creating KVManager');
+      if (kvManager != undefined) {
+        kvManager.deleteKVStore(this.cInfo.kvManagerConfig.bundleName, this.cInfo.storeId);
+        this.cStore = null;
+        Logger.info('ECDB_Encry delete cStore success');
+      }
+    } catch (e) {
+      let error = e as BusinessError;
+      Logger.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
+    }
+  }
+
+  private eStore: distributedKVStore.SingleKVStore = null;
+  private cStore: distributedKVStore.SingleKVStore = null;
+  private cInfo: StoreInfo | null = null;
+  private eInfo: StoreInfo | null = null;
+  private needMove: boolean = false;
+  private mover: Mover | null = null;
+}
+```
+
 ### EntryAbility
 
 模拟应用启动期间，注册对COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED公共事件的监听，并配置相应的数据库信息、密钥状态信息等。
