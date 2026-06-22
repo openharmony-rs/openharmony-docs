@@ -1937,10 +1937,10 @@ clearCustomDnsRules(): Promise\<void\>
 
 删除当前应用程序的所有的自定义DNS规则。使用Promise异步回调。
 
- > **说明：**
- >
-  > 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
-  > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
+> **说明：**
+>
+> 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+> 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
 
