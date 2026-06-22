@@ -60,7 +60,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Type of the **XComponent** component. The parameter type is [ArkUI_XComponentType](capi-native-type-h.md#arkui_xcomponenttype).|
+| .value[0].i32 | Type of the **XComponent** component. The parameter type is [ArkUI_XComponentType](capi-xcomponent-h.md#arkui_xcomponenttype).|
 
 ## NODE_XCOMPONENT_SURFACE_SIZE
 

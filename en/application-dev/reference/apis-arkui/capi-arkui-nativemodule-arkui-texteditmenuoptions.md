@@ -12,7 +12,7 @@ typedef struct ArkUI_TextEditMenuOptions ArkUI_TextEditMenuOptions
 
 ## Overview
 
-Defines the text menu extension structure.
+Defines editable text menu extension options.
 
 **Since**: 22
 
