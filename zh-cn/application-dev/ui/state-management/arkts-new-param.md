@@ -175,13 +175,13 @@ struct Child {
       .width('100%')
     }
   }
-
+  
   @ComponentV2
   struct Child {
     @Require @Param count: number;
     @Require @Param message: string;
     @Require @Param flag: boolean;
-
+  
     build() {
       Column() {
         Text(`Param ${this.count}`)
