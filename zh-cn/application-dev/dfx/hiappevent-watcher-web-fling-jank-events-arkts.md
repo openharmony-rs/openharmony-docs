@@ -85,33 +85,39 @@
    // 用于存储web_id到url的映射
    export const webIdToUrlMap = new Map<number, string>();
    
-   @Entry
    @Component
-   struct ArkWebPage {
+   export struct ArkWebPage {
      controller = new web_webview.WebviewController();
    
      build() {
-       Column() {
-         Web({ src: 'https://baidu.com',
-           controller: this.controller
-         })
-           .height('100%')
-           .onPageBegin((event) => {
-             // 每次跳转到新页面都更新webId到url的映射关系，便于后续通过系统侧提供的web_id查询到发生丢帧的网页
-             if (event) {
-               const newUrl = event.url;
-               const webId = this.controller.getWebId();
-               webIdToUrlMap.set(webId, newUrl);
-             }
+       NavDestination() {
+         Column() {
+           Web({
+             src: 'https://baidu.com',
+             controller: this.controller
            })
-           .onPageEnd(() => {
-             // 每2s阻塞应用主线程200ms
-             setInterval(() => {
-               const endTime = Date.now() + 200;
-               while (Date.now() < endTime) {}
-             }, 2000);
-           })
+             .height('100%')
+             .onPageBegin((event) => {
+               // 每次跳转到新页面都更新webId到url的映射关系，便于后续通过系统侧提供的web_id查询到发生丢帧的网页
+               if (event) {
+                 const newUrl = event.url;
+                 const webId = this.controller.getWebId();
+                 webIdToUrlMap.set(webId, newUrl);
+               }
+             })
+             .onPageEnd(() => {
+               // 每2s阻塞应用主线程200ms
+               setInterval(() => {
+                 const endTime = Date.now() + 200;
+                 while (Date.now() < endTime) {
+                 }
+               }, 2000);
+             })
+         }
+         .height('100%')
        }
+       .height('100%')
+       .title('ArkWeb Fling Jank')
      }
    }
    ```
@@ -125,7 +131,7 @@
    <!-- @[ArkWeb_Fling_Jank_ArkTs_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 按钮跳转到易出现滑动丢帧的web场景，触发ArkWeb抛滑丢帧事件。
+   //按钮跳转到易出现滑动丢帧的web场景，触发ArkWeb抛滑丢帧事件。
    Button('ArkWebFlingJank ArkTs')
      .type(ButtonType.Capsule)
      .margin({
@@ -135,7 +141,7 @@
      .width('80%')
      .height('5%')
      .onClick(() => {
-       router.pushUrl({url: 'pages/ArkWebPage'});
+       this.navPathStack.pushPath({ name: 'ArkWebPage' });
      })
    ```
 
