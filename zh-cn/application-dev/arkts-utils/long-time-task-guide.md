@@ -38,7 +38,7 @@
    }
    ```
 
-3. 给sensor添加ohos.permission.ACCELEROMETER权限。
+3. 给sensor添加ohos.permission.ACCELEROMETER权限，在module.json5中添加如下代码。
 
    ```json
    "requestPermissions": [
