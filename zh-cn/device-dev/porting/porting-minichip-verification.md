@@ -72,7 +72,7 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
    }
    ```
 
-> ![icon-caution](public_sys-resources/icon-caution.gif)
+> ![注意](public_sys-resources/icon-caution.gif)
 > **注意：**
 > 1. XTS会在OHOS_SystemInit()调用之后，自行运行测试。
 > 
@@ -81,11 +81,11 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
 > 进行XTS测试时，必须链接以下静态库。
 > 
 >   
-> ```text
+>```text
 > "-lhctest",
 > "-lbootstrap",
 > "-lbroadcast",
-> ```
+>```
 
 
 ## 厂商SDK功能性测试
