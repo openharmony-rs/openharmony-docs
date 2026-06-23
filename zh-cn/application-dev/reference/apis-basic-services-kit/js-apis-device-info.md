@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供终端设备信息查询，开发者不可配置。
+本模块提供终端设备信息查询能力，支持获取设备类型、品牌、型号、系统版本、安全补丁级别、设备唯一标识等多种设备信息，适用于设备适配、版本兼容性检查、设备识别、统计分析等场景，帮助开发者快速获取设备信息进行应用适配和优化。开发者不可配置这些信息。
 
 > **说明：**
 >
@@ -87,7 +87,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | 错误码ID   | 错误信息    |
 |---------|---------|
 | 14700103 | Permission verification failed. System permission operation permission denied |
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例**
 
@@ -328,7 +328,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 ```
 
 
-## apiAvailable
+## deviceInfo.apiAvailable
 
 apiAvailable(version: string | number): boolean;
 <!--RP13-->
@@ -337,9 +337,7 @@ apiAvailable(version: string | number): boolean;
 
 **起始版本**：26.0.0
 
-**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口Stage模型和FA模型下皆可使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Startup.SystemInfo
 
@@ -347,30 +345,34 @@ apiAvailable(version: string | number): boolean;
 
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| version | string \| number | 是   | 需要校验的API版本号，支持整数版本号和点分版本号。|
+| version | string \| number | 是   | 需要校验的API版本号，支持整数版本号和点分版本号。整数版本号范围为大于0的正整数。点分版本号格式为x.x.x或x.x.x.x（如5.0.0或26.0.0），各段均为非负整数。传入无效值时返回false。|
+
+**返回值**：
+
+| 类型                                       | 说明                                            |
+| ------------------------------------------ | ----------------------------------------------- |
+| boolean                                     | 布尔值。返回true表示当前设备API版本大于等于入参版本号；返回false则表示当前设备API版本小于入参版本号  |
 
 **示例：**
 
 ```ts
 import { deviceInfo } from '@kit.BasicServicesKit';
 
-// Check API 26.0.0 (String format for API 26+ represents both OpenHarmony and Distribution OS)
-if (deviceInfo.apiAvailable("26.0.0")) {
-   // 需要版本隔离的方法
+// Check API 26.0.0 (String format for API 26.0.0+ represents both OpenHarmony and Distribution OS)
+if (deviceInfo.apiAvailable('26.0.0')) {
+  // 需要版本隔离的方法
 }
 
 
-// Check API 5.0.1 (Distribution OS version, API 26-)
-if (deviceInfo.apiAvailable("5.0.1")) {
-   // 需要版本隔离的方法
+// Check API 5.0.1 (Distribution OS version, API 26.0.0-)
+if (deviceInfo.apiAvailable('5.0.1')) {
+  // 需要版本隔离的方法
 }
 
 
-import { deviceInfo } from '@kit.BasicServicesKit';
-
-// Check API 13 (OpenHarmony SDK version, API 26-)
+// Check API 13 (OpenHarmony SDK version, API 26.0.0-)
 if (deviceInfo.apiAvailable(13)) {
-   // 需要版本隔离的方法
+  // 需要版本隔离的方法
 }
 
 ```
