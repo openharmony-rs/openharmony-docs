@@ -546,6 +546,7 @@ setDtr(enable: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+// port为串口对象，需要先通过serial.getSerialPortList()获取
 // 设置DTR信号
 port.setDtr(true).then(() => {
   console.info('setDtr success');
@@ -585,6 +586,7 @@ getDsr(): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
+// port为串口对象，需要先通过serial.getSerialPortList()获取
 // 获取DSR信号状态
 port.getDsr().then((dsr: boolean) => {
   console.info('getDsr success, dsr: ' + dsr);
@@ -623,6 +625,7 @@ onDisconnect(callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+// port为串口对象，需要先通过serial.getSerialPortList()获取
 // 监听串口断开事件
 port.onDisconnect(() => {
   console.info('serial port disconnected');
@@ -659,6 +662,7 @@ offDisconnect(callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+// port为串口对象，需要先通过serial.getSerialPortList()获取
 // 取消监听串口断开事件
 port.offDisconnect();
 
