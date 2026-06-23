@@ -117,9 +117,9 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
           console.info(TAG + 'serverOnCallback');
         });
         server.on('serverStopped', (reason: number): void => {
-           console.info(TAG, 'serverStopped， reason= ' + reason);
-         });
-         // 启动服务	 
+            console.info(TAG, 'serverStopped， reason= ' + reason);
+        });
+         // 启动服务
          server.start();
       } catch (err) {
         console.error(TAG + 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -175,7 +175,6 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
         server.stop();
       } catch (err) {
         console.error(TAG + 'stop server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-        (err as BusinessError).message);
         (err as BusinessError).message);
       }
     }
