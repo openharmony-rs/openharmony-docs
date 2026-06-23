@@ -38,7 +38,7 @@
 | [ArkUI_ItemAlignment](#arkui_itemalignment) | ArkUI_ItemAlignment | 设置子组件在父容器交叉轴的对齐格式枚举值。 |
 | [ArkUI_FlexAlignment](#arkui_flexalignment) | ArkUI_FlexAlignment | 定义垂直方向对齐方式。 |
 | [ArkUI_FlexDirection](#arkui_flexdirection) | ArkUI_FlexDirection | 定义Flex容器的主轴方向。 |
-| [ArkUI_FlexWrap](#arkui_flexwrap) | ArkUI_FlexWrap | 定义Flex行列布局模式模式。 |
+| [ArkUI_FlexWrap](#arkui_flexwrap) | ArkUI_FlexWrap | 定义Flex行列布局模式。 |
 | [ArkUI_Direction](#arkui_direction) | ArkUI_Direction | 设置容器元素内主轴方向上的布局枚举值。 |
 | [ArkUI_Axis](#arkui_axis) | ArkUI_Axis | 定义滚动方向和List组件排列方向枚举值。 |
 | [ArkUI_VerticalAlignment](#arkui_verticalalignment) | ArkUI_VerticalAlignment | 定义垂直对齐方式。 |
