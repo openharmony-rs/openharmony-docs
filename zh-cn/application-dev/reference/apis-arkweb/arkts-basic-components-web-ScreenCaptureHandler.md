@@ -1,4 +1,4 @@
- # Class (ScreenCaptureHandler)
+# Class (ScreenCaptureHandler)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @qq_42700029-->
