@@ -157,6 +157,49 @@
    
    ArkTS-Sta示例：
    <!-- @[arkts_theme_font_create_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 创建渲染节点数组
+   const renderNodeMap: Array<RenderNode> = new Array<RenderNode>();
+   // 创建节点控制器
+   class MyNodeController extends NodeController {
+     private rootNode: FrameNode | null = null;
+     makeNode(uiContext: UIContext): FrameNode | null {
+       this.rootNode = new FrameNode(uiContext);
+       if (this.rootNode == null) {
+         return this.rootNode;
+       }
+       const renderNode = this.rootNode?.getRenderNode();
+       if (renderNode != null) {
+         renderNode.frame = { x: 0, y: 0, width: 300, height: 50 };
+         renderNode.pivot = { x: 0, y: 0 };
+       }
+       return this.rootNode;
+     }
+     addNode(node: RenderNode): void {
+       if (this.rootNode == null) {
+         return;
+       }
+       const renderNode = this.rootNode?.getRenderNode();
+       if (renderNode != null) {
+         renderNode.appendChild(node);
+         // 将节点添加到渲染节点数组中
+         renderNodeMap.push(node);
+       }
+     }
+     clearNodes(): void {
+       if (this.rootNode == null) {
+         return;
+       }
+       const renderNode = this.rootNode?.getRenderNode();
+       if (renderNode != null) {
+         renderNode.clearChildren();
+         // 将节点从渲染节点数组中移除
+         renderNodeMap.pop();
+       }
+     }
+   }
+   ```
 
 7. 创建渲染节点更新函数，并导出函数，供其他文件（如：EntryAbility.ets）使用；重绘制节点目的为更新排版中字体信息，若不更新字体信息，使用之前残留结果，可能造成文字乱码。
 
