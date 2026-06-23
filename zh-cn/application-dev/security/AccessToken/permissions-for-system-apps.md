@@ -6087,6 +6087,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.CAMERA_SHARED
+
+允许系统应用与其他应用共享访问一台相机。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.MANAGE_AOD
 
 允许应用触发进入或退出熄屏显示（AOD），并管理AOD状态。

@@ -6043,6 +6043,20 @@ Allows a system application to set and query the permissions required for runnin
 
 **Valid since**: 26.0.0
 
+## ohos.permission.CAMERA_SHARED
+
+Allows a system application to access the camera together with other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Car
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ACCESS_DEVICE_INTERCONNECTIVITY
 
 Allows an application to use the device interconnectivity capability.
