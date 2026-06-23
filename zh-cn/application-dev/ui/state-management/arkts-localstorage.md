@@ -346,7 +346,7 @@ struct ChildOne {
   build() {
     Column({ space: 15 }) {
       // 当ParentOne改变时，当前storagePropTwo不会改变，显示47
-      Text(`ParentOne from LocalStorage ${this.storagePropTwo}`)
+      Text(`ChildOne from LocalStorage ${this.storagePropTwo}`)
     }
   }
 }
@@ -363,7 +363,7 @@ struct ChildOne {
 let paraOne: Record<string, number> = { 'PropA': 47 };
 let storageOne: LocalStorage = new LocalStorage(paraOne);
 // 调用link（api9以上）接口构造'PropA'的双向同步数据，linkToPropA 是全局变量
-let linkToPropA: SubscribedAbstractProperty<object> = storageOne.link('PropA');
+let linkToPropA: SubscribedAbstractProperty<number> = storageOne.link('PropA');
 
 @Entry(storageOne)
 @Component
@@ -507,7 +507,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 当前用例需要开发者手动修改为windowStage.loadContent('pages/PageFiveShare', this.storage);
     windowStage.loadContent('pages/Index', this.storage).catch(() => {
-      hilog.error(DOMAIN, 'testTag', '%{public}s', 'Ability onCreonWindowStageCreateate');
+      hilog.error(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     });
   }
 

@@ -397,7 +397,7 @@ struct ArrayTypes {
             .backgroundColor('#11a2a2a2')
             .fontColor('#e6000000')
         },
-        (item: ForEachInterface) => item.toString()
+        (item: number) => item.toString()
       )
     }
   }
@@ -591,7 +591,7 @@ struct ParentComponent {
 
 通过[\@Watch](./arkts-watch.md)可以在双向同步时更改本地变量。
 
-以下示例中，在\@Link的\@Watch里面修改了一个\@State装饰的变量memberMessage，实现父子组件间的变量同步。但是\@State装饰的变量memberMessage在本地修改不会影响到父组件中的变量改变。
+以下示例中，在\@Link的\@Watch里面修改了一个\@State装饰的变量memberMessage，实现父子组件间的变量同步，但是\@State装饰的变量memberMessage在本地修改不会影响到父组件中的变量改变。
 
 <!-- @[link_watch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UseWatchToChangeLocalVariables.ets) --> 
 
@@ -605,7 +605,6 @@ struct ChangeVariables {
     Column() {
       Text(`sourceNumber of the parent component:` + this.sourceNumber)
       ChangeVariablesChild({ sourceNumber: this.sourceNumber })
-      // sourceNumber的修改不会影响到父组件中的变量改变
       Button('Change sourceNumber in Parent Component')
         .onClick(() => {
           this.sourceNumber++;
@@ -622,6 +621,7 @@ struct ChangeVariablesChild {
   @Link @Watch('onSourceChange') sourceNumber: number;
 
   onSourceChange() {
+    // memberMessage在子组件中本地修改不会影响到父组件中的变量改变
     this.memberMessage = this.sourceNumber.toString();
   }
 

@@ -308,7 +308,6 @@ struct Child {
 struct GrandChild {
   @State message: Message = new Message('GrandChild');
   @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
   @ComponentInit
   myInit() {
     hilog.info(0x0000, 'testTag', 'GrandChild myInit');
@@ -778,9 +777,7 @@ import { SwiperExample } from './SwiperPage';
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  controller: TabsController = new TabsController();
   @State show: boolean = false;
-  @State currentTabIndex: number = 0;
 
   build() {
     RelativeContainer() {
