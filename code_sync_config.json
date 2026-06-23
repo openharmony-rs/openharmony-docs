@@ -23714,5 +23714,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/theme-font-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"arkts_theme_font_text_style",
+						"start_line":34
+					},
+					{
+						"end_line":104,
+						"name":"arkts_theme_font_create_render_node",
+						"start_line":63
+					},
+					{
+						"end_line":113,
+						"name":"arkts_theme_font_export_update",
+						"start_line":105
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":58,
+						"name":"arkts_theme_font_entry_ability",
+						"start_line":17
+					}
+				]
+			}
+		]
 	}
 ]
