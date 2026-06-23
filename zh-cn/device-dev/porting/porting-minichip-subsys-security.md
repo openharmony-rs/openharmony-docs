@@ -96,21 +96,25 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 | huks_config_file | 是否使用HUKS默认配置文件。<br/>(1)&nbsp;默认值：使用HUKS默认配置文件hks_config.h。<br/>(2)&nbsp;其他文件：产品可在HUKS支持能力集合中自行选择所要支持的特性。 | 
 
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif)
-> **说明：** 在添加安全子系统时，可直接通过配置feature来选择安全子系统特性。
+> ![icon-note.gif](./public_sys-resources/icon-note.gif)
+> **说明：**
+> 在添加安全子系统时，可直接通过配置feature来选择安全子系统特性。
 > 
 >   
 > ```json
 > {
->       "subsystem": "security",
->       "components": [
->         { "component": "hichainsdk", "features":[] },
->         { "component": "huks", "features":
->           [
->             "disable_huks_binary = false",
->             "disable_authenticate = false"
->           ]
->         }
->       ]
-> }
+>	"subsystem": "security",
+>	"components": [{
+>			"component": "hichainsdk",
+>			"features": []
+>		},
+>		{
+>			"component": "huks",
+>			"features": [
+>				"disable_huks_binary = false",
+>				"disable_authenticate = false"
+>			]
+>		}
+>	]
+>}
 > ```
