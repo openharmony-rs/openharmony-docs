@@ -878,7 +878,7 @@ struct GrandParent {
 
 @Component
 struct Parent {
-  // @Provide默认不支持重载，支持重载需设置allowOverride函数
+  // @Provide默认不支持重载，支持重载需设置allowOverride选项
   @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = PARENT_REVIEW_VOTES_INITIAL;
 
   build() {
@@ -1212,7 +1212,7 @@ struct TextInputExample {
 }
 ```
 
-V2迁移策略：装饰器修改为V1的同时，$$直接替换为!!。
+V2迁移策略：装饰器修改为V2的同时，$$直接替换为!!。
 
 <!-- @[sync_state_manager_!!](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExampleV2.ets) -->
 

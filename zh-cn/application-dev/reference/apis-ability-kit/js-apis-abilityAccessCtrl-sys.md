@@ -50,7 +50,7 @@
 
 - **[AtManager](#atmanager)：** 程序访问控制管理类，提供跨应用权限授予、撤销、查询、监听和CLI权限管理等能力。
 
-![](figures/accessAccessCtrl-sys.png)
+![](figures/abilityAccessCtrl-sys.png)
 
 ### API组合使用关系说明
 

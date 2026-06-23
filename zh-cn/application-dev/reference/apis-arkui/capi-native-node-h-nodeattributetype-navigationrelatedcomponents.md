@@ -231,7 +231,7 @@ NODE_SWIPER_INDEX = 1001008
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].i32 | 子组件的索引值。 |
-| .value[1]?.i32 | 跳转动画模式，参数类型[ArkUI_SwiperAnimationMode](capi-native-type-h.md#arkui_swiperanimationmode)。仅当次调用有效。<br>该参数从API version 15开始支持。 |
+| .value[1]?.i32 | 跳转动画模式，参数类型[ArkUI_SwiperAnimationMode](capi-swiper-h.md#arkui_swiperanimationmode)。仅当次调用有效。<br>该参数从API version 15开始支持。 |
 
 **返回：**
 
@@ -306,14 +306,14 @@ NODE_SWIPER_SHOW_DISPLAY_ARROW = 1001011
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 设置是否显示导航点箭头，参数类型[ArkUI_SwiperArrow](capi-native-type-h.md#arkui_swiperarrow)，默认值为ARKUI_SWIPER_ARROW_HIDE。 |
+| .value[0].i32 | 设置是否显示导航点箭头，参数类型[ArkUI_SwiperArrow](capi-swiper-h.md#arkui_swiperarrow)，默认值为ARKUI_SWIPER_ARROW_HIDE。 |
 | .?object | 显示导航箭头时设置箭头样式，参数类型为[ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md)。该参数从API version 19开始支持。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 设置是否显示导航点箭头，参数类型[ArkUI_SwiperArrow](capi-native-type-h.md#arkui_swiperarrow)。 |
+| .value[0].i32 | 设置是否显示导航点箭头，参数类型[ArkUI_SwiperArrow](capi-swiper-h.md#arkui_swiperarrow)。 |
 | .object | 箭头样式，参数类型为[ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md)。该参数从API version 19开始支持。 |
 
 ## NODE_SWIPER_EDGE_EFFECT_MODE
@@ -460,14 +460,14 @@ NODE_SWIPER_INDICATOR = 1001017
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 设置导航指示器的类型，参数类型[ArkUI_SwiperIndicatorType](capi-native-type-h.md#arkui_swiperindicatortype)。 |
+| .value[0].i32 | 设置导航指示器的类型，参数类型[ArkUI_SwiperIndicatorType](capi-swiper-h.md#arkui_swiperindicatortype)。 |
 | .object | 导航指示器的类型为ARKUI_SWIPER_INDICATOR_TYPE_DOT时参数类型为[ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)。<br>导航指示器的类型为ARKUI_SWIPER_INDICATOR_TYPE_DIGIT时参数类型为[ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)。<br>ArkUI_SwiperDigitIndicator类型从API version 19开始支持。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 导航指示器的类型，参数类型[ArkUI_SwiperIndicatorType](capi-native-type-h.md#arkui_swiperindicatortype)。 |
+| .value[0].i32 | 导航指示器的类型，参数类型[ArkUI_SwiperIndicatorType](capi-swiper-h.md#arkui_swiperindicatortype)。 |
 | .object | 导航指示器的类型为ARKUI_SWIPER_INDICATOR_TYPE_DOT时参数类型为[ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)。<br>导航指示器的类型为ARKUI_SWIPER_INDICATOR_TYPE_DIGIT时参数类型为[ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)。<br>ArkUI_SwiperDigitIndicator类型从API version 19开始支持。 |
 
 ## NODE_SWIPER_NESTED_SCROLL
@@ -486,13 +486,13 @@ NODE_SWIPER_NESTED_SCROLL = 1001018
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | Swiper组件和父组件的嵌套滚动模式，参数类型[ArkUI_SwiperNestedScrollMode](capi-native-type-h.md#arkui_swipernestedscrollmode)<br>默认值为：ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY。 |
+| .value[0].i32 | Swiper组件和父组件的嵌套滚动模式，参数类型[ArkUI_SwiperNestedScrollMode](capi-swiper-h.md#arkui_swipernestedscrollmode)<br>默认值为：ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | Swiper组件和父组件的嵌套滚动模式，参数类型[ArkUI_SwiperNestedScrollMode](capi-native-type-h.md#arkui_swipernestedscrollmode)。 |
+| .value[0].i32 | Swiper组件和父组件的嵌套滚动模式，参数类型[ArkUI_SwiperNestedScrollMode](capi-swiper-h.md#arkui_swipernestedscrollmode)。 |
 
 ## NODE_SWIPER_SWIPE_TO_INDEX
 
@@ -544,7 +544,7 @@ NODE_SWIPER_PAGE_FLIP_MODE = 1001021
 ```
 
 设置组件鼠标滚轮翻页模式。<br>
-作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下，作为属性获取方法返回值[ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode)格式如下。
+作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下，作为属性获取方法返回值[ArkUI_PageFlipMode](capi-swiper-h.md#arkui_pageflipmode)格式如下。
 
 **起始版本：** 15
 
@@ -553,7 +553,7 @@ NODE_SWIPER_PAGE_FLIP_MODE = 1001021
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 设置组件鼠标滚轮翻页模式，参数类型[ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode)。 |
+| .value[0].i32 | 设置组件鼠标滚轮翻页模式，参数类型[ArkUI_PageFlipMode](capi-swiper-h.md#arkui_pageflipmode)。 |
 
 **返回：**
 

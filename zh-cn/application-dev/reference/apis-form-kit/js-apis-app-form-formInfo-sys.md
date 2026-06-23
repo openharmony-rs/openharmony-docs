@@ -99,7 +99,7 @@ import { formInfo } from '@kit.FormKit';
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
 | bundleName  | string               | 否    | 否     | 提供方卡片所属包的Bundle名称。  |
 | formName    | string               | 否    | 是     | 卡片名称。                     |
-| moduleName  | string               | 否    | 是     | 卡片所属模块的模块名称。        |
+| moduleName  | string               | 否    | 是     | 卡片所属模块的名称。        |
 | abilityName | string               | 否    | 是     | 卡片所属的Ability名称。        |
 | isUnusedIncluded<sup>11+</sup> | boolean               | 否    | 是     | 是否包含未使用的卡片。<br/>-&nbsp;true：包含未使用的卡片。<br/>-&nbsp;false：不包含未使用的卡片。<br/>默认值：false。        |
 
@@ -297,7 +297,7 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 | 名称 | 类型 | 只读 | 可选 | 说明               |
 |-----|-----|------|----|---------------------------------|
 | bundleName | string | 否 | 否  | 卡片所属包的Bundle名称。           |
-| moduleName | string | 否 | 否  | 卡片所属模块的模块名称。 |
+| moduleName | string | 否 | 否  | 卡片所属模块的名称。 |
 | abilityName | string | 否 | 否  | 卡片所属的Ability名称。 |
 | formName | string | 否 | 否  | 卡片名称。 |
 | dimension | string | 否 | 否  | 卡片规格 |
@@ -452,5 +452,89 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
       wantParamsList.push(params);
     }
     return wantParamsList;
+  };
+```
+
+## FormCustomConfig
+
+卡片自定义配置信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+|-----|-----|------|----|------|
+| bundleName | string | 否 | 否 | 卡片所属包的Bundle名称。 |
+| moduleName | string | 否 | 否 | 卡片所属模块的名称。 |
+| abilityName | string | 否 | 否 | 卡片所属的Ability名称。 |
+| formName | string | 否 | 否 | 卡片名称。 |
+| isShowInFormCenter | boolean | 否 | 否 | 卡片是否在卡片中心展示。<br/>-&nbsp;true：在卡片中心展示。<br/>-&nbsp;false：不在卡片中心展示。 |
+| relatedBundleName | string | 否 | 否 | 关联的Bundle名称。 |
+| isRepeatAdditionSupported | boolean | 否 | 否 | 卡片是否支持重复添加。<br/>-&nbsp;true：支持重复添加。<br/>-&nbsp;false：不支持重复添加。 |
+
+## UpdateFormsConfigCallback
+
+type UpdateFormsConfigCallback = (configInfo: Array&lt;FormCustomConfig&gt;) => void
+
+卡片配置更新回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------|------|----|------|
+| configInfo | Array&lt;[FormCustomConfig](#formcustomconfig)&gt; | 是 | 卡片配置信息列表。 |
+
+**示例：**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let updateFormsConfigCallback: formInfo.UpdateFormsConfigCallback =
+  (configInfo: Array<formInfo.FormCustomConfig>): void => {
+    console.info('update forms config callback, config count: ' + configInfo.length);
+  };
+```
+
+## DeleteFormsCallback
+
+type DeleteFormsCallback = (formIds: Array&lt;string&gt;) => void
+
+卡片删除回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------|------|----|------|
+| formIds | Array&lt;string&gt; | 是 | 被删除的卡片标识列表。 |
+
+**示例：**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let deleteFormsCallback: formInfo.DeleteFormsCallback =
+  (formIds: Array<string>): void => {
+    console.info('delete forms callback, form count: ' + formIds.length);
   };
 ```

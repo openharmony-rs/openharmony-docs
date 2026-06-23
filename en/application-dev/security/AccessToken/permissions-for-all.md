@@ -148,7 +148,11 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Valid since**: 8
+
+**Changelog**: From API version 22, the support for the P2P capability is added to this permission.
 
 ## ohos.permission.GYROSCOPE
 
@@ -241,6 +245,8 @@ including scanning, enabling/disabling, connecting, and disabling Wi-Fi, modifyi
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
 
 **Valid since**: 8
 
@@ -756,5 +762,19 @@ With this permission, the application can set audio sound effects and manage aud
 **Authorization mode**: system_grant
 
 **Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.DCAS_RUN_MODEL
+
+Allows an application to access device-side model runtime management.
+
+With this permission, the application can access device-side model runtime management capabilities to complete model loading and inference.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0

@@ -3930,6 +3930,8 @@ Allows a system application to apply for IP addresses from the DHCP server.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Certificate-based authorization**: true
 
 **Since**: 12
@@ -6289,6 +6291,20 @@ Allows a system application to invoke ArkWebCore extended capabilities.
 
 **Valid since**: 26.0.0
 
+## ohos.permission.HDC_REPORT_INFO
+
+Allows a system application to subscribe to the hdc events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.vehicle.VEHICLE_THERMAL
 
 Allows an application to access thermal control information of the cockpit device.
@@ -6301,4 +6317,186 @@ Allows an application to access thermal control information of the cockpit devic
 
 **Supported devices**: cars
 
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SET_ADAS_CMD
+
+Allows a system application to set advanced driver assistance systems (ADAS) commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.GET_ADAS_INFO
+
+Allows a system application to obtain advanced driver assistance systems (ADAS) information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.GET_CLUSTER_INFO
+
+Allows a system application to obtain cluster information on the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SET_CLUSTER_CMD
+
+Allows a system application to set cluster commands on the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SET_MMS_CMD
+
+Allows a system application to set MMS commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.GET_MMS_INFO
+
+Allows a system application to obtain MMS information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.GET_XCALL_INFO
+
+Allows a system application to obtain dedicated head unit communication information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SET_XCALL_CMD
+
+Allows a system application to set dedicated head unit communication commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SET_SECBOX_CMD
+
+Allows a system application to configure the secure box of the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.GET_SECBOX_INFO
+
+Allows a system application to obtain secure box information of the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.RECV_HUAP_INFO
+
+Allows a system application to receive HUAP data.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SEND_HUAP_MSG
+
+Allows a system application to send HUAP messages.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ENTERPRISE_SPACE_FILE_TRANSFER_DATA_ACCESS
+ 	 
+Allows a system application to access the file cache path of the file transfer service.
+ 	 
+**Permission level**: system_basic
+ 	 
+**Authorization mode**: system_grant
+ 	 
+**Certificate-based authorization**: true
+ 	 
+**Supported devices**: PCs/2-in-1 devices
+ 	 
 **Valid since**: 26.0.0

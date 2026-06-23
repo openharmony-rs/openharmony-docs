@@ -10,7 +10,7 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
-## 140000 \@Env非法入参
+## 140000 \@Env无效键
 
 **错误信息**
 
@@ -18,11 +18,11 @@ Invalid key for @Env
 
 **错误描述**
 
-[\@Env](./arkui-ts/ts-env-system-property.md#env)非法入参。
+[\@Env](./arkui-ts/ts-env-system-property.md#env)无效键。
 
 **可能原因**
 
-\@Env入参非法。\@Env支持[SystemProperties](./arkui-ts/ts-env-system-property.md#systemproperties) \| [SystemEnvKey\<T\>](./arkui-ts/ts-env-system-property.md#systemenvkeyt)类型参数，详情见[\@Env支持参数](../../ui/arkts-env-system-property.md#env支持参数)。
+\@Env键无效。\@Env支持[SystemProperties](./arkui-ts/ts-env-system-property.md#systemproperties) \| [SystemEnvKey\<T\>](./arkui-ts/ts-env-system-property.md#systemenvkeyt)类型参数，详情见[\@Env支持参数](../../ui/arkts-env-system-property.md#env支持参数)。
 
 **处理步骤**
 

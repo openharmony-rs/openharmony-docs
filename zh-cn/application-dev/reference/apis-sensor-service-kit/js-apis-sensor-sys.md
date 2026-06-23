@@ -207,9 +207,7 @@ classDiagram
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
-## sensor.on
-
-### COLOR<sup>10+</sup>
+## sensor.on(sensor.SensorId.COLOR)<sup>10+</sup>
 
 on(type: SensorId.COLOR, callback: Callback&lt;ColorResponse&gt;, options?: Options): void
 
@@ -233,7 +231,7 @@ on(type: SensorId.COLOR, callback: Callback&lt;ColorResponse&gt;, options?: Opti
 
 **错误码**：
 
-以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -261,7 +259,7 @@ try{
 }
 ```
 
-### SAR<sup>10+</sup>
+## sensor.on(sensor.SensorId.SAR)<sup>10+</sup>
 
 on(type: SensorId.SAR, callback: Callback&lt;SarResponse&gt;, options?: Options): void
 
@@ -285,7 +283,7 @@ on(type: SensorId.SAR, callback: Callback&lt;SarResponse&gt;, options?: Options)
 
 **错误码**：
 
-以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -312,9 +310,7 @@ try {
 }
 ```
 
-## sensor.off
-
-### COLOR<sup>10+</sup>
+## sensor.off(sensor.SensorId.COLOR)<sup>10+</sup>
 
 off(type: SensorId.COLOR, callback?: Callback&lt;ColorResponse&gt;): void
 
@@ -322,7 +318,7 @@ off(type: SensorId.COLOR, callback?: Callback&lt;ColorResponse&gt;): void
 
 当开发者不再需要颜色传感器数据时（如页面切换、应用退出），使用此接口取消订阅，以减少系统资源占用。
 
-调用此接口后，之前通过sensor.on(SensorId.COLOR)注册的回调函数将不再被触发。若传入callback参数，仅取消该指定回调函数的订阅；若不传入callback参数，则取消当前SensorId.COLOR类型的所有回调函数。需先调用sensor.on(SensorId.COLOR)订阅后，再调用此接口取消订阅。
+调用此接口后，之前通过sensor.on(sensor.SensorId.COLOR)注册的回调函数将不再被触发。若传入callback参数，仅取消该指定回调函数的订阅；若不传入callback参数，则取消当前SensorId.COLOR类型的所有回调函数。需先调用sensor.on(sensor.SensorId.COLOR)订阅后，再调用此接口取消订阅。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -337,7 +333,7 @@ off(type: SensorId.COLOR, callback?: Callback&lt;ColorResponse&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -371,7 +367,7 @@ try {
 }
 ```
 
-### COLOR<sup>19+</sup>
+## sensor.off(sensor.SensorId.COLOR)<sup>19+</sup>
 
 off(type: SensorId.COLOR, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;ColorResponse&gt;): void
 
@@ -395,7 +391,7 @@ off(type: SensorId.COLOR, sensorInfoParam?: SensorInfoParam, callback?: Callback
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -460,7 +456,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-### SAR<sup>10+</sup>
+## sensor.off(sensor.SensorId.SAR)<sup>10+</sup>
 
 off(type: SensorId.SAR, callback?: Callback&lt;SarResponse&gt;): void
 
@@ -468,7 +464,7 @@ off(type: SensorId.SAR, callback?: Callback&lt;SarResponse&gt;): void
 
 当开发者不再需要SAR传感器数据时（如页面切换、应用退出），使用此接口取消订阅，以减少系统资源占用。
 
-调用此接口后，之前通过sensor.on(SensorId.SAR)注册的回调函数将不再被触发。若传入callback参数，仅取消该指定回调函数的订阅；若不传入callback参数，则取消当前SensorId.SAR类型的所有回调函数。需先调用sensor.on(SensorId.SAR)订阅后，再调用此接口取消订阅。
+调用此接口后，之前通过sensor.on(sensor.SensorId.SAR)注册的回调函数将不再被触发。若传入callback参数，仅取消该指定回调函数的订阅；若不传入callback参数，则取消当前SensorId.SAR类型的所有回调函数。需先调用sensor.on(sensor.SensorId.SAR)订阅后，再调用此接口取消订阅。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -483,7 +479,7 @@ off(type: SensorId.SAR, callback?: Callback&lt;SarResponse&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -517,7 +513,7 @@ try {
 }
 ```
 
-### SAR<sup>19+</sup>
+## sensor.off(sensor.SensorId.SAR)<sup>19+</sup>
 
 off(type: SensorId.SAR, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;SarResponse&gt;): void
 
@@ -541,7 +537,7 @@ off(type: SensorId.SAR, sensorInfoParam?: SensorInfoParam, callback?: Callback&l
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
 
 | 错误码ID | 错误信息                                                                                                                                    |
 | -------- |-----------------------------------------------------------------------------------------------------------------------------------------|

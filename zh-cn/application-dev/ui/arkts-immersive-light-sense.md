@@ -13,6 +13,8 @@
 
 沉浸光感能够自动根据设备的算力档位和用户在系统设置中配置的沉浸光感强弱，自适应地调整沉浸式系统材质和动效的表现程度，使应用在不同档位的设备上都能呈现最佳效果。
 
+沉浸光感开发过程中的常见问题及解决措施，请参见[沉浸光感常见问题](arkts-immersive-light-sense-faq.md)。
+
 ## 沉浸式系统材质
 
 沉浸式系统材质（[ImmersiveMaterial](../reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)）是ArkUI提供的一种新型材质对象，可以通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口、传入[ImmersiveOptions](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数，设置组件的系统材质，设置后会自动影响组件的背景色、边框颜色、边框宽度、阴影和材质滤镜[materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)视觉效果。
@@ -29,7 +31,7 @@
 
 此外，沉浸式材质对象还支持配置以下属性：
 
-- [materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)：材质层赋色，该参数会为材质滤镜[materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)再混合一层纯色效果。该颜色需要带一定的透明度值，不能为纯不透明的颜色，否则会将材质滤镜[materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)效果完全遮挡。
+- [materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)：材质层赋色。对于高算力和中算力设备，若不设置该参数或该参数为undefined，不额外混合纯色效果；若设置该参数为有效颜色值，该参数会为材质滤镜[materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)再混合一层纯色效果，若该颜色为纯不透明的颜色，会遮挡材质滤镜效果。对于低算力设备，若不设置该参数或该参数为undefined，生效低算力设备材质自带的背景色效果；若设置该参数为有效颜色值，该参数作为背景色[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)属性值。
 - [colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)：设置了材质对象的节点的子树是否自动适配材质到背景色的反色。只有材质参数足够薄时才会自动反色。
 - [applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)：是否添加材质的阴影效果。当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性。当该参数为false时，[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性生效，材质的阴影效果不生效。
 - [interactive](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)：是否为设置材质的组件设置交互形变效果，启用后组件在按压时产生弹性形变。
@@ -57,16 +59,19 @@
 
 以下示例展示如何在module.json5中配置enable模式：
 
-``` json5
+<!-- @[MaterialStateConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
+    "name": "entry",
     "type": "entry",
-    // ···
+    // ...
     "metadata": [{
       "name": "ohos.arkui.UIMaterial.state",
       "value": "enable"
     }],
-    // ···
+    // ...
   }
 }
 ```
@@ -77,7 +82,9 @@
 
 以下示例展示如何通过配置[MaterialState](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)调整组件系统材质行为：当配置为ENABLE时，[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件可主动设置沉浸式系统材质，[Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md)组件会默认开启沉浸式系统材质；如需单独关闭某个组件的沉浸式系统材质，可设置[uiMaterial.Material.empty](../reference/apis-arkui/arkts-apis-uimaterial.md#empty)。
 
-```ts
+<!-- @[MaterialInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/MaterialInfo.ets) -->
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
@@ -112,7 +119,7 @@ struct MaterialInfoPage {
         Select([{ value: '选项1' }, { value: '选项2' }])
           .value('选择（已关闭材质）')
           .systemMaterial(uiMaterial.Material.empty)
-          .menuSystemMaterial(uiMaterial.Material.empty)
+          // .menuSystemMaterial(uiMaterial.Material.empty)
       }
     }
     .width('100%')
@@ -139,19 +146,35 @@ struct MaterialInfoPage {
    
    以下以Column组件作为示例，介绍如何通过通用属性开启沉浸式系统材质。
    
-   ```ts
+   <!-- @[ColumnMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ColumnMaterial.ets) -->
+   
+   ``` TypeScript
    import { uiMaterial } from '@kit.ArkUI';
    
-   Column() {
-     Text("沉浸光感")
+   @Entry
+   @Component
+   struct ColumnMaterialPage {
+     build() {
+       Column() {
+         Column() {
+           Text('沉浸光感')
+         }
+         .width(328)
+         .height(56)
+         .borderRadius(28)
+         .justifyContent(FlexAlign.Center)
+         .systemMaterial(new uiMaterial.ImmersiveMaterial({
+           style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+         }))
+       }
+       .width('100%')
+       .height('100%')
+       .justifyContent(FlexAlign.Center)
+       // 请替换为实际资源文件
+       .backgroundImage($r('app.media.img'))
+       .backgroundImageSize(ImageSize.FILL)
+     }
    }
-   .width(328)
-   .height(56)
-   .borderRadius(28)
-   .justifyContent(FlexAlign.Center)
-   .systemMaterial(new uiMaterial.ImmersiveMaterial({
-     style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
-   }))
    ```
    
    ![material-column](../reference/apis-arkui/figures/material-column.PNG)
@@ -160,18 +183,23 @@ struct MaterialInfoPage {
    
    以下示例为[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件同时设置ULTRA_THIN样式和[interactive](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)交互形变效果，用户按压按钮时组件会产生弹性形变，松手后自动恢复，增强交互的视觉反馈。
    
-   ``` ts
+   <!-- @[ButtonInteractive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ButtonInteractive.ets) -->
+   
+   ``` TypeScript
    import { uiMaterial } from '@kit.ArkUI'
    
    @Entry
    @Component
-   struct Index {
+   struct ButtonInteractivePage {
      build() {
        Stack() {
-         Image($r('app.media.bg1')) // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
+         // 请替换为实际资源文件
+         Image($r('app.media.img'))
+           .width('100%')
+           .height('100%')
          Column() {
            Column() {
-             Text("Context")
+             Text('Context')
            }
            .margin({ bottom: 100 })
            .width(248)
@@ -195,12 +223,14 @@ struct MaterialInfoPage {
    
    以下示例为一组圆形Row组件同时开启[interactive](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)交互形变和[lightEffect](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)光感交互反馈，用户手指触摸组件时会产生流光跟随效果，按压时产生弹性形变。
    
-   ``` ts
+   <!-- @[LightEffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/LightEffect.ets) -->
+   
+   ``` TypeScript
    import { uiMaterial } from '@kit.ArkUI';
    
    @Entry
    @Component
-   struct LightEffect {
+   struct LightEffectPage {
      @State itemsKey: number[] = [0, 1, 2];
      @State circleRadius: number = 40;
      @State spaceValue: number = 10;
@@ -213,7 +243,7 @@ struct MaterialInfoPage {
      build() {
        Column() {
          Row() {
-           Text("标题")
+           Text('标题')
              .flexGrow(2)
              .fontColor(Color.White)
            Row({ space: this.spaceValue }) {
@@ -247,19 +277,21 @@ struct MaterialInfoPage {
    
    以下示例通过showToast的[ShowToastOptions](../reference/apis-arkui/js-apis-promptAction.md#showtoastoptions)参数设置THIN样式的沉浸式系统材质，Toast弹出时会呈现带有材质效果的半透明背景。
    
-   ```ts
+   <!-- @[ToastMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ToastMaterial.ets) -->
+   
+   ``` TypeScript
    import { PromptAction, uiMaterial } from '@kit.ArkUI';
    import { BusinessError } from '@kit.BasicServicesKit';
    
    @Entry
    @Component
-   struct Index {
+   struct ToastMaterialPage {
      promptAction: PromptAction = this.getUIContext().getPromptAction();
    
      build() {
        Column() {
          Button('showToast')
-           .position({x: 125, y:300})
+           .position({ x: 125, y: 300 })
            .onClick(() => {
              try {
                this.promptAction.showToast({
@@ -280,8 +312,8 @@ struct MaterialInfoPage {
        .width('100%')
        .height('100%')
        // 请开发者替换为实际资源文件
-       .backgroundImage($r("app.media.img"))
-       .backgroundImageSize({width: '100%', height: '100%'})
+       .backgroundImage($r('app.media.img'))
+       .backgroundImageSize({ width: '100%', height: '100%' })
      }
    }
    ```
@@ -298,12 +330,14 @@ struct MaterialInfoPage {
    
    以下示例通过bindPopup的[PopupOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions类型说明)参数设置THIN样式的沉浸式系统材质，气泡弹窗会呈现带有材质效果的半透明背景。
    
-   ```ts
+   <!-- @[PopupMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/PopupMaterial.ets) -->
+   
+   ``` TypeScript
    import { uiMaterial } from '@kit.ArkUI';
    
    @Entry
    @Component
-   struct PopupExample {
+   struct PopupMaterialPage {
      @State handlePopup: boolean = false;
    
      build() {
@@ -323,8 +357,8 @@ struct MaterialInfoPage {
            .position({ x: 100, y: 300 })
        }.width('100%')
        // 请开发者替换为实际资源文件
-       .backgroundImage($r("app.media.img"))
-       .backgroundImageSize({width: '100%', height: '100%'})
+       .backgroundImage($r('app.media.img'))
+       .backgroundImageSize({ width: '100%', height: '100%' })
      }
    }
    ```
@@ -341,17 +375,18 @@ struct MaterialInfoPage {
    
    以下示例通过bindTips的[TipsOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md#tipsoptions类型说明)参数设置THIN样式的沉浸式系统材质，悬浮提示会呈现带有材质效果的半透明背景。
    
-   ```ts
-   // xxx.ets
+   <!-- @[TipsMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/TipsMaterial.ets) -->
+   
+   ``` TypeScript
    import { uiMaterial } from '@kit.ArkUI';
    
    @Entry
    @Component
-   struct TipsExample {
+   struct TipsMaterialPage {
      build() {
        Flex({ direction: FlexDirection.Column }) {
          Button('Hover Tips')
-           .bindTips("悬浮气泡测试", {
+           .bindTips('悬浮气泡测试', {
              // 控制是否设置系统材质
              systemMaterial: new uiMaterial.ImmersiveMaterial({
                style: uiMaterial.ImmersiveStyle.THIN
@@ -360,8 +395,8 @@ struct MaterialInfoPage {
            .position({ x: 100, y: 300 })
        }.width('100%').padding({ top: 5 })
        // 请开发者替换为实际资源文件
-       .backgroundImage($r("app.media.img"))
-       .backgroundImageSize({width: '100%', height: '100%'})
+       .backgroundImage($r('app.media.img'))
+       .backgroundImageSize({ width: '100%', height: '100%' })
      }
    }
    ```
@@ -378,13 +413,14 @@ struct MaterialInfoPage {
    
    以下示例通过bindSheet的[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)参数设置THICK样式的沉浸式系统材质，半模态页面会呈现带有模糊和材质效果的背景。
    
-   ```ts
-   // xxx.ets
+   <!-- @[SheetMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/SheetMaterial.ets) -->
+   
+   ``` TypeScript
    import { uiMaterial } from '@kit.ArkUI';
    
    @Entry
    @Component
-   struct SheetMaterialExample {
+   struct SheetMaterialPage {
      @State isShow: boolean = false;
      @State sheetHeight: number = 300;
      @State myMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
@@ -394,7 +430,7 @@ struct MaterialInfoPage {
      @Builder
      myBuilder() {
        Column({ space: 10 }) {
-         Text("Text")
+         Text('Text')
            .fontSize(20)
            .margin(10)
        }
@@ -406,8 +442,10 @@ struct MaterialInfoPage {
        Stack() {
          // 请开发者替换为实际资源文件
          Image($r('app.media.startIcon'))
+           .width('100%')
+           .height('100%')
          Column() {
-           Button("open Sheet")
+           Button('open Sheet')
              .onClick(() => {
                this.isShow = true;
              })
@@ -433,12 +471,14 @@ struct MaterialInfoPage {
    
    以下示例通过bindMenu的[MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10)参数设置THICK样式的沉浸式系统材质，弹出菜单会呈现带有材质效果的背景以及弹出动效。
    
-   ```ts
+   <!-- @[MenuMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/MenuMaterial.ets) -->
+   
+   ``` TypeScript
    import { uiMaterial } from '@kit.ArkUI';
    
    @Entry
    @Component
-   struct Index {
+   struct MenuMaterialPage {
      @Builder
      MyMenu() {
        Menu() {
@@ -478,25 +518,63 @@ struct MaterialInfoPage {
 
    在ENABLE模式下，部分组件会默认开启沉浸式系统材质。如需单独关闭某个组件的沉浸式系统材质，可以设置[uiMaterial.Material.empty](../reference/apis-arkui/arkts-apis-uimaterial.md#empty)。
    
-   ```ts
+   <!-- @[CloseMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/CloseMaterial.ets) -->
+   
+   ``` TypeScript
    import { uiMaterial } from '@kit.ArkUI';
    
-   // 单独关闭Select组件的沉浸式系统材质
-   Select([{ value: '选项' }])
-     .value('选择')
-     .systemMaterial(uiMaterial.Material.empty)
+   @Entry
+   @Component
+   struct CloseMaterialPage {
+     build() {
+       Column() {
+         Text('关闭组件沉浸式系统材质')
+           .fontSize(20)
+           .fontWeight(FontWeight.Bold)
+           .margin({ bottom: 30 })
+   
+         Text('默认开启沉浸式系统材质的Select：')
+           .fontSize(16)
+           .margin({ bottom: 10 })
+   
+         // Select组件默认开启沉浸式系统材质
+         Select([{ value: '选项1' }, { value: '选项2' }])
+           .value('选择')
+           .margin({ bottom: 30 })
+   
+         Text('单独关闭沉浸式系统材质的Select：')
+           .fontSize(16)
+           .margin({ bottom: 10 })
+   
+         // 单独关闭Select组件的沉浸式系统材质
+         Select([{ value: '选项' }])
+           .value('选择')
+           .systemMaterial(uiMaterial.Material.empty)
+           // .menuSystemMaterial(uiMaterial.Material.empty)
+       }
+       .width('100%')
+       .height('100%')
+       .padding(20)
+       .justifyContent(FlexAlign.Center)
+     }
+   }
    ```
    
    如果需要全局禁用所有组件的沉浸式系统材质，可在module.json5中将metadata的value设置为"disable"。
    
-   ```json5
+   <!-- @[MaterialStateConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/module.json5) -->
+   
+   ``` JSON5
    {
      "module": {
+       "name": "entry",
        "type": "entry",
+       // ...
        "metadata": [{
          "name": "ohos.arkui.UIMaterial.state",
-         "value": "disable"
-       }]
+         "value": "enable"
+       }],
+       // ...
      }
    }
    ```
@@ -512,23 +590,25 @@ struct MaterialInfoPage {
 
 沉浸式系统材质在不同算力设备呈现的效果有差异，以下示例展示不同设备上材质样式的效果。
 
-``` ts
+<!-- @[AllStyles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/AllStyles.ets) -->
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct SystemMaterialPage {
-
+struct AllStylesPage {
   build() {
     Column() {
       Stack() {
-        Image($r('app.media.bg1')) // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
+        // 请替换为实际资源文件
+        Image($r('app.media.img'))
           .width('100%')
           .height('100%')
 
         Column({ space: 30 }) {
           Column() {
-            Text("ULTRA_THIN")
+            Text('ULTRA_THIN')
           }
           .width(328)
           .height(56)
@@ -540,7 +620,7 @@ struct SystemMaterialPage {
           }))
 
           Column() {
-            Text("THIN")
+            Text('THIN')
           }
           .width(328)
           .height(56)
@@ -552,7 +632,7 @@ struct SystemMaterialPage {
           }))
 
           Column() {
-            Text("REGULAR")
+            Text('REGULAR')
           }
           .width(328)
           .height(56)
@@ -564,7 +644,7 @@ struct SystemMaterialPage {
           }))
 
           Column() {
-            Text("THICK")
+            Text('THICK')
           }
           .width(328)
           .height(56)
@@ -576,7 +656,7 @@ struct SystemMaterialPage {
           }))
 
           Column() {
-            Text("ULTRA_THICK")
+            Text('ULTRA_THICK')
           }
           .width(328)
           .height(56)
@@ -611,14 +691,14 @@ struct SystemMaterialPage {
 
 ![systemMaterial](../reference/apis-arkui/figures/immersiveMaterialExquisite.jpg)
 
-以下展示menu组件在高档算力设备上、不同沉浸光感配置下的效果。
+<!-- @[MenuMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/MenuMaterial.ets) -->
 
-```ts
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct Index {
+struct MenuMaterialPage {
   @Builder
   MyMenu() {
     Menu() {
@@ -666,20 +746,6 @@ struct Index {
 
 对于所有设置了沉浸式系统材质的组件，不建议同时设置背景色、背景模糊、阴影和边框样式。在DEFAULT模式下，Dialog、Toast等组件在未设置背景色、模糊参数和阴影参数时会默认开启沉浸式系统材质；如果开发者主动设置了这些属性，则沉浸式系统材质不会默认开启，需要开发者主动通过systemMaterial属性设置。
 
-```ts
-// 推荐写法：先设置其他属性，再设置systemMaterial
-Column() {
-  Text('推荐')
-}
-.width(328)
-.height(56)
-.borderRadius(28)
-.justifyContent(FlexAlign.Center)
-.systemMaterial(new uiMaterial.ImmersiveMaterial({
-  style: uiMaterial.ImmersiveStyle.REGULAR,
-}))
-```
-
 ### 深浅色模式
 
 沉浸式系统材质能够根据系统的深浅色模式自动适配，展现出不同的效果。在浅色模式下，材质呈现明亮通透的效果；在深色模式下，材质呈现沉稳深邃的效果。开发者无需为不同模式分别配置材质参数。
@@ -702,17 +768,19 @@ Column() {
 - 自动反色与系统沉浸光感的强弱配置相关，材质越薄、沉浸光感越强，越容易符合反色要求。
 - 自动反色仅对通过资源接口设置的颜色值生效，包括Text组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontcolor)，Button组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor)，SymbolGlyph组件的[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)，Image组件的[fillColor](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#fillcolor)，Search组件的[placeholderColor](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#placeholdercolor)、[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#fontcolor10)、[searchIcon](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#searchicon10)中的图标颜色、[cancelButton](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#cancelbutton10)中的图标颜色、[caretStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#caretstyle10)中的光标颜色，TabContent组件的[tabBar](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar)属性使用[BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)样式时其中的文本和图标颜色。
 
-```ts
+<!-- @[ColorInvert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ColorInvert.ets) -->
+
+``` TypeScript
 import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct ColorInvertDemo {
+struct ColorInvertPage {
   build() {
     Column() {
       Stack() {
-        // $r('app.media.bg1')需要替换为开发者所需的图像资源文件
-        Image($r('app.media.bg1'))
+        // 请替换为实际资源文件
+        Image($r('app.media.img'))
           .width('100%')
           .height('100%')
 
