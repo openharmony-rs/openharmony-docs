@@ -9,7 +9,9 @@
 
 本模块主要提供串口通信管理功能，包括获取串口设备列表、打开和关闭串口、读写数据、硬件流控信号管理等。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -23,7 +25,9 @@ getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
 
 查询串口设备列表，返回[SerialPort](#serialport)对象数组。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -63,7 +67,9 @@ serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
 
 串口对象，提供串口设备的信息和通信能力。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -81,7 +87,9 @@ open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
 
 打开串口设备。使用Promise异步回调。首次打开时系统会弹窗请求用户授权访问目标串口，用户拒绝则抛出35700007错误码。授权在USB虚拟串口拔出、系统切换用户、整机重启后失效，需重新授权。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：**  SystemCapability.BusManager.Serial
 
@@ -140,7 +148,9 @@ close(): Promise&lt;void&gt;
 
 关闭串口设备。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -179,7 +189,9 @@ write(data: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
 向串口设备发送数据，每次发送数据长度范围：(0, 4096]。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -230,7 +242,9 @@ onDataRead(callback: Callback&lt;Uint8Array&gt;): void
 
 监听串口接收数据事件。使用callback异步回调返回接收到的数据。调用[close](#close)后，所有回调将被清除。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -268,7 +282,9 @@ offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
 取消监听串口接收数据事件。使用callback异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -309,7 +325,9 @@ flush(): Promise&lt;void&gt;
 
 清空串口缓冲区，包括读缓冲区和写缓冲区，缓冲区中的数据将被直接丢弃，不再发送或读取。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -349,7 +367,9 @@ drain(): Promise&lt;void&gt;
 
 等待所有写请求完成。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -389,7 +409,9 @@ setRts(enable: boolean): Promise&lt;void&gt;
 
 设置RTS（请求发送）信号状态。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -435,7 +457,9 @@ getCts(): Promise&lt;boolean&gt;
 
 获取CTS（清除发送）信号状态。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -475,7 +499,9 @@ sendBrk(): Promise&lt;void&gt;
 
 发送BRK（中断）信号。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -515,7 +541,9 @@ setDtr(enable: boolean): Promise&lt;void&gt;
 
 设置DTR（数据终端就绪）信号状态。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -561,7 +589,9 @@ getDsr(): Promise&lt;boolean&gt;
 
 获取DSR（数据设备就绪）信号状态。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -601,7 +631,9 @@ onDisconnect(callback: Callback&lt;void&gt;): void
 
 监听串口断开事件。使用callback异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -638,7 +670,9 @@ offDisconnect(callback?: Callback&lt;void&gt;): void
 
 取消监听串口断开事件。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -677,7 +711,9 @@ port.offDisconnect(disconnectedCallback);
 
 串口设备信息。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -694,7 +730,9 @@ port.offDisconnect(disconnectedCallback);
 
 表示数据位的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -711,7 +749,9 @@ port.offDisconnect(disconnectedCallback);
 
 表示停止位的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -726,7 +766,9 @@ port.offDisconnect(disconnectedCallback);
 
 表示校验位的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -744,7 +786,9 @@ port.offDisconnect(disconnectedCallback);
 
 串口通信配置参数。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0	 
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
