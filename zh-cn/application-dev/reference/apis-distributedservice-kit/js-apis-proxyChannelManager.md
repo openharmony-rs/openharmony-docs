@@ -137,7 +137,7 @@ closeProxyChannel(channelId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390006（此时原因为设备能力限制而非参数错误），不支持分布式业务的Wearable设备中会返回错误码801。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390006，不支持分布式业务的Wearable设备中会返回错误码801。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -199,7 +199,7 @@ sendData(channelId:&nbsp;number, data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&g
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390006（此时原因为设备能力限制而非参数错误），不支持分布式业务的Wearable设备中会返回错误码801。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390006，不支持分布式业务的Wearable设备中会返回错误码801。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -274,7 +274,7 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004（此时原因为设备能力限制而非channelId无效），不支持分布式业务的Wearable设备不返回错误码，不抛异常。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -337,7 +337,7 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004（此时原因为设备能力限制而非channelId无效），不支持分布式业务的Wearable设备不返回错误码，不抛异常。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -398,7 +398,7 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004（此时原因为设备能力限制而非channelId无效），不支持分布式业务的Wearable设备不返回错误码，不抛异常。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -461,7 +461,7 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004（此时原因为设备能力限制而非channelId无效），不支持分布式业务的Wearable设备不返回错误码，不抛异常。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
+**设备行为差异**：该接口在Phone/Tablet设备中可正常调用，其他支持分布式业务的设备中会返回错误码32390004，不支持分布式业务的Wearable设备不返回错误码，不抛异常。开发者可通过`canIUse('SystemCapability.DistributedSched.AppCollaboration')`判断当前设备是否支持该功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

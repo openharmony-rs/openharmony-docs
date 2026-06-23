@@ -8,21 +8,7 @@
 
 > **说明：**
 >
-> 代理通道管理模块提供蓝牙代理通道的创建、数据传输及通道管理能力，适用于设备间通过蓝牙建立安全数据传输通道的场景。以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。关于代理通道管理模块的详细设计和API说明，请参考[代理通道管理](js-apis-proxyChannelManager.md)。
-
-## 错误码汇总
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| 32390001 | BR is disabled. |
-| 32390002 | Device not paired. |
-| 32390004 | ChannelId is invalid or unavailable. |
-| 32390006 | Parameter error. |
-| 32390100 | Internal error. |
-| 32390101 | Call is restricted. |
-| 32390102 | Operation failed or Connection timed out. |
-| 32390103 | Data too long. |
-| 32390104 | Send failed. |
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 32390001 蓝牙已关闭
 
