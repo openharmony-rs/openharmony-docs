@@ -856,7 +856,7 @@ static queryStatistics(accountId: string, bundleName: string, storeId?: string):
 
 | 类型                                                                                   | 说明                     |
 |--------------------------------------------------------------------------------------| ------------------------ |
-| Promise&lt;Record&lt;string, Array&lt;[StatisticInfo](#statisticinfo12)&gt;&gt;&gt; | 返回表名以及统计信息结果集。 |
+| Promise&lt;Record&lt;string, Array&lt;[StatisticInfo](#statisticinfo12)&gt;&gt;&gt; | 返回以表名为键、统计信息数组为值的结果集。 |
 
 **错误码：**
 
@@ -2046,7 +2046,7 @@ unshare(sharingResource: string, participants: Array&lt;Participant&gt;, callbac
 | 参数名    | 类型                            | 必填 | 说明                         |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | sharingResource  | string                                     | 是   | 端云共享数据的资源标识。 |
-| participants     | Array&lt;[Participant](#participant11)&gt; | 是   | 共享参与者。 |
+| participants     | Array&lt;[Participant](#participant11)&gt; | 是   | 端云共享参与者。 |
 | callback         | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Result](#resultt11)&lt;[Participant](#participant11)&gt;&gt;&gt;&gt;  | 是   | 回调函数。返回取消共享的结果。 |
 
 **错误码：**
