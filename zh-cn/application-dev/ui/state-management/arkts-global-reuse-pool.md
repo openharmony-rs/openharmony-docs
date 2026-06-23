@@ -1198,9 +1198,17 @@ struct Index {
 
 **启动**（GlobalChild可见）：
 
-点击"检查GlobalChild"：`count=0, maxCount=100`（GlobalChild可见，不在池中）。
+点击"检查GlobalChild"后日志打印GlobalChild的复用池count是0，maxCount是默认值100：
 
-点击"检查LegacyComp"：`count=0, maxCount=100`（LegacyComp不可见，不在池中）。
+```plaintext
+getReusableInfo(GlobalChild): count=0, maxCount=100
+```
+
+点击"检查LegacyComp"后日志打印LegacyComp的复用池count是0，maxCount是默认值100：
+
+```plaintext
+getReusableInfo(LegacyComp): count=0, maxCount=100
+```
 
 **切换到LegacyComp**：
 ```plaintext
@@ -1210,9 +1218,11 @@ LegacyComp aboutToAppear      // 全新创建
 ReusableChild aboutToAppear
 ```
 
-点击"检查GlobalChild"：`count=1, maxCount=100`（回收到池中）。
+点击"检查GlobalChild"后日志打印GlobalChild的复用池count是1，maxCount是默认值100，表示GlobalChild被全局复用池回收：
 
-点击"检查LegacyComp"：`count=0, maxCount=100`（可见，不在池中）。
+```plaintext
+getReusableInfo(GlobalChild): count=1, maxCount=100
+```
 
 **切换回GlobalChild**：
 ```plaintext
@@ -1222,7 +1232,11 @@ GlobalChild aboutToReuse      // 从池中复用
 SubChild aboutToReuse         // 和GlobalChild一起被复用
 ```
 
-点击"检查LegacyComp"：`count=1, maxCount=100`（现在回收到池中）。
+点击"检查LegacyComp"后日志打印LegacyComp的复用池count是1，maxCount是默认值100，表示LegacyComp被全局复用池回收：
+
+```plaintext
+getReusableInfo(LegacyComp): count=1, maxCount=100
+```
 
 **点击设置复用池大小**：
 
@@ -1231,7 +1245,11 @@ LegacyComp aboutToDisappear
 ReusableChild aboutToRecycle
 ```
 
-再点击"检查LegacyComp": `count=0, maxCount=0`（复用池被手动清空了）
+点击"检查LegacyComp"后日志打印LegacyComp的复用池count是0，maxCount是0，表示复用池被手动清空：
+
+```plaintext
+getReusableInfo(LegacyComp): count=0, maxCount=0
+```
 
 ### 使用`reuseId`控制缓存大小
 
