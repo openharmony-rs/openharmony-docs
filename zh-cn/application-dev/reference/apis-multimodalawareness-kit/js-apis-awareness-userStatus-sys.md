@@ -230,7 +230,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | motionGesture | number | 是 | 是 | 表示用户动态手势类型。取值范围[0,3] |
 | handType | number | 是 | 是 | 表示用户静态手势类型。取值范围[0,3] |
 | directionAngle | number[] | 是 | 是 | 表示用户手势与屏幕方向的夹角。取值范围[0,90] |
-| gestureSpeed | number[] | 是 | 是 | 表示手势速度。取值范围[0,50] |
+| gestureSpeed | number[] | 是 | 是 | 表示手势速度。单位为m/s²。 |
 
 ## UserFaceAngleData
 
