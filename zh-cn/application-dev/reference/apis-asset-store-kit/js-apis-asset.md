@@ -165,7 +165,7 @@ batchAdd(attributesArray: Array\<AssetMap>): Promise\<BatchResult>
 
 | 参数名     | 类型     | 必填 | 说明                                                         |
 | ---------- | -------- | ---- | ------------------------------------------------------------ |
-| attributesArray | Array\<[AssetMap](#assetmap)> | 是   | 待新增关键资产的属性集合数组，包括关键资产明文、访问控制属性、自定义数据等。 |
+| attributesArray | Array\<[AssetMap](#assetmap)> | 是   | 待新增关键资产的属性集合数组，包括关键资产明文、访问控制属性、自定义数据等。数组长度最大值为100。 |
 
 **返回值：**
 
@@ -348,7 +348,7 @@ batchRemove(assetsToBeRemoved: Array\<AssetMap>): Promise\<void>
 
 | 参数名     | 类型     | 必填 | 说明                                                         |
 | ---------- | -------- | ---- | ------------------------------------------------------------ |
-| assetsToBeRemoved | Array\<[AssetMap](#assetmap)> | 是   | 待删除关键资产的搜索条件数组，如别名、访问控制属性、自定义数据等。 |
+| assetsToBeRemoved | Array\<[AssetMap](#assetmap)> | 是   | 待删除关键资产的搜索条件数组，如别名、访问控制属性、自定义数据等。数组长度最大值为100。 |
 
 **返回值：**
 
@@ -534,8 +534,8 @@ batchUpdate(sourceAttributes: Array\<AssetMap>, destAttributes: Array\<AssetMap>
 
 | 参数名             | 类型     | 必填 | 说明                                                         |
 | ------------------ | -------- | ---- | ------------------------------------------------------------ |
-| sourceAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的搜索条件数组。 |
-| destAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的属性集合数组。 |
+| sourceAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的搜索条件数组。数组最大长度为100，数组中所有元素的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性值必须相同。 |
+| destAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的属性集合数组。数组最大长度为100，且应与sourceAttributes长度保持一致，数组中所有元素的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性值必须相同。 |
 
 **返回值：**
 
