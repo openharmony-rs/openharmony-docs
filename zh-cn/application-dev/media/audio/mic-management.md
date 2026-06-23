@@ -45,7 +45,7 @@
    // 监听麦克风状态变化。
    async function on() {
      audioVolumeGroupManager.on('micStateChange', (micStateChange: audio.MicStateChangeEvent) => {
-       console.info(`Current microphone status is: ${micStateChange.mute}`);
+       console.info(`Current microphone status is: ${micStateChange.mute} `);
      });
    }
    ```
@@ -102,7 +102,7 @@ async function loadVolumeGroupManager() {
 async function on() {
   await loadVolumeGroupManager();
   audioVolumeGroupManager.on('micStateChange', (micStateChange) => {
-    console.info(`Current microphone status is: ${micStateChange.mute}`);
+    console.info(`Current microphone status is: ${micStateChange.mute} `);
   });
 }
 
