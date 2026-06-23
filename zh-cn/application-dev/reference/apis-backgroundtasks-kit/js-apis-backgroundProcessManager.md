@@ -139,7 +139,7 @@ ArkTS-Sta: setPowerSaveMode(pid: int, powerSaveMode: PowerSaveMode): Promise&lt;
 | 参数名      | 类型      | 必填      | 说明      |
 |-------------|-----------|-----------|-----------|
 | pid         | ArkTS-Dyn: number <br> ArkTS-Sta: int    | 是        | 进程号。  |
-| powerSaveMode | [PowerSaveMode](#powersavemode20) | 是 | 能效模式。 |
+| powerSaveMode | [PowerSaveMode](#powersavemode) | 是 | 能效模式。 |
 
 **返回值：**
 
@@ -257,7 +257,7 @@ ArkTS-Sta: getPowerSaveMode(pid: int): Promise&lt;PowerSaveMode&gt;
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
-| Promise<[PowerSaveMode](#powersavemode20)> | Promise对象。返回进程能效模式状态。 |
+| Promise<[PowerSaveMode](#powersavemode)> | Promise对象。返回进程能效模式状态。 |
 
 **错误码：**
 
