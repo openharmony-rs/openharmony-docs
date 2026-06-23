@@ -489,7 +489,7 @@ try {
           return;
         }
         console.info('Succeeded in closing result set');
-      })
+      });
     }
   });
 } catch (e) {
@@ -623,7 +623,7 @@ try {
           return;
         }
         console.info('Succeeded in closing result set');
-      })
+      });
     }
   });
 } catch (e) {
