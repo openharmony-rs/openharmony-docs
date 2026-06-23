@@ -258,6 +258,30 @@
    ```
    ArkTS-Sta示例：
    <!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { window } from '@kit.ArkUI';
+   import { updateRenderNodeData } from '../pages/Index';
+   import { BusinessError } from '@ohos.base'
+   
+   // ...
+   
+   export default class EntryAbility extends UIAbility {
+     private preFontId: string = "";
+     // ...
+   
+     onConfigurationUpdate(newConfig: Configuration): void {
+       let fontId = newConfig.fontId;
+       if (fontId && fontId !== this.preFontId) {
+         this.preFontId = fontId;
+         updateRenderNodeData();
+         // ...
+       }
+     }
+   }
+   ```
 
 ## 效果展示
 
