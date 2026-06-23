@@ -1,4 +1,4 @@
-# Wi-Fi术语
+# WLAN术语
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
