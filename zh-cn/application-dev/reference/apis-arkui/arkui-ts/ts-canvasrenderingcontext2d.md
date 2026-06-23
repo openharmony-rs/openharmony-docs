@@ -5027,8 +5027,8 @@ type ImageSmoothingQuality = "high" | "low" | "medium"
 <!--Table: 25%; 10%; 10%; 10%; 45%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | -------------- | ------ | ---------------- | ------------------------ |
-| width                    | number | 是 | 否 | 只读属性，文本方块的宽度。 |
-| height                   | number | 是 | 否 | 只读属性，文本方块的高度。 |
+| width                    | number | 是 | 否 | 只读属性，文本方块的宽度。<br>单位：vp<br>当CanvasRenderingContext2D对象的单位模式设置为LengthMetricsUnit.PX时，单位为px。 |
+| height                   | number | 是 | 否 | 只读属性，文本方块的高度。<br>单位：vp<br>当CanvasRenderingContext2D对象的单位模式设置为LengthMetricsUnit.PX时，单位为px。 |
 | actualBoundingBoxAscent  | number | 是 | 否 | 只读属性，从[CanvasRenderingContext2D.textBaseline](#canvastextbaseline类型说明)属性标明的水平线到渲染文本的矩形边界顶部的距离。 |
 | actualBoundingBoxDescent | number | 是 | 否 | 只读属性，从[CanvasRenderingContext2D.textBaseline](#canvastextbaseline类型说明)属性标明的水平线到渲染文本的矩形边界底部的距离。 |
 | actualBoundingBoxLeft    | number | 是 | 否 | 只读属性，平行于基线，从[CanvasRenderingContext2D.textAlign](#canvastextalign类型说明)属性确定的对齐点到文本矩形边界左侧的距离。 |
