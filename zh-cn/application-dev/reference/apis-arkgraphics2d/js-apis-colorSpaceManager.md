@@ -111,9 +111,10 @@ create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 ```ts
 try {
+  // 创建标准SRGB色域的色彩管理实例
   let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 } catch (err) {
-  console.error(`Failed to create SRGB colorSpace. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create SRGB colorSpace. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -151,6 +152,7 @@ create(primaries: ColorSpacePrimaries, gamma: number): ColorSpaceManager
 
 ```ts
 try {
+  // 定义色域标准三原色参数
   let primaries: colorSpaceManager.ColorSpacePrimaries = {
     redX: 0.1,
     redY: 0.1,
@@ -161,10 +163,12 @@ try {
     whitePointX: 0.4,
     whitePointY: 0.4
   };
+  // 定义色域gamma值
   let gamma = 2.2;
+  // 创建自定义色域对象
   let colorSpace = colorSpaceManager.create(primaries, gamma);
 } catch (err) {
-  console.error(`Failed to create colorSpace with customized primaries and gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create colorSpace with customized primaries and gamma. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -200,10 +204,11 @@ getColorSpaceName(): ColorSpace
 
 ```ts
 try {
+  // 获取色域类型
   let spaceName = colorSpace.getColorSpaceName();
   console.info(`spaceName: ` + spaceName.toString());
 } catch (err) {
-  console.error(`Fail to get colorSpace's name. Cause: ` + JSON.stringify(err));
+  console.error(`Fail to get colorSpace's name. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -233,10 +238,11 @@ getWhitePoint(): Array\<number\>
 
 ```ts
 try {
+  // 获取色域白点值
   let point = colorSpace.getWhitePoint();
   console.info(`point: ` + point.toString());
 } catch (err) {
-  console.error(`Failed to get white point. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get white point. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -266,9 +272,10 @@ getGamma(): number
 
 ```ts
 try {
+  // 获取色域gamma值
   let gamma = colorSpace.getGamma();
   console.info(`gamma: ` + gamma.toString());
 } catch (err) {
-  console.error(`Failed to get gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get gamma. Code: ${err.code}, message: ${err.message}`);
 }
 ```

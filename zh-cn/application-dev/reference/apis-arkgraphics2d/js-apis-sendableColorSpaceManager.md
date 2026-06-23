@@ -28,7 +28,7 @@ type ISendable = lang.ISendable
 
 | 类型                | 说明                     |
 | ------------------ | ------------------------ |
-| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable)  | 所有Sendable类型的父类型。               |
+| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langISendable)  | 所有Sendable类型的父类型。               |
 
 ## sendableColorSpaceManager.create
 
@@ -64,6 +64,7 @@ create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager
 ```ts
 import { colorSpaceManager, sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
+// 定义色域标准三原色参数
 colorSpace = sendableColorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 ```
 
@@ -102,6 +103,7 @@ create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number): ColorSp
 ```ts
 import { colorSpaceManager, sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
+// 创建标准SRGB色域的色彩管理实例
 let primaries: colorSpaceManager.ColorSpacePrimaries = {
   redX: 0.1,
   redY: 0.1,
@@ -112,7 +114,9 @@ let primaries: colorSpaceManager.ColorSpacePrimaries = {
   whitePointX: 0.4,
   whitePointY: 0.4
 };
+// 定义色域gamma值
 let gamma: number = 2.2;
+// 创建自定义可共享的色彩管理实例
 colorSpace = sendableColorSpaceManager.create(primaries, gamma);
 ```
 
@@ -147,6 +151,7 @@ getColorSpaceName(): colorSpaceManager.ColorSpace
 **示例：**
 
 ```ts
+// 获取色域类型
 let spaceName: colorSpaceManager.ColorSpace = colorSpace.getColorSpaceName();
 ```
 
@@ -176,6 +181,7 @@ getWhitePoint(): collections.Array\<number\>
 
 ```ts
 import { collections } from '@kit.ArkTS';
+// 获取色域白点值[x, y]
 let point: collections.Array<number> = colorSpace.getWhitePoint();
 ```
 
@@ -204,5 +210,6 @@ getGamma(): number
 **示例：**
 
 ```ts
+// 获取色域gamma值
 let gamma: number = colorSpace.getGamma();
 ```
