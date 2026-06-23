@@ -66,7 +66,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | distributionOSName<sup>10+</sup> | string | 是 | 发行版系统名称<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：OpenHarmony |
 | distributionOSVersion<sup>10+</sup> | string | 是 | 发行版系统版本号<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP11--><!--RP11End--><br/>示例：5.0.0  |
 | distributionOSApiVersion<sup>10+</sup> | number| 是 | 发行版系统API版本<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：500001 |
-| distributionOSApiName<sup>13+</sup> | string | 是 | 发行版系统api版本名称<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：OpenHarmony-API |
+| distributionOSApiName<sup>13+</sup> | string | 是 | 发行版系统API版本名称<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：OpenHarmony-API |
 | distributionOSReleaseType<sup>10+</sup> | string | 是 | 发行版系统类型<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：Release |
 | ODID<sup>12+</sup> | string | 是 | ODID（Open Developer Identifier，开发者匿名设备标识符）。<br/>**ODID值会在以下场景重新生成**：<br/>手机恢复出厂设置。<br/>同一设备上同一个开发者(developerId相同)的应用全部卸载后重新安装时。<br/>**ODID生成规则**：<br/>根据签名信息里developerId解析出的groupId生成，developerId规则为groupId.developerId，若无groupId则取整个developerId作为groupId。<br/>同一设备上运行的同一个开发者(developerId相同)的应用，ODID相同。<br/>同一个设备上不同开发者(developerId不同)的应用，ODID不同。<br/>不同设备上同一个开发者(developerId相同)的应用，ODID不同。<br/>不同设备上不同开发者(developerId不同)的应用，ODID不同。<br/>**说明**：数据长度为37字节(包含结束符)。<br/>示例：1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX |
 | diskSN<sup>15+</sup> | string | 是 | 硬盘序列号。<br/> **说明** ：该字段只能在部分2in1设备上进行查询，其他设备查询结果为空。<br/> **需要权限**：ohos.permission.ACCESS_DISK_PHY_INFO <br/> 示例：2502EM400567 |
