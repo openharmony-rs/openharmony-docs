@@ -62,11 +62,11 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
    如下是新增接口globalConnect支持collections.Array的示例代码:
     
     <!-- @[top_level_collections_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelCollectionsArray.ets) -->
-     
+    
     ``` TypeScript
     import { PersistenceV2, UIUtils } from '@kit.ArkUI';
     import { collections } from '@kit.ArkTS';
-
+    
     @Entry
     @ComponentV2
     struct Page1 {
@@ -83,7 +83,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
         array.forEach((item: T) => result.push(item));
         return result;
       }
-
+    
       build() {
         Column({ space: 10 }) {
           Column({ space: 0 }) {
@@ -196,20 +196,20 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
    如下为新增globalConnect支持`Array<ClassA>`类型的持久化示例：
 
     <!-- @[top_level_array_classa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassA.ets) -->
-   
+    
     ``` TypeScript
     import { PersistenceV2, UIUtils } from '@kit.ArkUI';
-
+    
     @ObservedV2
     class ClassA {
       @Trace public propA: string = '';
       @Trace public propB: string = '';
-
+    
       public report(): string {
         return `${this.propA} - ${this.propB}`;
       }
     }
-
+    
     @Entry
     @ComponentV2
     struct Comp {
@@ -221,7 +221,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
         // 另外持久化的数据需要加上makeObserved，因为JSON对象本身没有观察能力，自动持久化会失败
         defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
       })!;
-
+    
       build() {
         Column() {
           Repeat(this.arr)
@@ -528,7 +528,7 @@ class PersistClass {
 如下展示`globalConnect`持久化`Array<ClassA>`的示例：
 
 <!-- @[top_level_array_classa_apis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassAAPIs.ets) -->
- 
+
 ``` TypeScript
 import { PersistenceV2, UIUtils } from '@kit.ArkUI';
 
