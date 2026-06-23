@@ -103,8 +103,8 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 >   
 > ```json
 > {
->	"subsystem": "security",
->	"components": [{
+>	 "subsystem": "security",
+>	 "components": [{
 >			"component": "hichainsdk",
 >			"features": []
 >		},
@@ -116,5 +116,5 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 >			]
 >		}
 >	]
->}
+> }
 > ```
