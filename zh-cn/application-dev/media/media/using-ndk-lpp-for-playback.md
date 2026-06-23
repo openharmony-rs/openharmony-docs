@@ -104,17 +104,8 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
     ```c++
     source_ = OH_AVSource_CreateWithFD(info.inputFd, info.inputFileOffset, info.inputFileSize);
-    CHECK_AND_RETURN_RET_LOG(source_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR,
-        "Create demuxer source failed, fd: %{public}d, offset: %{public}" PRId64 ", file size: %{public}" PRId64,
-        info.inputFd, info.inputFileOffset, info.inputFileSize);
     demuxer_ = OH_AVDemuxer_CreateWithSource(source_);
-    CHECK_AND_RETURN_RET_LOG(demuxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create demuxer failed");
-
-    auto sourceFormat = std::shared_ptr<OH_AVFormat>(OH_AVSource_GetSourceFormat(source_), OH_AVFormat_Destroy);
-    CHECK_AND_RETURN_RET_LOG(sourceFormat != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Get source format failed");
-
     int32_t ret = GetTrackInfo(sourceFormat, info);
-    CHECK_AND_RETURN_RET_LOG(ret == AVCODEC_SAMPLE_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Get video track info failed");
     ```
 
 2.  根据视频元信息，调用  [OH_LowPowerAudioSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_createbymime)或[OH_LowPowerVideoSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_createbymime)来创建播放器。
@@ -139,13 +130,8 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
     ```c++
     lppAudioStreamerCallback_ = OH_LowPowerAudioSinkCallback_Create();
-    OH_LowPowerAudioSinkCallback_SetDataNeededListener(lppAudioStreamerCallback_,
-        LppCallback::OnDataNeeded, lppUserData);
-    OH_LowPowerAudioSinkCallback_SetErrorListener(lppAudioStreamerCallback_, LppCallback::OnError, lppUserData);
-    OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(lppAudioStreamerCallback_,
-        LppCallback::OnPositionUpdated, lppUserData);
-    OH_LowPowerAudioSinkCallback_SetInterruptListener(lppAudioStreamerCallback_,
-        LppCallback::OnInterrupted, lppUserData);
+    OH_LowPowerAudioSinkCallback_SetDataNeededListener(lppAudioStreamerCallback_, LppCallback::OnDataNeeded, lppUserData);
+    OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(lppAudioStreamerCallback_, LppCallback::OnPositionUpdated, lppUserData);
     ret = OH_LowPowerAudioSink_RegisterCallback(lppAudioStreamer_, lppAudioStreamerCallback_);
     ```
 
@@ -157,16 +143,13 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
     ```c++
     OH_AVFormat *format = OH_AVFormat_Create();
-    CHECK_AND_RETURN_RET_LOG(format != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
-    format = sampleInfo.format_video;
+     
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, sampleInfo.videoWidth);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, sampleInfo.videoHeight);
     OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, sampleInfo.frameRate);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, sampleInfo.pixelFormat);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_ROTATION, sampleInfo.rotation);
-    OH_AVFormat_SetIntValue(format, "lpp", true);
-    AVCODEC_SAMPLE_LOGI("%{public}d*%{public}d, %{public}.1ffps, %{public}d,%{public}d", sampleInfo.videoWidth,
-        sampleInfo.videoHeight, sampleInfo.frameRate, sampleInfo.pixelFormat, sampleInfo.rotation);
+     
     int ret = OH_LowPowerVideoSink_Configure(lppVideoStreamer_, format);
     ```
 
