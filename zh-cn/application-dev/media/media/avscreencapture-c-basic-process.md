@@ -51,7 +51,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 
 添加头文件：
 
-<!-- @[screenCapture_import_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
+<!-- @[screenCapture_import_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) --> 
 
 ``` C
 #include "hilog/log.h"
@@ -70,7 +70,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 
 实例化对象，通过[OH_AVScreenCapture_Create](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_create)创建[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)。
 
-<!-- @[screenCapture_create_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[screenCapture_create_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 g_avCapture = OH_AVScreenCapture_Create();
@@ -89,7 +89,7 @@ g_avCapture = OH_AVScreenCapture_Create();
 
 内录音频信息必须设置，麦克风音频信息可按实际场景按需设置。
 
-<!-- @[screenCapture_config_buffer_audio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[screenCapture_config_buffer_audio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 // 录屏时获取麦克风，如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
