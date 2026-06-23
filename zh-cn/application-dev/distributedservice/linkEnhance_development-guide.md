@@ -117,8 +117,8 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
           console.info(TAG + 'serverOnCallback');
         });
         server.on('serverStopped', (reason: number): void => {
-          console.info(TAG, 'serverStopped， reason= ' + reason);
-        });
+console.info(TAG, 'serverStopped, reason= ' + reason);
+console.info(TAG, 'serverStopped, reason= ' + reason);
         // 启动服务
         server.start();
       } catch (err) {
@@ -154,7 +154,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
     ```
 5. 断开连接并销毁Connection对象。
     ```ts
-    // 断连接。
+// 断开连接。
     linkEnhanceDisconnect(connection: linkEnhance.Connection) {
       console.info(TAG + 'disconnect deviceId = ' + connection.getPeerDeviceId());
       try {
@@ -174,7 +174,8 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
       try {
         server.stop();
       } catch (err) {
-        console.info(TAG + 'stop server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+console.error(TAG + 'stop server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+        (err as BusinessError).message);
         (err as BusinessError).message);
       }
     }
