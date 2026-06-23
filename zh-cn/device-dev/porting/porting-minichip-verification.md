@@ -21,7 +21,7 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
    }
    ```
 
-2. 链接XTS生成的.a库。 在链接选项中，需要链接生成于“out/MyBoard/MyProduct/libs”目录下的XTS的.a库，其库的名称格式为libmodule_ActsXxxTest.a，链接方式为"-lmodule_ActsXxxTest",示例代码如下：
+2. 链接XTS生成的.a库。 在链接选项中，需要链接生成于“out/MyBoard/MyProduct/libs”目录下的XTS的.a库，其库的名称格式为libmodule_ActsXxxTest.a，链接方式为"-lmodule_ActsXxxTest"，示例代码如下：
 
      
    ```text
@@ -72,7 +72,7 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
    }
    ```
 
-> ![注意](public_sys-resources/icon-caution.gif)
+> ![注意](./public_sys-resources/icon-caution.gif)
 > **注意：**
 > 1. XTS会在OHOS_SystemInit()调用之后，自行运行测试。
 > 

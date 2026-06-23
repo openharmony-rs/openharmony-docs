@@ -107,7 +107,7 @@ group("wifi") {
 | BleGattsStartServiceEx | 根据传入的服务列表，创建gatt服务。 | 
 | BleGattsStopServiceEx | 传入gatt服务句柄，停止gatt服务。 | 
 
-> ![说明](public_sys-resources/icon-note.gif)
+> ![说明](./public_sys-resources/icon-note.gif)
 > **说明：**
 > 不同版本接口可能存在差异，需要根据当前版本的具体文件进行适配。
 
