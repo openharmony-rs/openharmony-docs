@@ -312,8 +312,8 @@ static set&lt;T&gt;(propName: string, newValue: T): boolean
 **示例：**
 ```ts
 AppStorage.setOrCreate('PropA', 48);
-let res: boolean = AppStorage.set('PropA', 47) // true
-let res1: boolean = AppStorage.set('PropB', 47) // false
+let res: boolean = AppStorage.set('PropA', 47); // true
+let res1: boolean = AppStorage.set('PropB', 47); // false
 ```
 
 ### setOrCreate<sup>10+</sup>
@@ -677,8 +677,8 @@ static Set&lt;T&gt;(propName: string, newValue: T): boolean
 **示例：**
 ```ts
 AppStorage.SetOrCreate('PropA', 48);
-let res: boolean = AppStorage.Set('PropA', 47) // true
-let res1: boolean = AppStorage.Set('PropB', 47) // false
+let res: boolean = AppStorage.Set('PropA', 47); // true
+let res1: boolean = AppStorage.Set('PropB', 47); // false
 ```
 
 ### SetOrCreate<sup>(deprecated)</sup>
@@ -1693,7 +1693,7 @@ static persistProp&lt;T&gt;(key: string, defaultValue: T): void
 
 确定属性的类型和值的顺序如下：
 
-1. 如果[PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)文件中存在key对应的属性，在AppStorage中创建对应的propName，并用在PersistentStorage中找到的key的属性初始化。
+1. 如果[PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)文件中存在key对应的属性，在AppStorage中创建对应的key，并用在PersistentStorage中找到的key的属性初始化。
 
 2. 如果PersistentStorage文件中没有查询到key对应的属性，则在AppStorage中查找key对应的属性。如果找到key对应的属性，则将该属性持久化。
 
@@ -1793,7 +1793,7 @@ static PersistProp&lt;T&gt;(key: string, defaultValue: T): void
 
 确定属性的类型和值的顺序如下：
 
-1. 如果[PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)文件中存在key对应的属性，在AppStorage中创建对应的propName，并用在PersistentStorage中找到的key的属性初始化。
+1. 如果[PersistentStorage](../../../ui/state-management/arkts-persiststorage.md)文件中存在key对应的属性，在AppStorage中创建对应的key，并用在PersistentStorage中找到的key的属性初始化。
 
 2. 如果PersistentStorage文件中没有查询到key对应的属性，则在AppStorage中查找key对应的属性。如果找到key对应的属性，则将该属性持久化。
 
@@ -2100,5 +2100,5 @@ let keys: Array<string> = Environment.Keys(); // keys 包含 accessibilityEnable
 | colorMode            | [ColorMode](./ts-state-management-environment-variables.md#colormode)       | 深浅色模式，可选值为：<br/>-&nbsp;ColorMode.LIGHT：浅色模式；<br/>-&nbsp;ColorMode.DARK：深色模式。 |
 | fontScale            | number          | 字体大小比例。                                               |
 | fontWeightScale      | number          | 字重比例。                                                   |
-| layoutDirection      | [LayoutDirection](./ts-state-management-environment-variables.md#layoutdirection) | 布局方向类型，可选值为：<br/>-&nbsp;LayoutDirection.LTR：从左到右；<br/>-&nbsp;LayoutDirection.RTL：从右到左。<br/>-&nbsp;Auto：跟随系统。 |
+| layoutDirection      | [LayoutDirection](./ts-state-management-environment-variables.md#layoutdirection) | 布局方向类型，可选值为：<br/>-&nbsp;LayoutDirection.LTR：从左到右；<br/>-&nbsp;LayoutDirection.RTL：从右到左。<br/>-&nbsp;LayoutDirection.Auto：跟随系统。 |
 | languageCode         | string          | 当前系统语言，小写字母，例如zh。                             |

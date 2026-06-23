@@ -51,7 +51,7 @@ import { Builder } from '@kit.ArkUI';
 struct BuilderDemo {
   @Builder
   showTextBuilder() {
-    // @Builder装饰此函数，使其能以链式调用的方式配置并构建Text组件
+    // @Builder装饰此函数，使其成为自定义构建函数，用于配置并构建Text组件
     Text('Hello World')
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
