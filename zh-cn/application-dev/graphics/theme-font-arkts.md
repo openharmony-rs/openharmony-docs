@@ -55,6 +55,7 @@
    > 
    > 若未在系统**主题应用**中设置一项主题字体，则将使用系统默认字体进行绘制。
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -73,6 +74,10 @@
    let paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+
 5. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
 
    <!-- @[arkts_theme_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
@@ -88,6 +93,7 @@
 
 6. 创建渲染节点，并保存到数组。（此处示例代码为简化逻辑，采用数组作为容器，实际开发中应结合应用情况选择更恰当的容器来保证节点的添加与删除对应。）
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_theme_font_create_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -132,9 +138,13 @@
      }
    }
    ```
+   
+   ArkTS-Sta示例：
+   <!-- @[arkts_theme_font_create_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
 
 7. 创建渲染节点更新函数，并导出函数，供其他文件（如：EntryAbility.ets）使用；重绘制节点目的为更新排版中字体信息，若不更新字体信息，使用之前残留结果，可能造成文字乱码。
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_theme_font_export_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -146,9 +156,13 @@
      });
    }
    ```
+   
+   ArkTS-Dyn示例：
+   <!-- @[arkts_theme_font_export_update](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
 
 8. 在EntryAbility.ets中接收主题字变更事件，并调用渲染节点更新函数。
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
@@ -173,7 +187,8 @@
      }
    }
    ```
-
+   ArkTS-Sta示例：
+   <!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ## 效果展示
 
