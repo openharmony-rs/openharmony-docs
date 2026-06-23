@@ -62,9 +62,7 @@ createServer(name: string): Server
 | 201      | Permission denied.|
 | 801      | Capability not supported because the linkEnhance function has been trimmed. <br>适用版本：26.0.0+ |
 | 32390203      | Duplicate server name.|
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------- |
-| 32390206 | Invalid parameter. 可能原因：参数为空、参数格式不正确或参数超长。 |
+| 32390206 | Invalid parameter.  |
 
 **示例：**
 
@@ -106,11 +104,6 @@ createConnection(deviceId: string, name: string): Connection
 
 作为客户端的设备创建连接对象，以便后续向服务端设备发起连接。
 
-**使用场景**：
-- 客户端主动连接服务端的场景，如分布式音乐播放
-- 跨设备数据同步场景，如联系人、日历同步
-- 多设备协同场景，需要主动发现并连接对端设备
-
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -123,7 +116,7 @@ createConnection(deviceId: string, name: string): Connection
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-deviceId  | string | 是    | 连接的对端设备的deviceId，即对端设备的BLE MAC地址。BLE MAC的获取方法，请参考[查找设备](../../connectivity/bluetooth/ble-development-guide.md)。
+|deviceId  | string | 是    | 连接的对端设备的deviceId，即对端设备的BLE MAC地址。BLE MAC的获取方法，请参考[查找设备](../../connectivity/bluetooth/ble-development-guide.md)。|
 | name      | string | 是    | 连接的目标设备的服务名，非空字符串，最大长度255字节。超出长度限制或传入空字符串时返回错误码32390206。|
 
 **返回值：**
@@ -267,10 +260,7 @@ try {
   (err as BusinessError).message);
 }
 ```
-
-当业务执行完毕，服务端清理资源时，调用close()方法，销毁Server对象，释放相关资源。之后如果再次与对端设备交互，需要重新创建Server对象。
-
-**与stop()的区别**：stop()仅停止服务，Server对象仍可重新启动；close()会销毁Server对象并释放资源，之后需重新创建Server对象。如果还需要重新启动服务，使用stop()；如果业务完全结束，使用close()。
+### close()
 
 close():&nbsp;void
 
@@ -283,6 +273,8 @@ close():&nbsp;void
 **设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
+
+**与stop()的区别**：stop()仅停止服务，Server对象仍可重新启动；close()会销毁Server对象并释放资源，之后需重新创建Server对象。如果还需要重新启动服务，使用stop()；如果业务完全结束，使用close()。
 
 **错误码：**
 
@@ -471,7 +463,7 @@ try {
 
   // 订阅服务停止
   server.on('serverStopped', (reason: number): void => {
-hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
+  hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
   // 启动服务
   server.start();
@@ -551,7 +543,7 @@ hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | deviceId          | string | 否    |否    | 对端设备ID，成功返回对端设备的deviceId，失败返回空字符串。     |
 | success           | boolean | 否    |否   | 连接结果，true表示连接成功，false表示连接失败。 |
-32390201 | 表示服务端服务未启动(服务端未调用start()或start()调用失败)。
+| reason            | number | 否    |否    | 连接成功返回0，连接失败返回错误码：<br>- 32390200：表示客户端连接超时。<br>- 32390201：表示服务端服务未启动。<br>- 32390300：表示内部错误。<br>更多关于错误码的详细介绍请参考[增强连接错误码](errorcode-link-enhance.md)。 |
 
 ## Connection
 
@@ -673,10 +665,8 @@ try {
 }
 ```
 
-业务执行完毕后，任意设备可调用该接口销毁connection对象，释放资源。若需再次与对端设备交互，必须重新创建connection对象并调用connect()发起连接。
-
-**与disconnect()的区别**：disconnect()仅断开连接，Connection对象仍可重新连接；close()会销毁Connection对象并释放资源，之后需重新创建Connection对象。如果还需要重新连接，使用disconnect()；如果业务完全结束，使用close()。
-
+ ### close()
+  
 close():&nbsp;void
 
 业务执行完毕后，任意设备可调用该接口销毁connection对象，释放资源。若需再次与对端设备交互，必须重新创建connection对象并调用`connect()`发起连接。
@@ -689,6 +679,8 @@ close():&nbsp;void
 
 **模型约束**：此接口仅可在Stage模型下使用
 
+**与disconnect()的区别**：disconnect()仅断开连接，Connection对象仍可重新连接；close()会销毁Connection对象并释放资源，之后需重新创建Connection对象。如果还需要重新连接，使用disconnect()；如果业务完全结束，使用close()。
+  
 **错误码：**
 
 以下错误码的详细介绍请参考[增强连接错误码](errorcode-link-enhance.md)。
@@ -765,7 +757,6 @@ try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-hilog.info(0x0000, TAG, "peerDeviceId=%{public}s" + connection.getPeerDeviceId());
   hilog.info(0x0000, TAG, "peerDeviceId=%{public}s" + connection.getPeerDeviceId());
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -826,7 +817,7 @@ try {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
       let len = 1;
-let arrayBuffer = new ArrayBuffer(len);
+      let arrayBuffer = new ArrayBuffer(len); // 创建需要发送的数据
       connection.sendData(arraybuffer);
       hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s" + connection.getPeerDeviceId());
       connection.disconnect();
