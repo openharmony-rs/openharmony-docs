@@ -254,7 +254,7 @@ try {
 }
 ```
 
-###  close()
+### close()
 
 close():&nbsp;void
 
@@ -657,8 +657,8 @@ try {
 }
 ```
 
- ### close()
-  
+### close()
+
 close():&nbsp;void
 
 业务执行完毕后，任意设备可调用该接口销毁connection对象，释放资源。若需再次与对端设备交互，必须重新创建connection对象并调用`connect()`发起连接。
