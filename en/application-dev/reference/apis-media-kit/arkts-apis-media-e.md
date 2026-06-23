@@ -1,10 +1,12 @@
 # Enums
+
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=320793da1b58e6a20565f5e582fc3e50f69572ee translatedAt=2026-06-22T03:36:02.364Z pushedAt=2026-06-22T09:23:26.554Z -->
 
 > **NOTE**
 >
@@ -22,7 +24,7 @@ Enumerates the [media error codes](errorcode-media.md).
 | :------------------------------------ | ------- | ------------------------------------ |
 | AVERR_OK                              | 0       | The operation is successful.                      |
 | AVERR_NO_PERMISSION                   | 201     | No permission to perform the operation.              |
-| AVERR_INVALID_PARAMETER               | 401     | Invalid input parameter.                  |
+| AVERR_INVALID_PARAMETER               | 401     | Invalid input parameters.                   |
 | AVERR_UNSUPPORT_CAPABILITY            | 801     | Unsupported API.       |
 | AVERR_NO_MEMORY                       | 5400101 | The system memory is insufficient or the number of services reaches the upper limit.|
 | AVERR_OPERATE_NOT_PERMIT              | 5400102 | The operation is not allowed in the current state or you do not have the permission to perform the operation.|
@@ -97,9 +99,9 @@ Enumerates the supported Advanced Audio Coding (AAC) formats.
 
 | Name        | Value                   | Description                       |
 | ------------ | --------------------- | --------------------------- |
-| AAC_LC       |     0                 | Standard AAC Low Complexity profile.       |
-| AAC_HE       |     1                 | AAC High Efficiency profile (also known as HE-AAC).       |
-| AAC_HE_V2    |     2                 | AAC High Efficiency Version 2 profile (also known as HE-AAC v2).    |
+| AAC_LC       |     0                 | AAC Low-Complexity.        |
+| AAC_HE       |     1                 | AAC High-Efficiency.        |
+| AAC_HE_V2    |     2                 | AAC High-Efficiency version 2.     |
 
 ## MediaDescriptionKey<sup>8+</sup>
 
@@ -128,6 +130,7 @@ Enumerates the media description keys.
 | MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | MIME type of the track. The corresponding key value type is string. For audio and video tracks, the value is the same as that of **MD_KEY_CODEC_MIME**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | Reference relationships between this track and other tracks. The corresponding key value type is string, with values separated by commas (,).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | Auxiliary type of this track when it acts as a reference track. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+
 ## FetchResult<sup>23+</sup>
 
 Enumerates the results of obtaining thumbnails in batches.
@@ -226,7 +229,7 @@ Enumerates the video playback seek modes, which can be passed in the **seek** AP
 | SEEK_NEXT_SYNC | 0    | Seeks to the next key frame at the specified position. You are advised to use this value for the rewind operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | SEEK_PREV_SYNC | 1    | Seeks to the previous key frame at the specified position. You are advised to use this value for the fast-forward operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | SEEK_CLOSEST<sup>12+</sup> | 2    | Seeks to the frame closest to the specified position. You are advised to use this value for accurate seek.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| SEEK_CONTINUOUS<sup>18+</sup> | 3    | Offers a smooth and fluid visual experience for seeking. Applications can use a progress bar component to continuously invoke the **seek** method, and the AVPlayer will update the video frames smoothly in response to these calls.<br>Applications can call [isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18) to check whether the video source supports this seeking mode.<br>If the video source does not support this mode, calling **seek** will result in an **AVERR_SEEK_CONTINUOUS_UNSUPPORTED** error (see [Media Error Codes](#averrorcode9)), and the smoothness of frame updates will be compromised.<br>This seeking mode does not trigger the [seekDone event](arkts-apis-media-AVPlayer.md#onseekdone9).<br>To exit this seeking mode, applications must call **seek(-1, SeekMode.SEEK_CONTINUOUS)** to end the seeking process.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| SEEK_CONTINUOUS<sup>18+</sup> | 3    | Provides a seek experience with smooth and fluid picture changes. The application can continuously call the **Seek** method in combination with a progress bar component, and AVPlayer continuously and smoothly updates the picture based on the **Seek** calls.<br>The application can call the [isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18) method to check whether the video source supports this seek mode based on the return result.<br>When this seek mode is called for a video source that does not support it, the **AVERR_SEEK_CONTINUOUS_UNSUPPORTED** error is reported (see [AVErrorCode](#averrorcode9)), and the smoothness of picture updates is reduced.<br>This seek mode does not trigger the [on('seekDone')](arkts-apis-media-AVPlayer.md#onseekdone9) event.<br>When the application needs to exit this seek mode, it needs to call **seek(-1, SeekMode.SEEK_CONTINUOUS)**.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
 
 ## SwitchMode<sup>12+</sup>
 
@@ -486,7 +489,7 @@ Enumerates the audio output formats.
 Enumerates the media error codes.
 
 > **NOTE**
-> This enum is supported since API version 8 and deprecated since API version 11. You are advised to use [Media Error Codes](#averrorcode9) instead.
+> This enum is supported since API version 8 and deprecated since API version 11. You are advised to use [AVErrorCode](#averrorcode9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 

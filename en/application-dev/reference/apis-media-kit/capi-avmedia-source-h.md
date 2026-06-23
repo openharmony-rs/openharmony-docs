@@ -1,10 +1,12 @@
 # avmedia_source.h
+
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=320793da1b58e6a20565f5e582fc3e50f69572ee translatedAt=2026-06-22T03:36:36.584Z pushedAt=2026-06-22T09:23:26.564Z -->
 
 ## Overview
 
@@ -18,7 +20,7 @@ Defines the struct and enum of **AVMediaSource**.
 
 **Since**: 23
 
-**Related module**: [avmedia_source](capi-avmedia-source.md)
+**Related module:** [AVMediaSource](capi-avmedia-source.md)
 
 ## Total
 
@@ -89,7 +91,6 @@ Enumerates the error codes of network loading requests.
 | AV_LOADING_ERROR_ACCESS_DENIED = 4 | The client does not have the permission to request the resource.|
 | AV_LOADING_ERROR_ACCESS_TIMEOUT = 5 | The access times out.|
 | AV_LOADING_ERROR_AUTHORIZE_FAILED = 6 | The authorization failed.|
-
 
 ## Function Description
 
@@ -329,7 +330,7 @@ Sets the MIME type to process extended media sources.
 | Name| Description|
 | -- | -- |
 | [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | Pointer to the **OH_AVMediaSource** instance.|
-| const char *mimetype | Pointer to the MIME type ([AV_MimeTypes](arkts-apis-media-e.md#avmimetypes12)) of the media source.|
+| const char *mimetype | MIME type ([AVMimeTypes](arkts-apis-media-e.md#avmimetypes12)) of the media source. |
 
 **Returns**
 

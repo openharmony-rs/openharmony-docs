@@ -1,10 +1,12 @@
 # Functions
+
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=320793da1b58e6a20565f5e582fc3e50f69572ee translatedAt=2026-06-22T03:36:19.545Z pushedAt=2026-06-22T09:23:26.558Z -->
 
 > **NOTE**
 >
@@ -446,6 +448,8 @@ Creates an AVScreenCaptureRecorder instance. This API uses a promise to return t
 
 **Error codes**
 
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
 | ID| Error Message                      |
 | -------- | ------------------------------ |
 | 5400101  | No memory. Return by promise. |
@@ -561,7 +565,7 @@ Creates a media source for streaming media to be pre-downloaded.
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
 | url | string | Yes  | - URL of the media source. The following streaming media formats are supported: HLS, HTTP-FLV, DASH, and HTTPS.<br> - FD path of the local M3U8 file. |
-| headers | Record\<string, string> | No  | HTTP header customized for streaming media pre-download.|
+| headers | Record\<string, string> | No   | HTTP header of the media source. If it is not passed, the default HTTP headers for network requests are used. |
 
 **Return value**
 
@@ -571,7 +575,7 @@ Creates a media source for streaming media to be pre-downloaded.
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -588,6 +592,7 @@ let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx
 **Example 2**
 
 <!--code_no_check-->
+
 ```ts
 import { media } from "@kit.MediaKit";
 
