@@ -157,7 +157,7 @@ cloudData.onAutoSyncTrigger(autoSyncTriggerObserver);
 
 offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
-取消订阅自动同步触发事件通知。若传入observer，则取消指定回调函数的订阅；若不传入observer，则取消所有已注册的订阅。
+取消订阅自动同步触发事件通知。
 
 **起始版本：** 26.0.0
 
@@ -169,7 +169,7 @@ offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 否 | 回调函数。 |
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 否 | 回调函数。 若传入observer，则取消指定回调函数的订阅；若不传入observer，则取消所有已注册的订阅。|
 
 **错误码：**
 

@@ -1305,12 +1305,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     // ...
     // 返回服务端取消共享的返回结果
     let result: Array<cloudExtension.Result<Participant>> = [];
-    participants.forEach((item => {
+    participants.forEach(() => {
       result.push({
         code: cloudData.sharing.SharingCode.SUCCESS,
         description: 'unshare succeeded'    
-      })
-    }))
+      });
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'unshare succeeded',
@@ -1408,12 +1408,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     // ...
     // 返回服务端更改权限的返回结果
     let result: Array<cloudExtension.Result<Participant>> = [];
-    participants.forEach((item => {
+    participants.forEach(() => {
       result.push({
         code: cloudData.sharing.SharingCode.SUCCESS,
         description: 'change privilege succeeded'    
-      })
-    }))
+      });
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'change privilege succeeded',
@@ -1804,12 +1804,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     // ...
     // 返回服务端发起共享的返回结果
     let result: Array<cloudExtension.Result<Participant>> = [];
-    participants.forEach((item => {
+    participants.forEach(() => {
       result.push({
         code: cloudData.sharing.SharingCode.SUCCESS,
         description: 'share succeeded'
-      })
-    }))
+      });
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'share succeeded',
@@ -1824,12 +1824,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     // ...
     // 返回服务端取消共享的返回结果
     let result: Array<cloudExtension.Result<Participant>> = [];
-    participants.forEach((item => {
+    participants.forEach(() => {
       result.push({
         code: cloudData.sharing.SharingCode.SUCCESS,
         description: 'unshare succeeded'
-      })
-    }))
+      });
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'unshare succeeded',
@@ -1856,12 +1856,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     // ...
     // 返回服务端更改权限的返回结果
     let result: Array<cloudExtension.Result<Participant>> = [];
-    participants.forEach((item => {
+    participants.forEach(() => {
       result.push({
         code: cloudData.sharing.SharingCode.SUCCESS,
         description: 'change privilege succeeded'
-      })
-    }))
+      });
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'change privilege succeeded',

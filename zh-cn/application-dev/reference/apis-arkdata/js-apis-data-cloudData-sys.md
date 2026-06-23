@@ -56,7 +56,7 @@ import { cloudData } from '@kit.ArkData';
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | eventId   | string | 否   | 否   | 事件标识。当前仅支持"cloud_data_change"，表示云数据变更，传入其他值视为无效参数。 |
-| extraData | string | 否   | 否   | 透传数据，extraData为json结构的字符串，其中必须包括"data"字段，"data"中是通知变更所需要的信息，包含账号、应用包名、数据库名、数据库类型和数据库表名，所有字段均不能为空。 |
+| extraData | string | 否   | 否   | 透传数据，extraData为JSON结构的字符串，其中必须包括"data"字段，"data"中是通知变更所需要的信息，包含账号、应用包名、数据库名、数据库类型和数据库表名，所有字段均不能为空。 |
 
 **示例：**
 
@@ -118,7 +118,7 @@ let extraData: cloudData.ExtraData = {
 
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
-| enable     | boolean           | 否   | 否   | 数据库是否启用端云协同开关。true为打开端云协同开关，false为关闭该开关。 |
+| enable     | boolean           | 否   | 否   | 数据库是否启用端云协同开关。true为启用端云协同开关，false为不启用该开关。 |
 | tableInfo  | Record<string, boolean> | 否   | 是   | 表级别的端云协同开关配置信息。键为表名，值为该表的开关状态。true为打开该表的端云协同开关，false为关闭该表开关。当未配置该参数时，默认按照数据库级开关状态enable生效。 |
 
 ## SwitchConfig<sup>23+</sup>
@@ -791,7 +791,7 @@ static notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
 | extInfo | [ExtraData](#extradata11) | 是   | 透传数据，包含通知数据变更后的应用信息。         |
-| userId  | number                  | 否   | 表示用户账号ID。此参数是可选的，默认值是当前用户账户ID，如果指定了此参数，则该值必须是系统中现有的用户账户ID。 |
+| userId  | number                  | 否   | 表示用户账号ID。此参数是可选的，默认值是当前用户账号ID，如果指定了此参数，则该值必须是系统中现有的用户账号ID。 |
 
 **返回值：**
 
