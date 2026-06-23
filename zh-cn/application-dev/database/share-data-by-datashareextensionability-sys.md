@@ -36,7 +36,7 @@
 ## 约束与限制
 
 - 数据共享结果集的上限取决于数据提供方的限制（如最多事实上只允许同时使用32个），推荐数据提供方明确此数值上限，控制资源占用。超出数据提供方限制数量的查询请求需要重试处理。
-- 对于查询完成后返回的数据共享结果集，在使用完成后应及时释放，参见[close](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close)。
+- 对于查询完成后返回的数据共享结果集，在使用完成后应调用[close](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close)接口及时释放。
 
 
 ## 实现说明
