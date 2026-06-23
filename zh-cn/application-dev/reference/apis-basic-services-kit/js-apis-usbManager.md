@@ -1397,9 +1397,9 @@ function controlTransfer() {
 
 >**说明：**
 >
-> 主机控制器按照Endpoint类型调度。
+> 主机控制器按照Endpoint类型调度，不同类型的端点采用不同的调度策略：批量端点(bulk)采用宽带共享调度适合大量数据非实时传输；中断端点(interrupt)采用固定轮询调度适合小数据量实时传输；实时端点(isoc)采用宽带预留调度，适合音视频等实时数据流。
 >
-> 协议层打包时依赖type决定传输特性。
+> 协议层打包时依赖type决定传输特性，包括数据包格式、错误处理机制、超时策略等。
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -1644,7 +1644,7 @@ Usb异步传输回调。
 
 >**说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃。建议使用 [USBDeviceRequestParams](#usbdevicerequestparams12) 替代。
+> 从API version 9开始支持，从API version 18开始废弃。建议使用[USBDeviceRequestParams](#usbdevicerequestparams12)替代。
 
 **系统能力：** SystemCapability.USB.USBManager
 
