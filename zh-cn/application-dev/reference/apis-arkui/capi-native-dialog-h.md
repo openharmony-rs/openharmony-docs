@@ -908,7 +908,7 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial(ArkUI_NativeDialogH
 **描述：**
 
 
-设置指定弹窗的沉浸式材质。
+设置指定弹窗的沉浸式材质。沉浸式材质根据设备算力等级分为不同等级。材质等级由[ArkUI_MaterialLevel](./capi-native-material-h.md#arkui_materiallevel)定义，可通过[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](./capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取。在高算力和中算力设备上，会影响材质层的滤镜效果和阴影（[OH_ArkUI_CustomDialog_SetShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setshadow)或[OH_ArkUI_CustomDialog_SetCustomShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setcustomshadow)）、背景模糊[OH_ArkUI_CustomDialog_SetBackgroundBlurStyle](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundblurstyle)、背景效果[OH_ArkUI_CustomDialog_SetBackgroundEffect](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundeffect)效果。在低算力设备上，会影响背景颜色[OH_ArkUI_CustomDialog_SetBackgroundColor](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundcolor)、背景模糊[OH_ArkUI_CustomDialog_SetBackgroundBlurStyle](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundblurstyle)、背景效果[OH_ArkUI_CustomDialog_SetBackgroundEffect](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundeffect)、边框颜色[OH_ArkUI_CustomDialog_SetBorderColor](./capi-native-dialog-h.md#oh_arkui_customdialog_setbordercolor)、边框宽度[OH_ArkUI_CustomDialog_SetBorderWidth](./capi-native-dialog-h.md#oh_arkui_customdialog_setborderwidth)和阴影（[OH_ArkUI_CustomDialog_SetShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setshadow)或[OH_ArkUI_CustomDialog_SetCustomShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setcustomshadow)）效果。依据设备算力档位自动生效交互形变和流光效果，高算力设备生效交互形变和流光效果，中算力设备生效交互形变效果，低算力设备不生效。
 
 **起始版本：** 26.0.0
 
