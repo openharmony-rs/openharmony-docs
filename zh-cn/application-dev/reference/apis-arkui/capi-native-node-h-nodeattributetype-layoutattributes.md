@@ -155,13 +155,13 @@ NODE_ALIGNMENT = 15
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 对齐方式，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_CENTER。 |
+| .value[0].i32 | 对齐方式，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_CENTER。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 对齐方式，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。 |
+| .value[0].i32 | 对齐方式，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)。 |
 
 ## NODE_BORDER_WIDTH
 
@@ -354,13 +354,13 @@ NODE_DIRECTION = 47
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 主轴方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。 |
+| .value[0].i32 | 主轴方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 主轴方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)。 |
+| .value[0].i32 | 主轴方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)。 |
 
 ## NODE_CONSTRAINT_SIZE
 
@@ -479,13 +479,13 @@ NODE_ALIGN_SELF = 58
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 子组件在父容器交叉轴上的对齐方式，参数类型[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_AUTO。 |
+| .value[0].i32 | 子组件在父容器交叉轴上的对齐方式，参数类型[ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_AUTO。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 子组件在父容器交叉轴上的对齐方式，参数类型[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)。 |
+| .value[0].i32 | 子组件在父容器交叉轴上的对齐方式，参数类型[ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment)。 |
 
 ## NODE_FLEX_GROW
 
@@ -776,15 +776,15 @@ NODE_RELATIVE_LAYOUT_CHAIN_MODE = 76
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 |
-| .value[1].i32 | 链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。 |
+| .value[0].i32 | 链的方向。枚举[ArkUI_Axis](capi-layout-h.md#arkui_axis)。 |
+| .value[1].i32 | 链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-layout-h.md#arkui_relativelayoutchainstyle)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 |
-| .value[1].i32 | 链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。 |
+| .value[0].i32 | 链的方向。枚举[ArkUI_Axis](capi-layout-h.md#arkui_axis)。 |
+| .value[1].i32 | 链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-layout-h.md#arkui_relativelayoutchainstyle)。 |
 
 ## NODE_SIZE
 
@@ -915,13 +915,13 @@ NODE_WIDTH_LAYOUTPOLICY = 105
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。 |
+| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。 |
+| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。 |
 
 ## NODE_HEIGHT_LAYOUTPOLICY
 
@@ -938,13 +938,13 @@ NODE_HEIGHT_LAYOUTPOLICY = 106
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。 |
+| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。 |
+| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。 |
 
 ## NODE_POSITION_EDGES
 
@@ -1009,8 +1009,8 @@ NODE_IGNORE_LAYOUT_SAFE_AREA = 119
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 扩展安全区域的类型。参数类型为[ArkUI_LayoutSafeAreaType](capi-native-type-h.md#arkui_layoutsafeareatype)，默认值：ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM。设置异常值时，按默认值显示。 |
-| .value[1].u32 | 扩展安全区域的方向。参数类型为[ArkUI_LayoutSafeAreaEdge](capi-native-type-h.md#arkui_layoutsafeareaedge)，默认值：ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL，例如：ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM。设置异常值时，按默认值显示。 |
+| .value[0].u32 | 扩展安全区域的类型。参数类型为[ArkUI_LayoutSafeAreaType](capi-layout-h.md#arkui_layoutsafeareatype)，默认值：ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM。设置异常值时，按默认值显示。 |
+| .value[1].u32 | 扩展安全区域的方向。参数类型为[ArkUI_LayoutSafeAreaEdge](capi-layout-h.md#arkui_layoutsafeareaedge)，默认值：ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL，例如：ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM。设置异常值时，按默认值显示。 |
 
 **返回：**
 
@@ -1092,13 +1092,13 @@ NODE_LAYOUT_GRAVITY = 122
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-native-type-h.md#arkui_localizedalignment)，默认值：ARKUI_ALIGNMENT_CENTER。设置异常值时，按默认值显示。 |
+| .value[0].i32 | Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment)，默认值：ARKUI_ALIGNMENT_CENTER。设置异常值时，按默认值显示。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-native-type-h.md#arkui_localizedalignment)。 |
+| .value[0].i32 | Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment)。 |
 
 ## NODE_BORDER_RADIUS_TYPE
 
