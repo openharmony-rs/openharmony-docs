@@ -348,7 +348,7 @@ batchRemove(assetsToBeRemoved: Array\<AssetMap>): Promise\<void>
 
 | 参数名     | 类型     | 必填 | 说明                                                         |
 | ---------- | -------- | ---- | ------------------------------------------------------------ |
-| assetsToBeRemoved | Array\<[AssetMap](#assetmap)> | 是   | 待删除关键资产的搜索条件数组，如别名、访问控制属性、自定义数据等。数组长度最大值为100. |
+| assetsToBeRemoved | Array\<[AssetMap](#assetmap)> | 是   | 待删除关键资产的搜索条件数组，如别名、访问控制属性、自定义数据等。数组长度最大值为100。 |
 
 **返回值：**
 
