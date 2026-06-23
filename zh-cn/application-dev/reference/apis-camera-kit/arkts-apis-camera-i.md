@@ -198,6 +198,7 @@
 | rotation | [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 否   | 是   | 图片旋转角度（默认0度，顺时针旋转）。                                                  |
 | location | [Location](#location)           | 否   | 是   | 图片地理位置信息（默认以设备硬件信息为准）。                                               |
 | mirror   | boolean                         | 否   | 是   | 镜像使能开关（默认关）。使用之前需要使用[isMirrorSupported](arkts-apis-camera-PhotoOutput.md#ismirrorsupported)进行判断是否支持。true表示使能，false表示不使能。 |
+ | CompressionQuality   | number                         | 否   | 是   | 图片压缩质量值（范围0-100）。<br>仅在未设置`level`控制和连续值控制时生效。<br>默认值为75。 |
 
 ## FrameShutterInfo
 
