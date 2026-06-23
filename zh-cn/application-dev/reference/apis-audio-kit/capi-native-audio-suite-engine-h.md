@@ -267,8 +267,8 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audi
 > * 调用后，管线会从输出节点向前依次拉取数据、应用效果处理，
 > * 最终将处理后的数据填充到应用程序传入的audioData指针中。
 > * 系统会尝试按requestFrameSize请求的大小填充数据，实际处理的数据大小通过responseSize返回给应用程序。
-> * 当应用程序为所有输入节点准备好数据并通过回调提交最后一次数据时，应在回调中设置finished标志位。
-> * 当管线中所有输入都传递了finished标志后，处理完成后会通过finishedFlag通知应用程序。
+> * 当应用程序为所有输入节点准备好数据并通过回调提交最后一次数据时，应在回调中设置完成标志。
+> * 当管线中所有输入都传递了完成标志后，接口处理完成后会通过finishedFlag通知应用程序。
 > * 若finishedFlag为true，应用程序不应再调用此接口。
 
 **起始版本：** 22
