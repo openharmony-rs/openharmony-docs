@@ -684,7 +684,7 @@ ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)
 
 **描述**
 
-创建RelativeContaine容器内的屏障信息。
+创建RelativeContainer容器内的屏障信息。
 
 **起始版本：** 12
 
