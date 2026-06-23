@@ -227,10 +227,41 @@ getMaterialInfo(): MaterialInfo
 | ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
 | style   | [ImmersiveStyle](#immersivestyle)                                   | 否 | 是   | 材质样式。不同样式对应不同的材质参数，影响材质的厚度。<br/>**说明**：该参数仅对高算力和中算力设备的显示效果生效。<br/>默认值：uiMaterial.ImmersiveStyle.REGULAR |
 | materialColor   | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)                                   | 否 | 是   | 材质层赋色。对于高算力和中算力设备，若不设置该参数或该参数为undefined，不额外混合纯色效果；若设置该参数为有效颜色值，该参数会为材质滤镜再混合一层纯色效果，若该颜色为纯不透明的颜色，会遮挡材质滤镜效果。对于低算力设备，若不设置该参数或该参数为undefined，生效低算力设备材质自带的背景色效果；若设置该参数为有效颜色值，该参数作为背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)属性值。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：undefined |
-| colorInvert   | boolean                                   | 否 | 是   | 设置了材质对象的节点的子树是否自动适配材质到背景色的反色。<br/>若为false，则不会自动反色。<br/>若为true，则只有材质参数足够薄时才会自动反色。具体能反色的材质由系统定义，材质样式至少为THIN或ULTRA_THIN，且与设置应用的沉浸光感的强弱配置相关。材质越薄、沉浸光感越强，越容易符合反色材质的要求。<br/>自动反色能力仅对部分属性接口设置特殊资源值时生效，生效的属性接口包括：Text组件的[fontColor](arkui-ts/ts-basic-components-text.md#fontcolor)，Button组件的[fontColor](arkui-ts/ts-basic-components-button.md#fontcolor)，SymbolGlyph组件的[fontColor](arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)，Image组件的[fillColor](arkui-ts/ts-basic-components-image.md#fillcolor)，Search组件的[placeholderColor](arkui-ts/ts-basic-components-search.md#placeholdercolor)、[fontColor](arkui-ts/ts-basic-components-search.md#fontcolor10)、[searchIcon](arkui-ts/ts-basic-components-search.md#searchicon10)中的图标颜色、[cancelButton](arkui-ts/ts-basic-components-search.md#cancelbutton10)中的图标颜色、[caretStyle](arkui-ts/ts-basic-components-search.md#caretstyle10)中的光标颜色，TabContent组件的[tabBar](arkui-ts/ts-container-tabcontent.md#tabbar)属性使用[BottomTabBarStyle](arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)样式时其中的文本和图标颜色。<br/>**说明**：该参数仅对高算力和中算力设备的显示效果生效。<br/>默认值：false |
+| colorInvert   | boolean                                   | 否 | 是   | 设置了材质对象的节点的子树是否自动适配材质到背景色的反色。<br/>若为false，则不会自动反色。<br/>若为true，则只有材质参数足够薄时才会自动反色。具体能反色的材质由系统定义，材质样式至少为THIN或ULTRA_THIN，且与设置应用的沉浸光感的强弱配置相关。材质越薄、沉浸光感越强，越容易符合反色材质的要求。<br/>自动反色能力仅对部分属性接口设置特殊资源（见下表1）值时生效，生效的属性接口包括：<br/>Text组件的[fontColor](arkui-ts/ts-basic-components-text.md#fontcolor)，<br/>Button组件的[fontColor](arkui-ts/ts-basic-components-button.md#fontcolor)，<br/>SymbolGlyph组件的[fontColor](arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)，<br/>Image组件的[fillColor](arkui-ts/ts-basic-components-image.md#fillcolor)，<br/>Search组件的[placeholderColor](arkui-ts/ts-basic-components-search.md#placeholdercolor)、[fontColor](arkui-ts/ts-basic-components-search.md#fontcolor10)，[searchIcon](arkui-ts/ts-basic-components-search.md#searchicon10)中的图标颜色、[cancelButton](arkui-ts/ts-basic-components-search.md#cancelbutton10)中的图标颜色、[caretStyle](arkui-ts/ts-basic-components-search.md#caretstyle10)中的光标颜色，[searchButton](arkui-ts/ts-basic-components-search.md#searchbutton) 中的按钮颜色，<br/>TabContent组件的[tabBar](arkui-ts/ts-container-tabcontent.md#tabbar)属性使用[BottomTabBarStyle](arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)，<br/>Chip组件的[prefixIcon](arkui-ts/ohos-arkui-advanced-Chip.md#prefixiconoptions)、suffixIcon属性的[fillColor](arkui-ts/ohos-arkui-advanced-Chip.md#iconcommonoptions)，[label](arkui-ts/ohos-arkui-advanced-Chip.md#labeloptions)属性的[fontColor](arkui-ts/ohos-arkui-advanced-Chip.md#labeloptions)，<br/>ChipGroup组件的[itemStyle](arkui-ts/ohos-arkui-advanced-ChipGroup.md#属性-1)的[fontColor](arkui-ts/ohos-arkui-advanced-ChipGroup.md#chipitemstyle)，<br/>TextArea组件的[fontColor](arkui-ts/ts-basic-components-textarea.md#fontcolor)、[placeholderColor](arkui-ts/ts-basic-components-textarea.md#placeholdercolor)，<br/>TextInput组件的[fontColor](arkui-ts/ts-basic-components-textinput.md#fontcolor)、[placeholderColor](arkui-ts/ts-basic-components-textinput.md#placeholdercolor)，<br/>SegmentButton组件的[fontColor](arkui-ts/ohos-arkui-advanced-SegmentButton.md#属性-2)，<br/>Swiper组件的[fontColor](arkui-ts/ts-container-swiper.md#fontcolor)，<br/>样式时其中的文本和图标颜色。<br/>**说明**：该参数仅对高算力和中算力设备的显示效果生效。<br/>默认值：false |
 | applyShadow   | boolean                                   | 否 | 是   | 是否添加材质的阴影效果。<br/>当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。<br/>**说明**：该参数仅对所有档位的算力设备的显示效果生效。<br/>默认值：true |
 | interactive   | boolean                                   | 否 | 是   | 是否启用交互形变效果。<br/>当该参数为true时，启用交互形变效果。当该参数为false时，不启用交互形变效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：false |
 | lightEffect   | [LightEffectOptions](#lighteffectoptions) \| null                                   | 否 | 是   | 光感交互反馈效果参数。当该参数为null时，禁用光感交互反馈效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：undefined，不设置光感交互反馈效果。 |
+
+**表1** 特殊资源值对应的深浅色值
+
+| 特殊资源值 | 浅色 | 深色 |
+| --------- | ----------- | ------ |
+| $r('sys.color.brand') | #FF0A59F7 | #FF317AF7 |
+| $r('sys.color.brand_font') | #FF0A59F7 | #FF5291FF |
+| $r('sys.color.warning') | #FFE84026 | #FFD94838 |
+| $r('sys.color.font_on_primary') | #FFFFFFFF | #FFFFFFFF |
+| $r('sys.color.font_primary') | #E5000000 | #E5FFFFFF |
+| $r('sys.color.font_secondary') | #99000000 | #99FFFFFF |
+| $r('sys.color.font_tertiary') | #66000000 | #66FFFFFF |
+| $r('sys.color.font_fourth') | #33000000 | #33FFFFFF |
+| $r('sys.color.font_emphasize') | #FF0A59F7 | #FF5291FF |
+| $r('sys.color.icon_primary') | #E5000000 | #E5FFFFFF |
+| $r('sys.color.icon_secondary') | #99000000 | #99FFFFFF |
+| $r('sys.color.icon_tertiary') | #66000000 | #66FFFFFF |
+| $r('sys.color.icon_fourth') | #33000000 | #33FFFFFF |
+| $r('sys.color.icon_emphasize') | #FF0A59F7 | #FF5291FF |
+| $r('sys.color.icon_sub_emphasize') | #660A59F7 | #665291FF |
+| $r('sys.color.comp_background_primary_contrary') | #FFFFFFFF | #FFE5E5E5 |
+| $r('sys.color.comp_background_primary_contrary_secondary') | #FFFFFFFF | #FF666666 |
+| $r('sys.color.comp_background_secondary') | #19000000 | #19FFFFFF |
+| $r('sys.color.comp_background_tertiary') | #0C000000 | #19FFFFFF |
+| $r('sys.color.comp_background_emphasize') | #FF0A59F7 | #FF317AF7 |
+| $r('sys.color.comp_emphasize_secondary') | #330A59F7 | #33317AF7 |
+| $r('sys.color.comp_emphasize_tertiary') | #190A59F7 | #19317AF7 |
+| $r('sys.color.comp_divider') | #33000000 | #33FFFFFF |
+| $r('sys.color.interactive_hover') | #0C000000 | #19FFFFFF |
+| $r('sys.color.interactive_focus') | #FF0A59F7 | #FF317AF7 |
+| $r('sys.color.interactive_pressed') | #19000000 | #26FFFFFF |
 
 ## MaterialOptions
 
