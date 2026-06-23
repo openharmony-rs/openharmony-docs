@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供终端设备信息查询，开发者不可配置。
+本模块提供终端设备信息查询能力，支持获取设备类型、品牌、型号、系统版本、安全补丁级别、设备唯一标识等多种设备信息，适用于设备适配、版本兼容性检查、设备识别、统计分析等场景，帮助开发者快速获取设备信息进行应用适配和优化。开发者不可配置这些信息。
 
 > **说明：**
 >
@@ -79,7 +79,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | 错误码ID   | 错误信息    |
 |---------|---------|
 | 14700103 | Permission verification failed. System permission operation permission denied |
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例**
 
