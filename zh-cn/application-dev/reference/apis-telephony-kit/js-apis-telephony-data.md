@@ -719,9 +719,9 @@ data.getActiveApnName().then((apn: string) => {
 
 showSystemApnSettings(context: Context): Promise\<void>
 
-调用该接口可以打开当前移动网络的APN配置界面，展示SIM卡对应的APN信息。使用Promise异步回调。
+调用该接口可以打开当前移动数据卡对应的APN配置界面。使用Promise异步回调。
 
-该接口仅支持查看通用APN，不支持新建或重置。
+该接口仅支持查看和选择当前已添加的通用APN，不支持新建或修改。
 
 若未插入SIM卡或设备不支持APN配置，将无法打开界面。
 
