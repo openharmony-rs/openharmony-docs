@@ -75,7 +75,7 @@ let extraData: cloudData.ExtraData = {
 
 ## StatisticInfo<sup>12+</sup>
 
-端云同步统计信息。
+端云同步的统计信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -118,7 +118,7 @@ let extraData: cloudData.ExtraData = {
 
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
-| enable     | boolean           | 否   | 否   | 数据库的端云协同开关状态。true为打开端云协同开关，false为关闭该开关。 |
+| enable     | boolean           | 否   | 否   | 数据库是否启用端云协同开关。true为打开端云协同开关，false为关闭该开关。 |
 | tableInfo  | Record<string, boolean> | 否   | 是   | 表级别的端云协同开关配置信息。键为表名，值为该表的开关状态。true为打开该表的端云协同开关，false为关闭该表开关。当未配置该参数时，默认按照数据库级开关状态enable生效。 |
 
 ## SwitchConfig<sup>23+</sup>
@@ -791,7 +791,7 @@ static notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
 | extInfo | [ExtraData](#extradata11) | 是   | 透传数据，包含通知数据变更后的应用信息。         |
-| userId  | number                  | 否   | 表示用户账号ID。此参数是可选的，默认值是当前用户ID，如果指定了此参数，则该值必须是系统中现有的用户ID。 |
+| userId  | number                  | 否   | 表示用户账号ID。此参数是可选的，默认值是当前用户账户ID，如果指定了此参数，则该值必须是系统中现有的用户账户ID。 |
 
 **返回值：**
 
