@@ -387,7 +387,7 @@ export class AVScreenCaptureDemo {
       fileIo.closeSync(this.captureFile.fd);
     } catch (error) {
       let err = error as BusinessError;
-      console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to close fd, error code: ${err.code}, message: ${err.message}`);
     }
   }
   openFile(context: Context): void {
