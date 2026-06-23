@@ -36770,7 +36770,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":713,
+						"end_line":716,
 						"name":"set_default_output_device",
 						"start_line":25
 					}
@@ -36870,12 +36870,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":390,
+						"end_line":393,
 						"name":"get_session_manager",
 						"start_line":17
 					},
 					{
-						"end_line":461,
+						"end_line":464,
 						"name":"activate_audio_session_v1",
 						"start_line":18
 					},
@@ -36885,47 +36885,47 @@
 						"start_line":292
 					},
 					{
-						"end_line":481,
+						"end_line":484,
 						"name":"on_audio_session_deactivated",
 						"start_line":19
 					},
 					{
-						"end_line":677,
+						"end_line":680,
 						"name":"deactivate_audio_session_v1",
 						"start_line":31
 					},
 					{
-						"end_line":678,
+						"end_line":681,
 						"name":"audio_session_v1",
 						"start_line":20
 					},
 					{
-						"end_line":533,
+						"end_line":536,
 						"name":"activate_audio_session_v2",
 						"start_line":21
 					},
 					{
-						"end_line":587,
+						"end_line":590,
 						"name":"on_audio_session_state_changed",
 						"start_line":22
 					},
 					{
-						"end_line":679,
+						"end_line":682,
 						"name":"deactivate_audio_session_v2",
 						"start_line":32
 					},
 					{
-						"end_line":680,
+						"end_line":683,
 						"name":"audio_session_v2",
 						"start_line":23
 					},
 					{
-						"end_line":535,
+						"end_line":538,
 						"name":"enable_mute_suggestion",
 						"start_line":24
 					},
 					{
-						"end_line":622,
+						"end_line":625,
 						"name":"set_session_behavior",
 						"start_line":26
 					}
@@ -49572,7 +49572,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":159,
+						"end_line":162,
 						"name":"renderer_interrupt",
 						"start_line":16
 					}
