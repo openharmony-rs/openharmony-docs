@@ -77,6 +77,22 @@
    ArkTS-Sta示例：
    <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
+   ``` TypeScript
+   // 设置文本样式
+   let myTextStyle: text.TextStyle = {
+     color: { alpha: 255, red: 255, green: 0, blue: 0 },
+     fontSize: 33
+   };
+   // 创建一个段落样式对象，以设置排版风格
+   let myParagraphStyle: text.ParagraphStyle = {
+     textStyle: myTextStyle,
+     align: text.TextAlign.JUSTIFY,
+     wordBreak:text.WordBreak.NORMAL
+   };
+   // 创建一个段落生成器
+   let paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   ```
+   
 
 5. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
 
