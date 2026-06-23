@@ -5907,6 +5907,62 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.READ_HARDWARE_CONFIG
+ 	 
+允许应用读取车辆硬件信息。
+ 	 
+**权限级别**：system_basic
+ 	 
+**授权方式**：系统授权（system_grant）
+ 	 
+**是否支持证书授权**：true
+ 	 
+**支持设备**：Car
+ 	 
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
+ 	 
+允许应用写入车辆硬件信息。
+ 	 
+**权限级别**：system_basic
+ 	 
+**授权方式**：系统授权（system_grant）
+ 	 
+**是否支持证书授权**：true
+ 	 
+**支持设备**：Car
+ 	 
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.READ_CAR_CDC_CONFIG
+ 	 
+允许应用读取车辆与车机配置。
+ 	 
+**权限级别**：system_basic
+ 	 
+**授权方式**：系统授权（system_grant）
+ 	 
+**是否支持证书授权**：true
+ 	 
+**支持设备**：Car
+ 	 
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.WRITE_CAR_CDC_CONFIG
+ 	 
+允许应用写入车辆与车机配置。
+ 	 
+**权限级别**：system_basic
+ 	 
+**授权方式**：系统授权（system_grant）
+ 	 
+**是否支持证书授权**：true
+ 	 
+**支持设备**：Car
+ 	 
+**起始版本**：26.0.0
+
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 允许应用订阅通知服务。

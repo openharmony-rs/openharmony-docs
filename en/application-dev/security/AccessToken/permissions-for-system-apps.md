@@ -5877,6 +5877,62 @@ Allows a system application to send commands to collect logs.
 
 **Since**: 26.0.0
 
+## ohos.permission.vehicle.READ_HARDWARE_CONFIG
+ 	 
+Allows an application to read vehicle hardware information.
+ 	 
+**Permission level**: system_basic
+ 	 
+**Authorization mode**: system_grant
+ 	 
+**Certificate-based authorization**: true
+ 	 
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
+ 	 
+Allows an application to write vehicle hardware information.
+ 	 
+**Permission level**: system_basic
+ 	 
+**Authorization mode**: system_grant
+ 	 
+**Certificate-based authorization**: true
+ 	 
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.READ_CAR_CDC_CONFIG
+ 	 
+Allows an application to read vehicle and head unit configurations.
+ 	 
+**Permission level**: system_basic
+ 	 
+**Authorization mode**: system_grant
+ 	 
+**Certificate-based authorization**: true
+ 	 
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.WRITE_CAR_CDC_CONFIG
+ 	 
+Allows an application to write vehicle and head unit configurations.
+ 	 
+**Permission level**: system_basic
+ 	 
+**Authorization mode**: system_grant
+ 	 
+**Certificate-based authorization**: true
+ 	 
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 Allows an application to subscribe to the notification service.
