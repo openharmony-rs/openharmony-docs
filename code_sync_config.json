@@ -15678,7 +15678,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets",
 				"functions":[
 					{
-						"end_line":146,
+						"end_line":148,
 						"name":"Displayed_Together",
 						"start_line":18
 					}
