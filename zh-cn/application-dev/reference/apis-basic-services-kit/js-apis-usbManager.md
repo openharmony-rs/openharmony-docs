@@ -318,7 +318,7 @@ function removeRight(): boolean {
 
 claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): number
 
-声明对USB设备某个接口的控制权。调用成功后应用程序获得该接口的独占控制权可以进行数据传输等操作，其他程序无法访问该接口。
+声明对USB设备某个接口的控制权。调用成功后应用程序获得该接口的独占控制权可以进行数据传输等操作，其他程序无法访问该接口。使用完后需调用[releaseInterface](#usbmanagerreleaseinterface)释放该接口的控制权。
 
 > **说明：**
 >
@@ -491,7 +491,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| iface | [USBInterface](#usbinterface)   | 是 | 用于确定需要设置的接口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id和alternateSetting确定唯一接口，alternateSetting为0时表示不支持可选模式。|
+| iface | [USBInterface](#usbinterface)   | 是 | 用于确定需要设置的接口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过接口的id和alternateSetting共同确定唯一接口，其中id为接口的唯一标识符，alternateSetting用于在同一接口的多个可选模式间切换，为0时表示不支持可选模式。|
 
 **返回值：**
 
@@ -577,7 +577,7 @@ function getRawDescriptor() {
 
 getFileDescriptor(pipe: USBDevicePipe): number
 
-获取文件描述符。
+获取文件描述符。如果USB服务异常，可能返回错误码，注意需要对接口返回值做判空或错误码检查处理。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -634,8 +634,8 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
-| requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。 |
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+| requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，包含bmRequestType、bRequest、wValue、wIndex、wLength、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
@@ -708,9 +708,9 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表以及endpoint，address用于确定端点地址，direction用于确定端点的方向，interfaceId用于确定所属接口，当前其它属性不做处理。|
+| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其它属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区。 |
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
@@ -771,7 +771,7 @@ function bulkTransfer() {
 
 usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
-提交异步传输请求。
+提交异步传输请求。可通过调用[usbCancelTransfer](#usbmanagerusbcanceltransfer18)接口取消异步传输请求。
 
 > **说明：**
 >
@@ -1172,7 +1172,7 @@ try {
 
 openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
-获取配件句柄并打开配件文件描述符。之后可以通过CoreFileKit提供的read/write接口和配件进行通信。
+获取配件句柄并打开配件文件描述符。之后可以通过CoreFileKit提供的read/write接口和配件进行通信。使用完后需要调用[closeAccessory](#usbmanagercloseaccessory14)接口关闭文件描述符。
 
 需要调用[usbManager.getAccessoryList](#usbmanagergetaccessorylist14)获取配件列表，得到[USBAccessory](#usbaccessory14)作为参数。
 
@@ -1329,7 +1329,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃。建议使用 [usbControlTransfer](#usbmanagerusbcontroltransfer12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用[usbControlTransfer](#usbmanagerusbcontroltransfer12)替代。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1339,7 +1339,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备消息传输通道对象，用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，包含request、target、reqType、value、index、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。|
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
