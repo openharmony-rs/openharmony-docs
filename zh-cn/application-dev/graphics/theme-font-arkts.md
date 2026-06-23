@@ -218,6 +218,16 @@
    
    ArkTS-Dyn示例：
    <!-- @[arkts_theme_font_export_update](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 导出渲染节点更新函数
+   export function updateRenderNodeData(): void {
+     renderNodeMap.forEach((node) => {
+       // 主动触发节点重绘制
+       node.invalidate();
+     });
+   }
+   ```
 
 8. 在EntryAbility.ets中接收主题字变更事件，并调用渲染节点更新函数。
 
