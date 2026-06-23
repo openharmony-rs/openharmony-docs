@@ -10,7 +10,7 @@ Wi-Fi编译文件内容如下：
 
   路径：“foundation/communication/wifi_lite/BUILD.gn”
   
-```
+```gn
 config("include") {
   include_dirs = [ "interfaces/wifiservice" ]
 }
@@ -107,19 +107,18 @@ group("wifi") {
 | BleGattsStartServiceEx | 根据传入的服务列表，创建gatt服务。 | 
 | BleGattsStopServiceEx | 传入gatt服务句柄，停止gatt服务。 | 
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
-> 不同版本接口可能存在差异，需要根据当前版本的具体文件进行适配。
+> ![icon-note.gif](public_sys-resources/icon-note.gif)
+> **说明：** 不同版本接口可能存在差异，需要根据当前版本的具体文件进行适配。
 
 
 ## 适配实例
 
-1. 在“config.json”中添加communication子系统。
-   路径：“vendor/MyVendorCompany/MyProduct/config.json”
+1. 在“config.json”中添加communication子系统。 路径：“vendor/MyVendorCompany/MyProduct/config.json”
 
    修改如下：
 
      
-   ```
+   ```json
    {
         "subsystem": "communication",
         "components": [
@@ -127,7 +126,7 @@ group("wifi") {
           { "component": "dsoftbus", "features":[] },
           { "component": "wifi_aware", "features":[]}
         ]
-   },
+   }
    ```
 
 2. 添加适配文件。

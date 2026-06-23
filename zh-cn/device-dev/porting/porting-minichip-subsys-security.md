@@ -14,12 +14,11 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 
 ## 移植实例
 
-1. “config.json”添加文件系统。
-   路径：“vendor/MyVendorCompany/MyProduct/config.json”
+1. “config.json”添加文件系统。 路径：“vendor/MyVendorCompany/MyProduct/config.json”
 
      修改如下：
      
-   ```
+   ```json
    {
         "subsystem": "security",
         "components": [
@@ -32,16 +31,15 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
             ]
           }
         ]
-   },
+   }
    ```
 
-2. 配置宏，打开硬件随机数接口相关代码。
-   根据mbedtls的编译文件可以看出，配置宏的位置在"MBEDTLS_CONFIG_FILE=&lt;../port/config/config_liteos_m.h&gt;"文件中。
+2. 配置宏，打开硬件随机数接口相关代码。 根据mbedtls的编译文件可以看出，配置宏的位置在"MBEDTLS_CONFIG_FILE=&lt;../port/config/config_liteos_m.h&gt;"文件中。
 
    路径：“third_party/mbedtls/BUILD.gn”
 
      
-   ```
+   ```gn
    if (ohos_kernel_type == "liteos_m") {
      defines += [
        "__unix__",
@@ -55,7 +53,7 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
    路径：“third_party/mbedtls/library/entropy.c”
 
      
-   ```
+   ```c++
    #if !defined(MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES)
    #if !defined(MBEDTLS_NO_PLATFORM_ENTROPY)
        mbedtls_entropy_add_source( ctx, mbedtls_platform_entropy_poll, NULL,
@@ -77,13 +75,12 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
    }
    ```
 
-3. 适配硬件随机数接口。
-   接口定义如下：
+3. 适配硬件随机数接口。 接口定义如下：
 
    路径：“third_party/mbedtls/library/entropy_poll.h”
 
      
-   ```
+   ```c++
    int mbedtls_hardware_poll( void *data,unsigned char *output, size_t len, size_t *olen );
    ```
 
@@ -99,21 +96,21 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 | huks_config_file | 是否使用HUKS默认配置文件。<br/>(1)&nbsp;默认值：使用HUKS默认配置文件hks_config.h。<br/>(2)&nbsp;其他文件：产品可在HUKS支持能力集合中自行选择所要支持的特性。 | 
 
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
-> 在添加安全子系统时，可直接通过配置feature来选择安全子系统特性。
+> ![icon-note.gif](public_sys-resources/icon-note.gif)
+> **说明：** 在添加安全子系统时，可直接通过配置feature来选择安全子系统特性。
 > 
 >   
-> ```
+> ```json
 > {
->   "subsystem": "security",
->   "components": [
->     { "component": "hichainsdk", "features":[] },
->     { "component": "huks", "features":
->       [
->         "disable_huks_binary = false",
->         "disable_authenticate = false"
+>       "subsystem": "security",
+>       "components": [
+>         { "component": "hichainsdk", "features":[] },
+>         { "component": "huks", "features":
+>           [
+>             "disable_huks_binary = false",
+>             "disable_authenticate = false"
+>           ]
+>         }
 >       ]
->     }
->   ]
-> },
+> }
 > ```

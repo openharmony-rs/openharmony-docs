@@ -8,11 +8,10 @@ OpenHarmony芯片移植完成后，需要开展OpenHarmony兼容性测试以及�
 
 OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一，详见[OpenHarmony兼容性测试](https://gitcode.com/openharmony/docs/blob/master/zh-cn/readme/XTS%E5%AD%90%E7%B3%BB%E7%BB%9F.md)。
 
-1. 添加test子系统以及xts_acts部件。
-   在“vendor/xxx/xxx/config.json”文件中，添加如下代码：
+1. 添加test子系统以及xts_acts部件。 在“vendor/xxx/xxx/config.json”文件中，添加如下代码：
 
      
-   ```
+   ```json
    {
      "subsystem": "test",
      "components": [
@@ -22,11 +21,10 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
    }
    ```
 
-2. 链接XTS生成的.a库。
-   在链接选项中，需要链接生成于“out/MyBoard/MyProduct/libs”目录下的XTS的.a库，其库的名称格式为libmodule_ActsXxxTest.a，链接方式为"-lmodule_ActsXxxTest",示例代码如下：
+2. 链接XTS生成的.a库。 在链接选项中，需要链接生成于“out/MyBoard/MyProduct/libs”目录下的XTS的.a库，其库的名称格式为libmodule_ActsXxxTest.a，链接方式为"-lmodule_ActsXxxTest",示例代码如下：
 
      
-   ```
+   ```text
    "-Wl,--whole-archive",
    ......
    "-lhctest",
@@ -42,13 +40,12 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
    "-Wl,--no-whole-archive",
    ```
 
-3. 根据测试报告调整代码。
-   将编译生成的文件烧录到开发板上，使用串口工具查看xts测试报告。如果出现"failed"的测试项，则需要整改代码。
+3. 根据测试报告调整代码。 将编译生成的文件烧录到开发板上，使用串口工具查看xts测试报告。如果出现"failed"的测试项，则需要整改代码。
 
    定位问题时，可在“test/xts/acts/build_lite/BUILD.gn”中，将不需要的测试项注释，以便调试。
 
      
-   ```
+   ```gn
    if (ohos_kernel_type == "liteos_m") {
      all_features += [
        "//test/xts/acts/ability_lite/ability_hal:ActsAbilityMgrTest",
@@ -75,7 +72,8 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
    }
    ```
 
-> ![icon-caution.gif](public_sys-resources/icon-caution.gif) **注意：**
+> ![icon-caution.gif](public_sys-resources/icon-caution.gif)
+> **注意：**
 > 1. XTS会在OHOS_SystemInit()调用之后，自行运行测试。
 > 
 > 2. 需要在"-Wl,--whole-archive"和"-Wl,--no-whole-archive"中间添加，否则链接不到。
@@ -83,10 +81,10 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
 > 进行XTS测试时，必须链接以下静态库。
 > 
 >   
-> ```
-> "-lhctest",
-> "-lbootstrap",
-> "-lbroadcast",
+> ```text
+>   "-lhctest",
+>   "-lbootstrap",
+>   "-lbroadcast",
 > ```
 
 
