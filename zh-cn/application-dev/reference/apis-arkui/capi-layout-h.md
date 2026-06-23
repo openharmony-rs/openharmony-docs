@@ -216,7 +216,7 @@ enum ArkUI_FlexWrap
 
 **描述**
 
-定义Flex行列布局模式模式。
+定义Flex行列布局模式。
 
 **起始版本：** 12
 
