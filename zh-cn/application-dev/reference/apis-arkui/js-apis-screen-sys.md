@@ -1550,6 +1550,12 @@ setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): v
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**设备行为差异：**
+
+- 针对Phone、Tablet设备：在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错；在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下可正常调用，对于部分设备对屏幕有强约束（由产品配置决定），无需旋转的，调用此接口不生效。
+- 针对PC/2in1设备：折叠屏设备处于悬停态时，调用此接口不生效不报错。其他情况可正常调用生效。
+- 针对其他设备：接口行为未定义，不保证屏幕方向发生变化。
+
 **参数：**
 
 | 参数名      | 类型                        | 必填 | 说明                                                         |
@@ -1617,6 +1623,12 @@ setOrientation(orientation: Orientation): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：**
+
+- 针对Phone、Tablet设备：在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错；在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下可正常调用，对于部分设备对屏幕有强约束（由产品配置决定），无需旋转的，调用此接口不生效。
+- 针对PC/2in1设备：折叠屏设备处于悬停态时，调用此接口不生效不报错。其他情况可正常调用生效。
+- 针对其他设备：接口行为未定义，不保证屏幕方向发生变化。
 
 **参数：**
 
