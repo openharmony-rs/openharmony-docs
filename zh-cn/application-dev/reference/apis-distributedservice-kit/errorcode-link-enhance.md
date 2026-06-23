@@ -136,10 +136,6 @@ Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified
 
 2. 参数类型不正确。
 
-3. 参数校验失败。
-
-2. 参数类型不正确。
-
 3. 参数个数不正确。
 
 4. 参数为空。
@@ -173,7 +169,7 @@ Internal error.
 
 查看错误日志，详细了解错误原因。针对不同原因做不同处理：
 
-排查传入的deviceId与从蓝牙系统接口中获取到的deviceId是否一致；排查对端设备是否正在广播。
+1. 排查传入的deviceId与从蓝牙系统接口中获取到的deviceId是否一致；排查对端设备是否正在广播。
 
 2. 排查客户端与服务端传入的name是否一致；排查是否按接口说明文档传入正确的name。
 
