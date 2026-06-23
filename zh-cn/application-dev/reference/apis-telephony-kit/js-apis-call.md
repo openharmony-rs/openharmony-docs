@@ -352,7 +352,7 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 
 **错误码：**
 
-以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
