@@ -165,7 +165,7 @@ batchAdd(attributesArray: Array\<AssetMap>): Promise\<BatchResult>
 
 | 参数名     | 类型     | 必填 | 说明                                                         |
 | ---------- | -------- | ---- | ------------------------------------------------------------ |
-| attributesArray | Array\<[AssetMap](#assetmap)> | 是   | 待新增关键资产的属性集合数组，包括关键资产明文、访问控制属性、自定义数据等。 |
+| attributesArray | Array\<[AssetMap](#assetmap)> | 是   | 待新增关键资产的属性集合数组，包括关键资产明文、访问控制属性、自定义数据等。数组长度最大值为100。 |
 
 **返回值：**
 
@@ -348,7 +348,7 @@ batchRemove(assetsToBeRemoved: Array\<AssetMap>): Promise\<void>
 
 | 参数名     | 类型     | 必填 | 说明                                                         |
 | ---------- | -------- | ---- | ------------------------------------------------------------ |
-| assetsToBeRemoved | Array\<[AssetMap](#assetmap)> | 是   | 待删除关键资产的搜索条件数组，如别名、访问控制属性、自定义数据等。 |
+| assetsToBeRemoved | Array\<[AssetMap](#assetmap)> | 是   | 待删除关键资产的搜索条件数组，如别名、访问控制属性、自定义数据等。数组长度最大值为100。 |
 
 **返回值：**
 
@@ -534,8 +534,8 @@ batchUpdate(sourceAttributes: Array\<AssetMap>, destAttributes: Array\<AssetMap>
 
 | 参数名             | 类型     | 必填 | 说明                                                         |
 | ------------------ | -------- | ---- | ------------------------------------------------------------ |
-| sourceAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的搜索条件数组。 |
-| destAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的属性集合数组。 |
+| sourceAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的搜索条件数组。数组最大长度为100，数组中所有元素的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性值必须相同。 |
+| destAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的属性集合数组。数组最大长度为100，且应与sourceAttributes长度保持一致，数组中所有元素的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性值必须相同。 |
 
 **返回值：**
 
@@ -1016,13 +1016,13 @@ asset.querySyncResult(query).then((res: asset.SyncResult) => {
 | SECRET                    | TagType.BYTES &#124; 0x01  | 关键资产明文。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                                 |
 | ALIAS                     | TagType.BYTES &#124; 0x02 | 关键资产别名，每条关键资产的唯一索引。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                         |
 | ACCESSIBILITY             | TagType.NUMBER &#124; 0x03 | 基于锁屏状态的访问控制。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                       |
-| REQUIRE_PASSWORD_SET      | TagType.BOOL &#124; 0x04                   | 是否仅在设置了锁屏密码的情况下，可访问关键资产。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                 |
+| REQUIRE_PASSWORD_SET      | TagType.BOOL &#124; 0x04                   | 是否仅在设置了锁屏密码的情况下，可访问关键资产。true表示仅在设置了锁屏密码时可访问，false表示不受锁屏密码限制。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                 |
 | AUTH_TYPE                 | TagType.NUMBER &#124; 0x05 | 访问关键资产所需的用户认证类型。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                               |
-| AUTH_VALIDITY_PERIOD      | TagType.NUMBER &#124; 0x06 | 用户认证的有效期。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                             |
+| AUTH_VALIDITY_PERIOD      | TagType.NUMBER &#124; 0x06 | 用户认证的有效期，单位为秒。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                             |
 | AUTH_CHALLENGE            | TagType.BYTES &#124; 0x07     | 用户认证的挑战值。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                         |
 | AUTH_TOKEN                | TagType.BYTES &#124; 0x08    | 用户认证通过的授权令牌。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                           |
 | SYNC_TYPE                 | TagType.NUMBER &#124; 0x10 | 关键资产支持的同步类型。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                       |
-| IS_PERSISTENT             | TagType.BOOL &#124; 0x11                         | 在应用卸载时是否保留关键资产。 |
+| IS_PERSISTENT             | TagType.BOOL &#124; 0x11                         | 在应用卸载时是否保留关键资产。true表示应用卸载时保留关键资产，false表示不保留关键资产。 |
 | DATA_LABEL_CRITICAL_1     | TagType.BYTES &#124; 0x20 | 关键资产附属信息，内容由业务自定义且**有完整性保护**。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。             |
 | DATA_LABEL_CRITICAL_2 | TagType.BYTES &#124; 0x21 | 关键资产附属信息，内容由业务自定义且**有完整性保护**。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | DATA_LABEL_CRITICAL_3 | TagType.BYTES &#124; 0x22 | 关键资产附属信息，内容由业务自定义且**有完整性保护**。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -1042,9 +1042,9 @@ asset.querySyncResult(query).then((res: asset.SyncResult) => {
 | CONFLICT_RESOLUTION       | TagType.NUMBER &#124; 0x44 | 新增关键资产时的冲突（如：别名相同）处理策略。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                             |
 | UPDATE_TIME<sup>12+</sup> | TagType.BYTES &#124; 0x45 | 数据的更新时间（时间戳形式）。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | OPERATION_TYPE<sup>12+</sup> | TagType.NUMBER &#124; 0x46 | 附加的操作类型。 |
-| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | TagType.BOOL &#124; 0x47 | 是否加密业务自定义附属信息。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | TagType.BOOL &#124; 0x47 | 是否加密业务自定义附属信息。true表示加密业务自定义附属信息，false表示不加密。<br>**说明：** 批量新增、删除、更新关键资产时，数组中的每项必须具有相同的REQUIRE_ATTR_ENCRYPTED属性值。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | GROUP_ID<sup>18+</sup> | TagType.BYTES &#124; 0x48 | 关键资产所属群组。<br> |
-| WRAP_TYPE<sup>18+</sup> | TagType.NUMBER &#124; 0x49 | 关键资产支持的加密导入导出类型。<br> |
+| WRAP_TYPE<sup>18+</sup> | TagType.NUMBER &#124; 0x49 | 关键资产支持的加密导入导出类型。<br>**说明：** 批量新增、删除、更新关键资产时，数组中的每项必须具有相同的GROUP_ID属性值。 |
 
 ## Value
 
