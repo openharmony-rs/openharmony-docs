@@ -36,7 +36,7 @@ import { proxyChannelManager } from '@kit.DistributedServiceKit';
 
 2. 在module.json5文件中配置action字段"action.ohos.pull.listener"，用于需要被代理拉起的手机端应用进程。
 
-**典型调用流程：**
+典型调用流程。
 
 1. 调用openProxyChannel打开代理通道，获取channelId。
 
@@ -50,7 +50,7 @@ import { proxyChannelManager } from '@kit.DistributedServiceKit';
 
 openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 
-打开代理通道，使用Promise异步回调。基于ChannelInfo中配置的链路类型和对端设备信息，通过蓝牙BR协议与对端设备协商建立双向数据通道，并返回唯一标识该通道的channelId。适用于手机侧应用需要与穿戴设备建立双向数据通道的场景，例如健康数据同步、消息通知转发等。调用此方法后，必须在不再使用代理通道时调用[closeProxyChannel](#proxychannelmanagercloseproxychannel)关闭通道以释放资源。若需代理唤醒手机侧应用进程，使用前请在module.json5中配置action字段"action.ohos.pull.listener"。
+打开代理通道，使用Promise异步回调。基于ChannelInfo中配置的链路类型和对端设备信息，通过蓝牙BR协议与对端设备协商建立双向数据通道，并返回唯一标识该通道的channelId。适用于手机侧应用需要与穿戴设备建立双向数据通道的场景，例如消息通知转发等。调用此方法后，必须在不再使用代理通道时调用[closeProxyChannel](#proxychannelmanagercloseproxychannel)关闭通道以释放资源。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 

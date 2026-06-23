@@ -41,13 +41,17 @@ Device not paired.
 **可能原因**
 
 1. 本端设备未与目标设备完成蓝牙配对。
+
 2. 目标设备未启动服务监听。
+
 3. 使用了无效的MAC或者UUID。
 
 **处理步骤**
 
 1. 使用运动健康应用完成设备添加及配对。
+
 2. 检查目标设备服务监听情况。
+
 3. 检查输入的MAC和UUID的有效性，MAC应为XX:XX:XX:XX:XX:XX格式的蓝牙MAC地址字符串，UUID应为标准UUID格式字符串。
 
 ## 32390004 通道ID非法或者不可用
@@ -63,11 +67,13 @@ ChannelId is invalid or unavailable.
 **可能原因**
 
 1. 传入了非法的channelId，channelId应为openProxyChannel返回的number类型通道标识。
+
 2. 该channelId对应的通道已通过closeProxyChannel关闭，关闭后channelId不可再用。
 
 **处理步骤**
 
 1. 检查代码逻辑，确认传入的channelId是否为openProxyChannel返回的channelId。
+
 2. 检查代码逻辑，确认该channelId对应的通道是否已关闭，若已关闭则不应继续使用该channelId；如需继续通信，请重新调用openProxyChannel建立新通道。
 
 ## 32390006 参数错误
@@ -83,11 +89,13 @@ Parameter error.
 **可能原因**
 
 1. 传入的MAC或者UUID格式异常（MAC应为XX:XX:XX:XX:XX:XX格式的蓝牙MAC地址字符串，UUID应为标准UUID格式字符串）。
+
 2. 函数入参类型错误。
 
 **处理步骤**
 
 1. 检查代码逻辑，确认MAC为XX:XX:XX:XX:XX:XX格式的蓝牙MAC地址字符串，UUID为标准UUID格式字符串。
+
 2. 检查代码逻辑，确认入参类型与接口定义一致。
 
 ## 32390100 内部异常
@@ -107,7 +115,9 @@ Internal error.
 **处理步骤**
 
 1. 重试操作。
+
 2. 若问题仍存在，重启应用。
+
 3. 若重启无效，升级应用或升级设备版本。
 
 ## 32390101 调用受限
@@ -145,6 +155,7 @@ Operation failed or Connection timed out.
 **处理步骤**
 
 1. 关闭后重新开启本端设备和目标设备的蓝牙。
+
 2. 重启本端设备和目标设备后，再打开设备的蓝牙。
 
 ## 32390103 发送数据超长
@@ -182,4 +193,5 @@ Send failed.
 **处理步骤**
 
 1. 尝试重启本端设备蓝牙和目标设备蓝牙。
+
 2. 尝试重启本端设备和目标设备。
