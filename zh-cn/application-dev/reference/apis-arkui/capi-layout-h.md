@@ -186,7 +186,7 @@ enum ArkUI_FlexAlignment
 | ARKUI_FLEX_ALIGNMENT_CENTER = 2 | 主轴方向中心对齐。 |
 | ARKUI_FLEX_ALIGNMENT_END = 3 | 主轴方向尾部对齐。 |
 | ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素行首对齐，最后的元素行尾对齐。 |
-| ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素到行首的距离时相邻元素间距离的一半。 |
+| ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素到行首的距离是相邻元素间距离的一半。 |
 | ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离、第一个元素到行首的距离和最后的元素到行尾的距离均相等。 |
 
 ### ArkUI_FlexDirection
