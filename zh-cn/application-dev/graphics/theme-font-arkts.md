@@ -216,7 +216,7 @@
    }
    ```
    
-   ArkTS-Dyn示例：
+   ArkTS-Sta示例：
    <!-- @[arkts_theme_font_export_update](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -256,6 +256,7 @@
      }
    }
    ```
+   
    ArkTS-Sta示例：
    <!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
