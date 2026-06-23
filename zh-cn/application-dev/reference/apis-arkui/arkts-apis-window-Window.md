@@ -354,7 +354,7 @@ promise.then(() => {
 
 moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
-移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口位置与大小](../../windowmanager/window-layout.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。适用于拖拽窗口位置、窗口自动定位、动画场景等需要调整窗口位置的场景。
+移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口位置与大小](../../windowmanager/window-layout.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。适用于拖拽窗口位置、窗口自动定位或动画场景等需要调整窗口位置的场景。
 
 > **说明：**
 >
@@ -405,7 +405,7 @@ windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
 
 moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
-移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口位置与大小](../../windowmanager/window-layout.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
+移动窗口位置，使用Promise异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口位置与大小](../../windowmanager/window-layout.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
 
 > **说明：**
 >
@@ -742,7 +742,7 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 > 
 > - 窗口移动后，如果窗口跨越多个屏幕，窗口将归属于与其重叠面积最大的屏幕。
 >
-> - [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。回弹规格详情请参考：[窗口回弹规格](https://developer.huawei.com/consumer/cn/doc/design-guides/window-0000002321868010#section142701449114818)
+> - [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。回弹规格详情请参考：[窗口回弹规格](https://developer.huawei.com/consumer/cn/doc/design-guides/window-0000002321868010#section142701449114818)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -884,7 +884,7 @@ try {
 
 resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
-基于窗口左上角顶点改变当前窗口大小，使用callback异步回调。适用于用户拖拽调整窗口、响应式布局适配、多窗口分屏场景等需要调整窗口大小的场景。
+基于窗口左上角顶点改变当前窗口大小，使用callback异步回调。
 
 调用成功即返回，该接口返回后无法立即获取最终生效结果，如需立即获取，建议使用接口[resizeAsync()](#resizeasync12)。
 
