@@ -435,7 +435,7 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 | 参数名      | 类型                                                         | 必填 | 说明                                       |
 | ----------- | ---------------------------------------------------------- | ---- | ------------------------------------------ |
-| controlType | [DownloadControlType](#downloadcontroltype)                | 是   | controlType的可选项包括：开始下载，删除下载，回复下载，暂停下载。 |
+| controlType | [DownloadControlType](#downloadcontroltype)                | 是   | controlType的可选项包括：开始下载，删除下载，恢复下载，暂停下载。 |
 | mediaEntity | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | 是   | 媒体实体。                                 |
 
 **返回值：**
