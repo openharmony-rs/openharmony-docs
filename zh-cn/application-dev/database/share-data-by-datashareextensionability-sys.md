@@ -129,7 +129,7 @@
        }
      }
      // 重写batchUpdate接口
-     batchUpdate(operations:Record<string, Array<dataShare.UpdateOperation>>, callback:Function) {
+     batchUpdate(operations: Record<string, Array<dataShare.UpdateOperation>>, callback: Function) {
        let recordOps : Record<string, Array<dataShare.UpdateOperation>> = operations;
        let results : Record<string, Array<number>> = {};
        let a = Object.entries(recordOps);
