@@ -10,7 +10,7 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块仅适用于API version 23及以上版本的Car设备。
+> - 本模块仅适用于API version 23及以上版本的车载设备。
 
 ## 导入模块
 
@@ -32,7 +32,7 @@ createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 
 | 参数名     | 类型                                                         | 必填 | 说明               |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------ |
-| accessType | [AVMusicTemplateType](arkts-apis-avMusicTemplate-e.md#avmusictemplatetype) | 是   | 音频模板枚举类型。 |
+| accessType | [AVMusicTemplateType](arkts-apis-avMusicTemplate-e.md#avmusictemplatetype) | 是   | 音频模板类型。 |
 
 **返回值：**
 
@@ -62,7 +62,7 @@ export class TemplateManager {
   }
 
   /**
-   * 获取模板控制器实例。
+   * 获取模板管理器实例。
    *
    * @returns 模板控制器实例。
    */
@@ -78,7 +78,7 @@ export class TemplateManager {
    */
   public createTemplate() {
     if (this.template) {
-      console.warn('createTemplate: template not undefined');
+      console.warn('createTemplate: template already exists');
       return
     }
     try {
