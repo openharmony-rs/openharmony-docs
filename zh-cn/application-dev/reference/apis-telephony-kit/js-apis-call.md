@@ -342,7 +342,7 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 | 参数名      | 类型   | 必填 | 说明       |
 | ----------- | ------ | ---- | ---------- |
 | phoneNumber | string | 是   | 电话号码。 |
-| options | MakeCallOptions | 否   | 拨打电话的可选参数。 |
+| options | [MakeCallOptions](#makecalloptions24) | 否   | 通话参数。 |
 
 **返回值：**
 
