@@ -93,7 +93,7 @@ hasSerialRight(portId: number): boolean
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)中的portId字段，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)，必须使用getPortList返回的有效端口号，传入无效值时返回错误码31400003。 |
 
 **返回值：**
 
@@ -159,7 +159,7 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的SerialPort对象中的portId字段。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的SerialPort对象。 |
 
 **返回值：**
 
@@ -236,7 +236,7 @@ open(portId: number): void
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象中的portId字段。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象。 |
 
 **返回值：**
 
@@ -323,7 +323,7 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象中的portId字段。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象。 |
 
 **返回值：**
 
@@ -526,7 +526,7 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象中的portId字段。      |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象。      |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区，用于存储从串口设备读取的二进制数据。缓冲区大小应根据预期读取的数据量确定。读取成功后，返回值表示实际读取的数据长度。 |
 | timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
 **返回值：**
@@ -634,7 +634,7 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)中的portId字段。|
+| portId  | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)中。|
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区，用于存储从串口设备读取的二进制数据。缓冲区大小应根据预期读取的数据量确定。读取成功后，返回值表示实际读取的数据长度。 |
 | timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。取值范围≥0，默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
 
@@ -737,7 +737,7 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)中的portId字段。      |
+| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。      |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区，包含要发送到串口设备的二进制数据。每次写入的数据长度不超过4KB，超过会导致数据丢失，长数据建议分包写入。|
 | timeout | number     | 否  |  超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。建议取值范围≥0，具体值需根据设备写入速度合理设置。传入负数时抛出参数错误异常。|
 
@@ -825,7 +825,7 @@ function write() {
 
 writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-向串口设备异步写数据,使用前需先调用[open](#serialmanageropen)打开串口设备。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。需先申请权限并打开串口后才能写入数据。
+向串口设备异步写数据,使用前需先调用[open](#serialmanageropen)打开串口设备。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。适用于需要阻塞式等待写入完成、发送重要指令、或对写入顺序有严格要求的场景。
 
 ## write与writeSync差异说明
 
@@ -847,28 +847,28 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。     |
-| buffer  | Uint8Array | 是  | 写入目标缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。|
+| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。     |
+| buffer  | Uint8Array | 是  | 写入数据的缓冲区，包含要发送到串口设备的二进制数据。每次写入的数据长度不超过4KB，超过会导致数据丢失，长数据建议分包写入。 |
+| timeout | number     | 否  | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。传入负数时抛出参数错误异常，建议取值范围≥0，具体值需根据设备写入速度合理设置。|
 
 **返回值：**
 
 | 类型     | 说明          |
 |--------|-------------|
-| number | 返回写入数据长度。 |
+| number | 返回实际写入的数据长度，即成功写入的字节数。 |
 
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. |
-| 31400003 | PortId does not exist. |
-| 31400005 | The serial port device is not opened. Call the open API first. |
-| 31400006 | Data transfer timed out. |
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
+| 错误码ID | 错误信息                                                     | 说明 |
+| -------- | ------------------------------------------------------------ | --- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
+| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
+| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
+| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
+| 31400006 | Data transfer timed out. | 可能原因：1. 数据接收/发送时间超过设定的timeout值；2. 设备响应慢。建议：增加timeout参数值，或检查设备连接状态。 |
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. | IO异常。可能原因：1. 传输任务被异常取消；2. 用户接收的单次传输数据量超过了设置的缓冲区大小。处理步骤：设置符合传输场景要求的缓冲区大小后，重新启动传输任务。 |
 
 **示例：**
 
@@ -921,6 +921,13 @@ function writeSync() {
   } catch (error) {
     console.error('writeSync usbSerial error, ' + JSON.stringify(error));
   }
+
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -928,7 +935,18 @@ function writeSync() {
 
 close(portId: number): void
 
-关闭串口。
+关闭串口。需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请权限，再调用[open](#serialmanageropen)打开串口。通常在应用退出时、设备断开连接时、需要释放串口资源时调用此接口。关闭串口不会移除访问权限，如需移除权限请调用cancelSerialRight。
+
+**配对调用：**
+- 与[open](#serialmanageropen)方法成对使用
+- 打开串口后,使用完毕必须调用本方法关闭串口释放资源
+
+**前置条件：**
+- 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
+- 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
+- 需要先调用[open](#serialmanageropen)打开串口
+
+**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -936,18 +954,24 @@ close(portId: number): void
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
+| portId | number | 是  | 来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| void | 无返回值。关闭串口成功时无返回，失败时抛出异常，可通过错误码表格了解失败原因。 |
 
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 31400001 | Serial port management exception. |
-| 31400003 | PortId does not exist. |
-| 31400005 | The serial port device is not opened. Call the open API first. |
+| 错误码ID | 错误信息                                                     | 说明 |
+| -------- | ------------------------------------------------------------ | --- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
+| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
+| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
+| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
 
 **示例：**
 
@@ -1006,7 +1030,17 @@ function close() {
 
 cancelSerialRight(portId: number): void
 
-移除应用程序运行时访问串口设备的权限。此接口会调用close关闭已打开的串口。
+移除应用程序运行时访问串口设备的权限。此接口会调用close关闭已打开的串口。通常在需要主动释放权限、切换访问不同设备、或出于安全考虑时调用此接口。
+
+**前置条件：**
+- 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
+- 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
+
+**相关方法：**
+- [requestSerialRight](#serialmanagerrequestserialright)：申请访问权限
+- [hasSerialRight](#serialmanagerhasserialright)：检查是否有访问权限
+
+**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -1014,19 +1048,24 @@ cancelSerialRight(portId: number): void
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
+| portId | number | 是  | 来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| void | 无返回值。取消权限成功时无返回，失败时抛出异常，可通过错误码表格了解失败原因。 |
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14400005 | Database operation exception.                                |
-| 31400001 | Serial port management exception. |
-| 31400002 | Access denied. Call requestSerialRight to request user authorization first. |
-| 31400003 | PortId does not exist. |
+| 错误码ID | 错误信息                                                     | 说明 |
+| -------- | ------------------------------------------------------------ | --- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
+| 14400005 | Database operation exception. | 数据库操作异常。请检查系统数据库服务是否正常运行，或重启应用后重试。 |
+| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
+| 31400002 | Access denied. Call requestSerialRight to request user authorization first. | 没有串口设备访问权限。可能原因：没有申请串口设备访问权限。处理步骤：调用requestSerialRight申请访问权限。 |
+| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
 
 **示例：**
 
@@ -1080,14 +1119,16 @@ function cancelSerialRight() {
 
 | 名称       |          类型        |  只读   |  可选 | 说明        |
 |----------|--------|----------|-----------|----------------------|
-| baudRate | [BaudRates](#baudrates) |   否   | 否  | 串口波特率，单位：比特/秒  |
-| dataBits | [DataBits](#databits)   |   否   | 是  | 串口数据位，默认值为8，单位：比特  |
-| parity   | [Parity](#parity)       |   否   | 是  | 串口奇偶校验，默认值为None，无奇偶校验。 |
-| stopBits | [StopBits](#stopbits)   |   否   | 是  | 串口停止位，默认值为1，单位：比特  |
+| baudRate | [BaudRates](#baudrates) |   否   | 否  | 串口波特率，表示数据传输速率，单位：比特/秒  |
+| dataBits | [DataBits](#databits)   |   否   | 是  | 串口数据位，表示报文中的有效数据位数，默认值为8，单位：比特  |
+| parity   | [Parity](#parity)       |   否   | 是  | 串口奇偶校验，用于检测数据传输错误，默认值为None，无奇偶校验。 |
+| stopBits | [StopBits](#stopbits)   |   否   | 是  | 串口停止位，表示报文结束标志，默认值为1，单位：比特  |
 
 ## SerialPort
 
 串口参数。
+
+**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -1098,7 +1139,9 @@ function cancelSerialRight() {
 
 ## BaudRates
 
-表示波特率的枚举，单位：比特/秒
+表示波特率的枚举，单位：比特/秒。
+
+**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -1137,7 +1180,9 @@ function cancelSerialRight() {
 
 ## DataBits
 
-表示数据位宽的枚举，单位：比特
+表示数据位宽的枚举，单位：比特。
+
+**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -1150,7 +1195,9 @@ function cancelSerialRight() {
 
 ## Parity
 
-表示校验位的校验方式的枚举
+表示校验位的校验方式的枚举。
+
+**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -1164,7 +1211,9 @@ function cancelSerialRight() {
 
 ## StopBits
 
-表示停止位宽的枚举，单位：比特
+表示停止位宽的枚举，单位：比特。
+
+**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
