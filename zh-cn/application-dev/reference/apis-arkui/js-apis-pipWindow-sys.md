@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-该模块提供画中画基础功能，包括判断当前系统是否支持画中画功能，以及创建画中画控制器用于启动或停止画中画等。适用于视频播放、视频通话或视频会议场景下，以小窗（画中画）模式呈现内容。
+该模块提供画中画基础功能，包括判断当前系统是否支持画中画功能，以及创建画中画控制器用于启动或停止画中画等。支持用户在进行其他操作时以小窗形式继续观看视频内容，提升多任务处理效率。适用于视频播放、视频通话或视频会议场景。
 
 > **说明：**
 >
@@ -36,7 +36,7 @@ import { PiPWindow } from '@kit.ArkUI';
 
 isPiPSupported(): boolean
 
-判断当前设备是否支持画中画功能。
+判断当前设备是否支持画中画功能。在启动画中画前，建议先调用此方法判断设备是否支持画中画功能，以避免在不支持的设备上调用画中画相关接口导致功能异常。
 
 **系统接口：** 此接口为系统接口。
 
@@ -48,7 +48,7 @@ isPiPSupported(): boolean
 
 | 类型      | 说明                                  |
 |----------|-------------------------------------|
-| boolean  | 当前设备是否支持画中画功能。true表示支持，false表示不支持。 |
+| boolean  | 当前设备是否支持画中画功能。true表示支持，false表示不支持。设备支持情况请参见文档开头的说明。 |
 
 **错误码：**
 
@@ -66,9 +66,11 @@ try {
   if (!this.pipController) {
     return;
   }
+  // pipController需通过PiPWindow.create()方法获取
+  // 判断当前设备是否支持画中画功能
   let isSupported: boolean = this.pipController!.isPiPSupported();
-  console.info('isPiPSupported:' + isSupported);
+  console.info('isPiPSupported: ' + isSupported);
 } catch (exception) {
-  console.error(`Failed to check if pip is supported. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to check if pip is supported. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
