@@ -908,10 +908,6 @@ try {
 }
 ```
 
-开启追踪后，堆快照中全局对象节点将显示napi_ref的地址信息，效果如下图所示：
-
-![setTrackGlobalRef堆快照效果图](figures/setTrackGlobalRef_heap_snapshot.png)
-
 ### onVMHeapMemoryPressure<sup>24+</sup>
 
 static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold: HeapMemoryThreshold): boolean
