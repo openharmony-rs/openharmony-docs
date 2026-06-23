@@ -348,7 +348,7 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 
 | 类型                | 说明                              |
 | ------------------- | --------------------------------- |
-| Promise&lt;string&gt; | 以Promise形式异步返回鉴权校验token。 |
+| Promise&lt;string&gt; | Promise对象返回鉴权校验token。 |
 
 **错误码：**
 
