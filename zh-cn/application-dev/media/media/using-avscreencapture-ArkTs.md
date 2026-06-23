@@ -39,7 +39,7 @@
 
 1. 添加头文件。
 
-   <!-- @[screenCapture_arkts_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
+   <!-- @[screenCapture_arkts_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
    
    ``` TypeScript
    import { common } from '@kit.AbilityKit';
@@ -297,7 +297,7 @@
 
 6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
 
-   <!-- @[screenCapture_arkts_skipPrivacyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
+   <!-- @[screenCapture_arkts_skipPrivacyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
    
    ``` TypeScript
    let windowIDs: number[] = [57, 86];
@@ -359,7 +359,7 @@
 
 以下是通过AVScreenCaptureRecorder实现录屏存文件的完整代码示例。
 
-<!-- @[screenCapture_arkts_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
+<!-- @[screenCapture_arkts_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) --> 
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
