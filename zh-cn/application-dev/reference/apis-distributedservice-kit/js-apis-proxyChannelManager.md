@@ -80,12 +80,12 @@ openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>适用版本：26.0.0+ |
-| 32390001      | BR is disabled. 请开启蓝牙BR后重试。|
-| 32390002 | Device not paired. 请先完成设备配对后重试。  |
-| 32390006 | Parameter error. 可能原因：参数类型或取值范围不正确，请检查传入参数。|
+| 32390001      | BR is disabled.|
+| 32390002 | Device not paired.  |
+| 32390006 | Parameter error.|
 | 32390100 | Internal error.|
-| 32390101 | Call is restricted. 可能原因：当前设备不支持该接口调用，请通过canIUse判断设备能力或在支持的设备上调用。|
-| 32390102 | Operation failed or Connection timed out. 请检查设备连接状态后重试。|
+| 32390101 | Call is restricted.|
+| 32390102 | Operation failed or Connection timed out.|
 
 **示例：**
 
