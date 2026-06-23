@@ -462,7 +462,7 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 
 **描述**
 
-创建RelativeContaine容器内的辅助线信息。
+创建RelativeContainer容器内的辅助线信息。
 
 **起始版本：** 12
 
