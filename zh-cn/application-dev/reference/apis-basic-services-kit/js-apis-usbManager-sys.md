@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供管理USB设备的相关功能，包括主设备上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；从设备上端口管理、功能切换及查询等。
+本模块主要提供管理USB设备的相关功能，包括主机上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备上端口管理、功能切换及查询等。
 
 > **说明：**
 > 
@@ -38,13 +38,13 @@ usbFunctionsFromString(funcs: string): number
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| funcs  | string | 是   | 字符串形式的功能列表。 |
+| funcs  | string | 是   | 字符串形式的功能列表，由'acm'、'ecm'等标识组成，多个功能用'|'分隔。 |
 
 **返回值：**
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 功能列表对应的数字掩码。 |
+| number | 转化后的功能列表对应的数字掩码。 |
 
 **错误码：**
 
@@ -80,7 +80,7 @@ usbFunctionsToString(funcs: FunctionType): string
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | 是   | 功能列表对应的数字掩码。 |
+| funcs  | [FunctionType](#functiontype) | 是   | 功能列表对应的数字掩码，可通过位运算组合多个功能。 |
 
 **返回值：**
 
@@ -100,7 +100,7 @@ usbFunctionsToString(funcs: FunctionType): string
 **示例：**
 
 ```ts
-let funcs: number = usbManager.FunctionType.ACM | usb.FunctionType.ECM;
+let funcs: number = usbManager.FunctionType.ACM | usbManager.FunctionType.ECM; //定义USB功能类型组合
 let ret: string = usbManager.usbFunctionsToString(funcs);
 ```
 
@@ -108,7 +108,7 @@ let ret: string = usbManager.usbFunctionsToString(funcs);
 
 setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
-在设备模式下，设置当前的USB功能列表。使用Promise异步回调。
+在设备模式下，设置当前的USB功能列表。使用Promise异步回调。调用成功后，设备的USB功能将切换为指定的功能列表。适用于系统应用需要动态切换USB设备模式的场景。
 
 > **说明：**
 >
@@ -128,7 +128,7 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 | 类型                | 说明          |
 | ------------------- | ------------- |
-| Promise\<void\> | Promise对象。 |
+| Promise\<void\> | Promise对象。调用成功时无返回值，调用失败时抛出异常。 |
 
 **错误码：**
 
@@ -155,7 +155,7 @@ usbManager.setCurrentFunctions(funcs).then(() => {
 
 getCurrentFunctions(): FunctionType
 
-在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
+在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。
 
 > **说明：**
 >
@@ -190,7 +190,7 @@ let ret: number = usbManager.getCurrentFunctions();
 
 getPorts(): Array\<USBPort\>
 
-获取所有物理USB端口描述信息。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
+获取所有物理USB端口描述信息。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。
 
 > **说明：**
 >
@@ -221,11 +221,11 @@ getPorts(): Array\<USBPort\>
 let ret: Array<usbManager.USBPort> = usbManager.getPorts();
 ```
 
-## getSupportedModes(deprecated)
+## getSupportedModes<sup>(deprecated)</sup>
 
 getSupportedModes(portId: number): PortModeType
 
-获取指定的端口支持的模式列表的组合掩码。
+获取指定的端口支持的模式列表的组合掩码。适用于系统应用需要查询USB-C端口能力判断是否支持特定模式（如Host，Device或DRP模式）的场景。
 
 > **说明：**
 >
@@ -239,7 +239,7 @@ getSupportedModes(portId: number): PortModeType
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| portId | number | 是   | 端口号。 |
+| portId | number | 是   | USB端口号，可通过[getPortList](#getportlist12)获取端口列表后得到。 |
 
 **返回值：**
 
@@ -403,7 +403,7 @@ getFunctionsFromString(funcs: string): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 功能列表对应的数字掩码。 |
+| number | 转化后的功能列表对应的数字掩码。 |
 
 **错误码：**
 
