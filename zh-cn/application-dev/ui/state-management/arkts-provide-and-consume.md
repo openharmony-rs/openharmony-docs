@@ -766,7 +766,7 @@ struct Parent {
 
 ### Provide和Consume支持联合类型实例
 
-@Provide和@Consume支持联合类型和undefined和null。以下示例中，count类型为string | undefined，当点击父组件Parent中的Button改变count的属性或者类型时，Child中也会对应刷新。
+@Provide和@Consume支持联合类型和undefined和null。以下示例中，count类型为string | undefined，当点击祖先组件Ancestors中的Button改变count的属性或者类型时，Child中也会对应刷新。
 
 <!-- @[provide_consume_Provide_Consume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeFederation.ets) --> 
 
@@ -1101,7 +1101,7 @@ class TextNodeController extends NodeController {
       try {
         this.rootNode.appendChild(this.builderNode.getFrameNode());
       } catch (e) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to appendChild', JSON.stringify(e) ?? '');
+        hilog.error(DOMAIN, 'testTag', 'Failed to appendChild %{public}s', JSON.stringify(e) ?? '');
       }
     }
   }
@@ -1112,7 +1112,7 @@ class TextNodeController extends NodeController {
       try {
         this.rootNode.removeChild(this.builderNode.getFrameNode());
       } catch (e) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to removeChild', JSON.stringify(e) ?? '');
+        hilog.error(DOMAIN, 'testTag', 'Failed to removeChild %{public}s', JSON.stringify(e) ?? '');
       }
     }
   }

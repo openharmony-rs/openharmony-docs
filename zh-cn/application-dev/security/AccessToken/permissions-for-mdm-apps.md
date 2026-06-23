@@ -827,7 +827,7 @@
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
-**起始版本**：26.0.0
+**起始版本**：24
 
 ## ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
 

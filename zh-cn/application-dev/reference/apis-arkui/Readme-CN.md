@@ -656,6 +656,7 @@
     - [OH_DisplayManager](capi-oh-displaymanager.md)
     - [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
   - 头文件<!--arkui-headerfile-->
+    - [common_attributes.h](capi-common-attributes-h.md)
     - [drag_and_drop.h](capi-drag-and-drop-h.md)
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)
     - [image.h](capi-image-h.md)

@@ -64,9 +64,7 @@
 | [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md) | ArkUI_CustomSpanMetrics | 自定义段落组件的度量指标。 |
 | [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md) | ArkUI_CustomSpanDrawInfo | 自定义段落组件的绘制信息。 |
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | 定义文本组件支持的属性字符串的数据对象。 |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | 定义截图的可选项。 |
 | [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)| ArkUI_SelectionOptions | 定义选择操作的相关选项。|
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | 可见区域变化监听的参数。 |
 |[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|内容过渡效果。|
 |[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)|ArkUI_ShowCounterConfig|定义文本输入框的计数器配置。|
 |[ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)|ArkUI_TextContentBaseController|定义文本内容基础控制器。|
@@ -118,7 +116,6 @@
 | [ArkUI_ContentClipMode](#arkui_contentclipmode)                     | ArkUI_ContentClipMode           | 定义滚动容器的内容层裁剪区域枚举值。                |
 | [ArkUI_WaterFlowLayoutMode](#arkui_waterflowlayoutmode)             | ArkUI_WaterFlowLayoutMode       | 定义[WaterFlow](../apis-arkui/arkui-ts/ts-container-waterflow.md)组件布局模式枚举值。             |
 | [ArkUI_BorderStyle](#arkui_borderstyle)                             | ArkUI_BorderStyle               | 边框线条样式枚举值。                        |
-| [ArkUI_HitTestMode](#arkui_hittestmode)                             | ArkUI_HitTestMode               | 触摸测试控制枚举值。                        |
 | [ArkUI_AccessibilityMode](#arkui_accessibilitymode)                 | ArkUI_AccessibilityMode         | 定义无障碍辅助服务模式。                      |
 | [ArkUI_TextCopyOptions](#arkui_textcopyoptions)                     | ArkUI_TextCopyOptions           | 定义组件支持设置文本是否可复制粘贴。                |
 | [ArkUI_TextHeightAdaptivePolicy](#arkui_textheightadaptivepolicy)   | ArkUI_TextHeightAdaptivePolicy  | 定义文本自适应高度的方式。                     |
@@ -135,7 +132,6 @@
 | [ArkUI_SystemColorMode](#arkui_systemcolormode)                     | ArkUI_SystemColorMode           | 定义系统深浅色模式。                        |
 | [ArkUI_TextOverflow](#arkui_textoverflow)                           | ArkUI_TextOverflow              | 定义文本超长时的显示方式。                     |
 | [ArkUI_ImageSpanAlignment](#arkui_imagespanalignment)               | ArkUI_ImageSpanAlignment        | 定义图片基于文本的对齐方式。                    |
-| [ArkUI_Visibility](#arkui_visibility)                               | ArkUI_Visibility                | 控制组件的显隐枚举值。                       |
 | [ArkUI_WordBreak](#arkui_wordbreak)                                 | ArkUI_WordBreak                 | 定义文本断行规则。                         |
 | [ArkUI_EllipsisMode](#arkui_ellipsismode)                           | ArkUI_EllipsisMode              | 定义文本省略位置。                         |
 | [ArkUI_ListItemAlignment](#arkui_listitemalignment)                 | ArkUI_ListItemAlignment         | 交叉轴方向的布局方式。                       |
@@ -151,26 +147,19 @@
 | [ArkUI_ErrorCode](#arkui_errorcode)                                 | ArkUI_ErrorCode                 | 定义错误码枚举值。                         |
 | [ArkUI_ScrollSource](#arkui_scrollsource)                           | ArkUI_ScrollSource              | 定义滚动来源枚举值。                        |
 | [ArkUI_SafeAreaType](#arkui_safeareatype)                           | ArkUI_SafeAreaType              | 定义扩展安全区域的枚举值。                     |
-
-| [ArkUI_FocusMove](#arkui_focusmove)                                 | ArkUI_FocusMove                 | 定义焦点移动方向的枚举值。                     |
 | [ArkUI_ListItemGroupArea](#arkui_listitemgrouparea)                 | ArkUI_ListItemGroupArea         | 定义ListItemGroup组件区域。            |
 | [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode)                 | ArkUI_KeyboardAvoidMode         | 键盘避让模式。                           |
 | [ArkUI_HoverModeAreaType](#arkui_hovermodeareatype)                 | ArkUI_HoverModeAreaType         | 悬停态显示区域。                          |
 | [ArkUI_ExpandMode](#arkui_expandmode)                               | ArkUI_ExpandMode                | 定义子节点展开模式枚举值。                     |
-| [ArkUI_UIState](#arkui_uistate)                                     | ArkUI_UIState                   | 组件的UI状态枚举，用于处理状态样式。               |
 | [ArkUI_FocusWrapMode](#arkui_focuswrapmode)                         | ArkUI_FocusWrapMode             | 组件走焦换行规则。                         |
 | [ArkUI_ItemFillPolicy](#arkui_itemfillpolicy)                         | ArkUI_ItemFillPolicy             | 为不同响应式断点规格指定列数。                         |
 | [ArkUI_EdgeDirection](#arkui_edgedirection)                         | ArkUI_EdgeDirection             | 定义矩形边方向。                         |
 | [ArkUI_CornerDirection](#arkui_cornerdirection)                     | ArkUI_CornerDirection           | 定义角度方向。                         |
-
 | [ArkUI_GridItemStyle](#arkui_griditemstyle)                         | ArkUI_GridItemStyle             | GridItem样式枚举。                         |
 | [ArkUI_MenuPolicy](#arkui_menupolicy)                               | ArkUI_MenuPolicy                | 菜单弹出策略。                             |
-| [ArkUI_ResponseRegionSupportedTool](#arkui_responseregionsupportedtool)                         | ArkUI_ResponseRegionSupportedTool             | 定义支持响应区域设置的事件工具类型。                         |
 | [ArkUI_TextMenuItemId](#arkui_textmenuitemid) | ArkUI_TextMenuItemId | 文本菜单项id枚举。 |
 | [ArkUI_TextSpanType](#arkui_textspantype) | ArkUI_TextSpanType | 自定义文本选择菜单的文本识别类型枚举。 |
 | [ArkUI_TextResponseType](#arkui_textresponsetype) | ArkUI_TextResponseType | 自定义文本选择菜单的响应类型枚举。 |
-| [ArkUI_HoverEffect](#arkui_hovereffect) | ArkUI_HoverEffect | 组件被悬停时的效果。 |
-| [ArkUI_FocusPriority](#arkui_focuspriority) | ArkUI_FocusPriority | 应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。 |
 | [ArkUI_RenderStrategy](#arkui_renderstrategy)                       | ArkUI_RenderStrategy             | 定义组件绘制圆角的模式。                |
 | [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy)| ArkUI_MarqueeStartPolicy| 定义跑马灯启动策略枚举。 |
 | [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy)| ArkUI_MarqueeUpdatePolicy| 定义跑马灯更新策略枚举。 |
@@ -309,25 +298,12 @@
 | [bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getscaneffectenabled) | - | 获取扫光效果的开关信息。 |
 | [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokewidth) | - | 获取进度条宽度。 |
 | [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokeradius) | - | 获取进度条圆角半径值。 |
-| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | - | 创建一个截图选项，当返回值不再使用时必须通过[OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions)释放。 |
-| [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | - | 销毁截图选项指针。 |
-| [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | - | 配置截图选项中的缩放属性。 |
-| [int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)](#oh_arkui_snapshotoptions_setcolormode) | - | 设置截图选项中的色彩空间。 |
-| [int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)](#oh_arkui_snapshotoptions_setdynamicrangemode) | - | 设置截图选项中的动态范围模式。 |
 | [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | - | 创建跨语言配置项实例。 |
 | [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | - | 销毁跨语言配置项实例。 |
 | [void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)](#oh_arkui_crosslanguageoption_setattributesettingstatus) | - | 设置配置项中是否允许跨语言修改属性。 |
 | [bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_getattributesettingstatus) | - | 获取配置项中是否允许跨语言修改属性。 |
 | [void OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus(ArkUI_CrossLanguageOption* option, OH_ArkUI_CrossLanguageOperatingStatus status)](#oh_arkui_crosslanguageoption_settreeoperatingstatus) | - | 设置跨语言配置项的节点树操作状态。 |
 | [OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperatingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_gettreeoperatingstatus) | - | 获取跨语言配置项的节点树操作状态。 |
-| [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | - | 创建可见区域变化监听的参数。 |
-| [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | - | 销毁可见区域变化监听的参数。 |
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)](#oh_arkui_visibleareaeventoptions_setratios) | - | 设置阈值数组。 |
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)](#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) | - | 设置预期更新间隔，单位为ms。定义了开发者期望的更新间隔。 |
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions *option, bool measureFromViewport)](#oh_arkui_visibleareaeventoptions_setmeasurefromviewport) | - | 设置可见区域计算模式。 |
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)](#oh_arkui_visibleareaeventoptions_getratios) | - | 获取阈值数组。 |
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) | - | 获取预期更新间隔。 |
-| [bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getmeasurefromviewport) | - | 获取可见区域计算模式。 |
 | [ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)](#oh_arkui_contenttransitioneffect_create) | - | 创建ContentTransitionEffect属性对象。|
 | [ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()](#oh_arkui_gridlayoutoptions_create) | - | 创建Grid布局选项。 |
 | [void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)](#oh_arkui_gridlayoutoptions_dispose) | - | 销毁Grid布局选项。 |
@@ -1123,28 +1099,6 @@ enum ArkUI_BorderStyle
 | ARKUI_BORDER_STYLE_DASHED = 1 | 显示为一系列短的方形虚线。 |
 | ARKUI_BORDER_STYLE_DOTTED = 2 | 显示为一系列圆点。 |
 
-### ArkUI_HitTestMode
-
-```c
-enum ArkUI_HitTestMode
-```
-
-**描述：**
-
-
-触摸测试控制枚举值。
-
-**起始版本：** 12
-
-| 枚举项 | 描述                                                     |
-| -- |--------------------------------------------------------|
-| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。                                              |
-| ARKUI_HIT_TEST_MODE_BLOCK = 1 | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。                                              |
-| ARKUI_HIT_TEST_MODE_TRANSPARENT = 2 | 自身和子节点都响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。                                         |
-| ARKUI_HIT_TEST_MODE_NONE = 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。                                             |
-| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY = 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br>**起始版本：** 20 |
-| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS = 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br>**起始版本：** 20                     |
-
 ### ArkUI_AccessibilityMode
 
 ```c
@@ -1452,25 +1406,6 @@ enum ArkUI_ImageSpanAlignment
 | ARKUI_IMAGE_SPAN_ALIGNMENT_CENTER | 图片中间与文本中间对齐。                       |
 | ARKUI_IMAGE_SPAN_ALIGNMENT_TOP | 图片上边沿与文本上边沿对齐。                     |
 | ARKUI_IMAGE_SPAN_ALIGNMENT_FOLLOW_PARAGRAPH | 图片对齐方式跟随Text组件对齐方式。<br>**起始版本：** 20 |
-
-### ArkUI_Visibility
-
-```c
-enum ArkUI_Visibility
-```
-
-**描述：**
-
-
-控制组件的显隐枚举值。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_VISIBILITY_VISIBLE = 0 | 显示。 |
-| ARKUI_VISIBILITY_HIDDEN = 1 | 隐藏，但参与布局进行占位。 |
-| ARKUI_VISIBILITY_NONE = 2 | 隐藏，但不参与布局，不进行占位。 |
 
 ### ArkUI_WordBreak
 
@@ -1843,28 +1778,6 @@ enum ArkUI_SafeAreaType
 | ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | 设备的非安全区域，例如刘海屏或挖孔屏区域。 |
 | ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | 软键盘区域。 |
 
-### ArkUI_FocusMove
-
-```c
-enum ArkUI_FocusMove
-```
-
-**描述：**
-
-
-定义焦点移动方向的枚举值。
-
-**起始版本：** 18
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_FOCUS_MOVE_FORWARD = 0 | 向前移动焦点。 |
-| ARKUI_FOCUS_MOVE_BACKWARD = 1 | 向后移动焦点。 |
-| ARKUI_FOCUS_MOVE_UP = 2 | 向上移动焦点。 |
-| ARKUI_FOCUS_MOVE_DOWN = 3 | 向下移动焦点。 |
-| ARKUI_FOCUS_MOVE_LEFT = 4 | 向左移动焦点。 |
-| ARKUI_FOCUS_MOVE_RIGHT = 5 | 向右移动焦点。 |
-
 ### ArkUI_ListItemGroupArea
 
 ```c
@@ -1940,28 +1853,6 @@ enum ArkUI_ExpandMode
 | ARKUI_NOT_EXPAND = 0 | 不展开。 |
 | ARKUI_EXPAND = 1 | 展开。 |
 | ARKUI_LAZY_EXPAND = 2 | 懒展开，按需展开当前节点的子节点，节点展开条件可以参考[LazyForEach：数据懒加载](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)。 |
-
-### ArkUI_UIState
-
-```c
-enum ArkUI_UIState
-```
-
-**描述：**
-
-
-组件的UI状态枚举，用于处理状态样式。
-
-**起始版本：** 20
-
-| 枚举项 | 描述 |
-| -- | -- |
-| UI_STATE_NORMAL = 0 | 正常状态。 |
-| UI_STATE_PRESSED = 1 << 0 | 按压状态。 |
-| UI_STATE_FOCUSED = 1 << 1 | 获焦状态。 |
-| UI_STATE_DISABLED = 1 << 2 | 禁用状态。 |
-| UI_STATE_SELECTED = 1 << 3 | 选中状态，此状态仅由某些特定类型的组件支持，分别是Checkbox、Radio、Toggle、List、Grid和MenuItem。 |
-| UI_STATE_HOVERED = 1 << 4 | 悬浮状态。<br/>**起始版本：** 26.0.0 |
 
 ### ArkUI_FocusWrapMode
 
@@ -2096,45 +1987,6 @@ GridItem样式枚举。
 | GRID_ITEM_STYLE_NONE  = 0 | 无样式。 |
 | GRID_ITEM_STYLE_PLAIN  = 1  | 显示Hover、Press态样式。 |
 
-### ArkUI_HoverEffect
-
-```c
-enum ArkUI_HoverEffect
-```
-
-**描述：**
-
-
-组件被悬停时的效果。
-
-**起始版本：** 23
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_HOVER_EFFECT_AUTO = 0 | 默认效果。 |
-| ARKUI_HOVER_EFFECT_SCALE  | 缩放效果。 |
-| ARKUI_HOVER_EFFECT_HIGHLIGHT  | 高亮效果。 |
-| ARKUI_HOVER_EFFECT_NONE  | 无效果。 |
-
-### ArkUI_FocusPriority
-
-```c
-enum ArkUI_FocusPriority
-```
-
-**描述：**
-
-
-应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。
-
-**起始版本：** 23
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_FOCUS_PRIORITY_AUTO  = 0 | 默认优先级。 |
-| ARKUI_FOCUS_PRIORITY_PRIOR = 2000   | 容器内优先获焦的优先级。 |
-| ARKUI_FOCUS_PRIORITY_PREVIOUS = 3000   | 上一次容器整体失焦时获焦节点的优先级。 |
-
 ### ArkUI_MenuPolicy
 
 ```c
@@ -2152,26 +2004,6 @@ enum ArkUI_MenuPolicy
 | ARKUI_MENU_POLICY_DEFAULT  = 0 | 根据底层默认逻辑确定是否弹出菜单。 |
 | ARKUI_MENU_POLICY_HIDE = 1 | 不弹出菜单。 |
 | ARKUI_MENU_POLICY_SHOW = 2 | 弹出菜单。 |
-
-### ArkUI_ResponseRegionSupportedTool
-
-```c
-enum ArkUI_ResponseRegionSupportedTool
-```
-
-**描述：**
-
-
-定义支持响应区域设置的事件工具类型。
-
-**起始版本：** 23
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL  = 0 | 所有输入工具类型。 |
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_FINGER  = 1  | 手指类型。 |
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_PEN  = 2  | 手写笔类型。 |
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_MOUSE  = 3  | 鼠标类型。 |
 
 ### ArkUI_TextMenuItemId
 
@@ -5261,122 +5093,6 @@ float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearSty
 | -- | -- |
 | float | 进度条圆角半径值，单位为vp。 |
 
-### OH_ArkUI_CreateSnapshotOptions()
-
-```c
-ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
-```
-
-**描述：**
-
-
-创建一个截图选项，当返回值不再使用时必须通过[OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions)释放。
-
-**起始版本：** 15
-
-**返回：**
-
-| 类型                         | 说明 |
-|----------------------------| -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* | 返回指向创建的截图选项对象的指针。如果对象返回空指针，则表示创建失败，失败的原因可能是地址空间已满。 |
-
-### OH_ArkUI_DestroySnapshotOptions()
-
-```c
-void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
-```
-
-**描述：**
-
-
-销毁截图选项指针。
-
-**起始版本：** 15
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项。 |
-
-### OH_ArkUI_SnapshotOptions_SetScale()
-
-```c
-int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)
-```
-
-**描述：**
-
-
-配置截图选项中的缩放属性。
-
-**起始版本：** 15
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项。 |
-| float scale | 缩放值。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         异常原因：传入参数验证失败，参数不能为空。 |
-### OH_ArkUI_SnapshotOptions_SetColorMode()
-
-``` C++
-int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)
-```
-
-**描述：**
-
-设置截图选项中的色彩空间。
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项指针。 |
-| int32_t colorSpace | 指定截图使用的色彩空间。<br>如果知道需要截图的组件使用的色彩空间，可以通过colorSpace参数指定，并将isAuto设置为false，以达到预期的截图效果。<br>支持的取值为：3（RGB色域为Display P3类型）、4（RGB色域为SRGB类型）、27（RGB色域为DISPLAY BT2020类型）。<br>默认值：4<br>仅当isAuto设置为false，该参数设置生效。 |
-| bool isAuto | 是否由系统自动决定所使用的色彩空间。<br>true表示系统自动决定所使用的色彩空间。在不确定组件使用的色彩空间时，建议将isAuto设置为true，让系统根据实际情况自动决定使用的色彩空间。<br>false表示使用通过colorSpace字段设置的色彩空间类型进行截图。<br>默认值：false |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
-
-### OH_ArkUI_SnapshotOptions_SetDynamicRangeMode()
-
-``` C++
-int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)
-```
-
-**描述：**
-
-设置截图选项中的动态范围模式。
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项指针。 |
-| bool isAuto | 是否由系统自动决定所使用的动态范围模式。<br>true表示系统自动决定所使用的动态范围模式。在不确定组件使用的动态范围模式时，建议将isAuto设置为true，让系统根据实际情况自动决定使用的动态范围模式。<br>false表示使用通过dynamicRangeMode字段设置的动态范围模式进行截图。<br>默认值：false |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
-
 ### OH_ArkUI_CrossLanguageOption_Create()
 
 ```c
@@ -5507,206 +5223,6 @@ OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperat
 | 类型 | 说明 |
 | -- | -- |
 | [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | 跨语言配置项的节点树操作状态。 |
-
-### OH_ArkUI_VisibleAreaEventOptions_Create()
-
-```c
-ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
-```
-
-**描述：**
-
-
-创建可见区域变化监听的参数。
-
-**起始版本：** 17
-
-**返回：**
-
-| 类型                                 | 说明 |
-|------------------------------------| -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* | 可见区域变化监听的参数。 |
-
-### OH_ArkUI_VisibleAreaEventOptions_Dispose()
-
-```c
-void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)
-```
-
-**描述：**
-
-
-销毁可见区域变化监听的参数。
-
-**起始版本：** 17
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | 需要销毁的实例。 |
-
-### OH_ArkUI_VisibleAreaEventOptions_SetRatios()
-
-```c
-int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)
-```
-
-**描述：**
-
-
-设置阈值数组。
-
-**起始版本：** 17
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | 可见区域变化监听的参数实例。 |
-| float* value | 阈值数组。其中每个元素代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。 |
-| int32_t size | 阈值数组大小。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         异常原因：传入参数验证失败，参数不能为空。 |
-
-### OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval()
-
-```c
-int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)
-```
-
-**描述：**
-
-
-设置预期更新间隔，单位为ms。定义了开发者期望的更新间隔。
-
-**起始版本：** 17
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) *option | 可见区域变化监听的参数实例。 |
-| int32_t value | 预期更新间隔，单位为ms。定义了开发者期望的更新间隔。默认值：1000。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         异常原因：传入参数验证失败，参数不能为空。 |
-
-### OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport()
-
-```c
-int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option, bool measureFromViewport)
-```
-
-**描述：**
-
-设置可见区域计算模式。
-
-**起始版本：** 22
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | 可见区域变化监听的参数实例。 |
-| bool measureFromViewport | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的NODE_CLIP属性设置。如果父组件的NODE_CLIP为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的NODE_CLIP设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑NODE_CLIP的影响，直接将组件超出父组件的部分视为不可见区域。<br/>默认值：false |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         异常原因：传入参数验证失败，参数不能为空。 |
-
-### OH_ArkUI_VisibleAreaEventOptions_GetRatios()
-
-```c
-int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)
-```
-
-**描述：**
-
-
-获取阈值数组。
-
-**起始版本：** 17
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | 可见区域变化监听的参数实例。 |
-| float* value | 阈值数组。 |
-| int32_t* size | 阈值数组大小。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 数组大小不够。<br>         异常原因：传入参数验证失败，参数不能为空。 |
-
-### OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval()
-
-```c
-int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)
-```
-
-**描述：**
-
-
-获取预期更新间隔。
-
-**起始版本：** 17
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | 可见区域变化监听的参数实例。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 预期更新间隔，单位为ms。定义了开发者期望的更新间隔。默认值：1000。 |
-
-
-### OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport()
-
-```c
-bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)
-```
-
-**描述：**
-
-获取可见区域计算模式。
-
-**起始版本：** 22
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | 可见区域变化监听的参数实例。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| bool | 获取可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的NODE_CLIP属性设置。如果父组件的NODE_CLIP为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的NODE_CLIP设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑NODE_CLIP的影响，直接将组件超出父组件的部分视为不可见区域。<br/>默认值：false |
 
 ### OH_ArkUI_ContentTransitionEffect_Create()
 
