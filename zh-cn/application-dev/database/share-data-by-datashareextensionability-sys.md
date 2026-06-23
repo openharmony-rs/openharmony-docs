@@ -204,7 +204,7 @@
 
 **module.json5配置样例：**
     
-    ```json5
+   ```json5
    // 以下配置以settingsdata为例，应用需根据实际情况配置各个字段
    "extensionAbilities": [
      {
