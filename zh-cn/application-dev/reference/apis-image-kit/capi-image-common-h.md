@@ -511,7 +511,7 @@ Image_ErrorCode OH_PictureMetadata_SetBlobData(OH_PictureMetadata *metadata, uin
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadata/blob为空指针或blobSize为0。</li><br>         <li>IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型。</li><br>         <li>IMAGE_UNSUPPORTED_OPERATION：未能设置二进制数据。</li><br>         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadata或blob为空指针、blobSize为0。</li><br>         <li>IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型。</li><br>         <li>IMAGE_UNSUPPORTED_OPERATION：未能设置二进制数据。</li><br>         </ul> |
 
 ### OH_PictureMetadata_GetBlobDataSize()
 
@@ -562,7 +562,7 @@ Image_ErrorCode OH_PictureMetadata_GetBlobData(OH_PictureMetadata *metadata, uin
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadata或blob为空指针、blobSize为0。</li><br>         <li>IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型。</li><br>         <li>IMAGE_UNSUPPORTED_OPERATION：无法获取二进制数据。</li><br>         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadata或blob为空指针、blobSize为0或小于要求。</li><br>         <li>IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型。</li><br>         <li>IMAGE_UNSUPPORTED_OPERATION：无法获取二进制数据。</li><br>         </ul> |
 
 ### OH_PictureMetadata_GetPropertyWithNull()
 
@@ -649,7 +649,7 @@ Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metada
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadatas/metadata为空指针或数组长度为0。         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadatas或metadata为空指针、数组长度为0。</li><br>         </ul> |
 
 ### OH_PictureMetadatas_Release()
 
@@ -674,8 +674,8 @@ Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadatas为空指针或数组长度为0。        </ul> |
-<!--DelEnd-->
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_INVALID_PARAMETER：metadatas为空指针、数组长度为0。</li><br>         </ul> |
+
 ### OH_PictureMetadata_Clone()
 
 ```c

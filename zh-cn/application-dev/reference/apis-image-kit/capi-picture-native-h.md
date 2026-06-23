@@ -485,7 +485,7 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureCount(OH_PictureNative *pict
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：</li><br>                                <li>1. picture或count为空指针；</li><br>                                <li>2. 获取picture失败。</li><br>         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：picture或count为空指针、获取picture失败。</li><br>         </ul> |
 
 ### OH_PictureNative_GetAuxiliaryPictureTypes()
 
@@ -511,7 +511,7 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureTypes(OH_PictureNative *pict
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：</li><br>                                <li>1. picture、auxiliaryPictureTypes或count为空指针；</li><br>                                <li>2. 获取picture失败；</li><br>                                <li>3. count小于要求。</li><br>         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：picture、auxiliaryPictureTypes或count为空指针、无法获取图片、count小于要求。</li><br>         </ul> |
 
 ### OH_PictureNative_GetMetadataCount()
 
@@ -536,7 +536,7 @@ Image_ErrorCode OH_PictureNative_GetMetadataCount(OH_PictureNative *picture, uin
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：</li><br>                                <li>1. picture或count为空指针；</li><br>                                <li>2. 获取picture失败。</li><br>         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：picture或count为空指针、获取picture失败。</li><br>         </ul> |
 
 ### OH_PictureNative_GetMetadataTypes()
 
@@ -562,7 +562,7 @@ Image_ErrorCode OH_PictureNative_GetMetadataTypes(OH_PictureNative *picture, Ima
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：</li><br>                                <li>1. picture、metadataTypes或count为空指针；</li><br>                                <li>2. 获取picture失败；</li><br>                                <li>3. count小于所需大小。</li><br>         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>IMAGE_INVALID_PARAMETER：picture、metadataTypes或count为空指针、获取picture失败、count小于所需大小。</li><br>         </ul> |
 
 ### OH_PictureNative_RemoveAuxiliaryPicture()
 
@@ -587,7 +587,7 @@ Image_ErrorCode OH_PictureNative_RemoveAuxiliaryPicture(OH_PictureNative *pictur
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：辅助图被成功移除或不存在。</li><br>         <li>IMAGE_INVALID_PARAMETER：</li><br>                                <li>1. picture为空指针；</li><br>                                <li>2. 获取picture失败；</li><br>                                <li>3. 辅助图类型不支持。</li><br>         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：辅助图被成功移除或不存在。</li><br>         <li>IMAGE_INVALID_PARAMETER：picture为空指针、获取picture失败、辅助图类型不支持。</li><br>         </ul> |
 
 ### OH_PictureNative_RemoveMetadata()
 
@@ -612,7 +612,7 @@ Image_ErrorCode OH_PictureNative_RemoveMetadata(OH_PictureNative *picture, Image
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：元数据被成功移除或不存在。</li><br>         <li>IMAGE_INVALID_PARAMETER：</li><br>                                <li>1. picture为空指针</li><br>                                <li>2. 获取picture失败。</li><br>         <li>IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型。</li><br>         </ul> |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：元数据被成功移除或不存在。</li><br>         <li>IMAGE_INVALID_PARAMETER：picture为空指针、获取picture失败。</li><br>         <li>IMAGE_UNSUPPORTED_METADATA：不支持的元数据类型。</li><br>         </ul> |
 
 ### OH_PictureNative_DeepCopyWithItems()
 
@@ -732,9 +732,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative 
 
 **描述**
 
-读取缓冲区的图像像素数据，并将结果写入辅助图中。
-
-使用约束：auxiliaryPicture和source均不能为空指针，bufferSize需与待写入像素数据大小匹配。
+读取缓冲区的图像像素数据，并将结果写入辅助图中。使用约束：auxiliaryPicture和source均不能为空指针，bufferSize需与待写入像素数据大小匹配。
 
 **起始版本：** 13
 
@@ -1261,7 +1259,7 @@ Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *op
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 指向OH_DecomposeOptions对象的指针。 |
+| [OH_DecomposeOptions](capi-image-nativemodule-oh-decomposeoptions.md) *options | 指向OH_DecomposeOptions对象的指针指针。 |
 | bool isFullSizeGainmap | 是否生成全尺寸增益图。设置为true时生成全尺寸增益图，设置为false时生成1/2缩小的增益图。 |
 
 **返回：**
