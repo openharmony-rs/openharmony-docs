@@ -43,7 +43,7 @@ pro.put(2, 10);
 pro.put(1, 8);
 let result = pro.length;
 console.info('result = ' + result);
-// 期望输出：result = 2
+// 预期输出：result = 2
 ```
 
 ## constructor<sup>18+</sup>
