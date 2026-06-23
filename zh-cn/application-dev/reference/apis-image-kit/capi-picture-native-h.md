@@ -732,7 +732,9 @@ Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative 
 
 **描述**
 
-读取缓冲区的图像像素数据，并将结果写入辅助图中。使用约束：auxiliaryPicture和source均不能为空指针，bufferSize需与待写入像素数据大小匹配。
+读取缓冲区的图像像素数据，并将结果写入辅助图中。
+
+使用约束：auxiliaryPicture和source均不能为空指针，bufferSize需与待写入像素数据大小匹配。
 
 **起始版本：** 13
 
@@ -1259,7 +1261,7 @@ Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *op
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_DecomposeOptions](capi-image-nativemodule-oh-decomposeoptions.md) *options | 指向OH_DecomposeOptions对象的指针指针。 |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 指向OH_DecomposeOptions对象的指针。 |
 | bool isFullSizeGainmap | 是否生成全尺寸增益图。设置为true时生成全尺寸增益图，设置为false时生成1/2缩小的增益图。 |
 
 **返回：**
