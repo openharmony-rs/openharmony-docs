@@ -688,10 +688,6 @@ updateContentSize(width: number, height: number): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备中不报错也不生效。
 
 **参数：**
