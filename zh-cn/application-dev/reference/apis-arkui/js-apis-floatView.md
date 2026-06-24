@@ -92,7 +92,7 @@ create(config: FloatViewConfiguration): Promise&lt;FloatViewController&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| config | [FloatViewConfiguration](#floatviewconfiguration) | 是 | 创建闪控窗控制器的参数。该参数及其context字段不能为null或undefined。其他参数异常情况抛出1300016。 |
+| config | [FloatViewConfiguration](#floatviewconfiguration) | 是 | 创建闪控窗控制器的参数。该参数及其context字段不能为null或undefined，否则抛出401。其他参数异常情况抛出1300016。 |
 
 **返回值：**
 
@@ -122,7 +122,7 @@ import { floatView } from '@kit.ArkUI';
 struct Index {
   private floatViewController: floatView.FloatViewController | undefined = undefined;
   aboutToAppear(): void {
-    // 获取UIAbility上下文
+    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果为UIAbilityContext
     let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 创建闪控窗配置对象
     let config: floatView.FloatViewConfiguration = {

@@ -26,7 +26,7 @@ import { PiPWindow } from '@kit.ArkUI';
 
 isPiPEnabled(): boolean
 
-应用调用此接口判断当前设备是否支持画中画功能。
+判断当前设备是否支持画中画功能。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -49,7 +49,7 @@ console.info('isPiPEnabled:' + enable);
 
 create(config: PiPConfiguration): Promise&lt;PiPController&gt;
 
-应用调用此接口创建画中画控制器，用于启动或停止画中画，使用Promise异步回调。
+创建画中画控制器，用于启动或停止画中画，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -182,7 +182,7 @@ struct Index {
 
 create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;PiPController&gt;
 
-应用调用此接口创建画中画控制器，使用typeNode为画中画添加自定义UI节点。使用Promise异步回调。
+创建画中画控制器，使用typeNode为画中画添加自定义UI节点。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
