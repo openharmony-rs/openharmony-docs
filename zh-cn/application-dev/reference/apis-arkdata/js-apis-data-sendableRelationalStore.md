@@ -38,7 +38,7 @@ toSendableValuesBucket(valuesBucket: NonSendableBucket): ValuesBucket
 | ------------ | --------------------------------------- | ---- | :--------------------------------- |
 | valuesBucket | [NonSendableBucket](#nonsendablebucket) | 是   | 不可跨线程传递的ValuesBucket数据。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
@@ -101,7 +101,7 @@ fromSendableValuesBucket(valuesBucket: ValuesBucket): NonSendableBucket
 | ------------ | ----------------------------- | ---- | :----------------------------------- |
 | valuesBucket | [ValuesBucket](#valuesbucket) | 是   | 可用于跨线程传递的ValuesBucket数据。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                    | 说明                               |
 | --------------------------------------- | ---------------------------------- |
@@ -164,7 +164,7 @@ toSendableAsset(asset: NonSendableAsset): Asset
 | ------ | -------------------------------------- | ---- | :-------------------------- |
 | asset  | [NonSendableAsset](#nonsendableasset) | 是   | 不可跨线程传递的Asset数据。 |
 
-**返回值**：
+**返回值：**
 
 | 类型            | 说明                      |
 | --------------- | ------------------------- |
@@ -207,7 +207,7 @@ fromSendableAsset(asset: Asset): NonSendableAsset
 | ------ | --------------- | ---- | :------------------------ |
 | asset  | [Asset](#asset) | 是   | 可跨线程传递的Asset数据。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                   | 说明                        |
 | -------------------------------------- | --------------------------- |
@@ -251,7 +251,7 @@ fromSendableValues(values: collections.Array\<ValueType>): NonSendableValues
 | ------ | --------------- | ---- | :------------------------ |
 | values  | [collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<[ValueType](#valuetype)> | 是   | 可跨线程传递的数组数据。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                   | 说明                        |
 | -------------------------------------- | --------------------------- |
@@ -292,7 +292,7 @@ toSendableValues(values: NonSendableValues): collections.Array\<ValueType>
 | ------ | --------------- | ---- | :------------------------ |
 | values  | [NonSendableValues](#nonsendablevalues20) | 是   | 不可跨线程传递的数组数据。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                   | 说明                        |
 | -------------------------------------- | --------------------------- |
@@ -361,10 +361,10 @@ type ValueType = null | number | string | boolean | collections.Uint8Array | Ass
 | string  | 表示值类型为字符串。 |
 | boolean | 表示值类型为布尔值。 |
 | [collections.Uint8Array](../apis-arkts/arkts-apis-arkts-collections-Uint8Array.md) | 表示值类型为Uint8类型的数组。|
-| [Asset](#asset)  | 表示值类型为附件Asset。<br/>当字段类型是Asset时，在创建表的sql语句中，类型应当为：ASSET。             |
-| [Assets](#assets) | 表示值类型为附件数据集合Assets。<br/>当字段类型是Assets时，在创建表的sql语句中，类型应当为：ASSETS。 |
-| [collections.Float32Array](../apis-arkts/arkts-apis-arkts-collections-Float32Array.md) | 表示值类型为浮点数组。<br/>当字段类型是collections.Float32Array时，在创建表的sql语句中，类型应当为：floatvector(128)。 |
-| bigint | 表示值类型为任意长度的整数。<br/>当字段类型是bigint时，在创建表的sql语句中，类型应当为：UNLIMITED INT，详见[通过关系型数据库实现数据持久化](../../database/data-persistence-by-rdb-store.md)。<br/>**说明：** <br>bigint类型字段不能比较大小，不适用以下谓词操作：between、notBetween、greaterThan、lessThan、greaterThanOrEqualTo、lessThanOrEqualTo、orderByAsc、orderByDesc。<br/>bigint类型字段的数据写入时，需通过BigInt()方法或在数据尾部添加'n'的方式明确为bigint类型，如'let data = BigInt(1234)'或'let data = 1234n'。<br/>bigint字段如果写入number类型的数据，则查询该数据的返回类型为number，而非bigint。 |
+| [Asset](#asset)  | 表示值类型为附件Asset。<br/>当字段类型是Asset时，在创建表的SQL语句中，类型应当为：ASSET。             |
+| [Assets](#assets) | 表示值类型为附件数据集合Assets。<br/>当字段类型是Assets时，在创建表的SQL语句中，类型应当为：ASSETS。 |
+| [collections.Float32Array](../apis-arkts/arkts-apis-arkts-collections-Float32Array.md) | 表示值类型为浮点数组。<br/>当字段类型是collections.Float32Array时，在创建表的SQL语句中，类型应当为：floatvector(128)。 |
+| bigint | 表示值类型为任意长度的整数。<br/>当字段类型是bigint时，在创建表的SQL语句中，类型应当为：UNLIMITED INT，详见[通过关系型数据库实现数据持久化](../../database/data-persistence-by-rdb-store.md)。<br/>**说明：** <br>bigint类型字段不能比较大小，不适用以下谓词操作：between、notBetween、greaterThan、lessThan、greaterThanOrEqualTo、lessThanOrEqualTo、orderByAsc、orderByDesc。<br/>bigint类型字段的数据写入时，需通过BigInt()方法或在数据尾部添加'n'的方式明确为bigint类型，如'let data = BigInt(1234)'或'let data = 1234n'。<br/>bigint字段如果写入number类型的数据，则查询该数据的返回类型为number，而非bigint。 |
 
 ## ValuesBucket
 
