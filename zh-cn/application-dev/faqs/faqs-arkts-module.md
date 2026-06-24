@@ -148,11 +148,11 @@ load libentry.so failed.
 | `dlopen failed: {dlerror}` | `dlopen`系统调用失败 | .so文件损坏、架构不匹配（例如arm64的.so运行在arm32设备）、依赖的其他.so缺失、符号找不到 | 根据`{dlerror}`具体提示定位：`symbol not found`（缺符号）、`cannot open shared object file`（依赖缺失）、`wrong ELF class`（架构不匹配）、`file too short`（文件损坏） |
 | `internal error: module create failed` | NativeModule对象创建失败 | 内存不足（OOM）、内部符号解析失败、NativeModule初始化异常 | 查看hilog中相关`NativeModuleManager`日志定位初始化失败原因；排查设备内存状态 |
 
-**说明**
-
-- 成功加载.so时不会写入`loadErrInfo`，对正常加载流程无影响。
-- `loadErrInfo`仅在faultlog和内部日志中可见，不会通过JS异常直接抛出；开发者仍需按上述"加载失败具体表现"通过`undefined`判断等方式检测加载状态。
-- 如需开启更详细的模块加载日志，可执行`hdc shell param set persist.ark.properties 0x80105C`并重启设备。
+>**说明**
+>
+>  - 成功加载.so时不会写入`loadErrInfo`，对正常加载流程无影响。
+>  - `loadErrInfo`仅在faultlog和内部日志中可见，不会通过JS异常直接抛出；开发者仍需按上述"加载失败具体表现"通过`undefined`判断等方式检测加载状态。
+>  - 如需开启更详细的模块加载日志，可执行`hdc shell param set persist.ark.properties 0x80105C`并重启设备。
 
 **参考文档**
 
