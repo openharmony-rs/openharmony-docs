@@ -133,32 +133,32 @@ load libentry.so failed.
 
 **so加载失败的错误信息（loadErrInfo）说明**
 
-从 OpenHarmony 7.0 开始，`loadNativeModule`、`import()` 等接口加载 .so 失败时，系统会将精确的错误原因写入 `loadErrInfo` 字段，并通过 JS Crash faultlog 和 hilog 输出。开发者可在 faultlog 或 `hilog | grep NativeModuleManager` 中搜索下列错误信息字符串进行定位。
+从OpenHarmony7.0开始，`loadNativeModule`、`import()`等接口加载.so失败时，系统会将精确的错误原因写入`loadErrInfo`字段，并通过JS Crash faultlog和hilog输出。开发者可在faultlog或`hilog | grep NativeModuleManager`中搜索下列错误信息字符串进行定位。
 
 **错误场景与错误信息对照表**
 
 | 错误信息（loadErrInfo） | 触发场景 | 可能原因 | 处理步骤 |
 | -------- | -------- | -------- | -------- |
-| `moduleName is nullptr` | 调用加载接口时 `moduleName` 入参为空 | 代码传入了空字符串或未初始化变量 | 检查 `loadNativeModule(moduleName)` 的入参，确保 `moduleName` 非空 |
-| `relativePath is nullptr` | `relativePath` 参数为空 | 未传入相对路径或传入了 null | 检查 `relativePath` 参数取值 |
-| `invalid relativePath` | `relativePath` 包含 `..` 路径穿越符 | 相对路径试图跳出允许的目录范围 | 修正 `relativePath`，去掉 `..`，仅使用模块内相对路径 |
-| `module {moduleName} is in blocklist` | 目标模块在系统黑名单中 | 该 .so 被系统安全策略禁止加载 | 联系系统团队确认黑名单策略；普通应用不应依赖被列入黑名单的模块 |
-| `module not found` | 模块文件未找到 | 模块未打包进 HAP/HSP，或 `oh-package.json5` 的 dependencies 配置缺失 | 检查 `oh-package.json5` 的 dependencies 是否声明该模块；检查 `build-profile.json5` 的 `runtimeOnly` 配置；确认 HAP 包内存在对应 .so 文件 |
-| `app lib path not registered in namespace '{path}'` | 应用 lib 路径未在 namespace 中注册 | 应用沙箱内 namespace 配置缺失或路径错误 | 检查应用 `module.json5` 与打包配置；确认应用的 lib 路径在 namespace 允许列表中 |
-| `dlopen failed: {dlerror}` | `dlopen` 系统调用失败 | .so 文件损坏、架构不匹配（例如 arm64 的 .so 运行在 arm32 设备）、依赖的其他 .so 缺失、符号找不到 | 根据 `{dlerror}` 具体提示定位：`symbol not found`（缺符号）、`cannot open shared object file`（依赖缺失）、`wrong ELF class`（架构不匹配）、`file too short`（文件损坏） |
-| `internal error: module create failed` | NativeModule 对象创建失败 | 内存不足（OOM）、内部符号解析失败、NativeModule 初始化异常 | 查看 hilog 中相关 `NativeModuleManager` 日志定位初始化失败原因；排查设备内存状态 |
+| `moduleName is nullptr` | 调用加载接口时`moduleName`入参为空 | 代码传入了空字符串或未初始化变量 | 检查`loadNativeModule(moduleName)`的入参，确保`moduleName`非空 |
+| `relativePath is nullptr` | `relativePath`参数为空 | 未传入相对路径或传入了null | 检查`relativePath`参数取值 |
+| `invalid relativePath` | `relativePath`包含`..`路径穿越符 | 相对路径试图跳出允许的目录范围 | 修正`relativePath`，去掉`..`，仅使用模块内相对路径 |
+| `module {moduleName} is in blocklist` | 目标模块在系统黑名单中 | 该.so被系统安全策略禁止加载 | 联系系统团队确认黑名单策略；普通应用不应依赖被列入黑名单的模块 |
+| `module not found` | 模块文件未找到 | 模块未打包进HAP/HSP，或`oh-package.json5`的dependencies配置缺失 | 检查`oh-package.json5`的dependencies是否声明该模块；检查`build-profile.json5`的`runtimeOnly`配置；确认HAP包内存在对应.so文件 |
+| `app lib path not registered in namespace '{path}'` | 应用lib路径未在namespace中注册 | 应用沙箱内namespace配置缺失或路径错误 | 检查应用`module.json5`与打包配置；确认应用的lib路径在namespace允许列表中 |
+| `dlopen failed: {dlerror}` | `dlopen`系统调用失败 | .so文件损坏、架构不匹配（例如arm64的.so运行在arm32设备）、依赖的其他.so缺失、符号找不到 | 根据`{dlerror}`具体提示定位：`symbol not found`（缺符号）、`cannot open shared object file`（依赖缺失）、`wrong ELF class`（架构不匹配）、`file too short`（文件损坏） |
+| `internal error: module create failed` | NativeModule对象创建失败 | 内存不足（OOM）、内部符号解析失败、NativeModule初始化异常 | 查看hilog中相关`NativeModuleManager`日志定位初始化失败原因；排查设备内存状态 |
 
 **说明**
 
-- 成功加载 .so 时不会写入 `loadErrInfo`，对正常加载流程无影响。
-- `loadErrInfo` 仅在 faultlog 和内部日志中可见，不会通过 JS 异常直接抛出；开发者仍需按上述"加载失败具体表现"通过 `undefined` 判断等方式检测加载状态。
-- 如需开启更详细的模块加载日志，可执行 `hdc shell param set persist.ark.properties 0x80105C` 并重启设备。
+- 成功加载.so时不会写入`loadErrInfo`，对正常加载流程无影响。
+- `loadErrInfo`仅在faultlog和内部日志中可见，不会通过JS异常直接抛出；开发者仍需按上述"加载失败具体表现"通过`undefined`判断等方式检测加载状态。
+- 如需开启更详细的模块加载日志，可执行`hdc shell param set persist.ark.properties 0x80105C`并重启设备。
 
 **参考文档**
 
 - [Node-API常见问题](../napi/use-napi-faqs.md)
 - [loadNativeModule接口参考](../reference/common/js-apis-common-load-native-module.md)
-- [语言基础类库错误码 10200301](../reference/apis-arkts/errorcode-utils.md)
+- [语言基础类库错误码10200301](../reference/apis-arkts/errorcode-utils.md)
 
 
 ## 模块间循环依赖导致运行时未初始化异常问题定位
