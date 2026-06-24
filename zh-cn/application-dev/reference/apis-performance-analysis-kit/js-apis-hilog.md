@@ -111,7 +111,7 @@ DEBUG级别的日志在正式发布版本中默认不被打印，只有在调试
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
-| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
+| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。隐私标识机制帮助开发者保护用户敏感数据。 |
 | args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。当格式字符串中不包含占位符时，可以不传此参数，仅输出格式字符串本身。 |
 
 **示例：**
@@ -152,7 +152,7 @@ ArkTS-Sta: info(domain: int, tag: string, format: string, ...args: RecordData[])
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
-| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
+| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。隐私标识机制帮助开发者保护用户敏感数据。 |
 | args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。当格式字符串中不包含占位符时，可以不传此参数，仅输出格式字符串本身。 |
 
 **示例：**
@@ -193,7 +193,7 @@ ArkTS-Sta: warn(domain: int, tag: string, format: string, ...args: RecordData[])
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
-| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
+| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。隐私标识机制帮助开发者保护用户敏感数据。 |
 | args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。当格式字符串中不包含占位符时，可以不传此参数，仅输出格式字符串本身。 |
 
 **示例：**
@@ -234,7 +234,7 @@ ArkTS-Sta: error(domain: int, tag: string, format: string, ...args: RecordData[]
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
-| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
+| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。隐私标识机制帮助开发者保护用户敏感数据。 |
 | args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。当格式字符串中不包含占位符时，可以不传此参数，仅输出格式字符串本身。 |
 
 **示例：**
@@ -275,7 +275,7 @@ ArkTS-Sta: fatal(domain: int, tag: string, format: string, ...args: RecordData[]
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
-| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
+| format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>可用的参数格式符包括%d、%i、%s、%o、%O等，详见[参数格式符](#参数格式符)。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。隐私标识机制帮助开发者保护用户敏感数据。 |
 | args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。当格式字符串中不包含占位符时，可以不传此参数，仅输出格式字符串本身。 |
 
 **示例：**
