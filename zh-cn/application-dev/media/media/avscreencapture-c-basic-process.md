@@ -119,7 +119,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
 <!-- @[screenCapture_config_buffer_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 获取屏幕信息
+// 获取屏幕信息。
 uint64_t displayId = 0;
 NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
 
@@ -261,13 +261,13 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable bufferType is %{public}d",
         bufferType);
     if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO) {
-        // 处理视频buffer
+        // 处理视频buffer。
         HandleVideoBuffer(buffer);
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER) {
-        // 处理内录buffer
+        // 处理内录buffer。
         HandleAudioBuffer(buffer, g_innerFile, "ScreenCapture OnBufferAvailable inner audio");
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC) {
-        // 处理麦克风buffer
+        // 处理麦克风buffer。
         HandleAudioBuffer(buffer, g_micFile, "ScreenCapture OnBufferAvailable mic audio");
     }
     return;
@@ -361,13 +361,13 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable bufferType is %{public}d",
         bufferType);
     if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO) {
-        // 处理视频buffer
+        // 处理视频buffer。
         HandleVideoBuffer(buffer);
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER) {
-        // 处理内录buffer
+        // 处理内录buffer。
         HandleAudioBuffer(buffer, g_innerFile, "ScreenCapture OnBufferAvailable inner audio");
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC) {
-        // 处理麦克风buffer
+        // 处理麦克风buffer。
         HandleAudioBuffer(buffer, g_micFile, "ScreenCapture OnBufferAvailable mic audio");
     }
     return;
