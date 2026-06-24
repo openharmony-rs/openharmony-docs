@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 场景介绍
 
@@ -19,7 +19,7 @@ import { inputMonitor } from '@kit.InputKit';
 
 ## 接口说明
 
-输入监听常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputMonitor](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md)。
+输入监听常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputMonitor (输入监听)(系统接口)](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md)。
 
 | 接口名称  | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
@@ -70,7 +70,7 @@ struct Index {
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, ["code", "message"])}`);
           }
-          // 监听鼠标按下，按下callbackreturn true
+          // 监听鼠标按下，按下callback return true
           try {
             inputMonitor.off('mouse', callback); // 关闭监听鼠标事件
             console.info(`Monitor off success`);

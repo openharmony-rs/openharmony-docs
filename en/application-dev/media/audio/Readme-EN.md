@@ -9,9 +9,9 @@
 - [About This Kit](audio-kit-intro.md)
 - [Selecting the Appropriate Audio Stream Types](using-right-streamusage-and-sourcetype.md)
 - Audio Focus and Audio Session Management<!--audio-session-->
-  - [Introduction to Audio Focus and Audio Sessions](audio-playback-concurrency.md)
-  - [Using AudioSession to Manage Audio Focus (ArkTS)](audio-session-management.md)
-  - [Using AudioSession to Manage Audio Focus (C/C++)](using-ohaudio-for-session.md)
+  - [Introduction to Audio Focus](audio-playback-concurrency.md)
+  - [Audio Session Management](audio-session-management.md)
+  - [Using OHAudio for Audio Session (C/C++)](using-ohaudio-for-session.md)
 - Audio Playback<!--audio-playback-->
   - [Audio Playback Overview](audio-playback-overview.md)
   - [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md)

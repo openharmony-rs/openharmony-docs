@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **systemManager** module provides system management capabilities.
 
@@ -210,8 +210,8 @@ try {
 let otaUpdatePolicy4: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.WINDOWS,
   "version": "version_1.0.0.3",
-  "installStartTime": 1716281049, // Timestamp
-  "installEndTime": 1716343200, // Timestamp
+  "installStartTime": 1716281049, // Timestamp.
+  "installEndTime": 1716343200, // Timestamp.
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy4);
@@ -759,7 +759,7 @@ try {
 
 ## systemManager.getInstallLocalEnterpriseAppEnabled<sup>20+</sup>
 
-getInstallLocalEnterpriseAppEnabled(admin: Want): boolean
+getInstallLocalEnterpriseAppEnabled(admin: Want | null): boolean
 
 Checks whether local installation of enterprise applications is supported.
 
@@ -775,7 +775,7 @@ Checks whether local installation of enterprise applications is supported.
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>Before API version 24, this API can be called to check whether local installation of enterprise applications is supported. If the device has multiple MDM applications, you can pass **admin** to query the corresponding policies. Since API version 24, **admin** can be set to **null**. In this case, the policies that actually take effect on the device are returned.|
 
 **Return value**
 
@@ -1222,6 +1222,256 @@ try {
   console.info('Succeeded in finishing log collected.');
 } catch (err) {
   console.error(`Failed to finish log collected. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.setActivationLockDisabled<sup>24+</sup>
+
+setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string): Promise&lt;void&gt;
+
+Enables or disables the device activation lock. After the device activation lock is disabled, the Find Device function will no longer be available. This function applies only to specific devices.<!--RP5--><!--RP5End-->
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| isDisabled | boolean | Yes| Whether to disable the activation lock. The value **true** indicates yes, and the value **false** indicates no.|
+| credential | string | No| Credential for disabling the activation lock. To disable the activation lock, you must set this parameter to a valid credential<!--RP6--><!--RP6End-->. Leave this parameter empty when enabling the activation lock.|
+
+**Return value**
+
+| Type  | Description                               |
+| ------ | ----------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. An error object is thrown when the activation lock fails to be enabled or disabled.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+| 9201011  | The credential of the activation lock is invalid. |
+| 9201012  | Failed to enable or disable the activation lock. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let credential: string = "XXX";
+let isDisabled: boolean = true;
+systemManager.setActivationLockDisabled(wantTemp, isDisabled, credential).then(() => {
+  console.info('Succeeded in setting activation lock status.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set activation lock status. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## systemManager.isActivationLockDisabled<sup>24+</sup>
+
+isActivationLockDisabled(admin: Want): Promise&lt;boolean&gt;
+
+Checks whether the device activation lock is disabled.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+
+**Return value**
+
+| Type                  | Description                     |
+| --------------------- | ------------------------- |
+| Promise&lt;boolean&gt; | Promise used to return whether the device activation lock is disabled. The value **true** indicates that the device activation lock is disabled and the Find Device function cannot be used. The value **false** indicates that the device activation lock is enabled and the Find Device function is available.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+systemManager.isActivationLockDisabled(wantTemp).then(result => {
+  console.info(`Succeeded in getting activation lock status: ${JSON.stringify(result)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set activation lock status. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## systemManager.setInstallLocalEnterpriseAppEnabledForAccount<sup>24+</sup>
+
+setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, accountId: number): void
+
+Sets whether local installation of enterprise applications is supported for a specified user. After the policy of supporting local enterprise application installation is delivered to a PC/2-in-1 enterprise device that has the local installation capability, the user can double-click an enterprise application installation package on the desktop or in the Files application to install it.
+
+Only enterprise applications signed with the **enterprise_normal** or **enterprise_mdm** signature type are supported.
+
+> **NOTE**
+>
+> A PC/2-in-1 enterprise device supports local installation of enterprise applications for the current user if any of the following conditions is met:
+>
+> 1. The offline installer has been enabled by calling [setInstallLocalEnterpriseAppEnabled](#systemmanagersetinstalllocalenterpriseappenabled20).
+> 2. Local installation of enterprise applications is enabled for the current user by calling this API.
+<!--RP7--><!--RP7End-->
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) If any MDM app supports local installation of enterprise apps, the comprehensive policy is to support local installation of enterprise apps.
+
+**Parameters**
+
+| Name  | Type                                 | Mandatory | Description|
+| ----- | ----------------------------------- | ---- | ------- |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| isEnable | boolean | Yes| Whether local installation of enterprise applications is supported. The value **true** indicates that the local installation of enterprise applications is supported, and the value **false** indicates the opposite.|
+| accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                                     |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+
+import { systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let isEnable: boolean = true;
+let accountId: number = 100;
+try {
+  systemManager.setInstallLocalEnterpriseAppEnabledForAccount(wantTemp, isEnable, accountId);
+  console.info('Succeeded in setting InstallLocalEnterpriseAppEnabledForAccount.');
+} catch (err) {
+  console.error(`Failed to set installLocalEnterpriseAppEnabledForAccount. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getInstallLocalEnterpriseAppEnabledForAccount<sup>24+</sup>
+
+getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: number): boolean
+
+Checks whether local installation of enterprise applications is supported for a specified user.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.<br>If the device has multiple MDM applications, you can pass **admin** to query the corresponding policies. If **null** is passed, the policies that actually take effect on the device are returned.|
+| accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
+
+**Return value**
+
+| Type  | Description                               |
+| ------ | ----------------------------------- |
+| boolean | Whether local installation of enterprise applications is supported. The value **true** indicates that local installation is supported, and the value **false** indicates the opposite. When **admin** is set to **null**, this API checks whether local installation of enterprise applications is supported.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let accountId: number = 100;
+try {
+  let isEnable: boolean = systemManager.getInstallLocalEnterpriseAppEnabledForAccount(wantTemp, accountId);
+  console.info('Succeeded in getting installLocalEnterpriseAppEnabled.');
+} catch (err) {
+  console.error(`Failed to get installLocalEnterpriseAppEnabled. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 

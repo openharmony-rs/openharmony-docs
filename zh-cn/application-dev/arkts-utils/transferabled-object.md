@@ -1,4 +1,4 @@
-# Transferable对象（NativeBinding对象）
+# Transferable对象 (NativeBinding对象)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
@@ -29,28 +29,29 @@ Transferable对象，也称为NativeBinding对象，是指绑定C++对象的JS�
 
 ![nativeBinding_transfer](figures/nativeBinding_transfer.png)
 
-常见的转移模式NativeBinding对象包括[PixelMap对象](../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmap8)，它可以读取或写入图像数据，获取图像信息，常用于显示图片。
+常见的转移模式NativeBinding对象包括[PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md)对象，它可以读取或写入图像数据，获取图像信息，常用于显示图片。
 
 这里提供了一个跨线程传递PixelMap对象的示例。首先从rawfile文件夹中获取图片资源，然后在子线程中创建PixelMap对象并传递给主线程，具体实现如下：
 
-```ts
-// Index.ets
+<!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/TransferabledObject.ets) -->
+
+``` TypeScript
 import { taskpool } from '@kit.ArkTS';
-import { loadPixelMap } from './PixelMapTest';
+import { loadPixelMap } from './pixelMapTest';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index {
+  uiContext = this.getUIContext();
   @State message: string = 'Hello World';
   @State pixelMap: PixelMap | undefined = undefined;
 
-  private loadImageFromThread(): void {
-    let context : Context = this.getUIContext().getHostContext() as Context;
-    const resourceMgr = context.resourceManager;
+  private async loadImageFromThread(): Promise<void> {
+    const resourceMgr = this.uiContext?.getHostContext()?.resourceManager;
     // 此处‘startIcon.png’为media下复制到rawfile文件夹中，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-    resourceMgr.getRawFd('startIcon.png').then(rawFileDescriptor => {
-      taskpool.execute(loadPixelMap, rawFileDescriptor).then(pixelMap => {
+    await resourceMgr?.getRawFd('startIcon.png').then(async rawFileDescriptor => {
+      await taskpool.execute(loadPixelMap, rawFileDescriptor).then(pixelMap => {
         if (pixelMap) {
           this.pixelMap = pixelMap as PixelMap;
           console.info('Succeeded in creating pixelMap.');
@@ -62,43 +63,53 @@ struct Index {
       }).catch((e: BusinessError) => {
         console.error('taskpool execute loadPixelMap failed. Code: ' + e.code + ', message: ' + e.message);
       });
+    }).catch(() => {
+      console.error(`Failed to get RawFd`);
     });
   }
 
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            this.loadImageFromThread();
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          this.loadImageFromThread().then(() => {
+            this.message = 'success';
+          }).catch((e: BusinessError) => {
+            this.message = 'failed';
+            console.error('taskpool execute loadImageFromThread failed. Code: ' + e.code + ', message: ' + e.message);
           })
-      }
-      .width('100%')
+        })
     }
     .height('100%')
+    .width('100%')
   }
 }
 ```
-<!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/TransferabledObject.ets) -->
 
-```ts
-// PixelMapTest.ets
+<!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/pixelMapTest.ets) -->
+
+``` TypeScript
 import { image } from '@kit.ImageKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
 @Concurrent
-export async function loadPixelMap(rawFileDescriptor: number): Promise<PixelMap> {
+export async function loadPixelMap(rawFileDescriptor: resourceManager.RawFileDescriptor): Promise<PixelMap> {
   // 创建imageSource。
   const imageSource = image.createImageSource(rawFileDescriptor);
   // 创建pixelMap。
   const pixelMap = imageSource.createPixelMapSync();
   // 释放imageSource。
   imageSource.release();
-  // 使pixelMap在跨线程传输完成后，断开原线程的引用。
+  // 使pixelMap在跨线程传输完成后，脱离原线程的引用。
   pixelMap.setTransferDetached(true);
   // 返回pixelMap给主线程。
   return pixelMap;
 }
 ```
-<!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/pixelMapTest.ets) -->

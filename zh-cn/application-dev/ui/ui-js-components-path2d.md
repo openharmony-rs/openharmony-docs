@@ -1,8 +1,8 @@
 # Path2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -82,7 +82,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001177930616](figures/zh-cn_image_0000001177930616.png)
+![Line-Segments](figures/Line-Segments.png)
 
 
 ## 画图形
@@ -205,4 +205,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001177784684](figures/zh-cn_image_0000001177784684.gif)
+![Drawing-Graphs](figures/Drawing-Graphs.gif)

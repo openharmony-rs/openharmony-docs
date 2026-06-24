@@ -34,7 +34,7 @@ import bundle from '@ohos.bundle';
 
 For details about the APL, see [Basic Concepts in the Permission Mechanism](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
-## bundle.getBundleInstaller<sup>deprecated<sup>
+## bundle.getBundleInstaller<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -75,7 +75,7 @@ bundle.getBundleInstaller().then((data) => {
 });
 ```
 
-## bundle.getBundleInstaller<sup>deprecated<sup>
+## bundle.getBundleInstaller<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -116,7 +116,7 @@ bundle.getBundleInstaller((err, data) => {
   }
 });
 ```
-## bundle.cleanBundleCacheFiles<sup>8+</sup> <sup>deprecated<sup>
+## bundle.cleanBundleCacheFiles<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -161,7 +161,7 @@ bundle.cleanBundleCacheFiles(bundleName, err => {
 });
 ```
 
-## bundle.cleanBundleCacheFiles<sup>8+</sup> <sup>deprecated<sup>
+## bundle.cleanBundleCacheFiles<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -210,7 +210,7 @@ bundle.cleanBundleCacheFiles(bundleName).then(() => {
 });
 ```
 
-## bundle.setApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setApplicationEnabled<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -256,7 +256,7 @@ bundle.setApplicationEnabled(bundleName, false, err => {
 });
 ```
 
-## bundle.setApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setApplicationEnabled<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -306,7 +306,7 @@ bundle.setApplicationEnabled(bundleName, false).then(() => {
 });
 ```
 
-## bundle.setAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setAbilityEnabled<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -336,7 +336,7 @@ This is a system API.
 | isEnable | boolean                                      | Yes  | Whether to enable the application. **true** to enable, **false** otherwise.|
 | callback | AsyncCallback\<void>                         | Yes  | Callback used to return the result.                   |
 
-## bundle.setAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setAbilityEnabled<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -392,7 +392,7 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
   console.error('getAbilityInfo failed. Cause: ' + JSON.stringify(error));
 });
 ```
-## bundle.getPermissionDef<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getPermissionDef<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -436,7 +436,7 @@ bundle.getPermissionDef(permission, (err, data) => {
 });
 ```
 
-## bundle.getPermissionDef<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getPermissionDef<sup>(deprecated)</sup>
 
 > **NOTE**
 >

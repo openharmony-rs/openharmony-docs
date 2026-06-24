@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -41,7 +41,7 @@ The file declares the APIs for image encoding.
 | Name| Description|
 | -- | -- |
 | [Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)](#oh_packingoptions_create) | Creates the pointer to an OH_PackingOptions struct.|
-| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | Obtains the MIME type. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.|
+| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | Obtains the MIME type. **format.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.|
 | [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | Obtains the MIME type in the packing options. The output **format.data** ends with the string terminator **\0**.|
 | [Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_setmimetype) | Sets the MIME type.|
 | [Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_t *quality)](#oh_packingoptions_getquality) | Obtains the encoding quality.|
@@ -128,7 +128,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options,Image_M
 
 **Description**
 
-Obtains the MIME type. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
+Obtains the MIME type. **format.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
 
 **Since**: 12
 
@@ -138,7 +138,7 @@ Obtains the MIME type. **value.data** obtained through this API lacks the string
 | Name| Description|
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Pointer to the image format. You can pass in a null pointer with the size set to zero. In this case, the system will allocate memory, but you must release the memory after use.|
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Pointer to the image format. The format does not need to be manually initialized, and the system will allocate memory. However, you must deallocate the memory after use.<br>**format.data** obtained through this API lacks the string terminator **\0**. You need to check whether the actual data length exceeds the length of the allocated buffer.|
 
 **Returns**
 
@@ -581,7 +581,7 @@ Sets the number of loops for image sequence encoding. The value range is [0, 655
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to OH_PackingOptionsForSequence .|
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) *options | Pointer to OH_PackingOptionsForSequence.|
 | uint32_t loopCount | Number of loops.|
 
 **Returns**

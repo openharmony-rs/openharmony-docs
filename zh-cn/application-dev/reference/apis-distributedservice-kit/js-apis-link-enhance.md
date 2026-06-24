@@ -2,9 +2,10 @@
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
-<!--Designer: @lee_jet520-->
+<!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+
 linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备间连接的稳定性。使用多通道合并算法，增加设备间连接数，提升跨设备数据传输能力，改善用户使用体验。
 
 > **说明：**
@@ -29,6 +30,8 @@ createServer(name:&nbsp;string):&nbsp;Server
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上调用会返回错误码801，在其他设备类型中可正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
@@ -50,6 +53,7 @@ createServer(name:&nbsp;string):&nbsp;Server
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>适用版本：26.0.0+ |
 | 32390203      | Duplicate server name.|
 | 32390206 | Invalid parameter.  |
 
@@ -83,6 +87,8 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上调用会返回错误码801，在其他设备类型中可正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
@@ -105,6 +111,7 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>适用版本：26.0.0+ |
 | 32390206 | Invalid parameter.  |
 
 **示例：**
@@ -147,6 +154,8 @@ start():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，企业管控设备调用会返回错误码32390300，其他设备类型可正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **错误码：**
@@ -187,6 +196,8 @@ stop():&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -229,6 +240,8 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **错误码：**
@@ -268,6 +281,8 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -321,6 +336,8 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -377,6 +394,8 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
@@ -432,6 +451,8 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
@@ -482,6 +503,8 @@ try {
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
@@ -507,6 +530,8 @@ connect():&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用返回错误码32390300，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -557,6 +582,8 @@ disconnect():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **错误码：**
@@ -603,6 +630,8 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **错误码：**
@@ -648,6 +677,8 @@ getPeerDeviceId():&nbsp;string
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -696,6 +727,8 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -756,6 +789,8 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
@@ -809,6 +844,8 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -864,6 +901,8 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
@@ -914,6 +953,8 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
 
@@ -969,6 +1010,8 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用
 
 **参数：**
@@ -1020,6 +1063,8 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
 

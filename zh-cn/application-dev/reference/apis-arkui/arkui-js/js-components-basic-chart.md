@@ -9,7 +9,7 @@
 >  **说明：**
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-图表组件，用于呈现线形图、柱状图、量规图界面。
+图表组件，用于呈现线形图、柱状图、量规图、进度类圆形图表、加载类圆形图表、占比类圆形图表界面。
 
 ## 权限列表
 
@@ -151,7 +151,7 @@
 | radius                   | &lt;length&gt; | -                          | 否    | 量规组件刻度条半径，该样式优先于通用样式的width和height样式。该样式需要和center-x和center-y一起配置才能生效。（仅量规图支持） |
 | colors                   | Array          | -                          | 否    | 量规组件刻度条每一个区段的颜色。<br/>如：colors:&nbsp;\#ff0000,&nbsp;\#00ff00。（仅量规图支持） |
 | weights                  | Array          | -                          | 否    | 量规组件刻度条每一个区段的权重。<br/>如：weights:&nbsp;2,&nbsp;2。（仅量规图支持） |
-| font-family<sup>5+</sup> | Array          | -                          | 否    | 表示绘制注释的字体样式，支持[自定义字体](js-components-common-customizing-font.md)。 |
+| font-family<sup>5+</sup> | Array          | -                          | 否    | 表示绘制注释的字体族，支持[自定义字体](js-components-common-customizing-font.md)。 |
 | font-size<sup>5+</sup>   | &lt;length&gt; | -                          | 否    | 表示绘制注释的字体的大小。                            |
 
 
@@ -260,7 +260,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001173324843](figures/zh-cn_image_0000001173324843.png)
+   ![chart01](figures/chart01.png)
 
 2. 柱状图
    ```html
@@ -328,7 +328,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001173164929](figures/zh-cn_image_0000001173164929.png)
+   ![chart](figures/chart.png)
 
 3. 量规图
    ```html
@@ -357,7 +357,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001127125264](figures/zh-cn_image_0000001127125264.png)
+   ![gauge](figures/gauge.png)
 
 4. 进度类、加载类、占比类圆形图表
    ```html

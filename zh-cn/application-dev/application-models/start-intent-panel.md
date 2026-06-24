@@ -5,7 +5,7 @@
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
 <!--Tester: @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本章节主要介绍拉起方应用如何通过指定应用类型、而非某个具体的应用，来实现应用跳转。通常有以下几种方式：
 
@@ -41,6 +41,7 @@
 | 路线规划功能 |- type：navigation <br/> - wantParams.sceneType：1 | RoutePlan |
 |导航功能 |- type：navigation <br/> - wantParams.sceneType：2 | Navigation|
 |位置搜索功能 |- type：navigation <br/> - wantParams.sceneType：3 | PlaceSearch|
+|地点详情功能 |- type：navigation <br/> - wantParams.sceneType：4 | DetailLocation |
 |转账汇款功能 |- type：finance <br/> - wantParams.sceneType：1 |Transfer|
 |信用卡还款功能 |- type：finance <br/> - wantParams.sceneType：2 |CreditCardRepayment|
 |撰写邮件功能|- type：mail <br/> - wantParams.sceneType：1|ComposeMail|

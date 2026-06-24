@@ -45,7 +45,7 @@ Progress indicators come in five styles. When creating a progress indicator, you
   Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(50).height(200)
   ```
 
-  ![en-us_image_0000001562700417](figures/en-us_image_0000001562700417.png)
+  ![progress-vertical](figures/progress-vertical.png)
 
 - Indeterminate ring style
 

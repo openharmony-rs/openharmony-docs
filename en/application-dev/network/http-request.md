@@ -1101,7 +1101,7 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
 
 The following sample is provided to help you better understand how to develop the HTTP data request feature:
 
-* [Upload and Download (ArkTS) (API10)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/UploadAndDownLoad)
+* [Upload and Download (ArkTS) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/UploadAndDownLoad)
 
 * [Http (ArkTS) (API10) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Http)
 

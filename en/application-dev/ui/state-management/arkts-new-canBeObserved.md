@@ -2,23 +2,86 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-During development and debugging, you may find that the UI page is not refreshed after the value of an object is modified. This problem is inconvenient in complex services. To solve this problem, the [canBeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#canbeobserved23) API is provided. You can use this API to determine whether an object is observable and obtain the information about the component associated with the object.
+To determine whether an object is observable and to obtain component information associated with the object, you can use [canBeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#canbeobserved23).
+
+Before using this API, you are advised to read [State Management Overview](./arkts-state-management-overview.md) to have a basic understanding of the state management framework.
 
 >**NOTE**
 >
 >Since API version 23, you can use the canBeObserved API in UIUtils to determine whether a data object is an observable object.
 
-## V1 Application Scenarios
+## Overview
 
-The application scenarios of V1 include @State, @Link, @Prop, @ObjectLink, @StorageLink, @LocalStorageLink, @StorageProp, @LocalStorageProp, @Provide, @Consume decorator, and makeV1Observed.
+During development and debugging, you may encounter issues where the UI page does not refresh after modifying an object's value (for details, see [State Management Development](./arkts-state-management-faq.md)). Troubleshooting such issues is particularly inconvenient in complex business scenarios. To address this, the **canBeObserved** API is provided to help you locate and analyze problems. Using this API, you cannot only determine whether an object is observable, but also obtain component information associated with the object.
 
-### @State Application Scenario
+To use the **canBeObserved** API, you need to import the UIUtils.
 
-The [@State](./arkts-state.md) decorator can collect system components and custom components associated with objects.
+```ts
+import { UIUtils } from '@kit.ArkUI';
+```
+
+## Constraints
+
+The parameters of **canBeObserved** support only non-null object types. If **undefined** or **null** is passed, **isObserved** returns **false**. If a non-object type is passed, a compilation error will be reported.
+
+``` ts
+import { UIUtils } from '@kit.ArkUI';
+
+let res1 = UIUtils.canBeObserved(2); // Invalid input parameter. An error is reported during compilation.
+let res2 = UIUtils.canBeObserved(undefined); // Invalid input parameter. isObserved returns false.
+let res3 = UIUtils.canBeObserved(null); // Invalid input parameter. isObserved returns false.
+
+class User {
+  name?: string;
+}
+
+let result: ObservedResult = UIUtils.canBeObserved(new User()); // Correct usage.
+```
+
+## Scenarios Where Objects Can Be Observed
+
+The object calls the **canBeObserved** API. The value of **reason** in the returned [ObservedResult](../../reference/apis-arkui/js-apis-stateManagement.md#observedresult23) object can be any of the following:
+
+| reason Value| Description|
+| ---- | ---- |
+| The object data is decorated with @Observed or wrapped by makeV1Observed | The object is decorated with the [@Observed](./arkts-observed-and-objectlink.md) decorator or wrapped by the [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) method. For details, see [Scenarios Where V1 Component Objects Can Be Observed](#scenarios-where-v1-component-objects-can-be-observed).|
+| The object data is decorated with V2 @ObservedV2 and @Trace | The object and its properties are decorated with the [@ObservedV2 and @Trace](./arkts-new-observedV2-and-trace.md) decorators. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios-where-v2-component-objects-can-be-observed).|
+| The object data is wrapped by V2's makeObserved | The object is wrapped using the [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) method. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios-where-v2-component-objects-can-be-observed).|
+| The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace | Data objects of the **Array**, **Set**, **Map**, and **Date** types are decorated with the state management V2 decorators or decorated with the [@Trace](./arkts-new-observedV2-and-trace.md) decorator as object properties. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios-where-v2-component-objects-can-be-observed).|
+| The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2 | When V1 and V2 components are mixed up, the object is wrapped using the [enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility) method. For details, see [Scenarios Where Objects Become Observable When Mixing V1 and V2 Components](#scenarios-where-objects-become-observable-when-mixing-v1-and-v2-components).|
+
+Note that if the value of **reason** ends with **but not used in UI** or **but not used in @ComponentV2**, the object is observable but not used by any UI component. Therefore, changing the object value will not refresh the UI.
+
+### Scenarios Where V1 Component Objects Can Be Observed
+
+In V1 components, the following objects can be observed:
+- Objects decorated with a state management V1 decorator in a component (including **Array**, **Set**, **Map**, and **Date** data objects)
+- Objects decorated with the [@Observed](./arkts-observed-and-objectlink.md) decorator
+- Objects wrapped using the [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) method
+
+The state management V1 decorators refer to [@State](./arkts-state.md), [@Prop](./arkts-prop.md), [@Link](./arkts-link.md), [@ObjectLink](./arkts-observed-and-objectlink.md), [@StorageLink](./arkts-appstorage.md#storagelink), [@StorageProp](./arkts-appstorage.md#storageprop), [@LocalStorageLink](./arkts-localstorage.md#localstoragelink), [@LocalStorageProp](./arkts-localstorage.md#localstorageprop), [@Provide](./arkts-provide-and-consume.md), and [@Consume](./arkts-provide-and-consume.md).
+
+If the object decorated with [@Observed](./arkts-observed-and-objectlink.md) and the object wrapped by [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) are not decorated by the state management V1 decorator in the component, the result returned by calling the **canBeObserved** API is as follows:
+
+``` json5
+{
+    // The object decorated with @Observed and the object wrapped by the makeV1Observed method are observable objects.
+    "isObserved": true,
+    // If the component is not decorated with the state management V1 decorator, the reason returned is that the component is not used by the UI component and therefore the UI is not refreshed.
+    // The refresh of a V1 component depends on the state management V1 decorator.
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed, but not used in UI",
+    // No state management decorator is collected.
+    "decoratorInfo": []
+}
+```
+
+**Objects decorated with a state management V1 decorator**
+
+The following describes how to use the [@State](./arkts-state.md) decorator to decorate an object in a component so that the object can be observed.
 
 The sample code is as follows:
 
@@ -26,37 +89,40 @@ The sample code is as follows:
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
 class StateUser {
   public name?: string;
+  public age?: number;
 
-  constructor(name?: string) {
+  constructor(name?: string, age?: number) {
     this.name = name ?? '';
+    this.age = age ?? 0;
   }
 
   // Provide a method in the object to determine whether the object can be observed.
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
 @Entry
 @Component
 struct V1State {
-  @State stateUser: StateUser = new StateUser('Aki');
+  // When @State is used to decorate an object in a V1 component, the object becomes observable.
+  @State stateUser: StateUser = new StateUser('James', 33);
 
   build() {
     Column({ space: 20 }) {
-
-      Child01({ stateUser: this.stateUser })
-
-      Child02({ stateUser: this.stateUser })
-
+      // The component uses the properties of the observable object.
+      Text('user name: ' + this.stateUser.name)
+      // The component uses the properties of the observable object.
+      Text('user age: ' + this.stateUser.age)
       Button('test')
         .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
+          // You can use this API on any page to determine whether the current object is observable and obtain the component information associated with the object.
           this.stateUser.test();
         })
 
@@ -67,428 +133,85 @@ struct V1State {
     .alignItems(HorizontalAlign.Center)
   }
 }
-
-@Component
-export struct Child01 {
-  @State stateUser: StateUser = new StateUser();
-
-  build() {
-    Column() {
-      Text('Child01 ' + this.stateUser.name)
-
-      Child03({ stateUser: this.stateUser })
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @State stateUser: StateUser = new StateUser();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.stateUser.name)
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @State stateUser: StateUser = new StateUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.stateUser.name)
-    }
-  }
-}
 ```
 
 Returned result:
 
-``` json
+``` json5
 {
-    // Observable
-	"isObserved": true,
-    // Reason for being observable. The object decorated by @State is an observable object.
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-    // Decorator information
-	"decoratorInfo": [{
+    // The object is observable.
+    "isObserved": true,
+    // In V1 components, objects decorated by the state management decorator are observable.
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    // Collect the decorator information of the object.
+    "decoratorInfo": [{
         // Decorator name.
-		"decoratorName": "@State",
-        // Attribute name of the decorator.
-		"stateVariableName": "stateUser",
-        // Name of the component where the decorator is located.
-		"owningComponentOrClassName": "V1State",
-        // ID of the component where the decorator is located.
-		"owningComponentId": 62,
-        // Component information associated with the object. @State can collect custom components and system components.
-		"dependentInfo": [{
-          // Name of the component associated with the object
-			"elementName": "Child01",
-          // ID of the component associated with the object
-			"elementId": 64
-		}, {
-			"elementName": "Child02",
-			"elementId": 65
-		}]
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "stateUser",
-		"owningComponentOrClassName": "Child01",
-		"owningComponentId": 64,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 69
-		}, {
-			"elementName": "Child03",
-			"elementId": 70
-		}]
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "stateUser",
-		"owningComponentOrClassName": "Child02",
-		"owningComponentId": 65,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 74
-		}]
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "stateUser",
-		"owningComponentOrClassName": "Child03",
-		"owningComponentId": 70,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 72
-		}]
-	}]
-}
-```
-
-### @Prop Application Scenario
-
-The [@Prop](./arkts-prop.md) decorator can collect system components and custom components associated with objects.
-
-The sample code is as follows:
-
-<!-- @[v1_prop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1Prop.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-class PropUser {
-  public name?: string;
-
-  constructor(name?: string) {
-    this.name = name ?? '';
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-@Entry
-@Component
-struct V1Prop {
-  @State propUser: PropUser = new PropUser('Lion');
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01({ propUser: this.propUser })
-
-      Child02({ propUser: this.propUser })
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.propUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@Component
-export struct Child01 {
-  @Prop propUser: PropUser = new PropUser();
-
-  build() {
-    Column() {
-      Text('Child01 ' + this.propUser.name)
-
-      // Child03 is a child component of Child01. When @Prop is used, the deep copy object is changed and cannot be collected.
-      Child03({ propUser: this.propUser })
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @Prop propUser: PropUser = new PropUser();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.propUser.name)
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @Prop propUser: PropUser = new PropUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.propUser.name)
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object decorated by @State is an observable object.
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-    // Decorator information. The first decorator collects the @State of the parent component. For details, see the @State application scenario.
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "propUser",
-		"owningComponentOrClassName": "V1Prop",  
-		"owningComponentId": 62,
-        // Component information associated with the object. @State can collect custom components and system components. Child03 is a child component of Child01. When @Prop is used, the deep copy object changes. Therefore, the information cannot be collected.
-		"dependentInfo": [{
-			"elementName": "Child01",
-			"elementId": 64
-		}, {
-			"elementName": "Child02",
-			"elementId": 65
-		}]
-	}, {
-        // Decorator name.
-		"decoratorName": "@Prop",
-        // Attribute name of the decorator.
-		"stateVariableName": "propUser",
-        // Name of the component where the decorator is located.
-		"owningComponentOrClassName": "Child01",
-        // ID of the component where the decorator is located.
-		"owningComponentId": 64,
-        // Component information associated with the object. @Prop can collect custom components and system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 69
-		}, {
-			"elementName": "Child03",
-			"elementId": 70
-		}]
-	}, {
-		"decoratorName": "@Prop",
-		"stateVariableName": "propUser",
-		"owningComponentOrClassName": "Child02",
-		"owningComponentId": 65,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 74
-		}]
-	}]
-}
-```
-
-### @Link Application Scenarios
-
-[@Link](./arkts-link.md) The decorator can collect system components associated with objects, but cannot collect custom components.
-
-The sample code is as follows:
-
-<!-- @[v1_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1Link.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-class LinkUser {
-  public name?: string;
-
-  constructor(name?: string) {
-    this.name = name ?? '';
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-@Entry
-@Component
-struct V1Link {
-  @State linkUser: LinkUser = new LinkUser('Jack');
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01({ linkUser: this.linkUser })
-
-      Child02({ linkUser: this.linkUser })
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.linkUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@Component
-export struct Child01 {
-  @Link linkUser: LinkUser;
-
-  build() {
-    Column() {
-      // Only the custom component is called, and the component information cannot be collected.
-      Child03({ linkUser: this.linkUser })
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @Link linkUser: LinkUser;
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.linkUser.name)
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @Link linkUser: LinkUser;
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.linkUser.name)
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object decorated by @State is an observable object.
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-    // Decorator information. The first decorator collects the @State of the parent component. For details, see the @State application scenario.
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "linkUser",
-		"owningComponentOrClassName": "V1Link",
-		"owningComponentId": 62,
-        // When @Link is used in the customized subcomponent, it cannot be collected.
-		"dependentInfo": []
-	}, {
-        // Decorator name.
-		"decoratorName": "@Link",
+        "decoratorName": "@State",
         // Name of the attribute decorated by the decorator.
-		"stateVariableName": "linkUser",
+        "stateVariableName": "stateUser",
         // Name of the component where the decorator is located.
-		"owningComponentOrClassName": "Child01",
+        "owningComponentOrClassName": "V1State",
         // ID of the component where the decorator is located.
-		"owningComponentId": 64,
-        // The @Link decorator can collect only system components and cannot collect custom components.
-		"dependentInfo": []
-	}, {
-		"decoratorName": "@Link",
-		"stateVariableName": "linkUser",
-		"owningComponentOrClassName": "Child03",
-		"owningComponentId": 69,
-        // The @Link decorator can collect only system components and cannot collect custom components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 71
-		}]
-	}, {
-		"decoratorName": "@Link",
-		"stateVariableName": "linkUser",
-		"owningComponentOrClassName": "Child02",
-		"owningComponentId": 65,
-        // The @Link decorator can collect only system components and cannot collect custom components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 73
-		}]
-	}]
+        "owningComponentId": 4,
+        // Information about the component associated with the object
+        "dependentInfo": [{
+            // Component name.
+            "elementName": "Text",
+            // Component ID.
+            "elementId": 6
+        }, {
+            "elementName": "Text",
+            "elementId": 7
+        }]
+    }]
 }
 ```
 
-### @ObjectLink Application Scenarios
+**Objects decorated with the @Observed decorator**
 
-The [@ObjectLink](./arkts-observed-and-objectlink.md) can collect the system components and custom components associated with the object.
+The following describes how to use the [@Observed](./arkts-observed-and-objectlink.md) decorator to decorate an object and the [@Track](./arkts-track.md) decorator to decorate the object properties.
 
 The sample code is as follows:
 
-<!-- @[v1_object_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1ObjectLink.ets) -->
+<!-- @[v1_track](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1Track.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
-class ObjectLinkUser {
+@Observed
+class TrackUser {
+  @Track
   public name?: string;
+  @Track
+  public age?: number;
 
-  constructor(name?: string) {
+  constructor(name?: string, age?: number) {
     this.name = name ?? '';
+    this.age = age ?? 0;
   }
 
   // Provide a method in the object to determine whether the object can be observed.
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
 @Entry
 @Component
-struct V1ObjectLink {
-  @State objLinkUser: ObjectLinkUser = new ObjectLinkUser('Monkey');
+struct V1Track {
+  @State trackUser: TrackUser = new TrackUser('Robert', 25);
 
   build() {
     Column({ space: 20 }) {
-
-      Child01({ objLinkUser: this.objLinkUser })
-
-      Child02({ objLinkUser: this.objLinkUser })
-
+      TrackChild({ trackUser: this.trackUser })
       Button('test')
         .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.objLinkUser.test();
+          // You can use this API on any page to determine whether the current object is observable and obtain the component information associated with the object.
+          this.trackUser.test();
         })
-
     }
     .height('100%')
     .width('100%')
@@ -498,1273 +221,125 @@ struct V1ObjectLink {
 }
 
 @Component
-export struct Child01 {
-  @ObjectLink objLinkUser: ObjectLinkUser;
+struct TrackChild {
+  @ObjectLink trackUser: TrackUser;
 
   build() {
     Column() {
-      Text('Child01 ' + this.objLinkUser.name)
-
-      Child03({ objLinkUser: this.objLinkUser })
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @ObjectLink objLinkUser: ObjectLinkUser;
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.objLinkUser.name)
-
-      Child03({ objLinkUser: this.objLinkUser })
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @ObjectLink objLinkUser: ObjectLinkUser;
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.objLinkUser.name)
+      // The component uses the properties of the observable object.
+      Text('user name: ' + this.trackUser.name)
+      // The component uses the properties of the observable object.
+      Text('user age: ' + this.trackUser.age)
     }
   }
 }
 ```
+
+When an object property is decorated with the [@Track](./arkts-track.md) decorator, the decorator information collection specifications are the same as those of the V2 component decorator. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios-where-v2-component-objects-can-be-observed).
 
 Returned result:
 
-``` json
+``` json5
 {
-    // Observable
-	"isObserved": true,
-    // The object decorated by @State is an observable object.
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-    // Decorator information. The first decorator collects the @State of the parent component. For details, see the @State application scenario.
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "objLinkUser",
-		"owningComponentOrClassName": "V1ObjectLink",
-		"owningComponentId": 62,
-		"dependentInfo": [{
-			"elementName": "Child01",
-			"elementId": 64
-		}, {
-			"elementName": "Child02",
-			"elementId": 65
-		}]
-	}, {
-        // Decorator name.
-		"decoratorName": "@ObjectLink",
-        // Name of the attribute decorated by the decorator.
-		"stateVariableName": "objLinkUser",
-        // Name of the component where the decorator is located.
-		"owningComponentOrClassName": "Child01",
-        // ID of the component where the decorator is located.
-		"owningComponentId": 64,
-        // Component information associated with the object. @ObjectLink can collect system components and custom components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 69
-		}, {
-			"elementName": "Child03",
-			"elementId": 70
-		}]
-	}, {
-		"decoratorName": "@ObjectLink",
-		"stateVariableName": "objLinkUser",
-		"owningComponentOrClassName": "Child02",
-		"owningComponentId": 65,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 74
-		}, {
-			"elementName": "Child03",
-			"elementId": 75
-		}]
-	}, {
-		"decoratorName": "@ObjectLink",
-		"stateVariableName": "objLinkUser",
-		"owningComponentOrClassName": "Child03",
-		"owningComponentId": 70,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 72
-		}]
-	}, {
-		"decoratorName": "@ObjectLink",
-		"stateVariableName": "objLinkUser",
-		"owningComponentOrClassName": "Child03",
-		"owningComponentId": 75,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 77
-		}]
-	}]
+    // The object is observable.
+    "isObserved": true,
+    // The object decorated by @Observed is observable.
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    // The object property is decorated with @Track. The information collection specifications of the decorator are the same as those of the V2 component.
+    "decoratorInfo": [{
+        // When the object property is decorated with @Track, the decorator name is fixed to @Track.
+        "decoratorName": "@Track",
+        // When the object property is decorated with @Track, stateVariableName indicates the name of the property decorated with @Track.
+        "stateVariableName": "name",
+        // When the object property is decorated with @Track, owningComponentOrClassName indicates the class name.
+        "owningComponentOrClassName": "TrackUser",
+        // When owningComponentOrClassName is a class name, the value of owningComponentId is always -1.
+        "owningComponentId": -1,
+        // Information about the component associated with the name property of the object.
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 10
+        }]
+    }, {
+        "decoratorName": "@Track",
+        "stateVariableName": "age",
+        "owningComponentOrClassName": "TrackUser",
+        "owningComponentId": -1,
+        // Information about the component associated with the name property of the object.
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 11
+        }]
+    }]
 }
 ```
 
-### @StorageLink Application Scenarios
+### Scenarios Where V2 Component Objects Can Be Observed
 
-[@StorageLink](./arkts-appstorage.md#storagelink) can collect system components associated with objects, but cannot collect custom components.
+In V2 components, the following objects can be observed:
+- Objects decorated with the [@ObservedV2](./arkts-new-observedV2-and-trace.md) decorator
+- **Array**, **Set**, **Map**, and **Date** data objects decorated with state management V2 decorators
+- Objects wrapped using the [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) method
 
-The sample code is as follows:
+State management V2 decorators refer to [@Local](./arkts-new-local.md), [@Param](./arkts-new-param.md), [@Provider](./arkts-new-provider-and-consumer.md) and [@Consumer](./arkts-new-provider-and-consumer.md).
 
-<!-- @[v1_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1StorageLink.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-class StorageLinkUser {
-  public name?: string;
-
-  constructor(name?: string) {
-    this.name = name ?? '';
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-AppStorage.setOrCreate('user', new StorageLinkUser('Lee'));
-
-@Entry
-@Component
-struct V1StorageLink {
-  @StorageLink('user') storageLinkUser: StorageLinkUser = new StorageLinkUser();
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01()
-
-      Child02()
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.storageLinkUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@Component
-export struct Child01 {
-  @StorageLink('user') storageLinkUser: StorageLinkUser = new StorageLinkUser();
-
-  build() {
-    Column() {
-      Text('Child01 ' + this.storageLinkUser.name)
-
-      Child03()
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @StorageLink('user') storageLinkUser: StorageLinkUser = new StorageLinkUser();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.storageLinkUser.name)
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @StorageLink('user') storageLinkUser: StorageLinkUser = new StorageLinkUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.storageLinkUser.name)
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object decorated by @StorageLink is an observable object.
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-    // Decorator information
-	"decoratorInfo": [{
-        // By default, a @State decorator is added to the alias of the @StorageLink decorator.
-		"decoratorName": "@State",
-		"stateVariableName": "user",
-		"owningComponentOrClassName": "",
-		"dependentInfo": []
-	}, {
-        // Decorator name.
-		"decoratorName": "@StorageLink",
-        // Name of the attribute decorated by the decorator.
-		"stateVariableName": "storageLinkUser",
-        // Name of the component where the decorator is located.
-		"owningComponentOrClassName": "V1StorageLink",
-        // ID of the component where the decorator is located.
-		"owningComponentId": 62,
-        // The @StorageLink decorator can collect only system components.
-		"dependentInfo": []
-	}, {
-		"decoratorName": "@StorageLink",
-		"stateVariableName": "storageLinkUser",
-		"owningComponentOrClassName": "Child01",
-		"owningComponentId": 64,
-        // The @StorageLink decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 69
-		}]
-	}, {
-		"decoratorName": "@StorageLink",
-		"stateVariableName": "storageLinkUser",
-		"owningComponentOrClassName": "Child02",
-		"owningComponentId": 65,
-        // The @StorageLink decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 74
-		}]
-	}, {
-		"decoratorName": "@StorageLink",
-		"stateVariableName": "storageLinkUser",
-		"owningComponentOrClassName": "Child03",
-		"owningComponentId": 70,
-        // The @StorageLink decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 72
-		}]
-	}]
-}
-```
-
-### @StorageProp Application Scenario
-
-[@StorageProp](./arkts-appstorage.md#storageprop) can collect system components associated with objects, but cannot collect custom components.
-
-The sample code is as follows:
-
-<!-- @[v1_storage_prop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1StorageProp.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-class StoragePropUser {
-  public name?: string;
-
-  constructor(name?: string) {
-    this.name = name ?? '';
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-AppStorage.setOrCreate('propUser', new StoragePropUser('Flowers'));
-
-@Entry
-@Component
-struct V1StorageProp {
-  @StorageLink('propUser') storagePropUser: StoragePropUser = new StoragePropUser();
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01()
-
-      Child02()
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.storagePropUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@Component
-export struct Child01 {
-  @StorageProp('propUser') storagePropUser: StoragePropUser = new StoragePropUser();
-
-  build() {
-    Column() {
-      Text('Child01 ' + this.storagePropUser.name)
-
-      Child03()
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @StorageProp('propUser') storagePropUser: StoragePropUser = new StoragePropUser();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.storagePropUser.name)
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @StorageProp('propUser') storagePropUser: StoragePropUser = new StoragePropUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.storagePropUser.name)
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object decorated by @StorageLink is an observable object.
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-    // Decorator information
-	"decoratorInfo": [{
-        // By default, a @State decorator is added to the alias of the @StorageLink decorator.
-		"decoratorName": "@State",
-		"stateVariableName": "propUser",
-		"owningComponentOrClassName": "",
-		"dependentInfo": []
-	}, {
-		"decoratorName": "@StorageLink",
-		"stateVariableName": "storagePropUser",
-		"owningComponentOrClassName": "V1StorageProp",
-		"owningComponentId": 62,
-		"dependentInfo": []
-	}, {
-        // Decorator name.
-		"decoratorName": "@StorageProp",
-        // Name of the attribute decorated by the decorator.
-		"stateVariableName": "storagePropUser",
-        // Name of the component where the decorator is located.
-		"owningComponentOrClassName": "Child01",
-        // ID of the component where the decorator is located.
-		"owningComponentId": 64,
-        // The @StorageProp decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 69
-		}]
-	}, {
-		"decoratorName": "@StorageProp",
-		"stateVariableName": "storagePropUser",
-		"owningComponentOrClassName": "Child02",
-		"owningComponentId": 65,
-        // The @StorageProp decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 74
-		}]
-	}, {
-		"decoratorName": "@StorageProp",
-		"stateVariableName": "storagePropUser",
-		"owningComponentOrClassName": "Child03",
-		"owningComponentId": 70,
-        // The @StorageProp decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 72
-		}]
-	}]
-}
-```
-
-### @LocalStorageLink Application Scenario
-
-[@LocalStorageLink](./arkts-localstorage.md#localstoragelink) can collect system components associated with objects, but cannot collect custom components.
-
-The sample code is as follows:
-
-<!-- @[v1_local_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1LocalStorageLink.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-class LocalStorageLinkUser {
-  public name?: string;
-
-  constructor(name?: string) {
-    this.name = name ?? '';
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-const storage = new LocalStorage();
-storage.setOrCreate('localLinkUser', new LocalStorageLinkUser('Lorenz'));
-
-@Entry(storage)
-@Component
-struct V1LocalStorageLink {
-  @LocalStorageLink('localLinkUser') localUser: LocalStorageLinkUser = new LocalStorageLinkUser();
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01()
-
-      Child02()
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.localUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@Component
-export struct Child01 {
-  @LocalStorageLink('localLinkUser') localUser: LocalStorageLinkUser = new LocalStorageLinkUser();
-
-  build() {
-    Column() {
-      Child03()
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @LocalStorageLink('localLinkUser') localUser: LocalStorageLinkUser = new LocalStorageLinkUser();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.localUser.name)
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @LocalStorageLink('localLinkUser') localUser: LocalStorageLinkUser = new LocalStorageLinkUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.localUser.name)
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object decorated by @LocalStorageLink is an observable object.
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-    // Decorator information
-	"decoratorInfo": [{
-        // By default, a @State decorator is added to the alias of the @LocalStorageLink decorator.
-		"decoratorName": "@State",
-		"stateVariableName": "localLinkUser",
-		"owningComponentOrClassName": "",
-		"dependentInfo": []
-	}, {
-        // Decorator name.
-		"decoratorName": "@LocalStorageLink",
-        // Name of the attribute decorated by the decorator.
-		"stateVariableName": "localUser",
-        // Name of the component where the decorator is located.
-		"owningComponentOrClassName": "V1LocalStorageLink",
-        // ID of the component where the decorator is located.
-		"owningComponentId": 62,
-        // The @LocalStorageLink decorator can collect only system components.
-		"dependentInfo": []
-	}, {
-		"decoratorName": "@LocalStorageLink",
-		"stateVariableName": "localUser",
-		"owningComponentOrClassName": "Child01",
-		"owningComponentId": 64,
-        // The @LocalStorageLink decorator can collect only system components.
-		"dependentInfo": []
-	}, {
-		"decoratorName": "@LocalStorageLink",
-		"stateVariableName": "localUser",
-		"owningComponentOrClassName": "Child02",
-		"owningComponentId": 65,
-        // The @LocalStorageLink decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 73
-		}]
-	}, {
-		"decoratorName": "@LocalStorageLink",
-		"stateVariableName": "localUser",
-		"owningComponentOrClassName": "Child03",
-		"owningComponentId": 69,
-        // The @LocalStorageLink decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 71
-		}]
-	}]
-}
-```
-
-### @LocalStorageProp Application Scenario
-
-[@LocalStorageProp](./arkts-localstorage.md#localstorageprop) can collect system components associated with objects, but cannot collect custom components.
-
-The sample code is as follows:
-
-<!-- @[v1_local_storage_prop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1LocalStorageProp.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-class LocalStoragePropUser {
-  public name?: string;
-
-  constructor(name?: string) {
-    this.name = name ?? '';
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-const storage = new LocalStorage();
-storage.setOrCreate('localPropUser', new LocalStoragePropUser('Camry'));
-
-@Entry(storage)
-@Component
-struct V1LocalStorageProp {
-  @LocalStorageLink('localPropUser') localStoragePropUser: LocalStoragePropUser = new LocalStoragePropUser();
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01()
-
-      Child02()
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.localStoragePropUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@Component
-export struct Child01 {
-  @LocalStorageProp('localPropUser') localStoragePropUser: LocalStoragePropUser = new LocalStoragePropUser();
-
-  build() {
-    Column() {
-      Child03()
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @LocalStorageProp('localPropUser') localStoragePropUser: LocalStoragePropUser = new LocalStoragePropUser();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.localStoragePropUser.name)
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @LocalStorageProp('localPropUser') localStoragePropUser: LocalStoragePropUser = new LocalStoragePropUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.localStoragePropUser.name)
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object decorated by @LocalStorageLink is an observable object.
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-    // Decorator information
-	"decoratorInfo": [{
-       // By default, a @State decorator is added to the alias of the @LocalStorageLink decorator.
-		"decoratorName": "@State",
-		"stateVariableName": "localPropUser",
-		"owningComponentOrClassName": "",
-		"dependentInfo": []
-	}, {
-        // Decorator name.
-		"decoratorName": "@LocalStorageLink",
-        // Name of the attribute decorated by the decorator.
-		"stateVariableName": "localStoragePropUser",
-        // Name of the component where the decorator is located.
-		"owningComponentOrClassName": "V1LocalStorageProp",
-        // ID of the component where the decorator is located.
-		"owningComponentId": 62,
-		"dependentInfo": []
-	}, {
-		"decoratorName": "@LocalStorageProp",
-		"stateVariableName": "localStoragePropUser",
-		"owningComponentOrClassName": "Child01",
-		"owningComponentId": 64,
-        // The @LocalStorageProp decorator can collect only system components.
-		"dependentInfo": []
-	}, {
-		"decoratorName": "@LocalStorageProp",
-		"stateVariableName": "localStoragePropUser",
-		"owningComponentOrClassName": "Child02",
-		"owningComponentId": 65,
-        // The @LocalStorageProp decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 73
-		}]
-	}, {
-		"decoratorName": "@LocalStorageProp",
-		"stateVariableName": "localStoragePropUser",
-		"owningComponentOrClassName": "Child03",
-		"owningComponentId": 69,
-        // The @LocalStorageProp decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 71
-		}]
-	}]
-}
-```
-
-### Application Scenarios of @Provide and @Consume
-
-[@Provide](./arkts-provide-and-consume.md) and [@Consume](./arkts-provide-and-consume.md) are used together. Both of them can collect system components associated with objects, but cannot collect custom components.
-
-The sample code is as follows:
-
-<!-- @[v1_provide_and_consume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1ProvideAndConsume.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-class ProvideConsumeUser {
-  public name?: string;
-
-  constructor(name?: string) {
-    this.name = name ?? '';
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-@Entry
-@Component
-struct V1ProvideAndConsume {
-  @Provide('ProvideUser') pcUser: ProvideConsumeUser = new ProvideConsumeUser('Jenny');
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01()
-
-      Child02()
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.pcUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@Component
-export struct Child01 {
-  @Consume('ProvideUser') pcUser: ProvideConsumeUser = new ProvideConsumeUser();
-
-  build() {
-    Column() {
-      Child03()
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @Consume('ProvideUser') pcUser: ProvideConsumeUser = new ProvideConsumeUser();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.pcUser.name)
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @Consume('ProvideUser') pcUser: ProvideConsumeUser = new ProvideConsumeUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.pcUser.name)
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object decorated by @Provide is an observable object.
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-    // Decorator information
-	"decoratorInfo": [{
-        // Decorator name.
-		"decoratorName": "@Provide",
-        // Name of the attribute decorated by the decorator.
-		"stateVariableName": "pcUser",
-        // Name of the component where the decorator is located.
-		"owningComponentOrClassName": "V1ProvideAndConsume",
-        // ID of the component where the decorator is located
-		"owningComponentId": 62,
-        // The @Provide decorator can collect only system components.
-		"dependentInfo": []
-	}, {
-		"decoratorName": "@Consume",
-		"stateVariableName": "pcUser",
-		"owningComponentOrClassName": "Child01",
-		"owningComponentId": 64,
-        // The @Consume decorator can collect only system components.
-		"dependentInfo": []
-	}, {
-		"decoratorName": "@Consume",
-		"stateVariableName": "pcUser",
-		"owningComponentOrClassName": "Child02",
-		"owningComponentId": 65,
-        // The @Consume decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 73
-		}]
-	}, {
-		"decoratorName": "@Consume",
-		"stateVariableName": "pcUser",
-		"owningComponentOrClassName": "Child03",
-		"owningComponentId": 69,
-        // The @Consume decorator can collect only system components.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 71
-		}]
-	}]
-}
-```
-
-### Built-in Data Type Application Scenarios
-
-The built-in types include Array, Map, Set, and Date.
-
-The sample code is as follows:
-
-<!-- @[v1_built_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1BuiltIn.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-// Provide a method for determining whether an object is observable.
-function test(obj: object): void {
-  console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(obj))}`);
-}
-
-@Entry
-@Component
-struct V1BuiltIn {
-  @State arr: string[] = [];
-  @State map: Map<string, string> = new Map<string, string>();
-  @State set: Set<string> = new Set<string>();
-  @State date: Date = new Date();
-
-  aboutToAppear(): void {
-    this.arr = ['1', '2', '3'];
-    this.map.set('a', '11');
-    this.map.set('b', '22');
-    this.map.set('c', '33');
-    this.set.add('111');
-    this.set.add('222');
-    this.set.add('333');
-    this.date = new Date('2025-12-12');
-  }
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01({ arr: this.arr })
-
-      Child02({ map: this.map })
-
-      Child03({ set: this.set })
-
-      Child04({ date: this.date })
-
-      Button('test arr')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          test(this.arr);
-        })
-
-      Button('test map')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          test(this.map);
-        })
-
-      Button('test set')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          test(this.set);
-        })
-
-      Button('test date')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          test(this.date);
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@Component
-export struct Child01 {
-  @State arr: string[] = [];
-
-  build() {
-    Column() {
-      ForEach(this.arr, (item: string) => {
-        Text('Child01 ' + item)
-      })
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @State map: Map<string, string> = new Map<string, string>();
-
-  build() {
-    Column() {
-      ForEach(Array.from(this.map), (item: object) => {
-        Text('Child02 ' + JSON.stringify(item))
-      })
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @State set: Set<string> = new Set<string>();
-
-  build() {
-    Column() {
-      ForEach(Array.from(this.set), (item: string) => {
-        Text('Child03 ' + item)
-      })
-    }
-  }
-}
-
-@Component
-export struct Child04 {
-  @State date: Date = new Date();
-
-  build() {
-    Column() {
-      Text('Child03 year: ' + this.date.getFullYear())
-      Text('Child03 month: ' + this.date.getMonth())
-      Text('Child03 day: ' + this.date.getDate())
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-// Result of the array type. For details, see the application scenario of @State.
-{
-	"isObserved": true,
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "arr",
-		"owningComponentOrClassName": "V1BuiltIn",
-		"owningComponentId": 62,
-		"dependentInfo": [{
-			"elementName": "Child01",
-			"elementId": 64
-		}]
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "arr",
-		"owningComponentOrClassName": "Child01",
-		"owningComponentId": 64,
-		"dependentInfo": [{
-			"elementName": "ForEach",
-			"elementId": 77
-		}]
-	}]
-}
-
-// Result of the Map type. For details, see the application scenario of @State.
-{
-	"isObserved": true,
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "map",
-		"owningComponentOrClassName": "V1BuiltIn",
-		"owningComponentId": 62,
-		"dependentInfo": [{
-			"elementName": "Child02",
-			"elementId": 65
-		}]
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "map",
-		"owningComponentOrClassName": "Child02",
-		"owningComponentId": 65,
-		"dependentInfo": [{
-			"elementName": "ForEach",
-			"elementId": 85
-		}]
-	}]
-}
-
-// Set result. For details, see the application scenario of @State.
-{
-	"isObserved": true,
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "set",
-		"owningComponentOrClassName": "V1BuiltIn",
-		"owningComponentId": 62,
-		"dependentInfo": [{
-			"elementName": "Child03",
-			"elementId": 66
-		}]
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "set",
-		"owningComponentOrClassName": "Child03",
-		"owningComponentId": 66,
-		"dependentInfo": [{
-			"elementName": "ForEach",
-			"elementId": 93
-		}]
-	}]
-}
-
-// Result of the Date type. For details, see the application scenario of @State.
-{
-	"isObserved": true,
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "date",
-		"owningComponentOrClassName": "V1BuiltIn",
-		"owningComponentId": 62,
-		"dependentInfo": [{
-			"elementName": "Child04",
-			"elementId": 67
-		}]
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "date",
-		"owningComponentOrClassName": "Child04",
-		"owningComponentId": 67,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 101
-		}, {
-			"elementName": "Text",
-			"elementId": 102
-		}, {
-			"elementName": "Text",
-			"elementId": 103
-		}]
-	}]
-}
-```
-
-### makeV1Observed Application Scenarios
-
-Object converted using the [makeV1Observed](./arkts-v1-v2-mixusage.md#makev1observed) method. The component associated with the object is collected based on the decorator used by the subcomponent.
-
-The sample code is as follows:
-
-<!-- @[v1_makeV1Observed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1MakeV1Observed.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-class ObservedV1User {
-  public name?: string;
-
-  constructor(name?: string) {
-    this.name = name ?? '';
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-@Entry
-@Component
-struct V1MakeV1Observed {
-  observedUser: ObservedV1User = UIUtils.makeV1Observed(new ObservedV1User('White'));
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01({ observedUser: this.observedUser })
-
-      Child02({ observedUser: this.observedUser })
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.observedUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@Component
-export struct Child01 {
-  @State observedUser: ObservedV1User = new ObservedV1User();
-
-  build() {
-    Column() {
-      Child03({ observedUser: this.observedUser })
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @State observedUser: ObservedV1User = new ObservedV1User();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.observedUser.name)
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @State observedUser: ObservedV1User = new ObservedV1User();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.observedUser.name)
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-// For details, see the @State application scenario.
-{
-	"isObserved": true,
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "observedUser",
-		"owningComponentOrClassName": "Child01",
-		"owningComponentId": 69,
-		"dependentInfo": [{
-			"elementName": "Child03",
-			"elementId": 74
-		}]
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "observedUser",
-		"owningComponentOrClassName": "Child02",
-		"owningComponentId": 70,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 78
-		}]
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "observedUser",
-		"owningComponentOrClassName": "Child03",
-		"owningComponentId": 74,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 76
-		}]
-	}]
-}
-```
-
-## V2 Application Scenarios
-
-The application scenarios of V2 include @Local, @Param, @Computed, @Monitor, @Provider, @Consumer decorator, and makeObserved.
-
-The collection method of the V2 decorator is different from that of the V1 decorator. Generally, the V2 decorator is used together with @ObservedV2 and @Trace.
-The V2 decorator collects component information based on the @Trace attribute of the object. Examples:
-
+The specifications for collecting decorators of V2 components are different from those of V1 components. V2 components collect decorator information based on the object properties decorated with the @Trace decorator. The following TestClass is used as an example. The @Trace decorator displays information about associated components by property.
 ``` TypeScript
 // Define a class.
 @ObservedV2
-class Test {
+class TestClass {
   @Trace a?: string;
   @Trace b?: string;
   @Trace c?: string;
 }
 ```
-``` json
+``` json5
 // Analyze the returned result.
 {
-	"isObserved": true,
-	"reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
-    // The decorator information is classified based on the attributes decorated by @Trace.
-	"decoratorInfo": [{
-		"decoratorName": "@Trace",
-        // Name of the @Trace attribute in the object
-		"stateVariableName": "a",
-		"owningComponentOrClassName": "TestClass",
-		"owningComponentId": -1,
-        // The component information associated with the same @Trace attribute is collected together.
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 4
-		},{
-			"elementName": "Text",
-			"elementId": 5
-		}]
-	},{
-		"decoratorName": "@Trace",
-		"stateVariableName": "b",
-		"owningComponentOrClassName": "TestClass",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 6
-		}]
-	},{
-		"decoratorName": "@Trace",
-		"stateVariableName": "c",
-		"owningComponentOrClassName": "TestClass",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 7
-		},{
-			"elementName": "Text",
-			"elementId": 8
-		}]
-	}]
+    // The object is observable.
+    "isObserved": true,
+    "reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
+    // Decorator information is classified and collected based on the properties decorated with @Trace.
+    "decoratorInfo": [{
+        "decoratorName": "@Trace",
+        // Name of the @Trace decorated object property.
+        "stateVariableName": "a",
+        // Class name of the object.
+        "owningComponentOrClassName": "TestClass",
+        // Return -1 for owningComponentId.
+        "owningComponentId": -1,
+        // Component information associated with the same @Trace decorated property is collected together.
+        "dependentInfo": [{
+            "elementId": 5,
+            "elementName": "Text"
+        }]
+    },{
+        "decoratorName": "@Trace",
+        "stateVariableName": "b",
+        "owningComponentOrClassName": "TestClass",
+        "owningComponentId": -1,
+        // Component information associated with the same @Trace decorated property is collected together.
+        "dependentInfo": [{
+            "elementId": 6,
+            "elementName": "Text"
+        }]
+    },{
+        "decoratorName": "@Trace",
+        "stateVariableName": "c",
+        "owningComponentOrClassName": "TestClass",
+        "owningComponentId": -1,
+        // Component information associated with the same @Trace decorated property is collected together.
+        "dependentInfo": [{
+            "elementId": 7,
+            "elementName": "Text"
+        }]
+    }]
 }
 ```
 
-### @Local Application Scenarios
+**Objects decorated with the @ObservedV2 decorator**
 
-[@Local](./arkts-new-local.md) can be initialized only in the current component. Therefore, only the information about the current component can be collected.
+The following describes a usage scenario where an object is decorated with the [@ObservedV2](./arkts-new-observedV2-and-trace.md) decorator in a V2 component.
 
 The sample code is as follows:
 
@@ -1772,6 +347,7 @@ The sample code is as follows:
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -1789,28 +365,24 @@ class LocalUser {
 
   // Provide a method in the object to determine whether the object can be observed.
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
 @Entry
 @ComponentV2
 struct V2Local {
-  @Local localUser: LocalUser = new LocalUser('Goat', 35);
+  @Local localUser: LocalUser = new LocalUser('Michael', 29);
 
   build() {
     Column({ space: 20 }) {
-
       Text('index ' + this.localUser.name)
-
       Text('index ' + this.localUser.age)
-
       Button('test')
         .onClick(() => {
           // You can use this API on any page to determine whether the current object can be observed.
           this.localUser.test();
         })
-
     }
     .height('100%')
     .width('100%')
@@ -1822,1092 +394,44 @@ struct V2Local {
 
 Returned result:
 
-``` json
+``` json5
 {
-    // Observable
-	"isObserved": true,
-    // The object decorated by @ObservedV2 is an observable object.
-	"reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
-    // Decorator information. The V2 object collects information based on the attributes decorated by @Trace in the object.
-	"decoratorInfo": [{
-		"decoratorName": "@Trace",
-        // Name of the attribute decorated by @Trace.
-		"stateVariableName": "name",
-        // Class name of the V2 observable object
-		"owningComponentOrClassName": "LocalUser",
-        // In V2, -1 is returned by default.
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 19,
-			"elementName": "Text"
-		}]
-	}, {
-		"decoratorName": "@Trace",
-		"stateVariableName": "age",
-		"owningComponentOrClassName": "LocalUser",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 20,
-			"elementName": "Text"
-		}]
-	}]
+    // The object is observable.
+    "isObserved": true,
+    // The object decorated by @ObservedV2 is observable.
+    "reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
+    // Decorator information on the object, which is collected by category based on the property decorated with @Trace.
+    "decoratorInfo": [{
+        // The decorator name is fixed to @Trace.
+        "decoratorName": "@Trace",
+        // Name of the property decorated by @Trace.
+        "stateVariableName": "name",
+        // Class name of the object.
+        "owningComponentOrClassName": "LocalUser",
+        // Return -1 for owningComponentId.
+        "owningComponentId": -1,
+        // Information about the component associated with the name property of the object.
+        "dependentInfo": [{
+            "elementId": 6,
+            "elementName": "Text"
+        }]
+    }, {
+        "decoratorName": "@Trace",
+        "stateVariableName": "age",
+        "owningComponentOrClassName": "LocalUser",
+        "owningComponentId": -1,
+        // Information about the component associated with the name property of the object.
+        "dependentInfo": [{
+            "elementId": 7,
+            "elementName": "Text"
+        }]
+    }]
 }
 ```
 
-### @Param Application Scenarios
+### Scenarios Where Objects Become Observable When Mixing V1 and V2 Components
 
-[@Param](./arkts-new-param.md) can collect system components associated with the object, but cannot collect custom components.
-
-The sample code is as follows:
-
-<!-- @[v2_param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Param.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-@ObservedV2
-class ParamUser {
-  @Trace
-  public name?: string;
-  @Trace
-  public age?: number;
-
-  constructor(name?: string, age?: number) {
-    this.name = name ?? '';
-    this.age = age ?? 0;
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-@Entry
-@ComponentV2
-struct V2Param {
-  @Local paramUser: ParamUser = new ParamUser('Uranus', 26);
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01({ paramUser: this.paramUser })
-
-      Child02({ paramUser: this.paramUser })
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.paramUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@ComponentV2
-export struct Child01 {
-  @Param paramUser: ParamUser = new ParamUser();
-
-  build() {
-    Column() {
-      Child03({ paramUser: this.paramUser })
-    }
-  }
-}
-
-@ComponentV2
-export struct Child02 {
-  @Param paramUser: ParamUser = new ParamUser();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.paramUser.name)
-
-      Child04({ paramUser: this.paramUser })
-    }
-  }
-}
-
-@ComponentV2
-export struct Child03 {
-  @Param paramUser: ParamUser = new ParamUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.paramUser.name)
-    }
-  }
-}
-
-@ComponentV2
-export struct Child04 {
-  @Param paramUser: ParamUser = new ParamUser();
-
-  build() {
-    Column() {
-      Text('Child04 ' + this.paramUser.age)
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object decorated by ObservedV2 is an observable object.
-	"reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
-    // Decorator information. For details, see the @Local application scenario.
-	"decoratorInfo": [{
-		"decoratorName": "@Trace",
-		"stateVariableName": "name",
-		"owningComponentOrClassName": "ParamUser",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 26,
-			"elementName": "Text"
-		}, {
-			"elementId": 28,
-			"elementName": "Text"
-		}]
-	}, {
-		"decoratorName": "@Trace",
-		"stateVariableName": "age",
-		"owningComponentOrClassName": "ParamUser",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 31,
-			"elementName": "Text"
-		}]
-	}]
-}
-```
-
-### @Computed Application Scenarios
-
-[@Computed](./arkts-new-computed.md) can collect the @Computed method name and method ID associated with the object.
-
-The sample code is as follows:
-
-<!-- @[v2_computed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Computed.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-@ObservedV2
-class ComputedUser {
-  @Trace
-  public name?: string;
-  @Trace
-  public age?: number;
-
-  constructor(name?: string, age?: number) {
-    this.name = name ?? '';
-    this.age = age ?? 0;
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-@Entry
-@ComponentV2
-struct V2Computed {
-  @Local computedUser: ComputedUser = new ComputedUser('Shanks', 66);
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01({ computedUser: this.computedUser })
-
-      Child02({ computedUser: this.computedUser })
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.computedUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@ComponentV2
-export struct Child01 {
-  @Param computedUser: ComputedUser = new ComputedUser();
-
-  @Computed
-  get child01Name(): string {
-    return this.computedUser.name as string;
-  }
-
-  @Computed
-  get child01Age(): number {
-    return this.computedUser.age as number;
-  }
-
-  build() {
-    Column() {
-      Child03({ computedUser: this.computedUser })
-    }
-  }
-}
-
-@ComponentV2
-export struct Child02 {
-  @Param computedUser: ComputedUser = new ComputedUser();
-
-  @Computed
-  get child02Name(): string {
-    return this.computedUser.name as string;
-  }
-
-  build() {
-    Column() {
-
-    }
-  }
-}
-
-@ComponentV2
-export struct Child03 {
-  @Param computedUser: ComputedUser = new ComputedUser();
-
-  @Computed
-  get child03Age(): number {
-    return this.computedUser.age as number;
-  }
-
-  build() {
-    Column() {
-
-    }
-  }
-}
-
-@ComponentV2
-export struct Child04 {
-  @Param computedUser: ComputedUser = new ComputedUser();
-
-  @Computed
-  get child04Name(): string {
-    return this.computedUser.name as string;
-  }
-
-  @Computed
-  get child04Age(): number {
-    return this.computedUser.age as number;
-  }
-
-  build() {
-    Column() {
-
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object decorated by @ObservedV2 is an observable object.
-	"reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
-    // Decorator information. For details, see the @Local application scenario.
-	"decoratorInfo": [{
-		"decoratorName": "@Trace",
-		"stateVariableName": "name",
-		"owningComponentOrClassName": "ComputedUser",
-		"owningComponentId": -1,
-        // Component information. The V2 decorator can collect the @Computed method name and ID.
-		"dependentInfo": [{
-			"elementId": 68719476737,
-			"elementName": "@Computed get child01Name"
-		}, {
-			"elementId": 68719476739,
-			"elementName": "@Computed get child02Name"
-		}]
-	}, {
-		"decoratorName": "@Trace",
-		"stateVariableName": "age",
-		"owningComponentOrClassName": "ComputedUser",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 68719476738,
-			"elementName": "@Computed get child01Age"
-		}, {
-			"elementId": 68719476740,
-			"elementName": "@Computed get child03Age"
-		}]
-	}]
-}
-```
-
-### @Monitor Application Scenarios
-
-[@Monitor](./arkts-new-monitor.md) can collect the @Monitor method name and method ID associated with the object.
-
-The sample code is as follows:
-
-<!-- @[v2_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Monitor.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-@ObservedV2
-class MonitorUser {
-  @Trace
-  public name?: string;
-  @Trace
-  public age?: number;
-
-  constructor(name?: string, age?: number) {
-    this.name = name ?? '';
-    this.age = age ?? 0;
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-@Entry
-@ComponentV2
-struct V2Monitor {
-  @Local monitorUser: MonitorUser = new MonitorUser('Poseidon', 76);
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01({ monitorUser: this.monitorUser })
-
-      Child02({ monitorUser: this.monitorUser })
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.monitorUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@ComponentV2
-export struct Child01 {
-  @Param monitorUser: MonitorUser = new MonitorUser();
-
-  @Monitor('monitorUser.name')
-  onChild01NameChange(): void {
-    console.info(TAG, `onChild01NameChange`);
-  }
-
-  @Monitor('monitorUser.age')
-  onChild01AgeChange(): void {
-    console.info(TAG, `onChild01AgeChange`);
-  }
-
-  build() {
-    Column() {
-      Child03({ monitorUser: this.monitorUser })
-    }
-  }
-}
-
-@ComponentV2
-export struct Child02 {
-  @Param monitorUser: MonitorUser = new MonitorUser();
-
-  @Monitor('monitorUser.name')
-  onChild02NameChange(): void {
-    console.info(TAG, `onChild02NameChange`);
-  }
-
-  build() {
-    Column() {
-
-    }
-  }
-}
-
-@ComponentV2
-export struct Child03 {
-  @Param monitorUser: MonitorUser = new MonitorUser();
-
-  @Monitor('monitorUser.age')
-  onChild03AgeChange(): void {
-    console.info(TAG, `onChild03AgeChange`);
-  }
-
-  build() {
-    Column() {
-
-    }
-  }
-}
-
-@ComponentV2
-export struct Child04 {
-  @Param monitorUser: MonitorUser = new MonitorUser();
-
-  @Monitor('monitorUser.name')
-  onChild04NameChange(): void {
-    console.info(TAG, `onChild04NameChange`);
-  }
-
-  @Monitor('monitorUser.age')
-  onChild04AgeChange(): void {
-    console.info(TAG, `onChild04AgeChange`);
-  }
-
-  build() {
-    Column() {
-
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object decorated by @ObservedV2 is an observable object.
-	"reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
-    // Decorator information. For details, see the @Local application scenario.
-	"decoratorInfo": [{
-		"decoratorName": "@Trace",
-		"stateVariableName": "name",
-		"owningComponentOrClassName": "MonitorUser",
-		"owningComponentId": -1,
-        // Component information. The V2 decorator can collect the @Monitor method name and ID.
-		"dependentInfo": [{
-			"elementId": 281474976710657,
-			"elementName": "@Monitor onChild01NameChange"
-		}, {
-			"elementId": 281474976710659,
-			"elementName": "@Monitor onChild02NameChange"
-		}]
-	}, {
-		"decoratorName": "@Trace",
-		"stateVariableName": "age",
-		"owningComponentOrClassName": "MonitorUser",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 281474976710658,
-			"elementName": "@Monitor onChild01AgeChange"
-		}, {
-			"elementId": 281474976710660,
-			"elementName": "@Monitor onChild03AgeChange"
-		}]
-	}]
-}
-```
-
-### @Provider and @Consumer Application Scenarios
-
-[@Provider](./arkts-new-provider-and-consumer.md) and [@Consumer](./arkts-new-provider-and-consumer.md) are used together. Both of them can collect system components associated with objects, but cannot collect custom components.
-
-The sample code is as follows:
-
-<!-- @[v2_provider_and_consumer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2ProviderAndConsumer.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-@ObservedV2
-class ProviderConsumerUser {
-  @Trace
-  public name?: string;
-  @Trace
-  public age?: number;
-
-  constructor(name?: string, age?: number) {
-    this.name = name ?? '';
-    this.age = age ?? 0;
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-@Entry
-@ComponentV2
-struct V2ProviderAndConsumer {
-  @Provider('ProviderUser') pcUser: ProviderConsumerUser = new ProviderConsumerUser('Mars', 145);
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01()
-
-      Child02()
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.pcUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@ComponentV2
-export struct Child01 {
-  @Consumer('ProviderUser') pcUser: ProviderConsumerUser = new ProviderConsumerUser();
-
-  build() {
-    Column() {
-      Text('Child01 ' + this.pcUser.name)
-
-      Child03()
-    }
-  }
-}
-
-@ComponentV2
-export struct Child02 {
-  @Consumer('ProviderUser') pcUser: ProviderConsumerUser = new ProviderConsumerUser();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.pcUser.age)
-
-      Child04()
-    }
-  }
-}
-
-@ComponentV2
-export struct Child03 {
-  @Consumer('ProviderUser') pcUser: ProviderConsumerUser = new ProviderConsumerUser();
-
-  build() {
-    Column() {
-      Text('Child01 ' + this.pcUser.name)
-    }
-  }
-}
-
-@ComponentV2
-export struct Child04 {
-  @Consumer('ProviderUser') pcUser: ProviderConsumerUser = new ProviderConsumerUser();
-
-  build() {
-    Column() {
-      Text('Child01 ' + this.pcUser.name)
-
-      Text('Child01 ' + this.pcUser.age)
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object decorated by @ObservedV2 is an observable object.
-	"reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
-    // Decorator information. For details, see the @Local application scenario.
-	"decoratorInfo": [{
-		"decoratorName": "@Trace",
-		"stateVariableName": "name",
-		"owningComponentOrClassName": "ProviderConsumerUser",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 24,
-			"elementName": "Text"
-		}, {
-			"elementId": 27,
-			"elementName": "Text"
-		}, {
-			"elementId": 32,
-			"elementName": "Text"
-		}]
-	}, {
-		"decoratorName": "@Trace",
-		"stateVariableName": "age",
-		"owningComponentOrClassName": "ProviderConsumerUser",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 29,
-			"elementName": "Text"
-		}, {
-			"elementId": 33,
-			"elementName": "Text"
-		}]
-	}]
-}
-```
-
-### makeObserved Application Scenarios
-
-For objects encapsulated using the [makeObserved](./arkts-new-makeObserved.md) method, system components associated with the objects can be collected, but custom components cannot be collected.
-
-The sample code is as follows:
-
-<!-- @[v2_make_observed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2MakeObserved.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-class MakeObservedUser {
-  public name?: string;
-  public age?: number;
-
-  constructor(name?: string, age?: number) {
-    this.name = name ?? '';
-    this.age = age ?? 0;
-  }
-
-  // Provide a method in the object to determine whether the object can be observed.
-  test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
-  }
-}
-
-@Entry
-@ComponentV2
-struct V2MakeObserved {
-  @Local observedUser: MakeObservedUser = UIUtils.makeObserved(new MakeObservedUser('Pluto', 64));
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01({ observedUser: this.observedUser })
-
-      Child02({ observedUser: this.observedUser })
-
-      Button('test')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          this.observedUser.test();
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@ComponentV2
-export struct Child01 {
-  @Param observedUser: MakeObservedUser = new MakeObservedUser();
-
-  build() {
-    Column() {
-      Text('Child01 ' + this.observedUser.name)
-
-      Child03({ observedUser: this.observedUser })
-    }
-  }
-}
-
-@ComponentV2
-export struct Child02 {
-  @Param observedUser: MakeObservedUser = new MakeObservedUser();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.observedUser.age)
-
-      Child04({ observedUser: this.observedUser })
-    }
-  }
-}
-
-@ComponentV2
-export struct Child03 {
-  @Param observedUser: MakeObservedUser = new MakeObservedUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.observedUser.name)
-    }
-  }
-}
-
-@ComponentV2
-export struct Child04 {
-  @Param observedUser: MakeObservedUser = new MakeObservedUser();
-
-  build() {
-    Column() {
-      Text('Child04 ' + this.observedUser.name)
-
-      Text('Child04 ' + this.observedUser.age)
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-{
-    // Observable
-	"isObserved": true,
-    // The object encapsulated using the makeObserved method is an observable object.
-	"reason": "The object data is wrapped by V2's makeObserved",
-    // Decorator information. For details, see the @Local application scenario.
-	"decoratorInfo": [{
-        // The decoratorName obtained by using the makeObserved method is fixed at MakeObserved.
-		"decoratorName": "MakeObserved",
-		"stateVariableName": "name",
-		"owningComponentOrClassName": "MakeObservedUser",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 29,
-			"elementName": "Text"
-		}, {
-			"elementId": 32,
-			"elementName": "Text"
-		}, {
-			"elementId": 37,
-			"elementName": "Text"
-		}]
-	}, {
-		"decoratorName": "MakeObserved",
-		"stateVariableName": "age",
-		"owningComponentOrClassName": "MakeObservedUser",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 34,
-			"elementName": "Text"
-		}, {
-			"elementId": 38,
-			"elementName": "Text"
-		}]
-	}]
-}
-```
-
-### Built-in Data Type Application Scenarios
-
-The built-in types include Array, Map, Set, and Date.
-
-The sample code is as follows:
-
-<!-- @[v2_built_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2BuiltIn.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-const TAG = 'CanBeObserved';
-
-// Provide a method for determining whether an object is observable.
-function test(obj: object): void {
-  console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(obj))}`);
-}
-
-@Entry
-@ComponentV2
-struct V2BuiltIn {
-  @Local arr: string[] = [];
-  @Local map: Map<string, string> = new Map<string, string>();
-  @Local set: Set<string> = new Set<string>();
-  @Local date: Date = new Date();
-
-  aboutToAppear(): void {
-    this.arr = ['1', '2', '3'];
-    this.map.set('a', '11');
-    this.map.set('b', '22');
-    this.map.set('c', '33');
-    this.set.add('111');
-    this.set.add('222');
-    this.set.add('333');
-    this.date = new Date('2025-12-12');
-  }
-
-  build() {
-    Column({ space: 20 }) {
-
-      Child01({ arr: this.arr })
-
-      Child02({ map: this.map })
-
-      Child03({ set: this.set })
-
-      Child04({ date: this.date })
-
-      Button('test arr')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          test(this.arr);
-        })
-
-      Button('test map')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          test(this.map);
-        })
-
-      Button('test set')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          test(this.set);
-        })
-
-      Button('test date')
-        .onClick(() => {
-          // You can use this API on any page to determine whether the current object can be observed.
-          test(this.date);
-        })
-
-    }
-    .height('100%')
-    .width('100%')
-    .justifyContent(FlexAlign.Center)
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@ComponentV2
-export struct Child01 {
-  @Param arr: string[] = [];
-
-  build() {
-    Column() {
-      ForEach(this.arr, (item: string) => {
-        Text('Child01 ' + item)
-      })
-    }
-  }
-}
-
-@ComponentV2
-export struct Child02 {
-  @Param map: Map<string, string> = new Map<string, string>();
-
-  build() {
-    Column() {
-      ForEach(Array.from(this.map), (item: object) => {
-        Text('Child02 ' + JSON.stringify(item))
-      })
-    }
-  }
-}
-
-@ComponentV2
-export struct Child03 {
-  @Param set: Set<string> = new Set<string>();
-
-  build() {
-    Column() {
-      ForEach(Array.from(this.set), (item: string) => {
-        Text('Child03 ' + item)
-      })
-    }
-  }
-}
-
-@ComponentV2
-export struct Child04 {
-  @Param date: Date = new Date();
-
-  build() {
-    Column() {
-      Text('Child03 year: ' + this.date.getFullYear())
-      Text('Child03 month: ' + this.date.getMonth())
-      Text('Child03 day: ' + this.date.getDate())
-    }
-  }
-}
-```
-
-Returned result:
-
-``` json
-// Array result:
-{
-    // Observable
-	"isObserved": true,
-    // Objects of the built-in type are observable objects.
-	"reason": "The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace",
-    // Decorator information
-	"decoratorInfo": [{
-        // decoratorName of the built-in type is fixed to ProxyObservedV2.
-		"decoratorName": "ProxyObservedV2",
-        // For the array type, collect dependencies based on the array subscript. stateVariableName is the subscript.
-		"stateVariableName": "0",
-        // owningComponentOrClassName of the built-in type is the data type.
-		"owningComponentOrClassName": "Array",
-        // For a V2 object, -1 is returned by default.
-		"owningComponentId": -1,
-        // Component information
-		"dependentInfo": [{
-			"elementId": 42,
-			"elementName": "ForEach"
-		}]
-	}, {
-		"decoratorName": "ProxyObservedV2",
-        // For the array type, collect dependencies based on the array subscript. stateVariableName is the subscript.
-		"stateVariableName": "1",
-		"owningComponentOrClassName": "Array",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 42,
-			"elementName": "ForEach"
-		}]
-	}, {
-		"decoratorName": "ProxyObservedV2",
-        // For the array type, collect dependencies based on the array subscript. stateVariableName is the subscript.
-		"stateVariableName": "2",
-		"owningComponentOrClassName": "Array",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 42,
-			"elementName": "ForEach"
-		}]
-	}, {
-		"decoratorName": "ProxyObservedV2",
-        // For the array type, collect the length attribute dependency of the array. stateVariableName is ___obj_length.
-		"stateVariableName": "___obj_length",
-		"owningComponentOrClassName": "Array",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 29,
-			"elementName": "Child01"
-		}, {
-			"elementId": 42,
-			"elementName": "ForEach"
-		}]
-	}]
-}
-
-// Map result:
-{
-	"isObserved": true,
-	"reason": "The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace",
-	"decoratorInfo": [{
-		"decoratorName": "ProxyObservedV2",
-        // For the Map type, collect the size attribute dependency of the Map. The value of stateVariableName is ___obj_length.
-		"stateVariableName": "___obj_length",
-		"owningComponentOrClassName": "Map",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 30,
-			"elementName": "Child02"
-		}, {
-			"elementId": 50,
-			"elementName": "ForEach"
-		}]
-	}, {
-		"decoratorName": "ProxyObservedV2",
-        // For the Map type, collect the dependency of the Map object. stateVariableName is ___ob_map_set.
-		"stateVariableName": "___ob_map_set",
-		"owningComponentOrClassName": "Map",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 50,
-			"elementName": "ForEach"
-		}]
-	}]
-}
-
-// Set result:
-{
-	"isObserved": true,
-	"reason": "The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace",
-	"decoratorInfo": [{
-		"decoratorName": "ProxyObservedV2",
-        // For the Set type, collect the size attribute dependency of the Set. stateVariableName is ___obj_length.
-		"stateVariableName": "___obj_length",
-		"owningComponentOrClassName": "Set",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 31,
-			"elementName": "Child03"
-		}, {
-			"elementId": 58,
-			"elementName": "ForEach"
-		}]
-	}, {
-		"decoratorName": "ProxyObservedV2",
-        // For the Set type, collect the dependency of the Set object. stateVariableName is ___ob_map_set.
-		"stateVariableName": "___ob_map_set",
-		"owningComponentOrClassName": "Set",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 58,
-			"elementName": "ForEach"
-		}]
-	}]
-}
-
-// Date result:
-{
-	"isObserved": true,
-	"reason": "The object data is built-in type proxy data (Array/Map/Set/Date) decorated with @Trace",
-	"decoratorInfo": [{
-		"decoratorName": "ProxyObservedV2",
-        // Date type collection dependency. The value of stateVariableName is __date__.
-		"stateVariableName": "__date__",
-		"owningComponentOrClassName": "Date",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 66,
-			"elementName": "Text"
-		}, {
-			"elementId": 67,
-			"elementName": "Text"
-		}, {
-			"elementId": 68,
-			"elementName": "Text"
-		}]
-	}]
-}
-```
-
-## V1 Invoking V2 Components Application Scenarios
-
-### Application scenarios of enableV2Compatibility
-
-If an object is encapsulated using the [enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility) method in the V1 component, the system components associated with the object can be collected in the V1 and V2 components. The V2 component cannot collect custom components. The V1 component collects the components associated with the object based on the used decorator.
+In scenarios where V1 and V2 components are used together, to keep objects synchronously refreshed in both V1 and V2 components, you need to use the [enableV2Compatibility](./arkts-v1-v2-mixusage.md#enablev2compatibility) method in the V1 component to wrap the observable V1 object before passing it to the V2 component.
 
 Code example:
 
@@ -2915,6 +439,7 @@ Code example:
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -2929,7 +454,7 @@ class CompatibilityUser {
 
   // Provide a method in the object to determine whether the object can be observed.
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -2937,22 +462,21 @@ class CompatibilityUser {
 @Component
 struct V1AndV2Compatibility {
   // The V1 object converted by enableV2Compatibility must be observable.
-  @State temp: CompatibilityUser = new CompatibilityUser('Galen', 43);
+  @State temp: CompatibilityUser = new CompatibilityUser('Thomas', 43);
   @State compatibilityUser: CompatibilityUser = UIUtils.enableV2Compatibility(this.temp);
 
   build() {
     Column({ space: 20 }) {
+      Text('V1 name: ' + this.compatibilityUser.name)
+      Text('V1 age: ' + this.compatibilityUser.age)
 
-      Child01({ compatibilityUser: this.compatibilityUser })
-
-      Child02({ compatibilityUser: this.compatibilityUser })
+      V2Child({ compatibilityUser: this.compatibilityUser })
 
       Button('test')
         .onClick(() => {
           // You can use this API on any page to determine whether the current object can be observed.
           this.compatibilityUser.test();
         })
-
     }
     .height('100%')
     .width('100%')
@@ -2961,37 +485,14 @@ struct V1AndV2Compatibility {
   }
 }
 
-@Component
-export struct Child01 {
-  @State compatibilityUser: CompatibilityUser = new CompatibilityUser();
-
-  build() {
-    Column() {
-      Text('Child01 ' + this.compatibilityUser.name)
-    }
-  }
-}
-
 @ComponentV2
-export struct Child02 {
+export struct V2Child {
   @Param compatibilityUser: CompatibilityUser = new CompatibilityUser();
 
   build() {
     Column() {
-      Text('Child02 ' + this.compatibilityUser.age)
-
-      Child03({ compatibilityUser: this.compatibilityUser })
-    }
-  }
-}
-
-@ComponentV2
-export struct Child03 {
-  @Param compatibilityUser: CompatibilityUser = new CompatibilityUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.compatibilityUser.name)
+      Text('V2Child name ' + this.compatibilityUser.name)
+      Text('V2Child age ' + this.compatibilityUser.age)
     }
   }
 }
@@ -2999,60 +500,394 @@ export struct Child03 {
 
 Returned result:
 
-``` json
+``` json5
 {
-    // Observable
-	"isObserved": true,
-    // The V1 object that uses the enableV2Compatibility method must be observable.
-	"reason": "The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2",
-    // Component information
-	"decoratorInfo": [{
-        // Collect component information based on V1 specifications.
-		"decoratorName": "@State",
-		"stateVariableName": "temp",
-		"owningComponentOrClassName": "V1AndV2Compatibility",
-		"owningComponentId": 17,
-		"dependentInfo": []
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "compatibilityUser",
-		"owningComponentOrClassName": "V1AndV2Compatibility",
-		"owningComponentId": 17,
-		"dependentInfo": [{
-			"elementName": "Child01",
-			"elementId": 19
-		}, {
-			"elementName": "Child02",
-			"elementId": 20
-		}]
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "compatibilityUser",
-		"owningComponentOrClassName": "Child01",
-		"owningComponentId": 19,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 24
-		}]
-	}, {
-        // Collect component information based on the V2 specifications. Use the enableV2Compatibility method to pass the V2 component. The decoratorName obtained is fixed to EnableV2Compatible.
-		"decoratorName": "EnableV2Compatible",
-		"stateVariableName": "age",
-		"owningComponentOrClassName": "CompatibilityUser",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 26,
-			"elementName": "Text"
-		}]
-	}, {
-		"decoratorName": "EnableV2Compatible",
-		"stateVariableName": "name",
-		"owningComponentOrClassName": "CompatibilityUser",
-		"owningComponentId": -1,
-		"dependentInfo": [{
-			"elementId": 29,
-			"elementName": "Text"
-		}]
-	}]
+    // The object is observable.
+    "isObserved": true,
+    // The object converted using the enableV2Compatibility method is also observable.
+    "reason": "The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2",
+    // Decorator information, which is collected separately for V1 and V2 components.
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "temp",
+        "owningComponentOrClassName": "V1AndV2Compatibility",
+        "owningComponentId": 4,
+        "dependentInfo": []
+    }, {
+        "decoratorName": "@State",
+        "stateVariableName": "compatibilityUser",
+        "owningComponentOrClassName": "V1AndV2Compatibility",
+        "owningComponentId": 4,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }, {
+            "elementName": "Text",
+            "elementId": 7
+        }, {
+            "elementName": "V2Child",
+            "elementId": 8
+        }]
+    }, {
+        // decoratorName of the V2 component is fixed to EnableV2Compatible.
+        "decoratorName": "EnableV2Compatible",
+        // The V2 component collects information by object property.
+        "stateVariableName": "name",
+        "owningComponentOrClassName": "CompatibilityUser",
+        "owningComponentId": -1,
+        // Information about the component associated with the name property of the object in the V2 component.
+        "dependentInfo": [{
+            "elementId": 12,
+            "elementName": "Text"
+        }]
+    }, {
+        "decoratorName": "EnableV2Compatible",
+        "stateVariableName": "age",
+        "owningComponentOrClassName": "CompatibilityUser",
+        "owningComponentId": -1,
+        // Information about the component associated with the age property of the object in the V2 component.
+        "dependentInfo": [{
+            "elementId": 13,
+            "elementName": "Text"
+        }]
+    }]
+}
+```
+
+## Analysis of Common State Management Non-Refresh Issues
+
+The [State Management Development](./arkts-state-management-faq.md) topic introduces common issues where state management objects do not refresh the UI or where page performance is suboptimal. The following describes how to use the **canBeObserved** API to help you analyze and locate the causes of such issues.
+
+### a.b(this.object) Case Analysis
+
+In the [a.b(this.object)](./arkts-state-management-faq-inner-component.md#using-the-abthisobject-pattern-fails-to-trigger-ui-re-rendering) counter-example, the parameter passed to b is the raw object of **this.object**, which is not observable, resulting in the UI being unable to refresh. You can call the **canBeObserved** API before modifying properties to determine whether the parameter object is observable.
+
+In the counter-example, two methods are provided to modify object properties. Before modifying the properties, the **canBeObserved** API is used to determine whether the object is observable. The code is as follows:
+
+<!-- @[case_a_b_call_error_increaseVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseABCallError.ets) -->
+
+``` TypeScript
+static increaseVolume(balloon: Balloon) {
+  // Before modifying the attribute, use canBeObserved to check whether the balloon object can be observed.
+  hilog.info(0x00, 'test_log', `res: ${JSON.stringify(UIUtils.canBeObserved(balloon))}`);
+  balloon.volume += 2;
+}
+```
+
+<!-- @[case_a_b_call_error_reduceVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseABCallError.ets) -->
+
+``` TypeScript
+reduceVolume(balloon: Balloon) {
+  // Before modifying the attribute, use canBeObserved to check whether the balloon object can be observed.
+  hilog.info(0x00, 'test_log', `res: ${JSON.stringify(UIUtils.canBeObserved(balloon))}`);
+  balloon.volume -= 1;
+}
+```
+
+The return results of calling the **canBeObserved** API in both methods are the same (as shown below), indicating that the parameters received by both methods are non-observable objects, so the UI cannot refresh.
+
+``` json5
+{
+    // Not observable.
+    "isObserved": false,
+    // Cause: The object is not observable.
+    "reason": "The object data is not an observable object",
+    // The decorator information is empty.
+    "decoratorInfo": []
+}
+```
+
+In the correct example, before modifying the property, check whether the object can be observed. The code is as follows:
+
+<!-- @[case_a_b_call_right_increaseVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseABCallRight.ets) -->
+
+``` TypeScript
+static increaseVolume(balloon: Balloon) {
+  // Before modifying the attribute, use canBeObserved to check whether the balloon object can be observed.
+  hilog.info(0x00, 'test_log', `res: ${JSON.stringify(UIUtils.canBeObserved(balloon))}`);
+  balloon.volume += 2;
+}
+```
+<!-- @[case_a_b_call_right_reduceVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseABCallRight.ets) -->
+
+``` TypeScript
+reduceVolume(balloon: Balloon) {
+  // Before modifying the attribute, use canBeObserved to check whether the balloon object can be observed.
+  hilog.info(0x00, 'test_log', `res: ${JSON.stringify(UIUtils.canBeObserved(balloon))}`);
+  balloon.volume -= 1;
+}
+```
+
+The return results of calling the **canBeObserved** API in both methods are the same (as shown below), indicating that the parameters received by both methods are observable objects and are used by UI components. The UI can refresh normally.
+
+``` json5
+{
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "balloon",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 4,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }]
+}
+```
+
+### Performance Degradation Due to Too Many Components Associated with State Variables
+
+In the [Performance Deteriorates Due to Too Many Components Associated with State Variables](./arkts-state-management-faq-inner-component.md#performance-deteriorates-due-to-too-many-components-associated-with-state-variables) case, the HiDumper tool is provided to view components associated with state variables. If too many components are associated, page performance degrades. You can also use the **canBeObserved** API in service code to obtain components associated with state management objects and optimize service code based on the API return results.
+
+In the counter-example, properties of the **this.translateObj** object are modified via the **move** button. Before modifying the properties, the **canBeObserved** API can be called to obtain component information associated with the object. The code is as follows:
+
+<!-- @[control_counter_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseControlCounterError.ets) -->
+
+``` TypeScript
+Button('move')
+  .translate({
+    x: this.translateObj.translateX
+  })
+  .onClick(() => {
+    this.getUIContext().animateTo({
+      duration: 50
+    }, () => {
+      // Before modifying a state variable, call the canBeObserved API to obtain the components associated with the state variable.
+      hilog.info(0x00, 'test_log', `res: ${JSON.stringify(UIUtils.canBeObserved(this.translateObj))}`);
+      this.translateObj.translateX = (this.translateObj.translateX + 50) % 150;
+    });
+  })
+```
+
+Returned result:
+
+``` json5
+// Counter-example result: The object is associated with 5 components.
+{
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "translateObj",
+        "owningComponentOrClassName": "Page",
+        "owningComponentId": 4,
+        "dependentInfo": [{
+            "elementName": "Title",
+            "elementId": 6
+        }, {
+            "elementName": "Stack",
+            "elementId": 7
+        }, {
+            "elementName": "Button",
+            "elementId": 8
+        }]
+    }, {
+        "decoratorName": "@ObjectLink",
+        "stateVariableName": "translateObj",
+        "owningComponentOrClassName": "Title",
+        "owningComponentId": 6,
+        "dependentInfo": [{
+            "elementName": "Image",
+            "elementId": 11
+        }, {
+            "elementName": "Text",
+            "elementId": 12
+        }]
+    }]
+}
+```
+
+In the correct example, the **canBeObserved** API is also called before modifying the object property to obtain components associated with the state variable. The code is as follows:
+
+<!-- @[control_counter_right](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseControlCounterRight.ets) -->
+
+``` TypeScript
+Button('move')
+  .onClick(() => {
+    this.getUIContext().animateTo({
+      duration: 50
+    }, () => {
+      // Before modifying a state variable, call the canBeObserved API to obtain the components associated with the state variable.
+      hilog.info(0x00, 'test_log', `res: ${JSON.stringify(UIUtils.canBeObserved(this.translateObj))}`);
+      this.translateObj.translateX = (this.translateObj.translateX + 50) % 150;
+    });
+  })
+```
+
+Returned result:
+
+``` json5
+// Correct example result: The object is associated with one component.
+{
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "translateObj",
+        "owningComponentOrClassName": "Page1",
+        "owningComponentId": 4,
+        "dependentInfo": [{
+            "elementName": "Column",
+            "elementId": 5
+        }]
+    }]
+}
+```
+
+The comparison shows that the number of components associated with the object in the correct example is fewer than that in the counter-example, thereby achieving performance improvement. 
+
+### UI Refresh Failure Due to the Combination of ForEach and Object Arrays
+
+In the case of [UI Is Not Refreshed Due to the Combination of ForEach and Object Arrays](./arkts-state-management-faq-inner-component.md#ui-is-not-refreshed-due-to-the-combination-of-foreach-and-object-arrays), the **canBeObserved** API is used to determine whether an object is observable.
+
+In the **onClick** method of the counter-example, before modifying the object property, call the **canBeObserved** API to check whether the **this.styleList[i]** object can be observed. The code is as follows:
+
+<!-- @[array_foreach_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayForEachError.ets) -->
+
+``` TypeScript
+Text('Font Size List')
+  .fontSize(50)
+  .onClick(() => {
+    for (let i = 0; i < this.styleList.length; i++) {
+      // The fontSize property of the this.styleList[i] object needs to be modified.
+      // Before the modification, call the canBeObserved API to obtain the component information associated with the this.styleList[i] object.
+      hilog.info(DOMAIN_NUMBER, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this.styleList[i]))}`);
+      this.styleList[i].fontSize++;
+    }
+    hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
+  })
+```
+
+The returned result is as follows. Although **this.styleList[i]** (that is, the **TextStyles** object) is decorated by the [@Observed](./arkts-observed-and-objectlink.md) decorator and is observable, it is not used by the UI component. Therefore, the UI component is not refreshed.
+
+``` json5
+{
+    // The object is observable.
+    "isObserved": true,
+    // The object decorated by @Observed is observable.
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed, but not used in UI",
+    // The collected decorator information is empty.
+    "decoratorInfo": []
+}
+```
+
+In the correct example, the code also checks whether the object can be observed first. The code is as follows:
+
+<!-- @[array_foreach_right](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayForEachRight.ets) -->
+
+``` TypeScript
+Text('Font Size List')
+  .fontSize(50)
+  .onClick(() => {
+    for (let i = 0; i < this.styleList.length; i++) {
+      // The fontSize property of the this.styleList[i] object needs to be modified.
+      // Before the modification, call the canBeObserved API to obtain the component information associated with the this.styleList[i] object.
+      hilog.info(DOMAIN_NUMBER, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this.styleList[i]))}`);
+      this.styleList[i].fontSize++;
+    }
+    hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
+  })
+```
+
+The returned result is as follows, indicating that this.styleList[i] is an observable object, has associated UI components, and can properly refresh the UI components.
+
+``` json5
+{
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@ObjectLink",
+        "stateVariableName": "textStyle",
+        "owningComponentOrClassName": "TextComponent",
+        "owningComponentId": 147,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 148
+        }]
+    }]
+}
+```
+
+### UI Refresh Failure Due to Data Reset
+
+In the [UI Is Not Refreshed Due to Data Reset](./arkts-state-management-faq-inner-class.md#ui-is-not-refreshed-due-to-data-reset), use the **canBeObserved** API to locate the cause of the UI refresh failure.
+
+In the **X** button of the counter-example, before modifying the object property, call the **canBeObserved** API to check whether the object can be observed. The code is as follows:
+
+<!-- @[array_observed_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayObservedError.ets) -->
+
+``` TypeScript
+Button('X')
+  .backgroundColor(Color.Red)
+  .onClick(() => {
+    let index = this.childList.findIndex((item) => {
+      return item.count === this.child.count;
+    });
+    if (index !== -1) {
+      // Before deleting elements in the array, call the canBeObserved API to check whether this.childList is an observable object.
+      hilog.info(DOMAIN_NUMBER, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this.childList))}`);
+      this.childList.splice(index, 1);
+    }
+  })
+  .margin({
+    left: 200,
+    right: 30
+  })
+```
+
+After clicking the **Recover** button and then the **X** button again, the elements in the array are not deleted. The result returned by calling the **canBeObserved** API shows that the **this.childList** array is no longer observable after the recovery.
+
+``` json5
+{
+    "isObserved": false,
+    "reason": "The object data is not an observable object",
+    "decoratorInfo": []
+}
+```
+
+In the correct example, before modifying the element property, check whether the object can be observed. The code is as follows:
+
+<!-- @[array_observed_right](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayObservedRight.ets) -->
+
+``` TypeScript
+Button('X')
+  .backgroundColor(Color.Red)
+  .onClick(() => {
+    let index = this.childList.findIndex((item) => {
+      return item.count === this.child.count;
+    });
+    if (index !== -1) {
+      // Before deleting elements in the array, call the canBeObserved API to check whether this.childList is an observable object.
+      hilog.info(DOMAIN_NUMBER, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this.childList))}`);
+      this.childList.splice(index, 1);
+    }
+  })
+  .margin({
+    left: 200,
+    right: 30
+  })
+```
+
+The key information in the returned result is as follows, indicating that **this.childList** is an observable array, has associated UI components, and can properly refresh the UI components.
+
+``` json5
+{
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@ObjectLink",
+        "stateVariableName": "childList",
+        "owningComponentOrClassName": "CompList",
+        "owningComponentId": 8,
+        "dependentInfo": [{
+            "elementName": "ForEach",
+            "elementId": 16
+        }]
+    }, 
+    ...
+    //The following result is omitted.
+  ]
 }
 ```

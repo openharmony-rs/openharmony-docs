@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 The **WLAN** module provides basic wireless local area network (WLAN) functions, peer-to-peer (P2P) functions, and WLAN message notification services. It allows applications to communicate with devices over WLAN.
 
-> **NOTE**<br>
+> **NOTE**
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.wifiManager (WLAN)](js-apis-wifiManager.md).
 
@@ -143,7 +143,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 ## WifiDeviceConfig<sup>9+</sup>
 
-Represents the WLAN configuration.
+Describes the WLAN configuration.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -230,6 +230,8 @@ Enumerates the Wi-Fi proxy methods.
 getDeviceConfig(networkId: number): WifiDeviceConfig
 
 Obtains the configuration of a single network based on the network ID.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -951,7 +953,7 @@ factoryReset(): void
 
 **System API**: This is a system API.
 
-Resets Wi-Fi configurations.
+Resets Wi-Fi configurations and disables Wi-Fi.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG (for system applications only)
 
@@ -1974,4 +1976,113 @@ try {
 }catch (error) {
   console.error("failed:" + JSON.stringify(error));
 }
+```
+## WifiCapability
+
+Describes the capabilities supported by the Wi-Fi module.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Communication.WiFi.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| WIFI_AUTO_ENABLE | 0 | Wi-Fi enabled automatically.|
+
+
+## wifiManager.setWifiCapability
+
+setWifiCapability(capability: WifiCapability, enable: boolean): void
+
+Configures the Wi-Fi capability.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications)
+
+**System capability**: SystemCapability.Communication.WiFi.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| capability | [WifiCapability](#wificapability) | Yes| Wi-Fi capability.|
+| enable | boolean | Yes| Whether the Wi-Fi capability is enabled. The value **true** indicates it is enabled, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+
+| Error Codes| Error Message|
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported.          |
+| 2601000  | Operation failed. |
+
+**Example**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+wifiManager.setWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE, true);
+
+```
+
+## wifiManager.getWifiCapability
+
+getWifiCapability(capability: WifiCapability): boolean
+
+Obtains the capabilities supported by the Wi-Fi module.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications)
+
+**System capability**: SystemCapability.Communication.WiFi.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| capability | [WifiCapability](#wificapability)| Yes| Wi-Fi capability.|
+
+**Return value**
+
+  | Type| Description|
+  | -------- | -------- |
+  | boolean | The value **true** indicates the Wi-Fi capability is enabled, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
+
+| Error Codes| Error Message|
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported.          |
+| 2601000  | Operation failed. |
+
+**Example**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+let result = wifiManager.getWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE);
+console.info("result:" + result);
+
 ```

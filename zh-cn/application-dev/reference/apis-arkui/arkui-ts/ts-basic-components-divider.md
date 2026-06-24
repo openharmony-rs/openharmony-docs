@@ -92,7 +92,7 @@ strokeWidth(value: number | string)
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string | 是   | 分割线宽度。<br/>默认值：1px。<br />非法值：按默认值处理。 <br/>单位：vp |
+| value  | number&nbsp;\|&nbsp;string | 是   | 分割线宽度。<br/>默认值：1px  <br />非法值：按默认值处理。 <br/>单位：vp |
 
 ### lineCap
 
@@ -192,7 +192,7 @@ struct DividerExample {
 }
 ```
 
-![zh-cn_image_0000001174422926](figures/zh-cn_image_0000001174422926.png)
+![divider](figures/divider.png)
 
 ### 示例2（定义Divider的lineCap样式）
 

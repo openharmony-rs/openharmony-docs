@@ -46,13 +46,13 @@ matchMediaSync(condition: string): MediaQueryListener
 
 | 参数名    | 类型   | 必填 | 说明                                                         |
 | --------- | ------ | ---- | ------------------------------------------------------------ |
-| condition | string | 是   | 媒体事件的匹配条件，具体可参考[媒体查询语法规则](../../ui/arkts-layout-development-media-query.md#语法规则)。 |
+| condition | string | 是   | 媒体查询的匹配条件，具体可参考[媒体查询语法规则](../../ui/arkts-layout-development-media-query.md#语法规则)。 |
 
 **返回值：** 
 
 | 类型               | 说明                                         |
 | ------------------ | -------------------------------------------- |
-| [MediaQueryListener](#mediaquerylistener) | 媒体事件监听句柄，用于注册和去注册监听回调。 |
+| [MediaQueryListener](#mediaquerylistener) | 媒体事件监听句柄，用于注册和注销监听回调。 |
 
 **示例：** 
 
@@ -120,7 +120,7 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 | 参数名   | 类型                             | 必填 | 说明                                                       |
 | -------- | -------------------------------- | ---- | ---------------------------------------------------------- |
 | type     | string                           | 是   | 必须填写字符串'change'。                                   |
-| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要取消注册的回调，如果参数缺省则去注册该句柄下所有的回调。 |
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要取消注册的回调，如果参数缺省则注销该句柄下所有的回调。 |
 
 **示例：**
 
@@ -138,12 +138,12 @@ function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
   }
 }
 listener.on('change', onPortrait) // 注册回调
-listener.off('change', onPortrait) // 取消注册回调
+listener.off('change', onPortrait) // 注销回调
   ```
 
 ## MediaQueryResult
 
-用于执行媒体查询操作。
+用于表示媒体查询的结果。
 
 **卡片能力：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
 
@@ -157,7 +157,7 @@ listener.off('change', onPortrait) // 取消注册回调
 | 名称    | 类型    | 只读 | 可选 | 说明                 |
 | ------- | ------- | ---- | ---- | -------------------- |
 | matches | boolean | 是   | 否   | 是否符合匹配条件。true表示满足查询条件，false表示不满足查询条件。  |
-| media   | string  | 是   | 否   | 媒体事件的匹配条件。 |
+| media   | string  | 是   | 否   | 媒体查询的匹配条件。 |
 
 
 ### 示例

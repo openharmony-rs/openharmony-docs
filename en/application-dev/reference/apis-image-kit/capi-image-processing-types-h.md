@@ -68,10 +68,10 @@ Corresponding key: IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL.
 
 | Enum Item| Description|
 | -- | -- |
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_NONE | No detail enhancement.|
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_LOW | Low-quality detail enhancement, which features fast speed. This is the default value.|
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM | Medium-quality detail enhancement, which features moderate speed.|
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | High-quality detail enhancement, which features slow speed.|
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_NONE | No detail enhancement.<br>Supported input resolution (in px): [32, 3000] for width; [32, 3000] for height<br>Supported output resolution (in px): [32, 3000] for width; [32, 3000] for height|
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_LOW | Low-quality detail enhancement, which features fast speed. This is the default value.<br>Supported input resolution (in px): [32, 3000] for width; [32, 3000] for height<br>Supported output resolution (in px): [32, 3000] for width; [32, 3000] for height|
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM | Medium-quality detail enhancement, which features moderate speed.<br>Supported input resolution (in px): [32, 3000] for width; [32, 3000] for height<br>Supported output resolution (in px): [32, 3000] for width; [32, 3000] for height|
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | High-quality detail enhancement, which features slow speed.<br>Supported input resolution (in px) in API version 13 to 22: [512, 2000] for width; [512, 2000] for height<br>Supported output resolution (in px) in API version 13 to 22: [512, 2000] for width; [512, 2000] for height<br>Supported input resolution (in px) in API version 23 and later: [180, 2000] for width; [180, 2000] for height<br>Supported output resolution (in px) in API version 23 and later: [512, 2000] for width; [512, 2000] for height|
 
 **See also**
 

@@ -1,8 +1,8 @@
 # Custom Placeholder Nodes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -26,7 +26,7 @@ For details about the callbacks, see [NodeController](../reference/apis-arkui/js
 
 ## Basic Concepts
 
-- Custom node: node created using the APIs provided by ArkUI. Custom nodes include custom component nodes (FrameNode), custom render nodes (RenderNode), custom declarative nodes (BuilderNode), and [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md).
+- Custom node: node created using the APIs provided by ArkUI. Custom nodes include custom component nodes ([FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)), custom rendering nodes ([RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)), custom declarative nodes ([BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)), and [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md).
 
 - Custom node tree: tree structure where the root node is a custom node.
 

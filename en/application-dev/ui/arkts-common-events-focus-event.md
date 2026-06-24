@@ -181,7 +181,7 @@ export struct FocusTransferExample {
 
 After the application runs, click **Button 1** to request focus for the **Row** component. The **Row** component's first focusable child node, **Button 2**, will gain focus.
 
-![Liner_Focus_1](figures/Focus_transfer.gif)
+
 
 ### Focus Traversal Guidelines
 
@@ -345,7 +345,7 @@ The projection-based focus traversal algorithm determines the next focus based o
 
 > **NOTE**
 >
-> - The focus traversal order calculated by the projection-based focus traversal algorithm is closely related to the component layout and size. It is recommended for use in scenarios where components are arranged in a regular and uniform manner. If components have varying sizes and overlap horizontally or vertically, the resulting focus traversal order may deviate from the expected sequence.
+> - The focus traveral order calculated by the projection-based focus traversal algorithm is closely related to the component layout and size. It is recommended for use in scenarios where components are arranged in a regular and uniform manner. If components have varying sizes and overlap horizontally or vertically, the resulting focus traversal order may deviate from the expected sequence.
 >
 > - If a clear focus order is required, it is recommended that you use containers that support sequential focusing, such as **Column** or **Row**.
 
@@ -471,7 +471,7 @@ export struct OnFocusBlur {
 ```
 
 
-![en-us_image_0000001511740584](figures/en-us_image_0000001511740584.gif)
+![focus-event](figures/focus-event.gif)
 
 
 The preceding example includes three steps:
@@ -506,17 +506,17 @@ export struct FocusAndBlurExample {
               .height(45)
               .margin(5)
               .onFocus(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onFocus');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button1 onFocus`);
               })
               .onBlur(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onBlur');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button1 onBlur`);
               })
           }
           .onFocus(() => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onFocus');
           })
           .onBlur(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row1 onBlur');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row1 onBlur`);
           })
 
           Row() { // Parent node Row2
@@ -525,17 +525,17 @@ export struct FocusAndBlurExample {
               .height(45)
               .margin(5)
               .onFocus(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button2 onFocus');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button2 onFocus`);
               })
               .onBlur(() => {
-                hilog.info(DOMAIN, TAG, BUNDLE + 'Button2 onBlur');
+                hilog.info(DOMAIN, TAG, `${BUNDLE} Button2 onBlur`);
               })
           }
           .onFocus(() => {
             hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onFocus');
           })
           .onBlur(() => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Row2 onBlur');
+            hilog.info(DOMAIN, TAG, `${BUNDLE} Row2 onBlur`);
           })
         }.width('100%').margin({ top: 5 })
       }.width('100%')
@@ -567,7 +567,7 @@ Components can be classified into the following types based on their focus capab
 
 - **Conditionally focusable components**: Typical examples are **Text** and **Image**, which are not focusable by default. To make them focusable, you must explicitly set **focusable(true)**. Container components that contain no focusable children are also non-focusable by default. However, if you bind an **onClick** event or a single-tap gesture to such a container, it implicitly gains focusability. Note that if the container's **focusable** attribute is explicitly set to **false**, it remains non-focusable even if an event or gesture is attached.
 
-- **Non-focusable components**: Components that do not allow for interactions, such as **Blank** and **Circle**, cannot be made focusable, regardless of whether the **focusable** attribute is applied.
+- **Non-focusable components**: Components that do not allow for interactions, such as [Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md), [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md), and [Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md), cannot be made focusable, regardless of whether the **focusable** attribute is applied.
 
 Setting a container component as focusable:
 
@@ -1581,34 +1581,46 @@ When a component is in focus and has either an **onClick** or **TapGesture** eve
 | [Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md) | No      | false        |
 | [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) | Yes      | true         |
 | [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md) | Yes      | true         |
+| [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)                 | No      | false        |
 | [Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md) | Yes      | true         |
 | [CheckboxGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md) | Yes      | true         |
+| [Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)                 | No      | false        |
+| [Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md) | No      | false         |
 | [ContainerSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md) | No      | false         |
 | [DataPanel](../reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md) | Yes      | false        |
 | [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md) | Yes      | true         |
 | [Divider](../reference/apis-arkui/arkui-ts/ts-basic-components-divider.md) | Yes      | false        |
+| [Ellipse](../reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md)                 | No      | false        |
 | [Gauge](../reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md) | Yes      | false        |
 | [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) | Yes      | false        |
 | [ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md) | No      | false        |
 | [ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)                 | No      | false        |
+| [Indicator](../reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md) | Yes      | true        |
+| [Line](../reference/apis-arkui/arkui-ts/ts-drawing-components-line.md)                 | No      | false        |
 | [LoadingProgress](../reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md) | Yes      | true        |
 | [Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md) | No      | false        |
 | [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md) | Yes      | true         |
 | [MenuItem](../reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md) | Yes      | true         |
 | [MenuItemGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-menuitemgroup.md) | No      | false         |
+| [MultiNavigation](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-MultiNavigation.md) | No      | false         |
 | [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) | Yes      | true       |
 | [NavRouter](../reference/apis-arkui/arkui-ts/ts-basic-components-navrouter.md) | No      | false        |
 | [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) | Yes      | true        |
+| [Path](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md) | No      | false        |
 | [PatternLock](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md) | Yes      | true        |
+| [Polygon](../reference/apis-arkui/arkui-ts/ts-drawing-components-polygon.md)                 | No      | false        |
+| [Polyline](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)                 | No      | false        |
 | [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md) | Yes      | true        |
 | [QRCode](../reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md) | Yes      | true        |
 | [Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md) | Yes      | true         |
 | [Rating](../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md) | Yes      | true         |
+| [Rect](../reference/apis-arkui/arkui-ts/ts-drawing-components-rect.md) | No      | false        |
 | [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md) | Yes      | true         |
 | [RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md) | No      | false        |
 | [ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md) | No      | false        |
 | [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md) | Yes      | true         |
 | [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md) | Yes      | true         |
+| [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md) | No      | false        |
 | [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md) | Yes      | true         |
 | [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) | No      | false        |
 | [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md) | Yes      | true         |
@@ -1643,6 +1655,7 @@ When a component is in focus and has either an **onClick** or **TapGesture** eve
 | [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md) | Yes    | true         |
 | [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md) | Yes    | true         |
 | [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)         | Yes    | true         |
+| [LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md) | No    | false         |
 | [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) | Yes    | true         |
 | [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) | Yes    | true         |
 | [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) | Yes    | true         |
@@ -1656,7 +1669,7 @@ When a component is in focus and has either an **onClick** or **TapGesture** eve
 | [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) | Yes    | true         |
 | [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md) | Yes    | true         |
 | [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) | Yes    | true         |
-| [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) | Yes    | true         |
+| [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) | No    | false         |
 | [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)         | No    | false         |
 | [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)         | Yes    | true         |
 

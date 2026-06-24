@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @hu-zhiqiong-->
 
 continueManager提供了应用跨端迁移的管理能力，如获取应用跨端迁移过程中快速拉起目标应用的结果。
 
@@ -28,11 +28,13 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 
 > **说明：**
 >
-> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
+> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加"_ContinueQuickStart"后缀，可以开启快速拉起功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备中调用会返回16300501错误码。
 
 **参数**：
 
@@ -79,8 +81,8 @@ export default class MigrationAbility extends UIAbility {
             } catch (e) {
               console.error('register failed, cause: ' + JSON.stringify(e));
             }
-            //若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
-            //可处理应用自定义跳转、时序等问题
+            // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+            // 可处理应用自定义跳转、时序等问题
             // ...
         }
     }
@@ -95,16 +97,18 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 
 > **说明：**
 >
-> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
+> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加"_ContinueQuickStart"后缀，可以开启快速拉起功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **参数**：
 
 | 参数名 | 类型                                 | 必填 | 说明                                   |
-  | -------- |------------------------------------| -------- |--------------------------------------|
+| -------- |------------------------------------| -------- |--------------------------------------|
 | type | string                             | 是 | 固定值：prepareContinue。                 |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                            | 是 | Ability的Context。                     |
 | callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获回调函数注销结果。否则为错误对象。 |
@@ -146,8 +150,8 @@ export default class MigrationAbility extends UIAbility {
             } catch (e) {
               console.error('unregister failed, cause: ' + JSON.stringify(e));
             }
-            //若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
-            //可处理应用自定义跳转、时序等问题
+            // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+            // 可处理应用自定义跳转、时序等问题
             // ...
         }
     }
@@ -158,6 +162,7 @@ export default class MigrationAbility extends UIAbility {
 
 注册或注销回调函数返回的快速拉起的结果。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 | 名称 | 类型                                                                            | 只读 | 可选 | 说明       |
@@ -168,6 +173,8 @@ export default class MigrationAbility extends UIAbility {
 ## ContinueStateCode
 
 快速拉起的结果状态码的枚举值。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 

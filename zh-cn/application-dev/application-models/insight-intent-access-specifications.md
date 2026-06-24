@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 影音垂域（MediaDomain）
 ### 播放视频  
@@ -138,7 +138,7 @@
 | 参数名 | 类型    | 必选 | 说明                                                                                                                                                   | 数据样例 |
 |-------------|---------|-------|----------------------------------------------------------------------------------------------|---------|
 | travelCardType | string | 否 | 交通类型，默认使用用户上次查看类型（由开发者自行实现）。<br>- Metro：地铁。<br>- Bus：公交。   | "Metro" |
-| adminCode    | number  | 否 | 用户所在城市的编码。默认为用户当前位置城市。采用中国城市编码，参考[城市码及区划代码表](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/map-citycode-V5)。 | 320500 |
+| adminCode    | number  | 否 | 用户所在城市的编码。默认为用户当前位置城市。采用中国城市编码，参考[城市码及区划代码表](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/map-citycode)。 | 320500 |
 
 **返回值**：
 
@@ -162,7 +162,7 @@
 | srcLocation | object | 否   | 出发地信息，包含以下字段：<br>- locationSystem：指定坐标系（默认使用GCJ-02）。<br>- poiId：poi的唯一标识。<br>- locationName：地点名称。<br>- longitude：经度。<br>- latitude：纬度。<br>- address：详细地址信息。 | {<br>  "locationSystem": "GCJ02",<br>  "poiId": "1245",<br>  "locationName": "北京站",<br>  "latitude": "39.902895",<br>  "longitude": "116.427915",<br>  "address": "北京市东城区北京站"<br>} |
 | dstLocation | object | 否    | 目的地信息，包含以下字段：<br>- locationSystem：指定坐标系（默认使用GCJ-02）。<br>- poiId：poi的唯一标识。<br>- locationName：地点名称。<br>- longitude：经度。<br>- latitude：纬度。<br>- address：详细地址信息。 | {<br>  "locationSystem": "GCJ02",<br>  "poiId": "1232",<br>  "locationName": "北京西站",<br>  "latitude": "39.89534",<br>  "longitude": "116.32128",<br>  "address": "北京市丰台区北京西站"<br>} |
 | dstLocationType | string | 否   | 目的地类型，比如"家"、"公司"。                                                              | "家" |
-| hwChannelId | string | 否   | 标识入口的渠道标识。<br>- "0x00000100"：小艺建议。<br>- "0x00000200"：小艺语音。<br>- "0x00000300"：拖拽入口。 | "0x00000100" |
+| hwChannelId | string | 否   | 标识入口的渠道标识。<br>- "0x00000100"：系统入口建议。<br>- "0x00000200"：系统入口语音。<br>- "0x00000300"：拖拽入口。 | "0x00000100" |
 | taxiType    | number | 否   | 车型，默认为0（默认车型）。<br>- 0：默认车型。<br>- 1：快车。<br>- 2：出租车。<br>- 3：拼车。<br>- 4：顺风车。<br>- 5：专车。   | 1 |
 
 **返回值**：
@@ -801,7 +801,7 @@
 | deviceName    | string | 是   | 设备的名称。             | "客厅的摄像头"     |
 | deviceType    | string | 是   | 设备的类型。              | "摄像头"        |
 | deviceLocation | string | 是   | 设备所在位置。              | "客厅"         |
-| logoURL        | string | 是   | 图标URL，用于小艺对话卡片图标的展示。              | -  |
+| logoURL        | string | 是   | 图标URL，用于系统入口对话卡片图标的展示。              | -  |
 
 ### 查看智能设备
 

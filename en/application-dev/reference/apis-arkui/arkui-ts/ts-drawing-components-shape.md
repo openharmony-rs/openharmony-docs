@@ -1,8 +1,8 @@
 # Shape
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -468,7 +468,7 @@ struct ShapeExample {
 }
 ```
 
-![en-us_image_0000001184628104](figures/en-us_image_0000001184628104.png)
+![shape1](figures/shape1.png)
 
 ### Example 2: Drawing a Shape with Different Parameter Types
 

@@ -1,8 +1,8 @@
 # Class (Canvas)
 <!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -123,10 +123,10 @@ drawRect(left: number, top: number, right: number, bottom: number): void
 
 | 参数名 | 类型    | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| left   | number | 是   | 矩形的左上角x轴坐标，该参数为浮点数。 |
-| top    | number | 是   | 矩形的左上角y轴坐标，该参数为浮点数。 |
-| right  | number | 是   | 矩形的右下角x轴坐标，该参数为浮点数。 |
-| bottom | number | 是   | 矩形的右下角y轴坐标，该参数为浮点数。 |
+| left   | number | 是   | 矩形的左上角x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| top    | number | 是   | 矩形的左上角y轴坐标，该参数为浮点数。单位为物理像素px。 |
+| right  | number | 是   | 矩形的右下角x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| bottom | number | 是   | 矩形的右下角y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -290,7 +290,7 @@ drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Poin
 | path | [Path](arkts-apis-graphics-drawing-Path.md)                | 是    | 路径对象，可生成阴影。 |
 | planeParams  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 表示一个三维向量，用于计算遮挡物相对于画布在z轴上的偏移量，其值取决于x与y坐标。 |
 | devLightPos  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 光线相对于画布的位置。 |
-| lightRadius   | number           | 是    | 圆形灯半径，该参数为浮点数。      |
+| lightRadius   | number           | 是    | 圆形灯半径，该参数为浮点数。单位为物理像素px。      |
 | ambientColor  | [common2D.Color](js-apis-graphics-common2D.md#color) | 是    | 环境阴影颜色。 |
 | spotColor  | [common2D.Color](js-apis-graphics-common2D.md#color) | 是    | 点阴影颜色。 |
 | flag         | [ShadowFlag](arkts-apis-graphics-drawing-e.md#shadowflag12)                  | 是    | 阴影标志枚举。    |
@@ -349,7 +349,7 @@ drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Poin
 | path | [Path](arkts-apis-graphics-drawing-Path.md)                | 是    | 路径对象，可生成阴影。 |
 | planeParams  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 表示一个三维向量，用于计算z轴方向的偏移量。 |
 | devLightPos  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 光线相对于画布的位置。 |
-| lightRadius   | number           | 是    | 圆形灯半径，该参数为浮点数。      |
+| lightRadius   | number           | 是    | 圆形灯半径，该参数为浮点数。单位为物理像素px。      |
 | ambientColor  |[common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是    | 环境阴影颜色，可以用16进制ARGB格式的32位无符号整数表示。 |
 | spotColor  |[common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是    | 点阴影颜色，可以用16进制ARGB格式的32位无符号整数表示。 |
 | flag         | [ShadowFlag](arkts-apis-graphics-drawing-e.md#shadowflag12)                  | 是    | 阴影标志枚举。    |
@@ -460,9 +460,9 @@ drawCircle(x: number, y: number, radius: number): void
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ------ | ------ | ---- | ------------------- |
-| x      | number | 是   | 圆心的x坐标，该参数为浮点数。 |
-| y      | number | 是   | 圆心的y坐标，该参数为浮点数。 |
-| radius | number | 是   | 圆的半径，大于0的浮点数。 |
+| x      | number | 是   | 圆心的x坐标，该参数为浮点数。单位为物理像素px。 |
+| y      | number | 是   | 圆心的y坐标，该参数为浮点数。单位为物理像素px。 |
+| radius | number | 是   | 圆的半径，大于0的浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -504,8 +504,8 @@ drawImage(pixelmap: image.PixelMap, left: number, top: number, samplingOptions?:
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 图片的PixelMap。                  |
-| left     | number                                       | 是   | 图片位置的左上角x轴坐标，该参数为浮点数。 |
-| top      | number                                       | 是   | 图片位置的左上角y轴坐标，该参数为浮点数。 |
+| left     | number                                       | 是   | 图片位置的左上角x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| top      | number                                       | 是   | 图片位置的左上角y轴坐标，该参数为浮点数。单位为物理像素px。 |
 | samplingOptions<sup>12+</sup>  | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)  | 否  | 采样选项对象，默认为不使用任何参数构造的原始采样选项对象。 |
 
 **错误码：**
@@ -817,8 +817,8 @@ drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array\<comm
 | ----------- | -------------  | ---- | ------------------------------- |
 | vertexMode   | [VertexMode](arkts-apis-graphics-drawing-e.md#vertexmode23) | 是   | 绘制顶点的连接方式。 |
 | vertexCount   | number         | 是   | 顶点数组元素的数量，值为大于等于3的整数。 |
-| positions  | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12)        | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
-| texs    | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12) \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>        | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
+| texs    | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
 | colors      | Array\<number> \| null | 是   | 描述顶点对应颜色的数组，用于在三角形中进行插值。其可以为空，表明颜色效果为用户所设置的默认色；若不为空其长度必须等于vertexCount。 |
 | indexCount  | number         | 是   | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数。|
 | indices  | Array\<number> \| null         | 是   | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
@@ -1009,7 +1009,7 @@ getWidth(): number
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 返回画布的宽度，该参数为浮点数。 |
+| number | 返回画布的宽度，该参数为浮点数。单位为物理像素px。 |
 
 **示例：**
 
@@ -1038,7 +1038,7 @@ getHeight(): number
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 返回画布的高度，该参数为浮点数。 |
+| number | 返回画布的高度，该参数为浮点数。单位为物理像素px。 |
 
 **示例：**
 
@@ -1155,8 +1155,8 @@ drawPoint(x: number, y: number): void
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ------ | ------ | ---- | ------------------- |
-| x      | number | 是   | 点的x轴坐标，该参数为浮点数。 |
-| y      | number | 是   | 点的y轴坐标，该参数为浮点数。 |
+| x      | number | 是   | 点的x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| y      | number | 是   | 点的y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -1285,10 +1285,10 @@ drawLine(x0: number, y0: number, x1: number, y1: number): void
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| x0     | number | 是   | 线段起点的X坐标，该参数为浮点数。 |
-| y0     | number | 是   | 线段起点的Y坐标，该参数为浮点数。 |
-| x1     | number | 是   | 线段终点的X坐标，该参数为浮点数。 |
-| y1     | number | 是   | 线段终点的Y坐标，该参数为浮点数。 |
+| x0     | number | 是   | 线段起点的X坐标，该参数为浮点数。单位为物理像素px。 |
+| y0     | number | 是   | 线段起点的Y坐标，该参数为浮点数。单位为物理像素px。 |
+| x1     | number | 是   | 线段终点的X坐标，该参数为浮点数。单位为物理像素px。 |
+| y1     | number | 是   | 线段终点的Y坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -1330,10 +1330,10 @@ drawTextBlob(blob: TextBlob, x: number, y: number): void
 | 参数名 | 类型                  | 必填 | 说明                                       |
 | ------ | --------------------- | ---- | ------------------------------------------ |
 | blob   | [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | 是   | TextBlob对象。                             |
-| x      | number                | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。 |
-| y      | number                | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。 |
+| x      | number                | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。单位为物理像素px。 |
+| y      | number                | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。单位为物理像素px。 |
 
-![zh-ch_image_Text_Blob.png](figures/zh-ch_image_Text_Blob.png)
+![Text-Blob.png](figures/Text-Blob.png)
 
 **错误码：**
 
@@ -1364,6 +1364,65 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## drawGlyphs
+
+drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<common2D.Point\>, positionOffset: number, glyphCount: number, font: Font): void
+
+绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数**
+
+| 参数名          | 类型                                      | 必填  | 说明                                             |
+| ------         | -------------------                      | ---- | -----------                                      |
+| glyphIds       | Array\<number\>                             | 是   | 字形ID的数组。数组成员取值限定为整数，输入浮点数则仅保留整数部分。                                     |
+| glyphIdOffset  | number                                      | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效glyphIds数组范围为[glyphIds[m], glyphIds[m+n])的部分。<br>如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。<br>如果glyphIdOffset小于0则抛出错误码25900001。|
+| positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。                  |
+| positionOffset | number                                      | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])的部分。<br>如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。<br>如果positionOffset小于0则抛出错误码25900001。|
+| glyphCount     | number                                      | 是   | 要绘制的字形的数目。数目小于或等于0，则不绘制任何内容，并抛出错误码25900001。<br>如果glyphCount与glyphIdOffset的和，或者glyphCount与positionOffset的和大于0x7FFFFFFF，则该计算结果按0x7FFFFFFF处理。                               |
+| font           | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 用于绘图的字体。                                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    canvas.attachBrush(brush);
+    let glyphsArray : Array<number> = [100, 200, 300];
+    let positionArray = new Array<common2D.Point>();
+    const pts1: common2D.Point = { x: 100.0, y: 100.0 };
+    const pts2: common2D.Point = { x: 200.0, y: 100.0 };
+    const pts3: common2D.Point = { x: 150.0, y: 200.0 };
+    positionArray.push(pts1);
+    positionArray.push(pts2);
+    positionArray.push(pts3);
+    canvas.drawGlyphs(glyphsArray, 0, positionArray, 0, 3, font);
+    canvas.detachBrush();
+  }
+}
+```
+
 ## drawSingleCharacter<sup>12+</sup>
 
 drawSingleCharacter(text: string, font: Font, x: number, y: number): void
@@ -1378,10 +1437,10 @@ drawSingleCharacter(text: string, font: Font, x: number, y: number): void
 | ------ | ------------------- | ---- | ----------- |
 | text   | string | 是   | 待绘制的单个字符，字符串的长度必须为1。  |
 | font   | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 字型对象。  |
-| x      | number | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。 |
-| y      | number | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。 |
+| x      | number | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。单位为物理像素px。 |
+| y      | number | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。单位为物理像素px。 |
 
-![zh-ch_image_Text_Blob.png](figures/zh-ch_image_Text_Blob.png)
+![Text-Blob.png](figures/Text-Blob.png)
 
 **错误码：**
 
@@ -1426,8 +1485,8 @@ drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, 
 | ------ | ------------------- | ---- | ----------- |
 | text | string | 是 | 待绘制的单个字符，字符串长度必须为1。 |
 | font   | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 字型对象。  |
-| x | number | 是 | 所绘制字符基线左端点的横坐标，该参数为浮点数。 |
-| y | number | 是 | 所绘制字符基线左端点的纵坐标，该参数为浮点数。 |
+| x | number | 是 | 所绘制字符基线左端点的横坐标，该参数为浮点数。单位为物理像素px。 |
+| y | number | 是 | 所绘制字符基线左端点的纵坐标，该参数为浮点数。单位为物理像素px。 |
 | features | Array\<[FontFeature](arkts-apis-graphics-drawing-i.md#fontfeature20)\> | 是 | 字体特征对象数组。参数为空数组时使用TTF(TrueType Font)文件中预设的字体特征。|
 
 **错误码：**
@@ -1919,8 +1978,8 @@ rotate(degrees: number, sx: number, sy: number) : void
 | 参数名  | 类型     | 必填   | 说明         |
 | ---- | ------ | ------ | ------------------------ |
 | degrees       | number | 是    | 旋转角度，单位为度，该参数为浮点数，正数为顺时针旋转，负数为逆时针旋转。  |
-| sx            | number | 是    | 旋转中心的横坐标，该参数为浮点数。 |
-| sy            | number | 是    | 旋转中心的纵坐标，该参数为浮点数。 |
+| sx            | number | 是    | 旋转中心的横坐标，该参数为浮点数。单位为物理像素px。 |
+| sy            | number | 是    | 旋转中心的纵坐标，该参数为浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -1962,8 +2021,8 @@ translate(dx: number, dy: number): void
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ----- | ------ | ---- | ------------------- |
-| dx    | number | 是   | x轴方向的移动距离，该参数为浮点数。   |
-| dy    | number | 是   | y轴方向的移动距离，该参数为浮点数。   |
+| dx    | number | 是   | x轴方向的移动距离，该参数为浮点数。单位为物理像素px。   |
+| dy    | number | 是   | y轴方向的移动距离，该参数为浮点数。单位为物理像素px。   |
 
 **错误码：**
 
@@ -2627,6 +2686,42 @@ class DrawingRenderNode extends RenderNode {
     let dst1: common2D.Rect = { left: 200, top: 0, right: 360, bottom: 160 };
     canvas.drawImageLattice(pixelMap, lattice, dst, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例1
     canvas.drawImageLattice(pixelMap, lattice, dst1, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例2
+  }
+}
+```
+
+## isOpaque
+
+isOpaque(): boolean
+
+检查当前绘制到设备的图层是否不透明。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+| boolean | 返回当前绘制到设备的图层是否不透明的结果，true表示不透明，false表示透明。 |
+
+**示例：**
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    if (canvas.isOpaque()) {
+      console.info("canvas.isOpaque() returned true");
+    } else {
+      console.info("canvas.isOpaque() returned false");
+    }
   }
 }
 ```

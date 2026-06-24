@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 该模块提供软硬件耗电统计信息的查询接口。
 
@@ -72,7 +72,7 @@ getBatteryStats(callback: AsyncCallback<Array&lt;BatteryStatsInfo&gt;>): void
 
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback<Array<[BatteryStatsInfo](#batterystatsinfo)>> | 是   | 回调函数。当获取耗电信息列表成功，err为undefined，data为获取到的Array<[BatteryStatsInfo](#batterystatsinfo)>>；否则为错误对象；AsyncCallback封装了一个BatteryStatsInfo类型的接口。 |
+| callback | AsyncCallback<Array<[BatteryStatsInfo](#batterystatsinfo)>> | 是   | 回调函数。当获取耗电信息列表成功，err为undefined，data为获取到的Array<[BatteryStatsInfo](#batterystatsinfo)>；否则为错误对象；AsyncCallback封装了一个BatteryStatsInfo类型的接口。 |
 
 **错误码：**
 
@@ -100,7 +100,7 @@ batteryStats.getBatteryStats((err: Error, data : batteryStats.BatteryStatsInfo[]
 
 getAppPowerValue(uid: number): number
 
-获取应用的耗电量。
+获取应用的耗电量，单位毫安时。
 
 **系统接口：** 此接口为系统接口。
 
@@ -186,7 +186,7 @@ try {
 
 getHardwareUnitPowerValue(type: ConsumptionType): number
 
-根据耗电类型获取硬件单元的耗电量。
+根据耗电类型获取硬件单元的耗电量，单位毫安时。
 
 **系统接口：** 此接口为系统接口。
 

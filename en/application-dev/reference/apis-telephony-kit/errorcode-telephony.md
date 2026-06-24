@@ -181,6 +181,41 @@ The current carrier does not support sending of UT requests over a Wi-Fi network
 
 Disconnect the Wi-Fi network and resend the UT request.
 
+## 8401002 Incorrect Number
+
+**Error Message**
+
+Invalid input call number.
+
+**Description**
+
+The entered number is invalid.
+
+**Possible Causes**
+
+The user queries the call forwarding status of card A, but card A is not inserted into the current phone.
+
+**Procedure**
+
+Insert card A into the current phone.
+
+## 8401003 Frequent Operations
+
+**Error Message**
+
+Operation too frequent.
+
+**Description**
+
+Too frequent operations.
+
+**Possible Causes**
+
+The call forwarding status of the same type is queried consecutively within 30 seconds.
+
+**Procedure**
+
+Perform the operation again after 30 seconds.
 
 ## 3120001 Service Connection Error
 

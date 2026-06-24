@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -35,6 +35,7 @@ struct Index {
     Column() {
       Text(this.message)
         .onClick(() => {
+          // 日志打印：输出赋值前后this.message
           console.info(`message set before ${this.message}`);
           this.message = 'Welcome';
           console.info(`message set after ${this.message}`);

@@ -1,7 +1,7 @@
 # @ohos.InputMethodExtensionAbility (InputMethodExtensionAbility)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -57,7 +57,7 @@ import { Want } from '@kit.AbilityKit';
 
 class InputMethodExt extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    console.info('onCreate, want:' + want.abilityName);
+    console.info('onCreate, want:' + want?.abilityName);
   }
 }
 ```

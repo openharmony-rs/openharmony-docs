@@ -113,5 +113,6 @@
 
 ## 效果展示
 
-![zh-cn_image_load](figures/zh-cn_image_load.png)
-![zh-cn_image_unload](figures/zh-cn_image_unload.png)
+![image-load](figures/image-load.png)
+
+![image-unload](figures/image-unload.png)

@@ -23,7 +23,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 
 generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-Generates a key for the specified user. This API uses a promise to return the result. Because the key is always protected in a trusted environment (such as a TEE), the promise does not return the key content. It returns only the information indicating whether the API is successfully called.
+Generates a key for the specified user. This API uses a promise to return the result. Based on the principle that the key cannot be transferred out of [Trusted Execution Environment (TEE)](../../security/UniversalKeystoreKit/huks-concepts.md#tee), the key material content is not returned through the promise and is only used to indicate whether the call is successful.
 
 **System API**: This is a system API.
 
@@ -36,8 +36,8 @@ Generates a key for the specified user. This API uses a promise to return the re
 | Name  | Type                       | Mandatory| Description                    |
 | -------- | --------------------------- | ---- | ------------------------ |
 | userId   | number                      | Yes  | User ID.                |
-| keyAlias | string                      | Yes  | Key alias. The value can contain up to 128 bytes and should not include sensitive data such as personal information.              |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | [Attribute tags](capi-native-huks-type-h.md#enums) of the key to generate. The algorithm, key purpose, and key length are mandatory.|
+| keyAlias | string                      | Yes  | Key alias. The key alias can contain 1 to 128 bytes and should not contain sensitive keywords such as personal information.              |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | [Attribute tags](capi-native-huks-type-h.md#enums) used for key generation. The algorithm, key purpose, and key length are mandatory.|
 
 **Return value**
 
@@ -252,7 +252,7 @@ Imports a plaintext key for the specified user. This API uses a promise to retur
 | Name  | Type                       | Mandatory| Description                               |
 | -------- | --------------------------- | ---- | ----------------------------------- |
 | userId   | number                      | Yes  | User ID.                |
-| keyAlias | string                      | Yes  | Key alias. The value can contain up to 128 bytes and should not include sensitive data such as personal information.                         |
+| keyAlias | string                      | Yes  | Key alias. The key alias can contain 1 to 128 bytes and should not contain sensitive keywords such as personal information.                         |
 | huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | Yes  | Options for importing the key. The algorithm, key purpose, and key length are mandatory.|
 
 **Return value**
@@ -349,7 +349,7 @@ Attests a key for the specified user. This API uses a promise to return the resu
 
 **System API**: This is a system API.
 
-**Required permissions**: ohos.permission.ATTEST_KEY and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**Required permissions**: ohos.permission.ATTEST_KEY and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS.
 
 **System capability**: SystemCapability.Security.Huks.Extension
 
@@ -649,6 +649,151 @@ async function TestHuksAnonAttest() {
 export default function HuksAsUserTest() {
   console.info('begin huks as user test')
   TestHuksAnonAttest()
+}
+```
+
+## huks.anonAttestKeyItemOfflineAsUser
+
+anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksParam[]) : Promise\<HuksReturnResult>
+
+Obtains an anonymous key certificate in offline mode for a specified user. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - Offline key attestation depends on the network. You need to periodically connect to the network to use this API to update the offline certificate.
+> - Offline anonymous key attestation requires that the local time be accurate. Otherwise, the peer end may fail to verify the certificate expiration.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**System capability**: SystemCapability.Security.Huks.Extension
+
+**Parameters**
+
+| Name  | Type                       | Mandatory| Description                                |
+| -------- | --------------------------- | ---- | ------------------------------------ |
+| userId   | number                      | Yes  | User ID.                |
+| keyAlias | string                      | Yes  | Alias of the key. The certificate to be obtained stores the key.|
+| params | [HuksParam[]](js-apis-huks.md#huksparam) | Yes  | Options for attesting the key.  |
+
+**Return value**
+
+| Type                                          | Description                                         |
+| ---------------------------------------------- | --------------------------------------------- |
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise used to return the result. When the call is successful, the **certChains** member of the **HuksReturnResult** object is the obtained certificate chain. Otherwise, the member is empty.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HUKS Error Codes](errorcode-huks.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 201 | The app does not have sufficient permissions. Possible causes: The cross-account permission is not granted, the system is not unlocked by the user, or the user does not exist. |
+| 202 | Non-system apps use system APIs. |
+| 801 | The API is not supported. |
+| 12000001 | The function is not supported. Possible causes: <br>1. The algorithm mode is not supported. <br>2. The group key is not supported. <br>3. The extended encryption key is not supported. |
+| 12000002 | The algorithm parameter is missing. |
+| 12000003 | The algorithm parameter is invalid. |
+| 12000004 | The file operation failed. |
+| 12000005 | The IPC communication failed. |
+| 12000006 | The encryption engine is faulty. |
+| 12000011 | The queried entity does not exist. |
+| 12000012 | The device environment or input parameter is abnormal. |
+| 12000014 | The memory is insufficient. |
+| 12000018 | The parameter is incorrect. Possible causes: <br>1. A mandatory parameter is left empty. <br>2. The parameter type is incorrect. <br>3. The parameter verification failed. |
+| 12000024 | The operation times out. This may be caused by network jitter. You can try again later. |
+| 12000027 | The network is unavailable. Check network connections. |
+
+**Example**
+
+- Prerequisites: see **Example** of [generateKeyItemAsUser](#huksgeneratekeyitemasuser).
+
+```ts
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from "@kit.BasicServicesKit"
+
+function StringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+const userId = 100;
+const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+const keyAliasString = "key anon local attest as user";
+
+const challenge = StringToUint8Array('challenge_data');
+
+async function generateKey(alias: string) {
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_ECC
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+
+  await huks.generateKeyItemAsUser(userId, alias, options);
+}
+
+async function anonAttestKeyItemOfflineAsUser() {
+  let aliasString = keyAliasString;
+  let aliasUint8 = StringToUint8Array(aliasString);
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }
+  ];
+
+  await generateKey(aliasString);
+  await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, properties).then((data) => {
+    console.info('anonAttestationOffline ok!')
+    console.debug(`'CERT:${JSON.stringify(data)}`)
+    for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
+      console.info(`CERT${i} is ${data.certChains[i]}`)
+    }
+    console.info("anonAttestationOffline Success")
+  }).catch((err: BusinessError) => {
+    console.error("anonAttestationOffline fail, erroCode: " + err.code + " erroInfo: " + err.message)
+  })
 }
 ```
 
@@ -1580,7 +1725,7 @@ Checks whether a key exists for the specified user. This API uses a promise to r
 
 | Type             | Description                                   |
 | ----------------- | --------------------------------------- |
-| Promise\<boolean> | Promise used to return the result. If the key exists, **true** is returned. Otherwise, **false** is returned.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the key exists, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1696,7 +1841,7 @@ Initialize a key session for the specified user. This API uses a promise to retu
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksSessionHandle](js-apis-huks.md#hukssessionhandle9)> | Promise used to return a session handle for subsequent operations.|
+| Promise\<[HuksSessionHandle](js-apis-huks.md#hukssessionhandle9)> | Promise used to return **HuksSessionHandle**. The handle of **HuksSessionHandle** returns the handle generated by **initSessionAsUser**.|
 
 **Error codes**
 

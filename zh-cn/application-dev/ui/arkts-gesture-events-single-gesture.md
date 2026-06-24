@@ -365,7 +365,7 @@ export struct Pinch {
 ```
 
 
-![pinch](figures/pinch.png)
+![pinch](figures/pinch.gif)
 
 
 ## 旋转手势（RotationGesture）
@@ -435,7 +435,7 @@ export struct Rotation {
 ```
 
 
-![rotation](figures/rotation.png)
+![rotation](figures/rotation-2.gif)
 
 
 ## 快滑手势（SwipeGesture）

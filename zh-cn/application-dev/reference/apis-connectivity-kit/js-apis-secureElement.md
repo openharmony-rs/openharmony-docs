@@ -144,7 +144,7 @@ function secureElementDemo() {
 }
 ```
 
-## omapi.on<sup>18+</sup>
+## omapi.on('stateChanged')<sup>18+</sup>
 
 on(type: 'stateChanged', callback: Callback\<ServiceState>): void;
 
@@ -171,9 +171,9 @@ on(type: 'stateChanged', callback: Callback\<ServiceState>): void;
 
 **示例：**
 
-示例请参见[off](#omapioff18)接口的示例。
+示例请参见[omapi.off](#omapioffstatechanged18)接口的示例。
 
-## omapi.off<sup>18+</sup>
+## omapi.off('stateChanged')<sup>18+</sup>
 
 off(type: 'stateChanged', callback?: Callback\<ServiceState>): void;
 
@@ -186,7 +186,7 @@ off(type: 'stateChanged', callback?: Callback\<ServiceState>): void;
 | **参数名** | **类型**                                             | **必填** | **说明**             |
 | ---------- | ---------------------------------------------------- | ------ | -------------------- |
 | type       | string                                               | 是      | 取消订阅监听的事件类型，固定填'stateChanged' 。      |
-| callback   | Callback<[ServiceState](#servicestate)> | 否      | 返回SE服务状态的回调 。|
+| callback   | Callback<[ServiceState](#servicestate)> | 否      | 返回SE服务状态的回调。不填则取消订阅该type对应的所有回调。|
 
 **错误码：**
 
@@ -1529,7 +1529,7 @@ transmit(command: number[]): Promise\<number[]>
 
 | **类型** | **说明**       |
 | -------- | -------------- |
-| Promise\<number[]> | 以Promise形式异步返回接收到的响应APDU数据，number数组。 |
+| Promise\<number[]> | 以Promise形式异步返回接收到的响应APDU数据，number数组。若芯片捕获异常则返回全0。 |
 
 **错误码：**
 
@@ -1556,6 +1556,7 @@ let seChannel : omapi.Channel;
 let cmdData = [0x01, 0x02, 0x03, 0x04]; // 请更改为正确的data
 try {
     seChannel.transmit(cmdData).then((response) => {
+        // 若芯片捕获异常则response返回全0
         hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
     }).catch((error : BusinessError) => {
         hilog.error(0x0000, 'testTag', 'transmit error = %{public}s.', JSON.stringify(error));
@@ -1578,7 +1579,7 @@ transmit(command: number[], callback: AsyncCallback\<number[]>): void
 | **参数名** | **类型**                | **必填** | **说明**                              |
 | ---------- | ----------------------- | ------ | ------------------------------------- |
 | command    | number[]                | 是      | 需要发送到SE的APDU数据。 |
-| callback   | AsyncCallback\<number[]> | 是      | 返回接收到的响应APDU数据，number数组。  |
+| callback   | AsyncCallback\<number[]> | 是      | 返回接收到的响应APDU数据，number数组。若芯片捕获异常则返回全0。 |
 
 **错误码：**
 
@@ -1608,6 +1609,7 @@ try {
     if (error) {
         hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
     } else {
+        // 若芯片捕获异常则response返回全0
         hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
     }
     });

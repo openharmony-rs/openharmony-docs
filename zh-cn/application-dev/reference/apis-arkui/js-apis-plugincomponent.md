@@ -277,7 +277,7 @@ pluginComponentManager.request(
 
 ### pluginComponentManager.on
 
-on(eventType: string, callback: OnPushEventCallback | OnRequestEventCallback ): void
+on(eventType: string, callback: OnPushEventCallback | OnRequestEventCallback): void
 
 提供方监听"request"类型的事件，给使用方返回通过request接口主动请求的数据；使用方监听"push"类型的事件，接收提供方通过push接口主动推送的数据。
 

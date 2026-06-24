@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -122,9 +122,26 @@ When disabled, the customer keyboard will dismiss and re-launch during input fie
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 | Name  | Value  | Description      |
 | ------ | ---- | ---------- |
 | ENABLED | 0 | The custom keyboard remains persistent.|
 | DISABLED | 1 | The custom keyboard does not remain persistent.|
+
+## TextSelectionClearPolicy
+
+Enumerates text selection clearing policies.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name  | Value  | Description      |
+| ------ | ---- | ---------- |
+| KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 0 | When the user touches outside the text component, the text selection and handles are retained.|
+| CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 1 | When the user touches outside the text component, the text selection and handles are cleared.|

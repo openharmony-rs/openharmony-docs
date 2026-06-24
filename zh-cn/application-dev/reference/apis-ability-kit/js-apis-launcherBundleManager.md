@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块支持launcher应用（桌面有图标的应用）所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息的查询。
 
@@ -33,7 +33,7 @@ getLauncherAbilityInfoSync(bundleName: string, userId: number) : Array\<[Launche
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
@@ -43,7 +43,7 @@ getLauncherAbilityInfoSync(bundleName: string, userId: number) : Array\<[Launche
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -59,8 +59,8 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let data = launcherBundleManager.getLauncherAbilityInfoSync("com.example.demo", 100);
-  console.info("data is " + JSON.stringify(data));
+  let launcherAbilityInfos = launcherBundleManager.getLauncherAbilityInfoSync("com.example.demo", 100);
+  console.info("data is " + JSON.stringify(launcherAbilityInfos));
 } catch (errData) {
   let code = (errData as BusinessError).code;
   let message = (errData as BusinessError).message;
@@ -72,7 +72,7 @@ try {
 
 type LauncherAbilityInfo = _LauncherAbilityInfo
 
-LauncherAbilityInfo信息。
+桌面应用Ability的基础信息，包含应用标识、图标、名称等核心属性。详细信息请参见[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 

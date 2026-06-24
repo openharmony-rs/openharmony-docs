@@ -296,7 +296,7 @@ struct Index {
     }
     tcp.connect(addressConnect);
     tcp.getSocketFd().then((tunnelFd: number) => {
-      console.info("tunenlfd: " + tunnelFd);
+      console.info("tunnelFd: " + tunnelFd);
       this.VpnConnection.protect(tunnelFd, (error: BusinessError) => {
         console.error(JSON.stringify(error));
       });
@@ -377,7 +377,7 @@ struct Index {
     }
     tcp.connect(addressConnect);
     tcp.getSocketFd().then((tunnelFd: number) => {
-      console.info("tunenlfd: " + tunnelFd);
+      console.info("tunnelFd: " + tunnelFd);
       this.VpnConnection.protect(tunnelFd).then(() => {
         console.info("protect success.");
       }).catch((err: BusinessError) => {

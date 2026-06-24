@@ -39,16 +39,16 @@ This topic elaborates steps 3 and 4.
   
   You can use [checkAccessToken()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9) to check whether the user has granted specific permissions to your application. This API returns [PERMISSION_GRANTED](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus) or [PERMISSION_DENIED](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus). For details, see the example given below.
 
-- Each time before an API that requires a user_grant permission is called, use [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) to check whether the user has already granted the permission.
+- Before each access to an API protected by the target permission, use [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) to request the corresponding permission.
 
-  After a permission is granted, the user may revoke the permission in **Settings**. Therefore, the previous authorization status cannot be persistent.
+  After a permission is granted, the user may revoke the permission in **Settings**. Therefore, the previous authorization status cannot persist.
 
 - When requesting permissions using **onWindowStageCreate()**, the application needs to wait until the **loadContent()** or **setUIContent()** API is complete or call [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) in **loadContent()** or **setUIContent()**.
   <!--RP1--><!--RP1End-->
 
 ## How to Develop
 
-The following example steps you through on how to request the location permissions.
+The following example steps walk you through on how to request the location permissions.
 
 **Figure 1** Requesting the location permissions
 

@@ -1,9 +1,8 @@
 # 管理通知渠道
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -15,16 +14,16 @@
 
 <!--RP1-->
 <!--RP1End-->
-
+<!--RP2-->
 | SlotType             | 取值   | 分类     | 通知中心 | 横幅 | 锁屏 | 铃声/振动 | 状态栏图标 | 自动亮屏 |
 | -------------------- | ------ | --------| ------- |------|------|----------|-----------|---------|
-| UNKNOWN_TYPE         | 0      | 未知类型 | Y | N | N | N | N | N |
 | SOCIAL_COMMUNICATION | 1      | 社交通信 | Y | Y | Y | Y | Y | Y |
 | SERVICE_INFORMATION  | 2      | 服务提醒 | Y | Y | Y | Y | Y | Y |
-| CONTENT_INFORMATION  | 3      | 内容资讯 | Y | N | N | N | N | N |
 | CUSTOMER_SERVICE     | 5      | 客服消息 | Y | N | N | Y | Y | N |
+| CONTENT_INFORMATION  | 3      | 内容资讯 | Y | N | N | N | N | N |
+| UNKNOWN_TYPE         | 0      | 未知类型 | Y | N | N | N | N | N |
 | OTHER_TYPES          | 0xFFFF | 其他     | Y | N | N | N | N | N |
-
+<!--RP2End-->
 
 ## 接口说明
 
@@ -71,7 +70,7 @@
 
 3. 查询指定类型的通知渠道。
 
-   获取对应渠道是否创建以及该渠道支持的通知提醒方式，比如是否有声音提示，是否有震动，锁屏是否可见等。
+   获取对应渠道是否创建以及该渠道支持的通知提醒方式，比如是否有铃声，是否有振动，锁屏是否可见等。
 
    <!-- @[get_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets) -->
    

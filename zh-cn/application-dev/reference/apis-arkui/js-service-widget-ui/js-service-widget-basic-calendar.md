@@ -200,5 +200,5 @@ calendardata示例：
 ```
 **4*4卡片**
 
-![zh-cn_image_0000001231452477](figures/zh-cn_image_0000001231452477.png)
+![zh-cn_image_0000001231452477](figures/calendar-example.png)
 

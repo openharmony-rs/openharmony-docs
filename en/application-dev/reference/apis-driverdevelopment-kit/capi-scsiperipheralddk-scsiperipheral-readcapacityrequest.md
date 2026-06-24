@@ -1,7 +1,7 @@
 # ScsiPeripheral_ReadCapacityRequest
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_ReadCapacityRequest {...} ScsiPeripheral_ReadCapac
 
 ## Overview
 
-Request structure of the **read capacity** command.
+Defines the request structure of the **read capacity** command.
 
 **Since**: 18
 

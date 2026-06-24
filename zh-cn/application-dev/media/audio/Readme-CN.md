@@ -1,16 +1,17 @@
 # Audio Kit（音频服务）
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
 - [Audio Kit简介](audio-kit-intro.md)
 - [使用合适的音频类型](using-right-streamusage-and-sourcetype.md)
 - 音频焦点和音频会话管理<!--audio-session-->
+  - [音频焦点和音频会话开发概述](audio-playback-concurrency-audio-session-overview.md)
   - [音频焦点介绍](audio-playback-concurrency.md)
-  - [音频会话管理](audio-session-management.md)
+  - [音频会话管理(ArkTS)](audio-session-management.md)
   - [使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)
 - 音频播放<!--audio-playback-->
   - [音频播放开发概述](audio-playback-overview.md)
@@ -43,8 +44,8 @@
   - [管理麦克风静音状态](mic-management.md)
   - [查询和监听其他应用录制状态](audio-recording-stream-management.md)
   - [录音并发策略说明](audio-recording-concurrency.md)
-  - [实现音频耳返](audio-ear-monitor.md)
-  - [实现音频低时延耳返](audio-ear-monitor-loopback.md)
+  - [实现自定义耳返](audio-ear-monitor.md)
+  - [实现低时延耳返](audio-ear-monitor-loopback.md)
 - 音频设备路由管理<!--audio-device-->
   - [查询和监听音频输入设备](audio-input-device-management.md)
   - [查询和监听音频输出设备](audio-output-device-management.md)
@@ -60,7 +61,12 @@
 - 音频编创<!--audio-production-creation-->
   - [音频编创开发概述(C/C++)](audio-suite.md)
   - [离线编辑(C/C++)](audio-suite-manual-rendering.md)
-  - [实时渲染(C/C++)](audio-suite-real-time-rendering.md)
+  - [实时预览(C/C++)](audio-suite-real-time-rendering.md)
+  - [音频格式转换(C/C++)](audio-suite-format-converter.md)
+  - [空间渲染(C/C++)](audio-suite-space-render.md)
+- MIDI设备通信<!--midi-->
+  - [OH_MIDI概述(C/C++)](midi-overview.md)
+  - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)
 - OpenSL ES开发指导(不再推荐)<!--not-recommended-->
   - [从OpenSL ES切换OHAudio(C/C++)](replace-opensles-by-ohaudio.md)
   - [使用OpenSL ES开发音频播放功能(C/C++)](using-opensl-es-for-playback.md)

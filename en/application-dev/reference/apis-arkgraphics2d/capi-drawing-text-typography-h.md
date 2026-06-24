@@ -1,7 +1,7 @@
 # drawing_text_typography.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -37,6 +37,7 @@ This file declares the functions related to typography in the drawing module.
 | [OH_Drawing_FontStyleStruct](capi-drawing-oh-drawing-fontstylestruct.md) | OH_Drawing_FontStyleStruct | Describes a font style.|
 | [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md) | OH_Drawing_FontFeature | Describes a font feature.|
 | [OH_Drawing_StrutStyle](capi-drawing-oh-drawing-strutstyle.md) | OH_Drawing_StrutStyle | Describes a strut style. The strut style determines the line spacing, baseline alignment mode, and other properties related to the line height when drawing texts.|
+| [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md) | OH_Drawing_RectSize | Defines a text rectangle structure.|
 
 ### Enums
 
@@ -287,7 +288,17 @@ This file declares the functions related to typography in the drawing module.
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int* value)](#oh_drawing_gettypographystyleattributeint) | Obtains the typography style attribute of the **int** type.|
 | [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool value)](#oh_drawing_settypographystyleattributebool) | Sets the typography style attribute of the **bool** type.|
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool* value)](#oh_drawing_gettypographystyleattributebool) | Obtains the typography style attribute of the **bool** type.|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDoubleArray(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double* arrayValue, size_t arrayLength)](#oh_drawing_settypographystyleattributedoublearray) | Sets the typography style attribute of the floating-point array type.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDoubleArray(const OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double** arrayValue, size_t* arrayLength)](#oh_drawing_gettypographystyleattributedoublearray) | Obtains the typography style attribute of the floating-point array type.|
 | [void OH_Drawing_DestroyPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)](#oh_drawing_destroypositionandaffinity) | Destroys an [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) object and reclaims the memory occupied by the object.|
+| [OH_Drawing_Range* OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer(OH_Drawing_Typography* typography, size_t glyphRangeStart, size_t glyphRangeEnd, OH_Drawing_Range** actualGlyphRange, OH_Drawing_TextEncoding textEncodingType)](#oh_drawing_typographygetcharacterrangeforglyphrangewithbuffer) | Obtains the character range corresponding to the specified glyph range.|
+| [OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer(OH_Drawing_Typography* typography, double dx, double dy, OH_Drawing_TextEncoding textEncodingType)](#oh_drawing_typographygetcharacterpositionatcoordinatewithbuffer) | Obtains the character position information closest to the specified coordinates.|
+| [OH_Drawing_Range* OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer(OH_Drawing_Typography* typography, size_t characterRangeStart, size_t characterRangeEnd, OH_Drawing_Range** actualCharacterRange, OH_Drawing_TextEncoding textEncodingType)](#oh_drawing_typographygetglyphrangeforcharacterrangewithbuffer) | Obtains the glyph range corresponding to the specified character range.|
+| [void OH_Drawing_ReleaseRangeBuffer(OH_Drawing_Range* range)](#oh_drawing_releaserangebuffer) | Releases the memory occupied by the [OH_Drawing_Range](capi-drawing-oh-drawing-range.md) object.|
+| [OH_Drawing_RectSize OH_Drawing_TypographyLayoutWithConstraintsWithBuffer(OH_Drawing_Typography* typography, OH_Drawing_RectSize constraintsRect, OH_Drawing_Array** fitStrRangeArr, size_t* fitStrRangeArrayLen)](#oh_drawing_typographylayoutwithconstraintswithbuffer) | Arranges the text in the constraint rectangle.|
+| [OH_Drawing_Range* OH_Drawing_GetRangeByArrayIndex(OH_Drawing_Array* array, size_t index)](#oh_drawing_getrangebyarrayindex) | Obtains the pointer to the OH_Drawing_Range object based on the array index.|
+| [OH_Drawing_ErrorCode OH_Drawing_ReleaseArrayBuffer(OH_Drawing_Array* array)](#oh_drawing_releasearraybuffer) | Releases the memory occupied by the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object.|
+| [void OH_Drawing_TextStyleAddFontVariationWithNormalization(OH_Drawing_TextStyle* style, const char* axis, const float normalizedValue)](#oh_drawing_textstyleaddfontvariationwithnormalization) | Adds the normalized variable font attributes. This function takes effect only when the corresponding font file (.ttf file) supports variable adjustment.|
 
 ## Enum Description
 
@@ -482,9 +493,11 @@ Enumerates the ellipsis styles.
 
 | Value| Description|
 | -- | -- |
-| ELLIPSIS_MODAL_HEAD = 0 | Places the ellipsis in the text header.|
-| ELLIPSIS_MODAL_MIDDLE = 1 | Places the ellipsis in the middle of the text.|
-| ELLIPSIS_MODAL_TAIL = 2 | Places the ellipsis at the end of the text.|
+| ELLIPSIS_MODAL_HEAD = 0 | Header ellipsis mode, that is, the ellipsis appears at the beginning of a line. This enumerated value is valid only when the maximum number of text lines is set to **1** by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).|
+| ELLIPSIS_MODAL_MIDDLE = 1 | Middle ellipsis mode, that is, the ellipsis appears in the middle of a line. This enumerated value is valid only when the maximum number of text lines is set to **1** by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).|
+| ELLIPSIS_MODAL_TAIL = 2 | End ellipsis mode, that is, the ellipsis appears at the end of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).|
+| ELLIPSIS_MODAL_MULTILINE_HEAD = 3 | Header ellipsis mode, that is, the ellipsis appears at the beginning of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).<br>**Since**: 24|
+| ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4 | Middle ellipsis mode, that is, the ellipsis appears in the middle of a line. This enumerated value is valid when the maximum number of text lines is set to any value by calling [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).<br>**Since**: 24|
 
 ### OH_Drawing_BreakStrategy
 
@@ -701,6 +714,7 @@ Enumerates the text style attributes.
 | TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | Minimum line height.<br>If line height scaling is enabled, the minimum line height takes effect only when **FontHeight** (which can be obtained from [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)) is greater than 0.<br>The value is the non-negative part of a single-precision floating point number. The default value is **0**.|
 | TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 2 | Scaling base style of the line height. For details, see [OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle).|
 | TEXT_STYLE_ATTR_I_FONT_WIDTH = 3 | Font width.|
+| TEXT_STYLE_ATTR_I_FONT_EDGING = 4 | Font edge processing mode. Anti-aliasing is used by default. For details about how to process font edges, see [OH_Drawing_FontEdging](capi-drawing-font-h.md#oh_drawing_fontedging).<br>**Since**: 24|
 
 ### OH_Drawing_TypographyStyleAttributeId
 
@@ -724,6 +738,10 @@ Enumerates the typography style attributes.<br>For the common attributes of the 
 | TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | Sets whether to use punctuation compression at the beginning of a line in text layout.<br>**NOTE**<br>1. The font file must support the ss08 feature in [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md). Otherwise, compression cannot be performed.<br>2. Only the punctuations within the punctuation compression range at the beginning of a line are in the scope of this feature.<br>**Since**: 23|
 | TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 | Sets whether to enable the built-in padding of the font during text typography.<br>**Since**: 23|
 | TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 | Sets whether to enable the line spacing rollback mechanism during text typography.<br>**Since**: 23|
+| TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8 | Ellipsis style. For details about the ellipsis style, see [OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal).<br>**Since**: 24|
+| TYPOGRAPHY_STYLE_ATTR_DA_LINE_HEAD_INDENT = 9 | First-line indent array.<br>All values in the indent array must be greater than or equal to 0. Each element in the array represents the indentation value of a single line. If the actual number of text lines exceeds the length of the indent array, the last value of the array is applied to the extra lines.<br>**Since**: 26.0.0|
+| TYPOGRAPHY_STYLE_ATTR_D_FIRST_LINE_HEAD_INDENT = 10 | First-line indent of a paragraph. The indent value must be greater than or equal to 0.<br>**Since**: 26.0.0|
+| TYPOGRAPHY_STYLE_ATTR_DA_LINE_TAIL_INDENT = 11 | Last-line indent array.<br>All values in the indent array must be greater than or equal to 0. Each element in the array represents the indentation value of a single line. If the actual number of text lines exceeds the length of the indent array, the last value of the array is applied to the extra lines.<br>**Since**: 26.0.0|
 
 ## Function Description
 
@@ -1195,7 +1213,7 @@ Sets the locale for a text style.
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to the **OH_Drawing_TextStyle** object, which is obtained from [OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle).|
-| const char* locale | Pointer to the locale. For example, **'en'** indicates English, **'zh-Hans'** indicates Simplified Chinese, and **'zh-Hant'** indicates Traditional Chinese.|
+| const char* locale | Pointer to the locale. For example, **'en'** indicates English, **'zh-Hans'** indicates Simplified Chinese, and **'zh-Hant'** indicates Traditional Chinese. If it is not specified, the default locale is **'zh-Hans'**.|
 
 ### OH_Drawing_SetTextStyleForegroundBrush()
 
@@ -2532,6 +2550,12 @@ void OH_Drawing_SetTypographyTextEllipsisModal(OH_Drawing_TypographyStyle* style
 **Description**
 
 Sets the ellipsis style for a text style.
+
+This API supports only the ellipsis styles ELLIPSIS_MODAL_HEAD, ELLIPSIS_MODAL_MIDDLE, and ELLIPSIS_MODAL_TAIL. For details, see the [OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal) enumeration.
+
+>**NOTE**
+> 
+> Since API version 24, you are advised to use the [OH_Drawing_SetTypographyStyleAttributeInt](capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributeint) API to set the ellipsis style to support more ellipsis-style enumerated values.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -6095,6 +6119,64 @@ Obtains the typography style attribute of the **bool** type.
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **style** or **value** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
 
+### OH_Drawing_SetTypographyStyleAttributeDoubleArray()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDoubleArray(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double* arrayValue, size_t arrayLength)
+```
+
+**Description**
+
+Sets the typography style attribute of the floating-point array type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | Pointer to an [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md) object.|
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | Attribute ID of the text style.|
+| double* arrayValue | Pointer to the floating-point array.|
+| size_t arrayLength | Length of the floating-point array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if the parameter **style** or **arrayValue** is a null pointer or **arrayLength** is 0.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_GetTypographyStyleAttributeDoubleArray()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDoubleArray(const OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double** arrayValue, size_t* arrayLength)
+```
+
+**Description**
+
+Obtains the typography style attribute of the floating-point array type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | Pointer to an [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md) object.|
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | Attribute ID of the text style.|
+| double** arrayValue | Pointer to the floating-point array. It is used as an output parameter.|
+| size_t* arrayLength | Length of the floating-point array. It is used as an output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if the parameter **style** or **arrayValue** is a null pointer or **arrayLength** is 0.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
 ### OH_Drawing_DestroyPositionAndAffinity()
 
 ```c
@@ -6112,3 +6194,206 @@ Destroys an [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionand
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)* positionAndAffinity | Pointer to the [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) object.|
+
+### OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer()
+
+```c
+OH_Drawing_Range* OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer(OH_Drawing_Typography* typography, size_t glyphRangeStart, size_t glyphRangeEnd, OH_Drawing_Range** actualGlyphRange, OH_Drawing_TextEncoding textEncodingType)
+```
+
+**Description**
+
+Obtains the character range corresponding to the specified glyph range.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | Pointer to the **OH_Drawing_Typography** object, which is obtained from [OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography).|
+| size_t glyphRangeStart | Start position of the glyph range.|
+| size_t glyphRangeEnd | End position of the glyph range.|
+| [OH_Drawing_Range](capi-drawing-oh-drawing-range.md)** actualGlyphRange | Returns the actual font range, indicating the level-2 pointer to [OH_Drawing_Range](capi-drawing-oh-drawing-range.md). It is used as an output parameter.<br>When the requested glyph range contains only a part of a complex glyph sequence, this parameter returns the corresponding complete glyph range.<br>For example, ligatures and combined emojis may consist of multiple atomic glyphs and must be processed as a whole.<br>If this parameter is NULL, the actual glyph range is not returned, indicating that the caller does not care about the actual glyph range information.<br>After use, release the object through the [OH_Drawing_ReleaseRangeBuffer](capi-drawing-text-typography-h.md#oh_drawing_releaserangebuffer) API.|
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncodingType | Text encoding type [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding).<br>Currently, only UTF-8 and UTF-16 encoding types are supported.<br>For UTF-8 encoding, the returned character range indicates the byte range.<br>For UTF-16 encoding, the returned character range indicates the UTF-16 code unit range.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_Range*](capi-drawing-oh-drawing-range.md) | Returns the [OH_Drawing_Range](capi-drawing-oh-drawing-range.md) object pointer that indicates the character range. When the object is no longer needed, use the [OH_Drawing_ReleaseRangeBuffer](capi-drawing-text-typography-h.md#oh_drawing_releaserangebuffer) API to release it.|
+
+### OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer()
+
+```c
+OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer(OH_Drawing_Typography* typography, double dx, double dy, OH_Drawing_TextEncoding textEncodingType)
+```
+
+**Description**
+
+Obtains the character position information closest to the specified coordinates.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | Pointer to the **OH_Drawing_Typography** object, which is obtained from [OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography).|
+| double dx | Horizontal coordinate in the text layout area, in physical pixels (px).<br>X offset relative to the top-left corner of the text layout area, with the right direction as positive.<br>Supports floating-point values and accepts negative values, which indicate positions to the left of the text layout area.<br>If the coordinates are beyond the text layout area, the nearest character position is returned. It can be obtained through a touch event or click event.|
+| double dy | Vertical coordinate in the text layout area, in physical pixels (px).<br>Y offset relative to the top-left corner of the text layout area, with the downward direction as positive.<br>Supports floating-point values and accepts negative values, which indicate positions above the text layout area.<br>If the coordinates are beyond the text layout area, the nearest character position is returned. It can be obtained through a touch event or click event.|
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncodingType | Text encoding type [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding).<br>Currently, only UTF-8 and UTF-16 encoding types are supported.<br>For UTF-8 encoding, the returned position indicates the byte offset. For UTF-16 encoding, the returned position indicates the UTF-16 code unit offset.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_PositionAndAffinity*](capi-drawing-oh-drawing-positionandaffinity.md) | Returns the character index position and affinity at the coordinate. The return type is the [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) structure.<br>When the object is no longer needed, call [OH_Drawing_DestroyPositionAndAffinity](capi-drawing-text-typography-h.md#oh_drawing_destroypositionandaffinity) to release it.|
+
+### OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer()
+
+```c
+OH_Drawing_Range* OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer(OH_Drawing_Typography* typography, size_t characterRangeStart, size_t characterRangeEnd, OH_Drawing_Range** actualCharacterRange, OH_Drawing_TextEncoding textEncodingType)
+```
+
+**Description**
+
+Obtains the glyph range corresponding to the specified character range.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | Pointer to the **OH_Drawing_Typography** object, which is obtained from [OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography).|
+| size_t characterRangeStart | Start position of the character range.|
+| size_t characterRangeEnd | End position of the character range.|
+| [OH_Drawing_Range](capi-drawing-oh-drawing-range.md)** actualCharacterRange | Returns the actual character range, indicating the level-2 pointer to [OH_Drawing_Range](capi-drawing-oh-drawing-range.md). It is used as an output parameter.<br>When the requested character range contains only a part of the combined character sequence, this parameter returns the corresponding complete character range.<br>For example, a combined character consisting of a base character and a diacritical mark must be processed as a whole.<br>If this parameter is NULL, the actual character range is not returned, indicating that the caller does not care about the actual character range information.<br>After use, release the object through the [OH_Drawing_ReleaseRangeBuffer](capi-drawing-text-typography-h.md#oh_drawing_releaserangebuffer) API.|
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncodingType | Text encoding type [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding).<br>Currently, only UTF-8 and UTF-16 encoding types are supported.<br>For UTF-8 encoding, the input character range should be interpreted as a byte range. For UTF-16 encoding, the input character range should be interpreted as a UTF-16 code unit range.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_Range*](capi-drawing-oh-drawing-range.md) | Returns the [OH_Drawing_Range](capi-drawing-oh-drawing-range.md) object pointer that indicates the font range. If the object is no longer needed, use the [OH_Drawing_ReleaseRangeBuffer](capi-drawing-text-typography-h.md#oh_drawing_releaserangebuffer) API to release it.|
+
+### OH_Drawing_ReleaseRangeBuffer()
+
+```c
+void OH_Drawing_ReleaseRangeBuffer(OH_Drawing_Range* range)
+```
+
+**Description**
+
+Releases the memory occupied by the [OH_Drawing_Range](capi-drawing-oh-drawing-range.md) object.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Range](capi-drawing-oh-drawing-range.md)* range | Pointer to the [OH_Drawing_Range](capi-drawing-oh-drawing-range.md) object.|
+
+### OH_Drawing_TypographyLayoutWithConstraintsWithBuffer()
+
+```c
+OH_Drawing_RectSize OH_Drawing_TypographyLayoutWithConstraintsWithBuffer(OH_Drawing_Typography* typography, OH_Drawing_RectSize constraintsRect, OH_Drawing_Array** fitStrRangeArr, size_t* fitStrRangeArrayLen)
+```
+
+**Description**
+
+Arranges the text in the constraint rectangle.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | Pointer to the [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md) object, which is obtained from [OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography).|
+| [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md) constraintsRect | Height and width of the constrained layout.|
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)** fitStrRangeArr | As an output parameter, it contains the character range of the paragraph text that is actually contained. Pointer to array object [OH_Drawing_Array](capi-drawing-oh-drawing-array.md).<br>Releases the memory through [OH_Drawing_ReleaseArrayBuffer](capi-drawing-text-typography-h.md#oh_drawing_releasearraybuffer).|
+| size_t* fitStrRangeArrayLen | As an output parameter, it indicates the size of the contained string array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md) | Returns the OH_Drawing_RectSize object, indicating the actual rectangle of the paragraph text.|
+
+### OH_Drawing_GetRangeByArrayIndex()
+
+```c
+OH_Drawing_Range* OH_Drawing_GetRangeByArrayIndex(OH_Drawing_Array* array, size_t index)
+```
+
+**Description**
+
+Obtains the pointer to the OH_Drawing_Range object based on the array index.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* array | Pointer to array object [OH_Drawing_Array](capi-drawing-oh-drawing-array.md).|
+| size_t index | Index of the target [OH_Drawing_Range](capi-drawing-oh-drawing-range.md) object in the array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_Range*](capi-drawing-oh-drawing-range.md) | Returns the pointer to the OH_Drawing_Range object.|
+
+### OH_Drawing_ReleaseArrayBuffer()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_ReleaseArrayBuffer(OH_Drawing_Array* array)
+```
+
+**Description**
+
+Releases the memory occupied by the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* array | Pointer to array object [OH_Drawing_Array](capi-drawing-oh-drawing-array.md).<br>Supported array types:<br>Array of full font names, which is obtained through [OH_Drawing_GetSystemFontFullNamesByType](capi-drawing-text-font-descriptor-h.md#oh_drawing_getsystemfontfullnamesbytype).<br>Array of text lines, which is obtained through [OH_Drawing_TypographyGetTextLines](capi-drawing-text-line-h.md#oh_drawing_typographygettextlines).<br>Array of string indexes, which is obtained through [OH_Drawing_GetRunStringIndices](capi-drawing-text-run-h.md#oh_drawing_getrunstringindices).<br>Array of rectangles, which is obtained through [OH_Drawing_RectCreateArray](capi-drawing-rect-h.md#oh_drawing_rectcreatearray).<br>Array of font descriptors, which is obtained through [OH_Drawing_GetFontFullDescriptorsFromStream](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorsfromstream) or [OH_Drawing_GetFontFullDescriptorsFromPath](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorsfrompath).<br>Array of text ranges, which is obtained through [OH_Drawing_TypographyLayoutWithConstraintsWithBuffer](capi-drawing-text-typography-h.md#oh_drawing_typographylayoutwithconstraintswithbuffer).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if array is a null pointer or the type is not supported.|
+
+### OH_Drawing_TextStyleAddFontVariationWithNormalization()
+
+```c
+void OH_Drawing_TextStyleAddFontVariationWithNormalization(OH_Drawing_TextStyle* style, const char* axis, const float normalizedValue)
+```
+
+**Description**
+
+Adds the normalized variable font attributes. This function takes effect only when the corresponding font file (.ttf file) supports variable adjustment.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to the **OH_Drawing_TextStyle** object, which is obtained from [OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle).|
+| const char* axis | Pointer to the key in the font variation key-value pair.|
+| const float normalizedValue | Value of the font variation key-value pair. The normalized value range is [-1,1], mapping the range from the minimum value to the maximum value configured in the font file. **0** indicates the default value configured in the font file.|
