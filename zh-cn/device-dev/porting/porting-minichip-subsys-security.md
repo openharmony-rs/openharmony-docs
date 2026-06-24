@@ -104,7 +104,7 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 >{
 >   "subsystem": "security",
 >   "components": [{
->           "component": "hichainsdk",
+>           "component": "device_auth",
 >           "features": []
 >       },
 >       {
