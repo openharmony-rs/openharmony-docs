@@ -88,7 +88,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
       await systemPasteboard.setData(pasteData);
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Set data to pasteboard successfully');
     } catch (error) {
-      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set data to pasteboard, error:' + error);
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to set data to pasteboard, error: ${error}`);
     }
   }
   export async function getPlainData(type: string): Promise<string> {
@@ -101,12 +101,12 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
       let result = '';
       for (let i = 0; i < recordCount; i++) {
         let record = data.getRecord(i).toPlainText();
-        hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
+        hilog.info(0xFF00, '[Sample_pasteboard]', `Get data success, record: ${record}`);
         result = record;
       }
       return result;
     } catch (error) {
-      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get data from pasteboard, error:' + error);
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to get data from pasteboard, error: ${error}`);
       return '';
     }
   }
@@ -154,7 +154,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in setting UnifiedData.');
       // 存入成功，处理正常场景
     }).catch((err: BusinessError) => {
-      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set UnifiedData. Cause: ' + err.message);
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to set UnifiedData. Cause: ${err.message}`);
       // 处理异常场景
     });
     // 3.从系统剪贴板中读取这条text数据
@@ -167,7 +167,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
         }
       }
     }).catch((err: BusinessError) => {
-      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get UnifiedData. Cause: ' + err.message);
+      hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to get UnifiedData. Cause: ${err.message}`);
       // 处理异常场景
     });
   }
