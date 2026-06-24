@@ -36785,12 +36785,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets",
 				"functions":[
 					{
-						"end_line":495,
+						"end_line":496,
 						"name":"check_renderstate",
 						"start_line":28
 					},
 					{
-						"end_line":512,
+						"end_line":513,
 						"name":"regist_listeningrendererchange",
 						"start_line":29
 					},
@@ -36800,7 +36800,7 @@
 						"start_line":30
 					},
 					{
-						"end_line":525,
+						"end_line":526,
 						"name":"regist_renderchangechallback",
 						"start_line":31
 					},
@@ -36810,7 +36810,7 @@
 						"start_line":531
 					},
 					{
-						"end_line":549,
+						"end_line":550,
 						"name":"get_allstreaminfo",
 						"start_line":32
 					}
@@ -36950,14 +36950,14 @@
 						"start_line":26
 					},
 					{
-						"end_line":306,
+						"end_line":330,
 						"name":"OH_AudioWorkgroup_Start",
-						"start_line":294
+						"start_line":317
 					},
 					{
-						"end_line":314,
+						"end_line":338,
 						"name":"OH_AudioWorkgroup_RemoveThread",
-						"start_line":308
+						"start_line":332
 					}
 				]
 			}
@@ -37000,22 +37000,22 @@
 						"start_line":23
 					},
 					{
-						"end_line":458,
+						"end_line":459,
 						"name":"check_spacesound",
 						"start_line":24
 					},
 					{
-						"end_line":466,
+						"end_line":467,
 						"name":"check_isspacesoundon",
 						"start_line":25
 					},
 					{
-						"end_line":479,
+						"end_line":480,
 						"name":"regist_spacesoundcallback",
 						"start_line":26
 					},
 					{
-						"end_line":486,
+						"end_line":487,
 						"name":"unregist_spacesoundcallback",
 						"start_line":27
 					}
@@ -37140,12 +37140,12 @@
 						"start_line":50
 					},
 					{
-						"end_line":352,
+						"end_line":353,
 						"name":"render_release",
 						"start_line":51
 					},
 					{
-						"end_line":355,
+						"end_line":356,
 						"name":"render_process",
 						"start_line":16
 					}
@@ -37210,12 +37210,12 @@
 						"start_line":101
 					},
 					{
-						"end_line":359,
+						"end_line":360,
 						"name":"Render_CustomCallback",
 						"start_line":48
 					},
 					{
-						"end_line":379,
+						"end_line":380,
 						"name":"Render_callBackInit",
 						"start_line":49
 					}
@@ -37375,17 +37375,17 @@
 						"start_line":19
 					},
 					{
-						"end_line":367,
+						"end_line":368,
 						"name":"get_systemvolume",
 						"start_line":20
 					},
 					{
-						"end_line":380,
+						"end_line":381,
 						"name":"regist_volumechangecallback",
 						"start_line":21
 					},
 					{
-						"end_line":410,
+						"end_line":411,
 						"name":"set_appvolume",
 						"start_line":22
 					},
@@ -37395,7 +37395,7 @@
 						"start_line":417
 					},
 					{
-						"end_line":447,
+						"end_line":448,
 						"name":"Renderset_streamvolume",
 						"start_line":53
 					}
