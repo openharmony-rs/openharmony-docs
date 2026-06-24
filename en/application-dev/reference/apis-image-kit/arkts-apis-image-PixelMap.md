@@ -2428,7 +2428,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a PixelMap with DMA_ALLOC memory, see [Default Memory Allocation Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/image-allocator-type#default-memory-allocation-mode).
+For details about how to create a PixelMap with DMA_ALLOC memory, see [Default Memory Allocation Method](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/image-allocator-type#default-memory-allocation-method).
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import {image} from '@kit.ImageKit';
@@ -2935,4 +2935,3 @@ async function IsReleased(pixelMap: PixelMap) { // Unreleased PixelMap.
   pixelMap.isReleased(); // Return true.
 }
 ```
-<!--no_check-->
