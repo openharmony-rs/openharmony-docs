@@ -8504,6 +8504,20 @@ Allows a system application to access the file cache path of the file transfer s
  	 
 **Valid since**: 26.0.0
 
+## ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
+
+Allows an application to trigger smart analysis for assets.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | lite wearables
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.CREATE_SIGN_CONTENT_TRUST
  	 
 Allows an application to create a content trust signature.
