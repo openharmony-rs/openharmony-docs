@@ -149,7 +149,7 @@ function hasSerialRight() {
 
 requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
-请求应用程序访问串口设备的权限。应用退出时自动移除对串口设备的访问权限,在应用重启后需要重新申请授权。使用Promise异步回调。通常在首次访问串口设备前、检测到无权限时调用此接口向用户申请授权。
+请求应用程序访问串口设备的权限。应用退出时自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。通常在首次访问串口设备前、检测到无权限时调用此接口向用户申请授权。
 
 **起始版本：** 19
 
@@ -218,7 +218,7 @@ function requestSerialRight() {
 
 open(portId: number): void
 
-打开串口设备。使用前需先通过[requestSerialRight](#serialmanagerrequestserialright)申请权限,使用完毕后需调用[close](#serialmanagerclose)关闭串口。调用成功后，可对该串口进行读写、配置参数等操作。
+打开串口设备。使用前需先通过[requestSerialRight](#serialmanagerrequestserialright)申请权限，使用完毕后需调用[close](#serialmanagerclose)关闭串口。调用成功后，可对该串口进行读写、配置参数等操作。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
@@ -226,7 +226,7 @@ open(portId: number): void
 
 **配对调用：**
 - 必须与[close](#serialmanagerclose)方法配对使用
-- 打开串口后,使用完毕必须调用close()释放资源
+- 打开串口后，使用完毕必须调用close()释放资源
 
 **起始版本：** 19
 
@@ -411,7 +411,7 @@ function getAttribute() {
 
 setAttribute(portId: number, attribute: SerialAttribute): void
 
-设置串口的配置参数。如果未调用该方法,使用默认配置参数(波特率:9600bps;数据位:8;校验位:0;停止位:1)。需先调用[open](#serialmanageropen)打开串口后才能设置配置。通常在设备初始化时、切换通信协议时、或设备需要非默认配置参数时调用此接口。
+设置串口的配置参数。如果未调用该方法，使用默认配置参数(波特率:9600bps;数据位:8;校验位:0;停止位:1)。需先调用[open](#serialmanageropen)打开串口后才能设置配置。通常在设备初始化时、切换通信协议时、或设备需要非默认配置参数时调用此接口。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号

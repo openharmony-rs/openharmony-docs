@@ -225,7 +225,7 @@ Permission denied.
 
 **错误描述**
 
-调调用serial.addPortAuthorization接口时，该接口仅允许串口授权弹窗应用调用，若当前应用不是串口授权弹窗应用则会报权限被拒绝错误。
+调用serial.addPortAuthorization接口时，该接口仅允许串口授权弹窗应用调用，若当前应用不是串口授权弹窗应用则会报权限被拒绝错误。
 
 **可能原因**
 
