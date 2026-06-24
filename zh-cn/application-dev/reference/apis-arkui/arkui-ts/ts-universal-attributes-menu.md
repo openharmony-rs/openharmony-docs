@@ -623,7 +623,7 @@ struct MenuExample {
 }
 ```
 
-![zh-cn_image_0000001174582862](figures/zh-cn_image_0000001174582862.gif)
+![menu](figures/menu.gif)
 
 ### 示例2（弹出自定义菜单）
 
@@ -674,7 +674,7 @@ struct MenuExample {
 }
 ```
 
-![zh-cn_image_0000001186807708](figures/zh-cn_image_0000001186807708.gif)
+![menu3](figures/menu3.gif)
 
 ### 示例3（长按弹出菜单）
 
@@ -754,7 +754,7 @@ struct DirectiveMenuExample {
 }
 ```
 
-![zh-cn_image_0000001689126950](figures/zh-cn_image_0000001689126950.png)
+![DirectiveMenuExample](figures/DirectiveMenuExample.png)
 
 ### 示例5（长按弹出菜单的截图预览样式）
 
@@ -1113,7 +1113,7 @@ struct MenuExample {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_backgroundBlurStyleOptions.png)
+![preview-builder](figures/image-backgroundBlurStyleOptions.png)
 
 ### 示例12（自定义背景效果参数）
 
@@ -1165,7 +1165,7 @@ struct MenuExample {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_backgroundEffect.png)
+![preview-builder](figures/image-backgroundEffect.png)
 
 ### 示例13（设置一镜到底动效支持抬手打断）
 
@@ -1347,7 +1347,7 @@ struct Index {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_bindMenuLifeCycle.gif)
+![preview-builder](figures/image-bindMenuLifeCycle.gif)
 
 ### 示例16（设置菜单蒙层）
 

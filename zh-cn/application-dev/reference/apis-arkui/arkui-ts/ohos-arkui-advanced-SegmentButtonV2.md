@@ -118,7 +118,7 @@ TabSegmentButtonV2({
 
 > **说明：**
 >
-> 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的新材质时，itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor、itemSymbolFontColor、itemSelectedSymbolFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。
+> 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的系统材质时，itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor、itemSymbolFontColor、itemSelectedSymbolFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。
 
 ## CapsuleSegmentButtonV2
 
@@ -206,7 +206,7 @@ CapsuleSegmentButtonV2({
 
 > **说明：**
 >
-> 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的新材质时，itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor、itemSymbolFontColor、itemSelectedSymbolFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。
+> 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的系统材质时，itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor、itemSymbolFontColor、itemSelectedSymbolFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。
 
 ## MultiCapsuleSegmentButtonV2
 

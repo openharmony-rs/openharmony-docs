@@ -6,7 +6,7 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-表示发起按照包名迁移时所需参数的枚举，迁移Mission详见：[continueMission接口](js-apis-distributedMissionManager-sys.md#distributedmissionmanagercontinuemission10)。
+表示发起按照包名迁移时所需参数的枚举，迁移Mission详见：[continueMission接口](js-apis-distributedMissionManager-sys.md#distributedmissionmanagercontinuemission)。
 
 > **说明：**
 >
@@ -16,6 +16,8 @@
 > 本模块接口仅可在Stage模型下使用。
 
 ## 属性
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **系统接口**：此接口为系统接口。
 

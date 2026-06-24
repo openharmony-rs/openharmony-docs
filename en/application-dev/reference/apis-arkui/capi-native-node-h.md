@@ -48,7 +48,6 @@ Provides type definitions for **NativeNode** APIs.
 | [ArkUI_NodeAttributeType](#arkui_nodeattributetype) | ArkUI_NodeAttributeType | Enumerates the attribute types that can be set by ArkUI on the native side.|
 | [ArkUI_NodeEventType](#arkui_nodeeventtype) | ArkUI_NodeEventType | Enumerates the event types supported by the **NativeNode** component.|
 | [ArkUI_NodeDirtyFlag](#arkui_nodedirtyflag) | ArkUI_NodeDirtyFlag | Enumerates the flags passed to indicate the need to re-execute measurement, layout, or rendering when a custom component calls the **::markDirty** API.|
-| [ArkUI_NodeCustomEventType](#arkui_nodecustomeventtype) | ArkUI_NodeCustomEventType | Enumerates custom component event types.|
 | [ArkUI_NodeAdapterEventType](#arkui_nodeadaptereventtype) | ArkUI_NodeAdapterEventType | Enumerates node adapter event types.|
 | [ArkUI_NodeContentEventType](#arkui_nodecontenteventtype) | ArkUI_NodeContentEventType | Enumerates the event types of **NodeContent**.|
 | [ArkUI_InspectorErrorCode](#arkui_inspectorerrorcode) | ArkUI_InspectorErrorCode | Enumerates inspector error codes.|
@@ -405,7 +404,7 @@ Enumerates the event types supported by the **NativeNode** component.
 | NODE_TEXT_EDITOR_ON_SUBMIT = 22004 | Event triggered when the **Enter** key on the keyboard is pressed for the **TextEditor** component.<br>When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameter:<br>**ArkUI_NodeComponentEvent.data[0].i32**: type of the **Enter** key, specified using [ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype).<br>**Since**: 24|
 | NODE_TEXT_EDITOR_ON_CUT = 22005 | Event triggered when the **TextEditor** component cuts content.<br>The system determines whether to intercept the default behavior of the component based on the return value of the callback function.<br>You can use [OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue) to set the return value.<br>**value.i32**: whether to intercept the default behavior of the component, with the index of **0**.<br>**0**: not intercept. **1**: intercept.<br>**Since**: 24|
 | NODE_TEXT_EDITOR_ON_COPY = 22006 | Event triggered when the **TextEditor** component copies content.<br>The system determines whether to intercept the default behavior of the component based on the return value of the callback function.<br>You can use [OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue) to set the return value.<br>**value.i32**: whether to intercept the default behavior of the component, with the index of **0**.<br>**0**: not intercept. **1**: intercept.<br>**Since**: 24|
-| NODE_TEXT_EDITOR_ON_WILL_CHANGE = 22007 | Event triggered when the **TextEditor** component is about to change the content.<br>This callback is triggered before any operation that causes a text content change takes effect. You can determine whether to intercept the content change based on the information in the callback event.<br>When the event callback occurs, you can obtain the [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md) object from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object by calling [OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent](capi-native-node-h.md#oh_arkui_nodeevent_gettexteditoronwillchangeevent).<br> Then, you can use the **OH_ArkUI_TextEditorChangeEvent_***XXX* series APIs to obtain more information from this object.<br> The system determines whether the current content can be changed based on the return value of the callback function.<br> You can use [OH_ArkUI_NodeEvent_SetReturnNumberValue](capi-native-node-h.md#oh_arkui_nodeevent_setreturnnumbervalue) to set the return value.<br> **value.i32** whose **index** is set to **0** indicates whether the current content can be changed. **0**: The content can be changed. **1**: The content cannot be changed.<br>**Since**: 24|
+| NODE_TEXT_EDITOR_ON_WILL_CHANGE = 22007 | Event triggered when the **TextEditor** component is about to change the content.<br>This callback is triggered before any operation that causes a text content change takes effect. You can determine whether to intercept the content change based on the information in the callback event.<br>When the event callback occurs, you can obtain the [OH_ArkUI_TextEditorChangeEvent](capi-arkui-nativemodule-oh-arkui-texteditorchangeevent.md) object from the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object by calling [OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEvent](capi-native-node-h.md#oh_arkui_nodeevent_gettexteditoronwillchangeevent).<br> Then, you can use the **OH_ArkUI_TextEditorChangeEvent_***XXX* series APIs to obtain more information from this object.<br> The system determines whether the current content can be changed based on the return value of the callback function.<br> You can use [OH_ArkUI_NodeEvent_SetReturnNumberValue](capi-native-node-h.md#oh_arkui_nodeevent_setreturnnumbervalue) to set the return value.<br> **value.i32** whose **index** is set to **0** indicates whether the current content can be changed. **0**: The content cannot be changed. **1**: The content can be changed.<br>**Since**: 24|
 | NODE_TEXT_EDITOR_ON_DID_CHANGE = 22008 | Event triggered when the **TextEditor** component changes the content.<br>When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: start index of the text range to be replaced before the text changes.<br> **ArkUI_NodeComponentEvent.data[1].i32**: end index of the text range to be replaced before the text changes.<br> **ArkUI_NodeComponentEvent.data[2].i32**: start index of the text range of the new content after the text changes.<br> **ArkUI_NodeComponentEvent.data[3].i32**: end index of the text range of the new content after the text changes.<br>**Since**: 24|
 | NODE_SWIPER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_SWIPER = 1001000 | Event triggered when the index of the currently displayed element of this **ARKUI_NODE_SWIPER** instance changes. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameter:<br> **ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element. |
 | NODE_SWIPER_EVENT_ON_ANIMATION_START = 1001001 | Event triggered when the switching animation of this **ARKUI_NODE_SWIPER** instance starts. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md).<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:<br> **ArkUI_NodeComponentEvent.data[0].i32**: index of the currently displayed element.<br> **ArkUI_NodeComponentEvent.data[1].i32**: index of the target element to switch to.<br> **ArkUI_NodeComponentEvent.data[2].f32**: offset of the currently displayed element relative to the start position of the swiper along the main axis.<br> **ArkUI_NodeComponentEvent.data[3].f32**: offset of the target element relative to the start position of the swiper along the main axis.<br> **ArkUI_NodeComponentEvent.data[4].f32**: hands-off velocity. |
@@ -474,29 +473,6 @@ Enumerates the flags passed to indicate the need to re-execute measurement, layo
 | NODE_NEED_MEASURE = 1 | Remeasure. When this type of flag is specified, re-layout is triggered by default.|
 | NODE_NEED_LAYOUT = 2 | Re-layout.|
 | NODE_NEED_RENDER = 3 | Re-rendering.|
-
-### ArkUI_NodeCustomEventType
-
-```c
-enum ArkUI_NodeCustomEventType
-```
-
-**Description**
-
-
-Enumerates custom component event types.
-
-**Since**: 12
-
-| Value| Description|
-| -- | -- |
-| ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE = 1 << 0 | Custom measurement.|
-| ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT = 1 << 1 | Custom layout.|
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW = 1 << 2 | Custom content layer drawing.|
-| ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW = 1 << 3 | Custom foreground drawing.|
-| ARKUI_NODE_CUSTOM_EVENT_ON_OVERLAY_DRAW = 1 << 4 | Custom overlay drawing.|
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT = 1 << 5 | Custom content layer foreground drawing.<br>**Since**: 20|
-| ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND = 1 << 6 | Custom content layer background drawing.<br>**Since**: 20|
 
 ### ArkUI_NodeAdapterEventType
 
@@ -1525,7 +1501,7 @@ Obtains the event type through a custom component event.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_NodeCustomEventType](capi-native-node-h.md#arkui_nodecustomeventtype) | Type of the custom component event.|
+| [ArkUI_NodeCustomEventType](capi-native-node-node-attributes-node-attr-custom-h.md#arkui_nodecustomeventtype) | Type of the custom component event.|
 
 ### OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo()
 
@@ -2647,7 +2623,7 @@ Obtains a snapshot of a given component. If the node is not in the component tre
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node to capture a snapshot.|
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the snapshot configuration. If the value is null, the default configuration is used.<br>The screenshot configuration includes the scaling attribute, color space, and dynamic range mode. The color space and dynamic range mode are supported since API version 23.<br>The scaling attribute value is a floating point number greater than 0. The default value is **1.0**.<br>The color space value can be **3** (RGB color gamut is of the Display P3 type), **4** (RGB color gamut is of the SRGB type), or **27** (RGB color gamut is of the Display BT2020 type). The default value is **4**.<br> The dynamic range mode can be [ArkUI_DynamicRangeMode](capi-native-type-h.md#arkui_dynamicrangemode). The default value is **ARKUI_DYNAMIC_RANGE_MODE_STANDARD**.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the snapshot configuration. If the value is null, the default configuration is used.<br>The screenshot configuration includes the scaling attribute, color space, and dynamic range mode. The color space and dynamic range mode are supported since API version 23.<br>The scaling attribute value is a floating point number greater than 0. The default value is **1.0**.<br>The color space value can be **3** (RGB color gamut is of the Display P3 type), **4** (RGB color gamut is of the SRGB type), or **27** (RGB color gamut is of the Display BT2020 type). The default value is **4**.<br> The dynamic range mode value is specified using [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode). The default value is **ARKUI_DYNAMIC_RANGE_MODE_STANDARD**.|
 | [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md)* pixelmap | Pointer to the Pixelmap created by the system.|
 
 **Return value**

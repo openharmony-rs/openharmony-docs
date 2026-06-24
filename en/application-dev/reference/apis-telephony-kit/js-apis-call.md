@@ -250,7 +250,6 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
@@ -1004,6 +1003,63 @@ call.rejectCall((err: BusinessError) => {
 });
 ```
 
+## call.getCallTransferInfo
+
+getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTransferResult\>
+
+Obtains call transfer information with the phone number. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Required permissions:** ohos.permission.GET_CALL_TRANSFER_INFO
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+**Parameters**
+
+| Name  | Type                | Mandatory| Description                                                        |
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |
+| type   | [CallTransferType](#calltransfertype)               | Yes  | Type of call forwarding to be obtained. |
+| number | string              | Yes  | Number used to obtain the call forwarding status.|
+
+**Return value**
+
+| Type               | Description                       |
+| ------------------- | --------------------------- |
+| Promise&lt;[CallTransferResult](#calltransferresult)&gt; | Promise used to return the call forwarding result.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID|                  Error Message                   |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 801      | Capability not supported.                    |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8401002  | Invalid input call number.                   |
+| 8401003  | Operation too frequent.                      |
+
+**Example**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let type: call.CallTransferType = call.CallTransferType.TRANSFER_TYPE_UNCONDITIONAL;
+let number: string = "138xxxxxxxx";
+
+call.getCallTransferInfo(type, number)
+    .then((data: call.CallTransferResult) => {
+        console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
+    })
+    .catch((err:BusinessError) => {
+        console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
+    });
+```
+
 
 ## DialOptions
 
@@ -1035,6 +1091,8 @@ Enumerates call states.
 Provides an option for determining whether a call is a video call.
 
 **System capability**: SystemCapability.Applications.Contacts
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
 
 |        Name             | Type                              | Read-Only| Optional| Description                                                                                            |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
@@ -1096,3 +1154,47 @@ Provides an option for number formatting.
 |    Name    | Type  | Read-Only| Optional| Description                                                      |
 | ----------- | ------ | ---- | ---- | ---------------------------------------------------------- |
 | countryCode | string | No  | Yes  | Country code, for example, **CN** (China). All country codes are supported. The default value is **CN**.|
+
+## TransferStatus
+
+Enumerates call transfer states.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+| Name            | Value  | Description    |
+| ---------------- | ---- | -------- |
+| TRANSFER_DISABLE | 0    | Call transfer disabled.|
+| TRANSFER_ENABLE  | 1    | Call transfer enabled.|
+
+## CallTransferType
+
+Enumerates call transfer types.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+| Name                       | Value  | Description        |
+| --------------------------- | ---- | ------------ |
+| TRANSFER_TYPE_UNCONDITIONAL | 0    | Call forwarding unconditional.  |
+| TRANSFER_TYPE_BUSY          | 1    | Call forwarding busy.    |
+| TRANSFER_TYPE_NO_REPLY      | 2    | Call forwarding on no reply.  |
+| TRANSFER_TYPE_NOT_REACHABLE | 3    | Call forwarding on no user not reachable.|
+
+## CallTransferResult
+
+Defines the call transfer result.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+|          Name           |                 Type              | Mandatory|       Description      |
+| ------------------------ | ---------------------------------- | ---- | ---------------- |
+| status                   | [TransferStatus](#transferstatus) |  Yes | Enumerates call transfer states.        |
+| startHour   | number                             |  Yes | Hour in the start time.|
+| startMinute | number                             |  Yes | Minute in the start time.|
+| endHour     | number                             |  Yes | Hour in the end time.|
+| endMinute   | number                             |  Yes | Minute in the end time.|

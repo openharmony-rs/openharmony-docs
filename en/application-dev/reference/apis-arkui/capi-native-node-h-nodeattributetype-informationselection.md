@@ -1,9 +1,10 @@
 # ArkUI_NodeAttributeType (Information Selection Component Attribute)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-hui; @luoying_ace_admin-->
-<!--Designer: @xiangyuan6; @weixin_52725220-->
-<!--Tester: @jiaoaozihao; @xiong0104-->
+<!--Owner: @luoying_ace_admin-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
@@ -205,13 +206,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Type of the date column to be displayed. The parameter type is [ArkUI_DatePickerMode](capi-native-type-h.md#arkui_datepickermode).|
+| .value[0].i32 | Type of the date column to be displayed. The parameter type is [ArkUI_DatePickerMode](capi-picker-h.md#arkui_datepickermode).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Type of the date column to be displayed. The parameter type is [ArkUI_DatePickerMode](capi-native-type-h.md#arkui_datepickermode).|
+| .value[0].i32 | Type of the date column to be displayed. The parameter type is [ArkUI_DatePickerMode](capi-picker-h.md#arkui_datepickermode).|
 
 ## NODE_DATE_PICKER_ENABLE_HAPTIC_FEEDBACK
 
@@ -339,7 +340,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TIME_PICKER_TEXT_STYLE = 14003
 ```
 
-Text style for edge items (the second item above or below the selected item). This attribute can be set, reset, and obtained as required through APIs.<br>
+Text color, font size, and font weight of all items except the top, bottom, and selected items in the time picker. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -469,7 +470,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Type of the text picker, specified using the [ArkUI_TextPickerRangeType](capi-native-type-h.md#arkui_textpickerrangetype) enum. The default value is **ARKUI_TEXTPICKER_RANGETYPE_SINGLE**.|
+| .value[0].i32 | Type of the text picker, specified using [ArkUI_TextPickerRangeType](capi-picker-h.md#arkui_textpickerrangetype). The default value is **ARKUI_TEXTPICKER_RANGETYPE_SINGLE**.|
 | ?.string | string input, whose format varies by picker type.<br>1: single-column picker. The input format is a group of strings separated by semicolons (;).<br>2: multi-column picker. Multiple pairs of plain text strings are supported. The pairs are separated by semicolons (;), and strings within each pair are separated by commas (,).|
 | ?.object | object input, whose format varies by picker type.<br>1: single-column picker with image support. The input struct is [ARKUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md).<br>2: multi-column cascading picker. The input struct is [ARKUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md).|
 
@@ -477,7 +478,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Type of the text picker, specified using the [ArkUI_TextPickerRangeType](capi-native-type-h.md#arkui_textpickerrangetype) enum.|
+| .value[0].i32 | Type of the text picker, specified using [ArkUI_TextPickerRangeType](capi-picker-h.md#arkui_textpickerrangetype).|
 | ?.string | string output, whose format varies by picker type.<br>1: single-column picker. The output format is a group of strings separated by semicolons (;).<br>2: multi-column picker. Multiple pairs of plain text strings are output. The pairs are separated by semicolons (;), and strings within each pair are separated by commas (,).|
 
 ## NODE_TEXT_PICKER_OPTION_SELECTED
@@ -965,7 +966,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_CalendarAlignment](capi-native-type-h.md#arkui_calendaralignment).|
+| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_CalendarAlignment](capi-picker-h.md#arkui_calendaralignment).|
 | .value[1]?.f32 | Offset of the picker relative to the entry component along the x-axis after alignment based on the specified alignment mode.|
 | .value[2]?.f32 | Offset of the picker relative to the entry component along the y-axis after alignment based on the specified alignment mode.|
 
@@ -973,7 +974,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_CalendarAlignment](capi-native-type-h.md#arkui_calendaralignment).|
+| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_CalendarAlignment](capi-picker-h.md#arkui_calendaralignment).|
 | .value[1].f32 | Offset of the picker relative to the entry component along the x-axis after alignment based on the specified alignment mode.|
 | .value[2].f32 | Offset of the picker relative to the entry component along the y-axis after alignment based on the specified alignment mode.|
 

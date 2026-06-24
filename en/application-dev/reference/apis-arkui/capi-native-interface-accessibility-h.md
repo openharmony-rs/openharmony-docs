@@ -602,7 +602,7 @@ Sets the supported operations for an **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| int32_t* operationCount | Pointer to the number of actions supported by the component.|
+| int32_t operationCount | Number of actions supported by the component.|
 | [ArkUI_AccessibleAction](capi-arkui-accessibility-arkui-accessibleaction.md)* operationActions | Pointer to the array of actions supported by the component.|
 
 

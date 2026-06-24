@@ -311,7 +311,7 @@ You can create an interactive page to open or close a dialog box.
      }
      ```
 
-![en-us_image_0000001902966196](figures/en-us_image_0000001902966196.gif)
+![en-us_image_0000001902966196](figures/Interacting-Dialog-Box.gif)
 
 
 ## Managing the Dialog Box Lifecycle

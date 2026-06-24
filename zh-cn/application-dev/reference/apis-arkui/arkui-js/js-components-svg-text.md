@@ -143,4 +143,4 @@
 </div>
 ```
 
-![zh-cn_image_0000001127125122](figures/zh-cn_image_0000001127125122.gif)
+![text-attribute-stroke](figures/text-attribute-stroke.gif)

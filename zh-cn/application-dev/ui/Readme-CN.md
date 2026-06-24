@@ -133,6 +133,7 @@
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
       - [动态布局 (DynamicLayout)](arkts-layout-development-dynamiclayout.md)
+      - [容器断点 (ContainerReader)](arkts-layout-development-container-reader.md)
       - [选项卡 (Tabs)](arkts-navigation-tabs.md)<!--RP1--><!--RP1End-->
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
@@ -205,6 +206,7 @@
       - [支持键盘输入事件](arkts-interaction-development-guide-keyboard.md)
       - [支持游戏手柄输入事件](arkts-interaction-development-guide-gamepad.md)
       - [支持表冠输入事件](arkts-common-events-crown-event.md)
+      - [支持智慧手势输入事件](arkts-common-events-smartgesture-event.md)
     - [添加手势响应](arkts-interaction-development-guide-support-gesture.md)
       - [绑定手势方法](arkts-gesture-events-binding.md)
       - [单一手势](arkts-gesture-events-single-gesture.md)
@@ -408,7 +410,9 @@
     - [使用文本常见问题](arkts-text-faq.md)
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
-    - [UI并行化常见问题](multi-thread-ui-build-faq.md)
+    - [UI并行化常见问题](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
+    - [沉浸光感常见问题](arkts-immersive-light-sense-faq.md)
+    
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
 - [ArkUI术语](arkui-glossary.md)

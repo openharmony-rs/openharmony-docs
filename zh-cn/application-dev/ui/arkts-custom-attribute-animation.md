@@ -47,7 +47,7 @@ struct AnimatablePropertyExample {
 ```
 
 
-![zh-cn_image_0000001600119626](figures/zh-cn_image_0000001600119626.gif)
+![animation-frame](figures/animation-frame.gif)
 
 
 ## 使用自定义数据类型改变图形形状
@@ -195,7 +195,7 @@ struct AnimatedShape {
 ```
 
 
-![zh-cn_image_0000001592669598](figures/zh-cn_image_0000001592669598.gif)
+![animation-shape](figures/animation-shape.gif)
 
 ## 相关实例
 

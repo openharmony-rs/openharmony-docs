@@ -9,7 +9,7 @@
 
 >  **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 
 Custom components are existing components encapsulated based on service requirements. A custom component can be invoked multiple times in a project to improve the code readability. You can introduce a custom component to the host page through **element** as shown in the following code snippet:
@@ -23,14 +23,14 @@ Custom components are existing components encapsulated based on service requirem
 
 - The **name** attribute indicates the custom component name (optional), which is case-insensitive and is in lowercase by default. The **src** attribute indicates the **.hml** file path (mandatory) of the custom component. If **name** is not set, the **.hml** file name is used as the component name by default.
 
-- Event binding: Use **(on|\@)*child1*** in the custom component to bind a child component event. In the child component, use **{action:"*proxy*", method: "*eventName*"}** to trigger the bound event and pass the parameter value. In the parent component, call **bindParentVmMethod** and receive the parameter passed from the child component.
+- Event binding: Use **(on|@)***child1* in the custom component to bind a child component event. In the child component, use **{action:"***proxy***", method: "***eventName***"}** to trigger the bound event and pass the parameter value. In the parent component, call **bindParentVmMethod** and receive the parameter passed from the child component.
 
 ## Labels of Custom Component Configuration File
 
 | Name| Type| Description|
 | -------- | -------- | -------- |
 | data | Object | Data model of the page. The name cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**).|
-| props | Array/Object | Used for communication between components. This attribute can be transferred to components via **\<tag xxxx='value'>**. A **props** name must be in lowercase and cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**). Currently, **props** does not support functions. |
+| props | Array/Object | Used for communication between components. This attribute can be transferred to components via **\<tag xxxx='value'>**. A **props** name must be in lowercase and cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**). Currently, **props** does not support functions.|
 
 
 ## Adding a Custom Event
@@ -41,7 +41,7 @@ Custom components support custom events, whose **action** is **proxy** and name 
 >
 >  The event name cannot contain uppercase letters.
 
-Example of a custom child component:
+**Example of a custom child component:**
 
 ```html
 <!-- comp.hml -->
@@ -81,11 +81,11 @@ Example of a custom child component:
     }
 }
 ```
-Example of a parent component:
+**Example of a parent component:**
 
 ```html
 <!-- xxx.hml --> 
-<element name='comp' src='../../common/customComponent/customComponent.hml'></element>
+<element name='comp' src='../../common/customComponent/comp.hml'></element>
 
 <div class="container">
     <comp @event_1="click"></comp>
@@ -126,7 +126,7 @@ Example of a parent component:
 
 ## props
 
-You can use **props** to declare custom attributes of a custom component. The attributes can be used by a parent component to pass parameters to a child component.
+You can use **props** to declare attributes of a custom component. The attributes can be used by a parent component to pass parameters to a child component.
 
 ### Default Value
 
@@ -186,7 +186,7 @@ Example of the parent component that references the **comp** child component:
 
 ```html
 <!-- xxx.hml -->
-<element name='comp' src='../../common/customComponent/customComponent.hml'></element>
+<element name='comp' src='../../common/customComponent/comp.hml'></element>
 
 <div class="container">
     <comp progress="{{clicknow}}" textdata="{{texts}}" if="false" @event_1="click"></comp>
@@ -197,4 +197,4 @@ Example of the parent component that references the **comp** child component:
 
 Data can be transferred only from the parent component to child components. You are not allowed to change the value passed to the child component. However, you can receive the value passed by **props** as a default value in **data**, and then change the **data** value.
 
-For details, see [props](../arkui-js/js-components-custom-props.md).
+For details, see [Props](../arkui-js/js-components-custom-props.md#props).

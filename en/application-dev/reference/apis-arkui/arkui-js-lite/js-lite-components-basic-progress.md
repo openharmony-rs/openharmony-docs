@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **\<Progress>** component is used to provide a progress bar that displays the progress of content loading or an operation.
+The **\<progress>** component is used to provide a progress bar that displays the progress of content loading or operation processing.
 
 > **NOTE**
 >
@@ -15,7 +15,7 @@ The **\<Progress>** component is used to provide a progress bar that displays th
 
 ## Child Components
 
-Not supported
+Not supported.
 
 
 ## Attributes
@@ -30,12 +30,12 @@ Not supported
 
 Different types of progress bars support different attributes.
 
-- When **type** is set to **horizontal**, the following attributes are supported.
+- When the type is **horizontal**, the following attributes are supported.
     | Name| Type| Default Value| Mandatory| Description|
   | -------- | -------- | -------- | -------- | -------- |
   | percent | number | 0 | No| Current progress. The value ranges from 0 to 100.|
 
-- When **type** is set to **arc**, the following attributes are supported.
+- When the type is **arc**, the following attributes are supported.
     | Name| Type| Default Value| Mandatory| Description|
   | -------- | -------- | -------- | -------- | -------- |
   | percent | number | 0 | No| Current progress. The value ranges from 0 to 100.|
@@ -45,9 +45,9 @@ Different types of progress bars support different attributes.
 
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
-| click | - | Triggered when the component is clicked. |
-| longpress | - | Triggered when the component is long pressed. |
-| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | Triggered when a user quickly swipes on the component. |
+| click | - | Triggered when the component is clicked.|
+| longpress | - | Triggered when the component is long pressed.|
+| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | Triggered when a user quickly swipes on the component.|
 
 
 ## Styles
@@ -57,7 +57,7 @@ Different types of progress bars support different attributes.
   | Name        | Type          | Default Value                                        | Mandatory| Description              |
   | ------------ | -------------- | ---------------------------------------------- | ---- | ------------------ |
   | color        | &lt;color&gt;  | \#6b9ac7                                       | No  | Color of the progress bar.|
-  | stroke-width | &lt;length&gt; | 32<sup>1-4 </sup>\| 4<sup>5+</sup>px | No  | Stroke width of the progress bar.|
+  | stroke-width | &lt;length&gt; | 32<sup>1-4&nbsp;</sup>\|&nbsp;4<sup>5+</sup>px | No  | Stroke width of the progress bar.|
 
 - When **type** is set to **arc**, the following styles are supported.
 
@@ -76,17 +76,17 @@ In addition to the preceding styles, the following styles are supported.
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| width | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | - | No| Component width.<br>If this attribute is not set, the default value **0** is used.|
-| height | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | - | No| Component height.<br>If this attribute is not set, the default value **0** is used.|
+| width | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | No| Component width.<br>If this attribute is not set, the default value **0** is used.|
+| height | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | No| Component height.<br>If this attribute is not set, the default value **0** is used.|
 | padding | &lt;length&gt; | 0 | No| Shorthand attribute to set the padding for all sides.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
 | padding-[left\|top\|right\|bottom] | &lt;length&gt; | 0 | No| Left, top, right, and bottom padding.|
-| margin | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | 0 | No| Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
-| margin-[left\|top\|right\|bottom] | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | 0 | No| Left, top, right, and bottom margins.|
+| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No| Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
+| margin-[left\|top\|right\|bottom] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No| Left, top, right, and bottom margins.|
 | border-width | &lt;length&gt; | 0 | No| Shorthand attribute to set the border width for all sides.|
 | border-color | &lt;color&gt; | black | No| Shorthand attribute to set the color for all borders.|
 | border-radius | &lt;length&gt; | - | No| Radius of round-corner borders.|
-| display | string | flex | No| How and whether to display the box containing an element. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
-| [left\|top] | &lt;length&gt; \| &lt;percentage&gt;<sup>6+</sup> | - | No| Edge of the element.<br>- **left**: left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- **top**: top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element. |
+| display | string | flex | No| Whether to display a box containing the element and the layout for its child elements. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
+| [left\|top] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>6+</sup> | - | No| Edge of the element.<br>- The **left** attribute specifies the left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- The **top** attribute specifies the top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
 
 ## Example
 

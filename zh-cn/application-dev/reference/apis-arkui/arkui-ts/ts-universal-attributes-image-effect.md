@@ -28,7 +28,7 @@ blur(value: number, options?: BlurOptions): T
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                 | number                                                       | 是   | 当前组件添加内容模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。 |
+| value                 | number                                                       | 是   | 当前组件添加内容模糊效果，入参为模糊半径，模糊半径越大越模糊，value值小于等于0时不模糊。 |
 | options<sup>11+</sup> | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶模糊参数。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。<br/>默认值：grayscale: [0,0] |
 
 **返回值：**
@@ -55,7 +55,7 @@ blur(blurRadius: Optional\<number>, options?: BlurOptions): T
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| blurRadius            | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>                                            | 是   | 当前组件添加内容模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>当blurRadius的值为undefined时，维持之前取值。 |
+| blurRadius            | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>                                            | 是   | 当前组件添加内容模糊效果，入参为模糊半径，模糊半径越大越模糊，blurRadius值小于等于0时不模糊。<br/>当blurRadius的值为undefined时，维持之前取值。从未设置该属性时，默认值为0，表示不模糊。|
 | options | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶模糊参数。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。<br/>默认值：grayscale: [0,0] |
 
 **返回值：**
@@ -82,7 +82,7 @@ blur(blurRadius: Optional\<number>, options?: BlurOptions, sysOptions?: SystemAd
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| blurRadius            | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>                                            | 是   | 当前组件添加内容模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>当blurRadius的值为undefined时，维持之前取值。 |
+| blurRadius            | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>                                            | 是   | 当前组件添加内容模糊效果，入参为模糊半径，模糊半径越大越模糊，blurRadius值小于等于0时不模糊。<br/>当blurRadius的值为undefined时，维持之前取值。从未设置该属性时，默认值为0，表示不模糊。 |
 | options | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶模糊参数。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。<br/>默认值：grayscale: [0,0]  |
 | sysOptions   |  [SystemAdaptiveOptions](ts-universal-attributes-background.md#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
@@ -583,7 +583,7 @@ linearGradientBlur(blurRadius: Optional\<number>, options: Optional\<LinearGradi
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| blurRadius   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>                                            | 是   | 为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, 1000]<br/>当blurRadius的值为undefined时，恢复为渐变模糊为0的效果。 |
+| blurRadius   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>   | 是   | 模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, 1000]<br/>当blurRadius的值为undefined时，恢复为渐变模糊为0的效果。 |
 | options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LinearGradientBlurOptions](#lineargradientbluroptions12)> | 是   | 设置线性渐变模糊效果。<br/>线性渐变参数，包含模糊程度和模糊位置数组fractionStops，及渐变模糊方向direction。|
 
 **返回值：**
@@ -1179,7 +1179,14 @@ freeze(freeze: Optional\<boolean>): T
 
 systemMaterial(material: SystemUiMaterial | undefined): T
 
-设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)、材质层滤镜效果，影响的属性与设备算力档位相关，参考[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)。使用示例请参考[示例1（设置沉浸式系统材质）](../arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
+设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)、材质层滤镜[materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23)效果，影响的属性与设备算力档位相关，参考[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)。使用示例请参考[示例1（设置沉浸式系统材质）](../arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
+
+> **说明：**
+> 
+> - 在同时设置了材质影响的通用属性发生冲突时，除阴影外，总体原则为后设置的生效，对于阴影属性取决于[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的applyShadow参数。
+>   - 先设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性后设置[systemMaterial](#systemmaterial)属性：backgroundColor属性被覆盖。在高算力和中算力设备上，背景色属性被清空为透明色；在低算力设备上，材质自带的背景色效果覆盖了先设置的backgroundColor属性。
+>   - 先设置[systemMaterial](#systemmaterial)属性后设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性：systemMaterial属性影响的背景色效果被覆盖，背景色属性生效为后设置的backgroundColor属性的颜色。
+> - 对于所有设备算力档位均需要材质颜色的场景，可以通过[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的materialColor参数承载，不再设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)属性。
 
 **起始版本：** 26.0.0
 
@@ -1470,7 +1477,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_effect_blendMode2](figures/zh-cn_image_effect_blendMode.png)
+![zh-cn_image_effect_blendMode2](figures/image-effect-blendMode.png)
 
 ### 示例5（前景智能取反色）
 

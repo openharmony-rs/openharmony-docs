@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -1354,7 +1354,7 @@ Dumps the original heap snapshot of the VM for the current thread and generates 
 >
 > This API is resource-consuming. Therefore, the calling frequency and times are strictly limited. You need to delete the files immediately after processing them.
 >
-> This API is valid only when the **Developer options** is enabled.
+> You are advised to enable **Developer options** before calling this API, so that the calling quota is not limited. The setting takes effect after the device is restarted.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1409,7 +1409,7 @@ Dumps the original heap snapshot of the VM for the current thread and clears the
 >
 > This API is resource-consuming. Therefore, the calling frequency and times are strictly limited. You need to delete the files immediately after processing them.
 >
-> This API is valid only when the **Developer options** is enabled.
+> You are advised to enable **Developer options** before calling this API, so that the calling quota is not limited. The setting takes effect after the device is restarted.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1458,6 +1458,67 @@ hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
 })
 ```
 
+## hidebug.dumpJsRawHeapData
+
+dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Promise&lt;Array&lt;string&gt;&gt;
+
+Dumps the original heap snapshot of the VM for the current thread or the process to which the current thread belongs, clears the nodeId cache, and generates a .rawheap file. This API uses a promise to return the result. The file can be converted into a heapsnapshot file using [rawheap-translator](../../tools/rawheap-translator.md) for parsing.
+> **NOTE**
+>
+> This API is resource-consuming. Therefore, the calling frequency and times are strictly limited. You need to delete the files immediately after processing them.
+>
+> You are advised to enable **Developer options** before calling this API, so that the calling quota is not limited. The setting takes effect after the device is restarted.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**Parameters**
+
+| Name                    | Type     | Mandatory| Description                                         |
+|-------------------------|---------|----|---------------------------------------------|
+| needGC         | boolean | Yes | Whether GC is required before storing heap snapshots. **true**: yes; **false**: no.|
+| needClean      | boolean | Yes | Whether to clear the node ID before dumping heap snapshots. **true**: yes; **false**: no.|
+| processDump      | boolean | Yes | Whether to dump the original heap snapshot of the process to which the current thread belongs. **true**: yes.|
+
+**Return value**
+
+| Type | Description                                                                                                  |
+| ------ |------------------------------------------------------------------------------------------------------|
+| Promise&lt;Array&lt;string&gt;&gt; | Array of paths of the generated snapshot files. ([Application Sandbox](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path))|
+
+**Error codes**
+
+For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx-hidebug.md).
+
+| ID   | Error Message|
+|----------| ----------------------------------------------------------------- |
+| 11400106 | Quota exceeded. |
+| 11400107 | Fork operation failed. |
+| 11400108 | Failed to wait for the child process to finish. |
+| 11400109 | Timeout while waiting for the child process to finish. |
+| 11400110 | Disk remaining space too low. |
+| 11400111 | Napi interface call exception. |
+| 11400112 | Repeated data dump. |
+| 11400113 | Failed to create dump file. |
+
+**Example**:
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
+}).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
 ## hidebug.enableGwpAsanGrayscale<sup>20+</sup>
 
 enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): void
@@ -1472,6 +1533,7 @@ This API is used to dynamically configure and enable GWP-ASan to adapt to the cu
 > 
 > 1. If the number of GWP-ASan applications configured using this API exceeds the quota during device running, this API fails to be called and an error code is thrown. Use **try-catch** to capture exceptions to prevent the application from exiting abnormally.
 > 2. After the device restarts, the GWP-ASan parameters set by this API are invalid.
+> 3. This API involves cross-process communication and takes a long time. To avoid performance problems, you are advised not to call this API in the main thread. You can use [@ohos.taskpool](../apis-arkts/js-apis-taskpool.md) or [@ohos.worker](../apis-arkts/js-apis-worker.md) to enable asynchronous threads to avoid application frame freezing.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1494,22 +1556,26 @@ For details about the error codes, see [HiDebug Error Codes](errorcode-hiviewdfx
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: hidebug.GwpAsanOptions = {
-  alwaysEnabled: true,
-  sampleRate: 2500,
-  maxSimutaneousAllocations: 5000,
-};
-let duration: number = 4;
-
-try {
+@Concurrent
+function enableGwpAsanTask(): void {
+  let options: hidebug.GwpAsanOptions = {
+    alwaysEnabled: true,
+    sampleRate: 2500,
+    maxSimutaneousAllocations: 5000,
+  };
+  let duration: number = 4;
   hidebug.enableGwpAsanGrayscale(options, duration);
+}
+
+taskpool.execute(enableGwpAsanTask).then(() => {
   console.info(`Succeeded in enabling GWP-ASan.`);
-} catch (error) {
+}).catch((error: BusinessError) => {
   const err: BusinessError = error as BusinessError;
   console.error(`Failed to enable GWP-ASan. Code: ${err.code}, message: ${err.message}`);
-}
+})
 ```
 ## GwpAsanOptions<sup>20+</sup>
 Enumerates the GWP-ASan configuration items. You can configure whether to enable GWP-Asan, the sampling frequency, and the maximum number of allocated slots.
@@ -1521,11 +1587,16 @@ Enumerates the GWP-ASan configuration items. You can configure whether to enable
 |alwaysEnabled | boolean | No | Yes| The value **true** means to enable GWP-ASan 100%.<br>The value **false** means to enable GWP-ASan at a probability of 1/128.<br> The default value is **false**.|
 |sampleRate    |number| No |Yes|Sampling rate of GWP-ASan. The default value is **2500**. The value must be a positive integer greater than 0. If the value is a decimal, it is rounded up.<br> GWP-Asan performs sampling on the allocated memory at a probability of 1/**sampleRate**.<br> You are advised to set this parameter to a value greater than or equal to 1000. If the value is too small, the performance is affected.|
 |maxSimutaneousAllocations|number|No|Yes|Maximum number of allocated slots. The default value is **1000**. The value must be a positive integer greater than 0. If the value is a decimal, it is rounded up.<br>When the slots are used up, the newly allocated memory is no longer monitored.<br>After the used memory is released, the slots occupied by the memory are automatically reused to facilitate subsequent memory monitoring.<br> You are advised to set this parameter to a value less than or equal to 20000. If the value is too large, the VMA may break down.|
+|isRecover<sup>24+</sup>|boolean|No|Yes|Used to control whether applications run in recoverable mode when the probability of enabling GWP-ASan is 100%.<br>**true**: When GWP-ASan is enabled with a 100% probability, applications run in recoverable mode. In this mode, after the system detects an out-of-bounds address fault, the process will not crash due to the detection mechanism. However, for errors that have caused invalid memory access, the application may still crash.<br>**false**: When GWP-ASan is enabled with a 100% probability, applications run in unrecoverable mode.<br>The default value is **false**.<br>**Note**: This parameter takes effect only when GWP-ASan is enabled with a 100% probability. When GWP-ASan is enabled with a 1/128 probability, the recoverable mode is used by default and is not controlled by **isRecover**.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## hidebug.disableGwpAsanGrayscale<sup>20+</sup>
 disableGwpAsanGrayscale(): void
 
 Disables GWP-ASan. This API is used to cancel the custom configuration and restore the default parameter [GwpAsanOptions](#gwpasanoptions20).
+
+> **NOTE**
+> 
+> This API involves cross-process communication and takes a long time. To avoid performance problems, you are advised not to call this API in the main thread. You can use [@ohos.taskpool](../apis-arkts/js-apis-taskpool.md) or [@ohos.worker](../apis-arkts/js-apis-worker.md) to enable asynchronous threads to avoid application frame freezing.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1533,14 +1604,25 @@ Disables GWP-ASan. This API is used to cancel the custom configuration and resto
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { taskpool } from '@kit.ArkTS';
 
-hidebug.disableGwpAsanGrayscale();
+@Concurrent
+function disableGwpAsanTask(): void {
+  hidebug.disableGwpAsanGrayscale();
+}
+taskpool.execute(disableGwpAsanTask).then(() => {
+  console.info(`Disable GWP-ASan succeeded.`);
+})
 ```
 
 ## hidebug.getGwpAsanGrayscaleState<sup>20+</sup>
 getGwpAsanGrayscaleState(): number
 
 Obtains the number of remaining days for enabling GWP-ASan.
+
+> **NOTE**
+> 
+> This API involves cross-process communication and takes a long time. To avoid performance problems, you are advised not to call this API in the main thread. You can use [@ohos.taskpool](../apis-arkts/js-apis-taskpool.md) or [@ohos.worker](../apis-arkts/js-apis-worker.md) to enable asynchronous threads to avoid application frame freezing.
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1554,9 +1636,15 @@ Obtains the number of remaining days for enabling GWP-ASan.
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { taskpool } from '@kit.ArkTS';
 
-let remainDays: number = hidebug.getGwpAsanGrayscaleState();
-console.info(`remainDays: ${remainDays}`);
+@Concurrent
+function getGwpAsanStateTask(): number {
+  return hidebug.getGwpAsanGrayscaleState();
+}
+taskpool.execute(getGwpAsanStateTask).then((remainDays: Object) => {
+  console.info(`GWP-ASan remain days: ${remainDays as number}.`);
+})
 ```
 
 ## hidebug.setJsRawHeapTrimLevel<sup>20+</sup>

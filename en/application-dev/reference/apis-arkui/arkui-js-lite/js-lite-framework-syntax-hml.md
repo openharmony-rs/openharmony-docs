@@ -6,10 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-HML is an HTML-like language that allows you to build pages based on components and events. Pages built using HML have advanced capabilities such as data binding, event binding, loop rendering, and conditional rendering.
+HML is an HTML-like language that allows you to build pages based on components and events. The pages support advanced capabilities such as data binding, event binding, list rendering, and conditional rendering.
 
 
-## HML Page Structure
+## Page Structure
 
 
 ```html
@@ -64,15 +64,15 @@ The callback bound to an event receives an event object parameter, which can be 
   <div @click="clickfunc"></div>
   <!-- Bind an event using on. -->
   <div onclick="clickfunc"></div>
-  <!--  Bind an event using on.<sup>5+</sup> This statement is not recommended. -->
+  <!-- Bind an event using on. This statement is not recommended.5+ -->
   <div onclick="clickfunc"></div>
-  <!-- Bind an event callback for event bubbling.<sup>5+</sup>-->
+  <!-- Bind an event callback for event bubbling.5+ -->
   <div on:click.bubble="clickfunc"></div>
-  <!-- on:{event} is equivalent to on:{event}.bubble.<sup>5+</sup> -->
+  <!-- on:{event} is equivalent to on:{event}.bubble.5+ -->
   <div on:click="clickfunc"></div>
-  <!-- Bind an event callback, but stop the event from bubbling upwards.<sup>5+</sup> -->
+  <!-- Bind an event callback, but stop the event from bubbling upwards.5+ -->
   <div grab:click.bubble="clickfunc"></div>
-  <!-- grab:{event} is equivalent to grab:{event}.bubble.<sup>5+</sup> -->
+  <!-- grab:{event} is equivalent to grab:{event}.bubble.5+ -->
   <div grab:click="clickfunc"></div>
 </div>
 ```
@@ -86,7 +86,7 @@ export default {
   },
   clickfunc: function(e) {
     this.obj = 'Hello World';
-    console.log(e);
+    console.info(e);
   },
 }
 ```
@@ -172,16 +172,16 @@ export default {
 ```html
 <!-- xxx.hml -->
 <div class="array-container">
-  <!-- div loop rendering -->
-  <!-- By default, $item indicates the element in the array, and $idx indicates the index of the element in the array. -->
+    <!-- div loop rendering -->
+    <!-- By default, $item indicates the element in the array, and $idx indicates the index of the element in the array. -->
     <div class="item-container" for="{{array}}" tid="id" onclick="changeText">
         <text>{{$idx}}.{{$item.name}}</text>
     </div>
-  <!-- Define the name for an element variable. -->
+    <!-- Define the name for an element variable. -->
     <div class="item-container" for="{{value in array}}" tid="id" onclick="changeText">
         <text>{{$idx}}.{{value.name}}</text>
     </div>
-  <!-- Define an element variable and its index name. -->
+    <!-- Define an element variable and its index name. -->
     <div class="item-container" for="{{(index, value) in array}}" tid="id" onclick="changeText">
         <text>{{index}}.{{value.name}}</text>
     </div>
@@ -227,7 +227,7 @@ export default {
 ```
 
 
-The **tid** attribute accelerates the **for** loop and improves the re-rendering efficiency when data in a loop changes. The **tid** attribute specifies the unique ID of each element in the array. If it is not specified, the index of each element in the array is used as the ID. For example, **tid="id"** indicates that the **id** attribute of each element is its unique ID. The **for** loop supports the following statements:
+The **tid** attribute optimizes the **for** loop and improves the re-rendering efficiency when data in a loop changes. The **tid** attribute specifies the unique ID of each element in the array. If it is not specified, the index of each element in the array is used as the ID. For example, **tid="id"** indicates that the **id** attribute of each element is its unique ID. The **for** loop supports the following statements:
 
 - for="array": **array** is an array object, whose element variable is **$item** by default.
 

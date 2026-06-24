@@ -1211,8 +1211,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Start angle of the linear gradient. When the linear gradient direction is **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection), the start angle of the linear gradient takes effect. Otherwise, the linear gradient direction is used as the main layout mode. The value range is (-∞,+∞). A positive value indicates a clockwise rotation from the origin (0, 0). When the value exceeds 360, the remainder of 360 is used. The default value is **180**.|
-| .value[1].i32 | Direction of the linear gradient. The value is an enumerated value of [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection). If the linear gradient direction is set to a value other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection), the start angle of the linear gradient does not take effect. Default value: **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM** of [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)|
+| .value[0].f32 | Start angle of the linear gradient. When the linear gradient direction is **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection), the start angle of the linear gradient takes effect. Otherwise, the linear gradient direction is used as the main layout mode. The value range is (-∞,+∞). A positive value indicates a clockwise rotation from the origin (0, 0). When the value exceeds 360, the remainder of 360 is used. The default value is **180**.|
+| .value[1].i32 | Direction of the linear gradient. The value is an enumerated value of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection). If the linear gradient direction is set to a value other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection), the start angle of the linear gradient does not take effect. Default value: **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)|
 | .value[2].i32 | Whether the gradient color is repeated. The value **false** indicates that the gradient color is not repeated, and **true** indicates that the gradient color is repeated. The default value is **false**.|
 | .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value.<br> **size**: number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Values greater than the **colors** array length, values less than or equal to 0, or invalid values are not recommended.|
 
@@ -1220,8 +1220,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Start angle of the linear gradient. When the direction of the linear gradient is **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection), the start angle of the linear gradient is the set value. In other cases, the default value **0** is used.|
-| .value[1].i32 | Direction of the linear gradient. For details about the values and meanings, see [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection).|
+| .value[0].f32 | Start angle of the linear gradient. When the direction of the linear gradient is **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection), the start angle of the linear gradient is the set value. In other cases, the default value **0** is used.|
+| .value[1].i32 | Direction of the linear gradient. For details about the values and meanings, see [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection).|
 | .value[2].i32 | Whether the gradient color is repeated. The value **false** indicates that the gradient color is not repeated, and **true** indicates that the gradient color is repeated. The default value is **false**.|
 | .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.<br> **size**: number of effective gradient colors.|
 
@@ -1473,13 +1473,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Caret color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format.|
+| .value[0].u32 | Caret color, in 0xARGB format.|
 
 ## NODE_TEXT_AREA_EDITING
 
@@ -2486,8 +2486,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Start angle of the linear gradient. When the linear gradient direction is **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection), the start angle of the linear gradient takes effect. Otherwise, the linear gradient direction is used as the main layout mode. The value range is (-∞,+∞). A positive value indicates a clockwise rotation from the origin (0, 0). When the value exceeds 360, the remainder of 360 is used. The default value is **180**.|
-| .value[1].i32 | Direction of the linear gradient. The value is an enumerated value of [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection). If the linear gradient direction is set to a value other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection), the start angle of the linear gradient does not take effect. Default value: **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM** of [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)|
+| .value[0].f32 | Start angle of the linear gradient. When the linear gradient direction is **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection), the start angle of the linear gradient takes effect. Otherwise, the linear gradient direction is used as the main layout mode. The value range is (-∞,+∞). A positive value indicates a clockwise rotation from the origin (0, 0). When the value exceeds 360, the remainder of 360 is used. The default value is **180**.|
+| .value[1].i32 | Direction of the linear gradient. The value is an enumerated value of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection). If the linear gradient direction is set to a value other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection), the start angle of the linear gradient does not take effect. Default value: **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)|
 | .value[2].i32 | Whether the gradient color is repeated. The value **false** indicates that the gradient color is not repeated, and **true** indicates that the gradient color is repeated. The default value is **false**.|
 | .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end. To create a gradient with multiple color stops, you are advised to set the array elements in ascending order. If a later element is smaller than a previous one, it will be treated as equal to the previous value.<br> **size**: number of colors. If the value is smaller than the length of the **colors** array, only the first **size** colors take effect. Values greater than the **colors** array length, values less than or equal to 0, or invalid values are not recommended.|
 
@@ -2495,8 +2495,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Start angle of the linear gradient. When the direction of the linear gradient is **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection), the start angle of the linear gradient is the set value. In other cases, the default value **0** is used.|
-| .value[1].i32 | Direction of the linear gradient. For details about the values and meanings, see [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection).|
+| .value[0].f32 | Start angle of the linear gradient. When the direction of the linear gradient is **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** of [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection), the start angle of the linear gradient is the set value. In other cases, the default value **0** is used.|
+| .value[1].i32 | Direction of the linear gradient. For details about the values and meanings, see [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection).|
 | .value[2].i32 | Whether the gradient color is repeated. The value **false** indicates that the gradient color is not repeated, and **true** indicates that the gradient color is repeated. The default value is **false**.|
 | .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.<br> **size**: number of effective gradient colors.|
 

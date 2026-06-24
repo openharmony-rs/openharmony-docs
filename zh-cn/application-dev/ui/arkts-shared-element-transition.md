@@ -4,7 +4,7 @@
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @ge-yafang; @Brilliantry_Rui-->
 
 共享元素转场是一种界面切换时对相同或者相似的两个元素做的一种位置和大小匹配的过渡动画效果，也称一镜到底动效。
 
@@ -12,7 +12,7 @@
 
 | 一帧切换效果 | 一镜到底效果 |
 | ------ | ---- |
-| ![zh-cn_image_0000001599644876](figures/zh-cn_image_0000001599644876.gif)|![zh-cn_image_0000001599644877](figures/zh-cn_image_0000001599644877.gif) |
+| ![Frame-transition-effect](figures/Frame-transition-effect.gif)|![one-shot-style](figures/one-shot-style.gif) |
 
 一镜到底的动效有多种实现方式，在实际开发过程中，应根据具体场景选择合适的方法进行实现。
 
@@ -21,8 +21,8 @@
 | 一镜到底实现方式 | 特点 | 适用场景 |
 | ------ | ---- | ---- |
 | 不新建容器直接变化原容器 | 不发生路由跳转，需要在一个组件中实现展开及关闭两种状态的布局，展开后组件层级不变。| 适用于转场开销小的简单场景，如点开页面无需加载大量数据及组件。 |
-| 新建容器并跨容器迁移组件 | 通过使用NodeController，将组件从一个容器迁移到另一个容器，在开始迁移时，需要根据前后两个布局的位置大小等信息对组件添加位移及缩放，确保迁移开始时组件能够对齐初始布局，避免出现视觉上的跳变现象。之后再添加动画将位移及缩放等属性复位，实现组件从初始布局到目标布局的一镜到底过渡效果。 | 适用于新建对象开销大的场景，如视频直播组件点击转为全屏等。 |
-| 使用geometryTransition共享元素转场 | 利用系统能力，转场前后两个组件调用geometryTransition接口绑定同一id，同时将转场逻辑置于animateTo动画闭包内，这样系统侧会自动为二者添加一镜到底的过渡效果。 | 系统将调整绑定的两个组件的宽高及位置至相同值，并切换二者的透明度，以实现一镜到底过渡效果。因此，为了实现流畅的动画效果，需要确保对绑定geometryTransition的节点添加宽高动画不会有跳变。此方式适用于创建新节点开销小的场景。 |
+| 新建容器并跨容器迁移组件 | 通过使用[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)，将组件从一个容器迁移到另一个容器，在开始迁移时，需要根据前后两个布局的位置大小等信息对组件添加位移及缩放，确保迁移开始时组件能够对齐初始布局，避免出现视觉上的跳变现象。之后再添加动画将位移及缩放等属性复位，实现组件从初始布局到目标布局的一镜到底过渡效果。 | 适用于新建对象开销大的场景，如视频直播组件点击转为全屏等。 |
+| 使用geometryTransition共享元素转场 | 利用系统能力，转场前后两个组件调用[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)接口绑定同一id，同时将转场逻辑置于[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)动画闭包内，这样系统侧会自动为二者添加一镜到底的过渡效果。 | 系统将调整绑定的两个组件的宽高及位置至相同值，并切换二者的透明度，以实现一镜到底过渡效果。因此，为了实现流畅的动画效果，需要确保对绑定geometryTransition的节点添加宽高动画不会有跳变。此方式适用于创建新节点开销小的场景。 |
 
 ## 不新建容器并直接变化原容器
 
@@ -193,7 +193,7 @@ export default struct Post {
 }
 ```
 
-![zh-cn_image_0000001600653160](figures/zh-cn_image_0000001600653160.gif)
+![one-shot-style-container](figures/one-shot-style-container.gif)
 
 ## 新建容器并跨容器迁移组件
 
@@ -581,7 +581,7 @@ export const deleteNode = (id: string) => {
 }
 ```
 
-![zh_cn_image_sharedElementsNodeTransfer](figures/zh-cn_image_sharedElementsNodeTransfer.gif)
+![sharedElementsNodeTransfer](figures/sharedElementsNodeTransfer.gif)
 
 ### 结合Navigation使用
 
@@ -1372,7 +1372,7 @@ export const getMyNode = (): MyNodeController | undefined => {
 }
 ```
 
-![zh-cn_image_NavigationNodeTransfer](figures/zh-cn_image_NavigationNodeTransfer.gif)
+![NavigationNodeTransfer](figures/NavigationNodeTransfer.gif)
 
 ### 结合BindSheet使用
 
@@ -1926,7 +1926,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-![zh-cn_image_BindSheetNodeTransfer](figures/zh-cn_image_BindSheetNodeTransfer.gif)
+![BindSheetNodeTransfer](figures/BindSheetNodeTransfer.gif)
 
 ## 使用geometryTransition共享元素转场
 
@@ -2002,7 +2002,7 @@ struct IfElseGeometryTransition {
 }
 ```
 
-![zh-cn_image_0000001599644878](figures/zh-cn_image_0000001599644878.gif)
+![one-shot-style-page](figures/one-shot-style-page.gif)
 
 ### geometryTransition结合模态转场使用
 
@@ -2190,6 +2190,6 @@ export default struct Post {
 
 效果为点击主页的头像后，弹出模态页面显示个人信息，并且两个页面之间的头像做一镜到底动效：
 
-![zh-cn_image_0000001597320327](figures/zh-cn_image_0000001597320327.gif)
+![one-shot-style-avatar](figures/one-shot-style-avatar.gif)
 
 <!--RP1--><!--RP1End-->

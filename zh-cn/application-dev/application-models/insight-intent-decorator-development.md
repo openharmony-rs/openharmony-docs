@@ -341,14 +341,14 @@
 
     [onQueryEntity](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#onqueryentity)接口需要根据传入的查询参数[QueryEntityParam](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#queryentityparam)返回符合条件的实体列表。推荐在[QueryEntityParam](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#queryentityparam)中的[queryType](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)为[ALL](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)时返回意图实体全部信息（例如返回所有歌单列表）；在[queryType](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)为[BY_PROPERTY](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)时，根据QueryEntityParam中的parameters属性值筛选符合条件的信息（例如同时传入歌单名称和创建者时，返回歌单名称和创建者均匹配的歌单列表）。
 
-    <!-- @[appIntentEntity_PlayMusicListImpl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
-
-    ```ts
+    <!-- @[appIntentEntity_AppPlaylistEntity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
+    
+    ``` TypeScript
     import { insightIntent, InsightIntentEntity, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     const LOG_TAG: string = 'testTag';
-
+    
     // 意图实体定义
     @InsightIntentEntity({
       entityCategory: 'playlist_entity_category',
@@ -360,7 +360,7 @@
           'entityId': {
             'type': 'string',
             'description': 'Playlist unique identifier',
-            'title': '歌单ID'
+            'title': '歌单id'
           },
           'playlistName': {
             'type': 'string',
@@ -386,24 +386,24 @@
       public playlistName: string = '';
       public displayName: string = '';
       public owner: string = '';
-
+    
       async onQueryEntity(params: insightIntent.QueryEntityParam): Promise<Array<AppPlaylistEntity>> {
         const playlists: AppPlaylistEntity[] = [
           this.createEntity('p001', '夜跑歌单', '夜跑歌单', 'Alice'),
           this.createEntity('p002', '通勤歌单', '通勤歌单', 'Bob'),
           this.createEntity('p003', '睡前轻音乐', '睡前轻音乐', 'Alice')
         ];
-
+    
         if (params.queryType === insightIntent.QueryType.ALL) {
           return playlists;
         }
-
+    
         const query = params.parameters ?? {};
         const validKeys = Object.keys(query).filter((key) => ['entityId', 'playlistName', 'owner'].includes(key));
         if (validKeys.length === 0) {
           return [];
         }
-
+    
         return playlists.filter((item) => {
           return validKeys.every((key) => {
             const queryValue = query[key];
@@ -420,7 +420,7 @@
           });
         });
       }
-
+    
       private createEntity(entityId: string, playlistName: string, displayName: string, owner: string): AppPlaylistEntity {
         const entity = new AppPlaylistEntity();
         entity.entityId = entityId;

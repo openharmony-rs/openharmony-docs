@@ -24,6 +24,12 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 
 | Name| Description|
 | -- | -- |
+| [embedded_component.h](capi-embedded-component-h.md) | Defines the structs and APIs of the **EmbeddedComponent** component.|
+| [image.h](capi-image-h.md) | Defines **Image** node types for **NativeNode** APIs.|
+| [image_animator.h](capi-image-animator-h.md) | Defines **ImageAnimator** node types for **NativeNode** APIs.|
+| [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md) | Declares the custom node events for **NativeNode** APIs.|
+| [navigation_router.h](capi-navigation-router-h.md) | Defines the enumerations and APIs of the **Navigation** or **Router** component.|
+| [swiper.h](capi-swiper-h.md) | Defines the enumerations and APIs of the **Swiper** component.|
 | [drag_and_drop.h](capi-drag-and-drop-h.md) | Declares the APIs of **NativeDrag**.|
 | [drawable_descriptor.h](capi-drawable-descriptor-h.md) | Declares the APIs of **NativeDrawableDescriptor**.|
 | [native_animate.h](capi-native-animate-h.md) | Declares a set of animation APIs of ArkUI on the native side.|
@@ -36,4 +42,6 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [native_node.h](capi-native-node-h.md) | Declares the APIs of **NativeNode**.|
 | [native_node_napi.h](capi-native-node-napi-h.md) | Declares the functions used to convert FrameNodes on the ArkTS side into NodeHandles.|
 | [native_type.h](capi-native-type-h.md) | Defines the common types for the native module.|
+| [picker.h](capi-picker-h.md) | Defines **Picker** node types for **NativeNode** APIs.|
 | [styled_string.h](capi-styled-string-h.md) | Declares styled string APIs of ArkUI on the native side.|
+| [xcomponent.h](capi-xcomponent-h.md) | Defines the enumerations of the **XComponent** component.|

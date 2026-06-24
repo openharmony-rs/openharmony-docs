@@ -51,6 +51,23 @@ isNfcAvailable(): boolean
 | -------- | -------- |
 | boolean | true: 设备具备NFC能力，&nbsp;false: 设备不具备NFC能力。 |
 
+## nfcController.isNfcSupported
+
+isNfcSupported(): boolean
+
+查询设备是否有NFC能力。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.NFC.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| **类型** | **说明** |
+| -------- | -------- |
+| boolean | true: 设备具备NFC能力，&nbsp;false: 设备不具备NFC能力。 |
 
 ## nfcController.openNfc<sup>(deprecated)</sup>
 
@@ -91,6 +108,9 @@ enableNfc(): void
 |801 | Capability not supported.          |
 | 3100101 | The NFC state is abnormal in the service. |
 
+**示例：**
+示例参见[off](#nfccontrolleroffnfcstatechange)接口。
+
 ## nfcController.closeNfc<sup>(deprecated)</sup>
 
 closeNfc(): boolean
@@ -130,6 +150,9 @@ disableNfc(): void
 |801 | Capability not supported.          |
 | 3100101 | The NFC state is abnormal in the service. |
 
+**示例：**
+示例参见[off](#nfccontrolleroffnfcstatechange)接口。
+
 ## nfcController.isNfcOpen
 
 isNfcOpen(): boolean
@@ -145,6 +168,9 @@ isNfcOpen(): boolean
 | **类型** | **说明**                            |
 | -------- | ----------------------------------- |
 | boolean  | true: NFC是打开的，&nbsp;false: NFC是关闭的。 |
+
+**示例：**
+示例参见[off](#nfccontrolleroffnfcstatechange)接口。
 
 ## nfcController.getNfcState
 
@@ -162,6 +188,16 @@ getNfcState(): [NfcState](#nfcstate)
 | -------- | ---------------------- |
 | [NfcState](#nfcstate) | NFC状态值，详细请见[NfcState](#nfcstate)枚举值。 |
 
+**示例：**
+
+```js
+import { nfcController } from '@kit.ConnectivityKit';
+
+// 查询nfc状态
+let nfcState: nfcController.NfcState = nfcController.getNfcState();
+console.info("nfcController on callback nfcstate: " + nfcState);
+```
+
 ## nfcController.on('nfcStateChange')
 
 on(type: 'nfcStateChange', callback: Callback&lt;[NfcState](#nfcstate)&gt;): void
@@ -178,6 +214,9 @@ on(type: 'nfcStateChange', callback: Callback&lt;[NfcState](#nfcstate)&gt;): voi
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"nfcStateChange"字符串。 |
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | 是 | 回调函数，返回NFC状态的枚举值。 |
+
+**示例：**
+示例参见[off](#nfccontrolleroffnfcstatechange)接口。
 
 ## nfcController.off('nfcStateChange')
 

@@ -582,7 +582,7 @@ export class Mover {
 
 提供了获取数据库，在数据库中插入数据、删除数据、更新数据和获取当前数据数量的接口。其中StoreInfo类用于存储获取数据库相关信息。
 
-<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->
+<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->   
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -606,7 +606,7 @@ export class Store {
       rdbStore = await relationalStore.getRdbStore(storeInfo.context, storeInfo.config);
       if (rdbStore.version == 0) {
         await rdbStore.executeSql(SQL_CREATE_TABLE);
-        console.info(`ECDB_Encry succeeded in getting Store ：${storeInfo.storeId}`);
+        console.info(`ECDB_Encry succeeded in getting Store: ${storeInfo.storeId}`);
         rdbStore.version = 1;
       }
     } catch (e) {

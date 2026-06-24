@@ -44,7 +44,7 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -107,7 +107,7 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -169,6 +169,7 @@ setPointerSpeedSync(speed: number): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -211,7 +212,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
@@ -268,7 +269,7 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 
 **示例**：
 
@@ -328,6 +329,7 @@ getPointerSpeedSync(): number
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1414,6 +1416,10 @@ struct Index {
           try {
             // 获取触摸板滚动方向
             pointer.getTouchpadScrollDirection ((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
             });
           } catch (error) {
@@ -2317,6 +2323,10 @@ struct Index {
           try {
             // 获取触摸板滑动开关
             pointer.getTouchpadSwipeSwitch((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`Failed to get touchpad swipe switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in getting touchpad swipe switch, state: ${JSON.stringify(state)}.`);
             });
           } catch (error) {
@@ -2540,6 +2550,10 @@ struct Index {
           try {
             // 获取触摸板右键点击类型
             pointer.getTouchpadRightClickType((error: BusinessError, type: pointer.RightClickType) => {
+              if (error) {
+                console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
             });
           } catch (error) {
@@ -2619,7 +2633,7 @@ setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| size     | number                    | 是    | 鼠标光标大小，范围为[1-7]，默认为1。   |
+| size     | number                    | 是    | 鼠标光标大小，范围为[1, 7]，默认为1。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -2676,7 +2690,7 @@ setPointerSize(size: number): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | number | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
+| size  | number | 是    | 鼠标光标大小，范围为[1, 7]，默认为1。 |
 
 **返回值**：
 
@@ -2736,7 +2750,7 @@ setPointerSizeSync(size: number): void
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | number | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
+| size  | number | 是    | 鼠标光标大小，范围为[1, 7]，默认为1。 |
 
 **错误码**：
 
@@ -2751,6 +2765,7 @@ setPointerSizeSync(size: number): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2786,7 +2801,7 @@ getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小，范围为[1-7]；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小，范围为[1, 7]；否则为错误对象。 |
 
 **错误码**：
 
@@ -2842,7 +2857,7 @@ getPointerSize(): Promise&lt;number&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，返回鼠标光标大小，范围为[1-7]。 |
+| Promise&lt;number&gt; | Promise对象，返回鼠标光标大小，范围为[1, 7]。 |
 
 **错误码**：
 
@@ -2896,7 +2911,7 @@ getPointerSizeSync(): number
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 鼠标光标大小，范围为[1-7]。 |
+| number | 鼠标光标大小，范围为[1, 7]。 |
 
 **错误码**：
 
@@ -2911,6 +2926,7 @@ getPointerSizeSync(): number
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3089,6 +3105,7 @@ setPointerColorSync(color: number): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3249,6 +3266,7 @@ getPointerColorSync(): number
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component

@@ -404,7 +404,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Blur radius of the shadow, in vp.|
-| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
+| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
 | .value[2].u32 | Shadow color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
 | .value[3].f32 | Offset of the shadow along the x-axis, in vp.|
 | .value[4].f32 | Offset of the shadow along the y-axis, in vp.|
@@ -414,7 +414,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Blur radius of the shadow, in vp.|
-| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype).|
+| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype).|
 | .value[2].u32 | Shadow color, in 0xARGB format.|
 | .value[3].f32 | Offset of the shadow along the x-axis, in vp.|
 | .value[4].f32 | Offset of the shadow along the y-axis, in vp.|
@@ -844,7 +844,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Start angle of the linear gradient. The setting takes effect only when **direction** is set to **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM**. A positive value indicates a clockwise rotation from the origin, (0, 0). The default value is **180**.|
-| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection). When a direction other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** is set, the **angle** attribute is ignored. The default value is **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM**.|
+| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection). When a direction other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** is set, the **angle** attribute is ignored. The default value is **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM**.|
 | .value[2].i32 | Whether the colors are repeated. The value **false** means that the colors are not repeated, and **true** means the opposite. The default value is **false**.|
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.|
 | colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
@@ -856,7 +856,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Start angle of the linear gradient. The set value is used only when **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** is used. In other cases, the default value **0** is used.|
-| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection).|
+| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection).|
 | .value[2].i32 | Whether the colors are repeated. The value **0** means that the colors are not repeated, and **1** means the opposite. The default value is **0**.|
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.|
 | colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
@@ -1590,14 +1590,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .string | Placeholder image address for the image span. GIF images are not supported.|
+| .string | Placeholder image address for the **imageSpan** component. GIF images are not supported.|
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).<br>Either **.object** or **.string** must be set.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .string | Placeholder image address.|
+| .string | Placeholder image address for the **imageSpan** component.|
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).|
 
 ## NODE_IMAGE_SPAN_BASELINE_OFFSET

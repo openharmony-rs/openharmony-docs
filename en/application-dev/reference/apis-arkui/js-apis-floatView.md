@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
-<!--Designer: @zhoulin_-->
+<!--Designer: @loumou-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -16,13 +16,21 @@ A float view is applicable to scenarios where application content needs to be co
 - Application for stock market tracking: When browsing other applications, users can use a float view to view real-time stock market changes without frequently switching between applications.
 - Live streaming application on a mobile phone: During live streaming, hosts can use a float view to display a custom interaction panel or control UI, facilitating real-time operations and interactions.
 
+**Comparison between the float view and floating ball**:
+
+- Similarities: Both the float view and [floating ball](js-apis-floatingBall.md) are special types of application auxiliary windows that can remain displayed on the foreground even after the application's main window and corresponding UIAbility transition to the background. They can be used to continue displaying the UI after the application transitions to the background.
+- Differences:
+  - They have different display forms: A floating ball is displayed as a small rounded-corner bar and is suitable for displaying key information. A float view is displayed as a small window with a relatively large display area, which can continuously display application content or provide shortcut operations.
+  - The floating ball can only be displayed on the edge, while the float view does not have this restriction.
+  - The floating ball template is fixed, and the UI cannot be customized for applications. The float view also has a template, and the float view is managed by the system and its UI is drawn in a unified manner. However, it provides a drawing area for applications to load specified page content.
+
 **Linkage with the floating ball**:
 
-This module can be used together with [@ohos.window.floatingBall](js-apis-floatingBall.md). After the float view controller is bound to the floating ball controller using the [floatView.bind](#floatviewbind) API, users can tap the floating ball to expand it as a float view, and click the minimize button in the upper left corner of the float view to collapse it back as a floating ball. This allows for seamless switching between the two window forms.
+This module can be used together with [@ohos.window.floatingBall](js-apis-floatingBall.md). After the float view controller is bound to the floating ball controller using the [floatView.bind](#floatviewbind) API, users can click the floating ball to expand it as a float view, and click the minimize button in the upper left corner of the float view to collapse it back as a floating ball. This allows for seamless switching between the two window forms.
 
-**Comparison between the global floating window and float view**:
+**Comparison between a global floating window and a float view**:
 
-- Similarities: Both the global floating window and float view are special types of application auxiliary windows that can remain displayed on the foreground even after the application's main window and corresponding ability transition to the background. They can be used to continue displaying the UI after the application transitions to the background.
+- Similarities: Both the global floating window and the float view are special types of application auxiliary windows that can remain displayed on the foreground even after the application's main window and corresponding UIAbility transition to the background. They can be used to continue displaying the UI after the application transitions to the background.
 - Differences:
   - The global floating window is managed and its UI is drawn by developers, without a unified UI or animation effect.
   - The float view is managed by the system and its UI is drawn in a unified manner, offering a more sophisticated and refined animation effect.
@@ -46,7 +54,7 @@ import { floatView } from '@kit.ArkUI';
 
 isFloatViewEnabled(): boolean
 
-Checks whether the device supports the float view.
+Checks whether the current device supports the float view feature.
 
 **Since**: 26.0.0
 
@@ -58,7 +66,7 @@ Checks whether the device supports the float view.
 
 | Type| Description|
 |------------|------------|
-| boolean  | Whether the device supports the float view. **true** to support; **false** otherwise.|
+| boolean  | Whether the current device supports the float view. **true** to support; **false** otherwise.|
 
 **Example**
 
@@ -89,7 +97,7 @@ Creates a float view controller. This API uses a promise to return the result.
 
 | Type| Description|
 |------------|------------|
-| Promise&lt;[FloatViewController](#floatviewcontroller)&gt; | Promise used to return the created float view controller.|
+| Promise&lt;[FloatViewController](#floatviewcontroller)&gt; | Promise used to return the float view controller.|
 
 **Error codes**
 
@@ -136,13 +144,13 @@ struct Index {
 
 bind(floatViewController: FloatViewController, floatingBallController: floatingBall.FloatingBallController, floatingBallParams: floatingBall.FloatingBallParams): Promise&lt;void&gt;
 
-Binds the float view and floating ball. You need to create the [float view controller](#floatviewcontroller) and [floating ball controller](js-apis-floatingBall.md#floatingballcontroller) first, and neither of them has been started. This API uses a promise to return the result.
+Binds the float view and the floating ball. You need to create the [float view controller](#floatviewcontroller) and [floating ball controller](js-apis-floatingBall.md#floatingballcontroller) first, and neither of them has been started. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> - After the binding is successful, calling [start()](#start) or [startFloatingBall()](js-apis-floatingBall.md#startfloatingball) will create both a float view and the floating ball window, and trigger the status callback registered for the corresponding window. However, only one window is displayed at a time, and the display sequence depends on which controller's start API is called first.
-> - After the binding is successful, users can switch between the float view and the floating ball window by clicking.
-> - After the binding is successful, calling the stop API ([stop()](#stop) or [stopFloatingBall()](js-apis-floatingBall.md#stopfloatingball)) of either controller will destroy both the float view and the floating ball window, and trigger the status callback registered for the corresponding window.
+> - After the binding is successful, calling [start()](#start) or [startFloatingBall()](js-apis-floatingBall.md#startfloatingball) will create both a float view and the floating ball, and trigger the status callback registered for the corresponding window. However, only one window is displayed at a time, and the display sequence depends on which controller's start API is called first.
+> - After the binding is successful, users can switch between the float view and the floating ball by clicking.
+> - After the binding is successful, calling the stop API ([stop()](#stop) or [stopFloatingBall()](js-apis-floatingBall.md#stopfloatingball)) of either controller will destroy both the float view and the floating ball, and trigger the status callback registered for the corresponding window.
 
 **Since**: 26.0.0
 
@@ -218,7 +226,7 @@ struct Index {
 
 unbind(floatViewController: FloatViewController, floatingBallController: floatingBall.FloatingBallController): Promise&lt;void&gt;
 
-Unbinds the float view and floating ball. The unbinding can be performed only after both the [float view controller](#floatviewcontroller) and [floating ball controller](js-apis-floatingBall.md#floatingballcontroller) are stopped. This API uses a promise to return the result.
+Unbinds the float view and the floating ball. The unbinding can be performed only after both the [float view controller](#floatviewcontroller) and [floating ball controller](js-apis-floatingBall.md#floatingballcontroller) are stopped. This API uses a promise to return the result.
 
 **Since**: 26.0.0
 
@@ -860,7 +868,7 @@ Registers a callback for listening to float view state changes. To prevent memor
 
 | Name| Type| Mandatory| Description|
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | Yes| Callback used to return the status change information of the current float view.|
+| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | Yes| Callback used to return the state change information of the current float view.|
 
 **Error codes**
 
@@ -900,7 +908,7 @@ Unregisters the callback for listening to float view state changes.
 
 | Name| Type| Mandatory| Description|
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | No| Callback used to return the status change information of the current float view. If a value is passed in, the corresponding callback is unregistered. If no value is passed in, all callbacks associated with the status change event of the float view are unregistered.|
+| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | No| Callback used to return the state change information of the current float view. If a value is passed in, the corresponding callback is unregistered. If no value is passed in, all callbacks associated with the state change event of the float view are unregistered.|
 
 **Error codes**
 
@@ -927,7 +935,7 @@ try {
 
 onRectChange(callback: Callback&lt;FloatViewRectChangeInfo&gt;): void
 
-Registers a callback for listening to changes in the rectangular area (position and size) of the float view. To prevent memory leaks, remember to unregister the callback when it is no longer needed.
+Registers a callback for listening to changes in the rectangle area (position and size) of the float view. To prevent memory leaks, remember to unregister the callback when it is no longer needed.
 
 **Since**: 26.0.0
 
@@ -967,7 +975,7 @@ try {
 
 offRectChange(callback?: Callback&lt;FloatViewRectChangeInfo&gt;): void
 
-Unregisters the callback for listening to changes in the rectangular area of the float view.
+Unregisters the callback for listening to changes in the rectangle area of the float view.
 
 **Since**: 26.0.0
 
@@ -1006,7 +1014,7 @@ try {
 
 onLimitsChange(callback: Callback&lt;FloatViewLimits&gt;): void
 
-Registers a callback for listening to limit changes of the float view. When the limit changes, for example, when the device is folded or unfolded, the callback is triggered. To prevent memory leaks, remember to unregister the callback when it is no longer needed.
+Registers a callback for listening to limit changes of the float view. When the limit changes (for example, the screen width changes or the template is switched due to folding or unfolding), the callback is triggered and the limit information of the current window template type is returned. To prevent memory leaks, remember to unregister the callback when it is no longer needed.
 
 **Since**: 26.0.0
 
@@ -1159,8 +1167,8 @@ Provides the state change information of the float view.
 
 | Name| Type| Read-Only| Optional| Description|
 |------------|------------|------------|------------|------------|
-| state | [FloatViewState](#floatviewstate) | No| No| State of the float view.|
-| stopReason | string | No| No| Reason why the float view stops. This parameter is valid only when **state** is set to **FloatViewState.STOPPED**. In other states, this parameter is an empty string by default. The stop reasons and their meanings are as follows:<br>**"APP_STOP"**: The application proactively stops the float view.<br>**"STOP_IN_SIDEBAR"**: The float view is closed in the sidebar.<br>**"TITLE_BAR_STOP_CLICK"**: The float view is closed by clicking the close button on the title bar.<br>**"DUMPSTER_STOP"**: The float view is dragged to the trash can.<br>**"REPLACE_STOP"**: The float view is occupied by another float view.<br>**"FLOATING_BALL_STOP"**: The float view stops when the bound floating ball stops.<br> **"MAIN_WINDOW_DESTROY_STOP"**: The float view stops after the main window associated with the context is destroyed.|
+| state | [FloatViewState](#floatviewstate) | No| No| Status of the float view.|
+| stopReason | string | No| No| Reason why the float view stops. This parameter is valid only when **state** is set to **FloatViewState.STOPPED**. In other states, this parameter is an empty string by default. The stop reasons and their meanings are as follows:<br>**"APP_STOP"**: The application proactively stops the float view.<br>**"STOP_IN_SIDEBAR"**: The float view is closed in the sidebar.<br>**"TITLE_BAR_STOP_CLICK"**: The float view is closed by clicking the close button on the title bar.<br>**"DUMPSTER_STOP"**: The float view is dragged to the trash can.<br>**"REPLACE_STOP"**: The float view is replaced by another float view.<br>**"FLOATING_BALL_STOP"**: The float view stops when the bound floating ball stops.<br> **"MAIN_WINDOW_DESTROY_STOP"**: The float view stops after the main window associated with the context is destroyed.|
 
 ## FloatViewState
 

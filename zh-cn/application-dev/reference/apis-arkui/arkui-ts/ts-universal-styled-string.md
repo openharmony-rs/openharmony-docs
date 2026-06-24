@@ -560,7 +560,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 | [UserDataSpan](#userdataspan) | UserDataSpan样式。 |
 | [UrlStyle](#urlstyle14) | 超链接样式。 |
 | [BackgroundColorStyle](#backgroundcolorstyle14) | 文本背景颜色样式。 |
-| [LineSpacingStyle](#linespacingstyle) | 文本行间距。**起始版本：** 26.0.0 |
+| [LineSpacingStyle](#linespacingstyle) | 文本行间距样式。**起始版本：** 26.0.0 |
 
 ## StyleOptions对象说明
 
@@ -687,7 +687,7 @@ constructor(value?: GestureStyleInterface)
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| value | [GestureStyleInterface](#gesturestyleinterface对象说明) | 否   | 事件设置项。 |
+| value | [GestureStyleInterface](#gesturestyleinterface对象说明) | 否   | 事件手势设置项。 |
 
 ## GestureStyleInterface对象说明
 
@@ -1126,7 +1126,7 @@ abstract onMeasure(measureInfo: CustomSpanMeasureInfo): CustomSpanMetrics
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| measureInfo | [CustomSpanMeasureInfo](#customspanmeasureinfo对象说明) | 是   | 文本的字体大小。 |
+| measureInfo | [CustomSpanMeasureInfo](#customspanmeasureinfo对象说明) | 是   | 自定义绘制Span的测量信息。 |
 
 **返回值：**
 
@@ -1227,11 +1227,13 @@ invalidate(): void
 | shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  是  |  是  | 获取文本着色器效果。<br/>**起始版本：** 26.0.0。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | tailIndents | Array\<number>   | 是    | 是    | 获取属性字符串文本段落的文本尾部缩进距离。<br/>单位：vp <br/>取值范围：[0, INT32_MAX]<br/>值为0时不做尾部缩进。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
->  **说明：**
+> **说明：**
 >
->  属性字符串的maxLines和overflow仅在Text中生效，建议在组件侧设置。
+> - 属性字符串的maxLines和overflow仅在Text中生效，建议在组件侧设置。
 >
->  textAlign只能调整文本整体的布局，不影响字符的显示顺序。若需要调整字符的显示顺序，请参考[镜像状态字符对齐](../../../ui/arkts-internationalization.md#镜像状态字符对齐)。
+> - textAlign只能调整文本整体的布局，不影响字符的显示顺序。若需要调整字符的显示顺序，请参考[镜像状态字符对齐](../../../ui/arkts-internationalization.md#镜像状态字符对齐)。
+>
+> - tailIndents数组在同一段落内的每一行按数组索引依次取值做缩进；新的段落首行重新从tailIndents数组索引0位置开始取值做缩进。
 
 ### constructor
 

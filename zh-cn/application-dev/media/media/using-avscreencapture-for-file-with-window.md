@@ -68,7 +68,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .audioChannels = 2,
        .audioSource = OH_MIC
    };
-
+   
    OH_AudioCaptureInfo innerCapInfo = {
        .audioSampleRate = 48000,
        .audioChannels = 2,
@@ -80,11 +80,11 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .audioBitrate = 48000,
        .audioCodecformat = OH_AAC_LC
    };
-
+   
    // 获取屏幕信息
    uint64_t displayId = 0;
    NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
-
+   
    NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
    ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
    if (ret != DISPLAY_MANAGER_OK || !displayInfo) {

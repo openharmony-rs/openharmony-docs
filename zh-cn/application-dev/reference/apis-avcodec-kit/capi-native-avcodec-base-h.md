@@ -73,6 +73,7 @@
 | [OH_TemporalGopReferenceMode](#oh_temporalgopreferencemode) | OH_TemporalGopReferenceMode | 时域图片组参考模式。 |
 | [OH_BitrateMode](#oh_bitratemode) | OH_BitrateMode | 编码器的比特率模式。 |
 | [OH_FrameRetentionMode](#oh_frameretentionmode) | OH_FrameRetentionMode | 视频解码帧保留模式。 |
+| [OH_AudioEncoderPTSMode](#oh_audioencoderptsmode) | OH_AudioEncoderPTSMode | 音频编码器PTS模式。 |
 
 ### 函数
 
@@ -247,10 +248,17 @@
 | const char * OH_MD_KEY_LATITUDE | 纬度的键，值类型为float，范围为[-90.0, 90.0]。表示地理位置信息中的纬度。<br>**起始版本：** 24 |
 | const char * OH_MD_KEY_LONGITUDE | 经度的键，值类型为float，范围为[-180.0, 180.0]。表示地理位置信息中的经度。<br>**起始版本：** 24 |
 | const char * OH_MD_KEY_ALTITUDE | 海拔的键，值类型为float，该键是可选的。表示地理位置信息中的海拔。<br>**起始版本：** 24 |
+| const char * OH_MD_KEY_VIDEO_ENCODER_NUMBER_OF_PENDING_FRAMES | 视频编码器待处理帧数量的键值，值类型为int32_t。该键是只读的，用于查询当前待编码帧的数量。可通过[OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription)接口获取。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER | 解码器输出模式的键值。值类型为int32_t，取值为0或1。1表示解码器按解码顺序输出帧；0表示解码器按显示顺序输出帧，默认值为0。该键是可选的，仅用于视频解码，且仅可在Configure阶段使用。设置该键前，可通过[OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)接口和枚举值[OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature).VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER查询是否支持该特性。如果视频解码不支持该特性，通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)接口设置该键将返回AV_ERR_INVALID_VAL。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_ENCODER_MAX_FRAME_DELAY_COUNT | 视频编码器在输出压缩帧前允许缓存的最大帧数的键值。值类型为int32_t，取值范围为[1，5]。该键是可选的，仅用于视频编码，且仅可在Configure阶段使用。取值在[1，5]区间内时可正常生效；若超出该范围（小于1或大于5），调用[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)接口会返回AV_ERR_INVALID_VAL。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_VIDEO_ENCODER_REPEAT_HEADER_BEFORE_SYNC_FRAMES | 码流同步帧前置参数集的键值。值类型为int32_t，取值为0或1，1表示使能，0表示不使能，默认值为0。该键是可选的，仅用于视频编码，且仅可在Configure阶段使用。开启后，编码器会在每个同步帧前插入前置参数集数据（例如H.264/H.265格式对应的SPS、PPS）。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_VIVID_SIGNAL_FORMAT | 设置Audio Vivid输入信号格式的键，值类型为int32_t，该键仅用于Audio Vivid编码器。<br> 具体取值请参见[OH_AudioVividSignalFormat](capi-native-audio-vivid-h.md#oh_audiovividsignalformat)。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_SOUNDBED_LAYOUT | 设置音频声床的通道布局的键，值类型为int64_t，该键是可选的且仅用于Audio Vivid编码器。<br> 具体取值请参见[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout)。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_SOUNDBED_BITRATE | 设置音频声床编码比特率的键，值类型为int64_t，该键是可选的且仅用于Audio Vivid编码器。<br> 实际编码比特率可能会根据编码器的能力调整。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_OBJECT_BITRATE | 设置音频对象编码比特率的键，值类型为int64_t，该键是可选的且仅用于Audio Vivid编码器。<br> 实际编码比特率可能会根据编码器的能力调整。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_AUDIO_MAX_INPUT_BUFFER_SIZE | 设置或查询音频编码器最大输入缓冲区大小的键。单位为字节（Byte），值类型为int32_t。该键用于配置或获取音频编码器输入缓冲区的最大值。实际缓冲区大小受编码器实现限制，设置超过编码器最大支持的值时不会生效。该配置为可选项，如果不设置，编码器将使用默认的缓冲区大小。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_AUDIO_ENCODER_PTS_MODE | 配置音频编码器PTS（Presentation Time Stamp，显示时间戳）输出模式的键。设置PTS输出行为模式，值类型为int32_t，请参见[OH_AudioEncoderPTSMode](capi-native-avcodec-base-h.md#oh_audioencoderptsmode)。该键为可选项，如果不设置，默认值为[OH_AUDIO_ENCODER_PTS_MODE_DEFAULT](capi-native-avcodec-base-h.md#oh_audioencoderptsmode)。<br>**起始版本：** 26.0.0 |
+| const char * OH_MD_KEY_AUDIO_ENCODER_ENABLE_SAMPLE_FORMAT_CONVERT | 使能音频编码器采样格式转换的键。值类型为int32_t，取值为0或1，1表示使能，0表示不使能，默认值为0。音频编码器仅支持有限的采样格式。使能此配置后，如果使用了不支持的采样格式，音频编码器会将采样格式转换为支持的格式后进行编码。转换前支持的采样格式如下：[SAMPLE_U8](capi-native-avcodec-base-h.md#oh_bitspersample)、[SAMPLE_S16LE](capi-native-avcodec-base-h.md#oh_bitspersample)、[SAMPLE_S24LE](capi-native-avcodec-base-h.md#oh_bitspersample)、[SAMPLE_S32LE](capi-native-avcodec-base-h.md#oh_bitspersample)、[SAMPLE_F32LE](capi-native-avcodec-base-h.md#oh_bitspersample)。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_WIDTH  | 视频编码前处理降采样目标宽度的键，值类型为int32_t。该键是可选的，降采样功能默认关闭。该键与OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEIGHT必须同时配置，当都设置为0时则关闭降采样功能，可以通过[OH_AVCapability_IsVideoSizeSupported](capi-native-avcapability-h.md#oh_avcapability_isvideosizesupported)查询支持的降采样宽高范围。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0  |
 | const char * OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEIGHT | 视频编码前处理降采样目标高度的键，值类型为int32_t。该键是可选的，降采样功能默认关闭。该键与OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_WIDTH必须同时配置，当都设置为0时则关闭降采样功能，可以通过[OH_AVCapability_IsVideoSizeSupported](capi-native-avcapability-h.md#oh_avcapability_isvideosizesupported)查询支持的降采样宽高范围。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT         | 视频编码前处理裁剪区域左边坐标（x）的键，值类型为int32_t。该键是可选的，裁剪功能默认关闭。OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT/TOP/RIGHT/BOTTOM 4个参数必须同时配置，当全部设置为0时则关闭裁剪功能，默认坐标原点为输入视频帧左上角(0, 0)，坐标取值不可超过输入视频帧宽高，且需满足(0, 0) <= (LEFT, TOP) < (RIGHT, BOTTOM) < (输入视频帧宽度，输入视频帧高度)。降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br>该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0 |
@@ -1113,15 +1121,15 @@ enum OH_AudioEncoderPTSMode
 
 **描述**
 
-音频编码器PTS输出模式。
+音频编码器PTS模式。
 
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_AUDIO_ENCODER_PTS_MODE_DEFAULT = 0 | 默认PTS模式，不同编码器的行为可能不同。<br>**起始版本：** 26.0.0 |
-| OH_AUDIO_ENCODER_PTS_MODE_ZERO_START = 1 | PTS从0开始递增。<br>**起始版本：** 26.0.0 |
-| OH_AUDIO_ENCODER_PTS_MODE_FIRST_INPUT_START = 2 | PTS从首个输入帧的PTS开始递增。<br>**起始版本：** 26.0.0 |
+| OH_AUDIO_ENCODER_PTS_MODE_DEFAULT = 0 | 音频编码器默认PTS模式，不同编码器可能有不同表现。<br>**起始版本：** 26.0.0 |
+| OH_AUDIO_ENCODER_PTS_MODE_ZERO_START = 1 | 以0为起点的PTS模式。<br>**起始版本：** 26.0.0 |
+| OH_AUDIO_ENCODER_PTS_MODE_FIRST_INPUT_START = 2 | 以首个输入帧的PTS值为起点的PTS模式。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明

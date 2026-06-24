@@ -5,7 +5,7 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 - ArkTS APIs<!--background-tasks-arkts-->
   - [@ohos.reminderAgentManager (Agent-powered Reminder)](js-apis-reminderAgentManager.md)
@@ -18,6 +18,7 @@
   - [@ohos.resourceschedule.backgroundTaskManager (Background Task Management) (System API)](js-apis-resourceschedule-backgroundTaskManager-sys.md)
   - [@ohos.resourceschedule.deviceStandby (Device Standby) (System API)](js-apis-resourceschedule-deviceStandby-sys.md)
   - [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](js-apis-resourceschedule-deviceUsageStatistics-sys.md)
+  - [@ohos.resourceschedule.workScheduler (Deferred Task Scheduling) (System API)](js-apis-resourceschedule-workScheduler-sys.md)
   <!--DelEnd-->
   - Application<!--background-tasks-arkts-application-->
     - [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)

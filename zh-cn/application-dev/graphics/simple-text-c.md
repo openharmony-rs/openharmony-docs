@@ -91,4 +91,4 @@
 
 ## 效果展示
 
-![zh-cn_image_0000002211443916](figures/zh-cn_image_0000002211443916.png)
+![Simple-text-drawing](figures/Simple-text-drawing.png)
