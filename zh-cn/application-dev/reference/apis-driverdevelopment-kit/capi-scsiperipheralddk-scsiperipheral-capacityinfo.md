@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_CapacityInfo {...} ScsiPeripheral_CapacityInfo
 
 ## 概述
 
-SCSI read capacity 数据。
+SCSI READ CAPACITY 数据。
 
 **起始版本：** 18
 

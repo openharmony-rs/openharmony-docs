@@ -28,8 +28,8 @@
 | -- | -- |
 | [DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem **ashmem)](#oh_ddk_createashmem) | 创建共享内存。为了防止资源泄漏，通过调用[OH_DDK_DestroyAshmem](#oh_ddk_destroyashmem)接口来销毁不再需要的共享内存。 |
 | [DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)](#oh_ddk_mapashmem) | 映射创建的共享内存到用户空间。通过调用[OH_DDK_UnmapAshmem](#oh_ddk_unmapashmem)接口取消映射不需要的共享内存。 |
-| [DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)](#oh_ddk_unmapashmem) | 取消映射共享内存。 |
-| [DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)](#oh_ddk_destroyashmem) | 销毁共享内存。 |
+| [DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)](#oh_ddk_unmapashmem) | 取消映射共享内存。不再访问共享内存时应取消映射，以节省地址空间。 |
+| [DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)](#oh_ddk_destroyashmem) | 销毁共享内存。共享内存不再使用时应及时销毁以释放系统资源。 |
 
 ## 函数说明
 
@@ -50,7 +50,7 @@ DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem *
 
 | 参数项                                               | 描述 |
 |---------------------------------------------------| -- |
-| const uint8_t *name                               | 指向要创建的共享内存的指针。 |
+| const uint8_t *name                               | 指向共享内存名称字符串的指针，该名称用于标识共享内存。 |
 | uint32_t size                                     | 共享内存对应的缓冲区大小。 |
 | [DDK_Ashmem](capi-baseddk-ddk-ashmem.md) **ashmem | 指向创建的共享内存的指针。 |
 
@@ -58,7 +58,7 @@ DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem *
 
 | 类型 | 说明 |
 | -- | -- |
-| [DDK_RetCode](capi-ddk-types-h.md#ddk_retcode) | [DDK_SUCCESS](capi-ddk-types-h.md#ddk_retcode) 调用接口成功。<br>         [DDK_INVALID_PARAMETER](capi-ddk-types-h.md#ddk_retcode) 入参name为空指针，size的大小为0或者入参ashmem是空指针。<br>         [DDK_FAILURE](capi-ddk-types-h.md#ddk_retcode) 创建共享内存失败或者创建结构体DDK_Ashmem失败。 |
+| [DDK_RetCode](capi-ddk-types-h.md#ddk_retcode) | [DDK_SUCCESS](capi-ddk-types-h.md#ddk_retcode) 调用接口成功。<br>         [DDK_INVALID_PARAMETER](capi-ddk-types-h.md#ddk_retcode) 入参name为空指针，size的大小为0或者入参ashmem是空指针。<br>         [DDK_FAILURE](capi-ddk-types-h.md#ddk_retcode) 创建共享内存失败或者创建结构体DDK_Ashmem失败。请检查申请的内存大小和权限。 |
 
 ### OH_DDK_MapAshmem()
 
@@ -84,7 +84,7 @@ DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)
 
 | 类型 | 说明 |
 | -- | -- |
-| [DDK_RetCode](capi-ddk-types-h.md#ddk_retcode) | [DDK_SUCCESS](capi-ddk-types-h.md#ddk_retcode) 调用接口成功。<br>         [DDK_NULL_PTR](capi-ddk-types-h.md#ddk_retcode) 入参ashmem为空指针。<br>         [DDK_FAILURE](capi-ddk-types-h.md#ddk_retcode) 共享内存的文件描述符无效。<br>         [DDK_INVALID_OPERATION](capi-ddk-types-h.md#ddk_retcode) 调用接口MapAshmem失败。 |
+| [DDK_RetCode](capi-ddk-types-h.md#ddk_retcode) | [DDK_SUCCESS](capi-ddk-types-h.md#ddk_retcode) 调用接口成功。<br>         [DDK_NULL_PTR](capi-ddk-types-h.md#ddk_retcode) 入参ashmem为空指针。<br>         [DDK_FAILURE](capi-ddk-types-h.md#ddk_retcode) 共享内存的文件描述符无效。请检查共享内存是否已被创建、确保文件描述符未被关闭。<br>         [DDK_INVALID_OPERATION](capi-ddk-types-h.md#ddk_retcode) 调用接口MapAshmem失败。 |
 
 ### OH_DDK_UnmapAshmem()
 
@@ -94,7 +94,7 @@ DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)
 
 **描述**
 
-取消映射共享内存。
+取消映射共享内存。不再访问共享内存时应取消映射，以节省地址空间。
 
 **起始版本：** 12
 
@@ -119,7 +119,7 @@ DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)
 
 **描述**
 
-销毁共享内存。
+销毁共享内存。共享内存不再使用时应及时销毁以释放系统资源。
 
 **起始版本：** 12
 

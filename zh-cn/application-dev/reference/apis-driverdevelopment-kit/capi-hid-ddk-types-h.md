@@ -26,7 +26,7 @@
 
 | 名称                                                        | typedef关键字 | 描述 |
 |-----------------------------------------------------------| -- | -- |
-| [Hid_EmitItem](capi-hidddk-hid-emititem.md)               | Hid_EmitItem | 事件信息。 |
+| [Hid_EmitItem](capi-hidddk-hid-emititem.md)               | Hid_EmitItem | HID事件信息，包含事件类型、编码和值。 |
 | [Hid_Device](capi-hidddk-hid-device.md)                   | Hid_Device | 设备基本信息。 |
 | [Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md)   | Hid_EventTypeArray | 事件类型编码数组。 |
 | [Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md)       | Hid_KeyCodeArray | 键值属性数组。 |
@@ -34,7 +34,7 @@
 | [Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md)       | Hid_RelAxesArray | 相对坐标属性数组。 |
 | [Hid_MscEventArray](capi-hidddk-hid-msceventarray.md)     | Hid_MscEventArray | 其它特殊事件属性数组。 |
 | [Hid_EventProperties](capi-hidddk-hid-eventproperties.md) | Hid_EventProperties | 设备关注事件属性。 |
-| [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md)           | Hid_RawDevInfo | 原始设备信息定义。 |
+| [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md)           | Hid_RawDevInfo | 原始设备信息定义。该结构体用于描述HID原始设备的基本信息，包括总线类型、供应商ID和产品ID等关键参数。 |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md)       | Hid_DeviceHandle | 不透明的USB HID设备结构。 |
 
 ### 枚举
@@ -128,7 +128,7 @@ enum Hid_KeyCode
 
 **描述**
 
-键值编码。
+键值编码。包括键盘、鼠标、触摸屏等输入设备的按键和事件编码。
 
 **起始版本：** 11
 
@@ -352,13 +352,13 @@ HID DDK错误码定义。
 | HID_DDK_SUCCESS = 0 | 操作成功。 |
 | HID_DDK_NO_PERM = 201 | 没有权限，从API 16起，取值由-6变更为201。 |
 | HID_DDK_INVALID_PARAMETER = 401 | 非法参数，从API 16起，取值由-2变更为401。 |
-| HID_DDK_FAILURE = 27300001 | 操作失败，从API 16起，取值由-1变更为27300001。 |
+| HID_DDK_FAILURE = 27300001 | 操作失败，从API 16起，取值由-1变更为27300001。请检查设备状态和参数设置。 |
 | HID_DDK_NULL_PTR = 27300002 | 空指针异常，从API 16起，取值由-4变更为27300002。 |
-| HID_DDK_INVALID_OPERATION = 27300003 | 非法操作，从API 16起，取值由-3变更为27300003。 |
+| HID_DDK_INVALID_OPERATION = 27300003 | 非法操作，从API 16起，取值由-3变更为27300003。可能原因：调用API的时机或顺序不正确，请检查调用时机、以及是否初始化DDK。 |
 | HID_DDK_TIMEOUT = 27300004 | 超时，从API 16起，取值由-5变更为27300004。 |
 | HID_DDK_INIT_ERROR = 27300005 | 初始化DDK失败或DDK未初始化。<br> **起始版本：** 18 |
 | HID_DDK_SERVICE_ERROR = 27300006 | 服务通信过程中错误。<br> **起始版本：** 18 |
-| HID_DDK_MEMORY_ERROR  = 27300007 | 内存相关的错误，包括：内存数据拷贝失败、内存申请失败等。<br> **起始版本：** 18 |
+| HID_DDK_MEMORY_ERROR = 27300007 | 内存相关的错误，包括：内存数据拷贝失败、内存申请失败等。<br> **起始版本：** 18 |
 | HID_DDK_IO_ERROR = 27300008 | I/O操作失败。<br> **起始版本：** 18 |
 | HID_DDK_DEVICE_NOT_FOUND = 27300009 | 设备未找到。<br> **起始版本：** 18 |
 
