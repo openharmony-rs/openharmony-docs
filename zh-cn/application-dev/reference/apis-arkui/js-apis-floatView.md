@@ -122,7 +122,7 @@ import { floatView } from '@kit.ArkUI';
 struct Index {
   private floatViewController: floatView.FloatViewController | undefined = undefined;
   aboutToAppear(): void {
-    // 获取UIAbility上下文
+    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果为UIAbilityContext
     let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 创建闪控窗配置对象
     let config: floatView.FloatViewConfiguration = {
@@ -202,7 +202,7 @@ import { floatingBall, floatView } from '@kit.ArkUI';
 struct Index {
   private floatingBallController: floatingBall.FloatingBallController | undefined = undefined;
   private floatViewController: floatView.FloatViewController | undefined = undefined;
-  // 声明控制器变量
+  // 创建控制器
   // ...
   public bindController(): void {
     let floatingBallParams: floatingBall.FloatingBallParams = {
@@ -534,7 +534,7 @@ setWindowSize(size: window.Size): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| size | [window.Size](arkts-apis-window-i.md#size7) | 是 | 表示窗口的大小，单位为px，宽度和高度必须大于0。建议大小满足[getFloatViewLimits](#floatviewgetfloatviewlimits)接口返回的限制。超出有效范围时抛出错误码1300016。 |
+| size | [window.Size](arkts-apis-window-i.md#size7) | 是 | 表示窗口的大小，单位为px，宽度和高度必须大于0，超出有效范围时抛出错误码1300016。建议大小满足[getFloatViewLimits](#floatviewgetfloatviewlimits)接口返回的限制。 |
 
 **返回值：**
 
@@ -591,7 +591,7 @@ switchTemplate(templateProperty: TemplateProperty): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| templateProperty | [TemplateProperty](#templateproperty) | 是 | 表示需要切换的窗口模板类型及大小。size中的宽度和高度必须大于0，建议大小满足[getFloatViewLimits](#floatviewgetfloatviewlimits)接口返回的限制。超出有效范围时抛出错误码1300016。 |
+| templateProperty | [TemplateProperty](#templateproperty) | 是 | 表示需要切换的窗口模板类型及大小。size中的宽度和高度必须大于0，超出有效范围时抛出错误码1300016。建议大小满足[getFloatViewLimits](#floatviewgetfloatviewlimits)接口返回的限制。 |
 
 **返回值：**
 
