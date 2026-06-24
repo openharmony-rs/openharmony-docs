@@ -648,6 +648,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：18
 
+## ohos.permission.atomicService.MANAGE_STORAGE
+
+允许原子化服务小游戏进行存储空间大小的管理。
+
+<!--RP96--><!--RP96End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
 ## ohos.permission.MANAGE_SCREEN_TIME_GUARD
 
 允许应用调用屏幕时间守护相关接口，进行屏幕使用限制、应用访问控制、管控使用时间等操作。
