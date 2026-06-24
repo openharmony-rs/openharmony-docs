@@ -3093,7 +3093,7 @@ loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&l
 
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| name     | string                                                  | 是   | 命名路由页面的名称。                                             |
+| name     | string                                                  | 是   | 命名路由页面的名称，该名称需在页面的@Entry装饰器中通过routeName属性定义。 |
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 | callback | AsyncCallback&lt;void&gt;                               | 是   | 回调函数。                                                   |
 
@@ -3260,7 +3260,7 @@ loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| name    | string                                                  | 是   | 命名路由页面的名称。                                             |
+| name    | string                                                  | 是   | 命名路由页面的名称，该名称需在页面的@Entry装饰器中通过routeName属性定义。   |
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性，默认值为空。 |
 
 **返回值：**
