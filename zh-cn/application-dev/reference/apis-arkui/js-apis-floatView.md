@@ -122,7 +122,7 @@ import { floatView } from '@kit.ArkUI';
 struct Index {
   private floatViewController: floatView.FloatViewController | undefined = undefined;
   aboutToAppear(): void {
-    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果为UIAbilityContext
+    // 获取UIAbility上下文
     let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 创建闪控窗配置对象
     let config: floatView.FloatViewConfiguration = {
@@ -168,8 +168,8 @@ bind(floatViewController: FloatViewController, floatingBallController: floatingB
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 闪控窗控制器，用于管理闪控窗的启动、停止、状态监听等操作。 |
-| floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | 是 | 闪控球控制器，用于管理闪控球的启动、停止、状态监听等操作。 |
+| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 闪控窗控制器，用于管理闪控窗的启动、停止和状态监听等操作。 |
+| floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | 是 | 闪控球控制器，用于管理闪控球的启动、停止和状态监听等操作。 |
 | floatingBallParams | [floatingBall.FloatingBallParams](js-apis-floatingBall.md#floatingballparams) | 是 | 闪控球参数。绑定时设置的参数会覆盖掉闪控球控制器启动时已保存的参数。 |
 
 **返回值：**
@@ -243,8 +243,8 @@ unbind(floatViewController: FloatViewController, floatingBallController: floatin
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 闪控窗控制器，用于管理闪控窗的启动、停止、状态监听等操作。 |
-| floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | 是 | 闪控球控制器，用于管理闪控球的启动、停止、状态监听等操作。 |
+| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 闪控窗控制器，用于管理闪控窗的启动、停止和状态监听等操作。 |
+| floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | 是 | 闪控球控制器，用于管理闪控球的启动、停止和状态监听等操作。 |
 
 **返回值：**
 
@@ -754,7 +754,7 @@ setFloatViewVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| isVisible | boolean | 是 | 应用在前台时闪控窗是否可见，true表示可见，false表示不可见。默认值：true。 |
+| isVisible | boolean | 是 | 应用在前台时闪控窗是否可见，true表示可见，false表示不可见。 |
 
 **返回值：**
 
@@ -1166,7 +1166,7 @@ try {
 | windowId | number | 否 | 否 | 闪控窗窗口ID。 |
 | displayId | number | 否 | 否 | 闪控窗所在屏幕ID。 |
 | windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 闪控窗窗口矩形区域。 |
-| windowScale | number | 否 | 否 | 闪控窗窗口缩放比例，默认值为1.0，表示窗口的显示缩放倍数。 |
+| windowScale | number | 否 | 否 | 闪控窗窗口缩放比例。 |
 | avoidArea | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 否 | 否 | 闪控窗内容的避让区域。<br>**注意：**<br/>通过[setUIContext()](#setuicontext)或[setUIContextByName()](#setuicontextbyname)加载的页面中，位于避让区域的组件将不响应手势事件，开发者在添加需要手势响应事件的组件时，请注意避让这些区域。 |
 | inSidebar | boolean | 否 | 否 | 闪控窗是否在侧边栏中。true为在侧边栏中，false为不在侧边栏中。 |
 
@@ -1248,5 +1248,5 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
 | windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 闪控窗窗口矩形区域。 |
-| windowScale | number | 否 | 否 | 闪控窗窗口缩放比例，默认值为1.0，表示窗口的显示缩放倍数。 |
+| windowScale | number | 否 | 否 | 闪控窗窗口缩放比例。 |
 | reason | string | 否 | 否 | 闪控窗矩形区域变化的原因。原因和对应含义如下：<br/>"POSITION_CHANGE"：位置变化<br/>"SIZE_CHANGE"：大小变化<br/>"RECT_CHANGE"：位置大小同时变化 |
