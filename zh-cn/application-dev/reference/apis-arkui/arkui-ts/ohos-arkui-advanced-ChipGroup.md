@@ -245,7 +245,7 @@ IconOptions定义图标的共通属性。
 
 ## LabelOptions
 
-Label定义图标属性。
+LabelOptions定义文本属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
