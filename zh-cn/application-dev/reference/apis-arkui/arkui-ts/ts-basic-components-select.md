@@ -1244,8 +1244,8 @@ struct SelectExample {
         .optionHeight(300)
         /**
          * 选中下拉项回调
-         * index 选中项下标
-         * text 选中项文本（可选参数）
+         * index：选中项下标
+         * text：选中项文本（可选参数）
          */
         .onSelect((index: number, text?: string | undefined) => {
           console.info('Select:' + index);
@@ -1307,8 +1307,8 @@ struct SelectExample {
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         /**
          * 选中下拉项回调
-         * index 选中项下标
-         * text 选中项文本（可选参数）
+         * index：选中项下标
+         * text：选中项文本（可选参数）
          */
         .onSelect((index: number, text?: string | undefined) => {
           console.info('Select:' + index);
@@ -1379,6 +1379,7 @@ function MenuItemBuilder(configuration: MenuItemConfiguration) {
       .stroke(Color.Black)
       .strokeWidth(3)
   }
+  .padding({left: 8, top: 8})
   .onClick(() => {
     configuration.triggerSelect(configuration.index, configuration.value.valueOf().toString());
   })
@@ -1498,7 +1499,7 @@ struct SelectExample {
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(200)
         .optionHeight(300)
-        // divider 传 null，隐藏选项之间的分割线
+        // divider传null，隐藏选项之间的分割线
         .divider(null)
         .onSelect((index: number, text?: string | undefined) => {
           console.info('Select:' + index);

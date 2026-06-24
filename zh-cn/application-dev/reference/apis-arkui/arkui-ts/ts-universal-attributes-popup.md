@@ -354,7 +354,7 @@ struct PopupExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions 类型设置弹框内容
+      // PopupOptions类型设置弹框内容
       Button('PopupOptions')
         .onClick(() => {
           this.handlePopup = !this.handlePopup;
@@ -389,7 +389,7 @@ struct PopupExample {
         .position({ x: 100, y: 150 })
 
 
-      // CustomPopupOptions 类型设置弹框内容
+      // CustomPopupOptions类型设置弹框内容
       Button('CustomPopupOptions')
         .onClick(() => {
           this.customPopup = !this.customPopup;
@@ -533,7 +533,7 @@ struct PopupExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions 类型设置弹框内容
+      // PopupOptions类型设置弹框内容
       Button('PopupOptions')
         .onClick(() => {
           this.handlePopup = !this.handlePopup;
@@ -556,7 +556,7 @@ struct PopupExample {
         })
         .position({ x: 100, y: 150 })
 
-      // CustomPopupOptions 类型设置弹框内容
+      // CustomPopupOptions类型设置弹框内容
       Button('CustomPopupOptions')
         .onClick(() => {
           this.customPopup = !this.customPopup;
@@ -918,7 +918,7 @@ struct PopupExample {
           // 切换气泡显示/隐藏状态
           this.handlePopup = !this.handlePopup;
           setTimeout(() => {
-            // pages/PageTwo 需要开发者替换为实际路由名称
+            // pages/PageTwo需要开发者替换为实际路由名称
             this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTwo'}).catch(() => {
               console.error("route to PageTwo error!")
             })
