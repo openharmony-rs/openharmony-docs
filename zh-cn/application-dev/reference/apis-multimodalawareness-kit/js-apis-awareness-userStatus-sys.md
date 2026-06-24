@@ -136,7 +136,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | --- | --- | --- | --- | --- |
 | feature | [UserStatusFeature](#userstatusfeature) | 是 | 否 | 表示用户状态检测功能类型。 |
 | status | string | 是 | 否 | 表示特定功能下的多阶段检测状态。字符串长度范围[0,64]。 |
-| result | int | 是 | 否 | 表示用户状态检测结果。取值范围[0,1]。 |
+| result | int | 是 | 否 | 表示用户状态检测结果。0表示成功，非0表示失败。 |
 | errCode | int | 是 | 否 | 表示业务错误码，0表示成功，非0表示失败。 |
 
 ## UserBlowData
@@ -153,8 +153,8 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | --- | --- | --- | --- | --- |
 | facePosition | double[] | 是 | 是 | 表示人脸相对于屏幕的位置。取值范围[0,640]。 |
 | strengthLevel | int | 是 | 是 | 表示吹气力度。取值范围[1,12]。 |
-| blowDirection | int | 是 | 是 | 表示吹气方向。取值范围[0,2]。 |
-| emotion | int | 是 | 是 | 表示用户情绪级别。取值范围[0,5]。 |
+| blowDirection | int | 是 | 是 | 表示吹气方向。取值范围[0,2]。0：未吹气，1：底部麦克风，2顶部麦克风。 |
+| emotion | int | 是 | 是 | 表示用户情绪级别。取值范围[0,5]。0：非常愉悦，1：有点愉悦，2：平静，3：有点不愉悦，4：大怒，5：大哭。 |
 | isGazeStatus | boolean | 是 | 是 | 表示用户是否注视屏幕。取值范围[true,false]。 |
 | gravityAcceleration | double[] | 是 | 是 | 表示当前状态下设备的重力加速度。单位为m/s²。 |
 | linearAcceleration | double[][] | 是 | 是 | 表示当前状态下设备的线性加速度。单位为m/s²。 |
@@ -171,10 +171,10 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| emotionRealTime | int | 是 | 是 | 表示用户实时情绪级别。取值范围[0,5]。 |
+| emotionRealTime | int | 是 | 是 | 表示用户实时情绪级别。取值范围[0,5]。0：非常愉悦，1：有点愉悦，2：平静，3：有点不愉悦，4：大怒，5：大哭。 |
 | confidence | int | 是 | 是 | 表示用户情绪置信度。取值范围[0,100]。 |
 | isRealTime | boolean | 是 | 是 | 表示情绪数据是否为实时数据。取值范围[true,false]。 |
-| emotionNonRealTime | int[] | 是 | 是 | 表示用户非实时情绪级别。取值范围[0,5]。 |
+| emotionNonRealTime | int[] | 是 | 是 | 表示用户非实时情绪级别。取值范围[0,5]。0：非常愉悦，1：有点愉悦，2：平静，3：有点不愉悦，4：大怒，5：大哭。 |
 | gravityAcceleration | double[] | 是 | 是 | 表示当前状态下设备的重力加速度。单位为m/s²。 |
 | linearAcceleration | double[][] | 是 | 是 | 表示当前状态下设备的线性加速度。单位为m/s²。 |
 
@@ -192,7 +192,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | --- | --- | --- | --- | --- |
 | fusionReminderData | [ReminderLevel](#reminderlevel) | 是 | 否 | 表示综合检测后的提醒级别。 |
 | swingReminderData | [ReminderLevel](#reminderlevel) | 是 | 否 | 表示注视设备时提醒级别。 |
-| eventType | int | 是 | 否 | 表示事件类型。取值范围[0,1]。 |
+| eventType | int | 是 | 否 | 表示事件类型。取值范围[0,1]。0：注视事件，1：环境音事件。 |
 
 ## UserFacesData
 
@@ -227,8 +227,8 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | --- | --- | --- | --- | --- |
 | isHandExist | boolean | 是 | 是 | 表示用户手是否存在。取值范围[true,false]。 |
 | handPosition | double[] | 是 | 是 | 表示手相对于屏幕的位置。取值范围[0,640]。 |
-| motionGesture | int | 是 | 是 | 表示用户动态手势类型。取值范围[0,3]。 |
-| handType | int | 是 | 是 | 表示用户静态手势类型。取值范围[0,3]。 |
+| motionGesture | int | 是 | 是 | 表示用户动态手势类型。取值范围[0,3]。0：上翻，1：下翻，2：抓屏，3：释放。 |
+| handType | int | 是 | 是 | 表示用户静态手势类型。取值范围[0,3]。0：掌型，1：拳型，2：剪刀，3：比心。 |
 | directionAngle | double[] | 是 | 是 | 表示用户手势与屏幕方向的夹角。取值范围[0,90]。 |
 | gestureSpeed | double[] | 是 | 是 | 表示手势速度。单位为帧/秒。 |
 
