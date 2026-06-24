@@ -197,7 +197,7 @@
    ArkTS-Dyn示例：
 
    <!-- @[screenCapture_arkts_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
-
+   
    ``` TypeScript
    openFile(context: Context): void {
      const path: string = context.filesDir + '/screenCapture.mp4';
