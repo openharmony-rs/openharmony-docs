@@ -1738,7 +1738,7 @@ struct Index {
     try {
       this.inputController = inputMethod.getController();
     } catch (err) {
-      console.error("get input method controller fail：", JSON.stringify(err));
+      console.error("get input method controller failed：", JSON.stringify(err));
     }
   }
 

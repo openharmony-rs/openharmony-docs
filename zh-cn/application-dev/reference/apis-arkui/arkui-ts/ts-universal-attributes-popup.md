@@ -752,7 +752,7 @@ struct PopupExample {
         .bindPopup(this.handlePopup!!, {
           message: 'popup message '.repeat(200),
           placement: Placement.Top,
-          // 气泡在剩余显示空间不足的情况下，在最大空间处压缩显示
+          // 设置本参数后，四周空间不足以放下Popup时，Popup会自动压缩自身高度
           avoidTarget: AvoidanceMode.AVOID_AROUND_TARGET,
         })
         .position({ x: 100, y: 150 }) 
