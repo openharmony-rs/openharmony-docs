@@ -35,8 +35,6 @@ addSerialRight(tokenId: number, portId: number): void
 
 **需要权限：**  ohos.permission.MANAGE_USB_CONFIG
 
-**起始版本：** 19
-
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 **参数：**
