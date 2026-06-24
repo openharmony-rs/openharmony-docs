@@ -6,7 +6,7 @@
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:30.170Z pushedAt=2026-06-23T09:17:59.509Z -->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:30.170Z pushedAt=2026-06-24T03:29:07.057Z -->
 
 >  **NOTE**
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
@@ -62,7 +62,7 @@ In addition to the [universal events](js-components-common-events.md), the follo
 
 ## Methods
 
-In addition to the [universal methods](js-components-common-methods.md), the following methods are supported:
+In addition to the [universal methods](js-components-common-methods.md), the following methods are supported.
 
 | Name                           | Parameter    | Return Value          | Description                                      |
 | ---------------------------- | ----------- | ------------ | --------------------------------------- |
