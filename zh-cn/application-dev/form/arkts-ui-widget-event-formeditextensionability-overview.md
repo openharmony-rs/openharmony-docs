@@ -500,7 +500,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 为确保预览卡片和被编辑卡片信息同步，新建卡片时，在onAddForm回调函数中需要判断'ohos.extra.param.key.edit_form_id'字段是否携带了卡片ID。如果携带了卡片ID，则就是预览卡片则需要从数据库获取被编辑卡片的信息。
-   <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+     <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/entryformability/WidgetCard.ets
@@ -550,7 +550,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 卡片布局文件如下。
-   <!-- @[FormEditDemo_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
+     <!-- @[FormEditDemo_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
    
    ``` TypeScript
    // entry/src/main/ets/widget/pages/WidgetCard.ets
@@ -851,7 +851,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 卡片布局文件如下。
-   <!-- @[FormEditUIAbility_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
+     <!-- @[FormEditUIAbility_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
    
    ``` TypeScript
    // entry/src/main/ets/widget/pages/WidgetCard.ets
