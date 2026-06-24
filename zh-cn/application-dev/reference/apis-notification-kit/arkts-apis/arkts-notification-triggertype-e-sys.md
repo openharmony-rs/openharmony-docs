@@ -1,0 +1,28 @@
+# TriggerType（系统接口）
+
+```TypeScript
+export enum TriggerType
+```
+
+表示触发条件的事件类型的枚举。
+
+**起始版本：** 23
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## TRIGGER_TYPE_GEOFENCE
+
+```TypeScript
+TRIGGER_TYPE_GEOFENCE = 1
+```
+
+地理围栏触发类型。
+
+**起始版本：** 23
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+

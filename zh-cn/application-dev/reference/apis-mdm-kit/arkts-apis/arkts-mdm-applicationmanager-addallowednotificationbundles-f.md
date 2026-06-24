@@ -1,0 +1,71 @@
+# addAllowedNotificationBundles
+
+## addAllowedNotificationBundles
+
+```TypeScript
+function addAllowedNotificationBundles(admin: Want, bundleNames: Array<string>, accountId: number): void
+```
+
+������������֪ͨ��Ӧ������������֪ͨ�������󣬲��ڴ������ڵ�Ӧ���޷�����֪ͨ��
+
+> **˵����**
+>
+> 1.���Kioskģʽ��֪ͨ����������ͬʱ���ã���ô����Kioskģʽ��Ӧ����֪ͨ�������е�Ӧ�ö����Է���֪ͨ��
+
+> 2.���Ѿ�ͨ��
+> [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setDisallowedPolicy-1)
+> �����˽����豸֪ͨ����ʱ����ͨ�����ӿ�����֪ͨ�����������׳�������9200010��
+
+> 3.֪ͨ��������ϵͳ������Ч��ϵͳ����ʼ�տ��Է���֪ͨ��ϵͳӦ����֪ͨ�������ܿء�
+
+> 4.֧�ֿ��û����ã����ú���û�������Ч��
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| admin | Want | 是 | ��ҵ�豸������չ�����Want�б��������ҵ�豸������չ������abilityName������Ӧ�õ�bundleName�� |
+| bundleNames | Array&lt;string&gt; | 是 | Ӧ�ð������飬ָ����������֪ͨ��Ӧ�á����֧��200��Ӧ�á� |
+| accountId | number | 是 | �û�ID��ȡֵ��Χ�����ڵ���0��<br/>accountId����ͨ��@ohos.account.osAccount�е�<br/>[getOsAccountLocalId](../../apis-basic-service-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getOsAccountLocalId-2)�Ƚӿ�����ȡ�� |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [9200001](../../errorcode-universal.md#9200001-The) | The application is not an administrator application of the device. |
+| [9200002](../../errorcode-universal.md#9200002-The) | The administrator application does not have permission to manage the device. |
+| [9200010](../../errorcode-universal.md#9200010-A) | A conflict policy has been configured. |
+| [9200012](../../errorcode-universal.md#9200012-Parameter) | Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.<br/>The application does not have the permission required to call the API. |
+
+**示例：**
+
+```TypeScript
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let bundleNames: Array<string> = ['com.example.notificationapp'];
+
+try {
+  applicationManager.addAllowedNotificationBundles(wantTemp, bundleNames, 100);
+  console.info('Succeeded in adding allowed notification bundles.');
+} catch (err) {
+  console.error(`Failed to add allowed notification bundles. Code is ${err.code}, message is ${err.message}`);
+}
+
+```
+

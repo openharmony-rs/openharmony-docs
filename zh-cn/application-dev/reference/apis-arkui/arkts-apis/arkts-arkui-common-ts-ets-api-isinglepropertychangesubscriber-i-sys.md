@@ -1,0 +1,12 @@
+# ISinglePropertyChangeSubscriber（系统接口）
+
+继承自[IPropertySubscriber](arkts-arkui-common-ts-ets-api-ipropertysubscriber-i-sys.md#IPropertySubscriber)。用来定义变量。
+
+**继承/实现关系：** ISinglePropertyChangeSubscriber extends [IPropertySubscriber](arkts-arkui-common-ts-ets-api-ipropertysubscriber-i-sys.md#IPropertySubscriber)
+
+**起始版本：** 7
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+

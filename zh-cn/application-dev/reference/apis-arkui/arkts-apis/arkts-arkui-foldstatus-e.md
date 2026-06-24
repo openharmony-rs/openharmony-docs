@@ -1,0 +1,78 @@
+# FoldStatus
+
+```TypeScript
+declare enum FoldStatus
+```
+
+Enumerates the fold status.
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## FOLD_STATUS_UNKNOWN
+
+```TypeScript
+FOLD_STATUS_UNKNOWN = 0
+```
+
+Fold Status Unknown.
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## FOLD_STATUS_EXPANDED
+
+```TypeScript
+FOLD_STATUS_EXPANDED = 1
+```
+
+Fold Status Expanded.
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## FOLD_STATUS_FOLDED
+
+```TypeScript
+FOLD_STATUS_FOLDED = 2
+```
+
+Fold Status Folded.
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## FOLD_STATUS_HALF_FOLDED
+
+```TypeScript
+FOLD_STATUS_HALF_FOLDED = 3
+```
+
+Fold Status Half Folded.
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+

@@ -1,0 +1,44 @@
+# on
+
+## on('printerChange')
+
+```TypeScript
+function on(type: 'printerChange', callback: PrinterChangeCallback): void
+```
+
+注册打印机变动事件回调，使用callback回调。
+
+**起始版本：** 18
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | 'printerChange' | 是 | 表示打印机变动事件。 |
+| callback | PrinterChangeCallback | 是 | 打印机变动之后的回调。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-the) | the application does not have permission to call this function. |
+| [401](../../errorcode-universal.md#401-Parameter) | Parameter error. Possible causes:<br/>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```TypeScript
+import { print } from '@kit.BasicServicesKit';
+
+// Trigger this callback when a added printer is changed.
+let onPrinterChange =
+    (event: print.PrinterEvent, printerInformation: print.PrinterInformation) => {
+        console.info('printerChange, event: ' + event + ', printerInformation: ' + JSON.stringify(printerInformation));
+    };
+print.on('printerChange', onPrinterChange);
+
+```
+

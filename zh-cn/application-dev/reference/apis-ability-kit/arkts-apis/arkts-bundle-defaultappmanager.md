@@ -1,0 +1,37 @@
+# @ohos.bundle.defaultAppManager
+
+��ģ���ṩ��ѯĬ��Ӧ�õ�������֧�ֲ�ѯ��ǰӦ���Ƿ���Ĭ��Ӧ�á�
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+## 汇总
+
+### 函数
+
+| 名称 | 说明 |
+| --- | --- |
+| <!--DelRow-->[getDefaultApplication](arkts-ability-defaultappmanager-getdefaultapplication-f-sys.md#getDefaultApplication-1) | ����ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)���ͻ�ȡĬ��Ӧ����Ϣ��ʹ��<br/>callback�첽�ص���<br/> |
+| <!--DelRow-->[getDefaultApplication](arkts-ability-defaultappmanager-getdefaultapplication-f-sys.md#getDefaultApplication-2) | ����ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)���ͻ�ȡĬ��Ӧ����Ϣ��ʹ��<br/>callback�첽�ص���<br/> |
+| <!--DelRow-->[getDefaultApplication](arkts-ability-defaultappmanager-getdefaultapplication-f-sys.md#getDefaultApplication-3) | ����ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)���ͻ�ȡĬ��Ӧ����Ϣ��ʹ��Promise<br/>�첽�ص���<br/> |
+| <!--DelRow-->[getDefaultApplicationSync](arkts-ability-defaultappmanager-getdefaultapplicationsync-f-sys.md#getDefaultApplicationSync-1) | ��ͬ����������ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)���ͻ�ȡĬ��Ӧ����Ϣ��ʹ��<br/>BundleInfo���ؽ����<br/> |
+| [isDefaultApplication](arkts-ability-defaultappmanager-isdefaultapplication-f.md#isDefaultApplication-1) | ����ϵͳ�Ѷ����Ӧ�����ͻ���[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor)�����жϵ�ǰӦ���Ƿ��Ǹ����͵�Ĭ��Ӧ�á�ʹ��<br/>callback�첽�ص���<br/> |
+| [isDefaultApplication](arkts-ability-defaultappmanager-isdefaultapplication-f.md#isDefaultApplication-2) | ����ϵͳ�Ѷ����Ӧ�����ͻ���[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)�����жϵ�ǰ<br/>Ӧ���Ƿ��Ǹ����͵�Ĭ��Ӧ�á�ʹ��Promise�첽�ص���<br/> |
+| [isDefaultApplicationSync](arkts-ability-defaultappmanager-isdefaultapplicationsync-f.md#isDefaultApplicationSync-1) | ��ͬ����������ϵͳ�Ѷ����Ӧ�����ͻ���[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor)�����жϵ�ǰӦ���Ƿ��Ǹ����͵�Ĭ��<br/>Ӧ�ã�ʹ��boolean��ʽ���ؽ����<br/> |
+| <!--DelRow-->[resetDefaultApplication](arkts-ability-defaultappmanager-resetdefaultapplication-f-sys.md#resetDefaultApplication-1) | ����ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)��������Ĭ��Ӧ�á�ʹ��callback��<br/>���ص���<br/> |
+| <!--DelRow-->[resetDefaultApplication](arkts-ability-defaultappmanager-resetdefaultapplication-f-sys.md#resetDefaultApplication-2) | ����ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)��������Ĭ��Ӧ�á�ʹ��callback��<br/>���ص���<br/> |
+| <!--DelRow-->[resetDefaultApplication](arkts-ability-defaultappmanager-resetdefaultapplication-f-sys.md#resetDefaultApplication-3) | ����ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)��������Ĭ��Ӧ�á�ʹ��Promise�첽<br/>�ص���<br/> |
+| <!--DelRow-->[resetDefaultApplicationSync](arkts-ability-defaultappmanager-resetdefaultapplicationsync-f-sys.md#resetDefaultApplicationSync-1) | ��ͬ����������ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)��������Ĭ��Ӧ�á�<br/> |
+| <!--DelRow-->[setDefaultApplication](arkts-ability-defaultappmanager-setdefaultapplication-f-sys.md#setDefaultApplication-1) | ����ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)��������Ĭ��Ӧ�á�ʹ��callback��<br/>���ص���<br/> |
+| <!--DelRow-->[setDefaultApplication](arkts-ability-defaultappmanager-setdefaultapplication-f-sys.md#setDefaultApplication-2) | ����ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)��������Ĭ��Ӧ�á�ʹ��callback��<br/>���ص���<br/> |
+| <!--DelRow-->[setDefaultApplication](arkts-ability-defaultappmanager-setdefaultapplication-f-sys.md#setDefaultApplication-3) | ����ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)��������Ĭ��Ӧ�á�ʹ��Promise�첽<br/>�ص���<br/> |
+| <!--DelRow-->[setDefaultApplicationForAppClone](arkts-ability-defaultappmanager-setdefaultapplicationforappclone-f-sys.md#setDefaultApplicationForAppClone-1) | ��ͬ������������Ӧ������Ϊ����Ӧtype���͵�Ĭ��Ӧ�á�<br/> |
+| <!--DelRow-->[setDefaultApplicationSync](arkts-ability-defaultappmanager-setdefaultapplicationsync-f-sys.md#setDefaultApplicationSync-1) | ��ͬ����������ϵͳ�Ѷ����Ӧ�����ͻ��߷���ý�����͸�ʽ��type/subtype�����ļ����ͻ���<br/>[UniformDataType](@ohos.data.uniformTypeDescriptor:uniformTypeDescriptor.UniformDataType)��������Ĭ��Ӧ�á�<br/> |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md) | Ĭ��Ӧ�õ�Ӧ�����͡�<br/> |
+

@@ -1,0 +1,64 @@
+# DataProtectionKit(数据保护服务)
+
+- [@ohos.dlpPermission](arkts-dlppermission.md)
+  - [isDLPFile](arkts-dataprotection-dlppermission-isdlpfile-f.md)
+  - [getDLPPermissionInfo](arkts-dataprotection-dlppermission-getdlppermissioninfo-f.md)
+  - [getOriginalFileName](arkts-dataprotection-dlppermission-getoriginalfilename-f.md)
+  - [getDLPSuffix](arkts-dataprotection-dlppermission-getdlpsuffix-f.md)
+  - [on](arkts-dataprotection-dlppermission-on-f.md)<!--Del-->
+  - [on(系统接口)](arkts-dataprotection-dlppermission-on-f-sys.md)<!--DelEnd-->
+  - [off](arkts-dataprotection-dlppermission-off-f.md)<!--Del-->
+  - [off(系统接口)](arkts-dataprotection-dlppermission-off-f-sys.md)<!--DelEnd-->
+  - [isInSandbox](arkts-dataprotection-dlppermission-isinsandbox-f.md)
+  - [getDLPSupportedFileTypes](arkts-dataprotection-dlppermission-getdlpsupportedfiletypes-f.md)
+  - [setRetentionState](arkts-dataprotection-dlppermission-setretentionstate-f.md)
+  - [cancelRetentionState](arkts-dataprotection-dlppermission-cancelretentionstate-f.md)
+  - [getRetentionSandboxList](arkts-dataprotection-dlppermission-getretentionsandboxlist-f.md)
+  - [getDLPFileAccessRecords](arkts-dataprotection-dlppermission-getdlpfileaccessrecords-f.md)
+  - [startDLPManagerForResult](arkts-dataprotection-dlppermission-startdlpmanagerforresult-f.md)<!--Del-->
+  - [getDLPGatheringPolicy(系统接口)](arkts-dataprotection-dlppermission-getdlpgatheringpolicy-f-sys.md)<!--DelEnd--><!--Del-->
+  - [installDLPSandbox(系统接口)](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md)<!--DelEnd--><!--Del-->
+  - [uninstallDLPSandbox(系统接口)](arkts-dataprotection-dlppermission-uninstalldlpsandbox-f-sys.md)<!--DelEnd--><!--Del-->
+  - [generateDLPFile(系统接口)](arkts-dataprotection-dlppermission-generatedlpfile-f-sys.md)<!--DelEnd--><!--Del-->
+  - [openDLPFile(系统接口)](arkts-dataprotection-dlppermission-opendlpfile-f-sys.md)<!--DelEnd-->
+  - [setSandboxAppConfig](arkts-dataprotection-dlppermission-setsandboxappconfig-f.md)
+  - [cleanSandboxAppConfig](arkts-dataprotection-dlppermission-cleansandboxappconfig-f.md)
+  - [getSandboxAppConfig](arkts-dataprotection-dlppermission-getsandboxappconfig-f.md)
+  - [isDLPFeatureProvided](arkts-dataprotection-dlppermission-isdlpfeatureprovided-f.md)<!--Del-->
+  - [generateDlpFileForEnterprise(系统接口)](arkts-dataprotection-dlppermission-generatedlpfileforenterprise-f-sys.md)<!--DelEnd--><!--Del-->
+  - [queryDlpPolicy(系统接口)](arkts-dataprotection-dlppermission-querydlppolicy-f-sys.md)<!--DelEnd--><!--Del-->
+  - [decryptDlpFile(系统接口)](arkts-dataprotection-dlppermission-decryptdlpfile-f-sys.md)<!--DelEnd-->
+  - [setEnterprisePolicy](arkts-dataprotection-dlppermission-setenterprisepolicy-f.md)
+  - [queryOpenedEnterpriseDlpFiles](arkts-dataprotection-dlppermission-queryopenedenterprisedlpfiles-f.md)
+  - [closeOpenedEnterpriseDlpFiles](arkts-dataprotection-dlppermission-closeopenedenterprisedlpfiles-f.md)
+  - [DlpConnManager](arkts-dataprotection-dlppermission-dlpconnmanager-c.md)
+  - [AccessedDLPFileInfo](arkts-dataprotection-dlppermission-accesseddlpfileinfo-i.md)
+  - [AuthUser(系统接口)](arkts-dataprotection-dlppermission-authuser-i-sys.md)
+  - [CustomProperty](arkts-dataprotection-dlppermission-customproperty-i.md)
+  - [CustomProperty(系统接口)](arkts-dataprotection-dlppermission-customproperty-i-sys.md)
+  - [DlpConnPlugin](arkts-dataprotection-dlppermission-dlpconnplugin-i.md)
+  - [DLPFile(系统接口)](arkts-dataprotection-dlppermission-dlpfile-i-sys.md)
+  - [DlpFileQueryOptions](arkts-dataprotection-dlppermission-dlpfilequeryoptions-i.md)
+  - [DLPManagerResult](arkts-dataprotection-dlppermission-dlpmanagerresult-i.md)
+  - [DLPPermissionInfo](arkts-dataprotection-dlppermission-dlppermissioninfo-i.md)
+  - [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md)
+  - [DLPProperty(系统接口)](arkts-dataprotection-dlppermission-dlpproperty-i-sys.md)
+  - [DLPSandboxInfo(系统接口)](arkts-dataprotection-dlppermission-dlpsandboxinfo-i-sys.md)
+  - [DLPSandboxState(系统接口)](arkts-dataprotection-dlppermission-dlpsandboxstate-i-sys.md)
+  - [EnterprisePolicy](arkts-dataprotection-dlppermission-enterprisepolicy-i.md)
+  - [RetentionSandboxInfo](arkts-dataprotection-dlppermission-retentionsandboxinfo-i.md)
+  - [AccountType](arkts-dataprotection-dlppermission-accounttype-e.md)
+  - [AccountType(系统接口)](arkts-dataprotection-dlppermission-accounttype-e-sys.md)
+  - [ActionFlagType](arkts-dataprotection-dlppermission-actionflagtype-e.md)
+  - [ActionType(系统接口)](arkts-dataprotection-dlppermission-actiontype-e-sys.md)
+  - [DLPFileAccess](arkts-dataprotection-dlppermission-dlpfileaccess-e.md)
+  - [GatheringPolicyType(系统接口)](arkts-dataprotection-dlppermission-gatheringpolicytype-e-sys.md)
+- [@ohos.dlpSetDlpFeature](arkts-dlpsetdlpfeature.md)<!--Del-->
+  - [setDlpFeature(系统接口)](arkts-dataprotection-dlpsetdlpfeature-setdlpfeature-f-sys.md)<!--DelEnd-->
+  - [DLPFeatureInfo(系统接口)](arkts-dataprotection-dlpsetdlpfeature-dlpfeatureinfo-i-sys.md)
+  - [StatusInfoResult(系统接口)](arkts-dataprotection-dlpsetdlpfeature-statusinforesult-i-sys.md)
+  - [DlpFeatureStatus(系统接口)](arkts-dataprotection-dlpsetdlpfeature-dlpfeaturestatus-e-sys.md)
+- [@ohos.security.identifySensitiveContent](arkts-security-identifysensitivecontent.md)
+  - [scanFile](arkts-dataprotection-identifysensitivecontent-scanfile-f.md)
+  - [MatchResult](arkts-dataprotection-identifysensitivecontent-matchresult-i.md)
+  - [Policy](arkts-dataprotection-identifysensitivecontent-policy-i.md)
