@@ -95,7 +95,7 @@ int32_t OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t 
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t deviceId | 设备ID。 |
-| [Hid_EmitItem](capi-hidddk-hid-emititem.md#hid_emititem) items | 发送的事件列表，事件包括类型（取值来源事件类型Hid_EventType）、编码（取值来源同步事件编码Hid_SynEvent、键值编码Hid_KeyCode、按钮编码HidBtnCode、绝对坐标编码Hid_AbsAxes、相对坐标编码Hid_RelAxes、其它类型的输入事件编码Hid_MscEvent）、值（根据实际设备输入决定）。发送的事件将被注入到指定设备，模拟设备产生相应的输入行为。 |
+| [Hid_EmitItem](capi-hidddk-hid-emititem.md) items | 发送的事件列表，事件包括类型（取值来源事件类型Hid_EventType）、编码（取值来源同步事件编码Hid_SynEvent、键值编码Hid_KeyCode、按钮编码HidBtnCode、绝对坐标编码Hid_AbsAxes、相对坐标编码Hid_RelAxes、其它类型的输入事件编码Hid_MscEvent）、值（根据实际设备输入决定）。发送的事件将被注入到指定设备，模拟设备产生相应的输入行为。 |
 | uint16_t length | 发送事件列表长度（一次发送事件个数）。 |
 
 **返回：**
