@@ -654,7 +654,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.atomicService.MANAGE_STORAGE
 
-允许元服务小游戏进行存储空间大小的管理。
+允许原子化服务小游戏进行存储空间大小的管理。
 
 <!--RP96--><!--RP96End-->
 
