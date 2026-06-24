@@ -769,7 +769,7 @@ USB设备端口角色信息。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称             | 类型   |只读 | 可选 | 说明                   |
+| 名称             | 类型   | 只读 | 可选 | 说明                   |
 | ---------------- | ------ | ---- | ---- | ---------------------- |
 | currentMode      | number | 否   | 否   | 当前的USB模式。        |
 | currentPowerRole | number | 否   | 否   | 当前设备充电模式。     |
@@ -786,15 +786,15 @@ USB设备侧功能。
 | 名称         | 值  | 说明       |
 | ------------ | --- | ---------- |
 | NONE         | 0   | 没有功能。 |
-| ACM          | 1   | acm功能。  |
-| ECM          | 2   | ecm功能。  |
-| HDC          | 4   | hdc功能。  |
-| MTP          | 8   | 媒体传输。 |
-| PTP          | 16  | 图片传输。 |
-| RNDIS        | 32  | 网络共享（暂不支持）。 |
-| MIDI         | 64  | midi功能（暂不支持）。 |
-| AUDIO_SOURCE | 128 | 音频功能（暂不支持）。 |
-| NCM          | 256 | ncm传输（暂不支持）。  |
+| ACM          | 1   | acm（Abstract Control Model，抽象控制模型），串口通信功能，用于模拟串口设备。|
+| ECM          | 2   | ecm（Ethernet Control Model，以太网控制模型），以太网控制功能，用于网络共享。  |
+| HDC          | 4   | hdc（HarmonyOS Device Connector，HarmonyOS设备连接器）。  |
+| MTP          | 8   | mtp（Media Transfer Protocol，媒体传输协议）。 |
+| PTP          | 16  | ptp（Picture Transfer Protocol，图片传输协议）。 |
+| RNDIS        | 32  | rndis（Remote Network Driver Interface Specification，远程网络驱动接口规范），用于网络共享（暂不支持）。 |
+| MIDI         | 64  | midi（Musical Instrument Digital Interface，乐器数字接口），用于MIDI设备通信（暂不支持）。 |
+| AUDIO_SOURCE | 128 | 音频源功能，用于音频数据传输（暂不支持）。 |
+| NCM          | 256 | ncm（Network Control Model，网络控制模型），用于高速网络共享（暂不支持）。  |
 
 ## PortModeType
 
