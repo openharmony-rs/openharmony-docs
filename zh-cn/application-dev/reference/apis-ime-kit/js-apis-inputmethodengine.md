@@ -3447,7 +3447,7 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 >
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
 >
-> 此接口为同步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
+> 此接口为同步接口，接口返回成功仅代表系统侧收到设置的请求，不代表设置完成。如果需要感知执行过程中的异常，建议使用[updatePanelRect](#updatepanelrect)或[updatePanelRectSync](#updatepanelrectsync)。
 >
 > 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
@@ -3512,7 +3512,7 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 >
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
 >
-> 此接口为同步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。
+> 此接口为同步接口，接口返回成功仅代表系统侧收到设置的请求，不代表设置完成。如果需要感知执行过程中的异常，建议使用[updatePanelRect](#updatepanelrect-1)或[updatePanelRectSync](#updatepanelrectsync-1)。
 >
 > 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
