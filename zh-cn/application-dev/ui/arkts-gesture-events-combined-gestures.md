@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-组合手势由多种单一手势组合而成，通过在[GestureGroup](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#接口)中使用不同的[GestureMode](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#gesturemode枚举说明)来声明该组合手势的类型，支持[顺序识别](#顺序识别)、[并行识别](#并行识别)和[互斥识别](#互斥识别)三种类型。
+组合手势由多种单一手势组合而成，通过在[GestureGroup](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md)中使用不同的[GestureMode](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#gesturemode枚举说明)来声明该组合手势的类型，支持[顺序识别](#顺序识别)、[并行识别](#并行识别)和[互斥识别](#互斥识别)三种类型。
 
 ```ts
 GestureGroup(mode:GestureMode, gesture:GestureType[])
@@ -70,9 +70,7 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
                 if (event.repeat) {
                   this.count++;
                 }
-                ;
               }
-              ;
               hilog.info(DOMAIN, TAG, 'LongPress onAction');
             })
             .onActionEnd(() => {
@@ -90,7 +88,6 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
                 this.offsetX = (this.positionX + event.offsetX);
                 this.offsetY = this.positionY + event.offsetY;
               }
-              ;
               hilog.info(DOMAIN, TAG, 'pan update');
             })
             .onActionEnd(() => {
@@ -254,11 +251,9 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
               if (current.getType() !== GestureControl.GestureType.PAN_GESTURE) {
                 return GestureJudgeResult.CONTINUE;
               }
-              ;
               if (this.isLongPress) {
                 return GestureJudgeResult.CONTINUE;
               }
-              ;
               return GestureJudgeResult.REJECT;
             })
           .gesture(
@@ -271,8 +266,7 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
                 })
                 .onActionEnd(() => {
                   this.isLongPress = false;
-                })
-              ,
+                }),
               PanGesture()
                 .onActionStart(() => {
                   this.promptAction.showToast({ message: 'child pan start' });

@@ -14,59 +14,43 @@
 >
 > - 本文仅介绍当前模块的系统接口，其他公开接口参见[select](./ts-basic-components-select.md)。
 
-## menuSystemMaterial<sup>23+</sup>
+## menuDistortionMode
 
-menuSystemMaterial(material:Optional\<SystemUiMaterial>)
+menuDistortionMode(mode: DistortionMode)
 
-设置Select下拉菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响下拉菜单背景色[menuBackgroundColor](ts-basic-components-select.md#menubackgroundcolor18)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)等参数，不建议与上述接口一起使用。
+系统材质下，设置下拉菜单的非线性动画模式。未通过该接口设置时，默认为DistortionMode.DISTORTION_AUTO。
+
+**起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| material | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SystemUiMaterial](./ts-universal-attributes-image-effect-sys.md#systemuimaterial23)> | 是 | 设置下拉菜单系统材质。材质设置为非法值、undefined时，按照不设置系统材质处理。 |
+| mode | [DistortionMode](./ts-appendix-enums-sys.md#distortionmode) | 是 | 设置系统材质下下拉菜单的非线性动画模式。 |
 
-## 示例
-### 示例1（设置Select和下拉菜单系统材质）
+## menuEdgeLightMode
 
-该示例通过调用[menuSystemMaterial](#menusystemmaterial23)接口实现下拉菜单系统材质效果，通过[systemMaterial](./ts-universal-attributes-image-effect-sys.md#systemmaterial23)接口实现select组件系统材质效果。
+menuEdgeLightMode(mode: EdgeLightMode)
 
-从API version 23开始，新增menuSystemMaterial接口和systemMaterial接口。
+系统材质下，设置下拉菜单的流光动画模式。未通过该接口设置时，默认为EdgeLightMode.EDGELIGHT_DISABLED。
 
-```ts
-import { uiMaterial } from '@kit.ArkUI';
+**起始版本：** 26.0.0
 
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Select([{ value: 'SelectOption' },
-        { value: 'SelectOption' },
-        { value: 'SelectOption' },
-        { value: 'SelectOption' },
-        { value: 'SelectOption' }])
-        .value('Click Show Options')
-        .systemMaterial(new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT }))
-        .menuSystemMaterial(new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT }))
-    }
-    // $r('app.media.img')需要替换为开发者所需的图像资源文件。
-    .backgroundImage($r('app.media.img'))
-  }
-}
-```
-未设置系统材质
+**系统接口：** 此接口为系统接口。
 
-![select-without-menu-new-material](figures/selectWithoutNewMaterial.PNG)
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-设置系统材质
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-![select-menu-new-material](figures/selectNewMaterial.PNG)
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| mode | [EdgeLightMode](./ts-appendix-enums-sys.md#edgelightmode) | 是 | 设置系统材质下下拉菜单的流光动画模式。 |
+

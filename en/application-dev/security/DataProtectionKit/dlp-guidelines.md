@@ -1,8 +1,8 @@
-# DLP Service Development
+# DLP Service Development (ArkTS)
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -11,11 +11,11 @@ The Data Loss Prevention (DLP) service is a system solution provided to prevent 
 
 A DLP file can be accessed only after successful device-cloud authentication (network connection required). The permissions for accessing a DLP file include the following:
 
-- Read-only: The user can only view the file.
+- Read-only: The user can only read the file.
 - Edit: The user can read and write the file, but cannot change the permission on the file.
 - Full control: The user can read and write the file, change the permission on the file, and restore the plaintext of the file.
 
-When an application accesses a DLP file, the system automatically installs a dual application, a copy based on the current application. Both can run at the same time without affecting each other. The dual application is running in a sandbox, which is restricted from external access to prevent data leakage. For simplicity, the dual application running in a sandbox is referred to as a sandbox application hereinafter. Each time a DLP file is opened, a sandbox application is generated. The sandbox applications are also isolated from each other. When an application is closed, its sandbox application will be automatically uninstalled and the temporary data generated in the sandbox directory will be cleared.
+When an application accesses a DLP file, the system automatically installs a dual application. The dual application inherits the data and configuration of the original application, but they do not share data with each other. The dual application is running in a sandbox, which is restricted from external access to prevent data leakage. For simplicity, the dual application running in a sandbox is referred to as a sandbox application hereinafter. Each time a DLP file is opened, a sandbox application is generated. The sandbox applications are also isolated from each other. When an application is closed, its sandbox application will be automatically uninstalled and the temporary data generated in the sandbox directory will be cleared.
 
 Normally, the application is unaware of the sandbox and accesses the file in plaintext, like accessing a common file. However, the DLP sandbox restricts the application from accessing external resources (such as the network, clipboard, screenshot capturing, screen recording, and Bluetooth). For better user experience, you need to adapt your application based on service requirements. For example, for a read-only file, you'd better hide the **Save** button and disable automatic Internet access.
 
@@ -43,21 +43,22 @@ For an application in the DLP sandbox state, the permissions granted to the appl
 | off(type: 'openDLPFile', listener?: Callback&lt;AccessedDLPFileInfo&gt;): void | Unsubscribes from the file open event of DLP files.|
 | isInSandbox(): Promise&lt;boolean&gt; <br>isInSandbox(callback: AsyncCallback&lt;boolean&gt;): void | Checks whether this application is running in a sandbox.|
 | getDLPSupportedFileTypes(): Promise&lt;Array&lt;string&gt;&gt;<br>getDLPSupportedFileTypes(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void | Obtains the file name extension types that can be appended with .dlp.|
-| setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt; <br> setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | Sets the sandbox application retention state. If the retention state is set for a DLP file, the sandbox application will not be automatically uninstalled when the DLP file is closed.|
-| cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;<br> cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | Cancels the sandbox application retention state.|
-| getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandboxInfo&gt;&gt; <br> getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void  <br> getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void| Obtains the sandbox applications in the retention state.|
+| setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt; <br> setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | Sets the retention state of the dual application.|
+| cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;<br> cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | Cancels the retention state of the dual application.|
+| getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandboxInfo&gt;&gt; <br> getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void  <br> getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void| Obtains the retention sandbox list.|
 | getDLPFileAccessRecords(): Promise&lt;Array&lt;AccessedDLPFileInfo&gt;&gt; <br> getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;): void | Obtains the DLP files that are accessed recently.|
-|setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;|Set sandbox application configuration.|
-|getSandboxAppConfig(): Promise&lt;string&gt;|Obtain the sandbox application configuration.|
-|cleanSandboxAppConfig(): Promise&lt;void&gt;|Clear the sandbox application configuration.|
+|setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;|Sets sandbox application configuration.|
+|getSandboxAppConfig(): Promise&lt;string&gt;|Obtains the sandbox application configuration.|
+|cleanSandboxAppConfig(): Promise&lt;void&gt;|Clears the sandbox application configuration.|
 | startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt; <br>| Starts the DLP manager application on the current UIAbility page in borderless mode (available only for the stage model).|
 |setEnterprisePolicy(policy: EnterprisePolicy): void|Sets the protection policy for enterprise applications.|
-| scanFile(filePath: string, identifyPolicysies: Array&lt;Policy&gt;):  Promise&lt;Array&lt;MatchResult&gt;&gt;| Identifies sensitive content in a specified file.<br>This API is supported since API version 21.|
+| scanFile(filePath: string, identifyPolicies: Array&lt;Policy&gt;):  Promise&lt;Array&lt;MatchResult&gt;&gt;| Identifies sensitive content in a specified file.<br>This API is supported since API version 21.|
 
 ## How to Develop
 
 This document provides API sample code. For details about how to create a project, see [Creating a Project](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-project).
 1. Import the [dlpPermission](../../reference/apis-data-protection-kit/js-apis-dlppermission.md) module.
+
     <!-- @[dlp_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
@@ -65,8 +66,9 @@ This document provides API sample code. For details about how to create a projec
     import { identifySensitiveContent } from '@kit.DataProtectionKit';
     ```
 
-2. Open an encrypted file. The system automatically installs a DLP sandbox application for your application. <br>Add the following code to your application: 
-Prerequisites for using this API: The DLP credential server has been connected. 
+2. Open an encrypted file. The system automatically installs a dual application for your application. <br>Add the following code to your application page ability: 
+
+   Prerequisites for using this API: The DLP credential server has been connected. 
 
     <!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -129,13 +131,14 @@ Prerequisites for using this API: The DLP credential server has been connected.
     ```
   
 3. Generate an encrypted DLP file. 
-Prerequisites for using this API: The DLP credential server has been connected.
+
+   Prerequisites for using this API: The DLP credential server has been connected.
 
    [You need to set up the cloud module for this feature](../DataProtectionKit/dlp-overview.md) and configure a domain account environment.
 
     Currently, the DLP feature supports the following file types: ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".odp", ".odt", ".pdf", ".pot", ".potm", ".potx", ".ppa", ".ppam", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".rtf", ".txt", ".wps", ".xla", ".xlam", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltm", ".xltx", ".xlw", ".xml", ".xps"
 
-    A file of the supported type that can be accessed by the application is available. For example, a file in the **Files** directory. 
+    A file of the supported type that can be read or written by an application with DLP permissions is available. For example, a file in the **Files** directory. 
 
     Start the DLP manager application in borderless mode. This API can be called only in the UIAbility context and supports only the stage model. Run the following code to open the permission settings page of the DLP manager application, enter the account information, and tap **Save**. On the page started by file Picker, select the directory to save the DLP file.
     <!-- @[dlp_generateDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -167,8 +170,9 @@ Prerequisites for using this API: The DLP credential server has been connected.
     }
     ```
 
-4. Check whether the application is running in a sandbox. 
-Prerequisites for using this API: The DLP file has been opened by the demo application.
+4. Check whether the application is running in a sandbox.
+
+   Prerequisites for using this API: The DLP file has been opened by the demo application.
 
     <!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -188,7 +192,9 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
 
 
 5. Obtain the permissions on the file. The permissions of the DLP sandbox application vary with the user's permission on the file. For more information, see [Sandbox Restrictions](#sandbox-restrictions). 
-Prerequisites for using this API: The DLP file has been opened by the demo application.
+   
+   Prerequisites for using this API: The DLP file has been opened by the demo application.
+
     <!-- @[dlp_getDLPPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
@@ -205,7 +211,7 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
     }
     ```
 
-6. Obtain information about the file name extension types that support the DLP solution. Based on the information obtained, you can learn what types of files can be used to generate DLP files.
+6. Obtain the list of file name extension types that support the DLP solution. Based on the information obtained, you can learn what types of files can be used to generate DLP files.
 
     <!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -221,10 +227,11 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
     }
     ```
 
-7. Check whether the opened file is a DLP file. 
-Prerequisites for using this API: The DLP file needs to be checked.
+7. Check whether the opened file is a DLP file.
 
-    <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
+   Prerequisites for using this API: The DLP file needs to be checked.
+
+    <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->  
     
     ``` TypeScript
     isCurrentDlpFile() {
@@ -246,12 +253,11 @@ Prerequisites for using this API: The DLP file needs to be checked.
         console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
         hilog.error(HILOG_DLP_DOMAIN, HILOG_TAG, 'error' + (err as BusinessError).code + (err as BusinessError).message);
       }).finally(() => {
-          fs.closeSync(file);
+        fileIo.closeSync(file);
       });
     }
     ```
-
-
+    
 8. Subscribe to or unsubscribe from the DLP file open event.
 
     <!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
@@ -276,7 +282,7 @@ Prerequisites for using this API: The DLP file needs to be checked.
       
     subscribe() {
       try {
-        dlpPermission.on ('openDLPFile' , this.event); // Subscribe to the DLP file open event.
+        dlpPermission.on('openDLPFile', this.event); // Subscribe to the DLP file open event.
         this.result = 'subscribe result: Subscribed';
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'subscribe result: Subscribed');
       } catch (err) {
@@ -289,7 +295,8 @@ Prerequisites for using this API: The DLP file needs to be checked.
 
 
 9. Obtain information about the DLP files that are recently accessed. 
-Prerequisites for using this API: The DLP file has been opened by the demo application.
+
+   Prerequisites for using this API: The DLP file has been opened by the demo application.
 
     <!-- @[dlp_getDLPFileAccessRecords](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -307,8 +314,9 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
     }
     ```
 
-10. Obtain information about the DLP sandbox applications in the retention state. 
-Prerequisites for using this API: The DLP file has been opened by the demo application.
+10. Obtain information about the DLP sandbox applications in the retention state.
+
+    Prerequisites for using this API: The DLP file has been opened by the demo application.
 
     <!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -381,7 +389,8 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
     ```
 
 14. Start the DLP manager application in borderless mode. This API can be called only in the UIAbility context and supports only the stage model. 
-Prerequisites for using this API: The DLP credential server has been connected.
+    
+    Prerequisites for using this API: The DLP credential server has been connected.
 
     <!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
@@ -410,7 +419,8 @@ Prerequisites for using this API: The DLP credential server has been connected.
     }
     ```
 15. Check whether the current system provides the DLP feature. 
-Prerequisites for using this API: The DLP credential server has been connected.
+
+    Prerequisites for using this API: The DLP credential server has been connected.
     <!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/Security/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
@@ -427,7 +437,8 @@ Prerequisites for using this API: The DLP credential server has been connected.
     }
     ```
 16. Sets the protection policy for enterprise applications.  
-Prerequisites for using this API: The DLP credential server has been connected.
+
+    Prerequisites for using this API: The DLP credential server has been connected.
     
     16.1 Policy format
     | Field| Type| Description|
@@ -439,13 +450,13 @@ Prerequisites for using this API: The DLP credential server has been connected.
     16.2 Rule format
     | Field| Type| Description|
     | -------- | -------- | -------- |
-      | ruleId |string | Rule name. The value can contain a maximum of 64 bytes and can contain only letters (case-sensitive), digits (0-9), and underscores (_).|
+    | ruleId |string | Rule name. The value can contain a maximum of 64 bytes and can contain only letters (case-sensitive), digits (0-9), and underscores (_).|
     | attributes | Array&lt;Attribute&gt; | Attribute list. A rule can contain a maximum of 32 attributes.|
 
     16.3 Attribute format
     | Field| Type| Description|
     | -------- | -------- | -------- |
-      | attributeId |string | Attribute name.|
+    | attributeId |string | Attribute name.|
     | attributeValues | Array&lt;string&gt; | Attribute value. A maximum of 32 attribute values is allowed.|
     | valueType | number | Attribute value type. The value** 0** indicates an integer, and the value **1** indicates a string.|
     | opt | number | Comparison method, which is used to compare the actual attribute with the policy attribute.|
@@ -453,7 +464,7 @@ Prerequisites for using this API: The DLP credential server has been connected.
     16.4 Supported attributes
     | Attribute Name| Attribute Value| Attribute Value Type| Scenario|
     | -------- | -------- | -------- | -------- |
-     | DeviceHealthyStatus |1 <br> 2 <br> 3 <br> 4 | Integer| 1: The device health report is normal.<br>2: The device has health risks, but the risk factor is irrelevant to the root.<br> 3: The device has health risks, and the risk factor is relevant to the root.<br> 4: An exception occurs.|
+    | DeviceHealthyStatus |1 <br> 2 <br> 3 <br> 4 | Integer| 1: The device health report is normal.<br>2: The device has health risks, but the risk factor is irrelevant to the root.<br> 3: The device has health risks, and the risk factor is relevant to the root.<br> 4: An exception occurs.|
     | NetStatus | InterNet <br> ExtraNet <br> NoNet | String| InterNet: The device is used inside the company.<br>ExtraNet: The device is used outside the company.<br>NoNet: The device is offline.|
     | DebugMode | 1 <br> 2 | Integer| 1: The debugging mode is enabled on the device.<br>2: The debugging mode is disabled on the device.|
     | AdvancedSecurityMode | 1 <br> 2 | Integer| 1: The advanced security mode is enabled on the device.<br>2: The advanced security mode is disabled on the device. |

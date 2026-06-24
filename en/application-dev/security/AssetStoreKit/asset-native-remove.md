@@ -13,9 +13,9 @@ You can use [OH_Asset_Remove](../../reference/apis-asset-store-kit/capi-asset-ap
 
 The following table describes the asset attributes.
 
->**NOTE**
+> **NOTE**
 >
->In the following table, the attributes **ASSET_TAG_ALIAS** and those starting with **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
+> In the following table, the attributes **ASSET_TAG_ALIAS** and those starting with **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 | Attribute Name (Asset_Tag)           | Attribute Content (Asset_Value)                                      | Mandatory| Description                                            |
 | ------------------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------ |

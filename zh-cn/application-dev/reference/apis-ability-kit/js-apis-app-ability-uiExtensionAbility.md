@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c; @xuzhihao666-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 
 UIExtensionAbility组件是带界面的ExtensionAbility组件，继承自[ExtensionAbility](js-apis-app-ability-extensionAbility.md)，提供了组件创建、销毁、前后台切换等基础生命周期。和UIAbility组件不同，UIExtensionAbility组件不会作为单独的任务在任务视图中体现。UIExtensionAbility组件被宿主窗口启动，该组件的前后台切换状态、以及是否可见均跟随宿主窗口。

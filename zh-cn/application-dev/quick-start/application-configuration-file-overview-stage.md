@@ -1,15 +1,15 @@
-# 应用配置文件概述（Stage模型）
+# 应用配置文件概述
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 每个应用项目的代码目录下必须包含应用配置文件，这些配置文件会向编译工具、操作系统和应用市场提供应用的基本信息。
 
 
-在基于Stage模型开发的应用项目代码下，都存在一个app.json5配置文件、以及一个或多个module.json5配置文件。
+在基于[Stage模型](../application-models/ability-terminology.md#stage模型)开发的应用项目代码下，都存在一个app.json5配置文件、以及一个或多个module.json5配置文件。
 
 >
 > **说明：**

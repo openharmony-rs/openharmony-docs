@@ -70,7 +70,7 @@
 
 ## 指定URI读取文件数据
 
-1. 待界面从图库返回后，再通过一个类似按钮的组件去调用其他函数，使用[fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)打开这个文件得到fd。这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
+1. 待界面从图库返回后，再通过一个类似按钮的组件去调用其他函数，使用[fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)打开这个文件得到fd。这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
 
    <!-- @[PickerMediaLibrary_openFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
    

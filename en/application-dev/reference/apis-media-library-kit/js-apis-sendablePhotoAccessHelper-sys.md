@@ -117,6 +117,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid argument.         |
+| 14000001 | Invalid display name.         |
 | 14000011 | Internal system error                                        |
 
 **Example**
@@ -176,6 +178,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid argument.         |
+| 14000001 | Invalid display name.         |
 | 14000011 | Internal system error                                        |
 
 **Example**
@@ -424,7 +428,7 @@ Obtains analysis data. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ\_IMAGEVIDEO
 
-Starting from API version 22, if **analysisType** is set to [ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11), the ohos.permission.MEDIA\_LOCATION permission is required. Otherwise, error code [201 Permission Denied](../errorcode-universal.md#201-permission-denied) is reported.
+Since API version 22, the **ohos.permission.MEDIA\_LOCATION** permission is required when **analysisType** is set to [ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11). If the permission is not granted, the universal error code [201 Permission Denied](../errorcode-universal.md#201-permission-denied) is thrown.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -1,9 +1,8 @@
 # oh_commonevent_support.h
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -90,7 +89,7 @@
 | static const char * const COMMON_EVENT_QUICK_FIX_REVOKE_RESULT = "usual.event.QUICK_FIX_REVOKE_RESULT" | 表示撤销快速修复的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_USER_INFO_UPDATED = "usual.event.USER_INFO_UPDATED" | 表示用户信息已更新的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_SIM_STATE_CHANGED = "usual.event.SIM_STATE_CHANGED" | 表示SIM卡状态更新的公共事件。<br>**起始版本：** 12 |
-| static const char * const COMMON_EVENT_CALL_STATE_CHANGED = "usual.event.CALL_STATE_CHANGED" | 表示呼叫状态更新的公共事件。<br>**起始版本：** 12 |
+| static const char * const COMMON_EVENT_CALL_STATE_CHANGED = "usual.event.CALL_STATE_CHANGED" | 表示呼叫状态更新的公共事件。<br>**订阅者所需权限：** ohos.permission.GET_TELEPHONY_STATE<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_NETWORK_STATE_CHANGED = "usual.event.NETWORK_STATE_CHANGED" | 表示网络状态更新的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_SIGNAL_INFO_CHANGED = "usual.event.SIGNAL_INFO_CHANGED" | 表示信号信息更新的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_SCREEN_UNLOCKED = "usual.event.SCREEN_UNLOCKED" | 表示屏幕解锁的公共事件。<br>**起始版本：** 12 |
@@ -102,3 +101,7 @@
 | static const char * const COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED = "usual.event.MANAGED_BROWSER_POLICY_CHANGED" | 表示浏览器托管策略已更改。<br>**起始版本：** 15 |
 | static const char* const COMMON_EVENT_TABLET_MODE_CHANGED = "usual.event.TABLET_MODE_CHANGED" | 表示可感知支架开合的设备，其支架开合状态变化的公共事件。<br>**起始版本：** 23 |
 | static const char* const COMMON_EVENT_LID_STATE_CHANGED = "usual.event.LID_STATE_CHANGED" | 表示可感知开合盖子的设备，其开合盖状态变化的公共事件。<br>**起始版本：** 23 |
+| static const char* const COMMON_EVENT_VOLUME_DECRYPTED = "usual.event.VOLUME_DECRYPTED" | 表示设备上的特定卷已被解密。<br>**起始版本：** 26.0.0 |
+| static const char* const COMMON_EVENT_VOLUME_ENCRYPTED = "usual.event.VOLUME_ENCRYPTED" | 表示设备上的特定卷已被加密。<br>**起始版本：** 26.0.0 |
+| static const char* const COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET = "usual.event.VOLUME_ENCRYPTION_POLICY_SET" | 表示设备上的特定卷已设置其加密策略。<br>**起始版本：** 26.0.0 |
+| static const char* const COMMON_EVENT_SKILL_CHANGED = "usual.event.SKILL_CHANGED" | 表示设备上应用的skill发生变化的公共事件。<br>**起始版本：** 26.0.0 |

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -96,17 +96,29 @@ get varName(): T {
     build() {
       Column() {
         Text(`${this.fullName}`) // 获取一次fullName
+          .fontSize(20)
+          .margin(10)
         Text(`${this.fullName}`) // 获取一次fullName，累计获取两次fullName，但是fullName不会重新计算，读取缓存值
-  
+          .fontSize(20)
+          .margin(10)
+
         // 点击Button，获取fullNameRequestCount次数
         Text(`count ${this.showFullNameRequestCount}`)
-        Button('get fullName').onClick(() => {
-          this.showFullNameRequestCount = this.fullNameRequestCount;
-        })
+          .fontSize(20)
+          .margin(10)
+        Button('get fullName')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.showFullNameRequestCount = this.fullNameRequestCount;
+          })
       }
+      .width('100%')
     }
   }
   ```
+
+  ![computed-sync-0](./figures/computed-sync-0.gif)
 
 - 在\@Computed装饰的getter方法中，不能改变参与计算的属性，以防止重复执行计算属性导致的appfreeze。
 
@@ -136,8 +148,13 @@ get varName(): T {
     build() {
       Column() {
         Text(`${this.fullName1}`)
+          .fontSize(20)
+          .margin(10)
         Text(`${this.fullName2}`)
+          .fontSize(20)
+          .margin(10)
       }
+      .width('100%')
     }
   }
   ```
@@ -152,6 +169,8 @@ get varName(): T {
   
     build() {
       Button('ChildChange')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.$double(200);
         })
@@ -210,9 +229,9 @@ get varName(): T {
    - 如果UI中有多处需要使用`this.lastName + ' '+ this.firstName`这段计算逻辑，可以使用计算属性，减少计算次数。
    - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
 
-   <!-- @[custom_component_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets) -->
-
-   ```ts
+   <!-- @[custom_component_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets) --> 
+   
+   ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
    const TAG = '[Sample_Textcomponent]';
@@ -235,16 +254,28 @@ get varName(): T {
      build() {
        Column() {
          Text(this.lastName + ' ' + this.firstName)
+           .fontSize(20)
+           .margin(10)
          Text(this.lastName + ' ' + this.firstName)
+           .fontSize(20)
+           .margin(10)
          Divider()
          Text(this.fullName)
+           .fontSize(20)
+           .margin(10)
          Text(this.fullName)
+           .fontSize(20)
+           .margin(10)
          Button('changed lastName')
+           .width(300)
+           .margin(10)
            .onClick(() => {
              this.lastName += 'a';
            })
    
          Button('changed age')
+           .width(300)
+           .margin(10)
            .onClick(() => {
              this.age++;  // 无法触发Computed
            })
@@ -252,6 +283,8 @@ get varName(): T {
      }
    }
    ```
+
+   ![computed-sync-1](./figures/computed-sync-1.gif)
 
    计算属性本身会带来性能开销，在实际应用开发中需要注意：
 
@@ -262,9 +295,9 @@ get varName(): T {
 
    点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
-   <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->
-
-   ```ts
+   <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->  
+   
+   ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
    const TAG = '[Sample_Textcomponent]';
@@ -293,21 +326,32 @@ get varName(): T {
      build() {
        Column() {
          Text(this.name1.fullName)
+           .fontSize(20)
+           .margin(10)
          Text(this.name1.fullName)
-         Button('changed lastName').onClick(() => {
-           this.name1.lastName += 'a';
-         })
+           .fontSize(20)
+           .margin(10)
+         // 点击Button改变lastName，触发fullName重新计算，且只被计算一次
+         Button('changed lastName')
+           .width(300)
+           .margin(10)
+           .onClick(() => {
+             this.name1.lastName += 'a';
+           })
        }
+       .width('100%')
      }
    }
    ```
+
+   ![computed-sync-2](./figures/computed-sync-2.gif)
 
 ### \@Computed装饰的属性可以被\@Monitor监听变化
 如何使用计算属性求解fahrenheit和kelvin。示例如下：
 - 点击“-”，celsius-- -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 - 点击“+”，celsius++ -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 
-  <!-- @[Computing_Property_Resolution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputingPropertyResolution.ets) -->
+  <!-- @[Computing_Property_Resolution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputingPropertyResolution.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -352,13 +396,19 @@ get varName(): T {
             })
         }
   
-        Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).fontSize(40)
-        Text(`Kelvin ${this.kelvin.toFixed(2)}`).fontSize(40)
+        Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`)
+          .fontSize(40)
+          .margin(10)
+        Text(`Kelvin ${this.kelvin.toFixed(2)}`)
+          .fontSize(40)
+          .margin(10)
       }
       .width('100%')
     }
   }
   ```
+
+  ![computed-sync-3](./figures/computed-sync-3.gif)
 
 ### \@Computed装饰的属性可以初始化\@Param
 下面的例子使用\@Computed初始化\@Param。
@@ -366,7 +416,7 @@ get varName(): T {
 - `quantity`的改变会触发`total`和`qualifiesForDiscount`重新计算，计算商品总价和是否可以享有优惠。
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
-  <!-- @[Computed_Init_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets) -->
+  <!-- @[Computed_Init_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets) -->  
   
   ``` TypeScript
   @ObservedV2
@@ -399,9 +449,13 @@ get varName(): T {
       Column() {
         Text(`Shopping List: `)
           .fontSize(30)
+          .margin(10)
         ForEach(this.shoppingBasket, (item: Article) => {
           Row() {
             Text(`unitPrice: ${item.unitPrice}`)
+              .fontSize(20)
+              .margin(10)
+            // 点击Button减少quantity，触发total和qualifiesForDiscount重新计算
             Button('-')
               .onClick(() => {
                 if (item.quantity > 0) {
@@ -409,16 +463,21 @@ get varName(): T {
                 }
               })
             Text(`quantity: ${item.quantity}`)
+              .fontSize(20)
+              .margin(10)
+            // 点击Button增加quantity，触发total和qualifiesForDiscount重新计算
             Button('+')
               .onClick(() => {
                 item.quantity++;
               })
           }
+          .width('100%')
   
           Divider()
         })
         Child({ total: this.total, qualifiesForDiscount: this.qualifiesForDiscount })
-      }.alignItems(HorizontalAlign.Start)
+      }
+      .alignItems(HorizontalAlign.Start)
     }
   }
   
@@ -431,9 +490,13 @@ get varName(): T {
       Row() {
         Text(`Total: ${this.total} `)
           .fontSize(30)
+          .margin(10)
         Text(`Discount: ${this.qualifiesForDiscount} `)
           .fontSize(30)
+          .margin(10)
       }
     }
   }
   ```
+
+  ![computed-sync-4](./figures/computed-sync-4.gif)

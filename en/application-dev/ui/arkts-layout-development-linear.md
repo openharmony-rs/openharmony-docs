@@ -83,7 +83,7 @@ Row({ space: 35 }) {
 }.width('90%')
 ```
 
-![en-us_image_0000001562700509](figures/en-us_image_0000001562700509.png)
+![rowLayoutExample](figures/rowLayoutExample.png)
 
 ## Arranging Child Elements Along the Main Axis
 
@@ -113,7 +113,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Start)
   ```
 
-  ![en-us_image_0000001562700501](figures/en-us_image_0000001562700501.png)
+  ![columnLayoutJustifyContentStart](figures/columnLayoutJustifyContentStart.png)
 
 - **justifyContent(FlexAlign.Center)**: The elements are vertically aligned with each other toward the center of the container. The space between the first component and the start edge is the same as that between the last component and the end edge.
 
@@ -132,7 +132,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Center)
   ```
 
-  ![en-us_image_0000001562700517](figures/en-us_image_0000001562700517.png)
+  ![columnLayoutJustifyContentCenter](figures/columnLayoutJustifyContentCenter.png)
 
 - **justifyContent(FlexAlign.End)**: The elements are vertically aligned with each other toward the end edge of the container.
 
@@ -151,7 +151,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.End)
   ```
 
-  ![en-us_image_0000001562940585](figures/en-us_image_0000001562940585.png)
+  ![columnLayoutJustifyContentEnd](figures/columnLayoutJustifyContentEnd.png)
 
 - **justifyContent(FlexAlign.SpaceBetween)**: The elements are evenly distributed vertically. The space between any two adjacent elements is the same. The first element is aligned with the start edge, the last element is aligned with the end edge, and the remaining elements are distributed so that the space between any two adjacent elements is the same.
 
@@ -170,7 +170,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceBetween)
   ```
 
-  ![en-us_image_0000001511900532](figures/en-us_image_0000001511900532.png)
+  ![columnLayoutJustifyContentSpaceBetween](figures/columnLayoutJustifyContentSpaceBetween.png)
 
 - **justifyContent(FlexAlign.SpaceAround)**: The elements are evenly distributed vertically. The space between any two adjacent elements is the same. The space between the first element and start edge, and that between the last element and end edge are both half the size of the space between two adjacent elements.
 
@@ -189,7 +189,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceAround)
   ```
 
-  ![en-us_image_0000001562700525](figures/en-us_image_0000001562700525.png)
+  ![columnLayoutJustifyContentSpaceAround](figures/columnLayoutJustifyContentSpaceAround.png)
 
 - **justifyContent(FlexAlign.SpaceEvenly)**: The elements are evenly distributed vertically. The space between the first element and start edge, the space between the last element and end edge, and the space between any two adjacent elements are the same.
 
@@ -208,7 +208,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(300).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceEvenly)
   ```
 
-  ![en-us_image_0000001563060785](figures/en-us_image_0000001563060785.png)
+  ![columnLayoutJustifyContentSpaceEvenly](figures/columnLayoutJustifyContentSpaceEvenly.png)
 
 
 ### Horizontal Alignment of Child Elements in the Row Container
@@ -234,7 +234,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Start)
   ```
 
-  ![en-us_image_0000001511421356](figures/en-us_image_0000001511421356.png)
+  ![rowLayoutJustifyContentStart](figures/rowLayoutJustifyContentStart.png)
 
 - **justifyContent(FlexAlign.Center)**: The elements are horizontally aligned with each other toward the center of the container. The space between the first component and the start edge is the same as that between the last component and the end edge.
 
@@ -253,7 +253,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.Center)
   ```
 
-  ![en-us_image_0000001511900516](figures/en-us_image_0000001511900516.png)
+  ![rowLayoutJustifyContentCenter](figures/rowLayoutJustifyContentCenter.png)
 
 - **justifyContent(FlexAlign.End)**: The elements are horizontally aligned with each other toward the end edge of the container.
 
@@ -272,7 +272,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.End)
   ```
 
-  ![en-us_image_0000001562940601](figures/en-us_image_0000001562940601.png)
+  ![rowLayoutJustifyContentEnd](figures/rowLayoutJustifyContentEnd.png)
 
 - **justifyContent(FlexAlign.SpaceBetween)**: The elements are evenly distributed horizontally. The space between any two adjacent elements is the same. The first element is aligned with the start edge, the last element is aligned with the end edge, and the remaining elements are distributed so that the space between any two adjacent elements is the same.
 
@@ -291,7 +291,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceBetween)
   ```
 
-  ![en-us_image_0000001562700521](figures/en-us_image_0000001562700521.png)
+  ![rowLayoutJustifyContentSpaceBetween](figures/rowLayoutJustifyContentSpaceBetween.png)
 
 - **justifyContent(FlexAlign.SpaceAround)**: The elements are evenly distributed horizontally. The space between any two adjacent elements is the same. The space between the first element and start edge, and that between the last element and end edge are both half the size of the space between two adjacent elements.
 
@@ -310,7 +310,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceAround)
   ```
 
-  ![en-us_image_0000001562820893](figures/en-us_image_0000001562820893.png)
+  ![rowLayoutJustifyContentSpaceAround](figures/rowLayoutJustifyContentSpaceAround.png)
 
 - **justifyContent(FlexAlign.SpaceEvenly)**: The elements are evenly distributed horizontally. The space between the first element and start edge, the space between the last element and end edge, and the space between any two adjacent elements are the same.
 
@@ -329,7 +329,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
   }.width('100%').height(200).backgroundColor('rgb(242,242,242)').justifyContent(FlexAlign.SpaceEvenly)
   ```
 
-  ![en-us_image_0000001511421352](figures/en-us_image_0000001511421352.png)
+  ![rowLayoutJustifyContentSpaceEvenly](figures/rowLayoutJustifyContentSpaceEvenly.png)
 
 ## Aligning Child Elements Along the Cross Axis
 
@@ -361,7 +361,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').alignItems(HorizontalAlign.Start).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001511580964](figures/en-us_image_0000001511580964.png)
+  ![rowLayoutHorizontalAlignStart](figures/rowLayoutHorizontalAlignStart.png)
 
 - **HorizontalAlign.Center** (default value): Child elements are center-aligned horizontally.
 
@@ -380,7 +380,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').alignItems(HorizontalAlign.Center).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001562820897](figures/en-us_image_0000001562820897.png)
+  ![rowLayoutHorizontalAlignCenter](figures/rowLayoutHorizontalAlignCenter.png)
 
 - **HorizontalAlign.End**: Child elements are right-aligned horizontally.
 
@@ -399,7 +399,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').alignItems(HorizontalAlign.End).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001511421348](figures/en-us_image_0000001511421348.png)
+  ![rowLayoutHorizontalAlignEnd](figures/rowLayoutHorizontalAlignEnd.png)
 
 
 ### Vertical Alignment of Child Elements in the Row Container
@@ -425,7 +425,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').height(200).alignItems(VerticalAlign.Top).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001563060765](figures/en-us_image_0000001563060765.png)
+  ![rowLayoutVerticalAlignTop](figures/rowLayoutVerticalAlignTop.png)
 
 - **VerticalAlign.Center** (default value): Child elements are center-aligned vertically.
 
@@ -444,7 +444,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').height(200).alignItems(VerticalAlign.Center).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001562700505](figures/en-us_image_0000001562700505.png)
+  ![rowLayoutVerticalAlignCenter](figures/rowLayoutVerticalAlignCenter.png)
 
 - **VerticalAlign.Bottom**: Child elements are bottom-aligned vertically.
 
@@ -463,7 +463,7 @@ The layout container also provides the [alignSelf](../reference/apis-arkui/arkui
   }.width('100%').height(200).alignItems(VerticalAlign.Bottom).backgroundColor('rgb(242,242,242)')
   ```
 
-  ![en-us_image_0000001563060781](figures/en-us_image_0000001563060781.png)
+  ![rowLayoutVerticalAlignBottom](figures/rowLayoutVerticalAlignBottom.png)
 
 ## Implementing Adaptive Stretching
 
@@ -490,11 +490,11 @@ struct BlankExample {
 
   **Figure 9** Portrait mode (adapts to the screen's narrow edge)
 
-![en-us_image_0000001562820881](figures/en-us_image_0000001562820881.png)
+![blankExample](figures/blankExample.png)
 
   **Figure 10** Landscape mode (adapts to the screen's wide edge)
 
-![en-us_image_0000001511421332](figures/en-us_image_0000001511421332.png)
+![landscapeMode](figures/landscapeMode.png)
 
 
 ## Implementing Adaptive Scaling
@@ -555,11 +555,11 @@ Adaptive scaling means that the size of a child element is automatically adjuste
 
     **Figure 11** Landscape mode 
 
-  ![en-us_image_0000001511421336](figures/en-us_image_0000001511421336.png)
+  ![landscapeMode2](figures/landscapeMode2.png)
 
     **Figure 12** Portrait mode 
 
-  ![en-us_image_0000001511580968](figures/en-us_image_0000001511580968.png)
+  ![portraitMode12](figures/portraitMode12.png)
 
 - When the container size is determined, set the width of a child element in percentage. The container space is then allocated among the element and sibling elements based on the set percentage.
 
@@ -594,11 +594,11 @@ Adaptive scaling means that the size of a child element is automatically adjuste
 
     **Figure 13** Landscape mode 
 
-  ![en-us_image_0000001563060777](figures/en-us_image_0000001563060777.png)
+  ![widthExample](figures/widthExample.png)
 
     **Figure 14** Portrait mode 
 
-  ![en-us_image_0000001511740564](figures/en-us_image_0000001511740564.png)
+  ![portraitMode](figures/portraitMode.png)
 
 
 ## Implementing Adaptive Extension
@@ -624,7 +624,7 @@ Adaptive extension allows users to drag the scrollbar to access content beyond t
       Scroll(this.scroller) {
         Column() {
           ForEach(this.arr, (item?:number|undefined) => {
-            if(item){
+            if(item != undefined){
               Text(item.toString())
                 .width('90%')
                 .height(150)
@@ -647,7 +647,7 @@ Adaptive extension allows users to drag the scrollbar to access content beyond t
   }
   ```
 
-  ![en-us_image_0000001511900524](figures/en-us_image_0000001511900524.gif)
+  ![scrollVerticalExample](figures/scrollVerticalExample.gif)
 
   Example of using a **Scroll** component in the horizontal layout:
 
@@ -665,7 +665,7 @@ Adaptive extension allows users to drag the scrollbar to access content beyond t
       Scroll(this.scroller) {
         Row() {
           ForEach(this.arr, (item?:number|undefined) => {
-            if(item){
+            if(item != undefined){
               Text(item.toString())
                 .height('90%')
                 .width(150)
@@ -688,4 +688,4 @@ Adaptive extension allows users to drag the scrollbar to access content beyond t
   }
   ```
 
-  ![en-us_image_0000001562940609](figures/en-us_image_0000001562940609.gif)
+  ![scrollHorizontalExample](figures/scrollHorizontalExample.gif)

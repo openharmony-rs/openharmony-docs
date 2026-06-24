@@ -2,8 +2,8 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -86,7 +86,7 @@ let path: drawing.Path = new drawing.Path();
 path.moveTo(10, 20);
 let iter: drawing.PathIterator = new drawing.PathIterator(path);
 let verbStr: Array<string> = ["MOVE", "LINE", "QUAD", "CONIC", "CUBIC", "CLOSE", "DONE"];
-let pointCount: Array<number> = [1,2,3,4,4,0,0]; //1,2,3,3.5,4,0,0
+let pointCount: Array<number> = [1,2,3,4,4,0,0];
 let points: Array<common2D.Point> = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}];
 let offset = 0;
 let verb = iter.next(points, offset);

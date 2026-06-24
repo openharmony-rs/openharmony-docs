@@ -326,9 +326,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let rawData = [0x01, 0x02, 0x03]; // change it to be correct.
 connectedTag.write(rawData).then(() => {
-    console.info("connectedTag.writeNdefTag Promise success.");
+    console.info("connectedTag.write Promise success.");
 }).catch((err: BusinessError)=> {
-    console.error("connectedTag.writeNdefTag Promise err: " + err);
+    console.error("connectedTag.write Promise err: " + err);
 });
 ```
 
@@ -404,9 +404,9 @@ import { connectedTag } from '@kit.ConnectivityKit';
 let rawData = [0x01, 0x02, 0x03]; // change it to be correct.
 connectedTag.write(rawData, (err)=> {
     if (err) {
-        console.error("connectedTag.writeNdefTag AsyncCallback err: " + err);
+        console.error("connectedTag.write AsyncCallback err: " + err);
     } else {
-        console.info("connectedTag.writeNdefTag AsyncCallback success.");
+        console.info("connectedTag.write AsyncCallback success.");
     }
 });
 ```

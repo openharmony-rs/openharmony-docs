@@ -27,7 +27,7 @@
 
 | 名称       | 类型      | 默认值   | 必填   | 描述                   |
 | -------- | ------- | ----- | ---- | -------------------- |
-| vertical | boolean | false | 否    | 使用水平分割线还是垂直分割线，默认水平。 |
+| vertical | boolean | false | 否    | 使用水平分割线还是垂直分割线，默认使用水平分割线。 |
 
 >  **说明：**
 >  不支持focusable、disabled属性。
@@ -98,4 +98,4 @@
 }
 ```
 
-![zh-cn_image_0000001173164799](figures/zh-cn_image_0000001173164799.jpg)
+![divider](figures/divider.jpg)

@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-The **Environment** module provides JS APIs for obtaining the root directories of the storage and user files.
+This module provides ArkTS APIs for obtaining the root directories of the storage and user files.
 
 > **NOTE**
 >

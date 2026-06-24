@@ -1,7 +1,7 @@
 # jsvm_types.h
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -56,6 +56,7 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 | [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) | JSVM_PropertyHandlerCfg                 | Defines the pointer type of the struct that contains the property handler.                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md)                                         | JSVM_Callback   | Defines the pointer types of the native functions provided by user. These functions are exposed to JavaScript via JSVM-API.                                |
 | [JSVM_CompileProfile](capi-jsvm-jsvm-compileprofile.md) | JSVM_CompileProfile | Defines the compilation sampling file transferred together with **JSVM_COMPILE_COMPILE_PROFILE**.|
+| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md) | JSVM_DeserializeResult | Defines the background deserialization result transferred together with **JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT**.|
 
 ### Enums
 
@@ -90,6 +91,7 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 | Name                                                                                                                                                                | typedef Keyword| Description|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------| -- | -- |
 | [typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env,void* finalizeData,void* finalizeHint)](#jsvm_finalize)                                                     | JSVM_CDECL* JSVM_Finalize | Defines a pointer to the **JSVM_Finalize** function. It is passed in when a native object or data is associated with a JavaScript object, and is called when the associated JavaScript object is reclaimed by the GC to execute the native cleanup action.|
+| [typedef void (JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env,void* finalizeData,void* finalizeHint,bool copied)](#jsvm_finalizearraybuffer)                   | JSVM_CDECL* JSVM_FinalizeArrayBuffer | Defines a pointer to the **JSVM_FinalizeArrayBuffer** function, which can be passed when the [OH_JSVM_CreateArrayBufferFromExternalMemory](capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory) API is called. The function is called to execute the native cleanup action when the **ArrayBuffer** object created by the API is reclaimed by GC. (This API can be used only after the **JSVM_EXPERIMENTAL** macro is defined.)|
 | [typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* streamData)](#jsvm_outputstream)                                                     | JSVM_CDECL* JSVM_OutputStream | Defines a pointer to the callback of the ASCII output stream. **data** indicates the pointer to the output data. **size** indicates the size of the output data. **void** is a null pointer that points to the end of the stream. **streamData** indicates the pointer passed to the API function together with the callback. The API function generates data to the output stream.|
 | [typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)](#jsvm_handlerforgc)                         | JSVM_CDECL* JSVM_HandlerForGC | Defines a pointer to the handler for GC callback.|
 | [typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location,const char* detail,bool isHeapOOM)](#jsvm_handlerforoomerror)                             | JSVM_CDECL* JSVM_HandlerForOOMError | Defines a pointer to the handler for OOM-Error callback.|
@@ -100,7 +102,7 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 
 | Name| typedef Keyword| Description|
 | ---- | ------------- | ---- |
-| uint16_t    | char16_t   | Create an alias, **char16_t**, for **uint16_t**.<br>This code ensures that the **char16_t** type is available in all target compilation environments, even in some old environments that do not support it. **char16_t** is a new basic data type introduced in C++11. It is used to store 16-bit characters and represent UTF-16-encoded characters.<br>If the compiler does not recognize **char16_t**, manually define a custom type whose underlying implementation is a 16-bit unsigned integer. The prerequisite is as follows: the current compiler is not a C++ compiler, or it is a Microsoft Visual C++ compiler with a version earlier than Visual Studio 2015 (exclusive).|
+| uint16_t    | char16_t   | Create an alias, **char16_t**, for **uint16_t**.<br>This code ensures that the **char16_t** type is available in all target compilation environments, even in some old environments that do not support it. **char16_t** is a new basic data type introduced in C++11. It is used to store 16-bit characters and represent UTF-16-encoded characters.<br>If the compiler does not recognize **char16_t**, manually define a custom type whose underlying implementation is a 16-bit unsigned integer. Prerequisite: The current compiler is not a C++ compiler.\|\| It is a Microsoft Visual C++ compiler with a version earlier than Visual Studio 2015 (exclusive).|
 
 ## Enum Description
 
@@ -293,7 +295,7 @@ Enumerates memory pressure levels.
 | JSVM_MEMORY_PRESSURE_LEVEL_NONE | No pressure.|
 | JSVM_MEMORY_PRESSURE_LEVEL_MODERATE | Moderate pressure.|
 | JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL | Critical pressure.|
-| JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY | Notifies the system of insufficient memory.<br>Warning: This has a significant negative impact on GC performance.<br>Suggestion: Use other values to affect the GC plan.<br>**Since**: 22 |
+| JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY | The system is notified that the memory is insufficient and garbage collection is triggered immediately.<br>**Since**: 22 |
 
 ### JSVM_CompileMode
 
@@ -333,6 +335,8 @@ Defines an enum for **id** in **JSVM_CompileOptions**. Each **id** corresponds t
 | JSVM_COMPILE_SCRIPT_ORIGIN | JSVM script origin.|
 | JSVM_COMPILE_COMPILE_PROFILE | JSVM compilation profile.|
 | JSVM_COMPILE_ENABLE_SOURCE_MAP | Source map enablement status of JSVM.|
+| JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT | Background deserialization result of the JSVM script.<br>**Since**: 24|
+| JSVM_COMPILE_CODE_CACHE_REJECTED | Whether the JSVM bytecode cache is rejected.<br>**Since**: 24|
 
 ### JSVM_RegExpFlags
 
@@ -598,6 +602,32 @@ typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env,void* finalizeData,void* f
 Defines a pointer to the **JSVM_Finalize** function. It is passed in when a native object or data is associated with a JavaScript object, and is called when the associated JavaScript object is reclaimed by the GC to execute the native cleanup action.
 
 **Since**: 11
+
+### JSVM_FinalizeArrayBuffer()
+
+```c
+#ifdef JSVM_EXPERIMENTAL
+typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env,void* finalizeData,void* finalizeHint,bool copied);
+#endif // JSVM_EXPERIMENTAL
+```
+
+**Description**
+
+> **NOTE**
+>
+> This API is an experimental API and can be used only after the **JSVM_EXPERIMENTAL** macro is defined.
+
+Defines a pointer to the **JSVM_FinalizeArrayBuffer** function, which can be passed when the [OH_JSVM_CreateArrayBufferFromExternalMemory](capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory) API is called. This function is called when the associated **ArrayBuffer** object is reclaimed by the GC to execute the native cleanup action. Comply with the following rules when using **JSVM_FinalizeArrayBuffer**:
+
+- The **JSVM_FinalizeArrayBuffer** callback function may be called at an uncertain time (for example, during GC or VM destruction), and the JSVM environment may have been destroyed when the callback is executed. Therefore, the **env** parameter of **JSVM_FinalizeArrayBuffer** is always **NULL**.
+
+- The callback function is used only for resource release. Do not execute complex logic. Other JSVM APIs cannot be called in the callback function.
+
+- The callback function may be called on a non-JSVM main thread. If the callback needs to access the shared status, atomic operations or locks must be used for synchronization.
+
+- The memory release policy is determined based on the **copied** parameter.
+
+**Since**: 26.0.0
 
 ### JSVM_OutputStream()
 

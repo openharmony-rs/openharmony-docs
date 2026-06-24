@@ -42,13 +42,15 @@ Obtains a VolumeGroupManager instance. This API uses an asynchronous callback to
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
+let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
 
 audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, value: audio.AudioVolumeGroupManager) => {
   if (err) {
-    console.error(`Failed to getVolumeGroupManager. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in doing getVolumeGroupManager.');
+  console.info('Succeeded in getting volume group manager.');
+  audioVolumeGroupManager = value;
 });
 
 ```
@@ -80,11 +82,13 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
+let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
 
-audioVolumeManager.getVolumeGroupManager(groupId).then((audioVolumeGroupManager: audio.AudioVolumeGroupManager) => {
-  console.info('Succeeded in doing getVolumeGroupManager.');
+audioVolumeManager.getVolumeGroupManager(groupId).then((value: audio.AudioVolumeGroupManager) => {
+  console.info('Succeeded in getting volume group manager.');
+  audioVolumeGroupManager = value;
 }).catch((err: BusinessError) => {
-  console.error(`Failed to getVolumeGroupManager. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -126,10 +130,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let audioVolumeGroupManager: audio.AudioVolumeGroupManager = audioVolumeManager.getVolumeGroupManagerSync(audio.DEFAULT_VOLUME_GROUP_ID);
-  console.info(`Get audioVolumeGroupManager success.`);
+  console.info('Succeeded in getting volume group manager.');
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get audioVolumeGroupManager, error: ${error}`);
+  console.error(`Failed to get volume group manager. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 

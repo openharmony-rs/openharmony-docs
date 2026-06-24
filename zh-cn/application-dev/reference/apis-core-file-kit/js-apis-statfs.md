@@ -1,6 +1,13 @@
 # @ohos.statfs (statfs)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @jinqiuheng-->
 
-该模块提供文件系统相关存储信息的功能，向应用程序提供获取文件系统总字节数、空闲字节数的JS接口。
+
+该模块提供文件系统相关存储信息的功能，向应用程序提供获取文件系统总字节数、空闲字节数的ArkTS接口。
 
 > **说明：**
 >

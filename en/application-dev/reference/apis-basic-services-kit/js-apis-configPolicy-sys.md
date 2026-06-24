@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @sunshine_1984-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @fang-jinxu-->
 
 The **configPolicy** module provides APIs for obtaining the corresponding directory and file path based on the predefined custom configuration level.
 

@@ -46,9 +46,9 @@
 
 3. 创建OH_PixelmapNative像素图对象。
 
-   创建滤镜需要一个图像框架定义的像素图对象（OH_PixelmapNative）。可以通过OH_PixelmapNative_CreatePixelMap()创建一个自定义的像素图，也可以通过OH_PixelmapNative_ConvertPixelmapNativeFromNapi()从外部引入像素图。
+   创建滤镜需要一个图像框架定义的像素图对象（OH_PixelmapNative）。可以通过OH_PixelmapNative_CreatePixelmap()创建一个自定义的像素图，也可以通过OH_PixelmapNative_ConvertPixelmapNativeFromNapi()从外部引入像素图。
    
-   本文以OH_PixelmapNative_CreatePixelMap()为例创建OH_PixelmapNative。该函数接受4个参数，第一个参数为图像像素数据的缓冲区，用于初始化PixelMap的像素。第二个参数是缓冲区长度。第三个参数是位图格式（包括长、宽、颜色类型、透明度类型等）。第四个参数即OH_PixelmapNative对象，作为出参使用。
+   本文以OH_PixelmapNative_CreatePixelmap()为例创建OH_PixelmapNative。该函数接受4个参数，第一个参数为图像像素数据的缓冲区，用于初始化Pixelmap的像素。第二个参数是缓冲区长度。第三个参数是位图格式（包括长、宽、颜色类型、透明度类型等）。第四个参数即OH_PixelmapNative对象，作为出参使用。
 
    ``` C++
    // 图片宽高分别为 600 * 400

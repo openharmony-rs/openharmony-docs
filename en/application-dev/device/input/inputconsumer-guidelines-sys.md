@@ -21,7 +21,7 @@ import { inputConsumer } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists the common APIs provided by the **inputConsumer** module. For details, see [ohos.multimodalInput.inputConsumer-sys](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md) and [ohos.multimodalInput.inputConsumer](../../reference/apis-input-kit/js-apis-inputconsumer.md).
+The following table lists common APIs for global shortcut key management. For details, see [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys) (System API)](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md) and [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys)](../../reference/apis-input-kit/js-apis-inputconsumer.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
@@ -35,7 +35,7 @@ The following table lists the common APIs provided by the **inputConsumer** modu
 
 ## How to Develop
 
-When an application that uses specific combination keys is started, call [on](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeron) to subscribe to combination key events. When the application is stopped, call [off](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeroff) to unsubscribe from combination key events.
+When an application that uses specific combination keys is started, call [on](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeronkey) to subscribe to combination key events. When the application is stopped, call [off](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeroffkey) to unsubscribe from combination key events.
 
 ```js
 import { inputConsumer } from '@kit.InputKit';

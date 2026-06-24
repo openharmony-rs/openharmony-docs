@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供系统应用对于快捷方式的增加、删除，以及查询能力，包括[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息的增加、删除以及查询等。
 
@@ -44,7 +44,7 @@ addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortc
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -129,7 +129,7 @@ deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-sho
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -486,9 +486,13 @@ getShortcutInfoByAbility(bundleName: string, moduleName: string, abilityName: st
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
- - 获取当前用户下应用的快捷方式时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。
+ - 查询当前用户下应用的快捷方式时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。
 
- - 获取其他用户下应用的快捷方式时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+ - 查询其他用户下应用的快捷方式时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+
+ - 查询当前用户下调用方应用自身的快捷方式时，不需要申请权限。
+
+ - 查询其他用户下调用方应用自身的快捷方式时，需要申请权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
 **系统接口：** 此接口为系统接口。
 
@@ -543,6 +547,43 @@ let appIndex = 0;
 
 try {
   let shortcutInfos: Array<shortcutManager.ShortcutInfo> = shortcutManager.getShortcutInfoByAbility(bundleName, moduleName, abilityName, userId, appIndex);
+  console.info('getShortcutInfoByAbility shortcutInfos is' + JSON.stringify(shortcutInfos));
+} catch (err) {
+  console.error(`getShortcutInfoByAbility errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+}
+```
+
+```ts
+// 不传入可选参数appIndex
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 请开发者替换为实际要查询的bundleName、moduleName、abilityName和userId。
+const bundleName = 'com.example.myapplication';
+const moduleName = 'application';
+const abilityName = 'ApplicationAbility';
+let userId = 100;
+
+try {
+  let shortcutInfos: Array<shortcutManager.ShortcutInfo> = shortcutManager.getShortcutInfoByAbility(bundleName, moduleName, abilityName, userId);
+  console.info('getShortcutInfoByAbility shortcutInfos is' + JSON.stringify(shortcutInfos));
+} catch (err) {
+  console.error(`getShortcutInfoByAbility errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+}
+```
+
+```ts
+// 不传入可选参数userId和appIndex
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 请开发者替换为实际要查询的bundleName、moduleName和abilityName。
+const bundleName = 'com.example.myapplication';
+const moduleName = 'application';
+const abilityName = 'ApplicationAbility';
+
+try {
+  let shortcutInfos: Array<shortcutManager.ShortcutInfo> = shortcutManager.getShortcutInfoByAbility(bundleName, moduleName, abilityName);
   console.info('getShortcutInfoByAbility shortcutInfos is' + JSON.stringify(shortcutInfos));
 } catch (err) {
   console.error(`getShortcutInfoByAbility errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);

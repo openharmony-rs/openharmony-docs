@@ -8,7 +8,7 @@
 
 This module provides basic capabilities for managing system sound effects, including defining system sound effect types and obtaining system sound effect players.
 
-> **NOTE**
+> **Note**:
 >
 > The initial APIs of this module are supported since API version 23. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 

@@ -1,10 +1,11 @@
 # Hid_Device
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:47:56.687Z pushedAt=2026-06-22T11:21:11.383Z -->
 
 ```c
 typedef struct Hid_Device {...} Hid_Device
@@ -31,5 +32,5 @@ Defines a struct for basic device information.
 | uint16_t productId | Product ID.|
 | uint16_t version | Version number.|
 | uint16_t bustype | Bus type.|
-| Hid_DeviceProp* properties | Device properties.|
+| Hid_DeviceProp* properties | Device properties indicated by [Hid_DeviceProp](capi-hid-ddk-types-h.md#hid_deviceprop).|
 | uint16_t propLength | Number of device properties.|

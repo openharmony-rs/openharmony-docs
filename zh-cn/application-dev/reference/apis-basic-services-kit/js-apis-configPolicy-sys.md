@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @sunshine_1984-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @fang-jinxu-->
 
 配置策略提供按系统预定义的定制配置层级获取对应目录和文件路径的能力。
 

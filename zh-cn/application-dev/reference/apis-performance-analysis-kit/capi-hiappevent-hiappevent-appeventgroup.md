@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -13,7 +13,7 @@ typedef struct HiAppEvent_AppEventGroup {...} HiAppEvent_AppEventGroup
 
 ## 概述
 
-一组事件信息，包含事件组的名称，按名称分组的单个事件信息数组，事件数组的长度。
+一组事件信息，用于管理和组织具有相同名称的事件信息。该结构体包含事件组的名称，按名称分组的单个事件信息数组，事件数组的长度。
 
 **起始版本：** 12
 

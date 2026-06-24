@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @li-weifeng2024; @xuzhihao666-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -26,7 +26,7 @@
   | Context类型 | 说明 | 获取方式 | 使用场景 |
   | -------- | -------- | -------- | -------- |
   | [ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md) | 应用的全局上下文，提供应用级别的信息和能力。| - 从API version 14开始，可以直接使用[getApplicationContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapplicationcontext14)获取。<br>- API version 14以前版本，只能使用其他Context实例的[getApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-context.md#getapplicationcontext)方法获取。 | - [获取当前应用的基本信息](#获取基本信息)。<br>- [获取应用级别的文件路径](#获取应用文件路径)。<br>- [获取和修改加密分区](#获取和修改加密分区)。<br>- [监听应用前后台变化](#监听应用前后台变化)。 |
-  | [AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md) | 模块级别的上下文，提供模块级别的信息和能力。| - 如果需要获取当前AbilityStage的Context，可以直接通过AbilityStage实例获取[context](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#属性)属性。<br> - 如果需要获取同一应用中其他Module的Context，可以通过[createModuleContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12)方法。 | - 获取当前模块的基本信息。<br>- [获取模块级别的文件路径](#获取应用文件路径)。|
+  | [AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md) | 模块级别的上下文，提供模块级别的信息和能力。| - 如果需要获取当前AbilityStage的Context，可以直接通过AbilityStage实例获取[context](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#属性)属性。<br> - 如果需要获取同一应用中其他Module的Context，可以通过[createModuleContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext)方法。 | - 获取当前模块的基本信息。<br>- [获取模块级别的文件路径](#获取应用文件路径)。|
   | [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | UIAbility组件对应的上下文，提供UIAbility对外的信息和能力。| - 通过UIAbility实例直接获取[context](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#属性)属性。<br>- 在UIAbility的窗口中加载的UI组件实例，需要使用@ohos.arkui.UIContext提供的[getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)方法。 | - 获取当前UIAbility的基本信息。<br>- 启动其他应用或原子化服务、连接/断连系统应用创建的ServiceExtensionAbility等。<br>- 销毁自身的UIAbility。 |
   | [ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md) | ExtensionAbility组件对应的上下文，每种类型的ExtensionContext提供不同的信息和能力。| 通过ExtensionAbility实例直接获取Context属性。 | 不同类型的ExtensionAbility对应的Context提供的能力不同。以输入法上下文[InputMethodExtensionContext](../reference/apis-ime-kit/js-apis-inputmethod-extension-context.md)为例，主要提供如下能力：<br>- 获取InputMethodExtensionAbility的基本信息。<br>- 销毁当前输入法。|
   | [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) | ArkUI的UI实例上下文，提供UI操作相关的能力。与上述其他类型的Context无直接关系。 | - 在UI组件内获取UIContext，直接使用组件内置的[getUIContext](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)方法。<br>- 在存在Window实例的情况下，使用@ohos.window提供的[getUIContext](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法。 | 主要用于UI实例中UI相关操作，例如：<br>- 获取当前UI实例的字体。<br>- 显示不同类型的弹框。<br>- 设置软键盘弹出时UI避让模式。 |
@@ -71,7 +71,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 ### 获取本应用中其他Module的Context（模块级别的上下文）
 
-调用[createModuleContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12)方法，获取本应用中其他Module的Context。获取到其他Module的Context之后，即可获取到相应Module的资源信息。
+调用[createModuleContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext)方法，获取本应用中其他Module的Context。获取到其他Module的Context之后，即可获取到相应Module的资源信息。
 
 <!-- @[createModuleContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/CreateModuleContext.ets) -->
 
@@ -306,7 +306,7 @@ export default class EntryAbility extends UIAbility {
 
 ### 获取应用文件路径
 
-[基类Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)提供了获取应用文件路径的能力，[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)、[AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)和[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)均继承该能力。不同类型的Context获取的路径可能存在差异。
+[Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)提供了获取应用文件路径的能力，[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)、[AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)和[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)均继承该能力。不同类型的Context获取的路径可能存在差异。
 
 - 通过[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)可以获取应用级的文件路径。该路径用于存放应用全局信息，路径下的文件会跟随应用的卸载而删除。
 - 通过[AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)，可以获取[Module](../quick-start/application-package-overview.md)级的文件路径。该路径用于存放Module相关信息，路径下的文件会跟随[HAP](../quick-start/hap-package.md)/[HSP](../quick-start/in-app-hsp.md)的卸载而删除。HAP/HSP的卸载不会影响应用级路径下的文件，除非该应用的HAP/HSP已全部卸载。
@@ -329,7 +329,7 @@ export default class EntryAbility extends UIAbility {
   | tempDir | 临时目录。 | <路径前缀>/<加密等级>/base/temp | <路径前缀>/<加密等级>/base/**haps/\<module-name>**/temp |
   | databaseDir | 数据库目录。 | <路径前缀>/<加密等级>/database | <路径前缀>/<加密等级>/database/**\<module-name>** |
   | distributedFilesDir | 分布式文件目录。 | <路径前缀>/el2/distributedFiles | <路径前缀>/el2/distributedFiles/ |
-  | resourceDir<sup>11+<sup> | 资源目录。<br/>**说明：**<br/> 需要开发者手动在`\<module-name>\resource`路径下创建`resfile`目录。 | 不涉及 | <路径前缀>/el1/bundle/**\<module-name>**/resources/resfile |
+  | resourceDir<sup>11+<sup> | 资源目录。<br/>**说明：**<br/> 需要开发者手动在`\<module-name>\resources`路径下创建`resfile`目录。 | 不涉及 | <路径前缀>/el1/bundle/**\<module-name>**/resources/resfile |
   | cloudFileDir<sup>12+</sup> | 云文件目录。 | <路径前缀>/el2/cloud | <路径前缀>/el2/cloud/ |
   | logFileDir<sup>22+</sup> | 日志文件目录。 | <路径前缀>/el2/log | <路径前缀>/el2/log/ |
 
@@ -398,7 +398,7 @@ export default class EntryAbility extends UIAbility {
           // ···
           Button() {
             Text('create file')
-        		// ···
+            // ···
               .onClick(() => {
                 let applicationContext = this.context.getApplicationContext();
                 // 获取应用文件路径
@@ -538,43 +538,7 @@ struct AreaContext {
 
 ### 监听应用前后台变化
 
-开发者可以使用[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)的相关能力，监听应用的前后台变化。当应用前后台切换时，可以收到相应回调函数的通知，从而执行一些依赖前后台的方法，或者进行应用前后台切换频率等数据统计。
-
-以[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。
-
-<!-- @[lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/lifecycleability/LifecycleAbility.ets) -->
-
-``` TypeScript
-import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-const TAG = '[LifecycleAbility]';
-const DOMAIN = 0xF811;
-
-export default class LifecycleAbility extends UIAbility {
-  onCreate() {
-    let applicationStateChangeCallback: ApplicationStateChangeCallback = {
-      onApplicationForeground() {
-        hilog.info(DOMAIN, TAG, 'applicationStateChangeCallback onApplicationForeground');
-      },
-      onApplicationBackground() {
-        hilog.info(DOMAIN, TAG, 'applicationStateChangeCallback onApplicationBackground');
-      }
-    }
-
-    // 1.获取applicationContext
-    let applicationContext = this.context.getApplicationContext();
-    try {
-      // 2.通过applicationContext注册应用前后台状态监听
-      applicationContext.on('applicationStateChange', applicationStateChangeCallback);
-    } catch (paramError) {
-      hilog.error(DOMAIN, TAG, `error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
-    }
-    hilog.info(DOMAIN, TAG, 'Register applicationStateChangeCallback');
-  }
-}
-```
+开发者可以使用`ApplicationContext`的[on('applicationStateChange')](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonapplicationstatechange10)监听应用的前后台变化，详见[监听应用前后台变化](application-lifecycle.md#监听应用前后台变化)中的介绍。
 
 ### 监听UIAbility生命周期变化
 

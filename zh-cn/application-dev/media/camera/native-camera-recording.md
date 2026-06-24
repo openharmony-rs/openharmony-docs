@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-录像也是相机应用的最重要功能之一，录像是循环帧的捕获。对于录像的流畅度，开发者可以参考[拍照参考](native-camera-shooting.md)中的步骤5，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
+录像是循环帧的捕获，同时也是相机应用的最重要功能之一。对于录像的流畅度，开发者可以参考拍照(C/C++)中的[开发步骤](native-camera-shooting.md#开发步骤)7，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 

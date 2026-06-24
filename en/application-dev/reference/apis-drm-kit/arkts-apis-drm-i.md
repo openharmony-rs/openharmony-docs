@@ -85,7 +85,7 @@ Defines a status attribute for a media key.
 
 | Name     | Type                       | Read-Only| Optional     | Description        |
 | -------- | -------------------------|----|---------| ------------- |
-| name   | string | No |  No      | Name of the media key status attribute, for example, expiration time or content protection level.     |
+| name   | string | No |  No      | Name of the media key status attrribute. Common names include the media key expiration time and content protection level. The available names are determined by the DRM solution.     |
 | value     | string            | No  | No | Value of the media key status attribute.|
 
 ## KeysInfo

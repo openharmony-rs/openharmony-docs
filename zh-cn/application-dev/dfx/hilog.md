@@ -51,6 +51,8 @@ HiLog日志系统，提供给系统框架、服务、以及应用，用于打印
 > 日志级别：I表示Info级别，其余级别参考[日志等级](../reference/apis-performance-analysis-kit/capi-log-h.md#loglevel)首字母。
 >
 > domainID：A03200中A表示应用日志（LOG_APP），3200表示domainID为0x3200。
+>
+> 日志tag：最大长度为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。
 
 <!--RP15End-->
 

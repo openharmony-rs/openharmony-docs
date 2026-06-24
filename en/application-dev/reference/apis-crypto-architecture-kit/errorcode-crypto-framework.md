@@ -48,6 +48,42 @@ An unexpected error occurs.
 
 Check whether the system is running properly.
 
+## 17620003 Parameter Verification Failed
+
+**Error Message**
+
+Parameter check failed.
+
+**Description**
+
+Parameter verification failed.
+
+**Possible Causes**
+
+The entered parameter value exceeds the allowed range of a specification, for example, length or value.
+
+**Solution**
+
+Checks whether the entered parameter values are within the supported ranges.
+
+## 17620004 Invalid Function Call
+
+**Error Message**
+
+invalid function call. 
+
+**Description**
+
+Invalid function call.
+
+**Possible Causes**
+
+This operation is not supported by the current function.
+
+**Solution**
+
+Check whether the function is properly called.
+
 ## 17630001 Crypto Operation Error
 
 **Error Message**

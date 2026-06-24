@@ -47,7 +47,7 @@ struct AnimatablePropertyExample {
 ```
 
 
-![en-us_image_0000001600119626](figures/en-us_image_0000001600119626.gif)
+![animation-frame](figures/animation-frame.gif)
 
 
 ## Changing Graphic Shapes Using Custom Data Types and \@AnimatableExtend Decorator
@@ -194,5 +194,5 @@ struct AnimatedShape {
 ```
 
 
-![en-us_image_0000001592669598](figures/en-us_image_0000001592669598.gif)
+![animation-shape](figures/animation-shape.gif)
 

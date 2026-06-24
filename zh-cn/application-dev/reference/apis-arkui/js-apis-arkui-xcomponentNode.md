@@ -1,21 +1,23 @@
 # XComponentNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
 
-提供XComponent节点XComponentNode，表示组件树中的[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件，用于[EGL](../native-lib/egl.md)/[OpenGLES](../native-lib/opengles.md)和媒体数据写入，并支持动态修改节点渲染类型。
+提供XComponent节点XComponentNode，表示组件树中的[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件，用于[EGL](../native-lib/egl.md)/[OpenGL ES](../native-lib/opengles.md)和媒体数据写入，并支持动态修改节点渲染类型。
 
 > **说明：**
 >
-> 从API version 12开始废弃，建议使用[类型为XComponent的typeNode](./js-apis-arkui-frameNode.md#xcomponent12)的方式实现。
+> - 从API version 12开始废弃，建议使用类型为[XComponent](./js-apis-arkui-frameNode.md#xcomponent12)的typeNode的方式实现。
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> 当前不支持在预览器中使用XComponentNode。
+> - 当前不支持在预览器中使用XComponentNode。
 
 ## 导入模块
 

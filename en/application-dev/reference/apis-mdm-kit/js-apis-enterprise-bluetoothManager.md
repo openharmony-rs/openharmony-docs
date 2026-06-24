@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **bluetoothManager** module provides Bluetooth management capabilities, including setting and obtaining Bluetooth information.
 

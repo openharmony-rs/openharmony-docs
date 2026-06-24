@@ -1,8 +1,8 @@
 # Web深色模式适配
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @KeeGitee-->
-<!--Designer: @LongLie-->
+<!--Owner: @ohxianzhi-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -48,7 +48,7 @@ ArkWeb提供灵活控制Web组件深色模式的能力，支持独立于系统�
     <h1>Example page</h1>
     <input name="input1" type="text" placeholder="please enter text">
     <br><br>
-    <input name="input2" type="text" placeholder="please enter text" style="background-color: Lightgray;">
+    <input name="input2" type="text" placeholder="please enter text" style="background-color: lightgray;">
     <br><br>
     <progress value="50" max="100"></progress>
     <br><br>

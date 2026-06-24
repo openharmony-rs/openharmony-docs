@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从版本26.0.0开始，签名验签支持OnlySign/OnlyVerify模式。对应的算法规格请查看[签名验签算法规格：ECDSA](crypto-sign-sig-verify-overview.md#ecdsa)。
+从API版本26.0.0开始，签名验签支持OnlySign/OnlyVerify模式。对应的算法规格请查看[签名验签算法规格：ECDSA](crypto-sign-sig-verify-overview.md#ecdsa)。
 
 **签名**
 
@@ -64,7 +64,7 @@
   async function main() {
     let messageData: cryptoFramework.DataBlob =
       { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
-    // 先使用 Md 计算 SHA256 摘要（32字节）
+    // 先使用 Md 计算 SHA1 摘要（20字节）
     let md = cryptoFramework.createMd('SHA1');
     await md.update(messageData);
     let digestBlob = await md.digest();

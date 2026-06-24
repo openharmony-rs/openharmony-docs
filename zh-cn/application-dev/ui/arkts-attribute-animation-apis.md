@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本章节讨论的属性动画不是狭义的[属性动画接口](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)，而是通过给定新的可动画属性终值，对属性产生动画的方式。
+> 本章节讨论的属性动画不是狭义的[属性动画 (animation)](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)，而是通过给定新的可动画属性终值，对属性产生动画的方式。
 
 | 动画接口 | 作用域 | 原理 | 使用场景 |
 | -------- | -------- | -------- | -------- |
@@ -87,7 +87,7 @@ struct attrAnimateToDemo2 {
 }
 ```
 
-![zh-cn_image_0000001599958466](figures/zh-cn_image_0000001599958466.gif)
+![zh-cn_image_0000001599958466](figures/animateTo-01.gif)
 
 
 ## 使用animation产生属性动画
@@ -154,7 +154,7 @@ struct attrAnimationDemo3 {
 ```
 
 
-![zh-cn_image_0000001649279705](figures/zh-cn_image_0000001649279705.gif)
+![zh-cn_image_0000001649279705](figures/animation-01.gif)
 
 ## 使用keyframeAnimateTo产生属性动画
 

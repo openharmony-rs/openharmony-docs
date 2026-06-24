@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 该模块主要提供电池状态和充放电状态的查询接口。
 
@@ -28,7 +28,7 @@ import {batteryInfo} from '@kit.BasicServicesKit';
 
 | 名称      | 类型        | 只读 |  说明     |
 | --------------- | ------------------- | ---- | ---------------------|
-| batterySOC                                | number                                         | 是   | 表示当前设备剩余电池电量百分比。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                           |
+| batterySOC                                | number                                         | 是   | 表示当前设备剩余电池电量百分比，取值范围是[0，100]。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                           |
 | chargingStatus                            | [BatteryChargeState](#batterychargestate)      | 是   | 表示当前设备电池的充电状态。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                               |
 | healthStatus                              | [BatteryHealthState](#batteryhealthstate)      | 是   | 表示当前设备电池的健康状态。                               |
 | pluggedType                               | [BatteryPluggedType](#batterypluggedtype)      | 是   | 表示当前设备连接的充电器类型。                             |

@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong-->
+<!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 滚动条组件ScrollBar，用于配合可滚动组件使用，如[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)。
@@ -48,6 +48,8 @@ enableNestedScroll(enabled: Optional\<boolean>)
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -72,6 +74,8 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -89,7 +93,7 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 >  - ScrollBar组件负责定义可滚动区域的行为样式，ScrollBar的子节点负责定义滚动条的行为样式。
 >  - 滚动条组件与可滚动组件通过Scroller进行绑定，且只有当两者方向相同时，才能联动，ScrollBar与可滚动组件仅支持一对一绑定。
 >  - 从API version 12开始，ScrollBar组件没有子节点时，支持显示默认样式的滚动条。
->  - ScrollBar组件的显隐是通过BarState设置，组件内部会自动根据BarState设置调整opacity来控制显影，因此ScrollBar组件设置[opacity](./ts-universal-attributes-opacity.md#opacity18)属性不生效。
+>  - ScrollBar组件的显隐是通过BarState设置，组件内部会自动根据BarState设置调整opacity来控制显隐，因此ScrollBar组件设置[opacity](./ts-universal-attributes-opacity.md#opacity18)属性不生效。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -163,7 +167,7 @@ struct ScrollBarExample {
 }
 ```
 
-![zh-cn_image_0000001232775585](figures/zh-cn_image_0000001232775585.gif)
+![scrollBar](figures/scrollBar.gif)
 
 ## 示例2（不设置子节点）
 
@@ -210,7 +214,7 @@ struct ScrollBarExample {
 }
 ```
 
-![zh-cn_image_scrollbar](figures/zh-cn_image_scrollbar.gif)
+![zh-cn_image_scrollbar](figures/image-scrollbar.gif)
 
 ## 示例3（支持嵌套滚动）
 

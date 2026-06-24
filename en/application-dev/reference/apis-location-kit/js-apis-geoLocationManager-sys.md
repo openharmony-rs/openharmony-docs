@@ -114,9 +114,9 @@ Defines the configuration for obtaining the required data of the location servic
 | needStartScan |  boolean | No| No| **true**: Scanning needs to be initiated.<br>**false**: Scanning does not need to be initiated.<br>**System API**: This is a system API.|
 | scanInterval |  number | No| Yes| Scanning interval, in milliseconds. The specified value must be greater than **0**. The default value is **10000**.<br>**System API**: This is a system API.|
 | scanTimeout |  number | No| Yes| Scanning timeout interval, in milliseconds. The value ranges from **0** to **600000**. The default value is **10000**.<br>**System API**: This is a system API.|
-| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2.<br>**System API**: This is a system API.|
-| arfcn<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Absolute Radio Frequency Channel Number (ARFCN).<br>**System API**: This is a system API.|
-| plmnId<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Public Land Mobile Network Identifier (PLMN ID) of a SIM card.<br>**System API**: This is a system API.|
+| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
+| arfcn<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Absolute Radio Frequency Channel Number (ARFCN).<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
+| plmnId<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Public Land Mobile Network Identifier (PLMN ID) of a SIM card.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
 
 
 ## ContinuousLocationRequest<sup>12+</sup>
@@ -144,9 +144,9 @@ Defines the required data of the location service, including the Wi-Fi or Blueto
 | -------- | -------- | -------- | -------- | -------- |
 | wifiData | [WifiScanInfo](#wifiscaninfo10) | No| Yes| Wi-Fi scanning result.<br>**System API**: This is a system API.|
 | bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | No| Yes| Bluetooth scanning result.<br>**System API**: This is a system API.|
-| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2.<br>**System API**: This is a system API.|
-| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Camped cell information.<br> **System API**: This is a system API.|
-| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Neighboring cell information.<br> **System API**: This is a system API.|
+| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
+| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Camped cell information.<br> **System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
+| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Neighboring cell information.<br> **System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
 
 
 ## WifiScanInfo<sup>10+</sup>
@@ -163,7 +163,7 @@ Defines the Wi-Fi scanning information, including the SSID, BSSID, and RSSI of t
 | bssid | string | No| No| Base station subsystem identifier (BSSID) of a Wi-Fi hotspot.<br> **System API**: This is a system API.|
 | rssi | number | No| No| Received signal strength indicator (RSSI) of a Wi-Fi hotspot, in dBm.<br> **System API**: This is a system API.|
 | frequency | number | No| No| Frequency of a Wi-Fi hotspot, in Hz.<br>**System API**: This is a system API.|
-| timestamp | number | No| No| Scanning timestamp.<br> **System API**: This is a system API.|
+| timestamp | number | No| No| Timestamp, in microseconds.<br> **System API**: This is a system API.|
 
 
 ## BluetoothScanInfo<sup>10+</sup>
@@ -179,7 +179,7 @@ Defines the Bluetooth scanning information.
 | deviceName | string | No| No| Name of a Bluetooth device.<br> **System API**: This is a system API.|
 | macAddress | string | No| No| MAC address of a Bluetooth device.<br> **System API**: This is a system API.|
 | rssi | number | No| No| Signal strength of a Bluetooth device, in dBm.<br> **System API**: This is a system API.|
-| timestamp | number | No| No| Scanning timestamp.<br> **System API**: This is a system API.|
+| timestamp | number | No| No| Timestamp, in microseconds.<br> **System API**: This is a system API.|
 
 
 ## CellInfo<sup>23+</sup>
@@ -189,6 +189,8 @@ Defines cellular cell information.
 **System capability**: SystemCapability.Location.Location.Core
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -285,7 +287,7 @@ Subscribes to changes in the required data of the location service, including Wi
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -333,7 +335,7 @@ Unsubscribes from changes in the required data of the location service and stops
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -379,7 +381,7 @@ Enables the location service. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -426,7 +428,7 @@ Enables the location service. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -467,7 +469,7 @@ Disables the location service.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -502,7 +504,7 @@ Enables the mock location switch.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -539,7 +541,7 @@ Disables the mock location switch.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -584,7 +586,7 @@ This API can be invoked only after [geoLocationManager.enableLocationMock](#geol
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -686,7 +688,7 @@ Enables the mock reverse geocoding function.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -722,7 +724,7 @@ Disables the mock geocoding function.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -766,7 +768,7 @@ This API can be invoked only after [geoLocationManager.enableReverseGeocodingMoc
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -886,7 +888,7 @@ Checks whether a user agrees with the privacy statement of the location service.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -929,7 +931,7 @@ Sets the user confirmation status for the privacy statement of the location serv
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -978,7 +980,7 @@ Obtains the required data of the location service. This API uses a promise to re
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1027,7 +1029,7 @@ Subscribes to status changes of the location icon. This API uses an asynchronous
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1071,7 +1073,7 @@ Unsubscribes from status changes of the location icon.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1115,7 +1117,7 @@ Obtains the current location icon status.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1162,7 +1164,7 @@ Enables the location switch for the specified system account. This API uses a pr
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1212,7 +1214,7 @@ Disables the location switch for the specified system account.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1260,7 +1262,7 @@ Checks whether the location switch is enabled for the specified system account.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1305,7 +1307,7 @@ If this parameter is set to **true**, the application can obtain the location in
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |

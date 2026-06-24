@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **usbManager** module provides APIs for USB management.
 
@@ -219,7 +219,7 @@ A policy conflict is reported if the USB storage device access policy is disable
 
 You can disable a USB storage device by calling this API or [addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14). The latter is recommended.
 
-**Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_USB before API version 26.0.0; ohos.permission.ENTERPRISE_MANAGE_USB or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS (the application must be [activated as the built-in device administrator application](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)) since API version 26.0.0
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -272,7 +272,7 @@ getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
 Obtains the access policy of the USB storage device.
 
-**Required permission**: ohos.permission.ENTERPRISE_MANAGE_USB
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_USB before API version 26.0.0; ohos.permission.ENTERPRISE_MANAGE_USB or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS (the application must be [activated as the built-in device administrator application](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)) since API version 26.0.0
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 

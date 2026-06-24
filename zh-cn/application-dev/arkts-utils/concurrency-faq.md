@@ -1,8 +1,8 @@
 # 并发常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -71,13 +71,14 @@
 
    3. 如果调用态日志和执行态日志时间间隔较久，且应用关注任务的执行时机，可以按照以下步骤继续分析。
 
-      1. 查看是否发生大量TaskPool任务堆积未执行的情况。如果在较短时间内执行大量任务（出现大量调用态日志），后执行的任务需要等待前置任务执行完。此时可以检查TaskPool的扩容情况，如果在调用态日志打印之前，TaskPool工作线程数量已扩容到接近上限（上限数量为日志片段log2中的maxThreads字段），则可能是短时间内任务数量太多导致，应用可以通过合理设置优先级将重要任务和有时效要求的任务优先执行。
+      1. 查看是否发生大量TaskPool任务堆积未执行的情况。如果在较短时间内执行大量任务（出现大量调用态日志），后执行的任务需要等待前置任务执行完。此时可以检查TaskPool的扩容情况，如果在调用态日志打印之前，TaskPool工作线程数量已扩容到接近上限（上限数量为日志片段log2中的maxNum值），则可能是短时间内任务数量太多导致，应用可以通过合理设置优先级将重要任务和有时效要求的任务优先执行。
 
       2. 查看前置执行的TaskPool任务是否本身耗时较长或者发生阻塞。如果前置任务本身耗时较长，应用可以通过合理设置优先级解决。如果前置任务发生了意料之外的阻塞（一段时间后阻塞解除），应用需要排查自身业务逻辑。
 
    ```ts
    // hilog 日志片段（模拟），格式如下，具体数值由应用运行时决定
    // log1： 大量任务提交
+   // 其中taskId为可变值表示任务id，priority为可变值表示优先级，以实际程序打印为准。
    taskpool:: Task Allocation: taskId, priority
    taskpool:: Task Allocation: taskId, priority
    taskpool:: Task Allocation: taskId, priority
@@ -85,9 +86,12 @@
    taskpool:: Task Allocation: taskId, priority
    ...
    // log2: 扩容日志
-   taskpool: max:, create:, total:
+   // 其中 maxNum为可变值表示最大支持的taskpool线程数，createNum为可变值表示当前创建的taskpool线程数，totalNum为可变值表示当前创建出来的taskpool线程总数，以实际程序打印为准。不同版本因为日志限流优化等原因，日志会进行细微调整，可能呈现的日志如下：
+   版本1: taskpool:: maxThreads: maxNum, created num: createNum, total num: totalNum
+   版本2: taskpool:: max: maxNum, create: createNum, total: totalNum
    // log3: 执行态日志
-   taskpool:: Task Perform: name, taskId, runningLoop:
+   // 其中name为可变值表示执行的函数名，taskId为可变值表示任务id，runningLoopId为可变值表示线程创建出来的loop的id，以实际程序打印为准。
+   taskpool:: Task Perform: name, taskId, runningLoop: runningLoopId
    ```
 
 3. **TaskPool任务执行时是否发生异常**。
@@ -121,7 +125,7 @@
                   // 其他业务逻辑
                   // ...
                   let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
-                  taskpool.execute(task).then((res: object) => {
+                  taskpool.execute(task).then((res: Object) => {
                     // 任务执行完处理结果
                     this.message = '任务执行结果:'+ res;
                     // ...
@@ -169,19 +173,28 @@
 **场景示例**
 
 如果问题场景对应的TaskPool任务是串行队列任务，查看该串行队列内前面任务的执行情况。如日志片段1所示该串行队列有四个任务，问题场景对应的是第四个任务，查看日志片段2发现第二个任务执行了2s，对于应用业务逻辑是不正常的。
+
 ```ts
 // hilog 日志片段1（模拟）
 // seqRunner共有四个任务
+// 其中389508780288为可变值表示任务id，393913878464为可变值表示seqRunner的id，以实际程序打印为准。
 taskpool:: taskId 389508780288 in seqRunner 393913878464 immediately.
+// 其中394062838784为可变值表示任务id，393913878464为可变值表示seqRunner的id，以实际程序打印为准。
 taskpool:: add taskId: 394062838784 to seqRunner 393913878464
+// 其中393918679936为可变值表示任务id，393913878464为可变值表示seqRunner的id，以实际程序打印为准。
 taskpool:: add taskId: 393918679936 to seqRunner 393913878464
+// 其中393918673408为可变值表示任务id，393913878464为可变值表示seqRunner的id，以实际程序打印为准。
 taskpool:: add taskId: 393918673408 to seqRunner 393913878464
 
 // hilog 日志片段2（模拟）
 // 查看第二个任务, 发现任务执行到执行结束间隔2s
+// 其中394062838784为可变值表示任务id，393913878464为可变值表示seqRunner的id，以实际程序打印为准。
 18:28:28.223 taskpool:: taskId 394062838784 in seqRunner 393913878464 immediately.
+// 其中name为可变值表示执行的函数名, 394062838784为可变值表示任务id，3959344048为可变值表示线程创建出来的loop的id，以实际程序打印为准。
 18:28:28.224 taskpool:: Task Perform: name, 394062838784, runningLoop: 3959344048
-18:28:30.243 taskpool:: Task Perform End: 394062838784, performResult : Successful
+// 其中394062838784为可变值表示任务id，12为可变值表示日期 18:28:28.240为可变值表示时间，以实际程序打印为准。不同版本因为日志限流优化等原因，日志会进行细微调整，可能呈现的日志如下：
+版本1: 18:28:30.243 taskpool:: Task Perform End: 394062838784
+版本2: 18:28:30.243 taskpool:: Task Perform End: 394062838784, 12 18:28:28.240
 ```
 
 **解决方案**
@@ -240,12 +253,12 @@ TaskPool第一次执行任务慢，间隔几百毫秒，原因是子线程反序
 
 **问题原因**
 
-TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满足线程间通信支持的对象类型，详情请查看[线程间通信对象](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。当Concurrent函数的入参或返回结果是线程间通信不支持的对象类型时，会出现上述现象。应用可以结合Hilog日志中打印的对象类型进一步排查通信对象是否符合要求。
+TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满足线程间通信支持的对象类型，详情请查看[序列化支持类型](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。当Concurrent函数的入参或返回结果是线程间通信不支持的对象类型时，会出现上述现象。应用可以结合Hilog日志中打印的对象类型进一步排查通信对象是否符合要求。
 
 **场景示例**
 
 1. 应用在启动TaskPool任务时，在Concurrent函数中传入线程间通信不支持的对象类型，导致抛出入参序列化失败异常。  
-**解决方案**：应用需要查看[线程间通信对象](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)排查Concurrent函数入参。
+**解决方案**：应用需要查看[序列化支持类型](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)排查Concurrent函数入参。
 
 2. 应用在启动TaskPool任务时，抛出入参序列化失败异常，同时Hilog打印错误日志Unsupported serialize object type: Proxy（API version 20及之后版本打印错误日志：Serialize error: Serialize don't support object type: Proxy）。基于错误日志可知应用在Concurrent函数中传入代理对象，排查代码发现入参使用了@State装饰器，导致原对象实际上变为Proxy代理对象，代理对象不属于线程间通信支持的对象类型。  
 **解决方案**：TaskPool不支持@State、@Prop等装饰器修饰的复杂类型，具体内容可见[TaskPool注意事项](taskpool-introduction.md#taskpool注意事项)。应用需要去掉@State装饰器。
@@ -360,7 +373,7 @@ function testInstanceof() {
 testInstanceof();
 ```
 
-<!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->    
+<!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->  
 
 ``` TypeScript
 // pages/Sendable.ets

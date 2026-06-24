@@ -39,7 +39,7 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 
 **Error codes**:
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -95,7 +95,7 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 
 **Error codes**:
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -145,7 +145,7 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 
 **Error codes**:
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -176,7 +176,7 @@ class EntryAbility extends UIAbility {
 
 ## vcard.exportVCard
 
-exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuliderOptions, callback: AsyncCallback\<string\>\): void
+exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuilderOptions, callback: AsyncCallback\<string\>\): void
 
 Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result.
 
@@ -195,7 +195,7 @@ Exports contacts as a vcard file (VCF). This API uses an asynchronous callback t
 
 **Error codes**:
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -256,7 +256,7 @@ Exports contacts as a vcard file (VCF). This API uses a promise to return the re
 
 **Error codes**:
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -312,7 +312,7 @@ Exports contacts as a vcard file (VCF). This API uses an asynchronous callback t
 
 **Error codes**:
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -349,10 +349,10 @@ Defines the VCard information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name        | Type  | **Mandatory**|    Description   |
-| ------------ | ------ | ---- | ---------- |
-| cardType     | [VCardType](../apis-telephony-kit/js-apis-vcard.md) |  No | VCard version. The default value is **VERSION_21**.    |
-| charset       | string |  No | VCard encoding type. The default value is **UTF-8**.    |
+| Name        | Type  | Read-Only| Optional|    Description   |
+| ------------ | ------ | ----|----| ---------- |
+| cardType     | [VCardType](#vcardtype) |  No| Yes| VCard version. The default value is **VERSION_21**.    |
+| charset       | string |  No|Yes | VCard encoding type. The default value is **UTF-8**.    |
 
 ## VCardType
 

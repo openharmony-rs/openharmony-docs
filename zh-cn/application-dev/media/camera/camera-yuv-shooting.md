@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-详细的相机功能API说明请参考[Camera 模块描述](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的相机功能API说明请参考Camera模块描述[OH_Camera](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 1. 导入依赖模块。
 
@@ -171,19 +171,44 @@
           try {
             console.info("On photoAssetAvailable callback uri: ${photoAsset.uri}");
             let accessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+            // 保存图片。
+            try {
+              // 创建媒体资产变更请求。
+              let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
+              let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+              console.info("Start to save camera photo");
+              // 保存相机拍摄的照片。
+              await assetChangeRequest.saveCameraPhoto(photoAccessHelper.ImageFileType.JPEG);
+              // 提交媒体变更请求。
+              await phAccessHelper.applyChanges(assetChangeRequest);
+              console.info("Save camera photo end");
+              await phAccessHelper.release();
+            } catch (error) {
+              console.error("On photoAssetAvailable save camera photo error:  ${error.code}, ${error.message}");
+            }
             // 获取图片pixelmap信息。
             try {
               class MediaDataHandler implements photoAccessHelper.QuickImageDataHandler<image.Picture> {
                 onDataPrepared(data: image.Picture, imageSource: image.ImageSource, map: Map<string, string>) {
-                  if (data === undefined) {
-                    console.error("On photoAssetAvailable callback data is null or undefined");
+                  if (data != undefined) {
+                    console.info("On photoAssetAvailable callback data is not undefined");
+                    let pixelMap: image.PixelMap = data.getMainPixelmap();
+                    pixelMap.getImageInfo().then((info) => {
+                      console.info("On photoAssetAvailable pixelMap.width: " + info.size.width + ", pixelMap.height: " +
+                        info.size.height + ", pixelMap.pixelFormat: " + info.pixelFormat);
+                    })
+                    callback(pixelMap, photoAsset.uri);
+                  } else if (data === undefined && imageSource != undefined) {
+                    console.info("On photoAssetAvailable callback data is undefined, and imageSource is not undefined");
+                    imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+                      callback(pixelMap, photoAsset.uri);
+                    }).catch((error: BusinessError) => {
+                      console.error("On photoAssetAvailable callback createPixelMap failed, error: ${error.message}");
+                    })
+                  } else {
+                    console.error("On photoAssetAvailable callback data and imageSource are both undefined");
                     return;
                   }
-                  imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
-                    callback(pixelMap, photoAsset.uri);
-                  }).catch((error: BusinessError) => {
-                    console.error("On photoAssetAvailable callback createPixelMap failed, error: ${error.message}");
-                  })
                 }
               }
               // 创建数据共享谓词。
@@ -198,31 +223,10 @@
                 deliveryMode: photoAccessHelper.DeliveryMode.BALANCE_MODE
               };
               const handler = new MediaDataHandler();
-              // 相册管理模块的实例。
-              let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-              // 获取媒体资产数组指针。
-              phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
-                let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-                await photoAccessHelper.MediaAssetManager.quickRequestImage(context, photoAsset, requestOptions, handler);
-                console.info("On photoAssetAvailable callback end");
-              });
+              await photoAccessHelper.MediaAssetManager.quickRequestImage(context, photoAsset, requestOptions, handler);
+              console.info("On photoAssetAvailable callback end");
             } catch (error) {
               console.error("On photoAssetAvailable quickRequest error:  ${error.code}, ${error.message}");
-            }
-            // 保存图片。
-            try {
-              // 创建媒体资产变更请求。
-              let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
-              let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-              console.info("Start to save camera photo");
-              // 保存相机拍摄的照片。
-              await assetChangeRequest.saveCameraPhoto();
-              // 提交媒体变更请求。
-              await phAccessHelper.applyChanges(assetChangeRequest);
-              console.info("Save camera photo end");
-              await phAccessHelper.release();
-            } catch (error) {
-              console.error("On photoAssetAvailable save camera photo error:  ${error.code}, ${error.message}");
             }
           } catch (error) {
             console.error("On photoAssetAvailable callback error:  ${error.code}, ${error.message}");
@@ -306,7 +310,7 @@
   }
   ```
 
-- 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[Camera错误码](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+- 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
 
   ```ts
   function onPhotoOutputError(photoOutput: camera.PhotoOutput): void {

@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 abilityConnectionManager模块提供了应用协同接口管理能力。设备组网成功（需登录同账号、双端打开蓝牙）后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输，包括字符串、[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流、图片、传输流。
 
@@ -27,6 +27,8 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 
 注册collaborateEvent事件的回调监听,使用callback异步回调。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -39,7 +41,7 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'，完成`collaborateEvent()`调用，触发该事件。   |
 | sessionId | number  | 是    | 表示创建的协同会话ID。    |
-| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | 是    | 表示注册的回调函数，callback返回协同事件的信息。    |
+| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 是    | 表示注册的回调函数，callback返回协同事件的信息。    |
 
 **错误码：**
 
@@ -68,6 +70,8 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 注册receiveImage事件的回调监听。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -88,7 +92,7 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -108,6 +112,8 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 取消collaborateEvent事件的回调监听。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -120,7 +126,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'。    |
 | sessionId | number  | 是    | 表示创建的协同会话ID。    |
-| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则关闭该监听。如果未传入该参数，则取消所有'collaborateEvent'事件监听。    |
+| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则关闭该监听。如果未传入该参数，则取消所有'collaborateEvent'事件监听。    |
 
 **错误码：**
 
@@ -128,7 +134,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -145,6 +151,8 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
 取消receiveImage事件的回调监听。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -166,7 +174,7 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -183,6 +191,8 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?:&nbsp;number):&nbsp;Promise&lt;void&gt;
 
 应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片，使用Promise异步回调。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -220,7 +230,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
@@ -233,7 +243,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
       return;
       }
 
-      let file = fs.openSync(photoSelectResult.photoUris[0], fs.OpenMode.READ_ONLY);
+      let file = fileIo.openSync(photoSelectResult.photoUris[0], fileIo.OpenMode.READ_ONLY);
       hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
 
       let sessionId = 100;
@@ -256,6 +266,8 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise&lt;number&gt;
 
 应用连接成功后，设备A或设备B可创建传输流，发送图片和视频流，使用Promise异步回调。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -282,7 +294,6 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 32300001      | Only one stream can be created for the current session.|
@@ -315,6 +326,8 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
 
 设置传输流与Surface的绑定关系。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -360,9 +373,11 @@ setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbs
 
 ## abilityConnectionManager.getSurfaceId
 
-getSurfaceId(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
+getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 获取指定传输流绑定的Surface的唯一标识符。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -374,7 +389,7 @@ getSurfaceId(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 | param | [SurfaceParam](#surfaceparam) | 是    | 表示Surface的配置参数。 |
 
 **返回值：**
@@ -412,9 +427,11 @@ getSurfaceId(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 ## abilityConnectionManager.updateSurfaceParam
 
-updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
+updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
 
 更新与传输流绑定的Surface的配置信息。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -426,7 +443,7 @@ updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 | param | [SurfaceParam](#surfaceparam) | 是    | 表示Surface的配置参数。 |
 
 **错误码：**
@@ -458,9 +475,11 @@ updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;
 
 ## abilityConnectionManager.destroyStream
 
-destroyStream(sessionId:&nbsp;number):&nbsp;void
+destroyStream(streamId:&nbsp;number):&nbsp;void
 
 发送图片和视频流等业务结束后，创建传输流的应用应及时销毁传输流，否则会增加系统功耗。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -472,7 +491,7 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 
 **错误码：**
 
@@ -480,7 +499,6 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
@@ -497,9 +515,11 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 
 ## abilityConnectionManager.startStream
 
-startStream(sessionId:&nbsp;number):&nbsp;void
+startStream(streamId:&nbsp;number):&nbsp;void
 
 启动指定传输流。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -511,7 +531,7 @@ startStream(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 
 **错误码：**
 
@@ -536,9 +556,11 @@ startStream(sessionId:&nbsp;number):&nbsp;void
 
 ## abilityConnectionManager.stopStream
 
-stopStream(sessionId:&nbsp;number):&nbsp;void
+stopStream(streamId:&nbsp;number):&nbsp;void
 
 停止指定传输流。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -550,7 +572,7 @@ stopStream(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 
 **错误码：**
 
@@ -572,22 +594,11 @@ stopStream(sessionId:&nbsp;number):&nbsp;void
   abilityConnectionManager.stopStream(sessionId)
   ```
 
-## CollaborateEventInfo
-
-协作事件信息。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.DistributedSched.AppCollaboration
-
-| 名称       | 类型   | 只读 | 可选 | 说明      |
-| -------- | ------ | ---- | ---- | ------- |
-| eventType | [CollaborateEventType](#collaborateeventtype) | 否    | 否   | 表示协作事件的类型。 |
-| eventMsg | string | 否    | 是   | 表示协作事件的协作消息。 |
-
 ## StreamParam
 
 流传输配置的参数。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -604,6 +615,8 @@ stopStream(sessionId:&nbsp;number):&nbsp;void
 
 Surface配置参数。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -616,22 +629,11 @@ Surface配置参数。
 | rotation | number | 否    | 是   | 表示视频的旋转角度（取值范围为{0, 90, 180, 270}，默认值为0）。 |
 | flip | [FlipOptions](#flipoptions) | 否    | 是   | 表示视频是否反转。 |
 
-## CollaborateEventType
-
-协作事件的类型的枚举。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.DistributedSched.AppCollaboration
-
-| 名称|  值 | 说明 |
-|-------|-------|-------|
-| SEND_FAILURE | 0 |表示任务发送失败。|
-| COLOR_SPACE_CONVERSION_FAILURE | 1 |表示色彩空间转换失败。|
-
 ## FlipOptions
 
 翻转选项的枚举。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -646,6 +648,8 @@ Surface配置参数。
 
 流传输的方式。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -658,6 +662,8 @@ Surface配置参数。
 ## VideoPixelFormat
 
 视频像素格式的枚举。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -673,6 +679,8 @@ Surface配置参数。
 
 应用连接时所需的连接选项。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回801错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -686,6 +694,8 @@ Surface配置参数。
 
 回调方法的接收信息。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -697,6 +707,8 @@ Surface配置参数。
 ## StartOptionParams
 
 启动选项参数的枚举。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

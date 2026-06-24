@@ -39,7 +39,7 @@ importVCard\(context: Context, filePath: string, accountId: number, callback: As
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -95,7 +95,7 @@ importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -145,7 +145,7 @@ importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -195,7 +195,7 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -256,7 +256,7 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -312,7 +312,7 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -351,8 +351,8 @@ VCard版本和编码信息。
 
 | 名称         | 类型   | 只读| 可选|    说明    |
 | ------------ | ------ | ----|----| ---------- |
-| cardType     | [VCardType](../apis-telephony-kit/js-apis-vcard.md) |  是| 是 | VCard版本类型 (默认值为VERSION_21)。     |
-| charset       | string |  是|是  | VCard编码类型（默认值为'UTF-8'）。     |
+| cardType     | [VCardType](#vcardtype) |  否| 是 | VCard版本类型 (默认值为VERSION_21)。     |
+| charset       | string |  否|是  | VCard编码类型（默认值为'UTF-8'）。     |
 
 ## VCardType
 

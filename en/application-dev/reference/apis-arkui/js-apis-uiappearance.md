@@ -1,9 +1,9 @@
 # @ohos.uiAppearance (UI Appearance)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 This module provides basic capabilities for obtaining system appearance configurations, including color mode (dark/light) settings, font size scale factors, and font weight scale factors.
@@ -156,7 +156,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let fontWeightScale = uiAppearance.getFontWeightScale();
-  console.info('Get fontScale ' + fontWeightScale);
+  console.info('Get fontWeightScale ' + fontWeightScale);
 } catch (error) {
   let message = (error as BusinessError).message;
   console.error('Get fontWeightScale failed, ' + message);

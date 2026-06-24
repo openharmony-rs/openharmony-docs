@@ -1,8 +1,8 @@
 # 运动模糊
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## motionBlur
 
@@ -97,7 +99,7 @@ motionBlur(motionBlur: Optional\<MotionBlurOptions>): T
 
 ## MotionBlurAnchor对象说明
 
-运动模糊锚坐标。
+运动模糊锚点坐标。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

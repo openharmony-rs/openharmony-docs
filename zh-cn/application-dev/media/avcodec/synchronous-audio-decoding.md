@@ -11,6 +11,8 @@
 
 开发者可以调用本模块的Native API接口，完成同步模式的音频解码，即将媒体数据解码为PCM码流。
 
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec)。
+
 支持的解码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#音频解码)。
 
 **适用场景**
@@ -117,7 +119,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    MediaKeySession *session = nullptr;
    DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
    ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
-   if (ret != DRM_OK) {
+   if (ret != DRM_ERR_OK) {
        // 如果创建失败，请查看DRM接口文档及日志信息。
        printf("create media key session failed.");
        return;
@@ -146,7 +148,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ![Audio decoder format range description](figures/decoder_format.png)
    <!--RP2End-->
 
-   从API version 20开始，支持[采样率范围](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
+   从API version 20开始，支持通过[OH_AVCapability_GetAudioSupportedSampleRateRanges](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)接口进行采样率范围能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
 
    | 音频解码类型 |    采样率(Hz)   |
    | ----------- | --------------- |
@@ -155,6 +157,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | APE         | 1 ~ 2147483647  |
 
    ```c++
+   // 以下配置的值仅为示例值，开发者需根据实际解码能力动态设置。
    // 配置音频采样率（必须）。
    constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
    // 配置音频声道数（必须）。

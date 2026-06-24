@@ -2,7 +2,7 @@
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
 <!--Owner: @jiyujia926--> 
-<!--Designer: @s10021109--> 
+<!--Designer: @zhangboren--> 
 <!--Tester: @zhangwenhan12--> 
 <!--Adviser: @zhang_yixin13-->
 
@@ -68,11 +68,11 @@ struct ReusableV2Component {
   @Require @Param @Once param: string;
   aboutToRecycle(): void {
     // aboutToRecycle无需改动
-    console.info('ReusableComponent aboutToRecycle called');
+    console.info('ReusableV2Component aboutToRecycle called');
   }
   aboutToReuse(): void { // aboutToReuse不再有参数
     // aboutToReuse执行时@Local已重置回'Hello World'，@Param @Once已经重置回外部传入值
-    console.info('ReusableComponent aboutToReuse called');
+    console.info('ReusableV2Component aboutToReuse called');
     this.val = 'Hello ArkUI'; // 可以在复用阶段修改为其他值
     this.param = 'Hello ArkUI'; // @Param @Once可本地修改
   }
@@ -136,7 +136,7 @@ class Message {
 @Entry
 @ComponentV2
 struct Index {
-  @Local switch: boolean = true;
+  @Local isSwitch: boolean = true;
 
   build() {
     Column() {
@@ -144,9 +144,9 @@ struct Index {
         .fontSize(24)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.isSwitch = !this.isSwitch;
         })
-      if (this.switch) {
+      if (this.isSwitch) {
         // 如果只有一个复用的组件，可以不用设置reuse
         Child({ message: new Message('Child') })
           .reuse({ reuseId: () => 'Child' })
@@ -341,7 +341,6 @@ export struct OneMoment {
 @Entry
 @ComponentV2
 struct Index {
-  @Local isShow: boolean = true;
   @Local dataSource: ListItemObject[] = [];
 
   build() {
@@ -386,7 +385,7 @@ struct ListItemView {
   @Require @Param obj: ListItemObject;
 
   aboutToAppear(): void {
-    // 点击 update，首次进入，上下滑动，由于ForEach全展开属性，无法复用
+    // 点击 update，首次进入，上下滑动，由于Repeat全量加载属性，无法复用
     console.info('=====aboutToAppear=====ListItemView==创建了==');
   }
 
@@ -477,9 +476,6 @@ struct MyComponent {
 @ComponentV2
 struct ReusableV2ChildComponent {
   @Param item: number = 0;
-
-  aboutToAppear() {
-  }
 
   build() {
     Column() {
@@ -707,9 +703,9 @@ struct ListItemGroupAndReusable {
   }
 
   aboutToAppear() {
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 10000; i++) { // 循环10000次
       let data = new DataSrc();
-      for (let j = 0; j < 12; j++) {
+      for (let j = 0; j < 12; j++) { // 循环12次
         data.dataScr1.push(`测试条目数据: ${i} - ${j}`);
       }
       this.dataSource.push(data);

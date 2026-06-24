@@ -13,7 +13,7 @@ Multiple application instances on the home screen are independent in terms of th
 Relationship between multiple application instances:
 - The application icons of multiple instances are the same.
 - All instances share the file data in the [application file directory](../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path).
-- You can log in to a single instance by switching accounts.
+- You can switch between accounts. A single instance supports logging in with different accounts.
 
 ## Constraints
 

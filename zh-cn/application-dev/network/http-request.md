@@ -32,7 +32,7 @@
 | 基础功能     | 设置响应数据类型                | 可以指定HTTP响应数据的类型，默认无此字段。如果设置了此参数，系统将优先返回指定的类型。 |  API version 9   |
 | 基础功能     | 设置请求并发优先级              |  指定HTTP/HTTPS请求并发优先级，值越大优先级越高，范围[1,1000]，默认为1。|  API version 9   |
 | 基础功能     | 设置是否使用缓存                | 可以指定是否使用缓存，默认为true，请求时优先读取缓存。 缓存跟随当前进程生效。新缓存会替换旧缓存，设置为false表示不使用缓存。 |  API version 9   |
-| 基础功能     | 设置使用协议类型                 | 默认值由系统自动指定，用户可以指定为HTTP 1.1、HTTP 2、HTTP 3协议版本。 |  API version 9   |
+| 基础功能     | 设置使用协议类型                 | HTTPS的请求默认是HTTP/2，失败回退HTTP/1.1；HTTP直接用HTTP/1.1。用户可以指定为HTTP 1.1、HTTP 2、HTTP 3协议版本。 |  API version 9   |
 | 代理设置     | 设置HTTP请求代理                 | 设置HTTP代理，默认值为false，表示不使用代理，若设置为true，表示使用HTTP代理，且为系统默认代理，也可通过配置HttpProxy自定义网络代理。 |  API version 10  |
 | 证书验证     | 设置CA证书路径                   | 如果设置了此参数，系统将使用用户指定路径的CA证书（开发者需保证该路径下CA证书的可访问性），否则将使用系统预设CA证书。 | API version 10    |
 | 证书验证     | 设置支持传输客户端证书            | 支持传输客户端证书，包括证书路径、证书类型、证书密钥路径和密码信息。 | API version 11    |
@@ -46,6 +46,7 @@
 | 证书验证     | 设置跳过SSL证书校验                     | 可以设置跳过SSL证书校验流程。 | API version 18    |
 | 证书验证     | 设置证书校验的版本和加密套件             | 自定义证书校验版本和加密套件。 |  API version 18  |
 | 证书验证     | 设置安全连接期间的服务器身份验证配置信息        | 设置安全连接期间的服务器身份验证配置。 |  API version 18   |
+| 代理设置     | 设置SOCKS5代理        | 设置SOCKS5代理，默认不使用SOCKS5代理，若正确配置了[Socks5Proxy](../reference/apis-network-kit/js-apis-net-connection.md#socks5proxy)自定义SOCKS5代理，则HttpProxy不生效。 |  API version 26.0.0   |
 
 ## 发起HTTP数据请求
 
@@ -68,7 +69,7 @@
 
 2. 创建HttpRequest对象
 
-    调用createHttp()方法，创建HttpRequest对象。
+    调用[createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
     <!-- @[HTTP_case_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -80,7 +81,7 @@
 
 3. 订阅HTTP响应头事件
 
-    调用该对象的on()方法，订阅HTTP响应头事件，此接口会比request请求先返回。可以根据业务需要订阅此消息。
+    调用该对象的[on()](../reference/apis-network-kit/js-apis-http.md#onheadersreceive8)方法，订阅HTTP响应头事件，此接口会比request请求先返回。可以根据业务需要订阅此消息。
 
    <!-- @[HTTP_case_http_request_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -95,7 +96,7 @@
 
 4. 发起HTTP请求，解析服务器响应事件
 
-    调用该对象的request()方法，传入HTTP请求的url地址和可选参数，发起网络请求，按照实际业务需要，解析返回结果。
+    调用该对象的[request()](../reference/apis-network-kit/js-apis-http.md#httprequest)方法，传入HTTP请求的url地址和可选参数，发起网络请求，按照实际业务需要，解析返回结果。
 
    <!-- @[HTTP_case_http_request_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -185,7 +186,7 @@
 
 5. 取消订阅HTTP响应头事件
 
-    调用该对象的off()方法，取消订阅HTTP响应头事件。
+    调用该对象的[off()](../reference/apis-network-kit/js-apis-http.md#offheadersreceive8)方法，取消订阅HTTP响应头事件。
 
     ```ts
     // 在不需要该回调信息时，需要取消订阅HTTP响应头事件，该方法调用的时机，可以参考步骤4中的示例代码。
@@ -193,7 +194,7 @@
     ```
 6. 调用destroy()方法销毁
 
-    当该请求使用完毕时，调用destroy()方法销毁。
+    当该请求使用完毕时，调用[destroy()](../reference/apis-network-kit/js-apis-http.md#destroy)方法销毁。
 
     ```ts
     // 当该请求使用完毕时，调用destroy方法主动销毁，该方法调用的时机，可以参考步骤4中的示例代码。
@@ -218,7 +219,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 2. 创建HTTP流式传输HttpRequest对象
 
-    调用createHttp()方法，创建HttpRequest对象。
+    调用[createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
     <!-- @[request_in_stream_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -304,7 +305,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 5. 取消步骤3中订阅HTTP流式响应事件，并调用destroy()方法销毁流式HTTP请求
 
-    调用该对象的off()方法，取消订阅步骤3中的事件，并且当该请求使用完毕时，调用destroy()方法销毁，该方法调用的时机，可以参考步骤4中的示例代码。
+    调用该对象的[off()](../reference/apis-network-kit/js-apis-http.md#offdatareceive10)方法，取消订阅步骤3中的事件，并且当该请求使用完毕时，调用[destroy()](../reference/apis-network-kit/js-apis-http.md#destroy)方法销毁，该方法调用的时机，可以参考步骤4中的示例代码。
 
    <!-- @[request_in_stream_destroy_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -666,13 +667,13 @@ struct Index {
    - 通过[tlssecureoptions](../reference/apis-network-kit/js-apis-socket.md#tlssecureoptions9)的ca字段指定TLS请求CA证书。
 3. 配置跳过证书校验：
    - HTTPS：通过[remoteValidation](../reference/apis-network-kit/js-apis-http.md#remotevalidation18) = 'skip' 配置。
-   - WebSocket：通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的skipServerCertVerification = false 配置。
-   - TLSSocket：通过[tlsconnectoptions](../reference/apis-network-kit/js-apis-socket.md#tlsconnectoptions9)的skipRemoteValidation = false 配置。
+   - WebSocket：通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的skipServerCertVerification = true 配置。
+   - TLSSocket：通过[tlsconnectoptions](../reference/apis-network-kit/js-apis-socket.md#tlsconnectoptions9)的skipRemoteValidation = true 配置。
 
  **调试参考**
  
    - 通过API校验指定证书是否可信：可参考[networkSecurity.certVerification](../reference/apis-network-kit/js-apis-networkSecurity.md#networksecuritycertverification)。
-   - 通过openssl命令校验域名服务器证书链是否被系统信任：`hdc shell openssl s_client -connect 主机名:端口 -CApath /etc/security/certificates -brief`。若出现`Verification: OK`说明证书链可信。将`-trace -showcerts`替换为`-brief`可以打印详细的TLS握手信息。
+   - 通过openssl命令校验域名服务器证书链是否被系统信任：`hdc shell openssl s_client -connect 主机名:端口 -CApath /etc/security/certificates -brief`。若出现`Verification: OK`说明证书链可信。将`-brief`替换为`-trace -showcerts`可以打印详细的TLS握手信息。
 
 
 ### 证书锁定
@@ -818,7 +819,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |trust-anchors              | array           |受信任的CA。可以包含任意个item。item必须包含1个certificates。|
 |certificates               | string          |CA证书路径。 |
 |domains                    | array           |域。可以包含任意个item。item必须包含1个name(string：指示域名)，可以包含0或者1个include-subdomains。|
-|include-subdomains         | boolean         |指示规则是否适用于子域。true：指示规则适用于子域；false：指示规则不适用于子域。 |
+|include-subdomains         | boolean         |指示规则是否适用于子域。true：表示规则适用于该域名及其所有子域名；false：表示规则仅适用于该域名。默认为true。 |
 |pin-set                    | object          |证书公钥哈希设置。必须包含1个pin，可以包含0或者1个expiration。|
 |expiration                 | string          |指示证书公钥哈希的过期时间。 |
 |pin                        | array           |证书公钥哈希。可以包含任意个item。item必须包含1个digest-algorithm，item必须包含1个digest。|
@@ -851,7 +852,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 {
   "network-security-config": {
     "base-config": {
-      "cleartextTrafficPermitted": true // 可选，自API version 20开始支持该属性。
+      "cleartextTrafficPermitted": true // 可选，自API version 18开始支持该属性。
     },
     "domain-config": [
       {
@@ -861,7 +862,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
             "name": "example.com"
           }
         ],
-        "cleartextTrafficPermitted": false // 可选，自API version 20开始支持该属性。
+        "cleartextTrafficPermitted": false // 可选，自API version 18开始支持该属性。
       }
     ],
     "component-config": {
@@ -879,16 +880,16 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 | 字段                      | 类型            | 必填 | 说明                                   |
 | --------------------------| --------------- |--------- |-------------------------------------- |
-|base-config                     | array          | 否| 指示应用程序范围的明文配置。优先级最低。 |
+|base-config                     | object          | 否| 指示应用程序范围的明文配置。优先级最低。 |
 |cleartextTrafficPermitted<sup>18+</sup>  | boolean          |否 | 明文HTTP是否允许。true表示允许，false表示不允许，默认为true。 |
 |domain-config                     | array          | 否|  指示每个域的明文配置。可以包含任意个item。每个item必须包含1个domains。若相同域存在规则冲突时，以匹配到的第一条为准。优先级次于component-config。 |
-|include-subdomains         | boolean         | 否| 配置为true时，name支持正则匹配。配置为false时，name不支持正则匹配。注意：每增加1000条域名配置，正则匹配的延迟将增加大约10至15毫秒。当域名配置数量超过10000条时，正则匹配会带来较高耗时。 |
+|include-subdomains         | boolean         | 否| 指示规则是否适用于子域。true：表示规则适用于该域名及其所有子域名；false：表示规则仅适用于该域名。默认为true。注意：每增加1000条域名配置，正则匹配的延迟将增加大约10至15毫秒。当域名配置数量超过10000条时，正则匹配会带来较高耗时。默认为true。 |
 |name         | string         | 否| 配置主域名。 |
-|component-config<sup>20+</sup>                    | array          |  否| 指示每个组件的明文配置。优先级最高。|
-|Request                    | boolean          |否| [Request](../reference/apis-basic-services-kit/js-apis-request.md)从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能 。true表示支持，false表示不支持，默认为true。|
+|component-config<sup>20+</sup>                    | object         |  否| 指示每个组件的明文配置。优先级最高。|
+|Request                    | boolean          |否| [Request](../reference/apis-basic-services-kit/js-apis-request.md)从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为true。|
 |Network Kit                 | boolean          |否| Network Kit从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为true。 |
 |ArkWeb                    | boolean          |否| ArkWeb从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
-|Media Kit                    | boolean          |否|Media Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
+|Media Kit                    | boolean          |否| Media Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
 |Remote Communication Kit                    | boolean          |否| Remote Communication Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
 
 ## HTTP拦截器
@@ -900,7 +901,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 | 拦截点名称                        | 位置说明                                                     | 拦截点interceptorHandle接口的出参和入参                                                   |
 | :-------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 初始请求拦截点（INITIAL_REQUEST）   | 初始请求组装完成后，这是第一个拦截点，适合用于添加全局参数、签名、加密请求体。 | 当出参为true时，此时入参中的request值为原始值，可以修改，response值为空值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为空值，可以修改。 |
-| 网络连接拦截点（CONNECT_NETWORK） | 在网络连接建立之前，例如TCP/TLS连接。适合进行网络链路相关的操作，如记录网络连接开始时间。 | 当出参为true时，此时入参中的request值为原始值，可以修改，response值为空值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为空值，可以修改。 |
+| 网络连接拦截点（NETWORK_CONNECT） | 在网络连接建立之前，例如TCP/TLS连接。适合进行网络链路相关的操作，如记录网络连接开始时间。 | 当出参为true时，此时入参中的request值为原始值，可以修改，response值为空值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为空值，可以修改。 |
 | 缓存拦截点（CACHE_CHECKED）       | 缓存检查逻辑命中缓存之后，已确认存在可用缓存。适用于查看缓存值或者修改查询到的缓存结果。 | 当出参为true时，此时入参中的request值为原始值，修改无效，response值为原始值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为原始值，可以修改。 |
 | 重定向拦截点（REDIRECTION）       | 收到重定向响应并准备发送新请求之前。允许修改重定向的目标URL或请求信息。 | 当出参为true时，此时入参中的request值为原始值，可以修改URL，response值为原始值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为原始值，可以修改。 |
 | 最终响应拦截点（FINAL_RESPONSE）    | 获得最终响应之后。最后一个拦截点，适合对响应进行统一解密、解析、日志记录、错误处理。 | 当出参为true时，此时入参中的request值为原始值，修改无效，response值为原始值，修改无效。<br />当出参为false时，此时入参中的request值为原始值，修改无效，response值为原始值，可以修改。 |
@@ -932,7 +933,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
      let httpRequest: http.HttpRequest = http.createHttp();
      ```
 
-3.  调用HttpInterceptorChain()方法，创建拦截器链对象。
+3.  调用[HttpInterceptorChain()](../reference/apis-network-kit/js-apis-http.md#httpinterceptorchain22)方法，创建拦截器链对象。
 
     <!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -1034,7 +1035,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     }
     ```
 
-5.  调用addChain()方法，将需要的拦截器实例加入到拦截器链中。
+5.  调用[addChain()](../reference/apis-network-kit/js-apis-http.md#addchain22)方法，将需要的拦截器实例加入到拦截器链中。
 
     <!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -1047,7 +1048,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     ]);
     ```
 
-6.  调用apply()方法，将当前配置好的拦截器链附加到httpRequest中。
+6.  调用[apply()](../reference/apis-network-kit/js-apis-http.md#apply22)方法，将当前配置好的拦截器链附加到httpRequest中。
 
     <!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -1069,7 +1070,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     };
     ```
 
-8.  调用该对象的request()方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
+8.  调用该对象的[request()](../reference/apis-network-kit/js-apis-http.md#request-1)方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
 
     <!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
@@ -1087,7 +1088,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     });
     ```
 
-9.  调用destroy()方法销毁http请求。
+9.  调用[destroy()](../reference/apis-network-kit/js-apis-http.md#destroy)方法销毁http请求。
 
     <!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     

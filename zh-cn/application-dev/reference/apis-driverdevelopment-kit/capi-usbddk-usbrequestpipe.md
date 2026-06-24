@@ -1,10 +1,10 @@
 # UsbRequestPipe
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct UsbRequestPipe {...} __attribute__((aligned(8))) UsbRequestPipe
@@ -12,7 +12,7 @@ typedef struct UsbRequestPipe {...} __attribute__((aligned(8))) UsbRequestPipe
 
 ## 概述
 
-请求管道。
+请求管道，是USB数据传输请求的抽象。
 
 **起始版本：** 10
 
@@ -28,6 +28,6 @@ typedef struct UsbRequestPipe {...} __attribute__((aligned(8))) UsbRequestPipe
 | -- | -- |
 | uint64_t interfaceHandle | 接口操作句柄。 |
 | uint8_t endpoint | 要通信的端点的地址。 |
-| uint32_t timeout | 超时时间，单位是毫秒。 |
+| uint32_t timeout | 超时时间，单位是毫秒。值为0表示等待直到操作完成。 |
 
 

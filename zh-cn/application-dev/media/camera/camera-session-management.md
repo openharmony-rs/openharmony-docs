@@ -14,7 +14,7 @@
 
   配置输入流即添加设备输入，对用户而言，相当于选择设备的某一相机拍摄；配置输出流，即选择数据将以什么形式输出。当应用需要实现拍照时，输出流应配置为预览流和拍照流，预览流的数据将显示在[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件上，拍照流的数据将通过[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)接口的能力保存到相册中。
 
-- 添加闪光灯、调整焦距等配置。具体支持的配置及接口说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+- 添加闪光灯、调整焦距等配置。具体支持的配置及接口说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 - 会话切换控制。应用可以通过移除和添加输出流的方式，切换相机模式。如当前会话的输出流为拍照流，应用可以将拍照流移除，然后添加视频流作为输出流，即完成了拍照到录像的切换。
 

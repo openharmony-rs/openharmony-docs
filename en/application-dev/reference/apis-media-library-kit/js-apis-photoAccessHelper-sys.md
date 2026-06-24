@@ -121,7 +121,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -186,7 +186,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -246,7 +246,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -315,7 +315,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -379,7 +379,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -445,7 +445,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -500,7 +500,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -571,7 +571,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -630,7 +630,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -698,7 +698,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -796,7 +796,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -890,7 +890,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -967,7 +967,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1031,7 +1031,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1113,7 +1113,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1184,7 +1184,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1253,7 +1253,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -1315,7 +1315,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1375,7 +1375,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1436,7 +1436,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -1502,7 +1502,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -1562,7 +1562,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -1624,7 +1624,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -1681,7 +1681,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -1800,7 +1800,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -1961,7 +1961,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -2020,7 +2020,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(context: Context) {
@@ -2034,6 +2034,122 @@ async function example(context: Context) {
     console.info('startAssetAnalysis success, taskId=' + taskId);
   } catch (err) {
     console.error('startAssetAnalysis failed, error=' + err);
+  }
+}
+```
+
+### startAssetAnalysisAsync<sup>24+</sup>
+
+startAssetAnalysisAsync(config: AnalysisConfig, callback: Callback&lt;AnalysisResult&gt;): Promise&lt;number&gt;
+
+Starts asynchronous asset analysis. This API uses an asynchronous callback to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**Parameters**
+
+| Name   | Type               | Mandatory| Description                                                        |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| config    | [AnalysisConfig](#analysisconfig24) | Yes  | Asset analysis configuration. The **uris** in the **config** parameter is obtained from the [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) object.|
+| callback  | Callback&lt;[AnalysisResult](#analysisresult24)&gt; | Yes  | Callback used to return the asset analysis result.|
+
+**Return value**
+
+| Type                 | Description                       |
+| --------------------- | --------------------------- |
+| Promise&lt;number&gt; | Promise used to return the service task ID.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported or invalid types of config.<br>2. The types or uris array size of config exceed max value. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+let callback = (result: photoAccessHelper.AnalysisResult) => {
+  console.info('startAssetAnalysisAsync callback result: ' + JSON.stringify(result));
+};
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('startAssetAnalysisAsyncDemo');
+  let config: photoAccessHelper.AnalysisConfig = {
+    types: [photoAccessHelper.AnalysisType.ANALYSIS_SEARCH_INDEX],
+    uris: ['file://media/Photo/14/IMG_1729066473_013/IMG_20241016_122253.jpg'],
+    extraInfos: '{"trigger":"manual"}'
+  };
+
+  try {
+    let taskId = await phAccessHelper.startAssetAnalysisAsync(config, callback);
+    console.info('startAssetAnalysisAsync success, taskId=' + taskId);
+  } catch (err) {
+    console.error(`startAssetAnalysisAsync failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### stopAssetAnalysis<sup>24+</sup>
+
+stopAssetAnalysis(config: AnalysisConfig): void
+
+Stops asset analysis.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**Parameters**
+
+| Name   | Type               | Mandatory| Description                                                        |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| config    | [AnalysisConfig](#analysisconfig24) | Yes  | Asset analysis configuration.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported or invalid AnalysisType of config.<br>2. The types or uris array size of config exceed max value. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('stopAssetAnalysisDemo');
+  let config: photoAccessHelper.AnalysisConfig = {
+    types: [photoAccessHelper.AnalysisType.ANALYSIS_SEARCH_INDEX],
+    uris: ['file://media/Photo/14/IMG_1729066473_013/IMG_20241016_122253.jpg']
+  };
+
+  try {
+    phAccessHelper.stopAssetAnalysis(config);
+    console.info('stopAssetAnalysis success');
+  } catch (err) {
+    console.error(`stopAssetAnalysis failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -2080,7 +2196,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -2346,7 +2462,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -2405,7 +2521,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -2468,7 +2584,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -2528,7 +2644,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -2591,7 +2707,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -2651,7 +2767,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -2713,7 +2829,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -2772,7 +2888,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -2835,7 +2951,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -2895,7 +3011,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -2958,7 +3074,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -3018,7 +3134,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -3080,7 +3196,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -3139,7 +3255,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData'
@@ -3202,7 +3318,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The IPC request timed out. 2.system running error.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. The IPC request timed out. 2.system running error.|
 
 **Example**
 
@@ -3516,7 +3632,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
  
@@ -3575,7 +3691,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -3763,7 +3879,7 @@ Checks whether the specified media data is ready.
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| mediaDataKey | string | Yes  | Media data type to be queried.<br>Currently, the **date_added_year** value is supported, indicating whether the adding time (year, month, and day) of the asset is ready.|
+| mediaDataKey | string | Yes  | Media data type to be checked.<br>Currently, the **date_added_year** value is supported, indicating whether the adding time (year, month, and day) of the asset is ready.|
 
 **Return value**
 
@@ -3780,7 +3896,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. |
 | 202 | Called by non-system application. |
 | 23800151 | The scenario parameter verification fails, unsupported media data type. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -3825,7 +3941,7 @@ Converts the **ValuesBucket** record to a **PhotoAsset** object.
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)[]&gt; | Promise used to return the PhotoAsset object array (which may be empty).|
+| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)[]&gt; | Promise used to return the **PhotoAsset** object array (which may be empty).|
 
 **Error codes**
 
@@ -3835,7 +3951,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 202 | Called by non-system application. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. Invalid value type in ValuesBucket; 2. Missing required column in ValuesBucket; 3. Array size exceeds 500.|
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -3855,15 +3971,477 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       resultSet.goToRow(index);
       valuesArr.push(resultSet.getRow());
       index++;
-      if(index >= resultSet.rowCount){
-        break;
-      }
     }
     photoAssetArr = await phAccessHelper.getPhotoAssets(valuesArr);
     console.info('getPhotoAssets successfully');
   } catch (err) {
     console.error(`valuesArr failed: ${err.code}, ${err.message}`);
   }
+}
+```
+
+### setAssetCompatibleCapability<sup>24+</sup>
+
+setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise\<void>
+
+Sets the asset compatibility capability based on the bundle name. You can obtain the compatibility capability and determine whether to perform compatibility conversion based on the capability.
+
+​**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| bundleName | string | Yes  | Bundle name of the application.|
+| capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | Yes  | Asset compatibility capability.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The bundleName or capability is invalid.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let bundleName = "com.test.example";
+    let capability : photoAccessHelper.AssetCompatibleCapability = {
+        supportedHighResolution : true,
+    };
+    await phAccessHelper.setAssetCompatibleCapability(bundleName, capability);
+  } catch (error) {
+    console.error('failed to setAssetCompatibleCapability err', error);
+  }
+}
+```
+### convertToAsset
+
+convertToAsset(path: string): Promise&lt;PhotoAsset&gt;
+
+Converts assets in the public directory of the file management to asset objects. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| path | string | Yes| File path in the file management.<br>The value starts with **/Docs**, for example, **/Docs/Download/test.jpg**.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;[PhotoAsset](#photoasset)&gt; | Promise that returns the asset object that is successfully converted.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Converted an image after filtering into an asset object;<br>2. File to be converted is not exist;<br>3. Only images in the public directory of filemanager can be converted. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let path: string = '/Docs/Download/test.jpg';
+    let photoAsset: photoAccessHelper.PhotoAsset = await phAccessHelper.convertToAsset(path);
+    console.info(`convertToAsset success, asset uri: ${photoAsset.uri}`);
+  } catch (err) {
+    console.error(`convertToAsset failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### cloneToAlbum
+
+cloneToAlbum(assets: PhotoAsset[], target: Album,option?: BatchOperationOptions): Promise\<PhotoAsset[]>
+
+Clones assets to the target album. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| assets | [PhotoAsset](#photoasset)[] | Yes| Array of assets to be cloned.|
+| target | [Album](#album) | Yes| Target album.|
+| option | [BatchOperationOptions](#batchoperationoptions) | No| Options for cloning assets in batches. If this parameter is not specified, automatic renaming is supported by default, and no progress information is returned.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)[]&gt; | Promise that returns the list of assets that are successfully cloned.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target directory does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let assetFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let assets: Array<photoAccessHelper.PhotoAsset> = await assetFetchResult.getAllObjects();
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let target: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let options: photoAccessHelper.BatchOperationOptions = {
+      mode: 0
+    };
+    let clonedAssets: Array<photoAccessHelper.PhotoAsset> = await phAccessHelper.cloneToAlbum(assets, target, options);
+    console.info(`cloneToAlbum success, count: ${clonedAssets.length}`);
+  } catch (err) {
+    console.error(`cloneToAlbum failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### cloneToDir
+
+cloneToDir(assets: string[], target: string, option?: BatchOperationOptions): Promise\<string[]>
+
+Clones assets to the file management directory. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| assets | string[] | Yes| Array of URIs of the assets to be cloned.|
+| target | string | Yes| Target directory in file management.|
+| option | [BatchOperationOptions](#batchoperationoptions) | No| Options for cloning assets in batches. If this parameter is not specified, automatic renaming is supported by default, and no progress information is returned.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| Promise\<string[]> | Promise that returns the array of paths to the assets that are successfully cloned.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target album does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let assetFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let assets: Array<photoAccessHelper.PhotoAsset> = await assetFetchResult.getAllObjects();
+    let assetUris: Array<string> = assets.map((item) => item.uri);
+    let target: string = '/Docs/Download';
+    let clonedPaths: Array<string> = await phAccessHelper.cloneToDir(assetUris, target);
+    console.info(`cloneToDir success, count: ${clonedPaths.length}`);
+  } catch (err) {
+    console.error(`cloneToDir failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### cloneAssetsByPath
+
+cloneAssetsByPath(assets: string[], target: Album, option?: BatchOperationOptions): Promise\<string[]>
+
+Clones assets in file management to the target album. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| assets | string[] | Yes| Array of paths of the assets to be cloned.|
+| target | [Album](#album) | Yes| Target album.|
+| option | [BatchOperationOptions](#batchoperationoptions) | No| Options for cloning assets in batches. If this parameter is not specified, automatic renaming is supported by default, and no progress information is returned.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| Promise\<string[]> | Promise that returns the array of URIs to the assets that are successfully cloned.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target album does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let assets: Array<string> = ['/Docs/Download/test.jpg'];
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let target: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let clonedUris: Array<string> = await phAccessHelper.cloneAssetsByPath(assets, target);
+    console.info(`cloneAssetsByPath success, count: ${clonedUris.length}`);
+  } catch (err) {
+    console.error(`cloneAssetsByPath failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getAssetCompatibleCapability<sup>24+</sup>
+
+getAssetCompatibleCapability(bundleName: string): Promise\<AssetCompatibleCapability>
+
+Obtains the asset compatibility capability based on the bundle name. When an application obtains a file, it can determine whether compatibility conversion is required.
+
+​**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| bundleName | string | Yes  | Bundle name of the application.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;[AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)&gt; | Promise used to return the specified asset compatibility capability.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The bundleName is invalid, such as null, undefined and empty.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let bundleName = "com.test.example";
+    let capability : photoAccessHelper.AssetCompatibleCapability = await phAccessHelper.getAssetCompatibleCapability(bundleName);
+  } catch (error) {
+    console.error('failed to getAssetCompatibleCapability err', error);
+  }
+}
+```
+
+### setPreferredCompatibleMode
+
+setPreferredCompatibleMode(bundleName: string, compatibleMode: PreferredCompatibleMode): Promise\<void>
+
+Sets the preferred compatibility mode for an application based on the bundle name. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+​**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| bundleName | string | Yes  | Bundle name of the application.|
+| compatibleMode | [PreferredCompatibleMode](arkts-apis-photoAccessHelper-e.md#preferredcompatiblemode) | Yes  | Preferred compatibility mode of the application.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The bundleName is invalid, such as null, undefined and empty.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a **phAccessHelper** instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function setPreferredCompatibleMode(
+  phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  bundleName: string,
+  preferredCompatibleMode: photoAccessHelper.PreferredCompatibleMode
+): Promise<void> {
+  try {
+    await phAccessHelper.setPreferredCompatibleMode(bundleName, preferredCompatibleMode);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The setPreferredCompatibleMode call failed. error code: ${err.code}`);
+  }
+}
+```
+
+### getPreferredCompatibleMode
+
+getPreferredCompatibleMode(bundleName: string): Promise\<PreferredCompatibleMode>
+
+Obtains the preferred compatibility mode configured for an application based on the bundle name. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+​**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| bundleName | string | Yes  | Bundle name of the application.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;[PreferredCompatibleMode](arkts-apis-photoAccessHelper-e.md#preferredcompatiblemode)&gt; | Preferred compatibility mode of the application.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The bundleName is invalid, such as null, undefined and empty.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function getPreferredCompatibleMode(
+  phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  bundleName: string
+): Promise<photoAccessHelper.PreferredCompatibleMode> {
+  let mode: photoAccessHelper.PreferredCompatibleMode = photoAccessHelper.PreferredCompatibleMode.DEFAULT;
+  try {
+    mode = await phAccessHelper.getPreferredCompatibleMode(bundleName);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The getPreferredCompatibleMode call failed. error code: ${err.code}`);
+  }
+  return mode;
 }
 ```
 
@@ -3970,7 +4548,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -4034,7 +4612,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -4094,7 +4672,7 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4162,7 +4740,7 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4230,7 +4808,7 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4300,7 +4878,7 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4366,7 +4944,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4432,7 +5010,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4509,7 +5087,7 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4571,7 +5149,7 @@ If error code 201 is returned, follow the instructions provided in [Before You S
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4638,7 +5216,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -4708,7 +5286,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -4756,7 +5334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4820,7 +5398,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4880,7 +5458,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4942,7 +5520,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -4998,7 +5576,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5105,7 +5683,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5164,7 +5742,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5226,7 +5804,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5304,7 +5882,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5364,7 +5942,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5427,7 +6005,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5493,7 +6071,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5560,7 +6138,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5626,7 +6204,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5672,7 +6250,7 @@ Obtains analysis data. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ\_IMAGEVIDEO
 
-Starting from API version 22, if **analysisType** is set to [ANALYSIS\_DETAIL\_ADDRESS](#analysistype11), the ohos.permission.MEDIA\_LOCATION permission is required. Otherwise, error code [201 Permission Denied](../errorcode-universal.md#201-permission-denied) is reported.
+Since API version 22, the **ohos.permission.MEDIA\_LOCATION** permission is required when **analysisType** is set to [ANALYSIS\_DETAIL\_ADDRESS](#analysistype11). If the permission is not granted, the universal error code [201 Permission Denied](../errorcode-universal.md#201-permission-denied) is thrown.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -5695,7 +6273,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -5753,7 +6331,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied.  | 
 | 202      | Called by non-system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. | 
-| 14000011       | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 14000011       | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -5817,7 +6395,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { common }  from '@kit.AbilityKit';
@@ -6007,7 +6585,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6081,7 +6659,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6151,7 +6729,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6227,7 +6805,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6295,7 +6873,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6368,7 +6946,7 @@ If error code 13900012 is returned, follow the instructions provided in [Before 
 | 14000011       | System inner fail.         |
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6427,7 +7005,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6658,7 +7236,7 @@ If error code 14000001 is returned, refer to [PhotoKeys](#photokeys) to learn ab
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
@@ -6681,7 +7259,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 setFavorite(favoriteState: boolean): void
 
-Favorites or unfavorites this file.
+Favorites or unfavorites this file asset.
 
 **System API**: This is a system API.
 
@@ -6705,7 +7283,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6758,7 +7336,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6811,7 +7389,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6865,7 +7443,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6929,7 +7507,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 class PhotoProxyImpl implements photoAccessHelper.PhotoProxy {
@@ -6981,7 +7559,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -7034,7 +7612,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asset: photoAccessHelper.PhotoAsset) {
@@ -7050,6 +7628,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
   }
 }
 ```
+
 ### setEffectMode<sup>12+</sup>
 
 setEffectMode(mode: MovingPhotoEffectMode): void
@@ -7064,7 +7643,7 @@ Sets the effect of this moving photo.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| mode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | Yes  | Effect to set.|
+| mode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | Yes  | Effect of the moving photo.|
 
 **Error codes**
 
@@ -7079,7 +7658,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asset: photoAccessHelper.PhotoAsset) {
@@ -7267,6 +7846,54 @@ async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType
 }
 ```
 
+### setAppLinkState<sup>24+</sup>
+
+setAppLinkState(appLinkState: AppLinkState): void
+
+Sets the status of the app link association.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type            | Mandatory  | Description   |
+| ---- | -------------- | ---- | ----- |
+| appLinkState | [AppLinkState](#applinkstate24) | Yes   | Whether to enable or disable the app link association.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202   | Invoked by non-system applications.       |
+| 23800301 | Internal system error.It is recommended to retry and check the logs. |
+| 23800151 | The scenario parameter verification fails.Possible causes: The input parameter is not within the valid range. |
+
+**Example**
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(asset: photoAccessHelper.PhotoAsset, context: Context) {
+    try {
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
+        photoAccessHelper.getPhotoAccessHelper(context);
+      let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+        new photoAccessHelper.MediaAssetChangeRequest(asset);
+      assetChangeRequest.setAppLinkState(photoAccessHelper.AppLinkState.HAS_NO_LINK);
+      await phAccessHelper.applyChanges(assetChangeRequest);
+    } catch (error) {
+      console.error('set appLink state error: ' + error);
+      return;
+    }
+}
+```
+
 ### setAppLinkInfo<sup>21+</sup>
 
 setAppLinkInfo(appLink: string): void
@@ -7346,7 +7973,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 202   | Called by non-system application.       |
 | 23800151 | Scene parameters validate failed. Possible causes: 1. The CompositeDisplayMode is not within the supported range; 2.The original file does not exist locally in PhotoAsset; 3. The PhotoAsset is not composite Asset; 4. The original file format is not within the supported range; 5. The original file has been edited. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -7370,6 +7997,115 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     } catch (err) {
       console.error(`apply setCompositeDisplayModeDemo failed with error: ${err.code}, ${err.message}`);
     }
+}
+```
+
+### setHiddenAttribute
+
+setHiddenAttribute(hiddenState: boolean): void
+
+Sets the hidden state of an asset.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name       | Type     | Mandatory  | Description                                |
+| ---------- | ------- | ---- | ---------------------------------- |
+| hiddenState | boolean | Yes   | Whether to set the hidden state of an asset. **true** means to set the hidden state of an asset, and **false** means the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The asset is not exist. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('setHiddenAttributeDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset = await fetchResult.getFirstObject();
+    asset.setHiddenAttribute(true);
+    console.info('setHiddenAttribute successfully');
+  } catch (err) {
+    console.error(`setHiddenAttribute failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### setTitleByFile
+
+setTitleByFile(name: string): void
+
+Sets an asset title based on the file management scenario.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| name | string | Yes| Name of the asset to be set.<br>The file name specifications are as follows:<br>- It must not contain a file name extension.<br>- The file name length ranges from 1 to 255 characters.<br>- It must not contain the following invalid characters: \\/:*?" ' ` < > \| { } [ ]<br>- It cannot be only a period (.) or two consecutive periods (..).|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The asset is not exist. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset = await fetchResult.getFirstObject();
+    asset.setTitleByFile('new_file_name');
+    console.info('setTitleByFile successfully');
+  } catch (err) {
+    console.error(`setTitleByFile failed with error: ${err.code}, ${err.message}`);
+  }
 }
 ```
 
@@ -7654,7 +8390,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -7686,7 +8422,7 @@ Favorites or unfavorites this file asset.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | Yes   | Whether to favorite the file asset. **true** to favorite, **false** otherwise.|
+| favoriteState | boolean | Yes   | Whether to favorite the file. **true** to favorite, **false** otherwise.|
 
 **Error codes**
 
@@ -7700,7 +8436,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -7753,7 +8489,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -7806,7 +8542,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -7859,7 +8595,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -7931,7 +8667,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
@@ -7985,7 +8721,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8042,7 +8778,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      |  Permission denied.         |
 | 202      |  Called by non-system application.  |
 | 13900020 |  Invalid argument. | 
-| 14000011 |  Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2.The file System is abnormal; 3. The IPC request timed out;  |
+| 14000011 |  Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file System is abnormal; 3. The IPC request timed out;  |
 
 **Example**
 
@@ -8138,7 +8874,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8220,6 +8956,190 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### setHiddenAttribute
+
+setHiddenAttribute(hiddenState: boolean, isInherited: boolean):void
+
+Sets the hidden state of an album.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name       | Type     | Mandatory  | Description                                |
+| ---------- | ------- | ---- | ---------------------------------- |
+| hiddenState | boolean | Yes   | Hidden state of the album. The value **true** indicates that the album is hidden, and **false** indicates the opposite.|
+| isInherited | boolean | Yes   | Whether all subfiles or subdirectories in the album inherit the hidden state. The value **true** indicates that the hidden state is inherited, and **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The album is not exist. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    console.info('albumSetHiddenAttributeDemo');
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOption);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    album.setHiddenAttribute(true, true);
+    console.info('album setHiddenAttribute successfully');
+  } catch (err) {
+    console.error(`album setHiddenAttribute failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### setAlbumNameByFile
+
+setAlbumNameByFile(name: string): void
+
+Sets an album name based on the file management scenario.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| name | string | Yes| Album name to set.<br>The album name must meet the following requirements:<br>- The album name length ranges from 1 to 255 characters.<br>- It must not contain the following invalid characters: \\/:*?" ' ` < > \| { } [ ]<br>- It cannot be only a period (.) or two consecutive periods (..).<br>- The characters are case insensitive.<br>- The album name must be unique.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The album is not exist. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOption);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    album.setAlbumNameByFile('new_album_name');
+    console.info('setAlbumNameByFile successfully');
+  } catch (err) {
+    console.error(`setAlbumNameByFile failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### operateAttribute
+
+operateAttribute(operation: AlbumOperation): void
+
+Sets the album attribute. The setting takes effect only after [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.ACCESS_MEDIALIB_THUMB_DB
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| --- | --- | --- | --- |
+| operation | [AlbumOperation](#albumoperation) | Yes| Album attribute setting to be executed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The attr of operation is invalid.<br>2. The type of operation is invalid.<br>3. The values or operation is incorrect. |
+| 23800201 | Unsupported operation type. It is recommended to check the logs.<br>Possible causes:<br>1. Unsupported AlbumAttribute for the album.<br>2. Unsupported AlbumOperationType for the AlbumAttribute.<br>3. Other operation limit. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('operateAttributeDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> =
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER,
+        photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    if (album === undefined) {
+      console.error('album is undefined');
+      return;
+    }
+
+    let operation: photoAccessHelper.AlbumOperation = {
+      attr: photoAccessHelper.AlbumAttribute.NICK_NAME_ATTR,
+      type: photoAccessHelper.AlbumOperationType.UPDATE,
+      values: ['newNickname']
+    };
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest =
+      new photoAccessHelper.MediaAlbumChangeRequest(album);
+    albumChangeRequest.operateAttribute(operation);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('operateAttribute successfully');
+  } catch (err) {
+    console.error(`operateAttribute failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### moveAssets<sup>11+</sup>
 
 moveAssets(assets: Array&lt;PhotoAsset&gt;, targetAlbum: Album): void
@@ -8250,7 +9170,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8312,7 +9232,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8378,7 +9298,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8435,7 +9355,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8496,7 +9416,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8565,7 +9485,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8621,7 +9541,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ``` ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8668,7 +9588,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ``` ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8722,7 +9642,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ``` ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8785,7 +9705,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ``` ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -8845,7 +9765,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -8890,7 +9810,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -9187,7 +10107,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9253,7 +10173,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9368,7 +10288,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9478,7 +10398,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range.  | 
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9521,7 +10441,7 @@ Creates a change request for the **Analysis** album.
 > **NOTE**
 >
 > The album name must meet the following requirements:
-> - The total length of the album name must be between 1 and 255 characters.
+> - The album name string length ranges from 1 to 255.
 > - The album name cannot contain any of the following characters:.. \ / : * ? " ' ` < > | { } [ ]
 
 ​**Model restriction**: This API can be used only in the stage model.
@@ -9552,7 +10472,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 202   |  Called by non-system application.         |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range. | 
-| 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
+| 23800301   | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -9568,6 +10488,82 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.info('apply createAlbumRequest successfully');
   } catch (err) {
     console.error(`createAlbumRequestDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### setDefaultCoverUri<sup>24+</sup>
+
+setDefaultCoverUri(coverUri: string): void
+
+Sets the default cover image for the smart album.
+
+​**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                                          |
+| -------- | ------ | ---- | ---------------------------------------------- |
+| coverUri | string | Yes  | URI of the file to be set as the default cover image of the smart album.        |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID  | Error Message|
+| ---------- | ------------------------------------------------------------ |
+| 202        | Called by non-system application.                            |
+| 23800151   | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range. |
+| 23800301   | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(context: Context) {
+  console.info('setDefaultCoverUri');
+  try {
+    let helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+    let albumFetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: new dataSharePredicates.DataSharePredicates()
+    };
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> =
+      await helper.getAlbums(photoAccessHelper.AlbumType.SMART, photoAccessHelper.AlbumSubtype.PORTRAIT, albumFetchOption);
+    if (albumFetchResult.getCount() === 0) {
+      console.error('No album');
+      return;
+    }
+    let portraitAlbum: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // Obtain resources from the album.
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: new dataSharePredicates.DataSharePredicates()
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
+      await portraitAlbum.getAssets(fetchOption);
+    if (fetchResult.getCount() === 0) {
+      console.error('No asset in album');
+      fetchResult.close();
+      return;
+    }
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    let coverUri: string = asset.uri;
+    fetchResult.close();
+    // Set the default cover.
+    let changeRequest: photoAccessHelper.MediaAnalysisAlbumChangeRequest =
+      new photoAccessHelper.MediaAnalysisAlbumChangeRequest(portraitAlbum);
+    changeRequest.setDefaultCoverUri(coverUri);
+    await helper.applyChanges(changeRequest);
+    console.info('setDefaultCoverUri success');
+  } catch (err) {
+    console.error(`setDefaultCoverUri error: ${err}`);
   }
 }
 ```
@@ -9656,7 +10652,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 23800151 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9781,7 +10777,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9847,7 +10843,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | :------- | :-------------------------------- |
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9982,7 +10978,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -10047,7 +11043,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -10111,7 +11107,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -10176,7 +11172,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -10285,7 +11281,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -10421,7 +11417,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -10487,7 +11483,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [@ohos.file.photoAccessHelper (Album Management)](arkts-apis-photoAccessHelper-f.md).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asset: photoAccessHelper.PhotoAsset) {
@@ -10540,7 +11536,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 202      |  Called by non-system application.   |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.          |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.          |
 
 **Example**
 
@@ -10590,7 +11586,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.           |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.           |
 
 **Example**
 
@@ -10633,7 +11629,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
-| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -10676,7 +11672,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
-| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -10726,7 +11722,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -10769,7 +11765,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
-| 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -10793,7 +11789,7 @@ async function example(context: Context) {
 
 ### startDownloadSpecificCloudMedia<sup>21+</sup>
 
-startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, CloudAssetDownloadCode\>\>
+startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: number): Promise\<Map\<string, CloudAssetDownloadCode\>\>
 
 Starts a batch download for the specified cloud media assets. This API uses a promise to return the result.
 
@@ -10808,6 +11804,7 @@ Starts a batch download for the specified cloud media assets. This API uses a pr
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | assetUris | string[] | Yes  | Array of URIs pointing to the original-quality images and videos to be downloaded.|
+| taskSequence | number | No  | Sequence number set by the application. The value must be greater than or equal to 0. The default value is **0**.<br> **Since**: 26.0.0|
 
 **Return value**
 
@@ -10823,8 +11820,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The assetUris is empty; 2. The assetUris array size is bigger than 500.|
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The assetUris array is empty; 2. The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -10837,7 +11834,63 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
-      await cloudMediaAssetManagerInstance.startDownloadSpecificCloudMedia(assetURIs);
+      await cloudMediaAssetManagerInstance.startDownloadSpecificCloudMedia(assetURIs, 2);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### setDownloadSpecificCloudMediaNetworkPolicy
+
+setDownloadSpecificCloudMediaNetworkPolicy(assetUris: string[], networkPolicy: CloudDownloadNetworkPolicy): Promise\<void\>
+
+Sets the network policy for a batch download for cloud media assets. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO and ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[]  | Yes  | List of URIs of the original images and videos to be downloaded for which the policy is to be set.<br>If **null**, **undefined**, or an empty list is passed, all existing batch download tasks use the network policy specified by **networkPolicy**.|
+| networkPolicy | [CloudDownloadNetworkPolicy](#clouddownloadnetworkpolicy) | Yes  | Network policy for batch download.|
+
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The assetUris array is empty; 2. The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+
+**Example**
+
+```ts
+async function example(context: Context) {
+  console.info('PauseDownloadSpecificCloudMediaDemo');
+  try {
+    let assetURIs: Array<string> = [
+       'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    await cloudMediaAssetManagerInstance.setDownloadSpecificCloudMediaNetworkPolicy(assetURIs, photoAccessHelper.CloudDownloadNetworkPolicy.CELL);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
@@ -10877,7 +11930,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The assetUris array size is bigger than 500.|
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -10929,7 +11982,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -10981,7 +12034,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
 | 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -11032,11 +12085,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
 ```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
 async function example(context: Context) {
   console.info('QueryDownloadSpecificCloudMediaDetailsDemo');
   try {
@@ -11084,11 +12139,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
 ```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
 async function example(context: Context) {
   console.info('QueryDownloadSpecificCloudMediaTaskCountDemo');
   try {
@@ -11098,6 +12155,66 @@ async function example(context: Context) {
     predicates.orderByAsc("file_id");
     let count : number =
        await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCount(predicates);
+  } catch (err) {
+    console.error(`failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### queryDownloadSpecificCloudMediaTaskCountAndSize
+
+queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.DataSharePredicates): Promise\<number[]\>
+
+Queries the total number and size of a batch download for cloud media assets. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Predicates that specify the fetch criteria.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise\<number[]\> | Promise used to return the total number and size of download tasks.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800151 | Scenario parameters fail to pass the verification. Possible causes: predicates null or undefined. |
+
+**Example**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+async function example(context: Context) {
+  console.info('QueryDownloadSpecificCloudMediaTaskCountDemo');
+  try {
+    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
+      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    predicates.orderByAsc("file_id");
+    let countAndSize : number[] =
+       await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCountAndSize(predicates);
+    console.info('count: ' + countAndSize[0] + ', size: ' + countAndSize[1]);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
@@ -11131,7 +12248,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -11158,6 +12275,7 @@ offDownloadProgressChange(callback?: Callback\<CloudAssetDownloadProgressInfo\>)
 
 Unregisters a callback to monitor changes in the progress of a batch download for cloud media assets.
 
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -11168,7 +12286,7 @@ Unregisters a callback to monitor changes in the progress of a batch download fo
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | No  | Callback to unregister, which is registered by [onDownloadProgressChange](#ondownloadprogresschange21). If this parameter is left empty, all progress-related callback are unregistered.|
+| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | No  | Callback to unregister, which is registered by [onDownloadProgressChange](#ondownloadprogresschange21). If this parameter is left empty, all progress-related callbacks are unregistered.|
 
 
 **Error codes**
@@ -11179,7 +12297,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.                |
 | 202      | Called by non-system application. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -11226,7 +12344,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied |
 | 202      | Called by non-system application |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -11356,7 +12474,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --- | --- |
 | 202 | Called by non-system application. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements. 2. The transferred record already exists. 3. The number of transferred records exceeds 200. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -11407,7 +12525,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --- | --- |
 | 202 | Called by non-system application. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -11463,7 +12581,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --- | --- |
 | 202 | Called by non-system application. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements. 2. The number of transferred records exceeds 200. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -11515,7 +12633,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --- | --- |
 | 202 | Called by non-system application. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -11570,7 +12688,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --- | --- |
 | 202 | Called by non-system application. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The ids list is empty; 2. The number of ids lists exceeds 500. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -11617,7 +12735,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --- | --- |
 | 202 | Called by non-system application. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The ids list is empty; 2. The number of ids lists exceeds 500. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -11642,7 +12760,7 @@ Defines additional options for selecting media assets from Gallery. It inherits 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| userId<sup>18+</sup> | number  | No  | ID of the user space to access. The default value is **-1**.<br>To use it as a parameter of [PhotoViewPicker.select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select), request the permission ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS.<br>**System API**: This is a system API.|
+| userId<sup>18+</sup> | number  | No  | ID of the user space to access. The default value is **-1**.<br>To use it as a parameter of [PhotoViewPicker.select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select), request the permission **ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS**.<br>**System API**: This is a system API.|
 
 **Example**
 
@@ -11762,6 +12880,13 @@ Defines the key information about an image or video file.
 | DATE_ADDED_YEAR<sup>24+</sup>  | 'date_added_year' | Year when an asset is added.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | DATE_ADDED_MONTH<sup>24+</sup> | 'date_added_month'| Month when an asset is added.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | DATE_ADDED_DAY<sup>24+</sup>   | 'date_added_day'  | Date when an asset is added.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| PACKAGE_NAME<sup>23+</sup> | 'package_name' | Package name of a file.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| PHOTO_RISK_STATUS<sup>23+</sup> | 'photo_risk_status' | Image risk control<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| THUMB_STATUS | 'thumb_status' | Thumbnail status.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| LCD_FILE_SIZE | 'lcd_file_size' | Size of the LCD image.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| HIDDEN_TIME | 'hidden_time'  | Time when the file was hidden. The value is the number of milliseconds elapsed since the epoch time (00:00:00 UTC on January 1, 1970).<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| FILE_HIDDEN | 'file_hidden' | Whether the file is hidden.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+
 
 ## AlbumKeys
 
@@ -11776,6 +12901,54 @@ Enumerates the album keys.
 | COVER_URI_SOURCE<sup>20+</sup>     | 'cover_uri_source'      | Source URI of the album cover.<br>**System API**: This is a system API.           |
 | UPLOAD_STATUS<sup>22+</sup>     | 'upload_status'      | Synchronization status of the album.<br>**System API**: This is a system API.           |
 | HIDDEN<sup>23+</sup>     | 'hidden'      | Hidden status.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.           |
+| FILE_HIDDEN     | 'file_hidden'      | Hidden status of a folder in the file management.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.           |
+
+## AlbumAttribute
+
+Enumerates the attribute types of albums.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name| Value| Description|
+| --- | --- | --- |
+| NICK_NAME_ATTR | 'nickname' | Nickname of the album.<br>**System API**: This is a system API.|
+| IS_REMOVED_ATTR | 'is_removed' | Whether the album has been removed.<br>- Currently, portrait albums are supported.<br>- **1**: The album has been removed.<br>- **0**: The album has not been removed or has been restored.<br>**System API**: This is a system API.|
+
+## AlbumOperationType
+
+Enumerates the operation types for setting album attributes.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name| Value| Description|
+| --- | --- | --- |
+| ADD | 'add' | Adding an album attribute.<br>**System API**: This is a system API.|
+| REMOVE | 'remove' | Removing an album attribute.<br>**System API**: This is a system API.|
+| UPDATE | 'update' | Updating an album attribute.<br>**System API**: This is a system API.|
+
+## AlbumOperation
+
+Describes the album operation information.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| --- | --- | --- | --- | --- |
+| attr | [AlbumAttribute](#albumattribute) | No| No| Album attribute type.<br>**System API**: This is a system API.|
+| type | [AlbumOperationType](#albumoperationtype) | No| No| Operation type for setting album attributes.<br>**System API**: This is a system API.|
+| values | string[] | No| No| String parameter for setting album attributes. The maximum length of the array is 20. Each string in the array can contain up to 500 characters.<br>**System API**: This is a system API.|
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
@@ -11792,7 +12965,7 @@ Enumerates the display modes of hidden files in the system.
 
 ## PhotoCreateOptions
 
-Options for creating an image or video asset.
+Defines the options for creating an image or video asset.
 
 **System API**: This is a system API.
 
@@ -11841,6 +13014,150 @@ Represents request options.
 | Name                  | Type                             | Read-Only| Optional| Description                                             |
 | ---------------------- |---------------------------------| ---- |---- | ------------------------------------------------ |
 | sourceMode           | [SourceMode](#sourcemode11)     | No | Yes  | Type of the asset file requested, which can be the original file or edited file.<br>**System API**: This is a system API.|
+
+## Progress
+
+Describes the progress of the clone operation.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| processed | number | Yes| No| Number of items that have been processed in the clone operation.|
+| remain | number | Yes| No| Number of items that still need to be processed in the clone operation.|
+
+## ResultInfo
+
+Describes the result of the clone operation.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| code | number | Yes| No| Result code of the clone operation. If an exception occurs, the error code 23800151 or 23800301 is returned.|
+| result | Array&lt;string \| null&gt; | Yes| No| Result of the clone operation.|
+
+## ProgressListener
+
+type ProgressListener = (progress: Progress) => void
+
+Defines the type of the listener for the clone operation progress.
+
+The progress callback can report copy progress by size and by file count.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| progress | [Progress](#progress) | Yes| Progress information of the clone operation.|
+
+## ResultListener
+
+type ResultListener = (result: ResultInfo) => void
+
+Defines the type of the listener for the clone operation result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| result | [ResultInfo](#resultinfo) | Yes| Result of the clone operation.|
+
+## TaskSignal
+
+Defines the signal used to interrupt the clone operation.
+
+**Since**: 26.0.0
+
+### cancel
+
+cancel(): void
+
+Cancels the clone operation.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. No task can be canceled. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+let taskSignal = new photoAccessHelper.TaskSignal();
+
+try {
+  taskSignal.cancel();
+  console.info('cancel batch operation success');
+} catch (err) {
+  console.error(`cancel batch operation failed with error: ${err.code}, ${err.message}`);
+}
+```
+
+## BatchOperationOptions
+
+Defines the batch clone operation options.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| sizeProgressListener | [ProgressListener](#progresslistener) | No| Yes| Listener for the size progress of the clone operation.|
+| countProgressListener | [ProgressListener](#progresslistener) | No| Yes| Listener for the quantity progress of the clone operation.|
+| taskSignal | [TaskSignal](#tasksignal) | No| Yes| Interruption signal of the clone operation.|
+| resultListener | [ResultListener](#resultlistener) | No| Yes| Listener for the result of the clone operation.|
+| mode | number | No| Yes| Automatic renaming mode for the clone operation.|
 
 ## PhotoProxy<sup>11+</sup>
 
@@ -11957,6 +13274,42 @@ Enumerates the smart analysis types.
 | ANALYSIS\_HIGHLIGHT<sup>12+</sup>        | 14 | Highlight label. **System API**: This is a system API.   |
 | ANALYSIS\_MULTI\_CROP<sup>12+</sup>        | 15 | Label for 2D panning detection boxes. **System API**: This is a system API.   |
 | ANALYSIS\_SEARCH\_INDEX<sup>18+</sup>        | 16 | Foreground index analysis. **System API**: This is a system API.   |
+| ANALYSIS\_SELECTED<sup>24+</sup>        | 17 | Preferred analysis.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.   |
+| ANALYSIS\_DUPLICATE\_SIMILARITY<sup>24+</sup>        | 18 | Repetition and similarity analysis.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.   |
+| ANALYSIS\_NEGATIVE\_EMOTION<sup>24+</sup>        | 19 | Negative emotion analysis.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.   |
+| ANALYSIS\_FACE\_AESTHETICS<sup>24+</sup>        | 20 | Facial aesthetics analysis.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.   |
+| ANALYSIS\_MAGIC\_EMOJI<sup>24+</sup>        | 21 | Magic emoji analysis.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.   |
+| ANALYSIS\_AI\_EDIT<sup>24+</sup>        | 22 | AI editing analysis.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.   |
+
+## AnalysisConfig<sup>24+</sup>
+
+Defines the asset analysis configuration.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name | Type               | Read-Only| Optional| Description                                             |
+| ---- | ------- | ---- |  ---- | ----- |
+| types | [AnalysisType](#analysistype11)[]  | No| No| Array of intelligent analysis types. The maximum size of the array is the number of members defined by the [AnalysisType](#analysistype11) enum.|
+| uris | string[]  | No| No| Asset URI array.<br>Length range: [0, 100].|
+| extraInfos | string  | No| Yes| Extended information in JSON string format.<br>Length range: (0, 500].|
+
+## AnalysisResult<sup>24+</sup>
+
+Defines the asset analysis result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name | Type               | Read-Only| Optional| Description                                             |
+| ---- | ------- | ---- |  ---- | ----- |
+| result | number  | No| No| Result code of asset analysis.|
 
 ## HighlightAlbumInfoType<sup>12+</sup>
 
@@ -12262,6 +13615,7 @@ Enumerates the types of recommended images.
 | DOG<sup>23+</sup> |  14 | Dog images will be recommended.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | ARCHITECTURE<sup>23+</sup> |  15 | Architecture images will be recommended.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 | LANDSCAPE<sup>23+</sup> |  16 | Landscape images will be recommended.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| GAUSSIAN_SPLAT_3D<sup>24+</sup> |  17 | Images generated using the 3D Gaussian technology will be recommended.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 
 ## RecommendationOptions<sup>11+</sup>
 
@@ -12272,6 +13626,7 @@ Defines the image recommendation options. The image recommendation feature depen
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
 | recommendationTypeList<sup>23+</sup> | Array\<[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)>   | No  | Yes| List of recommendation types. If images of multiple categories need to be recommended based on the enumerated value, set this parameter.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| defaultRecommendationType<sup>24+</sup> | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | No  | Yes| Recommended tag displayed when the picker is opened. This configuration takes effect only after **recommendationTypeList** is set.<br>If the tag exists, the tag page is displayed by default.<br>If the tag does not exist, the All tag page is displayed by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 
 
 ## ThumbnailChangeStatus<sup>20+</sup>
@@ -12332,6 +13687,8 @@ Describes the information about a media asset.
 | dateTrashedMs |number  |No| No| Unix timestamp when the media asset was deleted, in milliseconds.<br>**System API**: This is a system API. |
 | dateAddedMs | number  | No| No| Unix timestamp when the media asset was created, in milliseconds.<br>**System API**: This is a system API. |
 | dateTakenMs | number  | No| No| Unix timestamp when the media asset was captured, in milliseconds.<br>**System API**: This is a system API. |
+| dateModifiedMs| number  | No| Yes| Unix timestamp when the file is modified, in milliseconds.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API. |
+| hiddenTime | number  | No| Yes| Hidden time of a media asset (image or video), in milliseconds.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API. |
 | position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16)  | No| Yes| Position of the media asset.<br>**System API**: This is a system API. |
 | displayName | string  | No| Yes| Display name of the media asset.<br>**System API**: This is a system API. |
 | size | number  | No| Yes| File size of the media asset, in bytes. The size of a moving photo includes the total size of the image and video.<br>**System API**: This is a system API. |
@@ -12365,6 +13722,7 @@ Describes the information about an album.
 | orderSection | number  | No| Yes| Section that defines the order of the album, specifying where the album is displayed in the Gallery.<br>**System API**: This is a system API.|
 | albumOrder | number  | No| Yes| Sorting value of the album.<br>**System API**: This is a system API.|
 | HIDDEN<sup>23+</sup>    | boolean  | No| Yes| Whether the album is hidden. **true** if hidden, **false** otherwise.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| lpath | string  | No| Yes| Virtual path of the album.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 
 ## AlbumChangeData<sup>20+</sup>
 
@@ -12809,4 +14167,36 @@ Enumerates the risk types of images.
 | UNIDENTIFIED |  0 |  Default type.|
 | APPROVED |  1 |  Approved images. |
 | SUSPICIOUS |  2 |  Suspicious images. |
-| REJECTED |  3 |  Risky images. |
+| REJECTED |  3 |  Rejected images. |
+
+## CloudDownloadNetworkPolicy
+
+Enumerates the network policies for batch download.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  Default value. The user has not confirmed the pop-up window, and the download is performed only on the Wi-Fi network.|
+| CELL |  1 |  The user has confirmed the pop-up window, and the download can be performed on both the cellular network and Wi-Fi network. |
+| WIFI |  2 |  The user has confirmed the pop-up window, and the download can be performed on the Wi-Fi network. |
+
+## AppLinkState<sup>24+</sup>
+
+Enumerates the states of a file memory link.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  Whether the file has a memory link cannot be determined.|
+| HAS_NO_LINK |  1 |  The file does not have a memory link. |
+| HAS_LINK |  2 |  The file has a memory link. |

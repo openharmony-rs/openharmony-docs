@@ -1,7 +1,7 @@
 # @ohos.uiExtensionHost (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
+<!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
@@ -10,11 +10,11 @@ Intended only for the **UIExtensionComponent** that has process isolation requir
 
 > **NOTE**
 >
-> No new function will be added to this module. Related functions will be provided in the [uiExtension](js-apis-arkui-uiExtension.md) interface.
+> - No new function will be added to this module. Related functions will be provided in the [uiExtension](js-apis-arkui-uiExtension.md) interface.
 >
-> The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are system APIs.
+> - The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
@@ -28,6 +28,8 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 | Name| Type| Read-Only| Optional| Description|
@@ -38,9 +40,11 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
-Obtains the area where this window cannot be displayed, for example, the system bar area, notch, gesture area, and soft keyboard area.
+Obtains the area where the host application window cannot be displayed, for example, the system bar area, notch, gesture area, and soft keyboard area.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -48,13 +52,13 @@ Obtains the area where this window cannot be displayed, for example, the system 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes| Type of the area.|
+| type | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes| Type of the avoidance area.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | Area where the window cannot be displayed.|
+| [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | Avoidance area for the content of the host window.|
 
 **Error codes**
 
@@ -65,7 +69,7 @@ Obtains the area where this window cannot be displayed, for example, the system 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -84,9 +88,11 @@ export default class EntryAbility extends UIExtensionAbility {
 
 on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
-Subscribes to the event indicating changes to the area where the window cannot be displayed.
+Subscribes to the event of changes to the area where the host application window cannot be displayed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -95,18 +101,21 @@ Subscribes to the event indicating changes to the area where the window cannot b
 | Name  | Type  | Mandatory| Description                  |
 | -------- | ------ | ---- | ---------------------- |
 | type     | string | Yes  | Event type. The value is fixed at **'avoidAreaChange'**, indicating the event of changes to the area where the window cannot be displayed.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | Yes| Callback used to return the area information. **type** indicates the type of the area where the window cannot be displayed, and **area** indicates the area.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | Yes| Callback function that receives the information about the current avoidance area. The **type** parameter indicates the type of the avoidance area, and the **area** parameter indicates the avoidance area for the content of the window.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listener has been registered. <br> 3. The UIExtension window proxy is abnormal. |
 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -124,9 +133,11 @@ export default class EntryAbility extends UIExtensionAbility {
 
 off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
-Unsubscribes from the event indicating changes to the area where the window cannot be displayed.
+Unsubscribes from the event of changes to the area where the host application window cannot be displayed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -139,14 +150,17 @@ Unsubscribes from the event indicating changes to the area where the window cann
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listening type is not registered. <br> 3. The listener has not been registered. <br> 4. The UIExtension window proxy is abnormal. |
 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -166,6 +180,8 @@ Subscribes to size change events of the component (**EmbeddedComponent** or **UI
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -177,14 +193,17 @@ Subscribes to size change events of the component (**EmbeddedComponent** or **UI
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listener has been registered. <br> 3. The UIExtension window proxy is abnormal. |
 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -192,7 +211,7 @@ export default class EntryAbility extends UIExtensionAbility {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // Subscribe to size change events of the component (EmbeddedComponent or UIExtensionComponent).
     extensionHostWindow.on('windowSizeChange', (size) => {
-      console.info(`The avoid area of the host window is: ${JSON.stringify(size)}.`);
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
     });
   }
 }
@@ -206,6 +225,8 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -213,18 +234,21 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
 | type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listening type is not registered. <br> 3. The listener has not been registered. <br> 4. The UIExtension window proxy is abnormal. |
 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -250,6 +274,8 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 **Required permissions**: ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -277,7 +303,7 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -316,6 +342,8 @@ Creates a subwindow for this **UIExtensionHostWindowProxy** instance. This API u
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Device behavior differences**: When **isModal** in [subWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **true** and [modalityType](arkts-apis-window-e.md#modalitytype14) is set to **APPLICATION_MODALITY**, this API can be called properly on devices that support [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and are in the freeform window state, and error code 801 is returned when this API is called on devices that support freeform windows but are not in the freeform window state or on devices that do not support freeform windows.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description          |
@@ -337,12 +365,13 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ------- | ------------------------------ |
 | 401 | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -398,6 +427,8 @@ Creates a subwindow under this **UIExtensionHostWindowProxy** instance. By setti
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Device behavior differences**: When **isModal** in [subWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **true** and [modalityType](arkts-apis-window-e.md#modalitytype14) is set to **APPLICATION_MODALITY**, this API can be called properly on devices that support [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and are in the freeform window state, and error code 801 is returned when this API is called on devices that support freeform windows but are not in the freeform window state or on devices that do not support freeform windows.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description          |
@@ -419,12 +450,13 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -479,6 +511,8 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -504,7 +538,7 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -534,12 +568,15 @@ export default class EntryAbility extends UIExtensionAbility {
 hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 Sets whether to enable privacy protection for the UIExtension component during non-system screenshots. This API uses a promise to return the result.
+
 > **NOTE**
 >
 > When privacy protection is enabled, neither [window.snapshot](arkts-apis-window-Window.md#snapshot9) nor [UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) will capture the content of the current component (excluding subwindows created under this component).
  
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -568,7 +605,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -590,6 +627,8 @@ export default class EntryAbility extends UIExtensionAbility {
 Defines information about the host application window and **UIExtensionComponent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -726,7 +765,7 @@ This example shows how to use all the available APIs in the UIExtensionAbility. 
         })
         Button("Obtain Avoid Area Info").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let avoidArea: window.AvoidArea | undefined = this.extensionHostWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-          console.info(`System avoid area: ${JSON.stringify(avoidArea)}`);
+          console.info(`Avoidance area: ${JSON.stringify(avoidArea)}`);
         })
         Button("Create Subwindow").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let subWindowOpts: window.SubWindowOptions = {

@@ -16,7 +16,7 @@ The LauncherAbilityInfo module provides information about the launcher ability, 
 >
 > The APIs provided by this module are system APIs.
 
-## LauncherAbilityInfo<sup>(deprecated)<sup>
+## LauncherAbilityInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >

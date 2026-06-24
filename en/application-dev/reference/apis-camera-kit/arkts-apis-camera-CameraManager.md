@@ -131,7 +131,7 @@ Obtains the complete output capabilities supported by a specified camera in a sp
 > **NOTE**
 >
 > Before using YUV, HEIF, or HDR, you need to explicitly call this method to ensure that the complete output capabilities are obtained.
-
+ 
 **Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
@@ -398,6 +398,56 @@ function createPreviewOutput(cameraManager: camera.CameraManager, surfaceId: str
 }
 ```
 
+### createDeferredPreviewOutput<sup>24+</sup>
+
+createDeferredPreviewOutput(profile: Profile): PreviewOutput
+
+Creates a deferred **PreviewOutput** instance and adds it, instead of a common **PreviewOutput** instance, to the data stream during stream configuration.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type            | Mandatory| Description      |
+| -------- | --------------- | ---- | --------- |
+| profile | [Profile](arkts-apis-camera-i.md#profile) | Yes| Supported preview profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability11).|
+
+**Return value**
+
+| Type       | Description                         |
+| ---------- | ----------------------------- |
+| [PreviewOutput](arkts-apis-camera-PreviewOutput.md)  | **PreviewOutput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400101                |  Parameter missing or parameter type incorrect.               |
+| 7400201                |  Camera service fatal error.               |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function createPreviewOutput(cameraOutputCapability: camera.CameraOutputCapability, cameraManager: camera.CameraManager): camera.PreviewOutput | undefined {
+  let profile: camera.Profile = cameraOutputCapability.previewProfiles[0];
+  let previewOutput: camera.PreviewOutput | undefined = undefined;
+  try {
+    previewOutput = cameraManager.createDeferredPreviewOutput(profile);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The createPreviewOutput call failed. error code: ${err.code}`);
+  }
+  return previewOutput;
+}
+```
+
 ## createPhotoOutput<sup>11+</sup>
 
 createPhotoOutput(profile?: Profile): PhotoOutput
@@ -632,7 +682,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID  | Error Message                                                                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
+| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |  
 | 7400201 | Camera service fatal error.                                                                                                                    |
 
 **Example**
@@ -797,7 +847,7 @@ Checks whether the camera device supports the flashlight.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Check result for the support of the flashlight. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
+| boolean    | Whether the device supports the flashlight. **true** if supported, **false** otherwise.<br>If **false** is returned, [isTorchModeSupported](#istorchmodesupported11), [getTorchMode](#gettorchmode11), [setTorchMode](#settorchmode11), [isTorchLevelControlSupported](#istorchlevelcontrolsupported), and [setTorchModeOnWithLevel](#settorchmodeonwithlevel) do not take effect.<br>If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -967,6 +1017,73 @@ Unsubscribes from flashlight status change events. This API uses an asynchronous
 ```ts
 function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void {
   cameraManager.off('torchStatusChange');
+}
+```
+
+## isTorchLevelControlSupported
+
+isTorchLevelControlSupported(): boolean
+
+Checks whether the device supports flashlight brightness control.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type       | Description                         |
+| ---------- | ----------------------------- |
+| boolean    | Whether the device supports flashlight brightness control. Returns **true** if supported, **false** if not. If the API call fails, undefined is returned.|
+
+**Example**
+
+```ts
+function isTorchLevelControlSupported(cameraManager: camera.CameraManager): boolean {
+  let isSupported = cameraManager.isTorchLevelControlSupported();
+  return isSupported;
+}
+```
+
+## SetTorchModeOnWithLevel
+
+SetTorchModeOnWithLevel(torchLevel: number): void
+
+Sets the specified brightness level for the flashlight.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type            | Mandatory| Description      |
+| -------- | --------------- | ---- | --------- |
+| torchLevel | number| Yes| Flashlight brightness level. The value range is [0.0, 1.0] (**0.0** indicates the darkest, and **1.0** indicates the brightest).|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400201 | Camera service fatal error. |
+| 7400102 | Operation not allowed. |
+
+**Example**
+
+```ts
+function SetTorchModeOnWithLevel(cameraManager: camera.CameraManager, torchLevel: number): void {
+  cameraManager.setTorchModeOnWithLevel(torchLevel);
+  return ;
 }
 ```
 

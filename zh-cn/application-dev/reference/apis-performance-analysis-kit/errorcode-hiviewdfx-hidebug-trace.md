@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -27,7 +27,7 @@ Capture trace already enabled.
 
 **处理步骤**
 
-等待trace采集结束或调用hidebug.stopAppTraceCapture关闭正在运行的trace采集。
+应等待trace采集结束或调用hidebug.stopAppTraceCapture接口关闭正在运行的trace采集，以解决重复采集问题。
 
 ## 11400103 权限校验失败
 
@@ -45,7 +45,7 @@ No write permission on the file.
 
 **处理步骤**
 
-重新运行采集接口，再次生成正确的目录文件。
+应重新运行采集接口，再次生成正确的目录文件，以解决权限校验失败问题。
 
 ## 11400104 内部异常
 
@@ -67,7 +67,7 @@ Abnormal trace status.
 
 **处理步骤**
 
-建议重启应用或设备。
+应重启应用或设备，以解决trace采集内部状态异常问题。
 
 ## 11400105 未开启trace采集
 
@@ -85,7 +85,7 @@ No capture trace running.
 
 **处理步骤**
 
-开启trace采集，然后停止。
+确保在调用停止trace采集接口前，已经成功开启trace采集。
 
 ## 11400106 接口调用配额已超出
 
@@ -105,4 +105,44 @@ Quota exceeded.
 
 **处理步骤**
 
-等待进程或整机的调用配额刷新。
+应等待进程或整机的调用配额刷新，以解决接口调用配额已超出问题。
+
+## 11400120 trace文件存储达到限制
+
+**错误信息**
+
+Trace storage limit reached.
+
+**错误描述**
+
+采集trace返回的.sys文件在目录下的存储超出限制。
+
+**可能原因**
+
+采集trace返回的.sys文件在目录下的数量大于等于3份。
+
+**处理步骤**
+
+应清理trace目录下的文件，以解决trace文件存储达到限制问题。
+
+## 11400302 trace采集超出资源配额
+
+**错误信息**
+
+Resource unavailable.
+
+**错误描述**
+
+应用调用trace采集超出系统资源配额。
+
+> **说明**：
+>
+> 开发者模式下[debug版本应用](../../dfx/performance-analysis-kit-terminology.md#debug版本应用)不被管控。
+
+**可能原因**
+
+应用调用trace采集超出系统资源的每日配额。
+
+**处理步骤**
+
+应等待次日系统资源配额刷新，以解决trace采集超出资源配额问题。

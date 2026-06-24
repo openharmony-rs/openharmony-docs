@@ -1,9 +1,9 @@
 # Page Routing (@ohos.router) (Not Recommended)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -97,16 +97,16 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
           hilog.error(DOMAIN, TAG,`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
-      })
+        hilog.info(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
+      });
     }
   
     build() {
-      // ···
+      // ...
     }
   }
   ```
-  
+    
   >**NOTE**
   >
   >In standard (multi-instance) mode, the **router.RouterMode.Standard** parameter can be omitted.
@@ -133,7 +133,7 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
           hilog.error(DOMAIN, TAG, `Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
+        hilog.info(DOMAIN, TAG, 'Invoke pushUrl succeeded.');
       });
     }
   
@@ -142,7 +142,7 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
     }
   }
   ```
-  
+    
 - Scenario 4: There is a search result list page (**SearchResult**) and a search result details page (**SearchDetail**). You want to click a result on the **SearchResult** page to go to the **SearchDetail** page. In addition, if the result has been viewed before, clicking the result displays the existing details page, instead of creating a new one. In this scenario, you can use the **replaceUrl** API and use the **Single** instance mode.
 
   <!-- @[search_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/SearchResult.ets) -->
@@ -216,7 +216,7 @@ onJumpClick(): void {
       hilog.error(DOMAIN, TAG,`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
-    hilog.error(DOMAIN, TAG,'Invoke pushUrl succeeded.');
+    hilog.info(DOMAIN, TAG,'Invoke pushUrl succeeded.');
   });
 }
 ```
@@ -278,7 +278,7 @@ this.getUIContext().getRouter().back();
   Return to the page through a common route.
 
   <!-- @[back_detail21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-
+  
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome'
@@ -303,7 +303,7 @@ this.getUIContext().getRouter().back();
   Return to the page through a common route.
 
   <!-- @[back_detail31](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-
+  
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome',
@@ -317,7 +317,7 @@ this.getUIContext().getRouter().back();
   Return to the page through a named route.
 
   <!-- @[back_detail32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-
+  
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'myPage', // myPage is the alias of the page to return to.
@@ -360,11 +360,11 @@ struct Home {
 >
 >When the **back** API is used to return to a specified page, all pages between the top page (included) and the specified page (excluded) are pushed from the page stack and destroyed.
 >
-> If the **back** API is used to return to the original page, the original page will not be created repeatedly. Therefore, the variable declared using \@State will not be declared repeatedly, and the **aboutToAppear** lifecycle callback of the page will not be triggered. If you want to use the custom parameters transferred from the returned page on the original page, you can parse the parameters in the required position. For example, parameter parsing can be performed in the **onPageShow** lifecycle callback.
+> Additionally, if you use the **back** method to return to the previous page, the original page will not be recreated. Therefore, variables declared with [\@State](state-management/arkts-state.md) will not be redeclared, and the [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) lifecycle callback will not be triggered. If you want to use the custom parameters transferred from the returned page on the original page, you can parse the parameters in the required position. For example, parameter parsing can be performed in the **onPageShow** lifecycle callback.
 
 ## Lifecycle
 
-The [router](../reference/apis-arkui/js-apis-router.md) page lifecycle refers to the lifecycle of components decorated with [\@Entry](state-management/arkts-create-custom-components.md#entry). The following lifecycle callbacks are provided:
+The [router](../reference/apis-arkui/js-apis-router.md) refers to a lifecycle function of components decorated with [\@Entry](state-management/arkts-create-custom-components.md#entry) and provides the following lifecycle callbacks. For details about the lifecycle sequence diagram of **onPageShow** and **onPageHide**, see [Lifecycle](./arkts-router-to-navigation.md#lifecycle).
 
 - [onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow): Invoked each time the page is displayed, for example, during page redirection or when the application is switched to the foreground.
 

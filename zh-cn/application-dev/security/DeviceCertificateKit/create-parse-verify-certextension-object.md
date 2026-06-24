@@ -7,11 +7,11 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-以获取证书指定OID域段，并判断是否为CA证书为例，完成证书扩展信息对象的创建、解析和校验。
+以获取证书指定对象标识符（OID）域段，并判断是否为CA（证书颁发机构）证书为例，完成证书扩展信息对象的创建、解析和校验。
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```

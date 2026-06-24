@@ -1,9 +1,9 @@
 # Graphics
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **Graphics** module provides APIs for defining attributes of a custom node.
@@ -11,6 +11,8 @@ The **Graphics** module provides APIs for defining attributes of a custom node.
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -45,7 +47,7 @@ Sets or returns the position of the component.
 | ------------------- | ----------------------------------- |
 | [Vector2](#vector2) | A vector that contains two values: x and y.<br>Unit: vp.|
 
-## PositionT<sup>12+</sup>
+## PositionT\<T><sup>12+</sup>
 
 type PositionT\<T> = Vector2T\<T>
 
@@ -195,6 +197,25 @@ Represents a vector including three values: x, y, and z.
 | y    | number | No  | No  | Rotation angle along the y-axis.<br>Value range: (-∞, +∞).|
 | z    | number | No  | No  | Rotation angle along the z-axis.<br>Value range: (-∞, +∞).|
 
+## Vector4
+
+Defines a vector that contains the x, y, z, and w coordinate values.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type  | Read-Only| Optional| Description    |
+| ---- | ------ | ---- | ---- | -------- |
+| x    | number | No | No  | X coordinate value of the vector.<br>Value range: (-∞, +∞).|
+| y    | number | No | No  | Y coordinate value of the vector.<br>Value range: (-∞, +∞).|
+| z    | number | No | No  | Z coordinate value of the vector.<br>Value range: (-∞, +∞).|
+| w    | number | No | No  | W coordinate value of the vector.<br>Value range: (-∞, +∞).|
+
 ## Vector2T\<T><sup>12+</sup>
 
 Represents a vector of the T type that contains two values: x and y.
@@ -277,7 +298,7 @@ class MyRenderNode extends RenderNode {
 
 const renderNode = new MyRenderNode();
 renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xff519db4;
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -306,6 +327,7 @@ struct Index {
   }
 }
 ```
+![](figures/canvas_demo.png)
 
 ## Edges\<T><sup>12+</sup>
 
@@ -574,6 +596,48 @@ struct SizeExample {
 ```
 ![image](figures/lengthMetricsDemo.png)
 
+### autoRefresh
+
+autoRefresh?(value: boolean): LengthMetrics
+
+Sets whether the **LengthMetrics** object automatically updates with system configuration changes.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|-------|------|------|------|
+| value | boolean | Yes| Whether the **LengthMetrics** object constructed using [resource](#resource12) automatically refreshes the value when the system configuration changes.<br>**true**: The object proactively listens to the system configuration changes, and refreshes the value to the resource value corresponding to the configuration when the configuration changes.<br>**false**: The object does not proactively listen to the system configuration changes.|
+
+**Return value**
+
+| Type| Description|
+|------|------|
+| [LengthMetrics](#lengthmetrics12) | **LengthMetrics** object.|
+
+**Example**
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State lengthMetrics: LengthMetrics = LengthMetrics.resource($r('sys.float.ohos_id_button_min_width')).autoRefresh!(true)
+
+  build() {
+    Column() {
+      Button('Test LengthMetrics')
+        .padding({ top: this.lengthMetrics })
+    }
+  }
+}
+```
 
 ## ColorMetrics<sup>12+</sup>
 
@@ -860,6 +924,51 @@ struct ColorMetricsSample {
 ```
 ![image](figures/colorMetricsDemo.png)
 
+### autoRefresh
+
+autoRefresh?(value: boolean): ColorMetrics
+
+Sets whether the **ColorMetrics** object automatically updates with system configuration changes.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|-------|------|------|------|
+| value | boolean | Yes| Whether the **ColorMetrics** object constructed using [resourceColor](#resourcecolor12) automatically refreshes the color value when the system configuration changes.<br>**true**: The object proactively listens to the system configuration changes, and refreshes the value to the resource value corresponding to the configuration when the configuration changes.<br>**false**: The object does not proactively listen to the system configuration changes.|
+
+**Return value**
+
+| Type| Description|
+|------|------|
+| [ColorMetrics](#colormetrics12) | **ColorMetrics** object.|
+
+**Example**
+
+```ts
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State colorMetrics: ColorMetrics = ColorMetrics.resourceColor($r('sys.color.font_primary')).autoRefresh!(true)
+
+  build() {
+    Column() {
+      Text('Test ColorMetrics')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(this.colorMetrics)
+  }
+}
+```
+
 ## Corners\<T><sup>12+</sup>
 
 Describes the four corners.
@@ -887,7 +996,7 @@ Sets the semi-axis lengths for the x-axis and y-axis of the rounded corners.
 
 | Type                                        | Description              |
 | -------------------------------------------- | ------------------ |
-| [Corners](#cornerst12)[\<Vector2>](#vector2) | Semi-axis lengths for the x-axis and y-axis of the rounded corners.|
+| [Corners](#cornerst12)\<[Vector2](#vector2)> | Semi-axis lengths for the x-axis and y-axis of the rounded corners.|
 
 ## BorderRadiuses<sup>12+</sup>
 
@@ -901,7 +1010,7 @@ Sets the uniform radius of the four corners.
 
 | Type                           | Description              |
 | ------------------------------- | ------------------ |
-| [Corners\<number>](#cornerst12) | Uniform radius of the four corners.|
+| [Corners](#cornerst12)\<number> | Uniform radius of the four corners.|
 
 ## Rect<sup>12+</sup>
 
@@ -1049,6 +1158,7 @@ struct Index {
   }
 }
 ```
+![](figures/setRectShape_demo.png)
 
 ### setRoundRectShape<sup>12+</sup>
 
@@ -1116,6 +1226,7 @@ struct Index {
   }
 }
 ```
+![](figures/setRoundRectShape_demo.png)
 
 ### setCircleShape<sup>12+</sup>
 
@@ -1179,6 +1290,7 @@ struct Index {
   }
 }
 ```
+![](figures/setCircleShape_demo.png)
 
 ### setOvalShape<sup>12+</sup>
 
@@ -1237,6 +1349,7 @@ struct Index {
   }
 }
 ```
+![](figures/setOvalShape_demo.png)
 
 ### setCommandPath<sup>12+</sup>
 
@@ -1301,6 +1414,7 @@ struct Index {
   }
 }
 ```
+![](figures/setCommandPath_demo.png)
 
 ## ShapeClip<sup>12+</sup>
 
@@ -1347,7 +1461,7 @@ renderNode.frame = {
   width: 150,
   height: 150
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xff519db4;
 renderNode.shapeClip = clip;
 const shapeClip = renderNode.shapeClip;
 
@@ -1375,6 +1489,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
+        .margin({ bottom: 20 })
       Button("setRectShape")
         .onClick(() => {
           shapeClip.setRectShape({
@@ -1385,10 +1500,11 @@ struct Index {
           });
           renderNode.shapeClip = shapeClip;
         })
-    }
+    }.margin(20)
   }
 }
 ```
+![](figures/setRectShape_demo2.gif)
 
 ### setRoundRectShape<sup>12+</sup>
 
@@ -1696,7 +1812,7 @@ Generates an **edgeColors** object with the specified edge color for all edges.
 
 | Type                    | Description                                  |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | **edgeColors** object whose edge colors are all at the specified value.|
+| [Edges](#edgest12)\<number> | **edgeColors** object whose edge colors are all at the specified value.|
 
 **Example**
 
@@ -1705,9 +1821,9 @@ import { RenderNode, FrameNode, NodeController, edgeColors } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-renderNode.borderColor = edgeColors(0xFF0000FF);
+renderNode.borderColor = edgeColors(0xff519db4);
 
 
 class MyNodeController extends NodeController {
@@ -1733,10 +1849,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/edgeColors_demo.png)
 
 ## edgeWidths<sup>12+</sup>
 
@@ -1758,7 +1875,7 @@ Generates an **edgeWidths** object with the specified edge width for all edges.
 
 | Type                    | Description                                  |
 | ------------------------ | -------------------------------------- |
-| [Edges\<number>](#edgest12) | **edgeWidths** object whose edge widths are all at the specified value.|
+| [Edges](#edgest12)\<number> | **edgeWidths** object whose edge widths are all at the specified value.|
 
 **Example**
 
@@ -1772,13 +1889,13 @@ renderNode.frame = {
   width: 150,
   height: 150
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = edgeWidths(8);
 renderNode.borderColor = {
-  left: 0xFF0000FF,
-  top: 0xFF0000FF,
-  right: 0xFF0000FF,
-  bottom: 0xFF0000FF
+  left: 0xff519db4,
+  top: 0xff519db4,
+  right: 0xff519db4,
+  bottom: 0xff519db4
 };
 
 
@@ -1805,10 +1922,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/edgeWidths_demo.png)
 
 ## borderStyles<sup>12+</sup>
 
@@ -1844,7 +1962,7 @@ renderNode.frame = {
   width: 150,
   height: 150
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xffd5d5d5;
 renderNode.borderWidth = {
   left: 8,
   top: 8,
@@ -1852,10 +1970,10 @@ renderNode.borderWidth = {
   bottom: 8
 };
 renderNode.borderColor = {
-  left: 0xFF0000FF,
-  top: 0xFF0000FF,
-  right: 0xFF0000FF,
-  bottom: 0xFF0000FF
+  left: 0xff519db4,
+  top: 0xff519db4,
+  right: 0xff519db4,
+  bottom: 0xff519db4
 };
 renderNode.borderStyle = borderStyles(BorderStyle.Dotted);
 
@@ -1883,10 +2001,11 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(30)
   }
 }
 ```
+![](figures/borderStyles_demo.png)
 
 ## borderRadiuses<sup>12+</sup>
 
@@ -1922,7 +2041,7 @@ renderNode.frame = {
   width: 150,
   height: 150
 };
-renderNode.backgroundColor = 0XFF00FF00;
+renderNode.backgroundColor = 0xff519db4;
 renderNode.borderRadius = borderRadiuses(32);
 
 
@@ -1949,7 +2068,58 @@ struct Index {
   build() {
     Row() {
       NodeContainer(this.myNodeController)
-    }
+    }.margin(20)
   }
 }
 ```
+![](figures/borderRadiuses_demo.png)
+
+## BackgroundBlur
+
+Sets a background blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name    | Type    | Read-Only| Optional| Description                                    |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**, indicating that the background is not blurred. A larger value indicates a more obvious blur effect.|
+| grayscale | [number, number] | No  | Yes  | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.     |
+
+## ContentBlur
+
+Sets a content blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name    | Type    | Read-Only| Optional| Description                                    |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**, indicating that the content is not blurred. A larger value indicates a more obvious blur effect.|
+| grayscale | [number, number] | No  | Yes  | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.     |
+
+## ForegroundBlur
+
+Sets a foreground blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type  | Read-Only| Optional| Description                               |
+| ------ | ------ | ---- | ---- | ----------------------------------- |
+| radius | number | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**, indicating that the foreground is not blurred. A larger value indicates a more obvious blur effect.|

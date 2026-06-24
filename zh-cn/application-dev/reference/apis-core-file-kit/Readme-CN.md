@@ -26,7 +26,7 @@
   - [@ohos.file.backup (备份恢复)(系统接口)](js-apis-file-backup-sys.md)
   - [@ohos.file.cloudDiskManager (云盘管理)(系统接口)](js-apis-file-clouddiskmanager-sys.md)
   - [@ohos.file.cloudSync (端云同步能力)(系统接口)](js-apis-file-cloudsync-sys.md)
-  - [@ohos.file.cloudSyncManager (端云同步管理)(系统接口)](js-apis-file-cloudsyncmanager-sys.md)
+  - [@ohos.file.cloudSyncManager (端云同步管理能力)(系统接口)](js-apis-file-cloudsyncmanager-sys.md)
   - [@ohos.file.environment (目录环境能力)(系统接口)](js-apis-file-environment-sys.md)
   - [@ohos.file.keyManager (用户密钥管理)(系统接口)](js-apis-file-keymanager-sys.md)
   - [@ohos.file.picker (选择器)(系统接口)](js-apis-file-picker-sys.md)
@@ -43,7 +43,7 @@
     <!--Del-->
     - [@ohos.file.fileAccess (公共文件访问与管理)(系统接口)](js-apis-fileAccess-sys.md)
     - [@ohos.file.fileExtensionInfo (公共文件访问与管理属性信息)(系统接口)](js-apis-fileExtensionInfo-sys.md)
-    - [@ohos.file.recent(最近访问列表)(系统接口)](js-apis-file-recent-sys.md)
+    - [@ohos.file.recent (最近访问列表)(系统接口)](js-apis-file-recent-sys.md)
     - [@ohos.file.trash (回收站)(系统接口)](js-apis-file-trash-sys.md)
     <!--DelEnd-->
 - C API<!--core-file-c-->
@@ -53,6 +53,7 @@
     - [fileShare](capi-fileshare.md)
     - [fileUri](capi-fileuri.md)
     - [CloudDisk](capi-clouddisk.md)
+    - [Archive](capi-archive.md)
   - 头文件<!--core-file-headerfile-->
     - [oh_environment.h](capi-oh-environment-h.md)
     - [error_code.h](capi-error-code-h.md)
@@ -61,6 +62,8 @@
     - [oh_file_uri.h](capi-oh-file-uri-h.md)
     - [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
     - [cloud_disk_error_code.h](capi-cloud-disk-error-code-h.md)
+    - [oh_archive.h](capi-oh-archive-h.md)
+    - [oh_archive_errcode.h](capi-oh-archive-errcode-h.md)
   - 结构体<!--core-file-struct-->
     - [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md)
     - [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md)
@@ -72,6 +75,12 @@
     - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
     - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
     - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
+    - [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md)
+    - [OH_Archive_Stream_Config](capi-archive-oh-archive-stream-config.md)
+    - [ArchiveWriteCtx](capi-archive-archivewritectx.md)
+    - [ArchiveReadCtx](capi-archive-archivereadctx.md)
+    - [ArchiveStreamWriteCtx](capi-archive-archivestreamwritectx.md)
+    - [ArchiveStreamReadCtx](capi-archive-archivestreamreadctx.md)
 - 错误码<!--core-file-arkts-errcode-->
   - [文件管理错误码](errorcode-filemanagement.md)
   <!--Del-->

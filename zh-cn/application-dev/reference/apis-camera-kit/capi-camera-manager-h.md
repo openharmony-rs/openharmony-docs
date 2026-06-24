@@ -52,6 +52,7 @@
 | [Camera_ErrorCode OH_CameraManager_CreateCameraInput(Camera_Manager* cameraManager, const Camera_Device* camera, Camera_Input** cameraInput)](#oh_cameramanager_createcamerainput) | - | 创建相机输入实例。 |
 | [Camera_ErrorCode OH_CameraManager_CreateCameraInput_WithPositionAndType(Camera_Manager* cameraManager, Camera_Position position, Camera_Type type, Camera_Input** cameraInput)](#oh_cameramanager_createcamerainput_withpositionandtype) | - | 创建具有位置和类型的相机输入实例。 |
 | [Camera_ErrorCode OH_CameraManager_CreatePreviewOutput(Camera_Manager* cameraManager, const Camera_Profile* profile, const char* surfaceId, Camera_PreviewOutput** previewOutput)](#oh_cameramanager_createpreviewoutput) | - | 创建预览输出实例。 |
+| [Camera_ErrorCode OH_CameraManager_CreateDeferredPreviewOutput(const Camera_Manager* cameraManager, const Camera_Profile* profile, Camera_PreviewOutput** previewOutput)](#oh_cameramanager_createdeferredpreviewoutput) | - | 创建延迟预览输出实例。使用结束后，必须调用[OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release)释放预览输出实例。 |
 | [Camera_ErrorCode OH_CameraManager_CreatePreviewOutputUsedInPreconfig(Camera_Manager* cameraManager, const char* surfaceId, Camera_PreviewOutput** previewOutput)](#oh_cameramanager_createpreviewoutputusedinpreconfig) | - | 创建在预配置流中使用的预览输出实例。 |
 | [Camera_ErrorCode OH_CameraManager_CreatePhotoOutput(Camera_Manager* cameraManager, const Camera_Profile* profile, const char* surfaceId, Camera_PhotoOutput** photoOutput)](#oh_cameramanager_createphotooutput) | - | 创建一个拍照输出实例。该接口只支持创建JPEG格式的拍照输出对象。 |
 | [Camera_ErrorCode OH_CameraManager_CreatePhotoOutputUsedInPreconfig(Camera_Manager* cameraManager, const char* surfaceId, Camera_PhotoOutput** photoOutput)](#oh_cameramanager_createphotooutputusedinpreconfig) | - | 创建在预配置流中使用的照片输出实例。 |
@@ -65,6 +66,8 @@
 | [Camera_ErrorCode OH_CameraManager_IsTorchSupported(Camera_Manager* cameraManager, bool* isTorchSupported)](#oh_cameramanager_istorchsupported) | - | 检查设备是否支持手电筒。 |
 | [Camera_ErrorCode OH_CameraManager_IsTorchSupportedByTorchMode(Camera_Manager* cameraManager, Camera_TorchMode torchMode, bool* isTorchSupported)](#oh_cameramanager_istorchsupportedbytorchmode) | - | 检查设备是否支持指定的手电筒模式。 |
 | [Camera_ErrorCode OH_CameraManager_SetTorchMode(Camera_Manager* cameraManager, Camera_TorchMode torchMode)](#oh_cameramanager_settorchmode) | - | 设置相机手电筒模式。 |
+| [Camera_ErrorCode OH_CameraManager_IsTorchLevelControlSupported(const Camera_Manager* cameraManager, bool* isTorchLevelControlSupported)](#oh_cameramanager_istorchlevelcontrolsupported) | - | 检查设备是否支持手电筒亮度控制。 |
+| [Camera_ErrorCode OH_CameraManager_SetTorchModeOnWithLevel(const Camera_Manager* cameraManager, double torchLevel)](#oh_cameramanager_settorchmodeonwithlevel) | - | 将手电筒模式设置为打开，并设置亮度值。 |
 | [Camera_ErrorCode OH_CameraManager_GetCameraDevice(Camera_Manager* cameraManager, Camera_Position position, Camera_Type type, Camera_Device* camera)](#oh_cameramanager_getcameradevice) | - | 根据相机位置和相机类型查询指定的相机。 |
 | [Camera_ErrorCode OH_CameraManager_GetCameraDevices(Camera_Manager* cameraManager, Camera_DeviceQueryInfo* deviceQueryInfo, uint32_t* cameraSize, Camera_Device** cameras)](#oh_cameramanager_getcameradevices) | - | 根据相机位置、相机类型数组和连接类型查询符合条件的相机列表。 |
 | [Camera_ErrorCode OH_CameraManager_DeleteCameraDevices(Camera_Manager* cameraManager, Camera_Device* cameras)](#oh_cameramanager_deletecameradevices) | - | 删除指定相机设备。 |
@@ -570,6 +573,32 @@ Camera_ErrorCode OH_CameraManager_CreatePreviewOutput(Camera_Manager* cameraMana
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
+### OH_CameraManager_CreateDeferredPreviewOutput()
+
+```c
+Camera_ErrorCode OH_CameraManager_CreateDeferredPreviewOutput(const Camera_Manager* cameraManager, const Camera_Profile* profile, Camera_PreviewOutput** previewOutput)
+```
+
+**描述**
+
+创建延迟预览输出实例。使用结束后，必须调用[OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release)释放预览输出实例。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | 用于创建Camera_PreviewOutput实例的相机流配置文件。 |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)** previewOutput | 如果方法调用成功，将创建Camera_PreviewOutput实例。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
 ### OH_CameraManager_CreatePreviewOutputUsedInPreconfig()
 
 ```c
@@ -901,6 +930,56 @@ Camera_ErrorCode OH_CameraManager_SetTorchMode(Camera_Manager* cameraManager, Ca
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
 | [Camera_TorchMode](capi-camera-h.md#camera_torchmode) torchMode | 要设置的相机手电筒模式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
+### OH_CameraManager_IsTorchLevelControlSupported()
+
+```c
+Camera_ErrorCode OH_CameraManager_IsTorchLevelControlSupported(const Camera_Manager* cameraManager, bool* isTorchLevelControlSupported)
+```
+
+**描述**
+
+检查设备是否支持手电筒亮度控制。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| bool* isTorchLevelControlSupported | 设备是否支持手电筒亮度控制。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
+### OH_CameraManager_SetTorchModeOnWithLevel()
+
+```c
+Camera_ErrorCode OH_CameraManager_SetTorchModeOnWithLevel(const Camera_Manager* cameraManager, double torchLevel)
+```
+
+**描述**
+
+将手电筒模式设置为打开，并设置亮度值。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | 相机管理器实例。 |
+| double torchLevel | 目标亮度水平。取值范围为[0.0, 1.0]。 |
 
 **返回：**
 

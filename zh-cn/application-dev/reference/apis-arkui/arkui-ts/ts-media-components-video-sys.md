@@ -1,8 +1,8 @@
 # Video (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @qianpinyi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -20,9 +20,11 @@
 
 surfaceBackgroundColor(color: ColorMetrics)
 
-设置Video组件中surfacenode的背景色。
+设置Video组件中surfaceNode的背景色。
 
 **系统接口：** 此接口为系统接口
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,4 +32,4 @@ surfaceBackgroundColor(color: ColorMetrics)
 
 | 参数名 |       类型    | 必填 |           说明                |
 | ------ | ------------ | ---- | ---------------------------- |
-| color  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置Video组件中surfacenode的背景色，仅支持黑色和透明色两种。其他颜色设置将默认为黑色。<br/>默认值：Color.Black |
+| color  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置Video组件中surfaceNode的背景色，仅支持黑色和透明色两种。其他颜色设置将默认为黑色。<br/>默认值：Color.Black |

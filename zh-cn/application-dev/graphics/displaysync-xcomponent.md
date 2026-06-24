@@ -1,8 +1,8 @@
 # 请求自绘制内容绘制帧率
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hudi33-->
-<!--Designer: @hudi33-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -14,7 +14,7 @@
 |-----|--------|
 | OH_NativeXComponent_SetExpectedFrameRateRange (OH_NativeXComponent *component, OH_NativeXComponent_ExpectedRateRange *range) | 设置帧期望的帧率范围。 |
 | OH_NativeXComponent_RegisterOnFrameCallback (OH_NativeXComponent *component, OH_NativeXComponent_OnFrameCallback *callback) | 设置每帧回调函数，同时启动每帧回调。 |
-| OH_NativeXComponent_UnRegisterOnFrameCallback (OH_NativeXComponent *component) | 取消注册的每帧回调函数，同时停止调用回调函数。 |
+| OH_NativeXComponent_UnregisterOnFrameCallback (OH_NativeXComponent *component) | 取消注册的每帧回调函数，同时停止调用回调函数。 |
 
 详细的接口说明请参考[OH_NativeXComponent Native XComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md)。
 
@@ -71,7 +71,7 @@
    ```
 
 3. 定义演示页面，包含两个XComponent组件。
-   <!-- @[display_sync_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets) -->
+   <!-- @[display_sync_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/XComponentDisplaySync.ets) -->
    
    ``` TypeScript
    import XComponentContext from '../interface/XComponentContext';
@@ -181,7 +181,7 @@
    ```
 
 5. TS层注册和取消注册每帧回调。
-   <!-- @[display_sync_start_and_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets) -->
+   <!-- @[display_sync_start_and_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/XComponentDisplaySync.ets) -->
    
    ``` TypeScript
    Row() {

@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-媒体资产进度处理器，应用在onProgress方法中获取媒体资产进度。
+媒体资产进度处理器，应用于onProgress方法中获取媒体资产进度。
 
 > **说明：**
 >

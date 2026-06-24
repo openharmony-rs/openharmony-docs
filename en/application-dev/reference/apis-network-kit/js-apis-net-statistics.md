@@ -485,6 +485,11 @@ getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 
 Obtains the real-time downlink data traffic of the specified application. This API uses an asynchronous callback to return the result.
 
+**Required permissions**
+
+- API versions earlier than API version 26.0.0: N/A
+- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
+
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Parameters**
@@ -525,6 +530,11 @@ getUidRxBytes(uid: number): Promise\<number>
 Obtains the real-time downlink data traffic of the specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
+
+**Required permissions**
+
+- API versions earlier than API version 26.0.0: N/A
+- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
 
 **Parameters**
 
@@ -567,6 +577,11 @@ Obtains the real-time uplink data traffic of the specified application. This API
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
+**Required permissions**
+
+- API versions earlier than API version 26.0.0: N/A
+- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
+
 **Parameters**
 
 | Name  | Type                  | Mandatory| Description                                                                                                                   |
@@ -605,6 +620,11 @@ getUidTxBytes(uid: number): Promise\<number>
 Obtains the real-time uplink data traffic of the specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
+
+**Required permissions**
+
+- API versions earlier than API version 26.0.0: N/A
+- Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
 
 **Parameters**
 

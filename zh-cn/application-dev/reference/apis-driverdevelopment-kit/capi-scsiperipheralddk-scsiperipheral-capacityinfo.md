@@ -1,10 +1,10 @@
 # ScsiPeripheral_CapacityInfo
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct ScsiPeripheral_CapacityInfo {...} ScsiPeripheral_CapacityInfo
@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_CapacityInfo {...} ScsiPeripheral_CapacityInfo
 
 ## 概述
 
-SCSI read capacity 数据。
+SCSI READ CAPACITY 数据。
 
 **起始版本：** 18
 

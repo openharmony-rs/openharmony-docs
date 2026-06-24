@@ -12,7 +12,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口，导入方法如下。
 
@@ -147,7 +147,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
    ret = OH_CaptureSession_Start(captureSession_);
    ```
 
-6. 调用stop()方法停止输出metadata数据，接口调用失败会返回相应错误码。
+6. 调用[OH_MetadataOutput_Stop()](../../reference/apis-camera-kit/capi-metadata-output-h.md#oh_metadataoutput_stop)方法停止输出metadata数据，接口调用失败会返回相应错误码。
 
    ```c++
    Camera_ErrorCode StopMetadataOutput(Camera_MetadataOutput* metadataOutput)

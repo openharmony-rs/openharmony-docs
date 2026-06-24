@@ -1,7 +1,7 @@
 # ArkUI_TextChangeEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_TextChangeEvent
 
 ## Overview
 
-Defines a hybrid data structure for component events.
+Defines the data of a text change event.
 
 **Since**: 15
 

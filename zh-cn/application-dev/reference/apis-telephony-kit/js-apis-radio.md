@@ -6,7 +6,7 @@
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
 
-网络搜索模块提供管理网络搜索的一些基础功能，包括获取当前接入的CS域和PS域无线接入技术、获取网络状态、获取当前选网模式、获取注册网络所在国家的ISO国家码、获取主卡所在卡槽的索引号、获取指定SIM卡槽对应的注册网络信号强度信息列表、获取运营商名称，判断当前设备是否支持NR(New Radio)、判断主卡的Radio是否打开等。
+网络搜索模块提供管理网络搜索的一些基础功能，包括获取当前接入的CS域和PS域无线接入技术、获取网络状态、获取当前选网模式、获取注册网络所在国家的ISO国家码、获取主卡所在卡槽的索引号、获取指定SIM卡槽对应的注册网络信号强度信息列表、获取运营商名称，判断当前设备是否支持NR(New Radio)、判断主卡的Radio是否打开等。其中，CS域为电路交换域，PS为分组交换域。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { radio } from '@kit.TelephonyKit';
 
 getRadioTech\(slotId: number, callback: AsyncCallback<[NetworkRadioTech](#networkradiotech11)\>\): void
 
-获取当前接入的CS域和PS域无线接入技术。使用callback异步回调。
+获取当前接入的CS域和PS域无线接入技术。使用callback异步回调。其中，CS域为电路交换域，PS为分组交换域。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -34,11 +34,11 @@ getRadioTech\(slotId: number, callback: AsyncCallback<[NetworkRadioTech](#networ
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| callback | AsyncCallback\<[NetworkRadioTech](#networkradiotech11)\> | 是   | 回调函数。返回当前接入的CS域和PS域无线接入技术。 |
+| callback | AsyncCallback\<[NetworkRadioTech](#networkradiotech11)\> | 是   | 回调函数。返回当前接入的CS域和PS域无线接入技术。其中，CS域为电路交换域，PS为分组交换域。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -69,7 +69,7 @@ radio.getRadioTech(slotId, (err: BusinessError, data: radio.NetworkRadioTech) =>
 
 getRadioTech\(slotId: number\): Promise\<[NetworkRadioTech](#networkradiotech11)\>
 
-获取当前接入的CS域和PS域无线接入技术。使用Promise异步回调。
+获取当前接入的CS域和PS域无线接入技术。使用Promise异步回调。其中，CS域为电路交换域，PS为分组交换域。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -85,11 +85,11 @@ getRadioTech\(slotId: number\): Promise\<[NetworkRadioTech](#networkradiotech11)
 
 | 类型                                                         | 说明                                            |
 | ------------------------------------------------------------ | ----------------------------------------------- |
-| Promise\<[NetworkRadioTech](#networkradiotech11)\> | 以Promise形式返回当前接入的CS域和PS域技术。 |
+| Promise\<[NetworkRadioTech](#networkradiotech11)\> | 以Promise形式返回当前接入的CS域和PS域技术。CS域为电路交换域，PS为分组交换域。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -118,7 +118,7 @@ radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
 
 getRadioTechSync\(slotId: number\): [NetworkRadioTech](#networkradiotech11)
 
-获取当前接入的CS域和PS域无线接入技术。
+获取当前接入的CS域和PS域无线接入技术。CS域为电路交换域，PS为分组交换域。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -134,11 +134,11 @@ getRadioTechSync\(slotId: number\): [NetworkRadioTech](#networkradiotech11)
 
 | 类型                                                         | 说明                                            |
 | ------------------------------------------------------------ | ----------------------------------------------- |
-| [NetworkRadioTech](#networkradiotech11) | 返回当前接入的CS域和PS域技术。 |
+| [NetworkRadioTech](#networkradiotech11) | 返回当前接入的CS域和PS域技术。CS域为电路交换域，PS为分组交换域。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -176,7 +176,7 @@ getNetworkState\(callback: AsyncCallback\<NetworkState\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -221,7 +221,7 @@ getNetworkState\(slotId: number, callback: AsyncCallback\<NetworkState\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -268,11 +268,11 @@ getNetworkState\(slotId?: number\): Promise\<NetworkState\>
 
 | 类型                                     | 说明                        |
 | ---------------------------------------- | --------------------------- |
-| Promise\<[NetworkState](#networkstate)\> | 以Promise形式返回网络状态。 |
+| Promise\<[NetworkState](#networkstate)\> | Promise对象，返回网络状态。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -314,7 +314,7 @@ getNetworkSelectionMode\(slotId: number, callback: AsyncCallback\<NetworkSelecti
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -362,7 +362,7 @@ getNetworkSelectionMode\(slotId: number\): Promise\<NetworkSelectionMode\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -403,7 +403,7 @@ getISOCountryCodeForNetwork\(slotId: number, callback: AsyncCallback\<string\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -451,7 +451,7 @@ getISOCountryCodeForNetwork\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -520,7 +520,7 @@ getPrimarySlotId\(callback: AsyncCallback\<number\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -561,7 +561,7 @@ getPrimarySlotId\(\): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -599,7 +599,7 @@ getSignalInformation\(slotId: number, callback: AsyncCallback\<Array\<SignalInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -647,7 +647,7 @@ getSignalInformation\(slotId: number\): Promise\<Array\<SignalInformation\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -699,7 +699,7 @@ let signalInfo: Array<radio.SignalInformation> = radio.getSignalInformationSync(
 console.info(`signal information size is:` + signalInfo.length);
 ```
 
-## radio.isNrSupported<sup>8+(deprecated)</sup>
+## radio.isNrSupported<sup>(deprecated)</sup>
 
 isNrSupported\(\): boolean
 
@@ -826,7 +826,7 @@ isRadioOn\(callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -871,7 +871,7 @@ isRadioOn\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -922,7 +922,7 @@ isRadioOn\(slotId?: number\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -964,7 +964,7 @@ getOperatorName\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1012,7 +1012,7 @@ getOperatorName\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1108,8 +1108,8 @@ console.info(`operator name is:` + operatorName);
 |      名称       |           类型              | 只读 | 可选 |      说明          |
 | --------------- | --------------------------- | ---- | ---- | ------------------ |
 | signalType      | [NetworkType](#networktype) | 否   | 否   | 网络信号强度类型。 |
-| signalLevel     | number                      | 否   | 否   | 网络信号强度等级。 |
-| dBm<sup>9+</sup>| number                      | 否   | 否   | 网络信号强度。     |
+| signalLevel     | number                      | 否   | 否   | 网络信号强度等级，范围为[0, 5]，超出范围返回错误。 |
+| dBm<sup>9+</sup>| number                      | 否   | 否   | 网络信号强度，范围为[-140, 140]，超出范围返回错误。     |
 
 ## NetworkType
 

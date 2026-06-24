@@ -1,10 +1,10 @@
 # Hid_EmitItem
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Hid_EmitItem {...} Hid_EmitItem
@@ -12,7 +12,7 @@ typedef struct Hid_EmitItem {...} Hid_EmitItem
 
 ## 概述
 
-事件信息。
+HID事件信息，包含事件类型、编码和值。
 
 **起始版本：** 11
 

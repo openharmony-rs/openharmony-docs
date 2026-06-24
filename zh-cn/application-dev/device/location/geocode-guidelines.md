@@ -18,7 +18,7 @@
 
 ## 接口说明
 
-进行经纬度坐标和地理编码的相互转化，所使用的接口说明如下，详细信息参见：[Location Kit API参考](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
+进行经纬度坐标和地理编码的相互转化，所使用的接口说明如下，详细信息参见Location Kit API参考：[@ohos.geoLocationManager (位置服务)](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |

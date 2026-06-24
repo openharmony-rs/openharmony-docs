@@ -1,7 +1,7 @@
 # ArkUI_AccessibilityProviderCallbacksWithInstance
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_AccessibilityProviderCallbacksWithInstance
 
 ## Overview
 
-Defines a callback function struct of a third-party operation [provider](capi-arkui-accessibility-arkui-accessibilityprovider.md) in the multi-instance scenario. The functions that need to be implemented by the third-party platform are registered with the system through [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance).
+Defines callback functions of a third-party operation [provider](capi-arkui-accessibility-arkui-accessibilityprovider.md) in the multi-instance scenario. The functions that need to be implemented by the third-party platform are registered with the system through [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance).
 
 **Since**: 15
 

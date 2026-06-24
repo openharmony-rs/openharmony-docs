@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangchensu1-->
-<!--Designer: @xiang-shouxing-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -74,7 +74,7 @@ The current FrameNode and the target FrameNode do not have a common ancestor nod
 
 **Description**
 
-This error code is reported when the current node and the target node do not share a common parent node.
+This error code is reported when the current node and the target node do not share a common ancestor node.
 
 **Possible Causes**
 
@@ -175,7 +175,7 @@ State management V2 does not support component reuse in the BuilderNode.
 
 **Solution**
 
-When using state management V2, do not use component reuse in the BuilderNode.
+When using state management V2, do not use component reuse in the BuilderNode. Since API version 26.0.0, custom components in the BuilderNode support V2 component reuse.
 
 
 ## 106103 Operation Not Allowed on Nodes Created by ArkTS

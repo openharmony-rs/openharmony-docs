@@ -27,7 +27,7 @@ You can create text in either of the following ways:
   ```
 
 
-![en-us_image_0000001563060685](figures/en-us_image_0000001563060685.png)
+![text-basic](figures/text-basic.png)
 
 
 - Referencing Resource objects
@@ -57,7 +57,7 @@ You can create text in either of the following ways:
     .width(300)
   ```
 
-  ![en-us_image_0000001511580872](figures/en-us_image_0000001511580872.png)
+  ![text-create](figures/text-create.png)
 
 
 ## Adding Child Components
@@ -81,7 +81,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
   .borderWidth(1)
   ```
 
-  ![en-us_image_0000001562700441](figures/en-us_image_0000001562700441.png)
+  ![text-child-component](figures/text-child-component.png)
 
 - Setting the text decoration
 
@@ -113,7 +113,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
   .padding(10)
   ```
 
-  ![en-us_image_0000001562700437](figures/en-us_image_0000001562700437.png)
+  ![text-child-span](figures/text-child-span.png)
 
 - Use the [textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#textcase) attribute to set the text case.
 
@@ -128,7 +128,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
   .padding(10)
   ```
 
-  ![en-us_image_0000001562940525](figures/en-us_image_0000001562940525.png)
+  ![text-child-image](figures/text-child-image.png)
 
 - Adding events
 
@@ -246,7 +246,7 @@ The following examples demonstrate usage of common APIs.
     .padding(10)
   ```
 
-  ![en-us_image_0000001511421260](figures/en-us_image_0000001511421260.png)
+  ![text-styled](figures/text-styled.png)
 
 - Use the [textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow) attribute to set the display mode for when the text is too long. This attribute must be used together with [maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines). By default, the text is automatically wrapped. Since API version 18, when text overflow is set to marquee mode, you can configure marquee parameters such as enabled status, scroll step, loop count, and direction.
 
@@ -263,7 +263,7 @@ The following examples demonstrate usage of common APIs.
     .border({ width: 1 })
     .padding(10)
   // The value in the 'app.string.CustomTextStyle_textContent_epsis' resource file is
-  // 'I am extra long text, with an ellipse displayed for any excess.'
+  // 'I am extra long text, with an ellipsis displayed for any excess.'
   Text($r('app.string.CustomTextStyle_textContent_epsis'))
     .width(250)
     .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -302,7 +302,7 @@ The following examples demonstrate usage of common APIs.
     })
   ```
 
-  ![en-us_image_0000001563060701](figures/en-us_image_0000001563060701.gif)
+  ![text-custom-style](figures/text-custom-style.gif)
 
 - Use the [lineHeight](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#lineheight) attribute to set the text line height.
 
@@ -319,7 +319,7 @@ The following examples demonstrate usage of common APIs.
     .lineHeight(20)
   ```
 
-  ![en-us_image_0000001511740480](figures/en-us_image_0000001511740480.png)
+  ![radio-default](figures/radio-default.png)
 
 - Use the [decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#decoration) attribute to set the style, color, and thickness of the text decoration line.
 
@@ -405,7 +405,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
 
-  ![en-us_image_0000001562820789](figures/en-us_image_0000001562820789.png)
+  ![text-styled-span](figures/text-styled-span.png)
 
 - Use the [letterSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#letterspacing) attribute to set the letter spacing.
 
@@ -435,7 +435,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
 
-  ![en-us_image_0000001562940513](figures/en-us_image_0000001562940513.png)
+  ![text-styled-span2](figures/text-styled-span2.png)
 
 - Use the [minFontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#minfontsize) and [maxFontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxfontsize) attributes
 
@@ -445,7 +445,8 @@ The following examples demonstrate usage of common APIs.
   
   ``` TypeScript
   /* Replace $r('app.string.CustomTextStyle_textContent_one_style') with the actual resource file.
-   In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 5, width is 250, and maximum number of lines is 1." */
+   * In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 5, width is 250, and maximum number of lines is 1."
+   */
   Text($r('app.string.CustomTextStyle_textContent_one_style'))
     .width(250)
     .maxLines(1)
@@ -455,7 +456,8 @@ The following examples demonstrate usage of common APIs.
     .padding(10)
     .margin(5)
   /* Replace $r('app.string.CustomTextStyle_textContent_two_style') with the actual resource file.
-   In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 5, width is 250, and maximum number of lines is 2." */
+   * In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 5, width is 250, and maximum number of lines is 2."
+   */
   Text($r('app.string.CustomTextStyle_textContent_two_style'))
     .width(250)
     .maxLines(2)
@@ -465,7 +467,8 @@ The following examples demonstrate usage of common APIs.
     .padding(10)
     .margin(5)
   /* Replace $r('app.string.CustomTextStyle_textContent_no_max') with the actual resource file.
-    In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 15, width is 250, and line height is 50." */
+   * In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 15, width is 250, and line height is 50."
+   */
   Text($r('app.string.CustomTextStyle_textContent_no_max'))
     .width(250)
     .height(50)
@@ -475,7 +478,8 @@ The following examples demonstrate usage of common APIs.
     .padding(10)
     .margin(5)
   /* Replace $r('app.string.CustomTextStyle_textContent_high') with the actual resource file.
-    In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 15, width is 250, and line height is 100." */
+   * In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 15, width is 250, and line height is 100."
+   */
   Text($r('app.string.CustomTextStyle_textContent_high'))
     .width(250)
     .height(100)
@@ -486,7 +490,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
 
-  ![en-us_image_0000001511740472](figures/en-us_image_0000001511740472.png)
+  ![radio-styled](figures/radio-styled.png)
 
 - Use the [textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textcase) attribute to set the text case.
 
@@ -515,7 +519,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
   
-  ![en-us_image_0000001562940529](figures/en-us_image_0000001562940529.png)
+  ![text-styled-span3](figures/text-styled-span3.png)
 
 - Use the [copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9) attribute to set whether copy and paste is allowed.
 
@@ -528,7 +532,7 @@ The following examples demonstrate usage of common APIs.
     .copyOption(CopyOptions.InApp)
   ```
 
-  ![en-us_image_0000001511580868](figures/en-us_image_0000001511580868.png)
+  ![text-copy-option](figures/text-copy-option.png)
 
 - Use the [fontFamily](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontfamily) attribute to specify font families. The 'HarmonyOS Sans' font and [registered custom fonts](../reference/apis-arkui/js-apis-font.md) are supported for applications.
 
@@ -673,7 +677,8 @@ The following examples demonstrate usage of common APIs.
   
         // Set whether to enable automatic spacing between Chinese and English characters.
         /* Replace $r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing') with the actual resource file.
-          In this example, the value in the resource file is "Automatic Spacing Between Chinese and Western Characters." */
+         * In this example, the value in the resource file is "Auto Spacing."
+         */
         Text($r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing'))
           .fontSize(24)
           .padding(15)
@@ -690,7 +695,7 @@ The following examples demonstrate usage of common APIs.
   }
   ```
 
-  ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
+  
 
 - Since API version 20, you can use [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20) to apply gradient color effects to text.
 
@@ -1001,6 +1006,7 @@ Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-
     private static readonly CREATE_MENU_ITEM_ID_1: string = 'create1';
     private static readonly CREATE_MENU_ITEM_ID_2: string = 'create2';
     private static readonly PREPARE_MENU_ITEM_ID: string = 'prepare1';
+    private controller: TextController = new TextController();
     @State private text: string = 'Text editMenuOptions';
     @State private endIndex: number = 0;
     @State blockCallbackText: string = '';
@@ -1055,29 +1061,31 @@ Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-
     private onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange): boolean => {
       const menuItemId: TextMenuItemId = menuItem.id;
   
-      // Process the custom menu item.
+      // Returns false after the custom menu item is processed. Clicking the custom menu item will close the menu.
       if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.CREATE_MENU_ITEM_ID_2))) {
         let msg = 'Intercept id: create2 start:' + textRange.start + '; end:' + textRange.end;
-        this.blockCallbackText = msg
-        return true;
+        this.blockCallbackText = msg;
+        return false;
       }
-  
+      // Returns true after the custom menu item is processed. Clicking the custom menu item will not close the menu.
       if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.PREPARE_MENU_ITEM_ID))) {
         let msg = 'Intercept id: prepare1 start:' + textRange.start + '; end:+' + textRange.end;
-        this.blockCallbackText = msg
+        this.blockCallbackText = msg;
         return true;
       }
   
-      // Process the system menu item.
+      // Returns true after the system menu item is processed. In this case, the default system logic is intercepted and clicking the copy menu will not close the menu.
       if (menuItemId.equals(TextMenuItemId.COPY)) {
         let msg = 'Intercept COPY start:' + textRange.start + '; end:' + textRange.end;
-        this.blockCallbackText = msg
+        this.blockCallbackText = msg;
+        // The menu can be closed via the text controller. The handle will also disappear, leaving only the selection area. Clicking will dismiss it.
+        this.controller.closeSelectionMenu();
         return true;
       }
-  
+      // Returns false after the system menu item is processed. In this case, the default system logic is not intercepted, and the custom logic will be executed.
       if (menuItemId.equals(TextMenuItemId.SELECT_ALL)) {
         let msg = 'Allow SELECT_ALL start:' + textRange.start + '; end:' + textRange.end;
-        this.blockCallbackText = msg
+        this.blockCallbackText = msg;
         return false;
       }
   
@@ -1107,7 +1115,7 @@ Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-
     build() {
       NavDestination() {
         Column() {
-          Text(this.text)
+          Text(this.text, { controller: this.controller })
             .fontSize(20)
             .copyOption(CopyOptions.LocalDevice)
             .editMenuOptions(this.editMenuOptions)
@@ -1122,7 +1130,7 @@ Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-
   }
   ```
 
-  ![text_disable_system_menu_callback_and_custom_menu](figures/text_disable_system_menu_callback_and_custom_menu.gif)
+
 
 ### Disabling System Service Menu Items
 
@@ -1395,7 +1403,8 @@ This example demonstrates how to implement a hot search list using the [maxLines
               Row() {
                 Text('2').fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 })
                 /* Replace $r('app.string.TextHotSearch_textContent_three') with the actual resource file.
-                  In this example, the value in the resource file is "I am entry 2 I am entry 2 I am entry 2 I am entry 2 I am entry 2." */
+                 * In this example, the value in the resource file is 'I am entry 2 I am entry 2 I am entry 2 I am entry 2'.
+                 */
                 Text($r('app.string.TextHotSearch_textContent_three'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
@@ -1442,7 +1451,8 @@ This example demonstrates how to implement a hot search list using the [maxLines
               Row() {
                 Text('4').fontSize(14).fontColor(Color.Grey).margin({ left: 10, right: 10 })
                 /* Replace $r('app.string.TextHotSearch_textContent_six') with the actual resource file.
-                  In this example, the value in the resource file is "I am entry 4 I am entry 4 I am entry 4 I am entry 4 I am entry 4." */
+                 * In this example, the value in the resource file is 'I am entry 4 I am entry 4 I am entry 4 I am entry 4'.
+                 */
                 Text($r('app.string.TextHotSearch_textContent_six'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
@@ -1464,5 +1474,5 @@ This example demonstrates how to implement a hot search list using the [maxLines
   ```
   
 
-![en-us_image_0000001562820805](figures/en-us_image_0000001562820805.png)
+![text-hot-search](figures/text-hot-search.png)
 <!--RP1--><!--RP1End-->

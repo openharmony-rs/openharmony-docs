@@ -1,7 +1,7 @@
 # 页面路由
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -90,4 +90,4 @@ export default {
 
 运行效果如下图所示：
 
-![zh-cn_image_0000001070707559](figures/zh-cn_image_0000001070707559.png)
+![Implementing-Redirection](figures/Implementing-Redirection.png)

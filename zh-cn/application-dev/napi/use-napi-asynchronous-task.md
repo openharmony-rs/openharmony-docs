@@ -153,7 +153,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    import testNapi from 'libentry.so';
    ```
 
-   <!-- @[promise_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
+   <!-- @[promise_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    testNapi.asyncWork(1024).then((result: number) => {
@@ -272,6 +272,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    ```ts
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import nativeModule from 'libentry1.so';
+
    let num1: number = 123;
    let num2: number = 456;
    ```

@@ -1,8 +1,8 @@
 # NotificationContent
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -38,8 +38,8 @@ Describes the normal text notification.
 | -------------- | ------ | ---- |-----| ---------------------------------- |
 | title          | string |  No |  No | Notification title. It cannot be empty or exceed 1,024 bytes. Excess content will be truncated.        |
 | text           | string |  No |  No | Notification content. It cannot be empty or exceed 3,072 bytes. Excess content will be truncated.        |
-| additionalText | string |  No |  Yes | Additional information of the notification. It cannot exceed 3,072 bytes. Excess content will be truncated.  |
-| lockscreenPicture<sup>12+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  No |  Yes | Picture of a notification displayed on the lock screen. Currently, only the live view notification is supported. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.  |
+| additionalText | string |  No |  Yes | Additional information of the notification. It cannot exceed 3,072 bytes. Excess content will be truncated. This parameter is left empty by default.  |
+| lockscreenPicture<sup>12+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  No |  Yes | Picture displayed on the lock screen. This parameter is left empty by default. Currently, only the live view notification is supported. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.  |
 
 ## NotificationLongTextContent
 
@@ -103,10 +103,10 @@ Describes the system live view notification. A third-party application cannot di
 | Name                        | Type                                            | Read-Only| Optional| Description                              |
 | ---------------------------- | ----------------------------------------------- | --- | --- | -----------------------------------|
 | typeCode<sup>11+</sup>       | number                                          | No | No | Type code, which identifies the type of the service that invokes the API.      |
-| capsule<sup>11+</sup>        | [NotificationCapsule](#notificationcapsule11)   | No | Yes | Capsule of the notification.                    |
-| button<sup>11+</sup>         | [NotificationButton](#notificationbutton11)     | No | Yes | Button in the notification.                    |
-| time<sup>11+</sup>           | [NotificationTime](#notificationtime11)         | No | Yes | Time of the notification.                    |
-| progress<sup>11+</sup>       | [NotificationProgress](#notificationprogress11) | No | Yes | Progress of the notification.                    |
+| capsule<sup>11+</sup>        | [NotificationCapsule](#notificationcapsule11)   | No | Yes | Capsule of the notification. This parameter is left empty by default.           |
+| button<sup>11+</sup>         | [NotificationButton](#notificationbutton11)     | No | Yes | Button in the notification. This parameter is left empty by default.           |
+| time<sup>11+</sup>           | [NotificationTime](#notificationtime11)         | No | Yes | Time of the notification. This parameter is left empty by default.           |
+| progress<sup>11+</sup>       | [NotificationProgress](#notificationprogress11) | No | Yes | Progress of the notification. This parameter is left empty by default.           |
 
 
 ## NotificationCapsule<sup>11+</sup>
@@ -118,7 +118,7 @@ Describe the notification capsule.
 | Name           | Type                                         | Read-Only| Optional| Description                           |
 | --------------- | -------------------------------------------- | --- | --- | -------------------------------- |
 | title           | string                                       | No | Yes | Title of the capsule, with a maximum of 200 bytes. Excess part will be truncated.                       |
-| icon            | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No | Yes | Icon of the capsule.                       |
+| icon            | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No | Yes | Icon of the capsule. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.                       |
 | backgroundColor | string                                       | No | Yes | Background color of the capsule.                       |
 
 
@@ -131,7 +131,7 @@ Describes the notification button.
 | Name | Type                                                  | Read-Only| Optional| Description            |
 | ----- | ----------------------------------------------------- | --- | --- | ----------------- |
 | names | Array\<string\>                                       | No |  Yes| Button names. A maximum of three names are supported.  |
-| icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | No |  Yes| Button icons. A maximum of three icons are supported.  |
+| icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | No |  Yes| Button icons. A maximum of three icons are supported. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.  |
 | iconsResource<sup>12+</sup> | Array\<[Resource](../apis-arkui/arkui-ts/ts-types.md#resource)\> | No |  Yes| Button icon resources. A maximum of three icon resources are supported.  |
 
 ## NotificationTime<sup>11+</sup>

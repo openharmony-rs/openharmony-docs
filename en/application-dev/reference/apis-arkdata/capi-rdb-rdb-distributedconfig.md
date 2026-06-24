@@ -27,4 +27,4 @@ Defines a struct for distributed configuration of a table.
 | Name           | Description                                         |
 | --------------- | --------------------------------------------- |
 | int version     | Version of the **Rdb_DistributedConfig** struct.|
-| bool isAutoSync | Whether the table supports auto sync. The value **true** indicates that both auto sync and manual sync are supported, and the value **false** indicates that only manual sync is supported.|
+| bool isAutoSync | Whether the table supports automatic device-cloud synchronization. If the value is **true**, the system automatically triggers device-cloud synchronization. If the value is **false**, the system does not automatically trigger device-cloud synchronization. In this case, you need to call [OH_Rdb_CloudSync](capi-relational-store-h.md#oh_rdb_cloudsync) to trigger device-cloud synchronization.|

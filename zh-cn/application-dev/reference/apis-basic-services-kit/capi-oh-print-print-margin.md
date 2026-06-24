@@ -26,8 +26,8 @@ typedef struct {...} Print_Margin
 
 | 名称                  | 描述     |
 | --------------------- | -------- |
-| uint32_t leftMargin   | 左边距。 |
-| uint32_t topMargin    | 上边距。 |
-| uint32_t rightMargin  | 右边距。 |
-| uint32_t bottomMargin | 下边距。 |
+| uint32_t leftMargin   | 左边距，单位：毫米。 |
+| uint32_t topMargin    | 上边距，单位：毫米。 |
+| uint32_t rightMargin  | 右边距，单位：毫米。 |
+| uint32_t bottomMargin | 下边距，单位：毫米。 |
 

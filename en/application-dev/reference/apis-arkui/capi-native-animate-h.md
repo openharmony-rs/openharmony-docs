@@ -1,14 +1,14 @@
 # native_animate.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
-Defines a set of animation APIs of ArkUI on the native side.
+Defines a set of animation APIs of ArkUI on the native side. The APIs in **native_animate.h** must be called in the main thread.
 
 **File to include**: <arkui/native_animate.h>
 
@@ -41,7 +41,7 @@ Defines a set of animation APIs of ArkUI on the native side.
 | [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md) | ArkUI_AnimatorOnFrameEvent | Defines the callback object when the animator receives a frame.|
 | [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md) | ArkUI_TransitionEffect | Defines the transition effect.|
 
-### Callback
+### Functions
 
 <!--Table: 40%; 60%-->
 | Name| Description|
@@ -67,8 +67,8 @@ Defines a set of animation APIs of ArkUI on the native side.
 | [ArkUI_KeyframeAnimateOption* OH_ArkUI_KeyframeAnimateOption_Create(int32_t size)](#oh_arkui_keyframeanimateoption_create) | Creates a keyframe animation parameter object.|
 | [void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_dispose) | Disposes of a keyframe animation parameter object.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | Sets the overall delay of a keyframe animation, in milliseconds. By default, the keyframe animation starts without any delay.|
-| [int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setiterations) | Sets the number of times that the keyframe animation is played. By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. The value **0** indicates that there is no animation.|
-| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)()(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | Sets the callback invoked when the keyframe animation playback is complete. This API is called after the [keyframe animation](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md) has played for the specified number of times.|
+| [int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setiterations) | Sets the number of times that the keyframe animation is played. By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. The value **0** indicates that no animation is played.|
+| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | Sets the callback invoked when the keyframe animation playback is complete. This API is called after the [keyframe animation](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md) has played for the specified number of times.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option, ArkUI_ExpectedFrameRateRange* frameRate)](#oh_arkui_keyframeanimateoption_setexpectedframerate) | Sets the expected frame rate for a keyframe animation.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* option, int32_t value, int32_t index)](#oh_arkui_keyframeanimateoption_setduration) | Sets the duration of a keyframe animation, in milliseconds.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* option, ArkUI_CurveHandle value, int32_t index)](#oh_arkui_keyframeanimateoption_setcurve) | Sets the animation curve for a specific keyframe animation segment.|
@@ -81,9 +81,9 @@ Defines a set of animation APIs of ArkUI on the native side.
 | [ArkUI_AnimatorOption* OH_ArkUI_AnimatorOption_Create(int32_t keyframeSize)](#oh_arkui_animatoroption_create) | Creates an **AnimatorOption** object.|
 | [void OH_ArkUI_AnimatorOption_Dispose(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_dispose) | Disposes of the animator parameters object.|
 | [int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setduration) | Sets the duration of the animator playback, in milliseconds.|
-| [int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setdelay) | Sets the delay of the animator playback, in milliseconds.|
-| [int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setiterations) | Sets the number of times that an animator animation is played. The value **0** means not to play the animation, and **-1** means to play the animation for an unlimited number of times.|
-| [int32_t OH_ArkUI_AnimatorOption_SetFill(ArkUI_AnimatorOption* option, ArkUI_AnimationFillMode value)](#oh_arkui_animatoroption_setfill) | Sets whether the animator animation is restored to the initial state after being executed.|
+| [int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setdelay) | Sets the delay time of the animator playback, in milliseconds.|
+| [int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int32_t value)](#oh_arkui_animatoroption_setiterations) | Sets the number of times that an animator animation is played. By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. The value **0** indicates that no animation is played.|
+| [int32_t OH_ArkUI_AnimatorOption_SetFill(ArkUI_AnimatorOption* option, ArkUI_AnimationFillMode value)](#oh_arkui_animatoroption_setfill) | Sets the status of the component before and after the animator animation execution.|
 | [int32_t OH_ArkUI_AnimatorOption_SetDirection(ArkUI_AnimatorOption* option, ArkUI_AnimationDirection value)](#oh_arkui_animatoroption_setdirection) | Set the playback direction.|
 | [int32_t OH_ArkUI_AnimatorOption_SetCurve(ArkUI_AnimatorOption* option, ArkUI_CurveHandle value)](#oh_arkui_animatoroption_setcurve) | Sets the interpolation curve for the animation of an animator.|
 | [int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float value)](#oh_arkui_animatoroption_setbegin) | Sets the interpolation start point of an animation.|
@@ -94,7 +94,7 @@ Defines a set of animation APIs of ArkUI on the native side.
 | [int32_t OH_ArkUI_AnimatorOption_GetDuration(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getduration) | Obtains the duration for playing an animator animation.|
 | [int32_t OH_ArkUI_AnimatorOption_GetDelay(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getdelay) | Obtains the delay for playing an animator animation.|
 | [int32_t OH_ArkUI_AnimatorOption_GetIterations(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getiterations) | Obtains the number of times that an animator animation is played.|
-| [ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getfill) | Obtains whether the animator animation is restored to the initial state after being executed.|
+| [ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getfill) | Obtains the status of the component before and after the animator animation execution.|
 | [ArkUI_AnimationDirection OH_ArkUI_AnimatorOption_GetDirection(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getdirection) | Obtains the playback direction of an animator animation.|
 | [ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetCurve(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getcurve) | Obtains the interpolation curve of an animator animation.|
 | [float OH_ArkUI_AnimatorOption_GetBegin(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getbegin) | Obtains the interpolation start point of an animator animation.|
@@ -104,7 +104,7 @@ Defines a set of animation APIs of ArkUI on the native side.
 | [float OH_ArkUI_AnimatorOption_GetKeyframeValue(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframevalue) | Obtains the keyframe value of an animation.|
 | [ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetKeyframeCurve(ArkUI_AnimatorOption* option, int32_t index)](#oh_arkui_animatoroption_getkeyframecurve) | Obtains the interpolation curve for a keyframe in the animation of an animator.|
 | [void* OH_ArkUI_AnimatorEvent_GetUserData(ArkUI_AnimatorEvent* event)](#oh_arkui_animatorevent_getuserdata) | Obtains the custom object in an animation event object.|
-| [void* OH_ArkUI_AnimatorOnFrameEvent_GetUserData(ArkUI_AnimatorOnFrameEvent* event)](#oh_arkui_animatoronframeevent_getuserdata) | Obtains the custom object in an animation event object.|
+| [void* OH_ArkUI_AnimatorOnFrameEvent_GetUserData(ArkUI_AnimatorOnFrameEvent* event)](#oh_arkui_animatoronframeevent_getuserdata) | Obtains the user-defined object in the frame event of an animation.|
 | [float OH_ArkUI_AnimatorOnFrameEvent_GetValue(ArkUI_AnimatorOnFrameEvent* event)](#oh_arkui_animatoronframeevent_getvalue) | Obtains the interpolation result in the animation frame callback event object.|
 | [int32_t OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(ArkUI_AnimatorOption* option, void* userData, void (\*callback)(ArkUI_AnimatorOnFrameEvent* event))](#oh_arkui_animatoroption_registeronframecallback) | Sets the callback invoked when the animator receives a frame.|
 | [int32_t OH_ArkUI_AnimatorOption_RegisterOnFinishCallback(ArkUI_AnimatorOption* option, void* userData, void (\*callback)(ArkUI_AnimatorEvent* event))](#oh_arkui_animatoroption_registeronfinishcallback) | Sets the callback invoked when the animation playback is complete.|
@@ -253,7 +253,7 @@ Obtains an animation curve.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) | Animation curve. If **option** is invalid,**-1** is returned.|
+| [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve) | Animation curve. If **option** is invalid,**-1** is returned.|
 
 ### OH_ArkUI_AnimateOption_GetDelay()
 
@@ -331,7 +331,7 @@ Obtains the playback mode of an animation.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode) | Animation playback mode. If **option** is invalid,**-1** is returned.|
+| [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode) | Animation playback mode. If **option** is invalid,**-1** is returned.|
 
 ### OH_ArkUI_AnimateOption_GetExpectedFrameRateRange()
 
@@ -421,7 +421,7 @@ Animation curve.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Pointer to an animation configuration.<br>If **option** is set to **NULL**, the operation is invalid.|
-| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) value | Animation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve) to obtain a smoother animation effect.<br>If the value is abnormal, the setting is invalid.|
+| [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve) value | Animation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve) to obtain a smoother animation effect.<br>If the value is abnormal, the setting is invalid.|
 
 ### OH_ArkUI_AnimateOption_SetDelay()
 
@@ -484,7 +484,7 @@ Sets the playback mode for an animation.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Pointer to an animation configuration.<br>If **option** is set to **NULL**, the operation is invalid.|
-| [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode) value | Animation playback mode. Default value: [ARKUI_ANIMATION_PLAY_MODE_NORMAL](capi-native-type-h.md#arkui_animationplaymode).<br>If the value is abnormal, the operation is invalid.|
+| [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode) value | Animation playback mode. Default value: [ARKUI_ANIMATION_PLAY_MODE_NORMAL](capi-native-type-visual-h.md#arkui_animationplaymode).<br>If the value is abnormal, the operation is invalid.|
 
 ### OH_ArkUI_AnimateOption_SetExpectedFrameRateRange()
 
@@ -529,7 +529,7 @@ Sets the animation curve for an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Animator animation parameters.<br>If **option** is set to **NULL**, the operation is invalid.|
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Animation settings.<br>If **option** is set to **NULL**, the operation is invalid.|
 | [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Animation curve parameters.<br>If **value** is set to **NULL**, the operation is invalid.|
 
 ### OH_ArkUI_AnimateOption_GetICurve()
@@ -550,7 +550,7 @@ Obtains the animation curve of an animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Animator animation parameters.<br>If **option** is set to **NULL**, **NULL** is returned.|
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | Animation settings.<br>If **option** is set to **NULL**, **NULL** is returned.|
 
 **Return value**
 
@@ -668,7 +668,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAn
 **Description**
 
 
-Sets the callback invoked when the keyframe animation playback is complete. This function is called after the [keyframe animation](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md) has played for the specified number of times.
+Sets the callback invoked when the keyframe animation playback is complete. This API is called after the [keyframe animation](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md) has played for the specified number of times.
 
 **Since**: 12
 
@@ -766,7 +766,7 @@ Sets the animation curve for a specific keyframe animation segment.
 | Name| Description|
 | -- | -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Animation curve to set. Default value: [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve).|
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Animation curve to set. Default value: [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve).|
 | int32_t index | Index of the keyframe state segment. Value range: [0, size – 1], where **size** indicates the number of keyframe animation states.<br>If the value of **index** is less than 0 or out of range, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
@@ -1021,7 +1021,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 **Description**
 
 
-Sets the delay time for playing an animator animation, in ms.
+Sets the delay time of the animator playback, in milliseconds.
 
 **Since**: 12
 
@@ -1090,7 +1090,7 @@ Sets the status of the component before and after the animator animation executi
 | Name| Description|
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) value | Status of the component before and after the animator animation execution. Default value: [ARKUI_ANIMATION_FILL_MODE_FORWARDS](capi-native-type-h.md#arkui_animationfillmode).<br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode) value | Status of the component before and after the animator animation execution. Default value: [ARKUI_ANIMATION_FILL_MODE_FORWARDS](capi-native-type-visual-h.md#arkui_animationfillmode).<br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
@@ -1117,7 +1117,7 @@ Set the playback direction.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) value | Animation playback direction.<br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
+| [ArkUI_AnimationDirection](capi-native-type-visual-h.md#arkui_animationdirection) value | Animation playback direction.<br>If the value is less than 0, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 
@@ -1149,7 +1149,7 @@ Sets the interpolation curve for the animation of an animator.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | Animator parameters.<br>If **option** is set to **NULL**, the error code [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned.|
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Interpolation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve) to obtain a smoother animation effect.<br>If **value** is set to **NULL**, the default curve [ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve) is used.|
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | Interpolation curve. Default value: [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve). You are advised to use [ARKUI_CURVE_EASE_IN_OUT](capi-native-type-visual-h.md#arkui_animationcurve) to obtain a smoother animation effect.<br>If **value** is set to **NULL**, the default curve [ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve) is used.|
 
 **Return value**
 
@@ -1409,7 +1409,7 @@ Obtains the status of the component before and after the animator animation exec
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) | Status of the component before and after the animator animation execution. If **option** is invalid,**-1** is returned.|
+| [ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode) | Status of the component before and after the animator animation execution. If **option** is invalid,**-1** is returned.|
 
 ### OH_ArkUI_AnimatorOption_GetDirection()
 
@@ -1435,7 +1435,7 @@ Obtains the playback direction of an animator animation.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) | Animation playback direction. If **option** is invalid,**-1** is returned.|
+| [ArkUI_AnimationDirection](capi-native-type-visual-h.md#arkui_animationdirection) | Animation playback direction. If **option** is invalid,**-1** is returned.|
 
 ### OH_ArkUI_AnimatorOption_GetCurve()
 
@@ -1985,7 +1985,7 @@ Implements initialization for the interpolation curve, which is used to create a
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) curve | Curve type.|
+| [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve) curve | Curve type.|
 
 **Return value**
 
@@ -2344,7 +2344,7 @@ Creates a movement transition effect object for the component.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TransitionEdge](capi-native-type-h.md#arkui_transitionedge) edge | Movement transition type.|
+| [ArkUI_TransitionEdge](capi-native-type-visual-h.md#arkui_transitionedge) edge | Movement transition type.|
 
 **Return value**
 

@@ -1,8 +1,8 @@
 # Functions
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -55,5 +55,5 @@ if (ArkTSUtils.isSendable(sendableFunc)) {
 } else {
   console.info("sendableFunc is not Sendable");
 }
-// 期望输出: 'SendableFunc is Sendable'
+// 期望输出: 'sendableFunc is Sendable'
 ```

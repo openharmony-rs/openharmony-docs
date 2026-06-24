@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @qq_36417014-->
-<!--Designer: @zhangbeilei-->
+<!--Designer: @autojuan-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
 
@@ -30,7 +30,7 @@ import { AtomicServiceNavigation } from '@kit.ArkUI';
 ``` ts
 AtomicServiceNavigation({
     navPathStack?: NavPathStack,
-    navigationContent: Callback<void>,
+    navigationContent?: Callback<void>,
     title?: ResourceStr,
     titleOptions?: TitleOptions,
     gradientBackground?: GradientBackground,
@@ -40,7 +40,7 @@ AtomicServiceNavigation({
     navDestinationBuilder?: NavDestinationBuilder,
     navBarWidthRange?: [Dimension, Dimension],
     minContentWidth?: Dimension,
-    sideBarOptions?: sideBarOptions,
+    sideBarOptions?: SideBarOptions,
     sideBarContent?: Callback<void>,
     menus?: CustomBuilder | Array<NavigationMenuItem>,
     stateChangeCallback?: Callback<boolean>,
@@ -52,7 +52,7 @@ AtomicServiceNavigation({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数**：
+**参数：**
 
 | 名称 | 类型 | 必填 | 装饰器类型| 说明 |
 | --------------- | ------ | ---- | ----|----|
@@ -84,7 +84,7 @@ AtomicServiceNavigation({
 | isBlurEnabled | boolean | 否 | 是 | 标题栏是否模糊，默认值：true，表示标题栏模糊。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | barStyle | [BarStyle](ts-basic-components-navigation.md#barstyle12枚举说明)  | 否 | 是 | 标题栏样式属性设置。默认值为BarStyle.STANDARD。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | titleBarType<sup>18+</sup> | [TitleBarType](#titlebartype18) | 否 | 是 | 设置标题栏类型。默认值为TitleBarType.ROUND_ICON。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| titleIcon<sup>18+</sup> | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 设置标题栏的图标。默认值为$r('sys.color.ohos_id_color_titlebar_icon')。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| titleIcon<sup>18+</sup> | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 设置标题栏的图标。默认值为$r('sys.color.ohos_id_color_titlebar_icon')。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## GradientBackground<sup>18+</sup>
 供开发者设置品牌渐变色。
@@ -145,7 +145,7 @@ NavDestination组件内容。
 | DRAWER | 3 | 抽屉样式。 |
 
 ## GradientAlpha<sup>18+</sup>
-导航栏背景底色的可选项。
+导航栏背景底色不透明度的可选项。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -182,7 +182,7 @@ NavDestination组件内容。
 | --------------- | ------ | ---- | -- |----|
 | sideBarBackground | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置侧边栏的背景颜色。默认值为$r('sys.color.ohos_id_color_sub_background')。 |
 | onChange | Callback\<boolean\> | 否 | 是 | 侧边栏显示隐藏回调。true表示显示，false表示隐藏。默认值为空，即无事件。 |
-| sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 侧边栏里的返回图标。默认值为$r('sys.symbol.open_sidebar')。 |
+| sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否 | 是 | 侧边栏里的返回图标。默认值为$r('sys.symbol.open_sidebar')。 |
 
 ## 示例
 
@@ -236,7 +236,7 @@ struct Index {
       ],
       tabBarPosition: TabBarPosition.BOTTOM,
       barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
-      onTabBarClick: (index: Number) => {
+      onTabBarClick: (index: number) => {
         if (index == 0) {
           this.message = '功能1';
         } else if (index == 1) {
@@ -375,7 +375,7 @@ struct Index {
       ],
       tabBarPosition: TabBarPosition.BOTTOM,
       barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
-      onTabBarClick: (index: Number) => {
+      onTabBarClick: (index: number) => {
         if (index == 0) {
           this.message = '功能1';
         } else if (index == 1) {
@@ -517,7 +517,7 @@ struct Index {
       ],
       tabBarPosition: TabBarPosition.BOTTOM,
       barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
-      onTabBarClick: (index: Number) => {
+      onTabBarClick: (index: number) => {
         if (index == 0) {
           this.message = '功能1';
         } else if (index == 1) {

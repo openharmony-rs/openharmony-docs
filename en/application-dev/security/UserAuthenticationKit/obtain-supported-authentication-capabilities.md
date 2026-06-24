@@ -11,7 +11,7 @@ Different devices support different authentication capabilities (facial authenti
 
 ## Available APIs
 
-For details about the parameters, return value, and error codes, see [getAvailableStatus](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetavailablestatus9).
+For details about the parameters, return values, and error codes, see [userAuth.getAvailableStatus](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetavailablestatus9).
 
 | API| Description| 
 | -------- | -------- |

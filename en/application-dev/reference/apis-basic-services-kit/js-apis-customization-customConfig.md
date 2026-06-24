@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @sunshine_1984-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @fang-jinxu-->
 
 This module provides APIs for applications to obtain custom configurations, such as channel IDs.
 

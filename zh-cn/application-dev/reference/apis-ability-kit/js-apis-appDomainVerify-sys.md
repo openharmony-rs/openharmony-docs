@@ -4,7 +4,7 @@
 <!--Owner: @hw-xpc-->
 <!--Designer: @xuchuanqi87-->
 <!--Tester: @sl_sunshineGirl-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用域名校验能力，支持查询应用与域名之间的映射关系。
 
@@ -54,7 +54,7 @@ queryAssociatedDomains(bundleName: string): string[]
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle.appDomainVerify错误码](errorcode-appDomainVerify-sys.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[应用域名校验错误码](errorcode-appDomainVerify-sys.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -105,7 +105,7 @@ queryAssociatedBundleNames(domain: string): string[]
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle.appDomainVerify错误码](errorcode-appDomainVerify-sys.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[应用域名校验错误码](errorcode-appDomainVerify-sys.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |

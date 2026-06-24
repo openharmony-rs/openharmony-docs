@@ -113,23 +113,23 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   
   setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
-  1.应用文件目录通过[Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context)获取，其子目录示例如下：
+  1.应用文件目录通过[Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
   * /data/storage/el2/base/files/example
   * /data/storage/el2/base/haps/entry/files/example
 
-  2.应用资源目录通过[Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context)获取，其子目录示例如下：
+  2.应用资源目录通过[Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
   * /data/storage/el1/bundle/entry/resources/resfile
   * /data/storage/el1/bundle/entry/resources/resfile/example
 
-  3.从API version 21开始，还包括了应用缓存目录通过[Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context)获取，其子目录示例如下：
+  3.从API version 21开始，还包括了应用缓存目录通过[Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
   * /data/storage/el2/base/cache
   * /data/storage/el2/base/haps/entry/cache/example
   * 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
 
-  4.从API version 21开始，还包括了应用临时目录通过[Context.tempDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context)获取，其子目录示例如下：
+  4.从API version 21开始，还包括了应用临时目录通过[Context.tempDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
   * /data/storage/el2/base/temp
   * /data/storage/el2/base/haps/entry/temp/example

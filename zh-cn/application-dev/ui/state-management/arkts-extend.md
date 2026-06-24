@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @BlYynNe-->
-<!--Designer: @lixingchi1-->
+<!--Designer: @BlYynNe-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -199,6 +199,91 @@ struct FancyUse {
 }
 ```
 
+- @Extend装饰的函数仅限当前文件使用，不支持导出，不支持在其他文件调用。
+
+【反例】
+
+``` TypeScript
+  // 错误写法 不要在pageTwo当中使用在其他文件比如pageOne中定义的@Extend函数
+  // pageOne.ets
+  @Extend(Button)
+  function ButtonUse() {
+    .width(100)
+    .buttonStyle(ButtonStyleMode.NORMAL)
+  }
+
+  @Entry
+  @Component
+  struct extendUseOne {
+    build() {
+      Row() {
+        Button()
+          .ButtonUse()
+          .height(200)
+      }
+    }
+  }
+  
+  // pageTwo.ets
+  @Entry
+  @Component
+  struct TextUse {
+    build() {
+      Row() {
+        Text('this is TextUse')
+
+        Button()
+          .ButtonUse()  // 会有编译告警提示: Property 'ButtonUse' does not exist on type 'ButtonAttribute'.
+          .height(50)
+      }
+    }
+  }
+```
+
+【正例】
+
+``` TypeScript
+  // 正确写法 在pageTwo文件当中可以定义与pageOne文件中的@Extend函数不重名的@Extend函数
+  // pageOne.ets
+  @Extend(Button)
+  function ButtonUse() {
+    .width(100)
+    .buttonStyle(ButtonStyleMode.NORMAL)
+  }
+
+  @Entry
+  @Component
+  struct extendUseOne {
+    build() {
+      Row() {
+        Button()
+          .ButtonUse()
+          .height(200)
+      }
+    }
+  }
+  
+  // pageTwo.ets
+  @Extend(Button)
+  function ButtonUse2() {
+    .width(200)
+    .buttonStyle(ButtonStyleMode.EMPHASIZED)
+  }
+
+  @Entry
+  @Component
+  struct TextUse {
+    build() {
+      Row() {
+        Text('this is TextUse')
+  
+        Button()
+          .ButtonUse2()
+          .height(50)
+      }
+    }
+  }
+```
 ## 使用场景
 
 以下示例声明了3个Text组件，每个Text组件均设置了[fontStyle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontstyle)、[fontWeight](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontweight) 和[backgroundColor](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)样式。

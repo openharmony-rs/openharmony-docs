@@ -10,18 +10,14 @@
 可以通过创建弹窗控制器和创建自定义弹窗的内容对象两种方法显示自定义弹窗，设置其样式和内容。
 
 
-[通过创建弹窗控制器显示自定义弹窗](#通过创建弹窗控制器显示自定义弹窗)：在命名为ArkUI_NativeDialogAPI_x （x表示版本）的结构体中，定义了弹窗接口集合，用于实现各种弹窗控制。
+[通过创建弹窗控制器显示自定义弹窗](#通过创建弹窗控制器显示自定义弹窗)：在命名为ArkUI_NativeDialogAPI_x （x表示版本）的结构体中，定义了弹窗接口集合，用于实现各种弹窗控制。从API version 12开始支持，使用方式可以参考[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)接口。
 
 
-[通过创建自定义弹窗的内容对象显示自定义弹窗](#通过创建自定义弹窗的内容对象显示自定义弹窗)：该方式下的弹窗接口在[native_dialog.h](../reference/apis-arkui/capi-native-dialog-h.md#函数)的函数中定义。
+[通过创建自定义弹窗的内容对象显示自定义弹窗](#通过创建自定义弹窗的内容对象显示自定义弹窗)：该方式下的弹窗接口在[native_dialog.h](../reference/apis-arkui/capi-native-dialog-h.md#函数)的函数中定义。从API version 19开始支持，使用方式可以参考[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口。
 
 
 > **说明：**
 >
-> - 通过创建弹窗控制器来显示自定义弹窗，使用方式可以参考[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)接口。
-> 
-> - 通过创建自定义弹窗的内容对象来显示自定义弹窗，使用方式可以参考[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口。
-> 
 > - [OH_ArkUI_QueryModuleInterfaceByName](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname)用于获取指定类型的Native模块接口集合，可以通过其返回ArkUI_NativeDialogHandle类型的数据调用Native模块中的接口。
 
 ## 创建和销毁自定义弹窗
@@ -30,7 +26,7 @@
 
 - 创建弹窗控制器：
 
-  [ArkUI_NativeDialogHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md)表示指向弹窗控制器的指针，可以通过调用[ArkUI_NativeDialogAPI_x](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md)的[create](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#create)接口创建一个弹窗控制器。
+  [ArkUI_NativeDialogHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md)表示指向弹窗控制器的指针，可以通过调用[ArkUI_NativeDialogAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md)的[create](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#create)接口创建一个弹窗控制器。
 
   该方法返回ArkUI_NativeDialogHandle类型的数据。
   <!-- @[dialog_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
@@ -92,7 +88,7 @@
 
    > **说明：**
    >
-   > 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。
+   > 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。
 
    <!-- @[create_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
    
@@ -317,7 +313,7 @@
      }
      ```
 
-![zh-cn_image_0000001902966196](figures/zh-cn_image_0000001902966196.gif)
+![zh-cn_image_0000001902966196](figures/Interacting-Dialog-Box.gif)
 
 
 ## 弹窗的生命周期
@@ -332,7 +328,7 @@ registerOnWillAppear -> 弹窗显示动画开始 -> 弹窗显示动画结束 -> 
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。
  
 <!-- @[dialog_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
 

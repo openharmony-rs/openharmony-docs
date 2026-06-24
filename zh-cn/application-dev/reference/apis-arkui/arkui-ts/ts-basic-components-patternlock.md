@@ -32,7 +32,7 @@ PatternLock(controller?: PatternLockController)
 
 | 参数名     | 类型                                        | 必填 | 说明 |
 | ---------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| controller | [PatternLockController](#patternlockcontroller) | 否   | 设置PatternLock组件控制器，可用于控制组件状态重置。       |
+| controller | [PatternLockController](#patternlockcontroller) | 否   | 设置PatternLock组件控制器，可用于重置组件状态和设置图案密码状态。       |
 
 ## 属性
 
@@ -171,7 +171,7 @@ pathStrokeWidth(value: number | string)
 
 | 参数名 | 类型                       | 必填 | 说明                          |
 | ------ | -------------------------- | ---- | ----------------------------- |
-| value  | number&nbsp;\|&nbsp;string | 是   | 连线的宽度。<br/>默认值：12vp<br/>取值范围：(0, sideLength/3]，设置为0或负数时连线不显示，超过最大值按最大值处理。 |
+| value  | number&nbsp;\|&nbsp;string | 是   | 连线的宽度。<br/>默认值：12<br/>单位：vp<br/>取值范围：(0, sideLength/3]，设置为0或负数时连线不显示，超过最大值按最大值处理。 |
 
 ### autoReset
 
@@ -197,6 +197,8 @@ activateCircleStyle(options: Optional\<CircleStyleOptions\>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -212,6 +214,8 @@ skipUnselectedPoint(skipped: boolean)
 设置未选中的宫格圆点在密码路径经过时是否自动选中。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -243,7 +247,7 @@ onPatternComplete(callback: (input: Array\<number\>) => void)
 
 ### onDotConnect<sup>11+</sup>
 
-onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\>)
+onDotConnect(callback: import('../api/@ohos.base').Callback\<number\>)
 
 密码输入选中宫格圆点时触发该回调。
 
@@ -255,17 +259,21 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型            | 必填 | 说明                                                         |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| callback  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 是   | 密码输入选中宫格圆点时触发该回调。 |
+| callback  | import('../api/@ohos.base').[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> | 是   | 密码输入选中宫格圆点时触发该回调。 |
 
 ## CircleStyleOptions<sup>12+</sup>对象说明
 
 圆环样式的参数说明。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -279,7 +287,7 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 ## PatternLockController
 
-PatternLock组件的控制器，用于重置组件状态。
+PatternLock组件的控制器，用于重置组件状态和设置图案密码状态。
 
 ### 导入对象
 
@@ -315,6 +323,8 @@ setChallengeResult(result: PatternLockChallengeResult): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -328,6 +338,8 @@ setChallengeResult(result: PatternLockChallengeResult): void
 图案密码状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -377,7 +389,7 @@ struct PatternLockExample {
 
 ### 示例2（判断密码是否正确）
 
-该示例通过[sideLength](#sidelength)属性设置九宫格的大小、[circleRadius](#circleradius)属性设置宫格圆点样式、[onPatternComplete](#onpatterncomplete)属性设置密码输入时的回调。 
+该示例通过[sideLength](#sidelength)属性设置九宫格的大小、[circleRadius](#circleradius)属性设置宫格中圆点的半径、[onPatternComplete](#onpatterncomplete)属性设置密码输入完成时的回调。 
 
 当用户密码输入完成后，按输入的密码不同，给予不同的回应：输入的密码长度小于5时，提示重新输入；第一次输入完成后，提示第二次输入密码；第二次输入完成后，判断两次输入的密码是否相同，相同则提示密码设置成功，否则提示重新输入。 
 

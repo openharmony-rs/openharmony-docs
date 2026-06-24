@@ -263,21 +263,35 @@ Wi-Fi新增支持连接候选网络时提示确认是否信任该网络，并提
 
 ### 前提条件
 
-1. 注册码云gitee帐号。
+1. 注册gitcode账号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
+2. 注册gitcode的SSH公钥，请参考[gitcode帮助中心](https://docs.gitcode.com/docs/help/home/user_center/security_management/ssh)。
 
-3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
-   ```
+3. 安装[git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)和[git-lfs](https://gitcode.com/gh_mirrors/gi/git-lfs?source_module=search_result_repo)并配置用户信息。
+  
+   ```shell
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
    git config --global credential.helper store
    ```
 
-4. 安装码云repo工具，可以执行如下命令。
-   ```
-   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+4. 执行如下命令安装gitcode的repo工具。
+
+   下述命令中的安装路径以"~/bin"为例，请用户自行创建所需目录。
+  
+   ```shell
+   mkdir ~/bin
+   curl https://raw.gitcode.com/gitcode-dev/repo/raw/main/repo-py3 -o ~/bin/repo
+   chmod a+x ~/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
+   ```
+
+5. 将repo添加到环境变量。
+
+   ```shell
+   vim ~/.bashrc               # 编辑环境变量
+   export PATH=~/bin:$PATH     # 在环境变量的最后添加一行repo路径信息
+   source ~/.bashrc            # 应用环境变量
    ```
 
 

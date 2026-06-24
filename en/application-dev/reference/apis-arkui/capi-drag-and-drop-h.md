@@ -104,7 +104,7 @@ Declares the APIs of **NativeDrag**.
 | [ArkUI_ErrorCode OH_ArkUI_DragAction_SetDataLoadParams(ArkUI_DragAction* dragAction,OH_UdmfDataLoadParams* dataLoadParams)](#oh_arkui_dragaction_setdataloadparams) | This API provides data loading parameters to the system instead of directly providing a complete data object. When the user drops data on the target application, the system will use **dataLoadParams** to request data. This can significantly improve the efficiency of dragging large volumes of data and the efficiency of processing the dropped data in the target application. This API must always be used in preference to [OH_ArkUI_DragAction_SetData](capi-drag-and-drop-h.md#oh_arkui_dragaction_setdata). For details about how to create and prepare data loading parameters, see [OH_UdmfDataLoadParams_Create](../apis-arkdata/capi-udmf-h.md#oh_udmfdataloadparams_create) in **udmf.h**. If this API conflicts with [OH_ArkUI_DragAction_SetData](capi-drag-and-drop-h.md#oh_arkui_dragaction_setdata), the system always uses the last called API.|
 | [int32_t OH_ArkUI_DragAction_SetDragPreviewOption(ArkUI_DragAction* dragAction, ArkUI_DragPreviewOption* option)](#oh_arkui_dragaction_setdragpreviewoption) | Sets an **ArkUI_DragPreviewOption** object for the specified drag action object.|
 | [int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction, void* userData,void(\*listener)(ArkUI_DragAndDropInfo* dragAndDropInfo, void* userData))](#oh_arkui_dragaction_registerstatuslistener) | Registers a drag status listener. This listener can be used to check whether the data is successfully received and processed.|
-| [ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDisplayId(ArkUI_DragEvent event, int32_t* displayId)](#oh_arkui_dragevent_getdisplayid) | Obtains the ID of the screen where this drag event occurs. This API is not supported when **eventType** is **NODE_ON_DRAG_END**.|
+| [ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDisplayId(ArkUI_DragEvent* event, int32_t* displayId)](#oh_arkui_dragevent_getdisplayid) | Obtains the ID of the screen where this drag event occurs. This API is not supported when **eventType** is **NODE_ON_DRAG_END**.|
 | [void OH_ArkUI_DragAction_UnregisterStatusListener(ArkUI_DragAction* dragAction)](#oh_arkui_dragaction_unregisterstatuslistener) | Unregisters a drag status listener.|
 | [ArkUI_DragStatus OH_ArkUI_DragAndDropInfo_GetDragStatus(ArkUI_DragAndDropInfo* dragAndDropInfo)](#oh_arkui_draganddropinfo_getdragstatus) | Obtains the drag status of the [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md). **ArkUI_DRAG_STATUS_UNKNOWN** is returned if the acquisition fails.|
 | [ArkUI_DragEvent* OH_ArkUI_DragAndDropInfo_GetDragEvent(ArkUI_DragAndDropInfo* dragAndDropInfo)](#oh_arkui_draganddropinfo_getdragevent) | Obtains a drag event based on the specified drag and drop information. The drag event can then be used to obtain the drag result.|
@@ -484,7 +484,7 @@ Obtains the type list of drag data types from a drag event.
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) *event | Pointer to the target **ArkUI_DragEvent** object.|
 | char *eventTypeArray[] | List of the drag data types. You need to create a string array first.|
-| int32_t length | Total length of the array, which cannot be less than the number obtained using **OH_ArkUI_DragEvent_GetDataTypesCount**.|
+| int32_t length | Total length of the array, which cannot be less than the number obtained using [OH_ArkUI_DragEvent_GetDataTypeCount](#oh_arkui_dragevent_getdatatypecount).|
 | int32_t maxStrLen | Maximum length of each data type string.|
 
 **Return value**
@@ -1652,7 +1652,7 @@ Registers a drag status listener. This listener can be used to check whether the
 ### OH_ArkUI_DragEvent_GetDisplayId()
 
 ```c
-ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDisplayId(ArkUI_DragEvent event, int32_t* displayId)
+ArkUI_ErrorCode OH_ArkUI_DragEvent_GetDisplayId(ArkUI_DragEvent* event, int32_t* displayId)
 ```
 
 **Description**
@@ -1667,7 +1667,7 @@ Obtains the ID of the screen where this drag event occurs. This API is not suppo
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) event | Pointer to the target **ArkUI_DragEvent** object.|
+| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | Pointer to the target **ArkUI_DragEvent** object.|
 | int32_t* displayId | ID of the screen where the current drag event occurs.|
 
 **Return value**

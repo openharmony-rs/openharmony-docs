@@ -1,4 +1,4 @@
-# Calendar Kit Error Codes
+# Calendar Error Codes
 
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
