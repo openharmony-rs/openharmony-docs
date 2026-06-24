@@ -257,7 +257,7 @@ import { window } from '@kit.ArkUI';
 
 > **说明：**
 >
-> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃。此接口已完全移除，无替代方案。
+> <!--RP4--><!--RP4End-->从API version 9开始支持，从API version 26.0.0开始废弃。无替代接口。
 
 **系统接口：** 此接口为系统接口。
 

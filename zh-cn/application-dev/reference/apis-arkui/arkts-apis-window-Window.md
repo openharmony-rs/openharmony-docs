@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-当前窗口实例，窗口管理器（Window Manager）管理的基本单元。
+当前窗口实例，窗口管理器管理的基本单元。
 
 下列API示例中都需先使用[getLastWindow()](arkts-apis-window-f.md#windowgetlastwindow9)、[createWindow()](arkts-apis-window-f.md#windowcreatewindow9)、[findWindow()](arkts-apis-window-f.md#windowfindwindow9)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
 
@@ -354,7 +354,7 @@ promise.then(() => {
 
 moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
-移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口位置与大小](../../windowmanager/window-layout.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。适用于拖拽窗口位置、窗口自动定位或动画场景等需要调整窗口位置的场景。
+移动窗口位置，使用callback异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
 
 > **说明：**
 >
@@ -376,9 +376,9 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------------------------------------------- |
-| x        | number                    | 是 | 窗口在x轴方向移动到的坐标位置，单位：px。值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。|
-| y        | number                    | 是 | 窗口在y轴方向移动到的坐标位置，单位：px。值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。|
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收异步操作结果。回调签名：(err: BusinessError) => void，其中err为错误对象，成功时为null，失败时包含错误码和错误信息。|
+| x        | number                    | 是 | 窗口在x轴方向移动到的坐标位置，单位：px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。|
+| y        | number                    | 是 | 窗口在y轴方向移动到的坐标位置，单位：px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。|
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。|
 
 **错误码：**
 
@@ -393,19 +393,26 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+ try {	 
+   windowClass.moveWindowTo(300, 300, (err: BusinessError) => {	 
+     const errCode: number = err.code; 
+     if (errCode) { 
+       console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`); 
+       return; 
+     } 
+     console.info('Succeeded in moving the window.');	 
 
-// windowClass通过getLastWindow()、createWindow()或findWindow()获取
-windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
-    console.info('Succeeded in moving the window.');
-  });
+   });	 
+ } catch (exception) { 
+   console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`); 
+ }
 ```
 
 ## moveWindowTo<sup>9+</sup>
 
 moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
-移动窗口位置，使用Promise异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。窗口移动基于目标窗口模式采用不同的坐标系，详细实现机制请参见[窗口位置与大小](../../windowmanager/window-layout.md)。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
+移动窗口位置，使用Promise异步回调。调用成功即返回，但返回后无法立即获取最终生效结果。如需立即获取，请使用[moveWindowToAsync()](#movewindowtoasync12)。
 
 > **说明：**
 >
@@ -427,8 +434,8 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位：px。值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。|
-| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位：px。值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。|
+| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位：px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。|
+| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位：px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。|
 
 **返回值：**
 
@@ -449,13 +456,18 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// windowClass通过getLastWindow()、createWindow()或findWindow()获取
-let promise = windowClass.moveWindowTo(300, 300);
-  promise.then(() => {
-    console.info('Succeeded in moving the window.');
-  });
+ import { BusinessError } from '@kit.BasicServicesKit';	 
+ 
+ try {	 
+   let promise = windowClass.moveWindowTo(300, 300);	 
+   promise.then(() => {	 
+     console.info('Succeeded in moving the window.');	 
+   }).catch((err: BusinessError) => { 
+     console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`); 
+   });	 
+ } catch (exception) { 
+   console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`); 
+ }
 ```
 
 ## moveWindowToAsync<sup>12+</sup>
@@ -912,7 +924,7 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 | -------- | ------------------------- | -- | ------------------------ |
 | width    | number                    | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。|
 | height   | number                    | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收异步操作结果。回调签名：(err: BusinessError) => void，其中err为错误对象，成功时为null，失败时包含错误码和错误信息。|
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。|
 
 **错误码：**
 
