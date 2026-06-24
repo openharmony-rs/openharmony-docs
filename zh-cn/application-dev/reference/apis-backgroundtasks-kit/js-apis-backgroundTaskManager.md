@@ -272,7 +272,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;
 
-向系统申请长时任务，使用promise异步回调结果。
+向系统申请长时任务，使用promise异步回调。
 
 > **说明：**
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[backgroundTaskManager.startBackgroundRunning](js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1)替代。
