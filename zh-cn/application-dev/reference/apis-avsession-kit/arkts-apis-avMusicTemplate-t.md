@@ -125,7 +125,7 @@ type QueryPlaylistEvent = (pageIndex: number, sort: Sort) => Promise&lt;PageMedi
 | 参数名    | 类型                                                     | 必填 | 说明           |
 | --------- | ------------------------------------------------------ | ---- | -------------- |
 | pageIndex | number                                                    | 是   | 页面的索引。   |
-| sort      | [Sort](arkts-apis-avMusicTemplate-e.md#sort) | 是   | 排序的枚举值。 |
+| sort      | [Sort](arkts-apis-avMusicTemplate-e.md#sort) | 是   | 排序类型。 |
 
 **返回值：**
 
