@@ -332,8 +332,8 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
 | 参数名     | 类型   | 必填 | 说明            |
 | ---------- | ------ | ---- | --------------- |
-| tokenId    | string | 是   | 软件包tokenId。 |
-| deviceName | string | 是   | 设备名称，格式为'bus-port'，例如'1-1'。      |
+| tokenId    | string | 是   | 应用程序的唯一标识符，可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取。 |
+| deviceName | string | 是   | 设备名称，格式为'bus-port'，例如'1-1'，可通过[getDevices](js-apis-usbManager.md#usbmanagergetdevices)接口获取设备列表后得到设备名称。|
 
 **返回值：**
 
@@ -397,7 +397,7 @@ getFunctionsFromString(funcs: string): number
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| funcs  | string | 是   | 字符串形式的功能列表。 |
+| funcs  | string | 是   | 字符串形式的功能列表。可用值包括:'acm'，'ecm'，'hdc'，'mtp'，'ptp'等，可通过',(逗号)'分隔多个功能。 |
 
 **返回值：**
 
@@ -473,7 +473,7 @@ let ret: string = usbManager.getStringFromFunctions(funcs);
 
 setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
-在设备模式下，设置当前的USB功能列表。使用Promise异步回调。
+在设备模式下，设置当前的USB功能列表。使用Promise异步回调。调用成功后，设备的USB功能将切换为指定的功能列表。部分USB功能可能不被当前设备支持设置前建议先查询设备支持的功能列表。
 
 > **说明：**
 >
@@ -495,7 +495,7 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 | 类型                | 说明          |
 | ------------------- | ------------- |
-| Promise\<void\> | Promise对象。 |
+| Promise\<void\> | Promise对象。调用成功时无返回值，调用失败时抛出异常。 |
 
 **错误码：**
 
@@ -526,7 +526,7 @@ usbManager.setDeviceFunctions(funcs).then(() => {
 
 getDeviceFunctions(): FunctionType
 
-在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
+在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。
 
 > **说明：**
 >
@@ -564,7 +564,7 @@ let ret: number = usbManager.getDeviceFunctions();
 
 getPortList(): Array\<USBPort\>
 
-获取所有物理USB端口描述信息。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
+获取所有物理USB端口描述信息。开发者模式关闭时，如果没有设备接入，接口返回`undefined`，注意需要对接口返回值做判空处理。
 
 > **说明：**
 >
@@ -602,7 +602,7 @@ let ret: Array<usbManager.USBPort> = usbManager.getPortList();
 
 getPortSupportModes(portId: number): PortModeType
 
-获取指定的端口支持的模式列表的组合掩码。
+获取指定的端口支持的模式列表的组合掩码。适用于系统应用需要查询USB-C端口能力判断是否支持特定模式（如Host，Device或DRP模式）的场景。
 
 **系统接口：** 此接口为系统接口。
 
@@ -614,7 +614,7 @@ getPortSupportModes(portId: number): PortModeType
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| portId | number | 是   | 端口号。 |
+| portId | number | 是   | USB端口号，可通过[getPortList](#getportlist12)获取端口列表后得到。 |
 
 **返回值：**
 
@@ -643,7 +643,7 @@ let ret: number = usbManager.getPortSupportModes(0);
 
 setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-设置指定的端口支持的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。
+设置指定端口当前的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。调用成功后端口的充电角色和数据传输角色将切换为指定的角色。
 
 > **说明：**
 >
@@ -659,15 +659,15 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 
 | 参数名    | 类型                            | 必填 | 说明             |
 | --------- | ------------------------------- | ---- | ---------------- |
-| portId    | number                          | 是   | 端口号。         |
-| powerRole | [PowerRoleType](#powerroletype) | 是   | 充电的角色。     |
-| dataRole  | [DataRoleType](#dataroletype)   | 是   | 数据传输的角色。 |
+| portId    | number                          | 是   | 端口号，可通过[getPortList](#getportlist12)获取端口列表后得到。|
+| powerRole | [PowerRoleType](#powerroletype) | 是   | 充电角色类型，可选值包括：NONE(无)、SOURCE(对外提供电源)、SINK(需要外部供电)。|
+| dataRole  | [DataRoleType](#dataroletype)   | 是   | 数据传输角色类型，可选值包括：NONE(无)、HOST(主机角色)、DEVICE(设备角色)。|
 
 **返回值：**
 
 | 类型                | 说明          |
 | ------------------- | ------------- |
-| Promise\<void\> | Promise对象。 |
+| Promise\<void\> | Promise对象。调用成功时无返回值，调用失败时抛出异常。 |
 
 **错误码：**
 
@@ -694,11 +694,11 @@ usbManager.setPortRoleTypes(portId, usbManager.PowerRoleType.SOURCE, usbManager.
 });
 ```
 
-## addAccessoryRight<sup>14+<sup>
+## addAccessoryRight<sup>14+</sup>
 
 addAccessoryRight(tokenId: number, accessory: USBAccessory): void
 
-为应用程序添加访问USB配件权限。
+为应用程序添加访问USB配件权限。适用于系统应用需要为第三方应用授权访问USB配件的场景。
 
 usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessoryRight不会触发弹窗，而是直接添加应用程序访问设备的权限。
 
@@ -712,8 +712,8 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 | 参数名    | 类型         | 必填 | 说明                     |
 | --------- | ------------ | ---- | ------------------------ |
-| tokenId   | number       | 是   | 应用程序tokenId。 |
-| accessory | [USBAccessory](js-apis-usbManager.md#usbaccessory14) | 是   | USB配件。                |
+| tokenId   | number       | 是   | 应用程序的唯一标识符，可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取。 |
+| accessory | [USBAccessory](js-apis-usbManager.md#usbaccessory14) | 是   | USB配件。可通过[getAccessoryList](js-apis-usbManager.md#usbmanagergetaccessorylist14)获取配件列表后获得。|
 
 **错误码：**
 
@@ -721,7 +721,7 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | The permission check failed.                                 |
+| 201      | The permission check failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -735,14 +735,14 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { bundleManager } from '@kit.AbilityKit';
 
 try {
-  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
+  let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
   let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
   bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
   let bundleInfo = await bundleManager.getBundleInfoForSelf(flags)
   let tokenId: number = bundleInfo.appInfo.accessTokenId
   usbManager.addAccessoryRight(tokenId, accList[0])
   hilog.info(0, 'testTag ui', `addAccessoryRight success`)
-} catch (error) {
+} catch (error: BusinessError) {
   hilog.info(0, 'testTag ui', `addAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
@@ -758,8 +758,8 @@ USB设备端口。
 | 名称           | 类型                            | 只读 | 可选 | 说明                                |
 | -------------- | ------------------------------- | ---- | ---- | ----------------------------------- |
 | id             | number                          | 否   | 否   | USB端口唯一标识。                   |
-| supportedModes | [PortModeType](#portmodetype)   | 否   | 否   | USB端口所支持的模式的数字组合掩码。 |
-| status         | [USBPortStatus](#usbportstatus) | 否   | 否   | USB端口角色。                       |
+| supportedModes | [PortModeType](#portmodetype)   | 否   | 否   | USB端口所支持的模式的数字组合掩码。status.currentMode应在此范围内。 |
+| status         | [USBPortStatus](#usbportstatus) | 否   | 否   | USB端口角色。其currentMode应在supportedModes范围内。|
 
 ## USBPortStatus
 
