@@ -22,6 +22,8 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 ## MissionParameter
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS

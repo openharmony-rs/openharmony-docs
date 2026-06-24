@@ -29,6 +29,8 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 
 **使用场景**：跨设备拉起应用时，监听协同会话的状态变化（如对方设备接收/拒绝协同请求），以更新本端UI状态或处理协同流程。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -73,6 +75,8 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 注册receiveImage事件的回调监听，用于接收图片传输事件的异步通知。需与off('receiveImage')方法配合使用，在不需要接收图片时，应调用off('receiveImage')取消监听以释放资源。
 
 **使用场景**：远程视频通话、跨设备图片分享、屏幕共享等需要接收对端发送图片数据时，监听图片接收事件并处理。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -119,6 +123,8 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 **使用场景**：协同会话结束、页面销毁或不再需要监听协同状态变化时，及时取消监听以释放资源。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -161,6 +167,8 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 **使用场景**：不再需要接收图片传输事件（如协同会话结束、页面销毁）时，及时取消监听以释放资源。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -202,6 +210,8 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片。图片会根据指定的压缩质量进行编码后，通过传输流通道发送至对端设备。发送成功后，对端设备可通过注册的回调接收图片，使用Promise异步回调。业务结束后应及时销毁传输流，否则会增加系统功耗。
 
 **使用场景**：跨设备视频通话中发送视频帧、远程协作时发送截图、跨设备图片共享等需要向对端发送图片数据的场景。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -300,6 +310,8 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 **配对调用：** createStream()需与destroyStream()配对使用，业务结束后必须调用destroyStream()释放资源。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -365,6 +377,8 @@ setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbs
 
 **使用场景**：跨设备视频通话中，将接收端的视频流绑定到Surface进行显示；或发送端将Surface采集的视频流传输到对端。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -415,6 +429,8 @@ getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 获取指定传输流绑定的Surface的唯一标识符。Surface ID可用于将Surface与组件关联，实现音视频数据的显示。
 
 **使用场景**：跨设备视频通话中，获取Surface ID并传递给XComponent组件，实现视频流的显示。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -470,6 +486,8 @@ updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;v
 
 **使用场景**：视频通话过程中动态调整视频分辨率（如网络状况变化时降低分辨率以保证流畅度）或修改视频格式时，调用此接口更新配置。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -519,6 +537,8 @@ destroyStream(streamId:&nbsp;number):&nbsp;void
 
 **使用场景**：跨设备视频通话结束、屏幕共享关闭、远程协作完成等业务场景结束后，及时销毁传输流以释放资源。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -561,6 +581,8 @@ startStream(streamId:&nbsp;number):&nbsp;void
 启动指定传输流，使传输流开始发送或接收视频数据。启动前需确保传输流已完成Surface绑定，否则无法正常启动。需与stopStream()方法配对使用，使用完毕后应调用stopStream()停止传输流，最后调用destroyStream()销毁传输流以释放资源。
 
 **使用场景**：跨设备视频通话建立后，接收端和发送端均调用此接口启动视频流的传输。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -606,6 +628,8 @@ stopStream(streamId:&nbsp;number):&nbsp;void
 
 **使用场景**：视频通话暂停、用户关闭摄像头、切换前后摄像头等需要临时停止视频传输时调用。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -645,6 +669,8 @@ stopStream(streamId:&nbsp;number):&nbsp;void
 
 流传输配置的参数。用于配置传输流的传输方式和参数。其中role参数区分发送流（SOURCE）和接收流（SINK），发送流需要配置bitrate和colorSpaceConversionTarget等参数。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -659,6 +685,8 @@ stopStream(streamId:&nbsp;number):&nbsp;void
 ## SurfaceParam
 
 Surface配置参数。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -676,6 +704,8 @@ Surface配置参数。
 
 翻转选项的枚举。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -689,6 +719,8 @@ Surface配置参数。
 
 流传输的方式。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -701,6 +733,8 @@ Surface配置参数。
 ## VideoPixelFormat
 
 视频像素格式的枚举。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -716,6 +750,8 @@ Surface配置参数。
 
 应用连接时所需的连接选项。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回801错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -728,6 +764,8 @@ Surface配置参数。
 ## EventCallbackInfo
 
 回调方法的接收信息。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -766,6 +804,8 @@ Surface配置参数。
 ## StartOptionParams
 
 启动选项参数的枚举。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

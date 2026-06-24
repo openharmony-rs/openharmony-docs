@@ -11,11 +11,11 @@ The **\<button>** component includes capsule, circle, and text buttons.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Child Components
 
-Not supported
+Not supported.
 
 
 ## Attributes
@@ -24,11 +24,11 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| type | string | capsule | No| Type of the **Enter** key on the soft keyboard. The value cannot be dynamically updated. If this attribute is not set, a capsule-like button is displayed. Unlike the capsule button, the capsule-like button allows its corners to be configured using **border-radius**. Available button types are as follows:<br>- **capsule**: capsule button with fillets, background color, and text.<br>- **circle**: circle button that can accommodate icons.<br>- **text**: text button, which displays only text.|
+| type | string | capsule | No| The value cannot be dynamically updated. If this attribute is not set, a capsule-like button is displayed. Unlike the capsule button, the capsule-like button allows its corners to be configured using **border-radius**. Available button types are as follows:<br>- **capsule**: capsule button with fillets, background color, and text.<br>- **circle**: circle button that can accommodate icons.<br>- **text**: text button, which displays only text.|
 | value | string | - | No| Text value of the button. This attribute is unavailable for circle buttons.|
 | icon | string | - | No| Path of the button icon. The supported icon formats are JPG, PNG, and SVG.|
 | placement | string | end | No| Position of the button icon in text. This attribute is valid only when **type** is not set. Available values are as follows:<br>- **start**: The button icon is at the beginning of the text.<br>- **end**: The button icon is at the end of the text.<br>- **top**: The button icon is at the top of the text.<br>- **bottom**: The button icon is at the bottom of the text.|
-| waiting | boolean | false | No| Whether the button is in waiting state. The value **true** means that the button is in waiting state, and a loading animation is displayed on the left of the text.|
+| waiting | boolean | false | No| Whether the button is in the waiting state. The value **true** means that the button is in the waiting state, and a loading animation is displayed on the left of the text. If its value is **false**, the loading animation is not displayed. This attribute does not work for download buttons.|
 
 
 ## Events
@@ -45,7 +45,7 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | text-color | &lt;color&gt; | - | No| Text color of the button.|
 | font-size | &lt;length&gt; | - | No| Font size of the button.|
 | font-style | string | normal | No| Font style of the button.|
-| font-weight | number \| string | normal | No| Font weight of a button. For details, see the **font-weight** style of the **[\<text>](js-service-widget-basic-text.md#styles)** component.|
+| font-weight | number&nbsp;\|&nbsp;string | normal | No| Font weight of the button. For details, see **font-weight** of the [\<text>](js-service-widget-basic-text.md#styles) component.|
 | font-family | &lt;string&gt; | sans-serif | No| Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-service-widget-common-customizing-font.md) is used for the text.|
 | icon-width | &lt;length&gt; | - | No| Width of the internal icon of a circle button. By default, the icon takes up the entire width of the button.<br>This style must be set when the icon uses an SVG image.|
 | icon-height | &lt;length&gt; | - | No| Height of the internal icon of a circle button. By default, the icon takes up the entire height of the button.<br>This style must be set when the icon uses an SVG image.|

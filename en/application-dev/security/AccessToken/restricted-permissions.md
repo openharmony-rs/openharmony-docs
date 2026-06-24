@@ -1329,3 +1329,61 @@ Allows an application to manage the printing system.
 **Supported devices**: PCs/2-in-1 devices | phones | tablets
 
 **Since**: 24
+
+## ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
+
+Allows an application to install and load self-distributed plug-ins.
+
+<!--RP90--><!--RP90End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.ALLOW_USE_BM
+
+Allows an application to call BM tools in developer mode.
+
+<!--RP94--><!--RP94End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY
+
+Allows an application to import digital credentials using the digital identity service.
+
+With this permission, the application can import the user's digital identity credentials into the device for secure storage and convenient presentation afterward.
+
+<!--RP91--><!--RP91End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.CAPTURE_PLAYBACK_DOWNLINK
+
+Allows an application to record downlink data of cellular calls.
+
+<!--RP95--><!--RP95End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets
+
+**Since**: 26.0.0

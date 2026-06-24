@@ -34,8 +34,10 @@
    - 在访问doFinal输出结果前，需先判断结果是否为null，避免产生异常。
 
 6. 读取[GcmParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#gcmparamsspec).authTag作为解密认证信息。
-   
-   在GCM模式下，算法库支持16字节的authTag，用于解密时的认证初始化。示例中的authTag为16字节。
+
+   > **说明：**
+   >
+   > 在GCM模式下，一次加密流程中，将每次update和最后doFinal的结果拼接起来，会得到“密文 + authTag”, authTag为末尾的16字节。其余部分均为密文。如果doFinal的data参数传入null，则doFinal的结果就是authTag。
 
 **解密**
 

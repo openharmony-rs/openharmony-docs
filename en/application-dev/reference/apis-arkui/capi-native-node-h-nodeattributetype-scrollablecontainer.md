@@ -1,9 +1,9 @@
 # ArkUI_NodeAttributeType (Scrollable Container Component Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong; @guozejun-->
-<!--Designer: @yylong; @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Owner: @shengu_lancer; @yylong; @yangcan18-->
+<!--Designer: @yylong;@guozejun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
@@ -267,7 +267,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].f32 | Horizontal scrolling offset, in vp. Value range: If the value is less than 0, the offset will be 0 for non-animated scrolling. A value greater than 0 indicates scrolling with animation. By default, the scrolling stops when it reaches the start position. You can set the **animation** parameter in **ScrollOptions** to enable a bounce effect when the scroll exceeds the content bounds.|
 | .value[1].f32 | Vertical scrolling offset, in vp. Value range: If the value is less than 0, the offset will be 0 for non-animated scrolling. A value greater than 0 indicates scrolling with animation. By default, the scrolling stops when it reaches the start position. You can set the **animation** parameter to enable a bounce effect when the scroll exceeds the content bounds.|
 | .value[2]?.i32 | Scrolling duration, in milliseconds. The default value is **1000**. This parameter is optional.|
-| .value[3]?.i32 | Scrolling curve. The parameter type is [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve). This parameter is optional. The default value is [ARKUI_CURVE_EASE](capi-native-type-h.md#arkui_animationcurve).|
+| .value[3]?.i32 | Scrolling curve. The parameter type is [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve). This parameter is optional. The default value is [ARKUI_CURVE_EASE](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[4]?.i32 | Whether to enable the default spring animation. This parameter is optional. The default value is **0**, indicating not to enable the default spring animation.|
 | .value[5]?.i32 | Whether to convert the scroll animation to an overshoot animation when the boundary is reached. The default value is **0**, meaning not to convert the scroll animation to an overshoot animation when the boundary is reached. This parameter is optional.|
 | .value[6]?.i32 | Whether the component can stop at an overscrolled position. The default value is **0**, meaning that the component cannot stop at an overscrolled position. This parameter is optional. This parameter is supported since API version 20.|
@@ -718,6 +718,29 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].i32 | Whether the scrollbar automatically adjusts its margin. The value **0** indicates that the scrollbar automatically adjusts its margin, and **1** indicates the opposite.|
 
+
+## NODE_SCROLL_BAR_HEIGHT
+
+```c
+NODE_SCROLL_BAR_HEIGHT = 1002029
+```
+
+Scrollbar height. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Scrollbar height, in vp. Default value: auto-adjusted height of the scroll component.<br>Value range: The value must be greater than or equal to 0. If the value is less than 0, the default value is used. For kids' smartwatches, the default value is restored to 37 vp. The value **0** means not to show the scrollbar.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].f32 | Scrollbar height, in vp.|
 
 ## NODE_LIST_DIRECTION
 

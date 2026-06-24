@@ -20,6 +20,8 @@ onContinueDone(result: number): void;
 
 Mission迁移完成后调用，回调参数result返回迁移结果。当目标设备成功接收并启动Mission后，系统会触发此回调通知源设备迁移结果。开发者应根据result参数判断迁移是否成功，并执行相应操作，如提示用户、重试或终止任务。详细的迁移流程和机制请参见[continueMission接口](js-apis-distributedMissionManager-sys.md#distributedmissionmanagercontinuemission)。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。

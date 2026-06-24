@@ -68,7 +68,7 @@ async function validateCertChainWithCustomTrustAnchor(): Promise<void> {
     let rootCaCert = await createX509Cert(rootCaCertData);
 
     // 构建校验参数
-    let params: cert.X509CertValidatorParams = {
+    let params: cert.CertValidationParams = {
       // 不信任的中间证书，用于构建证书链
       untrustedCerts: [intermediateCaCert],
       // 信任锚证书，用于验证证书链
@@ -81,7 +81,7 @@ async function validateCertChainWithCustomTrustAnchor(): Promise<void> {
     let validator = cert.createCertChainValidator('PKIX');
 
     // 验证endEntityCert
-    let result: cert.VerifyCertResult = await validator.validate(endEntityCert, params);
+    let result: cert.CertValidationResult = await validator.validateCert(endEntityCert, params);
     console.info('validate success, certChain length: ' + result.certChain.length);
     for (let i = 0; i < result.certChain.length; i++) {
       let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
@@ -91,6 +91,7 @@ async function validateCertChainWithCustomTrustAnchor(): Promise<void> {
     // 校验失败
     let error = err as BusinessError;
     console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    throw new Error(error.message)
   }
 }
 ```
@@ -138,7 +139,7 @@ async function validateCertChainWithSystemCa(): Promise<void> {
     let intermediateCaCert = await createX509Cert(intermediateCaCertData);
 
     // 构建校验参数
-    let params: cert.X509CertValidatorParams = {
+    let params: cert.CertValidationParams = {
       // 不信任的中间证书，用于构建证书链
       untrustedCerts: [intermediateCaCert],
       // 信任系统预置CA证书
@@ -151,7 +152,7 @@ async function validateCertChainWithSystemCa(): Promise<void> {
     let validator = cert.createCertChainValidator('PKIX');
 
     // 验证endEntityCert
-    let result: cert.VerifyCertResult = await validator.validate(endEntityCert, params);
+    let result: cert.CertValidationResult = await validator.validateCert(endEntityCert, params);
     console.info('validate success, certChain length: ' + result.certChain.length);
     for (let i = 0; i < result.certChain.length; i++) {
       let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
@@ -160,6 +161,7 @@ async function validateCertChainWithSystemCa(): Promise<void> {
   } catch (err) {
     let error = err as BusinessError;
     console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    throw new Error(error.message)
   }
 }
 ```
@@ -235,7 +237,7 @@ async function validateCertChainWithCrl(): Promise<void> {
     };
 
     // 构建校验参数
-    let params: cert.X509CertValidatorParams = {
+    let params: cert.CertValidationParams = {
       untrustedCerts: [intermediateCaCert],
       trustedCerts: [rootCaCert],
       trustSystemCa: false,
@@ -249,7 +251,7 @@ async function validateCertChainWithCrl(): Promise<void> {
     let validator = cert.createCertChainValidator('PKIX');
 
     // 验证endEntityCert
-    let result: cert.VerifyCertResult = await validator.validate(endEntityCert, params);
+    let result: cert.CertValidationResult = await validator.validateCert(endEntityCert, params);
     console.info('validate success, certChain length: ' + result.certChain.length);
     for (let i = 0; i < result.certChain.length; i++) {
       let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
@@ -261,6 +263,7 @@ async function validateCertChainWithCrl(): Promise<void> {
       console.error('certificate has been revoked');
     } else {
       console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      throw new Error(error.message)
     }
   }
 }
@@ -312,7 +315,7 @@ async function validateSm2CertChain(): Promise<void> {
       0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38
     ]);
 
-    let params: cert.X509CertValidatorParams = {
+    let params: cert.CertValidationParams = {
       // 不信任的中间证书，用于构建证书链
       untrustedCerts: [sm2IntermediateCaCert],
       // 信任锚证书，用于验证证书链
@@ -326,7 +329,7 @@ async function validateSm2CertChain(): Promise<void> {
     let validator = cert.createCertChainValidator('PKIX');
 
     // 验证sm2EndEntityCert证书
-    let result: cert.VerifyCertResult = await validator.validate(sm2EndEntityCert, params);
+    let result: cert.CertValidationResult = await validator.validateCert(sm2EndEntityCert, params);
     console.info('validate success, certChain length: ' + result.certChain.length);
     for (let i = 0; i < result.certChain.length; i++) {
       let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
@@ -337,6 +340,7 @@ async function validateSm2CertChain(): Promise<void> {
   } catch (err) {
     let error = err as BusinessError;
     console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    throw new Error(error.message)
   }
 }
 ```

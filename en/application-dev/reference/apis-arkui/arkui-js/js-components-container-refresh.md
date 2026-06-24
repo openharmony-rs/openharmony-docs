@@ -145,4 +145,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001150719520](figures/en-us_image_0000001150719520.gif)
+![refresh](figures/refresh.gif)

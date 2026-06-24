@@ -38,7 +38,7 @@ The following figure shows the default starting window.
 
 **Figure 1** Default starting window
 
-![image_0000002344605757](figures/image_0000002344605757.png)
+![Default-starting-window](figures/Default-starting-window.png)
 
 You can customize the icon and color resources as required.
 
@@ -80,7 +80,7 @@ The **startWindow** field provides enhanced capabilities for configuring startin
    
 **Figure 2** Enhanced starting window
    
-![image_0000002310726688](figures/image_0000002310726688.png)
+![Enhanced-starting-window](figures/Enhanced-starting-window.png)
    
 Example:
    

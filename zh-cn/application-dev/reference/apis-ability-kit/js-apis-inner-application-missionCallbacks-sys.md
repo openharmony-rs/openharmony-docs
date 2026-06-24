@@ -26,6 +26,8 @@ notifyMissionsChanged(deviceId: string): void
 
 notifyMissionsChanged是任务监听的callback函数，用于通知任务变化。用于在多设备协同场景下，监听远程设备的任务状态变化，如任务管理器、多屏协同等场景。例如：跨设备任务切换、任务列表同步等。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
@@ -83,6 +85,8 @@ notifySnapshot(deviceId: string, mission: number): void
 
 notifySnapshot是任务监听的callback函数，用于通知任务快照变化。当任务的快照（即任务当前界面状态的快照）发生变化时触发该回调。用于在多设备协同场景下，监听远程设备任务快照的变化，如任务切换、任务恢复等场景。例如：任务切换动画同步、任务快照实时预览等。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
@@ -139,6 +143,8 @@ distributedMissionManager.registerMissionListener(
 notifyNetDisconnect(deviceId: string, state: number): void
 
 notifyNetDisconnect是任务监听的callback函数，用于通知断开连接。用于在多设备协同场景下，监听远程设备的网络连接状态变化，当设备断开连接时触发回调，用于清理相关资源或提示用户。例如：断开连接时释放会话资源、显示断开提示等。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

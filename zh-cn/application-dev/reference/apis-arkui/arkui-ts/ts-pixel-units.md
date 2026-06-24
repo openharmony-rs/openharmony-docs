@@ -281,4 +281,4 @@ struct Example {
 }
 ```
 
-![zh-cn_image_0000001169582302](figures/zh-cn_image_0000001169582302.png)
+![px](figures/px.png)

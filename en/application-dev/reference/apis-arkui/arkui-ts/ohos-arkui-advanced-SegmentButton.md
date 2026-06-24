@@ -684,7 +684,7 @@ struct Index {
     buttons: [{ text: 'Multi-select 1' }, { text: 'Multi-select 2' }, { text: 'Multi-select 3' }] as SegmentButtonItemTuple,
     multiply: true
   });
-  / / Capsule-style segment button array with selected and unselected icons.
+  // Capsule-style segment button array with selected and unselected icons.
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },

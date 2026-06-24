@@ -1,7 +1,7 @@
 # @ohos.router (页面路由)(不推荐)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -52,7 +52,7 @@ pushUrl(options: RouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -199,7 +199,7 @@ pushUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -347,7 +347,7 @@ replaceUrl(options: RouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -474,7 +474,7 @@ replaceUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -602,7 +602,7 @@ pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -755,7 +755,7 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&g
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -907,7 +907,7 @@ replaceNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1038,7 +1038,7 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;voi
 
 | 类型                | 说明        |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1896,6 +1896,7 @@ pages
 ```
 
 <!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // index.js
 import router from '@ohos.router';
@@ -1996,6 +1997,7 @@ export default {
 ```
 
 <!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // routerPage.js
 import router from '@ohos.router';

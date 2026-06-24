@@ -239,8 +239,8 @@ struct Index {
 
 3. Open the application page and click the **verifyAbc** button to verify the .abc file. The log "VerifyAbc successfully" should be output.
 
-   ![en-us_image_0000001746521386](figures/en-us_image_0000001746521386.jpg)
+   ![en-us_image_0000001746521386](figures/verifyAbc.jpg)
 
-   ![en-us_image_0000001502381065](figures/en-us_image_0000001502381065.png)
+   ![en-us_image_0000001502381065](figures/VerifyAbc-successfully.png)
 
 4. Click the **showIsolatedComponent** button to display the **IsolatedComponent** with the content "Hello World."

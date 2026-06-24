@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @zcdqs; @rongShao-Z-->
-<!--Designer: @yylong; @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
+<!--Designer: @yylong;@guozejun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 滚动组件通用属性和事件目前只支持[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)组件。
@@ -138,6 +138,38 @@ scrollBarWidth(value: number | string | Resource): T
 | 类型 | 说明           |
 | --- | -------------- |
 | T | 返回当前滚动组件。 |
+
+### scrollBarHeight
+
+scrollBarHeight(height: LengthMetrics | undefined): T
+
+设置滚动条滑轨高度。
+
+未设置该接口时，滚动条滑轨高度默认自适应滚动组件高度，儿童智能表的默认值高度为37vp。
+
+>  **说明：**
+>
+>  推荐scrollBarHeight与[scrollBarMargin](#scrollbarmargin20)的设定值之和不超过滚动组件高度。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| height | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是 | 滚动条滑轨高度。<br/>值必须大于等于0。设置为undefined或小于0时，自适应滚动组件高度，儿童智能表则恢复至默认值37vp。设置为0时，不显示滚动条。 |
+
+**返回值：**
+
+| 类型 | 说明           |
+| --- | -------------- |
+| T | 返回当前滚动组件。|
 
 ### edgeEffect<sup>11+</sup>
 
@@ -282,6 +314,8 @@ fadingEdge(enabled: Optional&lt;boolean&gt;, options?: FadingEdgeOptions): T
 >
 > fadingEdge生效时，建议不在设置fadingEdge属性的组件上设置[background](ts-universal-attributes-background.md#background10)相关属性，会影响渐隐的显示效果。
 >
+> fadingEdge生效时，建议不在设置fadingEdge属性的组件以及其子组件上设置[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)相关属性，会影响系统材质的显示效果，导致材质效果与预期效果不一致。
+>
 > fadingEdge生效时，设置fadingEdge属性的组件会裁剪到边界，在该组件上设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性为false不生效。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
@@ -391,7 +425,7 @@ autoAdjustScrollBarMargin(enable: boolean | undefined): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -496,7 +530,7 @@ enableScrollWithMouse(enabled: boolean | undefined): T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1354,12 +1388,12 @@ type OnDidStopDraggingCallback = (willFling: boolean) => void
 
 type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
-懒加载线性布局容器[LazyColumnLayout](ts-container-lazycolumnlayout.md)所显示的子组件索引发生变化时的回调类型。
+懒加载布局容器[LazyColumnLayout](ts-container-lazycolumnlayout.md)、[LazyVGridLayout](ts-container-lazyvgridlayout.md)、[LazyVWaterFlowLayout](ts-container-lazyvwaterflowlayout.md)所显示的子组件索引发生变化时的回调类型。
 
 > **说明：**
 >
-> - 当LazyColumnLayout没有子组件时，start和end都返回-1。
-> - 当LazyColumnLayout在可视区域内无子组件时，start和end都返回-1。
+> - 当懒加载布局容器没有子组件时，start和end都返回-1。
+> - 当懒加载布局容器在可视区域内无子组件时，start和end都返回-1。
 
 **起始版本：** 26.0.0
 
@@ -1445,7 +1479,7 @@ struct ListExample {
 }
 ```
 
-![zh-cn_image_0000001174264378](figures/zh-cn_image_0000001174264378.gif)
+![list1](figures/list1.gif)
 
 ### 示例2（设置边缘渐隐）
 该示例通过设置[fadingEdge](ts-container-scrollable-common.md#fadingedge14)属性，实现了[List](ts-container-list.md)组件开启边缘渐隐效果并设置边缘渐隐长度。

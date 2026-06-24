@@ -12,7 +12,7 @@ TaskPool为应用程序提供多线程环境，降低资源消耗并提高系统
 
 TaskPool运作机制示意图
 
-![zh-cn_image_0000001964858368](figures/zh-cn_image_0000001964858368.png)
+![TaskPool-Operating-Mechanism](figures/TaskPool-Operating-Mechanism.png)
 
 TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的工作线程执行任务，并将结果返回给宿主线程。接口易用，支持任务执行、取消和指定优先级。通过系统统一线程管理，结合动态调度和负载均衡算法，可以节约系统资源。系统默认启动一个任务工作线程，任务多时会自动扩容。工作线程数量上限由设备的物理核数决定，内部管理具体数量，确保调度和执行效率最优。长时间无任务分发时会缩容，减少工作线程数量。具体扩缩容机制请参见[TaskPool扩缩容机制](taskpool-introduction.md#taskpool扩缩容机制)。
 
@@ -32,30 +32,58 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
 
 除上述注意事项外，使用TaskPool时还需注意[并发注意事项](multi-thread-concurrency-overview.md#并发注意事项)。
 
-  ```ts
-  import { taskpool } from '@kit.ArkTS';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  @Concurrent
-  function printArrayBuffer(buffer: ArrayBuffer) {
-    return buffer;
+<!-- @[concurrent_taskpool_notes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/notes.ets) --> 
+
+``` TypeScript
+import { taskpool } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Concurrent
+function printArrayBuffer(buffer: ArrayBuffer) {
+  return buffer;
+}
+
+function testArrayBuffer() {
+  const buffer = new ArrayBuffer(1);
+  const group = new taskpool.TaskGroup();
+  const task = new taskpool.Task(printArrayBuffer, buffer);
+  group.addTask(task);
+  task.setCloneList([buffer]);
+  for (let i = 0; i < 5; i++) {
+    taskpool.execute(group).then(() => {
+      console.info('execute group success');
+    }).catch((e: BusinessError) => {
+      console.error(`execute group error: ${e.message}`);
+    })
   }
-  
-  function testArrayBuffer() {
-    const buffer = new ArrayBuffer(1);
-    const group = new taskpool.TaskGroup();
-    const task = new taskpool.Task(printArrayBuffer, buffer);
-    group.addTask(task);
-    task.setCloneList([buffer]);
-    for (let i = 0; i < 5; i++) {
-      taskpool.execute(group).then(() => {
-        console.info('execute group success');
-      }).catch((e: BusinessError) => {
-        console.error(`execute group error: ${e.message}`);
-      })
-    }
+}
+
+@Entry
+@Component
+struct Notes {
+  @State message: string = 'Hello World';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        Button() {
+          Text('notes start')
+        }.onClick(() => {
+          testArrayBuffer();
+          this.message = 'notes success';
+        })
+        .id('notes button')
+        .width('20%')
+        .height('10%')
+      }
+      .width('100%')
+    }.height('100%')
   }
-  ```
+}
+```
 
 - 由于不同线程中上下文对象不同，TaskPool工作线程只能使用线程安全的模块。例如，不能使用UI相关的非线程安全模块。TaskPool/Worker等工作线程不支持使用操作UI的模块、线程不安全的模块以及其他只支持在主线程中使用的模块。不支持UI模块是因为目前工作线程不支持操作UI，不支持线程不安全的模块是因为多线程使用该模块可能会导致多线程问题，只支持在主线程中使用的模块明确在文档中说明的有[ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)等。线程安全的模块是指多线程同时使用该模块也不会引入多线程问题，如TaskPool/[Worker](./worker-introduction.md)/[hilog](../dfx/hilog.md)等。
 
@@ -138,8 +166,12 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            concurrentFunc();
-            this.message = 'success';
+            concurrentFunc().then(() => {
+              this.message = 'success';
+            }).catch((e: object) => {
+              this.message = 'failed';
+              console.error(`taskpool execute concurrentFunc error is: ${e}`);
+            })
           })
       }
       .width('100%')
@@ -252,8 +284,12 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            testConcurrentFunc();
-            this.message = 'success';
+            testConcurrentFunc().then(() => {
+              this.message = 'success';
+            }).catch((e: object) => {
+              this.message = 'failed';
+              console.error(`testConcurrentFunc catch e: ${e}`);
+            })
           })
       }
       .width('100%')
@@ -335,11 +371,12 @@ struct Index {
         .onClick(() => {
           const task = new taskpool.Task(testFunc);
           taskpool.execute(task).then(() => {
+            this.message = 'success';
             console.info('taskpool: execute task success!');
           }).catch((e:BusinessError) => {
+            this.message = 'failed';
             console.error(`taskpool: execute: Code: ${e.code}, message: ${e.message}`);
           })
-          this.message = 'success';
         })
     }
     .height('100%')

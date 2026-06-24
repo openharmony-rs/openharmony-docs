@@ -757,7 +757,7 @@ const adInteractionListener: advertising.AdInteractionListener = {
 | tagForChildProtection | number | 否 | 是否希望根据 COPPA 的规定将您的内容视为面向儿童的内容。<br/> -1：默认值，不确定。<br/> 0：不希望。<br/> 1：希望。<br/>默认为-1。 | 
 | adContentClassification | string | 否 | 设置广告内容分级上限。<br/> W：3+，所有受众。<br/> PI：7+，家长指导。<br/> J：12+，青少年。<br/> A：16+/18+，成人受众。<br/>不填以业务逻辑为准。 | 
 | nonPersonalizedAd | number | 否 | 设置是否只请求非个性化广告。<br/> 0：请求个性化广告与非个性化广告。<br/> 1：只请求非个性化广告。<br/>不填以业务逻辑为准。 | 
-| [key: string] | number \| boolean \| string \| undefined | 否 | 自定义参数。<br/>- totalDuration：类型number，单位：s。贴片广告必填自定义参数，用于设置贴片广告展示时长。<br/>- allowMobileTraffic：类型number。可选自定义参数，设置是否允许使用流量下载广告素材。0：不允许，1：允许，不设置以广告主设置为准。<br/>- tagForUnderAgeOfPromise：类型number。可选自定义参数，设置未成年保护标签。是否希望按适合未达到法定承诺年龄的欧洲经济区 (EEA) 用户的方式处理该广告请求。-1：默认值，不确定， 0：不希望 ， 1：希望。 | 
+| [key: string] | number \| boolean \| string \| undefined | 否 | 自定义参数。<br/><!--RP1--><!--RP1End--> | 
 
 
 ## AdRequestParams
@@ -776,7 +776,7 @@ const adInteractionListener: advertising.AdInteractionListener = {
 | adWidth | number | 否 | 请求广告时期望的创意宽度，单位vp（横幅广告必填）。不填以业务逻辑为准。 | 
 | adHeight | number | 否 | 请求广告时期望的创意高度，单位vp（横幅广告必填）。不填以业务逻辑为准。 | 
 | adSearchKeyword | string | 否 | 广告关键字。不填默认""。<br/>说明：暂不支持使用。 | 
-| [key: string] | number \| boolean \| string \| undefined | 否 | 自定义参数。<br/>- isPreload：类型boolean，请求贴片广告时，用于区分普通在线请求和素材预加载请求。true：素材预加载请求，false：普通在线请求。默认值false。仅对贴片广告生效，其他广告请求不解析该参数。<br/>- enableDirectReturnVideoAd：类型boolean，原生广告自定义扩展参数，是否直接返回广告，不用等待所有广告素材下载完成。true：不等待广告素材下载完成，展示广告时在线加载素材；false：等待广告素材下载完成，展示广告时从本地缓存中加载素材。如果不填以云侧配置为准。仅对原生广告生效，其他广告请求不解析该参数。<br/>- oaid: 类型string，开放匿名设备标识符，用于精准推送广告。不填无法获取到个性化广告。默认值为""。<br/>- tMax：类型number，交易的最大超时时间（包含网络延迟）单位ms。<br/>- cur：类型string，竞价请求支持的币种，支持传多个，用英文逗号分隔。当前支持五种货币：CNY（单位：元）、USD（单位：美元）、EUR（单位：欧元）、GBP（单位：英镑）、JPY（单位：日元），不填则默认是CNY。<br/>- bidFloor：类型number或者string，实时竞价广告位的底价。如果底价是小数，请传入string避免丢失精度。<br/>- bidFloorCur：类型string，广告位底价使用的币种。如果bidFloor非空，则bidFloorCur也非空。当前只支持五种货币中的一种：CNY（单位：元）、USD（单位：美元）、EUR（单位：欧元）、GBP（单位：英镑）、JPY（单位：日元），不填则默认是CNY。<br/>- bpkgName：类型string，广告位禁投的APP包名，支持传多个，用英文逗号分隔。<br/>- orientation ：类型number，媒体请求广告的屏幕方向。1表示竖屏，0表示横屏，不设置则默认为1。当前未上架横屏开屏素材，若设置请求屏幕方向为横屏则不展示开屏广告。如果媒体设置应用固定横屏展示，但该参数未设置或者设置为1，则展示效果会受影响。 | 
+| [key: string] | number \| boolean \| string \| undefined | 否 | 自定义参数。<br/><!--RP2--><!--RP2End--> | 
 
 
 ## AdDisplayOptions
@@ -794,7 +794,7 @@ const adInteractionListener: advertising.AdInteractionListener = {
 | useMobileDataReminder | boolean | 否 | 使用移动数据播放视频或下载应用时是否弹框通知用户。<br/>- true：弹框通知。<br/>- false：不弹框通知。<br/>- 该参数依赖流量弹窗功能，当前不支持完整功能的使用，暂不确定默认值。 | 
 | mute | boolean | 否 | 广告视频播放是否静音。<br/>- true：静音播放。<br/>- false：非静音播放。<br/>不填以业务逻辑为准。 | 
 | audioFocusType | number | 否 | 视频播放过程中获得音频焦点的场景类型。<br/>- 0：视频播放静音、非静音时都获取焦点。<br/>- 1：视频静音播放时不获取焦点。<br/>- 2：视频播放静音、非静音时都不获取焦点。<br/>- 该接口依赖的相关功能当前不支持使用，暂不确定默认值。 | 
-| [key: string] | number \| boolean \| string \| undefined | 否 | 自定义参数。<br/>- refreshTime：AutoAdComponent组件可选自定义参数，用于控制广告的轮播时间间隔。类型number，单位：ms，取值范围[30000, 120000]。如果不设置或取值为非数字或小于等于0的数字，则不轮播，只会展示广告响应中的第一个广告内容。设置小于30000的数字取值30000，设置大于120000的数字取值120000。<br/>- colorMode：广告的主题色。类型number。0：深色主题， 1：浅色主题 ， 2：跟随系统。设置主题色功能从8.4.80.300版本开始支持，查看方式：可在设备上选择“设置> 应用和元服务” ，右上角点击“更多应用”，在应用界面查看智慧营销服务版本。 | 
+| [key: string] | number \| boolean \| string \| undefined | 否 | 自定义参数。<br/>- refreshTime：AutoAdComponent组件可选自定义参数，用于控制广告的轮播时间间隔。类型number，单位：ms，取值范围[30000, 120000]。如果不设置或取值为非数字或小于等于0的数字，则不轮播，只会展示广告响应中的第一个广告内容。设置小于30000的数字取值30000，设置大于120000的数字取值120000。<br/><!--RP3--><!--RP3End--> | 
 
 
 ## Advertisement
@@ -809,4 +809,4 @@ type Advertisement = _Advertisement
 
 | 类型                                                         | 说明                   |
 |--------------------------------------------------------------|----------------------|
-| [_Advertisement](js-apis-inner-advertising-advertisement.md) | 表示Advertisement对象。 |
+| [_Advertisement](js-apis-advertisement.md) | 表示Advertisement对象。 |

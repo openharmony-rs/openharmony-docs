@@ -1,7 +1,7 @@
 # 页面路由错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -134,11 +134,11 @@ Failed to query route navigation information.
 
 **可能原因**
 
-可能因为当前节点不在Navigation中。
+可能因为当前节点未挂载在页面下。
 
 **处理步骤**
 
-请检查当前节点是否在Navigation中。
+请检查当前节点是否在页面中。
 
 ## 106202 传入的buffer size异常
 

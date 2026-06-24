@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（交互类相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW; @zju_ljz-->
-<!--Designer: @CCFFWW; @lanshouren-->
+<!--Owner: @hehongyang3; @zju_ljz-->
+<!--Designer: @hehongyang3; @lanshouren-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -35,13 +35,13 @@ NODE_HIT_TEST_BEHAVIOR = 26
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 控制当前组件的触摸测试类型，参数类型[ArkUI_HitTestMode](capi-native-type-h.md#arkui_hittestmode)，默认值为ARKUI_HIT_TEST_MODE_DEFAULT。 |
+| .value[0].i32 | 控制当前组件的触摸测试类型，参数类型[ArkUI_HitTestMode](capi-common-attributes-h.md#arkui_hittestmode)，默认值为ARKUI_HIT_TEST_MODE_DEFAULT。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 控制当前组件的触摸测试类型，参数类型[ArkUI_HitTestMode](capi-native-type-h.md#arkui_hittestmode)，默认值为ARKUI_HIT_TEST_MODE_DEFAULT。 |
+| .value[0].i32 | 控制当前组件的触摸测试类型，参数类型[ArkUI_HitTestMode](capi-common-attributes-h.md#arkui_hittestmode)，默认值为ARKUI_HIT_TEST_MODE_DEFAULT。 |
 
 ## NODE_DEFAULT_FOCUS
 
@@ -289,7 +289,7 @@ NODE_NEXT_FOCUS = 101
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 走焦类型，定义在[ArkUI_FocusMove](capi-native-type-h.md#arkui_focusmove)。 |
+| .value[0].i32 | 走焦类型，定义在[ArkUI_FocusMove](capi-common-attributes-h.md#arkui_focusmove)。 |
 | .object | 下一个焦点。参数类型为[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。 |
 
 ## NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_RATIO
@@ -356,13 +356,13 @@ NODE_HOVER_EFFECT = 112
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-native-type-h.md#arkui_hovereffect)。默认值为ARKUI_HOVER_EFFECT_AUTO。 |
+| .value[0].i32 | 组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-common-attributes-h.md#arkui_hovereffect)。默认值为ARKUI_HOVER_EFFECT_AUTO。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-native-type-h.md#arkui_hovereffect)。 |
+| .value[0].i32 | 组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-common-attributes-h.md#arkui_hovereffect)。 |
 
 ## NODE_FOCUS_SCOPE_ID
 
@@ -407,14 +407,14 @@ NODE_FOCUS_SCOPE_PRIORITY = 114
 | 参数项 | 描述 |
 | -- | -- |
 | .string | 焦点作用域标识符。 |
-| .value[0].i32 | 焦点作用域内获焦优先级。参数类型为[ArkUI_FocusPriority](capi-native-type-h.md#arkui_focuspriority)。默认值为ARKUI_FOCUS_PRIORITY_AUTO。 |
+| .value[0].i32 | 焦点作用域内获焦优先级。参数类型为[ArkUI_FocusPriority](capi-common-attributes-h.md#arkui_focuspriority)。默认值为ARKUI_FOCUS_PRIORITY_AUTO。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | .string | 焦点作用域标识符。 |
-| .value[0].i32 | 焦点作用域优先级。参数类型为[ArkUI_FocusPriority](capi-native-type-h.md#arkui_focuspriority)。 |
+| .value[0].i32 | 焦点作用域优先级。参数类型为[ArkUI_FocusPriority](capi-common-attributes-h.md#arkui_focuspriority)。 |
 
 ## NODE_ON_CLICK_EVENT_DISTANCE_THRESHOLD
 
@@ -457,7 +457,7 @@ NODE_RESPONSE_REGION_LIST = 116
 
 | 参数项 | 描述 |
 | -- | -- |
-| .data[0].i32 | 适用于此响应区域的事件工具类型。参数类型为[ArkUI_ResponseRegionSupportedTool](capi-native-type-h.md#arkui_responseregionsupportedtool)。默认值：ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL。 |
+| .data[0].i32 | 适用于此响应区域的事件工具类型。参数类型为[ArkUI_ResponseRegionSupportedTool](capi-common-attributes-h.md#arkui_responseregionsupportedtool)。默认值：ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL。 |
 | .data[1].f32 | 触摸点相对于组件左上角的x轴坐标，默认值：0.0，单位为vp。 |
 | .data[2].f32 | 触摸点相对于组件左上角的y轴坐标，默认值：0.0，单位为vp。 |
 | .data[3].f32 | 触摸热区的宽度，默认值：100.0，单位为百分比。 |
@@ -468,7 +468,7 @@ NODE_RESPONSE_REGION_LIST = 116
 
 | 类型 | 说明 |
 | -- | -- |
-| .data[0].i32 | 适用于此响应区域的事件工具类型。参数类型为[ArkUI_ResponseRegionSupportedTool](capi-native-type-h.md#arkui_responseregionsupportedtool)。默认值：ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL。 |
+| .data[0].i32 | 适用于此响应区域的事件工具类型。参数类型为[ArkUI_ResponseRegionSupportedTool](capi-common-attributes-h.md#arkui_responseregionsupportedtool)。默认值：ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL。 |
 | .data[1].f32 | 触摸点相对于组件左上角的x轴坐标，默认值：0.0，单位为vp。 |
 | .data[2].f32 | 触摸点相对于组件左上角的y轴坐标，默认值：0.0，单位为vp。 |
 | .data[3].f32 | 触摸热区的宽度，默认值：100.0，单位为百分比。 |

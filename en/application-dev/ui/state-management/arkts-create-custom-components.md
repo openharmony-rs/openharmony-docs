@@ -541,7 +541,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   
   In ArkUI state management, UI re-render is driven by state.
 
-  ![en-us_image_0000001651365257](figures/en-us_image_0000001651365257.png)
+  ![en-us_image_0000001651365257](figures/State-UI-function.png)
 
   Therefore, do not change any state variable in the **build()** or \@Builder decorated method of a custom component. Otherwise, loop rendering may result. The impact of **Text('${this.count++}')** varies depending on the update mode:
 

@@ -113,6 +113,8 @@ systemMaterial(material: SystemUiMaterial | undefined): T
 
 type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material
 
+系统材质对象基类。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -121,7 +123,7 @@ type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| import('../api/@ohos.arkui.uiMaterial').default.[Material](../arkts-apis-uimaterial-sys.md#material)     | 系统材质对象。 |
+| import('../api/@ohos.arkui.uiMaterial').default.[Material](../arkts-apis-uimaterial-sys.md#material)     | 系统材质对象基类。 |
 
 ## edgeLight
    

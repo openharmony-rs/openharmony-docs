@@ -1,8 +1,8 @@
 # @ohos.window (窗口)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -198,7 +198,7 @@ import { window } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone设备、非[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)的Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异：** 该接口在Phone设备、非[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)的Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -1336,7 +1336,7 @@ moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;v
 将指定的主窗口迁移到指定的屏幕上。使用Promise异步回调。
 
 - 对于[主屏](../../displaymanager/display-terminology.md#主屏)/[扩展屏](../../displaymanager/display-terminology.md#扩展屏)与[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)之间以及虚拟屏与虚拟屏之间的窗口迁移，仅主窗及其子窗会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦。
-- 对于主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕，抬升并获取焦点。
+- 对于主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕并抬升层级。
 
 <!--RP3--><!--RP3End-->
 
@@ -1897,7 +1897,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 该相对位置通过子窗与主窗之间的锚点偏移量表示，子窗和主窗使用的窗口锚点相同。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
 
 > **说明：**
 >
@@ -1913,7 +1913,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上调用不生效不报错。
 
 **参数：**
 
@@ -1995,7 +1995,7 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 解除一级子窗与主窗保持相对位置不变的协同关系。使用Promise异步回调。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
 
 > **说明：**
 >
@@ -2011,7 +2011,7 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的设备上调用不生效不报错。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上正常调用并生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上调用不生效不报错，设备切换到自由窗口状态生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)的设备上调用不生效不报错。
 
 **返回值：**
 
@@ -2854,7 +2854,7 @@ raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3072,7 +3072,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3149,7 +3149,7 @@ raiseAboveTarget(windowId: number): Promise&lt;void&gt;
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3239,7 +3239,7 @@ raiseMainWindowAboveTarget(windowId: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -3539,7 +3539,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
+**设备行为差异：** 该接口在PC/2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -3618,7 +3618,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
+**设备行为差异：** 该接口在PC/2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -3876,9 +3876,9 @@ setTopmost(isTopmost: boolean): Promise&lt;void&gt;
 
 **设备行为差异：**
 
-在<!--RP2-->OpenHarmony 6.1<!--RP2End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+在<!--RP2-->OpenHarmony 6.1<!--RP2End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-从<!--RP2-->OpenHarmony 6.1<!--RP2End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+从<!--RP2-->OpenHarmony 6.1<!--RP2End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -3987,7 +3987,7 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 
 设置标题栏上的最大化、最小化、分屏按钮是否可见。
 
-仅支持主窗和[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口，其他窗口调用时将返回1300004错误码。
+仅支持主窗和[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口，其他窗口调用时将返回1300004错误码。
 
 仅对在当前场景下可见的标题栏按钮（最大化、最小化、分屏）生效。
 
@@ -3995,7 +3995,7 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -4059,7 +4059,7 @@ export default class EntryAbility extends UIAbility {
 
 setRotationLocked(locked: boolean): Promise&lt;void&gt;
 
-仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
+仅支持[系统窗口](../../windowmanager/window-type-overview.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4123,7 +4123,7 @@ promise.then(() => {
 
 getRotationLocked(): boolean
 
-仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
+仅支持[系统窗口](../../windowmanager/window-type-overview.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4426,6 +4426,100 @@ export default class EntryAbility extends UIAbility {
         console.error(`Failed to forbid window moving in split screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
       }
     });
+  }
+}
+```
+
+### startMovingWithOptions
+
+startMovingWithOptions(startMovingOptions?: StartMovingOptions): Promise&lt;void&gt;
+
+开始移动窗口，使用Promise异步回调。
+
+仅在[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)事件（其中，事件类型必须为TouchType.Down）的回调方法中调用此接口才会有移动效果，成功调用此接口后，窗口将跟随鼠标或触摸点移动。
+
+在点击拖拽场景下，若不期望在按下时触发拖拽事件，则可以在事件类型为[TouchType.Move](./arkui-ts/ts-appendix-enums.md#touchtype)（需要保证当前行为已经触发TouchType.Down事件）时调用此接口，触发移动效果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上，对系统窗口、应用主窗口、应用子窗口、全局悬浮窗和模态窗口生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上，仅对系统窗口、应用子窗口、全局悬浮窗和模态窗口生效，应用主窗口调用该接口返回801或1300004错误码。
+
+**参数：**
+
+| 参数名 | 类型  | 必填 | 说明 |
+| ----- | ---------------------------- | -- | --------------------------------- |
+| startMovingOptions  | [StartMovingOptions](#startmovingoptions) | 否 | 窗口拖拽移动的配置项。 |
+
+**返回值：**
+
+| 类型                 | 说明                   |
+| ------------------- | ---------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300001 | Repeated operation. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type, main windows are not supported in non-free window mode. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例：**
+
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Blank('160')
+          .color(Color.Red)
+          .onTouch((event: TouchEvent) => {
+            if (event.type == TouchType.Down) {
+              let options: window.StartMovingOptions = {
+                needFocused: true,
+                avoidRect: {
+                  left: 0,
+                  top: 0,
+                  width: 200,
+                  height: 200
+                }
+              };
+              try {
+                windowClass.startMovingWithOptions(options)
+                  .then(() => {
+                    console.info('Succeeded in starting moving window.');
+                  })
+                  .catch((err: BusinessError) => {
+                    console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
+                  });
+              } catch (exception) {
+                console.error(`Failed to start moving. Cause code: ${exception.code}, message: ${exception.message}`);
+              }
+            }
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
@@ -4906,3 +5000,20 @@ try {
 | windowRect   | [Rect](arkts-apis-window-i.md#rect7) | 否 | 否   | 窗口矩形区域。 |
 | subWindowOptions   | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 否 | 是 | 创建子窗口的参数。无默认参数，当windowAttribute配置为SUB_WINDOW时必选，否则会导致窗口创建失败。 |
 | systemWindowOptions   | [SystemWindowOptions](#systemwindowoptions14) | 否 | 是 | 创建系统窗口的参数。无默认参数，当windowAttribute配置为SYSTEM_WINDOW时必选，否则会导致窗口创建失败。 |
+
+## StartMovingOptions
+
+窗口拖拽移动的配置项。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称     | 类型      | 只读 | 可选 | 说明               |
+| -------- | -------- | ---- | ---- | ------------------ |
+| needFocused | boolean  | 否   | 是   | 表示窗口是否必须处于获焦状态才能开始拖拽移动。默认值为true。<br/>- true：窗口处于获焦状态才能开始拖拽移动。<br/>- false：窗口无需处于获焦状态即可开始拖拽移动。|
+| avoidRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 表示窗口拖拽移动时的避让区域，以窗口左上角为原点，并随窗口移动而同步移动。系统会根据窗口区域与避让区域共同组成的最小外接矩形区域对窗口位置进行约束。若该最小外接矩形区域无法完全容纳于对应屏幕的可用区域内，则认为避让区域无效，不执行避让修正。否则，系统按以下规则调整窗口位置：<br/>- 单屏拖拽场景下，确保避让区域完全位于当前屏幕的可用区域内；<br/>- 跨屏拖拽场景下，在跨屏前确保避让区域完全位于当前屏幕的可用区域内，且窗口仅显示在当前屏幕上；跨屏后，确保避让区域完全位于目标屏幕的可用区域内，且窗口仅显示在目标屏幕上；整个拖拽过程中，窗口只会显示在一个屏幕上，不会部分显示到其他屏幕。|

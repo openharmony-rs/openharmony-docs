@@ -1,4 +1,4 @@
-# 音频会话管理
+# 音频会话管理(ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @funny_sunix-->
@@ -8,7 +8,7 @@
 
 对于涉及多个音频流并发的场景，系统已预设了默认的[音频焦点策略](audio-playback-concurrency.md#音频焦点策略)，该策略将对所有音频流（包括播放和录制）实施统一的焦点管理。
 
-当系统提供的默认焦点策略不能满足应用需求时，应用可利用音频会话管理提供的接口，管理应用内音频流的焦点，自定义音频流的焦点策略，调整音频流释放焦点的时机，以满足特定需求。该篇文章的示例代码均为ArkTS，如果需要使用OHAudio开发请参考[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)。
+当系统提供的默认焦点策略不能满足应用需求时，应用可利用音频会话管理提供的接口，管理应用内音频流的焦点，自定义音频流的焦点策略，调整音频流释放焦点的时机，以满足特定需求。本文档的示例代码均为ArkTS，如果需要使用OHAudio开发请参考[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)。
 
 使用音频会话相关接口，可以实现以下功能：
 
@@ -284,8 +284,11 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
 > **说明：**
 >
 > 如果应用同时注册了AudioRenderer的焦点事件监听，需要注意以下两点：
-> 1. 应用会收到AudioSession焦点状态变化和AudioRenderer焦点变化的回调（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)），根据需要处理这些回调即可。
-> 2. 如果AudioSession的焦点被暂停，恢复暂停状态时，只会给AudioSession发送焦点恢复事件，不会再给AudioRenderer发送焦点恢复事件。收到恢复事件后，当应用需要通过AudioSession申请焦点恢复播放时，必须重新调用[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置场景参数，再调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)激活AudioSession。
+> - 应用会收到AudioSession焦点状态变化和AudioRenderer焦点变化的回调（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)），根据需要处理这些回调即可。
+> - 当AudioSession的焦点由暂停转为恢复时，系统仅向AudioSession发送焦点恢复事件，不会同步向AudioRenderer发送该事件。此时应用如需恢复播放，必须按以下顺序操作：
+>    1. 调用[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置对应的音频会话场景。
+>    2. 调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)激活AudioSession。
+>    3. 调用[start](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8)恢复播放。
 
 ### 开发步骤
 
@@ -508,7 +511,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 启用静音建议通知后，本应用播放音频的同时，其他应用播放了不可与本应用并发播放的音频，本应用会收到静音建议通知，此时本应用可以选择不做处理，让本应用和其他应用进行并发播放；也可以选择将自身静音播放，让其他应用单独播放音频。
 
-启用混音播放下静音建议通知，需要先调用接口[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置场景参数并订阅音频会话状态更改事件[AudioSessionStateChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20)，启用后再调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)接口激活AudioSession。启用静音建议通知的前提是[AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12)模式必须为CONCURRENCY_MIX_WITH_OTHERS。
+启用混音播放下静音建议通知，需要先调用接口[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置场景参数，并调用[enableMuteSuggestionWhenMixWithOthers](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)开启功能，同时订阅音频会话状态更改事件[AudioSessionStateChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20)，最后调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)接口激活AudioSession。启用静音建议通知的前提是[AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12)模式必须为CONCURRENCY_MIX_WITH_OTHERS。
 
 <!-- @[enable_mute_suggestion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
@@ -535,5 +538,41 @@ import { BusinessError } from '@kit.BasicServicesKit';
   }).catch((err: BusinessError) => {
     console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
     // ...
+  });
+```
+
+## 设置音频会话行为
+
+从API version 24开始，应用可以通过[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口设置音频会话行为参数，在特定场景下获得更优的音频焦点体验。
+
+在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置[AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
+
+如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)。对于录音流，详情请参考[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)。
+
+<!-- @[set_session_behavior](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+  // 应用根据业务场景设置适合自己的音频会话场景，激活AudioSession时，系统会根据应用选择的音频会话场景申请对应的音频焦点。
+  audioSessionManager.setAudioSessionScene(audio.AudioSessionScene.AUDIO_SESSION_SCENE_MEDIA);
+
+  // 本接口应在激活音频会话前调用。
+  // 若音频会话在激活状态时调用此接口后，必须重新激活音频会话使其生效。
+  let behavior = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+  audioSessionManager.setAudioSessionBehavior(behavior);
+
+  // 设置音频会话策略。
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_PAUSE_OTHERS
+  };
+
+  // 激活AudioSession。
+  audioSessionManager.activateAudioSession(strategy).then(() => {
+    console.info('Succeeded in activating audio session.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
   });
 ```

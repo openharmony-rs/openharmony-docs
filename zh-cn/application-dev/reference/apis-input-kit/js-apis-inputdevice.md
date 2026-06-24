@@ -42,7 +42,7 @@ getDeviceList(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -139,7 +139,7 @@ getDeviceInfo(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;):
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -199,7 +199,7 @@ getDeviceInfo(deviceId: number): Promise&lt;InputDeviceData&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -257,12 +257,13 @@ getDeviceInfoSync(deviceId: number): InputDeviceData
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -286,7 +287,7 @@ struct Index {
 
 ## inputDevice.on('change')<sup>9+</sup>
 
-on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
+on(type: 'change', listener: Callback&lt;DeviceListener&gt;): void
 
 注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。
 
@@ -305,13 +306,14 @@ on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const DOMAIN = 0x0000;
 
@@ -346,7 +348,7 @@ struct Index {
                 console.error(`Failed to get Device List, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               });
               // 2.监听设备热插拔
-              inputDevice.on("change", (data) => {
+              inputDevice.on('change', (data) => {
                 // 打印日志
                 hilog.info(DOMAIN, 'InputDevice', `Device event info: %{public}s`, JSON.stringify(data));
                 // 获取键盘类型
@@ -385,7 +387,7 @@ struct Index {
 
 ## inputDevice.off('change')<sup>9+</sup>
 
-off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
+off(type: 'change', listener?: Callback&lt;DeviceListener&gt;): void
 
 取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。使用callback异步回调。
 
@@ -404,12 +406,13 @@ off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -424,7 +427,7 @@ struct Index {
 
           try {
             // 监听设备热插拔事件
-            inputDevice.on("change", callback);
+            inputDevice.on('change', callback);
           } catch (error) {
             console.error(`Failed to listen device event , Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -432,7 +435,7 @@ struct Index {
           // 取消指定的监听。
           try {
             // 取消监听设备热插拔事件
-            inputDevice.off("change", callback);
+            inputDevice.off('change', callback);
           } catch (error) {
             console.error(`Failed to cancel listening device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -440,7 +443,7 @@ struct Index {
           // 取消所有监听。
           try {
             // 取消监听设备热插拔事件
-            inputDevice.off("change");
+            inputDevice.off('change');
           } catch (error) {
             console.error(`Failed to cancel all listening device event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -655,7 +658,7 @@ supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallbac
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -674,6 +677,10 @@ struct Index {
           try {
             // 查询按键支持情况
             inputDevice.supportKeys(1, [17, 22, 2055], (error: BusinessError, supportResult: Array<Boolean>) => {
+              if (error) {
+                console.error(`Failed to query support key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
               console.info(`Succeeded in querying support keys, supportResult: ${JSON.stringify(supportResult)}.`);
             });
           } catch (error) {
@@ -712,7 +719,7 @@ supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;): Promise&lt;Array&lt;b
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -771,12 +778,13 @@ supportKeysSync(deviceId: number, keys: Array&lt;KeyCode&gt;): Array&lt;boolean&
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -819,7 +827,7 @@ getKeyboardType(deviceId: number, callback: AsyncCallback&lt;KeyboardType&gt;): 
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -879,7 +887,7 @@ getKeyboardType(deviceId: number): Promise&lt;KeyboardType&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -937,12 +945,13 @@ getKeyboardTypeSync(deviceId: number): KeyboardType
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -990,7 +999,7 @@ isFunctionKeyEnabled(functionKey: FunctionKey): Promise&lt;boolean&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900002      | There is currently no keyboard device connected. |
 
 **示例**：
@@ -1053,7 +1062,7 @@ setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise&lt;vo
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900002      | There is currently no keyboard device connected. |
 | 3900003      | It is prohibited for non-input applications. |
 
@@ -1098,7 +1107,7 @@ getIntervalSinceLastInput(): Promise&lt;number&gt;
 
 | 类型                                          | 说明                            |
 | --------------------------------------------- | ------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回距离上次系统输入事件的时间间隔，单位：μs。|
+| Promise&lt;number&gt; | Promise对象，返回距离上次系统输入事件的时间间隔，单位为微秒（μs）。|
 
 **示例**：
 

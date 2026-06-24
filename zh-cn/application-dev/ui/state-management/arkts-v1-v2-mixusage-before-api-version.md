@@ -112,7 +112,7 @@ struct IndexSix {
         })
       Divider()
         .color(Color.Blue)
-      // 可以只是使用无参数的V2组件
+      // 可以直接使用无参数的V2组件
       ChildSix()
     }
     .height('100%')
@@ -323,7 +323,7 @@ struct IndexFour {
 
 V2装饰器不能和\@Observed一起使用，V1传递\@Observed装饰的class类给V2自定义组件时，不直接用\@Param接收数据，如下图所示先定义V1BridgeComponent组件作为桥接层。在桥接层监听V1组件的数据，同步到V2定义的单例数据。V1组件直接使用V1BridgeComponent，在V1BridgeComponent中引入V2自定义组件。
 
-![mixsuage-example-observed-class](./figures/mixsuage-example-observed-class.png)
+![mixusage-example-observed-class](./figures/mixusage-example-observed-class.png)
 
 具体实现可参考以下示例代码：
 
@@ -800,7 +800,7 @@ struct IndexFive {
 
 **定义\@ObserveV2修饰的class**
 
-V1装饰器不能和\@ObservedV2一起使用。在以下示例代码中，InfoNine类被\@observedV2装饰，V1组件接收变量时，info变量不能被V1装饰器修饰，但通过修改可以刷新UI，依赖的是\@ObservedV2+\@Trace的观测能力。
+V1装饰器不能和\@ObservedV2一起使用。在以下示例代码中，InfoNine类被\@ObservedV2装饰，V1组件接收变量时，info变量不能被V1装饰器修饰，但通过修改可以刷新UI，依赖的是\@ObservedV2+\@Trace的观测能力。
 
 <!-- @[v2_to_v1_observedV2_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_ObservedV2AndTrace.ets) -->
 

@@ -1,10 +1,12 @@
 # Interface (AVScreenCaptureRecorder)
+
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:03:18.398Z pushedAt=2026-06-23T06:12:23.659Z -->
 
 AVScreenCaptureRecorder is a class for screen capture management. It provides APIs for screen capture. Before calling any API in AVScreenCaptureRecorder, you must use [createAVScreenCaptureRecorder()](arkts-apis-media-f.md#mediacreateavscreencapturerecorder12) to create an AVScreenCaptureRecorder instance.
 
@@ -12,7 +14,6 @@ AVScreenCaptureRecorder is a class for screen capture management. It provides AP
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 12.
-
 
 ## Modules to Import
 
@@ -313,6 +314,68 @@ if (avScreenCaptureRecorder != undefined) {
 }
 ```
 
+## addWatermark
+
+addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<number>
+
+Adds a custom watermark image during video recording. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - An application can add up to 5 watermarks.
+>
+> - The **addWatermark** API must be called before the [startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12) API.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters**
+
+| Name | Type                                   | Mandatory | Description                       |
+| ------ | -------------------------------------- | ---- | -------------------------- |
+| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes   | Watermark image. |
+| config | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | Yes   | Configuration parameters for video recording watermarks. |
+
+**Return value**
+
+| Type           | Description                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<number> | Promise used to return the ID of the added watermark. |
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID | Error Message                               |
+| -------- | -------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise.  |
+| 5400103  | IO error. Return by promise.    |
+| 5400105  | Service died. Return by promise. |
+| 5400108  | The parameter check failed, parameter value out of range.     |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let watermark: image.PixelMap | undefined = undefined; // You can obtain a local resource file and convert it to a PixelMap. The watermark image cannot be empty.
+let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+
+if (watermark) {
+    avScreenCaptureRecorder.addWatermark(watermark, watermarkConfig).then((num: number) => {
+      console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
+    });
+}
+```
+
 ## skipPrivacyMode<sup>12+</sup>
 
 skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
@@ -446,7 +509,7 @@ Sets the display mode of the picker. The setting takes effect the next time the 
 
 | Name| Type   | Mandatory| Description                                                     |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| pickerMode | [PickerMode](arkts-apis-media-e.md#pickermode22) | Yes  | Picker mode.<br>It defines the content type displayed in the picker. The options are as follows:<br>- **SCREEN_ONLY**: Displays only a list of screens.<br>- **WINDOW_ONLY**: Displays only a list of windows.<br>- **SCREEN_AND_WINDOW**: Displays both screens and windows. It is the default value.|
+| pickerMode | [PickerMode](arkts-apis-media-e.md#pickermode22) | Yes | Picker mode. |
 
 **Return value**
 
@@ -578,6 +641,7 @@ Displays the Picker once more after the screen capture starts, allowing for dyna
 **Error codes**
 
 For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 5400102  | Operation not allowed. Return by promise. |
@@ -610,6 +674,74 @@ if (avScreenCaptureRecorder != undefined) {
     console.info('Succeeded in presenting picker avScreenCaptureRecorder.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to present picker avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+## setContentAutoRotation
+
+setContentAutoRotation(enable: boolean): Promise\<void>
+
+Sets whether the captured screen content is automatically rotated to keep the image upright. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API must be called before the [startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12) API.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters**
+
+| Name | Type                                   | Mandatory | Description                       |
+| ------ | -------------------------------------- | ---- | -------------------------- |
+| enable | boolean | Yes   | Whether to enable auto rotation. The default value is **false**. The value **true** indicates that auto rotation is enabled, and the image content in the output frame will remain upright. |
+
+**Return value**
+
+| Type           | Description                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
+
+| ID | Error Message                               |
+| -------- | -------------------------------------- |
+| 801  | Capability not supported. Return by promise.  |
+| 5400102  | Operation not allowed. Return by promise.    |
+| 5400105  | Service died. Return by promise. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Initialize avScreenCaptureRecorder.
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in creating avScreenCaptureRecorder');
+  } else {
+    console.error('Failed to create avScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+// Other processes.
+
+// Call the setContentAutoRotation method.
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.setContentAutoRotation(true).then(() => {
+    console.info('Succeeded in enabling setContentAutoRotation.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to enable setContentAutoRotation. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -714,7 +846,7 @@ if (avScreenCaptureRecorder != undefined) {
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to AVScreenCaptureRecorder errors. You can handle the errors based on the application logic. An application can subscribe to only one AVScreenCaptureRecorder error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
+Subscribes to AVScreenCaptureRecorder errors. You can handle the errors based on the application logic. An application can subscribe to only one AVScreenCaptureRecorder error event callback. When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 

@@ -67,7 +67,7 @@ For more information, see [Animation Styles](../reference/apis-arkui/arkui-js/js
 
 **Figure 1** Static animation
 
-![en-us_image_0000001071134933](figures/en-us_image_0000001071134933.png)
+![Static-Animation](figures/Static-Animation.png)
 
 
 ## Continuous Animation
@@ -166,4 +166,4 @@ export default {
 
 **Figure 2** Continuous animation
 
-![en-us_image_0000001063148757](figures/en-us_image_0000001063148757.gif)
+![Continuous-Animation](figures/Continuous-Animation.gif)

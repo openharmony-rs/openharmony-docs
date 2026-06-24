@@ -56,7 +56,7 @@ RestrictedWorker构造函数。使用以下方法前，均需先构造Restricted
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 10200003 | Worker initialization failure. |
-| 10200007 | The worker file patch is invalid path. |
+| 10200007 | The worker file path is invalid. |
 
 **示例：**
 
