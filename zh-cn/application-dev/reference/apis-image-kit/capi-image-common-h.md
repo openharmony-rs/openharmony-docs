@@ -636,6 +636,8 @@ Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metada
 
 **起始版本：** 26.0.0
 
+**系统接口：** 此接口为系统接口
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -662,6 +664,8 @@ Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint
 释放OH_PictureMetadata对象数组。
 
 **起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口
 
 **参数：**
 
