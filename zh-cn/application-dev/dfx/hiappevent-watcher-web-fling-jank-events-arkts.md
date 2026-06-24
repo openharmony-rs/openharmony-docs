@@ -60,7 +60,7 @@
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.start_time=${eventInfo.params['start_time']}`);
            // 开发者可以获取到抛滑动效持续的时间长度
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.duration=${eventInfo.params['duration']}`);
-           // 开发者可以获取到发生卡顿的的web页面对应的Id
+           // 开发者可以获取到发生卡顿的web页面对应的Id
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.web_id=${eventInfo.params['web_id']}`);
            // 开发者可以获取抛滑阶段发生丢帧的最大时长
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.max_app_frame_time=${eventInfo.params['max_app_frame_time']}`);
@@ -135,7 +135,7 @@
      .width('80%')
      .height('5%')
      .onClick(() => {
-       router.pushUrl({url: 'pages/ArkWebPage'});
+       this.navPathStack.pushPath({ name: 'ArkWebPage' });
      })
    ```
 
