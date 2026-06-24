@@ -30,7 +30,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 ## SingleKVStore
 
-SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据变更、订阅数据同步完成的方法。
+SingleKVStore数据库实例，提供增加数据、删除数据、订阅数据变更、订阅数据同步完成的方法。
 
 在调用SingleKVStore的方法前，需要先通过[getKVStore](js-apis-distributedKVStore.md#getkvstore)构建一个SingleKVStore实例。
 
@@ -88,8 +88,8 @@ try {
     }
     console.info('Succeeded in putting batch');
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to do putBatch error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -151,8 +151,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to do putBatch error. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`Failed to do putBatch error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -219,8 +219,8 @@ try {
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -288,8 +288,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -352,8 +352,8 @@ try {
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -418,8 +418,8 @@ try {
     console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
 
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -492,8 +492,8 @@ try {
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -557,8 +557,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -583,7 +583,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名     | 类型                                                     | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| deviceId  | string                                                       | 是   | 标识要查询其数据的设备。                                     |
+| deviceId  | string                                                       | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。                                     |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，不允许为null。              |
 | callback   | AsyncCallback&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt;   | 是   | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。 |
 
@@ -626,8 +626,8 @@ try {
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -652,7 +652,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名     | 类型                                                     | 必填 | 说明                                            |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| deviceId  | string                                                       | 是   | 标识要查询其数据的设备。                                     |
+| deviceId  | string                                                       | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。                                     |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，不允许为null。 |
 
 **返回值：**
@@ -696,8 +696,8 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```

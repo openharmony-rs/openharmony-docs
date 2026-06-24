@@ -43,7 +43,7 @@ Over max limits.
 
 **可能原因**
 
-1. 在调用订阅数据库变化接口[on('dataChange')](js-apis-distributedKVStore.md#ondatachange)时，对数据库的订阅数量已超过最大限制数目8。
+1. 在调用订阅数据库变化接口[on('dataChange')](js-apis-distributedKVStore.md#ondatachange)时，对数据库的订阅数目已超过最大限制数目8。
 2. 调用获取数据库结果集接口[getResultSet](js-apis-distributedKVStore.md#getresultset)时，数据库当前打开的结果集数目超过最大限制数目8。
 
 **处理步骤**
@@ -122,7 +122,7 @@ Database or result set already closed.
 
 **错误描述**
 
-该错误码表示在调用数据库或查询结果集相关接口时，数据库或查询结果集为关闭状态。
+该错误码表示在调用数据库或查询结果集相关接口时，数据库或查询结果集处于关闭状态。
 
 **可能原因**
 
