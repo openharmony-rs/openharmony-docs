@@ -93,6 +93,74 @@ struct WebComponent {
 }
 ```
 
+## fetchCookieSync<sup>26+</sup>
+
+static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCookies?: boolean): string
+
+获取指定url对应cookie的值。可以获取partitioned cookies。
+
+> **说明：**
+>
+> - 系统会自动清理过期的cookie，对于同名key的数据，新数据将会覆盖前一个数据。
+>
+> - 为了获取可正常使用的cookie值，fetchCookieSync需传入完整链接。
+>
+> - fetchCookieSync用于获取所有的cookie值，每条cookie值之间会通过"; "进行分隔，但无法单独获取某一条特定的cookie值。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                      |
+| ------ | ------ | ---- | :------------------------ |
+| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| incognito    | boolean | 否   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
+| includePartitionedCookies | boolean | 否 | true表示允许获取第一方partitioned cookies，false表示不允许获取第一方partitioned cookies。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
+
+**返回值：**
+
+| 类型   | 说明                      |
+| ------ | ------------------------- |
+| string | 指定url对应的cookie的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 17100002 | URL error. No valid cookie found for the specified URL. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('fetchCookieSync')
+        .onClick(() => {
+          try {
+            let value = webview.WebCookieManager.fetchCookieSync('https://www.example.com', false, true);
+            console.info("fetchCookieSync cookie = " + value);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## fetchCookie<sup>11+</sup>
 
 static fetchCookie(url: string, callback: AsyncCallback\<string>): void
@@ -264,6 +332,72 @@ struct WebComponent {
         .onClick(() => {
           try {
             webview.WebCookieManager.fetchCookie('https://www.example.com', false)
+              .then(cookie => {
+                console.info("fetchCookie cookie = " + cookie);
+              })
+              .catch((error: BusinessError) => {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              })
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## fetchCookie<sup>26+</sup>
+
+static fetchCookie(url: string, incognito: boolean): Promise\<string>
+static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: boolean): Promise\<string>
+
+以Promise方式异步获取指定url对应cookie的值。可以获取partitioned cookies。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                      |
+| ------ | ------ | ---- | :------------------------ |
+| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| incognito    | boolean | 是   | true表示获取隐私模式下webview的内存cookies，false表示正常非隐私模式下的cookies。 |
+| includePartitionedCookies | boolean | 是 | true表示允许获取第一方partitioned cookies，false表示不允许获取第一方partitioned cookies。 |
+
+**返回值：**
+
+| 类型   | 说明                      |
+| ------ | ------------------------- |
+| Promise\<string> | Promise实例，用于获取指定url对应的cookie值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                               |
+| -------- | ------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 17100002 | URL error. No valid cookie found for the specified URL. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('fetchCookie')
+        .onClick(() => {
+          try {
+            webview.WebCookieManager.fetchCookie('https://www.example.com', false, true)
               .then(cookie => {
                 console.info("fetchCookie cookie = " + cookie);
               })
