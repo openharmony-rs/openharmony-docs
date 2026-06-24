@@ -30,7 +30,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 ## SingleKVStore
 
-SingleKVStore数据库实例，提供增加数据、删除数据、订阅数据变更、订阅数据同步完成的方法。
+SingleKVStore数据库实例，提供增加数据、删除数据、订阅数据变更和订阅数据同步完成的方法。
 
 在调用SingleKVStore的方法前，需要先通过[getKVStore](js-apis-distributedKVStore.md#getkvstore)构建一个SingleKVStore实例。
 
