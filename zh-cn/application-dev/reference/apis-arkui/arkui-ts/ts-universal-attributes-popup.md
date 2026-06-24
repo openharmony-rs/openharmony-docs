@@ -618,7 +618,7 @@ struct PopupExample {
           },
           /**
            * 气泡即将关闭前拦截回调
-           * @param dismissPopupAction 气泡关闭行为对象，包含关闭原因与关闭方法
+           * dismissPopupAction：气泡关闭行为对象，包含关闭原因与关闭方法
            */
           onWillDismiss: (
             (dismissPopupAction: DismissPopupAction) => {
@@ -846,7 +846,7 @@ struct PopupExample {
         /**
          * 绑定气泡，使用系统标准化磨砂模糊样式
          * message：气泡长文本内容，重复拼接加长文本用于测试换行与模糊透出效果
-         * backgroundBlurStyleOptions 系统沉浸式模糊配置项
+         * backgroundBlurStyleOptions：系统沉浸式模糊配置项
          * colorMode.LIGHT：浅色主题调色模式
          * adaptiveColor.AVERAGE：取底层背景平均色作为磨砂底色
          * scale：磨砂通透缩放系数0.5
