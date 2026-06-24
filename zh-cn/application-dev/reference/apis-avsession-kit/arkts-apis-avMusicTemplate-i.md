@@ -210,8 +210,8 @@
 | isSupportPrev          | boolean  | 否   | 否   | 是否支持上一首。true表示支持，false表示不支持。无默认值。|
 | isSupportQuickForward  | boolean  | 否   | 否   | 是否支持快进。true表示支持，false表示不支持。无默认值。|
 | isSupportQuickBackward | boolean  | 否   | 否   | 是否支持快退。true表示支持，false表示不支持。无默认值。|
-| quickForwardStep       | number     | 否   | 否   | 快进的步长（单位：毫秒）。                           |
-| quickBackwardStep      | number     | 否   | 否   | 快退的步长（单位：毫秒）。                           |
+| quickForwardStep       | number     | 否   | 否   | 快进的步长，单位为毫秒（ms）。                           |
+| quickBackwardStep      | number     | 否   | 否   | 快退的步长，单位为毫秒（ms）。                        |
 | isSupportSkipHead      | boolean  | 否   | 否   | 是否支持跳过开头。true表示支持，false表示不支持。无默认值。|
 | isSupportSkipTail      | boolean  | 否   | 否   | 是否支持跳过结尾。true表示支持，false表示不支持。无默认值。|
 | isSupportPlayMode      | boolean  | 否   | 否   | 是否支持切换播放模式。true表示支持，false表示不支持。无默认值。|
@@ -220,9 +220,9 @@
 | currentPlayRate        | string   | 否   | 否   | 当前的播放速率。                            |
 | isSupportSoundQuality  | boolean  | 否   | 否   | 是否支持声音质量。true表示支持，false表示不支持。无默认值。|
 | isSupportSoundEffect   | boolean  | 否   | 否   | 是否支持音效。true表示支持，false表示不支持。无默认值。|
-| totalDuration          | number     | 否   | 否   | 播放总时长（单位：毫秒）。                              |
-| currentPlayDuration    | number     | 否   | 否   | 当前播放的时长（单位：毫秒）。                            |
-| isSupportProgress      | boolean  | 否   | 是   | 是否支持进度。true表示支持，false表示不支持。默认值为true。 |
+| totalDuration          | number     | 否   | 否   | 播放总时长，单位为毫秒（ms）。                            |
+| currentPlayDuration    | number     | 否   | 否   | 当前播放的时长，单位为毫秒（ms）。                         |
+| isSupportProgress      | boolean  | 否   | 否   | 是否支持进度。true表示支持，false表示不支持。默认值为true。 |
 
 ## FavoriteData
 

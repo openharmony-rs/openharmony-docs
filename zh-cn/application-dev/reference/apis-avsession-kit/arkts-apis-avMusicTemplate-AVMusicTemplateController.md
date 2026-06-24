@@ -502,7 +502,7 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: nu
 | 参数名     | 类型                                                         | 必填 | 说明           |
 | ---------- | ------------------------------------------------------------ | ---- | -------------- |
 | keyword    | string                                                       | 是   | 关键字。       |
-| searchType | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | 是   | 媒体资源类型枚举。 |
+| searchType | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | 是   | 媒体资源类型。 |
 | pageIndex  | number                                                          | 是   | 页索引。   |
 
 **返回值：**
@@ -1372,7 +1372,7 @@ playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise&lt;Ope
 
 | 参数名  | 类型                                                         | 必填 | 说明                 |
 | ------- | ------------------------------------------------------------ | ---- | -------------------- |
-| command | [SearchPlayInfoType](arkts-apis-avMusicTemplate-e.md#searchplayinfotype) | 是   | 搜播的信息类型枚举。 |
+| command | [SearchPlayInfoType](arkts-apis-avMusicTemplate-e.md#searchplayinfotype) | 是   | 搜播的信息类型。 |
 | args    | [SearchPlayInfo](arkts-apis-avMusicTemplate-i.md#searchplayinfo) | 是   | 搜播信息。           |
 
 **返回值：**
