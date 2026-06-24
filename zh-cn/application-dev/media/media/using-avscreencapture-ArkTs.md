@@ -314,7 +314,7 @@
    ArkTS-Dyn示例：
 
    <!-- @[screenCapture_arkts_startRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
-
+   
    ``` TypeScript
    await this.screenCapture?.startRecording();
    ```
