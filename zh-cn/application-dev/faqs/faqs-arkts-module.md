@@ -133,7 +133,7 @@ load libentry.so failed.
 
 **so加载失败的错误信息（loadErrInfo）说明**
 
-从OpenHarmony7.0开始，`loadNativeModule`、`import()`等接口加载.so失败时，系统会将精确的错误原因写入`loadErrInfo`字段，并通过JS Crash faultlog和hilog输出。开发者可在faultlog或`hilog | grep NativeModuleManager`中搜索下列错误信息字符串进行定位。
+`loadNativeModule`、`import()`等接口加载.so失败时，系统会将精确的错误原因写入`loadErrInfo`字段，并通过JS Crash faultlog和hilog输出。开发者可在faultlog或`hilog | grep NativeModuleManager`中搜索下列错误信息字符串进行定位。
 
 **错误场景与错误信息对照表**
 
