@@ -4468,6 +4468,8 @@ A system application can create a virtual keyboard window only after obtaining t
 
 **Valid since**: 15
 
+**Supported devices**: PCs/2-in-1 devices
+
 ## ohos.permission.GET_FAMILY_INFO
 
 Allows a system application to obtain the group information of Family Sharing.
