@@ -1,0 +1,22 @@
+# SegmentButtonItemTuple
+
+```TypeScript
+declare type SegmentButtonItemTuple = ItemRestriction<SegmentButtonTextItem> | ItemRestriction<SegmentButtonIconItem> | ItemRestriction<SegmentButtonIconTextItem>
+```
+
+用于保存按钮信息的元组的联合类型。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 说明 |
+| --- | --- |
+| ItemRestriction&lt;SegmentButtonTextItem&gt; |  |
+| ItemRestriction&lt;SegmentButtonIconItem&gt; |  |
+| ItemRestriction&lt;SegmentButtonIconTextItem&gt; |  |
+

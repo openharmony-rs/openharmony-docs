@@ -1,0 +1,49 @@
+# getFreeSize（系统接口）
+
+## getFreeSize
+
+```TypeScript
+function getFreeSize(callback: AsyncCallback<number>): void
+```
+
+获取内置存储的可用空间大小（单位为Byte），以callback方式返回。
+
+**起始版本：** 15
+
+**需要权限：** ohos.permission.STORAGE_MANAGER
+
+**系统能力：** SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | AsyncCallback&lt;number&gt; | 是 | 获取内置存储的可用空间大小之后的回调。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-Permission) | Permission verification failed.&lt;br&gt;**适用版本：** 9 - 14 |
+| [202](../../errorcode-universal.md#202-The) | The caller is not a system application.&lt;br&gt;**适用版本：** 9 - 14 |
+| [401](../../errorcode-universal.md#401-The) | The input parameter is invalid.Possible causes:Mandatory<br/>parameters are left unspecified; |
+| [13600001](../../errorcode-universal.md#13600001-IPC) | IPC error. |
+| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error. |
+
+**示例：**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getFreeSize((error: BusinessError, number: number) => {
+  if (error) {
+    console.error("getFreeSize failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getFreeSize successfully:" + number);
+  }
+});
+
+```
+

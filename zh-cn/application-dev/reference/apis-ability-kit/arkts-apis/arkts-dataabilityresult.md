@@ -1,0 +1,10 @@
+# dataAbilityResult
+
+## 汇总
+
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [DataAbilityResult](arkts-ability-dataabilityresult-i.md) | 定义DataAbility数据操作结果，通过<br/>[executeBatch](../../../../reference/apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md#dataabilityhelperexecutebatch)<br/>操作数据库时，操作结果使用DataAbilityResult对象返回。<br/> |
+

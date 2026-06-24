@@ -1,0 +1,33 @@
+# LocalizationKit(本地化开发服务)
+
+- [@ohos.fontManager](arkts-fontmanager.md)<!--Del-->
+  - [installFont(系统接口)](arkts-localization-fontmanager-installfont-f-sys.md)<!--DelEnd--><!--Del-->
+  - [uninstallFont(系统接口)](arkts-localization-fontmanager-uninstallfont-f-sys.md)<!--DelEnd--><!--Del-->
+  - [dataMigration(系统接口)](arkts-localization-fontmanager-datamigration-f-sys.md)<!--DelEnd-->
+  - [DataMigrationCallback(系统接口)](arkts-localization-fontmanager-datamigrationcallback-i-sys.md)
+  - [DataMigrationProgress(系统接口)](arkts-localization-fontmanager-datamigrationprogress-i-sys.md)
+- [@ohos.resourceManager](arkts-resourcemanager.md)
+  - [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md)
+  - [getSystemResourceManager](arkts-localization-resourcemanager-getsystemresourcemanager-f.md)
+  - [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md)
+  - [Configuration](arkts-localization-resourcemanager-configuration-c.md)
+  - [DeviceCapability](arkts-localization-resourcemanager-devicecapability-c.md)
+  - [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md)
+  - [ResourceManager](arkts-localization-resourcemanager-resourcemanager-i.md)
+  - [RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md)
+  - [Resource](arkts-localization-resourcemanager-resource-t.md)
+  - [ColorMode](arkts-localization-resourcemanager-colormode-e.md)
+  - [DeviceType](arkts-localization-resourcemanager-devicetype-e.md)
+  - [Direction](arkts-localization-resourcemanager-direction-e.md)
+  - [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)
+- [@ohos.sendableResourceManager](arkts-sendableresourcemanager.md)
+  - [resourceToSendableResource](arkts-localization-sendableresourcemanager-resourcetosendableresource-f.md)
+  - [sendableResourceToResource](arkts-localization-sendableresourcemanager-sendableresourcetoresource-f.md)
+  - [Resource](arkts-localization-sendableresourcemanager-resource-t.md)
+  - [SendableResource](arkts-localization-sendableresourcemanager-sendableresource-t.md)
+- [rawFileDescriptor](arkts-rawfiledescriptor.md)
+  - [RawFileDescriptor](arkts-localization-rawfiledescriptor-i.md)
+- [resource](arkts-resource.md)
+  - [Resource](arkts-localization-resource-i.md)
+- [sendableResource](arkts-sendableresource.md)
+  - [SendableResource](arkts-localization-sendableresource-i.md)

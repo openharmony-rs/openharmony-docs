@@ -1,0 +1,41 @@
+# lstatSync
+
+## lstatSync
+
+```TypeScript
+declare function lstatSync(path: string): Stat
+```
+
+以同步方法获取符号链接文件信息。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| path | string | 是 | 文件的应用沙箱路径path或URI。<br/>**说明**：从API version 22开始，支持传入URI。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Stat | 表示文件的具体信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [13900002](../../errorcode-universal.md#13900002-No) | No such file or directory |
+| [13900008](../../errorcode-universal.md#13900008-Bad) | Bad file descriptor |
+| [13900011](../../errorcode-universal.md#13900011-Out) | Out of memory |
+| [13900012](../../errorcode-universal.md#13900012-Permission) | Permission denied |
+| [13900013](../../errorcode-universal.md#13900013-Bad) | Bad address |
+| [13900018](../../errorcode-universal.md#13900018-Not) | Not a directory |
+| [13900030](../../errorcode-universal.md#13900030-File) | File name too long |
+| [13900033](../../errorcode-universal.md#13900033-Too) | Too many symbolic links encountered |
+| [13900038](../../errorcode-universal.md#13900038-Value) | Value too large for defined data type |
+| [13900042](../../errorcode-universal.md#13900042-Unknown) | Unknown error |
+

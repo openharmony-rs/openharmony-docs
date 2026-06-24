@@ -1,0 +1,124 @@
+# copy（系统接口）
+
+## copy
+
+```TypeScript
+function copy(logType: string, logName: string, dest: string): Promise<void>
+```
+
+拷贝指定日志类型的指定文件到目标应用目录下。使用Promise回调。
+
+**起始版本：** 10
+
+**需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
+
+**系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| logType | string | 是 | 日志类型字符串，例如“HILOG”, "FAULTLOG", "BETACLUB", "REMOTELOG"等。 |
+| logName | string | 是 | 日志文件名称。 |
+| dest | string | 是 | 目标目录，需填入相对目录名称。传入dest字串后，日志文件将保存到应用缓存路径下的"hiview/*dest*"文件夹，即"../cache/hiview/*dest*"。可填入多<br/>层目录。<br/><br/>如果传入空字串，将保存到根目录下，即应用缓存路径下的hiview文件夹。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise实例，可以在其then()、catch()方法中分别对拷贝成功、拷贝异常的回调进行处理。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-Permission) | Permission denied |
+| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api |
+| [401](../../errorcode-universal.md#401-Invalid) | Invalid argument. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types.<br/><br/>3. Parameter verification failed. |
+| [21300001](../../errorcode-universal.md#21300001-Source) | Source file does not exists |
+
+**示例：**
+
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let logObj = logLibrary.list('HILOG');
+  if (logObj.length > 0) {
+    logLibrary.copy('HILOG', logObj[0].name, ''
+    ).then(
+      (val) => {
+        // do something here.
+      }
+    ).catch(
+      (err: BusinessError) => {
+        // do something here.
+      }
+    )
+  }
+} catch (error) {
+    console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+}
+
+```
+
+
+## copy
+
+```TypeScript
+function copy(logType: string, logName: string, dest: string, callback: AsyncCallback<void>): void
+```
+
+拷贝指定日志类型的指定文件到目标应用目录下。使用callback回调。
+
+**起始版本：** 10
+
+**需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
+
+**系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| logType | string | 是 | 日志类型字符串，例如“HILOG”, "FAULTLOG", "BETACLUB", "REMOTELOG"等。 |
+| logName | string | 是 | 日志文件名称。 |
+| dest | string | 是 | 目标目录，需填入相对目录名称。传入dest字串后，日志文件将保存到应用缓存路径下的"hiview/*dest*"文件夹，即"../cache/hiview/*dest*"。可填入多<br/>层目录。<br/><br/>如果传入空字串，将保存到根目录下，即应用缓存路径下的hiview文件夹。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，可以在回调函数中处理接口返回值。0表示拷贝成功，其它值表示拷贝失败。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-Permission) | Permission denied |
+| [202](../../errorcode-universal.md#202-Permission) | Permission denied, non-system app called system api |
+| [401](../../errorcode-universal.md#401-Invalid) | Invalid argument. Possible causes:<br/><br/>1. Mandatory parameters are left unspecified.<br/><br/>2. Incorrect parameter types.<br/><br/>3. Parameter verification failed. |
+| [21300001](../../errorcode-universal.md#21300001-Source) | Source file does not exists |
+
+**示例：**
+
+```TypeScript
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+
+try {
+  let logObj = logLibrary.list('HILOG');
+  if (logObj.length > 0) {
+    logLibrary.copy('HILOG', logObj[0].name, 'dir1', (error, val) => {
+      if (val === undefined) {
+        // copy failed.
+      } else {
+        // copy success.
+      }
+    });
+  }
+} catch (error) {
+    console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+}
+
+```
+

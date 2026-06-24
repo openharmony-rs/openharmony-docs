@@ -1,0 +1,26 @@
+# GetInputDataOptions（系统接口）
+
+表示[通知调用者获取数据](../../../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#ongetdata8)的可选参数集合。
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+## challenge
+
+```TypeScript
+challenge?: Uint8Array
+```
+
+挑战值，默认为undefined。
+
+**类型：** Uint8Array
+
+**起始版本：** 12
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
