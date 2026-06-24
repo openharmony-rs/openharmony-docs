@@ -53,11 +53,11 @@
    ArkTS-Dyn示例：
 
    <!-- @[screenCapture_arkts_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
-
+   
    ``` TypeScript
    // 声明一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
    private screenCapture?: media.AVScreenCaptureRecorder;
-
+   
    async createAVScreenCapture(): Promise<void> {
      // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
      this.screenCapture = await media.createAVScreenCaptureRecorder();
