@@ -200,7 +200,7 @@ int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_
 | 参数项 | 描述 |
 | -- | -- |
 | uint64_t deviceId | 设备ID，代表要操作的设备。 |
-| uint8_t interfaceIndex | 接口索引，对应USB协议中的[bInterfaceNumber](capi-usbddk-usbinterfacedescriptor.md)。 |
+| uint8_t interfaceIndex | 接口索引，对应USB协议中的bInterfaceNumber。 |
 | uint64_t *interfaceHandle | 接口操作句柄，接口声明成功后，该参数将会被赋值。 |
 
 **返回：**
