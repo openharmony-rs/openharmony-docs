@@ -910,7 +910,7 @@ try {
 
 on(event: 'distributedDataServiceDie', deathCallback: Callback&lt;void&gt;): void
 
-订阅服务终止事件。如果服务终止，需要重新调用[on('dataChange')](#ondatachange)和[on('syncComplete')](#onsynccomplete)注册数据变更通知和端端同步完成事件回调通知，并且端端同步操作会返回失败。调用on订阅后，在不需要监听时必须调用[off('distributedDataServiceDie')](#offdistributedserviceservicedie)取消订阅。
+订阅服务终止事件。如果服务终止，需要重新调用[on('dataChange')](#ondatachange)和[on('syncComplete')](#onsynccomplete)注册数据变更通知和端端同步完成事件回调通知，并且端端同步操作会返回失败。调用on订阅后，在不需要监听时必须调用[off('distributedDataServiceDie')](#offdistributeddataservicedie)取消订阅。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -950,7 +950,7 @@ try {
 
 off(event: 'distributedDataServiceDie', deathCallback?: Callback&lt;void&gt;): void
 
-取消订阅服务状态变更通知。必须先调用[on('distributedDataServiceDie')](#ondistributedserviceservicedie)订阅后，才能调用off取消订阅。参数中的deathCallback必须是已经订阅过的deathCallback，否则会取消订阅失败。
+取消订阅服务状态变更通知。必须先调用[on('distributedDataServiceDie')](#ondistributeddataservicedie)订阅后，才能调用off取消订阅。参数中的deathCallback必须是已经订阅过的deathCallback，否则会取消订阅失败。
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
