@@ -461,7 +461,7 @@ struct DisableMenuItem {
           .caretStyle({ width: '4vp' })
           .editMenuOptions({
             onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-              // menuItems不包含搜索和翻译
+              // menuItems不包含搜索、翻译和AI帮写
               return menuItems;
             },
             onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -601,7 +601,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
   windowStage.loadContent('pages/Index', (err, data) => {
-    let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
+    windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
     windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET_WITH_CARET);
     if (err.code) {
       hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');

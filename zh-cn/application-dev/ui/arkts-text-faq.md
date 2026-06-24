@@ -170,23 +170,21 @@
   
   @Entry
   @Component
-  export struct LengthMetric {
+  struct LengthMetric {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
     // 'Text_Add_Tags_Front_and_Post'资源文件中的value值为'这是一段长文本，超长部分折行，前后添加标签'
     @State message: string = this.manager.getStringByNameSync('Text_Add_Tags_Front_and_Post');
-    // 'Text_Add_Tags_Front'前标签'
+    // 'Text_Add_Tags_Front'资源文件中的value值为'前标签'
     @State frontTag: string = this.manager.getStringByNameSync('Text_Add_Tags_Front');
     // 'Text_Add_Tags_Post'资源文件中的value值为'后标签'
     @State backTag: string = this.manager.getStringByNameSync('Text_Add_Tags_Post');
     @State frontPaddingVp: number = 20;
     @State backPaddingVp: number = 10;
     @State fontTagWidthVp: Length = 0;
-    @State backTagWidthVp: Length = 0;
     @State backOffsetVpX: Length = 0;
     @State backOffsetVpY: Length = 0;
-    @State messageLines: number = 0;
     @State stackWidthVp: number = 300;
   
     // 显示之前，测算前后标签的位置，中间文本的缩进距离
@@ -391,9 +389,11 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
   <!-- @[Text_Long](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLong.ets) -->
   
   ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+  
   @Entry
   @Component
-  export struct TextLong {
+  struct TextLong {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -427,9 +427,11 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
   <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
   
   ``` TypeScript
+  import { common } from '@kit.AbilityKit';
+  
   @Entry
   @Component
-  export struct TextLongTow {
+  struct TextLongTow {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
