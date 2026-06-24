@@ -1691,7 +1691,7 @@ Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNativ
 
 **起始版本：** 26.0.0
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **参数：**
 
@@ -1956,7 +1956,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData(OH_DecodingOp
 
 **起始版本：** 26.0.0
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **参数：**
 
@@ -1983,7 +1983,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData(OH_DecodingOp
 
 **起始版本：** 26.0.0
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **参数：**
 
@@ -2010,7 +2010,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap(OH_De
 
 **起始版本：** 26.0.0
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **参数：**
 
@@ -2037,7 +2037,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap(OH_De
 
 **起始版本：** 26.0.0
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **参数：**
 
@@ -2064,7 +2064,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredPixelFormat(OH_DecodingOp
 
 **起始版本：** 26.0.0
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **参数：**
 
@@ -2091,7 +2091,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredPixelFormat(OH_DecodingOp
 
 **起始版本：** 26.0.0
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **参数：**
 
