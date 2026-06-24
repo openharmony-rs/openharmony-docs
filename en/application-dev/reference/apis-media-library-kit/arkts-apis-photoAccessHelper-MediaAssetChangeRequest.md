@@ -1,10 +1,12 @@
 # Class (MediaAssetChangeRequest)
+
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:36.264Z pushedAt=2026-06-23T09:25:46.746Z -->
 
 MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
 
@@ -247,7 +249,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-Deletes media assets. The deleted assets are moved to the trash. This API uses a promise to return the result.
+Deletes a media asset through a **PhotoAsset** object. The deleted asset will enter the recycle bin. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -305,7 +307,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Deletes media assets. The deleted assets are moved to the trash. This API uses a promise to return the result.
+Deletes a media asset by URI. The deleted asset will enter the recycle bin. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -426,8 +428,11 @@ Sets the media asset title.
 | title | string | Yes  | Title to set.|
 
 The title must meet the following requirements:
+
 - It must not contain a file name extension.
+
 - The total length of the file name must be between 1 and 255 characters.
+
 - It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
 
 **Error codes**
@@ -667,7 +672,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 
 saveCameraPhoto(imageFileType: ImageFileType): void
 
-Saves the photo taken by the camera.
+Saves a captured photo. The type to save must be specified.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
