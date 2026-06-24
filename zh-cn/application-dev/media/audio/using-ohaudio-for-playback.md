@@ -76,7 +76,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 1. 创建构造器。
 
    <!-- @[Render_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+   
    ``` C++
    OH_AudioStreamBuilder* builder;
    // ...
@@ -136,8 +136,8 @@ OH_AudioStreamBuilder_Destroy(builder);
    {
        // 将待播放的数据，按audioDataSize长度写入audioData。
        // 如果开发者不希望播放某段audioData，返回AUDIO_DATA_CALLBACK_RESULT_INVALID即可。
-       int32_t readCount = fread(audioData, audioDataSize, 1, g_fp);
-       if (readCount < 0) {
+       size_t readCount = fread(audioData, audioDataSize, 1, g_fp);
+       if (readCount == 0) {
            return AUDIO_DATA_CALLBACK_RESULT_INVALID;
        }
        if (feof(g_fp)) {

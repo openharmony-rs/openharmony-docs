@@ -58,6 +58,7 @@ while (threadShouldRun) {
     auto now = std::chrono::system_clock::now().time_since_epoch();
     auto startTimeMs = std::chrono::duration_cast<std::chrono::milliseconds>(now).count();
     OH_AudioWorkgroup_Start(grp, startTimeMs, startTimeMs + intervalMs);
+    // 此处为示例逻辑，实际开发中应根据业务需求控制线程运行周期。
     threadShouldRun = false;
     // 应用音频数据处理。
     OH_AudioWorkgroup_Stop(grp);
@@ -69,7 +70,7 @@ while (threadShouldRun) {
 <!-- @[OH_AudioWorkgroup_RemoveThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ``` C++
-// 当线程已经不需要接入分组时，将其从工作组中移除。
+// 当线程不再需要参与工作组任务时，将其从工作组中移除。
 OH_AudioWorkgroup_RemoveThread(grp, g_tokenId);
 
 OH_AudioResourceManager_ReleaseWorkgroup(resMgr, grp);
