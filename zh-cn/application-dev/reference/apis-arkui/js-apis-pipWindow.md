@@ -291,8 +291,8 @@ struct Index {
 
 | 名称   | 类型 | 只读 | 可选 | 说明       |
 | ------ | -------- | ---- | ---- | ---------- |
-| width  | number   | 否   | 否   | 窗口宽度，单位为px，该参数应为正整数，不大于屏幕宽度。传入0、负数或超过屏幕宽度的值时抛出异常。 |
-| height | number   | 否   | 否   | 窗口高度，单位为px，该参数应为正整数，不大于屏幕高度。传入0、负数或超过屏幕宽度的值时抛出异常。 |
+| width  | number   | 否   | 否   | 窗口宽度，单位为px，该参数应为正整数，不大于屏幕宽度。 |
+| height | number   | 否   | 否   | 窗口高度，单位为px，该参数应为正整数，不大于屏幕高度。 |
 | scale  | number   | 否   | 否   | 窗口缩放比，显示大小相对于width和height的缩放比，该参数为浮点数，取值范围大于0.0，小于等于1.0。等于1表示与width和height一样大。 |
 
 ## PiPWindowInfo<sup>15+</sup>
@@ -691,8 +691,8 @@ updateContentSize(width: number, height: number): void
 
 | 参数名    | 类型     | 必填  | 说明                                     |
 |--------|--------|-----|----------------------------------------|
-| width  | number | 是   | 表示媒体内容宽度，必须为大于0的整数，单位为px，用于更新画中画窗口比例。调用前需确保PiPController已创建且未销毁。  |
-| height | number | 是   | 表示媒体内容高度，必须为大于0的整数，单位为px，用于更新画中画窗口比例。调用前需确保PiPController已创建且未销毁。  |
+| width  | number | 是   | 表示媒体内容宽度，必须为大于0的整数，单位为px，用于更新画中画窗口比例。  |
+| height | number | 是   | 表示媒体内容高度，必须为大于0的整数，单位为px，用于更新画中画窗口比例。  |
 
 **错误码：**
 
@@ -723,7 +723,7 @@ updatePiPControlStatus(controlType: PiPControlType, status: PiPControlStatus): v
 
 | 参数名    | 类型     | 必填  | 说明                                                                                                 |
 |--------|--------|-----|----------------------------------------------------------------------------------------------------|
-| controlType  | [PiPControlType](#pipcontroltype12)  | 是   | 表示画中画控制面板控件类型。 |
+| controlType  | [PiPControlType](#pipcontroltype12)  | 是   | 表示画中画控制面板控件类型。目前仅支持VIDEO_PLAY_PAUSE、MICROPHONE_SWITCH、CAMERA_SWITCH和MUTE_SWITCH这几种控件类型，传入其他控件类型不生效也不报错。 |
 | status | [PiPControlStatus](#pipcontrolstatus12)  | 是   | 表示画中画控制面板控件状态。                                                                                     |
 
 **错误码：**
