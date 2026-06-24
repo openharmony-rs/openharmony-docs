@@ -165,7 +165,7 @@ try {
 get(key: string, def?: string): Promise&lt;string&gt;
 
 获取系统参数Key对应的值，使用Promise异步回调。
-| Promise&lt;string&gt; | Promise实例，用于异步获取结果。 |
+
 **系统能力：** SystemCapability.Startup.SystemInfo
 
 **参数：**
@@ -179,7 +179,7 @@ get(key: string, def?: string): Promise&lt;string&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise对象，用于异步获取结果，返回系统参数值。 |
+| Promise&lt;string&gt; | Promise实例，用于异步获取结果，返回系统参数值。 |
 
 **错误码**：
 
