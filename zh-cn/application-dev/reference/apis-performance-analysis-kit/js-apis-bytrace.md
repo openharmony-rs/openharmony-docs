@@ -107,7 +107,7 @@ traceByValue(name: string, count: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | name | string | 是 | 数值变量的名称。 |
-| count | number | 是 | 数值变量的值 |
+| count | number | 是 | 数值变量的值。 |
 
 **示例：**
 
