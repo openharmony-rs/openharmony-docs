@@ -124,8 +124,8 @@ on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback&lt;number&
 
 | 参数名    | 类型                   | 必填 | 说明                                                        |
 | --------- | ---------------------- | ---- | ----------------------------------------------------------- |
-| eventType | string                 | 是   | 监听事件类型。<br/>-"connect"：屏幕连接事件。<br/>-"disconnect"：断开屏幕连接事件。<br/>-"change"：屏幕状态改变事件。 |
-| callback  | Callback&lt;number&gt; | 是   | 回调函数。返回屏幕的ID，该参数为整数。                                    |
+| eventType | string                 | 是   | 监听事件类型。<br>-"connect"：屏幕连接事件。<br>-"disconnect"：断开屏幕连接事件。<br>-"change"：屏幕状态改变事件。 |
+| callback  | Callback&lt;number&gt; | 是   | 回调函数。返回屏幕的ID，该参数为整数。 |
 
 **错误码：**
 
@@ -160,7 +160,7 @@ off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback&lt;numbe
 
 | 参数名    | 类型                   | 必填 | 说明                                                         |
 | --------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| eventType | string                 | 是   | 监听事件类型。<br/>-"connect"：屏幕连接事件。<br/>-"disconnect"：断开屏幕连接事件。<br/>-"change"：屏幕状态改变事件。 |
+| eventType | string                 | 是   | 监听事件类型。<br>-"connect"：屏幕连接事件。<br>-"disconnect"：断开屏幕连接事件。<br>-"change"：屏幕状态改变事件。 |
 | callback  | Callback&lt;number&gt; | 否   | 回调函数。返回屏幕的ID，该参数为整数。若无此参数，则取消该eventType监听的所有回调函数。                                     |
 
 **错误码：**
@@ -294,7 +294,7 @@ stopMirror(mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                      |
 | ------------ | --------------------------- | --- |-----------------------------------------|
-| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，ID应为整数。 mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，ID应为整数。mirrorScreen数组大小不应超过1000。 |
 | callback     | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止屏幕镜像模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1351,8 +1351,7 @@ let mainScreenOption: ExpandOption = { screenId: 0, startX: 0, startY: 0 };
 let otherScreenOption: ExpandOption = { screenId: 1, startX: 1080, startY: 0 };
 let expandOptionArray : ExpandOption[] = [ mainScreenOption, otherScreenOption ];
 // 将屏幕设置为扩展模式
-screen.makeExpand(expandOptionArray).then((
-  data: number) => {
+screen.makeExpand(expandOptionArray).then((data: number) => {
   console.info(`Succeeded in expanding the screen. Data: ${data}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to expand the screen. Code: ${err.code}, message: ${err.message}`);
@@ -1514,7 +1513,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | density   | number   | 否   | 否   | 指定虚拟屏幕的密度，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId。        |
 | supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
-| userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。<br/>**设备行为差异：** 该参数仅在Car设备中生效，其他设备不生效也不报错。 |
+| userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。<br>**设备行为差异：** 该参数仅在Car设备中生效，其他设备不生效也不报错。 |
 
 ## Screen
 
