@@ -39,7 +39,7 @@ Obtains details about the device attestation result from the cloud. This API use
 
 **Error codes** 
 For details about error codes, see [Device Attestation Error Codes](./errorcode-deviceAttest.md) and [Universal Error Codes](../errorcode-universal.md). 
-| ID | Error Message            |
+| Error Code | Error Message            |
 |----------|----------------------|
 | 202     | This api is system api, Please use the system application to call this api. |
 | 401     | Input parameters wrong, the number of parameters is incorrect, or the type of parameters is incorrect. |
@@ -60,7 +60,7 @@ try {
         " patchLevelResult:" + value.softwareResultDetail[1],
         " rootHashResult:" + value.softwareResultDetail[2],
         " PCIDResult:" + value.softwareResultDetail[3],
-        " reserver:" + value.softwareResultDetail[4]);
+        " reserved:" + value.softwareResultDetail[4]);
     }
     })
 } catch (error) {
@@ -86,7 +86,7 @@ Obtains details about the device attestation result from the cloud. This API use
 
 **Error codes** 
 For details about error codes, see [Device Attestation Error Codes](./errorcode-deviceAttest.md) and [Universal Error Codes](../errorcode-universal.md). 
-| ID | Error Message            |
+| Error Code | Error Message            |
 |----------|----------------------|
 | 202     | This api is system api, Please use the system application to call this api. |
 | 401     | Input parameters wrong, the number of parameters is incorrect, or the type of parameters is incorrect. |
@@ -104,7 +104,7 @@ try {
         " patchLevelResult:" + value.softwareResultDetail[1],
         " rootHashResult:" + value.softwareResultDetail[2],
         " PCIDResult:" + value.softwareResultDetail[3],
-        " reserver:" + value.softwareResultDetail[4]);
+        " reserved:" + value.softwareResultDetail[4]);
     }).catch((error: BusinessError) => {
         console.error("error code:" + error.code + " message:" + error.message);
     });
@@ -131,7 +131,7 @@ Obtains details about the device attestation result from the cloud synchronously
 
 **Error codes** 
 For details about error codes, see [Device Attestation Error Codes](./errorcode-deviceAttest.md) and [Universal Error Codes](../errorcode-universal.md). 
-| ID | Error Message            |
+| Error Code | Error Message            |
 |----------|----------------------|
 | 202     | This api is system api, Please use the system application to call this api. |
 | 401     | Input parameters wrong, the number of parameters is incorrect, or the type of parameters is incorrect. |
@@ -149,7 +149,7 @@ try {
     " patchLevelResult:" + value.softwareResultDetail[1],
     " rootHashResult:" + value.softwareResultDetail[2],
     " PCIDResult:" + value.softwareResultDetail[3],
-    " reserver:" + value.softwareResultDetail[4]);
+    " reserved:" + value.softwareResultDetail[4]);
 } catch (error) {
     let code: number = (error as BusinessError).code;
     let message: string = (error as BusinessError).message;
@@ -172,4 +172,4 @@ Defines the device attestation result information.
 
 > **NOTE**
 >
-> - The attestation result of device hardware and software information can be any of the following:<br>- **-2**: No attestation is performed.<br>- **-1**: The attestation fails.<br>- **0**: The attestation is successful.
+> - The attestation result of device hardware and software information can be any of the following:<br> - **-2**: No attestation is performed.<br>- **-1**: The attestation fails.<br>- **0**: The attestation is successful.
