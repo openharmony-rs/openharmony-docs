@@ -137,7 +137,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | feature | [UserStatusFeature](#userstatusfeature) | 是 | 否 | 表示用户状态检测功能类型。 |
 | status | string | 是 | 否 | 表示特定功能下的多阶段检测状态。字符串长度范围[0,64]。 |
 | result | number | 是 | 否 | 表示用户状态检测结果。取值范围[0,1]。 |
-| errCode | number | 是 | 否 | 表示业务错误码。0表示成功，-100表示失败。 |
+| errCode | number | 是 | 否 | 表示业务错误码。0表示成功，非0表示失败。 |
 
 ## UserBlowData
 
@@ -174,7 +174,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | emotionRealTime | number | 是 | 是 | 表示用户实时情绪级别。取值范围[0,5]。 |
 | confidence | number | 是 | 是 | 表示用户情绪置信度。取值范围[0,100]。 |
 | isRealTime | boolean | 是 | 是 | 表示情绪数据是否为实时数据。取值范围[true,false]。 |
-| emotionNonRealTime | number[] | 是 | 是 | 表示用户非实时情绪级别。取值范围[0,5] |
+| emotionNonRealTime | number[] | 是 | 是 | 表示用户非实时情绪级别。取值范围[0,5]。 |
 | gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。单位为m/s²。 |
 | linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。单位为m/s²。 |
 
@@ -207,7 +207,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | visualAngle | number[] | 是 | 是 | 表示用户看屏幕的视角。取值范围[0,90]。 |
-| angularVelocity | number[] | 是 | 是 | 表示当前状态下设备的角速度。单位为m/s²。 |
+| angularVelocity | number[] | 是 | 是 | 表示当前状态下设备的角速度。单位为rad/s。 |
 | gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。单位为m/s²。 |
 | linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。单位为m/s²。 |
 | azimuth | number[] | 是 | 是 | 表示当前状态下设备的方位角。取值范围[0,360]。 |
