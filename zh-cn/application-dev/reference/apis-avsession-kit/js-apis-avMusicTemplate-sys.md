@@ -266,7 +266,7 @@ getAllAVMusicTemplateDescriptors(userId?: number): AVMusicTemplateDescriptor[]
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | -------- |
-| userId | number  | 否   | 用户ID。 |
+| userId | number  | 否   | 用户ID。以用户传递为准，可为空。 |
 
 **返回值：**
 
@@ -552,6 +552,6 @@ export class ControllerManager {
 
 | 名称       | 类型   | 只读 | 可选 | 说明               |
 | ---------- | ------ | ---- | ---- | ------------------ |
-| sessionId  | string | 是   | 否   | 音频模板唯一标识。 |
+| sessionId  | string | 否   | 否   | 音频模板唯一标识。 |
 | bundleName | string | 否   | 否   | 应用的包名。       |
 | userId     | number | 否   | 否   | 用户ID。           |
