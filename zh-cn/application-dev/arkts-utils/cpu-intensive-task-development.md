@@ -77,7 +77,7 @@ struct Index {
               console.error('histogramStatistic is failed.');
             });
             
-// ...
+            // ...
           })
       }
       .width('100%')

@@ -59,7 +59,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    创建AVScreenCapture实例capture后，可以设置屏幕录制所需要的参数。
 
-   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
    // 录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
@@ -68,7 +68,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .audioChannels = 2,
        .audioSource = OH_MIC
    };
-
+   
    OH_AudioCaptureInfo innerCapInfo = {
        .audioSampleRate = 48000,
        .audioChannels = 2,
@@ -80,11 +80,11 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .audioBitrate = 48000,
        .audioCodecformat = OH_AAC_LC
    };
-
+   
    // 获取屏幕信息
    uint64_t displayId = 0;
    NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
-
+   
    NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
    ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
    if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
