@@ -244,9 +244,10 @@
     struct EntryComponent {
       build() {
         Column() {
-          // 此处指定的参数都将在初始渲染时覆盖本地定义的默认值，并不是所有的参数都需要从父组件初始化
+          // count、increaseBy使用传入值1、2初始化；title未传入，使用本地默认值new Model('Hello World')初始化
           MyComponent({ count: 1, increaseBy: 2 })
             .width(300)
+          // title、count使用传入值new Model('Hello World 2')、7初始化；increaseBy未传入，使用本地默认值1初始化
           MyComponent({ title: new Model('Hello World 2'), count: 7 })
         }
       }
