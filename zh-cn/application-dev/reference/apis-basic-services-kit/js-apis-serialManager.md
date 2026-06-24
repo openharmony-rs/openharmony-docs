@@ -114,8 +114,6 @@ hasSerialRight(portId: number): boolean
 | 31400001 | Serial port management exception. | 串口服务异常。可能原因：程序出现异常导致进程退出。处理步骤：检查是否连接设备，重新通过串口列表获取端口号。 |
 | 31400003 | PortId does not exist. | 端口号不存在。可能原因：设备连接异常导致原有端口号失效。处理步骤：插拔设备，再次尝试打开。 |
 
-
-
 **示例：**
 
 > **说明：**
