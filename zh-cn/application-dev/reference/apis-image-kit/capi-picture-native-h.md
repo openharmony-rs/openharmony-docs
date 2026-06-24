@@ -708,7 +708,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_CreateUsingAllocator(uint8_t *data, ui
 
 **起始版本：** 26.0.0
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **参数：**
 

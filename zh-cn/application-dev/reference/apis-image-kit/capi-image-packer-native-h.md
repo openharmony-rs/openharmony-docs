@@ -346,7 +346,7 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options
 
 **起始版本：** 26.0.0
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **参数：**
 
@@ -373,7 +373,7 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options
 
 **起始版本：** 26.0.0
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **参数：**
 
