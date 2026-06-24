@@ -131,13 +131,13 @@ import('libentry.so')
 load libentry.so failed.
 ```
 
-**so加载失败的错误信息（loadErrInfo）说明**
+**so加载失败的错误信息（NativeModuleErrorInfo）说明**
 
-`loadNativeModule`、`import()`等接口加载.so失败时，系统会将精确的错误原因写入`loadErrInfo`字段，并通过JS Crash faultlog和hilog输出。开发者可在faultlog或`hilog | grep NativeModuleManager`中搜索下列错误信息字符串进行定位。
+`loadNativeModule`、`import()`等接口加载.so失败时，系统会将精确的错误原因写入`NativeModuleErrorInfo`字段，并通过JS Crash faultlog和hilog输出。开发者可在faultlog或`hilog | grep NativeModuleManager`中搜索下列错误信息字符串进行定位。
 
 **错误场景与错误信息对照表**
 
-| 错误信息（loadErrInfo） | 触发场景 | 可能原因 | 处理步骤 |
+| 错误信息（NativeModuleErrorInfo） | 触发场景 | 可能原因 | 处理步骤 |
 | -------- | -------- | -------- | -------- |
 | `moduleName is nullptr` | 调用加载接口时`moduleName`入参为空 | 代码传入了空字符串或未初始化变量 | 检查`loadNativeModule(moduleName)`的入参，确保`moduleName`非空 |
 | `relativePath is nullptr` | `relativePath`参数为空 | 未传入相对路径或传入了null | 检查`relativePath`参数取值 |
@@ -150,8 +150,8 @@ load libentry.so failed.
 
 >**说明**
 >
->  - 成功加载.so时不会写入`loadErrInfo`，对正常加载流程无影响。
->  - `loadErrInfo`仅在faultlog和内部日志中可见，不会通过JS异常直接抛出；开发者仍需按上述"加载失败具体表现"通过`undefined`判断等方式检测加载状态。
+>  - 成功加载.so时不会写入`NativeModuleErrorInfo`，对正常加载流程无影响。
+>  - `NativeModuleErrorInfo`仅在faultlog和内部日志中可见，不会通过JS异常直接抛出；开发者仍需按上述"加载失败具体表现"通过`undefined`判断等方式检测加载状态。
 >  - 如需开启更详细的模块加载日志，可执行`hdc shell param set persist.ark.properties 0x80105C`并重启设备。
 
 **参考文档**
