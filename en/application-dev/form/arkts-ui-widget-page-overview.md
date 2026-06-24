@@ -1,9 +1,9 @@
 # Overview of ArkTS Widget UI Development
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 ArkTS widgets are developed using the general <!--RP1-->[ArkTS language](../quick-start/arkts-get-started.md)<!--RP1End-->. You can use the [ArkTS-based declarative development paradigm](../ui/arkts-ui-development-overview.md) to develop ArkTS widget pages.
@@ -21,4 +21,4 @@ For APIs that can be used in ArkTS widgets, a description (for example) will be 
 
 For example, the following description indicates that CircleShape can be used in ArkTS widgets. 
 
-![WidgetSupportApi](figures/WidgetSupportApi_EN.png)
+![widgetSupportApi](figures/widgetSupportApi.png)

@@ -1,9 +1,9 @@
 # Widget Error Codes
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 > **NOTE**
@@ -230,7 +230,7 @@ The interactive widget animation is requested by a common widget, or the current
 
 **Solution**
 
-Check whether the configured [sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field) of the current widget is correct.
+Ensure that the configured [sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field) of the current widget is correct.
 
 ## 16501012 Incorrect Widget Dimension
 
@@ -267,6 +267,42 @@ Failed to register the callback for listening for template widget information.
 **Solution**
 
 Restart the device to allow the system to re-register the callback for listening for template widget information.
+
+## 16501014 Semi-modal Widget Editing Page Not in Foreground
+
+**Error Message**
+
+The form edit page is not in the foreground. The current operation is not supported.
+
+**Description**
+
+The semi-modal widget editing page is not in the foreground. The current operation is not supported.
+
+**Possible Causes**
+
+The semi-modal widget editing page is not opened.
+
+**Solution**
+
+Ensure that the [semi-modal widget editing page](../../form/arkts-ui-widget-event-formeditextensionability-overview.md#semi-modal-widget-editing) is opened.
+
+## 16501015 Failed to Close Semi-Modal Widget Editing Page of Another Application
+
+**Error Message**
+
+Cannot close the widget editing page opened by other apps.
+
+**Description**
+
+The semi-modal widget editing page of another application cannot be closed.
+
+**Possible Causes**
+
+The opened semi-modal widget editing page does not belong to the application that requests to close the page.
+
+**Solution**
+
+Ensure that the opened semi-modal widget editing page belongs to the application that requests to close the page.
 
 ## 16501016 Invalid Widget Location Information
 
@@ -404,3 +440,4 @@ An internal service execution exception occurs.
 
 1. Restart the system and try again.
 2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
+<!--no_check-->

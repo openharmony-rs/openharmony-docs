@@ -25,13 +25,13 @@ Provides model-related APIs for model creation and inference. These APIs are non
 
 ### Structs
 
-| Name                                                                  | Description                             |
-|----------------------------------------------------------------------|---------------------------------|
-| [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) | Defines the tensor array structure, which is used to store the tensor array pointer and tensor array length.     |
-| [OH_AI_ShapeInfo](capi-mindspore-oh-ai-shapeinfo.md)                 | Maximum number of shapes. The maximum value reserved is **32**, and the maximum number currently supported is **8**.|
-| [OH_AI_CallBackParam](capi-mindspore-oh-ai-callbackparam.md)         | Defines the operator information passed in a callback.                  |
-| [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md)                                                | Defines the pointer to a model object.                               |
-| [OH_AI_TrainCfgHandle](capi-mindspore-oh-ai-traincfghandle.md)                                             | Defines the pointer to a training configuration object.                               |
+| Name   | typedef Keyword                                                              | Description                             |
+|----------------------------------------------------------------------|--|---------------------------------|
+| OH_AI_TensorHandleArray | [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) | Defines the tensor array structure, which is used to store the tensor array pointer and tensor array length.     |
+| OH_AI_ShapeInfo | [OH_AI_ShapeInfo](capi-mindspore-oh-ai-shapeinfo.md)                 | Maximum number of shapes. The maximum value reserved is **32**, and the maximum number currently supported is **8**.|
+| OH_AI_CallBackParam | [OH_AI_CallBackParam](capi-mindspore-oh-ai-callbackparam.md)         | Defines the operator information passed in a callback.                  |
+| void * | [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md)                                                | Defines the pointer to a model object.                               |
+| void * |[OH_AI_TrainCfgHandle](capi-mindspore-oh-ai-traincfghandle.md)                                             | Defines the pointer to a training configuration object.                               |
 
 ### Functions
 
@@ -350,7 +350,7 @@ Obtains the output tensor of a model by tensor name.
 
 | Type| Description|
 | -- | -- |
-| OH_AI_API [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) | Pointer to the input tensor indicated by **tensor_name**. If the tensor does not exist, **null** will be returned.|
+| OH_AI_API [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) | Pointer to the output tensor indicated by **tensor_name**. If the tensor does not exist, **null** will be returned.|
 
 ### OH_AI_TrainCfgCreate()
 
@@ -871,7 +871,7 @@ Loads the model configuration file.
 
 ```c
 OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)
-															
+
 ```
 
 **Description**
@@ -889,7 +889,7 @@ Performs model inference. Different inference parameters can be set for each inf
 | [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) *outputs | Pointer to the tensor array structure corresponding to the model output.|
 | const char *config | Model configuration file. The string length is subject to the file system.|
 | [const OH_AI_KernelCallBack](capi-model-h.md#oh_ai_kernelcallback) before | Callback function executed before model inference.|
-| after | Callback function executed after model inference.|
+| [const OH_AI_KernelCallBack](capi-model-h.md#oh_ai_kernelcallback) after | Callback function executed after model inference.|
 
 **Returns**
 

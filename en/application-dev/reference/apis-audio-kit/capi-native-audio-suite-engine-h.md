@@ -279,7 +279,7 @@ Obtains the processed audio data from the pipeline (for single-output effect nod
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Audio creation pipeline handle, which is obtained by calling [OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline).|
 | void* audioData | Pointer to the address for writing the obtained audio data.|
 | int32_t requestFrameSize | Byte size of the memory allocated for **audioData**. The value must be greater than 0.|
-| int32_t* responseSize | Pointer to the size of the audio data written to **audioData** by the pipeline. The value cannot be greater than **requestFrameSize**.|
+| int32_t* responseSize | Pointer to the size of the audio data written to **audioData** by the pipeline. The value cannot be greater than **requestFrameSize**. The unit is bytes.|
 | bool* finishedFlag | Pointer to the flag indicating whether the current pipeline has completed rendering.|
 
 **Returns**
@@ -306,7 +306,7 @@ Renders the pipeline and obtains the processed audio data. For pipelines with mu
 | -- | -- |
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Audio creation pipeline handle, which is obtained by calling [OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline).|
 | [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)* audioDataArray | Pointer to the array used by the user to read audio data. Each element of the array must be of the same size.|
-| int32_t* responseSize | Pointer to the size of the audio data written into each element of **audioDataArray** by the pipeline. The system ensures consistent data size across all elements.|
+| int32_t* responseSize | Pointer to the size of the audio data written into each element of **audioDataArray** by the pipeline. The system ensures consistent data size across all elements. The unit is bytes.|
 | bool* finishedFlag | Pointer to the flag indicating whether the current pipeline has completed rendering.|
 
 **Returns**

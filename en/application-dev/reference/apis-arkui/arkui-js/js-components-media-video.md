@@ -1,79 +1,75 @@
 # video
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @Lichtschein-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:22.637Z pushedAt=2026-06-24T01:11:44.229Z -->
 
 >  **NOTE**
 >
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
+>
 
 The **\<video>** component provides a video player.
-
 
 ## Child Components
 
 Not supported
 
-
 ## Attributes
 
 In addition to the [universal attributes](js-components-common-attributes.md), the following attributes are supported.
 
-| Name      | Type     | Default Value  | Mandatory  | Description                                      |
+| Name     | Type    | Default Value | Mandatory | Description                                |
 | -------- | ------- | ----- | ---- | ---------------------------------------- |
-| muted    | boolean | false | No   | Whether the video is muted.                               |
-| src      | string  | -     | No   | Path of the video content to play.                              |
-| autoplay | boolean | false | No   | Whether the video is played automatically after being rendered.                               |
-| controls | boolean | true  | No   | Whether the control bar is displayed during video playback. If the value is set to **false**, the control bar is not displayed. The default value is **true**, indicating that the platform can either show or hide the control bar.|
-
+| muted    | boolean | false | No   | Whether the video is muted.<br/>**true**: The video is muted.<br/>**false**: The video is unmuted.                           |
+| src      | string  | -     | No   | Path of the video content to play.                               |
+| autoplay | boolean | false | No   | Whether the video is played automatically.<br/>**true**: The video is played automatically.<br/>**false**: The video is not played automatically.                                |
+| controls | boolean | true  | No   | Whether the control bar is displayed during video playback. If the value is set to **false**, the control bar is not displayed. The default value is **true**, indicating that the platform can either show or hide the control bar. |
 
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
 
-| Name        | Type    | Default Value    | Mandatory  | Description                                      |
+| Name         | Type     | Default Value     | Mandatory   | Description                                       |
 | ---------- | ------ | ------- | ---- | ---------------------------------------- |
-| object-fit | string | contain | No   | Video scale type. If **poster** has been assigned a value, the setting of this style will affect the scaling type of the video poster. For details, see object-fit enums.|
+| object-fit | string | contain | No    | Video scale type. If **poster** has been assigned a value, the setting of this style will affect the scaling type of the video poster. For details, see object-fit enums. |
 
 **Table 1** object-fit enums
 
-| Type  | Description                       |
+| Type   | Description                        |
 | ---- | ------------------------- |
-| fill | The image is resized to fill the display area, and its aspect ratio is not retained.|
-
+| fill | The image is resized to fill the display area, and its aspect ratio is not retained. |
 
 ## Events
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
 
-| Name        | Parameter                                      | Description                                   |
+| Name         | Parameter                                       | Description                                    |
 | ---------- | ---------------------------------------- | ------------------------------------- |
-| prepared   | { duration: value }<sup>5+</sup>         | Triggered when the video preparation is complete. The video duration (in seconds) is obtained from **duration**.|
-| start      | -                                        | Triggered when the video is played.                            |
-| pause      | -                                        | Triggered when the video playback is paused.                            |
-| finish     | -                                        | Triggered when the video playback is finished.                          |
-| error      | -                                        | Triggered when the video playback fails.                          |
-| seeking    | { currenttime: value }                   | Triggered to report the time (in seconds) when the progress bar is being dragged.                 |
-| seeked     | { currenttime: value }                   | Triggered to report the playback time (in seconds) when the user finishes dragging the progress bar.              |
-| timeupdate | { currenttime: value }                   | Triggered once per 250 ms when the playback progress changes. The unit of the current playback time is second.      |
-
+| prepared   | {&nbsp;duration:&nbsp;value&nbsp;}<sup>5+</sup> | Triggered when the video preparation is complete. The video duration (in seconds) is obtained from **duration**. |
+| start      | -                                        | Triggered when the video is played.                             |
+| pause      | -                                        | Triggered when the video playback is paused.                             |
+| finish     | -                                        | Triggered when the video playback is finished.                           |
+| error      | -                                        | Triggered when the video playback fails.                           |
+| seeking    | {&nbsp;currenttime:&nbsp;value&nbsp;}    | Triggered to report the time (in seconds) when the progress bar is being dragged.                  |
+| seeked     | {&nbsp;currenttime:&nbsp;value&nbsp;}    | Triggered to report the playback time (in seconds) when the user finishes dragging the progress bar.               |
+| timeupdate | {&nbsp;currenttime:&nbsp;value&nbsp;}    | Triggered once per 250 ms when the playback progress changes. The unit of the current playback time is second.       |
 
 ## Methods
 
 In addition to the [universal methods](js-components-common-methods.md), the following methods are supported.
 
-| Name            | Parameter                                   | Description               |
+| Name             | Parameter                                    | Description                |
 | -------------- | ------------------------------------- | ----------------- |
-| start          | -                                     | Starts playing a video.          |
-| pause          | -                                     | Pauses a video.        |
-| setCurrentTime | { currenttime: value } | Sets the video playback position, in seconds.|
+| start          | -                                     | Starts playing a video.           |
+| pause          | -                                     | Pauses a video.         |
+| setCurrentTime | {&nbsp;currenttime:&nbsp;value&nbsp;} | Sets the video playback position, in seconds. |
 
 >  **NOTE**
->
 >  The methods in the above table can be called after the **attached** callback is invoked.
 
 ## Example
@@ -87,7 +83,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
            onpause='pauseCallback' onfinish='finishCallback' onerror='errorCallback'
            onseeking='seekingCallback' onseeked='seekedCallback'
            ontimeupdate='timeupdateCallback'
-           style="object-fit: fill; width: 80%; height: 400px;"
+           style="object-fit: fill; width: 100%; height: 900px;"
            onclick="change_start_pause">
     </video>
 </div>
@@ -145,3 +141,5 @@ export default {
     },
 }
 ```
+
+![en-us_gif_js_media_video](figures/js-media-video.gif)

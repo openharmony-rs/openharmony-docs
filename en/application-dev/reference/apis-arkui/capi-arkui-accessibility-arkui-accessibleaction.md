@@ -1,7 +1,7 @@
 # ArkUI_AccessibleAction
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_AccessibleAction
 
 ## Overview
 
-Defines a struct for accessibility actions.
+Defines an accessibility action.
 
 **Since**: 13
 

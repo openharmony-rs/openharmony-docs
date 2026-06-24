@@ -38,7 +38,7 @@ The file declares the common enums and structs used by the image interface.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [IRNdkErrCode](#irndkerrcode) | IRNdkErrCode | Enumerates the return values that may be used by the interface.|
+| [IRNdkErrCode](#irndkerrcode) | IRNdkErrCode | Enumerates the used API return values.|
 
 ## Enum Description
 
@@ -50,7 +50,7 @@ enum IRNdkErrCode
 
 **Description**
 
-Enumerates the return values that may be used by the interface.
+Enumerates the used API return values.
 
 **Since**: 10
 

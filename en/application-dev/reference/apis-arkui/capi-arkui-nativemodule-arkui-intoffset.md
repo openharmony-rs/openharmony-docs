@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_IntOffset
 
 ## Overview
 
-Describes the position of a component.
+Defines the offset of the current component relative to its parent component.
 
 **Since**: 12
 
@@ -26,5 +26,5 @@ Describes the position of a component.
 
 | Name| Description|
 | -- | -- |
-| int32_t x | Horizontal coordinate, in px.|
-| int32_t y | Vertical coordinate, in px.|
+| int32_t x | Horizontal offset, in px.|
+| int32_t y | Vertical offset, in px.|

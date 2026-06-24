@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -233,7 +233,7 @@ Listens for image arrival events. This API uses an asynchronous callback to retu
 
 | Name  | Type                | Mandatory| Description                                                  |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
-| type     | string               | Yes  | Type of event to listen for. The value is fixed at **'imageArrival'**, which is triggered when an image is received.|
+| type     | string               | Yes  | Type of event to listen for. The value is fixed at **'imageArrival'**. This event is triggered when an image is received.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.                                       |
 
 **Example**
@@ -338,4 +338,3 @@ async function Release(receiver : image.ImageReceiver) {
   })
 }
 ```
-<!--no_check-->

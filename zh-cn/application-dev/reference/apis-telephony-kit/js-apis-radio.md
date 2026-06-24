@@ -6,7 +6,7 @@
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
 
-网络搜索模块提供管理网络搜索的一些基础功能，包括获取当前接入的CS域和PS域无线接入技术、获取网络状态、获取当前选网模式、获取注册网络所在国家的ISO国家码、获取主卡所在卡槽的索引号、获取指定SIM卡槽对应的注册网络信号强度信息列表、获取运营商名称，判断当前设备是否支持NR(New Radio)、判断主卡的Radio是否打开等。
+网络搜索模块提供管理网络搜索的一些基础功能，包括获取当前接入的CS域和PS域无线接入技术、获取网络状态、获取当前选网模式、获取注册网络所在国家的ISO国家码、获取主卡所在卡槽的索引号、获取指定SIM卡槽对应的注册网络信号强度信息列表、获取运营商名称，判断当前设备是否支持NR(New Radio)、判断主卡的Radio是否打开等。其中，CS域为电路交换域，PS为分组交换域。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ import { radio } from '@kit.TelephonyKit';
 
 getRadioTech\(slotId: number, callback: AsyncCallback<[NetworkRadioTech](#networkradiotech11)\>\): void
 
-获取当前接入的CS域和PS域无线接入技术。使用callback异步回调。
+获取当前接入的CS域和PS域无线接入技术。使用callback异步回调。其中，CS域为电路交换域，PS为分组交换域。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -34,7 +34,7 @@ getRadioTech\(slotId: number, callback: AsyncCallback<[NetworkRadioTech](#networ
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| callback | AsyncCallback\<[NetworkRadioTech](#networkradiotech11)\> | 是   | 回调函数。返回当前接入的CS域和PS域无线接入技术。 |
+| callback | AsyncCallback\<[NetworkRadioTech](#networkradiotech11)\> | 是   | 回调函数。返回当前接入的CS域和PS域无线接入技术。其中，CS域为电路交换域，PS为分组交换域。 |
 
 **错误码：**
 
@@ -69,7 +69,7 @@ radio.getRadioTech(slotId, (err: BusinessError, data: radio.NetworkRadioTech) =>
 
 getRadioTech\(slotId: number\): Promise\<[NetworkRadioTech](#networkradiotech11)\>
 
-获取当前接入的CS域和PS域无线接入技术。使用Promise异步回调。
+获取当前接入的CS域和PS域无线接入技术。使用Promise异步回调。其中，CS域为电路交换域，PS为分组交换域。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -85,7 +85,7 @@ getRadioTech\(slotId: number\): Promise\<[NetworkRadioTech](#networkradiotech11)
 
 | 类型                                                         | 说明                                            |
 | ------------------------------------------------------------ | ----------------------------------------------- |
-| Promise\<[NetworkRadioTech](#networkradiotech11)\> | 以Promise形式返回当前接入的CS域和PS域技术。 |
+| Promise\<[NetworkRadioTech](#networkradiotech11)\> | 以Promise形式返回当前接入的CS域和PS域技术。CS域为电路交换域，PS为分组交换域。 |
 
 **错误码：**
 
@@ -118,7 +118,7 @@ radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
 
 getRadioTechSync\(slotId: number\): [NetworkRadioTech](#networkradiotech11)
 
-获取当前接入的CS域和PS域无线接入技术。
+获取当前接入的CS域和PS域无线接入技术。CS域为电路交换域，PS为分组交换域。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -134,7 +134,7 @@ getRadioTechSync\(slotId: number\): [NetworkRadioTech](#networkradiotech11)
 
 | 类型                                                         | 说明                                            |
 | ------------------------------------------------------------ | ----------------------------------------------- |
-| [NetworkRadioTech](#networkradiotech11) | 返回当前接入的CS域和PS域技术。 |
+| [NetworkRadioTech](#networkradiotech11) | 返回当前接入的CS域和PS域技术。CS域为电路交换域，PS为分组交换域。 |
 
 **错误码：**
 
@@ -268,7 +268,7 @@ getNetworkState\(slotId?: number\): Promise\<NetworkState\>
 
 | 类型                                     | 说明                        |
 | ---------------------------------------- | --------------------------- |
-| Promise\<[NetworkState](#networkstate)\> | 以Promise形式返回网络状态。 |
+| Promise\<[NetworkState](#networkstate)\> | Promise对象，返回网络状态。 |
 
 **错误码：**
 
@@ -699,7 +699,7 @@ let signalInfo: Array<radio.SignalInformation> = radio.getSignalInformationSync(
 console.info(`signal information size is:` + signalInfo.length);
 ```
 
-## radio.isNrSupported<sup>8+(deprecated)</sup>
+## radio.isNrSupported<sup>(deprecated)</sup>
 
 isNrSupported\(\): boolean
 
@@ -1108,8 +1108,8 @@ console.info(`operator name is:` + operatorName);
 |      名称       |           类型              | 只读 | 可选 |      说明          |
 | --------------- | --------------------------- | ---- | ---- | ------------------ |
 | signalType      | [NetworkType](#networktype) | 否   | 否   | 网络信号强度类型。 |
-| signalLevel     | number                      | 否   | 否   | 网络信号强度等级。 |
-| dBm<sup>9+</sup>| number                      | 否   | 否   | 网络信号强度。     |
+| signalLevel     | number                      | 否   | 否   | 网络信号强度等级，范围为[0, 5]，超出范围返回错误。 |
+| dBm<sup>9+</sup>| number                      | 否   | 否   | 网络信号强度，范围为[-140, 140]，超出范围返回错误。     |
 
 ## NetworkType
 

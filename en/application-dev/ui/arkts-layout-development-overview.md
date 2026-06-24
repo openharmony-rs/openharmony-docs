@@ -37,7 +37,7 @@ You can use layout-related container components to create a specific layout.
 
   **Figure 2** Layout elements
 
-![layout-element-omposition](figures/layout-element-omposition.png)
+![layout-element-composition](figures/layout-element-omposition.png)
 
 - Component area (blue block): size of the component, subject to the [width](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width) and [height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height) attributes.
 
@@ -52,6 +52,7 @@ You can use layout-related container components to create a specific layout.
 
 The declarative UI provides the following common layouts. Choose a layout that best suits the use case.
 
+<!--Table: 30%; 70%-->
 | Layout                                                        | Description                                                    |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Linear layout](arkts-layout-development-linear.md) (Row and Column)| Use this layout when there are multiple child components and they can be arranged linearly.|

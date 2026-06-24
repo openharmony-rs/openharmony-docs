@@ -1,8 +1,8 @@
 # 动画样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -44,7 +44,7 @@
 | transform        | string         | -    | 定义应用在组件上的变换类型，见表1。 |
 
 
-对于不支持起始值或终止值缺省的情况，可以通过from和to显示指定起始和结束。示例：
+对于不支持起始值或终止值缺省的情况，可以通过from和to显式指定起始和结束。示例：
 
 
 ```css

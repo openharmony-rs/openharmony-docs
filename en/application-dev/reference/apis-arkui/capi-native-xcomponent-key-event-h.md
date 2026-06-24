@@ -64,8 +64,8 @@ Enumerates the key codes for key events.
 | KEY_CAMERA = 19 | Camera key|
 | KEY_VOLUME_MUTE = 22 | Speaker Mute key|
 | KEY_MUTE = 23 | Mute key|
-| KEY_BRIGHTNESS_UP = 40 | Brightness Up key.|
-| KEY_BRIGHTNESS_DOWN = 41 | Brightness Down key.|
+| KEY_BRIGHTNESS_UP = 40 | Brightness Up key|
+| KEY_BRIGHTNESS_DOWN = 41 | Brightness Down key|
 | KEY_0 = 2000 | Key 0|
 | KEY_1 = 2001 | Key 1|
 | KEY_2 = 2002 | Key 2|

@@ -1,8 +1,8 @@
 # 文件组织
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,11 +12,11 @@ JS FA应用的JS模块（entry/src/main/js/module）的典型开发目录结构�
 
 **图1** 目录结构
 
-![zh-cn_image_0000001127284926](figures/zh-cn_image_0000001127284926.png)
+![zh-cn_image_0000001127284926](figures/Directory-Structure01.png)
 
 **图2** [多实例](../application-models/pageability-launch-type.md)资源共享目录结构
 
-![zh-cn_image_0000001173164777](figures/zh-cn_image_0000001173164777.png)
+![zh-cn_image_0000001173164777](figures/Directory-Structure.png)
 
 目录结构中文件分类如下：
 

@@ -1,7 +1,7 @@
 # native_fence.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -76,7 +76,7 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 | 参数项           | 描述                                                         |
 | ---------------- | ------------------------------------------------------------ |
 | int fenceFd      | 表示一个文件描述符，用于定时同步。                           |
-| uint32_t timeout | 表示等待时间。单位为毫秒，-1表示永久等待，0表示接口立即返回。 |
+| uint32_t timeout | 表示等待时间。单位为毫秒，0表示接口立即返回。 |
 
 **返回：**
 

@@ -27,8 +27,8 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 | 名称      | 类型    | 只读 | 可选 | 说明                                                    |
 | :-------- | :------ | :--- | :--- | :------------------------------------------------------ |
-| sessionId | string  | 是   | 否   | 音频模板控制器唯一的标识。                              |
-| isDestroy | boolean | 是   | 否   | 音频模板是否销毁。true表示已经销毁，false表示没有销毁。无默认值。 |
+| sessionId | string  | 否   | 否   | 音频模板控制器唯一的标识。                              |
+| isDestroy | boolean | 否   | 否   | 音频模板是否销毁。true表示已经销毁，false表示没有销毁。无默认值。 |
 
 ## queryMainTabs
 
@@ -142,7 +142,7 @@ export class ControllerManager {
         console.warn(TAG, 'queryMediaTabContent fail')
         return undefined;
       }
-      console.info(TAG, 'queryMediaTabContent success')
+      console.info('Succeeded in querying media tab content.');
       return tabContent;
     } catch (e) {
       console.error(TAG, `queryMediaTabContent failed, errCode: ${e?.code}`)
@@ -214,7 +214,7 @@ export class ControllerManager {
         console.warn(TAG, 'queryMediaEntity fail')
         return undefined;
       }
-      console.info(TAG, 'queryMediaEntity success')
+      console.info('Succeeded in querying media entity.');
       return pageMediaEntity;
     } catch (e) {
       console.error(TAG, `queryMediaEntity failed, errCode: ${e?.code}`)
@@ -283,7 +283,7 @@ export class ControllerManager {
         console.warn(TAG, 'queryCompilation fail')
         return undefined;
       }
-      console.info(TAG, 'queryCompilation success')
+      console.info('Succeeded in querying compilation.');
       return pageMediaEntity;
     } catch (e) {
       console.error(TAG, `queryCompilation failed, errCode: ${e?.code}`)
@@ -352,7 +352,7 @@ export class ControllerManager {
         console.warn(TAG, 'queryPlaylist fail')
         return undefined;
       }
-      console.info(TAG, 'queryPlaylist success')
+      console.info('Succeeded in querying playlist.');
       return pageMediaEntity;
     } catch (e) {
       console.error(TAG, `queryPlaylist failed, errCode: ${e?.code}`)
@@ -411,7 +411,7 @@ export class ControllerManager {
         console.warn(TAG, 'queryCurrentSingle fail')
         return undefined;
       }
-      console.info(TAG, 'queryCurrentSingle success')
+      console.info('Succeeded in querying current single.');
       return single;
     } catch (e) {
       console.error(TAG, `queryCurrentSingle failed, errCode: ${e?.code}`)
@@ -478,7 +478,7 @@ export class ControllerManager {
     let keyword: string = 'keyword';
     try {
       compilations = await this.controller.queryCompilationByKeyword(keyword);
-      console.info(TAG, 'queryCompilationByKeyword success')
+      console.info('Succeeded in querying compilation by keyword.');
     } catch (e) {
       console.error(TAG, `queryCompilationByKeyword failed, errCode: ${e?.code}`)
     }
@@ -509,7 +509,7 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: nu
 
 | 类型                                                         | 说明                                                |
 | ------------------------------------------------------------ | --------------------------------------------------- |
-| Promise<[Compilation](arkts-apis-avMusicTemplate-i.md#compilation)[]> | Promise对象，返回与该关键字相关的媒体实体分页对象。 |
+| Promise<[PageMediaEntity](arkts-apis-avMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回与该关键字相关的媒体实体分页对象。 |
 
 **错误码：**
 
@@ -548,7 +548,7 @@ export class ControllerManager {
         console.warn(TAG, 'queryMediaEntityByKeyword fail')
         return undefined;
       }
-      console.info(TAG, 'queryMediaEntityByKeyword success')
+      console.info('Succeeded in querying media entity by keyword.');
       return pageMediaEntity;
     } catch (e) {
       console.error(TAG, `queryMediaEntityByKeyword failed, errCode: ${e?.code}`)
@@ -608,7 +608,7 @@ export class ControllerManager {
     }
     try {
       mediaEntities = await this.controller.queryRecommendMediaEntityList();
-      console.info(TAG, 'queryRecommendMediaEntityList success')
+      console.info('Succeeded in querying recommend media entity list.');
     } catch (e) {
       console.error(TAG, `queryRecommendMediaEntityList failed, errCode: ${e?.code}`)
     }
@@ -667,7 +667,7 @@ export class ControllerManager {
     }
     try {
       hotWords = await this.controller.queryHotWords();
-      console.info(TAG, 'queryHotWords success')
+      console.info('Succeeded in querying hot words.');
     } catch (e) {
       console.error(TAG, `queryHotWords failed, errCode: ${e?.code}`)
     }
@@ -726,7 +726,7 @@ export class ControllerManager {
     }
     try {
       searchHistory = await this.controller.querySearchHistory();
-      console.info(TAG, 'querySearchHistory success')
+      console.info('Succeeded in querying search history.');
     } catch (e) {
       console.error(TAG, `querySearchHistory failed, errCode: ${e?.code}`)
     }
@@ -784,7 +784,7 @@ export class ControllerManager {
         console.warn(TAG, 'clearSearchHistory fail');
         return false;
       }
-      console.info(TAG, 'clearSearchHistory success');
+      console.info('Succeeded in clearing search history.');
       return true;
     } catch (e) {
       console.error(TAG, `clearSearchHistory failed, errCode: ${e?.code}`);
@@ -857,7 +857,7 @@ export class ControllerManager {
         console.warn(TAG, 'updateSettings fail')
         return settingItem;
       }
-      console.info(TAG, 'updateSettings success')
+      console.info('Succeeded in updating settings.');
       return setting;
     } catch (e) {
       console.error(TAG, `updateSettings failed, errCode: ${e?.code}`)
@@ -923,7 +923,7 @@ export class ControllerManager {
         console.warn(TAG, 'reportProblemAndAdvice fail')
         return false;
       }
-      console.info(TAG, 'reportProblemAndAdvice success')
+      console.info('Succeeded in reporting problem and advice.');
       return true;
     } catch (e) {
       console.error(TAG, `reportProblemAndAdvice failed, errCode: ${e?.code}`)
@@ -993,7 +993,7 @@ export class ControllerManager {
     let id: string | undefined = undefined;
     try {
       qrCodeInfos = await this.controller.login(controlType, id);
-      console.info(TAG, 'login callback success')
+      console.info('Succeeded in logging in callback.');
     } catch (e) {
       console.error(TAG, `login callback failed, errCode: ${e?.code}`)
     }
@@ -1066,7 +1066,7 @@ export class ControllerManager {
         console.info(TAG, 'requestDialogInfo fail')
         return undefined;
       }
-      console.info(TAG, 'requestDialogInfo success')
+      console.info('Succeeded in requesting dialog info.');
       return dialogInfo;
     } catch (e) {
       console.error(TAG, `requestDialogInfo failed, errCode: ${e?.code}`)
@@ -1138,7 +1138,7 @@ export class ControllerManager {
         console.info(TAG, 'handleMemberPurchase fail')
         return undefined;
       }
-      console.info(TAG, 'handleMemberPurchase success')
+      console.info('Succeeded in handling member purchase.');
       return dialogInfo;
     } catch (e) {
       console.error(TAG, `handleMemberPurchase failed, errCode: ${e?.code}`)
@@ -1205,7 +1205,7 @@ export class ControllerManager {
     let memberPurchaseType: avMusicTemplate.MemberPurchaseType = avMusicTemplate.MemberPurchaseType.NORMAL;
     try {
       memberPurchaseInfo = await this.controller.queryMemberPurchase(memberPurchaseType);
-      console.info(TAG, 'queryMemberPurchase success')
+      console.info('Succeeded in querying member purchase.');
     } catch (e) {
       console.error(TAG, `queryMemberPurchase failed, errCode: ${e?.code}`)
     }
@@ -1271,7 +1271,7 @@ export class ControllerManager {
         console.warn(TAG, 'queryCustomContent fail')
         return undefined;
       }
-      console.info(TAG, 'queryCustomContent success')
+      console.info('Succeeded in querying custom content.');
       return customElement;
     } catch (e) {
       console.error(TAG, `queryCustomContent failed, errCode: ${e?.code}`)
@@ -1348,7 +1348,7 @@ export class ControllerManager {
         console.warn(TAG, 'start downloadMediaEntity fail')
         return false;
       }
-      console.info(TAG, 'start downloadMediaEntity success')
+      console.info('Succeeded in starting download media entity.');
       return true;
     } catch (e) {
       console.error(TAG, `start downloadMediaEntity failed, errCode: ${e?.code}`)
@@ -1428,7 +1428,7 @@ export class ControllerManager {
         console.warn(TAG, 'playForSearch fail')
         return false;
       }
-      console.info(TAG, 'playForSearch success')
+      console.info('Succeeded in playing for search.');
       return true;
     } catch (e) {
       console.error(TAG, `playForSearch failed, errCode: ${e?.code}`)
@@ -1496,7 +1496,7 @@ export class ControllerManager {
         console.warn(TAG, 'executeAction fail')
         return '';
       }
-      console.info(TAG, 'executeAction success')
+      console.info('Succeeded in executing action.');
       return result;
     } catch (e) {
       console.error(TAG, `executeAction failed, errCode: ${e?.code}`)
@@ -1632,7 +1632,7 @@ export class ControllerManager {
         console.warn(TAG, 'favoriteMediaEntity fail')
         return false;
       }
-      console.info(TAG, 'favoriteMediaEntity success')
+      console.info('Succeeded in favoriting media entity.');
       return true;
     } catch (e) {
       console.error(TAG, `favoriteMediaEntity failed, errCode: ${e?.code}`)

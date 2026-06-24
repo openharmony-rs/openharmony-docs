@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-TextInput、TextArea是输入框组件，用于响应用户输入，比如评论区的输入、聊天框的输入、表格的输入等，也可以结合其它组件构建功能页面，例如登录注册页面。具体用法请参考[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)、[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)。Search是特殊的输入框组件，称为搜索框，默认样式包含搜索图标。具体用法请参考[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)。
+TextInput、TextArea是输入框组件，用于响应用户输入，比如评论区的输入、聊天框的输入、表格的输入等，也可以结合其它组件构建功能页面，例如登录注册页面。具体用法请参考[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)和[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)组件的API文档。Search是特殊的输入框组件，称为搜索框，默认样式包含搜索图标。具体用法请参考[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)组件的API文档。
 
 
 >  **说明：**
@@ -38,7 +38,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   TextInput()
   ```
 
-  ![zh-cn_image_0000001511580844](figures/zh-cn_image_0000001511580844.png)
+  ![textinput-create](figures/textinput-create.png)
 
 
 - 多行输入框。
@@ -49,7 +49,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   TextArea()
   ```
 
-  ![zh-cn_image_0000001562940481](figures/zh-cn_image_0000001562940481.png)
+  ![textarea-create](figures/textarea-create.png)
 
 - 多行输入框文字超出一行时会自动折行。
 
@@ -57,12 +57,13 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   
   ``` TypeScript
   /* 请将$r('app.string.CreatTextInput_textContent')替换为实际资源文件，在本示例中该资源文件的value值为
-   "我是TextArea我是TextArea我是TextArea我是TextArea" */
+   * "我是TextArea我是TextArea我是TextArea我是TextArea"
+   */
   TextArea({ text: $r('app.string.CreatTextInput_textContent') })
     .width(300)
   ```
 
-  ![zh-cn_image_0000001511580836](figures/zh-cn_image_0000001511580836.png)
+  ![textinput-default](figures/textinput-default.png)
 
 - 搜索框。
 
@@ -74,7 +75,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
     .searchButton($r('app.string.Creat_TextInput_Content'))
   ```
 
-  ![zh-ch_image_ui_arkts-common-components-text-input_search_default](figures/zh-ch_image_ui_arkts-common-components-text-input_search_default.png)
+  ![textinput-search](figures/textinput-search.png)
 
 ## 设置输入框类型
 
@@ -91,7 +92,7 @@ TextInput()
   .type(InputType.Normal)
 ```
 
-![zh-cn_image_0000001562820765](figures/zh-cn_image_0000001562820765.png)
+![textinput-normal](figures/textinput-normal.png)
 
 ### 密码模式
 
@@ -105,7 +106,7 @@ TextInput()
   .type(InputType.Password)
 ```
 
-![zh-cn_image_0000001511580840](figures/zh-cn_image_0000001511580840.png)
+![textinput-password](figures/textinput-password.png)
 
 ### 邮箱地址输入模式
 
@@ -210,7 +211,7 @@ TextArea()
   TextInput({ placeholder: $r('app.string.i_am_placeholder') })
   ```
 
-  ![zh-cn_image_0000001511900400](figures/zh-cn_image_0000001511900400.png)
+  ![textinput-placeholder](figures/textinput-placeholder.png)
 
 
 - 设置输入框当前的文本内容。
@@ -226,7 +227,7 @@ TextArea()
   })
   ```
 
-  ![zh-cn_image_0000001562820761](figures/zh-cn_image_0000001562820761.png)
+  ![textinput-border](figures/textinput-border.png)
 
 - 添加backgroundColor改变输入框的背景颜色。
 
@@ -242,7 +243,7 @@ TextArea()
     .backgroundColor(Color.Pink)
   ```
 
-  ![zh-cn_image_0000001511740444](figures/zh-cn_image_0000001511740444.png)
+  ![textinput-pink-bg](figures/textinput-pink-bg.png)
 
   更丰富的样式可以结合[通用属性](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)实现。
 
@@ -380,7 +381,7 @@ TextArea({ text: $r('app.string.show_selected_menu') })
 
 ## 禁用系统服务类菜单
 
-从API version 20开始，支持使用[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)方法屏蔽文本选择菜单中的所有系统服务菜单项。
+从API version 20开始，支持使用[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)方法屏蔽文本选择菜单中的所有系统服务菜单项。更多详见[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)。
 
 <!-- @[DisableSystemServiceMenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/disablemenu/DisableSystemServiceMenuItems.ets) -->
 
@@ -428,7 +429,7 @@ struct DisableSystemServiceMenuItem {
 
 ![TextInput_disable_system_service_menu_items](figures/TextInput_disable_system_service_menu_items.gif)
 
-从API version 20开始，支持使用[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)方法屏蔽文本选择菜单中指定的系统服务菜单项。
+从API version 20开始，支持使用[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)方法屏蔽文本选择菜单中指定的系统服务菜单项。更多详见[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)。
 
 <!-- @[DisableMenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/disablemenu/DisableMenuItems.ets) -->
 

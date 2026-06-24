@@ -74,7 +74,7 @@ Describes the audio-haptic file descriptor.
 | Name    | Type          |Read-Only | Optional | Description                            |
 | --------- | -------------- | ---- | ---- | --------------------------------- |
 | fd        | number         | No  | No  | File descriptor of the audio-haptic file, which is generally greater than or equal to 0.|
-| offset    | number         | No  | Yes  | Offset in the file from which data will be read. By default, the offset is 0.|
+| offset    | number         | No  | Yes  | Offset for reading data from the file, in bytes. By default, the offset is 0.|
 | length    | number         | No  | Yes  | Number of bytes to read. By default, the length is the number of bytes remaining in the file from the offset position.|
 
 ## AudioHapticManager

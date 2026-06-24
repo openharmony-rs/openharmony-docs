@@ -125,10 +125,10 @@ struct AspectRatioExample {
 ```
 
 **图1** 竖屏显示<br>
-![zh-cn_image_0000001219744205](figures/zh-cn_image_0000001219744205.PNG)
+![layoutConstraints2](figures/layoutConstraints2.PNG)
 
 **图2** 横屏显示<br>
-![zh-cn_image_0000001174264382](figures/zh-cn_image_0000001174264382.PNG)
+![portraitMode](figures/portraitMode.PNG)
 
 ### 示例2（设置组件显示优先级）
 
@@ -192,4 +192,4 @@ struct DisplayPriorityExample {
 
 横屏显示
 
-![zh-cn_image_0000001219662667](figures/zh-cn_image_0000001219662667.gif)
+![displayPriority](figures/displayPriority.gif)

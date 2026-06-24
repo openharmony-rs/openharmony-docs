@@ -27,7 +27,7 @@ Enumerates the error codes that may be returned when an ability is started.
 
 | Name                            | Value   | Description                                      |
 | ------------------------------ | ---- | ---------------------------------------- |
-| NO_ERROR         | 0    | No error.  |
+| NO_ERROR         | 0    | The ability is started successfully.  |
 | INVALID_PARAMETER | -1   | Invalid parameter.|
 | ABILITY_NOT_FOUND | -2   | The ability is not found.|
 | PERMISSION_DENY   | -3   | Permission denied.  |

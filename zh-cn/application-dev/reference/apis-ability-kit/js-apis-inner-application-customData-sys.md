@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 拉起模态页面时，开发者可通过[reloadInModal](js-apis-inner-application-autoFillExtensionContext-sys.md#reloadinmodal13)接口将自定义数据传递给自动填充服务，并可通过自动填充服务的[onFillRequest](js-apis-app-ability-autoFillExtensionAbility-sys.md#onfillrequest)获取到该数据。
 
@@ -15,7 +15,7 @@
 > 本模块接口仅可在Stage模型下使用。  
 > 本模块接口为系统接口。
 
-##  属性
+## CustomData
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 

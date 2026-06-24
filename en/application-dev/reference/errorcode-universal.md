@@ -54,6 +54,33 @@ You attempted to operate a system function that has been disabled by the device 
 
 Use [getDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy) to check whether the system function is disabled, and use [setDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable the system function.
 
+<!--Del-->
+## 204 Access Denied by User Access Control Policy
+
+**Error Message**
+
+Access denied due to user access control policy. Possible causes:
+1. The operation is prohibited by OS-account constraints.
+2. The required privilege for the operation has expired or has not been granted.
+
+**Description**
+
+Access denied due to user access control policy. Possible causes:
+1. The required privilege for the operation has not been obtained.
+2. The operation is restricted by OS-account constraints.
+
+**Possible Causes**
+
+1. OS-account constraints prohibit this operation.
+2. The privilege required for this operation has expired or has not been granted.
+
+**Solution**
+
+1. Confirm the user constraints and user privileges involved in the target operation.
+2. If the target operation is subject to constraint control, call [isOsAccountConstraintEnabled](./apis-basic-services-kit/js-apis-osAccount.md#isosaccountconstraintenabled11) to check whether the related constraint is enabled. If it is enabled, stop the operation.
+3. If the target operation is subject to privilege control, call [acquireAuthorization](./apis-basic-services-kit/js-apis-osAccount-sys.md#acquireauthorization24) to request the required privilege. If the request succeeds, continue the target operation. Otherwise, stop the operation.
+<!--DelEnd-->
+
 ## 401 Parameter Check Failed
 
 **Error Message**
@@ -103,3 +130,5 @@ The device supports Syscap associated with the API but does not support the API 
 **Solution**
 
 Do not use this API on the device. Alternatively, implement conditional checks in the code to mitigate the effects of the application running across various devices, particularly under abnormal circumstances.
+
+<!--RP1--><!--RP1End-->

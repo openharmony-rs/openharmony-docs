@@ -1,8 +1,8 @@
 # OH_AudioEncInfo
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -26,7 +26,7 @@ typedef struct OH_AudioEncInfo {...} OH_AudioEncInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t audioBitrate | 音频编码比特率。 |
+| int32_t audioBitrate | 音频编码比特率。单位为比特每秒（bit/s）。 |
 | [OH_AudioCodecFormat](capi-native-avscreen-capture-base-h.md#oh_audiocodecformat) audioCodecformat | 音频编码格式。 |
 
 

@@ -5,9 +5,9 @@
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
- 	 
+
 **UnionEffectContainer** collects shapes of all descendant components [using the ancestor union effect](ts-universal-attributes-use-union-effect-sys.md#useunioneffect) within the container, and applies the shapes to the container as its drawing shape.
- 	 
+
 >  **NOTE**
 >
 > - This component is supported since API version 23. Updates will be marked with a superscript to indicate their earliest API version.
@@ -15,7 +15,7 @@
 > - The APIs provided by this module are system APIs.
 > 
 > - You can add animations to the shape union process.
- 	 
+
 ## Child Components
 
 Child components are supported.
@@ -86,9 +86,46 @@ Sets the point light style.
 | ------ | ------------------------------------------------------------ | ---- | ------------ |
 | value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | Yes  | Point light style.|
 
+### unionMode
+
+unionMode(mode: UnionMode)
+
+Sets the union mode.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description        |
+| ------ | ------------------------------------------------------------ | ---- | ------------ |
+| mode  | [UnionMode](#unionmode)| Yes  | Union mode.|
+
+## UnionMode
+
+Enumerates the union modes.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**System API**: This is a system API.
+
+| Name          | Value | Description                        |
+| -------------- | --- |---------------------------- |
+| SMOOTH_UNION       | 0   | Smooth union mode.           |
+| GRAVITY_UNION      | 1   | Gravity union mode.<br>**NOTE**<br>This mode takes effect only when [useUnionEffect](./ts-universal-attributes-use-union-effect-sys.md#useunioneffect-1) is used and **gravityCenter** of [GravityCenterOptions](./ts-universal-attributes-use-union-effect-sys.md#gravitycenteroptions) is set to **true**.           |
+
 ## Example
 
-### Example 1: Setting the Union Effect
+### Example 1 (Setting the Union Effect)
 
 This example demonstrates how to use the [UnionEffectContainer](#unioneffectcontainer) component to generate a union deformation effect by changing the **spacing** value or the spacing between descendant components.
 
@@ -200,4 +237,117 @@ struct UnionEffectContainerPage {
 }
 ```
 
-![unionEffectContainerDemo](figures/unionEffectContainerDemo.gif)
+### Example 2 (Setting Different Union Modes)
+
+This example demonstrates how to use the [unionMode](#unionmode) API to set different union modes to generate different union deformation effects.
+
+The **unionMode** API is supported since API version 26.0.0.
+
+```ts
+// UnionEffectContainerPage.ets
+@Entry
+@Component
+struct UnionEffectContainerPage {
+  @State translateY1: number = 0;
+  @State translateY2: number = 0;
+
+  build() {
+    Column() {
+      Column() {
+        Text("UnionMode.SMOOTH_UNION")
+        UnionEffectContainer({ spacing: 10 }) {
+          Column({ space: 50 }) {
+            Column()
+              .width(100)
+              .height(100)
+              .margin({ top: 10 })
+              .borderRadius(50)
+              .useUnionEffect(true)// Set the useUnionEffect attribute to use the union effect.
+              .translate({ y: this.translateY1 })
+
+            Column()
+              .width(200)
+              .height(100)
+              .useUnionEffect(true)
+          }
+          .width('100%')
+        }
+        .width('100%')
+        .height('75%')
+        .backgroundColor("#2787d9") // Set the attributes supported by the union effect, such as the background color.
+        .unionMode(UnionMode.SMOOTH_UNION)
+
+        Row({ space: 30 }) {
+          Text("translate:")
+          Button('+10')
+            .onClick(() => {
+              this.getUIContext().animateTo({ duration: 200 }, () => {
+                this.translateY1 += 10; // Change the distance between adjacent components.
+              });
+            })
+          Button('-10')
+            .onClick(() => {
+              this.getUIContext().animateTo({ duration: 200 }, () => {
+                this.translateY1 -= 10; // Change the distance between adjacent components.
+              });
+            })
+        }
+        .width('100%')
+        .height('20%')
+      }.width('90%')
+      .height('45%')
+      .borderWidth(1)
+      .margin({ top: 10 })
+
+      Column() {
+        Text("UnionMode.GRAVITY_UNION")
+        UnionEffectContainer({ spacing: 1000 }) {
+          Column({ space: 50 }) {
+            Column()
+              .width(40)
+              .height(40)
+              .margin({ top: 10 })
+              .borderRadius(20)
+              .useUnionEffect(true, {gravityCenter: true, gravityIntensity: 60})// Set the useUnionEffect attribute to use the union effect.
+              .translate({ y: this.translateY2 })
+
+            Column()
+              .width(200)
+              .height(100)
+              .useUnionEffect(true)
+          }
+          .width('100%')
+        }
+        .width('100%')
+        .height('75%')
+        .backgroundColor("#2787d9") // Set the attributes supported by the union effect, such as the background color.
+        .unionMode(UnionMode.GRAVITY_UNION)
+
+        Row({ space: 30 }) {
+          Text("translate:")
+          Button('+10')
+            .onClick(() => {
+              this.getUIContext().animateTo({ duration: 200 }, () => {
+                this.translateY2 += 10; // Change the distance between adjacent components.
+              });
+            })
+          Button('-10')
+            .onClick(() => {
+              this.getUIContext().animateTo({ duration: 200 }, () => {
+                this.translateY2 -= 10; // Change the distance between adjacent components.
+              });
+            })
+        }
+        .width('100%')
+        .height('20%')
+      }.width('90%')
+      .height('45%')
+      .borderWidth(1)
+      .margin({ top: 10 })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+<!--no_check-->

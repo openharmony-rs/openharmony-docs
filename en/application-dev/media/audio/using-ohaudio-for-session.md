@@ -1,4 +1,4 @@
-# Using AudioSession to Manage Audio Focus (C/C++)
+# Using OHAudio for Audio Session (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -10,7 +10,7 @@ In the scenario where multiple audio streams are concurrently playing, the syste
 
 An application can use an audio session provided by the audio session manager to actively manage the audio focus. Specifically, it can customize an audio focus strategy and determine the timing for releasing the audio focus, thereby meeting its specific service needs.
 
-This topic describes the usage and precautions of the C APIs related to the audio session. For more information about the audio focus and audio session, see [Introduction to Audio Focus and Audio Session](audio-playback-concurrency.md).
+This section mainly introduces the usage and precautions of the AudioSession-related C APIs. For more information about audio focus and audio sessions, see [Introduction to Audio Focus](audio-playback-concurrency.md) and [Audio Session Management](audio-session-management.md).
 
 ## Prerequisites
 
@@ -57,7 +57,7 @@ OH_AudioSessionManager *audioSessionManager;
 
 Call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) to activate an audio session.
 
-During the activation, specify an [audio session strategy](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosession-strategy.md). The strategy contains the [OH_AudioSession_ConcurrencyMode](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_concurrencymode) parameter, which is used to declare the audio concurrency strategy.
+During the activation, specify an [audio session strategy](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosession-strategy.md). The strategy contains the [OH_AudioSession_ConcurrencyMode](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) parameter, which is used to declare the audio concurrency strategy.
 
 <!-- @[cactive_sessionmanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
@@ -210,7 +210,7 @@ Starting from API version 23, when the current application plays audio in the **
 
 After enabling mute suggestion notifications, if other applications play audio that cannot be played concurrently with the current application while the current application is playing audio, the current application will receive a mute suggestion notification. The current application can either choose to take no action (allowing concurrent playback with other applications) or mute itself to let other applications play audio alone.
 
-To enable mute suggestion notifications for mixed playback, you need to first call [OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) to set scene parameters and subscribe to the [OH_AudioSession_StateChangeHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) audio session state change event. After enabling, call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) to activate the **AudioSession**. A prerequisite for enabling mute suggestion notifications is that [OH_AudioSession_ConcurrencyMode](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_concurrencymode) must be set to **CONCURRENCY_MIX_WITH_OTHERS**.
+To enable mute suggestion notifications for mixed playback, you need to first call [OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) to set scene parameters and subscribe to the [OH_AudioSession_StateChangeHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) audio session state change event. After enabling, call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) to activate the **AudioSession**. A prerequisite for enabling mute suggestion notifications is that [OH_AudioSession_ConcurrencyMode](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) must be set to **CONCURRENCY_MIX_WITH_OTHERS**.
 
 <!-- @[cenable_muteSuggestion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 

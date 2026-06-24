@@ -137,5 +137,5 @@ Defines a callback invoked when the progress of the transcoding process is updat
 | Name| Description|
 | -- | -- |
 | [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | Pointer to an OH_AVTranscoder instance.|
-| int32_t progress | Transcoding progress.|
+| int32_t progress | Transcoding progress, in percentage.|
 | void *userData | Pointer to user-defined data.|

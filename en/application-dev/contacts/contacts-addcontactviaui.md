@@ -6,6 +6,8 @@
 <!--Designer: @yanghaoqian-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:39:14.230Z pushedAt=2026-06-22T07:28:34.605Z -->
+
 ## Available APIs
 
 | API                 | Description                                      |
@@ -17,6 +19,8 @@
 ## Creating a Contact
 
 Call **addContactViaUI** to launch the UI for contact creation. Then, uses can complete contact information on the UI.
+
+<!-- @[contacts_addContactByPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
 
 ```js
 import { common } from '@kit.AbilityKit';
@@ -42,7 +46,7 @@ struct Index {
             phoneNumbers: [{
               phoneNumber: '138xxxxxx'
             }]
-          }
+          };
           let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
           let promise = contact.addContactViaUI(context, contactInfo);
           promise.then((data) => {
@@ -59,6 +63,8 @@ struct Index {
 ## Updating Contact Information
 
 Call **saveToExistingContactViaUI** to launch the UI for contact information updating. Then, users can update information about a specific contact on the UI.
+
+<!-- @[contacts_updateContactByPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
 
 ```js
 import { common } from '@kit.AbilityKit';

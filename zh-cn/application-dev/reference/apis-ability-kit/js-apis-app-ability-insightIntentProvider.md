@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 本模块为意图提供方提供管理能力，如主动发送指定意图的执行结果。
 > **说明：**
@@ -230,7 +230,7 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
     } catch (error) {
       let code = (error as BusinessError).code;
       let msg = (error as BusinessError).message;
-      console.error(`testTag: setReturnModeForUIAbilityForeground failed，error code: ${code}, error msg: ${msg}.`);
+      console.error(`testTag: setReturnModeForUIAbilityForeground failed, error code: ${code}, error msg: ${msg}.`);
     }
 
     try {

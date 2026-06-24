@@ -7,7 +7,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-The **http** module provides APIs for implementing HTTP data request capabilities. An application can initiate a data request over HTTP. Common HTTP methods include **GET**, **POST**, **OPTIONS**, **HEAD**, **PUT**, **DELETE**, **TRACE**, and **CONNECT**.
+The **http** module provides APIs for implementing HTTP data request capabilities. An application can initiate a data request over HTTP. Common HTTP methods include **GET**, **POST**, **OPTIONS**, **HEAD**, **PUT**, **DELETE**, **PATCH**, **TRACE**, and **CONNECT**.
 
 > **NOTE**
 >
@@ -40,12 +40,14 @@ httpRequest.on('headersReceive', (header: Object) => {
   console.info('header: ' + JSON.stringify(header));
 });
 
-httpRequest.request(// Customize EXAMPLE_URL in extraData on your own. It is up to you whether to add parameters to the URL.
+httpRequest.request(// Enter the URL of the HTTP request. The URL can contain parameters or not. The URL needs to be customized.
   "EXAMPLE_URL",
   {
     method: http.RequestMethod.POST, // Optional. The default value is http.RequestMethod.GET.
-    // This field is used to transfer the request body when a POST request is used. Its format needs to be negotiated with the server.
-    extraData: 'data to send',
+    // You are advised to use the body field to transfer the request body content. The specific format needs to be negotiated with the server.
+    body: 'data to send', // Supported since API version 26.
+    // You are advised to use the queryParams field to transfer URL parameters. The value can be a string or an object.
+    queryParams: { scene: 'demo', tag: ['a', 'b'] }, // Supported since API version 26.
     expectDataType: http.HttpDataType.STRING, // Optional. This parameter specifies the type of the return data.
     usingCache: true, // Optional. The default value is true.
     priority: 1, // Optional. The default value is 1.
@@ -109,7 +111,9 @@ httpRequest.request(// Customize EXAMPLE_URL in extraData on your own. It is up 
     addressFamily: http.AddressFamily.DEFAULT // Optional. By default, the IPv4 or IPv6 address of the target domain name is selected. Supported since API 15.
     customMethod: 'GET', // Optional. This field is supported since API version 23.
     maxRedirects: 30, // Optional. The default value is 30. Supported since API 23.
-    sniHostName: "www.example.com" // Optional. This field is supported since API version 23.
+    sniHostName: "www.example.com", // Optional. This field is supported since API version 23.
+    reuseConnections: true, // Optional. The default value is true. This field is supported since API version 26.
+    inactivityMs: 0 // Optional. The default value is 0. This field is supported since API version 26.
   },
   (err: BusinessError, data: http.HttpResponse) => {
     if (!err) {
@@ -158,7 +162,7 @@ Creates an HTTP request. You can use this API to initiate or destroy an HTTP req
 
 | Type       | Description                                                        |
 | :---------- | :----------------------------------------------------------- |
-| HttpRequest | An **HttpRequest** object, which contains the **request**, **requestInStream**, **destroy**, **on**, or **off** method.|
+| HttpRequest | An **HttpRequest** object, which contains the **request**, **requestInStream**, **requestSync**, **enableAutoCookie**, **destroy**, **on**, and **off** methods.|
 
 **Example**
 
@@ -341,8 +345,10 @@ class Header {
 let httpRequest = http.createHttp();
 let options: http.HttpRequestOptions = {
     method: http.RequestMethod.POST, // Optional. The default value is http.RequestMethod.GET.
-    // This field is used to transfer the request body when a POST request is used. Its format needs to be negotiated with the server.
-    extraData: 'data to send',
+  // You are advised to use the body field to transfer the request body content. The specific format needs to be negotiated with the server.
+  body: 'data to send', // Supported since API version 26.
+  // You are advised to use the queryParams field to transfer URL parameters. The value can be a string or an object.
+  queryParams: { scene: 'request-demo', page: 1 }, // Supported since API version 26.
     expectDataType: http.HttpDataType.STRING, // Optional. This parameter specifies the type of the return data.
     usingCache: true, // Optional. The default value is true.
     priority: 1, // Optional. The default value is 1.
@@ -646,7 +652,7 @@ let httpRequest = http.createHttp();
 let options: http.HttpRequestOptions = {
     method: http.RequestMethod.POST, // Optional. The default value is http.RequestMethod.GET.
     // This field is used to transfer the request body when a POST request is used. Its format needs to be negotiated with the server.
-    extraData: 'data to send',
+    extraData: 'data to send', // Since API version 26, you are advised to use the body field to transfer the request body content. The specific format needs to be negotiated with the server.
     expectDataType: http.HttpDataType.STRING, // Optional. This parameter specifies the type of the return data.
     usingCache: true, // Optional. The default value is true.
     priority: 1, // Optional. The default value is 1.
@@ -756,6 +762,173 @@ promise.then((data: number) => {
   console.info("requestInStream OK!" + data);
 }).catch((err: Error) => {
   console.error("requestInStream ERROR : err = " + JSON.stringify(err));
+});
+```
+
+### requestSync
+
+requestSync(url: string, options?: HttpRequestOptions): HttpResponse
+
+Initiates an HTTP network request based on the URL and related configuration options (optional). This API returns the response synchronously.
+
+> **NOTE**
+>
+ >(1) This API can receive data of up to 50 MB. To receive more than 50 MB of data, set the **maxLimit** parameter in [HttpRequestOptions](#httprequestoptions).<br>
+ >(2) If you need to pass in cookies, add them to the **options** parameter.<br>
+ >(3) If the URL contains non-English characters, call **encodeURL(url)** to encode the URL before initiating an HTTP request.<br>
+ >(4) This API is synchronous and blocks the current thread until an HTTP response or error code is returned.
+ 
+ **Since**: 26.0.0
+
+**Required permission**: ohos.permission.INTERNET
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type              | Mandatory| Description                                           |
+| ------- | ------------------ | ---- | ----------------------------------------------- |
+| url     | string             | Yes  | URL for initiating an HTTP request.                        |
+| options | HttpRequestOptions | No  | Request options. For details, see [HttpRequestOptions](#httprequestoptions).|
+
+**Return value**
+
+| Type                                  | Description                             |
+| -------------------------------------- | --------------------------------- |
+| [HttpResponse](#httpresponse) | HTTP request response result that is returned synchronously.|
+
+**Error codes**
+
+For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [HTTP Error Codes](errorcode-net-http.md).<br>
+The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+
+| ID  | Error Message                                                        |
+|---------|----------------------------------------------------------------|
+| 401     | Parameter error.                                               |
+| 201     | Permission denied.                                             |
+| 2300001 | Unsupported protocol.                                          |
+| 2300003 | Invalid URL format or missing URL.                             |
+| 2300005 | Failed to resolve the proxy name.                              |
+| 2300006 | Failed to resolve the host name.                               |
+| 2300007 | Failed to connect to the server.                               |
+| 2300008 | Invalid server response.                                       |
+| 2300009 | Access to the remote resource denied.                          |
+| 2300016 | Error in the HTTP2 framing layer.                              |
+| 2300018 | Transferred a partial file.                                    |
+| 2300023 | Failed to write the received data to the disk or application.  |
+| 2300025 | Upload failed.                                                 |
+| 2300026 | Failed to open or read local data from the file or application.|
+| 2300027 | Out of memory.                                                 |
+| 2300028 | Operation timeout.                                             |
+| 2300047 | The number of redirections reaches the maximum allowed.        |
+| 2300052 | The server returned nothing (no header or data).               |
+| 2300055 | Failed to send data to the peer.                               |
+| 2300056 | Failed to receive data from the peer.                          |
+| 2300058 | Local SSL certificate error.                                   |
+| 2300059 | The specified SSL cipher cannot be used.                       |
+| 2300060 | Invalid SSL peer certificate or SSH remote key.                |
+| 2300061 | Invalid HTTP encoding format.                                  |
+| 2300063 | Maximum file size exceeded.                                    |
+| 2300070 | Remote disk full.                                              |
+| 2300073 | Remote file already exists.                                    |
+| 2300077 | The SSL CA certificate does not exist or is inaccessible.      |
+| 2300078 | Remote file not found.                                         |
+| 2300094 | Authentication error.                                          |
+| 2300997 | Cleartext traffic not permitted.                               |
+| 2300998 | It is not allowed to access this domain.                       |
+| 2300999 | Internal error.                                                 |
+
+**Example**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+class Header {
+  public contentType: string;
+
+  constructor(contentType: string) {
+    this.contentType = contentType;
+  }
+}
+
+let httpRequest = http.createHttp();
+let options: http.HttpRequestOptions = {
+    method: http.RequestMethod.POST, // Optional. The default value is http.RequestMethod.GET.
+    // This field is used to transfer the request body when a POST request is used. Its format needs to be negotiated with the server.
+    extraData: 'data to send',
+    expectDataType: http.HttpDataType.STRING, // Optional. This parameter specifies the type of the return data.
+    usingCache: true, // Optional. The default value is true.
+    priority: 1, // Optional. The default value is 1.
+    // You can add header fields based on service requirements.
+    header: new Header('application/json'),
+    readTimeout: 60000, // Optional. The default value is 60000, in ms.
+    connectTimeout: 60000 // Optional. The default value is 60000, in ms.
+    usingProtocol: http.HttpProtocol.HTTP1_1, // Optional. The default protocol type is automatically specified by the system.
+    usingProxy: false, // Optional. By default, network proxy is not used. This field is supported since API version 10.
+};
+let url = "EXAMPLE_URL"; // Access URL.
+try {
+  let data: http.HttpResponse = httpRequest.requestSync(url, options);
+  console.info('Result:' + data.result);
+  console.info('code:' + data.responseCode);
+  console.info('type:' + JSON.stringify(data.resultType));
+  console.info('header:' + JSON.stringify(data.header));
+  console.info('cookies:' + data.cookies); // Cookies are supported since API version 8.
+} catch (err) {
+  console.error('error:' + JSON.stringify(err));
+}
+httpRequest.destroy();
+```
+
+### enableAutoCookie
+
+enableAutoCookie(enable: boolean): void
+
+Sets whether to automatically carry and share cookies. That is, whether to automatically reuse the cookies delivered by the server among multiple requests of the same **HttpRequest** instance.
+
+> **NOTE**
+>
+> (1) The default value is **false**, indicating that cookies are not automatically carried.<br>
+> (2) If the value is changed from **false** to **true**, the setting takes effect when the **request** API is called to initiate a request, and cookies are automatically shared.<br>
+> (3) If the value is changed from **true** to **false**, the cookie sharing status stored in the current instance is cleared.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------- | ------- | ---- | ----------------------------------------------- |
+| enable | boolean | Yes| Whether to automatically carry cookies. **true**: yes; **false**: no.|
+
+**Example**
+
+```ts
+import { http } from '@kit.NetworkKit';
+
+let httpRequest = http.createHttp();
+let url = "EXAMPLE_URL"; // Access URL. You need to define the URL based on the actual scenario.
+
+// Enable automatic cookie sharing.
+httpRequest.enableAutoCookie(true);
+
+httpRequest.request(url, {
+  method: http.RequestMethod.GET
+}).then((data: http.HttpResponse) => {
+  console.info('first request code:' + data.responseCode);
+  // Subsequent requests will automatically reuse the cookies saved by this instance.
+  return httpRequest.request(url, { method: http.RequestMethod.GET });
+}).then((data: http.HttpResponse) => {
+  console.info('second request code:' + data.responseCode);
+}).catch((err: Error) => {
+  console.error('error:' + JSON.stringify(err));
+}).finally(() => {
+  httpRequest.destroy();
 });
 ```
 
@@ -1141,10 +1314,13 @@ Defines the options for initiating an HTTP request.
 
 **System capability**: SystemCapability.Communication.NetStack
 
+<!--Table: 12%; 14%; 8%; 8%; 58%-->
 | Name        | Type                                         | Read Only| Optional| Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | -------------- | --------------------------------------------- | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | method         | [RequestMethod](#requestmethod)               | No | Yes | Request method. The default value is **GET**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| extraData      | string \| Object \| ArrayBuffer | No | Yes | Additional data for sending a request. This parameter is not used by default.<br>**Note**: Do not add this parameter if no extra data is available. If this parameter must be added, set it to **undefined** or **null**. Do not pass the parameter as "".<br>- If the HTTP request uses a POST, PUT, or DELETE method, this field serves as the content of the HTTP request and is encoded in UTF-8 format.<br>Example:<br>  (1) If **content-Type** is **application/x-www-form-urlencoded**, the data in the request body must be encoded in the format of **key1=value1&key2=value2&key3=value3** after URL transcoding (**encodeURIComponent/encodeURI**) and this field is usually in the String format.<br>(2) If **content-Type** is **text/xml**, this field is usually in the String format.<br>(3) If **content-Type** is **application/json**, this field is usually in the Object format.<br>(4) If **content-Type** is **application/octet-stream**, this field is usually in the ArrayBuffer format.<br>(5) If **content-Type** is **multipart/form-data** and the content to be uploaded is a file, this field is usually in the ArrayBuffer format.<br>The preceding information is for reference only and may vary according to the actual situation.<br>- If the HTTP request uses the GET, OPTIONS, TRACE, or CONNECT method, this parameter serves as a supplement to HTTP request parameters. Parameters of the string type need to be encoded before being passed to the HTTP request. Parameters of the object type do not need to be precoded and will be directly concatenated to the URL. Parameters of the ArrayBuffer type will not be concatenated to the URL.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| extraData      | string \| Object \| ArrayBuffer | No | Yes | Additional data for sending a request. This parameter is not used by default. Since API version 26, you are advised to use the **body** and **queryParams** parameters preferentially.<br>**Note**: Do not add this parameter if no extra data is available. If this parameter must be added, set it to **undefined** or **null**. Do not pass the parameter as "".<br>- If the HTTP request uses a POST, PUT, or DELETE method, this field serves as the content of the HTTP request and is encoded in UTF-8 format.<br>Example:<br>  (1) If **content-Type** is **application/x-www-form-urlencoded**, the data in the request body must be encoded in the format of **key1=value1&key2=value2&key3=value3** after URL transcoding (**encodeURIComponent/encodeURI**) and this field is usually in the String format.<br>(2) If **content-Type** is **text/xml**, this field is usually in the String format.<br>(3) If **content-Type** is **application/json**, this field is usually in the Object format.<br>(4) If **content-Type** is **application/octet-stream**, this field is usually in the ArrayBuffer format.<br>(5) If **content-Type** is **multipart/form-data** and the content to be uploaded is a file, this field is usually in the ArrayBuffer format.<br>The preceding information is for reference only and may vary according to the actual situation.<br>- If the HTTP request uses the GET, OPTIONS, TRACE, or CONNECT method, this parameter serves as a supplement to HTTP request parameters. Parameters of the string type need to be encoded before being passed to the HTTP request. Parameters of the object type do not need to be precoded and will be directly concatenated to the URL. Parameters of the ArrayBuffer type will not be concatenated to the URL.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| body | string \| Object \| ArrayBuffer | No| Yes| HTTP request body. After this field is set, the framework preferentially sends this field as the request body.<br>- The value can be a string, an object, or an **ArrayBuffer**. A string is sent as the original value, an object is serialized before being sent, and an **ArrayBuffer** is sent in binary format.<br>- If both **body** and **extraData** are configured, **body** takes precedence and **extraData** will be ignored.<br>- This field can be used with any request method to explicitly specify the request body.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| queryParams | string \| [QueryParamObject](#queryparamobject) | No| Yes| Request parameters appended to the URL.<br>- The value can be a string or a **QueryParamObject**. A string is directly appended to the URL (without repeated encoding). A **QueryParamObject** is automatically encoded and serialized by the system.<br>- When a string is used, the leading **?** is not required. Use **&** to separate multiple parameters.<br>- If both **queryParams** and **extraData** are configured, **queryParams** takes precedence, and the URL parameter supplementation logic in **extraData** is ignored.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
 | expectDataType<sup>9+</sup>  | [HttpDataType](#httpdatatype9)  | No | Yes | Type of the returned data. This parameter is not used by default. If this parameter is set, the system returns the specified type of data preferentially. If the specified type is **Object**, the value can contain a maximum of 65536 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | usingCache<sup>9+</sup>      | boolean                         | No | Yes | Whether to use the cache. The value **true** indicates that the cache is preferentially read when a request is initiated, and the value **false** indicates that the cache is not used. The default value is **true**. The cache function takes effect when the process is started. The new cached data will replace the existing cached data.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | priority<sup>9+</sup>        | number                          | No | Yes | Priority of concurrent HTTP/HTTPS requests. A larger value indicates a higher priority. The value range is [1, 1000]. The default value is **1**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
@@ -1173,6 +1349,8 @@ Defines the options for initiating an HTTP request.
 | maxRedirects<sup>23+</sup> | number | No| Yes| The maximum number of redirections can be specified for HttpRequest.<br>- The default value is 30.<br>- The value range is [0, 2147483647]. If the value is set to **0**, redirection is disabled. If the number of redirections on the server exceeds the maximum number of redirections, error code 2300047 is returned. If the value is out of the range, the default value **30** takes effect.|
 | sniHostName<sup>23+</sup> | string | No| Yes| Used to allow the client to declare the target domain name to the server in the TLS handshake phase by configuring the server name indication (SNI). In this way, the server can select the corresponding SSL/TLS certificate based on the domain name for encrypted communication.<br>- The default value is an empty string. The value of **sniHostName** can contain a maximum of 255 characters. If the length limit is exceeded or the value is an empty string, the setting does not take effect.|
 | pathPreference<sup>23+</sup> |[PathPreference](#pathpreference23) | No| Yes|Used to specify the network to be activated in an HTTP request.|
+| reuseConnections | boolean | No| Yes| Whether to reuse the connection for an HTTP request. The default value is **true**, meaning to reuse the existing connection. The value **false** means the opposite. This field can be used together with the **inactivityMs** field to customize the connection timeout interval.<br>- Connection reuse means that after an HTTP request is completed, the underlying TCP connection is not immediately closed. Instead, it remains in the connection pool. If subsequent HTTP requests have the same target address, the connection can be reused, reducing the overhead of TCP and TLS handshakes and improving performance.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| inactivityMs | number | No| Yes| Maximum idle time of a connection in the connection pool. If this value is exceeded, the connection is closed. The unit is ms. The default value is 118s. The system calculates the connection idle time, rounds it down to seconds, and then compares it with the configured value.<br>- The value range is (0, 2147483647]. If a value less than or equal to 0 is passed, the system uses the default value 118s. This parameter does not take effect when **reuseConnections** is set to **false**.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## RequestMethod
 
@@ -1192,6 +1370,7 @@ Defines an HTTP request method.
 | DELETE  | "DELETE"  | Deletes the specified resource.|
 | TRACE   | "TRACE"   | Performs a message loopback test along the path to the target resource.|
 | CONNECT | "CONNECT" | Establishes a tunnel to the server identified by the target resource.|
+| PATCH   | "PATCH"   | Modifies a resource partially.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## ResponseCode
 
@@ -1291,6 +1470,8 @@ Configures the timing for performance tracing, in ms.
 Defines the detailed information about the HTTP request interaction.
 
 **System capability**: SystemCapability.Communication.NetStack
+
+**Model constraint**: This API can be used only in the stage model.
 
 | Name               | Type                         | Read Only| Optional| Description                                                        |
 | ------------------- | ----------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -1637,6 +1818,41 @@ Defines the network proxy configuration.
 | ---------------- | --------------------------- |
 | connection.HttpProxy | Network proxy configuration.    |
 
+## QueryParamValue
+
+type QueryParamValue = string \| number \| boolean \| null \| undefined
+
+Defines the single-value type that can be used in **QueryParamObject**.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Type| Description|
+| ---------------- | --------------------------- |
+| string \| number \| boolean \| null \| undefined | Single-value type of the **query** parameter. The **number** and **boolean** values are converted into strings before being encoded. The **null** and **undefined** values are serialized in the format of only the key without the **=** value.|
+
+## QueryParamObject
+
+type QueryParamObject = Record\<string, QueryParamValue \| QueryParamValue[]\>
+
+Defines the key-value object type used to construct URL query parameters.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Model restriction:** This API can be used only in the stage model.
+
+> **NOTE**
+>
+> (1) The property name is used as the key of the **QueryParamObject** parameter. The corresponding property value can be a single **QueryParamValue** or a **QueryParamValue** array.<br>
+> (2) The array will be expanded into multiple parameters with the same name. For example, **{ tag: ['a', 'b'] }** will be serialized into **tag=a&tag=b**.<br>
+> (3) The key and value are automatically URL-encoded by the system. You should pass the original, unencoded content.<br>
+> (4) To strictly control the parameter sequence or repeat the key sequence, you are advised to use the **string** of **queryParams**.
+
 ## AddressFamily<sup>15+</sup>
 
 Enumerates IP address families of the target domain name.
@@ -1965,7 +2181,7 @@ Defines the HTTP interceptor API, which is used to define the interception proce
 
 interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Promise\<ChainContinue\>
 
-Intercepts the HTTP processing process and modifies it as required.
+Intercepts the HTTP processing and modifies it as required.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

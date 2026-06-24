@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_PointF
 
 ## Overview
 
-Defines a two-dimensional coordinate point structure, where the coordinates are stored as floating-point numbers.
+Defines a two-dimensional coordinate point, where the coordinates are stored as floating-point numbers.
 
 **Since**: 24
 

@@ -1,9 +1,9 @@
 # @ohos.file.storageStatistics (应用空间统计)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @renguang1116; @wang_zhangjun-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供空间查询相关的常用功能：包括对内外卡的空间查询、对应用分类数据统计的查询、对应用数据的查询等。
@@ -318,7 +318,7 @@ try {
 | dataSize  | number  | 否 | 否  | 应用文件存储大小（除应用安装文件）（单位为Byte）。 |
 
 ## storageStatistics.getTotalInodes<sup>24+</sup>
- 	 
+
 getTotalInodes(): Promise&lt;number&gt;
 
 获取文件系统的inode资源总量，仅支持查询系统数据分区。使用Promise异步回调。
@@ -415,7 +415,6 @@ getCurrentBundleInodes(): Promise&lt;number&gt;
 | -------- | ------------------------------------------------------------ |
 | 13600001 | IPC error.                                                   |
 | 13600002 | File system not supported.                                   |
-| 13600010 | The input parameter is invalid.                              |
 | 13600017 | Failed to query the inode information of the application.    |
 
 **示例：**

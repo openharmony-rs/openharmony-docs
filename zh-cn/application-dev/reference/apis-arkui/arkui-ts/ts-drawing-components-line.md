@@ -1,8 +1,8 @@
 # Line
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -18,10 +18,31 @@
 
 无
 
-
 ## 接口
 
+### Line
+
+new Line(options?: LineOptions)
+
+用于绘制直线的构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [LineOptions](ts-drawing-components-line.md#lineoptions18对象说明) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+
+### Line
+
 Line(options?: LineOptions)
+
+用于绘制直线的构造函数。 
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -46,6 +67,8 @@ Line(options?: LineOptions)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,7 +371,7 @@ struct LineExample {
 }
 ```
 
-![zh-cn_image_0000001219982725](figures/zh-cn_image_0000001219982725.png)
+![line1](figures/line1.png)
 
 ### 示例2（边框端点绘制）
 
@@ -397,7 +420,7 @@ struct LineExample1 {
 }
 ```
 
-![zh-cn_image1_0000001219982725](figures/zh-cn_image1_0000001219982725.png)
+![line](figures/line.png)
 
 ### 示例3（边框间隙绘制）
 
@@ -458,7 +481,7 @@ struct LineExample {
 }
 ```
 
-![zh-cn_image2_0000001219982725](figures/zh-cn_image2_0000001219982725.PNG)
+![line2](figures/line2.PNG)
 
 ### 示例4（宽和高使用不同参数类型绘制直线）
 

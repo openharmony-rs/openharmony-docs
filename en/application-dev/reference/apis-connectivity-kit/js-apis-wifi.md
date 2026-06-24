@@ -233,7 +233,7 @@ Adds the configuration of an untrusted network. This API uses a promise to retur
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration to add.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
 
 **Return value**
 
@@ -291,7 +291,7 @@ Adds the configuration of an untrusted network. This API uses an asynchronous ca
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration to add.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
   | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is **true**. If the operation fails, **data** is **false**. If **err** is not **0**, an error has occurred.|
 
 **Example**
@@ -344,7 +344,7 @@ Removes the configuration of an untrusted network. This API uses a promise to re
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration to remove.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
 
 **Return value**
 
@@ -404,7 +404,7 @@ Removes the configuration of an untrusted network. This API uses an asynchronous
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration to remove.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
   | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is **true**. If the operation fails, **data** is **false**. If **err** is not **0**, an error has occurred.|
 
 **Example**
@@ -573,7 +573,7 @@ Enumerates the WLAN connection states.
 
 > **NOTE**
 >
-> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [WifiLinkedInfo](js-apis-wifiManager.md#connstate) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [ConnState](js-apis-wifiManager.md#connstate) instead.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -1327,7 +1327,7 @@ Subscribes to WLAN state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **WLAN states** 
 
@@ -1395,7 +1395,7 @@ Subscribes to WLAN connection state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiConnectionChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN connection state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **WLAN connection states**
 
@@ -1460,7 +1460,7 @@ Subscribes to WLAN scan state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiScanStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN scan state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **WLAN scan states**
 
@@ -1585,7 +1585,7 @@ Subscribes to hotspot state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the hotspot state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **Hotspot states**
 
@@ -1653,7 +1653,7 @@ Subscribes to P2P state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **P2P states**
 
@@ -1720,7 +1720,7 @@ Subscribes to P2P connection state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | Yes| Callback used to return the P2P connection state.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | Yes| Callback for status changes.|
 
 
 ## wifi.off('p2pConnectionChange')<sup>(deprecated)</sup>
@@ -1778,7 +1778,7 @@ Subscribes to P2P device state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)&gt; | Yes| Callback used to return the P2P device state.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)&gt; | Yes| Callback for status changes.|
 
 
 ## wifi.off('p2pDeviceChange')<sup>(deprecated)</sup>
@@ -1836,7 +1836,7 @@ Subscribes to P2P peer device state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | Yes| Callback used to return the P2P peer device state.|
+  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | Yes| Callback for status changes.|
 
 
 ## wifi.off('p2pPeerDeviceChange')<sup>(deprecated)</sup>
@@ -1894,7 +1894,7 @@ Subscribes to P2P persistent group state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
-  | callback | Callback&lt;void&gt; | Yes| Callback used to return the P2P persistent group state.|
+  | callback | Callback&lt;void&gt; | Yes| Callback for status changes.|
 
 
 ## wifi.off('p2pPersistentGroupChange')<sup>(deprecated)</sup>
@@ -1953,7 +1953,7 @@ Subscribes to P2P device discovery state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P device discovery state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **P2P discovered device states**
 

@@ -1,7 +1,7 @@
 # JSVM_DefineClassOptions
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -13,6 +13,8 @@ typedef struct {...} JSVM_DefineClassOptions
 ## 概述
 
 定义Class的选项。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
 

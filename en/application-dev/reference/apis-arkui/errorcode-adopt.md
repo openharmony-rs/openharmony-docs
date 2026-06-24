@@ -1,8 +1,8 @@
 # Auxiliary Node Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -18,7 +18,7 @@ The node has already been adopted.
 
 **Description**
 
-This error code is reported when the node has been accepted as an auxiliary node and cannot be mounted as a child node.<br>
+This error code is reported when the node has been accepted as an auxiliary node and an attempt is made to mount the node as a child node.<br>
 
 **Possible Causes**
 
@@ -36,7 +36,7 @@ This node already has a parent node.
 
 **Description**
 
-This error code is reported when the node already has a parent node and cannot be accepted by other nodes.<br>
+This error code is reported when the node already has a parent node and other nodes attempt to accept the node.<br>
 
 **Possible Causes**
 
@@ -81,7 +81,7 @@ This error code is reported when the node cannot accept other auxiliary nodes.<b
 **Possible Causes**
 
 1. The node is a null pointer.
-2. The node cannot be accepted. Only the following nodes can be accepted:
+2. The node does not meet the acceptance criteria. Only the following node types are supported for acceptance:
     - Command node created using the ArkTS language.
     - Command node created using the C language.
 

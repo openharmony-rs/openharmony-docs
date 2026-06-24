@@ -9,10 +9,11 @@
 
 The **ArcScrollBar** component is designed to be used together with scrollable components such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md).
 
->  **NOTE**
+> **NOTE**
 >
->  - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
->  - When the width and height of the **ArcScrollBar** component are not set, the **maxSize** value in the [layout constraint](../js-apis-arkui-frameNode.md#layoutconstraint12) of its parent component is used as the width and height. If the parent component of the **ArcScrollBar** component contains scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), or [WaterFlow](ts-container-waterflow.md), you are advised to set the width and height of the **ArcScrollBar** component. Otherwise, the width and height of the component may be infinite.
+> - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
+> - When the width and height of the **ArcScrollBar** component are not set, the **maxSize** value specified in its parent component [LayoutConstraint](../js-apis-arkui-frameNode.md#layoutconstraint12) is used as the width and height. If the parent component of the **ArcScrollBar** component contains scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), or [WaterFlow](ts-container-waterflow.md), you are advised to set the width and height of the **ArcScrollBar** component. Otherwise, the width and height of the component may be infinite.
+> - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can still run properly.
 
 
 ## Child Components
@@ -54,7 +55,7 @@ Represents the parameters used to construct an **ArcScrollBar** component.
 
 ## Example
 
-This example demonstrates how to use **ArcScrollBar** with a **Scroll** component to create an external circular scrollbar.
+This example demonstrates how to synchronize **ArcScrollBar** with the [Scroll](ts-container-scroll.md) component to implement an arc scrollbar.
 
 ```ts
 import { ArcScrollBar } from '@kit.ArkUI';

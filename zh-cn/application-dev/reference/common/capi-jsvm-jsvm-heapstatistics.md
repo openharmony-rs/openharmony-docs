@@ -1,7 +1,7 @@
 # JSVM_HeapStatistics
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -13,6 +13,14 @@ typedef struct {...} JSVM_HeapStatistics
 ## 概述
 
 用于保存有关JavaScript堆内存使用情况的统计信息。
+
+**使用场景：** 性能监控：实时监测应用的堆内存使用情况，评估内存占用水平。内存优化：通过分析堆内存数据，识别内存使用瓶颈，优化内存配置。内存泄漏检测：通过numberOfNativeContexts等字段，辅助发现潜在的内存泄漏问题。
+
+**解决问题：** 帮助开发者了解应用的内存使用状况，为性能优化和内存管理提供数据支撑，支持内存问题的排查和分析。
+
+**收益：** 提升应用的内存使用效率，降低内存相关问题的排查成本，改善应用的整体性能和稳定性。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
 

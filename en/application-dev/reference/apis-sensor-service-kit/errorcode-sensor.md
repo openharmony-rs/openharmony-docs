@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 > **NOTE**
@@ -37,7 +37,7 @@ The sensor is not supported by the device.
 
 **Description**
 
-This error code is reported if the **GetSingleSensor** API is called to obtain a sensor that is not supported by the device.
+This error code is reported when the [getSingleSensor](js-apis-sensor.md#sensorgetsinglesensor9) API is called but the device does not support the sensor.
 
 **Possible Causes**
 
@@ -45,4 +45,4 @@ The device does not support the sensor because the underlying components are not
 
 **Solution**
 
-Adapt the underlying components to the sensor.
+Call the [getSingleSensor](js-apis-sensor.md#sensorgetsinglesensor9) API. If error code 14500102 is returned, the device does not support the sensor.

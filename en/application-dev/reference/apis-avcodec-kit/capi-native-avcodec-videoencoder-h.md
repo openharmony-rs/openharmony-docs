@@ -22,11 +22,40 @@ The file declares the APIs used for video encoding.
 
 **Sample**: [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 
-The following figures show the APIs supported by each version and the APIs that can be called in different states.
+The support status of APIs for each version, mode, and state is described in the following table.
 
-![meaning](figures/meaning.PNG)
+### API State Matrix
 
-![description of encode api history](figures/video-encode-api.PNG)
+The following provides an overview of whether the API can be called in different states. A checkmark (√) indicates that the API can be called, and a cross (×) indicates that it cannot be called.
+
+| API| Initialized | Configured | Prepared | Flushed | Running | EndOfStream | Error | Released |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| OH_VideoEncoder_CreateByMime<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| OH_VideoEncoder_CreateByName<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| OH_VideoEncoder_CreatePrimaryWithPreproc | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| OH_VideoEncoder_CreateSecondaryFromPrimary | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| OH_VideoEncoder_RegisterCallback<sup>11+</sup> | √ | √ | × | × | × | × | × | × |
+| OH_VideoEncoder_RegisterParameterCallback<sup>12+</sup> | √ | × | × | × | × | × | × | × |
+| OH_VideoEncoder_OnNeedInputParameter<sup>12+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_Configure<sup>9+</sup> | √ | × | × | × | × | × | × | × |
+| OH_VideoEncoder_Prepare<sup>9+</sup> | × | √ | × | × | × | × | × | × |
+| OH_VideoEncoder_SetParameter<sup>9+</sup> | × | × | × | √ | √ | √ | × | × |
+| OH_VideoEncoder_GetSurface<sup>9+</sup> | × | √ | × | × | × | × | × | × |
+| OH_VideoEncoder_GetInputDescription<sup>10+</sup> | × | √ | √ | √ | √ | √ | × | × |
+| OH_VideoEncoder_PushInputBuffer<sup>11+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_PushInputParameter<sup>12+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_NotifyEndOfStream<sup>9+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_GetOutputDescription<sup>9+</sup> | √ | √ | √ | √ | √ | √ | × | × |
+| OH_VideoEncoder_FreeOutputBuffer<sup>11+</sup> | × | × | × | × | √ | √ | × | × |
+| OH_VideoEncoder_Start<sup>9+</sup> | × | × | √ | √ | × | × | × | × |
+| OH_VideoEncoder_Stop<sup>9+</sup> | × | × | × | √ | √ | √ | × | × |
+| OH_VideoEncoder_Flush<sup>9+</sup> | × | × | × | × | √ | √ | × | × |
+| OH_VideoEncoder_Reset<sup>9+</sup> | √ | √ | √ | √ | √ | √ | √ | × |
+| OH_VideoEncoder_Destroy<sup>9+</sup> | √ | √ | √ | √ | √ | √ | √ | × |
+| OH_VideoEncoder_QueryInputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_GetInputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_QueryOutputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_GetOutputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
 
 ## Summary
 
@@ -43,11 +72,13 @@ The following figures show the APIs supported by each version and the APIs that 
 | [typedef void (\*OH_VideoEncoder_OnNeedInputParameter)(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)](#oh_videoencoder_onneedinputparameter) | OH_VideoEncoder_OnNeedInputParameter | Defines the pointer to the function that is called when new input parameters are required for a frame with the specified index. It takes effect only in surface mode.|
 | [OH_AVCodec *OH_VideoEncoder_CreateByMime(const char *mime)](#oh_videoencoder_createbymime) | - | Creates a video encoder instance based on a MIME type. This function is recommended.|
 | [OH_AVCodec *OH_VideoEncoder_CreateByName(const char *name)](#oh_videoencoder_createbyname) | - | Creates a video encoder instance based on an encoder name. To use this function, you must know the exact name of the encoder. The encoder name can be obtained through capability query.|
+| [OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCodec **codec)](#oh_videoencoder_createprimarywithpreproc) | - | Creates a primary video encoder instance that supports pre-processing. It can be used to configure pre-processing parameters such as downsampling, cropping, and frame dropping. A secondary encoder can be derived from this primary encoder to enable dual-output encoding with one input.|
+| [OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_AVCodec **codec)](#oh_videoencoder_createsecondaryfromprimary) | - | Creates a secondary video encoder instance from the primary encoder. The secondary video encoder shares the input source with the primary encoder and allows independent configuration of encoding parameters and pre-processing parameters.|
 | [OH_AVErrCode OH_VideoEncoder_Destroy(OH_AVCodec *codec)](#oh_videoencoder_destroy) | - | Clears the internal resources of a video encoder and destroys the encoder instance. You only need to call the function once.|
 | [OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)](#oh_videoencoder_setcallback) | - | Sets an OH_AVCodecCallback callback so that your application can respond to events generated by a video encoder. This function must be called prior to **OH_VideoEncoder_Prepare**. (It is deprecated from API version 11.)|
 | [OH_AVErrCode OH_VideoEncoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)](#oh_videoencoder_registercallback) | - | Registers an OH_AVCodecCallback callback so that your application can respond to events generated by a video encoder. This function must be called prior to **OH_VideoEncoder_Prepare**.|
-| [OH_AVErrCode OH_VideoEncoder_RegisterParameterCallback(OH_AVCodec *codec, OH_VideoEncoder_OnNeedInputParameter onInputParameter, void *userData)](#oh_videoencoder_registerparametercallback) | - | Registers an OH_AVCodecCallback input parameter callback so that your application can respond to events generated by a video encoder. In surface encoding mode, this function must be called when frame parameters need to be set,<br> and it must be called before [OH_VideoEncoder_Configure](#oh_videoencoder_configure).|
-| [OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videoencoder_configure) | - | Configures a video encoder. Typically, you need to configure the description information about the video track to be encoded, such as the width, height, and pixel format. This function must be called prior to **OH_VideoEncoder_Prepare**.|
+| [OH_AVErrCode OH_VideoEncoder_RegisterParameterCallback(OH_AVCodec *codec, OH_VideoEncoder_OnNeedInputParameter onInputParameter, void *userData)](#oh_videoencoder_registerparametercallback) | - | Registers an input parameter callback so that your application can respond to events generated by a video encoder. In surface encoding mode, this function must be called when frame parameters need to be set,<br> and it must be called before [OH_VideoEncoder_Configure](#oh_videoencoder_configure).|
+| [OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videoencoder_configure) | - | Configures encoding parameters for a video encoder. Typically, you need to configure the description information about the video frames, such as the frame width, height, and pixel format. This function must be called prior to **OH_VideoEncoder_Prepare**.|
 | [OH_AVErrCode OH_VideoEncoder_Prepare(OH_AVCodec *codec)](#oh_videoencoder_prepare) | - | Prepares internal resources for a video encoder. This function must be called after **OH_VideoEncoder_Configure**.|
 | [OH_AVErrCode OH_VideoEncoder_Start(OH_AVCodec *codec)](#oh_videoencoder_start) | - | Starts a video encoder. This function should be called after a successful call of [OH_VideoEncoder_Prepare](#oh_videoencoder_prepare). After being started, the encoder starts to report the registered event.|
 | [OH_AVErrCode OH_VideoEncoder_Stop(OH_AVCodec *codec)](#oh_videoencoder_stop) | - | Stops a video encoder and releases the input and output buffers. After the video encoder is stopped, you can call **OH_VideoEncoder_Start** to enter the running state again.|
@@ -139,7 +170,7 @@ Creates a video encoder instance based on a MIME type. This function is recommen
 
 | Name| Description|
 | -- | -- |
-| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#variables).|
+| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE variables](capi-native-avcodec-base-h.md#variables).|
 
 **Returns**
 
@@ -173,6 +204,72 @@ Creates a video encoder instance based on an encoder name. To use this function,
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) * | Pointer to the video encoder instance created.<br> If the encoder name is not supported or the memory is insufficient, NULL is returned.|
 
+### OH_VideoEncoder_CreatePrimaryWithPreproc()
+
+```c
+OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCodec **codec)
+```
+
+**Description**
+
+Creates a primary video encoder instance that supports pre-processing. The encoder provides the following capabilities:
+1. Pre-processing features (downsampling, cropping, and frame dropping).
+2. Creation of a secondary encoder from this primary encoder to enable dual-output encoding with one input.
+
+The encoder created via this API supports only the surface mode, and does not support the buffer mode or synchronous mode. After the encoder is successfully created, it must be destroyed via [OH_VideoEncoder_Destroy](#oh_videoencoder_destroy).
+
+**System capability**: SystemCapability.Multimedia.Media.VideoEncoder
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const char *mime | MIME type string, which cannot be **NULL**. It must be a supported type.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) **codec | Double pointer used to receive the created codec instance. It cannot be **NULL**. Once successfully created, the instance must be destroyed via [OH_VideoEncoder_Destroy](#oh_videoencoder_destroy).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The **mime** parameter is **NULL**, the **codec** parameter is **NULL**, or the MIME type is not supported.<br>**AV_ERR_NO_MEMORY**: Memory allocation fails.|
+
+### OH_VideoEncoder_CreateSecondaryFromPrimary()
+
+```c
+OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_AVCodec **codec)
+```
+
+**Description**
+
+Creates a secondary video encoder instance from the primary encoder. The secondary encoder:
+1. Shares the input source with the primary encoder.
+2. Can be configured with independent encoding parameters.
+3. Supports different pre-processing parameters.
+4. Can be started and stopped independently (not dependent on the start/stop state of the primary encoder).
+5. Has a lifecycle shorter than that of the primary encoder.
+6. A primary encoder can have only one secondary encoder at a time.
+
+A secondary encoder must be created after the primary encoder is successfully created. Once a secondary encoder is successfully created, it must be destroyed via [OH_VideoEncoder_Destroy](#oh_videoencoder_destroy). You are advised to destroy the secondary encoder before destroying the primary encoder.
+
+**System capability**: SystemCapability.Multimedia.Media.VideoEncoder
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *primary | Handle to the primary encoder, which must be created via [OH_VideoEncoder_CreatePrimaryWithPreproc](#oh_videoencoder_createprimarywithpreproc) and cannot be **NULL**.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) **codec | Double pointer used to receive the created secondary encoder instance. It cannot be **NULL**. Once successfully created, the instance must be destroyed via [OH_VideoEncoder_Destroy](#oh_videoencoder_destroy).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The **primary** parameter is **NULL**, the **codec** parameter is **NULL**, or the encoder corresponding to **primary** is not a valid primary encoder.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The primary encoder already has an associated secondary encoder.<br>**AV_ERR_NO_MEMORY**: Memory allocation fails.|
+
 ### OH_VideoEncoder_Destroy()
 
 ```c
@@ -197,7 +294,7 @@ Clears the internal resources of a video encoder and destroys the encoder instan
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
 
 ### OH_VideoEncoder_SetCallback()
 
@@ -229,7 +326,7 @@ Sets an OH_AVCodecCallback callback so that your application can respond to even
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
 
 ### OH_VideoEncoder_RegisterCallback()
 
@@ -257,7 +354,7 @@ Registers an OH_AVCodecCallback callback so that your application can respond to
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
 
 ### OH_VideoEncoder_RegisterParameterCallback()
 
@@ -267,7 +364,7 @@ OH_AVErrCode OH_VideoEncoder_RegisterParameterCallback(OH_AVCodec *codec, OH_Vid
 
 **Description**
 
-Registers an OH_AVCodecCallback input parameter callback so that your application can respond to events generated by a video encoder. In surface encoding mode, this function must be called when frame parameters need to be set,<br> and it must be called before [OH_VideoEncoder_Configure](#oh_videoencoder_configure).
+Registers an input parameter callback so that your application can respond to events generated by a video encoder. In surface encoding mode, this function must be called when frame parameters need to be set,<br> and it must be called before [OH_VideoEncoder_Configure](#oh_videoencoder_configure).
 
 **System capability**: SystemCapability.Multimedia.Media.VideoEncoder
 
@@ -285,7 +382,7 @@ Registers an OH_AVCodecCallback input parameter callback so that your applicatio
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is not called prior to **OH_VideoEncoder_Prepare**.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: The function is not called prior to **OH_VideoEncoder_Prepare**.|
 
 ### OH_VideoEncoder_Configure()
 
@@ -295,7 +392,7 @@ OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 
 **Description**
 
-Configures a video encoder. Typically, you need to configure the description information about the video track to be encoded, such as the width, height, and pixel format. This function must be called prior to **OH_VideoEncoder_Prepare**.<br> This function is used to verify the validity of configuration parameters. Some invalid parameters are not forcibly verified. The default values are used or discarded. Some invalid parameters are forcibly verified. The rules are as follows:<br> The value ranges of the following parameters can be obtained from [Capability Query](../../media/avcodec/obtain-supported-codecs.md). All the values of **OH_MD_KEY_I_FRAME_INTERVAL** are supported.<br> If the current platform does not support **OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY** or **OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT**, no error is reported and the normal encoding process is used.
+Configures encoding parameters for a video encoder. Typically, you need to configure the description information about the video frames, such as the frame width, height, and pixel format. This function must be called prior to **OH_VideoEncoder_Prepare**.<br> This function is used to verify the validity of configuration parameters. Some invalid parameters are not forcibly verified. The default values are used or discarded. Some invalid parameters are forcibly verified. The rules are as follows:<br> The value ranges of the following parameters can be obtained through [capability query](../../media/avcodec/obtain-supported-codecs.md). **OH_MD_KEY_I_FRAME_INTERVAL** does not support capability query currently.<br> When attempting to set the **OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY** or **OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT** parameter on an unsupported platform, this API will not return an error; instead, it will follow its normal execution path.
 
 Parameter verification rules are as follows:
 
@@ -337,7 +434,7 @@ Parameter verification rules are as follows:
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: 1. The value of **codec** is nullptr or does not point to an encoder instance. 2. The format is not supported.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is not called prior to **OH_VideoEncoder_Prepare**.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: 1. The value of **codec** is nullptr or does not point to an encoder instance. 2. The format is not supported.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: The function is not called prior to **OH_VideoEncoder_Prepare**.<br>   **AV_ERR_UNSUPPORT**: The pixel format is not supported.|
 
 ### OH_VideoEncoder_Prepare()
 
@@ -363,7 +460,7 @@ Prepares internal resources for a video encoder. This function must be called af
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal error occurs in the input encoder instance.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal error occurs in the input encoder instance.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.|
 
 ### OH_VideoEncoder_Start()
 
@@ -389,7 +486,7 @@ Starts a video encoder. This function should be called after a successful call o
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.|
 
 ### OH_VideoEncoder_Stop()
 
@@ -415,7 +512,7 @@ Stops a video encoder and releases the input and output buffers. After the video
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.|
 
 ### OH_VideoEncoder_Flush()
 
@@ -441,7 +538,7 @@ Clears the input and output data and parameters, for example, H.264 PPS/SPS, cac
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.|
 
 ### OH_VideoEncoder_Reset()
 
@@ -467,7 +564,7 @@ Resets a video encoder. The encoder returns to the initial state. To continue en
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
 
 ### OH_VideoEncoder_GetOutputDescription()
 
@@ -520,7 +617,7 @@ Sets the encoder parameter when a video encoder is running.<br> This function ca
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: 1. The value of **codec** is nullptr or does not point to an encoder instance. 2. The format is not supported.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: 1. The value of **codec** is nullptr or does not point to an encoder instance. 2. The format is not supported.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.|
 
 ### OH_VideoEncoder_GetSurface()
 
@@ -547,7 +644,7 @@ Obtains the input surface from a video encoder. This function must be called aft
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
 
 ### OH_VideoEncoder_FreeOutputData()
 
@@ -578,7 +675,7 @@ Frees an output buffer of a video encoder.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.|
 
 ### OH_VideoEncoder_NotifyEndOfStream()
 
@@ -604,7 +701,7 @@ Notifies a video encoder that input streams end. You are advised to use this fun
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.|
 
 ### OH_VideoEncoder_PushInputData()
 
@@ -636,7 +733,7 @@ Pushes the input buffer filled with data to a video encoder.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**:<br>1. The value of **codec** is nullptr or does not point to an encoder instance.<br>2. Invalid **index**. This error does not affect the subsequent encoding process.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.|
 
 ### OH_VideoEncoder_PushInputBuffer()
 
@@ -663,7 +760,7 @@ Pushes the OH_AVBuffer corresponding to the index to a video encoder in buffer m
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: 1. The value of **codec** is nullptr or does not point to an encoder instance. 2. The format is not supported.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**:<br>1. The value of **codec** is nullptr or does not point to an encoder instance.<br>2. Invalid **index**. This error does not affect the subsequent encoding process.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.|
 
 ### OH_VideoEncoder_PushInputParameter()
 
@@ -690,7 +787,7 @@ Pushes the parameter configured for a frame with the given index to a video enco
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**:<br>1. The value of **codec** is nullptr or does not point to an encoder instance.<br>2. Invalid **index**. This error does not affect the subsequent encoding process.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.|
 
 ### OH_VideoEncoder_FreeOutputBuffer()
 
@@ -717,7 +814,7 @@ Returns the processed OH_AVBuffer corresponding to the index to a video encoder.
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**:<br>         1. The value of **codec** is nullptr or does not point to an encoder instance.<br>         2. The format is not supported.<br>         3. The index is invalid or the same index is used consecutively. This error does not affect the subsequent encoding process.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: An internal execution error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: An internal exception occurs in the encoder instance, for example, an unexpected nullptr.<br>         **AV_ERR_INVALID_VAL**:<br>1. The value of **codec** is nullptr or does not point to an encoder instance.<br>2. Invalid **index**. This error does not affect the subsequent encoding process.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.|
 
 ### OH_VideoEncoder_GetInputDescription()
 
@@ -798,7 +895,7 @@ Obtains the index of the next available input buffer.<br> After calling this fun
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The encoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: This function is called in asynchronous mode.<br>         **AV_ERR_TRY_AGAIN_LATER**: The query fails. Try again after a short interval.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The encoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: This function is called in asynchronous mode.<br>         **AV_ERR_TRY_AGAIN_LATER**: The query fails. Try again after a short interval.|
 
 ### OH_VideoEncoder_GetInputBuffer()
 
@@ -853,7 +950,7 @@ Obtains the index of the next available output buffer. Through the buffer instan
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The encoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: The function is called in an incorrect state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: This function is called in asynchronous mode.<br>         **AV_ERR_STREAM_CHANGED**: The stream format has changed. You can call [OH_VideoEncoder_GetOutputDescription](#oh_videoencoder_getoutputdescription) to obtain the new stream information.<br>         **AV_ERR_TRY_AGAIN_LATER**: The query fails. Try again after a short interval.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: The encoder instance has been destroyed.<br>         **AV_ERR_INVALID_VAL**: The value of **codec** is nullptr or does not point to an encoder instance.<br>         **AV_ERR_UNKNOWN**: An unknown error occurs.<br>         **AV_ERR_INVALID_STATE**: This API cannot be called in the current encoder state.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: This function is called in asynchronous mode.<br>         **AV_ERR_STREAM_CHANGED**: The stream format has changed. You can call [OH_VideoEncoder_GetOutputDescription](#oh_videoencoder_getoutputdescription) to obtain the new stream information.<br>         **AV_ERR_TRY_AGAIN_LATER**: The query fails. Try again after a short interval.|
 
 ### OH_VideoEncoder_GetOutputBuffer()
 

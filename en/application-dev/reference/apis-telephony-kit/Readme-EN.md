@@ -23,7 +23,6 @@
   - [@ohos.telephony.radio (Network Search) (System API)](js-apis-radio-sys.md)
   - [@ohos.telephony.sim (SIM Management) (System API)](js-apis-sim-sys.md)
   - [@ohos.telephony.sms (SMS) (System API)](js-apis-sms-sys.md)
-  - [@ohos.telephony.vcard (VCard) (System API)](js-apis-vcard-sys.md)
     <!--DelEnd-->
 - C API<!--telephony-c-->
   - Modules<!--telephony-module-->

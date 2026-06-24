@@ -38,7 +38,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
 #include <cstring>
 #include "file.h"
 
-static OH_Crypto_ErrCode CovertPriketToKeyPair(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyPair)
+static OH_Crypto_ErrCode ConvertPrikeyToKeyPair(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyPair)
 {
     uint8_t privData[] = {
         0x30, 0x82, 0x01, 0x3c, 0x02, 0x01, 0x00, 0x02, 0x41, 0x00, 0xe4, 0x0c, 0xc1, 0x45, 0x43, 0xff,
@@ -90,7 +90,7 @@ OH_Crypto_ErrCode doTestGetPubkeyFromPrikey()
         0x3f, 0x8c, 0x58, 0x5d, 0xdd, 0x9f, 0x0c, 0x04, 0xc1, 0x02, 0x03, 0x01, 0x00, 0x01
     };
 
-    ret = CovertPriketToKeyPair(ctx, &keyPair);
+    ret = ConvertPrikeyToKeyPair(ctx, &keyPair);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoAsymKeyGenerator_Destroy(ctx);
         OH_CryptoKeyPair_Destroy(keyPair);

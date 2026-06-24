@@ -60,7 +60,7 @@ Defines the usage scope of the certificate to be installed.
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
-| NOT_SPECIFIED<sup>18+</sup>  | 0      | No user is specified.|
+| NOT_SPECIFIED<sup>18+</sup>  | 0      | The usage scope is not specified.|
 | CURRENT_USER | 1      | The installed certificate is accessible only to the current user.|
 | GLOBAL_USER<sup>18+</sup> | 2      | The installed certificate is accessible to all users.|
 
@@ -132,12 +132,15 @@ Represents the authorization request information of the certificate.
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | certTypes | Array<[CertificateType](#certificatetype14)>   | No  | No  | List of certificate types.|
 | certPurpose | [certificateManager.CertificatePurpose](js-apis-certManager.md#certificatepurpose22)    | No  | Yes  | Certificate usage.<br>If the **certTypes** parameter contains the **CertificateType.CREDENTIAL_UKEY** type, the **certPurpose** parameter takes effect.|
+| keyAlgIDs |  Array\<string>  | No  | Yes  | Public key algorithm type of a certificate, which is used to filter the certificate list in the credential authorization dialog box. Only the matched certificates are displayed. The value can be **RSA**, **EC**, or **ECDSA**.<br>If **keyAlgIDs** contains unsupported algorithms, the filter is invalid.<br>The array can contain a maximum of 20 items.<br>**Since**: 26.0.0|
+| issuers |  Array\<Uint8Array>  | No  | Yes  | Certificate issuer in DER format, which is used to filter the certificate list in the credential authorization dialog box. Only the matched certificates are displayed.<br>If the issuers array contains an element whose length is 0, the issuers filter does not take effect.<br>The array can contain a maximum of 20 items.<br>**Since**: 26.0.0|
+| uri | string  | No  | Yes  | Application URI to be verified by the server. This URI is displayed in the credential authorization dialog box.<br>**Since**: 26.0.0|
 
 ## certificateManagerDialog.openCertificateManagerDialog
 
 openCertificateManagerDialog(context: common.Context, pageType: CertificateDialogPageType): Promise\<void>
 
-Opens the certificate management dialog box and displays the page of the specified type. This API uses a promise to return the result.
+Opens the certificate management dialog box. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -251,7 +254,7 @@ let caCert: Uint8Array = new Uint8Array([
 ]);
 try {
   certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert).then((uri: string) => {
-    console.info('Succeeded opening install certificate');
+    console.info('Succeeded in opening install certificate');
   }).catch((err: BusinessError) => {
     console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
@@ -317,7 +320,7 @@ let certificateType: certificateManagerDialog.CertificateType = certificateManag
 let certUri: string = "test";
 try {
   certificateManagerDialog.openUninstallCertificateDialog(context, certificateType, certUri).then(() => {
-    console.info('Succeeded opening uninstall certificate');
+    console.info('Succeeded in opening uninstall certificate');
   }).catch((err: BusinessError) => {
     console.error(`Failed to open uninstall certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
@@ -439,7 +442,7 @@ import { UIContext } from '@kit.ArkUI';
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 try {
     certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
-        console.info(`Success to authorize certificate, uri: ${uri}`)
+        console.info(`Succeeded in authorizing certificate, uri: ${uri}`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
     });
@@ -507,7 +510,7 @@ let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: c
 try {
     certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
       let reference = certReference;
-      console.info(`Success to open authorize dialog.`)
+      console.info(`Succeeded in opening authorize dialog.`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
     });
@@ -570,7 +573,7 @@ let keyUri: string = "test"
 let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri }
 try {
     certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
-        console.info(`Success to open ukey authorization dialog`)
+        console.info(`Succeeded in opening ukey authorization dialog`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
     });
@@ -613,7 +616,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let isSupport: boolean = certificateManagerDialog.supportsCACertDialog();
-  console.info(`Success to check whether the device supports CA dialog.`)
+  console.info(`Succeeded in checking whether the device supports CA dialog.`)
 } catch (err) {
     let error = err as BusinessError;
     console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);

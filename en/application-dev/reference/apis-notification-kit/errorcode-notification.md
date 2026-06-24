@@ -1,8 +1,8 @@
 # Notification Error Codes
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -222,9 +222,11 @@ No memory space.
 
 **Description**
 
-This error code is reported when a memory allocation error occurs.
+This error code is returned if a memory allocation error occurs due to insufficient memory space.
 
 **Possible Causes**
+
+The memory space is insufficient.
 
 A memory allocation error occurs.
 
@@ -517,4 +519,24 @@ The **Awareness & suggestions** switch is disabled in the system settings path: 
 **Solution**
 
 Go to **Settings** > **Privacy & security** > **Location** > **System services** (scroll to the bottom of the screen) and enable the **Awareness & suggestions** switch.
+<!--DelEnd-->
+
+<!--Del-->
+## 1600028 Current Notification Does Not Support this API
+
+**Error Message**
+
+This notification is not supported.
+
+**Description**
+
+The current notification does not support this API.
+
+**Possible Causes**
+
+The reminder for later is set for a third-party live notification, system live notification, or other notification types that cannot be deleted.
+
+**Solution**
+
+Check whether the notification is third-party live notification, system live notification, or other types that cannot be deleted when you set the reminder.
 <!--DelEnd-->
