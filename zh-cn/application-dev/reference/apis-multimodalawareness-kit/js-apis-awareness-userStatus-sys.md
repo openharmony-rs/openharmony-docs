@@ -137,7 +137,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | feature | [UserStatusFeature](#userstatusfeature) | 是 | 否 | 表示用户状态检测功能类型。 |
 | status | string | 是 | 否 | 表示特定功能下的多阶段检测状态。字符串长度范围[0,64]。 |
 | result | int | 是 | 否 | 表示用户状态检测结果。取值范围[0,1]。 |
-| errCode | int | 是 | 否 | 表示业务错误码，0表示成功，-100表示失败。 |
+| errCode | int | 是 | 否 | 表示业务错误码，0表示成功，非0表示失败。 |
 
 ## UserBlowData
 
@@ -207,7 +207,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | visualAngle | double[] | 是 | 是 | 表示用户看屏幕的视角。取值范围[0,90]。 |
-| angularVelocity | double[] | 是 | 是 | 表示当前状态下设备的角速度。单位为m/s²。 |
+| angularVelocity | double[] | 是 | 是 | 表示当前状态下设备的角速度。单位为rad/s。 |
 | gravityAcceleration | double[] | 是 | 是 | 表示当前状态下设备的重力加速度。单位为m/s²。 |
 | linearAcceleration | double[][] | 是 | 是 | 表示当前状态下设备的线性加速度。单位为m/s²。 |
 | azimuth | double[] | 是 | 是 | 表示当前状态下设备的方位角。取值范围[0,360]。 |
