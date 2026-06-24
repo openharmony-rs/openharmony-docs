@@ -128,7 +128,7 @@
 
 4. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加导航路由栈 navPathStack 和页面路由映射 PageMap，用于管理页面跳转并声明目标 Web 页面（ArkWebPage）。示例代码如下：
 
-   <!-- @[ArkWeb_Fling_Jank_ArkTs_Nav](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[ArkWeb_Fling_Jank_Nav](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    // 按钮跳转到易出现滑动丢帧的web场景，触发ArkWeb抛滑丢帧事件。
