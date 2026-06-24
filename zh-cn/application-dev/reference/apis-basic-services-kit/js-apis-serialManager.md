@@ -39,8 +39,6 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 
 查询串口设备清单，包括设备名称和对应的端口号。通常在应用启动时、设备连接后或需要检测可用串口设备时调用。
 
-**起始版本：** 19
-
 **系统能力：** SystemCapability.USB.USBManager.Serial
 
 **返回值：**
@@ -84,8 +82,6 @@ function getPortList() {
 hasSerialRight(portId: number): boolean
 
 检查应用程序是否具有访问串口设备的权限。应用退出后再拉起时，需要重新申请授权。通常在打开串口设备、执行串口操作前调用此接口检查权限状态。
-
-**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -148,8 +144,6 @@ function hasSerialRight() {
 requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
 请求应用程序访问串口设备的权限。应用退出时自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。通常在首次访问串口设备前、检测到无权限时调用此接口向用户申请授权。
-
-**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -225,8 +219,6 @@ open(portId: number): void
 **配对调用：**
 - 必须与[close](#serialmanagerclose)方法配对使用
 - 打开串口后，使用完毕必须调用close()释放资源
-
-**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -312,8 +304,6 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
-
-**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -416,8 +406,6 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
 
-**起始版本：** 19
-
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 **参数：**
@@ -515,8 +503,6 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
-
-**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -624,8 +610,6 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
 
-**起始版本：** 19
-
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 **参数：**
@@ -726,8 +710,6 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
-
-**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -837,8 +819,6 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
 
-**起始版本：** 19
-
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 **参数：**
@@ -944,8 +924,6 @@ close(portId: number): void
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
 
-**起始版本：** 19
-
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 **参数：**
@@ -1038,8 +1016,6 @@ cancelSerialRight(portId: number): void
 - [requestSerialRight](#serialmanagerrequestserialright)：申请访问权限
 - [hasSerialRight](#serialmanagerhasserialright)：检查是否有访问权限
 
-**起始版本：** 19
-
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 **参数：**
@@ -1126,8 +1102,6 @@ function cancelSerialRight() {
 
 串口参数。
 
-**起始版本：** 19
-
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 | 名称     | 类型  |  只读 | 可选 | 说明    |
@@ -1138,8 +1112,6 @@ function cancelSerialRight() {
 ## BaudRates
 
 表示波特率的枚举，单位：比特/秒。
-
-**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -1180,8 +1152,6 @@ function cancelSerialRight() {
 
 表示数据位宽的枚举，单位：比特。
 
-**起始版本：** 19
-
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 | 名称     | 值     | 说明    |
@@ -1194,8 +1164,6 @@ function cancelSerialRight() {
 ## Parity
 
 表示校验位的校验方式的枚举。
-
-**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -1210,8 +1178,6 @@ function cancelSerialRight() {
 ## StopBits
 
 表示停止位宽的枚举，单位：比特。
-
-**起始版本：** 19
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
