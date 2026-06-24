@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_BasicSenseInfo {...} ScsiPeripheral_BasicSenseInfo
 
 ## 概述
 
-sense data的基本信息。
+Sense Data的基本信息。
 
 **起始版本：** 18
 

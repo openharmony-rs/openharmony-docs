@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
 
 ## 概述
 
-读/写操作的请求参数。
+读/写操作的请求参数，用于在驱动中构建SCSI命令描述块并执行数据传输操作。
 
 **起始版本：** 18
 
@@ -28,9 +28,9 @@ typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
 | -- | -- |
 | uint32_t lbAddress | 逻辑块起始地址。 |
 | uint16_t transferLength | 需要操作的连续逻辑块的数量。 |
-| uint8_t control | Control字段，用于指定一些控制信息。 |
-| uint8_t byte1 | CDB的第一个字节。 |
-| uint8_t byte6 | CDB的第六个字节。 |
+| uint8_t control | Control字段，用于指定SCSI命令的控制信息。 |
+| uint8_t byte1 | CDB（Command Descriptor Block，命令描述块）的第一个字节。 |
+| uint8_t byte6 | CDB（Command Descriptor Block，命令描述块）的第六个字节。 |
 | [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md)* data | 数据传输的缓冲区。 |
 | uint32_t timeout | 超时时间（单位：毫秒）。 |
 

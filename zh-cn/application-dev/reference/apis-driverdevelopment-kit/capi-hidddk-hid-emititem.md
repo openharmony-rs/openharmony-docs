@@ -12,7 +12,7 @@ typedef struct Hid_EmitItem {...} Hid_EmitItem
 
 ## 概述
 
-事件信息。
+HID事件信息，包含事件类型、编码和值。
 
 **起始版本：** 11
 

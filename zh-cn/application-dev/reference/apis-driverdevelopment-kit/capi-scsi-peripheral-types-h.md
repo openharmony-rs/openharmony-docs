@@ -27,17 +27,17 @@
 | 名称                                                                                   | typedef关键字 | 描述 |
 |--------------------------------------------------------------------------------------| -- | -- |
 | [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) | ScsiPeripheral_DeviceMemMap | 通过调用OH_ScsiPeripheral_CreateDeviceMemMap创建的设备内存映射。使用该设备内存映射的缓冲区可以提供更好的性能。 |
-| [ScsiPeripheral_IORequest](capi-scsiperipheralddk-scsiperipheral-iorequest.md)       | ScsiPeripheral_IORequest | 读/写操作的请求参数。 |
+| [ScsiPeripheral_IORequest](capi-scsiperipheralddk-scsiperipheral-iorequest.md)       | ScsiPeripheral_IORequest | 读/写操作的请求参数，用于在驱动中构建SCSI命令描述块并执行数据传输操作。 |
 | [ScsiPeripheral_Request](capi-scsiperipheralddk-scsiperipheral-request.md)           | ScsiPeripheral_Request | 请求参数结构体。 |
 | [ScsiPeripheral_Response](capi-scsiperipheralddk-scsiperipheral-response.md)         | ScsiPeripheral_Response | 响应参数结构体。 |
-| [ScsiPeripheral_TestUnitReadyRequest](capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md) | ScsiPeripheral_TestUnitReadyRequest | 命令（test unit ready）的请求结构体。 |
-| [ScsiPeripheral_InquiryRequest](capi-scsiperipheralddk-scsiperipheral-inquiryrequest.md)            | ScsiPeripheral_InquiryRequest | SCSI命令（inquiry）的请求结构体。 |
-| [ScsiPeripheral_InquiryInfo](capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md)                  | ScsiPeripheral_InquiryInfo | SCSI inquiry 数据。 |
-| [ScsiPeripheral_ReadCapacityRequest](capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md)  | ScsiPeripheral_ReadCapacityRequest | SCSI命令（read capacity）的请求结构体。 |
-| [ScsiPeripheral_CapacityInfo](capi-scsiperipheralddk-scsiperipheral-capacityinfo.md)                | ScsiPeripheral_CapacityInfo | SCSI read capacity 数据。 |
-| [ScsiPeripheral_RequestSenseRequest](capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md)  | ScsiPeripheral_RequestSenseRequest | SCSI命令（Request Sense）的请求结构体。 |
-| [ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md)            | ScsiPeripheral_BasicSenseInfo | sense data的基本信息。 |
-| [ScsiPeripheral_VerifyRequest](capi-scsiperipheralddk-scsiperipheral-verifyrequest.md)              | ScsiPeripheral_VerifyRequest | SCSI命令（verify）的请求结构体。 |
+| [ScsiPeripheral_TestUnitReadyRequest](capi-scsiperipheralddk-scsiperipheral-testunitreadyrequest.md) | ScsiPeripheral_TestUnitReadyRequest | SCSI命令（TEST UNIT READY）的请求结构体，通常用于确认设备状态是否就绪。 |
+| [ScsiPeripheral_InquiryRequest](capi-scsiperipheralddk-scsiperipheral-inquiryrequest.md)            | ScsiPeripheral_InquiryRequest | SCSI命令（INQUIRY）的请求结构体，通常用于查询设备的基本信息。 |
+| [ScsiPeripheral_InquiryInfo](capi-scsiperipheralddk-scsiperipheral-inquiryinfo.md)                  | ScsiPeripheral_InquiryInfo | SCSI INQUIRY 数据。 |
+| [ScsiPeripheral_ReadCapacityRequest](capi-scsiperipheralddk-scsiperipheral-readcapacityrequest.md)  | ScsiPeripheral_ReadCapacityRequest | SCSI命令（READ CAPACITY）的请求结构体，用于发送读取存储容量的命令，可帮助获取设备的逻辑块大小和总块数。 |
+| [ScsiPeripheral_CapacityInfo](capi-scsiperipheralddk-scsiperipheral-capacityinfo.md)                | ScsiPeripheral_CapacityInfo | SCSI READ CAPACITY 数据。 |
+| [ScsiPeripheral_RequestSenseRequest](capi-scsiperipheralddk-scsiperipheral-requestsenserequest.md)  | ScsiPeripheral_RequestSenseRequest | SCSI命令（REQUEST SENSE）的请求结构体，该命令通常用于获取设备的错误信息。 |
+| [ScsiPeripheral_BasicSenseInfo](capi-scsiperipheralddk-scsiperipheral-basicsenseinfo.md)            | ScsiPeripheral_BasicSenseInfo | Sense Data的基本信息。 |
+| [ScsiPeripheral_VerifyRequest](capi-scsiperipheralddk-scsiperipheral-verifyrequest.md)              | ScsiPeripheral_VerifyRequest | SCSI命令（VERIFY）的请求结构体，该命令通常用于校验逻辑块的数据完整性。 |
 | [ScsiPeripheral_Device](capi-scsiperipheralddk-scsiperipheral-device.md)                            | ScsiPeripheral_Device | 不透明的SCSI设备结构体。 |
 
 ### 枚举
@@ -105,7 +105,7 @@ SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE 8
 
 **描述**
 
-描述符格式感应数据的最小长度。
+描述符格式感知数据的最小长度。
 
 **起始版本：** 18
 
@@ -117,7 +117,7 @@ SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE 18
 
 **描述**
 
-固定格式感应数据的最小长度。
+固定格式感知数据的最小长度。
 
 **起始版本：** 18
 
@@ -141,7 +141,7 @@ SCSIPERIPHERAL_MAX_SENSE_DATA_LEN 252
 
 **描述**
 
-感应数据的最大长度。
+感知数据的最大长度。
 
 **起始版本：** 18
 
