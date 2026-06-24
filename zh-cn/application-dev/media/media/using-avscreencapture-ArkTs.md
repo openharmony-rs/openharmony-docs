@@ -52,11 +52,16 @@
 
    ArkTS-Dyn示例：
 
+   <!-- @[screenCapture_arkts_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
+
    ``` TypeScript
-   // 声明一个AVScreenCaptureRecorder类型的变量。
+   // 声明一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
    private screenCapture?: media.AVScreenCaptureRecorder;
-   // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
-   this.screenCapture = await media.createAVScreenCaptureRecorder();
+
+   async createAVScreenCapture(): Promise<void> {
+     // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
+     this.screenCapture = await media.createAVScreenCaptureRecorder();
+   }
    ```
 
    ArkTS-Sta示例：
@@ -66,21 +71,12 @@
    ``` TypeScript
    // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
    this.screenCapture = await media.createAVScreenCaptureRecorder();
-   <!-- @[screenCapture_arkts_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/AVScreenCaptureDemo.ets) -->
-
-   ```javascript
-   // 声明一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
-   private screenCapture?: media.AVScreenCaptureRecorder;
-   
-   async createAVScreenCapture(): Promise<void> {
-     // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
-     this.screenCapture = await media.createAVScreenCaptureRecorder();
-   }
    ```
 
 3. 对成员变量screenCapture设置监听函数，分别监听不同状态和异常情况。
 
    ArkTS-Dyn示例：
+
    <!-- @[screenCapture_arkts_Callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
    
    ``` TypeScript
@@ -200,41 +196,48 @@
 
    ArkTS-Dyn示例：
 
+   <!-- @[screenCapture_arkts_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
+
    ``` TypeScript
-   const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-   let filePath: string = context.filesDir + '/screenCapture.mp4';
-   let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-   if (!captureFile) {
-     console.error("处理异常情况");
-     return;
+   openFile(context: Context): void {
+     const path: string = context.filesDir + '/screenCapture.mp4';
+     this.captureFile = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
    }
-   let displayClass: display.Display | undefined = undefined;
-   try {
-     displayClass = display.getDefaultDisplaySync();
-     console.info(`The display info is: ${JSON.stringify(displayClass)}`);
-   } catch (exception) {
-     console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+   
+   setConfig(context: Context): void {
+     this.openFile(context);
+     if (!this.captureFile) {
+       console.error(`处理异常情况`)
+       return;
+     }
+     let displayClass: display.Display | undefined = undefined;
+     try {
+       displayClass = display.getDefaultDisplaySync();
+       console.info(`The display info is: ${JSON.stringify(displayClass)}`);
+     } catch (exception) {
+       console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+     }
+     if (!displayClass) {
+       console.error(`Failed to get displayClass.`);
+       return;
+     }
+     this.captureConfig = {
+         // 开发者可根据屏幕宽高设置相应尺寸。
+         // 屏幕宽度应设置为64的倍数。
+         frameWidth: displayClass.width,
+         // 根据屏幕的高设置高度。
+         frameHeight: displayClass.height,
+         // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
+         fd: this.captureFile.fd,
+         // 可选参数及其默认值。
+         videoBitrate: 10000000,
+         audioSampleRate: 48000,
+         audioChannelCount: 2,
+         audioBitrate: 96000,
+         displayId: 0,
+         preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4
+       };
    }
-   if (!displayClass) {
-     console.error("Failed to get displayClass.");
-     return;
-   }
-   captureConfig: media.AVScreenCaptureRecordConfig = {
-       // 开发者可根据屏幕宽高设置相应尺寸。
-       // 屏幕宽度应设置为64的倍数。
-       frameWidth: displayClass.width,
-       // 根据屏幕的高设置高度。
-       frameHeight: displayClass.height,
-       // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
-       fd: captureFile.fd,
-       // 可选参数及其默认值。
-       videoBitrate: 10000000,
-       audioSampleRate: 48000,
-       audioChannelCount: 2,
-       audioBitrate: 96000,
-       displayId: 0,
-       preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4
-   };
    ```
 
    ArkTS-Sta示例：
@@ -283,8 +286,10 @@
 
    ArkTS-Dyn示例：
 
+   <!-- @[screenCapture_arkts_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
+
    ``` TypeScript
-   await this.screenCapture.init(this.captureConfig);
+   await this.screenCapture?.init(this.captureConfig);
    ```
 
    ArkTS-Sta示例：
@@ -308,8 +313,10 @@
 
    ArkTS-Dyn示例：
 
+   <!-- @[screenCapture_arkts_startRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
+
    ``` TypeScript
-   await this.screenCapture.startRecording();
+   await this.screenCapture?.startRecording();
    ```
 
    ArkTS-Sta示例：
@@ -328,8 +335,10 @@
 
      ArkTS-Dyn示例：
 
+     <!-- @[screenCapture_arkts_stopRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
+
      ``` TypeScript
-     await this.screenCapture.stopRecording();
+     await this.screenCapture?.stopRecording();
      ```
 
      ArkTS-Sta示例：
@@ -343,9 +352,11 @@
 9. 调用[release](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#release12)方法销毁实例，释放资源。
    
    ArkTS-Dyn示例：
+
+   <!-- @[screenCapture_arkts_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/ets/pages/AVScreenCaptureDemo.ets) -->
    
    ``` TypeScript
-   await this.screenCapture.release();
+   await this.screenCapture?.release();
    ```
    
    ArkTS-Sta示例：
