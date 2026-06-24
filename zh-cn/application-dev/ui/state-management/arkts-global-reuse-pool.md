@@ -662,6 +662,8 @@ struct Index {
 }
 ```
 
+![arkts-global-reuse-getreusableinfo.gif](./figures/arkts-global-reuse-getreusableinfo.gif)
+
 **启动**（GlobalChild可见）：
 
 点击"检查GlobalChild"后日志打印GlobalChild的复用池count是0，maxCount是默认值100：
@@ -716,8 +718,6 @@ ReusableChild aboutToRecycle
 ```plaintext
 getReusableInfo(LegacyComp): count=0, maxCount=0
 ```
-
-![arkts-global-reuse-getreusableinfo.gif](./figures/arkts-global-reuse-getreusableinfo.gif)
 
 ### 使用`reuseId`控制缓存大小
 
