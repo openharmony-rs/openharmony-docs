@@ -691,6 +691,41 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
   }
   ```
 
+  ## DistrictRequestParams
+ 	 
+ 	 表示获取区县信息的请求参数。
+ 	 
+ 	 **起始版本：** 26.0.0
+ 	 
+ 	 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+ 	 
+ 	 **系统能力**：SystemCapability.Location.Location.Geocoder
+ 	 
+ 	 | 名称 | 类型 | 只读 | 可选 | 说明 |
+ 	 | -------- | -------- | -------- | -------- | -------- |
+ 	 | locale | string | 否 | 是 | 表示位置描述信息的语言，“zh”代表中文，“en”代表英文。 |
+ 	 | timeoutMs | number | 否 | 是 | 表示超时时间，单位是毫秒。 |
+ 	 
+ 	
+ 	 ## DistrictInfo
+ 	 
+ 	 表示区域信息。
+ 	 
+ 	 **起始版本：** 26.0.0
+ 	 
+ 	 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+ 	 
+ 	 **系统能力**：SystemCapability.Location.Location.Geocoder
+ 	 
+ 	 | 名称 | 类型 | 只读 | 可选 | 说明 |
+ 	 | -------- | -------- | -------- | -------- | -------- |
+ 	 | locale | string | 否 | 是  | 表示位置描述信息的语言，“zh”代表中文，“en”代表英文。 |
+ 	 | countryCode | string | 否 | 是  | 表示国家码信息。 |
+ 	 | countryName | string | 否 | 是 | 表示国家信息。 |
+ 	 | administrativeArea | string | 否 | 是 | 表示国家以下的一级行政区，一般是省/州。 |
+ 	 | subAdministrativeArea | string | 否 | 是 | 表示国家以下的二级行政区，一般是市。 |
+ 	 | locality | string | 否 | 是 | 表示城市信息，一般是市。 |
+ 	 | subLocality | string | 否 | 是 | 表示子城市信息，一般是区/县。 |
 
 ## geoLocationManager.off('locationChange')
 
@@ -744,7 +779,6 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```
-
 
 ## geoLocationManager.on('locationError')<sup>12+</sup>
 
@@ -3354,5 +3388,80 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
     })
   } catch (error) {
     console.error("findMatchingWlan: errCode " + error.code + ", errMessage " + error.message);
+  }
+   ```
+ 	 
+## geoLocationManager.getCurrentDistrict
+
+getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
+
+获取当前设备所在区域的信息。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Geocoder
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | request | [DistrictRequestParams](#districtrequestparams) | 否 | 设置区域信息请求参数。 |
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;[DistrictInfo](#districtinfo)&gt; | Promise对象，当前设备所在区域的信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.getCurrentDistrict} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                           |
+|3301100 | The location switch is off.  |
+|3301500 | Failed to query the area information because the reverse geocoding server returns an error.  |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  // 参数配置一：指定语言/国家/超时时间
+  try {
+    let params: geoLocationManager.DistrictRequestParams = {
+      locale: "en",
+      timeoutMs: 5000
+    }
+    geoLocationManager.getCurrentDistrict(params).then((res) => {
+      if (res) {
+        console.info("getCurrentDistrict result:" + res);
+      }
+    })
+    .catch((error: BusinessError) => {
+      console.error('promise, getCurrentDistrict: error=' + JSON.stringify(error));
+    });
+  } catch (error) {
+    console.error("getCurrentDistrict: errCode" + error.code + ", errMessage" + error.message);
+  }
+  // 参数配置二：使用默认值
+  try {
+    geoLocationManager.getCurrentDistrict().then((res) => {
+      if (res) {
+        console.info("getCurrentDistrict result:" + res);
+      }
+    })
+    .catch((error: BusinessError) => {
+      console.error('promise, getCurrentDistrict: error=' + JSON.stringify(error));
+    });
+  } catch (error) {
+    console.error("getCurrentDistrict: errCode" + error.code + ", errMessage" + error.message);
   }
   ```
