@@ -266,7 +266,7 @@ let ret: number = usbManager.getSupportedModes(0);
 
 setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-设置指定的端口支持的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。
+设置指定端口当前的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。调用成功后端口角色将切换为指定的角色。适用于系统应用需要动态切换USB端口角色的场景。
 
 > **说明：**
 >
@@ -280,15 +280,15 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 
 | 参数名    | 类型                            | 必填 | 说明             |
 | --------- | ------------------------------- | ---- | ---------------- |
-| portId    | number                          | 是   | 端口号。         |
-| powerRole | [PowerRoleType](#powerroletype) | 是   | 充电的角色。     |
-| dataRole  | [DataRoleType](#dataroletype)   | 是   | 数据传输的角色。 |
+| portId    | number                          | 是   | 端口号，可通过[getPortList](#getportlist12)获取端口列表后得到。|
+| powerRole | [PowerRoleType](#powerroletype) | 是   | 充电角色类型，可选值包括：NONE(无)、SOURCE(对外提供电源)、SINK(需要外部供电)。|
+| dataRole  | [DataRoleType](#dataroletype)   | 是   | 数据传输角色类型，可选值包括：NONE(无)、HOST(主机角色)、DEVICE(设备角色)。|
 
 **返回值：**
 
 | 类型                | 说明          |
 | ------------------- | ------------- |
-| Promise\<void\> | Promise对象。 |
+| Promise\<void\> | Promise对象。调用成功时无返回值，调用失败时抛出异常。 |
 
 **错误码：**
 
@@ -314,9 +314,9 @@ usbManager.setPortRoles(portId, usbManager.PowerRoleType.SOURCE, usbManager.Data
 
 addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
-添加软件包访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。
+添加应用程序访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。适用于系统设置应用、设备管理应用等需要为第三方应用授权访问USB设备的场景。
 
-usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；addDeviceAccessRight不会触发弹框，而是直接添加软件包访问设备的权限。
+[usbManager.requestRight](js-apis-usbManager.md#usbmanagerrequestright)会触发弹框请求用户授权；addDeviceAccessRight不会触发弹框，而是直接添加应用程序访问设备的权限。
 
 > **说明：**
 >
@@ -324,7 +324,7 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_USB_CONFIG
+**需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -332,8 +332,8 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 
 | 参数名     | 类型   | 必填 | 说明            |
 | ---------- | ------ | ---- | --------------- |
-| deviceName | string | 是   | 设备名称。      |
 | tokenId    | string | 是   | 软件包tokenId。 |
+| deviceName | string | 是   | 设备名称，格式为'bus-port'，例如'1-1'。      |
 
 **返回值：**
 
