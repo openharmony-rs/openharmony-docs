@@ -72,8 +72,7 @@ OpenHarmony兼容性测试是XTS（OpenHarmony生态认证测试套件）之一�
    }
    ```
 
-> ![注意](./public_sys-resources/icon-caution.gif)
-> **注意：**
+> <img src="public_sys-resources/icon-caution.gif" alt="说明"/> <b>说明：</b>
 > 1. XTS会在OHOS_SystemInit()调用之后，自行运行测试。
 > 
 > 2. 需要在"-Wl,--whole-archive"和"-Wl,--no-whole-archive"中间添加，否则链接不到。
