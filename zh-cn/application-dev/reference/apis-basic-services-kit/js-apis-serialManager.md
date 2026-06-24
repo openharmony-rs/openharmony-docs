@@ -511,7 +511,7 @@ function setAttribute() {
 
 read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-从串口设备异步读取数据,读取的数据将存储在buffer参数中。使用前需先调用[open](#serialmanageropen)打开串口设备。使用Promise异步回调，返回实际读取的数据长度。适用于接收传感器上报的数据、读取设备返回的响应数据、接收设备状态信息等场景。
+从串口设备异步读取数据，读取的数据将存储在buffer参数中。使用前需先调用[open](#serialmanageropen)打开串口设备。使用Promise异步回调，返回实际读取的数据长度。适用于接收传感器上报的数据、读取设备返回的响应数据、接收设备状态信息等场景。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
@@ -825,7 +825,7 @@ function write() {
 
 writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-向串口设备异步写数据,使用前需先调用[open](#serialmanageropen)打开串口设备。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。适用于需要阻塞式等待写入完成、发送重要指令、或对写入顺序有严格要求的场景。
+向串口设备异步写数据，使用前需先调用[open](#serialmanageropen)打开串口设备。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。适用于需要阻塞式等待写入完成、发送重要指令、或对写入顺序有严格要求的场景。
 
 ## write与writeSync差异说明
 
@@ -939,7 +939,7 @@ close(portId: number): void
 
 **配对调用：**
 - 与[open](#serialmanageropen)方法成对使用
-- 打开串口后,使用完毕必须调用本方法关闭串口释放资源
+- 打开串口后，使用完毕必须调用本方法关闭串口释放资源
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
