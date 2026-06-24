@@ -97,7 +97,7 @@ OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, 
 // 录屏时获取内录数据，内录参数必填。如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
 OH_AudioCaptureInfo innerCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_ALL_PLAYBACK};
 // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
-// 此处音频比特率取值为高质量录屏的取值。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
+// 为保证音频质量，此处音频比特率取值为128000。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
 OH_AudioEncInfo audioEncInfo = {
     .audioBitrate = 128000,
     .audioCodecformat = OH_AAC_LC
@@ -192,18 +192,18 @@ void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCo
 {
     if (stateCode == OH_SCREEN_CAPTURE_STATE_STARTED) {
         OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnStateChange started");
-        // 处理状态变更
-        // 可选 配置录屏旋转
+        // 处理状态变更。
+        // 可选，配置录屏旋转。
         int32_t ret = OH_AVScreenCapture_SetCanvasRotation(capture, true);
-        // 可选 修改Canvas分辨率
+        // 可选，修改Canvas分辨率。
         ret = OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIGHT);
-        // 可选 设置是否显示光标
+        // 可选，设置是否显示光标。
         ret = OH_AVScreenCapture_ShowCursor(g_avCapture, true);
-        // 可选 设置视频最大帧率
+        // 可选，设置视频最大帧率。
         ret = OH_AVScreenCapture_SetMaxVideoFrameRate(g_avCapture, CAPTURE_VIDEO_FRAME_RATE);
     }
     if (stateCode == OH_SCREEN_CAPTURE_STATE_INTERRUPTED_BY_OTHER) {
-        // 处理状态变更
+        // 处理状态变更。
     }
     (void)userData;
 }
