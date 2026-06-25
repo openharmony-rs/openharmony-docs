@@ -31,6 +31,8 @@ createServer(name:&nbsp;string):&nbsp;Server
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回错误码801，在其他设备类型中可正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：20
@@ -91,6 +93,8 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上调用会返回错误码801，在其他设备类型中可正常调用。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -159,6 +163,8 @@ start():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，企业管控设备调用会返回错误码32390300，其他设备类型可正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：20
@@ -203,6 +209,8 @@ stop():&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -249,6 +257,8 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：20
@@ -293,6 +303,8 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -352,6 +364,8 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -414,6 +428,8 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onServerStopped](#onserverstopped-1)。
@@ -474,6 +490,8 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -536,6 +554,8 @@ onConnectionAccepted(callback: Callback&lt;Connection&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('connectionAccepted')](#onconnectionaccepted)。
@@ -594,6 +614,8 @@ offConnectionAccepted(callback?: Callback&lt;Connection&gt;): void
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -655,6 +677,8 @@ onServerStopped(callback: Callback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('serverStopped')](#onserverstopped)。
@@ -714,6 +738,8 @@ offServerStopped(callback?: Callback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('serverStopped')](#offserverstopped)。
@@ -767,6 +793,8 @@ try {
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：20
@@ -796,6 +824,8 @@ connect():&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用返回错误码32390300，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -850,6 +880,8 @@ disconnect():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：20
@@ -900,6 +932,8 @@ close():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：20
@@ -949,6 +983,8 @@ getPeerDeviceId():&nbsp;string
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1001,6 +1037,8 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1067,6 +1105,8 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：20
@@ -1129,6 +1169,8 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **相关接口**：该接口对应的ArkTS-Sta接口是[offConnectResult](#offconnectresult-1)。
 
 **ArkTS-Dyn起始版本**：20
@@ -1187,6 +1229,8 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onDisconnected](#ondisconnected-1)。
@@ -1243,6 +1287,8 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1304,6 +1350,8 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onDataReceived](#ondatareceived-1)。
@@ -1361,6 +1409,8 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1425,6 +1475,8 @@ onConnectResult(callback: Callback&lt;ConnectResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('connectResult')](#onconnectresult)。
@@ -1483,6 +1535,8 @@ offConnectResult(callback?: Callback&lt;ConnectResult&gt;): void
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1543,6 +1597,8 @@ onDisconnected(callback: Callback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('disconnected')](#ondisconnected)。
@@ -1598,6 +1654,8 @@ offDisconnected(callback?: Callback&lt;int&gt;): void
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1658,6 +1716,8 @@ onDataReceived(callback: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('dataReceived')](#ondatareceived)。
@@ -1713,6 +1773,8 @@ offDataReceived(callback?: Callback&lt;ArrayBuffer&gt;): void
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

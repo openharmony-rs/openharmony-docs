@@ -354,8 +354,9 @@ commonEventManager.createSubscriber(subscribeInfo)
     console.info(`Succeeded in creating subscriber.`);
     subscriber = commonEventSubscriber;
   })
-  .catch((err: BusinessError): void => {
-    console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+  .catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`Failed to create subscriber. Code is ${error.code}, message is ${error.message}`);
   });
 ```
 

@@ -32,10 +32,10 @@ import { collections } from '@kit.ArkTS';
 | 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ------ | ---- | ---- | ----------------|
 | buffer | ArrayBuffer | 是   | 否  | ArkTS Uint16Array底层使用的buffer。|
-| byteLength | number | 是   | 否   | ArkTS Uint16Array的所占的字节数。|
+| byteLength | number | 是   | 否   | ArkTS Uint16Array所占的字节数。|
 | byteOffset | number | 是   | 否   | ArkTS Uint16Array距离其ArrayBuffer起始位置的偏移。|
 | length | number | 是   | 否  | ArkTS Uint16Array元素个数。|
-| BYTES_PER_ELEMENT | number | 是   | 否   | ArkTS Uint16Array中每个元素所占用的字节数。|
+| BYTES_PER_ELEMENT | number | 是   | 否   | ArkTS Uint16Array中每个元素所占的字节数。|
 
 ## constructor
 constructor()
@@ -452,7 +452,7 @@ let copied: collections.Uint16Array = array.copyWithin(3, 1, 3);
 ## some
 some(predicate: TypedArrayPredicateFn\<number, Uint16Array>): boolean
 
-测试ArkTS Uint16Array中的是否存在元素满足指定条件。
+测试ArkTS Uint16Array中是否存在元素满足指定条件。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

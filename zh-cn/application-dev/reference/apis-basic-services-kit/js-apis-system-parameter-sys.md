@@ -36,22 +36,22 @@ getSync(key: string, def?: string): string
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | key | string | 是 | 待查询的系统参数Key。 |
-| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br>def可以传undefined或自定义的任意值。 |
+| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br> def可以传undefined或任意字符串类型的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| string | 系统参数值。<br> 若key存在,返回设定的值。<br> 若key不存在且def有效，返回def；若未指定def或def无效(如undefined)，返回空字符串。 |
+| string | 系统参数值。<br> 若key存在，返回设定的值。<br> 若key不存在且def有效，返回def；若未指定def或def无效(如undefined)，返回空字符串。 |
 
 **示例：**
 
 ```ts
 try {
-    let info: string = systemParameter.getSync("const.ohos.apiversion");
-    console.info(JSON.stringify(info));
-} catch(e) {
-    console.error("getSync unexpected error: " + e);
+  let info: string = systemParameter.getSync('const.ohos.apiversion');
+  console.info(JSON.stringify(info));
+} catch (e) {
+  console.error('getSync unexpected error: ' + e);
 }
 ```
 
@@ -68,7 +68,7 @@ get(key: string, callback: AsyncCallback&lt;string&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | key | string | 是 | 待查询的系统参数Key。 |
-| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，用于异步返回系统参数值。当获取成功时，err为undefined，data为系统参数值；当获取失败时，err为错误对象，data为undefined。 |
 
 **示例：**
 
@@ -76,14 +76,15 @@ get(key: string, callback: AsyncCallback&lt;string&gt;): void
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemParameter.get("const.ohos.apiversion", (err: BusinessError, data: string) => {
-    if (err == undefined) {
-        console.info("get test.parameter.key value success:" + data)
+  systemParameter.get('const.ohos.apiversion', (err: BusinessError, data: string) => {
+    if (err) {
+      console.error('get const.ohos.apiversion value err:' + err.code);
     } else {
-        console.error(" get test.parameter.key value err:" + err.code)
-    }});
-} catch(e) {
-    console.error("get unexpected error: " + e);
+      console.info('get const.ohos.apiversion value success:' + data);
+    }
+  });
+} catch (e) {
+  console.error('get unexpected error: ' + e);
 }
 ```
 
@@ -109,15 +110,15 @@ get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemParameter.get("const.ohos.apiversion", "default", (err: BusinessError, data: string) => {
-        if (err == undefined) {
-            console.info("get test.parameter.key value success:" + data)
-        } else {
-            console.error(" get test.parameter.key value err:" + err.code)
-        }
-    });
-} catch(e) {
-    console.error("get unexpected error:" + e)
+  systemParameter.get('const.ohos.apiversion', 'default', (err: BusinessError, data: string) => {
+    if (err) {
+      console.error('get const.ohos.apiversion value err:' + err.code);
+    } else {
+      console.info('get const.ohos.apiversion value success:' + data);
+    }
+  });
+} catch (e) {
+  console.error('get unexpected error: ' + e);
 }
 ```
 
@@ -134,13 +135,13 @@ get(key: string, def?: string): Promise&lt;string&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | key | string | 是 | 待查询的系统参数Key。 |
-| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br> def可以传undefined或自定义的任意值。 |
+| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br> def可以传undefined或任意字符串类型的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise示例，用于异步获取结果。 |
+| Promise&lt;string&gt; | Promise实例，用于异步获取结果。 |
 
 **示例：**
 
@@ -148,14 +149,14 @@ get(key: string, def?: string): Promise&lt;string&gt;
 import { BusinessError } from '@ohos.base';
 
 try {
-    let p: Promise<string> = systemParameter.get("const.ohos.apiversion");
-    p.then((value: string) => {
-        console.info("get test.parameter.key success: " + value);
-    }).catch((err: BusinessError) => {
-        console.error("get test.parameter.key error: " + err.code);
-    });
-} catch(e) {
-    console.error("get unexpected error: " + e);
+  let getPromise: Promise<string> = systemParameter.get('const.ohos.apiversion');
+  getPromise.then((value: string) => {
+    console.info('get const.ohos.apiversion success: ' + value);
+  }).catch((err: BusinessError) => {
+    console.error('get const.ohos.apiversion error: ' + err.code);
+  });
+} catch (e) {
+  console.error('get unexpected error: ' + e);
 }
 ```
 
@@ -183,9 +184,9 @@ setSync(key: string, value: string): void
 
 ```ts
 try {
-    systemParameter.setSync("test.parameter.key", "default");
-} catch(e) {
-    console.error("set unexpected error: " + e);
+  systemParameter.setSync('test.parameter.key', 'default');
+} catch (e) {
+  console.error('set unexpected error: ' + e);
 }
 ```
 
@@ -203,7 +204,7 @@ set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 | -------- | -------- | -------- | -------- |
 | key | string | 是 | 待设置的系统参数Key。 |
 | value | string | 是 | 待设置的系统参数值。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于异步返回设置结果。当设置成功时，err为undefined；当设置失败时，err为错误对象。 |
 
 > **说明：**
 > - 此接口只能用于系统应用的参数设置。
@@ -215,14 +216,15 @@ set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemParameter.set("test.parameter.key", "testValue",  (err: BusinessError, data: void) =>{
-    if (err == undefined) {
-        console.info("set test.parameter.key value success :" + data)
+  systemParameter.set('test.parameter.key', 'testValue', (err: BusinessError, data: void) => {
+    if (err) {
+      console.error('set test.parameter.key value err:' + err.code);
     } else {
-        console.error("set test.parameter.key value err:" + err.code)
-    }});
-} catch(e) {
-    console.error("set unexpected error: " + e);
+      console.info('set test.parameter.key value success');
+    }
+  });
+} catch (e) {
+  console.error('set unexpected error: ' + e);
 }
 ```
 
@@ -239,13 +241,13 @@ set(key: string, value: string): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | key | string | 是 | 待设置的系统参数Key。 |
-| value| string | 是 | 待设置的系统参数值。 |
+| value | string | 是 | 待设置的系统参数值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise示例，用于异步获取结果。 |
+| Promise&lt;void&gt; | Promise实例，用于异步获取结果。 |
 
 > **说明：**
 > - 此接口只能用于系统应用的参数设置。
@@ -257,13 +259,13 @@ set(key: string, value: string): Promise&lt;void&gt;
 import { BusinessError } from '@ohos.base';
 
 try {
-    let p: Promise<void> = systemParameter.set("test.parameter.key", "testValue");
-    p.then((value: void) => {
-        console.info("set test.parameter.key success: " + value);
-    }).catch((err: BusinessError) => {
-        console.error(" set test.parameter.key error: " + err.code);
-    });
-} catch(e) {
-    console.error("set unexpected error: " + e);
+  let setPromise: Promise<void> = systemParameter.set('test.parameter.key', 'testValue');
+  setPromise.then((value: void) => {
+    console.info('set test.parameter.key success: ' + value);
+  }).catch((err: BusinessError) => {
+    console.error('set test.parameter.key error: ' + err.code);
+  });
+} catch (e) {
+  console.error('set unexpected error: ' + e);
 }
 ```

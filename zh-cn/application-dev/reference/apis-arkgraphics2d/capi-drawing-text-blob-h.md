@@ -6,7 +6,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 ## 概述
-文件中定义了与文字相关的功能函数。
+文件中定义了与文字相关的功能函数。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **引用文件：** <native_drawing/drawing_text_blob.h>
 

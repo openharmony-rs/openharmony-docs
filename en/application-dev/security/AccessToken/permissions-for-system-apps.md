@@ -5744,3 +5744,17 @@ Allows an agent application to stop specific applications using CLI commands.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
 **Since**: 26.0.0
+
+## ohos.permission.CAMERA_SHARED
+
+Allows a system application to access the camera together with other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Car
+
+**Valid since**: 26.0.0

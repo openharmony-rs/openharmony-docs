@@ -532,7 +532,6 @@ struct Index {
 struct Child {
   @State message: Message = new Message('Child');
   @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
   @ComponentInit
   myInit() {
     // 自定义组件创建完毕后，触发myInit方法
@@ -555,7 +554,6 @@ struct Child {
   }
   @ComponentDisappear
   myDisappear() {
-    this.label = 'myDisappear'
     hilog.info(0x0000, 'testTag', 'Child myDisappear');
   }
   @ComponentReuse
@@ -620,7 +618,6 @@ import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   @State changeChild: boolean = false;
 
   build() {

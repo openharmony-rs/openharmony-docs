@@ -232,7 +232,7 @@ ArkTS-Sta: setBitsByRange(element: int, fromIndex: int, toIndex: int): void
 
 | 参数名    | 类型   | 必填 | 说明                               |
 | --------- | ------ | ---- | ---------------------------------- |
-| element   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待设置的bit值，0表示0，其余表示1。 |
+| element   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待设置的bit值，0表示0，其余值表示1。 |
 | fromIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围起始索引，包含本索引值。fromIndex < 0或者fromIndex >= toIndex时，则会抛出错误。  |
 | toIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 范围终止索引，不包含本索引值。toIndex < 0或者toIndex > length时，则会抛出错误。     |
 

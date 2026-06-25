@@ -117,7 +117,7 @@ try {
   }).catch((err: BusinessError): void => {
     console.error(`Failed to create floating ball controller. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -203,7 +203,7 @@ try {
   }).catch((err: BusinessError): void => {
     console.error(`Failed to start floating ball. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to start floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -265,7 +265,7 @@ try {
   }).catch((err: BusinessError): void => {
     console.error(`Failed to update floating ball. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to update floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -353,7 +353,7 @@ let onStateChange = (state: floatingBall.FloatingBallState) => {
 };
 try {
   floatingBallController.on('stateChange', onStateChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on stateChange floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -445,7 +445,7 @@ let onStateChange = (state: floatingBall.FloatingBallState) => {
 };
 try {
   floatingBallController.off('stateChange', onStateChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off stateChange floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -537,7 +537,7 @@ let onClick = () => {
 };
 try {
   floatingBallController.on('click', onClick);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on click floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -629,7 +629,7 @@ let onClick = () => {
 };
 try {
   floatingBallController.off('click', onClick);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off click floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -782,8 +782,8 @@ try {
   }).catch((err: BusinessError): void => {
     console.error(`Failed to restore floating ball main window. Cause code: ${err.code}, message: ${err.message}`);
   });
-} catch(e) {
-  console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
+} catch (e) {
+  console.error(`Failed to restore floating ball main window. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -866,8 +866,8 @@ onDestroy(callback: Callback&lt;string&gt;): void
 |------------|------------|
 | 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
 | 1300022 | Repeated floating ball operation. |
-| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
-| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
 **示例：**
 
@@ -909,8 +909,8 @@ offDestroy(callback?: Callback&lt;string&gt;): void
 | 错误码ID | 错误信息 |
 |------------|------------|
 | 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
-| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
-| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
 **示例：**
 
