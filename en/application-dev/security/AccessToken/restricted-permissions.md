@@ -636,6 +636,20 @@ Allows an application to set the sandbox type to dynamic sandbox.
 
 **Since**: 18
 
+## ohos.permission.atomicService.MANAGE_STORAGE
+
+Allows a mini game of the atomic service type to manage its storage space.
+
+<!--RP96--><!--RP96End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 20
+
 ## ohos.permission.MANAGE_SCREEN_TIME_GUARD
 
 Allows an application to call the screen time guard APIs to restrict screen usage, apply application access control, and control the screen usage time.
