@@ -1373,7 +1373,7 @@ NODE_PIXEL_ROUND = 109
 
 | 参数项 | 描述 |
 | -- | -- |
-| .object | 组件的像素取整策略；参数类型为[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)。 |
+| .object | 设置组件的像素取整策略；参数类型为[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)。 |
 
 **返回：**
 

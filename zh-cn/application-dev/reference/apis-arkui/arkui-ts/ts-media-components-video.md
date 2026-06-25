@@ -647,7 +647,6 @@ struct VideoCreateComponent {
   @State isAutoPlay: boolean = false;
   @State showControls: boolean = true;
   @State isShortcutKeyEnabled: boolean = false;
-  @State showFirstFrame: boolean = false;
   controller: VideoController = new VideoController();
 
   build() {
@@ -937,7 +936,6 @@ struct VideoErrorComponent {
   @State videoSrc: string = 'video.mp4'; // 传入不存在的视频资源路径。
   @State isAutoPlay: boolean = false;
   @State showControls: boolean = true;
-  @State showFirstFrame: boolean = false;
   controller: VideoController = new VideoController();
   @State errorMessage: string = '';
 
