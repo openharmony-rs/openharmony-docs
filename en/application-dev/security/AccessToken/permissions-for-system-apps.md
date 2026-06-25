@@ -8777,6 +8777,20 @@ With this permission, the application can add file event records, search for fil
 
 **Since**: 26.0.0
 
+## ohos.permission.CAMERA_DRIVER_MONITOR
+
+Allows an application to access the driver monitor camera.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.ACCESS_MEDIALIB_SANDBOX
 
 Allows an application to mount the media library sandbox within appspawn.
