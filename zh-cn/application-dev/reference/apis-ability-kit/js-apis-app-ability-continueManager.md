@@ -24,7 +24,7 @@ import { continueManager } from '@kit.AbilityKit';
 
 on(type: 'prepareContinue', context: Context, callback: AsyncCallback\<ContinueResultInfo>): void
 
-在应用被快速拉起时，通过注册回调函数获取快速拉起结果。注册成功后，当应用被快速拉起时会触发回调函数。使用callback异步回调。
+在应用被快速拉起时，通过注册回调函数获取结果。使用callback异步回调。
 
 适用于跨设备应用迁移场景，如游戏进度从手机迁移到平板、视频播放跨端同步、文档编辑协作等需要保持应用状态连续的场景。
 
