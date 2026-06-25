@@ -1,7 +1,7 @@
 # Interface (AVPlayer)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -45,7 +45,8 @@ import { media } from '@kit.MediaKit';
 | duration<sup>9+</sup> | number                                                       | Yes  | No  | Video duration, in ms. It can be used as a query parameter when the AVPlayer is in the prepared, playing, paused, or completed state.<br>The value **-1** indicates an invalid value.<br>In live mode, **-1** is returned by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | width<sup>9+</sup>                                  | number                                                       | Yes  | No  | Video width, in px. It can be used as a query parameter when the AVPlayer is in the prepared, playing, paused, or completed state.<br>The value **0** indicates an invalid value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | height<sup>9+</sup>                                 | number                                                       | Yes  | No  | Video height, in px. It can be used as a query parameter when the AVPlayer is in the prepared, playing, paused, or completed state.<br>The value **0** indicates an invalid value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| playlistLoopMode<sup>26+</sup>                         | [playlistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | No  | Yes  | Loop mode for playing the media list. The default value is **PLAYLIST_LOOP_MODE_ALL**, indicating that all items in the playlist are looped.|
+| playlistLoopMode                     | [PlaylistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | No  | Yes  | Loop mode for playing the media list. The default value is **PLAYLIST_LOOP_MODE_ALL**, indicating that all items in the playlist are looped.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
+| privacyType | [audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10) | No  | Yes  | Audio privacy configuration. For details, see [audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10).<br>The default value is **PRIVACY_TYPE_PUBLIC**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## on('stateChange')<sup>9+</sup>
 
@@ -713,9 +714,9 @@ Stops playing the current media source and starts playing the specified media so
 
 **Parameters**
 
-| Name| Type  | Description                                      |
-| ------ | ------ | ------------------------------------------ |
-| id    | string | ID of the specified media source.|
+| Name| Type  | Mandatory| Description                                      |
+| ------ | ------ | ---- | ------------------------------------------ |
+| id    | string | Yes|ID of the specified media source.|
 
 **Return value**
 
@@ -2064,7 +2065,7 @@ async function  test(){
 
 setPlaybackRate(rate: number): void
 
-Sets the playback rate. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. The value range is [0.125, 4.0]. You can check whether the setting takes effect through the [playbackRateDone](#onplaybackratedone20) event.
+Sets the playback rate. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. The value range is [0.125, 8.0] for API version 26.0.0 and later, and [0.125, 4.0] for versions earlier than API version 26.0.0. You can check whether the setting takes effect through the [playbackRateDone](#onplaybackratedone20) event.
 
 > **NOTE**
 >
@@ -2078,7 +2079,7 @@ Sets the playback rate. This API can be called only when the AVPlayer is in the 
 
 | Name| Type                            | Mandatory| Description              |
 | ------ | -------------------------------- | ---- | ------------------ |
-| rate  | number | Yes  | Playback rate, which is in the range [0.125, 4.0].|
+| rate  | number | Yes  | Playback rate. The value range is [0.125, 8.0] for API version 26.0.0 or later and [0.125, 4.0] for API versions earlier than 26.0.0.|
 
 **Error codes**
 
@@ -3536,7 +3537,7 @@ Enables or disables super resolution. This API can be called when the AVPlayer i
 > **NOTE**
 >
 > - Before calling [prepare()](#prepare9), enable super resolution by using [PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12).
-> - The default target resolution is 1920 x 1080 pixels.
+> - The default target resolution is 1920 × 1080 pixels.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -3905,5 +3906,59 @@ Cancels the registration of a listener to detect time-based metadata. Currently,
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.offTimedMetaData();
+}
+```
+
+### getCurrentTrack
+
+getCurrentTrack(trackType: MediaType): Promise\<number>
+
+Obtains the selected track of a specified media type. This API uses a promise to return the result.
+
+This API can be called only when the AVPlayer is in the prepared, playing, or paused state.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                                                        |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| trackType | [MediaType](arkts-apis-media-e.md#mediatype8)| Yes  | Media type.<br>Only **MEDIA_TYPE_AUD** and **MEDIA_TYPE_VID** can be obtained.|
+
+**Return value**
+
+| Type          | Description                                      |
+| -------------- | ------------------------------------------ |
+| Promise\<number> | Promise used to return the index of the selected track of the specified media type.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400101  | No memory. Return by promise.|
+| 5400102  | Operation not allowed. Return by promise.|
+| 5400103  | I/O error. Return by promise.|
+| 5400105  | Service died. Return by promise.|
+
+**Example**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // Here is only an example. In real development, you must wait for the stateChange event to successfully trigger and reach the prepared, playing, or paused state before proceeding.
+  let myTrackId : number;
+  let trackType: media.MediaType = media.MediaType.MEDIA_TYPE_AUD;
+  avPlayer.getCurrentTrack(trackType).then((trackId: number) => {
+    console.info('Succeeded in getting CurrentTrack');
+    myTrackId = trackId;
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get CurrentTrack, error: ${error}`);
+  });
 }
 ```

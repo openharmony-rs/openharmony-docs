@@ -60,9 +60,9 @@ createData(mimeType: string, value: ValueType): PasteData
 
 构建一个指定类型的剪贴板内容对象，根据传入的MIME类型和数据内容创建PasteData实例。 调用此方法后，系统将验证MIME类型有效性，封装数据内容，并返回可用于后续剪贴板操作的PasteData对象。参数mimeType长度不能超过1024字节，value类型需与mimeType匹配。
 
-**使用场景**：当需要将单一类型的数据（如纯文本、HTML、图片等）放入剪贴板时使用此方法。
+**使用场景：** 当需要将单一类型的数据（如纯文本、HTML、图片等）放入剪贴板时使用此方法。
 
-**参数选取建议**：mimeType优先使用已定义的常量类型（如MIMETYPE_TEXT_PLAIN），若需要传递自定义格式数据，可使用自定义MIME类型。
+**参数选取建议：** mimeType优先使用已定义的常量类型（如MIMETYPE_TEXT_PLAIN），若需要传递自定义格式数据，可使用自定义MIME类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -119,7 +119,7 @@ createData(data: Record&lt;string, ValueType&gt;): PasteData
 
 构建一个包含多个类型数据的剪贴板内容对象，支持一次创建多个MIME类型的数据条目。调用此方法后，系统将解析Record中的多个key-value对，创建多个PasteDataRecord条目，首个MIME类型作为默认类型。非默认类型数据需通过[getData](#getdata14)接口读取。
 
-**使用场景**：应用需要将多种不同类型的数据(如文本、URI、HTML等)同时复制到剪贴板时，可使用此接口一次性构建包含多个MIME类型数据的剪贴板内容对象。
+**使用场景：** 应用需要将多种不同类型的数据(如文本、URI、HTML等)同时复制到剪贴板时，可使用此接口一次性构建包含多个MIME类型数据的剪贴板内容对象。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -242,9 +242,9 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 
 getSystemPasteboard(): SystemPasteboard
 
-获取系统剪贴板对象，返回剪贴板服务的单例实例。 调用此方法后，返回的系统剪贴板对象可用于访问剪贴板的读写、监听等功能。每次调用返回同一实例，依赖剪贴板系统服务正常运行。
+获取系统剪贴板对象，返回剪贴板服务的单例实例。调用此方法后，返回的系统剪贴板对象可用于访问剪贴板的读写、监听等功能。每次调用返回同一实例，调用前剪贴板系统服务需要正常运行。
 
-**使用场景**：在进行任何剪贴板读写操作前，都需要先调用此方法获取系统剪贴板对象。
+**使用场景：** 在进行任何剪贴板读写操作前，都需要先调用此方法获取系统剪贴板对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -666,24 +666,24 @@ struct PasteboardTest {
 | 名称                | 类型                                          | 只读 | 可选 | 说明                                                         |
 | ------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | destUri             | string                                        | 否 | 是 | 拷贝文件时目标路径，需符合URI格式规范。详情见下文说明。 |
-| fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | 否 | 是 | 定义文件拷贝冲突时的选项。OVERWRITE（覆盖）适合需要确保目标路径使用最新文件内容的场景；SKIP（跳过）适合需要保留目标路径原有文件、避免意外覆盖的场景。默认为OVERWRITE。                  |
+| fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | 否 | 是 | 定义文件拷贝冲突时的选项。OVERWRITE（覆盖）适合需要确保目标路径使用最新文件内容的场景；SKIP（跳过）适合需要保留目标路径原有文件、避免意外覆盖的场景。默认为OVERWRITE。 |
 | progressIndicator   | [ProgressIndicator](#progressindicator15)     | 否 | 否 | 定义进度条指示选项，可选择是否采用系统默认进度显示。设置为DEFAULT时采用系统默认进度显示；设置为NONE时需应用自行处理进度，此时progressListener和progressSignal参数才有效。 |
-| progressListener    | [ProgressListener](#progresslistener15)       | 否 | 是 | 定义进度数据变化的订阅函数，当选择不使用系统默认进度显示时，可设置该项获取粘贴过程的进度，默认为空。 |
+| progressListener    | [ProgressListener](#progresslistener15)       | 否 | 是 | 定义进度数据变化的订阅函数，用于获取粘贴过程的进度。仅当progressIndicator设置为NONE时此参数才生效，可设置该项自行处理进度显示；当progressIndicator设置为DEFAULT时此参数无效。默认为空（不监听进度）。 |
 | progressSignal      | [ProgressSignal](#progresssignal15)           | 否 | 是 | 定义进度取消的函数。详情见下文说明。 |
 
 **destUri参数详细说明**
 
-- **基本用途**：拷贝文件时目标路径。
-- **使用场景**： 
+- **基本用途：** 拷贝文件时目标路径。
+- **使用场景：**
 - 若不支持文件处理，则不需要设置此参数。
-- 若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理。
-- **默认值**：默认为空。
+- 若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件复制处理。
+- **默认值：** 默认为空。
 
 **progressSignal参数详细说明**
 
-- **基本用途**：定义进度取消的函数，在粘贴过程中可选择取消任务。
-- **使用条件**：仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时此参数才生效。
-- **默认值**：默认为空。
+- **基本用途：** 定义进度取消的函数，在粘贴过程中可选择取消任务。
+- **使用条件：** 仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时此参数才生效。
+- **默认值：** 默认为空。
 
 ## PasteDataRecord<sup>7+</sup>
 
@@ -709,7 +709,7 @@ struct PasteboardTest {
 
 toPlainText(): string
 
-将一个PasteDataRecord中的html、plain、uri内容强制转换为文本内容。若PasteDataRecord包含其他数据类型（如pixelMap、Want等），转换结果为空字符串。
+将一个PasteDataRecord中的html、plain、uri内容强制转换为文本内容。若PasteDataRecord包含其他数据类型（如PixelMap、Want等），转换结果为空字符串。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -776,6 +776,8 @@ record.addEntry(pasteboard.MIMETYPE_TEXT_HTML, html);
 getValidTypes(types: Array&lt;string&gt;): Array&lt;string&gt;
 
 根据传入的MIME类型，返回传入的MIME类型和剪贴板中数据的MIME类型的交集。
+
+**使用场景：** 在粘贴前，检查剪贴板数据是否包含应用支持的格式。例如，若应用仅支持纯文本和HTML格式，可调用此接口检查剪贴板数据是否包含这些格式，并根据返回结果决定是否执行粘贴操作。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -1107,7 +1109,7 @@ image.createPixelMap(buffer, opt).then((pixelMap: image.PixelMap) => {
 
 addRecord(record: PasteDataRecord): void
 
-向当前剪贴板内容中添加一条条目，同时也会将条目类型添加到[PasteDataProperty](#pastedataproperty7)的mimeTypes中。入参均不能为空，否则添加失败。
+向当前剪贴板内容中添加一条条目，同时也会将条目类型添加到[PasteDataProperty](#pastedataproperty7)的mimeTypes中。入参均不能为空，否则添加操作无效。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1138,7 +1140,7 @@ addRecord(mimeType: string, value: ValueType): void
 
 向当前剪贴板内容中添加一条数据内容条目，同时也会将数据类型添加到[PasteDataProperty](#pastedataproperty7)的mimeTypes中。入参均不能为空，否则添加失败。
 
-**使用场景**：当剪贴板内容需要包含多种类型的数据（如同时包含纯文本和HTML）时，使用此方法向已有的PasteData对象添加额外的数据条目。
+**使用场景：** 当剪贴板内容需要包含多种类型的数据（如同时包含纯文本和HTML）时，使用此方法向已有的PasteData对象添加额外的数据条目。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1503,7 +1505,7 @@ pasteStart(): void
 
 读取剪贴板数据前，通知剪贴板服务保留跨设备通道。访问剪贴板数据中的跨端文件数据前，通知剪贴板服务保留跨设备链路。跨设备链路用于连接远端设备并提供传输远端设备文件到本端设备的能力，如未调用此方法则跨设备链路将在30秒后自动断开。适用于跨设备粘贴场景。
 
-**使用场景**：当需要确保跨设备剪贴板数据通道保持连接，以便后续读取远端设备剪贴板数据时使用。
+**使用场景：** 当需要确保跨设备剪贴板数据通道保持连接，以便后续读取远端设备剪贴板数据时使用。
 
 **配对调用：**
 
@@ -1830,12 +1832,12 @@ on(type: 'update', callback: () =&gt;void): void
 
 订阅系统剪贴板内容变化事件，当系统剪贴板中内容变化时触发用户程序的回调。调用此方法后，系统将在剪贴板服务中注册监听器，剪贴板内容被写入、清空或修改时触发回调。可注册多个监听器，需在适当时机调用off取消监听以释放资源。
 
-**使用场景**：当应用需要实时响应剪贴板内容变化时使用，如自动检测剪贴板中的特定格式数据、实现智能粘贴建议等场景。
+**使用场景：** 当应用需要实时响应剪贴板内容变化时使用，如自动检测剪贴板中的特定格式数据、实现智能粘贴建议等场景。
 
 **配对调用：**
 
 - 订阅后必须在不再需要监听时调用[off('update')](#offupdate7)取消订阅。
-- 未取消订阅会导致回调函数持续存在，可能造成内存泄漏或多次回调触发。
+- 未取消订阅会导致回调函数持续监听剪贴板变化，可能造成内存泄漏或多次回调触发。
 - 建议在组件/页面销毁时取消订阅。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
@@ -1916,6 +1918,8 @@ clearData(callback: AsyncCallback&lt;void&gt;): void
 
 清空系统剪贴板内容，使用callback异步回调。调用此方法后，系统将删除剪贴板中的所有数据，触发已注册的'update'监听回调。清空成功后，剪贴板中将没有任何数据，hasData方法将返回false。
 
+**使用场景：** 适用于需要异步清空剪贴板且不阻塞主线程的场景，如UI响应优先的交互流程。与同步接口[clearDataSync](#cleardatasync11)不同，此接口不会阻塞UI线程，更适合在UI交互中使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
@@ -1984,13 +1988,13 @@ setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void
 
 将数据写入系统剪贴板，使用callback异步回调。 调用此方法后，系统会将PasteData对象写入到系统剪贴板中。写入成功后，其他应用可以读取该剪贴板数据。写入的数据会替换剪贴板中已有的内容。
 
-约束说明：
+**约束说明：**
 
 - 如果有其他拷贝或粘贴操作正在进行，会返回错误27787277。
 - 如果复制被禁止，会返回错误27787278。
 - PasteData对象不能为空。
 
-**使用场景**：适用于需要异步写入剪贴板内容的场景，如UI响应优先、避免阻塞主线程。与setDataSync相比，setData不会阻塞UI线程。
+**使用场景：** 适用于需要异步写入剪贴板内容的场景，如UI响应优先、避免阻塞主线程。与[setDataSync](#setdatasync11)相比，setData不会阻塞UI线程。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2036,7 +2040,7 @@ setData(data: PasteData): Promise&lt;void&gt;
 
 将数据写入系统剪贴板，使用Promise异步回调。
 
-**使用场景**：适用于应用需要使用标准化数据结构[UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md)进行跨应用数据交换的场景。
+**使用场景：** 适用于需要异步写入剪贴板且不阻塞主线程的场景，如UI响应优先的交互流程。与同步接口[setDataSync](#setdatasync11)不同，此接口不会阻塞UI线程，更适合在UI交互中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2087,9 +2091,9 @@ getData(callback: AsyncCallback&lt;PasteData&gt;): void
 
 读取系统剪贴板内容，使用callback异步回调。将剪贴板数据封装为PasteData对象返回。 调用此方法后，系统将从剪贴板服务读取当前内容，通过callback返回PasteData对象。读取成功后，应用可以通过PasteData对象的方法获取具体的数据内容（如文本、HTML、URI等）。
 
-**使用场景**：适用于需要异步读取剪贴板内容的场景，如UI响应优先、避免阻塞主线程。与getDataSync相比，getData不会阻塞UI线程，适合处理大量数据或远端数据。
+**使用场景：** 适用于需要异步读取剪贴板内容的场景，如UI响应优先、避免阻塞主线程。与getDataSync相比，getData不会阻塞UI线程，适合处理大量数据或远端数据。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2133,11 +2137,11 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 
 getData(): Promise&lt;PasteData&gt;
 
-读取系统剪贴板内容，使用Promise异步回调。
+读取系统剪贴板内容，将剪贴板数据封装为PasteData对象返回，使用Promise异步回调。适用于需要异步读取剪贴板内容的场景，如UI响应优先、避免阻塞主线程。
 
-**使用场景**：适用于应用需要使用标准化数据结构[UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md)读取剪贴板数据的场景。
+**使用场景：** 适用于应用需要使用标准化数据结构[UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata)读取剪贴板数据的场景。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2205,6 +2209,8 @@ console.info(`Succeeded in checking the remote data. Result: ${result}`);
 hasData(callback:  AsyncCallback&lt;boolean&gt;): void
 
 判断系统剪贴板中是否有内容，使用callback异步回调。
+
+**使用场景：** 适用于需要异步判断剪贴板是否有内容且不阻塞主线程的场景，如UI响应优先的交互流程。与同步接口[hasDataSync](#hasdatasync11)不同，此接口不会阻塞UI线程，更适合在UI交互中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2561,7 +2567,7 @@ systemPasteboard.setPasteData(pasteData).then((data: void) => {
 
 isRemoteData(): boolean
 
-判断剪贴板中的数据是否来自其他设备。
+判断剪贴板中的数据是否来自其他设备。由于数据跨端传输耗时较大，如果剪贴板数据在远端设备上，不建议在UI线程执行检查剪贴板数据中是否包含自定义数据类型，或读取剪贴板数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2571,7 +2577,7 @@ isRemoteData(): boolean
 
 | 类型    | 说明                                  |
 | ------- | ------------------------------------- |
-| boolean | 是来自其他设备返回true，否则返回false。 |
+| boolean | 判断剪贴板中的数据是否来自其他设备。剪贴板数据来自其他设备返回true；剪贴板数据来自本设备返回false。 |
 
 **错误码：**
 
@@ -2598,6 +2604,8 @@ try {
 getDataSource(): string
 
 获取数据来源的应用名称。
+
+**使用场景：** 当需要识别剪贴板数据的来源应用，用于识别剪贴板数据的来源应用，适用于安全审计、数据追踪或向用户提示数据来源等场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2649,7 +2657,7 @@ hasDataType(mimeType: string): boolean
 
 | 类型    | 说明                                        |
 | ------- | ------------------------------------------- |
-| boolean | 有指定类型的数据返回true，否则返回false。 |
+| boolean | 检查剪贴板内容中是否有指定类型的数据。剪贴板内容中有指定类型的数据返回true；剪贴板内容中没有指定类型的数据返回false。 |
 
 **错误码：**
 
@@ -2677,6 +2685,8 @@ try {
 clearDataSync(): void
 
 清空系统剪贴板内容，此接口为同步接口。
+
+**使用场景：** 当需要在关键业务流程中同步清空剪贴板数据，或需要立即确认清空结果的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2708,11 +2718,11 @@ getDataSync(): PasteData
 
 读取系统剪贴板内容，此接口为同步接口。
 
-**使用场景**：适用于应用需要在关键业务流程中同步获取剪贴板数据，或需要立即处理剪贴板内容的场景。
+**使用场景：** 适用于应用需要在关键业务流程中同步获取剪贴板数据，或需要立即处理剪贴板内容的场景。
 
-**开发建议**：避免在UI线程调用此接口，以免阻塞界面；处理大量数据或远端数据时，建议使用异步接口getData。
+**开发建议：** 避免在UI线程调用此接口，以免阻塞界面；处理大量数据或远端数据时，建议使用异步接口getData。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2751,7 +2761,7 @@ setDataSync(data: PasteData): void
 
 将数据写入系统剪贴板，此接口为同步接口。
 
-**使用场景**：适用于应用需要在关键业务流程中同步完成剪贴板数据写入，或需要立即确认写入结果的场景。
+**使用场景：** 适用于应用需要在关键业务流程中同步完成剪贴板数据写入，或需要立即确认写入结果的场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2827,7 +2837,9 @@ getUnifiedData(): Promise&lt;unifiedDataChannel.UnifiedData&gt;
 
 读取系统剪贴板内容，使用Promise异步回调。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**使用场景：** 适用于需要使用标准化数据结构[UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata)进行跨应用数据交换的场景。当应用需要与其他支持UnifiedData的应用进行数据共享，或需要处理复杂的多类型数据时，使用本接口。与[getData](#getdata14)相比，getUnifiedData提供了更标准化的数据格式。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2874,7 +2886,9 @@ getUnifiedDataSync(): unifiedDataChannel.UnifiedData
 
 读取系统剪贴板内容，此接口为同步接口。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**使用场景：** 适用于需要同步使用标准化数据结构UnifiedData进行跨应用数据交换的场景。当应用需要在关键业务流程中立即获取剪贴板数据，且需要与其他支持UnifiedData的应用进行数据共享时使用。由于获取剪贴板中数据的时延受数据量大小与网络环境的影响，调用此接口可能耗时较长，建议开发者在非UI线程调用。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2914,6 +2928,8 @@ try {
 setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise&lt;void&gt;
 
 将数据写入系统剪贴板，使用Promise异步回调。
+
+**使用场景：** 适用于需要异步写入剪贴板且不阻塞主线程的场景，如UI响应优先的交互流程。与同步接口 [setUnifiedDataSync](#setunifieddatasync12)不同，此接口不会阻塞UI线程，更适合在UI交互中调用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -2974,6 +2990,8 @@ setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void
 
 将数据写入系统剪贴板，此接口为同步接口。
 
+**使用场景：** 适用于需要同步使用标准化数据结构UnifiedData进行跨应用数据交换的场景。当应用需要在关键业务流程中立即写入剪贴板数据，且需要与其他支持[UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata)的应用进行数据共享时使用。
+
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -2982,7 +3000,7 @@ setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void
 
 | 参数名 | 类型        | 必填 | 说明             |
 | ------ | ----------- | ---- | ---------------- |
-| data   | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 是   | 需要写入剪贴板中的数据。 |
+| data   | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 是   | 需要写入剪贴板中的数据内容。支持跨应用数据交换，其他应用可通过统一数据结构读取该内容。 |
 
 **错误码：**
 
@@ -3029,7 +3047,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 
 应用设置本应用剪贴板数据的可粘贴范围。
 
-**使用场景**：适用于应用需要全局限制本应用产生的剪贴板数据的粘贴范围，如金融类应用需要保护用户敏感信息的场景。
+**使用场景：** 适用于应用需要全局限制本应用产生的剪贴板数据的粘贴范围，如金融类应用需要保护用户敏感信息的场景。
 
 **配对调用：**
 
@@ -3037,7 +3055,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 - 需要删除已设置的分享范围时，调用removeAppShareOptions()。
 - 在何处设置就在何处删除，确保分享范围设置和删除的一致性。
 
-**需要权限**：ohos.permission.MANAGE_PASTEBOARD_APP_SHARE_OPTION
+**需要权限：** ohos.permission.MANAGE_PASTEBOARD_APP_SHARE_OPTION
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -3075,7 +3093,7 @@ removeAppShareOptions(): void
 
 删除应用全局的可粘贴的范围。
 
-**使用场景**：适用于应用需要取消之前设置的粘贴范围限制，恢复剪贴板数据默认粘贴范围的场景。
+**使用场景：** 适用于应用需要取消之前设置的粘贴范围限制，恢复剪贴板数据默认粘贴范围的场景。
 
 **配对调用：**
 
@@ -3083,7 +3101,7 @@ removeAppShareOptions(): void
 - 删除的是通过setAppShareOptions()设置的分享范围。
 - 必须在已设置分享范围的情况下才能调用。
 
-**需要权限**：ohos.permission.MANAGE_PASTEBOARD_APP_SHARE_OPTION
+**需要权限：** ohos.permission.MANAGE_PASTEBOARD_APP_SHARE_OPTION
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -3126,7 +3144,7 @@ detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&
 
 检测**本地**剪贴板中存在的[Pattern](#pattern13)模式，使用Promise异步回调。本地剪贴板指当前设备上的剪贴板数据，不包括跨设备传输的远端剪贴板数据。
 
-**使用场景**：适用于应用在粘贴数据前需要检测剪贴板内容是否包含特定类型的数据(如URL、邮箱、电话号码等)，以便进行相应处理或提供智能提示的场景。
+**使用场景：** 适用于应用在粘贴数据前需要检测剪贴板内容是否包含特定类型的数据(如URL、邮箱、电话号码等)，以便进行相应处理或提供智能提示的场景。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -3208,9 +3226,9 @@ getDataWithProgress(params: GetDataParams): Promise&lt;PasteData&gt;
 
 获取剪贴板的内容和进度，使用Promise异步回调，不支持对文件夹的拷贝。对于大文件拷贝操作，建议设置进度监听以跟踪拷贝进度，避免在UI线程长时间等待；建议合理设置目标路径以确保有足够的存储空间。
 
-**使用场景**：适用于应用需要粘贴大文件时，需要显示拷贝进度或需要监听拷贝过程以便在必要时取消操作的场景。
+**使用场景：** 适用于应用需要粘贴大文件时，需要显示拷贝进度或需要监听拷贝过程以便在必要时取消操作的场景。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -3294,7 +3312,7 @@ getChangeCount(): number
 
 当剪贴板内容过期或调用[clearDataSync](#cleardatasync11)等接口导致剪贴板内容为空时，内容变化次数不会因此改变。
 
-系统重启或剪贴板服务异常重启时，剪贴板内容变化次数重新从0开始计数。对同一内容连续多次复制会被视作多次更改，每次复制均会导致内容变化次数增加。
+系统重启或剪贴板服务异常重启时，剪贴板内容变化次数重新从0开始计数。对同一内容连续多次复制会被记录为多次更改，每次复制均会导致内容变化次数增加。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3319,7 +3337,7 @@ try {
     console.error(`Failed to get the ChangeCount. Cause: ${err.message}`);
 };
 ```
-### UpdateCallback <sup>22+</sup>
+### UpdateCallback<sup>22+</sup>
 
 type UpdateCallback = () => void
 
@@ -3345,7 +3363,7 @@ onRemoteUpdate(callback: UpdateCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [UpdateCallback](#updatecallback-22) | 是 | 剪贴板中内容变化时触发的用户程序的回调，无参数。用于监听跨设备剪贴板内容更新事件，当远端设备剪贴板内容发生变化时触发此回调。 |
+| callback | [UpdateCallback](#updatecallback22) | 是 | 剪贴板中内容变化时触发的用户程序的回调，无参数。用于监听跨设备剪贴板内容更新事件，当远端设备剪贴板内容发生变化时触发此回调。 |
 
 **示例：**
 
@@ -3375,7 +3393,7 @@ offRemoteUpdate(callback?: UpdateCallback): void
 
 | 参数名 | 类型 | 必填 | 说明                                                      |
 | -------- | -------- | -------- |---------------------------------------------------------|
-| callback | [UpdateCallback](#updatecallback-22) | 否 | 远端设备剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有远端监听回调，否则表示清除指定远端监听回调。|
+| callback | [UpdateCallback](#updatecallback22) | 否 | 远端设备剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有远端监听回调，否则表示清除指定远端监听回调。|
 
 **示例：**
 

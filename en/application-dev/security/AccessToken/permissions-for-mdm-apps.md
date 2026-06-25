@@ -827,7 +827,7 @@ Allows an enterprise MDM application to activate itself.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 26.0.0
+**Since**: 24
 
 ## ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
 
@@ -875,3 +875,20 @@ With this permission, an application can establish VPN connections by default wi
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.0.0
+
+## ohos.permission.ENTERPRISE_REQUEST_PUBLISH_FORM
+
+Allows an MDM application to add widgets to the home screen.
+
+<!--RP1--><!--RP1End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0

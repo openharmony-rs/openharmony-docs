@@ -221,7 +221,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 
     ```c++
     const std::int32_t AUDIO_BITRATE = 200000;
-    OH_AVTranscoderConfig_SetDstAudioBitrate(config, AUDIO_BITRATE); // 音频比特率，可选。
+    OH_AVTranscoderConfig_SetDstAudioBitrate(config, AUDIO_BITRATE); // 参考avcodec音频编码器码率设置，具体根据实际需要设置。
     ```
 
 10. （可选）设置转码输出视频的码率：调用OH_AVTranscoderConfig_SetDstVideoBitrate()设置输出视频的码率。

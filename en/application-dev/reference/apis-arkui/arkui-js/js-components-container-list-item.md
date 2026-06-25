@@ -2,10 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:20.093Z pushedAt=2026-06-23T09:25:51.899Z -->
 
 >  **NOTE**
 >
@@ -17,11 +18,9 @@
 
 None
 
-
 ## Child Components
 
 This component supports only one child component.
-
 
 ## Attributes
 
@@ -35,7 +34,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | sticky | string | none | No| Whether the current item sticks in place at the top, and the effect when it disappears. This attribute supports vertical lists only and is invalid for items in a group.<br>- **none**: The current item does not stick at the top.<br>- **normal**: The current item sticks at the top and disappears with a sliding effect.<br>- **opacity**: The current item sticks at the top and disappears gradually. This option is only supported on wearables.|
 | clickeffect<sup>5+</sup> | boolean | true | No| Whether an effect is displayed when the current item is clicked.<br>- **false**: No effect is displayed when the item is clicked.<br>- **true**: An effect is displayed when the item is clicked.|
 
-
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
@@ -44,19 +42,17 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | -------- | -------- | -------- | -------- | -------- |
 | column-span | &lt;number&gt; | 1 | No| Number of columns occupied by the current list-item in the list. By default, the list-item occupies one column. This attribute is valid only when the list contains multiple columns.|
 
-
 ## Events
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
 
 | Name| Parameter| Description|
 | -------- | -------- | -------- |
-| sticky | { state: boolean } | Callback event for a sticky component.<br>**value: false**: The current item is not in the sticky state.<br>**value: true**: The current item is in the sticky state.<br>This event is supported only when the item is configured with the **sticky** attribute.|
+| sticky | {&nbsp;state:&nbsp;boolean&nbsp;} | Callback event for a sticky component.<br/>**state:&nbsp;false**: The current item is not in the sticky state.<br/>**state:&nbsp;true**: The current item is in the sticky state.<br/>Note: This event is supported only when the item is configured with the **sticky** attribute. |
 
 ## Methods
 
 The [universal methods](js-components-common-methods.md) are supported.
-
 
 ## Example
 

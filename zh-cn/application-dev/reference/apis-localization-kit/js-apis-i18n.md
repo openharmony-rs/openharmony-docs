@@ -15,7 +15,7 @@
 >
 >  - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如时间日期格式化接口，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)版本，具体数据变更详情可查阅[CLDR官方文档](https://cldr.unicode.org/)。
+>  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如时间日期格式化接口，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/downloads/cldr-42)版本，具体数据变更详情可查阅[CLDR官方文档](https://cldr.unicode.org/)。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
 
@@ -871,7 +871,7 @@ setTime(date: Date): void
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | Date | 是    | 时间日期。说明：月份从0开始计数，例如0表示一月。 |
+| date | Date | 是    | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。 |
 
 **示例：**
   ```ts
@@ -922,11 +922,11 @@ set(year: number, month: number, date:number, hour?: number, minute?: number, se
 | 参数名    | 类型     | 必填   | 说明     |
 | ------ | ------ | ---- | ------ |
 | year   | number | 是    | 设置的年。  |
-| month  | number | 是    | 设置的月。说明：月份从0开始计数，例如0表示一月。  |
+| month  | number | 是    | 设置的月。<br>**说明：** <br>月份从0开始计数，0表示一月。  |
 | date   | number | 是    | 设置的日。  |
-| hour   | number | 否    | 设置的小时。默认值：系统当前时间。 |
-| minute | number | 否    | 设置的分钟。默认值：系统当前时间。 |
-| second | number | 否    | 设置的秒。默认值：系统当前时间。 |
+| hour   | number | 否    | 设置的小时。默认值：系统时间。 |
+| minute | number | 否    | 设置的分钟。默认值：系统时间。 |
+| second | number | 否    | 设置的秒。默认值：系统时间。 |
 
 **示例：**
   ```ts
@@ -1165,7 +1165,7 @@ isWeekend(date?: Date): boolean
 
 | 参数名  | 类型   | 必填   | 说明                                       |
 | ---- | ---- | ---- | ---------------------------------------- |
-| date | Date | 否    | 时间日期。说明：月份从0开始计数，例如0表示一月。<br>默认值：日历对象的当前日期。 |
+| date | Date | 否    | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。<br>默认值：日历对象的当前日期。 |
 
 **返回值：**
 
@@ -1268,7 +1268,7 @@ compareDays(date: Date): number
 
 | 参数名  | 类型   | 必填   | 说明                                       |
 | ---- | ---- | ---- | ---------------------------------------- |
-| date | Date | 是    | 时间日期。说明：月份从0开始计数，例如0表示一月。 |
+| date | Date | 是    | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -1386,9 +1386,9 @@ static checkLeapMonth(gregorianYear: number, cyclicalYear: number, month: number
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| gregorianYear   | number |   是   |  公历的年。   |
-| cyclicalYear    | number |   是   |  农历的干支年。   |
-| month           | number |   是   |  农历的月。   |
+| gregorianYear   | number |   是   |  公历的年。<br>取值范围：[1900, 2100]。   |
+| cyclicalYear    | number |   是   |  农历的干支年。<br>取值范围：[1, 60]。   |
+| month           | number |   是   |  农历的月。<br>**说明：** <br>月份从0开始计数，0表示一月。   |
 
 **返回值：**
 
@@ -1423,9 +1423,9 @@ let isExist = i18n.ChineseCalendar.checkLeapMonth(2026, 43, 2);
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | ------- | ------- | ------- | --------------------------------------- |
-| gregorianYear   | number |   否   |   否   |  公历的年。   |
-| cyclicalYear    | number |   否   |   否   |  农历的干支年。   |
-| month           | number |   否   |   否   |  农历的月。月份从0开始计数，例如0表示一月。   |
+| gregorianYear   | number |   否   |   否   |  公历的年。<br>取值范围：[1900, 2100]。   |
+| cyclicalYear    | number |   否   |   否   |  农历的干支年。<br>取值范围：[1, 60]。   |
+| month           | number |   否   |   否   |  农历的月。<br>**说明：** <br>月份从0开始计数，0表示一月。   |
 | date            | number |   否   |   否   |  农历的日。   |
 | isLeapMonth     | boolean |   否  |   是   |  是否是闰月。默认值：false。  |
 | hour            | number |   否   |   是   |  农历的时。默认值：0。   |
@@ -2138,7 +2138,7 @@ getRawOffset(): number
 
 | 类型     | 说明                  |
 | ------ | ------------------- |
-| number | 时区的原始偏移量，单位是毫秒。 |
+| number | 时区的原始偏移量，单位为毫秒（ms）。 |
 
 **示例：**
   ```ts
@@ -2163,13 +2163,13 @@ getOffset(date?: number): number
 
 | 参数名    | 类型     | 必填   | 说明     |
 | ------ | ------ | ---- | ------ |
-| date | number | 否    | 待计算时区偏移量的时刻，单位是毫秒。默认值：系统时间。 |
+| date | number | 否    | 待计算时区偏移量的时刻，单位为毫秒（ms）。默认值：系统时间。 |
 
 **返回值：**
 
 | 类型     | 说明                      |
 | ------ | ----------------------- |
-| number | 时区的偏移量，单位是毫秒。当处于夏令时时，时区偏移量为时区原始偏移量加夏令时偏移量。 |
+| number | 时区的偏移量，单位为毫秒（ms）。当处于夏令时时，时区偏移量为时区原始偏移量加夏令时偏移量。 |
 
 **示例：**
   ```ts
@@ -2397,7 +2397,7 @@ isDaylightSavingTime(date: Date): boolean
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| date   | Date   | 是   | 时间日期。月份从0开始计数，例如0表示一月。|
+| date   | Date   | 是   | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。|
 
 **返回值：**
 
@@ -2521,7 +2521,7 @@ nextTransition(date?: number): ZoneOffsetTransition
 
 | 参数名    | 类型     | 必填   | 说明     |
 | ------ | ------ | ---- | ------ |
-| date | number | 否    | 从1970年1月1日0时0分0秒到指定时间之间的毫秒数，默认到当前系统时间之间的毫秒数，单位：毫秒。 |
+| date | number | 否    | 从1970年1月1日0时0分0秒到指定时间之间的毫秒数。<br>默认值：系统时间。 |
 
 **返回值：**
 
@@ -2564,7 +2564,7 @@ getMilliseconds(): number
 
 | 类型       | 说明         |
 | -------- | ---------- |
-| number | 从1970年1月1日0时0分0秒到时区跳变点之间的毫秒数，例如：1762074000000，单位：毫秒。如果当前时区[原始偏移量](#getrawoffset)保持不变并且不使用夏令时，则返回0。|
+| number | 从1970年1月1日0时0分0秒到时区跳变点之间的毫秒数，例如：1762074000000，单位为毫秒（ms）。如果当前时区[原始偏移量](#getrawoffset)保持不变并且不使用夏令时，则返回0。|
 
 **示例：**
 ```ts
@@ -2592,7 +2592,7 @@ getOffsetAfter(): number
 
 | 类型       | 说明         |
 | -------- | ---------- |
-| number | 时区跳变后的偏移量，表示跳变后的时间相对于标准时间（协调世界时UTC）的时间差，单位：毫秒。例如：-28800000表示跳变后的时间比标准时间慢28800000毫秒（8小时）。 |
+| number | 时区跳变后的偏移量，表示跳变后的时间相对于标准时间（协调世界时UTC）的时间差，单位为毫秒（ms）。例如：-28800000表示跳变后的时间比标准时间慢28800000毫秒（8小时）。 |
 
 **示例：**
 ```ts
@@ -2620,7 +2620,7 @@ getOffsetBefore(): number
 
 | 类型       | 说明         |
 | -------- | ---------- |
-| number | 时区跳变前的偏移量，表示跳变前的时间相对于标准时间（协调世界时UTC）的时间差，单位：毫秒。例如：-25200000表示跳变前的时间比标准时间慢25200000毫秒（7小时）。 |
+| number | 时区跳变前的偏移量，表示跳变前的时间相对于标准时间（协调世界时UTC）的时间差，单位为毫秒（ms）。例如：-25200000表示跳变前的时间比标准时间慢25200000毫秒（7小时）。 |
 
 **示例：**
 ```ts
@@ -3068,7 +3068,7 @@ static detectEncoding(bytes: Uint8Array): EncodingInfo
 
 | 名称  | 类型   | 只读   | 可选   | 说明                |
 | ---- | ---- | ---- | ---- | ----------------- |
-| encodingName | string | 否    | 否    | 编码名称，如UTF-8。 |
+| encodingName | string | 否    | 否    | 编码名称，取值包括：UTF-8，UTF-16BE，UTF-16LE，UTF-32BE，UTF-32LE，Shift_JIS，ISO-2022-JP，ISO-2022-CN，ISO-2022-KR，GB18030，Big5，EUC-JP，EUC-KR，ISO-8859-1，ISO-8859-2，ISO-8859-5，ISO-8859-6，ISO-8859-7，ISO-8859-8，ISO-8859-9，windows-1250，windows-1251，windows-1252，windows-1253，windows-1254，windows-1255，windows-1256，KOI8-R，IBM420，IBM424。 |
 | confidence | number | 否    | 否    | 识别结果的置信度，范围是0-100。值越大，识别结果越可靠。 |
 
 ## I18NUtil<sup>9+</sup>
@@ -3428,7 +3428,7 @@ try {
 
 static convertCanonicalLocaleIdentifier(locale: string): string
 
-将区域ID调整成符合[BCP47](https://www.rfc-editor.org/info/bcp47)标准的格式。
+将区域ID调整成符合[BCP47](https://www.rfc-editor.org/info/bcp47/)标准的格式。
 
 **起始版本：** 26.0.0
 
@@ -3448,7 +3448,7 @@ static convertCanonicalLocaleIdentifier(locale: string): string
 
 | 类型     | 说明                  |
 | ------ | ------------------- |
-| string | 有效的区域ID会返回符合[BCP47](https://www.rfc-editor.org/info/bcp47)标准格式的区域ID。无效的区域ID会返回空字符串。 |
+| string | 有效的区域ID会返回符合[BCP47](https://www.rfc-editor.org/info/bcp47/)标准格式的区域ID。无效的区域ID会返回空字符串。 |
 
 **示例：**
 
@@ -3681,7 +3681,7 @@ isHoliday(date?: Date): boolean
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ---------------| ---- | ------------- |
-| date      | Date           | 否   | 时间日期。说明：月份从0开始计数，例如0表示一月。<br>默认值：当前日期。|
+| date      | Date           | 否   | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。<br>默认值：当前日期。|
 
 **返回值：**
 
@@ -3996,7 +3996,7 @@ format(date: Date): string
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | Date | 是    | 时间日期。说明：月份从0开始计数，例如0表示一月。 |
+| date | Date | 是    | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -4090,7 +4090,7 @@ format(date?: Date | number): string
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | Date \| number | 否    | 时间日期对象或时间日期对应的毫秒值。默认值：系统当前时间。 |
+| date | Date \| number | 否    | 时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。<br>默认值：系统时间。 |
 
 **返回值：**
 
@@ -4128,7 +4128,7 @@ formatToParts(date?: Date | number): Intl.DateTimeFormatPart[]
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | Date \| number | 否    | 时间日期对象或时间日期对应的毫秒值。默认值：系统当前时间。 |
+| date | Date \| number | 否    | 时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。<br>默认值：系统时间。 |
 
 **返回值：**
 
@@ -4166,8 +4166,8 @@ formatRange(startDate: Date | number | bigint, endDate: Date | number | bigint):
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| startDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。 |
-| endDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+| startDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。 |
+| endDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -4207,8 +4207,8 @@ formatRangeToParts(startDate: Date | number | bigint, endDate: Date | number | b
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| startDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。 |
-| endDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。 |
+| startDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。 |
+| endDate | Date \| number \| bigint | 是    | 时间日期对象或时间日期对应的毫秒值。时间日期对象中月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
@@ -4255,7 +4255,7 @@ parse(text: string, lenientMode: boolean): number
 
 | 类型                     | 说明    |
 | ---------------------- | ----- |
-| number | 时间日期字符串解析后对应的时间戳。 |
+| number | 时间日期字符串解析后对应的时间戳，单位为毫秒（ms）。 |
 
 **错误码：**
 
@@ -4405,7 +4405,7 @@ try {
 
 format(date: Date): StyledString
 
-使对时间日期进行格式化，返回富文本对象。
+对时间日期进行格式化，返回富文本对象。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -4415,7 +4415,7 @@ format(date: Date): StyledString
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ------------- | ---- | ------------- |
-| date | Date | 是 | 需要格式化的时间日期。  |
+| date | Date | 是 | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。  |
 
 **返回值：**
 
@@ -4492,7 +4492,7 @@ constructor(options?: ISO8601DateTimeFormatOptions)
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| options | [ISO8601DateTimeFormatOptions](#iso8601datetimeformatoptions) | 否    | 符合ISO 8601标准的日期格式化对象创建时的选项。默认值：所有属性均使用默认值的ISO8601DateTimeFormatOptions对象。 |
+| options | [ISO8601DateTimeFormatOptions](#iso8601datetimeformatoptions) | 否    | 符合ISO 8601标准的日期格式化对象创建时的配置项。默认值：所有属性都取默认值时的配置项。 |
 
 **示例：**
 ```ts
@@ -4521,13 +4521,13 @@ format(date: Date): string
 
 | 参数名  | 类型   | 必填   | 说明                |
 | ---- | ---- | ---- | ----------------- |
-| date | Date | 是    | 时间日期。月份从0开始计数，例如0表示一月。 |
+| date | Date | 是    | 时间日期。<br>**说明：** <br>月份从0开始计数，0表示一月。 |
 
 **返回值：**
 
 | 类型                     | 说明    |
 | ---------------------- | ----- |
-| string | 格式化后的时间日期字符串。 |
+| string | 符合ISO8601标准的时间日期字符串。 |
 
 **示例：**
 ```ts
@@ -4541,7 +4541,7 @@ let result = formatter.format(new Date(2026, 2, 15, 12, 0, 0));
 
 ## ISO8601DateTimeFormatOptions
 
-符合ISO 8601标准的日期格式化对象创建时的选项。
+符合ISO 8601标准的日期格式化对象创建时的配置项。
 
 **起始版本：** 26.0.0
 
@@ -5203,7 +5203,7 @@ format(value: number): StyledString
 
 ## AdvancedMeasureFormat<sup>23+</sup>
 
-提供数字格式化能力。
+提供数字格式化能力，支持根据单位使用场景自动转换合适的单位。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

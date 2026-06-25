@@ -4,7 +4,8 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7eb6f57046c125c4e13d8acd776d3cbaf09f5103 translatedAt=2026-06-22T06:56:57.331Z pushedAt=2026-06-25T06:25:44.073Z -->
 
 The module defines the bundle information. An application can obtain its own bundle information through [bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself), with [bundleFlags](js-apis-bundleManager.md#bundleflag) set to the information to be contained in the returned [BundleInfo](js-apis-bundleManager-bundleInfo.md).
 
@@ -22,6 +23,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name                             | Type                                                        | Read-Only| Optional| Description                                                        |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | name                              | string                                                       | Yes  | No  | Name of the application package. It corresponds to the **bundleName** field in the [app.json5](../../quick-start/app-configuration-file.md) file.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -40,6 +42,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | routerMap<sup>12+</sup>           | Array\<[RouterItem](js-apis-bundleManager-hapModuleInfo.md#routeritem12)>           | Yes  | No  | Router table of the application. The table is obtained by deduplicating and combining the **routerMap** information under **hapModulesInfo** based on the **name** field in **RouterItem**. The information can be obtained by passing in **GET_BUNDLE_INFO_WITH_HAP_MODULE** and **GET_BUNDLE_INFO_WITH_ROUTER_MAP** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | appIndex<sup>12+</sup>    | number    | Yes  | No  | Index of an application clone. It takes effect only for application clones.|
 | firstInstallTime<sup>18+</sup>                        | number                                                       | Yes  | Yes  | Timestamp for the initial installation of the application package. It measures the milliseconds that have passed since the Unix epoch (January 1, 1970, 08:00:00 UTC+8), in milliseconds. For preinstalled applications, the initial installation timestamp is 1533657660000.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buildVersion<sup>23+</sup>                        | string                                                       | Yes  | Yes  | Build version number of the application package, which identifies different build version packages under the same release version. It corresponds to the **buildVersion** field in the [app.json5](../../quick-start/app-configuration-file.md) file.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction**: This API can be used only in the stage model.|
 
 
 ## ReqPermissionDetail
@@ -64,7 +67,7 @@ Provides the detailed information of the permissions to request from the system.
 
 ## UsedScene
 
-Describes the use scenario and timing for using the permission.
+Describes the use scenario and timing of the permission, helping developers request and use permissions properly.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -77,7 +80,7 @@ Describes the use scenario and timing for using the permission.
 
 ## SignatureInfo
 
-Describes the signature information of the bundle.
+Describes the signature information of the app package, which can identify the app source, ensure app integrity, and be used for app security verification and identification.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -90,7 +93,7 @@ Describes the signature information of the bundle.
 |appIdentifier<sup>11+</sup>| string         | Yes  | No  | Unique ID of the application. For details, see [What is appIdentifier?](../../quick-start/common-problem-of-application.md#what-is-appidentifier).<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
 |certificate<sup>14+</sup>| string         | Yes  | Yes  | Public key of the application certificate.<br>**Atomic service API**: This API can be used in atomic services since API version 14.           |
 
-## AppCloneIdentity<sup>14+<sup>
+## AppCloneIdentity<sup>14+</sup>
 
 Describes the identity information of an application clone.
 
@@ -99,4 +102,20 @@ Describes the identity information of an application clone.
 | Name     | Type          | Read-Only| Optional| Description                       |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | bundleName | string         | Yes  | No  | Bundle name of the application.         |
-| appIndex | number | Yes  | No  | Index of the application clone.|
+| appIndex | number | Yes | No | Clone index information of the app package. The value is an integer ranging from [0-5], where 0 indicates the main app and 1-5 indicate clone apps. |
+
+## AlternateIconInfo
+
+Describes the app backup icon information.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+| Name      | Type           | Read Only | Optional | Description                        |
+| --------- | --------------| ---- | ---- | ---------------------------|
+| iconName | string         | Yes   | No   | Name of the backup icon.          |
+| iconId   | number         | Yes   | No   | Resource ID of the backup icon, which is automatically generated during compilation and build based on the icon configured in the app.       |
+| enabled  | boolean        | Yes   | No   | Whether the backup icon is enabled.<br/>true: The current backup icon is enabled.<br/>false: The current backup icon is not enabled.<br/>NOTE<br/>An app can enable at most one backup icon.       |

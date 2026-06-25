@@ -848,7 +848,7 @@ struct PageChild {
           .backgroundColor('#FF007DFF')
           .fontSize(20)
           .width(312)
-          .onClick(() => { // 在父组件中，仍使用 this.uiStyle.endRenderXxx.xxx 更改属性
+          .onClick(() => { // 在父组件中，仍使用 this.uiStyle.needRenderXxx.xxx 更改属性
             this.uiStyle.needRenderImage.imageWidth = (this.uiStyle.needRenderImage.imageWidth + 30) % 160;
             this.uiStyle.needRenderImage.imageHeight = (this.uiStyle.needRenderImage.imageHeight + 30) % 160;
           })
