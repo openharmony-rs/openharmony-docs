@@ -801,7 +801,7 @@ try {
 
 isHotspotDualBandSupported(): boolean
 
-Checks whether the hotspot supports dual band.
+Checks whether the hotspot supports dual-band.
 
 **System API**: This is a system API.
 
