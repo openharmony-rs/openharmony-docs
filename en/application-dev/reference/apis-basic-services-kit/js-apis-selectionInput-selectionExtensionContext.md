@@ -54,7 +54,7 @@ Starts an ability. This API uses a promise to return the result.
 
 For details about the error codes, see [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
-| ID| Error Message                                               |
+| Error Code| Error Message                                               |
 | -------- | ------------------------------------------------------- |
 | 16000001 | The specified ability does not exist.                   |
 | 16000002 | Incorrect ability type.                                 |

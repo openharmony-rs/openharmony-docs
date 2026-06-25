@@ -560,7 +560,7 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 | [UserDataSpan](#userdataspan) | UserDataSpan样式。 |
 | [UrlStyle](#urlstyle14) | 超链接样式。 |
 | [BackgroundColorStyle](#backgroundcolorstyle14) | 文本背景颜色样式。 |
-| [LineSpacingStyle](#linespacingstyle) | 文本行间距。**起始版本：** 26.0.0 |
+| [LineSpacingStyle](#linespacingstyle) | 文本行间距样式。**起始版本：** 26.0.0 |
 
 ## StyleOptions对象说明
 
@@ -687,7 +687,7 @@ constructor(value?: GestureStyleInterface)
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| value | [GestureStyleInterface](#gesturestyleinterface对象说明) | 否   | 事件设置项。 |
+| value | [GestureStyleInterface](#gesturestyleinterface对象说明) | 否   | 事件手势设置项。 |
 
 ## GestureStyleInterface对象说明
 
@@ -1126,7 +1126,7 @@ abstract onMeasure(measureInfo: CustomSpanMeasureInfo): CustomSpanMetrics
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| measureInfo | [CustomSpanMeasureInfo](#customspanmeasureinfo对象说明) | 是   | 文本的字体大小。 |
+| measureInfo | [CustomSpanMeasureInfo](#customspanmeasureinfo对象说明) | 是   | 自定义绘制Span的测量信息。 |
 
 **返回值：**
 

@@ -272,7 +272,7 @@ disableSilentProxy(context: Context, uri?: string): Promise&lt;void&gt;
 使用规则：
  - 数据提供方调用此接口，来关闭静默访问功能。
  - 此接口设置的关闭结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考[data_share_config.json配置](../../database/share-data-by-datashareextensionability-sys.md)。
- - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有关闭过相关uri，那么会按照此接口的配置来关闭静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验Datashare的关闭状态。
+ - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有关闭过相关uri，那么会按照此接口的配置来关闭静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验DataShare的关闭状态。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -339,7 +339,7 @@ export default class EntryAbility extends UIAbility {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | subscriberId | string | 否 | 否 | 指定处理回调的订阅者的id，与[addTemplate](#addtemplate10)中的subscriberId相同，每个订阅者的ID是唯一的。 |
-| bundleNameOfOwner | string | 否 | 否 | 指定创建模板的模板所有者的bundleName，与[addTemplate](#addtemplate10)中的bundleName相同。 |
+| bundleNameOfOwner | string | 否 | 否 | 指定创建模板的模板所有者的bundleName。 |
 
 ## PublishedItem<sup>10+</sup>
 
@@ -486,7 +486,7 @@ on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallb
 - 取消订阅时需确保type、uri和callback参数与订阅时一致。
 - 如未及时取消订阅，可能导致内存泄漏和资源占用。
 
-**触发通知：** 非静默场景下，调用[notifyChange](#notifychange12)方法，就会触发对指定URI订阅者的通知；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知, 但此时callback通知中的changeInfo无效。
+**触发通知：** 非静默场景下，调用[notifyChange](#notifychange12)方法，就会触发对指定URI订阅者的通知；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知，但此时callback通知中的ChangeInfo无效。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -940,7 +940,7 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version: number, c
 | 参数名     | 类型                                                      | 必填 | 说明      |
 | --------- | -------------------------------------------------| ---- | ------------------- |
 | data      | Array&lt;[PublishedItem](#publisheditem10)&gt;     | 是   | 要发布的数据。   |
-| bundleName | string                                          | 是   | 表示要发布数据所属的APP，对发布的私有数据生效，仅该app可以读取数据。           |
+| bundleName | string                                          | 是   | 表示要发布数据所属的APP，对发布的私有数据生效，仅该APP可以读取数据。           |
 | version | number                                             | 是   | 要发布的数据版本，越大表示数据版本越新。如果发布的版本号小于数据库中的记录，则更新失败。 |
 | callback | AsyncCallback&lt;Array&lt;[OperationResult](#operationresult10)&gt;&gt; | 是   | 回调函数。当发布数据时调用，err为undefined，result为发布数据结果；否则不被触发或为错误对象。    |
 
@@ -991,7 +991,7 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, callback: AsyncCal
 | 参数名     | 类型                                            | 必填 | 说明                                 |
 | -------- | ------------------------------------------------- | ---- | ---------------------------------- |
 | data      | Array&lt;[PublishedItem](#publisheditem10)&gt;                        | 是   | 要发布的数据。   |
-| bundleName | string                                          | 是   | 表示要发布数据所属的APP，对发布的私有数据生效，仅该app可以读取数据。       |
+| bundleName | string                                          | 是   | 表示要发布数据所属的APP，对发布的私有数据生效，仅该APP可以读取数据。       |
 | callback | AsyncCallback&lt;Array&lt;[OperationResult](#operationresult10)&gt;&gt; | 是   | 回调函数。当发布数据时调用，err为undefined，result为发布数据结果；否则不被触发或为错误对象。 |
 
 **错误码：**
@@ -1037,7 +1037,7 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version?: number):
 | 参数名     | 类型                        | 必填 | 说明                            |
 | -------- | ----------------------------- | ---- | ------------------------------ |
 | data      | Array&lt;[PublishedItem](#publisheditem10)&gt;    | 是   | 要发布的数据。|
-| bundleName | string                      | 是   | 表示要发布数据所属的APP，对发布的私有数据生效，仅该app可以读取数据。  |
+| bundleName | string                      | 是   | 表示要发布数据所属的APP，对发布的私有数据生效，仅该APP可以读取数据。  |
 | version | number                         | 否   | 要发布的数据版本，越大表示数据版本越新。如果发布的版本号小于数据库中的记录，则更新失败。<br/> 如果不检查要发布的数据版本，则不填。 |
 
 **返回值：**
@@ -1539,7 +1539,7 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | 是   | 要更新的数据的路径。                                     |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />update接口是否支持谓词筛选条件取决于服务端所选用的数据库，如KVDB目前并不支持谓词筛选条件，仅RDB支持。静默场景下谓词内方法为空时，默认全表更新。非静默场景下规格由数据提供方制定。 |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />update接口所支持的谓词筛选条件取决于服务端所选用的数据库，如KVDB目前并不支持谓词筛选条件，仅RDB支持。静默场景下谓词内方法为空时，默认全表更新。非静默场景下规格由数据提供方制定。 |
 | value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据的值。                                  |
 | callback   | AsyncCallback&lt;number&gt;                                  | 是   | 回调函数。当更新数据库中的数据记录成功，err为undefined，data为获取到的更新的数据记录数；否则为错误对象。<br />因部分数据库（如KVDB）的相应接口并不提供相应支持，故若服务端使用此数据库，则此callback也无法返回更新的数据记录数。 |
 
@@ -1607,7 +1607,7 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | 是   | 要更新的数据的路径。                                     |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />update接口是否支持谓词筛选条件取决于服务端所选用的数据库，如KVDB目前并不支持谓词筛选条件，仅RDB支持。静默场景下谓词内方法为空时，默认全表更新。非静默场景下规格由数据提供方制定。 |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />update接口所支持的谓词筛选条件取决于服务端所选用的数据库，如KVDB目前并不支持谓词筛选条件，仅RDB支持。静默场景下谓词内方法为空时，默认全表更新。非静默场景下规格由数据提供方制定。 |
 | value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据的值。                                   |
 
 **返回值：**

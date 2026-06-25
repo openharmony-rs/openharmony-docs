@@ -882,7 +882,7 @@ export function getObject1(value: number): I {
 // Index.ets
 import { getObject1 } from './lib';
 // ...
-let obj1: I = getObject1(123);
+let obj1: ESObject = getObject1(123);
 ```
 
 **【正例】**

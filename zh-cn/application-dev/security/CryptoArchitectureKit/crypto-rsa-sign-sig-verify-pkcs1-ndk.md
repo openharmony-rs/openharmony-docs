@@ -1,4 +1,4 @@
-# 使用RSA密钥对签名验签 (PKCS1模式)(C/C++)
+# 使用RSA密钥对（PKCS1模式）签名验签(C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

@@ -19,5 +19,3 @@ Defines a text shadow style.<br>        [OH_ArkUI_TextShadowStyle_Create](capi-s
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [styled_string.h](capi-styled-string-h.md)
-
-<!--no_check-->

@@ -1,10 +1,12 @@
 # toolbar-item
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:33:54.959Z pushedAt=2026-06-23T08:13:21.267Z -->
 
 >  **NOTE**
 >
@@ -12,11 +14,9 @@
 
 As a child component of **[\<toolbar>](js-components-basic-toolbar.md)**, the **\<toolbar-item>** component is used to display an operation option on the toolbar.
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -27,7 +27,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | value | string | -    | Yes   | Text content of the operation option.                               |
 | icon  | string | -    | Yes   | Icon image path, which is displayed on the option text. The value can be a local path. Supported image formats are PNG, JPG, and SVG.|
 
-
 ## Styles
 
 Only the following styles are supported.
@@ -36,7 +35,7 @@ Only the following styles are supported.
 | ------------------- | ---------------------------------------- | ------------ | ---- | ---------------------------------------- |
 | color               | &lt;color&gt;                            | \#e6000000   | No   | Font color.                                   |
 | font-size           | &lt;length&gt;                           | 16px         | No   | Font size.                                   |
-| allow-scale         | boolean                                  | true         | No   | Whether the font size changes with the system's font size settings.               |
+| allow-scale         | boolean                                  | true         | No   | Whether the font size changes with the system's font size settings. Available values are as follows:<br>- **true**: The font size changes with the system's font size settings.<br>- **false**: The font size does not change with the system's font size settings.               |
 | font-style          | string                                   | normal       | No   | Font style. Available values are as follows:<br> - **normal**: standard font style<br>- **italic**: italic font style|
 | font-weight         | number\|string                           | normal       | No   | Font weight. The number value must be an exact multiple of 100 ranging from 100 to 900. The default value is 400. A larger value indicates a bigger weight. Available values of the string type are **lighter**, **normal**, **bold**, or **bolder**. |
 | text-decoration     | string                                   | none         | No   | Text decoration. Available values are as follows:<br>- **underline**: An underline is used.<br>- **line-through**: A strikethrough is used.<br>- **none**: The standard text is used.|
@@ -51,16 +50,13 @@ Only the following styles are supported.
 | display             | string                                   | flex         | No   | Type of the box containing an element. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
 | visibility          | string                                   | visible      | No   | Whether to display the box containing an element. A hidden box still occupies layout space. (To remove the box, set the **display** attribute to **none**.) Available values are as follows:<br>- **visible**: The box is visible.<br>- **hidden**: The box is hidden but still takes up space.<br>If both **visibility** and **display** are set, only **display** takes effect.|
 
-
 ## Events
 
 The [universal events](js-components-common-events.md) are supported.
 
-
 ## Methods
 
 Not supported
-
 
 ## Example
 

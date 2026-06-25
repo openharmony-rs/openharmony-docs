@@ -49,7 +49,7 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501008 | Waiting for the form addition to the desktop timed out. |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+|
 
 **示例：**
 
@@ -115,7 +115,7 @@ requestPublishForm(want: Want): Promise&lt;string&gt;
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501008 | Waiting for the form addition to the desktop timed out. |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+|
 
 **示例：**
 

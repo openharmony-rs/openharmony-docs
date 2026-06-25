@@ -57,7 +57,7 @@ let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
   displayName: ""
 }];
 
-async function selectOutputDevice(): Promise<void> {
+async function exampleSelectOutputDevice(): Promise<void> {
   audioRoutingManager.selectOutputDevice(outputAudioDeviceDescriptor, (err: BusinessError) => {
     if (err) {
       console.error(`Invoke selectOutputDevice failed, code is ${err.code}, message is ${err.message}`);
@@ -90,7 +90,7 @@ let outputAudioRendererFilter: audio.AudioRendererFilter  = {
     usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
     rendererFlags: 0 // 音频渲染器标志。
   } as audio.AudioRendererInfo,
-  rendererId: 0
+  rendererId: 0 // 此值为示例，使用时需替换为实际ID值。
 };
 
 let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
@@ -108,7 +108,7 @@ let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
   displayName: ""
 }];
 
-async function selectOutputDeviceByFilter(): Promise<void> {
+async function exampleSelectOutputDeviceByFilter(): Promise<void> {
   audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor, (err: BusinessError) => {
     if (err) {
       console.error(`Invoke selectOutputDeviceByFilter failed, code is ${err.code}, message is ${err.message}`);

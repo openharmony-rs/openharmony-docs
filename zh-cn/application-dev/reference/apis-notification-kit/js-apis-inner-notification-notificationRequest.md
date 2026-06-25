@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-描述通知的请求。
+定义了通知请求的数据结构，用于描述一条通知的全部信息，包括通知内容、标识、展示样式、交互行为等。
 
 > **说明：**
 >
@@ -18,7 +18,7 @@
 
 | 名称                            | 类型                                                    |  只读 | 可选 | 说明                                                                          |
 | ---------------------------------- | -------------------------------------------------------- | ----- | --- |-------------------------------------------------------------------------------|
-| content                       | [NotificationContent](js-apis-inner-notification-notificationContent.md#notificationcontent-1)   |   否  | 否  | 通知展示内容。                              |
+| content                       | [NotificationContent](js-apis-inner-notification-notificationContent.md#notificationcontent-1)   |   否  | 否  | 通知展示内容。包括通知标题、正文等。                              |
 | id                            | number                                                   |   否  | 是  | 通知ID，默认值为0。若已存在相同ID的通知，则更新该通知；若不存在相同ID的通知，则创建新的通知。 |
 | updateOnly<sup>18+</sup>      | boolean                                                  |   否  | 是  | 是否仅更新通知，默认值为false。<br/> - true：若已存在相同ID的通知，则更新该通知；若不存在相同ID的通知，则更新失败，并且不创建新的通知。<br/> - false：若已存在相同ID的通知，则更新该通知；若不存在相同ID的通知，则创建新的通知。         |
 | appMessageId<sup>12+</sup>       | string                                                |   否  | 是  | 应用发送通知携带的唯一标识字段，用于通知去重。如果同一应用通过本地和云端等不同途径发布携带相同appMessageId的通知，设备只展示一条消息，之后收到的重复通知会被静默去重，不展示、不提醒。去重标识仅在通知发布的24小时内有效，超过24小时或者设备重启失效。 |
@@ -32,8 +32,8 @@
 | actionButtons                 | Array\<[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md)\>             |   否  | 是  | 通知按钮，默认为空。一条通知中最多包含两个按钮。从API version 16开始，`wearable`设备一条通知最多包含三个按钮。                                                          |
 | removalWantAgent<sup>9+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)            |   否  | 是  | 封装了应用的行为意图，移除通知时触发该行为，默认为空。<br>当前不支持跳转UIAbility，只支持发布公共事件（即[WantAgentInfo](../apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md#wantagentinfo-1)的actionType字段取值为4）。                                          |
 | tapDismissed                  | boolean                                                  |   否  | 是  | 点击通知携带的wantAgent或actionButtons时，该通知是否自动清除。当通知携带wantAgent或actionButtons时该字段生效。默认值为true。<br> - true：点击通知或按钮后，自动删除当前通知。<br> - false：点击通知或按钮后，保留当前通知。 |
-| autoDeletedTime               | number                                                   |   否  | 是  | 通知定时清除时间。设置该参数可使通知在指定时间后自动清除。默认值为0。<br>数据格式：时间戳。<br>单位：ms。<br>例如，希望某通知存留3秒（3000ms）后对其进行清除，则对应的清除时间为：new Date().getTime() + 3000。 |
-| deliveryTime                  | number                                                   |   否  | 是  | 通知发送时间。系统自动生成，无需开发者配置。<br>数据格式：时间戳。<br>单位：ms。      |
+| autoDeletedTime               | number                                                   |   否  | 是  | 通知定时清除时间。设置该参数可使通知在指定时间后自动清除。默认值为0。<br>数据格式：时间戳。<br>单位：毫秒。<br>例如，希望某通知存留3秒（3000ms）后对其进行清除，则对应的清除时间为：new Date().getTime() + 3000。 |
+| deliveryTime                  | number                                                   |   否  | 是  | 通知发送时间。系统自动生成，无需开发者配置。<br>数据格式：时间戳。<br>单位：毫秒。      |
 | label                         | string                                                   |   否  | 是  | 通知标签，默认为空。<br>label字段的功能类似于id，可以单独使用，也可与id结合共同作为通知的标识。优先推荐使用id。<br>如果发布通知时label不为空，那么在更新或删除该通知时，也需要指定相应的label。                                                                 |
 | smallIcon                      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知小图标，默认为空。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。                                                 |
 | largeIcon                      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知大图标，默认为空。图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。                                                 |

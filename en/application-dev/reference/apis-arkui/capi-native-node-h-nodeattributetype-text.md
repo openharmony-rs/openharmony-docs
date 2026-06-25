@@ -1590,14 +1590,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .string | Placeholder image address for the image span. GIF images are not supported.|
+| .string | Placeholder image address for the **imageSpan** component. GIF images are not supported.|
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).<br>Either **.object** or **.string** must be set.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .string | Placeholder image address.|
+| .string | Placeholder image address for the **imageSpan** component.|
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).|
 
 ## NODE_IMAGE_SPAN_BASELINE_OFFSET
