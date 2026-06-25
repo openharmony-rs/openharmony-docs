@@ -795,7 +795,7 @@ isModifyAutoStartAppsDisallowed(admin: Want, autoStartApp: Want, accountId: numb
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| boolean | 是否禁止用户取消应用自启动，true表示禁止，false表示允许。<!--PR1--><!--PR1End-->|
+| boolean | 是否禁止用户取消应用自启动，true表示禁止，false表示允许。<!--RP1--><!--RP1End-->|
 
 **错误码**：
 
