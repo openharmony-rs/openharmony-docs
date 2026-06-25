@@ -95,7 +95,7 @@ export default class MigrationAbility extends UIAbility {
 
 off(type: 'prepareContinue', context: Context, callback?: AsyncCallback\<ContinueResultInfo>): void
 
-在应用快速拉起时，注销回调函数。注销成功后，不再接收快速拉起结果的通知。使用callback异步回调。
+在应用被快速拉起时，注销回调函数。注销成功后，不再接收快速拉起结果的通知。使用callback异步回调。
 
 适用于跨设备应用迁移完成或取消迁移后的回调清理场景，如应用迁移成功后清理监听、用户取消迁移操作时释放资源等。
 
