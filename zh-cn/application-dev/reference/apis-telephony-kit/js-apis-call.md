@@ -354,9 +354,9 @@ call.makeCall(context, "138xxxxxxxx").then(() => {
 ```
 
 ## call.makeCallWithToken
- 	 
+
 makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<string\>
- 	 
+
 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。
 
 > **说明**:
@@ -372,31 +372,31 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 **ArkTS-Sta起始版本**： 26.0.0
  
 **参数：**
- 	 
+
 | 参数名      | 类型   | 必填 | 说明       |
 | ----------- | ------ | ---- | ---------- |
 | phoneNumber | string | 是   | 电话号码。 |
 | options | [MakeCallOptions](#makecalloptions24) | 否   | 通话参数。 |
- 	 
+
 **返回值：**
- 	 
+
 | 类型                | 说明                              |
 | ------------------- | --------------------------------- |
 | Promise&lt;string&gt; | Promise对象，返回鉴权校验token。 |
- 	 
+
 **错误码：**
- 	 
+
 以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
- 	 
+
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
 | 8300999  | Unknown error code.                          |
- 	 
+
 **示例：**
- 	 
+
 ```ts
 import { call } from '@kit.TelephonyKit';
 
