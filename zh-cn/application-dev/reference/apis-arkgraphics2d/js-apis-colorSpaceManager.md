@@ -208,7 +208,7 @@ try {
   let spaceName = colorSpace.getColorSpaceName();
   console.info(`spaceName: ` + spaceName.toString());
 } catch (err) {
-  console.error(`Fail to get colorSpace's name. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get colorSpace's name. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

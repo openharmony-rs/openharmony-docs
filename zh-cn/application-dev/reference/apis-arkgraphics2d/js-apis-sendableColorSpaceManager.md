@@ -7,7 +7,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供管理抽象化色域对象的一些基础能力，包括可共享的色彩管理的创建与可共享的色域基础属性的获取等。
+本模块提供管理抽象化色域对象的基础能力，包括可共享的色彩管理的创建与可共享的色域基础属性的获取等。
 
 > **说明：**
 >
@@ -34,7 +34,7 @@ type ISendable = lang.ISendable
 
 create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager
 
-创建标准可共享的色彩管理。
+创建标准可共享的色彩管理实例。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -56,7 +56,7 @@ create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | The parameter value is abnormal. |
 
 **示例：**
@@ -64,7 +64,7 @@ create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager
 ```ts
 import { colorSpaceManager, sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
-// 定义色域标准三原色参数
+// 创建标准SRGB色域的色彩管理实例
 colorSpace = sendableColorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 ```
 
@@ -95,7 +95,7 @@ create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number): ColorSp
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | The parameter value is abnormal. |
 
 **示例：**
@@ -103,12 +103,12 @@ create(primaries: colorSpaceManager.ColorSpacePrimaries, gamma: number): ColorSp
 ```ts
 import { colorSpaceManager, sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
-// 创建标准SRGB色域的色彩管理实例
+// 定义色域标准三原色参数
 let primaries: colorSpaceManager.ColorSpacePrimaries = {
   redX: 0.1,
   redY: 0.1,
   greenX: 0.2,
-  greenY: 0.2,
+  greenY: 0.2,  
   blueX: 0.3,
   blueY: 0.3,
   whitePointX: 0.4,
