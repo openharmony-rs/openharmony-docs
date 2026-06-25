@@ -201,7 +201,7 @@ accessibilityLevel(value: string): T
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | string | 是   | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件由无障碍辅助服务和ArkUl进行综合判断组件是否可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
+| value  | string | 是   | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件由无障碍辅助服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
 
 **返回值：**
 
@@ -338,7 +338,7 @@ accessibilityRole(role: AccessibilityRoleType): T
 | BLANK  | 4 | 空白填充组件。 |
 | BUTTON | 5 | 按钮。 |
 | BACK_BUTTON | 6 | 大图页返回按钮。 |
-| SHEET_DRAG_BAR | 7 | 滑动条。 |
+| SHEET_DRAG_BAR | 7 | 弹窗拖拽条。 |
 | CALENDAR_PICKER | 8 | 日历选择器组件。 |
 | CALENDAR | 9 | 日历。 |
 | CANVAS | 10 | 提供画布组件。 |
@@ -407,7 +407,7 @@ accessibilityRole(role: AccessibilityRoleType): T
 | POLYGON | 73 | 多边形绘制组件。 |
 | POLYLINE | 74 | 折线绘制组件。 |
 | POPUP | 75 | 显示特定样式气泡。 |
-| PROGRESS | 76 | 文本下载按钮。 |
+| PROGRESS | 76 | 进度条。 |
 | QRCODE | 77 | 二维码。 |
 | RADIO | 78 | 单选框。 |
 | RATING | 79 | 提供在给定范围内选择评分的组件。 |
@@ -839,7 +839,7 @@ import { Want } from '@kit.AbilityKit';
 struct Index {
   @State message: string = 'Message: ';
   private want: Want = {
-    // EmbeddedComponent提供方的bunldename，根据实际情况配置。
+    // EmbeddedComponent提供方的bundleName，根据实际情况配置。
     bundleName: 'com.example.embeddeddemo',
     // EmbeddedComponent提供方的abilityName，根据实际情况配置。
     abilityName: 'ExampleEmbeddedAbility',
@@ -856,8 +856,6 @@ struct Index {
               .fontWeight(FontWeight.Medium)
             Column() {
               EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
-                .width('100%')
-                .height('90%')
                 .onTerminated((info) => {
                   this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
                 })
@@ -944,7 +942,6 @@ struct Index {
 @Entry
 @Component
 struct Index {
-  @State isSelected: boolean = false;
 
   build() {
     Column({ space: 20 }) {

@@ -58,7 +58,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacks* callbacks)](#oh_arkui_accessibilityproviderregistercallback) | 注册回调函数。 |
-| [int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* instanceId,ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacksWithInstance* callbacks)](#oh_arkui_accessibilityproviderregistercallbackwithinstance) | 无障碍多实例场景第三方平台注册回调函数。 |
+| [int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* instanceId,ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacksWithInstance* callbacks)](#oh_arkui_accessibilityproviderregistercallbackwithinstance) | 无障碍多实例场景第三方平台将回调函数注册到系统侧。 |
 | [void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityEventInfo* eventInfo,void (\*callback)(int32_t errorCode))](#oh_arkui_sendaccessibilityasyncevent) | 主动上报事件接口，通知无障碍服务。 |
 | [ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI_AccessibilityElementInfoList* list)](#oh_arkui_addandgetaccessibilityelementinfo) | 在指定的list中增加element成员，并返回element结构。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t elementId)](#oh_arkui_accessibilityelementinfosetelementid) | 为[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置无障碍元素的唯一标识（elementId）。 |
@@ -301,7 +301,7 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* i
 **描述：**
 
 
-无障碍多实例场景第三方平台注册回调函数。
+无障碍多实例场景第三方平台将回调函数注册到系统侧。
 
 **起始版本：** 15
 
