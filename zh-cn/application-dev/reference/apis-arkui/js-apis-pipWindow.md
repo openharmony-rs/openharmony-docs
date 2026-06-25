@@ -619,7 +619,7 @@ promise.then(() => {
 
 stopPiP(): Promise&lt;void&gt;
 
-停止画中画，使用Promise异步回调。调用该方法前需确保已通过startPiP启动画中画且未停止。
+停止画中画，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -674,7 +674,7 @@ setAutoStartEnabled(enable: boolean): void
 
 ```ts
 let enable: boolean = true;
-this.pipController.setAutoStartEnabled(enable); // 设置返回桌面时自动启动画中画
+this.pipController.setAutoStartEnabled(enable); // 设置应用主窗退后台时自动启动画中画
 ```
 
 ### updateContentSize
@@ -910,7 +910,7 @@ try {
 ### isPiPActive<sup>23+</sup>
 isPiPActive(): Promise&lt;boolean&gt;
 
-获取画中画的隐藏状态。使用Promise异步回调。调用该方法前需确保已通过[PiPWindow.create()](#pipwindowcreate)创建PiPController实例且画中画处于STARTED状态。
+获取画中画的隐藏状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
