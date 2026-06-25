@@ -24,7 +24,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 系统公共事件是指由系统服务或系统应用发布的事件，订阅这些系统公共事件需要特定的权限。发布或订阅这些事件需要使用如下链接中的枚举定义。
 
-全部系统公共事件枚举定义请参见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。
+全部系统公共事件枚举定义请参见[系统定义的公共事件](./common_event/commonEventManager-definitions-sys.md)。
 
 ## commonEventManager.publishAsUser<sup>
 
@@ -40,7 +40,7 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 
 | 参数名     | 类型                 | 必填 | 说明                               |
 | -------- | -------------------- | ---- | ---------------------------------- |
-| event    | string               | 是   | 表示要发送的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。             |
+| event    | string               | 是   | 表示要发送的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions-sys.md)。             |
 | userId   | number               | 是   | 表示指定向该用户ID发送此公共事件。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。             |
 
@@ -94,7 +94,7 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 
 | 参数名     | 类型                   | 必填 | 说明                   |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。  |
+| event    | string                 | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions-sys.md)。  |
 | userId   | number | 是 | 表示指定向该用户ID发送此公共事件。 |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
 | callback | AsyncCallback\<void>   | 是   | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。  |
@@ -156,7 +156,7 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                             |
 | -------- | -------------------- | ---- | -------------------------------- |
-| event    | string               | 是   | 表示被移除的粘性公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。       |
+| event    | string               | 是   | 表示被移除的粘性公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions-sys.md)。       |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当移除粘性事件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -202,7 +202,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| event  | string | 是   | 表示被移除的粘性公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。 |
+| event  | string | 是   | 表示被移除的粘性公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions-sys.md)。 |
 
 **返回值：**
 
