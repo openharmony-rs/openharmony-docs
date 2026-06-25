@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-ErrorManager模块提供对错误观测器的注册和注销的能力，主要是观测应用发生js crash和appfreeze等错误。
+ErrorManager模块提供对应用运行时各类异常的全局观测能力，包括注册和注销错误观测器，主要用于监测应用崩溃（JS_CRASH）、应用冻结（AppFreeze）、未捕获的Promise异常、资源超基线等错误场景。通过设置监听器，开发者可以实时捕获异常信息、追踪问题根源、记录关键指标，从而提高应用的稳定性监控能力，加快故障排查和定位效率，提升应用质量和用户体验。
 
 > **说明**：
 >
@@ -30,9 +30,11 @@ import errorManager from '@ohos.app.ability.errorManager';
 
 on(type: 'error', observer: ErrorObserver): number
 
-注册错误观测器。注册后可以捕获到应用产生的js crash，属于应用崩溃的一种。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。
+注册错误观测器。注册后可以捕获到应用产生的JS_CRASH，属于应用崩溃的一种。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
+
+配对调用：与[errorManager.off('error')](#errormanagerofferror)方法配合使用，使用完成后可调用off方法注销监听器。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -61,7 +63,7 @@ on(type: 'error', observer: ErrorObserver): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 | 16000003 | The specified ID does not exist. |
 
 **示例**：
@@ -99,6 +101,8 @@ on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 
 在进程中的任意线程中注册 `errorManager.on` 接口，监听整个进程中任意线程的异常。观测器捕获到该异常时应用不退出，建议在回调函数执行完后，增加同步退出操作。
 
+配对调用：与[errorManager.off('globalErrorOccurred')](#errormanageroffglobalerroroccurred18)方法配合使用，使用完成后可调用off方法注销监听器。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -112,7 +116,7 @@ on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'globalErrorOccurred'，表示错误观测器。 |
-| observer | [GlobalObserver](#globalobserver18) | 是 | 自定义异常处理回调函数。 |
+| observer | [GlobalObserver](#globalobserver18) | 是 | 自定义异常处理回调函数，用于接收全局异常事件。回调函数入参：(reason: GlobalError) => void，其中reason为包含异常名称、消息、堆栈、线程名称和类型的对象。 |
 
 **错误码**：
 
@@ -120,11 +124,11 @@ on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 | 16200001 | If the caller is invalid. |
 
 **示例**：
-    
+
 ```ts
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -150,9 +154,11 @@ try {
 
 off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 
-注销错误观测器，注销之前注册在同一线程的callback全局监听。
+注销错误观测器，注销当前注册在同一线程的callback全局监听。
 
 如果传入的回调不在通过on方法注册的回调队列中，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
+
+配对调用：与[errorManager.on('globalErrorOccurred')](#errormanageronglobalerroroccurred18)方法配合使用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -167,7 +173,7 @@ off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'globalErrorOccurred'，表示错误观测器。 |
-| observer | [GlobalObserver](#globalobserver18) | 否 | 由on方法注册的callback。建议使用该参数，缺省时默认清除所有通过on注册的相同env的callback，否则删除指定callback。  |
+| observer | [GlobalObserver](#globalobserver18) | 否 | 由on方法注册的callback。建议使用该参数。若不传该参数，则清除所有通过on方法注册的observer；若传该参数，则仅删除指定的observer。 |
 
 **错误码**：
 
@@ -175,7 +181,7 @@ off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 | 16200001 | If the caller is invalid. |
 | 16300004 | If the observer does not exist. |
 
@@ -186,11 +192,11 @@ import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function errorFunc(observer: errorManager.GlobalError) {
-    console.info("result name :" + observer.name);
-    console.info("result message :" + observer.message);
-    console.info("result stack :" + observer.stack);
-    console.info("result instanceName :" + observer.instanceName);
-    console.info("result instanceType :" + observer.instanceType);
+  console.info("result name :" + observer.name);
+  console.info("result message :" + observer.message);
+  console.info("result stack :" + observer.stack);
+  console.info("result instanceName :" + observer.instanceName);
+  console.info("result instanceType :" + observer.instanceType);
 }
 
 try {
@@ -204,11 +210,13 @@ try {
 
 ## errorManager.off('error')
 
-off(type: 'error', observerId: number,  callback: AsyncCallback\<void>): void
+off(type: 'error', observerId: number, callback: AsyncCallback\<void>): void
 
 注销错误观测器。使用callback异步返回。
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
+
+配对调用：与[errorManager.on('error')](#errormanageronerror)方法配合使用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -232,7 +240,7 @@ off(type: 'error', observerId: number,  callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 | 16000003 | The specified ID does not exist. |
 
 **示例**：
@@ -266,6 +274,8 @@ off(type: 'error', observerId: number): Promise\<void>
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
+配对调用：与[errorManager.on('error')](#errormanageronerror)方法配合使用。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -285,7 +295,7 @@ off(type: 'error', observerId: number): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。|
 
 **错误码**：
 
@@ -293,7 +303,7 @@ off(type: 'error', observerId: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 | 16000003 | The specified ID does not exist. |
 
 **示例**：
@@ -310,7 +320,7 @@ try {
       console.info('----------- unregisterErrorObserver success ----------', data);
     })
     .catch((err: BusinessError) => {
-      console.error('----------- unregisterErrorObserver fail ----------', err);
+      console.error(`Failed to unregister error observer. Code: ${err.code}, message: ${err.message}`);
     });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -325,7 +335,11 @@ on(type: 'loopObserver', timeout: number, observer: LoopObserver): void
 
 注册主线程消息处理耗时监听器。注册后可以捕获到应用主线程处理消息的具体执行时间。
 
+该接口通过监测每个消息从开始执行到完成的时间间隔，当执行时间超过设定的timeout阈值时触发回调。
+
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
+
+配对调用：与[errorManager.off('loopObserver')](#errormanageroffloopobserver12)方法配合使用，使用完成后可调用off方法注销监听器释放资源。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -340,8 +354,8 @@ on(type: 'loopObserver', timeout: number, observer: LoopObserver): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'loopObserver'，表示注册主线程消息处理耗时监听器。 |
-| timeout | number | 是 |  表示事件执行阈值（单位：毫秒）。 阈值必须大于0。 |
-| observer | [LoopObserver](js-apis-inner-application-loopObserver.md) | 是 | 注册主线程消息处理耗时监听器。 |
+| timeout | number | 是 | 表示事件执行阈值（单位：毫秒）。 阈值必须大于0。 |
+| observer | [LoopObserver](js-apis-inner-application-loopObserver.md) | 是 | 注册主线程消息处理耗时监听器。定义了onLoopTimeOut方法，当主线程消息处理时间超过阈值时被调用。 |
 
 **错误码**：
 
@@ -349,12 +363,13 @@ on(type: 'loopObserver', timeout: number, observer: LoopObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
     
 ```ts
 import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.LoopObserver = {
   onLoopTimeOut(timeout: number) {
@@ -362,7 +377,13 @@ let observer: errorManager.LoopObserver = {
   }
 };
 
-errorManager.on("loopObserver", 1, observer);
+try {
+  errorManager.on("loopObserver", 1, observer);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
 ```
 
 ## errorManager.on('globalUnhandledRejectionDetected')<sup>18+</sup>
@@ -370,6 +391,8 @@ errorManager.on("loopObserver", 1, observer);
 on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 
 在进程中任意线程注册被拒绝promise监听器，注册后可以捕获到当前进程中未被捕获到的promise rejection。
+
+配对调用：与[errorManager.off('globalUnhandledRejectionDetected')](#errormanageroffglobalunhandledrejectiondetected18)方法配合使用，使用完成后可调用off方法注销监听器。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -381,10 +404,10 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 
 **参数**：
 
-| 参数名                   | 类型                                                          | 必填 | 说明                                       |
-|-----------------------|-------------------------------------------------------------| -------- |------------------------------------------|
-| type                  | string                                                      | 是 | 填写'globalUnhandledRejectionDetected'，表示注册被拒绝promise监听器。 |
-| observer              | [GlobalObserver](#globalobserver18) | 是 | 注册被拒绝promise的callback。                          |
+| 参数名     | 类型                                 | 必填 | 说明                                                                                                      |
+|------------|-------------------------------------| -------- |------------------------------------------------------------------------------------------------------|
+| type       | string                              | 是 | 填写'globalUnhandledRejectionDetected'，表示注册被拒绝promise监听器。<br>回调函数入参：(reason: Error \| any, promise: Promise\<any>) => void，其中reason为被拒绝的理由（通常是Error类型），promise为被拒绝的Promise对象。 |
+| observer   | [GlobalObserver](#globalobserver18) | 是 | 注册被拒绝promise的callback。                          |
 
 **错误码**：
 
@@ -392,7 +415,7 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.  |
 | 16200001 | If the caller is invalid. |
 
 **示例**：
@@ -401,11 +424,11 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 import { errorManager } from '@kit.AbilityKit';
 
 function promiseFunc(observer: errorManager.GlobalError) {
-  console.info("result name :" + observer.name);
-  console.info("result message :" + observer.message);
-  console.info("result stack :" + observer.stack);
-  console.info("result instanceName :" + observer.instanceName);
-  console.info("result instanceType :" + observer.instanceType);
+  console.info('result name :' + observer.name);
+  console.info('result message :' + observer.message);
+  console.info('result stack :' + observer.stack);
+  console.info('result instanceName :' + observer.instanceName);
+  console.info('result instanceType :' + observer.instanceType);
 }
 
 errorManager.on("globalUnhandledRejectionDetected", promiseFunc);
@@ -426,6 +449,8 @@ on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void
 注册被拒绝promise监听器。注册后可以捕获到当前线程中未被捕获到的promise rejection。
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
+
+配对调用：与[errorManager.off('unhandledRejection')](#errormanageroffunhandledrejection12)方法配合使用，使用完成后可调用off方法注销监听器释放资源。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -450,7 +475,7 @@ on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 | 16200001 | If the caller is invalid. |
 
 **示例**：
@@ -460,12 +485,12 @@ import { errorManager } from '@kit.AbilityKit';
 
 let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
   if (promise === promise1) {
-    console.info("promise1 is rejected");
+    console.info('promise1 is rejected');
   }
   console.info("reason.name: ", reason.name);
   console.info("reason.message: ", reason.message);
   if (reason.stack) {
-    console.info("reason.stack: ", reason.stack);
+    console.info('reason.stack: ', reason.stack);
   }
 };
 
@@ -483,10 +508,13 @@ on(type: 'freeze', observer: FreezeObserver): void
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
+配对调用：与[errorManager.off('freeze')](#errormanagerofffreeze18)方法配合使用，使用完成后可调用off方法注销监听器。
+
 > **注意**：
 >
 > 如果该回调函数执行时间超过1s，可能导致[AppRecovery](./js-apis-app-ability-appRecovery.md)功能不可用。通过解析hilog日志中的begin与Freeze callback execution completed两者的时间差可以计算回调函数执行时长，如果超过1秒，可以尝试采用异步处理、减少阻塞操作、优化数据结构等方法优化回调逻辑，降低执行时长。
-> 
+>
+> 该接口请勿与[errorManager.setDefaultFreezeObserver](#errormanagersetdefaultfreezeobserver)接口混用，混用可能会导致注册的回调函数执行失败。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -511,17 +539,24 @@ on(type: 'freeze', observer: FreezeObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
     
 ```ts
 import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function freezeCallback() {
-    console.info("freezecallback");
+  console.info("freezecallback");
 }
-errorManager.on("freeze", freezeCallback);
+try {
+  errorManager.on("freeze", freezeCallback);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
 ```
 
 ## errorManager.off('loopObserver')<sup>12+</sup>
@@ -531,6 +566,8 @@ off(type: 'loopObserver', observer?: LoopObserver): void
 注销主线程消息处理监听器。
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
+
+配对调用：与[errorManager.on('loopObserver')](#errormanageronloopobserver12)方法配合使用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -553,7 +590,7 @@ off(type: 'loopObserver', observer?: LoopObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
     
@@ -567,9 +604,11 @@ errorManager.off("loopObserver");
 
 off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void
 
-注销被拒绝promise监听器，注销后无法监听进程中的promise异常。
+注销错误观测器，注销之前注册在同一线程的回调全局监听，注销后无法监听进程中的promise异常。
 
 如果传入的回调不在通过on方法注册的回调队列中，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
+
+配对调用：与[errorManager.on('globalUnhandledRejectionDetected')](#errormanageronglobalunhandledrejectiondetected18)方法配合使用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -581,10 +620,8 @@ off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void
 
 **参数**：
 
-| 参数名                   | 类型                              | 必填 | 说明                                           |
-|-----------------------|---------------------------------|----|----------------------------------------------|
-| type                  | string                          | 是  | 填写'globalUnhandledRejectionDetected'，表示注册被拒绝promise监听器。 |
-| observer              | [GlobalObserver](#globalobserver18) | 否  | 由on接口注册的被拒绝promise的callback。建议使用该参数，缺省时默认清除所有通过on注册的相同env的callback，否则删除指定callback。 |
+| type                  | string                          | 是  | 填写'globalUnhandledRejectionDetected'，表示注销被拒绝promise监听器。 |
+| observer              | [GlobalObserver](#globalobserver18) | 否  | 由on接口注册的被拒绝promise的callback。建议使用该参数，缺省时默认清除所有通过on注册的相同虚拟机实例环境（env）的callback，否则删除指定callback。 |
 
 **错误码**：
 
@@ -592,7 +629,7 @@ off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 | 16200001 | If the caller is invalid. |
 | 16300004 | If the observer does not exist. |
 
@@ -630,6 +667,8 @@ off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
+配对调用：与[errorManager.on('unhandledRejection')](#errormanageronunhandledrejection12)方法配合使用。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -645,15 +684,14 @@ off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void
 | 参数名                   | 类型                              | 必填 | 说明                                           |
 |-----------------------|---------------------------------|----|----------------------------------------------|
 | type                  | string                          | 是  | 填写'unhandledRejection'，表示注册被拒绝promise监听器。 |
-| observer              | [UnhandledRejectionObserver](#unhandledrejectionobserver12) | 否  | 注册了被拒绝promise监听器。建议使用该参数，缺省时默认清除所有通过on注册的相同env的observer，否则删除指定observer。                        |
-
+| observer              | [UnhandledRejectionObserver](#unhandledrejectionobserver12) | 否  | 需要注销的被拒绝promise监听器。建议使用该参数，缺省时默认清除所有通过on注册的相同虚拟机实例环境（env）的callback，否则删除指定observer。|
 **错误码**：
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 | 16200001 | If the caller is invalid. |
 | 16300004 | If the observer does not exist. |
 
@@ -664,12 +702,12 @@ import { errorManager } from '@kit.AbilityKit';
 
 let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
   if (promise === promise1) {
-    console.info("promise1 is rejected");
+    console.info('promise1 is rejected');
   }
-  console.info("reason.name: ", reason.name);
-  console.info("reason.message: ", reason.message);
+  console.info('reason.name: ', reason.name);
+  console.info('reason.message: ', reason.message);
   if (reason.stack) {
-    console.info("reason.stack: ", reason.stack);
+    console.info('reason.stack: ', reason.stack);
   }
 };
 
@@ -687,12 +725,12 @@ import { errorManager } from '@kit.AbilityKit';
 
 let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
   if (promise === promise1) {
-    console.info("promise1 is rejected");
+    console.info('promise1 is rejected');
   }
-  console.info("reason.name: ", reason.name);
-  console.info("reason.message: ", reason.message);
+  console.info('reason.name: ', reason.name);
+  console.info('reason.message: ', reason.message);
   if (reason.stack) {
-    console.info("reason.stack: ", reason.stack);
+    console.info('reason.stack: ', reason.stack);
   }
 };
 
@@ -709,11 +747,13 @@ errorManager.off("unhandledRejection", observer);
 
 off(type: 'freeze', observer?: FreezeObserver): void
 
-取消之前注册的应用主线程freeze监听。
+注销已注册的应用主线程freeze监听。
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
 如果传入的回调与通过on方法注册回调不一致，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
+
+配对调用：与[errorManager.on('freeze')](#errormanageronfreeze18)方法配合使用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -730,7 +770,7 @@ off(type: 'freeze', observer?: FreezeObserver): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'freeze'，表示应用主线程freeze观测器。 |
-| observer | [FreezeObserver](#freezeobserver18) | 否 | 由on接口注册的freeze监听的callback。建议使用该参数，如果参数不填会直接清空callback，否则删除指定的callback。 |
+| observer | [FreezeObserver](#freezeobserver18) | 否 | 由on接口注册的freeze监听的callback。建议使用该参数。若不传该参数，则清除所有通过on方法注册的callback；若传该参数，则仅删除指定的callback。 |
 
 **错误码**：
 
@@ -747,7 +787,7 @@ off(type: 'freeze', observer?: FreezeObserver): void
 import { errorManager } from '@kit.AbilityKit';
 
 function freezeCallback() {
-    console.info("freezecallback");
+  console.info('freezecallback');
 }
 errorManager.on("freeze", freezeCallback);
 errorManager.off("freeze", freezeCallback);
@@ -762,6 +802,8 @@ setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler
 如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。
 
 若接口参数为空，后续注册的处理器将无法与前序已注册的处理器建立关联，从而中断链式调用。
+
+链式调用机制允许依次执行多个错误处理器：注册新处理器时，会返回上一次注册的处理器；在处理器中可以调用前序处理器，形成处理器链。这样可以实现多层错误处理逻辑的叠加，确保每个处理器都能按预期执行。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -799,15 +841,15 @@ import { process } from '@kit.ArkTS';
 
 let oldHandler: errorManager.ErrorHandler;
 const errorHandler: errorManager.ErrorHandler = (reason: Error) => {
-    // 自定义的errorHandler实现逻辑
-    console.info('[Handler]  Uncaught exception handler invoked.');
-    if (oldHandler) {
-        oldHandler(reason);
-    } else {
-        // 建议增加判空操作，如果为空采用同步退出方式
-        const processManager = new process.ProcessManager();
-        processManager.exit(0);
-    }
+  // 自定义的errorHandler实现逻辑
+  console.info('[Handler] Uncaught exception handler invoked.');
+  if (oldHandler) {
+      oldHandler(reason);
+  } else {
+      // 建议增加判空操作，如果为空采用同步退出方式
+      const processManager = new process.ProcessManager();
+      processManager.exit(0);
+  }
 };
 oldHandler = errorManager.setDefaultErrorHandler(errorHandler);
 ```
@@ -816,7 +858,9 @@ oldHandler = errorManager.setDefaultErrorHandler(errorHandler);
 
 setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver
 
-设置资源占用观察者，应用资源超基线时，支持链式回调，返回上一次注册的资源占用观察者，仅限主线程调用。
+设置资源占用观察者，应用资源超基线时，支持链式回调。
+
+该接口通过系统资源监控服务实时采集应用的内存、文件描述符、线程数等资源使用情况，与预设基线进行比较，当资源使用量超过基线时触发观察者回调。返回上一次注册的资源占用观察者，仅限主线程调用。
 
 如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。
 
@@ -836,7 +880,7 @@ setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): Resour
  
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| defaultObserver | [ResourceUsageObserver](#resourceusageobserver24) | 否 | 新注册的资源观察者，默认值为空。|
+| defaultObserver | [ResourceUsageObserver](#resourceusageobserver24) | 否 | 新注册的资源观察者，缺省时默认值为空。|
 
 **返回值**：
 
@@ -850,7 +894,7 @@ setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): Resour
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 16000205      | The API is not called on the main thread. |
+| 16000205 | The API is not called on the main thread. |
 
 **示例**：
 
@@ -937,15 +981,16 @@ ArkTS-Dyn示例：
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 用于保存上一次注册的处理器。如果是第一次注册，无前置处理器。
 let oldHandler: errorManager.FreezeObserver = () => {};
 const freezeHandler: errorManager.FreezeObserver = () => {
-    // 自定义的FreezeHandler实现逻辑
-    console.info('[freezeHandler] freeze handler invoked.');
-    if (oldHandler) {
-        oldHandler();
-    } else {
-        console.info('[freezeHandler] freeze handler end.');
-    }
+  // 自定义的FreezeHandler实现逻辑
+  console.info('[freezeHandler] freeze handler invoked.');
+  if (oldHandler) {
+    oldHandler();
+  } else {
+    console.info('[freezeHandler] freeze handler end.');
+  }
 };
 
 export function setFreezeHandler() {
@@ -954,7 +999,7 @@ export function setFreezeHandler() {
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    console.error('setFreezeHandler',`error: ${code}, ${message}`);
+    console.error(`Failed to set freeze handler. Code: ${code}, message: ${message}`);
   }
   console.info('Registered freeze Handler.');
 }
@@ -993,6 +1038,8 @@ onFreeze(observer: FreezeObserver): void
 注册应用主线程freeze监听。多次注册情况下，取最后一次注册的结果。
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
+
+配对调用：与[errorManager.offFreeze](#errormanagerofffreeze24)方法配合使用，使用完成后可调用off方法注销监听器。
 
 > **注意**：
 >
@@ -1048,6 +1095,8 @@ offFreeze(observer?: FreezeObserver): void
 
 如果传入的回调与通过on方法注册回调不一致，将抛出16300004错误码，因此建议使用try-catch逻辑进行处理。
 
+配对调用：与[errorManager.onFreeze](#errormanageronfreeze24)方法配合使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
@@ -1098,6 +1147,8 @@ onUnhandledRejection(observer: UnhandledRejectionObserver): void
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
+配对调用：与[errorManager.offUnhandledRejection](#errormanageroffunhandledrejection24)方法配合使用，使用完成后可调用off方法注销监听器。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
@@ -1118,7 +1169,7 @@ onUnhandledRejection(observer: UnhandledRejectionObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 
 ```ts
 import errorManager from '@ohos.app.ability.errorManager';
@@ -1146,6 +1197,8 @@ offUnhandledRejection(observer?: UnhandledRejectionObserver): void
 
 仅在主线程中使用。使用线程出错时，将抛出错误码，因此建议使用try-catch逻辑进行处理。
 
+配对调用：与[errorManager.onUnhandledRejection](#errormanageronunhandledrejection24)方法配合使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
@@ -1166,7 +1219,7 @@ offUnhandledRejection(observer?: UnhandledRejectionObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
 | 16300004 | If the observer does not exist. |
 
 ```ts
@@ -1192,7 +1245,7 @@ export function onUnhandledRejectionHandler() {
 
 type ErrorObserver = _ErrorObserver.default
 
-ErrorObserver模块。
+ErrorObserver模块。该模块定义了错误观测器的接口，包含onUnhandledException和onException两个回调方法。通过实现该接口，开发者可以自定义对未处理异常和已捕获异常的处理逻辑。系统在捕获到异常时会自动调用相应回调，并将异常信息传递给观测器。详细实现机制请参见[ErrorObserver](js-apis-inner-application-errorObserver.md)。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1211,6 +1264,8 @@ ErrorObserver模块。
 type LoopObserver = _LoopObserver
 
 LoopObserver模块。定义异常监听，可作为 `errormanager.on` 函数的参数，监听并处理当前应用主线程超时的事件。
+
+该接口通过在ArkUI事件循环的消息处理前后记录时间戳，计算消息执行时长，当执行时长超过设定的timeout阈值时触发onLoopTimeOut回调。详细监测机制请参见[LoopObserver](js-apis-inner-application-loopObserver.md)。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1244,7 +1299,7 @@ type UnhandledRejectionObserver = (reason: Error | any, promise: Promise\<any>) 
 
 | 参数名    | 类型            | 必填 | 说明 |
 |--------|---------------|---| -------- |
-| reason | Error \| any  | 是 | 表示被拒绝的理由。 |
+| reason | Error \| any | 是 | 表示被拒绝的理由。 |
 | promise | Promise\<any> | 是 | 被拒绝的promise。 |
 
 ## FreezeObserver<sup>18+</sup>
@@ -1279,7 +1334,7 @@ type GlobalObserver = (reason: GlobalError) => void
 
 | 参数名  | 类型          | 必填 | 说明 |
 |--------| ------------- | ---- | --- |
-| reason | [GlobalError](#globalerror18)   | 是   | 有关异常事件名字、消息、错误堆栈信息、异常线程名称和类型的对象。 |
+| reason | [GlobalError](#globalerror18)  | 是  | 有关异常事件名字、消息、错误堆栈信息、异常线程名称和类型的对象。 |
 
 
 ## GlobalError<sup>18+</sup>
@@ -1360,7 +1415,7 @@ ArkTS-Sta: type ResourceUsageObserver = (resourceType: ResourceType, resourceSiz
 | 参数名  | 类型          | 必填 | 说明 |
 |--------| ------------- | ---- | --- |
 | resourceType | [ResourceType](#resourcetype24)   | 是   | 表示应用资源超基线的类型。 |
-| resourceSize | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 表示应用资源超基线的资源使用量。 |
+| resourceSize | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 表示应用资源超基线的资源使用量。单位：KB。取值范围：大于0的正整数。 |
 | detailInfo | ArkTS-Dyn: Record<string, number><br>ArkTS-Sta: Record<string, long>   | 否   | 表示应用资源超基线资源使用量的细分项字典。<br>**说明**：仅在resourceType为PSS_MEMORY时存在，为其他类型或缺省时为空；<br>key为小写内存类型，value为对应细分项资源大小；<br>细分项的key包含arkts、native、ion、gpu、ashmem和other。 |
 
 ## ResourceType<sup>24+</sup>

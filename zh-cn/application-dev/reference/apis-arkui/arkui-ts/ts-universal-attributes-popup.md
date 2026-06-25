@@ -1099,12 +1099,12 @@ struct PopupExample {
         .bindPopup(this.handlePopup!!, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
-          outlineWidth: 1,
+          outlineWidth: 1, // 设置外描边宽度为1vp
           outlineLinearGradient: {
             direction: GradientDirection.Top,
             colors: [[Color.Yellow, 0.0], [Color.Green, 1.0]]
           },
-          borderWidth: 1,
+          borderWidth: 1, // 设置内描边宽度为1vp
           borderLinearGradient: {
             direction: GradientDirection.Bottom,
             colors: [[Color.Red, 0.0], [Color.Blue, 1.0]]
@@ -1137,12 +1137,12 @@ struct MyStateSample {
         .bindPopup(this.handlePopup, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
-          outlineWidth: 1,
+          outlineWidth: 1, // 设置外描边宽度为1vp
           outlineLinearGradient: {
             direction: GradientDirection.Top,
             colors: [[Color.Yellow, 0.0], [Color.Green, 1.0]]
           },
-          borderWidth: 1,
+          borderWidth: 1, // 设置内描边宽度为1vp
           borderLinearGradient: {
             direction: GradientDirection.Bottom,
             colors: [[Color.Red, 0.0], [Color.Blue, 1.0]]
@@ -1180,6 +1180,7 @@ struct PopupExample {
         .bindPopup(this.handlePopup!!, {
           message: 'popup message '.repeat(200),
           placement: Placement.Top,
+          // 设置本参数后，四周空间不足以放下Popup时，Popup会自动压缩自身高度
           avoidTarget: AvoidanceMode.AVOID_AROUND_TARGET,
         })
         .position({ x: 100, y: 150 })
@@ -1210,6 +1211,7 @@ struct PopupExample {
         .bindPopup(this.handlePopup, {
           message: 'popup message '.repeat(200),
           placement: Placement.Top,
+          // 设置本参数后，四周空间不足以放下Popup时，Popup会自动压缩自身高度
           avoidTarget: AvoidanceMode.AVOID_AROUND_TARGET,
         } as PopupOptions)
         .position({ x: 100, y: 150 } as Position)
