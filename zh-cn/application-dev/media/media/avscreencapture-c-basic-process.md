@@ -139,7 +139,7 @@ AVScreenCapture实例的配置信息为[OH_AVScreenCaptureConfig](../../referenc
 
 配置完成后通过[OH_AVScreenCapture_Init](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_init)将配置项设置到[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)中。
 
-根据不同的录屏场景，可选择不同的录屏模式，详情见[录屏模式说明](#录屏模式说明)。在PC/2in1设备上，不同录屏模式会有不同弹窗表现，详情见[PC/2in1设备弹窗行为差异](#pc2in1设备弹窗行为差异)。
+根据不同的录屏场景，可选择不同的录屏模式，详情见[录屏模式说明](#录屏模式说明)。在PC/2in1设备上，不同录屏模式会有不同弹窗表现，详情见[弹窗模式说明](#弹窗模式说明)。
 
 ```c++
 // 初始化录屏，传入配置信息OH_AVScreenCaptureConfig。
