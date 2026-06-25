@@ -358,16 +358,18 @@ call.makeCall(context, "138xxxxxxxx").then(() => {
 makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<string\>
  	 
 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。
+
+ **说明**:
  	 
-**起始版本**: 26.0.0
-  
+该接口返回校验token，应用可以利用phoneNumber和token去实现特定能力，比如蜂窝下行流的录制。
+ 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
  
 **系统能力**：SystemCapability.Applications.Contacts
 
 **ArkTS-Dyn起始版本**： 26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本**： 26.0.0
  
 **参数：**
  	 
@@ -1260,7 +1262,7 @@ call.getCallTransferInfo(type, number)
 |        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
 | isHideDialScreen               | boolean                            | 否   | 是   | 是否隐藏拨号界面，true表示隐藏，false表示不隐藏。   |
-| isCustomAccessibility               | boolean                            | 否   | 是   | 应用是否支持自定义无障碍功能，true表示支持，false表示不支持。   <br>**起始版本:** 26.0.0|
+| isCustomAccessibility               | boolean                            | 否   | 是   | 应用是否支持自定义无障碍功能，默认为false。true表示支持，false表示不支持。<br>无障碍能力是指为特殊残障人士提供便利的能力。   <br>**起始版本:** 26.0.0|
 
 ## TelCallState<sup>21+</sup>
 
