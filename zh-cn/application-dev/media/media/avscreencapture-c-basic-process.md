@@ -289,7 +289,7 @@ OH_AVScreenCapture_Release(capture);
 
 即[OH_CAPTURE_SPECIFIED_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
 
-在此模式下，录屏应用指定录制某个屏幕的内容。启动录屏后，系统会弹出选择共享内容弹窗（Phone/Tablet设备不弹出，具体弹窗行为见[PC/2in1设备弹窗行为差异](#pc2in1设备弹窗行为差异)），并默认选中videoCapInfo.displayId参数对应的屏幕。如果传入的displayId对应的屏幕不存在，则不做任何选中。
+在此模式下，录屏应用指定录制某个屏幕的内容。启动录屏后，系统会弹出选择共享内容弹窗（Phone/Tablet设备不弹出，具体弹窗行为见[PC/2in1设备弹窗行为差异](#pc2in1设备弹窗行为差异)[Phone/Tablet弹窗模式配置说明](#phonetablet弹窗模式配置说明)），并默认选中videoCapInfo.displayId参数对应的屏幕。如果传入的displayId对应的屏幕不存在，则不做任何选中。
 
 ```c++
 uint64_t displayId = 0;
@@ -315,7 +315,7 @@ config.videoInfo.videoCapInfo.displayId = 0;
 
 即[OH_CAPTURE_HOME_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
 
-在此模式下，录屏应用录制设备主屏幕的内容。启动录屏后，系统不会弹出选择共享内容弹窗（部分设备弹窗行为可能不同，具体见[PC/2in1设备弹窗行为差异](#pc2in1设备弹窗行为差异)），会弹出隐私保护弹窗。配置的videoCapInfo.displayId参数不会生效，默认生效主屏的displayId。
+在此模式下，录屏应用录制设备主屏幕的内容。启动录屏后，系统不会弹出选择共享内容弹窗（部分设备弹窗行为可能不同，具体见[PC/2in1设备弹窗行为差异](#pc2in1设备弹窗行为差异)和[Phone/Tablet弹窗模式配置说明](#phonetablet弹窗模式配置说明)），会弹出隐私保护弹窗。配置的videoCapInfo.displayId参数不会生效，默认生效主屏的displayId。
 
 ```c++
 uint64_t displayId = 0;
@@ -340,7 +340,7 @@ config.captureMode = OH_CAPTURE_HOME_SCREEN;
 
 应用需根据设备分辨率配置录屏的高度和宽度值并传入屏幕Id。
 
-若期望录制某个指定窗口，需要设置指定的窗口Id。该场景下，启动录屏后，系统会弹出选择共享内容弹窗（Phone/Tablet设备不弹出，具体弹窗行为见[PC/2in1设备弹窗行为差异](#pc2in1设备弹窗行为差异)），并默认选中指定的窗口。
+若期望录制某个指定窗口，需要设置指定的窗口Id。该场景下，启动录屏后，系统会弹出选择共享内容弹窗（Phone/Tablet设备不弹出，具体弹窗行为见[PC/2in1设备弹窗行为差异](#pc2in1设备弹窗行为差异)和[Phone/Tablet弹窗模式配置说明](#phonetablet弹窗模式配置说明)），并默认选中指定的窗口。
 
 ```c++
 uint64_t displayId = 0;
