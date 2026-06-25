@@ -49550,6 +49550,11 @@
 						"end_line":224,
 						"name":"createImageSource_rawFd",
 						"start_line":222
+					},
+					{
+						"end_line":547,
+						"name":"createImageRawData",
+						"start_line":522
 					}
 				]
 			}
@@ -53003,6 +53008,11 @@
 						"end_line":232,
 						"name":"animatedDecoding_release",
 						"start_line":212
+					},
+					{
+						"end_line":38,
+						"name":"animatedDecoding_maxStringLength",
+						"start_line":36
 					}
 				]
 			},
@@ -53013,11 +53023,6 @@
 						"end_line":36,
 						"name":"define_logInfo",
 						"start_line":31
-					},
-					{
-						"end_line":47,
-						"name":"define_maxStringLength",
-						"start_line":45
 					}
 				]
 			},
