@@ -126,7 +126,6 @@ Port already in use.
 
 2. 调用[close](js-apis-busmanager-serial.md#close)关闭串口后重新打开。
 
-
 ## 35700005 端口未打开
 
 **错误信息**
