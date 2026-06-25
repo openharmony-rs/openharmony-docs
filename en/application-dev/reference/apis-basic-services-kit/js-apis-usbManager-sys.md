@@ -44,7 +44,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 | Type  | Description              |
 | ------ | ------------------ |
-| number | Function list in numeric mask format after conversion.|
+| number | Numeric mask of the function list.|
 
 **Error codes**
 
@@ -80,7 +80,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 | Name| Type                         | Mandatory| Description             |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | Yes  | USB function list in numeric mask format.|
+| funcs  | [FunctionType](#functiontype) | Yes  | Numeric mask of the function list.|
 
 **Return value**
 
@@ -122,7 +122,7 @@ Sets the current USB function list in Device mode. This API uses a promise to re
 
 | Name| Type                         | Mandatory| Description             |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | Yes  | USB function list in numeric mask format.|
+| funcs  | [FunctionType](#functiontype) | Yes  | Numeric mask of the function list.|
 
 **Return value**
 
@@ -403,7 +403,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 | Type  | Description              |
 | ------ | ------------------ |
-| number | Function list in numeric mask format after conversion.|
+| number | Numeric mask of the function list.|
 
 **Error codes**
 
@@ -443,7 +443,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 | Name| Type                         | Mandatory| Description             |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | Yes  | USB function list in numeric mask format.|
+| funcs  | [FunctionType](#functiontype) | Yes  | Numeric mask of the function list.|
 
 **Return value**
 
@@ -489,7 +489,7 @@ Sets the current USB function list in Device mode. This API uses a promise to re
 
 | Name| Type                         | Mandatory| Description             |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | Yes  | USB function list in numeric mask format.|
+| funcs  | [FunctionType](#functiontype) | Yes  | Numeric mask of the function list.|
 
 **Return value**
 

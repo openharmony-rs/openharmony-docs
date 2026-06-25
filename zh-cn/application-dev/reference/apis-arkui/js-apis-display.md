@@ -219,15 +219,14 @@ import { display } from '@kit.ArkUI';
 ## BrightnessInfo<sup>22+</sup>
 屏幕亮度信息。此类型中的信息均来自底层屏幕信息数据。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 | 名称                        | 类型      | 只读 | 可选 | 说明               |
 | --------------------------- | -------- | ---- | ---- | ------------------ |
-| currentHeadroom             | number    | 是  | 否   | 当前亮度动态余量，该参数为大于0的浮点数。默认值为1.0。|
-| maxHeadroom                 | number    | 是  | 否   | 当前最大亮度余量，该参数为大于0的浮点数。默认值为1.0。|
-| sdrNits                     | number    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。|
+| currentHeadroom             | number    | 是  | 否   | 当前亮度动态余量，该参数为大于0的浮点数。默认值为1.0。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| maxHeadroom                 | number    | 是  | 否   | 当前最大亮度余量，该参数为大于0的浮点数。默认值为1.0。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| sdrNits                     | number    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| brightnessPosition          | number    | 是  | 是   | 当前屏幕亮度所对应的亮度条位置，该参数为浮点数，取值范围[0.0, 1.0]，默认值为0.0。0.0表示当前屏幕亮度最低，1.0表示当前屏幕亮度最高。该参数返回的亮度条位置与实际可能存在精度为0.01的误差。<br>**起始版本：** 26.0.0。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## BrightnessCallback<sup>22+</sup>
 type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
@@ -1990,7 +1989,6 @@ on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -2040,7 +2038,6 @@ off(type: 'availableAreaChange', callback?: Callback&lt;Rect&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**

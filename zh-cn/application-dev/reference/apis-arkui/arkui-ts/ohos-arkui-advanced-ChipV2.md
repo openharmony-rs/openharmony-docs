@@ -1062,3 +1062,46 @@ struct Index {
 ```
 
 ![](figures/chipv2_3.gif)
+
+### 示例4（监听ChipV2Options内对象类型属性的内部属性变化）
+
+[ChipV2Options](#chipv2options)使用了@ObservedV2装饰器，[ChipV2](#chipv2-1)组件通过@Param接收ChipV2Options对象。对于@Trace装饰的基本类型属性，@Param已能观测到属性变化并触发UI刷新。但对于对象类型属性（如padding、label的labelMargin等）的内部属性（如padding的start、end），这些对象类型本身未被@ObservedV2装饰，其内部属性变化无法被@Param感知，导致修改内部属性时UI不会自动刷新。使用[makeObserved](../js-apis-stateManagement.md#makeobserved)对对象类型属性（如padding）接口进行包裹，可以为该对象的内部属性补充深度观察能力，使得修改内部属性（如start、end）时，框架能够监听到变化并触发UI刷新。makeObserved接口的详细说明请参考[makeObserved接口：将非观察数据变为可观察数据](../../../ui/state-management/arkts-new-makeObserved.md)。
+
+以下示例使用makeObserved包裹padding，并通过Button修改padding的start和end属性，验证对象类型属性内部属性变化能够触发ChipV2的UI刷新。
+
+```ts
+import { ChipV2, ChipV2Options, ChipV2Label, LengthMetrics, ColorMetrics, UIUtils } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local chipV2Options: ChipV2Options = new ChipV2Options({
+    // 设置文本属性。
+    label: new ChipV2Label({ text: '操作块' }),
+    // 使用UIUtils.makeObserved包裹padding，使内部属性start和end可被观测。
+    padding: UIUtils.makeObserved({ start: LengthMetrics.fp(20), end: LengthMetrics.fp(20) }),
+    backgroundColor: ColorMetrics.resourceColor($r('sys.color.ohos_id_color_button_normal')),
+    borderRadius: LengthMetrics.resource($r('sys.float.ohos_id_corner_radius_button')),
+    enabled: true,
+  });
+  @Local currentPadding: number = 20;
+
+  build() {
+    Column({ space: 10 }) {
+      ChipV2({ chipV2Options: this.chipV2Options })
+      Button('修改内边距')
+        .onClick(() => {
+          if (this.chipV2Options.padding) {
+            this.currentPadding = this.currentPadding === 20 ? 10 : 20;
+            // 修改padding的内部属性，由于makeObserved包裹，UI会自动刷新。
+            this.chipV2Options.padding.start = LengthMetrics.fp(this.currentPadding);
+            this.chipV2Options.padding.end = LengthMetrics.fp(this.currentPadding);
+          }
+        })
+    }
+    .padding(20)
+  }
+}
+```
+
+![chipv2-sample4](figures/chipv2-make-observed.gif)

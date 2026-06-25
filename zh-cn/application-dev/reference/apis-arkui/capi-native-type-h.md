@@ -1958,6 +1958,25 @@ ListItem划出菜单的展开方向。
 | ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | 当列表方向是垂直方向时，LTR模式下表示ListItem的左边，RTL模式下表示ListItem的右边。当列表是水平方向时，表示ListItem的上边。 |
 | ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | 当列表方向是垂直方向时，LTR模式下表示ListItem的右边，RTL模式下表示ListItem的左边。当列表是水平方向时，表示ListItem的下边。 |
 
+### ArkUI_CrownSensitivity
+
+```c
+enum ArkUI_CrownSensitivity
+```
+
+**描述：**
+
+
+定义表冠灵敏度枚举值。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_CROWN_SENSITIVITY_LOW = 0 | 低灵敏度。 |
+| ARKUI_CROWN_SENSITIVITY_MEDIUM = 1 | 中等灵敏度。 |
+| ARKUI_CROWN_SENSITIVITY_HIGH = 2 | 高灵敏度。 |
+
 ### ArkUI_ErrorCode
 
 ```c
