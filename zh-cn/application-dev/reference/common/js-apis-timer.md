@@ -1,10 +1,10 @@
 # Timer (定时器)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @yao_dashuai-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @ge-yafang-->
 
 本模块提供基础的定时器能力，支持按照指定的时间执行对应函数。
 
