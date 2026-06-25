@@ -279,13 +279,13 @@ NODE_VISIBILITY = 22
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 控制当前组件显示或隐藏，参数类型[ArkUI_Visibility](capi-native-type-h.md#arkui_visibility)，默认值为ARKUI_VISIBILITY_VISIBLE。 |
+| .value[0].i32 | 控制当前组件显示或隐藏，参数类型[ArkUI_Visibility](capi-common-attributes-h.md#arkui_visibility)，默认值为ARKUI_VISIBILITY_VISIBLE。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 控制当前组件显示或隐藏，参数类型[ArkUI_Visibility](capi-native-type-h.md#arkui_visibility)，默认值为ARKUI_VISIBILITY_VISIBLE。 |
+| .value[0].i32 | 控制当前组件显示或隐藏，参数类型[ArkUI_Visibility](capi-common-attributes-h.md#arkui_visibility)，默认值为ARKUI_VISIBILITY_VISIBLE。 |
 
 ## NODE_CLIP
 

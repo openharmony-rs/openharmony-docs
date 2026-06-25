@@ -385,7 +385,7 @@ struct Index {
 
 ### 示例4（Toggle系统材质效果）
 
-该示例展示了Toggle组件Switch类型在开启系统材质前后的效果对比，包括不设置系统材质、设置undefined、开启系统材质以及开启系统材质并配合[switchPointColor](#switchpointcolor)设置点光源的效果。用例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来实现系统材质效果。
+该示例展示了Toggle组件Switch类型在开启系统材质前后的效果对比，包括不设置系统材质、设置undefined、开启系统材质以及开启系统材质并配合[switchPointColor](#switchpointcolor)设置点光源的效果。示例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来实现系统材质效果。
 
 从API版本26.0.0开始，新增systemMaterial属性。
 

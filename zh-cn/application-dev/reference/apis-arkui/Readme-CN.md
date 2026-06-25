@@ -579,15 +579,15 @@
     - 状态管理V1装饰器<!--v1-state-management-decorator-->
       - [@Consume：与后代组件双向同步](arkui-ts/ts-state-management-consume.md)
       - [@Link：父子双向同步](arkui-ts/ts-state-management-link.md)
-      - [@LocalStorageLink：页面级UI状态存储](arkui-ts/ts-state-management-localstoragelink.md)
-      - [@LocalStorageProp：页面级UI状态存储](arkui-ts/ts-state-management-localstorageprop.md)
+      - [@LocalStorageLink：LocalStorage双向数据同步](arkui-ts/ts-state-management-localstoragelink.md)
+      - [@LocalStorageProp：LocalStorage单向数据同步](arkui-ts/ts-state-management-localstorageprop.md)
       - [@ObjectLink：嵌套类对象属性变化](arkui-ts/ts-state-management-objectlink.md)
       - [@Observed：嵌套类对象属性变化](arkui-ts/ts-state-management-observed.md)
       - [@Prop：父子单向同步](arkui-ts/ts-state-management-prop.md)
       - [@Provide：与后代组件双向同步](arkui-ts/ts-state-management-provide.md)
       - [@State：组件内状态](arkui-ts/ts-state-management-state.md)
-      - [@StorageLink：应用全局的UI状态存储](arkui-ts/ts-state-management-storagelink.md)
-      - [@StorageProp：应用全局的UI状态存储](arkui-ts/ts-state-management-storageprop.md)
+      - [@StorageLink：AppStorage双向数据同步](arkui-ts/ts-state-management-storagelink.md)
+      - [@StorageProp：AppStorage单向数据同步](arkui-ts/ts-state-management-storageprop.md)
       - [@Track：class对象属性级更新](arkui-ts/ts-state-management-track.md)
       - [@Watch：状态变量更改通知](arkui-ts/ts-state-management-watch.md)
     - 状态管理V2装饰器<!--v2-state-management-decorator-->
@@ -656,6 +656,7 @@
     - [OH_DisplayManager](capi-oh-displaymanager.md)
     - [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
   - 头文件<!--arkui-headerfile-->
+    - [common_attributes.h](capi-common-attributes-h.md)
     - [drag_and_drop.h](capi-drag-and-drop-h.md)
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)
     - [image.h](capi-image-h.md)

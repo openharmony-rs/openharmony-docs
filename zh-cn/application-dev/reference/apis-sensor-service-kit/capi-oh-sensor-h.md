@@ -76,9 +76,9 @@ Sensor_Result OH_Sensor_Subscribe(const Sensor_SubscriptionId *id, const Sensor_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) *id | 输入参数，指向传感器订阅ID的指针。这是要订阅的传感器类型标识，调用者需要确保id指向的数据有效。请参考[Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)。该参数不应为NULL。 |
-| [const Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) *attribute | 输入参数，指向订阅属性的指针，该属性用于指定数据报告频率。高频适合需要实时监测数据的场景（如游戏），低频适合省电且不需要高频数据的场景（如后台监测）。请根据实际需求选择合适的数据报告频率。请参考[Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)。该参数不应为NULL。 |
-| [const Sensor_Subscriber](capi-sensor-sensor-subscriber.md) *subscriber | 输入参数，指向订阅者信息的指针，该信息包含回调函数，用于报告传感器数据。调用者需要设置回调函数，系统会按照订阅属性中指定的频率调用该回调函数。请参考[Sensor_Subscriber](capi-sensor-sensor-subscriber.md)。该参数不应为NULL。注意：回调函数在传感器服务线程中执行，不应在回调中进行耗时操作或阻塞调用，否则可能影响传感器数据报告的实时性。 |
+| const [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) *id | 输入参数，指向传感器订阅ID的指针。这是要订阅的传感器类型标识，调用者需要确保id指向的数据有效。请参考[Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)。该参数不应为NULL。 |
+| const [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) *attribute | 输入参数，指向订阅属性的指针，该属性用于指定数据报告频率。高频适合需要实时监测数据的场景（如游戏），低频适合省电且不需要高频数据的场景（如后台监测）。请根据实际需求选择合适的数据报告频率。请参考[Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)。该参数不应为NULL。 |
+| const [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) *subscriber | 输入参数，指向订阅者信息的指针，该信息包含回调函数，用于报告传感器数据。调用者需要设置回调函数，系统会按照订阅属性中指定的频率调用该回调函数。请参考[Sensor_Subscriber](capi-sensor-sensor-subscriber.md)。该参数不应为NULL。注意：回调函数在传感器服务线程中执行，不应在回调中进行耗时操作或阻塞调用，否则可能影响传感器数据报告的实时性。 |
 
 **返回：**
 
@@ -105,8 +105,8 @@ Sensor_Result OH_Sensor_Unsubscribe(const Sensor_SubscriptionId *id, const Senso
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) *id | 输入参数，指向传感器订阅ID的指针。这是要取消的订阅ID，必须与之前调用OH_Sensor_Subscribe时使用的订阅ID一致。请参考[Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)。该参数不应为NULL。 |
-| [const Sensor_Subscriber](capi-sensor-sensor-subscriber.md) *subscriber | 输入参数，指向订阅者信息的指针，该信息包含回调函数，用于报告传感器数据。这个subscriber必须与之前调用OH_Sensor_Subscribe时使用的subscriber一致，用于唯一标识订阅者。取消订阅成功后，回调函数将不再被调用。请参考[Sensor_Subscriber](capi-sensor-sensor-subscriber.md)。该参数不应为NULL。 |
+| const [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) *id | 输入参数，指向传感器订阅ID的指针。这是要取消的订阅ID，必须与之前调用OH_Sensor_Subscribe时使用的订阅ID一致。请参考[Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md)。该参数不应为NULL。 |
+| const [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) *subscriber | 输入参数，指向订阅者信息的指针，该信息包含回调函数，用于报告传感器数据。这个subscriber必须与之前调用OH_Sensor_Subscribe时使用的subscriber一致，用于唯一标识订阅者。取消订阅成功后，回调函数将不再被调用。请参考[Sensor_Subscriber](capi-sensor-sensor-subscriber.md)。该参数不应为NULL。 |
 
 **返回：**
 

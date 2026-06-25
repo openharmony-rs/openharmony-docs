@@ -83,7 +83,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| value[0].f32 | Padding, in vp.|
+| .value[0].f32 | Padding, in vp.|
 
 2: Specify different paddings for the four directions.<br>
 
@@ -212,13 +212,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
-1. Specify the same corner radius for the four borders.<br>
+One or four parameters can be passed:
+
+Specify the same corner radius for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Corner radius.|
 
-2. Specify different corner radii for the four borders.<br>
+Specify different corner radii for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
@@ -286,13 +288,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
-1. Specify the same line style for the four borders.<br>
+One or four parameters can be passed:
+
+Specify the same line style for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].i32 | Border line style. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
 
-2. Specify different line styles for the four borders.<br>
+Specify different line styles for the four borders.<br>
 
 | Name| Description|
 | -- | -- |

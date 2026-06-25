@@ -63,13 +63,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | How the image is resized to fit its container, specified using the [ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit) enum.|
+| .value[0].i32 | Image filling effect. The value is an enumerated value of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | How the image is resized to fit its container, specified using the [ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit) enum.|
+| .value[0].i32 | Image filling effect. The value is an enumerated value of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).|
 
 ## NODE_IMAGE_INTERPOLATION
 
@@ -87,13 +87,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Interpolation effect, which is specified using the [ArkUI_ImageInterpolation](capi-native-type-h.md#arkui_imageinterpolation) enum.|
+| .value[0].i32 | Interpolation effect. The value is an enumerated value of [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Interpolation effect, which is specified using the [ArkUI_ImageInterpolation](capi-native-type-h.md#arkui_imageinterpolation) enum.|
+| .value[0].i32 | Interpolation effect. The value is an enumerated value of [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation).|
 
 ## NODE_IMAGE_OBJECT_REPEAT
 
@@ -111,13 +111,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | How the image is repeated, specified using the [ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat) enum.|
+| .value[0].i32 | Image repetition style. The value is an enumerated value of [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | How the image is repeated, specified using the [ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat) enum.|
+| .value[0].i32 | Image repetition style. The value is an enumerated value of [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat).|
 
 ## NODE_IMAGE_COLOR_FILTER
 
@@ -237,13 +237,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Image rendering mode. The parameter type is [ArkUI_ImageRenderMode](capi-native-type-h.md#arkui_imagerendermode).|
+| .value[0].i32 | Image rendering mode. The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Image rendering mode. The parameter type is [ArkUI_ImageRenderMode](capi-native-type-h.md#arkui_imagerendermode).|
+| .value[0].i32 | Image rendering mode. The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).|
 
 ## NODE_IMAGE_FIT_ORIGINAL_SIZE
 
@@ -487,13 +487,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Dynamic range mode, specified using the [ArkUI_DynamicRangeMode](capi-native-type-h.md#arkui_dynamicrangemode) enum. The default value is **ARKUI_DYNAMIC_RANGE_MODE_STANDARD**.|
+| .value[0].i32 | Dynamic range mode, specified using [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode). The default value is **ARKUI_DYNAMIC_RANGE_MODE_STANDARD**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Dynamic range mode, specified using the [ArkUI_DynamicRangeMode](capi-native-type-h.md#arkui_dynamicrangemode) enum.|
+| .value[0].i32 | Dynamic range mode, specified using [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode).|
 
 ## NODE_IMAGE_HDR_BRIGHTNESS
 
@@ -535,13 +535,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Expected image content display orientation, specified using the [ArkUI_Orientation](capi-native-type-h.md#arkui_imagerotateorientation) enum. The default value is **ARKUI_ORIENTATION_UP**.|
+| .value[0].i32 | Expected image content display orientation, specified using [ArkUI_Orientation](capi-image-h.md#arkui_imagerotateorientation). The default value is **ARKUI_ORIENTATION_UP**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Expected image content display orientation, specified using the [ArkUI_Orientation](capi-native-type-h.md#arkui_imagerotateorientation) enum.|
+| .value[0].i32 | Expected image content display orientation, specified using [ArkUI_Orientation](capi-image-h.md#arkui_imagerotateorientation).|
 
 ## NODE_IMAGE_SUPPORT_SVG2
 
@@ -652,7 +652,7 @@ NODE_IMAGE_ANTIALIASED = 4025
 Whether to enable anti-aliasing for the edges of a bitmap image. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since:** 23
+**Since**: 23
 
 
 **Parameters**
@@ -709,13 +709,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Playback state of the frame-by-frame animation. The parameter type is [ArkUI_AnimationStatus](capi-native-type-h.md#arkui_animationstatus). The default state is initial.|
+| .value[0].i32 | Playback status of the frame-by-frame animation. The parameter type is [ArkUI_AnimationStatus](capi-image-animator-h.md#arkui_animationstatus). The default state is initial.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Playback state of the frame-by-frame animation. The parameter type is [ArkUI_AnimationStatus](capi-native-type-h.md#arkui_animationstatus).|
+| .value[0].i32 | Playback status of the frame-by-frame animation. The parameter type is [ArkUI_AnimationStatus](capi-image-animator-h.md#arkui_animationstatus).|
 
 ## NODE_IMAGE_ANIMATOR_DURATION
 

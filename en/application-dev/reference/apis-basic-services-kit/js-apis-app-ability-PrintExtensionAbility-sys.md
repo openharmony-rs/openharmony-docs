@@ -46,7 +46,7 @@ Called when a print preview request is sent. The result is returned to the print
 
 For details about the error codes, see [Print Service Error Codes](errorcode-print.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 202 | not system application. |
 

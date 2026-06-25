@@ -52,7 +52,7 @@ addMonitor/clearMonitor的路径参数不合法。
 
 **错误信息**
 
-monitorCallback is not a function or an anonymous function.
+addMonitor/clearMonitor failed because the monitorFunc is illegal, monitorFunc must be function or but cannot be an anonymous function.
 
 **错误描述**
 
@@ -60,7 +60,7 @@ addMonitor/clearMonitor的回调方法参数不合法。
 
 **可能原因**
 
-回调方法不是function类型，或者是匿名function。
+回调方法不是function类型，或者是匿名function类型。
 
 **处理步骤**
 
