@@ -63,11 +63,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     }
     phAccessHelper.registerChange(photoAsset.uri, false, onCallback);
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
     // ...
+  } finally {
+    fetchResult.close();
   }
 }
 ```
@@ -123,11 +124,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     phAccessHelper.registerChange(album.albumUri, false, onCallback);
     album.albumName = 'newAlbumName' + Date.now();
     await album.commitModify();
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
     // ...
+  } finally {
+    fetchResult.close();
   }
 }
 ```
@@ -179,11 +181,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
     // ...
+  } finally {
+    fetchResult.close();
   }
 }
 ```
@@ -235,11 +238,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     phAccessHelper.registerChange(photoAsset.uri, false, onCallback2);
     phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
     // ...
+  } finally {
+    fetchResult.close();
   }
 }
 ```
