@@ -1311,7 +1311,7 @@ ArkTS-Sta: type OnTabsGestureSwipeCallback = (index: int, extraInfo: TabsAnimati
 
 ArkTS-Dyn: type TabsCustomContentTransitionCallback = (from: number, to: number) => TabContentAnimatedTransition | undefined
 
-ArkTS-Sta: type TabsCustomContentTransitionCallback = (from: int, to: int) => TabContentAnimatedTransition | undefined
+ArkTS-Sta: type TabsCustomContentTransitionCallback = (from: int, to: int) => (TabContentAnimatedTransition | undefined)
 
 自定义Tabs页面切换动画开始时触发的回调。
 
