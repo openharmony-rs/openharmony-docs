@@ -654,7 +654,7 @@ Allows an application to set the sandbox type to dynamic sandbox.
 
 ## ohos.permission.atomicService.MANAGE_STORAGE
 
-Allows a mini game of the automic service type to manage its storage space.
+Allows a mini game of the atomic service type to manage its storage space.
 
 <!--RP96--><!--RP96End-->
 
