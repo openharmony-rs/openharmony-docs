@@ -132,7 +132,7 @@ struct PageTwo {
 
 2.在页面1中点击`go to next page`，跳转到页面2，页面1隐藏，状态由active变为inactive。
 
-3.在页面2中点击`this.storageLink2 += 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
+3.在页面2中点击`second page storageLink + 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
 
 4.在页面2中点击`back`，页面2被销毁，页面1的状态由inactive变为active，重新刷新在inactive时被冻结的状态变量，页面1中@Watch注册的方法first被再次调用。
 

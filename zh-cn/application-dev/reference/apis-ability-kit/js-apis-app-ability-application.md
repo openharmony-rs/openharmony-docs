@@ -403,7 +403,7 @@ exitMasterProcessRole(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异：** 该接口仅在2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口仅在PC/2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 21
 

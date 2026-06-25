@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的SSL错误通知事件的处理对象。示例代码参考[onSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)事件。
+SslErrorHandler是Web组件中处理SSL证书验证错误的类。当加载安全页面时遇到SSL证书错误（如证书过期、主机名不匹配、不受信任的CA），应用可通过onSslErrorEvent回调获取SslErrorHandler实例，并决定是否继续加载或取消导航。示例代码参考[onSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)事件。
 
 > **说明：**
 >

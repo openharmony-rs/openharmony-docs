@@ -62,6 +62,8 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo1](figures/arkts-dyn-sta-ui-rules-01.jpg)
+
 ## 不支持`this.value!!`形式的双向绑定
 
 **规则：** `arkui-no-!!-bidirectional-data-binding`
@@ -130,6 +132,8 @@ struct Index {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo2](figures/arkts-dyn-sta-ui-rules-02.jpg)
 
 ### 自定义组件间双向绑定
 
@@ -236,6 +240,8 @@ struct Star {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo3](figures/arkts-dyn-sta-ui-rules-03.jpg)
+
 ## 不支持`$$this.value`形式的双向绑定
 
 **规则：** `arkui-no-$$-bidirectional-data-binding`
@@ -303,6 +309,8 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo4](figures/arkts-dyn-sta-ui-rules-04.jpg)
+
 ## 不支持`$value`形式的数据绑定
 
 **规则：** `arkui-link-decorator-passing`
@@ -353,6 +361,7 @@ struct MyCounter {
       Text(`${this.count}`)
       Blank()
       Button('+', { type: ButtonType.Circle }).onClick((e: ClickEvent) => {this.count++;})
+      Text('     ')
       Button('-', { type: ButtonType.Circle }).onClick((e: ClickEvent) => {this.count--;})
     }
     .width('100%')
@@ -406,12 +415,15 @@ struct MyCounter {
       Text(`${this.count}`)
       Blank()
       Button('+', { type: ButtonType.Circle }).onClick((e: ClickEvent) => {this.count++;})
+      Text('     ')
       Button('-', { type: ButtonType.Circle }).onClick((e: ClickEvent) => {this.count--;})
     }
     .width('100%')
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo5](figures/arkts-dyn-sta-ui-rules-05.jpg)
 
 ## 不支持`@Extend`装饰器
 
@@ -481,6 +493,8 @@ struct Index {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo6](figures/arkts-dyn-sta-ui-rules-06.jpg)
 
 ## `@AnimatableExtend`装饰器使用方式变更
 
@@ -572,6 +586,8 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo7](figures/arkts-dyn-sta-ui-rules-07.jpg)
+
 ## 不支持`@Styles`装饰器
 
 **规则：** `arkui-no-styles-decorator`
@@ -597,7 +613,7 @@ ArkTS-Dyn
 ```typescript
 @Styles
 function cardStyle() {
-  .backgroundColor(Color.Red)
+  .backgroundColor(Color.Yellow)
   .borderRadius(8)
   .padding(8)
 }
@@ -631,7 +647,7 @@ import {
 
 // 使用`@Styles`装饰器装饰的函数需要参照下列代码进行修改
 function cardStyle(instance: CommonMethod): void {
-  instance.backgroundColor(Color.Red);
+  instance.backgroundColor(Color.Yellow);
   instance.borderRadius(8);
   instance.padding(8);
 }
@@ -649,6 +665,8 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo8](figures/arkts-dyn-sta-ui-rules-08.jpg)
+
 ### `@Styles`装饰器装饰成员函数
 
 **示例：**
@@ -661,7 +679,7 @@ ArkTS-Dyn
 struct Index {
   @Styles
   cardStyles() {
-    .backgroundColor(Color.Blue)
+    .backgroundColor(Color.Yellow)
     .borderRadius(8)
     .padding(8)
   }
@@ -696,7 +714,7 @@ import {
 struct Index {
   // 使用`@Styles`装饰器装饰的函数需要参照下列代码进行修改
   cardStyles: CustomStyles = (instance: CommonMethod): void => {
-    instance.backgroundColor(Color.Blue);
+    instance.backgroundColor(Color.Yellow);
     instance.borderRadius(8);
     instance.padding(8);
   }
@@ -710,6 +728,8 @@ struct Index {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo9](figures/arkts-dyn-sta-ui-rules-09.jpg)
 
 ## 传递给`stateStyles`的代码块必须是箭头函数
 
@@ -784,6 +804,8 @@ struct Index {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo10](figures/arkts-dyn-sta-ui-rules-10.jpg)
 
 ## 数据监听需要增加`@Observed`装饰器
 
@@ -876,6 +898,8 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo11](figures/arkts-dyn-sta-ui-rules-11.jpg)
+
 ## `@Entry`装饰器不支持传入动态参数
 
 **规则：** `arkui-entry-annotation`
@@ -933,6 +957,8 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo12](figures/arkts-dyn-sta-ui-rules-12.jpg)
+
 ### 参数类型为`EntryOptions`
 
 参数类型为[EntryOptions](../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entryoptions10)。
@@ -973,6 +999,8 @@ struct Index {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo13](figures/arkts-dyn-sta-ui-rules-13.jpg)
 
 ## `@Provide`装饰器不支持传入联合类型的参数
 
@@ -1032,6 +1060,8 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo14](figures/arkts-dyn-sta-ui-rules-14.jpg)
+
 ### 参数类型为`ProvideOptions`
 
 参数类型为[ProvideOptions](../reference/apis-arkui/arkui-ts/ts-state-management-provide.md#provideoptions11)。
@@ -1075,6 +1105,8 @@ struct Index {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo15](figures/arkts-dyn-sta-ui-rules-15.jpg)
 
 ## `CustomBuilder`类型参数接收带`@Builder`装饰器的函数调用时，需要为其包裹匿名的箭头函数
 
@@ -1150,6 +1182,8 @@ struct Index {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo16](figures/arkts-dyn-sta-ui-rules-16.jpg)
 
 ## 被`@Builder`装饰器装饰的函数的执行上下文需要在声明时确定
 
@@ -1288,6 +1322,8 @@ struct TestBuilderParam1 {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo17](figures/arkts-dyn-sta-ui-rules-17.jpg)
+
 ## 禁止在`build`函数中修改状态变量
 
 **规则：** `arkui-no-update-in-build`
@@ -1356,6 +1392,8 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo18](figures/arkts-dyn-sta-ui-rules-18.jpg)
+
 ## `AppStorage`中的值发生改变时会触发界面更新
 
 **规则：** `arkui-stateful-appstorage`
@@ -1391,6 +1429,8 @@ struct MyComponent {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo19](figures/arkts-dyn-sta-ui-rules-19.jpg)
 
 ArkTS-Sta
 
@@ -1485,6 +1525,8 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo20](figures/arkts-dyn-sta-ui-rules-20.jpg)
+
 ### `makeObserved`和V2装饰器配合使用
 
 如果`UIUtils.makeObserved`的入参是自定义类的对象，需为该类添加[@ObservedV2](../reference/apis-arkui/arkui-ts/ts-state-management-observedv2-static.md)装饰器，为该类的属性添加[@Trace](../reference/apis-arkui/arkui-ts/ts-state-management-trace-static.md)装饰器，并使用[@Local](../reference/apis-arkui/arkui-ts/ts-state-management-local-static.md)装饰监听的变量。
@@ -1558,6 +1600,8 @@ struct Index {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo21](figures/arkts-dyn-sta-ui-rules-21.jpg)
 
 ## 不支持`@Prop`、`@StorageProp`和`@LocalStorageProp`装饰器
 
@@ -1647,6 +1691,8 @@ struct ChildComponent {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo22](figures/arkts-dyn-sta-ui-rules-22.jpg)
+
 ## 不支持`LocalStorage.prop`、`LocalStorage.setAndProp`、`AppStorage.prop`和`AppStorage.setAndProp`接口
 
 **规则：** `arkui-no-prop-function`、`arkui-no-setandprop-function`
@@ -1721,6 +1767,8 @@ struct Index {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo23](figures/arkts-dyn-sta-ui-rules-23.jpg)
 
 ## 不支持`@LocalBuilder`装饰器
 
@@ -1798,13 +1846,15 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo24](figures/arkts-dyn-sta-ui-rules-24.jpg)
+
 ## 自定义组件需要加上`@CustomLayout`装饰器以获得自定义布局能力
 
 **规则：** `arkui-custom-layout-need-add-decorator`
 
 **规则解释：**
 
-在ArkTS-Sta中，自定义组件需要加上`@CustomLayout`装饰器，才能获得自定义布局能力。
+在ArkTS-Sta中，自定义组件需要加上[@CustomLayout](../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-customlayout.md)装饰器，才能获得自定义布局能力。
 
 **变更原因：**
 
@@ -1964,6 +2014,8 @@ struct MyComponent {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo25](figures/arkts-dyn-sta-ui-rules-25.jpg)
+
 ## `Repeat`禁用默认的懒加载
 
 **规则：** `arkui-repeat-disable-default-virtualscroll`
@@ -2062,6 +2114,8 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo26](figures/arkts-dyn-sta-ui-rules-26.jpg)
+
 ## 已废弃的高频UI接口用`UIContext`提供的接口作为替代
 
 **规则：** `arkui-deprecated-interface`
@@ -2146,6 +2200,8 @@ struct Index {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo27](figures/arkts-dyn-sta-ui-rules-27.jpg)
 
 ## 动态添加删除监听接口去除this与路径的复杂规格
 
@@ -2341,6 +2397,8 @@ struct Child {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo28](figures/arkts-dyn-sta-ui-rules-28.jpg)
+
 ## PersistenceV2的connect接口不再接受2个回调类型的入参
 
 **规则解释：**
@@ -2431,6 +2489,8 @@ struct Index {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo29](figures/arkts-dyn-sta-ui-rules-29.jpg)
+
 ## @Component装饰自定义组件中的@ComponentReuse装饰方法入参类型变更为ReuseObject
 
 **规则解释：**
@@ -2470,6 +2530,7 @@ struct Index {
         .onClick(() => {
           this.switchReuse = !this.switchReuse;
         })
+      Text(' ')
       if (this.switchReuse) {
         // 如果只有一个复用的组件，可以不用设置reuseId。
         // switchReuse为true时，创建或复用Child
@@ -2520,6 +2581,7 @@ struct Index {
         .onClick(() => {
           this.switchReuse = !this.switchReuse;
         })
+      Text(' ')
       if (this.switchReuse) {
         // 如果只有一个复用的组件，可以不用设置reuseId。
         // switchReuse为true时，创建或复用Child
@@ -2552,11 +2614,13 @@ struct Child {
 }
 ```
 
+![arkts-dyn-sta-ui-rules-demo30](figures/arkts-dyn-sta-ui-rules-30.jpg)
+
 ## @Component和@ComponentV2的全局复用配置类型修改
 
 **规则解释：**
 
-在ArkTS-Sta中，@Component和@ComponentV2参数[poolAccepts](./state-management/arkts-global-reuse-pool.md#componentcomponentv2配置参数)从传入复用组件类型，改为传入复用组件名称；参数[reusePool](./state-management/arkts-global-reuse-pool.md#复用池所有权模式)从传入字符串，改为传入枚举值。
+在ArkTS-Sta中，@Component和@ComponentV2参数[poolAccepts](./state-management/arkts-global-reuse-pool.md#装饰器说明)从传入复用组件类型，改为传入复用组件名称；参数[reusePool](./state-management/arkts-global-reuse-pool.md#复用池所有权模式)从传入字符串，改为传入枚举值。
 
 **变更原因：**
 
@@ -2621,3 +2685,5 @@ struct PoolOwner {
   }
 }
 ```
+
+![arkts-dyn-sta-ui-rules-demo31](figures/arkts-dyn-sta-ui-rules-31.jpg)

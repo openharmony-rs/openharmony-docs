@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -65,6 +65,10 @@ try {
 onException?(errObject: Error): void
 
 应用产生异常，上报JS层时的回调。此回调为可选方法，若未实现，将使用系统默认异常处理逻辑。
+
+可与[ErrorObserver.onUnhandledException](#errorobserveronunhandledexception)的配合使用，通过errorManager.on('error')注册ErrorObserver对象来实现异常监听。
+
+建议同时实现两个回调方法，用于获取完整的异常信息。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 

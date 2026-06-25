@@ -43,7 +43,7 @@
 **限制条件**
 
 <!--PR1-->
-- 不支持[collections类型](../../reference/apis-arkts/arkts-apis-arkts-collections.md)和[@Sendable](../../arkts-utils/arkts-sendable.md)装饰的class。
+- 不支持[collections](../../reference/apis-arkts/arkts-apis-arkts-collections.md)类型和[@Sendable](../../arkts-utils/arkts-sendable.md)装饰的class。
 <!--PR1End-->
 
 - 不支持非object类型。
@@ -557,7 +557,7 @@ class ObservedClass {
 
 @Entry
 @ComponentV2
-struct CompV1 {
+struct CompV2 {
   @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
 
   build() {
@@ -571,18 +571,18 @@ struct CompV1 {
         this.observedClass.count++;
       })
 
-      CompV2({ observedClass: this.observedClass })
+      CompV1({ observedClass: this.observedClass })
     }
   }
 }
 
 @Component
-struct CompV2 {
+struct CompV1 {
   @ObjectLink observedClass: ObservedClass;
 
   build() {
     Column() {
-      Text(`count: ${this.observedClass.name}`).onClick(() => {
+      Text(`name: ${this.observedClass.name}`).onClick(() => {
         // 触发刷新
         this.observedClass.name += 'a';
       })
