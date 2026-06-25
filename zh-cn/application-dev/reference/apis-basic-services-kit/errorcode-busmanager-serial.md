@@ -7,6 +7,8 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
+> **说明：**
+>
 > API参考中的参数说明与SDK中@ohos.busManager.serial.d.ts文件的注释保持一致。
 >
 > 本模块首批接口从API version 19开始支持。后续版本的新增接口，采用上标单独标记接口的起始版本。
