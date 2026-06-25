@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @wyxpku-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -153,7 +153,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | --- | --- | --- | --- | --- |
 | facePosition | double[] | 是 | 是 | 表示人脸相对于屏幕的位置。取值范围[0,640]。 |
 | strengthLevel | int | 是 | 是 | 表示吹气力度。取值范围[1,12]。 |
-| blowDirection | int | 是 | 是 | 表示吹气方向。取值范围[0,2]。0：未吹气，1：底部麦克风，2顶部麦克风。 |
+| blowDirection | int | 是 | 是 | 表示吹气方向。取值范围[0,2]。0：未吹气，1：底部麦克风，2：顶部麦克风。 |
 | emotion | int | 是 | 是 | 表示用户情绪级别。取值范围[0,5]。0：非常愉悦，1：有点愉悦，2：平静，3：有点不愉悦，4：大怒，5：大哭。 |
 | isGazeStatus | boolean | 是 | 是 | 表示用户是否注视屏幕。取值范围[true,false]。 |
 | gravityAcceleration | double[] | 是 | 是 | 表示当前状态下设备的重力加速度。单位为m/s²。 |
