@@ -24,6 +24,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
+| [embedded_component.h](capi-embedded-component-h.md) | EmbeddedComponent组件相关的结构体和方法定义。 |
 | [image.h](capi-image-h.md) | 为NativeNode API提供Image节点类型定义。 |
 | [image_animator.h](capi-image-animator-h.md) | 为NativeNode API提供ImageAnimator节点类型定义。 |
 | [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md) | 为NativeNode API提供自定义节点事件定义。 |
@@ -43,3 +44,4 @@
 | [native_type.h](capi-native-type-h.md) | 提供NativeModule公共的类型定义。 |
 | [picker.h](capi-picker-h.md) | 为NativeNode API提供Picker节点类型定义。 |
 | [styled_string.h](capi-styled-string-h.md) | 提供ArkUI在Native侧的属性字符串能力。 |
+| [xcomponent.h](capi-xcomponent-h.md) | XComponent组件的枚举类型定义。 |

@@ -251,12 +251,16 @@ export class LazyListLayout extends LazyCustomLayoutAlgorithm {
     } else {
       // 反向布局（从下到上）
       if (this.endIndex >= 0 && this.endIndex < this.childCnt - 1 && this.prevSpace != this.space) {
-        let adjustStartOffset = this.endIndex * (this.prevSpace - this.space);
-        let adjustEndOffset = this.totalHeight - prevTotalHeight - adjustStartOffset;
+        let adjustEndOffset = (this.childCnt - 1 - this.endIndex) * (this.space - this.prevSpace);
+        let adjustStartOffset = this.totalHeight - prevTotalHeight - adjustEndOffset;
         console.info(`Bottom setAdjustedOffset:${adjustEndOffset}`);
         helper.setAdjustedOffset(adjustEndOffset);
-        viewStart -= adjustStartOffset;
-        viewEnd -= adjustStartOffset;
+        viewStart += adjustStartOffset;
+        viewEnd += adjustStartOffset;
+      } else if (this.totalHeight != prevTotalHeight) {
+        let adjustOffset = this.totalHeight - prevTotalHeight;
+        viewStart += adjustOffset;
+        viewEnd += adjustOffset;
       }
     }
     this.prevSpace = this.space;

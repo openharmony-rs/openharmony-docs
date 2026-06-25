@@ -8,6 +8,45 @@
 
 通过WebStorage可管理Web SQL数据库接口和HTML5 Web存储接口，每个应用中的所有Web组件共享一个WebStorage。
 
+## 概述
+
+WebStorage提供对Web存储数据的管理能力，包括Web SQL数据库和HTML5 Web存储API，主要解决以下问题：
+- 跨Web组件的数据存储管理。
+- 存储空间配额和使用量的查询。
+- 存储数据的清理。
+
+### 基本概念
+
+- **源（Origin）**：Web存储的数据隔离单位，相同源下的页面可以共享存储数据。
+- **配额（Quota）**：每个源允许使用的最大存储空间，以字节为单位。
+- **使用量（Usage）**：每个源当前已使用的存储空间，以字节为单位。
+
+### 关键设计
+
+WebStorage采用统一管理的设计模式：
+1. 每个应用中的所有Web组件共享一个WebStorage实例。
+2. 通过源（origin）作为索引来区分和管理不同源的存储数据。
+3. 支持同步和异步两种方式访问存储数据。
+4. 支持隐私模式和非隐私模式下的数据分离管理。
+
+### 使用示例
+
+````ts
+import { webview } from '@kit.ArkWeb';
+
+// 获取所有源的信息
+webview.WebStorage.getOrigins((error, origins) => {
+  if (!error) {
+    origins.forEach(origin => {
+      console.info(`Origin: ${origin.origin}, Usage: ${origin.usage}, Quota: ${origin.quota}`);
+    });
+  }
+});
+
+// 清除指定源的存储
+webview.WebStorage.deleteOrigin('https://example.com');
+````
+
 > **说明：**
 >
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
@@ -31,6 +70,10 @@ import { webview } from '@kit.ArkWeb';
 static deleteOrigin(origin: string): void
 
 清除指定源所使用的存储。
+
+**方法调用关系：**
+- origin参数应从getOrigins()方法获取。
+- 建议先调用getOrigins()获取源列表，再调用deleteOrigin()清除指定源存储。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -303,6 +346,10 @@ static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 
 使用callback回调异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
 
+**方法调用关系：**
+- origin参数应从getOrigins()方法获取。
+- 建议先调用getOrigins()获取源列表，再调用getOriginQuota()获取指定源配额。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -364,6 +411,10 @@ struct WebComponent {
 static getOriginQuota(origin: string): Promise\<number>
 
 以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
+
+**方法调用关系：**
+- origin参数应从getOrigins()方法获取。
+- 建议先调用getOrigins()获取源列表，再调用getOriginQuota()获取指定源配额。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -432,6 +483,10 @@ static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
 
 以回调方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
 
+**方法调用关系：**
+- origin参数应从getOrigins()方法获取。
+- 建议先调用getOrigins()获取源列表，再调用getOriginUsage()获取指定源使用量。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -493,6 +548,10 @@ struct WebComponent {
 static getOriginUsage(origin: string): Promise\<number>
 
 以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
+
+**方法调用关系：**
+- origin参数应从getOrigins()方法获取。
+- 建议先调用getOrigins()获取源列表，再调用getOriginUsage()获取指定源使用量。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -565,7 +624,7 @@ static deleteAllData(incognito?: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示删除所有隐私模式下内存中的web数据，false表示删除正常非隐私模式下Web的SQL数据库当前使用的所有存储。<br>默认值：false。<br>传入undefined或null时为false。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示删除所有隐私模式下内存中的web数据，false表示删除正常非隐私模式下被JavaScript存储API使用的所有存储数据，这包括Web SQL数据库和HTML5支持的Web存储API。<br>默认值：false。<br>传入undefined或null时为false。 |
 
 **示例：**
 

@@ -4377,7 +4377,7 @@ try {
 
 on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
 
-开启本窗口所处屏幕变化事件的监听。比如，当前窗口移动到其他屏幕时，可以从此接口监听到这个行为。
+开启本窗口所处屏幕变化事件的监听。比如，当前窗口移动到其他屏幕时，可以从此接口监听到这个行为（非实时通知，如跨屏拖拽时需要抬手后才会触发回调通知）。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -5381,6 +5381,9 @@ on(type:  'subWindowClose', callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：**
+该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不报错不生效。
+
 **参数：**
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
@@ -6266,7 +6269,7 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 
 主窗口设置窗口亮度。当窗口处于前台且获焦时，窗口亮度生效。使用callback异步回调。
 
-窗口亮度生效时只会影响当前设备屏幕亮度，无法修改虚拟屏（如投屏所在的屏幕）的屏幕亮度。
+设置主窗口亮度只会影响当前设备内置屏的屏幕亮度，无法修改外接屏、[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)（如投屏所在的屏幕）的屏幕亮度（内置屏和外接屏具体请见[实体屏](../../displaymanager/display-terminology.md#实体屏)）。
 
 当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
 
@@ -6352,7 +6355,7 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
 主窗口设置窗口亮度。当窗口处于前台且获焦时，窗口亮度生效。使用Promise异步回调。
 
-窗口亮度生效时只会影响当前设备屏幕亮度，无法修改虚拟屏（如投屏所在的屏幕）的屏幕亮度。
+设置主窗口亮度只会影响当前设备内置屏的屏幕亮度，无法修改外接屏、[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)（如投屏所在的屏幕）的屏幕亮度（内置屏和外接屏具体请见[实体屏](../../displaymanager/display-terminology.md#实体屏)）。
 
 当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
 
@@ -8685,7 +8688,7 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
  - 对于显示标题栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为true）：
    - 在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；
    - 在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效；
-   - 在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+   - 在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回1300002或801错误码。
 
  - 对于不显示标题栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为false），调用本接口将返回1300002或801错误码。
 
@@ -9812,9 +9815,9 @@ export default class EntryAbility extends UIAbility {
 
 enableLandscapeMultiWindow(): Promise&lt;void&gt;
 
-应用部分界面支持横向布局时，在进入该界面时使能，使能后可支持进入横向多窗。不建议竖向布局界面使用。
+应用部分界面支持横向布局时，在进入该界面时使能，使能后可支持进入横向[智慧多窗](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)。不建议竖向布局界面使用。
 
-此接口只对应用主窗口生效，且需要在module.json5配置文件中[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中配置preferMultiWindowOrientation属性为"landscape_auto"。
+此接口只对应用主窗口生效，且需要在module.json5配置文件中[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中配置[preferMultiWindowOrientation](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-support)属性为"landscape_auto"。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9832,8 +9835,8 @@ enableLandscapeMultiWindow(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
 
@@ -9870,9 +9873,9 @@ export default class EntryAbility extends UIAbility {
 
 disableLandscapeMultiWindow(): Promise&lt;void&gt;
 
-应用部分界面支持横向布局时，在退出该界面时去使能，去使能后不支持进入横向多窗。
+应用部分界面支持横向布局时，在退出该界面时去使能，去使能后不支持进入横向[智慧多窗](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)。
 
-此接口只对应用主窗口生效，且需要在module.json5配置文件中[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中配置preferMultiWindowOrientation属性为"landscape_auto"。
+此接口只对应用主窗口生效，且需要在module.json5配置文件中[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中配置[preferMultiWindowOrientation](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-support)属性为"landscape_auto"。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9890,8 +9893,8 @@ disableLandscapeMultiWindow(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
 

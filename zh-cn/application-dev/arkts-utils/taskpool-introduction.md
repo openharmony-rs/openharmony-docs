@@ -166,8 +166,12 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            concurrentFunc();
-            this.message = 'success';
+            concurrentFunc().then(() => {
+              this.message = 'success';
+            }).catch((e: object) => {
+              this.message = 'failed';
+              console.error(`taskpool execute concurrentFunc error is: ${e}`);
+            })
           })
       }
       .width('100%')
@@ -280,8 +284,12 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            testConcurrentFunc();
-            this.message = 'success';
+            testConcurrentFunc().then(() => {
+              this.message = 'success';
+            }).catch((e: object) => {
+              this.message = 'failed';
+              console.error(`testConcurrentFunc catch e: ${e}`);
+            })
           })
       }
       .width('100%')
@@ -363,11 +371,12 @@ struct Index {
         .onClick(() => {
           const task = new taskpool.Task(testFunc);
           taskpool.execute(task).then(() => {
+            this.message = 'success';
             console.info('taskpool: execute task success!');
           }).catch((e:BusinessError) => {
+            this.message = 'failed';
             console.error(`taskpool: execute: Code: ${e.code}, message: ${e.message}`);
           })
-          this.message = 'success';
         })
     }
     .height('100%')

@@ -700,6 +700,8 @@ static setTrackGlobalRef(enable: boolean): void
 
 开启追踪后，虚拟机会额外记录napi_ref与全局对象的关联关系，可能带来一定的内存和性能开销。在不需要调试时，建议调用`util.ArkTSVM.setTrackGlobalRef(false)`关闭追踪。
 
+该接口的开关为进程级别，进程内的所有线程共享同一开关状态。在任意线程调用本接口设置开关后，将对该进程内所有线程生效。
+
 关于napi_ref的详细说明，请参考[napi_ref](../../napi/use-napi-life-cycle.md#napi_ref)使用指导。
 
 **起始版本：** 26.0.0
@@ -752,10 +754,6 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API createGlobalRef failed error: %{public}s', error.message);
 }
 ```
-
-开启追踪后，堆快照中全局对象节点将显示napi_ref的地址信息，效果如下图所示：
-
-![setTrackGlobalRef堆快照效果图](figures/setTrackGlobalRef_heap_snapshot.png)
 
 ### onVMHeapMemoryPressure<sup>24+</sup>
 

@@ -45,7 +45,7 @@ Worker线程→主线程：消息既能插队，又支持按优先级（[Priorit
 
 1. 在宿主线程创建Worker并接收消息。
 
-   在宿主线程中创建Worker对象，点击“触发消息”按钮，发送消息给Worker线程。
+   在宿主线程中创建Worker对象，点击“触发消息发送”按钮，发送消息给Worker线程。
 
    <!-- @[parent_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerPostAtFront/entry/src/main/ets/pages/Index.ets) -->
    

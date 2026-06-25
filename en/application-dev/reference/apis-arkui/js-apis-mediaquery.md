@@ -143,7 +143,7 @@ listener.off('change', onPortrait) // Unregister the callback.
 
 ## MediaQueryResult
 
-Provides the media query result.
+Represents the media query result.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 

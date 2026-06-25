@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebviewController可以控制Web组件各种行为（包括页面导航、生命周期状态、JavaScript交互等行为）。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。
+WebviewController是Web组件各种行为的核心控制器，提供网页加载与导航控制、JavaScript交互、生命周期、滚动控制、页面缩放与内容查找、消息端口通信、缓存与证书管理等广泛功能。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。
 
 > **说明：**
 >
@@ -11236,7 +11236,7 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 | 参数名  | 类型   | 必填 | 说明 |
 | ------- | ------ | ---- | ---- |
-| command | string | 是   | JSON格式的命令参数。不同命令的参数格式不同，详细说明请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)。 |
+| command | string | 是   | JSON格式的命令参数。不同命令的参数格式不同，查询类命令请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)，交互类命令请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。 |
 
 **返回值：**
 
