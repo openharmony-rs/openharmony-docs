@@ -537,7 +537,10 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 
   解析说明：
 
-  **注意**：该文件内容格式为二进制，需要使用十六进制编辑器。
+  
+  > **注意**：
+  >
+  > 该文件内容格式为二进制，需要使用十六进制编辑器。
 
   ```tex
   4E 53 4E 41 50 31 2E 30 64 00 00 00 00 00 00 00
