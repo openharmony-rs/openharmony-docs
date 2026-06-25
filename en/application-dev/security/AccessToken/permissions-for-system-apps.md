@@ -6658,6 +6658,20 @@ Allows a system application to send OTA-related vehicle control and domain contr
 
 **Since**: 26.0.0
 
+## ohos.permission.vehicle.CAMERA_EVS
+
+Allows an application to access the vehicle camera.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
  	 
 Allows an application to manage clone preferences.
