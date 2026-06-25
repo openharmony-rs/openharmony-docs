@@ -25,12 +25,7 @@ import { linkEnhance } from '@kit.DistributedServiceKit';
 
 createServer(name:&nbsp;string):&nbsp;Server
 
-在服务端设备上，应用创建服务。通过start()开启后，该设备可作为服务端被其他设备连接。
-
-生命周期管理：
-1. 创建服务后，需调用start()开启服务
-2. 使用完毕后，需调用close()销毁Server对象释放资源
-3. 若需重新使用，需重新创建Server对象
+在服务端设备上，应用创建服务。通过start()开启后，该设备可作为服务端被其他设备连接。使用完毕后，需调用close()销毁Server对象释放资源。若需重新使用，需重新创建Server对象。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -91,19 +86,7 @@ try {
 
 createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 
-作为客户端的设备创建连接对象。
-
-调用顺序：
-1. 创建Connection对象后，需调用connect()方法向服务端设备发起连接
-2. 建议先通过on('connectResult')注册回调监听，再调用connect()获取连接结果
-3. 连接成功后，可通过sendData()发送数据
-4. 使用完毕后，需调用close()销毁连接对象释放资源
-
-相关方法：
-- connect()：发起连接
-- on('connectResult')：监听连接结果
-- sendData()：发送数据
-- close()：销毁连接对象
+作为客户端的设备创建连接对象。创建Connection对象后，订阅on('connectResult')，然后调用connect()方法向服务端设备发起连接，连接成功后，可通过sendData()发送数据，当连接不需要使用，可调用close()销毁连接对象释放资源。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -174,15 +157,7 @@ try {
 
 start():&nbsp;void
 
-创建服务成功后，需要调用start()开启该服务，方可被客户端连接，最大服务个数为10。
-
-配对调用：
-- 服务开启后，可通过stop()停止服务
-- 服务使用完毕后，需调用close()销毁Server对象释放资源
-
-状态说明：
-- start()后服务进入运行状态，可接受客户端连接
-- stop()后服务进入停止状态，可重新start()
+创建服务成功后，需要调用start()开启该服务，方可被客户端连接，最大服务个数为10。服务开启后，可通过stop()停止服务，可以重新通过start()再次开启服务。服务使用完毕后，需调用close()销毁Server对象释放资源。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -276,9 +251,7 @@ try {
 
 close():&nbsp;void
 
-当业务执行完毕，服务端清理资源时，调用close()方法，销毁Server对象，释放相关资源。之后如果再次与对端设备交互，需要重新创建Server对象。
-
-与stop()的区别：stop()仅停止服务，Server对象仍可重新启动；close()会销毁Server对象并释放资源，之后需重新创建Server对象。如果还需要重新启动服务，使用stop()；如果业务完全结束，使用close()。
+当业务执行完毕，服务端清理资源时，调用close()方法，销毁Server对象，释放相关资源。之后如果再次与对端设备交互，需要重新创建Server对象。close()会销毁Server对象并释放资源，之后需重新创建Server对象；stop()仅停止服务，Server对象仍可重新启动。如果还需重新启动服务，使用stop()；如果业务完全结束，使用close()。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -846,18 +819,7 @@ try {
 
 connect():&nbsp;void
 
-创建Connection对象成功后，在客户端执行，向服务端设备发起连接，最大连接个数限制为10。
-
-调用顺序：
-1. 必须先调用createConnection()创建连接对象
-2. 建议先通过on('connectResult')注册回调监听，再调用本方法获取连接结果
-3. 连接成功后，可通过sendData()发送数据
-
-相关方法：
-- createConnection()：创建连接对象
-- on('connectResult')：监听连接结果
-- disconnect()：断开连接
-- close()：销毁连接对象
+创建Connection对象成功后，在客户端执行，向服务端设备发起连接，最大连接个数限制为10。建议先通过on('connectResult')注册回调监听，再调用本方法获取连接结果，连接成功后，可通过sendData()发送数据，当连接不再使用时调用disconnect() 断开连接。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -964,9 +926,7 @@ try {
 
 close():&nbsp;void
 
-业务执行完毕后，任意设备可调用该接口销毁connection对象，释放资源。若需再次与对端设备交互，必须重新创建connection对象并调用`connect()`发起连接。
-
-与disconnect()的区别：disconnect()仅断开连接，Connection对象仍可重新连接；close()会销毁Connection对象并释放资源，之后需重新创建Connection对象。如果还需要重新连接，使用disconnect()；如果业务完全结束，使用close()。
+业务执行完毕后，任意设备可调用该接口销毁connection对象，释放资源。若需再次与对端设备交互，必须重新创建connection对象并调用`connect()`发起连接。close()会销毁Connection对象并释放资源，之后需重新创建Connection对象；disconnect()仅断开连接，Connection对象仍可重新连接。如果还需要重新连接，使用disconnect()；如果业务完全结束，使用close()。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
