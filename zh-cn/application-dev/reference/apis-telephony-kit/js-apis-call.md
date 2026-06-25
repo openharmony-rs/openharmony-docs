@@ -333,7 +333,7 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 
 > **说明**:
 >
-> 该接口返回校验token，应用可以利用phoneNumber和token去实现特定能力，比如蜂窝下行流的录制。
+> 该接口返回校验token，应用可以利用phoneNumber和token实现特定能力，比如蜂窝下行流的录制。
 
 **起始版本**: 26.0.0
 
