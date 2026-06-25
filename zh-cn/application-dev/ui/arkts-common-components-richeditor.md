@@ -496,7 +496,7 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
           .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
             // 请将$r('app.string.AddEvent_Text_7')替换为实际资源文件，在本示例中该资源文件的value值为"\n图文变化后，触发回调：\n rangeBefore"
             this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_7')) +
-            JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeBefore), {
+            JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeAfter), {
               style: {
                 fontColor: Color.Gray,
                 fontSize: 10
