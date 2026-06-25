@@ -3473,6 +3473,7 @@ struct MakeBindingTest2 {
 **ArkTS-Sta:**
 
 <!-- @[BuilderMutableBindingNoSetter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderMutableBindingNoSetter.ets) -->
+
 ``` TypeScript
 import { UIUtils, Binding, MutableBinding, ObservedV2, Trace, Builder,
          Column, Text, Button, Entry, ComponentV2, Local, ColumnOptions } from '@kit.ArkUI';
@@ -3769,6 +3770,7 @@ struct ParentMod2 {
 **ArkTS-Sta:**
 
 <!-- @[BuilderChangeVariableRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderChangeVariableRight.ets) -->
+
 ``` TypeScript
 import { UIUtils, MutableBinding, Column, Text, Button, Builder,
          Entry, Component, Row, State, Blank, ColumnOptions } from '@kit.ArkUI';
@@ -3951,7 +3953,6 @@ struct Child1 {
 @Entry
 @Component
 struct Child2 {
-  // 使用@Provide和@Watch装饰器，当content变化时触发provideWatch回调
   @Provide @Watch('provideWatch') content: string = 'Index: hello world';
 
   @Builder
@@ -3961,22 +3962,19 @@ struct Child2 {
     }
   }
 
-  // @Watch回调函数
   provideWatch() {
     // 正确写法，不在@Watch函数中使用@Builder函数
     console.info(`content value has changed.`);
   }
 
   build() {
-    Column({ space: 5 }) {
+    Column() {
       Button(`content value: ${this.content}`)
         .onClick(() => {
-          // 点击按钮修改content，触发@Watch回调
           this.content += '_world';
         })
       this.watchBuilder(this.content);
     }
-    .width('100%')
   }
 }
 ```
@@ -3984,6 +3982,7 @@ struct Child2 {
 **ArkTS-Sta:**
 
 <!-- @[BuilderCallInWatch](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderCallInWatch.ets) -->
+
 ``` TypeScript
 import { Entry, Component, Provide, Watch, Builder, Row, Text, Column, Button, ColumnOptions } from '@kit.ArkUI';
 
