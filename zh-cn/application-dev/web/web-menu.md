@@ -1603,7 +1603,7 @@ struct WebComponent {
 **示例代码**
 
 ArkTS-Dyn示例：
-<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
+<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -1674,23 +1674,22 @@ struct WebComponent {
     }
   }
   onBackPress(): boolean | void {
-    try {
-      if (this.controller.accessStep(-1)) {
-        this.controller.backward();
-        return true;
-      }
-    } catch (err) {
-      console.error(`onBackPress failed with error: ${err.code}, ${err.message}`);
+    if (this.controller.accessStep(-1)) {
+      this.controller.backward();
+      return true;
+    } else {
+      return false;
     }
-    return false;
   }
 }
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) --> 
+<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
 
 ``` TypeScript
+'use static'
+
 import webview from '@ohos.web.webview';
 import { Entry, Column, Component, Web, Menu, MenuItem, $rawfile, WebResponseType, WebElementType, MenuType, Color } from '@ohos.arkui.component';
 import { BusinessError } from '@ohos.base';
