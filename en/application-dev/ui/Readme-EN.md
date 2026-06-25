@@ -114,7 +114,7 @@
     - [\@Env: Environment Variable](arkts-env-system-property.md)
   - Setting Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
-    - [Component Navigation (Navigation) (Recommended)]<!--arkts-navigation-navigation-->
+    - Component Navigation (Navigation) (Recommended)<!--arkts-navigation-navigation-->
       - [Introduction to Navigation Architecture](./arkts-navigation-architecture.md)
       - [Subpage](./arkts-navigation-navdestination.md)
       - [Page Routing](./arkts-navigation-jump.md)
