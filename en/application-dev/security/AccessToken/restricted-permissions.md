@@ -884,7 +884,7 @@ With this permission, the application can choose the target applications for sys
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 21
 
