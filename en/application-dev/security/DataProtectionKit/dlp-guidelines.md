@@ -48,7 +48,7 @@ For an application in the DLP sandbox state, the permissions granted to the appl
 | getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandboxInfo&gt;&gt; <br> getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void  <br> getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void| Obtains the retention sandbox list.|
 | getDLPFileAccessRecords(): Promise&lt;Array&lt;AccessedDLPFileInfo&gt;&gt; <br> getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;): void | Obtains the DLP files that are accessed recently.|
 |setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;|Sets sandbox application configuration.|
-|getSandboxAppConfig(): Promise&lt;string&gt;|Obtain the sandbox application configuration.|
+|getSandboxAppConfig(): Promise&lt;string&gt;|Obtains the sandbox application configuration.|
 |cleanSandboxAppConfig(): Promise&lt;void&gt;|Clears the sandbox application configuration.|
 | startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt; <br>| Starts the DLP manager application on the current UIAbility page in borderless mode (available only for the stage model).|
 |setEnterprisePolicy(policy: EnterprisePolicy): void|Sets the protection policy for enterprise applications.|
