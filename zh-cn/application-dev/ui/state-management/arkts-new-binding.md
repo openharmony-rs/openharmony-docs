@@ -32,7 +32,7 @@
    <!-- @[ArkUI_Star_binding1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star_Param_Event.ets) -->
    
    ``` TypeScript
-   Child({ value: this.value, $value: (val: number) => { this.value = val; } })
+   Star({ value: this.value, $value: (val: number) => { this.value = val; } })
    ```
    上述语法可以简化为!!双向绑定语法糖。
    
@@ -49,18 +49,18 @@
     ``` TypeScript
     @Entry
     @ComponentV2
-    struct Parent {
+    struct Index {
       @Local value: number = 0;
     
       build() {
         Column() {
           Text(`${this.value}`)
-          // 点击Index中的Button改变value值，父组件Parent和子组件Child中的Text将同步更新。
+          // 点击Index中的Button改变value值，父组件Index和子组件Star中的Text将同步更新。
           Button(`change value in parent component`).onClick(() => {
             this.value++;
           })
           // 使用@Param与@Event语法实现自定义组件双向绑定。
-          Child({ value: this.value, $value: (val: number) => { this.value = val; } })
+          Star({ value: this.value, $value: (val: number) => { this.value = val; } })
           // ...
         // ···
         }
@@ -68,14 +68,14 @@
     }
     
     @ComponentV2
-    struct Child {
+    struct Star {
       @Param value: number = 0;
       @Event $value: (val: number) => void = (val: number) => {};
     
       build() {
         Column() {
           Text(`${this.value}`)
-          // 点击子组件Child中的Button，调用`this.$value(10)`方法，父组件Parent和子组件Child中的Text将同步更新。
+          // 点击子组件Star中的Button，调用`this.$value(10)`方法，父组件Index和子组件Star中的Text将同步更新。
           Button(`change value in child component`).onClick(() => {
             this.$value(10);
           })
