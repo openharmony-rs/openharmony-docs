@@ -74,7 +74,7 @@ import { $r, Button, Column, ColumnOptions, Component, Entry, Margin, NavDestina
 @Entry
 @Component
 export struct FocusActiveExample {
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 12 } as ColumnOptions) {
         Button('Set Active').width(140).height(45).margin({ top: 5, bottom: 5, left: 5, right: 5 } as Margin).onClick(() => {
@@ -223,7 +223,7 @@ export struct FocusTransferExample {
     this.logText = (this.logText + `${message}\n`) as string;
   }
 
-  build() {
+  build(): void {
     NavDestination() {
       Column() {
         Row() {
@@ -407,7 +407,7 @@ import { $r, Button, Color, Column, Component, Entry, Margin, NavDestination, Ro
 @Entry
 @Component
 export struct FocusLinerExample {
-  build() {
+  build(): void {
     NavDestination() {
       Column() {
         Column() {
@@ -505,7 +505,7 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
  @Entry
  @Component
  export struct ProjectAreaFocusExample {
-   build() {
+   build(): void {
      NavDestination() {
        Column() {
          Column({ space: 5 } as ColumnOptions) {
@@ -579,7 +579,7 @@ import { $r, Column, ColumnOptions, Component, Entry, FlexWrap, NavDestination, 
 @Entry
 @Component
 export struct ProjectAreaFocusFlexExample {
-  build() {
+  build(): void {
     NavDestination() {
     Column() {
       Column({ space: 5 } as ColumnOptions) {
@@ -706,7 +706,7 @@ export struct OnFocusBlur {
   @State twoButtonColor: Color = Color.Gray;
   @State threeButtonColor: Color = Color.Gray;
 
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 20 } as ColumnOptions) {
         // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
@@ -850,7 +850,7 @@ const BUNDLE: string = 'MyApp_FocusAndBlurExample';
 @Entry
 @Component
 export struct FocusAndBlurExample {
-  build() {
+  build(): void {
     NavDestination() {
       Column() {
         Column({ space: 5 } as ColumnOptions) {
@@ -1072,7 +1072,7 @@ focusOnTouch(value: boolean)
    @State color2: Color = Color.Yellow;
    @State color3: Color = Color.Yellow;
  
-   build() {
+   build(): void {
      NavDestination() {
        Column({ space: 12 } as ColumnOptions) {
          // 请将$r('app.string.Focus_Focusable_text')替换为实际资源文件，在本示例中该资源文件的value值为"当某组件处于获焦状态"
@@ -1254,7 +1254,7 @@ const BUNDLE: string = 'MyApp_FocusAndBlurExample';
 export struct ScopeFocusExample {
   @State scopeFocusState: boolean = true;
 
-  build() {
+  build(): void {
     NavDestination() {
       Column() {
         Column({ space: 5 } as ColumnOptions) {
@@ -1345,7 +1345,7 @@ import { $r, Button, Column, ColumnOptions, Component, Entry, Margin, NavDestina
 @Entry
 @Component
 export struct TabStopExample {
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 20 } as ColumnOptions) {
         Button('Button1')
@@ -1465,7 +1465,7 @@ export struct DefaultFocus {
   @State twoButtonColor: Color = Color.Gray;
   @State threeButtonColor: Color = Color.Gray;
 
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 20 } as ColumnOptions) {
         // 通过外接键盘的上下键可以让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
@@ -1567,7 +1567,7 @@ import { $r, Button, Column, ColumnOptions, Component, Entry, FocusPriority, Nav
 @Entry
 @Component
 export struct FocusScopePriorityPrevious {
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 12 } as ColumnOptions) {
         Row({ space: 12 } as RowOptions) {
@@ -1664,7 +1664,7 @@ import { $r, Button, ColorMetrics, Column, ColumnOptions, Component, Entry, Leng
 @Entry
 @Component
 export struct RequestFocusExample {
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 30 } as ColumnOptions) {
         Button('small black focus box')
@@ -1814,7 +1814,7 @@ export struct RequestFocusExample {
     @State btColor: string = '#ff2787d9';
     @State btColor2: string = '#ff2787d9';
   
-    build() {
+    build(): void {
       NavDestination() {
           Column({ space: 20 } as ColumnOptions) {
             Column({ space: 5 } as ColumnOptions) {
@@ -1963,7 +1963,7 @@ nextFocus(nextStep: Optional<FocusMovement>): T
   @Entry
   @Component
   export struct NextFocusExample {
-    build() {
+    build(): void {
       NavDestination() {
         Column({ space: 30 } as ColumnOptions) {
           Row().height('30%')
@@ -2071,7 +2071,7 @@ tabIndex自定义组件Tab键走焦顺序。
   @Entry
   @Component
   export struct TabIndexExample {
-    build() {
+    build(): void {
       NavDestination() {
         Column() {
           Button('Button1')
@@ -2144,7 +2144,7 @@ import { $r, Button, Column, Component, Entry, Margin, NavDestination } from '@k
 @Entry
 @Component
 export struct TabIndexFocusExample {
-  build() {
+  build(): void {
     NavDestination() {
       Column() {
         Button('Button1')
@@ -2340,7 +2340,7 @@ import { $r, BorderStyle, Button, Color, Column, ColumnOptions, Component, Entry
 export struct FocusScopePriority {
   @State inputValue: string = '';
 
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 12 } as ColumnOptions) {
 
@@ -2566,7 +2566,7 @@ import { $r, BorderStyle, Button, Color, Column, ColumnOptions, Component, Entry
 @Entry
 @Component
 export struct FocusScopeIdExample {
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 20 } as ColumnOptions) {
         Column() {
@@ -2689,7 +2689,7 @@ export struct FocusScopeIdExample {
      @State count: int = 0;
      @State name: string = 'Button';
    
-     build() {
+     build(): void {
        NavDestination() {
          Column({ space: 12 } as ColumnOptions) {
            Button(this.name)
