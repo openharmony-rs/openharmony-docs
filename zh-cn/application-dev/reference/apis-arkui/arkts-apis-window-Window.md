@@ -393,19 +393,19 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
- try {	 
-   windowClass.moveWindowTo(300, 300, (err: BusinessError) => {	 
-     const errCode: number = err.code; 
-     if (errCode) { 
-       console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`); 
-       return; 
-     } 
-     console.info('Succeeded in moving the window.');	 
-
-   });	 
- } catch (exception) { 
-   console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`); 
- }
+ import { BusinessError } from '@kit.BasicServicesKit';
+ try {
+   windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
+      const errCode: number = err.code;
+      if (errCode) {
+         console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+         return;
+     }
+     console.info('Succeeded in moving the window.');
+    });
+  } catch (exception) {
+    console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
 ```
 
 ## moveWindowTo<sup>9+</sup>
@@ -456,18 +456,18 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 **示例：**
 
 ```ts
- import { BusinessError } from '@kit.BasicServicesKit';	 
+import { BusinessError } from '@kit.BasicServicesKit';
  
- try {	 
-   let promise = windowClass.moveWindowTo(300, 300);	 
-   promise.then(() => {	 
-     console.info('Succeeded in moving the window.');	 
-   }).catch((err: BusinessError) => { 
-     console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`); 
-   });	 
- } catch (exception) { 
-   console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`); 
- }
+try {
+  let promise = windowClass.moveWindowTo(300, 300);
+  promise.then(() => {
+    console.info('Succeeded in moving the window.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
 ```
 
 ## moveWindowToAsync<sup>12+</sup>
