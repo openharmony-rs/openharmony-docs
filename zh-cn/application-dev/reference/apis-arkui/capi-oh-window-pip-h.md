@@ -1,8 +1,8 @@
 # oh_window_pip.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4-->
+<!--Owner: @betafringe007-->
+<!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
