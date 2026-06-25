@@ -85,7 +85,7 @@ type ErrorCallback = ErrorCallback
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| entryPoint | string | 否 | 否 | 要加载的abc页面入口。 |
+| entryPoint | string | 否 | 否 | 要加载的Abc页面入口。 |
 | worker | [Worker](#worker) | 否 | 否 | 运行Abc的Worker。 |
 | backgroundTransparent | boolean | 否 | 是 | 是否启用组件背景透明。<br/>true：启用背景透明；false：不启用背景透明。<br/>默认值：false |
 | allowCrossProcessNesting | boolean | 否 | 是 | 是否允许跨进程[UIExtensionComponent](./ts-container-ui-extension-component-sys.md)嵌套。<br/>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br/>默认值：false |
@@ -136,6 +136,10 @@ struct Index {
   private worker?: worker.ThreadWorker = new worker.ThreadWorker(
     "entry/ets/workers/Worker.ets", { name: "dc-worker" }
   )
+
+  aboutToDisappear() {
+    this.worker?.terminate();
+  }
 
   build() {
     Column() {
