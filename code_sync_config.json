@@ -4939,7 +4939,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":45,
 						"name":"web_DataDetector_Highlighting",
 						"start_line":15
 					}
@@ -29398,7 +29398,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets",
 				"functions":[
 					{
-						"end_line":136,
+						"end_line":137,
 						"name":"web_Save_Image",
 						"start_line":15
 					}
@@ -29438,7 +29438,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets",
 				"functions":[
 					{
-						"end_line":184,
+						"end_line":183,
 						"name":"web_PreviewBuilder",
 						"start_line":15
 					}
