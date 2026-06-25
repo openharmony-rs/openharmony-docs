@@ -34,7 +34,7 @@
 
 | 名称 | 描述 |
 | -------- | -------- |
-| TRANSIENT_TASK_MAX_NUM 3| 同一时刻最大短时任务数量。<br/>**起始版本：** 20  |
+| TRANSIENT_TASK_MAX_NUM 3| 同一时刻最大短时任务数量。用于限制应用同时申请的短时任务数量，超过此限制将申请失败。<br/>**起始版本：** 20  |
 
 ### 枚举
 
@@ -46,7 +46,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*TransientTask_Callback)(void)](#transienttask_callback) | TransientTask_Callback | 定义短时任务超时回调类型。 |
+| [typedef void (\*TransientTask_Callback)(void)](#transienttask_callback) | TransientTask_Callback | 定义短时任务超时回调类型。若申请的短时任务即将超时，系统会调用此回调函数通知应用。 |
 
 ## 枚举类型说明
 
@@ -85,7 +85,7 @@ typedef void (*TransientTask_Callback)(void)
 
 **描述**
 
-定义短时任务超时回调类型。
+定义短时任务超时回调类型。若申请的短时任务即将超时，系统会调用此回调函数通知应用。
 
 **起始版本：** 13
 
