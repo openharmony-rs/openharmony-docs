@@ -108,7 +108,7 @@ let primaries: colorSpaceManager.ColorSpacePrimaries = {
   redX: 0.1,
   redY: 0.1,
   greenX: 0.2,
-  greenY: 0.2,  
+  greenY: 0.2,
   blueX: 0.3,
   blueY: 0.3,
   whitePointX: 0.4,
