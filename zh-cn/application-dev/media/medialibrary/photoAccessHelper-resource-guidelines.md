@@ -57,11 +57,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.displayName : ' + photoAsset.displayName);
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error('getAssets failed with err: ' + err);
     // ...
+  } finally {
+    fetchResult.close();
   }
 }
 ```
@@ -114,11 +115,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let pixelMap: image.PixelMap =  await photoAsset.getThumbnail(size);
     let imageInfo: image.ImageInfo = await pixelMap.getImageInfo()
     console.info('getThumbnail successful, pixelMap ImageInfo size: ' + JSON.stringify(imageInfo.size));
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error('getThumbnail failed with err: ' + err);
     // ...
+  } finally {
+    fetchResult.close();
   }
 }
 ```
@@ -216,11 +218,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
     assetChangeRequest.setTitle(newTitle);
     await phAccessHelper.applyChanges(assetChangeRequest);
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error(`rename failed with error: ${err.code}, ${err.message}`);
     // ...
+  } finally {
+    fetchResult.close();
   }
 }
 ```
@@ -265,11 +268,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
       await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error(`deleteAssets failed with error: ${err.code}, ${err.message}`);
     // ...
+  } finally {
+    fetchResult.close();
   }
 }
 ```

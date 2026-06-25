@@ -118,12 +118,12 @@
      }
    
      // 使用箭头函数确保this引用不会丢失
-     onDataPrepared = (data: ArrayBuffer) => {
+     onDataPrepared = (data: ArrayBuffer, map?: Map<string, string>) => {
        if (data === undefined) {
          console.error('Error occurred when preparing data');
          return;
        }
-       console.info('on image data prepared');
+       console.info('on image data prepared, photo quality is ' + map?.get('quality'));
        // 现在this始终指向MediaAssetDataHandler实例
        if (this.callback) {
          this.callback(data);
@@ -180,10 +180,11 @@
          console.error('No asset found for URI: ' + uri);
        }
          
-       // 关闭查询结果
-       fetchResult.close();
      } catch (err) {
        console.error('getMediaResourceByUri failed with err: ' + err);
+     } finally {
+      // 关闭查询结果
+       fetchResult.close();
      }
    }
    ```
