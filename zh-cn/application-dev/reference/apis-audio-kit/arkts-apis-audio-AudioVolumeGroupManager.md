@@ -1337,7 +1337,7 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1376,7 +1376,7 @@ setMicrophoneMute(mute: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
