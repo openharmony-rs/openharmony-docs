@@ -2018,7 +2018,7 @@ export default class EntryAbility extends UIAbility {
 
 ## UserAuthResult<sup>22+</sup>
 
-用户授权结果。
+用户授权结果，表示长时任务授权状态。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

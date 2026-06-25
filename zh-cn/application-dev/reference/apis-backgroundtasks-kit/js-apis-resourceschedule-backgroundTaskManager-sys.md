@@ -537,7 +537,7 @@ try {
 | userId | number                              | 否    | 否  | 用户ID。   |
 | bundleName | string                              | 否    | 否  | 应用包名。   |
 | appIndex | number                              | 否    | 否  | 应用分身ID。 |
-| authResult | [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 否    | 是  | 授权结果。   |
+| authResult | [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 否    | 是  | 授权结果，表示长时任务授权状态。   |
 
 ## BackgroundTaskSubscriber<sup>23+</sup>
 
