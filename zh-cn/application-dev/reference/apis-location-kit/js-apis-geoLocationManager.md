@@ -3356,3 +3356,111 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
     console.error("findMatchingWlan: errCode " + error.code + ", errMessage " + error.message);
   }
   ```
+
+## geoLocationManager.startBluetoothSearch<sup>26+</sup>
+
+startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&lt;BluetoothScanResult&gt;): void
+
+启动蓝牙扫描，使用callback异步回调。
+
+本API会启动蓝牙扫描，为了避免产生较多功耗，需要开发者在适当的时机调用 [geoLocationManager.stopBluetoothSearch](#geolocationmanagerstopbluetoothsearch26)接口停止蓝牙扫描。
+
+当前仅支持扫描BLE设备。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | request | [BluetoothSearchRequestParams](#bluetoothsearchrequestparams) | 是 | 设置蓝牙扫描请求参数。 |
+  | callback | Callback&lt;[BluetoothScanResult](#bluetoothscanresult16)&gt; | 是 | 回调函数，返回蓝牙扫描结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.startBluetoothSearch} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                           |
+|3301800 | Failed to start Bluetooth scanning.                                        |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  let request: geoLocationManager.BluetoothSearchRequestParams = {
+    'rssiThreshold': -10000,
+    'deviceIdArray': ['XX:XX:XX:XX:XX:XX','YY:YY:YY:YY:YY:YY','ZZ:ZZ:ZZ:ZZ:ZZ:ZZ']
+  };
+  try {
+    geoLocationManager.startBluetoothSearch(request, (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
+      if (bluetoothScanResult) {
+        console.info('startBluetoothSearch: deviceId=' + bluetoothScanResult.deviceId);
+      }
+    });
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:" + err.message);
+  }
+  ```
+
+
+## geoLocationManager.stopBluetoothSearch<sup>26+</sup>
+
+stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
+
+停止蓝牙扫描。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | callback | Callback&lt;[BluetoothScanResult](#bluetoothscanresult16)&gt; | 否 | 回调函数，返回蓝牙扫描结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|801 | Capability not supported. Failed to call ${geoLocationManager.stopBluetoothSearch} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                           |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  let request: geoLocationManager.BluetoothSearchRequestParams = {
+    'rssiThreshold': -10000,
+    'deviceIdArray': ['XX:XX:XX:XX:XX:XX','YY:YY:YY:YY:YY:YY','ZZ:ZZ:ZZ:ZZ:ZZ:ZZ']
+  };
+  let callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
+    if (bluetoothScanResult) {
+      console.info('bluetoothScanResult: deviceId=' + bluetoothScanResult.deviceId);
+    }
+  };
+  try {
+    geoLocationManager.startBluetoothSearch(request, callback);
+    geoLocationManager.stopBluetoothSearch(callback);
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:" + err.message);
+  }
+  ```
