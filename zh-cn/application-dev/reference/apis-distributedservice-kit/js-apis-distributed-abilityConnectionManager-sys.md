@@ -25,9 +25,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
 on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;CollaborateEventInfo&gt;):&nbsp;void
 
-注册collaborateEvent事件的回调监听，用于接收协同事件的异步通知。需与off('collaborateEvent')方法配合使用，在不需要接收事件时，应调用off('collaborateEvent')取消监听以释放资源。
-
-**使用场景**：跨设备拉起应用时，监听协同会话的状态变化（如对方设备接收/拒绝协同请求），以更新本端UI状态或处理协同流程。
+注册collaborateEvent事件的回调监听,使用callback异步回调。该监听需与off('collaborateEvent')成对使用，在不再需要接收事件时及时取消监听以释放资源。典型应用场景为跨设备拉起应用过程中，通过监听协同会话的状态变化（如对方设备接收或拒绝协同请求），从而动态更新本端UI或驱动后续协同流程，确保交互逻辑与协同状态保持同步。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
