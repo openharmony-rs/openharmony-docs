@@ -148,24 +148,28 @@
 4. B设备访问跨设备文件完成，断开链路。
 
    ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import { fileIo } from '@kit.CoreFileKit';
-   ```
    <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
-
+   
    ``` TypeScript
    // 获取设备A的networkId
-   // ···
-   let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
-   let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
-   if (deviceInfoList && deviceInfoList.length > 0) {
-     console.info(`Success to get available device list`);
-     let networkId = deviceInfoList[0].networkId;
-     // 关闭跨设备文件访问
-     fileIo.disconnectDfs(networkId).then(() => {
-       console.info(`Success to disconnect dfs`);
-     }).catch((err: BusinessError) => {
+   // ...
+   try {
+     let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
+     let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
+     if (deviceInfoList && deviceInfoList.length > 0) {
+       console.info(`Success to get available device list`);
+       let networkId = deviceInfoList[0].networkId;
+       // 关闭跨设备文件访问
+       fileIo.disconnectDfs(networkId).then(() => {
+         console.info(`Success to disconnect dfs`);
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
+       })
+     }
+   } catch (error) {
+     console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
+   }
+   ```
        console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
      })
    }
