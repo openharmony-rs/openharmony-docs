@@ -3554,7 +3554,8 @@ class LeadingMarginCreator {
 
     return fontSizeLevel;
   }
-  // 获得字体字号级别，分别是从0到4级
+
+  // 获得外边距比例级别
   public getmarginLevel(Width: number) {
     let marginlevel: number = 1;
     if (Width == 40) {
@@ -3777,7 +3778,7 @@ struct Index {
 ![UpdateParagraphAndTypingStyle](figures/richEditorUpdateParagraphAndTypingStyle.gif)
 
 ### 示例8（设置文本字重与阴影）
-通过[updateParagraphStyle](#updateparagraphstyle11)接口设置文本字重与阴影。
+通过[updateSpanStyle](#updatespanstyle)接口设置文本字重与阴影。
 
 ``` ts
 @Entry
@@ -3905,7 +3906,7 @@ struct Index {
     Column() {
       Column({ space: 5 }) {
         Text('direction:Row').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.Row }) { // 子组件在容器主抽上行布局
+        Flex({ direction: FlexDirection.Row }) { // 子组件在容器主轴上行布局
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(50).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
@@ -3917,7 +3918,7 @@ struct Index {
         .backgroundColor(0xAFEEEE)
 
         Text('direction:RowReverse').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.RowReverse }) { // 子组件在容器主抽上反向行布局
+        Flex({ direction: FlexDirection.RowReverse }) { // 子组件在容器主轴上反向行布局
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(50).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(50).backgroundColor(0xF5DEB3)
@@ -3929,7 +3930,7 @@ struct Index {
         .backgroundColor(0xAFEEEE)
 
         Text('direction:Column').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.Column }) { // 子组件在容器主抽上列布局
+        Flex({ direction: FlexDirection.Column }) { // 子组件在容器主轴上列布局
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(40).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
@@ -3941,7 +3942,7 @@ struct Index {
         .backgroundColor(0xAFEEEE)
 
         Text('direction:ColumnReverse').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Flex({ direction: FlexDirection.ColumnReverse }) { // 子组件在容器主抽上反向列布局
+        Flex({ direction: FlexDirection.ColumnReverse }) { // 子组件在容器主轴上反向列布局
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
           Text('1').width('20%').height(40).backgroundColor(0xD2B48C)
           Text('1').width('20%').height(40).backgroundColor(0xF5DEB3)
@@ -4899,7 +4900,6 @@ struct RichEditorExample {
 struct RichEditor_onEditingChange {
   controller: RichEditorController = new RichEditorController();
   @State controllerIsEditing: boolean = false;
-  @Builder
 
   build() {
     Column() {
