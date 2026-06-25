@@ -20,11 +20,11 @@
 | 35700001 | Service error. | open、close、write、onDataRead、offDataRead、flush、drain、setRts、getCts、sendBrk、 onDisconnect、setDtr|
 | 35700002 | Invalid parameter. | close |
 | 35700003 | Virtual serial port disconnected. |close、write、offDataRead、flush、drain、setRts、getCts、offDisconnect、setDtr|
-| 35700004 | Port already in use. | open接口 |
+| 35700004 | Port already in use. | open |
 | 35700005 | Port not open. | open、close、write、onDataRead、offDataRead、flush、drain、setRts、getCts、sendBrk、 onDisconnect、offDisconnect、setDtr |
 | 35700006 | Transmission timeout. | close |
-| 35700007 | User authorization required. | open接口 |
-| 35700008 | Permission denied. | addPortAuthorization接口 |
+| 35700007 | User authorization required. | open |
+| 35700008 | Permission denied. | addPortAuthorization |
 
 ## 35700001 服务异常
 
