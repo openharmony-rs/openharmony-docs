@@ -1093,7 +1093,7 @@ struct DelayComponent {
   @Prop @Watch('onChange') delayVal: number;
 
   onChange() {
-    hilog.info(DOMAIN, TAG, `Appmonitor ParamComponent: delayVal changed:${this.delayVal}`);
+    hilog.info(DOMAIN, TAG, `Appmonitor DelayComponent: delayVal changed:${this.delayVal}`);
   }
 
   build() {
