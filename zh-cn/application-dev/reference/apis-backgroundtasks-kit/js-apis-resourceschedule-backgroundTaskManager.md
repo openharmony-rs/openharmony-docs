@@ -1334,7 +1334,7 @@ export default class EntryAbility extends UIAbility {
 
 on(type: 'continuousTaskActive', callback: Callback&lt;ContinuousTaskActiveInfo&gt;): void
 
-注册长时任务激活的监听，使用callback异步回调。应用回前台激活暂停的长时任务。
+注册长时任务激活的监听，使用callback异步回调。暂停的长时任务激活时回调。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -1566,7 +1566,7 @@ export default class EntryAbility extends UIAbility {
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | continuousTaskId | number | 否    | 否    | 被暂停的长时任务 Id。|
 | suspendState | boolean | 否    | 否    | 长时任务状态，false表示激活，true表示暂停。|
-| suspendReason | [ContinuousTaskSuspendReason](#continuoustasksuspendreason20) | 否    | 否    | 长时任务暂停原因。|
+| suspendReason | [ContinuousTaskSuspendReason](#continuoustasksuspendreason20) | 否    | 否    | 长时任务暂停原因，恒为-1。建议使用[suspendMessage](#suspendmessage)字段获取长时任务暂停的具体原因。|
 | suspendMessage | [SuspendMessage](#suspendmessage) | 否    | 是    | 长时任务暂停信息。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## SuspendMessage

@@ -226,7 +226,7 @@ obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[obtainAllWorks<sup>10+<sup/>](#workschedulerobtainallworks10)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[obtainAllWorks<sup>10+</sup>](#workschedulerobtainallworks10)替代。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
