@@ -771,3 +771,80 @@ struct Index {
 ```
 
 ![](figures/chipgroupv2_3.png)
+
+### 示例4（监听ChipGroupV2内对象类型属性的内部属性变化）
+
+[ChipGroupV2Items](#chipgroupv2items)、[ChipGroupV2Item](#chipgroupv2item)、[ChipGroupV2ItemStyle](#chipgroupv2itemstyle)等类使用了@ObservedV2装饰器，ChipGroupV2组件通过@Param接收各属性参数。对于@Trace装饰的基本类型属性（如ChipGroupV2Space的itemSpace等），@Param已能观测到属性变化并触发UI刷新，无需额外处理。但对于这些类中对象类型属性（如ChipGroupV2Item中prefixIcon的size）的内部属性，这些对象类型本身未被@ObservedV2装饰，其内部属性变化无法被@Param感知，导致修改内部属性时UI不会自动刷新。使用[makeObserved](../js-apis-stateManagement.md#makeobserved)接口对对象类型属性进行包裹，可以为该对象的内部属性补充深度观察能力。makeObserved接口的详细说明请参考[makeObserved接口：将非观察数据变为可观察数据](../../../ui/state-management/arkts-new-makeObserved.md)。
+
+以下示例对比了两种场景：点击“修改itemSpace间距”按钮修改chipGroupSpace的itemSpace属性（@Trace装饰的基本类型属性，已支持观测），UI自动刷新；点击“修改图标大小”按钮修改ChipGroupV2Item中prefixIcon的size内部属性（对象类型属性的内部属性，需通过UIUtils.makeObserved包裹size才能观测），UI同样自动刷新。
+
+```ts
+import {
+  ChipGroupV2,
+  ChipGroupV2Items,
+  ChipGroupV2ItemStyle,
+  ChipGroupV2Space,
+  ChipGroupV2Padding,
+  LengthMetrics,
+  UIUtils
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local items: ChipGroupV2Items = new ChipGroupV2Items([
+    {
+      // 使用UIUtils.makeObserved包裹size，使内部属性width和height可被观测。
+      prefixIcon: {
+        src: $r('sys.media.ohos_ic_public_clock'),
+        size: UIUtils.makeObserved({ width: LengthMetrics.fp(16), height: LengthMetrics.fp(16) })
+      },
+      label: { text: '操作块1' }
+    },
+    {
+      label: { text: '操作块2' }
+    },
+    {
+      label: { text: '操作块3' }
+    }
+  ]);
+  // ChipGroupV2Space的内部属性已被@Trace装饰，无需makeObserved。
+  @Local chipGroupSpace: ChipGroupV2Space = new ChipGroupV2Space({ itemSpace: 8 });
+  @Local chipGroupPadding: ChipGroupV2Padding = new ChipGroupV2Padding({ top: 10, bottom: 10 });
+  @Local itemStyle: ChipGroupV2ItemStyle = new ChipGroupV2ItemStyle({});
+  @Local selectedIndexes: number[] = [];
+  @Local currentIconSize: number = 16;
+  @Local currentItemSpace: number = 8;
+
+  build() {
+    Column({ space: 10 }) {
+      ChipGroupV2({
+        items: this.items,
+        $items: (items: ChipGroupV2Items) => { this.items = items; },
+        itemStyle: this.itemStyle,
+        chipGroupSpace: this.chipGroupSpace,
+        chipGroupPadding: this.chipGroupPadding,
+        selectedIndexes: this.selectedIndexes,
+        $selectedIndexes: (indexes: number[]) => { this.selectedIndexes = indexes; },
+      })
+      // 修改@Trace装饰的基本类型属性，UI自动刷新。
+      Button('修改itemSpace间距')
+        .onClick(() => {
+          this.currentItemSpace = this.currentItemSpace === 8 ? 16 : 8;
+          this.chipGroupSpace.itemSpace = this.currentItemSpace;
+        })
+      // 修改对象类型属性的内部属性，由于makeObserved包裹，UI同样自动刷新。
+      Button('修改图标大小')
+        .onClick(() => {
+          if (this.items.length >= 1 && this.items[0] && this.items[0].prefixIcon && this.items[0].prefixIcon.size) {
+            this.currentIconSize = this.currentIconSize === 16 ? 30 : 16;
+            this.items[0].prefixIcon.size.width = LengthMetrics.fp(this.currentIconSize);
+            this.items[0].prefixIcon.size.height = LengthMetrics.fp(this.currentIconSize);
+          }
+        })
+    }
+  }
+}
+```
+
+![chipgroupv2-sample4](figures/chipgroupv2-make-observed.gif)

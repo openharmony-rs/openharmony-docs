@@ -43,9 +43,9 @@ Checks whether a specified type of **RunningLock** is supported.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
 **Example**
 
@@ -80,9 +80,9 @@ Creates a **RunningLock** object. This API uses an asynchronous callback to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 201     | If the permission is denied.|
 
 **Example**
@@ -125,9 +125,9 @@ Creates a **RunningLock** object. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 201     | If the permission is denied.|
 
 **Example**
@@ -222,9 +222,9 @@ Creates a **RunningLock** object. This API uses an asynchronous callback to retu
 
 | Name  | Type                                      | Mandatory| Description                                                        |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| name     | string                                     | Yes  | Name of the **RunningLock** object. A recommended name consists of the package or class name and a suffix. |
+| name     | string                                     | Yes  | Name of the **RunningLock** object. A recommended name consists of the package or class name and a suffix.                  |
 | type     | [RunningLockType](#runninglocktype)        | Yes  | Type of the **RunningLock** object to be created.                                          |
-| callback | AsyncCallback<[RunningLock](#runninglock)> | Yes  | Callback used to return the result. If a lock is successfully created, **err** is **undefined** and **data** is the created **RunningLock**. Otherwise, **err** is an error object. **AsyncCallback** has encapsulated an API of the **RunningLock** class. |
+| callback | AsyncCallback<[RunningLock](#runninglock)> | Yes  | Callback used to return the result. If a lock is successfully created, **err** is **undefined** and **data** is the created **RunningLock**. Otherwise, **err** is an error object. **AsyncCallback** has encapsulated an API of the **RunningLock** class.|
 
 **Example**
 
@@ -254,7 +254,7 @@ Creates a **RunningLock** object. This API uses a promise to return the result.
 
 | Name| Type                               | Mandatory| Description              |
 | ------ | ----------------------------------- | ---- | ------------------ |
-| name   | string                              | Yes  | Name of the **RunningLock** object. A recommended name consists of the package or class name and a suffix. |
+| name   | string                              | Yes  | Name of the **RunningLock** object. A recommended name consists of the package or class name and a suffix.|
 | type   | [RunningLockType](#runninglocktype) | Yes  | Type of the **RunningLock** object to be created.|
 
 **Returns**
@@ -299,7 +299,7 @@ Locks and holds a **RunningLock** object.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message    |
+| Error Code  | Error Message    |
 |---------|----------|
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 201     | If the permission is denied.|
@@ -349,7 +349,7 @@ Releases a **RunningLock** object.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message    |
+| Error Code  | Error Message    |
 |---------|----------|
 | 201     | If the permission is denied.|
 
@@ -518,6 +518,6 @@ Enumerates the types of **RunningLock** objects.
 
 | Name                             | Value  | Description                                                        |
 | --------------------------------- | ---- | ------------------------------------------------------------ |
-| BACKGROUND<sup>(deprecated)</sup> | 1    | A lock that prevents the system from entering sleep mode when the screen is off.<br>**NOTE**<br>This parameter is supported since API version 7 and deprecated since API version 10.|
+| BACKGROUND<sup>(deprecated)</sup> | 1    | A lock that prevents the system from hibernating when the screen is off.<br>**NOTE**<br>This parameter is supported since API version 7 and deprecated since API version 10.|
 | PROXIMITY_SCREEN_CONTROL          | 2    | A lock that enables the proximity sensor and turns on or off the screen based on the distance between the sensor and the obstacle. |
-| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | A background lock that prevents the system from automatically entering sleep mode when the user is inactive for a period of time. <br>**Note**: This lock cannot prevent the system from entering the forced sleep state in scenarios such as closing the PC lid. The user must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release this lock after receiving the event. The behavior of this lock varies with devices. For details about how to use this type of lock, see [Preventing the Idle System from Entering Sleep Mode](../../basic-services/powermgr/runningLock/runningLock-dev.md).|
+| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | A background lock that prevents the system from automatically entering sleep mode when the user is inactive for a period of time.<br>Note: This lock cannot prevent the system from entering the forced sleep state in scenarios such as closing the PC lid. The user must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release this lock after receiving the event. The behavior of this lock varies with devices. For details about how to use this type of lock, see [Preventing the Idle System from Entering Sleep Mode](../../basic-services/powermgr/runningLock/runningLock-dev.md).|
