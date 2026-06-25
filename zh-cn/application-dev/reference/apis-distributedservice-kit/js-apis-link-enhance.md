@@ -1139,10 +1139,10 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **调用顺序：**
-- 必须在调用connect()之前注册此监听，否则无法获取连接结果
+- 必须在调用connect()之前注册此监听，否则无法获取连接结果。
 
 **配对调用：**
-- 使用完毕后，建议调用off('connectResult')取消监听，避免内存泄漏
+- 使用完毕后，建议调用off('connectResult')取消监听，避免内存泄漏。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -1514,6 +1514,12 @@ onConnectResult(callback: Callback&lt;ConnectResult&gt;): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**调用顺序：**
+- 必须在调用connect()之前注册此监听，否则无法获取连接结果。
+
+**配对调用：**
+- 使用完毕后，建议调用off('connectResult')取消监听，避免内存泄漏。
+
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('connectResult')](#onconnectresult)。
 
 **ArkTS-Sta起始版本**：23
@@ -1644,7 +1650,7 @@ onDisconnected(callback: Callback&lt;int&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;int&gt; | 是    | 注册的回调函数，int为返回的错误码。  |
+| callback | Callback&lt;int&gt; | 是    | 注册的回调函数，连接被动断开或底层异常断开时触发，int为返回的错误码。  |
 
 **错误码：**
 
@@ -1763,7 +1769,7 @@ onDataReceived(callback: Callback&lt;ArrayBuffer&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 是    | 注册的回调函数。 |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 是    | 注册的回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。 |
 
 **错误码：**
 
@@ -1821,7 +1827,7 @@ offDataReceived(callback?: Callback&lt;ArrayBuffer&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 注册的回调函数。 |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 注册的回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。 |
 
 **错误码：**
 
