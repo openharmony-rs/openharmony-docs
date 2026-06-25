@@ -6505,6 +6505,20 @@ Allows a system application to access the file cache path of the file transfer s
  	 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.CAMERA_EVS
+
+Allows an application to access the vehicle camera.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.SAMBA_CLIENT_ACCESS
 
 Allows an application to connect to the network neighborhood client and manage network neighborhood files.
