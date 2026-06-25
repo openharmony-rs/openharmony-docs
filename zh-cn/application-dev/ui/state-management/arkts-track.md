@@ -152,7 +152,7 @@ struct AddLog {
   @State logTrack: LogTrack = new LogTrack('Hello');
   @State logNotTrack: LogNotTrack = new LogNotTrack('Hello');
 
-  isRender(index: number) {
+  isRender(index: number): number {
     hilog.info(DOMAIN_NUMBER, TAG, `Text ${index} is rendered`);
     return 50;
   }
@@ -200,7 +200,7 @@ struct AddLog {
     Text 1 is rendered
     ```
 
-2. 类logNotTrack中的属性均未被\@Track装饰器装饰，点击按钮"change logNotTrack.str1"，此时Text3、Text4均会刷新，有两条日志输出，存在冗余刷新。
+2. 类LogNotTrack中的属性均未被\@Track装饰器装饰，点击按钮"change logNotTrack.str1"，此时Text3、Text4均会刷新，有两条日志输出，存在冗余刷新。
     ```ts
     Text 3 is rendered
     Text 4 is rendered

@@ -101,7 +101,7 @@ struct Child {
     Column() {
       Text(`${this.title}`)
         .fontColor(this.fontColor)
-      // 使用changeFactory更改父组件中的变量type
+      // 使用changeFactory更改父组件中的变量
       Button('change to Title Two')
         .onClick(() => {
           this.changeFactory(2);

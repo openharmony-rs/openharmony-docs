@@ -140,4 +140,4 @@ export default {
 }
 ```
 
-这里声明的第一个计算属性message默认只有getter函数，message的值会取决于objTitle的值的变化。getter函数只能读取不能改变参数值，例如data中初始化定义的time，当需要赋值给计算属性的时候可以提供一个setter函数，如示例中的notice。
+这里声明的第一个计算属性message默认只有getter函数，message的值会取决于objTitle的值的变化。getter函数只能读取不能改变计算属性的值，例如data中初始化定义的time，当需要赋值给计算属性的时候可以提供一个setter函数，如示例中的notice。
