@@ -289,7 +289,7 @@ OH_AVScreenCapture_Release(capture);
 
 即[OH_CAPTURE_SPECIFIED_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
 
-在此模式下，录屏应用指定录制某个屏幕的内容。启动录屏后，系统会弹出选择共享内容弹窗（Phone/Tablet设备不弹出，具体弹窗行为见[PC/2in1设备弹窗行为差异](#pc2in1设备弹窗行为差异)[Phone/Tablet弹窗模式配置说明](#phonetablet弹窗模式配置说明)），并默认选中videoCapInfo.displayId参数对应的屏幕。如果传入的displayId对应的屏幕不存在，则不做任何选中。
+在此模式下，录屏应用指定录制某个屏幕的内容。默认选中videoCapInfo.displayId参数对应的屏幕。如果传入的displayId对应的屏幕不存在，则不做任何选中。
 
 ```c++
 uint64_t displayId = 0;
@@ -340,7 +340,7 @@ config.captureMode = OH_CAPTURE_HOME_SCREEN;
 
 应用需根据设备分辨率配置录屏的高度和宽度值并传入屏幕Id。
 
-若期望录制某个指定窗口，需要设置指定的窗口Id。该场景下，启动录屏后，系统会弹出选择共享内容弹窗（Phone/Tablet设备不弹出，具体弹窗行为见[PC/2in1设备弹窗行为差异](#pc2in1设备弹窗行为差异)和[Phone/Tablet弹窗模式配置说明](#phonetablet弹窗模式配置说明)），并默认选中指定的窗口。
+若期望录制某个指定窗口，需要设置指定的窗口Id。该场景下，启动录屏后，系统会默认选中指定的窗口。
 
 ```c++
 uint64_t displayId = 0;
@@ -369,7 +369,7 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.
 
 <!--RP2--><!--RP2End-->
 
-若期望同时录制多个窗口，需要传入期望录制的窗口Id列表。该场景下，不弹出选择共享内容弹窗，弹出隐私保护弹窗。
+若期望同时录制多个窗口，需要传入期望录制的窗口Id列表。
 
 ```c++
 uint64_t displayId = 0;
@@ -396,38 +396,13 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 // 在配置参数结束后执行"g_missionIds2.clear()"。
 ```
 
-## PC/2in1设备弹窗行为差异
+## 弹窗模式说明
 
-在PC/2in1设备上，不同录屏模式的弹窗行为有所差异：
+从API version 23开始，支持不同设备通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)控制是否弹出选择共享内容弹窗。
 
-- **录制指定屏幕（OH_CAPTURE_SPECIFIED_SCREEN）**：启动录屏后会弹出选择共享内容弹窗，并默认选中displayId参数对应的屏幕。
-- **录制主屏幕（OH_CAPTURE_HOME_SCREEN）**：启动录屏后不会弹出选择共享内容弹窗，仅弹出隐私保护弹窗，displayId参数不生效，默认使用主屏ID。
-- **录制指定窗口（OH_CAPTURE_SPECIFIED_WINDOW）**：传入单个窗口Id时，弹出选择共享内容弹窗并默认选中指定窗口；传入多个窗口Id时，不弹出选择共享内容弹窗，仅弹出隐私保护弹窗。
+### OH_AVScreenCapture_StrategyForPickerPopUp为true
 
-默认情况下录制主屏的内容，仅弹出隐私保护弹窗。
-
-```c++
-uint64_t displayId = 0;
-NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
-
-NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
-ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
-if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
-    return;
-}
-// 根据设备分辨率在config中配置录屏的宽度、高度。
-config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
-config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
-
-// 设置录屏模式为OH_CAPTURE_HOME_SCREEN。
-config.captureMode = OH_CAPTURE_HOME_SCREEN;
-```
-
-## Phone/Tablet弹窗模式配置说明
-
-从API version 23开始，支持在设备Phone/Tablet上通过策略控制是否弹出选择共享内容弹窗。
-
-在PC/2in1设备上，是否弹出选择共享内容弹窗受录制模式控制，在Phone/Tablet设备上可以通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)配置选择共享内容弹窗模式，无需指定录制模式。
+代表PC/2in1设备、Phone/Tablet设备录屏启动后统一弹出picker，无需指定录屏模式。
 
 ```c++
 // 创建AVScreenCapture对象。
@@ -439,6 +414,58 @@ OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureS
 // 设置是否弹出屏幕捕获Picker。
 // 设置为true，代表录屏启动后统一弹出Picker。
 OH_AVScreenCapture_StrategyForPickerPopUp(strategy, true);
+
+// 设置CaptureStrategy到AVScreenCapture实例。
+OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+
+// 释放CaptureStrategy对象。
+OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
+```
+
+### OH_AVScreenCapture_StrategyForPickerPopUp为false
+
+代表PC/2in1设备、Phone/Tablet设备录屏启动后不弹出picker，仅弹出隐私保护弹窗，无需指定录屏模式。
+
+```c++
+// 创建AVScreenCapture对象。
+OH_AVScreenCapture* capture = OH_AVScreenCapture_Create();
+
+// 创建CaptureStrategy对象。
+OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+
+// 设置是否弹出屏幕捕获Picker。
+// 设置为false，代表录屏启动后统一不弹出Picker。
+OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
+
+// 设置CaptureStrategy到AVScreenCapture实例。
+OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+
+// 释放CaptureStrategy对象。
+OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
+```
+
+### OH_AVScreenCapture_StrategyForPickerPopUp为默认值
+
+**对于PC/2in1设备、Phone/Tablet设备，录屏弹窗行为有所差异**：
+
+在PC/2in1设备上，根据不同录屏模式有不同弹窗行为：
+
+- **录制指定屏幕（OH_CAPTURE_SPECIFIED_SCREEN）**：启动录屏后会弹出选择共享内容弹窗，并默认选中displayId参数对应的屏幕。
+- **录制主屏幕（OH_CAPTURE_HOME_SCREEN）**：启动录屏后不会弹出选择共享内容弹窗，仅弹出隐私保护弹窗，displayId参数不生效，默认使用主屏ID。
+- **录制指定窗口（OH_CAPTURE_SPECIFIED_WINDOW）**：传入单个窗口Id时，弹出选择共享内容弹窗并默认选中指定窗口；传入多个窗口Id时，不弹出选择共享内容弹窗，仅弹出隐私保护弹窗。
+
+在Phone/Tablet设备上，不同录屏模式下统一不弹出Picker，仅弹出隐私保护弹窗。
+
+```c++
+// 创建AVScreenCapture对象。
+OH_AVScreenCapture* capture = OH_AVScreenCapture_Create();
+
+// 创建CaptureStrategy对象。
+OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+
+// 设置是否弹出屏幕捕获Picker。
+// 设置为false，代表录屏启动后统一不弹出Picker。
+OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
 
 // 设置CaptureStrategy到AVScreenCapture实例。
 OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
