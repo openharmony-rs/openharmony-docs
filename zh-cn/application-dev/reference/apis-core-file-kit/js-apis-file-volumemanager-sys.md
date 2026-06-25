@@ -1489,7 +1489,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 isVolumeInUse(volumePath: string): Promise&lt;boolean&gt;
 
-检测指定卷当前是否正在被占用。使用Promise异步回调。
+查询指定卷当前是否正在被占用。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
