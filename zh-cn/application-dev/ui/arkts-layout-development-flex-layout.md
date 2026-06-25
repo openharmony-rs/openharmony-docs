@@ -272,7 +272,7 @@
   <!-- @[FlexWrapWrapReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrapReverse.ets) -->
   
   ``` TypeScript
-  Flex({ wrap: FlexWrap.WrapReverse}) {
+  Flex({ wrap: FlexWrap.WrapReverse }) {
     Text('1').width('50%').height(50).backgroundColor('#F5DEB3')
     Text('2').width('50%').height(50).backgroundColor('#D2B48C')
     Text('3').width('50%').height(50).backgroundColor('#F5DEB3')

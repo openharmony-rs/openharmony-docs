@@ -78,7 +78,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
     'right': { 'anchor': '__container__', 'align': HorizontalAlign.End }
   }
   let marginLeft: Record<string, number> = { 'left': 20 }
-  let bwc: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
+  let borderWidth: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
   @Component
@@ -106,7 +106,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .id('row2')
       }.width(300).height(300)
       .margin(marginLeft)
-      .border(bwc)
+      .border(borderWidth)
     }
   }
   ```
@@ -191,7 +191,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
     'left': { 'anchor': 'row1', 'align': HorizontalAlign.Start }
   }
   let marginLeft001: Record<string, number> = { 'left': 20 }
-  let bwc001: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
+  let borderWidth001: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
   @Component
@@ -219,7 +219,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
         .id('row2')
       }.width(300).height(300)
       .margin(marginLeft001)
-      .border(bwc001)
+      .border(borderWidth001)
     }
   }
   ```
